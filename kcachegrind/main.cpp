@@ -37,7 +37,7 @@ static KCmdLineOptions options[] =
 {
   { "r <exec>", I18N_NOOP("Run <exec> under cachegrind."), 0 },
   { "+[trace]", I18N_NOOP("Show information of this trace"), 0 },
-  { 0, 0, 0 } // End of options.
+  KCmdLineLastOption // End of options.
 };
 
 int main( int argc, char ** argv )
