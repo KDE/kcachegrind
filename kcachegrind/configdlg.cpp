@@ -23,7 +23,7 @@
 #include <qcombobox.h>
 #include <qcheckbox.h>
 #include <qlineedit.h>
-#include <qlistbox.h>
+#include <qlistview.h>
 #include <qdict.h>
 #include <qmessagebox.h>
 
@@ -144,27 +144,40 @@ ConfigDlg::ConfigDlg(Configuration* c, TraceData* data,
   fileActivated(fileCombo->currentText());
 
   maxListEdit->setText(QString::number(c->_maxListCount));
-  factorL1->setText(QString::number(c->_cycleL1Factor));
-  factorL2->setText(QString::number(c->_cycleL2Factor));
 
   _dirItem = 0;
 
-  QStringList::Iterator sit = c->_sourceDirs.begin();
-  for(; sit != c->_sourceDirs.end(); ++sit ) {
-    if ((*sit).isEmpty())
-      dirList->insertItem("/");
-    else
-      dirList->insertItem(*sit);
+  QListViewItem* i = new QListViewItem(dirList, i18n("(always)"));
+  i->setOpen(true);
+  QStringList::Iterator sit = c->_generalSourceDirs.begin();
+  for(; sit != c->_generalSourceDirs.end(); ++sit ) {
+    QString d = (*sit);    
+    if (d.isEmpty()) d = "/";
+    new QListViewItem(i, d);
+  }
+  for ( oit = data->objectMap().begin();
+        oit != data->objectMap().end(); ++oit ) {
+    QString n = (*oit).name();
+    i = new QListViewItem(dirList, n);
+    i->setOpen(true);
+    QStringList* dirs = c->_objectSourceDirs[n];
+    if (!dirs) continue;
+
+    sit = dirs->begin();
+    for(; sit != dirs->end(); ++sit ) {
+      QString d = (*sit);    
+      if (d.isEmpty()) d = "/";
+      new QListViewItem(i, d);
+    }
   }
 
-  connect(dirList, SIGNAL(currentChanged(QListBoxItem*)),
-          this, SLOT(dirsItemChanged(QListBoxItem*)));
-  connect(deleteDirButton, SIGNAL(pressed()),
-          this, SLOT(dirsDeletePressed()));
-  connect(addDirButton, SIGNAL(pressed()),
+  connect(dirList, SIGNAL(selectionChanged(QListViewItem*)),
+          this, SLOT(dirsItemChanged(QListViewItem*)));
+  connect(addDirButton, SIGNAL(clicked()),
           this, SLOT(dirsAddPressed()));
-  deleteDirButton->setEnabled(false);
-  //subdirsCheck->setEnabled(false);
+  connect(deleteDirButton, SIGNAL(clicked()),
+          this, SLOT(dirsDeletePressed()));
+  dirList->setSelected(dirList->firstChild(), true);
 
   symbolCount->setText(QString::number(c->_maxSymbolCount));
   symbolLength->setText(QString::number(c->_maxSymbolLength));
@@ -190,30 +203,6 @@ bool ConfigDlg::configure(Configuration* c, TraceData* d, QWidget* p)
                            i18n("The Maximum Number of List Items should be below 500."
                                 "The previous set value (%1) will still be used.")
                            .arg(QString::number(c->_maxListCount)),
-                           QMessageBox::Ok, 0);
-
-    int f1 = dlg.factorL1->text().toUInt(&ok);
-    if (ok && f1<10000)
-      c->_cycleL1Factor = f1;
-    else
-      QMessageBox::warning(p, i18n("KCachegrind Configuration"),
-                           i18n("The L1 factor for the CPU Cycle Estimation "
-                                "is not a valid. It has to be between "
-                                "0 and 10000. The previous set "
-                                "value (%1) will still be used.")
-                           .arg(QString::number(c->_cycleL1Factor)),
-                           QMessageBox::Ok, 0);
-
-    int f2 = dlg.factorL2->text().toUInt(&ok);
-    if (ok && f2<10000)
-      c->_cycleL2Factor = f2;
-    else
-      QMessageBox::warning(p, i18n("KCachegrind Configuration"),
-                           i18n("The L2 factor for the CPU Cycle Estimation "
-                                "is not a valid. It has to be between "
-                                "0 and 10000. The previous set "
-                                "value (%1) will still be used.")
-                           .arg(QString::number(c->_cycleL2Factor)),
                            QMessageBox::Ok, 0);
 
     c->_maxSymbolCount = dlg.symbolCount->text().toInt();
@@ -332,33 +321,54 @@ void ConfigDlg::fileColorChanged(const QColor & c)
 }
 
 
-void ConfigDlg::dirsItemChanged(QListBoxItem* i)
+void ConfigDlg::dirsItemChanged(QListViewItem* i)
 {
   _dirItem = i;
-  deleteDirButton->setEnabled(i!=0);
-  /*
-  subdirsCheck->setEnabled(i!=0);
-  if (i)
-    subdirsCheck->setText(i18n("Include Subdirectories of %1")
-                          .arg(i->text()));
-  */
+  deleteDirButton->setEnabled(i->depth() == 1);
+  addDirButton->setEnabled(i->depth() == 0);
 }
 
 void ConfigDlg::dirsDeletePressed()
 {
-  if (_dirItem) {
-    Configuration* c = Configuration::config();
-    c->_sourceDirs.remove(_dirItem->text());
+  if (!_dirItem || (_dirItem->depth() == 0)) return;
+  QListViewItem* p = _dirItem->parent();
+  if (!p) return;
 
-    delete _dirItem;
-    _dirItem = 0;
+  Configuration* c = Configuration::config();
+  QString objName = p->text(0);
+  
+  QStringList* dirs;
+  if (objName == i18n("(always)"))
+    dirs = &(c->_generalSourceDirs);
+  else
+    dirs = c->_objectSourceDirs[objName];
+  if (!dirs) return;
 
-    deleteDirButton->setEnabled(false);
-  }
+  dirs->remove(_dirItem->text(0));
+  delete _dirItem;
+  _dirItem = 0;
+
+  deleteDirButton->setEnabled(false);
 }
 
 void ConfigDlg::dirsAddPressed()
 {
+  if (!_dirItem || (_dirItem->depth() >0)) return;
+
+  Configuration* c = Configuration::config();
+  QString objName = _dirItem->text(0);
+  
+  QStringList* dirs;
+  if (objName == i18n("(always)"))
+    dirs = &(c->_generalSourceDirs);
+  else {
+    dirs = c->_objectSourceDirs[objName];
+    if (!dirs) {
+      dirs = new QStringList;
+      c->_objectSourceDirs.insert(objName, dirs);
+    }
+  }
+
   QString newDir;
   newDir = KFileDialog::getExistingDirectory(QString::null,
                                              this,
@@ -369,14 +379,11 @@ void ConfigDlg::dirsAddPressed()
   if (newDir.endsWith("/"))
     newDir = newDir.left(newDir.length()-1);
 
-  Configuration* c = Configuration::config();
-  if (c->_sourceDirs.findIndex(newDir)>=0) return;
+  if (dirs->findIndex(newDir)>=0) return;
 
-  c->_sourceDirs.append(newDir);
-  if (newDir.isEmpty())
-    dirList->insertItem("/");
-  else
-    dirList->insertItem(newDir);
+  dirs->append(newDir);
+  if (newDir.isEmpty()) newDir = QString("/");
+  new QListViewItem(_dirItem, newDir);
 }
 
 #include "configdlg.moc"

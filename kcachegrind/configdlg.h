@@ -49,7 +49,7 @@ protected slots:
   void fileActivated(const QString &);
   void fileCheckChanged(bool);
   void fileColorChanged(const QColor &);
-  void dirsItemChanged(QListBoxItem*);
+  void dirsItemChanged(QListViewItem*);
   void dirsDeletePressed();
   void dirsAddPressed();
 
@@ -58,7 +58,7 @@ private:
   TraceData* _data;
 
   Configuration::ColorSetting *_objectCS, *_classCS, *_fileCS;
-  QListBoxItem* _dirItem;
+  QListViewItem* _dirItem;
 };
 
 #endif

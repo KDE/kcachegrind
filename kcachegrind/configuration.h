@@ -47,12 +47,11 @@ public:
   static QColor functionColor(TraceItem::CostType gt, TraceFunction*);
   static QColor groupColor(TraceItem*);
   static QColor costTypeColor(TraceCostType*);
-  static QStringList sourceDirs();
+  static QStringList sourceDirs(TraceData*, TraceObject* o = 0);
   static bool showPercentage();
   static bool showExpanded();
   static bool showCycles();
-  static unsigned int cycleL1Factor();
-  static unsigned int cycleL2Factor();
+
   // lower percentage limit of cost items filled into lists
   static int percentPrecision();
   // max symbol lengths/count in tooltip/popup
@@ -60,7 +59,7 @@ public:
   // strip a symbol name according to <maxSymbolLength>
   static QString shortenSymbol(QString);
   static int maxSymbolCount();
-  // for now: only query uses this
+  // max. number of items in lists
   static int maxListCount();
   
   // how many lines of context to show before/after annotated source/assembler
@@ -86,14 +85,15 @@ private:
   static ColorSetting* color(QString, bool createNew = true);
 
   QDict<ColorSetting> _colors;
-  QStringList _sourceDirs;
+
+  QStringList _generalSourceDirs;
+  QDict<QStringList> _objectSourceDirs;
+
   bool _showPercentage, _showExpanded, _showCycles;
   double _cycleCut;
   int _percentPrecision;
   int _maxSymbolLength, _maxSymbolCount, _maxListCount;
   int _contextOutside, _contextInside, _noCostInside;
-
-  unsigned int _cycleL1Factor, _cycleL2Factor;
 
   static Configuration* _config;
 };

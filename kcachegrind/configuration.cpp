@@ -22,6 +22,7 @@
 
 #include <kconfig.h>
 #include <klocale.h>
+#include <kdebug.h>
 
 #include "configuration.h"
 #include "tracedata.h"
@@ -93,6 +94,7 @@ Configuration::Configuration()
   _config = 0;
 
   _colors.setAutoDelete(true);
+  _objectSourceDirs.setAutoDelete(true);
 
   // defaults
   _showPercentage = true;
@@ -100,10 +102,6 @@ Configuration::Configuration()
   _showCycles = true;
   _cycleCut = 0.01;
   _percentPrecision = 2;
-
-  // rough values from calibrator for Athlon 1,4 GHz (from Nick)
-  _cycleL1Factor = 10;
-  _cycleL2Factor = 100;
 
   // max symbol count/length in tooltip/popup
   _maxSymbolLength = 30;
@@ -146,9 +144,19 @@ void Configuration::saveOptions(KConfig* kconfig)
   }
   colorConfig.writeEntry( "Count", count-1);
 
-  // source options
+  // source options  
   KConfigGroup sourceConfig(kconfig, QCString("Source"));
-  sourceConfig.writeEntry("Dirs", c->_sourceDirs, ':');
+  sourceConfig.writeEntry("Dirs", c->_generalSourceDirs, ':');
+  QDictIterator<QStringList> it2( c->_objectSourceDirs );
+  count = 1;
+  for( ; it2.current(); ++it2 ) {
+    sourceConfig.writeEntry( QString("Object%1").arg(count),
+			     it2.currentKey());
+    sourceConfig.writeEntry( QString("Dirs%1").arg(count),
+			     *(*it2), ':');
+    count++;
+  }
+  sourceConfig.writeEntry( "Count", count-1);
 
   // general options
   KConfigGroup generalConfig(kconfig, QCString("General"));
@@ -156,8 +164,6 @@ void Configuration::saveOptions(KConfig* kconfig)
   generalConfig.writeEntry("ShowExpanded", c->_showExpanded);
   generalConfig.writeEntry("ShowCycles", c->_showCycles);
   generalConfig.writeEntry("CycleCut", c->_cycleCut);
-  generalConfig.writeEntry("CycleL1Factor", c->_cycleL1Factor);
-  generalConfig.writeEntry("CycleL2Factor", c->_cycleL2Factor);
   generalConfig.writeEntry("MaxSymbolCount", c->_maxSymbolCount);
   generalConfig.writeEntry("MaxListCount", c->_maxListCount);
   generalConfig.writeEntry("MaxSymbolLength", c->_maxSymbolLength);
@@ -190,6 +196,7 @@ void Configuration::saveOptions(KConfig* kconfig)
 
 void Configuration::readOptions(KConfig* kconfig)
 {
+  int i, count;
   Configuration* c = config();
 
   // color options
@@ -210,8 +217,8 @@ void Configuration::readOptions(KConfig* kconfig)
   c->color("CostType-Dw")->color = QColor(80,80,120);
 
   KConfigGroup colorConfig(kconfig, QCString("CostColors"));
-  int count = colorConfig.readNumEntry("Count", 0);
-  for (int i=1;i<=count;i++) {
+  count = colorConfig.readNumEntry("Count", 0);
+  for (i=1;i<=count;i++) {
     QString n = colorConfig.readEntry(QString("Name%1").arg(i));
     QColor color = colorConfig.readColorEntry(QString("Color%1").arg(i));
 
@@ -229,8 +236,21 @@ void Configuration::readOptions(KConfig* kconfig)
 
   // source options
   KConfigGroup sourceConfig(kconfig, QCString("Source"));
-  QStringList dirs = sourceConfig.readListEntry("Dirs", ':');
-  if (dirs.count()>0) c->_sourceDirs = dirs;
+  QStringList dirs;
+  dirs = sourceConfig.readListEntry("Dirs", ':');
+  if (dirs.count()>0) c->_generalSourceDirs = dirs;
+  count = sourceConfig.readNumEntry("Count", 0);
+  c->_objectSourceDirs.clear();
+  if (count>17) c->_objectSourceDirs.resize(count);
+  for (i=1;i<=count;i++) {
+    QString n = sourceConfig.readEntry(QString("Object%1").arg(i));
+    dirs = sourceConfig.readListEntry(QString("Dirs%1").arg(i), ':');
+
+    if (n.isEmpty() || (dirs.count()==0)) continue;
+
+    c->_objectSourceDirs.insert(n, new QStringList(dirs));
+  }
+
 
   // general options
   KConfigGroup generalConfig(kconfig, QCString("General"));
@@ -238,8 +258,6 @@ void Configuration::readOptions(KConfig* kconfig)
   c->_showExpanded = generalConfig.readBoolEntry("ShowExpanded", false);
   c->_showCycles = generalConfig.readBoolEntry("ShowCycles", true);
   c->_cycleCut = generalConfig.readDoubleNumEntry("CycleCut", 0.01);
-  c->_cycleL1Factor = generalConfig.readNumEntry("CycleL1Factor", 10);
-  c->_cycleL2Factor = generalConfig.readNumEntry("CycleL2Factor", 100);
   c->_maxSymbolCount = generalConfig.readNumEntry("MaxSymbolCount", 10);
   c->_maxListCount = generalConfig.readNumEntry("MaxListCount", 100);
   c->_maxSymbolLength = generalConfig.readNumEntry("MaxSymbolLength", 30);
@@ -364,9 +382,33 @@ Configuration::ColorSetting* Configuration::color(QString n, bool createNew)
   return cs;
 }
 
-QStringList Configuration::sourceDirs()
+/* Gives back a list of all Source Base Directories of Objects in
+ * current trace. If a special object is given in 2nd argument,
+ * put its Source Base in front.
+ */
+QStringList Configuration::sourceDirs(TraceData* data, TraceObject* o)
 {
-  return config()->_sourceDirs;
+  QStringList l = config()->_generalSourceDirs, *ol, *ol2 = 0;
+  TraceObjectMap::Iterator oit;
+  for ( oit = data->objectMap().begin();
+        oit != data->objectMap().end(); ++oit ) {
+    ol = config()->_objectSourceDirs[(*oit).name()];
+    if (&(*oit) == o) {
+      ol2 = ol;
+      continue;
+    }
+    if (!ol) continue;
+
+    for(unsigned int i=0;i<ol->count();i++)
+      l.prepend( (*ol)[i] );
+  }
+  if (ol2) {
+    for(unsigned int i=0;i<ol2->count();i++)
+      l.prepend( (*ol2)[i] );
+  }
+  kdDebug() << "Configuration::sourceDirs: " << l.join(":") << endl;
+
+  return l;
 }
 
 bool Configuration::showPercentage()
@@ -416,16 +458,6 @@ double Configuration::cycleCut()
 int Configuration::percentPrecision()
 {
   return config()->_percentPrecision;
-}
-
-unsigned int Configuration::cycleL1Factor()
-{
-  return config()->_cycleL1Factor;
-}
-
-unsigned int Configuration::cycleL2Factor()
-{
-  return config()->_cycleL2Factor;
 }
 
 int Configuration::maxSymbolLength()

@@ -494,7 +494,8 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   if (nextCostLineno>0) {
     // we have debug info... search for source file
     if (!QFile::exists(filename)) {
-      QStringList list = Configuration::sourceDirs();
+      QStringList list = Configuration::sourceDirs(_data,
+						   sf->function()->object());
       QStringList::Iterator it;
 
       for ( it = list.begin(); it != list.end(); ++it ) {
