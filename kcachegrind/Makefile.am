@@ -5,7 +5,7 @@ kcachegrind_SOURCES = \
  stackselectionbase.ui \
  partselectionbase.ui \
  configdlgbase.ui \
- loader.cpp cachegrindloader.cpp treemap.cpp \
+ loader.cpp cachegrindloader.cpp treemap.cpp pool.cpp \
  kwidgetaction.cpp main.cpp configuration.cpp \
  functionselection.cpp coverage.cpp partgraph.cpp \
  toplevel.cpp stackselection.cpp stackbrowser.cpp \

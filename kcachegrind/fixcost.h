@@ -7,47 +7,15 @@
 #ifndef FIXCOST_H
 #define FIXCOST_H
 
+/**
+ * Setting USE_FIXCOST to 1 enables a memory space hack:
+ * For some data, build up internal data model lazy by using
+ * the Fix*Cost classes, which are simple copies from input data.
+ */
 #define USE_FIXCOST 1
 
 #include "tracedata.h"
-
-struct SpaceChunk;
-
-/**
- * A Pool for fixed cost events (FixCost).
- *
- * The primitive allocation algorithm is only suited for small items.
- */
-class FixPool {
- public:
-    FixPool();
-    ~FixPool();
-
-    void* allocateSpace(unsigned int size);
-
-    /**
-     * Reserve space. If you call reservedSpace() directly after, you
-     * will get the same memory area.
-     */
-    void* reserveSpace(unsigned int size);
-
-    /**
-     * Before calling this, you have to reserve at least <size> bytes
-     * with reserveSpace().
-     */
-    bool allocateReservedSpace(unsigned int size);
-
- private:
-    /* Checks that there is enough space in the last chunk.
-     * Returns false if this is not possible.
-     */
-    bool ensureSpace(unsigned int);
-
-    struct SpaceChunk *_first, *_last;
-    unsigned int _reservation;
-    int _count, _size;
-};
-
+#include "pool.h"
 
 class PositionSpec
 {
@@ -70,7 +38,8 @@ class PositionSpec
  * As there can be a lot of such cost items, we use our own
  * allocator which uses FixPool
  */
-class FixCost {
+class FixCost
+{
 
  public:
     FixCost(TracePart*, FixPool*,
@@ -112,7 +81,8 @@ class FixCost {
  * - TracePartCall to keep source/target function info
  * - TraceFunctionSourceFile to keep file info of call source
  */
-class FixCallCost {
+class FixCallCost
+{
 
  public:
     FixCallCost(TracePart*, FixPool*,
@@ -150,7 +120,8 @@ class FixCallCost {
 /**
  * A class holding a jump (mostly) inside of a function
  */
-class FixJump {
+class FixJump
+{
 
  public:
     FixJump(TracePart*, FixPool*,

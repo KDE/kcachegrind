@@ -4,104 +4,8 @@
  * 2003, Josef Weidendorfer
  */
 
-#include <stdlib.h>
 #include "fixcost.h"
 #include "utils.h"
-
-
-// FixPool
-
-#define CHUNK_SIZE 100000
-
-struct SpaceChunk
-{
-    struct SpaceChunk* next;
-    unsigned int used;
-    char space[1];
-};
-
-FixPool::FixPool()
-{
-    _first = _last = 0;
-    _reservation = 0;
-    _count = 0;
-    _size = 0;
-}
-
-FixPool::~FixPool()
-{
-    struct SpaceChunk* chunk = _first, *next;
-
-    while(chunk) {
-	next = chunk->next;
-	free(chunk);
-	chunk = next;
-    }
-
-    if (0) printf("~FixPool: Had %d objects with total size %d\n",
-		  _count, _size);
-}
-
-void* FixPool::allocateSpace(unsigned int size)
-{
-    if (!ensureSpace(size)) return 0;
-
-    _reservation = 0;
-    void* result = _last->space + _last->used;
-    _last->used += size;
-
-    _count++;
-    _size += size;
-
-    return result;
-}
-
-void* FixPool::reserveSpace(unsigned int size)
-{
-    if (!ensureSpace(size)) return 0;
-    _reservation = size;
-
-    return _last->space + _last->used;
-}
-
-
-bool FixPool::allocateReservedSpace(unsigned int size)
-{
-    if (_reservation < size) return false;
-
-    _reservation = 0;
-    _last->used += size;
-
-    _count++;
-    _size += size;
-
-    return true;
-}
-
-bool FixPool::ensureSpace(unsigned int size)
-{
-    if (_last && _last->used + size <= CHUNK_SIZE) return true;
-
-    struct SpaceChunk* newChunk;
-
-    // we don't allow allocation sizes > CHUNK_SIZE
-    if (size > CHUNK_SIZE) return false;
-
-    newChunk = (struct SpaceChunk*) malloc(sizeof(struct SpaceChunk) +
-					   CHUNK_SIZE);
-    newChunk->next = 0;
-    newChunk->used = 0;
-
-    if (!_last) {
-	_last = _first = newChunk;
-    }
-    else {
-	_last->next = newChunk;
-	_last = newChunk;
-    }
-    return true;
-}
-
 
 
 // FixCost
@@ -118,8 +22,7 @@ FixCost::FixCost(TracePart* part, FixPool* pool,
     _functionSource = functionSource;
     _pos = pos;
 
-    _cost = (SubCost*) pool->reserveSpace(sizeof(SubCost) *
-					  maxCount);
+    _cost = (SubCost*) pool->reserve(sizeof(SubCost) * maxCount);
     s.stripSpaces();
     int i = 0;
     while(i<maxCount) {
@@ -128,7 +31,7 @@ FixCost::FixCost(TracePart* part, FixPool* pool,
     }
     _count = i;
 
-    if (!pool->allocateReservedSpace(sizeof(SubCost) * _count))
+    if (!pool->allocateReserved(sizeof(SubCost) * _count))
 	_count = 0;
 
     _nextCostOfPartFunction = partFunction ?
@@ -137,7 +40,7 @@ FixCost::FixCost(TracePart* part, FixPool* pool,
 
 void* FixCost::operator new(size_t size, FixPool* pool)
 {
-    return pool->allocateSpace(size);
+    return pool->allocate(size);
 }
 
 void FixCost::addTo(TraceCost* c)
@@ -173,7 +76,7 @@ FixCallCost::FixCallCost(TracePart* part, FixPool* pool,
     _line = line;
     _addr = addr;
 
-    _cost = (SubCost*) pool->reserveSpace(sizeof(SubCost) * (maxCount+1));
+    _cost = (SubCost*) pool->reserve(sizeof(SubCost) * (maxCount+1));
     s.stripSpaces();
     int i = 0;
     while(i<maxCount) {
@@ -182,7 +85,7 @@ FixCallCost::FixCallCost(TracePart* part, FixPool* pool,
     }
     _count = i;
 
-    if (!pool->allocateReservedSpace(sizeof(SubCost) * (_count+1) ))
+    if (!pool->allocateReserved(sizeof(SubCost) * (_count+1) ))
       _count = 0;
     else
       _cost[_count] = callCount;
@@ -192,7 +95,7 @@ FixCallCost::FixCallCost(TracePart* part, FixPool* pool,
 
 void* FixCallCost::operator new(size_t size, FixPool* pool)
 {
-    return pool->allocateSpace(size);
+    return pool->allocate(size);
 }
 
 void FixCallCost::addTo(TraceCallCost* c)
@@ -250,7 +153,7 @@ FixJump::FixJump(TracePart* part, FixPool* pool,
     _isCondJump = isCondJump;
 
     int size = (isCondJump ? 2 : 1) * sizeof(SubCost);
-    _cost = (SubCost*) pool->allocateSpace(size);
+    _cost = (SubCost*) pool->allocate(size);
     _cost[0] = executed;
     if (isCondJump) _cost[1] = followed;
 
@@ -260,7 +163,7 @@ FixJump::FixJump(TracePart* part, FixPool* pool,
 
 void* FixJump::operator new(size_t size, FixPool* pool)
 {
-    return pool->allocateSpace(size);
+    return pool->allocate(size);
 }
 
 void FixJump::addTo(TraceJumpCost* jc)
