@@ -1,3 +1,17 @@
+2004/03/17
+
+	* costtypeview.cpp, tracedata.h/cpp:
+	  Fixed deletion of custom types
+	* cachegrindloader.cpp, tracedata.h/cpp:
+	  Moved String compression handling in Cachegrind files
+	  to CachegrindLoader
+	* Do not show inclusive cost column in FunctionSelection
+	  side bar if not available
+	* Remove "isPartOfTrace" from Loader interface
+	  (we allow parts from multiple experiments for comp.)
+	* partview.cpp, partlistitem.h/cpp:
+	  Remove Column Callees, add Trigger
+
 2003/05/10
 
 	* Status progress on loading and cycle calculation
