@@ -2448,10 +2448,10 @@ void CallGraphView::saveViewConfig(KConfig* c, QString prefix, QString postfix)
     writeConfigEntry(&g, "ExpandCycles", _expandCycles, DEFAULT_EXPANDCYCLES);
     writeConfigEntry(&g, "DetailLevel", _detailLevel, DEFAULT_DETAILLEVEL);
     writeConfigEntry(&g, "Layout",
-		     layoutString(_layout), layoutString(DEFAULT_LAYOUT));
+		     layoutString(_layout), layoutString(DEFAULT_LAYOUT).utf8().data());
     writeConfigEntry(&g, "ZoomPosition",
 		     zoomPosString(_zoomPosition),
-		     zoomPosString(DEFAULT_ZOOMPOS));
+		     zoomPosString(DEFAULT_ZOOMPOS).utf8().data());
 }
 
 #include "callgraphview.moc"
