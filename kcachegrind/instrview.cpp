@@ -865,7 +865,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	new InstrItem(this, 3, popencmd);
 	new InstrItem(this, 4, "");
 	new InstrItem(this, 5,
-		      i18n("Check that the ELF object used in the command is existing."));
+		      i18n("Check that the ELF object used in the command exists."));
 	new InstrItem(this, 5,
 		      i18n("Check that you have installed 'objdump'."));
 	new InstrItem(this, 6,
