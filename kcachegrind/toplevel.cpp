@@ -623,7 +623,10 @@ void TopLevel::createMiscActions()
 				    this, SLOT(togglePercentage()),
 				    actionCollection(),
 				    "view_percentage");
-  _taPercentage->setCheckedState(i18n("Hide Relative Costs"));
+#if KDE_VERSION >= 0x030290
+  // for KDE 3.3: show another text instead of a checkmark
+  _taPercentage->setCheckedState(i18n("Show Absolute Costs"));
+#endif
 
   hint = i18n("Show relative instead of absolute costs");
   _taPercentage->setToolTip( hint );
@@ -654,11 +657,14 @@ void TopLevel::createMiscActions()
 	      "<p>(*) Only if function grouping is switched on (e.g. ELF object grouping).");
   _taExpanded->setWhatsThis( hint );
 
-  _taCycles = new KToggleAction( i18n( "Show Cycles" ), "undo",
+  _taCycles = new KToggleAction( i18n( "Do Cycle Detection" ), "undo",
 				 KShortcut(),
 				 this, SLOT( toggleCycles() ), actionCollection(),
 				 "view_cycles" );
-  _taCycles->setCheckedState(i18n("Hide Cycles"));
+#if KDE_VERSION >= 0x030290
+  // for KDE 3.3: show another text instead of a checkmark
+  _taCycles->setCheckedState(i18n("Skip Cycle Detection"));
+#endif
 
   hint = i18n("<b>Detect recursive cycles</b>"
               "<p>If this is switched off, the treemap drawing will show "
