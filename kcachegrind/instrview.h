@@ -26,6 +26,8 @@
 #include <qlistview.h>
 #include "traceitemview.h"
 
+class InstrItem;
+
 class InstrView : public QListView, public TraceItemView
 {
   friend class InstrItem;

@@ -97,8 +97,9 @@ int GraphEdgeList::compareItems(Item item1, Item item2)
 	a2.point(a2.count()-1,&dx2,&dy2);
 	dx2 -= x; dy2 -= y;
     }
-    double at1 = atan2(dx1, dy1);
-    double at2 = atan2(dx2, dy2);
+    double at1 = atan2(double(dx1), double(dy1));
+    double at2 = atan2(double(dx2), double(dy2));
+
     return (at1 < at2) ? 1:-1;
 }
 
@@ -1949,8 +1950,8 @@ void CallGraphView::refresh()
 
     if (!arrowDir.isNull()) {
 	// arrow around pa.point(indexHead) with direction arrowDir
-	arrowDir *= 10.0/sqrt(arrowDir.x()*arrowDir.x() +
-			      arrowDir.y()*arrowDir.y());
+	arrowDir *= 10.0/sqrt(double(arrowDir.x()*arrowDir.x() +
+			             arrowDir.y()*arrowDir.y()));
 	QPointArray a(3);
 	a.setPoint(0, pa.point(indexHead) + arrowDir);
 	a.setPoint(1, pa.point(indexHead) + QPoint(arrowDir.y()/2,

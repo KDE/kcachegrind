@@ -136,7 +136,7 @@ FixCost::FixCost(TracePart* part, FixPool* pool,
 	partFunction->setFirstFixCost(this) : 0;
 }
 
-void* FixCost::operator new(unsigned int size, FixPool* pool)
+void* FixCost::operator new(size_t size, FixPool* pool)
 {
     return pool->allocateSpace(size);
 }
@@ -191,7 +191,7 @@ FixCallCost::FixCallCost(TracePart* part, FixPool* pool,
     _nextCostOfPartCall = partCall ? partCall->setFirstFixCallCost(this) : 0;
 }
 
-void* FixCallCost::operator new(unsigned int size, FixPool* pool)
+void* FixCallCost::operator new(size_t size, FixPool* pool)
 {
     return pool->allocateSpace(size);
 }
@@ -247,7 +247,7 @@ FixJump::FixJump(TracePart* part, FixPool* pool,
 	partFunction->setFirstFixJump(this) : 0;
 }
 
-void* FixJump::operator new(unsigned int size, FixPool* pool)
+void* FixJump::operator new(size_t size, FixPool* pool)
 {
     return pool->allocateSpace(size);
 }

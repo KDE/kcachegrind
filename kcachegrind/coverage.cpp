@@ -26,6 +26,9 @@
 
 TraceCostType* Coverage::_costType;
 
+const int Coverage::maxHistogramDepth = maxHistogramDepthValue;
+const int Coverage::Rtti = 1;
+
 Coverage::Coverage()
 {
 }

@@ -44,7 +44,7 @@ public:
              TraceLine* line, TraceLineJump* lineJump);
 
   uint lineno() const { return _lineno; }
-  int fileno() const { return _fileno; }
+  int fileNumber() const { return _fileno; }
   bool inside() const { return _inside; }
   TraceLine* line() const { return _line; }
   TraceLineCall* lineCall() const { return _lineCall; }

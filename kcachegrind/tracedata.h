@@ -347,8 +347,9 @@ public:
   /**
    * The maximal number of subcosts a TraceCost can have.
    */
-  static const int MaxRealIndex = 10;
-  static const int InvalidIndex = -1;
+  static const int MaxRealIndex;
+#define MaxRealIndexValue 10
+  static const int InvalidIndex;
 
   TraceCost();
   virtual ~TraceCost();
@@ -389,7 +390,7 @@ public:
 protected:
   virtual void update();
 
-  SubCost _cost[MaxRealIndex];
+  SubCost _cost[MaxRealIndexValue];
   int _count; // only _count first indexes of _cost are used
 
   // cache last virtual subcost for faster access
@@ -470,7 +471,7 @@ private:
   TraceCostMapping* _mapping;
   bool _parsed, _inParsing;
   // index MaxRealIndex is for constant addition
-  int _coefficient[TraceCost::MaxRealIndex];
+  int _coefficient[MaxRealIndexValue];
   int _realIndex;
 
   static QPtrList<TraceCostType>* _knownTypes;
@@ -519,9 +520,9 @@ public:
 
 private:
   // we support only a fixed number of real and virtual types
-  TraceCostType* _real[TraceCost::MaxRealIndex];
-  QColor _realColor[TraceCost::MaxRealIndex];
-  TraceCostType* _virtual[TraceCost::MaxRealIndex];
+  TraceCostType* _real[MaxRealIndexValue];
+  QColor _realColor[MaxRealIndexValue];
+  TraceCostType* _virtual[MaxRealIndexValue];
   int _realCount, _virtualCount;
 };
 
@@ -576,8 +577,8 @@ private:
   TraceCostMapping* _mapping;
   int _count, _firstUnused;
   bool _isIdentity;
-  int _realIndex[TraceCost::MaxRealIndex];
-  int _nextUnused[TraceCost::MaxRealIndex];
+  int _realIndex[MaxRealIndexValue];
+  int _nextUnused[MaxRealIndexValue];
 };
 
 

@@ -40,9 +40,10 @@ public:
   enum CoverageMode { Caller, Called };
 
   // max depth for distance histogram
-  static const int maxHistogramDepth = 40;
+#define maxHistogramDepthValue 40
+  static const int maxHistogramDepth;
 
-  static const int Rtti = 1;
+  static const int Rtti;
 
   Coverage();
 
@@ -90,8 +91,8 @@ private:
   double _self, _cum, _firstPercentage, _callCount;
   int _minDistance, _maxDistance;
   bool _active, _inRecursion;
-  double _selfHisto[maxHistogramDepth];
-  double _cumHisto[maxHistogramDepth];
+  double _selfHisto[maxHistogramDepthValue];
+  double _cumHisto[maxHistogramDepthValue];
 
   // temporary set for one coverage analysis
   static TraceCostType* _costType;

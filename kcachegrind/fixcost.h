@@ -62,7 +62,7 @@ class FixCost {
             TracePartFunction*,
 	    FixString&);
 
-    void *operator new(unsigned int size, FixPool*);
+    void *operator new(size_t size, FixPool*);
 
     void addTo(TraceCost*);
 
@@ -98,7 +98,7 @@ class FixCallCost {
                 TracePartCall*,
                 SubCost, FixString&);
 
-    void *operator new(unsigned int size, FixPool*);
+    void *operator new(size_t size, FixPool*);
 
     void addTo(TraceCallCost*);
 
@@ -137,7 +137,7 @@ class FixJump {
 	    bool isCondJump,
 	    SubCost, SubCost);
 
-    void *operator new(unsigned int size, FixPool*);
+    void *operator new(size_t size, FixPool*);
 
     void addTo(TraceJumpCost*);
 

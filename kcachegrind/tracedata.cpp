@@ -40,6 +40,9 @@
 #define USE_FIXCOST 1
 
 
+const int TraceCost::MaxRealIndex = MaxRealIndexValue;
+const int TraceCost::InvalidIndex = -1;
+
 //---------------------------------------------------
 // SubCost
 
