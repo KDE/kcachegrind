@@ -275,7 +275,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 		<< " - '" << QString(line) << "'" << endl;
 #endif
 
-      // if we can't strip a character, this was an empty line
+      // if we cannot strip a character, this was an empty line
       if (!line.first(c)) continue;
 
       if (c <= '9') {

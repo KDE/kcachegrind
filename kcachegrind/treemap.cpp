@@ -616,7 +616,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
         len--;
         w = pixW + _fm->width(name, len) + dotW;
       }
-      // stop drawing: we can't draw 2 chars + "..."
+      // stop drawing: we cannot draw 2 chars + "..."
       if (w>width) break;
 
       name = name.left(len) + "...";
@@ -2294,7 +2294,7 @@ int TreeMapWidget::drawString(QPainter* p, TreeMapItem* item, int f,
         len--;
         w = pixW + _fm->width(name, len) + dotW;
       }
-      // stop drawing: we can't draw 2 chars + "..."
+      // stop drawing: we cannot draw 2 chars + "..."
       if (w>width) break;
 
       name = name.left(len) + "...";

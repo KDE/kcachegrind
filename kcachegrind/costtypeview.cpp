@@ -84,7 +84,7 @@ QString CostTypeView::whatsThis() const
 		 "current selected function for that cost type.</p>"
 		 "<p>By choosing a cost type from the list, "
 		 "you change the cost type of costs shown "
-		 "allover KCachegrind to be the selected one.</p>");
+		 "all over KCachegrind to be the selected one.</p>");
 }
 
 

@@ -81,7 +81,7 @@ QString PartView::whatsThis() const
 		 "Also shown are the calls happening to/from the "
 		 "current function inside of the trace part.</p>"
 		 "<p>By choosing one or more trace parts from the "
-		 "list, the costs shown allover KCachegrind will "
+		 "list, the costs shown all over KCachegrind will "
 		 "only be the ones spent in the selected part(s). "
 		 "If no list selection is shown, in fact all trace "
 		 "parts are selected implicitly.</p>"

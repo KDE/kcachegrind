@@ -528,7 +528,7 @@ void TabView::moveTab(QWidget* w, Position p, bool wholeArea)
 QString TabView::whatsThis() const
 {
     return i18n( "<b>Information Tabs</b>"
-		 "<p>This widgets shows information for the "
+		 "<p>This widget shows information for the "
 		 "current selected function in different tabs: "
 		 "<ul>"
 		 "<li>The Costs tab shows a list of available cost types "

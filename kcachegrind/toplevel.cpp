@@ -303,7 +303,7 @@ void TopLevel::createDocks()
   QWhatsThis::add( _stackSelection, i18n(
                    "<b>The Top Cost Call Stack</b>"
                    "<p>This is a purely fictional 'most probable' call stack. "
-                   "It is build up by starting with the current selected "
+                   "It is built up by starting with the current selected "
                    "function and adds the callers/callees with highest cost "
                    "at the top and to bottom.</p>"
                    "<p>The <b>Cost</b> and <b>Calls</b> columns show the "
@@ -581,7 +581,7 @@ void TopLevel::createActions()
 	      "black areas when a recursive call is made instead of drawing the "
 	      "recursion ad infinitum. Note that "
 	      "the size of black areas often will be wrong, as inside of recursive "
-	      "cycles, you can't determine the cost of calls. However, the error is "
+	      "cycles, you cannot determine the cost of calls. However, the error is "
 	      "small for false cycles (see documentation)."
 	      "<p>The correct handling for cycles is to detect them and collapse all "
 	      "functions of a cycle into a virtual function. This is done when this "
@@ -657,7 +657,7 @@ void TopLevel::createActions()
 
   saCost = new KSelectAction( i18n("Cost Type"), KShortcut(),
                               actionCollection(), "view_cost_type");
-  hint = i18n("Select cost type of costs shown allover KCachegrind");
+  hint = i18n("Select cost type of costs shown all over KCachegrind");
   saCost->setComboWidth(300);
   saCost->setToolTip( hint );
   saCost->setWhatsThis( hint );
@@ -1304,7 +1304,7 @@ void TopLevel::setTraceItemDelayed()
 }
 
 /**
- * A TraceData object can't be viewed many times in different
+ * A TraceData object cannot be viewed many times in different
  * toplevel windows. Thus, this toplevel window takes ownership
  * of the TraceData object: on closing the window or opening
  * another trace, the object is destroyed.
