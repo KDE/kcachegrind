@@ -844,7 +844,7 @@ void TopLevel::functionVisibilityChanged(bool v)
 {
   _functionDockShown->setChecked(v);
   if (v)
-    _functionSelection->updateView();    
+    _functionSelection->updateView();
 }
 
 
@@ -855,7 +855,7 @@ void TopLevel::querySlot()
 
 void TopLevel::configureKeys()
 {
-  KKeyDialog::configureKeys(actionCollection(), xmlFile(), true, this);
+  KKeyDialog::configure(actionCollection(), this, true);
 }
 
 
