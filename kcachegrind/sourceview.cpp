@@ -553,17 +553,17 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
   if (nextCostLineno == 0) {
     new SourceItem(this, this, fileno, 0, false,
-                   i18n("There is no source available for function"));
+                   i18n("There is no source available for the following function:"));
     new SourceItem(this, this, fileno, 1, false,
                    QString("    '%1'").arg(sf->function()->prettyName()));
     if (sf->file()->name() == "???") {
       new SourceItem(this, this, fileno, 2, false,
-                     i18n("because no debug information is present."));
+                     i18n("This is because no debug information is present."));
       new SourceItem(this, this, fileno, 3, false,
                      i18n("Recompile source and redo the profile run."));
       if (sf->function()->object()) {
         new SourceItem(this, this, fileno, 4, false,
-                       i18n("Note: The function is located in ELF object"));
+                       i18n("The function is located in this ELF object:"));
         new SourceItem(this, this, fileno, 5, false,
                        QString("    '%1'")
                        .arg(sf->function()->object()->prettyName()));
@@ -571,13 +571,13 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     }
     else {
       new SourceItem(this, this, fileno, 2, false,
-                     i18n("because its source file"));
+                     i18n("This is because its source file can not be found:"));
       new SourceItem(this, this, fileno, 3, false,
                      QString("    '%1'").arg(sf->file()->name()));
       new SourceItem(this, this, fileno, 4, false,
-                     i18n("can not be found. Add the folder of this"));
+                     i18n("Add the folder of this file to the source folder list."));
       new SourceItem(this, this, fileno, 5, false,
-                     i18n("file to the folder list in the configuration."));
+                     i18n("The list can be found in the configuration dialog."));
     }
     return;
   }

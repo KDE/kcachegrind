@@ -887,9 +887,9 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	new InstrItem(this, this, 4, "");
 	new InstrItem(this, this, 5,
 		      i18n("Check that the ELF object used in the command exists."));
-	new InstrItem(this, this, 5,
-		      i18n("Check that you have installed 'objdump'."));
 	new InstrItem(this, this, 6,
+		      i18n("Check that you have installed 'objdump'."));
+	new InstrItem(this, this, 7,
 		      i18n("This utility can be found in the 'binutils' package."));
 	return false;
     }

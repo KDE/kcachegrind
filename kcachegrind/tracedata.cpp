@@ -2835,17 +2835,21 @@ QString TraceFunctionSource::name() const
 
 uint TraceFunctionSource::firstLineno()
 {
-    // ignore line 0 here
-  if (!_lineMap || _lineMap->count() == 0) return 0;
-  TraceLineMap::Iterator it = _lineMap->begin();
+  // lazy generate the map if not done up to now
+  TraceLineMap* map = lineMap();
+  // ignore line 0 here
+  if (!map || map->count() == 0) return 0;
+  TraceLineMap::Iterator it = map->begin();
   return (*it).lineno();
 }
 
 uint TraceFunctionSource::lastLineno()
 {
-    // ignore line 0 here
-  if (!_lineMap || _lineMap->count() == 0) return 0;
-  TraceLineMap::Iterator it = _lineMap->end();
+  // lazy generate the map if not done up to now
+  TraceLineMap* map = lineMap();
+  // ignore line 0 here
+  if (!map || map->count() == 0) return 0;
+  TraceLineMap::Iterator it = map->end();
   --it;
   return (*it).lineno();
 }
@@ -2891,6 +2895,7 @@ void TraceFunctionSource::update()
 
   clear();
 
+  // no need to create lineMap if not already created
   if (_lineMap) {
     TraceLineMap::Iterator lit;
     for ( lit = _lineMap->begin();
@@ -2903,6 +2908,7 @@ void TraceFunctionSource::update()
 
 void TraceFunctionSource::invalidateDynamicCost()
 {
+  // no need to create lineMap if not already created
   if (_lineMap) {
     TraceLineMap::Iterator lit;
     for ( lit = _lineMap->begin();
