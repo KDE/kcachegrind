@@ -1,0 +1,10 @@
+This directory contains some scripts to convert output of different
+profiling tools into the format which can be loaded by KCachegrind.
+See the comment at start of every script for details.
+
+In the long run, these should be replaced by import filters in
+KCachegrind directly, but I can't promise anything. Partly, this
+is because some scripts are provided as contribution from others.
+
+hotshot2cg	Converter for the Python Hotshot Profiler.
+op2cg           Converter for OProfile sampling data. 
