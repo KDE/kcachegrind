@@ -1879,7 +1879,7 @@ void CallGraphView::dotExited()
   QCanvasEllipse* eItem;
   CanvasEdge* sItem;
   CanvasEdgeLabel* lItem;
-  QTextStream* dotStream = new QTextStream(_unparsedOutput, IO_ReadOnly);
+  QTextStream* dotStream;
   double scale = 1.0, scaleX = 1.0, scaleY = 1.0;
   double dotWidth, dotHeight;
   GraphNode* activeNode = 0;
