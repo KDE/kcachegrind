@@ -82,7 +82,7 @@ public:
   virtual int      fieldCount() const { return 0; }
 
   virtual QColor   backColor() const { return Qt::white; }
-  virtual QFont    font() const { return QApplication::font(); }
+  virtual const QFont& font() const = 0;
 
   virtual bool selected() const { return false; }
   virtual bool current() const { return false; }
@@ -113,6 +113,8 @@ public:
   bool current() const { return _current; }
   bool shaded() const { return _shaded; }
   bool rotated() const { return _rotated; }
+
+  const QFont& font() const;
 
   // attribute setters
   void setField(int f, QString t, QPixmap pm = QPixmap(),
@@ -194,11 +196,13 @@ private:
 
 class TreeMapItemList: public QPtrList<TreeMapItem>
 {
+public:
+  TreeMapItem* commonParent();
 protected:
   int compareItems ( Item item1, Item item2 );
 };
 
-typedef QPtrListIterator<TreeMapItem> TreeMapItemIterator;
+typedef QPtrListIterator<TreeMapItem> TreeMapItemListIterator;
 
 
 /**
@@ -319,6 +323,7 @@ public:
   virtual double value() const;
   // replace "Default" position with setting from TreeMapWidget
   virtual Position position(int) const;
+  virtual const QFont& font() const;
   virtual bool isMarked(int) const;
 
   virtual int borderWidth() const;
@@ -402,6 +407,11 @@ public:
    * Returns the TreeMapItem filling out the widget space
    */
   TreeMapItem* base() const { return _base; }
+
+  /**
+   * Returns a reference to the current widget font.
+   */
+  const QFont& currentFont() const;
 
   /**
    * Returns the area item at position x/y, independent from any
@@ -669,24 +679,24 @@ protected:
   void paintEvent( QPaintEvent * );
   void resizeEvent( QResizeEvent * );
   void showEvent( QShowEvent * );
+  void fontChange( const QFont& );
 
 private:
+  TreeMapItemList diff(TreeMapItemList&, TreeMapItemList&);
   // returns true if selection changed
-  bool setTmpSelected(TreeMapItem*, bool selected = true);
-  bool setTmpRangeSelection(TreeMapItem* i1,
-                            TreeMapItem* i2, bool selected);
+  TreeMapItem* setTmpSelected(TreeMapItem*, bool selected = true);
+  TreeMapItem* setTmpRangeSelection(TreeMapItem* i1,
+				    TreeMapItem* i2, bool selected);
   bool isTmpSelected(TreeMapItem* i);
 
   void drawItem(QPainter* p, TreeMapItem*);
-  int drawString(QPainter* p, TreeMapItem* item, int textNo, QRect& r,
-                 int lastUnused, bool right, bool bottom);
   void drawItems(QPainter* p, TreeMapItem*);
   bool horizontal(TreeMapItem* i, const QRect& r);
   void drawFill(TreeMapItem*,QPainter* p, QRect& r);
   void drawFill(TreeMapItem*,QPainter* p, QRect& r,
-                TreeMapItemIterator it, int len, bool goBack);
+                TreeMapItemListIterator it, int len, bool goBack);
   bool drawItemArray(QPainter* p, TreeMapItem*, QRect& r, double,
-                     TreeMapItemIterator it, int len, bool);
+                     TreeMapItemListIterator it, int len, bool);
   bool resizeAttr(int);
 
   TreeMapItem* _base;
@@ -722,7 +732,7 @@ private:
   bool _inShiftDrag, _inControlDrag;
 
   // temporary widget font metrics while drawing
-  QFontMetrics* _fm;
+  QFont _font;
   int _fontHeight;
 
   // back buffer pixmap

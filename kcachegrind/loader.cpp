@@ -43,11 +43,6 @@ bool Loader::loadTrace(TracePart*)
   return false;
 }
 
-bool Loader::isPartOfTrace(QString, TraceData*)
-{
-  return false;
-}
-
 Loader* Loader::matchingLoader(QString name)
 {
 

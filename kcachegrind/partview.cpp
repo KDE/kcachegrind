@@ -47,13 +47,13 @@ PartView::PartView(TraceItemView* parentView,
     addColumn( i18n( "Incl." ) );
     addColumn( i18n( "Self" ) );
     addColumn( i18n( "Called" ) );
-    addColumn( i18n( "Calling" ) );
+    //addColumn( i18n( "Fixed" ) );
+    addColumn( i18n( "Comment" ) );
 
     setAllColumnsShowFocus(true);
     setColumnAlignment(1, Qt::AlignRight);
     setColumnAlignment(2, Qt::AlignRight);
     setColumnAlignment(3, Qt::AlignRight);
-    setColumnAlignment(4, Qt::AlignRight);
     setMinimumHeight(50);
     setSelectionMode(Extended);
 

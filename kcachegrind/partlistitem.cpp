@@ -51,6 +51,12 @@ PartListItem::PartListItem(QListView* parent, TraceCostItem* costItem,
 #else
   setText(0, _part->prettyName());
 #endif
+
+  if (_part->trigger().isEmpty())
+    setText(4,i18n("(none)"));
+  else
+    setText(4, _part->trigger());
+
   update();
 }
 
@@ -127,8 +133,7 @@ void PartListItem::update()
 
   if (!pf) {
     setText(3, QString("-"));
-    setText(4, QString("-"));
-    _callers = _callees = 0;
+    _callers = 0;
     return;
   }
 
@@ -150,19 +155,6 @@ void PartListItem::update()
 
   _callers = callers;
   setText(3, str);
-
-  callees = 0;
-  pl = pf->partCallings();
-  for (pc=pl.first();pc;pc=pl.next()) {
-    callees += pc->callCount();
-  }
-  if ((callees == 0) && (pf->callingContexts()>0))
-    str = i18n("(active)");
-  else
-    str = callees.pretty();
-
-  _callees = callees;
-  setText(4, str);
 }
 
 
@@ -191,11 +183,6 @@ int PartListItem::compare(QListViewItem * i, int col, bool ascending ) const
   if (col==3) {
     if (_callers < fi->_callers) return -1;
     if (_callers > fi->_callers) return 1;
-    return 0;
-  }
-  if (col==4) {
-    if (_callees < fi->_callees) return -1;
-    if (_callees > fi->_callees) return 1;
     return 0;
   }
   return QListViewItem::compare(i, col, ascending);

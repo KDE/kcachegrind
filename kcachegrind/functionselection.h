@@ -61,6 +61,7 @@ private:
   void doUpdate(int);
   void selectFunction();
   void refresh();
+  void setCostColumnWidths();
 
   TraceCostItem* _group;
 

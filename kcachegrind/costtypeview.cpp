@@ -95,7 +95,7 @@ void CostTypeView::context(QListViewItem* i, const QPoint & p, int)
   TraceCostType* ct = i ? ((CostTypeItem*) i)->costType() : 0;
 
   if (ct && !ct->isReal()) {
-      popup.insertItem(i18n("Edit Description"), 93);
+      popup.insertItem(i18n("Edit Long Name"), 93);
       popup.insertItem(i18n("Edit Short Name"), 94);
       popup.insertItem(i18n("Edit Formula"), 95);
       popup.insertItem(i18n("Remove"), 96);
@@ -117,16 +117,39 @@ void CostTypeView::context(QListViewItem* i, const QPoint & p, int)
   else if (r == 94) i->startRename(3);
   else if (r == 95) i->startRename(5);
   else if (r == 96) {
-      _data->mapping()->remove(ct);
+
+    // search for a previous type 
+    TraceCostType* prev = 0, *ct;
+    TraceCostMapping* m = _data->mapping();
+    for (int i=0;i<m->realCount();i++) {
+	ct = m->realType(i);
+	if (ct) prev = ct;
+    }
+    for (int i=0;i<m->virtualCount();i++) {
+	ct = m->virtualType(i);
+	if (ct == _costType) break;
+	if (ct) prev = ct;
+    }
+
+    if (_data->mapping()->remove(ct)) {
+      // select previous cost type
+      selected(prev);
       refresh();
+    }
   }
   else if (r == 97) {
-      // add same new cost type to this mapping and to known types
-      TraceCostType::add(new TraceCostType(i18n("New"),
-					   i18n("New Cost Type"), "0"));
-      _data->mapping()->add(new TraceCostType(i18n("New"),
-					   i18n("New Cost Type"), "0"));
-      refresh();
+    int i = 1;
+    while(1) {
+      if (!TraceCostType::knownVirtualType(i18n("New%1").arg(i)))
+	break;
+      i++;
+    }
+    // add same new cost type to this mapping and to known types
+    QString shortName = i18n("New%1").arg(i);
+    QString longName  = i18n("New Cost Type %1").arg(i);
+    TraceCostType::add(new TraceCostType(shortName, longName, "0"));
+    _data->mapping()->add(new TraceCostType(shortName, longName, "0"));
+    refresh();
   }
 }
 
@@ -226,6 +249,7 @@ void CostTypeView::refresh()
     TraceCostMapping* m = _data->mapping();
     for (int i=m->virtualCount()-1;i>=0;i--) {
 	ct = m->virtualType(i);
+	if (!ct) continue;
 	item = new CostTypeItem(this, c, ct, _groupType);
 	if (ct == _costType) costItem = item;
     }

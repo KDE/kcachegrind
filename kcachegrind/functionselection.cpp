@@ -370,9 +370,7 @@ void FunctionSelection::refresh()
 
       functionList->setUpdatesEnabled(false);
       functionList->clear();
-      functionList->setColumnWidth(0, 50);
-      functionList->setColumnWidth(1, 50);
-      functionList->setColumnWidth(2, 50);
+      setCostColumnWidths();
 
       if (0) qDebug("Function %s at %d, Item %p",
 		    oldFunction ? oldFunction->name().ascii() : "-",
@@ -496,9 +494,7 @@ void FunctionSelection::groupSelected(QListViewItem* i)
   functionList->setUpdatesEnabled(false);
 
   functionList->clear();
-  functionList->setColumnWidth(0, 50);
-  functionList->setColumnWidth(1, 50);
-  functionList->setColumnWidth(2, 50);
+  setCostColumnWidths();
 
   double total;
   if (Configuration::showExpanded())
@@ -647,9 +643,7 @@ void FunctionSelection::query(QString query)
   FunctionItem *fi, *item = 0;
 
   functionList->clear();
-  functionList->setColumnWidth(0, 50);
-  functionList->setColumnWidth(1, 50);
-  functionList->setColumnWidth(2, 50);
+  setCostColumnWidths();
 
   for(int i=0;i<_hc.realCount();i++) {
       fi = new FunctionItem(functionList, (TraceFunction*)_hc[i],
@@ -684,6 +678,25 @@ bool FunctionSelection::setTopFunction()
   functionList->setSelected(i, true);
   return i!=0;
 }
+
+void FunctionSelection::setCostColumnWidths()
+{
+  if (_costType && (_costType->subCost(_data->callMax())>0) ) {
+    functionList->setColumnWidthMode(0, QListView::Maximum);
+    functionList->setColumnWidth(0,50);
+    functionList->setColumnWidthMode(2, QListView::Maximum);
+    functionList->setColumnWidth(2,50);
+  }
+  else {
+    functionList->setColumnWidthMode(0, QListView::Manual);
+    functionList->setColumnWidth(0,0);
+    functionList->setColumnWidthMode(2, QListView::Manual);
+    functionList->setColumnWidth(2,0);
+  }
+
+  functionList->setColumnWidth(1, 50);
+}
+
 
 
 #include "functionselection.moc"

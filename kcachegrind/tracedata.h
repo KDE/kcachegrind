@@ -351,6 +351,7 @@ public:
 #define MaxRealIndexValue 10
   static const int InvalidIndex;
 
+
   TraceCost();
   virtual ~TraceCost();
 
@@ -365,9 +366,11 @@ public:
   // add a cost according to a submapping and a list of ASCII numbers
   void addCost(TraceSubMapping*, const char*);
   void addCost(TraceSubMapping*, FixString&);
+  void maxCost(TraceSubMapping*, FixString&);
   // add the cost of another item
   void addCost(TraceCost* item);
   void addCost(int index, SubCost value);
+  void maxCost(int index, SubCost value);
   TraceCost diff(TraceCost* item);
 
   virtual void invalidate();
@@ -459,9 +462,11 @@ public:
   int histCost(TraceCost* c, double total, double* hist);
 
   // application wide known types, referenced by short name
+  // next 2 functions return a new type object instance
   static TraceCostType* knownRealType(QString);
   static TraceCostType* knownVirtualType(QString);
   static void add(TraceCostType*);
+  static bool remove(QString);
   static int knownTypeCount();
   static TraceCostType* knownType(int);
 
@@ -563,10 +568,9 @@ public:
     { return (i<0 || i>=_count) ? TraceCost::InvalidIndex : _realIndex[i]; }
 
   /*
-   * Allows an iteration over all real indexes not used in this submapping.
-   * Usage: for(i = firstUnused();
-   *            i != TraceCost::InvalidIndex;
-   *            i = nextUnused(i)) { LOOP }
+   * Allows an iteration over the sorted list of all real indexes not used in
+   * this submapping, up to topIndex (use TraceCost::MaxRealIndex for all).
+   * Usage: for(i = firstUnused(); i < topIndex; i = nextUnused(i)) { LOOP }
    */
   int firstUnused() { return _firstUnused; }
   int nextUnused(int i) {
@@ -1777,12 +1781,6 @@ public:
   TraceCost* search(TraceItem::CostType, QString,
 		    TraceCostType* ct = 0, TraceCost* parent = 0);
 
-  // same factories with support for compressed format
-  TraceObject* compressedObject(const QString& name);
-  TraceFile* compressedFile(const QString& name);
-  TraceFunction* compressedFunction(const QString& name,
-                                    TraceFile*, TraceObject*);
-
   // for pretty function names without signature if unique...
   TraceFunctionMap::Iterator functionIterator(TraceFunction*);
   TraceFunctionMap::Iterator functionBeginIterator();
@@ -1794,6 +1792,8 @@ public:
   TraceFunctionMap& functionMap() { return _functionMap; }
 
   const TraceFunctionCycleList& functionCycles() { return _functionCycles; }
+  
+  TraceCost* callMax() { return &_callMax; }
 
   void setCommand(const QString& command) { _command = command; }
   QString command() const { return _command; }
@@ -1845,10 +1845,9 @@ private:
   QString _command;
   QString _traceName;
 
-  // support for compressed format
-  QPtrVector<TraceObject> _objectVector;
-  QPtrVector<TraceFile> _fileVector;
-  QPtrVector<TraceFunction> _functionVector;
+  // Max of all costs of calls: This allows to see of the incl. cost can
+  // be hidden for a cost type, as it's always the same as self cost
+  TraceCost _callMax;
 
   // cycles
   TraceFunctionCycleList _functionCycles;

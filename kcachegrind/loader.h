@@ -54,7 +54,6 @@ public:
 
   virtual bool canLoadTrace(QString file);
   virtual bool loadTrace(TracePart*);
-  virtual bool isPartOfTrace(QString file, TraceData*);
 
   static Loader* matchingLoader(QString name);
   static Loader* loader(QString name);

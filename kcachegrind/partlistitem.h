@@ -44,7 +44,7 @@ public:
 
 private:
   SubCost _sum, _pure;
-  SubCost _callers, _callees;
+  SubCost _callers;
   TraceCostType* _costType;
   TraceCost* _partCostItem;
   TracePart* _part;

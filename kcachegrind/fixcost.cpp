@@ -213,6 +213,18 @@ void FixCallCost::addTo(TraceCallCost* c)
 		  _cost[_count].pretty().ascii());
 }
 
+void FixCallCost::setMax(TraceCost* c)
+{
+    TraceSubMapping* sm = _part->fixSubMapping();
+
+    int i, realIndex;
+
+    for(i=0; i<_count; i++) {
+	realIndex = sm->realIndex(i);
+	c->maxCost(realIndex, _cost[i]);
+    }
+}
+
 
 // FixJump
 

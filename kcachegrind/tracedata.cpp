@@ -109,34 +109,34 @@ QString TraceItem::typeName(CostType t)
 	for(int i=0;i<=MaxCostType;i++)
 	    strs[i] = QString("?");
 
-	strs[Item] = I18N_NOOP("Abstract Item");
-	strs[Cost] = I18N_NOOP("Cost Item");
-	strs[PartLine] = I18N_NOOP("Part Source Line");
-	strs[Line] = I18N_NOOP("Source Line");
-	strs[PartLineCall] = I18N_NOOP("Part Line Call");
-	strs[LineCall] = I18N_NOOP("Line Call");
-	strs[PartLineJump] = I18N_NOOP("Part Jump");
-	strs[LineJump] = I18N_NOOP("Jump");
-	strs[PartInstr] = I18N_NOOP("Part Instruction");
-	strs[Instr] = I18N_NOOP("Instruction");
-	strs[PartInstrJump] = I18N_NOOP("Part Instruction Jump");
-	strs[InstrJump] = I18N_NOOP("Instruction Jump");
-	strs[PartInstrCall] = I18N_NOOP("Part Instruction Call");
-	strs[InstrCall] = I18N_NOOP("Instruction Call");
-	strs[PartCall] = I18N_NOOP("Part Call");
-	strs[Call] = I18N_NOOP("Call");
-	strs[PartFunction] = I18N_NOOP("Part Function");
-	strs[FunctionSource] = I18N_NOOP("Function Source File");
-	strs[Function] = I18N_NOOP("Function");
-	strs[FunctionCycle] = I18N_NOOP("Function Cycle");
-	strs[PartClass] = I18N_NOOP("Part Class");
-	strs[Class] = I18N_NOOP("Class");
-	strs[PartFile] = I18N_NOOP("Part Source File");
-	strs[File] = I18N_NOOP("Source File");
-	strs[PartObject] = I18N_NOOP("Part ELF Object");
-	strs[Object] = I18N_NOOP("ELF Object");
-	strs[Part] = I18N_NOOP("Trace Part");
-	strs[Data] = I18N_NOOP("Program Trace");
+       strs[Item] = I18N_NOOP("Abstract Item");
+       strs[Cost] = I18N_NOOP("Cost Item");
+       strs[PartLine] = I18N_NOOP("Part Source Line");
+       strs[Line] = I18N_NOOP("Source Line");
+       strs[PartLineCall] = I18N_NOOP("Part Line Call");
+       strs[LineCall] = I18N_NOOP("Line Call");
+       strs[PartLineJump] = I18N_NOOP("Part Jump");
+       strs[LineJump] = I18N_NOOP("Jump");
+       strs[PartInstr] = I18N_NOOP("Part Instruction");
+       strs[Instr] = I18N_NOOP("Instruction");
+       strs[PartInstrJump] = I18N_NOOP("Part Instruction Jump");
+       strs[InstrJump] = I18N_NOOP("Instruction Jump");
+       strs[PartInstrCall] = I18N_NOOP("Part Instruction Call");
+       strs[InstrCall] = I18N_NOOP("Instruction Call");
+       strs[PartCall] = I18N_NOOP("Part Call");
+       strs[Call] = I18N_NOOP("Call");
+       strs[PartFunction] = I18N_NOOP("Part Function");
+       strs[FunctionSource] = I18N_NOOP("Function Source File");
+       strs[Function] = I18N_NOOP("Function");
+       strs[FunctionCycle] = I18N_NOOP("Function Cycle");
+       strs[PartClass] = I18N_NOOP("Part Class");
+       strs[Class] = I18N_NOOP("Class");
+       strs[PartFile] = I18N_NOOP("Part Source File");
+       strs[File] = I18N_NOOP("Source File");
+       strs[PartObject] = I18N_NOOP("Part ELF Object");
+       strs[Object] = I18N_NOOP("ELF Object");
+       strs[Part] = I18N_NOOP("Trace Part");
+       strs[Data] = I18N_NOOP("Program Trace");
     }
     if (t<0 || t> MaxCostType) t = MaxCostType;
     return strs[t];
@@ -279,7 +279,7 @@ void TraceCost::set(TraceSubMapping* sm, const char* s)
 
     if (sm->isIdentity()) {
 	int i = 0;
-	while(i<sm->firstUnused()) {
+	while(i<sm->count()) {
 	    if (!_cost[i].set(&s)) break;
 	    i++;
 	}
@@ -295,7 +295,7 @@ void TraceCost::set(TraceSubMapping* sm, const char* s)
 	    i++;
 	}
 	// we have to set all costs of unused indexes till maxIndex to zero
-	for(i=sm->firstUnused(); i<maxIndex; i=sm->nextUnused(i))
+	for(i=sm->firstUnused(); i<=maxIndex; i=sm->nextUnused(i))
 	    _cost[i] = 0;
 	_count = maxIndex;
     }
@@ -311,7 +311,7 @@ void TraceCost::set(TraceSubMapping* sm, FixString & s)
 
     if (sm->isIdentity()) {
 	int i = 0;
-	while(i<sm->firstUnused()) {
+	while(i<sm->count()) {
 	    if (!s.stripUInt64(_cost[i])) break;
 	    i++;
 	}
@@ -327,9 +327,9 @@ void TraceCost::set(TraceSubMapping* sm, FixString & s)
 	    i++;
 	}
 	// we have to set all costs of unused indexes till maxIndex to zero
-	for(i=sm->firstUnused(); i<maxIndex; i=sm->nextUnused(i))
+	for(i=sm->firstUnused(); i<=maxIndex; i=sm->nextUnused(i))
 	    _cost[i] = 0;
-	_count = maxIndex;
+	_count = maxIndex+1;
     }
     invalidate();
 }
@@ -343,7 +343,7 @@ void TraceCost::addCost(TraceSubMapping* sm, const char* s)
 
     if (sm->isIdentity()) {
 	int i = 0;
-	while(i<sm->firstUnused()) {
+	while(i<sm->count()) {
 	    if (!v.set(&s)) break;
 	    if (i<_count)
 		_cost[i] += v;
@@ -396,7 +396,7 @@ void TraceCost::addCost(TraceSubMapping* sm, FixString & s)
 
     if (sm->isIdentity()) {
 	int i = 0;
-	while(i<sm->firstUnused()) {
+	while(i<sm->count()) {
 	    if (!s.stripUInt64(v)) break;
 	    if (i<_count)
 		_cost[i] += v;
@@ -415,6 +415,62 @@ void TraceCost::addCost(TraceSubMapping* sm, FixString & s)
 	    if (index == TraceCost::InvalidIndex) break;
 	    if (index<_count)
 		_cost[index] += v;
+	    else
+		_cost[index] = v;
+	    i++;
+	}
+	if (maxIndex >= _count) {
+	    /* we have to set all costs of unused indexes in the interval
+	     *  [_count;maxIndex] to zero */
+	    for(i=sm->nextUnused(_count-1); i<=maxIndex; i=sm->nextUnused(i))
+		_cost[i] = 0;
+	    _count = maxIndex+1;
+	}
+    }
+
+    invalidate();
+
+#if TRACE_DEBUG
+    _dirty = false; // don't recurse !
+    qDebug("%s\n now %s", fullName().ascii(),
+	   TraceCost::costString(0).ascii());
+    _dirty = true; // because of invalidate()
+#endif
+}
+
+
+// update each subcost to be maximum of old and given costs
+void TraceCost::maxCost(TraceSubMapping* sm, FixString & s)
+{
+    if (!sm) return;
+
+    s.stripSpaces();
+
+    SubCost v;
+
+    if (sm->isIdentity()) {
+	int i = 0;
+	while(i<sm->count()) {
+	    if (!s.stripUInt64(v)) break;
+	    if (i<_count) {
+	      if (v>_cost[i]) _cost[i] = v;
+	    }
+	    else
+		_cost[i] = v;
+	    i++;
+	}
+	if (i > _count) _count = i;
+    }
+    else {
+	int i = 0, maxIndex = 0, index;
+	while(1) {
+	    if (!s.stripUInt64(v)) break;
+	    index = sm->realIndex(i);
+	    if (maxIndex<index) maxIndex=index;
+	    if (index == TraceCost::InvalidIndex) break;
+	    if (index<_count) {
+	      if (v>_cost[index]) _cost[index] = v;
+	    }
 	    else
 		_cost[index] = v;
 	    i++;
@@ -490,6 +546,24 @@ void TraceCost::addCost(int type, SubCost value)
     // a cost change has to be propagated (esp. in subclasses)
     invalidate();
 }
+
+void TraceCost::maxCost(int type, SubCost value)
+{
+    if (type<0 || type>=MaxRealIndex) return;
+    if (type<_count) {
+      if (value>_cost[type]) _cost[type] = value;
+    }
+    else {
+	for(int i=_count;i<type;i++)
+	    _cost[i] = 0;
+	_cost[type] = value;
+	_count = type+1;
+    }
+
+    // a cost change has to be propagated (esp. in subclasses)
+    invalidate();
+}
+
 
 TraceCost TraceCost::diff(TraceCost* item)
 {
@@ -842,7 +916,20 @@ int TraceCostType::knownTypeCount()
   return _knownTypes->count();
 }
 
+bool TraceCostType::remove(QString n)
+{
+  if (!_knownTypes) return false;
 
+  TraceCostType* t;
+  for (t=_knownTypes->first();t;t=_knownTypes->next())
+    if (!t->isReal() && (t->name() == n)) {
+      _knownTypes->removeRef(t);
+      delete t;
+      return true;
+    }
+
+  return false;
+}
 
 TraceCostType* TraceCostType::knownType(int i)
 {
@@ -964,13 +1051,32 @@ int TraceCostMapping::add(TraceCostType* ct)
   return _virtualCount-1;
 }
 
-// we delete the type
+// we delete the type: t is invalid when returning true!
 bool TraceCostMapping::remove(TraceCostType* t)
 {
   if (!t) return false;
   if (t->mapping() != this) return false;
 
-  // TODO: delete from virtual type list...
+  // don't delete real types
+  if (t->isReal()) return false;
+
+  int i;
+  for(i=0;i<_virtualCount;i++)
+    if (_virtual[i] == t) break;
+  
+  // not found?
+  if (i == _virtualCount) return false;
+
+  // delete known type with same name
+  TraceCostType::remove(t->name());
+
+  // delete this type
+  _virtual[i] = 0;
+  delete t;
+  if (i+1 == _virtualCount) {
+    // we can reuse the last index
+    _virtualCount--;
+  }
   return true;
 }
 
@@ -1089,9 +1195,10 @@ void TraceSubMapping::clear()
   _count = 0;
   _isIdentity = true;
   _firstUnused = 0;
-  for(int i=0;i<TraceCost::MaxRealIndex-1;i++)
-      _nextUnused[i] = i+1;
-  _nextUnused[TraceCost::MaxRealIndex-1] = TraceCost::InvalidIndex;
+  for(int i=0;i<TraceCost::MaxRealIndex;i++) {
+    _realIndex[i] = TraceCost::InvalidIndex;
+    _nextUnused[i] = i+1;
+  }
 }
 
 bool TraceSubMapping::append(QString type, bool create)
@@ -3032,7 +3139,7 @@ QString TraceFunction::location() const
       else
         loc += QString(" (0x%1-0x%2)").arg(from, 0, 16).arg(to, 0, 16);
     }
-#endif
+#endif   
   }
 
   // add all source files with ranges
@@ -3390,7 +3497,7 @@ void TraceFunction::update()
       TraceCumulativeCost* item;
       for (item=_deps.first();item;item=_deps.next()) {
 	if (!item->part() || !item->part()->isActive()) continue;
-
+	
 	addCost(item);
       }
       _dirty = false; // don't recurse
@@ -4057,10 +4164,6 @@ void TraceData::init()
 {
   _parts.setAutoDelete(true);
 
-  _objectVector.resize(100);
-  _fileVector.resize(1000);
-  _functionVector.resize(10000);
-
   _functionCycleCount = 0;
   _inFunctionCycleUpdate = false;
 
@@ -4342,45 +4445,6 @@ void TraceData::invalidateDynamicCost()
 
 }
 
-TraceObject* TraceData::compressedObject(const QString& name)
-{
-  if ((name[0] != '(') || !name[1].isDigit()) return object(name);
-
-  // compressed format using _objectVector
-  int p = name.find(')');
-  if (p<2) {
-    qDebug("ERROR: TraceData::compressedObject: Invalid compressed format:\n '%s'",
-           name.ascii());
-    return 0;
-  }
-  unsigned index = name.mid(1, p-1).toInt();
-  TraceObject* o = 0;
-  if ((int)name.length()>p+2) {
-    o = object(name.mid(p+2));
-
-    if (_objectVector.size() <= index) {
-      int newSize = index * 2;
-#if TRACE_DEBUG
-      qDebug("TraceData::compressedObject: objectVector enlarged to %d",
-             newSize);
-#endif
-      _objectVector.resize(newSize);
-    }
-
-    _objectVector.insert(index, o);
-  }
-  else {
-    if (_objectVector.size() <= index) {
-      qDebug("ERROR: TraceData::compressedObject: Invalid index %d (size %d)",
-             index, _objectVector.size());
-      return 0;
-    }
-    o = _objectVector.at(index);
-  }
-
-  return o;
-}
-
 
 TraceObject* TraceData::object(const QString& name)
 {
@@ -4398,46 +4462,6 @@ TraceObject* TraceData::object(const QString& name)
   return &o;
 }
 
-// Note: Cachegrind sometimes gives different IDs for same file
-// (when references to same source file come from differen ELF objects)
-TraceFile* TraceData::compressedFile(const QString& name)
-{
-  if ((name[0] != '(') || !name[1].isDigit()) return file(name);
-
-  // compressed format using _objectVector
-  int p = name.find(')');
-  if (p<2) {
-    qDebug("ERROR: TraceData::compressedFile: Invalid compressed format:\n '%s'",
-           name.ascii());
-    return 0;
-  }
-  unsigned int index = name.mid(1, p-1).toUInt();
-  TraceFile* f = 0;
-  if ((int)name.length()>p+2) {
-    f = file(name.mid(p+2));
-
-    if (_fileVector.size() <= index) {
-      int newSize = index * 2;
-#if TRACE_DEBUG
-      qDebug("TraceData::compressedFile: fileVector enlarged to %d",
-             newSize);
-#endif
-      _fileVector.resize(newSize);
-    }
-
-    _fileVector.insert(index, f);
-  }
-  else {
-    if (_fileVector.size() <= index) {
-      qDebug("ERROR: TraceData::compressedFile: Invalid index %d (size %d)",
-             index, _fileVector.size());
-      return 0;
-    }
-    f = _fileVector.at(index);
-  }
-
-  return f;
-}
 
 TraceFile* TraceData::file(const QString& name)
 {
@@ -4494,74 +4518,6 @@ TraceClass* TraceData::cls(const QString& fnName, QString& shortName)
   return &c;
 }
 
-TraceFunction* TraceData::compressedFunction(const QString& name,
-                                             TraceFile* file,
-                                             TraceObject* object)
-{
-  if ((name[0] != '(') || !name[1].isDigit())
-    return function(name, file, object);
-
-  // compressed format using _functionVector
-  int p = name.find(')');
-  if (p<2) {
-    qDebug("ERROR: TraceData::compressedFunction: Invalid compressed format:\n '%s'",
-           name.ascii());
-    return 0;
-  }
-
-  // Note: Cachegrind gives different IDs even for same function
-  // when parts of the function are from different source files.
-  // Thus, many indexes can map to same function!
-  unsigned int index = name.mid(1, p-1).toUInt();
-  TraceFunction* f = 0;
-  if ((int)name.length()>p+2) {
-    f = function(name.mid(p+2), file, object);
-
-    if (_functionVector.size() <= index) {
-      int newSize = index * 2;
-#if TRACE_DEBUG
-      qDebug("TraceData::compressedFunction: functionVector enlarged to %d",
-             newSize);
-#endif
-      _functionVector.resize(newSize);
-    }
-
-    _functionVector.insert(index, f);
-
-#if TRACE_DEBUG
-    qDebug("TraceData::compressedFunction: Inserted at Index %d\n"
-           "  %s\n"
-           "  in %s\n"
-           "  in %s\n"
-           "  in %s",
-           index, f->fullName().ascii(),
-           f->cls()->fullName().ascii(),
-           f->file()->fullName().ascii(),
-           f->object()->fullName().ascii());
-#endif
-  }
-  else {
-    if (_functionVector.size() <= index) {
-      qDebug("ERROR: TraceData::compressedFunction: Invalid index %d (size %d)",
-             index, _functionVector.size());
-      return 0;
-    }
-    f = _functionVector.at(index);
-
-    if (!f->object() && object) {
-      f->setObject(object);
-      object->addFunction(f);
-    }
-    else if (f->object() != object) {
-      qDebug("ERROR: TraceData::compressedFunction: Object mismatch\n"
-             "  %s\n  Found: %s\n  Given: %s",
-             f->info().ascii(),
-             f->object()->name().ascii(), object->name().ascii());
-    }
-  }
-
-  return f;
-}
 
 // name is inclusive class/namespace prefix
 TraceFunction* TraceData::function(const QString& name,

@@ -817,13 +817,14 @@ void TopLevel::toggleExpanded()
 
 void TopLevel::toggleCycles()
 {
-    if (!_data) return;
   bool show = _taCycles->isChecked();
   if (_showCycles == show) return;
   _showCycles = show;
 
   // FIXME: Delete when no view gets this config from Configuration
   Configuration::setShowCycles(_showCycles);
+
+  if (!_data) return;
 
   _data->invalidateDynamicCost();
   _data->updateFunctionCycles();
@@ -930,6 +931,7 @@ void TopLevel::loadTrace(QString file)
 {
   if (file.isEmpty()) return;
 
+#if 1
   if (_data && _data->parts().count()>0) {
 
     // In new window
@@ -938,6 +940,14 @@ void TopLevel::loadTrace(QString file)
     t->loadDelayed(file);
     return;
   }
+#else
+  // FIXME: separate action: "Add..."
+  if (_data) {
+    _data->load(file);
+    // FIXME: GUI update for added data
+    return;
+  } 
+#endif
 
   // this constructor enables progress bar callbacks
   TraceData* d = new TraceData(this);
@@ -1834,8 +1844,8 @@ void TopLevel::upActivated(int id)
 
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
   HistoryItem* hi = b ? b->current() : 0;
-  if (  !hi )
-      return;
+  if (!hi) return;
+
   TraceFunction* f = hi->function();
 
   while (id>0 && f) {

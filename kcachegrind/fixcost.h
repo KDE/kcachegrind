@@ -101,6 +101,7 @@ class FixCallCost {
     void *operator new(size_t size, FixPool*);
 
     void addTo(TraceCallCost*);
+    void setMax(TraceCost*);
 
     TracePart* part() const { return _part; }
     unsigned int line() const { return _line; }

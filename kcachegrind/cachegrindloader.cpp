@@ -53,8 +53,8 @@ private:
 		       uint& newLineno, uint& newAddr);
 
     int lineNo;
-
     TraceSubMapping* subMapping;
+    TraceData* _data;
 
     // current position
     lineType nextLineType;
@@ -88,7 +88,20 @@ private:
     TraceFunction* currentJumpToFunction;
     uint targetLineno, targetAddr;
     SubCost jumpsFollowed, jumpsExecuted;
+
+  // support for compressed string format
+  void initStringCompression();
+  TraceObject* compressedObject(const QString& name);
+  TraceFile* compressedFile(const QString& name);
+  TraceFunction* compressedFunction(const QString& name,
+                                    TraceFile*, TraceObject*);
+
+  QPtrVector<TraceObject> _objectVector;
+  QPtrVector<TraceFile> _fileVector;
+  QPtrVector<TraceFunction> _functionVector;
 };
+
+
 
 CachegrindLoader::CachegrindLoader()
   : Loader("Callgrind",
@@ -108,17 +121,182 @@ bool CachegrindLoader::canLoadTrace(QString name)
   return false;
 }
 
-bool CachegrindLoader::isPartOfTrace(QString file, TraceData* d)
-{
-  return file.startsWith(d->traceName());
-}
-
 Loader* createCachegrindLoader()
 {
   return new CachegrindLoader();
 }
 
 
+/****************************************
+ * Support for compressed strings
+ */
+
+void CachegrindLoader::initStringCompression()
+{
+  // this doesn't delete previous contained objects
+  _objectVector.clear();
+  _fileVector.clear();
+  _functionVector.clear();
+
+  // reset to reasonable init size. We double lengths if needed.
+  _objectVector.resize(100);
+  _fileVector.resize(1000);
+  _functionVector.resize(10000);
+}
+  
+
+TraceObject* CachegrindLoader::compressedObject(const QString& name)
+{
+  if ((name[0] != '(') || !name[1].isDigit()) return _data->object(name);
+
+  // compressed format using _objectVector
+  int p = name.find(')');
+  if (p<2) {
+    kdError() << "Loader: Invalid compressed format for ELF object:\n '" 
+	      << name << "'" << endl;
+    return 0;
+  }
+  unsigned index = name.mid(1, p-1).toInt();
+  TraceObject* o = 0;
+  if ((int)name.length()>p+2) {
+    o = _data->object(name.mid(p+2));
+
+    if (_objectVector.size() <= index) {
+      int newSize = index * 2;
+#if TRACE_LOADER
+      kdDebug() << " CachegrindLoader::objectVector enlarged to "
+		<< newSize << endl;
+#endif
+      _objectVector.resize(newSize);
+    }
+
+    _objectVector.insert(index, o);
+  }
+  else {
+    if (_objectVector.size() <= index) {
+      kdError() << "Loader: Invalid compressed object index " << index
+		<< ", size " << _objectVector.size() << endl;
+      return 0;
+    }
+    o = _objectVector.at(index);
+  }
+
+  return o;
+}
+
+
+// Note: Cachegrind sometimes gives different IDs for same file
+// (when references to same source file come from differen ELF objects)
+TraceFile* CachegrindLoader::compressedFile(const QString& name)
+{
+  if ((name[0] != '(') || !name[1].isDigit()) return _data->file(name);
+
+  // compressed format using _objectVector
+  int p = name.find(')');
+  if (p<2) {
+    kdError() << "Loader: Invalid compressed format for file:\n '" 
+	      << name << "'" << endl;
+    return 0;
+  }
+  unsigned int index = name.mid(1, p-1).toUInt();
+  TraceFile* f = 0;
+  if ((int)name.length()>p+2) {
+    f = _data->file(name.mid(p+2));
+
+    if (_fileVector.size() <= index) {
+      int newSize = index * 2;
+#if TRACE_LOADER
+      kdDebug() << " CachegrindLoader::fileVector enlarged to "
+		<< newSize << endl;
+#endif
+      _fileVector.resize(newSize);
+    }
+
+    _fileVector.insert(index, f);
+  }
+  else {
+    if (_fileVector.size() <= index) {
+      kdError() << "Loader: Invalid compressed file index " << index
+		<< ", size " << _fileVector.size() << endl;
+      return 0;
+    }
+    f = _fileVector.at(index);
+  }
+
+  return f;
+}
+
+TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
+						    TraceFile* file,
+						    TraceObject* object)
+{
+  if ((name[0] != '(') || !name[1].isDigit())
+    return _data->function(name, file, object);
+
+  // compressed format using _functionVector
+  int p = name.find(')');
+  if (p<2) {
+    kdError() << "Loader: Invalid compressed format for function:\n '" 
+	      << name << "'" << endl;
+    return 0;
+  }
+
+  // Note: Cachegrind gives different IDs even for same function
+  // when parts of the function are from different source files.
+  // Thus, many indexes can map to same function!
+  unsigned int index = name.mid(1, p-1).toUInt();
+  TraceFunction* f = 0;
+  if ((int)name.length()>p+2) {
+    f = _data->function(name.mid(p+2), file, object);
+
+    if (_functionVector.size() <= index) {
+      int newSize = index * 2;
+#if TRACE_LOADER
+      kdDebug() << " CachegrindLoader::functionVector enlarged to "
+		<< newSize << endl;
+#endif
+      _functionVector.resize(newSize);
+    }
+
+    _functionVector.insert(index, f);
+
+#if TRACE_LOADER
+    kdDebug() << "compressedFunction: Inserted at Index " << index
+	      << "\n  " << f->fullName()
+	      << "\n  in " << f->cls()->fullName()
+	      << "\n  in " << f->file()->fullName()
+	      << "\n  in " << f->object()->fullName() << endl;
+#endif
+  }
+  else {
+    if (_functionVector.size() <= index) {
+      kdError() << "Loader: Invalid compressed function index " << index
+		<< ", size " << _functionVector.size() << endl;
+      return 0;
+    }
+    f = _functionVector.at(index);
+
+    if (!f->object() && object) {
+      f->setObject(object);
+      object->addFunction(f);
+    }
+    else if (f->object() != object) {
+      kdError() << "TraceData::compressedFunction: Object mismatch\n  "
+		<< f->info() 
+		<< "\n  Found: " << f->object()->name()
+		<< "\n  Given: " << object->name() << endl;
+    }
+  }
+
+  return f;
+}
+
+
+
+
+/**********************************************************
+ * Loader
+ */
 
 /**
  * Return false if this is no position specification
@@ -202,12 +380,14 @@ bool CachegrindLoader::parsePosition(FixString& line,
  */
 bool CachegrindLoader::loadTrace(TracePart* part)
 {
+  initStringCompression();
+
   QString name = part->name();
-  TraceData* data = part->data();
+  _data = part->data();
 
 #ifdef USE_FIXCOST
   // FixCost Memory Pool
-  FixPool* pool = data->fixPool();
+  FixPool* pool = _data->fixPool();
 #endif
 
   FixFile file(name);
@@ -216,9 +396,10 @@ bool CachegrindLoader::loadTrace(TracePart* part)
     return false;
   }
 
+  kdDebug() << "Loading " << name << " ..." << endl;
+
   QString statusMsg = i18n("Loading %1").arg(name);
   int statusProgress = 0;
-
   emit updateStatus(statusMsg,statusProgress);
 
   lineNo = 0;
@@ -271,7 +452,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
       lineNo++;
 
 #if TRACE_LOADER
-      kdDebug() << "[CachegrindLoader] " << name.ascii << ":" << lineNo <<
+      kdDebug() << "[CachegrindLoader] " << name << ":" << lineNo
 		<< " - '" << QString(line) << "'" << endl;
 #endif
 
@@ -299,7 +480,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 		line.stripPrefix("i=") ||
 		line.stripPrefix("e=")) {
 
-		currentFile = data->compressedFile(line);
+		currentFile = compressedFile(line);
 		currentPartFile = currentFile->partFile(part);
 		currentLine = 0;
 		currentPartLine = 0;
@@ -314,7 +495,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 			    << " - function '" << QString(line)
 			    << "' without source" << endl;
 
-		  currentFile = data->file(QString("???"));
+		  currentFile = _data->file(QString("???"));
 		  currentPartFile = currentFile->partFile(part);
 		}
 		if (!currentObject) {
@@ -322,14 +503,14 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 			      << " - function '" << QString(line)
 			      << "' without ELF object" << endl;
 
-		  currentObject = data->object(QString("???"));
+		  currentObject = _data->object(QString("???"));
 		  currentPartObject = currentObject->partObject(part);
 		}
 
 		// creates TraceFunction/TraceClass if not already existing
-		currentFunction = data->compressedFunction( line,
-							    currentFile,
-							    currentObject);
+		currentFunction = compressedFunction( line,
+						      currentFile,
+						      currentObject);
 		currentPartFunction =
 		    currentFunction->partFunction(part,
 						  currentPartFile,
@@ -353,14 +534,14 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 	case 'c':
 	    // cob=
 	    if (line.stripPrefix("ob=")) {
-		currentCalledObject = data->compressedObject(line);
+		currentCalledObject = compressedObject(line);
 		currentCalledPartObject = currentCalledObject->partObject(part);
 		continue;
 	    }
 
 	    // cfi=
 	    if (line.stripPrefix("fi=")) {
-		currentCalledFile = data->compressedFile(line);
+		currentCalledFile = compressedFile(line);
 		currentCalledPartFile = currentCalledFile->partFile(part);
 		continue;
 	    }
@@ -379,9 +560,9 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 		    currentCalledPartFile = currentPartFile;
 		}
 
-		currentCalledFunction = data->compressedFunction(line,
-								 currentCalledFile,
-								 currentCalledObject);
+		currentCalledFunction = compressedFunction(line,
+							   currentCalledFile,
+							   currentCalledObject);
 		currentCalledPartFunction =
 		    currentCalledFunction->partFunction(part,
 							currentCalledPartFile,
@@ -400,14 +581,15 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 	    // cmd:
 	    if (line.stripPrefix("md:")) {
 		QString command = QString(line).stripWhiteSpace();
-		if (!data->command().isEmpty() &&
-		    data->command() != command) {
+		if (!_data->command().isEmpty() &&
+		    _data->command() != command) {
 
-		  kdError() << name << ":" << lineNo
-			    << " - redefined command, was '" << data->command()
-			    << "'" << endl;
+		  kdWarning() << name << ":" << lineNo
+			      << " - redefined command, was '"
+			      << _data->command()
+			      << "'" << endl;
 		}
-		data->setCommand(command);
+		_data->setCommand(command);
 		continue;
 	    }
 
@@ -450,7 +632,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 
 	    // jfi=
 	    if (line.stripPrefix("fi=")) {
-		currentJumpToFile = data->compressedFile(line);
+		currentJumpToFile = compressedFile(line);
 		continue;
 	    }
 
@@ -463,9 +645,9 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 		}
 
 		currentJumpToFunction =
-		    data->compressedFunction(line,
-					     currentJumpToFile,
-					     currentObject);
+		    compressedFunction(line,
+				       currentJumpToFile,
+				       currentObject);
 		continue;
 	    }
 
@@ -475,7 +657,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 
 	    // ob=
 	    if (line.stripPrefix("b=")) {
-		currentObject = data->compressedObject(line);
+		currentObject = compressedObject(line);
 		currentPartObject = currentObject->partObject(part);
 		currentFunction = 0;
 		currentPartFunction = 0;
@@ -522,7 +704,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 
 	    // events:
 	    if (line.stripPrefix("vents:")) {
-		subMapping = data->mapping()->subMapping(line);
+		subMapping = _data->mapping()->subMapping(line);
                 part->setFixSubMapping(subMapping);
 		continue;
 	    }
@@ -608,7 +790,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 	kdError() << name << ":" << lineNo
 		  << "- no currentFunction, using ???:???" << endl;
 
-	currentFunction = data->function("???", 0, 0);
+	currentFunction = _data->function("???", 0, 0);
 	currentPartFunction = currentFunction->partFunction(part, 0, 0);
       }
 
@@ -704,12 +886,14 @@ bool CachegrindLoader::loadTrace(TracePart* part)
                           currentCalledPartFunction);
 
 #ifdef USE_FIXCOST
-      new (pool) FixCallCost(part, pool,
-                             currentFunctionSource,
-                             hasLineInfo ? currentLineno : 0,
-                             hasAddrInfo ? currentAddr : 0,
-                             partCalling,
-                             currentCallCount, line);
+      FixCallCost* fcc;
+      fcc = new (pool) FixCallCost(part, pool,
+				   currentFunctionSource,
+				   hasLineInfo ? currentLineno : 0,
+				   hasAddrInfo ? currentAddr : 0,
+				   partCalling,
+				   currentCallCount, line);
+      fcc->setMax(_data->callMax());
 #else
       if (hasAddrInfo) {
 	  TraceInstrCall* instrCall;
