@@ -571,7 +571,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     }
     else {
       new SourceItem(this, this, fileno, 2, false,
-                     i18n("This is because its source file can not be found:"));
+                     i18n("This is because its source file cannot be found:"));
       new SourceItem(this, this, fileno, 3, false,
                      QString("    '%1'").arg(sf->file()->name()));
       new SourceItem(this, this, fileno, 4, false,
