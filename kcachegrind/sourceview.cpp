@@ -640,7 +640,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
       qDebug("%s:%d  Line too long\n",
 	     sf->file()->name().ascii(), fileLineno);
     }
-    if (buf[readBytes-1] == '\n')
+    else if ((readBytes>0) && (buf[readBytes-1] == '\n'))
       buf[readBytes-1] = 0;
 
 
