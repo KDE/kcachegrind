@@ -49,6 +49,7 @@ public:
   bool isPartOfTrace(QString file, TraceData*);
   
 private:
+  bool loadTraceInternal(TracePart*);
   
   enum lineType { SelfCost, CallCost, BoringJump, CondJump };
   
@@ -178,6 +179,15 @@ bool CachegrindLoader::canLoadTrace(QFile* file)
   return (pos>=0);
 }
 
+bool CachegrindLoader::loadTrace(TracePart* p)
+{
+  /* do the loading in a new object so parallel load
+   * operations do not interfere each other.
+   */
+  CachegrindLoader l;
+
+  return l.loadTraceInternal(p);
+}
 
 Loader* createCachegrindLoader()
 {
@@ -366,7 +376,7 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
 
 
 // Note: Cachegrind sometimes gives different IDs for same file
-// (when references to same source file come from differen ELF objects)
+// (when references to same source file come from different ELF objects)
 TraceFile* CachegrindLoader::compressedFile(const QString& name)
 {
   if ((name[0] != '(') || !name[1].isDigit()) return _data->file(name);
@@ -459,6 +469,11 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
       return 0;
     }
     f = _functionVector.at(index);
+    if (!f) {
+      kdError() << "Loader: Invalid compressed function index " << index
+		<< "without definition" << endl;
+      return 0;
+    }
 
     if (!f->object() && object) {
       f->setObject(object);
@@ -677,7 +692,7 @@ void CachegrindLoader::clearPosition()
 /**
  * The main import function...
  */
-bool CachegrindLoader::loadTrace(TracePart* part)
+bool CachegrindLoader::loadTraceInternal(TracePart* part)
 {
   clearCompression();
   clearPosition();
