@@ -83,7 +83,7 @@ which part of a program most of the time is spent.
 For sequential code, collecting statistical data of the programs
 runtime characteristic like time
 numbers spent in functions and code lines usually is enough.
-This is called Profiling. The program is run under control of a profiling tool, which gives the summary of an execution run at the end. 
+This is called Profiling. The program is run under control of a profiling tool, which gives the summary of an execution run at the end.
 In contrast, for parallel code, performance problems typically are caused when one processor is waiting for data of another. As this waiting time usually can not easily attributed, here it is better to generate timestamped event traces. KCachegrind can not visualize this kind of data.
 </para>
 
@@ -127,8 +127,8 @@ The method used here is compiler generated instrumention which is measuring call
 In many aspects, a comfortable way of Profiling is using
 Cachegrind or Callgrind, which are simulators using the runtime
 instrumentation framework &valgrind;. Because there is no need
-to access hardware counters (often difficult with todays Linux installations), and binaries to be profiled can be left unmodified, 
-its a good alternative way to other profiling tools.
+to access hardware counters (often difficult with todays Linux installations), and binaries to be profiled can be left unmodified,
+it's a good alternative way to other profiling tools.
 The disadvantage of simulation slowdown can be reduced by doing the simulation only on the interesting program parts, and perhaps only on a few iterations of a loop. Without measurement/simulation instrumentation, Valgrinds usage only has a slowdown in the range of 3-5.
 And when only the call graph and call counts
 are of interest, the cache simulator can be switched off.
@@ -211,7 +211,7 @@ Note that it previously was called &calltree;, but that name was misleading.
 </para>
 
 <para>
-Most common use is to prefix the command line to start your application with 
+Most common use is to prefix the command line to start your application with
 <application>callgrind</application>, like in
 
 <blockquote><para><command>callgrind myprogram myargs</command></para></blockquote>
@@ -279,7 +279,7 @@ a selected function. This visualization area can be arbitrary configured to
 show multiple visualizations at once.
 </para>
 
-<para> 
+<para>
 At first start, this area will be
 divided into a top and a bottom part, each with different visualizations
 selectable by tabs. To move visualization views, use the context menu of
@@ -321,7 +321,7 @@ introduces terms used in the interface.
 <title>Cost Entities</title>
 
 <para>
-Cost counts of event types (like L2 Misses) are attributed to cost entities, which are items with relationship to source code or data structures of a given program. Cost entities not only can be simple code or data positions, but also position tupels. E.g., a call has a source and a target, or a data address can have a data type and an code position where its allocation has happened. 
+Cost counts of event types (like L2 Misses) are attributed to cost entities, which are items with relationship to source code or data structures of a given program. Cost entities not only can be simple code or data positions, but also position tupels. E.g., a call has a source and a target, or a data address can have a data type and an code position where its allocation has happened.
 </para>
 
 <para>
@@ -333,23 +333,23 @@ Instruction. An assembler instruction at a specified address.
 </para></listitem>
 <listitem><para>
 Source Line of a Function.
-All instructions that the compiler (via debug information) maps to a given source line specified by source file name and line number, and which are executed in the context of some function. The latter is needed because a source line inside of an inlined function can appear in the context of multiple functions. Instructions without any mapping to an actual source line are mapped to line number 0 in file "???". 
+All instructions that the compiler (via debug information) maps to a given source line specified by source file name and line number, and which are executed in the context of some function. The latter is needed because a source line inside of an inlined function can appear in the context of multiple functions. Instructions without any mapping to an actual source line are mapped to line number 0 in file "???".
 </para></listitem>
 <listitem><para>
 Function.
-All source lines of a given function make up the function itself. A function is specified by its name and its location in some binary object if available. The latter is needed because binary objects of a single program each can hold functions with the same name (these can be accessed e.g. with dlopen/dlsym; the runtime linker resolves functions in a given search order of binary objects used). If a profiling tool can not detect the symbol name of a function, e.g. because debug information is not available, either the address of the first executed instruction typically is used, or "???". 
+All source lines of a given function make up the function itself. A function is specified by its name and its location in some binary object if available. The latter is needed because binary objects of a single program each can hold functions with the same name (these can be accessed e.g. with dlopen/dlsym; the runtime linker resolves functions in a given search order of binary objects used). If a profiling tool can not detect the symbol name of a function, e.g. because debug information is not available, either the address of the first executed instruction typically is used, or "???".
 </para></listitem>
 <listitem><para>
 Binary Object.
-All functions whose code is inside the range of a given binary object, either the main executable or a shared library. 
+All functions whose code is inside the range of a given binary object, either the main executable or a shared library.
 </para></listitem>
 <listitem><para>
 Source File.
-All functions whose first instruction is mapped to a line of the given source file. 
+All functions whose first instruction is mapped to a line of the given source file.
 </para></listitem>
 <listitem><para>
 Class.
-Symbol names of functions typically are hierarchically ordered in name spaces, e.g. C++ namespaces, or classes of object oriented languages. Thus, a class can hold functions of the class or embedded classes itself. 
+Symbol names of functions typically are hierarchically ordered in name spaces, e.g. C++ namespaces, or classes of object oriented languages. Thus, a class can hold functions of the class or embedded classes itself.
 </para></listitem>
 <listitem><para>
 Profile Part.
@@ -391,10 +391,10 @@ Jumps between functions are not allowed, as this makes no sense in a call graph.
 <title>Event Types</title>
 
 <para>
-Arbitrary event types can be specified in the profile data by giving them a name. Their cost related to a cost entity is a 64-bit integer. 
+Arbitrary event types can be specified in the profile data by giving them a name. Their cost related to a cost entity is a 64-bit integer.
 </para>
 <para>
-Event types whose costs are specified in a profile data file are called real events. Additionally, one can specify formulas for event types calculated from real events, which are called inherited events. 
+Event types whose costs are specified in a profile data file are called real events. Additionally, one can specify formulas for event types calculated from real events, which are called inherited events.
 </para>
 </sect2>
 
@@ -404,29 +404,29 @@ Event types whose costs are specified in a profile data file are called real eve
 <title>Visualization State</title>
 
 <para>
-The Visualisation state of a KCachegrind window includes: 
+The Visualisation state of a KCachegrind window includes:
 <itemizedlist>
 <listitem><para>
 the primary and secondary event type choosen for display,
 </para></listitem>
 <listitem><para>
-the function grouping (used in the Function Profile list and entity coloring), 
+the function grouping (used in the Function Profile list and entity coloring),
 </para></listitem>
 <listitem><para>
-the profile parts whose costs are to be included in visualization, 
+the profile parts whose costs are to be included in visualization,
 </para></listitem>
 <listitem><para>
 an active cost entity (e.g. a function selected from the function profile dockable),
 </para></listitem>
 <listitem><para>
-a selected cost entity. 
+a selected cost entity.
 </para></listitem>
 </itemizedlist>
 
-This state influences visualizations. 
+This state influences visualizations.
 </para>
 <para>
-Visualizations always are shown for one, the active, cost entity. When a given visualization is not appropriate for a cost entity, it is disabled (e.g. when selecting an ELF object in the group list by double-clicking, source annotation for an ELF object make no sense). 
+Visualizations always are shown for one, the active, cost entity. When a given visualization is not appropriate for a cost entity, it is disabled (e.g. when selecting an ELF object in the group list by double-clicking, source annotation for an ELF object make no sense).
 </para>
 <para>
 E.g. for an active function, the callee list shows all the functions called from the active one. One can select one of these functions without making it active. If the call-graph is shown nearside, it will automatically select the same function.
@@ -440,17 +440,17 @@ E.g. for an active function, the callee list shows all the functions called from
 <sect2>
 <title>Sidedocks</title>
 <para>
-Sidedocks (Dockables) are side windows which can be placed at any border of an KCachegrind window. They always contain a list of cost entities sorted in some manner. 
+Sidedocks (Dockables) are side windows which can be placed at any border of an KCachegrind window. They always contain a list of cost entities sorted in some manner.
 <itemizedlist>
 <listitem><para>
 Function Profile.
-The Function Profile is a list of functions showing inclusive and exlusive cost, call count, name and position of functions. 
+The Function Profile is a list of functions showing inclusive and exlusive cost, call count, name and position of functions.
 </para></listitem>
 <listitem><para>
 Parts Overview
 </para></listitem>
 <listitem><para>
-Call Stack 
+Call Stack
 </para></listitem>
 </itemizedlist>
 </para>
@@ -480,7 +480,7 @@ Besides an active entity, each tab view has an selected entity. As most visualiz
 <sect2>
 <title>Synchronization between Tab Views</title>
 <para>
-If there are multiple tab views, a selection change in one tab view leads to an activation change in the next (to right/to bottom) tab view. This kind of linkage e.g. should allow for fast browsing in call graphs. 
+If there are multiple tab views, a selection change in one tab view leads to an activation change in the next (to right/to bottom) tab view. This kind of linkage e.g. should allow for fast browsing in call graphs.
 </para>
 </sect2>
 
@@ -498,26 +498,26 @@ The layout of all the tab views of a window can be saved (see menu item View/Lay
 <sect2>
 <title>Flat Profile</title>
 <para>
-The flat profile contains a group list and a function list. The group list contains all groups where cost is spent in, depending on the chosen group type. The group list is hidden when grouping is switched off. 
+The flat profile contains a group list and a function list. The group list contains all groups where cost is spent in, depending on the chosen group type. The group list is hidden when grouping is switched off.
 </para>
 <para>
-The function list contains the functions of the selected group (or all functions if grouping is switched off), ordered by some column, e.g. inclusive or self costs spent therein. There is a maximal number of functions shown in the list, which is configurable in Settings/Configure KCachegrind. 
+The function list contains the functions of the selected group (or all functions if grouping is switched off), ordered by some column, e.g. inclusive or self costs spent therein. There is a maximal number of functions shown in the list, which is configurable in Settings/Configure KCachegrind.
 </para>
 </sect2>
 
 <sect2>
 <title>Parts Overview</title>
 <para>
-In a profile run, multiple profile data files can be produced, which can be loaded together into KCachegrind. The Parts Overview dockable shows these, horizontally ordered according creation time; the rectangle sizes are proportional to the cost spent in the parts. You can select one or several parts to constrain the costs shown in the other KCachegrind views to these parts only. 
+In a profile run, multiple profile data files can be produced, which can be loaded together into KCachegrind. The Parts Overview dockable shows these, horizontally ordered according creation time; the rectangle sizes are proportional to the cost spent in the parts. You can select one or several parts to constrain the costs shown in the other KCachegrind views to these parts only.
 </para>
 <para>
-The parts are further subdivided: there is a partitioning and an inclusive cost split mode: 
+The parts are further subdivided: there is a partitioning and an inclusive cost split mode:
 <itemizedlist>
 <listitem><para>
 Partitioning: You see the partitioning into groups for a profile data part, according to the group type selected. E.g. if ELF object groups are selected, you see colored rectangles for each used ELF object (shared library or executable), sized according to the cost spent therein.
 </para></listitem>
 <listitem><para>
-Inclusive Cost Split: A rectangle showing the inclusive cost of the current active function in the part is shown. This again is split up to show inclusive costs of its callees. 
+Inclusive Cost Split: A rectangle showing the inclusive cost of the current active function in the part is shown. This again is split up to show inclusive costs of its callees.
 </para></listitem>
 </itemizedlist>
 </para>
@@ -526,7 +526,7 @@ Inclusive Cost Split: A rectangle showing the inclusive cost of the current acti
 <sect2>
 <title>Call Stack</title>
 <para>
-This is a purely fictional 'most probable' call stack. It is built up by starting with the current active function and adds the callers/callees with highest cost at the top and to bottom. 
+This is a purely fictional 'most probable' call stack. It is built up by starting with the current active function and adds the callers/callees with highest cost at the top and to bottom.
 </para>
 <para>
 The 'Cost' and 'Calls' columns show the cost used for all calls from the function in the line above.
@@ -540,29 +540,29 @@ The 'Cost' and 'Calls' columns show the cost used for all calls from the functio
 <sect2>
 <title>Event Types</title>
 <para>
-This list shows all cost types available and the corresponding self and inclusive cost of the current active function for that event type. 
+This list shows all cost types available and the corresponding self and inclusive cost of the current active function for that event type.
 </para>
 <para>
-By choosing an event type from the list, you change the type of costs shown all over KCachegrind to be the selected one. 
+By choosing an event type from the list, you change the type of costs shown all over KCachegrind to be the selected one.
 </para>
 </sect2>
 
 <sect2>
 <title>Call Lists</title>
 <para>
-These lists show calls to/from the current active function. With ''all' callers/callees functions are meant which can be reached in caller/callee direction, even when other functions are inbetween. 
+These lists show calls to/from the current active function. With ''all' callers/callees functions are meant which can be reached in caller/callee direction, even when other functions are inbetween.
 </para>
 <para>
-Call list views include: 
+Call list views include:
 <itemizedlist>
 <listitem><para>
 Direct Callers
 </para></listitem>
 <listitem><para>
-Direct Callees 
+Direct Callees
 </para></listitem>
 <listitem><para>
-All Callers 
+All Callers
 </para></listitem>
 <listitem><para>
 All Callees
@@ -574,37 +574,37 @@ All Callees
 <sect2>
 <title>Maps</title>
 <para>
-A treemap visualization of the primary event type, up or down the call hierarchy. Each colored rectangle represents a function; its size tries to be proportional to the cost spent therein while the active function is running (however, there are drawing constrains). 
+A treemap visualization of the primary event type, up or down the call hierarchy. Each colored rectangle represents a function; its size tries to be proportional to the cost spent therein while the active function is running (however, there are drawing constrains).
 </para>
 <para>
-For the Caller Map, the graph shows the nested hierarchy of all callers of the current activated function; for the Callee Map, it shows the nested hierarchy of all callees of the current activated function. 
+For the Caller Map, the graph shows the nested hierarchy of all callers of the current activated function; for the Callee Map, it shows the nested hierarchy of all callees of the current activated function.
 </para>
 <para>
-Appearance options can be found in the in the context menu. To get exact size proportions, choose 'Hide incorrect borders'. As this mode can be very time consuming, you may want to limit the maximum drawn nesting level before. 'Best' determinates the split direction for children from the aspect ratio of the parent. 'Always Best' decides on remaining space for each sibling. 'Ignore Proportions' takes space for function name drawing before drawing children. Note that size proportions can get heavily wrong. 
+Appearance options can be found in the in the context menu. To get exact size proportions, choose 'Hide incorrect borders'. As this mode can be very time consuming, you may want to limit the maximum drawn nesting level before. 'Best' determinates the split direction for children from the aspect ratio of the parent. 'Always Best' decides on remaining space for each sibling. 'Ignore Proportions' takes space for function name drawing before drawing children. Note that size proportions can get heavily wrong.
 </para>
 <para>
-Keyboard navigation is available with the left/right arrow keys for traversing siblings, and up/down arrow keys to go a nesting level up/down. 'Return' activates the current item. 
+Keyboard navigation is available with the left/right arrow keys for traversing siblings, and up/down arrow keys to go a nesting level up/down. 'Return' activates the current item.
 </para>
 </sect2>
 
 <sect2>
 <title>Call Graph</title>
 <para>
-This view shows the call graph around the active function. 
-The shown cost is only the cost which is spent while the active function was actually running; i.e. the cost shown for main() - if it's visible - should be the same as the cost of the active function, as that is the part of inclusive cost of main() spent while the active function was running. 
+This view shows the call graph around the active function.
+The shown cost is only the cost which is spent while the active function was actually running; i.e. the cost shown for main() - if it's visible - should be the same as the cost of the active function, as that is the part of inclusive cost of main() spent while the active function was running.
 </para>
 <para>
-For cycles, blue call arrows indicate that this is an artificial call added for correct drawing which actually never happened. 
+For cycles, blue call arrows indicate that this is an artificial call added for correct drawing which actually never happened.
 </para>
 <para>
-If the graph is larger than the widget area, an overview panner is shown in one edge. There are similar visualization options as for the Call Treemap; the selected function is highlighted. 
+If the graph is larger than the widget area, an overview panner is shown in one edge. There are similar visualization options as for the Call Treemap; the selected function is highlighted.
 </para>
 </sect2>
 
 <sect2>
 <title>Annotations</title>
 <para>
-The annotated source/assembler lists show the source lines/disassembled instructions of the current active function together with (self) cost spent while executing the code of a source line/instruction. If there was a call, lines with details on the call are inserted into the source: the (inclusive) cost spent inside of the call, the number of calls happening, and the call destination. 
+The annotated source/assembler lists show the source lines/disassembled instructions of the current active function together with (self) cost spent while executing the code of a source line/instruction. If there was a call, lines with details on the call are inserted into the source: the (inclusive) cost spent inside of the call, the number of calls happening, and the call destination.
 </para>
 <para>
 Select such a call information line to activate the call destination.
@@ -652,14 +652,14 @@ This action is not really needed, as File/Open will give you a new toplevel wind
 </menuchoice></term>
 <listitem><para><action>
 Pops up the File Open Dialog to choose a profile data file to be loaded.
-</action> 
-If there is some data already shown in the current toplevel window, this will open a new window. If you want to open additional profile data into the current window, use File/Add. 
+</action>
+If there is some data already shown in the current toplevel window, this will open a new window. If you want to open additional profile data into the current window, use File/Add.
 </para>
 <para>
-The name of profile data files usually ends in ..-, where and are optional and are used for multiple profile data files belonging to one application run. By loading a file ending only in ., eventually existing data files for this run, but with additional endings, are loaded too. 
+The name of profile data files usually ends in ..-, where and are optional and are used for multiple profile data files belonging to one application run. By loading a file ending only in ., eventually existing data files for this run, but with additional endings, are loaded too.
 </para>
 <para>
-Example: If there exist profile data files cachegrind.out.123 and cachegrind.out.123.1, by loading the first, the second will be automatically loaded too. 
+Example: If there exist profile data files cachegrind.out.123 and cachegrind.out.123.1, by loading the first, the second will be automatically loaded too.
 </para></listitem>
 </varlistentry>
 
@@ -683,7 +683,7 @@ By this, you can force multiple data files to be loaded into the same toplevel w
 <listitem><para><action>
 Reload the profile data.
 </action>
-This is most interesting after another profile data file was generated for an already loaded application run. 
+This is most interesting after another profile data file was generated for an already loaded application run.
 </para></listitem>
 </varlistentry>
 
@@ -768,7 +768,7 @@ This is most interesting after another profile data file was generated for an al
 <qandaentry>
 <question>
 <para>
-What is &kcachegrind; for? I have no idea. 
+What is &kcachegrind; for? I have no idea.
 </para>
 </question>
 <answer>
@@ -783,14 +783,14 @@ called Profiling. If you don't develop applications, you don't need
 <qandaentry>
 <question>
 <para>
-What is the difference between 'Incl.' and 'Self' ? 
+What is the difference between 'Incl.' and 'Self' ?
 </para>
 </question>
 <answer>
-<para>These are cost attributes for functions regarding some event type. As functions can call each other, it makes sense to distinguish the cost of the function itself ('Self Cost') and the cost including all called functions ('Inclusive Cost'). 'Self' is sometimes also referred to as 'Exclusive' costs. 
+<para>These are cost attributes for functions regarding some event type. As functions can call each other, it makes sense to distinguish the cost of the function itself ('Self Cost') and the cost including all called functions ('Inclusive Cost'). 'Self' is sometimes also referred to as 'Exclusive' costs.
 </para>
 <para>
-So e.g. for main(), you will always have a inclusive cost of almost 100%, whereas the self cost is neglectable when the real work is done in another function. 
+So e.g. for main(), you will always have a inclusive cost of almost 100%, whereas the self cost is neglectable when the real work is done in another function.
 </para>
 </answer>
 </qandaentry>
@@ -831,40 +831,40 @@ You have activated a function below main() with cost less than main(). For any f
 
 <itemizedlist>
 <listitem><para>
-Profiling: The process of collecting statistical information about runtime characteristics of program runs. 
+Profiling: The process of collecting statistical information about runtime characteristics of program runs.
 </para></listitem>
 <listitem><para>
-Tracing: The process of supervising a program run and storing events happening sorted by a timestap in a output file, the Trace. 
+Tracing: The process of supervising a program run and storing events happening sorted by a timestap in a output file, the Trace.
 </para></listitem>
 <listitem><para>
-Trace: A sequence of timestamped events that occured while tracing a program run. Its size is typically linear to the execution time of the program run. 
+Trace: A sequence of timestamped events that occured while tracing a program run. Its size is typically linear to the execution time of the program run.
 </para></listitem>
 <listitem><para>
-Profile Data File: A file containing data measured in a profile experiment (or part of) or produced by postprocessing a trace. Its size is typically linear to the code size of the program. 
+Profile Data File: A file containing data measured in a profile experiment (or part of) or produced by postprocessing a trace. Its size is typically linear to the code size of the program.
 </para></listitem>
 <listitem><para>
-Profile Data Part (incorrectly used also: Trace Part): Data from a profile data file. 
+Profile Data Part (incorrectly used also: Trace Part): Data from a profile data file.
 </para></listitem>
 <listitem><para>
-Profile Experiment: A program run supervised by a profiling tool, producing possibly multiple profile data files from parts and/or threads of the run. 
+Profile Experiment: A program run supervised by a profiling tool, producing possibly multiple profile data files from parts and/or threads of the run.
 </para></listitem>
 <listitem><para>
-Profile Project: A configuration for profile experiments used for one program which has to be profiled, perhaps in multiple versions. Comparations of profile data typically only makes sense between profile data produced in experiments of one profile project. 
+Profile Project: A configuration for profile experiments used for one program which has to be profiled, perhaps in multiple versions. Comparations of profile data typically only makes sense between profile data produced in experiments of one profile project.
 </para></listitem>
 <listitem><para>
-Cost Entity: An abstract item related to source code to which event counts can be attributed. Dimensions for cost entities are code location (e.g. source line, function), data location (e.g. accessed data type, data object), execution location (e.g. thread, process), and tupels or tripels of forementioned positions (e.g. calls, object access from statement, evicted data from cache). 
+Cost Entity: An abstract item related to source code to which event counts can be attributed. Dimensions for cost entities are code location (e.g. source line, function), data location (e.g. accessed data type, data object), execution location (e.g. thread, process), and tupels or tripels of forementioned positions (e.g. calls, object access from statement, evicted data from cache).
 </para></listitem>
 <listitem><para>
-Event Type: The kind of event of which costs can be attributed to a cost entity. There exist real event types and inherited event types. 
+Event Type: The kind of event of which costs can be attributed to a cost entity. There exist real event types and inherited event types.
 </para></listitem>
 <listitem><para>
-Real Event Type: A event type that can be measured by a tool. This needs the existance of a sensor for the given event type. 
+Real Event Type: A event type that can be measured by a tool. This needs the existance of a sensor for the given event type.
 </para></listitem>
 <listitem><para>
-Inherited Event Type: A virtual event type only visible in the visualization which is defined by a formula to be calculated from real event types. 
+Inherited Event Type: A virtual event type only visible in the visualization which is defined by a formula to be calculated from real event types.
 </para></listitem>
 <listitem><para>
-Event Costs: Sum of events of some event type occuring while the execution is related to some cost entity. The cost is attributed to the entity. 
+Event Costs: Sum of events of some event type occuring while the execution is related to some cost entity. The cost is attributed to the entity.
 </para></listitem>
 </itemizedlist>
 </para>
@@ -901,7 +901,7 @@ users.
 
 <para>
 &kcachegrind; is part of the KDESDK package of &kde;. For less supported
-interim releases, &callgrind; and further documentation, see 
+interim releases, &callgrind; and further documentation, see
 the homepage at
 <ulink url="http://kcachegrind.sf.net">
 http://kcachegrind.sf.net</ulink>.  Look there for
