@@ -161,7 +161,7 @@ QString TraceItem::i18nTypeName(CostType t)
     if (!strs) {
 	strs = new QString [MaxCostType+1];
 	for(int i=0;i<=MaxCostType;i++)
-	    strs[i] = i18n(typeName((CostType)i));
+	    strs[i] = i18n(typeName((CostType)i).utf8().data());
     }
     if (t<0 || t> MaxCostType) t = MaxCostType;
     return strs[t];
@@ -3852,7 +3852,7 @@ QString TraceFile::shortName() const
 
 QString TraceFile::prettyLongName()
 {
-  if (_name = QString("???"))
+  if (_name == QString("???"))
     return i18n("(unknown)");
   return _name;
 }
