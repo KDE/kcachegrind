@@ -50,8 +50,6 @@
   <Action name="view_percentage"/>
   <Action name="view_expanded"/>
   <Action name="view_cycles"/>
-  <Separator/>
-  <Action name="help_whats_this"/>
  </ToolBar>
  <ToolBar name="queryToolBar" noMerge="1"><text>Query Toolbar</text> 
   <Action name="query_label"/>
