@@ -453,7 +453,7 @@ void TopLevel::createLayoutActions()
   QString hint;
   KAction* action;
 
-  action = new KAction( i18n( "&Duplicate" ), 
+  action = new KAction( i18n( "&Duplicate" ),
 			KShortcut(KKey("Ctrl+Plus")),
                         this, SLOT(layoutDuplicate()),
                         actionCollection(), "layout_duplicate" );
@@ -623,6 +623,7 @@ void TopLevel::createMiscActions()
 				    this, SLOT(togglePercentage()),
 				    actionCollection(),
 				    "view_percentage");
+  _taPercentage->setCheckedState(i18n("Hide Relative Costs"));
 
   hint = i18n("Show relative instead of absolute costs");
   _taPercentage->setToolTip( hint );
@@ -657,6 +658,7 @@ void TopLevel::createMiscActions()
 				 KShortcut(),
 				 this, SLOT( toggleCycles() ), actionCollection(),
 				 "view_cycles" );
+  _taCycles->setCheckedState(i18n("Hide Cycles"));
 
   hint = i18n("<b>Detect recursive cycles</b>"
               "<p>If this is switched off, the treemap drawing will show "
@@ -1109,7 +1111,7 @@ void TopLevel::addTrace(QString file)
     // GUI update for added data
     configChanged();
     return;
-  } 
+  }
 
   // this constructor enables progress bar callbacks
   TraceData* d = new TraceData(this);
@@ -1631,17 +1633,17 @@ void TopLevel::addCostMenu(QPopupMenu* popup, bool withCost2)
     QPopupMenu *popup1 = new QPopupMenu(popup);
     QPopupMenu *popup2 = 0;
     popup1->setCheckable(true);
-    
+
     if (withCost2) {
       popup2 = new QPopupMenu(popup);
       popup2->setCheckable(true);
-      
+
       if (_costType2) {
 	popup2->insertItem(i18n("Hide"),199);
 	popup2->insertSeparator();
       }
     }
-    
+
     TraceCostMapping* m = _data->mapping();
     TraceCostType* ct;
     for (int i=0;i<m->realCount();i++) {
@@ -1683,8 +1685,8 @@ bool TopLevel::setCostType(int id)
 
   TraceCostMapping* m = _data->mapping();
   TraceCostType* ct=0;
-  if (id >=100 && id<199) ct = m->realType(id-100); 
-  if (id >=200 && id<299) ct = m->virtualType(id-200); 
+  if (id >=100 && id<199) ct = m->realType(id-100);
+  if (id >=200 && id<299) ct = m->virtualType(id-200);
 
   return ct ? setCostType(ct) : false;
 }
@@ -1695,8 +1697,8 @@ bool TopLevel::setCostType2(int id)
 
   TraceCostMapping* m = _data->mapping();
   TraceCostType* ct=0;
-  if (id >=100 && id<199) ct = m->realType(id-100); 
-  if (id >=200 && id<299) ct = m->virtualType(id-200); 
+  if (id >=100 && id<199) ct = m->realType(id-100);
+  if (id >=200 && id<299) ct = m->virtualType(id-200);
 
   return setCostType2(ct);
 }
