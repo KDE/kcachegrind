@@ -164,7 +164,7 @@ QString PartAreaWidget::tipString(TreeMapItem* i) const
   while (i && i->rtti()==3) i = i->parent();
 
   if (i && i->rtti()==2) {
-    itemTip = i18n("Trace Part") + " " + i->text(0);
+    itemTip = i18n("Trace Part %1").arg(i->text(0));
     if (!i->text(1).isEmpty())
         itemTip += " (" + i->text(1) + ")";
 

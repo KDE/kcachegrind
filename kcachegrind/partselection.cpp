@@ -49,8 +49,8 @@ PartSelection::PartSelection( QWidget* parent, const char* name)
   partAreaWidget->setSelectionMode(TreeMapWidget::Extended);
   partAreaWidget->setSplitMode(TreeMapItem::HAlternate);
   partAreaWidget->setVisibleWidth(2, true);
-  partAreaWidget->setFieldType(0, "Name");
-  partAreaWidget->setFieldType(1, "Cost");
+  partAreaWidget->setFieldType(0, i18n( "Name" ));
+  partAreaWidget->setFieldType(1, i18n( "Cost" ));
 
   connect(partAreaWidget, SIGNAL(selectionChanged()),
           this, SLOT(selectionChanged()));

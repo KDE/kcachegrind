@@ -106,34 +106,34 @@ QString TraceItem::typeName(CostType t)
 	for(int i=0;i<=MaxCostType;i++)
 	    strs[i] = QString("?");
 
-	strs[Item] = QString(I18N_NOOP("Abstract Item"));
-	strs[Cost] = QString(I18N_NOOP("Cost Item"));
-	strs[PartLine] = QString(I18N_NOOP("Part Source Line"));
-	strs[Line] = QString(I18N_NOOP("Source Line"));
-	strs[PartLineCall] = QString(I18N_NOOP("Part Line Call"));
-	strs[LineCall] = QString(I18N_NOOP("Line Call"));
-	strs[PartLineJump] = QString(I18N_NOOP("Part Jump"));
-	strs[LineJump] = QString(I18N_NOOP("Jump"));
-	strs[PartInstr] = QString(I18N_NOOP("Part Instruction"));
-	strs[Instr] = QString(I18N_NOOP("Instruction"));
-	strs[PartInstrJump] = QString(I18N_NOOP("Part Instruction Jump"));
-	strs[InstrJump] = QString(I18N_NOOP("Instruction Jump"));
-	strs[PartInstrCall] = QString(I18N_NOOP("Part Instruction Call"));
-	strs[InstrCall] = QString(I18N_NOOP("Instruction Call"));
-	strs[PartCall] = QString(I18N_NOOP("Part Call"));
-	strs[Call] = QString(I18N_NOOP("Call"));
-	strs[PartFunction] = QString(I18N_NOOP("Part Function"));
-	strs[FunctionSource] = QString(I18N_NOOP("Function Source File"));
-	strs[Function] = QString(I18N_NOOP("Function"));
-	strs[FunctionCycle] = QString(I18N_NOOP("Function Cycle"));
-	strs[PartClass] = QString(I18N_NOOP("Part Class"));
-	strs[Class] = QString(I18N_NOOP("Class"));
-	strs[PartFile] = QString(I18N_NOOP("Part Source File"));
-	strs[File] = QString(I18N_NOOP("Source File"));
-	strs[PartObject] = QString(I18N_NOOP("Part ELF Object"));
-	strs[Object] = QString(I18N_NOOP("ELF Object"));
-	strs[Part] = QString(I18N_NOOP("Trace Part"));
-	strs[Data] = QString(I18N_NOOP("Program Trace"));
+	strs[Item] = I18N_NOOP("Abstract Item");
+	strs[Cost] = I18N_NOOP("Cost Item");
+	strs[PartLine] = I18N_NOOP("Part Source Line");
+	strs[Line] = I18N_NOOP("Source Line");
+	strs[PartLineCall] = I18N_NOOP("Part Line Call");
+	strs[LineCall] = I18N_NOOP("Line Call");
+	strs[PartLineJump] = I18N_NOOP("Part Jump");
+	strs[LineJump] = I18N_NOOP("Jump");
+	strs[PartInstr] = I18N_NOOP("Part Instruction");
+	strs[Instr] = I18N_NOOP("Instruction");
+	strs[PartInstrJump] = I18N_NOOP("Part Instruction Jump");
+	strs[InstrJump] = I18N_NOOP("Instruction Jump");
+	strs[PartInstrCall] = I18N_NOOP("Part Instruction Call");
+	strs[InstrCall] = I18N_NOOP("Instruction Call");
+	strs[PartCall] = I18N_NOOP("Part Call");
+	strs[Call] = I18N_NOOP("Call");
+	strs[PartFunction] = I18N_NOOP("Part Function");
+	strs[FunctionSource] = I18N_NOOP("Function Source File");
+	strs[Function] = I18N_NOOP("Function");
+	strs[FunctionCycle] = I18N_NOOP("Function Cycle");
+	strs[PartClass] = I18N_NOOP("Part Class");
+	strs[Class] = I18N_NOOP("Class");
+	strs[PartFile] = I18N_NOOP("Part Source File");
+	strs[File] = I18N_NOOP("Source File");
+	strs[PartObject] = I18N_NOOP("Part ELF Object");
+	strs[Object] = I18N_NOOP("ELF Object");
+	strs[Part] = I18N_NOOP("Trace Part");
+	strs[Data] = I18N_NOOP("Program Trace");
     }
     if (t<0 || t> MaxCostType) t = MaxCostType;
     return strs[t];
@@ -3029,7 +3029,7 @@ QString TraceFunction::location() const
       else
         loc += QString(" (0x%1-0x%2)").arg(from, 0, 16).arg(to, 0, 16);
     }
-#endif   
+#endif
   }
 
   // add all source files with ranges
@@ -3387,7 +3387,7 @@ void TraceFunction::update()
       TraceCumulativeCost* item;
       for (item=_deps.first();item;item=_deps.next()) {
 	if (!item->part() || !item->part()->isActive()) continue;
-	
+
 	addCost(item);
       }
       _dirty = false; // don't recurse

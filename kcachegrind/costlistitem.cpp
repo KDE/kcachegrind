@@ -48,7 +48,7 @@ CostListItem::CostListItem(QListView* parent, TraceCostItem* costItem,
   }
 }
 
-CostListItem::CostListItem(QListView* parent, int skipped, 
+CostListItem::CostListItem(QListView* parent, int skipped,
 			   TraceCostItem* costItem, TraceCostType* ct)
   :QListViewItem(parent)
 {
@@ -56,7 +56,7 @@ CostListItem::CostListItem(QListView* parent, int skipped,
   _costItem = costItem;
   setCostType(ct);
 
-  setText(1, i18n("(%1 items skipped)").arg(_skipped));
+  setText(1, i18n("(%n item skipped)", "(%n items skipped)", _skipped));
 }
 
 void CostListItem::setCostType(TraceCostType* ct)

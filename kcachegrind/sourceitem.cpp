@@ -81,11 +81,9 @@ SourceItem::SourceItem(QListViewItem* parent, int fileno, unsigned int lineno,
   SubCost cc = _lineCall->callCount();
   QString templ = "  ";
   if (cc==0)
-    templ += i18n("Active call to '%2'");
-  else if (cc==1)
-    templ += i18n("One call to '%2'");
+    templ += i18n("Active call to '%1'");
   else
-    templ += i18n("%1 calls to '%2'").arg(_lineCall->prettyCallCount());
+    templ += i18n("%n call to '%1'", "%n calls to '%1'", cc);
 
   QString callStr = templ.arg(_lineCall->call()->calledName());
   TraceFunction* calledF = _lineCall->call()->called();
@@ -225,7 +223,7 @@ int SourceItem::compare(QListViewItem * i, int col, bool ascending ) const
     // Same line: code gets above calls/jumps
     if (!_lineCall && !_lineJump) return -1;
     if (!si->_lineCall && !si->_lineJump) return 1;
-    
+
     // calls above jumps
     if (_lineCall && !si->_lineCall) return -1;
     if (si->_lineCall && !_lineCall) return 1;
@@ -234,14 +232,14 @@ int SourceItem::compare(QListViewItem * i, int col, bool ascending ) const
 	// Two calls: desending sort according costs
 	if (_pure < si->_pure) return 1;
 	if (_pure > si->_pure) return -1;
-	
+
 	// Two calls: sort according function names
 	TraceFunction* f1 = _lineCall->call()->called();
 	TraceFunction* f2 = si->_lineCall->call()->called();
 	if (f1->prettyName() > f2->prettyName()) return 1;
 	return -1;
     }
-    
+
     // Two jumps: descending sort according target line
     if (_lineJump->lineTo()->lineno() < si->_lineJump->lineTo()->lineno())
 	return -1;
@@ -302,7 +300,7 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 
       y1 = 0;
       y2 = height();
-      if (_lineJump && 
+      if (_lineJump &&
 	  (_lineJump->lineTo() == _jump[i]->lineTo()) &&
 	  (_jump[i]->lineFrom()->lineno() == _lineno)) {
 
@@ -352,7 +350,7 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 
       QPointArray a;
       a.putPoints(0, 7, x, y+h,
-		  x,y, x+w-8, y, x+w-8, y-2, 
+		  x,y, x+w-8, y, x+w-8, y-2,
 		  x+w, yy,
 		  x+w-8, y+h+2, x+w-8, y+h);
       p->setBrush(c);

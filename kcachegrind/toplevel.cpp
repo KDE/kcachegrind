@@ -29,6 +29,7 @@
 #include <qtextstream.h>
 #include <qsizepolicy.h>
 #include <qprogressbar.h>
+#include <qfile.h>
 
 // With Qt 3.1, we can disallow user interaction with long tasks.
 // This needs QEventLoop. Otherwise, QApplication::processEvents is used.
@@ -983,7 +984,7 @@ void TopLevel::exportGraph()
 
   QString cmd = QString("(dot %1 -Tps > %2.ps; kghostview %3.ps)&")
                 .arg(n).arg(n).arg(n);
-  system(cmd.ascii());
+  system(QFile::encodeName( cmd ));
 }
 
 

@@ -31,7 +31,7 @@
 #define USE_FIXCOST 1
 
 
-/* 
+/*
  * Loader for Calltree Profile data (format based on Cachegrind format).
  * See Calltree documentation for the file format.
  */
@@ -92,7 +92,7 @@ private:
 
 CachegrindLoader::CachegrindLoader()
   : Loader("Callgrind",
-           "Import filter for Cachegrind/Callgrind generated trace files")
+           i18n( "Import filter for Cachegrind/Callgrind generated trace files") )
 {}
 
 bool CachegrindLoader::canLoadTrace(QString name)
@@ -192,7 +192,7 @@ bool CachegrindLoader::parsePosition(FixString& line,
 
     return true;
 }
-    
+
 
 
 
@@ -231,7 +231,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
   currentAddr   =0;
   // default if there's no "positions:" line
   hasLineInfo = true;
-  hasAddrInfo = false;  
+  hasAddrInfo = false;
 
   // current function/line
   currentFunction = 0;
@@ -402,7 +402,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 		QString command = QString(line).stripWhiteSpace();
 		if (!data->command().isEmpty() &&
 		    data->command() != command) {
-		  
+
 		  kdError() << name << ":" << lineNo
 			    << " - redefined command, was '" << data->command()
 			    << "'" << endl;
@@ -462,7 +462,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 		    currentJumpToFile = currentFile;
 		}
 
-		currentJumpToFunction = 
+		currentJumpToFunction =
 		    data->compressedFunction(line,
 					     currentJumpToFile,
 					     currentObject);
@@ -774,7 +774,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 			 (nextLineType == CondJump),
 			 jumpsExecuted, jumpsFollowed);
 #endif
-      
+
       if (0) {
 	kdDebug() << name << ":" << lineNo
 		  << " - jump from 0x" << QString::number(currentAddr, 16)

@@ -3216,7 +3216,7 @@ void TreeMapWidget::addAreaStopItems(QPopupMenu* popup,
   popup->insertSeparator();
   int area = 100, count;
   for (count=0;count<3;count++) {
-    popup->insertItem(i18n("%1 Pixels").arg(area), id+2+count);
+    popup->insertItem(i18n("%n Pixel", "%n Pixels", area), id+2+count);
     if (area == minimalArea()) {
       popup->setItemChecked(id+2+count, true);
       foundArea = true;
@@ -3227,7 +3227,7 @@ void TreeMapWidget::addAreaStopItems(QPopupMenu* popup,
   if (minimalArea()>0) {
     popup->insertSeparator();
     if (!foundArea) {
-      popup->insertItem(i18n("%1 Pixels").arg(minimalArea()), id+10);
+      popup->insertItem(i18n("%n Pixel", "%n Pixels", minimalArea()), id+10);
       popup->setItemChecked(id+10, true);
     }
 

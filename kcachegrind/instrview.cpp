@@ -566,7 +566,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     if (0) qDebug("Running '%s'...", popencmd.ascii());
 
     // and run...
-    FILE* iFILE = popen(popencmd.ascii(), "r");
+    FILE* iFILE = popen(QFile::encodeName( popencmd ), "r");
     if (iFILE == 0) {
 	new InstrItem(this, 1,
 		      i18n("There is an error trying to execute the command"));
@@ -574,9 +574,8 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	new InstrItem(this, 3, popencmd);
 	new InstrItem(this, 4, "");
 	new InstrItem(this, 5,
-		      i18n("Check that you have installed the 'objdump'"));
-	new InstrItem(this, 6,
-		      i18n("utility from the 'binutils' package and try again."));
+		      i18n("Check that you have installed the 'objdump'\n"
+                   "utility from the 'binutils' package and try again."));
 	return false;
     }
     QFile file;
@@ -806,8 +805,9 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     if (noAssLines > 1) {
 	// trace cost not machting code
 	new InstrItem(this, 1,
-		      i18n("There are %1 cost lines without assembler code.")
-		      .arg(noAssLines));
+		      i18n("There is %n cost line without assembler code.",
+                   "There are %n cost lines without assembler code.",
+                   noAssLines));
 	new InstrItem(this, 2,
 		      i18n("This happens because the code of"));
 	new InstrItem(this, 3, QString("        %1").arg(objfile));

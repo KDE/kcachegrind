@@ -100,11 +100,9 @@ InstrItem::InstrItem(QListViewItem* parent, uint addr,
   SubCost cc = _instrCall->callCount();
   QString templ = "  ";
   if (cc==0)
-    templ += i18n("Active call to '%2'");
-  else if (cc==1)
-    templ += i18n("One call to '%2'");
+    templ += i18n("Active call to '%1'");
   else
-    templ += i18n("%1 calls to '%2'").arg(_instrCall->prettyCallCount());
+    templ += i18n("%n call to '%1'", "%n calls to '%1'", cc);
 
   QString callStr = templ.arg(_instrCall->call()->calledName());
   TraceFunction* calledF = _instrCall->call()->called();
@@ -358,7 +356,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 
       QPointArray a;
       a.putPoints(0, 7, x, y+h,
-		  x,y, x+w-8, y, x+w-8, y-2, 
+		  x,y, x+w-8, y, x+w-8, y-2,
 		  x+w, yy,
 		  x+w-8, y+h+2, x+w-8, y+h);
       p->setBrush(c);

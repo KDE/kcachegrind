@@ -56,11 +56,11 @@ CallMapView::CallMapView(bool showCallers, TraceItemView* parentView,
 {
   _showCallers = showCallers;
 
-  setFieldType(0, "Name");
-  setFieldType(1, "Cost");
-  setFieldType(2, "Location");
+  setFieldType(0, i18n( "Name" ));
+  setFieldType(1, i18n( "Cost" ));
+  setFieldType(2, i18n( "Location" ));
   setFieldPosition(2, TreeMapItem::TopLeft);
-  setFieldType(3, "Calls");
+  setFieldType(3, i18n( "Calls" ));
   setFieldPosition(3, TreeMapItem::TopRight);
 
   setSplitMode(DEFAULT_SPLITMODE);

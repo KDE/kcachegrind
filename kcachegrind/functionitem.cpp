@@ -51,7 +51,7 @@ FunctionItem::FunctionItem(QListView* parent, TraceFunction* f,
     _groupType = TraceCost::NoCostType;
     setGroupType(gt);
     setCostType(ct);
-    
+
     setText(3, f->prettyName());
     setText(4, f->location());
 }
@@ -68,8 +68,8 @@ FunctionItem::FunctionItem(QListView* parent, int skipped,
     _function = f;
     _groupType = TraceCost::NoCostType;
     setCostType(ct);
-    
-    setText(3, i18n("(%1 functions skipped)").arg(_skipped));
+
+    setText(3, i18n("(%n function skipped)", "(%n functions skipped)", skipped));
 }
 
 #if 0
@@ -117,7 +117,7 @@ void FunctionItem::setCostType(TraceCostType* c)
 }
 
 void FunctionItem::update()
-{    
+{
   double cumTotal = _function->data()->subCost(_costType);
   QString str;
 
@@ -138,11 +138,11 @@ void FunctionItem::update()
     // only text updates of incl./self
 
     // for all skipped functions, cost is below the given function
-    _sum  = _function->cumulative()->subCost(_costType);    
+    _sum  = _function->cumulative()->subCost(_costType);
     double cum  = 100.0 * _sum / cumTotal;
     if (Configuration::showPercentage())
       str = QString("%1").arg(cum, 0, 'f', Configuration::percentPrecision());
-    else 
+    else
       str = _function->cumulative()->prettySubCost(_costType);
     str = "< " + str;
     setText(0, str);
@@ -172,7 +172,7 @@ void FunctionItem::update()
       if (Configuration::showPercentage())
 	  setText(0, QString("%1")
 		  .arg(cum, 0, 'f', Configuration::percentPrecision()));
-      else 
+      else
 	  setText(0, _function->cumulative()->prettySubCost(_costType));
 
       setPixmap(0, costPixmap(_costType, _function->cumulative(), cumTotal));

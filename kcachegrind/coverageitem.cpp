@@ -66,7 +66,7 @@ CallerCoverageItem::CallerCoverageItem(QListView* parent, int skipped, Coverage*
   _base = base;
   _groupType = TraceCost::NoCostType;
 
-  setText(3, i18n("(%1 functions skipped)").arg(_skipped));
+  setText(3, i18n("(%n function skipped)", "(%n functions skipped)", _skipped));
 
   setCostType(ct);
   setGroupType(gt);
@@ -104,7 +104,7 @@ void CallerCoverageItem::update()
     str = QString("%1").arg(_pSum, 0, 'f', Configuration::percentPrecision());
   else
     str = _sum.pretty();
-  
+
   if (_skipped) {
     setText(0, QString("< %1").arg(str));
     return;
@@ -203,7 +203,7 @@ CalleeCoverageItem::CalleeCoverageItem(QListView* parent, int skipped, Coverage*
   _base = base;
   _groupType = TraceCost::NoCostType;
 
-  setText(4, i18n("(%1 functions skipped)").arg(_skipped));
+  setText(4, i18n("(%n function skipped)", "(%n functions skipped)", _skipped));
 
   setCostType(ct);
   setGroupType(gt);
