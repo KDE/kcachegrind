@@ -7,6 +7,8 @@
 #ifndef FIXCOST_H
 #define FIXCOST_H
 
+#define USE_FIXCOST 1
+
 #include "tracedata.h"
 
 struct SpaceChunk;

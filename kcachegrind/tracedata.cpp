@@ -38,9 +38,6 @@
 #define TRACE_DEBUG      0
 #define TRACE_ASSERTIONS 0
 
-#define USE_FIXCOST 1
-
-
 const int TraceCost::MaxRealIndex = MaxRealIndexValue;
 const int TraceCost::InvalidIndex = -1;
 
@@ -1844,7 +1841,7 @@ bool TracePartCall::isRecursion()
 
 void TracePartCall::update()
 {
-#ifndef USE_FIXCOST
+#if !USE_FIXCOST
   TraceCallListCost::update();
 #else
 
@@ -2076,7 +2073,7 @@ void TracePartFunction::update()
   }
 
   // self cost
-#ifndef USE_FIXCOST
+#if !USE_FIXCOST
   if (_partLines.count()>0) {
     TraceCost::clear();
 
@@ -2743,7 +2740,7 @@ TracePartLine* TraceLine::partLine(TracePart* part,
   if (!item) {
     item = new TracePartLine(this, part);
     addDep(item);
-#ifndef USE_FIXCOST
+#if !USE_FIXCOST
     part->addDep(item);
 #endif
     partFunction->addPartLine(item);
@@ -2949,7 +2946,7 @@ void TraceFunctionSource::invalidateDynamicCost()
 
 TraceLineMap* TraceFunctionSource::lineMap()
 {
-#ifdef USE_FIXCOST
+#if USE_FIXCOST
 
     if (_lineMapFilled) return _lineMap;
     _lineMapFilled = true;
@@ -3459,7 +3456,7 @@ TracePartFunction* TraceFunction::partFunction(TracePart* part,
   if (!item) {
     item = new TracePartFunction(this, part, partObject, partFile);
     addDep(item);
-#ifdef USE_FIXCOST
+#if USE_FIXCOST
     part->addDep(item);
 #endif
 
@@ -3775,7 +3772,7 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
 
 TraceInstrMap* TraceFunction::instrMap()
 {
-#ifdef USE_FIXCOST
+#if USE_FIXCOST
 
     if (_instrMapFilled) return _instrMap;
     _instrMapFilled = true;

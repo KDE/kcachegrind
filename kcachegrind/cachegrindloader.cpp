@@ -31,8 +31,6 @@
 
 
 #define TRACE_LOADER 0
-#define USE_FIXCOST 1
-
 
 /*
  * Loader for Calltree Profile data (format based on Cachegrind format).
@@ -719,7 +717,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
   emit updateStatus(statusMsg,statusProgress);
 
 
-#ifdef USE_FIXCOST
+#if USE_FIXCOST
   // FixCost Memory Pool
   FixPool* pool = _data->fixPool();
 #endif
@@ -1063,7 +1061,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
       ensureFunction();
 
 
-#ifdef USE_FIXCOST
+#if USE_FIXCOST
       if (!currentFunctionSource ||
 	  (currentFunctionSource->file() != currentFile))
 	  currentFunctionSource = currentFunction->sourceFile(currentFile,
@@ -1071,14 +1069,14 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 #else
       if (hasAddrInfo) {
 	  if (!currentInstr ||
-	      (currentInstr->address() != currentPos.fromAddr)) {
+	      (currentInstr->addr() != currentPos.fromAddr)) {
 	      currentInstr = currentFunction->instr(currentPos.fromAddr,
 						    true);
 
 	      if (!currentInstr) {
 		kdError() << _filename << ":" << _lineNo
 			  << "- invalid address "
-			  << currentPos.fromAddr << endl;
+			  << currentPos.fromAddr.toString() << endl;
 
 		continue;
 	      }
@@ -1120,7 +1118,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 
     if (nextLineType == SelfCost) {
 
-#ifdef USE_FIXCOST
+#if USE_FIXCOST
       new (pool) FixCost(part, pool,
 			 currentFunctionSource,
 			 currentPos,
@@ -1158,7 +1156,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
         calling->partCall(part, currentPartFunction,
                           currentCalledPartFunction);
 
-#ifdef USE_FIXCOST
+#if USE_FIXCOST
       FixCallCost* fcc;
       fcc = new (pool) FixCallCost(part, pool,
 				   currentFunctionSource,
@@ -1216,7 +1214,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 	    currentJumpToFunction->sourceFile(currentJumpToFile, true) :
 	    currentFunctionSource;
 
-#ifdef USE_FIXCOST
+#if USE_FIXCOST
       new (pool) FixJump(part, pool,
 			 /* source */
 			 hasLineInfo ? currentPos.fromLine : 0,
