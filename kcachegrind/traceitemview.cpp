@@ -23,6 +23,7 @@
 #include <qwidget.h>
 #include <kconfig.h>
 #include <klocale.h>
+#include <kdebug.h>
 
 #include "traceitemview.h"
 #include "toplevel.h"
@@ -35,6 +36,7 @@ TraceItemView::TraceItemView(TraceItemView* parentView, TopLevel* top)
   _topLevel = top ? top : parentView->topLevel();
 
   _data = _newData = 0;
+  // _partList and _newPartList is empty
   _activeItem = _newActiveItem = 0;
   _selectedItem = _newSelectedItem = 0;
   _costType = _newCostType = 0;
@@ -141,13 +143,14 @@ TraceFunction* TraceItemView::activeFunction()
 }
 
 bool TraceItemView::set(int changeType, TraceData* d,
-			TraceCostType* t ,TraceItem::CostType g,
+			TraceCostType* t ,TraceItem::CostType g, const TracePartList& l,
                         TraceItem* a, TraceItem* s)
 {
   _status |= changeType;
   _newData = d;
   _newGroupType = g;
   _newCostType = t;
+  _newPartList = l;
   _newSelectedItem = s;
   _newActiveItem = canShow(a);
   if (!_newActiveItem) {
@@ -181,6 +184,13 @@ void TraceItemView::updateView(bool force)
     // if there's no data change and data is 0, no update needed
     if (!_data) return;
   }
+
+  if (!(_newPartList == _partList)) {
+    _status |= partsChanged;
+    _partList = _newPartList;
+  }
+  else
+    _status &= ~partsChanged;
 
   if (_newActiveItem != _activeItem) {
 
@@ -219,23 +229,36 @@ void TraceItemView::updateView(bool force)
   if (!force && (_status == nothingChanged)) return;
 
 #if TRACE_UPDATES
-  qDebug("%s::doUpdate ( %s%s%s)",
-         widget() ? widget()->name() : "TraceItemView",
-	 (_status & partsChanged)        ? "part ":"",
-         (_status & dataChanged)         ? "data ":"",
-         (_status & configChanged)       ? "config ":"");
+  kdDebug() << (widget() ? widget()->name() : "TraceItemView")
+            << "::doUpdate ( "
+            << ((_status & dataChanged) ? "data ":"")
+            << ((_status & configChanged) ? "config ":"")
+            << ")" << endl;
+
+  if (_status & partsChanged)
+    kdDebug() << "  Part List "
+              << _partList.names()
+              << endl;
 
   if (_status & costTypeChanged)
-      qDebug( "  Cost type %s", _costType ? _costType->name().ascii() : "?");
-  if (_status & groupTypeChanged)
-      qDebug( "  Group type %s", TraceItem::typeName(_groupType).ascii());
-  if (_status & activeItemChanged)
-      qDebug( "  Active: %s",
-	      _activeItem ? _activeItem->fullName().ascii() : "?");
-  if (_status & selectedItemChanged)
-      qDebug( "  Selected: %s",
-	      _selectedItem ? _selectedItem->fullName().ascii() : "?");
+    kdDebug() << "  Cost type "
+              << (_costType ? _costType->name().ascii() : "?")
+              << endl;
 
+  if (_status & groupTypeChanged)
+    kdDebug() << "  Group type "
+              << TraceItem::typeName(_groupType)
+              << endl;
+
+  if (_status & activeItemChanged)
+    kdDebug() << "  Active: "
+              << (_activeItem ? _activeItem->fullName().ascii() : "?")
+              << endl;
+
+  if (_status & selectedItemChanged)
+    kdDebug() << "  Selected: "
+              << (_selectedItem ? _selectedItem->fullName().ascii() : "?")
+              << endl;
 #endif
 
   int st = _status;
@@ -250,13 +273,39 @@ void TraceItemView::updateView(bool force)
 }
 
 
-void TraceItemView::selected(TraceItemView*, TraceItem* i)
+void TraceItemView::selected(TraceItemView* sender, TraceItem* i)
 {
+  kdDebug() << (widget() ? widget()->name() : "TraceItemView")
+            << "::selected "
+            << (i ? i->name().ascii(): "(nil)")
+            << ", sender "
+            << sender->widget()->name() << endl;
+
   if (_parentView) _parentView->selected(this, i);
 }
 
-void TraceItemView::activated(TraceItemView*, TraceItem* i)
+void TraceItemView::selected(TraceItemView* sender, const TracePartList& l)
 {
+  kdDebug() << (widget() ? widget()->name() : "TraceItemView")
+            << "::selected "
+            << l.names()
+            << ", sender "
+            << sender->widget()->name() << endl;
+
+  if (_parentView)
+    _parentView->selected(this, l);
+  else
+    if (_topLevel) _topLevel->activePartsChangedSlot(l);
+}
+
+void TraceItemView::activated(TraceItemView* sender, TraceItem* i)
+{
+  kdDebug() << (widget() ? widget()->name() : "TraceItemView")
+            << "::activated "
+            << (i ? i->name().ascii(): "(nil)")
+            << ", sender "
+            << sender->widget()->name() << endl;
+
   if (_parentView)
       _parentView->activated(this, i);
   else
@@ -290,8 +339,20 @@ void TraceItemView::selected(TraceItem* i)
 
 }
 
+void TraceItemView::selected(const TracePartList& l)
+{
+  if (_parentView)
+      _parentView->selected(this, l);
+  else
+      if (_topLevel) _topLevel->activePartsChangedSlot(l);
+}
+
 void TraceItemView::activated(TraceItem* i)
 {
+  kdDebug() << (widget() ? widget()->name() : "TraceItemView")
+            << "::activated "
+            << (i ? i->name().ascii(): "(nil)") << endl;
+
   if (_parentView)
       _parentView->activated(this, i);
   else

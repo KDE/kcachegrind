@@ -1081,6 +1081,8 @@ private:
 
 class TracePartList: public QPtrList<TracePart>
 {
+public:
+  QString names() const;
 protected:
   int compareItems ( Item item1, Item item2 );
 };
@@ -1760,11 +1762,11 @@ public:
   // factory for function cycles
   TraceFunctionCycle* functionCycle(TraceFunction*);
 
-  /** 
+  /**
    * Search for item with given name and highest subcost of given cost type.
    *
    * For some items, they will only be found if the parent cost is given:
-   *  Instr, Line, Call  => need parent of type Function 
+   *  Instr, Line, Call  => need parent of type Function
    * For Function, a parent of type Obj/File/Class can be given, but
    * isn't needed.
    */

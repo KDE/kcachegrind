@@ -66,7 +66,7 @@ private:
 
   HighestCostList _hc;
   // when setting a
-  bool _inSetCostItem, _inSetFunction;
+  bool _inSetGroup, _inSetFunction;
 };
 
 #endif

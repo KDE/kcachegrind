@@ -4001,6 +4001,19 @@ int TracePartList::compareItems ( Item item1, Item item2 )
 	(p1->threadID()   - p2->threadID());
 }
 
+QString TracePartList::names() const
+{
+  QString res;
+  TracePart* p;
+  TracePartList l = *this;
+  for (p=l.first();p;p=l.next()) {
+    if (!res.isEmpty()) res += ", ";
+    res += p->shortName();
+  }
+
+  return res;
+}
+
 
 
 //---------------------------------------------------

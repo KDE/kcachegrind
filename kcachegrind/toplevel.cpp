@@ -855,7 +855,12 @@ void TopLevel::querySlot()
 
 void TopLevel::configureKeys()
 {
+#if KDE_VERSION > 319
+  // for KDE 3.2: KKeyDialog::configureKeys is deprecated
   KKeyDialog::configure(actionCollection(), this, true);
+#else
+  KKeyDialog::configureKeys(actionCollection(), xmlFile(), true, this);
+#endif
 }
 
 
@@ -1581,10 +1586,10 @@ void TopLevel::activePartsChangedSlot(const TracePartList& list)
 
   _partSelection->activePartsChangedSlot(list);
 
-  _multiView->notifyChange(TraceItemView::partsChanged);
+  _multiView->set(list);
   _multiView->updateView();
 
-  _functionSelection->notifyChange(TraceItemView::partsChanged);
+  _functionSelection->set(list);
   _functionSelection->updateView();
 
   _stackSelection->refresh();

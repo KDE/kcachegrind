@@ -86,12 +86,13 @@ public:
   void setData(TraceData* d) { _newData = d; }
   void set(TraceCostType* t) { _newCostType = t; }
   void set(TraceItem::CostType g) { _newGroupType = g; }
+  void set(const TracePartList& l) { _newPartList = l; }
   // returns false if nothing can be shown for this trace item
   bool activate(TraceItem* i);
   void select(TraceItem* i);
   void notifyChange(int changeType) { _status |= changeType; }
   // all in one
-  bool set(int, TraceData*, TraceCostType*, TraceItem::CostType,
+  bool set(int, TraceData*, TraceCostType*, TraceItem::CostType, const TracePartList&,
 	   TraceItem*, TraceItem*);
 
   // general update request, call if view is/gets visible
@@ -102,6 +103,7 @@ public:
    * Default implementation notifies parent
    */
   virtual void selected(TraceItemView* sender, TraceItem*);
+  virtual void selected(TraceItemView* sender, const TracePartList&);
   virtual void activated(TraceItemView* sender, Direction);
   virtual void selected(TraceItemView* sender, TraceCostType*);
   virtual void activated(TraceItemView* sender, TraceItem*);
@@ -113,6 +115,7 @@ public:
   TraceItem* selectedItem() const { return _newSelectedItem; }
   TraceCostType* costType() const { return _newCostType; }
   TraceItem::CostType groupType() const { return _newGroupType; }
+  const TracePartList& partList() const { return _newPartList; }
 
   TraceFunction* activeFunction();
   int status() const { return _status; }
@@ -145,6 +148,7 @@ public:
 protected:
   // helpers to call selected()/activated() of parentView
   void selected(TraceItem*);
+  void selected(const TracePartList&);
   void activated(TraceItem*);
   void selected(TraceCostType*);
   void activated(Direction);
@@ -159,12 +163,14 @@ protected:
   TopLevel* _topLevel;
 
   TraceData* _data;
+  TracePartList _partList;
   TraceItem *_activeItem, *_selectedItem;
   TraceCostType* _costType;
   TraceItem::CostType _groupType;
 
 private:
   TraceData* _newData;
+  TracePartList _newPartList;
   TraceItem *_newActiveItem, *_newSelectedItem;
   TraceCostType* _newCostType;
   TraceItem::CostType _newGroupType;

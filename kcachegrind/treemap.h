@@ -592,16 +592,17 @@ public:
   void restoreOptions(KConfigGroup*, QString prefix = QString::null);
 
   /**
-   * Popups for the context menu.
-   * 1st int is the menu id where to start for the items
+   * These functions populate given popup menus.
+   * The added items are already connected to handlers.
+   *
+   * The int is the menu id where to start for the items (100 IDs reserved).
    */
-  QPopupMenu* splitDirectionMenu(int);
-  QPopupMenu* selectionMenu(int, TreeMapItem*);
-  QPopupMenu* fieldStopMenu(int, TreeMapItem*);
-  QPopupMenu* areaStopMenu(int, TreeMapItem*);
-  QPopupMenu* depthStopMenu(int, TreeMapItem*);
-  QPopupMenu* visualizationMenu(int);
-
+  void addSplitDirectionItems(QPopupMenu*, int);
+  void addSelectionItems(QPopupMenu*, int, TreeMapItem*);
+  void addFieldStopItems(QPopupMenu*, int, TreeMapItem*);
+  void addAreaStopItems(QPopupMenu*, int, TreeMapItem*);
+  void addDepthStopItems(QPopupMenu*, int, TreeMapItem*);
+  void addVisualizationItems(QPopupMenu*, int);
 
   TreeMapWidget* widget() { return this; }
   TreeMapItem* current() const { return _current; }
@@ -652,7 +653,8 @@ signals:
    * the <kbd> is set to true
    */
   void currentChanged(TreeMapItem*, bool keyboard);
-
+  void clicked(TreeMapItem*);
+  void returnPressed(TreeMapItem*);
   void doubleClicked(TreeMapItem*);
   void rightButtonPressed(TreeMapItem*, const QPoint &);
   void contextMenuRequested(TreeMapItem*, const QPoint &);

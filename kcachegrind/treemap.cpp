@@ -822,6 +822,12 @@ void TreeMapItem::redraw()
 void TreeMapItem::clear()
 {
   if (_children) {
+    // delete selected items below this item from selection
+    if (_widget) {
+      TreeMapItem* child = _children->first();
+      for (;child;child = _children->next())
+        _widget->clearSelection(child);
+    }
     delete _children;
     _children = 0;
   }
@@ -1720,11 +1726,6 @@ void TreeMapWidget::mousePressEvent( QMouseEvent* e )
   _oldCurrent = _current;
 
   TreeMapItem* i = item(e->x(), e->y());
-  if (e->button() == RightButton) {
-    setCurrent(i);
-    emit rightButtonPressed(i, e->pos() );
-  }
-  if (e->button() != LeftButton) return;
 
   _pressed = i;
 
@@ -1735,7 +1736,11 @@ void TreeMapWidget::mousePressEvent( QMouseEvent* e )
   bool changed = false;
   TreeMapItem* item = possibleSelection(_pressed);
 
-  switch(_selectionMode) {
+  if ((e->button() == RightButton) && isTmpSelected(item)) {
+    // if right button on selected item, don't change selection
+    ;
+  }
+  else switch(_selectionMode) {
   case Single:
     changed = setTmpSelected(item, true);
     break;
@@ -1764,6 +1769,20 @@ void TreeMapWidget::mousePressEvent( QMouseEvent* e )
 
   if (changed)
     redraw();
+
+  if (e->button() == RightButton) {
+
+    // emit selection change
+    if (! (_tmpSelection == _selection)) {
+      _selection = _tmpSelection;
+      if (_selectionMode == Single)
+	emit selectionChanged(_lastOver);
+      emit selectionChanged();
+    }
+    _pressed = 0;
+    _lastOver = 0;
+    emit rightButtonPressed(i, e->pos());
+  }
 }
 
 void TreeMapWidget::mouseMoveEvent( QMouseEvent* e )
@@ -1828,6 +1847,8 @@ void TreeMapWidget::mouseReleaseEvent( QMouseEvent* )
         emit selectionChanged(_lastOver);
       emit selectionChanged();
     }
+    if (!_inControlDrag && !_inShiftDrag && (_pressed == _lastOver))
+      emit clicked(_lastOver);
   }
 
   _pressed = 0;
@@ -1897,7 +1918,8 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
     _lastOver = 0;
   }
 
-  if (e->key() == Key_Space) {
+  if ((e->key() == Key_Space) ||
+      (e->key() == Key_Return)) {
 
     switch(_selectionMode) {
     case NoSelection:
@@ -1917,11 +1939,15 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
         _selectionMode = Extended;
       }
     }
+
+    if (_current && (e->key() == Key_Return))
+      emit returnPressed(_current);
+
     return;
   }
 
   if (!_current) {
-    if (e->key() == Key_Return) {
+    if (e->key() == Key_Down) {
       setCurrent(_base, true);
     }
     return;
@@ -1937,25 +1963,26 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
   }
 
 
-  if (e->key() == Key_Backspace) {
+  if ((e->key() == Key_Backspace) ||
+      (e->key() == Key_Up)) {
     newItem = visibleItem(p);
     setCurrent(newItem, true);
   }
-  else if (e->key() == Key_Left || e->key() == Key_Down) {
+  else if (e->key() == Key_Left) {
     int newIdx = goBack ? nextVisible(_current) : prevVisible(_current);
     if (p && newIdx>=0) {
       p->setIndex(newIdx);
       setCurrent(p->children()->at(newIdx), true);
     }
   }
-  else if (e->key() == Key_Right || e->key() == Key_Up) {
+  else if (e->key() == Key_Right) {
     int newIdx = goBack ? prevVisible(_current) : nextVisible(_current);
     if (p && newIdx>=0) {
       p->setIndex(newIdx);
       setCurrent(p->children()->at(newIdx), true);
     }
   }
-  else if (e->key() == Key_Return) {
+  else if (e->key() == Key_Down) {
     if (_current->children() && _current->children()->count()>0) {
       int newIdx = _current->index();
       if (newIdx<0)
@@ -2934,11 +2961,9 @@ void TreeMapWidget::splitActivated(int id)
 }
 
 
-QPopupMenu* TreeMapWidget::splitDirectionMenu(int id)
+void TreeMapWidget::addSplitDirectionItems(QPopupMenu* popup, int id)
 {
   _splitID = id;
-
-  QPopupMenu* popup = new QPopupMenu();
   popup->setCheckable(true);
 
   connect(popup, SIGNAL(activated(int)),
@@ -2966,7 +2991,6 @@ QPopupMenu* TreeMapWidget::splitDirectionMenu(int id)
     case TreeMapItem::Vertical:   popup->setItemChecked(id+8,true); break;
     default: break;
   }
-  return popup;
 }
 
 void TreeMapWidget::visualizationActivated(int id)
@@ -2992,11 +3016,10 @@ void TreeMapWidget::visualizationActivated(int id)
   else if ((id%10) == 8) setFieldPosition(f, DrawParams::BottomRight);
 }
 
-QPopupMenu* TreeMapWidget::visualizationMenu(int id)
+void TreeMapWidget::addVisualizationItems(QPopupMenu* popup, int id)
 {
   _visID = id;
 
-  QPopupMenu* popup = new QPopupMenu();
   popup->setCheckable(true);
 
   QPopupMenu* bpopup = new QPopupMenu();
@@ -3007,8 +3030,9 @@ QPopupMenu* TreeMapWidget::visualizationMenu(int id)
   connect(bpopup, SIGNAL(activated(int)),
           this, SLOT(visualizationActivated(int)));
 
-  popup->insertItem(i18n("Nesting"),
-                    splitDirectionMenu(id+100), id);
+  QPopupMenu* spopup = new QPopupMenu();
+  addSplitDirectionItems(spopup, id+100);
+  popup->insertItem(i18n("Nesting"), spopup, id);
 
   popup->insertItem(i18n("Border"), bpopup, id+1);
   bpopup->insertItem(i18n("Correct Borders Only"), id+2);
@@ -3028,7 +3052,7 @@ QPopupMenu* TreeMapWidget::visualizationMenu(int id)
   popup->insertItem(i18n("Shading"), id+11);
   popup->setItemChecked(id+11,isShadingEnabled());
 
-  if (_attr.size() ==0) return popup;
+  if (_attr.size() ==0) return;
 
   popup->insertSeparator();
   int f;
@@ -3067,8 +3091,6 @@ QPopupMenu* TreeMapWidget::visualizationMenu(int id)
     connect(tpopup, SIGNAL(activated(int)),
             this, SLOT(visualizationActivated(int)));
   }
-
-  return popup;
 }
 
 void TreeMapWidget::selectionActivated(int id)
@@ -3083,13 +3105,13 @@ void TreeMapWidget::selectionActivated(int id)
     setSelected(i, true);
 }
 
-QPopupMenu* TreeMapWidget::selectionMenu(int id, TreeMapItem* i)
+void TreeMapWidget::addSelectionItems(QPopupMenu* popup,
+				      int id, TreeMapItem* i)
 {
-  if (!i) return 0;
+  if (!i) return;
 
   _selectionID = id;
   _menuItem = i;
-  QPopupMenu* popup = new QPopupMenu();
 
   connect(popup, SIGNAL(activated(int)),
           this, SLOT(selectionActivated(int)));
@@ -3100,8 +3122,6 @@ QPopupMenu* TreeMapWidget::selectionMenu(int id, TreeMapItem* i)
     popup->insertItem(i->text(0), id++);
     i = i->parent();
   }
-
-  return popup;
 }
 
 void TreeMapWidget::fieldStopActivated(int id)
@@ -3119,10 +3139,11 @@ void TreeMapWidget::fieldStopActivated(int id)
   }
 }
 
-QPopupMenu* TreeMapWidget::fieldStopMenu(int id, TreeMapItem* i)
+void TreeMapWidget::addFieldStopItems(QPopupMenu* popup,
+				      int id, TreeMapItem* i)
 {
   _fieldStopID = id;
-  QPopupMenu* popup = new QPopupMenu();
+
   connect(popup, SIGNAL(activated(int)),
           this, SLOT(fieldStopActivated(int)));
 
@@ -3151,8 +3172,6 @@ QPopupMenu* TreeMapWidget::fieldStopMenu(int id, TreeMapItem* i)
     popup->insertItem(fieldStop(0), id+1);
     popup->setItemChecked(id+1, true);
   }
-
-  return popup;
 }
 
 void TreeMapWidget::areaStopActivated(int id)
@@ -3169,12 +3188,12 @@ void TreeMapWidget::areaStopActivated(int id)
   else if (id == _areaStopID+6) setMinimalArea(minimalArea()/2);
 }
 
-QPopupMenu* TreeMapWidget::areaStopMenu(int id, TreeMapItem* i)
+void TreeMapWidget::addAreaStopItems(QPopupMenu* popup,
+				     int id, TreeMapItem* i)
 {
   _areaStopID = id;
   _menuItem = i;
 
-  QPopupMenu* popup = new QPopupMenu();
   connect(popup, SIGNAL(activated(int)),
           this, SLOT(areaStopActivated(int)));
 
@@ -3217,8 +3236,6 @@ QPopupMenu* TreeMapWidget::areaStopMenu(int id, TreeMapItem* i)
     popup->insertItem(i18n("Half Area Limit (to %1)")
                        .arg(minimalArea()/2), id+6);
   }
-
-  return popup;
 }
 
 
@@ -3233,12 +3250,12 @@ void TreeMapWidget::depthStopActivated(int id)
   else if (id == _depthStopID+3) setMaxDrawingDepth(maxDrawingDepth()+1);
 }
 
-QPopupMenu* TreeMapWidget::depthStopMenu(int id, TreeMapItem* i)
+void TreeMapWidget::addDepthStopItems(QPopupMenu* popup,
+				      int id, TreeMapItem* i)
 {
   _depthStopID = id;
   _menuItem = i;
 
-  QPopupMenu* popup = new QPopupMenu();
   connect(popup, SIGNAL(activated(int)),
           this, SLOT(depthStopActivated(int)));
 
@@ -3270,8 +3287,6 @@ QPopupMenu* TreeMapWidget::depthStopMenu(int id, TreeMapItem* i)
     popup->insertItem(i18n("Increment (to %1)")
                        .arg(maxDrawingDepth()+1), id+3);
   }
-
-  return popup;
 }
 
 

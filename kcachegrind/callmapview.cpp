@@ -54,7 +54,7 @@ CallMapView::CallMapView(bool showCallers, TraceItemView* parentView,
                          QWidget* parent, const char* name)
   : TreeMapWidget(new CallMapBaseItem(), parent, name),  TraceItemView(parentView)
 {
-    _showCallers = showCallers;
+  _showCallers = showCallers;
 
   setFieldType(0, "Name");
   setFieldType(1, "Cost");
@@ -80,6 +80,9 @@ CallMapView::CallMapView(bool showCallers, TraceItemView* parentView,
           SIGNAL(doubleClicked(TreeMapItem*)),
           SLOT(activatedSlot(TreeMapItem*)));
   connect(this,
+          SIGNAL(returnPressed(TreeMapItem*)),
+          SLOT(activatedSlot(TreeMapItem*)));
+  connect(this,
           SIGNAL(currentChanged(TreeMapItem*, bool)),
           SLOT(selectedSlot(TreeMapItem*, bool)));
   connect(this,
@@ -91,38 +94,42 @@ CallMapView::CallMapView(bool showCallers, TraceItemView* parentView,
 
 QString CallMapView::whatsThis() const
 {
-    return i18n( "<b>Call Graph</b>"
-		 "<p>This graph shows the nested hierarchy of "
-		 "calls happing from the current selected function. "
-		 "Each colored rectangle represents a function; "
-		 "its size tries to be proportional to the cost spent "
-		 "therein (however, there are drawing constrains). "
+  QString s = _showCallers ?
+              i18n( "<b>Caller Map</b>"
+                    "<p>This graph shows the nested hierarchy of "
+                    "all callers of the current activated function. "
+                    "Each colored rectangle represents a function; "
+                    "its size tries to be proportional to the cost spent "
+                    "therein while the active function is running "
+                    "(however, there are drawing constrains).</p>") :
+              i18n("<b>Call Map</b>"
+                   "<p>This graph shows the nested hierarchy of "
+                   "all callees of the current activated function. "
+                   "Each colored rectangle represents a function; "
+                   "its size tries to be proportional to the cost spent "
+                   "therein while the active function is running "
+                   "(however, there are drawing constrains).</p>");
 
-		 "The default drawing mode is Callee mode: the nested "
-		 "rectangles (childs) of a bigger rectangle (parent) "
-		 "are the direct callers of the "
-		 "function for the parent rectangle. In Caller mode "
-		 "(see Context menu), the nested rectangles are the "
-		 "callers. The semantic of the shown costs is the "
-		 "same as in the Coverage tab.</p>"
+  s += i18n( "<p>Appearance options can be found in the "
+             "in the context menu. To get exact size proportions, "
+             "choose 'Hide incorrect borders'. As this mode can be "
+             "<em>very</em> time consuming, you may want to limit "
+             "the maximum drawn nesting level before. "
+             "'Best' determinates the split direction for childs "
+             "from the aspect ratio of the parent. "
+             "'Always Best' decides on remaining space for each "
+             "sibling. "
+             "'Ignore Proportions' takes space for function name "
+             "drawing <em>before</em> drawing childs. Note that "
+             "size proportions can get <em>heavily</em> wrong.</p>"
 
-		 "<p>Appearance options can be found in the "
-		 "in the context menu. To get exact size proportions, "
-		 "choose 'Hide incorrect borders'. As this mode can be "
-		 "<em>very</em> time consuming, you may want to limit "
-		 "the maximum drawn nesting level before. "
-		 "'Best' determinates the split direction for childs "
-		 "from the aspect ratio of the parent. "
-		 "'Always Best' decides on remaining space for each "
-		 "sibling. "
-		 "'Ignore Proportions' takes space for function name "
-		 "drawing <em>before</em> drawing childs. Note that "
-		 "size proportions can get <em>heavily</em> wrong.</p>"
-		 "<p>This is a <em>TreeMap</em> widget. "
-		 "Keyboard navigation is available with the arrow "
-		 "keys, <em>Return</em> to go a nesting level down, "
-		 "<em>Backspace</em> to go up, and <em>Space</em> to "
-		 "select the current item.</p>");
+             "<p>This is a <em>TreeMap</em> widget. "
+             "Keyboard navigation is available with the left/right arrow "
+             "keys for traversing siblings, and up/down arrow keys "
+             "to go a nesting level up/down. "
+             "<em>Return</em> activates the current item.</p>");
+
+  return s;
 }
 
 void CallMapView::context(TreeMapItem* i,const QPoint & p)
@@ -260,8 +267,9 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   vpopup.setCheckable(true);
   popup.insertItem(i18n("Visualisation"), &vpopup, 10);
 
-  vpopup.insertItem(i18n("Split Direction"),
-                    splitDirectionMenu(1001), 1000);
+  QPopupMenu splitpopup;
+  addSplitDirectionItems(&splitpopup, 1001);
+  vpopup.insertItem(i18n("Split Direction"), &splitpopup, 1000);
 
   vpopup.insertItem(i18n("Skip Incorrect Borders"), 40);
   vpopup.setItemEnabled(40, !_showCallers);
@@ -499,9 +507,10 @@ void CallMapView::doUpdate(int changeType)
       }
       ((CallMapBaseItem*)base())->setFunction(f);
   }
-  else if ((changeType & dataChanged) ||
-           (changeType & configChanged)) {
-    // this regenerates the treemap
+  else if ( ((changeType & partsChanged) && Configuration::showCycles()) ||
+            (changeType & dataChanged) ||
+            (changeType & configChanged)) {
+    /* regenerates the treemap because traceitems were added/removed */
     base()->refresh();
   }
   else if ((changeType & partsChanged) ||

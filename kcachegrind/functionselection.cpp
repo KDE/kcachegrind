@@ -44,7 +44,7 @@ FunctionSelection::FunctionSelection( TopLevel* top,
     : FunctionSelectionBase(parent, name), TraceItemView(0, top)
 {
   _group = 0;
-  _inSetCostItem = false;
+  _inSetGroup = false;
   _inSetFunction = false;
 
   // we start with desending cost sorting
@@ -269,9 +269,9 @@ void FunctionSelection::setGroup(TraceCostItem* g)
   if (item) {
     groupList->ensureItemVisible(item);
     // prohibit signalling of a group selection
-    _inSetCostItem = true;
+    _inSetGroup = true;
     groupList->setSelected(item, true);
-    _inSetCostItem = false;
+    _inSetGroup = false;
   }
   else
     groupList->clearSelection();
@@ -322,31 +322,31 @@ void FunctionSelection::refresh()
   // update group from _activeItem if possible
   if (_activeItem && (_activeItem->type() == _groupType))
     _group = (TraceCostItem*) _activeItem;
-  
+
   switch(_groupType) {
   case TraceItem::Object:
-    
+
     for ( oit = _data->objectMap().begin();
           oit != _data->objectMap().end(); ++oit )
       _hc.addCost(&(*oit), (*oit).subCost(_costType));
     break;
-    
+
   case TraceItem::Class:
-    
+
     for ( cit = _data->classMap().begin();
           cit != _data->classMap().end(); ++cit )
       _hc.addCost(&(*cit), (*cit).subCost(_costType));
     break;
-    
+
   case TraceItem::File:
-    
+
     for ( fit = _data->fileMap().begin();
           fit != _data->fileMap().end(); ++fit )
       _hc.addCost(&(*fit), (*fit).subCost(_costType));
     break;
-    
+
   case TraceItem::FunctionCycle:
-    {    
+    {
       // add all cycles
       TraceFunctionCycleList l =  _data->functionCycles();
       for (group=l.first();group;group=l.next())
@@ -354,7 +354,7 @@ void FunctionSelection::refresh()
     }
 
   break;
-  
+
   default:
     {
       QListViewItem* oldItem = functionList->selectedItem();
@@ -367,7 +367,7 @@ void FunctionSelection::refresh()
 	if (oldPos < 0 || oldPos > functionList->height())
 	  oldFunction = 0;
       }
-      
+
       functionList->setUpdatesEnabled(false);
       functionList->clear();
       functionList->setColumnWidth(0, 50);
@@ -377,7 +377,7 @@ void FunctionSelection::refresh()
       if (0) qDebug("Function %s at %d, Item %p",
 		    oldFunction ? oldFunction->name().ascii() : "-",
 		    oldPos, (void*)oldItem);
-      
+
       TraceFunctionMap::Iterator it;
       TraceFunction *f;
       i = 0;
@@ -385,17 +385,17 @@ void FunctionSelection::refresh()
       for ( it = _data->functionMap().begin();
 	    it != _data->functionMap().end(); ++it )
 	_hc.addCost(&(*it), (*it).cumulative()->subCost(_costType));
-      
+
       TraceFunctionCycleList l =  _data->functionCycles();
       for (f=l.first();f;f=l.next())
 	_hc.addCost(f, f->cumulative()->subCost(_costType));
-      
-      if (_activeItem && 
+
+      if (_activeItem &&
 	  ((_activeItem->type() == TraceItem::Function) ||
 	   (_activeItem->type() == TraceItem::FunctionCycle)))
 	fitem = new FunctionItem(functionList, (TraceFunction*)_activeItem,
 				 _costType, _groupType);
-      
+
       for(int i=0;i<_hc.realCount();i++) {
 	f = (TraceFunction*)_hc[i];
 	if (f == _activeItem) continue;
@@ -407,19 +407,23 @@ void FunctionSelection::refresh()
 			 (TraceFunction*)_hc[_hc.maxSize()-1], _costType);
       }
       functionList->sort();
-      
+
       if (fitem && oldFunction) {
+        _inSetFunction = true;
 	functionList->setSelected(fitem, true);
+        _inSetFunction = false;
 	int newPos = functionList->itemPos(fitem) - functionList->contentsY();
 	functionList->scrollBy(0, newPos-oldPos);
       }
       else if (fitem) {
 	functionList->ensureItemVisible(fitem);
+        _inSetFunction = true;
 	functionList->setSelected(fitem, true);
+        _inSetFunction = false;
       }
       else
 	functionList->clearSelection();
-      
+
       functionList->setUpdatesEnabled(true);
       functionList->repaint();
       //functionList->triggerUpdate();
@@ -428,10 +432,10 @@ void FunctionSelection::refresh()
       return;
     }
   }
-  
+
   // we always put group of active item in list, even if
   // it would be skipped because of small costs
-  if (_group) 
+  if (_group)
     item = new CostListItem(groupList, _group, _costType);
 
   for(int i=0;i<_hc.realCount();i++) {
@@ -448,7 +452,9 @@ void FunctionSelection::refresh()
   groupList->sort();
   if (item) {
     groupList->ensureItemVisible(item);
+    _inSetGroup = true;
     groupList->setSelected(item, true);
+    _inSetGroup = false;
   }
   else
     groupList->clearSelection();
@@ -509,7 +515,7 @@ void FunctionSelection::groupSelected(QListViewItem* i)
   _hc.clear(Configuration::maxListCount());
   for (f=list.first();f;f=list.next())
     _hc.addCost(f, f->cumulative()->subCost(_costType));
-            
+
   for(int i=0;i<_hc.realCount();i++)
     new FunctionItem(functionList, (TraceFunction*)_hc[i], _costType, _groupType);
   if (_hc.hasMore()) {
@@ -523,7 +529,7 @@ void FunctionSelection::groupSelected(QListViewItem* i)
   functionList->repaint();
 
   // Don't emit signal if cost item was changed programatically
-  if (!_inSetCostItem) {
+  if (!_inSetGroup) {
       _selectedItem = g;
       selected(g);
   }
@@ -581,14 +587,15 @@ void FunctionSelection::functionActivated(QListViewItem* i)
 
   if (!f) return;
 
-  activated(f);
+  if (!_inSetFunction)
+    activated(f);
 }
 
 
 void FunctionSelection::query(QString query)
 {
   QRegExp re(query, false, true);
-  
+
   TraceFunctionList list;
   switch(_groupType) {
   case TraceItem::Object:
@@ -655,17 +662,23 @@ void FunctionSelection::query(QString query)
 
   functionList->sort();
 
+
   if (item) {
     functionList->ensureItemVisible(item);
+    _inSetFunction = true;
     functionList->setSelected(item, true);
+    _inSetFunction = false;
   }
-  else
+  else {
+    // this emits a function selection
     functionList->setSelected(functionList->firstChild(), true);
+  }
 }
 
 bool FunctionSelection::setTopFunction()
 {
   QListViewItem* i = functionList->firstChild();
+  // this emits a function selection
   functionList->setSelected(i, true);
   return i!=0;
 }

@@ -1,17 +1,18 @@
 <tip category="KCachegrind|Help">
 <html>
-<p>...that you can request <em>What's this...</em>
-help for every GUI part in KCachegrind by pressing
-Shift-F1 and clicking on this part?</p>
+<p>...that the <em>What's this...</em> help for every GUI widget
+in KCachegrind contains detailed usage information for this widget?
+It is highly recommand to read at least these help texts on first
+use. Request <em>What's this...</em> help by pressing
+Shift-F1 and clicking on the widget.</p>
 </html>
 </tip>
 
 <tip category="KCachegrind|Explanation">
 <html>
 <p>...that you can get profile information at instruction level
-if you provide Cachegrind with assembler level debug information?
-You need to compile with <em>gcc -S ...</em>,
-and the generated assembler soure with <em>as --gstabs ...</em>.
+with Calltree when you provide the option <em>--dump-instr=yes</em>?
+Use the Assembler View for the instruction annotations.
 </p>
 </html>
 </tip>
@@ -19,16 +20,26 @@ and the generated assembler soure with <em>as --gstabs ...</em>.
 <tip category="KCachegrind|Keyboard">
 <html>
 <p>...that you can use Alt-Left/Right keys of your keyboard to go
-back/forward in the function selection history ?</p>
+back/forward in the active object history ?</p>
 </html>
 </tip>
 
 <tip category="KCachegrind|Keyboard">
 <html>
-<p>...that you can navigate in the TreeMap graphs using
-arrow keys and Backspace/Return for one nesting level up/down?
-This changes the <em>current</em> item. To make the current item
-the selected one, press Space.
+<p>...that you can navigate in the Callee/Caller Map View using
+arrow keys? Use Left/Right to change to siblings of the current
+item; use Up/Down to go one nesting level up/down. To select
+the current item, press Space, and to activate it, press Return.
+</p>
+</html>
+</tip>
+
+<tip category="KCachegrind|Keyboard">
+<html>
+<p>...that you can navigate in the Call Graph View using
+arrow keys? Use Up/Down to go one calling level up/down, alternating
+between calls and functions. Use Left/Right to change to siblings of a current
+selected call. To activate the current item, press Return.
 </p>
 </html>
 </tip>
@@ -70,12 +81,14 @@ show absolute event counts or relative ones (percentage display)?</p>
 
 <tip category="KCachegrind|Appearance">
 <html>
-<p>...that you can configure the lower percentage bound for
-event counts for all function lists in KCachegrind?</p>
-<p>Note that e.g. a value of 0.0001 (i.e. show all functions
-with more than 0.1 promille relative event count) can easily
-lead to thousands of entries and thus can slow down KCachegrind
-drastically.</p>
+<p>...that you can configure the maximum number of items
+for all function lists in KCachegrind? Limiting the number
+of items is done to get a fast reacting GUI. The last item in
+the list will show you the number of skipped functions, together
+with a cost condition for these skipped functions.</p>
+<p>To activate a function with small costs, search for it and select
+it in the flat profile. Selecting functions with small cost will
+temporarily add them to the flat profile list.</p>
 </html>
 </tip>
 
@@ -97,7 +110,7 @@ bar() happened while calling foo2() from bar().</p>
 
 <tip category="KCachegrind|Explanation">
 <html>
-<p>...that waiting for the tool tip inside of a graph
+<p>...that waiting for the tool tip inside of a tree map
 shows the list of names of the nested rectangles the mouse
 pointer is over?</p>
 <p>Items from this list can be selected by pressing the right

@@ -152,6 +152,7 @@ TraceItem* CostTypeView::canShow(TraceItem* i)
     case TraceCost::Object:
     case TraceCost::Class:
     case TraceCost::File:
+    case TraceCost::Call:
     case TraceCost::FunctionCycle:
     case TraceCost::Function:
 	break;

@@ -55,6 +55,7 @@ PartView::PartView(TraceItemView* parentView,
     setColumnAlignment(3, Qt::AlignRight);
     setColumnAlignment(4, Qt::AlignRight);
     setMinimumHeight(50);
+    setSelectionMode(Extended);
 
     connect( this,
 	     SIGNAL( selectionChanged() ),
@@ -126,7 +127,14 @@ void PartView::context(QListViewItem* i, const QPoint & pos, int)
 void PartView::selectionChangedSlot()
 {
     if (_inSelectionUpdate) return;
-    // nothing to do...
+
+    TracePartList l;
+    QListViewItem* item  = firstChild();
+    for(;item;item = item->nextSibling())
+      if (item->isSelected())
+        l.append( ((PartListItem*)item)->part() );
+
+    selected(l);
 }
 
 
@@ -160,32 +168,24 @@ void PartView::doUpdate(int changeType)
 
     if (changeType == partsChanged) {
 
-	  bool allActive = true;
-	  TracePart* part;
-	  TracePartList list = _topLevel->activeParts();
-	  TracePartList l = _data->parts();
-	  for (part = l.first(); part; part = l.next())
-	      if (list.containsRef(part)==0) {
-		  allActive = false;
-		  break;
-	      }
+      TracePart* part;
 
-	  QListViewItem* item;
-	  _inSelectionUpdate = true;
-	  item  = firstChild();
-	  for(;item;item = item->nextSibling()) {
-	      part = ((PartListItem*)item)->part();
+      QListViewItem* item;
+      _inSelectionUpdate = true;
+      item  = firstChild();
+      for(;item;item = item->nextSibling()) {
+        part = ((PartListItem*)item)->part();
 
-	      if (!allActive && (list.containsRef(part)>0)) {
-		  setSelected(item, true);
-		  ensureItemVisible(item);
-	      }
-	      else
-		  setSelected(item, false);
-	  }
-	  _inSelectionUpdate = false;
+        if (_partList.containsRef(part)>0) {
+          setSelected(item, true);
+          ensureItemVisible(item);
+        }
+        else
+          setSelected(item, false);
+      }
+      _inSelectionUpdate = false;
 
-	  return;
+      return;
     }
 
     // refresh
@@ -201,27 +201,20 @@ void PartView::doUpdate(int changeType)
     if (!f) return;
 
     TracePart* part;
-    TracePartList l = _data->parts();
     TracePartList hidden;
     if (_topLevel)
 	hidden = _topLevel->hiddenParts();
 
-    // if all are active, don't select every item...
-    bool allActive = true;
-    for (part = l.first(); part; part = l.next())
-	if (!part->isActive()) {
-	    allActive = false;
-	    break;
-	}
+    TracePartList allParts = _data->parts();
 
     _inSelectionUpdate = true;
 
     QListViewItem* item = 0;
-    for (part = l.first(); part; part = l.next()) {
+    for (part = allParts.first(); part; part = allParts.next()) {
 	if (hidden.findRef(part)>=0) continue;
 	item = new PartListItem(this, f, _costType, _groupType, part);
 
-	if (!allActive && part->isActive()) {
+	if (part->isActive()) {
 	    setSelected(item, true);
 	    ensureItemVisible(item);
 	}

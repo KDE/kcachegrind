@@ -62,7 +62,7 @@ void MultiView::appendView()
     tv->show();
 
     // set same attributes as in active view
-    tv->set(0, _data, _costType, _groupType, _activeItem, 0);
+    tv->set(0, _data, _costType, _groupType, _partList, _activeItem, 0);
     tv->updateView();
 
     if (0) qDebug("MultiView::appendView (now %d)", _views.count());
@@ -108,7 +108,10 @@ void MultiView::tabActivated(TabView* newActiveTab)
 
 void MultiView::selected(TraceItemView* sender, TraceItem* i)
 {
-    // we react only on selection changes of the active TabView
+    qDebug("MultiView::selected %s, sender %s",
+           i->name().ascii(), sender->widget()->name());
+
+     // we react only on selection changes of the active TabView
     if (sender != (TraceItemView*)_active) return;
 
     _views.findRef(_active);
@@ -124,6 +127,9 @@ void MultiView::selected(TraceItemView* sender, TraceItem* i)
 
 void MultiView::activated(TraceItemView* sender, TraceItem* i)
 {
+    qDebug("MultiView::activated %s, sender %s",
+           i->name().ascii(), sender->widget()->name());
+
     // we react only on selection changes of the active TabView
     if (sender != (TraceItemView*)_active) return;
 
@@ -134,7 +140,7 @@ void MultiView::doUpdate(int changeType)
 {
     TabView* tv;
     for(tv=_views.first(); tv; tv=_views.next()) {
-	tv->set(changeType, _data, _costType, _groupType,
+	tv->set(changeType, _data, _costType, _groupType, _partList,
 		(tv == _active) ? _activeItem : tv->activeItem(),
 		tv->selectedItem());
 	tv->notifyChange(changeType);

@@ -100,7 +100,7 @@ Configuration::Configuration()
   _showPercentage = true;
   _showExpanded = false;
   _showCycles = true;
-  _cycleCut = 0.01;
+  _cycleCut = 0.0;
   _percentPrecision = 2;
 
   // max symbol count/length in tooltip/popup
@@ -144,7 +144,7 @@ void Configuration::saveOptions(KConfig* kconfig)
   }
   colorConfig.writeEntry( "Count", count-1);
 
-  // source options  
+  // source options
   KConfigGroup sourceConfig(kconfig, QCString("Source"));
   sourceConfig.writeEntry("Dirs", c->_generalSourceDirs, ':');
   QDictIterator<QStringList> it2( c->_objectSourceDirs );
@@ -257,7 +257,7 @@ void Configuration::readOptions(KConfig* kconfig)
   c->_showPercentage = generalConfig.readBoolEntry("ShowPercentage", true);
   c->_showExpanded = generalConfig.readBoolEntry("ShowExpanded", false);
   c->_showCycles = generalConfig.readBoolEntry("ShowCycles", true);
-  c->_cycleCut = generalConfig.readDoubleNumEntry("CycleCut", 0.01);
+  c->_cycleCut = generalConfig.readDoubleNumEntry("CycleCut", 0.0);
   c->_maxSymbolCount = generalConfig.readNumEntry("MaxSymbolCount", 10);
   c->_maxListCount = generalConfig.readNumEntry("MaxListCount", 100);
   c->_maxSymbolLength = generalConfig.readNumEntry("MaxSymbolLength", 30);
