@@ -30,7 +30,7 @@
 <year>2002</year>
 <holder>Josef Weidendorfer</holder>
 </copyright>
-<legalnotice>&GPLNotice;</legalnotice>
+<legalnotice>&FDLNotice;</legalnotice>
 
 <date>2003-09-18</date>
 <releaseinfo>0.4.3</releaseinfo>
@@ -249,7 +249,7 @@ users. Last but not least, thanks to
 </itemizedlist>
 </para>
 
-&underGPL;        	 <!-- GPL License -->
+&underFDL;        	 <!-- FDL License -->
 
 </chapter>
 
