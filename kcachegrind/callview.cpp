@@ -42,6 +42,7 @@ CallView::CallView(bool showCallers, TraceItemView* parentView,
     _showCallers = showCallers;
 
     addColumn( i18n( "Cost" ) );
+    addColumn( i18n( "Cost 2" ) );
     if (_showCallers) {
 	addColumn( i18n( "Count" ) );
 	addColumn( i18n( "Caller" ) );
@@ -54,6 +55,7 @@ CallView::CallView(bool showCallers, TraceItemView* parentView,
     setSorting(0,false);
     setColumnAlignment(0, Qt::AlignRight);
     setColumnAlignment(1, Qt::AlignRight);
+    setColumnAlignment(2, Qt::AlignRight);
     setAllColumnsShowFocus(true);
     setResizeMode(QListView::LastColumn);
     setMinimumHeight(50);
@@ -107,7 +109,7 @@ QString CallView::whatsThis() const
 }
 
 
-void CallView::context(QListViewItem* i, const QPoint & p, int)
+void CallView::context(QListViewItem* i, const QPoint & p, int col)
 {
   QPopupMenu popup;
 
@@ -131,15 +133,14 @@ void CallView::context(QListViewItem* i, const QPoint & p, int)
     popup.insertSeparator();
   }
 
-  popup.insertItem(i18n("Go Back"), 90);
-  popup.insertItem(i18n("Go Forward"), 91);
-  popup.insertItem(i18n("Go Up"), 92);
+  if ((col == 0) || (col == 1)) {
+    addCostMenu(&popup);
+    popup.insertSeparator();
+  }
+  addGoMenu(&popup);
 
   int r = popup.exec(p);
-  if      (r == 90) activated(Back);
-  else if (r == 91) activated(Forward);
-  else if (r == 92) activated(Up);
-  else if (r == 93) activated(f);
+  if (r == 93) activated(f);
   else if (r == 94) activated(cycle);
 }
 
@@ -210,7 +211,7 @@ void CallView::doUpdate(int changeType)
         if (!item && ci) clearSelection();
 	return;
     }
-
+    
     if (changeType == groupTypeChanged) {
 	QListViewItem *item;
 	for (item = firstChild();item;item = item->nextSibling())
@@ -225,9 +226,12 @@ void CallView::refresh()
 {
     clear();
     setColumnWidth(0, 50);
-    setColumnWidth(1, 50);
+    setColumnWidth(1, _costType2 ? 50:0);
+    setColumnWidth(2, 50);
     if (_costType)
       setColumnText(0, _costType->name());
+    if (_costType2)
+      setColumnText(1, _costType2->name());
 
     if (!_data || !_activeItem) return;
 
@@ -238,9 +242,17 @@ void CallView::refresh()
     // In the call lists, we skip cycles to show the real call relations
     TraceCallList l = _showCallers ? f->callers(true) : f->callings(true);
 
+    // Allow resizing of column 1
+    setColumnWidthMode(1, QListView::Maximum);
+
     for (call=l.first();call;call=l.next())
 	if (call->subCost(_costType)>0)
 	    new CallItem(this, this, call);
+
+    if (!_costType2) {
+      setColumnWidthMode(1, QListView::Manual);
+      setColumnWidth(1, 0);
+    }
 }
 
 #include "callview.moc"

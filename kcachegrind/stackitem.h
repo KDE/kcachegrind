@@ -1,5 +1,6 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2003, 2004
+   Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -26,27 +27,26 @@
 #include <qlistview.h>
 #include "tracedata.h"
 
+class StackSelection;
+
 
 // for the stack browser
 
 class StackItem: public QListViewItem
 {
 public:
-  StackItem(QListView* parent, TraceFunction* f,
-            TraceCostType* ct, TraceCost::CostType); // for top
-  StackItem(QListView* parent, TraceCall* c,
-            TraceCostType* ct, TraceCost::CostType);
+  // for top
+  StackItem(StackSelection* ss, QListView* parent, TraceFunction* f);
+  StackItem(StackSelection* ss, QListView* parent, TraceCall* c);
 
   TraceFunction* function() { return _function; }
   TraceCall* call() { return _call; }
-  void setCostType(TraceCostType*);
-  void setGroupType(TraceCost::CostType);
-  void update();
+  void updateGroup();
+  void updateCost();
 
 private:
+  StackSelection* _view;
   SubCost _sum;
-  TraceCostType* _costType;
-  TraceCost::CostType _groupType;
   TraceFunction* _function;
   TraceCall* _call;
 };

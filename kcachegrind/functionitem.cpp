@@ -200,25 +200,34 @@ void FunctionItem::update()
 
 int FunctionItem::compare(QListViewItem * i, int col, bool ascending ) const
 {
-  FunctionItem* fi = (FunctionItem*) i;
+  const FunctionItem* fi1 = this;
+  const FunctionItem* fi2 = (FunctionItem*) i;
+
+  // we always want descending order
+  if (ascending) {
+    fi1 = fi2;
+    fi2 = this;
+  }
 
   // a skip entry is always sorted last
-  if (_skipped) return -1;
-  if (fi->_skipped) return 1;
+  if (fi1->_skipped) return -1;
+  if (fi2->_skipped) return 1;
 
   if (col==0) {
-    if (_sum < fi->_sum) return -1;
-    if (_sum > fi->_sum) return 1;
+    if (fi1->_sum < fi2->_sum) return -1;
+    if (fi1->_sum > fi2->_sum) return 1;
     return 0;
   }
   if (col==1) {
-    if (_pure < fi->_pure) return -1;
-    if (_pure > fi->_pure) return 1;
+    if (fi1->_pure < fi2->_pure) return -1;
+    if (fi1->_pure > fi2->_pure) return 1;
     return 0;
   }
   if (col==2) {
-    if (_function->calledCount() < fi->_function->calledCount()) return -1;
-    if (_function->calledCount() > fi->_function->calledCount()) return 1;
+    if (fi1->_function->calledCount() <
+	fi2->_function->calledCount()) return -1;
+    if (fi1->_function->calledCount() >
+	fi2->_function->calledCount()) return 1;
     return 0;
   }
 

@@ -1583,6 +1583,8 @@ TraceItem* CallGraphView::canShow(TraceItem* i)
 void CallGraphView::doUpdate(int changeType)
 {
   // Special case ?
+  if (changeType == costType2Changed) return;
+
   if (changeType == selectedItemChanged) {
     if (!_canvas) return;
 
@@ -2229,9 +2231,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
     }
   }
 
-  popup.insertItem(i18n("Go Back"), 90);
-  popup.insertItem(i18n("Go Forward"), 91);
-  popup.insertItem(i18n("Go Up"), 92);
+  addGoMenu(&popup);
   popup.insertSeparator();
   popup.insertItem(i18n("Export Graph"), 99);
   popup.insertSeparator();
@@ -2369,9 +2369,6 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   int r = popup.exec(e->globalPos());
 
   switch(r) {
-  case 90: activated(Back); break;
-  case 91: activated(Forward); break;
-  case 92: activated(Up); break;
   case 93: activated(f); break;
   case 94: activated(cycle); break;
   case 95: activated(c); break;

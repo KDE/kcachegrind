@@ -26,25 +26,28 @@
 #include <qlistview.h>
 #include "tracedata.h"
 
+class InstrView;
+
 class InstrItem: public QListViewItem
 {
 
 public:
   // for messages
-  InstrItem(QListView* parent, Addr addr, const QString&);
+  InstrItem(InstrView* iv, QListView* parent,
+	    Addr addr, const QString&);
 
   // for instruction lines
-  InstrItem(QListView* parent, Addr addr, bool inside,
+  InstrItem(InstrView* iv, QListView* parent,
+	    Addr addr, bool inside,
 	    const QString&, const QString&, const QString&,
-	    TraceInstr* instr, TraceCostType* ct);
+	    TraceInstr* instr);
 
   // for call instr
-  InstrItem(QListViewItem* parent, Addr addr,
-	    TraceInstr* instr, TraceInstrCall* instrCall,
-	    TraceCostType* ct, TraceCost::CostType gt);
+  InstrItem(InstrView* iv, QListViewItem* parent, Addr addr,
+	    TraceInstr* instr, TraceInstrCall* instrCall);
 
   // for jump lines
-  InstrItem(QListViewItem* parent, Addr addr,
+  InstrItem(InstrView* iv, QListViewItem* parent, Addr addr,
 	    TraceInstr* instr, TraceInstrJump* instrJump);
 
   Addr addr() const { return _addr; }
@@ -59,9 +62,8 @@ public:
   int width( const QFontMetrics& fm,
              const QListView* lv, int c ) const;
 
-  void setCostType(TraceCostType* ct);
-  void setGroupType(TraceCost::CostType);
-  void update();
+  void updateGroup();
+  void updateCost();
 
   // arrow lines
   void setJumpArray(const QMemArray<TraceInstrJump*>& a);
@@ -71,9 +73,8 @@ protected:
   QMemArray<TraceInstrJump*> _jump;
 
 private:
-  SubCost _pure;
-  TraceCostType* _costType;
-  TraceCost::CostType _groupType;
+  InstrView* _view;
+  SubCost _pure, _pure2;
   Addr _addr;
   TraceInstr* _instr;
   TraceInstrJump* _instrJump;

@@ -38,6 +38,7 @@
 #include "functionitem.h"
 #include "costlistitem.h"
 #include "configuration.h"
+#include "toplevel.h"
 
 FunctionSelection::FunctionSelection( TopLevel* top,
 				      QWidget* parent, const char* name)
@@ -70,6 +71,9 @@ FunctionSelection::FunctionSelection( TopLevel* top,
   // single click activation
   connect(functionList, SIGNAL(selectionChanged(QListViewItem*)),
           this, SLOT(functionActivated(QListViewItem*)));
+  connect(functionList,
+	  SIGNAL(contextMenuRequested(QListViewItem*, const QPoint &, int)),
+          this, SLOT(functionContext(QListViewItem*, const QPoint &, int)));
 #else
   connect(functionList, SIGNAL(selectionChanged(QListViewItem*)),
           this, SLOT(functionSelected(QListViewItem*)));
@@ -101,29 +105,33 @@ FunctionSelection::~FunctionSelection()
 }
 
 void FunctionSelection::functionContext(QListViewItem* i,
-					const QPoint & p, int)
+					const QPoint & p, int c)
 {
   QPopupMenu popup;
   TraceFunction* f = 0;
 
+#if 0
   if (i) {
       f = ((FunctionItem*) i)->function();
       popup.insertItem(i18n("Go to %1").arg(f->prettyName()), 93);
       popup.insertSeparator();
   }
-  popup.insertItem(i18n("Go Back"), 90);
-  popup.insertItem(i18n("Go Forward"), 91);
-  popup.insertItem(i18n("Go Up"), 92);
+#endif
+
+  if ((c == 0) || (c == 1)) {
+    addCostMenu(&popup,false);
+    popup.insertSeparator();
+  }
+  addGroupMenu(&popup);  
+  popup.insertSeparator();
+  addGoMenu(&popup);
 
   int r = popup.exec(p);
-  if      (r == 90) activated(Back);
-  else if (r == 91) activated(Forward);
-  else if (r == 92) activated(Up);
-  else if (r == 93) activated(f);
+  if (r == 93) activated(f);
 }
 
 void FunctionSelection::groupContext(QListViewItem* /*i*/,
-				     const QPoint & p, int)
+				     const QPoint & p, int c)
 {
   QPopupMenu popup;
 
@@ -137,15 +145,44 @@ void FunctionSelection::groupContext(QListViewItem* /*i*/,
       }
   }
 #endif
-  popup.insertItem(i18n("Go Back"), 90);
-  popup.insertItem(i18n("Go Forward"), 91);
-  popup.insertItem(i18n("Go Up"), 92);
+  if (c == 0) {
+    addCostMenu(&popup,false);
+    popup.insertSeparator();
+  }
+  addGroupMenu(&popup);  
+  popup.insertSeparator();
+  addGoMenu(&popup);
 
-  int r = popup.exec(p);
-  if      (r == 90) activated(Back);
-  else if (r == 91) activated(Forward);
-  else if (r == 92) activated(Up);
+  popup.exec(p);
 }
+
+
+void FunctionSelection::addGroupMenu(QPopupMenu* popup)
+{
+  QPopupMenu *popup1 = new QPopupMenu(popup);
+  popup1->setCheckable(true);
+
+  if (_groupType != TraceItem::Function) {
+    popup1->insertItem(i18n("No Grouping"),0);
+    popup1->insertSeparator();
+  }
+  popup1->insertItem(TraceCost::i18nTypeName(TraceItem::Object),1);
+  popup1->insertItem(TraceCost::i18nTypeName(TraceItem::File),2);
+  popup1->insertItem(TraceCost::i18nTypeName(TraceItem::Class),3);
+  popup1->insertItem(TraceCost::i18nTypeName(TraceItem::FunctionCycle),4);
+  switch(_groupType) {
+  case TraceItem::Object:        popup1->setItemChecked(1, true); break;
+  case TraceItem::File:          popup1->setItemChecked(2, true); break;
+  case TraceItem::Class:         popup1->setItemChecked(3, true); break;
+  case TraceItem::FunctionCycle: popup1->setItemChecked(4, true); break;
+  default: break;
+  }
+  connect(popup1,SIGNAL(activated(int)),
+	  _topLevel,SLOT(groupTypeSelected(int)));
+
+  popup->insertItem(i18n("Grouping"), popup1);
+}    
+
 
 TraceItem* FunctionSelection::canShow(TraceItem* i)
 {
@@ -179,6 +216,9 @@ void FunctionSelection::doUpdate(int changeType)
 {
     // Special case ?
     if (changeType == selectedItemChanged) return;
+
+    // we don't show cost 2 at all...
+    if (changeType == costType2Changed) return;
 
     if (changeType == activeItemChanged) {
 	if (_activeItem ==0) {
@@ -289,9 +329,7 @@ void FunctionSelection::refresh()
 
     groupList->setColumnText(1, TraceItem::i18nTypeName(_groupType));
 
-    double total = _data ? ((double)_data->subCost(_costType)) : 0.0;
-
-    if (!_data || (total==0.0) || _data->parts().count()==0) {
+    if (!_data || _data->parts().count()==0) {
 	functionList->clear();
 	groupList->setUpdatesEnabled(true);
 	groupList->repaint();
@@ -501,11 +539,13 @@ void FunctionSelection::groupSelected(QListViewItem* i)
       total = (double) g->subCost(_costType);
   else
       total = (double) _data->subCost(_costType);
+#if 0
   if (total == 0.0) {
       functionList->setUpdatesEnabled(true);
       functionList->repaint();
       return;
   }
+#endif
 
   TraceFunction *f;
   _hc.clear(Configuration::maxListCount());

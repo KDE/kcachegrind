@@ -630,7 +630,8 @@ void TabView::doUpdate(int changeType)
       if (tw) {
         if (!tw->hasVisibleRect()) continue;
       }
-      canShow = v->set(changeType, _data, _costType, _groupType, _partList,
+      canShow = v->set(changeType, _data, _costType, _costType2,
+		       _groupType, _partList,
                        _activeItem, _selectedItem);
       v->notifyChange(changeType);
 

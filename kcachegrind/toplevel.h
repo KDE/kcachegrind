@@ -36,6 +36,7 @@ class QLineEdit;
 class QDockWidget;
 class QLabel;
 class QProgressBar;
+class QPopupMenu;
 
 class KURL;
 class KSelectAction;
@@ -70,6 +71,7 @@ public:
 
   TraceItem::CostType groupType() { return _groupType; }
   TraceCostType* costType() { return _costType; }
+  TraceCostType* costType2() { return _costType2; }
   TracePartList activeParts() { return _activeParts; }
   TracePartList hiddenParts() { return _hiddenParts; }
 
@@ -78,11 +80,18 @@ public:
   bool showExpanded() const { return _showExpanded; }
   bool showCycles() const { return _showCycles; }
 
+  /* convenience functions for often used context menu items */
+  void addCostMenu(QPopupMenu*,bool);
+  void addGoMenu(QPopupMenu*);
+
 public slots:
   void newTrace();
   void loadTrace();
   void loadTrace(const KURL&);
   void loadTrace(QString);
+  void addTrace();
+  void addTrace(const KURL&);
+  void addTrace(QString);
 
   // for quick showing the main window...
   void loadDelayed(QString);
@@ -96,6 +105,7 @@ public slots:
 
   void updateStatusBar();
   void costTypeSelected(const QString&);
+  void costType2Selected(const QString&);
   void groupTypeSelected(int);
   void splitSlot();
   void splitDirSlot();
@@ -113,6 +123,9 @@ public slots:
   void stackVisibilityChanged(bool);
   void functionVisibilityChanged(bool);
   void togglePercentage();
+  void setPercentage(bool);
+  void setAbsoluteCost();
+  void setRelativeCost();
   void toggleExpanded();
   void toggleCycles();
   void forceTrace();
@@ -125,7 +138,11 @@ public slots:
   void upActivated(int);
 
   bool setCostType(TraceCostType*);
+  bool setCostType2(TraceCostType*);
   bool setCostType(QString);
+  bool setCostType2(QString);
+  bool setCostType(int);
+  bool setCostType2(int);
   bool setGroupType(TraceItem::CostType);
   bool setGroupType(QString);
   bool setGroup(TraceCostItem*);
@@ -141,15 +158,20 @@ public slots:
    * aren't allowed to delete list entries.
    */
   void setCostTypeDelayed(TraceCostType*);
+  void setCostType2Delayed(TraceCostType*);
   void setGroupTypeDelayed(TraceItem::CostType);
   void setGroupDelayed(TraceCostItem*);
   void setTraceItemDelayed(TraceItem*);
   void partsHideSelectedSlotDelayed();
   void partsUnhideAllSlotDelayed();
+  void goBack();
+  void goForward();
+  void goUp();
   void setDirectionDelayed(TraceItemView::Direction);
 
   /* SingleShot Slots (without parameters) for the delayed versions */
   void setCostTypeDelayed();
+  void setCostType2Delayed();
   void setGroupTypeDelayed();
   void setGroupDelayed();
   void setTraceItemDelayed();
@@ -194,7 +216,7 @@ private:
   QDockWindow *_partDock, *_stackDock, *_functionDock, *_dumpDock;
   bool _forcePartDock;
 
-  KSelectAction *saCost, *saGroup;
+  KSelectAction *_saCost, *_saCost2, *saGroup;
   KToggleAction *_partDockShown, *_stackDockShown;
   KToggleAction *_functionDockShown, *_dumpDockShown;
   KToggleAction *_taPercentage, *_taExpanded, *_taCycles;
@@ -206,8 +228,9 @@ private:
 
   // trace data shown in this window
   TraceData* _data;
-  // subcost type used for visualisation
+  // subcost types used for visualisation
   TraceCostType* _costType;
+  TraceCostType* _costType2;
   // grouping of function list
   TraceItem::CostType _groupType;
   // selected group
@@ -219,6 +242,7 @@ private:
 
   // for delayed slots
   TraceCostType* _costTypeDelayed;
+  TraceCostType* _costType2Delayed;
   TraceItem::CostType _groupTypeDelayed;
   TraceCostItem* _groupDelayed;
   TraceItem* _traceItemDelayed;

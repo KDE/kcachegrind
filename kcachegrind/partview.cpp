@@ -112,14 +112,10 @@ void PartView::context(QListViewItem* i, const QPoint & pos, int)
   popup.insertItem(i18n("Show All"), 96);
   popup.insertSeparator();
 
-  popup.insertItem(i18n("Go Back"), 90);
-  popup.insertItem(i18n("Go Forward"), 91);
-  popup.insertItem(i18n("Go Up"), 92);
+  addGoMenu(&popup);
 
   int r = popup.exec(pos);
-  if      (r == 90) activated(Back);
-  else if (r == 91) activated(Forward);
-  else if (r == 92) activated(Up);
+  if (r == 95) ;
 
   // TODO: ...
 }

@@ -36,29 +36,32 @@
 // InstrItem
 
 // for messages
-InstrItem::InstrItem(QListView* parent, Addr addr, const QString& msg)
+InstrItem::InstrItem(InstrView* iv, QListView* parent,
+		     Addr addr, const QString& msg)
     : QListViewItem(parent)
 {
-    _addr = addr;
-    _instr = 0;
-    _instrCall = 0;
-    _instrJump = 0;
-    _inside = false;
-
-    setText(0, addr.pretty());
-    setText(5, msg);
-
-    setCostType(0);
-    setGroupType(TraceCost::NoCostType);
+  _view = iv;
+  _addr = addr;
+  _instr = 0;
+  _instrCall = 0;
+  _instrJump = 0;
+  _inside = false;
+  
+  setText(0, addr.pretty());
+  setText(6, msg);
+  
+  updateGroup();
+  updateCost();
 }
 
 // for code lines
-InstrItem::InstrItem(QListView* parent, Addr addr, bool inside,
+InstrItem::InstrItem(InstrView* iv, QListView* parent,
+		     Addr addr, bool inside,
 		     const QString& code, const QString& cmd,
-		     const QString& args,
-		     TraceInstr* instr, TraceCostType* ct)
+		     const QString& args, TraceInstr* instr)
     : QListViewItem(parent)
 {
+  _view = iv;
   _addr = addr;
   _instr = instr;
   _instrCall = 0;
@@ -69,25 +72,24 @@ InstrItem::InstrItem(QListView* parent, Addr addr, bool inside,
       setText(0, args);
   else
       setText(0, addr.pretty());
-  setText(3, code);
-  setText(4, cmd);
-  setText(5, args);
+  setText(4, code);
+  setText(5, cmd);
+  setText(6, args);
 
   TraceLine* l;
   if (instr && (l = instr->line()))
-      setText(6, l->name());
+      setText(7, l->name());
 
-  setCostType(ct);
-  setGroupType(TraceCost::NoCostType);
+  updateGroup();
+  updateCost();
 }
 
 // for call lines
-InstrItem::InstrItem(QListViewItem* parent, Addr addr,
-		     TraceInstr* instr, TraceInstrCall* instrCall,
-		     TraceCostType* ct,
-		     TraceCost::CostType gt)
+InstrItem::InstrItem(InstrView* iv, QListViewItem* parent, Addr addr,
+		     TraceInstr* instr, TraceInstrCall* instrCall)
     : QListViewItem(parent)
 {
+  _view = iv;
   _addr = addr;
   _instr = instr;
   _instrCall = instrCall;
@@ -109,17 +111,18 @@ InstrItem::InstrItem(QListViewItem* parent, Addr addr,
   if (calledF->object() && calledF->object()->name() != QString("???"))
     callStr += QString(" (%1)").arg(calledF->object()->shortName());
 
-  setText(5, callStr);
+  setText(6, callStr);
 
-  setCostType(ct);
-  setGroupType(gt);
+  updateGroup();
+  updateCost();
 }
 
 // for jump lines
-InstrItem::InstrItem(QListViewItem* parent, Addr addr,
+InstrItem::InstrItem(InstrView* iv, QListViewItem* parent, Addr addr,
 		     TraceInstr* instr, TraceInstrJump* instrJump)
     : QListViewItem(parent)
 {
+  _view = iv;
   _addr = addr;
   _inside = true;
   _instr = instr;
@@ -140,37 +143,32 @@ InstrItem::InstrItem(QListViewItem* parent, Addr addr,
 	  .arg(_instrJump->executedCount().pretty())
 	  .arg(_instrJump->instrTo()->addr().toString());
 
-  setText(5, jStr);
+  setText(6, jStr);
 
-  setCostType(0);
-  setGroupType(TraceCost::NoCostType);
+  updateGroup();
+  updateCost();
 }
 
 
-void InstrItem::setCostType(TraceCostType* ct)
+void InstrItem::updateGroup()
 {
-  _costType = ct;
-  update();
-}
-
-void InstrItem::setGroupType(TraceCost::CostType gt)
-{
-  _groupType = gt;
   if (!_instrCall) return;
 
   TraceFunction* f = _instrCall->call()->called();
-  QColor c = Configuration::functionColor(_groupType, f);
-  setPixmap(5, colorPixmap(10, 10, c));
+  QColor c = Configuration::functionColor(_view->groupType(), f);
+  setPixmap(6, colorPixmap(10, 10, c));
 }
 
-void InstrItem::update()
+void InstrItem::updateCost()
 {
+  _pure = SubCost(0);
+  _pure2 = SubCost(0);
+
   if (!_instr) return;
   if (_instrJump) return;
 
   TraceCost* instrCost = _instrCall ?
       (TraceCost*)_instrCall : (TraceCost*)_instr;
-  _pure = instrCost->subCost(_costType);
 
   // don't show any cost inside of cycles
   if (_instrCall &&
@@ -188,12 +186,8 @@ void InstrItem::update()
 
     setText(1, str);
     setPixmap(1, p);
-    return;
-  }
-
-  if (_pure == 0) {
-    setText(1, QString::null);
-    setPixmap(1, QPixmap());
+    setText(2, str);
+    setPixmap(2, p);
     return;
   }
 
@@ -203,55 +197,98 @@ void InstrItem::update()
   else
       totalCost = _instr->function()->data();
 
-  double total = totalCost->subCost(_costType);
-  double pure  = 100.0 * _pure / total;
+  TraceCostType *ct = _view->costType();
+  _pure = ct ? instrCost->subCost(ct) : SubCost(0);
+  if (_pure == 0) {
+    setText(1, QString::null);
+    setPixmap(1, QPixmap());
+  }
+  else {
+    double total = totalCost->subCost(ct);
+    double pure  = 100.0 * _pure / total;
 
-  if (Configuration::showPercentage())
-    setText(1, QString("%1")
-            .arg(pure, 0, 'f', Configuration::percentPrecision()));
-  else
-    setText(1, _pure.pretty());
+    if (Configuration::showPercentage())
+      setText(1, QString("%1")
+	      .arg(pure, 0, 'f', Configuration::percentPrecision()));
+    else
+      setText(1, _pure.pretty());
+    
+    setPixmap(1, costPixmap(ct, instrCost, total));
+  }
 
-  setPixmap(1, costPixmap(_costType, instrCost, total));
+  TraceCostType *ct2 = _view->costType2();
+  _pure2 = ct2 ? instrCost->subCost(ct2) : SubCost(0);
+  if (_pure2 == 0) {
+    setText(2, QString::null);
+    setPixmap(2, QPixmap());
+  }
+  else {
+    double total = totalCost->subCost(ct2);
+    double pure  = 100.0 * _pure2 / total;
+
+    if (Configuration::showPercentage())
+      setText(2, QString("%1")
+	      .arg(pure, 0, 'f', Configuration::percentPrecision()));
+    else
+      setText(2, _pure2.pretty());
+    
+    setPixmap(2, costPixmap(ct2, instrCost, total));
+  }
 }
 
 
 int InstrItem::compare(QListViewItem * i, int col, bool ascending ) const
 {
-  InstrItem* ii = (InstrItem*) i;
+  const InstrItem* ii1 = this;
+  const InstrItem* ii2 = (InstrItem*) i;
+
+  // we always want descending order
+  if (((col>0) && ascending) ||
+      ((col==0) && !ascending) ) {
+    ii1 = ii2;
+    ii2 = this;
+  }
+
   if (col==1) {
-    if (_pure < ii->_pure) return -1;
-    if (_pure > ii->_pure) return 1;
+    if (ii1->_pure < ii2->_pure) return -1;
+    if (ii1->_pure > ii2->_pure) return 1;
+    return 0;
+  }
+  if (col==2) {
+    if (ii1->_pure2 < ii2->_pure2) return -1;
+    if (ii1->_pure2 > ii2->_pure2) return 1;
     return 0;
   }
   if (col==0) {
-    if (_addr < ii->_addr) return -1;
-    if (_addr > ii->_addr) return 1;
+    if (ii1->_addr < ii2->_addr) return -1;
+    if (ii1->_addr > ii2->_addr) return 1;
 
     // Same address: code gets above calls/jumps
-    if (!_instrCall && !_instrJump) return -1;
-    if (!ii->_instrCall && !ii->_instrJump) return 1;
+    if (!ii1->_instrCall && !ii1->_instrJump) return -1;
+    if (!ii2->_instrCall && !ii2->_instrJump) return 1;
 
     // calls above jumps
-    if (_instrCall && !ii->_instrCall) return -1;
-    if (ii->_instrCall && !_instrCall) return 1;
+    if (ii1->_instrCall && !ii2->_instrCall) return -1;
+    if (ii2->_instrCall && !ii1->_instrCall) return 1;
 
-    if (_instrCall && ii->_instrCall) {
+    if (ii1->_instrCall && ii2->_instrCall) {
 	// Two calls: desending sort according costs
-	if (_pure < ii->_pure) return 1;
-	if (_pure > ii->_pure) return -1;
+	if (ii1->_pure < ii2->_pure) return 1;
+	if (ii1->_pure > ii2->_pure) return -1;
 
 	// Two calls: sort according function names
-	TraceFunction* f1 = _instrCall->call()->called();
-	TraceFunction* f2 = ii->_instrCall->call()->called();
+	TraceFunction* f1 = ii1->_instrCall->call()->called();
+	TraceFunction* f2 = ii2->_instrCall->call()->called();
 	if (f1->prettyName() > f2->prettyName()) return 1;
 	return -1;
     }
 
     // Two jumps: descending sort according target address
-    if (_instrJump->instrTo()->addr() < ii->_instrJump->instrTo()->addr())
+    if (ii1->_instrJump->instrTo()->addr() <
+	ii2->_instrJump->instrTo()->addr())
 	return -1;
-    if (_instrJump->instrTo()->addr() > ii->_instrJump->instrTo()->addr())
+    if (ii1->_instrJump->instrTo()->addr() >
+	ii2->_instrJump->instrTo()->addr())
 	return 1;
     return 0;
 
@@ -264,12 +301,12 @@ void InstrItem::paintCell( QPainter *p, const QColorGroup &cg,
 {
   QColorGroup _cg( cg );
 
-  if ( !_inside || column==1)
+  if ( !_inside || ((column==1) || column==2))
     _cg.setColor( QColorGroup::Base, cg.button() );
-  else if ((_instrCall || _instrJump) && column>1)
+  else if ((_instrCall || _instrJump) && column>2)
     _cg.setColor( QColorGroup::Base, cg.midlight() );
 
-  if (column == 2)
+  if (column == 3)
     paintArrows(p, _cg, width);
   else
     QListViewItem::paintCell( p, _cg, column, width, alignment );
@@ -399,7 +436,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 int InstrItem::width( const QFontMetrics& fm,
                       const QListView* lv, int c ) const
 {
-  if (c != 2) return QListViewItem::width(fm, lv, c);
+  if (c != 3) return QListViewItem::width(fm, lv, c);
 
   InstrView* iv = (InstrView*) lv;
   int levels = iv->arrowLevels();

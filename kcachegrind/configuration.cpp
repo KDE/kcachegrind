@@ -60,15 +60,15 @@ static QString knownFormula(QString name)
 
 static QString knownLongName(QString name)
 {
-    if (name == "Ir") return i18n("Instruction");
-    if (name =="Dr") return i18n("Read Access");
-    if (name =="Dw") return i18n("Write Access");
-    if (name =="I1mr") return i18n("L1 Instr. Miss");
-    if (name =="D1mr") return i18n("L1 Read Miss");
-    if (name =="D1mw") return i18n("L1 Write Miss");
-    if (name =="I2mr") return i18n("L2 Instr. Miss");
-    if (name =="D2mr") return i18n("L2 Read Miss");
-    if (name =="D2mw") return i18n("L2 Write Miss");
+    if (name == "Ir") return i18n("Instruction Fetch");
+    if (name =="Dr") return i18n("Data Read Access");
+    if (name =="Dw") return i18n("Data Write Access");
+    if (name =="I1mr") return i18n("L1 Instr. Fetch Miss");
+    if (name =="D1mr") return i18n("L1 Data Read Miss");
+    if (name =="D1mw") return i18n("L1 Data Write Miss");
+    if (name =="I2mr") return i18n("L2 Instr. Fetch Miss");
+    if (name =="D2mr") return i18n("L2 Data Read Miss");
+    if (name =="D2mw") return i18n("L2 Data Write Miss");
     if (name =="Smp") return i18n("Samples");
     if (name =="Sys") return i18n("System Time");
     if (name =="User") return i18n("User Time");

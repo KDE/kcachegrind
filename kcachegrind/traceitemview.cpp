@@ -40,6 +40,7 @@ TraceItemView::TraceItemView(TraceItemView* parentView, TopLevel* top)
   _activeItem = _newActiveItem = 0;
   _selectedItem = _newSelectedItem = 0;
   _costType = _newCostType = 0;
+  _costType2 = _newCostType2 = 0;
   _groupType = _newGroupType = TraceItem::NoCostType;
 
   _status = nothingChanged;
@@ -143,13 +144,15 @@ TraceFunction* TraceItemView::activeFunction()
 }
 
 bool TraceItemView::set(int changeType, TraceData* d,
-			TraceCostType* t ,TraceItem::CostType g, const TracePartList& l,
+			TraceCostType* t1, TraceCostType* t2,
+			TraceItem::CostType g, const TracePartList& l,
                         TraceItem* a, TraceItem* s)
 {
   _status |= changeType;
   _newData = d;
   _newGroupType = g;
-  _newCostType = t;
+  _newCostType = t1;
+  _newCostType2 = t2;
   _newPartList = l;
   _newSelectedItem = s;
   _newActiveItem = canShow(a);
@@ -210,6 +213,13 @@ void TraceItemView::updateView(bool force)
   else
     _status &= ~costTypeChanged;
 
+  if (_newCostType2 != _costType2) {
+    _status |= costType2Changed;
+    _costType2 = _newCostType2;
+  }
+  else
+    _status &= ~costType2Changed;
+
   if (_newGroupType != _groupType) {
     _status |= groupTypeChanged;
     _groupType = _newGroupType;
@@ -243,6 +253,11 @@ void TraceItemView::updateView(bool force)
   if (_status & costTypeChanged)
     kdDebug() << "  Cost type "
               << (_costType ? _costType->name().ascii() : "?")
+              << endl;
+
+  if (_status & costType2Changed)
+    kdDebug() << "  Cost type 2 "
+              << (_costType2 ? _costType2->name().ascii() : "?")
               << endl;
 
   if (_status & groupTypeChanged)
@@ -312,12 +327,20 @@ void TraceItemView::activated(TraceItemView* sender, TraceItem* i)
       if (_topLevel) _topLevel->setTraceItemDelayed(i);
 }
 
-void TraceItemView::selected(TraceItemView*, TraceCostType* t)
+void TraceItemView::selectedCostType(TraceItemView*, TraceCostType* t)
 {
   if (_parentView)
-      _parentView->selected(this, t);
+      _parentView->selectedCostType(this, t);
   else
       if (_topLevel) _topLevel->setCostTypeDelayed(t);
+}
+
+void TraceItemView::selectedCostType2(TraceItemView*, TraceCostType* t)
+{
+  if (_parentView)
+      _parentView->selectedCostType2(this, t);
+  else
+      if (_topLevel) _topLevel->setCostType2Delayed(t);
 }
 
 void TraceItemView::activated(TraceItemView*, Direction d)
@@ -359,12 +382,20 @@ void TraceItemView::activated(TraceItem* i)
       if (_topLevel) _topLevel->setTraceItemDelayed(i);
 }
 
-void TraceItemView::selected(TraceCostType* t)
+void TraceItemView::selectedCostType(TraceCostType* t)
 {
   if (_parentView)
-      _parentView->selected(this, t);
+      _parentView->selectedCostType(this, t);
   else
       if (_topLevel) _topLevel->setCostTypeDelayed(t);
+}
+
+void TraceItemView::selectedCostType2(TraceCostType* t)
+{
+  if (_parentView)
+      _parentView->selectedCostType2(this, t);
+  else
+      if (_topLevel) _topLevel->setCostType2Delayed(t);
 }
 
 void TraceItemView::activated(Direction d)
@@ -373,4 +404,14 @@ void TraceItemView::activated(Direction d)
       _parentView->activated(this, d);
   else
       if (_topLevel) _topLevel->setDirectionDelayed(d);
+}
+
+void TraceItemView::addCostMenu(QPopupMenu* p, bool withCost2)
+{
+  if (_topLevel) _topLevel->addCostMenu(p, withCost2);
+}
+
+void TraceItemView::addGoMenu(QPopupMenu* p)
+{
+  if (_topLevel) _topLevel->addGoMenu(p);
 }

@@ -671,6 +671,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
   _lineNo = 0;
   FixString line;
   char c;
+  bool totalsSet = false;
 
   // current position
   nextLineType  = SelfCost;
@@ -1157,7 +1158,11 @@ bool CachegrindLoader::loadTrace(TracePart* part)
   emit updateStatus(statusMsg,100);
 
   _part->invalidate();
-
+  if (!totalsSet) {
+    _part->totals()->clear();
+    _part->totals()->addCost(_part);
+  }
+  
   pFile->close();
 
   return true;

@@ -56,7 +56,7 @@ CallItem::CallItem(CallView* view, QListView* parent, TraceCall* c)
   if (_shown->object() && _shown->object()->name() != QString("???"))
       fName += QString(" (%1)").arg(_shown->object()->shortName());
 
-  setText(2, fName);
+  setText(3, fName);
   updateGroup();
   updateCost();
 }
@@ -64,14 +64,11 @@ CallItem::CallItem(CallView* view, QListView* parent, TraceCall* c)
 void  CallItem::updateGroup()
 {
   QColor c = Configuration::functionColor(_view->groupType(), _shown);
-  setPixmap(2, colorPixmap(10, 10, c));
+  setPixmap(3, colorPixmap(10, 10, c));
 }
 
 void CallItem::updateCost()
 {
-    TraceCostType* ct = _view->costType();
-    _sum = _call->subCost(ct);
-
     bool sameCycle = _shown->cycle() && (_active->cycle() == _shown->cycle());
     bool shownIsCycle = (_shown == _shown->cycle());
     bool selectedIsCycle = (_active == _active->cycle());
@@ -87,7 +84,7 @@ void CallItem::updateCost()
 	else
 	    cStr = _call->prettyCallCount();
     }
-    setText(1, cStr);
+    setText(2, cStr);
 
     TraceCost* totalCost;
     if (_view->topLevel()->showExpanded()) {
@@ -99,6 +96,8 @@ void CallItem::updateCost()
     else
 	totalCost = _active->data();
 
+    TraceCostType* ct = _view->costType();
+    _sum = _call->subCost(ct);
     double total = totalCost->subCost(ct);
 
     if (total == 0.0) {
@@ -119,6 +118,31 @@ void CallItem::updateCost()
 	setPixmap(0, costPixmap(ct, _call, total));
     }
 
+    // Cost Type 2
+    TraceCostType* ct2 = _view->costType2();
+    if (ct2) {
+      _sum2 = _call->subCost(ct2);
+      double total = totalCost->subCost(ct2);
+
+      if (total == 0.0) {
+	QString str = "-";
+
+	setText(1, str);
+	setPixmap(1, QPixmap());
+      }
+      else {
+	double sum  = 100.0 * _sum2 / total;
+	
+	if (_view->topLevel()->showPercentage())
+	  setText(1, QString("%1")
+		  .arg(sum, 0, 'f', Configuration::percentPrecision()));
+	else
+	  setText(1, _call->prettySubCost(ct2));
+
+	setPixmap(1, costPixmap(ct2, _call, total));
+      }
+    }
+
     QPixmap p;
     if (sameCycle && !selectedIsCycle && !shownIsCycle) {
 
@@ -127,21 +151,34 @@ void CallItem::updateCost()
 	p= loader->loadIcon(icon, KIcon::Small, 0,
 			    KIcon::DefaultState, 0, true);
     }
-    setPixmap(1, p);
+    setPixmap(2, p);
 }
 
 
 int CallItem::compare(QListViewItem * i, int col, bool ascending ) const
 {
-  CallItem* ci = (CallItem*) i;
+  const CallItem* ci1 = this;
+  const CallItem* ci2 = (CallItem*) i;
+
+  // we always want descending order
+  if (ascending) {
+    ci1 = ci2;
+    ci2 = this;
+  }
+
   if (col==0) {
-    if (_sum < ci->_sum) return -1;
-    if (_sum > ci->_sum) return 1;
+    if (ci1->_sum < ci2->_sum) return -1;
+    if (ci1->_sum > ci2->_sum) return 1;
     return 0;
   }
   if (col==1) {
-    if (_cc < ci->_cc) return -1;
-    if (_cc > ci->_cc) return 1;
+    if (ci1->_sum2 < ci2->_sum2) return -1;
+    if (ci1->_sum2 > ci2->_sum2) return 1;
+    return 0;
+  }
+  if (col==2) {
+    if (ci1->_cc < ci2->_cc) return -1;
+    if (ci1->_cc > ci2->_cc) return 1;
     return 0;
   }
   return QListViewItem::compare(i, col, ascending);

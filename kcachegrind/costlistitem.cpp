@@ -97,15 +97,22 @@ void CostListItem::update()
 
 int CostListItem::compare(QListViewItem * i, int col, bool ascending ) const
 {
-  CostListItem* fi = (CostListItem*) i;
+  const CostListItem* fi1 = this;
+  const CostListItem* fi2 = (CostListItem*) i;
+
+  // we always want descending order
+  if (ascending) {
+    fi1 = fi2;
+    fi2 = this;
+  }
 
   // a skip entry is always sorted last
-  if (_skipped) return -1;
-  if (fi->_skipped) return 1;
+  if (fi1->_skipped) return -1;
+  if (fi2->_skipped) return 1;
 
   if (col==0) {
-    if (_pure < fi->_pure) return -1;
-    if (_pure > fi->_pure) return 1;
+    if (fi1->_pure < fi2->_pure) return -1;
+    if (fi1->_pure > fi2->_pure) return 1;
     return 0;
   }
   return QListViewItem::compare(i, col, ascending);

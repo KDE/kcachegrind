@@ -40,7 +40,7 @@ public:
     void updateGroup();
 
 private:
-    SubCost _sum;
+    SubCost _sum, _sum2;
     SubCost _cc;
     TraceCall* _call;
     CallView* _view;

@@ -28,6 +28,8 @@
 #include "tracedata.h"
 #include "listutils.h"
 
+class QPopupMenu;
+
 class TraceFunction;
 class TraceData;
 class StackBrowser;
@@ -47,6 +49,8 @@ public:
   bool setTopFunction();
 
   QWidget* widget() { return this; }
+
+  void addGroupMenu(QPopupMenu*);
 
 public slots:
   void groupDoubleClicked( QListViewItem* );

@@ -26,21 +26,25 @@
 #include <qlistview.h>
 #include "tracedata.h"
 
+class SourceView;
+
 class SourceItem: public QListViewItem
 {
 public:
   // for source lines
-  SourceItem(QListView* parent, int fileno, unsigned int lineno,
+  SourceItem(SourceView* sv, QListView* parent, 
+	     int fileno, unsigned int lineno,
 	     bool inside, const QString& src,
-             TraceLine* line, TraceCostType* ct);
+             TraceLine* line = 0);
 
   // for call lines
-  SourceItem(QListViewItem* parent, int fileno, unsigned int lineno,
-             TraceLine* line, TraceLineCall* lineCall,
-             TraceCostType* ct, TraceCost::CostType gt);
+  SourceItem(SourceView* sv, QListViewItem* parent, 
+	     int fileno, unsigned int lineno,
+             TraceLine* line, TraceLineCall* lineCall);
 
   // for jump lines
-  SourceItem(QListViewItem* parent, int fileno, unsigned int lineno,
+  SourceItem(SourceView* sv, QListViewItem* parent, 
+	     int fileno, unsigned int lineno,
              TraceLine* line, TraceLineJump* lineJump);
 
   uint lineno() const { return _lineno; }
@@ -56,9 +60,8 @@ public:
                   int column, int width, int alignment );
   int width( const QFontMetrics& fm,
              const QListView* lv, int c ) const;
-  void setCostType(TraceCostType* ct);
-  void setGroupType(TraceCost::CostType);
-  void update();
+  void updateGroup();
+  void updateCost();
 
   // arrow lines
   void setJumpArray(const QMemArray<TraceLineJump*>& a);
@@ -68,9 +71,8 @@ protected:
   QMemArray<TraceLineJump*> _jump;
 
 private:
-  SubCost _pure;
-  TraceCostType* _costType;
-  TraceCost::CostType _groupType;
+  SourceView* _view;
+  SubCost _pure, _pure2;
   uint _lineno;
   int _fileno; // for line sorting (even with multiple files)
   bool _inside;

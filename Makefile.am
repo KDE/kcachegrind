@@ -1,4 +1,4 @@
-SUBDIRS = kcachegrind pics
+SUBDIRS = kcachegrind pics converters
 
 EXTRA_DIST = \
 	AUTHORS COPYING NEWS ChangeLog INSTALL README TODO \

@@ -25,19 +25,22 @@
 
 #include "tracedata.h"
 
+class QWidget;
+class QPopupMenu;
+
 class KConfig;
 class KConfigGroup;
 class KConfigBase;
 
 class TopLevel;
-class QWidget;
 
 /**
  * Abstract Base Class for KCachegrind Views
  *
  * This class delivers the shared functionality of all KCachegrind
  * Views for one TraceItem (like Function, Object...), the "active"
- * item. Additional view attributes are current cost type, group type,
+ * item. Additional view attributes are current primary cost type,
+ * an optional secondary cost type, group type,
  * and possibly a selected costitem in this view.
  * Note that there is a difference in changing the selected item of
  * a view (this usually changes selection in other views, too), and
@@ -53,12 +56,13 @@ public:
    */
   enum { nothingChanged      = 0,
 	 costTypeChanged     = 1,
-	 groupTypeChanged    = 2,
-	 partsChanged        = 4,
-	 activeItemChanged   = 8,
-	 selectedItemChanged = 16,
-	 dataChanged         = 32,
-	 configChanged       = 64 };
+	 costType2Changed    = 2,
+	 groupTypeChanged    = 4,
+	 partsChanged        = 8,
+	 activeItemChanged   = 16,
+	 selectedItemChanged = 32,
+	 dataChanged         = 64,
+	 configChanged       = 128 };
 
   enum Direction { None, Back, Forward, Up };
 
@@ -84,7 +88,8 @@ public:
 
   // change from parent, call update() afterwards if view is visible
   void setData(TraceData* d) { _newData = d; }
-  void set(TraceCostType* t) { _newCostType = t; }
+  void setCostType(TraceCostType* t) { _newCostType = t; }
+  void setCostType2(TraceCostType* t) { _newCostType2 = t; }
   void set(TraceItem::CostType g) { _newGroupType = g; }
   void set(const TracePartList& l) { _newPartList = l; }
   // returns false if nothing can be shown for this trace item
@@ -92,7 +97,8 @@ public:
   void select(TraceItem* i);
   void notifyChange(int changeType) { _status |= changeType; }
   // all in one
-  bool set(int, TraceData*, TraceCostType*, TraceItem::CostType, const TracePartList&,
+  bool set(int, TraceData*, TraceCostType*, TraceCostType*,
+	   TraceItem::CostType, const TracePartList&,
 	   TraceItem*, TraceItem*);
 
   // general update request, call if view is/gets visible
@@ -105,7 +111,8 @@ public:
   virtual void selected(TraceItemView* sender, TraceItem*);
   virtual void selected(TraceItemView* sender, const TracePartList&);
   virtual void activated(TraceItemView* sender, Direction);
-  virtual void selected(TraceItemView* sender, TraceCostType*);
+  virtual void selectedCostType(TraceItemView* sender, TraceCostType*);
+  virtual void selectedCostType2(TraceItemView* sender, TraceCostType*);
   virtual void activated(TraceItemView* sender, TraceItem*);
 
   // getters...
@@ -114,6 +121,7 @@ public:
   TraceItem* activeItem() const { return _newActiveItem; }
   TraceItem* selectedItem() const { return _newSelectedItem; }
   TraceCostType* costType() const { return _newCostType; }
+  TraceCostType* costType2() const { return _newCostType2; }
   TraceItem::CostType groupType() const { return _newGroupType; }
   const TracePartList& partList() const { return _newPartList; }
 
@@ -145,15 +153,22 @@ public:
    */
   virtual TraceItem* canShow(TraceItem* i) { return i; }
 
+  /* convenience functions for often used context menu items */
+  void addCostMenu(QPopupMenu*,bool withCost2 = true);
+  void addGoMenu(QPopupMenu*);
+
 protected:
   // helpers to call selected()/activated() of parentView
   void selected(TraceItem*);
   void selected(const TracePartList&);
   void activated(TraceItem*);
-  void selected(TraceCostType*);
+  void selectedCostType(TraceCostType*);
+  void selectedCostType2(TraceCostType*);
   void activated(Direction);
 
-  // Is this view visible? If not, doUpdate() won't be called by updateView()
+  /* Is this view visible?
+   * if not, doUpdate() won't be called by updateView()
+   */
   virtual bool isViewVisible();
 
   // update handler (to be reimplemented)
@@ -165,14 +180,14 @@ protected:
   TraceData* _data;
   TracePartList _partList;
   TraceItem *_activeItem, *_selectedItem;
-  TraceCostType* _costType;
+  TraceCostType *_costType, *_costType2;
   TraceItem::CostType _groupType;
 
 private:
   TraceData* _newData;
   TracePartList _newPartList;
   TraceItem *_newActiveItem, *_newSelectedItem;
-  TraceCostType* _newCostType;
+  TraceCostType *_newCostType, *_newCostType2;
   TraceItem::CostType _newGroupType;
 
   QString _title;

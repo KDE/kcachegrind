@@ -124,6 +124,7 @@ InstrView::InstrView(TraceItemView* parentView,
 
   addColumn( i18n( "#" ) );
   addColumn( i18n( "Cost" ) );
+  addColumn( i18n( "Cost 2" ) );
   addColumn( "" );
   addColumn( i18n( "Hex" ) );
   addColumn( "" ); // Instruction
@@ -132,6 +133,7 @@ InstrView::InstrView(TraceItemView* parentView,
 
   setAllColumnsShowFocus(true);
   setColumnAlignment(1, Qt::AlignRight);
+  setColumnAlignment(2, Qt::AlignRight);
 
   connect(this,
           SIGNAL(contextMenuRequested(QListViewItem*, const QPoint &, int)),
@@ -173,7 +175,7 @@ QString InstrView::whatsThis() const
 		 "make the destination function of this call current.</p>");
 }
 
-void InstrView::context(QListViewItem* i, const QPoint & p, int)
+void InstrView::context(QListViewItem* i, const QPoint & p, int c)
 {
   QPopupMenu popup;
 
@@ -194,9 +196,11 @@ void InstrView::context(QListViewItem* i, const QPoint & p, int)
     popup.insertSeparator();
   }
 
-  popup.insertItem(i18n("Go Back"), 90);
-  popup.insertItem(i18n("Go Forward"), 91);
-  popup.insertItem(i18n("Go Up"), 92);
+  if ((c == 1) || (c == 2)) {
+    addCostMenu(&popup);
+    popup.insertSeparator();
+  }
+  addGoMenu(&popup);
 
   popup.insertSeparator();
   popup.setCheckable(true);
@@ -204,10 +208,7 @@ void InstrView::context(QListViewItem* i, const QPoint & p, int)
   if (_showHexCode) popup.setItemChecked(94,true);
 
   int r = popup.exec(p);
-  if      (r == 90) activated(Back);
-  else if (r == 91) activated(Forward);
-  else if (r == 92) activated(Up);
-  else if (r == 93) {
+  if (r == 93) {
     if (f) activated(f);
     if (instr) activated(instr);
   }
@@ -215,7 +216,7 @@ void InstrView::context(QListViewItem* i, const QPoint & p, int)
     _showHexCode = !_showHexCode;
     // remember width when hiding
     if (!_showHexCode)
-      _lastHexCodeWidth = columnWidth(3);
+      _lastHexCodeWidth = columnWidth(4);
     setColumnWidths();
   }
 }
@@ -354,20 +355,23 @@ void InstrView::doUpdate(int changeType)
     QListViewItem *item, *item2;
     for (item = firstChild();item;item = item->nextSibling())
       for (item2 = item->firstChild();item2;item2 = item2->nextSibling())
-        ((InstrItem*)item2)->setGroupType(_groupType);
+        ((InstrItem*)item2)->updateGroup();
     return;
   }
 
   refresh();
-  setColumnWidths();
 }
 
 void InstrView::setColumnWidths()
 {
-  if (_showHexCode)
-    setColumnWidth(3, _lastHexCodeWidth);
-  else
-    setColumnWidth(3, 0);
+  if (_showHexCode) {
+    setColumnWidthMode(4, QListView::Maximum);
+    setColumnWidth(4, _lastHexCodeWidth);
+  }
+  else {
+    setColumnWidthMode(4, QListView::Manual);
+    setColumnWidth(4, 0);
+  }
 }
 
 void InstrView::refresh()
@@ -378,13 +382,16 @@ void InstrView::refresh()
     clear();
     setColumnWidth(0, 20);
     setColumnWidth(1, 50);
-    setColumnWidth(2, 0);   // arrows, defaults to invisible
-    setColumnWidth(3, 0);   // hex code column
-    setColumnWidth(4, 20);  // command column
-    setColumnWidth(5, 200); // arg column
+    setColumnWidth(2, _costType2 ? 50:0);
+    setColumnWidth(3, 0);   // arrows, defaults to invisible
+    setColumnWidth(4, 0);   // hex code column
+    setColumnWidth(5, 20);  // command column
+    setColumnWidth(6, 200); // arg column
     setSorting(0); // always reset to address number sort
     if (_costType)
       setColumnText(1, _costType->name());
+    if (_costType2)
+      setColumnText(2, _costType2->name());
 
     if (!_data || !_activeItem) return;
 
@@ -402,6 +409,9 @@ void InstrView::refresh()
 
     if (!f) return;
 
+    // Allow resizing of column 2
+    setColumnWidthMode(2, QListView::Maximum);
+
     // check for instruction map
     TraceInstrMap::Iterator itStart, it, tmpIt, itEnd;
     TraceInstrMap* instrMap = f->instrMap();
@@ -409,16 +419,20 @@ void InstrView::refresh()
 	it    = instrMap->begin();
 	itEnd = instrMap->end();
 	// get first instruction with cost of selected type
-	while((it != itEnd) && !(*it).hasCost(_costType)) ++it;
+	while(it != itEnd) {
+	  if ((*it).hasCost(_costType)) break;
+	  if (_costType2 && (*it).hasCost(_costType2)) break;
+	  ++it;
+	}
     }
     if (!instrMap || (it == itEnd)) {
-	new InstrItem(this, 1,
+	new InstrItem(this, this, 1,
 		      i18n("There is no instruction info in the trace file."));
-	new InstrItem(this, 2,
+	new InstrItem(this, this, 2,
 		      i18n("For the Valgrind Calltree Skin, rerun with option"));
-	new InstrItem(this, 3, i18n("      --dump-instr=yes"));
-	new InstrItem(this, 4, i18n("To see (conditional) jumps, additionally specify"));
-	new InstrItem(this, 5, i18n("      --trace-jump=yes"));
+	new InstrItem(this, this, 3, i18n("      --dump-instr=yes"));
+	new InstrItem(this, this, 4, i18n("To see (conditional) jumps, additionally specify"));
+	new InstrItem(this, this, 5, i18n("      --trace-jump=yes"));
 	return;
     }
 
@@ -436,7 +450,11 @@ void InstrView::refresh()
 	    _highList.append(ij);
 	}
 	++it;
-	while((it != itEnd) && !(*it).hasCost(_costType)) ++it;
+	while(it != itEnd) {
+	  if ((*it).hasCost(_costType)) break;
+	  if (_costType2 && (*it).hasCost(_costType2)) break;
+	  ++it;
+	}
 	if (it == itEnd) break;
     }
     _lowList.sort();
@@ -454,7 +472,11 @@ void InstrView::refresh()
 	while(1) {
 	    tmpIt = it;
 	    ++it;
-	    while((it != itEnd) && !(*it).hasCost(_costType)) ++it;
+	    while(it != itEnd) {
+	      if ((*it).hasCost(_costType)) break;
+	      if (_costType2 && (*it).hasCost(_costType2)) break;
+	      ++it;
+	    }
 	    if (it == itEnd) break;
 	    if (!(*it).addr().isInRange( (*tmpIt).addr(),10000) ) break;
 	}
@@ -464,7 +486,13 @@ void InstrView::refresh()
 	if (it == itEnd) break;
     }
 
-    _lastHexCodeWidth = columnWidth(3);
+    _lastHexCodeWidth = columnWidth(4);
+    setColumnWidths();
+
+    if (!_costType2) {
+      setColumnWidthMode(2, QListView::Manual);
+      setColumnWidth(2, 0);
+    }
 }
 
 
@@ -591,14 +619,14 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     // and run...
     FILE* iFILE = popen(QFile::encodeName( popencmd ), "r");
     if (iFILE == 0) {
-	new InstrItem(this, 1,
+	new InstrItem(this, this, 1,
 		      i18n("There is an error trying to execute the command"));
-	new InstrItem(this, 2, "");
-	new InstrItem(this, 3, popencmd);
-	new InstrItem(this, 4, "");
-	new InstrItem(this, 5,
+	new InstrItem(this, this, 2, "");
+	new InstrItem(this, this, 3, popencmd);
+	new InstrItem(this, this, 4, "");
+	new InstrItem(this, this, 5,
 		      i18n("Check that you have installed 'objdump'."));
-	new InstrItem(this, 6,
+	new InstrItem(this, this, 6,
 		      i18n("This utility can be found in the 'binutils' package."));
 	return false;
     }
@@ -655,7 +683,11 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 
 	  costIt = it;
 	  ++it;
-	  while((it != itEnd) && !(*it).hasCost(_costType)) ++it;
+	  while(it != itEnd) {
+	    if ((*it).hasCost(_costType)) break;
+	    if (_costType2 && (*it).hasCost(_costType2)) break;
+	    ++it;
+	  }
 	  costAddr = nextCostAddr;
 	  nextCostAddr = (it == itEnd) ? Addr(0) : (*it).addr();
 
@@ -744,8 +776,8 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	  skipLineWritten = false;
 
 
-      ii = new InstrItem(this, addr, inside,
-                         code, cmd, args, currInstr, _costType);
+      ii = new InstrItem(this, this, addr, inside,
+                         code, cmd, args, currInstr);
       dumpedLines++;
       if (0) kdDebug() << "Dumped 0x" << addr.toString() << " "
 		       << (inside ? "Inside " : "Outside")
@@ -753,7 +785,6 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 
       // no calls/jumps if we have no cost for this line
       if (!currInstr) continue;
-
 
       if (!selected &&
 	  (currInstr == _selectedItem) ||
@@ -770,14 +801,15 @@ bool InstrView::fillInstrRange(TraceFunction* function,
       TraceInstrCallList list = currInstr->instrCalls();
       TraceInstrCall* ic;
       for (ic=list.first();ic;ic=list.next()) {
-	  if (ic->subCost(_costType)==0) continue;
+	  if ((ic->subCost(_costType)==0) &&
+	      (ic->subCost(_costType2)==0)) continue;
 
 	  if (ic->subCost(_costType) > most) {
 	      item = ii;
 	      most = ic->subCost(_costType);
 	  }
 
-	  ii2 = new InstrItem(ii, addr, currInstr, ic, _costType, _groupType);
+	  ii2 = new InstrItem(this, ii, addr, currInstr, ic);
 
 	  if (!selected && (ic->call()->called() == _selectedItem))
 	      selected = ii2;
@@ -788,7 +820,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
       for (ij=jlist.first();ij;ij=jlist.next()) {
 	  if (ij->executedCount()==0) continue;
 
-	  new InstrItem(ii, addr, currInstr, ij);
+	  new InstrItem(this, ii, addr, currInstr, ij);
       }
     }
 
@@ -803,7 +835,6 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 
     file.close();
     pclose(iFILE);
-
 
     // for arrows: go down the list according to list sorting
     sort();
@@ -822,43 +853,43 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     }
 
     if (arrowLevels())
-	setColumnWidth(2, 10 + 6*arrowLevels() + itemMargin() * 2);
+	setColumnWidth(3, 10 + 6*arrowLevels() + itemMargin() * 2);
     else
-	setColumnWidth(2, 0);
+	setColumnWidth(3, 0);
 
 
     if (noAssLines > 1) {
 	// trace cost not machting code
 
-	new InstrItem(this, 1,
+	new InstrItem(this, this, 1,
 		      i18n("There is %n cost line without assembler code.",
                            "There are %n cost lines without assembler code.", noAssLines));
-	new InstrItem(this, 2,
+	new InstrItem(this, this, 2,
 		      i18n("This happens because the code of"));
-	new InstrItem(this, 3, QString("        %1").arg(objfile));
-	new InstrItem(this, 4,
+	new InstrItem(this, this, 3, QString("        %1").arg(objfile));
+	new InstrItem(this, this, 4,
 		      i18n("doesn't seem to match the trace file."));
-	new InstrItem(this, 5, "");
-	new InstrItem(this, 6,
+	new InstrItem(this, this, 5, "");
+	new InstrItem(this, this, 6,
 		      i18n("Are you using an old trace file or is the above mentioned"));
-	new InstrItem(this, 7,
+	new InstrItem(this, this, 7,
 		      i18n("ELF object from an updated installation/another machine?"));
-	new InstrItem(this, 8, "");
+	new InstrItem(this, this, 8, "");
 	return false;
     }
 
     if (dumpedLines == 0) {
 	// no matching line read from popen
-	new InstrItem(this, 1,
+	new InstrItem(this, this, 1,
 		      i18n("There seems to be an error trying to execute the command"));
-	new InstrItem(this, 2, "");
-	new InstrItem(this, 3, popencmd);
-	new InstrItem(this, 4, "");
-	new InstrItem(this, 5,
+	new InstrItem(this, this, 2, "");
+	new InstrItem(this, this, 3, popencmd);
+	new InstrItem(this, this, 4, "");
+	new InstrItem(this, this, 5,
 		      i18n("Check that the ELF object used in the command exists."));
-	new InstrItem(this, 5,
+	new InstrItem(this, this, 5,
 		      i18n("Check that you have installed 'objdump'."));
-	new InstrItem(this, 6,
+	new InstrItem(this, this, 6,
 		      i18n("This utility can be found in the 'binutils' package."));
 	return false;
     }
@@ -876,12 +907,12 @@ void InstrView::updateInstrItems()
 	TraceInstr* instr = ii->instr();
 	if (!instr) continue;
 
-	ii->update();
+	ii->updateCost();
 
 	QListViewItem *next, *i  = ii->firstChild();
 	for (;i;i = next) {
 	    next = i->nextSibling();
-	    ((InstrItem*)i)->update();
+	    ((InstrItem*)i)->updateCost();
 	}
     }
 }

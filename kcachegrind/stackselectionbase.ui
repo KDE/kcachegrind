@@ -39,6 +39,17 @@
             </column>
             <column>
                 <property name="text">
+                    <string>Cost2</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizeable">
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property name="text">
                     <string>Calls</string>
                 </property>
                 <property name="clickable">

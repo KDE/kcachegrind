@@ -41,6 +41,7 @@ StackSelection::StackSelection( QWidget* parent, const char* name)
   _item = 0;
   _function = 0;
   _costType = 0;
+  _costType2 = 0;
   _groupType = TraceItem::Function;
 
   stackList->setSorting(-1);
@@ -48,8 +49,11 @@ StackSelection::StackSelection( QWidget* parent, const char* name)
   stackList->setResizeMode(QListView::LastColumn);
   stackList->setColumnAlignment(0, Qt::AlignRight);
   stackList->setColumnAlignment(1, Qt::AlignRight);
+  stackList->setColumnAlignment(2, Qt::AlignRight);
   stackList->setColumnWidth(0, 50);
-  stackList->setColumnWidth(1, 50);
+  // 2nd cost column hidden at first (_costType2 == 0)
+  stackList->setColumnWidth(1, 0);
+  stackList->setColumnWidth(2, 50);
 
   connect(stackList, SIGNAL(selectionChanged(QListViewItem*)),
           this, SLOT(stackSelected(QListViewItem*)));
@@ -95,19 +99,21 @@ void StackSelection::rebuildStackList()
   HistoryItem* item = _browser->current();
   stackList->clear();
   stackList->setColumnWidth(0, 50);
-  stackList->setColumnWidth(1, 50);
+  stackList->setColumnWidth(1, _costType2 ? 50:0);
+  stackList->setColumnWidth(2, 50);
   if (!item || !item->stack()) return;
 
   TraceFunction* top = item->stack()->top();
   if (!top) return;
 
+  stackList->setColumnWidthMode(1, QListView::Maximum);
+
   TraceCallList l = item->stack()->calls();
   TraceCall* call;
   for (call=l.last();call;call=l.prev())
-    new StackItem(stackList, call, _costType, _groupType);
+    new StackItem(this, stackList, call);
 
-  new StackItem(stackList, top, _costType, _groupType);
-
+  new StackItem(this, stackList, top);
 
   // select current function
   QListViewItem* i = stackList->firstChild();
@@ -119,6 +125,11 @@ void StackSelection::rebuildStackList()
     // this calls stackFunctionSelected()
     stackList->setCurrentItem(i);
     stackList->ensureItemVisible(i);
+  }
+
+  if (!_costType2) {
+    stackList->setColumnWidthMode(1, QListView::Manual);
+    stackList->setColumnWidth(1, 0);
   }
 }
 
@@ -167,7 +178,7 @@ void StackSelection::refresh()
 {
   QListViewItem* item  = stackList->firstChild();
   for(;item;item = item->nextSibling())
-    ((StackItem*)item)->update();
+    ((StackItem*)item)->updateCost();
 }
 
 void StackSelection::setCostType(TraceCostType* ct)
@@ -175,9 +186,33 @@ void StackSelection::setCostType(TraceCostType* ct)
   if (ct == _costType) return;
   _costType = ct;
 
+  stackList->setColumnWidth(0, 50);
+  if (_costType)
+    stackList->setColumnText(0, _costType->name());
+
   QListViewItem* item  = stackList->firstChild();
   for(;item;item = item->nextSibling())
-    ((StackItem*)item)->setCostType(_costType);
+    ((StackItem*)item)->updateCost();
+}
+
+void StackSelection::setCostType2(TraceCostType* ct)
+{
+  if (ct == _costType2) return;
+  _costType2 = ct;
+
+  stackList->setColumnWidth(1, 50);
+  stackList->setColumnWidthMode(1, QListView::Maximum);
+  if (_costType2)
+    stackList->setColumnText(1, _costType2->name());
+
+  QListViewItem* item  = stackList->firstChild();
+  for(;item;item = item->nextSibling())
+    ((StackItem*)item)->updateCost();
+
+  if (!_costType2) {
+    stackList->setColumnWidthMode(1, QListView::Manual);
+    stackList->setColumnWidth(1, 0);
+  }
 }
 
 void StackSelection::setGroupType(TraceItem::CostType gt)
@@ -187,7 +222,7 @@ void StackSelection::setGroupType(TraceItem::CostType gt)
 
   QListViewItem* item  = stackList->firstChild();
   for(;item;item = item->nextSibling())
-    ((StackItem*)item)->setGroupType(_groupType);
+    ((StackItem*)item)->updateGroup();
 }
 
 #include "stackselection.moc"

@@ -148,7 +148,7 @@ QString CoverageView::whatsThis() const
 	      "function of the other panel is changed instead.</p>");
 }
 
-void CoverageView::context(QListViewItem* i, const QPoint & p, int)
+void CoverageView::context(QListViewItem* i, const QPoint & p, int c)
 {
   QPopupMenu popup;
 
@@ -167,15 +167,14 @@ void CoverageView::context(QListViewItem* i, const QPoint & p, int)
     popup.insertSeparator();
   }
 
-  popup.insertItem(i18n("Go Back"), 90);
-  popup.insertItem(i18n("Go Forward"), 91);
-  popup.insertItem(i18n("Go Up"), 92);
+   if ((c == 0) || (!_showCallers && c == 1)) {
+    addCostMenu(&popup, false);
+    popup.insertSeparator();
+  }
+  addGoMenu(&popup); 
 
   int r = popup.exec(p);
-  if      (r == 90) activated(Back);
-  else if (r == 91) activated(Forward);
-  else if (r == 92) activated(Up);
-  else if (r == 93) activated(f);
+  if (r == 93) activated(f);
 }
 
 void CoverageView::selectedSlot(QListViewItem * i)

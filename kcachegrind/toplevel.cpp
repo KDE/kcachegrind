@@ -152,12 +152,14 @@ void TopLevel::init()
   _data = 0;
   _function = 0;
   _costType = 0;
+  _costType2 = 0;
   _groupType = TraceCost::NoCostType;
   _group = 0;
 
   // for delayed slots
   _traceItemDelayed = 0;
   _costTypeDelayed = 0;
+  _costType2Delayed = 0;
   _groupTypeDelayed = TraceCost::NoCostType;
   _groupDelayed = 0;
   _directionDelayed = TraceItemView::None;
@@ -210,6 +212,8 @@ void TopLevel::saveCurrentState(QString postfix)
   KConfigGroup stateConfig(kconfig, QCString("CurrentState")+pf);
   stateConfig.writeEntry("CostType",
 			 _costType ? _costType->name() : QString("?"));
+  stateConfig.writeEntry("CostType2",
+			 _costType2 ? _costType2->name() : QString("?"));
   stateConfig.writeEntry("GroupType", TraceItem::typeName(_groupType));
 
   _multiView->saveViewConfig(kconfig, QString("MainView"), postfix);
@@ -226,6 +230,8 @@ void TopLevel::saveTraceSettings()
   KConfigGroup pConfig(KGlobal::config(), QCString("TracePositions"));
   pConfig.writeEntry(QString("CostType%1").arg(key),
                      _costType ? _costType->name() : QString("?"));
+  pConfig.writeEntry(QString("CostType2%1").arg(key),
+                     _costType2 ? _costType2->name() : QString("?"));
   pConfig.writeEntry(QString("GroupType%1").arg(key),
                      TraceItem::typeName(_groupType));
 
@@ -444,15 +450,22 @@ void TopLevel::createActions()
   hint = i18n("<b>New</b><p>Open new empty KCachegrind window.</p>");
   action->setWhatsThis( hint );
 
+  action = new KAction( i18n( "&Add..." ), KShortcut(),
+                        this, SLOT(addTrace()),
+                        actionCollection(), "file_add" );
+  hint = i18n("<b>Add Profile Data</b>"
+              "<p>This opens an additional profile data file in the current window.</p>");
+  action->setWhatsThis( hint );
+
   action = new KAction( i18n( "&Reload" ), "reload",
-#if KDE_VERSION > 319
+#if KDE_VERSION > 0x030190
   // for KDE 3.2: KStdAccel::key is deprecated
 			KStdAccel::shortcut(KStdAccel::Reload),
 #else
                         KStdAccel::key(KStdAccel::Reload),
 #endif
                         this, SLOT( reload() ), actionCollection(), "reload" );
-  hint = i18n("<b>Reload trace</b>"
+  hint = i18n("<b>Reload Profile Data</b>"
               "<p>This loads any new created parts, too.</p>");
   action->setWhatsThis( hint );
 
@@ -467,7 +480,7 @@ void TopLevel::createActions()
 
 
   _taDump = new KToggleAction( i18n( "&Force Dump" ), "redo",
-#if KDE_VERSION > 319
+#if KDE_VERSION > 0x030190
   // for KDE 3.2: KStdAccel::key is deprecated
 			       KStdAccel::shortcut(KStdAccel::Redo),
 #else
@@ -501,8 +514,8 @@ void TopLevel::createActions()
   _taDump->setWhatsThis( hint );
 
   action = KStdAction::open(this, SLOT(loadTrace()), actionCollection());
-  hint = i18n("<b>Open Trace</b>"
-              "<p>This opens a trace, with possible multiple parts</p>");
+  hint = i18n("<b>Open Profile Data</b>"
+              "<p>This opens a profile data file, with possible multiple parts</p>");
   action->setToolTip( hint );
   action->setWhatsThis( hint );
 
@@ -517,25 +530,25 @@ void TopLevel::createActions()
                                      actionCollection(),
                                      "settings_show_partdock");
 
-  hint = i18n("Show/Hide the Trace Part Overview Dockable");
+  hint = i18n("Show/Hide the Profile Part Overview Dockable");
   _partDockShown->setToolTip( hint );
   _partDockShown->setWhatsThis( hint );
 
-  _stackDockShown = new KToggleAction(i18n("Top Cost Call Stack"), KShortcut(),
+  _stackDockShown = new KToggleAction(i18n("Call Stack"), KShortcut(),
                                      this, SLOT(toggleStackDock()),
                                      actionCollection(),
                                      "settings_show_stackdock");
 
-  hint = i18n("Show/Hide the Top Call Stack Dockable");
+  hint = i18n("Show/Hide the Call Stack Dockable");
   _stackDockShown->setToolTip( hint );
   _stackDockShown->setWhatsThis( hint );
 
-  _functionDockShown = new KToggleAction(i18n("Flat Profile"), KShortcut(),
+  _functionDockShown = new KToggleAction(i18n("Function Profile"), KShortcut(),
                                          this, SLOT(toggleFunctionDock()),
                                          actionCollection(),
                                          "settings_show_profiledock");
 
-  hint = i18n("Show/Hide the Flat Profile Dockable");
+  hint = i18n("Show/Hide the Function Profile Dockable");
   _functionDockShown->setToolTip( hint );
   _functionDockShown->setWhatsThis( hint );
 
@@ -669,17 +682,27 @@ void TopLevel::createActions()
   _paForward->setWhatsThis( hint );
 #endif
 
-  saCost = new KSelectAction( i18n("Cost Type"), KShortcut(),
-                              actionCollection(), "view_cost_type");
-  hint = i18n("Select cost type of costs shown all over KCachegrind");
-  saCost->setComboWidth(300);
-  saCost->setToolTip( hint );
-  saCost->setWhatsThis( hint );
+  _saCost = new KSelectAction( i18n("Primary Event Type"), KShortcut(),
+			       actionCollection(), "view_cost_type");
+  hint = i18n("Select primary event type of costs");
+  _saCost->setComboWidth(300);
+  _saCost->setToolTip( hint );
+  _saCost->setWhatsThis( hint );
 
   // cost types are dependent on loaded data, thus KSelectAction
   // is filled in setData()
-  connect( saCost, SIGNAL(activated(const QString&)),
+  connect( _saCost, SIGNAL(activated(const QString&)),
            this, SLOT(costTypeSelected(const QString&)));
+
+  _saCost2 = new KSelectAction( i18n("Secondary Event Type"), KShortcut(),
+				actionCollection(), "view_cost_type2");
+  hint = i18n("Select secondary event type for cost e.g. shown in annotations");
+  _saCost2->setComboWidth(300);
+  _saCost2->setToolTip( hint );
+  _saCost2->setWhatsThis( hint );
+
+  connect( _saCost2, SIGNAL(activated(const QString&)),
+           this, SLOT(costType2Selected(const QString&)));
 
   saGroup = new KSelectAction( i18n("Grouping"), KShortcut(),
                                actionCollection(), "view_group_type");
@@ -793,9 +816,25 @@ void TopLevel::toggleFunctionDock()
 
 void TopLevel::togglePercentage()
 {
-  bool show = _taPercentage->isChecked();
+  setPercentage(_taPercentage->isChecked());
+}
+
+void TopLevel::setAbsoluteCost()
+{
+  setPercentage(false);
+}
+
+void TopLevel::setRelativeCost()
+{
+  setPercentage(true);
+}
+
+void TopLevel::setPercentage(bool show)
+{
   if (_showPercentage == show) return;
   _showPercentage = show;
+  if (_taPercentage->isChecked() != show)
+    _taPercentage->setChecked(show);
 
   // FIXME: Delete when no view gets this config from Configuration
   Configuration::setShowPercentage(_showPercentage);
@@ -885,7 +924,7 @@ void TopLevel::querySlot()
 
 void TopLevel::configureKeys()
 {
-#if KDE_VERSION > 319
+#if KDE_VERSION > 0x030190
   // for KDE 3.2: KKeyDialog::configureKeys is deprecated
   KKeyDialog::configure(actionCollection(), this, true);
 #else
@@ -920,9 +959,9 @@ void TopLevel::newWindow()
 void TopLevel::loadTrace()
 {
     KURL url = KFileDialog::getOpenURL(QString::null,
-                                       i18n("cachegrind.out*|Cachegrind Trace"),
+                                       i18n("cachegrind.out*|Cachegrind Profile Data"),
                                        this,
-                                       i18n("Select Cachegrind Trace"));
+                                       i18n("Select Cachegrind Profile Data"));
     loadTrace(url);
 }
 
@@ -932,7 +971,12 @@ void TopLevel::loadTrace(const KURL& url)
 
   // network transparancy
   QString tmpFile;
+#if KDE_VERSION > 0x030190
+  // for KDE 3.2: KIO::NetAccess::download with 2 args is deprecated
+  if(KIO::NetAccess::download( url, tmpFile, this )) {
+#else
   if(KIO::NetAccess::download( url, tmpFile )) {
+#endif
     _openRecent->addURL(url);
     _openRecent->saveEntries( KGlobal::config() );
 
@@ -945,7 +989,6 @@ void TopLevel::loadTrace(QString file)
 {
   if (file.isEmpty()) return;
 
-#if 1
   if (_data && _data->parts().count()>0) {
 
     // In new window
@@ -954,20 +997,61 @@ void TopLevel::loadTrace(QString file)
     t->loadDelayed(file);
     return;
   }
-#else
-  // FIXME: separate action: "Add..."
-  if (_data) {
-    _data->load(file);
-    // FIXME: GUI update for added data
-    return;
-  } 
-#endif
 
   // this constructor enables progress bar callbacks
   TraceData* d = new TraceData(this);
   d->load(file);
   setData(d);
 }
+
+
+void TopLevel::addTrace()
+{
+    KURL url = KFileDialog::getOpenURL(QString::null,
+                                       i18n("cachegrind.out*|Cachegrind Profile Data"),
+                                       this,
+                                       i18n("Add Cachegrind Profile Data"));
+    addTrace(url);
+}
+
+void TopLevel::addTrace(const KURL& url)
+{
+  if (url.isEmpty()) return;
+
+  // network transparancy
+  QString tmpFile;
+#if KDE_VERSION > 0x030190
+  // for KDE 3.2: KIO::NetAccess::download with 2 args is deprecated
+  if(KIO::NetAccess::download( url, tmpFile, this )) {
+#else
+  if(KIO::NetAccess::download( url, tmpFile )) {
+#endif
+    _openRecent->addURL(url);
+    _openRecent->saveEntries( KGlobal::config() );
+
+    addTrace(tmpFile);
+    KIO::NetAccess::removeTempFile( tmpFile );
+  }
+}
+
+void TopLevel::addTrace(QString file)
+{
+  if (file.isEmpty()) return;
+
+  if (_data) {
+    _data->load(file);
+
+    // GUI update for added data
+    configChanged();
+    return;
+  } 
+
+  // this constructor enables progress bar callbacks
+  TraceData* d = new TraceData(this);
+  d->load(file);
+  setData(d);
+}
+
 
 
 void TopLevel::loadDelayed(QString file)
@@ -1025,12 +1109,30 @@ bool TopLevel::setCostType(QString s)
   return setCostType(ct);
 }
 
+bool TopLevel::setCostType2(QString s)
+{
+  TraceCostType* ct;
+
+  // Special type i18n("(Hide)") gives 0
+  ct = (_data) ? _data->mapping()->type(s) : 0;
+
+  return setCostType2(ct);
+}
+
 void TopLevel::costTypeSelected(const QString& s)
 {
   TraceCostType* ct;
 
   ct = (_data) ? _data->mapping()->typeForLong(s) : 0;
   setCostType(ct);
+}
+
+void TopLevel::costType2Selected(const QString& s)
+{
+  TraceCostType* ct;
+
+  ct = (_data) ? _data->mapping()->typeForLong(s) : 0;
+  setCostType2(ct);
 }
 
 bool TopLevel::setCostType(TraceCostType* ct)
@@ -1040,20 +1142,48 @@ bool TopLevel::setCostType(TraceCostType* ct)
 
   if (ct) {
       int idx=0;
-      QStringList l = saCost->items();
+      QStringList l = _saCost->items();
       for (QStringList::Iterator it = l.begin(); it != l.end(); ++it, ++idx ) {
 	  if (*it == ct->longName())
-	      saCost->setCurrentItem(idx);
+	      _saCost->setCurrentItem(idx);
       }
   }
 
   _partSelection->setCostType(_costType);
   _stackSelection->setCostType(_costType);
 
-  _functionSelection->set(_costType);
+  _functionSelection->setCostType(_costType);
   _functionSelection->updateView();
 
-  _multiView->set(_costType);
+  _multiView->setCostType(_costType);
+  _multiView->updateView();
+
+  updateStatusBar();
+
+  return true;
+}
+
+bool TopLevel::setCostType2(TraceCostType* ct)
+{
+  if (_costType2 == ct) return false;
+  _costType2 = ct;
+
+  QString longName = ct ? ct->longName() : i18n("(Hide)");
+
+  int idx=0;
+  QStringList l = _saCost2->items();
+  for (QStringList::Iterator it = l.begin(); it != l.end(); ++it, ++idx ) {
+    if (*it == longName)
+      _saCost2->setCurrentItem(idx);
+  }
+
+  //_partSelection->setCostType2(_costType2);
+  _stackSelection->setCostType2(_costType2);
+
+  _functionSelection->setCostType2(_costType2);
+  _functionSelection->updateView();
+
+  _multiView->setCostType2(_costType2);
   _multiView->updateView();
 
   updateStatusBar();
@@ -1209,9 +1339,20 @@ void TopLevel::setCostTypeDelayed(TraceCostType* ct)
   QTimer::singleShot (0, this, SLOT(setCostTypeDelayed()));
 }
 
+void TopLevel::setCostType2Delayed(TraceCostType* ct)
+{
+  _costType2Delayed = ct;
+  QTimer::singleShot (0, this, SLOT(setCostType2Delayed()));
+}
+
 void TopLevel::setCostTypeDelayed()
 {
   setCostType(_costTypeDelayed);
+}
+
+void TopLevel::setCostType2Delayed()
+{
+  setCostType2(_costType2Delayed);
 }
 
 void TopLevel::setGroupTypeDelayed(TraceItem::CostType gt)
@@ -1373,8 +1514,15 @@ void TopLevel::setData(TraceData* data)
       for (int i=0;i<m->virtualCount();i++)
 	  types << m->virtualType(i)->longName();
   }
-  saCost->setItems(types);
-  saCost->setComboWidth(300);
+  _saCost->setItems(types);
+  _saCost->setComboWidth(300);
+
+  if (types.count()>0) {
+    // second type list gets an additional "(Hide)"
+    types.prepend(i18n("(Hide)"));
+  }
+  _saCost2->setItems(types);
+  _saCost2->setComboWidth(300);
 
   /* this is needed to let the other widgets know the types */
   restoreTraceTypes();
@@ -1409,6 +1557,104 @@ void TopLevel::setData(TraceData* data)
   updateStatusBar();
 }
 
+void TopLevel::addCostMenu(QPopupMenu* popup, bool withCost2)
+{
+  if (_data) {
+    QPopupMenu *popup1 = new QPopupMenu(popup);
+    QPopupMenu *popup2 = 0;
+    popup1->setCheckable(true);
+    
+    if (withCost2) {
+      popup2 = new QPopupMenu(popup);
+      popup2->setCheckable(true);
+      
+      if (_costType2) {
+	popup2->insertItem(i18n("Hide"),199);
+	popup2->insertSeparator();
+      }
+    }
+    
+    TraceCostMapping* m = _data->mapping();
+    TraceCostType* ct;
+    for (int i=0;i<m->realCount();i++) {
+      ct = m->realType(i);
+      popup1->insertItem(ct->longName(), 100+i);
+      if (_costType == ct) popup1->setItemChecked(100+i,true);
+      if (popup2) {
+	popup2->insertItem(ct->longName(), 100+i);
+	if (_costType2 == ct) popup2->setItemChecked(100+i,true);
+      }
+    }
+    for (int i=0;i<m->virtualCount();i++) {
+      ct = m->virtualType(i);
+      popup1->insertItem(ct->longName(), 200+i);
+      if (_costType == ct) popup1->setItemChecked(200+i,true);
+      if (popup2) {
+	popup2->insertItem(ct->longName(), 200+i);
+	if (_costType2 == ct) popup2->setItemChecked(200+i,true);
+      }
+    }
+    popup->insertItem(i18n("Primary Event Type"), popup1);
+    connect(popup1,SIGNAL(activated(int)),this,SLOT(setCostType(int)));
+    if (popup2) {
+      popup->insertItem(i18n("Secondary Event Type"), popup2);
+      connect(popup2,SIGNAL(activated(int)),this,SLOT(setCostType2(int)));
+    }
+  }
+  if (_showPercentage)
+    popup->insertItem(i18n("Show Absolute Cost"),
+		      this, SLOT(setAbsoluteCost()));
+  else
+    popup->insertItem(i18n("Show Relative Cost"),
+		      this, SLOT(setRelativeCost()));
+}
+
+bool TopLevel::setCostType(int id)
+{
+  if (!_data) return false;
+
+  TraceCostMapping* m = _data->mapping();
+  TraceCostType* ct=0;
+  if (id >=100 && id<199) ct = m->realType(id-100); 
+  if (id >=200 && id<299) ct = m->virtualType(id-200); 
+
+  return ct ? setCostType(ct) : false;
+}
+
+bool TopLevel::setCostType2(int id)
+{
+  if (!_data) return false;
+
+  TraceCostMapping* m = _data->mapping();
+  TraceCostType* ct=0;
+  if (id >=100 && id<199) ct = m->realType(id-100); 
+  if (id >=200 && id<299) ct = m->virtualType(id-200); 
+
+  return setCostType2(ct);
+}
+
+void TopLevel::addGoMenu(QPopupMenu* popup)
+{
+  popup->insertItem(i18n("Go Back"), this, SLOT(goBack()));
+  popup->insertItem(i18n("Go Forward"), this, SLOT(goForward()));
+  popup->insertItem(i18n("Go Up"), this, SLOT(goUp()));
+}
+
+void TopLevel::goBack()
+{
+  setDirectionDelayed(TraceItemView::Back);
+}
+
+void TopLevel::goForward()
+{
+  setDirectionDelayed(TraceItemView::Forward);
+}
+
+void TopLevel::goUp()
+{
+  setDirectionDelayed(TraceItemView::Up);
+}
+
 QString TopLevel::traceKey()
 {
   if (!_data || _data->command().isEmpty()) return QString::null;
@@ -1429,19 +1675,22 @@ void TopLevel::restoreTraceTypes()
   KConfigGroup cConfig(KGlobal::config(), QCString("CurrentState"));
   KConfigGroup pConfig(KGlobal::config(), QCString("TracePositions"));
 
-  QString groupType, costType;
+  QString groupType, costType, costType2;
   groupType =  pConfig.readEntry(QString("GroupType%1").arg(key));
   costType  =  pConfig.readEntry(QString("CostType%1").arg(key));
+  costType2 =  pConfig.readEntry(QString("CostType2%1").arg(key));
 
   if (groupType.isEmpty()) groupType = cConfig.readEntry("GroupType");
   if (costType.isEmpty()) costType = cConfig.readEntry("CostType");
+  if (costType2.isEmpty()) costType2 = cConfig.readEntry("CostType2");
 
   setGroupType(groupType);
   setCostType(costType);
+  setCostType2(costType2);
 
   // if still no cost type set, use first available
-  if (!_costType && !saCost->items().isEmpty())
-      costTypeSelected(saCost->items().first());
+  if (!_costType && !_saCost->items().isEmpty())
+      costTypeSelected(_saCost->items().first());
 
 }
 
@@ -1476,7 +1725,7 @@ void TopLevel::restoreTraceSettings()
 void TopLevel::updateStatusBar()
 {
   if (!_data || _data->parts().count()==0) {
-    _statusLabel->setText(i18n("No trace file loaded."));
+    _statusLabel->setText(i18n("No profile data file loaded."));
     return;
   }
 
@@ -1484,12 +1733,17 @@ void TopLevel::updateStatusBar()
                    .arg(_data->shortTraceName())
                    .arg(_data->activePartRange());
 
-  if (_costType)
+  if (_costType) {
     status += i18n("Total %1 Cost: %2")
       .arg(_costType->longName())
       .arg(_data->prettySubCost(_costType));
+    if (_costType2 && (_costType2 != _costType))
+      status += i18n(", %1 Cost: %2")
+	.arg(_costType2->longName())
+	.arg(_data->prettySubCost(_costType2));
+  }
   else
-    status += i18n("No cost type selected");
+    status += i18n("No event type selected");
 
   if (_groupType != TraceItem::Function) {
     status += QString(" - %1 '%2'")

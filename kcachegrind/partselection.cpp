@@ -45,6 +45,7 @@ PartSelection::PartSelection( QWidget* parent, const char* name)
   _function = 0;
   _inSelectionUpdate = false;
 
+  partAreaWidget->setAllowRotation(false);
   partAreaWidget->setMaxSelectDepth(2);
   partAreaWidget->setSelectionMode(TreeMapWidget::Extended);
   partAreaWidget->setSplitMode(TreeMapItem::HAlternate);

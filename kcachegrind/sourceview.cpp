@@ -48,12 +48,14 @@ SourceView::SourceView(TraceItemView* parentView,
 
   addColumn( i18n( "#" ) );
   addColumn( i18n( "Cost" ) );
+  addColumn( i18n( "Cost 2" ) );
   addColumn( "" );
   addColumn( i18n( "Source (unknown)" ) );
 
   setAllColumnsShowFocus(true);
   setColumnAlignment(0, Qt::AlignRight);
   setColumnAlignment(1, Qt::AlignRight);
+  setColumnAlignment(2, Qt::AlignRight);
   setResizeMode(QListView::LastColumn);
 
   connect(this,
@@ -96,7 +98,7 @@ QString SourceView::whatsThis() const
 		 "make the destination function current.</p>");
 }
 
-void SourceView::context(QListViewItem* i, const QPoint & p, int)
+void SourceView::context(QListViewItem* i, const QPoint & p, int c)
 {
   QPopupMenu popup;
 
@@ -118,15 +120,14 @@ void SourceView::context(QListViewItem* i, const QPoint & p, int)
     popup.insertSeparator();
   }
 
-  popup.insertItem(i18n("Go Back"), 90);
-  popup.insertItem(i18n("Go Forward"), 91);
-  popup.insertItem(i18n("Go Up"), 92);
+  if ((c == 1) || (c == 2)) {
+    addCostMenu(&popup);
+    popup.insertSeparator();
+  }
+  addGoMenu(&popup);
 
   int r = popup.exec(p);
-  if      (r == 90) activated(Back);
-  else if (r == 91) activated(Forward);
-  else if (r == 92) activated(Up);
-  else if (r == 93) {
+  if (r == 93) {
     if (f) activated(f);
     if (line) activated(line);
   }
@@ -266,7 +267,7 @@ void SourceView::doUpdate(int changeType)
     QListViewItem *item, *item2;
     for (item = firstChild();item;item = item->nextSibling())
       for (item2 = item->firstChild();item2;item2 = item2->nextSibling())
-        ((SourceItem*)item2)->setGroupType(_groupType);
+        ((SourceItem*)item2)->updateGroup();
   }
 
   refresh();
@@ -277,15 +278,18 @@ void SourceView::refresh()
   clear();
   setColumnWidth(0, 20);
   setColumnWidth(1, 50);
-  setColumnWidth(2, 0); // arrows, defaults to invisible
+  setColumnWidth(2, _costType2 ? 50:0);
+  setColumnWidth(3, 0); // arrows, defaults to invisible
   setSorting(0); // always reset to line number sort
   if (_costType)
     setColumnText(1, _costType->name());
+  if (_costType2)
+    setColumnText(2, _costType2->name());
 
   _arrowLevels = 0;
 
   if (!_data || !_activeItem) {
-    setColumnText(3, i18n("(No Source)"));
+    setColumnText(4, i18n("(No Source)"));
     return;
   }
 
@@ -302,6 +306,9 @@ void SourceView::refresh()
   }
 
   if (!f) return;
+
+  // Allow resizing of column 2
+  setColumnWidthMode(2, QListView::Maximum);
 
   TraceFunctionSource* mainSF = f->sourceFile();
 
@@ -322,6 +329,11 @@ void SourceView::refresh()
   for (sf=l.first();sf;sf=l.next(), fileno++)
     if (sf != mainSF)
       fillSourceFile(sf, fileno);
+
+  if (!_costType2) {
+    setColumnWidthMode(2, QListView::Manual);
+    setColumnWidth(2, 0);
+  }
 }
 
 
@@ -454,10 +466,21 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 {
   if (!sf) return;
 
+  qDebug("Selected Item %s", 
+	 _selectedItem ? _selectedItem->name().ascii() : "(none)");
+
   TraceLineMap::Iterator lineIt, lineItEnd;
   int nextCostLineno = 0, lastCostLineno = 0;
 
   bool validSourceFile = (sf->file()->name() != "???");
+
+  TraceLine* sLine = 0;
+  if (_selectedItem) {
+    if (_selectedItem->type() == TraceItem::Line)
+      sLine = (TraceLine*) _selectedItem;
+    if (_selectedItem->type() == TraceItem::Instr)
+      sLine = ((TraceInstr*)_selectedItem)->line();
+  }
 
   if (validSourceFile) {
       TraceLineMap* lineMap = sf->lineMap();
@@ -465,25 +488,25 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 	  lineIt    = lineMap->begin();
 	  lineItEnd = lineMap->end();
 	  // get first line with cost of selected type
-	  while((lineIt != lineItEnd) &&
-		!(*lineIt).hasCost(_costType)) ++lineIt;
+	  while(lineIt != lineItEnd) {
+	    if (&(*lineIt) == sLine) break;
+	    if ((*lineIt).hasCost(_costType)) break;
+	    if (_costType2 && (*lineIt).hasCost(_costType2)) break;
+	    ++lineIt;
+	  }
 
 	  nextCostLineno     = (lineIt == lineItEnd) ? 0 : (*lineIt).lineno();
       }
 
       if (nextCostLineno == 0) {
-	  new SourceItem(this, fileno, 0, false,
-			 i18n("There is no cost of current selected type associated"),
-			 0, _costType);
-	  new SourceItem(this, fileno, 1, false,
-			 i18n("with any source line of this function in file"),
-			 0, _costType);
-	  new SourceItem(this, fileno, 2, false,
-			 QString("    '%1'").arg(sf->function()->prettyName()),
-			 0, _costType);
-	  new SourceItem(this, fileno, 3, false,
-			 i18n("Thus, no annotated source can be shown."),
-			 0, _costType);
+	  new SourceItem(this, this, fileno, 0, false,
+			 i18n("There is no cost of current selected type associated"));
+	  new SourceItem(this, this, fileno, 1, false,
+			 i18n("with any source line of this function in file"));
+	  new SourceItem(this, this, fileno, 2, false,
+			 QString("    '%1'").arg(sf->function()->prettyName()));
+	  new SourceItem(this, this, fileno, 3, false,
+			 i18n("Thus, no annotated source can be shown."));
 	  return;
       }
   }
@@ -517,55 +540,44 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
   // do it here, because the source directory could have been set before
   if (childCount()==0) {
-    setColumnText(3, validSourceFile ?
+    setColumnText(4, validSourceFile ?
                   i18n("Source ('%1')").arg(filename) :
                   i18n("Source (unknown)"));
   }
   else {
-    new SourceItem(this, fileno, 0, true,
+    new SourceItem(this, this, fileno, 0, true,
                    validSourceFile ?
                    i18n("--- Inlined from '%1' ---").arg(filename) :
-                   i18n("--- Inlined from unknown source ---"),
-                   0, _costType);
+                   i18n("--- Inlined from unknown source ---"));
   }
 
   if (nextCostLineno == 0) {
-    new SourceItem(this, fileno, 0, false,
-                   i18n("There is no source available for function"),
-                   0, _costType);
-    new SourceItem(this, fileno, 1, false,
-                   QString("    '%1'").arg(sf->function()->prettyName()),
-                   0, _costType);
+    new SourceItem(this, this, fileno, 0, false,
+                   i18n("There is no source available for function"));
+    new SourceItem(this, this, fileno, 1, false,
+                   QString("    '%1'").arg(sf->function()->prettyName()));
     if (sf->file()->name() == "???") {
-      new SourceItem(this, fileno, 2, false,
-                     i18n("because no debug information is present."),
-                     0, _costType);
-      new SourceItem(this, fileno, 3, false,
-                     i18n("Recompile source and redo the profile run."),
-                     0, _costType);
+      new SourceItem(this, this, fileno, 2, false,
+                     i18n("because no debug information is present."));
+      new SourceItem(this, this, fileno, 3, false,
+                     i18n("Recompile source and redo the profile run."));
       if (sf->function()->object()) {
-        new SourceItem(this, fileno, 4, false,
-                       i18n("Note: The function is located in ELF object"),
-                       0, _costType);
-        new SourceItem(this, fileno, 5, false,
+        new SourceItem(this, this, fileno, 4, false,
+                       i18n("Note: The function is located in ELF object"));
+        new SourceItem(this, this, fileno, 5, false,
                        QString("    '%1'")
-                       .arg(sf->function()->object()->prettyName()),
-                       0, _costType);
+                       .arg(sf->function()->object()->prettyName()));
       }
     }
     else {
-      new SourceItem(this, fileno, 2, false,
-                     i18n("because its source file"),
-                     0, _costType);
-      new SourceItem(this, fileno, 3, false,
-                     QString("    '%1'").arg(sf->file()->name()),
-                     0, _costType);
-      new SourceItem(this, fileno, 4, false,
-                     i18n("can not be found. Add the folder of this"),
-                     0, _costType);
-      new SourceItem(this, fileno, 5, false,
-                     i18n("file to the folder list in the configuration."),
-                     0, _costType);
+      new SourceItem(this, this, fileno, 2, false,
+                     i18n("because its source file"));
+      new SourceItem(this, this, fileno, 3, false,
+                     QString("    '%1'").arg(sf->file()->name()));
+      new SourceItem(this, this, fileno, 4, false,
+                     i18n("can not be found. Add the folder of this"));
+      new SourceItem(this, this, fileno, 5, false,
+                     i18n("file to the folder list in the configuration."));
     }
     return;
   }
@@ -580,7 +592,12 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
       nextIt = it;
       ++nextIt;
-      while((nextIt != lineItEnd) && !(*nextIt).hasCost(_costType)) ++nextIt;
+      while(nextIt != lineItEnd) {
+	if (&(*nextIt) == sLine) break;
+	if ((*nextIt).hasCost(_costType)) break;
+	if (_costType2 && (*nextIt).hasCost(_costType2)) break;
+	++nextIt;
+      }
 
       TraceLineJumpList jlist = (*it).lineJumps();
       TraceLineJump* lj;
@@ -608,14 +625,6 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   int fileLineno = 0;
   SubCost most = 0;
 
-  TraceLine* sLine = 0;
-  if (_selectedItem) {
-    if (_selectedItem->type() == TraceItem::Line)
-      sLine = (TraceLine*) _selectedItem;
-    if (_selectedItem->type() == TraceItem::Instr)
-      sLine = ((TraceInstr*)_selectedItem)->line();
-  }
-
   TraceLine* currLine;
   SourceItem *si, *si2, *item = 0, *first = 0, *selected = 0;
   QFile file(filename);
@@ -642,8 +651,12 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
 	// get next line with cost of selected type
 	++lineIt;
-	while((lineIt != lineItEnd) &&
-		!(*lineIt).hasCost(_costType)) ++lineIt;
+	while(lineIt != lineItEnd) {
+	  if (&(*lineIt) == sLine) break;
+	  if ((*lineIt).hasCost(_costType)) break;
+	  if (_costType2 && (*lineIt).hasCost(_costType2)) break;
+	  ++lineIt;
+	}
 
 	lastCostLineno = nextCostLineno;
 	nextCostLineno = (lineIt == lineItEnd) ? 0 : (*lineIt).lineno();
@@ -679,8 +692,9 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     else
 	skipLineWritten = false;
 
-    si = new SourceItem(this, fileno, fileLineno, inside, QString(buf),
-                        currLine, _costType);
+    si = new SourceItem(this, this, 
+			fileno, fileLineno, inside, QString(buf),
+                        currLine);
 
     if (!currLine) continue;
 
@@ -696,15 +710,15 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     TraceLineCallList list = currLine->lineCalls();
     TraceLineCall* lc;
     for (lc=list.first();lc;lc=list.next()) {
-	if (lc->subCost(_costType)==0) continue;
+	if ((lc->subCost(_costType)==0) &&
+	    (lc->subCost(_costType2)==0)) continue;
 
       if (lc->subCost(_costType) > most) {
         item = si;
         most = lc->subCost(_costType);
       }
 
-      si2 = new SourceItem(si, fileno, fileLineno, currLine,
-			   lc, _costType, _groupType);
+      si2 = new SourceItem(this, si, fileno, fileLineno, currLine, lc);
 
       if (!selected && (lc->call()->called() == _selectedItem))
 	  selected = si2;
@@ -715,7 +729,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     for (lj=jlist.first();lj;lj=jlist.next()) {
 	if (lj->executedCount()==0) continue;
 
-	new SourceItem(si, fileno, fileLineno, currLine, lj);
+	new SourceItem(this, si, fileno, fileLineno, currLine, lj);
     }
   }
 
@@ -747,14 +761,24 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   }
 
   if (arrowLevels())
-      setColumnWidth(2, 10 + 6*arrowLevels() + itemMargin() * 2);
+      setColumnWidth(3, 10 + 6*arrowLevels() + itemMargin() * 2);
   else
-      setColumnWidth(2, 0);
+      setColumnWidth(3, 0);
 }
 
 
 void SourceView::updateSourceItems()
 {
+    setColumnWidth(1, 50);
+    setColumnWidth(2, _costType2 ? 50:0);
+    // Allow resizing of column 2
+    setColumnWidthMode(2, QListView::Maximum);
+    
+    if (_costType)
+      setColumnText(1, _costType->name());
+    if (_costType2)
+      setColumnText(2, _costType2->name());
+
     SourceItem* si;
     QListViewItem* item  = firstChild();
     for (;item;item = item->nextSibling()) {
@@ -762,13 +786,18 @@ void SourceView::updateSourceItems()
 	TraceLine* l = si->line();
 	if (!l) continue;
 
-	si->update();
+	si->updateCost();
 
 	QListViewItem *next, *i  = si->firstChild();
 	for (;i;i = next) {
 	    next = i->nextSibling();
-	    ((SourceItem*)i)->update();
+	    ((SourceItem*)i)->updateCost();
 	}
+    }
+
+    if (!_costType2) {
+      setColumnWidthMode(2, QListView::Manual);
+      setColumnWidth(2, 0);
     }
 }
 

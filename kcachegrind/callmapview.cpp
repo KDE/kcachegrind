@@ -170,9 +170,7 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
     popup.insertSeparator();
   }
 
-  popup.insertItem(i18n("Go Back"), 90);
-  popup.insertItem(i18n("Go Forward"), 91);
-  popup.insertItem(i18n("Go Up"), 92);
+  addGoMenu(&popup);
   popup.insertSeparator();
 
   l1popup.setCheckable(true);
@@ -341,10 +339,6 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   }
 
   switch(r) {
-  case 90: activated(Back); break;
-  case 91: activated(Forward); break;
-  case 92: activated(Up); break;
-
   case 20:
     setFieldVisible(0, !vpopup.isItemChecked(20));
     break;
@@ -469,6 +463,8 @@ TraceItem* CallMapView::canShow(TraceItem* i)
 
 void CallMapView::doUpdate(int changeType)
 {
+    if (changeType == costType2Changed) return;
+
     // if there is a selected item, always draw marking...
     if (changeType & selectedItemChanged) {
 	TraceFunction* f = 0;

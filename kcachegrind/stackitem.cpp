@@ -26,79 +26,91 @@
 #include "configuration.h"
 #include "listutils.h"
 #include "stackitem.h"
-
-
+#include "stackselection.h"
 
 // StackItem
 
-
-StackItem::StackItem(QListView* parent, TraceFunction* f,
-                     TraceCostType* ct,
-                     TraceCost::CostType gt)
+StackItem::StackItem(StackSelection* ss, 
+		     QListView* parent, TraceFunction* f)
   :QListViewItem(parent)
 {
+  _view = ss;
   _function = f;
   _call = 0;
-  _groupType = TraceCost::NoCostType;
 
-  setCostType(ct);
-  setGroupType(gt);
-  setText(0, QString("-- "));
-  setText(1, QString("-- "));
-  setText(2, f->prettyName());
+  updateGroup();
+  updateCost();
+
+  setText(2, QString("-- "));
+  setText(3, f->prettyName());
 }
 
-StackItem::StackItem(QListView* parent, TraceCall* call,
-                     TraceCostType* ct,
-                     TraceCost::CostType gt)
+StackItem::StackItem(StackSelection* ss,
+		     QListView* parent, TraceCall* call)
   :QListViewItem(parent)
 {
+  _view = ss;
   _call = call;
   _function = call->called();
-  _groupType = TraceCost::NoCostType;
 
-  setCostType(ct);
-  setGroupType(gt);
-  setText(2, _function->prettyName());
+  updateGroup();
+  updateCost();
+
+  setText(3, _function->prettyName());
 }
 
 
-void StackItem::setCostType(TraceCostType* ct)
+void StackItem::updateGroup()
 {
-  _costType = ct;
-  update();
+  QColor c = Configuration::functionColor(_view->groupType(),
+					  _function);
+  setPixmap(3, colorPixmap(10, 10, c));
 }
 
-void StackItem::setGroupType(TraceCost::CostType gt)
-{
-  if (_groupType == gt) return;
-  _groupType = gt;
-
-  QColor c = Configuration::functionColor(_groupType, _function);
-  setPixmap(2, colorPixmap(10, 10, c));
-}
-
-void StackItem::update()
+void StackItem::updateCost()
 {
   if (!_call) return;
 
-  setText(1, _call->prettyCallCount());
+  setText(2, _call->prettyCallCount());
 
-  _sum = _call->subCost(_costType);
-  double total = _call->called()->data()->subCost(_costType);
+  TraceCostType* ct = _view->costType();
+  _sum = _call->subCost(ct);
+  double total = _call->called()->data()->subCost(ct);
   if (total == 0.0) {
     setText(0, "-");
     setPixmap(0, QPixmap());
-    return;
+  }
+  else {
+    double sum  = 100.0 * _sum / total;
+
+    if (Configuration::showPercentage())
+      setText(0, QString("%1")
+	      .arg(sum, 0, 'f', Configuration::percentPrecision()));
+    else
+      setText(0, _call->prettySubCost(ct));
+    
+    setPixmap(0, costPixmap(ct, _call, total));
   }
 
-  double sum  = 100.0 * _sum / total;
+  // if _costType2 is 0, column1 is hidden, no change needed
+  TraceCostType* ct2 = _view->costType2();
+  if (!ct2) return;
 
-  if (Configuration::showPercentage())
-    setText(0, QString("%1")
-            .arg(sum, 0, 'f', Configuration::percentPrecision()));
-  else
-    setText(0, _call->prettySubCost(_costType));
+  _sum = _call->subCost(ct2);
+  total = _call->called()->data()->subCost(ct2);
+  if (total == 0.0) {
+    setText(1, "-");
+    setPixmap(1, QPixmap());
+  }
+  else {
+    double sum  = 100.0 * _sum / total;
 
-  setPixmap(1, costPixmap(_costType, _call, total));
+    if (Configuration::showPercentage())
+      setText(1, QString("%1")
+	      .arg(sum, 0, 'f', Configuration::percentPrecision()));
+    else
+      setText(1, _call->prettySubCost(ct2));
+    
+    setPixmap(1, costPixmap(ct2, _call, total));
+  }
 }

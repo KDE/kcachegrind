@@ -62,7 +62,8 @@ void MultiView::appendView()
     tv->show();
 
     // set same attributes as in active view
-    tv->set(0, _data, _costType, _groupType, _partList, _activeItem, 0);
+    tv->set(0, _data, _costType, _costType2,
+	    _groupType, _partList, _activeItem, 0);
     tv->updateView();
 
     if (0) qDebug("MultiView::appendView (now %d)", _views.count());
@@ -140,7 +141,8 @@ void MultiView::doUpdate(int changeType)
 {
     TabView* tv;
     for(tv=_views.first(); tv; tv=_views.next()) {
-	tv->set(changeType, _data, _costType, _groupType, _partList,
+	tv->set(changeType, _data, _costType, _costType2,
+		_groupType, _partList,
 		(tv == _active) ? _activeItem : tv->activeItem(),
 		tv->selectedItem());
 	tv->notifyChange(changeType);

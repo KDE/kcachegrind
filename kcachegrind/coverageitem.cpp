@@ -135,31 +135,38 @@ void CallerCoverageItem::update()
 int CallerCoverageItem::compare(QListViewItem * i,
                                 int col, bool ascending ) const
 {
-  CallerCoverageItem* ci = (CallerCoverageItem*) i;
+  const CallerCoverageItem* ci1 = this;
+  const CallerCoverageItem* ci2 = (CallerCoverageItem*) i;
+
+  // we always want descending order
+  if (ascending) {
+    ci1 = ci2;
+    ci2 = this;
+  }
 
   // a skip entry is always sorted last
-  if (_skipped) return -1;
-  if (ci->_skipped) return 1;
+  if (ci1->_skipped) return -1;
+  if (ci2->_skipped) return 1;
 
   if (col==0) {
-    if (_pSum < ci->_pSum) return -1;
-    if (_pSum > ci->_pSum) return 1;
+    if (ci1->_pSum < ci2->_pSum) return -1;
+    if (ci1->_pSum > ci2->_pSum) return 1;
 
     // for same percentage (e.g. all 100%), use distance info
-    if (_distance < ci->_distance) return -1;
-    if (_distance > ci->_distance) return 1;
+    if (ci1->_distance < ci2->_distance) return -1;
+    if (ci1->_distance > ci2->_distance) return 1;
     return 0;
   }
 
   if (col==1) {
-    if (_distance < ci->_distance) return -1;
-    if (_distance > ci->_distance) return 1;
+    if (ci1->_distance < ci2->_distance) return -1;
+    if (ci1->_distance > ci2->_distance) return 1;
     return 0;
   }
 
   if (col==2) {
-    if (_cc < ci->_cc) return -1;
-    if (_cc > ci->_cc) return 1;
+    if (ci1->_cc < ci2->_cc) return -1;
+    if (ci1->_cc > ci2->_cc) return 1;
     return 0;
   }
   return QListViewItem::compare(i, col, ascending);

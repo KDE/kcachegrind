@@ -44,6 +44,9 @@ public:
   TraceData* data() const { return _data; }
   void setData(TraceData*);
   StackBrowser* browser() const { return _browser; }
+  TraceCostType* costType() { return _costType; }
+  TraceCostType* costType2() { return _costType2; }
+  TraceItem::CostType groupType() { return _groupType; }
 
 signals:
   void functionSelected(TraceItem*);
@@ -51,6 +54,7 @@ signals:
 public slots:
   void setFunction(TraceFunction*);
   void setCostType(TraceCostType*);
+  void setCostType2(TraceCostType*);
   void setGroupType(TraceItem::CostType);
 
   void stackSelected( QListViewItem* );
@@ -69,6 +73,7 @@ private:
   QListViewItem* _item;
   TraceFunction* _function;
   TraceCostType* _costType;
+  TraceCostType* _costType2;
   TraceItem::CostType _groupType;
 };
 

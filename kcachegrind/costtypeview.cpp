@@ -39,7 +39,7 @@ CostTypeView::CostTypeView(TraceItemView* parentView,
 			   QWidget* parent, const char* name)
   : QListView(parent, name), TraceItemView(parentView)
 {
-    addColumn( i18n( "Cost Type" ) );
+    addColumn( i18n( "Event Type" ) );
     addColumn( i18n( "Incl." ) );
     addColumn( i18n( "Self" ) );
     addColumn( i18n( "Short" ) );
@@ -94,6 +94,13 @@ void CostTypeView::context(QListViewItem* i, const QPoint & p, int)
 
   TraceCostType* ct = i ? ((CostTypeItem*) i)->costType() : 0;
 
+  if (ct)
+    popup.insertItem(i18n("Set Secondary Event Type"), 99);
+  if (_costType2)
+    popup.insertItem(i18n("Remove Secondary Event Type"), 98);
+  if (popup.count()>0)
+    popup.insertSeparator();
+
   if (ct && !ct->isReal()) {
       popup.insertItem(i18n("Edit Long Name"), 93);
       popup.insertItem(i18n("Edit Short Name"), 94);
@@ -102,17 +109,14 @@ void CostTypeView::context(QListViewItem* i, const QPoint & p, int)
       popup.insertSeparator();
   }
 
-  popup.insertItem(i18n("New Cost Type ..."), 97);
-  popup.insertSeparator();
+  addGoMenu(&popup);
 
-  popup.insertItem(i18n("Go Back"), 90);
-  popup.insertItem(i18n("Go Forward"), 91);
-  popup.insertItem(i18n("Go Up"), 92);
+  popup.insertSeparator();
+  popup.insertItem(i18n("New Cost Type ..."), 97);
 
   int r = popup.exec(p);
-  if      (r == 90) activated(Back);
-  else if (r == 91) activated(Forward);
-  else if (r == 92) activated(Up);
+  if (r == 98) selectedCostType2(0);
+  else if (r == 99) selectedCostType2(ct);
   else if (r == 93) i->startRename(0);
   else if (r == 94) i->startRename(3);
   else if (r == 95) i->startRename(5);
@@ -133,7 +137,9 @@ void CostTypeView::context(QListViewItem* i, const QPoint & p, int)
 
     if (_data->mapping()->remove(ct)) {
       // select previous cost type
-      selected(prev);
+      selectedCostType(prev);
+      if (_costType2 == ct)
+	selectedCostType2(prev);
       refresh();
     }
   }
@@ -157,14 +163,14 @@ void CostTypeView::selectedSlot(QListViewItem * i)
 {
     TraceCostType* ct = i ? ((CostTypeItem*) i)->costType() : 0;
     if (ct)
-	selected(ct);
+	selectedCostType(ct);
 }
 
 void CostTypeView::activatedSlot(QListViewItem * i)
 {
   TraceCostType* ct = i ? ((CostTypeItem*) i)->costType() : 0;
   if (ct)
-      selected(ct);
+      selectedCostType2(ct);
 }
 
 TraceItem* CostTypeView::canShow(TraceItem* i)
@@ -189,6 +195,8 @@ void CostTypeView::doUpdate(int changeType)
 {
     // Special case ?
     if (changeType == selectedItemChanged) return;
+
+    if (changeType == costType2Changed) return;
 
     if (changeType == groupTypeChanged) {
 	QListViewItem *item;

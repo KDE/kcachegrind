@@ -37,11 +37,13 @@
 // SourceItem
 
 // for source lines
-SourceItem::SourceItem(QListView* parent, int fileno, unsigned int lineno,
+SourceItem::SourceItem(SourceView* sv, QListView* parent,
+		       int fileno, unsigned int lineno,
                        bool inside, const QString& src,
-                       TraceLine* line, TraceCostType* ct)
+                       TraceLine* line)
     : QListViewItem(parent)
 {
+  _view = sv;
   _lineno = lineno;
   _fileno = fileno;
   _inside = inside;
@@ -55,19 +57,19 @@ SourceItem::SourceItem(QListView* parent, int fileno, unsigned int lineno,
       setText(0, QString::number(lineno));
 
   QString s = src;
-  setText(3, s.replace( QRegExp("\t"), "        " ));
+  setText(4, s.replace( QRegExp("\t"), "        " ));
 
-  setCostType(ct);
-  setGroupType(TraceCost::NoCostType);
+  updateGroup();
+  updateCost();
 }
 
 // for call lines
-SourceItem::SourceItem(QListViewItem* parent, int fileno, unsigned int lineno,
-                       TraceLine* line, TraceLineCall* lineCall,
-                       TraceCostType* ct,
-                       TraceCost::CostType gt)
+SourceItem::SourceItem(SourceView* sv, QListViewItem* parent,
+		       int fileno, unsigned int lineno,
+                       TraceLine* line, TraceLineCall* lineCall)
     : QListViewItem(parent)
 {
+  _view = sv;
   _lineno = lineno;
   _fileno = fileno;
   _inside = true;
@@ -90,17 +92,19 @@ SourceItem::SourceItem(QListViewItem* parent, int fileno, unsigned int lineno,
   if (calledF->object() && calledF->object()->name() != QString("???"))
     callStr += QString(" (%1)").arg(calledF->object()->shortName());
 
-  setText(3, callStr);
+  setText(4, callStr);
 
-  setCostType(ct);
-  setGroupType(gt);
+  updateGroup();
+  updateCost();
 }
 
 // for jump lines
-SourceItem::SourceItem(QListViewItem* parent, int fileno, unsigned int lineno,
+SourceItem::SourceItem(SourceView* sv, QListViewItem* parent,
+		       int fileno, unsigned int lineno,
                        TraceLine* line, TraceLineJump* lineJump)
     : QListViewItem(parent)
 {
+  _view = sv;
   _lineno = lineno;
   _fileno = fileno;
   _inside = true;
@@ -128,36 +132,28 @@ SourceItem::SourceItem(QListViewItem* parent, int fileno, unsigned int lineno,
 	  .arg(_lineJump->executedCount().pretty())
 	  .arg(to);
 
-  setText(3, jStr);
-
-  setCostType(0);
-  setGroupType(TraceCost::NoCostType);
+  setText(4, jStr);
 }
 
 
-void SourceItem::setCostType(TraceCostType* ct)
+void SourceItem::updateGroup()
 {
-  _costType = ct;
-  update();
-}
-
-void SourceItem::setGroupType(TraceCost::CostType gt)
-{
-  _groupType = gt;
   if (!_lineCall) return;
 
   TraceFunction* f = _lineCall->call()->called();
-  QColor c = Configuration::functionColor(_groupType, f);
-  setPixmap(3, colorPixmap(10, 10, c));
+  QColor c = Configuration::functionColor(_view->groupType(), f);
+  setPixmap(4, colorPixmap(10, 10, c));
 }
 
-void SourceItem::update()
+void SourceItem::updateCost()
 {
+  _pure = SubCost(0);
+  _pure2 = SubCost(0);
+
   if (!_line) return;
   if (_lineJump) return;
 
   TraceCost* lineCost = _lineCall ? (TraceCost*)_lineCall : (TraceCost*)_line;
-  _pure = lineCost->subCost(_costType);
 
   // don't show any cost inside of cycles
   if (_lineCall &&
@@ -175,75 +171,114 @@ void SourceItem::update()
 
     setText(1, str);
     setPixmap(1, p);
-    return;
-  }
-
-  if (_pure == 0) {
-    setText(1, QString::null);
-    setPixmap(1, QPixmap());
+    setText(2, str);
+    setPixmap(2, p);
     return;
   }
 
   TraceCost* totalCost;
   if (Configuration::showExpanded())
-      totalCost = _line->functionSource()->function()->cumulative();
+    totalCost = _line->functionSource()->function()->cumulative();
   else
-      totalCost = _line->functionSource()->function()->data();
+    totalCost = _line->functionSource()->function()->data();
 
-  double total = totalCost->subCost(_costType);
-  double pure  = 100.0 * _pure / total;
+  TraceCostType* ct = _view->costType();
+  _pure = ct ? lineCost->subCost(ct) : SubCost(0);
+  if (_pure == 0) {
+    setText(1, QString::null);
+    setPixmap(1, QPixmap());
+  }
+  else {
+    double total = totalCost->subCost(ct);
+    double pure  = 100.0 * _pure / total;
 
-  if (Configuration::showPercentage())
-    setText(1, QString("%1")
-            .arg(pure, 0, 'f', Configuration::percentPrecision()));
-  else
-    setText(1, _pure.pretty());
+    if (Configuration::showPercentage())
+      setText(1, QString("%1")
+	      .arg(pure, 0, 'f', Configuration::percentPrecision()));
+    else
+      setText(1, _pure.pretty());
 
-  setPixmap(1, costPixmap(_costType, lineCost, total));
+    setPixmap(1, costPixmap(ct, lineCost, total));
+  }
+
+  TraceCostType* ct2 = _view->costType2();
+  _pure2 = ct2 ? lineCost->subCost(ct2) : SubCost(0);
+  if (_pure2 == 0) {
+    setText(2, QString::null);
+    setPixmap(2, QPixmap());
+  }
+  else {
+    double total = totalCost->subCost(ct2);
+    double pure2  = 100.0 * _pure2 / total;
+
+    if (Configuration::showPercentage())
+      setText(2, QString("%1")
+	      .arg(pure2, 0, 'f', Configuration::percentPrecision()));
+    else
+      setText(2, _pure2.pretty());
+
+    setPixmap(2, costPixmap(ct2, lineCost, total));
+  }
 }
 
 
 int SourceItem::compare(QListViewItem * i, int col, bool ascending ) const
 {
-  SourceItem* si = (SourceItem*) i;
+  const SourceItem* si1 = this;
+  const SourceItem* si2 = (SourceItem*) i;
+
+  // we always want descending order
+  if (((col>0) && ascending) ||
+      ((col==0) && !ascending) ) {
+    si1 = si2;
+    si2 = this;
+  }
+
   if (col==1) {
-    if (_pure < si->_pure) return -1;
-    if (_pure > si->_pure) return 1;
+    if (si1->_pure < si2->_pure) return -1;
+    if (si1->_pure > si2->_pure) return 1;
+    return 0;
+  }
+  if (col==2) {
+    if (si1->_pure2 < si2->_pure2) return -1;
+    if (si1->_pure2 > si2->_pure2) return 1;
     return 0;
   }
   if (col==0) {
     // Sort file numbers
-    if (_fileno < si->_fileno) return -1;
-    if (_fileno > si->_fileno) return 1;
+    if (si1->_fileno < si2->_fileno) return -1;
+    if (si1->_fileno > si2->_fileno) return 1;
 
     // Sort line numbers
-    if (_lineno < si->_lineno) return -1;
-    if (_lineno > si->_lineno) return 1;
+    if (si1->_lineno < si2->_lineno) return -1;
+    if (si1->_lineno > si2->_lineno) return 1;
 
     // Same line: code gets above calls/jumps
-    if (!_lineCall && !_lineJump) return -1;
-    if (!si->_lineCall && !si->_lineJump) return 1;
+    if (!si1->_lineCall && !si1->_lineJump) return -1;
+    if (!si2->_lineCall && !si2->_lineJump) return 1;
 
     // calls above jumps
-    if (_lineCall && !si->_lineCall) return -1;
-    if (si->_lineCall && !_lineCall) return 1;
+    if (si1->_lineCall && !si2->_lineCall) return -1;
+    if (si2->_lineCall && !si1->_lineCall) return 1;
 
-    if (_lineCall && si->_lineCall) {
+    if (si1->_lineCall && si2->_lineCall) {
 	// Two calls: desending sort according costs
-	if (_pure < si->_pure) return 1;
-	if (_pure > si->_pure) return -1;
+	if (si1->_pure < si2->_pure) return 1;
+	if (si1->_pure > si2->_pure) return -1;
 
 	// Two calls: sort according function names
-	TraceFunction* f1 = _lineCall->call()->called();
-	TraceFunction* f2 = si->_lineCall->call()->called();
+	TraceFunction* f1 = si1->_lineCall->call()->called();
+	TraceFunction* f2 = si2->_lineCall->call()->called();
 	if (f1->prettyName() > f2->prettyName()) return 1;
 	return -1;
     }
 
     // Two jumps: descending sort according target line
-    if (_lineJump->lineTo()->lineno() < si->_lineJump->lineTo()->lineno())
+    if (si1->_lineJump->lineTo()->lineno() <
+	si2->_lineJump->lineTo()->lineno())
 	return -1;
-    if (_lineJump->lineTo()->lineno() > si->_lineJump->lineTo()->lineno())
+    if (si1->_lineJump->lineTo()->lineno() >
+	si2->_lineJump->lineTo()->lineno())
 	return 1;
     return 0;
   }
@@ -255,12 +290,12 @@ void SourceItem::paintCell( QPainter *p, const QColorGroup &cg,
 {
   QColorGroup _cg( cg );
 
-  if ( !_inside || column==1)
+  if ( !_inside || ((column==1) || (column==2)))
     _cg.setColor( QColorGroup::Base, cg.button() );
-  else if ((_lineCall || _lineJump) && column>1)
+  else if ((_lineCall || _lineJump) && column>2)
    _cg.setColor( QColorGroup::Base, cg.midlight() );
 
-  if (column == 2)
+  if (column == 3)
       paintArrows(p, _cg, width);
   else
       QListViewItem::paintCell( p, _cg, column, width, alignment );
@@ -393,7 +428,7 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 int SourceItem::width( const QFontMetrics& fm,
 		       const QListView* lv, int c ) const
 {
-  if (c != 2) return QListViewItem::width(fm, lv, c);
+  if (c != 3) return QListViewItem::width(fm, lv, c);
 
   SourceView* sv = (SourceView*) lv;
   int levels = sv->arrowLevels();

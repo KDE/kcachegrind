@@ -1,3 +1,18 @@
+2004/04/02
+	* In most views columns for 2nd Event Type added
+	* Context menus modified to allow quick change of 2nd Event Type
+	* Toolbar simplified (only most used actions)
+	* Terminology fixes ("cost type"->"event type",
+          "trace data"->"profile data", long names of Ir,Dr,...)
+	* Sorting costs in lists is always descending now
+	* New File menu item: "Add..." other profile data to current window
+        * Detect Cachegrind format by "events:" content, not file name
+	  Allows for arbitrary names of profile data files.
+
+2004/03/25
+	* New Class Addr as wrapper for memory addresses. Use 64bit
+	  to allow loading of data produced on 64bit architectures
+
 2004/03/17
 
 	* costtypeview.cpp, tracedata.h/cpp:
