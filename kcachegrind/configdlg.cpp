@@ -30,6 +30,7 @@
 #include <kcolorbutton.h>
 #include <kfiledialog.h>
 #include <klocale.h>
+#include <knumvalidator.h>
 
 #include "configdlg.h"
 #include "tracedata.h"
@@ -45,6 +46,14 @@ ConfigDlg::ConfigDlg(Configuration* c, TraceData* data,
   _objectCS = 0;
   _classCS = 0;
   _fileCS = 0;
+  KIntValidator * numValidator = new KIntValidator( this );
+  maxListEdit->setValidator(numValidator );
+  symbolCount->setValidator(numValidator );
+  symbolLength->setValidator(numValidator );
+  precisionEdit->setValidator(numValidator );
+
+
+
 
 #if 0
   QListViewItem *oItem, *fItem, *cItem, *fnItem;
@@ -151,7 +160,7 @@ ConfigDlg::ConfigDlg(Configuration* c, TraceData* data,
   i->setOpen(true);
   QStringList::Iterator sit = c->_generalSourceDirs.begin();
   for(; sit != c->_generalSourceDirs.end(); ++sit ) {
-    QString d = (*sit);    
+    QString d = (*sit);
     if (d.isEmpty()) d = "/";
     new QListViewItem(i, d);
   }
@@ -165,7 +174,7 @@ ConfigDlg::ConfigDlg(Configuration* c, TraceData* data,
 
     sit = dirs->begin();
     for(; sit != dirs->end(); ++sit ) {
-      QString d = (*sit);    
+      QString d = (*sit);
       if (d.isEmpty()) d = "/";
       new QListViewItem(i, d);
     }
@@ -336,7 +345,7 @@ void ConfigDlg::dirsDeletePressed()
 
   Configuration* c = Configuration::config();
   QString objName = p->text(0);
-  
+
   QStringList* dirs;
   if (objName == i18n("(always)"))
     dirs = &(c->_generalSourceDirs);
@@ -357,7 +366,7 @@ void ConfigDlg::dirsAddPressed()
 
   Configuration* c = Configuration::config();
   QString objName = _dirItem->text(0);
-  
+
   QStringList* dirs;
   if (objName == i18n("(always)"))
     dirs = &(c->_generalSourceDirs);
