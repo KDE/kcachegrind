@@ -166,8 +166,8 @@ void DynPool::free(char** ptr)
 
   (*(char**)(*ptr - 4)) = 0;
   *ptr = 0;
-};
-  
+}
+
 bool DynPool::ensureSpace(unsigned int size)
 {
   if (_used + size <= _size) return true;
