@@ -9,7 +9,7 @@ kcachegrind_SOURCES = \
  kwidgetaction.cpp main.cpp configuration.cpp \
  functionselection.cpp coverage.cpp partgraph.cpp \
  toplevel.cpp stackselection.cpp stackbrowser.cpp \
- tracedata.cpp partselection.cpp configdlg.cpp \
+ subcost.cpp tracedata.cpp partselection.cpp configdlg.cpp \
  utils.cpp fixcost.cpp \
  traceitemview.cpp instrview.cpp tabview.cpp \
  sourceview.cpp callmapview.cpp callview.cpp \

@@ -32,6 +32,7 @@
 #include <qptrvector.h>
 #include <qcolor.h>
 
+#include "subcost.h"
 #include "utils.h"
 
 class QFile;
@@ -188,49 +189,6 @@ typedef QMap<QString, TraceClass> TraceClassMap;
 typedef QMap<QString, TraceFile> TraceFileMap;
 typedef QMap<QString, TraceFunction> TraceFunctionMap;
 typedef QMap<uint, TraceLine> TraceLineMap;
-
-
-typedef unsigned long long uint64;
-
-/**
- * Cost event counter, simple wrapper around a 64bit entity
- */
-class SubCost
-{
- public:
-    SubCost() {}
-    SubCost(uint64 i) { v=i; }
-    SubCost(unsigned i) { v=i; }
-    SubCost(int i) { v=(unsigned)i; }
-    SubCost(double d) { v= (uint64)(d + .5); }
-
-    SubCost& operator=(uint64 i) { v = i; return *this; }
-    SubCost& operator=(unsigned i) { v = i; return *this; }
-    SubCost& operator=(int i) { v = i; return *this; }
-    SubCost& operator=(double d) { v = (uint64)(d + .5); return *this; }
-
-    bool set(const char** s);
-    bool set(FixString& s) { return s.stripUInt64(v); }
-
-    operator uint64&() { return v; }
-
-    bool operator==(unsigned i) const { return v == i; }
-    bool operator==(int i) const { return v == (unsigned)i; }
-    bool operator<(unsigned i) const { return v < i; }
-    bool operator<(int i) const { return v < (unsigned)i; }
-    bool operator<(const SubCost& s) const { return v < s.v; }
-    bool operator>(unsigned i) const { return v > i; }
-    bool operator>(int i) const { return v > (unsigned)i; }
-    bool operator>(const SubCost& s) const { return v > s.v; }
-
-    /**
-     * Convert SubCost value into a QString,
-     * spaced every 3 digits.
-     */
-    QString pretty();
-
-    uint64 v;
-};
 
 
 /**

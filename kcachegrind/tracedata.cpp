@@ -42,46 +42,6 @@ const int TraceCost::MaxRealIndex = MaxRealIndexValue;
 const int TraceCost::InvalidIndex = -1;
 
 //---------------------------------------------------
-// SubCost
-
-bool SubCost::set(const char** ps)
-{
-    const char* s = *ps;
-    if (!s || (*s < '0') || (*s > '9')) return false;
-
-    v = *s - '0';
-    s++;
-    while(*s >= '0' && *s <= '9') {
-	v = 10* v + (*s-'0');
-	s++;
-    }
-    while(*s == ' ') s++;
-    *ps = s;
-
-    return true;
-}
-
-QString SubCost::pretty()
-{
-    unsigned long long n = v;
-
-    if (n==0) return QString(" 0");
-
-    int i = 0;
-    QString res = "";
-
-    while (n) {
-	if ((i>0) && !(i%3)) res = " " + res;
-	i++;
-	res = QChar('0'+int(n%10)) + res;
-	n /= 10;
-    }
-    res = " " + res;
-    return res;
-}
-
-
-//---------------------------------------------------
 // Addr
 
 bool Addr::set(FixString& s)
