@@ -21,6 +21,13 @@ kcachegrind_SOURCES = \
 
 kcachegrind_LDADD   =  $(LIB_KFILE) $(LIB_KDEUI) $(LIB_QT) $(LIBSOCKET)
 
+KDE_ICON = AUTO
+
+appdirdevelopmentdir = $(kde_appsdir)/Development
+appdirdevelopment_DATA = kcachegrind.desktop
+
+mimeapplicationdir = $(kde_mimedir)/application
+mimeapplication_DATA = x-kcachegrind.desktop
 
 EXTRA_DIST =              \
  kcachegrind.desktop      \
@@ -29,24 +36,6 @@ EXTRA_DIST =              \
  hi48-app-kcachegrind.png \
  Doxyfile                 \
  kcachegrindui.rc
-
-install-data-local:
-	$(mkinstalldirs) $(kde_appsdir)/Development/
-	$(INSTALL_DATA) $(srcdir)/kcachegrind.desktop $(kde_appsdir)/Development/kcachegrind.desktop
-	$(mkinstalldirs) $(kde_icondir)/hicolor/32x32/apps/
-	$(INSTALL_DATA) $(srcdir)/hi32-app-kcachegrind.png $(kde_icondir)/hicolor/32x32/apps/kcachegrind.png
-	$(mkinstalldirs) $(kde_icondir)/hicolor/48x48/apps/
-	$(INSTALL_DATA) $(srcdir)/hi48-app-kcachegrind.png $(kde_icondir)/hicolor/48x48/apps/kcachegrind.png
-	$(mkinstalldirs) $(kde_mimedir)/application/
-	$(INSTALL_DATA) $(srcdir)/x-kcachegrind.desktop $(kde_mimedir)/application/x-kcachegrind.desktop
-
-uninstall-local:
-	-rm -f $(kde_appsdir)/Development/kcachegrind.desktop
-	-rm -f $(kde_icondir)/hicolor/32x32/apps/kcachegrind.png
-	-rm -f $(kde_icondir)/hicolor/48x48/apps/kcachegrind.png
-	-rm -f $(kde_mimedir)/application/x-kcachegrind.desktop
-
-
 
 # set the include path for X, qt and KDE
 INCLUDES= $(all_includes)
