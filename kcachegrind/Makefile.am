@@ -6,7 +6,7 @@ kcachegrind_SOURCES = \
  partselectionbase.ui \
  configdlgbase.ui \
  loader.cpp cachegrindloader.cpp treemap.cpp pool.cpp \
- kwidgetaction.cpp main.cpp configuration.cpp \
+ main.cpp configuration.cpp \
  functionselection.cpp coverage.cpp partgraph.cpp \
  toplevel.cpp stackselection.cpp stackbrowser.cpp \
  subcost.cpp tracedata.cpp partselection.cpp configdlg.cpp \
