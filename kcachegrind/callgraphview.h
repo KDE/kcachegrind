@@ -26,10 +26,13 @@
 #include <qcanvas.h>
 #include <qwidget.h>
 #include <qmap.h>
+#include <qtimer.h>
 
 #include "treemap.h" // for DrawParams
 #include "tracedata.h"
 #include "traceitemview.h"
+
+class QProcess;
 
 class KTempFile;
 class CanvasNode;
@@ -222,6 +225,8 @@ public:
 	     TraceItem::CostType, QString filename = QString::null);
 
   QString filename() { return _dotName; }
+  int edgeCount() { return _edgeMap.count(); }
+  int nodeCount() { return _nodeMap.count(); }
 
   // Set the object from which to get graph options for creation.
   // Default is this object itself (supply 0 for default)
@@ -432,6 +437,11 @@ public slots:
   void zoomRectMoved(int,int);
   void zoomRectMoveFinished();
 
+  void showRenderWarning();
+  void stopRendering();
+  void readDotOutput();
+  void dotExited();
+
 protected:
   void resizeEvent(QResizeEvent*);
   void contentsMousePressEvent(QMouseEvent*);
@@ -449,6 +459,8 @@ private:
   void doUpdate(int);
   void refresh();
   void makeFrame(CanvasNode*, bool active);
+  void clear();
+  void showText(QString);
 
   QCanvas *_canvas;
   int _xMargin, _yMargin;
@@ -467,6 +479,13 @@ private:
 
   // widget options
   ZoomPosition _zoomPosition, _lastAutoPosition;
+
+  // background rendering
+  QProcess* _renderProcess;
+  QTimer _renderTimer;
+  GraphNode* _prevSelectedNode;
+  QPoint _prevSelectedPos;
+  QString _unparsedOutput;
 };
 
 

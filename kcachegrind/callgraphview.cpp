@@ -33,6 +33,7 @@
 #include <qpainter.h>
 #include <qpopupmenu.h>
 #include <qstyle.h>
+#include <qprocess.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -1386,6 +1387,11 @@ CallGraphView::CallGraphView(TraceItemView* parentView,
 
   // tooltips...
   _tip = new CallGraphTip(this);
+
+  _renderProcess = 0;
+  _prevSelectedNode = 0;
+  connect(&_renderTimer, SIGNAL(timeout()),
+          this, SLOT(showRenderWarning()));
 }
 
 CallGraphView::~CallGraphView()
@@ -1421,6 +1427,8 @@ QString CallGraphView::whatsThis() const
 
 void CallGraphView::updateSizes(QSize s)
 {
+  if (!_canvas) return;
+
     if (s == QSize(0,0)) s = size();
 
     // the part of the canvas that should be visible
@@ -1731,39 +1739,77 @@ void CallGraphView::doUpdate(int changeType)
   refresh();
 }
 
+void CallGraphView::clear()
+{
+  if (!_canvas) return;
 
+  delete _canvas;
+  _canvas = 0;
+  _completeView->setCanvas(0);
+  setCanvas(0);
+}
+
+void CallGraphView::showText(QString s)
+{
+  clear();
+  _renderTimer.stop();
+
+  _canvas = new QCanvas(QApplication::desktop()->width(),
+			QApplication::desktop()->height());
+
+  QCanvasText* t = new QCanvasText(s, _canvas);
+  t->move(5, 5);
+  t->show();
+  center(0,0);
+  setCanvas(_canvas);
+  _canvas->update();
+  _completeView->hide();
+}
+
+void CallGraphView::showRenderWarning()
+{
+  QString s;
+
+  if (_renderProcess)
+    s =i18n("Warning: a long lasting graph layouting is in progress.\n"
+	    "Reduce node/edge limits for speedup.\n");
+  else
+    s = i18n("Layouting stopped.\n");
+  
+  s.append(i18n("The call graph has %1 nodes and %2 edges.\n")
+	   .arg(_exporter.nodeCount())
+	   .arg(_exporter.edgeCount()));
+
+  showText(s);
+}
+
+void CallGraphView::stopRendering()
+{
+  if (!_renderProcess) return;
+
+  _renderProcess->kill();
+  delete _renderProcess;
+  _renderProcess = 0;
+  _unparsedOutput = QString::null;
+
+  _renderTimer.start(200, true);
+}
 
 void CallGraphView::refresh()
 {
-    // we want to keep a selected node item at the same global position
-    GraphNode* oldNodeSelection = _selectedNode;
-    QPoint selectionPos = QPoint(-1,-1);
-    if (_selectedNode) {
-	QPoint center = _selectedNode->canvasNode()->boundingRect().center();
-	selectionPos  = contentsToViewport(center);
-    }
+  // trigger start of background rendering
+  if (_renderProcess) stopRendering();
 
-
-  viewport()->setUpdatesEnabled(false);
-
-  if (_canvas) {
-    delete _canvas;
-    _canvas = 0;
+  // we want to keep a selected node item at the same global position
+  _prevSelectedNode = _selectedNode;
+  _prevSelectedPos = QPoint(-1,-1);
+  if (_selectedNode) {
+    QPoint center = _selectedNode->canvasNode()->boundingRect().center();
+    _prevSelectedPos  = contentsToViewport(center);
   }
-  _completeView->setCanvas(0);
-  setCanvas(0);
 
   if (!_data || !_activeItem) {
-    _canvas = new QCanvas(QApplication::desktop()->width(),
-			  QApplication::desktop()->height());
-    QString s = i18n("No item activated for which to draw the call graph.\n");
-    QCanvasText* t = new QCanvasText(s, _canvas);
-    t->move(0, 0);
-    t->show();
-    center(0,0);
-    setCanvas(_canvas);
-    _canvas->update();
-    viewport()->setUpdatesEnabled(true);
+    showText(i18n("No item activated for which to draw the call graph."));
     return;
   }
 
@@ -1774,7 +1820,7 @@ void CallGraphView::refresh()
   case TraceItem::Call:
     break;
   default:
-    viewport()->setUpdatesEnabled(true);
+    showText(i18n("No call graph can be drawn for the active item."));
     return;
   }
 
@@ -1785,34 +1831,64 @@ void CallGraphView::refresh()
   _exporter.reset(_data, _activeItem, _costType, _groupType);
   _exporter.writeDot();
 
-  // the dot file name can not be influenced by the user, so there's
-  // no security problem...
-  QString popencmd;
+  _renderProcess = new QProcess(this);
   if (_layout == GraphOptions::Circular)
-      popencmd = QString("twopi %1 -Tplain")
-	  .arg(_exporter.filename());
+    _renderProcess->addArgument( "twopi" );
   else
-      popencmd = QString("dot %1 -Tplain")
-	  .arg(_exporter.filename());
+    _renderProcess->addArgument( "dot" );
+  _renderProcess->addArgument(_exporter.filename());
+  _renderProcess->addArgument( "-Tplain" );
 
-  if (1) kdDebug() << "Running '" << popencmd << "'..." << endl;
+  connect( _renderProcess, SIGNAL(readyReadStdout()),
+	   this, SLOT(readDotOutput()) );
+  connect( _renderProcess, SIGNAL(processExited()),
+	   this, SLOT(dotExited()) );
 
-  FILE* iFILE = popen(popencmd.ascii(), "r");
-  if (iFILE == 0) {
-    kdError() << "Can't run dot!" << endl;
+  if (1) kdDebug() << "Running '" 
+		   << _renderProcess->arguments().join(" ")
+		   << "'..." << endl;
+
+  if ( !_renderProcess->start() ) {
+    QString e = i18n("No call graph is available because the following\n"
+		     "command cannot be run:\n'%1'\n")
+      .arg(_renderProcess->arguments().join(" "));
+    e += i18n("Please check that 'dot' is installed (package GraphViz).");
+    showText(e);
+
+    delete _renderProcess;
+    _renderProcess = 0;
+
     return;
   }
 
+  _unparsedOutput = QString::null;
+
+  // layouting of more than seconds is dubious
+  _renderTimer.start(1000, true);  
+}
+
+void CallGraphView::readDotOutput()
+{
+  _unparsedOutput.append( _renderProcess->readStdout() );
+}
+
+void CallGraphView::dotExited()
+{
   QString line, cmd;
   CanvasNode *rItem;
   QCanvasEllipse* eItem;
   CanvasEdge* sItem;
   CanvasEdgeLabel* lItem;
-  QTextStream* dotStream = new QTextStream(iFILE, IO_ReadOnly);
+  QTextStream* dotStream = new QTextStream(_unparsedOutput, IO_ReadOnly);
   double scale = 1.0, scaleX = 1.0, scaleY = 1.0;
   double dotWidth, dotHeight;
   GraphNode* activeNode = 0;
   GraphEdge* activeEdge = 0;
+
+  _renderTimer.stop();
+  viewport()->setUpdatesEnabled(false);
+  clear();
+  dotStream = new QTextStream(_unparsedOutput, IO_ReadOnly);
 
   int lineno = 0;
   while (1) {
@@ -2088,7 +2164,6 @@ void CallGraphView::refresh()
 
   }
   delete dotStream;
-  pclose(iFILE);
 
   // for keyboard navigation
   // TODO: Edge sorting. Better keep left-to-right edge order from dot now
@@ -2096,8 +2171,8 @@ void CallGraphView::refresh()
 
   if (!_canvas) {
     _canvas = new QCanvas(size().width(),size().height());
-    QString s = i18n("Error running the graph layout tool 'dot'.\n"
-		     "Please check that it is installed (package GraphViz).");
+    QString s = i18n("Error running the graph layouting tool.\n");
+    s += i18n("Please check that 'dot' is installed (package GraphViz).");
     QCanvasText* t = new QCanvasText(s, _canvas);
     t->move(5, 5);
     t->show();
@@ -2144,10 +2219,10 @@ void CallGraphView::refresh()
       int x = int(sNode->x() + sNode->width()/2);
       int y = int(sNode->y() + sNode->height()/2);
 
-      if (oldNodeSelection) {
-	  if (rect().contains(selectionPos))
-	      setContentsPos(x-selectionPos.x(),
-                             y-selectionPos.y());
+      if (_prevSelectedNode) {
+	  if (rect().contains(_prevSelectedPos))
+	      setContentsPos(x-_prevSelectedPos.x(),
+                             y-_prevSelectedPos.y());
 	  else
 	      ensureVisible(x,y,
                             sNode->width()/2+50, sNode->height()/2+50);
@@ -2167,6 +2242,9 @@ void CallGraphView::refresh()
 
   _canvas->update();
   viewport()->setUpdatesEnabled(true);
+
+  delete _renderProcess;
+  _renderProcess = 0;
 }
 
 void CallGraphView::contentsMovingSlot(int x, int y)
@@ -2321,6 +2399,11 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
     }
   }
 
+  if (_renderProcess) {
+    popup.insertItem(i18n("Stop Layouting"), 999);
+    popup.insertSeparator();
+  }
+
   addGoMenu(&popup);
   popup.insertSeparator();
 
@@ -2469,6 +2552,8 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   case 93: activated(f); break;
   case 94: activated(cycle); break;
   case 95: activated(c); break;
+
+  case 999: stopRendering(); break;
 
   case 201:
       {
