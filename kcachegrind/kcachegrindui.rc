@@ -24,9 +24,6 @@
     <Action name="settings_show_profiledock"/>
    </Menu>
   </Menu>
-  <Menu name="help">
-   <Action name="help_show_tip"/>
-  </Menu>
  </MenuBar>
 
  <ToolBar name="mainToolBar" noMerge="1"><text>Main Toolbar</text>
