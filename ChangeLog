@@ -1,0 +1,19 @@
+2003/05/10
+
+	* Status progress on loading and cycle calculation
+	* Corrected order of trace parts (PID/PartNo/ThreadID)
+	* Allow adding traces (BUGGY...)
+
+2003/02/06
+
+	* Version 0.3a
+	* Bugfixes:
+	  - Compiles with KDE 3.0.x
+	  - Always select a first cost type
+	  - Loading from another directory
+
+
+2002/11/28
+
+	* Version 0.3
+	

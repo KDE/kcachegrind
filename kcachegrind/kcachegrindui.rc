@@ -1,0 +1,59 @@
+<!DOCTYPE kpartgui>
+<kpartgui name="kcachegrind" version="3">
+ <MenuBar>
+  <Menu name="file"><text>&amp;File</text>
+   <Action name="reload" append="revert_merge"/>
+   <Action name="dump" append="revert_merge"/>
+   <Action name="export"/>
+  </Menu>
+  <Menu name="view"><text>&amp;View</text>
+   <Action name="view_cost_type"/>
+   <Action name="view_group_type"/>
+   <Separator/>
+   <Action name="view_split"/>
+   <Action name="view_split_dir"/>
+   <Action name="view_percentage"/>
+   <Action name="view_expanded"/>
+   <Action name="view_cycles"/>
+  </Menu>
+  <Menu name="settings">
+   <Menu append="show_toolbar_merge"><text>Sidebars</text>
+    <Action name="settings_show_dumpdock"/>
+    <Action name="settings_show_partdock"/>
+    <Action name="settings_show_stackdock"/>
+    <Action name="settings_show_profiledock"/>
+   </Menu>
+  </Menu>
+  <Menu name="help">
+   <Action name="help_show_tip"/>
+  </Menu>
+ </MenuBar>
+
+ <ToolBar name="mainToolBar" noMerge="1"><text>Main Toolbar</text>
+  <Action name="file_new"/>
+  <Action name="file_open"/>
+  <Action name="reload"/>
+  <Action name="dump"/> 
+  <Separator/>
+  <Action name="go_up"/>
+  <Action name="go_back"/>
+  <Action name="go_forward"/>
+  <Separator/>
+  <Action name="view_split"/>
+  <Action name="view_split_dir"/>
+  <Action name="view_percentage"/>
+  <Action name="view_expanded"/>
+  <Action name="view_cycles"/>
+ </ToolBar>
+ <ToolBar name="stateToolBar" noMerge="1"><text>State Toolbar</text> 
+  <Action name="view_cost_type"/>
+  <Action name="view_group_type"/>
+ </ToolBar>
+ <ToolBar name="queryToolBar" noMerge="1"><text>Query Toolbar</text> 
+  <Action name="query_label"/>
+  <Action name="query"/>
+ </ToolBar>
+ <ToolBar name="helpToolBar" noMerge="1"><text>Help Toolbar</text>
+  <Action name="help_whats_this"/>
+ </ToolBar>
+</kpartgui>

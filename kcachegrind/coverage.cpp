@@ -1,0 +1,326 @@
+/* This file is part of KCachegrind.
+   Copyright (C) 2002 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+
+   KCachegrind is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public
+   License as published by the Free Software Foundation, version 2.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program; see the file COPYING.  If not, write to
+   the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+   Boston, MA 02111-1307, USA.
+*/
+
+/*
+ * Function Coverage Analysis
+ */
+
+#include "coverage.h"
+
+//#define DEBUG_COVERAGE 1
+
+TraceCostType* Coverage::_costType;
+
+Coverage::Coverage()
+{
+}
+
+void Coverage::init()
+{
+  _self = 0.0;
+  _cum  = 0.0;
+  _callCount = 0.0;
+  // should always be overwritten before usage
+  _firstPercentage = 1.0;
+  _minDistance = 9999;
+  _maxDistance = 0;
+  _active = false;
+  _inRecursion = false;
+  for (int i = 0;i<maxHistogramDepth;i++) {
+    _selfHisto[i] = 0.0;
+    _cumHisto[i] = 0.0;
+  }
+
+  _valid = true;
+}
+
+int Coverage::cumulativeMedian()
+{
+  double maxP = _cumHisto[0];
+  int medD = 0;
+  for (int i = 1;i<maxHistogramDepth;i++)
+    if (_cumHisto[i]>maxP) {
+      maxP = _cumHisto[i];
+      medD = i;
+    }
+
+  return medD;
+}
+
+int Coverage::selfMedian()
+{
+  double maxP = _selfHisto[0];
+  int medD = 0;
+  for (int i = 1;i<maxHistogramDepth;i++)
+    if (_selfHisto[i]>maxP) {
+      maxP = _selfHisto[i];
+      medD = i;
+    }
+
+  return medD;
+}
+
+TraceFunctionList Coverage::coverage(TraceFunction* f, CoverageMode m,
+                                      TraceCostType* ct)
+{
+  invalidate(f->data(), Coverage::Rtti);
+
+  _costType = ct;
+
+  // function f takes ownership over c!
+  Coverage* c = new Coverage();
+  c->setFunction(f);
+  c->init();
+
+  TraceFunctionList l;
+
+  if (m == Caller)
+    c->addCallerCoverage(l, 1.0, 0);
+  else
+    c->addCallingCoverage(l, 1.0, 1.0, 0);
+
+  return l;
+}
+
+void Coverage::addCallerCoverage(TraceFunctionList& fList,
+                                 double pBack, int d)
+{
+  TraceCallList cList;
+  TraceCall* call;
+  Coverage* c;
+
+  if (_inRecursion) return;
+
+  double cum;
+  cum  = (double) (_function->cumulative()->subCost(_costType));
+
+  if (_active) {
+#ifdef DEBUG_COVERAGE
+    qDebug("CallerCov: D %d, %s (was active, cum %f, self %f): newP %f", d,
+           _function->prettyName().ascii(), _cum, _self, pBack);
+#endif
+    _inRecursion = true;
+  }
+  else {
+    _active = true;
+
+    // only add cost if this is no recursion
+
+    _cum += pBack;
+    _firstPercentage = pBack;
+
+    if (_minDistance > d) _minDistance = d;
+    if (_maxDistance < d) _maxDistance = d;
+    if (d<maxHistogramDepth) {
+      _cumHisto[d] += pBack;
+    }
+    else {
+      _cumHisto[maxHistogramDepth-1] += pBack;
+    }
+
+#ifdef DEBUG_COVERAGE
+    qDebug("CallerCov: D %d, %s (now active, new cum %f): newP %f",
+           d, _function->prettyName().ascii(), _cum, pBack);
+#endif
+  }
+
+  double callVal, pBackNew;
+
+  cList = _function->callers();
+  for (call=cList.first();call;call=cList.next()) {
+    if (call->inCycle()>0) continue;
+    if (call->isRecursion()) continue;
+
+    if (call->subCost(_costType)>0) {
+      TraceFunction* caller = call->caller();
+
+      c = (Coverage*) caller->assoziation(rtti());
+      if (!c) {
+        c = new Coverage();
+        c->setFunction(caller);
+      }
+      if (!c->isValid()) {
+        c->init();
+        fList.append(caller);
+      }
+
+      if (c->isActive()) continue;
+      if (c->inRecursion()) continue;
+
+      callVal = (double) call->subCost(_costType);
+      pBackNew = pBack * (callVal / cum);
+
+      // FIXME ?!?
+
+      if (!c->isActive()) {
+	  if (d>=0)
+	      c->callCount() += (double)call->callCount();
+	  else
+	      c->callCount() += _callCount;
+      }
+      else {
+        // adjust pNew by sum of geometric series of recursion factor.
+        // Thus we can avoid endless recursion here
+        pBackNew *= 1.0 / (1.0 - pBackNew / c->firstPercentage());
+      }
+
+      // Limit depth
+      if (pBackNew > 0.0001)
+        c->addCallerCoverage(fList, pBackNew, d+1);
+    }
+  }
+
+  if (_inRecursion)
+    _inRecursion = false;
+  else if (_active)
+    _active = false;
+}
+
+/**
+ * pForward is time on percent used,
+ * pBack is given to allow for calculation of call counts
+ */
+void Coverage::addCallingCoverage(TraceFunctionList& fList,
+                                  double pForward, double pBack, int d)
+{
+  TraceCallList cList;
+  TraceCall* call;
+  Coverage* c;
+
+  if (_inRecursion) return;
+
+#ifdef DEBUG_COVERAGE
+  static const char* spaces = "                                            ";
+#endif
+
+  double self, cum;
+  cum  = (double) (_function->cumulative()->subCost(_costType));
+
+#ifdef DEBUG_COVERAGE
+    qDebug("CngCov:%s - %s (cum %f, self %f): forward %f, back %f",
+	   spaces+strlen(spaces)-d,
+           _function->prettyName().ascii(), _cum, _self, pForward, pBack);
+#endif
+
+
+  if (_active) {
+    _inRecursion = true;
+
+#ifdef DEBUG_COVERAGE
+    qDebug("CngCov:%s < %s: STOP (is active)",
+	   spaces+strlen(spaces)-d,
+           _function->prettyName().ascii());
+#endif
+
+  }
+  else {
+    _active = true;
+
+    // only add cost if this is no recursion
+    self = pForward * (_function->subCost(_costType)) / cum;
+    _cum += pForward;
+    _self += self;
+    _firstPercentage = pForward;
+
+    if (_minDistance > d) _minDistance = d;
+    if (_maxDistance < d) _maxDistance = d;
+     if (d<maxHistogramDepth) {
+      _cumHisto[d] += pForward;
+      _selfHisto[d] += self;
+    }
+    else {
+      _cumHisto[maxHistogramDepth-1] += pForward;
+      _selfHisto[maxHistogramDepth-1] += self;
+    }
+
+#ifdef DEBUG_COVERAGE
+    qDebug("CngCov:%s < %s (cum %f, self %f)",
+	   spaces+strlen(spaces)-d,
+           _function->prettyName().ascii(), _cum, _self);
+#endif
+  }
+
+  double callVal, pForwardNew, pBackNew;
+
+  cList = _function->callings();
+  for (call=cList.first();call;call=cList.next()) {
+    if (call->inCycle()>0) continue;
+    if (call->isRecursion()) continue;
+
+    if (call->subCost(_costType)>0) {
+      TraceFunction* calling = call->called();
+
+      c = (Coverage*) calling->assoziation(rtti());
+      if (!c) {
+        c = new Coverage();
+        c->setFunction(calling);
+      }
+      if (!c->isValid()) {
+        c->init();
+        fList.append(calling);
+      }
+
+      if (c->isActive()) continue;
+      if (c->inRecursion()) continue;
+
+      callVal = (double) call->subCost(_costType);
+      pForwardNew = pForward * (callVal / cum);
+      pBackNew    = pBack * (callVal / 
+			     calling->cumulative()->subCost(_costType));
+
+      if (!c->isActive()) {
+	  c->callCount() += pBack * call->callCount();
+
+#ifdef DEBUG_COVERAGE
+        qDebug("CngCov:%s  > %s: forward %f, back %f, calls %f -> %f, now %f",
+	       spaces+strlen(spaces)-d,
+               calling->prettyName().ascii(),
+	       pForwardNew, pBackNew,
+	       (double)call->callCount(),
+	       pBack * call->callCount(),
+	       c->callCount());
+#endif
+      }
+      else {
+        // adjust pNew by sum of geometric series of recursion factor.
+        // Thus we can avoid endless recursion here
+        double fFactor = 1.0 / (1.0 - pForwardNew / c->firstPercentage());
+        double bFactor = 1.0 / (1.0 - pBackNew);
+#ifdef DEBUG_COVERAGE
+        qDebug("CngCov:%s Recursion - origP %f, actP %f => factor %f, newP %f",
+	       spaces+strlen(spaces)-d,
+               c->firstPercentage(), pForwardNew,
+	       fFactor, pForwardNew * fFactor);
+#endif
+        pForwardNew *= fFactor;
+        pBackNew *= bFactor;
+
+      }
+
+      // Limit depth
+      if (pForwardNew > 0.0001)
+        c->addCallingCoverage(fList, pForwardNew, pBackNew, d+1);
+    }
+  }
+
+  if (_inRecursion)
+    _inRecursion = false;
+  else if (_active)
+    _active = false;
+}
+

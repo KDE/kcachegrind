@@ -1,0 +1,128 @@
+<tip category="KCachegrind|Help">
+<html>
+<p>...that you can request <em>What's this...</em>
+help for every GUI part in KCachegrind by pressing
+Shift-F1 and clicking on this part?</p>
+</html>
+</tip>
+
+<tip category="KCachegrind|Explanation">
+<html>
+<p>...that you can get profile information at instruction level
+if you provide Cachegrind with assembler level debug information?
+You need to compile with <em>gcc -S ...</em>,
+and the generated assembler soure with <em>as --gstabs ...</em>.
+</p>
+</html>
+</tip>
+
+<tip category="KCachegrind|Keyboard">
+<html>
+<p>...that you can use Alt-Left/Right keys of your keyboard to go
+back/forward in the function selection history ?</p>
+</html>
+</tip>
+
+<tip category="KCachegrind|Keyboard">
+<html>
+<p>...that you can navigate in the TreeMap graphs using
+arrow keys and Backspace/Return for one nesting level up/down?
+This changes the <em>current</em> item. To make the current item
+the selected one, press Space.
+</p>
+</html>
+</tip>
+
+<tip category="KCachegrind|Filters">
+<html>
+<p>...that you can rapidly locate a function by entering part of its
+name (case-insensitive) into the edit line of the toolbar
+and hit return?</p>
+</html>
+</tip>
+
+<tip category="KCachegrind|Appearance">
+<html>
+<p>...that you can assign custom colors to 
+ELF objects/C++ Classes/Source Files for graph coloring
+in <em>Settings->Configure KCachegrind...</em>?</p>
+</html>
+</tip>
+
+<tip category="KCachegrind|Configuration">
+<html>
+<p>...that you can see if debug info is available for a selected 
+function by looking at the location label in the Info tab or
+the source listing header in the source tab?</p>
+<p>There must be the name of the source file (with extension).
+If KCachegrind still doesn't show the source, make sure that you
+have added the directory of the source file to the
+<em>Source Directories</em> list in the configuration.
+</html>
+</tip>
+
+<tip category="KCachegrind|Appearance">
+<html>
+<p>...that you can configure whether KCachgrind should
+show absolute event counts or relative ones (percentage display)?</p>
+</html>
+</tip>
+
+<tip category="KCachegrind|Appearance">
+<html>
+<p>...that you can configure the lower percentage bound for
+event counts for all function lists in KCachegrind?</p>
+<p>Note that e.g. a value of 0.0001 (i.e. show all functions
+with more than 0.1 promille relative event count) can easily
+lead to thousands of entries and thus can slow down KCachegrind
+drastically.</p>
+</html>
+</tip>
+
+<tip category="KCachegrind|Explanation">
+<html>
+<p>...that the Coverage tab - in contrast to the Call Lists tab -
+shows <em>all</em> functions that are calling the selected function
+(upper part) / are called by the selected function (bottom part),
+no matter how many function are between them on the stack?</p>
+<p>Examples:</p>
+<p>An entry in the upper list for function foo1() with a value of 50%
+with function bar() selected means that 50% of all the cost of function
+bar() happened while called from function foo1().</p>
+<p>An entry in the bottom list for function foo2() with a value of 50%
+with function bar() selected means that 50% of all the cost of function
+bar() happened while calling foo2() from bar().</p>
+</html>
+</tip>
+
+<tip category="KCachegrind|Explanation">
+<html>
+<p>...that waiting for the tool tip inside of a graph
+shows the list of names of the nested rectangles the mouse
+pointer is over?</p>
+<p>Items from this list can be selected by pressing the right
+mouse button.</p>
+</html>
+</tip>
+
+<tip category="KCachegrind|Explanation">
+<html>
+<p>...that you can constrain the cost counts shown to only a
+few parts of the whole trace by selecting these parts in the
+"Trace Selection" Dockable?</p>
+<p>To generate multiple parts in a profiling run with
+cachegrind, use e.g. option --cachedumps=xxx for parts
+of a length of xxx basic blocks (A basic block is a run
+of not-branching assembler statements inside of your program
+code).</p>
+</html>
+</tip>
+
+<tip category="KCachegrind|Explanation">
+<p>...that by splitting the view to show information of 
+two functions simultaniously, selecting a function in
+one panel shows the information for that function
+in the other panel?</p>
+</html>
+</tip>
+

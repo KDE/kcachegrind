@@ -1,0 +1,15 @@
+# KDE Config File  
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=kcachegrind -caption "%c" %i %m %u
+MimeType=application/x-kcachegrind;
+Icon=kcachegrind
+DocPath=kcachegrind/index.html
+Comment=
+Comment[de]=
+Terminal=0
+Name=KCachegrind
+Comment=KDE Frontend for Cachegrind
+X-DCOP-ServiceType=Multi
+Name[de]=KCachegrind

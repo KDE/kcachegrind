@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Comment=Cachegrind Profile Trace
+DefaultApp=kcachegrind
+Icon=kcachegrind
+Type=MimeType
+MimeType=application/x-kcachegrind
+Patterns=cachegrind.out*

@@ -1,0 +1,94 @@
+TODO/Wishlist Items
+===================
+
+Support for KCachegrind in Calltree
+-----------------------------------
+
+<<<<<<< TODO
+BUGS:
+- discarded separated by objname
+ 
+=======
+>>>>>>> 1.1.2.1
+WISHS:
+- store more details of calltree
+  - for every function call: executed from shared lib
+    (Not needed, if function names are unique in whole app)
+  - adaptive call chain context (Really needed ? MUCH Data!)
+- dump at
+  - breakpoints
+  - watchpoints (with data tracing!)
+  - every xxx BBs (DONE)
+- dump around
+  - function invocation
+  - KAction event
+  - DCOP event
+
+- data accesses from (instr address/count)
+  stack:   -> (function, stackframe-offset)
+  dynamic: -> (mem region start, [type], offset)
+              type can be get when a constructor is called for region
+  static:  -> (mem region start, type, offset)
+
+* Generate full instr/data access trace for offline analysis.
+
+* Appending mode
+
+
+KCachegrind
+-----------
+
+All cost Lists:
+* Show up to a number of items, not down to a threadshold.
+  If more, add a "..." with number of items not shown, and context option
+  to show more
+* "Copy from Top" converts lists into ASCII, puts into clipboard
+
+
+Configuration:
+ Source dirs per ELF object
+
+Layout:
+* 1/2/3/4 vertical/horizontal FunctionInfos
+  with Shift/Wraparound selection mode
+* Inside each FunctionInfo different Layouts
+ - tabbed layout
+ - top: info, bottom left: calls/coverage, bottom right: graph/source
+* Long/short info tab
+
+General:
+* Selected Item can be a object/file/class/function/line
+* Configuration Dlg
+ - Local config (?)
+ - Cost Types
+ - function colors
+ - Try to reload source after config.
+* Session Management
+
+Assembler view:
+* Option for context lines
+
+Source view:
+* Option for context lines
+* Implicit jumps (green)
+
+Callgraph:
+* Fix Arrows for back-arcs
+* Less "Jumps" for minimap
+* Correct Keyboard navigation (how?)
+
+Types:
+* Ratios
+* Automatic subtypes
+
+WISHS:
+* Support for Data tracing
+  Which variables are touched how often from which function?
+  - Some graphical visualisation...
+
+* GCC -pg (gmon.out) as Profiling Backend
+* Demangler (use c++filt)
+* Calculation of call weights (if not given)
+* OProfile, DynaProf
+
+
