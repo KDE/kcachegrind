@@ -43,9 +43,9 @@ public:
   SourceItem(QListViewItem* parent, int fileno, unsigned int lineno,
              TraceLine* line, TraceLineJump* lineJump);
 
-  uint lineno() { return _lineno; }
-  int fileno() { return _fileno; }
-  bool inside() { return _inside; }
+  uint lineno() const { return _lineno; }
+  int fileno() const { return _fileno; }
+  bool inside() const { return _inside; }
   TraceLine* line() const { return _line; }
   TraceLineCall* lineCall() const { return _lineCall; }
   TraceLineJump* lineJump() const { return _lineJump; }

@@ -47,10 +47,10 @@ public:
   InstrItem(QListViewItem* parent, uint addr,
 	    TraceInstr* instr, TraceInstrJump* instrJump);
 
-  unsigned int addr() { return _addr; }
-  TraceInstr* instr() { return _instr; }
-  TraceInstrCall* instrCall() { return _instrCall; }
-  TraceInstrJump* instrJump() { return _instrJump; }
+  unsigned int addr() const { return _addr; }
+  TraceInstr* instr() const { return _instr; }
+  TraceInstrCall* instrCall() const { return _instrCall; }
+  TraceInstrJump* instrJump() const { return _instrJump; }
 
   int compare(QListViewItem * i, int col, bool ascending ) const;
 

@@ -74,9 +74,9 @@ public:
   TracePartList hiddenParts() { return _hiddenParts; }
 
   // current config
-  bool showPercentage() { return _showPercentage; }
-  bool showExpanded() { return _showExpanded; }
-  bool showCycles() { return _showCycles; }
+  bool showPercentage() const { return _showPercentage; }
+  bool showExpanded() const { return _showExpanded; }
+  bool showCycles() const { return _showCycles; }
 
 public slots:
   void newTrace();

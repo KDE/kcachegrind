@@ -65,7 +65,7 @@ private:
   TraceCostItem* _group;
 
   HighestCostList _hc;
-  // when setting a 
+  // when setting a
   bool _inSetCostItem, _inSetFunction;
 };
 

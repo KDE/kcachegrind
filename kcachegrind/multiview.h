@@ -39,7 +39,7 @@ public:
   MultiView(TopLevel* top, QWidget* parent = 0, const char* name = 0);
 
   QWidget* widget() { return this; }
-  TabView* activeTabView() { return _active; }
+  TabView* activeTabView() const { return _active; }
 
   void appendView();
   void removeView();

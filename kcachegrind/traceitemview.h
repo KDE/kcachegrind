@@ -127,7 +127,7 @@ public:
   void setTitle(QString t) { _title = t; }
   QString title() { return _title; }
 
-  virtual QWidget* widget();
+  virtual QWidget* widget() const;
 
   /**
    * This function is called when a new item should become active.

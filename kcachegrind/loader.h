@@ -60,8 +60,8 @@ public:
   static Loader* loader(QString name);
   static void initLoaders();
 
-  QString name() { return _name; }
-  QString description() { return _description; }
+  QString name() const { return _name; }
+  QString description() const { return _description; }
 
 signals:
   void updateStatus(QString, int);

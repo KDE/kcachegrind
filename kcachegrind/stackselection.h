@@ -41,9 +41,9 @@ public:
   StackSelection( QWidget* parent = 0, const char* name = 0);
   ~StackSelection();
 
-  TraceData* data() { return _data; }
+  TraceData* data() const { return _data; }
   void setData(TraceData*);
-  StackBrowser* browser() { return _browser; }
+  StackBrowser* browser() const { return _browser; }
 
 signals:
   void functionSelected(TraceItem*);

@@ -32,7 +32,7 @@ public:
     /**
      * Returns the widget associated with this action.
      */
-    QWidget* widget() { return m_widget; }
+    QWidget* widget() const { return m_widget; }
 
     void setAutoSized( bool );
 

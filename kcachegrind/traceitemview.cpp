@@ -158,7 +158,7 @@ bool TraceItemView::set(int changeType, TraceData* d,
   return true;
 }
 
-QWidget* TraceItemView::widget()
+QWidget* TraceItemView::widget() const
 {
   return 0;
 }

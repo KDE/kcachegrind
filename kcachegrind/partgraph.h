@@ -44,12 +44,12 @@ public:
   void setCallLevels(int callLevels);
   void setFunction(TraceFunction* f);
 
-  TraceCostType* costType() { return _costType; }
-  TraceCost::CostType groupType() { return _groupType; }
-  TraceFunction* function() { return _function; }
-  VisualisationMode visualisation() { return _visualisation; }
-  bool zoomFunction() { return _zoomFunction; }
-  int callLevels() { return _callLevels; }
+  TraceCostType* costType() const { return _costType; }
+  TraceCost::CostType groupType() const { return _groupType; }
+  TraceFunction* function() const { return _function; }
+  VisualisationMode visualisation() const { return _visualisation; }
+  bool zoomFunction() const { return _zoomFunction; }
+  int callLevels() const { return _callLevels; }
 
   QColor groupColor(TraceFunction*);
   QString tipString(TreeMapItem*);
@@ -81,7 +81,7 @@ public:
   int rtti() { return 1; }
   double value();
   QString text(int);
-  int borderWidth() { return 0; }
+  int borderWidth(){ return 0; }
   TreeMapItemList* children();
   QColor backColor();
 
