@@ -6,5 +6,19 @@ In the long run, these should be replaced by import filters in
 KCachegrind directly, but I can't promise anything. Partly, this
 is because some scripts are provided as contribution from others.
 
-hotshot2cg	Converter for the Python Hotshot Profiler.
-op2cg           Converter for OProfile sampling data. 
+hotshot2calltree   Converter from Python Hotshot Profiler.
+op2calltree        Converter from OProfile sampling data. 
+dprof2calltree     Converter from PERL::DProf Profiler.
+pprof2calltree     Converter from APD PHP Profiler.
+
+Thanks go to
+* George Schlossnagle <george@omniti.com> for
+  dprof2calltree and pprof2calltree,
+* Jörg Beyer <job@webde-ag.de> for
+  hotshot2calltree
+
+If you want to write a converter, have a look at the calltree format
+description on the web site (kcachegrind.sf.net).
+
+Josef
+

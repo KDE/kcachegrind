@@ -83,8 +83,10 @@ public:
                                bool value, bool def);
   static void writeConfigEntry(KConfigBase*, const char* pKey,
                                double value, double def);
-  virtual void readViewConfig(KConfig*, QString prefix, QString postfix);
-  virtual void saveViewConfig(KConfig*, QString prefix, QString postfix);
+  virtual void readViewConfig(KConfig*, QString prefix, QString postfix,
+			      bool withOptions);
+  virtual void saveViewConfig(KConfig*, QString prefix, QString postfix,
+			      bool withOptions);
 
   // change from parent, call update() afterwards if view is visible
   void setData(TraceData* d) { _newData = d; }

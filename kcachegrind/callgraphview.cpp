@@ -1328,6 +1328,7 @@ CallGraphView::CallGraphView(TraceItemView* parentView,
   _completeView->setVScrollBarMode(QScrollView::AlwaysOff);
   _completeView->setHScrollBarMode(QScrollView::AlwaysOff);
   _completeView->raise();
+  _completeView->hide();
 
   setFocusPolicy(QWidget::StrongFocus);
   setBackgroundMode(Qt::NoBackground);
@@ -2054,7 +2055,7 @@ void CallGraphView::refresh()
     t->show();
     center(0,0);
   }
-  if (!activeNode && !activeEdge) {
+  else if (!activeNode && !activeEdge) {
     QString s = i18n("There is no call graph available for function\n"
 		     "\t'%1'\n"
 		     "because it has no cost of the selected event type.");
@@ -2527,7 +2528,8 @@ QString CallGraphView::zoomPosString(ZoomPosition p)
     return QString("TopLeft");
 }
 
-void CallGraphView::readViewConfig(KConfig* c, QString prefix, QString postfix)
+void CallGraphView::readViewConfig(KConfig* c, 
+				   QString prefix, QString postfix, bool)
 {
     KConfigGroup* g = configGroup(c, prefix, postfix);
 
@@ -2546,7 +2548,8 @@ void CallGraphView::readViewConfig(KConfig* c, QString prefix, QString postfix)
 					    zoomPosString(DEFAULT_ZOOMPOS)));
 }
 
-void CallGraphView::saveViewConfig(KConfig* c, QString prefix, QString postfix)
+void CallGraphView::saveViewConfig(KConfig* c,
+				   QString prefix, QString postfix, bool)
 {
     KConfigGroup g(c, (prefix+postfix).ascii());
 

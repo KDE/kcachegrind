@@ -917,7 +917,8 @@ void InstrView::updateInstrItems()
     }
 }
 
-void InstrView::readViewConfig(KConfig* c, QString prefix, QString postfix)
+void InstrView::readViewConfig(KConfig* c, 
+			       QString prefix, QString postfix, bool)
 {
     KConfigGroup* g = configGroup(c, prefix, postfix);
 
@@ -926,7 +927,8 @@ void InstrView::readViewConfig(KConfig* c, QString prefix, QString postfix)
     _showHexCode  = g->readBoolEntry("ShowHexCode", DEFAULT_SHOWHEXCODE);
 }
 
-void InstrView::saveViewConfig(KConfig* c, QString prefix, QString postfix)
+void InstrView::saveViewConfig(KConfig* c,
+			       QString prefix, QString postfix, bool)
 {
     KConfigGroup g(c, (prefix+postfix).ascii());
 

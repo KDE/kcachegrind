@@ -49,8 +49,8 @@ public:
   void selected(TraceItemView*, TraceItem*);
   void activated(TraceItemView*, TraceItem*);
 
-  void readViewConfig(KConfig*, QString prefix, QString postfix);
-  void saveViewConfig(KConfig*, QString prefix, QString postfix);
+  void readViewConfig(KConfig*, QString prefix, QString postfix, bool);
+  void saveViewConfig(KConfig*, QString prefix, QString postfix, bool);
 
 public slots:
     void tabActivated(TabView*);

@@ -39,8 +39,8 @@ public:
   QWidget* widget() { return this; }
   QString whatsThis() const;
 
-  void readViewConfig(KConfig*, QString prefix, QString postfix);
-  void saveViewConfig(KConfig*, QString prefix, QString postfix);
+  void readViewConfig(KConfig*, QString prefix, QString postfix, bool);
+  void saveViewConfig(KConfig*, QString prefix, QString postfix, bool);
 
   bool showCallers() const { return _showCallers; }
   TraceCost* totalCost();

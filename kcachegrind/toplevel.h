@@ -103,6 +103,15 @@ public slots:
   void querySlot();
   void dummySlot();
 
+  // layouts
+  void layoutDuplicate();
+  void layoutRemove();
+  void layoutNext();
+  void layoutPrevious();
+  void layoutSave();
+  void layoutRestore();
+  void updateLayoutActions();
+
   void updateStatusBar();
   void costTypeSelected(const QString&);
   void costType2Selected(const QString&);
@@ -191,6 +200,8 @@ public slots:
 
 private:
   void init();
+  void createLayoutActions();
+  void createMiscActions();
   void setupMainWidget(MainWidget*);
   void setupPartSelection(PartSelection*);
   void restoreCurrentState(QString postfix);
@@ -239,6 +250,8 @@ private:
   TracePartList _activeParts;
   // hidden parts
   TracePartList _hiddenParts;
+  // layouts
+  int _layoutCurrent, _layoutCount;
 
   // for delayed slots
   TraceCostType* _costTypeDelayed;

@@ -412,8 +412,8 @@ public:
                 QWidget* parent=0, const char* name=0);
   ~CallGraphView();
 
-  void readViewConfig(KConfig*, QString prefix, QString postfix);
-  void saveViewConfig(KConfig*, QString prefix, QString postfix);
+  void readViewConfig(KConfig*, QString prefix, QString postfix, bool);
+  void saveViewConfig(KConfig*, QString prefix, QString postfix, bool);
 
   QWidget* widget() { return this; }
   QString whatsThis() const;

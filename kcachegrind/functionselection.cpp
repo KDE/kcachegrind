@@ -715,6 +715,7 @@ bool FunctionSelection::setTopFunction()
   QListViewItem* i = functionList->firstChild();
   // this emits a function selection
   functionList->setSelected(i, true);
+  functionActivated(i);
   return i!=0;
 }
 

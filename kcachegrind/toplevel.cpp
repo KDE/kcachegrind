@@ -53,6 +53,7 @@
 #include <kkeydialog.h>
 #include <ktip.h>
 #include <kpopupmenu.h>
+#include <kdebug.h>
 
 #if ENABLE_DUMPDOCK
 #include "dumpselection.h"
@@ -156,6 +157,9 @@ void TopLevel::init()
   _groupType = TraceCost::NoCostType;
   _group = 0;
 
+  _layoutCurrent = 0;
+  _layoutCount = 1;
+
   // for delayed slots
   _traceItemDelayed = 0;
   _costTypeDelayed = 0;
@@ -216,7 +220,7 @@ void TopLevel::saveCurrentState(QString postfix)
 			 _costType2 ? _costType2->name() : QString("?"));
   stateConfig.writeEntry("GroupType", TraceItem::typeName(_groupType));
 
-  _multiView->saveViewConfig(kconfig, QString("MainView"), postfix);
+  _multiView->saveViewConfig(kconfig, QString("MainView"), postfix, true);
 }
 
 /**
@@ -236,6 +240,10 @@ void TopLevel::saveTraceSettings()
                      TraceItem::typeName(_groupType));
 
   if (!_data) return;
+
+  KConfigGroup aConfig(KGlobal::config(), QCString("Layouts"));
+  aConfig.writeEntry(QString("Count%1").arg(key), _layoutCount);
+  aConfig.writeEntry(QString("Current%1").arg(key), _layoutCurrent);
 
   saveCurrentState(key);
   pConfig.writeEntry(QString("Group%1").arg(key),
@@ -261,7 +269,7 @@ void TopLevel::restoreCurrentState(QString postfix)
   KConfigGroup psConfig(kconfig, group);
   _partSelection->readVisualisationConfig(&psConfig);
 
-  _multiView->readViewConfig(kconfig, QString("MainView"), postfix);
+  _multiView->readViewConfig(kconfig, QString("MainView"), postfix, true);
   _taSplit->setChecked(_multiView->childCount()>1);
   _taSplitDir->setEnabled(_multiView->childCount()>1);
   _taSplitDir->setChecked(_multiView->orientation() == Qt::Horizontal);
@@ -440,8 +448,55 @@ void TopLevel::readProperties(KConfig* c)
   }
 }
 
+void TopLevel::createLayoutActions()
+{
+  QString hint;
+  KAction* action;
 
-void TopLevel::createActions()
+  action = new KAction( i18n( "&Duplicate" ), 
+			KShortcut(KKey("Ctrl+Plus")),
+                        this, SLOT(layoutDuplicate()),
+                        actionCollection(), "layout_duplicate" );
+  hint = i18n("<b>Duplicate Current Layout</b>"
+              "<p>Make a copy of the current layout.</p>");
+  action->setWhatsThis( hint );
+
+  action = new KAction( i18n( "&Remove" ), KShortcut(),
+                        this, SLOT(layoutRemove()),
+                        actionCollection(), "layout_remove" );
+  hint = i18n("<b>Remove Current Layout</b>"
+              "<p>Delete current layout and make the previous active.</p>");
+  action->setWhatsThis( hint );
+
+  action = new KAction( i18n( "&Go to Next" ),
+			KShortcut(KKey("Ctrl+Right")),
+                        this, SLOT(layoutNext()),
+                        actionCollection(), "layout_next" );
+  hint = i18n("Go to Next Layout");
+  action->setWhatsThis( hint );
+
+  action = new KAction( i18n( "&Go to Previous" ),
+			KShortcut(KKey("Ctrl+Left")),
+                        this, SLOT(layoutPrevious()),
+                        actionCollection(), "layout_previous" );
+  hint = i18n("Go to Previous Layout");
+  action->setWhatsThis( hint );
+
+  action = new KAction( i18n( "&Restore to Default" ), KShortcut(),
+                        this, SLOT(layoutRestore()),
+                        actionCollection(), "layout_restore" );
+  hint = i18n("Restore Layouts to Default");
+  action->setWhatsThis( hint );
+
+  action = new KAction( i18n( "&Save as Default" ), KShortcut(),
+                        this, SLOT(layoutSave()),
+                        actionCollection(), "layout_save" );
+  hint = i18n("Save Layouts as Default");
+  action->setWhatsThis( hint );
+}
+
+// TODO: split this up...
+void TopLevel::createMiscActions()
 {
   QString hint;
   KAction* action;
@@ -525,12 +580,12 @@ void TopLevel::createActions()
   KStdAction::showStatusbar(this,
                             SLOT(toggleStatusBar()), actionCollection());
 
-  _partDockShown = new KToggleAction(i18n("Trace Part Overview"), KShortcut(),
+  _partDockShown = new KToggleAction(i18n("Parts Overview"), KShortcut(),
                                      this, SLOT(togglePartDock()),
                                      actionCollection(),
                                      "settings_show_partdock");
 
-  hint = i18n("Show/Hide the Profile Part Overview Dockable");
+  hint = i18n("Show/Hide the Parts Overview Dockable");
   _partDockShown->setToolTip( hint );
   _partDockShown->setWhatsThis( hint );
 
@@ -770,6 +825,12 @@ void TopLevel::createActions()
                       0, this, SLOT(slotShowTip()),
                       actionCollection(), "help_show_tip" );
 #endif
+}
+
+void TopLevel::createActions()
+{
+  createMiscActions();
+  createLayoutActions();
 }
 
 void TopLevel::toggleStatusBar()
@@ -1528,7 +1589,8 @@ void TopLevel::setData(TraceData* data)
   _saCost2->setItems(types);
   _saCost2->setComboWidth(300);
   // default is hidden
-  _saCost2->setCurrentItem(0);
+  if (types.count()>0)
+    _saCost2->setCurrentItem(0);
 
   /* this is needed to let the other widgets know the types */
   restoreTraceTypes();
@@ -1698,6 +1760,11 @@ void TopLevel::restoreTraceTypes()
   if (!_costType && !_saCost->items().isEmpty())
       costTypeSelected(_saCost->items().first());
 
+  KConfigGroup aConfig(KGlobal::config(), QCString("Layouts"));
+  _layoutCount = aConfig.readNumEntry(QString("Count%1").arg(key), 0);
+  _layoutCurrent = aConfig.readNumEntry(QString("Current%1").arg(key), 0);
+  if (_layoutCount == 0) layoutRestore();
+  updateLayoutActions();
 }
 
 
@@ -1725,6 +1792,152 @@ void TopLevel::restoreTraceSettings()
     if (!setFunction("main"))
       _functionSelection->setTopFunction();
   }
+}
+
+
+/* Layout */
+
+void TopLevel::layoutDuplicate()
+{
+  // save current and allocate a new slot
+  _multiView->saveViewConfig(KGlobal::config(),
+			     QString("Layout%1-MainView").arg(_layoutCurrent),
+			     traceKey(), false);
+  _layoutCurrent = _layoutCount;
+  _layoutCount++;
+
+  updateLayoutActions();
+
+  kdDebug() << "TopLevel::layoutDuplicate: count " << _layoutCount << endl;
+}
+
+void TopLevel::layoutRemove()
+{
+  if (_layoutCount <2) return;
+
+  int from = _layoutCount-1;
+  if (_layoutCurrent == from) { _layoutCurrent--; from--; }
+  // restore from last and decrement count
+  _multiView->readViewConfig(KGlobal::config(),
+			     QString("Layout%1-MainView").arg(from),
+			     traceKey(), false);
+  _layoutCount--;
+
+  updateLayoutActions();
+}
+
+void TopLevel::layoutNext()
+{
+  if (_layoutCount <2) return;
+
+  KConfig* config = KGlobal::config();
+  QString key = traceKey();
+
+  _multiView->saveViewConfig(config,
+			     QString("Layout%1-MainView").arg(_layoutCurrent),
+			     key, false);
+  _layoutCurrent++;
+  if (_layoutCurrent == _layoutCount) _layoutCurrent = 0;
+
+  _multiView->readViewConfig(config,
+			     QString("Layout%1-MainView").arg(_layoutCurrent),
+			     key, false);
+
+  if (0) kdDebug() << "TopLevel::layoutNext: current "
+		   << _layoutCurrent << endl;
+}
+
+void TopLevel::layoutPrevious()
+{
+  if (_layoutCount <2) return;
+
+  KConfig* config = KGlobal::config();
+  QString key = traceKey();
+
+  _multiView->saveViewConfig(config,
+			     QString("Layout%1-MainView").arg(_layoutCurrent),
+			     key, false);
+  _layoutCurrent--;
+  if (_layoutCurrent <0) _layoutCurrent = _layoutCount-1;
+
+  _multiView->readViewConfig(config,
+			     QString("Layout%1-MainView").arg(_layoutCurrent),
+			     key, false);
+
+  if (0) kdDebug() << "TopLevel::layoutPrevious: current "
+		   << _layoutCurrent << endl;
+}
+
+void TopLevel::layoutSave()
+{
+  KConfig* config = KGlobal::config();
+  QString key = traceKey();
+
+  _multiView->saveViewConfig(config,
+			     QString("Layout%1-MainView").arg(_layoutCurrent),
+			     key, false);
+
+  for(int i=0;i<_layoutCount;i++) {
+    _multiView->readViewConfig(config,
+			       QString("Layout%1-MainView").arg(i),
+			       key, false);
+    _multiView->saveViewConfig(config,
+			       QString("Layout%1-MainView").arg(i),
+			       QString(), false);
+  }
+
+  _multiView->readViewConfig(config,
+			     QString("Layout%1-MainView").arg(_layoutCurrent),
+			     key, false);
+
+  KConfigGroup aConfig(config, QCString("Layouts"));
+  aConfig.writeEntry("DefaultCount", _layoutCount);
+  aConfig.writeEntry("DefaultCurrent", _layoutCurrent);
+}
+
+void TopLevel::layoutRestore()
+{
+  KConfig* config = KGlobal::config();
+  KConfigGroup aConfig(config, QCString("Layouts"));
+  _layoutCount = aConfig.readNumEntry("DefaultCount", 0);
+  _layoutCurrent = aConfig.readNumEntry("DefaultCurrent", 0);
+  if (_layoutCount == 0) {
+    _layoutCount++;
+    return;
+  }
+
+  QString key = traceKey();
+  for(int i=0;i<_layoutCount;i++) {
+    _multiView->readViewConfig(config,
+			       QString("Layout%1-MainView").arg(i),
+			       QString(), false);
+    _multiView->saveViewConfig(config,
+			       QString("Layout%1-MainView").arg(i),
+			       key, false);
+  }
+
+  _multiView->readViewConfig(config,
+			     QString("Layout%1-MainView").arg(_layoutCurrent),
+			     key, false);
+
+  updateLayoutActions();
+}
+
+
+void TopLevel::updateLayoutActions()
+{
+  KAction* ka;
+
+  ka = actionCollection()->action("layout_next");
+  if (ka) ka->setEnabled(_layoutCount>1);
+
+  ka = actionCollection()->action("layout_previous");
+  if (ka) ka->setEnabled(_layoutCount>1);
+
+  ka = actionCollection()->action("layout_remove");
+  if (ka) ka->setEnabled(_layoutCount>1);
+
+  _statusbar->message(i18n("Layout Count: %1").arg(_layoutCount), 1000);
 }
 
 

@@ -25,6 +25,7 @@
 
 #include <qobjectlist.h>
 #include <kconfig.h>
+#include <kdebug.h>
 
 #include "multiview.h"
 #include "tabview.h"
@@ -66,7 +67,8 @@ void MultiView::appendView()
 	    _groupType, _partList, _activeItem, 0);
     tv->updateView();
 
-    if (0) qDebug("MultiView::appendView (now %d)", _views.count());
+    if (0) kdDebug() << "MultiView::appendView, now "
+		     << _views.count() << endl;
 }
 
 void MultiView::removeView()
@@ -85,7 +87,8 @@ void MultiView::removeView()
     _views.removeRef(last);
     delete last;
 
-    if (0) qDebug("MultiView::removeView (now %d)", _views.count());
+    if (0) kdDebug() << "MultiView::removeView, now "
+		     << _views.count() << endl;
 }
 
 
@@ -93,7 +96,8 @@ void MultiView::tabActivated(TabView* newActiveTab)
 {
     if (_active == newActiveTab) return;
 
-    if (0) qDebug("MultiView::tabActivated %s", newActiveTab->name());
+    if (0) kdDebug() << "MultiView::tabActivated " 
+		     << newActiveTab->name() << endl;
 
     TraceItem* oldActiveItem = 0;
     if (_active) {
@@ -109,8 +113,8 @@ void MultiView::tabActivated(TabView* newActiveTab)
 
 void MultiView::selected(TraceItemView* sender, TraceItem* i)
 {
-    qDebug("MultiView::selected %s, sender %s",
-           i->name().ascii(), sender->widget()->name());
+    if (0) kdDebug() << "MultiView::selected " << i->name()
+		     << ", sender " << sender->widget()->name() << endl;
 
      // we react only on selection changes of the active TabView
     if (sender != (TraceItemView*)_active) return;
@@ -128,8 +132,8 @@ void MultiView::selected(TraceItemView* sender, TraceItem* i)
 
 void MultiView::activated(TraceItemView* sender, TraceItem* i)
 {
-    qDebug("MultiView::activated %s, sender %s",
-           i->name().ascii(), sender->widget()->name());
+    if (0) kdDebug() << "MultiView::activated " << i->name()
+		     << ", sender " << sender->widget()->name() << endl;
 
     // we react only on selection changes of the active TabView
     if (sender != (TraceItemView*)_active) return;
@@ -152,54 +156,59 @@ void MultiView::doUpdate(int changeType)
 }
 
 
-void MultiView::readViewConfig(KConfig* c, QString prefix, QString postfix)
+void MultiView::readViewConfig(KConfig* c,
+			       QString prefix, QString postfix,
+			       bool withOptions)
 {
-    if (0) qDebug("%s::readConfig(%s%s)", name(),
-		  prefix.ascii(), postfix.ascii());
+  if (0) qDebug("%s::readConfig(%s%s)", name(),
+		prefix.ascii(), postfix.ascii());
 
-    KConfigGroup* g = configGroup(c, prefix, postfix);
+  QString active;
+  KConfigGroup* g = configGroup(c, prefix, postfix);
+  int n = g->readNumEntry("Panels", 1);
+  setChildCount(n);
+  setOrientation( (g->readEntry("Orientation") == QString("Horizontal")) ?
+		  Qt::Horizontal : Qt::Vertical );
+  
+  setSizes(g->readIntListEntry("PanelSizes"));
+  
+  active = g->readEntry("ActivePanel", "");
+  delete g;
 
-    int n = g->readNumEntry("Panels", 1);
-    setChildCount(n);
-    setOrientation( (g->readEntry("Orientation") == QString("Horizontal")) ?
-                     Qt::Horizontal : Qt::Vertical );
+  TabView* tv, *activeTV = 0;
+  for(tv=_views.first();tv;tv=_views.next()) {
+    if (tv->name() == active) activeTV=tv;
+    tv->readViewConfig(c, QString("%1-%2").arg(prefix).arg(tv->name()),
+		       postfix, withOptions);
+  }
 
-    setSizes(g->readIntListEntry("PanelSizes"));
-    QString active = g->readEntry("ActivePanel", "");
-    delete g;
-
-    TabView* tv, *activeTV = 0;
-    for(tv=_views.first();tv;tv=_views.next()) {
-	if (tv->name() == active) activeTV=tv;
-	tv->readViewConfig(c, QString("%1-%2").arg(prefix).arg(tv->name()),
-			   postfix);
-    }
-
-    // activate panel after restoring
-    if (!activeTV) activeTV = _views.first();
-
-    if (_active == activeTV)
-      TraceItemView::activated(_active->activeItem());
-    else
-      activeTV->setActive(true);
+  // activate panel after restoring
+  if (!activeTV) activeTV = _views.first();
+  
+  if (_active == activeTV)
+    TraceItemView::activated(_active->activeItem());
+  else
+    activeTV->setActive(true);
 }
 
-void MultiView::saveViewConfig(KConfig* c, QString prefix, QString postfix)
+void MultiView::saveViewConfig(KConfig* c, 
+			       QString prefix, QString postfix,
+			       bool withOptions)
 {
-    KConfigGroup g(c, (prefix+postfix).ascii());
+  KConfigGroup g(c, (prefix+postfix).ascii());
+  
+  g.writeEntry("Panels", childCount());
+  g.writeEntry("Orientation",
+	       (orientation() == Qt::Horizontal) ?
+	       "Horizontal" : "Vertical");
+  
+  g.writeEntry("PanelSizes", sizes());
+  g.writeEntry("ActivePanel", _active ? _active->name() : "none");
 
-    g.writeEntry("Panels", childCount());
-    g.writeEntry("Orientation",
-                 (orientation() == Qt::Horizontal) ?
-                 "Horizontal" : "Vertical");
-
-    g.writeEntry("PanelSizes", sizes());
-    g.writeEntry("ActivePanel", _active ? _active->name() : "none");
-
-    TabView* tv;
-    for(tv=_views.first();tv;tv=_views.next())
-	tv->saveViewConfig(c, QString("%1-%2").arg(prefix).arg(tv->name()),
-			   postfix);
+  TabView* tv;
+  for(tv=_views.first();tv;tv=_views.next())
+    tv->saveViewConfig(c, QString("%1-%2").arg(prefix).arg(tv->name()),
+		       postfix, withOptions);
 }
 
 

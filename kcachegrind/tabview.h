@@ -130,8 +130,8 @@ public:
   int visibleTabs();
   int visibleAreas();
 
-  void readViewConfig(KConfig*, QString prefix, QString postfix);
-  void saveViewConfig(KConfig*, QString prefix, QString postfix);
+  void readViewConfig(KConfig*, QString prefix, QString postfix, bool);
+  void saveViewConfig(KConfig*, QString prefix, QString postfix, bool);
 
 public slots:
   void tabChanged(QWidget*);

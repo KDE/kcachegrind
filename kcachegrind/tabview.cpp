@@ -283,17 +283,17 @@ TabView::TabView(TraceItemView* parentView,
 		  new CostTypeView(this, _topTW, "CostTypeView")));
   addTop( addTab( i18n("Callers"),
 	     new CallView(true, this, _topTW, "CallerView")));
-  addBottom( addTab( i18n("Calls"),
+  addBottom( addTab( i18n("Callees"),
 		new CallView(false, this, _bottomTW, "CallView")));
   addBottom( addTab( i18n("Call Graph"),
 		new CallGraphView(this, _bottomTW, "CallGraphView")));
   addTop( addTab( i18n("All Callers"),
 	     new CoverageView(true, this, _topTW, "AllCallerView")));
-  addBottom( addTab( i18n("All Calls"),
+  addBottom( addTab( i18n("All Callees"),
 		new CoverageView(false, this, _bottomTW, "AllCallView")));
   addBottom( addTab( i18n("Caller Map"),
 		new CallMapView(true, this, _bottomTW, "CallerMapView")));
-  addTop( addTab( i18n("Call Map"),
+  addTop( addTab( i18n("Callee Map"),
 	     new CallMapView(false, this, _topTW, "CallMapView")));
   addTop( addTab( i18n("Source"),
 	     new SourceView(this, _topTW, "SourceView")));
@@ -686,7 +686,9 @@ void TabView::selected(TraceItemView*, TraceItem* s)
 }
 
 
-void TabView::readViewConfig(KConfig* c, QString prefix, QString postfix)
+void TabView::readViewConfig(KConfig* c,
+			     QString prefix, QString postfix,
+			     bool withOptions)
 {
     if (0) qDebug("%s::readConfig(%s%s)", name(),
 		  prefix.ascii(), postfix.ascii());
@@ -744,9 +746,10 @@ void TabView::readViewConfig(KConfig* c, QString prefix, QString postfix)
       }
       else moveTab(v->widget(), Hidden);
 
-      v->readViewConfig(c, QString("%1-%2")
-                        .arg(prefix).arg(v->widget()->name()),
-                        postfix);
+      if (withOptions)
+	v->readViewConfig(c, QString("%1-%2")
+			  .arg(prefix).arg(v->widget()->name()),
+			  postfix, true);
     }
     if (activeTop)   _topTW->showPage(activeTop->widget());
     if (activeBottom)_bottomTW->showPage(activeBottom->widget());
@@ -758,27 +761,31 @@ void TabView::readViewConfig(KConfig* c, QString prefix, QString postfix)
     QString selectedType = g->readEntry("SelectedItemType", "");
     QString selectedName = g->readEntry("SelectedItemName", "");
     delete g;
-
+    
     if (!_data) return;
-
-    // restore active item
-    TraceItem::CostType t = TraceItem::costType(activeType);
-    if (t==TraceItem::NoCostType) t = TraceItem::Function;
-    TraceCost* activeItem = _data->search(t, activeName, _costType);
-    if (!activeItem) return;
-    activate(activeItem);
-
-    // restore selected item
-    t = TraceItem::costType(selectedType);
-    if (t==TraceItem::NoCostType) t = TraceItem::Function;
-    TraceCost* selectedItem = _data->search(t, selectedName,
-                                            _costType, activeItem);
-    if (selectedItem) select(selectedItem);
+    
+    if (withOptions) {  
+      // restore active item
+      TraceItem::CostType t = TraceItem::costType(activeType);
+      if (t==TraceItem::NoCostType) t = TraceItem::Function;
+      TraceCost* activeItem = _data->search(t, activeName, _costType);
+      if (!activeItem) return;
+      activate(activeItem);
+      
+      // restore selected item
+      t = TraceItem::costType(selectedType);
+      if (t==TraceItem::NoCostType) t = TraceItem::Function;
+      TraceCost* selectedItem = _data->search(t, selectedName,
+					      _costType, activeItem);
+      if (selectedItem) select(selectedItem);
+    }
 
     updateView();
 }
 
-void TabView::saveViewConfig(KConfig* c, QString prefix, QString postfix)
+void TabView::saveViewConfig(KConfig* c,
+			     QString prefix, QString postfix,
+			     bool withOptions)
 {
     KConfigGroup g(c, (prefix+postfix).ascii());
 
@@ -810,17 +817,17 @@ void TabView::saveViewConfig(KConfig* c, QString prefix, QString postfix)
       a = QString(_rightTW->currentPage()->name());
     g.writeEntry("ActiveRight", a);
 
-
-    if (_activeItem) {
+    if (withOptions)
+      if (_activeItem) {
 	g.writeEntry("ActiveItemType",
                      TraceItem::typeName(_activeItem->type()));
 	g.writeEntry("ActiveItemName", _activeItem->name());
 	if (_selectedItem) {
-	    g.writeEntry("SelectedItemType",
-                         TraceItem::typeName(_selectedItem->type()));
-	    g.writeEntry("SelectedItemName", _selectedItem->name());
+	  g.writeEntry("SelectedItemType",
+		       TraceItem::typeName(_selectedItem->type()));
+	  g.writeEntry("SelectedItemName", _selectedItem->name());
 	}
-    }
+      }
 
     QStringList topList, bottomList, leftList, rightList;
     TraceItemView *v;
@@ -851,9 +858,10 @@ void TabView::saveViewConfig(KConfig* c, QString prefix, QString postfix)
     g.writeEntry("LeftTabs", leftList);
     g.writeEntry("RightTabs", rightList);
 
-    for (v=_tabs.first();v;v=_tabs.next())
-      v->saveViewConfig(c, QString("%1-%2").arg(prefix)
-                        .arg(v->widget()->name()), postfix);
+    if (withOptions)
+      for (v=_tabs.first();v;v=_tabs.next())
+	v->saveViewConfig(c, QString("%1-%2").arg(prefix)
+			  .arg(v->widget()->name()), postfix, true);
 }
 
 #include "tabview.moc"

@@ -1,0 +1,218 @@
+#!/usr/bin/env php
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+# - Redistributions of source code must retain the above copyright notice,
+# this list of conditions and the following disclaimer.
+#
+# - Redistributions in binary form must reproduce the above copyright
+# notice, this list of conditions and the following disclaimer in the
+# documentation and/or other materials provided with the distribution.
+#
+# - All advertising materials mentioning features or use of this software
+# must display the following acknowledgement: This product includes software
+# developed by OmniTI Computer Consulting.
+#
+# - Neither name of the company nor the names of its contributors may be
+# used to endorse or promote products derived from this software without
+# specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS `AS IS'' AND ANY
+# EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE FOR ANY
+# DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# Copyright (c) 2004 OmniTI Computer Consulting
+# All rights reserved
+# The following code was written by George Schlossnagle <george@omniti.com>
+# and is provided completely free and without any warranty.
+#
+# This script is designed to convert the pprof output from 
+# APD (http://pecl.php.net/apd/) to one readable by kcachegrind. To use
+# this script:
+#
+# 1) Install APD.
+# 2) Profile your script with APD accordingto the directions in it's
+#    README file.
+# 3) Take the pprof trace file for your script (pprof.XXXXX.Y) and run it 
+#    through this script as follows:
+#    > pprof2calltree -f pprof.12345.1 
+#    This creates a new file cachegrind.out.12345.1
+# 4) View your trace with pprof2calltree cachegrind.out.12345.1
+
+<?php
+
+require "Console/Getopt.php";
+
+$con = new Console_Getopt;
+$args = $con->readPHPArgv();
+array_shift($args);
+$shortoptions = 'f:';
+$retval = $con->getopt( $args, $shortoptions);
+if(is_object($retval)) {
+	usage();
+}
+foreach ($retval[0] as $kv_array) {
+    $opt[$kv_array[0]] = $kv_array[1];
+}
+if(!$opt['f']) {
+	usage();
+}
+if(!file_exists($opt['f'])) {
+	print "Trace file ${opt['f']} does not exist\n";
+	exit;
+}
+$IN = fopen($opt['f'], "r");
+if(!$IN) {
+	print "Trace file ${opt['f']} could not be opened\n";
+	exit;
+}
+
+$path_parts = pathinfo($opt['f']);
+$outfile = "cachegrind.out.".$path_parts['basename'];
+$OUT = fopen($outfile, "w");
+if(!$OUT) {
+	print "Destination file $outfile could not be opened.\n";
+	exit;
+}
+
+while(($line = fgets($IN)) !== false) {
+	$line = rtrim($line);
+	if($line == "END_HEADER") {
+		break;
+	}
+}
+$tree = array();
+$callstack = array();
+while(($line = fgets($IN)) !== false) {
+	$line = rtrim($line);
+	$args = explode(" ", $line);
+	if($args[0] == '!') {
+		$file_lookup[$args[1]] = $args[2];
+	}
+	else if($args[0] == '&') {
+		$function_lookup[$args[1]] = $args[2];
+		$function_type[$args[1]] = ($args[3] == 2)?"USER":"INTERNAL";
+	}
+	else if($args[0] == '+') {
+		$val = array(function_id => $args[1], 
+		             file_id => $args[2],
+					 line => $args[3], 
+					 cost => 0);
+		array_push($callstack, $val);
+	}
+	else if($args[0] == '-') {
+		// retrieve $called to discard
+		$called = array_pop($callstack);
+		// retrieve $caller for reference
+		$caller = array_pop($callstack);
+		$called_id = $called['function_id'];
+		
+		// Set meta data if not already set'
+		if(!array_key_exists($called_id, $tree)) {
+			$tree[$called_id] = $called;
+			// initialize these to 0
+			$tree[$called_id]['cost_per_line'] = array();
+		}
+		if($caller !== null) {
+			$caller['child_calls']++;
+			$caller_id = $caller['function_id'];
+			if(!array_key_exists($caller_id, $tree)) {
+				$tree[$caller_id] = $caller;
+			}
+			$caller['cost'] += $called['cost'];
+			$tree[$caller_id]['called_funcs'][$tree[$caller_id]['call_counter']++][$called_id][$called['file_id']][$called['line']] += $called['cost'];
+			array_push($callstack, $caller);
+		}
+		if(is_array($called['cost_per_line'])) {
+			foreach($called[cost_per_line] as $file => $lines) {
+				foreach($lines as $line => $cost) {
+					$tree[$called_id]['cost_per_line'][$file][$line] += $cost;
+				}
+			}
+		}
+	}
+	else if($args[0] == '@') {
+		$called = array_pop($callstack);
+		switch(count($args)) {
+			// support new and old-style pprof data
+			case 6:
+				$file = $args[1];
+				$line = $args[2];
+				$real_tm = $args[5];
+				break;
+			case 4:
+				$file = $called['file_id'];
+				$line = $called['line'];
+				$real_tm = $args[3];
+				break;
+				
+		}
+		$called['cost_per_line'][$file][$line] += $real_tm;
+		$called['cost'] += $real_tm;
+		$total_cost += $real_tm;
+		array_push($callstack, $called);
+	}
+}
+
+ob_start();
+print "events: Tick\n";
+print "summary: $total_cost\n";
+printf("cmd: %s\n", $file_lookup[1]);
+print "\n";
+
+foreach($tree as $caller => $data) {
+	$filename = $file_lookup[$data['file_id']]?$file_lookup[$data['file_id']]:"???";
+	printf("ob=%s\n", $function_type[$caller]);
+	printf("fl=%s\n", $filename);
+	printf("fn=%s\n", $function_lookup[$caller]);
+	if(is_array($data['cost_per_line'])) {
+		foreach($data['cost_per_line'] as $file => $lines) {
+			foreach($lines as $line => $cost) {
+				print "$line $cost\n";
+			}
+		}
+	}
+	else if ($data['cost']) {
+		printf("COST %s %s\n", $items['line'], $items['cost']);
+	}
+	else {
+		print_r($items);
+	}
+	if(is_array($data['called_funcs'])) {
+		foreach($data['called_funcs'] as $counter => $items) {
+			foreach($items as $called_id => $costs) {
+				if(is_array($costs)) {
+					printf("cfn=%s\n", $function_lookup[$called_id]);
+					foreach($costs as $file => $lines) {
+						printf("cfi=%s\ncalls=1\n", $file_lookup[$file]);
+						foreach($lines as $line => $cost) {
+							print "$line $cost\n";
+						}
+					}
+				}
+			}
+		}
+	}
+	print "\n";
+}
+print "\ntotals=$total_cost\n";
+$buffer = ob_get_clean();
+print "Writing kcachegrind compatible output to $outfile\n";
+fwrite($OUT, $buffer);
+
+function usage()
+{
+	print <<<EOD
+pprof2calltree -f <tracefile>
+
+EOD;
+	exit(1);
+}
+?>

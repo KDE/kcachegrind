@@ -1,3 +1,29 @@
+2004/04/28
+	* toplevel.h/cpp, kcachegrindui.rc
+	  - Switching Layouts
+	* multiview.cpp: Removed some qDebug's
+	* Same term fixes
+
+2004/04/26
+	* cachegrindloader.cpp, fixcost.cpp:
+	  - Allow Ranges in Subposition Spec, currently not used
+	  - Correctly parse "Desc: Trigger:"
+	  - Allow Event Spec (Long Name, Formula) with "event:"
+	* listutils.cpp:
+	  - make level meters for costs only 1 bar
+	    (2 with upper from 0..50%, lower 50%..100% is really confusing)
+	  - Besides from Call graph and Tree maps, truncate bars to
+	    only use needed size (removes lots of empty rectangles)
+	* CallGraphView:
+	  - some fixes when no data is loaded
+	* functionselection.cpp (Function Profile)
+	  - activation on mouse release to allow for context menu
+	* tracedata.cpp
+	  - more robust parsing of events lists
+	  - Introduction of Ranges (not currently used)
+	* utils.cpp:
+	  - more robust parsing functions	
+
 2004/04/05
 	* CallGraphView:
 	  - Add Context menu item "Export as Image"

@@ -1,11 +1,61 @@
 #!/usr/bin/perl
 #
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# 
+# - Redistributions of source code must retain the above copyright notice,
+# this list of conditions and the following disclaimer.
+# 
+# - Redistributions in binary form must reproduce the above copyright
+# notice, this list of conditions and the following disclaimer in the
+# documentation and/or other materials provided with the distribution.
+# 
+# - All advertising materials mentioning features or use of this software
+# must display the following acknowledgement: This product includes software
+# developed by OmniTI Computer Consulting.
+# 
+# - Neither name of the company nor the names of its contributors may be
+# used to endorse or promote products derived from this software without
+# specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS `AS IS'' AND ANY
+# EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE FOR ANY
+# DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
 # Copyright (c) 2004 OmniTI Computer Consulting 
 # All rights reserved
 # The following code was written by George Schlossnagle <george@omniti.com>
 # and is provided completely free and without any warranty.
 #
-# If it breaks, you can have both pieces.
+
+#
+# This script is designed to convert the tmon.out output emitted 
+# from Perl's Devel::DProf profiling package.  To use this:
+#
+# 1) Run your perl script as 
+#    > perl -d:DProf yoursript.pl
+#    This will create a file called tmon.out.  If you want to
+#    inspect it on the command line, look at the man page
+#    for dprofp for details.
+#
+# 2) Run  
+#    > dprof2calltree -f tmon.out
+#    or
+#    > dprof2calltree -f tmon.out -o cachegrind.out.foo
+#
+#    This creates a cachegrind-style file called cachgrind.out.tmon.out or
+#    cachegrind.out.foo, respecitvely.
+#
+# 3) Run kcachegrind cachegrind.out.foo
+#
+# 4) Enjoy!
 
 use strict;
 use Config;

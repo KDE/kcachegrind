@@ -28,7 +28,7 @@
 #include "traceitemview.h"
 #include "toplevel.h"
 
-#define TRACE_UPDATES 1
+#define TRACE_UPDATES 0
 
 TraceItemView::TraceItemView(TraceItemView* parentView, TopLevel* top)
 {
@@ -107,14 +107,15 @@ void TraceItemView::writeConfigEntry(KConfigBase* c, const char* pKey,
 	c->writeEntry(pKey, value);
 }
 
-void TraceItemView::readViewConfig(KConfig*, QString, QString)
+void TraceItemView::readViewConfig(KConfig*, QString, QString, bool)
 {}
 
 #if 1
-void TraceItemView::saveViewConfig(KConfig*, QString, QString)
+void TraceItemView::saveViewConfig(KConfig*, QString, QString, bool)
 {}
 #else
-void TraceItemView::saveViewConfig(KConfig* c, QString prefix, QString postfix)
+void TraceItemView::saveViewConfig(KConfig* c, 
+				   QString prefix, QString postfix, bool)
 {
     // write a dummy config entry to see missing virtual functions
     KConfigGroup g(c, (prefix+postfix).ascii());
@@ -290,22 +291,26 @@ void TraceItemView::updateView(bool force)
 
 void TraceItemView::selected(TraceItemView* sender, TraceItem* i)
 {
+#if TRACE_UPDATES
   kdDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::selected "
             << (i ? i->name().ascii(): "(nil)")
             << ", sender "
             << sender->widget()->name() << endl;
+#endif
 
   if (_parentView) _parentView->selected(this, i);
 }
 
 void TraceItemView::selected(TraceItemView* sender, const TracePartList& l)
 {
+#if TRACE_UPDATES
   kdDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::selected "
             << l.names()
             << ", sender "
             << sender->widget()->name() << endl;
+#endif
 
   if (_parentView)
     _parentView->selected(this, l);
@@ -315,11 +320,13 @@ void TraceItemView::selected(TraceItemView* sender, const TracePartList& l)
 
 void TraceItemView::activated(TraceItemView* sender, TraceItem* i)
 {
+#if TRACE_UPDATES
   kdDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::activated "
             << (i ? i->name().ascii(): "(nil)")
             << ", sender "
             << sender->widget()->name() << endl;
+#endif
 
   if (_parentView)
       _parentView->activated(this, i);
@@ -372,9 +379,11 @@ void TraceItemView::selected(const TracePartList& l)
 
 void TraceItemView::activated(TraceItem* i)
 {
+#if TRACE_UPDATES
   kdDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::activated "
             << (i ? i->name().ascii(): "(nil)") << endl;
+#endif
 
   if (_parentView)
       _parentView->activated(this, i);

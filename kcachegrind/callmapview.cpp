@@ -941,7 +941,8 @@ QColor CallMapCallerItem::backColor() const
   return w->groupColor(_c->caller());
 }
 
-void CallMapView::readViewConfig(KConfig* c, QString prefix, QString postfix)
+void CallMapView::readViewConfig(KConfig* c,
+				 QString prefix, QString postfix, bool)
 {
     KConfigGroup* g = configGroup(c, prefix, postfix);
 
@@ -965,7 +966,8 @@ void CallMapView::readViewConfig(KConfig* c, QString prefix, QString postfix)
     setMinimalArea(g->readNumEntry("MaxArea", DEFAULT_MAXAREA));
 }
 
-void CallMapView::saveViewConfig(KConfig* c, QString prefix, QString postfix)
+void CallMapView::saveViewConfig(KConfig* c, 
+				 QString prefix, QString postfix, bool)
 {
     KConfigGroup g(c, (prefix+postfix).ascii());
 

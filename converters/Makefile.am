@@ -1,1 +1,1 @@
-bin_SCRIPTS = hotshot2cg op2cg
+bin_SCRIPTS = hotshot2calltree op2calltree pprof2calltree dprof2calltree

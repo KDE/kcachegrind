@@ -12,8 +12,18 @@
    <Action name="view_cost_type2"/>
    <Action name="view_group_type"/>
    <Separator/>
+   <Menu name="layouts"><text>&amp;Layout</text>
+     <Action name="layout_next"/>
+     <Action name="layout_previous"/>
+     <Action name="layout_duplicate"/>
+     <Action name="layout_remove"/>
+     <Separator/>
+     <Action name="layout_restore"/>
+     <Action name="layout_save"/>
+   </Menu>
    <Action name="view_split"/>
    <Action name="view_split_dir"/>
+   <Separator/>
    <Action name="view_percentage"/>
    <Action name="view_expanded"/>
    <Action name="view_cycles"/>
@@ -46,12 +56,12 @@
   <Separator/>
   <Action name="help_whats_this"/>
  </ToolBar>
- <ToolBar name="stateToolBar" noMerge="1"><text>State Toolbar</text> 
-  <Action name="view_cost_type"/>
-  <Action name="view_group_type"/>
- </ToolBar>
  <ToolBar name="queryToolBar" noMerge="1"><text>Query Toolbar</text> 
   <Action name="query_label"/>
   <Action name="query"/>
+ </ToolBar>
+ <ToolBar name="stateToolBar" noMerge="1"><text>State Toolbar</text> 
+  <Action name="view_cost_type"/>
+  <Action name="view_group_type"/>
  </ToolBar>
 </kpartgui>
