@@ -723,7 +723,7 @@ void TopLevel::createActions()
                       0, this, SLOT(slotShowTip()),
                       actionCollection(), "help_show_tip" );
 #endif
-};
+}
 
 void TopLevel::toggleStatusBar()
 {
