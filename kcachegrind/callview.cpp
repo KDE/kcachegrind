@@ -203,10 +203,11 @@ void CallView::doUpdate(int changeType)
 	    ti = _showCallers ? c->caller() : c->called();
 	    if (ti == _selectedItem) {
 		ensureItemVisible(item);
-		setCurrentItem(item);
+		setSelected(item,  true);
 		break;
 	    }
 	}
+        if (!item && ci) clearSelection();
 	return;
     }
 

@@ -2093,130 +2093,13 @@ void TreeMapWidget::drawItem(QPainter* p,
 
   bool isCurrent = _current && item->isChildOf(_current);
 
-#if 1
   RectDrawing d(item->itemRect());
   item->setSelected(isSelected);
   item->setCurrent(isCurrent);
   item->setShaded(_shading);
   d.drawBack(p, item);
-#else
-  QRect r = item->itemRect();
-  if (r.width()<=0 || r.height()<=0) return;
-
-  QColor normal = item->backColor();
-
-  bool drawSelected = false;
-  TreeMapItem* i;
-
-  if (_markNo>0) {
-      for(i = item;i;i=i->parent())
-	  if (i->isMarked(_markNo)) break;
-
-      drawSelected = (i!=0);
-  }
-  else {
-      for (i=_tmpSelection.first();i;i=_tmpSelection.next())
-	  if (item->isChildOf(i)) break;
-
-      drawSelected = (i!=0);
-  }
-  if (drawSelected) normal = normal.light();
-
-  bool isCurrent = _current && item->isChildOf(_current);
-
-  // 3D raised/sunken frame effect...
-  QColor high = normal.light();
-  QColor low = normal.dark();
-  p->setPen( isCurrent ? low:high);
-  p->drawLine(r.left(), r.top(), r.right(), r.top());
-  p->drawLine(r.left(), r.top(), r.left(), r.bottom());
-  p->setPen( isCurrent ? high:low);
-  p->drawLine(r.right(), r.top(), r.right(), r.bottom());
-  p->drawLine(r.left(), r.bottom(), r.right(), r.bottom());
-  r.setRect(r.x()+1, r.y()+1, r.width()-2, r.height()-2);
-  if (r.width()<=0 || r.height()<=0) return;
-
-#if 0
-  // red frame when selected
-  if (_selected && _selected->isChildOf(item) ) {
-    p->setPen(red);
-    p->setBrush(NoBrush);
-    p->drawRect(r);
-    r.setRect(r.x()+1, r.y()+1, r.width()-2, r.height()-2);
-    if (r.width()<=0 || r.height()<=0) return;
-  }
-#endif
-
-  if (_shading) {
-    // some shading
-    bool goDark = qGray(normal.rgb())>128;
-    int rBase, gBase, bBase;
-    normal.rgb(&rBase, &gBase, &bBase);
-    p->setBrush(NoBrush);
-
-    // shade parameters:
-    int d = 7;
-    float factor = 0.1, forth=0.7, back1 =0.9, toBack2 = .7, back2 = 0.97;
-
-    // coefficient corrections because of rectangle size
-    int s = r.width();
-    if (s > r.height()) s = r.height();
-    if (s<100) {
-      forth -= .3  * (100-s)/100;
-      back1 -= .2  * (100-s)/100;
-      back2 -= .02 * (100-s)/100;
-    }
-
-
-    // maximal color difference
-    int rDiff = goDark ? -rBase/d : (255-rBase)/d;
-    int gDiff = goDark ? -gBase/d : (255-gBase)/d;
-    int bDiff = goDark ? -bBase/d : (255-bBase)/d;
-
-    QColor shadeColor;
-    while (factor<.95) {
-      shadeColor.setRgb((int)(rBase+factor*rDiff+.5),
-                        (int)(gBase+factor*gDiff+.5),
-                        (int)(bBase+factor*bDiff+.5));
-      p->setPen(shadeColor);
-      p->drawRect(r);
-      r.setRect(r.x()+1, r.y()+1, r.width()-2, r.height()-2);
-      if (r.width()<=0 || r.height()<=0) return;
-      factor = 1.0 - ((1.0 - factor) * forth);
-    }
-
-    // and back (1st half)
-    while (factor>toBack2) {
-      shadeColor.setRgb((int)(rBase+factor*rDiff+.5),
-                        (int)(gBase+factor*gDiff+.5),
-                        (int)(bBase+factor*bDiff+.5));
-      p->setPen(shadeColor);
-      p->drawRect(r);
-      r.setRect(r.x()+1, r.y()+1, r.width()-2, r.height()-2);
-      if (r.width()<=0 || r.height()<=0) return;
-      factor = 1.0 - ((1.0 - factor) / back1);
-    }
-
-    // and back (2nd half)
-    while ( factor>.01) {
-      shadeColor.setRgb((int)(rBase+factor*rDiff+.5),
-                        (int)(gBase+factor*gDiff+.5),
-                        (int)(bBase+factor*bDiff+.5));
-      p->setPen(shadeColor);
-      p->drawRect(r);
-      r.setRect(r.x()+1, r.y()+1, r.width()-2, r.height()-2);
-      if (r.width()<=0 || r.height()<=0) return;
-
-      factor = factor * back2;
-    }
-  }
-
-  // fill inside
-  p->setPen(NoPen);
-  p->setBrush(normal);
-  p->drawRect(r);
-#endif
 }
+
 
 bool TreeMapWidget::horizontal(TreeMapItem* i, const QRect& r)
 {
