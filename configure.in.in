@@ -5,7 +5,7 @@ AC_SUBST(KCACHEGRIND_PACKAGE)
 
 AC_FUNC_MMAP
 
-AC_OUTPUT( kcachegrind/version.h )
-AC_OUTPUT( kcachegrind/kcachegrind.spec )
-AC_OUTPUT( kcachegrind/kcachegrind.lsm )
+dnl AC_OUTPUT( kcachegrind/version.h )
+dnl AC_OUTPUT( kcachegrind/kcachegrind.spec )
+dnl AC_OUTPUT( kcachegrind/kcachegrind.lsm )
 
