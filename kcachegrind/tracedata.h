@@ -34,6 +34,8 @@
 
 #include "utils.h"
 
+class QFile;
+
 /**
  * All cost items are classes prefixed with "Trace".
  * "TraceCost" holds basic cost metrics for the simplest, smallest
@@ -1068,13 +1070,14 @@ public:
 class TracePart: public TraceListCost
 {
 public:
-  TracePart(TraceData*, QString file);
+  TracePart(TraceData*, QFile* file);
   virtual ~TracePart();
 
   virtual CostType type() const { return Part; }
 
   QString shortName() const;
   QString prettyName() const;
+  QFile* file() const { return _file; }
   QString name() const { return _name; }
   QString description() const { return _descr; }
   QString trigger() const { return _trigger; }
@@ -1101,8 +1104,8 @@ public:
   bool isActive() { return _active; }
 
 private:
+  QFile* _file;
   QString _name;
-
   QString _descr;
   QString _trigger;
   QString _timeframe;

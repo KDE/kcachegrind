@@ -16,7 +16,10 @@
    Boston, MA 02111-1307, USA.
 */
 
+#include <errno.h>
+
 #include <qfile.h>
+#include <qcstring.h>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -42,7 +45,7 @@ class CachegrindLoader: public Loader
 public:
   CachegrindLoader();
   
-  bool canLoadTrace(QString file);
+  bool canLoadTrace(QFile* file);
   bool loadTrace(TracePart*);
   bool isPartOfTrace(QString file, TraceData*);
   
@@ -151,18 +154,34 @@ CachegrindLoader::CachegrindLoader()
   _functionDummy = dummy;
 }
 
-bool CachegrindLoader::canLoadTrace(QString name)
+bool CachegrindLoader::canLoadTrace(QFile* file)
 {
-  // strip path
-  int lastIndex = 0, index;
-  while ( (index=name.find("/", lastIndex)) >=0)
-    lastIndex = index+1;
+  if (!file) return false;
 
-  if (name.mid(lastIndex).startsWith("cachegrind.out")) return true;
-  if (name.mid(lastIndex).startsWith("callgrind.out")) return true;
+  if (!file->isOpen()) {
+    if (!file->open( IO_ReadOnly ) ) {
+      kdDebug() << QFile::encodeName(_filename) << ": "
+		<< strerror( errno ) << endl;
+      return false;
+    }
+  }
 
-  return false;
+  /* 
+   * We recognize this as cachegrind format if in the first
+   * 2047 bytes we see the string "\nevents:"
+   */
+  char buf[2048];
+  int read = file->readBlock(buf,2047);
+  buf[read] = 0;
+
+  QCString s;
+  s.setRawData(buf, read+1);
+  int pos = s.find("events:");
+  if (pos>0 && buf[pos-1] != '\n') pos = -1;
+  s.resetRawData(buf, read+1);
+  return (pos>=0);
 }
+
 
 Loader* createCachegrindLoader()
 {
@@ -277,8 +296,10 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
   }
   unsigned index = name.mid(1, p-1).toInt();
   TraceObject* o = 0;
-  if ((int)name.length()>p+2) {
-    o = _data->object(name.mid(p+2));
+  if ((int)name.length()>p+1) {
+    p++;
+    while(name.at(p).isSpace()) p++;
+    o = _data->object(name.mid(p));
 
     if (_objectVector.size() <= index) {
       int newSize = index * 2;
@@ -319,8 +340,10 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
   }
   unsigned int index = name.mid(1, p-1).toUInt();
   TraceFile* f = 0;
-  if ((int)name.length()>p+2) {
-    f = _data->file(name.mid(p+2));
+  if ((int)name.length()>p+1) {
+    p++;
+    while(name.at(p).isSpace()) p++;
+    f = _data->file(name.mid(p));
 
     if (_fileVector.size() <= index) {
       int newSize = index * 2;
@@ -365,8 +388,10 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
   // Thus, many indexes can map to same function!
   unsigned int index = name.mid(1, p-1).toUInt();
   TraceFunction* f = 0;
-  if ((int)name.length()>p+2) {
-    f = _data->function(name.mid(p+2), file, object);
+  if ((int)name.length()>p+1) {
+    p++;
+    while(name.at(p).isSpace()) p++;
+    f = _data->function(name.mid(p), file, object);
 
     if (_functionVector.size() <= index) {
       int newSize = index * 2;
@@ -621,9 +646,13 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 
   _part     = part;
   _data     = part->data();
-  _filename = part->name();
+  QFile* pFile = part->file();
 
-  FixFile file(_filename);
+  if (!pFile) return false;
+    
+  _filename = pFile->name();
+
+  FixFile file(pFile);
   if (!file.exists()) {
     kdError() << "File doesn't exist\n" << endl;
     return false;
@@ -1128,6 +1157,8 @@ bool CachegrindLoader::loadTrace(TracePart* part)
   emit updateStatus(statusMsg,100);
 
   _part->invalidate();
+
+  pFile->close();
 
   return true;
 }

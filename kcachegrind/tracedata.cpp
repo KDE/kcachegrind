@@ -25,6 +25,7 @@
 #include <qregexp.h>
 
 #include <klocale.h>
+#include <kdebug.h>
 
 #include "tracedata.h"
 #include "toplevel.h"
@@ -4107,11 +4108,13 @@ QString TraceObject::prettyName() const
 //---------------------------------------------------
 // TracePart
 
-TracePart::TracePart(TraceData* data, QString name)
+TracePart::TracePart(TraceData* data, QFile* file)
 {
   _dep = data;
   _data = data;
-  _name = name;
+  _file = file;
+  if (_file)
+    _name = _file->name();
   _active = true;
 
   _number = 0;
@@ -4122,7 +4125,9 @@ TracePart::TracePart(TraceData* data, QString name)
 }
 
 TracePart::~TracePart()
-{}
+{
+  delete _file;
+}
 
 void TracePart::setPartNumber(int n)
 {
@@ -4330,7 +4335,10 @@ void TraceData::load(const QString& base)
   for (it = strList.begin(); it != strList.end(); ++it ) {
     TracePart* p = addPart( dir.path(), *it );
 
-    if (!p) continue;
+    if (!p) {
+      kdDebug() << "Error loading " << *it << endl;
+      continue;
+    }
 
     const QString& str = *it;
     unsigned int pos = file.length();
@@ -4376,21 +4384,23 @@ void TraceData::load(const QString& base)
   if (_topLevel) _topLevel->showStatus(QString::null, 0);
 }
 
-TracePart* TraceData::addPart(const QString& dir, const QString& file)
+TracePart* TraceData::addPart(const QString& dir, const QString& name)
 {
-    QString filename = QString("%1/%2").arg(dir).arg(file);
+    QString filename = QString("%1/%2").arg(dir).arg(name);
 #if TRACE_DEBUG
   qDebug("TraceData::addPart('%s')", filename.ascii());
 #endif
 
-  Loader* l = Loader::matchingLoader(filename);
+  QFile* file = new QFile(filename);
+
+  Loader* l = Loader::matchingLoader(file);
   if (!l) return 0;
 
   if (_topLevel)
       _topLevel->connect(l, SIGNAL(updateStatus(QString, int)),
 			 SLOT(showStatus(QString, int)));
 
-  TracePart* part = new TracePart(this, filename);
+  TracePart* part = new TracePart(this, file);
 
   if (! l->loadTrace(part)) {
       delete part;

@@ -286,28 +286,34 @@ bool FixString::stripInt64(int64& v)
 
 // class FixFile
 
-FixFile::FixFile(const QString filename)
+FixFile::FixFile(QFile* file)
 {
-    _filename = filename;
-    QFile file( _filename );
-    if (! file.open( IO_ReadOnly ) ) {
-        qWarning( "%s: %s", (const char*) QFile::encodeName(_filename),
-		  strerror( errno ) );
-	_len = 0;
-	_currentLeft = 0;
-        _openError = true;
-        return;
-    }
+  if (!file) {
+    _len = 0;
+    _currentLeft = 0;
+    _openError = true;
+    return;
+  }
 
-    _openError = false;
-    _used_mmap = false;
+  _filename = file->name();
+  if (!file->isOpen() && !file->open( IO_ReadOnly ) ) {
+    qWarning( "%s: %s", (const char*) QFile::encodeName(_filename),
+	      strerror( errno ) );
+    _len = 0;
+    _currentLeft = 0;
+    _openError = true;
+    return;
+  }
+
+  _openError = false;
+  _used_mmap = false;
 
 #ifdef HAVE_MMAP
     char *addr = 0;
-    size_t len = file.size();
+    size_t len = file->size();
     if (len>0) addr = (char *) mmap( addr, len,
                                      PROT_READ, MAP_PRIVATE,
-                                     file.handle(), 0 );
+                                     file->handle(), 0 );
     if (addr && (addr != MAP_FAILED)) {
       // mmap succeeded
         _base = addr;
@@ -318,14 +324,12 @@ FixFile::FixFile(const QString filename)
     } else {
 #endif // HAVE_MMAP
         // try reading the data into memory instead
-        _data = file.readAll();
+        _data = file->readAll();
         _base = _data.data();
         _len  = _data.size();
 #ifdef HAVE_MMAP
     }
 #endif // HAVE_MMAP
-
-    file.close();
 
     _current     = _base;
     _currentLeft = _len;

@@ -27,6 +27,7 @@
 #include <qptrlist.h>
 #include <qstring.h>
 
+class QFile;
 class TraceData;
 class TracePart;
 class Loader;
@@ -53,10 +54,10 @@ public:
   Loader(QString name, QString desc);
   virtual ~Loader();
 
-  virtual bool canLoadTrace(QString file);
+  virtual bool canLoadTrace(QFile* file);
   virtual bool loadTrace(TracePart*);
 
-  static Loader* matchingLoader(QString name);
+  static Loader* matchingLoader(QFile* file);
   static Loader* loader(QString name);
   static void initLoaders();
 

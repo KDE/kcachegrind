@@ -25,6 +25,8 @@
 
 #include <qstring.h>
 
+class QFile;
+
 typedef unsigned long long uint64;
 typedef long long int64;
 
@@ -83,7 +85,7 @@ class FixString {
 class FixFile {
 
  public:
-    FixFile(const QString filename);
+    FixFile(QFile*);
     ~FixFile();
 
     /**

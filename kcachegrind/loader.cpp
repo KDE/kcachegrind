@@ -36,7 +36,7 @@ Loader::Loader(QString name, QString desc)
 Loader::~Loader()
 {}
 
-bool Loader::canLoadTrace(QString)
+bool Loader::canLoadTrace(QFile*)
 {
   return false;
 }
@@ -46,12 +46,11 @@ bool Loader::loadTrace(TracePart*)
   return false;
 }
 
-Loader* Loader::matchingLoader(QString name)
+Loader* Loader::matchingLoader(QFile* file)
 {
-
   Loader* l;
   for (l=_loaderList.first(); l; l = _loaderList.next())
-    if (l->canLoadTrace(name))
+    if (l->canLoadTrace(file))
       return l;
 
   return 0;
