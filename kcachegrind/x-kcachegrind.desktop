@@ -1,6 +1,26 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Cachegrind/Callgrind Profile Dump
+Comment[cs]=Data profilace Cachegrind/Callgrind
+Comment[cy]=Tomen Proffil Cachegrind/Callgrind
+Comment[da]=Cachegrind/Callgrind profile-dump
+Comment[de]=Cachegrind/Callgrind Profil-Ausgabe
+Comment[es]=Resultado de análisis de Cachegrind/Callgring
+Comment[et]=Cachegrind/Callgrind profileerimistõmmis
+Comment[fi]=Cachegrind/Callgrind profiililista
+Comment[fr]=Dépôt de profil Cachegrind / Callgrind
+Comment[hi]=केश-ग्रिंड/काल-ग्रिंड प्रोफाइल डम्प
+Comment[hu]=Cachegrind/Callgrind teljesítményprofil-fájl
+Comment[it]=Dump del profilo di Cachegrind/Callgrind
+Comment[nl]=Cachegrind/Callgrind Profieldump
+Comment[pt]=Resultado da Análise do Cachegrind/Callgrind
+Comment[pt_BR]=Depósito de Perfil Cachegrind/Callgrind
+Comment[ru]=Дамп профилирования Cachegrind/Callgrind
+Comment[sk]=Výpis volaní Cachegrind/Callgrind
+Comment[sr]=Cachegrind-ов/Callgrind-ов стовар профила
+Comment[sv]=Profileringsdump från Cachegrind/Callgrind
+Comment[ta]=இடைமாற்றகட்டம்/ அழைப்பு கட்டம்  விவரக்குறி திணிப்பு 
+Comment[xx]=xxCachegrind/Callgrind Profile Dumpxx
 DefaultApp=kcachegrind
 Icon=kcachegrind
 Type=MimeType
