@@ -1,3 +1,10 @@
+2004/04/05
+	* CallGraphView:
+	  - Add Context menu item "Export as Image"
+	  - Hide Birdseye-View if call-graph fits into widget
+	  - Error messages in Canvas when something goes wrong
+        * Some Fixes, qDebug->kdDebug
+
 2004/04/02
 	* In most views columns for 2nd Event Type added
 	* Context menus modified to allow quick change of 2nd Event Type

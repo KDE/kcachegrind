@@ -40,6 +40,7 @@
 #include <ktempfile.h>
 #include <kapplication.h>
 #include <kiconloader.h>
+#include <kfiledialog.h>
 
 #include "configuration.h"
 #include "callgraphview.h"
@@ -52,6 +53,7 @@
  * - Zooming option for work canvas? (e.g. 1:1 - 1:3)
  */
 
+#define DEBUG_GRAPH 0
 
 // CallGraphView defaults
 
@@ -426,8 +428,9 @@ GraphExporter::GraphExporter(TraceData* d, TraceFunction* f, TraceCostType* ct,
 GraphExporter::~GraphExporter()
 {
   if (_item && _tmpFile) {
-    // FIXME: Uncomment after debugging...
+#if DEBUG_GRAPH
     _tmpFile->unlink();
+#endif
     delete _tmpFile;
   }
 }
@@ -774,8 +777,10 @@ GraphEdge* GraphExporter::edge(TraceFunction* f1, TraceFunction* f2)
 void GraphExporter::buildGraph(TraceFunction* f, int d,
                                bool toCallings, double factor)
 {
-  if (0) qDebug("buildGraph(%s,%d,%f) [to %s]",
-                f->prettyName().ascii(), d, factor,  toCallings ? "Callings":"Callers");
+#if DEBUG_GRAPH
+  kdDebug() << "buildGraph(" << f->prettyName() << "," << d << "," << factor
+	    << ") [to " << (toCallings ? "Callings":"Callers") << "]" << endl;
+#endif
 
   double oldCum = 0.0;
   GraphNode& n = _nodeMap[f];
@@ -1378,6 +1383,12 @@ void CallGraphView::updateSizes(QSize s)
     int cWidth  = _canvas->width()  - 2*_xMargin + 100;
     int cHeight = _canvas->height() - 2*_yMargin + 100;
 
+    if ((cWidth < s.width()) && cHeight < s.height()) {
+      _completeView->hide();
+      return;
+    }
+    _completeView->show();
+
     // first, assume use of 1/3 of width/height (possible larger)
     double zoom = .33 * s.width() / cWidth;
     if (zoom * cHeight < .33 * s.height()) zoom = .33 * s.height() / cHeight;
@@ -1692,6 +1703,14 @@ void CallGraphView::refresh()
   setCanvas(0);
 
   if (!_data || !_activeItem) {
+    _canvas = new QCanvas(size().width(),size().height());
+    QString s = i18n("No item activated for which to draw the call graph.\n");
+    QCanvasText* t = new QCanvasText(s, _canvas);
+    t->move(0, 0);
+    t->show();
+    center(0,0);
+    setCanvas(_canvas);
+    _canvas->update();
     viewport()->setUpdatesEnabled(true);
     return;
   }
@@ -1782,9 +1801,11 @@ void CallGraphView::refresh()
 
         _canvas = new QCanvas(int(w+2*_xMargin), int(h+2*_yMargin));
 
-        if (0) qDebug("%s:%d - graph ( %f x %f ) => (%d x %d)",
-                      _exporter.filename().ascii(), lineno,
-                      dotWidth, dotHeight, w, h);
+#if DEBUG_GRAPH
+        kdDebug() << _exporter.filename().ascii() << ":" << lineno
+		  << " - graph (" << dotWidth << " x " << dotHeight
+		  << ") => (" << w << " x " << h << ")" << endl;
+#endif
       }
       else
         kdWarning() << "Ignoring 2nd 'graph' from dot ("
@@ -1818,12 +1839,14 @@ void CallGraphView::refresh()
       int w = (int)(scaleX * width);
       int h = (int)(scaleY * height);
 
-      if (0) {
-        qDebug("%s:%d - node '%s' ( %f / %f - %f x %f ) => (%d/%d - %dx%d)",
-               _exporter.filename().ascii(), lineno, nodeName.ascii(),
-               x, y, width, height,
-               xx-w/2, yy-h/2, w, h);
-      }
+#if DEBUG_GRAPH
+      kdDebug() << _exporter.filename() << ":" << lineno
+		<< " - node '" << nodeName << "' ( "
+		<< x << "/" << y << " - "
+		<< width << "x" << height << " ) => ("
+		<< xx-w/2 << "/" << yy-h/2 << " - "
+		<< w << "x" << h << ")" << endl;
+#endif
 
 
       // Unnamed nodes with collapsed edges (with 'R' and 'S')
@@ -2020,8 +2043,23 @@ void CallGraphView::refresh()
   // _exporter.sortEdges();
 
   if (!_canvas) {
-      _canvas = new QCanvas(100, 100);
-      (new QCanvasText(i18n("Error running dot."), _canvas))->move(0, 0);
+    _canvas = new QCanvas(size().width(),size().height());
+    QString s = i18n("Error running the graph layout tool 'dot'.\n"
+		     "Please check that it is installed (package GraphViz).");
+    QCanvasText* t = new QCanvasText(s, _canvas);
+    t->move(5, 5);
+    t->show();
+    center(0,0);
+  }
+  if (!activeNode && !activeEdge) {
+    QString s = i18n("There is no call graph available for function\n"
+		     "\t'%1'\n"
+		     "because it has no cost of the selected event type.");
+    QCanvasText* t = new QCanvasText(s.arg(_activeItem->name()), _canvas);
+    //    t->setTextFlags(Qt::AlignHCenter | Qt::AlignVCenter);
+    t->move(5,5);
+    t->show();
+    center(0,0);
   }
 
   _completeView->setCanvas(_canvas);
@@ -2233,7 +2271,12 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
 
   addGoMenu(&popup);
   popup.insertSeparator();
-  popup.insertItem(i18n("Export Graph"), 99);
+
+  QPopupMenu epopup;
+  epopup.insertItem(i18n("As Postscript"), 201);
+  epopup.insertItem(i18n("As Image ..."), 202);
+
+  popup.insertItem(i18n("Export Graph"), &epopup, 200);
   popup.insertSeparator();
 
   QPopupMenu gpopup1;
@@ -2373,7 +2416,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   case 94: activated(cycle); break;
   case 95: activated(c); break;
 
-  case 99:
+  case 201:
       {
 	  TraceFunction* f = activeFunction();
 	  if (!f) break;
@@ -2387,6 +2430,20 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
 	  QString cmd = QString("(dot %1.dot -Tps > %2.ps; kghostview %3.ps)&")
 	      .arg(n).arg(n).arg(n);
 	  system(cmd.ascii());
+      }
+      break;
+
+  case 202:    
+      // write current content of canvas as image to file
+      {
+	if (!_canvas) return;
+
+	QString fn = KFileDialog::getSaveFileName(":","*.png");
+		
+	QPixmap pix(_canvas->size());
+	QPainter p(&pix);
+        _canvas->drawArea( _canvas->rect(), &p );
+	pix.save(fn,"PNG");
       }
       break;
 

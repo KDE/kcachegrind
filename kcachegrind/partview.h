@@ -38,6 +38,8 @@ public:
   virtual QWidget* widget() { return this; }
   QString whatsThis() const;
 
+  void refresh();
+
 private slots:
   void context(QListViewItem*,const QPoint &, int);
   void selectionChangedSlot();

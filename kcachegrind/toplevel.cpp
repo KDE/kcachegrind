@@ -958,7 +958,7 @@ void TopLevel::newWindow()
 
 void TopLevel::loadTrace()
 {
-    KURL url = KFileDialog::getOpenURL(QString::null,
+    KURL url = KFileDialog::getOpenURL(":",
                                        i18n("cachegrind.out*|Cachegrind Profile Data"),
                                        this,
                                        i18n("Select Cachegrind Profile Data"));

@@ -144,6 +144,7 @@ TraceItem* PartView::canShow(TraceItem* i)
 void PartView::doUpdate(int changeType)
 {
     // Special case ?
+    if (changeType == costType2Changed) return;
     if (changeType == selectedItemChanged) return;
 
     if (changeType == groupTypeChanged) {
@@ -184,7 +185,11 @@ void PartView::doUpdate(int changeType)
       return;
     }
 
-    // refresh
+    refresh();
+}
+
+void PartView::refresh()
+{
     clear();
     setColumnWidth(1, 50);
     setColumnWidth(2, 50);

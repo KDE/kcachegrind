@@ -31,6 +31,7 @@
 
 #include <klocale.h>
 #include <kconfig.h>
+#include <kdebug.h>
 
 #include "partselection.h"
 #include "partgraph.h"
@@ -113,7 +114,12 @@ void PartSelection::setFunction(TraceFunction* f)
   if (_function == f) return;
   _function = f;
 
+  kdDebug() << "PartSelection::setFunction " << f->name() << endl;
+
+  // FIXME: The TreeMap shouldn't produce spurious selectionChanged events
+  _inSelectionUpdate = true;
   partAreaWidget->setFunction(_function);
+  _inSelectionUpdate = false;
 }
 
 void PartSelection::setPart(TracePart*)
@@ -172,8 +178,8 @@ void PartSelection::doubleClicked(TreeMapItem* i)
 void PartSelection::selectionChanged()
 {
   if (_inSelectionUpdate) return;
-
-  //qDebug("PartSelection::selectionChanged");
+  
+  kdDebug() << "PartSelection::selectionChanged" << endl;
 
   bool something_changed = false;
   bool nothingSelected = true;
@@ -212,6 +218,8 @@ void PartSelection::activePartsChangedSlot(const TracePartList& list)
 {
   _inSelectionUpdate = true;
 
+  kdDebug() << "Entering PartSelection::activePartsChangedSlot" << endl;
+
   TreeMapItem* i;
   TreeMapItemList l = *partAreaWidget->base()->children();
   // first deselect inactive, then select active (makes current active)
@@ -240,6 +248,8 @@ void PartSelection::activePartsChangedSlot(const TracePartList& list)
   }
 
   _inSelectionUpdate = false;
+
+  kdDebug() << "Leaving PartSelection::activePartsChangedSlot" << endl;
 
   fillInfo();
 }

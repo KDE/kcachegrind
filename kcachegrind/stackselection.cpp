@@ -29,6 +29,8 @@
 #include <qcombobox.h>
 #include <qlineedit.h>
 
+#include <kdebug.h>
+
 #include "stackbrowser.h"
 #include "stackselection.h"
 #include "stackitem.h"
@@ -84,7 +86,7 @@ void StackSelection::setFunction(TraceFunction* f)
 
   if (!_data || !_function) return;
 
-  // qDebug("StackSelection::setFunction %s", f->name().ascii());
+  kdDebug() << "StackSelection::setFunction %s" << f->name() << endl;
 
   HistoryItem* item = _browser->current();
   if (!item || item->function() != f) {
