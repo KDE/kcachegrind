@@ -306,6 +306,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
   popup.insertItem(i18n("Visualization"), &vpopup, 10);
 
   vpopup.insertItem(i18n("Partitioning Mode"), 30);
+  vpopup.insertItem(i18n("Diagram Mode"), 34);
   vpopup.insertItem(i18n("Zoom Function"), 31);
   vpopup.insertItem(i18n("Show Direct Calls"), 32);
   vpopup.insertItem(i18n("Increment Shown Call Levels"), 33);
@@ -324,6 +325,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
   vpopup.insertItem(i18n("Draw Names"), 20);
   vpopup.insertItem(i18n("Draw Costs"), 21);
   vpopup.insertItem(i18n("Ignore Proportions"), 22);
+  vpopup.insertItem(i18n("Draw Frames"), 24);
   vpopup.insertItem(i18n("Allow Rotation"), 23);
   if (!partAreaWidget->fieldVisible(0) &&
       !partAreaWidget->fieldVisible(1)) {
@@ -335,6 +337,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
     vpopup.setItemChecked(21,partAreaWidget->fieldVisible(1));
     vpopup.setItemChecked(22,partAreaWidget->fieldForced(0));
     vpopup.setItemChecked(23,partAreaWidget->allowRotation());
+    //vpopup.setItemChecked(24,partAreaWidget->drawFrame());
   }
 
   if (_showInfo)
@@ -395,6 +398,10 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
       break;
 
   case 23: partAreaWidget->setAllowRotation(!vpopup.isItemChecked(23));  break;
+
+  case 24: 
+    //partAreaWidget->drawFrame(!vpopup.isItemChecked(24));
+    break;
 
   case 30:
     partAreaWidget->setVisualisation(!vpopup.isItemChecked(30) ?

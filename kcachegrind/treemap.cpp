@@ -65,6 +65,7 @@ StoredDrawParams::StoredDrawParams(QColor c,
   _current = current;
   _shaded = true;
   _rotated = false;
+  _drawFrame = true;
 
   // field array has size 0
 }
@@ -252,16 +253,18 @@ void RectDrawing::drawBack(QPainter* p, DrawParams* dp)
   if (dp->selected()) normal = normal.light();
   bool isCurrent = dp->current();
 
-  // 3D raised/sunken frame effect...
-  QColor high = normal.light();
-  QColor low = normal.dark();
-  p->setPen( isCurrent ? low:high);
-  p->drawLine(r.left(), r.top(), r.right(), r.top());
-  p->drawLine(r.left(), r.top(), r.left(), r.bottom());
-  p->setPen( isCurrent ? high:low);
-  p->drawLine(r.right(), r.top(), r.right(), r.bottom());
-  p->drawLine(r.left(), r.bottom(), r.right(), r.bottom());
-  r.setRect(r.x()+1, r.y()+1, r.width()-2, r.height()-2);
+  if (dp->drawFrame() || isCurrent) {
+    // 3D raised/sunken frame effect...
+    QColor high = normal.light();
+    QColor low = normal.dark();
+    p->setPen( isCurrent ? low:high);
+    p->drawLine(r.left(), r.top(), r.right(), r.top());
+    p->drawLine(r.left(), r.top(), r.left(), r.bottom());
+    p->setPen( isCurrent ? high:low);
+    p->drawLine(r.right(), r.top(), r.right(), r.bottom());
+    p->drawLine(r.left(), r.bottom(), r.right(), r.bottom());
+    r.setRect(r.x()+1, r.y()+1, r.width()-2, r.height()-2);
+  }
   if (r.width()<=0 || r.height()<=0) return;
 
   if (dp->shaded()) {

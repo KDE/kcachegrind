@@ -88,6 +88,7 @@ public:
   virtual bool current() const { return false; }
   virtual bool shaded() const { return true; }
   virtual bool rotated() const { return false; }
+  virtual bool drawFrame() const { return true; }
 };
 
 
@@ -113,6 +114,7 @@ public:
   bool current() const { return _current; }
   bool shaded() const { return _shaded; }
   bool rotated() const { return _rotated; }
+  bool drawFrame() const { return _drawFrame; }
 
   const QFont& font() const;
 
@@ -128,10 +130,15 @@ public:
   void setCurrent(bool b) { _current = b; }
   void setShaded(bool b) { _shaded = b; }
   void setRotated(bool b) { _rotated = b; }
+  void drawFrame(bool b) { _drawFrame = b; }
 
 protected:
   QColor _backColor;
-  bool _selected, _current, _shaded, _rotated;
+  bool _selected :1;
+  bool _current :1;
+  bool _shaded :1;
+  bool _rotated :1;
+  bool _drawFrame :1;
 
 private:
   // resize field array if needed to allow to access field <f>
