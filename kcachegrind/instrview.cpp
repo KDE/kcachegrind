@@ -841,8 +841,8 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 
         // no need for 2 translations: noAssLines is always >1 !
 	new InstrItem(this, 1,
-		      i18n("There are %1 cost lines without assembler code.")
-		      .arg(noAssLines));
+		      i18n("There is %n cost line without assembler code.",
+		           "There are %n cost lines without assembler code.", noAssLines));
 	new InstrItem(this, 2,
 		      i18n("This happens because the code of"));
 	new InstrItem(this, 3, QString("        %1").arg(objfile));
