@@ -91,8 +91,8 @@ private:
 };
 
 CachegrindLoader::CachegrindLoader()
-  : Loader("Cachegrind",
-           "Import filter for Cachegrind generated trace files")
+  : Loader("Callgrind",
+           "Import filter for Cachegrind/Callgrind generated trace files")
 {}
 
 bool CachegrindLoader::canLoadTrace(QString name)
@@ -102,7 +102,10 @@ bool CachegrindLoader::canLoadTrace(QString name)
   while ( (index=name.find("/", lastIndex)) >=0)
     lastIndex = index+1;
 
-  return name.mid(lastIndex).startsWith("cachegrind.out");
+  if (name.mid(lastIndex).startsWith("cachegrind.out")) return true;
+  if (name.mid(lastIndex).startsWith("callgrind.out")) return true;
+
+  return false;
 }
 
 bool CachegrindLoader::isPartOfTrace(QString file, TraceData* d)
