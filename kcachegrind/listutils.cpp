@@ -279,7 +279,7 @@ QPixmap costPixmap(TraceCostType* ct, TraceCost* cost, double total)
     }
 
     int maxIndex;
-    double h[TraceCost::MaxRealIndex];
+    double h[MaxRealIndexValue];
     QColor* cs = ct->mapping()->realColors();
     maxIndex = ct->histCost(cost, total, h);
 

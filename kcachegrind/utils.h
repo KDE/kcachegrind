@@ -131,7 +131,7 @@ class AppendList {
     static const int firstLen = 8;
     static const int maxLen = 256;
 
-    struct AppendListChunk {
+    __extension__ struct AppendListChunk {
 	int size;
 	struct AppendListChunk* next;
 	type* data[0];
