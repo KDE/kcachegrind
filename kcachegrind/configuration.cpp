@@ -178,10 +178,10 @@ void Configuration::saveOptions(KConfig* kconfig)
     TraceItemView::writeConfigEntry(&ctConfig,
                                     QString("Longname%1").arg(i+1).ascii(),
                                     t->longName(),
-                                    knownLongName(t->name()) /*, true */ );
+                                    knownLongName(t->name()).utf8().data() /*, true */ );
     TraceItemView::writeConfigEntry(&ctConfig,
                                     QString("Formula%1").arg(i+1).ascii(),
-                                    t->formula(), knownFormula(t->name()));
+                                    t->formula(), knownFormula(t->name()).utf8().data());
   }
 }
 
