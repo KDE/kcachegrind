@@ -2927,6 +2927,10 @@ TraceLineMap* TraceFunctionSource::lineMap()
   TraceLineCall* lc = 0;
   TracePartLineCall* plc = 0;
 
+  /* go over all part objects for this function, and
+   * - build TraceLines (the line map) using FixCost objects
+   * - build TraceJumpLines using FixJump objects
+   */
   TraceCumulativeCostList pfList = _function->deps();
   TracePartFunction* pf = (TracePartFunction*) pfList.first();
   for(; pf; pf = (TracePartFunction*) pfList.next()) {
@@ -2959,6 +2963,10 @@ TraceLineMap* TraceFunctionSource::lineMap()
       for(; fj; fj = fj->nextJumpOfPartFunction()) {
 	  if (fj->line() == 0) continue;
 	  if (fj->source() != this) continue;
+	  if (!fj->targetSource()) {
+	    // be robust against buggy loaders
+	    continue;
+	  }
 
 	  // don't display jumps to same or following line
 	  if ((fj->line() == fj->targetLine()) ||

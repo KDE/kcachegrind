@@ -1183,7 +1183,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 	    currentJumpToFunction = currentFunction;
 
 	targetSource = (currentJumpToFile) ?
-	    currentJumpToFunction->sourceFile(currentJumpToFile) :
+	    currentJumpToFunction->sourceFile(currentJumpToFile, true) :
 	    currentFunctionSource;
 
 #ifdef USE_FIXCOST
