@@ -113,11 +113,11 @@ public:
   TabView(TraceItemView* parentView,
           QWidget* parent = 0, const char* name = 0);
 
-  QWidget* widget() { return this; }
-  QString whatsThis();
-  bool isViewVisible() { return !_isCollapsed; }
+  virtual QWidget* widget() { return this; }
+  QString whatsThis() const ;
+  bool isViewVisible() const { return !_isCollapsed; }
   void selected(TraceItemView*, TraceItem*);
-  bool active() { return _active; }
+  bool active() const { return _active; }
   void setActive(bool);
 
   /**

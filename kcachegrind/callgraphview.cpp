@@ -1316,7 +1316,7 @@ CallGraphView::~CallGraphView()
   }
 }
 
-QString CallGraphView::whatsThis()
+QString CallGraphView::whatsThis() const
 {
     return i18n( "<b>Call Graph around active Function</b>"
                  "<p>Depending on configuration, this view shows "
@@ -1366,7 +1366,7 @@ void CallGraphView::updateSizes(QSize s)
       // update ZoomRect in completeView
       contentsMovingSlot(contentsX(), contentsY());
     }
-    
+
     _completeView->setContentsPos(int(zoom*(_xMargin-50)),
 				  int(zoom*(_yMargin-50)));
 
@@ -1824,7 +1824,7 @@ void CallGraphView::refresh()
     GraphEdge* e = _exporter.edge(_exporter.toFunc(node1Name),
                                   _exporter.toFunc(node2Name));
     if (!e) {
-      kdWarning() << "Unknown edge '" << node1Name << "'-'" 
+      kdWarning() << "Unknown edge '" << node1Name << "'-'"
 		  << node2Name << "' from dot ("
 		  << _exporter.filename() << ":" << lineno << ")" << endl;
       continue;
@@ -1899,7 +1899,7 @@ void CallGraphView::refresh()
 
     if (!arrowDir.isNull()) {
 	// arrow around pa.point(indexHead) with direction arrowDir
-	arrowDir *= 10.0/sqrt(arrowDir.x()*arrowDir.x() + 
+	arrowDir *= 10.0/sqrt(arrowDir.x()*arrowDir.x() +
 			      arrowDir.y()*arrowDir.y());
 	QPointArray a(3);
 	a.setPoint(0, pa.point(indexHead) + arrowDir);

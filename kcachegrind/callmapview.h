@@ -37,15 +37,15 @@ public:
               QWidget* parent=0, const char* name=0);
 
   QWidget* widget() { return this; }
-  QString whatsThis();
+  QString whatsThis() const;
 
   void readViewConfig(KConfig*, QString prefix, QString postfix);
   void saveViewConfig(KConfig*, QString prefix, QString postfix);
 
-  bool showCallers() { return _showCallers; }
+  bool showCallers() const { return _showCallers; }
   TraceCost* totalCost();
-  QString tipString(TreeMapItem*);
-  QColor groupColor(TraceFunction*);
+  QString tipString(TreeMapItem*) const;
+  QColor groupColor(TraceFunction*) const;
 
 private slots:
   void context(TreeMapItem*,const QPoint &);
@@ -70,14 +70,14 @@ public:
 
   void setFunction(TraceFunction* f);
   TraceFunction* function() { return _f; }
-  int rtti() { return 1; }
-  double sum();
-  double value();
-  bool isMarked(int);
-  QString text(int);
-  QPixmap pixmap(int);
+  int rtti() const { return 1; }
+  double sum() const;
+  double value() const ;
+  bool isMarked(int) const;
+  QString text(int) const;
+  QPixmap pixmap(int) const;
   TreeMapItemList* children();
-  QColor backColor();
+  QColor backColor() const;
 
 private:
   TraceFunction* _f;
@@ -89,16 +89,16 @@ class CallMapCallingItem: public TreeMapItem
 public:
   CallMapCallingItem(double factor, TraceCall* c);
   void init();
-  int rtti() { return 2; }
-  int borderWidth() { return widget()->borderWidth(); }
+  int rtti() const { return 2; }
+  int borderWidth() const { return widget()->borderWidth(); }
   TraceFunction* function() { return _c->called(); }
-  double value();
-  double sum();
-  bool isMarked(int);
-  QString text(int);
-  QPixmap pixmap(int);
+  double value() const;
+  double sum() const;
+  bool isMarked(int) const;
+  QString text(int) const;
+  QPixmap pixmap(int) const;
   TreeMapItemList* children();
-  QColor backColor();
+  QColor backColor() const;
 
 private:
   TraceCall* _c;
@@ -109,15 +109,15 @@ class CallMapCallerItem: public TreeMapItem
 {
 public:
   CallMapCallerItem(double factor, TraceCall* c);
-  int rtti() { return 3; }
-  int borderWidth() { return widget()->borderWidth(); }
+  int rtti() const { return 3; }
+  int borderWidth() const { return widget()->borderWidth(); }
   TraceFunction* function() { return _c->caller(); }
-  double value();
-  bool isMarked(int);
-  QString text(int);
-  QPixmap pixmap(int);
+  double value() const;
+  bool isMarked(int) const;
+  QString text(int) const;
+  QPixmap pixmap(int) const;
   TreeMapItemList* children();
-  QColor backColor();
+  QColor backColor() const;
 
 private:
   TraceCall* _c;

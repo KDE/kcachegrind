@@ -123,12 +123,12 @@ void PartAreaWidget::setGroupType(TraceCost::CostType gt)
   base()->redraw();
 }
 
-bool PartAreaWidget::isHidden(TracePart* part)
+bool PartAreaWidget::isHidden(TracePart* part) const
 {
-  return (_hiddenParts.findRef(part)>=0);
+  return (_hiddenParts.containsRef(part)>0);
 }
 
-QColor PartAreaWidget::groupColor(TraceFunction* f)
+QColor PartAreaWidget::groupColor(TraceFunction* f) const
 {
   if (!f)
     return colorGroup().button();
@@ -136,7 +136,7 @@ QColor PartAreaWidget::groupColor(TraceFunction* f)
   return Configuration::functionColor(_groupType, f);
 }
 
-QString PartAreaWidget::tipString(TreeMapItem* i)
+QString PartAreaWidget::tipString(TreeMapItem* i) const
 {
   QString tip, itemTip;
   int count = 0;
@@ -219,7 +219,7 @@ TreeMapItemList* BasePartItem::children()
   return _children;
 }
 
-QString BasePartItem::text(int textNo)
+QString BasePartItem::text(int textNo) const
 {
   if (textNo == 0) {
     if (!_data)
@@ -232,12 +232,12 @@ QString BasePartItem::text(int textNo)
 }
 
 
-QColor BasePartItem::backColor()
+QColor BasePartItem::backColor() const
 {
   return widget()->colorGroup().base();
 }
 
-double BasePartItem::value()
+double BasePartItem::value() const
 {
   if (!_data) return 0;
 
@@ -257,7 +257,7 @@ PartItem::PartItem(TracePart* p)
   _factor=1;
 }
 
-QString PartItem::text(int textNo)
+QString PartItem::text(int textNo) const
 {
   if (textNo == 0)
     return _p->prettyName();
@@ -282,7 +282,7 @@ QString PartItem::text(int textNo)
 }
 
 
-QPixmap PartItem::pixmap(int i)
+QPixmap PartItem::pixmap(int i) const
 {
     if (i != 1) return QPixmap();
 
@@ -293,7 +293,7 @@ QPixmap PartItem::pixmap(int i)
 }
 
 
-double PartItem::value()
+double PartItem::value() const
 {
   PartAreaWidget* w = (PartAreaWidget*)widget();
   TraceCostType* ct = w->costType();
@@ -313,7 +313,7 @@ double PartItem::value()
   return (double) _p->subCost(ct);
 }
 
-double PartItem::sum()
+double PartItem::sum() const
 {
   PartAreaWidget* w = (PartAreaWidget*)widget();
   if (w->visualisation() == PartAreaWidget::Cumulative) {
@@ -401,7 +401,7 @@ TreeMapItemList* PartItem::children()
 }
 
 
-QColor PartItem::backColor()
+QColor PartItem::backColor() const
 {
   PartAreaWidget* w = (PartAreaWidget*)widget();
   return w->groupColor(0);
@@ -416,7 +416,7 @@ SubPartItem::SubPartItem(TraceCost* c)
   _factor=1;
 }
 
-QString SubPartItem::text(int textNo)
+QString SubPartItem::text(int textNo) const
 {
   if (textNo == 0) {
     if (!_partCostItem)
@@ -448,7 +448,7 @@ QString SubPartItem::text(int textNo)
   return v.pretty();
 }
 
-QPixmap SubPartItem::pixmap(int i)
+QPixmap SubPartItem::pixmap(int i) const
 {
     if (i != 1) return QPixmap();
 
@@ -467,7 +467,7 @@ QPixmap SubPartItem::pixmap(int i)
     return costPixmap( ct, c, (double) (t->subCost(ct)) );
 }
 
-double SubPartItem::value()
+double SubPartItem::value() const
 {
   TraceCostType* ct;
   PartAreaWidget* w = (PartAreaWidget*)widget();
@@ -480,7 +480,7 @@ double SubPartItem::value()
   return (double) _partCostItem->subCost(ct);
 }
 
-double SubPartItem::sum()
+double SubPartItem::sum() const
 {
   PartAreaWidget* w = (PartAreaWidget*)widget();
   if (w->visualisation() == PartAreaWidget::Cumulative) {
@@ -521,7 +521,7 @@ TreeMapItemList* SubPartItem::children()
 }
 
 
-QColor SubPartItem::backColor()
+QColor SubPartItem::backColor() const
 {
   PartAreaWidget* w = (PartAreaWidget*)widget();
   if (w->visualisation() == PartAreaWidget::Cumulative)

@@ -36,8 +36,8 @@ public:
   InstrView(TraceItemView* parentView,
             QWidget* parent = 0, const char* name = 0);
 
-  QWidget* widget() { return this; }
-  QString whatsThis();
+  virtual QWidget* widget() { return this; }
+  QString whatsThis() const;
 
 protected:
   int arrowLevels() { return _arrowLevels; }

@@ -76,7 +76,7 @@ CostTypeView::CostTypeView(TraceItemView* parentView,
     QWhatsThis::add( this, whatsThis() );
 }
 
-QString CostTypeView::whatsThis()
+QString CostTypeView::whatsThis() const
 {
     return i18n( "<b>Cost Types List</b>"
 		 "<p>This list shows all cost types available "

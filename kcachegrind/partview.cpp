@@ -67,7 +67,7 @@ PartView::PartView(TraceItemView* parentView,
     QWhatsThis::add( this, whatsThis() );
 }
 
-QString PartView::whatsThis()
+QString PartView::whatsThis() const
 {
     return i18n( "<b>Trace Part List</b>"
 		 "<p>This list shows all trace parts of the loaded "

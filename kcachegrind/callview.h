@@ -35,9 +35,9 @@ public:
   CallView(bool showCallers, TraceItemView* parentView,
 	   QWidget* parent=0, const char* name=0);
 
-  QWidget* widget() { return this; }
-  QString whatsThis();
-  bool showCallers() { return _showCallers; }
+  virtual QWidget* widget() { return this; }
+  QString whatsThis() const;
+  bool showCallers() const { return _showCallers; }
 
 private slots:
   void context(QListViewItem*,const QPoint &, int);

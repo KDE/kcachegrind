@@ -77,7 +77,7 @@ CallView::CallView(bool showCallers, TraceItemView* parentView,
     QWhatsThis::add( this, whatsThis() );
 }
 
-QString CallView::whatsThis()
+QString CallView::whatsThis() const
 {
     return _showCallers ?
 	i18n( "<b>List of direct Callers</b>"

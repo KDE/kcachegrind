@@ -51,11 +51,11 @@ public:
   bool zoomFunction() const { return _zoomFunction; }
   int callLevels() const { return _callLevels; }
 
-  QColor groupColor(TraceFunction*);
-  QString tipString(TreeMapItem*);
+  QColor groupColor(TraceFunction*) const;
+  QString tipString(TreeMapItem*) const;
 
   void changeHidden(const TracePartList& list);
-  bool isHidden(TracePart*);
+  bool isHidden(TracePart*) const;
 
 private:
   void refreshParts();
@@ -78,12 +78,12 @@ public:
 
   void setData(TraceData* d);
 
-  int rtti() { return 1; }
-  double value();
-  QString text(int);
-  int borderWidth(){ return 0; }
+  int rtti() const { return 1; }
+  double value() const;
+  QString text(int) const;
+  int borderWidth() const { return 0; }
   TreeMapItemList* children();
-  QColor backColor();
+  QColor backColor() const;
 
 private:
   TraceData* _data;
@@ -93,15 +93,15 @@ class PartItem: public TreeMapItem
 {
 public:
   PartItem(TracePart* p);
-  int rtti() { return 2; }
+  int rtti() const { return 2; }
   TracePart* part() { return _p; }
-  double value();
-  double sum();
-  int borderWidth() { return 0; }
-  QString text(int);
-  QPixmap pixmap(int);
+  double value() const;
+  double sum() const;
+  int borderWidth() const { return 0; }
+  QString text(int) const;
+  QPixmap pixmap(int) const;
   TreeMapItemList* children();
-  QColor backColor();
+  QColor backColor() const;
 
 private:
   TracePart* _p;
@@ -112,15 +112,15 @@ class SubPartItem: public TreeMapItem
 {
 public:
   SubPartItem(TraceCost*);
-  int rtti() { return 3; }
+  int rtti() const { return 3; }
   TraceCost* partCostItem() { return _partCostItem; }
-  double value();
-  double sum();
-  SplitMode splitMode() { return Vertical; }
-  QString text(int);
-  QPixmap pixmap(int);
+  double value() const;
+  double sum() const;
+  SplitMode splitMode() const { return Vertical; }
+  QString text(int) const;
+  QPixmap pixmap(int) const;
   TreeMapItemList* children();
-  QColor backColor();
+  QColor backColor() const;
 
 private:
   TraceCost* _partCostItem;

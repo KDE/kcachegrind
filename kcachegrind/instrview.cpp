@@ -160,7 +160,7 @@ void InstrView::paintEmptyArea( QPainter * p, const QRect & r)
   QListView::paintEmptyArea(p, r);
 }
 
-QString InstrView::whatsThis()
+QString InstrView::whatsThis() const
 {
     return i18n( "<b>Annotated Assembler</b>"
 		 "<p>The annotated assembler list shows the "

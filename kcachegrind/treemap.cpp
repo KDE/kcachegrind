@@ -68,7 +68,7 @@ StoredDrawParams::StoredDrawParams(QColor c,
   // field array has size 0
 }
 
-QString StoredDrawParams::text(int f)
+QString StoredDrawParams::text(int f) const
 {
   if ((f<0) || (f >= (int)_field.size()))
     return QString::null;
@@ -76,7 +76,7 @@ QString StoredDrawParams::text(int f)
   return _field[f].text;
 }
 
-QPixmap StoredDrawParams::pixmap(int f)
+QPixmap StoredDrawParams::pixmap(int f) const
 {
   if ((f<0) || (f >= (int)_field.size()))
     return QPixmap();
@@ -84,7 +84,7 @@ QPixmap StoredDrawParams::pixmap(int f)
   return _field[f].pix;
 }
 
-DrawParams::Position StoredDrawParams::position(int f)
+DrawParams::Position StoredDrawParams::position(int f) const
 {
   if ((f<0) || (f >= (int)_field.size()))
     return Default;
@@ -92,7 +92,7 @@ DrawParams::Position StoredDrawParams::position(int f)
   return _field[f].pos;
 }
 
-int StoredDrawParams::maxLines(int f)
+int StoredDrawParams::maxLines(int f) const
 {
   if ((f<0) || (f >= (int)_field.size()))
     return 0;
@@ -837,7 +837,7 @@ void TreeMapItem::refresh()
 }
 
 
-QStringList TreeMapItem::path(int textNo)
+QStringList TreeMapItem::path(int textNo) const
 {
   QStringList list(text(textNo));
 
@@ -851,7 +851,7 @@ QStringList TreeMapItem::path(int textNo)
   return list;
 }
 
-int TreeMapItem::depth()
+int TreeMapItem::depth() const
 {
   if (_depth>0) return _depth;
 
@@ -890,17 +890,17 @@ void TreeMapItem::addItem(TreeMapItem* i)
 
 // default implementations of virtual functions
 
-double TreeMapItem::value()
+double TreeMapItem::value() const
 {
   return _value;
 }
 
-double TreeMapItem::sum()
+double TreeMapItem::sum() const
 {
   return _sum;
 }
 
-DrawParams::Position TreeMapItem::position(int f)
+DrawParams::Position TreeMapItem::position(int f) const
 {
   Position p = StoredDrawParams::position(f);
   if (_widget && (p == Default))
@@ -909,13 +909,13 @@ DrawParams::Position TreeMapItem::position(int f)
   return p;
 }
 
-bool TreeMapItem::isMarked(int)
+bool TreeMapItem::isMarked(int) const
 {
     return false;
 }
 
 
-int TreeMapItem::borderWidth()
+int TreeMapItem::borderWidth() const
 {
   if (_widget)
     return _widget->borderWidth();
@@ -923,7 +923,7 @@ int TreeMapItem::borderWidth()
   return 2;
 }
 
-int TreeMapItem::sorting(bool* ascending)
+int TreeMapItem::sorting(bool* ascending) const
 {
   if (ascending) *ascending = _sortAscending;
   return _sortTextNo;
@@ -958,7 +958,7 @@ void TreeMapItem::resort(bool recursive)
 }
 
 
-TreeMapItem::SplitMode TreeMapItem::splitMode()
+TreeMapItem::SplitMode TreeMapItem::splitMode() const
 {
   if (_widget)
     return _widget->splitMode();
@@ -966,7 +966,7 @@ TreeMapItem::SplitMode TreeMapItem::splitMode()
   return Best;
 }
 
-int TreeMapItem::rtti()
+int TreeMapItem::rtti() const
 {
   return 0;
 }
@@ -1122,7 +1122,7 @@ void TreeMapWidget::setSplitMode(TreeMapItem::SplitMode m)
   redraw();
 }
 
-TreeMapItem::SplitMode TreeMapWidget::splitMode()
+TreeMapItem::SplitMode TreeMapWidget::splitMode() const
 {
   return _splitMode;
 }
@@ -1143,7 +1143,7 @@ bool TreeMapWidget::setSplitMode(QString mode)
   return true;
 }
 
-QString TreeMapWidget::splitModeString()
+QString TreeMapWidget::splitModeString() const
 {
   QString mode;
   switch(splitMode()) {
@@ -1211,27 +1211,27 @@ void TreeMapWidget::setMaxDrawingDepth(int d)
   redraw();
 }
 
-QString TreeMapWidget::defaultFieldType(int f)
+QString TreeMapWidget::defaultFieldType(int f) const
 {
   return i18n("Text %1").arg(f+1);
 }
 
-QString TreeMapWidget::defaultFieldStop(int)
+QString TreeMapWidget::defaultFieldStop(int) const
 {
   return QString();
 }
 
-bool TreeMapWidget::defaultFieldVisible(int f)
+bool TreeMapWidget::defaultFieldVisible(int f) const
 {
   return (f<2);
 }
 
-bool TreeMapWidget::defaultFieldForced(int)
+bool TreeMapWidget::defaultFieldForced(int) const
 {
   return false;
 }
 
-DrawParams::Position TreeMapWidget::defaultFieldPosition(int f)
+DrawParams::Position TreeMapWidget::defaultFieldPosition(int f) const
 {
   switch(f%4) {
   case 0: return DrawParams::TopLeft;
@@ -1272,7 +1272,7 @@ void TreeMapWidget::setFieldType(int f, QString type)
   // no need to redraw: the type string is not visible in the TreeMap
 }
 
-QString TreeMapWidget::fieldType(int f)
+QString TreeMapWidget::fieldType(int f) const
 {
   if (f<0 || (int)_attr.size()<f+1) return defaultFieldType(f);
   return _attr[f].type;
@@ -1288,7 +1288,7 @@ void TreeMapWidget::setFieldStop(int f, QString stop)
   }
 }
 
-QString TreeMapWidget::fieldStop(int f)
+QString TreeMapWidget::fieldStop(int f) const
 {
   if (f<0 || (int)_attr.size()<f+1) return defaultFieldStop(f);
   return _attr[f].stop;
@@ -1305,7 +1305,7 @@ void TreeMapWidget::setFieldVisible(int f, bool enable)
   }
 }
 
-bool TreeMapWidget::fieldVisible(int f)
+bool TreeMapWidget::fieldVisible(int f) const
 {
   if (f<0 || (int)_attr.size()<f+1)
     return defaultFieldVisible(f);
@@ -1324,7 +1324,7 @@ void TreeMapWidget::setFieldForced(int f, bool enable)
   }
 }
 
-bool TreeMapWidget::fieldForced(int f)
+bool TreeMapWidget::fieldForced(int f) const
 {
   if (f<0 || (int)_attr.size()<f+1)
     return defaultFieldForced(f);
@@ -1343,7 +1343,7 @@ void TreeMapWidget::setFieldPosition(int f, TreeMapItem::Position pos)
   }
 }
 
-DrawParams::Position TreeMapWidget::fieldPosition(int f)
+DrawParams::Position TreeMapWidget::fieldPosition(int f) const
 {
   if (f<0 || (int)_attr.size()<f+1)
     return defaultFieldPosition(f);
@@ -1369,7 +1369,7 @@ void TreeMapWidget::setFieldPosition(int f, QString pos)
     setFieldPosition(f, DrawParams::Default);
 }
 
-QString TreeMapWidget::fieldPositionString(int f)
+QString TreeMapWidget::fieldPositionString(int f) const
 {
   TreeMapItem::Position pos = fieldPosition(f);
   if (pos == DrawParams::TopLeft) return QString("TopLeft");
@@ -1407,7 +1407,7 @@ void TreeMapWidget::deletingItem(TreeMapItem* i)
 }
 
 
-QString TreeMapWidget::tipString(TreeMapItem* i)
+QString TreeMapWidget::tipString(TreeMapItem* i) const
 {
   QString tip, itemTip;
 
@@ -1427,7 +1427,7 @@ QString TreeMapWidget::tipString(TreeMapItem* i)
   return tip;
 }
 
-TreeMapItem* TreeMapWidget::item(int x, int y)
+TreeMapItem* TreeMapWidget::item(int x, int y) const
 {
   TreeMapItem* p = _base;
   TreeMapItem* i;
@@ -1478,7 +1478,7 @@ TreeMapItem* TreeMapWidget::item(int x, int y)
   return 0;
 }
 
-TreeMapItem* TreeMapWidget::possibleSelection(TreeMapItem* i)
+TreeMapItem* TreeMapWidget::possibleSelection(TreeMapItem* i) const
 {
   if (i) {
     if (_maxSelectDepth>=0) {
@@ -1492,7 +1492,7 @@ TreeMapItem* TreeMapWidget::possibleSelection(TreeMapItem* i)
   return i;
 }
 
-TreeMapItem* TreeMapWidget::visibleItem(TreeMapItem* i)
+TreeMapItem* TreeMapWidget::visibleItem(TreeMapItem* i) const
 {
   if (i) {
     /* Must have a visible area */
@@ -1600,7 +1600,7 @@ bool TreeMapWidget::clearSelection(TreeMapItem* parent)
   return changed;
 }
 
-bool TreeMapWidget::isSelected(TreeMapItem* i)
+bool TreeMapWidget::isSelected(TreeMapItem* i) const
 {
   return _selection.containsRef(i)>0;
 }

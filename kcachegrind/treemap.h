@@ -74,20 +74,20 @@ public:
   // no constructor as this is an abstract class
   virtual ~DrawParams() {}
 
-  virtual QString  text(int) = 0;
-  virtual QPixmap  pixmap(int) = 0;
-  virtual Position position(int) = 0;
+  virtual QString  text(int) const = 0;
+  virtual QPixmap  pixmap(int) const = 0;
+  virtual Position position(int) const = 0;
   // 0: no limit, negative: leave at least -maxLines() free
-  virtual int      maxLines(int) { return 0; }
-  virtual int      fieldCount() { return 0; }
+  virtual int      maxLines(int) const { return 0; }
+  virtual int      fieldCount() const { return 0; }
 
-  virtual QColor   backColor() { return Qt::white; }
-  virtual QFont    font() { return QApplication::font(); }
+  virtual QColor   backColor() const { return Qt::white; }
+  virtual QFont    font() const { return QApplication::font(); }
 
-  virtual bool selected() { return false; }
-  virtual bool current() { return false; }
-  virtual bool shaded() { return true; }
-  virtual bool rotated() { return false; }
+  virtual bool selected() const { return false; }
+  virtual bool current() const { return false; }
+  virtual bool shaded() const { return true; }
+  virtual bool rotated() const { return false; }
 };
 
 
@@ -102,17 +102,17 @@ public:
                    bool selected = false, bool current = false);
 
   // getters
-  QString  text(int);
-  QPixmap  pixmap(int);
-  Position position(int);
-  int      maxLines(int);
-  int      fieldCount() { return _field.size(); }
+  QString  text(int) const;
+  QPixmap  pixmap(int) const;
+  Position position(int) const;
+  int      maxLines(int) const;
+  int      fieldCount() const { return _field.size(); }
 
-  QColor   backColor() { return _backColor; }
-  bool selected() { return _selected; }
-  bool current() { return _current; }
-  bool shaded() { return _shaded; }
-  bool rotated() { return _rotated; }
+  QColor   backColor() const { return _backColor; }
+  bool selected() const { return _selected; }
+  bool current() const { return _current; }
+  bool shaded() const { return _shaded; }
+  bool rotated() const { return _rotated; }
 
   // attribute setters
   void setField(int f, QString t, QPixmap pm = QPixmap(),
@@ -268,17 +268,17 @@ public:
    * Returns a list of text strings of specified text number,
    * from root up to this item.
    */
-  QStringList path(int);
+  QStringList path(int) const;
 
   /**
    * Depth of this item. This is the distance to root.
    */
-  int depth();
+  int depth() const;
 
   /**
    * Parent Item
    */
-  TreeMapItem* parent() { return _parent; }
+  TreeMapItem* parent() const { return _parent; }
 
   /**
    * Temporary rectangle used for drawing this item the last time.
@@ -286,42 +286,42 @@ public:
    */
   void setItemRect(const QRect& r) { _rect = r; }
   void clearItemRect();
-  const QRect& itemRect() { return _rect; }
-  int width() { return _rect.width(); }
-  int height() { return _rect.height(); }
+  const QRect& itemRect() const { return _rect; }
+  int width() const { return _rect.width(); }
+  int height() const { return _rect.height(); }
 
   /**
    * Temporary rectangle list of free space of this item.
    * Used internally to enable tooltip.
    */
   void clearFreeRects();
-  QPtrList<QRect>* freeRects() { return _freeRects; }
+  QPtrList<QRect>* freeRects() const { return _freeRects; }
   void addFreeRect(const QRect& r);
 
   /**
    * Temporary child item index of the child that was current() recently.
    */
-  int index() { return _index; }
+  int index() const { return _index; }
   void setIndex(int i) { _index = i; }
 
 
   /**
    * TreeMap widget this item is put in.
    */
-  TreeMapWidget* widget() { return _widget; }
+  TreeMapWidget* widget() const { return _widget; }
 
   void setParent(TreeMapItem* p);
   void setWidget(TreeMapWidget* w) { _widget = w; }
   void setSum(double s) { _sum = s; }
   void setValue(double s) { _value = s; }
 
-  virtual double sum();
-  virtual double value();
+  virtual double sum() const;
+  virtual double value() const;
   // replace "Default" position with setting from TreeMapWidget
-  virtual Position position(int);
-  virtual bool isMarked(int);
+  virtual Position position(int) const;
+  virtual bool isMarked(int) const;
 
-  virtual int borderWidth();
+  virtual int borderWidth() const;
 
   /**
    * Returns the text number after that sorting is done or
@@ -329,7 +329,7 @@ public:
    * If ascending != 0, a bool value is written at that location
    * to indicate if sorting should be ascending.
    */
-  virtual int sorting(bool* ascending);
+  virtual int sorting(bool* ascending) const;
 
   /**
    * Set the sorting for child drawing.
@@ -351,8 +351,9 @@ public:
    */
   void resort(bool recursive = true);
 
-  virtual SplitMode splitMode();
-  virtual int rtti();
+  virtual SplitMode splitMode() const;
+  virtual int rtti() const;
+  // not const as this can create children on demand
   virtual TreeMapItemList* children();
 
 protected:
@@ -400,26 +401,26 @@ public:
   /**
    * Returns the TreeMapItem filling out the widget space
    */
-  TreeMapItem* base() { return _base; }
+  TreeMapItem* base() const { return _base; }
 
   /**
    * Returns the area item at position x/y, independent from any
    * maxSelectDepth setting.
    */
-  TreeMapItem* item(int x, int y);
+  TreeMapItem* item(int x, int y) const;
 
   /**
    * Returns the nearest item with a visible area; this
    * can be the given item itself.
    */
-  TreeMapItem* visibleItem(TreeMapItem*);
+  TreeMapItem* visibleItem(TreeMapItem*) const;
 
   /**
-   * Returns the item possible for selection. this returnds the
+   * Returns the item possible for selection. this returns the
    * given item itself or a parent thereof,
    * depending on setting of maxSelectDepth().
    */
-  TreeMapItem* possibleSelection(TreeMapItem*);
+  TreeMapItem* possibleSelection(TreeMapItem*) const;
 
   /**
    * Selects or unselects an item.
@@ -480,17 +481,17 @@ public:
    * for setting/getting global split direction
    */
   void setSplitMode(TreeMapItem::SplitMode m);
-  TreeMapItem::SplitMode splitMode();
+  TreeMapItem::SplitMode splitMode() const;
   // returns true if string was recognized
   bool setSplitMode(QString);
-  QString splitModeString();
+  QString splitModeString() const;
 
 
   /*
    * Shading of rectangles enabled ?
    */
   void setShadingEnabled(bool s);
-  bool isShadingEnabled() { return _shading; }
+  bool isShadingEnabled() const { return _shading; }
 
 
   /**
@@ -516,26 +517,26 @@ public:
    * (2) Skip drawing of the parent level alltogether.
    */
   void setSkipIncorrectBorder(bool enable = true);
-  bool skipIncorrectBorder() { return _skipIncorrectBorder; }
+  bool skipIncorrectBorder() const { return _skipIncorrectBorder; }
 
   /**
    * Maximal nesting depth
    */
   void setMaxDrawingDepth(int d);
-  int maxDrawingDepth() { return _maxDrawingDepth; }
+  int maxDrawingDepth() const { return _maxDrawingDepth; }
 
   /**
    * Minimal area for rectangles to draw
    */
   void setMinimalArea(int area);
-  int minimalArea() { return _minimalArea; }
+  int minimalArea() const { return _minimalArea; }
 
   /* defaults for text attributes */
-  QString defaultFieldType(int);
-  QString defaultFieldStop(int);
-  bool    defaultFieldVisible(int);
-  bool    defaultFieldForced(int);
-  DrawParams::Position defaultFieldPosition(int);
+  QString defaultFieldType(int) const;
+  QString defaultFieldStop(int) const;
+  bool    defaultFieldVisible(int) const;
+  bool    defaultFieldForced(int) const;
+  DrawParams::Position defaultFieldPosition(int) const;
 
   /**
    * Set the type name of a field.
@@ -543,13 +544,13 @@ public:
    * with visualizationMenu()
    */
   void setFieldType(int, QString);
-  QString fieldType(int);
+  QString fieldType(int) const;
 
   /**
    * Stop drawing at item with name
    */
   void setFieldStop(int, QString);
-  QString fieldStop(int);
+  QString fieldStop(int) const;
 
   /**
    * Should the text with number textNo be visible?
@@ -557,7 +558,7 @@ public:
    * proportional size constrains.
    */
   void setFieldVisible(int, bool);
-  bool fieldVisible(int);
+  bool fieldVisible(int) const;
 
   /**
    * Should the drawing of the name into the rectangle be forced?
@@ -565,24 +566,24 @@ public:
    * thus destroys proportional constrains.
    */
   void setFieldForced(int, bool);
-  bool fieldForced(int);
+  bool fieldForced(int) const;
 
   /**
    * Set the field position in the area. See TreeMapItem::Position
    */
   void setFieldPosition(int, DrawParams::Position);
-  DrawParams::Position fieldPosition(int);
+  DrawParams::Position fieldPosition(int) const;
   void setFieldPosition(int, QString);
-  QString fieldPositionString(int);
+  QString fieldPositionString(int) const;
 
   /**
    * Do we allow the texts to be rotated by 90 degrees for better fitting?
    */
   void setAllowRotation(bool);
-  bool allowRotation() { return _allowRotation; }
+  bool allowRotation() const { return _allowRotation; }
 
   void setBorderWidth(int w);
-  int borderWidth() { return _borderWidth; }
+  int borderWidth() const { return _borderWidth; }
 
   /**
    * Save/restore options.
@@ -603,17 +604,17 @@ public:
 
 
   TreeMapWidget* widget() { return this; }
-  TreeMapItem* current() { return _current; }
-  TreeMapItemList selection() { return _selection; }
-  bool isSelected(TreeMapItem* i);
-  int maxSelectDepth() { return _maxSelectDepth; }
-  SelectionMode selectionMode() { return _selectionMode; }
+  TreeMapItem* current() const { return _current; }
+  TreeMapItemList selection() const { return _selection; }
+  bool isSelected(TreeMapItem* i) const;
+  int maxSelectDepth() const { return _maxSelectDepth; }
+  SelectionMode selectionMode() const { return _selectionMode; }
 
   /**
    * Return tooltip string to show for a item (can be rich text)
    * Default implementation gives lines with "text0 (text1)" going to root.
    */
-  virtual QString tipString(TreeMapItem* i);
+  virtual QString tipString(TreeMapItem* i) const;
 
   /**
    * Redraws an item with all children.

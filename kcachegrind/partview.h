@@ -35,8 +35,8 @@ public:
   PartView(TraceItemView* parentView,
 	   QWidget* parent=0, const char* name=0);
 
-  QWidget* widget() { return this; }
-  QString whatsThis();
+  virtual QWidget* widget() { return this; }
+  QString whatsThis() const;
 
 private slots:
   void context(QListViewItem*,const QPoint &, int);

@@ -81,7 +81,7 @@ void SourceView::paintEmptyArea( QPainter * p, const QRect & r)
 }
 
 
-QString SourceView::whatsThis()
+QString SourceView::whatsThis() const
 {
     return i18n( "<b>Annotated Source</b>"
 		 "<p>The annotated source list shows the "

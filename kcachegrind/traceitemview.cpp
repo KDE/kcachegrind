@@ -45,7 +45,7 @@ TraceItemView::TraceItemView(TraceItemView* parentView, TopLevel* top)
   _pos = Hidden;
 }
 
-QString TraceItemView::whatsThis()
+QString TraceItemView::whatsThis() const
 {
     return i18n("No description available");
 }
@@ -158,10 +158,6 @@ bool TraceItemView::set(int changeType, TraceData* d,
   return true;
 }
 
-QWidget* TraceItemView::widget() const
-{
-  return 0;
-}
 
 bool TraceItemView::isViewVisible()
 {

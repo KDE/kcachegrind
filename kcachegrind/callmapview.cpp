@@ -89,7 +89,7 @@ CallMapView::CallMapView(bool showCallers, TraceItemView* parentView,
   QWhatsThis::add( this, whatsThis());
 }
 
-QString CallMapView::whatsThis()
+QString CallMapView::whatsThis() const
 {
     return i18n( "<b>Call Graph</b>"
 		 "<p>This graph shows the nested hierarchy of "
@@ -516,7 +516,7 @@ void CallMapView::doUpdate(int changeType)
 
 
 
-QColor CallMapView::groupColor(TraceFunction* f)
+QColor CallMapView::groupColor(TraceFunction* f) const
 {
   if (!f)
     return colorGroup().button();
@@ -525,7 +525,7 @@ QColor CallMapView::groupColor(TraceFunction* f)
 }
 
 
-QString CallMapView::tipString(TreeMapItem* i)
+QString CallMapView::tipString(TreeMapItem* i) const
 {
   QString tip, itemTip;
   int count = 0;
@@ -580,7 +580,7 @@ void CallMapBaseItem::setFunction(TraceFunction* f)
 }
 
 
-QString CallMapBaseItem::text(int textNo)
+QString CallMapBaseItem::text(int textNo) const
 {
   if (textNo == 0) {
     if (!_f)
@@ -611,7 +611,7 @@ QString CallMapBaseItem::text(int textNo)
   return _f->cumulative()->prettySubCost(ct);
 }
 
-QPixmap CallMapBaseItem::pixmap(int i)
+QPixmap CallMapBaseItem::pixmap(int i) const
 {
     if ((i != 1) || !_f) return QPixmap();
 
@@ -625,7 +625,7 @@ QPixmap CallMapBaseItem::pixmap(int i)
 }
 
 
-double CallMapBaseItem::value()
+double CallMapBaseItem::value() const
 {
   if (!_f) return 0.0;
 
@@ -635,7 +635,7 @@ double CallMapBaseItem::value()
 }
 
 
-double CallMapBaseItem::sum()
+double CallMapBaseItem::sum() const
 {
   if (!_f) return 0.0;
 
@@ -648,7 +648,7 @@ double CallMapBaseItem::sum()
 }
 
 
-bool CallMapBaseItem::isMarked(int)
+bool CallMapBaseItem::isMarked(int) const
 {
     return ((CallMapView*)widget())->selectedItem() == _f;
 }
@@ -699,7 +699,7 @@ TreeMapItemList* CallMapBaseItem::children()
   return _children;
 }
 
-QColor CallMapBaseItem::backColor()
+QColor CallMapBaseItem::backColor() const
 {
   return ((CallMapView*)widget())->groupColor(_f);
 }
@@ -724,7 +724,7 @@ void CallMapCallingItem::init()
 #endif
 }
 
-QString CallMapCallingItem::text(int textNo)
+QString CallMapCallingItem::text(int textNo) const
 {
   if (textNo == 0) {
     if (!_c)
@@ -751,7 +751,7 @@ QString CallMapCallingItem::text(int textNo)
   return val.pretty();
 }
 
-QPixmap CallMapCallingItem::pixmap(int i)
+QPixmap CallMapCallingItem::pixmap(int i) const
 {
     if (i != 1) return QPixmap();
 
@@ -764,19 +764,19 @@ QPixmap CallMapCallingItem::pixmap(int i)
 }
 
 
-double CallMapCallingItem::value()
+double CallMapCallingItem::value() const
 {
   TraceCostType* ct;
   ct = ((CallMapView*)widget())->costType();
   return _factor * _c->subCost(ct);
 }
 
-double CallMapCallingItem::sum()
+double CallMapCallingItem::sum() const
 {
   return value();
 }
 
-bool CallMapCallingItem::isMarked(int)
+bool CallMapCallingItem::isMarked(int) const
 {
     return ((CallMapView*)widget())->selectedItem() == _c->called();
 }
@@ -826,7 +826,7 @@ TreeMapItemList* CallMapCallingItem::children()
 }
 
 
-QColor CallMapCallingItem::backColor()
+QColor CallMapCallingItem::backColor() const
 {
   CallMapView* w = (CallMapView*)widget();
   return w->groupColor(_c->called());
@@ -841,7 +841,7 @@ CallMapCallerItem::CallMapCallerItem(double factor, TraceCall* c)
   _c = c;
 }
 
-QString CallMapCallerItem::text(int textNo)
+QString CallMapCallerItem::text(int textNo) const
 {
   if (textNo == 0) {
     if (!_c)
@@ -868,7 +868,7 @@ QString CallMapCallerItem::text(int textNo)
 }
 
 
-QPixmap CallMapCallerItem::pixmap(int i)
+QPixmap CallMapCallerItem::pixmap(int i) const
 {
     if (i != 1) return QPixmap();
 
@@ -881,14 +881,14 @@ QPixmap CallMapCallerItem::pixmap(int i)
 }
 
 
-double CallMapCallerItem::value()
+double CallMapCallerItem::value() const
 {
   TraceCostType* ct;
   ct = ((CallMapView*)widget())->costType();
   return (double) _c->subCost(ct);
 }
 
-bool CallMapCallerItem::isMarked(int)
+bool CallMapCallerItem::isMarked(int) const
 {
     return ((CallMapView*)widget())->selectedItem() == _c->caller();
 }
@@ -932,7 +932,7 @@ TreeMapItemList* CallMapCallerItem::children()
   return _children;
 }
 
-QColor CallMapCallerItem::backColor()
+QColor CallMapCallerItem::backColor() const
 {
   CallMapView* w = (CallMapView*)widget();
   return w->groupColor(_c->caller());

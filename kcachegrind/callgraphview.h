@@ -416,9 +416,9 @@ public:
   void saveViewConfig(KConfig*, QString prefix, QString postfix);
 
   QWidget* widget() { return this; }
-  QString whatsThis();
+  QString whatsThis() const;
 
-  ZoomPosition zoomPos() { return _zoomPosition; }
+  ZoomPosition zoomPos() const { return _zoomPosition; }
   static ZoomPosition zoomPos(QString);
   static QString zoomPosString(ZoomPosition);
 

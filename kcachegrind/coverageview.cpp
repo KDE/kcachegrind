@@ -84,7 +84,7 @@ CoverageView::CoverageView(bool showCallers, TraceItemView* parentView,
     QWhatsThis::add( this, whatsThis() );
 }
 
-QString CoverageView::whatsThis()
+QString CoverageView::whatsThis() const
 {
     return _showCallers ?
 	i18n( "<b>List of all Callers</b>"
@@ -297,14 +297,14 @@ void CoverageView::refresh()
       if (c && (c->cumulative()>0.0))
 	_hc.addCost(ff, SubCost(realSum * c->cumulative()));
     }
-	
+
     for(int i=0;i<_hc.realCount();i++) {
       ff = (TraceFunction*) _hc[i];
       Coverage* c = (Coverage*) ff->assoziation(Coverage::Rtti);
       if (_showCallers)
 	new CallerCoverageItem(this, c, f, _costType, _groupType);
       else
-	new CalleeCoverageItem(this, c, f, _costType, _groupType);	
+	new CalleeCoverageItem(this, c, f, _costType, _groupType);
     }
     if (_hc.hasMore()) {
       // a placeholder for all the functions skipped ...
@@ -314,7 +314,7 @@ void CoverageView::refresh()
 	new CallerCoverageItem(this, _hc.count() - _hc.maxSize(),
 			       c, f, _costType, _groupType);
       else
-	new CalleeCoverageItem(this, _hc.count() - _hc.maxSize(), 
+	new CalleeCoverageItem(this, _hc.count() - _hc.maxSize(),
 			       c, f, _costType, _groupType);
     }
 }

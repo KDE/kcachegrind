@@ -33,7 +33,7 @@ class TopLevel;
 class QWidget;
 
 /**
- * Base Class for KCachegrind Views
+ * Abstract Base Class for KCachegrind Views
  *
  * This class delivers the shared functionality of all KCachegrind
  * Views for one TraceItem (like Function, Object...), the "active"
@@ -68,7 +68,7 @@ public:
   TraceItemView(TraceItemView* parentView, TopLevel* top = 0);
   virtual ~TraceItemView() {}
 
-  virtual QString whatsThis();
+  virtual QString whatsThis() const;
 
   static KConfigGroup* configGroup(KConfig*, QString prefix, QString postfix);
   static void writeConfigEntry(KConfigBase*, const char* pKey, QString value,
@@ -108,26 +108,28 @@ public:
 
   // getters...
   // always get the newest values
-  TraceData* data() { return _newData; }
-  TraceItem* activeItem() { return _newActiveItem; }
-  TraceItem* selectedItem() { return _newSelectedItem; }
-  TraceCostType* costType() { return _newCostType; }
-  TraceItem::CostType groupType() { return _newGroupType; }
+  TraceData* data() const { return _newData; }
+  TraceItem* activeItem() const { return _newActiveItem; }
+  TraceItem* selectedItem() const { return _newSelectedItem; }
+  TraceCostType* costType() const { return _newCostType; }
+  TraceItem::CostType groupType() const { return _newGroupType; }
 
   TraceFunction* activeFunction();
-  int status() { return _status; }
+  int status() const { return _status; }
 
   // pointer to top level window to e.g. show status messages
   void setTopLevel(TopLevel* t) { _topLevel = t; }
-  TopLevel* topLevel() { return _topLevel; }
+  TopLevel* topLevel() const { return _topLevel; }
 
   void setPosition(Position p) { _pos = p; }
-  Position position() { return _pos; }
+  Position position() const { return _pos; }
 
   void setTitle(QString t) { _title = t; }
-  QString title() { return _title; }
+  QString title() const { return _title; }
 
-  virtual QWidget* widget() const;
+  // We depend on derived class to be a widget.
+  // Force overiding by making this abstract.
+  virtual QWidget* widget() = 0;
 
   /**
    * This function is called when a new item should become active.

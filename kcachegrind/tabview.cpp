@@ -525,7 +525,7 @@ void TabView::moveTab(QWidget* w, Position p, bool wholeArea)
 }
 
 
-QString TabView::whatsThis()
+QString TabView::whatsThis() const
 {
     return i18n( "<b>Information Tabs</b>"
 		 "<p>This widgets shows information for the "
