@@ -68,6 +68,7 @@ public slots:
 
   void setPart(TracePart*);
   void setCostType(TraceCostType*);
+  void setCostType2(TraceCostType*);
   void setGroupType(TraceItem::CostType);
   void setGroup(TraceCostItem*);
   void setFunction(TraceFunction*);
@@ -80,11 +81,13 @@ private:
   void fillInfo();
 
   TraceData* _data;
-  TraceCostType* _costType;
+  TraceCostType *_costType, *_costType2;
   TraceItem::CostType _groupType;
   TraceCostItem* _group;
   TraceFunction* _function;
   bool _showInfo;
+  bool _diagramMode;
+  bool _drawFrames;
 
   bool _inSelectionUpdate;
 };

@@ -41,10 +41,14 @@ PartSelection::PartSelection( QWidget* parent, const char* name)
 {
   _data = 0;
   _costType = 0;
+  _costType2 = 0;
   _groupType = TraceItem::NoCostType;
   _group = 0;
   _function = 0;
   _inSelectionUpdate = false;
+
+  _diagramMode = false;
+  _drawFrames = true;
 
   partAreaWidget->setAllowRotation(false);
   partAreaWidget->setMaxSelectDepth(2);
@@ -95,6 +99,16 @@ void PartSelection::setCostType(TraceCostType* ct)
   _costType = ct;
 
   partAreaWidget->setCostType(ct);
+}
+
+void PartSelection::setCostType2(TraceCostType* ct)
+{  
+  if (ct == _costType2) return;
+  _costType2 = ct;
+  if (!_diagramMode) return;
+
+  //TODO: get max cost(type1)/cost(type2) of shown parts
+  //partAreaWidget->setCostType(ct);
 }
 
 void PartSelection::setGroupType(TraceItem::CostType gt)
@@ -319,6 +333,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
   else {
     vpopup.setItemChecked(31, partAreaWidget->zoomFunction());
   }
+  vpopup.setItemChecked(34, _diagramMode);
 
   vpopup.insertSeparator();
 
@@ -337,7 +352,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
     vpopup.setItemChecked(21,partAreaWidget->fieldVisible(1));
     vpopup.setItemChecked(22,partAreaWidget->fieldForced(0));
     vpopup.setItemChecked(23,partAreaWidget->allowRotation());
-    //vpopup.setItemChecked(24,partAreaWidget->drawFrame());
+    vpopup.setItemChecked(24,_drawFrames);
   }
 
   if (_showInfo)
@@ -400,7 +415,9 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
   case 23: partAreaWidget->setAllowRotation(!vpopup.isItemChecked(23));  break;
 
   case 24: 
-    //partAreaWidget->drawFrame(!vpopup.isItemChecked(24));
+    _drawFrames = !_drawFrames;
+    partAreaWidget->drawFrame(2,_drawFrames);
+    partAreaWidget->drawFrame(3,_drawFrames);
     break;
 
   case 30:
@@ -423,6 +440,12 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
   }
   break;
 
+  case 34: 
+    _diagramMode = !_diagramMode;
+    partAreaWidget->setTransparent(2,_diagramMode);
+    break;
+
+
   case 40:
   case 41:
     showInfo(r==41);
@@ -442,11 +465,18 @@ void PartSelection::readVisualisationConfig(KConfigGroup* config)
 {
   bool enable;
 
-  QString mode = config->readEntry("GraphMode", "Cumulative");
-  if (mode == "Cumulative")
+  QString mode = config->readEntry("PartitionMode", "Inclusive");
+  if (mode == "Inclusive")
     partAreaWidget->setVisualisation(PartAreaWidget::Inclusive);
   else
     partAreaWidget->setVisualisation(PartAreaWidget::Partitioning);
+
+  _diagramMode = config->readBoolEntry("DiagramMode", false);
+  partAreaWidget->setTransparent(2,_diagramMode);
+
+  _drawFrames = config->readBoolEntry("DrawFrames", true);
+  partAreaWidget->drawFrame(2,_drawFrames);
+  partAreaWidget->drawFrame(3,_drawFrames);
 
   enable = config->readBoolEntry("GraphZoom", false);
   partAreaWidget->setZoomFunction(enable);
@@ -474,10 +504,13 @@ void PartSelection::saveVisualisationConfig(KConfigGroup* config)
 {
   QString mode;
   if (partAreaWidget->visualisation() == PartAreaWidget::Inclusive)
-    mode = "Cumulative";
+    mode = "Inclusive";
   else
     mode = "Partitioning";
-  config->writeEntry("GraphMode", mode);
+  config->writeEntry("PartitionMode", mode);
+
+  config->writeEntry("DiagramMode", _diagramMode);
+  config->writeEntry("DrawFrames", _drawFrames);
 
   config->writeEntry("GraphZoom", partAreaWidget->zoomFunction());
   config->writeEntry("GraphLevels", partAreaWidget->callLevels());

@@ -1227,7 +1227,7 @@ bool TopLevel::setCostType2(TraceCostType* ct)
       _saCost2->setCurrentItem(idx);
   }
 
-  //_partSelection->setCostType2(_costType2);
+  _partSelection->setCostType2(_costType2);
   _stackSelection->setCostType2(_costType2);
 
   _functionSelection->setCostType2(_costType2);

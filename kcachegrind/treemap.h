@@ -511,6 +511,13 @@ public:
   void setShadingEnabled(bool s);
   bool isShadingEnabled() const { return _shading; }
 
+  /* Setting for a whole depth level: draw 3D frame (default) or solid */
+  void drawFrame(int d, bool b);
+  bool drawFrame(int d) const { return (d<4)?_drawFrame[d]:true; }
+
+  /* Setting for a whole depth level: draw items (default) or transparent */
+  void setTransparent(int d, bool b);
+  bool isTransparent(int d) const { return (d<4)?_transparent[d]:false; }
 
   /**
    * Items usually have a size proportional to their value().
@@ -724,7 +731,8 @@ private:
   TreeMapItem::SplitMode _splitMode;
   int _visibleWidth, _stopArea, _minimalArea, _borderWidth;
   bool _reuseSpace, _skipIncorrectBorder, _drawSeparators, _shading;
-  bool _allowRotation;
+  bool _allowRotation;  
+  bool _transparent[4], _drawFrame[4];
   TreeMapItem * _needsRefresh;
   TreeMapItemList _selection;
   int _markNo;

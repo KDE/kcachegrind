@@ -158,7 +158,7 @@ void PartView::doUpdate(int changeType)
     if (changeType == costTypeChanged) {
 	QListViewItem *item;
 	for (item = firstChild();item;item = item->nextSibling())
-	    ((PartListItem*)item)->update();
+	  ((PartListItem*)item)->setCostType(_costType);
 
 	return;
     }

@@ -1131,6 +1131,11 @@ TreeMapWidget::TreeMapWidget(TreeMapItem* base,
   _minimalArea = -1; // unlimited
   _markNo = 0;
 
+  for(int i=0;i<4;i++) {
+    _drawFrame[i] = true;
+    _transparent[i] = false;
+  }
+
   // _stopAtText will be unset on resizing (per default)
   // _textVisible will be true on resizing (per default)
   // _forceText will be false on resizing (per default)
@@ -1211,6 +1216,22 @@ void TreeMapWidget::setShadingEnabled(bool s)
   if (_shading == s) return;
 
   _shading = s;
+  redraw();
+}
+
+void TreeMapWidget::drawFrame(int d, bool b)
+{
+  if ((d<0) || (d>=4) || (_drawFrame[d]==b)) return;
+
+  _drawFrame[d] = b;
+  redraw();
+}
+
+void TreeMapWidget::setTransparent(int d, bool b)
+{
+  if ((d<0) || (d>=4) || (_transparent[d]==b)) return;
+
+  _transparent[d] = b;
   redraw();
 }
 
@@ -2200,11 +2221,14 @@ void TreeMapWidget::drawItem(QPainter* p,
   }
 
   bool isCurrent = _current && item->isChildOf(_current);
+  int dd = item->depth();
+  if (isTransparent(dd)) return;
 
   RectDrawing d(item->itemRect());
   item->setSelected(isSelected);
   item->setCurrent(isCurrent);
   item->setShaded(_shading);
+  item->drawFrame(drawFrame(dd));
   d.drawBack(p, item);
 }
 
