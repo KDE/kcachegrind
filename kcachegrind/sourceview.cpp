@@ -619,13 +619,13 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   QFile file(filename);
   file.open(IO_ReadOnly);
   while (1) {
-    readBytes=file.readLine(buf, 256);
+    readBytes=file.readLine(buf, sizeof( buf ));
     if (readBytes<=0) {
       // for nice empty 4 lines after function with EOF
       buf[0] = 0;
     }
 
-    if (readBytes == 256) {
+    if (readBytes >= sizeof( buf )) {
       qDebug("%s:%d  Line too long\n",
 	     sf->file()->name().ascii(), fileLineno);
     }
