@@ -89,9 +89,9 @@ void CallItem::updateCost()
     TraceCost* totalCost;
     if (_view->topLevel()->showExpanded()) {
       if (_active->cycle())
-        totalCost = _active->cycle()->cumulative();
+        totalCost = _active->cycle()->inclusive();
       else
-	totalCost = _active->cumulative();
+	totalCost = _active->inclusive();
     }
     else
 	totalCost = _active->data();

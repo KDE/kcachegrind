@@ -116,7 +116,7 @@ int GraphEdgeList::compareItems(Item item1, Item item2)
 GraphNode::GraphNode()
 {
     _f=0;
-    self = cum = 0;
+    self = incl = 0;
     _cn = 0;
 
     _visible = false;
@@ -495,24 +495,24 @@ void GraphExporter::createGraph()
       (_item->type() == TraceItem::FunctionCycle)) {
     TraceFunction* f = (TraceFunction*) _item;
 
-    double cum = f->cumulative()->subCost(_costType);
-    _realFuncLimit = cum * _go->funcLimit();
-    _realCallLimit = cum * _go->callLimit();
+    double incl = f->inclusive()->subCost(_costType);
+    _realFuncLimit = incl * _go->funcLimit();
+    _realCallLimit = incl * _go->callLimit();
 
     buildGraph(f, 0, true, 1.0); // down to callings
 
     // set costs of function back to 0, as it will be added again
     GraphNode& n = _nodeMap[f];
-    n.self = n.cum = 0.0;
+    n.self = n.incl = 0.0;
 
     buildGraph(f, 0, false, 1.0); // up to callers
   }
   else {
     TraceCall* c = (TraceCall*) _item;
 
-    double cum = c->subCost(_costType);
-    _realFuncLimit = cum * _go->funcLimit();
-    _realCallLimit = cum * _go->callLimit();
+    double incl = c->subCost(_costType);
+    _realFuncLimit = incl * _go->funcLimit();
+    _realCallLimit = incl * _go->callLimit();
 
     // create edge
     TraceFunction *caller, *called;
@@ -526,9 +526,9 @@ void GraphExporter::createGraph()
     e.cost  = c->subCost(_costType);
     e.count = c->callCount();
 
-    SubCost s = called->cumulative()->subCost(_costType);
+    SubCost s = called->inclusive()->subCost(_costType);
     buildGraph(called, 0, true,  e.cost / s); // down to callings
-    s = caller->cumulative()->subCost(_costType);
+    s = caller->inclusive()->subCost(_costType);
     buildGraph(caller, 0, false, e.cost / s); // up to callers
   }
 }
@@ -590,7 +590,7 @@ void GraphExporter::writeDot()
         nit != _nodeMap.end(); ++nit ) {
     GraphNode& n = *nit;
 
-    if (n.cum <= _realFuncLimit) continue;
+    if (n.incl <= _realFuncLimit) continue;
 
     // for clustering: get cost item group of function
     TraceCostItem* g;
@@ -634,12 +634,12 @@ void GraphExporter::writeDot()
 	// make label 3 lines for CallGraphView
 	*stream << QString("shape=box,label=\"** %1 **\\n**\\n%2\"];\n")
 	  .arg(abr)
-	  .arg(SubCost(np->cum).pretty());
+	  .arg(SubCost(np->incl).pretty());
       }
       else
 	*stream << QString("label=\"%1\\n%2\"];\n")
 	  .arg(abr)
-	  .arg(SubCost(np->cum).pretty());
+	  .arg(SubCost(np->incl).pretty());
     }
 
     if (_go->clusterGroups() && i)
@@ -664,8 +664,8 @@ void GraphExporter::writeDot()
     e.setCallerNode(&from);
     e.setCallingNode(&to);
 
-    if ((from.cum <= _realFuncLimit) ||
-        (to.cum <= _realFuncLimit)) continue;
+    if ((from.incl <= _realFuncLimit) ||
+        (to.incl <= _realFuncLimit)) continue;
 
     // remove dumped edges from n.callers/n.callings
     from.callings.removeRef(&e);
@@ -695,7 +695,7 @@ void GraphExporter::writeDot()
       for ( nit = _nodeMap.begin();
 	    nit != _nodeMap.end(); ++nit ) {
 	  GraphNode& n = *nit;
-	  if (n.cum <= _realFuncLimit) continue;
+	  if (n.incl <= _realFuncLimit) continue;
 
 	  costSum = countSum = 0.0;
 	  for (e=n.callers.first();e;e=n.callers.next()) {
@@ -824,18 +824,18 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
 	    << ") [to " << (toCallings ? "Callings":"Callers") << "]" << endl;
 #endif
 
-  double oldCum = 0.0;
+  double oldIncl = 0.0;
   GraphNode& n = _nodeMap[f];
   if (n.function() == 0) {
     n.setFunction(f);
   }
   else
-    oldCum = n.cum;
+    oldIncl = n.incl;
 
-  double cum = f->cumulative()->subCost(_costType) * factor;
-  n.cum  += cum;
+  double incl = f->inclusive()->subCost(_costType) * factor;
+  n.incl  += incl;
   n.self += f->subCost(_costType) * factor;
-  if (0) qDebug("  Added Cum. %f, now %f", cum, n.cum);
+  if (0) qDebug("  Added Incl. %f, now %f", incl, n.incl);
 
   // A negative depth limit means "unlimited"
   int maxDepth = toCallings ? _go->maxCallingDepth() : _go->maxCallerDepth();
@@ -845,22 +845,22 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
   }
 
   // if we just reached the limit by summing, do a DFS
-  // from here with full cum. cost because of previous cutoffs
-  if ((n.cum >= _realFuncLimit) && (oldCum < _realFuncLimit)) cum = n.cum;
+  // from here with full incl. cost because of previous cutoffs
+  if ((n.incl >= _realFuncLimit) && (oldIncl < _realFuncLimit)) incl = n.incl;
 
   if (f->cycle()) {
     // for cycles members, we never stop on first visit, but always on 2nd
     // note: a 2nd visit never should happen, as we don't follow inner-cycle
     //       calls
-    if (oldCum > 0.0) {
+    if (oldIncl > 0.0) {
       if (0) qDebug("  Cutoff, 2nd visit to Cycle Member");
       // and takeback cost addition, as it's added twice
-      n.cum  = oldCum;
+      n.incl  = oldIncl;
       n.self -= f->subCost(_costType) * factor;
       return;
     }
   }
-  else if (cum <= _realFuncLimit) {
+  else if (incl <= _realFuncLimit) {
     if (0) qDebug("  Cutoff, below limit");
     return;
   }
@@ -929,7 +929,7 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
     }
 
     // if we just reached the call limit (=func limit by summing, do a DFS
-    // from here with full cum. cost because of previous cutoffs
+    // from here with full incl. cost because of previous cutoffs
     if ((e.cost >= _realCallLimit) && (oldCost < _realCallLimit)) cost = e.cost;
     if (cost < _realCallLimit) {
       if (0) qDebug("  Edge Cutoff, limit not reached");
@@ -938,9 +938,9 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
 
     SubCost s;
     if (call->inCycle())
-      s = f2->cycle()->cumulative()->subCost(_costType);
+      s = f2->cycle()->inclusive()->subCost(_costType);
     else
-      s = f2->cumulative()->subCost(_costType);
+      s = f2->inclusive()->subCost(_costType);
     SubCost v = call->subCost(_costType);
     buildGraph(f2, d+1, toCallings, factor * v / s);
   }
@@ -1033,9 +1033,9 @@ CanvasNode::CanvasNode(CallGraphView* v, GraphNode* n,
     if (_view->topLevel()->showExpanded()) {
       if (_view->activeFunction()) {
         if (_view->activeFunction()->cycle())
-          totalCost = _view->activeFunction()->cycle()->cumulative();
+          totalCost = _view->activeFunction()->cycle()->inclusive();
         else
-          totalCost = _view->activeFunction()->cumulative();
+          totalCost = _view->activeFunction()->inclusive();
       }
       else
         totalCost = (TraceCost*) _view->activeItem();
@@ -1043,13 +1043,13 @@ CanvasNode::CanvasNode(CallGraphView* v, GraphNode* n,
     else
 	totalCost = _view->data();
     double total = totalCost->subCost(_view->costType());
-    double cumP  = 100.0 * n->cum / total;
+    double inclP  = 100.0 * n->incl / total;
     if (_view->topLevel()->showPercentage())
 	setText(1, QString("%1 %")
-		.arg(cumP, 0, 'f', Configuration::percentPrecision()));
+		.arg(inclP, 0, 'f', Configuration::percentPrecision()));
     else
-	setText(1, SubCost(n->cum).pretty());
-    setPixmap(1, percentagePixmap(25,10,(int)(cumP+.5), Qt::blue, true));
+	setText(1, SubCost(n->incl).pretty());
+    setPixmap(1, percentagePixmap(25,10,(int)(inclP+.5), Qt::blue, true));
 }
 
 void CanvasNode::setSelected(bool s)
@@ -1113,9 +1113,9 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce,
     if (_view->topLevel()->showExpanded()) {
       if (_view->activeFunction()) {
         if (_view->activeFunction()->cycle())
-          totalCost = _view->activeFunction()->cycle()->cumulative();
+          totalCost = _view->activeFunction()->cycle()->inclusive();
         else
-          totalCost = _view->activeFunction()->cumulative();
+          totalCost = _view->activeFunction()->inclusive();
       }
       else
         totalCost = (TraceCost*) _view->activeItem();
@@ -1123,13 +1123,13 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce,
     else
         totalCost = _view->data();
     double total = totalCost->subCost(_view->costType());
-    double cumP  = 100.0 * e->cost / total;
+    double inclP  = 100.0 * e->cost / total;
     if (_view->topLevel()->showPercentage())
         setText(0, QString("%1 %")
-		.arg(cumP, 0, 'f', Configuration::percentPrecision()));
+		.arg(inclP, 0, 'f', Configuration::percentPrecision()));
     else
         setText(0, SubCost(e->cost).pretty());
-    setPixmap(0, percentagePixmap(25,10,(int)(cumP+.5), Qt::blue, true));
+    setPixmap(0, percentagePixmap(25,10,(int)(inclP+.5), Qt::blue, true));
 
     if (e->call() && (e->call()->isRecursion() || e->call()->inCycle())) {
 	QString icon = "undo";

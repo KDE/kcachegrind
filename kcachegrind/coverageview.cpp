@@ -284,7 +284,7 @@ void CoverageView::refresh()
     TraceFunctionList l;
 
     _hc.clear(Configuration::maxListCount());
-    SubCost realSum = f->cumulative()->subCost(_costType);
+    SubCost realSum = f->inclusive()->subCost(_costType);
 
     if (_showCallers)
       l = Coverage::coverage(f, Coverage::Caller, _costType);
@@ -293,8 +293,8 @@ void CoverageView::refresh()
 
     for (ff=l.first();ff;ff=l.next()) {
       Coverage* c = (Coverage*) ff->assoziation(Coverage::Rtti);
-      if (c && (c->cumulative()>0.0))
-	_hc.addCost(ff, SubCost(realSum * c->cumulative()));
+      if (c && (c->inclusive()>0.0))
+	_hc.addCost(ff, SubCost(realSum * c->inclusive()));
     }
 
     for(int i=0;i<_hc.realCount();i++) {

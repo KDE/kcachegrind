@@ -193,7 +193,7 @@ void InstrItem::updateCost()
 
   TraceCost* totalCost;
   if (Configuration::showExpanded())
-      totalCost = _instr->function()->cumulative();
+      totalCost = _instr->function()->inclusive();
   else
       totalCost = _instr->function()->data();
 

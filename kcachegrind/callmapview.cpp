@@ -570,7 +570,7 @@ TraceCost* CallMapView::totalCost()
   TraceFunction* f = ((CallMapBaseItem*)base())->function();
   if (!f) return 0;
 
-  return Configuration::showExpanded() ? f->cumulative() : f->data();
+  return Configuration::showExpanded() ? f->inclusive() : f->data();
 }
 
 
@@ -615,12 +615,12 @@ QString CallMapBaseItem::text(int textNo) const
       if (total == 0.0)
 	  sum = 100.0;
       else
-	  sum = 100.0 * _f->cumulative()->subCost(ct) / total;
+	  sum = 100.0 * _f->inclusive()->subCost(ct) / total;
 
       return QString("%1 %")
 	  .arg(sum, 0, 'f', Configuration::percentPrecision());
   }
-  return _f->cumulative()->prettySubCost(ct);
+  return _f->inclusive()->prettySubCost(ct);
 }
 
 QPixmap CallMapBaseItem::pixmap(int i) const
@@ -631,7 +631,7 @@ QPixmap CallMapBaseItem::pixmap(int i) const
     TraceCost* t      = ((CallMapView*)widget())->totalCost();
 
     // colored level meter with frame
-    return costPixmap( ct, _f->cumulative(), (double) (t->subCost(ct)), true);
+    return costPixmap( ct, _f->inclusive(), (double) (t->subCost(ct)), true);
 }
 
 
@@ -641,7 +641,7 @@ double CallMapBaseItem::value() const
 
   TraceCostType* ct;
   ct = ((CallMapView*)widget())->costType();
-  return (double) _f->cumulative()->subCost(ct);
+  return (double) _f->inclusive()->subCost(ct);
 }
 
 
@@ -654,7 +654,7 @@ double CallMapBaseItem::sum() const
   if (w->showCallers())
     return 0.0;
   else
-    return (double) _f->cumulative()->subCost(w->costType());
+    return (double) _f->inclusive()->subCost(w->costType());
 }
 
 
@@ -701,7 +701,7 @@ TreeMapItemList* CallMapBaseItem::children()
         addItem(i);
       }
 
-      setSum(_f->cumulative()->subCost(w->costType()));
+      setSum(_f->inclusive()->subCost(w->costType()));
     }
     setSorting(-2, false);
   }
@@ -801,7 +801,7 @@ TreeMapItemList* CallMapCallingItem::children()
     ct = ((CallMapView*)widget())->costType();
 
     // same as sum()
-    SubCost s = _c->called()->cumulative()->subCost(ct);
+    SubCost s = _c->called()->inclusive()->subCost(ct);
     SubCost v = _c->subCost(ct);
     if (v>s) {
       qDebug("Warning: CallingItem subVal %u > Sum %u (%s)",
@@ -912,7 +912,7 @@ TreeMapItemList* CallMapCallerItem::children()
     TraceCostType* ct;
     ct = ((CallMapView*)widget())->costType();
 
-    SubCost s = _c->caller()->cumulative()->subCost(ct);
+    SubCost s = _c->caller()->inclusive()->subCost(ct);
     SubCost v = _c->subCost(ct);
     double newFactor = _factor * v / s;
 

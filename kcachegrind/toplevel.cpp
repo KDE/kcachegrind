@@ -296,17 +296,17 @@ void TopLevel::createDocks()
                    "parts to constrain all costs shown to these parts only."
                    "</p>"
                    "<p>The parts are further subdivided: there is a "
-                   "partitioning and a cumulative split mode: "
+                   "partitioning and an callee split mode: "
                    "<ul><li>Partitioning: You see the "
                    "partitioning into groups for a trace part, according to "
                    "the group type selected. E.g. if ELF object groups are "
                    "selected, you see colored rectangles for each "
                    "used ELF object (shared library or executable), sized "
                    "according to the cost spent therein.</li>"
-                   "<li>Cumulative Split: A rectangle showing the cumulative "
+                   "<li>Callee: A rectangle showing the inclusive "
                    "cost of the current selected function in the trace part "
                    "is shown. "
-                   "This again is split up to show cumulative costs of its "
+                   "This is split up into smaller rectangles to show the costs of its "
                    "callees.</li></ul></p>"));
 
   _stackDock = new QDockWindow(QDockWindow::InDock, this);

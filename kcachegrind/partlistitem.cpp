@@ -38,7 +38,7 @@ PartListItem::PartListItem(QListView* parent, TraceCostItem* costItem,
 			   TracePart* part)
   :QListViewItem(parent)
 {
-  _partCostItem = costItem->findDep(part);
+  _partCostItem = costItem->findDepFromPart(part);
   _part = part;
   _groupType = gt;
   _costType = ct;
@@ -97,7 +97,7 @@ void PartListItem::update()
   double selfTotal = selfTotalCost->subCost(_costType);
 
   _pure = _partCostItem ? _partCostItem->subCost(_costType) : SubCost(0);
-  _sum = pf ? pf->cumulative()->subCost(_costType) : SubCost(0);
+  _sum = pf ? pf->inclusive()->subCost(_costType) : SubCost(0);
 
   if (selfTotal == 0 || !_partCostItem) {
     setText(2, QString("-"));
@@ -128,7 +128,7 @@ void PartListItem::update()
     else
       setText(1, _sum.pretty());
 
-    setPixmap(1, costPixmap(_costType, pf->cumulative(), total, false));
+    setPixmap(1, costPixmap(_costType, pf->inclusive(), total, false));
   }
 
   if (!pf) {

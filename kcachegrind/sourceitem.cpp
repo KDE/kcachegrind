@@ -178,7 +178,7 @@ void SourceItem::updateCost()
 
   TraceCost* totalCost;
   if (Configuration::showExpanded())
-    totalCost = _line->functionSource()->function()->cumulative();
+    totalCost = _line->functionSource()->function()->inclusive();
   else
     totalCost = _line->functionSource()->function()->data();
 

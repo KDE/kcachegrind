@@ -420,11 +420,11 @@ void FunctionSelection::refresh()
       fitem = 0;
       for ( it = _data->functionMap().begin();
 	    it != _data->functionMap().end(); ++it )
-	_hc.addCost(&(*it), (*it).cumulative()->subCost(_costType));
+	_hc.addCost(&(*it), (*it).inclusive()->subCost(_costType));
 
       TraceFunctionCycleList l =  _data->functionCycles();
       for (f=l.first();f;f=l.next())
-	_hc.addCost(f, f->cumulative()->subCost(_costType));
+	_hc.addCost(f, f->inclusive()->subCost(_costType));
 
       if (_activeItem &&
 	  ((_activeItem->type() == TraceItem::Function) ||
@@ -551,7 +551,7 @@ void FunctionSelection::groupSelected(QListViewItem* i)
   TraceFunction *f;
   _hc.clear(Configuration::maxListCount());
   for (f=list.first();f;f=list.next()) {
-    _hc.addCost(f, f->cumulative()->subCost(_costType));
+    _hc.addCost(f, f->inclusive()->subCost(_costType));
     if (_activeItem == f)
       fitem = new FunctionItem(functionList, (TraceFunction*)_activeItem,
 			       _costType, _groupType);
@@ -679,19 +679,19 @@ void FunctionSelection::query(QString query)
           it != _data->functionMap().end(); ++it ) {
 	f = &(*it);
 	if (re.search(f->prettyName())>=0)
-	    _hc.addCost(f, f->cumulative()->subCost(_costType));
+	    _hc.addCost(f, f->inclusive()->subCost(_costType));
     }
 
     TraceFunctionCycleList l =  _data->functionCycles();
     for (f=l.first();f;f=l.next()) {
       if (re.search(f->prettyName())>=0)
-	  _hc.addCost(f, f->cumulative()->subCost(_costType));
+	  _hc.addCost(f, f->inclusive()->subCost(_costType));
     }
   }
   else {
     for (f=list.first();f;f=list.next()) {
       if (re.search(f->name())>=0)
-	  _hc.addCost(f, f->cumulative()->subCost(_costType));
+	  _hc.addCost(f, f->inclusive()->subCost(_costType));
     }
   }
 

@@ -73,7 +73,7 @@ QString PartView::whatsThis() const
     return i18n( "<b>Trace Part List</b>"
 		 "<p>This list shows all trace parts of the loaded "
 		 "trace. For each part, the "
-		 "self/cumulative cost of the current selected "
+		 "self/inclusive cost of the current selected "
 		 "function, spent in the part, is shown; "
 		 "percentage costs are always relative to the "
 		 "total cost <em>of the part</em> (not to the whole "

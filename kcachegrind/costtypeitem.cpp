@@ -117,7 +117,7 @@ void CostTypeItem::update()
     return;
   }
 
-  _sum = f->cumulative()->subCost(_costType);
+  _sum = f->inclusive()->subCost(_costType);
   double sum  = 100.0 * _sum / total;
   if (Configuration::showPercentage()) {
     setText(1, QString("%1")
@@ -126,7 +126,7 @@ void CostTypeItem::update()
   else
     setText(1, _sum.pretty());
 
-  setPixmap(1, costPixmap(_costType, f->cumulative(), total, false));
+  setPixmap(1, costPixmap(_costType, f->inclusive(), total, false));
 }
 
 

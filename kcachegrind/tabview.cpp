@@ -277,28 +277,42 @@ TabView::TabView(TraceItemView* parentView,
 
 
   // default positions...
-  addBottom( addTab( i18n("Parts"),
-		     new PartView(this, _bottomTW, "PartView")));
+
   addTop( addTab( i18n("Types"),
-		  new CostTypeView(this, _topTW, "CostTypeView")));
+		  new CostTypeView(this, _topTW,
+				   "CostTypeView")));
   addTop( addTab( i18n("Callers"),
-	     new CallView(true, this, _topTW, "CallerView")));
-  addBottom( addTab( i18n("Callees"),
-		new CallView(false, this, _bottomTW, "CallView")));
-  addBottom( addTab( i18n("Call Graph"),
-		new CallGraphView(this, _bottomTW, "CallGraphView")));
+		  new CallView(true, this, _topTW,
+			       "CallerView")));
   addTop( addTab( i18n("All Callers"),
-	     new CoverageView(true, this, _topTW, "AllCallerView")));
-  addBottom( addTab( i18n("All Callees"),
-		new CoverageView(false, this, _bottomTW, "AllCallView")));
-  addBottom( addTab( i18n("Caller Map"),
-		new CallMapView(true, this, _bottomTW, "CallerMapView")));
-  addTop( addTab( i18n("Callee Map"),
-	     new CallMapView(false, this, _topTW, "CallMapView")));
+		  new CoverageView(true, this, _topTW,
+				   "AllCallerView")));
+  addTop( addTab( i18n("Caller Map"),
+		  new CallMapView(true, this, _bottomTW,
+				  "CallerMapView")));
   addTop( addTab( i18n("Source"),
-	     new SourceView(this, _topTW, "SourceView")));
+		  new SourceView(this, _topTW,
+				 "SourceView")));
+
+  addBottom( addTab( i18n("Parts"),
+		     new PartView(this, _bottomTW,
+				  "PartView")));
+  addBottom( addTab( i18n("Call Graph"),
+		     new CallGraphView(this, _bottomTW,
+				       "CallGraphView")));
+  addBottom( addTab( i18n("Callees"),
+		     new CallView(false, this, _bottomTW,
+				  "CalleeView")));
+  addBottom( addTab( i18n("All Callees"),
+		     new CoverageView(false, this, _bottomTW,
+				      "AllCallView")));
+
+  addBottom( addTab( i18n("Callee Map"),
+		     new CallMapView(false, this, _topTW,
+				     "CallMapView")));
   addBottom( addTab( i18n("Assembler"),
-		new InstrView(this, _bottomTW, "InstrView")));
+		     new InstrView(this, _bottomTW,
+				   "InstrView")));
 
   // after all child widgets are created...
   _lastFocus = 0;
@@ -540,8 +554,8 @@ QString TabView::whatsThis() const
 		 "<p>This widget shows information for the "
 		 "current selected function in different tabs: "
 		 "<ul>"
-		 "<li>The Costs tab shows a list of available cost types "
-		 "and the cumulative and self costs regarding to types.</li>"
+		 "<li>The Costs tab shows a list of available event types "
+		 "and the inclusive and self costs regarding to these types.</li>"
 		 "<li>The Parts tab shows a list of trace parts "
 		 "if the trace consists of more than one part (otherwise, "
 		 "this tab is hided). "

@@ -48,10 +48,10 @@ class QFile;
  * Abstract, i.e. never instantiated cost items are
  * - TraceCost: Basic cost metrics (instr/read/write access + cache events)
  * - TraceCallCost: Additional call count cost metric.
- * - TraceCumulativeCost: Additional TraceCost aggregated.
+ * - TraceInclusiveCost: Additional TraceCost aggregated.
  * - TraceListCost: Adds dependency to a list of TraceCost's
  * - TraceCallListCost: same for list of TraceCallCost's
- * - TraceCumulativeListCost: same for list of TraceCumulativeCost's
+ * - TraceInclusiveListCost: same for list of TraceInclusiveCost's
  * - TraceCostItem: Base for cost items for "interesting" costs:
  *              TraceFunction, TraceClass, TraceFile, TraceObject
  *
@@ -130,7 +130,7 @@ class TraceCostMapping;
 class TraceSubMapping;
 class TraceJumpCost;
 class TraceCallCost;
-class TraceCumulativeCost;
+class TraceInclusiveCost;
 
 class TracePartInstr;
 class TracePartInstrCall;
@@ -163,7 +163,7 @@ class TraceData;
 typedef QPtrList<TraceCost> TraceCostList;
 typedef QPtrList<TraceJumpCost> TraceJumpCostList;
 typedef QPtrList<TraceCallCost> TraceCallCostList;
-typedef QPtrList<TraceCumulativeCost> TraceCumulativeCostList;
+typedef QPtrList<TraceInclusiveCost> TraceInclusiveCostList;
 
 typedef QPtrList<TracePartCall>  TracePartCallList;
 typedef QPtrList<TracePartInstr> TracePartInstrList;
@@ -644,24 +644,24 @@ protected:
 
 
 /**
- * Cost item with additional cumulative metric
+ * Cost item with additional inclusive metric
  */
-class TraceCumulativeCost: public TraceCost
+class TraceInclusiveCost: public TraceCost
 {
 public:
-  TraceCumulativeCost();
-  virtual ~TraceCumulativeCost();
+  TraceInclusiveCost();
+  virtual ~TraceInclusiveCost();
 
   // reimplementations for cost addition
   virtual QString costString(TraceCostMapping* m);
   virtual void clear();
 
   // additional cost metric
-  TraceCost* cumulative();
-  void addCumulative(TraceCost*);
+  TraceCost* inclusive();
+  void addInclusive(TraceCost*);
 
 protected:
-  TraceCost _cumulative;
+  TraceCost _inclusive;
 };
 
 
@@ -680,7 +680,7 @@ public:
 
   TraceCostList& deps() { return _deps; }
   void addDep(TraceCost*);
-  TraceCost* findDep(TracePart*);
+  TraceCost* findDepFromPart(TracePart*);
 
 protected:
   // overwrite in subclass to change update behaviour
@@ -709,7 +709,7 @@ public:
 
   TraceJumpCostList deps() { return _deps; }
   void addDep(TraceJumpCost*);
-  TraceJumpCost* findDep(TracePart*);
+  TraceJumpCost* findDepFromPart(TracePart*);
 
 protected:
   // overwrite in subclass to change update behaviour
@@ -740,7 +740,7 @@ public:
 
   TraceCallCostList deps() { return _deps; }
   void addDep(TraceCallCost*);
-  TraceCallCost* findDep(TracePart*);
+  TraceCallCost* findDepFromPart(TracePart*);
 
 protected:
   // overwrite in subclass to change update behaviour
@@ -755,30 +755,30 @@ private:
 
 
 /**
- * Cumulative Cost Item dependend on a list of cumulative cost items.
+ * Inclusive Cost Item dependend on a list of inclusive cost items.
  */
-class TraceCumulativeListCost: public TraceCumulativeCost
+class TraceInclusiveListCost: public TraceInclusiveCost
 {
 public:
-  TraceCumulativeListCost();
-  virtual ~TraceCumulativeListCost();
+  TraceInclusiveListCost();
+  virtual ~TraceInclusiveListCost();
 
   // reimplementation for dependency
   virtual void update();
 
-  TraceCumulativeCostList deps() { return _deps; }
-  void addDep(TraceCumulativeCost*);
-  TraceCumulativeCost* findDep(TracePart*);
+  TraceInclusiveCostList deps() { return _deps; }
+  void addDep(TraceInclusiveCost*);
+  TraceInclusiveCost* findDepFromPart(TracePart*);
 
 protected:
   // overwrite in subclass to change update behaviour
   virtual bool onlyActiveParts() { return false; }
 
-  TraceCumulativeCostList _deps;
+  TraceInclusiveCostList _deps;
 
 private:
   // very temporary: cached
-  TraceCumulativeCost* _lastDep;
+  TraceInclusiveCost* _lastDep;
 };
 
 
@@ -796,13 +796,18 @@ private:
 class TracePartInstrJump: public TraceJumpCost
 {
  public:
-    TracePartInstrJump(TraceInstrJump*, TracePart*);
-    virtual ~TracePartInstrJump();
+  TracePartInstrJump(TraceInstrJump*, TracePartInstrJump*, TracePart*);
+  virtual ~TracePartInstrJump();
 
     virtual CostType type() const { return PartInstrJump; }
     // fix cost item
     virtual void update() {}
     TraceInstrJump* instrJump() const { return (TraceInstrJump*) _dep; }
+    TracePartInstrJump* next() const { return _next; }
+
+ private:
+    // chaining all parts for InstrJump
+    TracePartInstrJump* _next;
 };
 
 
@@ -896,7 +901,7 @@ public:
 /**
  * Cost of a source region.
  */
-class TracePartLineRegion: public TraceCumulativeCost
+class TracePartLineRegion: public TraceInclusiveCost
 {
 public:
   TracePartLineRegion(TraceLineRegion*, TracePart*);
@@ -941,7 +946,7 @@ private:
  * Cost of a function,
  * from a single trace file.
  */
-class TracePartFunction: public TraceCumulativeCost
+class TracePartFunction: public TraceInclusiveCost
 {
 public:
   TracePartFunction(TraceFunction*, TracePart*,
@@ -1006,7 +1011,7 @@ private:
  * Cost of a class,
  * from a single trace file.
  */
-class TracePartClass: public TraceCumulativeListCost
+class TracePartClass: public TraceInclusiveListCost
 {
 public:
   TracePartClass(TraceClass*, TracePart*);
@@ -1024,7 +1029,7 @@ public:
  * Cost of a source file,
  * from a single trace file.
  */
-class TracePartFile: public TraceCumulativeListCost
+class TracePartFile: public TraceInclusiveListCost
 {
 public:
   TracePartFile(TraceFile*, TracePart*);
@@ -1040,7 +1045,7 @@ public:
  * Cost of a object,
  * from a single trace file.
  */
-class TracePartObject: public TraceCumulativeListCost
+class TracePartObject: public TraceInclusiveListCost
 {
 public:
   TracePartObject(TraceObject*, TracePart*);
@@ -1132,7 +1137,7 @@ protected:
 /**
  * A jump from an instruction to another inside of a function
  */
-class TraceInstrJump: public TraceJumpListCost
+class TraceInstrJump: public TraceJumpCost
 {
 public:
     TraceInstrJump(TraceInstr* instrFrom, TraceInstr* instrTo,
@@ -1142,6 +1147,8 @@ public:
     virtual CostType type() const { return InstrJump; }
     virtual QString name() const;
 
+    virtual void update();
+
     TraceInstr* instrFrom() const { return _instrFrom; }
     TraceInstr* instrTo() const { return _instrTo; }
     bool isCondJump() const { return _isCondJump; }
@@ -1149,12 +1156,11 @@ public:
     // part factory
     TracePartInstrJump* partInstrJump(TracePart*);
 
- protected:
-    bool onlyActiveParts() { return true; }
-
  private:
     TraceInstr *_instrFrom, *_instrTo;
     bool _isCondJump;
+    // list of parts for this InstrJump
+    TracePartInstrJump* _first;
 };
 
 class TraceInstrJumpList: public QPtrList<TraceInstrJump>
@@ -1418,9 +1424,9 @@ public:
 /*
  * Base class for all costs which
  * represent "interesting" items or group of items
- * with settable name and cumulative cost
+ * with settable name and inclusive cost
  */
-class TraceCostItem: public TraceCumulativeListCost
+class TraceCostItem: public TraceInclusiveListCost
 {
 public:
   TraceCostItem();
@@ -1443,7 +1449,7 @@ public:
 /**
  * Cost of a source region.
  */
-class TraceLineRegion: public TraceCumulativeListCost
+class TraceLineRegion: public TraceInclusiveListCost
 {
 public:
   TraceLineRegion(uint from, uint to, QString name);

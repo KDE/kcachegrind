@@ -96,9 +96,9 @@ void CallerCoverageItem::update()
     return;
   }
 
-  _pSum = 100.0 * _coverage->cumulative();
-  SubCost realSum = _base->cumulative()->subCost(_costType);
-  _sum = SubCost(realSum * _coverage->cumulative());
+  _pSum = 100.0 * _coverage->inclusive();
+  SubCost realSum = _base->inclusive()->subCost(_costType);
+  _sum = SubCost(realSum * _coverage->inclusive());
   QString str;
   if (Configuration::showPercentage())
     str = QString("%1").arg(_pSum, 0, 'f', Configuration::percentPrecision());
@@ -111,7 +111,7 @@ void CallerCoverageItem::update()
   }
 
   setText(0, str);
-  setPixmap(0, partitionPixmap(25, 10, _coverage->cumulativeHistogram(), 0,
+  setPixmap(0, partitionPixmap(25, 10, _coverage->inclusiveHistogram(), 0,
                                Coverage::maxHistogramDepth, false));
 
   // call count
@@ -119,7 +119,7 @@ void CallerCoverageItem::update()
   setText(2, _cc ? _cc.pretty() : QString("(0)"));
 
   // distance (min/max/median)
-  _distance = _coverage->cumulativeMedian();
+  _distance = _coverage->inclusiveMedian();
   QString distString;
   if (_coverage->minDistance() == _coverage->maxDistance())
     distString = QString::number(_distance);
@@ -241,11 +241,11 @@ void CalleeCoverageItem::update()
     return;
   }
 
-  _pSum = 100.0 * _coverage->cumulative();
+  _pSum = 100.0 * _coverage->inclusive();
 
-  // pSum/pSelf are percentages of cumulative cost of base
-  SubCost realSum = _base->cumulative()->subCost(_costType);
-  _sum = SubCost(realSum * _coverage->cumulative());
+  // pSum/pSelf are percentages of inclusive cost of base
+  SubCost realSum = _base->inclusive()->subCost(_costType);
+  _sum = SubCost(realSum * _coverage->inclusive());
 
 
   QString str;
@@ -273,7 +273,7 @@ void CalleeCoverageItem::update()
     setText(1, _self.pretty());
   }
 
-  setPixmap(0, partitionPixmap(25, 10, _coverage->cumulativeHistogram(), 0,
+  setPixmap(0, partitionPixmap(25, 10, _coverage->inclusiveHistogram(), 0,
                                Coverage::maxHistogramDepth, false));
   setPixmap(1, partitionPixmap(25, 10, _coverage->selfHistogram(), 0,
                                Coverage::maxHistogramDepth, false));
@@ -283,7 +283,7 @@ void CalleeCoverageItem::update()
   setText(3, _cc ? _cc.pretty() : QString("(0)"));
 
   // for comparations
-  _distance = _coverage->cumulativeMedian();
+  _distance = _coverage->inclusiveMedian();
   QString distString;
   if (_coverage->minDistance() == _coverage->maxDistance())
     distString = QString::number(_distance);

@@ -118,7 +118,7 @@ void FunctionItem::setCostType(TraceCostType* c)
 
 void FunctionItem::update()
 {
-  double cumTotal = _function->data()->subCost(_costType);
+  double inclTotal = _function->data()->subCost(_costType);
   QString str;
 
   TraceCost* selfCost = _function->data();
@@ -138,12 +138,12 @@ void FunctionItem::update()
     // only text updates of incl./self
 
     // for all skipped functions, cost is below the given function
-    _sum  = _function->cumulative()->subCost(_costType);
-    double cum  = 100.0 * _sum / cumTotal;
+    _sum  = _function->inclusive()->subCost(_costType);
+    double incl  = 100.0 * _sum / inclTotal;
     if (Configuration::showPercentage())
-      str = QString("%1").arg(cum, 0, 'f', Configuration::percentPrecision());
+      str = QString("%1").arg(incl, 0, 'f', Configuration::percentPrecision());
     else
-      str = _function->cumulative()->prettySubCost(_costType);
+      str = _function->inclusive()->prettySubCost(_costType);
     str = "< " + str;
     setText(0, str);
     setText(1, str);
@@ -162,20 +162,20 @@ void FunctionItem::update()
   setText(2, str);
 
   // Incl. cost
-  _sum  = _function->cumulative()->subCost(_costType);
-  if (cumTotal == 0.0) {
+  _sum  = _function->inclusive()->subCost(_costType);
+  if (inclTotal == 0.0) {
     setPixmap(0, QPixmap());
     setText(0, "-");
   }
   else {
-      double cum  = 100.0 * _sum / cumTotal;
+      double incl  = 100.0 * _sum / inclTotal;
       if (Configuration::showPercentage())
 	  setText(0, QString("%1")
-		  .arg(cum, 0, 'f', Configuration::percentPrecision()));
+		  .arg(incl, 0, 'f', Configuration::percentPrecision()));
       else
-	  setText(0, _function->cumulative()->prettySubCost(_costType));
+	  setText(0, _function->inclusive()->prettySubCost(_costType));
 
-      setPixmap(0, costPixmap(_costType, _function->cumulative(), cumTotal, false));
+      setPixmap(0, costPixmap(_costType, _function->inclusive(), inclTotal, false));
   }
 
   // self

@@ -1344,37 +1344,37 @@ void TraceCallCost::addCallCount(SubCost c)
 
 
 //---------------------------------------------------
-// TraceCumulativeCost
+// TraceInclusiveCost
 
-TraceCumulativeCost::TraceCumulativeCost()
+TraceInclusiveCost::TraceInclusiveCost()
 {}
 
-TraceCumulativeCost::~TraceCumulativeCost()
+TraceInclusiveCost::~TraceInclusiveCost()
 {}
 
-QString TraceCumulativeCost::costString(TraceCostMapping* m)
+QString TraceInclusiveCost::costString(TraceCostMapping* m)
 {
-  return QString("%1, Cumulative %2")
+  return QString("%1, Inclusive %2")
     .arg(TraceCost::costString(m))
-    .arg(_cumulative.costString(m));
+    .arg(_inclusive.costString(m));
 }
 
-void TraceCumulativeCost::clear()
+void TraceInclusiveCost::clear()
 {
-  _cumulative.clear();
+  _inclusive.clear();
   TraceCost::clear();
 }
 
-TraceCost* TraceCumulativeCost::cumulative()
+TraceCost* TraceInclusiveCost::inclusive()
 {
   if (_dirty) update();
 
-  return &_cumulative;
+  return &_inclusive;
 }
 
-void TraceCumulativeCost::addCumulative(TraceCost* c)
+void TraceInclusiveCost::addInclusive(TraceCost* c)
 {
-  _cumulative.addCost(c);
+  _inclusive.addCost(c);
 
   invalidate();
 }
@@ -1412,7 +1412,7 @@ void TraceListCost::addDep(TraceCost* dep)
 #endif
 }
 
-TraceCost* TraceListCost::findDep(TracePart* part)
+TraceCost* TraceListCost::findDepFromPart(TracePart* part)
 {
   if (_lastDep && _lastDep->part() == part)
     return _lastDep;
@@ -1486,7 +1486,7 @@ void TraceJumpListCost::addDep(TraceJumpCost* dep)
 #endif
 }
 
-TraceJumpCost* TraceJumpListCost::findDep(TracePart* part)
+TraceJumpCost* TraceJumpListCost::findDepFromPart(TracePart* part)
 {
   if (_lastDep && _lastDep->part() == part)
     return _lastDep;
@@ -1560,7 +1560,7 @@ void TraceCallListCost::addDep(TraceCallCost* dep)
 #endif
 }
 
-TraceCallCost* TraceCallListCost::findDep(TracePart* part)
+TraceCallCost* TraceCallListCost::findDepFromPart(TracePart* part)
 {
   if (_lastDep && _lastDep->part() == part)
     return _lastDep;
@@ -1607,18 +1607,18 @@ void TraceCallListCost::update()
 
 
 //---------------------------------------------------
-// TraceCumulativeListCost
+// TraceInclusiveListCost
 
-TraceCumulativeListCost::TraceCumulativeListCost()
+TraceInclusiveListCost::TraceInclusiveListCost()
 {
   _lastDep = 0;
 }
 
-TraceCumulativeListCost::~TraceCumulativeListCost()
+TraceInclusiveListCost::~TraceInclusiveListCost()
 {}
 
 
-void TraceCumulativeListCost::addDep(TraceCumulativeCost* dep)
+void TraceInclusiveListCost::addDep(TraceInclusiveCost* dep)
 {
 #if TRACE_ASSERTIONS
   if (_deps.findRef(dep)>=0) {
@@ -1639,12 +1639,12 @@ void TraceCumulativeListCost::addDep(TraceCumulativeCost* dep)
 #endif
 }
 
-TraceCumulativeCost* TraceCumulativeListCost::findDep(TracePart* part)
+TraceInclusiveCost* TraceInclusiveListCost::findDepFromPart(TracePart* part)
 {
   if (_lastDep && _lastDep->part() == part)
     return _lastDep;
 
-  TraceCumulativeCost* dep;
+  TraceInclusiveCost* dep;
   for (dep = _deps.first(); dep; dep = _deps.next())
     if (dep->part() == part) {
       _lastDep = dep;
@@ -1653,7 +1653,7 @@ TraceCumulativeCost* TraceCumulativeListCost::findDep(TracePart* part)
   return 0;
 }
 
-void TraceCumulativeListCost::update()
+void TraceInclusiveListCost::update()
 {
   if (!_dirty) return;
 
@@ -1663,13 +1663,13 @@ void TraceCumulativeListCost::update()
 #endif
 
   clear();
-  TraceCumulativeCost* item;
+  TraceInclusiveCost* item;
   for (item = _deps.first(); item; item = _deps.next()) {
     if (onlyActiveParts())
       if (!item->part() || !item->part()->isActive()) continue;
 
     addCost(item);
-    addCumulative(item->cumulative());
+    addInclusive(item->inclusive());
   }
 
   _dirty = false;
@@ -1685,10 +1685,13 @@ void TraceCumulativeListCost::update()
 // TracePartInstrJump
 
 TracePartInstrJump::TracePartInstrJump(TraceInstrJump* instrJump,
+				       TracePartInstrJump* next,
 				       TracePart* part)
 {
   _part = part;
   _dep = instrJump;
+
+  _next = next;
 }
 
 TracePartInstrJump::~TracePartInstrJump()
@@ -1857,7 +1860,7 @@ QString TracePartFunction::costString(TraceCostMapping* m)
 {
   update();
 
-  QString res = TraceCumulativeCost::costString(m);
+  QString res = TraceInclusiveCost::costString(m);
   res += QString(", called from %1: %2")
          .arg(_calledContexts).arg(prettyCalledCount());
   res += QString(", calling from %1: %2")
@@ -2053,14 +2056,14 @@ void TracePartFunction::update()
    * For now, do 1) if there are callers, otherwise 2).
    * Should this be fixed to take the maximum of 1) and 2) ?
    */
-  _cumulative.clear();
+  _inclusive.clear();
   if (_calledCount>0) {
-      // cumulative cost: if possible, use caller sums
+      // inclusive cost: if possible, use caller sums
     for (caller=_partCallers.first();caller;caller=_partCallers.next()) {
       // detect simple recursion (no cycle)
       if (caller->isRecursion()) continue;
 
-      addCumulative(caller);
+      addInclusive(caller);
     }
   }
   else {
@@ -2069,10 +2072,10 @@ void TracePartFunction::update()
       // detect simple recursion (no cycle)
       if (calling->isRecursion()) continue;
 
-      addCumulative(calling);
+      addInclusive(calling);
     }
     _dirty = false; // don't recurse!
-    addCumulative(this);
+    addInclusive(this);
   }
 
   _dirty = false;
@@ -2137,8 +2140,7 @@ TracePartObject::~TracePartObject()
 TraceInstrJump::TraceInstrJump(TraceInstr* instrFrom, TraceInstr* instrTo,
 			       bool isCondJump)
 {
-  // we are the owner of TracePartInstrJump's generated in our factory
-  _deps.setAutoDelete(true);
+  _first = 0;
 
   _instrFrom = instrFrom;
   _instrTo = instrTo;
@@ -2146,19 +2148,54 @@ TraceInstrJump::TraceInstrJump(TraceInstr* instrFrom, TraceInstr* instrTo,
 }
 
 TraceInstrJump::~TraceInstrJump()
-{}
-
+{
+  // we are the owner of the TracePartInstrJump's generated in our factory
+  TracePartInstrJump* item = _first, *next;
+  while(item) {
+    next = item->next();
+    delete item;
+    item = next;
+  }
+}
 
 TracePartInstrJump* TraceInstrJump::partInstrJump(TracePart* part)
 {
-  TracePartInstrJump* item = (TracePartInstrJump*) findDep(part);
+  static TracePartInstrJump* item = 0;
+
+  // shortcut
+  if (item && (item->instrJump()==this) && (item->part() == part)) return item;
+
+  for(item = _first; item; item = item->next())
+    if (item->part() == part) break;
+
   if (!item) {
-    item = new TracePartInstrJump(this, part);
-    addDep(item);
+    item = new TracePartInstrJump(this, _first, part);
+    _first = item;
   }
   return item;
 }
 
+void TraceInstrJump::update()
+{
+  if (!_dirty) return;
+
+  clear();
+  TracePartInstrJump* item;
+  for (item = _first; item; item = item->next()) {
+    if (!item->part() || !item->part()->isActive()) continue;
+
+    addCost(item);
+  }
+  _dirty = false;
+
+#if TRACE_DEBUG
+  qDebug("updated %s", fullName().ascii());
+#endif
+
+#if TRACE_DEBUG
+  qDebug("   > %s", costString(0).ascii());
+#endif
+}
 
 QString TraceInstrJump::name() const
 {
@@ -2233,7 +2270,7 @@ TraceLineJump::~TraceLineJump()
 
 TracePartLineJump* TraceLineJump::partLineJump(TracePart* part)
 {
-  TracePartLineJump* item = (TracePartLineJump*) findDep(part);
+  TracePartLineJump* item = (TracePartLineJump*) findDepFromPart(part);
   if (!item) {
     item = new TracePartLineJump(this, part);
     addDep(item);
@@ -2309,7 +2346,7 @@ TraceInstrCall::~TraceInstrCall()
 TracePartInstrCall* TraceInstrCall::partInstrCall(TracePart* part,
 						  TracePartCall*)
 {
-  TracePartInstrCall* item = (TracePartInstrCall*) findDep(part);
+  TracePartInstrCall* item = (TracePartInstrCall*) findDepFromPart(part);
   if (!item) {
     item = new TracePartInstrCall(this, part);
     addDep(item);
@@ -2346,7 +2383,7 @@ TraceLineCall::~TraceLineCall()
 TracePartLineCall* TraceLineCall::partLineCall(TracePart* part,
                                                TracePartCall* partCall)
 {
-  TracePartLineCall* item = (TracePartLineCall*) findDep(part);
+  TracePartLineCall* item = (TracePartLineCall*) findDepFromPart(part);
   if (!item) {
     item = new TracePartLineCall(this, part);
     addDep(item);
@@ -2383,7 +2420,7 @@ TracePartCall* TraceCall::partCall(TracePart* part,
                                    TracePartFunction* partCaller,
                                    TracePartFunction* partCalling)
 {
-  TracePartCall* item = (TracePartCall*) findDep(part);
+  TracePartCall* item = (TracePartCall*) findDepFromPart(part);
   if (!item) {
     item = new TracePartCall(this, part);
     addDep(item);
@@ -2475,10 +2512,10 @@ void TraceCall::update()
   // special handling for cycles
   if (_caller && _caller->cycle() && _caller==_caller->cycle()) {
 
-    // we have no part calls: use cumulative cost of called function
+    // we have no part calls: use inclusive cost of called function
     clear();
     if (_called)
-      addCost(_called->cumulative());
+      addCost(_called->inclusive());
     _dirty = false;
     return;
   }
@@ -2578,7 +2615,7 @@ bool TraceInstr::hasCost(TraceCostType* ct)
 TracePartInstr* TraceInstr::partInstr(TracePart* part,
 				      TracePartFunction* partFunction)
 {
-  TracePartInstr* item = (TracePartInstr*) findDep(part);
+  TracePartInstr* item = (TracePartInstr*) findDepFromPart(part);
   if (!item) {
     item = new TracePartInstr(this, part);
     addDep(item);
@@ -2676,7 +2713,7 @@ bool TraceLine::hasCost(TraceCostType* ct)
 TracePartLine* TraceLine::partLine(TracePart* part,
                                    TracePartFunction* partFunction)
 {
-  TracePartLine* item = (TracePartLine*) findDep(part);
+  TracePartLine* item = (TracePartLine*) findDepFromPart(part);
   if (!item) {
     item = new TracePartLine(this, part);
     addDep(item);
@@ -2901,7 +2938,7 @@ TraceLineMap* TraceFunctionSource::lineMap()
    * - build TraceLines (the line map) using FixCost objects
    * - build TraceJumpLines using FixJump objects
    */
-  TraceCumulativeCostList pfList = _function->deps();
+  TraceInclusiveCostList pfList = _function->deps();
   TracePartFunction* pf = (TracePartFunction*) pfList.first();
   for(; pf; pf = (TracePartFunction*) pfList.next()) {
 
@@ -3394,7 +3431,7 @@ TracePartFunction* TraceFunction::partFunction(TracePart* part,
                                                TracePartFile* partFile,
                                                TracePartObject* partObject)
 {
-  TracePartFunction* item = (TracePartFunction*) findDep(part);
+  TracePartFunction* item = (TracePartFunction*) findDepFromPart(part);
   if (!item) {
     item = new TracePartFunction(this, part, partObject, partFile);
     addDep(item);
@@ -3544,29 +3581,29 @@ void TraceFunction::update()
 
   if (_data->inFunctionCycleUpdate() || !_cycle) {
       // usual case (no cycle member)
-      TraceCumulativeCost* item;
+      TraceInclusiveCost* item;
       for (item=_deps.first();item;item=_deps.next()) {
 	  if (!item->part() || !item->part()->isActive()) continue;
 
 	  addCost(item);
-	  addCumulative(item->cumulative());
+	  addInclusive(item->inclusive());
       }
   }
   else {
     // this is a cycle or cycle member
     for (calling=_callings.first();calling;calling=_callings.next()) {
 
-	// ignore inner-cycle member calls for cumulative cost
+	// ignore inner-cycle member calls for inclusive cost
 	if ((_cycle != this) &&
 	    (calling->inCycle()>0))  continue;
 
-	addCumulative(calling);
+	addInclusive(calling);
     }
 
     // self cost
     if (type() == FunctionCycle) {
       // cycle: self cost is sum of cycle member self costs, but
-      //        doesn't add to cumulative cost
+      //        doesn't add to inclusive cost
       TraceFunctionList mList = ((TraceFunctionCycle*)this)->members();
       TraceFunction* m;
       for (m=mList.first();m;m=mList.next())
@@ -3574,14 +3611,14 @@ void TraceFunction::update()
     }
     else {
       // cycle member
-      TraceCumulativeCost* item;
+      TraceInclusiveCost* item;
       for (item=_deps.first();item;item=_deps.next()) {
 	if (!item->part() || !item->part()->isActive()) continue;
 	
 	addCost(item);
       }
       _dirty = false; // don't recurse
-      addCumulative(this);
+      addInclusive(this);
     }
   }
   _dirty = false;
@@ -3637,7 +3674,7 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
 	  if (caller->subCost(0) > base)
 	      base = caller->subCost(0);
   }
-  else base = cumulative()->subCost(0);
+  else base = inclusive()->subCost(0);
 
   SubCost cutLimit = SubCost(base * Configuration::cycleCut());
 
@@ -3646,7 +3683,7 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
 	     QString().fill(' ', d).ascii(), pNo, prettyName().ascii());
       qDebug("%s       Cum. %s, Max Caller %s, cut limit %s",
 	     QString().fill(' ', d).ascii(),
-	     cumulative()->subCost(0).pretty().ascii(),
+	     inclusive()->subCost(0).pretty().ascii(),
 	     base.pretty().ascii(),
 	     cutLimit.pretty().ascii());
   }
@@ -3727,7 +3764,7 @@ TraceInstrMap* TraceFunction::instrMap()
   TraceInstrCall* ic = 0;
   TracePartInstrCall* pic = 0;
 
-  TraceCumulativeCostList pfList = deps();
+  TraceInclusiveCostList pfList = deps();
   TracePartFunction* pf = (TracePartFunction*) pfList.first();
   for(; pf; pf = (TracePartFunction*) pfList.next()) {
 
@@ -3912,7 +3949,7 @@ QString TraceClass::prettyName() const
 
 TracePartClass* TraceClass::partClass(TracePart* part)
 {
-  TracePartClass* item = (TracePartClass*) findDep(part);
+  TracePartClass* item = (TracePartClass*) findDepFromPart(part);
   if (!item) {
     item = new TracePartClass(this, part);
     addDep(item);
@@ -3958,7 +3995,7 @@ TraceFile::~TraceFile()
 
 TracePartFile* TraceFile::partFile(TracePart* part)
 {
-  TracePartFile* item = (TracePartFile*) findDep(part);
+  TracePartFile* item = (TracePartFile*) findDepFromPart(part);
   if (!item) {
     item = new TracePartFile(this, part);
     addDep(item);
@@ -4065,7 +4102,7 @@ TraceObject::~TraceObject()
 
 TracePartObject* TraceObject::partObject(TracePart* part)
 {
-  TracePartObject* item = (TracePartObject*) findDep(part);
+  TracePartObject* item = (TracePartObject*) findDepFromPart(part);
   if (!item) {
     item = new TracePartObject(this, part);
     addDep(item);
@@ -4729,7 +4766,7 @@ TraceCost* TraceData::search(TraceItem::CostType t, QString name,
 		if ((pt == Object) && (parent != f->object())) continue;
 
 		if (ct) {
-		    sc = f->cumulative()->subCost(ct);
+		    sc = f->inclusive()->subCost(ct);
 		    if (sc <= scTop) continue;
 		    scTop = sc;
 		}

@@ -32,7 +32,7 @@ class PartAreaWidget: public TreeMapWidget
 
 public:
   // Visualisation inside of trace parts
-  enum VisualisationMode { NoVisualisation, Partitioning, Cumulative };
+  enum VisualisationMode { NoVisualisation, Partitioning, Inclusive };
 
   PartAreaWidget(QWidget* parent=0, const char* name=0);
 

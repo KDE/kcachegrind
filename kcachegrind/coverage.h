@@ -52,20 +52,20 @@ public:
 
   TraceFunction* function() { return _function; }
   double self() { return _self; }
-  double cumulative() { return _cum; }
+  double inclusive() { return _incl; }
   double firstPercentage() { return _firstPercentage; }
   double& callCount() { return _callCount; }
   int minDistance() { return _minDistance; }
   int maxDistance() { return _maxDistance; }
-  int cumulativeMedian();
+  int inclusiveMedian();
   int selfMedian();
   double* selfHistogram() { return _selfHisto; }
-  double* cumulativeHistogram() { return _cumHisto; }
+  double* inclusiveHistogram() { return _inclHisto; }
   bool isActive() { return _active; }
   bool inRecursion() { return _inRecursion; }
 
   void setSelf(float p) { _self = p; }
-  void setCumulative(float p) { _cum = p; }
+  void setInclusive(float p) { _incl = p; }
   void setCallCount(float cc) { _callCount = cc; }
   void setActive(bool a) { _active = a; }
   void setInRecursion(bool r) { _inRecursion = r; }
@@ -88,11 +88,11 @@ private:
   void addCallerCoverage(TraceFunctionList& l, double, int d);
   void addCallingCoverage(TraceFunctionList& l, double, double, int d);
 
-  double _self, _cum, _firstPercentage, _callCount;
+  double _self, _incl, _firstPercentage, _callCount;
   int _minDistance, _maxDistance;
   bool _active, _inRecursion;
   double _selfHisto[maxHistogramDepthValue];
-  double _cumHisto[maxHistogramDepthValue];
+  double _inclHisto[maxHistogramDepthValue];
 
   // temporary set for one coverage analysis
   static TraceCostType* _costType;

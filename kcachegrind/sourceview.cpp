@@ -92,8 +92,8 @@ QString SourceView::whatsThis() const
 		 "code of this source line. If there was a call "
 		 "in a source line, lines with details on the "
 		 "call happening are inserted into the source: "
-		 "These are (cumulative) cost spent inside of the call, "
-		 "number of calls happening, and call destination.</p>"
+		 "the cost spent inside of the call, the "
+		 "number of calls happening, and the call destination.</p>"
 		 "<p>Select a inserted call information line to "
 		 "make the destination function current.</p>");
 }

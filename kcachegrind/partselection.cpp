@@ -399,7 +399,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
   case 30:
     partAreaWidget->setVisualisation(!vpopup.isItemChecked(30) ?
                                      PartAreaWidget::Partitioning :
-                                     PartAreaWidget::Cumulative);
+                                     PartAreaWidget::Inclusive);
     break;
 
   case 31:
@@ -437,7 +437,7 @@ void PartSelection::readVisualisationConfig(KConfigGroup* config)
 
   QString mode = config->readEntry("GraphMode", "Cumulative");
   if (mode == "Cumulative")
-    partAreaWidget->setVisualisation(PartAreaWidget::Cumulative);
+    partAreaWidget->setVisualisation(PartAreaWidget::Inclusive);
   else
     partAreaWidget->setVisualisation(PartAreaWidget::Partitioning);
 
@@ -466,7 +466,7 @@ void PartSelection::readVisualisationConfig(KConfigGroup* config)
 void PartSelection::saveVisualisationConfig(KConfigGroup* config)
 {
   QString mode;
-  if (partAreaWidget->visualisation() == PartAreaWidget::Cumulative)
+  if (partAreaWidget->visualisation() == PartAreaWidget::Inclusive)
     mode = "Cumulative";
   else
     mode = "Partitioning";

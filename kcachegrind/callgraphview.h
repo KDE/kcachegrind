@@ -82,7 +82,7 @@ public:
   TraceCall* priorVisibleCaller(GraphEdge*);
   TraceCall* priorVisibleCalling(GraphEdge*);
 
-  double self, cum;
+  double self, incl;
   GraphEdgeList callers, callings;
 
  private:

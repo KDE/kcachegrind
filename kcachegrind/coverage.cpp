@@ -36,7 +36,7 @@ Coverage::Coverage()
 void Coverage::init()
 {
   _self = 0.0;
-  _cum  = 0.0;
+  _incl  = 0.0;
   _callCount = 0.0;
   // should always be overwritten before usage
   _firstPercentage = 1.0;
@@ -46,19 +46,19 @@ void Coverage::init()
   _inRecursion = false;
   for (int i = 0;i<maxHistogramDepth;i++) {
     _selfHisto[i] = 0.0;
-    _cumHisto[i] = 0.0;
+    _inclHisto[i] = 0.0;
   }
 
   _valid = true;
 }
 
-int Coverage::cumulativeMedian()
+int Coverage::inclusiveMedian()
 {
-  double maxP = _cumHisto[0];
+  double maxP = _inclHisto[0];
   int medD = 0;
   for (int i = 1;i<maxHistogramDepth;i++)
-    if (_cumHisto[i]>maxP) {
-      maxP = _cumHisto[i];
+    if (_inclHisto[i]>maxP) {
+      maxP = _inclHisto[i];
       medD = i;
     }
 
@@ -109,13 +109,13 @@ void Coverage::addCallerCoverage(TraceFunctionList& fList,
 
   if (_inRecursion) return;
 
-  double cum;
-  cum  = (double) (_function->cumulative()->subCost(_costType));
+  double incl;
+  incl  = (double) (_function->inclusive()->subCost(_costType));
 
   if (_active) {
 #ifdef DEBUG_COVERAGE
-    qDebug("CallerCov: D %d, %s (was active, cum %f, self %f): newP %f", d,
-           _function->prettyName().ascii(), _cum, _self, pBack);
+    qDebug("CallerCov: D %d, %s (was active, incl %f, self %f): newP %f", d,
+           _function->prettyName().ascii(), _incl, _self, pBack);
 #endif
     _inRecursion = true;
   }
@@ -124,21 +124,21 @@ void Coverage::addCallerCoverage(TraceFunctionList& fList,
 
     // only add cost if this is no recursion
 
-    _cum += pBack;
+    _incl += pBack;
     _firstPercentage = pBack;
 
     if (_minDistance > d) _minDistance = d;
     if (_maxDistance < d) _maxDistance = d;
     if (d<maxHistogramDepth) {
-      _cumHisto[d] += pBack;
+      _inclHisto[d] += pBack;
     }
     else {
-      _cumHisto[maxHistogramDepth-1] += pBack;
+      _inclHisto[maxHistogramDepth-1] += pBack;
     }
 
 #ifdef DEBUG_COVERAGE
-    qDebug("CallerCov: D %d, %s (now active, new cum %f): newP %f",
-           d, _function->prettyName().ascii(), _cum, pBack);
+    qDebug("CallerCov: D %d, %s (now active, new incl %f): newP %f",
+           d, _function->prettyName().ascii(), _incl, pBack);
 #endif
   }
 
@@ -166,7 +166,7 @@ void Coverage::addCallerCoverage(TraceFunctionList& fList,
       if (c->inRecursion()) continue;
 
       callVal = (double) call->subCost(_costType);
-      pBackNew = pBack * (callVal / cum);
+      pBackNew = pBack * (callVal / incl);
 
       // FIXME ?!?
 
@@ -211,13 +211,13 @@ void Coverage::addCallingCoverage(TraceFunctionList& fList,
   static const char* spaces = "                                            ";
 #endif
 
-  double self, cum;
-  cum  = (double) (_function->cumulative()->subCost(_costType));
+  double self, incl;
+  incl  = (double) (_function->inclusive()->subCost(_costType));
 
 #ifdef DEBUG_COVERAGE
-    qDebug("CngCov:%s - %s (cum %f, self %f): forward %f, back %f",
+    qDebug("CngCov:%s - %s (incl %f, self %f): forward %f, back %f",
 	   spaces+strlen(spaces)-d,
-           _function->prettyName().ascii(), _cum, _self, pForward, pBack);
+           _function->prettyName().ascii(), _incl, _self, pForward, pBack);
 #endif
 
 
@@ -235,26 +235,26 @@ void Coverage::addCallingCoverage(TraceFunctionList& fList,
     _active = true;
 
     // only add cost if this is no recursion
-    self = pForward * (_function->subCost(_costType)) / cum;
-    _cum += pForward;
+    self = pForward * (_function->subCost(_costType)) / incl;
+    _incl += pForward;
     _self += self;
     _firstPercentage = pForward;
 
     if (_minDistance > d) _minDistance = d;
     if (_maxDistance < d) _maxDistance = d;
      if (d<maxHistogramDepth) {
-      _cumHisto[d] += pForward;
+      _inclHisto[d] += pForward;
       _selfHisto[d] += self;
     }
     else {
-      _cumHisto[maxHistogramDepth-1] += pForward;
+      _inclHisto[maxHistogramDepth-1] += pForward;
       _selfHisto[maxHistogramDepth-1] += self;
     }
 
 #ifdef DEBUG_COVERAGE
-    qDebug("CngCov:%s < %s (cum %f, self %f)",
+    qDebug("CngCov:%s < %s (incl %f, self %f)",
 	   spaces+strlen(spaces)-d,
-           _function->prettyName().ascii(), _cum, _self);
+           _function->prettyName().ascii(), _incl, _self);
 #endif
   }
 
@@ -282,9 +282,9 @@ void Coverage::addCallingCoverage(TraceFunctionList& fList,
       if (c->inRecursion()) continue;
 
       callVal = (double) call->subCost(_costType);
-      pForwardNew = pForward * (callVal / cum);
+      pForwardNew = pForward * (callVal / incl);
       pBackNew    = pBack * (callVal / 
-			     calling->cumulative()->subCost(_costType));
+			     calling->inclusive()->subCost(_costType));
 
       if (!c->isActive()) {
 	  c->callCount() += pBack * call->callCount();
