@@ -2373,7 +2373,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   QPopupMenu gpopup;
   gpopup.setCheckable(true);
   gpopup.insertItem(i18n("Caller Depth"), &gpopup1, 80);
-  gpopup.insertItem(i18n("Calling Depth"), &gpopup2, 81);
+  gpopup.insertItem(i18n("Callee Depth"), &gpopup2, 81);
   gpopup.insertItem(i18n("Min. Node Cost"), &gpopup3, 82);
   gpopup.insertItem(i18n("Min. Call Cost"), &gpopup4, 83);
   gpopup.insertSeparator();

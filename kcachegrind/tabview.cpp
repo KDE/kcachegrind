@@ -239,7 +239,7 @@ TabView::TabView(TraceItemView* parentView,
   QVBoxLayout* vbox = new QVBoxLayout( this, 6, 6);
 
   _nameLabel = new KSqueezedTextLabel( this, "nameLabel" );
-  _nameLabel->setText(i18n("(No trace file loaded)"));
+  _nameLabel->setText(i18n("(No profile data file loaded)"));
   vbox->addWidget( _nameLabel );
 
   _mainSplitter   = new QSplitter(Qt::Horizontal, this);

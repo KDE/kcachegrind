@@ -43,7 +43,7 @@ PartView::PartView(TraceItemView* parentView,
 {
     _inSelectionUpdate = false;
 
-    addColumn( i18n( "Trace Part" ) );
+    addColumn( i18n( "Profile Part" ) );
     addColumn( i18n( "Incl." ) );
     addColumn( i18n( "Self" ) );
     addColumn( i18n( "Called" ) );

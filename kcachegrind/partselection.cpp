@@ -134,7 +134,7 @@ void PartSelection::currentChangedSlot(TreeMapItem* i, bool kbd)
   QString str = i->text(0);
   if (!i->text(1).isEmpty())
     str += " (" + i->text(1) + ")";
-  QString msg = i18n("Trace Part Overview: Current is '%1'").arg(str);
+  QString msg = i18n("Profile Part Overview: Current is '%1'").arg(str);
   emit showMessage(msg, 5000);
 
   if (_showInfo) fillInfo();

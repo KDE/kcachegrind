@@ -427,7 +427,7 @@ void InstrView::refresh()
     }
     if (!instrMap || (it == itEnd)) {
 	new InstrItem(this, this, 1,
-		      i18n("There is no instruction info in the trace file."));
+		      i18n("There is no instruction info in the profile data file."));
 	new InstrItem(this, this, 2,
 		      i18n("For the Valgrind Calltree Skin, rerun with option"));
 	new InstrItem(this, this, 3, i18n("      --dump-instr=yes"));
@@ -868,10 +868,10 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 		      i18n("This happens because the code of"));
 	new InstrItem(this, this, 3, QString("        %1").arg(objfile));
 	new InstrItem(this, this, 4,
-		      i18n("doesn't seem to match the trace file."));
+		      i18n("doesn't seem to match the profile data file."));
 	new InstrItem(this, this, 5, "");
 	new InstrItem(this, this, 6,
-		      i18n("Are you using an old trace file or is the above mentioned"));
+		      i18n("Are you using an old profile data file or is the above mentioned"));
 	new InstrItem(this, this, 7,
 		      i18n("ELF object from an updated installation/another machine?"));
 	new InstrItem(this, this, 8, "");

@@ -223,7 +223,7 @@ QString TraceItem::typeName(CostType t)
        strs[File] = I18N_NOOP("Source File");
        strs[PartObject] = I18N_NOOP("Part ELF Object");
        strs[Object] = I18N_NOOP("ELF Object");
-       strs[Part] = I18N_NOOP("Trace Part");
+       strs[Part] = I18N_NOOP("Profile Part");
        strs[Data] = I18N_NOOP("Program Trace");
     }
     if (t<0 || t> MaxCostType) t = MaxCostType;

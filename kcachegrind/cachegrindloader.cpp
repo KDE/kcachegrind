@@ -141,7 +141,7 @@ private:
 
 CachegrindLoader::CachegrindLoader()
   : Loader("Callgrind",
-           i18n( "Import filter for Cachegrind/Callgrind generated trace files") )
+           i18n( "Import filter for Cachegrind/Callgrind generated profile data files") )
 {
   QString dummy("???");
   

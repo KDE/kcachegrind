@@ -669,7 +669,7 @@ TreeMapItemList* CallMapBaseItem::children()
     CallMapView* w = (CallMapView*)widget();
 
     if (0) qDebug("Create Function %s (%s)",
-		  w->showCallers() ? "Callers":"Callings",
+		  w->showCallers() ? "Callers":"Callees",
 		  text(0).ascii());
 
     TraceCall* call;

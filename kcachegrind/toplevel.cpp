@@ -288,7 +288,7 @@ void TopLevel::createDocks()
   QWhatsThis::add( _partSelection, i18n(
                    "<b>The Parts Overview</b>"
                    "<p>A trace consists of multiple trace parts when "
-                   "there are several trace files from one profile run. "
+                   "there are several profile data files from one profile run. "
                    "The Trace Part Overview dockable shows these, "
                    "horizontally ordered in execution time; "
                    "the rectangle sizes are proportional to the total "
