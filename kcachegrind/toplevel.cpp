@@ -440,7 +440,7 @@ void TopLevel::createActions()
   action->setWhatsThis( hint );
 
   action = new KAction( i18n( "&Reload" ), "reload",
-                        KStdAccel::key(KStdAccel::Reload),
+                        KStdAccel::shortcut(KStdAccel::Reload),
                         this, SLOT( reload() ), actionCollection(), "reload" );
   hint = i18n("<b>Reload trace</b>"
               "<p>This loads any new created parts, too.</p>");
@@ -457,7 +457,7 @@ void TopLevel::createActions()
 
 
   _taDump = new KToggleAction( i18n( "&Force Dump" ), "redo",
-                               KStdAccel::key(KStdAccel::Redo),
+                               KStdAccel::shortcut(KStdAccel::Redo),
                                this, SLOT( forceTrace() ),
                                actionCollection(), "dump" );
   hint = i18n("<b>Force Dump</b>"
