@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Cachegrind/Callgrind Profile Dump
+Comment[ar]=التشكيل الجانبي لإخراج Cachegrid/Callgrind
 Comment[ca]=Resultat de l'anàlisis de Cachegrind/Callgring
 Comment[cs]=Data profilace Cachegrind/Callgrind
 Comment[cy]=Tomen Proffil Cachegrind/Callgrind
@@ -8,6 +9,7 @@ Comment[da]=Cachegrind/Callgrind profile-dump
 Comment[de]=Cachegrind/Callgrind Profil-Ausgabe
 Comment[es]=Resultado de análisis de Cachegrind/Callgring
 Comment[et]=Cachegrind/Callgrind profileerimistõmmis
+Comment[eu]=Cachegrind/Callgrind profil iraulketa
 Comment[fi]=Cachegrind/Callgrind profiililista
 Comment[fr]=Dépôt de profil Cachegrind / Callgrind
 Comment[hi]=केश-ग्रिंड/काल-ग्रिंड प्रोफ़ाइल डम्प
