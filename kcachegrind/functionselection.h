@@ -53,6 +53,9 @@ public:
   void addGroupMenu(QPopupMenu*);
 
 public slots:
+  void searchEntered();
+  void searchChanged(const QString&);
+  void queryDelayed();
   void groupDoubleClicked( QListViewItem* );
   void functionActivated( QListViewItem* );
   void groupSelected( QListViewItem* );
@@ -66,8 +69,13 @@ private:
   void selectFunction();
   void refresh();
   void setCostColumnWidths();
+  void updateGroupSizes();
 
   TraceCostItem* _group;
+
+  QString _searchString, _searchDelayed;
+  QTimer _searchTimer;
+  QMap<TraceCostItem*,int> _groupSize;
 
   HighestCostList _hc;
   // when setting a

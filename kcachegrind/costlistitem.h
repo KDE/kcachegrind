@@ -26,7 +26,7 @@ class CostListItem: public QListViewItem
 {
 public:
   CostListItem(QListView* parent, TraceCostItem* cost,
-               TraceCostType* ct);
+               TraceCostType* ct, int size = -1);
   // entry with multiple skipped items
   CostListItem(QListView* parent, int skipped, TraceCostItem* cost,
                TraceCostType* ct);
@@ -35,12 +35,18 @@ public:
   TraceCostItem* costItem() { return (_skipped) ? 0 : _costItem; }
   void setCostType(TraceCostType* ct);
   void update();
+  void setSize(int s);
 
 private:
+  void updateName();
+
   SubCost _pure;
   TraceCostType* _costType;
   TraceCostItem* _costItem;
+  // >0 only for last item in list, if items are skipped 
   int _skipped;
+  // number of items in group, is put in parenthesis after name
+  int _groupSize;
 };
 
 #endif

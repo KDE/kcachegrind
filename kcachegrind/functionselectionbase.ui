@@ -8,14 +8,14 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>230</width>
+            <width>223</width>
             <height>485</height>
         </rect>
     </property>
     <property name="caption">
         <string>Function Profile</string>
     </property>
-    <grid>
+    <vbox>
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
@@ -25,7 +25,38 @@
         <property name="spacing">
             <number>6</number>
         </property>
-        <widget class="QListView" row="1" column="0" rowspan="1" colspan="2">
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout1</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>searchLabel</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Search:</string>
+                    </property>
+                    <property name="buddy" stdset="0">
+                        <cstring>searchEdit</cstring>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>searchEdit</cstring>
+                    </property>
+                </widget>
+                <widget class="QComboBox">
+                    <property name="name">
+                        <cstring>groupBox</cstring>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QListView">
             <column>
                 <property name="text">
                     <string>Self</string>
@@ -66,7 +97,7 @@
                 </size>
             </property>
         </widget>
-        <widget class="QListView" row="3" column="0" rowspan="1" colspan="2">
+        <widget class="QListView">
             <column>
                 <property name="text">
                     <string>Incl.</string>
@@ -126,7 +157,7 @@
                 <cstring>functionList</cstring>
             </property>
         </widget>
-    </grid>
+    </vbox>
 </widget>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

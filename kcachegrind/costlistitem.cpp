@@ -34,17 +34,18 @@
 
 
 CostListItem::CostListItem(QListView* parent, TraceCostItem* costItem,
-                           TraceCostType* ct)
+                           TraceCostType* ct, int size)
   :QListViewItem(parent)
 {
+  _groupSize = size;
   _skipped = 0;
   _costItem = costItem;
   setCostType(ct);
 
   if (costItem) {
-      setText(1, costItem->prettyName());
-      setPixmap(1, colorPixmap(10, 10,
-			       Configuration::groupColor(_costItem)));
+    updateName();
+    setPixmap(1, colorPixmap(10, 10,
+			     Configuration::groupColor(_costItem)));
   }
 }
 
@@ -63,6 +64,22 @@ void CostListItem::setCostType(TraceCostType* ct)
 {
   _costType = ct;
   update();
+}
+
+void CostListItem::updateName()
+{
+  if (!_costItem) return;
+
+  QString n = _costItem->prettyName();
+  if (_groupSize>=0) n += QString(" (%1)").arg(_groupSize);
+
+  setText(1, n);
+}
+
+void CostListItem::setSize(int s)
+{
+  _groupSize = s;
+  updateName();
 }
 
 void CostListItem::update()

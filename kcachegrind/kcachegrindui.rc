@@ -51,12 +51,7 @@
   <Action name="view_expanded"/>
   <Action name="view_cycles"/>
  </ToolBar>
- <ToolBar name="queryToolBar" noMerge="1"><text>Query Toolbar</text> 
-  <Action name="query_label"/>
-  <Action name="query"/>
- </ToolBar>
  <ToolBar name="stateToolBar" noMerge="1"><text>State Toolbar</text> 
   <Action name="view_cost_type"/>
-  <Action name="view_group_type"/>
  </ToolBar>
 </kpartgui>

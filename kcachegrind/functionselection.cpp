@@ -48,6 +48,27 @@ FunctionSelection::FunctionSelection( TopLevel* top,
   _inSetGroup = false;
   _inSetFunction = false;
 
+  QStringList args;
+  args << i18n("(No Grouping)")
+       << TraceCost::i18nTypeName(TraceItem::Object)
+       << TraceCost::i18nTypeName(TraceItem::File)
+       << TraceCost::i18nTypeName(TraceItem::Class)
+       << TraceCost::i18nTypeName(TraceItem::FunctionCycle);
+  
+  groupBox->insertStringList(args);
+  // this needs same order of grouptype actionlist!
+  connect(groupBox, SIGNAL(activated(int)),
+	  top, SLOT(groupTypeSelected(int)));
+
+  // search while typing...
+  connect(searchEdit, SIGNAL(textChanged(const QString&)),
+	  this, SLOT(searchChanged(const QString&)));
+  // for searches with 1/2 chars, press return
+  connect(searchEdit, SIGNAL(returnPressed()),
+	  this, SLOT(searchEntered()));
+  connect(&_searchTimer, SIGNAL(timeout()),
+	  this, SLOT(queryDelayed()));
+
   // we start with desending cost sorting
   functionList->setSorting(0,false);
   functionList->setColumnAlignment(0, Qt::AlignRight);
@@ -103,6 +124,26 @@ FunctionSelection::FunctionSelection( TopLevel* top,
 
 FunctionSelection::~FunctionSelection()
 {
+}
+
+void FunctionSelection::searchEntered()
+{
+  query(searchEdit->text());
+}
+
+// trigger the query after some delay, dependent on length
+void FunctionSelection::searchChanged(const QString& q)
+{
+  _searchDelayed = q;
+  int ms = 100;
+  if (q.length()<5) ms = 200;
+  if (q.length()<2) ms = 300;
+  _searchTimer.start(ms,true);
+}
+
+void FunctionSelection::queryDelayed()
+{
+  query(_searchDelayed);
 }
 
 void FunctionSelection::functionContext(QListViewItem* i,
@@ -236,6 +277,10 @@ void FunctionSelection::doUpdate(int changeType)
 	// active item is a function
 	TraceFunction* f = (TraceFunction*) _activeItem;
 
+	// reset searchEdit
+	_searchString = QString::null;
+	query(QString::null);
+
 	// select cost item group of function
 	switch(_groupType) {
 	case TraceItem::Object: setGroup(f->object()); break;
@@ -279,11 +324,25 @@ void FunctionSelection::doUpdate(int changeType)
 	    }
 	}
 
+	int id;
+	switch(_groupType) {
+	case TraceItem::Object: id = 1; break;
+	case TraceItem::File:   id = 2; break;
+	case TraceItem::Class:  id = 3; break;
+	case TraceItem::FunctionCycle: id = 4; break;
+	default: id = 0; break;
+	}
+	groupBox->setCurrentItem(id);
+
 	if (_groupType == TraceItem::Function)
 	    groupList->hide();
 	else
 	    groupList->show();
     }
+
+    // reset searchEdit
+    _searchString = QString::null;
+    query(QString::null);
 
     refresh();
 }
@@ -547,10 +606,14 @@ void FunctionSelection::groupSelected(QListViewItem* i)
   }
 #endif
 
+  QRegExp re(_searchString, false, true);
+
   FunctionItem* fitem = 0;
   TraceFunction *f;
   _hc.clear(Configuration::maxListCount());
   for (f=list.first();f;f=list.next()) {
+    if (re.search(f->prettyName())<0) continue;
+
     _hc.addCost(f, f->inclusive()->subCost(_costType));
     if (_activeItem == f)
       fitem = new FunctionItem(functionList, (TraceFunction*)_activeItem,
@@ -643,58 +706,80 @@ void FunctionSelection::functionActivated(QListViewItem* i)
     activated(f);
 }
 
+void FunctionSelection::updateGroupSizes()
+{
+  QListViewItem* item  = groupList->firstChild();
+  for (;item;item = item->nextSibling()) {
+    CostListItem* i = (CostListItem*)item;
+    if (_groupSize.contains(i->costItem()))
+      i->setSize(_groupSize[i->costItem()]);
+    else
+      i->setSize(-1);
+  }
+}
 
 void FunctionSelection::query(QString query)
 {
-  QRegExp re(query, false, true);
-
-  TraceFunctionList list;
-  if (_group) {
-    switch(_groupType) {
-    case TraceItem::Object:
-      list = ((TraceObject*)_group)->functions();
-      break;
-    case TraceItem::Class:
-      list = ((TraceClass*)_group)->functions();
-      break;
-    case TraceItem::File:
-      list = ((TraceFile*)_group)->functions();
-      break;
-    case TraceItem::FunctionCycle:
-      list = ((TraceFunctionCycle*)_group)->members();
-      break;
-    default:
-      break;
+  if (searchEdit->text() != query)
+    searchEdit->setText(query);
+  if (_searchString == query) {
+    // when resetting query, get rid of group sizes
+    if (query.isEmpty()) {
+      _groupSize.clear();
+      updateGroupSizes();
     }
+    return;
   }
+  _searchString = query;
 
-  TraceFunction* f;
+  QRegExp re(query, false, true);
+  _groupSize.clear();
+
+  TraceFunction* f = 0;
   TraceFunctionList list2;
 
   _hc.clear(Configuration::maxListCount());
 
-  if (_groupType == TraceItem::Function) {
-    TraceFunctionMap::Iterator it;
-    for ( it = _data->functionMap().begin();
-          it != _data->functionMap().end(); ++it ) {
-	f = &(*it);
-	if (re.search(f->prettyName())>=0)
-	    _hc.addCost(f, f->inclusive()->subCost(_costType));
-    }
-
-    TraceFunctionCycleList l =  _data->functionCycles();
-    for (f=l.first();f;f=l.next()) {
-      if (re.search(f->prettyName())>=0)
-	  _hc.addCost(f, f->inclusive()->subCost(_costType));
+  TraceFunctionMap::Iterator it;
+  for ( it = _data->functionMap().begin();
+	it != _data->functionMap().end(); ++it ) {
+    f = &(*it);
+    if (re.search(f->prettyName())>=0) {
+      if (_group) {
+	if (_groupType==TraceItem::Object) {
+	  if (_groupSize.contains(f->object()))
+	    _groupSize[f->object()]++;
+	  else
+	    _groupSize[f->object()] = 1;
+	  if (f->object() != _group) continue;
+	}
+	else if (_groupType==TraceItem::Class) {
+	  if (_groupSize.contains(f->cls()))
+	    _groupSize[f->cls()]++;
+	  else
+	    _groupSize[f->cls()] = 1;
+	  if (f->cls() != _group) continue;
+	}
+	else if (_groupType==TraceItem::File) {
+	  if (_groupSize.contains(f->file()))
+	    _groupSize[f->file()]++;
+	  else
+	    _groupSize[f->file()] = 1;
+	  if (f->file() != _group) continue;
+	}
+	else if (_groupType==TraceItem::FunctionCycle) {
+	  if (_groupSize.contains(f->cycle()))
+	    _groupSize[f->cycle()]++;
+	  else
+	    _groupSize[f->cycle()] = 1;
+	  if (f->cycle() != _group) continue;
+	}
+      }
+      _hc.addCost(f, f->inclusive()->subCost(_costType));
     }
   }
-  else {
-    for (f=list.first();f;f=list.next()) {
-      if (re.search(f->name())>=0)
-	  _hc.addCost(f, f->inclusive()->subCost(_costType));
-    }
-  }
 
+  updateGroupSizes();
 
   FunctionItem *fi, *item = 0;
 
