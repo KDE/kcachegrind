@@ -597,21 +597,23 @@ void FunctionSelection::query(QString query)
   QRegExp re(query, false, true);
 
   TraceFunctionList list;
-  switch(_groupType) {
-  case TraceItem::Object:
-    list = ((TraceObject*)_group)->functions();
-    break;
-  case TraceItem::Class:
-    list = ((TraceClass*)_group)->functions();
-    break;
-  case TraceItem::File:
-    list = ((TraceFile*)_group)->functions();
-    break;
-  case TraceItem::FunctionCycle:
-    list = ((TraceFunctionCycle*)_group)->members();
-    break;
-  default:
-    break;
+  if (_group) {
+    switch(_groupType) {
+    case TraceItem::Object:
+      list = ((TraceObject*)_group)->functions();
+      break;
+    case TraceItem::Class:
+      list = ((TraceClass*)_group)->functions();
+      break;
+    case TraceItem::File:
+      list = ((TraceFile*)_group)->functions();
+      break;
+    case TraceItem::FunctionCycle:
+      list = ((TraceFunctionCycle*)_group)->members();
+      break;
+    default:
+      break;
+    }
   }
 
   TraceFunction* f;
