@@ -36,7 +36,7 @@
 // InstrItem
 
 // for messages
-InstrItem::InstrItem(QListView* parent, uint addr, const QString& msg)
+InstrItem::InstrItem(QListView* parent, Addr addr, const QString& msg)
     : QListViewItem(parent)
 {
     _addr = addr;
@@ -45,7 +45,7 @@ InstrItem::InstrItem(QListView* parent, uint addr, const QString& msg)
     _instrJump = 0;
     _inside = false;
 
-    setText(0, QString::number(addr,16));
+    setText(0, addr.pretty());
     setText(5, msg);
 
     setCostType(0);
@@ -53,7 +53,7 @@ InstrItem::InstrItem(QListView* parent, uint addr, const QString& msg)
 }
 
 // for code lines
-InstrItem::InstrItem(QListView* parent, uint addr, bool inside,
+InstrItem::InstrItem(QListView* parent, Addr addr, bool inside,
 		     const QString& code, const QString& cmd,
 		     const QString& args,
 		     TraceInstr* instr, TraceCostType* ct)
@@ -68,7 +68,7 @@ InstrItem::InstrItem(QListView* parent, uint addr, bool inside,
   if (args == "...")
       setText(0, args);
   else
-      setText(0, QString::number(addr,16));
+      setText(0, addr.pretty());
   setText(3, code);
   setText(4, cmd);
   setText(5, args);
@@ -82,7 +82,7 @@ InstrItem::InstrItem(QListView* parent, uint addr, bool inside,
 }
 
 // for call lines
-InstrItem::InstrItem(QListViewItem* parent, uint addr,
+InstrItem::InstrItem(QListViewItem* parent, Addr addr,
 		     TraceInstr* instr, TraceInstrCall* instrCall,
 		     TraceCostType* ct,
 		     TraceCost::CostType gt)
@@ -116,7 +116,7 @@ InstrItem::InstrItem(QListViewItem* parent, uint addr,
 }
 
 // for jump lines
-InstrItem::InstrItem(QListViewItem* parent, uint addr,
+InstrItem::InstrItem(QListViewItem* parent, Addr addr,
 		     TraceInstr* instr, TraceInstrJump* instrJump)
     : QListViewItem(parent)
 {
@@ -134,11 +134,11 @@ InstrItem::InstrItem(QListViewItem* parent, uint addr,
       jStr = i18n("Jump %1 of %2 times to 0x%3")
 	  .arg(_instrJump->followedCount().pretty())
 	  .arg(_instrJump->executedCount().pretty())
-	  .arg(_instrJump->instrTo()->addr(), 0, 16);
+	  .arg(_instrJump->instrTo()->addr().toString());
   else
       jStr = i18n("Jump %1 times to 0x%2")
 	  .arg(_instrJump->executedCount().pretty())
-	  .arg(_instrJump->instrTo()->addr(), 0, 16);
+	  .arg(_instrJump->instrTo()->addr().toString());
 
   setText(5, jStr);
 

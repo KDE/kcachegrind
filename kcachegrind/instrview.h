@@ -59,7 +59,7 @@ private:
   void refresh();
   void setColumnWidths();
   void fillInstr();
-  void updateJumpArray(uint,InstrItem*,bool,bool);
+  void updateJumpArray(Addr,InstrItem*,bool,bool);
   bool fillInstrRange(TraceFunction*,
                       TraceInstrMap::Iterator,TraceInstrMap::Iterator);
   void updateInstrItems();

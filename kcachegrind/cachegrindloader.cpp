@@ -51,7 +51,7 @@ private:
   enum lineType { SelfCost, CallCost, BoringJump, CondJump };
   
   bool parsePosition(FixString& s,
-		     uint& newLineno, uint& newAddr);
+		     uint& newLineno, Addr& newAddr);
 
   // position setters
   void clearPosition();
@@ -79,7 +79,8 @@ private:
   // current position
   lineType nextLineType;
   bool hasLineInfo, hasAddrInfo;
-  uint currentLineno, currentAddr;
+  uint currentLineno;
+  Addr currentAddr;
   
     // current function/line
   TraceObject* currentObject;
@@ -106,7 +107,8 @@ private:
   // current jump
   TraceFile* currentJumpToFile;
   TraceFunction* currentJumpToFunction;
-  uint targetLineno, targetAddr;
+  uint targetLineno;
+  Addr targetAddr;
   SubCost jumpsFollowed, jumpsExecuted;
   
   /** Support for compressed string format
@@ -174,71 +176,75 @@ Loader* createCachegrindLoader()
  * Return false if this is no position specification
  */
 bool CachegrindLoader::parsePosition(FixString& line,
-				     uint& newLineno, uint& newAddr)
+				     uint& newLineno, Addr& newAddr)
 {
-    uint *newPos, *lastPos, diff;
     char c;
+    uint diff;
 
     if (hasAddrInfo) {
-	newPos  = &newAddr;
-	lastPos = &currentAddr;
-    }
-    else {
-	newPos  = &newLineno;
-	lastPos = &currentLineno;
-    }
+      
+      if (!line.first(c)) return false;
 
-    if (!line.first(c)) return false;
-
-    if (c == '*') {
+      if (c == '*') {
 	// nothing changed
 	line.stripFirst(c);
 	line.stripSpaces();
-    }
-    else if (c == '+') {
+	newAddr = currentAddr;
+      }
+      else if (c == '+') {
 	line.stripFirst(c);
 	line.stripUInt(diff);
-	*newPos = *lastPos + diff;
-    }
-    else if (c == '-') {
+	newAddr = currentAddr + diff;
+      }
+      else if (c == '-') {
 	line.stripFirst(c);
 	line.stripUInt(diff);
-	*newPos = *lastPos - diff;
+	newAddr = currentAddr - diff;
+      }
+      else if (c >= '0') {
+	uint64 v;
+	line.stripUInt64(v);
+	newAddr = Addr(v);
+      }
+      else return false;
+
+#if TRACE_LOADER
+      kdDebug() << " Got Addr " << newAddr.toString() << endl;
+#endif
+
     }
-    else if (c >= '0') {
-	line.stripUInt(*newPos);
-    }
-    else return false;
+    
+    if (hasLineInfo) {
 
-    // if there's only one position spec, we are finished
-    if (! (hasAddrInfo && hasLineInfo)) return true;
+      if (!line.first(c)) return false;
 
-    // the second position must be a line
-    newPos  = &newLineno;
-    lastPos = &currentLineno;
-
-    if (!line.first(c)) return false;
-
-    if (c > '9') return false;
-    else if (c == '*') {
+      if (c > '9') return false;
+      else if (c == '*') {
 	// nothing changed
 	line.stripFirst(c);
 	line.stripSpaces();
-    }
-    else if (c == '+') {
+	newLineno = currentLineno;
+      }
+      else if (c == '+') {
 	line.stripFirst(c);
 	line.stripUInt(diff);
-	*newPos = *lastPos + diff;
-    }
-    else if (c == '-') {
+	newLineno = currentLineno + diff;
+      }
+      else if (c == '-') {
 	line.stripFirst(c);
 	line.stripUInt(diff);
-	*newPos = *lastPos - diff;
+	newLineno = currentLineno - diff;
+      }
+      else if (c >= '0') {
+	line.stripUInt(newLineno);
+      }
+      else return false;
+
+#if TRACE_LOADER
+      kdDebug() << " Got Line " << newLineno << endl;
+#endif
+
     }
-    else if (c >= '0') {
-	line.stripUInt(*newPos);
-    }
-    else return false;
 
     return true;
 }
@@ -989,7 +995,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
       new (pool) FixCost(part, pool,
 			 currentFunctionSource,
                          hasLineInfo ? currentLineno : 0,
-                         hasAddrInfo ? currentAddr : 0,
+                         hasAddrInfo ? currentAddr : Addr(0),
                          currentPartFunction,
                          line);
 #else
@@ -1029,7 +1035,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
       fcc = new (pool) FixCallCost(part, pool,
 				   currentFunctionSource,
 				   hasLineInfo ? currentLineno : 0,
-				   hasAddrInfo ? currentAddr : 0,
+				   hasAddrInfo ? currentAddr : Addr(0),
 				   partCalling,
 				   currentCallCount, line);
       fcc->setMax(_data->callMax());
@@ -1091,7 +1097,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 			 currentFunctionSource,
 			 /* target */
 			 hasLineInfo ? targetLineno : 0,
-			 hasAddrInfo ? targetAddr : 0,
+			 hasAddrInfo ? targetAddr : Addr(0),
 			 currentJumpToFunction,
 			 targetSource,
 			 (nextLineType == CondJump),
@@ -1100,9 +1106,9 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 
       if (0) {
 	kdDebug() << _filename << ":" << _lineNo
-		  << " - jump from 0x" << QString::number(currentAddr, 16)
+		  << " - jump from 0x" << currentAddr.toString()
 		  << " (line " << currentLineno
-		  << ") to 0x" << QString::number(targetAddr, 16)
+		  << ") to 0x" << targetAddr.toString()
 		  << " (line " << targetLineno << ")" << endl;
 
 	if (nextLineType == BoringJump)

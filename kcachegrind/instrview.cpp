@@ -26,6 +26,7 @@
 #include <qpopupmenu.h>
 #include <klocale.h>
 #include <kconfig.h>
+#include <kdebug.h>
 
 #include "configuration.h"
 #include "instritem.h"
@@ -38,45 +39,32 @@
 
 // Helpers for parsing output of 'objdump'
 
-static uint parseAddr(char* buf)
+static Addr parseAddr(char* buf)
 {
-    uint addr = 0;
+    Addr addr;
     uint pos = 0;
 
     // check for instruction line: <space>* <hex address> ":" <space>*
     while(buf[pos]==' ' || buf[pos]=='\t') pos++;
 
-    while(1) {
-	if (buf[pos]>='0' && buf[pos]<='9')
-	    addr = 16*addr + (buf[pos]-'0');
-	else if (buf[pos]>='a' && buf[pos]<='f')
-	    addr = 16*addr + 10 + (buf[pos]-'a');
-	else break;
-	pos++;
-    }
-    if (buf[pos] != ':') addr = 0;
+    int digits = addr.set(buf + pos);
+    if ((digits==0) || (buf[pos+digits] != ':')) return Addr(0);
 
     return addr;
 }
 
 
-static bool parseLine(char* buf, uint& addr,
+static bool parseLine(char* buf, Addr& addr,
                       uint& pos1, uint& pos2, uint& pos3)
 {
     // check for instruction line: <space>* <hex address> ":" <space>*
+
     pos1 = 0;
     while(buf[pos1]==' ' || buf[pos1]=='\t') pos1++;
 
-    addr = 0;
-    while(1) {
-	if (buf[pos1]>='0' && buf[pos1]<='9')
-	    addr = 16*addr + (buf[pos1]-'0');
-	else if (buf[pos1]>='a' && buf[pos1]<='f')
-	    addr = 16*addr + 10 + (buf[pos1]-'a');
-	else break;
-	pos1++;
-    }
-    if ((addr == 0) || (buf[pos1] != ':')) return false;
+    int digits = addr.set(buf + pos1);
+    pos1 += digits;
+    if ((digits==0) || (buf[pos1] != ':')) return false;
 
     // further parsing of objdump output...
     pos1++;
@@ -108,8 +96,8 @@ static bool parseLine(char* buf, uint& addr,
     if (strlen(buf+pos2) > 50)
 	strcpy(buf+pos2+47, "...");
 
-    if (0) qDebug("For 0x%x: Code '%s', Mnc '%s', Args '%s'",
-		  addr, buf+pos1, buf+pos2, buf+pos3);
+    if (0) qDebug("For 0x%s: Code '%s', Mnc '%s', Args '%s'",
+		  addr.toString().ascii(), buf+pos1, buf+pos2, buf+pos3);
 
     return true;
 }
@@ -468,7 +456,7 @@ void InstrView::refresh()
 	    ++it;
 	    while((it != itEnd) && !(*it).hasCost(_costType)) ++it;
 	    if (it == itEnd) break;
-	    if ((*it).addr() - (*tmpIt).addr() > 10000) break;
+	    if (!(*it).addr().isInRange( (*tmpIt).addr(),10000) ) break;
 	}
 
 	// tmpIt is always last instruction with cost
@@ -480,15 +468,15 @@ void InstrView::refresh()
 }
 
 
-void InstrView::updateJumpArray(uint addr, InstrItem* ii,
+void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
 				bool ignoreFrom, bool ignoreTo)
 {
     TraceInstrJump* ij;
-    uint lowAddr, highAddr;
+    Addr lowAddr, highAddr;
     int iEnd = -1, iStart = -1;
 
-    if (0) qDebug("updateJumpArray(addr 0x%x, jump to %s)",
-		  addr,
+    if (0) qDebug("updateJumpArray(addr 0x%s, jump to %s)",
+		  addr.toString().ascii(),
 		  ii->instrJump()
 		  ? ii->instrJump()->instrTo()->name().ascii() : "?" );
 
@@ -541,8 +529,9 @@ void InstrView::updateJumpArray(uint addr, InstrItem* ii,
 	for(iEnd=0;iEnd<_arrowLevels;iEnd++)
 	    if (_jump[iEnd] == ij) break;
 	if (iEnd==_arrowLevels) {
-	    qDebug("InstrView: no jump start for end at %x ?", highAddr);
-	    iEnd = -1;
+	  kdDebug() << "InstrView: no jump start for end at 0x"
+		    << highAddr.toString() << " ?" << endl;
+	  iEnd = -1;
 	}
 
 	if (0 && (iEnd>=0))
@@ -575,8 +564,8 @@ bool InstrView::fillInstrRange(TraceFunction* function,
                                TraceInstrMap::Iterator it,
                                TraceInstrMap::Iterator itEnd)
 {
-    uint costAddr, nextCostAddr, objAddr, addr;
-    uint dumpStartAddr, dumpEndAddr;
+    Addr costAddr, nextCostAddr, objAddr, addr;
+    Addr dumpStartAddr, dumpEndAddr;
     TraceInstrMap::Iterator costIt;
 
     // shouldn't happen
@@ -586,7 +575,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     TraceInstrMap::Iterator tmpIt = itEnd;
     --tmpIt;
     nextCostAddr = (*it).addr();
-    dumpStartAddr = (nextCostAddr<20) ? 0 : nextCostAddr -20;
+    dumpStartAddr = (nextCostAddr<20) ? Addr(0) : nextCostAddr -20;
     dumpEndAddr   = (*tmpIt).addr() +20;
 
     // generate command
@@ -595,9 +584,9 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     objfile = objfile.replace(QRegExp("[\"']"), ""); // security...
     popencmd = QString("objdump -C -D "
                        "--start-address=0x%1 --stop-address=0x%2 \"%3\"")
-	.arg(dumpStartAddr,0,16).arg(dumpEndAddr,0,16)
+	.arg(dumpStartAddr.toString()).arg(dumpEndAddr.toString())
 	.arg(objfile);
-    if (0) qDebug("Running '%s'...", popencmd.ascii());
+    if (1) qDebug("Running '%s'...", popencmd.ascii());
 
     // and run...
     FILE* iFILE = popen(QFile::encodeName( popencmd ), "r");
@@ -655,23 +644,23 @@ bool InstrView::fillInstrRange(TraceFunction* function,
           if (objAddr != 0) break;
         }
 
-        if (0) qDebug("Got ObjAddr: 0x%x", objAddr);
+        if (0) kdDebug() << "Got ObjAddr: 0x" << objAddr.toString() << endl;
       }
 
       // try to keep objAddr in [costAddr;nextCostAddr]
       if (needCostAddr &&
 	  (nextCostAddr > 0) &&
-	  ((objAddr ==0) || (objAddr >= nextCostAddr)) ) {
+	  ((objAddr == Addr(0)) || (objAddr >= nextCostAddr)) ) {
 	  needCostAddr = false;
 
 	  costIt = it;
 	  ++it;
 	  while((it != itEnd) && !(*it).hasCost(_costType)) ++it;
 	  costAddr = nextCostAddr;
-	  nextCostAddr = (it == itEnd) ? 0 : (*it).addr();
+	  nextCostAddr = (it == itEnd) ? Addr(0) : (*it).addr();
 
-	  if (0) qDebug("Got nextCostAddr: 0x%x, costAddr 0x%x",
-			nextCostAddr, costAddr);
+	  if (0) kdDebug() << "Got nextCostAddr: 0x" << nextCostAddr.toString()
+			   << ", costAddr 0x" << costAddr.toString() << endl;
       }
 
       // if we have no more address from objdump, stop
@@ -698,9 +687,10 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 
 	  needObjAddr = true;
 
-	  if (0) qDebug("Dump Obj Addr: 0x%x [%s %s], cost (0x%x, next 0x%x)",
-			addr, cmd.ascii(), args.ascii(),
-			costAddr, nextCostAddr);
+	  if (0) kdDebug() << "Dump Obj Addr: 0x" << addr.toString()
+			   << " [" << cmd << " " << args << "], cost (0x"
+			   << costAddr.toString() << ", next 0x"
+			   << nextCostAddr.toString() << ")" << endl;
       }
       else {
 	  addr = costAddr;
@@ -711,8 +701,8 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	  needCostAddr = true;
 
 	  noAssLines++;
-	  if (0) qDebug("Dump Cost Addr: 0x%x (no ass), objAddr 0x%x",
-			addr, objAddr);
+	  if (0) kdDebug() << "Dump Cost Addr: 0x" << addr.toString()
+			   << " (no ass), objAddr 0x" << objAddr.toString() << endl;
       }
 
       // update inside
@@ -720,9 +710,10 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	  if (currInstr) inside = true;
       }
       else {
-	  if (0) qDebug("Check if 0x%x is in ]0x%x,0x%x[",
-			addr, costAddr,
-			nextCostAddr - 3*Configuration::noCostInside() );
+	if (0) kdDebug() << "Check if 0x" << addr.toString() << " is in ]0x"
+			 << costAddr.toString() << ",0x"
+			 << (nextCostAddr - 3*Configuration::noCostInside()).toString()
+			 << "[" << endl;
 
 	  // Suppose a average instruction len of 3 bytes
 	  if ( (addr > costAddr) &&
@@ -756,9 +747,9 @@ bool InstrView::fillInstrRange(TraceFunction* function,
       ii = new InstrItem(this, addr, inside,
                          code, cmd, args, currInstr, _costType);
       dumpedLines++;
-      if (0) qDebug("Dumped 0x%x %s%s", addr,
-		    inside ? "Inside " : "Outside",
-		    currInstr ? "Cost" : "");
+      if (0) kdDebug() << "Dumped 0x" << addr.toString() << " "
+		       << (inside ? "Inside " : "Outside")
+		       << (currInstr ? "Cost" : "") << endl;
 
       // no calls/jumps if we have no cost for this line
       if (!currInstr) continue;
@@ -839,10 +830,9 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     if (noAssLines > 1) {
 	// trace cost not machting code
 
-        // no need for 2 translations: noAssLines is always >1 !
 	new InstrItem(this, 1,
 		      i18n("There is %n cost line without assembler code.",
-		           "There are %n cost lines without assembler code.", noAssLines));
+                           "There are %n cost lines without assembler code.", noAssLines));
 	new InstrItem(this, 2,
 		      i18n("This happens because the code of"));
 	new InstrItem(this, 3, QString("        %1").arg(objfile));

@@ -83,9 +83,78 @@ QString SubCost::pretty()
 }
 
 
+//---------------------------------------------------
+// Addr
+
+bool Addr::set(FixString& s)
+{
+  return s.stripUInt64(_v); 
+}
+
+int Addr::set(const char *s)
+{
+  int n = 0;
+  _v = 0;
+
+  while((n<16) && *s) {
+    if ((*s>='0') && (*s<='9'))
+      _v = 16*_v + (*s-'0');
+    else if ((*s>='a') && (*s<='f'))
+      _v = 16*_v + 10 + (*s-'a');
+    else if ((*s>='A') && (*s<='F'))
+      _v = 16*_v + 10 + (*s-'A');    
+    else break;
+    s++;
+    n++;
+  }
+  
+  return n;
+}
 
 
+QString Addr::toString() const
+{
+  if (_v == 0) return QString("0");
 
+  uint64 n = _v;
+  QString hex;
+  hex.reserve(16);
+
+  while(n>0) {
+    int d = (n & 15);
+    hex = QChar((d<10) ? ('0'+d) : ('A'-10+d)) + hex;
+    n /= 16;
+  }
+
+  return hex;
+}
+
+QString Addr::pretty() const
+{
+  if (_v == 0) return QString("0");
+
+  uint64 n = _v;
+  int p = 0;
+  QString hex;
+  hex.reserve(20);
+
+  while(n>0) {
+    int d = (n & 15);
+    if ((p>0) && ((p%4)==0)) hex = " " + hex;
+    hex = QChar((d<10) ? ('0'+d) : ('A'-10+d)) + hex;
+    n /= 16;
+    p++;
+  }
+
+  return hex;
+}
+
+bool Addr::isInRange(Addr a, int distance)
+{
+  uint64 diff = (a._v > _v) ? (a._v - _v) : (_v - a._v);
+  uint64 dist = (distance<0) ? distance : -distance;
+  return (diff < dist);
+}
 
 //---------------------------------------------------
 // TraceItem
@@ -2093,8 +2162,8 @@ TracePartInstrJump* TraceInstrJump::partInstrJump(TracePart* part)
 QString TraceInstrJump::name() const
 {
   return QString("jump at 0x%1 to 0x%2")
-      .arg(_instrFrom->addr(), 0, 16)
-      .arg(_instrTo->addr(), 0, 16);
+    .arg(_instrFrom->addr().toString())
+    .arg(_instrTo->addr().toString());
 }
 
 
@@ -2107,11 +2176,11 @@ int TraceInstrJumpList::compareItems ( Item item1, Item item2 )
     TraceInstrJump* ij1 = (TraceInstrJump*) item1;
     TraceInstrJump* ij2 = (TraceInstrJump*) item2;
 
-    uint addr1Low  = ij1->instrFrom()->addr();
-    uint addr2Low  = ij2->instrFrom()->addr();
-    uint addr1High = ij1->instrTo()->addr();
-    uint addr2High = ij2->instrTo()->addr();
-    uint t;
+    Addr addr1Low  = ij1->instrFrom()->addr();
+    Addr addr2Low  = ij2->instrFrom()->addr();
+    Addr addr1High = ij1->instrTo()->addr();
+    Addr addr2High = ij2->instrTo()->addr();
+    Addr t;
 
     if (addr1Low > addr1High) {
 	t = addr1Low;
@@ -2127,19 +2196,19 @@ int TraceInstrJumpList::compareItems ( Item item1, Item item2 )
 
     if (_sortLow) {
 	// we sort according to smallest instruction address
-	if (addr1Low != addr2Low) return addr1Low - addr2Low;
+	if (addr1Low != addr2Low) return (addr1Low > addr2Low) ? 1:-1;
 	// jump ends come before jump starts
 	if (addr1Low == ij1->instrTo()->addr()) return -1;
 	if (addr2Low == ij2->instrTo()->addr()) return 1;
-	return addr1High - addr2High;
+	return (addr1High > addr2High) ? 1:-1;
     }
 
     // we sort according to highest instruction address
-    if (addr1High != addr2High) return addr1High - addr2High;
+    if (addr1High != addr2High) return (addr1High > addr2High) ? 1:-1;
     // jump ends come before jump starts
     if (addr1High == ij1->instrTo()->addr()) return -1;
     if (addr2High == ij2->instrTo()->addr()) return 1;
-    return addr1Low - addr2Low;
+    return (addr1Low > addr2Low) ? 1:-1;
 }
 
 
@@ -2564,12 +2633,12 @@ void TraceInstr::addInstrCall(TraceInstrCall* instrCall)
 
 QString TraceInstr::name() const
 {
-    return QString("0x%1").arg(_addr,0,16);
+    return QString("0x%1").arg(_addr.toString());
 }
 
 QString TraceInstr::prettyName() const
 {
-    return QString("0x%1").arg(_addr,0,16);
+    return QString("0x%1").arg(_addr.toString());
 }
 
 
@@ -2910,9 +2979,9 @@ TraceLineMap* TraceFunctionSource::lineMap()
 		  plc = lc->partLineCall(fcc->part(), pc);
 
 	      fcc->addTo(plc);
-	      if (0) qDebug("Add FixCallCost %s:%d/0x%x, CallCount %s",
+	      if (0) qDebug("Add FixCallCost %s:%d/0x%s, CallCount %s",
 			    fcc->functionSource()->file()->shortName().ascii(),
-			    fcc->line(), fcc->addr(),
+			    fcc->line(), fcc->addr().toString().ascii(),
 			    fcc->callCount().pretty().ascii());
 	  }
       }
@@ -3180,7 +3249,7 @@ QString TraceFunction::info() const
 }
 
 
-uint TraceFunction::firstAddress() const
+Addr TraceFunction::firstAddress() const
 {
     // ignore address 0 here
   if (!_instrMap || _instrMap->count() == 0) return 0;
@@ -3188,7 +3257,7 @@ uint TraceFunction::firstAddress() const
   return (*it).addr();
 }
 
-uint TraceFunction::lastAddress() const
+Addr TraceFunction::lastAddress() const
 {
     // ignore address 0 here
   if (!_instrMap || _instrMap->count() == 0) return 0;
@@ -3198,10 +3267,10 @@ uint TraceFunction::lastAddress() const
 }
 
 /* factory */
-TraceInstr* TraceFunction::instr(uint addr, bool createNew)
+TraceInstr* TraceFunction::instr(Addr addr, bool createNew)
 {
     // address 0 not allowed
-    if (addr == 0) return 0;
+    if (addr == Addr(0)) return 0;
 
   if (!createNew) {
       if (!_instrMap) return 0;
@@ -3736,9 +3805,9 @@ TraceInstrMap* TraceFunction::instrMap()
 		  pic = ic->partInstrCall(fcc->part(), pc);
 
 	      fcc->addTo(pic);
-	      if (0) qDebug("Add FixCallCost %s:%d/0x%x, CallCount %s",
+	      if (0) qDebug("Add FixCallCost %s:%d/0x%s, CallCount %s",
 			    fcc->functionSource()->file()->shortName().ascii(),
-			    fcc->line(), fcc->addr(),
+			    fcc->line(), fcc->addr().toString().ascii(),
 			    fcc->callCount().pretty().ascii());
 	  }
       }

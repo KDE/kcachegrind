@@ -30,24 +30,24 @@ class InstrItem: public QListViewItem
 {
 
 public:
-    // for messages
-    InstrItem(QListView* parent, uint addr, const QString&);
+  // for messages
+  InstrItem(QListView* parent, Addr addr, const QString&);
 
   // for instruction lines
-  InstrItem(QListView* parent, uint addr, bool inside,
+  InstrItem(QListView* parent, Addr addr, bool inside,
 	    const QString&, const QString&, const QString&,
 	    TraceInstr* instr, TraceCostType* ct);
 
   // for call instr
-  InstrItem(QListViewItem* parent, uint addr,
+  InstrItem(QListViewItem* parent, Addr addr,
 	    TraceInstr* instr, TraceInstrCall* instrCall,
 	    TraceCostType* ct, TraceCost::CostType gt);
 
   // for jump lines
-  InstrItem(QListViewItem* parent, uint addr,
+  InstrItem(QListViewItem* parent, Addr addr,
 	    TraceInstr* instr, TraceInstrJump* instrJump);
 
-  unsigned int addr() const { return _addr; }
+  Addr addr() const { return _addr; }
   TraceInstr* instr() const { return _instr; }
   TraceInstrCall* instrCall() const { return _instrCall; }
   TraceInstrJump* instrJump() const { return _instrJump; }
@@ -74,7 +74,7 @@ private:
   SubCost _pure;
   TraceCostType* _costType;
   TraceCost::CostType _groupType;
-  unsigned int _addr;
+  Addr _addr;
   TraceInstr* _instr;
   TraceInstrJump* _instrJump;
   TraceInstrCall* _instrCall;

@@ -20,6 +20,9 @@
  * KCachegrind top level window
  */
 
+#define TRACE_UPDATES 0
+#define ENABLE_DUMPDOCK 0
+
 #include <stdlib.h> // for system()
 
 #include <qvbox.h>
@@ -66,9 +69,6 @@
 #include "kwidgetaction.h" // needed for KDE 3.0.x
 #include "multiview.h"
 #include "callgraphview.h"
-
-#define TRACE_UPDATES 0
-#define ENABLE_DUMPDOCK 0
 
 
 TopLevel::TopLevel(const char *name)

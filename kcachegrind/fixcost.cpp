@@ -108,7 +108,7 @@ bool FixPool::ensureSpace(unsigned int size)
 
 FixCost::FixCost(TracePart* part, FixPool* pool,
 		 TraceFunctionSource* functionSource,
-		 unsigned int line, unsigned int addr,
+		 unsigned int line, Addr addr,
                  TracePartFunction* partFunction,
 		 FixString& s)
 {
@@ -159,12 +159,12 @@ void FixCost::addTo(TraceCost* c)
 
 FixCallCost::FixCallCost(TracePart* part, FixPool* pool,
 			 TraceFunctionSource* functionSource,
-                         unsigned int line, unsigned int addr,
+                         unsigned int line, Addr addr,
                          TracePartCall* partCall,
                          SubCost callCount, FixString& s)
 {
-  if (0) qDebug("Got FixCallCost (addr 0x%x, ln %d): calls %s",
-                addr, line,
+  if (0) qDebug("Got FixCallCost (addr 0x%s, line %d): calls %s",
+                addr.toString().ascii(), line,
 		callCount.pretty().ascii());
 
   int maxCount = part->fixSubMapping()->count();
@@ -208,8 +208,8 @@ void FixCallCost::addTo(TraceCallCost* c)
     }
     c->addCallCount(_cost[_count]);
 
-    if (0) qDebug("Adding from (addr 0x%x, ln %d): calls %s",
-                  _addr, _line,
+    if (0) qDebug("Adding from (addr 0x%s, ln %d): calls %s",
+                  _addr.toString().ascii(), _line,
 		  _cost[_count].pretty().ascii());
 }
 
@@ -229,10 +229,10 @@ void FixCallCost::setMax(TraceCost* c)
 // FixJump
 
 FixJump::FixJump(TracePart* part, FixPool* pool,
-		 unsigned int line, unsigned int addr,
+		 unsigned int line, Addr addr,
 		 TracePartFunction* partFunction,
 		 TraceFunctionSource* source,
-		 unsigned int targetLine, unsigned int targetAddr,
+		 unsigned int targetLine, Addr targetAddr,
 		 TraceFunction* targetFunction,
 		 TraceFunctionSource* targetSource,
 		 bool isCondJump,

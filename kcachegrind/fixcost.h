@@ -58,7 +58,7 @@ class FixCost {
  public:
     FixCost(TracePart*, FixPool*,
 	    TraceFunctionSource*,
-	    unsigned int line, unsigned int addr,
+	    unsigned int line, Addr addr,
             TracePartFunction*,
 	    FixString&);
 
@@ -68,7 +68,7 @@ class FixCost {
 
     TracePart* part() const { return _part; }
     unsigned int line() const { return _line; }
-    unsigned int addr() const { return _addr; }
+    Addr addr() const { return _addr; }
     TraceFunctionSource* functionSource() const { return _functionSource; }
 
     FixCost* nextCostOfPartFunction() const
@@ -77,7 +77,8 @@ class FixCost {
  private:
     int _count;
     SubCost*  _cost;
-    unsigned int _line, _addr;
+    unsigned int _line;
+    Addr _addr;
 
     TracePart* _part;
     TraceFunctionSource* _functionSource;
@@ -94,7 +95,8 @@ class FixCallCost {
  public:
     FixCallCost(TracePart*, FixPool*,
                 TraceFunctionSource*,
-                unsigned int line, unsigned int addr,
+                unsigned int line,
+		Addr addr,
                 TracePartCall*,
                 SubCost, FixString&);
 
@@ -105,7 +107,7 @@ class FixCallCost {
 
     TracePart* part() const { return _part; }
     unsigned int line() const { return _line; }
-    unsigned int addr() const { return _addr; }
+    Addr addr() const { return _addr; }
     SubCost callCount() const { return _cost[_count]; }
     TraceFunctionSource* functionSource() const	{ return _functionSource; }
     FixCallCost* nextCostOfPartCall() const
@@ -115,7 +117,8 @@ class FixCallCost {
     // we use 1 SubCost more than _count: _cost[_count] is the call count
     int _count;
     SubCost*  _cost;
-    unsigned int _line, _addr;
+    unsigned int _line;
+    Addr _addr;
 
     TracePart* _part;
     TraceFunctionSource* _functionSource;
@@ -130,10 +133,10 @@ class FixJump {
  public:
     FixJump(TracePart*, FixPool*,
 	    /* source position */
-	    unsigned int line, unsigned int addr,
+	    unsigned int line, Addr addr,
 	    TracePartFunction*, TraceFunctionSource*,
 	    /* target position */
-	    unsigned int targetLine, unsigned int targetAddr,
+	    unsigned int targetLine, Addr targetAddr,
 	    TraceFunction*, TraceFunctionSource*,
 	    bool isCondJump,
 	    SubCost, SubCost);
@@ -144,11 +147,11 @@ class FixJump {
 
     TracePart* part() const { return _part; }
     unsigned int line() const { return _line; }
-    unsigned int addr() const { return _addr; }
+    Addr addr() const { return _addr; }
     TraceFunctionSource* source() const { return _source; }
     TraceFunction* targetFunction() const { return _targetFunction; }
     unsigned int targetLine() const { return _targetLine; }
-    unsigned int targetAddr() const { return _targetAddr; }
+    Addr targetAddr() const { return _targetAddr; }
     TraceFunctionSource* targetSource() const { return _targetSource; }
     bool isCondJump() { return _isCondJump; }
     SubCost executedCount() const { return _cost[0]; }
@@ -161,7 +164,8 @@ class FixJump {
  private:
     bool _isCondJump;
     SubCost*  _cost;
-    unsigned int _line, _addr, _targetLine, _targetAddr;
+    unsigned int _line, _targetLine;
+    Addr _addr, _targetAddr;
     
     TracePart* _part;
     TraceFunctionSource *_source, *_targetSource;

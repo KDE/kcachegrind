@@ -182,7 +182,6 @@ typedef QMap<QString, TraceClass> TraceClassMap;
 typedef QMap<QString, TraceFile> TraceFileMap;
 typedef QMap<QString, TraceFunction> TraceFunctionMap;
 typedef QMap<uint, TraceLine> TraceLineMap;
-typedef QMap<uint, TraceInstr> TraceInstrMap;
 
 
 typedef unsigned long long uint64;
@@ -226,6 +225,44 @@ class SubCost
 
     uint64 v;
 };
+
+
+/**
+ * Addresses are 64bit values like costs to be able
+ * to always load profile data produced on 64bit
+ * architectures.
+ */
+class Addr
+{
+ public:
+  Addr() { _v=0; }
+  Addr(uint64 v) { _v = v; }
+
+  // Interpretes char data at s as hex (without "0x" prefix)
+  // and return number of interpreted chars.
+  int set(const char *s);
+  bool set(FixString& s);
+  QString toString() const;
+  // similar to toString(), but adds a space every 4 digits
+  QString pretty() const;
+
+  // returns true if this address is in [a-distance;a+distance]
+  bool isInRange(Addr a, int distance);
+
+  bool operator==(const Addr& a) const { return (_v == a._v); }
+  bool operator!=(const Addr& a) const { return (_v != a._v); }
+  bool operator>(const Addr& a) const { return _v > a._v; }
+  bool operator>=(const Addr& a) const { return _v >= a._v; }
+  bool operator<(const Addr& a) const { return _v < a._v; }
+
+  Addr operator+(int d) const { return Addr(_v + d); }
+  Addr operator-(int d) const { return Addr(_v - d); }
+  
+ private:
+  uint64 _v;
+};
+
+typedef QMap<Addr, TraceInstr> TraceInstrMap;
 
 
 /**
@@ -1289,7 +1326,7 @@ public:
   virtual QString name() const;
   QString prettyName() const;
 
-  bool isValid() { return _addr != 0; }
+  bool isValid() { return _addr != Addr(0); }
 
   // factories
   TracePartInstr* partInstr(TracePart* part,
@@ -1298,7 +1335,7 @@ public:
 
   void addInstrCall(TraceInstrCall*);
 
-  uint addr() const { return _addr; }
+  Addr addr() const { return _addr; }
   TraceFunction* function() const { return _function; }
   TraceLine* line() const { return _line; }
   const TraceInstrJumpList& instrJumps() const { return _instrJumps; }
@@ -1306,12 +1343,12 @@ public:
   bool hasCost(TraceCostType*);
 
   // only to be called after default constructor
-  void setAddr(uint addr) { _addr = addr; }
+  void setAddr(const Addr addr) { _addr = addr; }
   void setFunction(TraceFunction* f) { _function = f; }
   void setLine(TraceLine* l) { _line = l; }
 
 private:
-  uint _addr;
+  Addr _addr;
   TraceFunction* _function;
   TraceLine* _line;
 
@@ -1509,7 +1546,7 @@ public:
   // factories
   TraceCall* calling(TraceFunction* called);
   TraceLine* line(TraceFile*, uint lineno, bool createNew = true);
-  TraceInstr* instr(uint addr, bool createNew = true);
+  TraceInstr* instr(Addr addr, bool createNew = true);
   TracePartFunction* partFunction(TracePart*,
                                   TracePartFile*, TracePartObject*);
 
@@ -1527,8 +1564,8 @@ public:
   TraceCallList callers(bool skipCycle=false) const;
   const TraceCallList& callings(bool skipCycle=false) const;
 
-  uint firstAddress() const;
-  uint lastAddress() const;
+  Addr firstAddress() const;
+  Addr lastAddress() const;
   TraceInstrMap* instrMap();
 
   // cost metrics

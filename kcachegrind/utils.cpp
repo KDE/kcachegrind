@@ -176,13 +176,38 @@ bool FixString::stripUInt64(uint64& v)
     int l = _len-1;
     c = *s;
 
-    while(l>0) {
+    if ((l>0) && (c == 'x') && (v==0)) {
+	// hexadecimal
+	s++;
+	c = *s;
+	l--;
+
+	while(l>0) {
+	    if (c>='0' && c<='9')
+		v = 16*v + (c-'0');
+	    else if (c>='a' && c<='f')
+		v = 16*v + 10 + (c-'a');
+	    else if (c>='A' && c<='F')
+		v = 16*v + 10 + (c-'A');
+	    else
+		break;
+	    s++;
+	    c = *s;
+	    l--;
+	}
+    }
+    else {
+      // decimal
+      while(l>0) {
 	if (c<'0' || c>'9') break;
 	v = 10*v + (c-'0');
 	s++;
 	c = *s;
 	l--;
+      }
     }
+
+    // strip trailing spaces
     while(l>0) {
 	if (c != ' ') break;
 	s++;
@@ -213,13 +238,39 @@ bool FixString::stripInt64(int64& v)
     int l = _len-1;
     c = *s;
 
-    while(l>0) {
+    if ((l>0) && (c == 'x') && (v==0)) {
+	// hexadecimal
+	s++;
+	c = *s;
+	l--;
+
+	while(l>0) {
+	    if (c>='0' && c<='9')
+		v = 16*v + (c-'0');
+	    else if (c>='a' && c<='f')
+		v = 16*v + 10 + (c-'a');
+	    else if (c>='A' && c<='F')
+		v = 16*v + 10 + (c-'A');
+	    else
+		break;
+	    s++;
+	    c = *s;
+	    l--;
+	}
+    }
+    else {
+      // decimal
+
+      while(l>0) {
 	if (c<'0' || c>'9') break;
 	v = 10*v + (c-'0');
 	s++;
 	c = *s;
 	l--;
+      }
     }
+
+    // strip trailing spaces
     while(l>0) {
 	if (c != ' ') break;
 	s++;
