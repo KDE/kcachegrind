@@ -572,7 +572,39 @@ void TraceCost::addCost(TraceCost* item)
 #endif
 }
 
+void TraceCost::maxCost(TraceCost* item)
+{
+    int i;
 
+    if (!item) return;
+
+    // we have to update the other item if needed
+    // because we access the item costs directly
+    if (item->_dirty) item->update();
+
+    if (item->_count < _count) {
+       for (i = 0; i<item->_count; i++)
+         if (_cost[i] < item->_cost[i]) _cost[i] = item->_cost[i];
+    }
+    else {
+       for (i = 0; i<_count; i++)
+         if (_cost[i] < item->_cost[i]) _cost[i] = item->_cost[i];
+       for (; i<item->_count; i++)
+           _cost[i] = item->_cost[i];
+       _count = item->_count;
+    }
+
+    // a cost change has to be propagated (esp. in subclasses)
+    invalidate();
+
+#if TRACE_DEBUG
+    _dirty = false; // don't recurse !
+    qDebug("%s added cost item\n %s\n  now %s",
+          fullName().ascii(), item->fullName().ascii(),
+          TraceCost::costString(0).ascii());
+    _dirty = true; // because of invalidate()
+#endif
+}
 
 void TraceCost::addCost(int type, SubCost value)
 {

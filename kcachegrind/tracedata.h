@@ -373,10 +373,13 @@ public:
   // add a cost according to a submapping and a list of ASCII numbers
   void addCost(TraceSubMapping*, const char*);
   void addCost(TraceSubMapping*, FixString&);
-  void maxCost(TraceSubMapping*, FixString&);
   // add the cost of another item
   void addCost(TraceCost* item);
   void addCost(int index, SubCost value);
+
+  // maximal cost
+  void maxCost(TraceSubMapping*, FixString&);
+  void maxCost(TraceCost* item);
   void maxCost(int index, SubCost value);
   TraceCost diff(TraceCost* item);
 

@@ -1184,6 +1184,9 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 	  }
 	  else
 	      partInstrCall->addCost(subMapping, line);
+
+	  // update maximum of call cost
+	  _data->callMax()->maxCost(partInstrCall);
       }
 
       if (hasLineInfo) {
@@ -1195,6 +1198,9 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 
 	  partLineCall->addCallCount(currentCallCount);
 	  partLineCall->addCost(subMapping, line);
+
+	  // update maximum of call cost
+	  _data->callMax()->maxCost(partLineCall);
       }
 #endif
       currentCalledFile = 0;
