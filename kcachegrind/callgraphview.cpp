@@ -2277,7 +2277,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   popup.insertSeparator();
 
   QPopupMenu epopup;
-  epopup.insertItem(i18n("As Postscript"), 201);
+  epopup.insertItem(i18n("As PostScript"), 201);
   epopup.insertItem(i18n("As Image ..."), 202);
 
   popup.insertItem(i18n("Export Graph"), &epopup, 200);
