@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
 <class>ConfigDlgBase</class>
 <widget class="QDialog">
     <property name="name">
@@ -9,11 +9,11 @@
             <x>0</x>
             <y>0</y>
             <width>546</width>
-            <height>616</height>
+            <height>618</height>
         </rect>
     </property>
     <property name="caption">
-        <string>Configure KCachegrind</string>
+        <string>Configuration</string>
     </property>
     <vbox>
         <property name="name">
@@ -170,6 +170,9 @@
                                     <verstretch>0</verstretch>
                                 </sizepolicy>
                             </property>
+                            <property name="text">
+                                <string></string>
+                            </property>
                         </widget>
                         <widget class="QCheckBox" row="1" column="2">
                             <property name="name">
@@ -182,6 +185,9 @@
                         <widget class="KColorButton" row="0" column="3">
                             <property name="name">
                                 <cstring>objectColor</cstring>
+                            </property>
+                            <property name="text">
+                                <string></string>
                             </property>
                         </widget>
                         <widget class="QCheckBox" row="0" column="2">
@@ -211,6 +217,9 @@
                                     <horstretch>0</horstretch>
                                     <verstretch>0</verstretch>
                                 </sizepolicy>
+                            </property>
+                            <property name="text">
+                                <string></string>
                             </property>
                         </widget>
                         <widget class="QComboBox" row="2" column="1">
@@ -690,9 +699,4 @@
 </includes>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>
-<includehints>
-    <includehint>kcolorbutton.h</includehint>
-    <includehint>kcolorbutton.h</includehint>
-    <includehint>kcolorbutton.h</includehint>
-</includehints>
 </UI>

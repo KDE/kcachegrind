@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
 <class>DumpSelectionBase</class>
 <widget class="QWidget">
     <property name="name">
@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>349</width>
-            <height>830</height>
+            <height>832</height>
         </rect>
     </property>
     <property name="caption">
@@ -467,7 +467,7 @@
                                 </sizepolicy>
                             </property>
                             <property name="text">
-                                <string>Custom Profiler Options:</string>
+                                <string>Custom profiler options:</string>
                             </property>
                         </widget>
                         <widget class="QLineEdit">
@@ -696,7 +696,7 @@
                             </column>
                         <item>
                             <property name="text">
-                                <string>Dumps done</string>
+                                <string>Dumps Done</string>
                             </property>
                             <property name="text">
                                 <string></string>
