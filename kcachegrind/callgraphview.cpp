@@ -1343,12 +1343,13 @@ CallGraphView::CallGraphView(TraceItemView* parentView,
   QWhatsThis::add( this, whatsThis() );
 
   // tooltips...
-  new CallGraphTip(this);
+  _tip = new CallGraphTip(this);
 }
 
 CallGraphView::~CallGraphView()
 {
   delete _completeView;
+  delete _tip;
 
   if (_canvas) {
     setCanvas(0);
@@ -1786,8 +1787,8 @@ void CallGraphView::refresh()
       lineStream >> scale >> dotWidth >> dotHeight;
 
       if (_detailLevel == 0)      { scaleX = scale * 70; scaleY = scale * 40; }
-      else if (_detailLevel == 1) { scaleX = scale * 80; scaleY = scale * 60; }
-      else                        { scaleX = scale * 60; scaleY = scale * 90; }
+      else if (_detailLevel == 1) { scaleX = scale * 80; scaleY = scale * 70; }
+      else                        { scaleX = scale * 60; scaleY = scale * 100; }
 
       if (!_canvas) {
         int w = (int)(scaleX * dotWidth);
@@ -2546,6 +2547,8 @@ void CallGraphView::readViewConfig(KConfig* c,
 					   layoutString(DEFAULT_LAYOUT)));
     _zoomPosition    = zoomPos(g->readEntry("ZoomPosition",
 					    zoomPosString(DEFAULT_ZOOMPOS)));
+
+    delete g;
 }
 
 void CallGraphView::saveViewConfig(KConfig* c,

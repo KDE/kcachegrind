@@ -311,6 +311,11 @@ StackBrowser::StackBrowser()
   _current = 0;
 }
 
+StackBrowser::~StackBrowser()
+{
+  delete _current;
+}
+
 HistoryItem* StackBrowser::select(TraceFunction* f)
 {
   if (!_current) {

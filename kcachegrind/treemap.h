@@ -386,7 +386,7 @@ private:
 
 
 /**
- * Class for visualisation of a metric of hierarchically
+ * Class for visualization of a metric of hierarchically
  * nested items as 2D areas.
  */
 class TreeMapWidget: public QWidget
@@ -400,6 +400,7 @@ public:
    */
   enum SelectionMode { Single, Multi, Extended, NoSelection };
 
+  /* The widget gets owner of the base item */
   TreeMapWidget(TreeMapItem* base, QWidget* parent=0, const char* name=0);
   ~TreeMapWidget();
 

@@ -86,6 +86,7 @@ class StackBrowser
 {
 public:
   StackBrowser();
+  ~StackBrowser();
 
   // A function was selected. This creates a new history entry
   HistoryItem* select(TraceFunction*);

@@ -310,6 +310,15 @@ TabView::TabView(TraceItemView* parentView,
   QWhatsThis::add( this, whatsThis() );
 }
 
+void TabView::setData(TraceData* d)
+{
+  TraceItemView::setData(d);
+
+  TraceItemView* v;
+  for (v=_tabs.first();v;v=_tabs.next())
+    v->setData(d);  
+}
+
 TraceItemView* TabView::addTab(QString label, TraceItemView* view)
 {
     view->setTitle(label);

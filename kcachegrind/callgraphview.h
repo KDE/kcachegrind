@@ -394,6 +394,7 @@ private:
 };
 
 
+class CallGraphTip;
 
 /**
  * A CanvasView showing a part of the call graph
@@ -449,6 +450,8 @@ private:
   int _xMargin, _yMargin;
   PannerView *_completeView;
   double _cvZoom;
+
+  CallGraphTip* _tip;
 
   bool _isMoving;
   QPoint _lastPos;

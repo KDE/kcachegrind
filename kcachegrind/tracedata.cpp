@@ -164,6 +164,9 @@ bool Addr::isInRange(Addr a, int distance)
 //---------------------------------------------------
 // TraceItem
 
+QString* TraceItem::_typeName = 0;
+QString* TraceItem::_i18nTypeName = 0;
+
 TraceItem::TraceItem()
 {
   _part = 0;
@@ -174,14 +177,25 @@ TraceItem::TraceItem()
 TraceItem::~TraceItem()
 {}
 
+void TraceItem::cleanup()
+{
+  if (_typeName) {
+    delete [] _typeName;
+    _typeName = 0;
+  }
+  if (_i18nTypeName) {
+    delete [] _i18nTypeName;
+    _i18nTypeName = 0;
+  }
+}
+
 QString TraceItem::typeName(CostType t)
 {
-    static QString* strs = 0;
-
-    if (!strs) {
-	strs = new QString [MaxCostType+1];
-	for(int i=0;i<=MaxCostType;i++)
-	    strs[i] = QString("?");
+    if (!_typeName) {
+      _typeName = new QString [MaxCostType+1];
+      QString* strs = _typeName;
+      for(int i=0;i<=MaxCostType;i++)
+	strs[i] = QString("?");
 
        strs[Item] = I18N_NOOP("Abstract Item");
        strs[Cost] = I18N_NOOP("Cost Item");
@@ -213,7 +227,7 @@ QString TraceItem::typeName(CostType t)
        strs[Data] = I18N_NOOP("Program Trace");
     }
     if (t<0 || t> MaxCostType) t = MaxCostType;
-    return strs[t];
+    return _typeName[t];
 }
 
 TraceItem::CostType TraceItem::costType(QString s)
@@ -233,15 +247,13 @@ TraceItem::CostType TraceItem::costType(QString s)
 // all strings of typeName() are translatable because of I18N_NOOP there
 QString TraceItem::i18nTypeName(CostType t)
 {
-    static QString* strs = 0;
-
-    if (!strs) {
-	strs = new QString [MaxCostType+1];
+    if (!_i18nTypeName) {
+	_i18nTypeName = new QString [MaxCostType+1];
 	for(int i=0;i<=MaxCostType;i++)
-	    strs[i] = i18n(typeName((CostType)i).utf8().data());
+	    _i18nTypeName[i] = i18n(typeName((CostType)i).utf8().data());
     }
     if (t<0 || t> MaxCostType) t = MaxCostType;
-    return strs[t];
+    return _i18nTypeName[t];
 }
 
 TraceItem::CostType TraceItem::i18nCostType(QString s)
@@ -1627,14 +1639,18 @@ void TraceCallListCost::update()
          fullName().ascii(), _deps.count());
 #endif
 
-  clear();
-  TraceCallCost* item;
-  for (item = _deps.first(); item; item = _deps.next()) {
-    if (_onlyActiveParts)
-      if (!item->part() || !item->part()->isActive()) continue;
-
-    addCost(item);
-    addCallCount(item->callCount());
+  /* Without dependent cost items, assume fixed costs,
+   * i.e. don't change cost */
+  if (_deps.count()>0) {
+    clear();
+    TraceCallCost* item;
+    for (item = _deps.first(); item; item = _deps.next()) {
+      if (_onlyActiveParts)
+	if (!item->part() || !item->part()->isActive()) continue;
+      
+      addCost(item);
+      addCallCount(item->callCount());
+    }
   }
 
   _dirty = false;
@@ -1838,10 +1854,14 @@ void TracePartCall::update()
   qDebug("update %s", fullName().ascii());
 #endif
 
-  clear();
-  FixCallCost* item;
-  for (item = _firstFixCallCost; item; item = item->nextCostOfPartCall())
-    item->addTo(this);
+  /* Without dependent cost items, assume fixed costs,
+   * i.e. don't change cost */
+  if (_firstFixCallCost) {
+    clear();
+    FixCallCost* item;
+    for (item = _firstFixCallCost; item; item = item->nextCostOfPartCall())
+      item->addTo(this);
+  }
 
   _dirty = false;
 
@@ -2030,7 +2050,6 @@ void TracePartFunction::update()
   _callingCount    = 0;
   _calledContexts  = 0;
   _callingContexts = 0;
-  clear();
 
   // calculate additional cost metrics
   TracePartCall *caller, *calling;
@@ -2056,19 +2075,27 @@ void TracePartFunction::update()
     }
   }
 
-  // pure cost
+  // self cost
 #ifndef USE_FIXCOST
-  TracePartLine* line;
-  for (line = _partLines.first(); line; line = _partLines.next())
-    addCost(line);
+  if (_partLines.count()>0) {
+    TraceCost::clear();
+
+    TracePartLine* line;
+    for (line = _partLines.first(); line; line = _partLines.next())
+      addCost(line);
+  }
 #else
-  FixCost* item;
-  for (item = _firstFixCost; item; item = item->nextCostOfPartFunction())
-    item->addTo(this);
+  if (_firstFixCost) {
+    TraceCost::clear();
+
+    FixCost* item;
+    for (item = _firstFixCost; item; item = item->nextCostOfPartFunction())
+      item->addTo(this);
+  }
 #endif
 
 
-  /* There are two possibilities to calculate the cumulative cost:
+  /* There are two possibilities to calculate inclusive cost:
    * 1) sum of call costs to this function
    * 2) sum of call costs from this function + self cost
    *
@@ -2082,6 +2109,7 @@ void TracePartFunction::update()
    * For now, do 1) if there are callers, otherwise 2).
    * Should this be fixed to take the maximum of 1) and 2) ?
    */
+  _cumulative.clear();
   if (_calledCount>0) {
       // cumulative cost: if possible, use caller sums
     for (caller=_partCallers.first();caller;caller=_partCallers.next()) {
@@ -4170,6 +4198,8 @@ TracePart::TracePart(TraceData* data, QFile* file)
 TracePart::~TracePart()
 {
   delete _file;
+
+  delete _fixSubMapping;
 }
 
 void TracePart::setPartNumber(int n)
@@ -4289,11 +4319,6 @@ void TraceData::init()
   _fixPool = 0;
 }
 
-QString TraceData::tracePrefix()
-{
-  return QString("cachegrind.out");
-}
-
 QString TraceData::shortTraceName() const
 {
   int lastIndex = 0, index;
@@ -4334,15 +4359,22 @@ void TraceData::load(const QString& base)
       // search for first profile data file in directory
       dir = QDir(base);
 
-      file = tracePrefix();
-      // search for ".pid"
-      QStringList strList = dir.entryList(file+".*", QDir::Files);
-      if (strList.count()>0) {
+      QStringList prefixList;
+      prefixList << "callgrind.out" << "cachegrind.out";
+      for ( QStringList::Iterator it = prefixList.begin();
+	    it != prefixList.end(); ++it ) {
+        file = *it;
+
+	// search for ".pid"
+	QStringList strList = dir.entryList(file+".*", QDir::Files);
+	if (strList.count()>0) {
 	  int l = file.length();
 	  file = strList.first();
 	  l++;
 	  while(file[l] >= '0' && file[l] <= '9') l++;
 	  file = file.left(l);
+	  break;
+	}
       }
 
       _traceName = dir.path() + "/" + file;

@@ -115,6 +115,7 @@ public:
 
   virtual QWidget* widget() { return this; }
   QString whatsThis() const ;
+  void setData(TraceData*);
   bool isViewVisible() const { return !_isCollapsed; }
   void selected(TraceItemView*, TraceItem*);
   bool active() const { return _active; }

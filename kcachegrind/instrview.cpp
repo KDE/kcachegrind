@@ -925,6 +925,8 @@ void InstrView::readViewConfig(KConfig* c,
     if (0) qDebug("InstrView::readViewConfig");
 
     _showHexCode  = g->readBoolEntry("ShowHexCode", DEFAULT_SHOWHEXCODE);
+
+    delete g;
 }
 
 void InstrView::saveViewConfig(KConfig* c,

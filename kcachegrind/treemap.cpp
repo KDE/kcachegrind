@@ -1146,6 +1146,8 @@ TreeMapWidget::TreeMapWidget(TreeMapItem* base,
 
 TreeMapWidget::~TreeMapWidget()
 {
+  delete _base;
+  delete _tip;
 }
 
 const QFont& TreeMapWidget::currentFont() const

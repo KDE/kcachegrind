@@ -40,6 +40,7 @@ public:
 
   QWidget* widget() { return this; }
   TabView* activeTabView() const { return _active; }
+  void setData(TraceData*);
 
   void appendView();
   void removeView();

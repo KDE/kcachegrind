@@ -1,8 +1,10 @@
-2004/05/13
-	* cachegrindloader.cpp
-	  Fix crash (jump target was not created on demand)
-	* tracedata.cpp
-	  Fix bug sometimes claiming source not existing
+2004/06/30
+	* Leak fixes
+	* Crash fixes on reload (make setData() synchroneous)
+	* Some update fixes in the data model (tracedata.cpp)
+	* Fix update problems in Function Profile
+	* Reselect active function on refresh in function profile
+	  with grouping on
 
 2004/04/28
 	* toplevel.h/cpp, kcachegrindui.rc

@@ -88,8 +88,13 @@ public:
   virtual void saveViewConfig(KConfig*, QString prefix, QString postfix,
 			      bool withOptions);
 
-  // change from parent, call update() afterwards if view is visible
-  void setData(TraceData* d) { _newData = d; }
+  // Immediate remove all references to old data, and set the new.
+  // This resets the visualization state.
+  // A GUI update has to be triggered with updateView().
+  // Overwrite in container views to also set new data for all members.
+  virtual void setData(TraceData* d);
+
+  // change from parent, call updateView() to update lazily (only if visible)
   void setCostType(TraceCostType* t) { _newCostType = t; }
   void setCostType2(TraceCostType* t) { _newCostType2 = t; }
   void set(TraceItem::CostType g) { _newGroupType = g; }

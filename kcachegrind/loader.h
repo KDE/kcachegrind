@@ -60,6 +60,7 @@ public:
   static Loader* matchingLoader(QFile* file);
   static Loader* loader(QString name);
   static void initLoaders();
+  static void deleteLoaders();
 
   QString name() const { return _name; }
   QString description() const { return _description; }

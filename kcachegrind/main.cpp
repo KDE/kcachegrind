@@ -85,5 +85,11 @@ int main( int argc, char ** argv )
   }
 
   a.connect( &a, SIGNAL( lastWindowClosed() ), &a, SLOT( quit() ) );
-  return a.exec();
+  int res = a.exec();
+
+  // to make leak checking in valgrind happy...
+  Loader::deleteLoaders();
+  TraceItem::cleanup();
+
+  return res;
 }

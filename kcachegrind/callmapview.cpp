@@ -132,6 +132,13 @@ QString CallMapView::whatsThis() const
   return s;
 }
 
+void CallMapView::setData(TraceData* d)
+{
+  TraceItemView::setData(d);
+
+  ((CallMapBaseItem*)base())->setFunction(0);
+}
+
 void CallMapView::context(TreeMapItem* i,const QPoint & p)
 {
   if (!i) return;
@@ -964,6 +971,8 @@ void CallMapView::readViewConfig(KConfig* c,
     setFieldStop(0, g->readEntry("StopName"));
     setMaxDrawingDepth(g->readNumEntry("MaxDepth", -1));
     setMinimalArea(g->readNumEntry("MaxArea", DEFAULT_MAXAREA));
+
+    delete g;
 }
 
 void CallMapView::saveViewConfig(KConfig* c, 

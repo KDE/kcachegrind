@@ -38,6 +38,7 @@ public:
 
   QWidget* widget() { return this; }
   QString whatsThis() const;
+  void setData(TraceData*);
 
   void readViewConfig(KConfig*, QString prefix, QString postfix, bool);
   void saveViewConfig(KConfig*, QString prefix, QString postfix, bool);

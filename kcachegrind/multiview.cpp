@@ -45,6 +45,15 @@ MultiView::MultiView(TopLevel* top, QWidget* parent, const char* name)
     _active->setActive(true);
 }
 
+void MultiView::setData(TraceData* d)
+{
+  TraceItemView::setData(d);
+
+  TabView* tv;
+  for(tv=_views.first(); tv; tv=_views.next())
+    tv->setData(d);
+}
+
 void MultiView::setChildCount(int n)
 {
     while(n< (int)_views.count()) removeView();

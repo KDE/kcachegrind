@@ -1032,7 +1032,7 @@ void TopLevel::newWindow()
 void TopLevel::loadTrace()
 {
     KURL url = KFileDialog::getOpenURL(":",
-                                       i18n("cachegrind.out*|Cachegrind Profile Data"),
+                                       i18n("cachegrind.out* callgrind.out*|Cachegrind Profile Data\n*|All Files"),
                                        this,
                                        i18n("Select Cachegrind Profile Data"));
     loadTrace(url);
@@ -1081,7 +1081,7 @@ void TopLevel::loadTrace(QString file)
 void TopLevel::addTrace()
 {
     KURL url = KFileDialog::getOpenURL(QString::null,
-                                       i18n("cachegrind.out*|Cachegrind Profile Data"),
+                                       i18n("cachegrind.out* callgrind.out*|Cachegrind Profile Data\n*|All Files"),
                                        this,
                                        i18n("Add Cachegrind Profile Data"));
     addTrace(url);
@@ -1600,16 +1600,17 @@ void TopLevel::setData(TraceData* data)
   if (types.count()>0)
     _saCost2->setCurrentItem(0);
 
-  /* this is needed to let the other widgets know the types */
-  restoreTraceTypes();
-
   _partSelection->setData(_data);
   _stackSelection->setData(_data);
-
   _functionSelection->setData(_data);
   _functionSelection->updateView();
   _multiView->setData(_data);
   _multiView->updateView();
+
+  /* this is needed to let the other widgets know the types */
+  restoreTraceTypes();
+
+  restoreTraceSettings();
 
   QString caption;
   if (_data) {
@@ -1618,8 +1619,6 @@ void TopLevel::setData(TraceData* data)
       caption += " [" + _data->command() + "]";
   }
   setCaption(caption);
-
-  restoreTraceSettings();
 
   if (!_data || (!_forcePartDock && _data->parts().count()<2)) {
     _partDock->hide();

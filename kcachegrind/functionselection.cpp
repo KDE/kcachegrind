@@ -405,7 +405,8 @@ void FunctionSelection::refresh()
 	  oldFunction = 0;
       }
 
-      functionList->setUpdatesEnabled(false);
+      // switching off QListView updates is buggy with some QT versions...
+      //functionList->setUpdatesEnabled(false);
       functionList->clear();
       setCostColumnWidths();
 
@@ -459,9 +460,8 @@ void FunctionSelection::refresh()
       else
 	functionList->clearSelection();
 
-      functionList->setUpdatesEnabled(true);
-      functionList->repaint();
-      //functionList->triggerUpdate();
+      //functionList->setUpdatesEnabled(true);
+      //functionList->repaint();
       groupList->setUpdatesEnabled(true);
       groupList->repaint();
       return;
@@ -528,7 +528,8 @@ void FunctionSelection::groupSelected(QListViewItem* i)
     return;
   }
 
-  functionList->setUpdatesEnabled(false);
+  // switching off QListView updates is buggy with some QT versions...
+  //functionList->setUpdatesEnabled(false);
 
   functionList->clear();
   setCostColumnWidths();
@@ -546,13 +547,22 @@ void FunctionSelection::groupSelected(QListViewItem* i)
   }
 #endif
 
+  FunctionItem* fitem = 0;
   TraceFunction *f;
   _hc.clear(Configuration::maxListCount());
-  for (f=list.first();f;f=list.next())
+  for (f=list.first();f;f=list.next()) {
     _hc.addCost(f, f->cumulative()->subCost(_costType));
+    if (_activeItem == f)
+      fitem = new FunctionItem(functionList, (TraceFunction*)_activeItem,
+			       _costType, _groupType);
+  }
 
-  for(int i=0;i<_hc.realCount();i++)
-    new FunctionItem(functionList, (TraceFunction*)_hc[i], _costType, _groupType);
+  for(int i=0;i<_hc.realCount();i++) {
+    if (_activeItem == (TraceFunction*)_hc[i]) continue;
+    new FunctionItem(functionList, (TraceFunction*)_hc[i],
+		     _costType, _groupType);
+  }
+
   if (_hc.hasMore()) {
     // a placeholder for all the functions skipped ...
     new FunctionItem(functionList, _hc.count() - _hc.maxSize(),
@@ -560,8 +570,15 @@ void FunctionSelection::groupSelected(QListViewItem* i)
   }
   functionList->sort();
 
-  functionList->setUpdatesEnabled(true);
-  functionList->repaint();
+  if (fitem) {
+    functionList->ensureItemVisible(fitem);
+    _inSetFunction = true;
+    functionList->setSelected(fitem, true);
+    _inSetFunction = false;
+  }
+
+  //functionList->setUpdatesEnabled(true);
+  //functionList->repaint();
 
   // Don't emit signal if cost item was changed programatically
   if (!_inSetGroup) {

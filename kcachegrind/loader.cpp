@@ -75,5 +75,11 @@ void Loader::initLoaders()
   //_loaderList.append(GProfLoader::createLoader());
 }
 
+void Loader::deleteLoaders()
+{
+  _loaderList.setAutoDelete(true);
+  _loaderList.clear();
+}
+
 
 #include "loader.moc"

@@ -174,6 +174,23 @@ bool TraceItemView::isViewVisible()
   return false;
 }
 
+void TraceItemView::setData(TraceData* d)
+{
+  _newData = d;
+
+  // invalidate all pointers to old data
+  _activeItem = _newActiveItem = 0;
+  _selectedItem = _newSelectedItem = 0;
+  _costType = _newCostType = 0;
+  _costType2 = _newCostType2 = 0;
+  _groupType = _newGroupType = TraceItem::NoCostType;
+  _partList.clear();
+  _newPartList.clear();
+
+  // updateView will change this to dataChanged
+  _status = nothingChanged;
+}
+
 void TraceItemView::updateView(bool force)
 {
   if (!force && !isViewVisible()) return;

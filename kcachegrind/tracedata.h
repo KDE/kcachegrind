@@ -307,6 +307,8 @@ public:
   // these use localisation settings
   static QString     i18nTypeName(CostType);
   static CostType    i18nCostType(QString);
+  // clean up some static data
+  static void cleanup();
 
   /**
    * Returns dynamic name info (without type)
@@ -375,6 +377,9 @@ protected:
 
   TracePart* _part;
   TraceItem* _dep;
+
+ private:
+  static QString *_typeName, *_i18nTypeName;
 };
 
 
@@ -1117,6 +1122,7 @@ public:
   //const TraceCostList& items() const { return _items; }
   TraceData* data() const { return _data; }
   TraceCost* totals() { return &_totals; }
+  /* we get owner of the submapping */
   void setFixSubMapping(TraceSubMapping* sm) { _fixSubMapping = sm; }
   TraceSubMapping* fixSubMapping() { return _fixSubMapping; }
 
@@ -1820,8 +1826,6 @@ public:
    * This adjusts the TraceCostMapping according to given cost types
    */
   void load(const QString&);
-
-  static QString tracePrefix();
 
   /** returns true if something changed. These do NOT
    * invalidate the dynamic costs on a activation change,
