@@ -11,7 +11,7 @@
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE">
 ]>
-	
+
 <!-- ................................................................ -->
 
 <book lang="&language;">
@@ -100,10 +100,10 @@ Afterwards, the optimization success should be verified again with another profi
 
 <para>Exact measurement of time passed by or events happening in the execution of a code region (e.g. a function) needs additional measurement code to be inserted before and after the given region. This code reads the time or a global event count, and calculates differences. Thus, the original code has to be changed before execution. This is called instrumentation. Instrumentation can be done by the programmer itself, the compiler, or by the runtime system. As interesting regions usually are nested, the overhead of measurement always influences the measurement itself. Thus, instrumentation should be done selectively and results have to be interpreted with care. Of course, this makes performance analysis by exact measurement a very complex process.</para>
 
-<para>Exact measurement is possible because of hardware counters (including counters incrementing on a time tick) provided in modern processors, which are incremented whenever an event is happening. As we want to attribute events to code regions, without the counters, we would have to handle every event by incrementing a counter for the current code region ourself. Doing this in software of course is not possible. But on the assumption that the event distribution over source code is similar when looking only at every n-th event instead of every event, we have constructed a measurement method which is tunable regarding overhead. It is called Sampling. Time Based Sampling (TBS) is using a timer to regularly look at the program counter to create a histogram over the program code. Event Based Sampling (EBS) is exploiting the hardware counters of modern processors, and is using a mode where an interrupt handler is called on counter underflow, generating a histogram of the corresponding event distribution. In the handler, the event counter is always reinitialized to the n of the sampling method. Advantage of sampling
+<para>Exact measurement is possible because of hardware counters (including counters incrementing on a time tick) provided in modern processors, which are incremented whenever an event is happening. As we want to attribute events to code regions, without the counters, we would have to handle every event by incrementing a counter for the current code region ourself. Doing this in software of course is not possible. But on the assumption that the event distribution over source code is similar when looking only at every n-th event instead of every event, we have constructed a measurement method which is tunable regarding overhead. It is called Sampling. Time Based Sampling (TBS) is using a timer to regularily look at the program counter to create a histogram over the program code. Event Based Sampling (EBS) is exploiting the hardware counters of modern processors, and is using a mode where an interrupt handler is called on counter underflow, generating a histogram of the corresponding event distribution. In the handler, the event counter is always reinitialized to the n of the sampling method. Advantage of sampling
 is that the code does not have to be changed, but it is still a compromise: the above assumption will be more correct if n is small, but the smaller the n, the higher the overhead of the interrupt handler.</para>
 
-<para>Yet another measurement method is to simulate things happening in the computer system when executing a given code, i.e. execution driven simulation. Of course, the simulation is always derived from a more or less accurate machine model. For very detailed models approximating reality, the simulation time can be unacceptable high for practice. Advantage is that arbitrary complex measurement/simulation code can be inserted in a given code without perturbing results. Doing this directly before execution (called runtime instrumentation), using the original binary, is very comfortable for the user. The method becomes usable when simulating only parts of a machine with a simple model. Besides, results produced by simple models often are way easier to understand: the problem with real hardware often is that results include overlapping effects from different parts of the machine.</para>
+<para>Yet another measurement method is to simulate things happening in the computer system when executing a given code, i.e. execution driven simulation. Of course, the simulation is always derived from a more or less accurate machine model. For very detailed models approximating reality, the simulation time can be unacceptable high for practice. Advantage is that arbitrary complex measurement/simulation code can be inserted in a given code without perturbing results. Doing this directly before execution (called runtime instrumentation), using the original binary, is very comfortable for the user. The method becomes usuable when simulating only parts of a machine with a simple model. Besides, results produced by simple models often are way easier to understand: the problem with real hardware often is that results include overlapping effects from different parts of the machine.</para>
 </sect1>
 
 <sect1 id="introduction-tools">
@@ -129,7 +129,7 @@ Cachegrind or Callgrind, which are simulators using the runtime
 instrumentation framework &valgrind;. Because there is no need
 to access hardware counters (often difficult with todays Linux installations), and binaries to be profiled can be left unmodified, 
 its a good alternative way to other profiling tools.
-The disadvantage of simulation slowdown can be reduced by doing the simulation only on the interesting program parts, and perhaps only on a few iterations of a loop. Without measurement/simulation instrumentation, Valgrind's usage only has a slowdown in the range of 3-5.
+The disadvantage of simulation slowdown can be reduced by doing the simulation only on the interesting program parts, and perhaps only on a few iterations of a loop. Without measurement/simulation instrumentation, Valgrinds usage only has a slowdown in the range of 3-5.
 And when only the call graph and call counts
 are of interest, the cache simulator can be switched off.
 </para>
@@ -166,7 +166,7 @@ to easily browse down and up the call graph, together with fast switching of the
 </para>
 
 <para>
-&kappname; is an visualization for profile data fulfilling these wishes. Despite being programmed first with browsing the data from &cachegrind; and &calltree; in mind, there are converters available to be able to display profile data produced by other tools. In the appendix, a description of the Cachegrind/Callgrind file format is given.
+&kappname; is an visualization for profile data fulfilling these whishes. Despite being programmed first with browsing the data from &cachegrind; and &calltree; in mind, there are converters available to be able to display profile data produced by other tools. In the appendix, a description of the Cachegrind/Callgrind file format is given.
 </para>
 
 <para>
@@ -284,7 +284,7 @@ At first start, this area will be
 divided into a top and a bottom part, each with different visualizations
 selectable by tabs. To move visualization views, use the context menu of
 the tabs, and adjust the splitters between visualizations. To fast switch
-between different visualization layouts, use View/Layouts/Duplicate, change
+between different visualisation layouts, use View/Layouts/Duplicate, change
 the layout and switch between layouts with View/Layout/Next (or better
 according keyboard shortcuts).
 </para>
@@ -404,10 +404,10 @@ Event types whose costs are specified in a profile data file are called real eve
 <title>Visualization State</title>
 
 <para>
-The Visualization state of a KCachegrind window includes: 
+The Visualisation state of a KCachegrind window includes: 
 <itemizedlist>
 <listitem><para>
-the primary and secondary event type chosen for display,
+the primary and secondary event type choosen for display,
 </para></listitem>
 <listitem><para>
 the function grouping (used in the Function Profile list and entity coloring), 
@@ -444,7 +444,7 @@ Sidedocks (Dockables) are side windows which can be placed at any border of an K
 <itemizedlist>
 <listitem><para>
 Function Profile.
-The Function Profile is a list of functions showing inclusive and exclusive cost, call count, name and position of functions. 
+The Function Profile is a list of functions showing inclusive and exlusive cost, call count, name and position of functions. 
 </para></listitem>
 <listitem><para>
 Parts Overview
@@ -597,7 +597,7 @@ The shown cost is only the cost which is spent while the active function was act
 For cycles, blue call arrows indicate that this is an artificial call added for correct drawing which actually never happened. 
 </para>
 <para>
-If the graph is larger than the widget area, an bird's eye view is shown in one edge. There are similar visualization options as for the Call Treemap; the selected function is highlighted. 
+If the graph is larger than the widget area, an overview panner is shown in one edge. There are similar visualization options as for the Call Treemap; the selected function is highlighted. 
 </para>
 </sect2>
 
@@ -858,13 +858,13 @@ Cost Entity: An abstract item related to source code to which event counts can b
 Event Type: The kind of event of which costs can be attributed to a cost entity. There exist real event types and inherited event types. 
 </para></listitem>
 <listitem><para>
-Real Event Type: A event type that can be measured by a tool. This needs the existence of a sensor for the given event type. 
+Real Event Type: A event type that can be measured by a tool. This needs the existance of a sensor for the given event type. 
 </para></listitem>
 <listitem><para>
 Inherited Event Type: A virtual event type only visible in the visualization which is defined by a formula to be calculated from real event types. 
 </para></listitem>
 <listitem><para>
-Event Costs: Sum of events of some event type occurring while the execution is related to some cost entity. The cost is attributed to the entity. 
+Event Costs: Sum of events of some event type occuring while the execution is related to some cost entity. The cost is attributed to the entity. 
 </para></listitem>
 </itemizedlist>
 </para>
@@ -900,7 +900,7 @@ users.
 <title>How to obtain &kcachegrind;</title>
 
 <para>
-&kcachegrind; is part of the &package; package of &kde;. For less supported
+&kcachegrind; is part of the KDESDK package of &kde;. For less supported
 interim releases, &callgrind; and further documentation, see 
 the homepage at
 <ulink url="http://kcachegrind.sf.net">
@@ -914,7 +914,7 @@ further installation and compile instructions.
 
 <para>
 In order to successfully use &kcachegrind;, you need &kde; 3.x.  For
-generating profile data, &cachegrind; or &calltree;/&callgrind; is recommend.
+generating profile data, &cachegrind; or &calltree;/&callgrind; is recommand.
 </para>
 </sect1>
 
