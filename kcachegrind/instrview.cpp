@@ -25,10 +25,15 @@
 #include <qwhatsthis.h>
 #include <qpopupmenu.h>
 #include <klocale.h>
+#include <kconfig.h>
 
 #include "configuration.h"
 #include "instritem.h"
 #include "instrview.h"
+
+// InstrView defaults
+
+#define DEFAULT_SHOWHEXCODE true
 
 
 // Helpers for parsing output of 'objdump'
@@ -121,6 +126,9 @@ InstrView::InstrView(TraceItemView* parentView,
                      QWidget* parent, const char* name)
   : QListView(parent, name), TraceItemView(parentView)
 {
+  _showHexCode = DEFAULT_SHOWHEXCODE;
+  _lastHexCodeWidth = 50;
+
   _inSelectionUpdate = false;
   _arrowLevels = 0;
   _lowList.setSortLow(true);
@@ -129,8 +137,8 @@ InstrView::InstrView(TraceItemView* parentView,
   addColumn( i18n( "#" ) );
   addColumn( i18n( "Cost" ) );
   addColumn( "" );
-  addColumn( i18n( "Machine Code" ) );
-  addColumn( i18n( "Cmd." ) );
+  addColumn( i18n( "Hex" ) );
+  addColumn( "" ); // Instruction
   addColumn( i18n( "Assembler" ) );
   addColumn( i18n( "Source Position" ) );
 
@@ -202,6 +210,11 @@ void InstrView::context(QListViewItem* i, const QPoint & p, int)
   popup.insertItem(i18n("Go Forward"), 91);
   popup.insertItem(i18n("Go Up"), 92);
 
+  popup.insertSeparator();
+  popup.setCheckable(true);
+  popup.insertItem(i18n("Hex Code"), 94);
+  if (_showHexCode) popup.setItemChecked(94,true);
+
   int r = popup.exec(p);
   if      (r == 90) activated(Back);
   else if (r == 91) activated(Forward);
@@ -209,6 +222,13 @@ void InstrView::context(QListViewItem* i, const QPoint & p, int)
   else if (r == 93) {
     if (f) activated(f);
     if (instr) activated(instr);
+  }
+  else if (r == 94) {
+    _showHexCode = !_showHexCode;
+    // remember width when hiding
+    if (!_showHexCode)
+      _lastHexCodeWidth = columnWidth(3);
+    setColumnWidths();
   }
 }
 
@@ -351,20 +371,31 @@ void InstrView::doUpdate(int changeType)
   }
 
   refresh();
+  setColumnWidths();
+}
+
+void InstrView::setColumnWidths()
+{
+  if (_showHexCode)
+    setColumnWidth(3, _lastHexCodeWidth);
+  else
+    setColumnWidth(3, 0);
 }
 
 void InstrView::refresh()
 {
     _arrowLevels = 0;
+    _lastHexCodeWidth = 50;
 
     clear();
     setColumnWidth(0, 20);
     setColumnWidth(1, 50);
-    setColumnWidth(2, 0);  // arrows, defaults to invisible
-    setColumnWidth(3, 50); // machine code column
-    setColumnWidth(4, 20); // command column
+    setColumnWidth(2, 0);   // arrows, defaults to invisible
+    setColumnWidth(3, 0);   // hex code column
+    setColumnWidth(4, 20);  // command column
     setColumnWidth(5, 200); // arg column
     setSorting(0); // always reset to address number sort
+    setColumnText(1, _costType->name());
 
     if (!_data || !_activeItem) return;
 
@@ -443,6 +474,8 @@ void InstrView::refresh()
 	if (!fillInstrRange(f, itStart, ++tmpIt)) break;
 	if (it == itEnd) break;
     }
+
+    _lastHexCodeWidth = columnWidth(3);
 }
 
 
@@ -574,8 +607,9 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	new InstrItem(this, 3, popencmd);
 	new InstrItem(this, 4, "");
 	new InstrItem(this, 5,
-		      i18n("Check that you have installed the 'objdump'\n"
-                   "utility from the 'binutils' package and try again."));
+		      i18n("Check that you have installed 'objdump'."));
+	new InstrItem(this, 6,
+		      i18n("This utility can be found in the 'binutils' package."));
 	return false;
     }
     QFile file;
@@ -804,10 +838,11 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 
     if (noAssLines > 1) {
 	// trace cost not machting code
+
+        // no need for 2 translations: noAssLines is always >1 !
 	new InstrItem(this, 1,
-		      i18n("There is %n cost line without assembler code.",
-                   "There are %n cost lines without assembler code.",
-                   noAssLines));
+		      i18n("There are %1 cost lines without assembler code.")
+		      .arg(noAssLines));
 	new InstrItem(this, 2,
 		      i18n("This happens because the code of"));
 	new InstrItem(this, 3, QString("        %1").arg(objfile));
@@ -830,11 +865,11 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	new InstrItem(this, 3, popencmd);
 	new InstrItem(this, 4, "");
 	new InstrItem(this, 5,
-		      i18n("Check that the ELF object used in the command is existing"));
+		      i18n("Check that the ELF object used in the command is existing."));
 	new InstrItem(this, 5,
-		      i18n("on this machine and that you have installed the 'objdump'"));
+		      i18n("Check that you have installed 'objdump'."));
 	new InstrItem(this, 6,
-		      i18n("utility from the 'binutils' package and try again."));
+		      i18n("This utility can be found in the 'binutils' package."));
 	return false;
     }
 
@@ -859,6 +894,22 @@ void InstrView::updateInstrItems()
 	    ((InstrItem*)i)->update();
 	}
     }
+}
+
+void InstrView::readViewConfig(KConfig* c, QString prefix, QString postfix)
+{
+    KConfigGroup* g = configGroup(c, prefix, postfix);
+
+    if (0) qDebug("InstrView::readViewConfig");
+
+    _showHexCode  = g->readBoolEntry("ShowHexCode", DEFAULT_SHOWHEXCODE);
+}
+
+void InstrView::saveViewConfig(KConfig* c, QString prefix, QString postfix)
+{
+    KConfigGroup g(c, (prefix+postfix).ascii());
+
+    writeConfigEntry(&g, "ShowHexCode", _showHexCode, DEFAULT_SHOWHEXCODE);
 }
 
 #include "instrview.moc"

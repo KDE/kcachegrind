@@ -41,6 +41,9 @@ public:
   virtual QWidget* widget() { return this; }
   QString whatsThis() const;
 
+  void readViewConfig(KConfig*, QString prefix, QString postfix);
+  void saveViewConfig(KConfig*, QString prefix, QString postfix);
+
 protected:
   int arrowLevels() { return _arrowLevels; }
   void paintEmptyArea( QPainter *, const QRect & );
@@ -54,6 +57,7 @@ private:
   TraceItem* canShow(TraceItem*);
   void doUpdate(int);
   void refresh();
+  void setColumnWidths();
   void fillInstr();
   void updateJumpArray(uint,InstrItem*,bool,bool);
   bool fillInstrRange(TraceFunction*,
@@ -67,6 +71,12 @@ private:
   // temporary needed on creation...
   QMemArray<TraceInstrJump*> _jump;
   TraceInstrJumpList _lowList, _highList;
+
+  // remember width of hex code column if hidden
+  int _lastHexCodeWidth;
+
+  // widget options
+  bool _showHexCode;
 };
 
 #endif
