@@ -576,7 +576,7 @@
                                 <cstring>textLabel7</cstring>
                             </property>
                             <property name="text">
-                                <string>Miscellanous:</string>
+                                <string>Miscellaneous:</string>
                             </property>
                         </widget>
                         <widget class="QTextEdit">

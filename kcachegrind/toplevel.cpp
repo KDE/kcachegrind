@@ -322,7 +322,7 @@ void TopLevel::createDocks()
                    "<p>The flat profile contains a group and a function "
                    "selection list. The group list contains all groups "
                    "where costs "
-                   "are spent in, depending on the choosen group type. "
+                   "are spent in, depending on the chosen group type. "
                    "The group list is hidden when group type 'Function' "
                    "is selected.<p>"
                    "<p>The function list contains the functions of the "
@@ -364,7 +364,7 @@ void TopLevel::createDocks()
                    "profiles runs. Press <b>Update</b> to see different "
                    "counters of the run, and a stack trace of the current "
                    "position in the program profiled. Check the <b>Every</b> "
-                   "option to let KCachegrind regularily poll these data. "
+                   "option to let KCachegrind regularly poll these data. "
                    "Check the <b>Sync</b> option to let the dockable activate "
                    "the top function in the current loaded dump.</ul></p>"));
 
@@ -460,7 +460,7 @@ void TopLevel::createActions()
               "If this is the one from the running Cachegrind, the new "
               "created trace part will be loaded, too.</p>"
               "<p>Force dump creates a file 'cachegrind.cmd', and "
-              "checks every second for its existance. A running "
+              "checks every second for its existence. A running "
               "Cachegrind will detect this file, dump a trace part, "
               "and delete 'cachegrind.cmd'. "
               "The deletion is detected by KCachegrind, "
@@ -469,7 +469,7 @@ void TopLevel::createActions()
               "request. This deletes 'cachegrind.cmd' itself and "
               "stops polling for a new dump.</p>"
               "<p>Note: A Cachegrind run <em>only</em> detects "
-              "existance of 'cachegrind.cmd' when actively running "
+              "existence of 'cachegrind.cmd' when actively running "
               "a few milliseconds, i.e. "
               "<em>not</em> sleeping. Tip: For a profiled GUI program, "
               "you can awake Cachegrind e.g. by resizing a window "
@@ -1511,7 +1511,7 @@ bool TopLevel::queryExit()
   dockConfig.writeEntry("Position", str, true, false, true);
 #endif
 
-  // if part dock was choosen visible even for only 1 part loaded,
+  // if part dock was chosen visible even for only 1 part loaded,
   // keep this choice...
   _forcePartDock = false;
   if (_data && (_data->parts().count()<2) && _partDock->isVisible())

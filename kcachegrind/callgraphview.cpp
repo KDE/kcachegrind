@@ -1320,10 +1320,10 @@ QString CallGraphView::whatsThis() const
 {
     return i18n( "<b>Call Graph around active Function</b>"
                  "<p>Depending on configuration, this view shows "
-                 "the call graph envirnoment of the active function. "
+                 "the call graph environment of the active function. "
                  "If the graph is larger than the widget area, a overview "
                  "panner is shown in one edge.</p>"
-                 "<p>There are similar visualisation options to the "
+                 "<p>There are similar visualization options to the "
                  "Call Treemap; the selected function is highlighted.<p>");
 }
 

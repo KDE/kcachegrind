@@ -171,7 +171,7 @@ QString InstrView::whatsThis() const
 		 "call happening are inserted into the source: "
 		 "These are (cumulative) cost spent inside of the call, "
 		 "number of calls happening, and call destination.</p>"
-		 "<p>The dissassembler output shown is generated with "
+		 "<p>The disassembler output shown is generated with "
 		 "the 'objdump' utility from the 'binutils' package.</p>"
 		 "<p>Select a line with call information to "
 		 "make the destination function of this call current.</p>");

@@ -544,7 +544,7 @@ QString TabView::whatsThis() const
 		 "Lists tab, but not only direct callers and callees "
 		 "but also indirect ones.</li>"
 		 "<li>The Call Graph tab shows a graphical "
-		 "visualisation of the calls done by this function.</li>"
+		 "visualization of the calls done by this function.</li>"
 		 "<li>The Source tab presents annotated source code "
 		 "if debugging information and the source file "
 		 "is available.</li>"

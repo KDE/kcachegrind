@@ -471,7 +471,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
       if (nextCostLineno == 0) {
 	  new SourceItem(this, fileno, 0, false,
-			 i18n("There is no cost of current selected type assoziated"),
+			 i18n("There is no cost of current selected type associated"),
 			 0, _costType);
 	  new SourceItem(this, fileno, 1, false,
 			 i18n("with any source line of this function in file"),

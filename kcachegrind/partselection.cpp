@@ -292,7 +292,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
   popup.insertSeparator();
 
   vpopup.setCheckable(true);
-  popup.insertItem(i18n("Visualisation"), &vpopup, 10);
+  popup.insertItem(i18n("Visualization"), &vpopup, 10);
 
   vpopup.insertItem(i18n("Partitioning Mode"), 30);
   vpopup.insertItem(i18n("Zoom Function"), 31);
