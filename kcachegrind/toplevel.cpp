@@ -67,7 +67,6 @@
 #include "tracedata.h"
 #include "configuration.h"
 #include "configdlg.h"
-#include "kwidgetaction.h" // needed for KDE 3.0.x
 #include "multiview.h"
 #include "callgraphview.h"
 
@@ -801,27 +800,6 @@ void TopLevel::createMiscActions()
   hint = i18n("Change Split Orientation when main window is split.");
   _taSplitDir->setToolTip( hint );
   _taSplitDir->setWhatsThis( hint );
-
-  queryLineEdit = new QLineEdit(0);
-  QLabel* label = new QLabel( i18n("&Search:"), this, "kde toolbar widget" );
-  label->setBuddy( queryLineEdit );
-  KWidgetAction* wa;
-  wa = new KWidgetAction( label, i18n("&Search:"), Key_F6,
-                          0, 0,
-                          actionCollection(), "query_label" );
-  //wa->setAutoSized(true);
-
-  action = new KWidgetAction(queryLineEdit, i18n("Function Query"),
-                             KShortcut(),
-                             this, SLOT(querySlot()),
-                             actionCollection(), "query");
-  connect(queryLineEdit, SIGNAL(returnPressed()),
-          this, SLOT(querySlot()));
-
-  QWhatsThis::add( queryLineEdit, i18n(
-                     "Type part of a function name (insensitive) to get "
-                     "a list of matching functions from current "
-                     "function group"));
 
   // copied from KMail...
 #if KDE_VERSION >= 308 // KDE 3.1
