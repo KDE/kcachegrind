@@ -151,7 +151,7 @@ class AppendList {
     struct AppendListChunk {
 	int size;
 	struct AppendListChunk* next;
-	type* data[0];
+	type* data[1];
     };
 
     struct AppendListChunk *_next, *_current, *_last;
