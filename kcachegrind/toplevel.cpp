@@ -1834,6 +1834,8 @@ void TopLevel::upActivated(int id)
 
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
   HistoryItem* hi = b ? b->current() : 0;
+  if (  !hi )
+      return;
   TraceFunction* f = hi->function();
 
   while (id>0 && f) {
