@@ -63,7 +63,9 @@
 #include "multiview.h"
 #include "callgraphview.h"
 
-#define TRACE_UPDATES 1
+#define TRACE_UPDATES 0
+#define ENABLE_DUMPDOCK 0
+
 
 TopLevel::TopLevel(const char *name)
   : KMainWindow(0, name), DCOPObject("KCachegrindIface")
@@ -79,17 +81,20 @@ TopLevel::TopLevel(const char *name)
 
   _partDockShown->setChecked(!_partDock->isHidden());
   _stackDockShown->setChecked(!_stackDock->isHidden());
-  _dumpDockShown->setChecked(!_dumpDock->isHidden());
   _functionDockShown->setChecked(!_functionDock->isHidden());
 
   connect(_partDock, SIGNAL(visibilityChanged(bool)),
           this, SLOT(partVisibilityChanged(bool)));
   connect(_stackDock, SIGNAL(visibilityChanged(bool)),
           this, SLOT(stackVisibilityChanged(bool)));
-  connect(_dumpDock, SIGNAL(visibilityChanged(bool)),
-          this, SLOT(dumpVisibilityChanged(bool)));
   connect(_functionDock, SIGNAL(visibilityChanged(bool)),
           this, SLOT(functionVisibilityChanged(bool)));
+
+#if ENABLE_DUMPDOCK
+  _dumpDockShown->setChecked(!_dumpDock->isHidden());
+  connect(_dumpDock, SIGNAL(visibilityChanged(bool)),
+          this, SLOT(dumpVisibilityChanged(bool)));
+#endif
 
   _statusbar = statusBar();
   _statusLabel = new QLabel(_statusbar);
@@ -330,6 +335,7 @@ void TopLevel::createDocks()
                    "ordered by the costs spent therein. Functions with "
                    "costs less than 1% are hidden on default.</p>"));
 
+#if ENABLE_DUMPDOCK
   _dumpDock = new QDockWindow(QDockWindow::InDock, this);
   _dumpDock->setCaption(i18n("Profile Dumps"));
   _dumpDock->setCloseMode( QDockWindow::Always );
@@ -367,7 +373,7 @@ void TopLevel::createDocks()
                    "option to let KCachegrind regularly poll these data. "
                    "Check the <b>Sync</b> option to let the dockable activate "
                    "the top function in the current loaded dump.</ul></p>"));
-
+#endif
 
   // Restore QT Dock positions...
   KConfigGroup dockConfig(KGlobal::config(), QCString("Docks"));
@@ -375,12 +381,14 @@ void TopLevel::createDocks()
   if (0) qDebug("Docks/Position: '%s'", str.ascii());
   if (str.isEmpty()) {
     // default positions
-    addDockWindow(_dumpDock, DockLeft);
     addDockWindow(_partDock, DockLeft);
     addDockWindow(_stackDock, DockLeft);
     addDockWindow(_functionDock, DockLeft);
     _stackDock->hide();
+#if ENABLE_DUMPDOCK
+    addDockWindow(_dumpDock, DockLeft);
     _dumpDock->hide();
+#endif
   }
   else {
     QTextStream ts( &str, IO_ReadOnly );
@@ -516,6 +524,7 @@ void TopLevel::createActions()
   _functionDockShown->setToolTip( hint );
   _functionDockShown->setWhatsThis( hint );
 
+#if ENABLE_DUMPDOCK
   _dumpDockShown = new KToggleAction(i18n("Profile Dumps"), KShortcut(),
                                      this, SLOT(toggleDumpDock()),
                                      actionCollection(),
@@ -524,7 +533,7 @@ void TopLevel::createActions()
   hint = i18n("Show/Hide the Profile Dumps Dockable");
   _dumpDockShown->setToolTip( hint );
   _dumpDockShown->setWhatsThis( hint );
-
+#endif
 
   _taPercentage = new KToggleAction(i18n("Show Relative Costs"), "percent",
 				    KShortcut(),
@@ -751,10 +760,12 @@ void TopLevel::toggleStackDock()
 
 void TopLevel::toggleDumpDock()
 {
+#if ENABLE_DUMPDOCK
   if (!_dumpDock->isVisible())
     _dumpDock->show();
   else
     _dumpDock->hide();
+#endif
 }
 
 void TopLevel::toggleFunctionDock()
@@ -837,7 +848,9 @@ void TopLevel::stackVisibilityChanged(bool v)
 
 void TopLevel::dumpVisibilityChanged(bool v)
 {
+#if ENABLE_DUMPDOCK
   _dumpDockShown->setChecked(v);
+#endif
 }
 
 void TopLevel::functionVisibilityChanged(bool v)

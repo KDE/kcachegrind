@@ -255,7 +255,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
   QString str;
   TreeMapItem* s = 0;
 
-  if (_data->parts().count()>1) {
+  if (_data && (_data->parts().count()>1)) {
     s = partAreaWidget->possibleSelection(i);
     if (!s->text(0).isEmpty()) {
       str = (partAreaWidget->isSelected(s)) ?
