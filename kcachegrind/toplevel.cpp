@@ -580,14 +580,14 @@ void TopLevel::createActions()
               "<p>If this is switched off, the treemap drawing will show "
 	      "black areas when a recursive call is made instead of drawing the "
 	      "recursion ad infinitum. Note that "
-	      "the size of black areas often will be wrong, as inside of recursive "
-	      "cycles, you cannot determine the cost of calls. However, the error is "
-	      "small for false cycles (see documentation)."
+	      "the size of black areas often will be wrong, as inside recursive "
+	      "cycles the cost of calls cannot be determined; the error is small, "
+	      "however, for false cycles (see documentation)."
 	      "<p>The correct handling for cycles is to detect them and collapse all "
-	      "functions of a cycle into a virtual function. This is done when this "
-	      "option is selected. Unfortunately with GUI applications, this often will "
-	      "lead to huge false cycles, making the analysis impossible. Therefore the "
-	      "possibility to switch this off.");
+	      "functions of a cycle into a virtual function, which is done when this "
+	      "option is selected. Unfortunately, with GUI applications, this often will "
+	      "lead to huge false cycles, making the analysis impossible; therefore, there "
+	      "is the option to switch this off.");
   _taCycles->setWhatsThis( hint );
 
   KStdAction::quit(this, SLOT(close()), actionCollection());
