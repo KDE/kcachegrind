@@ -20,8 +20,8 @@
  * KCachegrind startup
  */
 
-// for VERSION
-#include "config.h"
+// for KCACHEGRIND_VERSION
+#include "../version.h"
 
 #include <qfile.h>
 #include <kapplication.h>
@@ -44,7 +44,7 @@ int main( int argc, char ** argv )
 {
   KAboutData aboutData("kcachegrind",
                        I18N_NOOP("KCachegrind"),
-                       VERSION,
+                       KCACHEGRIND_VERSION,
                        I18N_NOOP("KDE Frontend for Cachegrind"),
                        KAboutData::License_GPL,
                        I18N_NOOP("(c) 2002"));

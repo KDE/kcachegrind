@@ -1,6 +1,6 @@
 Begin3
-Title:          @PACKAGE@
-Version:        @VERSION@
+Title:          @KCACHEGRIND_PACKAGE@
+Version:        @KCACHEGRIND_VERSION@
 Description:    KDE Profiling Visualisation Tool
 Keywords:       Profiling, Performance Analysis, Visualisation, Development
 Author:         Josef Weidendorfer <Josef.Weidendorfer@gmx.de> 

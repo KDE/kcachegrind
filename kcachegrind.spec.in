@@ -1,13 +1,13 @@
 Summary:   KDE Profiling Visualisation Tool
-Name:      @PACKAGE@
-Version:   @VERSION@
+Name:      @KCACHEGRIND_PACKAGE@
+Version:   @KCACHEGRIND_VERSION@
 Release:   1
 Copyright: GPL
 Group:     Development/Tools
 Vendor:    (none)
 URL:       http://kcachegrind.sourceforge.net
 Packager:  Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
-Source:    @PACKAGE@-@VERSION@.tar.gz
+Source:    @KCACHEGRIND_PACKAGE@-@KCACHEGRIND_VERSION@.tar.gz
 BuildRoot: /var/tmp/build
 
 %description
@@ -42,14 +42,14 @@ make -j$numprocs
 make install-strip DESTDIR=$RPM_BUILD_ROOT
 
 cd $RPM_BUILD_ROOT
-find . -type d | sed '1,2d;s,^\.,\%attr(-\,root\,root) \%dir ,' > $RPM_BUILD_DIR/file.list.@PACKAGE@
-find . -type f | sed 's,^\.,\%attr(-\,root\,root) ,' >> $RPM_BUILD_DIR/file.list.@PACKAGE@
-find . -type l | sed 's,^\.,\%attr(-\,root\,root) ,' >> $RPM_BUILD_DIR/file.list.@PACKAGE@
+find . -type d | sed '1,2d;s,^\.,\%attr(-\,root\,root) \%dir ,' > $RPM_BUILD_DIR/file.list.@KCACHEGRIND_PACKAGE@
+find . -type f | sed 's,^\.,\%attr(-\,root\,root) ,' >> $RPM_BUILD_DIR/file.list.@KCACHEGRIND_PACKAGE@
+find . -type l | sed 's,^\.,\%attr(-\,root\,root) ,' >> $RPM_BUILD_DIR/file.list.@KCACHEGRIND_PACKAGE@
 
 %clean
 rm -rf $RPM_BUILD_ROOT/*
-rm -rf $RPM_BUILD_DIR/@PACKAGE@
-rm -rf ../file.list.@PACKAGE@
+rm -rf $RPM_BUILD_DIR/@KCACHEGRIND_PACKAGE@
+rm -rf ../file.list.@KCACHEGRIND_PACKAGE@
 
 
-%files -f ../file.list.@PACKAGE@
+%files -f ../file.list.@KCACHEGRIND_PACKAGE@

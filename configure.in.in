@@ -1,4 +1,11 @@
+KCACHEGRIND_VERSION=0.4.3
+KCACHEGRIND_PACKAGE=kcachegrind
+AC_SUBST(KCACHEGRIND_VERSION)
+AC_SUBST(KCACHEGRIND_PACKAGE)
+
 AC_FUNC_MMAP
+
+AC_OUTPUT( kcachegrind/version.h )
 AC_OUTPUT( kcachegrind/kcachegrind.spec )
 AC_OUTPUT( kcachegrind/kcachegrind.lsm )
 
