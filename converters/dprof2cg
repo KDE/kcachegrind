@@ -1,0 +1,149 @@
+#!/usr/bin/perl
+#
+# Copyright (c) 2004 OmniTI Computer Consulting 
+# All rights reserved
+# The following code was written by George Schlossnagle <george@omniti.com>
+# and is provided completely free and without any warranty.
+#
+# If it breaks, you can have both pieces.
+
+use strict;
+use Config;
+use Getopt::Std;
+use IO::File;
+
+my @callstack;
+my %function_info;
+my $tree = {};
+my $total_cost = 0;
+my %opts;
+
+getopt('f:o:', \%opts);
+
+my $infd;
+usage() unless ($opts{'f'} && ($infd = IO::File->new($opts{'f'}, "r")));
+
+my $outfd;
+my $outfile = $opts{'o'};
+unless($outfile) {
+  $opts{'f'} =~ m!([^/]+)$!;
+  $outfile = "cachegrind.out.$1";
+}
+$outfd = new IO::File $outfile, "w";
+usage() unless defined $outfd;
+  
+while(<$infd>) {
+  last if /^PART2/;
+}
+while(<$infd>) {
+  chomp;
+  my @args = split;
+  if($args[0] eq '@') {
+    # record timing event
+    my $call_element = pop @callstack;
+    if($call_element) {
+      $call_element->{'cost'} += $args[3];
+      $call_element->{'cumm_cost'} += $args[3];
+      $total_cost += $args[3];
+      push @callstack, $call_element;
+    }
+  }
+  elsif($args[0] eq '&') {  
+    # declare function
+    $function_info{$args[1]}->{'package'} = $args[2];
+    if($args[2] ne 'main') {
+      $function_info{$args[1]}->{'name'} = $args[2]."::".$args[3];
+    } else {
+      $function_info{$args[1]}->{'name'} = $args[3];
+    }
+  }
+  elsif($args[0] eq '+') {
+    # push myself onto the stack
+    my $call_element = { 'specifier' => $args[1], 'cost' => 0 };
+    push @callstack, $call_element;
+  }
+  elsif($args[0] eq '-') {
+    my $called = pop @callstack;
+    my $called_id = $called->{'specifier'};
+    my $caller = pop @callstack;
+    if (exists $tree->{$called_id}) {
+      $tree->{$called_id}->{'cost'} += $called->{'cost'};
+    }
+    else {
+      $tree->{$called_id} = $called;
+    } 
+    if($caller) {
+      $caller->{'child_calls'}++;
+      my $caller_id = $caller->{'specifier'};
+      if(! exists $tree->{$caller_id} ) {
+        $tree->{$caller_id} = { 'specifier' => $caller_id, 'cost' => 0 };
+#        $tree->{$caller_id} = $caller;
+      }
+      $caller->{'cumm_cost'} += $called->{'cumm_cost'};
+      $tree->{$caller_id}->{'called_funcs'}->[$tree->{$caller_id}->{'call_counter'}++]->{$called_id} += $called->{'cumm_cost'};
+      push @callstack, $caller;
+    }
+  }
+  elsif($args[0] eq '*') {
+    # goto &func
+    # replace last caller with self
+    my $call_element = pop @callstack;
+    $call_element->{'specifier'} = $args[1];
+    push @callstack, $call_element;
+  }
+  else {print STDERR "Unexpected line: $_\n";}
+}
+
+#
+# Generate output
+#
+my $output = '';
+$output .= "events: Tick\n";
+$output .= "summary: $total_cost\n";
+$output .= "cmd: your script\n\n";
+foreach my $specifier ( keys %$tree ) {
+  my $caller_package = $function_info{$specifier}->{'package'} || '???';
+  my $caller_name = $function_info{$specifier}->{'name'} || '???';
+  my $include = find_include($caller_package);
+  $output .= "ob=\n";
+  $output .= sprintf "fl=%s\n", find_include($caller_package);
+  $output .= sprintf "fn=%s\n", $caller_name;
+  $output .= sprintf "1 %d\n", $tree->{$specifier}->{'cost'};
+  if(exists $tree->{$specifier}->{'called_funcs'}) {
+    foreach my $items (@{$tree->{$specifier}->{'called_funcs'}}) {
+      while(my ($child_specifier, $costs) = each %$items) {
+        $output .= sprintf "cfn=%s\n", $function_info{$child_specifier}->{'name'};
+        $output .= sprintf "cfi=%s\n", find_include($function_info{$child_specifier}->{'package'});
+        $output .= "calls=1\n";
+        $output .= sprintf "1 %d\n", $costs;
+      }
+    }
+  }
+  $output .= "\n";
+}
+print STDERR "Writing kcachegrind output to $outfile\n";
+$outfd->print($output);
+
+
+
+sub find_include {
+  my $module = shift;
+  $module =~ s!::!/!g;
+  for (@INC) {
+    if ( -f "$_/$module.pm" ) {
+      return "$_/$module.pm";
+    }
+    if ( -f "$_/$module.so" ) {
+      return "$_/$module.so";
+    }
+  }
+  return "???";
+}
+
+sub usage() {
+  print STDERR "dprof2calltree -f <tmon.out> [-o outfile]\n";
+  exit -1;
+}
+
+
+# vim: set sts=2 ts=2 bs ai expandtab :

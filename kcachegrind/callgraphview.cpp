@@ -1007,7 +1007,7 @@ CanvasNode::CanvasNode(CallGraphView* v, GraphNode* n,
 		.arg(cumP, 0, 'f', Configuration::percentPrecision()));
     else
 	setText(1, SubCost(n->cum).pretty());
-    setPixmap(1, percentagePixmap(25,10,(int)(cumP+.5), Qt::blue));
+    setPixmap(1, percentagePixmap(25,10,(int)(cumP+.5), Qt::blue, true));
 }
 
 void CanvasNode::setSelected(bool s)
@@ -1087,7 +1087,7 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce,
 		.arg(cumP, 0, 'f', Configuration::percentPrecision()));
     else
         setText(0, SubCost(e->cost).pretty());
-    setPixmap(0, percentagePixmap(25,10,(int)(cumP+.5), Qt::blue));
+    setPixmap(0, percentagePixmap(25,10,(int)(cumP+.5), Qt::blue, true));
 
     if (e->call() && (e->call()->isRecursion() || e->call()->inCycle())) {
 	QString icon = "undo";
@@ -1383,7 +1383,9 @@ void CallGraphView::updateSizes(QSize s)
     int cWidth  = _canvas->width()  - 2*_xMargin + 100;
     int cHeight = _canvas->height() - 2*_yMargin + 100;
 
-    if ((cWidth < s.width()) && cHeight < s.height()) {
+    // hide birds eye view if no overview needed
+    if (!_data || !_activeItem ||
+	((cWidth < s.width()) && cHeight < s.height())) {
       _completeView->hide();
       return;
     }
@@ -1703,7 +1705,8 @@ void CallGraphView::refresh()
   setCanvas(0);
 
   if (!_data || !_activeItem) {
-    _canvas = new QCanvas(size().width(),size().height());
+    _canvas = new QCanvas(QApplication::desktop()->width(),
+			  QApplication::desktop()->height());
     QString s = i18n("No item activated for which to draw the call graph.\n");
     QCanvasText* t = new QCanvasText(s, _canvas);
     t->move(0, 0);
@@ -2439,11 +2442,13 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
 	if (!_canvas) return;
 
 	QString fn = KFileDialog::getSaveFileName(":","*.png");
-		
-	QPixmap pix(_canvas->size());
-	QPainter p(&pix);
-        _canvas->drawArea( _canvas->rect(), &p );
-	pix.save(fn,"PNG");
+
+	if (!fn.isEmpty()) {
+	  QPixmap pix(_canvas->size());
+	  QPainter p(&pix);
+	  _canvas->drawArea( _canvas->rect(), &p );
+	  pix.save(fn,"PNG");
+	}
       }
       break;
 

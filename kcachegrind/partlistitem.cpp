@@ -112,7 +112,7 @@ void PartListItem::update()
     else
       setText(2, _partCostItem->prettySubCost(_costType));
 
-    setPixmap(2, costPixmap(_costType, _partCostItem, selfTotal));
+    setPixmap(2, costPixmap(_costType, _partCostItem, selfTotal, false));
   }
 
   if (total == 0 || !pf) {
@@ -128,7 +128,7 @@ void PartListItem::update()
     else
       setText(1, _sum.pretty());
 
-    setPixmap(1, costPixmap(_costType, pf->cumulative(), total));
+    setPixmap(1, costPixmap(_costType, pf->cumulative(), total, false));
   }
 
   if (!pf) {

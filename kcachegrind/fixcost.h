@@ -47,18 +47,33 @@ class FixPool {
 };
 
 
+class PositionSpec
+{
+ public:
+  PositionSpec()
+    { fromLine = 0, toLine = 0, fromAddr = 0, toAddr = 0; }
+  PositionSpec(uint l1, uint l2, Addr a1, Addr a2)
+    { fromLine = l1, toLine = l2, fromAddr = a1, toAddr = a2; }
+
+  bool isLineRegion() const { return (fromLine != toLine); }
+  bool isAddrRegion() const { return (fromAddr != toAddr); }
+
+  uint fromLine, toLine;
+  Addr fromAddr, toAddr;
+};
+
 /**
  * A class holding an unchangable cost item of an input file.
  *
  * As there can be a lot of such cost items, we use our own
- * allocator FixedCostContainer (see below)
+ * allocator which uses FixPool
  */
 class FixCost {
 
  public:
     FixCost(TracePart*, FixPool*,
 	    TraceFunctionSource*,
-	    unsigned int line, Addr addr,
+	    PositionSpec&,
             TracePartFunction*,
 	    FixString&);
 
@@ -67,8 +82,14 @@ class FixCost {
     void addTo(TraceCost*);
 
     TracePart* part() const { return _part; }
-    unsigned int line() const { return _line; }
-    Addr addr() const { return _addr; }
+    bool isLineRegion() const { return _pos.isLineRegion(); }
+    bool isAddrRegion() const { return _pos.isAddrRegion(); }
+    uint fromLine() const { return _pos.fromLine; }
+    uint line() const { return _pos.fromLine; }
+    uint toLine() const { return _pos.toLine; }
+    Addr fromAddr() const { return _pos.fromAddr; }
+    Addr addr() const { return _pos.fromAddr; }
+    Addr toAddr() const { return _pos.toAddr; }
     TraceFunctionSource* functionSource() const { return _functionSource; }
 
     FixCost* nextCostOfPartFunction() const
@@ -77,8 +98,7 @@ class FixCost {
  private:
     int _count;
     SubCost*  _cost;
-    unsigned int _line;
-    Addr _addr;
+    PositionSpec _pos;
 
     TracePart* _part;
     TraceFunctionSource* _functionSource;

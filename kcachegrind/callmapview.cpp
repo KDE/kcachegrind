@@ -620,13 +620,11 @@ QPixmap CallMapBaseItem::pixmap(int i) const
 {
     if ((i != 1) || !_f) return QPixmap();
 
-    // Cost pixmap
-
     TraceCostType* ct = ((CallMapView*)widget())->costType();
     TraceCost* t      = ((CallMapView*)widget())->totalCost();
 
-    return costPixmap( ct, _f->cumulative(),
-		       (double) (t->subCost(ct)) );
+    // colored level meter with frame
+    return costPixmap( ct, _f->cumulative(), (double) (t->subCost(ct)), true);
 }
 
 
@@ -761,11 +759,11 @@ QPixmap CallMapCallingItem::pixmap(int i) const
     if (i != 1) return QPixmap();
 
     // Cost pixmap
-
     TraceCostType* ct = ((CallMapView*)widget())->costType();
     TraceCost* t      = ((CallMapView*)widget())->totalCost();
 
-    return costPixmap( ct, _c, t->subCost(ct) / _factor );
+    // colored level meter with frame
+    return costPixmap( ct, _c, t->subCost(ct) / _factor, true);
 }
 
 
@@ -878,11 +876,11 @@ QPixmap CallMapCallerItem::pixmap(int i) const
     if (i != 1) return QPixmap();
 
     // Cost pixmap
-
     TraceCostType* ct = ((CallMapView*)widget())->costType();
     TraceCost* t      = ((CallMapView*)widget())->totalCost();
 
-    return costPixmap( ct, _c, t->subCost(ct) / _factor );
+    // colored level meter with frame
+    return costPixmap( ct, _c, t->subCost(ct) / _factor, true );
 }
 
 

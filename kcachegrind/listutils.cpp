@@ -23,6 +23,8 @@
 #include <qpainter.h>
 #include "listutils.h"
 
+#define COSTPIX_WIDTH 25
+
 QPixmap colorPixmap(int w, int h, QColor c)
 {
   static QPixmap* pixs[37];
@@ -59,95 +61,55 @@ QPixmap colorPixmap(int w, int h, QColor c)
   return *pix;
 }
 
-// create a percentage pixmap
-// with a filling rate of p percent (0-100)
-QPixmap percentagePixmap(int w, int h, int percent, QColor c)
+/**
+ * Create a percentage pixmap with a filling rate of p percent (0-100).
+ * When withFrame==false, the pixmap is truncated to only the filled portion.
+ */
+QPixmap percentagePixmap(int w, int h, int percent, QColor c, bool framed)
 {
-#if 0
-  static QPixmap* pixs[101];
-  static bool inited = false;
+  int iw, ix1, ix2, ih, iy1, iy2;
 
-  if (!inited) {
-    for (int i=0;i<101;i++) pixs[i]=0;
-    inited = true;
+  // inner rectangle to fill with bar
+  if (framed) {
+    iw = w-2, ix1 = 1, ix2 = w-2;
+    ih = h-2, iy1 = 1, iy2 = h-2;
   }
-  if (percent<0 || percent>100) return QPixmap();
-
-  if (pixs[percent]) {
-    if ((pixs[percent]->width() == w) &&
-        (pixs[percent]->height() == h))
-      return *pixs[percent];
-
-    delete pixs[percent];
+  else {
+    iw = w; ix1 = 0; ix2 = w-1;
+    ih = h; iy1 = 0; iy2 = h-1;
   }
+  
+  int filled = iw*percent/100+1;
+  if (!framed) w=filled;
+  if (w<3) return QPixmap();
 
-  QPixmap* pix = new QPixmap(w, h);
-  int x1 = (2*(w-2) * percent + 50) / 100;
-  int x2 = 0;
-  if (x1>(w-2)) { x2 = x1-(w-2); x1 = w-2; }
-  int y = h/2;
-
-  pix->fill(Qt::white);
-  QPainter p(pix);
-  p.setPen(Qt::black);
-  p.drawRect(0, 0, w, h);
-  if (x1>0) {
-
-    // frame
-    p.setPen(c.light());
-    p.drawLine(1, 1, x1, 1);
-    p.drawLine(1, 1, 1, (x2>0) ? h-2 : y);
-    p.setPen(c.dark());
-    p.drawLine(x1, 1, x1, y);
-    if (x2<x1)
-      p.drawLine(x2+1, y, x1, y);
-    if (x2>0) {
-      p.drawLine(x2, y, x2, h-2);
-      p.drawLine(1, h-2, x2, h-2);
-    }
-
-    // inside
-    p.setPen(Qt::NoPen);
-    p.setBrush(c);
-    if (x1>2) p.drawRect(2, 2, x1-2, y-2);
-    if (x2>2) p.drawRect(2, 2, x2-2, h-4);
-  }
-  pixs[percent] = pix;
-  return *pix;
-#else
   QPixmap pix(w, h);
-  int x1 = (2*(w-2) * percent + 50) / 100;
-  int x2 = 0;
-  if (x1>(w-2)) { x2 = x1-(w-2); x1 = w-2; }
-  int y = h/2;
-
   pix.fill(Qt::white);
   QPainter p(&pix);
   p.setPen(Qt::black);
-  p.drawRect(0, 0, w, h);
-  if (x1>0) {
+  if (framed)
+    p.drawRect(0, 0, w, h);
 
-    // frame
-    p.setPen(c.light());
-    p.drawLine(1, 1, x1, 1);
-    p.drawLine(1, 1, 1, (x2>0) ? h-2 : y);
-    p.setPen(c.dark());
-    p.drawLine(x1, 1, x1, y);
-    if (x2<x1)
-      p.drawLine(x2+1, y, x1, y);
-    if (x2>0) {
-      p.drawLine(x2, y, x2, h-2);
-      p.drawLine(1, h-2, x2, h-2);
-    }
+  // inside
+  p.setPen(Qt::NoPen);
+  p.setBrush(c);
+  p.drawRect(ix1, iy1, filled-1,ih);
 
-    // inside
-    p.setPen(Qt::NoPen);
-    p.setBrush(c);
-    if (x1>2) p.drawRect(2, 2, x1-2, y-2);
-    if (x2>2) p.drawRect(2, 2, x2-2, h-4);
-  }
+  // last right pix column
+  int lastY = ih-(filled*ih - iw*ih*percent/100);
+  int lastX1 = ix1+filled-2 + ((lastY>1) ? 1: 0);
+  int lastX2 = ix1+filled-2;
+
+  // frame
+  p.setPen(c.light());
+  p.drawLine(ix1, iy1, lastX1, iy1);
+  p.drawLine(ix1, iy1, ix1, iy2);
+  p.setPen(c.dark());
+  p.drawLine(lastX1, iy1, lastX1, iy1+lastY);
+  p.drawLine(lastX2, iy1+lastY, lastX2, iy2);
+  p.drawLine(ix1+1, iy2, lastX2, iy2);
+
   return pix;
-#endif
 }
 
 inline QColor partitionColor(int d, int max)
@@ -158,16 +120,8 @@ inline QColor partitionColor(int d, int max)
 
 
 QPixmap partitionPixmap(int w, int h,
-                        double* hist, QColor* cArray, int maxIndex)
+                        double* hist, QColor* cArray, int maxIndex, bool framed)
 {
-  QPixmap pix(w, h);
-
-  pix.fill(Qt::white);
-  QPainter p(&pix);
-  p.setPen(Qt::black);
-  p.drawRect(0, 0, w, h);
-
-  QColor c, cLast;
   int lastPos = 0, nextPos;
   double val=0.0, sum=0.0;
   int d, dmin=maxIndex, dmax=0;
@@ -178,83 +132,68 @@ QPixmap partitionPixmap(int w, int h,
       if (dmax<d) dmax = d;
     }
 
-  int dw; // double width
-  dw = (int)(2*(w-2)*sum+.5); // now recalculate width
+  // inner rectangle to fill with bar
+  int iw, ix1, ix2, ih, iy1, iy2;
+  if (framed) {
+    iw = w-2, ix1 = 1, ix2 = w-2;
+    ih = h-2, iy1 = 1, iy2 = h-2;
+  }
+  else {
+    iw = w; ix1 = 0; ix2 = w-1;
+    ih = h; iy1 = 0; iy2 = h-1;
+  }
+
+  int filled = (int)(iw*sum+1);
+  if (!framed) w=filled;
+  if (w<3) return QPixmap();
+
+  QPixmap pix(w, h);
+  pix.fill(Qt::white);
+  QPainter p(&pix);
+  p.setPen(Qt::black);
+  if (framed)
+    p.drawRect(0, 0, w, h);
 
   //qDebug("Sum %f, dw %d", sum,dw);
 
+  QColor c, cLast;
   bool leftDrawn = false;
-  bool upperDrawn = false;
-  int x1, x2=0, y1=0, y2=0;
+  int x1, x2=0;
   int lastDiff=0, diff;
   d=dmin;
   while (d<dmax+1) {
     val += hist[d];
-    nextPos = (int)(dw * val/sum);
+    nextPos = (int)(filled * val/sum);
 
     //qDebug(" hist[%d] %f, val %f, nextPos %d", d, hist[d], val, nextPos);
 
     diff = nextPos-lastPos;
-    // skip drawing of a distance rect if it's small and not the last
-    if (diff <2 && d<dmax+1) {
-      d++;
-      continue;
-    }
+    if (diff==0) { d++; continue; }
 
     c = cArray ? cArray[d] : partitionColor(d,maxIndex);
 
-    if (upperDrawn) {
-      y1 = h/2;
-      y2 = h - 2;
-      x1 = lastPos-(w-2)+1;
-      x2 = nextPos-(w-2)+1;
-      if (x1<1) x1 = 1;
-    }
-    else {
-      y1 = 1;
-      y2 = h/2-1;
-      x1 = lastPos+1;
-      x2 = nextPos+1;
-    }
-    if (x2>w-2) x2=w-2;
+    x1 = ix1+lastPos;
+    x2 = ix1+nextPos;
+    if (x2>=iw) x2=iw-1;
 
     // inside
     p.setPen(Qt::NoPen);
     p.setBrush(c);
-    p.drawRect(x1, y1, x2-x1+1, y2-y1+1);
+    p.drawRect(x1, iy1, x2-x1+1, ih);
 
     // lighter top border
     p.setPen(c.light());
-    p.drawLine(x1, y1, x2-1, y1);
+    p.drawLine(x1, iy1, x2-1, iy1);
 
     // when width for last and current distance >2, draw full 3D effect...
-    if (!leftDrawn || (diff>2 && lastDiff >2)) {
-      p.drawLine(x1, y1+1, x1, y2);
+    if (!leftDrawn) {
+      p.drawLine(x1, iy1+1, x1, iy2);
       leftDrawn = true;
-
-      if (x1>1) {
-        // right border of last rect (in last color)
-        p.setPen(cLast.dark());
-        p.drawLine(x1-1, y1+1, x1-1, y2);
-      }
     }
 
     // darker bottom border
     p.setPen(c.dark());
-    p.drawLine(x1, y2, x2-1, y2);
-
-    if ((x2==w-2) && !upperDrawn) {
-      // right dark border
-      p.drawLine(x2, y1, x2, y2);
-
-      upperDrawn = true;
-      leftDrawn = false;
-      // we are wrapping from upper to lower part...
-      // draw same distance again; and don't add hist[d] twice
-      val -= hist[d];
-      continue;
-    }
-
+    p.drawLine(x1, iy2, x2-1, iy2);
 
     lastPos = nextPos;
     lastDiff = diff;
@@ -264,18 +203,18 @@ QPixmap partitionPixmap(int w, int h,
 
   // right border (in last color)
   if (x2>0)
-    p.drawLine(x2, y1, x2, y2);
+    p.drawLine(x2, iy1, x2, iy2);
 
   return pix;
 }
 
 
-QPixmap costPixmap(TraceCostType* ct, TraceCost* cost, double total)
+QPixmap costPixmap(TraceCostType* ct, TraceCost* cost, double total, bool framed)
 {
     if (ct->isReal()) {
 	QColor color = ct->color();
 	double p = 100.0 * cost->subCost(ct) / total;
-	return percentagePixmap(25, 10, (int)(p+.5), color);
+	return percentagePixmap(COSTPIX_WIDTH, 10, (int)(p+.5), color, framed);
     }
 
     int maxIndex;
@@ -284,7 +223,7 @@ QPixmap costPixmap(TraceCostType* ct, TraceCost* cost, double total)
     maxIndex = ct->histCost(cost, total, h);
 
     if (maxIndex ==0) return QPixmap();    
-    return partitionPixmap(25, 10, h, cs, maxIndex);
+    return partitionPixmap(COSTPIX_WIDTH, 10, h, cs, maxIndex, framed);
 }
 
 

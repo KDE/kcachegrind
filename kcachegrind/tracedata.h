@@ -136,6 +136,7 @@ class TracePartInstrCall;
 class TracePartLine;
 class TracePartLineCall;
 class TracePartCall;
+class TracePartLineRegion;
 class TracePartFunction;
 class TracePartClass;
 class TracePartObject;
@@ -148,6 +149,7 @@ class TraceLine;
 class TraceLineJump;
 class TraceLineCall;
 class TraceCall;
+class TraceLineRegion;
 class TraceFunctionSource;
 class TraceFunction;
 class TraceFunctionCycle;
@@ -165,6 +167,7 @@ typedef QPtrList<TraceCumulativeCost> TraceCumulativeCostList;
 typedef QPtrList<TracePartCall>  TracePartCallList;
 typedef QPtrList<TracePartInstr> TracePartInstrList;
 typedef QPtrList<TracePartLine>  TracePartLineList;
+typedef QPtrList<TracePartLineRegion>  TracePartLineRegionList;
 typedef QPtrList<TracePartFunction>  TracePartFunctionList;
 typedef QPtrList<TracePartInstrCall> TracePartInstrCallList;
 typedef QPtrList<TracePartLineCall>  TracePartLineCallList;
@@ -176,6 +179,7 @@ typedef QPtrList<TraceInstrCall> TraceInstrCallList;
 typedef QPtrList<TraceLineCall> TraceLineCallList;
 typedef QPtrList<TraceCall> TraceCallList;
 typedef QPtrList<TraceFile> TraceFileList;
+typedef QPtrList<TraceLineRegion> TraceLineRegionList;
 typedef QPtrList<TraceFunctionSource> TraceFunctionSourceList;
 typedef QPtrList<TraceFunction> TraceFunctionList;
 typedef QPtrList<TraceFunctionCycle> TraceFunctionCycleList;
@@ -283,6 +287,7 @@ public:
 		  PartInstrCall, InstrCall,
                   PartLineCall, LineCall,
                   PartCall, Call,
+		  PartLineRegion, LineRegion,
                   PartFunction, FunctionSource, Function, FunctionCycle,
                   PartClass, Class, ClassCycle,
                   PartFile, File, FileCycle,
@@ -920,6 +925,22 @@ public:
 
 
 /**
+ * Cost of a source region.
+ */
+class TracePartLineRegion: public TraceCumulativeCost
+{
+public:
+  TracePartLineRegion(TraceLineRegion*, TracePart*);
+  virtual ~TracePartLineRegion();
+
+  virtual CostType type() const { return PartLineRegion; }
+  virtual void update();
+
+  TraceLineRegion* region() const { return (TraceLineRegion*)_dep; }
+};
+
+
+/**
  * Cost of a call at a function to another function,
  * from a single trace file.
  */
@@ -1429,14 +1450,38 @@ protected:
 };
 
 
+/**
+ * Cost of a source region.
+ */
+class TraceLineRegion: public TraceCumulativeListCost
+{
+public:
+  TraceLineRegion(uint from, uint to, QString name);
+  virtual ~TraceLineRegion();
+
+  virtual CostType type() const { return LineRegion; }
+  virtual void update();
+
+  uint from() const { return _from; }
+  uint to() const { return _to; }
+  QString name() const { return _name; }
+
+  // factories
+  TracePartLine* partLineRegion(TracePart* part,
+			    TracePartFunction* partFunction);
+ private:
+  uint _from, _to;
+  QString _name;
+};
+
 
 /**
  * A container helper class for TraceFunction for source lines
  * where a function is implemented in.
  * With inlining, lines of the same function can come from
  * different source files.
- * A instance of this class holds all lines of one source file
- * in a map
+ * An instance of this class holds all lines of one source file
+ * for a function in a map
  */
 class TraceFunctionSource: public TraceCost
 {
@@ -1458,14 +1503,17 @@ public:
 
   void invalidateDynamicCost();
 
-  /* factory */
+  /* factories */
   TraceLine* line(uint lineno, bool createNew = true);
+  TraceLineRegion* region(uint from, uint to, QString name,
+		      bool createNew = true);
 
 private:
   TraceFile* _file;
   TraceFunction* _function;
   TraceLineMap* _lineMap;
   TraceLine* _line0;
+  TraceLineRegionList* _regions;
 
   bool _lineMapFilled;
 };

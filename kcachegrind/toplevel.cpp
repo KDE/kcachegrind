@@ -271,14 +271,14 @@ void TopLevel::restoreCurrentState(QString postfix)
 void TopLevel::createDocks()
 {
   _partDock = new QDockWindow(QDockWindow::InDock, this);
-  _partDock->setCaption(i18n("Trace Part Overview"));
+  _partDock->setCaption(i18n("Parts Overview"));
   _partDock->setCloseMode( QDockWindow::Always );
   _partSelection = new PartSelection(_partDock, "partSelection");
   _partDock->setWidget(_partSelection);
   _partDock->setResizeEnabled(true);
   _partDock->setFixedExtentWidth(200);
   QWhatsThis::add( _partSelection, i18n(
-                   "<b>The Trace Part Overview</b>"
+                   "<b>The Parts Overview</b>"
                    "<p>A trace consists of multiple trace parts when "
                    "there are several trace files from one profile run. "
                    "The Trace Part Overview dockable shows these, "
@@ -902,7 +902,11 @@ void TopLevel::stackVisibilityChanged(bool v)
   _stackDockShown->setChecked(v);
 }
 
+#if ENABLE_DUMPDOCK
 void TopLevel::dumpVisibilityChanged(bool v)
+#else
+void TopLevel::dumpVisibilityChanged(bool)
+#endif
 {
 #if ENABLE_DUMPDOCK
   _dumpDockShown->setChecked(v);
@@ -1113,7 +1117,7 @@ bool TopLevel::setCostType2(QString s)
 {
   TraceCostType* ct;
 
-  // Special type i18n("(Hide)") gives 0
+  // Special type i18n("(Hidden)") gives 0
   ct = (_data) ? _data->mapping()->type(s) : 0;
 
   return setCostType2(ct);
@@ -1168,7 +1172,7 @@ bool TopLevel::setCostType2(TraceCostType* ct)
   if (_costType2 == ct) return false;
   _costType2 = ct;
 
-  QString longName = ct ? ct->longName() : i18n("(Hide)");
+  QString longName = ct ? ct->longName() : i18n("(Hidden)");
 
   int idx=0;
   QStringList l = _saCost2->items();
@@ -1518,11 +1522,13 @@ void TopLevel::setData(TraceData* data)
   _saCost->setComboWidth(300);
 
   if (types.count()>0) {
-    // second type list gets an additional "(Hide)"
-    types.prepend(i18n("(Hide)"));
+    // second type list gets an additional "(Hidden)"
+    types.prepend(i18n("(Hidden)"));
   }
   _saCost2->setItems(types);
   _saCost2->setComboWidth(300);
+  // default is hidden
+  _saCost2->setCurrentItem(0);
 
   /* this is needed to let the other widgets know the types */
   restoreTraceTypes();

@@ -175,7 +175,7 @@ void FunctionItem::update()
       else
 	  setText(0, _function->cumulative()->prettySubCost(_costType));
 
-      setPixmap(0, costPixmap(_costType, _function->cumulative(), cumTotal));
+      setPixmap(0, costPixmap(_costType, _function->cumulative(), cumTotal, false));
   }
 
   // self
@@ -193,7 +193,7 @@ void FunctionItem::update()
       else
 	  setText(1, _function->prettySubCost(_costType));
 
-      setPixmap(1, costPixmap(_costType, _function, selfTotal));
+      setPixmap(1, costPixmap(_costType, _function, selfTotal, false));
   }
 }
 

@@ -108,7 +108,7 @@ bool FixPool::ensureSpace(unsigned int size)
 
 FixCost::FixCost(TracePart* part, FixPool* pool,
 		 TraceFunctionSource* functionSource,
-		 unsigned int line, Addr addr,
+		 PositionSpec& pos,
                  TracePartFunction* partFunction,
 		 FixString& s)
 {
@@ -116,8 +116,7 @@ FixCost::FixCost(TracePart* part, FixPool* pool,
 
     _part = part;
     _functionSource = functionSource;
-    _line = line;
-    _addr = addr;
+    _pos = pos;
 
     _cost = (SubCost*) pool->reserveSpace(sizeof(SubCost) *
 					  maxCount);

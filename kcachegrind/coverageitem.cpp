@@ -112,7 +112,7 @@ void CallerCoverageItem::update()
 
   setText(0, str);
   setPixmap(0, partitionPixmap(25, 10, _coverage->cumulativeHistogram(), 0,
-                               Coverage::maxHistogramDepth));
+                               Coverage::maxHistogramDepth, false));
 
   // call count
   _cc  = SubCost(_coverage->callCount());
@@ -274,9 +274,9 @@ void CalleeCoverageItem::update()
   }
 
   setPixmap(0, partitionPixmap(25, 10, _coverage->cumulativeHistogram(), 0,
-                               Coverage::maxHistogramDepth));
+                               Coverage::maxHistogramDepth, false));
   setPixmap(1, partitionPixmap(25, 10, _coverage->selfHistogram(), 0,
-                               Coverage::maxHistogramDepth));
+                               Coverage::maxHistogramDepth, false));
 
 
   _cc  = SubCost(_coverage->callCount());

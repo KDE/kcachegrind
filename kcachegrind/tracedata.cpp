@@ -979,7 +979,23 @@ void TraceCostType::add(TraceCostType* t)
   if (!_knownTypes)
     _knownTypes = new QPtrList<TraceCostType>;
 
-  _knownTypes->append(t);
+  /* Already known? */
+  TraceCostType* kt;
+  for (kt=_knownTypes->first();kt;kt=_knownTypes->next())
+    if (kt->name() == t->name()) break;
+
+  if (kt) {
+    // Overwrite old type
+    if (!t->longName().isEmpty() &&
+	(t->longName() != t->name())) kt->setLongName(t->longName());
+    if (!t->formula().isEmpty()) kt->setFormula(t->formula());
+
+    delete t;
+  }
+  else {
+    if (t->longName().isEmpty()) t->setLongName(t->name());
+    _knownTypes->append(t);
+  }
 }
 
 
@@ -1042,25 +1058,29 @@ TraceCostMapping::~TraceCostMapping()
 
 TraceSubMapping* TraceCostMapping::subMapping(QString types, bool create)
 {
-  QRegExp rx( "(\\w+)" );
-
   // first check if there's enough space in the mapping
   int newCount = 0;
-  int pos = 0;
-  while (1) {
-    pos = rx.search(types, pos);
-    if (pos<0) break;
-    pos += rx.matchedLength();
+  int pos = 0, pos2, len = types.length();
 
-    if (realIndex(rx.cap(1)) == TraceCost::InvalidIndex)
+  while (1) {
+    // skip space
+    while((pos<len) && types[pos].isSpace()) pos++;
+
+    pos2 = pos;
+    while((pos2<len) && !types[pos2].isSpace()) pos2++;
+    if (pos2 == pos) break;
+
+    if (realIndex(types.mid(pos,pos2-pos)) == TraceCost::InvalidIndex)
       newCount++;
+
+    pos = pos2;
   }
 
   if (!create && (newCount>0)) return 0;
 
   if (newCount+_realCount > TraceCost::MaxRealIndex) {
-    qDebug("TraceCostMapping::subMapping: No space for %d sub costs",
-           newCount);
+    kdDebug() << "TraceCostMapping::subMapping: No space for " 
+	      << newCount << " sub costs." << endl;
     return 0;
   }
 
@@ -1068,11 +1088,16 @@ TraceSubMapping* TraceCostMapping::subMapping(QString types, bool create)
 
   pos = 0;
   while (1) {
-    pos = rx.search(types, pos);
-    if (pos<0) break;
-    pos += rx.matchedLength();
+    // skip space
+    while((pos<len) && types[pos].isSpace()) pos++;
 
-    sm->append(addReal(rx.cap(1)));
+    pos2 = pos;
+    while((pos2<len) && !types[pos2].isSpace()) pos2++;
+    if (pos2 == pos) break;
+
+    sm->append(addReal(types.mid(pos,pos2-pos)));
+
+    pos = pos2;
   }
 
   return sm;

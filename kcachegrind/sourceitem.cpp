@@ -198,7 +198,7 @@ void SourceItem::updateCost()
     else
       setText(1, _pure.pretty());
 
-    setPixmap(1, costPixmap(ct, lineCost, total));
+    setPixmap(1, costPixmap(ct, lineCost, total, false));
   }
 
   TraceCostType* ct2 = _view->costType2();
@@ -217,7 +217,7 @@ void SourceItem::updateCost()
     else
       setText(2, _pure2.pretty());
 
-    setPixmap(2, costPixmap(ct2, lineCost, total));
+    setPixmap(2, costPixmap(ct2, lineCost, total, false));
   }
 }
 

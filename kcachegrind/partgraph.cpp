@@ -289,7 +289,7 @@ QPixmap PartItem::pixmap(int i) const
     // Cost pixmap
 
     TraceCostType* ct = ((PartAreaWidget*)widget())->costType();
-    return costPixmap( ct, _p, (double) (_p->data()->totals()->subCost(ct)) );
+    return costPixmap( ct, _p, (double) (_p->data()->totals()->subCost(ct)), false );
 }
 
 
@@ -464,7 +464,7 @@ QPixmap SubPartItem::pixmap(int i) const
     else
 	c = _partCostItem;
 
-    return costPixmap( ct, c, (double) (t->subCost(ct)) );
+    return costPixmap( ct, c, (double) (t->subCost(ct)), false );
 }
 
 double SubPartItem::value() const

@@ -92,7 +92,7 @@ void CostListItem::update()
   }
 
   setText(0, str);
-  setPixmap(0, costPixmap(_costType, _costItem, total));
+  setPixmap(0, costPixmap(_costType, _costItem, total, false));
 }
 
 int CostListItem::compare(QListViewItem * i, int col, bool ascending ) const

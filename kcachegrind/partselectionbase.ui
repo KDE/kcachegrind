@@ -13,7 +13,7 @@
         </rect>
     </property>
     <property name="caption">
-        <string>Trace Part Overview</string>
+        <string>Parts Overview</string>
     </property>
     <vbox>
         <property name="name">

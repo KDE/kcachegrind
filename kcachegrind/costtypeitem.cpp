@@ -109,7 +109,7 @@ void CostTypeItem::update()
   else
     setText(2, _costItem->prettySubCost(_costType));
 
-  setPixmap(2, costPixmap(_costType, _costItem, selfTotal));
+  setPixmap(2, costPixmap(_costType, _costItem, selfTotal, false));
 
   if (!f) {
     setText(1, "-");
@@ -126,7 +126,7 @@ void CostTypeItem::update()
   else
     setText(1, _sum.pretty());
 
-  setPixmap(1, costPixmap(_costType, f->cumulative(), total));
+  setPixmap(1, costPixmap(_costType, f->cumulative(), total, false));
 }
 
 

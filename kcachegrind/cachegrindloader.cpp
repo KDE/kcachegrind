@@ -34,7 +34,6 @@
 #define USE_FIXCOST 1
 
 
-
 /*
  * Loader for Calltree Profile data (format based on Cachegrind format).
  * See Calltree documentation for the file format.
@@ -53,8 +52,7 @@ private:
   
   enum lineType { SelfCost, CallCost, BoringJump, CondJump };
   
-  bool parsePosition(FixString& s,
-		     uint& newLineno, Addr& newAddr);
+  bool parsePosition(FixString& s, PositionSpec& newPos);
 
   // position setters
   void clearPosition();
@@ -82,8 +80,7 @@ private:
   // current position
   lineType nextLineType;
   bool hasLineInfo, hasAddrInfo;
-  uint currentLineno;
-  Addr currentAddr;
+  PositionSpec currentPos;
   
     // current function/line
   TraceObject* currentObject;
@@ -110,8 +107,7 @@ private:
   // current jump
   TraceFile* currentJumpToFile;
   TraceFunction* currentJumpToFunction;
-  uint targetLineno;
-  Addr targetAddr;
+  PositionSpec targetPos;
   SubCost jumpsFollowed, jumpsExecuted;
   
   /** Support for compressed string format
@@ -195,7 +191,7 @@ Loader* createCachegrindLoader()
  * Return false if this is no position specification
  */
 bool CachegrindLoader::parsePosition(FixString& line,
-				     uint& newLineno, Addr& newAddr)
+				     PositionSpec& newPos)
 {
     char c;
     uint diff;
@@ -207,28 +203,51 @@ bool CachegrindLoader::parsePosition(FixString& line,
       if (c == '*') {
 	// nothing changed
 	line.stripFirst(c);
-	line.stripSpaces();
-	newAddr = currentAddr;
+	newPos.fromAddr = currentPos.fromAddr;
+	newPos.toAddr = currentPos.toAddr;
       }
       else if (c == '+') {
 	line.stripFirst(c);
-	line.stripUInt(diff);
-	newAddr = currentAddr + diff;
+	line.stripUInt(diff, false);
+	newPos.fromAddr = currentPos.fromAddr + diff;
+	newPos.toAddr = newPos.fromAddr;
       }
       else if (c == '-') {
 	line.stripFirst(c);
-	line.stripUInt(diff);
-	newAddr = currentAddr - diff;
+	line.stripUInt(diff, false);
+	newPos.fromAddr = currentPos.fromAddr - diff;
+	newPos.toAddr = newPos.fromAddr;
       }
       else if (c >= '0') {
 	uint64 v;
-	line.stripUInt64(v);
-	newAddr = Addr(v);
+	line.stripUInt64(v, false);
+	newPos.fromAddr = Addr(v);
+	newPos.toAddr = newPos.fromAddr;
       }
       else return false;
 
+      // Range specification
+      if (line.first(c)) {
+	if (c == '+') {
+	  line.stripFirst(c);
+	  line.stripUInt(diff);
+	  newPos.toAddr = newPos.fromAddr + diff;
+	}
+	else if ((c == '-') || (c == ':')) {
+	  line.stripFirst(c);
+	  uint64 v;
+	  line.stripUInt64(v);
+	  newPos.toAddr = Addr(v);
+	}
+      }
+      line.stripSpaces();
+
 #if TRACE_LOADER
-      kdDebug() << " Got Addr " << newAddr.toString() << endl;
+      if (newPos.fromAddr == newPos.toAddr)
+	kdDebug() << " Got Addr " << newPos.fromAddr.toString() << endl;
+      else
+	kdDebug() << " Got AddrRange " << newPos.fromAddr.toString()
+		  << ":" << newPos.toAddr.toString() << endl;
 #endif
 
     }
@@ -241,26 +260,47 @@ bool CachegrindLoader::parsePosition(FixString& line,
       else if (c == '*') {
 	// nothing changed
 	line.stripFirst(c);
-	line.stripSpaces();
-	newLineno = currentLineno;
+	newPos.fromLine = currentPos.fromLine;
+	newPos.toLine   = currentPos.toLine;
       }
       else if (c == '+') {
 	line.stripFirst(c);
-	line.stripUInt(diff);
-	newLineno = currentLineno + diff;
+	line.stripUInt(diff, false);
+	newPos.fromLine = currentPos.fromLine + diff;
+	newPos.toLine = newPos.fromLine;
       }
       else if (c == '-') {
 	line.stripFirst(c);
-	line.stripUInt(diff);
-	newLineno = currentLineno - diff;
+	line.stripUInt(diff, false);
+	newPos.fromLine = currentPos.fromLine - diff;
+	newPos.toLine = newPos.fromLine;
       }
       else if (c >= '0') {
-	line.stripUInt(newLineno);
+	line.stripUInt(newPos.fromLine, false);
+	newPos.toLine = newPos.fromLine;
       }
       else return false;
 
+      // Range specification
+      if (line.first(c)) {
+	if (c == '+') {
+	  line.stripFirst(c);
+	  line.stripUInt(diff);
+	  newPos.toLine = newPos.fromLine + diff;
+	}
+	else if ((c == '-') || (c == ':')) {
+	  line.stripFirst(c);
+	  line.stripUInt(newPos.toLine);
+	}
+      }
+      line.stripSpaces();
+
 #if TRACE_LOADER
-      kdDebug() << " Got Line " << newLineno << endl;
+      if (newPos.fromLine == newPos.toLine)
+	kdDebug() << " Got Line " << newPos.fromLine << endl;
+      else
+	kdDebug() << " Got LineRange " << newPos.fromLine
+		  << ":" << newPos.toLine << endl;
 #endif
 
     }
@@ -599,8 +639,7 @@ void CachegrindLoader::setCalledFunction(const QString& name)
 
 void CachegrindLoader::clearPosition()
 {
-  currentLineno =0;
-  currentAddr   =0;
+  currentPos = PositionSpec();
 
   // current function/line
   currentFunction = 0;
@@ -627,8 +666,7 @@ void CachegrindLoader::clearPosition()
   // current jump
   currentJumpToFile = 0;
   currentJumpToFunction = 0;
-  targetLineno = 0;
-  targetAddr   = 0;
+  targetPos = PositionSpec();
   jumpsFollowed = 0;
   jumpsExecuted = 0;
 
@@ -694,7 +732,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
       if (c <= '9') {
 
 	  // parse position(s)
-	  if (!parsePosition(line, currentLineno, currentAddr)) continue;
+	  if (!parsePosition(line, currentPos)) continue;
 
 	  // go through after big switch
       }
@@ -787,7 +825,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 		valid = line.stripUInt64(jumpsFollowed) &&
 		    line.stripPrefix("/") &&
 		    line.stripUInt64(jumpsExecuted) &&
-		    parsePosition(line, targetLineno, targetAddr);
+		    parsePosition(line, targetPos);
 
 		if (!valid) {
 		  kdError() << _filename << ":" << _lineNo
@@ -802,7 +840,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 		bool valid;
 
 		valid = line.stripUInt64(jumpsExecuted) &&
-		    parsePosition(line, targetLineno, targetAddr);
+		    parsePosition(line, targetPos);
 
 		if (!valid) {
 		  kdError() << _filename << ":" << _lineNo
@@ -860,12 +898,6 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 		continue;
 	    }
 
-	    // trigger:
-	    if (line.stripPrefix("rigger:")) {
-		part->setTrigger(line);
-		continue;
-	    }
-
 	    // timeframe (BB):
 	    if (line.stripPrefix("imeframe (BB):")) {
 		part->setTimeframe(line);
@@ -877,7 +909,17 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 	case 'd':
 
 	    // desc:
-	    if (line.stripPrefix("esc:")) continue;
+	    if (line.stripPrefix("esc:")) {
+
+	      line.stripSurroundingSpaces();
+
+	      // desc: Trigger:
+	      if (line.stripPrefix("Trigger:")) {
+		part->setTrigger(line);
+	      }
+	      
+	      continue;
+	    }
 	    break;
 
 	case 'e':
@@ -887,6 +929,28 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 		subMapping = _data->mapping()->subMapping(line);
                 part->setFixSubMapping(subMapping);
 		continue;
+	    }
+
+	    // event:<name>[=<formula>][:<long name>]
+	    if (line.stripPrefix("vent:")) {
+	      line.stripSurroundingSpaces();
+
+	      FixString e, f, l;
+	      if (!line.stripName(e)) {
+		kdError() << _filename << ":" << _lineNo
+			  << " - invalid event" << endl;
+		continue;
+	      }
+	      line.stripSpaces();
+	      if (!line.stripFirst(c)) continue;
+
+	      if (c=='=') f = line.stripUntil(':');
+	      line.stripSpaces();
+
+	      // add to known cost types
+	      if (line.isEmpty()) line = e;
+	      TraceCostType::add(new TraceCostType(e,line,f));
+	      continue;
 	    }
 	    break;
 
@@ -976,12 +1040,15 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 							      true);
 #else
       if (hasAddrInfo) {
-	  if (!currentInstr || (currentInstr->address() != currentAddr)) {
-	      currentInstr = currentFunction->instr(currentAddr, true);
+	  if (!currentInstr ||
+	      (currentInstr->address() != currentPos.fromAddr)) {
+	      currentInstr = currentFunction->instr(currentPos.fromAddr,
+						    true);
 
 	      if (!currentInstr) {
 		kdError() << _filename << ":" << _lineNo
-			  << "- invalid address " << currentAddr << endl;
+			  << "- invalid address "
+			  << currentPos.fromAddr << endl;
 
 		continue;
 	      }
@@ -992,9 +1059,11 @@ bool CachegrindLoader::loadTrace(TracePart* part)
       }
 
       if (hasLineInfo) {
-	  if (!currentLine || (currentLine->lineno() != currentLineno)) {
+	  if (!currentLine ||
+	      (currentLine->lineno() != currentPos.fromLine)) {
 	      currentLine = currentFunction->line(currentFile,
-						  currentLineno, true);
+						  currentPos.fromLine,
+						  true);
 	      currentPartLine = currentLine->partLine(part,
 						      currentPartFunction);
 	  }
@@ -1024,8 +1093,7 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 #ifdef USE_FIXCOST
       new (pool) FixCost(part, pool,
 			 currentFunctionSource,
-                         hasLineInfo ? currentLineno : 0,
-                         hasAddrInfo ? currentAddr : Addr(0),
+			 currentPos,
                          currentPartFunction,
                          line);
 #else
@@ -1064,8 +1132,8 @@ bool CachegrindLoader::loadTrace(TracePart* part)
       FixCallCost* fcc;
       fcc = new (pool) FixCallCost(part, pool,
 				   currentFunctionSource,
-				   hasLineInfo ? currentLineno : 0,
-				   hasAddrInfo ? currentAddr : Addr(0),
+				   hasLineInfo ? currentPos.fromLine : 0,
+				   hasAddrInfo ? currentPos.fromAddr : Addr(0),
 				   partCalling,
 				   currentCallCount, line);
       fcc->setMax(_data->callMax());
@@ -1121,13 +1189,13 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 #ifdef USE_FIXCOST
       new (pool) FixJump(part, pool,
 			 /* source */
-			 hasLineInfo ? currentLineno : 0,
-			 hasAddrInfo ? currentAddr : 0,
+			 hasLineInfo ? currentPos.fromLine : 0,
+			 hasAddrInfo ? currentPos.fromAddr : 0,
 			 currentPartFunction,
 			 currentFunctionSource,
 			 /* target */
-			 hasLineInfo ? targetLineno : 0,
-			 hasAddrInfo ? targetAddr : Addr(0),
+			 hasLineInfo ? targetPos.fromLine : 0,
+			 hasAddrInfo ? targetPos.fromAddr : Addr(0),
 			 currentJumpToFunction,
 			 targetSource,
 			 (nextLineType == CondJump),
@@ -1136,10 +1204,10 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 
       if (0) {
 	kdDebug() << _filename << ":" << _lineNo
-		  << " - jump from 0x" << currentAddr.toString()
-		  << " (line " << currentLineno
-		  << ") to 0x" << targetAddr.toString()
-		  << " (line " << targetLineno << ")" << endl;
+		  << " - jump from 0x" << currentPos.fromAddr.toString()
+		  << " (line " << currentPos.fromLine
+		  << ") to 0x" << targetPos.fromAddr.toString()
+		  << " (line " << targetPos.fromLine << ")" << endl;
 
 	if (nextLineType == BoringJump)
 	  kdDebug() << " Boring Jump, count " << jumpsExecuted.pretty() << endl;

@@ -67,17 +67,18 @@ FunctionSelection::FunctionSelection( TopLevel* top,
   // groupList->setShowSortIndicator(true);
   groupList->setResizeMode(QListView::LastColumn);
 
-#if 1
-  // single click activation
+#if 0
+  // single click press activation
   connect(functionList, SIGNAL(selectionChanged(QListViewItem*)),
           this, SLOT(functionActivated(QListViewItem*)));
   connect(functionList,
 	  SIGNAL(contextMenuRequested(QListViewItem*, const QPoint &, int)),
           this, SLOT(functionContext(QListViewItem*, const QPoint &, int)));
 #else
+  // single click release activation
   connect(functionList, SIGNAL(selectionChanged(QListViewItem*)),
           this, SLOT(functionSelected(QListViewItem*)));
-  connect(functionList, SIGNAL(doubleClicked(QListViewItem*)),
+  connect(functionList, SIGNAL(clicked(QListViewItem*)),
 	  this, SLOT(functionActivated(QListViewItem*)));
   connect(functionList, SIGNAL(returnPressed(QListViewItem*)),
 	  this, SLOT(functionActivated(QListViewItem*)));
@@ -110,13 +111,11 @@ void FunctionSelection::functionContext(QListViewItem* i,
   QPopupMenu popup;
   TraceFunction* f = 0;
 
-#if 0
   if (i) {
       f = ((FunctionItem*) i)->function();
       popup.insertItem(i18n("Go to %1").arg(f->prettyName()), 93);
       popup.insertSeparator();
   }
-#endif
 
   if ((c == 0) || (c == 1)) {
     addCostMenu(&popup,false);

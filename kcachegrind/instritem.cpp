@@ -213,7 +213,7 @@ void InstrItem::updateCost()
     else
       setText(1, _pure.pretty());
     
-    setPixmap(1, costPixmap(ct, instrCost, total));
+    setPixmap(1, costPixmap(ct, instrCost, total, false));
   }
 
   TraceCostType *ct2 = _view->costType2();
@@ -232,7 +232,7 @@ void InstrItem::updateCost()
     else
       setText(2, _pure2.pretty());
     
-    setPixmap(2, costPixmap(ct2, instrCost, total));
+    setPixmap(2, costPixmap(ct2, instrCost, total, false));
   }
 }
 

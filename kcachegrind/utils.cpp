@@ -78,7 +78,7 @@ bool FixString::stripPrefix(const char* p)
 
 
 // this parses hexadecimal (with prefix '0x' too)
-bool FixString::stripUInt(unsigned int& v)
+bool FixString::stripUInt(unsigned int& v, bool stripSpaces)
 {
     if (_len==0) {
 	v = 0;
@@ -128,20 +128,21 @@ bool FixString::stripUInt(unsigned int& v)
 	}
     }
 
-    // strip trailing spaces
-    while(l>0) {
-	if (c != ' ') break;
-	s++;
-	c = *s;
-	l--;
-    }
+    if (stripSpaces)
+      while(l>0) {
+        if (c != ' ') break;
+        s++;
+        c = *s;
+        l--;
+      }
+
     _str = s;
     _len = l;
     return true;
 }
 
 
-void FixString::stripSpaces()
+void FixString::stripSurroundingSpaces()
 {
     if (_len==0) return;
 
@@ -157,8 +158,62 @@ void FixString::stripSpaces()
     }
 }
 
+void FixString::stripSpaces()
+{
+    while((_len>0) && (*_str==' ')) {
+	_len--;
+	_str++;
+    }
+}
 
-bool FixString::stripUInt64(uint64& v)
+bool FixString::stripName(FixString& s)
+{
+    if (_len==0) return false;
+
+    // first char has to be a letter or "_"
+    if (!QChar(*_str).isLetter() && (*_str != '_')) return false;
+
+    int newLen = 1;
+    const char* newStr = _str;
+
+    _str++;
+    _len--;
+
+    while(_len>0) {
+      if (!QChar(*_str).isLetterOrNumber()
+	  && (*_str != '_')) break;
+
+      newLen++;
+      _str++;
+      _len--;
+    }
+    
+    s.set(newStr, newLen);
+    return true;
+}
+
+FixString FixString::stripUntil(char c)
+{
+  if (_len == 0) return FixString();
+
+  const char* newStr = _str;
+  int newLen = 0;
+
+  while(_len>0) {
+    if (*_str == c) {
+      _str++;
+      _len--;
+      break;
+    }
+    
+    _str++;
+    _len--;
+    newLen++;
+  }
+  return FixString(newStr, newLen);
+}
+
+bool FixString::stripUInt64(uint64& v, bool stripSpaces)
 {
     if (_len==0) {
 	v = 0;
@@ -207,20 +262,21 @@ bool FixString::stripUInt64(uint64& v)
       }
     }
 
-    // strip trailing spaces
-    while(l>0) {
-	if (c != ' ') break;
-	s++;
-	c = *s;
-	l--;
-    }
+    if (stripSpaces)
+      while(l>0) {
+        if (c != ' ') break;
+        s++;
+        c = *s;
+        l--;
+      }
+
     _str = s;
     _len = l;
     return true;
 }
 
 
-bool FixString::stripInt64(int64& v)
+bool FixString::stripInt64(int64& v, bool stripSpaces)
 {
     if (_len==0) {
 	v = 0;
@@ -270,13 +326,14 @@ bool FixString::stripInt64(int64& v)
       }
     }
 
-    // strip trailing spaces
-    while(l>0) {
-	if (c != ' ') break;
-	s++;
-	c = *s;
-	l--;
-    }
+    if (stripSpaces)
+      while(l>0) {
+        if (c != ' ') break;
+        s++;
+        c = *s;
+        l--;
+      }
+
     _str = s;
     _len = l;
     return true;

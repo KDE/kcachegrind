@@ -89,7 +89,7 @@ void StackItem::updateCost()
     else
       setText(0, _call->prettySubCost(ct));
     
-    setPixmap(0, costPixmap(ct, _call, total));
+    setPixmap(0, costPixmap(ct, _call, total, false));
   }
 
   // if _costType2 is 0, column1 is hidden, no change needed
@@ -111,6 +111,6 @@ void StackItem::updateCost()
     else
       setText(1, _call->prettySubCost(ct2));
     
-    setPixmap(1, costPixmap(ct2, _call, total));
+    setPixmap(1, costPixmap(ct2, _call, total, false));
   }
 }

@@ -64,11 +64,26 @@ class FixString {
     /**
      * Strip leading and trailing spaces
      */
+    void stripSurroundingSpaces();
+
+    /**
+     * Strip leading spaces
+     */
     void stripSpaces();
 
-    bool stripUInt(uint&);
-    bool stripUInt64(uint64&);
-    bool stripInt64(int64&);
+    /**
+     * Strip name: [A-Za-z_][0-9A_Za-z_]*
+     */
+    bool stripName(FixString&);
+
+    /**
+     * Strip string until char appears or end. Strips char, too.
+     */
+    FixString stripUntil(char);
+
+    bool stripUInt(uint&, bool stripSpaces = true);
+    bool stripUInt64(uint64&, bool stripSpaces = true);
+    bool stripInt64(int64&, bool stripSpaces = true);
 
     operator QString() const
 	{ return QString::fromLatin1(_str,_len); }
