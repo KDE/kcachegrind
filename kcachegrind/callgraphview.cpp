@@ -578,7 +578,7 @@ void GraphExporter::writeDot()
         nit != _nodeMap.end(); ++nit ) {
     GraphNode& n = *nit;
 
-    if (n.cum < _realFuncLimit) continue;
+    if (n.cum <= _realFuncLimit) continue;
 
     QString abr = n.function()->prettyName();
     if ((int)abr.length() > Configuration::maxSymbolLength())
@@ -610,8 +610,8 @@ void GraphExporter::writeDot()
     e.setCallerNode(&from);
     e.setCallingNode(&to);
 
-    if ((from.cum < _realFuncLimit) ||
-        (to.cum < _realFuncLimit)) continue;
+    if ((from.cum <= _realFuncLimit) ||
+        (to.cum <= _realFuncLimit)) continue;
 
     // remove dumped edges from n.callers/n.callings
     from.callings.removeRef(&e);
@@ -641,7 +641,7 @@ void GraphExporter::writeDot()
       for ( nit = _nodeMap.begin();
 	    nit != _nodeMap.end(); ++nit ) {
 	  GraphNode& n = *nit;
-	  if (n.cum < _realFuncLimit) continue;
+	  if (n.cum <= _realFuncLimit) continue;
 
 	  costSum = countSum = 0.0;
 	  for (e=n.callers.first();e;e=n.callers.next()) {
@@ -799,7 +799,7 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
       return;
     }
   }
-  else if (cum < _realFuncLimit) {
+  else if (cum <= _realFuncLimit) {
     if (0) qDebug("  Cutoff, below limit");
     return;
   }
