@@ -559,10 +559,10 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
                      QString("    '%1'").arg(sf->file()->name()),
                      0, _costType);
       new SourceItem(this, fileno, 4, false,
-                     i18n("can't be found. Add the directory of this"),
+                     i18n("can't be found. Add the folder of this"),
                      0, _costType);
       new SourceItem(this, fileno, 5, false,
-                     i18n("file to the directory list in the configuration."),
+                     i18n("file to the folder list in the configuration."),
                      0, _costType);
     }
     return;

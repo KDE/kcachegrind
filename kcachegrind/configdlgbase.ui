@@ -272,7 +272,7 @@
                 </font>
             </property>
             <property name="text">
-                <string>Source Directories</string>
+                <string>Source Folders</string>
             </property>
         </widget>
         <widget class="Line">

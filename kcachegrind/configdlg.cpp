@@ -372,7 +372,7 @@ void ConfigDlg::dirsAddPressed()
   QString newDir;
   newDir = KFileDialog::getExistingDirectory(QString::null,
                                              this,
-                                             i18n("Choose Source Directory"));
+                                             i18n("Choose Source Folder"));
   if (newDir.isEmpty()) return;
 
   // even for "/", we strip the tailing slash
