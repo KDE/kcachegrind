@@ -509,7 +509,10 @@ void GraphExporter::createGraph()
     _realCallLimit = cum * _go->callLimit();
 
     // create edge
-    QPair<TraceFunction*,TraceFunction*> p(c->caller(true), c->called(true));
+    TraceFunction *caller, *called;
+    caller = c->caller(false);
+    called = c->called(false);
+    QPair<TraceFunction*,TraceFunction*> p(caller, called);
     GraphEdge& e = _edgeMap[p];
     e.setCall(c);
     e.setCaller(p.first);
@@ -517,10 +520,10 @@ void GraphExporter::createGraph()
     e.cost  = c->subCost(_costType);
     e.count = c->callCount();
 
-    SubCost s = c->called(true)->cumulative()->subCost(_costType);
-    buildGraph(c->called(true), 0, true,  e.cost / s); // down to callings
-    s = c->caller(true)->cumulative()->subCost(_costType);
-    buildGraph(c->caller(true), 0, false, e.cost / s); // up to callers
+    SubCost s = called->cumulative()->subCost(_costType);
+    buildGraph(called, 0, true,  e.cost / s); // down to callings
+    s = caller->cumulative()->subCost(_costType);
+    buildGraph(caller, 0, false, e.cost / s); // up to callers
   }
 }
 
@@ -603,6 +606,11 @@ void GraphExporter::writeDot()
     GraphEdge& e = *eit;
 
     if (e.cost < _realCallLimit) continue;
+    if (!_go->expandCycles()) {
+      // don't show inner cycle calls
+      if (e.call()->inCycle()>0) continue;
+    }
+
 
     GraphNode& from = _nodeMap[e.from()];
     GraphNode& to   = _nodeMap[e.to()];
@@ -792,10 +800,15 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
   // from here with full cum. cost because of previous cutoffs
   if ((n.cum >= _realFuncLimit) && (oldCum < _realFuncLimit)) cum = n.cum;
 
-  // for cycles members, we never stop on first visit, but always on 2nd
   if (f->cycle()) {
+    // for cycles members, we never stop on first visit, but always on 2nd
+    // note: a 2nd visit never should happen, as we don't follow inner-cycle
+    //       calls
     if (oldCum > 0.0) {
       if (0) qDebug("  Cutoff, 2nd visit to Cycle Member");
+      // and takeback cost addition, as it's added twice
+      n.cum  = oldCum;
+      n.self -= f->subCost(_costType) * factor;
       return;
     }
   }
@@ -806,11 +819,15 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
 
   TraceCall* call;
   TraceFunction* f2;
-  TraceCallList l = toCallings ? f->callings(true) : f->callers(true);
+
+
+  // on entering a cycle, only go the FunctionCycle
+  TraceCallList l = toCallings ?
+    f->callings(false) : f->callers(false);
 
   for (call=l.first();call;call=l.next()) {
 
-    f2 = toCallings ? call->called(true) : call->caller(true);
+    f2 = toCallings ? call->called(false) : call->caller(false);
 
     double count = call->callCount() * factor;
     double cost = call->subCost(_costType) * factor;
@@ -820,7 +837,8 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
     // if (count>0.0 && (cost/count < 3)) continue;
 
     double oldCost = 0.0;
-    QPair<TraceFunction*,TraceFunction*> p(toCallings ? f:f2, toCallings ? f2:f);
+    QPair<TraceFunction*,TraceFunction*> p(toCallings ? f:f2,
+					   toCallings ? f2:f);
     GraphEdge& e = _edgeMap[p];
     if (e.call() == 0) {
       e.setCall(call);
@@ -835,9 +853,24 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
     if (0) qDebug("  Edge to %s, added cost %f, now %f",
                   f2->prettyName().ascii(), cost, e.cost);
 
+    // if this call goes into a FunctionCycle, we also show the real call
+    if (f2->cycle() == f2) {
+      TraceFunction* realF;
+      realF = toCallings ? call->called(true) : call->caller(true);
+      QPair<TraceFunction*,TraceFunction*> realP(toCallings ? f:realF,
+						 toCallings ? realF:f);
+      GraphEdge& e = _edgeMap[realP];
+      if (e.call() == 0) {
+	e.setCall(call);
+	e.setCaller(realP.first);
+	e.setCalling(realP.second);
+      }
+      e.cost  += cost;
+      e.count += count;
+    }
+
     // - don't do a DFS on calls in recursion/cycle
-    // - don't handle recursion/cycle calls as "skipped"
-    if (!_go->expandCycles() && (call->inCycle()>0)) continue;
+    if (call->inCycle()>0) continue;
     if (call->isRecursion()) continue;
 
     if (toCallings) {
@@ -1321,9 +1354,18 @@ QString CallGraphView::whatsThis() const
     return i18n( "<b>Call Graph around active Function</b>"
                  "<p>Depending on configuration, this view shows "
                  "the call graph environment of the active function. "
-                 "If the graph is larger than the widget area, a overview "
-                 "panner is shown in one edge.</p>"
-                 "<p>There are similar visualization options to the "
+		 "Note: the shown cost is <b>only</b> the cost which is "
+		 "spent while the active function was actually running; "
+		 "i.e. the cost shown for main() - if it's visible - should "
+		 "be the same as the cost of the active function, as that's "
+		 "the part of inclusive cost of main() spent while the active "
+		 "function was running.</p>"
+		 "<p>For cycles, blue call arrows indicate that this is an "
+		 "artificial call added for correct drawing which "
+		 "actually never happened.</p>"
+                 "<p>If the graph is larger than the widget area, an overview "
+                 "panner is shown in one edge. "
+                 "There are similar visualization options to the "
                  "Call Treemap; the selected function is highlighted.<p>");
 }
 
@@ -1554,7 +1596,7 @@ void CallGraphView::doUpdate(int changeType)
     }
     else if (_selectedItem->type() == TraceItem::Call) {
 	TraceCall* c = (TraceCall*)_selectedItem;
-	e = _exporter.edge(c->caller(true), c->called(true));
+	e = _exporter.edge(c->caller(false), c->called(false));
 	if (e == _selectedEdge) return;
     }
 
@@ -1854,10 +1896,18 @@ void CallGraphView::refresh()
       continue;
     }
 
+    // artifical calls should be blue
+    bool isArtifical = false;
+    TraceFunction* caller = e->fromNode()->function();
+    TraceFunction* called = e->toNode()->function();
+    if (caller->cycle() == caller) isArtifical = true;
+    if (called->cycle() == called) isArtifical = true;
+    QColor arrowColor = isArtifical ? Qt::blue : Qt::black;
+
     sItem = new CanvasEdge(e, _canvas);
     e->setCanvasEdge(sItem);
     sItem->setControlPoints(pa, false);
-    sItem->setPen(QPen(black, 1 /*(int)log(log(e->cost))*/ ));
+    sItem->setPen(QPen(arrowColor, 1 /*(int)log(log(e->cost))*/ ));
     sItem->setZ(0.5);
     sItem->show();
 
@@ -1915,7 +1965,7 @@ void CallGraphView::refresh()
 
 	CanvasEdgeArrow* aItem = new CanvasEdgeArrow(sItem,_canvas);
 	aItem->setPoints(a);
-	aItem->setBrush(Qt::black);
+	aItem->setBrush(arrowColor);
 	aItem->setZ(1.5);
 	aItem->show();
 

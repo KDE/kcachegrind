@@ -3363,6 +3363,7 @@ void TraceFunction::update()
       }
   }
   else {
+    // this is a cycle or cycle member
     for (calling=_callings.first();calling;calling=_callings.next()) {
 
 	// ignore inner-cycle member calls for cumulative cost
@@ -3374,22 +3375,24 @@ void TraceFunction::update()
 
     // self cost
     if (type() == FunctionCycle) {
+      // cycle: self cost is sum of cycle member self costs, but
+      //        doesn't add to cumulative cost
       TraceFunctionList mList = ((TraceFunctionCycle*)this)->members();
       TraceFunction* m;
       for (m=mList.first();m;m=mList.next())
 	  addCost(m);
     }
     else {
-	TraceCumulativeCost* item;
-	for (item=_deps.first();item;item=_deps.next()) {
-	    if (!item->part() || !item->part()->isActive()) continue;
-
-	    addCost(item);
-	}
+      // cycle member
+      TraceCumulativeCost* item;
+      for (item=_deps.first();item;item=_deps.next()) {
+	if (!item->part() || !item->part()->isActive()) continue;
+	
+	addCost(item);
+      }
+      _dirty = false; // don't recurse
+      addCumulative(this);
     }
-
-    _dirty = false; // don't recurse
-    addCumulative(this);
   }
   _dirty = false;
 
