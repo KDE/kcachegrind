@@ -51,10 +51,13 @@
 #include <ktip.h>
 #include <kpopupmenu.h>
 
+#if ENABLE_DUMPDOCK
+#include "dumpselection.h"
+#endif
+
 #include "toplevel.h"
 #include "partselection.h"
 #include "functionselection.h"
-#include "dumpselection.h"
 #include "stackselection.h"
 #include "stackbrowser.h"
 #include "tracedata.h"
@@ -431,6 +434,7 @@ void TopLevel::readProperties(KConfig* c)
   }
 }
 
+
 void TopLevel::createActions()
 {
   QString hint;
@@ -441,7 +445,12 @@ void TopLevel::createActions()
   action->setWhatsThis( hint );
 
   action = new KAction( i18n( "&Reload" ), "reload",
-                        KStdAccel::shortcut(KStdAccel::Reload),
+#if KDE_VERSION > 319
+  // for KDE 3.2: KStdAccel::key is deprecated
+			KStdAccel::shortcut(KStdAccel::Reload),
+#else
+                        KStdAccel::key(KStdAccel::Reload),
+#endif
                         this, SLOT( reload() ), actionCollection(), "reload" );
   hint = i18n("<b>Reload trace</b>"
               "<p>This loads any new created parts, too.</p>");
@@ -458,7 +467,12 @@ void TopLevel::createActions()
 
 
   _taDump = new KToggleAction( i18n( "&Force Dump" ), "redo",
-                               KStdAccel::shortcut(KStdAccel::Redo),
+#if KDE_VERSION > 319
+  // for KDE 3.2: KStdAccel::key is deprecated
+			       KStdAccel::shortcut(KStdAccel::Redo),
+#else
+                               KStdAccel::key(KStdAccel::Redo),
+#endif
                                this, SLOT( forceTrace() ),
                                actionCollection(), "dump" );
   hint = i18n("<b>Force Dump</b>"
@@ -581,13 +595,13 @@ void TopLevel::createActions()
 	      "black areas when a recursive call is made instead of drawing the "
 	      "recursion ad infinitum. Note that "
 	      "the size of black areas often will be wrong, as inside recursive "
-	      "cycles the cost of calls cannot be determined; the error is small, "
-	      "however, for false cycles (see documentation)."
+              "cycles the cost of calls cannot be determined; the error is small, "
+              "however, for false cycles (see documentation)."
 	      "<p>The correct handling for cycles is to detect them and collapse all "
-	      "functions of a cycle into a virtual function, which is done when this "
-	      "option is selected. Unfortunately, with GUI applications, this often will "
-	      "lead to huge false cycles, making the analysis impossible; therefore, there "
-	      "is the option to switch this off.");
+              "functions of a cycle into a virtual function, which is done when this "
+              "option is selected. Unfortunately, with GUI applications, this often will "
+              "lead to huge false cycles, making the analysis impossible; therefore, there "
+              "is the option to switch this off.");
   _taCycles->setWhatsThis( hint );
 
   KStdAction::quit(this, SLOT(close()), actionCollection());

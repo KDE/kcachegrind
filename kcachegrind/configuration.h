@@ -63,8 +63,7 @@ public:
   static int maxListCount();
   
   // how many lines of context to show before/after annotated source/assembler
-  static int contextOutside();
-  static int contextInside();
+  static int context();
   // how many lines without cost are still regarded as inside a function
   static int noCostInside();
 
@@ -93,7 +92,7 @@ private:
   double _cycleCut;
   int _percentPrecision;
   int _maxSymbolLength, _maxSymbolCount, _maxListCount;
-  int _contextOutside, _contextInside, _noCostInside;
+  int _context, _noCostInside;
 
   static Configuration* _config;
 };

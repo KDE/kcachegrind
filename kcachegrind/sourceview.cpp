@@ -279,6 +279,8 @@ void SourceView::refresh()
   setColumnWidth(1, 50);
   setColumnWidth(2, 0); // arrows, defaults to invisible
   setSorting(0); // always reset to line number sort
+  if (_costType)
+    setColumnText(1, _costType->name());
 
   _arrowLevels = 0;
 
@@ -625,7 +627,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
       buf[0] = 0;
     }
 
-    if (readBytes >= sizeof( buf )) {
+    if (readBytes >= (int) sizeof( buf )) {
       qDebug("%s:%d  Line too long\n",
 	     sf->file()->name().ascii(), fileLineno);
     }
@@ -660,8 +662,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 	    inside = false;
     }
 
-    int context = inside ? Configuration::contextInside() :
-	                   Configuration::contextOutside();
+    int context = Configuration::context();
 
     if ( ((lastCostLineno==0) || (fileLineno > lastCostLineno + context)) &&
 	 ((nextCostLineno==0) || (fileLineno < nextCostLineno - context))) {

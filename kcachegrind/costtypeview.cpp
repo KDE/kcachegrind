@@ -119,7 +119,7 @@ void CostTypeView::context(QListViewItem* i, const QPoint & p, int)
   else if (r == 96) {
 
     // search for a previous type 
-    TraceCostType* prev = 0, *ct;
+    TraceCostType* prev = 0, *ct = 0;
     TraceCostMapping* m = _data->mapping();
     for (int i=0;i<m->realCount();i++) {
 	ct = m->realType(i);

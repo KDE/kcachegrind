@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>ConfigDlgBase</class>
 <widget class="QDialog">
     <property name="name">
@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>546</width>
-            <height>618</height>
+            <height>670</height>
         </rect>
     </property>
     <property name="caption">
@@ -424,33 +424,76 @@
         </widget>
         <widget class="QLayoutWidget">
             <property name="name">
-                <cstring>Layout11</cstring>
+                <cstring>layout9</cstring>
             </property>
             <grid>
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
-                <property name="margin">
-                    <number>0</number>
-                </property>
-                <property name="spacing">
-                    <number>6</number>
-                </property>
                 <widget class="QLayoutWidget" row="0" column="1">
                     <property name="name">
-                        <cstring>Layout10</cstring>
+                        <cstring>layout8</cstring>
                     </property>
                     <grid>
                         <property name="name">
                             <cstring>unnamed</cstring>
                         </property>
-                        <property name="margin">
-                            <number>0</number>
-                        </property>
-                        <property name="spacing">
-                            <number>6</number>
-                        </property>
-                        <spacer row="3" column="0">
+                        <widget class="QLabel" row="2" column="1">
+                            <property name="name">
+                                <cstring>TextLabel2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Truncated when more/longer than:</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit" row="4" column="2" rowspan="1" colspan="2">
+                            <property name="name">
+                                <cstring>contextEdit</cstring>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>7</hsizetype>
+                                    <vsizetype>0</vsizetype>
+                                    <horstretch>2</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="4" column="0" rowspan="1" colspan="2">
+                            <property name="name">
+                                <cstring>TextLabel4_3_2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Context lines in annotations:</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit" row="3" column="2" rowspan="1" colspan="2">
+                            <property name="name">
+                                <cstring>precisionEdit</cstring>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>7</hsizetype>
+                                    <vsizetype>0</vsizetype>
+                                    <horstretch>2</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit" row="2" column="2">
+                            <property name="name">
+                                <cstring>symbolCount</cstring>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>4</hsizetype>
+                                    <vsizetype>0</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                        </widget>
+                        <spacer row="2" column="0">
                             <property name="name">
                                 <cstring>Spacer6_2_2_2</cstring>
                             </property>
@@ -467,15 +510,7 @@
                                 </size>
                             </property>
                         </spacer>
-                        <widget class="QLabel" row="2" column="0" rowspan="1" colspan="3">
-                            <property name="name">
-                                <cstring>TextLabel3</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Symbols in tooltips and context menus</string>
-                            </property>
-                        </widget>
-                        <widget class="QLineEdit" row="3" column="3">
+                        <widget class="QLineEdit" row="2" column="3">
                             <property name="name">
                                 <cstring>symbolLength</cstring>
                             </property>
@@ -488,14 +523,6 @@
                                 </sizepolicy>
                             </property>
                         </widget>
-                        <widget class="QLabel" row="3" column="1">
-                            <property name="name">
-                                <cstring>TextLabel2</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Truncated when more/longer than:</string>
-                            </property>
-                        </widget>
                         <widget class="QLabel" row="0" column="0" rowspan="1" colspan="2">
                             <property name="name">
                                 <cstring>TextLabel5</cstring>
@@ -504,38 +531,12 @@
                                 <string>Maximum number of items in lists:</string>
                             </property>
                         </widget>
-                        <widget class="QLabel" row="4" column="0" rowspan="1" colspan="2">
+                        <widget class="QLabel" row="1" column="0" rowspan="1" colspan="3">
                             <property name="name">
-                                <cstring>TextLabel4_3</cstring>
+                                <cstring>TextLabel3</cstring>
                             </property>
                             <property name="text">
-                                <string>Precision of percentage values:</string>
-                            </property>
-                        </widget>
-                        <widget class="QLineEdit" row="4" column="2" rowspan="1" colspan="2">
-                            <property name="name">
-                                <cstring>precisionEdit</cstring>
-                            </property>
-                            <property name="sizePolicy">
-                                <sizepolicy>
-                                    <hsizetype>7</hsizetype>
-                                    <vsizetype>0</vsizetype>
-                                    <horstretch>2</horstretch>
-                                    <verstretch>0</verstretch>
-                                </sizepolicy>
-                            </property>
-                        </widget>
-                        <widget class="QLineEdit" row="3" column="2">
-                            <property name="name">
-                                <cstring>symbolCount</cstring>
-                            </property>
-                            <property name="sizePolicy">
-                                <sizepolicy>
-                                    <hsizetype>4</hsizetype>
-                                    <vsizetype>0</vsizetype>
-                                    <horstretch>0</horstretch>
-                                    <verstretch>0</verstretch>
-                                </sizepolicy>
+                                <string>Symbols in tooltips and context menus</string>
                             </property>
                         </widget>
                         <widget class="QLineEdit" row="0" column="2" rowspan="1" colspan="2">
@@ -543,25 +544,16 @@
                                 <cstring>maxListEdit</cstring>
                             </property>
                         </widget>
+                        <widget class="QLabel" row="3" column="0" rowspan="1" colspan="2">
+                            <property name="name">
+                                <cstring>TextLabel4_3</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Precision of percentage values:</string>
+                            </property>
+                        </widget>
                     </grid>
                 </widget>
-                <spacer row="1" column="1">
-                    <property name="name">
-                        <cstring>Spacer9_2_2</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Vertical</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Fixed</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>20</width>
-                            <height>16</height>
-                        </size>
-                    </property>
-                </spacer>
                 <spacer row="0" column="0">
                     <property name="name">
                         <cstring>Spacer6_2_2</cstring>
@@ -576,6 +568,23 @@
                         <size>
                             <width>16</width>
                             <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <spacer row="1" column="1">
+                    <property name="name">
+                        <cstring>Spacer9_2_2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Vertical</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Fixed</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>16</height>
                         </size>
                     </property>
                 </spacer>
@@ -699,4 +708,7 @@
 </includes>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>kcolorbutton.h</includehint>
+</includehints>
 </UI>

@@ -395,7 +395,8 @@ void InstrView::refresh()
     setColumnWidth(4, 20);  // command column
     setColumnWidth(5, 200); // arg column
     setSorting(0); // always reset to address number sort
-    setColumnText(1, _costType->name());
+    if (_costType)
+      setColumnText(1, _costType->name());
 
     if (!_data || !_activeItem) return;
 
@@ -730,8 +731,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	      inside = false;
       }
 
-      int context = inside ? Configuration::contextInside() :
-                    Configuration::contextOutside();
+      int context = Configuration::context();
 
       if ( ((costAddr==0)     || (addr > costAddr + 3*context)) &&
            ((nextCostAddr==0) || (addr < nextCostAddr - 3*context)) ) {

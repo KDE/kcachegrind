@@ -1,9 +1,10 @@
 bin_PROGRAMS = kcachegrind
 
 kcachegrind_SOURCES = \
- functionselectionbase.ui dumpselectionbase.ui \
+ functionselectionbase.ui \
  stackselectionbase.ui \
- partselectionbase.ui configdlgbase.ui \
+ partselectionbase.ui \
+ configdlgbase.ui \
  loader.cpp cachegrindloader.cpp treemap.cpp \
  kwidgetaction.cpp main.cpp configuration.cpp \
  functionselection.cpp coverage.cpp partgraph.cpp \
@@ -16,8 +17,8 @@ kcachegrind_SOURCES = \
  listutils.cpp costtypeitem.cpp multiview.cpp \
  callitem.cpp coverageitem.cpp sourceitem.cpp \
  costlistitem.cpp partlistitem.cpp functionitem.cpp \
- instritem.cpp stackitem.cpp callgraphview.cpp \
- dumpselection.cpp dumpmanager.cpp
+ instritem.cpp stackitem.cpp callgraphview.cpp
+
 kcachegrind_COMPILE_FIRST = ../version.h
 
 kcachegrind_LDADD   =  $(LIB_KIO)

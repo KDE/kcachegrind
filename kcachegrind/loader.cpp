@@ -22,6 +22,9 @@
 
 #include "loader.h"
 
+
+/// Loader
+
 LoaderList Loader::_loaderList;
 
 Loader::Loader(QString name, QString desc)

@@ -109,8 +109,7 @@ Configuration::Configuration()
   _maxListCount = 100;
 
   // annotation behaviour
-  _contextOutside = 3;
-  _contextInside  = 3;
+  _context = 3;
   _noCostInside   = 20;
 }
 
@@ -169,8 +168,7 @@ void Configuration::saveOptions(KConfig* kconfig)
   generalConfig.writeEntry("MaxSymbolLength", c->_maxSymbolLength);
   generalConfig.writeEntry("PercentPrecision", c->_percentPrecision);
 
-  generalConfig.writeEntry("ContextOutside", c->_contextOutside);
-  generalConfig.writeEntry("ContextInside", c->_contextInside);
+  generalConfig.writeEntry("Context", c->_context);
   generalConfig.writeEntry("NoCostInside", c->_noCostInside);
 
   KConfigGroup ctConfig(kconfig, QCString("CostTypes"));
@@ -263,8 +261,7 @@ void Configuration::readOptions(KConfig* kconfig)
   c->_maxSymbolLength = generalConfig.readNumEntry("MaxSymbolLength", 30);
   c->_percentPrecision = generalConfig.readNumEntry("PercentPrecision", 2);
 
-  c->_contextOutside = generalConfig.readNumEntry("ContextOutside", 3);
-  c->_contextInside  = generalConfig.readNumEntry("ContextInside", 3);
+  c->_context = generalConfig.readNumEntry("Context", 3);
   c->_noCostInside   = generalConfig.readNumEntry("NoCostInside", 20);
 
   // known cost types
@@ -482,14 +479,9 @@ int Configuration::maxSymbolCount()
   return config()->_maxSymbolCount;
 }
 
-int Configuration::contextOutside()
+int Configuration::context()
 {
-  return config()->_contextOutside;
-}
-
-int Configuration::contextInside()
-{
-  return config()->_contextInside;
+  return config()->_context;
 }
 
 int Configuration::noCostInside()

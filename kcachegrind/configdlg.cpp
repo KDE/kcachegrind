@@ -51,9 +51,7 @@ ConfigDlg::ConfigDlg(Configuration* c, TraceData* data,
   symbolCount->setValidator(numValidator );
   symbolLength->setValidator(numValidator );
   precisionEdit->setValidator(numValidator );
-
-
-
+  contextEdit->setValidator(numValidator );
 
 #if 0
   QListViewItem *oItem, *fItem, *cItem, *fnItem;
@@ -191,6 +189,7 @@ ConfigDlg::ConfigDlg(Configuration* c, TraceData* data,
   symbolCount->setText(QString::number(c->_maxSymbolCount));
   symbolLength->setText(QString::number(c->_maxSymbolLength));
   precisionEdit->setText(QString::number(c->_percentPrecision));
+  contextEdit->setText(QString::number(c->_context));
 }
 
 ConfigDlg::~ConfigDlg()
@@ -204,9 +203,9 @@ bool ConfigDlg::configure(Configuration* c, TraceData* d, QWidget* p)
   if (dlg.exec()) {
 
     bool ok;
-    int max = dlg.maxListEdit->text().toUInt(&ok);
-    if (ok && max < 500)
-      c->_maxListCount = max;
+    int newValue = dlg.maxListEdit->text().toUInt(&ok);
+    if (ok && newValue < 500)
+      c->_maxListCount = newValue;
     else
       QMessageBox::warning(p, i18n("KCachegrind Configuration"),
                            i18n("The Maximum Number of List Items should be below 500."
@@ -217,6 +216,7 @@ bool ConfigDlg::configure(Configuration* c, TraceData* d, QWidget* p)
     c->_maxSymbolCount = dlg.symbolCount->text().toInt();
     c->_maxSymbolLength = dlg.symbolLength->text().toInt();
     c->_percentPrecision = dlg.precisionEdit->text().toInt();
+    c->_context = dlg.contextEdit->text().toInt();
     return true;
   }
   return false;

@@ -226,6 +226,8 @@ void CallView::refresh()
     clear();
     setColumnWidth(0, 50);
     setColumnWidth(1, 50);
+    if (_costType)
+      setColumnText(0, _costType->name());
 
     if (!_data || !_activeItem) return;
 
