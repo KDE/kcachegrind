@@ -817,6 +817,7 @@ void TopLevel::toggleExpanded()
 
 void TopLevel::toggleCycles()
 {
+    if (!_data) return;
   bool show = _taCycles->isChecked();
   if (_showCycles == show) return;
   _showCycles = show;
