@@ -106,34 +106,34 @@ QString TraceItem::typeName(CostType t)
 	for(int i=0;i<=MaxCostType;i++)
 	    strs[i] = QString("?");
 
-	strs[Item] = QString("Abstract Item");
-	strs[Cost] = QString("Cost Item");
-	strs[PartLine] = QString("Part Source Line");
-	strs[Line] = QString("Source Line");
-	strs[PartLineCall] = QString("Part Line Call");
-	strs[LineCall] = QString("Line Call");
-	strs[PartLineJump] = QString("Part Jump");
-	strs[LineJump] = QString("Jump");
-	strs[PartInstr] = QString("Part Instruction");
-	strs[Instr] = QString("Instruction");
-	strs[PartInstrJump] = QString("Part Instruction Jump");
-	strs[InstrJump] = QString("Instruction Jump");
-	strs[PartInstrCall] = QString("Part Instruction Call");
-	strs[InstrCall] = QString("Instruction Call");
-	strs[PartCall] = QString("Part Call");
-	strs[Call] = QString("Call");
-	strs[PartFunction] = QString("Part Function");
-	strs[FunctionSource] = QString("Function Source File");
-	strs[Function] = QString("Function");
-	strs[FunctionCycle] = QString("Function Cycle");
-	strs[PartClass] = QString("Part Class");
-	strs[Class] = QString("Class");
-	strs[PartFile] = QString("Part Source File");
-	strs[File] = QString("Source File");
-	strs[PartObject] = QString("Part ELF Object");
-	strs[Object] = QString("ELF Object");
-	strs[Part] = QString("Trace Part");
-	strs[Data] = QString("Program Trace");
+	strs[Item] = QString(I18N_NOOP("Abstract Item"));
+	strs[Cost] = QString(I18N_NOOP("Cost Item"));
+	strs[PartLine] = QString(I18N_NOOP("Part Source Line"));
+	strs[Line] = QString(I18N_NOOP("Source Line"));
+	strs[PartLineCall] = QString(I18N_NOOP("Part Line Call"));
+	strs[LineCall] = QString(I18N_NOOP("Line Call"));
+	strs[PartLineJump] = QString(I18N_NOOP("Part Jump"));
+	strs[LineJump] = QString(I18N_NOOP("Jump"));
+	strs[PartInstr] = QString(I18N_NOOP("Part Instruction"));
+	strs[Instr] = QString(I18N_NOOP("Instruction"));
+	strs[PartInstrJump] = QString(I18N_NOOP("Part Instruction Jump"));
+	strs[InstrJump] = QString(I18N_NOOP("Instruction Jump"));
+	strs[PartInstrCall] = QString(I18N_NOOP("Part Instruction Call"));
+	strs[InstrCall] = QString(I18N_NOOP("Instruction Call"));
+	strs[PartCall] = QString(I18N_NOOP("Part Call"));
+	strs[Call] = QString(I18N_NOOP("Call"));
+	strs[PartFunction] = QString(I18N_NOOP("Part Function"));
+	strs[FunctionSource] = QString(I18N_NOOP("Function Source File"));
+	strs[Function] = QString(I18N_NOOP("Function"));
+	strs[FunctionCycle] = QString(I18N_NOOP("Function Cycle"));
+	strs[PartClass] = QString(I18N_NOOP("Part Class"));
+	strs[Class] = QString(I18N_NOOP("Class"));
+	strs[PartFile] = QString(I18N_NOOP("Part Source File"));
+	strs[File] = QString(I18N_NOOP("Source File"));
+	strs[PartObject] = QString(I18N_NOOP("Part ELF Object"));
+	strs[Object] = QString(I18N_NOOP("ELF Object"));
+	strs[Part] = QString(I18N_NOOP("Trace Part"));
+	strs[Data] = QString(I18N_NOOP("Program Trace"));
     }
     if (t<0 || t> MaxCostType) t = MaxCostType;
     return strs[t];
@@ -153,7 +153,7 @@ TraceItem::CostType TraceItem::costType(QString s)
   return NoCostType;
 }
 
-
+// all strings of typeName() are translatable because of I18N_NOOP there
 QString TraceItem::i18nTypeName(CostType t)
 {
     static QString* strs = 0;
