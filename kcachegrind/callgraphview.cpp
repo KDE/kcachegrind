@@ -2019,7 +2019,7 @@ void CallGraphView::refresh()
 
   if (!_canvas) {
       _canvas = new QCanvas(100, 100);
-      (new QCanvasText(i18n("Error running dot!"), _canvas))->move(0, 0);
+      (new QCanvasText(i18n("Error running dot."), _canvas))->move(0, 0);
   }
 
   _completeView->setCanvas(_canvas);
