@@ -1383,12 +1383,8 @@ void TraceCumulativeCost::addCumulative(TraceCost* c)
 //---------------------------------------------------
 // TraceListCost
 
-TraceListCost::TraceListCost(bool onlyActiveParts)
+TraceListCost::TraceListCost()
 {
-  // this is for summing up part costs according to active
-  // status of a part
-  _onlyActiveParts = onlyActiveParts;
-
   _lastDep = 0;
 }
 
@@ -1443,7 +1439,7 @@ void TraceListCost::update()
   clear();
   TraceCost* item;
   for (item = _deps.first(); item; item = _deps.next()) {
-    if (_onlyActiveParts)
+    if (onlyActiveParts())
       if (!item->part() || !item->part()->isActive()) continue;
 
     addCost(item);
@@ -1461,12 +1457,8 @@ void TraceListCost::update()
 //---------------------------------------------------
 // TraceJumpListCost
 
-TraceJumpListCost::TraceJumpListCost(bool onlyActiveParts)
+TraceJumpListCost::TraceJumpListCost()
 {
-  // this is for summing up part costs according to active
-  // status of a part
-  _onlyActiveParts = onlyActiveParts;
-
   _lastDep = 0;
 }
 
@@ -1521,7 +1513,7 @@ void TraceJumpListCost::update()
   clear();
   TraceJumpCost* item;
   for (item = _deps.first(); item; item = _deps.next()) {
-    if (_onlyActiveParts)
+    if (onlyActiveParts())
       if (!item->part() || !item->part()->isActive()) continue;
 
     addCost(item);
@@ -1539,12 +1531,8 @@ void TraceJumpListCost::update()
 //---------------------------------------------------
 // TraceCallListCost
 
-TraceCallListCost::TraceCallListCost(bool onlyActiveParts)
+TraceCallListCost::TraceCallListCost()
 {
-  // this is for summing up part costs according to active
-  // status of a part
-  _onlyActiveParts = onlyActiveParts;
-
   _lastDep = 0;
 }
 
@@ -1602,7 +1590,7 @@ void TraceCallListCost::update()
     clear();
     TraceCallCost* item;
     for (item = _deps.first(); item; item = _deps.next()) {
-      if (_onlyActiveParts)
+      if (onlyActiveParts())
 	if (!item->part() || !item->part()->isActive()) continue;
       
       addCost(item);
@@ -1621,9 +1609,8 @@ void TraceCallListCost::update()
 //---------------------------------------------------
 // TraceCumulativeListCost
 
-TraceCumulativeListCost::TraceCumulativeListCost(bool onlyActiveParts)
+TraceCumulativeListCost::TraceCumulativeListCost()
 {
-  _onlyActiveParts = onlyActiveParts;
   _lastDep = 0;
 }
 
@@ -1678,7 +1665,7 @@ void TraceCumulativeListCost::update()
   clear();
   TraceCumulativeCost* item;
   for (item = _deps.first(); item; item = _deps.next()) {
-    if (_onlyActiveParts)
+    if (onlyActiveParts())
       if (!item->part() || !item->part()->isActive()) continue;
 
     addCost(item);
@@ -2149,7 +2136,6 @@ TracePartObject::~TracePartObject()
 
 TraceInstrJump::TraceInstrJump(TraceInstr* instrFrom, TraceInstr* instrTo,
 			       bool isCondJump)
-  : TraceJumpListCost(true)
 {
   // we are the owner of TracePartInstrJump's generated in our factory
   _deps.setAutoDelete(true);
@@ -2232,7 +2218,6 @@ int TraceInstrJumpList::compareItems ( Item item1, Item item2 )
 
 TraceLineJump::TraceLineJump(TraceLine* lineFrom, TraceLine* lineTo,
 			     bool isCondJump)
-  : TraceJumpListCost(true)
 {
   // we are the owner of TracePartLineJump's generated in our factory
   _deps.setAutoDelete(true);
@@ -2309,7 +2294,6 @@ int TraceLineJumpList::compareItems ( Item item1, Item item2 )
 // TraceInstrCall
 
 TraceInstrCall::TraceInstrCall(TraceCall* call, TraceInstr* instr)
-  : TraceCallListCost(true)
 {
   // we are the owner of TracePartInstrCall's generated in our factory
   _deps.setAutoDelete(true);
@@ -2347,7 +2331,6 @@ QString TraceInstrCall::name() const
 // TraceLineCall
 
 TraceLineCall::TraceLineCall(TraceCall* call, TraceLine* line)
-  : TraceCallListCost(true)
 {
   // we are the owner of TracePartLineCall's generated in our factory
   _deps.setAutoDelete(true);
@@ -2383,7 +2366,6 @@ QString TraceLineCall::name() const
 // TraceCall
 
 TraceCall::TraceCall(TraceFunction* caller, TraceFunction* called)
-  : TraceCallListCost(true)
 {
   // we are the owner of all items generated in our factory
   _deps.setAutoDelete(true);
@@ -2561,7 +2543,6 @@ QString TraceCall::calledName(bool skipCycle) const
 // TraceInstr
 
 TraceInstr::TraceInstr()
-  : TraceListCost(true)
 {
   // we are the owner of TracePartInstr's generated in our factory
   _deps.setAutoDelete(true);
@@ -2661,7 +2642,6 @@ QString TraceInstr::prettyName() const
 // TraceLine
 
 TraceLine::TraceLine()
-  : TraceListCost(true)
 {
   // we are the owner of TracePartLine's generated in our factory
   _deps.setAutoDelete(true);
@@ -2781,7 +2761,6 @@ QString TraceLine::prettyName() const
 // TraceCostItem
 
 TraceCostItem::TraceCostItem()
-    : TraceCumulativeListCost(true)
 {
   _data = 0;
 }

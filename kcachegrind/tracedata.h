@@ -672,7 +672,7 @@ protected:
 class TraceListCost: public TraceCost
 {
 public:
-  TraceListCost(bool onlyActiveParts = false);
+  TraceListCost();
   virtual ~TraceListCost();
 
   // reimplementation for dependency list
@@ -683,8 +683,10 @@ public:
   TraceCost* findDep(TracePart*);
 
 protected:
+  // overwrite in subclass to change update behaviour
+  virtual bool onlyActiveParts() { return false; }
+
   TraceCostList _deps;
-  bool _onlyActiveParts;
 
 private:
   // very temporary: cached
@@ -699,7 +701,7 @@ private:
 class TraceJumpListCost: public TraceJumpCost
 {
 public:
-  TraceJumpListCost(bool onlyActiveParts = false);
+  TraceJumpListCost();
   virtual ~TraceJumpListCost();
 
   // reimplementation for dependency list
@@ -710,9 +712,10 @@ public:
   TraceJumpCost* findDep(TracePart*);
 
 protected:
+  // overwrite in subclass to change update behaviour
+  virtual bool onlyActiveParts() { return false; }
 
   TraceJumpCostList _deps;
-  bool _onlyActiveParts;
 
 private:
   // very temporary: cached
@@ -729,7 +732,7 @@ private:
 class TraceCallListCost: public TraceCallCost
 {
 public:
-  TraceCallListCost(bool onlyActiveParts = false);
+  TraceCallListCost();
   virtual ~TraceCallListCost();
 
   // reimplementation for dependency list
@@ -740,9 +743,10 @@ public:
   TraceCallCost* findDep(TracePart*);
 
 protected:
+  // overwrite in subclass to change update behaviour
+  virtual bool onlyActiveParts() { return false; }
 
   TraceCallCostList _deps;
-  bool _onlyActiveParts;
 
 private:
   // very temporary: cached
@@ -756,7 +760,7 @@ private:
 class TraceCumulativeListCost: public TraceCumulativeCost
 {
 public:
-  TraceCumulativeListCost(bool onlyActiveParts = false);
+  TraceCumulativeListCost();
   virtual ~TraceCumulativeListCost();
 
   // reimplementation for dependency
@@ -767,8 +771,10 @@ public:
   TraceCumulativeCost* findDep(TracePart*);
 
 protected:
+  // overwrite in subclass to change update behaviour
+  virtual bool onlyActiveParts() { return false; }
+
   TraceCumulativeCostList _deps;
-  bool _onlyActiveParts;
 
 private:
   // very temporary: cached
@@ -1077,7 +1083,6 @@ public:
   void setPartNumber(int n);
   void setThreadID(int t);
   void setProcessID(int p);
-  //const TraceCostList& items() const { return _items; }
   TraceData* data() const { return _data; }
   TraceCost* totals() { return &_totals; }
   /* we get owner of the submapping */
@@ -1097,7 +1102,6 @@ private:
   QString _version;
 
   int _number, _tid, _pid;
-  //TraceCostList _items;
   TraceData* _data;
 
   bool _active;
@@ -1145,6 +1149,9 @@ public:
     // part factory
     TracePartInstrJump* partInstrJump(TracePart*);
 
+ protected:
+    bool onlyActiveParts() { return true; }
+
  private:
     TraceInstr *_instrFrom, *_instrTo;
     bool _isCondJump;
@@ -1184,7 +1191,10 @@ public:
   // part factory
   TracePartLineJump* partLineJump(TracePart*);
 
-private:
+ protected:
+  bool onlyActiveParts() { return true; }
+
+ private:
   TraceLine *_lineFrom, *_lineTo;
   bool _isCondJump;
 };
@@ -1221,7 +1231,11 @@ public:
 
   // part factory
   TracePartInstrCall* partInstrCall(TracePart*, TracePartCall*);
-private:
+
+ protected:
+  bool onlyActiveParts() { return true; }
+
+ private:
   TraceInstr* _instr;
   TraceCall* _call;
 };
@@ -1244,7 +1258,11 @@ public:
 
   // part factory
   TracePartLineCall* partLineCall(TracePart*, TracePartCall*);
-private:
+
+ protected:
+    bool onlyActiveParts() { return true; }
+
+ private:
   TraceLine* _line;
   TraceCall* _call;
 };
@@ -1289,7 +1307,10 @@ public:
   FixCallCost* setFirstFixCost(FixCallCost* fc)
     { FixCallCost* t = _firstFixCost; _firstFixCost = fc; return t; }
 
-private:
+ protected:
+  bool onlyActiveParts() { return true; }
+
+ private:
   TraceInstrCallList _instrCalls;
   TraceLineCallList _lineCalls;
   TraceFunction* _caller;
@@ -1335,12 +1356,14 @@ public:
   void setFunction(TraceFunction* f) { _function = f; }
   void setLine(TraceLine* l) { _line = l; }
 
-private:
+ protected:
+    bool onlyActiveParts() { return true; }
+
+ private:
   Addr _addr;
   TraceFunction* _function;
   TraceLine* _line;
 
-  TracePartInstrList _items;
   TraceInstrJumpList _instrJumps;
   TraceInstrCallList _instrCalls;
 };
@@ -1373,7 +1396,6 @@ public:
   bool hasCost(TraceCostType*);
   TraceFunctionSource* functionSource() const { return _sourceFile; }
   uint lineno() const { return _lineno; }
-  uint items() const { return _items.count(); }
   const TraceLineCallList& lineCalls() const { return _lineCalls; }
   const TraceLineJumpList& lineJumps() const { return _lineJumps; }
 
@@ -1381,11 +1403,13 @@ public:
   void setSourceFile(TraceFunctionSource* sf) { _sourceFile = sf; }
   void setLineno(uint lineno) { _lineno = lineno; }
 
-private:
+ protected:
+  bool onlyActiveParts() { return true; }
+
+ private:
   TraceFunctionSource* _sourceFile;
   uint _lineno;
 
-  TracePartLineList _items;
   TraceLineJumpList _lineJumps;
   TraceLineCallList _lineCalls;
 };
@@ -1408,7 +1432,9 @@ public:
   void setData(TraceData* data) { _data = data; }
   virtual void setName(const QString& name) { _name = name; }
 
-protected:
+ protected:
+  bool onlyActiveParts() { return true; }
+
   TraceData* _data;
   QString _name;
 };
