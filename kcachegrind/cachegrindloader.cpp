@@ -814,6 +814,12 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 		continue;
 	    }
 
+	    // creator:
+	    if (line.stripPrefix("reator:")) {
+		// ignore ...
+	        continue;
+	    }
+
 	    break;
 
 	case 'j':
@@ -1019,8 +1025,8 @@ bool CachegrindLoader::loadTrace(TracePart* part)
 	    break;
 	}
 
-	kdError() << _filename << ":" << _lineNo
-		  << "- invalid line '" << c << QString(line) << "'" << endl;
+	kdWarning() << _filename << ":" << _lineNo
+		  << " - invalid line '" << c << QString(line) << "'" << endl;
 	continue;
       }
 
