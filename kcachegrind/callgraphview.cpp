@@ -579,7 +579,7 @@ void GraphExporter::writeDot()
       break;
     }
     if (f)
-      *stream << QString("  center=F%1;\n").arg((int)f, 0, 16);
+      *stream << QString("  center=F%1;\n").arg((long)f, 0, 16);
     *stream << QString("  overlap=false;\n  splines=true;\n");
   }
 
@@ -630,7 +630,7 @@ void GraphExporter::writeDot()
       if ((int)abr.length() > Configuration::maxSymbolLength())
 	abr = abr.left(Configuration::maxSymbolLength()) + "...";
       
-      *stream << QString("  F%1 [").arg((int)f, 0, 16);
+      *stream << QString("  F%1 [").arg((long)f, 0, 16);
       if (_useBox) {
 	// make label 3 lines for CallGraphView
 	*stream << QString("shape=box,label=\"** %1 **\\n**\\n%2\"];\n")
@@ -673,9 +673,9 @@ void GraphExporter::writeDot()
     to.callers.removeRef(&e);
 
     *stream << QString("  F%1 -> F%2 [weight=%3")
-      .arg((int)e.from(), 0, 16)
-      .arg((int)e.to(), 0, 16)
-      .arg((int)log(log(e.cost)));
+      .arg((long)e.from(), 0, 16)
+      .arg((long)e.to(), 0, 16)
+      .arg((long)log(log(e.cost)));
 
     if (_go->detailLevel() ==1)
 	*stream << QString(",label=\"%1\"")
@@ -712,10 +712,10 @@ void GraphExporter::writeDot()
 	      e->count = countSum;
 
 	      *stream << QString("  R%1 [shape=point,label=\"\"];\n")
-		  .arg((int)n.function(), 0, 16);
+		  .arg((long)n.function(), 0, 16);
 	      *stream << QString("  R%1 -> F%2 [label=\"%3\\n%4 x\",weight=%5];\n")
-		  .arg((int)n.function(), 0, 16)
-		  .arg((int)n.function(), 0, 16)
+		  .arg((long)n.function(), 0, 16)
+		  .arg((long)n.function(), 0, 16)
 		  .arg(SubCost(costSum).pretty())
 		  .arg(SubCost(countSum).pretty())
 		  .arg((int)log(costSum));
@@ -735,10 +735,10 @@ void GraphExporter::writeDot()
 	      e->count = countSum;
 
 	      *stream << QString("  S%1 [shape=point,label=\"\"];\n")
-		  .arg((int)n.function(), 0, 16);
+		  .arg((long)n.function(), 0, 16);
 	      *stream << QString("  F%1 -> S%2 [label=\"%3\\n%4 x\",weight=%5];\n")
-		  .arg((int)n.function(), 0, 16)
-		  .arg((int)n.function(), 0, 16)
+		  .arg((long)n.function(), 0, 16)
+		  .arg((long)n.function(), 0, 16)
 		  .arg(SubCost(costSum).pretty())
 		  .arg(SubCost(countSum).pretty())
 		  .arg((int)log(costSum));
