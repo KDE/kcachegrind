@@ -18,8 +18,9 @@ kcachegrind_SOURCES = \
  costlistitem.cpp partlistitem.cpp functionitem.cpp \
  instritem.cpp stackitem.cpp callgraphview.cpp \
  dumpselection.cpp dumpmanager.cpp
+kcachegrind_COMPILE_FIRST = ../version.h
 
-kcachegrind_LDADD   =  $(LIB_KFILE) $(LIB_KDEUI) $(LIB_QT) $(LIBSOCKET)
+kcachegrind_LDADD   =  $(LIB_KIO)
 
 KDE_ICON = AUTO
 
