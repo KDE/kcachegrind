@@ -93,7 +93,7 @@ QString CallView::whatsThis() const
 	      "An inclusive cost makes no sense here.</p>"
 	      "<p>Selecting a function makes it the current selected "
 	      "one of this information panel. "
-	      "If there are two panels (Splitted mode), the "
+	      "If there are two panels (Split mode), the "
 	      "function of the other panel is changed instead.</p>") :
 	i18n( "<b>List of direct Callees</b>"
 	      "<p>This list shows all functions called by the "
@@ -102,7 +102,7 @@ QString CallView::whatsThis() const
 	      "while being called from the selected function.</p>"
 	      "<p>Selecting a function makes it the current selected "
 	      "one of this information panel. "
-	      "If there are two panels (Splitted mode), the "
+	      "If there are two panels (Split mode), the "
 	      "function of the other panel is changed instead.</p>");
 }
 

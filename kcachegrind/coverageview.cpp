@@ -114,7 +114,7 @@ QString CoverageView::whatsThis() const
 
 	      "<p>Selecting a function makes it the current selected "
 	      "one of this information panel. "
-	      "If there are two panels (Splitted mode), the "
+	      "If there are two panels (Split mode), the "
 	      "function of the other panel is changed instead.</p>") :
 
 	i18n( "<b>List of all Callees</b>"
@@ -144,7 +144,7 @@ QString CoverageView::whatsThis() const
 
 	      "<p>Selecting a function makes it the current selected "
 	      "one of this information panel. "
-	      "If there are two panels (Splitted mode), the "
+	      "If there are two panels (Split mode), the "
 	      "function of the other panel is changed instead.</p>");
 }
 

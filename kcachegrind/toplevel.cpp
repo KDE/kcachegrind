@@ -798,7 +798,7 @@ void TopLevel::createMiscActions()
                                   this, SLOT(splitDirSlot()),
                                   actionCollection(), "view_split_dir");
 
-  hint = i18n("Change Split Orientation when main window is splitted");
+  hint = i18n("Change Split Orientation when main window is split.");
   _taSplitDir->setToolTip( hint );
   _taSplitDir->setWhatsThis( hint );
 

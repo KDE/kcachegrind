@@ -871,7 +871,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 		      i18n("This happens because the code of"));
 	new InstrItem(this, this, 3, QString("        %1").arg(objfile));
 	new InstrItem(this, this, 4,
-		      i18n("doesn't seem to match the profile data file."));
+		      i18n("does not seem to match the profile data file."));
 	new InstrItem(this, this, 5, "");
 	new InstrItem(this, this, 6,
 		      i18n("Are you using an old profile data file or is the above mentioned"));

@@ -80,8 +80,8 @@ QString CostTypeView::whatsThis() const
 {
     return i18n( "<b>Cost Types List</b>"
 		 "<p>This list shows all cost types available "
-		 "and what's the self/inclusive cost of the "
-		 "current selected function for that cost type.</p>"
+		 "and what the self/inclusive cost of the "
+		 "current selected function is for that cost type.</p>"
 		 "<p>By choosing a cost type from the list, "
 		 "you change the cost type of costs shown "
 		 "all over KCachegrind to be the selected one.</p>");
