@@ -23,8 +23,7 @@ kcachegrind_LDADD   =  $(LIB_KFILE) $(LIB_KDEUI) $(LIB_QT) $(LIBSOCKET)
 
 KDE_ICON = AUTO
 
-appdirdevelopmentdir = $(kde_appsdir)/Development
-appdirdevelopment_DATA = kcachegrind.desktop
+xdg_apps_DATA = kcachegrind.desktop
 
 mimeapplicationdir = $(kde_mimedir)/application
 mimeapplication_DATA = x-kcachegrind.desktop

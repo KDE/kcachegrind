@@ -13,3 +13,4 @@ Name=KCachegrind
 Comment=Frontend for Cachegrind
 X-DCOP-ServiceType=Multi
 Name[de]=KCachegrind
+Categories=Qt;KDE;Development
