@@ -1,5 +1,5 @@
 Begin3
-Title:          @KCACHEGRIND_PACKAGE@
+Title:          kcachegrind
 Version:        @KCACHEGRIND_VERSION@
 Description:    KDE Profiling Visualisation Tool
 Keywords:       Profiling, Performance Analysis, Visualisation, Development
