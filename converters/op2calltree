@@ -3,7 +3,7 @@
 # Copyright (c) 2004
 # Author: Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 #
-# op2cg is free software; you can redistribute it and/or
+# op2calltree is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public
 # License as published by the Free Software Foundation, version 2.
 #
@@ -18,30 +18,39 @@
 # Boston, MA 02111-1307, USA.
 #
 #
-# Converter from OProfile's output of "opreport -gdf"
-# into cachegrind format
+# Converter from OProfile's output of "opreport -gdf" (v 0.8)
+# into callgrind format.
 #
 # Generate a OProfile report with opreport and flags -gdf
 # and pipe this as standard input into this script.
 # This will generate separate cachegrind files for every application.
 #
 
-sub parseSymSpec {
 
+# parse symbol line. example (with 1 event type, $has_image==0):
+#   308  0.1491  /path/source.c:6 /path/app main
+sub parseSymSpec {
   $e = 0;
   while($e < $eventCount) {
     ($line) = ($line =~ /\d+\s+\S+\s+(.*)/);
     $e++;
   }
-  if ($line =~ /^\(no location information\)\s+(.*)/) {
-    $line = $1;
+  if ($line =~ s/^\(no location information\)\s+//) {
     $file = "???";
     $linenr = 0;
-    ($img,$app,$sym) = ($line =~ /(\S+)\s+(\S+)\s+(.+)/);
   }
   else {
-    ($file,$linenr,$img,$app,$sym) = ($line =~ /(\S+?):(\d+)\s+(\S+)\s+(\S+)\s+(.+)/);
+    ($file,$linenr) = ($line =~ s/(\S+?):(\d+)\s+//);
   }
+  if ($has_image) {
+    if ($line =~ s/^(\S+)\s+//) { $img = $1; }
+  }
+  if ($has_app) {
+    if ($line =~ s/^(\S+)\s+//) { $app = $1; }
+    if (!$has_image) { $img = $app; }
+  }
+  $sym = $line;
+
   $app =~ s/^.*\///;
   if ($sym eq "(no symbols)") { $sym = "???"; }
   $file{$sym} = $file;
@@ -62,6 +71,10 @@ sub parseSymSpec {
 $eventCount = 0;
 $descCount = 0;
 $lnr = 0;
+$has_image = 0;
+$has_app = 0;
+$app = "unnamed";
+$img = "???";
 
 # first loop till first symbol specification
 while(<>) {
@@ -75,6 +88,18 @@ while(<>) {
     $desc[$descCount++] = $_;
     $eventCount++;
     $events[$eventCount] = $1;
+    next;
+  }
+  if (/^(Profiling through timer.*)/) {
+    $desc[$descCount++] = $_;
+    $eventCount++;
+    $events[$eventCount] = "Timer";
+    next;
+  }
+  if (/^vma/) {
+    # title row: adapt to separation options of OProfile
+    if (/image/) { $has_image = 1; }
+    if (/app/) { $has_app = 1; }
     next;
   }
   if (/^([0-9a-fA-F]+)\s*(.*)$/) {

@@ -18,7 +18,7 @@ while(<>) {
     next;
   }
   if (/^  inherited:/) {
-    $next = 0; #ignore inherited (same info as in children)
+    $next = 2; #inherited
     next;
   }
   if (/^  total:/) {
@@ -32,7 +32,7 @@ while(<>) {
     next;
   }
   if (/^\s+(\S.*?):\s*(\d+)$/) {
-    if ($next != 1) { next; }
+    if ($next < 2) { next; }
     print "cfn=$1\ncalls=0 0\n0 $2\n";
   }
 }
