@@ -47,7 +47,7 @@ int main( int argc, char ** argv )
                        KCACHEGRIND_VERSION,
                        I18N_NOOP("KDE Frontend for Cachegrind"),
                        KAboutData::License_GPL,
-                       I18N_NOOP("(c) 2002"));
+                       I18N_NOOP("(C) 2002, 2003"));
   aboutData.addAuthor("Josef Weidendorfer",
                       I18N_NOOP("Main Author/Maintainer"),
                       "Josef.Weidendorfer@gmx.de");

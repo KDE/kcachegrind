@@ -254,7 +254,7 @@ public:
   TraceItem();
   virtual ~TraceItem();
 
-  virtual CostType type() { return Item; }
+  virtual CostType type() const { return Item; }
 
   // conversion of item type to locale independent string (e.g. for config)
   static QString     typeName(CostType);
@@ -267,12 +267,12 @@ public:
   /**
    * Returns dynamic name info (without type)
    */
-  virtual QString name();
+  virtual QString name() const;
 
   /**
    * Same as name, but sometimes nicer for humans :-)
    */
-  virtual QString prettyName();
+  virtual QString prettyName() const;
 
   /**
    * Returns text of all cost metrics
@@ -282,7 +282,7 @@ public:
   /**
    * Returns type name + dynamic name
    */
-  QString fullName();
+  QString fullName() const;
 
   /**
    * Returns full name + cost text
@@ -318,7 +318,7 @@ public:
    */
   void setPart(TracePart* p) { _part = p; }
 
-  TracePart* part() { return _part; }
+  TracePart* part() const { return _part; }
 
 protected:
   /** Updates cost attributes.
@@ -353,7 +353,7 @@ public:
   TraceCost();
   virtual ~TraceCost();
 
-  virtual CostType type() { return Cost; }
+  virtual CostType type() const { return Cost; }
   virtual QString costString(TraceCostMapping*);
 
   virtual void clear();
@@ -781,7 +781,7 @@ class TracePartInstrJump: public TraceJumpCost
     TracePartInstrJump(TraceInstrJump*, TracePart*);
     virtual ~TracePartInstrJump();
 
-    virtual CostType type() { return PartInstrJump; }
+    virtual CostType type() const { return PartInstrJump; }
     // fix cost item
     virtual void update() {}
     TraceInstrJump* instrJump() const { return (TraceInstrJump*) _dep; }
@@ -798,7 +798,7 @@ public:
   TracePartInstrCall(TraceInstrCall*, TracePart*);
   virtual ~TracePartInstrCall();
 
-  virtual CostType type() { return PartInstrCall; }
+  virtual CostType type() const { return PartInstrCall; }
   // fix cost item
   virtual void update() {}
   TraceInstrCall* instrCall() const { return (TraceInstrCall*) _dep; }
@@ -815,7 +815,7 @@ public:
   TracePartInstr(TraceInstr*, TracePart*);
   virtual ~TracePartInstr();
 
-  virtual CostType type() { return PartInstr; }
+  virtual CostType type() const { return PartInstr; }
   // fix cost item
   virtual void update() {}
 
@@ -832,7 +832,7 @@ class TracePartLineJump: public TraceJumpCost
     TracePartLineJump(TraceLineJump*, TracePart*);
     virtual ~TracePartLineJump();
 
-    virtual CostType type() { return PartLineJump; }
+    virtual CostType type() const { return PartLineJump; }
     // fix cost item
     virtual void update() {}
     TraceLineJump* lineJump() const { return (TraceLineJump*) _dep; }
@@ -849,7 +849,7 @@ public:
   TracePartLineCall(TraceLineCall*, TracePart*);
   virtual ~TracePartLineCall();
 
-  virtual CostType type() { return PartLineCall; }
+  virtual CostType type() const { return PartLineCall; }
   // fix cost item
   virtual void update() {}
   TraceLineCall* lineCall() const { return (TraceLineCall*) _dep; }
@@ -867,7 +867,7 @@ public:
   TracePartLine(TraceLine*, TracePart*);
   virtual ~TracePartLine();
 
-  virtual CostType type() { return PartLine; }
+  virtual CostType type() const { return PartLine; }
   // fix cost item
   virtual void update() {}
 
@@ -885,7 +885,7 @@ public:
   TracePartCall(TraceCall* call, TracePart* part);
   virtual ~TracePartCall();
 
-  virtual CostType type() { return PartCall; }
+  virtual CostType type() const { return PartCall; }
   // calls a function itself?
   bool isRecursion();
 
@@ -914,7 +914,7 @@ public:
 		    TracePartObject*, TracePartFile*);
   virtual ~TracePartFunction();
 
-  virtual CostType type() { return PartFunction; }
+  virtual CostType type() const { return PartFunction; }
   virtual void update();
   virtual QString costString(TraceCostMapping* m);
 
@@ -978,8 +978,9 @@ public:
   TracePartClass(TraceClass*, TracePart*);
   virtual ~TracePartClass();
 
-  QString prettyName();
-  virtual CostType type() { return PartClass; }
+  virtual CostType type() const { return PartClass; }
+  QString prettyName() const;
+
   TraceClass* cls() { return (TraceClass*)_dep; }
   void addPartFunction(TracePartFunction* f) { addDep(f); }
 };
@@ -995,7 +996,7 @@ public:
   TracePartFile(TraceFile*, TracePart*);
   virtual ~TracePartFile();
 
-  virtual CostType type() { return PartFile; }
+  virtual CostType type() const { return PartFile; }
   TraceFile* file() { return (TraceFile*)_dep; }
   void addPartFunction(TracePartFunction* f) { addDep(f); }
 };
@@ -1011,8 +1012,8 @@ public:
   TracePartObject(TraceObject*, TracePart*);
   virtual ~TracePartObject();
 
-  virtual CostType type() { return PartObject; }
-  TraceObject* object() { return (TraceObject*)_dep; }
+  virtual CostType type() const { return PartObject; }
+  TraceObject* object() const { return (TraceObject*)_dep; }
   void addPartFunction(TracePartFunction* f) { addDep(f); }
 };
 
@@ -1028,11 +1029,11 @@ public:
   TracePart(TraceData*, QString file);
   virtual ~TracePart();
 
-  virtual CostType type() { return Part; }
+  virtual CostType type() const { return Part; }
 
   QString shortName() const;
-  QString prettyName();
-  QString name() { return _name; }
+  QString prettyName() const;
+  QString name() const { return _name; }
   QString description() const { return _descr; }
   QString trigger() const { return _trigger; }
   QString timeframe() const { return _timeframe; }
@@ -1104,12 +1105,12 @@ public:
 		   bool isCondJump);
     virtual ~TraceInstrJump();
 
-    virtual CostType type() { return InstrJump; }
-    virtual QString name();
+    virtual CostType type() const { return InstrJump; }
+    virtual QString name() const;
 
     TraceInstr* instrFrom() const { return _instrFrom; }
     TraceInstr* instrTo() const { return _instrTo; }
-    bool isCondJump() { return _isCondJump; }
+    bool isCondJump() const { return _isCondJump; }
 
     // part factory
     TracePartInstrJump* partInstrJump(TracePart*);
@@ -1143,8 +1144,8 @@ public:
 		bool isCondJump);
   virtual ~TraceLineJump();
 
-  virtual CostType type() { return LineJump; }
-  virtual QString name();
+  virtual CostType type() const { return LineJump; }
+  virtual QString name() const;
 
   TraceLine* lineFrom() const { return _lineFrom; }
   TraceLine* lineTo() const { return _lineTo; }
@@ -1182,8 +1183,8 @@ public:
   TraceInstrCall(TraceCall* call, TraceInstr* instr);
   virtual ~TraceInstrCall();
 
-  virtual CostType type() { return InstrCall; }
-  virtual QString name();
+  virtual CostType type() const { return InstrCall; }
+  virtual QString name() const;
 
   TraceInstr* instr() const { return _instr; }
   TraceCall* call() const { return _call; }
@@ -1205,8 +1206,8 @@ public:
   TraceLineCall(TraceCall* call, TraceLine* line);
   virtual ~TraceLineCall();
 
-  virtual CostType type() { return LineCall; }
-  virtual QString name();
+  virtual CostType type() const { return LineCall; }
+  virtual QString name() const;
 
   TraceLine* line() const { return _line; }
   TraceCall* call() const { return _call; }
@@ -1229,8 +1230,8 @@ public:
   TraceCall(TraceFunction* caller, TraceFunction* called);
   virtual ~TraceCall();
 
-  virtual CostType type() { return Call; }
-  virtual QString name();
+  virtual CostType type() const { return Call; }
+  virtual QString name() const;
 
   // calls a function itself?
   bool isRecursion() { return _caller == _called; }
@@ -1279,9 +1280,9 @@ public:
   TraceInstr();
   virtual ~TraceInstr();
 
-  virtual CostType type() { return Instr; }
-  virtual QString name();
-  QString prettyName();
+  virtual CostType type() const { return Instr; }
+  virtual QString name() const;
+  QString prettyName() const;
 
   bool isValid() { return _addr != 0; }
 
@@ -1326,9 +1327,9 @@ public:
   TraceLine();
   virtual ~TraceLine();
 
-  virtual CostType type() { return Line; }
-  virtual QString name();
-  QString prettyName();
+  virtual CostType type() const { return Line; }
+  virtual QString name() const;
+  QString prettyName() const;
 
   // factories
   TracePartLine* partLine(TracePart* part,
@@ -1371,8 +1372,9 @@ public:
   TraceCostItem();
   virtual ~TraceCostItem();
 
-  virtual QString name() { return _name; }
-  TraceData* data() { return _data; }
+  virtual QString name() const { return _name; }
+  TraceData* data() const { return _data; }
+
   void setData(TraceData* data) { _data = data; }
   virtual void setName(const QString& name) { _name = name; }
 
@@ -1397,14 +1399,14 @@ public:
   TraceFunctionSource(TraceFunction*, TraceFile*);
   virtual ~TraceFunctionSource();
 
-  virtual QString name();
-  virtual CostType type() { return FunctionSource; }
+  virtual CostType type() const { return FunctionSource; }
+  virtual QString name() const;
 
   // reimplementation for dependency map
   virtual void update();
 
-  TraceFile* file() { return _file; }
-  TraceFunction* function() { return _function; }
+  TraceFile* file() const { return _file; }
+  TraceFunction* function() const { return _function; }
   uint firstLineno();
   uint lastLineno();
   TraceLineMap* lineMap();
@@ -1490,7 +1492,7 @@ public:
                 TraceClass* cls, TraceFile* file, TraceObject* object);
   virtual ~TraceFunction();
 
-  virtual CostType type() { return Function; }
+  virtual CostType type() const { return Function; }
   virtual void update();
 
   // this invalidate all subcosts of function depending on
@@ -1506,9 +1508,9 @@ public:
   TracePartFunction* partFunction(TracePart*,
                                   TracePartFile*, TracePartObject*);
 
-  QString prettyName();
+  QString prettyName() const;
   QString location() const;
-  QString info(); // prettyName + location
+  QString info() const; // prettyName + location
   TraceClass* cls() const { return _cls; }
   TraceFile* file() const { return _file; }
   TraceObject* object() const { return _object; }
@@ -1559,7 +1561,7 @@ protected:
   TraceFunctionCycle* _cycle;
 
 private:
-  bool isUniquePrefix(QString);
+  bool isUniquePrefix(QString) const;
   TraceFunctionMap::Iterator _myMapIterator;
 
   TraceClass* _cls;
@@ -1593,7 +1595,7 @@ class TraceFunctionCycle: public TraceFunction
 public:
   TraceFunctionCycle(TraceFunction*, int n);
 
-  virtual CostType type() { return FunctionCycle; }
+  virtual CostType type() const { return FunctionCycle; }
 
   // this removes all members from this cycle
   void init();
@@ -1601,9 +1603,9 @@ public:
   // this sets up the cycle once members are added
   void setup();
 
-  TraceFunction* base() { return _base; }
-  int cycleNo() { return _cycleNo; }
-  const TraceFunctionList& members() { return _members; }
+  TraceFunction* base() const { return _base; }
+  int cycleNo() const { return _cycleNo; }
+  const TraceFunctionList& members() const { return _members; }
 
 private:
   TraceFunction* _base;
@@ -1626,8 +1628,9 @@ public:
   TraceClass();
   virtual ~TraceClass();
 
-  virtual QString prettyName();
-  virtual CostType type() { return Class; }
+  virtual CostType type() const { return Class; }
+  virtual QString prettyName() const;
+
   void addFunction(TraceFunction*);
   const TraceFunctionList& functions() const { return _functions; }
 
@@ -1649,7 +1652,7 @@ public:
   TraceFile();
   virtual ~TraceFile();
 
-  virtual CostType type() { return File; }
+  virtual CostType type() const { return File; }
   void setDirectory(const QString& dir);
   void resetDirectory() { _dir = QString::null; }
   QString directory();
@@ -1659,8 +1662,8 @@ public:
 
   // without path
   QString shortName() const;
-  QString prettyName() { return shortName(); }
-  QString prettyLongName();
+  QString prettyName() const { return shortName(); }
+  QString prettyLongName() const;
   const TraceFunctionList& functions() const { return _functions; }
   const TraceFunctionSourceList& sourceFiles() const
     { return _sourceFiles; }
@@ -1685,13 +1688,13 @@ public:
   TraceObject();
   virtual ~TraceObject();
 
-  virtual CostType type() { return Object; }
+  virtual CostType type() const { return Object; }
 
   void addFunction(TraceFunction*);
 
   virtual void setName(const QString& name);
   QString shortName() const { return _shortName; }
-  QString prettyName() { return shortName(); }
+  QString prettyName() const;
   const TraceFunctionList& functions() const { return _functions; }
 
   // part factory
@@ -1716,7 +1719,7 @@ public:
   TraceData(const QString& base);
   virtual ~TraceData();
 
-  virtual CostType type() { return Data; }
+  virtual CostType type() const { return Data; }
 
   /**
    * Loads a trace file.
@@ -1742,10 +1745,10 @@ public:
   TracePart* part(QString& name);
 
   // with path
-  QString traceName() { return _traceName; }
+  QString traceName() const { return _traceName; }
 
   // without path
-  QString shortTraceName();
+  QString shortTraceName() const;
   QString activePartRange();
 
   TraceCostMapping* mapping() { return &_mapping; }

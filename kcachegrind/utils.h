@@ -38,6 +38,12 @@ class FixString {
  public:
     // constructor for an invalid string
     FixString() { _len = 0; _str = 0; }
+
+    /**
+     * FixString never does a deep copy! You have to make sure that
+     * the string starting at the char pointer is valid trough the
+     * lifetime of FixString.
+     */
     FixString(const char*, int len);
 
     int len() { return _len; }

@@ -193,7 +193,7 @@ QString TraceItem::costString(TraceCostMapping*)
     return QString("(no cost)");
 }
 
-QString TraceItem::name()
+QString TraceItem::name() const
 {
   if (_part) {
     return i18n("%1 from %2")
@@ -207,13 +207,13 @@ QString TraceItem::name()
   return i18n("(unnamed)");
 }
 
-QString TraceItem::prettyName()
+QString TraceItem::prettyName() const
 {
     return name();
 }
 
 
-QString TraceItem::fullName()
+QString TraceItem::fullName() const
 {
   return QString("%1 %2")
     .arg(typeName(type())).arg(prettyName());
@@ -1915,7 +1915,7 @@ TracePartClass::TracePartClass(TraceClass* cls, TracePart* part)
 TracePartClass::~TracePartClass()
 {}
 
-QString TracePartClass::prettyName()
+QString TracePartClass::prettyName() const
 {
   return QString("%1 from %2")
     .arg( _dep->name().isEmpty() ? QString("(global)") : _dep->name())
@@ -1980,7 +1980,7 @@ TracePartInstrJump* TraceInstrJump::partInstrJump(TracePart* part)
 }
 
 
-QString TraceInstrJump::name()
+QString TraceInstrJump::name() const
 {
   return QString("jump at 0x%1 to 0x%2")
       .arg(_instrFrom->addr(), 0, 16)
@@ -2063,7 +2063,7 @@ TracePartLineJump* TraceLineJump::partLineJump(TracePart* part)
 }
 
 
-QString TraceLineJump::name()
+QString TraceLineJump::name() const
 {
   return QString("jump at %1 to %2")
       .arg(_lineFrom->prettyName())
@@ -2143,7 +2143,7 @@ TracePartInstrCall* TraceInstrCall::partInstrCall(TracePart* part,
 }
 
 
-QString TraceInstrCall::name()
+QString TraceInstrCall::name() const
 {
   return QString("%1 at %2").arg(_call->name()).arg(_instr->name());
 }
@@ -2179,7 +2179,7 @@ TracePartLineCall* TraceLineCall::partLineCall(TracePart* part,
 }
 
 
-QString TraceLineCall::name()
+QString TraceLineCall::name() const
 {
   return QString("%1 at %2").arg(_call->name()).arg(_line->name());
 }
@@ -2275,7 +2275,7 @@ void TraceCall::invalidateDynamicCost()
 }
 
 
-QString TraceCall::name()
+QString TraceCall::name() const
 {
   return QString("%1 => %2")
     .arg(_caller->name())
@@ -2452,12 +2452,12 @@ void TraceInstr::addInstrCall(TraceInstrCall* instrCall)
 }
 
 
-QString TraceInstr::name()
+QString TraceInstr::name() const
 {
     return QString("0x%1").arg(_addr,0,16);
 }
 
-QString TraceInstr::prettyName()
+QString TraceInstr::prettyName() const
 {
     return QString("0x%1").arg(_addr,0,16);
 }
@@ -2567,7 +2567,7 @@ void TraceLine::addLineCall(TraceLineCall* lineCall)
 }
 
 
-QString TraceLine::name()
+QString TraceLine::name() const
 {
     QString fileShortName = _sourceFile->file()->shortName();
     if (fileShortName == QString("???"))
@@ -2577,7 +2577,7 @@ QString TraceLine::name()
 	.arg(fileShortName).arg(_lineno);
 }
 
-QString TraceLine::prettyName()
+QString TraceLine::prettyName() const
 {
   return QString("%1 [%2]")
     .arg(name()).arg(_sourceFile->function()->prettyName());
@@ -2619,7 +2619,7 @@ TraceFunctionSource::~TraceFunctionSource()
     if (_line0) delete _line0;
 }
 
-QString TraceFunctionSource::name()
+QString TraceFunctionSource::name() const
 {
   return QString("%1 for %2").arg(_file->name()).arg(_function->name());
 }
@@ -2955,7 +2955,7 @@ TraceAssoziation* TraceFunction::assoziation(int rtti)
 
 
 // helper for prettyName
-bool TraceFunction::isUniquePrefix(QString prefix)
+bool TraceFunction::isUniquePrefix(QString prefix) const
 {
   TraceFunctionMap::Iterator it, it2;
   it = it2 = _myMapIterator;
@@ -2971,7 +2971,7 @@ bool TraceFunction::isUniquePrefix(QString prefix)
 }
 
 
-QString TraceFunction::prettyName()
+QString TraceFunction::prettyName() const
 {
   QString res = _name;
 
@@ -3029,7 +3029,7 @@ QString TraceFunction::location() const
       else
         loc += QString(" (0x%1-0x%2)").arg(from, 0, 16).arg(to, 0, 16);
     }
-#endif
+#endif   
   }
 
   // add all source files with ranges
@@ -3058,12 +3058,12 @@ QString TraceFunction::location() const
 #endif
   }
 
-  if (loc.isEmpty()) loc = QString("???");
+  if (loc.isEmpty()) loc = i18n("(unknown)");
 
   return loc;
 }
 
-QString TraceFunction::info()
+QString TraceFunction::info() const
 {
   return QString("Function %1 (%2)")
     .arg(name()).arg(location());
@@ -3328,7 +3328,7 @@ void TraceFunction::update()
 #if TRACE_DEBUG
   qDebug("Update %s (Callers %d, sourceFiles %d, instrs %d)",
          _name.ascii(), _callers.count(),
-	 _sourceFiles.count(), _instrMap->count());
+	 _sourceFiles.count(), _instrMap ? _instrMap->count():0);
 #endif
 
   _calledCount    = 0;
@@ -3710,7 +3710,7 @@ TraceClass::TraceClass()
 TraceClass::~TraceClass()
 {}
 
-QString TraceClass::prettyName()
+QString TraceClass::prettyName() const
 {
   if (_name.isEmpty())
     return QString("(global)");
@@ -3850,7 +3850,7 @@ QString TraceFile::shortName() const
   return _name.mid(lastIndex);
 }
 
-QString TraceFile::prettyLongName()
+QString TraceFile::prettyLongName() const
 {
   if (_name == QString("???"))
     return i18n("(unknown)");
@@ -3914,6 +3914,14 @@ void TraceObject::setName(const QString& name)
   _shortName = _name.mid(lastIndex);
 }
 
+QString TraceObject::prettyName() const
+{
+  if (_shortName.isEmpty())
+    return i18n("(unknown)");
+
+  return _shortName;
+}
+
 //---------------------------------------------------
 // TracePart
 
@@ -3963,7 +3971,7 @@ QString TracePart::shortName() const
   return _name.mid(lastIndex);
 }
 
-QString TracePart::prettyName()
+QString TracePart::prettyName() const
 {
     QString name = QString("%1.%2").arg(_pid).arg(_number);
     if (_data->maxThreadID()>1)
@@ -4060,7 +4068,7 @@ QString TraceData::tracePrefix()
   return QString("cachegrind.out");
 }
 
-QString TraceData::shortTraceName()
+QString TraceData::shortTraceName() const
 {
   int lastIndex = 0, index;
   while ( (index=_traceName.find("/", lastIndex)) >=0)
