@@ -126,7 +126,7 @@ QString* TraceItem::_i18nTypeName = 0;
 
 TraceItem::TraceItem()
 {
-  _part = 0;
+  _position = 0;
   _dep = 0;
   _dirty = true;
 }
@@ -241,10 +241,10 @@ QString TraceItem::costString(TraceCostMapping*)
 
 QString TraceItem::name() const
 {
-  if (_part) {
+  if (part()) {
     return i18n("%1 from %2")
       .arg(_dep->name())
-      .arg(_part->name());
+      .arg(part()->name());
   }
 
   if (_dep)
@@ -282,6 +282,26 @@ void TraceItem::invalidate()
 void TraceItem::update()
 {
   _dirty = false;
+}
+
+TracePart* TraceItem::part()
+{
+  return _position ? _position->part() : 0; 
+}
+
+const TracePart* TraceItem::part() const
+{
+  return _position ? _position->part() : 0; 
+}
+
+TraceData* TraceItem::data()
+{
+  return _position ? _position->data() : 0;
+}
+
+const TraceData* TraceItem::data() const
+{
+  return _position ? _position->data() : 0; 
 }
 
 
@@ -583,15 +603,15 @@ void TraceCost::maxCost(TraceCost* item)
     if (item->_dirty) item->update();
 
     if (item->_count < _count) {
-       for (i = 0; i<item->_count; i++)
-         if (_cost[i] < item->_cost[i]) _cost[i] = item->_cost[i];
+	for (i = 0; i<item->_count; i++)
+	  if (_cost[i] < item->_cost[i]) _cost[i] = item->_cost[i];
     }
     else {
-       for (i = 0; i<_count; i++)
-         if (_cost[i] < item->_cost[i]) _cost[i] = item->_cost[i];
-       for (; i<item->_count; i++)
-           _cost[i] = item->_cost[i];
-       _count = item->_count;
+	for (i = 0; i<_count; i++)
+	  if (_cost[i] < item->_cost[i]) _cost[i] = item->_cost[i];
+	for (; i<item->_count; i++)
+	    _cost[i] = item->_cost[i];
+	_count = item->_count;
     }
 
     // a cost change has to be propagated (esp. in subclasses)
@@ -600,8 +620,8 @@ void TraceCost::maxCost(TraceCost* item)
 #if TRACE_DEBUG
     _dirty = false; // don't recurse !
     qDebug("%s added cost item\n %s\n  now %s",
-          fullName().ascii(), item->fullName().ascii(),
-          TraceCost::costString(0).ascii());
+	   fullName().ascii(), item->fullName().ascii(),
+	   TraceCost::costString(0).ascii());
     _dirty = true; // because of invalidate()
 #endif
 }
@@ -1717,12 +1737,9 @@ void TraceInclusiveListCost::update()
 // TracePartInstrJump
 
 TracePartInstrJump::TracePartInstrJump(TraceInstrJump* instrJump,
-				       TracePartInstrJump* next,
-				       TracePart* part)
+				       TracePartInstrJump* next)
 {
-  _part = part;
   _dep = instrJump;
-
   _next = next;
 }
 
@@ -1733,10 +1750,8 @@ TracePartInstrJump::~TracePartInstrJump()
 //---------------------------------------------------
 // TracePartInstrCall
 
-TracePartInstrCall::TracePartInstrCall(TraceInstrCall* instrCall,
-				       TracePart* part)
+TracePartInstrCall::TracePartInstrCall(TraceInstrCall* instrCall)
 {
-  _part = part;
   _dep = instrCall;
 }
 
@@ -1748,9 +1763,8 @@ TracePartInstrCall::~TracePartInstrCall()
 //---------------------------------------------------
 // TracePartInstr
 
-TracePartInstr::TracePartInstr(TraceInstr* instr, TracePart* part)
+TracePartInstr::TracePartInstr(TraceInstr* instr)
 {
-  _part = part;
   _dep = instr;
 }
 
@@ -1762,10 +1776,8 @@ TracePartInstr::~TracePartInstr()
 //---------------------------------------------------
 // TracePartLineJump
 
-TracePartLineJump::TracePartLineJump(TraceLineJump* lineJump,
-                                     TracePart* part)
+TracePartLineJump::TracePartLineJump(TraceLineJump* lineJump)
 {
-  _part = part;
   _dep = lineJump;
 }
 
@@ -1776,10 +1788,8 @@ TracePartLineJump::~TracePartLineJump()
 //---------------------------------------------------
 // TracePartLineCall
 
-TracePartLineCall::TracePartLineCall(TraceLineCall* lineCall,
-                                     TracePart* part)
+TracePartLineCall::TracePartLineCall(TraceLineCall* lineCall)
 {
-  _part = part;
   _dep = lineCall;
 }
 
@@ -1790,9 +1800,8 @@ TracePartLineCall::~TracePartLineCall()
 //---------------------------------------------------
 // TracePartLine
 
-TracePartLine::TracePartLine(TraceLine* line, TracePart* part)
+TracePartLine::TracePartLine(TraceLine* line)
 {
-  _part = part;
   _dep = line;
 }
 
@@ -1805,9 +1814,8 @@ TracePartLine::~TracePartLine()
 //---------------------------------------------------
 // TracePartCall
 
-TracePartCall::TracePartCall(TraceCall* call, TracePart* part)
+TracePartCall::TracePartCall(TraceCall* call)
 {
-  _part = part;
   _dep = call;
 
   _firstFixCallCost = 0;
@@ -1856,11 +1864,9 @@ void TracePartCall::update()
 // TracePartFunction
 
 TracePartFunction::TracePartFunction(TraceFunction* function,
-                                     TracePart* part,
                                      TracePartObject* partObject,
 				     TracePartFile *partFile)
 {
-  _part = part;
   _dep = function;
   _partObject = partObject;
   _partFile = partFile;
@@ -2122,9 +2128,8 @@ void TracePartFunction::update()
 //---------------------------------------------------
 // TracePartClass
 
-TracePartClass::TracePartClass(TraceClass* cls, TracePart* part)
+TracePartClass::TracePartClass(TraceClass* cls)
 {
-  _part = part;
   _dep = cls;
 }
 
@@ -2135,15 +2140,14 @@ QString TracePartClass::prettyName() const
 {
   return QString("%1 from %2")
     .arg( _dep->name().isEmpty() ? QString("(global)") : _dep->name())
-    .arg(_part->name());
+    .arg(part()->name());
 }
 
 //---------------------------------------------------
 // TracePartFile
 
-TracePartFile::TracePartFile(TraceFile* file, TracePart* part)
+TracePartFile::TracePartFile(TraceFile* file)
 {
-  _part = part;
   _dep = file;
 }
 
@@ -2154,9 +2158,8 @@ TracePartFile::~TracePartFile()
 //---------------------------------------------------
 // TracePartObject
 
-TracePartObject::TracePartObject(TraceObject* object, TracePart* part)
+TracePartObject::TracePartObject(TraceObject* object)
 {
-  _part = part;
   _dep = object;
 }
 
@@ -2201,7 +2204,8 @@ TracePartInstrJump* TraceInstrJump::partInstrJump(TracePart* part)
     if (item->part() == part) break;
 
   if (!item) {
-    item = new TracePartInstrJump(this, _first, part);
+    item = new TracePartInstrJump(this, _first);
+    item->setPosition(part);
     _first = item;
   }
   return item;
@@ -2304,7 +2308,8 @@ TracePartLineJump* TraceLineJump::partLineJump(TracePart* part)
 {
   TracePartLineJump* item = (TracePartLineJump*) findDepFromPart(part);
   if (!item) {
-    item = new TracePartLineJump(this, part);
+    item = new TracePartLineJump(this);
+    item->setPosition(part);
     addDep(item);
   }
   return item;
@@ -2380,7 +2385,8 @@ TracePartInstrCall* TraceInstrCall::partInstrCall(TracePart* part,
 {
   TracePartInstrCall* item = (TracePartInstrCall*) findDepFromPart(part);
   if (!item) {
-    item = new TracePartInstrCall(this, part);
+    item = new TracePartInstrCall(this);
+    item->setPosition(part);
     addDep(item);
     // instruction calls are not registered in function calls
     // as together with line calls calls are duplicated
@@ -2417,7 +2423,8 @@ TracePartLineCall* TraceLineCall::partLineCall(TracePart* part,
 {
   TracePartLineCall* item = (TracePartLineCall*) findDepFromPart(part);
   if (!item) {
-    item = new TracePartLineCall(this, part);
+    item = new TracePartLineCall(this);
+    item->setPosition(part);
     addDep(item);
     partCall->addDep(item);
   }
@@ -2454,7 +2461,8 @@ TracePartCall* TraceCall::partCall(TracePart* part,
 {
   TracePartCall* item = (TracePartCall*) findDepFromPart(part);
   if (!item) {
-    item = new TracePartCall(this, part);
+    item = new TracePartCall(this);
+    item->setPosition(part);
     addDep(item);
     partCaller->addPartCalling(item);
     partCalling->addPartCaller(item);
@@ -2649,7 +2657,8 @@ TracePartInstr* TraceInstr::partInstr(TracePart* part,
 {
   TracePartInstr* item = (TracePartInstr*) findDepFromPart(part);
   if (!item) {
-    item = new TracePartInstr(this, part);
+    item = new TracePartInstr(this);
+    item->setPosition(part);
     addDep(item);
     //part->addDep(item);
     partFunction->addPartInstr(item);
@@ -2747,7 +2756,8 @@ TracePartLine* TraceLine::partLine(TracePart* part,
 {
   TracePartLine* item = (TracePartLine*) findDepFromPart(part);
   if (!item) {
-    item = new TracePartLine(this, part);
+    item = new TracePartLine(this);
+    item->setPosition(part);
     addDep(item);
 #if !USE_FIXCOST
     part->addDep(item);
@@ -2831,7 +2841,6 @@ QString TraceLine::prettyName() const
 
 TraceCostItem::TraceCostItem()
 {
-  _data = 0;
 }
 
 TraceCostItem::~TraceCostItem()
@@ -3213,13 +3222,13 @@ TraceAssoziation* TraceFunction::assoziation(int rtti)
 // helper for prettyName
 bool TraceFunction::isUniquePrefix(QString prefix) const
 {
-  TraceFunctionMap::Iterator it, it2;
+  TraceFunctionMap::ConstIterator it, it2;
   it = it2 = _myMapIterator;
-  if (it != _data->functionBeginIterator()) {
+  if (it != data()->functionBeginIterator()) {
     it2--;
     if ((*it2).name().startsWith(prefix)) return false;
   }
-  if (it != _data->functionEndIterator()) {
+  if (it != data()->functionEndIterator()) {
     it++;
     if ((*it).name().startsWith(prefix)) return false;
   }
@@ -3246,7 +3255,7 @@ QString TraceFunction::prettyName() const
     if ((_name[p+1] == ')') && (_name[p+2] == '(')) p+=2;
 
     // we have a C++ symbol with argument types:
-    // check for unique function name (inclusive '(' !)
+    // check for unique function name (inclusive '(' !)    
     if (isUniquePrefix(_name.left(p+1)))
       res = _name.left(p);
   }
@@ -3465,7 +3474,8 @@ TracePartFunction* TraceFunction::partFunction(TracePart* part,
 {
   TracePartFunction* item = (TracePartFunction*) findDepFromPart(part);
   if (!item) {
-    item = new TracePartFunction(this, part, partObject, partFile);
+    item = new TracePartFunction(this, partObject, partFile);
+    item->setPosition(part);
     addDep(item);
 #if USE_FIXCOST
     part->addDep(item);
@@ -3611,7 +3621,7 @@ void TraceFunction::update()
     _callingCount += calling->callCount();
   }
 
-  if (_data->inFunctionCycleUpdate() || !_cycle) {
+  if (data()->inFunctionCycleUpdate() || !_cycle) {
       // usual case (no cycle member)
       TraceInclusiveCost* item;
       for (item=_deps.first();item;item=_deps.next()) {
@@ -3762,7 +3772,7 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
     else {
       // a SCC with >1 members
 
-      TraceFunctionCycle* cycle = _data->functionCycle(this);
+      TraceFunctionCycle* cycle = data()->functionCycle(this);
       if (0) qDebug("Found Cycle %d with base %s:",
              cycle->cycleNo(), prettyName().ascii());
       while(*pTop) {
@@ -3909,7 +3919,7 @@ TraceFunctionCycle::TraceFunctionCycle(TraceFunction* f, int n)
   _cycleNo = n;
   _cycle = this;
 
-  setData(f->data());
+  setPosition(f->data());
   setName(QString("<cycle %1>").arg(n));
 
   // reset to attributes of base function
@@ -3983,7 +3993,8 @@ TracePartClass* TraceClass::partClass(TracePart* part)
 {
   TracePartClass* item = (TracePartClass*) findDepFromPart(part);
   if (!item) {
-    item = new TracePartClass(this, part);
+    item = new TracePartClass(this);
+    item->setPosition(part);
     addDep(item);
   }
   return item;
@@ -4029,7 +4040,8 @@ TracePartFile* TraceFile::partFile(TracePart* part)
 {
   TracePartFile* item = (TracePartFile*) findDepFromPart(part);
   if (!item) {
-    item = new TracePartFile(this, part);
+    item = new TracePartFile(this);
+    item->setPosition(part);
     addDep(item);
   }
   return item;
@@ -4136,7 +4148,8 @@ TracePartObject* TraceObject::partObject(TracePart* part)
 {
   TracePartObject* item = (TracePartObject*) findDepFromPart(part);
   if (!item) {
-    item = new TracePartObject(this, part);
+    item = new TracePartObject(this);
+    item->setPosition(part);
     addDep(item);
   }
   return item;
@@ -4189,8 +4202,9 @@ QString TraceObject::prettyName() const
 
 TracePart::TracePart(TraceData* data, QFile* file)
 {
+  setPosition(data);
+
   _dep = data;
-  _data = data;
   _file = file;
   if (_file)
     _name = _file->name();
@@ -4242,7 +4256,7 @@ QString TracePart::shortName() const
 QString TracePart::prettyName() const
 {
     QString name = QString("%1.%2").arg(_pid).arg(_number);
-    if (_data->maxThreadID()>1)
+    if (data()->maxThreadID()>1)
 	name += QString("-%3").arg(_tid);
     return name;
 }
@@ -4253,7 +4267,7 @@ bool TracePart::activate(bool active)
   _active = active;
 
   // to be done by the client of this function
-  // _data->invalidateDynamicCost();
+  //  data()->invalidateDynamicCost();
   // So better use the TraceData functions...
 
   return true;
@@ -4310,11 +4324,6 @@ TraceData::TraceData(const QString& base)
     load(base);
 }
 
-TraceData::~TraceData()
-{
-  if (_fixPool) delete _fixPool;
-}
-
 void TraceData::init()
 {
   _parts.setAutoDelete(true);
@@ -4325,6 +4334,13 @@ void TraceData::init()
   _maxThreadID = 0;
   _maxPartNumber = 0;
   _fixPool = 0;
+  _dynPool = 0;
+}
+
+TraceData::~TraceData()
+{
+  if (_fixPool) delete _fixPool;
+  if (_dynPool) delete _dynPool;
 }
 
 QString TraceData::shortTraceName() const
@@ -4342,6 +4358,14 @@ FixPool* TraceData::fixPool()
     _fixPool = new FixPool();
 
   return _fixPool;
+}
+
+DynPool* TraceData::dynPool()
+{
+  if (!_dynPool)
+    _dynPool = new DynPool();
+
+  return _dynPool;
 }
 
 
@@ -4613,7 +4637,7 @@ TraceObject* TraceData::object(const QString& name)
   TraceObject& o = _objectMap[name];
   if (!o.data()) {
     // was created
-    o.setData(this);
+    o.setPosition(this);
     o.setName(name);
 
 #if TRACE_DEBUG
@@ -4630,7 +4654,7 @@ TraceFile* TraceData::file(const QString& name)
   TraceFile& f = _fileMap[name];
   if (!f.data()) {
     // was created
-    f.setData(this);
+    f.setPosition(this);
     f.setName(name);
 
 #if TRACE_DEBUG
@@ -4669,7 +4693,7 @@ TraceClass* TraceData::cls(const QString& fnName, QString& shortName)
   TraceClass& c = _classMap[clsName];
   if (!c.data()) {
     // was created
-    c.setData(this);
+    c.setPosition(this);
     c.setName(clsName);
 
 #if TRACE_DEBUG
@@ -4704,7 +4728,7 @@ TraceFunction* TraceData::function(const QString& name,
       it = _functionMap.insert(key, TraceFunction());
       TraceFunction& f = it.data();
 
-      f.setData(this);
+      f.setPosition(this);
       f.setName(name);
       f.setClass(c);
       f.setObject(object);
@@ -4739,12 +4763,12 @@ TraceFunctionMap::Iterator TraceData::functionIterator(TraceFunction* f)
   return _functionMap.find(key);
 }
 
-TraceFunctionMap::Iterator TraceData::functionBeginIterator()
+TraceFunctionMap::ConstIterator TraceData::functionBeginIterator() const
 {
   return _functionMap.begin();
 }
 
-TraceFunctionMap::Iterator TraceData::functionEndIterator()
+TraceFunctionMap::ConstIterator TraceData::functionEndIterator() const
 {
   return _functionMap.end();
 }
