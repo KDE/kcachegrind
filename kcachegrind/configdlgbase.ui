@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
 <class>ConfigDlgBase</class>
 <widget class="QDialog">
     <property name="name">
@@ -9,11 +9,11 @@
             <x>0</x>
             <y>0</y>
             <width>544</width>
-            <height>575</height>
+            <height>652</height>
         </rect>
     </property>
     <property name="caption">
-        <string>Configure KCachegrind...</string>
+        <string>Configure KCachegrind</string>
     </property>
     <vbox>
         <property name="name">
@@ -164,6 +164,9 @@
                                     <verstretch>0</verstretch>
                                 </sizepolicy>
                             </property>
+                            <property name="text">
+                                <string></string>
+                            </property>
                         </widget>
                         <widget class="QCheckBox" row="1" column="2">
                             <property name="name">
@@ -176,6 +179,9 @@
                         <widget class="KColorButton" row="0" column="3">
                             <property name="name">
                                 <cstring>objectColor</cstring>
+                            </property>
+                            <property name="text">
+                                <string></string>
                             </property>
                         </widget>
                         <widget class="QCheckBox" row="0" column="2">
@@ -205,6 +211,9 @@
                                     <horstretch>0</horstretch>
                                     <verstretch>0</verstretch>
                                 </sizepolicy>
+                            </property>
+                            <property name="text">
+                                <string></string>
                             </property>
                         </widget>
                         <widget class="QComboBox" row="2" column="1">
@@ -471,7 +480,7 @@
                                 <cstring>TextLabel3</cstring>
                             </property>
                             <property name="text">
-                                <string>Symbols in Tooltips and Context Menus</string>
+                                <string>Symbols in tooltips and context menus</string>
                             </property>
                         </widget>
                         <widget class="QLabel" row="1" column="0" rowspan="1" colspan="2">
@@ -479,7 +488,7 @@
                                 <cstring>TextLabel1_3</cstring>
                             </property>
                             <property name="text">
-                                <string>Cycle Estimation Factors (L1/L2):</string>
+                                <string>Cycle estimation factors (L1/L2):</string>
                             </property>
                         </widget>
                         <widget class="QLineEdit" row="3" column="3">
@@ -534,7 +543,7 @@
                                 <cstring>TextLabel5</cstring>
                             </property>
                             <property name="text">
-                                <string>Maximum Number of Items in Lists:</string>
+                                <string>Maximum number of items in lists:</string>
                             </property>
                         </widget>
                         <widget class="QLabel" row="4" column="0" rowspan="1" colspan="2">
@@ -542,7 +551,7 @@
                                 <cstring>TextLabel4_3</cstring>
                             </property>
                             <property name="text">
-                                <string>Precision of Percentage values:</string>
+                                <string>Precision of percentage values:</string>
                             </property>
                         </widget>
                         <widget class="QLineEdit" row="4" column="2" rowspan="1" colspan="2">
@@ -664,7 +673,7 @@
                         <cstring>PushButton2</cstring>
                     </property>
                     <property name="text">
-                        <string>OK</string>
+                        <string>&amp;OK</string>
                     </property>
                     <property name="default">
                         <bool>true</bool>
@@ -675,36 +684,13 @@
                         <cstring>PushButton1</cstring>
                     </property>
                     <property name="text">
-                        <string>Cancel</string>
+                        <string>&amp;Cancel</string>
                     </property>
                 </widget>
             </hbox>
         </widget>
     </vbox>
 </widget>
-<customwidgets>
-    <customwidget>
-        <class>KColorButton</class>
-        <header location="global">kcolorbutton.h</header>
-        <sizehint>
-            <width>50</width>
-            <height>20</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>0</hordata>
-            <verdata>0</verdata>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-        </sizepolicy>
-        <pixmap>image0</pixmap>
-    </customwidget>
-</customwidgets>
-<images>
-    <image name="image0">
-        <data format="XPM.GZ" length="45">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523250004143a55a6b2e0026630c4f</data>
-    </image>
-</images>
 <connections>
     <connection>
         <sender>PushButton2</sender>

@@ -2278,7 +2278,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   gpopup.insertItem(i18n("Min. Node Cost"), &gpopup3, 82);
   gpopup.insertItem(i18n("Min. Call Cost"), &gpopup4, 83);
   gpopup.insertSeparator();
-  gpopup.insertItem(i18n("Arrows for skipped Calls"), 130);
+  gpopup.insertItem(i18n("Arrows for Skipped Calls"), 130);
   gpopup.setItemChecked(130,_showSkipped);
   gpopup.insertItem(i18n("Inner-cycle Calls"), 131);
   gpopup.setItemChecked(131,_expandCycles);

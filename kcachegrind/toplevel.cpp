@@ -536,7 +536,7 @@ void TopLevel::createActions()
   _taPercentage->setToolTip( hint );
   _taPercentage->setWhatsThis( hint );
 
-  _taExpanded = new KToggleAction(i18n("Percentage relative to Parent"), "move",
+  _taExpanded = new KToggleAction(i18n("Percentage Relative to Parent"), "move",
 				  KShortcut(),
 				  this, SLOT(toggleExpanded()),
 				  actionCollection(),

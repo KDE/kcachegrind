@@ -1,4 +1,4 @@
-# KDE Config File  
+# KDE Config File
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
@@ -10,6 +10,6 @@ Comment=
 Comment[de]=
 Terminal=0
 Name=KCachegrind
-Comment=KDE Frontend for Cachegrind
+Comment=Frontend for Cachegrind
 X-DCOP-ServiceType=Multi
 Name[de]=KCachegrind

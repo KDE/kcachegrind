@@ -296,8 +296,8 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
 
   vpopup.insertItem(i18n("Partitioning Mode"), 30);
   vpopup.insertItem(i18n("Zoom Function"), 31);
-  vpopup.insertItem(i18n("Show direct Calls"), 32);
-  vpopup.insertItem(i18n("Increment shown Call Levels"), 33);
+  vpopup.insertItem(i18n("Show Direct Calls"), 32);
+  vpopup.insertItem(i18n("Increment Shown Call Levels"), 33);
   if (partAreaWidget->visualisation() == PartAreaWidget::Partitioning) {
     vpopup.setItemChecked(30, true);
     vpopup.setItemEnabled(31, false);

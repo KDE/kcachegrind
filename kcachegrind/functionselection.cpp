@@ -132,7 +132,7 @@ void FunctionSelection::groupContext(QListViewItem* /*i*/,
   if (i) {
       g = ((CostListItem*) i)->costItem();
       if (!g) {
-	popup.insertItem(i18n("Show all Items"), 93);
+	popup.insertItem(i18n("Show All Items"), 93);
 	popup.insertSeparator();
       }
   }

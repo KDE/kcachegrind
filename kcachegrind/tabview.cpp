@@ -76,9 +76,9 @@ void TabBar::mousePressEvent(QMouseEvent *e)
           popup.insertItem(i18n("Move to Bottom Left"), 84);
           popup2.insertItem(i18n("Bottom Left"), 94);
         }
-        popup.insertItem(i18n("Move Area to"), &popup2, 2);
+        popup.insertItem(i18n("Move Area To"), &popup2, 2);
         popup.insertSeparator();
-        popup.insertItem(i18n("Hide this Tab"), 80);
+        popup.insertItem(i18n("Hide This Tab"), 80);
         popup.insertItem(i18n("Hide Area"), 90);
 
         if (_tabView->visibleTabs() <2) {
@@ -92,7 +92,7 @@ void TabBar::mousePressEvent(QMouseEvent *e)
       popup3.insertItem(i18n("Right"), 102);
       popup3.insertItem(i18n("Bottom"), 103);
       popup3.insertItem(i18n("Bottom Left"), 104);
-      popup.insertItem(i18n("Show Hidden on"), &popup3, 3);
+      popup.insertItem(i18n("Show Hidden On"), &popup3, 3);
 
       int r = popup.exec( mapToGlobal( e->pos() ) );
 

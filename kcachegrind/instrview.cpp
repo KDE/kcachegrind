@@ -194,7 +194,7 @@ void InstrView::context(QListViewItem* i, const QPoint & p, int)
     popup.insertSeparator();
   }
   else if (instr) {
-    popup.insertItem(i18n("Go to address %1").arg(instr->name()), 93);
+    popup.insertItem(i18n("Go to Address %1").arg(instr->name()), 93);
     popup.insertSeparator();
   }
 

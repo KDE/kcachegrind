@@ -150,7 +150,7 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   }
 
   if (item) {
-    popup.insertItem(i18n("Go to"), &fpopup, 100);
+    popup.insertItem(i18n("Go To"), &fpopup, 100);
     count = 0;
     while (count<Configuration::maxSymbolCount() && item) {
       QString name = item->text(0);
@@ -263,7 +263,7 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   vpopup.insertItem(i18n("Split Direction"),
                     splitDirectionMenu(1001), 1000);
 
-  vpopup.insertItem(i18n("Skip incorrect Borders"), 40);
+  vpopup.insertItem(i18n("Skip Incorrect Borders"), 40);
   vpopup.setItemEnabled(40, !_showCallers);
   vpopup.setItemChecked(40, skipIncorrectBorder());
 

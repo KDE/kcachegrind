@@ -103,7 +103,7 @@
                                 </sizepolicy>
                             </property>
                             <property name="text">
-                                <string>Target Command:</string>
+                                <string>Target command:</string>
                             </property>
                         </widget>
                         <widget class="QLineEdit">
@@ -116,7 +116,7 @@
                                 <cstring>textLabel2</cstring>
                             </property>
                             <property name="text">
-                                <string>Profiler Options:</string>
+                                <string>Profiler options:</string>
                             </property>
                         </widget>
                         <widget class="QListView">
@@ -241,7 +241,7 @@
                             </property>
                             <item>
                                 <property name="text">
-                                    <string>at Startup</string>
+                                    <string>At Startup</string>
                                 </property>
                                 <property name="text">
                                     <string></string>
@@ -255,7 +255,7 @@
                             </item>
                             <item>
                                 <property name="text">
-                                    <string>While in</string>
+                                    <string>While In</string>
                                 </property>
                                 <property name="text">
                                     <string></string>
@@ -325,7 +325,7 @@
                             </property>
                             <item>
                                 <property name="text">
-                                    <string>every BBs</string>
+                                    <string>Every BBs</string>
                                 </property>
                                 <property name="text">
                                     <string></string>
@@ -339,7 +339,7 @@
                             </item>
                             <item>
                                 <property name="text">
-                                    <string>on Entering</string>
+                                    <string>On Entering</string>
                                 </property>
                                 <property name="text">
                                     <string></string>
@@ -353,7 +353,7 @@
                             </item>
                             <item>
                                 <property name="text">
-                                    <string>on Leaving</string>
+                                    <string>On Leaving</string>
                                 </property>
                                 <property name="text">
                                     <string></string>
@@ -381,7 +381,7 @@
                             </property>
                             <item>
                                 <property name="text">
-                                    <string>on Entering</string>
+                                    <string>On Entering</string>
                                 </property>
                                 <property name="text">
                                     <string></string>
@@ -528,7 +528,7 @@
                                 <cstring>textLabel8</cstring>
                             </property>
                             <property name="text">
-                                <string>Dump Reason:</string>
+                                <string>Dump reason:</string>
                             </property>
                         </widget>
                         <widget class="QLineEdit">
@@ -541,7 +541,7 @@
                                 <cstring>textLabel6</cstring>
                             </property>
                             <property name="text">
-                                <string>Event Summary:</string>
+                                <string>Event summary:</string>
                             </property>
                         </widget>
                         <widget class="QListView">
@@ -887,7 +887,7 @@
                                         </sizepolicy>
                                     </property>
                                     <property name="text">
-                                        <string>Stack Trace:</string>
+                                        <string>Stack trace:</string>
                                     </property>
                                 </widget>
                                 <widget class="QCheckBox">

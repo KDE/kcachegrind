@@ -114,7 +114,7 @@ void SourceView::context(QListViewItem* i, const QPoint & p, int)
     popup.insertSeparator();
   }
   else if (line) {
-    popup.insertItem(i18n("Go to line %1").arg(line->name()), 93);
+    popup.insertItem(i18n("Go to Line %1").arg(line->name()), 93);
     popup.insertSeparator();
   }
 

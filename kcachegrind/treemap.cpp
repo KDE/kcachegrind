@@ -3156,7 +3156,7 @@ QPopupMenu* TreeMapWidget::visualizationMenu(int id)
     tpopup->setCheckable(true);
     popup->insertItem(_attr[f].type, tpopup, id);
     tpopup->insertItem(i18n("Visible"), id+1);
-    tpopup->insertItem(i18n("Take Space from Children"), id+2);
+    tpopup->insertItem(i18n("Take Space From Children"), id+2);
     tpopup->insertSeparator();
     tpopup->insertItem(i18n("Top Left"), id+3);
     tpopup->insertItem(i18n("Top Center"), id+4);
