@@ -44,13 +44,13 @@ class CachegrindLoader: public Loader
 public:
   CachegrindLoader();
   
-  bool canLoadTrace(QFile* file);
+  bool canLoadTrace(QFile* file);  
   bool loadTrace(TracePart*);
   bool isPartOfTrace(QString file, TraceData*);
   
 private:
   bool loadTraceInternal(TracePart*);
-  
+
   enum lineType { SelfCost, CallCost, BoringJump, CondJump };
   
   bool parsePosition(FixString& s, PositionSpec& newPos);
@@ -186,6 +186,10 @@ bool CachegrindLoader::loadTrace(TracePart* p)
    */
   CachegrindLoader l;
 
+  /* emit progress signals via the singleton loader */
+  connect(&l, SIGNAL(updateStatus(QString, int)),
+	  this, SIGNAL(updateStatus(QString, int)));
+
   return l.loadTraceInternal(p);
 }
 
@@ -193,7 +197,6 @@ Loader* createCachegrindLoader()
 {
   return new CachegrindLoader();
 }
-
 
 
 
@@ -471,7 +474,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
     f = _functionVector.at(index);
     if (!f) {
       kdError() << "Loader: Invalid compressed function index " << index
-		<< "without definition" << endl;
+                << "without definition" << endl;
       return 0;
     }
 
@@ -778,6 +781,12 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 	      int progress = (int)(100.0 * file.current() / file.len() +.5);
 	      if (progress != statusProgress) {
 		statusProgress = progress;
+
+		/* When this signal is connected, it most probably
+		 * should lead to GUI update. Thus, when multiple
+		 * "long operations" (like file loading) are in progress,
+		 * this can temporarly switch to another operation.
+		 */
 		emit updateStatus(statusMsg,statusProgress);
 	      }
 
