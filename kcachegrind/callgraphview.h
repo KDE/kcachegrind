@@ -160,6 +160,7 @@ class GraphOptions
     virtual int maxCallingDepth() = 0;
     virtual bool showSkipped() = 0;
     virtual bool expandCycles() = 0;
+    virtual bool clusterGroups() = 0;
     virtual int detailLevel() = 0;
     virtual Layout layout() = 0;
 
@@ -180,6 +181,7 @@ class StorableGraphOptions: public GraphOptions
     virtual int maxCallingDepth() { return _maxCallingDepth; }
     virtual bool showSkipped() { return _showSkipped; }
     virtual bool expandCycles() { return _expandCycles; }
+    virtual bool clusterGroups() { return _clusterGroups; }
     virtual int detailLevel() { return _detailLevel; }
     virtual Layout layout() { return _layout; }
 
@@ -190,13 +192,14 @@ class StorableGraphOptions: public GraphOptions
     void setCallLimit(double l) { _callLimit = l; }
     void setShowSkipped(bool b) { _showSkipped = b; }
     void setExpandCycles(bool b) { _expandCycles = b; }
+    void setClusterGroups(bool b) { _clusterGroups = b; }
     void setDetailLevel(int l) { _detailLevel = l; }
     void setLayout(Layout l) { _layout = l; }
 
  protected:
     double _funcLimit, _callLimit;
     int _maxCallerDepth, _maxCallingDepth;
-    bool _showSkipped, _expandCycles;
+    bool _showSkipped, _expandCycles, _clusterGroups;
     int _detailLevel;
     Layout _layout;
 };
@@ -212,11 +215,11 @@ class GraphExporter: public StorableGraphOptions
 public:
   GraphExporter();
   GraphExporter(TraceData*, TraceFunction*, TraceCostType*,
-                QString filename = QString::null);
+		TraceItem::CostType, QString filename = QString::null);
   virtual ~GraphExporter();
 
   void reset(TraceData*, TraceItem*, TraceCostType*,
-             QString filename = QString::null);
+	     TraceItem::CostType, QString filename = QString::null);
 
   QString filename() { return _dotName; }
 
@@ -252,6 +255,7 @@ private:
   QString _dotName;
   TraceItem* _item;
   TraceCostType* _costType;
+  TraceItem::CostType _groupType;
   KTempFile* _tmpFile;
   double _realFuncLimit, _realCallLimit;
   int _maxDepth;

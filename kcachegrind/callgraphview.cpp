@@ -63,6 +63,7 @@
 #define DEFAULT_MAXCALLING   -1
 #define DEFAULT_SHOWSKIPPED  false
 #define DEFAULT_EXPANDCYCLES false
+#define DEFAULT_CLUSTERGROUPS false
 #define DEFAULT_DETAILLEVEL  1
 #define DEFAULT_LAYOUT       GraphOptions::TopDown
 #define DEFAULT_ZOOMPOS      Auto
@@ -411,17 +412,17 @@ GraphExporter::GraphExporter()
     _go = this;
     _tmpFile = 0;
     _item = 0;
-    reset(0, 0, 0, QString::null);
+    reset(0, 0, 0, TraceItem::NoCostType, QString::null);
 }
 
 
 GraphExporter::GraphExporter(TraceData* d, TraceFunction* f, TraceCostType* ct,
-                             QString filename)
+                             TraceItem::CostType gt, QString filename)
 {
     _go = this;
     _tmpFile = 0;
     _item = 0;
-    reset(d, f, ct, filename);
+    reset(d, f, ct, gt, filename);
 }
 
 
@@ -437,7 +438,7 @@ GraphExporter::~GraphExporter()
 
 
 void GraphExporter::reset(TraceData*, TraceItem* i, TraceCostType* ct,
-                          QString filename)
+                          TraceItem::CostType gt, QString filename)
 {
   _graphCreated = false;
   _nodeMap.clear();
@@ -461,6 +462,7 @@ void GraphExporter::reset(TraceData*, TraceItem* i, TraceCostType* ct,
 
   _item = i;
   _costType = ct;
+  _groupType = gt;
   if (!i) return;
 
   if (filename.isEmpty()) {
@@ -580,6 +582,9 @@ void GraphExporter::writeDot()
     *stream << QString("  overlap=false;\n  splines=true;\n");
   }
 
+  // for clustering
+  QMap<TraceCostItem*,QPtrList<GraphNode> > nLists;
+
   GraphNodeMap::Iterator nit;
   for ( nit = _nodeMap.begin();
         nit != _nodeMap.end(); ++nit ) {
@@ -587,21 +592,58 @@ void GraphExporter::writeDot()
 
     if (n.cum <= _realFuncLimit) continue;
 
-    QString abr = n.function()->prettyName();
-    if ((int)abr.length() > Configuration::maxSymbolLength())
-      abr = abr.left(Configuration::maxSymbolLength()) + "...";
-
-    *stream << QString("  F%1 [").arg((int)n.function(), 0, 16);
-    if (_useBox) {
-      // make label 3 lines for CallGraphView
-      *stream << QString("shape=box,label=\"** %1 **\\n**\\n%2\"];\n")
-        .arg(abr)
-        .arg(SubCost(n.cum).pretty());
+    // for clustering: get cost item group of function
+    TraceCostItem* g;
+    TraceFunction* f = n.function();
+    switch(_groupType) {
+    case TraceItem::Object: g = f->object(); break;
+    case TraceItem::Class:  g = f->cls(); break;
+    case TraceItem::File:   g = f->file(); break;
+    case TraceItem::FunctionCycle: g = f->cycle();  break;
+    default: g = 0; break;
     }
-    else
-      *stream << QString("label=\"%1\\n%2\"];\n")
-        .arg(abr)
-        .arg(SubCost(n.cum).pretty());
+    nLists[g].append(&n);
+  }
+
+  QMap<TraceCostItem*,QPtrList<GraphNode> >::Iterator lit;
+  int cluster = 0;
+  for ( lit = nLists.begin();
+        lit != nLists.end(); ++lit, cluster++ ) {
+    QPtrList<GraphNode>& l = lit.data();
+    TraceCostItem* i = lit.key();
+
+    if (_go->clusterGroups() && i) {
+      QString iabr = i->prettyName();
+      if ((int)iabr.length() > Configuration::maxSymbolLength())
+	iabr = iabr.left(Configuration::maxSymbolLength()) + "...";
+
+      *stream << QString("subgraph \"cluster%1\" { label=\"%2\";\n")
+	.arg(cluster).arg(iabr);
+    }
+
+    GraphNode* np;
+    for(np = l.first(); np; np = l.next() ) {
+      TraceFunction* f = np->function();
+
+      QString abr = f->prettyName();
+      if ((int)abr.length() > Configuration::maxSymbolLength())
+	abr = abr.left(Configuration::maxSymbolLength()) + "...";
+      
+      *stream << QString("  F%1 [").arg((int)f, 0, 16);
+      if (_useBox) {
+	// make label 3 lines for CallGraphView
+	*stream << QString("shape=box,label=\"** %1 **\\n**\\n%2\"];\n")
+	  .arg(abr)
+	  .arg(SubCost(np->cum).pretty());
+      }
+      else
+	*stream << QString("label=\"%1\\n%2\"];\n")
+	  .arg(abr)
+	  .arg(SubCost(np->cum).pretty());
+    }
+
+    if (_go->clusterGroups() && i)
+      *stream << QString("}\n");
   }
 
   GraphEdgeMap::Iterator eit;
@@ -1664,6 +1706,11 @@ void CallGraphView::doUpdate(int changeType)
   if (changeType == groupTypeChanged) {
     if (!_canvas) return;
 
+    if (_clusterGroups) { 
+      refresh(); 
+      return;
+    }
+
     QCanvasItemList l = _canvas->allItems();
     QCanvasItemList::iterator it;
     for (it = l.begin();it != l.end(); ++it)
@@ -1676,7 +1723,7 @@ void CallGraphView::doUpdate(int changeType)
 
   if (changeType & dataChanged) {
       // invalidate old selection and graph part
-      _exporter.reset(_data, _activeItem, _costType);
+    _exporter.reset(_data, _activeItem, _costType, _groupType);
       _selectedNode = 0;
       _selectedEdge = 0;
   }
@@ -1735,7 +1782,7 @@ void CallGraphView::refresh()
 
   _selectedNode = 0;
   _selectedEdge = 0;
-  _exporter.reset(_data, _activeItem, _costType);
+  _exporter.reset(_data, _activeItem, _costType, _groupType);
   _exporter.writeDot();
 
   // the dot file name can not be influenced by the user, so there's
@@ -2381,6 +2428,8 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   gpopup.setItemChecked(130,_showSkipped);
   gpopup.insertItem(i18n("Inner-cycle Calls"), 131);
   gpopup.setItemChecked(131,_expandCycles);
+  gpopup.insertItem(i18n("Cluster Groups"), 132);
+  gpopup.setItemChecked(132,_clusterGroups);
 
   QPopupMenu vpopup;
   vpopup.setCheckable(true);
@@ -2427,7 +2476,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
 	  if (!f) break;
 
 	  QString n = QString("callgraph");
-	  GraphExporter ge(data(), f, costType(),
+	  GraphExporter ge(data(), f, costType(), groupType(),
 			   QString("%1.dot").arg(n));
 	  ge.setGraphOptions(this);
 	  ge.writeDot();
@@ -2480,6 +2529,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
 
   case 130: _showSkipped = !_showSkipped; break;
   case 131: _expandCycles = !_expandCycles; break;
+  case 132: _clusterGroups = !_clusterGroups; break;
 
   case 140: _detailLevel = 0; break;
   case 141: _detailLevel = 1; break;
@@ -2542,6 +2592,8 @@ void CallGraphView::readViewConfig(KConfig* c,
     _callLimit       = g->readDoubleNumEntry("CallLimit", DEFAULT_CALLLIMIT);
     _showSkipped     = g->readBoolEntry("ShowSkipped", DEFAULT_SHOWSKIPPED);
     _expandCycles    = g->readBoolEntry("ExpandCycles", DEFAULT_EXPANDCYCLES);
+    _clusterGroups   = g->readBoolEntry("ClusterGroups",
+					DEFAULT_CLUSTERGROUPS);
     _detailLevel     = g->readNumEntry("DetailLevel", DEFAULT_DETAILLEVEL);
     _layout          = GraphOptions::layout(g->readEntry("Layout",
 					   layoutString(DEFAULT_LAYOUT)));
@@ -2562,6 +2614,8 @@ void CallGraphView::saveViewConfig(KConfig* c,
     writeConfigEntry(&g, "CallLimit", _callLimit, DEFAULT_CALLLIMIT);
     writeConfigEntry(&g, "ShowSkipped", _showSkipped, DEFAULT_SHOWSKIPPED);
     writeConfigEntry(&g, "ExpandCycles", _expandCycles, DEFAULT_EXPANDCYCLES);
+    writeConfigEntry(&g, "ClusterGroups", _clusterGroups,
+		     DEFAULT_CLUSTERGROUPS);
     writeConfigEntry(&g, "DetailLevel", _detailLevel, DEFAULT_DETAILLEVEL);
     writeConfigEntry(&g, "Layout",
 		     layoutString(_layout), layoutString(DEFAULT_LAYOUT).utf8().data());

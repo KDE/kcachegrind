@@ -544,28 +544,27 @@ void TopLevel::createMiscActions()
                                this, SLOT( forceTrace() ),
                                actionCollection(), "dump" );
   hint = i18n("<b>Force Dump</b>"
-              "<p>This forces a dump for a Cachegrind profile run "
+              "<p>This forces a dump for a Callgrind profile run "
               "in the current directory. This action is checked while "
               "KCachegrind looks for the dump. If the dump is "
               "finished, it automatically reloads the current trace. "
-              "If this is the one from the running Cachegrind, the new "
+              "If this is the one from the running Callgrind, the new "
               "created trace part will be loaded, too.</p>"
-              "<p>Force dump creates a file 'cachegrind.cmd', and "
+              "<p>Force dump creates a file 'callgrind.cmd', and "
               "checks every second for its existence. A running "
-              "Cachegrind will detect this file, dump a trace part, "
-              "and delete 'cachegrind.cmd'. "
+              "Callgrind will detect this file, dump a trace part, "
+              "and delete 'callgrind.cmd'. "
               "The deletion is detected by KCachegrind, "
-              "and it does a Reload. If there's <em>no</em> Cachegrind "
+              "and it does a Reload. If there's <em>no</em> Callgrind "
               "running, press 'Force Dump' again to cancel the dump "
-              "request. This deletes 'cachegrind.cmd' itself and "
+              "request. This deletes 'callgrind.cmd' itself and "
               "stops polling for a new dump.</p>"
-              "<p>Note: A Cachegrind run <em>only</em> detects "
-              "existence of 'cachegrind.cmd' when actively running "
+              "<p>Note: A Callgrind run <em>only</em> detects "
+              "existence of 'callgrind.cmd' when actively running "
               "a few milliseconds, i.e. "
               "<em>not</em> sleeping. Tip: For a profiled GUI program, "
-              "you can awake Cachegrind e.g. by resizing a window "
-              "of the program.</p>"
-              "<p>Note: You need the call-tree version for Cachegrind!</p>");
+              "you can awake Callgrind e.g. by resizing a window "
+              "of the program.</p>");
   _taDump->setWhatsThis( hint );
 
   action = KStdAction::open(this, SLOT(loadTrace()), actionCollection());
@@ -1032,9 +1031,9 @@ void TopLevel::newWindow()
 void TopLevel::loadTrace()
 {
     KURL url = KFileDialog::getOpenURL(":",
-                                       i18n("cachegrind.out* callgrind.out*|Cachegrind Profile Data\n*|All Files"),
+                                       i18n("cachegrind.out* callgrind.out*|Callgrind Profile Data\n*|All Files"),
                                        this,
-                                       i18n("Select Cachegrind Profile Data"));
+                                       i18n("Select Callgrind Profile Data"));
     loadTrace(url);
 }
 
@@ -1081,9 +1080,9 @@ void TopLevel::loadTrace(QString file)
 void TopLevel::addTrace()
 {
     KURL url = KFileDialog::getOpenURL(QString::null,
-                                       i18n("cachegrind.out* callgrind.out*|Cachegrind Profile Data\n*|All Files"),
+                                       i18n("cachegrind.out* callgrind.out*|Callgrind Profile Data\n*|All Files"),
                                        this,
-                                       i18n("Add Cachegrind Profile Data"));
+                                       i18n("Add Callgrind Profile Data"));
     addTrace(url);
 }
 
@@ -1161,7 +1160,7 @@ void TopLevel::exportGraph()
   if (!_data || !_function) return;
 
   QString n = QString("callgraph.dot");
-  GraphExporter ge(_data, _function, _costType, n);
+  GraphExporter ge(_data, _function, _costType, _groupType, n);
   ge.writeDot();
 
   QString cmd = QString("(dot %1 -Tps > %2.ps; kghostview %3.ps)&")
@@ -1963,19 +1962,25 @@ void TopLevel::updateStatusBar()
     status += i18n("Total %1 Cost: %2")
       .arg(_costType->longName())
       .arg(_data->prettySubCost(_costType));
+
+    /* this gets too long...
     if (_costType2 && (_costType2 != _costType))
       status += i18n(", %1 Cost: %2")
 	.arg(_costType2->longName())
 	.arg(_data->prettySubCost(_costType2));
+    */
   }
   else
     status += i18n("No event type selected");
 
+  /* Not working... should give group of selected function
+  
   if (_groupType != TraceItem::Function) {
     status += QString(" - %1 '%2'")
               .arg(TraceItem::i18nTypeName(_groupType))
               .arg(_group ? _group->prettyName() : i18n("(None)"));
   }
+  */
 
   _statusLabel->setText(status);
 }
@@ -2171,7 +2176,8 @@ void TopLevel::forceTrace()
 {
 //  qDebug("forceTrace");
 
-  QFile cmd("cachegrind.cmd");
+  // Needs Callgrind now...
+  QFile cmd("callgrind.cmd");
   if (!cmd.exists()) {
     cmd.open(IO_WriteOnly);
     cmd.writeBlock("DUMP\n", 5);
@@ -2190,7 +2196,7 @@ void TopLevel::forceTraceReload()
 {
 //  qDebug("forceTraceReload");
 
-  QFile cmd("cachegrind.cmd");
+  QFile cmd("callgrind.cmd");
   if (cmd.exists()) {
     if (_taDump->isChecked())
       QTimer::singleShot( 1000, this, SLOT(forceTraceReload()) );
