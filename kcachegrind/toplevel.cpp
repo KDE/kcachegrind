@@ -1451,7 +1451,7 @@ void TopLevel::restoreTraceSettings()
 void TopLevel::updateStatusBar()
 {
   if (!_data || _data->parts().count()==0) {
-    _statusLabel->setText(i18n("No Trace File loaded."));
+    _statusLabel->setText(i18n("No trace file loaded."));
     return;
   }
 
