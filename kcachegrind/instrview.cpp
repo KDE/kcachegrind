@@ -610,7 +610,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     QString popencmd, objfile;
     objfile = function->object()->name();
     objfile = objfile.replace(QRegExp("[\"']"), ""); // security...
-    popencmd = QString("objdump -C -D "
+    popencmd = QString("objdump -C -d "
                        "--start-address=0x%1 --stop-address=0x%2 \"%3\"")
 	.arg(dumpStartAddr.toString()).arg(dumpEndAddr.toString())
 	.arg(objfile);
@@ -656,14 +656,17 @@ bool InstrView::fillInstrRange(TraceFunction* function,
         // read next objdump line
         while (1) {
           readBytes=file.readLine(buf, BUF_SIZE);
-          if (readBytes<=0) break;
+          if (readBytes<=0) { 
+	    objAddr = 0; 
+	    break;
+	  }
 
           objdumpLineno++;
           if (readBytes == BUF_SIZE) {
 	    qDebug("ERROR: Line %d of '%s' too long\n",
                    objdumpLineno, popencmd.ascii());
           }
-          if (buf[readBytes-1] == '\n')
+          else if ((readBytes>0) && (buf[readBytes-1] == '\n'))
 	    buf[readBytes-1] = 0;
 
           objAddr = parseAddr(buf);
