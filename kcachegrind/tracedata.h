@@ -359,7 +359,7 @@ public:
    * The maximal number of subcosts a TraceCost can have.
    */
   static const int MaxRealIndex;
-#define MaxRealIndexValue 10
+#define MaxRealIndexValue 13
   static const int InvalidIndex;
 
 

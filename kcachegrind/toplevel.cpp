@@ -1380,7 +1380,7 @@ bool TopLevel::setFunction(TraceFunction* f)
  * Delayed versions.
  * We always have a pair of slots: One receiver to start the
  * delay with a singleShot Timer. It stores the parameter into a
- * temporary variable. And on parameterless slot for
+ * temporary variable. And one parameterless slot for
  * forwarding, using this temporary.
  */
 void TopLevel::setCostTypeDelayed(TraceCostType* ct)
@@ -1475,6 +1475,8 @@ void TopLevel::setTraceItemDelayed(TraceItem* i)
   if (_traceItemDelayed == i) return;
   _traceItemDelayed = i;
   _lastSender = sender();
+
+  kdDebug() << "Selected " << (i ? i->prettyName() : "(none)") << endl;
 
 #if TRACE_UPDATES
   qDebug("TopLevel::setTraceItemDelayed(%s), sender %s",

@@ -25,6 +25,7 @@
 #include <qwhatsthis.h>
 #include <qpopupmenu.h>
 #include <klocale.h>
+#include <kdebug.h>
 
 #include "configuration.h"
 #include "sourceitem.h"
@@ -466,8 +467,8 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 {
   if (!sf) return;
 
-  qDebug("Selected Item %s", 
-	 _selectedItem ? _selectedItem->name().ascii() : "(none)");
+  if (0) qDebug("Selected Item %s", 
+		_selectedItem ? _selectedItem->name().ascii() : "(none)");
 
   TraceLineMap::Iterator lineIt, lineItEnd;
   int nextCostLineno = 0, lastCostLineno = 0;
@@ -496,6 +497,14 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 	  }
 
 	  nextCostLineno     = (lineIt == lineItEnd) ? 0 : (*lineIt).lineno();
+	  if (nextCostLineno<0) {
+	    kdError() << "SourceView::fillSourceFile: Negative line number "
+		      << nextCostLineno << endl
+		      << "  Function '" << sf->function()->name() << "'" << endl
+		      << "  File '" << sf->file()->name() << "'" << endl;
+	    nextCostLineno = 0;
+	  }
+	    
       }
 
       if (nextCostLineno == 0) {
@@ -628,7 +637,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   TraceLine* currLine;
   SourceItem *si, *si2, *item = 0, *first = 0, *selected = 0;
   QFile file(filename);
-  file.open(IO_ReadOnly);
+  if (!file.open(IO_ReadOnly)) return;
   while (1) {
     readBytes=file.readLine(buf, sizeof( buf ));
     if (readBytes<=0) {

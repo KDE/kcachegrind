@@ -283,6 +283,10 @@ bool CachegrindLoader::parsePosition(FixString& line,
       else if (c == '-') {
 	line.stripFirst(c);
 	line.stripUInt(diff, false);
+	if (currentPos.fromLine < diff) {
+	  kdWarning() << "CachegrindLoader::parsePosition: negative line number ?!" << endl;
+	  diff = currentPos.fromLine < diff;
+	}
 	newPos.fromLine = currentPos.fromLine - diff;
 	newPos.toLine = newPos.fromLine;
       }
@@ -1089,11 +1093,12 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
       if (hasLineInfo) {
 	  if (!currentLine ||
 	      (currentLine->lineno() != currentPos.fromLine)) {
-	      currentLine = currentFunction->line(currentFile,
-						  currentPos.fromLine,
-						  true);
-	      currentPartLine = currentLine->partLine(part,
-						      currentPartFunction);
+	    
+	    currentLine = currentFunction->line(currentFile,
+						currentPos.fromLine,
+						true);
+	    currentPartLine = currentLine->partLine(part,
+						    currentPartFunction);
 	  }
 	  if (hasAddrInfo && currentInstr)
 	      currentInstr->setLine(currentLine);

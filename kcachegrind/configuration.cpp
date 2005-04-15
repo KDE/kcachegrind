@@ -403,7 +403,7 @@ QStringList Configuration::sourceDirs(TraceData* data, TraceObject* o)
     for(unsigned int i=0;i<ol2->count();i++)
       l.prepend( (*ol2)[i] );
   }
-  kdDebug() << "Configuration::sourceDirs: " << l.join(":") << endl;
+  if (0) kdDebug() << "Configuration::sourceDirs: " << l.join(":") << endl;
 
   return l;
 }
