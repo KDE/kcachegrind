@@ -305,11 +305,11 @@ TabView::TabView(TraceItemView* parentView,
 				  "CalleeView")));
   addBottom( addTab( i18n("All Callees"),
 		     new CoverageView(false, this, _bottomTW,
-				      "AllCallView")));
+				      "AllCalleeView")));
 
   addBottom( addTab( i18n("Callee Map"),
 		     new CallMapView(false, this, _topTW,
-				     "CallMapView")));
+				     "CalleeMapView")));
   addBottom( addTab( i18n("Assembler"),
 		     new InstrView(this, _bottomTW,
 				   "InstrView")));
@@ -722,8 +722,8 @@ void TabView::readViewConfig(KConfig* c,
     _leftSplitter->setSizes(g->readIntListEntry("LeftSizes"));
     _bottomSplitter->setSizes(g->readIntListEntry("BottomSizes"));
 
-    QString activeT = g->readEntry("ActiveTop", "CallView");
-    QString activeB = g->readEntry("ActiveBottom", "CallerView");
+    QString activeT = g->readEntry("ActiveTop", "CallerView");
+    QString activeB = g->readEntry("ActiveBottom", "CalleeView");
     QString activeL = g->readEntry("ActiveLeft", "");
     QString activeR = g->readEntry("ActiveRight", "");
 
@@ -736,9 +736,9 @@ void TabView::readViewConfig(KConfig* c,
         rightTabs.isEmpty() && leftTabs.isEmpty()) {
       // no tabs visible ?! Reset to default
       topTabs << "CostTypeView" << "CallerView" << "AllCallerView"
-              << "CallMapView" << "SourceView";
-      bottomTabs << "PartView" << "CallView" << "CallGraphView"
-                 << "AllCallView" << "CallerMapView" << "InstrView";
+              << "CalleeMapView" << "SourceView";
+      bottomTabs << "PartView" << "CalleeView" << "CallGraphView"
+                 << "AllCalleeView" << "CallerMapView" << "InstrView";
     }
 
     TraceItemView *activeTop = 0, *activeBottom = 0;
