@@ -22,8 +22,8 @@
 
 #include <qdir.h>
 #include <qfile.h>
-#include <qwhatsthis.h>
-#include <qpopupmenu.h>
+#include <q3whatsthis.h>
+#include <q3popupmenu.h>
 #include <klocale.h>
 #include <kdebug.h>
 
@@ -39,7 +39,7 @@
 
 SourceView::SourceView(TraceItemView* parentView,
                        QWidget* parent, const char* name)
-  : QListView(parent, name), TraceItemView(parentView)
+  : Q3ListView(parent, name), TraceItemView(parentView)
 {
   _inSelectionUpdate = false;
 
@@ -57,30 +57,30 @@ SourceView::SourceView(TraceItemView* parentView,
   setColumnAlignment(0, Qt::AlignRight);
   setColumnAlignment(1, Qt::AlignRight);
   setColumnAlignment(2, Qt::AlignRight);
-  setResizeMode(QListView::LastColumn);
+  setResizeMode(Q3ListView::LastColumn);
 
   connect(this,
-          SIGNAL(contextMenuRequested(QListViewItem*, const QPoint &, int)),
-          SLOT(context(QListViewItem*, const QPoint &, int)));
+          SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
+          SLOT(context(Q3ListViewItem*, const QPoint &, int)));
 
   connect(this,
-          SIGNAL(selectionChanged(QListViewItem*)),
-          SLOT(selectedSlot(QListViewItem*)));
+          SIGNAL(selectionChanged(Q3ListViewItem*)),
+          SLOT(selectedSlot(Q3ListViewItem*)));
 
   connect(this,
-          SIGNAL(doubleClicked(QListViewItem*)),
-          SLOT(activatedSlot(QListViewItem*)));
+          SIGNAL(doubleClicked(Q3ListViewItem*)),
+          SLOT(activatedSlot(Q3ListViewItem*)));
 
   connect(this,
-          SIGNAL(returnPressed(QListViewItem*)),
-          SLOT(activatedSlot(QListViewItem*)));
+          SIGNAL(returnPressed(Q3ListViewItem*)),
+          SLOT(activatedSlot(Q3ListViewItem*)));
 
-  QWhatsThis::add( this, whatsThis());
+  Q3WhatsThis::add( this, whatsThis());
 }
 
 void SourceView::paintEmptyArea( QPainter * p, const QRect & r)
 {
-  QListView::paintEmptyArea(p, r);
+  Q3ListView::paintEmptyArea(p, r);
 }
 
 
@@ -99,9 +99,9 @@ QString SourceView::whatsThis() const
 		 "make the destination function current.</p>");
 }
 
-void SourceView::context(QListViewItem* i, const QPoint & p, int c)
+void SourceView::context(Q3ListViewItem* i, const QPoint & p, int c)
 {
-  QPopupMenu popup;
+  Q3PopupMenu popup;
 
   // Menu entry:
   TraceLineCall* lc = i ? ((SourceItem*) i)->lineCall() : 0;
@@ -135,7 +135,7 @@ void SourceView::context(QListViewItem* i, const QPoint & p, int c)
 }
 
 
-void SourceView::selectedSlot(QListViewItem * i)
+void SourceView::selectedSlot(Q3ListViewItem * i)
 {
   if (!i) return;
   // programatically selected items are not signalled
@@ -167,7 +167,7 @@ void SourceView::selectedSlot(QListViewItem * i)
   }
 }
 
-void SourceView::activatedSlot(QListViewItem * i)
+void SourceView::activatedSlot(Q3ListViewItem * i)
 {
   if (!i) return;
   TraceLineCall* lc = ((SourceItem*) i)->lineCall();
@@ -230,14 +230,14 @@ void SourceView::doUpdate(int changeType)
       if (_selectedItem->type() == TraceItem::Instr)
 	  sLine = ((TraceInstr*)_selectedItem)->line();
 
-      SourceItem* si = (SourceItem*)QListView::selectedItem();
+      SourceItem* si = (SourceItem*)Q3ListView::selectedItem();
       if (si) {
 	  if (si->line() == sLine) return;
 	  if (si->lineCall() &&
 	      (si->lineCall()->call()->called() == _selectedItem)) return;
       }
 
-      QListViewItem *item, *item2;
+      Q3ListViewItem *item, *item2;
       for (item = firstChild();item;item = item->nextSibling()) {
 	  si = (SourceItem*)item;
 	  if (si->line() == sLine) {
@@ -265,7 +265,7 @@ void SourceView::doUpdate(int changeType)
   }
 
   if (changeType == groupTypeChanged) {
-    QListViewItem *item, *item2;
+    Q3ListViewItem *item, *item2;
     for (item = firstChild();item;item = item->nextSibling())
       for (item2 = item->firstChild();item2;item2 = item2->nextSibling())
         ((SourceItem*)item2)->updateGroup();
@@ -309,7 +309,7 @@ void SourceView::refresh()
   if (!f) return;
 
   // Allow resizing of column 2
-  setColumnWidthMode(2, QListView::Maximum);
+  setColumnWidthMode(2, Q3ListView::Maximum);
 
   TraceFunctionSource* mainSF = f->sourceFile();
 
@@ -332,7 +332,7 @@ void SourceView::refresh()
       fillSourceFile(sf, fileno);
 
   if (!_costType2) {
-    setColumnWidthMode(2, QListView::Manual);
+    setColumnWidthMode(2, Q3ListView::Manual);
     setColumnWidth(2, 0);
   }
 }
@@ -637,7 +637,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   TraceLine* currLine;
   SourceItem *si, *si2, *item = 0, *first = 0, *selected = 0;
   QFile file(filename);
-  if (!file.open(IO_ReadOnly)) return;
+  if (!file.open(QIODevice::ReadOnly)) return;
   while (1) {
     readBytes=file.readLine(buf, sizeof( buf ));
     if (readBytes<=0) {
@@ -755,7 +755,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
   // for arrows: go down the list according to list sorting
   sort();
-  QListViewItem *item1, *item2;
+  Q3ListViewItem *item1, *item2;
   for (item1=firstChild();item1;item1 = item1->nextSibling()) {
       si = (SourceItem*)item1;
       updateJumpArray(si->lineno(), si, true, false);
@@ -781,7 +781,7 @@ void SourceView::updateSourceItems()
     setColumnWidth(1, 50);
     setColumnWidth(2, _costType2 ? 50:0);
     // Allow resizing of column 2
-    setColumnWidthMode(2, QListView::Maximum);
+    setColumnWidthMode(2, Q3ListView::Maximum);
     
     if (_costType)
       setColumnText(1, _costType->name());
@@ -789,7 +789,7 @@ void SourceView::updateSourceItems()
       setColumnText(2, _costType2->name());
 
     SourceItem* si;
-    QListViewItem* item  = firstChild();
+    Q3ListViewItem* item  = firstChild();
     for (;item;item = item->nextSibling()) {
 	si = (SourceItem*)item;
 	TraceLine* l = si->line();
@@ -797,7 +797,7 @@ void SourceView::updateSourceItems()
 
 	si->updateCost();
 
-	QListViewItem *next, *i  = si->firstChild();
+	Q3ListViewItem *next, *i  = si->firstChild();
 	for (;i;i = next) {
 	    next = i->nextSibling();
 	    ((SourceItem*)i)->updateCost();
@@ -805,7 +805,7 @@ void SourceView::updateSourceItems()
     }
 
     if (!_costType2) {
-      setColumnWidthMode(2, QListView::Manual);
+      setColumnWidthMode(2, Q3ListView::Manual);
       setColumnWidth(2, 0);
     }
 }

@@ -21,12 +21,12 @@
  */
 
 #include <qtimer.h>
-#include <qlistview.h>
+#include <q3listview.h>
 #include <qlabel.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qlineedit.h>
-#include <qpopupmenu.h>
+#include <q3popupmenu.h>
 #include <qlayout.h>
 
 #include <klocale.h>
@@ -273,9 +273,9 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
 {
   if (!i) return;
 
-  QPopupMenu popup;
-  QPopupMenu ppopup;
-  QPopupMenu vpopup;
+  Q3PopupMenu popup;
+  Q3PopupMenu ppopup;
+  Q3PopupMenu vpopup;
 
   QString str;
   TreeMapItem* s = 0;

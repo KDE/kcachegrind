@@ -20,8 +20,8 @@
  * Coverage Views
  */
 
-#include <qwhatsthis.h>
-#include <qpopupmenu.h>
+#include <q3whatsthis.h>
+#include <q3popupmenu.h>
 #include <klocale.h>
 
 #include "configuration.h"
@@ -38,7 +38,7 @@
 
 CoverageView::CoverageView(bool showCallers, TraceItemView* parentView,
 			   QWidget* parent, const char* name)
-  : QListView(parent, name), TraceItemView(parentView)
+  : Q3ListView(parent, name), TraceItemView(parentView)
 {
     _showCallers = showCallers;
 
@@ -62,26 +62,26 @@ CoverageView::CoverageView(bool showCallers, TraceItemView* parentView,
     setColumnAlignment(1, Qt::AlignRight);
     setColumnAlignment(2, Qt::AlignRight);
     setAllColumnsShowFocus(true);
-    setResizeMode(QListView::LastColumn);
+    setResizeMode(Q3ListView::LastColumn);
     setMinimumHeight(50);
 
     connect( this,
-	     SIGNAL( selectionChanged(QListViewItem*) ),
-	     SLOT( selectedSlot(QListViewItem*) ) );
+	     SIGNAL( selectionChanged(Q3ListViewItem*) ),
+	     SLOT( selectedSlot(Q3ListViewItem*) ) );
 
     connect( this,
-	     SIGNAL(contextMenuRequested(QListViewItem*, const QPoint &, int)),
-	     SLOT(context(QListViewItem*, const QPoint &, int)));
+	     SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
+	     SLOT(context(Q3ListViewItem*, const QPoint &, int)));
 
     connect(this,
-	    SIGNAL(doubleClicked(QListViewItem*)),
-	    SLOT(activatedSlot(QListViewItem*)));
+	    SIGNAL(doubleClicked(Q3ListViewItem*)),
+	    SLOT(activatedSlot(Q3ListViewItem*)));
 
     connect(this,
-	    SIGNAL(returnPressed(QListViewItem*)),
-	    SLOT(activatedSlot(QListViewItem*)));
+	    SIGNAL(returnPressed(Q3ListViewItem*)),
+	    SLOT(activatedSlot(Q3ListViewItem*)));
 
-    QWhatsThis::add( this, whatsThis() );
+    Q3WhatsThis::add( this, whatsThis() );
 }
 
 QString CoverageView::whatsThis() const
@@ -148,9 +148,9 @@ QString CoverageView::whatsThis() const
 	      "function of the other panel is changed instead.</p>");
 }
 
-void CoverageView::context(QListViewItem* i, const QPoint & p, int c)
+void CoverageView::context(Q3ListViewItem* i, const QPoint & p, int c)
 {
-  QPopupMenu popup;
+  Q3PopupMenu popup;
 
   TraceFunction* f = 0;
   if (i) {
@@ -177,7 +177,7 @@ void CoverageView::context(QListViewItem* i, const QPoint & p, int c)
   if (r == 93) activated(f);
 }
 
-void CoverageView::selectedSlot(QListViewItem * i)
+void CoverageView::selectedSlot(Q3ListViewItem * i)
 {
   TraceFunction* f = 0;
   if (i) {
@@ -192,7 +192,7 @@ void CoverageView::selectedSlot(QListViewItem * i)
   }
 }
 
-void CoverageView::activatedSlot(QListViewItem * i)
+void CoverageView::activatedSlot(Q3ListViewItem * i)
 {
   TraceFunction* f = 0;
   if (i) {
@@ -229,7 +229,7 @@ void CoverageView::doUpdate(int changeType)
 	}
 
 	TraceFunction* f = 0;
-	QListViewItem* i = QListView::selectedItem();
+	Q3ListViewItem* i = Q3ListView::selectedItem();
 	if (i) {
 	    f = _showCallers ?
 		((CallerCoverageItem*)i)->function() :
@@ -237,7 +237,7 @@ void CoverageView::doUpdate(int changeType)
 	}
 	if (f == _selectedItem) return;
 
-	QListViewItem *item;
+	Q3ListViewItem *item;
 	for (item = firstChild();item;item = item->nextSibling()) {
 	    f = _showCallers ?
 		((CallerCoverageItem*)item)->function() :
@@ -252,7 +252,7 @@ void CoverageView::doUpdate(int changeType)
     }
 
     if (changeType == groupTypeChanged) {
-	QListViewItem *item;
+	Q3ListViewItem *item;
 	for (item = firstChild();item;item = item->nextSibling()) {
 	    if (_showCallers)
 		((CallerCoverageItem*)item)->setGroupType(_groupType);

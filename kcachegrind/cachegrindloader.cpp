@@ -19,7 +19,7 @@
 #include <errno.h>
 
 #include <qfile.h>
-#include <qcstring.h>
+#include <q3cstring.h>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -126,9 +126,9 @@ private:
   TraceFunction* compressedFunction(const QString& name,
                                     TraceFile*, TraceObject*);
 
-  QPtrVector<TraceObject> _objectVector;
-  QPtrVector<TraceFile> _fileVector;
-  QPtrVector<TraceFunction> _functionVector;
+  Q3PtrVector<TraceObject> _objectVector;
+  Q3PtrVector<TraceFile> _fileVector;
+  Q3PtrVector<TraceFunction> _functionVector;
 };
 
 
@@ -154,7 +154,7 @@ bool CachegrindLoader::canLoadTrace(QFile* file)
   if (!file) return false;
 
   if (!file->isOpen()) {
-    if (!file->open( IO_ReadOnly ) ) {
+    if (!file->open( QIODevice::ReadOnly ) ) {
       kdDebug() << QFile::encodeName(_filename) << ": "
 		<< strerror( errno ) << endl;
       return false;
@@ -169,7 +169,7 @@ bool CachegrindLoader::canLoadTrace(QFile* file)
   int read = file->readBlock(buf,2047);
   buf[read] = 0;
 
-  QCString s;
+  Q3CString s;
   s.setRawData(buf, read+1);
   int pos = s.find("events:");
   if (pos>0 && buf[pos-1] != '\n') pos = -1;

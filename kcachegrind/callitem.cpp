@@ -34,8 +34,8 @@
 // CallItem
 
 
-CallItem::CallItem(CallView* view, QListView* parent, TraceCall* c)
-    : QListViewItem(parent)
+CallItem::CallItem(CallView* view, Q3ListView* parent, TraceCall* c)
+    : Q3ListViewItem(parent)
 {
   _call = c;
   _view = view;
@@ -155,7 +155,7 @@ void CallItem::updateCost()
 }
 
 
-int CallItem::compare(QListViewItem * i, int col, bool ascending ) const
+int CallItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
 {
   const CallItem* ci1 = this;
   const CallItem* ci2 = (CallItem*) i;
@@ -181,6 +181,6 @@ int CallItem::compare(QListViewItem * i, int col, bool ascending ) const
     if (ci1->_cc > ci2->_cc) return 1;
     return 0;
   }
-  return QListViewItem::compare(i, col, ascending);
+  return Q3ListViewItem::compare(i, col, ascending);
 }
 

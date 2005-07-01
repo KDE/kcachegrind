@@ -21,6 +21,8 @@
  */
 
 #include <qwidget.h>
+//Added by qt3to4:
+#include <Q3PopupMenu>
 #include <kconfig.h>
 #include <klocale.h>
 #include <kdebug.h>
@@ -367,7 +369,7 @@ void TraceItemView::selectedCostType2(TraceItemView*, TraceCostType* t)
       if (_topLevel) _topLevel->setCostType2Delayed(t);
 }
 
-void TraceItemView::activated(TraceItemView*, Direction d)
+void TraceItemView::activated(TraceItemView*, Qt::Orientation d)
 {
   if (_parentView)
       _parentView->activated(this, d);
@@ -424,7 +426,7 @@ void TraceItemView::selectedCostType2(TraceCostType* t)
       if (_topLevel) _topLevel->setCostType2Delayed(t);
 }
 
-void TraceItemView::activated(Direction d)
+void TraceItemView::activated(Qt::Orientation d)
 {
   if (_parentView)
       _parentView->activated(this, d);
@@ -432,12 +434,12 @@ void TraceItemView::activated(Direction d)
       if (_topLevel) _topLevel->setDirectionDelayed(d);
 }
 
-void TraceItemView::addCostMenu(QPopupMenu* p, bool withCost2)
+void TraceItemView::addCostMenu(Q3PopupMenu* p, bool withCost2)
 {
   if (_topLevel) _topLevel->addCostMenu(p, withCost2);
 }
 
-void TraceItemView::addGoMenu(QPopupMenu* p)
+void TraceItemView::addGoMenu(Q3PopupMenu* p)
 {
   if (_topLevel) _topLevel->addGoMenu(p);
 }

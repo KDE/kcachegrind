@@ -26,14 +26,23 @@
 #include <qtooltip.h>
 #include <qfile.h>
 #include <qtextstream.h>
-#include <qwhatsthis.h>
-#include <qcanvas.h>
-#include <qwmatrix.h>
+#include <q3whatsthis.h>
+#include <q3canvas.h>
+#include <qmatrix.h>
 #include <qpair.h>
 #include <qpainter.h>
-#include <qpopupmenu.h>
+#include <q3popupmenu.h>
 #include <qstyle.h>
-#include <qprocess.h>
+#include <q3process.h>
+//Added by qt3to4:
+#include <QResizeEvent>
+#include <QMouseEvent>
+#include <QFocusEvent>
+#include <QKeyEvent>
+#include <QContextMenuEvent>
+#include <Q3PtrList>
+#include <QPixmap>
+#include <Q3PointArray>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -95,8 +104,8 @@ int GraphEdgeList::compareItems(Item item1, Item item2)
 	dx1 -= x; dy1 -= y;
     }
     else {
-	QPointArray a1 = e1->controlPoints();
-	QPointArray a2 = e2->controlPoints();
+	Q3PointArray a1 = e1->controlPoints();
+	Q3PointArray a2 = e2->controlPoints();
 	a1.point(a1.count()-2,&x,&y);
 	a2.point(a2.count()-1,&dx2,&dy2);
 	dx2 -= x; dy2 -= y;
@@ -545,7 +554,7 @@ void GraphExporter::writeDot()
     stream = _tmpFile->textStream();
   else {
     file = new QFile(_dotName);
-    if ( !file->open( IO_WriteOnly ) ) {
+    if ( !file->open( QIODevice::WriteOnly ) ) {
       kdError() << "Can't write dot file '" << _dotName << "'" << endl;
       return;
     }
@@ -584,7 +593,7 @@ void GraphExporter::writeDot()
   }
 
   // for clustering
-  QMap<TraceCostItem*,QPtrList<GraphNode> > nLists;
+  QMap<TraceCostItem*,Q3PtrList<GraphNode> > nLists;
 
   GraphNodeMap::Iterator nit;
   for ( nit = _nodeMap.begin();
@@ -606,11 +615,11 @@ void GraphExporter::writeDot()
     nLists[g].append(&n);
   }
 
-  QMap<TraceCostItem*,QPtrList<GraphNode> >::Iterator lit;
+  QMap<TraceCostItem*,Q3PtrList<GraphNode> >::Iterator lit;
   int cluster = 0;
   for ( lit = nLists.begin();
         lit != nLists.end(); ++lit, cluster++ ) {
-    QPtrList<GraphNode>& l = lit.data();
+    Q3PtrList<GraphNode>& l = lit.data();
     TraceCostItem* i = lit.key();
 
     if (_go->clusterGroups() && i) {
@@ -952,7 +961,7 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
 // PannerView
 //
 PannerView::PannerView(QWidget * parent, const char * name)
-  : QCanvasView(parent, name)
+  : Q3CanvasView(parent, name)
 {
   _movingZoomRect = false;
 
@@ -974,7 +983,7 @@ void PannerView::drawContents(QPainter * p, int clipx, int clipy, int clipw, int
   // save/restore around QCanvasView::drawContents seems to be needed
   // for QT 3.0 to get the red rectangle drawn correct
   p->save();
-  QCanvasView::drawContents(p,clipx,clipy,clipw,cliph);
+  Q3CanvasView::drawContents(p,clipx,clipy,clipw,cliph);
   p->restore();
   if (_zoomRect.isValid()) {
     p->setPen(red);
@@ -1017,8 +1026,8 @@ void PannerView::contentsMouseReleaseEvent(QMouseEvent*)
 //
 
 CanvasNode::CanvasNode(CallGraphView* v, GraphNode* n,
-		       int x, int y, int w, int h, QCanvas* c)
-    : QCanvasRectangle(x, y, w, h, c), _node(n), _view(v)
+		       int x, int y, int w, int h, Q3Canvas* c)
+    : Q3CanvasRectangle(x, y, w, h, c), _node(n), _view(v)
 {
     setPosition(0, DrawParams::TopCenter);
     setPosition(1, DrawParams::BottomCenter);
@@ -1099,8 +1108,8 @@ void CanvasNode::drawShape(QPainter& p)
 //
 
 CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce,
-                                 int x, int y, int w, int h, QCanvas* c)
-    : QCanvasRectangle(x, y, w, h, c), _ce(ce), _view(v)
+                                 int x, int y, int w, int h, Q3Canvas* c)
+    : Q3CanvasRectangle(x, y, w, h, c), _ce(ce), _view(v)
 {
     GraphEdge* e = ce->edge();
     if (!e) return;
@@ -1154,23 +1163,23 @@ void CanvasEdgeLabel::drawShape(QPainter& p)
 //
 // CanvasEdgeArrow
 
-CanvasEdgeArrow::CanvasEdgeArrow(CanvasEdge* ce, QCanvas* c)
-    : QCanvasPolygon(c), _ce(ce)
+CanvasEdgeArrow::CanvasEdgeArrow(CanvasEdge* ce, Q3Canvas* c)
+    : Q3CanvasPolygon(c), _ce(ce)
 {}
 
 void CanvasEdgeArrow::drawShape(QPainter& p)
 {
     if (_ce->isSelected()) p.setBrush(Qt::red);
 
-    QCanvasPolygon::drawShape(p);
+    Q3CanvasPolygon::drawShape(p);
 }
 
 //
 // CanvasEdge
 //
 
-CanvasEdge::CanvasEdge(GraphEdge* e, QCanvas* c)
-  : QCanvasSpline(c), _edge(e)
+CanvasEdge::CanvasEdge(GraphEdge* e, Q3Canvas* c)
+  : Q3CanvasSpline(c), _edge(e)
 {
     _label = 0;
     _arrow = 0;
@@ -1178,12 +1187,12 @@ CanvasEdge::CanvasEdge(GraphEdge* e, QCanvas* c)
 
 void CanvasEdge::setSelected(bool s)
 {
-    QCanvasItem::setSelected(s);
+    Q3CanvasItem::setSelected(s);
     update();
     if (_arrow) _arrow->setSelected(s);
 }
 
-QPointArray CanvasEdge::areaPoints() const
+Q3PointArray CanvasEdge::areaPoints() const
 {
   int minX = poly[0].x(), minY = poly[0].y();
   int maxX = minX, maxY = minY;
@@ -1198,7 +1207,7 @@ QPointArray CanvasEdge::areaPoints() const
     if (poly[i].y() > maxY) maxY = poly[i].y();
     if (0) qDebug("  P %d: %d/%d", i, poly[i].x(), poly[i].y());
   }
-  QPointArray a = poly.copy(),  b = poly.copy();
+  Q3PointArray a = poly.copy(),  b = poly.copy();
   if (minX == maxX) {
     a.translate(-2, 0);
     b.translate(2, 0);
@@ -1234,8 +1243,8 @@ void CanvasEdge::drawShape(QPainter& p)
 
 QPixmap* CanvasFrame::_p = 0;
 
-CanvasFrame::CanvasFrame(CanvasNode* n, QCanvas* c)
- : QCanvasRectangle(c)
+CanvasFrame::CanvasFrame(CanvasNode* n, Q3Canvas* c)
+ : Q3CanvasRectangle(c)
 {
   if (!_p) {
 
@@ -1306,9 +1315,9 @@ void CallGraphTip::maybeTip( const QPoint& pos )
   if (0) qDebug("CallGraphTip for (%d/%d) -> (%d/%d) ?",
 		pos.x(), pos.y(), cPos.x(), cPos.y());
 
-  QCanvasItemList l = cgv->canvas()->collisions(cPos);
+  Q3CanvasItemList l = cgv->canvas()->collisions(cPos);
   if (l.count() == 0) return;
-  QCanvasItem* i = l.first();
+  Q3CanvasItem* i = l.first();
 
   if (i->rtti() == CANVAS_NODE) {
       CanvasNode* cn = (CanvasNode*)i;
@@ -1354,7 +1363,7 @@ void CallGraphTip::maybeTip( const QPoint& pos )
 //
 CallGraphView::CallGraphView(TraceItemView* parentView,
                              QWidget* parent, const char* name)
-  : QCanvasView(parent, name), TraceItemView(parentView)
+  : Q3CanvasView(parent, name), TraceItemView(parentView)
 {
     _zoomPosition = DEFAULT_ZOOMPOS;
     _lastAutoPosition = TopLeft;
@@ -1368,8 +1377,8 @@ CallGraphView::CallGraphView(TraceItemView* parentView,
 
   _exporter.setGraphOptions(this);
 
-  _completeView->setVScrollBarMode(QScrollView::AlwaysOff);
-  _completeView->setHScrollBarMode(QScrollView::AlwaysOff);
+  _completeView->setVScrollBarMode(Q3ScrollView::AlwaysOff);
+  _completeView->setHScrollBarMode(Q3ScrollView::AlwaysOff);
   _completeView->raise();
   _completeView->hide();
 
@@ -1383,7 +1392,7 @@ CallGraphView::CallGraphView(TraceItemView* parentView,
   connect(_completeView, SIGNAL(zoomRectMoveFinished()),
           this, SLOT(zoomRectMoveFinished()));
 
-  QWhatsThis::add( this, whatsThis() );
+  Q3WhatsThis::add( this, whatsThis() );
 
   // tooltips...
   _tip = new CallGraphTip(this);
@@ -1463,7 +1472,7 @@ void CallGraphView::updateSizes(QSize s)
 		    _canvas->width(), _canvas->height(),
 		    cWidth, cHeight, zoom);
 
-      QWMatrix wm;
+      QMatrix wm;
       wm.scale( zoom, zoom );
       _completeView->setWorldMatrix(wm);
 
@@ -1501,11 +1510,11 @@ void CallGraphView::updateSizes(QSize s)
 	int minCols = tlCols;
 	zp = _lastAutoPosition;
 	switch(zp) {
-	case TopRight:    minCols = trCols; break;
-	case BottomLeft:  minCols = blCols; break;
-	case BottomRight: minCols = brCols; break;
+	case Qt::TopRightCorner:    minCols = trCols; break;
+	case Qt::BottomLeftCorner:  minCols = blCols; break;
+	case Qt::BottomRightCorner: minCols = brCols; break;
 	default:
-	case TopLeft:     minCols = tlCols; break;
+	case Qt::TopLeftCorner:     minCols = tlCols; break;
 	}
 	if (minCols > tlCols) { minCols = tlCols; zp = TopLeft; }
 	if (minCols > trCols) { minCols = trCols; zp = TopRight; }
@@ -1516,13 +1525,13 @@ void CallGraphView::updateSizes(QSize s)
     }
 
     switch(zp) {
-    case TopRight:
+    case Qt::TopRightCorner:
 	newZoomPos = QPoint(x,0);
 	break;
-    case BottomLeft:
+    case Qt::BottomLeftCorner:
 	newZoomPos = QPoint(0,y);
 	break;
-    case BottomRight:
+    case Qt::BottomRightCorner:
 	newZoomPos = QPoint(x,y);
 	break;
     default:
@@ -1578,10 +1587,10 @@ void CallGraphView::keyPressEvent(QKeyEvent* e)
 	int key = e->key();
 	if (_layout == LeftRight) {
 	    switch(key) {
-	    case Key_Up:    key = Key_Left; break;
-	    case Key_Down:  key = Key_Right; break;
-	    case Key_Left:  key = Key_Up; break;
-	    case Key_Right: key = Key_Down; break;
+	    case Qt::Key_Up:    key = Key_Left; break;
+	    case Qt::Key_Down:  key = Key_Right; break;
+	    case Qt::Key_Left:  key = Key_Up; break;
+	    case Qt::Key_Right: key = Key_Down; break;
 	    default: break;
 	    }
 	}
@@ -1626,7 +1635,7 @@ void CallGraphView::keyPressEvent(QKeyEvent* e)
 
 void CallGraphView::resizeEvent(QResizeEvent* e)
 {
-  QCanvasView::resizeEvent(e);
+  Q3CanvasView::resizeEvent(e);
   if (_canvas) updateSizes(e->size());
 }
 
@@ -1719,8 +1728,8 @@ void CallGraphView::doUpdate(int changeType)
       return;
     }
 
-    QCanvasItemList l = _canvas->allItems();
-    QCanvasItemList::iterator it;
+    Q3CanvasItemList l = _canvas->allItems();
+    Q3CanvasItemList::iterator it;
     for (it = l.begin();it != l.end(); ++it)
 	if ((*it)->rtti() == CANVAS_NODE)
 	    ((CanvasNode*) (*it))->updateGroup();
@@ -1754,10 +1763,10 @@ void CallGraphView::showText(QString s)
   clear();
   _renderTimer.stop();
 
-  _canvas = new QCanvas(QApplication::desktop()->width(),
+  _canvas = new Q3Canvas(QApplication::desktop()->width(),
 			QApplication::desktop()->height());
 
-  QCanvasText* t = new QCanvasText(s, _canvas);
+  Q3CanvasText* t = new Q3CanvasText(s, _canvas);
   t->move(5, 5);
   t->show();
   center(0,0);
@@ -1831,7 +1840,7 @@ void CallGraphView::refresh()
   _exporter.reset(_data, _activeItem, _costType, _groupType);
   _exporter.writeDot();
 
-  _renderProcess = new QProcess(this);
+  _renderProcess = new Q3Process(this);
   if (_layout == GraphOptions::Circular)
     _renderProcess->addArgument( "twopi" );
   else
@@ -1876,7 +1885,7 @@ void CallGraphView::dotExited()
 {
   QString line, cmd;
   CanvasNode *rItem;
-  QCanvasEllipse* eItem;
+  Q3CanvasEllipse* eItem;
   CanvasEdge* sItem;
   CanvasEdgeLabel* lItem;
   QTextStream* dotStream;
@@ -1888,7 +1897,7 @@ void CallGraphView::dotExited()
   _renderTimer.stop();
   viewport()->setUpdatesEnabled(false);
   clear();
-  dotStream = new QTextStream(_unparsedOutput, IO_ReadOnly);
+  dotStream = new QTextStream(_unparsedOutput, QIODevice::ReadOnly);
 
   int lineno = 0;
   while (1) {
@@ -1897,7 +1906,7 @@ void CallGraphView::dotExited()
     lineno++;
     if (line.isEmpty()) continue;
 
-    QTextStream lineStream(line, IO_ReadOnly);
+    QTextStream lineStream(line, QIODevice::ReadOnly);
     lineStream >> cmd;
 
     if (0) qDebug("%s:%d - line '%s', cmd '%s'",
@@ -1927,7 +1936,7 @@ void CallGraphView::dotExited()
 	if (h < QApplication::desktop()->height())
 	    _yMargin += (QApplication::desktop()->height()-h)/2;
 
-        _canvas = new QCanvas(int(w+2*_xMargin), int(h+2*_yMargin));
+        _canvas = new Q3Canvas(int(w+2*_xMargin), int(h+2*_yMargin));
 
 #if DEBUG_GRAPH
         kdDebug() << _exporter.filename().ascii() << ":" << lineno
@@ -1980,7 +1989,7 @@ void CallGraphView::dotExited()
       // Unnamed nodes with collapsed edges (with 'R' and 'S')
       if (nodeName[0] == 'R' || nodeName[0] == 'S') {
 	  w = 10, h = 10;
-        eItem = new QCanvasEllipse(w, h, _canvas);
+        eItem = new Q3CanvasEllipse(w, h, _canvas);
         eItem->move(xx, yy);
         eItem->setBrush(Qt::gray);
         eItem->setZ(1.0);
@@ -2013,7 +2022,7 @@ void CallGraphView::dotExited()
 
     QString node1Name, node2Name, label;
     double x, y;
-    QPointArray pa;
+    Q3PointArray pa;
     int points, i;
     lineStream >> node1Name >> node2Name >> points;
 
@@ -2105,7 +2114,7 @@ void CallGraphView::dotExited()
 	// arrow around pa.point(indexHead) with direction arrowDir
 	arrowDir *= 10.0/sqrt(double(arrowDir.x()*arrowDir.x() +
 			             arrowDir.y()*arrowDir.y()));
-	QPointArray a(3);
+	Q3PointArray a(3);
 	a.setPoint(0, pa.point(indexHead) + arrowDir);
 	a.setPoint(1, pa.point(indexHead) + QPoint(arrowDir.y()/2,
 						   -arrowDir.x()/2));
@@ -2170,10 +2179,10 @@ void CallGraphView::dotExited()
   // _exporter.sortEdges();
 
   if (!_canvas) {
-    _canvas = new QCanvas(size().width(),size().height());
+    _canvas = new Q3Canvas(size().width(),size().height());
     QString s = i18n("Error running the graph layouting tool.\n");
     s += i18n("Please check that 'dot' is installed (package GraphViz).");
-    QCanvasText* t = new QCanvasText(s, _canvas);
+    Q3CanvasText* t = new Q3CanvasText(s, _canvas);
     t->move(5, 5);
     t->show();
     center(0,0);
@@ -2182,7 +2191,7 @@ void CallGraphView::dotExited()
     QString s = i18n("There is no call graph available for function\n"
 		     "\t'%1'\n"
 		     "because it has no cost of the selected event type.");
-    QCanvasText* t = new QCanvasText(s.arg(_activeItem->name()), _canvas);
+    Q3CanvasText* t = new Q3CanvasText(s.arg(_activeItem->name()), _canvas);
     //    t->setTextFlags(Qt::AlignHCenter | Qt::AlignVCenter);
     t->move(5,5);
     t->show();
@@ -2275,9 +2284,9 @@ void CallGraphView::contentsMousePressEvent(QMouseEvent* e)
 
   _isMoving = true;
 
-  QCanvasItemList l = canvas()->collisions(e->pos());
+  Q3CanvasItemList l = canvas()->collisions(e->pos());
   if (l.count()>0) {
-    QCanvasItem* i = l.first();
+    Q3CanvasItem* i = l.first();
 
     if (i->rtti() == CANVAS_NODE) {
       GraphNode* n = ((CanvasNode*)i)->node();
@@ -2322,9 +2331,9 @@ void CallGraphView::contentsMouseReleaseEvent(QMouseEvent*)
 
 void CallGraphView::contentsMouseDoubleClickEvent(QMouseEvent* e)
 {
-  QCanvasItemList l = canvas()->collisions(e->pos());
+  Q3CanvasItemList l = canvas()->collisions(e->pos());
   if (l.count() == 0) return;
-  QCanvasItem* i = l.first();
+  Q3CanvasItem* i = l.first();
 
   if (i->rtti() == CANVAS_NODE) {
     GraphNode* n = ((CanvasNode*)i)->node();
@@ -2353,10 +2362,10 @@ void CallGraphView::contentsMouseDoubleClickEvent(QMouseEvent* e)
 
 void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
 {
-  QCanvasItemList l = canvas()->collisions(e->pos());
-  QCanvasItem* i = (l.count() == 0) ? 0 : l.first();
+  Q3CanvasItemList l = canvas()->collisions(e->pos());
+  Q3CanvasItem* i = (l.count() == 0) ? 0 : l.first();
 
-  QPopupMenu popup;
+  Q3PopupMenu popup;
   TraceFunction *f = 0, *cycle = 0;
   TraceCall* c = 0;
 
@@ -2407,14 +2416,14 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   addGoMenu(&popup);
   popup.insertSeparator();
 
-  QPopupMenu epopup;
+  Q3PopupMenu epopup;
   epopup.insertItem(i18n("As PostScript"), 201);
   epopup.insertItem(i18n("As Image ..."), 202);
 
   popup.insertItem(i18n("Export Graph"), &epopup, 200);
   popup.insertSeparator();
 
-  QPopupMenu gpopup1;
+  Q3PopupMenu gpopup1;
   gpopup1.setCheckable(true);
   gpopup1.insertItem(i18n("Unlimited"), 100);
   gpopup1.setItemEnabled(100, (_funcLimit>0.005));
@@ -2437,7 +2446,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
     gpopup1.setItemChecked(106,true); break;
   }
 
-  QPopupMenu gpopup2;
+  Q3PopupMenu gpopup2;
   gpopup2.setCheckable(true);
   gpopup2.insertItem(i18n("Unlimited"), 110);
   gpopup2.setItemEnabled(110, (_funcLimit>0.005));
@@ -2460,7 +2469,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
     gpopup2.setItemChecked(116,true); break;
   }
 
-  QPopupMenu gpopup3;
+  Q3PopupMenu gpopup3;
   gpopup3.setCheckable(true);
   gpopup3.insertItem(i18n("No Minimum"), 120);
   gpopup3.setItemEnabled(120,
@@ -2487,7 +2496,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   else gpopup3.setItemChecked(128,true);
   double oldFuncLimit = _funcLimit;
 
-  QPopupMenu gpopup4;
+  Q3PopupMenu gpopup4;
   gpopup4.setCheckable(true);
   gpopup4.insertItem(i18n("Same as Node"), 160);
   gpopup4.insertItem(i18n("50 % of Node"), 161);
@@ -2500,7 +2509,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   else if (_callLimit >= 0.2 * _funcLimit) gpopup4.setItemChecked(162,true);
   else gpopup4.setItemChecked(163,true);
 
-  QPopupMenu gpopup;
+  Q3PopupMenu gpopup;
   gpopup.setCheckable(true);
   gpopup.insertItem(i18n("Caller Depth"), &gpopup1, 80);
   gpopup.insertItem(i18n("Callee Depth"), &gpopup2, 81);
@@ -2514,7 +2523,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   gpopup.insertItem(i18n("Cluster Groups"), 132);
   gpopup.setItemChecked(132,_clusterGroups);
 
-  QPopupMenu vpopup;
+  Q3PopupMenu vpopup;
   vpopup.setCheckable(true);
   vpopup.insertItem(i18n("Compact"), 140);
   vpopup.insertItem(i18n("Normal"), 141);
@@ -2530,7 +2539,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   vpopup.setItemChecked(151,_layout == LeftRight);
   vpopup.setItemChecked(152,_layout == Circular);
 
-  QPopupMenu opopup;
+  Q3PopupMenu opopup;
   opopup.insertItem(i18n("TopLeft"), 170);
   opopup.insertItem(i18n("TopRight"), 171);
   opopup.insertItem(i18n("BottomLeft"), 172);

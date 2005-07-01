@@ -24,7 +24,7 @@
 #ifndef STACKITEM_H
 #define STACKITEM_H
 
-#include <qlistview.h>
+#include <q3listview.h>
 #include "tracedata.h"
 
 class StackSelection;
@@ -32,12 +32,12 @@ class StackSelection;
 
 // for the stack browser
 
-class StackItem: public QListViewItem
+class StackItem: public Q3ListViewItem
 {
 public:
   // for top
-  StackItem(StackSelection* ss, QListView* parent, TraceFunction* f);
-  StackItem(StackSelection* ss, QListView* parent, TraceCall* c);
+  StackItem(StackSelection* ss, Q3ListView* parent, TraceFunction* f);
+  StackItem(StackSelection* ss, Q3ListView* parent, TraceCall* c);
 
   TraceFunction* function() { return _function; }
   TraceCall* call() { return _call; }

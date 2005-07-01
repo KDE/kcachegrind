@@ -33,13 +33,15 @@
 #include "listutils.h"
 #include "functionitem.h"
 #include "configuration.h"
+//Added by qt3to4:
+#include <QPixmap>
 
 
 // FunctionItem
 
-FunctionItem::FunctionItem(QListView* parent, TraceFunction* f,
+FunctionItem::FunctionItem(Q3ListView* parent, TraceFunction* f,
                            TraceCostType* ct, TraceCost::CostType gt)
-  :QListViewItem(parent)
+  :Q3ListViewItem(parent)
 {
 #if 0
     _costPixValid = false;
@@ -56,9 +58,9 @@ FunctionItem::FunctionItem(QListView* parent, TraceFunction* f,
     setText(4, f->location());
 }
 
-FunctionItem::FunctionItem(QListView* parent, int skipped,
+FunctionItem::FunctionItem(Q3ListView* parent, int skipped,
 			   TraceFunction* f, TraceCostType* ct)
-  :QListViewItem(parent)
+  :Q3ListViewItem(parent)
 {
 #if 0
     _costPixValid = false;
@@ -198,7 +200,7 @@ void FunctionItem::update()
 }
 
 
-int FunctionItem::compare(QListViewItem * i, int col, bool ascending ) const
+int FunctionItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
 {
   const FunctionItem* fi1 = this;
   const FunctionItem* fi2 = (FunctionItem*) i;
@@ -231,6 +233,6 @@ int FunctionItem::compare(QListViewItem * i, int col, bool ascending ) const
     return 0;
   }
 
-  return QListViewItem::compare(i, col, ascending);
+  return Q3ListViewItem::compare(i, col, ascending);
 }
 

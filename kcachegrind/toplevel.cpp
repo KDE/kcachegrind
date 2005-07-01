@@ -25,19 +25,23 @@
 
 #include <stdlib.h> // for system()
 
-#include <qvbox.h>
+#include <q3vbox.h>
 #include <qtimer.h>
-#include <qwhatsthis.h>
+#include <q3whatsthis.h>
 #include <qlineedit.h>
 #include <qtextstream.h>
 #include <qsizepolicy.h>
-#include <qprogressbar.h>
+#include <q3progressbar.h>
 #include <qfile.h>
 
 // With Qt 3.1, we can disallow user interaction with long tasks.
 // This needs QEventLoop. Otherwise, QApplication::processEvents is used.
 #if (QT_VERSION-0 >= 0x030100)
 #include <qeventloop.h>
+//Added by qt3to4:
+#include <Q3CString>
+#include <QLabel>
+#include <Q3PopupMenu>
 #endif
 
 #include <kapplication.h>
@@ -207,12 +211,12 @@ void TopLevel::setupPartSelection(PartSelection* ps)
 void TopLevel::saveCurrentState(QString postfix)
 {
   KConfig* kconfig = KGlobal::config();
-  QCString pf = postfix.ascii();
+  Q3CString pf = postfix.ascii();
 
-  KConfigGroup psConfig(kconfig, QCString("PartOverview")+pf);
+  KConfigGroup psConfig(kconfig, Q3CString("PartOverview")+pf);
   _partSelection->saveVisualisationConfig(&psConfig);
 
-  KConfigGroup stateConfig(kconfig, QCString("CurrentState")+pf);
+  KConfigGroup stateConfig(kconfig, Q3CString("CurrentState")+pf);
   stateConfig.writeEntry("CostType",
 			 _costType ? _costType->name() : QString("?"));
   stateConfig.writeEntry("CostType2",
@@ -230,7 +234,7 @@ void TopLevel::saveTraceSettings()
 {
   QString key = traceKey();
 
-  KConfigGroup pConfig(KGlobal::config(), QCString("TracePositions"));
+  KConfigGroup pConfig(KGlobal::config(), Q3CString("TracePositions"));
   pConfig.writeEntry(QString("CostType%1").arg(key),
                      _costType ? _costType->name() : QString("?"));
   pConfig.writeEntry(QString("CostType2%1").arg(key),
@@ -240,7 +244,7 @@ void TopLevel::saveTraceSettings()
 
   if (!_data) return;
 
-  KConfigGroup aConfig(KGlobal::config(), QCString("Layouts"));
+  KConfigGroup aConfig(KGlobal::config(), Q3CString("Layouts"));
   aConfig.writeEntry(QString("Count%1").arg(key), _layoutCount);
   aConfig.writeEntry(QString("Current%1").arg(key), _layoutCurrent);
 
@@ -260,10 +264,10 @@ void TopLevel::restoreCurrentState(QString postfix)
 {
   KConfig* kconfig = KGlobal::config();
   QStringList gList = kconfig->groupList();
-  QCString pf = postfix.ascii();
+  Q3CString pf = postfix.ascii();
 
   // dock properties (not position, this should be have done before)
-  QCString group = QCString("PartOverview");
+  Q3CString group = Q3CString("PartOverview");
   if (gList.contains(group+pf)) group += pf;
   KConfigGroup psConfig(kconfig, group);
   _partSelection->readVisualisationConfig(&psConfig);
@@ -277,14 +281,14 @@ void TopLevel::restoreCurrentState(QString postfix)
 
 void TopLevel::createDocks()
 {
-  _partDock = new QDockWindow(QDockWindow::InDock, this);
+  _partDock = new Q3DockWindow(Q3DockWindow::InDock, this);
   _partDock->setCaption(i18n("Parts Overview"));
-  _partDock->setCloseMode( QDockWindow::Always );
+  _partDock->setCloseMode( Q3DockWindow::Always );
   _partSelection = new PartSelection(_partDock, "partSelection");
   _partDock->setWidget(_partSelection);
   _partDock->setResizeEnabled(true);
   _partDock->setFixedExtentWidth(200);
-  QWhatsThis::add( _partSelection, i18n(
+  Q3WhatsThis::add( _partSelection, i18n(
                    "<b>The Parts Overview</b>"
                    "<p>A trace consists of multiple trace parts when "
                    "there are several profile data files from one profile run. "
@@ -308,15 +312,15 @@ void TopLevel::createDocks()
                    "This is split up into smaller rectangles to show the costs of its "
                    "callees.</li></ul></p>"));
 
-  _stackDock = new QDockWindow(QDockWindow::InDock, this);
+  _stackDock = new Q3DockWindow(Q3DockWindow::InDock, this);
   _stackDock->setResizeEnabled(true);
   // Why is the caption only correct with a close button?
-  _stackDock->setCloseMode( QDockWindow::Always );
+  _stackDock->setCloseMode( Q3DockWindow::Always );
   _stackSelection = new StackSelection(_stackDock, "stackSelection");
   _stackDock->setWidget(_stackSelection);
   _stackDock->setFixedExtentWidth(200);
   _stackDock->setCaption(i18n("Top Cost Call Stack"));
-  QWhatsThis::add( _stackSelection, i18n(
+  Q3WhatsThis::add( _stackSelection, i18n(
                    "<b>The Top Cost Call Stack</b>"
                    "<p>This is a purely fictional 'most probable' call stack. "
                    "It is built up by starting with the current selected "
@@ -329,9 +333,9 @@ void TopLevel::createDocks()
   connect(_stackSelection, SIGNAL(functionSelected(TraceItem*)),
           this, SLOT(setTraceItemDelayed(TraceItem*)));
 
-  _functionDock = new QDockWindow(QDockWindow::InDock, this);
+  _functionDock = new Q3DockWindow(Q3DockWindow::InDock, this);
   _functionDock->setCaption(i18n("Flat Profile"));
-  _functionDock->setCloseMode( QDockWindow::Always );
+  _functionDock->setCloseMode( Q3DockWindow::Always );
   _functionSelection = new FunctionSelection(this, _functionDock,
                                              "functionSelection");
   _functionSelection->setTopLevel(this);
@@ -339,7 +343,7 @@ void TopLevel::createDocks()
   _functionDock->setWidget(_functionSelection);
   _functionDock->setResizeEnabled(true);
   _functionDock->setFixedExtentWidth(200);
-  QWhatsThis::add( _functionSelection, i18n(
+  Q3WhatsThis::add( _functionSelection, i18n(
                    "<b>The Flat Profile</b>"
                    "<p>The flat profile contains a group and a function "
                    "selection list. The group list contains all groups "
@@ -353,9 +357,9 @@ void TopLevel::createDocks()
                    "costs less than 1% are hidden on default.</p>"));
 
 #if ENABLE_DUMPDOCK
-  _dumpDock = new QDockWindow(QDockWindow::InDock, this);
+  _dumpDock = new Q3DockWindow(Q3DockWindow::InDock, this);
   _dumpDock->setCaption(i18n("Profile Dumps"));
-  _dumpDock->setCloseMode( QDockWindow::Always );
+  _dumpDock->setCloseMode( Q3DockWindow::Always );
   _dumpSelection = new DumpSelection(this, _dumpDock,
                                      "dumpSelection");
   _dumpSelection->setTopLevel(this);
@@ -363,7 +367,7 @@ void TopLevel::createDocks()
   _dumpDock->setWidget(_dumpSelection);
   _dumpDock->setResizeEnabled(true);
   _dumpDock->setFixedExtentWidth(200);
-  QWhatsThis::add( _dumpSelection, i18n(
+  Q3WhatsThis::add( _dumpSelection, i18n(
                    "<b>Profile Dumps</b>"
                    "<p>This dockable shows in the top part the list of "
                    "loadable profile dumps in all subdirectories of: "
@@ -393,7 +397,7 @@ void TopLevel::createDocks()
 #endif
 
   // Restore QT Dock positions...
-  KConfigGroup dockConfig(KGlobal::config(), QCString("Docks"));
+  KConfigGroup dockConfig(KGlobal::config(), Q3CString("Docks"));
   QString str = dockConfig.readEntry("Position", QString::null);
   if (0) qDebug("Docks/Position: '%s'", str.ascii());
   if (str.isEmpty()) {
@@ -403,12 +407,12 @@ void TopLevel::createDocks()
     addDockWindow(_functionDock, DockLeft);
     _stackDock->hide();
 #if ENABLE_DUMPDOCK
-    addDockWindow(_dumpDock, DockLeft);
+    addDockWindow(_dumpDock, Qt::DockLeft);
     _dumpDock->hide();
 #endif
   }
   else {
-    QTextStream ts( &str, IO_ReadOnly );
+    QTextStream ts( &str, QIODevice::ReadOnly );
     ts >> *this;
   }
   _forcePartDock = dockConfig.readBoolEntry("ForcePartDockVisible", false);
@@ -1611,15 +1615,15 @@ void TopLevel::setData(TraceData* data)
   updateStatusBar();
 }
 
-void TopLevel::addCostMenu(QPopupMenu* popup, bool withCost2)
+void TopLevel::addCostMenu(Q3PopupMenu* popup, bool withCost2)
 {
   if (_data) {
-    QPopupMenu *popup1 = new QPopupMenu(popup);
-    QPopupMenu *popup2 = 0;
+    Q3PopupMenu *popup1 = new Q3PopupMenu(popup);
+    Q3PopupMenu *popup2 = 0;
     popup1->setCheckable(true);
 
     if (withCost2) {
-      popup2 = new QPopupMenu(popup);
+      popup2 = new Q3PopupMenu(popup);
       popup2->setCheckable(true);
 
       if (_costType2) {
@@ -1687,7 +1691,7 @@ bool TopLevel::setCostType2(int id)
   return setCostType2(ct);
 }
 
-void TopLevel::addGoMenu(QPopupMenu* popup)
+void TopLevel::addGoMenu(Q3PopupMenu* popup)
 {
   popup->insertItem(i18n("Go Back"), this, SLOT(goBack()));
   popup->insertItem(i18n("Go Forward"), this, SLOT(goForward()));
@@ -1726,8 +1730,8 @@ void TopLevel::restoreTraceTypes()
 {
   QString key = traceKey();
 
-  KConfigGroup cConfig(KGlobal::config(), QCString("CurrentState"));
-  KConfigGroup pConfig(KGlobal::config(), QCString("TracePositions"));
+  KConfigGroup cConfig(KGlobal::config(), Q3CString("CurrentState"));
+  KConfigGroup pConfig(KGlobal::config(), Q3CString("TracePositions"));
 
   QString groupType, costType, costType2;
   groupType =  pConfig.readEntry(QString("GroupType%1").arg(key));
@@ -1746,7 +1750,7 @@ void TopLevel::restoreTraceTypes()
   if (!_costType && !_saCost->items().isEmpty())
       costTypeSelected(_saCost->items().first());
 
-  KConfigGroup aConfig(KGlobal::config(), QCString("Layouts"));
+  KConfigGroup aConfig(KGlobal::config(), Q3CString("Layouts"));
   _layoutCount = aConfig.readNumEntry(QString("Count%1").arg(key), 0);
   _layoutCurrent = aConfig.readNumEntry(QString("Current%1").arg(key), 0);
   if (_layoutCount == 0) layoutRestore();
@@ -1765,7 +1769,7 @@ void TopLevel::restoreTraceSettings()
 
   QString key = traceKey();
 
-  KConfigGroup pConfig(KGlobal::config(), QCString("TracePositions"));
+  KConfigGroup pConfig(KGlobal::config(), Q3CString("TracePositions"));
   QString group = pConfig.readEntry(QString("Group%1").arg(key));
   if (!group.isEmpty()) setGroup(group);
 
@@ -1876,7 +1880,7 @@ void TopLevel::layoutSave()
 			     QString("Layout%1-MainView").arg(_layoutCurrent),
 			     key, false);
 
-  KConfigGroup aConfig(config, QCString("Layouts"));
+  KConfigGroup aConfig(config, Q3CString("Layouts"));
   aConfig.writeEntry("DefaultCount", _layoutCount);
   aConfig.writeEntry("DefaultCurrent", _layoutCurrent);
 }
@@ -1884,7 +1888,7 @@ void TopLevel::layoutSave()
 void TopLevel::layoutRestore()
 {
   KConfig* config = KGlobal::config();
-  KConfigGroup aConfig(config, QCString("Layouts"));
+  KConfigGroup aConfig(config, Q3CString("Layouts"));
   _layoutCount = aConfig.readNumEntry("DefaultCount", 0);
   _layoutCurrent = aConfig.readNumEntry("DefaultCurrent", 0);
   if (_layoutCount == 0) {
@@ -1999,9 +2003,9 @@ bool TopLevel::queryExit()
   // Its already stored.
   delete toolBar();
 
-  KConfigGroup dockConfig(KGlobal::config(), QCString("Docks"));
+  KConfigGroup dockConfig(KGlobal::config(), Q3CString("Docks"));
   QString str;
-  QTextStream ts( &str, IO_WriteOnly );
+  QTextStream ts( &str, QIODevice::WriteOnly );
   ts << *this;
 #if 1
   dockConfig.writeEntry("Position", str);
@@ -2159,7 +2163,7 @@ void TopLevel::forceTrace()
   // Needs Callgrind now...
   QFile cmd("callgrind.cmd");
   if (!cmd.exists()) {
-    cmd.open(IO_WriteOnly);
+    cmd.open(QIODevice::WriteOnly);
     cmd.writeBlock("DUMP\n", 5);
     cmd.close();
   }
@@ -2188,7 +2192,7 @@ void TopLevel::forceTraceReload()
 
 void TopLevel::forwardAboutToShow()
 {
-  QPopupMenu *popup = _paForward->popupMenu();
+  Q3PopupMenu *popup = _paForward->popupMenu();
 
   popup->clear();
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
@@ -2224,7 +2228,7 @@ void TopLevel::forwardAboutToShow()
 
 void TopLevel::backAboutToShow()
 {
-  QPopupMenu *popup = _paBack->popupMenu();
+  Q3PopupMenu *popup = _paBack->popupMenu();
 
   popup->clear();
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
@@ -2260,7 +2264,7 @@ void TopLevel::backAboutToShow()
 
 void TopLevel::upAboutToShow()
 {
-  QPopupMenu *popup = _paUp->popupMenu();
+  Q3PopupMenu *popup = _paUp->popupMenu();
 
   popup->clear();
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
@@ -2371,7 +2375,7 @@ void TopLevel::showStatus(QString msg, int progress)
     if (_progressStart.elapsed() < 500) return;
 
     if (!_progressBar) {
-	_progressBar = new QProgressBar(_statusbar);
+	_progressBar = new Q3ProgressBar(_statusbar);
 	_progressBar->setMaximumSize(200, _statusbar->height()-4);
 	_statusbar->addWidget(_progressBar, 1, true);
 	_progressBar->show();

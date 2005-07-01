@@ -23,8 +23,8 @@
 #include <qcombobox.h>
 #include <qcheckbox.h>
 #include <qlineedit.h>
-#include <qlistview.h>
-#include <qdict.h>
+#include <q3listview.h>
+#include <q3dict.h>
 #include <qmessagebox.h>
 
 #include <kcolorbutton.h>
@@ -54,7 +54,7 @@ ConfigDlg::ConfigDlg(Configuration* c, TraceData* data,
   contextEdit->setValidator(numValidator );
 
 #if 0
-  QListViewItem *oItem, *fItem, *cItem, *fnItem;
+  Q3ListViewItem *oItem, *fItem, *cItem, *fnItem;
   oItem = new(colorList, i18n("ELF Objects"));
 
   fItem = new(colorList, i18n("Source Files"));
@@ -120,7 +120,7 @@ ConfigDlg::ConfigDlg(Configuration* c, TraceData* data,
     fList.append((*fit).prettyName());
 
   // then already defined colors (have to check for duplicates!)
-  QDictIterator<Configuration::ColorSetting> it( c->_colors );
+  Q3DictIterator<Configuration::ColorSetting> it( c->_colors );
   for( ; it.current(); ++it ) {
     if ((*it)->automatic) continue;
 
@@ -154,18 +154,18 @@ ConfigDlg::ConfigDlg(Configuration* c, TraceData* data,
 
   _dirItem = 0;
 
-  QListViewItem* i = new QListViewItem(dirList, i18n("(always)"));
+  Q3ListViewItem* i = new Q3ListViewItem(dirList, i18n("(always)"));
   i->setOpen(true);
   QStringList::Iterator sit = c->_generalSourceDirs.begin();
   for(; sit != c->_generalSourceDirs.end(); ++sit ) {
     QString d = (*sit);
     if (d.isEmpty()) d = "/";
-    new QListViewItem(i, d);
+    new Q3ListViewItem(i, d);
   }
   for ( oit = data->objectMap().begin();
         oit != data->objectMap().end(); ++oit ) {
     QString n = (*oit).name();
-    i = new QListViewItem(dirList, n);
+    i = new Q3ListViewItem(dirList, n);
     i->setOpen(true);
     QStringList* dirs = c->_objectSourceDirs[n];
     if (!dirs) continue;
@@ -174,12 +174,12 @@ ConfigDlg::ConfigDlg(Configuration* c, TraceData* data,
     for(; sit != dirs->end(); ++sit ) {
       QString d = (*sit);
       if (d.isEmpty()) d = "/";
-      new QListViewItem(i, d);
+      new Q3ListViewItem(i, d);
     }
   }
 
-  connect(dirList, SIGNAL(selectionChanged(QListViewItem*)),
-          this, SLOT(dirsItemChanged(QListViewItem*)));
+  connect(dirList, SIGNAL(selectionChanged(Q3ListViewItem*)),
+          this, SLOT(dirsItemChanged(Q3ListViewItem*)));
   connect(addDirButton, SIGNAL(clicked()),
           this, SLOT(dirsAddPressed()));
   connect(deleteDirButton, SIGNAL(clicked()),
@@ -330,7 +330,7 @@ void ConfigDlg::fileColorChanged(const QColor & c)
 }
 
 
-void ConfigDlg::dirsItemChanged(QListViewItem* i)
+void ConfigDlg::dirsItemChanged(Q3ListViewItem* i)
 {
   _dirItem = i;
   deleteDirButton->setEnabled(i->depth() == 1);
@@ -340,7 +340,7 @@ void ConfigDlg::dirsItemChanged(QListViewItem* i)
 void ConfigDlg::dirsDeletePressed()
 {
   if (!_dirItem || (_dirItem->depth() == 0)) return;
-  QListViewItem* p = _dirItem->parent();
+  Q3ListViewItem* p = _dirItem->parent();
   if (!p) return;
 
   Configuration* c = Configuration::config();
@@ -392,7 +392,7 @@ void ConfigDlg::dirsAddPressed()
 
   dirs->append(newDir);
   if (newDir.isEmpty()) newDir = QString("/");
-  new QListViewItem(_dirItem, newDir);
+  new Q3ListViewItem(_dirItem, newDir);
 }
 
 #include "configdlg.moc"

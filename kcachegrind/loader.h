@@ -24,7 +24,7 @@
 #define LOADER_H
 
 #include <qobject.h>
-#include <qptrlist.h>
+#include <q3ptrlist.h>
 #include <qstring.h>
 
 class QFile;
@@ -33,7 +33,7 @@ class TracePart;
 class Loader;
 
 
-typedef QPtrList<Loader> LoaderList;
+typedef Q3PtrList<Loader> LoaderList;
 
 /**
  * To implement a new loader, inherit from the Loader class

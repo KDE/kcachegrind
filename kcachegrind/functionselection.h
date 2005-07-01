@@ -27,8 +27,10 @@
 #include "traceitemview.h"
 #include "tracedata.h"
 #include "listutils.h"
+//Added by qt3to4:
+#include <Q3PopupMenu>
 
-class QPopupMenu;
+class Q3PopupMenu;
 
 class TraceFunction;
 class TraceData;
@@ -50,18 +52,18 @@ public:
 
   QWidget* widget() { return this; }
 
-  void addGroupMenu(QPopupMenu*);
+  void addGroupMenu(Q3PopupMenu*);
 
 public slots:
   void searchEntered();
   void searchChanged(const QString&);
   void queryDelayed();
-  void groupDoubleClicked( QListViewItem* );
-  void functionActivated( QListViewItem* );
-  void groupSelected( QListViewItem* );
-  void functionSelected( QListViewItem* );
-  void functionContext(QListViewItem*, const QPoint &, int);
-  void groupContext(QListViewItem*, const QPoint &, int);
+  void groupDoubleClicked( Q3ListViewItem* );
+  void functionActivated( Q3ListViewItem* );
+  void groupSelected( Q3ListViewItem* );
+  void functionSelected( Q3ListViewItem* );
+  void functionContext(Q3ListViewItem*, const QPoint &, int);
+  void groupContext(Q3ListViewItem*, const QPoint &, int);
 
 private:
   TraceItem* canShow(TraceItem* i);

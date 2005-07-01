@@ -21,13 +21,13 @@
  */
 
 #include <qtimer.h>
-#include <qlistview.h>
+#include <q3listview.h>
 #include <qlabel.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qlineedit.h>
 #include <qregexp.h>
-#include <qpopupmenu.h>
+#include <q3popupmenu.h>
 
 #include <klocale.h>
 
@@ -77,46 +77,46 @@ FunctionSelection::FunctionSelection( TopLevel* top,
   functionList->setAllColumnsShowFocus(true);
   // functionList->setShowSortIndicator(true);
   // we can have very long function and location names
-  functionList->setColumnWidthMode(3, QListView::Manual);
+  functionList->setColumnWidthMode(3, Q3ListView::Manual);
   functionList->setColumnWidth(3, 200);
-  functionList->setColumnWidthMode(4, QListView::Manual);
+  functionList->setColumnWidthMode(4, Q3ListView::Manual);
   functionList->setColumnWidth(4, 200);
 
   groupList->setSorting(0,false);
   groupList->setColumnAlignment(0, Qt::AlignRight);
   groupList->setAllColumnsShowFocus(true);
   // groupList->setShowSortIndicator(true);
-  groupList->setResizeMode(QListView::LastColumn);
+  groupList->setResizeMode(Q3ListView::LastColumn);
 
 #if 0
   // single click press activation
-  connect(functionList, SIGNAL(selectionChanged(QListViewItem*)),
-          this, SLOT(functionActivated(QListViewItem*)));
+  connect(functionList, SIGNAL(selectionChanged(Q3ListViewItem*)),
+          this, SLOT(functionActivated(Q3ListViewItem*)));
   connect(functionList,
-	  SIGNAL(contextMenuRequested(QListViewItem*, const QPoint &, int)),
-          this, SLOT(functionContext(QListViewItem*, const QPoint &, int)));
+	  SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
+          this, SLOT(functionContext(Q3ListViewItem*, const QPoint &, int)));
 #else
   // single click release activation
-  connect(functionList, SIGNAL(selectionChanged(QListViewItem*)),
-          this, SLOT(functionSelected(QListViewItem*)));
-  connect(functionList, SIGNAL(clicked(QListViewItem*)),
-	  this, SLOT(functionActivated(QListViewItem*)));
-  connect(functionList, SIGNAL(returnPressed(QListViewItem*)),
-	  this, SLOT(functionActivated(QListViewItem*)));
+  connect(functionList, SIGNAL(selectionChanged(Q3ListViewItem*)),
+          this, SLOT(functionSelected(Q3ListViewItem*)));
+  connect(functionList, SIGNAL(clicked(Q3ListViewItem*)),
+	  this, SLOT(functionActivated(Q3ListViewItem*)));
+  connect(functionList, SIGNAL(returnPressed(Q3ListViewItem*)),
+	  this, SLOT(functionActivated(Q3ListViewItem*)));
   connect(functionList,
-	  SIGNAL(contextMenuRequested(QListViewItem*, const QPoint &, int)),
-          this, SLOT(functionContext(QListViewItem*, const QPoint &, int)));
+	  SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
+          this, SLOT(functionContext(Q3ListViewItem*, const QPoint &, int)));
 #endif
 
-  connect(groupList, SIGNAL(selectionChanged(QListViewItem*)),
-          this, SLOT(groupSelected(QListViewItem*)));
-  connect(groupList, SIGNAL(doubleClicked(QListViewItem*)),
-	  this, SLOT(groupDoubleClicked(QListViewItem*)));
-  connect(groupList, SIGNAL(returnPressed(QListViewItem*)),
-	  this, SLOT(groupDoubleClicked(QListViewItem*)));
+  connect(groupList, SIGNAL(selectionChanged(Q3ListViewItem*)),
+          this, SLOT(groupSelected(Q3ListViewItem*)));
+  connect(groupList, SIGNAL(doubleClicked(Q3ListViewItem*)),
+	  this, SLOT(groupDoubleClicked(Q3ListViewItem*)));
+  connect(groupList, SIGNAL(returnPressed(Q3ListViewItem*)),
+	  this, SLOT(groupDoubleClicked(Q3ListViewItem*)));
   connect(groupList,
-	  SIGNAL(contextMenuRequested(QListViewItem*, const QPoint &, int)),
-          this, SLOT(groupContext(QListViewItem*, const QPoint &, int)));
+	  SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
+          this, SLOT(groupContext(Q3ListViewItem*, const QPoint &, int)));
 
   // start hidden
   groupList->hide();
@@ -146,10 +146,10 @@ void FunctionSelection::queryDelayed()
   query(_searchDelayed);
 }
 
-void FunctionSelection::functionContext(QListViewItem* i,
+void FunctionSelection::functionContext(Q3ListViewItem* i,
 					const QPoint & p, int c)
 {
-  QPopupMenu popup;
+  Q3PopupMenu popup;
   TraceFunction* f = 0;
 
   if (i) {
@@ -170,10 +170,10 @@ void FunctionSelection::functionContext(QListViewItem* i,
   if (r == 93) activated(f);
 }
 
-void FunctionSelection::groupContext(QListViewItem* /*i*/,
+void FunctionSelection::groupContext(Q3ListViewItem* /*i*/,
 				     const QPoint & p, int c)
 {
-  QPopupMenu popup;
+  Q3PopupMenu popup;
 
 #if 0
   TraceCostItem* g = 0;
@@ -197,9 +197,9 @@ void FunctionSelection::groupContext(QListViewItem* /*i*/,
 }
 
 
-void FunctionSelection::addGroupMenu(QPopupMenu* popup)
+void FunctionSelection::addGroupMenu(Q3PopupMenu* popup)
 {
-  QPopupMenu *popup1 = new QPopupMenu(popup);
+  Q3PopupMenu *popup1 = new Q3PopupMenu(popup);
   popup1->setCheckable(true);
 
   if (_groupType != TraceItem::Function) {
@@ -291,7 +291,7 @@ void FunctionSelection::doUpdate(int changeType)
 	    break;
 	}
 
-	QListViewItem* item  = functionList->firstChild();
+	Q3ListViewItem* item  = functionList->firstChild();
 	for (;item;item = item->nextSibling())
 	    if (((FunctionItem*)item)->function() == f)
 		break;
@@ -359,7 +359,7 @@ void FunctionSelection::setGroup(TraceCostItem* g)
   if (g == _group) return;
   _group = g;
 
-  QListViewItem* item  = groupList->firstChild();
+  Q3ListViewItem* item  = groupList->firstChild();
   for (;item;item = item->nextSibling())
     if (((CostListItem*)item)->costItem() == g)
       break;
@@ -405,7 +405,7 @@ void FunctionSelection::refresh()
   TraceObjectMap::Iterator oit;
   TraceClassMap::Iterator cit;
   TraceFileMap::Iterator fit;
-  QListViewItem *i = 0, *item = 0, *fitem = 0;
+  Q3ListViewItem *i = 0, *item = 0, *fitem = 0;
 
   // Fill up group list.
   // Always show group of current function, even if cost below low limit.
@@ -453,7 +453,7 @@ void FunctionSelection::refresh()
 
   default:
     {
-      QListViewItem* oldItem = functionList->selectedItem();
+      Q3ListViewItem* oldItem = functionList->selectedItem();
       TraceFunction* oldFunction = 0;
       int oldPos = 0;
       if (oldItem) {
@@ -558,7 +558,7 @@ void FunctionSelection::refresh()
 }
 
 
-void FunctionSelection::groupSelected(QListViewItem* i)
+void FunctionSelection::groupSelected(Q3ListViewItem* i)
 {
   if (!i) return;
   if (!_data) return;
@@ -650,7 +650,7 @@ void FunctionSelection::groupSelected(QListViewItem* i)
   }
 }
 
-void FunctionSelection::groupDoubleClicked(QListViewItem* i)
+void FunctionSelection::groupDoubleClicked(Q3ListViewItem* i)
 {
   if (!i) return;
   if (!_data) return;
@@ -666,7 +666,7 @@ void FunctionSelection::groupDoubleClicked(QListViewItem* i)
 
 TraceCostItem* FunctionSelection::group(QString s)
 {
-  QListViewItem *item;
+  Q3ListViewItem *item;
   item  = groupList->firstChild();
   for(;item;item = item->nextSibling())
     if (((CostListItem*)item)->costItem()->name() == s)
@@ -677,7 +677,7 @@ TraceCostItem* FunctionSelection::group(QString s)
 
 
 
-void FunctionSelection::functionSelected(QListViewItem* i)
+void FunctionSelection::functionSelected(Q3ListViewItem* i)
 {
   if (!i) return;
   if (!_data) return;
@@ -694,7 +694,7 @@ void FunctionSelection::functionSelected(QListViewItem* i)
   }
 }
 
-void FunctionSelection::functionActivated(QListViewItem* i)
+void FunctionSelection::functionActivated(Q3ListViewItem* i)
 {
   if (!i) return;
   if (!_data) return;
@@ -708,7 +708,7 @@ void FunctionSelection::functionActivated(QListViewItem* i)
 
 void FunctionSelection::updateGroupSizes()
 {
-  QListViewItem* item  = groupList->firstChild();
+  Q3ListViewItem* item  = groupList->firstChild();
   for (;item;item = item->nextSibling()) {
     CostListItem* i = (CostListItem*)item;
     if (_groupSize.contains(i->costItem()))
@@ -814,7 +814,7 @@ void FunctionSelection::query(QString query)
 
 bool FunctionSelection::setTopFunction()
 {
-  QListViewItem* i = functionList->firstChild();
+  Q3ListViewItem* i = functionList->firstChild();
   // this emits a function selection
   functionList->setSelected(i, true);
   functionActivated(i);
@@ -824,15 +824,15 @@ bool FunctionSelection::setTopFunction()
 void FunctionSelection::setCostColumnWidths()
 {
   if (_costType && (_costType->subCost(_data->callMax())>0) ) {
-    functionList->setColumnWidthMode(0, QListView::Maximum);
+    functionList->setColumnWidthMode(0, Q3ListView::Maximum);
     functionList->setColumnWidth(0,50);
-    functionList->setColumnWidthMode(2, QListView::Maximum);
+    functionList->setColumnWidthMode(2, Q3ListView::Maximum);
     functionList->setColumnWidth(2,50);
   }
   else {
-    functionList->setColumnWidthMode(0, QListView::Manual);
+    functionList->setColumnWidthMode(0, Q3ListView::Manual);
     functionList->setColumnWidth(0,0);
-    functionList->setColumnWidthMode(2, QListView::Manual);
+    functionList->setColumnWidthMode(2, Q3ListView::Manual);
     functionList->setColumnWidth(2,0);
   }
 

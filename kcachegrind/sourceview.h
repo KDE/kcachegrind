@@ -23,12 +23,14 @@
 #ifndef SOURCEVIEW_H
 #define SOURCEVIEW_H
 
-#include <qlistview.h>
+#include <q3listview.h>
+//Added by qt3to4:
+#include <Q3MemArray>
 #include "traceitemview.h"
 
 class SourceItem;
 
-class SourceView : public QListView, public TraceItemView
+class SourceView : public Q3ListView, public TraceItemView
 {
   friend class SourceItem;
 
@@ -46,9 +48,9 @@ protected:
   void paintEmptyArea( QPainter *, const QRect & );
 
 private slots:
-  void context(QListViewItem*, const QPoint &, int);
-  void selectedSlot(QListViewItem *);
-  void activatedSlot(QListViewItem *);
+  void context(Q3ListViewItem*, const QPoint &, int);
+  void selectedSlot(Q3ListViewItem *);
+  void activatedSlot(Q3ListViewItem *);
 
 private:
   TraceItem* canShow(TraceItem*);
@@ -63,7 +65,7 @@ private:
   // arrows
   int _arrowLevels;
   // temporary needed on creation...
-  QMemArray<TraceLineJump*> _jump;
+  Q3MemArray<TraceLineJump*> _jump;
   TraceLineJumpList _lowList, _highList;
 };
 

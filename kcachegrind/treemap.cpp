@@ -27,7 +27,16 @@
 #include <qtooltip.h>
 #include <qregexp.h>
 #include <qstyle.h>
-#include <qpopupmenu.h>
+#include <q3popupmenu.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QPaintEvent>
+#include <Q3PtrList>
+#include <QKeyEvent>
+#include <QShowEvent>
+#include <QContextMenuEvent>
+#include <QResizeEvent>
+#include <QMouseEvent>
 
 #include <klocale.h>
 #include <kconfig.h>
@@ -1031,7 +1040,7 @@ void TreeMapItem::addFreeRect(const QRect& r)
     if ((r.width() < 1) || (r.height() < 1)) return;
 
     if (!_freeRects) {
-	_freeRects = new QPtrList<QRect>;
+	_freeRects = new Q3PtrList<QRect>;
 	_freeRects->setAutoDelete(true);
     }
 
@@ -1092,7 +1101,7 @@ void TreeMapTip::maybeTip( const QPoint& pos )
   TreeMapWidget* p = (TreeMapWidget*)parentWidget();
   TreeMapItem* i;
   i = p->item(pos.x(), pos.y());
-  QPtrList<QRect>* rList = i ? i->freeRects() : 0;
+  Q3PtrList<QRect>* rList = i ? i->freeRects() : 0;
   if (rList) {
       QRect* r;
       for(r=rList->first();r;r=rList->next())
@@ -2034,7 +2043,7 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
       }
     }
 
-    if (_current && (e->key() == Key_Return))
+    if (_current && (e->key() == Qt::Key_Return))
       emit returnPressed(_current);
 
     return;
@@ -2744,7 +2753,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
 
     // draw Separator
     if (_drawSeparators && (nextPos<lastPos)) {
-      p->setPen(black);
+      p->setPen(Qt::black);
       if (hor) {
         if (r.top()<=r.bottom())
           p->drawLine(r.x() + nextPos, r.top(), r.x() + nextPos, r.bottom());
@@ -2796,7 +2805,7 @@ void TreeMapWidget::splitActivated(int id)
 }
 
 
-void TreeMapWidget::addSplitDirectionItems(QPopupMenu* popup, int id)
+void TreeMapWidget::addSplitDirectionItems(Q3PopupMenu* popup, int id)
 {
   _splitID = id;
   popup->setCheckable(true);
@@ -2851,13 +2860,13 @@ void TreeMapWidget::visualizationActivated(int id)
   else if ((id%10) == 8) setFieldPosition(f, DrawParams::BottomRight);
 }
 
-void TreeMapWidget::addVisualizationItems(QPopupMenu* popup, int id)
+void TreeMapWidget::addVisualizationItems(Q3PopupMenu* popup, int id)
 {
   _visID = id;
 
   popup->setCheckable(true);
 
-  QPopupMenu* bpopup = new QPopupMenu();
+  Q3PopupMenu* bpopup = new Q3PopupMenu();
   bpopup->setCheckable(true);
 
   connect(popup, SIGNAL(activated(int)),
@@ -2865,7 +2874,7 @@ void TreeMapWidget::addVisualizationItems(QPopupMenu* popup, int id)
   connect(bpopup, SIGNAL(activated(int)),
           this, SLOT(visualizationActivated(int)));
 
-  QPopupMenu* spopup = new QPopupMenu();
+  Q3PopupMenu* spopup = new Q3PopupMenu();
   addSplitDirectionItems(spopup, id+100);
   popup->insertItem(i18n("Nesting"), spopup, id);
 
@@ -2891,10 +2900,10 @@ void TreeMapWidget::addVisualizationItems(QPopupMenu* popup, int id)
 
   popup->insertSeparator();
   int f;
-  QPopupMenu* tpopup;
+  Q3PopupMenu* tpopup;
   id += 20;
   for (f=0;f<(int)_attr.size();f++, id+=10) {
-    tpopup = new QPopupMenu();
+    tpopup = new Q3PopupMenu();
     tpopup->setCheckable(true);
     popup->insertItem(_attr[f].type, tpopup, id);
     tpopup->insertItem(i18n("Visible"), id+1);
@@ -2940,7 +2949,7 @@ void TreeMapWidget::selectionActivated(int id)
     setSelected(i, true);
 }
 
-void TreeMapWidget::addSelectionItems(QPopupMenu* popup,
+void TreeMapWidget::addSelectionItems(Q3PopupMenu* popup,
 				      int id, TreeMapItem* i)
 {
   if (!i) return;
@@ -2974,7 +2983,7 @@ void TreeMapWidget::fieldStopActivated(int id)
   }
 }
 
-void TreeMapWidget::addFieldStopItems(QPopupMenu* popup,
+void TreeMapWidget::addFieldStopItems(Q3PopupMenu* popup,
 				      int id, TreeMapItem* i)
 {
   _fieldStopID = id;
@@ -3023,7 +3032,7 @@ void TreeMapWidget::areaStopActivated(int id)
   else if (id == _areaStopID+6) setMinimalArea(minimalArea()/2);
 }
 
-void TreeMapWidget::addAreaStopItems(QPopupMenu* popup,
+void TreeMapWidget::addAreaStopItems(Q3PopupMenu* popup,
 				     int id, TreeMapItem* i)
 {
   _areaStopID = id;
@@ -3085,7 +3094,7 @@ void TreeMapWidget::depthStopActivated(int id)
   else if (id == _depthStopID+3) setMaxDrawingDepth(maxDrawingDepth()+1);
 }
 
-void TreeMapWidget::addDepthStopItems(QPopupMenu* popup,
+void TreeMapWidget::addDepthStopItems(Q3PopupMenu* popup,
 				      int id, TreeMapItem* i)
 {
   _depthStopID = id;

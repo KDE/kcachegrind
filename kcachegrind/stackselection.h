@@ -57,7 +57,7 @@ public slots:
   void setCostType2(TraceCostType*);
   void setGroupType(TraceItem::CostType);
 
-  void stackSelected( QListViewItem* );
+  void stackSelected( Q3ListViewItem* );
   void browserBack();
   void browserForward();
   void browserUp();
@@ -70,7 +70,7 @@ private:
 
   TraceData* _data;
   StackBrowser* _browser;
-  QListViewItem* _item;
+  Q3ListViewItem* _item;
   TraceFunction* _function;
   TraceCostType* _costType;
   TraceCostType* _costType2;

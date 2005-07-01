@@ -23,11 +23,11 @@
 #ifndef CALLVIEW_H
 #define CALLVIEW_H
 
-#include <qlistview.h>
+#include <q3listview.h>
 #include "tracedata.h"
 #include "traceitemview.h"
 
-class CallView: public QListView, public TraceItemView
+class CallView: public Q3ListView, public TraceItemView
 {
   Q_OBJECT
 
@@ -40,9 +40,9 @@ public:
   bool showCallers() const { return _showCallers; }
 
 private slots:
-  void context(QListViewItem*,const QPoint &, int);
-  void selectedSlot(QListViewItem*);
-  void activatedSlot(QListViewItem*);
+  void context(Q3ListViewItem*,const QPoint &, int);
+  void selectedSlot(Q3ListViewItem*);
+  void activatedSlot(Q3ListViewItem*);
 
 private:
   TraceItem* canShow(TraceItem*);

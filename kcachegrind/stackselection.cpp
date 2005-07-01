@@ -23,7 +23,7 @@
  */
 
 #include <qtimer.h>
-#include <qlistview.h>
+#include <q3listview.h>
 #include <qlabel.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
@@ -48,7 +48,7 @@ StackSelection::StackSelection( QWidget* parent, const char* name)
 
   stackList->setSorting(-1);
   stackList->setAllColumnsShowFocus(true);
-  stackList->setResizeMode(QListView::LastColumn);
+  stackList->setResizeMode(Q3ListView::LastColumn);
   stackList->setColumnAlignment(0, Qt::AlignRight);
   stackList->setColumnAlignment(1, Qt::AlignRight);
   stackList->setColumnAlignment(2, Qt::AlignRight);
@@ -57,8 +57,8 @@ StackSelection::StackSelection( QWidget* parent, const char* name)
   stackList->setColumnWidth(1, 0);
   stackList->setColumnWidth(2, 50);
 
-  connect(stackList, SIGNAL(selectionChanged(QListViewItem*)),
-          this, SLOT(stackSelected(QListViewItem*)));
+  connect(stackList, SIGNAL(selectionChanged(Q3ListViewItem*)),
+          this, SLOT(stackSelected(Q3ListViewItem*)));
 }
 
 StackSelection::~StackSelection()
@@ -108,7 +108,7 @@ void StackSelection::rebuildStackList()
   TraceFunction* top = item->stack()->top();
   if (!top) return;
 
-  stackList->setColumnWidthMode(1, QListView::Maximum);
+  stackList->setColumnWidthMode(1, Q3ListView::Maximum);
 
   TraceCallList l = item->stack()->calls();
   TraceCall* call;
@@ -118,7 +118,7 @@ void StackSelection::rebuildStackList()
   new StackItem(this, stackList, top);
 
   // select current function
-  QListViewItem* i = stackList->firstChild();
+  Q3ListViewItem* i = stackList->firstChild();
   for (;i;i=i->nextSibling())
     if (((StackItem*)i)->function() == item->function())
       break;
@@ -130,12 +130,12 @@ void StackSelection::rebuildStackList()
   }
 
   if (!_costType2) {
-    stackList->setColumnWidthMode(1, QListView::Manual);
+    stackList->setColumnWidthMode(1, Q3ListView::Manual);
     stackList->setColumnWidth(1, 0);
   }
 }
 
-void StackSelection::stackSelected(QListViewItem* i)
+void StackSelection::stackSelected(Q3ListViewItem* i)
 {
   if (!i) return;
 
@@ -178,7 +178,7 @@ void StackSelection::browserDown()
 
 void StackSelection::refresh()
 {
-  QListViewItem* item  = stackList->firstChild();
+  Q3ListViewItem* item  = stackList->firstChild();
   for(;item;item = item->nextSibling())
     ((StackItem*)item)->updateCost();
 }
@@ -192,7 +192,7 @@ void StackSelection::setCostType(TraceCostType* ct)
   if (_costType)
     stackList->setColumnText(0, _costType->name());
 
-  QListViewItem* item  = stackList->firstChild();
+  Q3ListViewItem* item  = stackList->firstChild();
   for(;item;item = item->nextSibling())
     ((StackItem*)item)->updateCost();
 }
@@ -203,16 +203,16 @@ void StackSelection::setCostType2(TraceCostType* ct)
   _costType2 = ct;
 
   stackList->setColumnWidth(1, 50);
-  stackList->setColumnWidthMode(1, QListView::Maximum);
+  stackList->setColumnWidthMode(1, Q3ListView::Maximum);
   if (_costType2)
     stackList->setColumnText(1, _costType2->name());
 
-  QListViewItem* item  = stackList->firstChild();
+  Q3ListViewItem* item  = stackList->firstChild();
   for(;item;item = item->nextSibling())
     ((StackItem*)item)->updateCost();
 
   if (!_costType2) {
-    stackList->setColumnWidthMode(1, QListView::Manual);
+    stackList->setColumnWidthMode(1, Q3ListView::Manual);
     stackList->setColumnWidth(1, 0);
   }
 }
@@ -222,7 +222,7 @@ void StackSelection::setGroupType(TraceItem::CostType gt)
   if (_groupType == gt) return;
   _groupType = gt;
 
-  QListViewItem* item  = stackList->firstChild();
+  Q3ListViewItem* item  = stackList->firstChild();
   for(;item;item = item->nextSibling())
     ((StackItem*)item)->updateGroup();
 }

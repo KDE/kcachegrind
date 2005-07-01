@@ -23,31 +23,33 @@
 #ifndef INSTRITEM_H
 #define INSTRITEM_H
 
-#include <qlistview.h>
+#include <q3listview.h>
+//Added by qt3to4:
+#include <Q3MemArray>
 #include "tracedata.h"
 
 class InstrView;
 
-class InstrItem: public QListViewItem
+class InstrItem: public Q3ListViewItem
 {
 
 public:
   // for messages
-  InstrItem(InstrView* iv, QListView* parent,
+  InstrItem(InstrView* iv, Q3ListView* parent,
 	    Addr addr, const QString&);
 
   // for instruction lines
-  InstrItem(InstrView* iv, QListView* parent,
+  InstrItem(InstrView* iv, Q3ListView* parent,
 	    Addr addr, bool inside,
 	    const QString&, const QString&, const QString&,
 	    TraceInstr* instr);
 
   // for call instr
-  InstrItem(InstrView* iv, QListViewItem* parent, Addr addr,
+  InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
 	    TraceInstr* instr, TraceInstrCall* instrCall);
 
   // for jump lines
-  InstrItem(InstrView* iv, QListViewItem* parent, Addr addr,
+  InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
 	    TraceInstr* instr, TraceInstrJump* instrJump);
 
   Addr addr() const { return _addr; }
@@ -55,22 +57,22 @@ public:
   TraceInstrCall* instrCall() const { return _instrCall; }
   TraceInstrJump* instrJump() const { return _instrJump; }
 
-  int compare(QListViewItem * i, int col, bool ascending ) const;
+  int compare(Q3ListViewItem * i, int col, bool ascending ) const;
 
   void paintCell(QPainter *p, const QColorGroup &cg,
                  int column, int width, int alignment );
   int width( const QFontMetrics& fm,
-             const QListView* lv, int c ) const;
+             const Q3ListView* lv, int c ) const;
 
   void updateGroup();
   void updateCost();
 
   // arrow lines
-  void setJumpArray(const QMemArray<TraceInstrJump*>& a);
+  void setJumpArray(const Q3MemArray<TraceInstrJump*>& a);
 
 protected:
   void paintArrows(QPainter *p, const QColorGroup &cg, int width);
-  QMemArray<TraceInstrJump*> _jump;
+  Q3MemArray<TraceInstrJump*> _jump;
 
 private:
   InstrView* _view;

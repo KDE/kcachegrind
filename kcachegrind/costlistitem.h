@@ -19,19 +19,19 @@
 #ifndef COSTLISTITEM_H
 #define COSTLISTITEM_H
 
-#include <qlistview.h>
+#include <q3listview.h>
 #include "tracedata.h"
 
-class CostListItem: public QListViewItem
+class CostListItem: public Q3ListViewItem
 {
 public:
-  CostListItem(QListView* parent, TraceCostItem* cost,
+  CostListItem(Q3ListView* parent, TraceCostItem* cost,
                TraceCostType* ct, int size = -1);
   // entry with multiple skipped items
-  CostListItem(QListView* parent, int skipped, TraceCostItem* cost,
+  CostListItem(Q3ListView* parent, int skipped, TraceCostItem* cost,
                TraceCostType* ct);
 
-  int compare(QListViewItem * i, int col, bool ascending ) const;
+  int compare(Q3ListViewItem * i, int col, bool ascending ) const;
   TraceCostItem* costItem() { return (_skipped) ? 0 : _costItem; }
   void setCostType(TraceCostType* ct);
   void update();

@@ -25,7 +25,7 @@
 
 #include <qcolor.h>
 #include <qstringlist.h>
-#include <qdict.h>
+#include <q3dict.h>
 
 #include "tracedata.h"
 
@@ -83,10 +83,10 @@ private:
 
   static ColorSetting* color(QString, bool createNew = true);
 
-  QDict<ColorSetting> _colors;
+  Q3Dict<ColorSetting> _colors;
 
   QStringList _generalSourceDirs;
-  QDict<QStringList> _objectSourceDirs;
+  Q3Dict<QStringList> _objectSourceDirs;
 
   bool _showPercentage, _showExpanded, _showCycles;
   double _cycleCut;

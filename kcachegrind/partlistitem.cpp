@@ -20,6 +20,8 @@
 
 #include <qpainter.h>
 #include <qregexp.h>
+//Added by qt3to4:
+#include <QPixmap>
 
 #include <klocale.h>
 #include <kiconloader.h>
@@ -33,10 +35,10 @@
 
 // PartListItem
 
-PartListItem::PartListItem(QListView* parent, TraceCostItem* costItem,
+PartListItem::PartListItem(Q3ListView* parent, TraceCostItem* costItem,
                            TraceCostType* ct, TraceCost::CostType gt,
 			   TracePart* part)
-  :QListViewItem(parent)
+  :Q3ListViewItem(parent)
 {
   _partCostItem = costItem->findDepFromPart(part);
   _part = part;
@@ -158,7 +160,7 @@ void PartListItem::update()
 }
 
 
-int PartListItem::compare(QListViewItem * i, int col, bool ascending ) const
+int PartListItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
 {
   PartListItem* fi = (PartListItem*) i;
   if (col==0) {
@@ -185,5 +187,5 @@ int PartListItem::compare(QListViewItem * i, int col, bool ascending ) const
     if (_callers > fi->_callers) return 1;
     return 0;
   }
-  return QListViewItem::compare(i, col, ascending);
+  return Q3ListViewItem::compare(i, col, ascending);
 }

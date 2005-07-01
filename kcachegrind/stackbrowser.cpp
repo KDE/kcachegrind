@@ -16,7 +16,7 @@
    Boston, MA 02111-1307, USA.
 */
 
-#include <qlistview.h>
+#include <q3listview.h>
 
 #include "stackbrowser.h"
 

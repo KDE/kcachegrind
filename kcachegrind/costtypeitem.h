@@ -23,17 +23,17 @@
 #ifndef COSTTYEPITEM_H
 #define COSTTYEPITEM_H
 
-#include <qlistview.h>
+#include <q3listview.h>
 #include "tracedata.h"
 
 
-class CostTypeItem: public QListViewItem
+class CostTypeItem: public Q3ListViewItem
 {
 public:
-  CostTypeItem(QListView* parent, TraceCostItem* costItem,
+  CostTypeItem(Q3ListView* parent, TraceCostItem* costItem,
                TraceCostType* ct, TraceCost::CostType gt);
 
-  int compare(QListViewItem * i, int col, bool ascending ) const;
+  int compare(Q3ListViewItem * i, int col, bool ascending ) const;
   void setGroupType(TraceCost::CostType);
   TraceCostItem* costItem() { return _costItem; }
   TraceCostType* costType() { return _costType; }

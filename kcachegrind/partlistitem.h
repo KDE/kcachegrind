@@ -19,7 +19,7 @@
 #ifndef PARTLISTITEM_H
 #define PARTLISTITEM_H
 
-#include <qlistview.h>
+#include <q3listview.h>
 #include "tracedata.h"
 
 /**
@@ -29,13 +29,13 @@
  *
  * Note: on a cost item / percentage change, the list is rebuild
  */
-class PartListItem: public QListViewItem
+class PartListItem: public Q3ListViewItem
 {
 public:
-  PartListItem(QListView* parent, TraceCostItem* costItem,
+  PartListItem(Q3ListView* parent, TraceCostItem* costItem,
                TraceCostType* ct, TraceCost::CostType gt, TracePart* part);
 
-  int compare(QListViewItem * i, int col, bool ascending ) const;
+  int compare(Q3ListViewItem * i, int col, bool ascending ) const;
   TraceCost* partCostItem() { return _partCostItem; }
   void setCostType(TraceCostType* ct);
   void setGroupType(TraceCost::CostType);

@@ -23,20 +23,20 @@
 #ifndef COVERAGEITEM_H
 #define COVERAGEITEM_H
 
-#include <qlistview.h>
+#include <q3listview.h>
 #include "tracedata.h"
 
 class Coverage;
 
-class CallerCoverageItem: public QListViewItem
+class CallerCoverageItem: public Q3ListViewItem
 {
 public:
-  CallerCoverageItem(QListView* parent, Coverage* c, TraceFunction* base,
+  CallerCoverageItem(Q3ListView* parent, Coverage* c, TraceFunction* base,
                      TraceCostType* ct, TraceCost::CostType gt);
-  CallerCoverageItem(QListView* parent, int skipped, Coverage* c, TraceFunction* base,
+  CallerCoverageItem(Q3ListView* parent, int skipped, Coverage* c, TraceFunction* base,
                      TraceCostType* ct, TraceCost::CostType gt);
 
-  int compare(QListViewItem * i, int col, bool ascending ) const;
+  int compare(Q3ListViewItem * i, int col, bool ascending ) const;
   TraceFunction* function() { return (_skipped) ? 0 : _function; }
   void setCostType(TraceCostType* ct);
   void setGroupType(TraceCost::CostType);
@@ -54,15 +54,15 @@ private:
 };
 
 
-class CalleeCoverageItem: public QListViewItem
+class CalleeCoverageItem: public Q3ListViewItem
 {
 public:
-  CalleeCoverageItem(QListView* parent, Coverage* c, TraceFunction* base,
+  CalleeCoverageItem(Q3ListView* parent, Coverage* c, TraceFunction* base,
                      TraceCostType* ct, TraceCost::CostType gt);
-  CalleeCoverageItem(QListView* parent, int skipped, Coverage* c, TraceFunction* base,
+  CalleeCoverageItem(Q3ListView* parent, int skipped, Coverage* c, TraceFunction* base,
                      TraceCostType* ct, TraceCost::CostType gt);
 
-  int compare(QListViewItem * i, int col, bool ascending ) const;
+  int compare(Q3ListViewItem * i, int col, bool ascending ) const;
   TraceFunction* function() { return (_skipped) ? 0 : _function; }
   void setCostType(TraceCostType* ct);
   void setGroupType(TraceCost::CostType);

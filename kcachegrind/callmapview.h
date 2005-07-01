@@ -26,6 +26,8 @@
 #include "treemap.h"
 #include "tracedata.h"
 #include "traceitemview.h"
+//Added by qt3to4:
+#include <QPixmap>
 
 class CallMapView: public TreeMapWidget, public TraceItemView
 {

@@ -22,6 +22,9 @@
 
 #include <qpixmap.h>
 #include <qpainter.h>
+//Added by qt3to4:
+#include <Q3PointArray>
+#include <Q3MemArray>
 
 #include <klocale.h>
 #include <kapplication.h>
@@ -36,9 +39,9 @@
 // InstrItem
 
 // for messages
-InstrItem::InstrItem(InstrView* iv, QListView* parent,
+InstrItem::InstrItem(InstrView* iv, Q3ListView* parent,
 		     Addr addr, const QString& msg)
-    : QListViewItem(parent)
+    : Q3ListViewItem(parent)
 {
   _view = iv;
   _addr = addr;
@@ -55,11 +58,11 @@ InstrItem::InstrItem(InstrView* iv, QListView* parent,
 }
 
 // for code lines
-InstrItem::InstrItem(InstrView* iv, QListView* parent,
+InstrItem::InstrItem(InstrView* iv, Q3ListView* parent,
 		     Addr addr, bool inside,
 		     const QString& code, const QString& cmd,
 		     const QString& args, TraceInstr* instr)
-    : QListViewItem(parent)
+    : Q3ListViewItem(parent)
 {
   _view = iv;
   _addr = addr;
@@ -85,9 +88,9 @@ InstrItem::InstrItem(InstrView* iv, QListView* parent,
 }
 
 // for call lines
-InstrItem::InstrItem(InstrView* iv, QListViewItem* parent, Addr addr,
+InstrItem::InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
 		     TraceInstr* instr, TraceInstrCall* instrCall)
-    : QListViewItem(parent)
+    : Q3ListViewItem(parent)
 {
   _view = iv;
   _addr = addr;
@@ -118,9 +121,9 @@ InstrItem::InstrItem(InstrView* iv, QListViewItem* parent, Addr addr,
 }
 
 // for jump lines
-InstrItem::InstrItem(InstrView* iv, QListViewItem* parent, Addr addr,
+InstrItem::InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
 		     TraceInstr* instr, TraceInstrJump* instrJump)
-    : QListViewItem(parent)
+    : Q3ListViewItem(parent)
 {
   _view = iv;
   _addr = addr;
@@ -237,7 +240,7 @@ void InstrItem::updateCost()
 }
 
 
-int InstrItem::compare(QListViewItem * i, int col, bool ascending ) const
+int InstrItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
 {
   const InstrItem* ii1 = this;
   const InstrItem* ii2 = (InstrItem*) i;
@@ -293,7 +296,7 @@ int InstrItem::compare(QListViewItem * i, int col, bool ascending ) const
     return 0;
 
   }
-  return QListViewItem::compare(i, col, ascending);
+  return Q3ListViewItem::compare(i, col, ascending);
 }
 
 void InstrItem::paintCell( QPainter *p, const QColorGroup &cg,
@@ -309,17 +312,17 @@ void InstrItem::paintCell( QPainter *p, const QColorGroup &cg,
   if (column == 3)
     paintArrows(p, _cg, width);
   else
-    QListViewItem::paintCell( p, _cg, column, width, alignment );
+    Q3ListViewItem::paintCell( p, _cg, column, width, alignment );
 }
 
-void InstrItem::setJumpArray(const QMemArray<TraceInstrJump*>& a)
+void InstrItem::setJumpArray(const Q3MemArray<TraceInstrJump*>& a)
 {
     _jump.duplicate(a);
 }
 
 void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 {
-  QListView *lv = listView();
+  Q3ListView *lv = listView();
   if ( !lv ) return;
   InstrView* iv = (InstrView*) lv;
 
@@ -391,7 +394,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       x = marg + 6*end;
       w = 6*(iv->arrowLevels() - end) + 10;
 
-      QPointArray a;
+      Q3PointArray a;
       a.putPoints(0, 7, x, y+h,
 		  x,y, x+w-8, y, x+w-8, y-2,
 		  x+w, yy,
@@ -434,9 +437,9 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 }
 
 int InstrItem::width( const QFontMetrics& fm,
-                      const QListView* lv, int c ) const
+                      const Q3ListView* lv, int c ) const
 {
-  if (c != 3) return QListViewItem::width(fm, lv, c);
+  if (c != 3) return Q3ListViewItem::width(fm, lv, c);
 
   InstrView* iv = (InstrView*) lv;
   int levels = iv->arrowLevels();

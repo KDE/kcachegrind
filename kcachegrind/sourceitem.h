@@ -23,27 +23,29 @@
 #ifndef SOURCEITEM_H
 #define SOURCEITEM_H
 
-#include <qlistview.h>
+#include <q3listview.h>
+//Added by qt3to4:
+#include <Q3MemArray>
 #include "tracedata.h"
 
 class SourceView;
 
-class SourceItem: public QListViewItem
+class SourceItem: public Q3ListViewItem
 {
 public:
   // for source lines
-  SourceItem(SourceView* sv, QListView* parent, 
+  SourceItem(SourceView* sv, Q3ListView* parent, 
 	     int fileno, unsigned int lineno,
 	     bool inside, const QString& src,
              TraceLine* line = 0);
 
   // for call lines
-  SourceItem(SourceView* sv, QListViewItem* parent, 
+  SourceItem(SourceView* sv, Q3ListViewItem* parent, 
 	     int fileno, unsigned int lineno,
              TraceLine* line, TraceLineCall* lineCall);
 
   // for jump lines
-  SourceItem(SourceView* sv, QListViewItem* parent, 
+  SourceItem(SourceView* sv, Q3ListViewItem* parent, 
 	     int fileno, unsigned int lineno,
              TraceLine* line, TraceLineJump* lineJump);
 
@@ -54,21 +56,21 @@ public:
   TraceLineCall* lineCall() const { return _lineCall; }
   TraceLineJump* lineJump() const { return _lineJump; }
 
-  int compare(QListViewItem * i, int col, bool ascending ) const;
+  int compare(Q3ListViewItem * i, int col, bool ascending ) const;
 
   void paintCell( QPainter *p, const QColorGroup &cg,
                   int column, int width, int alignment );
   int width( const QFontMetrics& fm,
-             const QListView* lv, int c ) const;
+             const Q3ListView* lv, int c ) const;
   void updateGroup();
   void updateCost();
 
   // arrow lines
-  void setJumpArray(const QMemArray<TraceLineJump*>& a);
+  void setJumpArray(const Q3MemArray<TraceLineJump*>& a);
 
 protected:
   void paintArrows(QPainter *p, const QColorGroup &cg, int width);
-  QMemArray<TraceLineJump*> _jump;
+  Q3MemArray<TraceLineJump*> _jump;
 
 private:
   SourceView* _view;

@@ -20,8 +20,10 @@
  * Call Map View
  */
 
-#include <qwhatsthis.h>
-#include <qpopupmenu.h>
+#include <q3whatsthis.h>
+#include <q3popupmenu.h>
+//Added by qt3to4:
+#include <QPixmap>
 
 #include <klocale.h>
 #include <kiconloader.h>
@@ -89,7 +91,7 @@ CallMapView::CallMapView(bool showCallers, TraceItemView* parentView,
           SIGNAL(contextMenuRequested(TreeMapItem*,const QPoint &)),
           SLOT(context(TreeMapItem*,const QPoint &)));
 
-  QWhatsThis::add( this, whatsThis());
+  Q3WhatsThis::add( this, whatsThis());
 }
 
 QString CallMapView::whatsThis() const
@@ -143,14 +145,14 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
 {
   if (!i) return;
 
-  QPopupMenu popup;
-  QPopupMenu fpopup; // select function subpopup
-  QPopupMenu vpopup; // visualisation subpopup
-  QPopupMenu dpopup; // split direction
-  QPopupMenu bpopup; // border subpopup
-  QPopupMenu l1popup; // depth limit subpopup
-  QPopupMenu l2popup; // function limit subpopup
-  QPopupMenu l3popup; // area limit subpopup
+  Q3PopupMenu popup;
+  Q3PopupMenu fpopup; // select function subpopup
+  Q3PopupMenu vpopup; // visualisation subpopup
+  Q3PopupMenu dpopup; // split direction
+  Q3PopupMenu bpopup; // border subpopup
+  Q3PopupMenu l1popup; // depth limit subpopup
+  Q3PopupMenu l2popup; // function limit subpopup
+  Q3PopupMenu l3popup; // area limit subpopup
 
   TreeMapItem* item = i;
   int count;
@@ -272,7 +274,7 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   vpopup.setCheckable(true);
   popup.insertItem(i18n("Visualisation"), &vpopup, 10);
 
-  QPopupMenu splitpopup;
+  Q3PopupMenu splitpopup;
   addSplitDirectionItems(&splitpopup, 1001);
   vpopup.insertItem(i18n("Split Direction"), &splitpopup, 1000);
 
