@@ -22,7 +22,7 @@
 
 #include <qdir.h>
 #include <qfile.h>
-#include <q3whatsthis.h>
+
 #include <q3popupmenu.h>
 #include <klocale.h>
 #include <kdebug.h>
@@ -75,7 +75,7 @@ SourceView::SourceView(TraceItemView* parentView,
           SIGNAL(returnPressed(Q3ListViewItem*)),
           SLOT(activatedSlot(Q3ListViewItem*)));
 
-  Q3WhatsThis::add( this, whatsThis());
+  this->setWhatsThis( whatsThis());
 }
 
 void SourceView::paintEmptyArea( QPainter * p, const QRect & r)

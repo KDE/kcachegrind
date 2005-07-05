@@ -26,7 +26,7 @@
 #include <qtooltip.h>
 #include <qfile.h>
 #include <qtextstream.h>
-#include <q3whatsthis.h>
+
 #include <q3canvas.h>
 #include <qmatrix.h>
 #include <qpair.h>
@@ -1392,7 +1392,7 @@ CallGraphView::CallGraphView(TraceItemView* parentView,
   connect(_completeView, SIGNAL(zoomRectMoveFinished()),
           this, SLOT(zoomRectMoveFinished()));
 
-  Q3WhatsThis::add( this, whatsThis() );
+  this->setWhatsThis( whatsThis() );
 
   // tooltips...
   _tip = new CallGraphTip(this);

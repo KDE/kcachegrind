@@ -27,7 +27,7 @@
 
 #include <q3vbox.h>
 #include <qtimer.h>
-#include <q3whatsthis.h>
+
 #include <qlineedit.h>
 #include <qtextstream.h>
 #include <qsizepolicy.h>
@@ -288,7 +288,7 @@ void TopLevel::createDocks()
   _partDock->setWidget(_partSelection);
   _partDock->setResizeEnabled(true);
   _partDock->setFixedExtentWidth(200);
-  Q3WhatsThis::add( _partSelection, i18n(
+  _partSelection->setWhatsThis( i18n(
                    "<b>The Parts Overview</b>"
                    "<p>A trace consists of multiple trace parts when "
                    "there are several profile data files from one profile run. "
@@ -320,7 +320,7 @@ void TopLevel::createDocks()
   _stackDock->setWidget(_stackSelection);
   _stackDock->setFixedExtentWidth(200);
   _stackDock->setCaption(i18n("Top Cost Call Stack"));
-  Q3WhatsThis::add( _stackSelection, i18n(
+  _stackSelection->setWhatsThis( i18n(
                    "<b>The Top Cost Call Stack</b>"
                    "<p>This is a purely fictional 'most probable' call stack. "
                    "It is built up by starting with the current selected "
@@ -343,7 +343,7 @@ void TopLevel::createDocks()
   _functionDock->setWidget(_functionSelection);
   _functionDock->setResizeEnabled(true);
   _functionDock->setFixedExtentWidth(200);
-  Q3WhatsThis::add( _functionSelection, i18n(
+  _functionSelection->setWhatsThis( i18n(
                    "<b>The Flat Profile</b>"
                    "<p>The flat profile contains a group and a function "
                    "selection list. The group list contains all groups "
@@ -367,7 +367,7 @@ void TopLevel::createDocks()
   _dumpDock->setWidget(_dumpSelection);
   _dumpDock->setResizeEnabled(true);
   _dumpDock->setFixedExtentWidth(200);
-  Q3WhatsThis::add( _dumpSelection, i18n(
+  _dumpSelection->setWhatsThis( i18n(
                    "<b>Profile Dumps</b>"
                    "<p>This dockable shows in the top part the list of "
                    "loadable profile dumps in all subdirectories of: "

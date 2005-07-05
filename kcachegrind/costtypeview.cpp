@@ -20,7 +20,7 @@
  * Cost Type View
  */
 
-#include <q3whatsthis.h>
+
 #include <q3popupmenu.h>
 #include <klocale.h>
 
@@ -73,7 +73,7 @@ CostTypeView::CostTypeView(TraceItemView* parentView,
 	    SIGNAL(itemRenamed(Q3ListViewItem*,int,const QString&)),
 	    SLOT(renamedSlot(Q3ListViewItem*,int,const QString&)));
 
-    Q3WhatsThis::add( this, whatsThis() );
+    this->setWhatsThis( whatsThis() );
 }
 
 QString CostTypeView::whatsThis() const

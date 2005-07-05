@@ -20,7 +20,7 @@
  * Call Views
  */
 
-#include <q3whatsthis.h>
+
 #include <q3popupmenu.h>
 #include <klocale.h>
 
@@ -76,7 +76,7 @@ CallView::CallView(bool showCallers, TraceItemView* parentView,
 	    SIGNAL(returnPressed(Q3ListViewItem*)),
 	    SLOT(activatedSlot(Q3ListViewItem*)));
 
-    Q3WhatsThis::add( this, whatsThis() );
+    this->setWhatsThis( whatsThis() );
 }
 
 QString CallView::whatsThis() const

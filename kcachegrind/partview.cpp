@@ -20,7 +20,7 @@
  * Part View
  */
 
-#include <q3whatsthis.h>
+
 #include <q3popupmenu.h>
 #include <q3header.h>
 #include <klocale.h>
@@ -65,7 +65,7 @@ PartView::PartView(TraceItemView* parentView,
 	     SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
 	     SLOT(context(Q3ListViewItem*, const QPoint &, int)));
 
-    Q3WhatsThis::add( this, whatsThis() );
+    this->setWhatsThis( whatsThis() );
 }
 
 QString PartView::whatsThis() const

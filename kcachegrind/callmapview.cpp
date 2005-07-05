@@ -20,7 +20,7 @@
  * Call Map View
  */
 
-#include <q3whatsthis.h>
+
 #include <q3popupmenu.h>
 //Added by qt3to4:
 #include <QPixmap>
@@ -91,7 +91,7 @@ CallMapView::CallMapView(bool showCallers, TraceItemView* parentView,
           SIGNAL(contextMenuRequested(TreeMapItem*,const QPoint &)),
           SLOT(context(TreeMapItem*,const QPoint &)));
 
-  Q3WhatsThis::add( this, whatsThis());
+  this->setWhatsThis( whatsThis());
 }
 
 QString CallMapView::whatsThis() const

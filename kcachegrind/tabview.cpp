@@ -25,7 +25,7 @@
 #include <qsplitter.h>
 #include <qtabwidget.h>
 #include <qlayout.h>
-#include <q3whatsthis.h>
+
 #include <q3popupmenu.h>
 //Added by qt3to4:
 #include <QHideEvent>
@@ -331,7 +331,7 @@ TabView::TabView(TraceItemView* parentView,
 
   updateVisibility();
 
-  Q3WhatsThis::add( this, whatsThis() );
+  this->setWhatsThis( whatsThis() );
 }
 
 void TabView::setData(TraceData* d)
