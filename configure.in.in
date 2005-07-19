@@ -6,4 +6,3 @@ AC_FUNC_MMAP
 dnl AC_OUTPUT( kcachegrind/version.h )
 dnl AC_OUTPUT( kcachegrind/kcachegrind.spec )
 dnl AC_OUTPUT( kcachegrind/kcachegrind.lsm )
-
