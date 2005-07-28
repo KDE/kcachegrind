@@ -24,10 +24,17 @@
 #ifndef TABVIEW_H
 #define TABVIEW_H
 
-#include <qptrlist.h>
+#include <q3ptrlist.h>
 #include <qwidget.h>
 #include <qtabwidget.h>
 #include <qtabbar.h>
+//Added by qt3to4:
+#include <QMouseEvent>
+#include <QHideEvent>
+#include <QShowEvent>
+#include <QMoveEvent>
+#include <QResizeEvent>
+#include <QEvent>
 #include <ksqueezedtextlabel.h>
 #include "traceitemview.h"
 
@@ -63,7 +70,7 @@ class Splitter: public QSplitter
   Q_OBJECT
 
 public:
-  Splitter(Orientation o, QWidget* parent = 0, const char* name = 0);
+  Splitter(Qt::Orientation o, QWidget* parent = 0, const char* name = 0);
   void checkVisiblity();
 
 protected:
@@ -84,7 +91,7 @@ class TabWidget: public QTabWidget
 public:
 
   TabWidget(TabView*, QWidget* parent = 0,
-            const char* name = 0, WFlags f = 0);
+            const char* name = 0, Qt::WFlags f = 0);
 
   bool hasVisibleRect() { return _hasVisibleRect; }
   void checkVisibility();
@@ -161,7 +168,7 @@ private:
   KSqueezedTextLabel* _nameLabel;
   QSplitter *_mainSplitter, *_leftSplitter, *_bottomSplitter;
   TabWidget *_topTW, *_leftTW, *_bottomTW, *_rightTW;
-  QPtrList<TraceItemView> _tabs;
+  Q3PtrList<TraceItemView> _tabs;
 
   QWidget* _lastFocus;
   bool _active;

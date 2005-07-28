@@ -24,9 +24,11 @@
 #define TRACEITEMVIEW_H
 
 #include "tracedata.h"
+//Added by qt3to4:
+#include <Q3PopupMenu>
 
 class QWidget;
-class QPopupMenu;
+class Q3PopupMenu;
 
 class KConfig;
 class KConfigGroup;
@@ -117,7 +119,7 @@ public:
    */
   virtual void selected(TraceItemView* sender, TraceItem*);
   virtual void selected(TraceItemView* sender, const TracePartList&);
-  virtual void activated(TraceItemView* sender, Direction);
+  virtual void activated(TraceItemView* sender, Qt::Orientation);
   virtual void selectedCostType(TraceItemView* sender, TraceCostType*);
   virtual void selectedCostType2(TraceItemView* sender, TraceCostType*);
   virtual void activated(TraceItemView* sender, TraceItem*);
@@ -161,8 +163,8 @@ public:
   virtual TraceItem* canShow(TraceItem* i) { return i; }
 
   /* convenience functions for often used context menu items */
-  void addCostMenu(QPopupMenu*,bool withCost2 = true);
-  void addGoMenu(QPopupMenu*);
+  void addCostMenu(Q3PopupMenu*,bool withCost2 = true);
+  void addGoMenu(Q3PopupMenu*);
 
 protected:
   // helpers to call selected()/activated() of parentView
@@ -171,7 +173,7 @@ protected:
   void activated(TraceItem*);
   void selectedCostType(TraceCostType*);
   void selectedCostType2(TraceCostType*);
-  void activated(Direction);
+  void activated(Qt::Orientation);
 
   /* Is this view visible?
    * if not, doUpdate() won't be called by updateView()

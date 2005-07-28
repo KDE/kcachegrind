@@ -20,8 +20,8 @@
  * Call Views
  */
 
-#include <qwhatsthis.h>
-#include <qpopupmenu.h>
+
+#include <q3popupmenu.h>
 #include <klocale.h>
 
 #include "configuration.h"
@@ -37,7 +37,7 @@
 
 CallView::CallView(bool showCallers, TraceItemView* parentView,
 		   QWidget* parent, const char* name)
-  : QListView(parent, name), TraceItemView(parentView)
+  : Q3ListView(parent, name), TraceItemView(parentView)
 {
     _showCallers = showCallers;
 
@@ -57,26 +57,26 @@ CallView::CallView(bool showCallers, TraceItemView* parentView,
     setColumnAlignment(1, Qt::AlignRight);
     setColumnAlignment(2, Qt::AlignRight);
     setAllColumnsShowFocus(true);
-    setResizeMode(QListView::LastColumn);
+    setResizeMode(Q3ListView::LastColumn);
     setMinimumHeight(50);
 
     connect( this,
-	     SIGNAL( selectionChanged(QListViewItem*) ),
-	     SLOT( selectedSlot(QListViewItem*) ) );
+	     SIGNAL( selectionChanged(Q3ListViewItem*) ),
+	     SLOT( selectedSlot(Q3ListViewItem*) ) );
 
     connect( this,
-	     SIGNAL(contextMenuRequested(QListViewItem*, const QPoint &, int)),
-	     SLOT(context(QListViewItem*, const QPoint &, int)));
+	     SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
+	     SLOT(context(Q3ListViewItem*, const QPoint &, int)));
 
     connect(this,
-	    SIGNAL(doubleClicked(QListViewItem*)),
-	    SLOT(activatedSlot(QListViewItem*)));
+	    SIGNAL(doubleClicked(Q3ListViewItem*)),
+	    SLOT(activatedSlot(Q3ListViewItem*)));
 
     connect(this,
-	    SIGNAL(returnPressed(QListViewItem*)),
-	    SLOT(activatedSlot(QListViewItem*)));
+	    SIGNAL(returnPressed(Q3ListViewItem*)),
+	    SLOT(activatedSlot(Q3ListViewItem*)));
 
-    QWhatsThis::add( this, whatsThis() );
+    this->setWhatsThis( whatsThis() );
 }
 
 QString CallView::whatsThis() const
@@ -107,9 +107,9 @@ QString CallView::whatsThis() const
 }
 
 
-void CallView::context(QListViewItem* i, const QPoint & p, int col)
+void CallView::context(Q3ListViewItem* i, const QPoint & p, int col)
 {
-  QPopupMenu popup;
+  Q3PopupMenu popup;
 
   // Menu entry:
   TraceCall* c = i ? ((CallItem*) i)->call() : 0;
@@ -142,7 +142,7 @@ void CallView::context(QListViewItem* i, const QPoint & p, int col)
   else if (r == 94) activated(cycle);
 }
 
-void CallView::selectedSlot(QListViewItem * i)
+void CallView::selectedSlot(Q3ListViewItem * i)
 {
   if (!i) return;
   TraceCall* c = ((CallItem*) i)->call();
@@ -153,7 +153,7 @@ void CallView::selectedSlot(QListViewItem * i)
   selected(f);
 }
 
-void CallView::activatedSlot(QListViewItem * i)
+void CallView::activatedSlot(Q3ListViewItem * i)
 {
   if (!i) return;
   TraceCall* c = ((CallItem*) i)->call();
@@ -187,7 +187,7 @@ void CallView::doUpdate(int changeType)
 	    return;
 	}
 
-	CallItem* ci = (CallItem*) QListView::selectedItem();
+	CallItem* ci = (CallItem*) Q3ListView::selectedItem();
 	TraceCall* c;
 	TraceItem* ti;
 	if (ci) {
@@ -196,7 +196,7 @@ void CallView::doUpdate(int changeType)
 	    if (ti == _selectedItem) return;
 	}
 
-	QListViewItem *item;
+	Q3ListViewItem *item;
 	for (item = firstChild();item;item = item->nextSibling()) {
 	    c = ((CallItem*) item)->call();
 	    ti = _showCallers ? c->caller() : c->called();
@@ -211,7 +211,7 @@ void CallView::doUpdate(int changeType)
     }
     
     if (changeType == groupTypeChanged) {
-	QListViewItem *item;
+	Q3ListViewItem *item;
 	for (item = firstChild();item;item = item->nextSibling())
 	    ((CallItem*)item)->updateGroup();
 	return;
@@ -241,14 +241,14 @@ void CallView::refresh()
     TraceCallList l = _showCallers ? f->callers(true) : f->callings(true);
 
     // Allow resizing of column 1
-    setColumnWidthMode(1, QListView::Maximum);
+    setColumnWidthMode(1, Q3ListView::Maximum);
 
     for (call=l.first();call;call=l.next())
 	if (call->subCost(_costType)>0)
 	    new CallItem(this, this, call);
 
     if (!_costType2) {
-      setColumnWidthMode(1, QListView::Manual);
+      setColumnWidthMode(1, Q3ListView::Manual);
       setColumnWidth(1, 0);
     }
 }

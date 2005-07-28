@@ -23,7 +23,7 @@
  * (with wrap around).
  */
 
-#include <qobjectlist.h>
+#include <qobject.h>
 #include <kconfig.h>
 #include <kdebug.h>
 

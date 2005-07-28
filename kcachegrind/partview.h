@@ -23,11 +23,11 @@
 #ifndef PARTVIEW_H
 #define PARTVIEW_H
 
-#include <qlistview.h>
+#include <q3listview.h>
 #include "tracedata.h"
 #include "traceitemview.h"
 
-class PartView: public QListView, public TraceItemView
+class PartView: public Q3ListView, public TraceItemView
 {
   Q_OBJECT
 
@@ -41,7 +41,7 @@ public:
   void refresh();
 
 private slots:
-  void context(QListViewItem*,const QPoint &, int);
+  void context(Q3ListViewItem*,const QPoint &, int);
   void selectionChangedSlot();
 
 private:

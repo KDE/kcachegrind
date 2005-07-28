@@ -23,6 +23,8 @@
 #include <qdir.h>
 #include <qfileinfo.h>
 #include <qregexp.h>
+//Added by qt3to4:
+#include <Q3PtrList>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -792,7 +794,7 @@ void TraceJumpCost::addCost(TraceJumpCost* item)
 //---------------------------------------------------
 // TraceCostType
 
-QPtrList<TraceCostType>* TraceCostType::_knownTypes = 0;
+Q3PtrList<TraceCostType>* TraceCostType::_knownTypes = 0;
 
 TraceCostType::TraceCostType(QString name,  QString longName, QString formula)
 {
@@ -998,7 +1000,7 @@ void TraceCostType::add(TraceCostType* t)
   t->setMapping(0);
 
   if (!_knownTypes)
-    _knownTypes = new QPtrList<TraceCostType>;
+    _knownTypes = new Q3PtrList<TraceCostType>;
 
   /* Already known? */
   TraceCostType* kt;

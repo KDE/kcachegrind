@@ -31,8 +31,8 @@
 // StackItem
 
 StackItem::StackItem(StackSelection* ss, 
-		     QListView* parent, TraceFunction* f)
-  :QListViewItem(parent)
+		     Q3ListView* parent, TraceFunction* f)
+  :Q3ListViewItem(parent)
 {
   _view = ss;
   _function = f;
@@ -46,8 +46,8 @@ StackItem::StackItem(StackSelection* ss,
 }
 
 StackItem::StackItem(StackSelection* ss,
-		     QListView* parent, TraceCall* call)
-  :QListViewItem(parent)
+		     Q3ListView* parent, TraceCall* call)
+  :Q3ListViewItem(parent)
 {
   _view = ss;
   _call = call;

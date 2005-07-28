@@ -23,16 +23,25 @@
 #ifndef CALLGRAPHVIEW_H
 #define CALLGRAPHVIEW_H
 
-#include <qcanvas.h>
+#include <q3canvas.h>
 #include <qwidget.h>
 #include <qmap.h>
 #include <qtimer.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QFocusEvent>
+#include <Q3PointArray>
+#include <Q3PtrList>
+#include <QKeyEvent>
+#include <QResizeEvent>
+#include <QContextMenuEvent>
+#include <QMouseEvent>
 
 #include "treemap.h" // for DrawParams
 #include "tracedata.h"
 #include "traceitemview.h"
 
-class QProcess;
+class Q3Process;
 
 class KTempFile;
 class CanvasNode;
@@ -42,7 +51,7 @@ class CallGraphView;
 
 // sorts according start/end position of a call arc
 // this depends on attached CanvasEdge's !
-class GraphEdgeList: public QPtrList<GraphEdge>
+class GraphEdgeList: public Q3PtrList<GraphEdge>
 {
  public:
     GraphEdgeList();
@@ -279,7 +288,7 @@ private:
 /**
  * A panner layed over a QCanvas
  */
-class PannerView: public QCanvasView
+class PannerView: public Q3CanvasView
 {
   Q_OBJECT
 
@@ -319,10 +328,10 @@ enum {
     CANVAS_FRAME
 };
 
-class CanvasNode: public QCanvasRectangle, public StoredDrawParams
+class CanvasNode: public Q3CanvasRectangle, public StoredDrawParams
 {
 public:
-  CanvasNode(CallGraphView*,GraphNode*, int, int, int, int, QCanvas*);
+  CanvasNode(CallGraphView*,GraphNode*, int, int, int, int, Q3Canvas*);
 
   void updateGroup();
   void setSelected(bool);
@@ -336,10 +345,10 @@ private:
   CallGraphView* _view;
 };
 
-class CanvasEdgeLabel: public QCanvasRectangle, public StoredDrawParams
+class CanvasEdgeLabel: public Q3CanvasRectangle, public StoredDrawParams
 {
 public:
-  CanvasEdgeLabel(CallGraphView*, CanvasEdge*, int, int, int, int, QCanvas*);
+  CanvasEdgeLabel(CallGraphView*, CanvasEdge*, int, int, int, int, Q3Canvas*);
 
   void drawShape(QPainter&);
 
@@ -351,10 +360,10 @@ private:
   CallGraphView* _view;
 };
 
-class CanvasEdgeArrow: public QCanvasPolygon
+class CanvasEdgeArrow: public Q3CanvasPolygon
 {
 public:
-  CanvasEdgeArrow(CanvasEdge*, QCanvas*);
+  CanvasEdgeArrow(CanvasEdge*, Q3Canvas*);
 
   void drawShape(QPainter&);
 
@@ -366,14 +375,14 @@ private:
 };
 
 
-class CanvasEdge: public QCanvasSpline
+class CanvasEdge: public Q3CanvasSpline
 {
 public:
-  CanvasEdge(GraphEdge*, QCanvas*);
+  CanvasEdge(GraphEdge*, Q3Canvas*);
 
   void setSelected(bool);
   void drawShape(QPainter&);
-  QPointArray areaPoints() const;
+  Q3PointArray areaPoints() const;
 
   CanvasEdgeLabel* label() { return _label; }
   void setLabel(CanvasEdgeLabel* l) { _label = l; }
@@ -390,10 +399,10 @@ private:
 };
 
 
-class CanvasFrame: public QCanvasRectangle
+class CanvasFrame: public Q3CanvasRectangle
 {
 public:
-  CanvasFrame( CanvasNode*, QCanvas *canvas );
+  CanvasFrame( CanvasNode*, Q3Canvas *canvas );
   int rtti () const { return CANVAS_FRAME; }
   bool hit( const QPoint&) const { return false; }
 protected:
@@ -410,7 +419,7 @@ class CallGraphTip;
  * and another zoomed out CanvasView in a border acting as
  * a panner to select to visible part (only if needed)
  */
-class CallGraphView: public QCanvasView,  public TraceItemView,
+class CallGraphView: public Q3CanvasView,  public TraceItemView,
 		     public StorableGraphOptions
 {
  Q_OBJECT
@@ -462,7 +471,7 @@ private:
   void clear();
   void showText(QString);
 
-  QCanvas *_canvas;
+  Q3Canvas *_canvas;
   int _xMargin, _yMargin;
   PannerView *_completeView;
   double _cvZoom;
@@ -481,7 +490,7 @@ private:
   ZoomPosition _zoomPosition, _lastAutoPosition;
 
   // background rendering
-  QProcess* _renderProcess;
+  Q3Process* _renderProcess;
   QTimer _renderTimer;
   GraphNode* _prevSelectedNode;
   QPoint _prevSelectedPos;

@@ -23,17 +23,17 @@
 #ifndef CALLITEM_H
 #define CALLITEM_H
 
-#include <qlistview.h>
+#include <q3listview.h>
 #include "tracedata.h"
 
 class CallView;
 
-class CallItem: public QListViewItem
+class CallItem: public Q3ListViewItem
 {
 public:
-    CallItem(CallView*, QListView*, TraceCall* c);
+    CallItem(CallView*, Q3ListView*, TraceCall* c);
 
-    int compare(QListViewItem * i, int col, bool ascending ) const;
+    int compare(Q3ListViewItem * i, int col, bool ascending ) const;
     TraceCall* call() { return _call; }
     CallView* view() { return _view; }
     void updateCost();

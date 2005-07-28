@@ -20,8 +20,8 @@
  * Cost Type View
  */
 
-#include <qwhatsthis.h>
-#include <qpopupmenu.h>
+
+#include <q3popupmenu.h>
 #include <klocale.h>
 
 #include "configuration.h"
@@ -37,7 +37,7 @@
 
 CostTypeView::CostTypeView(TraceItemView* parentView,
 			   QWidget* parent, const char* name)
-  : QListView(parent, name), TraceItemView(parentView)
+  : Q3ListView(parent, name), TraceItemView(parentView)
 {
     addColumn( i18n( "Event Type" ) );
     addColumn( i18n( "Incl." ) );
@@ -54,26 +54,26 @@ CostTypeView::CostTypeView(TraceItemView* parentView,
     setMinimumHeight(50);
 
     connect( this,
-	     SIGNAL( selectionChanged(QListViewItem*) ),
-	     SLOT( selectedSlot(QListViewItem*) ) );
+	     SIGNAL( selectionChanged(Q3ListViewItem*) ),
+	     SLOT( selectedSlot(Q3ListViewItem*) ) );
 
     connect( this,
-	     SIGNAL(contextMenuRequested(QListViewItem*, const QPoint &, int)),
-	     SLOT(context(QListViewItem*, const QPoint &, int)));
+	     SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
+	     SLOT(context(Q3ListViewItem*, const QPoint &, int)));
 
     connect(this,
-	    SIGNAL(doubleClicked(QListViewItem*)),
-	    SLOT(activatedSlot(QListViewItem*)));
+	    SIGNAL(doubleClicked(Q3ListViewItem*)),
+	    SLOT(activatedSlot(Q3ListViewItem*)));
 
     connect(this,
-	    SIGNAL(returnPressed(QListViewItem*)),
-	    SLOT(activatedSlot(QListViewItem*)));
+	    SIGNAL(returnPressed(Q3ListViewItem*)),
+	    SLOT(activatedSlot(Q3ListViewItem*)));
 
     connect(this,
-	    SIGNAL(itemRenamed(QListViewItem*,int,const QString&)),
-	    SLOT(renamedSlot(QListViewItem*,int,const QString&)));
+	    SIGNAL(itemRenamed(Q3ListViewItem*,int,const QString&)),
+	    SLOT(renamedSlot(Q3ListViewItem*,int,const QString&)));
 
-    QWhatsThis::add( this, whatsThis() );
+    this->setWhatsThis( whatsThis() );
 }
 
 QString CostTypeView::whatsThis() const
@@ -88,9 +88,9 @@ QString CostTypeView::whatsThis() const
 }
 
 
-void CostTypeView::context(QListViewItem* i, const QPoint & p, int)
+void CostTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
 {
-  QPopupMenu popup;
+  Q3PopupMenu popup;
 
   TraceCostType* ct = i ? ((CostTypeItem*) i)->costType() : 0;
 
@@ -159,14 +159,14 @@ void CostTypeView::context(QListViewItem* i, const QPoint & p, int)
   }
 }
 
-void CostTypeView::selectedSlot(QListViewItem * i)
+void CostTypeView::selectedSlot(Q3ListViewItem * i)
 {
     TraceCostType* ct = i ? ((CostTypeItem*) i)->costType() : 0;
     if (ct)
 	selectedCostType(ct);
 }
 
-void CostTypeView::activatedSlot(QListViewItem * i)
+void CostTypeView::activatedSlot(Q3ListViewItem * i)
 {
   TraceCostType* ct = i ? ((CostTypeItem*) i)->costType() : 0;
   if (ct)
@@ -199,7 +199,7 @@ void CostTypeView::doUpdate(int changeType)
     if (changeType == costType2Changed) return;
 
     if (changeType == groupTypeChanged) {
-	QListViewItem *item;
+	Q3ListViewItem *item;
 	for (item = firstChild();item;item = item->nextSibling())
 	    ((CostTypeItem*)item)->setGroupType(_groupType);
 
@@ -207,7 +207,7 @@ void CostTypeView::doUpdate(int changeType)
     }
 
     if (changeType == costTypeChanged) {
-	QListViewItem *item;
+	Q3ListViewItem *item;
 	for (item = firstChild();item;item = item->nextSibling())
 	    if ( ((CostTypeItem*)item)->costType() == _costType) {
 		setSelected(item, true);
@@ -219,7 +219,7 @@ void CostTypeView::doUpdate(int changeType)
     }
 
     if (changeType == partsChanged) {
-	QListViewItem *item;
+	Q3ListViewItem *item;
 	for (item = firstChild();item;item = item->nextSibling())
 	    ((CostTypeItem*)item)->update();
 
@@ -250,9 +250,9 @@ void CostTypeView::refresh()
     TraceCostItem* c = (TraceCostItem*) _activeItem;
 
     TraceCostType* ct =0 ;
-    QListViewItem* item = 0;
+    Q3ListViewItem* item = 0;
     QString sumStr, pureStr;
-    QListViewItem* costItem=0;
+    Q3ListViewItem* costItem=0;
 
     TraceCostMapping* m = _data->mapping();
     for (int i=m->virtualCount()-1;i>=0;i--) {
@@ -276,7 +276,7 @@ void CostTypeView::refresh()
 }
 
 
-void CostTypeView::renamedSlot(QListViewItem* item,int c,const QString& t)
+void CostTypeView::renamedSlot(Q3ListViewItem* item,int c,const QString& t)
 {
   TraceCostType* ct = item ? ((CostTypeItem*) item)->costType() : 0;
   if (!ct || ct->isReal()) return;

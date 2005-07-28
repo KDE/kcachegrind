@@ -21,12 +21,22 @@
  * two tab widgets, separated by a splitter
  */
 
-#include <qobjectlist.h>
+#include <qobject.h>
 #include <qsplitter.h>
 #include <qtabwidget.h>
 #include <qlayout.h>
-#include <qwhatsthis.h>
-#include <qpopupmenu.h>
+
+#include <q3popupmenu.h>
+//Added by qt3to4:
+#include <QHideEvent>
+#include <QMoveEvent>
+#include <Q3PtrList>
+#include <QEvent>
+#include <Q3ValueList>
+#include <QShowEvent>
+#include <QVBoxLayout>
+#include <QResizeEvent>
+#include <QMouseEvent>
 
 #include <klocale.h>
 #include <kconfig.h>
@@ -57,7 +67,7 @@ void TabBar::mousePressEvent(QMouseEvent *e)
       QWidget* page;
       page = tab ? _tabWidget->page( indexOf( tab->identifier() ) ) :0;
 
-      QPopupMenu popup, popup1, popup2, popup3;
+      Q3PopupMenu popup, popup1, popup2, popup3;
       if (page) {
         TraceItemView::Position p = _tabView->tabPosition(page);
         if (p != TraceItemView::Top) {
@@ -114,7 +124,7 @@ void TabBar::mousePressEvent(QMouseEvent *e)
 // Splitter
 //
 
-Splitter::Splitter(Orientation o, QWidget* parent, const char* name)
+Splitter::Splitter(Qt::Orientation o, QWidget* parent, const char* name)
   : QSplitter(o, parent, name)
 {}
 
@@ -146,7 +156,7 @@ void Splitter::checkVisiblity()
 //
 
 TabWidget::TabWidget(TabView* v, QWidget* parent,
-                     const char* name, WFlags f)
+                     const char* name, Qt::WFlags f)
     : QTabWidget(parent, name, f)
 {
     _hasVisibleRect = false;
@@ -321,7 +331,7 @@ TabView::TabView(TraceItemView* parentView,
 
   updateVisibility();
 
-  QWhatsThis::add( this, whatsThis() );
+  this->setWhatsThis( whatsThis() );
 }
 
 void TabView::setData(TraceData* d)
@@ -415,7 +425,7 @@ void TabView::updateVisibility()
   if (0) qDebug("TabView::updateVisiblity t %d, b %d, l %d, r %d",
 		t, b, l, r);
 
-  QValueList<int> s;
+  Q3ValueList<int> s;
   s.append(100);
 
 
@@ -513,7 +523,7 @@ void TabView::moveTab(QWidget* w, Position p, bool wholeArea)
     from = tabWidget(origPos);
     to = tabWidget(p);
 
-    QPtrList<TraceItemView> tabs;
+    Q3PtrList<TraceItemView> tabs;
     for (v=_tabs.first();v;v=_tabs.next())
       if ((v->position() == origPos) &&
           (wholeArea || (v->widget() == w))) tabs.append(v);
@@ -636,7 +646,7 @@ void TabView::doUpdate(int changeType)
     // invoke tabChanged, which mangles with the lists, too
     bool canShow;
     TraceItemView *v;
-    QPtrListIterator<TraceItemView> it( _tabs );
+    Q3PtrListIterator<TraceItemView> it( _tabs );
     while ( (v=it.current()) != 0) {
       ++it;
 
@@ -746,7 +756,7 @@ void TabView::readViewConfig(KConfig* c,
 
     moveTab(0, TraceItemView::Top, true);
     TraceItemView *v;
-    QPtrListIterator<TraceItemView> it( _tabs );
+    Q3PtrListIterator<TraceItemView> it( _tabs );
     while ( (v=it.current()) != 0) {
       ++it;
 

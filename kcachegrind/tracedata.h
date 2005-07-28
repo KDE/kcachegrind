@@ -27,9 +27,9 @@
 
 #include <qstring.h>
 #include <qstringlist.h>
-#include <qptrlist.h>
+#include <q3ptrlist.h>
 #include <qmap.h>
-#include <qptrvector.h>
+#include <q3ptrvector.h>
 #include <qcolor.h>
 
 #include "subcost.h"
@@ -161,30 +161,30 @@ class TraceFile;
 class TracePart;
 class TraceData;
 
-typedef QPtrList<TraceCost> TraceCostList;
-typedef QPtrList<TraceJumpCost> TraceJumpCostList;
-typedef QPtrList<TraceCallCost> TraceCallCostList;
-typedef QPtrList<TraceInclusiveCost> TraceInclusiveCostList;
+typedef Q3PtrList<TraceCost> TraceCostList;
+typedef Q3PtrList<TraceJumpCost> TraceJumpCostList;
+typedef Q3PtrList<TraceCallCost> TraceCallCostList;
+typedef Q3PtrList<TraceInclusiveCost> TraceInclusiveCostList;
 
-typedef QPtrList<TracePartCall>  TracePartCallList;
-typedef QPtrList<TracePartInstr> TracePartInstrList;
-typedef QPtrList<TracePartLine>  TracePartLineList;
-typedef QPtrList<TracePartLineRegion>  TracePartLineRegionList;
-typedef QPtrList<TracePartFunction>  TracePartFunctionList;
-typedef QPtrList<TracePartInstrCall> TracePartInstrCallList;
-typedef QPtrList<TracePartLineCall>  TracePartLineCallList;
+typedef Q3PtrList<TracePartCall>  TracePartCallList;
+typedef Q3PtrList<TracePartInstr> TracePartInstrList;
+typedef Q3PtrList<TracePartLine>  TracePartLineList;
+typedef Q3PtrList<TracePartLineRegion>  TracePartLineRegionList;
+typedef Q3PtrList<TracePartFunction>  TracePartFunctionList;
+typedef Q3PtrList<TracePartInstrCall> TracePartInstrCallList;
+typedef Q3PtrList<TracePartLineCall>  TracePartLineCallList;
 
 
-typedef QPtrList<TraceInstr> TraceInstrList;
-typedef QPtrList<TraceLine> TraceLineList;
-typedef QPtrList<TraceInstrCall> TraceInstrCallList;
-typedef QPtrList<TraceLineCall> TraceLineCallList;
-typedef QPtrList<TraceCall> TraceCallList;
-typedef QPtrList<TraceFile> TraceFileList;
-typedef QPtrList<TraceLineRegion> TraceLineRegionList;
-typedef QPtrList<TraceFunctionSource> TraceFunctionSourceList;
-typedef QPtrList<TraceFunction> TraceFunctionList;
-typedef QPtrList<TraceFunctionCycle> TraceFunctionCycleList;
+typedef Q3PtrList<TraceInstr> TraceInstrList;
+typedef Q3PtrList<TraceLine> TraceLineList;
+typedef Q3PtrList<TraceInstrCall> TraceInstrCallList;
+typedef Q3PtrList<TraceLineCall> TraceLineCallList;
+typedef Q3PtrList<TraceCall> TraceCallList;
+typedef Q3PtrList<TraceFile> TraceFileList;
+typedef Q3PtrList<TraceLineRegion> TraceLineRegionList;
+typedef Q3PtrList<TraceFunctionSource> TraceFunctionSourceList;
+typedef Q3PtrList<TraceFunction> TraceFunctionList;
+typedef Q3PtrList<TraceFunctionCycle> TraceFunctionCycleList;
 typedef QMap<QString, TraceObject> TraceObjectMap;
 typedef QMap<QString, TraceClass> TraceClassMap;
 typedef QMap<QString, TraceFile> TraceFileMap;
@@ -493,7 +493,7 @@ private:
   int _coefficient[MaxRealIndexValue];
   int _realIndex;
 
-  static QPtrList<TraceCostType>* _knownTypes;
+  static Q3PtrList<TraceCostType>* _knownTypes;
 };
 
 
@@ -1126,7 +1126,7 @@ private:
 };
 
 
-class TracePartList: public QPtrList<TracePart>
+class TracePartList: public Q3PtrList<TracePart>
 {
  public:
   QString names() const;
@@ -1170,7 +1170,7 @@ public:
     TracePartInstrJump* _first;
 };
 
-class TraceInstrJumpList: public QPtrList<TraceInstrJump>
+class TraceInstrJumpList: public Q3PtrList<TraceInstrJump>
 {
  public:
     TraceInstrJumpList() { _sortLow = true; }
@@ -1213,7 +1213,7 @@ class TraceLineJump: public TraceJumpListCost
 };
 
 
-class TraceLineJumpList: public QPtrList<TraceLineJump>
+class TraceLineJumpList: public Q3PtrList<TraceLineJump>
 {
  public:
     TraceLineJumpList() { _sortLow = true; }
@@ -1568,7 +1568,7 @@ class TraceAssoziation
   bool _valid;
 };
 
-typedef QPtrList<TraceAssoziation> TraceAssoziationList;
+typedef Q3PtrList<TraceAssoziation> TraceAssoziationList;
 
 /**
  * A traced function

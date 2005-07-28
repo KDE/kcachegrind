@@ -23,6 +23,9 @@
 #include <qpixmap.h>
 #include <qregexp.h>
 #include <qpainter.h>
+//Added by qt3to4:
+#include <Q3PointArray>
+#include <Q3MemArray>
 
 #include <klocale.h>
 #include <kiconloader.h>
@@ -37,11 +40,11 @@
 // SourceItem
 
 // for source lines
-SourceItem::SourceItem(SourceView* sv, QListView* parent,
+SourceItem::SourceItem(SourceView* sv, Q3ListView* parent,
 		       int fileno, unsigned int lineno,
                        bool inside, const QString& src,
                        TraceLine* line)
-    : QListViewItem(parent)
+    : Q3ListViewItem(parent)
 {
   _view = sv;
   _lineno = lineno;
@@ -64,10 +67,10 @@ SourceItem::SourceItem(SourceView* sv, QListView* parent,
 }
 
 // for call lines
-SourceItem::SourceItem(SourceView* sv, QListViewItem* parent,
+SourceItem::SourceItem(SourceView* sv, Q3ListViewItem* parent,
 		       int fileno, unsigned int lineno,
                        TraceLine* line, TraceLineCall* lineCall)
-    : QListViewItem(parent)
+    : Q3ListViewItem(parent)
 {
   _view = sv;
   _lineno = lineno;
@@ -99,10 +102,10 @@ SourceItem::SourceItem(SourceView* sv, QListViewItem* parent,
 }
 
 // for jump lines
-SourceItem::SourceItem(SourceView* sv, QListViewItem* parent,
+SourceItem::SourceItem(SourceView* sv, Q3ListViewItem* parent,
 		       int fileno, unsigned int lineno,
                        TraceLine* line, TraceLineJump* lineJump)
-    : QListViewItem(parent)
+    : Q3ListViewItem(parent)
 {
   _view = sv;
   _lineno = lineno;
@@ -222,7 +225,7 @@ void SourceItem::updateCost()
 }
 
 
-int SourceItem::compare(QListViewItem * i, int col, bool ascending ) const
+int SourceItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
 {
   const SourceItem* si1 = this;
   const SourceItem* si2 = (SourceItem*) i;
@@ -282,7 +285,7 @@ int SourceItem::compare(QListViewItem * i, int col, bool ascending ) const
 	return 1;
     return 0;
   }
-  return QListViewItem::compare(i, col, ascending);
+  return Q3ListViewItem::compare(i, col, ascending);
 }
 
 void SourceItem::paintCell( QPainter *p, const QColorGroup &cg,
@@ -298,17 +301,17 @@ void SourceItem::paintCell( QPainter *p, const QColorGroup &cg,
   if (column == 3)
       paintArrows(p, _cg, width);
   else
-      QListViewItem::paintCell( p, _cg, column, width, alignment );
+      Q3ListViewItem::paintCell( p, _cg, column, width, alignment );
 }
 
-void SourceItem::setJumpArray(const QMemArray<TraceLineJump*>& a)
+void SourceItem::setJumpArray(const Q3MemArray<TraceLineJump*>& a)
 {
     _jump.duplicate(a);
 }
 
 void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 {
-  QListView *lv = listView();
+  Q3ListView *lv = listView();
   if ( !lv ) return;
   SourceView* sv = (SourceView*) lv;
 
@@ -383,7 +386,7 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       x = marg + 6*end;
       w = 6*(sv->arrowLevels() - end) + 10;
 
-      QPointArray a;
+      Q3PointArray a;
       a.putPoints(0, 7, x, y+h,
 		  x,y, x+w-8, y, x+w-8, y-2,
 		  x+w, yy,
@@ -426,9 +429,9 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 }
 
 int SourceItem::width( const QFontMetrics& fm,
-		       const QListView* lv, int c ) const
+		       const Q3ListView* lv, int c ) const
 {
-  if (c != 3) return QListViewItem::width(fm, lv, c);
+  if (c != 3) return Q3ListViewItem::width(fm, lv, c);
 
   SourceView* sv = (SourceView*) lv;
   int levels = sv->arrowLevels();

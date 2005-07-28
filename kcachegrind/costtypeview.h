@@ -23,11 +23,11 @@
 #ifndef COSTTYPEVIEW_H
 #define COSTTYPEVIEW_H
 
-#include <qlistview.h>
+#include <q3listview.h>
 #include "tracedata.h"
 #include "traceitemview.h"
 
-class CostTypeView: public QListView, public TraceItemView
+class CostTypeView: public Q3ListView, public TraceItemView
 {
   Q_OBJECT
 
@@ -39,10 +39,10 @@ public:
   QString whatsThis() const;
 
 private slots:
-  void context(QListViewItem*,const QPoint &, int);
-  void selectedSlot(QListViewItem*);
-  void activatedSlot(QListViewItem*);
-  void renamedSlot(QListViewItem*,int,const QString&);
+  void context(Q3ListViewItem*,const QPoint &, int);
+  void selectedSlot(Q3ListViewItem*);
+  void activatedSlot(Q3ListViewItem*);
+  void renamedSlot(Q3ListViewItem*,int,const QString&);
 
 private:
   TraceItem* canShow(TraceItem*);

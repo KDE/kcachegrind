@@ -32,11 +32,11 @@
 // CallerCoverageItem
 
 
-CallerCoverageItem::CallerCoverageItem(QListView* parent, Coverage* c,
+CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, Coverage* c,
                                        TraceFunction* base,
                                        TraceCostType* ct,
                                        TraceCost::CostType gt)
-    : QListViewItem(parent)
+    : Q3ListViewItem(parent)
 {
   _skipped = 0;
   _coverage = c;
@@ -54,11 +54,11 @@ CallerCoverageItem::CallerCoverageItem(QListView* parent, Coverage* c,
   setGroupType(gt);
 }
 
-CallerCoverageItem::CallerCoverageItem(QListView* parent, int skipped, Coverage* c,
+CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, int skipped, Coverage* c,
                                        TraceFunction* base,
                                        TraceCostType* ct,
                                        TraceCost::CostType gt)
-    : QListViewItem(parent)
+    : Q3ListViewItem(parent)
 {
   _skipped = skipped;
   _coverage = c;
@@ -132,7 +132,7 @@ void CallerCoverageItem::update()
 }
 
 
-int CallerCoverageItem::compare(QListViewItem * i,
+int CallerCoverageItem::compare(Q3ListViewItem * i,
                                 int col, bool ascending ) const
 {
   const CallerCoverageItem* ci1 = this;
@@ -169,18 +169,18 @@ int CallerCoverageItem::compare(QListViewItem * i,
     if (ci1->_cc > ci2->_cc) return 1;
     return 0;
   }
-  return QListViewItem::compare(i, col, ascending);
+  return Q3ListViewItem::compare(i, col, ascending);
 }
 
 
 // CalleeCoverageItem
 
 
-CalleeCoverageItem::CalleeCoverageItem(QListView* parent, Coverage* c,
+CalleeCoverageItem::CalleeCoverageItem(Q3ListView* parent, Coverage* c,
                                        TraceFunction* base,
                                        TraceCostType* ct,
                                        TraceCost::CostType gt)
-    : QListViewItem(parent)
+    : Q3ListViewItem(parent)
 {
   _skipped = 0;
   _coverage = c;
@@ -198,11 +198,11 @@ CalleeCoverageItem::CalleeCoverageItem(QListView* parent, Coverage* c,
   setGroupType(gt);
 }
 
-CalleeCoverageItem::CalleeCoverageItem(QListView* parent, int skipped, Coverage* c,
+CalleeCoverageItem::CalleeCoverageItem(Q3ListView* parent, int skipped, Coverage* c,
                                        TraceFunction* base,
                                        TraceCostType* ct,
                                        TraceCost::CostType gt)
-    : QListViewItem(parent)
+    : Q3ListViewItem(parent)
 {
   _skipped = skipped;
   _coverage = c;
@@ -304,7 +304,7 @@ void CalleeCoverageItem::update()
 }
 
 
-int CalleeCoverageItem::compare(QListViewItem * i,
+int CalleeCoverageItem::compare(Q3ListViewItem * i,
                                 int col, bool ascending ) const
 {
   CalleeCoverageItem* ci = (CalleeCoverageItem*) i;
@@ -345,7 +345,7 @@ int CalleeCoverageItem::compare(QListViewItem * i,
     if (_cc > ci->_cc) return 1;
     return 0;
   }
-  return QListViewItem::compare(i, col, ascending);
+  return Q3ListViewItem::compare(i, col, ascending);
 }
 
 

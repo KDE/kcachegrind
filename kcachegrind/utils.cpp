@@ -353,7 +353,7 @@ FixFile::FixFile(QFile* file)
   }
 
   _filename = file->name();
-  if (!file->isOpen() && !file->open( IO_ReadOnly ) ) {
+  if (!file->isOpen() && !file->open( QIODevice::ReadOnly ) ) {
     qWarning( "%s: %s", (const char*) QFile::encodeName(_filename),
 	      strerror( errno ) );
     _len = 0;

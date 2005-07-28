@@ -25,6 +25,8 @@
 
 #include "treemap.h"
 #include "tracedata.h"
+//Added by qt3to4:
+#include <QPixmap>
 
 class PartAreaWidget: public TreeMapWidget
 {

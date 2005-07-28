@@ -33,13 +33,21 @@
 #include <qstring.h>
 #include <qwidget.h>
 #include <qpixmap.h>
-#include <qptrlist.h>
-#include <qvaluevector.h>
+#include <q3ptrlist.h>
+#include <q3valuevector.h>
 #include <qcolor.h>
 #include <qapplication.h>
 #include <qstringlist.h>
+//Added by qt3to4:
+#include <QPaintEvent>
+#include <QKeyEvent>
+#include <QShowEvent>
+#include <QContextMenuEvent>
+#include <QResizeEvent>
+#include <Q3PopupMenu>
+#include <QMouseEvent>
 
-class QPopupMenu;
+class Q3PopupMenu;
 class TreeMapTip;
 class TreeMapWidget;
 class TreeMapItem;
@@ -151,7 +159,7 @@ private:
     int maxLines;
   };
 
-  QValueVector<Field> _field;
+  Q3ValueVector<Field> _field;
 };
 
 
@@ -201,7 +209,7 @@ private:
 };
 
 
-class TreeMapItemList: public QPtrList<TreeMapItem>
+class TreeMapItemList: public Q3PtrList<TreeMapItem>
 {
 public:
   TreeMapItem* commonParent();
@@ -209,7 +217,7 @@ protected:
   int compareItems ( Item item1, Item item2 );
 };
 
-typedef QPtrListIterator<TreeMapItem> TreeMapItemListIterator;
+typedef Q3PtrListIterator<TreeMapItem> TreeMapItemListIterator;
 
 
 /**
@@ -306,7 +314,7 @@ public:
    * Used internally to enable tooltip.
    */
   void clearFreeRects();
-  QPtrList<QRect>* freeRects() const { return _freeRects; }
+  Q3PtrList<QRect>* freeRects() const { return _freeRects; }
   void addFreeRect(const QRect& r);
 
   /**
@@ -381,7 +389,7 @@ private:
 
   // temporary layout
   QRect _rect;
-  QPtrList<QRect>* _freeRects;
+  Q3PtrList<QRect>* _freeRects;
   int _depth;
 
   // temporary self value (when using level skipping)
@@ -622,12 +630,12 @@ public:
    *
    * The int is the menu id where to start for the items (100 IDs reserved).
    */
-  void addSplitDirectionItems(QPopupMenu*, int);
-  void addSelectionItems(QPopupMenu*, int, TreeMapItem*);
-  void addFieldStopItems(QPopupMenu*, int, TreeMapItem*);
-  void addAreaStopItems(QPopupMenu*, int, TreeMapItem*);
-  void addDepthStopItems(QPopupMenu*, int, TreeMapItem*);
-  void addVisualizationItems(QPopupMenu*, int);
+  void addSplitDirectionItems(Q3PopupMenu*, int);
+  void addSelectionItems(Q3PopupMenu*, int, TreeMapItem*);
+  void addFieldStopItems(Q3PopupMenu*, int, TreeMapItem*);
+  void addAreaStopItems(Q3PopupMenu*, int, TreeMapItem*);
+  void addDepthStopItems(Q3PopupMenu*, int, TreeMapItem*);
+  void addVisualizationItems(Q3PopupMenu*, int);
 
   TreeMapWidget* widget() { return this; }
   TreeMapItem* current() const { return _current; }
@@ -725,7 +733,7 @@ private:
     bool visible, forced;
     DrawParams::Position pos;
   };
-  QValueVector<FieldAttr> _attr;
+  Q3ValueVector<FieldAttr> _attr;
 
   SelectionMode _selectionMode;
   TreeMapItem::SplitMode _splitMode;

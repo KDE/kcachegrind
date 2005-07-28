@@ -20,9 +20,9 @@
  * Part View
  */
 
-#include <qwhatsthis.h>
-#include <qpopupmenu.h>
-#include <qheader.h>
+
+#include <q3popupmenu.h>
+#include <q3header.h>
 #include <klocale.h>
 
 #include "configuration.h"
@@ -39,7 +39,7 @@
 
 PartView::PartView(TraceItemView* parentView,
 		   QWidget* parent, const char* name)
-  : QListView(parent, name), TraceItemView(parentView)
+  : Q3ListView(parent, name), TraceItemView(parentView)
 {
     _inSelectionUpdate = false;
 
@@ -62,10 +62,10 @@ PartView::PartView(TraceItemView* parentView,
 	     SLOT( selectionChangedSlot() ) );
 
     connect( this,
-	     SIGNAL(contextMenuRequested(QListViewItem*, const QPoint &, int)),
-	     SLOT(context(QListViewItem*, const QPoint &, int)));
+	     SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
+	     SLOT(context(Q3ListViewItem*, const QPoint &, int)));
 
-    QWhatsThis::add( this, whatsThis() );
+    this->setWhatsThis( whatsThis() );
 }
 
 QString PartView::whatsThis() const
@@ -96,9 +96,9 @@ QString PartView::whatsThis() const
 }
 
 
-void PartView::context(QListViewItem* i, const QPoint & pos, int)
+void PartView::context(Q3ListViewItem* i, const QPoint & pos, int)
 {
-  QPopupMenu popup;
+  Q3PopupMenu popup;
 
   TracePart* p = i ? ((PartListItem*) i)->part() : 0;
 
@@ -125,7 +125,7 @@ void PartView::selectionChangedSlot()
     if (_inSelectionUpdate) return;
 
     TracePartList l;
-    QListViewItem* item  = firstChild();
+    Q3ListViewItem* item  = firstChild();
     for(;item;item = item->nextSibling())
       if (item->isSelected())
         l.append( ((PartListItem*)item)->part() );
@@ -148,7 +148,7 @@ void PartView::doUpdate(int changeType)
     if (changeType == selectedItemChanged) return;
 
     if (changeType == groupTypeChanged) {
-	QListViewItem *item;
+	Q3ListViewItem *item;
 	for (item = firstChild();item;item = item->nextSibling())
 	    ((PartListItem*)item)->setGroupType(_groupType);
 
@@ -156,7 +156,7 @@ void PartView::doUpdate(int changeType)
     }
 
     if (changeType == costTypeChanged) {
-	QListViewItem *item;
+	Q3ListViewItem *item;
 	for (item = firstChild();item;item = item->nextSibling())
 	  ((PartListItem*)item)->setCostType(_costType);
 
@@ -167,7 +167,7 @@ void PartView::doUpdate(int changeType)
 
       TracePart* part;
 
-      QListViewItem* item;
+      Q3ListViewItem* item;
       _inSelectionUpdate = true;
       item  = firstChild();
       for(;item;item = item->nextSibling()) {
@@ -210,7 +210,7 @@ void PartView::refresh()
 
     _inSelectionUpdate = true;
 
-    QListViewItem* item = 0;
+    Q3ListViewItem* item = 0;
     for (part = allParts.first(); part; part = allParts.next()) {
 	if (hidden.findRef(part)>=0) continue;
 	item = new PartListItem(this, f, _costType, _groupType, part);

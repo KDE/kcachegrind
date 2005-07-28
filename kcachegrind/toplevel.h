@@ -24,6 +24,9 @@
 #define TOPLEVEL_H
 
 #include <qdatetime.h>
+//Added by qt3to4:
+#include <QLabel>
+#include <Q3PopupMenu>
 
 #include <dcopobject.h>
 #include <kmainwindow.h>
@@ -35,8 +38,8 @@ class MultiView;
 class QLineEdit;
 class QDockWidget;
 class QLabel;
-class QProgressBar;
-class QPopupMenu;
+class Q3ProgressBar;
+class Q3PopupMenu;
 
 class KURL;
 class KSelectAction;
@@ -81,8 +84,8 @@ public:
   bool showCycles() const { return _showCycles; }
 
   /* convenience functions for often used context menu items */
-  void addCostMenu(QPopupMenu*,bool);
-  void addGoMenu(QPopupMenu*);
+  void addCostMenu(Q3PopupMenu*,bool);
+  void addGoMenu(Q3PopupMenu*);
 
 public slots:
   void newTrace();
@@ -224,7 +227,7 @@ private:
   StackSelection* _stackSelection;
   QLineEdit* queryLineEdit;
 
-  QDockWindow *_partDock, *_stackDock, *_functionDock, *_dumpDock;
+  Q3DockWindow *_partDock, *_stackDock, *_functionDock, *_dumpDock;
   bool _forcePartDock;
 
   KSelectAction *_saCost, *_saCost2, *saGroup;
@@ -265,7 +268,7 @@ private:
   // for status progress display
   QString _progressMsg;
   QTime _progressStart;
-  QProgressBar* _progressBar;
+  Q3ProgressBar* _progressBar;
 
   // toplevel configuration options
   bool _showPercentage, _showExpanded, _showCycles;

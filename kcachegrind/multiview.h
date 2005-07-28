@@ -27,7 +27,7 @@
 #define MULTIVIEW_H
 
 #include <qsplitter.h>
-#include <qptrlist.h>
+#include <q3ptrlist.h>
 #include "traceitemview.h"
 #include "tabview.h" // because of QPtrList<TabView>
 
@@ -60,7 +60,7 @@ public slots:
   void doUpdate(int);
 
   TabView* _active;
-  QPtrList<TabView> _views;
+  Q3PtrList<TabView> _views;
 };
 
 #endif

@@ -23,19 +23,21 @@
 #ifndef FUNCTIONITEM_H
 #define FUNCTIONITEM_H
 
-#include <qlistview.h>
+#include <q3listview.h>
+//Added by qt3to4:
+#include <QPixmap>
 #include "tracedata.h"
 
-class FunctionItem: public QListViewItem
+class FunctionItem: public Q3ListViewItem
 {
 public:    
-  FunctionItem(QListView* parent, TraceFunction* function,
+  FunctionItem(Q3ListView* parent, TraceFunction* function,
 	       TraceCostType* ct, TraceCost::CostType gt);
   // constructor for a "Skipped ... " entry
-  FunctionItem(QListView* parent, int skipped,
+  FunctionItem(Q3ListView* parent, int skipped,
 	       TraceFunction* function, TraceCostType* ct);
 
-  int compare(QListViewItem * i, int col, bool ascending ) const;
+  int compare(Q3ListViewItem * i, int col, bool ascending ) const;
   TraceFunction* function() { return (_skipped) ? 0 : _function; }
   void setCostType(TraceCostType* ct);
   void setGroupType(TraceCost::CostType);

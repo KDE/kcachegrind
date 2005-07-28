@@ -20,6 +20,8 @@
 
 #include <qpainter.h>
 #include <qregexp.h>
+//Added by qt3to4:
+#include <QPixmap>
 
 #include <klocale.h>
 #include <kiconloader.h>
@@ -33,9 +35,9 @@
 // CostListItem
 
 
-CostListItem::CostListItem(QListView* parent, TraceCostItem* costItem,
+CostListItem::CostListItem(Q3ListView* parent, TraceCostItem* costItem,
                            TraceCostType* ct, int size)
-  :QListViewItem(parent)
+  :Q3ListViewItem(parent)
 {
   _groupSize = size;
   _skipped = 0;
@@ -49,9 +51,9 @@ CostListItem::CostListItem(QListView* parent, TraceCostItem* costItem,
   }
 }
 
-CostListItem::CostListItem(QListView* parent, int skipped,
+CostListItem::CostListItem(Q3ListView* parent, int skipped,
 			   TraceCostItem* costItem, TraceCostType* ct)
-  :QListViewItem(parent)
+  :Q3ListViewItem(parent)
 {
   _skipped = skipped;
   _costItem = costItem;
@@ -112,7 +114,7 @@ void CostListItem::update()
   setPixmap(0, costPixmap(_costType, _costItem, total, false));
 }
 
-int CostListItem::compare(QListViewItem * i, int col, bool ascending ) const
+int CostListItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
 {
   const CostListItem* fi1 = this;
   const CostListItem* fi2 = (CostListItem*) i;
@@ -132,5 +134,5 @@ int CostListItem::compare(QListViewItem * i, int col, bool ascending ) const
     if (fi1->_pure > fi2->_pure) return 1;
     return 0;
   }
-  return QListViewItem::compare(i, col, ascending);
+  return Q3ListViewItem::compare(i, col, ascending);
 }

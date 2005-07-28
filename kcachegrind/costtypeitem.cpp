@@ -31,9 +31,9 @@
 // CostTypeItem
 
 
-CostTypeItem::CostTypeItem(QListView* parent, TraceCostItem* costItem,
+CostTypeItem::CostTypeItem(Q3ListView* parent, TraceCostItem* costItem,
                            TraceCostType* ct, TraceCost::CostType gt)
-  :QListViewItem(parent)
+  :Q3ListViewItem(parent)
 {
   _costItem = costItem;
   _costType = ct;
@@ -130,7 +130,7 @@ void CostTypeItem::update()
 }
 
 
-int CostTypeItem::compare(QListViewItem * i, int col, bool ascending ) const
+int CostTypeItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
 {
   CostTypeItem* fi = (CostTypeItem*) i;
   if (col==0) {
@@ -143,7 +143,7 @@ int CostTypeItem::compare(QListViewItem * i, int col, bool ascending ) const
     if (_pure > fi->_pure) return 1;
     return 0;
   }
-  return QListViewItem::compare(i, col, ascending);
+  return Q3ListViewItem::compare(i, col, ascending);
 }
 
 

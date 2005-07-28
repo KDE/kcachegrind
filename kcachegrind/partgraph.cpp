@@ -25,6 +25,8 @@
 #include "partgraph.h"
 #include "configuration.h"
 #include "listutils.h"
+//Added by qt3to4:
+#include <QPixmap>
 
 
 // PartAreaWidget

@@ -23,12 +23,12 @@
 #ifndef COVERAGEVIEW_H
 #define COVERAGEVIEW_H
 
-#include <qlistview.h>
+#include <q3listview.h>
 #include "tracedata.h"
 #include "traceitemview.h"
 #include "listutils.h"
 
-class CoverageView: public QListView, public TraceItemView
+class CoverageView: public Q3ListView, public TraceItemView
 {
   Q_OBJECT
 
@@ -40,9 +40,9 @@ public:
   QString whatsThis() const;
 
 private slots:
-  void context(QListViewItem*,const QPoint &, int);
-  void selectedSlot(QListViewItem*);
-  void activatedSlot(QListViewItem*);
+  void context(Q3ListViewItem*,const QPoint &, int);
+  void selectedSlot(Q3ListViewItem*);
+  void activatedSlot(Q3ListViewItem*);
 
 private:
   TraceItem* canShow(TraceItem*);

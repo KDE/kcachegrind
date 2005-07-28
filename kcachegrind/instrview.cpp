@@ -22,8 +22,8 @@
 
 #include <qfile.h>
 #include <qregexp.h>
-#include <qwhatsthis.h>
-#include <qpopupmenu.h>
+
+#include <q3popupmenu.h>
 #include <klocale.h>
 #include <kconfig.h>
 #include <kdebug.h>
@@ -112,7 +112,7 @@ static bool parseLine(char* buf, Addr& addr,
 
 InstrView::InstrView(TraceItemView* parentView,
                      QWidget* parent, const char* name)
-  : QListView(parent, name), TraceItemView(parentView)
+  : Q3ListView(parent, name), TraceItemView(parentView)
 {
   _showHexCode = DEFAULT_SHOWHEXCODE;
   _lastHexCodeWidth = 50;
@@ -136,26 +136,26 @@ InstrView::InstrView(TraceItemView* parentView,
   setColumnAlignment(2, Qt::AlignRight);
 
   connect(this,
-          SIGNAL(contextMenuRequested(QListViewItem*, const QPoint &, int)),
-          SLOT(context(QListViewItem*, const QPoint &, int)));
+          SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
+          SLOT(context(Q3ListViewItem*, const QPoint &, int)));
 
-  connect(this, SIGNAL(selectionChanged(QListViewItem*)),
-          SLOT(selectedSlot(QListViewItem*)));
-
-  connect(this,
-          SIGNAL(doubleClicked(QListViewItem*)),
-          SLOT(activatedSlot(QListViewItem*)));
+  connect(this, SIGNAL(selectionChanged(Q3ListViewItem*)),
+          SLOT(selectedSlot(Q3ListViewItem*)));
 
   connect(this,
-          SIGNAL(returnPressed(QListViewItem*)),
-          SLOT(activatedSlot(QListViewItem*)));
+          SIGNAL(doubleClicked(Q3ListViewItem*)),
+          SLOT(activatedSlot(Q3ListViewItem*)));
 
-  QWhatsThis::add( this, whatsThis());
+  connect(this,
+          SIGNAL(returnPressed(Q3ListViewItem*)),
+          SLOT(activatedSlot(Q3ListViewItem*)));
+
+  this->setWhatsThis( whatsThis());
 }
 
 void InstrView::paintEmptyArea( QPainter * p, const QRect & r)
 {
-  QListView::paintEmptyArea(p, r);
+  Q3ListView::paintEmptyArea(p, r);
 }
 
 QString InstrView::whatsThis() const
@@ -175,9 +175,9 @@ QString InstrView::whatsThis() const
 		 "make the destination function of this call current.</p>");
 }
 
-void InstrView::context(QListViewItem* i, const QPoint & p, int c)
+void InstrView::context(Q3ListViewItem* i, const QPoint & p, int c)
 {
-  QPopupMenu popup;
+  Q3PopupMenu popup;
 
   TraceInstrCall* ic = i ? ((InstrItem*) i)->instrCall() : 0;
   TraceInstrJump* ij = i ? ((InstrItem*) i)->instrJump() : 0;
@@ -222,7 +222,7 @@ void InstrView::context(QListViewItem* i, const QPoint & p, int c)
 }
 
 
-void InstrView::selectedSlot(QListViewItem * i)
+void InstrView::selectedSlot(Q3ListViewItem * i)
 {
   if (!i) return;
   // programatically selected items are not signalled
@@ -256,7 +256,7 @@ void InstrView::selectedSlot(QListViewItem * i)
   }
 }
 
-void InstrView::activatedSlot(QListViewItem * i)
+void InstrView::activatedSlot(Q3ListViewItem * i)
 {
   if (!i) return;
   TraceInstrCall* ic = ((InstrItem*) i)->instrCall();
@@ -317,13 +317,13 @@ void InstrView::doUpdate(int changeType)
 	  return;
       }
 
-      InstrItem *ii = (InstrItem*)QListView::selectedItem();
+      InstrItem *ii = (InstrItem*)Q3ListView::selectedItem();
       if (ii) {
 	  if ((ii->instr() == _selectedItem) ||
 	      (ii->instr() && (ii->instr()->line() == _selectedItem))) return;
       }
 
-      QListViewItem *item, *item2;
+      Q3ListViewItem *item, *item2;
       for (item = firstChild();item;item = item->nextSibling()) {
 	  ii = (InstrItem*)item;
 	  if ((ii->instr() == _selectedItem) ||
@@ -352,7 +352,7 @@ void InstrView::doUpdate(int changeType)
   }
 
   if (changeType == groupTypeChanged) {
-    QListViewItem *item, *item2;
+    Q3ListViewItem *item, *item2;
     for (item = firstChild();item;item = item->nextSibling())
       for (item2 = item->firstChild();item2;item2 = item2->nextSibling())
         ((InstrItem*)item2)->updateGroup();
@@ -365,11 +365,11 @@ void InstrView::doUpdate(int changeType)
 void InstrView::setColumnWidths()
 {
   if (_showHexCode) {
-    setColumnWidthMode(4, QListView::Maximum);
+    setColumnWidthMode(4, Q3ListView::Maximum);
     setColumnWidth(4, _lastHexCodeWidth);
   }
   else {
-    setColumnWidthMode(4, QListView::Manual);
+    setColumnWidthMode(4, Q3ListView::Manual);
     setColumnWidth(4, 0);
   }
 }
@@ -410,7 +410,7 @@ void InstrView::refresh()
     if (!f) return;
 
     // Allow resizing of column 2
-    setColumnWidthMode(2, QListView::Maximum);
+    setColumnWidthMode(2, Q3ListView::Maximum);
 
     // check for instruction map
     TraceInstrMap::Iterator itStart, it, tmpIt, itEnd;
@@ -490,7 +490,7 @@ void InstrView::refresh()
     setColumnWidths();
 
     if (!_costType2) {
-      setColumnWidthMode(2, QListView::Manual);
+      setColumnWidthMode(2, Q3ListView::Manual);
       setColumnWidth(2, 0);
     }
 }
@@ -631,7 +631,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	return false;
     }
     QFile file;
-    file.open(IO_ReadOnly, iFILE);
+    file.open(QIODevice::ReadOnly, iFILE);
 
 #define BUF_SIZE  256
 
@@ -841,7 +841,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 
     // for arrows: go down the list according to list sorting
     sort();
-    QListViewItem *item1, *item2;
+    Q3ListViewItem *item1, *item2;
     for (item1=firstChild();item1;item1 = item1->nextSibling()) {
 	ii = (InstrItem*)item1;
 	updateJumpArray(ii->addr(), ii, true, false);
@@ -904,7 +904,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 void InstrView::updateInstrItems()
 {
     InstrItem* ii;
-    QListViewItem* item  = firstChild();
+    Q3ListViewItem* item  = firstChild();
     for (;item;item = item->nextSibling()) {
 	ii = (InstrItem*)item;
 	TraceInstr* instr = ii->instr();
@@ -912,7 +912,7 @@ void InstrView::updateInstrItems()
 
 	ii->updateCost();
 
-	QListViewItem *next, *i  = ii->firstChild();
+	Q3ListViewItem *next, *i  = ii->firstChild();
 	for (;i;i = next) {
 	    next = i->nextSibling();
 	    ((InstrItem*)i)->updateCost();
