@@ -53,7 +53,7 @@ public:
   void addGroupMenu(QPopupMenu*);
 
 public slots:
-  void searchEntered();
+  void searchReturnPressed();
   void searchChanged(const QString&);
   void queryDelayed();
   void groupDoubleClicked( QListViewItem* );
@@ -69,7 +69,7 @@ private:
   void selectFunction();
   void refresh();
   void setCostColumnWidths();
-  void updateGroupSizes();
+  void updateGroupSizes(bool hideEmpty);
 
   TraceCostItem* _group;
 
