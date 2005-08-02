@@ -131,10 +131,10 @@ void FunctionSelection::searchReturnPressed()
   query(searchEdit->text());
 
   QListViewItem* item;
-  if (_group) {
+  if (_groupType != TraceItem::Function) {
       // if current group not matching, select first matching group
       item  = groupList->currentItem();
-      if (!item->isVisible()) {
+      if (!item || !item->isVisible()) {
 	  item  = groupList->firstChild();
 	  for (;item;item = item->nextSibling())
 	      if (item->isVisible()) break;
