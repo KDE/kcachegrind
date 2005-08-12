@@ -33,8 +33,8 @@
 #define TRACE_LOADER 0
 
 /*
- * Loader for Calltree Profile data (format based on Cachegrind format).
- * See Calltree documentation for the file format.
+ * Loader for Callgrind Profile data (format based on Cachegrind format).
+ * See Callgrind documentation for the file format.
  */
 
 class CachegrindLoader: public Loader
@@ -162,7 +162,7 @@ bool CachegrindLoader::canLoadTrace(QFile* file)
   }
 
   /* 
-   * We recognize this as cachegrind format if in the first
+   * We recognize this as cachegrind/callgrind format if in the first
    * 2047 bytes we see the string "\nevents:"
    */
   char buf[2048];
@@ -351,9 +351,9 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
   }
   unsigned index = name.mid(1, p-1).toInt();
   TraceObject* o = 0;
-  if ((int)name.length()>p+1) {
-    p++;
-    while(name.at(p).isSpace()) p++;
+  p++;
+  while(name.at(p).isSpace()) p++;
+  if ((int)name.length()>p) {
     o = _data->object(name.mid(p));
 
     if (_objectVector.size() <= index) {
@@ -380,13 +380,13 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
 }
 
 
-// Note: Cachegrind sometimes gives different IDs for same file
+// Note: Callgrind sometimes gives different IDs for same file
 // (when references to same source file come from different ELF objects)
 TraceFile* CachegrindLoader::compressedFile(const QString& name)
 {
   if ((name[0] != '(') || !name[1].isDigit()) return _data->file(name);
 
-  // compressed format using _objectVector
+  // compressed format using _fileVector
   int p = name.find(')');
   if (p<2) {
     kdError() << "Loader: Invalid compressed format for file:\n '" 
@@ -395,9 +395,9 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
   }
   unsigned int index = name.mid(1, p-1).toUInt();
   TraceFile* f = 0;
-  if ((int)name.length()>p+1) {
-    p++;
-    while(name.at(p).isSpace()) p++;
+  p++;
+  while(name.at(p).isSpace()) p++;
+  if ((int)name.length()>p) {
     f = _data->file(name.mid(p));
 
     if (_fileVector.size() <= index) {
@@ -438,14 +438,14 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
     return 0;
   }
 
-  // Note: Cachegrind gives different IDs even for same function
+  // Note: Callgrind gives different IDs even for same function
   // when parts of the function are from different source files.
   // Thus, many indexes can map to same function!
   unsigned int index = name.mid(1, p-1).toUInt();
   TraceFunction* f = 0;
-  if ((int)name.length()>p+1) {
-    p++;
-    while(name.at(p).isSpace()) p++;
+  p++;
+  while(name.at(p).isSpace()) p++;
+  if ((int)name.length()>p) {
     f = _data->function(name.mid(p), file, object);
 
     if (_functionVector.size() <= index) {
