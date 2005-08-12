@@ -490,6 +490,17 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
 		<< "\n  Found: " << f->object()->name()
 		<< "\n  Given: " << object->name() << endl;
     }
+
+    if (!f->file() && file) {
+      f->setFile(file);
+      file->addFunction(f);
+    }
+    else if (f->file() != file) {
+      kdError() << "TraceData::compressedFunction: File mismatch\n  "
+		<< f->info() 
+		<< "\n  Found: " << f->file()->name()
+		<< "\n  Given: " << file->name() << endl;
+    }
   }
 
   return f;
@@ -804,8 +815,9 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 	      continue;
 	    }
 
-	    // cfi=
-	    if (line.stripPrefix("fi=")) {
+	    // cfi= / cfl=
+	    if (line.stripPrefix("fl=") ||
+		line.stripPrefix("fi=")) {
 	      setCalledFile(line);
 	      continue;
 	    }
