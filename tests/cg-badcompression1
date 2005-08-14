@@ -1,0 +1,17 @@
+# Test with bad callgrind format
+# Expected:
+#  :13 - Redefinition of compressed file index 2 (was 'file1.c') to ''
+#  :14 - Redefinition of compressed function index 1 (was 'main') to 'main2'
+#  :16 - Undefined compressed function index 2
+#  :16 - Invalid function, setting to unknown
+
+events: Ir
+
+fl=(2) file1.c
+fn=(1) main
+10 9
+fl=(2 ) 
+fn=(1) main2
+11 1
+fn=(2)
+12 1

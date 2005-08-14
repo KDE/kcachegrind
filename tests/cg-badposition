@@ -1,0 +1,15 @@
+# Test with bad callgrind format
+# Expected:
+#  :11 - Negative line number -20
+#  :12 - Garbage at end of cost line ('a 21')
+#  :13 - Negative line number -91
+#  :15 - Invalid line 'aa 40'
+
+events: Ir
+
+fn=main
+-20 1
+9a 21
+-100 20
+0x9a 30
+aa 40

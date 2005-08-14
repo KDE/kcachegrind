@@ -1,0 +1,11 @@
+# Test with bad callgrind format
+# Expected:
+#  :10 - ignored garbage at end of cost line ('30')
+#  :11 - ignored garbage at end of cost line ('hello')
+
+events: Ir
+
+fn=main
+10 20 30
+11 hello
+12 10                     
