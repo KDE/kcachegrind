@@ -348,9 +348,18 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
   unsigned index = name.mid(1, p-1).toInt();
   TraceObject* o = 0;
   p++;
-  while(name.at(p).isSpace()) p++;
   if ((int)name.length()>p) {
-    o = _data->object(checkUnknown(name.mid(p)));
+    while(name.at(p).isSpace()) p++;
+
+    QString realName = checkUnknown(name.mid(p));
+    o = (TraceObject*) _objectVector.at(index);
+    if (o && (o->name() != realName)) {
+	kdError() << "Loader: Redefinition of compressed ELF object index " << index
+		  << " (was '" << o->name()
+		  << ") to '" << realName << "'" << endl;
+    }
+
+    o = _data->object(realName);
 
     if (_objectVector.size() <= index) {
       int newSize = index * 2;
@@ -364,12 +373,11 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
     _objectVector.insert(index, o);
   }
   else {
-    if (_objectVector.size() <= index) {
-      kdError() << "Loader: Invalid compressed object index " << index
-		<< ", size " << _objectVector.size() << endl;
+    if ((_objectVector.size() <= index) ||
+	( (o=(TraceObject*)_objectVector.at(index)) == 0)) {
+      kdError() << "Loader: Undefined compressed ELF object index " << index << endl;
       return 0;
-    }
-    o = (TraceObject*) _objectVector.at(index);
+    }    
   }
 
   return o;
@@ -392,9 +400,18 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
   unsigned int index = name.mid(1, p-1).toUInt();
   TraceFile* f = 0;
   p++;
-  while(name.at(p).isSpace()) p++;
   if ((int)name.length()>p) {
-    f = _data->file(checkUnknown(name.mid(p)));
+    while(name.at(p).isSpace()) p++;
+
+    QString realName = checkUnknown(name.mid(p));
+    f = (TraceFile*) _fileVector.at(index);
+    if (f && (f->name() != realName)) {
+	kdError() << "Loader: Redefinition of compressed file index " << index
+		  << " (was '" << f->name()
+		  << ") to '" << realName << "'" << endl;
+    }
+
+    f = _data->file(realName);
 
     if (_fileVector.size() <= index) {
       int newSize = index * 2;
@@ -408,17 +425,19 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
     _fileVector.insert(index, f);
   }
   else {
-    if (_fileVector.size() <= index) {
-      kdError() << "Loader: Invalid compressed file index " << index
-		<< ", size " << _fileVector.size() << endl;
+    if ((_fileVector.size() <= index) ||
+	( (f=(TraceFile*)_fileVector.at(index)) == 0)) {
+      kdError() << "Loader: Undefined compressed file index " << index << endl;
       return 0;
     }
-    f = (TraceFile*) _fileVector.at(index);
   }
 
   return f;
 }
 
+// Note: Callgrind gives different IDs even for same function
+// when parts of the function are from different source files.
+// Thus, it is no error when multiple indexes map to same function.
 TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
 						    TraceFile* file,
 						    TraceObject* object)
@@ -434,15 +453,22 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
     return 0;
   }
 
-  // Note: Callgrind gives different IDs even for same function
-  // when parts of the function are from different source files.
-  // Thus, many indexes can map to same function!
+
   unsigned int index = name.mid(1, p-1).toUInt();
   TraceFunction* f = 0;
   p++;
-  while(name.at(p).isSpace()) p++;
   if ((int)name.length()>p) {
-    f = _data->function(checkUnknown(name.mid(p)), file, object);
+    while(name.at(p).isSpace()) p++;
+
+    QString realName = checkUnknown(name.mid(p));
+    f = (TraceFunction*) _functionVector.at(index);
+    if (f && (f->name() != realName)) {
+	kdError() << "Loader: Redefinition of compressed function index " << index
+		  << " (was '" << f->name()
+		  << ") to '" << realName << "'" << endl;
+    }
+
+    f = _data->function(realName, file, object);
 
     if (_functionVector.size() <= index) {
       int newSize = index * 2;
@@ -464,15 +490,9 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
 #endif
   }
   else {
-    if (_functionVector.size() <= index) {
-      kdError() << "Loader: Invalid compressed function index " << index
-		<< ", size " << _functionVector.size() << endl;
-      return 0;
-    }
-    f = (TraceFunction*) _functionVector.at(index);
-    if (!f) {
-      kdError() << "Loader: Invalid compressed function index " << index
-                << "without definition" << endl;
+    if ((_functionVector.size() <= index) ||
+	( (f=(TraceFunction*)_functionVector.at(index)) == 0)) {
+      kdError() << "Loader: Undefined compressed function index " << index << endl;
       return 0;
     }
 
