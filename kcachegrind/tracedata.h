@@ -1603,7 +1603,8 @@ class TraceFunction: public TraceCostItem
 
   QString prettyName() const;
   QString location() const;
-  QString info() const; // prettyName + location
+  QString prettyLocation() const;
+  QString info() const; // pretty (name + location)
   TraceClass* cls() const { return _cls; }
   TraceFile* file() const { return _file; }
   TraceObject* object() const { return _object; }
@@ -1755,7 +1756,7 @@ class TraceFile: public TraceCostItem
 
   // without path
   QString shortName() const;
-  QString prettyName() const { return shortName(); }
+  QString prettyName() const;
   QString prettyLongName() const;
   const TraceFunctionList& functions() const { return _functions; }
   const TraceFunctionSourceList& sourceFiles() const

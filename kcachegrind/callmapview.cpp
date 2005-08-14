@@ -603,7 +603,7 @@ QString CallMapBaseItem::text(int textNo) const
 
   if (!_f) return QString::null;
 
-  if (textNo == 2) return _f->location();
+  if (textNo == 2) return _f->prettyLocation();
   if (textNo == 3) return _f->calledCount().pretty();
   if (textNo != 1) return QString::null;
 
@@ -743,7 +743,7 @@ QString CallMapCallingItem::text(int textNo) const
     return _c->calledName();
   }
 
-  if (textNo == 2) return _c->called()->location();
+  if (textNo == 2) return _c->called()->prettyLocation();
   if (textNo == 3) return SubCost(_factor * _c->callCount()).pretty();
   if (textNo != 1) return QString::null;
 
@@ -860,7 +860,7 @@ QString CallMapCallerItem::text(int textNo) const
     return _c->callerName();
   }
 
-  if (textNo == 2) return _c->caller()->location();
+  if (textNo == 2) return _c->caller()->prettyLocation();
   if (textNo == 3) return SubCost(_factor * _c->callCount()).pretty();
   if (textNo != 1) return QString::null;
 

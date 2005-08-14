@@ -64,9 +64,6 @@ private:
   void setCalledFile(const QString&);
   void setFunction(const QString&);
   void setCalledFunction(const QString&);
-
-  // dummy names
-  QString _fileDummy, _objDummy, _functionDummy;
   
   // current line in file to read in
   QString _filename;
@@ -126,9 +123,7 @@ private:
   TraceFunction* compressedFunction(const QString& name,
                                     TraceFile*, TraceObject*);
 
-  QPtrVector<TraceObject> _objectVector;
-  QPtrVector<TraceFile> _fileVector;
-  QPtrVector<TraceFunction> _functionVector;
+  QPtrVector<TraceCostItem> _objectVector, _fileVector, _functionVector;
 };
 
 
@@ -142,11 +137,6 @@ CachegrindLoader::CachegrindLoader()
   : Loader("Callgrind",
            i18n( "Import filter for Cachegrind/Callgrind generated profile data files") )
 {
-  QString dummy("???");
-  
-  _fileDummy = dummy;
-  _objDummy = dummy;
-  _functionDummy = dummy;
 }
 
 bool CachegrindLoader::canLoadTrace(QFile* file)
@@ -336,11 +326,17 @@ void CachegrindLoader::clearCompression()
   _fileVector.resize(1000);
   _functionVector.resize(10000);
 }
-  
+
+static
+const QString& checkUnknown(const QString& n)
+{
+    if (n == "???") return QString::null;
+    return n;
+}
 
 TraceObject* CachegrindLoader::compressedObject(const QString& name)
 {
-  if ((name[0] != '(') || !name[1].isDigit()) return _data->object(name);
+  if ((name[0] != '(') || !name[1].isDigit()) return _data->object(checkUnknown(name));
 
   // compressed format using _objectVector
   int p = name.find(')');
@@ -354,7 +350,7 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
   p++;
   while(name.at(p).isSpace()) p++;
   if ((int)name.length()>p) {
-    o = _data->object(name.mid(p));
+    o = _data->object(checkUnknown(name.mid(p)));
 
     if (_objectVector.size() <= index) {
       int newSize = index * 2;
@@ -373,7 +369,7 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
 		<< ", size " << _objectVector.size() << endl;
       return 0;
     }
-    o = _objectVector.at(index);
+    o = (TraceObject*) _objectVector.at(index);
   }
 
   return o;
@@ -384,7 +380,7 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
 // (when references to same source file come from different ELF objects)
 TraceFile* CachegrindLoader::compressedFile(const QString& name)
 {
-  if ((name[0] != '(') || !name[1].isDigit()) return _data->file(name);
+  if ((name[0] != '(') || !name[1].isDigit()) return _data->file(checkUnknown(name));
 
   // compressed format using _fileVector
   int p = name.find(')');
@@ -398,7 +394,7 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
   p++;
   while(name.at(p).isSpace()) p++;
   if ((int)name.length()>p) {
-    f = _data->file(name.mid(p));
+    f = _data->file(checkUnknown(name.mid(p)));
 
     if (_fileVector.size() <= index) {
       int newSize = index * 2;
@@ -417,7 +413,7 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
 		<< ", size " << _fileVector.size() << endl;
       return 0;
     }
-    f = _fileVector.at(index);
+    f = (TraceFile*) _fileVector.at(index);
   }
 
   return f;
@@ -428,7 +424,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
 						    TraceObject* object)
 {
   if ((name[0] != '(') || !name[1].isDigit())
-    return _data->function(name, file, object);
+    return _data->function(checkUnknown(name), file, object);
 
   // compressed format using _functionVector
   int p = name.find(')');
@@ -446,7 +442,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
   p++;
   while(name.at(p).isSpace()) p++;
   if ((int)name.length()>p) {
-    f = _data->function(name.mid(p), file, object);
+    f = _data->function(checkUnknown(name.mid(p)), file, object);
 
     if (_functionVector.size() <= index) {
       int newSize = index * 2;
@@ -473,7 +469,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
 		<< ", size " << _functionVector.size() << endl;
       return 0;
     }
-    f = _functionVector.at(index);
+    f = (TraceFunction*) _functionVector.at(index);
     if (!f) {
       kdError() << "Loader: Invalid compressed function index " << index
                 << "without definition" << endl;
@@ -507,16 +503,12 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
 }
 
 
-// make sure that a valid object is set, at least dummy '???'
+// make sure that a valid object is set, at least dummy with empty name
 void CachegrindLoader::ensureObject()
 {
   if (currentObject) return;
 
-  kdWarning() << _filename << ":" << _lineNo
-	      << " - ELF object name not set. Using '"
-	      << _objDummy << "'" << endl;
-
-  currentObject = _data->object(_objDummy);
+  currentObject = _data->object(QString::null);
   currentPartObject = currentObject->partObject(_part);
 }
 
@@ -525,10 +517,9 @@ void CachegrindLoader::setObject(const QString& name)
   currentObject = compressedObject(name);
   if (!currentObject) {
     kdWarning() << _filename << ":" << _lineNo
-		<< " - Invalid object spec, using '"
-		<< _objDummy << "'" << endl;
+		<< " - Invalid object spec, leaving unset" << endl;
 
-    currentObject = _data->object(_objDummy);
+    currentObject = _data->object(QString::null);
   }
 
   currentPartObject = currentObject->partObject(_part);
@@ -542,26 +533,21 @@ void CachegrindLoader::setCalledObject(const QString& name)
 
   if (!currentCalledObject) {
     kdWarning() << _filename << ":" << _lineNo
-		<< " - Invalid called object spec, using '"
-		<< _objDummy << "'" << endl;
+		<< " - Invalid called object spec, leaving unset" << endl;
 
-    currentCalledObject = _data->object(_objDummy);
+    currentCalledObject = _data->object(QString::null);
   }
 
   currentCalledPartObject = currentCalledObject->partObject(_part);
 }
 
 
-// make sure that a valid file is set, at least dummy '???'
+// make sure that a valid file is set, at least dummy with empty name
 void CachegrindLoader::ensureFile()
 {
   if (currentFile) return;
 
-  kdWarning() << _filename << ":" << _lineNo
-	      << " - Source file name not set. Using '"
-	      << _fileDummy << "'" << endl;
-
-  currentFile = _data->file(_fileDummy);
+  currentFile = _data->file(QString::null);
   currentPartFile = currentFile->partFile(_part);
 }
 
@@ -571,10 +557,9 @@ void CachegrindLoader::setFile(const QString& name)
 
   if (!currentFile) {
     kdWarning() << _filename << ":" << _lineNo
-		<< " - Invalid file spec, using '"
-		<< _fileDummy << "'" << endl;
+		<< " - Invalid file spec, leaving unset" << endl;
 
-    currentFile = _data->file(_fileDummy);
+    currentFile = _data->file(QString::null);
   }
 
   currentPartFile = currentFile->partFile(_part);
@@ -588,25 +573,23 @@ void CachegrindLoader::setCalledFile(const QString& name)
 
   if (!currentCalledFile) {
     kdWarning() << _filename << ":" << _lineNo
-		<< " - Invalid called file spec, using '"
-		<< _fileDummy << "'" << endl;
+		<< " - Invalid called file spec, leaving unset" << endl;
 
-    currentCalledFile = _data->file(_fileDummy);
+    currentCalledFile = _data->file(QString::null);
   }
 
   currentCalledPartFile = currentCalledFile->partFile(_part);
 }
 
-// make sure that a valid file is set, at least dummy '???'
+// make sure that a valid function is set, at least dummy with empty name
 void CachegrindLoader::ensureFunction()
 {
   if (currentFunction) return;
 
   kdWarning() << _filename << ":" << _lineNo
-	      << " - function name not set. Using '"
-	      << _functionDummy << "'" << endl;
+	      << " - function name not set" << endl;
 
-  currentFunction = _data->function(_functionDummy, 0, 0);
+  currentFunction = _data->function(QString::null, 0, 0);
   currentPartFunction = currentFunction->partFunction(_part, 0, 0);
 }
 
@@ -621,10 +604,9 @@ void CachegrindLoader::setFunction(const QString& name)
 
   if (!currentFunction) {
     kdWarning() << _filename << ":" << _lineNo
-		<< " - Invalid function, using '"
-		<< _functionDummy << "'" << endl;
+		<< " - Invalid function, leaving unset" << endl;
 
-    currentFunction = _data->function(_functionDummy, 0, 0);
+    currentFunction = _data->function(QString::null, 0, 0);
   }
 
   currentPartFunction = currentFunction->partFunction(_part,
@@ -655,10 +637,9 @@ void CachegrindLoader::setCalledFunction(const QString& name)
 					     currentCalledObject);
   if (!currentCalledFunction) {
     kdWarning() << _filename << ":" << _lineNo
-		<< " - Invalid called function, using '"
-		<< _functionDummy << "'" << endl;
+		<< " - Invalid called function, leaving unset" << endl;
 
-    currentCalledFunction = _data->function(_functionDummy, 0, 0);
+    currentCalledFunction = _data->function(QString::null, 0, 0);
   }
 
   currentCalledPartFunction =

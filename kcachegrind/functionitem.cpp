@@ -53,7 +53,7 @@ FunctionItem::FunctionItem(QListView* parent, TraceFunction* f,
     setCostType(ct);
 
     setText(3, f->prettyName());
-    setText(4, f->location());
+    setText(4, f->prettyLocation());
 }
 
 FunctionItem::FunctionItem(QListView* parent, int skipped,

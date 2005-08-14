@@ -250,11 +250,12 @@ QString TraceItem::name() const
   if (_dep)
     return _dep->name();
 
-  return i18n("(unnamed)");
+  return i18n("(unknown)");
 }
 
 QString TraceItem::prettyName() const
 {
+    if (name().isEmpty()) return i18n("(unknown)");
     return name();
 }
 
@@ -2823,7 +2824,7 @@ void TraceLine::addLineCall(TraceLineCall* lineCall)
 QString TraceLine::name() const
 {
     QString fileShortName = _sourceFile->file()->shortName();
-    if (fileShortName == QString("???"))
+    if (fileShortName.isEmpty())
 	return i18n("(unknown)");
 
     return QString("%1:%2")
@@ -3240,13 +3241,13 @@ QString TraceFunction::prettyName() const
 {
   QString res = _name;
 
-  if (_name == "???") {
-    if (!_file ||_file->name() == "???") {
+  if (_name.isEmpty()) {
+    if (!_file ||_file->name().isEmpty()) {
       if (_object)
-        return QString("??? [%1]").arg(_object->shortName());
+        return QString("(unknown, in %1)").arg(_object->shortName());
     }
     else
-      return QString("??? [%1]").arg(_file->shortName());
+      return QString("(unknown, in %1)").arg(_file->shortName());
   }
 
   int p = _name.find('(');
@@ -3305,7 +3306,8 @@ QString TraceFunction::location() const
   TraceFunctionSourceList list = _sourceFiles;
   TraceFunctionSource* sourceFile = list.first();
   for (;sourceFile;sourceFile=list.next()) {
-    if (!sourceFile->file() || (sourceFile->file()->name() == "???"))
+    if (!sourceFile->file() ||
+	(sourceFile->file()->name().isEmpty()) )
       continue;
 
     if (!loc.isEmpty())
@@ -3326,15 +3328,26 @@ QString TraceFunction::location() const
 #endif
   }
 
-  if (loc.isEmpty()) loc = i18n("(unknown)");
-
   return loc;
+}
+
+// pretty version is allowed to mangle the string...
+QString TraceFunction::prettyLocation() const
+{
+    QString l = location();
+    if (l.isEmpty()) return i18n("(unknown)");
+
+    return l;
 }
 
 QString TraceFunction::info() const
 {
-  return QString("Function %1 (%2)")
-    .arg(name()).arg(location());
+    QString l = location();
+    if (l.isEmpty())
+	return QString("Function %1").arg(name());
+
+    return QString("Function %1 (location %2)")
+	.arg(name()).arg(l);
 }
 
 
@@ -4124,9 +4137,19 @@ QString TraceFile::shortName() const
   return _name.mid(lastIndex);
 }
 
+QString TraceFile::prettyName() const
+{
+    QString sn = shortName();
+    
+    if (sn.isEmpty())
+	return i18n("(unknown)");
+
+    return sn;
+}
+
 QString TraceFile::prettyLongName() const
 {
-  if (_name == QString("???"))
+  if (_name.isEmpty())
     return i18n("(unknown)");
   return _name;
 }
@@ -4739,7 +4762,7 @@ TraceFunction* TraceData::function(const QString& name,
       qDebug("Created %s [TraceData::function]\n  for %s, %s, %s",
 	     f.fullName().ascii(),
 	     c->fullName().ascii(), file->fullName().ascii(),
-	     object ? object->fullName().ascii() : "Object ???");
+	     object ? object->fullName().ascii() : "(unknown object)");
 #endif
 
       c->addFunction(&f);
