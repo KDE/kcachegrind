@@ -473,7 +473,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   TraceLineMap::Iterator lineIt, lineItEnd;
   int nextCostLineno = 0, lastCostLineno = 0;
 
-  bool validSourceFile = (sf->file()->name() != "???");
+  bool validSourceFile = (!sf->file()->name().isEmpty());
 
   TraceLine* sLine = 0;
   if (_selectedItem) {
@@ -565,7 +565,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
                    i18n("There is no source available for the following function:"));
     new SourceItem(this, this, fileno, 1, false,
                    QString("    '%1'").arg(sf->function()->prettyName()));
-    if (sf->file()->name() == "???") {
+    if (sf->file()->name().isEmpty()) {
       new SourceItem(this, this, fileno, 2, false,
                      i18n("This is because no debug information is present."));
       new SourceItem(this, this, fileno, 3, false,

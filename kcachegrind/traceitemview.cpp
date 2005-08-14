@@ -306,7 +306,7 @@ void TraceItemView::updateView(bool force)
 }
 
 
-void TraceItemView::selected(TraceItemView* sender, TraceItem* i)
+void TraceItemView::selected(TraceItemView* /*sender*/, TraceItem* i)
 {
 #if TRACE_UPDATES
   kdDebug() << (widget() ? widget()->name() : "TraceItemView")
@@ -319,7 +319,7 @@ void TraceItemView::selected(TraceItemView* sender, TraceItem* i)
   if (_parentView) _parentView->selected(this, i);
 }
 
-void TraceItemView::selected(TraceItemView* sender, const TracePartList& l)
+void TraceItemView::selected(TraceItemView* /*sender*/, const TracePartList& l)
 {
 #if TRACE_UPDATES
   kdDebug() << (widget() ? widget()->name() : "TraceItemView")
@@ -335,7 +335,7 @@ void TraceItemView::selected(TraceItemView* sender, const TracePartList& l)
     if (_topLevel) _topLevel->activePartsChangedSlot(l);
 }
 
-void TraceItemView::activated(TraceItemView* sender, TraceItem* i)
+void TraceItemView::activated(TraceItemView* /*sender*/, TraceItem* i)
 {
 #if TRACE_UPDATES
   kdDebug() << (widget() ? widget()->name() : "TraceItemView")

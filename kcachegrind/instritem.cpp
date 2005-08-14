@@ -108,8 +108,7 @@ InstrItem::InstrItem(InstrView* iv, QListViewItem* parent, Addr addr,
 
   QString callStr = templ.arg(_instrCall->call()->calledName());
   TraceFunction* calledF = _instrCall->call()->called();
-  if (calledF->object() && calledF->object()->name() != QString("???"))
-    callStr += QString(" (%1)").arg(calledF->object()->shortName());
+  calledF->addPrettyLocation(callStr);
 
   setText(6, callStr);
 

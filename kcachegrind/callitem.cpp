@@ -53,8 +53,7 @@ CallItem::CallItem(CallView* view, QListView* parent, TraceCall* c)
       fName = c->calledName(!baseIsCycle);
   }
 
-  if (_shown->object() && _shown->object()->name() != QString("???"))
-      fName += QString(" (%1)").arg(_shown->object()->shortName());
+  _shown->addPrettyLocation(fName);
 
   setText(3, fName);
   updateGroup();

@@ -128,7 +128,7 @@ void PartSelection::setFunction(TraceFunction* f)
   if (_function == f) return;
   _function = f;
 
-  kdDebug() << "PartSelection::setFunction " << f->name() << endl;
+  //kdDebug() << "PartSelection::setFunction " << f->name() << endl;
 
   // FIXME: The TreeMap shouldn't produce spurious selectionChanged events
   _inSelectionUpdate = true;

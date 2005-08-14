@@ -89,8 +89,7 @@ SourceItem::SourceItem(SourceView* sv, QListViewItem* parent,
 
   QString callStr = templ.arg(_lineCall->call()->calledName());
   TraceFunction* calledF = _lineCall->call()->called();
-  if (calledF->object() && calledF->object()->name() != QString("???"))
-    callStr += QString(" (%1)").arg(calledF->object()->shortName());
+  calledF->addPrettyLocation(callStr);
 
   setText(4, callStr);
 

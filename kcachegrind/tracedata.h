@@ -1601,10 +1601,21 @@ class TraceFunction: public TraceCostItem
   TracePartFunction* partFunction(TracePart*,
                                   TracePartFile*, TracePartObject*);
 
+  /**
+   * Returns empty string if location is fully unknown.
+   * Use prettyLocation for single user-visible string.
+   * A function can have a lot of code from different sources (inlined);
+   * maxItems limits this list. Default is full list
+   */
+  QString location(int maxFiles = 0) const;
+
   QString prettyName() const;
-  QString location() const;
-  QString prettyLocation() const;
-  QString info() const; // pretty (name + location)
+  QString prettyLocation(int maxFiles = 0) const;
+  QString prettyNameWithLocation(int maxFiles = 1) const;
+  void addPrettyLocation(QString&, int maxFiles = 1) const;
+  // type + name + location
+  QString info() const; 
+
   TraceClass* cls() const { return _cls; }
   TraceFile* file() const { return _file; }
   TraceObject* object() const { return _object; }

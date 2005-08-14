@@ -44,11 +44,7 @@ CallerCoverageItem::CallerCoverageItem(QListView* parent, Coverage* c,
   _base = base;
   _groupType = TraceCost::NoCostType;
 
-  QString fName = _function->prettyName();
-  if (_function->object() && _function->object()->name() != QString("???"))
-    fName += QString(" (%1)").arg(_function->object()->shortName());
-
-  setText(3, fName);
+  setText(3, _function->prettyNameWithLocation());
 
   setCostType(ct);
   setGroupType(gt);
@@ -188,11 +184,7 @@ CalleeCoverageItem::CalleeCoverageItem(QListView* parent, Coverage* c,
   _base = base;
   _groupType = TraceCost::NoCostType;
 
-  QString fName = _function->prettyName();
-  if (_function->object() && _function->object()->name() != QString("???"))
-    fName += QString(" (%1)").arg(_function->object()->shortName());
-
-  setText(4, fName);
+  setText(4, _function->prettyNameWithLocation());
 
   setCostType(ct);
   setGroupType(gt);

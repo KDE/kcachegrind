@@ -3241,14 +3241,8 @@ QString TraceFunction::prettyName() const
 {
   QString res = _name;
 
-  if (_name.isEmpty()) {
-    if (!_file ||_file->name().isEmpty()) {
-      if (_object)
-        return QString("(unknown, in %1)").arg(_object->shortName());
-    }
-    else
-      return QString("(unknown, in %1)").arg(_file->shortName());
-  }
+  if (_name.isEmpty())
+      return i18n("(unknown)");
 
   int p = _name.find('(');
   if (p>0) {
@@ -3274,24 +3268,19 @@ QString TraceFunction::prettyName() const
 }
 
 /*
- * Gets location, i.e. ELF object and source file.
- * Ranges are commented out because they are not very usefull in the
- * case of inlined functions or large jumps
+ * Returns location string: ELF object and source file(s).
  */
-QString TraceFunction::location() const
+QString TraceFunction::location(int maxFiles) const
 {
   QString loc;
-#if 0
-  uint from, to;
-#endif
 
   // add object file with address range
   if (_object) {
     loc = _object->shortName();
 
 #if 0
-    from = firstAddress();
-    to = lastAddress();
+    uint from = firstAddress();
+    uint to = lastAddress();
     if (from != 0 && to != 0) {
       if (from == to)
         loc += QString(" (0x%1)").arg(to, 0, 16);
@@ -3301,8 +3290,8 @@ QString TraceFunction::location() const
 #endif   
   }
 
-  // add all source files with ranges
-  bool fileAdded = false;
+  // add all source files
+  int filesAdded = 0;
   TraceFunctionSourceList list = _sourceFiles;
   TraceFunctionSource* sourceFile = list.first();
   for (;sourceFile;sourceFile=list.next()) {
@@ -3311,9 +3300,13 @@ QString TraceFunction::location() const
       continue;
 
     if (!loc.isEmpty())
-      loc += fileAdded ? ", " : ": ";
-    fileAdded = true;
+      loc += (filesAdded>0) ? ", " : ": ";
+    filesAdded++;
 
+    if ((maxFiles>0) && (filesAdded>maxFiles)) {
+	loc += "...";
+	break;
+    }
     loc += sourceFile->file()->shortName();
 
 #if 0
@@ -3332,12 +3325,28 @@ QString TraceFunction::location() const
 }
 
 // pretty version is allowed to mangle the string...
-QString TraceFunction::prettyLocation() const
+QString TraceFunction::prettyLocation(int maxFiles) const
 {
-    QString l = location();
+    QString l = location(maxFiles);
     if (l.isEmpty()) return i18n("(unknown)");
 
     return l;
+}
+
+void TraceFunction::addPrettyLocation(QString& s, int maxFiles) const
+{
+    QString l = location(maxFiles);
+    if (l.isEmpty()) return;
+
+    s += QString(" (%1)").arg(l);
+}
+
+QString TraceFunction::prettyNameWithLocation(int maxFiles) const
+{
+    QString l = location(maxFiles);
+    if (l.isEmpty()) return prettyName();
+
+    return QString("%1 (%2)").arg(prettyName()).arg(l);
 }
 
 QString TraceFunction::info() const
