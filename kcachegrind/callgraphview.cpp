@@ -952,12 +952,12 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
 // PannerView
 //
 PannerView::PannerView(QWidget * parent, const char * name)
-  : QCanvasView(parent, name)
+  : QCanvasView(parent, name, WNoAutoErase | WStaticContents)
 {
   _movingZoomRect = false;
 
   // why doesn't this avoid flicker ?
-  // viewport()->setBackgroundMode(Qt::NoBackground);
+  viewport()->setBackgroundMode(Qt::NoBackground);
   setBackgroundMode(Qt::NoBackground);
 }
 
@@ -977,8 +977,11 @@ void PannerView::drawContents(QPainter * p, int clipx, int clipy, int clipw, int
   QCanvasView::drawContents(p,clipx,clipy,clipw,cliph);
   p->restore();
   if (_zoomRect.isValid()) {
-    p->setPen(red);
+    p->setPen(red.dark());
     p->drawRect(_zoomRect);
+    p->setPen(red);
+    p->drawRect(QRect(_zoomRect.x()+1, _zoomRect.y()+1,
+		      _zoomRect.width()-2, _zoomRect.height()-2));
   }
 }
 
