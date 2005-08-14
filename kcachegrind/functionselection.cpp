@@ -68,6 +68,7 @@ FunctionSelection::FunctionSelection( TopLevel* top,
   // select first matching group/function on return
   connect(searchEdit, SIGNAL(returnPressed()),
 	  this, SLOT(searchReturnPressed()));
+  searchEdit->setMinimumWidth(50);
 
   // we start with desending cost sorting
   functionList->setSorting(0,false);
