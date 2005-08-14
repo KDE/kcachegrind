@@ -26,6 +26,7 @@
 #include <klocale.h>
 #include <kapplication.h>
 #include <kiconloader.h>
+#include <kdebug.h>
 
 #include "configuration.h"
 #include "listutils.h"
@@ -348,6 +349,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       if ((_instrJump == _jump[i]) &&
 	  (_jump[i]->instrFrom()->addr() == _addr)) {
 
+	  //kdDebug() << "InstrItem " << _addr.toString() << ": start " << i << endl;
 	  if (start<0) start = i;
 	  if (_jump[i]->instrTo()->addr() < _addr)
 	      y2 = yy;
@@ -356,6 +358,8 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       }
       else if (!_instrJump && !_instrCall &&
 	       (_jump[i]->instrTo()->addr() == _addr)) {
+
+	  //kdDebug() << "InstrItem " << _addr.toString() << ": end " << i << endl;
 	  if (end<0) end = i;
 	  if (_jump[i]->instrFrom()->addr() < _addr)
 	      y2 = yy;
@@ -364,6 +368,14 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       }
 
       c = _jump[i]->isCondJump() ? red : blue;
+#if 0
+      if (_jump[i] == ((TraceItemView*)_view)->selectedItem()) {	  
+	  p->fillRect( marg + 6*i-2, (y1==0) ? y1: y1-2,
+		       8, (y2-y1==height())? y2:y2+2,
+		       cg.brush( QColorGroup::Highlight ) );
+	  c = lv->colorGroup().highlightedText();
+      }
+#endif
       p->fillRect( marg + 6*i, y1, 4, y2, c);
       p->setPen(c.light());
       p->drawLine( marg + 6*i, y1, marg + 6*i, y2);
@@ -374,6 +386,11 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
   // draw start/stop horizontal line
   int x, y = yy-2, w, h = 4;
   if (start >= 0) {
+#if 0
+      if (_jump[start] == ((TraceItemView*)_view)->selectedItem()) {	  
+	  c = lv->colorGroup().highlightedText();
+      }
+#endif
       c = _jump[start]->isCondJump() ? red : blue;
       x = marg + 6*start;
       w = 6*(iv->arrowLevels() - start) + 10;

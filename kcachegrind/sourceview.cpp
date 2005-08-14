@@ -415,7 +415,6 @@ void SourceView::updateJumpArray(uint lineno, SourceItem* si,
 	    _jump[iStart] = lj;
 	}
 	lj=_lowList.next();
-	if (lowLineno == lineno) break;
     }
 
     si->setJumpArray(_jump);
