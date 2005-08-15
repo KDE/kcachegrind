@@ -340,7 +340,7 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 
 	  if (start<0) start = i;
 	  if (_lineJump == _jump[i]) {
-	      if (_jump[i]->lineTo()->lineno() < _lineno)
+	      if (_jump[i]->lineTo()->lineno() <= _lineno)
 		  y2 = yy;
 	      else
 		  y1 = yy;
@@ -408,7 +408,11 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       c = _jump[i]->isCondJump() ? red : blue;
 
       if (_jump[i]->lineFrom()->lineno() == _lineno) {
-	  if (_jump[i]->lineTo()->lineno() < _lineno)
+	  bool drawUp = true;
+	  if (_jump[i]->lineTo()->lineno() == _lineno)
+	      if (start<0) drawUp = false;
+	  if (_jump[i]->lineTo()->lineno() > _lineno) drawUp = false;
+	  if (drawUp)
 	      p->fillRect( marg + 6*i +1, 0, 2, yy, c);
 	  else
 	      p->fillRect( marg + 6*i +1, yy, 2, height()-yy, c);

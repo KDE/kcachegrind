@@ -379,12 +379,13 @@ void SourceView::updateJumpArray(uint lineno, SourceItem* si,
     lj=_lowList.current();
     while(lj) {
 	lowLineno = lj->lineFrom()->lineno();
-	if (lj->lineTo()->lineno() < lowLineno) {
+	if (lj->lineTo()->lineno() < lowLineno)
 	    lowLineno = lj->lineTo()->lineno();
-	    if (ignoreTo) break;
-	}
-	else if (ignoreFrom) break;
+
 	if (lowLineno > lineno) break;
+
+	if (ignoreFrom && (lowLineno < lj->lineTo()->lineno())) break;
+	if (ignoreTo && (lowLineno < lj->lineFrom()->lineno())) break;
 
 	if (si->lineJump() && (lj != si->lineJump())) break;
 

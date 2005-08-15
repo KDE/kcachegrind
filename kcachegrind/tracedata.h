@@ -219,6 +219,7 @@ class Addr
   bool operator>(const Addr& a) const { return _v > a._v; }
   bool operator>=(const Addr& a) const { return _v >= a._v; }
   bool operator<(const Addr& a) const { return _v < a._v; }
+  bool operator<=(const Addr& a) const { return _v <= a._v; }
 
   Addr operator+(int d) const { return Addr(_v + d); }
   Addr operator-(int d) const { return Addr(_v - d); }

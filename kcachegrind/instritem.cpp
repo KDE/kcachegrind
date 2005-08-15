@@ -351,7 +351,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 
 	  //kdDebug() << "InstrItem " << _addr.toString() << ": start " << i << endl;
 	  if (start<0) start = i;
-	  if (_jump[i]->instrTo()->addr() < _addr)
+	  if (_jump[i]->instrTo()->addr() <= _addr)
 	      y2 = yy;
 	  else
 	      y1 = yy;
@@ -433,7 +433,11 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       c = _jump[i]->isCondJump() ? red : blue;
 
       if (_jump[i]->instrFrom()->addr() == _addr) {
-	  if (_jump[i]->instrTo()->addr() < _addr)
+	  bool drawUp = true;
+	  if (_jump[i]->instrTo()->addr() == _addr)
+	      if (start<0) drawUp=false;	  
+	  if (_jump[i]->instrTo()->addr() > _addr) drawUp=false;
+	  if (drawUp)
 	      p->fillRect( marg + 6*i +1, 0, 2, yy, c);
 	  else
 	      p->fillRect( marg + 6*i +1, yy, 2, height()-yy, c);

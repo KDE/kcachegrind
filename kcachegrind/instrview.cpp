@@ -511,13 +511,16 @@ void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
     ij=_lowList.current();
     while(ij) {
 	lowAddr = ij->instrFrom()->addr();
-	if (ij->instrTo()->addr() < lowAddr) {
+	if (ij->instrTo()->addr() < lowAddr)
 	    lowAddr = ij->instrTo()->addr();
-	    if (ignoreTo) break;
-	}
-	else if (ignoreFrom) break;
+
 	if (lowAddr > addr) break;
 
+	// if target is downwards but we draw no source, break
+	if (ignoreFrom && (lowAddr < ij->instrTo()->addr())) break;
+	// if source is downward but we draw no target, break
+	if (ignoreTo && (lowAddr < ij->instrFrom()->addr())) break;
+	// if this is another jump start, break
 	if (ii->instrJump() && (ij != ii->instrJump())) break;
 
 #if 0
