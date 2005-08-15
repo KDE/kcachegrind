@@ -402,9 +402,9 @@ void TopLevel::createDocks()
   if (0) qDebug("Docks/Position: '%s'", str.ascii());
   if (str.isEmpty()) {
     // default positions
-    addDockWindow(_partDock, DockLeft);
-    addDockWindow(_stackDock, DockLeft);
-    addDockWindow(_functionDock, DockLeft);
+    addDockWindow(_partDock, Qt::DockLeft);
+    addDockWindow(_stackDock, Qt::DockLeft);
+    addDockWindow(_functionDock, Qt::DockLeft);
     _stackDock->hide();
 #if ENABLE_DUMPDOCK
     addDockWindow(_dumpDock, Qt::DockLeft);
@@ -709,7 +709,7 @@ void TopLevel::createMiscActions()
   action->setWhatsThis( hint );
 #else
   _paUp = new KToolBarPopupAction( i18n( "&Up" ), "up",
-                                   ALT+Key_Up,
+                                   Qt::ALT+Qt::Key_Up,
                                    _stackSelection, SLOT( browserUp() ),
                                    actionCollection(), "go_up" );
   connect( _paUp->popupMenu(), SIGNAL( aboutToShow() ),
@@ -723,7 +723,7 @@ void TopLevel::createMiscActions()
   _paUp->setWhatsThis( hint );
 
   QPair< KGuiItem, KGuiItem > backForward = KStdGuiItem::backAndForward();
-  _paBack = new KToolBarPopupAction( backForward.first, ALT+Key_Left,
+  _paBack = new KToolBarPopupAction( backForward.first, Qt::ALT+Qt::Key_Left,
                                      _stackSelection, SLOT(browserBack()),
                                      actionCollection(), "go_back" );
   connect( _paBack->popupMenu(), SIGNAL( aboutToShow() ),
@@ -734,7 +734,7 @@ void TopLevel::createMiscActions()
   _paBack->setToolTip( hint );
   _paBack->setWhatsThis( hint );
 
-  _paForward = new KToolBarPopupAction( backForward.second, ALT+Key_Right,
+  _paForward = new KToolBarPopupAction( backForward.second, Qt::ALT+Qt::Key_Right,
                                         _stackSelection,
                                         SLOT(browserForward()),
                                         actionCollection(), "go_forward" );
@@ -2391,7 +2391,7 @@ void TopLevel::showStatus(QString msg, int progress)
     _progressBar->setProgress(progress);
 
     // let the progress bar update itself
-#if (QT_VERSION-0 >= 0x030100)
+#if 0
     QEventLoop* l = qApp->eventLoop();
     if (l) l->processEvents(QEventLoop::ExcludeUserInput);
 #else

@@ -281,7 +281,7 @@ void RectDrawing::drawBack(QPainter* p, DrawParams* dp)
     bool goDark = qGray(normal.rgb())>128;
     int rBase, gBase, bBase;
     normal.rgb(&rBase, &gBase, &bBase);
-    p->setBrush(QBrush::NoBrush);
+    p->setBrush(Qt::NoBrush);
 
     // shade parameters:
     int d = 7;
@@ -341,7 +341,7 @@ void RectDrawing::drawBack(QPainter* p, DrawParams* dp)
   }
 
   // fill inside
-  p->setPen(QPen::NoPen);
+  p->setPen(Qt::NoPen);
   p->setBrush(normal);
   p->drawRect(r);
 }
@@ -1081,7 +1081,7 @@ void TreeMapItem::addFreeRect(const QRect& r)
 		     << last->width() << "x" << last->height() << ")" << endl;
 }
 
-
+#if 0
 // Tooltips for TreeMapWidget
 
 class TreeMapTip: public QToolTip
@@ -1109,7 +1109,7 @@ void TreeMapTip::maybeTip( const QPoint& pos )
 	      tip(*r, p->tipString(i));
   }
 }
-
+#endif
 
 
 // TreeMapWidget
@@ -1157,14 +1157,14 @@ TreeMapWidget::TreeMapWidget(TreeMapItem* base,
   _needsRefresh = _base;
 
   setBackgroundMode(Qt::NoBackground);
-  setFocusPolicy(QWidget::StrongFocus);
-  _tip = new TreeMapTip(this);
+  setFocusPolicy(Qt::StrongFocus);
+  //_tip = new TreeMapTip(this);
 }
 
 TreeMapWidget::~TreeMapWidget()
 {
   delete _base;
-  delete _tip;
+  //delete _tip;
 }
 
 const QFont& TreeMapWidget::currentFont() const
@@ -1826,8 +1826,8 @@ void TreeMapWidget::mousePressEvent( QMouseEvent* e )
 
   _pressed = i;
 
-  _inShiftDrag = e->state() & ShiftButton;
-  _inControlDrag = e->state() & ControlButton;
+  _inShiftDrag = e->state() & Qt::ShiftButton;
+  _inControlDrag = e->state() & Qt::ControlButton;
   _lastOver = _pressed;
 
   TreeMapItem* changed = 0;
@@ -1859,7 +1859,7 @@ void TreeMapWidget::mousePressEvent( QMouseEvent* e )
   }
 
   // item under mouse always selected on right button press
-  if (e->button() == RightButton) {
+  if (e->button() == Qt::RightButton) {
     TreeMapItem* changed2 = setTmpSelected(item, true);
     if (changed2) changed = changed2->commonParent(changed);
   }
@@ -1869,7 +1869,7 @@ void TreeMapWidget::mousePressEvent( QMouseEvent* e )
   if (changed)
     redraw(changed);
 
-  if (e->button() == RightButton) {    
+  if (e->button() == Qt::RightButton) {    
 
     // emit selection change
     if (! (_tmpSelection == _selection)) {
@@ -2006,7 +2006,7 @@ int prevVisible(TreeMapItem* i)
 
 void TreeMapWidget::keyPressEvent( QKeyEvent* e )
 {
-  if (e->key() == Key_Escape && _pressed) {
+  if (e->key() == Qt::Key_Escape && _pressed) {
 
     // take back
     if (_oldCurrent != _lastOver)
@@ -2021,8 +2021,8 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
     _lastOver = 0;
   }
 
-  if ((e->key() == Key_Space) ||
-      (e->key() == Key_Return)) {
+  if ((e->key() == Qt::Key_Space) ||
+      (e->key() == Qt::Key_Return)) {
 
     switch(_selectionMode) {
     case NoSelection:
@@ -2034,7 +2034,7 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
       setSelected(_current, !isSelected(_current));
       break;
     case Extended:
-      if ((e->state() & ControlButton) || (e->state() & ShiftButton))
+      if ((e->state() & Qt::ControlButton) || (e->state() & Qt::ShiftButton))
         setSelected(_current, !isSelected(_current));
       else {
         _selectionMode = Single;
@@ -2050,7 +2050,7 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
   }
 
   if (!_current) {
-    if (e->key() == Key_Down) {
+    if (e->key() == Qt::Key_Down) {
       setCurrent(_base, true);
     }
     return;
@@ -2066,26 +2066,26 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
   }
 
 
-  if ((e->key() == Key_Backspace) ||
-      (e->key() == Key_Up)) {
+  if ((e->key() == Qt::Key_Backspace) ||
+      (e->key() == Qt::Key_Up)) {
     newItem = visibleItem(p);
     setCurrent(newItem, true);
   }
-  else if (e->key() == Key_Left) {
+  else if (e->key() == Qt::Key_Left) {
     int newIdx = goBack ? nextVisible(_current) : prevVisible(_current);
     if (p && newIdx>=0) {
       p->setIndex(newIdx);
       setCurrent(p->children()->at(newIdx), true);
     }
   }
-  else if (e->key() == Key_Right) {
+  else if (e->key() == Qt::Key_Right) {
     int newIdx = goBack ? prevVisible(_current) : nextVisible(_current);
     if (p && newIdx>=0) {
       p->setIndex(newIdx);
       setCurrent(p->children()->at(newIdx), true);
     }
   }
-  else if (e->key() == Key_Down) {
+  else if (e->key() == Qt::Key_Down) {
     if (_current->children() && _current->children()->count()>0) {
       int newIdx = _current->index();
       if (newIdx<0)
@@ -2098,8 +2098,8 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
   }
 
   if (old == _current) return;
-  if (! (e->state() & ControlButton)) return;
-  if (! (e->state() & ShiftButton)) return;
+  if (! (e->state() & Qt::ControlButton)) return;
+  if (! (e->state() & Qt::ShiftButton)) return;
 
   switch(_selectionMode) {
   case NoSelection:
@@ -2111,7 +2111,7 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
     setSelected(_current, !isSelected(_current));
     break;
   case Extended:
-    if (e->state() & ControlButton)
+    if (e->state() & Qt::ControlButton)
       setSelected(_current, !isSelected(_current));
     else
       setSelected(_current, isSelected(old));
@@ -2163,7 +2163,7 @@ void TreeMapWidget::drawTreeMap()
     }
     QPainter p(&_pixmap);
     if (_needsRefresh == _base) {
-      p.setPen(black);
+      p.setPen(Qt::black);
       p.drawRect(QRect(2, 2, QWidget::width()-4, QWidget::height()-4));
       _base->setItemRect(QRect(3, 3, QWidget::width()-6, QWidget::height()-6));
     }
@@ -2181,13 +2181,15 @@ void TreeMapWidget::drawTreeMap()
   }
 
   bitBlt( this, 0, 0, &_pixmap, 0, 0,
-          QWidget::width(), QWidget::height(), CopyROP, true);
+          QWidget::width(), QWidget::height()); //, CopyROP, true);
 
   if (hasFocus()) {
     QPainter p(this);
+#if 0
     style().drawPrimitive( QStyle::PE_FocusRect, &p,
                            QRect(0, 0, QWidget::width(), QWidget::height()),
                            colorGroup() );
+#endif
   }
 }
 

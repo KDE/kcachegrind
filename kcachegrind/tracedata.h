@@ -219,6 +219,7 @@ class Addr
   bool operator>(const Addr& a) const { return _v > a._v; }
   bool operator>=(const Addr& a) const { return _v >= a._v; }
   bool operator<(const Addr& a) const { return _v < a._v; }
+  bool operator<=(const Addr& a) const { return _v <= a._v; }
 
   Addr operator+(int d) const { return Addr(_v + d); }
   Addr operator-(int d) const { return Addr(_v - d); }
@@ -1601,9 +1602,21 @@ class TraceFunction: public TraceCostItem
   TracePartFunction* partFunction(TracePart*,
                                   TracePartFile*, TracePartObject*);
 
+  /**
+   * Returns empty string if location is fully unknown.
+   * Use prettyLocation for single user-visible string.
+   * A function can have a lot of code from different sources (inlined);
+   * maxItems limits this list. Default is full list
+   */
+  QString location(int maxFiles = 0) const;
+
   QString prettyName() const;
-  QString location() const;
-  QString info() const; // prettyName + location
+  QString prettyLocation(int maxFiles = 0) const;
+  QString prettyNameWithLocation(int maxFiles = 1) const;
+  void addPrettyLocation(QString&, int maxFiles = 1) const;
+  // type + name + location
+  QString info() const; 
+
   TraceClass* cls() const { return _cls; }
   TraceFile* file() const { return _file; }
   TraceObject* object() const { return _object; }
@@ -1631,7 +1644,7 @@ class TraceFunction: public TraceCostItem
   void setFile(TraceFile* file) { _file = file; }
   void setObject(TraceObject* object) { _object = object; }
   void setClass(TraceClass* cls) { _cls = cls; }
-  void setMapIterator(TraceFunctionMap::Iterator it) { _myMapIterator = it; }
+  //void setMapIterator(TraceFunctionMap::Iterator it) { _myMapIterator = it; }
 
   // see TraceFunctionAssoziation
   void addAssoziation(TraceAssoziation* a);
@@ -1655,7 +1668,7 @@ class TraceFunction: public TraceCostItem
 
  private:
   bool isUniquePrefix(QString) const;
-  TraceFunctionMap::Iterator _myMapIterator;
+  //TraceFunctionMap::Iterator _myMapIterator;
 
   TraceClass* _cls;
   TraceObject* _object;
@@ -1755,7 +1768,7 @@ class TraceFile: public TraceCostItem
 
   // without path
   QString shortName() const;
-  QString prettyName() const { return shortName(); }
+  QString prettyName() const;
   QString prettyLongName() const;
   const TraceFunctionList& functions() const { return _functions; }
   const TraceFunctionSourceList& sourceFiles() const

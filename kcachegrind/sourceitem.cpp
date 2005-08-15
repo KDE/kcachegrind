@@ -92,8 +92,7 @@ SourceItem::SourceItem(SourceView* sv, Q3ListViewItem* parent,
 
   QString callStr = templ.arg(_lineCall->call()->calledName());
   TraceFunction* calledF = _lineCall->call()->called();
-  if (calledF->object() && calledF->object()->name() != QString("???"))
-    callStr += QString(" (%1)").arg(calledF->object()->shortName());
+  calledF->addPrettyLocation(callStr);
 
   setText(4, callStr);
 
@@ -315,12 +314,14 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
   if ( !lv ) return;
   SourceView* sv = (SourceView*) lv;
 
-  const BackgroundMode bgmode = lv->viewport()->backgroundMode();
-  const QColorGroup::ColorRole crole
-    = QPalette::backgroundRoleFromMode( bgmode );
+  const Qt::BackgroundMode bgmode = lv->viewport()->backgroundMode();
+#if 0
+  const QColorGroup::ColorRole crole;
+      // = QPalette::backgroundRoleFromMode( bgmode );
   if ( cg.brush( crole ) != lv->colorGroup().brush( crole ) )
     p->fillRect( 0, 0, width, height(), cg.brush( crole ) );
   else
+#endif
     sv->paintEmptyArea( p, QRect( 0, 0, width, height() ) );
 
   if ( isSelected() && lv->allColumnsShowFocus() )
@@ -344,7 +345,7 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 
 	  if (start<0) start = i;
 	  if (_lineJump == _jump[i]) {
-	      if (_jump[i]->lineTo()->lineno() < _lineno)
+	      if (_jump[i]->lineTo()->lineno() <= _lineno)
 		  y2 = yy;
 	      else
 		  y1 = yy;
@@ -359,7 +360,7 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 	      y1 = yy;
       }
 
-      c = _jump[i]->isCondJump() ? red : blue;
+      c = _jump[i]->isCondJump() ? Qt::red : Qt::blue;
       p->fillRect( marg + 6*i, y1, 4, y2, c);
       p->setPen(c.light());
       p->drawLine( marg + 6*i, y1, marg + 6*i, y2);
@@ -370,7 +371,7 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
   // draw start/stop horizontal line
   int x, y = yy-2, w, h = 4;
   if (start >= 0) {
-      c = _jump[start]->isCondJump() ? red : blue;
+      c = _jump[start]->isCondJump() ? Qt::red : Qt::blue;
       x = marg + 6*start;
       w = 6*(sv->arrowLevels() - start) + 10;
       p->fillRect( x, y, w, h, c);
@@ -382,7 +383,7 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       p->drawLine(x+1, y+h-1, x+w-1, y+h-1);
   }
   if (end >= 0) {
-      c = _jump[end]->isCondJump() ? red : blue;
+      c = _jump[end]->isCondJump() ? Qt::red : Qt::blue;
       x = marg + 6*end;
       w = 6*(sv->arrowLevels() - end) + 10;
 
@@ -409,10 +410,14 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
   for(int i=0;i< (int)_jump.size();i++) {
       if (_jump[i] == 0) continue;
 
-      c = _jump[i]->isCondJump() ? red : blue;
+      c = _jump[i]->isCondJump() ? Qt::red : Qt::blue;
 
       if (_jump[i]->lineFrom()->lineno() == _lineno) {
-	  if (_jump[i]->lineTo()->lineno() < _lineno)
+	  bool drawUp = true;
+	  if (_jump[i]->lineTo()->lineno() == _lineno)
+	      if (start<0) drawUp = false;
+	  if (_jump[i]->lineTo()->lineno() > _lineno) drawUp = false;
+	  if (drawUp)
 	      p->fillRect( marg + 6*i +1, 0, 2, yy, c);
 	  else
 	      p->fillRect( marg + 6*i +1, yy, 2, height()-yy, c);

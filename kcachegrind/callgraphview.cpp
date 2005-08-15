@@ -961,12 +961,12 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
 // PannerView
 //
 PannerView::PannerView(QWidget * parent, const char * name)
-  : Q3CanvasView(parent, name)
+    : Q3CanvasView(parent, name /*, WNoAutoErase | WStaticContents*/)
 {
   _movingZoomRect = false;
 
   // why doesn't this avoid flicker ?
-  // viewport()->setBackgroundMode(Qt::NoBackground);
+  viewport()->setBackgroundMode(Qt::NoBackground);
   setBackgroundMode(Qt::NoBackground);
 }
 
@@ -986,8 +986,11 @@ void PannerView::drawContents(QPainter * p, int clipx, int clipy, int clipw, int
   Q3CanvasView::drawContents(p,clipx,clipy,clipw,cliph);
   p->restore();
   if (_zoomRect.isValid()) {
-    p->setPen(red);
+    p->setPen(QColor(Qt::red).dark());
     p->drawRect(_zoomRect);
+    p->setPen(Qt::red);
+    p->drawRect(QRect(_zoomRect.x()+1, _zoomRect.y()+1,
+		      _zoomRect.width()-2, _zoomRect.height()-2));
   }
 }
 
@@ -1051,7 +1054,7 @@ CanvasNode::CanvasNode(CallGraphView* v, GraphNode* n,
         totalCost = (TraceCost*) _view->activeItem();
     }
     else
-	totalCost = _view->data();
+	totalCost = ((TraceItemView*)_view)->data();
     double total = totalCost->subCost(_view->costType());
     double inclP  = 100.0 * n->incl / total;
     if (_view->topLevel()->showPercentage())
@@ -1088,13 +1091,15 @@ void CanvasNode::drawShape(QPainter& p)
   d.drawBack(&p, this);
   r.setRect(r.x()+2, r.y()+2, r.width()-4, r.height()-4);
 
+#if 0
   if (StoredDrawParams::selected() && _view->hasFocus()) {
     _view->style().drawPrimitive( QStyle::PE_FocusRect, &p, r,
 				  _view->colorGroup());
   }
+#endif
 
   // draw afterwards to always get a frame even when zoomed
-  p.setPen(StoredDrawParams::selected() ? red : black);
+  p.setPen(StoredDrawParams::selected() ? Qt::red : Qt::black);
   p.drawRect(origRect);
 
   d.setRect(r);
@@ -1131,7 +1136,7 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce,
         totalCost = (TraceCost*) _view->activeItem();
     }
     else
-        totalCost = _view->data();
+        totalCost = ((TraceItemView*)_view)->data();
     double total = totalCost->subCost(_view->costType());
     double inclP  = 100.0 * e->cost / total;
     if (_view->topLevel()->showPercentage())
@@ -1295,7 +1300,7 @@ void CanvasFrame::drawShape(QPainter& p)
 //
 // Tooltips for CallGraphView
 //
-
+#if 0
 class CallGraphTip: public QToolTip
 {
 public:
@@ -1354,7 +1359,7 @@ void CallGraphTip::maybeTip( const QPoint& pos )
       tip(QRect(pos.x()-5,pos.y()-5,pos.x()+5,pos.y()+5), tipStr);
   }
 }
-
+#endif
 
 
 
@@ -1382,7 +1387,7 @@ CallGraphView::CallGraphView(TraceItemView* parentView,
   _completeView->raise();
   _completeView->hide();
 
-  setFocusPolicy(QWidget::StrongFocus);
+  setFocusPolicy(Qt::StrongFocus);
   setBackgroundMode(Qt::NoBackground);
 
   connect(this, SIGNAL(contentsMoving(int,int)),
@@ -1395,7 +1400,7 @@ CallGraphView::CallGraphView(TraceItemView* parentView,
   this->setWhatsThis( whatsThis() );
 
   // tooltips...
-  _tip = new CallGraphTip(this);
+  //_tip = new CallGraphTip(this);
 
   _renderProcess = 0;
   _prevSelectedNode = 0;
@@ -1406,7 +1411,7 @@ CallGraphView::CallGraphView(TraceItemView* parentView,
 CallGraphView::~CallGraphView()
 {
   delete _completeView;
-  delete _tip;
+  //delete _tip;
 
   if (_canvas) {
     setCanvas(0);
@@ -1563,8 +1568,8 @@ void CallGraphView::keyPressEvent(QKeyEvent* e)
 	return;
     }
 
-    if ((e->key() == Key_Return) ||
-	(e->key() == Key_Space)) {
+    if ((e->key() == Qt::Key_Return) ||
+	(e->key() == Qt::Key_Space)) {
 	if (_selectedNode)
 	    activated(_selectedNode->function());
 	else if (_selectedEdge && _selectedEdge->call())
@@ -1573,12 +1578,12 @@ void CallGraphView::keyPressEvent(QKeyEvent* e)
     }
 
     // move selected node/edge
-    if (!(e->state() & (ShiftButton | ControlButton)) &&
+    if (!(e->state() & (Qt::ShiftButton | Qt::ControlButton)) &&
 	(_selectedNode || _selectedEdge) &&
-	((e->key() == Key_Up) ||
-	 (e->key() == Key_Down) ||
-	 (e->key() == Key_Left) ||
-	 (e->key() == Key_Right))) {
+	((e->key() == Qt::Key_Up) ||
+	 (e->key() == Qt::Key_Down) ||
+	 (e->key() == Qt::Key_Left) ||
+	 (e->key() == Qt::Key_Right))) {
 
 	TraceFunction* f = 0;
 	TraceCall* c = 0;
@@ -1587,25 +1592,25 @@ void CallGraphView::keyPressEvent(QKeyEvent* e)
 	int key = e->key();
 	if (_layout == LeftRight) {
 	    switch(key) {
-	    case Qt::Key_Up:    key = Key_Left; break;
-	    case Qt::Key_Down:  key = Key_Right; break;
-	    case Qt::Key_Left:  key = Key_Up; break;
-	    case Qt::Key_Right: key = Key_Down; break;
+	    case Qt::Key_Up:    key = Qt::Key_Left; break;
+	    case Qt::Key_Down:  key = Qt::Key_Right; break;
+	    case Qt::Key_Left:  key = Qt::Key_Up; break;
+	    case Qt::Key_Right: key = Qt::Key_Down; break;
 	    default: break;
 	    }
 	}
 
 	if (_selectedNode) {
-	    if (key == Key_Up)    c = _selectedNode->visibleCaller();
-	    if (key == Key_Down)  c = _selectedNode->visibleCalling();
-	    if (key == Key_Right) f = _selectedNode->nextVisible();
-	    if (key == Key_Left)  f = _selectedNode->priorVisible();
+	    if (key == Qt::Key_Up)    c = _selectedNode->visibleCaller();
+	    if (key == Qt::Key_Down)  c = _selectedNode->visibleCalling();
+	    if (key == Qt::Key_Right) f = _selectedNode->nextVisible();
+	    if (key == Qt::Key_Left)  f = _selectedNode->priorVisible();
 	}
 	else if (_selectedEdge) {
-	    if (key == Key_Up)    f = _selectedEdge->visibleCaller();
-	    if (key == Key_Down)  f = _selectedEdge->visibleCalling();
-	    if (key == Key_Right) c = _selectedEdge->nextVisible();
-	    if (key == Key_Left)  c = _selectedEdge->priorVisible();
+	    if (key == Qt::Key_Up)    f = _selectedEdge->visibleCaller();
+	    if (key == Qt::Key_Down)  f = _selectedEdge->visibleCalling();
+	    if (key == Qt::Key_Right) c = _selectedEdge->nextVisible();
+	    if (key == Qt::Key_Left)  c = _selectedEdge->priorVisible();
 	}
 
 	if (c) selected(c);
@@ -1614,21 +1619,21 @@ void CallGraphView::keyPressEvent(QKeyEvent* e)
     }
 
     // move canvas...
-    if (e->key() == Key_Home)
+    if (e->key() == Qt::Key_Home)
 	scrollBy(-_canvas->width(),0);
-    else if (e->key() == Key_End)
+    else if (e->key() == Qt::Key_End)
 	scrollBy(_canvas->width(),0);
-    else if (e->key() == Key_Prior)
+    else if (e->key() == Qt::Key_Prior)
 	scrollBy(0,-visibleHeight()/2);
-    else if (e->key() == Key_Next)
+    else if (e->key() == Qt::Key_Next)
 	scrollBy(0,visibleHeight()/2);
-    else if (e->key() == Key_Left)
+    else if (e->key() == Qt::Key_Left)
 	scrollBy(-visibleWidth()/10,0);
-    else if (e->key() == Key_Right)
+    else if (e->key() == Qt::Key_Right)
 	scrollBy(visibleWidth()/10,0);
-    else if (e->key() == Key_Down)
+    else if (e->key() == Qt::Key_Down)
 	scrollBy(0,visibleHeight()/10);
-    else if (e->key() == Key_Up)
+    else if (e->key() == Qt::Key_Up)
 	scrollBy(0,-visibleHeight()/10);
     else e->ignore();
 }
@@ -1763,8 +1768,8 @@ void CallGraphView::showText(QString s)
   clear();
   _renderTimer.stop();
 
-  _canvas = new Q3Canvas(QApplication::desktop()->width(),
-			QApplication::desktop()->height());
+  _canvas = new Q3Canvas(/*QApplication::desktop()->width(),
+			   QApplication::desktop()->height()*/);
 
   Q3CanvasText* t = new Q3CanvasText(s, _canvas);
   t->move(5, 5);
@@ -1897,7 +1902,7 @@ void CallGraphView::dotExited()
   _renderTimer.stop();
   viewport()->setUpdatesEnabled(false);
   clear();
-  dotStream = new QTextStream(_unparsedOutput, QIODevice::ReadOnly);
+  dotStream = new QTextStream(&_unparsedOutput, QIODevice::ReadOnly);
 
   int lineno = 0;
   while (1) {
@@ -1906,7 +1911,7 @@ void CallGraphView::dotExited()
     lineno++;
     if (line.isEmpty()) continue;
 
-    QTextStream lineStream(line, QIODevice::ReadOnly);
+    QTextStream lineStream(&line, QIODevice::ReadOnly);
     lineStream >> cmd;
 
     if (0) qDebug("%s:%d - line '%s', cmd '%s'",
@@ -1929,13 +1934,15 @@ void CallGraphView::dotExited()
 	// We use as minimum canvas size the desktop size.
 	// Otherwise, the canvas would have to be resized on widget resize.
 	_xMargin = 50;
+#if 0
 	if (w < QApplication::desktop()->width())
 	    _xMargin += (QApplication::desktop()->width()-w)/2;
-
+#endif
 	_yMargin = 50;
+#if 0
 	if (h < QApplication::desktop()->height())
 	    _yMargin += (QApplication::desktop()->height()-h)/2;
-
+#endif
         _canvas = new Q3Canvas(int(w+2*_xMargin), int(h+2*_yMargin));
 
 #if DEBUG_GRAPH
@@ -2570,7 +2577,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
 	  if (!f) break;
 
 	  QString n = QString("callgraph");
-	  GraphExporter ge(data(), f, costType(), groupType(),
+	  GraphExporter ge(TraceItemView::data(), f, costType(), groupType(),
 			   QString("%1.dot").arg(n));
 	  ge.setGraphOptions(this);
 	  ge.writeDot();

@@ -119,7 +119,7 @@ public:
    */
   virtual void selected(TraceItemView* sender, TraceItem*);
   virtual void selected(TraceItemView* sender, const TracePartList&);
-  virtual void activated(TraceItemView* sender, Qt::Orientation);
+  virtual void activated(TraceItemView* sender, Direction);
   virtual void selectedCostType(TraceItemView* sender, TraceCostType*);
   virtual void selectedCostType2(TraceItemView* sender, TraceCostType*);
   virtual void activated(TraceItemView* sender, TraceItem*);
@@ -173,7 +173,7 @@ protected:
   void activated(TraceItem*);
   void selectedCostType(TraceCostType*);
   void selectedCostType2(TraceCostType*);
-  void activated(Qt::Orientation);
+  void activated(TraceItemView::Direction);
 
   /* Is this view visible?
    * if not, doUpdate() won't be called by updateView()

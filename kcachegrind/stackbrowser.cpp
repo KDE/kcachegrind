@@ -70,7 +70,7 @@ void Stack::extendBottom()
 	// no simple recursions
 	if (c->called() == _top) continue;
 
-      if (c->called()->name() == "???") continue;
+      if (c->called()->name().isEmpty()) continue;
       SubCost sc = c->subCost(0); // FIXME
       if (sc == 0) continue;
 
@@ -110,7 +110,7 @@ void Stack::extendTop()
 	// no simple recursions
 	if (c->caller() == _top) continue;
 
-      if (c->caller()->name() == "???") continue;
+      if (c->caller()->name().isEmpty()) continue;
       SubCost sc = c->subCost(0); // FIXME
       if (sc == 0) continue;
 

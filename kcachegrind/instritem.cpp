@@ -29,6 +29,7 @@
 #include <klocale.h>
 #include <kapplication.h>
 #include <kiconloader.h>
+#include <kdebug.h>
 
 #include "configuration.h"
 #include "listutils.h"
@@ -111,8 +112,7 @@ InstrItem::InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
 
   QString callStr = templ.arg(_instrCall->call()->calledName());
   TraceFunction* calledF = _instrCall->call()->called();
-  if (calledF->object() && calledF->object()->name() != QString("???"))
-    callStr += QString(" (%1)").arg(calledF->object()->shortName());
+  calledF->addPrettyLocation(callStr);
 
   setText(6, callStr);
 
@@ -326,12 +326,14 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
   if ( !lv ) return;
   InstrView* iv = (InstrView*) lv;
 
+#if 0
   const BackgroundMode bgmode = lv->viewport()->backgroundMode();
   const QColorGroup::ColorRole crole
     = QPalette::backgroundRoleFromMode( bgmode );
   if ( cg.brush( crole ) != lv->colorGroup().brush( crole ) )
     p->fillRect( 0, 0, width, height(), cg.brush( crole ) );
   else
+#endif
     iv->paintEmptyArea( p, QRect( 0, 0, width, height() ) );
 
   if ( isSelected() && lv->allColumnsShowFocus() )
@@ -352,14 +354,17 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       if ((_instrJump == _jump[i]) &&
 	  (_jump[i]->instrFrom()->addr() == _addr)) {
 
+	  //kdDebug() << "InstrItem " << _addr.toString() << ": start " << i << endl;
 	  if (start<0) start = i;
-	  if (_jump[i]->instrTo()->addr() < _addr)
+	  if (_jump[i]->instrTo()->addr() <= _addr)
 	      y2 = yy;
 	  else
 	      y1 = yy;
       }
       else if (!_instrJump && !_instrCall &&
 	       (_jump[i]->instrTo()->addr() == _addr)) {
+
+	  //kdDebug() << "InstrItem " << _addr.toString() << ": end " << i << endl;
 	  if (end<0) end = i;
 	  if (_jump[i]->instrFrom()->addr() < _addr)
 	      y2 = yy;
@@ -367,7 +372,15 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 	      y1 = yy;
       }
 
-      c = _jump[i]->isCondJump() ? red : blue;
+      c = _jump[i]->isCondJump() ? Qt::red : Qt::blue;
+#if 0
+      if (_jump[i] == ((TraceItemView*)_view)->selectedItem()) {	  
+	  p->fillRect( marg + 6*i-2, (y1==0) ? y1: y1-2,
+		       8, (y2-y1==height())? y2:y2+2,
+		       cg.brush( QColorGroup::Highlight ) );
+	  c = lv->colorGroup().highlightedText();
+      }
+#endif
       p->fillRect( marg + 6*i, y1, 4, y2, c);
       p->setPen(c.light());
       p->drawLine( marg + 6*i, y1, marg + 6*i, y2);
@@ -378,7 +391,12 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
   // draw start/stop horizontal line
   int x, y = yy-2, w, h = 4;
   if (start >= 0) {
-      c = _jump[start]->isCondJump() ? red : blue;
+#if 0
+      if (_jump[start] == ((TraceItemView*)_view)->selectedItem()) {	  
+	  c = lv->colorGroup().highlightedText();
+      }
+#endif
+      c = _jump[start]->isCondJump() ? Qt::red : Qt::blue;
       x = marg + 6*start;
       w = 6*(iv->arrowLevels() - start) + 10;
       p->fillRect( x, y, w, h, c);
@@ -390,7 +408,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       p->drawLine(x+1, y+h-1, x+w-1, y+h-1);
   }
   if (end >= 0) {
-      c = _jump[end]->isCondJump() ? red : blue;
+      c = _jump[end]->isCondJump() ? Qt::red : Qt::blue;
       x = marg + 6*end;
       w = 6*(iv->arrowLevels() - end) + 10;
 
@@ -417,10 +435,14 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
   for(int i=0;i< (int)_jump.size();i++) {
       if (_jump[i] == 0) continue;
 
-      c = _jump[i]->isCondJump() ? red : blue;
+      c = _jump[i]->isCondJump() ? Qt::red : Qt::blue;
 
       if (_jump[i]->instrFrom()->addr() == _addr) {
-	  if (_jump[i]->instrTo()->addr() < _addr)
+	  bool drawUp = true;
+	  if (_jump[i]->instrTo()->addr() == _addr)
+	      if (start<0) drawUp=false;	  
+	  if (_jump[i]->instrTo()->addr() > _addr) drawUp=false;
+	  if (drawUp)
 	      p->fillRect( marg + 6*i +1, 0, 2, yy, c);
 	  else
 	      p->fillRect( marg + 6*i +1, yy, 2, height()-yy, c);

@@ -86,7 +86,7 @@ void StackSelection::setFunction(TraceFunction* f)
 
   if (!_data || !_function) return;
 
-  kdDebug() << "StackSelection::setFunction " << f->name() << endl;
+  //kdDebug() << "StackSelection::setFunction " << f->name() << endl;
 
   HistoryItem* item = _browser->current();
   if (!item || item->function() != f) {

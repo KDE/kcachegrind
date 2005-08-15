@@ -241,18 +241,12 @@ void InstrView::selectedSlot(Q3ListViewItem * i)
   }
 
   if (ic) {
-    TraceFunction* f = ic->call()->called();
-    if (f) {
-	_selectedItem = f;
-	selected(f);
-    }
+      _selectedItem = ic;
+      selected(ic);
   }
   else if (ij) {
-    TraceInstr* instr = ij->instrTo();
-    if (instr) {
-	_selectedItem = instr;
-	selected(instr);
-    }
+      _selectedItem = ij;
+      selected(ij);
   }
 }
 
@@ -495,7 +489,12 @@ void InstrView::refresh()
     }
 }
 
-
+/* This is called after adding instrItems, for each of them in
+ * address order. _jump is the global array of valid jumps
+ * for a line while we iterate downwards.
+ * The existing jumps, sorted in lowList according lower address,
+ * is iterated in the same way.
+ */
 void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
 				bool ignoreFrom, bool ignoreTo)
 {
@@ -508,16 +507,20 @@ void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
 		  ii->instrJump()
 		  ? ii->instrJump()->instrTo()->name().ascii() : "?" );
 
+    // check for new arrows starting from here downwards
     ij=_lowList.current();
     while(ij) {
 	lowAddr = ij->instrFrom()->addr();
-	if (ij->instrTo()->addr() < lowAddr) {
+	if (ij->instrTo()->addr() < lowAddr)
 	    lowAddr = ij->instrTo()->addr();
-	    if (ignoreTo) break;
-	}
-	else if (ignoreFrom) break;
+
 	if (lowAddr > addr) break;
 
+	// if target is downwards but we draw no source, break
+	if (ignoreFrom && (lowAddr < ij->instrTo()->addr())) break;
+	// if source is downward but we draw no target, break
+	if (ignoreTo && (lowAddr < ij->instrFrom()->addr())) break;
+	// if this is another jump start, break
 	if (ii->instrJump() && (ij != ii->instrJump())) break;
 
 #if 0
@@ -535,14 +538,15 @@ void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
 		_arrowLevels++;
 		_jump.resize(_arrowLevels);
 	    }
+	    if (0) qDebug("  new start at %d for %s", iStart, ij->name().ascii());
 	    _jump[iStart] = ij;
 	}
 	ij=_lowList.next();
-	if (lowAddr == addr) break;
     }
 
     ii->setJumpArray(_jump);
 
+    // check for active arrows ending here
     ij=_highList.current();
     while(ij) {
 	highAddr = ij->instrFrom()->addr();

@@ -63,11 +63,12 @@ FunctionSelection::FunctionSelection( TopLevel* top,
   // search while typing...
   connect(searchEdit, SIGNAL(textChanged(const QString&)),
 	  this, SLOT(searchChanged(const QString&)));
-  // for searches with 1/2 chars, press return
-  connect(searchEdit, SIGNAL(returnPressed()),
-	  this, SLOT(searchEntered()));
   connect(&_searchTimer, SIGNAL(timeout()),
 	  this, SLOT(queryDelayed()));
+  // select first matching group/function on return
+  connect(searchEdit, SIGNAL(returnPressed()),
+	  this, SLOT(searchReturnPressed()));
+  searchEdit->setMinimumWidth(50);
 
   // we start with desending cost sorting
   functionList->setSorting(0,false);
@@ -126,9 +127,26 @@ FunctionSelection::~FunctionSelection()
 {
 }
 
-void FunctionSelection::searchEntered()
+void FunctionSelection::searchReturnPressed()
 {
   query(searchEdit->text());
+
+  Q3ListViewItem* item;
+  if (_groupType != TraceItem::Function) {
+      // if current group not matching, select first matching group
+      item  = groupList->currentItem();
+      if (!item || !item->isVisible()) {
+	  item  = groupList->firstChild();
+	  for (;item;item = item->nextSibling())
+	      if (item->isVisible()) break;
+	  if (!item) return;
+
+	  setGroup(((CostListItem*)item)->costItem());
+	  return;
+      }
+  }
+
+  functionActivated(functionList->firstChild());
 }
 
 // trigger the query after some delay, dependent on length
@@ -277,7 +295,14 @@ void FunctionSelection::doUpdate(int changeType)
 	// active item is a function
 	TraceFunction* f = (TraceFunction*) _activeItem;
 
-	// reset searchEdit
+	// if already current, nothing to do
+	Q3ListViewItem* i = functionList->currentItem();
+	if (i && (((FunctionItem*)i)->function() == f)) {
+	    functionList->setSelected(i,true);
+	    return;	    
+	}
+
+	// reset searchEdit (as not activated from this view)
 	_searchString = QString::null;
 	query(QString::null);
 
@@ -706,15 +731,15 @@ void FunctionSelection::functionActivated(Q3ListViewItem* i)
     activated(f);
 }
 
-void FunctionSelection::updateGroupSizes()
+void FunctionSelection::updateGroupSizes(bool hideEmpty)
 {
   Q3ListViewItem* item  = groupList->firstChild();
   for (;item;item = item->nextSibling()) {
     CostListItem* i = (CostListItem*)item;
-    if (_groupSize.contains(i->costItem()))
-      i->setSize(_groupSize[i->costItem()]);
-    else
-      i->setSize(-1);
+    int size = (_groupSize.contains(i->costItem())) ?
+ 	_groupSize[i->costItem()] : -1;    
+    i->setSize(size);
+    i->setVisible(!hideEmpty || (size>0));
   }
 }
 
@@ -726,7 +751,7 @@ void FunctionSelection::query(QString query)
     // when resetting query, get rid of group sizes
     if (query.isEmpty()) {
       _groupSize.clear();
-      updateGroupSizes();
+      updateGroupSizes(false);
     }
     return;
   }
@@ -779,7 +804,7 @@ void FunctionSelection::query(QString query)
     }
   }
 
-  updateGroupSizes();
+  updateGroupSizes(true);
 
   FunctionItem *fi, *item = 0;
 

@@ -218,7 +218,7 @@ private:
   QLabel* _statusLabel;
   KRecentFilesAction* _openRecent;
   bool _twoMainWidgets;
-  Orientation _spOrientation;
+  Qt::Orientation _spOrientation;
 
   MultiView* _multiView;
   FunctionSelection* _functionSelection;

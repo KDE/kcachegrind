@@ -54,7 +54,7 @@
 // TabBar
 
 TabBar::TabBar(TabView* v, QTabWidget* parent, const char *name)
-    : QTabBar(parent, name)
+    : QTabBar(parent /*, name*/)
 {
     _tabWidget = parent;
     _tabView = v;
@@ -62,7 +62,8 @@ TabBar::TabBar(TabView* v, QTabWidget* parent, const char *name)
 
 void TabBar::mousePressEvent(QMouseEvent *e)
 {
-  if (e->button() == RightButton) {
+#if 0
+  if (e->button() == Qt::RightButton) {
       QTab *tab = selectTab( e->pos() );
       QWidget* page;
       page = tab ? _tabWidget->page( indexOf( tab->identifier() ) ) :0;
@@ -115,7 +116,7 @@ void TabBar::mousePressEvent(QMouseEvent *e)
       if (r>=80 && r<100) _tabView->moveTab(page, p, r>=90);
       if (r>=100 && r<110) _tabView->moveTab(0, p, true);
   }
-
+#endif
   QTabBar::mousePressEvent( e );
 }
 
@@ -138,14 +139,16 @@ void Splitter::moveEvent(QMoveEvent* e)
 
 void Splitter::checkVisiblity()
 {
-  const QObjectList *l = children();
-  QObjectListIt it( *l );
+#if 0
+  const QObjectList l = children();
+  QObjectList::Iterator it( l );
   QObject *obj;
   while ( (obj = it.current()) != 0 ) {
     ++it;
     if (obj->isA("Splitter")) ((Splitter*)obj)->checkVisiblity();
     else if (obj->isA("TabWidget")) ((TabWidget*)obj)->checkVisibility();
   }
+#endif
 }
 
 
@@ -242,7 +245,7 @@ TabView::TabView(TraceItemView* parentView,
                  QWidget* parent, const char* name)
   : QWidget(parent, name), TraceItemView(parentView)
 {
-    setFocusPolicy(QWidget::StrongFocus);
+    setFocusPolicy(Qt::StrongFocus);
 
   _isCollapsed = true;
 
@@ -590,6 +593,7 @@ QString TabView::whatsThis() const
 
 void TabView::installFocusFilters()
 {
+#if 0
     QObjectList *l = queryList("QWidget");
     QObjectListIt it( *l );
     QObject *obj;
@@ -600,6 +604,7 @@ void TabView::installFocusFilters()
 	    obj->installEventFilter(this);
     }
     delete l;
+#endif
 }
 
 
