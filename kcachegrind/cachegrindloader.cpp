@@ -508,27 +508,9 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
       return 0;
     }
 
-    if (!f->object() && object) {
-      f->setObject(object);
-      object->addFunction(f);
-    }
-    else if (f->object() != object) {
-	kdError() << _filename << ":" << _lineNo
-		  << " - Redefinition of object for function " << f->name()
-		  << " (was '" << f->object()->name()
-		  << "') to '" << object->name() << "'" << endl;
-    }
-
-    if (!f->file() && file) {
-      f->setFile(file);
-      file->addFunction(f);
-    }
-    else if (f->file() != file) {
-	kdError() << _filename << ":" << _lineNo
-		  << " - Redefinition of file for function " << f->name() 
-		  << " (was '" << f->file()->name()
-		  << "') to '" << file->name() << "'" << endl;
-    }
+    // there was a check if the used function (returned from KCachegrinds
+    // model) has the same object and file as here given to us, but that was wrong:
+    // that holds only if we make this assumption on the model...
   }
 
   return f;
