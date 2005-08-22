@@ -172,8 +172,10 @@ void FunctionSelection::functionContext(QListViewItem* i,
 
   if (i) {
       f = ((FunctionItem*) i)->function();
-      popup.insertItem(i18n("Go to %1").arg(f->prettyName()), 93);
-      popup.insertSeparator();
+      if (f) {
+	  popup.insertItem(i18n("Go to %1").arg(f->prettyName()), 93);
+	  popup.insertSeparator();
+      }
   }
 
   if ((c == 0) || (c == 1)) {
