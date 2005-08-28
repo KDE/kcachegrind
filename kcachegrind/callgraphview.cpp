@@ -783,7 +783,7 @@ TraceFunction* GraphExporter::toFunc(QString s)
 {
   if (s[0] != 'F') return 0;
   bool ok;
-  TraceFunction* f = (TraceFunction*) s.mid(1).toUInt(&ok, 16);
+  TraceFunction* f = (TraceFunction*) s.mid(1).toULong(&ok, 16);
   if (!ok) return 0;
 
   return f;

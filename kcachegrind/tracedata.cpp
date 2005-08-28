@@ -3714,6 +3714,12 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
 {
   if (_cycleLow != 0) return;
 
+  if (0)
+      qDebug("%s D%02d > %s (%d)",
+	     QString().fill(' ', d).ascii(), d, prettyName().ascii(), pNo+1);
+
+
+
   // initialize with prefix order
   pNo++;
   int prefixNo = pNo;
@@ -3742,15 +3748,12 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
 
   SubCost cutLimit = SubCost(base * Configuration::cycleCut());
 
-  if (0) {
-      qDebug("%s (%d) Visiting %s",
-	     QString().fill(' ', d).ascii(), pNo, prettyName().ascii());
+  if (0)
       qDebug("%s       Cum. %s, Max Caller %s, cut limit %s",
 	     QString().fill(' ', d).ascii(),
 	     inclusive()->subCost(0).pretty().ascii(),
 	     base.pretty().ascii(),
 	     cutLimit.pretty().ascii());
-  }
 
   TraceCall *calling;
   TraceCallList l = _callings;
@@ -3774,13 +3777,20 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
         _cycleLow = called->_cycleLow;
     }
     else if (called->_cycleStackDown) {
-      // backlink to same SCC (still in stack)
-      if (called->_cycleLow < _cycleLow)
-        _cycleLow = called->_cycleLow;
+	// backlink to same SCC (still in stack)
+	if (called->_cycleLow < _cycleLow)
+	    _cycleLow = called->_cycleLow;
 
-      if (0) qDebug("%s (low %d) Back to %s",
-                    QString().fill(' ', d).ascii(),
-                    _cycleLow, called->prettyName().ascii());
+	if (0)
+	    qDebug("%s D%02d - %s (%d)",
+		   QString().fill(' ', d+1).ascii(), d+1, 
+		   called->prettyName().ascii(), called->_cycleLow);
+    }
+    else {
+	if (0)
+	    qDebug("%s D%02d - %s (%d) [Not on stack]",
+		   QString().fill(' ', d+1).ascii(), d+1, 
+		   called->prettyName().ascii(), called->_cycleLow);
     }
   }
 
@@ -3795,7 +3805,7 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
       // a SCC with >1 members
 
       TraceFunctionCycle* cycle = data()->functionCycle(this);
-      if (0) qDebug("Found Cycle %d with base %s:",
+      if (0) qDebug("BASE CYC %d %s",
              cycle->cycleNo(), prettyName().ascii());
       while(*pTop) {
         TraceFunction* top = *pTop;
@@ -3805,11 +3815,15 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
         *pTop = top->_cycleStackDown;
         top->_cycleStackDown = 0;
 
-        if (0) qDebug("  %s", top->prettyName().ascii());
+        if (0) qDebug("CYC %s", top->prettyName().ascii());
         if (top == this) break;
       }
     }
   }
+  if (0)
+      qDebug("%s D%02d < %s (%d)",
+	     QString().fill(' ', d).ascii(), d, 
+	     prettyName().ascii(), _cycleLow);
 }
 
 
