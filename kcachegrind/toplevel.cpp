@@ -36,13 +36,11 @@
 
 // With Qt 3.1, we can disallow user interaction with long tasks.
 // This needs QEventLoop. Otherwise, QApplication::processEvents is used.
-#if (QT_VERSION-0 >= 0x030100)
 #include <qeventloop.h>
 //Added by qt3to4:
 #include <Q3CString>
 #include <QLabel>
 #include <Q3PopupMenu>
-#endif
 
 #include <kapplication.h>
 #include <klocale.h>

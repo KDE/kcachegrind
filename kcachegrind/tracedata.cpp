@@ -78,9 +78,7 @@ QString Addr::toString() const
 
   uint64 n = _v;
   QString hex;
-#if (QT_VERSION-0 >= 0x030200)
   hex.reserve(16);
-#endif
 
   while(n>0) {
     int d = (n & 15);
@@ -98,9 +96,7 @@ QString Addr::pretty() const
   uint64 n = _v;
   int p = 0;
   QString hex;
-#if (QT_VERSION-0 >= 0x030200)
   hex.reserve(20);
-#endif
 
   while(n>0) {
     int d = (n & 15);
