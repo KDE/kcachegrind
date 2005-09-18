@@ -38,7 +38,7 @@
 // This needs QEventLoop. Otherwise, QApplication::processEvents is used.
 #include <qeventloop.h>
 //Added by qt3to4:
-#include <Q3CString>
+#include <QByteArray>
 #include <QLabel>
 #include <Q3PopupMenu>
 
@@ -209,12 +209,12 @@ void TopLevel::setupPartSelection(PartSelection* ps)
 void TopLevel::saveCurrentState(QString postfix)
 {
   KConfig* kconfig = KGlobal::config();
-  Q3CString pf = postfix.ascii();
+  QByteArray pf = postfix.ascii();
 
-  KConfigGroup psConfig(kconfig, Q3CString("PartOverview")+pf);
+  KConfigGroup psConfig(kconfig, QByteArray("PartOverview")+pf);
   _partSelection->saveVisualisationConfig(&psConfig);
 
-  KConfigGroup stateConfig(kconfig, Q3CString("CurrentState")+pf);
+  KConfigGroup stateConfig(kconfig, QByteArray("CurrentState")+pf);
   stateConfig.writeEntry("CostType",
 			 _costType ? _costType->name() : QString("?"));
   stateConfig.writeEntry("CostType2",
@@ -232,7 +232,7 @@ void TopLevel::saveTraceSettings()
 {
   QString key = traceKey();
 
-  KConfigGroup pConfig(KGlobal::config(), Q3CString("TracePositions"));
+  KConfigGroup pConfig(KGlobal::config(), QByteArray("TracePositions"));
   pConfig.writeEntry(QString("CostType%1").arg(key),
                      _costType ? _costType->name() : QString("?"));
   pConfig.writeEntry(QString("CostType2%1").arg(key),
@@ -242,7 +242,7 @@ void TopLevel::saveTraceSettings()
 
   if (!_data) return;
 
-  KConfigGroup aConfig(KGlobal::config(), Q3CString("Layouts"));
+  KConfigGroup aConfig(KGlobal::config(), QByteArray("Layouts"));
   aConfig.writeEntry(QString("Count%1").arg(key), _layoutCount);
   aConfig.writeEntry(QString("Current%1").arg(key), _layoutCurrent);
 
@@ -262,10 +262,10 @@ void TopLevel::restoreCurrentState(QString postfix)
 {
   KConfig* kconfig = KGlobal::config();
   QStringList gList = kconfig->groupList();
-  Q3CString pf = postfix.ascii();
+  QByteArray pf = postfix.ascii();
 
   // dock properties (not position, this should be have done before)
-  Q3CString group = Q3CString("PartOverview");
+  QByteArray group = QByteArray("PartOverview");
   if (gList.contains(group+pf)) group += pf;
   KConfigGroup psConfig(kconfig, group);
   _partSelection->readVisualisationConfig(&psConfig);
@@ -395,7 +395,7 @@ void TopLevel::createDocks()
 #endif
 
   // Restore QT Dock positions...
-  KConfigGroup dockConfig(KGlobal::config(), Q3CString("Docks"));
+  KConfigGroup dockConfig(KGlobal::config(), QByteArray("Docks"));
   QString str = dockConfig.readEntry("Position", QString::null);
   if (0) qDebug("Docks/Position: '%s'", str.ascii());
   if (str.isEmpty()) {
@@ -1728,8 +1728,8 @@ void TopLevel::restoreTraceTypes()
 {
   QString key = traceKey();
 
-  KConfigGroup cConfig(KGlobal::config(), Q3CString("CurrentState"));
-  KConfigGroup pConfig(KGlobal::config(), Q3CString("TracePositions"));
+  KConfigGroup cConfig(KGlobal::config(), QByteArray("CurrentState"));
+  KConfigGroup pConfig(KGlobal::config(), QByteArray("TracePositions"));
 
   QString groupType, costType, costType2;
   groupType =  pConfig.readEntry(QString("GroupType%1").arg(key));
@@ -1748,7 +1748,7 @@ void TopLevel::restoreTraceTypes()
   if (!_costType && !_saCost->items().isEmpty())
       costTypeSelected(_saCost->items().first());
 
-  KConfigGroup aConfig(KGlobal::config(), Q3CString("Layouts"));
+  KConfigGroup aConfig(KGlobal::config(), QByteArray("Layouts"));
   _layoutCount = aConfig.readNumEntry(QString("Count%1").arg(key), 0);
   _layoutCurrent = aConfig.readNumEntry(QString("Current%1").arg(key), 0);
   if (_layoutCount == 0) layoutRestore();
@@ -1767,7 +1767,7 @@ void TopLevel::restoreTraceSettings()
 
   QString key = traceKey();
 
-  KConfigGroup pConfig(KGlobal::config(), Q3CString("TracePositions"));
+  KConfigGroup pConfig(KGlobal::config(), QByteArray("TracePositions"));
   QString group = pConfig.readEntry(QString("Group%1").arg(key));
   if (!group.isEmpty()) setGroup(group);
 
@@ -1878,7 +1878,7 @@ void TopLevel::layoutSave()
 			     QString("Layout%1-MainView").arg(_layoutCurrent),
 			     key, false);
 
-  KConfigGroup aConfig(config, Q3CString("Layouts"));
+  KConfigGroup aConfig(config, QByteArray("Layouts"));
   aConfig.writeEntry("DefaultCount", _layoutCount);
   aConfig.writeEntry("DefaultCurrent", _layoutCurrent);
 }
@@ -1886,7 +1886,7 @@ void TopLevel::layoutSave()
 void TopLevel::layoutRestore()
 {
   KConfig* config = KGlobal::config();
-  KConfigGroup aConfig(config, Q3CString("Layouts"));
+  KConfigGroup aConfig(config, QByteArray("Layouts"));
   _layoutCount = aConfig.readNumEntry("DefaultCount", 0);
   _layoutCurrent = aConfig.readNumEntry("DefaultCurrent", 0);
   if (_layoutCount == 0) {
@@ -2001,7 +2001,7 @@ bool TopLevel::queryExit()
   // Its already stored.
   delete toolBar();
 
-  KConfigGroup dockConfig(KGlobal::config(), Q3CString("Docks"));
+  KConfigGroup dockConfig(KGlobal::config(), QByteArray("Docks"));
   QString str;
   QTextStream ts( &str, QIODevice::WriteOnly );
   ts << *this;

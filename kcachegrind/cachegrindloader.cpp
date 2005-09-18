@@ -163,7 +163,7 @@ bool CachegrindLoader::canLoadTrace(QFile* file)
   int read = file->readBlock(buf,2047);
   buf[read] = 0;
 
-  Q3CString s;
+  QByteArray s;
   s.setRawData(buf, read+1);
   int pos = s.find("events:");
   if (pos>0 && buf[pos-1] != '\n') pos = -1;

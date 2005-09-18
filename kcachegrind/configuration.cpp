@@ -30,7 +30,7 @@
 
 #include "traceitemview.h"
 //Added by qt3to4:
-#include <Q3CString>
+#include <QByteArray>
 
 //
 // Some predefined cost types...
@@ -129,7 +129,7 @@ void Configuration::saveOptions(KConfig* kconfig)
   Configuration* c = config();
 
   // color options
-  KConfigGroup colorConfig(kconfig, Q3CString("CostColors"));
+  KConfigGroup colorConfig(kconfig, QByteArray("CostColors"));
   Q3DictIterator<ColorSetting> it( c->_colors );
   int count = 1;
   for( ; it.current(); ++it ) {
@@ -146,7 +146,7 @@ void Configuration::saveOptions(KConfig* kconfig)
   colorConfig.writeEntry( "Count", count-1);
 
   // source options
-  KConfigGroup sourceConfig(kconfig, Q3CString("Source"));
+  KConfigGroup sourceConfig(kconfig, QByteArray("Source"));
   sourceConfig.writeEntry("Dirs", c->_generalSourceDirs, ':');
   Q3DictIterator<QStringList> it2( c->_objectSourceDirs );
   count = 1;
@@ -160,7 +160,7 @@ void Configuration::saveOptions(KConfig* kconfig)
   sourceConfig.writeEntry( "Count", count-1);
 
   // general options
-  KConfigGroup generalConfig(kconfig, Q3CString("General"));
+  KConfigGroup generalConfig(kconfig, QByteArray("General"));
   generalConfig.writeEntry("ShowPercentage", c->_showPercentage);
   generalConfig.writeEntry("ShowExpanded", c->_showExpanded);
   generalConfig.writeEntry("ShowCycles", c->_showCycles);
@@ -173,7 +173,7 @@ void Configuration::saveOptions(KConfig* kconfig)
   generalConfig.writeEntry("Context", c->_context);
   generalConfig.writeEntry("NoCostInside", c->_noCostInside);
 
-  KConfigGroup ctConfig(kconfig, Q3CString("CostTypes"));
+  KConfigGroup ctConfig(kconfig, QByteArray("CostTypes"));
   int ctCount = TraceCostType::knownTypeCount();
   ctConfig.writeEntry( "Count", ctCount);
   for (int i=0; i<ctCount; i++) {
@@ -216,7 +216,7 @@ void Configuration::readOptions(KConfig* kconfig)
   c->color("CostType-Dr")->color = QColor(40,40,180);
   c->color("CostType-Dw")->color = QColor(80,80,120);
 
-  KConfigGroup colorConfig(kconfig, Q3CString("CostColors"));
+  KConfigGroup colorConfig(kconfig, QByteArray("CostColors"));
   count = colorConfig.readNumEntry("Count", 0);
   for (i=1;i<=count;i++) {
     QString n = colorConfig.readEntry(QString("Name%1").arg(i));
@@ -235,7 +235,7 @@ void Configuration::readOptions(KConfig* kconfig)
   }
 
   // source options
-  KConfigGroup sourceConfig(kconfig, Q3CString("Source"));
+  KConfigGroup sourceConfig(kconfig, QByteArray("Source"));
   QStringList dirs;
   dirs = sourceConfig.readListEntry("Dirs", ':');
   if (dirs.count()>0) c->_generalSourceDirs = dirs;
@@ -253,7 +253,7 @@ void Configuration::readOptions(KConfig* kconfig)
 
 
   // general options
-  KConfigGroup generalConfig(kconfig, Q3CString("General"));
+  KConfigGroup generalConfig(kconfig, QByteArray("General"));
   c->_showPercentage = generalConfig.readBoolEntry("ShowPercentage", true);
   c->_showExpanded = generalConfig.readBoolEntry("ShowExpanded", false);
   c->_showCycles = generalConfig.readBoolEntry("ShowCycles", true);
@@ -269,7 +269,7 @@ void Configuration::readOptions(KConfig* kconfig)
   // known cost types
   if (TraceCostType::knownTypeCount()==0) {
 
-    KConfigGroup ctConfig(kconfig, Q3CString("CostTypes"));
+    KConfigGroup ctConfig(kconfig, QByteArray("CostTypes"));
     int ctCount = ctConfig.readNumEntry("Count", 0);
     if (ctCount>0) {
       for (int i=1;i<=ctCount;i++) {
