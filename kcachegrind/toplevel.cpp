@@ -1717,7 +1717,7 @@ QString TopLevel::traceKey()
 
   QString name = _data->command();
   QString key;
-  for (unsigned int l=0;l<name.length();l++)
+  for (int l=0;l<name.length();l++)
     if (name[l].isLetterOrNumber()) key += name[l];
 
   return QString("-") + key;

@@ -398,11 +398,11 @@ QStringList Configuration::sourceDirs(TraceData* data, TraceObject* o)
     }
     if (!ol) continue;
 
-    for(unsigned int i=0;i<ol->count();i++)
+    for(int i=0;i<ol->count();i++)
       l.prepend( (*ol)[i] );
   }
   if (ol2) {
-    for(unsigned int i=0;i<ol2->count();i++)
+    for(int i=0;i<ol2->count();i++)
       l.prepend( (*ol2)[i] );
   }
   if (0) kdDebug() << "Configuration::sourceDirs: " << l.join(":") << endl;

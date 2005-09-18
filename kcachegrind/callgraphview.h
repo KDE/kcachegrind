@@ -165,7 +165,7 @@ class GraphOptions
 {
  public:
     enum Layout { TopDown, LeftRight, Circular};
-
+	virtual ~GraphOptions(){}
     virtual double funcLimit() = 0;
     virtual double callLimit() = 0;
     virtual int maxCallerDepth() = 0;
@@ -185,7 +185,7 @@ class StorableGraphOptions: public GraphOptions
 {
  public:
     StorableGraphOptions();
-
+	virtual ~StorableGraphOptions(){}
     // implementation of getters
     virtual double funcLimit() { return _funcLimit; }
     virtual double callLimit() { return _callLimit; }

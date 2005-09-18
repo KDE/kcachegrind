@@ -4478,7 +4478,7 @@ void TraceData::load(const QString& base)
     }
 
     const QString& str = *it;
-    unsigned int pos = file.length();
+    int pos = file.length();
 
     // try to guess part number from file name
     unsigned int n = 0;
