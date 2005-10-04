@@ -54,7 +54,7 @@
 #include <kedittoolbar.h>
 #include <kkeydialog.h>
 #include <ktip.h>
-#include <kpopupmenu.h>
+#include <kmenu.h>
 #include <kdebug.h>
 
 #if ENABLE_DUMPDOCK
