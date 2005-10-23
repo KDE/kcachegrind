@@ -2190,7 +2190,7 @@ void TopLevel::forceTraceReload()
 
 void TopLevel::forwardAboutToShow()
 {
-  Q3PopupMenu *popup = _paForward->popupMenu();
+  KMenu *popup = _paForward->popupMenu();
 
   popup->clear();
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
@@ -2226,7 +2226,7 @@ void TopLevel::forwardAboutToShow()
 
 void TopLevel::backAboutToShow()
 {
-  Q3PopupMenu *popup = _paBack->popupMenu();
+  KMenu *popup = _paBack->popupMenu();
 
   popup->clear();
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
@@ -2262,7 +2262,7 @@ void TopLevel::backAboutToShow()
 
 void TopLevel::upAboutToShow()
 {
-  Q3PopupMenu *popup = _paUp->popupMenu();
+  KMenu *popup = _paUp->popupMenu();
 
   popup->clear();
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
