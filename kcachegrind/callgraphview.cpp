@@ -1623,9 +1623,9 @@ void CallGraphView::keyPressEvent(QKeyEvent* e)
 	scrollBy(-_canvas->width(),0);
     else if (e->key() == Qt::Key_End)
 	scrollBy(_canvas->width(),0);
-    else if (e->key() == Qt::Key_Prior)
+    else if (e->key() == Qt::Key_PageUp)
 	scrollBy(0,-visibleHeight()/2);
-    else if (e->key() == Qt::Key_Next)
+    else if (e->key() == Qt::Key_PageDown)
 	scrollBy(0,visibleHeight()/2);
     else if (e->key() == Qt::Key_Left)
 	scrollBy(-visibleWidth()/10,0);

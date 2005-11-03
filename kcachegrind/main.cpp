@@ -60,7 +60,7 @@ int main( int argc, char ** argv )
   TopLevel* t;
   Loader::initLoaders();
 
-  if (a.isRestored()){
+  if (a.isSessionRestored()){
     int n = 1;
     while (KMainWindow::canBeRestored(n)){
       (new TopLevel())->restore(n);
