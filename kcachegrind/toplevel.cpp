@@ -140,7 +140,7 @@ TopLevel::TopLevel(const char *name)
   restoreCurrentState(QString::null);
 
   // if this is the first toplevel, show tip of day
-  if (memberList()->count() == 1)
+  if (memberList().count() == 1)
     QTimer::singleShot( 200, this, SLOT(slotShowTipOnStart()) );
 }
 
