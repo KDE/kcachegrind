@@ -32,7 +32,6 @@
 #include <QMoveEvent>
 #include <Q3PtrList>
 #include <QEvent>
-#include <Q3ValueList>
 #include <QShowEvent>
 #include <QVBoxLayout>
 #include <QResizeEvent>
@@ -428,7 +427,7 @@ void TabView::updateVisibility()
   if (0) qDebug("TabView::updateVisiblity t %d, b %d, l %d, r %d",
 		t, b, l, r);
 
-  Q3ValueList<int> s;
+  QList<int> s;
   s.append(100);
 
 
