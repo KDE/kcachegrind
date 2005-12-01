@@ -29,7 +29,6 @@ Comment[sv]=Profileringsdump från Cachegrind/Callgrind
 Comment[ta]=இடைமாற்றகட்டம்/ அழைப்பு கட்டம் விவரக்குறி திணிப்பு
 Comment[tg]=Дампи профилкунии Cachegrind/Callgrind
 Comment[uk]=Звалювання профілювання Cachegrind/Callgrind
-Comment[xx]=xxCachegrind/Callgrind Profile Dumpxx
 Comment[zh_CN]=Cachegrind/Callgrind 配置文件转存
 DefaultApp=kcachegrind
 Icon=kcachegrind
