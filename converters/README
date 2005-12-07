@@ -14,7 +14,7 @@ pprof2calltree     Converter from APD PHP Profiler.
 Thanks go to
 * George Schlossnagle <george@omniti.com> for
   dprof2calltree and pprof2calltree,
-* Jörg Beyer <job@webde-ag.de> for
+* JÃ¶rg Beyer <job@webde-ag.de> for
   hotshot2calltree
 
 If you want to write a converter, have a look at the calltree format

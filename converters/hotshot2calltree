@@ -3,7 +3,7 @@
 
 #
 # Copyright (c) 2003 by WEB.DE, Karlsruhe
-# Autor: Jörg Beyer <job@webde-ag.de>
+# Autor: JÃ¶rg Beyer <job@webde-ag.de>
 #
 # hotshot2cachegrind is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public
@@ -50,7 +50,7 @@
 #  * einige Funktionen werden mit "?" als Name angezeigt. Evtl sind
 #    das nur die C/C++ extensions.
 #
-#  * es fehlt noch ein Funktionsnamen Mangling, dass die Filenamen berücksichtigt,
+#  * es fehlt noch ein Funktionsnamen Mangling, dass die Filenamen berÃ¼cksichtigt,
 #    zZ sind alle __init__'s und alle run's schwer unterscheidbar :-(
 #
 version = "$Revision$"
