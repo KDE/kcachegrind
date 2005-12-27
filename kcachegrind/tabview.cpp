@@ -574,7 +574,7 @@ QString TabView::whatsThis() const
 		 "<li>The Assembler tab presents annotated assembler code "
 		 "if trace information on instruction level "
 		 "is available.</li></ul>"
-		 "For more information, see the <em>What's this</em> "
+		 "For more information, see the <em>What's This?</em> "
 		 "help of the corresponding tab widget</p>");
 }
 
