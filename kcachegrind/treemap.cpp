@@ -3172,7 +3172,7 @@ void TreeMapWidget::restoreOptions(KConfigGroup* config, QString prefix)
   int num;
   QString str;
 
-  str = config->readEntry(prefix+"Nesting");
+  str = config->readEntry(prefix+"Nesting", QString());
   if (!str.isEmpty()) setSplitMode(str);
 
   if (config->hasKey(prefix+"AllowRotation")) {
@@ -3212,10 +3212,10 @@ void TreeMapWidget::restoreOptions(KConfigGroup* config, QString prefix)
     if (config->hasKey(str))
       setFieldForced(f, config->readBoolEntry(str));
 
-    str = config->readEntry(QString(prefix+"FieldStop%1").arg(f));
+    str = config->readEntry(QString(prefix+"FieldStop%1").arg(f),QString());
     setFieldStop(f, str);
 
-    str = config->readEntry(QString(prefix+"FieldPosition%1").arg(f));
+    str = config->readEntry(QString(prefix+"FieldPosition%1").arg(f),QString());
     if (!str.isEmpty()) setFieldPosition(f, str);
   }
 }

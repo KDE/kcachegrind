@@ -76,7 +76,12 @@ void TraceItemView::writeConfigEntry(KConfigBase* c, const char* pKey,
 	(value == QString(def)))
 	c->deleteEntry(pKey);
     else
-	c->writeEntry(pKey, value, true, false, bNLS);
+	{
+		if( bNLS )
+			c->writeEntry(pKey, value, KConfigBase::Normal|KConfigBase::NLS);
+		else
+			c->writeEntry(pKey, value);
+	}
 }
 
 void TraceItemView::writeConfigEntry(KConfigBase* c, const char* pKey,

@@ -396,7 +396,7 @@ void TopLevel::createDocks()
 
   // Restore QT Dock positions...
   KConfigGroup dockConfig(KGlobal::config(), QByteArray("Docks"));
-  QString str = dockConfig.readEntry("Position", QString::null);
+  QString str = dockConfig.readEntry("Position", QString());
   if (0) qDebug("Docks/Position: '%s'", str.ascii());
   if (str.isEmpty()) {
     // default positions
@@ -1732,13 +1732,13 @@ void TopLevel::restoreTraceTypes()
   KConfigGroup pConfig(KGlobal::config(), QByteArray("TracePositions"));
 
   QString groupType, costType, costType2;
-  groupType =  pConfig.readEntry(QString("GroupType%1").arg(key));
-  costType  =  pConfig.readEntry(QString("CostType%1").arg(key));
-  costType2 =  pConfig.readEntry(QString("CostType2%1").arg(key));
+  groupType =  pConfig.readEntry(QString("GroupType%1").arg(key),QString());
+  costType  =  pConfig.readEntry(QString("CostType%1").arg(key),QString());
+  costType2 =  pConfig.readEntry(QString("CostType2%1").arg(key),QString());
 
-  if (groupType.isEmpty()) groupType = cConfig.readEntry("GroupType");
-  if (costType.isEmpty()) costType = cConfig.readEntry("CostType");
-  if (costType2.isEmpty()) costType2 = cConfig.readEntry("CostType2");
+  if (groupType.isEmpty()) groupType = cConfig.readEntry("GroupType",QString());
+  if (costType.isEmpty()) costType = cConfig.readEntry("CostType",QString());
+  if (costType2.isEmpty()) costType2 = cConfig.readEntry("CostType2",QString());
 
   setGroupType(groupType);
   setCostType(costType);
@@ -1768,7 +1768,7 @@ void TopLevel::restoreTraceSettings()
   QString key = traceKey();
 
   KConfigGroup pConfig(KGlobal::config(), QByteArray("TracePositions"));
-  QString group = pConfig.readEntry(QString("Group%1").arg(key));
+  QString group = pConfig.readEntry(QString("Group%1").arg(key),QString());
   if (!group.isEmpty()) setGroup(group);
 
   restoreCurrentState(key);
@@ -2014,7 +2014,7 @@ bool TopLevel::queryExit()
    * settings.
    * For the retrieval to work, we need to store a non-localized.
    */
-  dockConfig.writeEntry("Position", str, true, false, true);
+  dockConfig.writeEntry("Position", str, true, KConfigBase::Global);
 #endif
 
   // if part dock was chosen visible even for only 1 part loaded,

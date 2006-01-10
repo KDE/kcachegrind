@@ -250,7 +250,8 @@ TabView::TabView(TraceItemView* parentView,
 
   QVBoxLayout* vbox = new QVBoxLayout( this, 6, 6);
 
-  _nameLabel = new KSqueezedTextLabel( this, "nameLabel" );
+  _nameLabel = new KSqueezedTextLabel( this);
+  _nameLabel->setObjectName( "nameLabel" );
   _nameLabel->setText(i18n("(No profile data file loaded)"));
   vbox->addWidget( _nameLabel );
 

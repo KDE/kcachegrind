@@ -219,7 +219,7 @@ void Configuration::readOptions(KConfig* kconfig)
   KConfigGroup colorConfig(kconfig, QByteArray("CostColors"));
   count = colorConfig.readNumEntry("Count", 0);
   for (i=1;i<=count;i++) {
-    QString n = colorConfig.readEntry(QString("Name%1").arg(i));
+    QString n = colorConfig.readEntry(QString("Name%1").arg(i),QString());
     QColor color = colorConfig.readColorEntry(QString("Color%1").arg(i));
 
     if (n.isEmpty()) continue;
@@ -243,7 +243,7 @@ void Configuration::readOptions(KConfig* kconfig)
   c->_objectSourceDirs.clear();
   if (count>17) c->_objectSourceDirs.resize(count);
   for (i=1;i<=count;i++) {
-    QString n = sourceConfig.readEntry(QString("Object%1").arg(i));
+    QString n = sourceConfig.readEntry(QString("Object%1").arg(i),QString());
     dirs = sourceConfig.readListEntry(QString("Dirs%1").arg(i), ':');
 
     if (n.isEmpty() || (dirs.count()==0)) continue;
@@ -273,10 +273,10 @@ void Configuration::readOptions(KConfig* kconfig)
     int ctCount = ctConfig.readNumEntry("Count", 0);
     if (ctCount>0) {
       for (int i=1;i<=ctCount;i++) {
-        QString n = ctConfig.readEntry(QString("Name%1").arg(i));
-        QString l = ctConfig.readEntry(QString("Longname%1").arg(i));
+        QString n = ctConfig.readEntry(QString("Name%1").arg(i),QString());
+        QString l = ctConfig.readEntry(QString("Longname%1").arg(i),QString());
 	if (l.isEmpty()) l = knownLongName(n);
-        QString f = ctConfig.readEntry(QString("Formula%1").arg(i));
+        QString f = ctConfig.readEntry(QString("Formula%1").arg(i), QString());
 	if (f.isEmpty()) f = knownFormula(n);
 
         TraceCostType::add(new TraceCostType(n, l, f));
