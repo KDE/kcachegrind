@@ -2563,15 +2563,12 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
 	  TraceFunction* f = activeFunction();
 	  if (!f) break;
 
-	  QString n = QString("callgraph");
 	  GraphExporter ge(data(), f, costType(), groupType(),
-			   QString("%1.dot").arg(n));
+			   QString("callgraph.dot"));
 	  ge.setGraphOptions(this);
 	  ge.writeDot();
 
-	  QString cmd = QString("(dot %1.dot -Tps > %2.ps; kghostview %3.ps)&")
-	      .arg(n).arg(n).arg(n);
-	  system(cmd.ascii());
+	  system("(dot callgraph.dot -Tps > callgraph.ps; kghostview callgraph.ps)&");
       }
       break;
 
