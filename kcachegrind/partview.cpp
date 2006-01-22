@@ -115,7 +115,9 @@ void PartView::context(QListViewItem* i, const QPoint & pos, int)
   addGoMenu(&popup);
 
   int r = popup.exec(pos);
-  if (r == 95) ;
+  if (r == 95) {
+    ;
+  }
 
   // TODO: ...
 }
