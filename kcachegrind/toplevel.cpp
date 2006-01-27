@@ -574,7 +574,7 @@ void TopLevel::createMiscActions()
   action->setToolTip( hint );
   action->setWhatsThis( hint );
 
-  _openRecent = KStdAction::openRecent(this, SLOT(loadTrace(const KURL&)),
+  _openRecent = KStdAction::openRecent(this, SLOT(loadTrace(const KUrl&)),
                                        actionCollection());
 
   KStdAction::showStatusbar(this,
@@ -1010,14 +1010,14 @@ void TopLevel::newWindow()
 
 void TopLevel::loadTrace()
 {
-    KURL url = KFileDialog::getOpenURL(":",
+    KUrl url = KFileDialog::getOpenURL(":",
                                        i18n("cachegrind.out* callgrind.out*|Callgrind Profile Data\n*|All Files"),
                                        this,
                                        i18n("Select Callgrind Profile Data"));
     loadTrace(url);
 }
 
-void TopLevel::loadTrace(const KURL& url)
+void TopLevel::loadTrace(const KUrl& url)
 {
   if (url.isEmpty()) return;
 
@@ -1059,14 +1059,14 @@ void TopLevel::loadTrace(QString file)
 
 void TopLevel::addTrace()
 {
-    KURL url = KFileDialog::getOpenURL(QString::null,
+    KUrl url = KFileDialog::getOpenURL(QString::null,
                                        i18n("cachegrind.out* callgrind.out*|Callgrind Profile Data\n*|All Files"),
                                        this,
                                        i18n("Add Callgrind Profile Data"));
     addTrace(url);
 }
 
-void TopLevel::addTrace(const KURL& url)
+void TopLevel::addTrace(const KUrl& url)
 {
   if (url.isEmpty()) return;
 

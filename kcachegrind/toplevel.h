@@ -41,7 +41,7 @@ class QLabel;
 class Q3ProgressBar;
 class Q3PopupMenu;
 
-class KURL;
+class KUrl;
 class KSelectAction;
 class KToggleAction;
 class KToolBarPopupAction;
@@ -90,10 +90,10 @@ public:
 public slots:
   void newTrace();
   void loadTrace();
-  void loadTrace(const KURL&);
+  void loadTrace(const KUrl&);
   void loadTrace(QString);
   void addTrace();
-  void addTrace(const KURL&);
+  void addTrace(const KUrl&);
   void addTrace(QString);
 
   // for quick showing the main window...
