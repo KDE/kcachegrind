@@ -1478,7 +1478,7 @@ void TopLevel::setTraceItemDelayed(TraceItem* i)
   _traceItemDelayed = i;
   _lastSender = sender();
 
-  kdDebug() << "Selected " << (i ? i->prettyName() : "(none)") << endl;
+  kDebug() << "Selected " << (i ? i->prettyName() : "(none)") << endl;
 
 #if TRACE_UPDATES
   qDebug("TopLevel::setTraceItemDelayed(%s), sender %s",
@@ -1796,7 +1796,7 @@ void TopLevel::layoutDuplicate()
 
   updateLayoutActions();
 
-  kdDebug() << "TopLevel::layoutDuplicate: count " << _layoutCount << endl;
+  kDebug() << "TopLevel::layoutDuplicate: count " << _layoutCount << endl;
 }
 
 void TopLevel::layoutRemove()
@@ -1831,7 +1831,7 @@ void TopLevel::layoutNext()
 			     QString("Layout%1-MainView").arg(_layoutCurrent),
 			     key, false);
 
-  if (0) kdDebug() << "TopLevel::layoutNext: current "
+  if (0) kDebug() << "TopLevel::layoutNext: current "
 		   << _layoutCurrent << endl;
 }
 
@@ -1852,7 +1852,7 @@ void TopLevel::layoutPrevious()
 			     QString("Layout%1-MainView").arg(_layoutCurrent),
 			     key, false);
 
-  if (0) kdDebug() << "TopLevel::layoutPrevious: current "
+  if (0) kDebug() << "TopLevel::layoutPrevious: current "
 		   << _layoutCurrent << endl;
 }
 

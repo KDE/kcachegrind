@@ -128,7 +128,7 @@ void PartSelection::setFunction(TraceFunction* f)
   if (_function == f) return;
   _function = f;
 
-  //kdDebug() << "PartSelection::setFunction " << f->name() << endl;
+  //kDebug() << "PartSelection::setFunction " << f->name() << endl;
 
   // FIXME: The TreeMap shouldn't produce spurious selectionChanged events
   _inSelectionUpdate = true;
@@ -193,7 +193,7 @@ void PartSelection::selectionChanged()
 {
   if (_inSelectionUpdate) return;
   
-  kdDebug() << "PartSelection::selectionChanged" << endl;
+  kDebug() << "PartSelection::selectionChanged" << endl;
 
   bool something_changed = false;
   bool nothingSelected = true;
@@ -232,7 +232,7 @@ void PartSelection::activePartsChangedSlot(const TracePartList& list)
 {
   _inSelectionUpdate = true;
 
-  kdDebug() << "Entering PartSelection::activePartsChangedSlot" << endl;
+  kDebug() << "Entering PartSelection::activePartsChangedSlot" << endl;
 
   TreeMapItem* i;
   TreeMapItemList l = *partAreaWidget->base()->children();
@@ -263,7 +263,7 @@ void PartSelection::activePartsChangedSlot(const TracePartList& list)
 
   _inSelectionUpdate = false;
 
-  kdDebug() << "Leaving PartSelection::activePartsChangedSlot" << endl;
+  kDebug() << "Leaving PartSelection::activePartsChangedSlot" << endl;
 
   fillInfo();
 }

@@ -149,7 +149,7 @@ bool CachegrindLoader::canLoadTrace(QFile* file)
 
   if (!file->isOpen()) {
     if (!file->open( QIODevice::ReadOnly ) ) {
-      kdDebug() << QFile::encodeName(_filename) << ": "
+      kDebug() << QFile::encodeName(_filename) << ": "
 		<< strerror( errno ) << endl;
       return false;
     }
@@ -249,9 +249,9 @@ bool CachegrindLoader::parsePosition(FixString& line,
 
 #if TRACE_LOADER
       if (newPos.fromAddr == newPos.toAddr)
-	kdDebug() << " Got Addr " << newPos.fromAddr.toString() << endl;
+	kDebug() << " Got Addr " << newPos.fromAddr.toString() << endl;
       else
-	kdDebug() << " Got AddrRange " << newPos.fromAddr.toString()
+	kDebug() << " Got AddrRange " << newPos.fromAddr.toString()
 		  << ":" << newPos.toAddr.toString() << endl;
 #endif
 
@@ -278,7 +278,7 @@ bool CachegrindLoader::parsePosition(FixString& line,
 	line.stripFirst(c);
 	line.stripUInt(diff, false);
 	if (currentPos.fromLine < diff) {
-	    kdError() << _filename << ":" << _lineNo
+	    kError() << _filename << ":" << _lineNo
 		      << " - Negative line number "
 		      << (int)currentPos.fromLine - (int)diff << endl;
 	  diff = currentPos.fromLine;
@@ -308,9 +308,9 @@ bool CachegrindLoader::parsePosition(FixString& line,
 
 #if TRACE_LOADER
       if (newPos.fromLine == newPos.toLine)
-	kdDebug() << " Got Line " << newPos.fromLine << endl;
+	kDebug() << " Got Line " << newPos.fromLine << endl;
       else
-	kdDebug() << " Got LineRange " << newPos.fromLine
+	kDebug() << " Got LineRange " << newPos.fromLine
 		  << ":" << newPos.toLine << endl;
 #endif
 
@@ -346,7 +346,7 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
   // compressed format using _objectVector
   int p = name.find(')');
   if (p<2) {
-      kdError() << _filename << ":" << _lineNo
+      kError() << _filename << ":" << _lineNo
 		<< " - Invalid compressed ELF object ('" 
 		<< name << "')" << endl;
     return 0;
@@ -360,7 +360,7 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
     if (_objectVector.size() <= index) {
       int newSize = index * 2;
 #if TRACE_LOADER
-      kdDebug() << " CachegrindLoader: objectVector enlarged to "
+      kDebug() << " CachegrindLoader: objectVector enlarged to "
 		<< newSize << endl;
 #endif
       _objectVector.resize(newSize);
@@ -369,7 +369,7 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
     QString realName = checkUnknown(name.mid(p));
     o = (TraceObject*) _objectVector.at(index);
     if (o && (o->name() != realName)) {
-	kdError() << _filename << ":" << _lineNo
+	kError() << _filename << ":" << _lineNo
 		  << " - Redefinition of compressed ELF object index " << index
 		  << " (was '" << o->name()
 		  << "') to '" << realName << "'" << endl;
@@ -381,7 +381,7 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
   else {
     if ((_objectVector.size() <= index) ||
 	( (o=(TraceObject*)_objectVector.at(index)) == 0)) {
-	kdError() << _filename << ":" << _lineNo
+	kError() << _filename << ":" << _lineNo
 		  << " - Undefined compressed ELF object index " << index << endl;
       return 0;
     }    
@@ -400,7 +400,7 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
   // compressed format using _fileVector
   int p = name.find(')');
   if (p<2) {
-      kdError() << _filename << ":" << _lineNo
+      kError() << _filename << ":" << _lineNo
 		<< " - Invalid compressed file ('" 
 		<< name << "')" << endl;
     return 0;
@@ -414,7 +414,7 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
     if (_fileVector.size() <= index) {
       int newSize = index * 2;
 #if TRACE_LOADER
-      kdDebug() << " CachegrindLoader::fileVector enlarged to "
+      kDebug() << " CachegrindLoader::fileVector enlarged to "
 		<< newSize << endl;
 #endif
       _fileVector.resize(newSize);
@@ -423,7 +423,7 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
     QString realName = checkUnknown(name.mid(p));
     f = (TraceFile*) _fileVector.at(index);
     if (f && (f->name() != realName)) {
-	kdError() << _filename << ":" << _lineNo
+	kError() << _filename << ":" << _lineNo
 		  << " - Redefinition of compressed file index " << index
 		  << " (was '" << f->name()
 		  << "') to '" << realName << "'" << endl;
@@ -435,7 +435,7 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
   else {
     if ((_fileVector.size() <= index) ||
 	( (f=(TraceFile*)_fileVector.at(index)) == 0)) {
-	kdError() << _filename << ":" << _lineNo
+	kError() << _filename << ":" << _lineNo
 		  << " - Undefined compressed file index " << index << endl;
       return 0;
     }
@@ -457,7 +457,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
   // compressed format using _functionVector
   int p = name.find(')');
   if (p<2) {
-      kdError() << _filename << ":" << _lineNo
+      kError() << _filename << ":" << _lineNo
 		<< " - Invalid compressed function ('" 
 		<< name << "')" << endl;
     return 0;
@@ -473,7 +473,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
     if (_functionVector.size() <= index) {
       int newSize = index * 2;
 #if TRACE_LOADER
-      kdDebug() << " CachegrindLoader::functionVector enlarged to "
+      kDebug() << " CachegrindLoader::functionVector enlarged to "
 		<< newSize << endl;
 #endif
       _functionVector.resize(newSize);
@@ -482,7 +482,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
     QString realName = checkUnknown(name.mid(p));
     f = (TraceFunction*) _functionVector.at(index);
     if (f && (f->name() != realName)) {
-	    kdError() << _filename << ":" << _lineNo
+	    kError() << _filename << ":" << _lineNo
 		      << " - Redefinition of compressed function index " << index
 		      << " (was '" << f->name()
 		      << "') to '" << realName << "'" << endl;
@@ -492,7 +492,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
     _functionVector.insert(index, f);
 
 #if TRACE_LOADER
-    kdDebug() << "compressedFunction: Inserted at Index " << index
+    kDebug() << "compressedFunction: Inserted at Index " << index
 	      << "\n  " << f->fullName()
 	      << "\n  in " << f->cls()->fullName()
 	      << "\n  in " << f->file()->fullName()
@@ -502,7 +502,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
   else {
     if ((_functionVector.size() <= index) ||
 	( (f=(TraceFunction*)_functionVector.at(index)) == 0)) {
-	    kdError() << _filename << ":" << _lineNo
+	    kError() << _filename << ":" << _lineNo
 		      << " - Undefined compressed function index " 
 		      << index << endl;
       return 0;
@@ -530,7 +530,7 @@ void CachegrindLoader::setObject(const QString& name)
 {
   currentObject = compressedObject(name);
   if (!currentObject) {
-    kdError() << _filename << ":" << _lineNo
+    kError() << _filename << ":" << _lineNo
 	      << " - Invalid object specification, setting to unknown" << endl;
 
     currentObject = _data->object(_emptyString);
@@ -546,7 +546,7 @@ void CachegrindLoader::setCalledObject(const QString& name)
   currentCalledObject = compressedObject(name);
 
   if (!currentCalledObject) {
-    kdError() << _filename << ":" << _lineNo
+    kError() << _filename << ":" << _lineNo
 	      << " - Invalid called specification, setting to unknown" << endl;
 
     currentCalledObject = _data->object(_emptyString);
@@ -570,7 +570,7 @@ void CachegrindLoader::setFile(const QString& name)
   currentFile = compressedFile(name);
 
   if (!currentFile) {
-    kdWarning() << _filename << ":" << _lineNo
+    kWarning() << _filename << ":" << _lineNo
 		<< " - Invalid file specification, setting to unknown" << endl;
 
     currentFile = _data->file(_emptyString);
@@ -586,7 +586,7 @@ void CachegrindLoader::setCalledFile(const QString& name)
   currentCalledFile = compressedFile(name);
 
   if (!currentCalledFile) {
-    kdError() << _filename << ":" << _lineNo
+    kError() << _filename << ":" << _lineNo
 	      << " - Invalid called file specification, setting to unknown" << endl;
 
     currentCalledFile = _data->file(_emptyString);
@@ -600,7 +600,7 @@ void CachegrindLoader::ensureFunction()
 {
   if (currentFunction) return;
 
-  kdWarning() << _filename << ":" << _lineNo
+  kWarning() << _filename << ":" << _lineNo
 	      << " - Function name not set" << endl;
 
   ensureFile();
@@ -624,7 +624,7 @@ void CachegrindLoader::setFunction(const QString& name)
 					currentObject);
 
   if (!currentFunction) {
-    kdWarning() << _filename << ":" << _lineNo
+    kWarning() << _filename << ":" << _lineNo
 		<< " - Invalid function, setting to unknown" << endl;
 
     currentFunction = _data->function(_emptyString,
@@ -659,7 +659,7 @@ void CachegrindLoader::setCalledFunction(const QString& name)
 					     currentCalledFile,
 					     currentCalledObject);
   if (!currentCalledFunction) {
-    kdWarning() << _filename << ":" << _lineNo
+    kWarning() << _filename << ":" << _lineNo
 		<< " - Invalid called function, setting to unknown" << endl;
 
     currentCalledFunction = _data->function(_emptyString,
@@ -729,10 +729,10 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 
   FixFile file(pFile);
   if (!file.exists()) {
-    kdError() << "File doesn't exist\n" << endl;
+    kError() << "File doesn't exist\n" << endl;
     return false;
   }
-  kdDebug() << "Loading " << _filename << " ..." << endl;
+  kDebug() << "Loading " << _filename << " ..." << endl;
   QString statusMsg = i18n("Loading %1").arg(_filename);
   int statusProgress = 0;
   emit updateStatus(statusMsg,statusProgress);
@@ -759,7 +759,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
       _lineNo++;
 
 #if TRACE_LOADER
-      kdDebug() << "[CachegrindLoader] " << _filename << ":" << _lineNo
+      kDebug() << "[CachegrindLoader] " << _filename << ":" << _lineNo
 		<< " - '" << QString(line) << "'" << endl;
 #endif
 
@@ -772,7 +772,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 
 	  // parse position(s)
 	  if (!parsePosition(line, currentPos)) {
-	      kdError() << _filename << ":" << _lineNo
+	      kError() << _filename << ":" << _lineNo
 			<< " - Invalid position specification ('"
 			<< QString(line) << "')" << endl;
 	      continue;
@@ -856,7 +856,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 		if (!_data->command().isEmpty() &&
 		    _data->command() != command) {
 
-		  kdWarning() << _filename << ":" << _lineNo
+		  kWarning() << _filename << ":" << _lineNo
 			      << " - Redefined command, was '"
 			      << _data->command()
 			      << "'" << endl;
@@ -885,7 +885,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 		    parsePosition(line, targetPos);
 
 		if (!valid) {
-		  kdError() << _filename << ":" << _lineNo
+		  kError() << _filename << ":" << _lineNo
 			    << " - Invalid jcnd line" << endl;
 		}
 		else
@@ -900,7 +900,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 		    parsePosition(line, targetPos);
 
 		if (!valid) {
-		  kdError() << _filename << ":" << _lineNo
+		  kError() << _filename << ":" << _lineNo
 			    << " - Invalid jump line" << endl;
 		}
 		else
@@ -994,7 +994,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 
 	      FixString e, f, l;
 	      if (!line.stripName(e)) {
-		kdError() << _filename << ":" << _lineNo
+		kError() << _filename << ":" << _lineNo
 			  << " - Invalid event" << endl;
 		continue;
 	      }
@@ -1048,7 +1048,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 	    // summary:
 	    if (line.stripPrefix("ummary:")) {
 		if (!subMapping) {
-		  kdError() << "No event line found. Skipping '" << _filename << endl;
+		  kError() << "No event line found. Skipping '" << _filename << endl;
 		  return false;
 		}
 
@@ -1065,7 +1065,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 		line.stripUInt64(currentCallCount);
 		nextLineType = CallCost;
 
-		kdDebug() << "WARNING: This trace dump was generated by an old "
+		kDebug() << "WARNING: This trace dump was generated by an old "
 		  "version\n of the call-tree skin. Use a new one!" << endl;
 
 		continue;
@@ -1076,13 +1076,13 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 	    break;
 	}
 
-	kdError() << _filename << ":" << _lineNo
+	kError() << _filename << ":" << _lineNo
 		  << " - Invalid line '" << c << QString(line) << "'" << endl;
 	continue;
       }
 
       if (!subMapping) {
-	kdError() << "No event line found. Skipping '" << _filename << "'" << endl;
+	kError() << "No event line found. Skipping '" << _filename << "'" << endl;
 	return false;
       }
 
@@ -1103,7 +1103,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 						    true);
 
 	      if (!currentInstr) {
-		kdError() << _filename << ":" << _lineNo
+		kError() << _filename << ":" << _lineNo
 			  << " - Invalid address "
 			  << currentPos.fromAddr.toString() << endl;
 
@@ -1131,7 +1131,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 #endif
 
 #if TRACE_LOADER
-      kdDebug() << _filename << ":" << _lineNo
+      kDebug() << _filename << ":" << _lineNo
 		<< endl << "  currentInstr "
 		<< (currentInstr ? currentInstr->toString().ascii() : ".")
 		<< endl << "  currentLine "
@@ -1179,7 +1179,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 #endif
 
       if (!line.isEmpty()) {
-	kdError() << _filename << ":" << _lineNo
+	kError() << _filename << ":" << _lineNo
 		  << " - Garbage at end of cost line ('" 
 		  << QString(line) << "')" << endl;
       }
@@ -1246,7 +1246,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
       currentCallCount = 0;
 
       if (!line.isEmpty()) {
-	kdError() << _filename << ":" << _lineNo
+	kError() << _filename << ":" << _lineNo
 		  << " - Garbage at end of call cost line ('"
 		  << QString(line) << "')" << endl;
       }
@@ -1279,16 +1279,16 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 #endif
 
       if (0) {
-	kdDebug() << _filename << ":" << _lineNo
+	kDebug() << _filename << ":" << _lineNo
 		  << " - jump from 0x" << currentPos.fromAddr.toString()
 		  << " (line " << currentPos.fromLine
 		  << ") to 0x" << targetPos.fromAddr.toString()
 		  << " (line " << targetPos.fromLine << ")" << endl;
 
 	if (nextLineType == BoringJump)
-	  kdDebug() << " Boring Jump, count " << jumpsExecuted.pretty() << endl;
+	  kDebug() << " Boring Jump, count " << jumpsExecuted.pretty() << endl;
 	else
-	  kdDebug() << " Cond. Jump, followed " << jumpsFollowed.pretty()
+	  kDebug() << " Cond. Jump, followed " << jumpsFollowed.pretty()
 		    << ", executed " << jumpsExecuted.pretty() << endl;
       }
 
@@ -1297,7 +1297,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
       currentJumpToFile = 0;
 
       if (!line.isEmpty()) {
-	kdError() << _filename << ":" << _lineNo
+	kError() << _filename << ":" << _lineNo
 		  << " - Garbage at end of jump cost line ('"
 		  << QString(line) << "')" << endl;
       }

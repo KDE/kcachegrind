@@ -498,7 +498,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
 	  nextCostLineno     = (lineIt == lineItEnd) ? 0 : (*lineIt).lineno();
 	  if (nextCostLineno<0) {
-	    kdError() << "SourceView::fillSourceFile: Negative line number "
+	    kError() << "SourceView::fillSourceFile: Negative line number "
 		      << nextCostLineno << endl
 		      << "  Function '" << sf->function()->name() << "'" << endl
 		      << "  File '" << sf->file()->name() << "'" << endl;

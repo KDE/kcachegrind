@@ -264,39 +264,39 @@ void TraceItemView::updateView(bool force)
   if (!force && (_status == nothingChanged)) return;
 
 #if TRACE_UPDATES
-  kdDebug() << (widget() ? widget()->name() : "TraceItemView")
+  kDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::doUpdate ( "
             << ((_status & dataChanged) ? "data ":"")
             << ((_status & configChanged) ? "config ":"")
             << ")" << endl;
 
   if (_status & partsChanged)
-    kdDebug() << "  Part List "
+    kDebug() << "  Part List "
               << _partList.names()
               << endl;
 
   if (_status & costTypeChanged)
-    kdDebug() << "  Cost type "
+    kDebug() << "  Cost type "
               << (_costType ? _costType->name().ascii() : "?")
               << endl;
 
   if (_status & costType2Changed)
-    kdDebug() << "  Cost type 2 "
+    kDebug() << "  Cost type 2 "
               << (_costType2 ? _costType2->name().ascii() : "?")
               << endl;
 
   if (_status & groupTypeChanged)
-    kdDebug() << "  Group type "
+    kDebug() << "  Group type "
               << TraceItem::typeName(_groupType)
               << endl;
 
   if (_status & activeItemChanged)
-    kdDebug() << "  Active: "
+    kDebug() << "  Active: "
               << (_activeItem ? _activeItem->fullName().ascii() : "?")
               << endl;
 
   if (_status & selectedItemChanged)
-    kdDebug() << "  Selected: "
+    kDebug() << "  Selected: "
               << (_selectedItem ? _selectedItem->fullName().ascii() : "?")
               << endl;
 #endif
@@ -316,7 +316,7 @@ void TraceItemView::updateView(bool force)
 void TraceItemView::selected(TraceItemView* /*sender*/, TraceItem* i)
 {
 #if TRACE_UPDATES
-  kdDebug() << (widget() ? widget()->name() : "TraceItemView")
+  kDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::selected "
             << (i ? i->name().ascii(): "(nil)")
             << ", sender "
@@ -329,7 +329,7 @@ void TraceItemView::selected(TraceItemView* /*sender*/, TraceItem* i)
 void TraceItemView::selected(TraceItemView* /*sender*/, const TracePartList& l)
 {
 #if TRACE_UPDATES
-  kdDebug() << (widget() ? widget()->name() : "TraceItemView")
+  kDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::selected "
             << l.names()
             << ", sender "
@@ -345,7 +345,7 @@ void TraceItemView::selected(TraceItemView* /*sender*/, const TracePartList& l)
 void TraceItemView::activated(TraceItemView* /*sender*/, TraceItem* i)
 {
 #if TRACE_UPDATES
-  kdDebug() << (widget() ? widget()->name() : "TraceItemView")
+  kDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::activated "
             << (i ? i->name().ascii(): "(nil)")
             << ", sender "
@@ -404,7 +404,7 @@ void TraceItemView::selected(const TracePartList& l)
 void TraceItemView::activated(TraceItem* i)
 {
 #if TRACE_UPDATES
-  kdDebug() << (widget() ? widget()->name() : "TraceItemView")
+  kDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::activated "
             << (i ? i->name().ascii(): "(nil)") << endl;
 #endif

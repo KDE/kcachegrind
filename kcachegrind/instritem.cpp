@@ -354,7 +354,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       if ((_instrJump == _jump[i]) &&
 	  (_jump[i]->instrFrom()->addr() == _addr)) {
 
-	  //kdDebug() << "InstrItem " << _addr.toString() << ": start " << i << endl;
+	  //kDebug() << "InstrItem " << _addr.toString() << ": start " << i << endl;
 	  if (start<0) start = i;
 	  if (_jump[i]->instrTo()->addr() <= _addr)
 	      y2 = yy;
@@ -364,7 +364,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       else if (!_instrJump && !_instrCall &&
 	       (_jump[i]->instrTo()->addr() == _addr)) {
 
-	  //kdDebug() << "InstrItem " << _addr.toString() << ": end " << i << endl;
+	  //kDebug() << "InstrItem " << _addr.toString() << ": end " << i << endl;
 	  if (end<0) end = i;
 	  if (_jump[i]->instrFrom()->addr() < _addr)
 	      y2 = yy;

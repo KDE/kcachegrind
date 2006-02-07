@@ -1099,7 +1099,7 @@ TraceSubMapping* TraceCostMapping::subMapping(QString types, bool create)
   if (!create && (newCount>0)) return 0;
 
   if (newCount+_realCount > TraceCost::MaxRealIndex) {
-    kdDebug() << "TraceCostMapping::subMapping: No space for " 
+    kDebug() << "TraceCostMapping::subMapping: No space for " 
 	      << newCount << " sub costs." << endl;
     return 0;
   }
@@ -4473,7 +4473,7 @@ void TraceData::load(const QString& base)
     TracePart* p = addPart( dir.path(), *it );
 
     if (!p) {
-      kdDebug() << "Error loading " << *it << endl;
+      kDebug() << "Error loading " << *it << endl;
       continue;
     }
 

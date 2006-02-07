@@ -76,7 +76,7 @@ void MultiView::appendView()
 	    _groupType, _partList, _activeItem, 0);
     tv->updateView();
 
-    if (0) kdDebug() << "MultiView::appendView, now "
+    if (0) kDebug() << "MultiView::appendView, now "
 		     << _views.count() << endl;
 }
 
@@ -96,7 +96,7 @@ void MultiView::removeView()
     _views.removeRef(last);
     delete last;
 
-    if (0) kdDebug() << "MultiView::removeView, now "
+    if (0) kDebug() << "MultiView::removeView, now "
 		     << _views.count() << endl;
 }
 
@@ -105,7 +105,7 @@ void MultiView::tabActivated(TabView* newActiveTab)
 {
     if (_active == newActiveTab) return;
 
-    if (0) kdDebug() << "MultiView::tabActivated " 
+    if (0) kDebug() << "MultiView::tabActivated " 
 		     << newActiveTab->name() << endl;
 
     TraceItem* oldActiveItem = 0;
@@ -122,7 +122,7 @@ void MultiView::tabActivated(TabView* newActiveTab)
 
 void MultiView::selected(TraceItemView* sender, TraceItem* i)
 {
-    if (0) kdDebug() << "MultiView::selected " << i->name()
+    if (0) kDebug() << "MultiView::selected " << i->name()
 		     << ", sender " << sender->widget()->name() << endl;
 
      // we react only on selection changes of the active TabView
@@ -141,7 +141,7 @@ void MultiView::selected(TraceItemView* sender, TraceItem* i)
 
 void MultiView::activated(TraceItemView* sender, TraceItem* i)
 {
-    if (0) kdDebug() << "MultiView::activated " << i->name()
+    if (0) kDebug() << "MultiView::activated " << i->name()
 		     << ", sender " << sender->widget()->name() << endl;
 
     // we react only on selection changes of the active TabView

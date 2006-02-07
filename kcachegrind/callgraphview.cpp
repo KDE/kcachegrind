@@ -555,7 +555,7 @@ void GraphExporter::writeDot()
   else {
     file = new QFile(_dotName);
     if ( !file->open( QIODevice::WriteOnly ) ) {
-      kdError() << "Can't write dot file '" << _dotName << "'" << endl;
+      kError() << "Can't write dot file '" << _dotName << "'" << endl;
       return;
     }
     stream = new QTextStream(file);
@@ -830,7 +830,7 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
                                bool toCallings, double factor)
 {
 #if DEBUG_GRAPH
-  kdDebug() << "buildGraph(" << f->prettyName() << "," << d << "," << factor
+  kDebug() << "buildGraph(" << f->prettyName() << "," << d << "," << factor
 	    << ") [to " << (toCallings ? "Callings":"Callers") << "]" << endl;
 #endif
 
@@ -1838,7 +1838,7 @@ void CallGraphView::refresh()
     return;
   }
 
-  if (1) kdDebug() << "CallGraphView::refresh" << endl;
+  if (1) kDebug() << "CallGraphView::refresh" << endl;
 
   _selectedNode = 0;
   _selectedEdge = 0;
@@ -1858,7 +1858,7 @@ void CallGraphView::refresh()
   connect( _renderProcess, SIGNAL(processExited()),
 	   this, SLOT(dotExited()) );
 
-  if (1) kdDebug() << "Running '" 
+  if (1) kDebug() << "Running '" 
 		   << _renderProcess->arguments().join(" ")
 		   << "'..." << endl;
 
@@ -1946,25 +1946,25 @@ void CallGraphView::dotExited()
         _canvas = new Q3Canvas(int(w+2*_xMargin), int(h+2*_yMargin));
 
 #if DEBUG_GRAPH
-        kdDebug() << _exporter.filename().ascii() << ":" << lineno
+        kDebug() << _exporter.filename().ascii() << ":" << lineno
 		  << " - graph (" << dotWidth << " x " << dotHeight
 		  << ") => (" << w << " x " << h << ")" << endl;
 #endif
       }
       else
-        kdWarning() << "Ignoring 2nd 'graph' from dot ("
+        kWarning() << "Ignoring 2nd 'graph' from dot ("
 		    << _exporter.filename() << ":" << lineno << ")" << endl;
       continue;
     }
 
     if ((cmd != "node") && (cmd != "edge")) {
-      kdWarning() << "Ignoring unknown command '" << cmd << "' from dot ("
+      kWarning() << "Ignoring unknown command '" << cmd << "' from dot ("
 		    << _exporter.filename() << ":" << lineno << ")" << endl;
       continue;
     }
 
     if (_canvas == 0) {
-      kdWarning() << "Ignoring '" << cmd << "' without 'graph' from dot ("
+      kWarning() << "Ignoring '" << cmd << "' without 'graph' from dot ("
 		  << _exporter.filename() << ":" << lineno << ")" << endl;
       continue;
     }
@@ -1984,7 +1984,7 @@ void CallGraphView::dotExited()
       int h = (int)(scaleY * height);
 
 #if DEBUG_GRAPH
-      kdDebug() << _exporter.filename() << ":" << lineno
+      kDebug() << _exporter.filename() << ":" << lineno
 		<< " - node '" << nodeName << "' ( "
 		<< x << "/" << y << " - "
 		<< width << "x" << height << " ) => ("
@@ -2036,7 +2036,7 @@ void CallGraphView::dotExited()
     GraphEdge* e = _exporter.edge(_exporter.toFunc(node1Name),
                                   _exporter.toFunc(node2Name));
     if (!e) {
-      kdWarning() << "Unknown edge '" << node1Name << "'-'"
+      kWarning() << "Unknown edge '" << node1Name << "'-'"
 		  << node2Name << "' from dot ("
 		  << _exporter.filename() << ":" << lineno << ")" << endl;
       continue;
