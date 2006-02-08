@@ -957,22 +957,22 @@ void CallMapView::readViewConfig(KConfig* c,
 
     setSplitMode(g->readEntry("SplitMode", DEFAULT_SPLITMODE));
 
-    setFieldVisible(0, g->readBoolEntry("DrawName", DEFAULT_DRAWNAME));
-    setFieldVisible(1, g->readBoolEntry("DrawCost", DEFAULT_DRAWCOST));
-    setFieldVisible(2, g->readBoolEntry("DrawLocation", DEFAULT_DRAWLOCATION));
-    setFieldVisible(3, g->readBoolEntry("DrawCalls", DEFAULT_DRAWCALLS));
+    setFieldVisible(0, g->readEntry("DrawName", DEFAULT_DRAWNAME));
+    setFieldVisible(1, g->readEntry("DrawCost", DEFAULT_DRAWCOST));
+    setFieldVisible(2, g->readEntry("DrawLocation", DEFAULT_DRAWLOCATION));
+    setFieldVisible(3, g->readEntry("DrawCalls", DEFAULT_DRAWCALLS));
 
-    bool enable = g->readBoolEntry("ForceStrings", DEFAULT_FORCESTRINGS);
+    bool enable = g->readEntry("ForceStrings", DEFAULT_FORCESTRINGS);
     setFieldForced(0, enable);
     setFieldForced(1, enable);
     setFieldForced(2, enable);
     setFieldForced(3, enable);
 
-    setAllowRotation(g->readBoolEntry("AllowRotation", DEFAULT_ROTATION));
-    setShadingEnabled(g->readBoolEntry("Shading", DEFAULT_SHADING));
+    setAllowRotation(g->readEntry("AllowRotation", DEFAULT_ROTATION));
+    setShadingEnabled(g->readEntry("Shading", DEFAULT_SHADING));
     setFieldStop(0, g->readEntry("StopName"));
-    setMaxDrawingDepth(g->readNumEntry("MaxDepth", -1));
-    setMinimalArea(g->readNumEntry("MaxArea", DEFAULT_MAXAREA));
+    setMaxDrawingDepth(g->readEntry("MaxDepth", -1));
+    setMinimalArea(g->readEntry("MaxArea", DEFAULT_MAXAREA));
 
     delete g;
 }

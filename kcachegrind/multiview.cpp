@@ -174,7 +174,7 @@ void MultiView::readViewConfig(KConfig* c,
 
   QString active;
   KConfigGroup* g = configGroup(c, prefix, postfix);
-  int n = g->readNumEntry("Panels", 1);
+  int n = g->readEntry("Panels", 1);
   setChildCount(n);
   setOrientation( (g->readEntry("Orientation") == QString("Horizontal")) ?
 		  Qt::Horizontal : Qt::Vertical );

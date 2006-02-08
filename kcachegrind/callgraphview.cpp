@@ -2687,15 +2687,15 @@ void CallGraphView::readViewConfig(KConfig* c,
 
     if (0) qDebug("CallGraphView::readViewConfig");
 
-    _maxCallerDepth  = g->readNumEntry("MaxCaller", DEFAULT_MAXCALLER);
-    _maxCallingDepth = g->readNumEntry("MaxCalling", DEFAULT_MAXCALLING);
-    _funcLimit       = g->readDoubleNumEntry("FuncLimit", DEFAULT_FUNCLIMIT);
-    _callLimit       = g->readDoubleNumEntry("CallLimit", DEFAULT_CALLLIMIT);
-    _showSkipped     = g->readBoolEntry("ShowSkipped", DEFAULT_SHOWSKIPPED);
-    _expandCycles    = g->readBoolEntry("ExpandCycles", DEFAULT_EXPANDCYCLES);
-    _clusterGroups   = g->readBoolEntry("ClusterGroups",
+    _maxCallerDepth  = g->readEntry("MaxCaller", DEFAULT_MAXCALLER);
+    _maxCallingDepth = g->readEntry("MaxCalling", DEFAULT_MAXCALLING);
+    _funcLimit       = g->readEntry("FuncLimit", DEFAULT_FUNCLIMIT);
+    _callLimit       = g->readEntry("CallLimit", DEFAULT_CALLLIMIT);
+    _showSkipped     = g->readEntry("ShowSkipped", DEFAULT_SHOWSKIPPED);
+    _expandCycles    = g->readEntry("ExpandCycles", DEFAULT_EXPANDCYCLES);
+    _clusterGroups   = g->readEntry("ClusterGroups",
 					DEFAULT_CLUSTERGROUPS);
-    _detailLevel     = g->readNumEntry("DetailLevel", DEFAULT_DETAILLEVEL);
+    _detailLevel     = g->readEntry("DetailLevel", DEFAULT_DETAILLEVEL);
     _layout          = GraphOptions::layout(g->readEntry("Layout",
 					   layoutString(DEFAULT_LAYOUT)));
     _zoomPosition    = zoomPos(g->readEntry("ZoomPosition",

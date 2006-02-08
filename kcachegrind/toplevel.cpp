@@ -413,7 +413,7 @@ void TopLevel::createDocks()
     QTextStream ts( &str, QIODevice::ReadOnly );
     ts >> *this;
   }
-  _forcePartDock = dockConfig.readBoolEntry("ForcePartDockVisible", false);
+  _forcePartDock = dockConfig.readEntry("ForcePartDockVisible", false);
 
 #if 0
   // dock context menu
@@ -1749,8 +1749,8 @@ void TopLevel::restoreTraceTypes()
       costTypeSelected(_saCost->items().first());
 
   KConfigGroup aConfig(KGlobal::config(), QByteArray("Layouts"));
-  _layoutCount = aConfig.readNumEntry(QString("Count%1").arg(key), 0);
-  _layoutCurrent = aConfig.readNumEntry(QString("Current%1").arg(key), 0);
+  _layoutCount = aConfig.readEntry(QString("Count%1").arg(key), 0);
+  _layoutCurrent = aConfig.readEntry(QString("Current%1").arg(key), 0);
   if (_layoutCount == 0) layoutRestore();
   updateLayoutActions();
 }
@@ -1887,8 +1887,8 @@ void TopLevel::layoutRestore()
 {
   KConfig* config = KGlobal::config();
   KConfigGroup aConfig(config, QByteArray("Layouts"));
-  _layoutCount = aConfig.readNumEntry("DefaultCount", 0);
-  _layoutCurrent = aConfig.readNumEntry("DefaultCurrent", 0);
+  _layoutCount = aConfig.readEntry("DefaultCount", 0);
+  _layoutCurrent = aConfig.readEntry("DefaultCurrent", 0);
   if (_layoutCount == 0) {
     _layoutCount++;
     return;

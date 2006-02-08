@@ -471,33 +471,33 @@ void PartSelection::readVisualisationConfig(KConfigGroup* config)
   else
     partAreaWidget->setVisualisation(PartAreaWidget::Partitioning);
 
-  _diagramMode = config->readBoolEntry("DiagramMode", false);
+  _diagramMode = config->readEntry("DiagramMode", false);
   partAreaWidget->setTransparent(2,_diagramMode);
 
-  _drawFrames = config->readBoolEntry("DrawFrames", true);
+  _drawFrames = config->readEntry("DrawFrames", true);
   partAreaWidget->drawFrame(2,_drawFrames);
   partAreaWidget->drawFrame(3,_drawFrames);
 
-  enable = config->readBoolEntry("GraphZoom", false);
+  enable = config->readEntry("GraphZoom", false);
   partAreaWidget->setZoomFunction(enable);
 
-  int levels = config->readNumEntry("GraphLevels", 1);
+  int levels = config->readEntry("GraphLevels", 1);
   partAreaWidget->setCallLevels(levels);
 
-  enable = config->readBoolEntry("GraphDrawName", true);
+  enable = config->readEntry("GraphDrawName", true);
   partAreaWidget->setFieldVisible(0, enable);
 
-  enable = config->readBoolEntry("GraphDrawCost", true);
+  enable = config->readEntry("GraphDrawCost", true);
   partAreaWidget->setFieldVisible(1, enable);
 
-  enable = config->readBoolEntry("GraphForceStrings", false);
+  enable = config->readEntry("GraphForceStrings", false);
   partAreaWidget->setFieldForced(0, enable);
   partAreaWidget->setFieldForced(1, enable);
 
-  enable = config->readBoolEntry("GraphAllowRotation", true);
+  enable = config->readEntry("GraphAllowRotation", true);
   partAreaWidget->setAllowRotation(enable);
 
-  showInfo(config->readBoolEntry("ShowInfo", false));
+  showInfo(config->readEntry("ShowInfo", false));
 }
 
 void PartSelection::saveVisualisationConfig(KConfigGroup* config)

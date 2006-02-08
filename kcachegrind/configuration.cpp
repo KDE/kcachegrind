@@ -217,7 +217,7 @@ void Configuration::readOptions(KConfig* kconfig)
   c->color("CostType-Dw")->color = QColor(80,80,120);
 
   KConfigGroup colorConfig(kconfig, QByteArray("CostColors"));
-  count = colorConfig.readNumEntry("Count", 0);
+  count = colorConfig.readEntry("Count", 0);
   for (i=1;i<=count;i++) {
     QString n = colorConfig.readEntry(QString("Name%1").arg(i),QString());
     QColor color = colorConfig.readColorEntry(QString("Color%1").arg(i));
@@ -239,7 +239,7 @@ void Configuration::readOptions(KConfig* kconfig)
   QStringList dirs;
   dirs = sourceConfig.readListEntry("Dirs", ':');
   if (dirs.count()>0) c->_generalSourceDirs = dirs;
-  count = sourceConfig.readNumEntry("Count", 0);
+  count = sourceConfig.readEntry("Count", 0);
   c->_objectSourceDirs.clear();
   if (count>17) c->_objectSourceDirs.resize(count);
   for (i=1;i<=count;i++) {
@@ -254,23 +254,23 @@ void Configuration::readOptions(KConfig* kconfig)
 
   // general options
   KConfigGroup generalConfig(kconfig, QByteArray("General"));
-  c->_showPercentage = generalConfig.readBoolEntry("ShowPercentage", true);
-  c->_showExpanded = generalConfig.readBoolEntry("ShowExpanded", false);
-  c->_showCycles = generalConfig.readBoolEntry("ShowCycles", true);
-  c->_cycleCut = generalConfig.readDoubleNumEntry("CycleCut", 0.0);
-  c->_maxSymbolCount = generalConfig.readNumEntry("MaxSymbolCount", 10);
-  c->_maxListCount = generalConfig.readNumEntry("MaxListCount", 100);
-  c->_maxSymbolLength = generalConfig.readNumEntry("MaxSymbolLength", 30);
-  c->_percentPrecision = generalConfig.readNumEntry("PercentPrecision", 2);
+  c->_showPercentage = generalConfig.readEntry("ShowPercentage", true);
+  c->_showExpanded = generalConfig.readEntry("ShowExpanded", false);
+  c->_showCycles = generalConfig.readEntry("ShowCycles", true);
+  c->_cycleCut = generalConfig.readEntry("CycleCut", 0.0);
+  c->_maxSymbolCount = generalConfig.readEntry("MaxSymbolCount", 10);
+  c->_maxListCount = generalConfig.readEntry("MaxListCount", 100);
+  c->_maxSymbolLength = generalConfig.readEntry("MaxSymbolLength", 30);
+  c->_percentPrecision = generalConfig.readEntry("PercentPrecision", 2);
 
-  c->_context = generalConfig.readNumEntry("Context", 3);
-  c->_noCostInside   = generalConfig.readNumEntry("NoCostInside", 20);
+  c->_context = generalConfig.readEntry("Context", 3);
+  c->_noCostInside   = generalConfig.readEntry("NoCostInside", 20);
 
   // known cost types
   if (TraceCostType::knownTypeCount()==0) {
 
     KConfigGroup ctConfig(kconfig, QByteArray("CostTypes"));
-    int ctCount = ctConfig.readNumEntry("Count", 0);
+    int ctCount = ctConfig.readEntry("Count", 0);
     if (ctCount>0) {
       for (int i=1;i<=ctCount;i++) {
         QString n = ctConfig.readEntry(QString("Name%1").arg(i),QString());

@@ -3176,41 +3176,41 @@ void TreeMapWidget::restoreOptions(KConfigGroup* config, QString prefix)
   if (!str.isEmpty()) setSplitMode(str);
 
   if (config->hasKey(prefix+"AllowRotation")) {
-    enabled = config->readBoolEntry(prefix+"AllowRotation", true);
+    enabled = config->readEntry(prefix+"AllowRotation", true);
     setAllowRotation(enabled);
   }
 
   if (config->hasKey(prefix+"ShadingEnabled")) {
-    enabled = config->readBoolEntry(prefix+"ShadingEnabled", true);
+    enabled = config->readEntry(prefix+"ShadingEnabled", true);
     setShadingEnabled(enabled);
   }
 
   if (config->hasKey(prefix+"OnlyCorrectBorder")) {
-    enabled = config->readBoolEntry(prefix+"OnlyCorrectBorder", false);
+    enabled = config->readEntry(prefix+"OnlyCorrectBorder", false);
     setSkipIncorrectBorder(enabled);
   }
 
-  num = config->readNumEntry(prefix+"BorderWidth", -2);
+  num = config->readEntry(prefix+"BorderWidth", -2);
   if (num!=-2) setBorderWidth(num);
 
-  num = config->readNumEntry(prefix+"MaxDepth", -2);
+  num = config->readEntry(prefix+"MaxDepth", -2);
   if (num!=-2) setMaxDrawingDepth(num);
 
-  num = config->readNumEntry(prefix+"MinimalArea", -2);
+  num = config->readEntry(prefix+"MinimalArea", -2);
   if (num!=-2) setMinimalArea(num);
 
-  num = config->readNumEntry(prefix+"FieldCount", -2);
+  num = config->readEntry(prefix+"FieldCount", -2);
   if (num<=0 || num>MAX_FIELD) return;
 
   int f;
   for (f=0;f<num;f++) {
     str = QString(prefix+"FieldVisible%1").arg(f);
     if (config->hasKey(str))
-      setFieldVisible(f, config->readBoolEntry(str));
+      setFieldVisible(f, config->readEntry(str,false));
 
     str = QString(prefix+"FieldForced%1").arg(f);
     if (config->hasKey(str))
-      setFieldForced(f, config->readBoolEntry(str));
+      setFieldForced(f, config->readEntry(str,false));
 
     str = config->readEntry(QString(prefix+"FieldStop%1").arg(f),QString());
     setFieldStop(f, str);
