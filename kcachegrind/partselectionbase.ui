@@ -12,7 +12,7 @@
             <height>402</height>
         </rect>
     </property>
-    <property name="caption">
+    <property name="windowTitle">
         <string>Parts Overview</string>
     </property>
     <vbox>

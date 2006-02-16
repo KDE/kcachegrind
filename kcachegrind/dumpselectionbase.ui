@@ -12,7 +12,7 @@
             <height>832</height>
         </rect>
     </property>
-    <property name="caption">
+    <property name="windowTitle">
         <string>Profile Dumps</string>
     </property>
     <vbox>

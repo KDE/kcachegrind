@@ -12,7 +12,7 @@
             <height>108</height>
         </rect>
     </property>
-    <property name="caption">
+    <property name="windowTitle">
         <string>Stack Selection</string>
     </property>
     <vbox>
