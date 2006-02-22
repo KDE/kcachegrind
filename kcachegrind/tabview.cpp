@@ -733,19 +733,19 @@ void TabView::readViewConfig(KConfig* c,
 
     KConfigGroup* g = configGroup(c, prefix, postfix);
 
-    _mainSplitter->setSizes(g->readIntListEntry("MainSizes"));
-    _leftSplitter->setSizes(g->readIntListEntry("LeftSizes"));
-    _bottomSplitter->setSizes(g->readIntListEntry("BottomSizes"));
+    _mainSplitter->setSizes(g->readEntry("MainSizes",QList<int>()));
+    _leftSplitter->setSizes(g->readEntry("LeftSizes",QList<int>()));
+    _bottomSplitter->setSizes(g->readEntry("BottomSizes",QList<int>()));
 
     QString activeT = g->readEntry("ActiveTop", "CallerView");
     QString activeB = g->readEntry("ActiveBottom", "CalleeView");
     QString activeL = g->readEntry("ActiveLeft", "");
     QString activeR = g->readEntry("ActiveRight", "");
 
-    QStringList topTabs    = g->readListEntry("TopTabs");
-    QStringList bottomTabs = g->readListEntry("BottomTabs");
-    QStringList leftTabs   = g->readListEntry("LeftTabs");
-    QStringList rightTabs  = g->readListEntry("RightTabs");
+    QStringList topTabs    = g->readEntry("TopTabs",QStringList());
+    QStringList bottomTabs = g->readEntry("BottomTabs",QStringList());
+    QStringList leftTabs   = g->readEntry("LeftTabs",QStringList());
+    QStringList rightTabs  = g->readEntry("RightTabs",QStringList());
 
     if (topTabs.isEmpty() && bottomTabs.isEmpty() &&
         rightTabs.isEmpty() && leftTabs.isEmpty()) {

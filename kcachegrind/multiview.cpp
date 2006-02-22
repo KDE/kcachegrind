@@ -179,7 +179,7 @@ void MultiView::readViewConfig(KConfig* c,
   setOrientation( (g->readEntry("Orientation") == QString("Horizontal")) ?
 		  Qt::Horizontal : Qt::Vertical );
   
-  setSizes(g->readIntListEntry("PanelSizes"));
+  setSizes(g->readEntry("PanelSizes",QList<int>()));
   
   active = g->readEntry("ActivePanel", "");
   delete g;

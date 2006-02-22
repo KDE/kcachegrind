@@ -237,14 +237,14 @@ void Configuration::readOptions(KConfig* kconfig)
   // source options
   KConfigGroup sourceConfig(kconfig, QByteArray("Source"));
   QStringList dirs;
-  dirs = sourceConfig.readListEntry("Dirs", ':');
+  dirs = sourceConfig.readEntry("Dirs", QStringList(),':');
   if (dirs.count()>0) c->_generalSourceDirs = dirs;
   count = sourceConfig.readEntry("Count", 0);
   c->_objectSourceDirs.clear();
   if (count>17) c->_objectSourceDirs.resize(count);
   for (i=1;i<=count;i++) {
     QString n = sourceConfig.readEntry(QString("Object%1").arg(i),QString());
-    dirs = sourceConfig.readListEntry(QString("Dirs%1").arg(i), ':');
+    dirs = sourceConfig.readEntry(QString("Dirs%1").arg(i), QStringList(),':');
 
     if (n.isEmpty() || (dirs.count()==0)) continue;
 
