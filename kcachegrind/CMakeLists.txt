@@ -48,7 +48,7 @@ set(kcachegrind_SRCS
 
 kde4_automoc(${kcachegrind_SRCS})
 
-kde4_add_ui_files(kcachegrind_SRCS 
+kde4_add_ui3_files(kcachegrind_SRCS 
    functionselectionbase.ui 
    stackselectionbase.ui 
    partselectionbase.ui 
@@ -56,7 +56,7 @@ kde4_add_ui_files(kcachegrind_SRCS
 
 kde4_add_executable(kcachegrind ${kcachegrind_SRCS})
 
-target_link_libraries(kcachegrind  ${QT_AND_KDECORE_LIBS} kio )
+target_link_libraries(kcachegrind  ${LIB_KIO} )
 
 install_targets(/bin kcachegrind )
 
