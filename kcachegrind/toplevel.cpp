@@ -1029,7 +1029,7 @@ void TopLevel::loadTrace(const KUrl& url)
 #else
   if(KIO::NetAccess::download( url, tmpFile )) {
 #endif
-    _openRecent->addURL(url);
+    _openRecent->addUrl(url);
     _openRecent->saveEntries( KGlobal::config() );
 
     loadTrace(tmpFile);
@@ -1078,7 +1078,7 @@ void TopLevel::addTrace(const KUrl& url)
 #else
   if(KIO::NetAccess::download( url, tmpFile )) {
 #endif
-    _openRecent->addURL(url);
+    _openRecent->addUrl(url);
     _openRecent->saveEntries( KGlobal::config() );
 
     addTrace(tmpFile);

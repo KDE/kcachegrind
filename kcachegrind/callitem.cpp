@@ -147,8 +147,8 @@ void CallItem::updateCost()
 
 	QString icon = "undo";
 	KIconLoader* loader = KApplication::kApplication()->iconLoader();
-	p= loader->loadIcon(icon, KIcon::Small, 0,
-			    KIcon::DefaultState, 0, true);
+	p= loader->loadIcon(icon, K3Icon::Small, 0,
+			    K3Icon::DefaultState, 0, true);
     }
     setPixmap(2, p);
 }
