@@ -33,6 +33,7 @@
 
 #include "traceitemview.h"
 #include "tracedata.h"
+#include <Q3DockWindow>
 
 class MultiView;
 class QLineEdit;

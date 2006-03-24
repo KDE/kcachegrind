@@ -24,8 +24,9 @@
 #define ENABLE_DUMPDOCK 0
 
 #include <stdlib.h> // for system()
-
+#include <k3dockwidget.h>
 #include <q3vbox.h>
+#include <ktoolbar.h>
 #include <qtimer.h>
 
 #include <qlineedit.h>
