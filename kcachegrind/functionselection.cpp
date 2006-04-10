@@ -173,7 +173,7 @@ void FunctionSelection::functionContext(Q3ListViewItem* i,
   if (i) {
       f = ((FunctionItem*) i)->function();
       if (f) {
-	  popup.insertItem(i18n("Go to %1").arg(f->prettyName()), 93);
+	  popup.insertItem(i18n("Go to %1", f->prettyName()), 93);
 	  popup.insertSeparator();
       }
   }

@@ -113,11 +113,11 @@ void SourceView::context(Q3ListViewItem* i, const QPoint & p, int c)
     QString name = f->name();
     if ((int)name.length()>Configuration::maxSymbolLength())
       name = name.left(Configuration::maxSymbolLength()) + "...";
-    popup.insertItem(i18n("Go to '%1'").arg(name), 93);
+    popup.insertItem(i18n("Go to '%1'", name), 93);
     popup.insertSeparator();
   }
   else if (line) {
-    popup.insertItem(i18n("Go to Line %1").arg(line->name()), 93);
+    popup.insertItem(i18n("Go to Line %1", line->name()), 93);
     popup.insertSeparator();
   }
 
@@ -550,13 +550,13 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   // do it here, because the source directory could have been set before
   if (childCount()==0) {
     setColumnText(4, validSourceFile ?
-                  i18n("Source ('%1')").arg(filename) :
+                  i18n("Source ('%1')", filename) :
                   i18n("Source (unknown)"));
   }
   else {
     new SourceItem(this, this, fileno, 0, true,
                    validSourceFile ?
-                   i18n("--- Inlined from '%1' ---").arg(filename) :
+                   i18n("--- Inlined from '%1' ---", filename) :
                    i18n("--- Inlined from unknown source ---"));
   }
 

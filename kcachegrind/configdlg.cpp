@@ -209,8 +209,8 @@ bool ConfigDlg::configure(Configuration* c, TraceData* d, QWidget* p)
     else
       QMessageBox::warning(p, i18n("KCachegrind Configuration"),
                            i18n("The Maximum Number of List Items should be below 500."
-                                "The previous set value (%1) will still be used.")
-                           .arg(QString::number(c->_maxListCount)),
+                                "The previous set value (%1) will still be used.",
+                                c->_maxListCount),
                            QMessageBox::Ok, 0);
 
     c->_maxSymbolCount = dlg.symbolCount->text().toInt();

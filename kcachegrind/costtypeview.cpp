@@ -146,13 +146,13 @@ void CostTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
   else if (r == 97) {
     int i = 1;
     while(1) {
-      if (!TraceCostType::knownVirtualType(i18n("New%1").arg(i)))
+      if (!TraceCostType::knownVirtualType(i18n("New%1", i)))
 	break;
       i++;
     }
     // add same new cost type to this mapping and to known types
-    QString shortName = i18n("New%1").arg(i);
-    QString longName  = i18n("New Cost Type %1").arg(i);
+    QString shortName = i18n("New%1", i);
+    QString longName  = i18n("New Cost Type %1", i);
     TraceCostType::add(new TraceCostType(shortName, longName, "0"));
     _data->mapping()->add(new TraceCostType(shortName, longName, "0"));
     refresh();

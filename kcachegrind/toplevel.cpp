@@ -1926,7 +1926,7 @@ void TopLevel::updateLayoutActions()
   ka = actionCollection()->action("layout_remove");
   if (ka) ka->setEnabled(_layoutCount>1);
 
-  _statusbar->message(i18n("Layout Count: %1").arg(_layoutCount), 1000);
+  _statusbar->message(i18n("Layout Count: %1", _layoutCount), 1000);
 }
 
 
@@ -1942,9 +1942,9 @@ void TopLevel::updateStatusBar()
                    .arg(_data->activePartRange());
 
   if (_costType) {
-    status += i18n("Total %1 Cost: %2")
-      .arg(_costType->longName())
-      .arg(_data->prettySubCost(_costType));
+    status += i18n("Total %1 Cost: %2",
+       _costType->longName(),
+       _data->prettySubCost(_costType));
 
     /* this gets too long...
     if (_costType2 && (_costType2 != _costType))

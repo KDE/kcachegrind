@@ -197,14 +197,14 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   l1popup.setItemChecked(53, maxDepth==20);
   if (i) {
     l1popup.insertSeparator();
-    l1popup.insertItem(i18n("Depth of '%1' (%2)")
-                       .arg(shortCurrentName).arg(i->depth()), 55);
+    l1popup.insertItem(i18n("Depth of '%1' (%2)",
+                        shortCurrentName, i->depth()), 55);
     l1popup.setItemChecked(55, maxDepth == i->depth());
   }
   if (maxDepth>0) {
     l1popup.insertSeparator();
-    l1popup.insertItem(i18n("Decrement Depth (to %1)").arg(maxDepth-1), 56);
-    l1popup.insertItem(i18n("Increment Depth (to %1)").arg(maxDepth+1), 57);
+    l1popup.insertItem(i18n("Decrement Depth (to %1)", maxDepth-1), 56);
+    l1popup.insertItem(i18n("Increment Depth (to %1)", maxDepth+1), 57);
   }
 
   l2popup.setCheckable(true);
@@ -257,16 +257,16 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   if (i) {
     currentArea = i->width() * i->height();
     l3popup.insertSeparator();
-    l3popup.insertItem(i18n("Area of '%1' (%2)")
-                       .arg(shortCurrentName).arg(currentArea), 67);
+    l3popup.insertItem(i18n("Area of '%1' (%2)",
+                        shortCurrentName, currentArea), 67);
     l3popup.setItemChecked(67, mArea == currentArea);
   }
   if (mArea>0) {
     l3popup.insertSeparator();
-    l3popup.insertItem(i18n("Double Area Limit (to %1)")
-                       .arg(mArea*2), 68);
-    l3popup.insertItem(i18n("Half Area Limit (to %1)")
-                       .arg(mArea/2), 69);
+    l3popup.insertItem(i18n("Double Area Limit (to %1)",
+                        mArea*2), 68);
+    l3popup.insertItem(i18n("Half Area Limit (to %1)",
+                        mArea/2), 69);
   }
 
   popup.insertSeparator();
@@ -430,7 +430,7 @@ void CallMapView::selectedSlot(TreeMapItem* item, bool kbd)
   if (item->text(0).isEmpty()) return;
 
   if (kbd) {
-      QString msg = i18n("Call Map: Current is '%1'").arg(item->text(0));
+      QString msg = i18n("Call Map: Current is '%1'", item->text(0));
       if (_topLevel)
 	  _topLevel->showMessage(msg, 5000);
   }

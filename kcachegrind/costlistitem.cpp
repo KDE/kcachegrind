@@ -59,7 +59,7 @@ CostListItem::CostListItem(Q3ListView* parent, int skipped,
   _costItem = costItem;
   setCostType(ct);
 
-  setText(1, i18n("(%n item skipped)", "(%n items skipped)", _skipped));
+  setText(1, i18np("(%n item skipped)", "(%n items skipped)", _skipped));
 }
 
 void CostListItem::setCostType(TraceCostType* ct)

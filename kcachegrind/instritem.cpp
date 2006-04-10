@@ -104,13 +104,14 @@ InstrItem::InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
   //       fileno, lineno, _lineCall->call()->called()->prettyName().ascii());
 
   SubCost cc = _instrCall->callCount();
-  QString templ = "  ";
+  QString callStr = "  ";
   if (cc==0)
-    templ += i18n("Active call to '%1'");
+    callStr += i18n("Active call to '%1'",
+                    _instrCall->call()->calledName());
   else
-    templ += i18n("%n call to '%1'", "%n calls to '%1'", cc);
+    callStr += i18np("%n call to '%1'", "%n calls to '%1'", cc,
+                     _instrCall->call()->calledName());
 
-  QString callStr = templ.arg(_instrCall->call()->calledName());
   TraceFunction* calledF = _instrCall->call()->called();
   calledF->addPrettyLocation(callStr);
 
@@ -137,14 +138,14 @@ InstrItem::InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
 
   QString jStr;
   if (_instrJump->isCondJump())
-      jStr = i18n("Jump %1 of %2 times to 0x%3")
-	  .arg(_instrJump->followedCount().pretty())
-	  .arg(_instrJump->executedCount().pretty())
-	  .arg(_instrJump->instrTo()->addr().toString());
+      jStr = i18n("Jump %1 of %2 times to 0x%3",
+	   _instrJump->followedCount().pretty(),
+	   _instrJump->executedCount().pretty(),
+	   _instrJump->instrTo()->addr().toString());
   else
-      jStr = i18n("Jump %1 times to 0x%2")
-	  .arg(_instrJump->executedCount().pretty())
-	  .arg(_instrJump->instrTo()->addr().toString());
+      jStr = i18n("Jump %1 times to 0x%2",
+	   _instrJump->executedCount().pretty(),
+	   _instrJump->instrTo()->addr().toString());
 
   setText(6, jStr);
 

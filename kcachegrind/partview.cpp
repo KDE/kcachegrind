@@ -103,8 +103,8 @@ void PartView::context(Q3ListViewItem* i, const QPoint & pos, int)
   TracePart* p = i ? ((PartListItem*) i)->part() : 0;
 
   if (p) {
-    popup.insertItem(i18n("Select '%1'").arg(p->name()), 93);
-    popup.insertItem(i18n("Hide '%1'").arg(p->name()), 94);
+    popup.insertItem(i18n("Select '%1'", p->name()), 93);
+    popup.insertItem(i18n("Hide '%1'", p->name()), 94);
     popup.insertSeparator();
   }
 

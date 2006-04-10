@@ -188,11 +188,11 @@ void InstrView::context(Q3ListViewItem* i, const QPoint & p, int c)
     QString name = f->name();
     if ((int)name.length()>Configuration::maxSymbolLength())
       name = name.left(Configuration::maxSymbolLength()) + "...";
-    popup.insertItem(i18n("Go to '%1'").arg(name), 93);
+    popup.insertItem(i18n("Go to '%1'", name), 93);
     popup.insertSeparator();
   }
   else if (instr) {
-    popup.insertItem(i18n("Go to Address %1").arg(instr->name()), 93);
+    popup.insertItem(i18n("Go to Address %1", instr->name()), 93);
     popup.insertSeparator();
   }
 
@@ -869,7 +869,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	// trace cost not machting code
 
 	new InstrItem(this, this, 1,
-		      i18n("There is %n cost line without assembler code.",
+		      i18np("There is %n cost line without assembler code.",
                            "There are %n cost lines without assembler code.", noAssLines));
 	new InstrItem(this, this, 2,
 		      i18n("This happens because the code of"));

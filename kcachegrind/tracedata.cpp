@@ -240,9 +240,9 @@ QString TraceItem::costString(TraceCostMapping*)
 QString TraceItem::name() const
 {
   if (part()) {
-    return i18n("%1 from %2")
-      .arg(_dep->name())
-      .arg(part()->name());
+    return i18n("%1 from %2",
+       _dep->name(),
+       part()->name());
   }
 
   if (_dep)
@@ -2589,7 +2589,7 @@ QString TraceCall::callerName(bool skipCycle) const
       TraceFunctionCycle* c = _called->cycle();
       if (c && _caller && (_caller->cycle() != c)) {
 	  QString via = _called->prettyName();
-	  return i18n("%1 via %2").arg(_caller->prettyName()).arg(via);
+	  return i18n("%1 via %2", _caller->prettyName(), via);
       }
   }
 
@@ -2608,7 +2608,7 @@ QString TraceCall::calledName(bool skipCycle) const
 	  _called->setCycle(0);
 	  QString via = _called->prettyName();
 	  _called->setCycle(c);
-	  return i18n("%1 via %2").arg(c->name()).arg(via);
+	  return i18n("%1 via %2", c->name(), via);
       }
   }
   return _called->prettyName();

@@ -120,12 +120,12 @@ void CallView::context(Q3ListViewItem* i, const QPoint & p, int col)
     f = _showCallers ? c->caller(true) : c->called(true);
     cycle = f->cycle();
 
-    popup.insertItem(i18n("Go to '%1'")
-		     .arg(Configuration::shortenSymbol(name)), 93);
+    popup.insertItem(i18n("Go to '%1'",
+		      Configuration::shortenSymbol(name)), 93);
 
     if (cycle) {
 	name = Configuration::shortenSymbol(cycle->prettyName());
-	popup.insertItem(i18n("Go to '%1'").arg(name), 94);
+	popup.insertItem(i18n("Go to '%1'", name), 94);
     }
 
     popup.insertSeparator();

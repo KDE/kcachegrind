@@ -48,7 +48,7 @@ PartListItem::PartListItem(Q3ListView* parent, TraceCostItem* costItem,
 #if 0
   QString partName = QString::number(part->partNumber());
   if (part->data()->maxThreadID() >1)
-      partName += i18n(" (Thread %1)").arg(part->threadID());
+      partName += i18n(" (Thread %1)", part->threadID());
   setText(0, partName);
 #else
   setText(0, _part->prettyName());

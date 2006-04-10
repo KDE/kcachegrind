@@ -312,8 +312,8 @@ GraphEdge::GraphEdge()
 QString GraphEdge::prettyName()
 {
     if (_c) return _c->prettyName();
-    if (_from) return i18n("Call(s) from %1").arg(_from->prettyName());
-    if (_to) return i18n("Call(s) to %1").arg(_to->prettyName());
+    if (_from) return i18n("Call(s) from %1", _from->prettyName());
+    if (_to) return i18n("Call(s) to %1", _to->prettyName());
     return i18n("(unknown call)");
 }
 
@@ -1790,9 +1790,9 @@ void CallGraphView::showRenderWarning()
   else
     s = i18n("Layouting stopped.\n");
   
-  s.append(i18n("The call graph has %1 nodes and %2 edges.\n")
-	   .arg(_exporter.nodeCount())
-	   .arg(_exporter.edgeCount()));
+  s.append(i18n("The call graph has %1 nodes and %2 edges.\n",
+	    _exporter.nodeCount(),
+	    _exporter.edgeCount()));
 
   showText(s);
 }
@@ -1864,8 +1864,8 @@ void CallGraphView::refresh()
 
   if ( !_renderProcess->start() ) {
     QString e = i18n("No call graph is available because the following\n"
-		     "command cannot be run:\n'%1'\n")
-      .arg(_renderProcess->arguments().join(" "));
+		     "command cannot be run:\n'%1'\n",
+       _renderProcess->arguments().join(" "));
     e += i18n("Please check that 'dot' is installed (package GraphViz).");
     showText(e);
 
@@ -2197,8 +2197,9 @@ void CallGraphView::dotExited()
   else if (!activeNode && !activeEdge) {
     QString s = i18n("There is no call graph available for function\n"
 		     "\t'%1'\n"
-		     "because it has no cost of the selected event type.");
-    Q3CanvasText* t = new Q3CanvasText(s.arg(_activeItem->name()), _canvas);
+		     "because it has no cost of the selected event type.",
+                     _activeItem->name());
+    Q3CanvasText* t = new Q3CanvasText(s, _canvas);
     //    t->setTextFlags(Qt::AlignHCenter | Qt::AlignVCenter);
     t->move(5,5);
     t->show();
@@ -2385,11 +2386,11 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
       cycle = f->cycle();
 
       QString name = f->prettyName();
-      popup.insertItem(i18n("Go to '%1'")
-		     .arg(Configuration::shortenSymbol(name)), 93);
+      popup.insertItem(i18n("Go to '%1'",
+		      Configuration::shortenSymbol(name)), 93);
       if (cycle && (cycle != f)) {
 	name = Configuration::shortenSymbol(cycle->prettyName());
-	popup.insertItem(i18n("Go to '%1'").arg(name), 94);
+	popup.insertItem(i18n("Go to '%1'", name), 94);
       }
       popup.insertSeparator();
     }
@@ -2407,8 +2408,8 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
       c = e->call();
       if (c) {
 	  QString name = c->prettyName();
-	  popup.insertItem(i18n("Go to '%1'")
-			   .arg(Configuration::shortenSymbol(name)), 95);
+	  popup.insertItem(i18n("Go to '%1'",
+			    Configuration::shortenSymbol(name)), 95);
 
 	  popup.insertSeparator();
       }
@@ -2449,7 +2450,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   case 10: gpopup1.setItemChecked(104,true); break;
   case 15: gpopup1.setItemChecked(105,true); break;
   default:
-    gpopup1.insertItem(i18n("< %1").arg(_maxCallerDepth), 106);
+    gpopup1.insertItem(i18n("< %1", _maxCallerDepth), 106);
     gpopup1.setItemChecked(106,true); break;
   }
 
@@ -2472,7 +2473,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   case 10: gpopup2.setItemChecked(114,true); break;
   case 15: gpopup2.setItemChecked(115,true); break;
   default:
-    gpopup2.insertItem(i18n("< %1").arg(_maxCallingDepth), 116);
+    gpopup2.insertItem(i18n("< %1", _maxCallingDepth), 116);
     gpopup2.setItemChecked(116,true); break;
   }
 

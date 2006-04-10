@@ -733,7 +733,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
     return false;
   }
   kDebug() << "Loading " << _filename << " ..." << endl;
-  QString statusMsg = i18n("Loading %1").arg(_filename);
+  QString statusMsg = i18n("Loading %1", _filename);
   int statusProgress = 0;
   emit updateStatus(statusMsg,statusProgress);
 
