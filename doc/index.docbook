@@ -34,7 +34,7 @@
 
 <copyright>
 <year>2002-2004</year>
-<holder>Josef Weidendorfer</holder>
+<holder>&Josef.Weidendorfer;</holder>	
 </copyright>
 <legalnotice>&FDLNotice;</legalnotice>
 
@@ -84,7 +84,7 @@ For sequential code, collecting statistical data of the programs
 runtime characteristic like time
 numbers spent in functions and code lines usually is enough.
 This is called Profiling. The program is run under control of a profiling tool, which gives the summary of an execution run at the end.
-In contrast, for parallel code, performance problems typically are caused when one processor is waiting for data from another. As this waiting time usually can not easily attributed, here it is better to generate timestamped event traces. KCachegrind can not visualize this kind of data.
+In contrast, for parallel code, performance problems typically are caused when one processor is waiting for data from another. As this waiting time usually cannot easily attributed, here it is better to generate timestamped event traces. &kcachegrind; cannot visualize this kind of data.
 </para>
 
 <para>
@@ -98,12 +98,12 @@ Afterwards, the success of the optimization should be verified with another prof
 <sect1 id="introduction-methods">
 <title>Profiling Methods</title>
 
-<para>To exactly measure the time passed or record the events happening during the execution of a code region (e.g. a function), additional measurement code needs to be inserted before and after the given region. This code reads the time, or a global event count, and calculates differences. Thus, the original code has to be changed before execution. This is called instrumentation. Instrumentation can be done by the programmer itself, the compiler, or by the runtime system. As interesting regions usually are nested, the overhead of measurement always influences the measurement itself. Thus, instrumentation should be done selectively and results have to be interpreted with care. Of course, this makes performance analysis by exact measurement a very complex process.</para>
+<para>To exactly measure the time passed or record the events happening during the execution of a code region (&eg; a function), additional measurement code needs to be inserted before and after the given region. This code reads the time, or a global event count, and calculates differences. Thus, the original code has to be changed before execution. This is called instrumentation. Instrumentation can be done by the programmer itself, the compiler, or by the runtime system. As interesting regions usually are nested, the overhead of measurement always influences the measurement itself. Thus, instrumentation should be done selectively and results have to be interpreted with care. Of course, this makes performance analysis by exact measurement a very complex process.</para>
 
 <para>Exact measurement is possible because of hardware counters (including counters incrementing on a time tick) provided in modern processors, which are incremented whenever an event is happening. As we want to attribute events to code regions, without the counters, we would have to handle every event by incrementing a counter for the current code region ourself. Doing this in software is, of course, not possible; but, on the assumption that the event distribution over source code is similar when looking only at every n-th event instead of every event, a measurement method whose overhead is tunable has been developed: it is called Sampling. Time Based Sampling (TBS) uses a timer to regularly look at the program counter to create a histogram over the program code. Event Based Sampling (EBS) exploits the hardware counters of modern processors, and uses a mode where an interrupt handler is called on counter underflow to generate a histogram of the corresponding event distribution: in the handler, the event counter is always reinitialized to the 'n' of the sampling method. The advantage of sampling
 is that the code does not have to be changed, but it is still a compromise: the above assumption will be more correct if n is small, but the smaller the n, the higher the overhead of the interrupt handler.</para>
 
-<para>Another measurement method is to simulate things happening in the computer system when executing a given code, i.e. execution driven simulation. The simulation is always derived from a more or less accurate machine model; however, with very detailed machine models, giving very close approximations to reality, the simulation time can be unacceptably high in practice.  The advantage of simulation is that arbitrarily complex measurement/simulation code can be inserted in a given code without perturbing results. Doing this directly before execution (called runtime instrumentation), using the original binary, is very comfortable for the user: no re-compilation is necessary.  Simulation becomes usable when simulating only parts of a machine with a simple model; another advantage is that the results produced by simple models are often easier to understand: often, the problem with real hardware is that results include overlapping effects from different parts of the machine.</para>
+<para>Another measurement method is to simulate things happening in the computer system when executing a given code, &ie; execution driven simulation. The simulation is always derived from a more or less accurate machine model; however, with very detailed machine models, giving very close approximations to reality, the simulation time can be unacceptably high in practice.  The advantage of simulation is that arbitrarily complex measurement/simulation code can be inserted in a given code without perturbing results. Doing this directly before execution (called runtime instrumentation), using the original binary, is very comfortable for the user: no re-compilation is necessary.  Simulation becomes usable when simulating only parts of a machine with a simple model; another advantage is that the results produced by simple models are often easier to understand: often, the problem with real hardware is that results include overlapping effects from different parts of the machine.</para>
 </sect1>
 
 <sect1 id="introduction-tools">
@@ -116,20 +116,20 @@ running the program generates a file <filename>gmon.out</filename>,
 which can be transformed into human-readable form with
 <command>gprof</command>. One disadvantage is the needed re-compilation
 step to prepare the executable, which has to be statically linked.
-The method used here is compiler-generated instrumention - which measures call arcs happening among functions and corresponding call counts - in conjunction with TBS - which gives a histogram of time distribution over the code. Using both pieces of information, it is possible to heuristically calculate inclusive time of functions, i.e. time spent in a function together with all functions called from it.
+The method used here is compiler-generated instrumention - which measures call arcs happening among functions and corresponding call counts - in conjunction with TBS - which gives a histogram of time distribution over the code. Using both pieces of information, it is possible to heuristically calculate inclusive time of functions, &ie; time spent in a function together with all functions called from it.
 </para>
 
-<para>For exact measurement of events happening, libraries exist with functions able to read out hardware performance counters. Most known here is the PerfCtr patch for Linux, and the architecture independent libraries PAPI and PCL. Still, exact measurement needs instrumentation of code, as stated above. Either one uses the libraries itself or uses automatic instrumentation systems like ADAPTOR (for FORTRAN source instrumentation) or DynaProf (code injection via DynInst).</para>
+<para>For exact measurement of events happening, libraries exist with functions able to read out hardware performance counters. Most known here is the PerfCtr patch for &Linux;, and the architecture independent libraries PAPI and PCL. Still, exact measurement needs instrumentation of code, as stated above. Either one uses the libraries itself or uses automatic instrumentation systems like ADAPTOR (for FORTRAN source instrumentation) or DynaProf (code injection via DynInst).</para>
 
-<para>&oprofile; is a system-wide profiling tool for Linux using Sampling.</para>
+<para>&oprofile; is a system-wide profiling tool for &Linux; using Sampling.</para>
 
 <para>
 In many aspects, a comfortable way of Profiling is using
-Cachegrind or Callgrind, which are simulators using the runtime
+&cachegrind; or &callgrind;, which are simulators using the runtime
 instrumentation framework &valgrind;. Because there is no need
-to access hardware counters (often difficult with today's Linux installations), and binaries to be profiled can be left unmodified,
+to access hardware counters (often difficult with today's &Linux; installations), and binaries to be profiled can be left unmodified,
 it is a good alternative to other profiling tools.
-The disadvantage of simulation - slowdown - can be reduced by doing the simulation on only the interesting program parts, and perhaps only on a few iterations of a loop. Without measurement/simulation instrumentation, Valgrind's usage only has a slowdown factor in the range of 3 to 5.
+The disadvantage of simulation - slowdown - can be reduced by doing the simulation on only the interesting program parts, and perhaps only on a few iterations of a loop. Without measurement/simulation instrumentation, &valgrind;'s usage only has a slowdown factor in the range of 3 to 5.
 Also, when only the call graph and call counts
 are of interest, the cache simulator can be switched off.
 </para>
@@ -147,7 +147,7 @@ level cache misses, and relates it to source lines and functions of
 the run program. By combining these miss counts, using miss latencies from typical processors, an estimation of spent time can be given.
 </para>
 
-<para>Callgrind is an extension of &cachegrind; that
+<para>&callgrind; is an extension of &cachegrind; that
 builds up the call graph of a program on-the-fly,
 &ie; how the functions call each other and how many events happen
 while running a function. Also, the profile data to be collected
@@ -162,11 +162,11 @@ disassembled code.
 
 <para>
 Profiling tools typically produce a large amount of data. The wish
-to easily browse down and up the call graph, together with fast switching of the sorting mode of functions and display of different event types, motivates a GUI application to accomplish this task.
+to easily browse down and up the call graph, together with fast switching of the sorting mode of functions and display of different event types, motivates a &GUI; application to accomplish this task.
 </para>
 
 <para>
-&kappname; is an visualization for profile data fulfilling these wishes. Despite being programmed first with browsing the data from &cachegrind; and &calltree; in mind, there are converters available to be able to display profile data produced by other tools. In the appendix, a description of the Cachegrind/Callgrind file format is given.
+&kappname; is an visualization for profile data fulfilling these wishes. Despite being programmed first with browsing the data from &cachegrind; and &calltree; in mind, there are converters available to be able to display profile data produced by other tools. In the appendix, a description of the &cachegrind;/&callgrind; file format is given.
 </para>
 
 <para>
@@ -247,13 +247,13 @@ be seen in the Parts Overview and Parts list.
 &oprofile; is available from
 <ulink url="http://oprofile.sf.net">
 http://oprofile.sf.net</ulink>. Follow the installation instructions on the web site;
-but, before you do, check if your distribution does not already provide it as package (like SuSE).
+but, before you do, check if your distribution does not already provide it as package (like &SuSE;).
 </para>
 
 <para>
 System-wide profiling is only permitted to the root user,
 as all actions on the system can be observed; therefore, the following has to be done as root.
-First, configure the profiling process, using the GUI <command>oprof_start</command> or the
+First, configure the profiling process, using the &GUI; <command>oprof_start</command> or the
 command-line tool opcontrol. Standard configuration should be timer mode (TBS, see introduction). To start the measurement, run
 <command>opcontrol -s</command>. Then run the application you are interested in and, afterwards, do a <command>opcontrol -d</command>. This will write out
 the measurement results into files under directory <filename>/var/lib/oprofile/samples/</filename>. To be able to visualize the data in &kcachegrind;, do in an empty directory:
@@ -325,7 +325,7 @@ Cost counts of event types (like L2 Misses) are attributed to cost entities, whi
 </para>
 
 <para>
-The cost entities known to KCachegrind are given in the following.
+The cost entities known to &kcachegrind; are given in the following.
 Simple Positions:
 <itemizedlist>
 <listitem><para>
@@ -337,7 +337,7 @@ All instructions that the compiler (via debug information) maps to a given sourc
 </para></listitem>
 <listitem><para>
 Function.
-All source lines of a given function make up the function itself. A function is specified by its name and its location in some binary object if available. The latter is needed because binary objects of a single program each can hold functions with the same name (these can be accessed e.g. with dlopen/dlsym; the runtime linker resolves functions in a given search order of binary objects used). If a profiling tool can not detect the symbol name of a function, e.g. because debug information is not available, either the address of the first executed instruction typically is used, or "???".
+All source lines of a given function make up the function itself. A function is specified by its name and its location in some binary object if available. The latter is needed because binary objects of a single program each can hold functions with the same name (these can be accessed &eg; with dlopen/dlsym; the runtime linker resolves functions in a given search order of binary objects used). If a profiling tool cannot detect the symbol name of a function, &eg; because debug information is not available, either the address of the first executed instruction typically is used, or "???".
 </para></listitem>
 <listitem><para>
 Binary Object.
@@ -349,7 +349,7 @@ All functions whose first instruction is mapped to a line of the given source fi
 </para></listitem>
 <listitem><para>
 Class.
-Symbol names of functions typically are hierarchically ordered in name spaces, e.g. C++ namespaces, or classes of object oriented languages; thus, a class can hold functions of the class or embedded classes itself.
+Symbol names of functions typically are hierarchically ordered in name spaces, &eg; C++ namespaces, or classes of object oriented languages; thus, a class can hold functions of the class or embedded classes itself.
 </para></listitem>
 <listitem><para>
 Profile Part.
@@ -404,7 +404,7 @@ Event types whose costs are specified in a profile data file are called real eve
 <title>Visualization State</title>
 
 <para>
-The Visualization state of a KCachegrind window includes:
+The Visualization state of a &kcachegrind; window includes:
 <itemizedlist>
 <listitem><para>
 the primary and secondary event type chosen for display,
@@ -416,7 +416,7 @@ the function grouping (used in the Function Profile list and entity coloring),
 the profile parts whose costs are to be included in visualization,
 </para></listitem>
 <listitem><para>
-an active cost entity (e.g. a function selected from the function profile dockable),
+an active cost entity (&eg; a function selected from the function profile dockable),
 </para></listitem>
 <listitem><para>
 a selected cost entity.
@@ -426,7 +426,7 @@ a selected cost entity.
 This state influences visualizations.
 </para>
 <para>
-Visualizations always are shown for one, the active, cost entity. When a given visualization is not appropriate for a cost entity, it is disabled (e.g. when selecting an ELF object in the group list by double-clicking, source annotation for an ELF object make no sense).
+Visualizations always are shown for one, the active, cost entity. When a given visualization is not appropriate for a cost entity, it is disabled (&eg; when selecting an ELF object in the group list by double-clicking, source annotation for an &ELF; object make no sense).
 </para>
 <para>
 For example, for an active function, the callee list shows all the functions called from the active one: one can select one of these functions without making it active; also, if the call-graph is shown nearside, it will automatically select the same function.
@@ -435,12 +435,12 @@ For example, for an active function, the callee list shows all the functions cal
 </sect1>
 
 <sect1 id="concepts-guiparts">
-<title>Parts of the GUI</title>
+<title>Parts of the &GUI;</title>
 
 <sect2>
 <title>Sidedocks</title>
 <para>
-Sidedocks (Dockables) are side windows which can be placed at any border of an KCachegrind window. They always contain a list of cost entities sorted in some manner.
+Sidedocks (Dockables) are side windows which can be placed at any border of an &kcachegrind; window. They always contain a list of cost entities sorted in some manner.
 <itemizedlist>
 <listitem><para>
 Function Profile.
@@ -459,7 +459,7 @@ Call Stack
 <sect2>
 <title>Visualization Area</title>
 <para>
-The visualization area, typically the right part of a KCachegrind main window, is made up of one (default) or more Tab Views, either lined up horizontally or vertically. Each tab view holds different visualization views of only one cost entity at a time. The name of this entity is given at the top of the tab view. If there are multiple tab views, only one is active. The entity name in the active tab view is shown in bold and determines the active cost entity of the KCachegrind window.
+The visualization area, typically the right part of a &kcachegrind; main window, is made up of one (default) or more Tab Views, either lined up horizontally or vertically. Each tab view holds different visualization views of only one cost entity at a time. The name of this entity is given at the top of the tab view. If there are multiple tab views, only one is active. The entity name in the active tab view is shown in bold and determines the active cost entity of the KCachegrind window.
 </para>
 </sect2>
 
@@ -487,7 +487,7 @@ If there are multiple tab views, a selection change in one tab view leads to an 
 <sect2>
 <title>Layouts</title>
 <para>
-The layout of all the tab views of a window can be saved (see menu item View/Layout). After duplicating the current layout (Ctrl+Plus or menu) and changing some sizes or moving a visualization view to another area of an tab view, you can quickly switch between the old and the new layout via Ctrl+Left/Right. The set of layouts will be stored between KCachegrind sessions of the same profiled command. You can make the current set of layouts as the default one for new KCachegrind sessions, or restore to the default layout set.
+The layout of all the tab views of a window can be saved (see menu item View/Layout). After duplicating the current layout (Ctrl+Plus or menu) and changing some sizes or moving a visualization view to another area of an tab view, you can quickly switch between the old and the new layout via Ctrl+Left/Right. The set of layouts will be stored between &kcachegrind; sessions of the same profiled command. You can make the current set of layouts as the default one for new KCachegrind sessions, or restore to the default layout set.
 </para>
 </sect2>
 </sect1>
@@ -501,7 +501,7 @@ The layout of all the tab views of a window can be saved (see menu item View/Lay
 The flat profile contains a group list and a function list. The group list contains all groups where cost is spent in, depending on the chosen group type. The group list is hidden when grouping is switched off.
 </para>
 <para>
-The function list contains the functions of the selected group (or all functions if grouping is switched off), ordered by some column, e.g. inclusive or self costs spent therein. There is a maximal number of functions shown in the list, which is configurable in Settings/Configure KCachegrind.
+The function list contains the functions of the selected group (or all functions if grouping is switched off), ordered by some column, &eg; inclusive or self costs spent therein. There is a maximal number of functions shown in the list, which is configurable in Settings/Configure &kcachegrind;.
 </para>
 </sect2>
 
@@ -514,7 +514,7 @@ In a profile run, multiple profile data files can be produced, which can be load
 The parts are further subdivided: there is a partitioning and an inclusive cost split mode:
 <itemizedlist>
 <listitem><para>
-Partitioning: You see the partitioning into groups for a profile data part, according to the group type selected. For example, if ELF object groups are selected, you see colored rectangles for each used ELF object (shared library or executable), sized according to the cost spent therein.
+Partitioning: You see the partitioning into groups for a profile data part, according to the group type selected. For example, if &ELF; object groups are selected, you see colored rectangles for each used &ELF; object (shared library or executable), sized according to the cost spent therein.
 </para></listitem>
 <listitem><para>
 Inclusive Cost Split: A rectangle showing the inclusive cost of the current active function in the part is shown. This, again, is split up to show inclusive costs of its callees.
@@ -543,7 +543,7 @@ The 'Cost' and 'Calls' columns show the cost used for all calls from the functio
 This list shows all cost types available and the corresponding self and inclusive cost of the current active function for that event type.
 </para>
 <para>
-By choosing an event type from the list, you change the type of costs shown all over KCachegrind to be the selected one.
+By choosing an event type from the list, you change the type of costs shown all over &kcachegrind; to be the selected one.
 </para>
 </sect2>
 
@@ -591,7 +591,7 @@ Keyboard navigation is available with the left/right arrow keys for traversing s
 <title>Call Graph</title>
 <para>
 This view shows the call graph around the active function.
-The shown cost is only the cost which is spent while the active function was actually running; i.e. the cost shown for main() - if it's visible - should be the same as the cost of the active function, as that is the part of inclusive cost of main() spent while the active function was running.
+The shown cost is only the cost which is spent while the active function was actually running; &ie; the cost shown for main() - if it's visible - should be the same as the cost of the active function, as that is the part of inclusive cost of main() spent while the active function was running.
 </para>
 <para>
 For cycles, blue call arrows indicate that this is an artificial call added for correct drawing which actually never happened.
@@ -620,7 +620,6 @@ Select such a call information line to activate the call destination.
 
 <sect1 id="kcachegrind-mainwindow">
 <title>The main &kcachegrind; window</title>
-<para></para>
 
 <sect2>
 <title>The <guimenu>File</guimenu> Menu</title>
@@ -797,12 +796,12 @@ So, for example, for main(), you will always have a inclusive cost of almost 100
 
 <qandaentry>
 <question>
-<para>The toolbar/menubar of my KCachegrind looks so spartanic. Is this normal?</para>
+<para>The toolbar/menubar of my &kcachegrind; looks so spartanic. Is this normal?</para>
 </question>
 <answer>
 <para>
-Obviously KCachegrind is wrongly installed on your system. It is recommended to compile it with the installation prefix to be your system wide KDE base directory like <command>configure --prefix=/opt/kde3; make install</command>.
-If you choose another directory like $HOME/kde, you should set the environment variable KDEDIR to this directory before running KCachegrind.
+Obviously &kcachegrind; is wrongly installed on your system. It is recommended to compile it with the installation prefix to be your system wide KDE base directory like <command>configure --prefix=/opt/kde3; make install</command>.
+If you choose another directory like $HOME/kde, you should set the environment variable KDEDIR to this directory before running &kcachegrind;.
 </para>
 </answer>
 </qandaentry>
@@ -852,7 +851,7 @@ Profile Experiment: A program run supervised by a profiling tool, producing poss
 Profile Project: A configuration for profile experiments used for one program which has to be profiled, perhaps in multiple versions. Comparisons of profile data typically only makes sense between profile data produced in experiments of one profile project.
 </para></listitem>
 <listitem><para>
-Cost Entity: An abstract item related to source code to which event counts can be attributed. Dimensions for cost entities are code location (e.g. source line, function), data location (e.g. accessed data type, data object), execution location (e.g. thread, process), and tuples or triples of the aforementioned positions (e.g. calls, object access from statement, evicted data from cache).
+Cost Entity: An abstract item related to source code to which event counts can be attributed. Dimensions for cost entities are code location (&eg; source line, function), data location (&eg; accessed data type, data object), execution location (&eg; thread, process), and tuples or triples of the aforementioned positions (&eg; calls, object access from statement, evicted data from cache).
 </para></listitem>
 <listitem><para>
 Event Type: The kind of event of which costs can be attributed to a cost entity. There exist real event types and inherited event types.
@@ -881,7 +880,7 @@ Event Costs: Sum of events of some event type occurring while the execution is r
 <para>
 Thanks to Julian Seward for his excellent &valgrind;, and Nicholas
 Nethercote for the &cachegrind; addition. Without these programs,
-<application>KCachegrind</application> would not exist.  Some ideas
+&kcachegrind; would not exist.  Some ideas
 for this &GUI; were from them, too.
 </para>
 <para>
@@ -889,6 +888,7 @@ And thanks for all the bug reports/suggestions from different
 users.
 </para>
 
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 &underFDL;        	 <!-- FDL License -->
 
 </chapter>
