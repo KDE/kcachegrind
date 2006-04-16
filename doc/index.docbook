@@ -296,7 +296,7 @@ A first overview of the runtime characteristics should be given when you select 
 </para>
 
 <para>
-To explore the GUI further, in addition to this manual, also have a look at the documentation section on the web site
+To explore the &GUI; further, in addition to this manual, also have a look at the documentation section on the web site
 <ulink url="http://kcachegrind.sf.net">
 http://kcachegrind.sf.net</ulink>.
 Also,
@@ -426,7 +426,7 @@ a selected cost entity.
 This state influences visualizations.
 </para>
 <para>
-Visualizations always are shown for one, the active, cost entity. When a given visualization is not appropriate for a cost entity, it is disabled (&eg; when selecting an ELF object in the group list by double-clicking, source annotation for an &ELF; object make no sense).
+Visualizations always are shown for one, the active, cost entity. When a given visualization is not appropriate for a cost entity, it is disabled (&eg; when selecting an &ELF; object in the group list by double-clicking, source annotation for an &ELF; object make no sense).
 </para>
 <para>
 For example, for an active function, the callee list shows all the functions called from the active one: one can select one of these functions without making it active; also, if the call-graph is shown nearside, it will automatically select the same function.
@@ -459,7 +459,7 @@ Call Stack
 <sect2>
 <title>Visualization Area</title>
 <para>
-The visualization area, typically the right part of a &kcachegrind; main window, is made up of one (default) or more Tab Views, either lined up horizontally or vertically. Each tab view holds different visualization views of only one cost entity at a time. The name of this entity is given at the top of the tab view. If there are multiple tab views, only one is active. The entity name in the active tab view is shown in bold and determines the active cost entity of the KCachegrind window.
+The visualization area, typically the right part of a &kcachegrind; main window, is made up of one (default) or more Tab Views, either lined up horizontally or vertically. Each tab view holds different visualization views of only one cost entity at a time. The name of this entity is given at the top of the tab view. If there are multiple tab views, only one is active. The entity name in the active tab view is shown in bold and determines the active cost entity of the &kcachegrind; window.
 </para>
 </sect2>
 
@@ -487,7 +487,7 @@ If there are multiple tab views, a selection change in one tab view leads to an 
 <sect2>
 <title>Layouts</title>
 <para>
-The layout of all the tab views of a window can be saved (see menu item View/Layout). After duplicating the current layout (Ctrl+Plus or menu) and changing some sizes or moving a visualization view to another area of an tab view, you can quickly switch between the old and the new layout via Ctrl+Left/Right. The set of layouts will be stored between &kcachegrind; sessions of the same profiled command. You can make the current set of layouts as the default one for new KCachegrind sessions, or restore to the default layout set.
+The layout of all the tab views of a window can be saved (see menu item View/Layout). After duplicating the current layout (Ctrl+Plus or menu) and changing some sizes or moving a visualization view to another area of an tab view, you can quickly switch between the old and the new layout via Ctrl+Left/Right. The set of layouts will be stored between &kcachegrind; sessions of the same profiled command. You can make the current set of layouts as the default one for new &kcachegrind; sessions, or restore to the default layout set.
 </para>
 </sect2>
 </sect1>
@@ -508,7 +508,7 @@ The function list contains the functions of the selected group (or all functions
 <sect2>
 <title>Parts Overview</title>
 <para>
-In a profile run, multiple profile data files can be produced, which can be loaded together into KCachegrind. The Parts Overview dockable shows these, horizontally ordered according creation time; the rectangle sizes are proportional to the cost spent in the parts. You can select one or several parts to constrain the costs shown in the other KCachegrind views to these parts only.
+In a profile run, multiple profile data files can be produced, which can be loaded together into &kcachegrind;. The Parts Overview dockable shows these, horizontally ordered according creation time; the rectangle sizes are proportional to the cost spent in the parts. You can select one or several parts to constrain the costs shown in the other &kcachegrind; views to these parts only.
 </para>
 <para>
 The parts are further subdivided: there is a partitioning and an inclusive cost split mode:
