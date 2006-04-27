@@ -395,6 +395,8 @@ void TopLevel::createDocks()
                    "the top function in the current loaded dump.</ul></p>"));
 #endif
 
+#warning port to Qt4
+#if 0
   // Restore QT Dock positions...
   KConfigGroup dockConfig(KGlobal::config(), QByteArray("Docks"));
   QString str = dockConfig.readEntry("Position", QString());
@@ -414,7 +416,10 @@ void TopLevel::createDocks()
     QTextStream ts( &str, QIODevice::ReadOnly );
     ts >> *this;
   }
+
   _forcePartDock = dockConfig.readEntry("ForcePartDockVisible", false);
+
+#endif
 
 #if 0
   // dock context menu
@@ -456,7 +461,7 @@ void TopLevel::createLayoutActions()
   KAction* action;
 
   action = new KAction( i18n( "&Duplicate" ),
-			KShortcut(KKey("Ctrl+Plus")),
+			KShortcut("Ctrl+Plus"),
                         this, SLOT(layoutDuplicate()),
                         actionCollection(), "layout_duplicate" );
   hint = i18n("<b>Duplicate Current Layout</b>"
@@ -471,14 +476,14 @@ void TopLevel::createLayoutActions()
   action->setWhatsThis( hint );
 
   action = new KAction( i18n( "&Go to Next" ),
-			KShortcut(KKey("Ctrl+Right")),
+			KShortcut("Ctrl+Right"),
                         this, SLOT(layoutNext()),
                         actionCollection(), "layout_next" );
   hint = i18n("Go to Next Layout");
   action->setWhatsThis( hint );
 
   action = new KAction( i18n( "&Go to Previous" ),
-			KShortcut(KKey("Ctrl+Left")),
+			KShortcut("Ctrl+Left"),
                         this, SLOT(layoutPrevious()),
                         actionCollection(), "layout_previous" );
   hint = i18n("Go to Previous Layout");
@@ -977,12 +982,7 @@ void TopLevel::querySlot()
 
 void TopLevel::configureKeys()
 {
-#if KDE_VERSION > 0x030190
-  // for KDE 3.2: KKeyDialog::configureKeys is deprecated
-  KKeyDialog::configure(actionCollection(), this, true);
-#else
-  KKeyDialog::configureKeys(actionCollection(), xmlFile(), true, this);
-#endif
+  KKeyDialog::configure(actionCollection(), KKeyChooser::LetterShortcutsAllowed, this);
 }
 
 
@@ -2002,6 +2002,8 @@ bool TopLevel::queryExit()
   // Its already stored.
   delete toolBar();
 
+#warning port to Qt4
+#if 0
   KConfigGroup dockConfig(KGlobal::config(), QByteArray("Docks"));
   QString str;
   QTextStream ts( &str, QIODevice::WriteOnly );
@@ -2024,6 +2026,7 @@ bool TopLevel::queryExit()
   if (_data && (_data->parts().count()<2) && _partDock->isVisible())
     _forcePartDock=true;
   dockConfig.writeEntry("ForcePartDockVisible", _forcePartDock);
+#endif
 
   return true;
 }
