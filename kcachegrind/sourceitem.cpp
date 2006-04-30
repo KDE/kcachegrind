@@ -294,9 +294,9 @@ void SourceItem::paintCell( QPainter *p, const QColorGroup &cg,
   QColorGroup _cg( cg );
 
   if ( !_inside || ((column==1) || (column==2)))
-    _cg.setColor( QColorGroup::Base, cg.button() );
+      _cg.setColor( QPalette::Base, cg.color( QPalette::Button ) );
   else if ((_lineCall || _lineJump) && column>2)
-   _cg.setColor( QColorGroup::Base, cg.midlight() );
+   _cg.setColor( QPalette::Base, cg.color( QPalette::Mid ) );
 
   if (column == 3)
       paintArrows(p, _cg, width);

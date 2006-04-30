@@ -133,7 +133,7 @@ bool PartAreaWidget::isHidden(TracePart* part) const
 QColor PartAreaWidget::groupColor(TraceFunction* f) const
 {
   if (!f)
-    return palette().button();
+      return palette().color( QPalette::Button );
 
   return Configuration::functionColor(_groupType, f);
 }

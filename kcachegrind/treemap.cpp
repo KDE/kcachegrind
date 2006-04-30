@@ -662,7 +662,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
     }
 
 
-    if (0) kDebug(90100) << "  Drawing '" << name << "' at " 
+    if (0) kDebug(90100) << "  Drawing '" << name << "' at "
 		     << x+pixW << "/" << y << endl;
 
     p->drawText( x+pixW, y,
@@ -1076,7 +1076,7 @@ void TreeMapItem::addFreeRect(const QRect& r)
 	return;
     }
 
-    if (0) kDebug(90100) << "  united with last to (" 
+    if (0) kDebug(90100) << "  united with last to ("
 		     << last->x() << "/" << last->y() << "-"
 		     << last->width() << "x" << last->height() << ")" << endl;
 }
@@ -1156,7 +1156,7 @@ TreeMapWidget::TreeMapWidget(TreeMapItem* base,
   _lastOver = 0;
   _needsRefresh = _base;
 
-  setBackgroundMode(Qt::NoBackground);
+  setAttribute(Qt::WA_NoSystemBackground, true);
   setFocusPolicy(Qt::StrongFocus);
   //_tip = new TreeMapTip(this);
 }
@@ -1482,7 +1482,7 @@ void TreeMapWidget::deletingItem(TreeMapItem* i)
   // don't redraw a deleted item
   if (_needsRefresh == i) {
     // we can savely redraw the parent, as deleting order is
-    // from child to parent; i.e. i->parent() is existing. 
+    // from child to parent; i.e. i->parent() is existing.
     _needsRefresh = i->parent();
   }
 }
@@ -1527,7 +1527,7 @@ TreeMapItem* TreeMapWidget::item(int x, int y) const
         if (DEBUG_DRAWING)
 	    kDebug(90100) << "  Checking " << i->path(0).join("/") << " ("
 		      << i->itemRect().x() << "/" << i->itemRect().y()
-		      << "-" << i->itemRect().width() 
+		      << "-" << i->itemRect().width()
 		      << "x" << i->itemRect().height() << ")" << endl;
 
         if (i->itemRect().contains(x, y)) {
@@ -1546,8 +1546,8 @@ TreeMapItem* TreeMapWidget::item(int x, int y) const
         last = p;
 
         if (DEBUG_DRAWING)
-	    kDebug(90100) << "item(" << x << "," << y << "): Got " 
-		      << p->path(0).join("/") << " (Size " 
+	    kDebug(90100) << "item(" << x << "," << y << "): Got "
+		      << p->path(0).join("/") << " (Size "
 		      << p->itemRect().width() << "x" << p->itemRect().height()
 		      << ", Val " << p->value() << ")" << endl;
       }
@@ -1605,10 +1605,10 @@ void TreeMapWidget::setSelected(TreeMapItem* item, bool selected)
       emit selectionChanged(item);
     emit selectionChanged();
     redraw(changed);
-    
+
     if (0) kDebug(90100) << (selected ? "S":"Des") << "elected Item "
 		     << (item ? item->path(0).join("") : QString("(null)"))
-		     << " (depth " << (item ? item->depth() : -1) 
+		     << " (depth " << (item ? item->depth() : -1)
 		     << ")" << endl;
 }
 
@@ -1789,7 +1789,7 @@ TreeMapItem* TreeMapWidget::setTmpRangeSelection(TreeMapItem* i1,
       changed2 = setTmpSelected(i, selected);
       if (changed2) changed = changed2->commonParent(changed);
     }
-    else if (i==i1 || i==i2) 
+    else if (i==i1 || i==i2)
       between = true;
     i = list->next();
   }
@@ -1869,7 +1869,7 @@ void TreeMapWidget::mousePressEvent( QMouseEvent* e )
   if (changed)
     redraw(changed);
 
-  if (e->button() == Qt::RightButton) {    
+  if (e->button() == Qt::RightButton) {
 
     // emit selection change
     if (! (_tmpSelection == _selection)) {
@@ -2155,7 +2155,7 @@ void TreeMapWidget::drawTreeMap()
 
     if (DEBUG_DRAWING)
       kDebug(90100) << "Redrawing " << _needsRefresh->path(0).join("/") << endl;
-    
+
     if (_needsRefresh == _base) {
       // redraw whole widget
       _pixmap = QPixmap(size());
@@ -2354,7 +2354,7 @@ void TreeMapWidget::drawItems(QPainter* p,
   for (i=list->first();i;i=list->next()) {
     child_sum += i->value();
     if (DEBUG_DRAWING)
-      kDebug(90100) << "  child: " << i->text(0) << ", value " 
+      kDebug(90100) << "  child: " << i->text(0) << ", value "
 		<< i->value() << endl;
   }
 
@@ -2635,7 +2635,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
   }
 
   if (DEBUG_DRAWING)
-      kDebug(90100) << " +drawItemArray(" << item->path(0).join("/") 
+      kDebug(90100) << " +drawItemArray(" << item->path(0).join("/")
 		<< ", " << r.x() << "/" << r.y() << "-" << r.width()
 		<< "x" << r.height() << ")" << endl;
 

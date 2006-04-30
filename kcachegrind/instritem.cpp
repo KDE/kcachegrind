@@ -50,10 +50,10 @@ InstrItem::InstrItem(InstrView* iv, Q3ListView* parent,
   _instrCall = 0;
   _instrJump = 0;
   _inside = false;
-  
+
   setText(0, addr.pretty());
   setText(6, msg);
-  
+
   updateGroup();
   updateCost();
 }
@@ -216,7 +216,7 @@ void InstrItem::updateCost()
 	      .arg(pure, 0, 'f', Configuration::percentPrecision()));
     else
       setText(1, _pure.pretty());
-    
+
     setPixmap(1, costPixmap(ct, instrCost, total, false));
   }
 
@@ -235,7 +235,7 @@ void InstrItem::updateCost()
 	      .arg(pure, 0, 'f', Configuration::percentPrecision()));
     else
       setText(2, _pure2.pretty());
-    
+
     setPixmap(2, costPixmap(ct2, instrCost, total, false));
   }
 }
@@ -306,9 +306,9 @@ void InstrItem::paintCell( QPainter *p, const QColorGroup &cg,
   QColorGroup _cg( cg );
 
   if ( !_inside || ((column==1) || column==2))
-    _cg.setColor( QColorGroup::Base, cg.button() );
+      _cg.setColor( QColorGroup::Base, cg.color( QPalette::Button ) );
   else if ((_instrCall || _instrJump) && column>2)
-    _cg.setColor( QColorGroup::Base, cg.midlight() );
+    _cg.setColor( QColorGroup::Base, cg.color( QPalette::Midlight ) );
 
   if (column == 3)
     paintArrows(p, _cg, width);
@@ -375,7 +375,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 
       c = _jump[i]->isCondJump() ? Qt::red : Qt::blue;
 #if 0
-      if (_jump[i] == ((TraceItemView*)_view)->selectedItem()) {	  
+      if (_jump[i] == ((TraceItemView*)_view)->selectedItem()) {
 	  p->fillRect( marg + 6*i-2, (y1==0) ? y1: y1-2,
 		       8, (y2-y1==height())? y2:y2+2,
 		       cg.brush( QColorGroup::Highlight ) );
@@ -393,7 +393,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
   int x, y = yy-2, w, h = 4;
   if (start >= 0) {
 #if 0
-      if (_jump[start] == ((TraceItemView*)_view)->selectedItem()) {	  
+      if (_jump[start] == ((TraceItemView*)_view)->selectedItem()) {
 	  c = lv->colorGroup().highlightedText();
       }
 #endif
@@ -441,7 +441,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       if (_jump[i]->instrFrom()->addr() == _addr) {
 	  bool drawUp = true;
 	  if (_jump[i]->instrTo()->addr() == _addr)
-	      if (start<0) drawUp=false;	  
+	      if (start<0) drawUp=false;
 	  if (_jump[i]->instrTo()->addr() > _addr) drawUp=false;
 	  if (drawUp)
 	      p->fillRect( marg + 6*i +1, 0, 2, yy, c);

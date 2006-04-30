@@ -638,7 +638,7 @@ void GraphExporter::writeDot()
       QString abr = f->prettyName();
       if ((int)abr.length() > Configuration::maxSymbolLength())
 	abr = abr.left(Configuration::maxSymbolLength()) + "...";
-      
+
       *stream << QString("  F%1 [").arg((long)f, 0, 16);
       if (_useBox) {
 	// make label 3 lines for CallGraphView
@@ -966,8 +966,8 @@ PannerView::PannerView(QWidget * parent, const char * name)
   _movingZoomRect = false;
 
   // why doesn't this avoid flicker ?
-  viewport()->setBackgroundMode(Qt::NoBackground);
-  setBackgroundMode(Qt::NoBackground);
+  viewport()->setAttribute(Qt::WA_NoSystemBackground, true);
+  setAttribute(Qt::WA_NoSystemBackground, true);
 }
 
 void PannerView::setZoomRect(QRect r)
@@ -1388,7 +1388,7 @@ CallGraphView::CallGraphView(TraceItemView* parentView,
   _completeView->hide();
 
   setFocusPolicy(Qt::StrongFocus);
-  setBackgroundMode(Qt::NoBackground);
+  setAttribute(Qt::WA_NoSystemBackground, true);
 
   connect(this, SIGNAL(contentsMoving(int,int)),
           this, SLOT(contentsMovingSlot(int,int)));
@@ -1728,8 +1728,8 @@ void CallGraphView::doUpdate(int changeType)
   if (changeType == groupTypeChanged) {
     if (!_canvas) return;
 
-    if (_clusterGroups) { 
-      refresh(); 
+    if (_clusterGroups) {
+      refresh();
       return;
     }
 
@@ -1789,7 +1789,7 @@ void CallGraphView::showRenderWarning()
 	    "Reduce node/edge limits for speedup.\n");
   else
     s = i18n("Layouting stopped.\n");
-  
+
   s.append(i18n("The call graph has %1 nodes and %2 edges.\n",
 	    _exporter.nodeCount(),
 	    _exporter.edgeCount()));
@@ -1858,7 +1858,7 @@ void CallGraphView::refresh()
   connect( _renderProcess, SIGNAL(processExited()),
 	   this, SLOT(dotExited()) );
 
-  if (1) kDebug() << "Running '" 
+  if (1) kDebug() << "Running '"
 		   << _renderProcess->arguments().join(" ")
 		   << "'..." << endl;
 
@@ -1878,7 +1878,7 @@ void CallGraphView::refresh()
   _unparsedOutput = QString::null;
 
   // layouting of more than seconds is dubious
-  _renderTimer.start(1000, true);  
+  _renderTimer.start(1000, true);
 }
 
 void CallGraphView::readDotOutput()
@@ -2589,7 +2589,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
       }
       break;
 
-  case 202:    
+  case 202:
       // write current content of canvas as image to file
       {
 	if (!_canvas) return;
@@ -2681,7 +2681,7 @@ QString CallGraphView::zoomPosString(ZoomPosition p)
     return QString("TopLeft");
 }
 
-void CallGraphView::readViewConfig(KConfig* c, 
+void CallGraphView::readViewConfig(KConfig* c,
 				   QString prefix, QString postfix, bool)
 {
     KConfigGroup* g = configGroup(c, prefix, postfix);

@@ -533,7 +533,7 @@ void CallMapView::doUpdate(int changeType)
 QColor CallMapView::groupColor(TraceFunction* f) const
 {
   if (!f)
-    return colorGroup().button();
+      return palette().color( QPalette::Button );
 
   return Configuration::functionColor(_groupType, f);
 }
@@ -977,7 +977,7 @@ void CallMapView::readViewConfig(KConfig* c,
     delete g;
 }
 
-void CallMapView::saveViewConfig(KConfig* c, 
+void CallMapView::saveViewConfig(KConfig* c,
 				 QString prefix, QString postfix, bool)
 {
     KConfigGroup g(c, (prefix+postfix).ascii());
