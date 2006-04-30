@@ -317,7 +317,7 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 
   const Qt::BackgroundMode bgmode = lv->viewport()->backgroundMode();
 #if 0
-  const QColorGroup::ColorRole crole;
+  const QPalette::ColorRole crole;
       // = QPalette::backgroundRoleFromMode( bgmode );
   if ( cg.brush( crole ) != lv->colorGroup().brush( crole ) )
     p->fillRect( 0, 0, width, height(), cg.brush( crole ) );
@@ -326,7 +326,7 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
     sv->paintEmptyArea( p, QRect( 0, 0, width, height() ) );
 
   if ( isSelected() && lv->allColumnsShowFocus() )
-    p->fillRect( 0, 0, width, height(), cg.brush( QColorGroup::Highlight ) );
+    p->fillRect( 0, 0, width, height(), cg.brush( QPalette::Highlight ) );
 
   int marg = lv->itemMargin();
   int yy = height()/2, y1, y2;

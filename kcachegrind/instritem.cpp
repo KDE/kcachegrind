@@ -306,9 +306,9 @@ void InstrItem::paintCell( QPainter *p, const QColorGroup &cg,
   QColorGroup _cg( cg );
 
   if ( !_inside || ((column==1) || column==2))
-      _cg.setColor( QColorGroup::Base, cg.color( QPalette::Button ) );
+      _cg.setColor( QPalette::Base, cg.color( QPalette::Button ) );
   else if ((_instrCall || _instrJump) && column>2)
-    _cg.setColor( QColorGroup::Base, cg.color( QPalette::Midlight ) );
+    _cg.setColor( QPalette::Base, cg.color( QPalette::Midlight ) );
 
   if (column == 3)
     paintArrows(p, _cg, width);
@@ -329,7 +329,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
 
 #if 0
   const BackgroundMode bgmode = lv->viewport()->backgroundMode();
-  const QColorGroup::ColorRole crole
+  const QPalette::ColorRole crole
     = QPalette::backgroundRoleFromMode( bgmode );
   if ( cg.brush( crole ) != lv->colorGroup().brush( crole ) )
     p->fillRect( 0, 0, width, height(), cg.brush( crole ) );
@@ -338,7 +338,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
     iv->paintEmptyArea( p, QRect( 0, 0, width, height() ) );
 
   if ( isSelected() && lv->allColumnsShowFocus() )
-    p->fillRect( 0, 0, width, height(), cg.brush( QColorGroup::Highlight ) );
+    p->fillRect( 0, 0, width, height(), cg.brush( QPalette::Highlight ) );
 
   int marg = lv->itemMargin();
   int yy = height()/2, y1, y2;
@@ -378,7 +378,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       if (_jump[i] == ((TraceItemView*)_view)->selectedItem()) {
 	  p->fillRect( marg + 6*i-2, (y1==0) ? y1: y1-2,
 		       8, (y2-y1==height())? y2:y2+2,
-		       cg.brush( QColorGroup::Highlight ) );
+		       cg.brush( QPalette::Highlight ) );
 	  c = lv->colorGroup().highlightedText();
       }
 #endif
