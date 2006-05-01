@@ -56,7 +56,7 @@ class GraphEdgeList: public QPtrList<GraphEdge>
 };
 
 
-
+typedef QMap<GraphEdge*, int> GraphEdgeSet;
 
 // temporary parts of call graph to be shown
 class GraphNode
@@ -87,6 +87,8 @@ public:
 
   double self, incl;
   GraphEdgeList callers, callings;
+  // for fast unique insertion of GraphEdges in above lists
+  GraphEdgeSet callerSet, callingSet;
 
  private:
   TraceFunction* _f;

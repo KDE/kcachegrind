@@ -671,6 +671,8 @@ void GraphExporter::writeDot()
     // remove dumped edges from n.callers/n.callings
     from.callings.removeRef(&e);
     to.callers.removeRef(&e);
+    from.callingSet.remove(&e);
+    to.callerSet.remove(&e);
 
     *stream << QString("  F%1 -> F%2 [weight=%3")
       .arg((long)e.from(), 0, 16)
@@ -753,6 +755,8 @@ void GraphExporter::writeDot()
       GraphNode& n = *nit;
       n.callers.clear();
       n.callings.clear();
+      n.callerSet.clear();
+      n.callingSet.clear();
   }
 
   *stream << "}\n";
@@ -923,10 +927,18 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
     if (call->isRecursion()) continue;
 
     if (toCallings) {
-      if (n.callings.findRef(&e)<0) n.callings.append(&e);
+	GraphEdgeSet::Iterator it = n.callingSet.find(&e);
+	if (it == n.callingSet.end()) {
+	    n.callings.append(&e);
+	    n.callingSet.insert(&e, 1 );
+	}
     }
     else {
-      if (n.callers.findRef(&e)<0) n.callers.append(&e);
+	GraphEdgeSet::Iterator it = n.callerSet.find(&e);
+	if (it == n.callerSet.end()) {
+	    n.callers.append(&e);
+	    n.callerSet.insert(&e, 1 );
+	}
     }
 
     // if we just reached the call limit (=func limit by summing, do a DFS
