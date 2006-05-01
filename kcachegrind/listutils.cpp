@@ -78,9 +78,10 @@ QPixmap percentagePixmap(int w, int h, int percent, QColor c, bool framed)
     iw = w; ix1 = 0; ix2 = w-1;
     ih = h; iy1 = 0; iy2 = h-1;
   }
-  
-  int filled = iw*percent/100+1;
-  if (!framed) w=filled;
+
+  /* Limit bar to 100%  */
+  int filled = (percent>100) ? iw+1 : iw*percent/100+1;
+  if (!framed) w=filled-1;
   if (w<3) return QPixmap();
 
   QPixmap pix(w, h);
@@ -95,19 +96,14 @@ QPixmap percentagePixmap(int w, int h, int percent, QColor c, bool framed)
   p.setBrush(c);
   p.drawRect(ix1, iy1, filled-1,ih);
 
-  // last right pix column
-  int lastY = ih-(filled*ih - iw*ih*percent/100);
-  int lastX1 = ix1+filled-2 + ((lastY>1) ? 1: 0);
-  int lastX2 = ix1+filled-2;
-
   // frame
+  ix2 = ix1+filled-2;
   p.setPen(c.light());
-  p.drawLine(ix1, iy1, lastX1, iy1);
+  p.drawLine(ix1, iy1, ix2, iy1);
   p.drawLine(ix1, iy1, ix1, iy2);
   p.setPen(c.dark());
-  p.drawLine(lastX1, iy1, lastX1, iy1+lastY);
-  p.drawLine(lastX2, iy1+lastY, lastX2, iy2);
-  p.drawLine(ix1+1, iy2, lastX2, iy2);
+  p.drawLine(ix1+1, iy2, ix2, iy2);
+  p.drawLine(ix2, iy1, ix2, iy2);
 
   return pix;
 }
@@ -144,7 +140,7 @@ QPixmap partitionPixmap(int w, int h,
   }
 
   int filled = (int)(iw*sum+1);
-  if (!framed) w=filled;
+  if (!framed && (filled < w)) w=filled;
   if (w<3) return QPixmap();
 
   QPixmap pix(w, h);
