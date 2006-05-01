@@ -1570,6 +1570,7 @@ class TraceAssoziation
 };
 
 typedef QPtrList<TraceAssoziation> TraceAssoziationList;
+typedef QMap<TraceFunction*, TraceCall*> TraceCallMap;
 
 /**
  * A traced function
@@ -1664,6 +1665,7 @@ class TraceFunction: public TraceCostItem
  protected:
   TraceCallList _callers; // list of calls we are called from
   TraceCallList _callings; // list of calls we are calling (we are owner)
+  TraceCallMap _callingMap; // contains the same as _callings in a map
   TraceFunctionCycle* _cycle;
 
  private:

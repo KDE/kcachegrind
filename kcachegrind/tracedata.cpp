@@ -3430,14 +3430,13 @@ void TraceFunction::addCaller(TraceCall* caller)
 
 TraceCall* TraceFunction::calling(TraceFunction* called)
 {
-  TraceCall* calling;
-  for (calling=_callings.first();calling;calling=_callings.next())
-    if (calling->called() == called)
-      break;
+  TraceCallMap::Iterator it = _callingMap.find(called);
+  TraceCall* calling = (it == _callingMap.end()) ? 0 : it.data();
 
   if (!calling) {
     calling = new TraceCall(this, called);
 
+    _callingMap.insert(called, calling);
     _callings.append(calling);
 
     // we have to invalidate ourself so invalidations from item propagate up
