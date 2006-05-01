@@ -52,11 +52,4 @@ rc_DATA = kcachegrindui.rc
 tipdir = $(kde_datadir)/kcachegrind
 tip_DATA = tips
 
-messages: rc.cpp
-	$(PREPARETIPS) > tips.cpp
-	LIST=`find . -name \*.h -o -name \*.cpp`; \
-	if test -n "$$LIST"; then \
-	 $(XGETTEXT) $$LIST -o $(podir)/kcachegrind.pot; \
-	fi
-	rm -f tips.cpp
 
