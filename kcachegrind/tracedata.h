@@ -1692,6 +1692,7 @@ class TraceFunction: public TraceCostItem
   int _calledContexts, _callingContexts;
 };
 
+typedef QMap<TraceFunction*,int> TraceFunctionSet;
 
 /**
  * A cycle of recursive calling functions.
@@ -1720,6 +1721,7 @@ class TraceFunctionCycle: public TraceFunction
   int _cycleNo;
 
   TraceFunctionList _members;
+  TraceFunctionSet _memberSet;
 };
 
 

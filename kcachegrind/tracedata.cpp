@@ -3966,6 +3966,7 @@ TraceFunctionCycle::TraceFunctionCycle(TraceFunction* f, int n)
 void TraceFunctionCycle::init()
 {
   _members.clear();
+  _memberSet.clear();
   _callers.clear();
   // this deletes all TraceCall's to members
   _callings.clear();
@@ -3976,6 +3977,7 @@ void TraceFunctionCycle::init()
 void TraceFunctionCycle::add(TraceFunction* f)
 {
   _members.append(f);
+  _memberSet.insert(f,1);
 }
 
 void TraceFunctionCycle::setup()
@@ -3989,7 +3991,7 @@ void TraceFunctionCycle::setup()
     TraceCall *call;
     TraceCallList l = f->callers();
     for (call=l.first();call;call=l.next()) {
-      if (_members.containsRef(call->caller())>0) continue;
+      if ( _memberSet.contains(call->caller()) ) continue;
       _callers.append(call);
     }
 
