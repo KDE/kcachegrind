@@ -48,7 +48,7 @@ const int TraceCost::InvalidIndex = -1;
 
 bool Addr::set(FixString& s)
 {
-  return s.stripUInt64(_v); 
+  return s.stripUInt64(_v);
 }
 
 int Addr::set(const char *s)
@@ -62,12 +62,12 @@ int Addr::set(const char *s)
     else if ((*s>='a') && (*s<='f'))
       _v = 16*_v + 10 + (*s-'a');
     else if ((*s>='A') && (*s<='F'))
-      _v = 16*_v + 10 + (*s-'A');    
+      _v = 16*_v + 10 + (*s-'A');
     else break;
     s++;
     n++;
   }
-  
+
   return n;
 }
 
@@ -285,12 +285,12 @@ void TraceItem::update()
 
 TracePart* TraceItem::part()
 {
-  return _position ? _position->part() : 0; 
+  return _position ? _position->part() : 0;
 }
 
 const TracePart* TraceItem::part() const
 {
-  return _position ? _position->part() : 0; 
+  return _position ? _position->part() : 0;
 }
 
 TraceData* TraceItem::data()
@@ -300,7 +300,7 @@ TraceData* TraceItem::data()
 
 const TraceData* TraceItem::data() const
 {
-  return _position ? _position->data() : 0; 
+  return _position ? _position->data() : 0;
 }
 
 
@@ -1099,7 +1099,7 @@ TraceSubMapping* TraceCostMapping::subMapping(QString types, bool create)
   if (!create && (newCount>0)) return 0;
 
   if (newCount+_realCount > TraceCost::MaxRealIndex) {
-    kDebug() << "TraceCostMapping::subMapping: No space for " 
+    kDebug() << "TraceCostMapping::subMapping: No space for "
 	      << newCount << " sub costs." << endl;
     return 0;
   }
@@ -1182,7 +1182,7 @@ bool TraceCostMapping::remove(TraceCostType* t)
   int i;
   for(i=0;i<_virtualCount;i++)
     if (_virtual[i] == t) break;
-  
+
   // not found?
   if (i == _virtualCount) return false;
 
@@ -1643,7 +1643,7 @@ void TraceCallListCost::update()
     for (item = _deps.first(); item; item = _deps.next()) {
       if (onlyActiveParts())
 	if (!item->part() || !item->part()->isActive()) continue;
-      
+
       addCost(item);
       addCallCount(item->callCount());
     }
@@ -3242,13 +3242,13 @@ QString TraceFunction::prettyName() const
   if (_name.isEmpty())
       return i18n("(unknown)");
 
-  int p = _name.find('(');
+  int p = _name.indexOf('(');
   if (p>0) {
     // handle C++ "operator()" correct
     if ((_name[p+1] == ')') && (_name[p+2] == '(')) p+=2;
 
     // we have a C++ symbol with argument types:
-    // check for unique function name (inclusive '(' !)    
+    // check for unique function name (inclusive '(' !)
     //if (isUniquePrefix(_name.left(p+1)))
     //  res = _name.left(p);
   }
@@ -3285,7 +3285,7 @@ QString TraceFunction::location(int maxFiles) const
       else
         loc += QString(" (0x%1-0x%2)").arg(from, 0, 16).arg(to, 0, 16);
     }
-#endif   
+#endif
   }
 
   // add all source files
@@ -3676,7 +3676,7 @@ void TraceFunction::update()
       TraceInclusiveCost* item;
       for (item=_deps.first();item;item=_deps.next()) {
 	if (!item->part() || !item->part()->isActive()) continue;
-	
+
 	addCost(item);
       }
       _dirty = false; // don't recurse
@@ -4125,7 +4125,7 @@ QString TraceFile::directory()
   if (!_dir.isEmpty()) return _dir;
 
   int lastIndex = 0, index;
-  while ( (index=_name.find("/", lastIndex)) >=0)
+  while ( (index=_name.indexOf("/", lastIndex)) >=0)
     lastIndex = index+1;
 
   if (lastIndex==0) return QString::null;
@@ -4138,7 +4138,7 @@ QString TraceFile::directory()
 QString TraceFile::shortName() const
 {
   int lastIndex = 0, index;
-  while ( (index=_name.find("/", lastIndex)) >=0)
+  while ( (index=_name.indexOf("/", lastIndex)) >=0)
     lastIndex = index+1;
 
   return _name.mid(lastIndex);
@@ -4147,7 +4147,7 @@ QString TraceFile::shortName() const
 QString TraceFile::prettyName() const
 {
     QString sn = shortName();
-    
+
     if (sn.isEmpty())
 	return i18n("(unknown)");
 
@@ -4213,7 +4213,7 @@ void TraceObject::setName(const QString& name)
   _name = name;
 
   int lastIndex = 0, index;
-  while ( (index=_name.find("/", lastIndex)) >=0)
+  while ( (index=_name.indexOf("/", lastIndex)) >=0)
     lastIndex = index+1;
 
   _shortName = _name.mid(lastIndex);
@@ -4277,7 +4277,7 @@ void TracePart::setProcessID(int pid)
 QString TracePart::shortName() const
 {
   int lastIndex = 0, index;
-  while ( (index=_name.find("/", lastIndex)) >=0)
+  while ( (index=_name.indexOf("/", lastIndex)) >=0)
     lastIndex = index+1;
 
   return _name.mid(lastIndex);
@@ -4376,7 +4376,7 @@ TraceData::~TraceData()
 QString TraceData::shortTraceName() const
 {
   int lastIndex = 0, index;
-  while ( (index=_traceName.find("/", lastIndex)) >=0)
+  while ( (index=_traceName.indexOf("/", lastIndex)) >=0)
     lastIndex = index+1;
 
   return _traceName.mid(lastIndex);
@@ -4702,7 +4702,7 @@ TraceClass* TraceData::cls(const QString& fnName, QString& shortName)
   int lastIndex = 0, index, pIndex;
 
   // we ignore any "::" after a '(' or a space
-  pIndex=fnName.find("(", 0);
+  pIndex=fnName.indexOf('(', 0);
 
 #if 0
   int sIndex=fnName.find(" ", 0);
@@ -4711,7 +4711,7 @@ TraceClass* TraceData::cls(const QString& fnName, QString& shortName)
       pIndex = sIndex;
 #endif
 
-  while ((index=fnName.find("::", lastIndex)) >=0) {
+  while ((index=fnName.indexOf("::", lastIndex)) >=0) {
     if (pIndex>=0 && pIndex<index) break;
     lastIndex = index+2;
   }
