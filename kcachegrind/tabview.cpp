@@ -343,7 +343,7 @@ void TabView::setData(TraceData* d)
 
   TraceItemView* v;
   for (v=_tabs.first();v;v=_tabs.next())
-    v->setData(d);  
+    v->setData(d);
 }
 
 TraceItemView* TabView::addTab(QString label, TraceItemView* view)
@@ -799,17 +799,17 @@ void TabView::readViewConfig(KConfig* c,
     QString selectedType = g->readEntry("SelectedItemType", "");
     QString selectedName = g->readEntry("SelectedItemName", "");
     delete g;
-    
+
     if (!_data) return;
-    
-    if (withOptions) {  
+
+    if (withOptions) {
       // restore active item
       TraceItem::CostType t = TraceItem::costType(activeType);
       if (t==TraceItem::NoCostType) t = TraceItem::Function;
       TraceCost* activeItem = _data->search(t, activeName, _costType);
       if (!activeItem) return;
       activate(activeItem);
-      
+
       // restore selected item
       t = TraceItem::costType(selectedType);
       if (t==TraceItem::NoCostType) t = TraceItem::Function;
@@ -837,19 +837,19 @@ void TabView::saveViewConfig(KConfig* c,
       a = QString(_topTW->currentPage()->name());
     g.writeEntry("ActiveTop", a);
 
-    a.setLength(0);
+    a = QString();
     if ((_bottomTW->count()>0) &&
         (_bottomTW->isTabEnabled(_bottomTW->currentPage())))
       a = QString(_bottomTW->currentPage()->name());
     g.writeEntry("ActiveBottom", a);
 
-    a.setLength(0);
+    a = QString();
     if ((_leftTW->count()>0) &&
         (_leftTW->isTabEnabled(_leftTW->currentPage())))
       a = QString(_leftTW->currentPage()->name());
     g.writeEntry("ActiveLeft", a);
 
-    a.setLength(0);
+    a= QString();
     if ((_rightTW->count()>0) &&
         (_rightTW->isTabEnabled(_rightTW->currentPage())))
       a = QString(_rightTW->currentPage()->name());

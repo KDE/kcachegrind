@@ -34,8 +34,8 @@
 // MultiView
 //
 
-MultiView::MultiView(TopLevel* top, QWidget* parent, const char* name)
-    : QSplitter(parent, name), TraceItemView(0, top)
+MultiView::MultiView(TopLevel* top, QWidget* parent)
+    : QSplitter(parent), TraceItemView(0, top)
 {
   // default
   setOrientation(Qt::Horizontal);
@@ -105,7 +105,7 @@ void MultiView::tabActivated(TabView* newActiveTab)
 {
     if (_active == newActiveTab) return;
 
-    if (0) kDebug() << "MultiView::tabActivated " 
+    if (0) kDebug() << "MultiView::tabActivated "
 		     << newActiveTab->name() << endl;
 
     TraceItem* oldActiveItem = 0;
@@ -178,9 +178,9 @@ void MultiView::readViewConfig(KConfig* c,
   setChildCount(n);
   setOrientation( (g->readEntry("Orientation") == QString("Horizontal")) ?
 		  Qt::Horizontal : Qt::Vertical );
-  
+
   setSizes(g->readEntry("PanelSizes",QList<int>()));
-  
+
   active = g->readEntry("ActivePanel", "");
   delete g;
 
@@ -193,24 +193,24 @@ void MultiView::readViewConfig(KConfig* c,
 
   // activate panel after restoring
   if (!activeTV) activeTV = _views.first();
-  
+
   if (_active == activeTV)
     TraceItemView::activated(_active->activeItem());
   else
     activeTV->setActive(true);
 }
 
-void MultiView::saveViewConfig(KConfig* c, 
+void MultiView::saveViewConfig(KConfig* c,
 			       QString prefix, QString postfix,
 			       bool withOptions)
 {
   KConfigGroup g(c, (prefix+postfix).ascii());
-  
+
   g.writeEntry("Panels", childCount());
   g.writeEntry("Orientation",
 	       (orientation() == Qt::Horizontal) ?
 	       "Horizontal" : "Vertical");
-  
+
   g.writeEntry("PanelSizes", sizes());
   g.writeEntry("ActivePanel", _active ? _active->name() : "none");
 

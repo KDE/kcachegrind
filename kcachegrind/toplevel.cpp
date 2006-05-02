@@ -74,14 +74,15 @@
 #include "callgraphview.h"
 
 
-TopLevel::TopLevel(const char *name)
-  : KMainWindow(0, name), DCOPObject("KCachegrindIface")
+TopLevel::TopLevel()
+  : KMainWindow(0), DCOPObject("KCachegrindIface")
 {
   init();
 
   createDocks();
 
-  _multiView = new MultiView(this, this, "MultiView");
+  _multiView = new MultiView(this, this );
+  _multiView->setObjectName("MultiView");
   setCentralWidget(_multiView);
 
   createActions();
@@ -281,7 +282,7 @@ void TopLevel::restoreCurrentState(QString postfix)
 void TopLevel::createDocks()
 {
   _partDock = new Q3DockWindow(Q3DockWindow::InDock, this);
-  _partDock->setCaption(i18n("Parts Overview"));
+  _partDock->setWindowTitle(i18n("Parts Overview"));
   _partDock->setCloseMode( Q3DockWindow::Always );
   _partSelection = new PartSelection(_partDock, "partSelection");
   _partDock->setWidget(_partSelection);
@@ -318,7 +319,7 @@ void TopLevel::createDocks()
   _stackSelection = new StackSelection(_stackDock, "stackSelection");
   _stackDock->setWidget(_stackSelection);
   _stackDock->setFixedExtentWidth(200);
-  _stackDock->setCaption(i18n("Top Cost Call Stack"));
+  _stackDock->setWindowTitle(i18n("Top Cost Call Stack"));
   _stackSelection->setWhatsThis( i18n(
                    "<b>The Top Cost Call Stack</b>"
                    "<p>This is a purely fictional 'most probable' call stack. "
@@ -1004,7 +1005,7 @@ void TopLevel::newTrace()
 
 void TopLevel::newWindow()
 {
-  TopLevel* t = new TopLevel(0);
+  TopLevel* t = new TopLevel();
   t->show();
 }
 
@@ -1957,7 +1958,7 @@ void TopLevel::updateStatusBar()
     status += i18n("No event type selected");
 
   /* Not working... should give group of selected function
-  
+
   if (_groupType != TraceItem::Function) {
     status += QString(" - %1 '%2'")
               .arg(TraceItem::i18nTypeName(_groupType))

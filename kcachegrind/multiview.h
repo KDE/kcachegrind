@@ -36,7 +36,7 @@ class MultiView : public QSplitter, public TraceItemView
   Q_OBJECT
 
 public:
-  MultiView(TopLevel* top, QWidget* parent = 0, const char* name = 0);
+  MultiView(TopLevel* top, QWidget* parent = 0);
 
   QWidget* widget() { return this; }
   TabView* activeTabView() const { return _active; }

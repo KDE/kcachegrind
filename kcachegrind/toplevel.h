@@ -61,7 +61,7 @@ class TopLevel : public KMainWindow, public DCOPObject
   Q_OBJECT
 
 public:
-  TopLevel(const char *name = 0);
+  TopLevel();
   ~TopLevel();
 
   TraceData* data() { return _data; }
