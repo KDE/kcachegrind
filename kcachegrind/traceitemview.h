@@ -178,7 +178,7 @@ protected:
   /* Is this view visible?
    * if not, doUpdate() won't be called by updateView()
    */
-  virtual bool isViewVisible() const;
+  virtual bool isViewVisible();
 
   // update handler (to be reimplemented)
   virtual void doUpdate(int changeType);
