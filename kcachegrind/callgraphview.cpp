@@ -96,12 +96,14 @@ int GraphEdgeList::compareItems(Item item1, Item item2)
     if (!e1) return -1;
     if (!e2) return 1;
 
+#warning please review the code - either *1 or *2 are unused and are still compared with
     int dx1, dy1, dx2, dy2;
     int x, y;
     if (_sortCallerPos) {
 	e1->controlPoints().point(0,&x,&y);
 	e2->controlPoints().point(0,&dx1,&dy1);
 	dx1 -= x; dy1 -= y;
+	dx2 = dy2 = 0;
     }
     else {
 	Q3PointArray a1 = e1->controlPoints();
@@ -109,6 +111,7 @@ int GraphEdgeList::compareItems(Item item1, Item item2)
 	a1.point(a1.count()-2,&x,&y);
 	a2.point(a2.count()-1,&dx2,&dy2);
 	dx2 -= x; dy2 -= y;
+        dx1 = dy1 = 0;
     }
     double at1 = atan2(double(dx1), double(dy1));
     double at2 = atan2(double(dx2), double(dy2));
@@ -1895,7 +1898,7 @@ void CallGraphView::dotExited()
   CanvasEdgeLabel* lItem;
   QTextStream* dotStream;
   double scale = 1.0, scaleX = 1.0, scaleY = 1.0;
-  double dotWidth, dotHeight;
+  double dotWidth = 0, dotHeight = 0;
   GraphNode* activeNode = 0;
   GraphEdge* activeEdge = 0;
 
