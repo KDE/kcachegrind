@@ -334,7 +334,7 @@ void TopLevel::createDocks()
           this, SLOT(setTraceItemDelayed(TraceItem*)));
 
   _functionDock = new Q3DockWindow(Q3DockWindow::InDock, this);
-  _functionDock->setCaption(i18n("Flat Profile"));
+  _functionDock->setWindowTitle(i18n("Flat Profile"));
   _functionDock->setCloseMode( Q3DockWindow::Always );
   _functionSelection = new FunctionSelection(this, _functionDock,
                                              "functionSelection");
@@ -358,7 +358,7 @@ void TopLevel::createDocks()
 
 #if ENABLE_DUMPDOCK
   _dumpDock = new Q3DockWindow(Q3DockWindow::InDock, this);
-  _dumpDock->setCaption(i18n("Profile Dumps"));
+  _dumpDock->setWindowTitle(i18n("Profile Dumps"));
   _dumpDock->setCloseMode( Q3DockWindow::Always );
   _dumpSelection = new DumpSelection(this, _dumpDock,
                                      "dumpSelection");
@@ -1601,7 +1601,7 @@ void TopLevel::setData(TraceData* data)
     if (!_data->command().isEmpty())
       caption += " [" + _data->command() + "]";
   }
-  setCaption(caption);
+  setWindowTitle(caption);
 
   if (!_data || (!_forcePartDock && _data->parts().count()<2)) {
     _partDock->hide();

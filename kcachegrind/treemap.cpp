@@ -280,7 +280,7 @@ void RectDrawing::drawBack(QPainter* p, DrawParams* dp)
     // some shading
     bool goDark = qGray(normal.rgb())>128;
     int rBase, gBase, bBase;
-    normal.rgb(&rBase, &gBase, &bBase);
+    normal.getRgb(&rBase, &gBase, &bBase);
     p->setBrush(Qt::NoBrush);
 
     // shade parameters:
