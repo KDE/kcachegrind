@@ -213,6 +213,8 @@ QPixmap partitionPixmap(int w, int h,
 
 QPixmap costPixmap(TraceCostType* ct, TraceCost* cost, double total, bool framed)
 {
+    if (!ct) return QPixmap();
+
     if (ct->isReal()) {
 	QColor color = ct->color();
 	double p = 100.0 * cost->subCost(ct) / total;
