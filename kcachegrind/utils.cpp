@@ -24,6 +24,8 @@
 #include <config.h>
 #endif
 
+#include <config-kcachegrind.h>
+
 #ifdef HAVE_MMAP
 #include <unistd.h>
 #include <sys/mman.h>

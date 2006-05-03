@@ -2,6 +2,8 @@ kde4_header()
 
 set( KCACHEGRIND_VERSION "0.4.6kde")
 
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config-kcachegrind.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kcachegrind.h.cmake )
+
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.h )
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/kcachegrind.spec.cmake ${CMAKE_CURRENT_BINARY_DIR}/kcachegrind.spec )
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/kcachegrind.lsm.cmake ${CMAKE_CURRENT_BINARY_DIR}/kcachegrind.lsm )
