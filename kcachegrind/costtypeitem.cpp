@@ -79,7 +79,7 @@ void CostTypeItem::update()
     return;
   }
 
-  TraceFunction* f = (_costItem->type()==TraceCost::Function) ?
+  TraceFunction* f = (_costItem && _costItem->type()==TraceCost::Function) ?
                      (TraceFunction*)_costItem : 0;
 
   TraceCost* selfTotalCost = f ? f->data() : d;
