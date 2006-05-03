@@ -248,7 +248,9 @@ TabView::TabView(TraceItemView* parentView,
 
   _isCollapsed = true;
 
-  QVBoxLayout* vbox = new QVBoxLayout( this, 6, 6);
+  QVBoxLayout* vbox = new QVBoxLayout( this );
+  vbox->setSpacing( 6 );
+  vbox->setMargin( 6 );
 
   _nameLabel = new KSqueezedTextLabel( this);
   _nameLabel->setObjectName( "nameLabel" );
