@@ -484,13 +484,13 @@ void TopLevel::createLayoutActions()
   hint = i18n("Go to Previous Layout");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Restore to Default" ), KShortcut(),
-                        this, SLOT(layoutRestore()), actionCollection(), "layout_restore" );
+  action = new KAction( i18n( "&Restore to Default" ), actionCollection(), "layout_restore" );
+  connect(action, SIGNAL(triggered(bool) ), SLOT(layoutRestore()));
   hint = i18n("Restore Layouts to Default");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Save as Default" ), KShortcut(),
-                        this, SLOT(layoutSave()), actionCollection(), "layout_save" );
+  action = new KAction( i18n( "&Save as Default" ), actionCollection(), "layout_save" );
+  connect(action, SIGNAL(triggered(bool) ), SLOT(layoutSave()));
   hint = i18n("Save Layouts as Default");
   action->setWhatsThis( hint );
 }
@@ -505,8 +505,8 @@ void TopLevel::createMiscActions()
   hint = i18n("<b>New</b><p>Open new empty KCachegrind window.</p>");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Add..." ), KShortcut(),
-                        this, SLOT(addTrace()), actionCollection(), "file_add" );
+  action = new KAction( i18n( "&Add..." ), actionCollection(), "file_add" );
+  connect(action, SIGNAL(triggered(bool) ), SLOT(addTrace()));
   hint = i18n("<b>Add Profile Data</b>"
               "<p>This opens an additional profile data file in the current window.</p>");
   action->setWhatsThis( hint );
@@ -517,8 +517,8 @@ void TopLevel::createMiscActions()
               "<p>This loads any new created parts, too.</p>");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Export Graph" ), KShortcut(),
-                        this, SLOT(exportGraph()), actionCollection(), "export" );
+  action = new KAction( i18n( "&Export Graph" ), actionCollection(), "export" );
+  connect(action, SIGNAL(triggered(bool) ), SLOT(exportGraph()));
 
   hint = i18n("<b>Export Call Graph</b>"
               "<p>Generates a file with extension .dot for the tools "
