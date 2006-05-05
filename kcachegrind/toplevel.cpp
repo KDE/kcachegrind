@@ -468,8 +468,8 @@ void TopLevel::createLayoutActions()
               "<p>Make a copy of the current layout.</p>");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Remove" ), KShortcut(),
-                        this, SLOT(layoutRemove()), actionCollection(), "layout_remove" );
+  action = new KAction( i18n( "&Remove" ), actionCollection(), "layout_remove" );
+  connect(action, SIGNAL(triggered(bool) ), SLOT(layoutRemove()));
   hint = i18n("<b>Remove Current Layout</b>"
               "<p>Delete current layout and make the previous active.</p>");
   action->setWhatsThis( hint );
