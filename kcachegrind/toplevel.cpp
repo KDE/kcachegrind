@@ -463,42 +463,36 @@ void TopLevel::createLayoutActions()
 
   action = new KAction( i18n( "&Duplicate" ),
 			KShortcut("Ctrl+Plus"),
-                        this, SLOT(layoutDuplicate()),
-                        actionCollection(), "layout_duplicate" );
+                        this, SLOT(layoutDuplicate()), actionCollection(), "layout_duplicate" );
   hint = i18n("<b>Duplicate Current Layout</b>"
               "<p>Make a copy of the current layout.</p>");
   action->setWhatsThis( hint );
 
   action = new KAction( i18n( "&Remove" ), KShortcut(),
-                        this, SLOT(layoutRemove()),
-                        actionCollection(), "layout_remove" );
+                        this, SLOT(layoutRemove()), actionCollection(), "layout_remove" );
   hint = i18n("<b>Remove Current Layout</b>"
               "<p>Delete current layout and make the previous active.</p>");
   action->setWhatsThis( hint );
 
   action = new KAction( i18n( "&Go to Next" ),
 			KShortcut("Ctrl+Right"),
-                        this, SLOT(layoutNext()),
-                        actionCollection(), "layout_next" );
+                        this, SLOT(layoutNext()), actionCollection(), "layout_next" );
   hint = i18n("Go to Next Layout");
   action->setWhatsThis( hint );
 
   action = new KAction( i18n( "&Go to Previous" ),
 			KShortcut("Ctrl+Left"),
-                        this, SLOT(layoutPrevious()),
-                        actionCollection(), "layout_previous" );
+                        this, SLOT(layoutPrevious()), actionCollection(), "layout_previous" );
   hint = i18n("Go to Previous Layout");
   action->setWhatsThis( hint );
 
   action = new KAction( i18n( "&Restore to Default" ), KShortcut(),
-                        this, SLOT(layoutRestore()),
-                        actionCollection(), "layout_restore" );
+                        this, SLOT(layoutRestore()), actionCollection(), "layout_restore" );
   hint = i18n("Restore Layouts to Default");
   action->setWhatsThis( hint );
 
   action = new KAction( i18n( "&Save as Default" ), KShortcut(),
-                        this, SLOT(layoutSave()),
-                        actionCollection(), "layout_save" );
+                        this, SLOT(layoutSave()), actionCollection(), "layout_save" );
   hint = i18n("Save Layouts as Default");
   action->setWhatsThis( hint );
 }
@@ -514,8 +508,7 @@ void TopLevel::createMiscActions()
   action->setWhatsThis( hint );
 
   action = new KAction( i18n( "&Add..." ), KShortcut(),
-                        this, SLOT(addTrace()),
-                        actionCollection(), "file_add" );
+                        this, SLOT(addTrace()), actionCollection(), "file_add" );
   hint = i18n("<b>Add Profile Data</b>"
               "<p>This opens an additional profile data file in the current window.</p>");
   action->setWhatsThis( hint );
@@ -533,8 +526,7 @@ void TopLevel::createMiscActions()
   action->setWhatsThis( hint );
 
   action = new KAction( i18n( "&Export Graph" ), KShortcut(),
-                        this, SLOT(exportGraph()),
-                        actionCollection(), "export" );
+                        this, SLOT(exportGraph()), actionCollection(), "export" );
 
   hint = i18n("<b>Export Call Graph</b>"
               "<p>Generates a file with extension .dot for the tools "
