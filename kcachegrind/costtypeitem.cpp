@@ -106,7 +106,7 @@ void CostTypeItem::update()
     setText(2, QString("%1")
             .arg(pure, 0, 'f', Configuration::percentPrecision()));
   }
-  else
+  else if (_costItem)
     setText(2, _costItem->prettySubCost(_costType));
 
   setPixmap(2, costPixmap(_costType, _costItem, selfTotal, false));
