@@ -40,7 +40,7 @@ CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, Coverage* c,
 {
   _skipped = 0;
   _coverage = c;
-  _function = c ? c->function() : 0;
+  _function = c->function();
   _base = base;
   _groupType = TraceCost::NoCostType;
 
@@ -58,7 +58,7 @@ CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, int skipped, Coverage
 {
   _skipped = skipped;
   _coverage = c;
-  _function = c ? c->function() : 0;
+  _function = c->function();
   _base = base;
   _groupType = TraceCost::NoCostType;
 
