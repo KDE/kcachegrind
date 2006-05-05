@@ -129,9 +129,7 @@ TopLevel::TopLevel()
   setupPartSelection(_partSelection);
 
   // KCachegrind for KDE 3.0.x does not allow to hide toolbars...
-#if KDE_VERSION >= 308 // KDE 3.1
   setStandardToolBarMenuEnabled(true);
-#endif
 
   // QT dock windows are created before (using QT position restoring)
   createGUI();
@@ -513,13 +511,7 @@ void TopLevel::createMiscActions()
               "<p>This opens an additional profile data file in the current window.</p>");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Reload" ), "reload",
-#if KDE_VERSION > 0x030190
-  // for KDE 3.2: KStdAccel::key is deprecated
-			KStdAccel::shortcut(KStdAccel::Reload),
-#else
-                        KStdAccel::key(KStdAccel::Reload),
-#endif
+  action = new KAction( i18n( "&Reload" ), "reload", KStdAccel::shortcut(KStdAccel::Reload),
                         this, SLOT( reload() ), actionCollection(), "reload" );
   hint = i18n("<b>Reload Profile Data</b>"
               "<p>This loads any new created parts, too.</p>");
@@ -534,15 +526,8 @@ void TopLevel::createMiscActions()
   action->setWhatsThis( hint );
 
 
-  _taDump = new KToggleAction( i18n( "&Force Dump" ), "redo",
-#if KDE_VERSION > 0x030190
-  // for KDE 3.2: KStdAccel::key is deprecated
-			       KStdAccel::shortcut(KStdAccel::Redo),
-#else
-                               KStdAccel::key(KStdAccel::Redo),
-#endif
-                               this, SLOT( forceTrace() ),
-                               actionCollection(), "dump" );
+  _taDump = new KToggleAction( i18n( "&Force Dump" ), "redo", KStdAccel::shortcut(KStdAccel::Redo),
+                               this, SLOT( forceTrace() ), actionCollection(), "dump" );
   hint = i18n("<b>Force Dump</b>"
               "<p>This forces a dump for a Callgrind profile run "
               "in the current directory. This action is checked while "
@@ -622,10 +607,7 @@ void TopLevel::createMiscActions()
 				    this, SLOT(togglePercentage()),
 				    actionCollection(),
 				    "view_percentage");
-#if KDE_VERSION >= 0x030290
-  // for KDE 3.3: show another text instead of a checkmark
   _taPercentage->setCheckedState(i18n("Show Absolute Costs"));
-#endif
 
   hint = i18n("Show relative instead of absolute costs");
   _taPercentage->setToolTip( hint );
@@ -660,10 +642,7 @@ void TopLevel::createMiscActions()
 				 KShortcut(),
 				 this, SLOT( toggleCycles() ), actionCollection(),
 				 "view_cycles" );
-#if KDE_VERSION >= 0x030290
-  // for KDE 3.3: show another text instead of a checkmark
   _taCycles->setCheckedState(i18n("Skip Cycle Detection"));
-#endif
 
   hint = i18n("<b>Detect recursive cycles</b>"
               "<p>If this is switched off, the treemap drawing will show "
@@ -803,14 +782,7 @@ void TopLevel::createMiscActions()
   _taSplitDir->setWhatsThis( hint );
 
   // copied from KMail...
-#if KDE_VERSION >= 308 // KDE 3.1
   KStdAction::tipOfDay( this, SLOT( slotShowTip() ), actionCollection() );
-#else
-  (void) new KAction( KGuiItem( i18n("Tip of the &Day..."), "idea",
-                                i18n("Show \"Tip of the Day\"") ),
-                      0, this, SLOT(slotShowTip()),
-                      actionCollection(), "help_show_tip" );
-#endif
 }
 
 void TopLevel::createActions()
@@ -1017,12 +989,8 @@ void TopLevel::loadTrace(const KUrl& url)
 
   // network transparancy
   QString tmpFile;
-#if KDE_VERSION > 0x030190
   // for KDE 3.2: KIO::NetAccess::download with 2 args is deprecated
   if(KIO::NetAccess::download( url, tmpFile, this )) {
-#else
-  if(KIO::NetAccess::download( url, tmpFile )) {
-#endif
     _openRecent->addUrl(url);
     _openRecent->saveEntries( KGlobal::config() );
 
@@ -1066,12 +1034,7 @@ void TopLevel::addTrace(const KUrl& url)
 
   // network transparancy
   QString tmpFile;
-#if KDE_VERSION > 0x030190
-  // for KDE 3.2: KIO::NetAccess::download with 2 args is deprecated
   if(KIO::NetAccess::download( url, tmpFile, this )) {
-#else
-  if(KIO::NetAccess::download( url, tmpFile )) {
-#endif
     _openRecent->addUrl(url);
     _openRecent->saveEntries( KGlobal::config() );
 
