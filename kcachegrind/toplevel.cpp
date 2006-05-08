@@ -34,7 +34,11 @@
 #include <qsizepolicy.h>
 #include <q3progressbar.h>
 #include <qfile.h>
-
+#include <ktoggleaction.h>
+#include <ktoolbarpopupaction.h>
+#include <kactioncollection.h>
+#include <kselectaction.h>
+#include <krecentfilesaction.h>
 // With Qt 3.1, we can disallow user interaction with long tasks.
 // This needs QEventLoop. Otherwise, QApplication::processEvents is used.
 #include <qeventloop.h>
