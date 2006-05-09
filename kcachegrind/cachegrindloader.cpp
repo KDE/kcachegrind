@@ -161,6 +161,8 @@ bool CachegrindLoader::canLoadTrace(QFile* file)
    */
   char buf[2048];
   int read = file->readBlock(buf,2047);
+  if (read < 0)
+	return false;
   buf[read] = 0;
 
   QCString s;
