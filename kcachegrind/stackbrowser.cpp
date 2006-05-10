@@ -157,7 +157,7 @@ TraceFunction* Stack::called(TraceFunction* fn, bool extend)
       return c->called();
   }
 
-  if (extend && c && (c->called() == fn)) {
+  if (extend) {
     // extend at bottom
     extendBottom();
 
