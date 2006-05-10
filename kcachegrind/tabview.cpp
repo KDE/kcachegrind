@@ -294,39 +294,39 @@ TabView::TabView(TraceItemView* parentView,
   // default positions...
 
   addTop( addTab( i18n("Types"),
-		  new CostTypeView(this, _topTW,
+		  new CostTypeView(this, 0,
 				   "CostTypeView")));
   addTop( addTab( i18n("Callers"),
-		  new CallView(true, this, _topTW,
+		  new CallView(true, this, 0,
 			       "CallerView")));
   addTop( addTab( i18n("All Callers"),
-		  new CoverageView(true, this, _topTW,
+		  new CoverageView(true, this, 0,
 				   "AllCallerView")));
   addTop( addTab( i18n("Caller Map"),
-		  new CallMapView(true, this, _bottomTW,
+		  new CallMapView(true, this, 0,
 				  "CallerMapView")));
   addTop( addTab( i18n("Source"),
-		  new SourceView(this, _topTW,
+		  new SourceView(this, 0,
 				 "SourceView")));
 
   addBottom( addTab( i18n("Parts"),
-		     new PartView(this, _bottomTW,
+		     new PartView(this, 0,
 				  "PartView")));
   addBottom( addTab( i18n("Call Graph"),
-		     new CallGraphView(this, _bottomTW,
+		     new CallGraphView(this, 0,
 				       "CallGraphView")));
   addBottom( addTab( i18n("Callees"),
-		     new CallView(false, this, _bottomTW,
+		     new CallView(false, this, 0,
 				  "CalleeView")));
   addBottom( addTab( i18n("All Callees"),
-		     new CoverageView(false, this, _bottomTW,
+		     new CoverageView(false, this, 0,
 				      "AllCalleeView")));
 
   addBottom( addTab( i18n("Callee Map"),
-		     new CallMapView(false, this, _topTW,
+		     new CallMapView(false, this, 0,
 				     "CalleeMapView")));
   addBottom( addTab( i18n("Assembler"),
-		     new InstrView(this, _bottomTW,
+		     new InstrView(this, 0,
 				   "InstrView")));
 
   // after all child widgets are created...
@@ -438,10 +438,6 @@ void TabView::updateVisibility()
   if (_rightTW->isHidden() != (r == 0)) {
     if (r == 0) {
       _rightTW->hide();
-
-      if (!_topTW->hasVisibleRect() &&
-          !_bottomTW->hasVisibleRect() &&
-          !_leftTW->hasVisibleRect())  _mainSplitter->setSizes(s);
     }
     else
       _rightTW->show();
@@ -449,8 +445,6 @@ void TabView::updateVisibility()
   if (_leftSplitter->isHidden() != (t+b+l == 0)) {
     if (t+b+l == 0) {
       _leftSplitter->hide();
-
-      if (!_rightTW->hasVisibleRect()) _mainSplitter->setSizes(s);
     }
     else
       _leftSplitter->show();
@@ -460,9 +454,6 @@ void TabView::updateVisibility()
   if (_topTW->isHidden() != (t == 0)) {
     if (t == 0) {
       _topTW->hide();
-
-      if (!_bottomTW->hasVisibleRect() &&
-          !_leftTW->hasVisibleRect()) _leftSplitter->setSizes(s);
     }
     else
       _topTW->show();
@@ -471,8 +462,6 @@ void TabView::updateVisibility()
   if (_bottomSplitter->isHidden() != (b+l == 0)) {
     if (b+l == 0) {
       _bottomSplitter->hide();
-
-      if (!_topTW->hasVisibleRect()) _leftSplitter->setSizes(s);
     }
     else
       _bottomSplitter->show();
@@ -482,8 +471,6 @@ void TabView::updateVisibility()
   if (_bottomTW->isHidden() != (b == 0)) {
     if (b == 0) {
       _bottomTW->hide();
-
-      if (!_leftTW->hasVisibleRect()) _bottomSplitter->setSizes(s);
     }
     else
       _bottomTW->show();
@@ -491,8 +478,6 @@ void TabView::updateVisibility()
   if (_leftTW->isHidden() != (l == 0)) {
     if (l == 0) {
       _leftTW->hide();
-
-      if (!_bottomTW->hasVisibleRect()) _bottomSplitter->setSizes(s);
     }
     else
       _leftTW->show();
@@ -735,9 +720,11 @@ void TabView::readViewConfig(KConfig* c,
 
     KConfigGroup* g = configGroup(c, prefix, postfix);
 
-    _mainSplitter->setSizes(g->readEntry("MainSizes",QList<int>()));
-    _leftSplitter->setSizes(g->readEntry("LeftSizes",QList<int>()));
-    _bottomSplitter->setSizes(g->readEntry("BottomSizes",QList<int>()));
+    QList<int> list;
+    list << 100 << 100;
+    _mainSplitter->setSizes(g->readEntry("MainSizes",list));
+    _leftSplitter->setSizes(g->readEntry("LeftSizes",list));
+    _bottomSplitter->setSizes(g->readEntry("BottomSizes",list));
 
     QString activeT = g->readEntry("ActiveTop", "CallerView");
     QString activeB = g->readEntry("ActiveBottom", "CalleeView");

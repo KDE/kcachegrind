@@ -24,7 +24,7 @@
 #define ENABLE_DUMPDOCK 0
 
 #include <stdlib.h> // for system()
-#include <k3dockwidget.h>
+#include <qdockwidget.h>
 #include <q3vbox.h>
 #include <ktoolbar.h>
 #include <qtimer.h>
@@ -283,13 +283,11 @@ void TopLevel::restoreCurrentState(QString postfix)
 
 void TopLevel::createDocks()
 {
-  _partDock = new Q3DockWindow(Q3DockWindow::InDock, this);
+  _partDock = new QDockWidget(this);
+  _partDock->setObjectName("part dock");
   _partDock->setWindowTitle(i18n("Parts Overview"));
-  _partDock->setCloseMode( Q3DockWindow::Always );
   _partSelection = new PartSelection(_partDock, "partSelection");
   _partDock->setWidget(_partSelection);
-  _partDock->setResizeEnabled(true);
-  _partDock->setFixedExtentWidth(200);
   _partSelection->setWhatsThis( i18n(
                    "<b>The Parts Overview</b>"
                    "<p>A trace consists of multiple trace parts when "
@@ -314,13 +312,11 @@ void TopLevel::createDocks()
                    "This is split up into smaller rectangles to show the costs of its "
                    "callees.</li></ul></p>"));
 
-  _stackDock = new Q3DockWindow(Q3DockWindow::InDock, this);
-  _stackDock->setResizeEnabled(true);
+  _stackDock = new QDockWidget(this);
+  _stackDock->setObjectName("stack dock");
   // Why is the caption only correct with a close button?
-  _stackDock->setCloseMode( Q3DockWindow::Always );
   _stackSelection = new StackSelection(_stackDock, "stackSelection");
   _stackDock->setWidget(_stackSelection);
-  _stackDock->setFixedExtentWidth(200);
   _stackDock->setWindowTitle(i18n("Top Cost Call Stack"));
   _stackSelection->setWhatsThis( i18n(
                    "<b>The Top Cost Call Stack</b>"
@@ -335,16 +331,14 @@ void TopLevel::createDocks()
   connect(_stackSelection, SIGNAL(functionSelected(TraceItem*)),
           this, SLOT(setTraceItemDelayed(TraceItem*)));
 
-  _functionDock = new Q3DockWindow(Q3DockWindow::InDock, this);
+  _functionDock = new QDockWidget(this);
+  _functionDock->setObjectName("function dock");
   _functionDock->setWindowTitle(i18n("Flat Profile"));
-  _functionDock->setCloseMode( Q3DockWindow::Always );
   _functionSelection = new FunctionSelection(this, _functionDock,
                                              "functionSelection");
   _functionSelection->setTopLevel(this);
 
   _functionDock->setWidget(_functionSelection);
-  _functionDock->setResizeEnabled(true);
-  _functionDock->setFixedExtentWidth(200);
   _functionSelection->setWhatsThis( i18n(
                    "<b>The Flat Profile</b>"
                    "<p>The flat profile contains a group and a function "
@@ -359,16 +353,13 @@ void TopLevel::createDocks()
                    "costs less than 1% are hidden on default.</p>"));
 
 #if ENABLE_DUMPDOCK
-  _dumpDock = new Q3DockWindow(Q3DockWindow::InDock, this);
+  _dumpDock = new QDockWidget(this);
   _dumpDock->setWindowTitle(i18n("Profile Dumps"));
-  _dumpDock->setCloseMode( Q3DockWindow::Always );
   _dumpSelection = new DumpSelection(this, _dumpDock,
                                      "dumpSelection");
   _dumpSelection->setTopLevel(this);
 
   _dumpDock->setWidget(_dumpSelection);
-  _dumpDock->setResizeEnabled(true);
-  _dumpDock->setFixedExtentWidth(200);
   _dumpSelection->setWhatsThis( i18n(
                    "<b>Profile Dumps</b>"
                    "<p>This dockable shows in the top part the list of "
@@ -398,31 +389,31 @@ void TopLevel::createDocks()
                    "the top function in the current loaded dump.</ul></p>"));
 #endif
 
-#warning port to Qt4
-#if 0
   // Restore QT Dock positions...
   KConfigGroup dockConfig(KGlobal::config(), QByteArray("Docks"));
   QString str = dockConfig.readEntry("Position", QString());
   if (0) qDebug("Docks/Position: '%s'", str.ascii());
   if (str.isEmpty()) {
     // default positions
-    addDockWindow(_partDock, Qt::DockLeft);
-    addDockWindow(_stackDock, Qt::DockLeft);
-    addDockWindow(_functionDock, Qt::DockLeft);
+    addDockWidget( Qt::LeftDockWidgetArea, _partDock );
+    addDockWidget( Qt::LeftDockWidgetArea, _stackDock );
+    addDockWidget( Qt::LeftDockWidgetArea, _functionDock );
     _stackDock->hide();
 #if ENABLE_DUMPDOCK
-    addDockWindow(_dumpDock, Qt::DockLeft);
+    addDockWidget( Qt::LeftDockWidgetArea, _dumpDock );
     _dumpDock->hide();
 #endif
   }
   else {
+#warning port to Qt4
+#if 0
     QTextStream ts( &str, QIODevice::ReadOnly );
     ts >> *this;
+#endif
   }
 
   _forcePartDock = dockConfig.readEntry("ForcePartDockVisible", false);
 
-#endif
 
 #if 0
   // dock context menu
@@ -464,7 +455,7 @@ void TopLevel::createLayoutActions()
   KAction* action;
 
   action = new KAction( i18n( "&Duplicate" ),
-			KShortcut("Ctrl+Plus"),
+			KShortcut(Qt::CTRL+Qt::Key_Plus),
                         this, SLOT(layoutDuplicate()), actionCollection(), "layout_duplicate" );
   hint = i18n("<b>Duplicate Current Layout</b>"
               "<p>Make a copy of the current layout.</p>");
@@ -477,13 +468,13 @@ void TopLevel::createLayoutActions()
   action->setWhatsThis( hint );
 
   action = new KAction( i18n( "&Go to Next" ),
-			KShortcut("Ctrl+Right"),
+			KShortcut(Qt::CTRL+Qt::Key_Right),
                         this, SLOT(layoutNext()), actionCollection(), "layout_next" );
   hint = i18n("Go to Next Layout");
   action->setWhatsThis( hint );
 
   action = new KAction( i18n( "&Go to Previous" ),
-			KShortcut("Ctrl+Left"),
+			KShortcut(Qt::CTRL+Qt::Key_Left),
                         this, SLOT(layoutPrevious()), actionCollection(), "layout_previous" );
   hint = i18n("Go to Previous Layout");
   action->setWhatsThis( hint );
@@ -736,7 +727,7 @@ void TopLevel::createMiscActions()
 
   // cost types are dependent on loaded data, thus KSelectAction
   // is filled in setData()
-  connect( _saCost, SIGNAL(activated(const QString&)),
+  connect( _saCost, SIGNAL(triggered(const QString&)),
            this, SLOT(costTypeSelected(const QString&)));
 
   _saCost2 = new KSelectAction( i18n("Secondary Event Type"), KShortcut(),
@@ -746,7 +737,7 @@ void TopLevel::createMiscActions()
   _saCost2->setToolTip( hint );
   _saCost2->setWhatsThis( hint );
 
-  connect( _saCost2, SIGNAL(activated(const QString&)),
+  connect( _saCost2, SIGNAL(triggered(const QString&)),
            this, SLOT(costType2Selected(const QString&)));
 
   saGroup = new KSelectAction( i18n("Grouping"), KShortcut(),
@@ -765,7 +756,7 @@ void TopLevel::createMiscActions()
        << TraceCost::i18nTypeName(TraceItem::FunctionCycle);
 
   saGroup->setItems(args);
-  connect( saGroup, SIGNAL(activated(int)),
+  connect( saGroup, SIGNAL(triggered(int)),
            this, SLOT(groupTypeSelected(int)));
 
   _taSplit = new KToggleAction(i18n("Split"), "view_left_right", KShortcut(),

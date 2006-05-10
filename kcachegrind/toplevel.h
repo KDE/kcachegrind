@@ -228,7 +228,7 @@ private:
   StackSelection* _stackSelection;
   QLineEdit* queryLineEdit;
 
-  Q3DockWindow *_partDock, *_stackDock, *_functionDock, *_dumpDock;
+  QDockWidget *_partDock, *_stackDock, *_functionDock, *_dumpDock;
   bool _forcePartDock;
 
   KSelectAction *_saCost, *_saCost2, *saGroup;

@@ -130,7 +130,10 @@ void StoredDrawParams::ensureField(int f)
 
   if (f<0 || f>=MAX_FIELD) return;
 
-  if ((int)_field.size() < f+1) _field.insert(f+1, *def);
+  if ((int)_field.size() < f+1) {
+    _field.resize(f+1);
+    _field.insert(f+1, *def);
+   }
 }
 
 
@@ -1324,6 +1327,7 @@ bool TreeMapWidget::resizeAttr(int size)
   if (size>(int)_attr.size()) {
     struct FieldAttr a;
     int oldSize = _attr.size();
+    _attr.resize(size);
     _attr.insert(size, a);
     while (oldSize<size) {
       _attr[oldSize].type    = defaultFieldType(oldSize);

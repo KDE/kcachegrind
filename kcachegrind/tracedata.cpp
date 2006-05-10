@@ -3245,7 +3245,7 @@ QString TraceFunction::prettyName() const
   int p = _name.indexOf('(');
   if (p>0) {
     // handle C++ "operator()" correct
-    if ((_name[p+1] == ')') && (_name[p+2] == '(')) p+=2;
+    if ( (p+2 < _name.size()) && (_name[p+1] == ')') && (_name[p+2] == '(')) p+=2;
 
     // we have a C++ symbol with argument types:
     // check for unique function name (inclusive '(' !)
