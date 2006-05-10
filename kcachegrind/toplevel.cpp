@@ -521,8 +521,9 @@ void TopLevel::createMiscActions()
   action->setWhatsThis( hint );
 
 
-  _taDump = new KToggleAction( i18n( "&Force Dump" ), "redo", KStdAccel::shortcut(KStdAccel::Redo),
-                               this, SLOT( forceTrace() ), actionCollection(), "dump" );
+  _taDump = new KToggleAction(KIcon("redo"),  i18n( "&Force Dump" ), actionCollection(), "dump" );
+  connect(_taDump, SIGNAL(triggered(bool) ), SLOT( forceTrace() ));
+  _taDump->setShortcut(KStdAccel::shortcut(KStdAccel::Redo));
   hint = i18n("<b>Force Dump</b>"
               "<p>This forces a dump for a Callgrind profile run "
               "in the current directory. This action is checked while "
