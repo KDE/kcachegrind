@@ -598,22 +598,16 @@ void TopLevel::createMiscActions()
   _dumpDockShown->setWhatsThis( hint );
 #endif
 
-  _taPercentage = new KToggleAction(i18n("Show Relative Costs"), "percent",
-				    KShortcut(),
-				    this, SLOT(togglePercentage()),
-				    actionCollection(),
-				    "view_percentage");
+  _taPercentage = new KToggleAction(KIcon("percent"), i18n("Show Relative Costs"), actionCollection(), "view_percentage");
+  connect(_taPercentage, SIGNAL(triggered(bool) ), SLOT(togglePercentage()));
   _taPercentage->setCheckedState(i18n("Show Absolute Costs"));
 
   hint = i18n("Show relative instead of absolute costs");
   _taPercentage->setToolTip( hint );
   _taPercentage->setWhatsThis( hint );
 
-  _taExpanded = new KToggleAction(i18n("Percentage Relative to Parent"), "move",
-				  KShortcut(),
-				  this, SLOT(toggleExpanded()),
-				  actionCollection(),
-				  "view_expanded");
+  _taExpanded = new KToggleAction(KIcon("move"), i18n("Percentage Relative to Parent"), actionCollection(), "view_expanded");
+  connect(_taExpanded, SIGNAL(triggered(bool) ), SLOT(toggleExpanded()));
 
   hint = i18n("Show percentage costs relative to parent");
   _taExpanded->setToolTip( hint );
@@ -634,10 +628,8 @@ void TopLevel::createMiscActions()
 	      "<p>(*) Only if function grouping is switched on (e.g. ELF object grouping).");
   _taExpanded->setWhatsThis( hint );
 
-  _taCycles = new KToggleAction( i18n( "Do Cycle Detection" ), "undo",
-				 KShortcut(),
-				 this, SLOT( toggleCycles() ), actionCollection(),
-				 "view_cycles" );
+  _taCycles = new KToggleAction(KIcon("undo"),  i18n( "Do Cycle Detection" ), actionCollection(), "view_cycles" );
+  connect(_taCycles, SIGNAL(triggered(bool) ), SLOT( toggleCycles() ));
   _taCycles->setCheckedState(i18n("Skip Cycle Detection"));
 
   hint = i18n("<b>Detect recursive cycles</b>"
@@ -760,18 +752,15 @@ void TopLevel::createMiscActions()
   connect( saGroup, SIGNAL(triggered(int)),
            this, SLOT(groupTypeSelected(int)));
 
-  _taSplit = new KToggleAction(i18n("Split"), "view_left_right", KShortcut(),
-                               this, SLOT(splitSlot()),
-                               actionCollection(), "view_split");
+  _taSplit = new KToggleAction(KIcon("view_left_right"), i18n("Split"), actionCollection(), "view_split");
+  connect(_taSplit, SIGNAL(triggered(bool) ), SLOT(splitSlot()));
 
   hint = i18n("Show two information panels");
   _taSplit->setToolTip( hint );
   _taSplit->setWhatsThis( hint );
 
- _taSplitDir = new KToggleAction(i18n("Split Horizontal"),
-                                  "view_left_right", KShortcut(),
-                                  this, SLOT(splitDirSlot()),
-                                  actionCollection(), "view_split_dir");
+ _taSplitDir = new KToggleAction(KIcon("view_left_right"), i18n("Split Horizontal"), actionCollection(), "view_split_dir");
+ connect(_taSplitDir, SIGNAL(triggered(bool) ), SLOT(splitDirSlot()));
 
   hint = i18n("Change Split Orientation when main window is split.");
   _taSplitDir->setToolTip( hint );
