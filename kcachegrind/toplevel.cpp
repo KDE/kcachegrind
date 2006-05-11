@@ -560,28 +560,22 @@ void TopLevel::createMiscActions()
   KStdAction::showStatusbar(this,
                             SLOT(toggleStatusBar()), actionCollection());
 
-  _partDockShown = new KToggleAction(i18n("Parts Overview"), KShortcut(),
-                                     this, SLOT(togglePartDock()),
-                                     actionCollection(),
-                                     "settings_show_partdock");
+  _partDockShown = new KToggleAction(i18n("Parts Overview"), actionCollection(), "settings_show_partdock");
+  connect(_partDockShown, SIGNAL(triggered(bool) ), SLOT(togglePartDock()));
 
   hint = i18n("Show/Hide the Parts Overview Dockable");
   _partDockShown->setToolTip( hint );
   _partDockShown->setWhatsThis( hint );
 
-  _stackDockShown = new KToggleAction(i18n("Call Stack"), KShortcut(),
-                                     this, SLOT(toggleStackDock()),
-                                     actionCollection(),
-                                     "settings_show_stackdock");
+  _stackDockShown = new KToggleAction(i18n("Call Stack"), actionCollection(), "settings_show_stackdock");
+  connect(_stackDockShown, SIGNAL(triggered(bool) ), SLOT(toggleStackDock()));
 
   hint = i18n("Show/Hide the Call Stack Dockable");
   _stackDockShown->setToolTip( hint );
   _stackDockShown->setWhatsThis( hint );
 
-  _functionDockShown = new KToggleAction(i18n("Function Profile"), KShortcut(),
-                                         this, SLOT(toggleFunctionDock()),
-                                         actionCollection(),
-                                         "settings_show_profiledock");
+  _functionDockShown = new KToggleAction(i18n("Function Profile"), actionCollection(), "settings_show_profiledock");
+  connect(_functionDockShown, SIGNAL(triggered(bool) ), SLOT(toggleFunctionDock()));
 
   hint = i18n("Show/Hide the Function Profile Dockable");
   _functionDockShown->setToolTip( hint );
