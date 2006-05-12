@@ -1,4 +1,3 @@
-kde4_header()
 
 set( KCACHEGRIND_VERSION "0.4.6kde")
 
@@ -24,7 +23,6 @@ add_subdirectory( converters )
 ########### install files ###############
 
 
-kde4_footer()
 
 
 

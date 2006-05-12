@@ -1,4 +1,3 @@
-kde4_header()
 
 add_subdirectory( hicolor ) 
 
@@ -9,7 +8,6 @@ add_subdirectory( hicolor )
 
 install_files( ${DATA_INSTALL_DIR}/kcachegrind/icons FILES  )
 
-kde4_footer()
 
 
 
