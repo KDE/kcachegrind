@@ -506,8 +506,9 @@ void TopLevel::createMiscActions()
               "<p>This opens an additional profile data file in the current window.</p>");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Reload" ), "reload", KStdAccel::shortcut(KStdAccel::Reload),
-                        this, SLOT( reload() ), actionCollection(), "reload" );
+  action = new KAction(KIcon("reload"),  i18n( "&Reload" ), actionCollection(), "reload" );
+  connect(action, SIGNAL(triggered(bool) ), SLOT( reload() ));
+  action->setShortcut(KStdAccel::shortcut(KStdAccel::Reload));
   hint = i18n("<b>Reload Profile Data</b>"
               "<p>This loads any new created parts, too.</p>");
   action->setWhatsThis( hint );
