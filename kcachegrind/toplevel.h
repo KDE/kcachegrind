@@ -28,7 +28,6 @@
 #include <QLabel>
 #include <Q3PopupMenu>
 
-#include <dcopobject.h>
 #include <kmainwindow.h>
 
 #include "traceitemview.h"
