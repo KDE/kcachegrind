@@ -55,10 +55,10 @@ class DumpSelection;
 class StackSelection;
 class TraceFunction;
 
-class TopLevel : public KMainWindow, public DCOPObject
+class TopLevel : public KMainWindow
 {
   Q_OBJECT
-
+  Q_CLASSINFO("D-Bus Interface", "org.kde.kcachegrind")
 public:
   TopLevel();
   ~TopLevel();

@@ -76,11 +76,12 @@
 #include "configdlg.h"
 #include "multiview.h"
 #include "callgraphview.h"
-
+#include <dbus/qdbusconnection.h>
 
 TopLevel::TopLevel()
-  : KMainWindow(0), DCOPObject("KCachegrindIface")
+  : KMainWindow(0)
 {
+    QDBus::sessionBus().registerObject("/KCachegrind", this, QDBusConnection::ExportSlots);
   init();
 
   createDocks();
