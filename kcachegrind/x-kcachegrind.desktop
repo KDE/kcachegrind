@@ -31,6 +31,7 @@ Comment[ta]=இடைமாற்றகட்டம்/ அழைப்பு �
 Comment[tg]=Дампи профилкунии Cachegrind/Callgrind
 Comment[uk]=Звалювання профілювання Cachegrind/Callgrind
 Comment[zh_CN]=Cachegrind/Callgrind 配置文件转存
+Comment[zh_TW]=Cachegrind/Callgrind 分析資料傾印
 DefaultApp=kcachegrind
 Icon=kcachegrind
 Type=MimeType
