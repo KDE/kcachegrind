@@ -957,7 +957,7 @@ void TopLevel::newWindow()
 
 void TopLevel::loadTrace()
 {
-    KUrl url = KFileDialog::getOpenURL(":",
+    KUrl url = KFileDialog::getOpenUrl(":",
                                        i18n("cachegrind.out* callgrind.out*|Callgrind Profile Data\n*|All Files"),
                                        this,
                                        i18n("Select Callgrind Profile Data"));
@@ -1002,7 +1002,7 @@ void TopLevel::loadTrace(QString file)
 
 void TopLevel::addTrace()
 {
-    KUrl url = KFileDialog::getOpenURL(QString::null,
+    KUrl url = KFileDialog::getOpenUrl(QString::null,
                                        i18n("cachegrind.out* callgrind.out*|Callgrind Profile Data\n*|All Files"),
                                        this,
                                        i18n("Add Callgrind Profile Data"));
