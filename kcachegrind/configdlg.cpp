@@ -379,7 +379,7 @@ void ConfigDlg::dirsAddPressed()
   }
 
   QString newDir;
-  newDir = KFileDialog::getExistingDirectory(QString::null,
+  newDir = KFileDialog::getExistingDirectory(KUrl(),
                                              this,
                                              i18n("Choose Source Folder"));
   if (newDir.isEmpty()) return;

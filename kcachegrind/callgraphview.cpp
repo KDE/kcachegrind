@@ -2597,7 +2597,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
       {
 	if (!_canvas) return;
 
-	QString fn = KFileDialog::getSaveFileName(":","*.png");
+	QString fn = KFileDialog::getSaveFileName(KUrl("kfiledialog:///"),"*.png");
 
 	if (!fn.isEmpty()) {
 	  QPixmap pix(_canvas->size());

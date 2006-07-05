@@ -47,6 +47,7 @@
 #include <QLabel>
 #include <Q3PopupMenu>
 
+#include <kstdguiitem.h>
 #include <kapplication.h>
 #include <klocale.h>
 #include <kstatusbar.h>
@@ -76,7 +77,7 @@
 #include "configdlg.h"
 #include "multiview.h"
 #include "callgraphview.h"
-#include <dbus/qdbusconnection.h>
+#include <qdbusconnection.h>
 
 TopLevel::TopLevel()
   : KMainWindow(0)
@@ -957,7 +958,7 @@ void TopLevel::newWindow()
 
 void TopLevel::loadTrace()
 {
-    KUrl url = KFileDialog::getOpenUrl(":",
+    KUrl url = KFileDialog::getOpenUrl(KUrl("kfiledialog:///"),
                                        i18n("cachegrind.out* callgrind.out*|Callgrind Profile Data\n*|All Files"),
                                        this,
                                        i18n("Select Callgrind Profile Data"));
@@ -1002,7 +1003,7 @@ void TopLevel::loadTrace(QString file)
 
 void TopLevel::addTrace()
 {
-    KUrl url = KFileDialog::getOpenUrl(QString::null,
+    KUrl url = KFileDialog::getOpenUrl(KUrl(),
                                        i18n("cachegrind.out* callgrind.out*|Callgrind Profile Data\n*|All Files"),
                                        this,
                                        i18n("Add Callgrind Profile Data"));
