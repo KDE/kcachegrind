@@ -58,15 +58,15 @@ kde4_add_executable(kcachegrind ${kcachegrind_SRCS})
 
 target_link_libraries(kcachegrind  ${KDE4_KIO_LIBS} )
 
-install_targets(/bin kcachegrind )
+install(TARGETS kcachegrind  DESTINATION ${BIN_INSTALL_DIR} )
 
 
 ########### install files ###############
 
-install_files( ${XDG_APPS_DIR} FILES kcachegrind.desktop )
-install_files( ${DATA_INSTALL_DIR}/kcachegrind FILES tips )
-install_files( ${DATA_INSTALL_DIR}/kcachegrind FILES kcachegrindui.rc )
-install_files( ${MIME_INSTALL_DIR}/application FILES x-kcachegrind.desktop )
+install( FILES kcachegrind.desktop  DESTINATION  ${XDG_APPS_DIR} )
+install( FILES tips  DESTINATION  ${DATA_INSTALL_DIR}/kcachegrind )
+install( FILES kcachegrindui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kcachegrind )
+install( FILES x-kcachegrind.desktop  DESTINATION  ${MIME_INSTALL_DIR}/application )
 
 kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
 
