@@ -456,9 +456,9 @@ void TopLevel::createLayoutActions()
   QString hint;
   KAction* action;
 
-  action = new KAction( i18n( "&Duplicate" ),
-			KShortcut(Qt::CTRL+Qt::Key_Plus),
-                        this, SLOT(layoutDuplicate()), actionCollection(), "layout_duplicate" );
+  action = new KAction( i18n( "&Duplicate" ), actionCollection(), "layout_duplicate" );
+  connect(action, SIGNAL(triggered(bool)), SLOT(layoutDuplicate()));
+  action->setShortcut(KShortcut(Qt::CTRL+Qt::Key_Plus));
   hint = i18n("<b>Duplicate Current Layout</b>"
               "<p>Make a copy of the current layout.</p>");
   action->setWhatsThis( hint );
@@ -469,15 +469,15 @@ void TopLevel::createLayoutActions()
               "<p>Delete current layout and make the previous active.</p>");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Go to Next" ),
-			KShortcut(Qt::CTRL+Qt::Key_Right),
-                        this, SLOT(layoutNext()), actionCollection(), "layout_next" );
+  action = new KAction( i18n( "&Go to Next" ), actionCollection(), "layout_next" );
+  connect(action, SIGNAL(triggered(bool)), SLOT(layoutNext()));
+  action->setShortcut(KShortcut(Qt::CTRL+Qt::Key_Right));
   hint = i18n("Go to Next Layout");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Go to Previous" ),
-			KShortcut(Qt::CTRL+Qt::Key_Left),
-                        this, SLOT(layoutPrevious()), actionCollection(), "layout_previous" );
+  action = new KAction( i18n( "&Go to Previous" ), actionCollection(), "layout_previous" );
+  connect(action, SIGNAL(triggered(bool)), SLOT(layoutPrevious()));
+  action->setShortcut(KShortcut(Qt::CTRL+Qt::Key_Left));
   hint = i18n("Go to Previous Layout");
   action->setWhatsThis( hint );
 
