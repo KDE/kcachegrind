@@ -55,7 +55,7 @@ FunctionSelection::FunctionSelection( TopLevel* top,
        << TraceCost::i18nTypeName(TraceItem::Class)
        << TraceCost::i18nTypeName(TraceItem::FunctionCycle);
   
-  groupBox->insertStringList(args);
+  groupBox->addItems(args);
   // this needs same order of grouptype actionlist!
   connect(groupBox, SIGNAL(activated(int)),
 	  top, SLOT(groupTypeSelected(int)));

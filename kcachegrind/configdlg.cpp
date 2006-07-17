@@ -142,9 +142,9 @@ ConfigDlg::ConfigDlg(Configuration* c, TraceData* data,
   oList.sort();
   cList.sort();
   fList.sort();
-  objectCombo->insertStringList(oList);
-  classCombo->insertStringList(cList);
-  fileCombo->insertStringList(fList);
+  objectCombo->addItems(oList);
+  classCombo->addItems(cList);
+  fileCombo->addItems(fList);
 
   objectActivated(objectCombo->currentText());
   classActivated(classCombo->currentText());
