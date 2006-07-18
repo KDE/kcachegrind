@@ -359,7 +359,7 @@ void FunctionSelection::doUpdate(int changeType)
 	case TraceItem::FunctionCycle: id = 4; break;
 	default: id = 0; break;
 	}
-	groupBox->setCurrentItem(id);
+	groupBox->setCurrentIndex(id);
 
 	if (_groupType == TraceItem::Function)
 	    groupList->hide();
