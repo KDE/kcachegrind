@@ -69,7 +69,7 @@ install( FILES kcachegrindui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kcachegrind )
 install( FILES x-kcachegrind.desktop  DESTINATION  ${MIME_INSTALL_DIR}/application )
 
 kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
-
+kde4_install_icons( ${ICON_INSTALL_DIR}  locolor )
 
 
 
