@@ -38,7 +38,7 @@ class MultiView;
 class QLineEdit;
 class QDockWidget;
 class QLabel;
-class Q3ProgressBar;
+class QProgressBar;
 class Q3PopupMenu;
 
 class KUrl;
@@ -268,7 +268,7 @@ private:
   // for status progress display
   QString _progressMsg;
   QTime _progressStart;
-  Q3ProgressBar* _progressBar;
+  QProgressBar* _progressBar;
 
   // toplevel configuration options
   bool _showPercentage, _showExpanded, _showCycles;

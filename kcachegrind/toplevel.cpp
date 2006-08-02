@@ -25,14 +25,13 @@
 
 #include <stdlib.h> // for system()
 #include <qdockwidget.h>
-#include <q3vbox.h>
 #include <ktoolbar.h>
 #include <qtimer.h>
 
 #include <qlineedit.h>
 #include <qtextstream.h>
 #include <qsizepolicy.h>
-#include <q3progressbar.h>
+#include <QProgressBar>
 #include <qfile.h>
 #include <ktoggleaction.h>
 #include <ktoolbarpopupaction.h>
@@ -2315,7 +2314,7 @@ void TopLevel::showStatus(QString msg, int progress)
     if (_progressStart.elapsed() < 500) return;
 
     if (!_progressBar) {
-	_progressBar = new Q3ProgressBar(_statusbar);
+	_progressBar = new QProgressBar(_statusbar);
 	_progressBar->setMaximumSize(200, _statusbar->height()-4);
 	_statusbar->addWidget(_progressBar, 1, true);
 	_progressBar->show();
@@ -2328,7 +2327,7 @@ void TopLevel::showStatus(QString msg, int progress)
 	_statusbar->message(msg);
 	msgUpdateNeeded = false;
     }
-    _progressBar->setProgress(progress);
+    _progressBar->setValue(progress);
 
     // let the progress bar update itself
 #if 0

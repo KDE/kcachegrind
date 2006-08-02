@@ -1271,7 +1271,7 @@ CanvasFrame::CanvasFrame(CanvasNode* n, Q3Canvas* c)
     QPainter p(_p);
     p.setPen(Qt::NoPen);
 
-    r.moveBy(-r.x(), -r.y());
+    r.translate(-r.x(), -r.y());
 
     while (v<v1) {
       v *= f;
@@ -1881,7 +1881,8 @@ void CallGraphView::refresh()
   _unparsedOutput = QString::null;
 
   // layouting of more than seconds is dubious
-  _renderTimer.start(1000, true);
+  _renderTimer.setSingleShot(true);
+  _renderTimer.start(1000);
 }
 
 void CallGraphView::readDotOutput()
@@ -2395,7 +2396,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
 	name = Configuration::shortenSymbol(cycle->prettyName());
 	popup.insertItem(i18n("Go to '%1'", name), 94);
       }
-      popup.insertSeparator();
+      popup.addSeparator();
     }
 
     // redirect from label / arrow to edge
@@ -2414,31 +2415,31 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
 	  popup.insertItem(i18n("Go to '%1'",
 			    Configuration::shortenSymbol(name)), 95);
 
-	  popup.insertSeparator();
+	  popup.addSeparator();
       }
     }
   }
 
   if (_renderProcess) {
     popup.insertItem(i18n("Stop Layouting"), 999);
-    popup.insertSeparator();
+    popup.addSeparator();
   }
 
   addGoMenu(&popup);
-  popup.insertSeparator();
+  popup.addSeparator();
 
   Q3PopupMenu epopup;
   epopup.insertItem(i18n("As PostScript"), 201);
   epopup.insertItem(i18n("As Image ..."), 202);
 
   popup.insertItem(i18n("Export Graph"), &epopup, 200);
-  popup.insertSeparator();
+  popup.addSeparator();
 
   Q3PopupMenu gpopup1;
   gpopup1.setCheckable(true);
   gpopup1.insertItem(i18n("Unlimited"), 100);
   gpopup1.setItemEnabled(100, (_funcLimit>0.005));
-  gpopup1.insertSeparator();
+  gpopup1.addSeparator();
   gpopup1.insertItem(i18n("None"), 101);
   gpopup1.insertItem(i18n("max. 2"), 102);
   gpopup1.insertItem(i18n("max. 5"), 103);
@@ -2461,7 +2462,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   gpopup2.setCheckable(true);
   gpopup2.insertItem(i18n("Unlimited"), 110);
   gpopup2.setItemEnabled(110, (_funcLimit>0.005));
-  gpopup2.insertSeparator();
+  gpopup2.addSeparator();
   gpopup2.insertItem(i18n("None"), 111);
   gpopup2.insertItem(i18n("max. 2"), 112);
   gpopup2.insertItem(i18n("max. 5"), 113);
@@ -2485,7 +2486,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   gpopup3.insertItem(i18n("No Minimum"), 120);
   gpopup3.setItemEnabled(120,
                          (_maxCallerDepth>=0) && (_maxCallingDepth>=0));
-  gpopup3.insertSeparator();
+  gpopup3.addSeparator();
   gpopup3.insertItem(i18n("50 %"), 121);
   gpopup3.insertItem(i18n("20 %"), 122);
   gpopup3.insertItem(i18n("10 %"), 123);
@@ -2526,7 +2527,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   gpopup.insertItem(i18n("Callee Depth"), &gpopup2, 81);
   gpopup.insertItem(i18n("Min. Node Cost"), &gpopup3, 82);
   gpopup.insertItem(i18n("Min. Call Cost"), &gpopup4, 83);
-  gpopup.insertSeparator();
+  gpopup.addSeparator();
   gpopup.insertItem(i18n("Arrows for Skipped Calls"), 130);
   gpopup.setItemChecked(130,_showSkipped);
   gpopup.insertItem(i18n("Inner-cycle Calls"), 131);
@@ -2542,7 +2543,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   vpopup.setItemChecked(140,_detailLevel == 0);
   vpopup.setItemChecked(141,_detailLevel == 1);
   vpopup.setItemChecked(142,_detailLevel == 2);
-  vpopup.insertSeparator();
+  vpopup.addSeparator();
   vpopup.insertItem(i18n("Top to Down"), 150);
   vpopup.insertItem(i18n("Left to Right"), 151);
   vpopup.insertItem(i18n("Circular"), 152);
@@ -2588,7 +2589,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
 
 	  QString cmd = QString("(dot %1.dot -Tps > %2.ps; kghostview %3.ps)&")
 	      .arg(n).arg(n).arg(n);
-	  system(cmd.ascii());
+	  system(cmd.toAscii());
       }
       break;
 
@@ -2711,7 +2712,7 @@ void CallGraphView::readViewConfig(KConfig* c,
 void CallGraphView::saveViewConfig(KConfig* c,
 				   QString prefix, QString postfix, bool)
 {
-    KConfigGroup g(c, (prefix+postfix).ascii());
+    KConfigGroup g(c, (prefix+postfix).toAscii());
 
     writeConfigEntry(&g, "MaxCaller", _maxCallerDepth, DEFAULT_MAXCALLER);
     writeConfigEntry(&g, "MaxCalling", _maxCallingDepth, DEFAULT_MAXCALLING);
@@ -2723,10 +2724,10 @@ void CallGraphView::saveViewConfig(KConfig* c,
 		     DEFAULT_CLUSTERGROUPS);
     writeConfigEntry(&g, "DetailLevel", _detailLevel, DEFAULT_DETAILLEVEL);
     writeConfigEntry(&g, "Layout",
-		     layoutString(_layout), layoutString(DEFAULT_LAYOUT).utf8().data());
+		     layoutString(_layout), layoutString(DEFAULT_LAYOUT).toUtf8().data());
     writeConfigEntry(&g, "ZoomPosition",
 		     zoomPosString(_zoomPosition),
-		     zoomPosString(DEFAULT_ZOOMPOS).utf8().data());
+		     zoomPosString(DEFAULT_ZOOMPOS).toUtf8().data());
 }
 
 #include "callgraphview.moc"
