@@ -78,6 +78,7 @@
 #include "multiview.h"
 #include "callgraphview.h"
 #include <qdbusconnection.h>
+#include <kicon.h>
 
 TopLevel::TopLevel()
   : KMainWindow(0)
