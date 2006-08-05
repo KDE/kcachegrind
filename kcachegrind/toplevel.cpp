@@ -61,6 +61,7 @@
 #include <ktip.h>
 #include <kmenu.h>
 #include <kdebug.h>
+#include <kicon.h>
 
 #if ENABLE_DUMPDOCK
 #include "dumpselection.h"
