@@ -2105,7 +2105,7 @@ void TopLevel::forceTrace()
   QFile cmd("callgrind.cmd");
   if (!cmd.exists()) {
     cmd.open(QIODevice::WriteOnly);
-    cmd.writeBlock("DUMP\n", 5);
+    cmd.write("DUMP\n", 5);
     cmd.close();
   }
   if (_taDump->isChecked())

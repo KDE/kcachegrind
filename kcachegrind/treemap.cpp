@@ -2886,7 +2886,7 @@ void TreeMapWidget::addVisualizationItems(Q3PopupMenu* popup, int id)
 
   popup->insertItem(i18n("Border"), bpopup, id+1);
   bpopup->insertItem(i18n("Correct Borders Only"), id+2);
-  bpopup->insertSeparator();
+  bpopup->addSeparator();
   bpopup->insertItem(i18n("Width %1", 0), id+3);
   bpopup->insertItem(i18n("Width %1", 1), id+4);
   bpopup->insertItem(i18n("Width %1", 2), id+5);
@@ -2904,7 +2904,7 @@ void TreeMapWidget::addVisualizationItems(Q3PopupMenu* popup, int id)
 
   if (_attr.size() ==0) return;
 
-  popup->insertSeparator();
+  popup->addSeparator();
   int f;
   Q3PopupMenu* tpopup;
   id += 20;
@@ -2914,7 +2914,7 @@ void TreeMapWidget::addVisualizationItems(Q3PopupMenu* popup, int id)
     popup->insertItem(_attr[f].type, tpopup, id);
     tpopup->insertItem(i18n("Visible"), id+1);
     tpopup->insertItem(i18n("Take Space From Children"), id+2);
-    tpopup->insertSeparator();
+    tpopup->addSeparator();
     tpopup->insertItem(i18n("Top Left"), id+3);
     tpopup->insertItem(i18n("Top Center"), id+4);
     tpopup->insertItem(i18n("Top Right"), id+5);
@@ -3002,7 +3002,7 @@ void TreeMapWidget::addFieldStopItems(Q3PopupMenu* popup,
   _menuItem = i;
   bool foundFieldStop = false;
   if (i) {
-    popup->insertSeparator();
+    popup->addSeparator();
 
     while (i) {
       id++;
@@ -3018,7 +3018,7 @@ void TreeMapWidget::addFieldStopItems(Q3PopupMenu* popup,
   }
 
   if (!foundFieldStop && !fieldStop(0).isEmpty()) {
-    popup->insertSeparator();
+    popup->addSeparator();
     popup->insertItem(fieldStop(0), id+1);
     popup->setItemChecked(id+1, true);
   }
@@ -3054,7 +3054,7 @@ void TreeMapWidget::addAreaStopItems(Q3PopupMenu* popup,
 
   if (i) {
     int area = i->width() * i->height();
-    popup->insertSeparator();
+    popup->addSeparator();
     popup->insertItem(i18n("Area of '%1' (%2)",
                         i->text(0), area), id+1);
     if (area == minimalArea()) {
@@ -3063,7 +3063,7 @@ void TreeMapWidget::addAreaStopItems(Q3PopupMenu* popup,
     }
   }
 
-  popup->insertSeparator();
+  popup->addSeparator();
   int area = 100, count;
   for (count=0;count<3;count++) {
     popup->insertItem(i18np("1 Pixel", "%n Pixels", area), id+2+count);
@@ -3075,7 +3075,7 @@ void TreeMapWidget::addAreaStopItems(Q3PopupMenu* popup,
   }
 
   if (minimalArea()>0) {
-    popup->insertSeparator();
+    popup->addSeparator();
     if (!foundArea) {
       popup->insertItem(i18np("1 Pixel", "%n Pixels", minimalArea()), id+10);
       popup->setItemChecked(id+10, true);
@@ -3116,7 +3116,7 @@ void TreeMapWidget::addDepthStopItems(Q3PopupMenu* popup,
 
   if (i) {
     int d = i->depth();
-    popup->insertSeparator();
+    popup->addSeparator();
     popup->insertItem(i18n("Depth of '%1' (%2)",
                         i->text(0), d), id+1);
     if (d == maxDrawingDepth()) {
@@ -3126,7 +3126,7 @@ void TreeMapWidget::addDepthStopItems(Q3PopupMenu* popup,
   }
 
   if (maxDrawingDepth()>1) {
-    popup->insertSeparator();
+    popup->addSeparator();
     if (!foundDepth) {
       popup->insertItem(i18n("Depth %1", maxDrawingDepth()), id+10);
       popup->setItemChecked(id+10, true);
