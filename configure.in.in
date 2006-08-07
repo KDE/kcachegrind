@@ -1,8 +1,0 @@
-KCACHEGRIND_VERSION=0.4.6kde
-AC_SUBST(KCACHEGRIND_VERSION)
-
-AC_FUNC_MMAP
-
-dnl AC_OUTPUT( kcachegrind/version.h )
-dnl AC_OUTPUT( kcachegrind/kcachegrind.spec )
-dnl AC_OUTPUT( kcachegrind/kcachegrind.lsm )
