@@ -160,7 +160,7 @@ bool CachegrindLoader::canLoadTrace(QFile* file)
    * 2047 bytes we see the string "\nevents:"
    */
   char buf[2048];
-  int read = file->readBlock(buf,2047);
+  int read = file->read(buf,2047);
   if (read < 0)
 	return false;
   buf[read] = 0;
@@ -854,7 +854,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 
 	    // cmd:
 	    if (line.stripPrefix("md:")) {
-		QString command = QString(line).stripWhiteSpace();
+		QString command = QString(line).trimmed();
 		if (!_data->command().isEmpty() &&
 		    _data->command() != command) {
 
