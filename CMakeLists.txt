@@ -18,21 +18,3 @@ macro_additional_clean_files(
 add_subdirectory( kcachegrind ) 
 add_subdirectory( pics ) 
 add_subdirectory( converters ) 
-
-
-
-
-########### install files ###############
-
-
-
-
-
-#original Makefile.am contents follow:
-
-#SUBDIRS = kcachegrind pics converters
-#
-#EXTRA_DIST = \
-#	AUTHORS COPYING NEWS ChangeLog INSTALL README TODO \
-#	kcachegrind.lsm kcachegrind.spec version.h 
-#

@@ -1,6 +1,1 @@
-
 add_subdirectory( hicolor ) 
-
-
-
-
