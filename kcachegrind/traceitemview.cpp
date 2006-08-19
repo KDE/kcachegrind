@@ -64,7 +64,7 @@ KConfigGroup* TraceItemView::configGroup(KConfig* c,
 					 QString group, QString post)
 {
     QStringList gList = c->groupList();
-    if (gList.contains((group+post).ascii()) ) group += post;
+    if (gList.contains(group+post) ) group += post;
     return new KConfigGroup(c, group);
 }
 
@@ -121,11 +121,11 @@ void TraceItemView::readViewConfig(KConfig*, QString, QString, bool)
 void TraceItemView::saveViewConfig(KConfig*, QString, QString, bool)
 {}
 #else
-void TraceItemView::saveViewConfig(KConfig* c, 
+void TraceItemView::saveViewConfig(KConfig* c,
 				   QString prefix, QString postfix, bool)
 {
     // write a dummy config entry to see missing virtual functions
-    KConfigGroup g(c, (prefix+postfix).ascii());
+    KConfigGroup g(c, prefix+postfix);
     g.writeEntry("SaveNotImplemented", true);
 }
 #endif
@@ -277,12 +277,12 @@ void TraceItemView::updateView(bool force)
 
   if (_status & costTypeChanged)
     kDebug() << "  Cost type "
-              << (_costType ? _costType->name().ascii() : "?")
+              << (_costType ? qPrintable( _costType->name() ) : "?")
               << endl;
 
   if (_status & costType2Changed)
     kDebug() << "  Cost type 2 "
-              << (_costType2 ? _costType2->name().ascii() : "?")
+              << (_costType2 ? qPrintable( _costType2->name() ) : "?")
               << endl;
 
   if (_status & groupTypeChanged)
@@ -292,12 +292,12 @@ void TraceItemView::updateView(bool force)
 
   if (_status & activeItemChanged)
     kDebug() << "  Active: "
-              << (_activeItem ? _activeItem->fullName().ascii() : "?")
+              << (_activeItem ? qPrintable( _activeItem->fullName() ) : "?")
               << endl;
 
   if (_status & selectedItemChanged)
     kDebug() << "  Selected: "
-              << (_selectedItem ? _selectedItem->fullName().ascii() : "?")
+              << (_selectedItem ? qPrintable( _selectedItem->fullName() ) : "?")
               << endl;
 #endif
 
@@ -318,7 +318,7 @@ void TraceItemView::selected(TraceItemView* /*sender*/, TraceItem* i)
 #if TRACE_UPDATES
   kDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::selected "
-            << (i ? i->name().ascii(): "(nil)")
+            << (i ? qPrintable( i->name() ): "(nil)")
             << ", sender "
             << sender->widget()->name() << endl;
 #endif
@@ -347,7 +347,7 @@ void TraceItemView::activated(TraceItemView* /*sender*/, TraceItem* i)
 #if TRACE_UPDATES
   kDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::activated "
-            << (i ? i->name().ascii(): "(nil)")
+            << (i ? qPrintable( i->name() ) : "(nil)")
             << ", sender "
             << sender->widget()->name() << endl;
 #endif
@@ -406,7 +406,7 @@ void TraceItemView::activated(TraceItem* i)
 #if TRACE_UPDATES
   kDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::activated "
-            << (i ? i->name().ascii(): "(nil)") << endl;
+            << (i ? qPrintable( i->name() ): "(nil)") << endl;
 #endif
 
   if (_parentView)

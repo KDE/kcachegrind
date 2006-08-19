@@ -189,7 +189,7 @@ bool FixString::stripName(FixString& s)
       _str++;
       _len--;
     }
-    
+
     s.set(newStr, newLen);
     return true;
 }
@@ -207,7 +207,7 @@ FixString FixString::stripUntil(char c)
       _len--;
       break;
     }
-    
+
     _str++;
     _len--;
     newLen++;
@@ -356,7 +356,7 @@ FixFile::FixFile(QFile* file)
 
   _filename = file->name();
   if (!file->isOpen() && !file->open( QIODevice::ReadOnly ) ) {
-    qWarning( "%s: %s", (const char*) QFile::encodeName(_filename),
+    qWarning( "%s: %s", (const char*)QFile::encodeName(_filename),
 	      strerror( errno ) );
     _len = 0;
     _currentLeft = 0;
@@ -379,7 +379,7 @@ FixFile::FixFile(QFile* file)
         _len = len;
 	_used_mmap = true;
 
-	if (0) qDebug("Mapped '%s'", _filename.ascii());
+	if (0) qDebug("Mapped '%s'", qPrintable( _filename ));
     } else {
 #endif // HAVE_MMAP
         // try reading the data into memory instead
@@ -400,7 +400,7 @@ FixFile::~FixFile()
 
 #ifdef HAVE_MMAP
     if (_used_mmap) {
-	if (0) qDebug("Unmapping '%s'", _filename.ascii());
+	if (0) qDebug("Unmapping '%s'", qPrintable( _filename ));
 	if (munmap(_base, _len) != 0)
 	    qWarning( "munmap: %s", strerror( errno ) );
     }
