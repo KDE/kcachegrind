@@ -1739,7 +1739,7 @@ void TreeMapWidget::setCurrent(TreeMapItem* i, bool kbd)
 	if (i) i->redraw();
     }
 
-    //kDebug(90100) << "Current Item " << (i ? i->path().ascii() : "(null)") << endl;
+    //kDebug(90100) << "Current Item " << (i ? qPrintable(i->path()) : "(null)") << endl;
 
     emit currentChanged(i, kbd);
 }

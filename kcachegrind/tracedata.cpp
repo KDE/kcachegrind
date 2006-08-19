@@ -551,7 +551,7 @@ void TraceCost::maxCost(TraceSubMapping* sm, FixString & s)
 #if TRACE_DEBUG
     _dirty = false; // don't recurse !
     qDebug("%s\n now %s", qPrintable( fullName() ),
-	   TraceCost::costString(0).ascii());
+	   qPrintable(TraceCost::costString(0)));
     _dirty = true; // because of invalidate()
 #endif
 }
@@ -585,8 +585,8 @@ void TraceCost::addCost(TraceCost* item)
 #if TRACE_DEBUG
     _dirty = false; // don't recurse !
     qDebug("%s added cost item\n %s\n  now %s",
-	   qPrintable( fullName() ), item->fullName().ascii(),
-	   TraceCost::costString(0).ascii());
+	   qPrintable( fullName() ), qPrintable(item->fullName()),
+	   qPrintable(TraceCost::costString(0)));
     _dirty = true; // because of invalidate()
 #endif
 }
@@ -619,8 +619,8 @@ void TraceCost::maxCost(TraceCost* item)
 #if TRACE_DEBUG
     _dirty = false; // don't recurse !
     qDebug("%s added cost item\n %s\n  now %s",
-	   qPrintable( fullName() ), item->fullName().ascii(),
-	   TraceCost::costString(0).ascii());
+	   qPrintable( fullName() ), qPrintable(item->fullName()),
+	   qPrintable( TraceCost::costString(0) ));
     _dirty = true; // because of invalidate()
 #endif
 }
@@ -864,13 +864,13 @@ bool TraceCostType::parseFormula()
     if (rx.cap(0).isEmpty()) break;
 
     //qDebug("parseFormula: matched '%s','%s','%s'",
-    //       rx.cap(1).ascii(), rx.cap(2).ascii(), rx.cap(3).ascii());
+    //       qPrintable(rx.cap(1)), qPrintable(rx.cap(2)), qPrintable(rx.cap(3)));
 
     costName = rx.cap(3);
     costType = _mapping->type(costName);
     if (!costType) {
 	// qDebug("Cost type '%s': In formula cost '%s' unknown.",
-        //     _name.ascii(), costName.ascii());
+        //     qPrintable(_name), qPrintable(costName));
 
 	_inParsing = false;
 	return false;
@@ -1149,7 +1149,7 @@ int TraceCostMapping::add(TraceCostType* ct)
   if (ct->isReal()) {
     if (_realCount >= TraceCost::MaxRealIndex) {
       qDebug("WARNING: Maximum for real cost types reached (on adding '%s')",
-             ct->name().ascii());
+             qPrintable(ct->name()));
       return TraceCost::InvalidIndex;
     }
     _real[_realCount] = ct;
@@ -1162,7 +1162,7 @@ int TraceCostMapping::add(TraceCostType* ct)
 
   if (_virtualCount >= TraceCost::MaxRealIndex) {
     qDebug("WARNING: Maximum for virtual cost types reached (on adding '%s')",
-           ct->name().ascii());
+           qPrintable(ct->name()));
     return TraceCost::InvalidIndex;
   }
   _virtual[_virtualCount] = ct;
@@ -1447,7 +1447,7 @@ void TraceListCost::addDep(TraceCost* dep)
 #if TRACE_ASSERTIONS
   if (_deps.findRef(dep)>=0) {
     qDebug("addDep: %s already in list!",
-           dep->fullName().ascii());
+           qPrintable(dep->fullName()));
     return;
   }
 #endif
@@ -1458,7 +1458,7 @@ void TraceListCost::addDep(TraceCost* dep)
 
 #if TRACE_DEBUG
   qDebug("%s added\n %s (now %d)",
-         qPrintable( fullName() ), dep->fullName().ascii(),
+         qPrintable( fullName() ), qPrintable(dep->fullName()),
          _deps.count());
 #endif
 }
@@ -1499,7 +1499,7 @@ void TraceListCost::update()
   _dirty = false;
 
 #if TRACE_DEBUG
-  qDebug("   > %s", costString(0).ascii());
+  qDebug("   > %s", qPrintable(costString(0)));
 #endif
 }
 
@@ -1521,7 +1521,7 @@ void TraceJumpListCost::addDep(TraceJumpCost* dep)
 #if TRACE_ASSERTIONS
   if (_deps.findRef(dep)>=0) {
     qDebug("addDep: %s already in list!",
-           dep->fullName().ascii());
+           qPrintable(dep->fullName()));
     return;
   }
 #endif
@@ -1532,7 +1532,7 @@ void TraceJumpListCost::addDep(TraceJumpCost* dep)
 
 #if TRACE_DEBUG
   qDebug("%s added\n %s (now %d)",
-         qPrintable( fullName() ), dep->fullName().ascii(),
+         qPrintable( fullName() ), qPrintable(dep->fullName()),
          _deps.count());
 #endif
 }
@@ -1573,7 +1573,7 @@ void TraceJumpListCost::update()
   _dirty = false;
 
 #if TRACE_DEBUG
-  qDebug("   > %s", costString(0).ascii());
+  qDebug("   > %s", qPrintable(costString(0)));
 #endif
 }
 
@@ -1595,7 +1595,7 @@ void TraceCallListCost::addDep(TraceCallCost* dep)
 #if TRACE_ASSERTIONS
   if (_deps.findRef(dep)>=0) {
     qDebug("addDep: %s already in list!",
-           dep->fullName().ascii());
+           qPrintable(dep->fullName()));
     return;
   }
 #endif
@@ -1606,7 +1606,7 @@ void TraceCallListCost::addDep(TraceCallCost* dep)
 
 #if TRACE_DEBUG
   qDebug("%s added\n %s (now %d)",
-         qPrintable( fullName() ), dep->fullName().ascii(),
+         qPrintable( fullName() ), qPrintable(dep->fullName()),
          _deps.count());
 #endif
 }
@@ -1652,7 +1652,7 @@ void TraceCallListCost::update()
   _dirty = false;
 
 #if TRACE_DEBUG
-  qDebug("   > %s", costString(0).ascii());
+  qDebug("   > %s", qPrintable(costString(0)));
 #endif
 }
 
@@ -1674,7 +1674,7 @@ void TraceInclusiveListCost::addDep(TraceInclusiveCost* dep)
 #if TRACE_ASSERTIONS
   if (_deps.findRef(dep)>=0) {
     qDebug("addDep: %s already in list!",
-           dep->fullName().ascii());
+           qPrintable(dep->fullName()));
     return;
   }
 #endif
@@ -1685,7 +1685,7 @@ void TraceInclusiveListCost::addDep(TraceInclusiveCost* dep)
 
 #if TRACE_DEBUG
   qDebug("%s added\n %s (now %d)",
-         qPrintable( fullName() ), dep->fullName().ascii(),
+         qPrintable( fullName() ), qPrintable(dep->fullName()),
          _deps.count());
 #endif
 }
@@ -1726,7 +1726,7 @@ void TraceInclusiveListCost::update()
   _dirty = false;
 
 #if TRACE_DEBUG
-  qDebug("   > %s", costString(0).ascii());
+  qDebug("   > %s", qPrintable(costString(0)));
 #endif
 }
 
@@ -1852,7 +1852,7 @@ void TracePartCall::update()
   _dirty = false;
 
 #if TRACE_DEBUG
-  qDebug("   > %s", costString(0).ascii());
+  qDebug("   > %s", qPrintable(costString(0)));
 #endif
 
 #endif // USE_FIXCOST
@@ -1912,7 +1912,7 @@ void TracePartFunction::addPartInstr(TracePartInstr* ref)
 #if TRACE_ASSERTIONS
   if (_partInstr.findRef(ref)>=0) {
     qDebug("TracePartFunction::addPartInstr: %s already in list!",
-           ref->name().ascii());
+           qPrintable(ref->name()));
     return;
   }
 #endif
@@ -1922,7 +1922,7 @@ void TracePartFunction::addPartInstr(TracePartInstr* ref)
 
 #if TRACE_DEBUG
   qDebug("%s added\n %s (now %d)",
-         qPrintable( fullName() ), ref->fullName().ascii(),
+         qPrintable( fullName() ), qPrintable(ref->fullName()),
          _partInstr.count());
 #endif
 }
@@ -1933,7 +1933,7 @@ void TracePartFunction::addPartLine(TracePartLine* ref)
 #if TRACE_ASSERTIONS
   if (_partLines.findRef(ref)>=0) {
     qDebug("TracePartFunction::addPartLine: %s already in list!",
-           ref->name().ascii());
+           qPrintable(ref->name()));
     return;
   }
 #endif
@@ -1943,7 +1943,7 @@ void TracePartFunction::addPartLine(TracePartLine* ref)
 
 #if TRACE_DEBUG
   qDebug("%s added\n %s (now %d)",
-         qPrintable( fullName() ), ref->fullName().ascii(),
+         qPrintable( fullName() ), qPrintable(ref->fullName()),
          _partLines.count());
 #endif
 }
@@ -1954,7 +1954,7 @@ void TracePartFunction::addPartCaller(TracePartCall* ref)
 #if TRACE_ASSERTIONS
   if (_partCallers.findRef(ref)>=0) {
     qDebug("TracePartFunction::addPartCaller: %s already in list!",
-           ref->name().ascii());
+           qPrintable(ref->name()));
     return;
   }
 #endif
@@ -1964,7 +1964,7 @@ void TracePartFunction::addPartCaller(TracePartCall* ref)
 
 #if TRACE_DEBUG
   qDebug("%s added Caller\n %s (now %d)",
-         qPrintable( fullName() ), ref->fullName().ascii(),
+         qPrintable( fullName() ), qPrintable(ref->fullName()),
          _partCallers.count());
 #endif
 }
@@ -1975,7 +1975,7 @@ void TracePartFunction::addPartCalling(TracePartCall* ref)
 #if TRACE_ASSERTIONS
   if (_partCallings.findRef(ref)>=0) {
     qDebug("TracePartFunction::addPartCalling: %s already in list!",
-           ref->name().ascii());
+           qPrintable(ref->name()));
     return;
   }
 #endif
@@ -1985,7 +1985,7 @@ void TracePartFunction::addPartCalling(TracePartCall* ref)
 
 #if TRACE_DEBUG
   qDebug("%s added Calling\n %s (now %d)",
-         qPrintable( fullName() ), ref->fullName().ascii(),
+         qPrintable( fullName() ), qPrintable(ref->fullName()),
          _partCallings.count());
 #endif
 }
@@ -2118,7 +2118,7 @@ void TracePartFunction::update()
   _dirty = false;
 
 #if TRACE_DEBUG
-  qDebug("   > %s", costString(0).ascii());
+  qDebug("   > %s", qPrintable(costString(0)));
 #endif
 }
 
@@ -2228,7 +2228,7 @@ void TraceInstrJump::update()
 #endif
 
 #if TRACE_DEBUG
-  qDebug("   > %s", costString(0).ascii());
+  qDebug("   > %s", qPrintable(costString(0)));
 #endif
 }
 
@@ -2483,7 +2483,7 @@ TraceInstrCall* TraceCall::instrCall(TraceInstr* i)
     invalidate();
 
 #if TRACE_DEBUG
-    qDebug("Created %s [TraceCall::instrCall]", icall->fullName().ascii());
+    qDebug("Created %s [TraceCall::instrCall]", qPrintable(icall->fullName()));
 #endif
     i->addInstrCall(icall);
   }
@@ -2505,7 +2505,7 @@ TraceLineCall* TraceCall::lineCall(TraceLine* l)
     invalidate();
 
 #if TRACE_DEBUG
-    qDebug("Created %s [TraceCall::lineCall]", lcall->fullName().ascii());
+    qDebug("Created %s [TraceCall::lineCall]", qPrintable(lcall->fullName()));
 #endif
     l->addLineCall(lcall);
   }
@@ -2699,7 +2699,7 @@ void TraceInstr::addInstrCall(TraceInstrCall* instrCall)
 #if TRACE_DEBUG
   qDebug("%s added\n %s (now %d)",
          qPrintable( fullName() ),
-         instrCall->fullName().ascii(), _instrCalls.count());
+         qPrintable(instrCall->fullName()), _instrCalls.count());
 #endif
 }
 
@@ -2814,7 +2814,7 @@ void TraceLine::addLineCall(TraceLineCall* lineCall)
 #if TRACE_DEBUG
   qDebug("%s added\n %s (now %d)",
          qPrintable( fullName() ),
-         lineCall->fullName().ascii(), _lineCalls.count());
+         qPrintable(lineCall->fullName()), _lineCalls.count());
 #endif
 }
 
@@ -2924,7 +2924,7 @@ TraceLine* TraceFunctionSource::line(uint lineno, bool createNew)
 
 #if TRACE_DEBUG
     qDebug("Created %s [TraceFunctionSource::line]",
-           l.fullName().ascii());
+           qPrintable(l.fullName()));
 #endif
   }
   return &l;
@@ -3398,7 +3398,7 @@ TraceInstr* TraceFunction::instr(Addr addr, bool createNew)
 
 #if TRACE_DEBUG
     qDebug("Created %s [TraceFunction::instr]",
-           i.fullName().ascii());
+           qPrintable(i.fullName()));
 #endif
   }
   return &i;
@@ -3420,7 +3420,7 @@ void TraceFunction::addCaller(TraceCall* caller)
 
 #if TRACE_DEBUG
   qDebug("%s added Caller\n %s (now %d)",
-         qPrintable( fullName() ), caller->fullName().ascii(), _callers.count());
+         qPrintable( fullName() ), qPrintable(caller->fullName()), _callers.count());
 #endif
 }
 
@@ -3442,7 +3442,7 @@ TraceCall* TraceFunction::calling(TraceFunction* called)
     invalidate();
 
 #if TRACE_DEBUG
-    qDebug("Created %s [TraceFunction::calling]", calling->fullName().ascii());
+    qDebug("Created %s [TraceFunction::calling]", qPrintable(calling->fullName()));
 #endif
     called->addCaller(calling);
   }
@@ -3686,7 +3686,7 @@ void TraceFunction::update()
   _dirty = false;
 
 #if TRACE_DEBUG
-  qDebug("> %s", costString(0).ascii());
+  qDebug("> %s", qPrintable(costString(0)));
 #endif
 }
 
@@ -4038,7 +4038,7 @@ void TraceClass::addFunction(TraceFunction* function)
 #if TRACE_DEBUG
   qDebug("%s added\n %s (now %d)",
          qPrintable( fullName() ),
-         function->fullName().ascii(), _functions.count());
+         qPrintable(function->fullName()), _functions.count());
 #endif
 }
 
@@ -4085,7 +4085,7 @@ void TraceFile::addFunction(TraceFunction* function)
 #if TRACE_DEBUG
   qDebug("%s added\n %s (now %d)",
          qPrintable( fullName() ),
-         function->fullName().ascii(), _functions.count());
+         qPrintable(function->fullName()), _functions.count());
 #endif
 }
 
@@ -4105,7 +4105,7 @@ void TraceFile::addSourceFile(TraceFunctionSource* sourceFile)
 
 #if TRACE_DEBUG
   qDebug("%s \n added SourceFile %s (now %d)",
-         qPrintable( fullName() ), sourceFile->fullName().ascii(),
+         qPrintable( fullName() ), qPrintable(sourceFile->fullName()),
          _sourceFiles.count());
 #endif
 }
@@ -4203,7 +4203,7 @@ void TraceObject::addFunction(TraceFunction* function)
 #if TRACE_DEBUG
   qDebug("%s added\n %s (now %d)",
          qPrintable( fullName() ),
-         function->fullName().ascii(), _functions.count());
+         qPrintable(function->fullName()), _functions.count());
 #endif
 }
 
@@ -4672,7 +4672,7 @@ TraceObject* TraceData::object(const QString& name)
 
 #if TRACE_DEBUG
     qDebug("Created %s [TraceData::object]",
-           o.fullName().ascii());
+           qPrintable(o.fullName()));
 #endif
   }
   return &o;
@@ -4689,7 +4689,7 @@ TraceFile* TraceData::file(const QString& name)
 
 #if TRACE_DEBUG
     qDebug("Created %s [TraceData::file]",
-           f.fullName().ascii());
+           qPrintable(f.fullName()));
 #endif
   }
   return &f;
@@ -4728,7 +4728,7 @@ TraceClass* TraceData::cls(const QString& fnName, QString& shortName)
 
 #if TRACE_DEBUG
     qDebug("Created %s [TraceData::cls]",
-           c.fullName().ascii());
+           qPrintable(c.fullName()));
 #endif
   }
   return &c;
@@ -4744,7 +4744,7 @@ TraceFunction* TraceData::function(const QString& name,
   TraceClass* c = cls(name, shortName);
 
   if (!file || !object || !c) {
-    qDebug("ERROR - no file/object/class for %s ?!", name.ascii());
+    qDebug("ERROR - no file/object/class for %s ?!", qPrintable(name));
     return 0;
   }
 
@@ -4767,9 +4767,9 @@ TraceFunction* TraceData::function(const QString& name,
 
 #if TRACE_DEBUG
       qDebug("Created %s [TraceData::function]\n  for %s, %s, %s",
-	     f.fullName().ascii(),
-	     c->fullName().ascii(), file->fullName().ascii(),
-	     object ? object->fullName().ascii() : "(unknown object)");
+	     qPrintable(f.fullName()),
+	     qPrintable(c->fullName()), qPrintable(file->fullName()),
+	     object ? qPrintable(object->fullName()) : "(unknown object)");
 #endif
 
       c->addFunction(&f);
