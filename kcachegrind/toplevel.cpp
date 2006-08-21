@@ -83,7 +83,7 @@
 TopLevel::TopLevel()
   : KMainWindow(0)
 {
-    QDBus::sessionBus().registerObject("/KCachegrind", this, QDBusConnection::ExportSlots);
+    QDBusConnection::sessionBus().registerObject("/KCachegrind", this, QDBusConnection::ExportScriptableSlots);
   init();
 
   createDocks();
