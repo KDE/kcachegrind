@@ -20,9 +20,7 @@
  * Utility classes for KCachegrind
  */
 
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #include <config-kcachegrind.h>
 

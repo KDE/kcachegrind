@@ -220,7 +220,7 @@ void Configuration::readOptions(KConfig* kconfig)
   count = colorConfig.readEntry("Count", 0);
   for (i=1;i<=count;i++) {
     QString n = colorConfig.readEntry(QString("Name%1").arg(i),QString());
-    QColor color = colorConfig.readColorEntry(QString("Color%1").arg(i));
+    QColor color = colorConfig.readEntry(QString("Color%1").arg(i), Qt::black);
 
     if (n.isEmpty()) continue;
 
