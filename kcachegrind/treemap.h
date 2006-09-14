@@ -416,7 +416,7 @@ public:
   enum SelectionMode { Single, Multi, Extended, NoSelection };
 
   /* The widget gets owner of the base item */
-  TreeMapWidget(TreeMapItem* base, QWidget* parent=0, const char* name=0);
+  TreeMapWidget(TreeMapItem* base, QWidget* parent=0);
   ~TreeMapWidget();
 
   /**

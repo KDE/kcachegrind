@@ -118,12 +118,12 @@ class TabView : public QWidget, public TraceItemView
 public:
 
   TabView(TraceItemView* parentView,
-          QWidget* parent = 0, const char* name = 0);
+          QWidget* parent = 0, const char* name=0);
 
   virtual QWidget* widget() { return this; }
   QString whatsThis() const ;
   void setData(TraceData*);
-  bool isViewVisible() const { return !_isCollapsed; }
+  bool isViewVisible() { return !_isCollapsed; }
   void selected(TraceItemView*, TraceItem*);
   bool active() const { return _active; }
   void setActive(bool);

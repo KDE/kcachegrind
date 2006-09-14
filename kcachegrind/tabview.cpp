@@ -53,8 +53,9 @@
 // TabBar
 
 TabBar::TabBar(TabView* v, QTabWidget* parent, const char *name)
-    : QTabBar(parent /*, name*/)
+    : QTabBar(parent)
 {
+    setObjectName(name);
     _tabWidget = parent;
     _tabView = v;
 }
@@ -242,9 +243,10 @@ void TabWidget::moveEvent(QMoveEvent* e)
 
 TabView::TabView(TraceItemView* parentView,
                  QWidget* parent, const char* name)
-  : QWidget(parent, name), TraceItemView(parentView)
+  : QWidget(parent), TraceItemView(parentView)
 {
-    setFocusPolicy(Qt::StrongFocus);
+  setFocusPolicy(Qt::StrongFocus);
+  setObjectName(name);
 
   _isCollapsed = true;
 

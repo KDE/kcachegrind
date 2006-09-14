@@ -54,8 +54,9 @@
 
 CallMapView::CallMapView(bool showCallers, TraceItemView* parentView,
                          QWidget* parent, const char* name)
-  : TreeMapWidget(new CallMapBaseItem(), parent, name),  TraceItemView(parentView)
+  : TreeMapWidget(new CallMapBaseItem(), parent),  TraceItemView(parentView)
 {
+  setObjectName(name);
   _showCallers = showCallers;
 
   setFieldType(0, i18n( "Name" ));

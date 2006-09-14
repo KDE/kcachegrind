@@ -36,8 +36,9 @@
 #include "stackitem.h"
 
 StackSelection::StackSelection( QWidget* parent, const char* name)
-  : StackSelectionBase(parent, name)
+  : StackSelectionBase(parent)
 {
+  setObjectName(name);
   _data = 0;
   _browser = new StackBrowser();
   _item = 0;

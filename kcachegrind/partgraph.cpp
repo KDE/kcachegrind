@@ -31,8 +31,8 @@
 
 // PartAreaWidget
 
-PartAreaWidget::PartAreaWidget(QWidget* parent, const char* name)
-    : TreeMapWidget(new BasePartItem(), parent, name)
+PartAreaWidget::PartAreaWidget(QWidget* parent)
+    : TreeMapWidget(new BasePartItem(), parent)
 {
   _data = 0;
   _function = 0;

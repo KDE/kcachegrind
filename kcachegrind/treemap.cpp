@@ -1118,8 +1118,8 @@ void TreeMapTip::maybeTip( const QPoint& pos )
 // TreeMapWidget
 
 TreeMapWidget::TreeMapWidget(TreeMapItem* base,
-			     QWidget* parent, const char* name)
-    : QWidget(parent, name)
+			     QWidget* parent)
+    : QWidget(parent)
 {
     _base = base;
     _base->setWidget(this);
