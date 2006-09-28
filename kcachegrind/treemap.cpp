@@ -2127,21 +2127,8 @@ void TreeMapWidget::fontChange( const QFont& )
   redraw();
 }
 
-
-void TreeMapWidget::resizeEvent( QResizeEvent * )
-{
-  // this automatically redraws (as size is changed)
-  drawTreeMap();
-}
-
 void TreeMapWidget::paintEvent( QPaintEvent * )
 {
-  drawTreeMap();
-}
-
-void TreeMapWidget::showEvent( QShowEvent * )
-{
-  // refresh only if needed
   drawTreeMap();
 }
 

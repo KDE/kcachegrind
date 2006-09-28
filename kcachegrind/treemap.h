@@ -41,9 +41,7 @@
 //Added by qt3to4:
 #include <QPaintEvent>
 #include <QKeyEvent>
-#include <QShowEvent>
 #include <QContextMenuEvent>
-#include <QResizeEvent>
 #include <Q3PopupMenu>
 #include <QMouseEvent>
 
@@ -700,8 +698,6 @@ protected:
   void mouseDoubleClickEvent( QMouseEvent * );
   void keyPressEvent( QKeyEvent* );
   void paintEvent( QPaintEvent * );
-  void resizeEvent( QResizeEvent * );
-  void showEvent( QShowEvent * );
   void fontChange( const QFont& );
 
 private:
