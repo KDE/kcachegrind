@@ -47,7 +47,7 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kconfig.h>
-#include <ktempfile.h>
+#include <ktemporaryfile.h>
 #include <kapplication.h>
 #include <kiconloader.h>
 #include <kfiledialog.h>
@@ -443,7 +443,7 @@ GraphExporter::~GraphExporter()
 {
   if (_item && _tmpFile) {
 #if DEBUG_GRAPH
-    _tmpFile->unlink();
+    _tmpFile->setAutoRemove(true);
 #endif
     delete _tmpFile;
   }
@@ -458,7 +458,7 @@ void GraphExporter::reset(TraceData*, TraceItem* i, TraceCostType* ct,
   _edgeMap.clear();
 
   if (_item && _tmpFile) {
-    _tmpFile->unlink();
+    _tmpFile->setAutoRemove(true);
     delete _tmpFile;
   }
 
@@ -479,8 +479,11 @@ void GraphExporter::reset(TraceData*, TraceItem* i, TraceCostType* ct,
   if (!i) return;
 
   if (filename.isEmpty()) {
-    _tmpFile = new KTempFile(QString::null, ".dot");
-    _dotName = _tmpFile->name();
+    _tmpFile = new KTemporaryFile();
+    _tmpFile->setSuffix(".dot");
+    _tmpFile->setAutoRemove(false);
+    _tmpFile->open();
+    _dotName = _tmpFile->fileName();
     _useBox = true;
   }
   else {
@@ -554,7 +557,7 @@ void GraphExporter::writeDot()
   QTextStream* stream = 0;
 
   if (_tmpFile)
-    stream = _tmpFile->textStream();
+    stream = new QTextStream(_tmpFile);
   else {
     file = new QFile(_dotName);
     if ( !file->open( QIODevice::WriteOnly ) ) {
@@ -770,7 +773,9 @@ void GraphExporter::writeDot()
   *stream << "}\n";
 
   if (_tmpFile) {
-    _tmpFile->close();
+    stream->flush();
+    _tmpFile->seek(0);
+    delete stream;
   }
   else {
     file->close();

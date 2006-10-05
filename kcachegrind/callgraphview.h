@@ -43,7 +43,7 @@
 
 class Q3Process;
 
-class KTempFile;
+class KTemporaryFile;
 class CanvasNode;
 class CanvasEdge;
 class GraphEdge;
@@ -270,7 +270,7 @@ private:
   TraceItem* _item;
   TraceCostType* _costType;
   TraceItem::CostType _groupType;
-  KTempFile* _tmpFile;
+  KTemporaryFile* _tmpFile;
   double _realFuncLimit, _realCallLimit;
   int _maxDepth;
   bool _graphCreated;
