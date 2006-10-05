@@ -49,10 +49,12 @@ set(kcachegrind_SRCS
 kde4_automoc(${kcachegrind_SRCS})
 
 kde4_add_ui3_files(kcachegrind_SRCS 
-   functionselectionbase.ui 
-   stackselectionbase.ui 
-   partselectionbase.ui 
    configdlgbase.ui )
+kde4_add_ui_files(kcachegrind_SRCS
+	stackselectionbase.ui
+	functionselectionbase.ui
+	partselectionbase.ui
+	)
 
 kde4_add_executable(kcachegrind ${kcachegrind_SRCS})
 

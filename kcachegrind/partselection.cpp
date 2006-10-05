@@ -36,8 +36,8 @@
 #include "partselection.h"
 #include "partgraph.h"
 
-PartSelection::PartSelection( QWidget* parent, const char* name)
-  : PartSelectionBase(parent, name)
+PartSelection::PartSelection( QWidget* parent)
+  : PartSelectionBase(parent)
 {
   _data = 0;
   _costType = 0;

@@ -41,8 +41,8 @@
 #include "toplevel.h"
 
 FunctionSelection::FunctionSelection( TopLevel* top,
-				      QWidget* parent, const char* name)
-    : FunctionSelectionBase(parent, name), TraceItemView(0, top)
+				      QWidget* parent)
+    : FunctionSelectionBase(parent), TraceItemView(0, top)
 {
   _group = 0;
   _inSetGroup = false;

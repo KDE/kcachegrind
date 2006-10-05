@@ -26,7 +26,7 @@
 
 #include <qobject.h>
 
-#include "partselectionbase.h"
+#include "ui_partselectionbase.h"
 #include "partgraph.h"
 #include "tracedata.h"
 
@@ -35,12 +35,21 @@ class TraceFunction;
 class TraceData;
 class TreeMapItem;
 
+class PartSelectionBase : public QWidget, public Ui::PartSelectionBase
+{
+public:
+  PartSelectionBase( QWidget *parent ) : QWidget( parent ) {
+    setupUi( this );
+  }
+};
+
+
 class PartSelection: public PartSelectionBase
 {
   Q_OBJECT
 
 public:
-  PartSelection( QWidget* parent = 0, const char* name = 0);
+  PartSelection( QWidget* parent = 0);
   ~PartSelection();
 
   TraceData* data() { return _data; }

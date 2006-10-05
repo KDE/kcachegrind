@@ -23,7 +23,7 @@
 #ifndef FUNCTIONSELECTION_H
 #define FUNCTIONSELECTION_H
 
-#include "functionselectionbase.h"
+#include "ui_functionselectionbase.h"
 #include "traceitemview.h"
 #include "tracedata.h"
 #include "listutils.h"
@@ -37,12 +37,22 @@ class TraceData;
 class StackBrowser;
 class NestedAreaItem;
 
+
+class FunctionSelectionBase : public QWidget, public Ui::FunctionSelectionBase
+{
+public:
+  FunctionSelectionBase( QWidget *parent ) : QWidget( parent ) {
+    setupUi( this );
+  }
+};
+
+
 class FunctionSelection : public FunctionSelectionBase, public TraceItemView
 {
   Q_OBJECT
 
 public:
-  FunctionSelection( TopLevel*, QWidget* parent = 0, const char* name = 0);
+  FunctionSelection( TopLevel*, QWidget* parent = 0);
   ~FunctionSelection();
 
   TraceCostItem* group(QString);

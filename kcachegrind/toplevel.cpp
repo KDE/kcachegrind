@@ -289,7 +289,7 @@ void TopLevel::createDocks()
   _partDock = new QDockWidget(this);
   _partDock->setObjectName("part dock");
   _partDock->setWindowTitle(i18n("Parts Overview"));
-  _partSelection = new PartSelection(_partDock, "partSelection");
+  _partSelection = new PartSelection(_partDock);
   _partDock->setWidget(_partSelection);
   _partSelection->setWhatsThis( i18n(
                    "<b>The Parts Overview</b>"
@@ -318,7 +318,7 @@ void TopLevel::createDocks()
   _stackDock = new QDockWidget(this);
   _stackDock->setObjectName("stack dock");
   // Why is the caption only correct with a close button?
-  _stackSelection = new StackSelection(_stackDock, "stackSelection");
+  _stackSelection = new StackSelection(_stackDock);
   _stackDock->setWidget(_stackSelection);
   _stackDock->setWindowTitle(i18n("Top Cost Call Stack"));
   _stackSelection->setWhatsThis( i18n(
@@ -337,8 +337,7 @@ void TopLevel::createDocks()
   _functionDock = new QDockWidget(this);
   _functionDock->setObjectName("function dock");
   _functionDock->setWindowTitle(i18n("Flat Profile"));
-  _functionSelection = new FunctionSelection(this, _functionDock,
-                                             "functionSelection");
+  _functionSelection = new FunctionSelection(this, _functionDock);
   _functionSelection->setTopLevel(this);
 
   _functionDock->setWidget(_functionSelection);

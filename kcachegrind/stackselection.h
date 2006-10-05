@@ -25,7 +25,7 @@
 #ifndef STACKSELECTION_H
 #define STACKSELECTION_H
 
-#include "stackselectionbase.h"
+#include "ui_stackselectionbase.h"
 #include "tracedata.h"
 
 class TraceFunction;
@@ -33,12 +33,21 @@ class TraceData;
 class StackBrowser;
 class NestedAreaItem;
 
+class StackSelectionBase : public QWidget, public Ui::StackSelectionBase
+{
+public:
+  StackSelectionBase( QWidget *parent ) : QWidget( parent ) {
+    setupUi( this );
+  }
+};
+
+
 class StackSelection : public StackSelectionBase
 {
   Q_OBJECT
 
 public:
-  StackSelection( QWidget* parent = 0, const char* name = 0);
+  StackSelection( QWidget* parent = 0);
   ~StackSelection();
 
   TraceData* data() const { return _data; }
