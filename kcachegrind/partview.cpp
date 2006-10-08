@@ -115,9 +115,9 @@ void PartView::context(Q3ListViewItem* i, const QPoint & pos, int)
   addGoMenu(&popup);
 
   int r = popup.exec(pos);
-  if (r == 95) ;
-
-  // TODO: ...
+  if (r == 95) {
+    // TODO: ...
+  }
 }
 
 void PartView::selectionChangedSlot()
