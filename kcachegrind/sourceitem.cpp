@@ -24,7 +24,7 @@
 #include <qregexp.h>
 #include <qpainter.h>
 //Added by qt3to4:
-#include <Q3PointArray>
+#include <QPolygon>
 #include <Q3MemArray>
 
 #include <klocale.h>
@@ -388,7 +388,7 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       x = marg + 6*end;
       w = 6*(sv->arrowLevels() - end) + 10;
 
-      Q3PointArray a;
+      QPolygon a;
       a.putPoints(0, 7, x, y+h,
 		  x,y, x+w-8, y, x+w-8, y-2,
 		  x+w, yy,
