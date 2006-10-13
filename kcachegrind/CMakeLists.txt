@@ -46,7 +46,7 @@ set(kcachegrind_SRCS
    stackitem.cpp 
    callgraphview.cpp )
 
-kde4_automoc(${kcachegrind_SRCS})
+kde4_automoc(kcachegrind ${kcachegrind_SRCS})
 
 kde4_add_ui3_files(kcachegrind_SRCS 
    configdlgbase.ui )
