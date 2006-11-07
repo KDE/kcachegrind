@@ -407,7 +407,9 @@ void TopLevel::createDocks()
 #endif
   }
   else {
+#ifdef __GNUC__
 #warning port to Qt4
+#endif
 #if 0
     QTextStream ts( &str, QIODevice::ReadOnly );
     ts >> *this;
@@ -1939,8 +1941,9 @@ bool TopLevel::queryExit()
   // We don't want to save the KToolbar position here.
   // Its already stored.
   delete toolBar();
-
+#ifdef __GNUC__
 #warning port to Qt4
+#endif  
 #if 0
   KConfigGroup dockConfig(KGlobal::config(), QByteArray("Docks"));
   QString str;

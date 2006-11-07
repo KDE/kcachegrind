@@ -96,7 +96,9 @@ int GraphEdgeList::compareItems(Item item1, Item item2)
     if (!e1) return -1;
     if (!e2) return 1;
 
+#ifdef __GNUC__
 #warning please review the code - either *1 or *2 are unused and are still compared with
+#endif    
     int dx1, dy1, dx2, dy2;
     int x, y;
     if (_sortCallerPos) {
