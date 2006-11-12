@@ -15,5 +15,5 @@ GenericName[x-test]=xxProfiler Frontendxx
 Comment=Visualization of Performance Profiling Data
 Comment[fr]=Visualisation des données de performance de profilage
 Comment[x-test]=xxVisualization of Performance Profiling Dataxx
-X-DCOP-ServiceType=Multi
+X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Development;
