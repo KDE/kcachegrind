@@ -672,7 +672,7 @@ void TopLevel::createMiscActions()
   action->setWhatsThis( hint );
 #else
   _paUp = new KToolBarPopupAction( i18n( "&Up" ), "up",
-                                   Qt::ALT+Qt::Key_Up,
+                                   KShortcut(Qt::ALT+Qt::Key_Up),
                                    _stackSelection, SLOT( browserUp() ),
                                    actionCollection(), "go_up" );
   connect( _paUp->popupMenu(), SIGNAL( aboutToShow() ),
@@ -686,7 +686,7 @@ void TopLevel::createMiscActions()
   _paUp->setWhatsThis( hint );
 
   QPair< KGuiItem, KGuiItem > backForward = KStdGuiItem::backAndForward();
-  _paBack = new KToolBarPopupAction( backForward.first, Qt::ALT+Qt::Key_Left,
+  _paBack = new KToolBarPopupAction( backForward.first, KShortcut(Qt::ALT+Qt::Key_Left),
                                      _stackSelection, SLOT(browserBack()),
                                      actionCollection(), "go_back" );
   connect( _paBack->popupMenu(), SIGNAL( aboutToShow() ),
@@ -697,7 +697,7 @@ void TopLevel::createMiscActions()
   _paBack->setToolTip( hint );
   _paBack->setWhatsThis( hint );
 
-  _paForward = new KToolBarPopupAction( backForward.second, Qt::ALT+Qt::Key_Right,
+  _paForward = new KToolBarPopupAction( backForward.second, KShortcut(Qt::ALT+Qt::Key_Right),
                                         _stackSelection,
                                         SLOT(browserForward()),
                                         actionCollection(), "go_forward" );
