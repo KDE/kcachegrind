@@ -89,6 +89,8 @@ ConfigDlg::ConfigDlg(Configuration* c, TraceData* data,
   connect(fileColor, SIGNAL(changed(const QColor &)),
           this, SLOT(fileColorChanged(const QColor &)));
 
+  connect(PushButton2, SIGNAL(clicked()),SLOT(accept()));
+  connect(PushButton1, SIGNAL(clicked()),SLOT(reject()));
   QString objectPrefix = TraceCost::typeName(TraceCost::Object);
   QString classPrefix = TraceCost::typeName(TraceCost::Class);
   QString filePrefix = TraceCost::typeName(TraceCost::File);
