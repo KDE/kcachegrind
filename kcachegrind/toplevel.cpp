@@ -1855,7 +1855,7 @@ void TopLevel::layoutRestore()
 
 void TopLevel::updateLayoutActions()
 {
-  KAction* ka;
+  QAction* ka;
 
   ka = actionCollection()->action("layout_next");
   if (ka) ka->setEnabled(_layoutCount>1);
@@ -1943,7 +1943,7 @@ bool TopLevel::queryExit()
   delete toolBar();
 #ifdef __GNUC__
 #warning port to Qt4
-#endif  
+#endif
 #if 0
   KConfigGroup dockConfig(KGlobal::config(), QByteArray("Docks"));
   QString str;
