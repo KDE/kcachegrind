@@ -49,6 +49,7 @@
 #include <kstdguiitem.h>
 #include <kapplication.h>
 #include <klocale.h>
+#include <kglobal.h>
 #include <kstatusbar.h>
 #include <kstdaccel.h>
 #include <kstdaction.h>
