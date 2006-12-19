@@ -52,7 +52,7 @@
 #include <kglobal.h>
 #include <kstatusbar.h>
 #include <kstdaccel.h>
-#include <kstdaction.h>
+#include <kstandardaction.h>
 #include <kaction.h>
 #include <kurl.h>
 #include <kfiledialog.h>
@@ -501,7 +501,7 @@ void TopLevel::createMiscActions()
   QString hint;
   KAction* action;
 
-  action = KStdAction::openNew(this, SLOT(newWindow()), actionCollection());
+  action = KStandardAction::openNew(this, SLOT(newWindow()), actionCollection());
   hint = i18n("<b>New</b><p>Open new empty KCachegrind window.</p>");
   action->setWhatsThis( hint );
 
@@ -554,16 +554,16 @@ void TopLevel::createMiscActions()
               "of the program.</p>");
   _taDump->setWhatsThis( hint );
 
-  action = KStdAction::open(this, SLOT(loadTrace()), actionCollection());
+  action = KStandardAction::open(this, SLOT(loadTrace()), actionCollection());
   hint = i18n("<b>Open Profile Data</b>"
               "<p>This opens a profile data file, with possible multiple parts</p>");
   action->setToolTip( hint );
   action->setWhatsThis( hint );
 
-  _openRecent = KStdAction::openRecent(this, SLOT(loadTrace(const KUrl&)),
+  _openRecent = KStandardAction::openRecent(this, SLOT(loadTrace(const KUrl&)),
                                        actionCollection());
 
-  KStdAction::showStatusbar(this,
+  KStandardAction::showStatusbar(this,
                             SLOT(toggleStatusBar()), actionCollection());
 
   _partDockShown = new KToggleAction(i18n("Parts Overview"), actionCollection(), "settings_show_partdock");
@@ -646,25 +646,25 @@ void TopLevel::createMiscActions()
               "is the option to switch this off.");
   _taCycles->setWhatsThis( hint );
 
-  KStdAction::quit(this, SLOT(close()), actionCollection());
-  KStdAction::preferences(this, SLOT(configure()), actionCollection());
-  KStdAction::keyBindings(this, SLOT(configureKeys()), actionCollection());
-  KStdAction::configureToolbars(this,SLOT(configureToolbars()),
+  KStandardAction::quit(this, SLOT(close()), actionCollection());
+  KStandardAction::preferences(this, SLOT(configure()), actionCollection());
+  KStandardAction::keyBindings(this, SLOT(configureKeys()), actionCollection());
+  KStandardAction::configureToolbars(this,SLOT(configureToolbars()),
                                 actionCollection());
 #if 0
-  action = KStdAction::back(_stackSelection, SLOT(browserBack()),
+  action = KStandardAction::back(_stackSelection, SLOT(browserBack()),
                             actionCollection());
   hint = i18n("Go back in function selection history");
   action->setToolTip( hint );
   action->setWhatsThis( hint );
 
-  action = KStdAction::forward(_stackSelection, SLOT(browserForward()),
+  action = KStandardAction::forward(_stackSelection, SLOT(browserForward()),
                       actionCollection());
   hint = i18n("Go forward in function selection history");
   action->setToolTip( hint );
   action->setWhatsThis( hint );
 
-  action = KStdAction::up(_stackSelection, SLOT(browserUp()),
+  action = KStandardAction::up(_stackSelection, SLOT(browserUp()),
                       actionCollection());
   hint = i18n("<b>Go Up</b>"
               "<p>Go to last selected caller of current function. "
@@ -767,7 +767,7 @@ void TopLevel::createMiscActions()
   _taSplitDir->setWhatsThis( hint );
 
   // copied from KMail...
-  KStdAction::tipOfDay( this, SLOT( slotShowTip() ), actionCollection() );
+  KStandardAction::tipOfDay( this, SLOT( slotShowTip() ), actionCollection() );
 }
 
 void TopLevel::createActions()
