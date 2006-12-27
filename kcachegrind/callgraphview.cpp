@@ -1588,7 +1588,7 @@ void CallGraphView::keyPressEvent(QKeyEvent* e)
     }
 
     // move selected node/edge
-    if (!(e->state() & (Qt::ShiftButton | Qt::ControlButton)) &&
+    if (!(e->state() & (Qt::ShiftModifier | Qt::ControlModifier)) &&
 	(_selectedNode || _selectedEdge) &&
 	((e->key() == Qt::Key_Up) ||
 	 (e->key() == Qt::Key_Down) ||

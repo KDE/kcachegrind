@@ -46,12 +46,12 @@
 #include <QLabel>
 #include <Q3PopupMenu>
 
-#include <kstdguiitem.h>
+#include <kstandardguiitem.h>
 #include <kapplication.h>
 #include <klocale.h>
 #include <kglobal.h>
 #include <kstatusbar.h>
-#include <kstdaccel.h>
+#include <kstandardshortcut.h>
 #include <kstandardaction.h>
 #include <kaction.h>
 #include <kurl.h>
@@ -513,7 +513,7 @@ void TopLevel::createMiscActions()
 
   action = new KAction(KIcon("reload"),  i18n( "&Reload" ), actionCollection(), "reload" );
   connect(action, SIGNAL(triggered(bool) ), SLOT( reload() ));
-  action->setShortcut(KStdAccel::shortcut(KStdAccel::Reload));
+  action->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Reload));
   hint = i18n("<b>Reload Profile Data</b>"
               "<p>This loads any new created parts, too.</p>");
   action->setWhatsThis( hint );
@@ -529,7 +529,7 @@ void TopLevel::createMiscActions()
 
   _taDump = new KToggleAction(KIcon("redo"),  i18n( "&Force Dump" ), actionCollection(), "dump" );
   connect(_taDump, SIGNAL(triggered(bool) ), SLOT( forceTrace() ));
-  _taDump->setShortcut(KStdAccel::shortcut(KStdAccel::Redo));
+  _taDump->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Redo));
   hint = i18n("<b>Force Dump</b>"
               "<p>This forces a dump for a Callgrind profile run "
               "in the current directory. This action is checked while "
@@ -686,7 +686,7 @@ void TopLevel::createMiscActions()
   _paUp->setToolTip( hint );
   _paUp->setWhatsThis( hint );
 
-  QPair< KGuiItem, KGuiItem > backForward = KStdGuiItem::backAndForward();
+  QPair< KGuiItem, KGuiItem > backForward = KStandardGuiItem::backAndForward();
   _paBack = new KToolBarPopupAction( backForward.first, KShortcut(Qt::ALT+Qt::Key_Left),
                                      _stackSelection, SLOT(browserBack()),
                                      actionCollection(), "go_back" );

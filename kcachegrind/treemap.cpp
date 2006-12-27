@@ -1830,8 +1830,8 @@ void TreeMapWidget::mousePressEvent( QMouseEvent* e )
 
   _pressed = i;
 
-  _inShiftDrag = e->state() & Qt::ShiftButton;
-  _inControlDrag = e->state() & Qt::ControlButton;
+  _inShiftDrag = e->state() & Qt::ShiftModifier;
+  _inControlDrag = e->state() & Qt::ControlModifier;
   _lastOver = _pressed;
 
   TreeMapItem* changed = 0;
@@ -2038,7 +2038,7 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
       setSelected(_current, !isSelected(_current));
       break;
     case Extended:
-      if ((e->state() & Qt::ControlButton) || (e->state() & Qt::ShiftButton))
+      if ((e->state() & Qt::ControlModifier) || (e->state() & Qt::ShiftModifier))
         setSelected(_current, !isSelected(_current));
       else {
         _selectionMode = Single;
@@ -2102,8 +2102,8 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
   }
 
   if (old == _current) return;
-  if (! (e->state() & Qt::ControlButton)) return;
-  if (! (e->state() & Qt::ShiftButton)) return;
+  if (! (e->state() & Qt::ControlModifier)) return;
+  if (! (e->state() & Qt::ShiftModifier)) return;
 
   switch(_selectionMode) {
   case NoSelection:
@@ -2115,7 +2115,7 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
     setSelected(_current, !isSelected(_current));
     break;
   case Extended:
-    if (e->state() & Qt::ControlButton)
+    if (e->state() & Qt::ControlModifier)
       setSelected(_current, !isSelected(_current));
     else
       setSelected(_current, isSelected(old));
