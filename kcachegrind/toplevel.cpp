@@ -457,39 +457,45 @@ void TopLevel::readProperties(KConfig* c)
 void TopLevel::createLayoutActions()
 {
   QString hint;
-  KAction* action;
+  QAction* action;
 
-  action = new KAction( i18n( "&Duplicate" ), actionCollection(), "layout_duplicate" );
+  action = actionCollection()->addAction( "layout_duplicate" );
+  action->setText( i18n( "&Duplicate" ) );
   connect(action, SIGNAL(triggered(bool)), SLOT(layoutDuplicate()));
-  action->setShortcut(KShortcut(Qt::CTRL+Qt::Key_Plus));
+  action->setShortcuts(KShortcut(Qt::CTRL+Qt::Key_Plus));
   hint = i18n("<b>Duplicate Current Layout</b>"
               "<p>Make a copy of the current layout.</p>");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Remove" ), actionCollection(), "layout_remove" );
+  action = actionCollection()->addAction( "layout_remove" );
+  action->setText( i18n( "&Remove" ) );
   connect(action, SIGNAL(triggered(bool) ), SLOT(layoutRemove()));
   hint = i18n("<b>Remove Current Layout</b>"
               "<p>Delete current layout and make the previous active.</p>");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Go to Next" ), actionCollection(), "layout_next" );
+  action = actionCollection()->addAction( "layout_next" );
+  action->setText( i18n( "&Go to Next" ) );
   connect(action, SIGNAL(triggered(bool)), SLOT(layoutNext()));
-  action->setShortcut(KShortcut(Qt::CTRL+Qt::Key_Right));
+  action->setShortcuts(KShortcut(Qt::CTRL+Qt::Key_Right));
   hint = i18n("Go to Next Layout");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Go to Previous" ), actionCollection(), "layout_previous" );
+  action = actionCollection()->addAction( "layout_previous" );
+  action->setText( i18n( "&Go to Previous" ) );
   connect(action, SIGNAL(triggered(bool)), SLOT(layoutPrevious()));
-  action->setShortcut(KShortcut(Qt::CTRL+Qt::Key_Left));
+  action->setShortcuts(KShortcut(Qt::CTRL+Qt::Key_Left));
   hint = i18n("Go to Previous Layout");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Restore to Default" ), actionCollection(), "layout_restore" );
+  action = actionCollection()->addAction( "layout_restore" );
+  action->setText( i18n( "&Restore to Default" ) );
   connect(action, SIGNAL(triggered(bool) ), SLOT(layoutRestore()));
   hint = i18n("Restore Layouts to Default");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Save as Default" ), actionCollection(), "layout_save" );
+  action = actionCollection()->addAction( "layout_save" );
+  action->setText( i18n( "&Save as Default" ) );
   connect(action, SIGNAL(triggered(bool) ), SLOT(layoutSave()));
   hint = i18n("Save Layouts as Default");
   action->setWhatsThis( hint );
@@ -499,26 +505,30 @@ void TopLevel::createLayoutActions()
 void TopLevel::createMiscActions()
 {
   QString hint;
-  KAction* action;
+  QAction* action;
 
   action = KStandardAction::openNew(this, SLOT(newWindow()), actionCollection());
   hint = i18n("<b>New</b><p>Open new empty KCachegrind window.</p>");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Add..." ), actionCollection(), "file_add" );
+  action = actionCollection()->addAction( "file_add" );
+  action->setText( i18n( "&Add..." ) );
   connect(action, SIGNAL(triggered(bool) ), SLOT(addTrace()));
   hint = i18n("<b>Add Profile Data</b>"
               "<p>This opens an additional profile data file in the current window.</p>");
   action->setWhatsThis( hint );
 
-  action = new KAction(KIcon("reload"),  i18n( "&Reload" ), actionCollection(), "reload" );
+  action = actionCollection()->addAction( "reload" );
+  action->setIcon( KIcon("reload") );
+  action->setText( i18n( "&Reload" ) );
   connect(action, SIGNAL(triggered(bool) ), SLOT( reload() ));
-  action->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Reload));
+  action->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Reload));
   hint = i18n("<b>Reload Profile Data</b>"
               "<p>This loads any new created parts, too.</p>");
   action->setWhatsThis( hint );
 
-  action = new KAction( i18n( "&Export Graph" ), actionCollection(), "export" );
+  action = actionCollection()->addAction( "export" );
+  action->setText( i18n( "&Export Graph" ) );
   connect(action, SIGNAL(triggered(bool) ), SLOT(exportGraph()));
 
   hint = i18n("<b>Export Call Graph</b>"
@@ -527,7 +537,9 @@ void TopLevel::createMiscActions()
   action->setWhatsThis( hint );
 
 
-  _taDump = new KToggleAction(KIcon("redo"),  i18n( "&Force Dump" ), actionCollection(), "dump" );
+  _taDump = actionCollection()->add<KToggleAction>( "dump" );
+  _taDump->setIcon( KIcon("redo") );
+  _taDump->setText( i18n( "&Force Dump" ) );
   connect(_taDump, SIGNAL(triggered(bool) ), SLOT( forceTrace() ));
   _taDump->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Redo));
   hint = i18n("<b>Force Dump</b>"
@@ -566,21 +578,24 @@ void TopLevel::createMiscActions()
   KStandardAction::showStatusbar(this,
                             SLOT(toggleStatusBar()), actionCollection());
 
-  _partDockShown = new KToggleAction(i18n("Parts Overview"), actionCollection(), "settings_show_partdock");
+  _partDockShown = actionCollection()->add<KToggleAction>("settings_show_partdock");
+  _partDockShown->setText(i18n("Parts Overview"));
   connect(_partDockShown, SIGNAL(triggered(bool) ), SLOT(togglePartDock()));
 
   hint = i18n("Show/Hide the Parts Overview Dockable");
   _partDockShown->setToolTip( hint );
   _partDockShown->setWhatsThis( hint );
 
-  _stackDockShown = new KToggleAction(i18n("Call Stack"), actionCollection(), "settings_show_stackdock");
+  _stackDockShown = actionCollection()->add<KToggleAction>("settings_show_stackdock");
+  _stackDockShown->setText(i18n("Call Stack"));
   connect(_stackDockShown, SIGNAL(triggered(bool) ), SLOT(toggleStackDock()));
 
   hint = i18n("Show/Hide the Call Stack Dockable");
   _stackDockShown->setToolTip( hint );
   _stackDockShown->setWhatsThis( hint );
 
-  _functionDockShown = new KToggleAction(i18n("Function Profile"), actionCollection(), "settings_show_profiledock");
+  _functionDockShown = actionCollection()->add<KToggleAction>("settings_show_profiledock");
+  _functionDockShown->setText(i18n("Function Profile"));
   connect(_functionDockShown, SIGNAL(triggered(bool) ), SLOT(toggleFunctionDock()));
 
   hint = i18n("Show/Hide the Function Profile Dockable");
@@ -588,17 +603,17 @@ void TopLevel::createMiscActions()
   _functionDockShown->setWhatsThis( hint );
 
 #if ENABLE_DUMPDOCK
-  _dumpDockShown = new KToggleAction(i18n("Profile Dumps"), KShortcut(),
-                                     this, SLOT(toggleDumpDock()),
-                                     actionCollection(),
-                                     "settings_show_dumpdock");
-
+  _dumpDockShown = actionCollection()->add<KToggleAction>("settings_show_dumpdock",
+                                                          this, SLOT(toggleDumpDock()));
+  _dumpDockShown->setText(i18n("Profile Dumps"));
   hint = i18n("Show/Hide the Profile Dumps Dockable");
   _dumpDockShown->setToolTip( hint );
   _dumpDockShown->setWhatsThis( hint );
 #endif
 
-  _taPercentage = new KToggleAction(KIcon("percent"), i18n("Show Relative Costs"), actionCollection(), "view_percentage");
+  _taPercentage = actionCollection()->add<KToggleAction>("view_percentage");
+  _taPercentage->setIcon(KIcon("percent"));
+  _taPercentage->setText(i18n("Show Relative Costs"));
   connect(_taPercentage, SIGNAL(triggered(bool) ), SLOT(togglePercentage()));
   _taPercentage->setCheckedState(KGuiItem(i18n("Show Absolute Costs")));
 
@@ -606,7 +621,9 @@ void TopLevel::createMiscActions()
   _taPercentage->setToolTip( hint );
   _taPercentage->setWhatsThis( hint );
 
-  _taExpanded = new KToggleAction(KIcon("move"), i18n("Percentage Relative to Parent"), actionCollection(), "view_expanded");
+  _taExpanded = actionCollection()->add<KToggleAction>("view_expanded");
+  _taExpanded->setIcon(KIcon("move"));
+  _taExpanded->setText(i18n("Percentage Relative to Parent"));
   connect(_taExpanded, SIGNAL(triggered(bool) ), SLOT(toggleExpanded()));
 
   hint = i18n("Show percentage costs relative to parent");
@@ -628,7 +645,9 @@ void TopLevel::createMiscActions()
 	      "<p>(*) Only if function grouping is switched on (e.g. ELF object grouping).");
   _taExpanded->setWhatsThis( hint );
 
-  _taCycles = new KToggleAction(KIcon("undo"),  i18n( "Do Cycle Detection" ), actionCollection(), "view_cycles" );
+  _taCycles = actionCollection()->add<KToggleAction>("view_cycles");
+  _taCycles->setIcon(KIcon("undo"));
+  _taCycles->setText(i18n( "Do Cycle Detection" ));
   connect(_taCycles, SIGNAL(triggered(bool) ), SLOT( toggleCycles() ));
   _taCycles->setCheckedState(KGuiItem(i18n("Skip Cycle Detection")));
 
@@ -672,10 +691,10 @@ void TopLevel::createMiscActions()
   action->setToolTip( hint );
   action->setWhatsThis( hint );
 #else
-  _paUp = new KToolBarPopupAction( i18n( "&Up" ), "up",
-                                   KShortcut(Qt::ALT+Qt::Key_Up),
-                                   _stackSelection, SLOT( browserUp() ),
-                                   actionCollection(), "go_up" );
+  _paUp = new KToolBarPopupAction( KIcon( "up" ), i18n( "&Up" ), this );
+  _paUp->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Up) );
+  connect( _paUp, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserUp() ) );
+  actionCollection()->addAction( "go_up", _paUp );
   connect( _paUp->popupMenu(), SIGNAL( aboutToShow() ),
            this, SLOT( upAboutToShow() ) );
   connect( _paUp->popupMenu(), SIGNAL( activated( int ) ),
@@ -687,9 +706,10 @@ void TopLevel::createMiscActions()
   _paUp->setWhatsThis( hint );
 
   QPair< KGuiItem, KGuiItem > backForward = KStandardGuiItem::backAndForward();
-  _paBack = new KToolBarPopupAction( backForward.first, KShortcut(Qt::ALT+Qt::Key_Left),
-                                     _stackSelection, SLOT(browserBack()),
-                                     actionCollection(), "go_back" );
+  _paBack = new KToolBarPopupAction( backForward.first.icon(), backForward.first.text(), this );
+  _paBack->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Left) );
+  connect( _paBack, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserBack() ) );
+  actionCollection()->addAction( "go_back", _paBack );
   connect( _paBack->popupMenu(), SIGNAL( aboutToShow() ),
            this, SLOT( backAboutToShow() ) );
   connect( _paBack->popupMenu(), SIGNAL( activated( int ) ),
@@ -698,10 +718,10 @@ void TopLevel::createMiscActions()
   _paBack->setToolTip( hint );
   _paBack->setWhatsThis( hint );
 
-  _paForward = new KToolBarPopupAction( backForward.second, KShortcut(Qt::ALT+Qt::Key_Right),
-                                        _stackSelection,
-                                        SLOT(browserForward()),
-                                        actionCollection(), "go_forward" );
+  _paForward = new KToolBarPopupAction( backForward.second.icon(), backForward.second.text(), this );
+  _paForward->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Right) );
+  connect( _paForward, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserForward() ) );
+  actionCollection()->addAction( "go_forward", _paForward );
   connect( _paForward->popupMenu(), SIGNAL( aboutToShow() ),
            this, SLOT( forwardAboutToShow() ) );
   connect( _paForward->popupMenu(), SIGNAL( activated( int ) ),
@@ -711,8 +731,8 @@ void TopLevel::createMiscActions()
   _paForward->setWhatsThis( hint );
 #endif
 
-  _saCost = new KSelectAction( i18n("Primary Event Type"), KShortcut(),
-			       actionCollection(), "view_cost_type");
+  _saCost = actionCollection()->add<KSelectAction>("view_cost_type");
+  _saCost->setText(i18n("Primary Event Type"));
   hint = i18n("Select primary event type of costs");
   _saCost->setComboWidth(300);
   _saCost->setToolTip( hint );
@@ -723,8 +743,8 @@ void TopLevel::createMiscActions()
   connect( _saCost, SIGNAL(triggered(const QString&)),
            this, SLOT(costTypeSelected(const QString&)));
 
-  _saCost2 = new KSelectAction( i18n("Secondary Event Type"), KShortcut(),
-				actionCollection(), "view_cost_type2");
+  _saCost2 = actionCollection()->add<KSelectAction>("view_cost_type2");
+  _saCost2->setText(i18n("Secondary Event Type"));
   hint = i18n("Select secondary event type for cost e.g. shown in annotations");
   _saCost2->setComboWidth(300);
   _saCost2->setToolTip( hint );
@@ -733,8 +753,8 @@ void TopLevel::createMiscActions()
   connect( _saCost2, SIGNAL(triggered(const QString&)),
            this, SLOT(costType2Selected(const QString&)));
 
-  saGroup = new KSelectAction( i18n("Grouping"), KShortcut(),
-                               actionCollection(), "view_group_type");
+  saGroup = actionCollection()->add<KSelectAction>("view_group_type");
+  saGroup->setText(i18n("Grouping"));
 
   hint = i18n("Select how functions are grouped into higher level cost items");
   saGroup->setToolTip( hint );
@@ -752,14 +772,18 @@ void TopLevel::createMiscActions()
   connect( saGroup, SIGNAL(triggered(int)),
            this, SLOT(groupTypeSelected(int)));
 
-  _taSplit = new KToggleAction(KIcon("view_left_right"), i18n("Split"), actionCollection(), "view_split");
+  _taSplit = actionCollection()->add<KToggleAction>("view_split");
+  _taSplit->setIcon(KIcon("view_left_right"));
+  _taSplit->setText(i18n("Split"));
   connect(_taSplit, SIGNAL(triggered(bool) ), SLOT(splitSlot()));
 
   hint = i18n("Show two information panels");
   _taSplit->setToolTip( hint );
   _taSplit->setWhatsThis( hint );
 
- _taSplitDir = new KToggleAction(KIcon("view_left_right"), i18n("Split Horizontal"), actionCollection(), "view_split_dir");
+ _taSplitDir = actionCollection()->add<KToggleAction>("view_split_dir");
+ _taSplitDir->setIcon(KIcon("view_left_right"));
+ _taSplitDir->setText(i18n("Split Horizontal"));
  connect(_taSplitDir, SIGNAL(triggered(bool) ), SLOT(splitDirSlot()));
 
   hint = i18n("Change Split Orientation when main window is split.");
