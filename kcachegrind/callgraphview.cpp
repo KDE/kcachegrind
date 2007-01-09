@@ -1158,7 +1158,7 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce,
 
     if (e->call() && (e->call()->isRecursion() || e->call()->inCycle())) {
 	QString icon = "undo";
-	KIconLoader* loader = KApplication::kApplication()->iconLoader();
+	KIconLoader* loader = KIconLoader::global();
 	QPixmap p= loader->loadIcon(icon, K3Icon::Small, 0,
 				      K3Icon::DefaultState, 0, true);
 	setPixmap(0, p);

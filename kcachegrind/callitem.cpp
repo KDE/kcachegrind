@@ -146,7 +146,7 @@ void CallItem::updateCost()
     if (sameCycle && !selectedIsCycle && !shownIsCycle) {
 
 	QString icon = "undo";
-	KIconLoader* loader = KApplication::kApplication()->iconLoader();
+	KIconLoader* loader = KIconLoader::global();
 	p= loader->loadIcon(icon, K3Icon::Small, 0,
 			    K3Icon::DefaultState, 0, true);
     }
