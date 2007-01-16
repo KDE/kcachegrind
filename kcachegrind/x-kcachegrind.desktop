@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Comment=Cachegrind/Callgrind Profile Dump
+Comment[el]=Αποτύπωση προφίλ Cachegrind/Callgrind
 Comment[fr]=Dépôt de profil Cachegrind / Callgrind
 Comment[x-test]=xxCachegrind/Callgrind Profile Dumpxx
 DefaultApp=kcachegrind
