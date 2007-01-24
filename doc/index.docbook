@@ -800,7 +800,7 @@ So, for example, for main(), you will always have a inclusive cost of almost 100
 </question>
 <answer>
 <para>
-Obviously &kcachegrind; is wrongly installed on your system. It is recommended to compile it with the installation prefix to be your system wide KDE base directory like <command>configure --prefix=/opt/kde3; make install</command>.
+Obviously &kcachegrind; is wrongly installed on your system. It is recommended to compile it with the installation prefix to be your system wide &kde; base directory like <command>configure --prefix=/opt/kde3; make install</command>.
 If you choose another directory like $HOME/kde, you should set the environment variable KDEDIR to this directory before running &kcachegrind;.
 </para>
 </answer>
