@@ -29,6 +29,7 @@
 #include <kiconloader.h>
 #include <kapplication.h>
 #include <kconfig.h>
+#include <kconfiggroup.h>
 
 #include "callmapview.h"
 #include "configuration.h"
