@@ -26,6 +26,7 @@
 #include <qobject.h>
 #include <kconfig.h>
 #include <kdebug.h>
+#include <kconfiggroup.h>
 
 #include "multiview.h"
 #include "tabview.h"

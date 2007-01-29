@@ -51,6 +51,7 @@
 #include <kapplication.h>
 #include <kiconloader.h>
 #include <kfiledialog.h>
+#include <kconfiggroup.h>
 
 #include "configuration.h"
 #include "callgraphview.h"

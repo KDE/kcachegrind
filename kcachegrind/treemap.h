@@ -44,6 +44,7 @@
 #include <QContextMenuEvent>
 #include <Q3PopupMenu>
 #include <QMouseEvent>
+#include <kconfiggroup.h>
 
 class Q3PopupMenu;
 class TreeMapTip;

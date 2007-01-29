@@ -80,6 +80,7 @@
 #include "callgraphview.h"
 #include <qdbusconnection.h>
 #include <kicon.h>
+#include <kconfiggroup.h>
 
 TopLevel::TopLevel()
   : KMainWindow(0)
@@ -122,7 +123,7 @@ TopLevel::TopLevel()
 #endif
   _statusbar->addWidget(_statusLabel, 1);
 
-  KConfig* kconfig = KGlobal::config();
+  KConfig *kconfig = KGlobal::config().data();
   Configuration::readOptions( kconfig );
   _openRecent->loadEntries( kconfig );
 
@@ -216,7 +217,7 @@ void TopLevel::setupPartSelection(PartSelection* ps)
  */
 void TopLevel::saveCurrentState(QString postfix)
 {
-  KConfig* kconfig = KGlobal::config();
+  KConfig *kconfig = KGlobal::config().data();
   QByteArray pf = postfix.ascii();
 
   KConfigGroup psConfig(kconfig, QByteArray("PartOverview")+pf);
@@ -268,7 +269,7 @@ void TopLevel::saveTraceSettings()
  */
 void TopLevel::restoreCurrentState(QString postfix)
 {
-  KConfig* kconfig = KGlobal::config();
+  KConfig *kconfig = KGlobal::config().data();
   QStringList gList = kconfig->groupList();
   QByteArray pf = postfix.ascii();
 
@@ -1001,7 +1002,7 @@ void TopLevel::loadTrace(const KUrl& url)
   // for KDE 3.2: KIO::NetAccess::download with 2 args is deprecated
   if(KIO::NetAccess::download( url, tmpFile, this )) {
     _openRecent->addUrl(url);
-    _openRecent->saveEntries( KGlobal::config() );
+    _openRecent->saveEntries( KGlobal::config().data() );
 
     loadTrace(tmpFile);
     KIO::NetAccess::removeTempFile( tmpFile );
@@ -1045,7 +1046,7 @@ void TopLevel::addTrace(const KUrl& url)
   QString tmpFile;
   if(KIO::NetAccess::download( url, tmpFile, this )) {
     _openRecent->addUrl(url);
-    _openRecent->saveEntries( KGlobal::config() );
+    _openRecent->saveEntries( KGlobal::config().data() );
 
     addTrace(tmpFile);
     KIO::NetAccess::removeTempFile( tmpFile );
@@ -1754,7 +1755,7 @@ void TopLevel::restoreTraceSettings()
 void TopLevel::layoutDuplicate()
 {
   // save current and allocate a new slot
-  _multiView->saveViewConfig(KGlobal::config(),
+  _multiView->saveViewConfig(KGlobal::config().data(),
 			     QString("Layout%1-MainView").arg(_layoutCurrent),
 			     traceKey(), false);
   _layoutCurrent = _layoutCount;
@@ -1772,7 +1773,7 @@ void TopLevel::layoutRemove()
   int from = _layoutCount-1;
   if (_layoutCurrent == from) { _layoutCurrent--; from--; }
   // restore from last and decrement count
-  _multiView->readViewConfig(KGlobal::config(),
+  _multiView->readViewConfig(KGlobal::config().data(),
 			     QString("Layout%1-MainView").arg(from),
 			     traceKey(), false);
   _layoutCount--;
@@ -1784,7 +1785,7 @@ void TopLevel::layoutNext()
 {
   if (_layoutCount <2) return;
 
-  KConfig* config = KGlobal::config();
+  KConfig *config = KGlobal::config().data();
   QString key = traceKey();
 
   _multiView->saveViewConfig(config,
@@ -1805,7 +1806,7 @@ void TopLevel::layoutPrevious()
 {
   if (_layoutCount <2) return;
 
-  KConfig* config = KGlobal::config();
+  KConfig *config = KGlobal::config().data();
   QString key = traceKey();
 
   _multiView->saveViewConfig(config,
@@ -1824,7 +1825,7 @@ void TopLevel::layoutPrevious()
 
 void TopLevel::layoutSave()
 {
-  KConfig* config = KGlobal::config();
+  KConfig *config = KGlobal::config().data();
   QString key = traceKey();
 
   _multiView->saveViewConfig(config,
@@ -1851,7 +1852,7 @@ void TopLevel::layoutSave()
 
 void TopLevel::layoutRestore()
 {
-  KConfig* config = KGlobal::config();
+  KConfig *config = KGlobal::config().data();
   KConfigGroup aConfig(config, QByteArray("Layouts"));
   _layoutCount = aConfig.readEntry("DefaultCount", 0);
   _layoutCurrent = aConfig.readEntry("DefaultCurrent", 0);
@@ -1936,12 +1937,12 @@ void TopLevel::updateStatusBar()
 void TopLevel::configure()
 {
   if (ConfigDlg::configure(Configuration::config(), _data, this)) {
-    Configuration::saveOptions(KGlobal::config());
+    Configuration::saveOptions(KGlobal::config().data());
 
     configChanged();
   }
   else
-    Configuration::readOptions(KGlobal::config());
+    Configuration::readOptions(KGlobal::config().data());
 }
 
 bool TopLevel::queryClose()
@@ -1957,7 +1958,7 @@ bool TopLevel::queryExit()
     Configuration::setShowPercentage(_showPercentage);
     Configuration::setShowExpanded(_showExpanded);
     Configuration::setShowCycles(_showCycles);
-    Configuration::saveOptions(KGlobal::config());
+    Configuration::saveOptions(KGlobal::config().data());
 
     saveCurrentState(QString::null);
 

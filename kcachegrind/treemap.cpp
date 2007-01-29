@@ -41,6 +41,7 @@
 #include <klocale.h>
 #include <kconfig.h>
 #include <kdebug.h>
+#include <kconfiggroup.h>
 
 #include "treemap.h"
 

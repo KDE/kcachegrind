@@ -39,6 +39,7 @@
 
 #include <klocale.h>
 #include <kconfig.h>
+#include <kconfiggroup.h>
 
 #include "tabview.h"
 #include "costtypeview.h"
