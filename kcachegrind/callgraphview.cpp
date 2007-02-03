@@ -1922,7 +1922,10 @@ void CallGraphView::dotExited()
     if (cmd == "stop") break;
 
     if (cmd == "graph") {
-      lineStream >> scale >> dotWidth >> dotHeight;
+      QString dotWidthString, dotHeightString;
+      lineStream >> scale >> dotWidthString >> dotHeightString;
+      dotWidth = dotWidthString.toDouble();
+      dotHeight = dotHeightString.toDouble();
 
       if (_detailLevel == 0)      { scaleX = scale * 70; scaleY = scale * 40; }
       else if (_detailLevel == 1) { scaleX = scale * 80; scaleY = scale * 70; }
@@ -1970,10 +1973,13 @@ void CallGraphView::dotExited()
 
     if (cmd == "node") {
       // x, y are centered in node
-      QString nodeName, label;
+      QString nodeName, label, nodeX, nodeY, nodeWidth, nodeHeight;
       double x, y, width, height;
-      lineStream >> nodeName >> x >> y >> width >> height;
-
+      lineStream >> nodeName >> nodeX >> nodeY >> nodeWidth >> nodeHeight;
+      x = nodeX.toDouble();
+      y = nodeY.toDouble();
+      width = nodeWidth.toDouble();
+      height = nodeHeight.toDouble();
 
       GraphNode* n = _exporter.node(_exporter.toFunc(nodeName));
 
@@ -2026,7 +2032,7 @@ void CallGraphView::dotExited()
 
     // edge
 
-    QString node1Name, node2Name, label;
+    QString node1Name, node2Name, label, edgeX, edgeY;
     double x, y;
     QPointArray pa;
     int points, i;
@@ -2049,7 +2055,9 @@ void CallGraphView::dotExited()
     pa.resize(points);
     for (i=0;i<points;i++) {
       if (lineStream.atEnd()) break;
-      lineStream >> x >> y;
+      lineStream >> edgeX >> edgeY;
+      x = edgeX.toDouble();
+      y = edgeY.toDouble();
 
       int xx = (int)(scaleX * x + _xMargin);
       int yy = (int)(scaleY * (dotHeight - y) + _yMargin);
@@ -2160,7 +2168,9 @@ void CallGraphView::dotExited()
         lineStream >> c;
       }
     }
-    lineStream >> x >> y;
+    lineStream >> edgeX >> edgeY;
+    x = edgeX.toDouble();
+    y = edgeY.toDouble();
 
     int xx = (int)(scaleX * x + _xMargin);
     int yy = (int)(scaleY * (dotHeight - y) + _yMargin);
