@@ -870,8 +870,8 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	// trace cost not machting code
 
 	new InstrItem(this, this, 1,
-		      i18np("There is %n cost line without assembler code.",
-                           "There are %n cost lines without assembler code.", noAssLines));
+		      i18np("There is %1 cost line without assembler code.",
+                           "There are %1 cost lines without assembler code.", noAssLines));
 	new InstrItem(this, this, 2,
 		      i18n("This happens because the code of"));
 	new InstrItem(this, this, 3, QString("        %1").arg(objfile));

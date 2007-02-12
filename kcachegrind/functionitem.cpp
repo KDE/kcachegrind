@@ -71,7 +71,7 @@ FunctionItem::FunctionItem(Q3ListView* parent, int skipped,
     _groupType = TraceCost::NoCostType;
     setCostType(ct);
 
-    setText(3, i18np("(%n function skipped)", "(%n functions skipped)", skipped));
+    setText(3, i18np("(%1 function skipped)", "(%1 functions skipped)", skipped));
 }
 
 #if 0
