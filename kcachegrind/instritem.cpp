@@ -109,7 +109,7 @@ InstrItem::InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
     callStr += i18n("Active call to '%1'",
                     _instrCall->call()->calledName());
   else
-    callStr += i18np("%1 call to '%2'", "%1 calls to '%2'", cc,
+    callStr += i18np("%1 call to '%2'", "%1 calls to '%2'", QString::number(cc),
                      _instrCall->call()->calledName());
 
   TraceFunction* calledF = _instrCall->call()->called();
