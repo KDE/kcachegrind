@@ -90,7 +90,7 @@ SourceItem::SourceItem(SourceView* sv, Q3ListViewItem* parent,
                     _lineCall->call()->calledName());
   else
     callStr += i18np("%1 call to '%2'", "%1 calls to '%2'", cc,
-                     _lineCall->call()->calledName());
+                     QString(_lineCall->call()->calledName()));
 
   TraceFunction* calledF = _lineCall->call()->called();
   calledF->addPrettyLocation(callStr);
