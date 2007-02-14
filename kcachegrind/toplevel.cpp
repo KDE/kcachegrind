@@ -125,7 +125,7 @@ TopLevel::TopLevel()
 
   KConfig *kconfig = KGlobal::config().data();
   Configuration::readOptions( kconfig );
-  _openRecent->loadEntries( kconfig );
+  _openRecent->loadEntries( KConfigGroup( kconfig, QString() ) );
 
   // set toggle after reading configuration
   _showPercentage = Configuration::showPercentage();
@@ -1002,7 +1002,7 @@ void TopLevel::loadTrace(const KUrl& url)
   // for KDE 3.2: KIO::NetAccess::download with 2 args is deprecated
   if(KIO::NetAccess::download( url, tmpFile, this )) {
     _openRecent->addUrl(url);
-    _openRecent->saveEntries( KGlobal::config().data() );
+    _openRecent->saveEntries( KConfigGroup( KGlobal::config(), QString() ) );
 
     loadTrace(tmpFile);
     KIO::NetAccess::removeTempFile( tmpFile );
@@ -1046,7 +1046,7 @@ void TopLevel::addTrace(const KUrl& url)
   QString tmpFile;
   if(KIO::NetAccess::download( url, tmpFile, this )) {
     _openRecent->addUrl(url);
-    _openRecent->saveEntries( KGlobal::config().data() );
+    _openRecent->saveEntries( KGlobal::config()->group( QString() ) );
 
     addTrace(tmpFile);
     KIO::NetAccess::removeTempFile( tmpFile );
