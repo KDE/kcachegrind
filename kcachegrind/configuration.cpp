@@ -182,11 +182,11 @@ void Configuration::saveOptions(KConfig* kconfig)
     ctConfig.writeEntry( QString("Name%1").arg(i+1), t->name());
 
     // Use localized key
-    TraceItemView::writeConfigEntry(&ctConfig,
+    TraceItemView::writeConfigEntry(ctConfig,
                                     QString("Longname%1").arg(i+1).ascii(),
                                     t->longName(),
                                     knownLongName(t->name()).utf8().data() /*, true */ );
-    TraceItemView::writeConfigEntry(&ctConfig,
+    TraceItemView::writeConfigEntry(ctConfig,
                                     QString("Formula%1").arg(i+1).ascii(),
                                     t->formula(), knownFormula(t->name()).utf8().data());
   }

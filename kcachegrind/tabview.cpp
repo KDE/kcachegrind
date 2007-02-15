@@ -721,23 +721,23 @@ void TabView::readViewConfig(KConfig* c,
     if (0) qDebug("%s::readConfig(%s%s)", name(),
 		  prefix.ascii(), postfix.ascii());
 
-    KConfigGroup* g = configGroup(c, prefix, postfix);
+    KConfigGroup g = configGroup(c, prefix, postfix);
 
     QList<int> list;
     list << 100 << 100;
-    _mainSplitter->setSizes(g->readEntry("MainSizes",list));
-    _leftSplitter->setSizes(g->readEntry("LeftSizes",list));
-    _bottomSplitter->setSizes(g->readEntry("BottomSizes",list));
+    _mainSplitter->setSizes(g.readEntry("MainSizes",list));
+    _leftSplitter->setSizes(g.readEntry("LeftSizes",list));
+    _bottomSplitter->setSizes(g.readEntry("BottomSizes",list));
 
-    QString activeT = g->readEntry("ActiveTop", "CallerView");
-    QString activeB = g->readEntry("ActiveBottom", "CalleeView");
-    QString activeL = g->readEntry("ActiveLeft", "");
-    QString activeR = g->readEntry("ActiveRight", "");
+    QString activeT = g.readEntry("ActiveTop", "CallerView");
+    QString activeB = g.readEntry("ActiveBottom", "CalleeView");
+    QString activeL = g.readEntry("ActiveLeft", "");
+    QString activeR = g.readEntry("ActiveRight", "");
 
-    QStringList topTabs    = g->readEntry("TopTabs",QStringList());
-    QStringList bottomTabs = g->readEntry("BottomTabs",QStringList());
-    QStringList leftTabs   = g->readEntry("LeftTabs",QStringList());
-    QStringList rightTabs  = g->readEntry("RightTabs",QStringList());
+    QStringList topTabs    = g.readEntry("TopTabs",QStringList());
+    QStringList bottomTabs = g.readEntry("BottomTabs",QStringList());
+    QStringList leftTabs   = g.readEntry("LeftTabs",QStringList());
+    QStringList rightTabs  = g.readEntry("RightTabs",QStringList());
 
     if (topTabs.isEmpty() && bottomTabs.isEmpty() &&
         rightTabs.isEmpty() && leftTabs.isEmpty()) {
@@ -786,11 +786,10 @@ void TabView::readViewConfig(KConfig* c,
     if (activeLeft)  _leftTW->showPage(activeLeft->widget());
     if (activeRight) _rightTW->showPage(activeRight->widget());
 
-    QString activeType = g->readEntry("ActiveItemType", "");
-    QString activeName = g->readEntry("ActiveItemName", "");
-    QString selectedType = g->readEntry("SelectedItemType", "");
-    QString selectedName = g->readEntry("SelectedItemName", "");
-    delete g;
+    QString activeType = g.readEntry("ActiveItemType", "");
+    QString activeName = g.readEntry("ActiveItemName", "");
+    QString selectedType = g.readEntry("SelectedItemType", "");
+    QString selectedName = g.readEntry("SelectedItemName", "");
 
     if (!_data) return;
 

@@ -99,7 +99,7 @@ int GraphEdgeList::compareItems(Item item1, Item item2)
 
 #ifdef __GNUC__
 #warning please review the code - either *1 or *2 are unused and are still compared with
-#endif    
+#endif
     int dx1, dy1, dx2, dy2;
     int x, y;
     if (_sortCallerPos) {
@@ -2706,25 +2706,24 @@ QString CallGraphView::zoomPosString(ZoomPosition p)
 void CallGraphView::readViewConfig(KConfig* c,
 				   QString prefix, QString postfix, bool)
 {
-    KConfigGroup* g = configGroup(c, prefix, postfix);
+    KConfigGroup g = configGroup(c, prefix, postfix);
 
     if (0) qDebug("CallGraphView::readViewConfig");
 
-    _maxCallerDepth  = g->readEntry("MaxCaller", DEFAULT_MAXCALLER);
-    _maxCallingDepth = g->readEntry("MaxCalling", DEFAULT_MAXCALLING);
-    _funcLimit       = g->readEntry("FuncLimit", DEFAULT_FUNCLIMIT);
-    _callLimit       = g->readEntry("CallLimit", DEFAULT_CALLLIMIT);
-    _showSkipped     = g->readEntry("ShowSkipped", DEFAULT_SHOWSKIPPED);
-    _expandCycles    = g->readEntry("ExpandCycles", DEFAULT_EXPANDCYCLES);
-    _clusterGroups   = g->readEntry("ClusterGroups",
+    _maxCallerDepth  = g.readEntry("MaxCaller", DEFAULT_MAXCALLER);
+    _maxCallingDepth = g.readEntry("MaxCalling", DEFAULT_MAXCALLING);
+    _funcLimit       = g.readEntry("FuncLimit", DEFAULT_FUNCLIMIT);
+    _callLimit       = g.readEntry("CallLimit", DEFAULT_CALLLIMIT);
+    _showSkipped     = g.readEntry("ShowSkipped", DEFAULT_SHOWSKIPPED);
+    _expandCycles    = g.readEntry("ExpandCycles", DEFAULT_EXPANDCYCLES);
+    _clusterGroups   = g.readEntry("ClusterGroups",
 					DEFAULT_CLUSTERGROUPS);
-    _detailLevel     = g->readEntry("DetailLevel", DEFAULT_DETAILLEVEL);
-    _layout          = GraphOptions::layout(g->readEntry("Layout",
+    _detailLevel     = g.readEntry("DetailLevel", DEFAULT_DETAILLEVEL);
+    _layout          = GraphOptions::layout(g.readEntry("Layout",
 					   layoutString(DEFAULT_LAYOUT)));
-    _zoomPosition    = zoomPos(g->readEntry("ZoomPosition",
+    _zoomPosition    = zoomPos(g.readEntry("ZoomPosition",
 					    zoomPosString(DEFAULT_ZOOMPOS)));
 
-    delete g;
 }
 
 void CallGraphView::saveViewConfig(KConfig* c,
@@ -2732,18 +2731,18 @@ void CallGraphView::saveViewConfig(KConfig* c,
 {
     KConfigGroup g(c, (prefix+postfix).toAscii());
 
-    writeConfigEntry(&g, "MaxCaller", _maxCallerDepth, DEFAULT_MAXCALLER);
-    writeConfigEntry(&g, "MaxCalling", _maxCallingDepth, DEFAULT_MAXCALLING);
-    writeConfigEntry(&g, "FuncLimit", _funcLimit, DEFAULT_FUNCLIMIT);
-    writeConfigEntry(&g, "CallLimit", _callLimit, DEFAULT_CALLLIMIT);
-    writeConfigEntry(&g, "ShowSkipped", _showSkipped, DEFAULT_SHOWSKIPPED);
-    writeConfigEntry(&g, "ExpandCycles", _expandCycles, DEFAULT_EXPANDCYCLES);
-    writeConfigEntry(&g, "ClusterGroups", _clusterGroups,
+    writeConfigEntry(g, "MaxCaller", _maxCallerDepth, DEFAULT_MAXCALLER);
+    writeConfigEntry(g, "MaxCalling", _maxCallingDepth, DEFAULT_MAXCALLING);
+    writeConfigEntry(g, "FuncLimit", _funcLimit, DEFAULT_FUNCLIMIT);
+    writeConfigEntry(g, "CallLimit", _callLimit, DEFAULT_CALLLIMIT);
+    writeConfigEntry(g, "ShowSkipped", _showSkipped, DEFAULT_SHOWSKIPPED);
+    writeConfigEntry(g, "ExpandCycles", _expandCycles, DEFAULT_EXPANDCYCLES);
+    writeConfigEntry(g, "ClusterGroups", _clusterGroups,
 		     DEFAULT_CLUSTERGROUPS);
-    writeConfigEntry(&g, "DetailLevel", _detailLevel, DEFAULT_DETAILLEVEL);
-    writeConfigEntry(&g, "Layout",
+    writeConfigEntry(g, "DetailLevel", _detailLevel, DEFAULT_DETAILLEVEL);
+    writeConfigEntry(g, "Layout",
 		     layoutString(_layout), layoutString(DEFAULT_LAYOUT).toUtf8().data());
-    writeConfigEntry(&g, "ZoomPosition",
+    writeConfigEntry(g, "ZoomPosition",
 		     zoomPosString(_zoomPosition),
 		     zoomPosString(DEFAULT_ZOOMPOS).toUtf8().data());
 }

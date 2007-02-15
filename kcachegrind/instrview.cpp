@@ -661,8 +661,8 @@ bool InstrView::fillInstrRange(TraceFunction* function,
         // read next objdump line
         while (1) {
           readBytes=file.readLine(buf, BUF_SIZE);
-          if (readBytes<=0) { 
-	    objAddr = 0; 
+          if (readBytes<=0) {
+	    objAddr = 0;
 	    break;
 	  }
 
@@ -925,16 +925,14 @@ void InstrView::updateInstrItems()
     }
 }
 
-void InstrView::readViewConfig(KConfig* c, 
+void InstrView::readViewConfig(KConfig* c,
 			       QString prefix, QString postfix, bool)
 {
-    KConfigGroup* g = configGroup(c, prefix, postfix);
+    KConfigGroup g = configGroup(c, prefix, postfix);
 
     if (0) qDebug("InstrView::readViewConfig");
 
-    _showHexCode  = g->readEntry("ShowHexCode", DEFAULT_SHOWHEXCODE);
-
-    delete g;
+    _showHexCode  = g.readEntry("ShowHexCode", DEFAULT_SHOWHEXCODE);
 }
 
 void InstrView::saveViewConfig(KConfig* c,
@@ -942,7 +940,7 @@ void InstrView::saveViewConfig(KConfig* c,
 {
     KConfigGroup g(c, (prefix+postfix).ascii());
 
-    writeConfigEntry(&g, "ShowHexCode", _showHexCode, DEFAULT_SHOWHEXCODE);
+    writeConfigEntry(g, "ShowHexCode", _showHexCode, DEFAULT_SHOWHEXCODE);
 }
 
 #include "instrview.moc"
