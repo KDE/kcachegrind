@@ -66,8 +66,8 @@ public:
   TraceData* data() { return _data; }
   void setData(TraceData*);
 
-  virtual void saveProperties(KConfig*);
-  virtual void readProperties(KConfig*);
+  virtual void saveProperties(KConfigGroup &);
+  virtual void readProperties(const KConfigGroup &);
 
   void createActions();
   void createDocks();
