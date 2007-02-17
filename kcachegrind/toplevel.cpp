@@ -440,14 +440,14 @@ TopLevel::~TopLevel()
 }
 
 
-void TopLevel::saveProperties(KConfig* c)
+void TopLevel::saveProperties(KConfigGroup & c)
 {
-  c->writeEntry("TraceName", _data->traceName());
+  c.writeEntry("TraceName", _data->traceName());
 }
 
-void TopLevel::readProperties(KConfig* c)
+void TopLevel::readProperties(const KConfigGroup &c)
 {
-  QString traceName = c->readEntry("TraceName");
+  QString traceName = c.readEntry("TraceName");
   if (!traceName.isEmpty()) {
       TraceData* d = new TraceData(this);
       d->load(traceName);
