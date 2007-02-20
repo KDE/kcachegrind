@@ -955,28 +955,27 @@ QColor CallMapCallerItem::backColor() const
 void CallMapView::readViewConfig(KConfig* c,
 				 QString prefix, QString postfix, bool)
 {
-    KConfigGroup* g = configGroup(c, prefix, postfix);
+    KConfigGroup g = configGroup(c, prefix, postfix);
 
-    setSplitMode(g->readEntry("SplitMode", DEFAULT_SPLITMODE));
+    setSplitMode(g.readEntry("SplitMode", DEFAULT_SPLITMODE));
 
-    setFieldVisible(0, g->readEntry("DrawName", DEFAULT_DRAWNAME));
-    setFieldVisible(1, g->readEntry("DrawCost", DEFAULT_DRAWCOST));
-    setFieldVisible(2, g->readEntry("DrawLocation", DEFAULT_DRAWLOCATION));
-    setFieldVisible(3, g->readEntry("DrawCalls", DEFAULT_DRAWCALLS));
+    setFieldVisible(0, g.readEntry("DrawName", DEFAULT_DRAWNAME));
+    setFieldVisible(1, g.readEntry("DrawCost", DEFAULT_DRAWCOST));
+    setFieldVisible(2, g.readEntry("DrawLocation", DEFAULT_DRAWLOCATION));
+    setFieldVisible(3, g.readEntry("DrawCalls", DEFAULT_DRAWCALLS));
 
-    bool enable = g->readEntry("ForceStrings", DEFAULT_FORCESTRINGS);
+    bool enable = g.readEntry("ForceStrings", DEFAULT_FORCESTRINGS);
     setFieldForced(0, enable);
     setFieldForced(1, enable);
     setFieldForced(2, enable);
     setFieldForced(3, enable);
 
-    setAllowRotation(g->readEntry("AllowRotation", DEFAULT_ROTATION));
-    setShadingEnabled(g->readEntry("Shading", DEFAULT_SHADING));
-    setFieldStop(0, g->readEntry("StopName"));
-    setMaxDrawingDepth(g->readEntry("MaxDepth", -1));
-    setMinimalArea(g->readEntry("MaxArea", DEFAULT_MAXAREA));
+    setAllowRotation(g.readEntry("AllowRotation", DEFAULT_ROTATION));
+    setShadingEnabled(g.readEntry("Shading", DEFAULT_SHADING));
+    setFieldStop(0, g.readEntry("StopName"));
+    setMaxDrawingDepth(g.readEntry("MaxDepth", -1));
+    setMinimalArea(g.readEntry("MaxArea", DEFAULT_MAXAREA));
 
-    delete g;
 }
 
 void CallMapView::saveViewConfig(KConfig* c,
@@ -984,20 +983,20 @@ void CallMapView::saveViewConfig(KConfig* c,
 {
     KConfigGroup g(c, (prefix+postfix).ascii());
 
-    writeConfigEntry(&g, "SplitMode", splitModeString(), DEFAULT_SPLITMODE);
-    writeConfigEntry(&g, "DrawName", fieldVisible(0), DEFAULT_DRAWNAME);
-    writeConfigEntry(&g, "DrawCost", fieldVisible(1), DEFAULT_DRAWCOST);
-    writeConfigEntry(&g, "DrawLocation", fieldVisible(2), DEFAULT_DRAWLOCATION);
-    writeConfigEntry(&g, "DrawCalls", fieldVisible(3), DEFAULT_DRAWCALLS);
+    writeConfigEntry(g, "SplitMode", splitModeString(), DEFAULT_SPLITMODE);
+    writeConfigEntry(g, "DrawName", fieldVisible(0), DEFAULT_DRAWNAME);
+    writeConfigEntry(g, "DrawCost", fieldVisible(1), DEFAULT_DRAWCOST);
+    writeConfigEntry(g, "DrawLocation", fieldVisible(2), DEFAULT_DRAWLOCATION);
+    writeConfigEntry(g, "DrawCalls", fieldVisible(3), DEFAULT_DRAWCALLS);
     // when option for all text (0-3)
-    writeConfigEntry(&g, "ForceStrings", fieldForced(0), DEFAULT_FORCESTRINGS);
+    writeConfigEntry(g, "ForceStrings", fieldForced(0), DEFAULT_FORCESTRINGS);
 
-    writeConfigEntry(&g, "AllowRotation", allowRotation(), DEFAULT_ROTATION);
-    writeConfigEntry(&g, "Shading", isShadingEnabled(), DEFAULT_SHADING);
+    writeConfigEntry(g, "AllowRotation", allowRotation(), DEFAULT_ROTATION);
+    writeConfigEntry(g, "Shading", isShadingEnabled(), DEFAULT_SHADING);
 
-    writeConfigEntry(&g, "StopName", fieldStop(0), "");
-    writeConfigEntry(&g, "MaxDepth", maxDrawingDepth(), -1);
-    writeConfigEntry(&g, "MaxArea", minimalArea(), DEFAULT_MAXAREA);
+    writeConfigEntry(g, "StopName", fieldStop(0), "");
+    writeConfigEntry(g, "MaxDepth", maxDrawingDepth(), -1);
+    writeConfigEntry(g, "MaxArea", minimalArea(), DEFAULT_MAXAREA);
 }
 
 #include "callmapview.moc"

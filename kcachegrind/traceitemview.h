@@ -76,14 +76,14 @@ public:
 
   virtual QString whatsThis() const;
 
-  static KConfigGroup* configGroup(KConfig*, QString prefix, QString postfix);
-  static void writeConfigEntry(KConfigBase*, const char* pKey, QString value,
+  static KConfigGroup configGroup(KConfig*, QString prefix, QString postfix);
+  static void writeConfigEntry(KConfigGroup&, const char* pKey, QString value,
                                const char* def, bool bNLS = false);
-  static void writeConfigEntry(KConfigBase*, const char* pKey,
+  static void writeConfigEntry(KConfigGroup&, const char* pKey,
                                int value, int def);
-  static void writeConfigEntry(KConfigBase*, const char* pKey,
+  static void writeConfigEntry(KConfigGroup&, const char* pKey,
                                bool value, bool def);
-  static void writeConfigEntry(KConfigBase*, const char* pKey,
+  static void writeConfigEntry(KConfigGroup&, const char* pKey,
                                double value, double def);
   virtual void readViewConfig(KConfig*, QString prefix, QString postfix,
 			      bool withOptions);

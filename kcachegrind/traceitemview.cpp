@@ -61,58 +61,54 @@ void TraceItemView::select(TraceItem* i)
     _newSelectedItem = i;
 }
 
-KConfigGroup* TraceItemView::configGroup(KConfig* c,
+KConfigGroup TraceItemView::configGroup(KConfig* c,
 					 QString group, QString post)
 {
     QStringList gList = c->groupList();
     if (gList.contains(group+post) ) group += post;
-    return new KConfigGroup(c, group);
+    return KConfigGroup(c, group);
 }
 
-void TraceItemView::writeConfigEntry(KConfigBase* c, const char* pKey,
+void TraceItemView::writeConfigEntry(KConfigGroup &c, const char* pKey,
 				     QString value, const char* def, bool bNLS)
 {
-    if (!c) return;
     if ((value.isEmpty() && ((def == 0) || (*def == 0))) ||
 	(value == QString(def)))
-	c->deleteEntry(pKey);
+	c.deleteEntry(pKey);
     else
 	{
 		if( bNLS )
-			c->writeEntry(pKey, value, KConfigBase::Normal|KConfigBase::NLS);
+			c.writeEntry(pKey, value, KConfigBase::Normal|KConfigBase::NLS);
 		else
-			c->writeEntry(pKey, value);
+			c.writeEntry(pKey, value);
 	}
 }
 
-void TraceItemView::writeConfigEntry(KConfigBase* c, const char* pKey,
+void TraceItemView::writeConfigEntry(KConfigGroup& c, const char* pKey,
 				     int value, int def)
 {
-    if (!c) return;
     if (value == def)
-	c->deleteEntry(pKey);
+	c.deleteEntry(pKey);
     else
-	c->writeEntry(pKey, value);
+	c.writeEntry(pKey, value);
 }
 
-void TraceItemView::writeConfigEntry(KConfigBase* c, const char* pKey,
+void TraceItemView::writeConfigEntry(KConfigGroup& c, const char* pKey,
 				     double value, double def)
 {
-    if (!c) return;
     if (value == def)
-	c->deleteEntry(pKey);
+	c.deleteEntry(pKey);
     else
-	c->writeEntry(pKey, value);
+	c.writeEntry(pKey, value);
 }
 
-void TraceItemView::writeConfigEntry(KConfigBase* c, const char* pKey,
+void TraceItemView::writeConfigEntry(KConfigGroup& c, const char* pKey,
 				     bool value, bool def)
 {
-    if (!c) return;
     if (value == def)
-	c->deleteEntry(pKey);
+	c.deleteEntry(pKey);
     else
-	c->writeEntry(pKey, value);
+	c.writeEntry(pKey, value);
 }
 
 void TraceItemView::readViewConfig(KConfig*, QString, QString, bool)

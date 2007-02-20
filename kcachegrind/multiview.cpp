@@ -174,17 +174,16 @@ void MultiView::readViewConfig(KConfig* c,
 		prefix.ascii(), postfix.ascii());
 
   QString active;
-  KConfigGroup* g = configGroup(c, prefix, postfix);
-  int n = g->readEntry("Panels", 1);
+  KConfigGroup g = configGroup(c, prefix, postfix);
+  int n = g.readEntry("Panels", 1);
   setChildCount(n);
-  setOrientation( (g->readEntry("Orientation") == QString("Horizontal")) ?
+  setOrientation( (g.readEntry("Orientation") == QString("Horizontal")) ?
 		  Qt::Horizontal : Qt::Vertical );
 
   if ( n>1 )
-    setSizes(g->readEntry("PanelSizes",QList<int>()));
+    setSizes(g.readEntry("PanelSizes",QList<int>()));
 
-  active = g->readEntry("ActivePanel", "");
-  delete g;
+  active = g.readEntry("ActivePanel", "");
 
   TabView* tv, *activeTV = 0;
   for(tv=_views.first();tv;tv=_views.next()) {
