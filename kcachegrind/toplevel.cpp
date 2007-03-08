@@ -520,7 +520,7 @@ void TopLevel::createMiscActions()
   action->setWhatsThis( hint );
 
   action = actionCollection()->addAction( "reload" );
-  action->setIcon( KIcon("reload") );
+  action->setIcon( KIcon("view-refresh") );
   action->setText( i18n( "&Reload" ) );
   connect(action, SIGNAL(triggered(bool) ), SLOT( reload() ));
   action->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Reload));
@@ -539,7 +539,7 @@ void TopLevel::createMiscActions()
 
 
   _taDump = actionCollection()->add<KToggleAction>( "dump" );
-  _taDump->setIcon( KIcon("redo") );
+  _taDump->setIcon( KIcon("edit-redo") );
   _taDump->setText( i18n( "&Force Dump" ) );
   connect(_taDump, SIGNAL(triggered(bool) ), SLOT( forceTrace() ));
   _taDump->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Redo));
@@ -647,7 +647,7 @@ void TopLevel::createMiscActions()
   _taExpanded->setWhatsThis( hint );
 
   _taCycles = actionCollection()->add<KToggleAction>("view_cycles");
-  _taCycles->setIcon(KIcon("undo"));
+  _taCycles->setIcon(KIcon("edit-undo"));
   _taCycles->setText(i18n( "Do Cycle Detection" ));
   connect(_taCycles, SIGNAL(triggered(bool) ), SLOT( toggleCycles() ));
   _taCycles->setCheckedState(KGuiItem(i18n("Skip Cycle Detection")));
@@ -692,7 +692,7 @@ void TopLevel::createMiscActions()
   action->setToolTip( hint );
   action->setWhatsThis( hint );
 #else
-  _paUp = new KToolBarPopupAction( KIcon( "up" ), i18n( "&Up" ), this );
+  _paUp = new KToolBarPopupAction( KIcon( "go-up" ), i18n( "&Up" ), this );
   _paUp->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Up) );
   connect( _paUp, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserUp() ) );
   actionCollection()->addAction( "go_up", _paUp );

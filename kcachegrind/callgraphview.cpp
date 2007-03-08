@@ -1158,7 +1158,7 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce,
     setPixmap(0, percentagePixmap(25,10,(int)(inclP+.5), Qt::blue, true));
 
     if (e->call() && (e->call()->isRecursion() || e->call()->inCycle())) {
-	QString icon = "undo";
+	QString icon = "edit-undo";
 	KIconLoader* loader = KIconLoader::global();
 	QPixmap p= loader->loadIcon(icon, K3Icon::Small, 0,
 				      K3Icon::DefaultState, 0, true);
