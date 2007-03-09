@@ -51,6 +51,7 @@ GenericName[uk]=Інтерфейс до Profiler
 GenericName[x-test]=xxProfiler Frontendxx
 GenericName[zh_TW]=分析器前端
 Comment=Visualization of Performance Profiling Data
+Comment[bg]=Визуализация на данните за производителност
 Comment[ca]=Visualizació de dades de perfilat de rendiment
 Comment[cs]=Vizualizace profilovacích dat výkonu
 Comment[da]=Visualisering af profileringsdata
