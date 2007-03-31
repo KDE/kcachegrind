@@ -58,7 +58,7 @@
 #include <kfiledialog.h>
 #include <kio/netaccess.h>
 #include <kedittoolbar.h>
-#include <kkeydialog.h>
+#include <kshortcutsdialog.h>
 #include <ktip.h>
 #include <kmenu.h>
 #include <kdebug.h>
@@ -957,7 +957,7 @@ void TopLevel::querySlot()
 
 void TopLevel::configureKeys()
 {
-  KKeyDialog::configure(actionCollection(), KKeyChooser::LetterShortcutsAllowed, this);
+  KShortcutsDialog::configure(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, this);
 }
 
 
