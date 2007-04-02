@@ -963,7 +963,7 @@ void TopLevel::configureKeys()
 
 void TopLevel::configureToolbars()
 {
-  KEditToolBar *dlg = new KEditToolbar(guiFactory(),this);
+  KEditToolBar *dlg = new KEditToolBar(guiFactory(),this);
 
   if (dlg->exec())
     createGUI();
