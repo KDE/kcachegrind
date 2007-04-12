@@ -20,8 +20,6 @@
  * Utility classes for KCachegrind
  */
 
-#include <config.h>
-
 #include <config-kcachegrind.h>
 
 #ifdef HAVE_MMAP
