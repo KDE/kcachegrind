@@ -773,7 +773,7 @@ void TopLevel::createMiscActions()
            this, SLOT(groupTypeSelected(int)));
 
   _taSplit = actionCollection()->add<KToggleAction>("view_split");
-  _taSplit->setIcon(KIcon("view_left_right"));
+  _taSplit->setIcon(KIcon("view-left-right"));
   _taSplit->setText(i18n("Split"));
   connect(_taSplit, SIGNAL(triggered(bool) ), SLOT(splitSlot()));
 
@@ -782,7 +782,7 @@ void TopLevel::createMiscActions()
   _taSplit->setWhatsThis( hint );
 
  _taSplitDir = actionCollection()->add<KToggleAction>("view_split_dir");
- _taSplitDir->setIcon(KIcon("view_left_right"));
+ _taSplitDir->setIcon(KIcon("view-left-right"));
  _taSplitDir->setText(i18n("Split Horizontal"));
  connect(_taSplitDir, SIGNAL(triggered(bool) ), SLOT(splitDirSlot()));
 
