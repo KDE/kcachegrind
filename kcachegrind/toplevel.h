@@ -28,7 +28,7 @@
 #include <QLabel>
 #include <Q3PopupMenu>
 
-#include <kmainwindow.h>
+#include <kxmlguiwindow.h>
 
 #include "traceitemview.h"
 #include "tracedata.h"
@@ -55,7 +55,7 @@ class DumpSelection;
 class StackSelection;
 class TraceFunction;
 
-class TopLevel : public KMainWindow
+class TopLevel : public KXmlGuiWindow
 {
   Q_OBJECT
   Q_CLASSINFO("D-Bus Interface", "org.kde.kcachegrind")
