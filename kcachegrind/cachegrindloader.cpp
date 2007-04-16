@@ -19,7 +19,6 @@
 #include <errno.h>
 
 #include <qfile.h>
-#include <q3cstring.h>
 
 #include <klocale.h>
 #include <kdebug.h>

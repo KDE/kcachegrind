@@ -114,7 +114,7 @@ void SourceView::context(Q3ListViewItem* i, const QPoint & p, int c)
     if ((int)name.length()>Configuration::maxSymbolLength())
       name = name.left(Configuration::maxSymbolLength()) + "...";
     popup.insertItem(i18n("Go to '%1'", name), 93);
-    popup.insertSeparator();
+    popup.addSeparator();
   }
   else if (line) {
     popup.insertItem(i18n("Go to Line %1", line->name()), 93);
@@ -123,7 +123,7 @@ void SourceView::context(Q3ListViewItem* i, const QPoint & p, int c)
 
   if ((c == 1) || (c == 2)) {
     addCostMenu(&popup);
-    popup.insertSeparator();
+    popup.addSeparator();
   }
   addGoMenu(&popup);
 
