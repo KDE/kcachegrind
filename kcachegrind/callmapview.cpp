@@ -27,7 +27,6 @@
 
 #include <klocale.h>
 #include <kiconloader.h>
-#include <kapplication.h>
 #include <kconfig.h>
 #include <kconfiggroup.h>
 

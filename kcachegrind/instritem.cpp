@@ -27,7 +27,6 @@
 #include <Q3MemArray>
 
 #include <klocale.h>
-#include <kapplication.h>
 #include <kiconloader.h>
 #include <kdebug.h>
 

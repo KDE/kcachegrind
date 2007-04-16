@@ -28,7 +28,6 @@
 
 #include <klocale.h>
 #include <kiconloader.h>
-#include <kapplication.h>
 
 #include "listutils.h"
 #include "functionitem.h"

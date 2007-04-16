@@ -22,7 +22,6 @@
 
 #include <qpixmap.h>
 #include <klocale.h>
-#include <kapplication.h>
 #include <kiconloader.h>
 
 #include "configuration.h"

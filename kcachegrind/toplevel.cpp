@@ -47,7 +47,6 @@
 #include <Q3PopupMenu>
 
 #include <kstandardguiitem.h>
-#include <kapplication.h>
 #include <klocale.h>
 #include <kglobal.h>
 #include <kstatusbar.h>
