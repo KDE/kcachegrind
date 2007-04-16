@@ -82,7 +82,7 @@
 #include <kconfiggroup.h>
 
 TopLevel::TopLevel()
-  : KMainWindow(0)
+  : KXmlGuiWindow(0)
 {
     QDBusConnection::sessionBus().registerObject("/KCachegrind", this, QDBusConnection::ExportScriptableSlots);
   init();
