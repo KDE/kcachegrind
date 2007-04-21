@@ -24,7 +24,7 @@
 #include <math.h>
 
 #include <qpainter.h>
-#include <qtooltip.h>
+
 #include <qregexp.h>
 #include <qstyle.h>
 #include <q3popupmenu.h>

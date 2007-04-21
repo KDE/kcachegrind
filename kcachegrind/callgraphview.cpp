@@ -23,7 +23,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include <qtooltip.h>
+
 #include <qfile.h>
 #include <qtextstream.h>
 
