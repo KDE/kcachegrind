@@ -3,6 +3,7 @@ project(kcachegrind)
 
 set( KCACHEGRIND_VERSION "0.4.6kde")
 
+check_function_exists(mmap            HAVE_MMAP)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config-kcachegrind.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kcachegrind.h )
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.h )
