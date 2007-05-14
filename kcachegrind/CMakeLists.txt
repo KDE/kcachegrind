@@ -58,7 +58,7 @@ kde4_add_ui_files(kcachegrind_SRCS
 
 kde4_add_executable(kcachegrind ${kcachegrind_SRCS})
 
-target_link_libraries(kcachegrind  ${KDE4_KIO_LIBS} )
+target_link_libraries(kcachegrind  ${KDE4_KIO_LIBS} ${QT_QT3SUPPORT_LIBRARY})
 
 install(TARGETS kcachegrind  DESTINATION ${BIN_INSTALL_DIR} )
 
