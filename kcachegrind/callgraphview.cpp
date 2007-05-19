@@ -2528,8 +2528,11 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
   Q3PopupMenu gpopup4;
   gpopup4.setCheckable(true);
   gpopup4.insertItem(i18n("Same as Node"), 160);
+  // xgettext: no-c-format
   gpopup4.insertItem(i18n("50 % of Node"), 161);
+  // xgettext: no-c-format
   gpopup4.insertItem(i18n("20 % of Node"), 162);
+  // xgettext: no-c-format
   gpopup4.insertItem(i18n("10 % of Node"), 163);
   if (_callLimit<0) _callLimit = DEFAULT_CALLLIMIT;
   if (_callLimit >= _funcLimit) _callLimit = _funcLimit;
