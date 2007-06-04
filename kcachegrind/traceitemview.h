@@ -32,7 +32,6 @@ class Q3PopupMenu;
 
 class KConfig;
 class KConfigGroup;
-class KConfigBase;
 
 class TopLevel;
 

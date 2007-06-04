@@ -31,7 +31,6 @@
 class TraceFunction;
 class TraceData;
 class StackBrowser;
-class NestedAreaItem;
 
 class StackSelectionBase : public QWidget, public Ui::StackSelectionBase
 {

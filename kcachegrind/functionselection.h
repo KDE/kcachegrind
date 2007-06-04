@@ -32,10 +32,6 @@
 
 class Q3PopupMenu;
 
-class TraceFunction;
-class TraceData;
-class StackBrowser;
-class NestedAreaItem;
 
 
 class FunctionSelectionBase : public QWidget, public Ui::FunctionSelectionBase

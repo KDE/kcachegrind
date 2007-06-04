@@ -28,7 +28,6 @@
 #include <qstring.h>
 
 class QFile;
-class TraceData;
 class TracePart;
 class Loader;
 
