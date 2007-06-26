@@ -12,8 +12,8 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; see the file COPYING.  If not, write to
-   the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-   Boston, MA 02111-1307, USA.
+   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+   Boston, MA 02110-1301, USA.
 */
 
 /**
@@ -119,13 +119,13 @@ public:
   const QFont& font() const;
 
   // attribute setters
-  void setField(int f, QString t, QPixmap pm = QPixmap(),
+  void setField(int f, const QString& t, QPixmap pm = QPixmap(),
                 Position p = Default, int maxLines = 0);
-  void setText(int f, QString);
-  void setPixmap(int f, QPixmap);
+  void setText(int f, const QString&);
+  void setPixmap(int f, const QPixmap&);
   void setPosition(int f, Position);
   void setMaxLines(int f, int);
-  void setBackColor(QColor c) { _backColor = c; }
+  void setBackColor(const QColor& c) { _backColor = c; }
   void setSelected(bool b) { _selected = b; }
   void setCurrent(bool b) { _current = b; }
   void setShaded(bool b) { _shaded = b; }
@@ -407,7 +407,7 @@ public:
    */
   enum SelectionMode { Single, Multi, Extended, NoSelection };
 
-  /* The widget gets owner of the base item */
+  /* The widget becomes owner of the base item */
   TreeMapWidget(TreeMapItem* base, QWidget* parent=0, const char* name=0);
   ~TreeMapWidget();
 

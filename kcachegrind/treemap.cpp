@@ -12,8 +12,8 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; see the file COPYING.  If not, write to
-   the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-   Boston, MA 02111-1307, USA.
+   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+   Boston, MA 02110-1301, USA.
 */
 
 /*
@@ -125,7 +125,7 @@ void StoredDrawParams::ensureField(int f)
 }
 
 
-void StoredDrawParams::setField(int f, QString t, QPixmap pm,
+void StoredDrawParams::setField(int f, const QString& t, QPixmap pm,
                            Position p, int maxLines)
 {
   if (f<0 || f>=MAX_FIELD) return;
@@ -137,7 +137,7 @@ void StoredDrawParams::setField(int f, QString t, QPixmap pm,
   _field[f].maxLines = maxLines;
 }
 
-void StoredDrawParams::setText(int f, QString t)
+void StoredDrawParams::setText(int f, const QString& t)
 {
   if (f<0 || f>=MAX_FIELD) return;
   ensureField(f);
@@ -145,7 +145,7 @@ void StoredDrawParams::setText(int f, QString t)
   _field[f].text = t;
 }
 
-void StoredDrawParams::setPixmap(int f, QPixmap pm)
+void StoredDrawParams::setPixmap(int f, const QPixmap& pm)
 {
   if (f<0 || f>=MAX_FIELD) return;
   ensureField(f);
@@ -1640,6 +1640,7 @@ TreeMapItemList TreeMapWidget::diff(TreeMapItemList& l1,
  */
 TreeMapItem* TreeMapWidget::setTmpSelected(TreeMapItem* item, bool selected)
 {
+  if (!item) return 0;
   if (_selectionMode == NoSelection) return 0;
 
   TreeMapItemList old = _tmpSelection;
@@ -1752,8 +1753,9 @@ TreeMapItem* TreeMapWidget::setTmpRangeSelection(TreeMapItem* i1,
 						 TreeMapItem* i2,
 						 bool selected)
 {
-  if (i1->isChildOf(i2)) return setTmpSelected(i2, selected);
-  if (i2->isChildOf(i1)) return setTmpSelected(i1, selected);
+  if ((i1 == 0) && (i2 == 0)) return 0;
+  if ((i1 == 0) || i1->isChildOf(i2)) return setTmpSelected(i2, selected);
+  if ((i2 == 0) || i2->isChildOf(i1)) return setTmpSelected(i1, selected);
 
   TreeMapItem* changed = setTmpSelected(i1, selected);
   TreeMapItem* changed2 = setTmpSelected(i2, selected);
