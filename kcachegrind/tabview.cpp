@@ -296,6 +296,9 @@ TabView::TabView(TraceItemView* parentView,
 
   // default positions...
 
+  // When changing a name of a view widget, the strings for default
+  // visible tabs in TabView::readViewConfig have to be changed, too.
+  
   addTop( addTab( i18n("Types"),
 		  new EventTypeView(this, 0,
 				   "EventTypeView")));
@@ -742,7 +745,7 @@ void TabView::readViewConfig(KConfig* c,
     if (topTabs.isEmpty() && bottomTabs.isEmpty() &&
         rightTabs.isEmpty() && leftTabs.isEmpty()) {
       // no tabs visible ?! Reset to default
-      topTabs << "CostTypeView" << "CallerView" << "AllCallerView"
+      topTabs << "EventTypeView" << "CallerView" << "AllCallerView"
               << "CalleeMapView" << "SourceView";
       bottomTabs << "PartView" << "CalleeView" << "CallGraphView"
                  << "AllCalleeView" << "CallerMapView" << "InstrView";
