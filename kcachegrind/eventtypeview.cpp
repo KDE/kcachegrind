@@ -17,7 +17,7 @@
 */
 
 /*
- * Cost Type View
+ * Event Type View
  */
 
 
@@ -25,17 +25,17 @@
 #include <klocale.h>
 
 #include "configuration.h"
-#include "costtypeitem.h"
-#include "costtypeview.h"
+#include "eventtypeitem.h"
+#include "eventtypeview.h"
 #include "toplevel.h"
 
 
 //
-// CostTypeView
+// EventTypeView
 //
 
 
-CostTypeView::CostTypeView(TraceItemView* parentView,
+EventTypeView::EventTypeView(TraceItemView* parentView,
 			   QWidget* parent, const char* name)
   : Q3ListView(parent, name), TraceItemView(parentView)
 {
@@ -76,7 +76,7 @@ CostTypeView::CostTypeView(TraceItemView* parentView,
     this->setWhatsThis( whatsThis() );
 }
 
-QString CostTypeView::whatsThis() const
+QString EventTypeView::whatsThis() const
 {
     return i18n( "<b>Cost Types List</b>"
 		 "<p>This list shows all cost types available "
@@ -88,15 +88,15 @@ QString CostTypeView::whatsThis() const
 }
 
 
-void CostTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
+void EventTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
 {
   Q3PopupMenu popup;
 
-  TraceCostType* ct = i ? ((CostTypeItem*) i)->costType() : 0;
+  TraceEventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
 
   if (ct)
     popup.insertItem(i18n("Set Secondary Event Type"), 99);
-  if (_costType2)
+  if (_eventType2)
     popup.insertItem(i18n("Remove Secondary Event Type"), 98);
   if (popup.count()>0)
     popup.insertSeparator();
@@ -115,65 +115,65 @@ void CostTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
   popup.insertItem(i18n("New Cost Type ..."), 97);
 
   int r = popup.exec(p);
-  if (r == 98) selectedCostType2(0);
-  else if (r == 99) selectedCostType2(ct);
+  if (r == 98) selectedEventType2(0);
+  else if (r == 99) selectedEventType2(ct);
   else if (r == 93) i->startRename(0);
   else if (r == 94) i->startRename(3);
   else if (r == 95) i->startRename(5);
   else if (r == 96) {
 
     // search for a previous type 
-    TraceCostType* prev = 0, *ct = 0;
-    TraceCostMapping* m = _data->mapping();
+    TraceEventType* prev = 0, *ct = 0;
+    TraceEventTypeMapping* m = _data->mapping();
     for (int i=0;i<m->realCount();i++) {
 	ct = m->realType(i);
 	if (ct) prev = ct;
     }
-    for (int i=0;i<m->virtualCount();i++) {
-	ct = m->virtualType(i);
-	if (ct == _costType) break;
+    for (int i=0;i<m->derivedCount();i++) {
+	ct = m->derivedType(i);
+	if (ct == _eventType) break;
 	if (ct) prev = ct;
     }
 
     if (_data->mapping()->remove(ct)) {
       // select previous cost type
-      selectedCostType(prev);
-      if (_costType2 == ct)
-	selectedCostType2(prev);
+      selectedEventType(prev);
+      if (_eventType2 == ct)
+	selectedEventType2(prev);
       refresh();
     }
   }
   else if (r == 97) {
     int i = 1;
     while(1) {
-      if (!TraceCostType::knownVirtualType(i18n("New%1", i)))
+      if (!TraceEventType::knownDerivedType(i18n("New%1", i)))
 	break;
       i++;
     }
     // add same new cost type to this mapping and to known types
     QString shortName = i18n("New%1", i);
     QString longName  = i18n("New Cost Type %1", i);
-    TraceCostType::add(new TraceCostType(shortName, longName, "0"));
-    _data->mapping()->add(new TraceCostType(shortName, longName, "0"));
+    TraceEventType::add(new TraceEventType(shortName, longName, "0"));
+    _data->mapping()->add(new TraceEventType(shortName, longName, "0"));
     refresh();
   }
 }
 
-void CostTypeView::selectedSlot(Q3ListViewItem * i)
+void EventTypeView::selectedSlot(Q3ListViewItem * i)
 {
-    TraceCostType* ct = i ? ((CostTypeItem*) i)->costType() : 0;
+    TraceEventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
     if (ct)
-	selectedCostType(ct);
+	selectedEventType(ct);
 }
 
-void CostTypeView::activatedSlot(Q3ListViewItem * i)
+void EventTypeView::activatedSlot(Q3ListViewItem * i)
 {
-  TraceCostType* ct = i ? ((CostTypeItem*) i)->costType() : 0;
+  TraceEventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
   if (ct)
-      selectedCostType2(ct);
+      selectedEventType2(ct);
 }
 
-TraceItem* CostTypeView::canShow(TraceItem* i)
+TraceItem* EventTypeView::canShow(TraceItem* i)
 {
     if (!i) return 0;
 
@@ -191,25 +191,25 @@ TraceItem* CostTypeView::canShow(TraceItem* i)
     return i;
 }
 
-void CostTypeView::doUpdate(int changeType)
+void EventTypeView::doUpdate(int changeType)
 {
     // Special case ?
     if (changeType == selectedItemChanged) return;
 
-    if (changeType == costType2Changed) return;
+    if (changeType == eventType2Changed) return;
 
     if (changeType == groupTypeChanged) {
 	Q3ListViewItem *item;
 	for (item = firstChild();item;item = item->nextSibling())
-	    ((CostTypeItem*)item)->setGroupType(_groupType);
+	    ((EventTypeItem*)item)->setGroupType(_groupType);
 
 	return;
     }
 
-    if (changeType == costTypeChanged) {
+    if (changeType == eventTypeChanged) {
 	Q3ListViewItem *item;
 	for (item = firstChild();item;item = item->nextSibling())
-	    if ( ((CostTypeItem*)item)->costType() == _costType) {
+	    if ( ((EventTypeItem*)item)->eventType() == _eventType) {
 		setSelected(item, true);
 		ensureItemVisible(item);
 		break;
@@ -221,7 +221,7 @@ void CostTypeView::doUpdate(int changeType)
     if (changeType == partsChanged) {
 	Q3ListViewItem *item;
 	for (item = firstChild();item;item = item->nextSibling())
-	    ((CostTypeItem*)item)->update();
+	    ((EventTypeItem*)item)->update();
 
 	return;
     }
@@ -230,7 +230,7 @@ void CostTypeView::doUpdate(int changeType)
     refresh();
 }
 
-void CostTypeView::refresh()
+void EventTypeView::refresh()
 {
     clear();
     setColumnWidth(1, 50);
@@ -249,22 +249,22 @@ void CostTypeView::refresh()
     }
     TraceCostItem* c = (TraceCostItem*) _activeItem;
 
-    TraceCostType* ct =0 ;
+    TraceEventType* ct =0 ;
     Q3ListViewItem* item = 0;
     QString sumStr, pureStr;
     Q3ListViewItem* costItem=0;
 
-    TraceCostMapping* m = _data->mapping();
-    for (int i=m->virtualCount()-1;i>=0;i--) {
-	ct = m->virtualType(i);
+    TraceEventTypeMapping* m = _data->mapping();
+    for (int i=m->derivedCount()-1;i>=0;i--) {
+	ct = m->derivedType(i);
 	if (!ct) continue;
-	item = new CostTypeItem(this, c, ct, _groupType);
-	if (ct == _costType) costItem = item;
+	item = new EventTypeItem(this, c, ct, _groupType);
+	if (ct == _eventType) costItem = item;
     }
     for (int i=m->realCount()-1;i>=0;i--) {
 	ct = m->realType(i);
-	item = new CostTypeItem(this, c, ct, _groupType);
-	if (ct == _costType) costItem = item;
+	item = new EventTypeItem(this, c, ct, _groupType);
+	if (ct == _eventType) costItem = item;
     }
 
     if (costItem) {
@@ -276,16 +276,16 @@ void CostTypeView::refresh()
 }
 
 
-void CostTypeView::renamedSlot(Q3ListViewItem* item,int c,const QString& t)
+void EventTypeView::renamedSlot(Q3ListViewItem* item,int c,const QString& t)
 {
-  TraceCostType* ct = item ? ((CostTypeItem*) item)->costType() : 0;
+  TraceEventType* ct = item ? ((EventTypeItem*) item)->eventType() : 0;
   if (!ct || ct->isReal()) return;
 
   // search for matching known Type
-  int knownCount = TraceCostType::knownTypeCount();
-  TraceCostType* known = 0;
+  int knownCount = TraceEventType::knownTypeCount();
+  TraceEventType* known = 0;
   for (int i=0; i<knownCount; i++) {
-      known = TraceCostType::knownType(i);
+      known = TraceEventType::knownType(i);
       if (known->name() == ct->name()) break;
   }
 
@@ -307,4 +307,4 @@ void CostTypeView::renamedSlot(Q3ListViewItem* item,int c,const QString& t)
   refresh();
 }
 
-#include "costtypeview.moc"
+#include "eventtypeview.moc"

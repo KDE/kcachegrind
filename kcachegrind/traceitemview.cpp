@@ -42,8 +42,8 @@ TraceItemView::TraceItemView(TraceItemView* parentView, TopLevel* top)
   // _partList and _newPartList is empty
   _activeItem = _newActiveItem = 0;
   _selectedItem = _newSelectedItem = 0;
-  _costType = _newCostType = 0;
-  _costType2 = _newCostType2 = 0;
+  _eventType = _newEventType = 0;
+  _eventType2 = _newEventType2 = 0;
   _groupType = _newGroupType = TraceItem::NoCostType;
 
   _status = nothingChanged;
@@ -149,15 +149,15 @@ TraceFunction* TraceItemView::activeFunction()
 }
 
 bool TraceItemView::set(int changeType, TraceData* d,
-			TraceCostType* t1, TraceCostType* t2,
+			TraceEventType* t1, TraceEventType* t2,
 			TraceItem::CostType g, const TracePartList& l,
                         TraceItem* a, TraceItem* s)
 {
   _status |= changeType;
   _newData = d;
   _newGroupType = g;
-  _newCostType = t1;
-  _newCostType2 = t2;
+  _newEventType = t1;
+  _newEventType2 = t2;
   _newPartList = l;
   _newSelectedItem = s;
   _newActiveItem = canShow(a);
@@ -185,8 +185,8 @@ void TraceItemView::setData(TraceData* d)
   // invalidate all pointers to old data
   _activeItem = _newActiveItem = 0;
   _selectedItem = _newSelectedItem = 0;
-  _costType = _newCostType = 0;
-  _costType2 = _newCostType2 = 0;
+  _eventType = _newEventType = 0;
+  _eventType2 = _newEventType2 = 0;
   _groupType = _newGroupType = TraceItem::NoCostType;
   _partList.clear();
   _newPartList.clear();
@@ -228,19 +228,19 @@ void TraceItemView::updateView(bool force)
   else
     _status &= ~activeItemChanged;
 
-  if (_newCostType != _costType) {
-    _status |= costTypeChanged;
-    _costType = _newCostType;
+  if (_newEventType != _eventType) {
+    _status |= eventTypeChanged;
+    _eventType = _newEventType;
   }
   else
-    _status &= ~costTypeChanged;
+    _status &= ~eventTypeChanged;
 
-  if (_newCostType2 != _costType2) {
-    _status |= costType2Changed;
-    _costType2 = _newCostType2;
+  if (_newEventType2 != _eventType2) {
+    _status |= eventType2Changed;
+    _eventType2 = _newEventType2;
   }
   else
-    _status &= ~costType2Changed;
+    _status &= ~eventType2Changed;
 
   if (_newGroupType != _groupType) {
     _status |= groupTypeChanged;
@@ -272,14 +272,14 @@ void TraceItemView::updateView(bool force)
               << _partList.names()
               << endl;
 
-  if (_status & costTypeChanged)
+  if (_status & eventTypeChanged)
     kDebug() << "  Cost type "
-              << (_costType ? qPrintable( _costType->name() ) : "?")
+              << (_eventType ? qPrintable( _eventType->name() ) : "?")
               << endl;
 
-  if (_status & costType2Changed)
+  if (_status & eventType2Changed)
     kDebug() << "  Cost type 2 "
-              << (_costType2 ? qPrintable( _costType2->name() ) : "?")
+              << (_eventType2 ? qPrintable( _eventType2->name() ) : "?")
               << endl;
 
   if (_status & groupTypeChanged)
@@ -355,20 +355,20 @@ void TraceItemView::activated(TraceItemView* /*sender*/, TraceItem* i)
       if (_topLevel) _topLevel->setTraceItemDelayed(i);
 }
 
-void TraceItemView::selectedCostType(TraceItemView*, TraceCostType* t)
+void TraceItemView::selectedEventType(TraceItemView*, TraceEventType* t)
 {
   if (_parentView)
-      _parentView->selectedCostType(this, t);
+      _parentView->selectedEventType(this, t);
   else
-      if (_topLevel) _topLevel->setCostTypeDelayed(t);
+      if (_topLevel) _topLevel->setEventTypeDelayed(t);
 }
 
-void TraceItemView::selectedCostType2(TraceItemView*, TraceCostType* t)
+void TraceItemView::selectedEventType2(TraceItemView*, TraceEventType* t)
 {
   if (_parentView)
-      _parentView->selectedCostType2(this, t);
+      _parentView->selectedEventType2(this, t);
   else
-      if (_topLevel) _topLevel->setCostType2Delayed(t);
+      if (_topLevel) _topLevel->setEventType2Delayed(t);
 }
 
 void TraceItemView::activated(TraceItemView*, TraceItemView::Direction d)
@@ -412,20 +412,20 @@ void TraceItemView::activated(TraceItem* i)
       if (_topLevel) _topLevel->setTraceItemDelayed(i);
 }
 
-void TraceItemView::selectedCostType(TraceCostType* t)
+void TraceItemView::selectedEventType(TraceEventType* t)
 {
   if (_parentView)
-      _parentView->selectedCostType(this, t);
+      _parentView->selectedEventType(this, t);
   else
-      if (_topLevel) _topLevel->setCostTypeDelayed(t);
+      if (_topLevel) _topLevel->setEventTypeDelayed(t);
 }
 
-void TraceItemView::selectedCostType2(TraceCostType* t)
+void TraceItemView::selectedEventType2(TraceEventType* t)
 {
   if (_parentView)
-      _parentView->selectedCostType2(this, t);
+      _parentView->selectedEventType2(this, t);
   else
-      if (_topLevel) _topLevel->setCostType2Delayed(t);
+      if (_topLevel) _topLevel->setEventType2Delayed(t);
 }
 
 void TraceItemView::activated(TraceItemView::Direction d)

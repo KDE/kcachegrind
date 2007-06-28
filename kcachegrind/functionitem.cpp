@@ -39,7 +39,7 @@
 // FunctionItem
 
 FunctionItem::FunctionItem(Q3ListView* parent, TraceFunction* f,
-                           TraceCostType* ct, TraceCost::CostType gt)
+                           TraceEventType* ct, TraceCost::CostType gt)
   :Q3ListViewItem(parent)
 {
 #if 0
@@ -58,7 +58,7 @@ FunctionItem::FunctionItem(Q3ListView* parent, TraceFunction* f,
 }
 
 FunctionItem::FunctionItem(Q3ListView* parent, int skipped,
-			   TraceFunction* f, TraceCostType* ct)
+			   TraceFunction* f, TraceEventType* ct)
   :Q3ListViewItem(parent)
 {
 #if 0
@@ -111,7 +111,7 @@ void  FunctionItem::setGroupType(TraceCost::CostType gt)
 #endif
 }
 
-void FunctionItem::setCostType(TraceCostType* c)
+void FunctionItem::setCostType(TraceEventType* c)
 {
   _costType = c;
   update();

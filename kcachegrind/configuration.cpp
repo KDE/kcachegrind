@@ -175,10 +175,10 @@ void Configuration::saveOptions(KConfig* kconfig)
   generalConfig.writeEntry("NoCostInside", c->_noCostInside);
 
   KConfigGroup ctConfig(kconfig, QByteArray("CostTypes"));
-  int ctCount = TraceCostType::knownTypeCount();
+  int ctCount = TraceEventType::knownTypeCount();
   ctConfig.writeEntry( "Count", ctCount);
   for (int i=0; i<ctCount; i++) {
-    TraceCostType* t = TraceCostType::knownType(i);
+    TraceEventType* t = TraceEventType::knownType(i);
     ctConfig.writeEntry( QString("Name%1").arg(i+1), t->name());
 
     // Use localized key
@@ -268,7 +268,7 @@ void Configuration::readOptions(KConfig* kconfig)
   c->_noCostInside   = generalConfig.readEntry("NoCostInside", 20);
 
   // known cost types
-  if (TraceCostType::knownTypeCount()==0) {
+  if (TraceEventType::knownTypeCount()==0) {
 
     KConfigGroup ctConfig(kconfig, QByteArray("CostTypes"));
     int ctCount = ctConfig.readEntry("Count", 0);
@@ -280,21 +280,21 @@ void Configuration::readOptions(KConfig* kconfig)
         QString f = ctConfig.readEntry(QString("Formula%1").arg(i), QString());
 	if (f.isEmpty()) f = knownFormula(n);
 
-        TraceCostType::add(new TraceCostType(n, l, f));
+        TraceEventType::add(new TraceEventType(n, l, f));
       }
     }
     else {
       // add default types
 
       QString longName, formula;
-      TraceCostType* ct;
+      TraceEventType* ct;
       QStringList l = knownTypes();
       for ( QStringList::Iterator it = l.begin();
             it != l.end(); ++it ) {
         longName = knownLongName(*it);
         formula  = knownFormula(*it);
-        ct = new TraceCostType(*it, longName, formula);
-        TraceCostType::add(ct);
+        ct = new TraceEventType(*it, longName, formula);
+        TraceEventType::add(ct);
       }
     }
   }
@@ -312,7 +312,7 @@ QColor Configuration::groupColor(TraceItem* cost)
   return color(n)->color;
 }
 
-QColor Configuration::costTypeColor(TraceCostType* t)
+QColor Configuration::eventTypeColor(TraceEventType* t)
 {
    QString n;
 

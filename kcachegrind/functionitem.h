@@ -32,14 +32,14 @@ class FunctionItem: public Q3ListViewItem
 {
 public:    
   FunctionItem(Q3ListView* parent, TraceFunction* function,
-	       TraceCostType* ct, TraceCost::CostType gt);
+	       TraceEventType* ct, TraceCost::CostType gt);
   // constructor for a "Skipped ... " entry
   FunctionItem(Q3ListView* parent, int skipped,
-	       TraceFunction* function, TraceCostType* ct);
+	       TraceFunction* function, TraceEventType* ct);
 
   int compare(Q3ListViewItem * i, int col, bool ascending ) const;
   TraceFunction* function() { return (_skipped) ? 0 : _function; }
-  void setCostType(TraceCostType* ct);
+  void setCostType(TraceEventType* ct);
   void setGroupType(TraceCost::CostType);
   void update();
 
@@ -51,7 +51,7 @@ public:
 
 private:
   SubCost _sum, _pure;
-  TraceCostType* _costType;
+  TraceEventType* _costType;
   TraceCost::CostType _groupType;
   TraceFunction* _function;
   int _skipped;

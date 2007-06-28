@@ -73,8 +73,8 @@ public:
   void createDocks();
 
   TraceItem::CostType groupType() { return _groupType; }
-  TraceCostType* costType() { return _costType; }
-  TraceCostType* costType2() { return _costType2; }
+  TraceEventType* eventType() { return _eventType; }
+  TraceEventType* eventType2() { return _eventType2; }
   TracePartList activeParts() { return _activeParts; }
   TracePartList hiddenParts() { return _hiddenParts; }
 
@@ -116,8 +116,8 @@ public slots:
   void updateLayoutActions();
 
   void updateStatusBar();
-  void costTypeSelected(const QString&);
-  void costType2Selected(const QString&);
+  void eventTypeSelected(const QString&);
+  void eventType2Selected(const QString&);
   void groupTypeSelected(int);
   void splitSlot();
   void splitDirSlot();
@@ -149,12 +149,12 @@ public slots:
   void backActivated(int);
   void upActivated(int);
 
-  bool setCostType(TraceCostType*);
-  bool setCostType2(TraceCostType*);
-  bool setCostType(QString);
-  bool setCostType2(QString);
-  bool setCostType(int);
-  bool setCostType2(int);
+  bool setEventType(TraceEventType*);
+  bool setEventType2(TraceEventType*);
+  bool setEventType(QString);
+  bool setEventType2(QString);
+  bool setEventType(int);
+  bool setEventType2(int);
   bool setGroupType(TraceItem::CostType);
   bool setGroupType(QString);
   bool setGroup(TraceCostItem*);
@@ -169,8 +169,8 @@ public slots:
    * So they can be called from event handlers that
    * aren't allowed to delete list entries.
    */
-  void setCostTypeDelayed(TraceCostType*);
-  void setCostType2Delayed(TraceCostType*);
+  void setEventTypeDelayed(TraceEventType*);
+  void setEventType2Delayed(TraceEventType*);
   void setGroupTypeDelayed(TraceItem::CostType);
   void setGroupDelayed(TraceCostItem*);
   void setTraceItemDelayed(TraceItem*);
@@ -182,8 +182,8 @@ public slots:
   void setDirectionDelayed(TraceItemView::Direction);
 
   /* SingleShot Slots (without parameters) for the delayed versions */
-  void setCostTypeDelayed();
-  void setCostType2Delayed();
+  void setEventTypeDelayed();
+  void setEventType2Delayed();
   void setGroupTypeDelayed();
   void setGroupDelayed();
   void setTraceItemDelayed();
@@ -243,8 +243,8 @@ private:
   // trace data shown in this window
   TraceData* _data;
   // subcost types used for visualisation
-  TraceCostType* _costType;
-  TraceCostType* _costType2;
+  TraceEventType* _eventType;
+  TraceEventType* _eventType2;
   // grouping of function list
   TraceItem::CostType _groupType;
   // selected group
@@ -257,8 +257,8 @@ private:
   int _layoutCurrent, _layoutCount;
 
   // for delayed slots
-  TraceCostType* _costTypeDelayed;
-  TraceCostType* _costType2Delayed;
+  TraceEventType* _eventTypeDelayed;
+  TraceEventType* _eventType2Delayed;
   TraceItem::CostType _groupTypeDelayed;
   TraceCostItem* _groupDelayed;
   TraceItem* _traceItemDelayed;

@@ -377,16 +377,16 @@ void InstrView::refresh()
     clear();
     setColumnWidth(0, 20);
     setColumnWidth(1, 50);
-    setColumnWidth(2, _costType2 ? 50:0);
+    setColumnWidth(2, _eventType2 ? 50:0);
     setColumnWidth(3, 0);   // arrows, defaults to invisible
     setColumnWidth(4, 0);   // hex code column
     setColumnWidth(5, 20);  // command column
     setColumnWidth(6, 200); // arg column
     setSorting(0); // always reset to address number sort
-    if (_costType)
-      setColumnText(1, _costType->name());
-    if (_costType2)
-      setColumnText(2, _costType2->name());
+    if (_eventType)
+      setColumnText(1, _eventType->name());
+    if (_eventType2)
+      setColumnText(2, _eventType2->name());
 
     if (!_data || !_activeItem) return;
 
@@ -415,8 +415,8 @@ void InstrView::refresh()
 	itEnd = instrMap->end();
 	// get first instruction with cost of selected type
 	while(it != itEnd) {
-	  if ((*it).hasCost(_costType)) break;
-	  if (_costType2 && (*it).hasCost(_costType2)) break;
+	  if ((*it).hasCost(_eventType)) break;
+	  if (_eventType2 && (*it).hasCost(_eventType2)) break;
 	  ++it;
 	}
     }
@@ -446,8 +446,8 @@ void InstrView::refresh()
 	}
 	++it;
 	while(it != itEnd) {
-	  if ((*it).hasCost(_costType)) break;
-	  if (_costType2 && (*it).hasCost(_costType2)) break;
+	  if ((*it).hasCost(_eventType)) break;
+	  if (_eventType2 && (*it).hasCost(_eventType2)) break;
 	  ++it;
 	}
 	if (it == itEnd) break;
@@ -468,8 +468,8 @@ void InstrView::refresh()
 	    tmpIt = it;
 	    ++it;
 	    while(it != itEnd) {
-	      if ((*it).hasCost(_costType)) break;
-	      if (_costType2 && (*it).hasCost(_costType2)) break;
+	      if ((*it).hasCost(_eventType)) break;
+	      if (_eventType2 && (*it).hasCost(_eventType2)) break;
 	      ++it;
 	    }
 	    if (it == itEnd) break;
@@ -484,7 +484,7 @@ void InstrView::refresh()
     _lastHexCodeWidth = columnWidth(4);
     setColumnWidths();
 
-    if (!_costType2) {
+    if (!_eventType2) {
       setColumnWidthMode(2, Q3ListView::Manual);
       setColumnWidth(2, 0);
     }
@@ -692,8 +692,8 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	  costIt = it;
 	  ++it;
 	  while(it != itEnd) {
-	    if ((*it).hasCost(_costType)) break;
-	    if (_costType2 && (*it).hasCost(_costType2)) break;
+	    if ((*it).hasCost(_eventType)) break;
+	    if (_eventType2 && (*it).hasCost(_eventType2)) break;
 	    ++it;
 	  }
 	  costAddr = nextCostAddr;
@@ -800,21 +800,21 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 
       if (!first) first = ii;
 
-      if (currInstr->subCost(_costType) > most) {
+      if (currInstr->subCost(_eventType) > most) {
         item = ii;
-        most = currInstr->subCost(_costType);
+        most = currInstr->subCost(_eventType);
       }
 
       ii->setOpen(true);
       TraceInstrCallList list = currInstr->instrCalls();
       TraceInstrCall* ic;
       for (ic=list.first();ic;ic=list.next()) {
-	  if ((ic->subCost(_costType)==0) &&
-	      (ic->subCost(_costType2)==0)) continue;
+	  if ((ic->subCost(_eventType)==0) &&
+	      (ic->subCost(_eventType2)==0)) continue;
 
-	  if (ic->subCost(_costType) > most) {
+	  if (ic->subCost(_eventType) > most) {
 	      item = ii;
-	      most = ic->subCost(_costType);
+	      most = ic->subCost(_eventType);
 	  }
 
 	  ii2 = new InstrItem(this, ii, addr, currInstr, ic);

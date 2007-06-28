@@ -35,7 +35,7 @@ QPixmap colorPixmap(int w, int h, QColor c);
 QPixmap percentagePixmap(int w, int h, int percent, QColor c, bool framed);
 QPixmap partitionPixmap(int w, int h, double* hist, QColor*,
 			int maxIndex, bool framed);
-QPixmap costPixmap(TraceCostType* ct, TraceCost* cost, double total, bool framed);
+QPixmap costPixmap(TraceEventType* ct, TraceCost* cost, double total, bool framed);
 
 /**
  * A class to calculate the <maxSize> TraceCost items
@@ -59,7 +59,7 @@ class HighestCostList
  private:
     TraceCostList _list;
     int _maxSize, _count;
-    TraceCostType* _costType;
+    TraceEventType* _costType;
     Q3MemArray<TraceCost*> _item;
     Q3MemArray<SubCost> _cost;
 };

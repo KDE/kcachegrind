@@ -76,8 +76,8 @@ public slots:
   void currentChangedSlot(TreeMapItem*, bool);
 
   void setPart(TracePart*);
-  void setCostType(TraceCostType*);
-  void setCostType2(TraceCostType*);
+  void setEventType(TraceEventType*);
+  void setEventType2(TraceEventType*);
   void setGroupType(TraceItem::CostType);
   void setGroup(TraceCostItem*);
   void setFunction(TraceFunction*);
@@ -90,7 +90,7 @@ private:
   void fillInfo();
 
   TraceData* _data;
-  TraceCostType *_costType, *_costType2;
+  TraceEventType *_eventType, *_eventType2;
   TraceItem::CostType _groupType;
   TraceCostItem* _group;
   TraceFunction* _function;

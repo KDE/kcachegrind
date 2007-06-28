@@ -279,13 +279,13 @@ void SourceView::refresh()
   clear();
   setColumnWidth(0, 20);
   setColumnWidth(1, 50);
-  setColumnWidth(2, _costType2 ? 50:0);
+  setColumnWidth(2, _eventType2 ? 50:0);
   setColumnWidth(3, 0); // arrows, defaults to invisible
   setSorting(0); // always reset to line number sort
-  if (_costType)
-    setColumnText(1, _costType->name());
-  if (_costType2)
-    setColumnText(2, _costType2->name());
+  if (_eventType)
+    setColumnText(1, _eventType->name());
+  if (_eventType2)
+    setColumnText(2, _eventType2->name());
 
   _arrowLevels = 0;
 
@@ -331,7 +331,7 @@ void SourceView::refresh()
     if (sf != mainSF)
       fillSourceFile(sf, fileno);
 
-  if (!_costType2) {
+  if (!_eventType2) {
     setColumnWidthMode(2, Q3ListView::Manual);
     setColumnWidth(2, 0);
   }
@@ -491,8 +491,8 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 	  // get first line with cost of selected type
 	  while(lineIt != lineItEnd) {
 	    if (&(*lineIt) == sLine) break;
-	    if ((*lineIt).hasCost(_costType)) break;
-	    if (_costType2 && (*lineIt).hasCost(_costType2)) break;
+	    if ((*lineIt).hasCost(_eventType)) break;
+	    if (_eventType2 && (*lineIt).hasCost(_eventType2)) break;
 	    ++lineIt;
 	  }
 
@@ -603,8 +603,8 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
       ++nextIt;
       while(nextIt != lineItEnd) {
 	if (&(*nextIt) == sLine) break;
-	if ((*nextIt).hasCost(_costType)) break;
-	if (_costType2 && (*nextIt).hasCost(_costType2)) break;
+	if ((*nextIt).hasCost(_eventType)) break;
+	if (_eventType2 && (*nextIt).hasCost(_eventType2)) break;
 	++nextIt;
       }
 
@@ -662,8 +662,8 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 	++lineIt;
 	while(lineIt != lineItEnd) {
 	  if (&(*lineIt) == sLine) break;
-	  if ((*lineIt).hasCost(_costType)) break;
-	  if (_costType2 && (*lineIt).hasCost(_costType2)) break;
+	  if ((*lineIt).hasCost(_eventType)) break;
+	  if (_eventType2 && (*lineIt).hasCost(_eventType2)) break;
 	  ++lineIt;
 	}
 
@@ -710,21 +710,21 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     if (!selected && (currLine == sLine)) selected = si;
     if (!first) first = si;
 
-    if (currLine->subCost(_costType) > most) {
+    if (currLine->subCost(_eventType) > most) {
       item = si;
-      most = currLine->subCost(_costType);
+      most = currLine->subCost(_eventType);
     }
 
     si->setOpen(true);
     TraceLineCallList list = currLine->lineCalls();
     TraceLineCall* lc;
     for (lc=list.first();lc;lc=list.next()) {
-	if ((lc->subCost(_costType)==0) &&
-	    (lc->subCost(_costType2)==0)) continue;
+	if ((lc->subCost(_eventType)==0) &&
+	    (lc->subCost(_eventType2)==0)) continue;
 
-      if (lc->subCost(_costType) > most) {
+      if (lc->subCost(_eventType) > most) {
         item = si;
-        most = lc->subCost(_costType);
+        most = lc->subCost(_eventType);
       }
 
       si2 = new SourceItem(this, si, fileno, fileLineno, currLine, lc);
@@ -779,14 +779,14 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 void SourceView::updateSourceItems()
 {
     setColumnWidth(1, 50);
-    setColumnWidth(2, _costType2 ? 50:0);
+    setColumnWidth(2, _eventType2 ? 50:0);
     // Allow resizing of column 2
     setColumnWidthMode(2, Q3ListView::Maximum);
     
-    if (_costType)
-      setColumnText(1, _costType->name());
-    if (_costType2)
-      setColumnText(2, _costType2->name());
+    if (_eventType)
+      setColumnText(1, _eventType->name());
+    if (_eventType2)
+      setColumnText(2, _eventType2->name());
 
     SourceItem* si;
     Q3ListViewItem* item  = firstChild();
@@ -804,7 +804,7 @@ void SourceView::updateSourceItems()
 	}
     }
 
-    if (!_costType2) {
+    if (!_eventType2) {
       setColumnWidthMode(2, Q3ListView::Manual);
       setColumnWidth(2, 0);
     }

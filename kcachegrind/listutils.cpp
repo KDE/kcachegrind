@@ -211,7 +211,7 @@ QPixmap partitionPixmap(int w, int h,
 }
 
 
-QPixmap costPixmap(TraceCostType* ct, TraceCost* cost, double total, bool framed)
+QPixmap costPixmap(TraceEventType* ct, TraceCost* cost, double total, bool framed)
 {
     if (!ct) return QPixmap();
 

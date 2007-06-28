@@ -26,14 +26,14 @@ class CostListItem: public Q3ListViewItem
 {
 public:
   CostListItem(Q3ListView* parent, TraceCostItem* cost,
-               TraceCostType* ct, int size = -1);
+               TraceEventType* ct, int size = -1);
   // entry with multiple skipped items
   CostListItem(Q3ListView* parent, int skipped, TraceCostItem* cost,
-               TraceCostType* ct);
+               TraceEventType* ct);
 
   int compare(Q3ListViewItem * i, int col, bool ascending ) const;
   TraceCostItem* costItem() { return (_skipped) ? 0 : _costItem; }
-  void setCostType(TraceCostType* ct);
+  void setCostType(TraceEventType* ct);
   void update();
   void setSize(int s);
 
@@ -41,7 +41,7 @@ private:
   void updateName();
 
   SubCost _pure;
-  TraceCostType* _costType;
+  TraceEventType* _costType;
   TraceCostItem* _costItem;
   // >0 only for last item in list, if items are skipped 
   int _skipped;

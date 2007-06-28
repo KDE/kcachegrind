@@ -278,7 +278,7 @@ void FunctionSelection::doUpdate(int changeType)
     if (changeType == selectedItemChanged) return;
 
     // we don't show cost 2 at all...
-    if (changeType == costType2Changed) return;
+    if (changeType == eventType2Changed) return;
 
     if (changeType == activeItemChanged) {
 	if (_activeItem ==0) {
@@ -324,7 +324,7 @@ void FunctionSelection::doUpdate(int changeType)
 		break;
 
 	if (!item)
-	    item = new FunctionItem(functionList, f, _costType, _groupType);
+	    item = new FunctionItem(functionList, f, _eventType, _groupType);
 
 	functionList->ensureItemVisible(item);
 	// prohibit signalling of a function selection
@@ -451,21 +451,21 @@ void FunctionSelection::refresh()
 
     for ( oit = _data->objectMap().begin();
           oit != _data->objectMap().end(); ++oit )
-      _hc.addCost(&(*oit), (*oit).subCost(_costType));
+      _hc.addCost(&(*oit), (*oit).subCost(_eventType));
     break;
 
   case TraceItem::Class:
 
     for ( cit = _data->classMap().begin();
           cit != _data->classMap().end(); ++cit )
-      _hc.addCost(&(*cit), (*cit).subCost(_costType));
+      _hc.addCost(&(*cit), (*cit).subCost(_eventType));
     break;
 
   case TraceItem::File:
 
     for ( fit = _data->fileMap().begin();
           fit != _data->fileMap().end(); ++fit )
-      _hc.addCost(&(*fit), (*fit).subCost(_costType));
+      _hc.addCost(&(*fit), (*fit).subCost(_eventType));
     break;
 
   case TraceItem::FunctionCycle:
@@ -473,7 +473,7 @@ void FunctionSelection::refresh()
       // add all cycles
       TraceFunctionCycleList l =  _data->functionCycles();
       for (group=l.first();group;group=l.next())
-	_hc.addCost(group, group->subCost(_costType));
+	_hc.addCost(group, group->subCost(_eventType));
     }
 
   break;
@@ -506,27 +506,27 @@ void FunctionSelection::refresh()
       fitem = 0;
       for ( it = _data->functionMap().begin();
 	    it != _data->functionMap().end(); ++it )
-	_hc.addCost(&(*it), (*it).inclusive()->subCost(_costType));
+	_hc.addCost(&(*it), (*it).inclusive()->subCost(_eventType));
 
       TraceFunctionCycleList l =  _data->functionCycles();
       for (f=l.first();f;f=l.next())
-	_hc.addCost(f, f->inclusive()->subCost(_costType));
+	_hc.addCost(f, f->inclusive()->subCost(_eventType));
 
       if (_activeItem &&
 	  ((_activeItem->type() == TraceItem::Function) ||
 	   (_activeItem->type() == TraceItem::FunctionCycle)))
 	fitem = new FunctionItem(functionList, (TraceFunction*)_activeItem,
-				 _costType, _groupType);
+				 _eventType, _groupType);
 
       for(int i=0;i<_hc.realCount();i++) {
 	f = (TraceFunction*)_hc[i];
 	if (f == _activeItem) continue;
-	new FunctionItem(functionList, f, _costType, _groupType);
+	new FunctionItem(functionList, f, _eventType, _groupType);
       }
       if (_hc.hasMore()) {
 	// a placeholder for all the cost items skipped ...
 	new FunctionItem(functionList, _hc.count() - _hc.maxSize(),
-			 (TraceFunction*)_hc[_hc.maxSize()-1], _costType);
+			 (TraceFunction*)_hc[_hc.maxSize()-1], _eventType);
       }
       functionList->sort();
 
@@ -557,18 +557,18 @@ void FunctionSelection::refresh()
   // we always put group of active item in list, even if
   // it would be skipped because of small costs
   if (_group)
-    item = new CostListItem(groupList, _group, _costType);
+    item = new CostListItem(groupList, _group, _eventType);
 
   for(int i=0;i<_hc.realCount();i++) {
     group = (TraceCostItem*)_hc[i];
     // don't put group of active item twice into list
     if (group == _group) continue;
-    new CostListItem(groupList, group, _costType);
+    new CostListItem(groupList, group, _eventType);
   }
   if (_hc.hasMore()) {
       // a placeholder for all the cost items skipped ...
     new CostListItem(groupList, _hc.count() - _hc.maxSize(),
-		     (TraceCostItem*)_hc[_hc.maxSize()-1], _costType);
+		     (TraceCostItem*)_hc[_hc.maxSize()-1], _eventType);
   }
   groupList->sort();
   if (item) {
@@ -622,9 +622,9 @@ void FunctionSelection::groupSelected(Q3ListViewItem* i)
 
   double total;
   if (Configuration::showExpanded())
-      total = (double) g->subCost(_costType);
+      total = (double) g->subCost(_eventType);
   else
-      total = (double) _data->subCost(_costType);
+      total = (double) _data->subCost(_eventType);
 #if 0
   if (total == 0.0) {
       functionList->setUpdatesEnabled(true);
@@ -641,22 +641,22 @@ void FunctionSelection::groupSelected(Q3ListViewItem* i)
   for (f=list.first();f;f=list.next()) {
     if (re.search(f->prettyName())<0) continue;
 
-    _hc.addCost(f, f->inclusive()->subCost(_costType));
+    _hc.addCost(f, f->inclusive()->subCost(_eventType));
     if (_activeItem == f)
       fitem = new FunctionItem(functionList, (TraceFunction*)_activeItem,
-			       _costType, _groupType);
+			       _eventType, _groupType);
   }
 
   for(int i=0;i<_hc.realCount();i++) {
     if (_activeItem == (TraceFunction*)_hc[i]) continue;
     new FunctionItem(functionList, (TraceFunction*)_hc[i],
-		     _costType, _groupType);
+		     _eventType, _groupType);
   }
 
   if (_hc.hasMore()) {
     // a placeholder for all the functions skipped ...
     new FunctionItem(functionList, _hc.count() - _hc.maxSize(),
-		     (TraceFunction*)_hc[_hc.maxSize()-1], _costType);
+		     (TraceFunction*)_hc[_hc.maxSize()-1], _eventType);
   }
   functionList->sort();
 
@@ -802,7 +802,7 @@ void FunctionSelection::query(QString query)
 	  if (f->cycle() != _group) continue;
 	}
       }
-      _hc.addCost(f, f->inclusive()->subCost(_costType));
+      _hc.addCost(f, f->inclusive()->subCost(_eventType));
     }
   }
 
@@ -815,13 +815,13 @@ void FunctionSelection::query(QString query)
 
   for(int i=0;i<_hc.realCount();i++) {
       fi = new FunctionItem(functionList, (TraceFunction*)_hc[i],
-			    _costType, _groupType);
+			    _eventType, _groupType);
       if (_activeItem == f) item = fi;
   }
   if (_hc.hasMore()) {
       // a placeholder for all the functions skipped ...
       new FunctionItem(functionList, _hc.count() - _hc.maxSize(),
-		       (TraceFunction*)_hc[_hc.maxSize()-1], _costType);
+		       (TraceFunction*)_hc[_hc.maxSize()-1], _eventType);
   }
 
   functionList->sort();
@@ -850,7 +850,7 @@ bool FunctionSelection::setTopFunction()
 
 void FunctionSelection::setCostColumnWidths()
 {
-  if (_costType && (_costType->subCost(_data->callMax())>0) ) {
+  if (_eventType && (_eventType->subCost(_data->callMax())>0) ) {
     functionList->setColumnWidthMode(0, Q3ListView::Maximum);
     functionList->setColumnWidth(0,50);
     functionList->setColumnWidthMode(2, Q3ListView::Maximum);

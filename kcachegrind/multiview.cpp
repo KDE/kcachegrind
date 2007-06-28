@@ -73,7 +73,7 @@ void MultiView::appendView()
     tv->show();
 
     // set same attributes as in active view
-    tv->set(0, _data, _costType, _costType2,
+    tv->set(0, _data, _eventType, _eventType2,
 	    _groupType, _partList, _activeItem, 0);
     tv->updateView();
 
@@ -155,7 +155,7 @@ void MultiView::doUpdate(int changeType)
 {
     TabView* tv;
     for(tv=_views.first(); tv; tv=_views.next()) {
-	tv->set(changeType, _data, _costType, _costType2,
+	tv->set(changeType, _data, _eventType, _eventType2,
 		_groupType, _partList,
 		(tv == _active) ? _activeItem : tv->activeItem(),
 		tv->selectedItem());

@@ -34,7 +34,7 @@
 
 CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, Coverage* c,
                                        TraceFunction* base,
-                                       TraceCostType* ct,
+                                       TraceEventType* ct,
                                        TraceCost::CostType gt)
     : Q3ListViewItem(parent)
 {
@@ -52,7 +52,7 @@ CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, Coverage* c,
 
 CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, int skipped, Coverage* c,
                                        TraceFunction* base,
-                                       TraceCostType* ct,
+                                       TraceEventType* ct,
                                        TraceCost::CostType gt)
     : Q3ListViewItem(parent)
 {
@@ -78,7 +78,7 @@ void CallerCoverageItem::setGroupType(TraceCost::CostType gt)
   setPixmap(3, colorPixmap(10, 10, c));
 }
 
-void CallerCoverageItem::setCostType(TraceCostType* ct)
+void CallerCoverageItem::setCostType(TraceEventType* ct)
 {
   _costType = ct;
   update();
@@ -174,7 +174,7 @@ int CallerCoverageItem::compare(Q3ListViewItem * i,
 
 CalleeCoverageItem::CalleeCoverageItem(Q3ListView* parent, Coverage* c,
                                        TraceFunction* base,
-                                       TraceCostType* ct,
+                                       TraceEventType* ct,
                                        TraceCost::CostType gt)
     : Q3ListViewItem(parent)
 {
@@ -192,7 +192,7 @@ CalleeCoverageItem::CalleeCoverageItem(Q3ListView* parent, Coverage* c,
 
 CalleeCoverageItem::CalleeCoverageItem(Q3ListView* parent, int skipped, Coverage* c,
                                        TraceFunction* base,
-                                       TraceCostType* ct,
+                                       TraceEventType* ct,
                                        TraceCost::CostType gt)
     : Q3ListViewItem(parent)
 {
@@ -218,7 +218,7 @@ void CalleeCoverageItem::setGroupType(TraceCost::CostType gt)
   setPixmap(4, colorPixmap(10, 10, c));
 }
 
-void CalleeCoverageItem::setCostType(TraceCostType* ct)
+void CalleeCoverageItem::setCostType(TraceEventType* ct)
 {
   _costType = ct;
   update();

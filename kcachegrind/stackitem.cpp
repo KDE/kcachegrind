@@ -73,7 +73,7 @@ void StackItem::updateCost()
 
   setText(2, _call->prettyCallCount());
 
-  TraceCostType* ct = _view->costType();
+  TraceEventType* ct = _view->eventType();
   _sum = _call->subCost(ct);
   double total = _call->called()->data()->subCost(ct);
   if (total == 0.0) {
@@ -92,8 +92,8 @@ void StackItem::updateCost()
     setPixmap(0, costPixmap(ct, _call, total, false));
   }
 
-  // if _costType2 is 0, column1 is hidden, no change needed
-  TraceCostType* ct2 = _view->costType2();
+  // if _eventType2 is 0, column1 is hidden, no change needed
+  TraceEventType* ct2 = _view->eventType2();
   if (!ct2) return;
 
   _sum = _call->subCost(ct2);

@@ -56,8 +56,8 @@ public:
    * - <dataChanged> is used if e.g. cycles are recalculated
    */
   enum { nothingChanged      = 0,
-	 costTypeChanged     = 1,
-	 costType2Changed    = 2,
+	 eventTypeChanged     = 1,
+	 eventType2Changed    = 2,
 	 groupTypeChanged    = 4,
 	 partsChanged        = 8,
 	 activeItemChanged   = 16,
@@ -96,8 +96,8 @@ public:
   virtual void setData(TraceData* d);
 
   // change from parent, call updateView() to update lazily (only if visible)
-  void setCostType(TraceCostType* t) { _newCostType = t; }
-  void setCostType2(TraceCostType* t) { _newCostType2 = t; }
+  void setEventType(TraceEventType* t) { _newEventType = t; }
+  void setEventType2(TraceEventType* t) { _newEventType2 = t; }
   void set(TraceItem::CostType g) { _newGroupType = g; }
   void set(const TracePartList& l) { _newPartList = l; }
   // returns false if nothing can be shown for this trace item
@@ -105,7 +105,7 @@ public:
   void select(TraceItem* i);
   void notifyChange(int changeType) { _status |= changeType; }
   // all in one
-  bool set(int, TraceData*, TraceCostType*, TraceCostType*,
+  bool set(int, TraceData*, TraceEventType*, TraceEventType*,
 	   TraceItem::CostType, const TracePartList&,
 	   TraceItem*, TraceItem*);
 
@@ -119,8 +119,8 @@ public:
   virtual void selected(TraceItemView* sender, TraceItem*);
   virtual void selected(TraceItemView* sender, const TracePartList&);
   virtual void activated(TraceItemView* sender, Direction);
-  virtual void selectedCostType(TraceItemView* sender, TraceCostType*);
-  virtual void selectedCostType2(TraceItemView* sender, TraceCostType*);
+  virtual void selectedEventType(TraceItemView* sender, TraceEventType*);
+  virtual void selectedEventType2(TraceItemView* sender, TraceEventType*);
   virtual void activated(TraceItemView* sender, TraceItem*);
 
   // getters...
@@ -128,8 +128,8 @@ public:
   TraceData* data() const { return _newData; }
   TraceItem* activeItem() const { return _newActiveItem; }
   TraceItem* selectedItem() const { return _newSelectedItem; }
-  TraceCostType* costType() const { return _newCostType; }
-  TraceCostType* costType2() const { return _newCostType2; }
+  TraceEventType* eventType() const { return _newEventType; }
+  TraceEventType* eventType2() const { return _newEventType2; }
   TraceItem::CostType groupType() const { return _newGroupType; }
   const TracePartList& partList() const { return _newPartList; }
 
@@ -170,8 +170,8 @@ protected:
   void selected(TraceItem*);
   void selected(const TracePartList&);
   void activated(TraceItem*);
-  void selectedCostType(TraceCostType*);
-  void selectedCostType2(TraceCostType*);
+  void selectedEventType(TraceEventType*);
+  void selectedEventType2(TraceEventType*);
   void activated(TraceItemView::Direction);
 
   /* Is this view visible?
@@ -188,14 +188,14 @@ protected:
   TraceData* _data;
   TracePartList _partList;
   TraceItem *_activeItem, *_selectedItem;
-  TraceCostType *_costType, *_costType2;
+  TraceEventType *_eventType, *_eventType2;
   TraceItem::CostType _groupType;
 
 private:
   TraceData* _newData;
   TracePartList _newPartList;
   TraceItem *_newActiveItem, *_newSelectedItem;
-  TraceCostType *_newCostType, *_newCostType2;
+  TraceEventType *_newEventType, *_newEventType2;
   TraceItem::CostType _newGroupType;
 
   QString _title;

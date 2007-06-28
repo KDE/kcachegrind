@@ -144,7 +144,7 @@ TraceItem* PartView::canShow(TraceItem* i)
 void PartView::doUpdate(int changeType)
 {
     // Special case ?
-    if (changeType == costType2Changed) return;
+    if (changeType == eventType2Changed) return;
     if (changeType == selectedItemChanged) return;
 
     if (changeType == groupTypeChanged) {
@@ -155,10 +155,10 @@ void PartView::doUpdate(int changeType)
 	return;
     }
 
-    if (changeType == costTypeChanged) {
+    if (changeType == eventTypeChanged) {
 	Q3ListViewItem *item;
 	for (item = firstChild();item;item = item->nextSibling())
-	  ((PartListItem*)item)->setCostType(_costType);
+	  ((PartListItem*)item)->setCostType(_eventType);
 
 	return;
     }
@@ -213,7 +213,7 @@ void PartView::refresh()
     Q3ListViewItem* item = 0;
     for (part = allParts.first(); part; part = allParts.next()) {
 	if (hidden.findRef(part)>=0) continue;
-	item = new PartListItem(this, f, _costType, _groupType, part);
+	item = new PartListItem(this, f, _eventType, _groupType, part);
 
 	if (part->isActive()) {
 	    setSelected(item, true);

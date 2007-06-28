@@ -17,31 +17,31 @@
 */
 
 /*
- * Items of cost type view.
+ * Items of event type view.
  */
 
-#ifndef COSTTYEPITEM_H
-#define COSTTYEPITEM_H
+#ifndef EVENTTYEPITEM_H
+#define EVENTTYEPITEM_H
 
 #include <q3listview.h>
 #include "tracedata.h"
 
 
-class CostTypeItem: public Q3ListViewItem
+class EventTypeItem: public Q3ListViewItem
 {
 public:
-  CostTypeItem(Q3ListView* parent, TraceCostItem* costItem,
-               TraceCostType* ct, TraceCost::CostType gt);
+  EventTypeItem(Q3ListView* parent, TraceCostItem* costItem,
+               TraceEventType* ct, TraceCost::CostType gt);
 
   int compare(Q3ListViewItem * i, int col, bool ascending ) const;
   void setGroupType(TraceCost::CostType);
   TraceCostItem* costItem() { return _costItem; }
-  TraceCostType* costType() { return _costType; }
+  TraceEventType* eventType() { return _eventType; }
   void update();
 
 private:
   SubCost _sum, _pure;
-  TraceCostType* _costType;
+  TraceEventType* _eventType;
   TraceCostItem* _costItem;
   TraceCost::CostType _groupType;
 };

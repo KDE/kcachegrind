@@ -42,8 +42,8 @@ StackSelection::StackSelection( QWidget* parent)
   _browser = new StackBrowser();
   _item = 0;
   _function = 0;
-  _costType = 0;
-  _costType2 = 0;
+  _eventType = 0;
+  _eventType2 = 0;
   _groupType = TraceItem::Function;
 
   stackList->setSorting(-1);
@@ -53,7 +53,7 @@ StackSelection::StackSelection( QWidget* parent)
   stackList->setColumnAlignment(1, Qt::AlignRight);
   stackList->setColumnAlignment(2, Qt::AlignRight);
   stackList->setColumnWidth(0, 50);
-  // 2nd cost column hidden at first (_costType2 == 0)
+  // 2nd cost column hidden at first (_eventType2 == 0)
   stackList->setColumnWidth(1, 0);
   stackList->setColumnWidth(2, 50);
 
@@ -101,7 +101,7 @@ void StackSelection::rebuildStackList()
   HistoryItem* item = _browser->current();
   stackList->clear();
   stackList->setColumnWidth(0, 50);
-  stackList->setColumnWidth(1, _costType2 ? 50:0);
+  stackList->setColumnWidth(1, _eventType2 ? 50:0);
   stackList->setColumnWidth(2, 50);
   if (!item || !item->stack()) return;
 
@@ -129,7 +129,7 @@ void StackSelection::rebuildStackList()
     stackList->ensureItemVisible(i);
   }
 
-  if (!_costType2) {
+  if (!_eventType2) {
     stackList->setColumnWidthMode(1, Q3ListView::Manual);
     stackList->setColumnWidth(1, 0);
   }
@@ -183,35 +183,35 @@ void StackSelection::refresh()
     ((StackItem*)item)->updateCost();
 }
 
-void StackSelection::setCostType(TraceCostType* ct)
+void StackSelection::setEventType(TraceEventType* ct)
 {
-  if (ct == _costType) return;
-  _costType = ct;
+  if (ct == _eventType) return;
+  _eventType = ct;
 
   stackList->setColumnWidth(0, 50);
-  if (_costType)
-    stackList->setColumnText(0, _costType->name());
+  if (_eventType)
+    stackList->setColumnText(0, _eventType->name());
 
   Q3ListViewItem* item  = stackList->firstChild();
   for(;item;item = item->nextSibling())
     ((StackItem*)item)->updateCost();
 }
 
-void StackSelection::setCostType2(TraceCostType* ct)
+void StackSelection::setEventType2(TraceEventType* ct)
 {
-  if (ct == _costType2) return;
-  _costType2 = ct;
+  if (ct == _eventType2) return;
+  _eventType2 = ct;
 
   stackList->setColumnWidth(1, 50);
   stackList->setColumnWidthMode(1, Q3ListView::Maximum);
-  if (_costType2)
-    stackList->setColumnText(1, _costType2->name());
+  if (_eventType2)
+    stackList->setColumnText(1, _eventType2->name());
 
   Q3ListViewItem* item  = stackList->firstChild();
   for(;item;item = item->nextSibling())
     ((StackItem*)item)->updateCost();
 
-  if (!_costType2) {
+  if (!_eventType2) {
     stackList->setColumnWidthMode(1, Q3ListView::Manual);
     stackList->setColumnWidth(1, 0);
   }

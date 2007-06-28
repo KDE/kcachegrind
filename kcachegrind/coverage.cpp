@@ -24,7 +24,7 @@
 
 //#define DEBUG_COVERAGE 1
 
-TraceCostType* Coverage::_costType;
+TraceEventType* Coverage::_costType;
 
 const int Coverage::maxHistogramDepth = maxHistogramDepthValue;
 const int Coverage::Rtti = 1;
@@ -79,7 +79,7 @@ int Coverage::selfMedian()
 }
 
 TraceFunctionList Coverage::coverage(TraceFunction* f, CoverageMode m,
-                                      TraceCostType* ct)
+                                      TraceEventType* ct)
 {
   invalidate(f->data(), Coverage::Rtti);
 

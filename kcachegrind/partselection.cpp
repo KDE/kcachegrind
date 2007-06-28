@@ -41,8 +41,8 @@ PartSelection::PartSelection( QWidget* parent)
   : PartSelectionBase(parent)
 {
   _data = 0;
-  _costType = 0;
-  _costType2 = 0;
+  _eventType = 0;
+  _eventType2 = 0;
   _groupType = TraceItem::NoCostType;
   _group = 0;
   _function = 0;
@@ -94,22 +94,22 @@ void PartSelection::refresh()
   fillInfo();
 }
 
-void PartSelection::setCostType(TraceCostType* ct)
+void PartSelection::setEventType(TraceEventType* ct)
 {
-  if (ct == _costType) return;
-  _costType = ct;
+  if (ct == _eventType) return;
+  _eventType = ct;
 
-  partAreaWidget->setCostType(ct);
+  partAreaWidget->setEventType(ct);
 }
 
-void PartSelection::setCostType2(TraceCostType* ct)
+void PartSelection::setEventType2(TraceEventType* ct)
 {  
-  if (ct == _costType2) return;
-  _costType2 = ct;
+  if (ct == _eventType2) return;
+  _eventType2 = ct;
   if (!_diagramMode) return;
 
   //TODO: get max cost(type1)/cost(type2) of shown parts
-  //partAreaWidget->setCostType(ct);
+  //partAreaWidget->setEventType(ct);
 }
 
 void PartSelection::setGroupType(TraceItem::CostType gt)

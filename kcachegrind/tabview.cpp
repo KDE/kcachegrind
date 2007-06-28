@@ -42,7 +42,7 @@
 #include <kconfiggroup.h>
 
 #include "tabview.h"
-#include "costtypeview.h"
+#include "eventtypeview.h"
 #include "partview.h"
 #include "callview.h"
 #include "coverageview.h"
@@ -297,8 +297,8 @@ TabView::TabView(TraceItemView* parentView,
   // default positions...
 
   addTop( addTab( i18n("Types"),
-		  new CostTypeView(this, 0,
-				   "CostTypeView")));
+		  new EventTypeView(this, 0,
+				   "EventTypeView")));
   addTop( addTab( i18n("Callers"),
 		  new CallView(true, this, 0,
 			       "CallerView")));
@@ -658,7 +658,7 @@ void TabView::doUpdate(int changeType)
       if (tw) {
         if (!tw->hasVisibleRect()) continue;
       }
-      canShow = v->set(changeType, _data, _costType, _costType2,
+      canShow = v->set(changeType, _data, _eventType, _eventType2,
 		       _groupType, _partList,
                        _activeItem, _selectedItem);
       v->notifyChange(changeType);
@@ -797,7 +797,7 @@ void TabView::readViewConfig(KConfig* c,
       // restore active item
       TraceItem::CostType t = TraceItem::costType(activeType);
       if (t==TraceItem::NoCostType) t = TraceItem::Function;
-      TraceCost* activeItem = _data->search(t, activeName, _costType);
+      TraceCost* activeItem = _data->search(t, activeName, _eventType);
       if (!activeItem) return;
       activate(activeItem);
 
@@ -805,7 +805,7 @@ void TabView::readViewConfig(KConfig* c,
       t = TraceItem::costType(selectedType);
       if (t==TraceItem::NoCostType) t = TraceItem::Function;
       TraceCost* selectedItem = _data->search(t, selectedName,
-					      _costType, activeItem);
+					      _eventType, activeItem);
       if (selectedItem) select(selectedItem);
     }
 

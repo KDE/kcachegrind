@@ -32,20 +32,20 @@ class CallerCoverageItem: public Q3ListViewItem
 {
 public:
   CallerCoverageItem(Q3ListView* parent, Coverage* c, TraceFunction* base,
-                     TraceCostType* ct, TraceCost::CostType gt);
+                     TraceEventType* ct, TraceCost::CostType gt);
   CallerCoverageItem(Q3ListView* parent, int skipped, Coverage* c, TraceFunction* base,
-                     TraceCostType* ct, TraceCost::CostType gt);
+                     TraceEventType* ct, TraceCost::CostType gt);
 
   int compare(Q3ListViewItem * i, int col, bool ascending ) const;
   TraceFunction* function() { return (_skipped) ? 0 : _function; }
-  void setCostType(TraceCostType* ct);
+  void setCostType(TraceEventType* ct);
   void setGroupType(TraceCost::CostType);
   void update();
 
 private:
   float _pSum;
   SubCost _sum;
-  TraceCostType* _costType;
+  TraceEventType* _costType;
   TraceCost::CostType _groupType;
   SubCost _cc;
   int _distance, _skipped;
@@ -58,20 +58,20 @@ class CalleeCoverageItem: public Q3ListViewItem
 {
 public:
   CalleeCoverageItem(Q3ListView* parent, Coverage* c, TraceFunction* base,
-                     TraceCostType* ct, TraceCost::CostType gt);
+                     TraceEventType* ct, TraceCost::CostType gt);
   CalleeCoverageItem(Q3ListView* parent, int skipped, Coverage* c, TraceFunction* base,
-                     TraceCostType* ct, TraceCost::CostType gt);
+                     TraceEventType* ct, TraceCost::CostType gt);
 
   int compare(Q3ListViewItem * i, int col, bool ascending ) const;
   TraceFunction* function() { return (_skipped) ? 0 : _function; }
-  void setCostType(TraceCostType* ct);
+  void setCostType(TraceEventType* ct);
   void setGroupType(TraceCost::CostType);
   void update();
 
 private:
   float _pSum, _pSelf;
   SubCost _sum, _self;
-  TraceCostType* _costType;
+  TraceEventType* _costType;
   TraceCost::CostType _groupType;
   SubCost _cc;
   int _distance, _skipped;

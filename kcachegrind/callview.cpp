@@ -224,12 +224,12 @@ void CallView::refresh()
 {
     clear();
     setColumnWidth(0, 50);
-    setColumnWidth(1, _costType2 ? 50:0);
+    setColumnWidth(1, _eventType2 ? 50:0);
     setColumnWidth(2, 50);
-    if (_costType)
-      setColumnText(0, _costType->name());
-    if (_costType2)
-      setColumnText(1, _costType2->name());
+    if (_eventType)
+      setColumnText(0, _eventType->name());
+    if (_eventType2)
+      setColumnText(1, _eventType2->name());
 
     if (!_data || !_activeItem) return;
 
@@ -244,10 +244,10 @@ void CallView::refresh()
     setColumnWidthMode(1, Q3ListView::Maximum);
 
     for (call=l.first();call;call=l.next())
-	if (call->subCost(_costType)>0)
+	if (call->subCost(_eventType)>0)
 	    new CallItem(this, this, call);
 
-    if (!_costType2) {
+    if (!_eventType2) {
       setColumnWidthMode(1, Q3ListView::Manual);
       setColumnWidth(1, 0);
     }

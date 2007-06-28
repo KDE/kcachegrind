@@ -431,7 +431,7 @@ GraphExporter::GraphExporter()
 }
 
 
-GraphExporter::GraphExporter(TraceData* d, TraceFunction* f, TraceCostType* ct,
+GraphExporter::GraphExporter(TraceData* d, TraceFunction* f, TraceEventType* ct,
                              TraceItem::CostType gt, QString filename)
 {
     _go = this;
@@ -452,7 +452,7 @@ GraphExporter::~GraphExporter()
 }
 
 
-void GraphExporter::reset(TraceData*, TraceItem* i, TraceCostType* ct,
+void GraphExporter::reset(TraceData*, TraceItem* i, TraceEventType* ct,
                           TraceItem::CostType gt, QString filename)
 {
   _graphCreated = false;
@@ -476,7 +476,7 @@ void GraphExporter::reset(TraceData*, TraceItem* i, TraceCostType* ct,
   }
 
   _item = i;
-  _costType = ct;
+  _eventType = ct;
   _groupType = gt;
   if (!i) return;
 
@@ -513,7 +513,7 @@ void GraphExporter::createGraph()
       (_item->type() == TraceItem::FunctionCycle)) {
     TraceFunction* f = (TraceFunction*) _item;
 
-    double incl = f->inclusive()->subCost(_costType);
+    double incl = f->inclusive()->subCost(_eventType);
     _realFuncLimit = incl * _go->funcLimit();
     _realCallLimit = incl * _go->callLimit();
 
@@ -528,7 +528,7 @@ void GraphExporter::createGraph()
   else {
     TraceCall* c = (TraceCall*) _item;
 
-    double incl = c->subCost(_costType);
+    double incl = c->subCost(_eventType);
     _realFuncLimit = incl * _go->funcLimit();
     _realCallLimit = incl * _go->callLimit();
 
@@ -541,12 +541,12 @@ void GraphExporter::createGraph()
     e.setCall(c);
     e.setCaller(p.first);
     e.setCalling(p.second);
-    e.cost  = c->subCost(_costType);
+    e.cost  = c->subCost(_eventType);
     e.count = c->callCount();
 
-    SubCost s = called->inclusive()->subCost(_costType);
+    SubCost s = called->inclusive()->subCost(_eventType);
     buildGraph(called, 0, true,  e.cost / s); // down to callings
-    s = caller->inclusive()->subCost(_costType);
+    s = caller->inclusive()->subCost(_eventType);
     buildGraph(caller, 0, false, e.cost / s); // up to callers
   }
 }
@@ -852,9 +852,9 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
   else
     oldIncl = n.incl;
 
-  double incl = f->inclusive()->subCost(_costType) * factor;
+  double incl = f->inclusive()->subCost(_eventType) * factor;
   n.incl  += incl;
-  n.self += f->subCost(_costType) * factor;
+  n.self += f->subCost(_eventType) * factor;
   if (0) qDebug("  Added Incl. %f, now %f", incl, n.incl);
 
   // A negative depth limit means "unlimited"
@@ -876,7 +876,7 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
       if (0) qDebug("  Cutoff, 2nd visit to Cycle Member");
       // and takeback cost addition, as it's added twice
       n.incl  = oldIncl;
-      n.self -= f->subCost(_costType) * factor;
+      n.self -= f->subCost(_eventType) * factor;
       return;
     }
   }
@@ -898,7 +898,7 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
     f2 = toCallings ? call->called(false) : call->caller(false);
 
     double count = call->callCount() * factor;
-    double cost = call->subCost(_costType) * factor;
+    double cost = call->subCost(_eventType) * factor;
 
     // ignore function calls with absolute cost < 3 per call
     // No: This would skip a lot of functions e.g. with L2 cache misses
@@ -958,10 +958,10 @@ void GraphExporter::buildGraph(TraceFunction* f, int d,
 
     SubCost s;
     if (call->inCycle())
-      s = f2->cycle()->inclusive()->subCost(_costType);
+      s = f2->cycle()->inclusive()->subCost(_eventType);
     else
-      s = f2->inclusive()->subCost(_costType);
-    SubCost v = call->subCost(_costType);
+      s = f2->inclusive()->subCost(_eventType);
+    SubCost v = call->subCost(_eventType);
     buildGraph(f2, d+1, toCallings, factor * v / s);
   }
 }
@@ -1065,7 +1065,7 @@ CanvasNode::CanvasNode(CallGraphView* v, GraphNode* n,
     }
     else
 	totalCost = ((TraceItemView*)_view)->data();
-    double total = totalCost->subCost(_view->costType());
+    double total = totalCost->subCost(_view->eventType());
     double inclP  = 100.0 * n->incl / total;
     if (_view->topLevel()->showPercentage())
 	setText(1, QString("%1 %")
@@ -1147,7 +1147,7 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce,
     }
     else
         totalCost = ((TraceItemView*)_view)->data();
-    double total = totalCost->subCost(_view->costType());
+    double total = totalCost->subCost(_view->eventType());
     double inclP  = 100.0 * e->cost / total;
     if (_view->topLevel()->showPercentage())
         setText(0, QString("%1 %")
@@ -1672,7 +1672,7 @@ TraceItem* CallGraphView::canShow(TraceItem* i)
 void CallGraphView::doUpdate(int changeType)
 {
   // Special case ?
-  if (changeType == costType2Changed) return;
+  if (changeType == eventType2Changed) return;
 
   if (changeType == selectedItemChanged) {
     if (!_canvas) return;
@@ -1755,7 +1755,7 @@ void CallGraphView::doUpdate(int changeType)
 
   if (changeType & dataChanged) {
       // invalidate old selection and graph part
-    _exporter.reset(_data, _activeItem, _costType, _groupType);
+    _exporter.reset(_data, _activeItem, _eventType, _groupType);
       _selectedNode = 0;
       _selectedEdge = 0;
   }
@@ -1852,7 +1852,7 @@ void CallGraphView::refresh()
 
   _selectedNode = 0;
   _selectedEdge = 0;
-  _exporter.reset(_data, _activeItem, _costType, _groupType);
+  _exporter.reset(_data, _activeItem, _eventType, _groupType);
   _exporter.writeDot();
 
   _renderProcess = new Q3Process(this);
@@ -2602,7 +2602,7 @@ void CallGraphView::contentsContextMenuEvent(QContextMenuEvent* e)
 	  if (!f) break;
 
 	  QString n = QString("callgraph");
-	  GraphExporter ge(TraceItemView::data(), f, costType(), groupType(),
+	  GraphExporter ge(TraceItemView::data(), f, eventType(), groupType(),
 			   QString("%1.dot").arg(n));
 	  ge.setGraphOptions(this);
 	  ge.writeDot();

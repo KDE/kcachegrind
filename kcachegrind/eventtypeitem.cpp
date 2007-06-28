@@ -17,7 +17,7 @@
 */
 
 /*
- * Items of cost type view.
+ * Items of event type view.
  */
 
 #include <qpixmap.h>
@@ -25,18 +25,18 @@
 
 #include "configuration.h"
 #include "listutils.h"
-#include "costtypeitem.h"
+#include "eventtypeitem.h"
 
 
-// CostTypeItem
+// EventTypeItem
 
 
-CostTypeItem::CostTypeItem(Q3ListView* parent, TraceCostItem* costItem,
-                           TraceCostType* ct, TraceCost::CostType gt)
+EventTypeItem::EventTypeItem(Q3ListView* parent, TraceCostItem* costItem,
+                           TraceEventType* ct, TraceCost::CostType gt)
   :Q3ListViewItem(parent)
 {
   _costItem = costItem;
-  _costType = ct;
+  _eventType = ct;
   _groupType = gt;
 
   if (ct) {
@@ -58,7 +58,7 @@ CostTypeItem::CostTypeItem(Q3ListView* parent, TraceCostItem* costItem,
   update();
 }
 
-void CostTypeItem::setGroupType(TraceCost::CostType gt)
+void EventTypeItem::setGroupType(TraceCost::CostType gt)
 {
     if (_groupType == gt) return;
 
@@ -66,10 +66,10 @@ void CostTypeItem::setGroupType(TraceCost::CostType gt)
     update();
 }
 
-void CostTypeItem::update()
+void EventTypeItem::update()
 {
   TraceData* d = _costItem ? _costItem->data() : 0;
-  double total = d ? ((double)d->subCost(_costType)) : 0.0;
+  double total = d ? ((double)d->subCost(_eventType)) : 0.0;
 
   if (total == 0.0) {
     setText(1, "-");
@@ -97,19 +97,19 @@ void CostTypeItem::update()
       selfTotalCost = f->data();
   }
 
-  double selfTotal = selfTotalCost->subCost(_costType);
+  double selfTotal = selfTotalCost->subCost(_eventType);
 
   // for all cost items there's a self cost
-  _pure = _costItem ? _costItem->subCost(_costType) : SubCost(0);
+  _pure = _costItem ? _costItem->subCost(_eventType) : SubCost(0);
   double pure  = 100.0 * _pure / selfTotal;
   if (Configuration::showPercentage()) {
     setText(2, QString("%1")
             .arg(pure, 0, 'f', Configuration::percentPrecision()));
   }
   else if (_costItem)
-    setText(2, _costItem->prettySubCost(_costType));
+    setText(2, _costItem->prettySubCost(_eventType));
 
-  setPixmap(2, costPixmap(_costType, _costItem, selfTotal, false));
+  setPixmap(2, costPixmap(_eventType, _costItem, selfTotal, false));
 
   if (!f) {
     setText(1, "-");
@@ -117,7 +117,7 @@ void CostTypeItem::update()
     return;
   }
 
-  _sum = f->inclusive()->subCost(_costType);
+  _sum = f->inclusive()->subCost(_eventType);
   double sum  = 100.0 * _sum / total;
   if (Configuration::showPercentage()) {
     setText(1, QString("%1")
@@ -126,13 +126,13 @@ void CostTypeItem::update()
   else
     setText(1, _sum.pretty());
 
-  setPixmap(1, costPixmap(_costType, f->inclusive(), total, false));
+  setPixmap(1, costPixmap(_eventType, f->inclusive(), total, false));
 }
 
 
-int CostTypeItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
+int EventTypeItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
 {
-  CostTypeItem* fi = (CostTypeItem*) i;
+  EventTypeItem* fi = (EventTypeItem*) i;
   if (col==0) {
     if (_sum < fi->_sum) return -1;
     if (_sum > fi->_sum) return 1;

@@ -31,10 +31,10 @@ set(kcachegrind_SRCS
    callmapview.cpp 
    callview.cpp 
    coverageview.cpp 
-   costtypeview.cpp 
+   eventtypeview.cpp 
    partview.cpp 
    listutils.cpp 
-   costtypeitem.cpp 
+   eventtypeitem.cpp 
    multiview.cpp 
    callitem.cpp 
    coverageitem.cpp 

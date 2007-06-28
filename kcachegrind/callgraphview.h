@@ -226,11 +226,11 @@ class GraphExporter: public StorableGraphOptions
 {
 public:
   GraphExporter();
-  GraphExporter(TraceData*, TraceFunction*, TraceCostType*,
+  GraphExporter(TraceData*, TraceFunction*, TraceEventType*,
 		TraceItem::CostType, QString filename = QString::null);
   virtual ~GraphExporter();
 
-  void reset(TraceData*, TraceItem*, TraceCostType*,
+  void reset(TraceData*, TraceItem*, TraceEventType*,
 	     TraceItem::CostType, QString filename = QString::null);
 
   QString filename() { return _dotName; }
@@ -268,7 +268,7 @@ private:
 
   QString _dotName;
   TraceItem* _item;
-  TraceCostType* _costType;
+  TraceEventType* _eventType;
   TraceItem::CostType _groupType;
   KTemporaryFile* _tmpFile;
   double _realFuncLimit, _realCallLimit;

@@ -1007,7 +1007,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 
 	      // add to known cost types
 	      if (line.isEmpty()) line = e;
-	      TraceCostType::add(new TraceCostType(e,line,f));
+	      TraceEventType::add(new TraceEventType(e,line,f));
 	      continue;
 	    }
 	    break;

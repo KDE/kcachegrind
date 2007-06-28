@@ -17,22 +17,22 @@
 */
 
 /*
- * Cost Type View
+ * Event Type View
  */
 
-#ifndef COSTTYPEVIEW_H
-#define COSTTYPEVIEW_H
+#ifndef EVENTTYPEVIEW_H
+#define EVENTTYPEVIEW_H
 
 #include <q3listview.h>
 #include "tracedata.h"
 #include "traceitemview.h"
 
-class CostTypeView: public Q3ListView, public TraceItemView
+class EventTypeView: public Q3ListView, public TraceItemView
 {
   Q_OBJECT
 
 public:
-  CostTypeView(TraceItemView* parentView,
+  EventTypeView(TraceItemView* parentView,
 	       QWidget* parent=0, const char* name=0);
 
   virtual QWidget* widget() { return this; }

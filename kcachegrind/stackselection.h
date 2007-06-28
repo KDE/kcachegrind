@@ -52,8 +52,8 @@ public:
   TraceData* data() const { return _data; }
   void setData(TraceData*);
   StackBrowser* browser() const { return _browser; }
-  TraceCostType* costType() { return _costType; }
-  TraceCostType* costType2() { return _costType2; }
+  TraceEventType* eventType() { return _eventType; }
+  TraceEventType* eventType2() { return _eventType2; }
   TraceItem::CostType groupType() { return _groupType; }
 
 signals:
@@ -61,8 +61,8 @@ signals:
 
 public slots:
   void setFunction(TraceFunction*);
-  void setCostType(TraceCostType*);
-  void setCostType2(TraceCostType*);
+  void setEventType(TraceEventType*);
+  void setEventType2(TraceEventType*);
   void setGroupType(TraceItem::CostType);
 
   void stackSelected( Q3ListViewItem* );
@@ -80,8 +80,8 @@ private:
   StackBrowser* _browser;
   Q3ListViewItem* _item;
   TraceFunction* _function;
-  TraceCostType* _costType;
-  TraceCostType* _costType2;
+  TraceEventType* _eventType;
+  TraceEventType* _eventType2;
   TraceItem::CostType _groupType;
 };
 

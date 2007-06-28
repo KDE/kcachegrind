@@ -284,12 +284,12 @@ void CoverageView::refresh()
     TraceFunctionList l;
 
     _hc.clear(Configuration::maxListCount());
-    SubCost realSum = f->inclusive()->subCost(_costType);
+    SubCost realSum = f->inclusive()->subCost(_eventType);
 
     if (_showCallers)
-      l = Coverage::coverage(f, Coverage::Caller, _costType);
+      l = Coverage::coverage(f, Coverage::Caller, _eventType);
     else
-      l = Coverage::coverage(f, Coverage::Called, _costType);
+      l = Coverage::coverage(f, Coverage::Called, _eventType);
 
     for (ff=l.first();ff;ff=l.next()) {
       Coverage* c = (Coverage*) ff->assoziation(Coverage::Rtti);
@@ -301,9 +301,9 @@ void CoverageView::refresh()
       ff = (TraceFunction*) _hc[i];
       Coverage* c = (Coverage*) ff->assoziation(Coverage::Rtti);
       if (_showCallers)
-	new CallerCoverageItem(this, c, f, _costType, _groupType);
+	new CallerCoverageItem(this, c, f, _eventType, _groupType);
       else
-	new CalleeCoverageItem(this, c, f, _costType, _groupType);
+	new CalleeCoverageItem(this, c, f, _eventType, _groupType);
     }
     if (_hc.hasMore()) {
       // a placeholder for all the functions skipped ...
@@ -311,10 +311,10 @@ void CoverageView::refresh()
       Coverage* c = (Coverage*) ff->assoziation(Coverage::Rtti);
       if (_showCallers)
 	new CallerCoverageItem(this, _hc.count() - _hc.maxSize(),
-			       c, f, _costType, _groupType);
+			       c, f, _eventType, _groupType);
       else
 	new CalleeCoverageItem(this, _hc.count() - _hc.maxSize(),
-			       c, f, _costType, _groupType);
+			       c, f, _eventType, _groupType);
     }
 }
 

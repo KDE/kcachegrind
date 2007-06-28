@@ -94,7 +94,7 @@ void CallItem::updateCost()
     else
 	totalCost = _active->data();
 
-    TraceCostType* ct = _view->costType();
+    TraceEventType* ct = _view->eventType();
     _sum = _call->subCost(ct);
     double total = totalCost->subCost(ct);
 
@@ -117,7 +117,7 @@ void CallItem::updateCost()
     }
 
     // Cost Type 2
-    TraceCostType* ct2 = _view->costType2();
+    TraceEventType* ct2 = _view->eventType2();
     if (ct2) {
       _sum2 = _call->subCost(ct2);
       double total = totalCost->subCost(ct2);

@@ -161,8 +161,8 @@ void TopLevel::init()
 
   _data = 0;
   _function = 0;
-  _costType = 0;
-  _costType2 = 0;
+  _eventType = 0;
+  _eventType2 = 0;
   _groupType = TraceCost::NoCostType;
   _group = 0;
 
@@ -171,8 +171,8 @@ void TopLevel::init()
 
   // for delayed slots
   _traceItemDelayed = 0;
-  _costTypeDelayed = 0;
-  _costType2Delayed = 0;
+  _eventTypeDelayed = 0;
+  _eventType2Delayed = 0;
   _groupTypeDelayed = TraceCost::NoCostType;
   _groupDelayed = 0;
   _directionDelayed = TraceItemView::None;
@@ -223,10 +223,10 @@ void TopLevel::saveCurrentState(QString postfix)
   _partSelection->saveVisualisationConfig(&psConfig);
 
   KConfigGroup stateConfig(kconfig, QByteArray("CurrentState")+pf);
-  stateConfig.writeEntry("CostType",
-			 _costType ? _costType->name() : QString("?"));
-  stateConfig.writeEntry("CostType2",
-			 _costType2 ? _costType2->name() : QString("?"));
+  stateConfig.writeEntry("EventType",
+			 _eventType ? _eventType->name() : QString("?"));
+  stateConfig.writeEntry("EventType2",
+			 _eventType2 ? _eventType2->name() : QString("?"));
   stateConfig.writeEntry("GroupType", TraceItem::typeName(_groupType));
 
   _multiView->saveViewConfig(kconfig, QString("MainView"), postfix, true);
@@ -241,10 +241,10 @@ void TopLevel::saveTraceSettings()
   QString key = traceKey();
 
   KConfigGroup pConfig(KGlobal::config(), QByteArray("TracePositions"));
-  pConfig.writeEntry(QString("CostType%1").arg(key),
-                     _costType ? _costType->name() : QString("?"));
-  pConfig.writeEntry(QString("CostType2%1").arg(key),
-                     _costType2 ? _costType2->name() : QString("?"));
+  pConfig.writeEntry(QString("EventType%1").arg(key),
+                     _eventType ? _eventType->name() : QString("?"));
+  pConfig.writeEntry(QString("EventType2%1").arg(key),
+                     _eventType2 ? _eventType2->name() : QString("?"));
   pConfig.writeEntry(QString("GroupType%1").arg(key),
                      TraceItem::typeName(_groupType));
 
@@ -741,7 +741,7 @@ void TopLevel::createMiscActions()
   // cost types are dependent on loaded data, thus KSelectAction
   // is filled in setData()
   connect( _saCost, SIGNAL(triggered(const QString&)),
-           this, SLOT(costTypeSelected(const QString&)));
+           this, SLOT(eventTypeSelected(const QString&)));
 
   _saCost2 = actionCollection()->add<KSelectAction>("view_cost_type2");
   _saCost2->setText(i18n("Secondary Event Type"));
@@ -751,7 +751,7 @@ void TopLevel::createMiscActions()
   _saCost2->setWhatsThis( hint );
 
   connect( _saCost2, SIGNAL(triggered(const QString&)),
-           this, SLOT(costType2Selected(const QString&)));
+           this, SLOT(eventType2Selected(const QString&)));
 
   saGroup = actionCollection()->add<KSelectAction>("view_group_type");
   saGroup->setText(i18n("Grouping"));
@@ -1106,7 +1106,7 @@ void TopLevel::exportGraph()
   if (!_data || !_function) return;
 
   QString n = QString("callgraph.dot");
-  GraphExporter ge(_data, _function, _costType, _groupType, n);
+  GraphExporter ge(_data, _function, _eventType, _groupType, n);
   ge.writeDot();
 
   QString cmd = QString("(dot %1 -Tps > %2.ps; kghostview %3.ps)&")
@@ -1115,48 +1115,48 @@ void TopLevel::exportGraph()
 }
 
 
-bool TopLevel::setCostType(QString s)
+bool TopLevel::setEventType(QString s)
 {
-  TraceCostType* ct;
+  TraceEventType* ct;
 
   ct = (_data) ? _data->mapping()->type(s) : 0;
 
   // if costtype with given name not found, use first available
   if (!ct && _data) ct = _data->mapping()->type(0);
 
-  return setCostType(ct);
+  return setEventType(ct);
 }
 
-bool TopLevel::setCostType2(QString s)
+bool TopLevel::setEventType2(QString s)
 {
-  TraceCostType* ct;
+  TraceEventType* ct;
 
   // Special type i18n("(Hidden)") gives 0
   ct = (_data) ? _data->mapping()->type(s) : 0;
 
-  return setCostType2(ct);
+  return setEventType2(ct);
 }
 
-void TopLevel::costTypeSelected(const QString& s)
+void TopLevel::eventTypeSelected(const QString& s)
 {
-  TraceCostType* ct;
+  TraceEventType* ct;
 
   ct = (_data) ? _data->mapping()->typeForLong(s) : 0;
-  setCostType(ct);
+  setEventType(ct);
 }
 
-void TopLevel::costType2Selected(const QString& s)
+void TopLevel::eventType2Selected(const QString& s)
 {
-  TraceCostType* ct;
+  TraceEventType* ct;
 
   ct = (_data) ? _data->mapping()->typeForLong(s) : 0;
-  setCostType2(ct);
+  setEventType2(ct);
 }
 
-bool TopLevel::setCostType(TraceCostType* ct)
+bool TopLevel::setEventType(TraceEventType* ct)
 {
-  if (_costType == ct) return false;
-  _costType = ct;
+  if (_eventType == ct) return false;
+  _eventType = ct;
 
   if (ct) {
       int idx=0;
@@ -1167,13 +1167,13 @@ bool TopLevel::setCostType(TraceCostType* ct)
       }
   }
 
-  _partSelection->setCostType(_costType);
-  _stackSelection->setCostType(_costType);
+  _partSelection->setEventType(_eventType);
+  _stackSelection->setEventType(_eventType);
 
-  _functionSelection->setCostType(_costType);
+  _functionSelection->setEventType(_eventType);
   _functionSelection->updateView();
 
-  _multiView->setCostType(_costType);
+  _multiView->setEventType(_eventType);
   _multiView->updateView();
 
   updateStatusBar();
@@ -1181,10 +1181,10 @@ bool TopLevel::setCostType(TraceCostType* ct)
   return true;
 }
 
-bool TopLevel::setCostType2(TraceCostType* ct)
+bool TopLevel::setEventType2(TraceEventType* ct)
 {
-  if (_costType2 == ct) return false;
-  _costType2 = ct;
+  if (_eventType2 == ct) return false;
+  _eventType2 = ct;
 
   QString longName = ct ? ct->longName() : i18n("(Hidden)");
 
@@ -1195,13 +1195,13 @@ bool TopLevel::setCostType2(TraceCostType* ct)
       _saCost2->setCurrentItem(idx);
   }
 
-  _partSelection->setCostType2(_costType2);
-  _stackSelection->setCostType2(_costType2);
+  _partSelection->setEventType2(_eventType2);
+  _stackSelection->setEventType2(_eventType2);
 
-  _functionSelection->setCostType2(_costType2);
+  _functionSelection->setEventType2(_eventType2);
   _functionSelection->updateView();
 
-  _multiView->setCostType2(_costType2);
+  _multiView->setEventType2(_eventType2);
   _multiView->updateView();
 
   updateStatusBar();
@@ -1307,7 +1307,7 @@ bool TopLevel::setFunction(QString s)
 {
   if (!_data) return false;
 
-  TraceCost* f = _data->search(TraceItem::Function, s, _costType);
+  TraceCost* f = _data->search(TraceItem::Function, s, _eventType);
   if (!f) return false;
 
   return setFunction((TraceFunction*)f);
@@ -1351,26 +1351,26 @@ bool TopLevel::setFunction(TraceFunction* f)
  * temporary variable. And one parameterless slot for
  * forwarding, using this temporary.
  */
-void TopLevel::setCostTypeDelayed(TraceCostType* ct)
+void TopLevel::setEventTypeDelayed(TraceEventType* ct)
 {
-  _costTypeDelayed = ct;
-  QTimer::singleShot (0, this, SLOT(setCostTypeDelayed()));
+  _eventTypeDelayed = ct;
+  QTimer::singleShot (0, this, SLOT(setEventTypeDelayed()));
 }
 
-void TopLevel::setCostType2Delayed(TraceCostType* ct)
+void TopLevel::setEventType2Delayed(TraceEventType* ct)
 {
-  _costType2Delayed = ct;
-  QTimer::singleShot (0, this, SLOT(setCostType2Delayed()));
+  _eventType2Delayed = ct;
+  QTimer::singleShot (0, this, SLOT(setEventType2Delayed()));
 }
 
-void TopLevel::setCostTypeDelayed()
+void TopLevel::setEventTypeDelayed()
 {
-  setCostType(_costTypeDelayed);
+  setEventType(_eventTypeDelayed);
 }
 
-void TopLevel::setCostType2Delayed()
+void TopLevel::setEventType2Delayed()
 {
-  setCostType2(_costType2Delayed);
+  setEventType2(_eventType2Delayed);
 }
 
 void TopLevel::setGroupTypeDelayed(TraceItem::CostType gt)
@@ -1525,14 +1525,14 @@ void TopLevel::setData(TraceData* data)
 
   if (_data) {
       /* add all supported virtual types */
-      TraceCostMapping* m = _data->mapping();
-      m->addKnownVirtualTypes();
+      TraceEventTypeMapping* m = _data->mapping();
+      m->addKnownDerivedTypes();
 
       /* first, fill selection list with available cost types */
       for (int i=0;i<m->realCount();i++)
 	  types << m->realType(i)->longName();
-      for (int i=0;i<m->virtualCount();i++)
-	  types << m->virtualType(i)->longName();
+      for (int i=0;i<m->derivedCount();i++)
+	  types << m->derivedType(i)->longName();
   }
   _saCost->setItems(types);
   _saCost->setComboWidth(300);
@@ -1590,37 +1590,37 @@ void TopLevel::addCostMenu(Q3PopupMenu* popup, bool withCost2)
       popup2 = new Q3PopupMenu(popup);
       popup2->setCheckable(true);
 
-      if (_costType2) {
+      if (_eventType2) {
 	popup2->insertItem(i18n("Hide"),199);
 	popup2->insertSeparator();
       }
     }
 
-    TraceCostMapping* m = _data->mapping();
-    TraceCostType* ct;
+    TraceEventTypeMapping* m = _data->mapping();
+    TraceEventType* ct;
     for (int i=0;i<m->realCount();i++) {
       ct = m->realType(i);
       popup1->insertItem(ct->longName(), 100+i);
-      if (_costType == ct) popup1->setItemChecked(100+i,true);
+      if (_eventType == ct) popup1->setItemChecked(100+i,true);
       if (popup2) {
 	popup2->insertItem(ct->longName(), 100+i);
-	if (_costType2 == ct) popup2->setItemChecked(100+i,true);
+	if (_eventType2 == ct) popup2->setItemChecked(100+i,true);
       }
     }
-    for (int i=0;i<m->virtualCount();i++) {
-      ct = m->virtualType(i);
+    for (int i=0;i<m->derivedCount();i++) {
+      ct = m->derivedType(i);
       popup1->insertItem(ct->longName(), 200+i);
-      if (_costType == ct) popup1->setItemChecked(200+i,true);
+      if (_eventType == ct) popup1->setItemChecked(200+i,true);
       if (popup2) {
 	popup2->insertItem(ct->longName(), 200+i);
-	if (_costType2 == ct) popup2->setItemChecked(200+i,true);
+	if (_eventType2 == ct) popup2->setItemChecked(200+i,true);
       }
     }
     popup->insertItem(i18n("Primary Event Type"), popup1);
-    connect(popup1,SIGNAL(activated(int)),this,SLOT(setCostType(int)));
+    connect(popup1,SIGNAL(activated(int)),this,SLOT(setEventType(int)));
     if (popup2) {
       popup->insertItem(i18n("Secondary Event Type"), popup2);
-      connect(popup2,SIGNAL(activated(int)),this,SLOT(setCostType2(int)));
+      connect(popup2,SIGNAL(activated(int)),this,SLOT(setEventType2(int)));
     }
   }
   if (_showPercentage)
@@ -1631,28 +1631,28 @@ void TopLevel::addCostMenu(Q3PopupMenu* popup, bool withCost2)
 		      this, SLOT(setRelativeCost()));
 }
 
-bool TopLevel::setCostType(int id)
+bool TopLevel::setEventType(int id)
 {
   if (!_data) return false;
 
-  TraceCostMapping* m = _data->mapping();
-  TraceCostType* ct=0;
+  TraceEventTypeMapping* m = _data->mapping();
+  TraceEventType* ct=0;
   if (id >=100 && id<199) ct = m->realType(id-100);
-  if (id >=200 && id<299) ct = m->virtualType(id-200);
+  if (id >=200 && id<299) ct = m->derivedType(id-200);
 
-  return ct ? setCostType(ct) : false;
+  return ct ? setEventType(ct) : false;
 }
 
-bool TopLevel::setCostType2(int id)
+bool TopLevel::setEventType2(int id)
 {
   if (!_data) return false;
 
-  TraceCostMapping* m = _data->mapping();
-  TraceCostType* ct=0;
+  TraceEventTypeMapping* m = _data->mapping();
+  TraceEventType* ct=0;
   if (id >=100 && id<199) ct = m->realType(id-100);
-  if (id >=200 && id<299) ct = m->virtualType(id-200);
+  if (id >=200 && id<299) ct = m->derivedType(id-200);
 
-  return setCostType2(ct);
+  return setEventType2(ct);
 }
 
 void TopLevel::addGoMenu(Q3PopupMenu* popup)
@@ -1707,12 +1707,12 @@ void TopLevel::restoreTraceTypes()
   if (costType2.isEmpty()) costType2 = cConfig.readEntry("CostType2",QString());
 
   setGroupType(groupType);
-  setCostType(costType);
-  setCostType2(costType2);
+  setEventType(costType);
+  setEventType2(costType2);
 
   // if still no cost type set, use first available
-  if (!_costType && !_saCost->items().isEmpty())
-      costTypeSelected(_saCost->items().first());
+  if (!_eventType && !_saCost->items().isEmpty())
+      eventTypeSelected(_saCost->items().first());
 
   KConfigGroup aConfig(KGlobal::config(), QByteArray("Layouts"));
   _layoutCount = aConfig.readEntry(QString("Count%1").arg(key), 0);
@@ -1906,16 +1906,16 @@ void TopLevel::updateStatusBar()
                    .arg(_data->shortTraceName())
                    .arg(_data->activePartRange());
 
-  if (_costType) {
+  if (_eventType) {
     status += i18n("Total %1 Cost: %2",
-       _costType->longName(),
-       _data->prettySubCost(_costType));
+       _eventType->longName(),
+       _data->prettySubCost(_eventType));
 
     /* this gets too long...
-    if (_costType2 && (_costType2 != _costType))
+    if (_eventType2 && (_eventType2 != _eventType))
       status += i18n(", %1 Cost: %2")
-	.arg(_costType2->longName())
-	.arg(_data->prettySubCost(_costType2));
+	.arg(_eventType2->longName())
+	.arg(_data->prettySubCost(_eventType2));
     */
   }
   else

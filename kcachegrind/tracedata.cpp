@@ -232,7 +232,7 @@ void TraceItem::clear()
 }
 
 
-QString TraceItem::costString(TraceCostMapping*)
+QString TraceItem::costString(TraceEventTypeMapping*)
 {
     return QString("(no cost)");
 }
@@ -676,7 +676,7 @@ TraceCost TraceCost::diff(TraceCost* item)
   return res;
 }
 
-QString TraceCost::costString(TraceCostMapping* m)
+QString TraceCost::costString(TraceEventTypeMapping* m)
 {
   QString res;
 
@@ -721,7 +721,7 @@ SubCost TraceCost::subCost(int idx)
     return _cost[idx];
 }
 
-SubCost TraceCost::subCost(TraceCostType* t)
+SubCost TraceCost::subCost(TraceEventType* t)
 {
   if (!t) return 0;
   if (_cachedType != t) {
@@ -731,7 +731,7 @@ SubCost TraceCost::subCost(TraceCostType* t)
   return _cachedCost;
 }
 
-QString TraceCost::prettySubCost(TraceCostType* t)
+QString TraceCost::prettySubCost(TraceEventType* t)
 {
     return subCost(t).pretty();
 }
@@ -764,7 +764,7 @@ SubCost TraceJumpCost::followedCount()
     return _followedCount;
 }
 
-QString TraceJumpCost::costString(TraceCostMapping*)
+QString TraceJumpCost::costString(TraceEventTypeMapping*)
 {
   if (_dirty) update();
 
@@ -789,11 +789,11 @@ void TraceJumpCost::addCost(TraceJumpCost* item)
 
 
 //---------------------------------------------------
-// TraceCostType
+// TraceEventType
 
-Q3PtrList<TraceCostType>* TraceCostType::_knownTypes = 0;
+Q3PtrList<TraceEventType>* TraceEventType::_knownTypes = 0;
 
-TraceCostType::TraceCostType(QString name,  QString longName, QString formula)
+TraceEventType::TraceEventType(QString name,  QString longName, QString formula)
 {
   _name = name;
   _longName = longName;
@@ -807,14 +807,14 @@ TraceCostType::TraceCostType(QString name,  QString longName, QString formula)
     _coefficient[i] = 0;
 }
 
-void TraceCostType::setFormula(QString formula)
+void TraceEventType::setFormula(QString formula)
 {
   _formula = formula;
   _realIndex = TraceCost::InvalidIndex;
   _parsed = false;
 }
 
-void TraceCostType::setMapping(TraceCostMapping* m)
+void TraceEventType::setMapping(TraceEventTypeMapping* m)
 {
   _parsed = false;
   _mapping = m;
@@ -822,7 +822,7 @@ void TraceCostType::setMapping(TraceCostMapping* m)
 
 // setting the index to TraceCost::MaxRealIndex makes it a
 // real type with unspecified index
-void TraceCostType::setRealIndex(int i)
+void TraceEventType::setRealIndex(int i)
 {
   if (i<0 || i>TraceCost::MaxRealIndex)
     i=TraceCost::InvalidIndex;
@@ -832,16 +832,16 @@ void TraceCostType::setRealIndex(int i)
 }
 
 // checks for existing types and sets coefficients
-bool TraceCostType::parseFormula()
+bool TraceEventType::parseFormula()
 {
   if (_parsed) return true;
   if (_inParsing) {
-    qDebug("TraceCostType::parseFormula: Recursion detected.");
+    qDebug("TraceEventType::parseFormula: Recursion detected.");
     return false;
   }
 
   if (!_mapping) {
-    qDebug("TraceCostType::parseFormula: No mapping set!");
+    qDebug("TraceEventType::parseFormula: No mapping set!");
     return false;
   }
 
@@ -854,7 +854,7 @@ bool TraceCostType::parseFormula()
 
   int factor, pos;
   QString costName;
-  TraceCostType* costType;
+  TraceEventType* eventType;
 
   pos = 0;
   while (1) {
@@ -867,8 +867,8 @@ bool TraceCostType::parseFormula()
     //       qPrintable(rx.cap(1)), qPrintable(rx.cap(2)), qPrintable(rx.cap(3)));
 
     costName = rx.cap(3);
-    costType = _mapping->type(costName);
-    if (!costType) {
+    eventType = _mapping->type(costName);
+    if (!eventType) {
 	// qDebug("Cost type '%s': In formula cost '%s' unknown.",
         //     qPrintable(_name), qPrintable(costName));
 
@@ -879,12 +879,12 @@ bool TraceCostType::parseFormula()
     factor = (rx.cap(2).isEmpty()) ? 1 : rx.cap(2).toInt();
     if (rx.cap(1) == "-") factor = -factor;
 
-    if (costType->isReal())
-      _coefficient[costType->realIndex()] += factor;
+    if (eventType->isReal())
+      _coefficient[eventType->realIndex()] += factor;
     else {
-      costType->parseFormula();
+      eventType->parseFormula();
       for (int i=0; i<TraceCost::MaxRealIndex;i++)
-        _coefficient[i] += factor * costType->_coefficient[i];
+        _coefficient[i] += factor * eventType->_coefficient[i];
     }
   }
 
@@ -894,7 +894,7 @@ bool TraceCostType::parseFormula()
   return true;
 }
 
-QString TraceCostType::parsedFormula()
+QString TraceEventType::parsedFormula()
 {
   QString res;
 
@@ -911,7 +911,7 @@ QString TraceCostType::parsedFormula()
     if (c<0) { res += "- "; c = -c; }
     res += QString::number(c);
 
-    TraceCostType* t = _mapping->type(i);
+    TraceEventType* t = _mapping->type(i);
     if (!t) continue;
 
     if (!t->name().isEmpty())
@@ -921,7 +921,7 @@ QString TraceCostType::parsedFormula()
   return res;
 }
 
-SubCost TraceCostType::subCost(TraceCost* c)
+SubCost TraceEventType::subCost(TraceCost* c)
 {
   if (_realIndex != TraceCost::InvalidIndex)
     return c->subCost(_realIndex);
@@ -939,7 +939,7 @@ SubCost TraceCostType::subCost(TraceCost* c)
   return res;
 }
 
-int TraceCostType::histCost(TraceCost* c, double total, double* hist)
+int TraceEventType::histCost(TraceCost* c, double total, double* hist)
 {
   if (total == 0.0) return 0;
 
@@ -961,28 +961,28 @@ int TraceCostType::histCost(TraceCost* c, double total, double* hist)
 
 
 
-TraceCostType* TraceCostType::knownRealType(QString n)
+TraceEventType* TraceEventType::knownRealType(QString n)
 {
   if (!_knownTypes) return 0;
 
-  TraceCostType* t;
+  TraceEventType* t;
   for (t=_knownTypes->first();t;t=_knownTypes->next())
     if (t->isReal() && (t->name() == n)) {
-      TraceCostType* type = new TraceCostType(*t);
+      TraceEventType* type = new TraceEventType(*t);
       return type;
     }
 
   return 0;
 }
 
-TraceCostType* TraceCostType::knownVirtualType(QString n)
+TraceEventType* TraceEventType::knownDerivedType(QString n)
 {
   if (!_knownTypes) return 0;
 
-  TraceCostType* t;
+  TraceEventType* t;
   for (t=_knownTypes->first();t;t=_knownTypes->next())
     if (!t->isReal() && (t->name() == n)) {
-      TraceCostType* type = new TraceCostType(*t);
+      TraceEventType* type = new TraceEventType(*t);
       return type;
     }
 
@@ -990,17 +990,17 @@ TraceCostType* TraceCostType::knownVirtualType(QString n)
 }
 
 // we take ownership
-void TraceCostType::add(TraceCostType* t)
+void TraceEventType::add(TraceEventType* t)
 {
   if (!t) return;
 
   t->setMapping(0);
 
   if (!_knownTypes)
-    _knownTypes = new Q3PtrList<TraceCostType>;
+    _knownTypes = new Q3PtrList<TraceEventType>;
 
   /* Already known? */
-  TraceCostType* kt;
+  TraceEventType* kt;
   for (kt=_knownTypes->first();kt;kt=_knownTypes->next())
     if (kt->name() == t->name()) break;
 
@@ -1019,18 +1019,18 @@ void TraceCostType::add(TraceCostType* t)
 }
 
 
-int TraceCostType::knownTypeCount()
+int TraceEventType::knownTypeCount()
 {
   if (!_knownTypes) return 0;
 
   return _knownTypes->count();
 }
 
-bool TraceCostType::remove(QString n)
+bool TraceEventType::remove(QString n)
 {
   if (!_knownTypes) return false;
 
-  TraceCostType* t;
+  TraceEventType* t;
   for (t=_knownTypes->first();t;t=_knownTypes->next())
     if (!t->isReal() && (t->name() == n)) {
       _knownTypes->removeRef(t);
@@ -1041,7 +1041,7 @@ bool TraceCostType::remove(QString n)
   return false;
 }
 
-TraceCostType* TraceCostType::knownType(int i)
+TraceEventType* TraceEventType::knownType(int i)
 {
   if (!_knownTypes) return 0;
   if (i<0 || i>=(int)_knownTypes->count()) return 0;
@@ -1049,7 +1049,7 @@ TraceCostType* TraceCostType::knownType(int i)
   return _knownTypes->at(i);
 }
 
-QColor TraceCostType::color()
+QColor TraceEventType::color()
 {
   if (!_mapping) return QColor();
   return _mapping->realColors()[_realIndex];
@@ -1057,26 +1057,26 @@ QColor TraceCostType::color()
 
 
 //---------------------------------------------------
-// TraceCostMapping
+// TraceEventTypeMapping
 
-TraceCostMapping::TraceCostMapping()
+TraceEventTypeMapping::TraceEventTypeMapping()
 {
   _realCount = 0;
-  _virtualCount = 0;
+  _derivedCount = 0;
   for (int i=0;i<TraceCost::MaxRealIndex;i++) _real[i] = 0;
-  for (int i=0;i<TraceCost::MaxRealIndex;i++) _virtual[i] = 0;
+  for (int i=0;i<TraceCost::MaxRealIndex;i++) _derived[i] = 0;
 }
 
-TraceCostMapping::~TraceCostMapping()
+TraceEventTypeMapping::~TraceEventTypeMapping()
 {
   for (int i=0;i<TraceCost::MaxRealIndex;i++)
     if (_real[i]) delete _real[i];
 
   for (int i=0;i<TraceCost::MaxRealIndex;i++)
-    if (_virtual[i]) delete _virtual[i];
+    if (_derived[i]) delete _derived[i];
 }
 
-TraceSubMapping* TraceCostMapping::subMapping(QString types, bool create)
+TraceSubMapping* TraceEventTypeMapping::subMapping(QString types, bool create)
 {
   // first check if there's enough space in the mapping
   int newCount = 0;
@@ -1124,13 +1124,13 @@ TraceSubMapping* TraceCostMapping::subMapping(QString types, bool create)
 }
 
 
-int TraceCostMapping::addReal(QString t)
+int TraceEventTypeMapping::addReal(QString t)
 {
   int index = realIndex(t);
   if (index>=0) return index;
 
-  TraceCostType* ct = TraceCostType::knownRealType(t);
-  if (!ct) ct = new TraceCostType(t, t);
+  TraceEventType* ct = TraceEventType::knownRealType(t);
+  if (!ct) ct = new TraceEventType(t, t);
 
   // make it real
   ct->setRealIndex();
@@ -1138,40 +1138,40 @@ int TraceCostMapping::addReal(QString t)
   return add(ct);
 }
 
-// add a cost type to a mapping
+// add an event type to a mapping
 // this transfers ownership of the type!
-int TraceCostMapping::add(TraceCostType* ct)
+int TraceEventTypeMapping::add(TraceEventType* et)
 {
-  if (!ct) return TraceCost::InvalidIndex;
+  if (!et) return TraceCost::InvalidIndex;
 
-  ct->setMapping(this);
+  et->setMapping(this);
 
-  if (ct->isReal()) {
+  if (et->isReal()) {
     if (_realCount >= TraceCost::MaxRealIndex) {
-      qDebug("WARNING: Maximum for real cost types reached (on adding '%s')",
-             qPrintable(ct->name()));
+      qDebug("WARNING: Maximum for real event types reached (on adding '%s')",
+             qPrintable(et->name()));
       return TraceCost::InvalidIndex;
     }
-    _real[_realCount] = ct;
-    ct->setRealIndex(_realCount);
-    _realColor[_realCount] = Configuration::costTypeColor(ct);
+    _real[_realCount] = et;
+    et->setRealIndex(_realCount);
+    _realColor[_realCount] = Configuration::eventTypeColor(et);
 
     _realCount++;
     return _realCount-1;
   }
 
-  if (_virtualCount >= TraceCost::MaxRealIndex) {
-    qDebug("WARNING: Maximum for virtual cost types reached (on adding '%s')",
-           qPrintable(ct->name()));
+  if (_derivedCount >= TraceCost::MaxRealIndex) {
+    qDebug("WARNING: Maximum for virtual event types reached (on adding '%s')",
+           qPrintable(et->name()));
     return TraceCost::InvalidIndex;
   }
-  _virtual[_virtualCount] = ct;
-  _virtualCount++;
-  return _virtualCount-1;
+  _derived[_derivedCount] = et;
+  _derivedCount++;
+  return _derivedCount-1;
 }
 
 // we delete the type: t is invalid when returning true!
-bool TraceCostMapping::remove(TraceCostType* t)
+bool TraceEventTypeMapping::remove(TraceEventType* t)
 {
   if (!t) return false;
   if (t->mapping() != this) return false;
@@ -1180,79 +1180,79 @@ bool TraceCostMapping::remove(TraceCostType* t)
   if (t->isReal()) return false;
 
   int i;
-  for(i=0;i<_virtualCount;i++)
-    if (_virtual[i] == t) break;
+  for(i=0;i<_derivedCount;i++)
+    if (_derived[i] == t) break;
 
   // not found?
-  if (i == _virtualCount) return false;
+  if (i == _derivedCount) return false;
 
   // delete known type with same name
-  TraceCostType::remove(t->name());
+  TraceEventType::remove(t->name());
 
   // delete this type
-  _virtual[i] = 0;
+  _derived[i] = 0;
   delete t;
-  if (i+1 == _virtualCount) {
+  if (i+1 == _derivedCount) {
     // we can reuse the last index
-    _virtualCount--;
+    _derivedCount--;
   }
   return true;
 }
 
 
-TraceCostType* TraceCostMapping::realType(int t)
+TraceEventType* TraceEventTypeMapping::realType(int t)
 {
   if (t<0 || t>=_realCount) return 0;
   return _real[t];
 }
 
-TraceCostType* TraceCostMapping::virtualType(int t)
+TraceEventType* TraceEventTypeMapping::derivedType(int t)
 {
-  if (t<0 || t>=_virtualCount) return 0;
-  return _virtual[t];
+  if (t<0 || t>=_derivedCount) return 0;
+  return _derived[t];
 }
 
 
-TraceCostType* TraceCostMapping::type(int t)
+TraceEventType* TraceEventTypeMapping::type(int t)
 {
   if (t<0) return 0;
   if (t<_realCount) return _real[t];
 
   t -= TraceCost::MaxRealIndex;
   if (t<0) return 0;
-  if (t<_virtualCount) return _virtual[t];
+  if (t<_derivedCount) return _derived[t];
 
   return 0;
 }
 
-TraceCostType* TraceCostMapping::type(QString name)
+TraceEventType* TraceEventTypeMapping::type(QString name)
 {
   for (int i=0;i<_realCount;i++)
     if (_real[i] && (_real[i]->name() == name))
       return _real[i];
 
-  for (int i=0;i<_virtualCount;i++)
-    if (_virtual[i] && (_virtual[i]->name() == name))
-      return _virtual[i];
+  for (int i=0;i<_derivedCount;i++)
+    if (_derived[i] && (_derived[i]->name() == name))
+      return _derived[i];
 
   return 0;
 }
 
-TraceCostType* TraceCostMapping::typeForLong(QString name)
+TraceEventType* TraceEventTypeMapping::typeForLong(QString name)
 {
   for (int i=0;i<_realCount;i++)
     if (_real[i] && (_real[i]->longName() == name))
       return _real[i];
 
-  for (int i=0;i<_virtualCount;i++)
-    if (_virtual[i] && (_virtual[i]->longName() == name))
-      return _virtual[i];
+  for (int i=0;i<_derivedCount;i++)
+    if (_derived[i] && (_derived[i]->longName() == name))
+      return _derived[i];
 
   return 0;
 }
 
 
-int TraceCostMapping::realIndex(QString name)
+int TraceEventTypeMapping::realIndex(QString name)
 {
   for (int i=0;i<_realCount;i++)
     if (_real[i] && (_real[i]->name() == name))
@@ -1261,35 +1261,35 @@ int TraceCostMapping::realIndex(QString name)
   return TraceCost::InvalidIndex;
 }
 
-int TraceCostMapping::index(QString name)
+int TraceEventTypeMapping::index(QString name)
 {
   for (int i=0;i<_realCount;i++)
     if (_real[i] && (_real[i]->name() == name))
       return i;
 
-  for (int i=0;i<_virtualCount;i++)
-    if (_virtual[i] && (_virtual[i]->name() == name))
+  for (int i=0;i<_derivedCount;i++)
+    if (_derived[i] && (_derived[i]->name() == name))
       return TraceCost::MaxRealIndex + 1 + i;
 
   return TraceCost::InvalidIndex;
 }
 
-int TraceCostMapping::addKnownVirtualTypes()
+int TraceEventTypeMapping::addKnownDerivedTypes()
 {
   int addCount = 0;
   int addDiff, i;
-  int knownCount = TraceCostType::knownTypeCount();
+  int knownCount = TraceEventType::knownTypeCount();
 
   while (1) {
     addDiff = 0;
     for (i=0; i<knownCount; i++) {
-      TraceCostType* t = TraceCostType::knownType(i);
+      TraceEventType* t = TraceEventType::knownType(i);
       if (t->isReal()) continue;
       if (index(t->name()) != TraceCost::InvalidIndex) continue;
       t->setMapping(this);
       if (t->parseFormula()) {
         addDiff++;
-        add(new TraceCostType(t->name(), t->longName(), t->formula()));
+        add(new TraceEventType(t->name(), t->longName(), t->formula()));
       }
       t->setMapping(0);
     }
@@ -1303,7 +1303,7 @@ int TraceCostMapping::addKnownVirtualTypes()
 //---------------------------------------------------
 // TraceSubMapping
 
-TraceSubMapping::TraceSubMapping(TraceCostMapping* mapping)
+TraceSubMapping::TraceSubMapping(TraceEventTypeMapping* mapping)
 {
   _mapping = mapping;
   clear();
@@ -1361,7 +1361,7 @@ TraceCallCost::~TraceCallCost()
 {}
 
 
-QString TraceCallCost::costString(TraceCostMapping* m)
+QString TraceCallCost::costString(TraceEventTypeMapping* m)
 {
   return QString("%1, Calls %2")
       .arg(TraceCost::costString(m))
@@ -1403,7 +1403,7 @@ TraceInclusiveCost::TraceInclusiveCost()
 TraceInclusiveCost::~TraceInclusiveCost()
 {}
 
-QString TraceInclusiveCost::costString(TraceCostMapping* m)
+QString TraceInclusiveCost::costString(TraceEventTypeMapping* m)
 {
   return QString("%1, Inclusive %2")
     .arg(TraceCost::costString(m))
@@ -1893,7 +1893,7 @@ QString TracePartFunction::prettyCallingCount()
   return _callingCount.pretty();
 }
 
-QString TracePartFunction::costString(TraceCostMapping* m)
+QString TracePartFunction::costString(TraceEventTypeMapping* m)
 {
   update();
 
@@ -2632,7 +2632,7 @@ TraceInstr::TraceInstr()
 TraceInstr::~TraceInstr()
 {}
 
-bool TraceInstr::hasCost(TraceCostType* ct)
+bool TraceInstr::hasCost(TraceEventType* ct)
 {
     bool res = subCost(ct) > 0;
     if (!res) {
@@ -2731,7 +2731,7 @@ TraceLine::TraceLine()
 TraceLine::~TraceLine()
 {}
 
-bool TraceLine::hasCost(TraceCostType* ct)
+bool TraceLine::hasCost(TraceEventType* ct)
 {
     bool res = subCost(ct) > 0;
     if (!res) {
@@ -4830,7 +4830,7 @@ void TraceData::update()
 }
 
 TraceCost* TraceData::search(TraceItem::CostType t, QString name,
-			     TraceCostType* ct, TraceCost* parent)
+			     TraceEventType* ct, TraceCost* parent)
 {
     TraceCost* result = 0;
     TraceItem::CostType pt = parent ? parent->type() : NoCostType;

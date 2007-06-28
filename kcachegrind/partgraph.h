@@ -39,14 +39,14 @@ public:
   PartAreaWidget(QWidget* parent=0);
 
   void setData(TraceData* d);
-  void setCostType(TraceCostType* ct);
+  void setEventType(TraceEventType* ct);
   void setGroupType(TraceCost::CostType gt);
   void setVisualisation(VisualisationMode);
   void setZoomFunction(bool zoomFunction);
   void setCallLevels(int callLevels);
   void setFunction(TraceFunction* f);
 
-  TraceCostType* costType() const { return _costType; }
+  TraceEventType* eventType() const { return _eventType; }
   TraceCost::CostType groupType() const { return _groupType; }
   TraceFunction* function() const { return _function; }
   VisualisationMode visualisation() const { return _visualisation; }
@@ -63,7 +63,7 @@ private:
   void refreshParts();
 
   TraceData* _data;
-  TraceCostType* _costType;
+  TraceEventType* _eventType;
   TraceCost::CostType _groupType;
   TraceFunction* _function;
   VisualisationMode _visualisation;

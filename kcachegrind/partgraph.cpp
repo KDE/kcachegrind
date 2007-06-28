@@ -37,7 +37,7 @@ PartAreaWidget::PartAreaWidget(QWidget* parent)
   _data = 0;
   _function = 0;
 
-  _costType = 0;
+  _eventType = 0;
   _groupType = TraceCost::NoCostType;
   _visualisation = NoVisualisation;
   _zoomFunction = false;
@@ -62,9 +62,9 @@ void PartAreaWidget::changeHidden(const TracePartList& list)
 }
 
 
-void PartAreaWidget::setCostType(TraceCostType* ct)
+void PartAreaWidget::setEventType(TraceEventType* ct)
 {
-  _costType = ct;
+  _eventType = ct;
 
   // this resizes items
   base()->redraw();
@@ -244,7 +244,7 @@ double BasePartItem::value() const
   if (!_data) return 0;
 
   PartAreaWidget* w = (PartAreaWidget*) widget();
-  return (double)_data->subCost(w->costType());
+  return (double)_data->subCost(w->eventType());
 }
 
 
@@ -267,11 +267,11 @@ QString PartItem::text(int textNo) const
   if (textNo != 1)
     return QString::null;
 
-  TraceCostType* ct;
+  TraceEventType* ct;
   PartAreaWidget* w = (PartAreaWidget*)widget();
   SubCost v;
 
-  ct = w->costType();
+  ct = w->eventType();
   v = _p->subCost(ct);
 
   if (Configuration::showPercentage()) {
@@ -290,7 +290,7 @@ QPixmap PartItem::pixmap(int i) const
 
     // Cost pixmap
 
-    TraceCostType* ct = ((PartAreaWidget*)widget())->costType();
+    TraceEventType* ct = ((PartAreaWidget*)widget())->eventType();
     return costPixmap( ct, _p, (double) (_p->data()->totals()->subCost(ct)), false );
 }
 
@@ -298,7 +298,7 @@ QPixmap PartItem::pixmap(int i) const
 double PartItem::value() const
 {
   PartAreaWidget* w = (PartAreaWidget*)widget();
-  TraceCostType* ct = w->costType();
+  TraceEventType* ct = w->eventType();
   if ((w->visualisation() == PartAreaWidget::Inclusive) &&
       w->zoomFunction()) {
 
@@ -430,11 +430,11 @@ QString SubPartItem::text(int textNo) const
   if (textNo != 1)
     return QString::null;
 
-  TraceCostType* ct;
+  TraceEventType* ct;
   PartAreaWidget* w = (PartAreaWidget*)widget();
   SubCost v;
 
-  ct = w->costType();
+  ct = w->eventType();
   if (w->visualisation() == PartAreaWidget::Inclusive)
     v = ((TracePartFunction*)_partCostItem)->inclusive()->subCost(ct);
   else
@@ -457,7 +457,7 @@ QPixmap SubPartItem::pixmap(int i) const
     // Cost pixmap
 
     PartAreaWidget* w = (PartAreaWidget*)widget();
-    TraceCostType* ct = w->costType();
+    TraceEventType* ct = w->eventType();
     TraceCost* t = Configuration::showExpanded() ?
 	_partCostItem->part() : _partCostItem->part()->data()->totals();
     TraceCost* c;
@@ -471,10 +471,10 @@ QPixmap SubPartItem::pixmap(int i) const
 
 double SubPartItem::value() const
 {
-  TraceCostType* ct;
+  TraceEventType* ct;
   PartAreaWidget* w = (PartAreaWidget*)widget();
 
-  ct = w->costType();
+  ct = w->eventType();
   if (w->visualisation() == PartAreaWidget::Inclusive)
     return (double)
 	((TracePartFunction*)_partCostItem)->inclusive()->subCost(ct);

@@ -126,8 +126,8 @@ class DynPool;
 class TopLevel;
 
 class TraceCost;
-class TraceCostType;
-class TraceCostMapping;
+class TraceEventType;
+class TraceEventTypeMapping;
 class TraceSubMapping;
 class TraceJumpCost;
 class TraceCallCost;
@@ -283,7 +283,7 @@ public:
   /**
    * Returns text of all cost metrics
    */
-  virtual QString costString(TraceCostMapping*);
+  virtual QString costString(TraceEventTypeMapping*);
 
   /**
    * Returns type name + dynamic name
@@ -351,7 +351,7 @@ public:
  * An array of basic cost metrics for a trace item.
  *
  * The semantic of specific indexes is stored in the
- * TraceCostMapping of the TraceData object holding this TraceCost.
+ * TraceEventTypeMapping of the TraceData object holding this TraceCost.
  */
 class TraceCost: public TraceItem
 {
@@ -368,7 +368,7 @@ public:
   virtual ~TraceCost();
 
   virtual CostType type() const { return Cost; }
-  virtual QString costString(TraceCostMapping*);
+  virtual QString costString(TraceEventTypeMapping*);
 
   virtual void clear();
 
@@ -393,7 +393,7 @@ public:
   /** Returns a sub cost. This automatically triggers
    * a call to update() if needed.
    */
-  SubCost subCost(TraceCostType*);
+  SubCost subCost(TraceEventType*);
 
   /**
    * Same as above, but only for real types
@@ -403,7 +403,7 @@ public:
   /** Returns a cost attribute converted to a string
    * (with space after every 3 digits)
    */
-  QString prettySubCost(TraceCostType*);
+  QString prettySubCost(TraceEventType*);
 
  protected:
   virtual void update();
@@ -413,7 +413,7 @@ public:
 
   // cache last virtual subcost for faster access
   SubCost _cachedCost;
-  TraceCostType* _cachedType;
+  TraceEventType* _cachedType;
 };
 
 
@@ -427,12 +427,12 @@ public:
  *
  * For a virtual cost type, set a formula to calculate it:
  * e.g. for "Read Misses" : "l1rm + l2rm".
- * To allow for parsing, you must specify a TraceCostMapping
+ * To allow for parsing, you must specify a TraceEventTypeMapping
  * with according cost types (e.g. "l1rm" and "l2rm" for above formula).
  *
  * The cost type with empty name is the "const" cost type.
  */
-class TraceCostType
+class TraceEventType
 {
 public:
 
@@ -442,13 +442,13 @@ public:
    * <longName> is a long localized string, e.g. "L1 Read Miss"
    * <formula> uses short names to reference other types
    */
-  TraceCostType(QString name,
+  TraceEventType(QString name,
                 QString longName = QString::null,
                 QString formula = QString::null);
 
   void setName(QString n) { _name = n; }
   void setLongName(QString n) { _longName = n; }
-  void setMapping(TraceCostMapping* m);
+  void setMapping(TraceEventTypeMapping* m);
   void setFormula(QString);
   // default arg is for specifying a real type, but index unknown
   void setRealIndex(int r = TraceCost::MaxRealIndex);
@@ -456,7 +456,7 @@ public:
   const QString& name() { return _name; }
   const QString& longName() { return _longName; }
   const QString& formula() { return _formula; }
-  TraceCostMapping* mapping() { return _mapping; }
+  TraceEventTypeMapping* mapping() { return _mapping; }
   int realIndex() { return _realIndex; }
   bool isReal() { return _formula.isEmpty(); }
   QColor color();
@@ -478,83 +478,83 @@ public:
 
   // application wide known types, referenced by short name
   // next 2 functions return a new type object instance
-  static TraceCostType* knownRealType(QString);
-  static TraceCostType* knownVirtualType(QString);
-  static void add(TraceCostType*);
+  static TraceEventType* knownRealType(QString);
+  static TraceEventType* knownDerivedType(QString);
+  static void add(TraceEventType*);
   static bool remove(QString);
   static int knownTypeCount();
-  static TraceCostType* knownType(int);
+  static TraceEventType* knownType(int);
 
 private:
 
   QString _name, _longName, _formula;
-  TraceCostMapping* _mapping;
+  TraceEventTypeMapping* _mapping;
   bool _parsed, _inParsing;
   // index MaxRealIndex is for constant addition
   int _coefficient[MaxRealIndexValue];
   int _realIndex;
 
-  static Q3PtrList<TraceCostType>* _knownTypes;
+  static Q3PtrList<TraceEventType>* _knownTypes;
 };
 
 
 /**
- * A class for managing a set of cost types.
+ * A class for managing a set of event types.
  *
- * Each cost type has an index:
- * - Real costs are in range [0 .. TraceCost:MaxRealIndex[
- * - Virtual costs are in range [MaxRealIndex, ...]
+ * Each event type has an index:
+ * - Real events are in range [0 .. TraceCost:MaxRealIndex[
+ * - Derived events are in range [MaxRealIndex, ...]
  */
-class TraceCostMapping
+class TraceEventTypeMapping
 {
 public:
-  TraceCostMapping();
-  ~TraceCostMapping();
+  TraceEventTypeMapping();
+  ~TraceEventTypeMapping();
 
   /**
-   * Defines a sub mapping with a list of real types
+   * Defines a sub mapping with a list of real event types
    * If <create> is false, checks if this is a existing sub mapping.
    */
   TraceSubMapping* subMapping(QString types, bool create = true);
 
   // "knows" about some real types
   int addReal(QString);
-  int add(TraceCostType*);
-  bool remove(TraceCostType*);
+  int add(TraceEventType*);
+  bool remove(TraceEventType*);
   int realCount() { return _realCount; }
-  int virtualCount() { return _virtualCount; }
-  int minVirtualIndex() { return TraceCost::MaxRealIndex; }
-  TraceCostType* type(int);
-  TraceCostType* realType(int);
-  TraceCostType* virtualType(int);
-  TraceCostType* type(QString);
-  TraceCostType* typeForLong(QString);
+  int derivedCount() { return _derivedCount; }
+  int minDerivedIndex() { return TraceCost::MaxRealIndex; }
+  TraceEventType* type(int);
+  TraceEventType* realType(int);
+  TraceEventType* derivedType(int);
+  TraceEventType* type(QString);
+  TraceEventType* typeForLong(QString);
   int realIndex(QString);
   int index(QString);
   QColor* realColors() { return _realColor; }
 
   /**
-   * Adds all known virtual types that can be parsed
+   * Adds all known derived event types that can be parsed
    */
-  int addKnownVirtualTypes();
+  int addKnownDerivedTypes();
 
 private:
-  // we support only a fixed number of real and virtual types
-  TraceCostType* _real[MaxRealIndexValue];
+  // we support only a fixed number of real and derived types
+  TraceEventType* _real[MaxRealIndexValue];
   QColor _realColor[MaxRealIndexValue];
-  TraceCostType* _virtual[MaxRealIndexValue];
-  int _realCount, _virtualCount;
+  TraceEventType* _derived[MaxRealIndexValue];
+  int _realCount, _derivedCount;
 };
 
 /**
- * A submapping of a TraceCostMapping
+ * A submapping of a TraceEventTypeMapping
  *
  * This is a fixed ordered list of indexes for real cost types
  * in a mapping.
  *
  * You can define a mapping by requesting submappings. Undefined cost
  * types will get a new real type index.
- *  TraceCostMapping m;
+ *  TraceEventTypeMapping m;
  *  sm1 = m.subMapping("Event1 Cost1 Cost2");  // returns submap [0,1,2]
  *  sm2 = m.subMapping("Event2 Cost3 Event1"); // returns submap [3,4,0]
  * Real types of m will be:
@@ -563,7 +563,7 @@ private:
 class TraceSubMapping
 {
 public:
-  TraceSubMapping(TraceCostMapping*);
+  TraceSubMapping(TraceEventTypeMapping*);
 
   bool append(QString, bool create=true);
   bool append(int);
@@ -593,7 +593,7 @@ public:
       return _nextUnused[i]; }
 
 private:
-  TraceCostMapping* _mapping;
+  TraceEventTypeMapping* _mapping;
   int _count, _firstUnused;
   bool _isIdentity;
   int _realIndex[MaxRealIndexValue];
@@ -611,7 +611,7 @@ class TraceJumpCost: public TraceItem
     virtual ~TraceJumpCost();
 
     // reimplementations for cost addition
-    virtual QString costString(TraceCostMapping* m);
+    virtual QString costString(TraceEventTypeMapping* m);
     virtual void clear();
 
     void addCost(TraceJumpCost*);
@@ -638,7 +638,7 @@ class TraceCallCost: public TraceCost
   virtual ~TraceCallCost();
 
   // reimplementations for cost addition
-  virtual QString costString(TraceCostMapping* m);
+  virtual QString costString(TraceEventTypeMapping* m);
   virtual void clear();
 
   // additional cost metric
@@ -661,7 +661,7 @@ class TraceInclusiveCost: public TraceCost
   virtual ~TraceInclusiveCost();
 
   // reimplementations for cost addition
-  virtual QString costString(TraceCostMapping* m);
+  virtual QString costString(TraceEventTypeMapping* m);
   virtual void clear();
 
   // additional cost metric
@@ -963,7 +963,7 @@ public:
 
   virtual CostType type() const { return PartFunction; }
   virtual void update();
-  virtual QString costString(TraceCostMapping* m);
+  virtual QString costString(TraceEventTypeMapping* m);
 
   void addPartInstr(TracePartInstr*);
   void addPartLine(TracePartLine*);
@@ -1363,7 +1363,7 @@ class TraceInstr: public TraceListCost
   TraceLine* line() const { return _line; }
   const TraceInstrJumpList& instrJumps() const { return _instrJumps; }
   const TraceInstrCallList& instrCalls() const { return _instrCalls; }
-  bool hasCost(TraceCostType*);
+  bool hasCost(TraceEventType*);
 
   // only to be called after default constructor
   void setAddr(const Addr addr) { _addr = addr; }
@@ -1407,7 +1407,7 @@ public:
 
 
   bool isValid() { return _sourceFile != 0; }
-  bool hasCost(TraceCostType*);
+  bool hasCost(TraceEventType*);
   TraceFunctionSource* functionSource() const { return _sourceFile; }
   uint lineno() const { return _lineno; }
   const TraceLineCallList& lineCalls() const { return _lineCalls; }
@@ -1832,7 +1832,7 @@ class TraceData: public TraceCost
   /**
    * Loads a trace file.
    *
-   * This adjusts the TraceCostMapping according to given cost types
+   * This adjusts the TraceEventTypeMapping according to given cost types
    */
   void load(const QString&);
 
@@ -1857,7 +1857,7 @@ class TraceData: public TraceCost
   QString shortTraceName() const;
   QString activePartRange();
 
-  TraceCostMapping* mapping() { return &_mapping; }
+  TraceEventTypeMapping* mapping() { return &_mapping; }
 
   // memory pools
   FixPool* fixPool();
@@ -1881,7 +1881,7 @@ class TraceData: public TraceCost
    * isn't needed.
    */
   TraceCost* search(TraceItem::CostType, QString,
-		    TraceCostType* ct = 0, TraceCost* parent = 0);
+		    TraceEventType* ct = 0, TraceCost* parent = 0);
 
   // for pretty function names without signature if unique...
   TraceFunctionMap::Iterator functionIterator(TraceFunction*);
@@ -1931,7 +1931,7 @@ class TraceData: public TraceCost
   TracePartList _parts;
 
   // The mapping for all costs
-  TraceCostMapping _mapping;
+  TraceEventTypeMapping _mapping;
 
   FixPool* _fixPool;
   DynPool* _dynPool;
