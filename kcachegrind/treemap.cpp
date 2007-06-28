@@ -1654,6 +1654,7 @@ TreeMapItemList TreeMapWidget::diff(TreeMapItemList& l1,
  */
 TreeMapItem* TreeMapWidget::setTmpSelected(TreeMapItem* item, bool selected)
 {
+  if (!item) return 0;
   if (_selectionMode == NoSelection) return 0;
 
   TreeMapItemList old = _tmpSelection;
@@ -1766,8 +1767,9 @@ TreeMapItem* TreeMapWidget::setTmpRangeSelection(TreeMapItem* i1,
 						 TreeMapItem* i2,
 						 bool selected)
 {
-  if (i1->isChildOf(i2)) return setTmpSelected(i2, selected);
-  if (i2->isChildOf(i1)) return setTmpSelected(i1, selected);
+  if ((i1 == 0) && (i2 == 0)) return 0;
+  if ((i1 == 0) || i1->isChildOf(i2)) return setTmpSelected(i2, selected);
+  if ((i2 == 0) || i2->isChildOf(i1)) return setTmpSelected(i1, selected);
 
   TreeMapItem* changed = setTmpSelected(i1, selected);
   TreeMapItem* changed2 = setTmpSelected(i2, selected);
