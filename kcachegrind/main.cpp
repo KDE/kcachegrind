@@ -33,27 +33,24 @@
 #include "tracedata.h"
 #include "loader.h"
 
-static KCmdLineOptions options[] =
-{
-  { "r <exec>", I18N_NOOP("Run <exec> under cachegrind"), 0 },
-  { "+[trace]", I18N_NOOP("Show information of this trace"), 0 },
-  KCmdLineLastOption // End of options.
-};
-
 int main( int argc, char ** argv )
 {
-  KAboutData aboutData("kcachegrind",
-                       I18N_NOOP("KCachegrind"),
+  KAboutData aboutData("kcachegrind", 0,
+                       ki18n("KCachegrind"),
                        KCACHEGRIND_VERSION,
-                       I18N_NOOP("KDE Frontend for Cachegrind"),
+                       ki18n("KDE Frontend for Cachegrind"),
                        KAboutData::License_GPL,
-                       I18N_NOOP("(C) 2002, 2003, 2004"), 0,
+                       ki18n("(C) 2002, 2003, 2004"), KLocalizedString(),
 		       "http://kcachegrind.sf.net");
-  aboutData.addAuthor("Josef Weidendorfer",
-                      I18N_NOOP("Author/Maintainer"),
+  aboutData.addAuthor(ki18n("Josef Weidendorfer"),
+                      ki18n("Author/Maintainer"),
                       "Josef.Weidendorfer@gmx.de");
 
   KCmdLineArgs::init(argc, argv, &aboutData);
+
+  KCmdLineOptions options;
+  options.add("r <exec>", ki18n("Run <exec> under cachegrind"));
+  options.add("+[trace]", ki18n("Show information of this trace"));
   KCmdLineArgs::addCmdLineOptions( options );
 
   KApplication a;
@@ -73,7 +70,7 @@ int main( int argc, char ** argv )
       for(int i = 0; i < args->count(); i++) {
         t = new TopLevel();
         t->show();
-        t->loadDelayed(QFile::decodeName(args->arg(i)));
+        t->loadDelayed(args->arg(i));
       }
     }
     else {
