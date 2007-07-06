@@ -695,10 +695,10 @@ void TopLevel::createMiscActions()
   _paUp->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Up) );
   connect( _paUp, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserUp() ) );
   actionCollection()->addAction( "go_up", _paUp );
-  connect( _paUp->popupMenu(), SIGNAL( aboutToShow() ),
-           this, SLOT( upAboutToShow() ) );
-  connect( _paUp->popupMenu(), SIGNAL( activated( int ) ),
-           this, SLOT( upActivated( int ) ) );
+  connect( _paUp->menu(), SIGNAL( aboutToShow() ),
+	    this, SLOT( upAboutToShow() ) );
+  connect( _paUp->menu(), SIGNAL( triggered( QAction* ) ),
+	    this, SLOT( upTriggered( QAction* ) ) );
   hint = i18n("<b>Go Up</b>"
               "<p>Go to last selected caller of current function. "
               "If no caller was visited, use that with highest cost.</p>");
@@ -710,10 +710,10 @@ void TopLevel::createMiscActions()
   _paBack->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Left) );
   connect( _paBack, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserBack() ) );
   actionCollection()->addAction( "go_back", _paBack );
-  connect( _paBack->popupMenu(), SIGNAL( aboutToShow() ),
+  connect( _paBack->menu(), SIGNAL( aboutToShow() ),
            this, SLOT( backAboutToShow() ) );
-  connect( _paBack->popupMenu(), SIGNAL( activated( int ) ),
-           this, SLOT( backActivated( int ) ) );
+  connect( _paBack->menu(), SIGNAL( triggered( QAction* ) ),
+           this, SLOT( backTriggered( QAction* ) ) );
   hint = i18n("Go back in function selection history");
   _paBack->setToolTip( hint );
   _paBack->setWhatsThis( hint );
@@ -722,10 +722,10 @@ void TopLevel::createMiscActions()
   _paForward->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Right) );
   connect( _paForward, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserForward() ) );
   actionCollection()->addAction( "go_forward", _paForward );
-  connect( _paForward->popupMenu(), SIGNAL( aboutToShow() ),
+  connect( _paForward->menu(), SIGNAL( aboutToShow() ),
            this, SLOT( forwardAboutToShow() ) );
-  connect( _paForward->popupMenu(), SIGNAL( activated( int ) ),
-           this, SLOT( forwardActivated( int ) ) );
+  connect( _paForward->menu(), SIGNAL( triggered( QAction* ) ),
+           this, SLOT( forwardTriggered( QAction* ) ) );
   hint = i18n("Go forward in function selection history");
   _paForward->setToolTip( hint );
   _paForward->setWhatsThis( hint );
@@ -2160,21 +2160,22 @@ void TopLevel::forceTraceReload()
 
 void TopLevel::forwardAboutToShow()
 {
-  KMenu *popup = _paForward->popupMenu();
+  QMenu *popup = _paForward->menu();
 
   popup->clear();
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
   HistoryItem* hi = b ? b->current() : 0;
   TraceFunction* f;
+  QAction* action;
 
   if (!hi) {
-    popup->insertItem(i18n("(No Stack)"));
+    popup->addAction(i18n("(No Stack)"));
     return;
   }
 
   hi = hi->next();
   if (!hi) {
-    popup->insertItem(i18n("(No next function)"));
+    popup->addAction(i18n("(No next function)"));
     return;
   }
 
@@ -2188,7 +2189,9 @@ void TopLevel::forwardAboutToShow()
       name = name.left(Configuration::maxSymbolLength()) + "...";
 
     //qDebug("forward: Adding %s", name.ascii());
-    popup->insertItem(name, count);
+    action = popup->addAction(name);
+    action->setData(count);
+
     hi = hi->next();
     count++;
   }
@@ -2196,21 +2199,22 @@ void TopLevel::forwardAboutToShow()
 
 void TopLevel::backAboutToShow()
 {
-  KMenu *popup = _paBack->popupMenu();
+  QMenu *popup = _paBack->menu();
 
   popup->clear();
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
   HistoryItem* hi = b ? b->current() : 0;
   TraceFunction* f;
+  QAction* action;
 
   if (!hi) {
-    popup->insertItem(i18n("(No Stack)"));
+    popup->addAction(i18n("(No Stack)"));
     return;
   }
 
   hi = hi->last();
   if (!hi) {
-    popup->insertItem(i18n("(No previous function)"));
+    popup->addAction(i18n("(No previous function)"));
     return;
   }
 
@@ -2224,7 +2228,9 @@ void TopLevel::backAboutToShow()
       name = name.left(Configuration::maxSymbolLength()) + "...";
 
     //qDebug("back: Adding %s", name.ascii());
-    popup->insertItem(name, count);
+    action = popup->addAction(name);
+    action->setData(count);
+
     hi = hi->last();
     count++;
   }
@@ -2232,20 +2238,21 @@ void TopLevel::backAboutToShow()
 
 void TopLevel::upAboutToShow()
 {
-  KMenu *popup = _paUp->popupMenu();
+  QMenu *popup = _paUp->menu();
 
   popup->clear();
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
   HistoryItem* hi = b ? b->current() : 0;
   TraceFunction* f = hi ? hi->function() : 0;
+  QAction* action;
 
   if (!f) {
-    popup->insertItem(i18n("(No Stack)"));
+    popup->addAction(i18n("(No Stack)"));
     return;
   }
   f = hi->stack()->caller(f, false);
   if (!f) {
-    popup->insertItem(i18n("(No Function Up)"));
+    popup->addAction(i18n("(No Function Up)"));
     return;
   }
 
@@ -2255,44 +2262,52 @@ void TopLevel::upAboutToShow()
     if ((int)name.length()>Configuration::maxSymbolLength())
       name = name.left(Configuration::maxSymbolLength()) + "...";
 
-    popup->insertItem(name, count);
+    action = popup->addAction(name);
+    action->setData(count);
+
     f = hi->stack()->caller(f, false);
     count++;
   }
 
 }
 
-void TopLevel::forwardActivated(int id)
+void TopLevel::forwardTriggered(QAction* action)
 {
-  //qDebug("forwardActivated: %d", id);
+  int count = action->data().toInt(0);
+  //qDebug("forwardTriggered: %d", count);
+  Q_ASSERT( count>0 );
 
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
   if (!b) return;
 
-  while (id>1) {
+  while (count>1) {
     b->goForward();
-    id--;
+    count--;
   }
   _stackSelection->browserForward();
 }
 
-void TopLevel::backActivated(int id)
+void TopLevel::backTriggered(QAction* action)
 {
-  //qDebug("backActivated: %d", id);
+  int count = action->data().toInt(0);
+  //qDebug("backTriggered: %d", count);
+  Q_ASSERT( count>0 );
 
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
   if (!b) return;
 
-  while (id>1) {
+  while (count>1) {
     b->goBack();
-    id--;
+    count--;
   }
   _stackSelection->browserBack();
 }
 
-void TopLevel::upActivated(int id)
+void TopLevel::upTriggered(QAction* action)
 {
-  //qDebug("upActivated: %d", id);
+  int count = action->data().toInt(0);
+  //qDebug("upTriggered: %d", count);
+  Q_ASSERT( count>0 );
 
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
   HistoryItem* hi = b ? b->current() : 0;
@@ -2300,15 +2315,14 @@ void TopLevel::upActivated(int id)
 
   TraceFunction* f = hi->function();
 
-  while (id>0 && f) {
+  while (count>0 && f) {
     f = hi->stack()->caller(f, false);
-    id--;
+    count--;
   }
 
   //qDebug("upActivated: %s", f ? f->prettyName().ascii() : "??" );
   if (f)
     setFunction(f);
-
 }
 
 void TopLevel::showMessage(const QString& msg, int ms)

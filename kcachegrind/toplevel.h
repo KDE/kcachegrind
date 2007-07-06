@@ -143,11 +143,11 @@ public slots:
   void forceTrace();
   void forceTraceReload();
   void forwardAboutToShow();
+  void forwardTriggered(QAction*);
   void backAboutToShow();
+  void backTriggered(QAction*);
   void upAboutToShow();
-  void forwardActivated(int);
-  void backActivated(int);
-  void upActivated(int);
+  void upTriggered(QAction*);
 
   bool setEventType(TraceEventType*);
   bool setEventType2(TraceEventType*);
