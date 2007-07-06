@@ -436,12 +436,12 @@ void TraceItemView::activated(TraceItemView::Direction d)
       if (_topLevel) _topLevel->setDirectionDelayed(d);
 }
 
-void TraceItemView::addCostMenu(Q3PopupMenu* p, bool withCost2)
+void TraceItemView::addEventTypeMenu(QMenu* p, bool withCost2)
 {
-  if (_topLevel) _topLevel->addCostMenu(p, withCost2);
+  if (_topLevel) _topLevel->addEventTypeMenu(p, withCost2);
 }
 
-void TraceItemView::addGoMenu(Q3PopupMenu* p)
+void TraceItemView::addGoMenu(QMenu* p)
 {
   if (_topLevel) _topLevel->addGoMenu(p);
 }

@@ -198,7 +198,7 @@ void InstrView::context(Q3ListViewItem* i, const QPoint & p, int c)
   }
 
   if ((c == 1) || (c == 2)) {
-    addCostMenu(&popup);
+    addEventTypeMenu(&popup);
     popup.insertSeparator();
   }
   addGoMenu(&popup);

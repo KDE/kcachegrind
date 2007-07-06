@@ -1579,20 +1579,25 @@ void TopLevel::setData(TraceData* data)
   updateStatusBar();
 }
 
-void TopLevel::addCostMenu(Q3PopupMenu* popup, bool withCost2)
+void TopLevel::addEventTypeMenu(QMenu* popup, bool withCost2)
 {
   if (_data) {
-    Q3PopupMenu *popup1 = new Q3PopupMenu(popup);
-    Q3PopupMenu *popup2 = 0;
-    popup1->setCheckable(true);
+    QMenu *popup1, *popup2 = 0;
+    QAction* action;
+
+    popup1 = popup->addMenu(i18n("Primary Event Type"));
+    connect(popup1, SIGNAL(triggered(QAction*)),
+	     this, SLOT(setEventType(QAction*)));
 
     if (withCost2) {
-      popup2 = new Q3PopupMenu(popup);
-      popup2->setCheckable(true);
+      popup2 = popup->addMenu(i18n("Secondary Event Type"));
+      connect(popup2, SIGNAL(triggered(QAction*)),
+	       this, SLOT(setEventType2(QAction*)));
 
       if (_eventType2) {
-	popup2->insertItem(i18n("Hide"),199);
-	popup2->insertSeparator();
+	action = popup2->addAction(i18n("Hide"));
+	action->setData(199);
+	popup2->addSeparator();
       }
     }
 
@@ -1600,40 +1605,49 @@ void TopLevel::addCostMenu(Q3PopupMenu* popup, bool withCost2)
     TraceEventType* ct;
     for (int i=0;i<m->realCount();i++) {
       ct = m->realType(i);
-      popup1->insertItem(ct->longName(), 100+i);
-      if (_eventType == ct) popup1->setItemChecked(100+i,true);
+
+      action = popup1->addAction(ct->longName());
+      action->setCheckable(true);
+      action->setData(100+i);
+      if (_eventType == ct) action->setChecked(true);
+
       if (popup2) {
-	popup2->insertItem(ct->longName(), 100+i);
-	if (_eventType2 == ct) popup2->setItemChecked(100+i,true);
+	action = popup2->addAction(ct->longName());
+	action->setCheckable(true);
+	action->setData(100+i);
+	if (_eventType2 == ct) action->setChecked(true);
       }
     }
+
     for (int i=0;i<m->derivedCount();i++) {
       ct = m->derivedType(i);
-      popup1->insertItem(ct->longName(), 200+i);
-      if (_eventType == ct) popup1->setItemChecked(200+i,true);
+
+      action = popup1->addAction(ct->longName());
+      action->setCheckable(true);
+      action->setData(200+i);
+      if (_eventType == ct) action->setChecked(true);
+
       if (popup2) {
-	popup2->insertItem(ct->longName(), 200+i);
-	if (_eventType2 == ct) popup2->setItemChecked(200+i,true);
+	action = popup2->addAction(ct->longName());
+	action->setCheckable(true);
+	action->setData(200+i);
+	if (_eventType2 == ct) action->setChecked(true);
       }
     }
-    popup->insertItem(i18n("Primary Event Type"), popup1);
-    connect(popup1,SIGNAL(activated(int)),this,SLOT(setEventType(int)));
-    if (popup2) {
-      popup->insertItem(i18n("Secondary Event Type"), popup2);
-      connect(popup2,SIGNAL(activated(int)),this,SLOT(setEventType2(int)));
-    }
   }
+
   if (_showPercentage)
-    popup->insertItem(i18n("Show Absolute Cost"),
+    popup->addAction(i18n("Show Absolute Cost"),
 		      this, SLOT(setAbsoluteCost()));
   else
-    popup->insertItem(i18n("Show Relative Cost"),
+    popup->addAction(i18n("Show Relative Cost"),
 		      this, SLOT(setRelativeCost()));
 }
 
-bool TopLevel::setEventType(int id)
+bool TopLevel::setEventType(QAction* action)
 {
   if (!_data) return false;
+  int id = action->data().toInt(0);
 
   TraceEventTypeMapping* m = _data->mapping();
   TraceEventType* ct=0;
@@ -1643,9 +1657,10 @@ bool TopLevel::setEventType(int id)
   return ct ? setEventType(ct) : false;
 }
 
-bool TopLevel::setEventType2(int id)
+bool TopLevel::setEventType2(QAction* action)
 {
   if (!_data) return false;
+  int id = action->data().toInt(0);
 
   TraceEventTypeMapping* m = _data->mapping();
   TraceEventType* ct=0;
@@ -1655,11 +1670,11 @@ bool TopLevel::setEventType2(int id)
   return setEventType2(ct);
 }
 
-void TopLevel::addGoMenu(Q3PopupMenu* popup)
+void TopLevel::addGoMenu(QMenu* popup)
 {
-  popup->insertItem(i18n("Go Back"), this, SLOT(goBack()));
-  popup->insertItem(i18n("Go Forward"), this, SLOT(goForward()));
-  popup->insertItem(i18n("Go Up"), this, SLOT(goUp()));
+  popup->addAction(i18n("Go Back"), this, SLOT(goBack()));
+  popup->addAction(i18n("Go Forward"), this, SLOT(goForward()));
+  popup->addAction(i18n("Go Up"), this, SLOT(goUp()));
 }
 
 void TopLevel::goBack()

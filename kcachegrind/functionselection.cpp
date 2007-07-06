@@ -179,7 +179,7 @@ void FunctionSelection::functionContext(Q3ListViewItem* i,
   }
 
   if ((c == 0) || (c == 1)) {
-    addCostMenu(&popup,false);
+    addEventTypeMenu(&popup,false);
     popup.insertSeparator();
   }
   addGroupMenu(&popup);  
@@ -206,7 +206,7 @@ void FunctionSelection::groupContext(Q3ListViewItem* /*i*/,
   }
 #endif
   if (c == 0) {
-    addCostMenu(&popup,false);
+    addEventTypeMenu(&popup,false);
     popup.insertSeparator();
   }
   addGroupMenu(&popup);  

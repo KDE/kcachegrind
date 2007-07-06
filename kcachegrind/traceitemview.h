@@ -24,11 +24,9 @@
 #define TRACEITEMVIEW_H
 
 #include "tracedata.h"
-//Added by qt3to4:
-#include <Q3PopupMenu>
 
 class QWidget;
-class Q3PopupMenu;
+class QMenu;
 
 class KConfig;
 class KConfigGroup;
@@ -162,8 +160,8 @@ public:
   virtual TraceItem* canShow(TraceItem* i) { return i; }
 
   /* convenience functions for often used context menu items */
-  void addCostMenu(Q3PopupMenu*,bool withCost2 = true);
-  void addGoMenu(Q3PopupMenu*);
+  void addEventTypeMenu(QMenu*,bool withCost2 = true);
+  void addGoMenu(QMenu*);
 
 protected:
   // helpers to call selected()/activated() of parentView

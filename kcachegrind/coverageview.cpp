@@ -168,7 +168,7 @@ void CoverageView::context(Q3ListViewItem* i, const QPoint & p, int c)
   }
 
    if ((c == 0) || (!_showCallers && c == 1)) {
-    addCostMenu(&popup, false);
+    addEventTypeMenu(&popup, false);
     popup.insertSeparator();
   }
   addGoMenu(&popup); 

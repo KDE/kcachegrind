@@ -24,22 +24,20 @@
 #define TOPLEVEL_H
 
 #include <qdatetime.h>
-//Added by qt3to4:
 #include <QLabel>
-#include <Q3PopupMenu>
+#include <Q3DockWindow>
 
 #include <kxmlguiwindow.h>
 
 #include "traceitemview.h"
 #include "tracedata.h"
-#include <Q3DockWindow>
 
 class MultiView;
 class QLineEdit;
 class QDockWidget;
 class QLabel;
 class QProgressBar;
-class Q3PopupMenu;
+class QMenu;
 
 class KUrl;
 class KSelectAction;
@@ -84,8 +82,8 @@ public:
   bool showCycles() const { return _showCycles; }
 
   /* convenience functions for often used context menu items */
-  void addCostMenu(Q3PopupMenu*,bool);
-  void addGoMenu(Q3PopupMenu*);
+  void addEventTypeMenu(QMenu*,bool);
+  void addGoMenu(QMenu*);
 
 public slots:
   void newTrace();
@@ -153,8 +151,8 @@ public slots:
   bool setEventType2(TraceEventType*);
   bool setEventType(QString);
   bool setEventType2(QString);
-  bool setEventType(int);
-  bool setEventType2(int);
+  bool setEventType(QAction*);
+  bool setEventType2(QAction*);
   bool setGroupType(TraceItem::CostType);
   bool setGroupType(QString);
   bool setGroup(TraceCostItem*);

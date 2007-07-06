@@ -132,7 +132,7 @@ void CallView::context(Q3ListViewItem* i, const QPoint & p, int col)
   }
 
   if ((col == 0) || (col == 1)) {
-    addCostMenu(&popup);
+    addEventTypeMenu(&popup);
     popup.insertSeparator();
   }
   addGoMenu(&popup);
