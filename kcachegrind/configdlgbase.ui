@@ -448,7 +448,7 @@
                                     </size>
                                 </property>
                             </spacer>
-                            <widget class="QListView" row="0" column="1">
+                            <widget class="Q3ListView" row="0" column="1">
                                 <column>
                                     <property name="text">
                                         <string>Object / Related Source Base</string>
