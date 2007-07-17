@@ -43,6 +43,7 @@
 #include <Q3PtrList>
 #include <QPixmap>
 #include <Q3PointArray>
+#include <QDesktopWidget>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -1780,8 +1781,8 @@ void CallGraphView::showText(QString s)
   clear();
   _renderTimer.stop();
 
-  _canvas = new Q3Canvas(/*QApplication::desktop()->width(),
-			   QApplication::desktop()->height()*/);
+  _canvas = new Q3Canvas(QApplication::desktop()->width(),
+			   QApplication::desktop()->height());
 
   Q3CanvasText* t = new Q3CanvasText(s, _canvas);
   t->move(5, 5);
@@ -1950,15 +1951,11 @@ void CallGraphView::dotExited()
 	// We use as minimum canvas size the desktop size.
 	// Otherwise, the canvas would have to be resized on widget resize.
 	_xMargin = 50;
-#if 0
 	if (w < QApplication::desktop()->width())
 	    _xMargin += (QApplication::desktop()->width()-w)/2;
-#endif
 	_yMargin = 50;
-#if 0
 	if (h < QApplication::desktop()->height())
 	    _yMargin += (QApplication::desktop()->height()-h)/2;
-#endif
         _canvas = new Q3Canvas(int(w+2*_xMargin), int(h+2*_yMargin));
 
 #if DEBUG_GRAPH
