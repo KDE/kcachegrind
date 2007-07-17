@@ -388,21 +388,22 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       w = 6*(sv->arrowLevels() - end) + 10;
 
       QPolygon a;
-      a.putPoints(0, 7, x, y+h,
-		  x,y, x+w-8, y, x+w-8, y-2,
-		  x+w, yy,
-		  x+w-8, y+h+2, x+w-8, y+h);
+      a.putPoints(0, 8, x,y+h,
+		  x,y, x+w-8,y, x+w-8,y-2,
+		  x+w,yy,
+		  x+w-8,y+h+2, x+w-8,y+h,
+		  x,y+h);
       p->setBrush(c);
       p->drawConvexPolygon(a);
 
       p->setPen(c.light());
-      p->drawPolyline(a, 0, 5);
+      p->drawPolyline(a.constData(), 5);
       p->setPen(c.dark());
-      p->drawPolyline(a, 4, 2);
+      p->drawPolyline(a.constData() + 4, 2);
       p->setPen(c.light());
-      p->drawPolyline(a, 5, 2);
+      p->drawPolyline(a.constData() + 5, 2);
       p->setPen(c.dark());
-      p->drawPolyline(a, 6, 2);
+      p->drawPolyline(a.constData() + 6, 2);
   }
 
   // draw inner vertical line for start/stop
