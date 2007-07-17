@@ -350,33 +350,33 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
 
   switch(r) {
   case 20:
-    setFieldVisible(0, !vpopup.isItemChecked(20));
+    setFieldVisible(0, !fieldVisible(0));
     break;
 
   case 21:
-    setFieldVisible(1, !vpopup.isItemChecked(21));
+    setFieldVisible(1, !fieldVisible(1));
     break;
 
   case 22:
-    setFieldVisible(2, !vpopup.isItemChecked(22));
+    setFieldVisible(2, !fieldVisible(2));
     break;
 
   case 23:
-    setFieldVisible(3, !vpopup.isItemChecked(23));
+    setFieldVisible(3, !fieldVisible(3));
     break;
 
   case 24:
-    setFieldForced(0, !vpopup.isItemChecked(24));
-    setFieldForced(1, !vpopup.isItemChecked(24));
-    setFieldForced(2, !vpopup.isItemChecked(24));
-    setFieldForced(3, !vpopup.isItemChecked(24));
+    setFieldForced(0, !fieldForced(0));
+    setFieldForced(1, !fieldForced(0));
+    setFieldForced(2, !fieldForced(0));
+    setFieldForced(3, !fieldForced(0));
     break;
 
-  case 25: setAllowRotation(!vpopup.isItemChecked(25)); break;
-  case 26: setShadingEnabled(!vpopup.isItemChecked(26)); break;
+  case 25: setAllowRotation(!allowRotation()); break;
+  case 26: setShadingEnabled(!isShadingEnabled()); break;
 
   case 40:
-    setSkipIncorrectBorder(!vpopup.isItemChecked(40));
+    setSkipIncorrectBorder(!skipIncorrectBorder());
     break;
 
   case 42: setBorderWidth(0); break;
