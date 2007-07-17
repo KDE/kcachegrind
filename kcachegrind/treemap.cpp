@@ -280,7 +280,10 @@ void RectDrawing::drawBack(QPainter* p, DrawParams* dp)
   }
   if (r.width()<=0 || r.height()<=0) return;
 
-  if (dp->shaded()) {
+  if (dp->shaded() && (r.width()>0 && r.height()>0)) {
+    // adjustment for drawRect semantic in Qt4: decrement height/width
+    r.setRect(r.x(), r.y(), r.width()-1, r.height()-1);
+
     // some shading
     bool goDark = qGray(normal.rgb())>128;
     int rBase, gBase, bBase;
@@ -307,47 +310,45 @@ void RectDrawing::drawBack(QPainter* p, DrawParams* dp)
     int bDiff = goDark ? -bBase/d : (255-bBase)/d;
 
     QColor shadeColor;
-    while (factor<.95) {
+    while (factor<.95 && (r.width()>=0 && r.height()>=0)) {
       shadeColor.setRgb((int)(rBase+factor*rDiff+.5),
                         (int)(gBase+factor*gDiff+.5),
                         (int)(bBase+factor*bDiff+.5));
       p->setPen(shadeColor);
       p->drawRect(r);
       r.setRect(r.x()+1, r.y()+1, r.width()-2, r.height()-2);
-      if (r.width()<=0 || r.height()<=0) return;
       factor = 1.0 - ((1.0 - factor) * forth);
     }
 
     // and back (1st half)
-    while (factor>toBack2) {
+    while (factor>toBack2 && (r.width()>=0 && r.height()>=0)) {
       shadeColor.setRgb((int)(rBase+factor*rDiff+.5),
                         (int)(gBase+factor*gDiff+.5),
                         (int)(bBase+factor*bDiff+.5));
       p->setPen(shadeColor);
       p->drawRect(r);
       r.setRect(r.x()+1, r.y()+1, r.width()-2, r.height()-2);
-      if (r.width()<=0 || r.height()<=0) return;
       factor = 1.0 - ((1.0 - factor) / back1);
     }
 
     // and back (2nd half)
-    while ( factor>.01) {
+    while (factor>.01 && (r.width()>=0 && r.height()>=0)) {
       shadeColor.setRgb((int)(rBase+factor*rDiff+.5),
                         (int)(gBase+factor*gDiff+.5),
                         (int)(bBase+factor*bDiff+.5));
       p->setPen(shadeColor);
       p->drawRect(r);
       r.setRect(r.x()+1, r.y()+1, r.width()-2, r.height()-2);
-      if (r.width()<=0 || r.height()<=0) return;
-
       factor = factor * back2;
     }
+
+    normal = shadeColor;
+    // for filling, width and height has to be incremented again
+    r.setRect(r.x(), r.y(), r.width()+1, r.height()+1);
   }
 
   // fill inside
-  p->setPen(Qt::NoPen);
-  p->setBrush(normal);
-  p->drawRect(r);
+  p->fillRect(r, normal);
 }
 
 
@@ -2158,7 +2159,7 @@ void TreeMapWidget::drawTreeMap()
     QPainter p(&_pixmap);
     if (_needsRefresh == _base) {
       p.setPen(Qt::black);
-      p.drawRect(QRect(2, 2, QWidget::width()-4, QWidget::height()-4));
+      p.drawRect(QRect(2, 2, QWidget::width()-5, QWidget::height()-5));
       _base->setItemRect(QRect(3, 3, QWidget::width()-6, QWidget::height()-6));
     }
     else {
@@ -2574,7 +2575,7 @@ void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, QRect& r)
 {
   p->setBrush(Qt::Dense4Pattern);
   p->setPen(Qt::NoPen);
-  p->drawRect(r);
+  p->drawRect(QRect(r.x(), r.y(), r.width()-1, r.height()-1));
   i->addFreeRect(r);
 }
 
@@ -2589,7 +2590,7 @@ void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, QRect& r,
 
   p->setBrush(Qt::Dense4Pattern);
   p->setPen(Qt::NoPen);
-  p->drawRect(r);
+  p->drawRect(QRect(r.x(), r.y(), r.width()-1, r.height()-1));
   i->addFreeRect(r);
 
   // reset rects

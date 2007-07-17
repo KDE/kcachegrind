@@ -997,10 +997,11 @@ void PannerView::drawContents(QPainter * p, int clipx, int clipy, int clipw, int
   p->restore();
   if (_zoomRect.isValid()) {
     p->setPen(QColor(Qt::red).dark());
-    p->drawRect(_zoomRect);
+    p->drawRect(QRect(_zoomRect.x(), _zoomRect.y(),
+		      _zoomRect.width()-1, _zoomRect.height()-1));
     p->setPen(Qt::red);
     p->drawRect(QRect(_zoomRect.x()+1, _zoomRect.y()+1,
-		      _zoomRect.width()-2, _zoomRect.height()-2));
+		      _zoomRect.width()-3, _zoomRect.height()-3));
   }
 }
 
@@ -1110,7 +1111,8 @@ void CanvasNode::drawShape(QPainter& p)
 
   // draw afterwards to always get a frame even when zoomed
   p.setPen(StoredDrawParams::selected() ? Qt::red : Qt::black);
-  p.drawRect(origRect);
+  p.drawRect(QRect(origRect.x(), origRect.y(),
+		   origRect.width()-1, origRect.height()-1));
 
   d.setRect(r);
   d.drawField(&p, 0, this);

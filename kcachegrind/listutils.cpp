@@ -90,12 +90,12 @@ QPixmap percentagePixmap(int w, int h, int percent, QColor c, bool framed)
   QPainter p(&pix);
   p.setPen(Qt::black);
   if (framed)
-    p.drawRect(0, 0, w, h);
+    p.drawRect(0, 0, w-1, h-1);
 
   // inside
   p.setPen(Qt::NoPen);
   p.setBrush(c);
-  p.drawRect(ix1, iy1, filled-1,ih);
+  p.drawRect(ix1, iy1, filled-1,ih-1);
 
   // last right pix column
   int lastY = ih-(filled*ih - iw*ih*percent/100);
@@ -154,7 +154,7 @@ QPixmap partitionPixmap(int w, int h,
   QPainter p(&pix);
   p.setPen(Qt::black);
   if (framed)
-    p.drawRect(0, 0, w, h);
+    p.drawRect(0, 0, w-1, h-1);
 
   //qDebug("Sum %f, dw %d", sum,dw);
 
@@ -181,7 +181,7 @@ QPixmap partitionPixmap(int w, int h,
     // inside
     p.setPen(Qt::NoPen);
     p.setBrush(c);
-    p.drawRect(x1, iy1, x2-x1+1, ih);
+    p.drawRect(x1, iy1, x2-x1, ih-1);
 
     // lighter top border
     p.setPen(c.light());
