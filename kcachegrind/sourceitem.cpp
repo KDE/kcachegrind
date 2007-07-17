@@ -292,10 +292,13 @@ void SourceItem::paintCell( QPainter *p, const QColorGroup &cg,
 {
   QColorGroup _cg( cg );
 
+  QColor color;
   if ( !_inside || ((column==1) || (column==2)))
-      _cg.setColor( QPalette::Base, cg.color( QPalette::Button ) );
+    color = cg.color( QPalette::Button );
   else if ((_lineCall || _lineJump) && column>2)
-   _cg.setColor( QPalette::Base, cg.color( QPalette::Mid ) );
+    color = cg.color( QPalette::Midlight );
+  if (color.isValid())
+    _cg.setColor( listView()->backgroundRole(), color);
 
   if (column == 3)
       paintArrows(p, _cg, width);
@@ -314,14 +317,11 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
   if ( !lv ) return;
   SourceView* sv = (SourceView*) lv;
 
-  const Qt::BackgroundMode bgmode = lv->viewport()->backgroundMode();
-#if 0
-  const QPalette::ColorRole crole;
-      // = QPalette::backgroundRoleFromMode( bgmode );
-  if ( cg.brush( crole ) != lv->colorGroup().brush( crole ) )
-    p->fillRect( 0, 0, width, height(), cg.brush( crole ) );
+  QPalette pal = cg;
+  const QPalette::ColorRole crole = lv->backgroundRole();
+  if (pal.brush(crole) != lv->palette().brush(crole))
+    p->fillRect(0, 0, width, height(), pal.brush(crole));
   else
-#endif
     sv->paintEmptyArea( p, QRect( 0, 0, width, height() ) );
 
   if ( isSelected() && lv->allColumnsShowFocus() )
