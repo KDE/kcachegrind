@@ -147,7 +147,7 @@ void CallItem::updateCost()
 	QString icon = "edit-undo";
 	KIconLoader* loader = KIconLoader::global();
 	p= loader->loadIcon(icon, K3Icon::Small, 0,
-			    K3Icon::DefaultState, 0, true);
+			    K3Icon::DefaultState, QStringList(), 0, true);
     }
     setPixmap(2, p);
 }

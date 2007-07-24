@@ -1163,7 +1163,7 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce,
 	QString icon = "edit-undo";
 	KIconLoader* loader = KIconLoader::global();
 	QPixmap p= loader->loadIcon(icon, K3Icon::Small, 0,
-				      K3Icon::DefaultState, 0, true);
+				      K3Icon::DefaultState, QStringList(), 0, true);
 	setPixmap(0, p);
     }
 }
