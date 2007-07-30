@@ -371,7 +371,9 @@ void InstrView::setColumnWidths()
 void InstrView::refresh()
 {
     _arrowLevels = 0;
-    _lastHexCodeWidth = 50;
+
+    // reset to automatic sizing to get column width
+    setColumnWidthMode(4, QListView::Maximum);
 
     clear();
     setColumnWidth(0, 20);
