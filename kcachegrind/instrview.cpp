@@ -89,7 +89,7 @@ static bool parseLine(const char* buf, Addr& addr,
 	pos += 3;
     }
     if (pos <= start) return false;
-    code = QString::fromAscii(buf + pos, pos - start - 1);
+    code = QString::fromAscii(buf + start, pos - start - 1);
 
     // skip whitespace
     while(buf[pos]==' ' || buf[pos]=='\t') pos++;
@@ -97,7 +97,7 @@ static bool parseLine(const char* buf, Addr& addr,
     // check for mnemonic
     start = pos;
     while(buf[pos] && buf[pos]!=' ' && buf[pos]!='\t') pos++;
-    mnemonic = QString::fromAscii(buf+pos, pos - start);
+    mnemonic = QString::fromAscii(buf + start, pos - start);
 
     // skip whitespace
     while(buf[pos]==' '|| buf[pos]=='\t') pos++;
