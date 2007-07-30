@@ -20,6 +20,7 @@
  * Instruction View
  */
 
+#include <assert.h>
 #include <qfile.h>
 #include <qregexp.h>
 
@@ -54,51 +55,69 @@ static Addr parseAddr(char* buf)
     return addr;
 }
 
-
-static bool parseLine(char* buf, Addr& addr,
-                      uint& pos1, uint& pos2, uint& pos3)
+/**
+ * Parses a line from objdump assembly output, returning false for
+ * a line without an assembly instruction. Otherwise, it sets the
+ * output parameters addr, code, mnemonic, operands.
+ */
+static bool parseLine(const char* buf, Addr& addr,
+		      QString& code, QString& mnemonic, QString& operands)
 {
+    uint pos, start;
+
     // check for instruction line: <space>* <hex address> ":" <space>*
 
-    pos1 = 0;
-    while(buf[pos1]==' ' || buf[pos1]=='\t') pos1++;
+    pos = 0;
+    while(buf[pos]==' ' || buf[pos]=='\t') pos++;
 
-    int digits = addr.set(buf + pos1);
-    pos1 += digits;
-    if ((digits==0) || (buf[pos1] != ':')) return false;
+    int digits = addr.set(buf + pos);
+    pos += digits;
+    if ((digits==0) || (buf[pos] != ':')) return false;
 
     // further parsing of objdump output...
-    pos1++;
-    while(buf[pos1]==' ' || buf[pos1]=='\t') pos1++;
+    pos++;
+    while(buf[pos]==' ' || buf[pos]=='\t') pos++;
 
-    // skip code, pattern "xx "*
-    pos2 = pos1;
+    // check for hex code, pattern "xx "* (with "x" being a lower case hex digit)
+    start = pos;
     while(1) {
-	if (! ((buf[pos2]>='0' && buf[pos2]<='9') ||
-	       (buf[pos2]>='a' && buf[pos2]<='f')) ) break;
-	if (! ((buf[pos2+1]>='0' && buf[pos2+1]<='9') ||
-	       (buf[pos2+1]>='a' && buf[pos2+1]<='f')) ) break;
-	if (buf[pos2+2] != ' ') break;
-	pos2 += 3;
+	if (! ((buf[pos]>='0' && buf[pos]<='9') ||
+	       (buf[pos]>='a' && buf[pos]<='f')) ) break;
+	if (! ((buf[pos+1]>='0' && buf[pos+1]<='9') ||
+	       (buf[pos+1]>='a' && buf[pos+1]<='f')) ) break;
+	if (buf[pos+2] != ' ') break;
+	pos += 3;
     }
-    buf[pos2-1]=0;
-    while(buf[pos2]==' '|| buf[pos2]=='\t') pos2++;
+    if (pos <= start) return false;
+    code = QString::fromAscii(buf + pos, pos - start - 1);
 
-    // skip mnemonic
-    pos3 = pos2;
-    while(buf[pos3] && buf[pos3]!=' ' && buf[pos3]!='\t') pos3++;
-    if (buf[pos3] != 0) {
-	buf[pos3] = 0;
-	pos3++;
-	while(buf[pos3]==' '|| buf[pos3]=='\t') pos3++;
-    }
+    // skip whitespace
+    while(buf[pos]==' ' || buf[pos]=='\t') pos++;
+
+    // check for mnemonic
+    start = pos;
+    while(buf[pos] && buf[pos]!=' ' && buf[pos]!='\t') pos++;
+    mnemonic = QString::fromAscii(buf+pos, pos - start);
+
+    // skip whitespace
+    while(buf[pos]==' '|| buf[pos]=='\t') pos++;
+
+    // last part are the operands
+    int operandsLen = strlen(buf + pos);
+
+    // ignore a newline at end
+    if ((operandsLen>0) && (buf[pos + operandsLen - 1] == '\n'))
+	operandsLen--;
 
     // maximal 50 chars
-    if (strlen(buf+pos2) > 50)
-	strcpy(buf+pos2+47, "...");
+    if (operandsLen > 50)
+	operands = QString::fromAscii(buf + pos, 47) + QString("...");
+    else
+	operands = QString::fromAscii(buf+pos, operandsLen);
 
-    if (0) qDebug("For 0x%s: Code '%s', Mnc '%s', Args '%s'",
-		  addr.toString().ascii(), buf+pos1, buf+pos2, buf+pos3);
+    if (0) qDebug("For 0x%s: Code '%s', Mnemonic '%s', Operands '%s'",
+		  addr.toString().ascii(), code.ascii(),
+		  mnemonic.ascii(), operands.ascii());
 
     return true;
 }
@@ -710,13 +729,9 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	  (objAddr < nextCostAddr)) {
 	  // next line is objAddr
 
-	  uint pos1, pos2, pos3;
-
-	  // this sets addr
-	  parseLine(buf, addr, pos1, pos2, pos3);
-	  code = QString(buf + pos1);
-	  cmd  = QString(buf + pos2);
-	  args = QString(buf + pos3);
+	  // this sets addr, code, cmd, args
+	  bool isAssemblyInstr = parseLine(buf, addr, code, cmd, args);
+	  assert(isAssemblyInstr && (objAddr == addr));
 
 	  if (costAddr == objAddr) {
 	      currInstr = &(*costIt);
