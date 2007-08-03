@@ -1516,7 +1516,7 @@ TreeMapItem* TreeMapWidget::item(int x, int y) const
   TreeMapItem* i;
 
   if (!rect().contains(x, y)) return 0;
-  if (DEBUG_DRAWING) kDebug(90100) << "item(" << x << "," << y << "):" << endl;
+  if (DEBUG_DRAWING) kDebug(90100) << "item(" << x << "," << y << "):";
 
   while (1) {
     TreeMapItemList* list = p->children();
@@ -1534,7 +1534,7 @@ TreeMapItem* TreeMapWidget::item(int x, int y) const
 
         if (i->itemRect().contains(x, y)) {
 
-	    if (DEBUG_DRAWING) kDebug(90100) << "  .. Got. Index " << idx << endl;
+	    if (DEBUG_DRAWING) kDebug(90100) << "  .. Got. Index " << idx;
 
 	    p->setIndex(idx);
 	    break;
@@ -1738,7 +1738,7 @@ void TreeMapWidget::setCurrent(TreeMapItem* i, bool kbd)
 	if (i) i->redraw();
     }
 
-    //kDebug(90100) << "Current Item " << (i ? qPrintable(i->path()) : "(null)") << endl;
+    //kDebug(90100) << "Current Item " << (i ? qPrintable(i->path()) : "(null)");
 
     emit currentChanged(i, kbd);
 }
@@ -1803,7 +1803,7 @@ TreeMapItem* TreeMapWidget::setTmpRangeSelection(TreeMapItem* i1,
 
 void TreeMapWidget::contextMenuEvent( QContextMenuEvent* e )
 {
-  //kDebug(90100) << "TreeMapWidget::contextMenuEvent" << endl;
+  //kDebug(90100) << "TreeMapWidget::contextMenuEvent";
 
   if ( receivers( SIGNAL(contextMenuRequested(TreeMapItem*, const QPoint &)) ) )
     e->accept();
@@ -1822,7 +1822,7 @@ void TreeMapWidget::contextMenuEvent( QContextMenuEvent* e )
 
 void TreeMapWidget::mousePressEvent( QMouseEvent* e )
 {
-  //kDebug(90100) << "TreeMapWidget::mousePressEvent" << endl;
+  //kDebug(90100) << "TreeMapWidget::mousePressEvent";
 
   _oldCurrent = _current;
 
@@ -1890,7 +1890,7 @@ void TreeMapWidget::mousePressEvent( QMouseEvent* e )
 
 void TreeMapWidget::mouseMoveEvent( QMouseEvent* e )
 {
-  //kDebug(90100) << "TreeMapWidget::mouseMoveEvent" << endl;
+  //kDebug(90100) << "TreeMapWidget::mouseMoveEvent";
 
   if (!_pressed) return;
   TreeMapItem* over = item(e->x(), e->y());
@@ -1933,7 +1933,7 @@ void TreeMapWidget::mouseMoveEvent( QMouseEvent* e )
 
 void TreeMapWidget::mouseReleaseEvent( QMouseEvent* )
 {
-  //kDebug(90100) << "TreeMapWidget::mouseReleaseEvent" << endl;
+  //kDebug(90100) << "TreeMapWidget::mouseReleaseEvent";
 
   if (!_pressed) return;
 
@@ -2145,7 +2145,7 @@ void TreeMapWidget::drawTreeMap()
   if (_needsRefresh) {
 
     if (DEBUG_DRAWING)
-      kDebug(90100) << "Redrawing " << _needsRefresh->path(0).join("/") << endl;
+      kDebug(90100) << "Redrawing " << _needsRefresh->path(0).join("/");
 
     if (_needsRefresh == _base) {
       // redraw whole widget
@@ -2331,7 +2331,7 @@ void TreeMapWidget::drawItems(QPainter* p,
     r = d.remainingRect(item);
 
     if (DEBUG_DRAWING)
-	kDebug(90100) << "-drawItems(" << item->path(0).join("/") << ")" << endl;
+	kDebug(90100) << "-drawItems(" << item->path(0).join("/") << ")";
     return;
   }
 
@@ -2563,7 +2563,7 @@ void TreeMapWidget::drawItems(QPainter* p,
     drawItemArray(p, item, r, user_sum, it, list->count(), goBack);
 
   if (DEBUG_DRAWING)
-      kDebug(90100) << "-drawItems(" << item->path(0).join("/") << ")" << endl;
+      kDebug(90100) << "-drawItems(" << item->path(0).join("/") << ")";
 }
 
 // fills area with a pattern if to small to draw children
@@ -2593,7 +2593,7 @@ void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, QRect& r,
   while (len>0 && it.current()) {
 
       if (DEBUG_DRAWING)
-	  kDebug(90100) << "   Reset Rect " << (*it)->path(0).join("/") << endl;
+	  kDebug(90100) << "   Reset Rect " << (*it)->path(0).join("/");
 
       (*it)->clearItemRect();
       if (goBack) --it; else ++it;
@@ -2686,7 +2686,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
     if (user_sum <= 0) {
 
       if (DEBUG_DRAWING)
-	  kDebug(90100) << "drawItemArray: Reset " << i->path(0).join("/") << endl;
+	  kDebug(90100) << "drawItemArray: Reset " << i->path(0).join("/");
 
       i->clearItemRect();
       if (goBack) --it; else ++it;

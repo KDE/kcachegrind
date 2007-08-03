@@ -1851,7 +1851,7 @@ void CallGraphView::refresh()
     return;
   }
 
-  if (1) kDebug() << "CallGraphView::refresh" << endl;
+  if (1) kDebug() << "CallGraphView::refresh";
 
   _selectedNode = 0;
   _selectedEdge = 0;

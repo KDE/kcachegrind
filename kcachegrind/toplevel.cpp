@@ -1444,7 +1444,7 @@ void TopLevel::setTraceItemDelayed(TraceItem* i)
   _traceItemDelayed = i;
   _lastSender = sender();
 
-  kDebug() << "Selected " << (i ? i->prettyName() : "(none)") << endl;
+  kDebug() << "Selected " << (i ? i->prettyName() : "(none)");
 
 #if TRACE_UPDATES
   qDebug("TopLevel::setTraceItemDelayed(%s), sender %s",
@@ -1777,7 +1777,7 @@ void TopLevel::layoutDuplicate()
 
   updateLayoutActions();
 
-  kDebug() << "TopLevel::layoutDuplicate: count " << _layoutCount << endl;
+  kDebug() << "TopLevel::layoutDuplicate: count " << _layoutCount;
 }
 
 void TopLevel::layoutRemove()

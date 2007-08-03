@@ -250,7 +250,7 @@ bool CachegrindLoader::parsePosition(FixString& line,
 
 #if TRACE_LOADER
       if (newPos.fromAddr == newPos.toAddr)
-	kDebug() << " Got Addr " << newPos.fromAddr.toString() << endl;
+	kDebug() << " Got Addr " << newPos.fromAddr.toString();
       else
 	kDebug() << " Got AddrRange " << newPos.fromAddr.toString()
 		  << ":" << newPos.toAddr.toString() << endl;
@@ -309,7 +309,7 @@ bool CachegrindLoader::parsePosition(FixString& line,
 
 #if TRACE_LOADER
       if (newPos.fromLine == newPos.toLine)
-	kDebug() << " Got Line " << newPos.fromLine << endl;
+	kDebug() << " Got Line " << newPos.fromLine;
       else
 	kDebug() << " Got LineRange " << newPos.fromLine
 		  << ":" << newPos.toLine << endl;
@@ -733,7 +733,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
     kError() << "File doesn't exist\n" << endl;
     return false;
   }
-  kDebug() << "Loading " << _filename << " ..." << endl;
+  kDebug() << "Loading " << _filename << " ...";
   QString statusMsg = i18n("Loading %1", _filename);
   int statusProgress = 0;
   emit updateStatus(statusMsg,statusProgress);
@@ -1287,7 +1287,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 		  << " (line " << targetPos.fromLine << ")" << endl;
 
 	if (nextLineType == BoringJump)
-	  kDebug() << " Boring Jump, count " << jumpsExecuted.pretty() << endl;
+	  kDebug() << " Boring Jump, count " << jumpsExecuted.pretty();
 	else
 	  kDebug() << " Cond. Jump, followed " << jumpsFollowed.pretty()
 		    << ", executed " << jumpsExecuted.pretty() << endl;

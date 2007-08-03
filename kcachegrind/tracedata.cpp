@@ -4473,7 +4473,7 @@ void TraceData::load(const QString& base)
     TracePart* p = addPart( dir.path(), *it );
 
     if (!p) {
-      kDebug() << "Error loading " << *it << endl;
+      kDebug() << "Error loading " << *it;
       continue;
     }
 

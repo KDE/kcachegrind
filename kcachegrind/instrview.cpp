@@ -701,7 +701,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
           if (objAddr != 0) break;
         }
 
-        if (0) kDebug() << "Got ObjAddr: 0x" << objAddr.toString() << endl;
+        if (0) kDebug() << "Got ObjAddr: 0x" << objAddr.toString();
       }
 
       // try to keep objAddr in [costAddr;nextCostAddr]
