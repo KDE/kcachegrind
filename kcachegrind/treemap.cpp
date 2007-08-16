@@ -83,7 +83,7 @@ StoredDrawParams::StoredDrawParams(QColor c,
 QString StoredDrawParams::text(int f) const
 {
   if ((f<0) || (f >= (int)_field.size()))
-    return QString::null;
+    return QString();
 
   return _field[f].text;
 }
@@ -631,7 +631,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
       }
     }
     else
-      remaining = QString::null;
+      remaining.clear();
 
     /* truncate and add ... if needed */
     if (w>width) {
@@ -2963,7 +2963,7 @@ void TreeMapWidget::addSelectionItems(Q3PopupMenu* popup,
 
 void TreeMapWidget::fieldStopActivated(int id)
 {
-  if (id == _fieldStopID) setFieldStop(0, QString::null);
+  if (id == _fieldStopID) setFieldStop(0, QString::null);	//krazy:exclude=nullstrassign for old broken gcc
   else {
     TreeMapItem* i = _menuItem;
     id -= _fieldStopID+1;

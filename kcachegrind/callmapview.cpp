@@ -392,7 +392,7 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   case 56: setMaxDrawingDepth(maxDepth-1); break;
   case 57: setMaxDrawingDepth(maxDepth+1); break;
 
-  case 200: setFieldStop(0, QString::null); break;
+  case 200: setFieldStop(0, QString::null); break;	//krazy:exclude=nullstrassign for old broken gcc
 
   case 60: setMinimalArea(-1); break;
   case 61: setMinimalArea(10); break;
@@ -604,11 +604,11 @@ QString CallMapBaseItem::text(int textNo) const
     return _f->prettyName();
   }
 
-  if (!_f) return QString::null;
+  if (!_f) return QString();
 
   if (textNo == 2) return _f->prettyLocation();
   if (textNo == 3) return _f->calledCount().pretty();
-  if (textNo != 1) return QString::null;
+  if (textNo != 1) return QString();
 
   TraceEventType* ct = ((CallMapView*)widget())->eventType();
   TraceCost* t      = ((CallMapView*)widget())->totalCost();
@@ -748,7 +748,7 @@ QString CallMapCallingItem::text(int textNo) const
 
   if (textNo == 2) return _c->called()->prettyLocation();
   if (textNo == 3) return SubCost(_factor * _c->callCount()).pretty();
-  if (textNo != 1) return QString::null;
+  if (textNo != 1) return QString();
 
   TraceEventType* ct;
   ct = ((CallMapView*)widget())->eventType();
@@ -865,7 +865,7 @@ QString CallMapCallerItem::text(int textNo) const
 
   if (textNo == 2) return _c->caller()->prettyLocation();
   if (textNo == 3) return SubCost(_factor * _c->callCount()).pretty();
-  if (textNo != 1) return QString::null;
+  if (textNo != 1) return QString();
 
   TraceEventType* ct;
   ct = ((CallMapView*)widget())->eventType();

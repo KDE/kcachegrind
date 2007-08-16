@@ -828,7 +828,7 @@ void TraceEventType::setRealIndex(int i)
     i=TraceCost::InvalidIndex;
 
   _realIndex = i;
-  _formula = QString::null;
+  _formula = QString();
 }
 
 // checks for existing types and sets coefficients
@@ -4128,7 +4128,7 @@ QString TraceFile::directory()
   while ( (index=_name.indexOf("/", lastIndex)) >=0)
     lastIndex = index+1;
 
-  if (lastIndex==0) return QString::null;
+  if (lastIndex==0) return QString();
 
   // without ending "/"
   return _name.left(lastIndex-1);
@@ -4518,7 +4518,7 @@ void TraceData::load(const QString& base)
   updateFunctionCycles();
 
   // clear loading messages from status bar
-  if (_topLevel) _topLevel->showStatus(QString::null, 0);
+  if (_topLevel) _topLevel->showStatus(QString::null, 0);	//krazy:exclude=nullstrassign for old broken gcc
 }
 
 TracePart* TraceData::addPart(const QString& dir, const QString& name)
@@ -4716,7 +4716,7 @@ TraceClass* TraceData::cls(const QString& fnName, QString& shortName)
     lastIndex = index+2;
   }
 
-  QString clsName = (lastIndex < 3) ? QString::null :
+  QString clsName = (lastIndex < 3) ? QString::null :	//krazy:exclude=nullstrassign for old broken gcc
                     fnName.left(lastIndex-2);
   shortName = fnName.mid(lastIndex);
 
@@ -5034,7 +5034,7 @@ void TraceData::updateFunctionCycles()
   invalidateDynamicCost();
 
 #if 0
-  if (0) if (_topLevel) _topLevel->showStatus(QString::null,0);
+  if (0) if (_topLevel) _topLevel->showStatus(QString::null,0);	//krazy:exclude=nullstrassign for old broken gcc
 #endif
 }
 

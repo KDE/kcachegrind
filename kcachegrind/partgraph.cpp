@@ -230,7 +230,7 @@ QString BasePartItem::text(int textNo) const
     if (_data->parts().count() == 0)
       return i18n("(no part)");
   }
-  return QString::null;
+  return QString();
 }
 
 
@@ -265,7 +265,7 @@ QString PartItem::text(int textNo) const
     return _p->prettyName();
 
   if (textNo != 1)
-    return QString::null;
+    return QString();
 
   TraceEventType* ct;
   PartAreaWidget* w = (PartAreaWidget*)widget();
@@ -428,7 +428,7 @@ QString SubPartItem::text(int textNo) const
   }
 
   if (textNo != 1)
-    return QString::null;
+    return QString();
 
   TraceEventType* ct;
   PartAreaWidget* w = (PartAreaWidget*)widget();

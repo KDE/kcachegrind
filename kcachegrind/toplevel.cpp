@@ -145,7 +145,7 @@ TopLevel::TopLevel()
   setAutoSaveSettings();
 
   // restore current state settings (not configuration options)
-  restoreCurrentState(QString::null);
+  restoreCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 
   // if this is the first toplevel, show tip of day
   if (memberList().count() == 1)
@@ -256,7 +256,7 @@ void TopLevel::saveTraceSettings()
 
   saveCurrentState(key);
   pConfig.writeEntry(QString("Group%1").arg(key),
-                     _group ? _group->name() : QString::null);
+                     _group ? _group->name() : QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 }
 
 /**
@@ -1083,7 +1083,7 @@ void TopLevel::loadTraceDelayed()
   if (_loadTraceDelayed.isEmpty()) return;
 
   loadTrace(_loadTraceDelayed);
-  _loadTraceDelayed = QString::null;
+  _loadTraceDelayed.clear();
 }
 
 
@@ -1694,7 +1694,7 @@ void TopLevel::goUp()
 
 QString TopLevel::traceKey()
 {
-  if (!_data || _data->command().isEmpty()) return QString::null;
+  if (!_data || _data->command().isEmpty()) return QString();
 
   QString name = _data->command();
   QString key;
@@ -1974,7 +1974,7 @@ bool TopLevel::queryExit()
     Configuration::setShowCycles(_showCycles);
     Configuration::saveOptions(KGlobal::config().data());
 
-    saveCurrentState(QString::null);
+    saveCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 
   // save QT dock positions...
 
@@ -2058,7 +2058,7 @@ void TopLevel::slotShowTipOnStart() {
 }
 
 void TopLevel::slotShowTip() {
-  KTipDialog::showTip( this, QString::null, true );
+  KTipDialog::showTip( this, QString::null, true );	//krazy:exclude=nullstrassign for old broken gcc
 }
 
 void TopLevel::dummySlot()

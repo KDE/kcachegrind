@@ -58,7 +58,7 @@ static QString knownFormula(QString name)
   if (name =="L2m") return QString("I2mr + D2mr + D2mw");
   if (name =="CEst") return QString("Ir + 10 L1m + 100 L2m");
 
-  return QString::null;
+  return QString();
 }
 
 static QString knownLongName(QString name)
@@ -79,10 +79,8 @@ static QString knownLongName(QString name)
     if (name =="L2m") return i18n("L2 Miss Sum");
     if (name =="CEst") return i18n("Cycle Estimation");
 
-    return QString::null;
+    return QString();
 }
-
-
 
 
 //
