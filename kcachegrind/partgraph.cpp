@@ -50,7 +50,7 @@ void PartAreaWidget::setData(TraceData* data)
 
   _data = data;
   _function = 0;
-  _hiddenParts = QString();
+  _hiddenParts.clear();
 
   ((BasePartItem*)base())->setData(data);
 }

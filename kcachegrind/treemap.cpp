@@ -631,7 +631,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
       }
     }
     else
-      remaining.clear();
+      remaining = QString();
 
     /* truncate and add ... if needed */
     if (w>width) {

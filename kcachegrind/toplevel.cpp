@@ -1083,7 +1083,7 @@ void TopLevel::loadTraceDelayed()
   if (_loadTraceDelayed.isEmpty()) return;
 
   loadTrace(_loadTraceDelayed);
-  _loadTraceDelayed.clear();
+  _loadTraceDelayed = QString();
 }
 
 
