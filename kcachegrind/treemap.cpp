@@ -2963,7 +2963,7 @@ void TreeMapWidget::addSelectionItems(Q3PopupMenu* popup,
 
 void TreeMapWidget::fieldStopActivated(int id)
 {
-  if (id == _fieldStopID) setFieldStop(0, QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+  if (id == _fieldStopID) setFieldStop(0, QString());
   else {
     TreeMapItem* i = _menuItem;
     id -= _fieldStopID+1;

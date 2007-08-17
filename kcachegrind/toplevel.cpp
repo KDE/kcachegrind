@@ -2058,7 +2058,7 @@ void TopLevel::slotShowTipOnStart() {
 }
 
 void TopLevel::slotShowTip() {
-  KTipDialog::showTip( this, QString::null, true );	//krazy:exclude=nullstrassign for old broken gcc
+  KTipDialog::showTip( this, QString(), true );
 }
 
 void TopLevel::dummySlot()

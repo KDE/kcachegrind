@@ -392,7 +392,7 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   case 56: setMaxDrawingDepth(maxDepth-1); break;
   case 57: setMaxDrawingDepth(maxDepth+1); break;
 
-  case 200: setFieldStop(0, QString::null); break;	//krazy:exclude=nullstrassign for old broken gcc
+  case 200: setFieldStop(0, QString()); break;
 
   case 60: setMinimalArea(-1); break;
   case 61: setMinimalArea(10); break;

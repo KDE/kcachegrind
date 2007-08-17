@@ -4518,7 +4518,7 @@ void TraceData::load(const QString& base)
   updateFunctionCycles();
 
   // clear loading messages from status bar
-  if (_topLevel) _topLevel->showStatus(QString::null, 0);	//krazy:exclude=nullstrassign for old broken gcc
+  if (_topLevel) _topLevel->showStatus(QString(), 0);
 }
 
 TracePart* TraceData::addPart(const QString& dir, const QString& name)
@@ -5034,7 +5034,7 @@ void TraceData::updateFunctionCycles()
   invalidateDynamicCost();
 
 #if 0
-  if (0) if (_topLevel) _topLevel->showStatus(QString::null,0);	//krazy:exclude=nullstrassign for old broken gcc
+  if (0) if (_topLevel) _topLevel->showStatus(QString(), 0);
 #endif
 }
 

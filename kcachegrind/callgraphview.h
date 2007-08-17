@@ -227,11 +227,11 @@ class GraphExporter: public StorableGraphOptions
 public:
   GraphExporter();
   GraphExporter(TraceData*, TraceFunction*, TraceEventType*,
-		TraceItem::CostType, QString filename = QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+		TraceItem::CostType, QString filename = QString());
   virtual ~GraphExporter();
 
   void reset(TraceData*, TraceItem*, TraceEventType*,
-	     TraceItem::CostType, QString filename = QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+	     TraceItem::CostType, QString filename = QString());
 
   QString filename() { return _dotName; }
   int edgeCount() { return _edgeMap.count(); }

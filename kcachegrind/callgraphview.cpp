@@ -428,7 +428,7 @@ GraphExporter::GraphExporter()
     _go = this;
     _tmpFile = 0;
     _item = 0;
-    reset(0, 0, 0, TraceItem::NoCostType, QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+    reset(0, 0, 0, TraceItem::NoCostType, QString());
 }
 
 

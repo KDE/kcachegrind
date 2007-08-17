@@ -187,7 +187,7 @@ void SourceItem::updateCost()
   TraceEventType* ct = _view->eventType();
   _pure = ct ? lineCost->subCost(ct) : SubCost(0);
   if (_pure == 0) {
-    setText(1, QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+    setText(1, QString());
     setPixmap(1, QPixmap());
   }
   else {
@@ -206,7 +206,7 @@ void SourceItem::updateCost()
   TraceEventType* ct2 = _view->eventType2();
   _pure2 = ct2 ? lineCost->subCost(ct2) : SubCost(0);
   if (_pure2 == 0) {
-    setText(2, QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+    setText(2, QString());
     setPixmap(2, QPixmap());
   }
   else {
