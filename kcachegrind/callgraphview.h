@@ -23,11 +23,15 @@
 #ifndef CALLGRAPHVIEW_H
 #define CALLGRAPHVIEW_H
 
-#include <q3canvas.h>
 #include <qwidget.h>
 #include <qmap.h>
 #include <qtimer.h>
-//Added by qt3to4:
+
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QGraphicsRectItem>
+#include <QGraphicsPolygonItem>
+#include <QGraphicsPathItem>
 #include <QPixmap>
 #include <QFocusEvent>
 #include <Q3PointArray>
@@ -49,110 +53,181 @@ class CanvasEdge;
 class GraphEdge;
 class CallGraphView;
 
+
 // sorts according start/end position of a call arc
 // this depends on attached CanvasEdge's !
-class GraphEdgeList: public Q3PtrList<GraphEdge>
+class GraphEdgeList : public Q3PtrList<GraphEdge>
 {
- public:
-    GraphEdgeList();
-    void setSortCallerPos(bool b) { _sortCallerPos = b; }
+public:
+	GraphEdgeList();
+	void setSortCallerPos(bool b)
+	{
+		_sortCallerPos = b;
+	}
 
- protected:
-    int compareItems ( Item item1, Item item2 );
+protected:
+	int compareItems(Item item1, Item item2);
 
- private:
-    bool _sortCallerPos;
+private:
+	bool _sortCallerPos;
 };
-
-
 
 
 // temporary parts of call graph to be shown
 class GraphNode
 {
 public:
-    GraphNode();
+	GraphNode();
 
-  TraceFunction* function() { return _f; }
-  void setFunction(TraceFunction* f) { _f = f; }
+	TraceFunction* function()
+	{
+		return _f;
+	}
+	void setFunction(TraceFunction* f)
+	{
+		_f = f;
+	}
 
-  CanvasNode* canvasNode() { return _cn; }
-  void setCanvasNode(CanvasNode* cn) { _cn = cn; }
+	CanvasNode* canvasNode()
+	{
+		return _cn;
+	}
+	void setCanvasNode(CanvasNode* cn)
+	{
+		_cn = cn;
+	}
 
-  bool isVisible() { return _visible; }
-  void setVisible(bool v) { _visible = v; }
+	bool isVisible()
+	{
+		return _visible;
+	}
+	void setVisible(bool v)
+	{
+		_visible = v;
+	}
 
-  // keyboard navigation
-  TraceCall* visibleCaller();
-  TraceCall* visibleCalling();
-  void setCalling(GraphEdge*);
-  void setCaller(GraphEdge*);
-  TraceFunction* nextVisible();
-  TraceFunction* priorVisible();
-  TraceCall* nextVisibleCaller(GraphEdge*);
-  TraceCall* nextVisibleCalling(GraphEdge*);
-  TraceCall* priorVisibleCaller(GraphEdge*);
-  TraceCall* priorVisibleCalling(GraphEdge*);
+	// keyboard navigation
+	TraceCall* visibleCaller();
+	TraceCall* visibleCalling();
+	void setCalling(GraphEdge*);
+	void setCaller(GraphEdge*);
+	TraceFunction* nextVisible();
+	TraceFunction* priorVisible();
+	TraceCall* nextVisibleCaller(GraphEdge*);
+	TraceCall* nextVisibleCalling(GraphEdge*);
+	TraceCall* priorVisibleCaller(GraphEdge*);
+	TraceCall* priorVisibleCalling(GraphEdge*);
 
-  double self, incl;
-  GraphEdgeList callers, callings;
+	double self, incl;
+	GraphEdgeList callers, callings;
 
- private:
-  TraceFunction* _f;
-  CanvasNode* _cn;
-  bool _visible;
+private:
+	TraceFunction* _f;
+	CanvasNode* _cn;
+	bool _visible;
 
-  // for keyboard navigation
-  int _lastCallerIndex, _lastCallingIndex;
-  bool _lastFromCaller;
+	// for keyboard navigation
+	int _lastCallerIndex, _lastCallingIndex;
+	bool _lastFromCaller;
 };
+
 
 class GraphEdge
 {
 public:
-    GraphEdge();
+	GraphEdge();
 
-  CanvasEdge* canvasEdge() { return _ce; }
-  void setCanvasEdge(CanvasEdge* ce) { _ce = ce; }
+	CanvasEdge* canvasEdge()
+	{
+		return _ce;
+	}
 
-  TraceCall* call() { return _c; }
-  void setCall(TraceCall* c) { _c = c; }
+	void setCanvasEdge(CanvasEdge* ce)
+	{
+		_ce = ce;
+	}
 
-  bool isVisible() { return _visible; }
-  void setVisible(bool v) { _visible = v; }
+	TraceCall* call()
+	{
+		return _c;
+	}
 
-  GraphNode* fromNode() { return _fromNode; }
-  GraphNode* toNode() { return _toNode; }
-  TraceFunction* from() { return _from; }
-  TraceFunction* to() { return _to; }
+	void setCall(TraceCall* c)
+	{
+		_c = c;
+	}
 
-  // has special cases for collapsed edges
-  QString prettyName();
+	bool isVisible()
+	{
+		return _visible;
+	}
 
-  void setCaller(TraceFunction* f) { _from = f; }
-  void setCalling(TraceFunction* f) { _to = f; }
-  void setCallerNode(GraphNode* n) { _fromNode = n; }
-  void setCallingNode(GraphNode* n) { _toNode = n; }
+	void setVisible(bool v)
+	{
+		_visible = v;
+	}
 
-  // keyboard navigation
-  TraceFunction* visibleCaller();
-  TraceFunction* visibleCalling();
-  TraceCall* nextVisible();
-  TraceCall* priorVisible();
+	GraphNode* fromNode()
+	{
+		return _fromNode;
+	}
 
-  double cost, count;
+	GraphNode* toNode()
+	{
+		return _toNode;
+	}
 
- private:
-  // we have a _c *and* _from/_to because for collapsed edges,
-  // only _to or _from will be unequal NULL
-  TraceCall* _c;
-  TraceFunction * _from, * _to;
-  GraphNode *_fromNode, *_toNode;
-  CanvasEdge* _ce;
-  bool _visible;
-  // for keyboard navigation: have we last reached this edge via a caller?
-  bool _lastFromCaller;
+	TraceFunction* from()
+	{
+		return _from;
+	}
 
+	TraceFunction* to()
+	{
+		return _to;
+	}
+
+	// has special cases for collapsed edges
+	QString prettyName();
+
+	void setCaller(TraceFunction* f)
+	{
+		_from = f;
+	}
+
+	void setCalling(TraceFunction* f)
+	{
+		_to = f;
+	}
+
+	void setCallerNode(GraphNode* n)
+	{
+		_fromNode = n;
+	}
+
+	void setCallingNode(GraphNode* n)
+	{
+		_toNode = n;
+	}
+
+	// keyboard navigation
+	TraceFunction* visibleCaller();
+	TraceFunction* visibleCalling();
+	TraceCall* nextVisible();
+	TraceCall* priorVisible();
+
+	double cost, count;
+
+private:
+	// we have a _c *and* _from/_to because for collapsed edges,
+	// only _to or _from will be unequal NULL
+	TraceCall* _c;
+	TraceFunction * _from, * _to;
+	GraphNode *_fromNode, *_toNode;
+	CanvasEdge* _ce;
+	bool _visible;
+	// for keyboard navigation: have we last reached this edge via a caller?
+	bool _lastFromCaller;
 };
 
 
@@ -163,21 +238,21 @@ typedef QMap<QPair<TraceFunction*, TraceFunction*>, GraphEdge> GraphEdgeMap;
 /* Abstract Interface for graph options */
 class GraphOptions
 {
- public:
-    enum Layout { TopDown, LeftRight, Circular};
-	virtual ~GraphOptions(){}
-    virtual double funcLimit() = 0;
-    virtual double callLimit() = 0;
-    virtual int maxCallerDepth() = 0;
-    virtual int maxCallingDepth() = 0;
-    virtual bool showSkipped() = 0;
-    virtual bool expandCycles() = 0;
-    virtual bool clusterGroups() = 0;
-    virtual int detailLevel() = 0;
-    virtual Layout layout() = 0;
+public:
+	enum Layout {TopDown, LeftRight, Circular};
+	virtual ~GraphOptions() {}
+	virtual double funcLimit() = 0;
+	virtual double callLimit() = 0;
+	virtual int maxCallerDepth() = 0;
+	virtual int maxCallingDepth() = 0;
+	virtual bool showSkipped() = 0;
+	virtual bool expandCycles() = 0;
+	virtual bool clusterGroups() = 0;
+	virtual int detailLevel() = 0;
+	virtual Layout layout() = 0;
 
-    static QString layoutString(Layout);
-    static Layout layout(QString);
+	static QString layoutString(Layout);
+	static Layout layout(QString);
 };
 
 /* Graph Options Storage */
@@ -222,94 +297,106 @@ class StorableGraphOptions: public GraphOptions
  * Generates a graph file for "dot"
  * Create an instance and
  */
-class GraphExporter: public StorableGraphOptions
+class GraphExporter : public StorableGraphOptions
 {
 public:
-  GraphExporter();
-  GraphExporter(TraceData*, TraceFunction*, TraceEventType*,
-		TraceItem::CostType, QString filename = QString());
-  virtual ~GraphExporter();
+	GraphExporter();
+	GraphExporter(TraceData*, TraceFunction*, TraceEventType*,
+	              TraceItem::CostType, QString filename = QString());
+	virtual ~GraphExporter();
 
-  void reset(TraceData*, TraceItem*, TraceEventType*,
-	     TraceItem::CostType, QString filename = QString());
+	void reset(TraceData*, TraceItem*, TraceEventType*, TraceItem::CostType,
+			QString filename = QString());
 
-  QString filename() { return _dotName; }
-  int edgeCount() { return _edgeMap.count(); }
-  int nodeCount() { return _nodeMap.count(); }
+	QString filename()
+	{
+		return _dotName;
+	}
 
-  // Set the object from which to get graph options for creation.
-  // Default is this object itself (supply 0 for default)
-  void setGraphOptions(GraphOptions* go = 0);
+	int edgeCount()
+	{
+		return _edgeMap.count();
+	}
 
-  // Create a subgraph with given limits/maxDepths
-  void createGraph();
+	int nodeCount()
+	{
+		return _nodeMap.count();
+	}
 
-  // calls createGraph before dumping of not already created
-  void writeDot();
+	// Set the object from which to get graph options for creation.
+	// Default is this object itself (supply 0 for default)
+	void setGraphOptions(GraphOptions* go = 0);
 
-  // to map back to structures when parsing a layouted graph
+	// Create a subgraph with given limits/maxDepths
+	void createGraph();
 
-  /* <toFunc> is a helper for node() and edge().
-   * Don't use the returned pointer directly, but only with
-   * node() or edge(), because it could be a dangling pointer.
-   */
-  TraceFunction* toFunc(QString);
-  GraphNode* node(TraceFunction*);
-  GraphEdge* edge(TraceFunction*, TraceFunction*);
+	// calls createGraph before dumping of not already created
+	void writeDot();
 
-  /* After CanvasEdges are attached to GraphEdges, we can
-   * sort the incoming and outgoing edges of all nodes
-   * regarding start/end points for keyboard navigation
-   */
-  void sortEdges();
+	// to map back to structures when parsing a layouted graph
+
+	/* <toFunc> is a helper for node() and edge().
+	 * Don't use the returned pointer directly, but only with
+	 * node() or edge(), because it could be a dangling pointer.
+	 */
+	TraceFunction* toFunc(QString);
+	GraphNode* node(TraceFunction*);
+	GraphEdge* edge(TraceFunction*, TraceFunction*);
+
+	/* After CanvasEdges are attached to GraphEdges, we can
+	 * sort the incoming and outgoing edges of all nodes
+	 * regarding start/end points for keyboard navigation
+	 */
+	void sortEdges();
 
 private:
-  void buildGraph(TraceFunction*, int, bool, double);
+	void buildGraph(TraceFunction*, int, bool, double);
 
-  QString _dotName;
-  TraceItem* _item;
-  TraceEventType* _eventType;
-  TraceItem::CostType _groupType;
-  KTemporaryFile* _tmpFile;
-  double _realFuncLimit, _realCallLimit;
-  int _maxDepth;
-  bool _graphCreated;
+	QString _dotName;
+	TraceItem* _item;
+	TraceEventType* _eventType;
+	TraceItem::CostType _groupType;
+	KTemporaryFile* _tmpFile;
+	double _realFuncLimit, _realCallLimit;
+	int _maxDepth;
+	bool _graphCreated;
 
-  GraphOptions* _go;
+	GraphOptions* _go;
 
-  // optional graph attributes
-  bool _useBox;
+	// optional graph attributes
+	bool _useBox;
 
-  // graph parts written to file
-  GraphNodeMap _nodeMap;
-  GraphEdgeMap _edgeMap;
+	// graph parts written to file
+	GraphNodeMap _nodeMap;
+	GraphEdgeMap _edgeMap;
 };
 
+
 /**
- * A panner layed over a QCanvas
+ * A panner layed over a QGraphicsScene
  */
-class PannerView: public Q3CanvasView
+class PanningView : public QGraphicsView
 {
-  Q_OBJECT
+	Q_OBJECT
 
 public:
-  PannerView(QWidget * parent = 0, const char * name = 0);
+	PanningView(QWidget * parent = 0);
 
-  void setZoomRect(QRect r);
+	void setZoomRect(const QRectF& r);
 
 signals:
-  void zoomRectMoved(int dx, int dy);
-  void zoomRectMoveFinished();
+	void zoomRectMoved(qreal dx, qreal dy);
+	void zoomRectMoveFinished();
 
 protected:
-  void contentsMousePressEvent(QMouseEvent*);
-  void contentsMouseMoveEvent(QMouseEvent*);
-  void contentsMouseReleaseEvent(QMouseEvent*);
-  void drawContents(QPainter * p, int clipx, int clipy, int clipw, int cliph);
+	void mousePressEvent(QMouseEvent*);
+	void mouseMoveEvent(QMouseEvent*);
+	void mouseReleaseEvent(QMouseEvent*);
+	void drawForeground(QPainter * p, const QRectF&);
 
-  QRect _zoomRect;
-  bool _movingZoomRect;
-  QPoint _lastPos;
+	QRectF _zoomRect;
+	bool _movingZoomRect;
+	QPointF _lastPos;
 };
 
 
@@ -323,184 +410,249 @@ protected:
  */
 
 enum {
-    CANVAS_NODE = 1122,
-    CANVAS_EDGE, CANVAS_EDGELABEL, CANVAS_EDGEARROW,
-    CANVAS_FRAME
+	CANVAS_NODE = 1122,
+	CANVAS_EDGE, CANVAS_EDGELABEL, CANVAS_EDGEARROW,
+	CANVAS_FRAME
 };
 
-class CanvasNode: public Q3CanvasRectangle, public StoredDrawParams
+class CanvasNode : public QGraphicsRectItem, public StoredDrawParams
 {
 public:
-  CanvasNode(CallGraphView*,GraphNode*, int, int, int, int, Q3Canvas*);
+	CanvasNode(CallGraphView*, GraphNode*, int, int, int, int);
 
-  void updateGroup();
-  void setSelected(bool);
-  void drawShape(QPainter&);
+	void updateGroup();
+	void setSelected(bool);
+	void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
 
-  GraphNode* node() { return _node; }
-  int rtti() const { return CANVAS_NODE; }
+	GraphNode* node()
+	{
+		return _node;
+	}
 
-private:
-  GraphNode* _node;
-  CallGraphView* _view;
-};
-
-class CanvasEdgeLabel: public Q3CanvasRectangle, public StoredDrawParams
-{
-public:
-  CanvasEdgeLabel(CallGraphView*, CanvasEdge*, int, int, int, int, Q3Canvas*);
-
-  void drawShape(QPainter&);
-
-  CanvasEdge* canvasEdge() { return _ce; }
-  int rtti() const { return CANVAS_EDGELABEL; }
+	int type() const
+	{
+		return CANVAS_NODE;
+	}
 
 private:
-  CanvasEdge* _ce;
-  CallGraphView* _view;
-};
-
-class CanvasEdgeArrow: public Q3CanvasPolygon
-{
-public:
-  CanvasEdgeArrow(CanvasEdge*, Q3Canvas*);
-
-  void drawShape(QPainter&);
-
-  CanvasEdge* canvasEdge() { return _ce; }
-  int rtti() const { return CANVAS_EDGEARROW; }
-
-private:
-  CanvasEdge* _ce;
+	GraphNode* _node;
+	CallGraphView* _view;
 };
 
 
-class CanvasEdge: public Q3CanvasSpline
+class CanvasEdgeLabel : public QGraphicsRectItem, public StoredDrawParams
 {
 public:
-  CanvasEdge(GraphEdge*, Q3Canvas*);
+	CanvasEdgeLabel(CallGraphView*, CanvasEdge*, int, int, int, int);
 
-  void setSelected(bool);
-  void drawShape(QPainter&);
-  Q3PointArray areaPoints() const;
+	void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
 
-  CanvasEdgeLabel* label() { return _label; }
-  void setLabel(CanvasEdgeLabel* l) { _label = l; }
-  CanvasEdgeArrow* arrow() { return _arrow; }
-  void setArrow(CanvasEdgeArrow* a) { _arrow = a; }
+	CanvasEdge* canvasEdge()
+	{
+		return _ce;
+	}
 
-  GraphEdge* edge() { return _edge; }
-  int rtti() const { return CANVAS_EDGE; }
+	int type() const
+	{
+		return CANVAS_EDGELABEL;
+	}
 
 private:
-  GraphEdge* _edge;
-  CanvasEdgeLabel* _label;
-  CanvasEdgeArrow* _arrow;
+	CanvasEdge* _ce;
+	CallGraphView* _view;
 };
 
 
-class CanvasFrame: public Q3CanvasRectangle
+class CanvasEdgeArrow : public QGraphicsPolygonItem
 {
 public:
-  CanvasFrame( CanvasNode*, Q3Canvas *canvas );
-  int rtti () const { return CANVAS_FRAME; }
-  bool hit( const QPoint&) const { return false; }
-protected:
-    void drawShape( QPainter & );
+	CanvasEdgeArrow(CanvasEdge*);
+
+	void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
+
+	CanvasEdge* canvasEdge()
+	{
+		return _ce;
+	}
+
+	int type() const
+	{
+		return CANVAS_EDGEARROW;
+	}
+
 private:
-    static QPixmap* _p;
+	CanvasEdge* _ce;
+};
+
+
+class CanvasEdge : public QGraphicsPathItem
+{
+public:
+	CanvasEdge(GraphEdge*);
+
+	void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
+
+	void setSelected(bool);
+
+	CanvasEdgeLabel* label()
+	{
+		return _label;
+	}
+
+	void setLabel(CanvasEdgeLabel* l)
+	{
+		_label = l;
+	}
+
+	CanvasEdgeArrow* arrow()
+	{
+		return _arrow;
+	}
+
+	void setArrow(CanvasEdgeArrow* a)
+	{
+		_arrow = a;
+	}
+
+	const Q3PointArray& controlPoints()
+	{
+		return _points;
+	}
+
+	void setControlPoints(const Q3PointArray& a);
+
+	GraphEdge* edge()
+	{
+		return _edge;
+	}
+
+	int type() const
+	{
+		return CANVAS_EDGE;
+	}
+
+private:
+	GraphEdge* _edge;
+	CanvasEdgeLabel* _label;
+	CanvasEdgeArrow* _arrow;
+	Q3PointArray _points;
+};
+
+
+class CanvasFrame : public QGraphicsRectItem
+{
+public:
+	CanvasFrame(CanvasNode*);
+
+	int type() const
+	{
+		return CANVAS_FRAME;
+	}
+
+	bool hit(const QPoint&) const
+	{
+		return false;
+	}
+
+	void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
+
+private:
+	static QPixmap* _p;
 };
 
 
 class CallGraphTip;
 
 /**
- * A CanvasView showing a part of the call graph
+ * A QGraphicsView showing a part of the call graph
  * and another zoomed out CanvasView in a border acting as
  * a panner to select to visible part (only if needed)
  */
-class CallGraphView: public Q3CanvasView,  public TraceItemView,
-		     public StorableGraphOptions
+class CallGraphView : public QGraphicsView, public TraceItemView,
+    public StorableGraphOptions
 {
- Q_OBJECT
+	Q_OBJECT
 
 public:
- enum ZoomPosition { TopLeft, TopRight, BottomLeft, BottomRight, Auto };
+	enum ZoomPosition {TopLeft, TopRight, BottomLeft, BottomRight, Auto};
 
-  CallGraphView(TraceItemView* parentView,
-                QWidget* parent=0, const char* name=0);
-  ~CallGraphView();
+	CallGraphView(TraceItemView* parentView, QWidget* parent=0,
+	        const char* name = 0);
+	~CallGraphView();
 
-  void readViewConfig(KConfig*, QString prefix, QString postfix, bool);
-  void saveViewConfig(KConfig*, QString prefix, QString postfix, bool);
+	void readViewConfig(KConfig*, QString prefix, QString postfix, bool);
+	void saveViewConfig(KConfig*, QString prefix, QString postfix, bool);
 
-  QWidget* widget() { return this; }
-  QString whatsThis() const;
+	QWidget* widget()
+	{
+		return this;
+	}
 
-  ZoomPosition zoomPos() const { return _zoomPosition; }
-  static ZoomPosition zoomPos(QString);
-  static QString zoomPosString(ZoomPosition);
+	QString whatsThis() const;
+
+	ZoomPosition zoomPos() const
+	{
+		return _zoomPosition;
+	}
+
+	static ZoomPosition zoomPos(QString);
+	static QString zoomPosString(ZoomPosition);
 
 public slots:
-  void contentsMovingSlot(int,int);
-  void zoomRectMoved(int,int);
-  void zoomRectMoveFinished();
+	void zoomRectMoved(qreal, qreal);
+	void zoomRectMoveFinished();
 
-  void showRenderWarning();
-  void stopRendering();
-  void readDotOutput();
-  void dotExited();
+	void showRenderWarning();
+	void stopRendering();
+	void readDotOutput();
+	void dotExited();
 
 protected:
-  void resizeEvent(QResizeEvent*);
-  void contentsMousePressEvent(QMouseEvent*);
-  void contentsMouseMoveEvent(QMouseEvent*);
-  void contentsMouseReleaseEvent(QMouseEvent*);
-  void contentsMouseDoubleClickEvent(QMouseEvent*);
-  void contentsContextMenuEvent(QContextMenuEvent*);
-  void keyPressEvent(QKeyEvent*);
-  void focusInEvent(QFocusEvent*);
-  void focusOutEvent(QFocusEvent*);
+	void resizeEvent(QResizeEvent*);
+	void mousePressEvent(QMouseEvent*);
+	void mouseMoveEvent(QMouseEvent*);
+	void mouseReleaseEvent(QMouseEvent*);
+	void mouseDoubleClickEvent(QMouseEvent*);
+	void contextMenuEvent(QContextMenuEvent*);
+	void keyPressEvent(QKeyEvent*);
+	void focusInEvent(QFocusEvent*);
+	void focusOutEvent(QFocusEvent*);
+	void scrollContentsBy(int dx, int dy);
 
 private:
-  void updateSizes(QSize s = QSize(0,0));
-  TraceItem* canShow(TraceItem*);
-  void doUpdate(int);
-  void refresh();
-  void makeFrame(CanvasNode*, bool active);
-  void clear();
-  void showText(QString);
+	void updateSizes(QSize s = QSize(0,0));
+	TraceItem* canShow(TraceItem*);
+	void doUpdate(int);
+	void refresh();
+	void makeFrame(CanvasNode*, bool active);
+	void clear();
+	void showText(QString);
 
-  Q3Canvas *_canvas;
-  int _xMargin, _yMargin;
-  PannerView *_completeView;
-  double _cvZoom;
+	QGraphicsScene *_scene;
+	int _xMargin, _yMargin;
+	PanningView *_panningView;
+	double _panningZoom;
 
-  CallGraphTip* _tip;
+	CallGraphTip* _tip;
 
-  bool _isMoving;
-  QPoint _lastPos;
+	bool _isMoving;
+	QPoint _lastPos;
 
-  GraphExporter _exporter;
+	GraphExporter _exporter;
 
-  GraphNode* _selectedNode;
-  GraphEdge* _selectedEdge;
+	GraphNode* _selectedNode;
+	GraphEdge* _selectedEdge;
 
-  // widget options
-  ZoomPosition _zoomPosition, _lastAutoPosition;
+	// widget options
+	ZoomPosition _zoomPosition, _lastAutoPosition;
 
-  // background rendering
-  Q3Process* _renderProcess;
-  QTimer _renderTimer;
-  GraphNode* _prevSelectedNode;
-  QPoint _prevSelectedPos;
-  QString _unparsedOutput;
+	// background rendering
+	Q3Process* _renderProcess;
+	QTimer _renderTimer;
+	GraphNode* _prevSelectedNode;
+	QPoint _prevSelectedPos;
+	QString _unparsedOutput;
 };
 
 
-
-
 #endif
-
-
-
