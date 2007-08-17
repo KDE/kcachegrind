@@ -349,7 +349,7 @@ void TopLevel::createDocks()
                    "where costs "
                    "are spent in, depending on the chosen group type. "
                    "The group list is hidden when group type 'Function' "
-                   "is selected.<p>"
+                   "is selected.</p>"
                    "<p>The function list contains the functions of the "
                    "selected group (or all for 'Function' group type), "
                    "ordered by the costs spent therein. Functions with "
