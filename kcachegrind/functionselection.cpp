@@ -305,8 +305,8 @@ void FunctionSelection::doUpdate(int changeType)
 	}
 
 	// reset searchEdit (as not activated from this view)
-	_searchString = QString::null;
-	query(QString::null);
+	_searchString = QString();
+	query(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 
 	// select cost item group of function
 	switch(_groupType) {
@@ -368,8 +368,8 @@ void FunctionSelection::doUpdate(int changeType)
     }
 
     // reset searchEdit
-    _searchString = QString::null;
-    query(QString::null);
+    _searchString = QString();
+    query(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 
     refresh();
 }
@@ -865,7 +865,5 @@ void FunctionSelection::setCostColumnWidths()
 
   functionList->setColumnWidth(1, 50);
 }
-
-
 
 #include "functionselection.moc"

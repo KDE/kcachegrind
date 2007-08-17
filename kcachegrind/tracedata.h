@@ -443,8 +443,8 @@ public:
    * <formula> uses short names to reference other types
    */
   TraceEventType(QString name,
-                QString longName = QString::null,
-                QString formula = QString::null);
+                QString longName = QString::null,	//krazy:exclude=nullstrassign for old broken gcc
+                QString formula = QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 
   void setName(QString n) { _name = n; }
   void setLongName(QString n) { _longName = n; }
@@ -1760,7 +1760,7 @@ class TraceFile: public TraceCostItem
 
   virtual CostType type() const { return File; }
   void setDirectory(const QString& dir);
-  void resetDirectory() { _dir = QString::null; }
+  void resetDirectory() { _dir = QString(); }
   QString directory();
 
   void addFunction(TraceFunction*);

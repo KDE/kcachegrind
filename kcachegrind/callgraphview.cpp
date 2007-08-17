@@ -428,7 +428,7 @@ GraphExporter::GraphExporter()
     _go = this;
     _tmpFile = 0;
     _item = 0;
-    reset(0, 0, 0, TraceItem::NoCostType, QString::null);
+    reset(0, 0, 0, TraceItem::NoCostType, QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 }
 
 
@@ -1817,7 +1817,7 @@ void CallGraphView::stopRendering()
   _renderProcess->kill();
   delete _renderProcess;
   _renderProcess = 0;
-  _unparsedOutput = QString::null;
+  _unparsedOutput = QString();
 
   _renderTimer.start(200, true);
 }
@@ -1888,7 +1888,7 @@ void CallGraphView::refresh()
     return;
   }
 
-  _unparsedOutput = QString::null;
+  _unparsedOutput = QString();
 
   // layouting of more than seconds is dubious
   _renderTimer.setSingleShot(true);

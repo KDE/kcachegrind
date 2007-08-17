@@ -87,8 +87,8 @@ void CallerCoverageItem::setCostType(TraceEventType* ct)
 void CallerCoverageItem::update()
 {
   if (!_coverage) {
-    setText(0, QString::null);
-    setText(1, QString::null);
+    setText(0, QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+    setText(1, QString::null);	//krazy:exclude=nullstrassign for old broken gcc
     return;
   }
 
@@ -227,9 +227,9 @@ void CalleeCoverageItem::setCostType(TraceEventType* ct)
 void CalleeCoverageItem::update()
 {
   if (!_coverage) {
-    setText(0, QString::null);
-    setText(1, QString::null);
-    setText(2, QString::null);
+    setText(0, QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+    setText(1, QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+    setText(2, QString::null);	//krazy:exclude=nullstrassign for old broken gcc
     return;
   }
 

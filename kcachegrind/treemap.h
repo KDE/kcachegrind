@@ -253,8 +253,8 @@ public:
 
   TreeMapItem(TreeMapItem* parent = 0, double value = 1.0 );
   TreeMapItem(TreeMapItem* parent, double value,
-              QString text1, QString text2 = QString::null,
-              QString text3 = QString::null, QString text4 = QString::null);
+              QString text1, QString text2 = QString::null,	//krazy:exclude=nullstrassign for old broken gcc
+              QString text3 = QString::null, QString text4 = QString::null);	//krazy:exclude=nullstrassign for old broken gcc
   virtual ~TreeMapItem();
 
   bool isChildOf(TreeMapItem*);
@@ -620,8 +620,8 @@ public:
   /**
    * Save/restore options.
    */
-  void saveOptions(KConfigGroup*, QString prefix = QString::null);
-  void restoreOptions(KConfigGroup*, QString prefix = QString::null);
+  void saveOptions(KConfigGroup*, QString prefix = QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+  void restoreOptions(KConfigGroup*, QString prefix = QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 
   /**
    * These functions populate given popup menus.

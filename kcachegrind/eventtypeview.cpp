@@ -43,7 +43,7 @@ EventTypeView::EventTypeView(TraceItemView* parentView,
     addColumn( i18n( "Incl." ) );
     addColumn( i18n( "Self" ) );
     addColumn( i18n( "Short" ) );
-    addColumn( QString::null );
+    addColumn( QString::null );	//krazy:exclude=nullstrassign for old broken gcc
     addColumn( i18n( "Formula" ) );
 
     setSorting(-1);
