@@ -8,6 +8,7 @@ Icon=kcachegrind
 DocPath=kcachegrind/index.html
 Terminal=false
 Name=KCachegrind
+Name[ne]=केडीई क्यास ग्रिन्ड
 Name[sv]=Kcachegrind
 Name[ta]=  இடைமாற்றகட்டம்
 Name[x-test]=xxKCachegrindxx
