@@ -1483,7 +1483,7 @@ QString CallGraphView::whatsThis() const
 		"<p>If the graph is larger than the widget area, an overview "
 		"panner is shown in one edge. "
 		"There are similar visualization options to the "
-		"Call Treemap; the selected function is highlighted.<p>");
+		"Call Treemap; the selected function is highlighted.</p>");
 }
 
 void CallGraphView::updateSizes(QSize s)

@@ -367,9 +367,9 @@ void TopLevel::createDocks()
                    "<p>This dockable shows in the top part the list of "
                    "loadable profile dumps in all subdirectories of: "
                    "<ul><li>current working directory of KCachegrind, "
-                   "i.e. where it was started from, and "
+                   "i.e. where it was started from, and </li>"
                    "<li>the default profile dump directory given in the "
-                   "configuration.</ul> "
+                   "configuration.</li></ul> "
                    "The list is sorted according the the target command "
                    "profiled in the corresponding dump.</p>"
                    "<p>On selecting a profile dump, information for it "
@@ -378,17 +378,17 @@ void TopLevel::createDocks()
                    "command and profile options of this dump. By changing "
                    "any item, a new (yet unexisting) profile template "
                    "is created. Press <b>Run Profile</b> to start a"
-                   "profile run with these options in the background. "
+                   "profile run with these options in the background. </li>"
                    "<li><b>Info</b> gives detailed info on the selected "
                    "dump like event cost summary and properties of the "
-                   "simulated cache. "
+                   "simulated cache. </li>"
                    "<li><b>State</b> is only available for current happening "
                    "profiles runs. Press <b>Update</b> to see different "
                    "counters of the run, and a stack trace of the current "
                    "position in the program profiled. Check the <b>Every</b> "
                    "option to let KCachegrind regularly poll these data. "
                    "Check the <b>Sync</b> option to let the dockable activate "
-                   "the top function in the current loaded dump.</ul></p>"));
+                   "the top function in the current loaded dump.</li></ul></p>"));
 #endif
 
   // Restore QT Dock positions...
