@@ -78,7 +78,6 @@
 #include "multiview.h"
 #include "callgraphview.h"
 #include <qdbusconnection.h>
-#include <kicon.h>
 #include <kconfiggroup.h>
 
 TopLevel::TopLevel()

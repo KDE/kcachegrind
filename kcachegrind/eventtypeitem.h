@@ -20,12 +20,11 @@
  * Items of event type view.
  */
 
-#ifndef EVENTTYEPITEM_H
-#define EVENTTYEPITEM_H
+#ifndef EVENTTYPEITEM_H
+#define EVENTTYPEITEM_H
 
 #include <q3listview.h>
 #include "tracedata.h"
-
 
 class EventTypeItem: public Q3ListViewItem
 {
@@ -46,5 +45,4 @@ private:
   TraceCost::CostType _groupType;
 };
 
-
-#endif
+#endif // EVENTTYPEITEM_H
