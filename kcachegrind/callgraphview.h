@@ -373,7 +373,7 @@ private:
 
 
 /**
- * A panner layed over a QGraphicsScene
+ * A panner laid over a QGraphicsScene
  */
 class PanningView : public QGraphicsView
 {

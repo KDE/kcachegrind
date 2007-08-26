@@ -4100,7 +4100,7 @@ void TraceFile::addSourceFile(TraceFunctionSource* sourceFile)
 #endif
 
   _sourceFiles.append(sourceFile);
-  // not truely needed, as we don't use the sourceFiles for cost update
+  // not truly needed, as we don't use the sourceFiles for cost update
   invalidate();
 
 #if TRACE_DEBUG

@@ -264,7 +264,7 @@ public:
   static QString     typeName(CostType);
   static CostType    costType(QString);
   // the versions below should be used for user visible strings, as
-  // these use localisation settings
+  // these use localization settings
   static QString     i18nTypeName(CostType);
   static CostType    i18nCostType(QString);
   // clean up some static data
@@ -675,7 +675,7 @@ class TraceInclusiveCost: public TraceCost
 
 /**
  * Cost Item
- * dependend on a list of cost items.
+ * depends on a list of cost items.
  */
 class TraceListCost: public TraceCost
 {
@@ -704,7 +704,7 @@ class TraceListCost: public TraceCost
 
 /**
  * Jump Cost Item
- * dependend on a list of Jump cost items.
+ * depends on a list of Jump cost items.
  */
 class TraceJumpListCost: public TraceJumpCost
 {
@@ -735,7 +735,7 @@ class TraceJumpListCost: public TraceJumpCost
 
 /**
  * Call Cost Item
- * dependend on a list of Call cost items.
+ * depends on a list of Call cost items.
  */
 class TraceCallListCost: public TraceCallCost
 {
@@ -763,7 +763,7 @@ class TraceCallListCost: public TraceCallCost
 
 
 /**
- * Inclusive Cost Item dependend on a list of inclusive cost items.
+ * Inclusive Cost Item depends on a list of inclusive cost items.
  */
 class TraceInclusiveListCost: public TraceInclusiveCost
 {
@@ -1838,7 +1838,7 @@ class TraceData: public TraceCost
 
   /** returns true if something changed. These do NOT
    * invalidate the dynamic costs on a activation change,
-   * i.e. all cost items dependend on active parts.
+   * i.e. all cost items depends on active parts.
    * This has to be done by the caller when true is returned by
    * calling invalidateDynamicCost().
    */

@@ -148,7 +148,7 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
 
   Q3PopupMenu popup;
   Q3PopupMenu fpopup; // select function subpopup
-  Q3PopupMenu vpopup; // visualisation subpopup
+  Q3PopupMenu vpopup; // visualization subpopup
   Q3PopupMenu dpopup; // split direction
   Q3PopupMenu bpopup; // border subpopup
   Q3PopupMenu l1popup; // depth limit subpopup
@@ -273,7 +273,7 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   popup.insertSeparator();
 
   vpopup.setCheckable(true);
-  popup.insertItem(i18n("Visualisation"), &vpopup, 10);
+  popup.insertItem(i18n("Visualization"), &vpopup, 10);
 
   Q3PopupMenu splitpopup;
   addSplitDirectionItems(&splitpopup, 1001);

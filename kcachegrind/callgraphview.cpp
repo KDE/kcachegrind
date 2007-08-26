@@ -88,7 +88,7 @@ int GraphEdgeList::compareItems(Item item1, Item item2)
 	CanvasEdge* e1 = ((GraphEdge*)item1)->canvasEdge();
 	CanvasEdge* e2 = ((GraphEdge*)item2)->canvasEdge();
 
-	// edges without arrow visualisations are sorted as low
+	// edges without arrow visualizations are sorted as low
 	if (!e1)
 		return -1;
 	if (!e2)

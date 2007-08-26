@@ -240,7 +240,7 @@ private:
 
   // trace data shown in this window
   TraceData* _data;
-  // subcost types used for visualisation
+  // subcost types used for visualization
   TraceEventType* _eventType;
   TraceEventType* _eventType2;
   // grouping of function list

@@ -868,7 +868,7 @@ void TreeMapItem::clear()
 
 
 // invalidates current children and forces redraw
-// this is only usefull when children are created on demand in items()
+// this is only useful when children are created on demand in items()
 void TreeMapItem::refresh()
 {
   clear();
@@ -1483,7 +1483,7 @@ void TreeMapWidget::deletingItem(TreeMapItem* i)
 
   // don't redraw a deleted item
   if (_needsRefresh == i) {
-    // we can savely redraw the parent, as deleting order is
+    // we can safely redraw the parent, as deleting order is
     // from child to parent; i.e. i->parent() is existing.
     _needsRefresh = i->parent();
   }

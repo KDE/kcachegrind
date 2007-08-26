@@ -996,7 +996,7 @@ void TopLevel::loadTrace(const KUrl& url)
 {
   if (url.isEmpty()) return;
 
-  // network transparancy
+  // network transparency
   QString tmpFile;
   // for KDE 3.2: KIO::NetAccess::download with 2 args is deprecated
   if(KIO::NetAccess::download( url, tmpFile, this )) {
@@ -1041,7 +1041,7 @@ void TopLevel::addTrace(const KUrl& url)
 {
   if (url.isEmpty()) return;
 
-  // network transparancy
+  // network transparency
   QString tmpFile;
   if(KIO::NetAccess::download( url, tmpFile, this )) {
     _openRecent->addUrl(url);

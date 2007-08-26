@@ -43,7 +43,7 @@ public:
   static void saveOptions(KConfig*);
   static void readOptions(KConfig*);
 
-  // color for visualisation of an object
+  // color for visualization of an object
   static QColor functionColor(TraceItem::CostType gt, TraceFunction*);
   static QColor groupColor(TraceItem*);
   static QColor eventTypeColor(TraceEventType*);

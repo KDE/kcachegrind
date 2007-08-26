@@ -417,7 +417,7 @@ int TabView::visibleAreas()
 
 
 
-// This hides/shows splitters and tabwidgets according to tab childs
+// This hides/shows splitters and tabwidgets according to tab children
 void TabView::updateVisibility()
 {
   // calculate count of tabs in areas
