@@ -48,7 +48,7 @@ class FunctionSelection : public FunctionSelectionBase, public TraceItemView
   Q_OBJECT
 
 public:
-  FunctionSelection( TopLevel*, QWidget* parent = 0);
+  explicit FunctionSelection(TopLevel*, QWidget* parent = 0);
   ~FunctionSelection();
 
   TraceCostItem* group(QString);

@@ -576,8 +576,8 @@ class CallGraphView : public QGraphicsView, public TraceItemView,
 public:
 	enum ZoomPosition {TopLeft, TopRight, BottomLeft, BottomRight, Auto};
 
-	CallGraphView(TraceItemView* parentView, QWidget* parent=0,
-	        const char* name = 0);
+	explicit CallGraphView(TraceItemView* parentView, QWidget* parent=0,
+			       const char* name = 0);
 	~CallGraphView();
 
 	void readViewConfig(KConfig*, QString prefix, QString postfix, bool);

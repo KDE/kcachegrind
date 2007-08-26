@@ -32,8 +32,8 @@ class PartView: public Q3ListView, public TraceItemView
   Q_OBJECT
 
 public:
-  PartView(TraceItemView* parentView,
-	   QWidget* parent=0, const char* name=0);
+  explicit PartView(TraceItemView* parentView,
+		    QWidget* parent=0, const char* name=0);
 
   virtual QWidget* widget() { return this; }
   QString whatsThis() const;

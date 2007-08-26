@@ -20,7 +20,7 @@ class DumpSelection : public DumpSelectionBase, public TraceItemView
   Q_OBJECT
 
 public:
-  DumpSelection( TopLevel*, QWidget* parent = 0, const char* name = 0);
+  explicit DumpSelection( TopLevel*, QWidget* parent = 0, const char* name = 0);
   virtual ~DumpSelection();
 
   QWidget* widget() { return this; }

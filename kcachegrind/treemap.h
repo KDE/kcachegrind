@@ -106,8 +106,8 @@ class StoredDrawParams: public DrawParams
 {
 public:
   StoredDrawParams();
-  StoredDrawParams(QColor c,
-                   bool selected = false, bool current = false);
+  explicit StoredDrawParams(QColor c,
+        		    bool selected = false, bool current = false);
 
   // getters
   QString  text(int) const;
@@ -251,7 +251,7 @@ public:
                    HAlternate, VAlternate,
                    Horizontal, Vertical };
 
-  TreeMapItem(TreeMapItem* parent = 0, double value = 1.0 );
+  explicit TreeMapItem(TreeMapItem* parent = 0, double value = 1.0 );
   TreeMapItem(TreeMapItem* parent, double value,
               QString text1, QString text2 = QString(),
               QString text3 = QString(), QString text4 = QString());
@@ -415,7 +415,7 @@ public:
   enum SelectionMode { Single, Multi, Extended, NoSelection };
 
   /* The widget gets owner of the base item */
-  TreeMapWidget(TreeMapItem* base, QWidget* parent=0);
+  explicit TreeMapWidget(TreeMapItem* base, QWidget* parent=0);
   ~TreeMapWidget();
 
   /**

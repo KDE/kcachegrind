@@ -442,9 +442,9 @@ public:
    * <longName> is a long localized string, e.g. "L1 Read Miss"
    * <formula> uses short names to reference other types
    */
-  TraceEventType(QString name,
-                QString longName = QString(),
-                QString formula = QString());
+  explicit TraceEventType(QString name,
+			  QString longName = QString(),
+			  QString formula = QString());
 
   void setName(QString n) { _name = n; }
   void setLongName(QString n) { _longName = n; }

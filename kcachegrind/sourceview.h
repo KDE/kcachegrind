@@ -37,8 +37,8 @@ class SourceView : public Q3ListView, public TraceItemView
   Q_OBJECT
 
 public:
-  SourceView(TraceItemView* parentView,
-            QWidget* parent = 0, const char* name = 0);
+  explicit SourceView(TraceItemView* parentView,
+		      QWidget* parent = 0, const char* name = 0);
 
   QWidget* widget() { return this; }
   QString whatsThis() const;

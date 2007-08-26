@@ -32,7 +32,7 @@ class EventTypeView: public Q3ListView, public TraceItemView
   Q_OBJECT
 
 public:
-  EventTypeView(TraceItemView* parentView,
+  explicit EventTypeView(TraceItemView* parentView,
 	       QWidget* parent=0, const char* name=0);
 
   virtual QWidget* widget() { return this; }
