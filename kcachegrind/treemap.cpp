@@ -37,6 +37,7 @@
 #include <QContextMenuEvent>
 #include <QResizeEvent>
 #include <QMouseEvent>
+#include <QToolTip>
 
 #include <klocale.h>
 #include <kconfig.h>
@@ -1084,35 +1085,6 @@ void TreeMapItem::addFreeRect(const QRect& r)
 		     << last->width() << "x" << last->height() << ")" << endl;
 }
 
-#if 0
-// Tooltips for TreeMapWidget
-
-class TreeMapTip: public QToolTip
-{
-public:
-  TreeMapTip( QWidget* p ):QToolTip(p) {}
-
-protected:
-    void maybeTip( const QPoint & );
-};
-
-void TreeMapTip::maybeTip( const QPoint& pos )
-{
-  if ( !parentWidget()->inherits( "TreeMapWidget" ) )
-        return;
-
-  TreeMapWidget* p = (TreeMapWidget*)parentWidget();
-  TreeMapItem* i;
-  i = p->item(pos.x(), pos.y());
-  Q3PtrList<QRect>* rList = i ? i->freeRects() : 0;
-  if (rList) {
-      QRect* r;
-      for(r=rList->first();r;r=rList->next())
-	  if (r->contains(pos))
-	      tip(*r, p->tipString(i));
-  }
-}
-#endif
 
 
 // TreeMapWidget
@@ -2125,6 +2097,30 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
 void TreeMapWidget::fontChange( const QFont& )
 {
   redraw();
+}
+
+// react on tooltip events
+bool TreeMapWidget::event(QEvent *event)
+{
+	if (event->type() == QEvent::ToolTip) {
+		QHelpEvent *helpEvent = static_cast<QHelpEvent *>(event);
+		TreeMapItem* i = item(helpEvent->pos().x(), helpEvent->pos().y());
+		Q3PtrList<QRect>* rList = i ? i->freeRects() : 0;
+		bool hasTip = false;
+		if (rList) {
+			QRect* r;
+			for (r=rList->first(); r; r=rList->next())
+				if (r->contains(helpEvent->pos())) {
+					hasTip = true;
+					break;
+				}
+		}
+		if (hasTip)
+			QToolTip::showText(helpEvent->globalPos(), tipString(i));
+		else
+			QToolTip::hideText();
+	}
+	return QWidget::event(event);
 }
 
 void TreeMapWidget::paintEvent( QPaintEvent * )

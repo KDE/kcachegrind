@@ -700,6 +700,7 @@ protected:
   void keyPressEvent( QKeyEvent* );
   void paintEvent( QPaintEvent * );
   void fontChange( const QFont& );
+  bool event(QEvent *event);
 
 private:
   TreeMapItemList diff(TreeMapItemList&, TreeMapItemList&);
