@@ -1108,6 +1108,8 @@ CanvasNode::CanvasNode(CallGraphView* v, GraphNode* n, int x, int y, int w,
 	else
 		setText(1, SubCost(n->incl).pretty());
 	setPixmap(1, percentagePixmap(25, 10, (int)(inclP+.5), Qt::blue, true));
+
+	setToolTip(QString("%1 (%2)").arg(text(0)).arg(text(1)));
 }
 
 void CanvasNode::setSelected(bool s)
@@ -1205,6 +1207,8 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce, int x,
 		                            true);
 		setPixmap(0, p);
 	}
+
+	setToolTip(QString("%1 (%2)").arg(text(0)).arg(text(1)));
 }
 
 void CanvasEdgeLabel::paint(QPainter* p,
@@ -1249,6 +1253,26 @@ CanvasEdge::CanvasEdge(GraphEdge* e) :
 	_arrow = 0;
 
 	setFlag(QGraphicsItem::ItemIsSelectable);
+}
+
+void CanvasEdge::setLabel(CanvasEdgeLabel* l)
+{
+	_label = l;
+
+	if (l) {
+		QString tip = QString("%1 (%2)").arg(l->text(0)).arg(l->text(1));
+
+		setToolTip(tip);
+		if (_arrow) _arrow->setToolTip(tip);
+	}
+}
+
+void CanvasEdge::setArrow(CanvasEdgeArrow* a)
+{
+	_arrow = a;
+
+	if (a && _label) a->setToolTip(QString("%1 (%2)")
+	                               .arg(_label->text(0)).arg(_label->text(1)));
 }
 
 void CanvasEdge::setSelected(bool s)
@@ -1343,73 +1367,6 @@ void CanvasFrame::paint(QPainter* p,
 
 	p->drawPixmap(int( rect().x()),int( rect().y()), *_p );
 }
-
-
-
-
-//
-// Tooltips for CallGraphView
-//
-#if 0
-class CallGraphTip: public QToolTip
-{
-public:
-  CallGraphTip( QWidget* p ):QToolTip(p) {}
-
-protected:
-    void maybeTip( const QPoint & );
-};
-
-void CallGraphTip::maybeTip( const QPoint& pos )
-{
-  if (!parentWidget()->inherits( "CallGraphView" )) return;
-  CallGraphView* cgv = (CallGraphView*)parentWidget();
-
-  QPoint cPos = cgv->viewportToContents(pos);
-
-  if (0) qDebug("CallGraphTip for (%d/%d) -> (%d/%d) ?",
-		pos.x(), pos.y(), cPos.x(), cPos.y());
-
-  Q3CanvasItemList l = cgv->canvas()->collisions(cPos);
-  if (l.count() == 0) return;
-  Q3CanvasItem* i = l.first();
-
-  if (i->rtti() == CANVAS_NODE) {
-      CanvasNode* cn = (CanvasNode*)i;
-      GraphNode* n = cn->node();
-      if (0) qDebug("CallGraphTip: Mouse on Node '%s'",
-		    n->function()->prettyName().ascii());
-
-      QString tipStr = QString("%1 (%2)").arg(cn->text(0)).arg(cn->text(1));
-      QPoint vPosTL = cgv->contentsToViewport(i->boundingRect().topLeft());
-      QPoint vPosBR = cgv->contentsToViewport(i->boundingRect().bottomRight());
-      tip(QRect(vPosTL, vPosBR), tipStr);
-
-      return;
-  }
-
-  // redirect from label / arrow to edge
-  if (i->rtti() == CANVAS_EDGELABEL)
-      i = ((CanvasEdgeLabel*)i)->canvasEdge();
-  if (i->rtti() == CANVAS_EDGEARROW)
-      i = ((CanvasEdgeArrow*)i)->canvasEdge();
-
-  if (i->rtti() == CANVAS_EDGE) {
-      CanvasEdge* ce = (CanvasEdge*)i;
-      GraphEdge* e = ce->edge();
-      if (0) qDebug("CallGraphTip: Mouse on Edge '%s'",
-		    e->prettyName().ascii());
-
-      QString tipStr;
-      if (!ce->label())
-	  tipStr = e->prettyName();
-      else
-	  tipStr = QString("%1 (%2)")
-	      .arg(ce->label()->text(0)).arg(ce->label()->text(1));
-      tip(QRect(pos.x()-5,pos.y()-5,pos.x()+5,pos.y()+5), tipStr);
-  }
-}
-#endif
 
 
 

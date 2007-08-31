@@ -499,20 +499,14 @@ public:
 		return _label;
 	}
 
-	void setLabel(CanvasEdgeLabel* l)
-	{
-		_label = l;
-	}
+	void setLabel(CanvasEdgeLabel* l);
 
 	CanvasEdgeArrow* arrow()
 	{
 		return _arrow;
 	}
 
-	void setArrow(CanvasEdgeArrow* a)
-	{
-		_arrow = a;
-	}
+	void setArrow(CanvasEdgeArrow* a);
 
 	const Q3PointArray& controlPoints()
 	{
