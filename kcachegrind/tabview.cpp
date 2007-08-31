@@ -27,7 +27,7 @@
 #include <qlayout.h>
 
 #include <q3popupmenu.h>
-//Added by qt3to4:
+
 #include <QHideEvent>
 #include <QMoveEvent>
 #include <Q3PtrList>
@@ -53,72 +53,78 @@
 
 // TabBar
 
-TabBar::TabBar(TabView* v, QTabWidget* parent, const char *name)
-    : QTabBar(parent)
+TabBar::TabBar(TabView* v, QTabWidget* parent, const char *name) :
+	QTabBar(parent)
 {
-    setObjectName(name);
-    _tabWidget = parent;
-    _tabView = v;
+	setObjectName(name);
+	_tabWidget = parent;
+	_tabView = v;
 }
 
 void TabBar::mousePressEvent(QMouseEvent *e)
 {
-#if 0
-  if (e->button() == Qt::RightButton) {
-      QTab *tab = selectTab( e->pos() );
-      QWidget* page;
-      page = tab ? _tabWidget->page( indexOf( tab->identifier() ) ) :0;
+	if (e->button() == Qt::RightButton) {
+		int idx = tabAt(e->pos());
+		QWidget* page = 0;
+		if (idx >=0) {
+			setCurrentIndex(idx);
+			page = _tabWidget->widget(idx);
+		}
+		Q3PopupMenu popup, popup1, popup2, popup3;
+		if (page) {
+			TraceItemView::Position p = _tabView->tabPosition(page);
+			if (p != TraceItemView::Top) {
+				popup.insertItem(i18n("Move to Top"), 81);
+				popup2.insertItem(i18n("Top"), 91);
+			}
+			if (p != TraceItemView::Right) {
+				popup.insertItem(i18n("Move to Right"), 82);
+				popup2.insertItem(i18n("Right"), 92);
+			}
+			if (p != TraceItemView::Bottom) {
+				popup.insertItem(i18n("Move to Bottom"), 83);
+				popup2.insertItem(i18n("Bottom"), 93);
+			}
+			if (p != TraceItemView::Left) {
+				popup.insertItem(i18n("Move to Bottom Left"), 84);
+				popup2.insertItem(i18n("Bottom Left"), 94);
+			}
+			popup.insertItem(i18n("Move Area To"), &popup2, 2);
+			popup.insertSeparator();
+			popup.insertItem(i18n("Hide This Tab"), 80);
+			popup.insertItem(i18n("Hide Area"), 90);
 
-      Q3PopupMenu popup, popup1, popup2, popup3;
-      if (page) {
-        TraceItemView::Position p = _tabView->tabPosition(page);
-        if (p != TraceItemView::Top) {
-          popup.insertItem(i18n("Move to Top"), 81);
-          popup2.insertItem(i18n("Top"), 91);
-        }
-        if (p != TraceItemView::Right) {
-          popup.insertItem(i18n("Move to Right"), 82);
-          popup2.insertItem(i18n("Right"), 92);
-        }
-        if (p != TraceItemView::Bottom) {
-          popup.insertItem(i18n("Move to Bottom"), 83);
-          popup2.insertItem(i18n("Bottom"), 93);
-        }
-        if (p != TraceItemView::Left) {
-          popup.insertItem(i18n("Move to Bottom Left"), 84);
-          popup2.insertItem(i18n("Bottom Left"), 94);
-        }
-        popup.insertItem(i18n("Move Area To"), &popup2, 2);
-        popup.insertSeparator();
-        popup.insertItem(i18n("Hide This Tab"), 80);
-        popup.insertItem(i18n("Hide Area"), 90);
+			if (_tabView->visibleTabs() <2) {
+				popup.setItemEnabled(80, false);
+				popup.setItemEnabled(90, false);
+			} else if (_tabView->visibleAreas() <2)
+				popup.setItemEnabled(90, false);
+		}
+		popup3.insertItem(i18n("Top"), 101);
+		popup3.insertItem(i18n("Right"), 102);
+		popup3.insertItem(i18n("Bottom"), 103);
+		popup3.insertItem(i18n("Bottom Left"), 104);
+		popup.insertItem(i18n("Show Hidden On"), &popup3, 3);
 
-        if (_tabView->visibleTabs() <2) {
-          popup.setItemEnabled(80, false);
-          popup.setItemEnabled(90, false);
-        }
-        else if (_tabView->visibleAreas() <2)
-          popup.setItemEnabled(90, false);
-      }
-      popup3.insertItem(i18n("Top"), 101);
-      popup3.insertItem(i18n("Right"), 102);
-      popup3.insertItem(i18n("Bottom"), 103);
-      popup3.insertItem(i18n("Bottom Left"), 104);
-      popup.insertItem(i18n("Show Hidden On"), &popup3, 3);
+		int r = popup.exec(mapToGlobal(e->pos() ) );
 
-      int r = popup.exec( mapToGlobal( e->pos() ) );
+		TraceItemView::Position p = TraceItemView::Hidden;
+		if ((r % 10) == 1)
+			p = TraceItemView::Top;
+		if ((r % 10) == 2)
+			p = TraceItemView::Right;
+		if ((r % 10) == 3)
+			p = TraceItemView::Bottom;
+		if ((r % 10) == 4)
+			p = TraceItemView::Left;
 
-      TraceItemView::Position p = TraceItemView::Hidden;
-      if ((r % 10) == 1) p = TraceItemView::Top;
-      if ((r % 10) == 2) p = TraceItemView::Right;
-      if ((r % 10) == 3) p = TraceItemView::Bottom;
-      if ((r % 10) == 4) p = TraceItemView::Left;
+		if (r>=80&& r<100)
+			_tabView->moveTab(page, p, r>=90);
+		if (r>=100&& r<110)
+			_tabView->moveTab(0, p, true);
+	}
 
-      if (r>=80 && r<100) _tabView->moveTab(page, p, r>=90);
-      if (r>=100 && r<110) _tabView->moveTab(0, p, true);
-  }
-#endif
-  QTabBar::mousePressEvent( e );
+	QTabBar::mousePressEvent(e );
 }
 
 
