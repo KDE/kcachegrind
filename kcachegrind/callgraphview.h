@@ -457,9 +457,16 @@ public:
 		return CANVAS_EDGELABEL;
 	}
 
+	double percentage() const
+	{
+		return _percentage;
+	}
+
 private:
 	CanvasEdge* _ce;
 	CallGraphView* _view;
+
+	double _percentage;
 };
 
 
@@ -530,6 +537,8 @@ private:
 	CanvasEdgeLabel* _label;
 	CanvasEdgeArrow* _arrow;
 	Q3PointArray _points;
+
+	double _thickness;
 };
 
 

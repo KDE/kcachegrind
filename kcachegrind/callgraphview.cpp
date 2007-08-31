@@ -1168,17 +1168,13 @@ void CanvasNode::paint(QPainter* p,
 
 CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce, int x,
                                  int y, int w, int h) :
-	QGraphicsRectItem(QRect(x, y, w, h)), _ce(ce), _view(v)
+	QGraphicsRectItem(QRect(x, y, w, h)), _ce(ce), _view(v), _percentage(0.0)
 {
 	GraphEdge* e = ce->edge();
 	if (!e)
 		return;
 
-	setPosition(1, DrawParams::TopCenter);
-	setText(1, QString("%1 x").arg(SubCost(e->count).pretty()));
-
-	setPosition(0, DrawParams::BottomCenter);
-
+	setPosition(1, DrawParams::BottomCenter);
 	TraceCost* totalCost;
 	if (_view->topLevel()->showExpanded()) {
 		if (_view->activeFunction()) {
@@ -1193,11 +1189,18 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce, int x,
 	double total = totalCost->subCost(_view->eventType());
 	double inclP = 100.0 * e->cost/ total;
 	if (_view->topLevel()->showPercentage())
-		setText(0, QString("%1 %")
+		setText(1, QString("%1 %")
 		.arg(inclP, 0, 'f', Configuration::percentPrecision()));
 	else
-		setText(0, SubCost(e->cost).pretty());
+		setText(1, SubCost(e->cost).pretty());
+
+	setPosition(0, DrawParams::TopCenter);
+	SubCost count((e->count < 1.0) ? 1.0 : e->count);
+	setText(0, QString("%1 x").arg(count.pretty()));
 	setPixmap(0, percentagePixmap(25, 10, (int)(inclP+.5), Qt::blue, true));
+
+	_percentage = inclP;
+	if (_percentage > 100.0) _percentage = 100.0;
 
 	if (e->call() && (e->call()->isRecursion() || e->call()->inCycle())) {
 		QString icon = "edit-undo";
@@ -1251,6 +1254,7 @@ CanvasEdge::CanvasEdge(GraphEdge* e) :
 {
 	_label = 0;
 	_arrow = 0;
+	_thickness = 0;
 
 	setFlag(QGraphicsItem::ItemIsSelectable);
 }
@@ -1264,6 +1268,9 @@ void CanvasEdge::setLabel(CanvasEdgeLabel* l)
 
 		setToolTip(tip);
 		if (_arrow) _arrow->setToolTip(tip);
+
+		_thickness = log(l->percentage());
+		if (_thickness < .9) _thickness = .9;
 	}
 }
 
@@ -1297,12 +1304,19 @@ void CanvasEdge::setControlPoints(const Q3PointArray& pa)
 void CanvasEdge::paint(QPainter* p,
 		const QStyleOptionGraphicsItem* options, QWidget*)
 {
-	QPen pen = QPen(isSelected() ? Qt::red : Qt::black);
-	pen.setWidthF(1.0/options->levelOfDetail);
-
 	p->setRenderHint(QPainter::Antialiasing);
+
+	QPen pen = QPen(Qt::black);
+	pen.setWidthF(1.0/options->levelOfDetail * _thickness);
 	p->setPen(pen);
 	p->drawPath(path());
+
+	if (isSelected()) {
+		pen.setColor(Qt::red);
+		pen.setWidthF(1.0/options->levelOfDetail * _thickness/2.0);
+		p->setPen(pen);
+		p->drawPath(path());
+	}
 }
 
 
@@ -1414,13 +1428,8 @@ CallGraphView::CallGraphView(TraceItemView* parentView, QWidget* parent,
 
 CallGraphView::~CallGraphView()
 {
+	clear();
 	delete _panningView;
-	//delete _tip;
-
-	if (_scene) {
-		setScene(0);
-		delete _scene;
-	}
 }
 
 QString CallGraphView::whatsThis() const
