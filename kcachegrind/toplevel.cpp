@@ -391,44 +391,19 @@ void TopLevel::createDocks()
                    "the top function in the current loaded dump.</li></ul></p>"));
 #endif
 
-  // Restore QT Dock positions...
-  KConfigGroup dockConfig(KGlobal::config(), QByteArray("Docks"));
-  QString str = dockConfig.readEntry("Position", QString());
-  if (0) qDebug("Docks/Position: '%s'", str.ascii());
-  if (str.isEmpty()) {
-    // default positions
-    addDockWidget( Qt::LeftDockWidgetArea, _partDock );
-    addDockWidget( Qt::LeftDockWidgetArea, _stackDock );
-    addDockWidget( Qt::LeftDockWidgetArea, _functionDock );
-    _stackDock->hide();
+	// default positions, will be adjusted automatically by stored state in config
+	addDockWidget(Qt::LeftDockWidgetArea, _partDock );
+	addDockWidget(Qt::LeftDockWidgetArea, _stackDock );
+	addDockWidget(Qt::LeftDockWidgetArea, _functionDock );
+	_stackDock->hide();
+
 #if ENABLE_DUMPDOCK
-    addDockWidget( Qt::LeftDockWidgetArea, _dumpDock );
-    _dumpDock->hide();
+	addDockWidget( Qt::LeftDockWidgetArea, _dumpDock );
+	_dumpDock->hide();
 #endif
-  }
-  else {
-#ifdef __GNUC__
-#warning port to Qt4
-#endif
-#if 0
-    QTextStream ts( &str, QIODevice::ReadOnly );
-    ts >> *this;
-#endif
-  }
 
-  _forcePartDock = dockConfig.readEntry("ForcePartDockVisible", false);
-
-
-#if 0
-  // dock context menu
-  setAppropriate(_partDock, true);
-  setAppropriate(_stackDock, true);
-  setAppropriate(_dumpDock, true);
-  setAppropriate(_functionDock, true);
-
-  connect( _partDock, SIGNAL(contextMenuRequested(const QPoint &)),
-           this, SLOT(showDockMenu(const QPoint &)));
-#endif
+	KConfigGroup dockConfig(KGlobal::config(), QByteArray("Docks"));
+	_forcePartDock = dockConfig.readEntry("ForcePartDockVisible", false);
 }
 
 
@@ -1975,38 +1950,15 @@ bool TopLevel::queryExit()
 
     saveCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 
-  // save QT dock positions...
-
-  // We don't want to save the KToolbar position here.
-  // Its already stored.
-  delete toolBar();
-#ifdef __GNUC__
-#warning port to Qt4
-#endif
-#if 0
-  KConfigGroup dockConfig(KGlobal::config(), QByteArray("Docks"));
-  QString str;
-  QTextStream ts( &str, QIODevice::WriteOnly );
-  ts << *this;
-#if 1
-  dockConfig.writeEntry("Position", str);
-#else
-  /* We store this with a localized key because for dock positions,
-   * QT uses the localized captions of docks.
-   * This way, when changing languages, you don't loose dock position
-   * settings.
-   * For the retrieval to work, we need to store a non-localized.
-   */
-  dockConfig.writeEntry("Position", str, true, KConfigBase::Global);
-#endif
+  // toolbar and dock positions are automatically stored
 
   // if part dock was chosen visible even for only 1 part loaded,
   // keep this choice...
   _forcePartDock = false;
   if (_data && (_data->parts().count()<2) && _partDock->isVisible())
     _forcePartDock=true;
+  KConfigGroup dockConfig(KGlobal::config(), QByteArray("Docks"));
   dockConfig.writeEntry("ForcePartDockVisible", _forcePartDock);
-#endif
 
   return true;
 }
