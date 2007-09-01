@@ -1,7 +1,7 @@
 
 project(kcachegrind)
 
-set( KCACHEGRIND_VERSION "0.4.6kde")
+set( KCACHEGRIND_VERSION "0.5.0kde")
 
 include(CheckFunctionExists)
 check_function_exists(mmap            HAVE_MMAP)
