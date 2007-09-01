@@ -2341,59 +2341,55 @@ void TopLevel::upTriggered(QAction* action)
 
 void TopLevel::showMessage(const QString& msg, int ms)
 {
-  if (_statusbar)
-    _statusbar->message(msg, ms);
+	if (_statusbar)
+		_statusbar->message(msg, ms);
 }
 
 void TopLevel::showStatus(QString msg, int progress)
 {
-    static bool msgUpdateNeeded = true;
+	static bool msgUpdateNeeded = true;
 
-    if (msg.isEmpty()) {
-	if (_progressBar) {
-	    _statusbar->removeWidget(_progressBar);
-	    delete _progressBar;
-	    _progressBar = 0;
+	if (msg.isEmpty()) {
+		if (_progressBar) {
+			_statusbar->removeWidget(_progressBar);
+			delete _progressBar;
+			_progressBar = 0;
+		}
+		_statusbar->clear();
+		_progressMsg = msg;
+		return;
 	}
-	_statusbar->clear();
-	_progressMsg = msg;
-	return;
-    }
 
-    if (_progressMsg.isEmpty())	_progressStart.start();
+	if (_progressMsg.isEmpty())
+		_progressStart.start();
 
-    if (msg != _progressMsg) {
-	_progressMsg = msg;
-	msgUpdateNeeded = true;
-    }
+	if (msg != _progressMsg) {
+		_progressMsg = msg;
+		msgUpdateNeeded = true;
+	}
 
-    // do nothing if last change was less than 0.5 seconds ago
-    if (_progressStart.elapsed() < 500) return;
+	// do nothing if last change was less than 0.5 seconds ago
+	if (_progressStart.elapsed() < 500)
+		return;
 
-    if (!_progressBar) {
-	_progressBar = new QProgressBar(_statusbar);
-	_progressBar->setMaximumSize(200, _statusbar->height()-4);
-	_statusbar->addWidget(_progressBar, 1, true);
-	_progressBar->show();
-	msgUpdateNeeded = true;
-    }
+	if (!_progressBar) {
+		_progressBar = new QProgressBar(_statusbar);
+		_progressBar->setMaximumSize(200, _statusbar->height()-4);
+		_statusbar->addWidget(_progressBar, 1, true);
+		_progressBar->show();
+		msgUpdateNeeded = true;
+	}
 
-    _progressStart.restart();
+	_progressStart.restart();
 
-    if (msgUpdateNeeded) {
-	_statusbar->message(msg);
-	msgUpdateNeeded = false;
-    }
-    _progressBar->setValue(progress);
+	if (msgUpdateNeeded) {
+		_statusbar->message(msg);
+		msgUpdateNeeded = false;
+	}
+	_progressBar->setValue(progress);
 
-    // let the progress bar update itself
-#if 0
-    QEventLoop* l = qApp->eventLoop();
-    if (l) l->processEvents(QEventLoop::ExcludeUserInput);
-#else
-    // for Qt 3.0.x. This allows user input and thus potentially races
-    qApp->processEvents();
-#endif
+	// let the progress bar update itself
+	qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
 }
 
 #include "toplevel.moc"
