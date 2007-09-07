@@ -83,6 +83,11 @@ GraphEdgeList::GraphEdgeList() :
 	_sortCallerPos(true)
 {}
 
+// Sorting of graph edges is needed for keyboard navigation.
+// The sorting is done according to ingoing (for callee order)
+// or outgoing (for caller order) angles of the edge splines
+// For outgoing edges, sorting is according to descending angles,
+// for ingoing edges, sorting is according to ascending angles
 int GraphEdgeList::compareItems(Item item1, Item item2)
 {
 	CanvasEdge* e1 = ((GraphEdge*)item1)->canvasEdge();
@@ -104,10 +109,23 @@ int GraphEdgeList::compareItems(Item item1, Item item2)
 		d1 = p1.point(p1.count()-2) - p1.point(p1.count()-1);
 		d2 = p2.point(p2.count()-2) - p2.point(p2.count()-1);
 	}
-	double at1 = atan2(double(d1.x()), double(d1.y()));
-	double at2 = atan2(double(d2.x()), double(d2.y()));
+	double angle1 = atan2(double(d1.y()), double(d1.x()));
+	double angle2 = atan2(double(d2.y()), double(d2.x()));
 
-	return (at1 < at2) ? 1 : -1;
+	if (0) {
+		TraceFunction *from1 = ((GraphEdge*)item1)->fromNode()->function();
+		TraceFunction *to1 = ((GraphEdge*)item1)->toNode()->function();
+		TraceFunction *from2 = ((GraphEdge*)item2)->fromNode()->function();
+		TraceFunction *to2 = ((GraphEdge*)item2)->toNode()->function();
+
+		qDebug("GraphEdgeList::cmp/1: %s angle '%s => %s': %f",
+		       _sortCallerPos ? "caller" : "callee", from1->prettyName().ascii(), to1->prettyName().ascii(), angle1);
+		qDebug("GraphEdgeList::cmp/2: %s angle '%s => %s': %f",
+		       _sortCallerPos ? "caller" : "callee", from2->prettyName().ascii(), to2->prettyName().ascii(), angle2);
+	}
+	if (_sortCallerPos)
+		return (angle1 < angle2) ? 1 : -1;
+	return (angle1 > angle2) ? 1 : -1;
 }
 
 
@@ -2282,8 +2300,7 @@ void CallGraphView::dotExited()
 	delete dotStream;
 
 	// for keyboard navigation
-	// TODO: Edge sorting. Better keep left-to-right edge order from dot now
-	// _exporter.sortEdges();
+	_exporter.sortEdges();
 
 	if (!_scene) {
 		_scene = new QGraphicsScene;
