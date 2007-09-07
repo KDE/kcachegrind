@@ -75,59 +75,58 @@
 #define DEFAULT_ZOOMPOS      Auto
 
 
-//
-// GraphEdgeList
-//
+// LessThen functors as helpers for sorting of graph edges
+// for keyboard navigation. Sorting is done according to
+// the angle at which a edge spline goes out or in of a function.
 
-GraphEdgeList::GraphEdgeList() :
-	_sortCallerPos(true)
-{}
-
-// Sorting of graph edges is needed for keyboard navigation.
-// The sorting is done according to ingoing (for callee order)
-// or outgoing (for caller order) angles of the edge splines
-// For outgoing edges, sorting is according to descending angles,
-// for ingoing edges, sorting is according to ascending angles
-int GraphEdgeList::compareItems(Item item1, Item item2)
+// Sort angles of outgoing edges (edge seen as attached to the caller)
+class CallerGraphEdgeLessThan
 {
-	CanvasEdge* e1 = ((GraphEdge*)item1)->canvasEdge();
-	CanvasEdge* e2 = ((GraphEdge*)item2)->canvasEdge();
+public:
+	bool operator()(const GraphEdge* ge1, const GraphEdge* ge2) const
+	{
+		const CanvasEdge* ce1 = ge1->canvasEdge();
+		const CanvasEdge* ce2 = ge2->canvasEdge();
 
-	// edges without arrow visualizations are sorted as low
-	if (!e1)
-		return -1;
-	if (!e2)
-		return 1;
+		// sort invisible edges (ie. without matching CanvasEdge) in front
+		if (!ce1) return true;
+		if (!ce2) return false;
 
-	QPoint d1, d2;
-	QPolygon p1 = e1->controlPoints();
-	QPolygon p2 = e2->controlPoints();
-	if (_sortCallerPos) {
-		d1 = p1.point(1) - p1.point(0);
-		d2 = p2.point(1) - p2.point(0);
-	} else {
-		d1 = p1.point(p1.count()-2) - p1.point(p1.count()-1);
-		d2 = p2.point(p2.count()-2) - p2.point(p2.count()-1);
+		QPolygon p1 = ce1->controlPoints();
+		QPolygon p2 = ce2->controlPoints();
+		QPoint d1 = p1.point(1) - p1.point(0);
+		QPoint d2 = p2.point(1) - p2.point(0);
+		double angle1 = atan2(double(d1.y()), double(d1.x()));
+		double angle2 = atan2(double(d2.y()), double(d2.x()));
+
+		return (angle1 < angle2);
 	}
-	double angle1 = atan2(double(d1.y()), double(d1.x()));
-	double angle2 = atan2(double(d2.y()), double(d2.x()));
+};
 
-	if (0) {
-		TraceFunction *from1 = ((GraphEdge*)item1)->fromNode()->function();
-		TraceFunction *to1 = ((GraphEdge*)item1)->toNode()->function();
-		TraceFunction *from2 = ((GraphEdge*)item2)->fromNode()->function();
-		TraceFunction *to2 = ((GraphEdge*)item2)->toNode()->function();
+// Sort angles of ingoing edges (edge seen as attached to the callee)
+class CalleeGraphEdgeLessThan
+{
+public:
+	bool operator()(const GraphEdge* ge1, const GraphEdge* ge2) const
+	{
+		const CanvasEdge* ce1 = ge1->canvasEdge();
+		const CanvasEdge* ce2 = ge2->canvasEdge();
 
-		qDebug("GraphEdgeList::cmp/1: %s angle '%s => %s': %f",
-		       _sortCallerPos ? "caller" : "callee", from1->prettyName().ascii(), to1->prettyName().ascii(), angle1);
-		qDebug("GraphEdgeList::cmp/2: %s angle '%s => %s': %f",
-		       _sortCallerPos ? "caller" : "callee", from2->prettyName().ascii(), to2->prettyName().ascii(), angle2);
+		// sort invisible edges (ie. without matching CanvasEdge) in front
+		if (!ce1) return true;
+		if (!ce2) return false;
+
+		QPolygon p1 = ce1->controlPoints();
+		QPolygon p2 = ce2->controlPoints();
+		QPoint d1 = p1.point(p1.count()-2) - p1.point(p1.count()-1);
+		QPoint d2 = p2.point(p2.count()-2) - p2.point(p2.count()-1);
+		double angle1 = atan2(double(d1.y()), double(d1.x()));
+		double angle2 = atan2(double(d2.y()), double(d2.x()));
+
+		// for ingoing edges sort according to descending angles
+		return (angle2 < angle1);
 	}
-	if (_sortCallerPos)
-		return (angle1 < angle2) ? 1 : -1;
-	return (angle1 > angle2) ? 1 : -1;
-}
-
+};
 
 
 
@@ -142,12 +141,96 @@ GraphNode::GraphNode()
 	_cn = 0;
 
 	_visible = false;
-	_lastCallerIndex = _lastCallingIndex = -1;
+	_lastCallerIndex = _lastCalleeIndex = -1;
 
-	callers.setSortCallerPos(false);
-	callings.setSortCallerPos(true);
 	_lastFromCaller = true;
 }
+
+void GraphNode::clearEdges()
+{
+	callees.clear();
+	callers.clear();
+}
+
+CallerGraphEdgeLessThan callerGraphEdgeLessThan;
+CalleeGraphEdgeLessThan calleeGraphEdgeLessThan;
+
+void GraphNode::sortEdges()
+{
+	qSort(callers.begin(), callers.end(), callerGraphEdgeLessThan);
+	qSort(callees.begin(), callees.end(), calleeGraphEdgeLessThan);
+}
+
+void GraphNode::addCallee(GraphEdge* e)
+{
+	if (e)
+		callees.append(e);
+}
+
+void GraphNode::addCaller(GraphEdge* e)
+{
+	if (e)
+		callers.append(e);
+}
+
+void GraphNode::addUniqueCallee(GraphEdge* e)
+{
+	if (e && (callees.count(e) == 0))
+		callees.append(e);
+}
+
+void GraphNode::addUniqueCaller(GraphEdge* e)
+{
+	if (e && (callers.count(e) == 0))
+		callers.append(e);
+}
+
+void GraphNode::removeEdge(GraphEdge* e)
+{
+	callers.removeAll(e);
+	callees.removeAll(e);
+}
+
+double GraphNode::calleeCostSum()
+{
+	double sum = 0.0;
+
+	foreach(GraphEdge* e, callees)
+		sum += e->cost;
+
+	return sum;
+}
+
+double GraphNode::calleeCountSum()
+{
+	double sum = 0.0;
+
+	foreach(GraphEdge* e, callees)
+		sum += e->count;
+
+	return sum;
+}
+
+double GraphNode::callerCostSum()
+{
+	double sum = 0.0;
+
+	foreach(GraphEdge* e, callers)
+		sum += e->cost;
+
+	return sum;
+}
+
+double GraphNode::callerCountSum()
+{
+	double sum = 0.0;
+
+	foreach(GraphEdge* e, callers)
+		sum += e->count;
+
+	return sum;
+}
+
 
 TraceCall* GraphNode::visibleCaller()
 {
@@ -155,58 +238,61 @@ TraceCall* GraphNode::visibleCaller()
 		qDebug("GraphNode::visibleCaller %s: last %d, count %d",
 		       _f->prettyName().ascii(), _lastCallerIndex, callers.count());
 
-	GraphEdge* e = callers.at(_lastCallerIndex);
+	// can not use at(): index can be -1 (out of bounds), result is 0 then
+	GraphEdge* e = callers.value(_lastCallerIndex);
 	if (e && !e->isVisible())
 		e = 0;
 	if (!e) {
 		double maxCost = 0.0;
 		GraphEdge* maxEdge = 0;
-		int idx = 0;
-		for (e = callers.first(); e; e=callers.next(), idx++)
+		for(int i = 0; i<callers.size(); i++) {
+			e = callers[i];
 			if (e->isVisible() && (e->cost > maxCost)) {
 				maxCost = e->cost;
 				maxEdge = e;
-				_lastCallerIndex = idx;
+				_lastCallerIndex = i;
 			}
+		}
 		e = maxEdge;
 	}
 	return e ? e->call() : 0;
 }
 
-TraceCall* GraphNode::visibleCalling()
+TraceCall* GraphNode::visibleCallee()
 {
 	if (0)
-		qDebug("GraphNode::visibleCalling %s: last %d, count %d",
-		       _f->prettyName().ascii(), _lastCallingIndex, callings.count());
+		qDebug("GraphNode::visibleCallee %s: last %d, count %d",
+		       _f->prettyName().ascii(), _lastCalleeIndex, callees.count());
 
-	GraphEdge* e = callings.at(_lastCallingIndex);
+	GraphEdge* e = callees.value(_lastCalleeIndex);
 	if (e && !e->isVisible())
 		e = 0;
 
 	if (!e) {
 		double maxCost = 0.0;
 		GraphEdge* maxEdge = 0;
-		int idx = 0;
-		for (e = callings.first(); e; e=callings.next(), idx++)
+		for(int i = 0; i<callees.size(); i++) {
+			e = callees[i];
 			if (e->isVisible() && (e->cost > maxCost)) {
 				maxCost = e->cost;
 				maxEdge = e;
-				_lastCallingIndex = idx;
+				_lastCalleeIndex = i;
 			}
+		}
 		e = maxEdge;
 	}
 	return e ? e->call() : 0;
 }
 
-void GraphNode::setCalling(GraphEdge* e)
+void GraphNode::setCallee(GraphEdge* e)
 {
-	_lastCallingIndex = callings.findRef(e);
+	_lastCalleeIndex = callees.indexOf(e);
 	_lastFromCaller = false;
 }
 
 void GraphNode::setCaller(GraphEdge* e)
 {
-	_lastCallerIndex = callers.findRef(e);
+	_lastCallerIndex = callers.indexOf(e);
 	_lastFromCaller = true;
 }
 
@@ -215,17 +301,17 @@ TraceFunction* GraphNode::nextVisible()
 	TraceCall* c;
 
 	if (_lastFromCaller) {
-		c = nextVisibleCaller(callers.at(_lastCallerIndex));
+		c = nextVisibleCaller();
 		if (c)
 			return c->called(true);
-		c = nextVisibleCalling(callings.at(_lastCallingIndex));
+		c = nextVisibleCallee();
 		if (c)
 			return c->caller(true);
 	} else {
-		c = nextVisibleCalling(callings.at(_lastCallingIndex));
+		c = nextVisibleCallee();
 		if (c)
 			return c->caller(true);
-		c = nextVisibleCaller(callers.at(_lastCallerIndex));
+		c = nextVisibleCaller();
 		if (c)
 			return c->called(true);
 	}
@@ -237,92 +323,81 @@ TraceFunction* GraphNode::priorVisible()
 	TraceCall* c;
 
 	if (_lastFromCaller) {
-		c = priorVisibleCaller(callers.at(_lastCallerIndex));
+		c = priorVisibleCaller();
 		if (c)
 			return c->called(true);
-		c = priorVisibleCalling(callings.at(_lastCallingIndex));
+		c = priorVisibleCallee();
 		if (c)
 			return c->caller(true);
 	} else {
-		c = priorVisibleCalling(callings.at(_lastCallingIndex));
+		c = priorVisibleCallee();
 		if (c)
 			return c->caller(true);
-		c = priorVisibleCaller(callers.at(_lastCallerIndex));
+		c = priorVisibleCaller();
 		if (c)
 			return c->called(true);
 	}
 	return 0;
 }
 
-TraceCall* GraphNode::nextVisibleCaller(GraphEdge* last)
+TraceCall* GraphNode::nextVisibleCaller(GraphEdge* e)
 {
-	GraphEdge* e;
-	bool found = false;
-	int idx = 0;
-
-	for (e = callers.first(); e; e=callers.next(), idx++) {
-		if (found && e->isVisible()) {
+	int idx = e ? callers.indexOf(e) : _lastCallerIndex;
+	idx++;
+	while(idx < callers.size()) {
+		if (callers[idx]->isVisible()) {
 			_lastCallerIndex = idx;
-			return e->call();
+			return callers[idx]->call();
 		}
-		if (e == last)
-			found = true;
+		idx++;
 	}
 	return 0;
 }
 
-TraceCall* GraphNode::nextVisibleCalling(GraphEdge* last)
+TraceCall* GraphNode::nextVisibleCallee(GraphEdge* e)
 {
-	GraphEdge* e;
-	bool found = false;
-	int idx = 0;
-
-	for (e = callings.first(); e; e=callings.next(), idx++) {
-		if (found && e->isVisible()) {
-			_lastCallingIndex = idx;
-			return e->call();
+	int idx = e ? callees.indexOf(e) : _lastCalleeIndex;
+	idx++;
+	while(idx < callees.size()) {
+		if (callees[idx]->isVisible()) {
+			_lastCalleeIndex = idx;
+			return callees[idx]->call();
 		}
-		if (e == last)
-			found = true;
+		idx++;
 	}
 	return 0;
 }
 
-TraceCall* GraphNode::priorVisibleCaller(GraphEdge* last)
+TraceCall* GraphNode::priorVisibleCaller(GraphEdge* e)
 {
-	GraphEdge *e, *prev = 0;
-	int prevIdx = -1, idx = 0;
+	int idx = e ? callers.indexOf(e) : _lastCallerIndex;
 
-	for (e = callers.first(); e; e=callers.next(), idx++) {
-		if (e == last) {
-			_lastCallerIndex = prevIdx;
-			return prev ? prev->call() : 0;
+	idx = (idx<0) ? callers.size()-1 : idx-1;
+	while(idx >= 0) {
+		if (callers[idx]->isVisible()) {
+			_lastCallerIndex = idx;
+			return callers[idx]->call();
 		}
-		if (e->isVisible()) {
-			prev = e;
-			prevIdx = idx;
-		}
+		idx--;
 	}
 	return 0;
 }
 
-TraceCall* GraphNode::priorVisibleCalling(GraphEdge* last)
+TraceCall* GraphNode::priorVisibleCallee(GraphEdge* e)
 {
-	GraphEdge *e, *prev = 0;
-	int prevIdx = -1, idx = 0;
+	int idx = e ? callees.indexOf(e) : _lastCalleeIndex;
 
-	for (e = callings.first(); e; e=callings.next(), idx++) {
-		if (e == last) {
-			_lastCallingIndex = prevIdx;
-			return prev ? prev->call() : 0;
+	idx = (idx<0) ? callees.size()-1 : idx-1;
+	while(idx >= 0) {
+		if (callees[idx]->isVisible()) {
+			_lastCalleeIndex = idx;
+			return callees[idx]->call();
 		}
-		if (e->isVisible()) {
-			prev = e;
-			prevIdx = idx;
-		}
+		idx--;
 	}
 	return 0;
 }
+
 
 //
 // GraphEdge
@@ -359,13 +434,13 @@ TraceFunction* GraphEdge::visibleCaller()
 	if (_from) {
 		_lastFromCaller = true;
 		if (_fromNode)
-			_fromNode->setCalling(this);
+			_fromNode->setCallee(this);
 		return _from;
 	}
 	return 0;
 }
 
-TraceFunction* GraphEdge::visibleCalling()
+TraceFunction* GraphEdge::visibleCallee()
 {
 	if (_to) {
 		_lastFromCaller = false;
@@ -381,13 +456,13 @@ TraceCall* GraphEdge::nextVisible()
 	TraceCall* res = 0;
 
 	if (_lastFromCaller && _fromNode) {
-		res = _fromNode->nextVisibleCalling(this);
+		res = _fromNode->nextVisibleCallee(this);
 		if (!res && _toNode)
 			res = _toNode->nextVisibleCaller(this);
 	} else if (_toNode) {
 		res = _toNode->nextVisibleCaller(this);
 		if (!res && _fromNode)
-			res = _fromNode->nextVisibleCalling(this);
+			res = _fromNode->nextVisibleCallee(this);
 	}
 	return res;
 }
@@ -397,13 +472,13 @@ TraceCall* GraphEdge::priorVisible()
 	TraceCall* res = 0;
 
 	if (_lastFromCaller && _fromNode) {
-		res = _fromNode->priorVisibleCalling(this);
+		res = _fromNode->priorVisibleCallee(this);
 		if (!res && _toNode)
 			res = _toNode->priorVisibleCaller(this);
 	} else if (_toNode) {
 		res = _toNode->priorVisibleCaller(this);
 		if (!res && _fromNode)
-			res = _fromNode->priorVisibleCalling(this);
+			res = _fromNode->priorVisibleCallee(this);
 	}
 	return res;
 }
@@ -576,7 +651,7 @@ void GraphExporter::createGraph()
 		GraphEdge& e = _edgeMap[p];
 		e.setCall(c);
 		e.setCaller(p.first);
-		e.setCalling(p.second);
+		e.setCallee(p.second);
 		e.cost = c->subCost(_eventType);
 		e.count = c->callCount();
 
@@ -725,14 +800,13 @@ void GraphExporter::writeDot()
 		GraphNode& to = _nodeMap[e.to()];
 
 		e.setCallerNode(&from);
-		e.setCallingNode(&to);
+		e.setCalleeNode(&to);
 
 		if ((from.incl <= _realFuncLimit) ||(to.incl <= _realFuncLimit))
 			continue;
 
 		// remove dumped edges from n.callers/n.callings
-		from.callings.removeRef(&e);
-		to.callers.removeRef(&e);
+		from.removeEdge(&e);
 
 		*stream << QString("  F%1 -> F%2 [weight=%3")
 		.arg((long)e.from(), 0, 16)
@@ -741,11 +815,11 @@ void GraphExporter::writeDot()
 
 		if (_go->detailLevel() ==1)
 			*stream << QString(",label=\"%1\"")
-			.arg(SubCost(e.cost).pretty());
+				.arg(SubCost(e.cost).pretty());
 		else if (_go->detailLevel() ==2)
 			*stream << QString(",label=\"%3\\n%4 x\"")
-			.arg(SubCost(e.cost).pretty())
-			.arg(SubCost(e.count).pretty());
+				.arg(SubCost(e.cost).pretty())
+				.arg(SubCost(e.count).pretty());
 
 		*stream << QString("];\n");
 	}
@@ -760,34 +834,30 @@ void GraphExporter::writeDot()
 			if (n.incl <= _realFuncLimit)
 				continue;
 
-			costSum = countSum = 0.0;
-			for (e=n.callers.first(); e; e=n.callers.next()) {
-				costSum += e->cost;
-				countSum += e->count;
-			}
+			costSum = n.calleeCostSum();
+			countSum = n.calleeCountSum();
+
 			if (costSum > _realCallLimit) {
 
 				QPair<TraceFunction*,TraceFunction*> p(0, n.function());
 				e = &(_edgeMap[p]);
-				e->setCalling(p.second);
+				e->setCallee(p.second);
 				e->cost = costSum;
 				e->count = countSum;
 
 				*stream << QString("  R%1 [shape=point,label=\"\"];\n")
-				.arg((long)n.function(), 0, 16);
+					.arg((long)n.function(), 0, 16);
 				*stream << QString("  R%1 -> F%2 [label=\"%3\\n%4 x\",weight=%5];\n")
-				.arg((long)n.function(), 0, 16)
-				.arg((long)n.function(), 0, 16)
-				.arg(SubCost(costSum).pretty())
-				.arg(SubCost(countSum).pretty())
-				.arg((int)log(costSum));
+					.arg((long)n.function(), 0, 16)
+					.arg((long)n.function(), 0, 16)
+					.arg(SubCost(costSum).pretty())
+					.arg(SubCost(countSum).pretty())
+					.arg((int)log(costSum));
 			}
 
-			costSum = countSum = 0.0;
-			for (e=n.callings.first(); e; e=n.callings.next()) {
-				costSum += e->cost;
-				countSum += e->count;
-			}
+			costSum = n.callerCostSum();
+			countSum = n.callerCountSum();
+
 			if (costSum > _realCallLimit) {
 
 				QPair<TraceFunction*,TraceFunction*> p(n.function(), 0);
@@ -797,13 +867,13 @@ void GraphExporter::writeDot()
 				e->count = countSum;
 
 				*stream << QString("  S%1 [shape=point,label=\"\"];\n")
-				.arg((long)n.function(), 0, 16);
+					.arg((long)n.function(), 0, 16);
 				*stream << QString("  F%1 -> S%2 [label=\"%3\\n%4 x\",weight=%5];\n")
-				.arg((long)n.function(), 0, 16)
-				.arg((long)n.function(), 0, 16)
-				.arg(SubCost(costSum).pretty())
-				.arg(SubCost(countSum).pretty())
-				.arg((int)log(costSum));
+					.arg((long)n.function(), 0, 16)
+					.arg((long)n.function(), 0, 16)
+					.arg(SubCost(costSum).pretty())
+					.arg(SubCost(countSum).pretty())
+					.arg((int)log(costSum));
 			}
 		}
 	}
@@ -812,8 +882,7 @@ void GraphExporter::writeDot()
 	// Visible edges are inserted again on parsing in CallGraphView::refresh
 	for (nit = _nodeMap.begin(); nit != _nodeMap.end(); ++nit ) {
 		GraphNode& n = *nit;
-		n.callers.clear();
-		n.callings.clear();
+		n.clearEdges();
 	}
 
 	*stream << "}\n";
@@ -834,9 +903,7 @@ void GraphExporter::sortEdges()
 	GraphNodeMap::Iterator nit;
 	for (nit = _nodeMap.begin(); nit != _nodeMap.end(); ++nit ) {
 		GraphNode& n = *nit;
-
-		n.callers.sort();
-		n.callings.sort();
+		n.sortEdges();
 	}
 }
 
@@ -882,12 +949,12 @@ GraphEdge* GraphExporter::edge(TraceFunction* f1, TraceFunction* f2)
  * If on a further visit of the node/edge the limit is reached,
  * we use the whole node/edge cost and continue search.
  */
-void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallings,
+void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallees,
                                double factor)
 {
 #if DEBUG_GRAPH
 	kDebug() << "buildGraph(" << f->prettyName() << "," << d << "," << factor
-	<< ") [to " << (toCallings ? "Callings":"Callers") << "]" << endl;
+	<< ") [to " << (toCallees ? "Callees":"Callers") << "]" << endl;
 #endif
 
 	double oldIncl = 0.0;
@@ -904,7 +971,7 @@ void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallings,
 		qDebug("  Added Incl. %f, now %f", incl, n.incl);
 
 	// A negative depth limit means "unlimited"
-	int maxDepth = toCallings ? _go->maxCallingDepth()
+	int maxDepth = toCallees ? _go->maxCallingDepth()
 	        : _go->maxCallerDepth();
 	if ((maxDepth>=0) && (d >= maxDepth)) {
 		if (0)
@@ -939,11 +1006,11 @@ void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallings,
 	TraceFunction* f2;
 
 	// on entering a cycle, only go the FunctionCycle
-	TraceCallList l = toCallings ? f->callings(false) : f->callers(false);
+	TraceCallList l = toCallees ? f->callings(false) : f->callers(false);
 
 	for (call=l.first(); call; call=l.next()) {
 
-		f2 = toCallings ? call->called(false) : call->caller(false);
+		f2 = toCallees ? call->called(false) : call->caller(false);
 
 		double count = call->callCount() * factor;
 		double cost = call->subCost(_eventType) * factor;
@@ -953,13 +1020,13 @@ void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallings,
 		// if (count>0.0 && (cost/count < 3)) continue;
 
 		double oldCost = 0.0;
-		QPair<TraceFunction*,TraceFunction*> p(toCallings ? f : f2,
-		                                       toCallings ? f2 : f);
+		QPair<TraceFunction*,TraceFunction*> p(toCallees ? f : f2,
+		                                       toCallees ? f2 : f);
 		GraphEdge& e = _edgeMap[p];
 		if (e.call() == 0) {
 			e.setCall(call);
 			e.setCaller(p.first);
-			e.setCalling(p.second);
+			e.setCallee(p.second);
 		} else
 			oldCost = e.cost;
 
@@ -971,14 +1038,14 @@ void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallings,
 		// if this call goes into a FunctionCycle, we also show the real call
 		if (f2->cycle() == f2) {
 			TraceFunction* realF;
-			realF = toCallings ? call->called(true) : call->caller(true);
+			realF = toCallees ? call->called(true) : call->caller(true);
 			QPair<TraceFunction*,TraceFunction*>
-			        realP(toCallings ? f : realF, toCallings ? realF : f);
+			        realP(toCallees ? f : realF, toCallees ? realF : f);
 			GraphEdge& e = _edgeMap[realP];
 			if (e.call() == 0) {
 				e.setCall(call);
 				e.setCaller(realP.first);
-				e.setCalling(realP.second);
+				e.setCallee(realP.second);
 			}
 			e.cost += cost;
 			e.count += count;
@@ -990,13 +1057,10 @@ void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallings,
 		if (call->isRecursion())
 			continue;
 
-		if (toCallings) {
-			if (n.callings.findRef(&e)<0)
-				n.callings.append(&e);
-		} else {
-			if (n.callers.findRef(&e)<0)
-				n.callers.append(&e);
-		}
+		if (toCallees)
+			n.addUniqueCallee(&e);
+		else
+			n.addUniqueCaller(&e);
 
 		// if we just reached the call limit (=func limit by summing, do a DFS
 		// from here with full incl. cost because of previous cutoffs
@@ -1014,7 +1078,7 @@ void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallings,
 		else
 			s = f2->inclusive()->subCost(_eventType);
 		SubCost v = call->subCost(_eventType);
-		buildGraph(f2, d+1, toCallings, factor * v / s);
+		buildGraph(f2, d+1, toCallees, factor * v / s);
 	}
 }
 
@@ -1305,7 +1369,7 @@ void CanvasEdge::setSelected(bool s)
 	update();
 }
 
-void CanvasEdge::setControlPoints(const Q3PointArray& pa)
+void CanvasEdge::setControlPoints(const QPolygon& pa)
 {
 	_points = pa;
 
@@ -1667,7 +1731,7 @@ void CallGraphView::keyPressEvent(QKeyEvent* e)
 			if (key == Qt::Key_Up)
 				c = _selectedNode->visibleCaller();
 			if (key == Qt::Key_Down)
-				c = _selectedNode->visibleCalling();
+				c = _selectedNode->visibleCallee();
 			if (key == Qt::Key_Right)
 				f = _selectedNode->nextVisible();
 			if (key == Qt::Key_Left)
@@ -1676,7 +1740,7 @@ void CallGraphView::keyPressEvent(QKeyEvent* e)
 			if (key == Qt::Key_Up)
 				f = _selectedEdge->visibleCaller();
 			if (key == Qt::Key_Down)
-				f = _selectedEdge->visibleCalling();
+				f = _selectedEdge->visibleCallee();
 			if (key == Qt::Key_Right)
 				c = _selectedEdge->nextVisible();
 			if (key == Qt::Key_Left)
@@ -2142,9 +2206,9 @@ void CallGraphView::dotExited()
 		}
 		e->setVisible(true);
 		if (e->fromNode())
-			e->fromNode()->callings.append(e);
+			e->fromNode()->addCallee(e);
 		if (e->toNode())
-			e->toNode()->callers.append(e);
+			e->toNode()->addCaller(e);
 
 		if (0)
 			qDebug("  Edge with %d points:", points);

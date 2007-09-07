@@ -34,8 +34,8 @@
 #include <QGraphicsPathItem>
 #include <QPixmap>
 #include <QFocusEvent>
-#include <Q3PointArray>
-#include <Q3PtrList>
+#include <QPolygon>
+#include <QList>
 #include <QKeyEvent>
 #include <QResizeEvent>
 #include <QContextMenuEvent>
@@ -54,80 +54,77 @@ class GraphEdge;
 class CallGraphView;
 
 
-// sorts according start/end position of a call arc
-// this depends on attached CanvasEdge's !
-class GraphEdgeList : public Q3PtrList<GraphEdge>
-{
-public:
-	GraphEdgeList();
-	void setSortCallerPos(bool b)
-	{
-		_sortCallerPos = b;
-	}
-
-protected:
-	int compareItems(Item item1, Item item2);
-
-private:
-	bool _sortCallerPos;
-};
-
-
 // temporary parts of call graph to be shown
 class GraphNode
 {
 public:
 	GraphNode();
 
-	TraceFunction* function()
+	TraceFunction* function() const
 	{
 		return _f;
 	}
+
 	void setFunction(TraceFunction* f)
 	{
 		_f = f;
 	}
 
-	CanvasNode* canvasNode()
+	CanvasNode* canvasNode() const
 	{
 		return _cn;
 	}
+
 	void setCanvasNode(CanvasNode* cn)
 	{
 		_cn = cn;
 	}
 
-	bool isVisible()
+	bool isVisible() const
 	{
 		return _visible;
 	}
+
 	void setVisible(bool v)
 	{
 		_visible = v;
 	}
 
+	void clearEdges();
+	void sortEdges();
+	void addCallee(GraphEdge*);
+	void addCaller(GraphEdge*);
+	void addUniqueCallee(GraphEdge*);
+	void addUniqueCaller(GraphEdge*);
+	void removeEdge(GraphEdge*);
+	double calleeCostSum();
+	double calleeCountSum();
+	double callerCostSum();
+	double callerCountSum();
+
 	// keyboard navigation
 	TraceCall* visibleCaller();
-	TraceCall* visibleCalling();
-	void setCalling(GraphEdge*);
+	TraceCall* visibleCallee();
+	void setCallee(GraphEdge*);
 	void setCaller(GraphEdge*);
 	TraceFunction* nextVisible();
 	TraceFunction* priorVisible();
-	TraceCall* nextVisibleCaller(GraphEdge*);
-	TraceCall* nextVisibleCalling(GraphEdge*);
-	TraceCall* priorVisibleCaller(GraphEdge*);
-	TraceCall* priorVisibleCalling(GraphEdge*);
+	TraceCall* nextVisibleCaller(GraphEdge* = 0);
+	TraceCall* nextVisibleCallee(GraphEdge* = 0);
+	TraceCall* priorVisibleCaller(GraphEdge* = 0);
+	TraceCall* priorVisibleCallee(GraphEdge* = 0);
 
 	double self, incl;
-	GraphEdgeList callers, callings;
 
 private:
 	TraceFunction* _f;
 	CanvasNode* _cn;
 	bool _visible;
 
+	QList<GraphEdge*> callers, callees;
+
 	// for keyboard navigation
-	int _lastCallerIndex, _lastCallingIndex;
+	int _lastCallerIndex, _lastCalleeIndex;
 	bool _lastFromCaller;
 };
 
@@ -137,7 +134,7 @@ class GraphEdge
 public:
 	GraphEdge();
 
-	CanvasEdge* canvasEdge()
+	CanvasEdge* canvasEdge() const
 	{
 		return _ce;
 	}
@@ -147,7 +144,7 @@ public:
 		_ce = ce;
 	}
 
-	TraceCall* call()
+	TraceCall* call() const
 	{
 		return _c;
 	}
@@ -157,7 +154,7 @@ public:
 		_c = c;
 	}
 
-	bool isVisible()
+	bool isVisible() const
 	{
 		return _visible;
 	}
@@ -167,22 +164,22 @@ public:
 		_visible = v;
 	}
 
-	GraphNode* fromNode()
+	GraphNode* fromNode() const
 	{
 		return _fromNode;
 	}
 
-	GraphNode* toNode()
+	GraphNode* toNode() const
 	{
 		return _toNode;
 	}
 
-	TraceFunction* from()
+	TraceFunction* from() const
 	{
 		return _from;
 	}
 
-	TraceFunction* to()
+	TraceFunction* to() const
 	{
 		return _to;
 	}
@@ -195,7 +192,7 @@ public:
 		_from = f;
 	}
 
-	void setCalling(TraceFunction* f)
+	void setCallee(TraceFunction* f)
 	{
 		_to = f;
 	}
@@ -205,14 +202,14 @@ public:
 		_fromNode = n;
 	}
 
-	void setCallingNode(GraphNode* n)
+	void setCalleeNode(GraphNode* n)
 	{
 		_toNode = n;
 	}
 
 	// keyboard navigation
 	TraceFunction* visibleCaller();
-	TraceFunction* visibleCalling();
+	TraceFunction* visibleCallee();
 	TraceCall* nextVisible();
 	TraceCall* priorVisible();
 
@@ -515,12 +512,12 @@ public:
 
 	void setArrow(CanvasEdgeArrow* a);
 
-	const Q3PointArray& controlPoints()
+	const QPolygon& controlPoints() const
 	{
 		return _points;
 	}
 
-	void setControlPoints(const Q3PointArray& a);
+	void setControlPoints(const QPolygon& a);
 
 	GraphEdge* edge()
 	{
@@ -536,7 +533,7 @@ private:
 	GraphEdge* _edge;
 	CanvasEdgeLabel* _label;
 	CanvasEdgeArrow* _arrow;
-	Q3PointArray _points;
+	QPolygon _points;
 
 	double _thickness;
 };
