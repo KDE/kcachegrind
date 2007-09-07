@@ -25,12 +25,12 @@
 
 /// Loader
 
-LoaderList Loader::_loaderList;
+QList<Loader*> Loader::_loaderList;
 
 Loader::Loader(QString name, QString desc)
 {
-  _name = name;
-  _description = desc;
+	_name = name;
+	_description = desc;
 }
 
 Loader::~Loader()
@@ -38,32 +38,30 @@ Loader::~Loader()
 
 bool Loader::canLoadTrace(QFile*)
 {
-  return false;
+	return false;
 }
 
 bool Loader::loadTrace(TracePart*)
 {
-  return false;
+	return false;
 }
 
 Loader* Loader::matchingLoader(QFile* file)
 {
-  Loader* l;
-  for (l=_loaderList.first(); l; l = _loaderList.next())
-    if (l->canLoadTrace(file))
-      return l;
+	foreach (Loader* l, _loaderList)
+		if (l->canLoadTrace(file))
+			return l;
 
-  return 0;
+	return 0;
 }
 
 Loader* Loader::loader(QString name)
 {
-  Loader* l;
-  for (l=_loaderList.first(); l; l = _loaderList.next())
-    if (l->name() == name)
-      return l;
+	foreach (Loader* l, _loaderList)
+		if (l->name() == name)
+			return l;
 
-  return 0;
+	return 0;
 }
 
 // factories of available loaders
@@ -71,14 +69,14 @@ Loader* createCachegrindLoader();
 
 void Loader::initLoaders()
 {
-  _loaderList.append(createCachegrindLoader());
-  //_loaderList.append(GProfLoader::createLoader());
+	_loaderList.append(createCachegrindLoader());
+	//_loaderList.append(GProfLoader::createLoader());
 }
 
 void Loader::deleteLoaders()
 {
-  _loaderList.setAutoDelete(true);
-  _loaderList.clear();
+	while (!_loaderList.isEmpty())
+		delete _loaderList.takeFirst();
 }
 
 

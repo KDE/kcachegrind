@@ -23,16 +23,14 @@
 #ifndef LOADER_H
 #define LOADER_H
 
-#include <qobject.h>
-#include <q3ptrlist.h>
-#include <qstring.h>
+#include <QObject>
+#include <QList>
+#include <QString>
 
 class QFile;
 class TracePart;
 class Loader;
 
-
-typedef Q3PtrList<Loader> LoaderList;
 
 /**
  * To implement a new loader, inherit from the Loader class
@@ -70,7 +68,7 @@ signals:
 private:
   QString _name, _description;
 
-  static LoaderList _loaderList;
+  static QList<Loader*> _loaderList;
 };
 
 

@@ -40,7 +40,7 @@
 #include <QKeyEvent>
 #include <QStyleOptionGraphicsItem>
 #include <QContextMenuEvent>
-#include <Q3PtrList>
+#include <QList>
 #include <QPixmap>
 #include <Q3PointArray>
 #include <QDesktopWidget>
@@ -639,7 +639,7 @@ void GraphExporter::writeDot()
 	}
 
 	// for clustering
-	QMap<TraceCostItem*,Q3PtrList<GraphNode> > nLists;
+	QMap<TraceCostItem*,QList<GraphNode*> > nLists;
 
 	GraphNodeMap::Iterator nit;
 	for (nit = _nodeMap.begin(); nit != _nodeMap.end(); ++nit ) {
@@ -671,10 +671,10 @@ void GraphExporter::writeDot()
 		nLists[g].append(&n);
 	}
 
-	QMap<TraceCostItem*,Q3PtrList<GraphNode> >::Iterator lit;
+	QMap<TraceCostItem*,QList<GraphNode*> >::Iterator lit;
 	int cluster = 0;
 	for (lit = nLists.begin(); lit != nLists.end(); ++lit, cluster++) {
-		Q3PtrList<GraphNode>& l = lit.data();
+		QList<GraphNode*>& l = lit.data();
 		TraceCostItem* i = lit.key();
 
 		if (_go->clusterGroups() && i) {
@@ -686,8 +686,7 @@ void GraphExporter::writeDot()
 			.arg(cluster).arg(iabr);
 		}
 
-		GraphNode* np;
-		for (np = l.first(); np; np = l.next() ) {
+		foreach(GraphNode* np, l) {
 			TraceFunction* f = np->function();
 
 			QString abr = f->prettyName();

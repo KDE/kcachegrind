@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002, 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2002 - 2007 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -791,7 +791,7 @@ void TraceJumpCost::addCost(TraceJumpCost* item)
 //---------------------------------------------------
 // TraceEventType
 
-Q3PtrList<TraceEventType>* TraceEventType::_knownTypes = 0;
+QList<TraceEventType*>* TraceEventType::_knownTypes = 0;
 
 TraceEventType::TraceEventType(QString name,  QString longName, QString formula)
 {
@@ -965,8 +965,7 @@ TraceEventType* TraceEventType::knownRealType(QString n)
 {
   if (!_knownTypes) return 0;
 
-  TraceEventType* t;
-  for (t=_knownTypes->first();t;t=_knownTypes->next())
+  foreach (TraceEventType* t, *_knownTypes)
     if (t->isReal() && (t->name() == n)) {
       TraceEventType* type = new TraceEventType(*t);
       return type;
@@ -979,8 +978,7 @@ TraceEventType* TraceEventType::knownDerivedType(QString n)
 {
   if (!_knownTypes) return 0;
 
-  TraceEventType* t;
-  for (t=_knownTypes->first();t;t=_knownTypes->next())
+  foreach (TraceEventType* t, *_knownTypes)
     if (!t->isReal() && (t->name() == n)) {
       TraceEventType* type = new TraceEventType(*t);
       return type;
@@ -997,11 +995,11 @@ void TraceEventType::add(TraceEventType* t)
   t->setMapping(0);
 
   if (!_knownTypes)
-    _knownTypes = new Q3PtrList<TraceEventType>;
+    _knownTypes = new QList<TraceEventType*>;
 
   /* Already known? */
-  TraceEventType* kt;
-  for (kt=_knownTypes->first();kt;kt=_knownTypes->next())
+  TraceEventType* kt = 0;
+  foreach (kt, *_knownTypes)
     if (kt->name() == t->name()) break;
 
   if (kt) {
@@ -1030,10 +1028,9 @@ bool TraceEventType::remove(QString n)
 {
   if (!_knownTypes) return false;
 
-  TraceEventType* t;
-  for (t=_knownTypes->first();t;t=_knownTypes->next())
+  foreach (TraceEventType* t, *_knownTypes)
     if (!t->isReal() && (t->name() == n)) {
-      _knownTypes->removeRef(t);
+      _knownTypes->removeAll(t);
       delete t;
       return true;
     }

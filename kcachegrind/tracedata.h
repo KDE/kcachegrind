@@ -32,6 +32,8 @@
 #include <q3ptrvector.h>
 #include <qcolor.h>
 
+#include <QList>
+
 #include "subcost.h"
 #include "utils.h"
 
@@ -494,7 +496,7 @@ private:
   int _coefficient[MaxRealIndexValue];
   int _realIndex;
 
-  static Q3PtrList<TraceEventType>* _knownTypes;
+  static QList<TraceEventType*>* _knownTypes;
 };
 
 
