@@ -2100,6 +2100,9 @@ void CallGraphView::dotExited()
 
 				_scene = new QGraphicsScene( 0.0, 0.0,
 						qreal(w+2*_xMargin), qreal(h+2*_yMargin));
+				// Change background color for call graph from default system color to
+				// white. It has to blend into the gradient for the selected function.
+				_scene->setBackgroundBrush(Qt::white);
 
 #if DEBUG_GRAPH
 				kDebug() << _exporter.filename().ascii() << ":" << lineno
