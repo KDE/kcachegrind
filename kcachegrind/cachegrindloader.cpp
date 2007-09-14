@@ -125,7 +125,7 @@ private:
   TraceFunction* compressedFunction(const QString& name,
                                     TraceFile*, TraceObject*);
 
-  Q3PtrVector<TraceCostItem> _objectVector, _fileVector, _functionVector;
+  QVector<TraceCostItem*> _objectVector, _fileVector, _functionVector;
 };
 
 
@@ -352,7 +352,7 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
 		<< name << "')" << endl;
     return 0;
   }
-  unsigned index = name.mid(1, p-1).toInt();
+  int index = name.mid(1, p-1).toInt();
   TraceObject* o = 0;
   p++;
   if ((int)name.length()>p) {
@@ -377,7 +377,7 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
     }
 
     o = _data->object(realName);
-    _objectVector.insert(index, o);
+    _objectVector.replace(index, o);
   }
   else {
     if ((_objectVector.size() <= index) ||
@@ -406,7 +406,7 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
 		<< name << "')" << endl;
     return 0;
   }
-  unsigned int index = name.mid(1, p-1).toUInt();
+  int index = name.mid(1, p-1).toUInt();
   TraceFile* f = 0;
   p++;
   if ((int)name.length()>p) {
@@ -431,7 +431,7 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
     }
 
     f = _data->file(realName);
-    _fileVector.insert(index, f);
+    _fileVector.replace(index, f);
   }
   else {
     if ((_fileVector.size() <= index) ||
@@ -465,7 +465,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
   }
 
 
-  unsigned int index = name.mid(1, p-1).toUInt();
+  int index = name.mid(1, p-1).toUInt();
   TraceFunction* f = 0;
   p++;
   if ((int)name.length()>p) {
@@ -490,7 +490,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
     }
 
     f = _data->function(realName, file, object);
-    _functionVector.insert(index, f);
+    _functionVector.replace(index, f);
 
 #if TRACE_LOADER
     kDebug() << "compressedFunction: Inserted at Index " << index
