@@ -79,5 +79,4 @@ void Loader::deleteLoaders()
 		delete _loaderList.takeFirst();
 }
 
-
 #include "loader.moc"

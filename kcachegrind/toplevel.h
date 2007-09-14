@@ -198,6 +198,9 @@ public slots:
   // progress in status bar, empty message disables progress display
   void showStatus(QString msg, int progress);
   void showMessage(const QString&, int msec);
+  // messages from file loader
+  void showLoadError(QString,int,QString);
+  void showLoadWarning(QString,int,QString);
 
 private:
   void init();

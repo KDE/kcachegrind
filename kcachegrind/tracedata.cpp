@@ -4530,9 +4530,14 @@ TracePart* TraceData::addPart(const QString& dir, const QString& name)
   Loader* l = Loader::matchingLoader(file);
   if (!l) return 0;
 
-  if (_topLevel)
+  if (_topLevel) {
       _topLevel->connect(l, SIGNAL(updateStatus(QString, int)),
-			 SLOT(showStatus(QString, int)));
+                         SLOT(showStatus(QString, int)));
+      _topLevel->connect(l, SIGNAL(loadError(QString, int, QString)),
+                         SLOT(showLoadError(QString, int, QString)));
+      _topLevel->connect(l, SIGNAL(loadWarning(QString, int, QString)),
+                         SLOT(showLoadWarning(QString, int, QString)));
+  }
 
   TracePart* part = new TracePart(this, file);
 

@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2002 - 2007 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -33,14 +33,21 @@ class Loader;
 
 
 /**
- * To implement a new loader, inherit from the Loader class
- * and implement canLoadTrace(), loadTrace() and if a trace in
- * this format can consist out of multiple parts, implement
- * isPartOfTrace(), too.
+ * To implement a new loader, inherit from the Loader class and
+ * and reimplement canLoadTrace() and loadTrace().
+ *
  * For registration, put into the static initLoaders() function
  * of this base class a _loaderList.append(new MyLoader()).
  *
- * KCachegrind will use the first matching loader.
+ * KCachegrind will use the first loader matching according to
+ * canLoadTrace().
+ *
+ * The signals loadError() and loadWarning() can be emitted within
+ * loadTrace() to signal problems when loading the file.
+ * According messages are just shown as warnings or errors to the
+ * user, but do not show real failure, as even errors can be
+ * recoverable. For unablility to load a file, return false in
+ * loadTrace().
  */
 
 class Loader: public QObject
@@ -51,6 +58,7 @@ public:
   Loader(QString name, QString desc);
   virtual ~Loader();
 
+  // reimplement for a specific Loader
   virtual bool canLoadTrace(QFile* file);
   virtual bool loadTrace(TracePart*);
 
@@ -63,7 +71,9 @@ public:
   QString description() const { return _description; }
 
 signals:
-  void updateStatus(QString, int);
+  void updateStatus(QString statusmsg, int progress);
+  void loadError(QString filename, int line, QString msg);
+  void loadWarning(QString filename, int line, QString msg);
 
 private:
   QString _name, _description;

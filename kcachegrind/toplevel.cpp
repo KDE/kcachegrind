@@ -2344,4 +2344,14 @@ void TopLevel::showStatus(QString msg, int progress)
 	qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
 }
 
+void TopLevel::showLoadError(QString name, int line, QString msg)
+{
+	kError() << "Loading" << name.ascii() << ":" << line << ": " << msg.ascii();
+}
+
+void TopLevel::showLoadWarning(QString name, int line, QString msg)
+{
+	kWarning() << "Loading" << name.ascii() << ":" << line << ": " << msg.ascii();
+}
+
 #include "toplevel.moc"
