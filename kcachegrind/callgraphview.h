@@ -574,7 +574,7 @@ class CallGraphView : public QGraphicsView, public TraceItemView,
 	Q_OBJECT
 
 public:
-	enum ZoomPosition {TopLeft, TopRight, BottomLeft, BottomRight, Auto};
+	enum ZoomPosition {TopLeft, TopRight, BottomLeft, BottomRight, Auto, Hide};
 
 	explicit CallGraphView(TraceItemView* parentView, QWidget* parent=0,
 			       const char* name = 0);
@@ -606,6 +606,8 @@ public slots:
 	void stopRendering();
 	void readDotOutput();
 	void dotExited();
+
+	void zoomPosTriggered(QAction* a);
 
 protected:
 	void resizeEvent(QResizeEvent*);

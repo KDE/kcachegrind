@@ -1551,7 +1551,6 @@ void CallGraphView::updateSizes(QSize s)
 		_panningView->hide();
 		return;
 	}
-	_panningView->show();
 
 	// first, assume use of 1/3 of width/height (possible larger)
 	double zoom = .33 * s.width() / cWidth;
@@ -1597,34 +1596,25 @@ void CallGraphView::updateSizes(QSize s)
 	QPoint newZoomPos = QPoint(0, 0);
 	ZoomPosition zp = _zoomPosition;
 	if (zp == Auto) {
-		QTransform t = viewportTransform();
-		QPoint tl1Pos = t.map(QPoint(0, 0));
-		QPoint tl2Pos = t.map(QPoint(cvW, cvH));
-		QPoint tr1Pos = t.map(QPoint(x, 0));
-		QPoint tr2Pos = t.map(QPoint(x+cvW, cvH));
-		QPoint bl1Pos = t.map(QPoint(0, y));
-		QPoint bl2Pos = t.map(QPoint(cvW, y+cvH));
-		QPoint br1Pos = t.map(QPoint(x, y));
-		QPoint br2Pos = t.map(QPoint(x+cvW, y+cvH));
-		int tlCols = _scene->items(QRect(tl1Pos,tl2Pos)).count();
-		int trCols = _scene->items(QRect(tr1Pos,tr2Pos)).count();
-		int blCols = _scene->items(QRect(bl1Pos,bl2Pos)).count();
-		int brCols = _scene->items(QRect(br1Pos,br2Pos)).count();
+		int tlCols = items(QRect(0,0, cvW,cvH)).count();
+		int trCols = items(QRect(x,0, cvW,cvH)).count();
+		int blCols = items(QRect(0,y, cvW,cvH)).count();
+		int brCols = items(QRect(x,y, cvW,cvH)).count();
 		int minCols = tlCols;
 
 		zp = _lastAutoPosition;
 		switch (zp) {
-		case Qt::TopRightCorner:
+		case TopRight:
 			minCols = trCols;
 			break;
-		case Qt::BottomLeftCorner:
+		case BottomLeft:
 			minCols = blCols;
 			break;
-		case Qt::BottomRightCorner:
+		case BottomRight:
 			minCols = brCols;
 			break;
 		default:
-		case Qt::TopLeftCorner:
+		case TopLeft:
 			minCols = tlCols;
 			break;
 		}
@@ -1650,20 +1640,29 @@ void CallGraphView::updateSizes(QSize s)
 	}
 
 	switch (zp) {
-	case Qt::TopRightCorner:
+	case TopLeft:
+		newZoomPos = QPoint(0, 0);
+		break;
+	case TopRight:
 		newZoomPos = QPoint(x, 0);
 		break;
-	case Qt::BottomLeftCorner:
+	case BottomLeft:
 		newZoomPos = QPoint(0, y);
 		break;
-	case Qt::BottomRightCorner:
+	case BottomRight:
 		newZoomPos = QPoint(x, y);
 		break;
 	default:
 		break;
 	}
+
 	if (newZoomPos != oldZoomPos)
 		_panningView->move(newZoomPos);
+
+	if (zp == Hide)
+		_panningView->hide();
+	else
+		_panningView->show();
 }
 
 void CallGraphView::focusInEvent(QFocusEvent*)
@@ -2573,6 +2572,7 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 	QGraphicsItem* i = itemAt(e->pos());
 
 	Q3PopupMenu popup;
+	QAction* a;
 	TraceFunction *f = 0, *cycle = 0;
 	TraceCall* c = 0;
 
@@ -2793,21 +2793,43 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 	vpopup.setItemChecked(151, _layout == LeftRight);
 	vpopup.setItemChecked(152, _layout == Circular);
 
-	Q3PopupMenu opopup;
-	opopup.insertItem(i18n("TopLeft"), 170);
-	opopup.insertItem(i18n("TopRight"), 171);
-	opopup.insertItem(i18n("BottomLeft"), 172);
-	opopup.insertItem(i18n("BottomRight"), 173);
-	opopup.insertItem(i18n("Automatic"), 174);
-	opopup.setItemChecked(170, _zoomPosition == TopLeft);
-	opopup.setItemChecked(171, _zoomPosition == TopRight);
-	opopup.setItemChecked(172, _zoomPosition == BottomLeft);
-	opopup.setItemChecked(173, _zoomPosition == BottomRight);
-	opopup.setItemChecked(174, _zoomPosition == Auto);
+	QMenu zoomPosMenu;
+	connect(&zoomPosMenu, SIGNAL(triggered(QAction*)),
+			this, SLOT(zoomPosTriggered(QAction*)) );
+
+	a = zoomPosMenu.addAction(i18n("TopLeft"));
+	a->setData(TopLeft);
+	a->setCheckable(true);
+	a->setChecked(_zoomPosition == TopLeft);
+
+	a = zoomPosMenu.addAction(i18n("TopRight"));
+	a->setData(TopRight);
+	a->setCheckable(true);
+	a->setChecked(_zoomPosition == TopRight);
+
+	a = zoomPosMenu.addAction(i18n("BottomLeft"));
+	a->setData(BottomLeft);
+	a->setCheckable(true);
+	a->setChecked(_zoomPosition == BottomLeft);
+
+	a = zoomPosMenu.addAction(i18n("BottomRight"));
+	a->setData(BottomRight);
+	a->setCheckable(true);
+	a->setChecked(_zoomPosition == BottomRight);
+
+	a = zoomPosMenu.addAction(i18n("Automatic"));
+	a->setData(Auto);
+	a->setCheckable(true);
+	a->setChecked(_zoomPosition == Auto);
+
+	a = zoomPosMenu.addAction(i18n("Hide"));
+	a->setData(Hide);
+	a->setCheckable(true);
+	a->setChecked(_zoomPosition == Hide);
 
 	popup.insertItem(i18n("Graph"), &gpopup, 70);
 	popup.insertItem(i18n("Visualization"), &vpopup, 71);
-	popup.insertItem(i18n("Birds-eye View"), &opopup, 72);
+	popup.insertItem(i18n("Birds-eye View"), &zoomPosMenu, 72);
 
 	int r = popup.exec(e->globalPos());
 
@@ -2995,8 +3017,12 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 
 	if (r>99&& r<170)
 		refresh();
-	if (r>169&& r<180)
-		updateSizes();
+}
+
+void CallGraphView::zoomPosTriggered(QAction* a)
+{
+	_zoomPosition = (CallGraphView::ZoomPosition) a->data().toInt(0);
+	updateSizes();
 }
 
 CallGraphView::ZoomPosition CallGraphView::zoomPos(QString s)
@@ -3011,12 +3037,16 @@ CallGraphView::ZoomPosition CallGraphView::zoomPos(QString s)
 		return BottomRight;
 	if (s == QString("Automatic"))
 		return Auto;
+	if (s == QString("Hide"))
+		return Hide;
 
 	return DEFAULT_ZOOMPOS;
 }
 
 QString CallGraphView::zoomPosString(ZoomPosition p)
 {
+	if (p == TopLeft)
+		return QString("TopLeft");
 	if (p == TopRight)
 		return QString("TopRight");
 	if (p == BottomLeft)
@@ -3025,8 +3055,10 @@ QString CallGraphView::zoomPosString(ZoomPosition p)
 		return QString("BottomRight");
 	if (p == Auto)
 		return QString("Automatic");
+	if (p == Hide)
+		return QString("Hide");
 
-	return QString("TopLeft");
+	return QString();
 }
 
 void CallGraphView::readViewConfig(KConfig* c, QString prefix,
