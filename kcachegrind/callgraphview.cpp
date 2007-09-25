@@ -64,7 +64,7 @@
 // CallGraphView defaults
 
 #define DEFAULT_FUNCLIMIT   .05
-#define DEFAULT_CALLLIMIT   .05
+#define DEFAULT_CALLLIMIT    1.
 #define DEFAULT_MAXCALLER    2
 #define DEFAULT_MAXCALLEE   -1
 #define DEFAULT_SHOWSKIPPED  false
@@ -627,7 +627,7 @@ void GraphExporter::createGraph()
 
 		double incl = f->inclusive()->subCost(_eventType);
 		_realFuncLimit = incl * _go->funcLimit();
-		_realCallLimit = incl * _go->callLimit();
+		_realCallLimit = _realFuncLimit * _go->callLimit();
 
 		buildGraph(f, 0, true, 1.0); // down to callees
 
@@ -641,7 +641,7 @@ void GraphExporter::createGraph()
 
 		double incl = c->subCost(_eventType);
 		_realFuncLimit = incl * _go->funcLimit();
-		_realCallLimit = incl * _go->callLimit();
+		_realCallLimit = _realFuncLimit * _go->callLimit();
 
 		// create edge
 		TraceFunction *caller, *called;
@@ -2646,6 +2646,86 @@ void CallGraphView::calleeDepthTriggered(QAction* a)
 	refresh();
 }
 
+QAction* CallGraphView::addNodeLimitAction(QMenu* m, QString s, double l)
+{
+	QAction* a;
+
+	a = m->addAction(s);
+	a->setData(l);
+	a->setCheckable(true);
+	a->setChecked(_funcLimit == l);
+
+	return a;
+}
+
+QMenu* CallGraphView::nodeLimitMenu(QWidget* parent)
+{
+	QAction* a;
+	QMenu* m;
+
+	m = new QMenu(parent);
+	a = addNodeLimitAction(m, i18n("No Minimum"), 0.0);
+	// Unlimited node cost easily produces huge graphs such that 'dot'
+	// would need a long time to layout. For responsiveness, we only allow
+	// for unlimited node cost if a caller and callee depth limit is set.
+	a->setEnabled((_maxCallerDepth>=0) && (_maxCalleeDepth>=0));
+	m->addSeparator();
+	addNodeLimitAction(m, i18n("50 %"), .5);
+	addNodeLimitAction(m, i18n("20 %"), .2);
+	addNodeLimitAction(m, i18n("10 %"), .1);
+	addNodeLimitAction(m, i18n("5 %"), .05);
+	addNodeLimitAction(m, i18n("2 %"), .02);
+	addNodeLimitAction(m, i18n("1 %"), .01);
+
+	connect(m, SIGNAL(triggered(QAction*)),
+			this, SLOT(nodeLimitTriggered(QAction*)) );
+
+	return m;
+}
+
+void CallGraphView::nodeLimitTriggered(QAction* a)
+{
+	_funcLimit = a->data().toDouble(0);
+	refresh();
+}
+
+QAction* CallGraphView::addCallLimitAction(QMenu* m, QString s, double l)
+{
+	QAction* a;
+
+	a = m->addAction(s);
+	a->setData(l);
+	a->setCheckable(true);
+	a->setChecked(_callLimit == l);
+
+	return a;
+}
+
+QMenu* CallGraphView::callLimitMenu(QWidget* parent)
+{
+	QMenu* m;
+
+	m = new QMenu(parent);
+	addCallLimitAction(m, i18n("Same as Node"), 1.0);
+	// xgettext: no-c-format
+	addCallLimitAction(m, i18n("50 % of Node"), .5);
+	// xgettext: no-c-format
+	addCallLimitAction(m, i18n("20 % of Node"), .2);
+	// xgettext: no-c-format
+	addCallLimitAction(m, i18n("10 % of Node"), .1);
+
+	connect(m, SIGNAL(triggered(QAction*)),
+			this, SLOT(callLimitTriggered(QAction*)) );
+
+	return m;
+}
+
+void CallGraphView::callLimitTriggered(QAction* a)
+{
+	_callLimit = a->data().toDouble(0);
+	refresh();
+}
+
 
 void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 {
@@ -2712,71 +2792,12 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 	popup.insertItem(i18n("Export Graph"), &epopup, 200);
 	popup.addSeparator();
 
-	Q3PopupMenu gpopup3;
-	gpopup3.setCheckable(true);
-	gpopup3.insertItem(i18n("No Minimum"), 120);
-	gpopup3.setItemEnabled(120, (_maxCallerDepth>=0) && (_maxCalleeDepth>=0));
-	gpopup3.addSeparator();
-	gpopup3.insertItem(i18n("50 %"), 121);
-	gpopup3.insertItem(i18n("20 %"), 122);
-	gpopup3.insertItem(i18n("10 %"), 123);
-	gpopup3.insertItem(i18n("5 %"), 124);
-	gpopup3.insertItem(i18n("3 %"), 125);
-	gpopup3.insertItem(i18n("2 %"), 126);
-	gpopup3.insertItem(i18n("1.5 %"), 127);
-	gpopup3.insertItem(i18n("1 %"), 128);
-	if (_funcLimit<0)
-		_funcLimit = DEFAULT_FUNCLIMIT;
-	if (_funcLimit>.5)
-		_funcLimit = .5;
-	if (_funcLimit == 0.0)
-		gpopup3.setItemChecked(120, true);
-	else if (_funcLimit >= 0.5)
-		gpopup3.setItemChecked(121, true);
-	else if (_funcLimit >= 0.2)
-		gpopup3.setItemChecked(122, true);
-	else if (_funcLimit >= 0.1)
-		gpopup3.setItemChecked(123, true);
-	else if (_funcLimit >= 0.05)
-		gpopup3.setItemChecked(124, true);
-	else if (_funcLimit >= 0.03)
-		gpopup3.setItemChecked(125, true);
-	else if (_funcLimit >= 0.02)
-		gpopup3.setItemChecked(126, true);
-	else if (_funcLimit >= 0.015)
-		gpopup3.setItemChecked(127, true);
-	else
-		gpopup3.setItemChecked(128, true);
-	double oldFuncLimit = _funcLimit;
-
-	Q3PopupMenu gpopup4;
-	gpopup4.setCheckable(true);
-	gpopup4.insertItem(i18n("Same as Node"), 160);
-	// xgettext: no-c-format
-	gpopup4.insertItem(i18n("50 % of Node"), 161);
-	// xgettext: no-c-format
-	gpopup4.insertItem(i18n("20 % of Node"), 162);
-	// xgettext: no-c-format
-	gpopup4.insertItem(i18n("10 % of Node"), 163);
-	if (_callLimit<0)
-		_callLimit = DEFAULT_CALLLIMIT;
-	if (_callLimit >= _funcLimit)
-		_callLimit = _funcLimit;
-	if (_callLimit == _funcLimit)
-		gpopup4.setItemChecked(160, true);
-	else if (_callLimit >= 0.5 * _funcLimit)
-		gpopup4.setItemChecked(161, true);
-	else if (_callLimit >= 0.2 * _funcLimit)
-		gpopup4.setItemChecked(162, true);
-	else
-		gpopup4.setItemChecked(163, true);
-
 	Q3PopupMenu gpopup;
 	gpopup.setCheckable(true);
 	gpopup.insertItem(i18n("Caller Depth"), callerDepthMenu(&gpopup));
 	gpopup.insertItem(i18n("Callee Depth"), calleeDepthMenu(&gpopup));
-	gpopup.insertItem(i18n("Min. Node Cost"), &gpopup3, 82);
-	gpopup.insertItem(i18n("Min. Call Cost"), &gpopup4, 83);
+	gpopup.insertItem(i18n("Min. Node Cost"), nodeLimitMenu(&gpopup));
+	gpopup.insertItem(i18n("Min. Call Cost"), callLimitMenu(&gpopup));
 	gpopup.addSeparator();
 	gpopup.insertItem(i18n("Arrows for Skipped Calls"), 130);
 	gpopup.setItemChecked(130, _showSkipped);
@@ -2892,34 +2913,6 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 	}
 		break;
 
-	case 120:
-		_funcLimit = 0;
-		break;
-	case 121:
-		_funcLimit = 0.5;
-		break;
-	case 122:
-		_funcLimit = 0.2;
-		break;
-	case 123:
-		_funcLimit = 0.1;
-		break;
-	case 124:
-		_funcLimit = 0.05;
-		break;
-	case 125:
-		_funcLimit = 0.03;
-		break;
-	case 126:
-		_funcLimit = 0.02;
-		break;
-	case 127:
-		_funcLimit = 0.015;
-		break;
-	case 128:
-		_funcLimit = 0.01;
-		break;
-
 	case 130:
 		_showSkipped = !_showSkipped;
 		break;
@@ -2950,19 +2943,6 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 		_layout = Circular;
 		break;
 
-	case 160:
-		_callLimit = _funcLimit;
-		break;
-	case 161:
-		_callLimit = .5 * _funcLimit;
-		break;
-	case 162:
-		_callLimit = .2 * _funcLimit;
-		break;
-	case 163:
-		_callLimit = .1 * _funcLimit;
-		break;
-
 	case 170:
 		_zoomPosition = TopLeft;
 		break;
@@ -2982,8 +2962,6 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 	default:
 		break;
 	}
-	if (r>=120&& r<130)
-		_callLimit *= _funcLimit / oldFuncLimit;
 
 	if (r>99&& r<170)
 		refresh();

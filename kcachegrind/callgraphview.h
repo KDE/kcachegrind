@@ -610,6 +610,8 @@ public slots:
 	// context menu trigger handlers
 	void callerDepthTriggered(QAction*);
 	void calleeDepthTriggered(QAction*);
+	void nodeLimitTriggered(QAction*);
+	void callLimitTriggered(QAction*);
 	void zoomPosTriggered(QAction*);
 
 protected:
@@ -638,6 +640,10 @@ private:
 	QMenu* callerDepthMenu(QWidget*);
 	QAction* addCalleeDepthAction(QMenu*,QString,int);
 	QMenu* calleeDepthMenu(QWidget*);
+	QAction* addNodeLimitAction(QMenu*,QString,double);
+	QMenu* nodeLimitMenu(QWidget*);
+	QAction* addCallLimitAction(QMenu*,QString,double);
+	QMenu* callLimitMenu(QWidget*);
 
 	QGraphicsScene *_scene;
 	int _xMargin, _yMargin;
