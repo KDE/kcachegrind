@@ -241,7 +241,7 @@ public:
 	virtual double funcLimit() = 0;
 	virtual double callLimit() = 0;
 	virtual int maxCallerDepth() = 0;
-	virtual int maxCallingDepth() = 0;
+	virtual int maxCalleeDepth() = 0;
 	virtual bool showSkipped() = 0;
 	virtual bool expandCycles() = 0;
 	virtual bool clusterGroups() = 0;
@@ -262,7 +262,7 @@ class StorableGraphOptions: public GraphOptions
     virtual double funcLimit() { return _funcLimit; }
     virtual double callLimit() { return _callLimit; }
     virtual int maxCallerDepth() { return _maxCallerDepth; }
-    virtual int maxCallingDepth() { return _maxCallingDepth; }
+    virtual int maxCalleeDepth() { return _maxCalleeDepth; }
     virtual bool showSkipped() { return _showSkipped; }
     virtual bool expandCycles() { return _expandCycles; }
     virtual bool clusterGroups() { return _clusterGroups; }
@@ -271,7 +271,7 @@ class StorableGraphOptions: public GraphOptions
 
     // setters
     void setMaxCallerDepth(int d) { _maxCallerDepth = d; }
-    void setMaxCallingDepth(int d) { _maxCallingDepth = d; }
+    void setMaxCalleeDepth(int d) { _maxCalleeDepth = d; }
     void setFuncLimit(double l) { _funcLimit = l; }
     void setCallLimit(double l) { _callLimit = l; }
     void setShowSkipped(bool b) { _showSkipped = b; }
@@ -282,7 +282,7 @@ class StorableGraphOptions: public GraphOptions
 
  protected:
     double _funcLimit, _callLimit;
-    int _maxCallerDepth, _maxCallingDepth;
+    int _maxCallerDepth, _maxCalleeDepth;
     bool _showSkipped, _expandCycles, _clusterGroups;
     int _detailLevel;
     Layout _layout;
@@ -607,7 +607,10 @@ public slots:
 	void readDotOutput();
 	void dotExited();
 
-	void zoomPosTriggered(QAction* a);
+	// context menu trigger handlers
+	void callerDepthTriggered(QAction*);
+	void calleeDepthTriggered(QAction*);
+	void zoomPosTriggered(QAction*);
 
 protected:
 	void resizeEvent(QResizeEvent*);
@@ -629,6 +632,12 @@ private:
 	void makeFrame(CanvasNode*, bool active);
 	void clear();
 	void showText(QString);
+
+	// context menu builders
+	QAction* addCallerDepthAction(QMenu*,QString,int);
+	QMenu* callerDepthMenu(QWidget*);
+	QAction* addCalleeDepthAction(QMenu*,QString,int);
+	QMenu* calleeDepthMenu(QWidget*);
 
 	QGraphicsScene *_scene;
 	int _xMargin, _yMargin;

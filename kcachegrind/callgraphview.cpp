@@ -66,7 +66,7 @@
 #define DEFAULT_FUNCLIMIT   .05
 #define DEFAULT_CALLLIMIT   .05
 #define DEFAULT_MAXCALLER    2
-#define DEFAULT_MAXCALLING   -1
+#define DEFAULT_MAXCALLEE   -1
 #define DEFAULT_SHOWSKIPPED  false
 #define DEFAULT_EXPANDCYCLES false
 #define DEFAULT_CLUSTERGROUPS false
@@ -518,7 +518,7 @@ StorableGraphOptions::StorableGraphOptions()
   _funcLimit         = DEFAULT_FUNCLIMIT;
   _callLimit         = DEFAULT_CALLLIMIT;
   _maxCallerDepth    = DEFAULT_MAXCALLER;
-  _maxCallingDepth   = DEFAULT_MAXCALLING;
+  _maxCalleeDepth    = DEFAULT_MAXCALLEE;
   _showSkipped       = DEFAULT_SHOWSKIPPED;
   _expandCycles      = DEFAULT_EXPANDCYCLES;
   _detailLevel       = DEFAULT_DETAILLEVEL;
@@ -629,7 +629,7 @@ void GraphExporter::createGraph()
 		_realFuncLimit = incl * _go->funcLimit();
 		_realCallLimit = incl * _go->callLimit();
 
-		buildGraph(f, 0, true, 1.0); // down to callings
+		buildGraph(f, 0, true, 1.0); // down to callees
 
 		// set costs of function back to 0, as it will be added again
 		GraphNode& n = _nodeMap[f];
@@ -656,7 +656,7 @@ void GraphExporter::createGraph()
 		e.count = c->callCount();
 
 		SubCost s = called->inclusive()->subCost(_eventType);
-		buildGraph(called, 0, true, e.cost / s); // down to callings
+		buildGraph(called, 0, true, e.cost / s); // down to callees
 		s = caller->inclusive()->subCost(_eventType);
 		buildGraph(caller, 0, false, e.cost / s); // up to callers
 	}
@@ -805,7 +805,7 @@ void GraphExporter::writeDot()
 		if ((from.incl <= _realFuncLimit) ||(to.incl <= _realFuncLimit))
 			continue;
 
-		// remove dumped edges from n.callers/n.callings
+		// remove dumped edges from n.callers/n.callees
 		from.removeEdge(&e);
 
 		*stream << QString("  F%1 -> F%2 [weight=%3")
@@ -971,7 +971,7 @@ void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallees,
 		qDebug("  Added Incl. %f, now %f", incl, n.incl);
 
 	// A negative depth limit means "unlimited"
-	int maxDepth = toCallees ? _go->maxCallingDepth()
+	int maxDepth = toCallees ? _go->maxCalleeDepth()
 	        : _go->maxCallerDepth();
 	if ((maxDepth>=0) && (d >= maxDepth)) {
 		if (0)
@@ -2565,6 +2565,88 @@ void CallGraphView::mouseDoubleClickEvent(QMouseEvent* e)
 	}
 }
 
+// helper functions for context menu:
+// submenu builders and trigger handlers
+
+QAction* CallGraphView::addCallerDepthAction(QMenu* m, QString s, int d)
+{
+	QAction* a;
+
+	a = m->addAction(s);
+	a->setData(d);
+	a->setCheckable(true);
+	a->setChecked(_maxCallerDepth == d);
+
+	return a;
+}
+
+QMenu* CallGraphView::callerDepthMenu(QWidget* parent)
+{
+	QAction* a;
+	QMenu* m;
+
+	m = new QMenu(parent);
+	a = addCallerDepthAction(m, i18n("Unlimited"), -1);
+	a->setEnabled(_funcLimit>0.005);
+	m->addSeparator();
+	addCallerDepthAction(m, i18n("None"), 0);
+	addCallerDepthAction(m, i18n("max. 2"), 2);
+	addCallerDepthAction(m, i18n("max. 5"), 5);
+	addCallerDepthAction(m, i18n("max. 10"), 10);
+	addCallerDepthAction(m, i18n("max. 15"), 15);
+
+	connect(m, SIGNAL(triggered(QAction*)),
+			this, SLOT(callerDepthTriggered(QAction*)) );
+
+	return m;
+}
+
+void CallGraphView::callerDepthTriggered(QAction* a)
+{
+	_maxCallerDepth = a->data().toInt(0);
+	refresh();
+}
+
+QAction* CallGraphView::addCalleeDepthAction(QMenu* m, QString s, int d)
+{
+	QAction* a;
+
+	a = m->addAction(s);
+	a->setData(d);
+	a->setCheckable(true);
+	a->setChecked(_maxCalleeDepth == d);
+
+	return a;
+}
+
+QMenu* CallGraphView::calleeDepthMenu(QWidget* parent)
+{
+	QAction* a;
+	QMenu* m;
+
+	m = new QMenu(parent);
+	a = addCalleeDepthAction(m, i18n("Unlimited"), -1);
+	a->setEnabled(_funcLimit>0.005);
+	m->addSeparator();
+	addCalleeDepthAction(m, i18n("None"), 0);
+	addCalleeDepthAction(m, i18n("max. 2"), 2);
+	addCalleeDepthAction(m, i18n("max. 5"), 5);
+	addCalleeDepthAction(m, i18n("max. 10"), 10);
+	addCalleeDepthAction(m, i18n("max. 15"), 15);
+
+	connect(m, SIGNAL(triggered(QAction*)),
+			this, SLOT(calleeDepthTriggered(QAction*)) );
+
+	return m;
+}
+
+void CallGraphView::calleeDepthTriggered(QAction* a)
+{
+	_maxCalleeDepth = a->data().toInt(0);
+	refresh();
+}
+
+
 void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 {
 	_isMoving = false;
@@ -2630,84 +2712,10 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 	popup.insertItem(i18n("Export Graph"), &epopup, 200);
 	popup.addSeparator();
 
-	Q3PopupMenu gpopup1;
-	gpopup1.setCheckable(true);
-	gpopup1.insertItem(i18n("Unlimited"), 100);
-	gpopup1.setItemEnabled(100, (_funcLimit>0.005));
-	gpopup1.addSeparator();
-	gpopup1.insertItem(i18n("None"), 101);
-	gpopup1.insertItem(i18n("max. 2"), 102);
-	gpopup1.insertItem(i18n("max. 5"), 103);
-	gpopup1.insertItem(i18n("max. 10"), 104);
-	gpopup1.insertItem(i18n("max. 15"), 105);
-	if (_maxCallerDepth<-1)
-		_maxCallerDepth=-1;
-	switch (_maxCallerDepth) {
-	case -1:
-		gpopup1.setItemChecked(100, true);
-		break;
-	case 0:
-		gpopup1.setItemChecked(101, true);
-		break;
-	case 2:
-		gpopup1.setItemChecked(102, true);
-		break;
-	case 5:
-		gpopup1.setItemChecked(103, true);
-		break;
-	case 10:
-		gpopup1.setItemChecked(104, true);
-		break;
-	case 15:
-		gpopup1.setItemChecked(105, true);
-		break;
-	default:
-		gpopup1.insertItem(i18n("< %1", _maxCallerDepth), 106);
-		gpopup1.setItemChecked(106, true);
-		break;
-	}
-
-	Q3PopupMenu gpopup2;
-	gpopup2.setCheckable(true);
-	gpopup2.insertItem(i18n("Unlimited"), 110);
-	gpopup2.setItemEnabled(110, (_funcLimit>0.005));
-	gpopup2.addSeparator();
-	gpopup2.insertItem(i18n("None"), 111);
-	gpopup2.insertItem(i18n("max. 2"), 112);
-	gpopup2.insertItem(i18n("max. 5"), 113);
-	gpopup2.insertItem(i18n("max. 10"), 114);
-	gpopup2.insertItem(i18n("max. 15"), 115);
-	if (_maxCallingDepth<-1)
-		_maxCallingDepth=-1;
-	switch (_maxCallingDepth) {
-	case -1:
-		gpopup2.setItemChecked(110, true);
-		break;
-	case 0:
-		gpopup2.setItemChecked(111, true);
-		break;
-	case 2:
-		gpopup2.setItemChecked(112, true);
-		break;
-	case 5:
-		gpopup2.setItemChecked(113, true);
-		break;
-	case 10:
-		gpopup2.setItemChecked(114, true);
-		break;
-	case 15:
-		gpopup2.setItemChecked(115, true);
-		break;
-	default:
-		gpopup2.insertItem(i18n("< %1", _maxCallingDepth), 116);
-		gpopup2.setItemChecked(116, true);
-		break;
-	}
-
 	Q3PopupMenu gpopup3;
 	gpopup3.setCheckable(true);
 	gpopup3.insertItem(i18n("No Minimum"), 120);
-	gpopup3.setItemEnabled(120, (_maxCallerDepth>=0) && (_maxCallingDepth>=0));
+	gpopup3.setItemEnabled(120, (_maxCallerDepth>=0) && (_maxCalleeDepth>=0));
 	gpopup3.addSeparator();
 	gpopup3.insertItem(i18n("50 %"), 121);
 	gpopup3.insertItem(i18n("20 %"), 122);
@@ -2765,8 +2773,8 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 
 	Q3PopupMenu gpopup;
 	gpopup.setCheckable(true);
-	gpopup.insertItem(i18n("Caller Depth"), &gpopup1, 80);
-	gpopup.insertItem(i18n("Callee Depth"), &gpopup2, 81);
+	gpopup.insertItem(i18n("Caller Depth"), callerDepthMenu(&gpopup));
+	gpopup.insertItem(i18n("Callee Depth"), calleeDepthMenu(&gpopup));
 	gpopup.insertItem(i18n("Min. Node Cost"), &gpopup3, 82);
 	gpopup.insertItem(i18n("Min. Call Cost"), &gpopup4, 83);
 	gpopup.addSeparator();
@@ -2882,44 +2890,6 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 			pix.save(fn, "PNG");
 		}
 	}
-		break;
-
-	case 100:
-		_maxCallerDepth = -1;
-		break;
-	case 101:
-		_maxCallerDepth = 0;
-		break;
-	case 102:
-		_maxCallerDepth = 2;
-		break;
-	case 103:
-		_maxCallerDepth = 5;
-		break;
-	case 104:
-		_maxCallerDepth = 10;
-		break;
-	case 105:
-		_maxCallerDepth = 15;
-		break;
-
-	case 110:
-		_maxCallingDepth = -1;
-		break;
-	case 111:
-		_maxCallingDepth = 0;
-		break;
-	case 112:
-		_maxCallingDepth = 2;
-		break;
-	case 113:
-		_maxCallingDepth = 5;
-		break;
-	case 114:
-		_maxCallingDepth = 10;
-		break;
-	case 115:
-		_maxCallingDepth = 15;
 		break;
 
 	case 120:
@@ -3070,7 +3040,7 @@ void CallGraphView::readViewConfig(KConfig* c, QString prefix,
 		qDebug("CallGraphView::readViewConfig");
 
 	_maxCallerDepth = g.readEntry("MaxCaller", DEFAULT_MAXCALLER);
-	_maxCallingDepth = g.readEntry("MaxCalling", DEFAULT_MAXCALLING);
+	_maxCalleeDepth = g.readEntry("MaxCallee", DEFAULT_MAXCALLEE);
 	_funcLimit = g.readEntry("FuncLimit", DEFAULT_FUNCLIMIT);
 	_callLimit = g.readEntry("CallLimit", DEFAULT_CALLLIMIT);
 	_showSkipped = g.readEntry("ShowSkipped", DEFAULT_SHOWSKIPPED);
@@ -3090,7 +3060,7 @@ void CallGraphView::saveViewConfig(KConfig* c, QString prefix,
 	KConfigGroup g(c, (prefix+postfix).toAscii());
 
 	writeConfigEntry(g, "MaxCaller", _maxCallerDepth, DEFAULT_MAXCALLER);
-	writeConfigEntry(g, "MaxCalling", _maxCallingDepth, DEFAULT_MAXCALLING);
+	writeConfigEntry(g, "MaxCallee", _maxCalleeDepth, DEFAULT_MAXCALLEE);
 	writeConfigEntry(g, "FuncLimit", _funcLimit, DEFAULT_FUNCLIMIT);
 	writeConfigEntry(g, "CallLimit", _callLimit, DEFAULT_CALLLIMIT);
 	writeConfigEntry(g, "ShowSkipped", _showSkipped, DEFAULT_SHOWSKIPPED);
