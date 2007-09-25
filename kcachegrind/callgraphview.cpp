@@ -2726,6 +2726,79 @@ void CallGraphView::callLimitTriggered(QAction* a)
 	refresh();
 }
 
+QAction* CallGraphView::addZoomPosAction(QMenu* m, QString s,
+                                         CallGraphView::ZoomPosition p)
+{
+	QAction* a;
+
+	a = m->addAction(s);
+	a->setData((int)p);
+	a->setCheckable(true);
+	a->setChecked(_zoomPosition == p);
+
+	return a;
+}
+
+QMenu* CallGraphView::zoomPosMenu(QWidget* parent)
+{
+	QMenu* m;
+
+	m = new QMenu(parent);
+	addZoomPosAction(m, i18n("Top Left"), TopLeft);
+	addZoomPosAction(m, i18n("Top Right"), TopRight);
+	addZoomPosAction(m, i18n("Bottom Left"), BottomLeft);
+	addZoomPosAction(m, i18n("Bottom Right"), BottomRight);
+	addZoomPosAction(m, i18n("Automatic"), Auto);
+	addZoomPosAction(m, i18n("Hide"), Hide);
+
+	connect(m, SIGNAL(triggered(QAction*)),
+			this, SLOT(zoomPosTriggered(QAction*)) );
+
+	return m;
+}
+
+
+void CallGraphView::zoomPosTriggered(QAction* a)
+{
+	_zoomPosition = (ZoomPosition) a->data().toInt(0);
+	updateSizes();
+}
+
+QAction* CallGraphView::addLayoutAction(QMenu* m, QString s,
+                                         GraphOptions::Layout l)
+{
+	QAction* a;
+
+	a = m->addAction(s);
+	a->setData((int)l);
+	a->setCheckable(true);
+	a->setChecked(_layout == l);
+
+	return a;
+}
+
+QMenu* CallGraphView::layoutMenu(QWidget* parent)
+{
+	QMenu* m;
+
+	m = new QMenu(parent);
+	addLayoutAction(m, i18n("Top to Down"), TopDown);
+	addLayoutAction(m, i18n("Left to Right"), LeftRight);
+	addLayoutAction(m, i18n("Circular"), Circular);
+
+	connect(m, SIGNAL(triggered(QAction*)),
+			this, SLOT(layoutTriggered(QAction*)) );
+
+	return m;
+}
+
+
+void CallGraphView::layoutTriggered(QAction* a)
+{
+	_layout = (Layout) a->data().toInt(0);
+	refresh();
+}
+
 
 void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 {
@@ -2734,7 +2807,6 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 	QGraphicsItem* i = itemAt(e->pos());
 
 	Q3PopupMenu popup;
-	QAction* a;
 	TraceFunction *f = 0, *cycle = 0;
 	TraceCall* c = 0;
 
@@ -2814,51 +2886,11 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 	vpopup.setItemChecked(140, _detailLevel == 0);
 	vpopup.setItemChecked(141, _detailLevel == 1);
 	vpopup.setItemChecked(142, _detailLevel == 2);
-	vpopup.addSeparator();
-	vpopup.insertItem(i18n("Top to Down"), 150);
-	vpopup.insertItem(i18n("Left to Right"), 151);
-	vpopup.insertItem(i18n("Circular"), 152);
-	vpopup.setItemChecked(150, _layout == TopDown);
-	vpopup.setItemChecked(151, _layout == LeftRight);
-	vpopup.setItemChecked(152, _layout == Circular);
-
-	QMenu zoomPosMenu;
-	connect(&zoomPosMenu, SIGNAL(triggered(QAction*)),
-			this, SLOT(zoomPosTriggered(QAction*)) );
-
-	a = zoomPosMenu.addAction(i18n("TopLeft"));
-	a->setData(TopLeft);
-	a->setCheckable(true);
-	a->setChecked(_zoomPosition == TopLeft);
-
-	a = zoomPosMenu.addAction(i18n("TopRight"));
-	a->setData(TopRight);
-	a->setCheckable(true);
-	a->setChecked(_zoomPosition == TopRight);
-
-	a = zoomPosMenu.addAction(i18n("BottomLeft"));
-	a->setData(BottomLeft);
-	a->setCheckable(true);
-	a->setChecked(_zoomPosition == BottomLeft);
-
-	a = zoomPosMenu.addAction(i18n("BottomRight"));
-	a->setData(BottomRight);
-	a->setCheckable(true);
-	a->setChecked(_zoomPosition == BottomRight);
-
-	a = zoomPosMenu.addAction(i18n("Automatic"));
-	a->setData(Auto);
-	a->setCheckable(true);
-	a->setChecked(_zoomPosition == Auto);
-
-	a = zoomPosMenu.addAction(i18n("Hide"));
-	a->setData(Hide);
-	a->setCheckable(true);
-	a->setChecked(_zoomPosition == Hide);
 
 	popup.insertItem(i18n("Graph"), &gpopup, 70);
 	popup.insertItem(i18n("Visualization"), &vpopup, 71);
-	popup.insertItem(i18n("Birds-eye View"), &zoomPosMenu, 72);
+	popup.insertItem(i18n("Layout"), layoutMenu(&popup));
+	popup.insertItem(i18n("Birds-eye View"), zoomPosMenu(&popup));
 
 	int r = popup.exec(e->globalPos());
 
@@ -2933,32 +2965,6 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 		_detailLevel = 2;
 		break;
 
-	case 150:
-		_layout = TopDown;
-		break;
-	case 151:
-		_layout = LeftRight;
-		break;
-	case 152:
-		_layout = Circular;
-		break;
-
-	case 170:
-		_zoomPosition = TopLeft;
-		break;
-	case 171:
-		_zoomPosition = TopRight;
-		break;
-	case 172:
-		_zoomPosition = BottomLeft;
-		break;
-	case 173:
-		_zoomPosition = BottomRight;
-		break;
-	case 174:
-		_zoomPosition = Auto;
-		break;
-
 	default:
 		break;
 	}
@@ -2967,11 +2973,6 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 		refresh();
 }
 
-void CallGraphView::zoomPosTriggered(QAction* a)
-{
-	_zoomPosition = (CallGraphView::ZoomPosition) a->data().toInt(0);
-	updateSizes();
-}
 
 CallGraphView::ZoomPosition CallGraphView::zoomPos(QString s)
 {

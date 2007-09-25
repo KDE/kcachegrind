@@ -613,6 +613,7 @@ public slots:
 	void nodeLimitTriggered(QAction*);
 	void callLimitTriggered(QAction*);
 	void zoomPosTriggered(QAction*);
+	void layoutTriggered(QAction*);
 
 protected:
 	void resizeEvent(QResizeEvent*);
@@ -644,6 +645,10 @@ private:
 	QMenu* nodeLimitMenu(QWidget*);
 	QAction* addCallLimitAction(QMenu*,QString,double);
 	QMenu* callLimitMenu(QWidget*);
+	QAction* addZoomPosAction(QMenu*,QString,ZoomPosition);
+	QMenu* zoomPosMenu(QWidget*);
+	QAction* addLayoutAction(QMenu*,QString,Layout);
+	QMenu* layoutMenu(QWidget*);
 
 	QGraphicsScene *_scene;
 	int _xMargin, _yMargin;
