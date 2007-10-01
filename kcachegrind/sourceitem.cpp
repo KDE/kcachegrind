@@ -166,8 +166,8 @@ void SourceItem::updateCost()
 
     QString icon = "edit-undo";
     KIconLoader* loader = KIconLoader::global();
-    p= loader->loadIcon(icon, K3Icon::Small, 0,
-                        K3Icon::DefaultState, QStringList(), 0, true);
+    p= loader->loadIcon(icon, KIconLoader::Small, 0,
+                        KIconLoader::DefaultState, QStringList(), 0, true);
     if (p.isNull())
       str = i18n("(cycle)");
 
