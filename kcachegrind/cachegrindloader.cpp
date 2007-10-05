@@ -19,8 +19,10 @@
 #include <errno.h>
 
 #include <QFile>
+#include <QVector>
 
 #include <klocale.h>
+#include <kdebug.h>
 
 #include "loader.h"
 #include "tracedata.h"
