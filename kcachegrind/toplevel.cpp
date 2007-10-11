@@ -341,8 +341,8 @@ void TopLevel::createDocks()
   _functionSelection->setTopLevel(this);
 
   _functionDock->setWidget(_functionSelection);
-  // xgettext: no-c-format
   _functionSelection->setWhatsThis( i18n(
+                   // xgettext: no-c-format
                    "<b>The Flat Profile</b>"
                    "<p>The flat profile contains a group and a function "
                    "selection list. The group list contains all groups "
