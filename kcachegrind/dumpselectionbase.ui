@@ -562,7 +562,7 @@
                   </widget>
                 </item>
                 <item>
-                  <widget class="Q3TextEdit" name="textEdit2" />
+                  <widget class="QTextEdit" name="textEdit2" />
                 </item>
                 <item>
                   <layout class="QHBoxLayout" >
@@ -975,7 +975,7 @@
                   <number>0</number>
                 </property>
                 <item>
-                  <widget class="Q3TextEdit" name="textEdit2_2" />
+                  <widget class="QTextEdit" name="textEdit2_2" />
                 </item>
                 <item>
                   <layout class="QHBoxLayout" >
