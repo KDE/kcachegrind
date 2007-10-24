@@ -78,7 +78,7 @@ void TraceItemView::writeConfigEntry(KConfigGroup &c, const char* pKey,
     else
 	{
 		if( bNLS )
-			c.writeEntry(pKey, value, KConfigBase::Normal|KConfigBase::NLS);
+			c.writeEntry(pKey, value, KConfigBase::Normal|KConfigBase::Localized);
 		else
 			c.writeEntry(pKey, value);
 	}
