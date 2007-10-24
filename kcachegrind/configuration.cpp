@@ -146,14 +146,16 @@ void Configuration::saveOptions(KConfig* kconfig)
 
   // source options
   KConfigGroup sourceConfig(kconfig, QByteArray("Source"));
-  sourceConfig.writeEntry("Dirs", c->_generalSourceDirs, ':');
+  // XXX joining the list with a custom separator without escaping is
+  // bogus. should use regular list entries.
+  sourceConfig.writeEntry("Dirs", c->_generalSourceDirs.join(":"));
   Q3DictIterator<QStringList> it2( c->_objectSourceDirs );
   count = 1;
   for( ; it2.current(); ++it2 ) {
     sourceConfig.writeEntry( QString("Object%1").arg(count),
 			     it2.currentKey());
     sourceConfig.writeEntry( QString("Dirs%1").arg(count),
-			     *(*it2), ':');
+			     (*(*it2)).join(":"));
     count++;
   }
   sourceConfig.writeEntry( "Count", count-1);
@@ -236,14 +238,14 @@ void Configuration::readOptions(KConfig* kconfig)
   // source options
   KConfigGroup sourceConfig(kconfig, QByteArray("Source"));
   QStringList dirs;
-  dirs = sourceConfig.readEntry("Dirs", QStringList(),':');
+  dirs = sourceConfig.readEntry("Dirs", QString()).split(':');
   if (dirs.count()>0) c->_generalSourceDirs = dirs;
   count = sourceConfig.readEntry("Count", 0);
   c->_objectSourceDirs.clear();
   if (count>17) c->_objectSourceDirs.resize(count);
   for (i=1;i<=count;i++) {
     QString n = sourceConfig.readEntry(QString("Object%1").arg(i),QString());
-    dirs = sourceConfig.readEntry(QString("Dirs%1").arg(i), QStringList(),':');
+    dirs = sourceConfig.readEntry(QString("Dirs%1").arg(i), QString()).split(':');
 
     if (n.isEmpty() || (dirs.count()==0)) continue;
 
