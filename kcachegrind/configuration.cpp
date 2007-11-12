@@ -128,7 +128,7 @@ void Configuration::saveOptions(KConfig* kconfig)
   Configuration* c = config();
 
   // color options
-  KConfigGroup colorConfig(kconfig, QByteArray("CostColors"));
+  KConfigGroup colorConfig(kconfig, "CostColors");
   Q3DictIterator<ColorSetting> it( c->_colors );
   int count = 1;
   for( ; it.current(); ++it ) {
@@ -145,7 +145,7 @@ void Configuration::saveOptions(KConfig* kconfig)
   colorConfig.writeEntry( "Count", count-1);
 
   // source options
-  KConfigGroup sourceConfig(kconfig, QByteArray("Source"));
+  KConfigGroup sourceConfig(kconfig, "Source");
   // XXX joining the list with a custom separator without escaping is
   // bogus. should use regular list entries.
   sourceConfig.writeEntry("Dirs", c->_generalSourceDirs.join(":"));
@@ -161,7 +161,7 @@ void Configuration::saveOptions(KConfig* kconfig)
   sourceConfig.writeEntry( "Count", count-1);
 
   // general options
-  KConfigGroup generalConfig(kconfig, QByteArray("General"));
+  KConfigGroup generalConfig(kconfig, "General");
   generalConfig.writeEntry("ShowPercentage", c->_showPercentage);
   generalConfig.writeEntry("ShowExpanded", c->_showExpanded);
   generalConfig.writeEntry("ShowCycles", c->_showCycles);
@@ -174,7 +174,7 @@ void Configuration::saveOptions(KConfig* kconfig)
   generalConfig.writeEntry("Context", c->_context);
   generalConfig.writeEntry("NoCostInside", c->_noCostInside);
 
-  KConfigGroup ctConfig(kconfig, QByteArray("CostTypes"));
+  KConfigGroup ctConfig(kconfig, "CostTypes");
   int ctCount = TraceEventType::knownTypeCount();
   ctConfig.writeEntry( "Count", ctCount);
   for (int i=0; i<ctCount; i++) {
@@ -217,7 +217,7 @@ void Configuration::readOptions(KConfig* kconfig)
   c->color("CostType-Dr")->color = QColor(40,40,180);
   c->color("CostType-Dw")->color = QColor(80,80,120);
 
-  KConfigGroup colorConfig(kconfig, QByteArray("CostColors"));
+  KConfigGroup colorConfig(kconfig, "CostColors");
   count = colorConfig.readEntry("Count", 0);
   for (i=1;i<=count;i++) {
     QString n = colorConfig.readEntry(QString("Name%1").arg(i),QString());
@@ -236,7 +236,7 @@ void Configuration::readOptions(KConfig* kconfig)
   }
 
   // source options
-  KConfigGroup sourceConfig(kconfig, QByteArray("Source"));
+  KConfigGroup sourceConfig(kconfig, "Source");
   QStringList dirs;
   dirs = sourceConfig.readEntry("Dirs", QString()).split(':');
   if (dirs.count()>0) c->_generalSourceDirs = dirs;
@@ -254,7 +254,7 @@ void Configuration::readOptions(KConfig* kconfig)
 
 
   // general options
-  KConfigGroup generalConfig(kconfig, QByteArray("General"));
+  KConfigGroup generalConfig(kconfig, "General");
   c->_showPercentage = generalConfig.readEntry("ShowPercentage", true);
   c->_showExpanded = generalConfig.readEntry("ShowExpanded", false);
   c->_showCycles = generalConfig.readEntry("ShowCycles", true);
@@ -270,7 +270,7 @@ void Configuration::readOptions(KConfig* kconfig)
   // known cost types
   if (TraceEventType::knownTypeCount()==0) {
 
-    KConfigGroup ctConfig(kconfig, QByteArray("CostTypes"));
+    KConfigGroup ctConfig(kconfig, "CostTypes");
     int ctCount = ctConfig.readEntry("Count", 0);
     if (ctCount>0) {
       for (int i=1;i<=ctCount;i++) {

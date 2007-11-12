@@ -218,10 +218,10 @@ void TopLevel::saveCurrentState(QString postfix)
   KConfig *kconfig = KGlobal::config().data();
   QByteArray pf = postfix.ascii();
 
-  KConfigGroup psConfig(kconfig, QByteArray("PartOverview")+pf);
+  KConfigGroup psConfig(kconfig, QLatin1String("PartOverview")+pf);
   _partSelection->saveVisualisationConfig(&psConfig);
 
-  KConfigGroup stateConfig(kconfig, QByteArray("CurrentState")+pf);
+  KConfigGroup stateConfig(kconfig, QLatin1String("CurrentState")+pf);
   stateConfig.writeEntry("EventType",
 			 _eventType ? _eventType->name() : QString("?"));
   stateConfig.writeEntry("EventType2",
@@ -239,7 +239,7 @@ void TopLevel::saveTraceSettings()
 {
   QString key = traceKey();
 
-  KConfigGroup pConfig(KGlobal::config(), QByteArray("TracePositions"));
+  KConfigGroup pConfig(KGlobal::config(), "TracePositions");
   pConfig.writeEntry(QString("EventType%1").arg(key),
                      _eventType ? _eventType->name() : QString("?"));
   pConfig.writeEntry(QString("EventType2%1").arg(key),
@@ -249,7 +249,7 @@ void TopLevel::saveTraceSettings()
 
   if (!_data) return;
 
-  KConfigGroup aConfig(KGlobal::config(), QByteArray("Layouts"));
+  KConfigGroup aConfig(KGlobal::config(), "Layouts");
   aConfig.writeEntry(QString("Count%1").arg(key), _layoutCount);
   aConfig.writeEntry(QString("Current%1").arg(key), _layoutCurrent);
 
@@ -272,7 +272,7 @@ void TopLevel::restoreCurrentState(QString postfix)
   QByteArray pf = postfix.ascii();
 
   // dock properties (not position, this should be have done before)
-  QByteArray group = QByteArray("PartOverview");
+  QString group = QLatin1String("PartOverview");
   if (gList.contains(group+pf)) group += pf;
   KConfigGroup psConfig(kconfig, group);
   _partSelection->readVisualisationConfig(&psConfig);
@@ -403,7 +403,7 @@ void TopLevel::createDocks()
 	_dumpDock->hide();
 #endif
 
-	KConfigGroup dockConfig(KGlobal::config(), QByteArray("Docks"));
+	KConfigGroup dockConfig(KGlobal::config(), "Docks");
 	_forcePartDock = dockConfig.readEntry("ForcePartDockVisible", false);
 }
 
@@ -1684,8 +1684,8 @@ void TopLevel::restoreTraceTypes()
 {
   QString key = traceKey();
 
-  KConfigGroup cConfig(KGlobal::config(), QByteArray("CurrentState"));
-  KConfigGroup pConfig(KGlobal::config(), QByteArray("TracePositions"));
+  KConfigGroup cConfig(KGlobal::config(), "CurrentState");
+  KConfigGroup pConfig(KGlobal::config(), "TracePositions");
 
   QString groupType, costType, costType2;
   groupType =  pConfig.readEntry(QString("GroupType%1").arg(key),QString());
@@ -1704,7 +1704,7 @@ void TopLevel::restoreTraceTypes()
   if (!_eventType && !_saCost->items().isEmpty())
       eventTypeSelected(_saCost->items().first());
 
-  KConfigGroup aConfig(KGlobal::config(), QByteArray("Layouts"));
+  KConfigGroup aConfig(KGlobal::config(), "Layouts");
   _layoutCount = aConfig.readEntry(QString("Count%1").arg(key), 0);
   _layoutCurrent = aConfig.readEntry(QString("Current%1").arg(key), 0);
   if (_layoutCount == 0) layoutRestore();
@@ -1723,7 +1723,7 @@ void TopLevel::restoreTraceSettings()
 
   QString key = traceKey();
 
-  KConfigGroup pConfig(KGlobal::config(), QByteArray("TracePositions"));
+  KConfigGroup pConfig(KGlobal::config(), "TracePositions");
   QString group = pConfig.readEntry(QString("Group%1").arg(key),QString());
   if (!group.isEmpty()) setGroup(group);
 
@@ -1834,7 +1834,7 @@ void TopLevel::layoutSave()
 			     QString("Layout%1-MainView").arg(_layoutCurrent),
 			     key, false);
 
-  KConfigGroup aConfig(config, QByteArray("Layouts"));
+  KConfigGroup aConfig(config, "Layouts");
   aConfig.writeEntry("DefaultCount", _layoutCount);
   aConfig.writeEntry("DefaultCurrent", _layoutCurrent);
 }
@@ -1842,7 +1842,7 @@ void TopLevel::layoutSave()
 void TopLevel::layoutRestore()
 {
   KConfig *config = KGlobal::config().data();
-  KConfigGroup aConfig(config, QByteArray("Layouts"));
+  KConfigGroup aConfig(config, "Layouts");
   _layoutCount = aConfig.readEntry("DefaultCount", 0);
   _layoutCurrent = aConfig.readEntry("DefaultCurrent", 0);
   if (_layoutCount == 0) {
@@ -1958,7 +1958,7 @@ bool TopLevel::queryExit()
   _forcePartDock = false;
   if (_data && (_data->parts().count()<2) && _partDock->isVisible())
     _forcePartDock=true;
-  KConfigGroup dockConfig(KGlobal::config(), QByteArray("Docks"));
+  KConfigGroup dockConfig(KGlobal::config(), "Docks");
   dockConfig.writeEntry("ForcePartDockVisible", _forcePartDock);
 
   return true;
