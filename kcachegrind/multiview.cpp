@@ -205,7 +205,7 @@ void MultiView::saveViewConfig(KConfig* c,
 			       QString prefix, QString postfix,
 			       bool withOptions)
 {
-  KConfigGroup g(c, (prefix+postfix).ascii());
+  KConfigGroup g(c, (prefix+postfix).toAscii().constData());
 
   g.writeEntry("Panels", childCount());
   g.writeEntry("Orientation",

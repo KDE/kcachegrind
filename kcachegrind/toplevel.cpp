@@ -123,7 +123,7 @@ TopLevel::TopLevel()
 
   KConfig *kconfig = KGlobal::config().data();
   Configuration::readOptions( kconfig );
-  _openRecent->loadEntries( KConfigGroup( kconfig, QString() ) );
+  _openRecent->loadEntries( KConfigGroup( kconfig, "" ) );
 
   // set toggle after reading configuration
   _showPercentage = Configuration::showPercentage();
@@ -273,11 +273,12 @@ void TopLevel::restoreCurrentState(QString postfix)
 
   // dock properties (not position, this should be have done before)
   QString group = QLatin1String("PartOverview");
-  if (gList.contains(group+pf)) group += pf;
+  if (gList.contains(group+pf))
+  	group += pf;
   KConfigGroup psConfig(kconfig, group);
   _partSelection->readVisualisationConfig(&psConfig);
 
-  _multiView->readViewConfig(kconfig, QString("MainView"), postfix, true);
+  _multiView->readViewConfig(kconfig, QString::fromLatin1("MainView"), postfix, true);
   _taSplit->setChecked(_multiView->childCount()>1);
   _taSplitDir->setEnabled(_multiView->childCount()>1);
   _taSplitDir->setChecked(_multiView->orientation() == Qt::Horizontal);
