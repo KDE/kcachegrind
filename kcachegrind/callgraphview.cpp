@@ -3036,7 +3036,7 @@ void CallGraphView::readViewConfig(KConfig* c, QString prefix,
 void CallGraphView::saveViewConfig(KConfig* c, QString prefix,
                                    QString postfix, bool)
 {
-	KConfigGroup g(c, (prefix+postfix).toAscii());
+	KConfigGroup g(c, prefix+postfix);
 
 	writeConfigEntry(g, "MaxCaller", _maxCallerDepth, DEFAULT_MAXCALLER);
 	writeConfigEntry(g, "MaxCallee", _maxCalleeDepth, DEFAULT_MAXCALLEE);
