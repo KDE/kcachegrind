@@ -16,9 +16,13 @@ ENDIF(NOT WIN32)
 
 macro_additional_clean_files( 
 	${CMAKE_CURRENT_BINARY_DIR}/version.h 
+	)
+IF(NOT WIN32)
+macro_additional_clean_files(
 	${CMAKE_CURRENT_BINARY_DIR}/kcachegrind.lsm 
 	${CMAKE_CURRENT_BINARY_DIR}/kcachegrind.spec)
-
+	)
+ENDIF(NOT WIN32)
 
 add_subdirectory( kcachegrind ) 
 add_subdirectory( pics ) 
