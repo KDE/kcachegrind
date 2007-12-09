@@ -20,7 +20,7 @@ macro_additional_clean_files(
 IF(NOT WIN32)
 macro_additional_clean_files(
 	${CMAKE_CURRENT_BINARY_DIR}/kcachegrind.lsm 
-	${CMAKE_CURRENT_BINARY_DIR}/kcachegrind.spec)
+	${CMAKE_CURRENT_BINARY_DIR}/kcachegrind.spec
 	)
 ENDIF(NOT WIN32)
 
