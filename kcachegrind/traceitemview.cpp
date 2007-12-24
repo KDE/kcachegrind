@@ -22,7 +22,6 @@
 
 #include <qwidget.h>
 //Added by qt3to4:
-#include <Q3PopupMenu>
 #include <kconfig.h>
 #include <klocale.h>
 #include <kdebug.h>

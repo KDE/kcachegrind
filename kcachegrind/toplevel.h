@@ -25,7 +25,6 @@
 
 #include <qdatetime.h>
 #include <QLabel>
-#include <Q3DockWindow>
 
 #include <kxmlguiwindow.h>
 

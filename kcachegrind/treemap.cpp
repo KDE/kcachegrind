@@ -35,7 +35,6 @@
 #include <QKeyEvent>
 #include <QShowEvent>
 #include <QContextMenuEvent>
-#include <QResizeEvent>
 #include <QMouseEvent>
 #include <QToolTip>
 
