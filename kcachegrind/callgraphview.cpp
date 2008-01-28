@@ -1105,11 +1105,12 @@ void PanningView::drawForeground(QPainter * p, const QRectF&)
 	if (!_zoomRect.isValid())
 		return;
 
-	QPen pen(QColor(Qt::red).dark());
+	QColor red(Qt::red);
+	QPen pen(red.dark());
 	pen.setWidthF(2.0 / matrix().m11());
 	p->setPen(pen);
 
-	QColor c(QColor(Qt::red).dark());
+	QColor c(red.dark());
 	c.setAlphaF(0.05);
 	p->setBrush(QBrush(c));
 
