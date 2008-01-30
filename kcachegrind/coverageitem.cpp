@@ -184,7 +184,8 @@ CalleeCoverageItem::CalleeCoverageItem(Q3ListView* parent, Coverage* c,
   _base = base;
   _groupType = TraceCost::NoCostType;
 
-  setText(4, _function->prettyNameWithLocation());
+  if ( function )
+     setText(4, _function->prettyNameWithLocation());
 
   setCostType(ct);
   setGroupType(gt);
