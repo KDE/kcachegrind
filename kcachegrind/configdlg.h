@@ -23,10 +23,18 @@
 #ifndef CONFIGDLG_H
 #define CONFIGDLG_H
 
-#include "configdlgbase.h"
+#include "ui_configdlgbase.h"
 #include "configuration.h"
 
 class TraceData;
+
+class ConfigDlgBase : public QDialog, public Ui::ConfigDlgBase
+{
+public:
+  ConfigDlgBase( QWidget *parent ) : QDialog( parent ) {
+    setupUi( this );
+  }
+};
 
 class ConfigDlg : public ConfigDlgBase
 {

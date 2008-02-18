@@ -47,7 +47,7 @@ set(kcachegrind_SRCS
    callgraphview.cpp )
 
 
-kde4_add_ui3_files(kcachegrind_SRCS 
+kde4_add_ui_files(kcachegrind_SRCS 
    configdlgbase.ui )
 kde4_add_ui_files(kcachegrind_SRCS
 	stackselectionbase.ui
