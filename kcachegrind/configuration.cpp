@@ -26,7 +26,7 @@
 
 #include "configuration.h"
 #include "tracedata.h"
-#include "configdlgbase.h"
+#include "ui_configdlgbase.h"
 
 #include "traceitemview.h"
 //Added by qt3to4:
