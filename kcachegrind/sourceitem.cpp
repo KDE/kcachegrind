@@ -160,7 +160,7 @@ void SourceItem::updateCost()
   // don't show any cost inside of cycles
   if (_lineCall &&
       ((_lineCall->call()->inCycle()>0) ||
-       (_lineCall->call()->isRecursion()>0))) {
+       (_lineCall->call()->isRecursion()))) {
     QString str;
     QPixmap p;
 
