@@ -42,7 +42,7 @@ class ConfigDlg : public ConfigDlgBase
 
 public:
   ConfigDlg(Configuration*, TraceData*,
-            QWidget* parent = 0, const char* name = 0);
+            QWidget* parent = 0);
   ~ConfigDlg();
 
   static bool configure(Configuration*, TraceData*, QWidget*);

@@ -38,7 +38,7 @@
 
 
 ConfigDlg::ConfigDlg(Configuration* c, TraceData* data,
-                     QWidget* parent, const char* name)
+                     QWidget* parent)
   :ConfigDlgBase(parent)
 {
   _config = c;
