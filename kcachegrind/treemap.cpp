@@ -2563,7 +2563,7 @@ void TreeMapWidget::drawItems(QPainter* p,
 }
 
 // fills area with a pattern if to small to draw children
-void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, QRect& r)
+void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, const QRect& r)
 {
   p->setBrush(Qt::Dense4Pattern);
   p->setPen(Qt::NoPen);
@@ -2572,7 +2572,7 @@ void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, QRect& r)
 }
 
 // fills area with a pattern if to small to draw children
-void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, QRect& r,
+void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, const QRect& r,
                              TreeMapItemListIterator it, int len, bool goBack)
 {
   if (DEBUG_DRAWING)
@@ -2603,7 +2603,7 @@ void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, QRect& r,
 
 // returns false if rect gets to small
 bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
-                                  QRect& r, double user_sum,
+                                  const QRect& r, double user_sum,
                                   TreeMapItemListIterator it, int len,
 				  bool goBack)
 {
@@ -2640,20 +2640,21 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
 
     // draw first half...
     bool drawOn;
+    QRect secondRect;
 
     if (r.width() > r.height()) {
       int halfPos = (int)((double)r.width() * valSum / user_sum);
       QRect firstRect = QRect(r.x(), r.y(), halfPos, r.height());
       drawOn = drawItemArray(p, item, firstRect,
                              valSum, first, len-lenLeft, goBack);
-      r.setRect(r.x()+halfPos, r.y(), r.width()-halfPos, r.height());
+      secondRect.setRect(r.x()+halfPos, r.y(), r.width()-halfPos, r.height());
     }
     else {
       int halfPos = (int)((double)r.height() * valSum / user_sum);
       QRect firstRect = QRect(r.x(), r.y(), r.width(), halfPos);
       drawOn = drawItemArray(p, item, firstRect,
                              valSum, first, len-lenLeft, goBack);
-      r.setRect(r.x(), r.y()+halfPos, r.width(), r.height()-halfPos);
+      secondRect.setRect(r.x(), r.y()+halfPos, r.width(), r.height()-halfPos);
     }
 
     // if no sorting, don't stop drawing
@@ -2661,10 +2662,10 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
 
     // second half
     if (drawOn)
-      drawOn = drawItemArray(p, item, r, user_sum - valSum,
+      drawOn = drawItemArray(p, item, secondRect, user_sum - valSum,
                              it, lenLeft, goBack);
     else {
-      drawFill(item, p, r, it, len, goBack);
+      drawFill(item, p, secondRect, it, len, goBack);
     }
 
     if (DEBUG_DRAWING)
@@ -2677,6 +2678,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
   bool hor = horizontal(item,r);
 
   TreeMapItem* i;
+  QRect fullRect = r;
   while (len>0) {
     i = it.current();
     if (user_sum <= 0) {
@@ -2691,12 +2693,12 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
     }
 
     // stop drawing for small rectangles
-    if (((r.height() < _visibleWidth) &&
-         (r.width() < _visibleWidth)) ||
+    if (((fullRect.height() < _visibleWidth) &&
+         (fullRect.width() < _visibleWidth)) ||
         ((_minimalArea > 0) &&
-         (r.width() * r.height() < _minimalArea))) {
+         (fullRect.width() * fullRect.height() < _minimalArea))) {
 
-      drawFill(item, p, r, it, len, goBack);
+      drawFill(item, p, fullRect, it, len, goBack);
       if (DEBUG_DRAWING)
 	  kDebug(90100) << " -drawItemArray(" << item->path(0).join("/")
 		    << "): Stop" << endl;
@@ -2704,28 +2706,28 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
     }
 
     if (i->splitMode() == TreeMapItem::AlwaysBest)
-      hor = r.width() > r.height();
+      hor = fullRect.width() > fullRect.height();
 
-    int lastPos = hor ? r.width() : r.height();
+    int lastPos = hor ? fullRect.width() : fullRect.height();
     double val = i->value();
     int nextPos = (user_sum <= 0.0) ? 0: (int)(lastPos * val / user_sum +.5);
     if (nextPos>lastPos) nextPos = lastPos;
 
     if ((item->sorting(0) != -1) && (nextPos < _visibleWidth)) {
-      drawFill(item, p, r, it, len, goBack);
+      drawFill(item, p, fullRect, it, len, goBack);
       if (DEBUG_DRAWING)
 	  kDebug(90100) << " -drawItemArray(" << item->path(0).join("/")
 		    << "): Stop" << endl;
       return false;
     }
 
-    QRect currRect = r;
+    QRect currRect = fullRect;
 
     if (hor)
       currRect.setWidth(nextPos);
     else {
       if (b2t)
-        currRect.setRect(r.x(), r.bottom()-nextPos+1, r.width(), nextPos);
+        currRect.setRect(fullRect.x(), fullRect.bottom()-nextPos+1, fullRect.width(), nextPos);
       else
         currRect.setHeight(nextPos);
     }
@@ -2744,23 +2746,26 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
     if (_drawSeparators && (nextPos<lastPos)) {
       p->setPen(Qt::black);
       if (hor) {
-        if (r.top()<=r.bottom())
-          p->drawLine(r.x() + nextPos, r.top(), r.x() + nextPos, r.bottom());
+        if (fullRect.top() <= fullRect.bottom())
+          p->drawLine(fullRect.x() + nextPos, fullRect.top(), fullRect.x() + nextPos, fullRect.bottom());
       }
       else {
-        if (r.left()<=r.right())
-        p->drawLine(r.left(), r.y() + nextPos, r.right(), r.y() + nextPos);
+        if (fullRect.left() <= fullRect.right())
+        p->drawLine(fullRect.left(), fullRect.y() + nextPos, fullRect.right(), fullRect.y() + nextPos);
       }
       nextPos++;
     }
 
     if (hor)
-      r.setRect(r.x() + nextPos, r.y(), lastPos-nextPos, r.height());
+	fullRect.setRect(fullRect.x() + nextPos, fullRect.y(),
+	                 lastPos - nextPos, fullRect.height());
     else {
-      if (b2t)
-        r.setRect(r.x(), r.y(), r.width(), lastPos-nextPos);
-      else
-        r.setRect(r.x(), r.y() + nextPos, r.width(), lastPos-nextPos);
+	if (b2t)
+	    fullRect.setRect(fullRect.x(), fullRect.y(),
+			     fullRect.width(), lastPos-nextPos);
+	else
+	    fullRect.setRect(fullRect.x(), fullRect.y() + nextPos,
+			     fullRect.width(), lastPos-nextPos);
     }
 
     user_sum -= val;

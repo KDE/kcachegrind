@@ -1850,7 +1850,7 @@ class TraceData: public TraceCost
   bool activateAll(bool active=true);
 
   TracePartList parts() const { return _parts; }
-  TracePart* part(QString& name);
+  TracePart* part(const QString& name);
 
   // with path
   QString traceName() const { return _traceName; }

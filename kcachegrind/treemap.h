@@ -713,10 +713,10 @@ private:
   void drawItem(QPainter* p, TreeMapItem*);
   void drawItems(QPainter* p, TreeMapItem*);
   bool horizontal(TreeMapItem* i, const QRect& r);
-  void drawFill(TreeMapItem*,QPainter* p, QRect& r);
-  void drawFill(TreeMapItem*,QPainter* p, QRect& r,
+  void drawFill(TreeMapItem*,QPainter* p, const QRect& r);
+  void drawFill(TreeMapItem*,QPainter* p, const QRect& r,
                 TreeMapItemListIterator it, int len, bool goBack);
-  bool drawItemArray(QPainter* p, TreeMapItem*, QRect& r, double,
+  bool drawItemArray(QPainter* p, TreeMapItem*, const QRect& r, double,
                      TreeMapItemListIterator it, int len, bool);
   bool resizeAttr(int);
 

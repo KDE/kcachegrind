@@ -4599,7 +4599,7 @@ bool TraceData::activateAll(bool active)
 }
 
 
-TracePart* TraceData::part(QString& name)
+TracePart* TraceData::part(const QString& name)
 {
   TracePart* part;
   for (part=_parts.first();part;part=_parts.next())
