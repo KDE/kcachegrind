@@ -338,7 +338,7 @@ bool CachegrindLoader::parsePosition(FixString& line,
 // Support for compressed strings
 void CachegrindLoader::clearCompression()
 {
-  // this doesn't delete previous contained objects
+  // this does not delete previous contained objects
   _objectVector.clear();
   _fileVector.clear();
   _functionVector.clear();
@@ -744,7 +744,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 
   // current position
   nextLineType  = SelfCost;
-  // default if there's no "positions:" line
+  // default if there is no "positions:" line
   hasLineInfo = true;
   hasAddrInfo = false;
 

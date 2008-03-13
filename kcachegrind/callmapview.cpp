@@ -682,7 +682,7 @@ TreeMapItemList* CallMapBaseItem::children()
       TraceCallList l = _f->callers();
       for (call=l.first();call;call=l.next()) {
 
-        // don't show calls inside of a cycle
+        // do not show calls inside of a cycle
         if (call->inCycle()>0) continue;
         if (call->isRecursion()) continue;
 
@@ -695,7 +695,7 @@ TreeMapItemList* CallMapBaseItem::children()
       TraceCallList l = _f->callings();
       for (call=l.first();call;call=l.next()) {
 
-        // don't show calls inside of a cycle
+        // do not show calls inside of a cycle
         if (call->inCycle()>0) continue;
         if (call->isRecursion()) continue;
 
@@ -824,7 +824,7 @@ TreeMapItemList* CallMapCallingItem::children()
     TraceCallList l = _c->called()->callings();
     for (call=l.first();call;call=l.next()) {
 
-      // don't show calls inside of a cycle
+      // do not show calls inside of a cycle
       if (call->inCycle()>0) continue;
       if (call->isRecursion()) continue;
 
@@ -932,7 +932,7 @@ TreeMapItemList* CallMapCallerItem::children()
     TraceCallList l = _c->caller()->callers();
     for (call=l.first();call;call=l.next()) {
 
-      // don't show calls inside of a cycle
+      // do not show calls inside of a cycle
       if (call->inCycle()>0) continue;
       if (call->isRecursion()) continue;
 

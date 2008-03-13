@@ -173,7 +173,7 @@ protected:
   void activated(TraceItemView::Direction);
 
   /* Is this view visible?
-   * if not, doUpdate() won't be called by updateView()
+   * if not, doUpdate() will not be called by updateView()
    */
   virtual bool isViewVisible();
 

@@ -164,7 +164,7 @@ public slots:
 
   /* These go back to mainloop first by using a timer.
    * So they can be called from event handlers that
-   * aren't allowed to delete list entries.
+   * are not allowed to delete list entries.
    */
   void setEventTypeDelayed(TraceEventType*);
   void setEventType2Delayed(TraceEventType*);

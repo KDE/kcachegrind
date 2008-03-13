@@ -333,7 +333,7 @@ public:
 	// to map back to structures when parsing a layouted graph
 
 	/* <toFunc> is a helper for node() and edge().
-	 * Don't use the returned pointer directly, but only with
+	 * Do not use the returned pointer directly, but only with
 	 * node() or edge(), because it could be a dangling pointer.
 	 */
 	TraceFunction* toFunc(QString);

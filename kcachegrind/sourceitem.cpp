@@ -157,7 +157,7 @@ void SourceItem::updateCost()
 
   TraceCost* lineCost = _lineCall ? (TraceCost*)_lineCall : (TraceCost*)_line;
 
-  // don't show any cost inside of cycles
+  // do not show any cost inside of cycles
   if (_lineCall &&
       ((_lineCall->call()->inCycle()>0) ||
        (_lineCall->call()->isRecursion()))) {

@@ -133,7 +133,7 @@ void MultiView::selected(TraceItemView* sender, TraceItem* i)
     TabView* next = _views.next();
     if (!next) next = _views.first();
 
-    // don't change item of active tab
+    // do not change item of active tab
     if (next == _active) return;
 
     next->activate(i);

@@ -99,7 +99,7 @@ void EventTypeItem::update()
 
   double selfTotal = selfTotalCost->subCost(_eventType);
 
-  // for all cost items there's a self cost
+  // for all cost items there is a self cost
   _pure = _costItem ? _costItem->subCost(_eventType) : SubCost(0);
   double pure  = 100.0 * _pure / selfTotal;
   if (Configuration::showPercentage()) {

@@ -529,7 +529,7 @@ void TopLevel::createMiscActions()
               "Callgrind will detect this file, dump a trace part, "
               "and delete 'callgrind.cmd'. "
               "The deletion is detected by KCachegrind, "
-              "and it does a Reload. If there's <em>no</em> Callgrind "
+              "and it does a Reload. If there is <em>no</em> Callgrind "
               "running, press 'Force Dump' again to cancel the dump "
               "request. This deletes 'callgrind.cmd' itself and "
               "stops polling for a new dump.</p>"
@@ -1304,7 +1304,7 @@ bool TopLevel::setFunction(TraceFunction* f)
 
   StackBrowser* b = _stackSelection->browser();
   if (b) {
-    // don't disable up: a press forces stack-up extending...
+    // do not disable up: a press forces stack-up extending...
     _paForward->setEnabled(b->canGoForward());
     _paBack->setEnabled(b->canGoBack());
   }

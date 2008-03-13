@@ -1880,7 +1880,7 @@ class TraceData: public TraceCost
    * For some items, they will only be found if the parent cost is given:
    *  Instr, Line, Call  => need parent of type Function
    * For Function, a parent of type Obj/File/Class can be given, but
-   * isn't needed.
+   * is not needed.
    */
   TraceCost* search(TraceItem::CostType, QString,
 		    TraceEventType* ct = 0, TraceCost* parent = 0);
@@ -1951,7 +1951,7 @@ class TraceData: public TraceCost
   QString _traceName;
 
   // Max of all costs of calls: This allows to see if the incl. cost can
-  // be hidden for a cost type, as it's always the same as self cost
+  // be hidden for a cost type, as it is always the same as self cost
   TraceCost _callMax;
 
   // cycles

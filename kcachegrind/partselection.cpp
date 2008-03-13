@@ -131,7 +131,7 @@ void PartSelection::setFunction(TraceFunction* f)
 
   //kDebug() << "PartSelection::setFunction " << f->name();
 
-  // FIXME: The TreeMap shouldn't produce spurious selectionChanged events
+  // FIXME: The TreeMap should not produce spurious selectionChanged events
   _inSelectionUpdate = true;
   partAreaWidget->setFunction(_function);
   _inSelectionUpdate = false;

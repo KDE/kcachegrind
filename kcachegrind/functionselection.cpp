@@ -277,7 +277,7 @@ void FunctionSelection::doUpdate(int changeType)
     // Special case ?
     if (changeType == selectedItemChanged) return;
 
-    // we don't show cost 2 at all...
+    // we do not show cost 2 at all...
     if (changeType == eventType2Changed) return;
 
     if (changeType == activeItemChanged) {
@@ -561,7 +561,7 @@ void FunctionSelection::refresh()
 
   for(int i=0;i<_hc.realCount();i++) {
     group = (TraceCostItem*)_hc[i];
-    // don't put group of active item twice into list
+    // do not put group of active item twice into list
     if (group == _group) continue;
     new CostListItem(groupList, group, _eventType);
   }
@@ -670,7 +670,7 @@ void FunctionSelection::groupSelected(Q3ListViewItem* i)
   //functionList->setUpdatesEnabled(true);
   //functionList->repaint();
 
-  // Don't emit signal if cost item was changed programatically
+  // Do not emit signal if cost item was changed programatically
   if (!_inSetGroup) {
       _selectedItem = g;
       selected(g);
@@ -714,7 +714,7 @@ void FunctionSelection::functionSelected(Q3ListViewItem* i)
 
   //qDebug("FunctionSelection::functionSelected %s", f->name().ascii());
 
-  // Don't emit signal if function was changed programatically
+  // Do not emit signal if function was changed programatically
   if (!_inSetFunction) {
       _selectedItem = f;
       selected(f);

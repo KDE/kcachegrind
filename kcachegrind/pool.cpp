@@ -96,7 +96,7 @@ bool FixPool::ensureSpace(unsigned int size)
 
     struct SpaceChunk* newChunk;
 
-    // we don't allow allocation sizes > CHUNK_SIZE
+    // we do not allow allocation sizes > CHUNK_SIZE
     if (size > CHUNK_SIZE) return false;
 
     newChunk = (struct SpaceChunk*) malloc(sizeof(struct SpaceChunk) +

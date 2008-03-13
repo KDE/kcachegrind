@@ -440,7 +440,7 @@ void TraceCost::addCost(TraceSubMapping* sm, const char* s)
     invalidate();
 
 #if TRACE_DEBUG
-    _dirty = false; // don't recurse !
+    _dirty = false; // do not recurse !
     qDebug("%s\n now %s", qPrintable( fullName() ),
 	   qPrintable( TraceCost::costString(0) ));
     _dirty = true; // because of invalidate()
@@ -492,7 +492,7 @@ void TraceCost::addCost(TraceSubMapping* sm, FixString & s)
     invalidate();
 
 #if TRACE_DEBUG
-    _dirty = false; // don't recurse !
+    _dirty = false; // do not recurse !
     qDebug("%s\n now %s", qPrintable( fullName() ),
 	   qPrintable( TraceCost::costString(0 ) ) );
     _dirty = true; // because of invalidate()
@@ -548,7 +548,7 @@ void TraceCost::maxCost(TraceSubMapping* sm, FixString & s)
     invalidate();
 
 #if TRACE_DEBUG
-    _dirty = false; // don't recurse !
+    _dirty = false; // do not recurse !
     qDebug("%s\n now %s", qPrintable( fullName() ),
 	   qPrintable(TraceCost::costString(0)));
     _dirty = true; // because of invalidate()
@@ -582,7 +582,7 @@ void TraceCost::addCost(TraceCost* item)
     invalidate();
 
 #if TRACE_DEBUG
-    _dirty = false; // don't recurse !
+    _dirty = false; // do not recurse !
     qDebug("%s added cost item\n %s\n  now %s",
 	   qPrintable( fullName() ), qPrintable(item->fullName()),
 	   qPrintable(TraceCost::costString(0)));
@@ -616,7 +616,7 @@ void TraceCost::maxCost(TraceCost* item)
     invalidate();
 
 #if TRACE_DEBUG
-    _dirty = false; // don't recurse !
+    _dirty = false; // do not recurse !
     qDebug("%s added cost item\n %s\n  now %s",
 	   qPrintable( fullName() ), qPrintable(item->fullName()),
 	   qPrintable( TraceCost::costString(0) ));
@@ -1074,7 +1074,7 @@ TraceEventTypeMapping::~TraceEventTypeMapping()
 
 TraceSubMapping* TraceEventTypeMapping::subMapping(QString types, bool create)
 {
-  // first check if there's enough space in the mapping
+  // first check if there is enough space in the mapping
   int newCount = 0;
   int pos = 0, pos2, len = types.length();
 
@@ -1172,7 +1172,7 @@ bool TraceEventTypeMapping::remove(TraceEventType* t)
   if (!t) return false;
   if (t->mapping() != this) return false;
 
-  // don't delete real types
+  // do not delete real types
   if (t->isReal()) return false;
 
   int i;
@@ -1632,7 +1632,7 @@ void TraceCallListCost::update()
 #endif
 
   /* Without dependent cost items, assume fixed costs,
-   * i.e. don't change cost */
+   * i.e. do not change cost */
   if (_deps.count()>0) {
     clear();
     TraceCallCost* item;
@@ -1837,7 +1837,7 @@ void TracePartCall::update()
 #endif
 
   /* Without dependent cost items, assume fixed costs,
-   * i.e. don't change cost */
+   * i.e. do not change cost */
   if (_firstFixCallCost) {
     clear();
     FixCallCost* item;
@@ -2107,7 +2107,7 @@ void TracePartFunction::update()
 
       addInclusive(calling);
     }
-    _dirty = false; // don't recurse!
+    _dirty = false; // do not recurse!
     addInclusive(this);
   }
 
@@ -2684,7 +2684,7 @@ void TraceInstr::addInstrCall(TraceInstrCall* instrCall)
   if (_instrCalls.findRef(instrCall)>=0) return;
 
   if (instrCall->instr() != this) {
-    qDebug("Can't add instruction call to another instruction!");
+    qDebug("Can not add instruction call to another instruction!");
     return;
   }
 #endif
@@ -2784,7 +2784,7 @@ void TraceLine::addLineCall(TraceLineCall* lineCall)
   if (_lineCalls.findRef(lineCall)>=0) return;
 
   if (lineCall->line() != this) {
-    qDebug("Can't add line call to another line!");
+    qDebug("Can not add line call to another line!");
     return;
   }
 #endif
@@ -3011,7 +3011,7 @@ TraceLineMap* TraceFunctionSource::lineMap()
 	    continue;
 	  }
 
-	  // don't display jumps to same or following line
+	  // do not display jumps to same or following line
 	  if ((fj->line() == fj->targetLine()) ||
 	      (fj->line()+1 == fj->targetLine())) continue;
 
@@ -3086,7 +3086,7 @@ TraceAssoziation::TraceAssoziation()
 
 TraceAssoziation::~TraceAssoziation()
 {
-  // don't delete from TraceFunction
+  // do not delete from TraceFunction
   if (_function) _function->removeAssoziation(this);
 }
 
@@ -3103,7 +3103,7 @@ bool TraceAssoziation::setFunction(TraceFunction* f)
     return isAssoziated();
 
   if (_function) {
-    // don't delete ourself
+    // do not delete ourself
     _function->removeAssoziation(this);
   }
 
@@ -3404,7 +3404,7 @@ void TraceFunction::addCaller(TraceCall* caller)
 {
 #if TRACE_ASSERTIONS
   if (caller->called() != this) {
-    qDebug("Can't add call to another line!\n");
+    qDebug("Can not add call to another line!\n");
     return;
   }
 
@@ -3661,7 +3661,7 @@ void TraceFunction::update()
     // self cost
     if (type() == FunctionCycle) {
       // cycle: self cost is sum of cycle member self costs, but
-      //        doesn't add to inclusive cost
+      //        does not add to inclusive cost
       TraceFunctionList mList = ((TraceFunctionCycle*)this)->members();
       TraceFunction* m;
       for (m=mList.first();m;m=mList.next())
@@ -3675,7 +3675,7 @@ void TraceFunction::update()
 
 	addCost(item);
       }
-      _dirty = false; // don't recurse
+      _dirty = false; // do not recurse
       addInclusive(this);
     }
   }
@@ -3703,7 +3703,7 @@ void TraceFunction::cycleReset()
   _cycleLow = 0;
 }
 
-// this doesn't mark functions calling themself !
+// this does not mark functions calling themself !
 void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
 {
   if (_cycleLow != 0) return;
@@ -4020,7 +4020,7 @@ void TraceClass::addFunction(TraceFunction* function)
 {
 #if TRACE_ASSERTIONS
   if (function->cls() != this) {
-    qDebug("Can't add function to a class not enclosing this function\n");
+    qDebug("Can not add function to a class not enclosing this function\n");
     return;
   }
 
@@ -4067,7 +4067,7 @@ void TraceFile::addFunction(TraceFunction* function)
 {
 #if TRACE_ASSERTIONS
   if (function->file() != this) {
-    qDebug("Can't add function to a file not enclosing this function\n");
+    qDebug("Can not add function to a file not enclosing this function\n");
     return;
   }
 
@@ -4090,13 +4090,13 @@ void TraceFile::addSourceFile(TraceFunctionSource* sourceFile)
 {
 #if TRACE_ASSERTIONS
   if (sourceFile->file() != this) {
-    qDebug("Can't add sourceFile to a file not having lines for it\n");
+    qDebug("Can not add sourceFile to a file not having lines for it\n");
     return;
   }
 #endif
 
   _sourceFiles.append(sourceFile);
-  // not truly needed, as we don't use the sourceFiles for cost update
+  // not truly needed, as we do not use the sourceFiles for cost update
   invalidate();
 
 #if TRACE_DEBUG
@@ -4185,7 +4185,7 @@ void TraceObject::addFunction(TraceFunction* function)
 {
 #if TRACE_ASSERTIONS
   if (function->object() != this) {
-    qDebug("Can't add function to an object not enclosing this function\n");
+    qDebug("Can not add function to an object not enclosing this function\n");
     return;
   }
 
@@ -4749,7 +4749,7 @@ TraceFunction* TraceData::function(const QString& name,
     return 0;
   }
 
-  // Don't use file in key: A function can go over many files
+  // Do not use file in key: A function can go over many files
   // (inlined parts), but still is ONE function.
   QString key = name + object->shortName();
 

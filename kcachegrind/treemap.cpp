@@ -493,7 +493,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
     unused = width;
   }
 
-  // stop as soon as possible when there's no space for "..."
+  // stop as soon as possible when there is no space for "..."
   static int dotW = 0;
   if (!dotW) dotW = _fm->width("...");
   if (width < dotW) return false;
@@ -512,7 +512,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
   if (pixW>0) {
     pixW += 2; // X distance from pix
     if ((width < pixW + dotW) || (height < pixH)) {
-      // don't draw
+      // do not draw
       pixW = 0;
     }
     else
@@ -559,7 +559,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
   /* loop over name parts to break up string depending on available width.
    * every char category change is supposed a possible break,
    * with the exception Uppercase=>Lowercase.
-   * It's good enough for numbers, Symbols...
+   * It is good enough for numbers, Symbols...
    *
    * If the text is to be written at the bottom, we start with the
    * end of the string (so everything is reverted)
@@ -687,7 +687,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
   }
 
   if (origLines > lines) {
-    // if only 1 line written, don't reset _used* vars
+    // if only 1 line written, do not reset _used* vars
     if (lines - origLines >1) {
       if (isBottom)
         _usedBottomLeft = _usedBottomCenter = _usedBottomRight = 0;
@@ -734,7 +734,7 @@ int TreeMapItemList::compareItems ( Item item1, Item item2 )
   int result;
 
   TreeMapItem* parent = ((TreeMapItem*)item1)->parent();
-  // shouldn't happen
+  // should not happen
   if (!parent) return 0;
 
   int textNo = parent->sorting(&ascending);
@@ -982,7 +982,7 @@ void TreeMapItem::setSorting(int textNo, bool ascending)
     if (_sortTextNo == textNo) {
 	if(_sortAscending == ascending) return;
 	if (textNo == -1) {
-	    // when no sorting is done, order change doesn't do anything
+	    // when no sorting is done, order change does not do anything
 	    _sortAscending = ascending;
 	    return;
 	}
@@ -1040,7 +1040,7 @@ void TreeMapItem::clearFreeRects()
 
 void TreeMapItem::addFreeRect(const QRect& r)
 {
-    // don't add invalid rects
+    // do not add invalid rects
     if ((r.width() < 1) || (r.height() < 1)) return;
 
     if (!_freeRects) {
@@ -1059,7 +1059,7 @@ void TreeMapItem::addFreeRect(const QRect& r)
     }
 
     // join rect with last rect if possible
-    // this saves memory and doesn't make the tooltip flicker
+    // this saves memory and does not make the tooltip flicker
 
     bool replaced = false;
     if ((last->left() == r.left()) && (last->width() == r.width())) {
@@ -1453,7 +1453,7 @@ void TreeMapWidget::deletingItem(TreeMapItem* i)
   if (_pressed == i) _pressed = 0;
   if (_lastOver == i) _lastOver = 0;
 
-  // don't redraw a deleted item
+  // do not redraw a deleted item
   if (_needsRefresh == i) {
     // we can safely redraw the parent, as deleting order is
     // from child to parent; i.e. i->parent() is existing.
@@ -1588,7 +1588,7 @@ void TreeMapWidget::setSelected(TreeMapItem* item, bool selected)
 
 void TreeMapWidget::setMarked(int markNo, bool redrawWidget)
 {
-    // if there's no marking, return
+    // if there is no marking, return
     if ((_markNo == 0) && (markNo == 0)) return;
 
     _markNo = markNo;
@@ -2372,7 +2372,7 @@ void TreeMapWidget::drawItems(QPainter* p,
   }
 
   if (user_sum == 0) {
-    // user didn't supply any sum
+    // user did not supply any sum
     user_sum = child_sum;
     self = 0;
   }
@@ -2657,7 +2657,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
       secondRect.setRect(r.x(), r.y()+halfPos, r.width(), r.height()-halfPos);
     }
 
-    // if no sorting, don't stop drawing
+    // if no sorting, do not stop drawing
     if (item->sorting(0) == -1) drawOn = true;
 
     // second half
@@ -2732,7 +2732,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
         currRect.setHeight(nextPos);
     }
 
-    // don't draw very small rectangles:
+    // do not draw very small rectangles:
     if (nextPos >= _visibleWidth) {
 	i->setItemRect(currRect);
 	drawItems(p, i);

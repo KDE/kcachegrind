@@ -205,7 +205,7 @@ void TraceItemView::updateView(bool force)
   else {
     _status &= ~dataChanged;
 
-    // if there's no data change and data is 0, no update needed
+    // if there is no data change and data is 0, no update needed
     if (!_data) return;
   }
 
@@ -218,7 +218,7 @@ void TraceItemView::updateView(bool force)
 
   if (_newActiveItem != _activeItem) {
 
-      // when setting a new active item, there's no selection
+      // when setting a new active item, there is no selection
       _selectedItem = 0;
 
       _status |= activeItemChanged;

@@ -173,7 +173,7 @@ void InstrItem::updateCost()
   TraceCost* instrCost = _instrCall ?
       (TraceCost*)_instrCall : (TraceCost*)_instr;
 
-  // don't show any cost inside of cycles
+  // do not show any cost inside of cycles
   if (_instrCall &&
       ((_instrCall->call()->inCycle()>0) ||
        (_instrCall->call()->isRecursion()>0))) {

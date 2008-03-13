@@ -676,7 +676,7 @@ void GraphExporter::writeDot()
 	else {
 		file = new QFile(_dotName);
 		if ( !file->open(QIODevice::WriteOnly ) ) {
-			kError() << "Can't write dot file '"<< _dotName << "'"<< endl;
+			kError() << "Can not write dot file '"<< _dotName << "'"<< endl;
 			return;
 		}
 		stream = new QTextStream(file);
@@ -791,7 +791,7 @@ void GraphExporter::writeDot()
 		if (e.cost < _realCallLimit)
 			continue;
 		if (!_go->expandCycles()) {
-			// don't show inner cycle calls
+			// do not show inner cycle calls
 			if (e.call()->inCycle()>0)
 				continue;
 		}
@@ -941,7 +941,7 @@ GraphEdge* GraphExporter::edge(TraceFunction* f1, TraceFunction* f2)
 }
 
 /**
- * We do a DFS and don't stop on already visited nodes/edges,
+ * We do a DFS and do not stop on already visited nodes/edges,
  * but add up costs. We only stop if limits/max depth is reached.
  *
  * For a node/edge, it can happen that the first time visited the
@@ -986,12 +986,12 @@ void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallees,
 
 	if (f->cycle()) {
 		// for cycles members, we never stop on first visit, but always on 2nd
-		// note: a 2nd visit never should happen, as we don't follow inner-cycle
+		// note: a 2nd visit never should happen, as we do not follow inner-cycle
 		//       calls
 		if (oldIncl > 0.0) {
 			if (0)
 				qDebug("  Cutoff, 2nd visit to Cycle Member");
-			// and takeback cost addition, as it's added twice
+			// and takeback cost addition, as it is added twice
 			n.incl = oldIncl;
 			n.self -= f->subCost(_eventType) * factor;
 			return;
@@ -1051,7 +1051,7 @@ void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallees,
 			e.count += count;
 		}
 
-		// - don't do a DFS on calls in recursion/cycle
+		// - do not do a DFS on calls in recursion/cycle
 		if (call->inCycle()>0)
 			continue;
 		if (call->isRecursion())
@@ -1521,8 +1521,8 @@ QString CallGraphView::whatsThis() const
 		"the call graph environment of the active function. "
 		"Note: the shown cost is <b>only</b> the cost which is "
 		"spent while the active function was actually running; "
-		"i.e. the cost shown for main() - if it's visible - should "
-		"be the same as the cost of the active function, as that's "
+		"i.e. the cost shown for main() - if it is visible - should "
+		"be the same as the cost of the active function, as that is "
 		"the part of inclusive cost of main() spent while the active "
 		"function was running.</p>"
 		"<p>For cycles, blue call arrows indicate that this is an "
@@ -1854,7 +1854,7 @@ void CallGraphView::doUpdate(int changeType)
 			_selectedEdge = e;
 			_selectedEdge->canvasEdge()->setSelected(true);
 
-#if 0 // don't change position when selecting edge
+#if 0 // do not change position when selecting edge
 			if (!_isMoving) {
 				if (_selectedEdge->fromNode())
 				sNode = _selectedEdge->fromNode()->canvasNode();
@@ -2233,7 +2233,7 @@ void CallGraphView::dotExited()
 			pa.setPoint(i, xx, yy);
 		}
 		if (i < points) {
-			qDebug("CallGraphView: Can't read %d spline points (%s:%d)",
+			qDebug("CallGraphView: Can not read %d spline points (%s:%d)",
 			       points, _exporter.filename().ascii(), lineno);
 			continue;
 		}
@@ -2387,7 +2387,7 @@ void CallGraphView::dotExited()
 	_panningView->setScene(_scene);
 	setScene(_scene);
 
-	// if we don't have a selection, or the old selection is not
+	// if we do not have a selection, or the old selection is not
 	// in visible graph, make active function selected for this view
 	if ((!_selectedNode || !_selectedNode->canvasNode()) &&
 		(!_selectedEdge || !_selectedEdge->canvasEdge())) {

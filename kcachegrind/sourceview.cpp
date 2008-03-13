@@ -313,7 +313,7 @@ void SourceView::refresh()
 
   TraceFunctionSource* mainSF = f->sourceFile();
 
-  // skip first source if there's no debug info and there are more sources
+  // skip first source if there is no debug info and there are more sources
   // (this is for a bug in GCC 2.95.x giving unknown source for prologs)
   if (mainSF &&
       (mainSF->firstLineno() == 0) &&

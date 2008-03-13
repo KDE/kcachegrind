@@ -622,7 +622,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     Addr dumpStartAddr, dumpEndAddr;
     TraceInstrMap::Iterator costIt;
 
-    // shouldn't happen
+    // should not happen
     if (it == itEnd) return false;
 
     // calculate address range for call to objdump

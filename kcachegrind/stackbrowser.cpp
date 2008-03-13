@@ -53,7 +53,7 @@ void Stack::extendBottom()
     f = _top;
 
   if (!f) return;
-  // don't follow calls from cycles
+  // do not follow calls from cycles
   if (f->cycle() == f) return;
 
 
@@ -96,7 +96,7 @@ void Stack::extendTop()
 
   int max = 10;
 
-  // don't follow calls from cycles
+  // do not follow calls from cycles
   if (_top->cycle() == _top) return;
 
   // try to extend to upper stack frames
