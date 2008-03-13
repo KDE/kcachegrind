@@ -146,7 +146,7 @@ public slots:
   void visibleRectChangedSlot(TabWidget*);
 
 signals:
-  void activated(TabView*);
+  void tabActivated(TabView*);
 
 protected:
   void resizeEvent(QResizeEvent *);

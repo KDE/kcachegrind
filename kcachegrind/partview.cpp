@@ -130,7 +130,7 @@ void PartView::selectionChangedSlot()
       if (item->isSelected())
         l.append( ((PartListItem*)item)->part() );
 
-    selected(l);
+    partsSelected(l);
 }
 
 

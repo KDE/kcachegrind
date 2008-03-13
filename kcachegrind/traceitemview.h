@@ -115,8 +115,8 @@ public:
    * Default implementation notifies parent
    */
   virtual void selected(TraceItemView* sender, TraceItem*);
-  virtual void selected(TraceItemView* sender, const TracePartList&);
-  virtual void activated(TraceItemView* sender, Direction);
+  virtual void partsSelected(TraceItemView* sender, const TracePartList&);
+  virtual void directionActivated(TraceItemView* sender, Direction);
   virtual void selectedEventType(TraceItemView* sender, TraceEventType*);
   virtual void selectedEventType2(TraceItemView* sender, TraceEventType*);
   virtual void activated(TraceItemView* sender, TraceItem*);
@@ -166,11 +166,11 @@ public:
 protected:
   // helpers to call selected()/activated() of parentView
   void selected(TraceItem*);
-  void selected(const TracePartList&);
+  void partsSelected(const TracePartList&);
   void activated(TraceItem*);
   void selectedEventType(TraceEventType*);
   void selectedEventType2(TraceEventType*);
-  void activated(TraceItemView::Direction);
+  void directionActivated(TraceItemView::Direction);
 
   /* Is this view visible?
    * if not, doUpdate() will not be called by updateView()

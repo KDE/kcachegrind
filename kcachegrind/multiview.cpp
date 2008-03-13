@@ -67,7 +67,7 @@ void MultiView::appendView()
 
     TabView* tv = new TabView(this, this,
 			      QString("TabView-%1").arg(n).ascii());
-    connect(tv, SIGNAL(activated(TabView*)),
+    connect(tv, SIGNAL(tabActivated(TabView*)),
 	    this, SLOT(tabActivated(TabView*)) );
     _views.append(tv);
     tv->show();

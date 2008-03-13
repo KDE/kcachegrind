@@ -322,7 +322,7 @@ void TraceItemView::selected(TraceItemView* /*sender*/, TraceItem* i)
   if (_parentView) _parentView->selected(this, i);
 }
 
-void TraceItemView::selected(TraceItemView* /*sender*/, const TracePartList& l)
+void TraceItemView::partsSelected(TraceItemView* /*sender*/, const TracePartList& l)
 {
 #if TRACE_UPDATES
   kDebug() << (widget() ? widget()->name() : "TraceItemView")
@@ -333,7 +333,7 @@ void TraceItemView::selected(TraceItemView* /*sender*/, const TracePartList& l)
 #endif
 
   if (_parentView)
-    _parentView->selected(this, l);
+    _parentView->partsSelected(this, l);
   else
     if (_topLevel) _topLevel->activePartsChangedSlot(l);
 }
@@ -370,10 +370,10 @@ void TraceItemView::selectedEventType2(TraceItemView*, TraceEventType* t)
       if (_topLevel) _topLevel->setEventType2Delayed(t);
 }
 
-void TraceItemView::activated(TraceItemView*, TraceItemView::Direction d)
+void TraceItemView::directionActivated(TraceItemView*, TraceItemView::Direction d)
 {
   if (_parentView)
-      _parentView->activated(this, d);
+      _parentView->directionActivated(this, d);
   else
       if (_topLevel) _topLevel->setDirectionDelayed(d);
 }
@@ -389,10 +389,10 @@ void TraceItemView::selected(TraceItem* i)
 
 }
 
-void TraceItemView::selected(const TracePartList& l)
+void TraceItemView::partsSelected(const TracePartList& l)
 {
   if (_parentView)
-      _parentView->selected(this, l);
+      _parentView->partsSelected(this, l);
   else
       if (_topLevel) _topLevel->activePartsChangedSlot(l);
 }
@@ -427,10 +427,10 @@ void TraceItemView::selectedEventType2(TraceEventType* t)
       if (_topLevel) _topLevel->setEventType2Delayed(t);
 }
 
-void TraceItemView::activated(TraceItemView::Direction d)
+void TraceItemView::directionActivated(TraceItemView::Direction d)
 {
   if (_parentView)
-      _parentView->activated(this, d);
+      _parentView->directionActivated(this, d);
   else
       if (_topLevel) _topLevel->setDirectionDelayed(d);
 }

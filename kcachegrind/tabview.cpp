@@ -634,7 +634,7 @@ void TabView::setActive(bool a)
 
     if (0) qDebug("%s::setActive(%s)", name(), a ? "true":"false");
 
-    if (a) emit activated(this);
+    if (a) emit tabActivated(this);
 }
 
 void TabView::doUpdate(int changeType)
