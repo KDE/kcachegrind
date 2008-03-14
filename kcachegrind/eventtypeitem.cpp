@@ -20,12 +20,14 @@
  * Items of event type view.
  */
 
-#include <qpixmap.h>
+#include "eventtypeitem.h"
+
+#include <QPixmap>
+
 #include <klocale.h>
 
 #include "configuration.h"
 #include "listutils.h"
-#include "eventtypeitem.h"
 
 
 // EventTypeItem

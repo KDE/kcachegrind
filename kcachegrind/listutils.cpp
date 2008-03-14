@@ -20,10 +20,11 @@
  * Some helper functions for QListViewItem derivates
  */
 
-#include <qpainter.h>
-//Added by qt3to4:
-#include <QPixmap>
 #include "listutils.h"
+
+#include <QPainter>
+#include <QPixmap>
+
 
 #define COSTPIX_WIDTH 25
 

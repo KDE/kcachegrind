@@ -20,15 +20,17 @@
  * Trace Item View
  */
 
-#include <qwidget.h>
-//Added by qt3to4:
+#include "traceitemview.h"
+
+#include <QWidget>
+
 #include <kconfig.h>
 #include <klocale.h>
 #include <kdebug.h>
 #include <kconfiggroup.h>
 
-#include "traceitemview.h"
 #include "toplevel.h"
+
 
 #define TRACE_UPDATES 0
 

@@ -21,29 +21,28 @@
  * The API is similar to QListView.
  */
 
+#include "treemap.h"
+
 #include <math.h>
 
-#include <qpainter.h>
-
-#include <qregexp.h>
-#include <qstyle.h>
-#include <q3popupmenu.h>
-//Added by qt3to4:
+#include <QPainter>
+#include <QRegExp>
+#include <QStyle>
 #include <QPixmap>
 #include <QPaintEvent>
-#include <Q3PtrList>
 #include <QKeyEvent>
 #include <QShowEvent>
 #include <QContextMenuEvent>
 #include <QMouseEvent>
 #include <QToolTip>
+#include <Qt3Support/Q3PtrList>
+#include <Qt3Support/Q3PopupMenu>
 
 #include <klocale.h>
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kconfiggroup.h>
 
-#include "treemap.h"
 
 
 // set this to 1 to enable debug output

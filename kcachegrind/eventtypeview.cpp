@@ -21,12 +21,14 @@
  */
 
 
-#include <q3popupmenu.h>
+#include "eventtypeview.h"
+
+#include <Qt3Support/Q3PopupMenu>
+
 #include <klocale.h>
 
 #include "configuration.h"
 #include "eventtypeitem.h"
-#include "eventtypeview.h"
 #include "toplevel.h"
 
 

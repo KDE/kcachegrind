@@ -20,19 +20,20 @@
  * Configuration Dialog for KCachegrind
  */
 
-#include <qcombobox.h>
-#include <qcheckbox.h>
-#include <qlineedit.h>
-#include <q3listview.h>
-#include <q3dict.h>
-#include <qmessagebox.h>
+#include "configdlg.h"
+
+#include <QComboBox>
+#include <QCheckBox>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <Qt3Support/Q3ListView>
+#include <Qt3Support/Q3Dict>
 
 #include <kcolorbutton.h>
 #include <kfiledialog.h>
 #include <klocale.h>
 #include <knumvalidator.h>
 
-#include "configdlg.h"
 #include "tracedata.h"
 #include "configuration.h"
 

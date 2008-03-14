@@ -20,13 +20,14 @@
  * TracePart as Nested Area
  */
 
+#include "partgraph.h"
+
+#include <QPixmap>
+
 #include <klocale.h>
 
-#include "partgraph.h"
 #include "configuration.h"
 #include "listutils.h"
-//Added by qt3to4:
-#include <QPixmap>
 
 
 // PartAreaWidget

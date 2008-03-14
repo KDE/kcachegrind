@@ -20,6 +20,12 @@
  * Utility classes for KCachegrind
  */
 
+#include "utils.h"
+
+#include <errno.h>
+
+#include <QFile>
+
 #include <config-kcachegrind.h>
 
 #ifdef HAVE_MMAP
@@ -27,10 +33,6 @@
 #include <sys/mman.h>
 #endif
 
-#include <qfile.h>
-#include <errno.h>
-
-#include "utils.h"
 
 
 // class FixString

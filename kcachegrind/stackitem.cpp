@@ -20,13 +20,16 @@
  * Items of stack dockable.
  */
 
-#include <qpixmap.h>
+#include "stackitem.h"
+
+#include <QPixmap>
+
 #include <klocale.h>
 
 #include "configuration.h"
 #include "listutils.h"
-#include "stackitem.h"
 #include "stackselection.h"
+
 
 // StackItem
 

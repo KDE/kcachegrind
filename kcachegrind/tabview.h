@@ -24,21 +24,22 @@
 #ifndef TABVIEW_H
 #define TABVIEW_H
 
-#include <q3ptrlist.h>
-#include <qwidget.h>
-#include <qtabwidget.h>
-#include <qtabbar.h>
-//Added by qt3to4:
+#include <QWidget>
+#include <QTabWidget>
+#include <QTabBar>
 #include <QMouseEvent>
 #include <QHideEvent>
 #include <QShowEvent>
 #include <QMoveEvent>
 #include <QResizeEvent>
 #include <QEvent>
+#include <QSplitter>
+#include <Qt3Support/Q3PtrList>
+
 #include <ksqueezedtextlabel.h>
+
 #include "traceitemview.h"
 
-class QSplitter;
 class TabView;
 
 /**

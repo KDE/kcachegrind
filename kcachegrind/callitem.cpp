@@ -20,15 +20,18 @@
  * Items for caller/callee view.
  */
 
-#include <qpixmap.h>
+#include "callitem.h"
+
+#include <QPixmap>
+
 #include <klocale.h>
 #include <kiconloader.h>
 
 #include "configuration.h"
 #include "listutils.h"
-#include "callitem.h"
 #include "callview.h"
 #include "toplevel.h"
+
 
 // CallItem
 

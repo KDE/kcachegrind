@@ -16,9 +16,11 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include <qstring.h>
 
 #include "subcost.h"
+
+#include <QString>
+
 
 //---------------------------------------------------
 // SubCost

@@ -20,11 +20,14 @@
  * Instruction View
  */
 
-#include <assert.h>
-#include <qfile.h>
-#include <qregexp.h>
+#include "instrview.h"
 
-#include <q3popupmenu.h>
+#include <assert.h>
+
+#include <QFile>
+#include <QRegExp>
+#include <Qt3Support/Q3PopupMenu>
+
 #include <klocale.h>
 #include <kconfig.h>
 #include <kdebug.h>
@@ -32,7 +35,7 @@
 
 #include "configuration.h"
 #include "instritem.h"
-#include "instrview.h"
+
 
 // InstrView defaults
 

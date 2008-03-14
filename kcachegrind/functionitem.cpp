@@ -21,19 +21,15 @@
  */
 
 
-//#include <math.h>
+#include "functionitem.h"
 
-//#include <qpainter.h>
-//#include <qregexp.h>
+#include <QPixmap>
 
 #include <klocale.h>
 #include <kiconloader.h>
 
 #include "listutils.h"
-#include "functionitem.h"
 #include "configuration.h"
-//Added by qt3to4:
-#include <QPixmap>
 
 
 // FunctionItem

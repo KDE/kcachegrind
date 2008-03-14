@@ -21,14 +21,15 @@
  */
 
 
-#include <q3popupmenu.h>
+#include "coverageview.h"
+
+#include <Qt3Support/Q3PopupMenu>
+
 #include <klocale.h>
 
 #include "configuration.h"
 #include "coverageitem.h"
 #include "coverage.h"
-#include "coverageview.h"
-
 
 
 //

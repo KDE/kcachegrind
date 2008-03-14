@@ -21,19 +21,20 @@
  */
 
 
-#include <q3popupmenu.h>
-//Added by qt3to4:
+#include "callmapview.h"
+
 #include <QPixmap>
+#include <Qt3Support/Q3PopupMenu>
 
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kconfig.h>
 #include <kconfiggroup.h>
 
-#include "callmapview.h"
 #include "configuration.h"
 #include "listutils.h"
 #include "toplevel.h"
+
 
 //
 // CallMapView

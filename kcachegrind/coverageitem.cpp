@@ -20,13 +20,15 @@
  * Items of coverage view.
  */
 
-#include <qpixmap.h>
+#include "coverageitem.h"
+
+#include <QPixmap>
+
 #include <klocale.h>
 
 #include "configuration.h"
 #include "listutils.h"
 #include "coverage.h"
-#include "coverageitem.h"
 
 
 // CallerCoverageItem

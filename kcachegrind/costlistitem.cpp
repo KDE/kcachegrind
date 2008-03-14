@@ -16,20 +16,21 @@
    Boston, MA 02110-1301, USA.
 */
 
+#include "costlistitem.h"
+
 #include <math.h>
 
-#include <qpainter.h>
-#include <qregexp.h>
-//Added by qt3to4:
+#include <QPainter>
+#include <QRegExp>
 #include <QPixmap>
 
 #include <klocale.h>
 #include <kiconloader.h>
 
 #include "listutils.h"
-#include "costlistitem.h"
 #include "coverage.h"
 #include "configuration.h"
+
 
 // CostListItem
 

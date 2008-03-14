@@ -20,19 +20,17 @@
  * Callgraph View
  */
 
+#include "callgraphview.h"
+
 #include <stdlib.h>
 #include <math.h>
 
-#include <qfile.h>
-#include <qtextstream.h>
-
-#include <qmatrix.h>
-#include <qpair.h>
-#include <qpainter.h>
-#include <q3popupmenu.h>
-#include <qstyle.h>
-#include <q3process.h>
-
+#include <QFile>
+#include <QTextStream>
+#include <QMatrix>
+#include <QPair>
+#include <QPainter>
+#include <QStyle>
 #include <QScrollBar>
 #include <QResizeEvent>
 #include <QMouseEvent>
@@ -42,8 +40,10 @@
 #include <QContextMenuEvent>
 #include <QList>
 #include <QPixmap>
-#include <Q3PointArray>
 #include <QDesktopWidget>
+#include <Qt3Support/Q3PointArray>
+#include <Qt3Support/Q3PopupMenu>
+#include <Qt3Support/Q3Process>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -54,7 +54,6 @@
 #include <kconfiggroup.h>
 
 #include "configuration.h"
-#include "callgraphview.h"
 #include "toplevel.h"
 #include "listutils.h"
 

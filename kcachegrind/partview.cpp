@@ -21,15 +21,16 @@
  */
 
 
-#include <q3popupmenu.h>
-#include <q3header.h>
+#include "partview.h"
+
+#include <Qt3Support/Q3PopupMenu>
+#include <Qt3Support/Q3Header>
+
 #include <klocale.h>
 
 #include "configuration.h"
 #include "partlistitem.h"
 #include "toplevel.h"
-#include "partview.h"
-
 
 
 //

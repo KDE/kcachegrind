@@ -17,18 +17,18 @@
 */
 
 
+#include "tracedata.h"
+
 #include <stdlib.h>
 
-#include <qfile.h>
-#include <qdir.h>
-#include <qfileinfo.h>
-#include <qregexp.h>
-//Added by qt3to4:
+#include <QFile>
+#include <QDir>
+#include <QFileInfo>
+#include <QRegExp>
 
 #include <klocale.h>
 #include <kdebug.h>
 
-#include "tracedata.h"
 #include "toplevel.h"
 #include "loader.h"
 #include "configuration.h"

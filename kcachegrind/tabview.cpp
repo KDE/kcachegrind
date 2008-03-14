@@ -21,27 +21,26 @@
  * two tab widgets, separated by a splitter
  */
 
-#include <qobject.h>
-#include <qsplitter.h>
-#include <qtabwidget.h>
-#include <qlayout.h>
 
-#include <q3popupmenu.h>
+#include "tabview.h"
 
+#include <QSplitter>
+#include <QTabWidget>
+#include <QLayout>
 #include <QHideEvent>
 #include <QMoveEvent>
-#include <Q3PtrList>
 #include <QEvent>
 #include <QShowEvent>
 #include <QVBoxLayout>
 #include <QResizeEvent>
 #include <QMouseEvent>
+#include <Qt3Support/Q3PopupMenu>
+#include <Qt3Support/Q3PtrList>
 
 #include <klocale.h>
 #include <kconfig.h>
 #include <kconfiggroup.h>
 
-#include "tabview.h"
 #include "eventtypeview.h"
 #include "partview.h"
 #include "callview.h"
@@ -50,6 +49,7 @@
 #include "instrview.h"
 #include "sourceview.h"
 #include "callgraphview.h"
+
 
 // TabBar
 

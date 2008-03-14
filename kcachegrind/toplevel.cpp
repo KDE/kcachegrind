@@ -23,28 +23,28 @@
 #define TRACE_UPDATES 0
 #define ENABLE_DUMPDOCK 0
 
-#include <stdlib.h> // for system()
-#include <qdockwidget.h>
-#include <ktoolbar.h>
-#include <qtimer.h>
+#include "toplevel.h"
 
-#include <qlineedit.h>
-#include <qtextstream.h>
-#include <qsizepolicy.h>
+#include <stdlib.h> // for system()
+
+#include <QDockWidget>
+#include <QTimer>
+#include <QByteArray>
+#include <QLabel>
+#include <QLineEdit>
+#include <QTextStream>
+#include <QSizePolicy>
 #include <QProgressBar>
-#include <qfile.h>
+#include <QFile>
+#include <QEventLoop>
+#include <QtDBus/QDBusConnection>
+
 #include <ktoggleaction.h>
 #include <ktoolbarpopupaction.h>
 #include <kactioncollection.h>
 #include <kselectaction.h>
 #include <krecentfilesaction.h>
-// With Qt 3.1, we can disallow user interaction with long tasks.
-// This needs QEventLoop. Otherwise, QApplication::processEvents is used.
-#include <qeventloop.h>
-//Added by qt3to4:
-#include <QByteArray>
-#include <QLabel>
-
+#include <ktoolbar.h>
 #include <kstandardguiitem.h>
 #include <klocale.h>
 #include <kglobal.h>
@@ -61,12 +61,12 @@
 #include <kmenu.h>
 #include <kdebug.h>
 #include <kicon.h>
+#include <kconfiggroup.h>
 
 #if ENABLE_DUMPDOCK
 #include "dumpselection.h"
 #endif
 
-#include "toplevel.h"
 #include "partselection.h"
 #include "functionselection.h"
 #include "stackselection.h"
@@ -76,8 +76,6 @@
 #include "configdlg.h"
 #include "multiview.h"
 #include "callgraphview.h"
-#include <qdbusconnection.h>
-#include <kconfiggroup.h>
 
 TopLevel::TopLevel()
   : KXmlGuiWindow(0)

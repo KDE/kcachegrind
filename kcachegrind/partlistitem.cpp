@@ -16,18 +16,18 @@
    Boston, MA 02110-1301, USA.
 */
 
+#include "partlistitem.h"
+
 #include <math.h>
 
-#include <qpainter.h>
-#include <qregexp.h>
-//Added by qt3to4:
+#include <QPainter>
+#include <QRegExp>
 #include <QPixmap>
 
 #include <klocale.h>
 #include <kiconloader.h>
 
 #include "listutils.h"
-#include "partlistitem.h"
 #include "coverage.h"
 #include "configuration.h"
 

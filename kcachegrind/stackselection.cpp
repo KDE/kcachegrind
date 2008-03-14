@@ -22,18 +22,20 @@
  *  to be put into a QDockWindow
  */
 
-#include <qtimer.h>
-#include <q3listview.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
-#include <qcombobox.h>
-#include <qlineedit.h>
+#include "stackselection.h"
+
+#include <QTimer>
+#include <QLabel>
+#include <QPushButton>
+#include <QComboBox>
+#include <QLineEdit>
+#include <Qt3Support/Q3ListView>
 
 #include <kdebug.h>
 
 #include "stackbrowser.h"
-#include "stackselection.h"
 #include "stackitem.h"
+
 
 StackSelection::StackSelection( QWidget* parent)
   : StackSelectionBase(parent)

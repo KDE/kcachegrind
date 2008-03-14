@@ -23,7 +23,8 @@
 // for KCACHEGRIND_VERSION
 #include "../version.h"
 
-#include <qfile.h>
+#include <QFile>
+
 #include <kapplication.h>
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>

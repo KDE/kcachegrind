@@ -16,9 +16,10 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include <q3listview.h>
-
 #include "stackbrowser.h"
+
+#include <Qt3Support/Q3ListView>
+
 
 // Stack
 

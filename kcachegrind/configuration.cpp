@@ -20,17 +20,16 @@
  * Configuration for KCachegrind
  */
 
+#include "configuration.h"
+
 #include <kconfig.h>
 #include <klocale.h>
 #include <kdebug.h>
-
-#include "configuration.h"
-#include "tracedata.h"
-#include "ui_configdlgbase.h"
-
-#include "traceitemview.h"
-//Added by qt3to4:
 #include <kconfiggroup.h>
+
+#include "tracedata.h"
+#include "traceitemview.h"
+#include "ui_configdlgbase.h"
 
 //
 // Some predefined cost types...

@@ -20,11 +20,12 @@
  * Items of instruction view.
  */
 
-#include <qpixmap.h>
-#include <qpainter.h>
-//Added by qt3to4:
+#include "instritem.h"
+
+#include <QPixmap>
+#include <QPainter>
 #include <QPolygon>
-#include <Q3MemArray>
+#include <Qt3Support/Q3MemArray>
 
 #include <klocale.h>
 #include <kiconloader.h>
@@ -32,7 +33,6 @@
 
 #include "configuration.h"
 #include "listutils.h"
-#include "instritem.h"
 #include "instrview.h"
 
 

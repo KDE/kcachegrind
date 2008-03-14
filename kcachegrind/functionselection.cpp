@@ -20,25 +20,27 @@
  * For function selection, to be put into a QDockWindow
  */
 
-#include <qtimer.h>
-#include <q3listview.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
-#include <qcombobox.h>
-#include <qlineedit.h>
-#include <qregexp.h>
-#include <q3popupmenu.h>
+#include "functionselection.h"
+
+#include <QTimer>
+#include <QLabel>
+#include <QPushButton>
+#include <QComboBox>
+#include <QLineEdit>
+#include <QRegExp>
+#include <Qt3Support/Q3ListView>
+#include <Qt3Support/Q3PopupMenu>
 
 #include <klocale.h>
 
 #include "traceitemview.h"
 #include "stackbrowser.h"
-#include "functionselection.h"
 #include "partgraph.h"
 #include "functionitem.h"
 #include "costlistitem.h"
 #include "configuration.h"
 #include "toplevel.h"
+
 
 FunctionSelection::FunctionSelection( TopLevel* top,
 				      QWidget* parent)

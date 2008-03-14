@@ -23,12 +23,13 @@
 #ifndef FUNCTIONSELECTION_H
 #define FUNCTIONSELECTION_H
 
+#include <QTimer>
+
 #include "ui_functionselectionbase.h"
 #include "traceitemview.h"
 #include "tracedata.h"
 #include "listutils.h"
-//Added by qt3to4:
-#include <Q3PopupMenu>
+
 
 class Q3PopupMenu;
 

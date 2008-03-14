@@ -20,22 +20,24 @@
  * For part file selection, to be put into a QDockWindow
  */
 
-#include <qtimer.h>
-#include <q3listview.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
-#include <qcombobox.h>
-#include <qlineedit.h>
-#include <q3popupmenu.h>
-#include <qlayout.h>
+#include "partselection.h"
+
+#include <QTimer>
+#include <QLabel>
+#include <QPushButton>
+#include <QComboBox>
+#include <QLineEdit>
+#include <QLayout>
+#include <Qt3Support/Q3ListView>
+#include <Qt3Support/Q3PopupMenu>
 
 #include <klocale.h>
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kconfiggroup.h>
 
-#include "partselection.h"
 #include "partgraph.h"
+
 
 PartSelection::PartSelection( QWidget* parent)
   : PartSelectionBase(parent)

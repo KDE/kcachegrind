@@ -21,13 +21,14 @@
  */
 
 
-#include <q3popupmenu.h>
+#include "callview.h"
+
+#include <Qt3Support/Q3PopupMenu>
+
 #include <klocale.h>
 
 #include "configuration.h"
 #include "callitem.h"
-#include "callview.h"
-
 
 
 //

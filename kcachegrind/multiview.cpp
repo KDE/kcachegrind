@@ -23,13 +23,16 @@
  * (with wrap around).
  */
 
-#include <qobject.h>
+#include "multiview.h"
+
+#include <QObject>
+
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kconfiggroup.h>
 
-#include "multiview.h"
 #include "tabview.h"
+
 
 //
 // MultiView

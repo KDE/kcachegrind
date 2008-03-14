@@ -20,16 +20,17 @@
  * Source View
  */
 
-#include <qdir.h>
-#include <qfile.h>
+#include "sourceview.h"
 
-#include <q3popupmenu.h>
+#include <QDir>
+#include <QFile>
+#include <Qt3Support/Q3PopupMenu>
+
 #include <klocale.h>
 #include <kdebug.h>
 
 #include "configuration.h"
 #include "sourceitem.h"
-#include "sourceview.h"
 
 
 //

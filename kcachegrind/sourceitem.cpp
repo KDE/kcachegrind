@@ -20,12 +20,13 @@
  * Items of source view.
  */
 
-#include <qpixmap.h>
-#include <qregexp.h>
-#include <qpainter.h>
-//Added by qt3to4:
+#include "sourceitem.h"
+
+#include <QPixmap>
+#include <QRegExp>
+#include <QPainter>
 #include <QPolygon>
-#include <Q3MemArray>
+#include <Qt3Support/Q3MemArray>
 
 #include <klocale.h>
 #include <kiconloader.h>
@@ -33,7 +34,6 @@
 #include "configuration.h"
 #include "listutils.h"
 #include "sourceview.h"
-#include "sourceitem.h"
 
 
 // SourceItem
