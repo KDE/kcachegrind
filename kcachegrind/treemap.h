@@ -474,7 +474,7 @@ public:
 
   /**
    * Selects or unselects items in a range.
-   * This is needed internally for Shift-Click in Extented mode.
+   * This is needed internally for Shift-Click in Extended mode.
    * Range means for a hierarchical widget:
    * - select/unselect i1 and i2 according selected
    * - search common parent of i1 and i2, and select/unselect the
