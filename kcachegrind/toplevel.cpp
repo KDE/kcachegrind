@@ -713,6 +713,11 @@ void TopLevel::createMiscActions()
   _saCost->setToolTip( hint );
   _saCost->setWhatsThis( hint );
 
+  // A dummy entry forces a minimum size of combobox in toolbar
+  QStringList dummyItems;
+  dummyItems << i18n("(Placeholder for list of event types)");
+  _saCost->setItems(dummyItems);
+
   // cost types are dependent on loaded data, thus KSelectAction
   // is filled in setData()
   connect( _saCost, SIGNAL(triggered(const QString&)),
@@ -724,6 +729,7 @@ void TopLevel::createMiscActions()
   _saCost2->setComboWidth(300);
   _saCost2->setToolTip( hint );
   _saCost2->setWhatsThis( hint );
+  _saCost2->setItems(dummyItems);
 
   connect( _saCost2, SIGNAL(triggered(const QString&)),
            this, SLOT(eventType2Selected(const QString&)));
