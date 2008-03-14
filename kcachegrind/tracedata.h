@@ -264,11 +264,11 @@ public:
 
   // conversion of item type to locale independent string (e.g. for config)
   static QString     typeName(CostType);
-  static CostType    costType(QString);
+  static CostType    costType(const QString&);
   // the versions below should be used for user visible strings, as
   // these use localization settings
   static QString     i18nTypeName(CostType);
-  static CostType    i18nCostType(QString);
+  static CostType    i18nCostType(const QString&);
   // clean up some static data
   static void cleanup();
 
@@ -444,14 +444,14 @@ public:
    * <longName> is a long localized string, e.g. "L1 Read Miss"
    * <formula> uses short names to reference other types
    */
-  explicit TraceEventType(QString name,
-			  QString longName = QString(),
-			  QString formula = QString());
+  explicit TraceEventType(const QString& name,
+                          const QString& longName = QString(),
+                          const QString& formula = QString());
 
-  void setName(QString n) { _name = n; }
-  void setLongName(QString n) { _longName = n; }
+  void setName(const QString& n) { _name = n; }
+  void setLongName(const QString& n) { _longName = n; }
   void setMapping(TraceEventTypeMapping* m);
-  void setFormula(QString);
+  void setFormula(const QString&);
   // default arg is for specifying a real type, but index unknown
   void setRealIndex(int r = TraceCost::MaxRealIndex);
 
@@ -480,10 +480,10 @@ public:
 
   // application wide known types, referenced by short name
   // next 2 functions return a new type object instance
-  static TraceEventType* knownRealType(QString);
-  static TraceEventType* knownDerivedType(QString);
+  static TraceEventType* knownRealType(const QString&);
+  static TraceEventType* knownDerivedType(const QString&);
   static void add(TraceEventType*);
-  static bool remove(QString);
+  static bool remove(const QString&);
   static int knownTypeCount();
   static TraceEventType* knownType(int);
 
@@ -517,10 +517,10 @@ public:
    * Defines a sub mapping with a list of real event types
    * If <create> is false, checks if this is a existing sub mapping.
    */
-  TraceSubMapping* subMapping(QString types, bool create = true);
+  TraceSubMapping* subMapping(const QString& types, bool create = true);
 
   // "knows" about some real types
-  int addReal(QString);
+  int addReal(const QString&);
   int add(TraceEventType*);
   bool remove(TraceEventType*);
   int realCount() { return _realCount; }
@@ -529,10 +529,10 @@ public:
   TraceEventType* type(int);
   TraceEventType* realType(int);
   TraceEventType* derivedType(int);
-  TraceEventType* type(QString);
-  TraceEventType* typeForLong(QString);
-  int realIndex(QString);
-  int index(QString);
+  TraceEventType* type(const QString&);
+  TraceEventType* typeForLong(const QString&);
+  int realIndex(const QString&);
+  int index(const QString&);
   QColor* realColors() { return _realColor; }
 
   /**
@@ -567,7 +567,7 @@ class TraceSubMapping
 public:
   TraceSubMapping(TraceEventTypeMapping*);
 
-  bool append(QString, bool create=true);
+  bool append(const QString&, bool create=true);
   bool append(int);
   void clear();
 
@@ -1669,7 +1669,7 @@ class TraceFunction: public TraceCostItem
   TraceFunctionCycle* _cycle;
 
  private:
-  bool isUniquePrefix(QString) const;
+  bool isUniquePrefix(const QString&) const;
   //TraceFunctionMap::Iterator _myMapIterator;
 
   TraceClass* _cls;

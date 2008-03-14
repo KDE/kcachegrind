@@ -184,7 +184,7 @@ QString TraceItem::typeName(CostType t)
     return _typeName[t];
 }
 
-TraceItem::CostType TraceItem::costType(QString s)
+TraceItem::CostType TraceItem::costType(const QString& s)
 {
   // This is the default cost Type
   if (s.isEmpty()) return Function;
@@ -210,7 +210,7 @@ QString TraceItem::i18nTypeName(CostType t)
     return _i18nTypeName[t];
 }
 
-TraceItem::CostType TraceItem::i18nCostType(QString s)
+TraceItem::CostType TraceItem::i18nCostType(const QString& s)
 {
   // This is the default cost Type
   if (s.isEmpty()) return Function;
@@ -792,7 +792,8 @@ void TraceJumpCost::addCost(TraceJumpCost* item)
 
 QList<TraceEventType*>* TraceEventType::_knownTypes = 0;
 
-TraceEventType::TraceEventType(QString name,  QString longName, QString formula)
+TraceEventType::TraceEventType(const QString& name, const QString& longName,
+                               const QString& formula)
 {
   _name = name;
   _longName = longName;
@@ -806,7 +807,7 @@ TraceEventType::TraceEventType(QString name,  QString longName, QString formula)
     _coefficient[i] = 0;
 }
 
-void TraceEventType::setFormula(QString formula)
+void TraceEventType::setFormula(const QString& formula)
 {
   _formula = formula;
   _realIndex = TraceCost::InvalidIndex;
@@ -960,7 +961,7 @@ int TraceEventType::histCost(TraceCost* c, double total, double* hist)
 
 
 
-TraceEventType* TraceEventType::knownRealType(QString n)
+TraceEventType* TraceEventType::knownRealType(const QString& n)
 {
   if (!_knownTypes) return 0;
 
@@ -973,7 +974,7 @@ TraceEventType* TraceEventType::knownRealType(QString n)
   return 0;
 }
 
-TraceEventType* TraceEventType::knownDerivedType(QString n)
+TraceEventType* TraceEventType::knownDerivedType(const QString& n)
 {
   if (!_knownTypes) return 0;
 
@@ -1021,7 +1022,7 @@ int TraceEventType::knownTypeCount()
   return _knownTypes->count();
 }
 
-bool TraceEventType::remove(QString n)
+bool TraceEventType::remove(const QString& n)
 {
   if (!_knownTypes) return false;
 
@@ -1070,7 +1071,7 @@ TraceEventTypeMapping::~TraceEventTypeMapping()
     if (_derived[i]) delete _derived[i];
 }
 
-TraceSubMapping* TraceEventTypeMapping::subMapping(QString types, bool create)
+TraceSubMapping* TraceEventTypeMapping::subMapping(const QString& types, bool create)
 {
   // first check if there is enough space in the mapping
   int newCount = 0;
@@ -1117,8 +1118,7 @@ TraceSubMapping* TraceEventTypeMapping::subMapping(QString types, bool create)
   return sm;
 }
 
-
-int TraceEventTypeMapping::addReal(QString t)
+int TraceEventTypeMapping::addReal(const QString& t)
 {
   int index = realIndex(t);
   if (index>=0) return index;
@@ -1219,7 +1219,7 @@ TraceEventType* TraceEventTypeMapping::type(int t)
   return 0;
 }
 
-TraceEventType* TraceEventTypeMapping::type(QString name)
+TraceEventType* TraceEventTypeMapping::type(const QString& name)
 {
   for (int i=0;i<_realCount;i++)
     if (_real[i] && (_real[i]->name() == name))
@@ -1232,7 +1232,7 @@ TraceEventType* TraceEventTypeMapping::type(QString name)
   return 0;
 }
 
-TraceEventType* TraceEventTypeMapping::typeForLong(QString name)
+TraceEventType* TraceEventTypeMapping::typeForLong(const QString& name)
 {
   for (int i=0;i<_realCount;i++)
     if (_real[i] && (_real[i]->longName() == name))
@@ -1246,7 +1246,7 @@ TraceEventType* TraceEventTypeMapping::typeForLong(QString name)
 }
 
 
-int TraceEventTypeMapping::realIndex(QString name)
+int TraceEventTypeMapping::realIndex(const QString& name)
 {
   for (int i=0;i<_realCount;i++)
     if (_real[i] && (_real[i]->name() == name))
@@ -1255,7 +1255,7 @@ int TraceEventTypeMapping::realIndex(QString name)
   return TraceCost::InvalidIndex;
 }
 
-int TraceEventTypeMapping::index(QString name)
+int TraceEventTypeMapping::index(const QString& name)
 {
   for (int i=0;i<_realCount;i++)
     if (_real[i] && (_real[i]->name() == name))
@@ -1314,7 +1314,7 @@ void TraceSubMapping::clear()
   }
 }
 
-bool TraceSubMapping::append(QString type, bool create)
+bool TraceSubMapping::append(const QString& type, bool create)
 {
   if (!_mapping) return false;
   int index = create ? _mapping->addReal(type) : _mapping->realIndex(type);
@@ -3213,7 +3213,7 @@ TraceAssoziation* TraceFunction::assoziation(int rtti)
 
 #if 0
 // helper for prettyName
-bool TraceFunction::isUniquePrefix(QString prefix) const
+bool TraceFunction::isUniquePrefix(const QString& prefix) const
 {
   TraceFunctionMap::ConstIterator it, it2;
   it = it2 = _myMapIterator;
@@ -4528,12 +4528,12 @@ TracePart* TraceData::addPart(const QString& dir, const QString& name)
   if (!l) return 0;
 
   if (_topLevel) {
-      _topLevel->connect(l, SIGNAL(updateStatus(QString, int)),
-                         SLOT(showStatus(QString, int)));
-      _topLevel->connect(l, SIGNAL(loadError(QString, int, QString)),
-                         SLOT(showLoadError(QString, int, QString)));
-      _topLevel->connect(l, SIGNAL(loadWarning(QString, int, QString)),
-                         SLOT(showLoadWarning(QString, int, QString)));
+      _topLevel->connect(l, SIGNAL(updateStatus(const QString&, int)),
+                         SLOT(showStatus(const QString&, int)));
+      _topLevel->connect(l, SIGNAL(loadError(const QString&, int, const QString&)),
+                         SLOT(showLoadError(const QString&, int, const QString&)));
+      _topLevel->connect(l, SIGNAL(loadWarning(const QString&, int, const QString&)),
+                         SLOT(showLoadWarning(const QString&, int, const QString&)));
   }
 
   TracePart* part = new TracePart(this, file);

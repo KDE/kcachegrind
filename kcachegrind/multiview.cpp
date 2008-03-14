@@ -170,8 +170,8 @@ void MultiView::doUpdate(int changeType)
 
 
 void MultiView::readViewConfig(KConfig* c,
-			       QString prefix, QString postfix,
-			       bool withOptions)
+                               const QString& prefix, const QString& postfix,
+                               bool withOptions)
 {
   if (0) qDebug("%s::readConfig(%s%s)", name(),
 		prefix.ascii(), postfix.ascii());
@@ -205,8 +205,8 @@ void MultiView::readViewConfig(KConfig* c,
 }
 
 void MultiView::saveViewConfig(KConfig* c,
-			       QString prefix, QString postfix,
-			       bool withOptions)
+                               const QString& prefix, const QString& postfix,
+                               bool withOptions)
 {
   KConfigGroup g(c, (prefix+postfix).toAscii().constData());
 

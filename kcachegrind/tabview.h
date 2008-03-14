@@ -139,8 +139,8 @@ public:
   int visibleTabs();
   int visibleAreas();
 
-  void readViewConfig(KConfig*, QString prefix, QString postfix, bool);
-  void saveViewConfig(KConfig*, QString prefix, QString postfix, bool);
+  void readViewConfig(KConfig*, const QString& prefix, const QString& postfix, bool);
+  void saveViewConfig(KConfig*, const QString& prefix, const QString& postfix, bool);
 
 public slots:
   void tabChanged(QWidget*);
@@ -155,7 +155,7 @@ protected:
   void mousePressEvent(QMouseEvent*);
 
 private:
-  TraceItemView* addTab(QString, TraceItemView*);
+  TraceItemView* addTab(const QString&, TraceItemView*);
   void addTop(TraceItemView*);
   void addBottom(TraceItemView*);
   TabWidget* tabWidget(Position);

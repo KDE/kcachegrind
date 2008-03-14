@@ -63,15 +63,16 @@ void TraceItemView::select(TraceItem* i)
 }
 
 KConfigGroup TraceItemView::configGroup(KConfig* c,
-					 QString group, QString post)
+                                        const QString& group, const QString& post)
 {
     QStringList gList = c->groupList();
-    if (gList.contains(group+post) ) group += post;
-    return KConfigGroup(c, group);
+    QString g = group;
+    if (gList.contains(group+post) ) g += post;
+    return KConfigGroup(c, g);
 }
 
 void TraceItemView::writeConfigEntry(KConfigGroup &c, const char* pKey,
-				     QString value, const char* def, bool bNLS)
+				     const QString& value, const char* def, bool bNLS)
 {
     if ((value.isEmpty() && ((def == 0) || (*def == 0))) ||
 	(value == QString(def)))
@@ -112,15 +113,15 @@ void TraceItemView::writeConfigEntry(KConfigGroup& c, const char* pKey,
 	c.writeEntry(pKey, value);
 }
 
-void TraceItemView::readViewConfig(KConfig*, QString, QString, bool)
+void TraceItemView::readViewConfig(KConfig*, const QString&, const QString&, bool)
 {}
 
 #if 1
-void TraceItemView::saveViewConfig(KConfig*, QString, QString, bool)
+void TraceItemView::saveViewConfig(KConfig*, const QString&, const QString&, bool)
 {}
 #else
 void TraceItemView::saveViewConfig(KConfig* c,
-				   QString prefix, QString postfix, bool)
+                                   const QString& prefix, const QString& postfix, bool)
 {
     // write a dummy config entry to see missing virtual functions
     KConfigGroup g(c, prefix+postfix);

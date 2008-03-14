@@ -57,7 +57,7 @@ public:
   // max symbol lengths/count in tooltip/popup
   static int maxSymbolLength();
   // strip a symbol name according to <maxSymbolLength>
-  static QString shortenSymbol(QString);
+  static QString shortenSymbol(const QString&);
   static int maxSymbolCount();
   // max. number of items in lists
   static int maxListCount();
@@ -81,7 +81,7 @@ private:
     bool automatic;
   };
 
-  static ColorSetting* color(QString, bool createNew = true);
+  static ColorSetting* color(const QString&, bool createNew = true);
 
   Q3Dict<ColorSetting> _colors;
 

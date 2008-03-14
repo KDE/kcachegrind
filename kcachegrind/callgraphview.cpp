@@ -3010,8 +3010,8 @@ QString CallGraphView::zoomPosString(ZoomPosition p)
 	return QString();
 }
 
-void CallGraphView::readViewConfig(KConfig* c, QString prefix,
-                                   QString postfix, bool)
+void CallGraphView::readViewConfig(KConfig* c, const QString& prefix,
+                                   const QString& postfix, bool)
 {
 	KConfigGroup g = configGroup(c, prefix, postfix);
 
@@ -3033,8 +3033,8 @@ void CallGraphView::readViewConfig(KConfig* c, QString prefix,
 
 }
 
-void CallGraphView::saveViewConfig(KConfig* c, QString prefix,
-                                   QString postfix, bool)
+void CallGraphView::saveViewConfig(KConfig* c, const QString& prefix,
+                                   const QString& postfix, bool)
 {
 	KConfigGroup g(c, prefix+postfix);
 

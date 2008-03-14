@@ -73,8 +73,8 @@ public:
 
   virtual QString whatsThis() const;
 
-  static KConfigGroup configGroup(KConfig*, QString prefix, QString postfix);
-  static void writeConfigEntry(KConfigGroup&, const char* pKey, QString value,
+  static KConfigGroup configGroup(KConfig*, const QString& prefix, const QString& postfix);
+  static void writeConfigEntry(KConfigGroup&, const char* pKey, const QString& value,
                                const char* def, bool bNLS = false);
   static void writeConfigEntry(KConfigGroup&, const char* pKey,
                                int value, int def);
@@ -82,9 +82,9 @@ public:
                                bool value, bool def);
   static void writeConfigEntry(KConfigGroup&, const char* pKey,
                                double value, double def);
-  virtual void readViewConfig(KConfig*, QString prefix, QString postfix,
+  virtual void readViewConfig(KConfig*, const QString& prefix, const QString& postfix,
 			      bool withOptions);
-  virtual void saveViewConfig(KConfig*, QString prefix, QString postfix,
+  virtual void saveViewConfig(KConfig*, const QString& prefix, const QString& postfix,
 			      bool withOptions);
 
   // Immediate remove all references to old data, and set the new.

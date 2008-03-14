@@ -50,7 +50,7 @@ static QStringList knownTypes()
 }
 
 
-static QString knownFormula(QString name)
+static QString knownFormula(const QString& name)
 {
   if (name =="L1m") return QString("I1mr + D1mr + D1mw");
   if (name =="L2m") return QString("I2mr + D2mr + D2mw");
@@ -59,7 +59,7 @@ static QString knownFormula(QString name)
   return QString();
 }
 
-static QString knownLongName(QString name)
+static QString knownLongName(const QString& name)
 {
     if (name == "Ir") return i18n("Instruction Fetch");
     if (name =="Dr") return i18n("Data Read Access");
@@ -348,7 +348,7 @@ QColor Configuration::functionColor(TraceCost::CostType gt,
   return groupColor(group);
 }
 
-Configuration::ColorSetting* Configuration::color(QString n, bool createNew)
+Configuration::ColorSetting* Configuration::color(const QString& n, bool createNew)
 {
 //  qDebug("Color for %s", n.latin1());
 
@@ -463,11 +463,11 @@ int Configuration::maxSymbolLength()
   return config()->_maxSymbolLength;
 }
 
-QString Configuration::shortenSymbol(QString s)
+QString Configuration::shortenSymbol(const QString& s)
 {
-    if ((int)s.length() > maxSymbolLength())
-	s = s.left(maxSymbolLength()) + "...";
-    return s;
+	if ((int)s.length() > maxSymbolLength())
+		return s.left(maxSymbolLength()) + "...";
+	return s;
 }
 
 int Configuration::maxListCount()

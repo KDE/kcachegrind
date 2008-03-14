@@ -195,11 +195,11 @@ public slots:
   void slotShowTip();
 
   // progress in status bar, empty message disables progress display
-  void showStatus(QString msg, int progress);
+  void showStatus(const QString& msg, int progress);
   void showMessage(const QString&, int msec);
   // messages from file loader
-  void showLoadError(QString,int,QString);
-  void showLoadWarning(QString,int,QString);
+  void showLoadError(const QString&,int,const QString&);
+  void showLoadWarning(const QString&,int,const QString&);
 
 private:
   void init();
@@ -207,8 +207,8 @@ private:
   void createMiscActions();
   void setupMainWidget(MainWidget*);
   void setupPartSelection(PartSelection*);
-  void restoreCurrentState(QString postfix);
-  void saveCurrentState(QString postfix);
+  void restoreCurrentState(const QString& postfix);
+  void saveCurrentState(const QString& postfix);
   void saveTraceSettings();
   QString traceKey();
   void restoreTraceTypes();

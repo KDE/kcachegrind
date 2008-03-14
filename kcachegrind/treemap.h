@@ -106,7 +106,7 @@ class StoredDrawParams: public DrawParams
 {
 public:
   StoredDrawParams();
-  explicit StoredDrawParams(QColor c,
+  explicit StoredDrawParams(const QColor& c,
         		    bool selected = false, bool current = false);
 
   // getters
@@ -126,10 +126,10 @@ public:
   const QFont& font() const;
 
   // attribute setters
-  void setField(int f, QString t, QPixmap pm = QPixmap(),
+  void setField(int f, const QString& t, const QPixmap& pm = QPixmap(),
                 Position p = Default, int maxLines = 0);
-  void setText(int f, QString);
-  void setPixmap(int f, QPixmap);
+  void setText(int f, const QString&);
+  void setPixmap(int f, const QPixmap&);
   void setPosition(int f, Position);
   void setMaxLines(int f, int);
   void setBackColor(QColor c) { _backColor = c; }
@@ -174,7 +174,7 @@ private:
 class RectDrawing
 {
 public:
-  RectDrawing(QRect);
+  RectDrawing(const QRect&);
   ~RectDrawing();
 
   // The default DrawParams object used.
@@ -190,7 +190,7 @@ public:
   bool drawField(QPainter*, int f, DrawParams* dp = 0);
 
   // resets rectangle for free space
-  void setRect(QRect);
+  void setRect(const QRect&);
 
   // Returns the rectangle area still free of text/pixmaps after
   // a number of drawText() calls.
@@ -253,8 +253,8 @@ public:
 
   explicit TreeMapItem(TreeMapItem* parent = 0, double value = 1.0 );
   TreeMapItem(TreeMapItem* parent, double value,
-              QString text1, QString text2 = QString(),
-              QString text3 = QString(), QString text4 = QString());
+              const QString& text1, const QString& text2 = QString(),
+              const QString& text3 = QString(), const QString& text4 = QString());
   virtual ~TreeMapItem();
 
   bool isChildOf(TreeMapItem*);
@@ -508,7 +508,7 @@ public:
   void setSplitMode(TreeMapItem::SplitMode m);
   TreeMapItem::SplitMode splitMode() const;
   // returns true if string was recognized
-  bool setSplitMode(QString);
+  bool setSplitMode(const QString&);
   QString splitModeString() const;
 
 
@@ -575,13 +575,13 @@ public:
    * This is important for the visualization menu generated
    * with visualizationMenu()
    */
-  void setFieldType(int, QString);
+  void setFieldType(int, const QString&);
   QString fieldType(int) const;
 
   /**
    * Stop drawing at item with name
    */
-  void setFieldStop(int, QString);
+  void setFieldStop(int, const QString&);
   QString fieldStop(int) const;
 
   /**
@@ -605,7 +605,7 @@ public:
    */
   void setFieldPosition(int, DrawParams::Position);
   DrawParams::Position fieldPosition(int) const;
-  void setFieldPosition(int, QString);
+  void setFieldPosition(int, const QString&);
   QString fieldPositionString(int) const;
 
   /**
@@ -620,8 +620,8 @@ public:
   /**
    * Save/restore options.
    */
-  void saveOptions(KConfigGroup*, QString prefix = QString());
-  void restoreOptions(KConfigGroup*, QString prefix = QString());
+  void saveOptions(KConfigGroup*, const QString& prefix = QString());
+  void restoreOptions(KConfigGroup*, const QString& prefix = QString());
 
   /**
    * These functions populate given popup menus.

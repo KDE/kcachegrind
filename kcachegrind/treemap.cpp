@@ -66,7 +66,7 @@ StoredDrawParams::StoredDrawParams()
   // field array has size 0
 }
 
-StoredDrawParams::StoredDrawParams(QColor c,
+StoredDrawParams::StoredDrawParams(const QColor& c,
                                    bool selected, bool current)
 {
   _backColor = c;
@@ -136,7 +136,7 @@ void StoredDrawParams::ensureField(int f)
 }
 
 
-void StoredDrawParams::setField(int f, QString t, QPixmap pm,
+void StoredDrawParams::setField(int f, const QString& t, const QPixmap& pm,
                            Position p, int maxLines)
 {
   if (f<0 || f>=MAX_FIELD) return;
@@ -148,7 +148,7 @@ void StoredDrawParams::setField(int f, QString t, QPixmap pm,
   _field[f].maxLines = maxLines;
 }
 
-void StoredDrawParams::setText(int f, QString t)
+void StoredDrawParams::setText(int f, const QString& t)
 {
   if (f<0 || f>=MAX_FIELD) return;
   ensureField(f);
@@ -156,7 +156,7 @@ void StoredDrawParams::setText(int f, QString t)
   _field[f].text = t;
 }
 
-void StoredDrawParams::setPixmap(int f, QPixmap pm)
+void StoredDrawParams::setPixmap(int f, const QPixmap& pm)
 {
   if (f<0 || f>=MAX_FIELD) return;
   ensureField(f);
@@ -186,7 +186,7 @@ void StoredDrawParams::setMaxLines(int f, int m)
 // RectDrawing
 //
 
-RectDrawing::RectDrawing(QRect r)
+RectDrawing::RectDrawing(const QRect& r)
 {
   _fm = 0;
   _dp = 0;
@@ -215,7 +215,7 @@ void RectDrawing::setDrawParams(DrawParams* dp)
   _dp = dp;
 }
 
-void RectDrawing::setRect(QRect r)
+void RectDrawing::setRect(const QRect& r)
 {
   _rect = r;
 
@@ -791,8 +791,8 @@ TreeMapItem::TreeMapItem(TreeMapItem* parent, double value)
 
 
 TreeMapItem::TreeMapItem(TreeMapItem* parent, double value,
-                         QString text1, QString text2,
-                         QString text3, QString text4)
+                         const QString& text1, const QString& text2,
+                         const QString& text3, const QString& text4)
 {
   _value = value;
   _parent = parent;
@@ -1159,7 +1159,7 @@ TreeMapItem::SplitMode TreeMapWidget::splitMode() const
   return _splitMode;
 }
 
-bool TreeMapWidget::setSplitMode(QString mode)
+bool TreeMapWidget::setSplitMode(const QString& mode)
 {
   if (mode == "Bisection") setSplitMode(TreeMapItem::Bisection);
   else if (mode == "Columns") setSplitMode(TreeMapItem::Columns);
@@ -1310,7 +1310,7 @@ bool TreeMapWidget::resizeAttr(int size)
   return true;
 }
 
-void TreeMapWidget::setFieldType(int f, QString type)
+void TreeMapWidget::setFieldType(int f, const QString& type)
 {
   if (((int)_attr.size() < f+1) &&
       (type == defaultFieldType(f))) return;
@@ -1325,7 +1325,7 @@ QString TreeMapWidget::fieldType(int f) const
   return _attr[f].type;
 }
 
-void TreeMapWidget::setFieldStop(int f, QString stop)
+void TreeMapWidget::setFieldStop(int f, const QString& stop)
 {
   if (((int)_attr.size() < f+1) &&
       (stop == defaultFieldStop(f))) return;
@@ -1398,7 +1398,7 @@ DrawParams::Position TreeMapWidget::fieldPosition(int f) const
   return _attr[f].pos;
 }
 
-void TreeMapWidget::setFieldPosition(int f, QString pos)
+void TreeMapWidget::setFieldPosition(int f, const QString& pos)
 {
   if (pos == "TopLeft")
     setFieldPosition(f, DrawParams::TopLeft);
@@ -3132,7 +3132,7 @@ void TreeMapWidget::addDepthStopItems(Q3PopupMenu* popup,
  * Option saving/restoring
  */
 
-void TreeMapWidget::saveOptions(KConfigGroup* config, QString prefix)
+void TreeMapWidget::saveOptions(KConfigGroup* config, const QString& prefix)
 {
   config->writeEntry(prefix+"Nesting", splitModeString());
   config->writeEntry(prefix+"AllowRotation", allowRotation());
@@ -3157,7 +3157,7 @@ void TreeMapWidget::saveOptions(KConfigGroup* config, QString prefix)
 }
 
 
-void TreeMapWidget::restoreOptions(KConfigGroup* config, QString prefix)
+void TreeMapWidget::restoreOptions(KConfigGroup* config, const QString& prefix)
 {
   bool enabled;
   int num;

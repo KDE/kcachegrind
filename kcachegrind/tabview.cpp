@@ -360,7 +360,7 @@ void TabView::setData(TraceData* d)
     v->setData(d);
 }
 
-TraceItemView* TabView::addTab(QString label, TraceItemView* view)
+TraceItemView* TabView::addTab(const QString& label, TraceItemView* view)
 {
     view->setTitle(label);
     _tabs.append(view);
@@ -724,7 +724,7 @@ void TabView::selected(TraceItemView*, TraceItem* s)
 
 
 void TabView::readViewConfig(KConfig* c,
-			     QString prefix, QString postfix,
+			     const QString& prefix, const QString& postfix,
 			     bool withOptions)
 {
     if (0) qDebug("%s::readConfig(%s%s)", name(),
@@ -822,7 +822,7 @@ void TabView::readViewConfig(KConfig* c,
 }
 
 void TabView::saveViewConfig(KConfig* c,
-			     QString prefix, QString postfix,
+			     const QString& prefix, const QString& postfix,
 			     bool withOptions)
 {
     KConfigGroup g(c, (prefix+postfix).ascii());

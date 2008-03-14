@@ -27,7 +27,7 @@
 
 QList<Loader*> Loader::_loaderList;
 
-Loader::Loader(QString name, QString desc)
+Loader::Loader(const QString& name, const QString& desc)
 {
 	_name = name;
 	_description = desc;
@@ -55,7 +55,7 @@ Loader* Loader::matchingLoader(QFile* file)
 	return 0;
 }
 
-Loader* Loader::loader(QString name)
+Loader* Loader::loader(const QString& name)
 {
 	foreach (Loader* l, _loaderList)
 		if (l->name() == name)

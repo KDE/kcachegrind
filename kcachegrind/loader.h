@@ -55,7 +55,7 @@ class Loader: public QObject
     Q_OBJECT
 
 public:
-  Loader(QString name, QString desc);
+  Loader(const QString& name, const QString& desc);
   virtual ~Loader();
 
   // reimplement for a specific Loader
@@ -63,7 +63,7 @@ public:
   virtual bool loadTrace(TracePart*);
 
   static Loader* matchingLoader(QFile* file);
-  static Loader* loader(QString name);
+  static Loader* loader(const QString& name);
   static void initLoaders();
   static void deleteLoaders();
 
@@ -71,9 +71,9 @@ public:
   QString description() const { return _description; }
 
 signals:
-  void updateStatus(QString statusmsg, int progress);
-  void loadError(QString filename, int line, QString msg);
-  void loadWarning(QString filename, int line, QString msg);
+  void updateStatus(const QString& statusmsg, int progress);
+  void loadError(const QString& filename, int line, const QString& msg);
+  void loadWarning(const QString& filename, int line, const QString& msg);
 
 private:
   QString _name, _description;

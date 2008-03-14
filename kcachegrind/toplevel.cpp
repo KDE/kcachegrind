@@ -210,7 +210,7 @@ void TopLevel::setupPartSelection(PartSelection* ps)
  * No positions are saved. These is done automatically for
  * KToolbar, and manually in queryExit() for QT docks.
  */
-void TopLevel::saveCurrentState(QString postfix)
+void TopLevel::saveCurrentState(const QString& postfix)
 {
   KConfig *kconfig = KGlobal::config().data();
   QByteArray pf = postfix.ascii();
@@ -262,7 +262,7 @@ void TopLevel::saveTraceSettings()
  * This does NOT restore any positions. This is done automatically for
  * KToolbar, and manually in the createDocks() for QT docks..
  */
-void TopLevel::restoreCurrentState(QString postfix)
+void TopLevel::restoreCurrentState(const QString& postfix)
 {
   KConfig *kconfig = KGlobal::config().data();
   QStringList gList = kconfig->groupList();
@@ -2302,7 +2302,7 @@ void TopLevel::showMessage(const QString& msg, int ms)
 		_statusbar->message(msg, ms);
 }
 
-void TopLevel::showStatus(QString msg, int progress)
+void TopLevel::showStatus(const QString& msg, int progress)
 {
 	static bool msgUpdateNeeded = true;
 
@@ -2349,12 +2349,12 @@ void TopLevel::showStatus(QString msg, int progress)
 	qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
 }
 
-void TopLevel::showLoadError(QString name, int line, QString msg)
+void TopLevel::showLoadError(const QString& name, int line, const QString& msg)
 {
 	kError() << "Loading" << name.ascii() << ":" << line << ": " << msg.ascii();
 }
 
-void TopLevel::showLoadWarning(QString name, int line, QString msg)
+void TopLevel::showLoadWarning(const QString& name, int line, const QString& msg)
 {
 	kWarning() << "Loading" << name.ascii() << ":" << line << ": " << msg.ascii();
 }
