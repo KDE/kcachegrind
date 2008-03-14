@@ -495,7 +495,7 @@ void TopLevel::createMiscActions()
 
   action = actionCollection()->addAction( "reload" );
   action->setIcon( KIcon("view-refresh") );
-  action->setText( i18n( "&Reload" ) );
+  action->setText( i18nc("Reload a document", "&Reload" ) );
   connect(action, SIGNAL(triggered(bool) ), SLOT( reload() ));
   action->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Reload));
   hint = i18n("<b>Reload Profile Data</b>"
@@ -607,17 +607,17 @@ void TopLevel::createMiscActions()
 
   hint = i18n("<b>Show percentage costs relative to parent</b>"
               "<p>If this is switched off, percentage costs are always shown "
-	      "relative to the total cost of the profile part(s) that are "
-	      "currently browsed. By turning on this option, percentage cost "
-	      "of shown cost items will be relative to the parent cost item."
-	      "<ul><table>"
-	      "<tr><td><b>Cost Type</td><td><b>Parent Cost</td></tr>"
-	      "<tr><td>Function Cumulative</td><td>Total</td></tr>"
-	      "<tr><td>Function Self</td><td>Function Group (*) / Total</td></tr>"
-	      "<tr><td>Call</td><td>Function Cumulative</td></tr>"
-	      "<tr><td>Source Line</td><td>Function Cumulative</td></tr>"
-	      "</table>"
-	      "<p>(*) Only if function grouping is switched on (e.g. ELF object grouping).");
+              "relative to the total cost of the profile part(s) that are "
+              "currently browsed. By turning on this option, percentage cost "
+              "of shown cost items will be relative to the parent cost item.</p>"
+              "<ul><table>"
+              "<tr><td><b>Cost Type</b></td><td><b>Parent Cost</b></td></tr>"
+              "<tr><td>Function Cumulative</td><td>Total</td></tr>"
+              "<tr><td>Function Self</td><td>Function Group (*) / Total</td></tr>"
+              "<tr><td>Call</td><td>Function Inclusive</td></tr>"
+              "<tr><td>Source Line</td><td>Function Inclusive</td></tr>"
+              "</table></ul>"
+              "<p>(*) Only if function grouping is switched on (e.g. ELF object grouping).</p>");
   _taExpanded->setWhatsThis( hint );
 
   _taCycles = actionCollection()->add<KToggleAction>("view_cycles");
@@ -628,16 +628,16 @@ void TopLevel::createMiscActions()
 
   hint = i18n("<b>Detect recursive cycles</b>"
               "<p>If this is switched off, the treemap drawing will show "
-	      "black areas when a recursive call is made instead of drawing the "
-	      "recursion ad infinitum. Note that "
-	      "the size of black areas often will be wrong, as inside recursive "
+              "black areas when a recursive call is made instead of drawing the "
+              "recursion ad infinitum. Note that "
+              "the size of black areas often will be wrong, as inside recursive "
               "cycles the cost of calls cannot be determined; the error is small, "
-              "however, for false cycles (see documentation)."
-	      "<p>The correct handling for cycles is to detect them and collapse all "
-              "functions of a cycle into a virtual function, which is done when this "
+              "however, for false cycles (see documentation).</p>"
+              "<p>The correct handling for cycles is to detect them and collapse all "
+              "functions of a cycle into an artificial function, which is done when this "
               "option is selected. Unfortunately, with GUI applications, this often will "
               "lead to huge false cycles, making the analysis impossible; therefore, there "
-              "is the option to switch this off.");
+              "is the option to switch this off.</p>");
   _taCycles->setWhatsThis( hint );
 
   KStandardAction::quit(this, SLOT(close()), actionCollection());

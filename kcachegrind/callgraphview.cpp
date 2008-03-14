@@ -2590,7 +2590,7 @@ QMenu* CallGraphView::callerDepthMenu(QWidget* parent)
 	a = addCallerDepthAction(m, i18n("Unlimited"), -1);
 	a->setEnabled(_funcLimit>0.005);
 	m->addSeparator();
-	addCallerDepthAction(m, i18n("None"), 0);
+	addCallerDepthAction(m, i18nc("Depth 0", "None"), 0);
 	addCallerDepthAction(m, i18n("max. 2"), 2);
 	addCallerDepthAction(m, i18n("max. 5"), 5);
 	addCallerDepthAction(m, i18n("max. 10"), 10);
@@ -2629,7 +2629,7 @@ QMenu* CallGraphView::calleeDepthMenu(QWidget* parent)
 	a = addCalleeDepthAction(m, i18n("Unlimited"), -1);
 	a->setEnabled(_funcLimit>0.005);
 	m->addSeparator();
-	addCalleeDepthAction(m, i18n("None"), 0);
+	addCalleeDepthAction(m, i18nc("Depth 0", "None"), 0);
 	addCalleeDepthAction(m, i18n("max. 2"), 2);
 	addCalleeDepthAction(m, i18n("max. 5"), 5);
 	addCalleeDepthAction(m, i18n("max. 10"), 10);

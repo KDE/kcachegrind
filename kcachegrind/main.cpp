@@ -49,7 +49,7 @@ int main( int argc, char ** argv )
   KCmdLineArgs::init(argc, argv, &aboutData);
 
   KCmdLineOptions options;
-  options.add("r <exec>", ki18n("Run <exec> under cachegrind"));
+  //options.add("r <exec>", ki18n("Run <exec> under cachegrind"));
   options.add("+[trace]", ki18n("Show information of this trace"));
   KCmdLineArgs::addCmdLineOptions( options );
 

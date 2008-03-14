@@ -75,19 +75,19 @@ void TabBar::mousePressEvent(QMouseEvent *e)
 			TraceItemView::Position p = _tabView->tabPosition(page);
 			if (p != TraceItemView::Top) {
 				popup.insertItem(i18n("Move to Top"), 81);
-				popup2.insertItem(i18n("Top"), 91);
+				popup2.insertItem(i18nc("Move to Top", "Top"), 91);
 			}
 			if (p != TraceItemView::Right) {
 				popup.insertItem(i18n("Move to Right"), 82);
-				popup2.insertItem(i18n("Right"), 92);
+				popup2.insertItem(i18nc("Move to Right", "Right"), 92);
 			}
 			if (p != TraceItemView::Bottom) {
 				popup.insertItem(i18n("Move to Bottom"), 83);
-				popup2.insertItem(i18n("Bottom"), 93);
+				popup2.insertItem(i18nc("Move to Bottom", "Bottom"), 93);
 			}
 			if (p != TraceItemView::Left) {
 				popup.insertItem(i18n("Move to Bottom Left"), 84);
-				popup2.insertItem(i18n("Bottom Left"), 94);
+				popup2.insertItem(i18nc("Move to Bottom Left", "Bottom Left"), 94);
 			}
 			popup.insertItem(i18n("Move Area To"), &popup2, 2);
 			popup.insertSeparator();
@@ -100,10 +100,10 @@ void TabBar::mousePressEvent(QMouseEvent *e)
 			} else if (_tabView->visibleAreas() <2)
 				popup.setItemEnabled(90, false);
 		}
-		popup3.insertItem(i18n("Top"), 101);
-		popup3.insertItem(i18n("Right"), 102);
-		popup3.insertItem(i18n("Bottom"), 103);
-		popup3.insertItem(i18n("Bottom Left"), 104);
+		popup3.insertItem(i18nc("Show on Top", "Top"), 101);
+		popup3.insertItem(i18nc("Show on Right", "Right"), 102);
+		popup3.insertItem(i18nc("Show on Bottom", "Bottom"), 103);
+		popup3.insertItem(i18nc("Show on Bottom Left", "Bottom Left"), 104);
 		popup.insertItem(i18n("Show Hidden On"), &popup3, 3);
 
 		int r = popup.exec(mapToGlobal(e->pos() ) );
@@ -237,7 +237,7 @@ void TabWidget::moveEvent(QMoveEvent* e)
  * |
  * |    -----                 -----
  * |  _/     \_______________/     \____
- * |  | Top                 | TopRight |
+ * |  | Top                 | Right    |
  * |  |                     |          |
  * -> |---------------------|          |
  *    | BottomLeft | Bottom |          |
@@ -317,7 +317,7 @@ TabView::TabView(TraceItemView* parentView,
   addTop( addTab( i18n("Caller Map"),
 		  new CallMapView(true, this, 0,
 				  "CallerMapView")));
-  addTop( addTab( i18n("Source"),
+  addTop( addTab( i18n("Source Code"),
 		  new SourceView(this, 0,
 				 "SourceView")));
 
@@ -337,7 +337,7 @@ TabView::TabView(TraceItemView* parentView,
   addBottom( addTab( i18n("Callee Map"),
 		     new CallMapView(false, this, 0,
 				     "CalleeMapView")));
-  addBottom( addTab( i18n("Assembler"),
+  addBottom( addTab( i18n("Assembly Code"),
 		     new InstrView(this, 0,
 				   "InstrView")));
 
