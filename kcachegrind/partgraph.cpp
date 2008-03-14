@@ -40,7 +40,7 @@ PartAreaWidget::PartAreaWidget(QWidget* parent)
 
   _eventType = 0;
   _groupType = TraceCost::NoCostType;
-  _visualisation = NoVisualisation;
+  _visualization = NoVisualization;
   _zoomFunction = false;
   _callLevels = 1;
 }
@@ -71,9 +71,9 @@ void PartAreaWidget::setEventType(TraceEventType* ct)
   base()->redraw();
 }
 
-void PartAreaWidget::setVisualisation(VisualisationMode m)
+void PartAreaWidget::setVisualization(VisualizationMode m)
 {
-  _visualisation = m;
+  _visualization = m;
   refreshParts();
 }
 
@@ -107,7 +107,7 @@ void PartAreaWidget::setFunction(TraceFunction* f)
 {
   _function = f;
 
-  if (_visualisation == PartAreaWidget::Inclusive)
+  if (_visualization == PartAreaWidget::Inclusive)
     refreshParts();
 }
 
@@ -300,7 +300,7 @@ double PartItem::value() const
 {
   PartAreaWidget* w = (PartAreaWidget*)widget();
   TraceEventType* ct = w->eventType();
-  if ((w->visualisation() == PartAreaWidget::Inclusive) &&
+  if ((w->visualization() == PartAreaWidget::Inclusive) &&
       w->zoomFunction()) {
 
     // use value of zoomed function
@@ -319,7 +319,7 @@ double PartItem::value() const
 double PartItem::sum() const
 {
   PartAreaWidget* w = (PartAreaWidget*)widget();
-  if (w->visualisation() == PartAreaWidget::Inclusive) {
+  if (w->visualization() == PartAreaWidget::Inclusive) {
     double s = value();
     //qDebug("PartItem::sum [part %s]: %d", _p->name().ascii(), s);
     return s;
@@ -335,7 +335,7 @@ TreeMapItemList* PartItem::children()
 //    qDebug("Create Part subitems (%s)", name().ascii());
 
   PartAreaWidget* w = (PartAreaWidget*)widget();
-  if (w->visualisation() == PartAreaWidget::Inclusive) {
+  if (w->visualization() == PartAreaWidget::Inclusive) {
     TraceFunction* f = w->function();
     if (f) {
       c = f->findDepFromPart(_p);
@@ -436,7 +436,7 @@ QString SubPartItem::text(int textNo) const
   SubCost v;
 
   ct = w->eventType();
-  if (w->visualisation() == PartAreaWidget::Inclusive)
+  if (w->visualization() == PartAreaWidget::Inclusive)
     v = ((TracePartFunction*)_partCostItem)->inclusive()->subCost(ct);
   else
     v = _partCostItem->subCost(ct);
@@ -462,7 +462,7 @@ QPixmap SubPartItem::pixmap(int i) const
     TraceCost* t = Configuration::showExpanded() ?
 	_partCostItem->part() : _partCostItem->part()->data()->totals();
     TraceCost* c;
-    if (w->visualisation() == PartAreaWidget::Inclusive)
+    if (w->visualization() == PartAreaWidget::Inclusive)
 	c = ((TracePartFunction*)_partCostItem)->inclusive();
     else
 	c = _partCostItem;
@@ -476,7 +476,7 @@ double SubPartItem::value() const
   PartAreaWidget* w = (PartAreaWidget*)widget();
 
   ct = w->eventType();
-  if (w->visualisation() == PartAreaWidget::Inclusive)
+  if (w->visualization() == PartAreaWidget::Inclusive)
     return (double)
 	((TracePartFunction*)_partCostItem)->inclusive()->subCost(ct);
 
@@ -486,7 +486,7 @@ double SubPartItem::value() const
 double SubPartItem::sum() const
 {
   PartAreaWidget* w = (PartAreaWidget*)widget();
-  if (w->visualisation() == PartAreaWidget::Inclusive) {
+  if (w->visualization() == PartAreaWidget::Inclusive) {
     double s = value();
     //qDebug("SubPartItem::sum [Cost %s]: %d", _cost->name().ascii(), s);
     return s;
@@ -504,7 +504,7 @@ TreeMapItemList* SubPartItem::children()
     if (depth()-2 > w->callLevels())
       return _children;
 
-    if (w->visualisation() == PartAreaWidget::Inclusive) {
+    if (w->visualization() == PartAreaWidget::Inclusive) {
       TracePartCall* call;
       TracePartCallList l;
 
@@ -527,7 +527,7 @@ TreeMapItemList* SubPartItem::children()
 QColor SubPartItem::backColor() const
 {
   PartAreaWidget* w = (PartAreaWidget*)widget();
-  if (w->visualisation() == PartAreaWidget::Inclusive)
+  if (w->visualization() == PartAreaWidget::Inclusive)
     return w->groupColor((TraceFunction*)(_partCostItem->dependant()));
 
   return Configuration::groupColor(_partCostItem->dependant());

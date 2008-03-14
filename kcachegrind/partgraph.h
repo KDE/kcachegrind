@@ -34,14 +34,14 @@ class PartAreaWidget: public TreeMapWidget
 
 public:
   // Visualization inside of trace parts
-  enum VisualisationMode { NoVisualisation, Partitioning, Inclusive };
+  enum VisualizationMode { NoVisualization, Partitioning, Inclusive };
 
   PartAreaWidget(QWidget* parent=0);
 
   void setData(TraceData* d);
   void setEventType(TraceEventType* ct);
   void setGroupType(TraceCost::CostType gt);
-  void setVisualisation(VisualisationMode);
+  void setVisualization(VisualizationMode);
   void setZoomFunction(bool zoomFunction);
   void setCallLevels(int callLevels);
   void setFunction(TraceFunction* f);
@@ -49,7 +49,7 @@ public:
   TraceEventType* eventType() const { return _eventType; }
   TraceCost::CostType groupType() const { return _groupType; }
   TraceFunction* function() const { return _function; }
-  VisualisationMode visualisation() const { return _visualisation; }
+  VisualizationMode visualization() const { return _visualization; }
   bool zoomFunction() const { return _zoomFunction; }
   int callLevels() const { return _callLevels; }
 
@@ -66,7 +66,7 @@ private:
   TraceEventType* _eventType;
   TraceCost::CostType _groupType;
   TraceFunction* _function;
-  VisualisationMode _visualisation;
+  VisualizationMode _visualization;
   bool _zoomFunction;
   int _callLevels;
 

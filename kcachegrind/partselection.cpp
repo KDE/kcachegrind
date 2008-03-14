@@ -327,7 +327,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
   vpopup.insertItem(i18n("Zoom Function"), 31);
   vpopup.insertItem(i18n("Show Direct Calls"), 32);
   vpopup.insertItem(i18n("Increment Shown Call Levels"), 33);
-  if (partAreaWidget->visualisation() == PartAreaWidget::Partitioning) {
+  if (partAreaWidget->visualization() == PartAreaWidget::Partitioning) {
     vpopup.setItemChecked(30, true);
     vpopup.setItemEnabled(31, false);
     vpopup.setItemEnabled(32, false);
@@ -424,7 +424,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
     break;
 
   case 30:
-    partAreaWidget->setVisualisation(!vpopup.isItemChecked(30) ?
+    partAreaWidget->setVisualization(!vpopup.isItemChecked(30) ?
                                      PartAreaWidget::Partitioning :
                                      PartAreaWidget::Inclusive);
     break;
@@ -470,9 +470,9 @@ void PartSelection::readVisualisationConfig(KConfigGroup* config)
 
   QString mode = config->readEntry("PartitionMode", "Inclusive");
   if (mode == "Inclusive")
-    partAreaWidget->setVisualisation(PartAreaWidget::Inclusive);
+    partAreaWidget->setVisualization(PartAreaWidget::Inclusive);
   else
-    partAreaWidget->setVisualisation(PartAreaWidget::Partitioning);
+    partAreaWidget->setVisualization(PartAreaWidget::Partitioning);
 
   _diagramMode = config->readEntry("DiagramMode", false);
   partAreaWidget->setTransparent(2,_diagramMode);
@@ -506,7 +506,7 @@ void PartSelection::readVisualisationConfig(KConfigGroup* config)
 void PartSelection::saveVisualisationConfig(KConfigGroup* config)
 {
   QString mode;
-  if (partAreaWidget->visualisation() == PartAreaWidget::Inclusive)
+  if (partAreaWidget->visualization() == PartAreaWidget::Inclusive)
     mode = "Inclusive";
   else
     mode = "Partitioning";
