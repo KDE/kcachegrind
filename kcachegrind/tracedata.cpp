@@ -999,20 +999,18 @@ void TraceEventType::add(TraceEventType* t)
   /* Already known? */
   TraceEventType* kt = 0;
   foreach (kt, *_knownTypes)
-    if (kt->name() == t->name()) break;
+      if (kt->name() == t->name()) {
+	  // Overwrite old type
+	  if (!t->longName().isEmpty() &&
+	      (t->longName() != t->name())) kt->setLongName(t->longName());
+	  if (!t->formula().isEmpty()) kt->setFormula(t->formula());
 
-  if (kt) {
-    // Overwrite old type
-    if (!t->longName().isEmpty() &&
-	(t->longName() != t->name())) kt->setLongName(t->longName());
-    if (!t->formula().isEmpty()) kt->setFormula(t->formula());
+	  delete t;
+	  return;
+      }
 
-    delete t;
-  }
-  else {
-    if (t->longName().isEmpty()) t->setLongName(t->name());
-    _knownTypes->append(t);
-  }
+  if (t->longName().isEmpty()) t->setLongName(t->name());
+  _knownTypes->append(t);
 }
 
 
