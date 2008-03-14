@@ -1470,10 +1470,10 @@ QString TreeMapWidget::tipString(TreeMapItem* i) const
     if (!i->text(0).isEmpty()) {
       itemTip = i->text(0);
       if (!i->text(1).isEmpty())
-        itemTip += " (" + i->text(1) + ")";
+        itemTip += " (" + i->text(1) + ')';
 
       if (!tip.isEmpty())
-        tip += "\n";
+        tip += '\n';
 
       tip += itemTip;
     }

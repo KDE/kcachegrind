@@ -152,10 +152,10 @@ QString PartAreaWidget::tipString(TreeMapItem* i) const
       itemTip = itemTip.left(Configuration::maxSymbolLength()) + "...";
 
     if (!i->text(1).isEmpty())
-      itemTip += " (" + i->text(1) + ")";
+      itemTip += " (" + i->text(1) + ')';
 
     if (!tip.isEmpty())
-      itemTip += "\n";
+      itemTip += '\n';
 
     tip = itemTip + tip;
     i = i->parent();
@@ -168,10 +168,10 @@ QString PartAreaWidget::tipString(TreeMapItem* i) const
   if (i && i->rtti()==2) {
     itemTip = i18n("Profile Part %1", i->text(0));
     if (!i->text(1).isEmpty())
-        itemTip += " (" + i->text(1) + ")";
+        itemTip += " (" + i->text(1) + ')';
 
     if (!tip.isEmpty())
-      itemTip += "\n";
+      itemTip += '\n';
 
     tip = itemTip + tip;
   }

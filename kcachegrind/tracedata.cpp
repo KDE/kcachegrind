@@ -99,7 +99,7 @@ QString Addr::pretty() const
 
   while(n>0) {
     int d = (n & 15);
-    if ((p>0) && ((p%4)==0)) hex = " " + hex;
+    if ((p>0) && ((p%4)==0)) hex = ' ' + hex;
     hex = QChar((d<10) ? ('0'+d) : ('A'-10+d)) + hex;
     n /= 16;
     p++;
@@ -684,7 +684,7 @@ QString TraceCost::costString(TraceEventTypeMapping* m)
   int maxIndex = m ? m->realCount() : TraceCost::MaxRealIndex;
   for (int i = 0; i<maxIndex; i++) {
     if (!res.isEmpty()) res += ", ";
-    if (m) res += m->type(i)->name() + " ";
+    if (m) res += m->type(i)->name() + ' ';
 
     res += subCost(i).pretty();
   }
@@ -904,7 +904,7 @@ QString TraceEventType::parsedFormula()
     if (c == 0) continue;
 
     if (!res.isEmpty()) {
-      res += " ";
+      res += ' ';
       if (c>0) res += "+ ";
     }
     if (c<0) { res += "- "; c = -c; }
@@ -4108,7 +4108,7 @@ void TraceFile::addSourceFile(TraceFunctionSource* sourceFile)
 
 void TraceFile::setDirectory(const QString& dir)
 {
-  if (dir.endsWith("/"))
+  if (dir.endsWith('/'))
     _dir = dir.left(dir.length()-1);
   else
     _dir = dir;
@@ -4433,7 +4433,7 @@ void TraceData::load(const QString& base)
 	}
       }
 
-      _traceName = dir.path() + "/" + file;
+      _traceName = dir.path() + '/' + file;
   }
 
   QStringList strList;
@@ -4445,7 +4445,7 @@ void TraceData::load(const QString& base)
       strList << file;
 
   if (strList.count() == 0) {
-      _traceName = base + "/" + file + " " + i18n("(not found)");
+      _traceName = base + '/' + file + ' ' + i18n("(not found)");
       return;
   }
 
@@ -4616,14 +4616,14 @@ QString TraceData::activePartRange()
       if (r1<0) { r1 = r2 = count; }
       else if (r2 == count-1) { r2 = count; }
       else {
-        if (!res.isEmpty()) res += ";";
+        if (!res.isEmpty()) res += ';';
         if (r1==r2) res += QString::number(r1);
         else res += QString("%1-%2").arg(r1).arg(r2);
         r1 = r2 = count;
       }
     }
   if (r1>=0) {
-    if (!res.isEmpty()) res += ";";
+    if (!res.isEmpty()) res += ';';
     if (r1==r2) res += QString::number(r1);
     else res += QString("%1-%2").arg(r1).arg(r2);
   }

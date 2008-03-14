@@ -50,12 +50,12 @@ QString SubCost::pretty()
     QString res = "";
 
     while (n) {
-	if ((i>0) && !(i%3)) res = " " + res;
+	if ((i>0) && !(i%3)) res = ' ' + res;
 	i++;
 	res = QChar('0'+int(n%10)) + res;
 	n /= 10;
     }
-    res = " " + res;
+    res = ' ' + res;
     return res;
 }
 

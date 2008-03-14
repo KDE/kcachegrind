@@ -306,7 +306,7 @@ QColor Configuration::groupColor(TraceItem* cost)
   if (!cost)
     n = QString("default");
   else
-    n = TraceCost::typeName(cost->type()) + "-" + cost->prettyName();
+    n = TraceCost::typeName(cost->type()) + '-' + cost->prettyName();
 
   return color(n)->color;
 }
@@ -340,8 +340,8 @@ QColor Configuration::functionColor(TraceCost::CostType gt,
   if (group != f) {
     // first look for manual color of a function in a group
     n = TraceCost::typeName(group->type()) +
-        "-" + group->prettyName() +
-        "-" + f->prettyName();
+        '-' + group->prettyName() +
+        '-' + f->prettyName();
 
     ColorSetting* cs = color(n, false);
     if (cs) return cs->color;

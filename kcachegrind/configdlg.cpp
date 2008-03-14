@@ -230,7 +230,7 @@ void ConfigDlg::objectActivated(const QString & s)
 
   if (s.isEmpty()) { _objectCS=0; return; }
 
-  QString n = TraceCost::typeName(TraceCost::Object) + "-" + s;
+  QString n = TraceCost::typeName(TraceCost::Object) + '-' + s;
 
   Configuration* c = Configuration::config();
   Configuration::ColorSetting* cs = c->_colors[n];
@@ -275,7 +275,7 @@ void ConfigDlg::classActivated(const QString & s)
 
   if (s.isEmpty()) { _classCS=0; return; }
 
-  QString n = TraceCost::typeName(TraceCost::Class) + "-" + s;
+  QString n = TraceCost::typeName(TraceCost::Class) + '-' + s;
 
   Configuration* c = Configuration::config();
   Configuration::ColorSetting* cs = c->_colors[n];
@@ -307,7 +307,7 @@ void ConfigDlg::fileActivated(const QString & s)
 
   if (s.isEmpty()) { _fileCS=0; return; }
 
-  QString n = TraceCost::typeName(TraceCost::File) + "-" + s;
+  QString n = TraceCost::typeName(TraceCost::File) + '-' + s;
 
   Configuration* c = Configuration::config();
   Configuration::ColorSetting* cs = c->_colors[n];
@@ -386,8 +386,8 @@ void ConfigDlg::dirsAddPressed()
                                              i18n("Choose Source Folder"));
   if (newDir.isEmpty()) return;
 
-  // even for "/", we strip the tailing slash
-  if (newDir.endsWith("/"))
+  // even for '/', we strip the tailing slash
+  if (newDir.endsWith('/'))
     newDir = newDir.left(newDir.length()-1);
 
   if (dirs->findIndex(newDir)>=0) return;

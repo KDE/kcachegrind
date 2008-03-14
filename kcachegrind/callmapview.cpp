@@ -554,9 +554,9 @@ QString CallMapView::tipString(TreeMapItem* i) const
       itemTip = itemTip.left(Configuration::maxSymbolLength()) + "...";
 
     if (!i->text(1).isEmpty())
-      itemTip += " (" + i->text(1) + ")";
+      itemTip += " (" + i->text(1) + ')';
 
-    if (!tip.isEmpty()) tip += "\n";
+    if (!tip.isEmpty()) tip += '\n';
 
     tip += itemTip;
     i = i->parent();

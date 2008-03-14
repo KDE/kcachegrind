@@ -148,7 +148,7 @@ void PartSelection::currentChangedSlot(TreeMapItem* i, bool kbd)
 
   QString str = i->text(0);
   if (!i->text(1).isEmpty())
-    str += " (" + i->text(1) + ")";
+    str += " (" + i->text(1) + ')';
   QString msg = i18n("Profile Part Overview: Current is '%1'", str);
   emit showMessage(msg, 5000);
 
@@ -286,7 +286,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
     if (!s->text(0).isEmpty()) {
       str = (partAreaWidget->isSelected(s)) ?
             i18n("Deselect") : i18n("Select");
-      str += " '" + s->text(0) + "'";
+      str += " '" + s->text(0) + '\'';
       popup.insertItem(str, 1);
     }
 
@@ -309,7 +309,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
       if (c->type() == TraceItem::PartFunction)
         if ( ((TracePartFunction*)c)->function() == _function) break;
 
-      str = i18n("Select") + " '" + ni->text(0) + "'";
+      str = i18n("Select") + " '" + ni->text(0) + '\'';
       popup.insertItem(str, id);
       ni = ni->parent();
       id++;

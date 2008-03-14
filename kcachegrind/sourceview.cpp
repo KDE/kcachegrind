@@ -345,7 +345,7 @@ static bool checkFileExistance(QString& dir, const QString& name)
   // we leave this in...
   qDebug("Checking %s/%s", dir.ascii(), name.ascii());
 
-  if (QFile::exists(dir + "/" + name)) return true;
+  if (QFile::exists(dir + '/' + name)) return true;
 
   // check in subdirectories
   QDir d(dir);
@@ -523,7 +523,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   QString filename = sf->file()->shortName();
   QString dir = sf->file()->directory();
   if (!dir.isEmpty())
-    filename = dir + "/" + filename;
+    filename = dir + '/' + filename;
 
   if (nextCostLineno>0) {
     // we have debug info... search for source file
@@ -540,7 +540,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
       if (it == list.end())
 	  nextCostLineno = 0;
       else {
-        filename = dir + "/" + sf->file()->shortName();
+        filename = dir + '/' + sf->file()->shortName();
         // no need to search again
         sf->file()->setDirectory(dir);
       }

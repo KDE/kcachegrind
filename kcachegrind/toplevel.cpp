@@ -1538,7 +1538,7 @@ void TopLevel::setData(TraceData* data)
   if (_data) {
     caption = _data->traceName();
     if (!_data->command().isEmpty())
-      caption += " [" + _data->command() + "]";
+      caption += " [" + _data->command() + ']';
   }
   setWindowTitle(caption);
 
