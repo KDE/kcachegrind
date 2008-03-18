@@ -94,7 +94,7 @@ void EventTypeItem::update()
       default: break;
       }
   }
-  if (_costItem->type()==TraceCost::FunctionCycle) {
+  if (_costItem && _costItem->type()==TraceCost::FunctionCycle) {
       f = (TraceFunction*)_costItem;
       selfTotalCost = f->data();
   }
