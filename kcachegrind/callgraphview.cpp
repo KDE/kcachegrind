@@ -1096,7 +1096,7 @@ PanningView::PanningView(QWidget * parent)
 void PanningView::setZoomRect(const QRectF& r)
 {
 	_zoomRect = r;
-	update();
+	viewport()->update();
 }
 
 void PanningView::drawForeground(QPainter * p, const QRectF&)
@@ -1321,6 +1321,7 @@ CanvasEdgeArrow::CanvasEdgeArrow(CanvasEdge* ce)
 void CanvasEdgeArrow::paint(QPainter* p,
 		const QStyleOptionGraphicsItem *, QWidget *)
 {
+	p->setRenderHint(QPainter::Antialiasing);
 	p->setBrush(_ce->isSelected() ? Qt::red : Qt::black);
 	p->drawPolygon(polygon(), Qt::OddEvenFill);
 }
