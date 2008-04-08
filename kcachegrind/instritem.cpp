@@ -310,7 +310,7 @@ void InstrItem::paintCell( QPainter *p, const QColorGroup &cg,
   else if ((_instrCall || _instrJump) && column>2)
     color = cg.color( QPalette::Midlight );
   if (color.isValid())
-    _cg.setColor( listView()->backgroundRole(), color);
+    _cg.setColor( listView()->viewport()->backgroundRole(), color);
 
   if (column == 3)
     paintArrows(p, _cg, width);
@@ -330,7 +330,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
   InstrView* iv = (InstrView*) lv;
 
   QPalette pal = cg;
-  const QPalette::ColorRole crole = lv->backgroundRole();
+  const QPalette::ColorRole crole = lv->viewport()->backgroundRole();
   if (pal.brush(crole) != lv->palette().brush(crole))
     p->fillRect(0, 0, width, height(), pal.brush(crole));
   else

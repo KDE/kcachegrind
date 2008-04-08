@@ -298,7 +298,7 @@ void SourceItem::paintCell( QPainter *p, const QColorGroup &cg,
   else if ((_lineCall || _lineJump) && column>2)
     color = cg.color( QPalette::Midlight );
   if (color.isValid())
-    _cg.setColor( listView()->backgroundRole(), color);
+    _cg.setColor( listView()->viewport()->backgroundRole(), color);
 
   if (column == 3)
       paintArrows(p, _cg, width);
@@ -318,7 +318,7 @@ void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
   SourceView* sv = (SourceView*) lv;
 
   QPalette pal = cg;
-  const QPalette::ColorRole crole = lv->backgroundRole();
+  const QPalette::ColorRole crole = lv->viewport()->backgroundRole();
   if (pal.brush(crole) != lv->palette().brush(crole))
     p->fillRect(0, 0, width, height(), pal.brush(crole));
   else
