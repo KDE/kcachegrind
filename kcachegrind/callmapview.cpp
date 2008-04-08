@@ -172,9 +172,7 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
     count = 0;
     while (count<Configuration::maxSymbolCount() && item) {
       QString name = item->text(0);
-      if ((int)name.length()>Configuration::maxSymbolLength())
-        name = name.left(Configuration::maxSymbolLength()) + "...";
-      fpopup.insertItem(name, 101+count);
+      fpopup.insertItem(Configuration::shortenSymbol(name), 101+count);
       item = item->parent();
       count++;
     }

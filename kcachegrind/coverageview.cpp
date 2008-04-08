@@ -161,10 +161,7 @@ void CoverageView::context(Q3ListViewItem* i, const QPoint & p, int c)
   }
 
   if (f) {
-    QString name = f->name();
-    if ((int)name.length()>Configuration::maxSymbolLength())
-	name = name.left(Configuration::maxSymbolLength()) + "...";
-    popup.insertItem(i18n("Go to '%1'", name), 93);
+    popup.insertItem(i18n("Go to '%1'", Configuration::shortenSymbol(f->prettyName())), 93);
     popup.insertSeparator();
   }
 

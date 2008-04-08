@@ -172,13 +172,13 @@ void FunctionSelection::functionContext(Q3ListViewItem* i,
   Q3PopupMenu popup;
   TraceFunction* f = 0;
 
-  if (i) {
-      f = ((FunctionItem*) i)->function();
-      if (f) {
-	  popup.insertItem(i18n("Go to %1", f->prettyName()), 93);
-	  popup.insertSeparator();
-      }
-  }
+	if (i) {
+		f = ((FunctionItem*) i)->function();
+		if (f) {
+			popup.insertItem(i18n("Go to '%1'", Configuration::shortenSymbol(f->prettyName())), 93);
+			popup.insertSeparator();
+		}
+	}
 
   if ((c == 0) || (c == 1)) {
     addEventTypeMenu(&popup,false);
