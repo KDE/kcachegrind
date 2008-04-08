@@ -37,7 +37,7 @@
 #include <kconfiggroup.h>
 
 #include "partgraph.h"
-
+#include "configuration.h"
 
 PartSelection::PartSelection( QWidget* parent)
   : PartSelectionBase(parent)
@@ -283,24 +283,25 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
   QString str;
   TreeMapItem* s = 0;
 
-  if (_data && (_data->parts().count()>1)) {
-    s = partAreaWidget->possibleSelection(i);
-    if (!s->text(0).isEmpty()) {
-      str = (partAreaWidget->isSelected(s)) ?
-            i18n("Deselect") : i18n("Select");
-      str += " '" + s->text(0) + '\'';
-      popup.insertItem(str, 1);
-    }
+	if (_data && (_data->parts().count()>1)) {
+		s = partAreaWidget->possibleSelection(i);
+		if (!s->text(0).isEmpty()) {
+			if (partAreaWidget->isSelected(s))
+				str = i18n("Deselect '%1'", s->text(0));
+			else
+				str = i18n("Select '%1'", s->text(0));
 
-    popup.insertItem(i18n("Select All Parts"), 2);
+			popup.insertItem(str, 1);
+		}
 
-    popup.insertItem(i18n("Visible Parts"), &ppopup, 10);
+		popup.insertItem(i18n("Select All Parts"), 2);
+		popup.insertItem(i18n("Visible Parts"), &ppopup, 10);
 
-    ppopup.insertItem(i18n("Hide Selected Parts"), 3);
-    ppopup.insertItem(i18n("Unhide Hidden Parts"), 4);
+		ppopup.insertItem(i18n("Hide Selected Parts"), 3);
+		ppopup.insertItem(i18n("Unhide Hidden Parts"), 4);
 
-    popup.insertSeparator();
-  }
+		popup.insertSeparator();
+	}
 
   popup.insertItem(i18n("Go Back"), 99);
   if (i->rtti() == 3) {
@@ -311,7 +312,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
       if (c->type() == TraceItem::PartFunction)
         if ( ((TracePartFunction*)c)->function() == _function) break;
 
-      str = i18n("Select") + " '" + ni->text(0) + '\'';
+      str = i18n("Go to '%1'", Configuration::shortenSymbol(ni->text(0)));
       popup.insertItem(str, id);
       ni = ni->parent();
       id++;
@@ -403,19 +404,21 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
     break;
 
   case 20:
-    partAreaWidget->setFieldVisible(0, !vpopup.isItemChecked(20));
+    partAreaWidget->setFieldVisible(0, !partAreaWidget->fieldVisible(0));
     break;
 
   case 21:
-    partAreaWidget->setFieldVisible(1, !vpopup.isItemChecked(21));
+    partAreaWidget->setFieldVisible(1, !partAreaWidget->fieldVisible(1));
     break;
 
   case 22:
-      partAreaWidget->setFieldForced(0, !vpopup.isItemChecked(22));
-      partAreaWidget->setFieldForced(1, !vpopup.isItemChecked(22));
-      break;
+    partAreaWidget->setFieldForced(0, !partAreaWidget->fieldForced(0));
+    partAreaWidget->setFieldForced(1, !partAreaWidget->fieldForced(0));
+    break;
 
-  case 23: partAreaWidget->setAllowRotation(!vpopup.isItemChecked(23));  break;
+  case 23:
+    partAreaWidget->setAllowRotation(!partAreaWidget->allowRotation());
+    break;
 
   case 24: 
     _drawFrames = !_drawFrames;
@@ -424,14 +427,14 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
     break;
 
   case 30:
-    partAreaWidget->setVisualization(!vpopup.isItemChecked(30) ?
+    partAreaWidget->setVisualization( (partAreaWidget->visualization() != PartAreaWidget::Partitioning) ?
                                      PartAreaWidget::Partitioning :
                                      PartAreaWidget::Inclusive);
     break;
 
   case 31:
     // zoom/unzoom function
-    partAreaWidget->setZoomFunction(!vpopup.isItemChecked(31));
+    partAreaWidget->setZoomFunction(!partAreaWidget->zoomFunction());
     break;
 
   case 32:
