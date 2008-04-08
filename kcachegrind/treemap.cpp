@@ -350,6 +350,122 @@ void RectDrawing::drawBack(QPainter* p, DrawParams* dp)
 }
 
 
+/* Helper for drawField
+ * Find a line break position in a string, given a font and maximum width
+ *
+ * Returns the actually used width, and sets <breakPos>
+ */
+static
+int findBreak(int& breakPos, QString text, QFontMetrics* fm, int maxWidth)
+{
+	int usedWidth;
+
+	// does full text fit?
+	breakPos = text.length();
+	usedWidth = fm->width(text);
+	if (usedWidth < maxWidth)
+		return usedWidth;
+
+	// now lower breakPos until best position is found.
+	// first by binary search, resulting in a position a little bit too large
+	int bottomPos = 0;
+	while(qAbs(maxWidth - usedWidth) > 3 * fm->maxWidth()) {
+		int halfPos = (bottomPos + breakPos)/2;
+		int halfWidth = fm->width(text, halfPos);
+		if (halfWidth < maxWidth)
+			bottomPos = halfPos;
+		else {
+			breakPos = halfPos;
+			usedWidth = halfWidth;
+		}
+	}
+
+	// final position by taking break boundaries into account.
+	// possible break boundaries are changing char categories but not middle of "Aa"
+	QChar::Category lastCat, cat;
+	int pos = breakPos;
+	lastCat = text[pos-1].category();
+	// at minimum 2 chars before break
+	while (pos > 2) {
+		pos--;
+		cat = text[pos-1].category();
+		if (cat == lastCat) continue;
+
+		// "Aa" has not a possible break inbetween
+		if ((cat == QChar::Letter_Uppercase) &&
+				(lastCat == QChar::Letter_Lowercase)) {
+			lastCat = cat;
+			continue;
+		}
+		lastCat = cat;
+
+		breakPos = pos;
+		usedWidth = fm->width(text, breakPos);
+		if (usedWidth < maxWidth) break;
+	}
+	return usedWidth;
+}
+
+
+/* Helper for drawField
+ * Find last line break position in a string from backwards,
+ * given a font and maximum width
+ *
+ * Returns the actually used width, and sets <breakPos>
+ */
+static
+int findBreakBackwards(int& breakPos, QString text, QFontMetrics* fm, int maxWidth)
+{
+	int usedWidth;
+
+	// does full text fit?
+	breakPos = 0;
+	usedWidth = fm->width(text);
+	if (usedWidth < maxWidth)
+		return usedWidth;
+
+	// now raise breakPos until best position is found.
+	// first by binary search, resulting in a position a little bit too small
+	int topPos = text.length();
+	while(qAbs(maxWidth - usedWidth) > 3 * fm->maxWidth()) {
+		int halfPos = (breakPos + topPos)/2;
+		int halfWidth = fm->width(text.mid(halfPos));
+		if (halfWidth < maxWidth) {
+			breakPos = halfPos;
+			usedWidth = halfWidth;
+		}
+		else
+			topPos = halfPos;
+	}
+
+	// final position by taking break boundaries into account.
+	// possible break boundaries are changing char categories but not middle of "Aa"
+	QChar::Category lastCat, cat;
+	int pos = breakPos;
+	lastCat = text[pos].category();
+	// at minimum 2 chars before break
+	while (pos < text.length()-2) {
+		pos++;
+		cat = text[pos].category();
+		if (cat == lastCat) continue;
+
+		// "Aa" has not a possible break inbetween
+		if ((lastCat == QChar::Letter_Uppercase) &&
+				(cat == QChar::Letter_Lowercase)) {
+			lastCat = cat;
+			continue;
+		}
+		lastCat = cat;
+
+		breakPos = pos;
+		usedWidth = fm->width(text.mid(breakPos));
+		if (usedWidth < maxWidth) break;
+	}
+	return usedWidth;
+}
+
+
+
 bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
 {
   if (!dp) dp = drawParams();
@@ -567,85 +683,39 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
   int origLines = lines;
   while (lines>0) {
 
-    if (w>width && lines>1) {
-      int lastBreakPos = name.length(), lastWidth = w;
-      int len = name.length();
-      QChar::Category caOld, ca;
+	// more than one line: search for line break
+	if (w>width && lines>1) {
+		int breakPos;
 
-      if (!isBottom) {
-        // start with comparing categories of last 2 chars
-        caOld = name[len-1].category();
-        while (len>2) {
-          len--;
-          ca = name[len-1].category();
-          if (ca != caOld) {
-            // "Aa" has no break between...
-            if (ca == QChar::Letter_Uppercase &&
-                caOld == QChar::Letter_Lowercase) {
-              caOld = ca;
-              continue;
-            }
-            caOld = ca;
-            lastBreakPos = len;
-            w = pixW + _fm->width(name, len);
-            lastWidth = w;
-            if (w <= width) break;
-          }
-        }
-        w = lastWidth;
-        remaining = name.mid(lastBreakPos);
-        // remove space on break point
-        if (name[lastBreakPos-1].category() == QChar::Separator_Space)
-          name = name.left(lastBreakPos-1);
-        else
-          name = name.left(lastBreakPos);
-      }
-      else { // bottom
-        int l = len;
-        caOld = name[l-len].category();
-        while (len>2) {
-          len--;
-          ca = name[l-len].category();
+		if (!isBottom) {
+			w = pixW + findBreak(breakPos, name, _fm, width - pixW);
 
-          if (ca != caOld) {
-            // "Aa" has no break between...
-            if (caOld == QChar::Letter_Uppercase &&
-                ca == QChar::Letter_Lowercase) {
-              caOld = ca;
-              continue;
-            }
-            caOld = ca;
-            lastBreakPos = len;
-            w = pixW + _fm->width(name.right(len));
-            lastWidth = w;
-            if (w <= width) break;
-          }
-        }
-        w = lastWidth;
-        remaining = name.left(l-lastBreakPos);
-        // remove space on break point
-        if (name[l-lastBreakPos].category() == QChar::Separator_Space)
-          name = name.right(lastBreakPos-1);
-        else
-          name = name.right(lastBreakPos);
-      }
-    }
-    else
-      remaining = QString();
+			remaining = name.mid(breakPos);
+			// remove space on break point
+			if (name[breakPos-1].category() == QChar::Separator_Space)
+				name = name.left(breakPos-1);
+			else
+				name = name.left(breakPos);
+		}
+		else { // bottom
+			w = pixW + findBreakBackwards(breakPos, name, _fm, width - pixW);
 
-    /* truncate and add ... if needed */
-    if (w>width) {
-      int len = name.length();
-      w += dotW;
-      while (len>2 && (w > width)) {
-        len--;
-        w = pixW + _fm->width(name, len) + dotW;
-      }
-      // stop drawing: we cannot draw 2 chars + "..."
-      if (w>width) break;
+			remaining = name.left(breakPos);
+			// remove space on break point
+			if (name[breakPos].category() == QChar::Separator_Space)
+				name = name.mid(breakPos+1);
+			else
+				name = name.mid(breakPos);
+		}
+	}
+	else
+		remaining = QString();
 
-      name = name.left(len) + "...";
-    }
+	/* truncate and add ... if needed */
+	if (w > width) {
+		name = _fm->elidedText(name, Qt::ElideRight, width - pixW);
+		w = _fm->width(name) + pixW;
+	}
 
     int x = 0;
     if (isCenter)
