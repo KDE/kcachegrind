@@ -24,8 +24,6 @@
 #define SOURCEITEM_H
 
 #include <q3listview.h>
-//Added by qt3to4:
-#include <Q3MemArray>
 #include "tracedata.h"
 
 class SourceView;
@@ -66,11 +64,11 @@ public:
   void updateCost();
 
   // arrow lines
-  void setJumpArray(const Q3MemArray<TraceLineJump*>& a);
+  void setJumpArray(const QVector<TraceLineJump*>& a);
 
 protected:
   void paintArrows(QPainter *p, const QColorGroup &cg, int width);
-  Q3MemArray<TraceLineJump*> _jump;
+  QVector<TraceLineJump*> _jump;
 
 private:
   SourceView* _view;

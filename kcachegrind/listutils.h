@@ -26,8 +26,6 @@
 #include <qpixmap.h>
 #include <qstring.h>
 #include <qcolor.h>
-//Added by qt3to4:
-#include <Q3MemArray>
 #include "tracedata.h"
 
 QString bigNum(SubCost);
@@ -60,8 +58,8 @@ class HighestCostList
     TraceCostList _list;
     int _maxSize, _count;
     TraceEventType* _costType;
-    Q3MemArray<TraceCost*> _item;
-    Q3MemArray<SubCost> _cost;
+    QVector<TraceCost*> _item;
+    QVector<SubCost> _cost;
 };
 
 #endif

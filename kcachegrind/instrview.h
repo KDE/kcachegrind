@@ -24,8 +24,6 @@
 #define INSTRVIEW_H
 
 #include <q3listview.h>
-//Added by qt3to4:
-#include <Q3MemArray>
 #include "traceitemview.h"
 
 class InstrItem;
@@ -71,7 +69,7 @@ private:
   // arrows
   int _arrowLevels;
   // temporary needed on creation...
-  Q3MemArray<TraceInstrJump*> _jump;
+  QVector<TraceInstrJump*> _jump;
   TraceInstrJumpList _lowList, _highList;
 
   // remember width of hex code column if hidden

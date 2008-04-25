@@ -25,7 +25,6 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QPolygon>
-#include <Qt3Support/Q3MemArray>
 
 #include <klocale.h>
 #include <kiconloader.h>
@@ -318,9 +317,9 @@ void InstrItem::paintCell( QPainter *p, const QColorGroup &cg,
     Q3ListViewItem::paintCell( p, _cg, column, width, alignment );
 }
 
-void InstrItem::setJumpArray(const Q3MemArray<TraceInstrJump*>& a)
+void InstrItem::setJumpArray(const QVector<TraceInstrJump*>& a)
 {
-    _jump.duplicate(a);
+    _jump = a;
 }
 
 void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)

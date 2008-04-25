@@ -26,7 +26,6 @@
 #include <QRegExp>
 #include <QPainter>
 #include <QPolygon>
-#include <Qt3Support/Q3MemArray>
 
 #include <klocale.h>
 #include <kiconloader.h>
@@ -306,9 +305,9 @@ void SourceItem::paintCell( QPainter *p, const QColorGroup &cg,
       Q3ListViewItem::paintCell( p, _cg, column, width, alignment );
 }
 
-void SourceItem::setJumpArray(const Q3MemArray<TraceLineJump*>& a)
+void SourceItem::setJumpArray(const QVector<TraceLineJump*>& a)
 {
-    _jump.duplicate(a);
+    _jump = a;
 }
 
 void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)

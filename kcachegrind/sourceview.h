@@ -24,8 +24,6 @@
 #define SOURCEVIEW_H
 
 #include <q3listview.h>
-//Added by qt3to4:
-#include <Q3MemArray>
 #include "traceitemview.h"
 
 class SourceItem;
@@ -65,7 +63,7 @@ private:
   // arrows
   int _arrowLevels;
   // temporary needed on creation...
-  Q3MemArray<TraceLineJump*> _jump;
+  QVector<TraceLineJump*> _jump;
   TraceLineJumpList _lowList, _highList;
 };
 
