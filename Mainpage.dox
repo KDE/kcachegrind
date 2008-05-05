@@ -1,0 +1,16 @@
+/** @mainpage KCachegrind
+*
+* KCachegrind is a browser for data produced by profiling tools.
+*
+* KCachegrind features various visualization views for a selected function, namely 
+*     - a call-graph view, which shows a section of the call graph around the
+*       selected function,
+*     - a tree-map view, which allows nested-call relations to be visualized,
+*       together with inclusive cost metric for fast visual detection of
+*       problematic functions,
+*     - source code and disassembler annotation views, allowing to see details of
+*       cost related to source lines and assembler instructions.
+*
+* KCachegrind is part of the KDE SDK package, and it is released at the same time as
+* the rest of KDE SDK and KDE.
+*/
