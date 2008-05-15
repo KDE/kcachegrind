@@ -424,8 +424,8 @@ bool FixFile::nextLine(FixString& str)
 	if (l>199) l = 199;
 	strncpy(tmp, _current, l);
 	tmp[l] = 0;
-	qDebug("[FixFile::nextLine] At %d, len %d: '%s'",
-	       _current - _base, _currentLeft-left, tmp);
+	qDebug("[FixFile::nextLine] At %lu, len %u: '%s'",
+	       (unsigned long) (_current - _base), _currentLeft-left, tmp);
     }
 
     str.set(_current, _currentLeft-left);
