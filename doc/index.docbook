@@ -256,7 +256,7 @@ as all actions on the system can be observed; therefore, the following has to be
 First, configure the profiling process, using the &GUI; <command>oprof_start</command> or the
 command-line tool opcontrol. Standard configuration should be timer mode (TBS, see introduction). To start the measurement, run
 <command>opcontrol -s</command>. Then run the application you are interested in and, afterwards, do a <command>opcontrol -d</command>. This will write out
-the measurement results into files under directory <filename>/var/lib/oprofile/samples/</filename>. To be able to visualize the data in &kcachegrind;, do in an empty directory:
+the measurement results into files under folder <filename>/var/lib/oprofile/samples/</filename>. To be able to visualize the data in &kcachegrind;, do in an empty directory:
 
 <blockquote><para><command>
 opreport -gdf | op2callgrind
@@ -273,7 +273,7 @@ on the system. Each one can be loaded into &kcachegrind; on its own.
 <title>User Interface Basics</title>
 
 <para>
-When starting &kcachegrind; with a profile data file as argument, or after loading one with File/Open, you will see a sidebar containing the function list
+When starting &kcachegrind; with a profile data file as argument, or after loading one with File/Open, you will see a navigation panel containing the function list
 at the left; and, on the right the main part, an area with visualizations for
 a selected function. This visualization area can be arbitrarily configured to
 show multiple visualizations at once.
@@ -800,8 +800,8 @@ So, for example, for main(), you will always have a inclusive cost of almost 100
 </question>
 <answer>
 <para>
-Obviously &kcachegrind; is wrongly installed on your system. It is recommended to compile it with the installation prefix to be your system wide &kde; base directory like <command>configure --prefix=/opt/kde3; make install</command>.
-If you choose another directory like $HOME/kde, you should set the environment variable KDEDIR to this directory before running &kcachegrind;.
+Obviously &kcachegrind; is wrongly installed on your system. It is recommended to compile it with the installation prefix to be your system wide &kde; base folder like <command>configure --prefix=/opt/kde3; make install</command>.
+If you choose another folder like $HOME/kde, you should set the environment variable KDEDIR to this folder before running &kcachegrind;.
 </para>
 </answer>
 </qandaentry>
