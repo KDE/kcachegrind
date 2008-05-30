@@ -347,6 +347,8 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
     return;
   }
 
+  bool newSetting;
+
   switch(r) {
   case 20:
     setFieldVisible(0, !fieldVisible(0));
@@ -365,10 +367,11 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
     break;
 
   case 24:
-    setFieldForced(0, !fieldForced(0));
-    setFieldForced(1, !fieldForced(0));
-    setFieldForced(2, !fieldForced(0));
-    setFieldForced(3, !fieldForced(0));
+    newSetting = !fieldForced(0);
+    setFieldForced(0, newSetting);
+    setFieldForced(1, newSetting);
+    setFieldForced(2, newSetting);
+    setFieldForced(3, newSetting);
     break;
 
   case 25: setAllowRotation(!allowRotation()); break;
