@@ -486,8 +486,8 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
   int height  = (rotate ? r.width() : r.height());
   int lines   = height / h;
 
-  // stop if we have no space available
-  if (lines<1) lines = 1/*return false*/;
+  // stop if there is no space available
+  if (lines<1) return false;
 
   // calculate free space in first line (<unused>)
   int pos = dp->position(f);
@@ -755,7 +755,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
     if (!isBottom && (pixY>y)) y = pixY;
   }
 
-/*  if (origLines > lines) {
+  if (origLines > lines) {
     // if only 1 line written, do not reset _used* vars
     if (lines - origLines >1) {
       if (isBottom)
@@ -767,7 +767,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
     // take back one line
     y = isBottom ? (y+h) : (y-h);
     if (used) *used = w;
-  }*/
+  }
 
   // update free space
   if (!isBottom) {
