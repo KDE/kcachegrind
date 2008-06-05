@@ -769,6 +769,9 @@ void GraphExporter::writeDot()
 
 			*stream << QString("  F%1 [").arg((long)f, 0, 16);
 			if (_useBox) {
+				// we want a minimal size for cost display
+				if ((int)abr.length() < 8) abr = abr + QString(8 - abr.length(),'_');
+
 				// make label 3 lines for CallGraphView
 				*stream << QString("shape=box,label=\"** %1 **\\n**\\n%2\"];\n")
 				.arg(abr)
@@ -2046,6 +2049,25 @@ void CallGraphView::dotExited()
 	clear();
 	dotStream = new QTextStream(&_unparsedOutput, QIODevice::ReadOnly);
 
+	// First pass to adjust coordinate scaling by node height given from dot
+	// Normal detail level (=1) should be 3 lines using general KDE font
+	double nodeHeight = 0.0;
+	while(1) {
+		line = dotStream->readLine();
+		if (line.isNull() || line.isEmpty()) continue;
+		QTextStream lineStream(&line, QIODevice::ReadOnly);
+		lineStream >> cmd;
+		if (cmd != "node") continue;
+		QString s, h;
+		lineStream >> s /*name*/ >> s /*x*/ >> s /*y*/ >> s /*width*/ >> h /*height*/;
+		nodeHeight = h.toDouble();
+		break;
+	}
+	Q_ASSERT(nodeHeight > 0.0);
+	scaleY = (8 + (1 + 2 * _detailLevel) * fontMetrics().height()) / nodeHeight;
+	scaleX = 80;
+
+	dotStream->seek(0);
 	int lineno = 0;
 	while (1) {
 		line = dotStream->readLine();
@@ -2069,20 +2091,10 @@ void CallGraphView::dotExited()
 
 		if (cmd == "graph") {
 			QString dotWidthString, dotHeightString;
+			// scale will not be used
 			lineStream >> scale >> dotWidthString >> dotHeightString;
 			dotWidth = dotWidthString.toDouble();
 			dotHeight = dotHeightString.toDouble();
-
-			if (_detailLevel == 0) {
-				scaleX = scale * 70;
-				scaleY = scale * 40;
-			} else if (_detailLevel == 1) {
-				scaleX = scale * 80;
-				scaleY = scale * 70;
-			} else {
-				scaleX = scale * 60;
-				scaleY = scale * 100;
-			}
 
 			if (!_scene) {
 				int w = (int)(scaleX * dotWidth);
@@ -2174,6 +2186,8 @@ void CallGraphView::dotExited()
 			n->setVisible(true);
 
 			rItem = new CanvasNode(this, n, xx-w/2, yy-h/2, w, h);
+			// limit symbol space to a maximal number of lines depending on detail level
+			if (_detailLevel>0) rItem->setMaxLines(0, 2*_detailLevel);
 			_scene->addItem(rItem);
 			n->setCanvasNode(rItem);
 
