@@ -1,6 +1,5 @@
 # KDE Config File
 [Desktop Entry]
-Encoding=UTF-8
 Type=Application
 Exec=kcachegrind -caption "%c" %i %m %u
 MimeType=application/x-kcachegrind;
