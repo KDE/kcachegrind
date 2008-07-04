@@ -175,7 +175,7 @@ void InstrItem::updateCost()
   // do not show any cost inside of cycles
   if (_instrCall &&
       ((_instrCall->call()->inCycle()>0) ||
-       (_instrCall->call()->isRecursion()>0))) {
+       (_instrCall->call()->isRecursion()))) {
     QString str;
     QPixmap p;
 

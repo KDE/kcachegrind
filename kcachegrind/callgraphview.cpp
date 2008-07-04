@@ -1416,7 +1416,7 @@ CanvasFrame::CanvasFrame(CanvasNode* n)
 	if (!_p) {
 
 		int d = 5;
-		float v1 = 130.0, v2 = 10.0, v = v1, f = 1.03;
+		float v1 = 130.0f, v2 = 10.0f, v = v1, f = 1.03f;
 
 		// calculate pix size
 		QRect r(0, 0, 30, 30);
