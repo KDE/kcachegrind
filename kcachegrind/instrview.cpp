@@ -812,8 +812,8 @@ bool InstrView::fillInstrRange(TraceFunction* function,
       if (!currInstr) continue;
 
       if (!selected &&
-	  (currInstr == _selectedItem) ||
-	  (currInstr->line() == _selectedItem)) selected = ii;
+          ((currInstr == _selectedItem) ||
+           (currInstr->line() == _selectedItem))) selected = ii;
 
       if (!first) first = ii;
 
