@@ -26,6 +26,7 @@
 #include <QRegExp>
 #include <QPainter>
 #include <QPolygon>
+#include <QTextDocument>
 
 #include <klocale.h>
 #include <kiconloader.h>
@@ -85,10 +86,10 @@ SourceItem::SourceItem(SourceView* sv, Q3ListViewItem* parent,
   QString callStr = "  ";
   if (cc==0)
     callStr += i18n("Active call to '%1'",
-                    _lineCall->call()->calledName());
+                    Qt::escape(_lineCall->call()->calledName()));
   else
     callStr += i18np("%1 call to '%2'", "%1 calls to '%2'", (uint64)cc,
-                     _lineCall->call()->calledName());
+                     Qt::escape(_lineCall->call()->calledName()));
 
   TraceFunction* calledF = _lineCall->call()->called();
   calledF->addPrettyLocation(callStr);
