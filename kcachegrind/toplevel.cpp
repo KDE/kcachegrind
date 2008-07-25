@@ -2246,7 +2246,8 @@ void TopLevel::forwardTriggered(QAction* action)
 {
   int count = action->data().toInt(0);
   //qDebug("forwardTriggered: %d", count);
-  Q_ASSERT( count>0 );
+  if( count <= 0)
+      return;
 
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
   if (!b) return;
@@ -2262,7 +2263,8 @@ void TopLevel::backTriggered(QAction* action)
 {
   int count = action->data().toInt(0);
   //qDebug("backTriggered: %d", count);
-  Q_ASSERT( count>0 );
+  if( count <= 0)
+     return;
 
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
   if (!b) return;
