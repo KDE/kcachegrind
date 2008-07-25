@@ -2280,7 +2280,8 @@ void TopLevel::upTriggered(QAction* action)
 {
   int count = action->data().toInt(0);
   //qDebug("upTriggered: %d", count);
-  Q_ASSERT( count>0 );
+  if( count <= 0)
+     return;
 
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
   HistoryItem* hi = b ? b->current() : 0;
