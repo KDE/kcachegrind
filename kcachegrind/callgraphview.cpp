@@ -676,6 +676,7 @@ void GraphExporter::writeDot()
 		file = new QFile(_dotName);
 		if ( !file->open(QIODevice::WriteOnly ) ) {
 			kError() << "Can not write dot file '"<< _dotName << "'"<< endl;
+                        delete file;
 			return;
 		}
 		stream = new QTextStream(file);
