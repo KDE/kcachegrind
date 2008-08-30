@@ -33,12 +33,12 @@
 </authorgroup>
 
 <copyright>
-<year>2002-2004</year>
+<year>2002-2007</year>
 <holder>&Josef.Weidendorfer;</holder>	
 </copyright>
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2004-07-27</date>
+<date>2007-01-15</date>
 <releaseinfo>0.4.6</releaseinfo>
 
 <abstract>
@@ -647,7 +647,7 @@ This action is not really needed, as File/Open will give you a new toplevel wind
 <keycombo>&Ctrl;<keycap>O</keycap></keycombo>
 </shortcut>
 <guimenu>File</guimenu>
-<guimenuitem>Open</guimenuitem>
+<guimenuitem>Open...</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>
 Pops up the File Open Dialog to choose a profile data file to be loaded.
@@ -665,7 +665,16 @@ Example: If there exist profile data files cachegrind.out.123 and cachegrind.out
 <varlistentry>
 <term><menuchoice>
 <guimenu>File</guimenu>
-<guimenuitem>Add</guimenuitem>
+<guisubmenu>Open Recent</guisubmenu>
+</menuchoice></term>
+<listitem><para>
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>File</guimenu>
+<guimenuitem>Add...</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>
 Adds a profile data file to the current window.
@@ -676,6 +685,8 @@ Using this, you can force multiple data files to be loaded into the same topleve
 
 <varlistentry>
 <term><menuchoice>
+<shortcut><keycap>F5</keycap>
+</shortcut>
 <guimenu>File</guimenu>
 <guimenuitem>Reload</guimenuitem>
 </menuchoice></term>
@@ -684,6 +695,25 @@ Reload the profile data.
 </action>
 This is most interesting after another profile data file was generated for an already loaded application run.
 </para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;&Shift;<keycap>Z</keycap></keycombo>
+</shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>Force Dump</guimenuitem>
+</menuchoice></term>
+<listitem><para></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>File</guimenu>
+<guimenuitem>Export Graph</guimenuitem>
+</menuchoice></term>
+<listitem><para></para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -709,7 +739,7 @@ This is most interesting after another profile data file was generated for an al
 <varlistentry>
 <term><menuchoice>
 <guimenu>View</guimenu>
-<guimenuitem>Primary Event Type</guimenuitem>
+<guisubmenu>Primary Event Type</guisubmenu>
 </menuchoice></term>
 <listitem><para><action>(To-do)</action></para></listitem>
 </varlistentry>
@@ -717,7 +747,7 @@ This is most interesting after another profile data file was generated for an al
 <varlistentry>
 <term><menuchoice>
 <guimenu>View</guimenu>
-<guimenuitem>Secondary Event Type</guimenuitem>
+<guisubmenu>Secondary Event Type</guisubmenu>
 </menuchoice></term>
 <listitem><para><action>(To-do)</action></para></listitem>
 </varlistentry>
@@ -725,7 +755,7 @@ This is most interesting after another profile data file was generated for an al
 <varlistentry>
 <term><menuchoice>
 <guimenu>View</guimenu>
-<guimenuitem>Grouping</guimenuitem>
+<guisubmenu>Grouping</guisubmenu>
 </menuchoice></term>
 <listitem><para><action>(To-do)</action></para></listitem>
 </varlistentry>
@@ -733,7 +763,7 @@ This is most interesting after another profile data file was generated for an al
 <varlistentry>
 <term><menuchoice>
 <guimenu>View</guimenu>
-<guimenuitem>Layout</guimenuitem>
+<guisubmenu>Layout</guisubmenu>
 </menuchoice></term>
 <listitem><para><action>(To-do)</action></para></listitem>
 </varlistentry>
@@ -746,10 +776,88 @@ This is most interesting after another profile data file was generated for an al
 <listitem><para><action>(To-do)</action></para></listitem>
 </varlistentry>
 
+<varlistentry>
+<term><menuchoice>
+<guimenu>View</guimenu>
+<guimenuitem>Split Horizontal</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>(To-do)</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>View</guimenu>
+<guimenuitem>Show Absolute Costs</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>(To-do)</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>View</guimenu>
+<guimenuitem>Percentage Relative to Parent</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>(To-do)</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>View</guimenu>
+<guimenuitem>Skip Cycle Detection</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>(To-do)</action></para></listitem>
+</varlistentry>
+
 </variablelist>
 </para>
 
 </sect2>
+
+<sect2>
+<title>The <guimenu>Go</guimenu> Menu</title>
+<para>
+<variablelist>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Go</guimenu>
+<guimenuitem></guimenuitem>
+</menuchoice></term>
+<listitem><para><action>(To-do)</action></para></listitem>
+</varlistentry>
+
+</variablelist>
+</para>
+
+</sect2>
+
+
+<sect2>
+<title>The <guimenu>Settings</guimenu> Menu</title>
+<para>
+<variablelist>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem></guimenuitem>
+</menuchoice></term>
+<listitem><para><action>(To-do)</action></para></listitem>
+</varlistentry>
+
+</variablelist>
+</para>
+
+</sect2>
+
+
+<sect2>
+<title>The <guimenu>Help</guimenu> Menu</title>
+
+&help.menu.documentation;
+
+</sect2>
+
 
 
 </sect1>
