@@ -4417,7 +4417,7 @@ void TraceData::load(const QString& base)
 
       QStringList prefixList;
       prefixList << "callgrind.out" << "cachegrind.out";
-      for ( QStringList::Iterator it = prefixList.begin();
+      for ( QStringList::const_iterator it = prefixList.begin();
 	    it != prefixList.end(); ++it ) {
         file = *it;
 
@@ -4461,7 +4461,7 @@ void TraceData::load(const QString& base)
       f *= 10;
   }
 
-  QStringList::Iterator it;
+  QStringList::const_iterator it;
   unsigned int maxNumber = 0;
   for (it = strList.begin(); it != strList.end(); ++it ) {
     TracePart* p = addPart( dir.path(), *it );

@@ -287,7 +287,7 @@ void Configuration::readOptions(KConfig* kconfig)
       QString longName, formula;
       TraceEventType* ct;
       QStringList l = knownTypes();
-      for ( QStringList::Iterator it = l.begin();
+      for ( QStringList::const_iterator it = l.begin();
             it != l.end(); ++it ) {
         longName = knownLongName(*it);
         formula  = knownFormula(*it);

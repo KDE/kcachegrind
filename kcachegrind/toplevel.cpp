@@ -1140,7 +1140,7 @@ bool TopLevel::setEventType(TraceEventType* ct)
   if (ct) {
       int idx=0;
       QStringList l = _saCost->items();
-      for (QStringList::Iterator it = l.begin(); it != l.end(); ++it, ++idx ) {
+      for (QStringList::const_iterator it = l.begin(); it != l.end(); ++it, ++idx ) {
 	  if (*it == ct->longName())
 	      _saCost->setCurrentItem(idx);
       }
@@ -1169,7 +1169,7 @@ bool TopLevel::setEventType2(TraceEventType* ct)
 
   int idx=0;
   QStringList l = _saCost2->items();
-  for (QStringList::Iterator it = l.begin(); it != l.end(); ++it, ++idx ) {
+  for (QStringList::const_iterator it = l.begin(); it != l.end(); ++it, ++idx ) {
     if (*it == longName)
       _saCost2->setCurrentItem(idx);
   }

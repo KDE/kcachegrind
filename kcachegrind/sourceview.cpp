@@ -350,7 +350,7 @@ static bool checkFileExistance(QString& dir, const QString& name)
   d.setFilter( QDir::Dirs | QDir::NoSymLinks );
   d.setSorting( QDir::Unsorted );
   QStringList subdirs = d.entryList();
-  QStringList::Iterator it =subdirs.begin();
+  QStringList::const_iterator it =subdirs.begin();
   for(; it != subdirs.end(); ++it ) {
     if (*it == "." || *it == ".." || *it == "CVS") continue;
 
@@ -528,7 +528,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     if (!QFile::exists(filename)) {
       QStringList list = Configuration::sourceDirs(_data,
 						   sf->function()->object());
-      QStringList::Iterator it;
+      QStringList::const_iterator it;
 
       for ( it = list.begin(); it != list.end(); ++it ) {
         dir = *it;
