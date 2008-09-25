@@ -369,7 +369,7 @@ void TopLevel::createDocks()
                    "i.e. where it was started from, and </li>"
                    "<li>the default profile dump directory given in the "
                    "configuration.</li></ul> "
-                   "The list is sorted according the the target command "
+                   "The list is sorted according to the target command "
                    "profiled in the corresponding dump.</p>"
                    "<p>On selecting a profile dump, information for it "
                    "is shown in the bottom area of the dockable: "
