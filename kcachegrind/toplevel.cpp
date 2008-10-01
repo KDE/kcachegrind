@@ -376,7 +376,7 @@ void TopLevel::createDocks()
                    "<ul><li><b>Options</b> allows you to view the profiled "
                    "command and profile options of this dump. By changing "
                    "any item, a new (yet unexisting) profile template "
-                   "is created. Press <b>Run Profile</b> to start a"
+                   "is created. Press <b>Run Profile</b> to start a "
                    "profile run with these options in the background. </li>"
                    "<li><b>Info</b> gives detailed info on the selected "
                    "dump like event cost summary and properties of the "
