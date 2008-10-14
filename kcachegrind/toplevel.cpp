@@ -430,7 +430,7 @@ void TopLevel::readProperties(const KConfigGroup &c)
 void TopLevel::createLayoutActions()
 {
   QString hint;
-  QAction* action;
+  KAction* action;
 
   action = actionCollection()->addAction( "layout_duplicate" );
   action->setText( i18n( "&Duplicate" ) );
@@ -478,7 +478,7 @@ void TopLevel::createLayoutActions()
 void TopLevel::createMiscActions()
 {
   QString hint;
-  QAction* action;
+  KAction* action;
 
   action = KStandardAction::openNew(this, SLOT(newWindow()), actionCollection());
   hint = i18n("<b>New</b><p>Open new empty KCachegrind window.</p>");
