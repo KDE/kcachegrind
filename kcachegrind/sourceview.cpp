@@ -334,7 +334,7 @@ void SourceView::refresh()
     setColumnWidthMode(2, Q3ListView::Manual);
     setColumnWidth(2, 0);
   }
-  //reset to the original position - this is usefull when the view is refreshed just because we change between relative/absolute 
+  // reset to the original position - this is useful when the view is refreshed just because we change between relative/absolute 
   verticalScrollBar()->setValue(originalPosition);
 }
 
