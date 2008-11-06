@@ -107,4 +107,5 @@ Comment[x-test]=xxVisualization of Performance Profiling Dataxx
 Comment[zh_CN]=性能测试数据的可视化表现
 Comment[zh_TW]=效能分析資料視覺化
 X-DBUS-StartupType=Multi
+X-DBUS-ServiceName=net.sf.kcachegrind
 Categories=Qt;KDE;Development;
