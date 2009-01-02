@@ -53,6 +53,8 @@ kde4_add_ui_files(kcachegrind_SRCS
         configdlgbase.ui 
 	)
 
+kde4_add_app_icon(kcachegrind_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-kcachegrind.png")
+
 kde4_add_executable(kcachegrind ${kcachegrind_SRCS})
 
 target_link_libraries(kcachegrind  ${KDE4_KIO_LIBS} ${QT_QT3SUPPORT_LIBRARY})
