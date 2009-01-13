@@ -87,7 +87,7 @@ class CallStack:
         self.recursion_counter[elem] = rc + 1
 
     def pop(self):
-        """get the head element of the stack and remove it from teh stack"""
+        """get the head element of the stack and remove it from the stack"""
         elem = self.stack[-1:][0]
         rc = self.recursion_counter.get(elem) - 1
         if rc>0:
