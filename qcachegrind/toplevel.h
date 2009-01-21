@@ -46,10 +46,8 @@ class MainWidget;
 class PartSelection;
 class FunctionSelection;
 class DumpSelection;
-//class StackSelection;
+class StackSelection;
 class TraceFunction;
-
-#define StackSelection QWidget
 
 class TopLevel : public QMainWindow, public Logger, public TopLevelBase
 {

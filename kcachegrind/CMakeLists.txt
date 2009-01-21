@@ -6,13 +6,10 @@ set(kcachegrind_SRCS
    main.cpp
    kdeconfig.cpp
    toplevel.cpp
-   stackselection.cpp
-   stackitem.cpp
    configdlg.cpp
    )
 
 kde4_add_ui_files(kcachegrind_SRCS
-	stackselectionbase.ui
         configdlgbase.ui
 	)
 

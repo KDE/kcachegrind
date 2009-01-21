@@ -25,28 +25,22 @@
 #ifndef STACKSELECTION_H
 #define STACKSELECTION_H
 
-#include "ui_stackselectionbase.h"
+#include <QWidget>
 #include "tracedata.h"
 
+class Q3ListView;
+class Q3ListViewItem;
 class TraceFunction;
 class TraceData;
 class StackBrowser;
 
-class StackSelectionBase : public QWidget, public Ui::StackSelectionBase
-{
-public:
-  StackSelectionBase( QWidget *parent ) : QWidget( parent ) {
-    setupUi( this );
-  }
-};
 
-
-class StackSelection : public StackSelectionBase
+class StackSelection : public QWidget
 {
   Q_OBJECT
 
 public:
-  StackSelection( QWidget* parent = 0);
+  StackSelection(QWidget* parent = 0);
   ~StackSelection();
 
   TraceData* data() const { return _data; }
@@ -65,7 +59,7 @@ public slots:
   void setEventType2(TraceEventType*);
   void setGroupType(TraceItem::CostType);
 
-  void stackSelected( Q3ListViewItem* );
+  void stackSelected(Q3ListViewItem*);
   void browserBack();
   void browserForward();
   void browserUp();
@@ -83,6 +77,8 @@ private:
   TraceEventType* _eventType;
   TraceEventType* _eventType2;
   TraceItem::CostType _groupType;
+
+  Q3ListView* _stackList;
 };
 
 #endif

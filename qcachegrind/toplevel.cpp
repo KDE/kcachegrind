@@ -49,8 +49,8 @@
 
 #include "partselection.h"
 #include "functionselection.h"
-//#include "stackselection.h"
-//#include "stackbrowser.h"
+#include "stackselection.h"
+#include "stackbrowser.h"
 #include "tracedata.h"
 #include "config.h"
 #include "globalconfig.h"
@@ -265,8 +265,8 @@ void TopLevel::createDocks()
                    "cost used for all calls from the function in the line "
                    "above.</p>"));
 
-  //connect(_stackSelection, SIGNAL(functionSelected(TraceItem*)),
-  //        this, SLOT(setTraceItemDelayed(TraceItem*)));
+  connect(_stackSelection, SIGNAL(functionSelected(TraceItem*)),
+          this, SLOT(setTraceItemDelayed(TraceItem*)));
 
   _functionDock = new QDockWidget(this);
   _functionDock->setObjectName("function dock");
@@ -813,7 +813,7 @@ void TopLevel::setPercentage(bool show)
   _partSelection->notifyChange(TraceItemView::configChanged);
   _partSelection->updateView();
 
-  //_stackSelection->refresh();
+  _stackSelection->refresh();
 
   _functionSelection->notifyChange(TraceItemView::configChanged);
   _functionSelection->updateView();
@@ -833,7 +833,7 @@ void TopLevel::toggleExpanded()
   _partSelection->notifyChange(TraceItemView::configChanged);
   _partSelection->updateView();
 
-  //_stackSelection->refresh();
+  _stackSelection->refresh();
 
   _functionSelection->notifyChange(TraceItemView::configChanged);
   _functionSelection->updateView();
@@ -858,7 +858,7 @@ void TopLevel::toggleCycles()
   _partSelection->notifyChange(TraceItemView::configChanged);
   _partSelection->updateView();
 
-  //_stackSelection->rebuildStackList();
+  _stackSelection->rebuildStackList();
 
   _functionSelection->notifyChange(TraceItemView::configChanged);
   _functionSelection->updateView();
@@ -1087,7 +1087,7 @@ bool TopLevel::setEventType(TraceEventType* ct)
   }
 
   _partSelection->setEventType(_eventType);
-  //_stackSelection->setEventType(_eventType);
+  _stackSelection->setEventType(_eventType);
 
   _functionSelection->setEventType(_eventType);
   _functionSelection->updateView();
@@ -1115,7 +1115,7 @@ bool TopLevel::setEventType2(TraceEventType* ct)
   }
 
   _partSelection->setEventType2(_eventType2);
-  //_stackSelection->setEventType2(_eventType2);
+  _stackSelection->setEventType2(_eventType2);
 
   _functionSelection->setEventType2(_eventType2);
   _functionSelection->updateView();
@@ -1181,9 +1181,9 @@ bool TopLevel::setGroupType(TraceItem::CostType gt)
 #if 0
   if (saGroup->currentItem() != idx)
     saGroup->setCurrentItem(idx);
+#endif
 
   _stackSelection->setGroupType(_groupType);
-#endif
 
   _partSelection->set(_groupType);
   _partSelection->updateView();
@@ -1249,16 +1249,14 @@ bool TopLevel::setFunction(TraceFunction* f)
   _partSelection->activate(f);
   _partSelection->updateView();
 
-#if 0
   _stackSelection->setFunction(_function);
 
   StackBrowser* b = _stackSelection->browser();
   if (b) {
     // do not disable up: a press forces stack-up extending...
-    _paForward->setEnabled(b->canGoForward());
-    _paBack->setEnabled(b->canGoBack());
+    //_paForward->setEnabled(b->canGoForward());
+    //_paBack->setEnabled(b->canGoBack());
   }
-#endif
 
 #if TRACE_UPDATES
   qDebug("TopLevel::setFunction(%s), lastSender %s",
@@ -1337,16 +1335,15 @@ void TopLevel::setDirectionDelayed()
 {
     switch(_directionDelayed) {
     case TraceItemView::Back:
-	//_stackSelection->browserBack();
+	_stackSelection->browserBack();
 	break;
 
     case TraceItemView::Forward:
-        //_stackSelection->browserForward();
+        _stackSelection->browserForward();
 	break;
 
     case TraceItemView::Up:
 	{
-#if 0
 	    StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
 	    HistoryItem* hi = b ? b->current() : 0;
 	    TraceFunction* f = hi ? hi->function() : 0;
@@ -1354,7 +1351,6 @@ void TopLevel::setDirectionDelayed()
 	    if (!f) break;
 	    f = hi->stack()->caller(f, false);
 	    if (f) setFunction(f);
-#endif
 	}
     break;
 
@@ -1432,7 +1428,7 @@ void TopLevel::setData(TraceData* data)
 
   if (_data) {
     _partSelection->setData(0);
-    //_stackSelection->setData(0);
+    _stackSelection->setData(0);
 
     _functionSelection->setData(0);
     _functionSelection->updateView();
@@ -1478,9 +1474,9 @@ void TopLevel::setData(TraceData* data)
   // default is hidden
   if (types.count()>0)
       _saCost2->setCurrentItem(0);
+#endif
 
   _stackSelection->setData(_data);
-#endif
 
   _partSelection->setData(_data);
   _partSelection->updateView();
@@ -1612,7 +1608,6 @@ bool TopLevel::setEventType2(QAction* action)
 
 void TopLevel::addGoMenu(QMenu* popup)
 {
-#if 0
   StackBrowser* b = _stackSelection->browser();
   if (b) {
       if (b->canGoBack())
@@ -1620,10 +1615,6 @@ void TopLevel::addGoMenu(QMenu* popup)
       if (b->canGoForward())
 	  popup->addAction(tr("Go Forward"), this, SLOT(goForward()));
   }
-#else
-  popup->addAction(tr("Go Back"), this, SLOT(goBack()));
-  popup->addAction(tr("Go Forward"), this, SLOT(goForward()));
-#endif
   // do not disable up: a press forces stack-up extending...
   popup->addAction(tr("Go Up"), this, SLOT(goUp()));
 }
@@ -1999,7 +1990,7 @@ void TopLevel::configChanged()
   _partSelection->notifyChange(TraceItemView::configChanged);
   _partSelection->updateView();
 
-  //_stackSelection->refresh();
+  _stackSelection->refresh();
 
   _functionSelection->notifyChange(TraceItemView::configChanged);
   _functionSelection->updateView();
@@ -2033,7 +2024,7 @@ void TopLevel::activePartsChangedSlot(const TracePartList& list)
   _partSelection->set(list);
   _partSelection->updateView();
 
-  //_stackSelection->refresh();
+  _stackSelection->refresh();
 
   _functionSelection->set(list);
   _functionSelection->updateView();

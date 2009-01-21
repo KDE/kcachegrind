@@ -24,8 +24,6 @@
 
 #include <QPixmap>
 
-#include <klocale.h>
-
 #include "globalconfig.h"
 #include "listutils.h"
 #include "stackselection.h"
