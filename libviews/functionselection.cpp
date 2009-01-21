@@ -28,39 +28,80 @@
 #include <QComboBox>
 #include <QLineEdit>
 #include <QRegExp>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <Qt3Support/Q3ListView>
 #include <Qt3Support/Q3PopupMenu>
-
-#include <klocale.h>
+#include <Qt3Support/Q3Header>
 
 #include "traceitemview.h"
 #include "stackbrowser.h"
-#include "partgraph.h"
 #include "functionitem.h"
 #include "costlistitem.h"
 #include "globalconfig.h"
-#include "toplevel.h"
 
 
-FunctionSelection::FunctionSelection( TopLevel* top,
+FunctionSelection::FunctionSelection( TopLevelBase* top,
 				      QWidget* parent)
-    : FunctionSelectionBase(parent), TraceItemView(0, top)
+    : QWidget(parent), TraceItemView(0, top)
 {
   _group = 0;
   _inSetGroup = false;
   _inSetFunction = false;
 
+  setTitle(tr("Function Profile"));
+
+  // first row with search label and group type combo
+  QHBoxLayout* hboxLayout = new QHBoxLayout();
+  hboxLayout->setSpacing(6);
+  hboxLayout->setMargin(0);
+
+  searchLabel = new QLabel(this);
+  searchLabel->setText(tr("&Search:"));
+  searchLabel->setWordWrap(false);
+  hboxLayout->addWidget(searchLabel);
+
+  searchEdit = new QLineEdit(this);
+  searchLabel->setBuddy(searchEdit);
+  hboxLayout->addWidget(searchEdit);
+
+  groupBox = new QComboBox(this);
+  hboxLayout->addWidget(groupBox);
+
+  // vertical layout: first row, group list, function list
+  QVBoxLayout* vboxLayout = new QVBoxLayout(this);
+  vboxLayout->setSpacing(6);
+  vboxLayout->setMargin(3);
+  vboxLayout->addLayout(hboxLayout);
+
+  groupList = new Q3ListView(this);
+  groupList->addColumn(tr("Self"));
+  groupList->addColumn(tr("Group"));
+  groupList->header()->setClickEnabled(true);
+  groupList->header()->setResizeEnabled(true);
+  groupList->setMaximumHeight(150);
+  vboxLayout->addWidget(groupList);
+
+  functionList = new Q3ListView(this);
+  functionList->addColumn(tr("Incl."));
+  functionList->addColumn(tr("Self"));
+  functionList->addColumn(tr("Called"));
+  functionList->addColumn(tr("Function"));
+  functionList->addColumn(tr("Location"));
+  functionList->header()->setClickEnabled(true);
+  functionList->header()->setResizeEnabled(true);
+  vboxLayout->addWidget(functionList);
+
+  // order has to match mapping in groupTypeSelected()
   QStringList args;
-  args << i18n("(No Grouping)")
+  args << tr("(No Grouping)")
        << TraceCost::i18nTypeName(TraceItem::Object)
        << TraceCost::i18nTypeName(TraceItem::File)
        << TraceCost::i18nTypeName(TraceItem::Class)
        << TraceCost::i18nTypeName(TraceItem::FunctionCycle);
-  
   groupBox->addItems(args);
-  // this needs same order of grouptype actionlist!
   connect(groupBox, SIGNAL(activated(int)),
-	  top, SLOT(groupTypeSelected(int)));
+	  this, SLOT(groupTypeSelected(int)));
 
   // search while typing...
   connect(searchEdit, SIGNAL(textChanged(const QString&)),
@@ -175,8 +216,8 @@ void FunctionSelection::functionContext(Q3ListViewItem* i,
 	if (i) {
 		f = ((FunctionItem*) i)->function();
 		if (f) {
-			popup.insertItem(i18n("Go to '%1'", GlobalConfig::shortenSymbol(f->prettyName())), 93);
-			popup.insertSeparator();
+		    popup.insertItem(tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName())), 93);
+		    popup.insertSeparator();
 		}
 	}
 
@@ -202,7 +243,7 @@ void FunctionSelection::groupContext(Q3ListViewItem* /*i*/,
   if (i) {
       g = ((CostListItem*) i)->costItem();
       if (!g) {
-	popup.insertItem(i18n("Show All Items"), 93);
+	popup.insertItem(tr("Show All Items"), 93);
 	popup.insertSeparator();
       }
   }
@@ -225,7 +266,7 @@ void FunctionSelection::addGroupMenu(Q3PopupMenu* popup)
   popup1->setCheckable(true);
 
   if (_groupType != TraceItem::Function) {
-    popup1->insertItem(i18n("No Grouping"),0);
+    popup1->insertItem(tr("No Grouping"),0);
     popup1->insertSeparator();
   }
   popup1->insertItem(TraceCost::i18nTypeName(TraceItem::Object),1);
@@ -240,10 +281,23 @@ void FunctionSelection::addGroupMenu(Q3PopupMenu* popup)
   default: break;
   }
   connect(popup1, SIGNAL(activated(int)),
-	  (TopLevel*) _topLevel, SLOT(groupTypeSelected(int)));
+	  this, SLOT(groupTypeSelected(int)));
 
-  popup->insertItem(i18n("Grouping"), popup1);
+  popup->insertItem(tr("Grouping"), popup1);
 }    
+
+
+void FunctionSelection::groupTypeSelected(int cg)
+{
+    switch(cg) {
+	case 0: selectedGroupType( TraceItem::Function ); break;
+	case 1: selectedGroupType( TraceItem::Object ); break;
+	case 2: selectedGroupType( TraceItem::File ); break;
+	case 3: selectedGroupType( TraceItem::Class ); break;
+	case 4: selectedGroupType( TraceItem::FunctionCycle ); break;
+	default: break;
+    }
+}
 
 
 TraceItem* FunctionSelection::canShow(TraceItem* i)

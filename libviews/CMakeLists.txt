@@ -1,6 +1,9 @@
 include_directories( ../libcore )
 
 set(libviews_SRCS
+   functionitem.cpp
+   costlistitem.cpp
+   functionselection.cpp
    toplevelbase.cpp
    listutils.cpp
    treemap.cpp
@@ -25,5 +28,3 @@ set(libviews_SRCS
 qt4_automoc(${libviews_SRCS})
 add_library(views STATIC ${libviews_SRCS})
 target_link_libraries(views core)
-
-

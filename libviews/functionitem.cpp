@@ -25,9 +25,6 @@
 
 #include <QPixmap>
 
-#include <klocale.h>
-#include <kiconloader.h>
-
 #include "listutils.h"
 #include "globalconfig.h"
 
@@ -66,7 +63,7 @@ FunctionItem::FunctionItem(Q3ListView* parent, int skipped,
     _groupType = TraceCost::NoCostType;
     setCostType(ct);
 
-    setText(3, i18np("(%1 function skipped)", "(%1 functions skipped)", skipped));
+    setText(3, QObject::tr("(%n function(s) skipped)", "", skipped));
 }
 
 #if 0

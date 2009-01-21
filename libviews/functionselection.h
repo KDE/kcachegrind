@@ -24,32 +24,27 @@
 #define FUNCTIONSELECTION_H
 
 #include <QTimer>
+#include <QWidget>
 
-#include "ui_functionselectionbase.h"
-#include "traceitemview.h"
 #include "tracedata.h"
+#include "traceitemview.h"
 #include "listutils.h"
-#include "toplevel.h"
+#include "toplevelbase.h"
 
 class Q3PopupMenu;
+class Q3ListView;
+class Q3ListViewItem;
 
+class QLabel;
+class QComboBox;
+class QLineEdit;
 
-
-class FunctionSelectionBase : public QWidget, public Ui::FunctionSelectionBase
-{
-public:
-  FunctionSelectionBase( QWidget *parent ) : QWidget( parent ) {
-    setupUi( this );
-  }
-};
-
-
-class FunctionSelection : public FunctionSelectionBase, public TraceItemView
+class FunctionSelection: public QWidget, public TraceItemView
 {
   Q_OBJECT
 
 public:
-  explicit FunctionSelection(TopLevel*, QWidget* parent = 0);
+  explicit FunctionSelection(TopLevelBase*, QWidget* parent = 0);
   ~FunctionSelection();
 
   TraceCostItem* group(QString);
@@ -65,6 +60,7 @@ public slots:
   void searchReturnPressed();
   void searchChanged(const QString&);
   void queryDelayed();
+  void groupTypeSelected(int);
   void groupDoubleClicked( Q3ListViewItem* );
   void functionActivated( Q3ListViewItem* );
   void groupSelected( Q3ListViewItem* );
@@ -89,6 +85,12 @@ private:
   HighestCostList _hc;
   // when setting a
   bool _inSetGroup, _inSetFunction;
+
+  QLabel *searchLabel;
+  QLineEdit *searchEdit;
+  QComboBox *groupBox;
+  Q3ListView *groupList;
+  Q3ListView *functionList;
 };
 
 #endif

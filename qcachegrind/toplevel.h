@@ -44,13 +44,12 @@ class QMenu;
 class TraceData;
 class MainWidget;
 //class PartSelection;
-//class FunctionSelection;
+class FunctionSelection;
 class DumpSelection;
 //class StackSelection;
 class TraceFunction;
 
 #define PartSelection QWidget
-#define FunctionSelection QWidget
 #define StackSelection QWidget
 
 class TopLevel : public QMainWindow, public Logger, public TopLevelBase

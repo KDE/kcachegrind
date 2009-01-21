@@ -318,6 +318,15 @@ void TraceItemView::selectedEventType2(TraceItemView*, TraceEventType* t)
       if (_topLevel) _topLevel->setEventType2Delayed(t);
 }
 
+void TraceItemView::selectedGroupType(TraceItemView*, TraceItem::CostType t)
+{
+  if (_parentView)
+      _parentView->selectedGroupType(this, t);
+  else
+      if (_topLevel) _topLevel->setGroupTypeDelayed(t);
+}
+
+
 void TraceItemView::directionActivated(TraceItemView*, TraceItemView::Direction d)
 {
   if (_parentView)
@@ -373,6 +382,14 @@ void TraceItemView::selectedEventType2(TraceEventType* t)
       _parentView->selectedEventType2(this, t);
   else
       if (_topLevel) _topLevel->setEventType2Delayed(t);
+}
+
+void TraceItemView::selectedGroupType(TraceItem::CostType t)
+{
+  if (_parentView)
+      _parentView->selectedGroupType(this, t);
+  else
+      if (_topLevel) _topLevel->setGroupTypeDelayed(t);
 }
 
 void TraceItemView::directionActivated(TraceItemView::Direction d)

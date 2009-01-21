@@ -109,6 +109,7 @@ public:
   virtual void selectedEventType(TraceItemView* sender, TraceEventType*);
   virtual void selectedEventType2(TraceItemView* sender, TraceEventType*);
   virtual void activated(TraceItemView* sender, TraceItem*);
+  virtual void selectedGroupType(TraceItemView* sender, TraceItem::CostType);
 
   // getters...
   // always get the newest values
@@ -159,6 +160,7 @@ protected:
   void activated(TraceItem*);
   void selectedEventType(TraceEventType*);
   void selectedEventType2(TraceEventType*);
+  void selectedGroupType(TraceItem::CostType);
   void directionActivated(TraceItemView::Direction);
 
   /* Is this view visible?

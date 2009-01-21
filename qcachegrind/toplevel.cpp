@@ -48,7 +48,7 @@
 #endif
 
 //#include "partselection.h"
-//#include "functionselection.h"
+#include "functionselection.h"
 //#include "stackselection.h"
 //#include "stackbrowser.h"
 #include "tracedata.h"
@@ -327,7 +327,7 @@ void TopLevel::createDocks()
   _functionDock = new QDockWidget(this);
   _functionDock->setObjectName("function dock");
   _functionDock->setWindowTitle(tr("Flat Profile"));
-  _functionSelection = new QWidget(_functionDock); // FunctionSelection(this, _functionDock);
+  _functionSelection = new FunctionSelection(this, _functionDock);
   //_functionSelection->setTopLevel(this);
 
   _functionDock->setWidget(_functionSelection);
@@ -860,10 +860,10 @@ void TopLevel::setPercentage(bool show)
 #if 0
   _partSelection->refresh();
   _stackSelection->refresh();
+#endif
 
   _functionSelection->notifyChange(TraceItemView::configChanged);
   _functionSelection->updateView();
-#endif
 
   _multiView->notifyChange(TraceItemView::configChanged);
   _multiView->updateView();
@@ -880,10 +880,10 @@ void TopLevel::toggleExpanded()
 #if 0
   _partSelection->refresh();
   _stackSelection->refresh();
+#endif
 
   _functionSelection->notifyChange(TraceItemView::configChanged);
   _functionSelection->updateView();
-#endif
 
   _multiView->notifyChange(TraceItemView::configChanged);
   _multiView->updateView();
@@ -905,10 +905,10 @@ void TopLevel::toggleCycles()
 #if 0
   _partSelection->refresh();
   _stackSelection->rebuildStackList();
+#endif
 
   _functionSelection->notifyChange(TraceItemView::configChanged);
   _functionSelection->updateView();
-#endif
 
   _multiView->notifyChange(TraceItemView::configChanged);
   _multiView->updateView();
@@ -938,8 +938,8 @@ void TopLevel::dumpVisibilityChanged(bool)
 void TopLevel::functionVisibilityChanged(bool v)
 {
   _functionDockShown->setChecked(v);
-//  if (v)
-//    _functionSelection->updateView();
+  if (v)
+    _functionSelection->updateView();
 }
 
 
@@ -1136,10 +1136,11 @@ bool TopLevel::setEventType(TraceEventType* ct)
 #if 0
   _partSelection->setEventType(_eventType);
   _stackSelection->setEventType(_eventType);
+#endif
 
   _functionSelection->setEventType(_eventType);
   _functionSelection->updateView();
-#endif
+
   _multiView->setEventType(_eventType);
   _multiView->updateView();
 
@@ -1164,10 +1165,11 @@ bool TopLevel::setEventType2(TraceEventType* ct)
 #if 0
   _partSelection->setEventType2(_eventType2);
   _stackSelection->setEventType2(_eventType2);
+#endif
 
   _functionSelection->setEventType2(_eventType2);
   _functionSelection->updateView();
-#endif
+
   _multiView->setEventType2(_eventType2);
   _multiView->updateView();
 
@@ -1232,10 +1234,11 @@ bool TopLevel::setGroupType(TraceItem::CostType gt)
 
   _stackSelection->setGroupType(_groupType);
   _partSelection->setGroupType(_groupType);
+#endif
 
   _functionSelection->set(_groupType);
   _functionSelection->updateView();
-#endif
+
   _multiView->set(_groupType);
   _multiView->updateView();
 
@@ -1246,12 +1249,11 @@ bool TopLevel::setGroupType(TraceItem::CostType gt)
 
 bool TopLevel::setGroup(QString s)
 {
-    return true;
-    TraceCostItem* ci = 0;//_functionSelection->group(s);
-  if (!ci)
-    return false;
+    TraceCostItem* ci = _functionSelection->group(s);
+    if (!ci)
+	return false;
 
-  return setGroup(ci);
+    return setGroup(ci);
 }
 
 
@@ -1259,8 +1261,8 @@ bool TopLevel::setGroup(TraceCostItem* g)
 {
   _multiView->activate(g);
   _multiView->updateView();
-  //_functionSelection->activate(g);
-  //_functionSelection->updateView();
+  _functionSelection->activate(g);
+  _functionSelection->updateView();
 
   if (_group == g) return false;
   _group = g;
@@ -1286,8 +1288,8 @@ bool TopLevel::setFunction(TraceFunction* f)
   _multiView->activate(f);
   _multiView->updateView();
 
-  //_functionSelection->activate(f);
-  //_functionSelection->updateView();
+  _functionSelection->activate(f);
+  _functionSelection->updateView();
 
   if (_function == f) return false;
   _function = f;
@@ -1477,10 +1479,11 @@ void TopLevel::setData(TraceData* data)
 #if 0
     _partSelection->setData(0);
     _stackSelection->setData(0);
+#endif
 
     _functionSelection->setData(0);
     _functionSelection->updateView();
-#endif
+
     _multiView->setData(0);
     _multiView->updateView();
 
@@ -1525,9 +1528,11 @@ void TopLevel::setData(TraceData* data)
 
   _partSelection->setData(_data);
   _stackSelection->setData(_data);
+#endif
+
   _functionSelection->setData(_data);
   _functionSelection->updateView();
-#endif
+
   _multiView->setData(_data);
   _multiView->updateView();
 
@@ -1741,7 +1746,7 @@ void TopLevel::restoreTraceSettings()
   if (!_traceItemDelayed) {
     // function not available any more.. try with "main"
       if (!setFunction("main")) {
-#if 0
+#if 1
 	_functionSelection->setTopFunction();
 #else
 	HighestCostList hc;
@@ -2026,10 +2031,10 @@ void TopLevel::configChanged()
 #if 0
   _partSelection->refresh();
   _stackSelection->refresh();
+#endif
 
   _functionSelection->notifyChange(TraceItemView::configChanged);
   _functionSelection->updateView();
-#endif
 
   _multiView->notifyChange(TraceItemView::configChanged);
   _multiView->updateView();
@@ -2059,12 +2064,12 @@ void TopLevel::activePartsChangedSlot(const TracePartList& list)
 
 #if 0
   _partSelection->activePartsChangedSlot(list);
+  _stackSelection->refresh();
+#endif
 
   _functionSelection->set(list);
   _functionSelection->updateView();
 
-  _stackSelection->refresh();
-#endif
   _multiView->set(list);
   _multiView->updateView();
 

@@ -24,9 +24,6 @@
 #include <QRegExp>
 #include <QPixmap>
 
-#include <klocale.h>
-#include <kiconloader.h>
-
 #include "listutils.h"
 #include "coverage.h"
 #include "globalconfig.h"
@@ -59,7 +56,7 @@ CostListItem::CostListItem(Q3ListView* parent, int skipped,
   _costItem = costItem;
   setCostType(ct);
 
-  setText(1, i18np("(%1 item skipped)", "(%1 items skipped)", _skipped));
+  setText(1, QObject::tr("(%n item(s) skipped)", "", _skipped));
 }
 
 void CostListItem::setCostType(TraceEventType* ct)
