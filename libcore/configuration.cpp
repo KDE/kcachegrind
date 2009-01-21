@@ -58,21 +58,21 @@ QString Configuration::knownFormula(const QString& name)
 
 QString Configuration::knownLongName(const QString& name)
 {
-    if (name == "Ir") return i18n("Instruction Fetch");
-    if (name =="Dr") return i18n("Data Read Access");
-    if (name =="Dw") return i18n("Data Write Access");
-    if (name =="I1mr") return i18n("L1 Instr. Fetch Miss");
-    if (name =="D1mr") return i18n("L1 Data Read Miss");
-    if (name =="D1mw") return i18n("L1 Data Write Miss");
-    if (name =="I2mr") return i18n("L2 Instr. Fetch Miss");
-    if (name =="D2mr") return i18n("L2 Data Read Miss");
-    if (name =="D2mw") return i18n("L2 Data Write Miss");
-    if (name =="Smp") return i18n("Samples");
-    if (name =="Sys") return i18n("System Time");
-    if (name =="User") return i18n("User Time");
-    if (name =="L1m") return i18n("L1 Miss Sum");
-    if (name =="L2m") return i18n("L2 Miss Sum");
-    if (name =="CEst") return i18n("Cycle Estimation");
+    if (name == "Ir") return QObject::tr("Instruction Fetch");
+    if (name =="Dr") return QObject::tr("Data Read Access");
+    if (name =="Dw") return QObject::tr("Data Write Access");
+    if (name =="I1mr") return QObject::tr("L1 Instr. Fetch Miss");
+    if (name =="D1mr") return QObject::tr("L1 Data Read Miss");
+    if (name =="D1mw") return QObject::tr("L1 Data Write Miss");
+    if (name =="I2mr") return QObject::tr("L2 Instr. Fetch Miss");
+    if (name =="D2mr") return QObject::tr("L2 Data Read Miss");
+    if (name =="D2mw") return QObject::tr("L2 Data Write Miss");
+    if (name =="Smp") return QObject::tr("Samples");
+    if (name =="Sys") return QObject::tr("System Time");
+    if (name =="User") return QObject::tr("User Time");
+    if (name =="L1m") return QObject::tr("L1 Miss Sum");
+    if (name =="L2m") return QObject::tr("L2 Miss Sum");
+    if (name =="CEst") return QObject::tr("Cycle Estimation");
 
     return QString();
 }

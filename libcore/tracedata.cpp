@@ -152,34 +152,34 @@ QString TraceItem::typeName(CostType t)
       for(int i=0;i<=MaxCostType;i++)
 	strs[i] = QString("?");
 
-       strs[Item] = I18N_NOOP("Abstract Item");
-       strs[Cost] = I18N_NOOP("Cost Item");
-       strs[PartLine] = I18N_NOOP("Part Source Line");
-       strs[Line] = I18N_NOOP("Source Line");
-       strs[PartLineCall] = I18N_NOOP("Part Line Call");
-       strs[LineCall] = I18N_NOOP("Line Call");
-       strs[PartLineJump] = I18N_NOOP("Part Jump");
-       strs[LineJump] = I18N_NOOP("Jump");
-       strs[PartInstr] = I18N_NOOP("Part Instruction");
-       strs[Instr] = I18N_NOOP("Instruction");
-       strs[PartInstrJump] = I18N_NOOP("Part Instruction Jump");
-       strs[InstrJump] = I18N_NOOP("Instruction Jump");
-       strs[PartInstrCall] = I18N_NOOP("Part Instruction Call");
-       strs[InstrCall] = I18N_NOOP("Instruction Call");
-       strs[PartCall] = I18N_NOOP("Part Call");
-       strs[Call] = I18N_NOOP("Call");
-       strs[PartFunction] = I18N_NOOP("Part Function");
-       strs[FunctionSource] = I18N_NOOP("Function Source File");
-       strs[Function] = I18N_NOOP("Function");
-       strs[FunctionCycle] = I18N_NOOP("Function Cycle");
-       strs[PartClass] = I18N_NOOP("Part Class");
-       strs[Class] = I18N_NOOP("Class");
-       strs[PartFile] = I18N_NOOP("Part Source File");
-       strs[File] = I18N_NOOP("Source File");
-       strs[PartObject] = I18N_NOOP("Part ELF Object");
-       strs[Object] = I18N_NOOP("ELF Object");
-       strs[Part] = I18N_NOOP("Profile Part");
-       strs[Data] = I18N_NOOP("Program Trace");
+       strs[Item] = QT_TR_NOOP("Abstract Item");
+       strs[Cost] = QT_TR_NOOP("Cost Item");
+       strs[PartLine] = QT_TR_NOOP("Part Source Line");
+       strs[Line] = QT_TR_NOOP("Source Line");
+       strs[PartLineCall] = QT_TR_NOOP("Part Line Call");
+       strs[LineCall] = QT_TR_NOOP("Line Call");
+       strs[PartLineJump] = QT_TR_NOOP("Part Jump");
+       strs[LineJump] = QT_TR_NOOP("Jump");
+       strs[PartInstr] = QT_TR_NOOP("Part Instruction");
+       strs[Instr] = QT_TR_NOOP("Instruction");
+       strs[PartInstrJump] = QT_TR_NOOP("Part Instruction Jump");
+       strs[InstrJump] = QT_TR_NOOP("Instruction Jump");
+       strs[PartInstrCall] = QT_TR_NOOP("Part Instruction Call");
+       strs[InstrCall] = QT_TR_NOOP("Instruction Call");
+       strs[PartCall] = QT_TR_NOOP("Part Call");
+       strs[Call] = QT_TR_NOOP("Call");
+       strs[PartFunction] = QT_TR_NOOP("Part Function");
+       strs[FunctionSource] = QT_TR_NOOP("Function Source File");
+       strs[Function] = QT_TR_NOOP("Function");
+       strs[FunctionCycle] = QT_TR_NOOP("Function Cycle");
+       strs[PartClass] = QT_TR_NOOP("Part Class");
+       strs[Class] = QT_TR_NOOP("Class");
+       strs[PartFile] = QT_TR_NOOP("Part Source File");
+       strs[File] = QT_TR_NOOP("Source File");
+       strs[PartObject] = QT_TR_NOOP("Part ELF Object");
+       strs[Object] = QT_TR_NOOP("ELF Object");
+       strs[Part] = QT_TR_NOOP("Profile Part");
+       strs[Data] = QT_TR_NOOP("Program Trace");
     }
     if (t<0 || t> MaxCostType) t = MaxCostType;
     return _typeName[t];
@@ -199,7 +199,7 @@ TraceItem::CostType TraceItem::costType(const QString& s)
   return NoCostType;
 }
 
-// all strings of typeName() are translatable because of I18N_NOOP there
+// all strings of typeName() are translatable because of QT_TR_NOOP there
 QString TraceItem::i18nTypeName(CostType t)
 {
     if (!_i18nTypeName) {
@@ -240,20 +240,18 @@ QString TraceItem::costString(TraceEventTypeMapping*)
 QString TraceItem::name() const
 {
   if (part()) {
-    return i18n("%1 from %2",
-       _dep->name(),
-       part()->name());
+      return QObject::tr("%1 from %2").arg(_dep->name()).arg(part()->name());
   }
 
   if (_dep)
     return _dep->name();
 
-  return i18n("(unknown)");
+  return QObject::tr("(unknown)");
 }
 
 QString TraceItem::prettyName() const
 {
-    if (name().isEmpty()) return i18n("(unknown)");
+    if (name().isEmpty()) return QObject::tr("(unknown)");
     return name();
 }
 
@@ -2577,14 +2575,14 @@ TraceFunction* TraceCall::called(bool skipCycle) const
 
 QString TraceCall::callerName(bool skipCycle) const
 {
-  if (!_caller) return i18n("(no caller)");
+  if (!_caller) return QObject::tr("(no caller)");
 
   if (!skipCycle) {
       // if this call goes into a cycle, add the entry function
       TraceFunctionCycle* c = _called->cycle();
       if (c && _caller && (_caller->cycle() != c)) {
 	  QString via = _called->prettyName();
-	  return i18n("%1 via %2", _caller->prettyName(), via);
+	  return QObject::tr("%1 via %2").arg(_caller->prettyName()).arg(via);
       }
   }
 
@@ -2593,7 +2591,7 @@ QString TraceCall::callerName(bool skipCycle) const
 
 QString TraceCall::calledName(bool skipCycle) const
 {
-  if (!_called) return i18n("(no callee)");
+  if (!_called) return QObject::tr("(no callee)");
 
   if (!skipCycle) {
       // if this call goes into a cycle, add the entry function
@@ -2603,7 +2601,7 @@ QString TraceCall::calledName(bool skipCycle) const
 	  _called->setCycle(0);
 	  QString via = _called->prettyName();
 	  _called->setCycle(c);
-	  return i18n("%1 via %2", c->name(), via);
+	  return QObject::tr("%1 via %2").arg(c->name()).arg(via);
       }
   }
   return _called->prettyName();
@@ -2818,7 +2816,7 @@ QString TraceLine::name() const
 {
     QString fileShortName = _sourceFile->file()->shortName();
     if (fileShortName.isEmpty())
-	return i18n("(unknown)");
+	return QObject::tr("(unknown)");
 
     return QString("%1:%2")
 	.arg(fileShortName).arg(_lineno);
@@ -3235,7 +3233,7 @@ QString TraceFunction::prettyName() const
   QString res = _name;
 
   if (_name.isEmpty())
-      return i18n("(unknown)");
+      return QObject::tr("(unknown)");
 
   int p = _name.indexOf('(');
   if (p>0) {
@@ -3321,7 +3319,7 @@ QString TraceFunction::location(int maxFiles) const
 QString TraceFunction::prettyLocation(int maxFiles) const
 {
     QString l = location(maxFiles);
-    if (l.isEmpty()) return i18n("(unknown)");
+    if (l.isEmpty()) return QObject::tr("(unknown)");
 
     return l;
 }
@@ -4144,7 +4142,7 @@ QString TraceFile::prettyName() const
     QString sn = shortName();
 
     if (sn.isEmpty())
-	return i18n("(unknown)");
+	return QObject::tr("(unknown)");
 
     return sn;
 }
@@ -4152,7 +4150,7 @@ QString TraceFile::prettyName() const
 QString TraceFile::prettyLongName() const
 {
   if (_name.isEmpty())
-    return i18n("(unknown)");
+    return QObject::tr("(unknown)");
   return _name;
 }
 
@@ -4217,7 +4215,7 @@ void TraceObject::setName(const QString& name)
 QString TraceObject::prettyName() const
 {
   if (_shortName.isEmpty())
-    return i18n("(unknown)");
+    return QObject::tr("(unknown)");
 
   return _shortName;
 }
@@ -4447,7 +4445,7 @@ void TraceData::load(const QString& base)
       strList << file;
 
   if (strList.count() == 0) {
-      _traceName = base + '/' + file + ' ' + i18n("(not found)");
+      _traceName = base + '/' + file + ' ' + QObject::tr("(not found)");
       return;
   }
 
@@ -5002,7 +5000,7 @@ void TraceData::updateFunctionCycles()
 
 #if 0
   int fCount = _functionMap.size(), fNo = 0, progress=0, p;
-  QString msg = i18n("Recalculating Function Cycles...");
+  QString msg = tr("Recalculating Function Cycles...");
   if (_topLevel) _topLevel->showStatus(msg,0);
 #endif
 

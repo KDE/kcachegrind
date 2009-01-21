@@ -139,7 +139,7 @@ private:
 
 CachegrindLoader::CachegrindLoader()
   : Loader("Callgrind",
-           i18n( "Import filter for Cachegrind/Callgrind generated profile data files") )
+           QObject::tr( "Import filter for Cachegrind/Callgrind generated profile data files") )
 {
     _emptyString = QString("");
 }
