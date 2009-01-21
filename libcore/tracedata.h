@@ -125,7 +125,7 @@ class FixCallCost;
 class FixJump;
 class FixPool;
 class DynPool;
-class TopLevel;
+class Logger;
 
 class TraceCost;
 class TraceEventType;
@@ -1823,7 +1823,7 @@ class TraceObject: public TraceCostItem
 class TraceData: public TraceCost
 {
  public:
-  TraceData(TopLevel* top = 0);
+  TraceData(Logger* l = 0);
   TraceData(const QString& base);
   virtual ~TraceData();
 
@@ -1927,8 +1927,8 @@ class TraceData: public TraceCost
   // add trace part: events from one trace file
   TracePart* addPart(const QString& dir, const QString& file);
 
-  // for progress bar callbacks
-  TopLevel* _topLevel;
+  // for notification callbacks
+  Logger* _logger;
 
   TracePartList _parts;
 

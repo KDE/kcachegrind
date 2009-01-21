@@ -22,6 +22,7 @@
 
 #include "loader.h"
 
+#include "logger.h"
 
 /// Loader
 
@@ -31,6 +32,8 @@ Loader::Loader(const QString& name, const QString& desc)
 {
 	_name = name;
 	_description = desc;
+
+	_logger = 0;
 }
 
 Loader::~Loader()
@@ -79,4 +82,40 @@ void Loader::deleteLoaders()
 		delete _loaderList.takeFirst();
 }
 
-#include "loader.moc"
+// notifications
+
+void Loader::setLogger(Logger* l)
+{
+    _logger = l;
+}
+
+void Loader::loadStart(const QString& filename)
+{
+    if (_logger)
+	_logger->loadStart(filename);
+}
+
+void Loader::loadProgress(int progress)
+{
+    if (_logger)
+	_logger->loadProgress(progress);
+}
+
+void Loader::loadError(int line, const QString& msg)
+{
+    if (_logger)
+	_logger->loadError(line, msg);
+}
+
+void Loader::loadWarning(int line, const QString& msg)
+{
+    if (_logger)
+	_logger->loadWarning(line, msg);
+}
+
+void Loader::loadFinished(const QString& msg)
+{
+    if (_logger)
+	_logger->loadFinished(msg);
+}
+

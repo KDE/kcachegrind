@@ -35,10 +35,10 @@
 #include <knumvalidator.h>
 
 #include "tracedata.h"
-#include "configuration.h"
+#include "kconfiguration.h"
 
 
-ConfigDlg::ConfigDlg(Configuration* c, TraceData* data,
+ConfigDlg::ConfigDlg(KConfiguration* c, TraceData* data,
                      QWidget* parent)
   :ConfigDlgBase(parent)
 {
@@ -199,7 +199,7 @@ ConfigDlg::~ConfigDlg()
 {
 }
 
-bool ConfigDlg::configure(Configuration* c, TraceData* d, QWidget* p)
+bool ConfigDlg::configure(KConfiguration* c, TraceData* d, QWidget* p)
 {
   ConfigDlg dlg(c, d, p);
 
@@ -233,8 +233,7 @@ void ConfigDlg::objectActivated(const QString & s)
 
   QString n = TraceCost::typeName(TraceCost::Object) + '-' + s;
 
-  Configuration* c = Configuration::config();
-  Configuration::ColorSetting* cs = c->_colors[n];
+  Configuration::ColorSetting* cs = _config->_colors[n];
   if (!cs)
     cs = Configuration::color(n);
 //  else
@@ -278,8 +277,7 @@ void ConfigDlg::classActivated(const QString & s)
 
   QString n = TraceCost::typeName(TraceCost::Class) + '-' + s;
 
-  Configuration* c = Configuration::config();
-  Configuration::ColorSetting* cs = c->_colors[n];
+  Configuration::ColorSetting* cs = _config->_colors[n];
   if (!cs)
     cs = Configuration::color(n);
 
@@ -310,8 +308,7 @@ void ConfigDlg::fileActivated(const QString & s)
 
   QString n = TraceCost::typeName(TraceCost::File) + '-' + s;
 
-  Configuration* c = Configuration::config();
-  Configuration::ColorSetting* cs = c->_colors[n];
+  Configuration::ColorSetting* cs = _config->_colors[n];
   if (!cs)
     cs = Configuration::color(n);
 
@@ -346,14 +343,13 @@ void ConfigDlg::dirsDeletePressed()
   Q3ListViewItem* p = _dirItem->parent();
   if (!p) return;
 
-  Configuration* c = Configuration::config();
   QString objName = p->text(0);
 
   QStringList* dirs;
   if (objName == i18n("(always)"))
-    dirs = &(c->_generalSourceDirs);
+    dirs = &(_config->_generalSourceDirs);
   else
-    dirs = c->_objectSourceDirs[objName];
+    dirs = _config->_objectSourceDirs[objName];
   if (!dirs) return;
 
   dirs->remove(_dirItem->text(0));
@@ -367,17 +363,16 @@ void ConfigDlg::dirsAddPressed()
 {
   if (!_dirItem || (_dirItem->depth() >0)) return;
 
-  Configuration* c = Configuration::config();
   QString objName = _dirItem->text(0);
 
   QStringList* dirs;
   if (objName == i18n("(always)"))
-    dirs = &(c->_generalSourceDirs);
+    dirs = &(_config->_generalSourceDirs);
   else {
-    dirs = c->_objectSourceDirs[objName];
+    dirs = _config->_objectSourceDirs[objName];
     if (!dirs) {
       dirs = new QStringList;
-      c->_objectSourceDirs.insert(objName, dirs);
+      _config->_objectSourceDirs.insert(objName, dirs);
     }
   }
 

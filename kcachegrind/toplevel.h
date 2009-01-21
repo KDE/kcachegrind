@@ -28,6 +28,7 @@
 
 #include <kxmlguiwindow.h>
 
+#include "logger.h"
 #include "traceitemview.h"
 #include "tracedata.h"
 
@@ -52,7 +53,7 @@ class DumpSelection;
 class StackSelection;
 class TraceFunction;
 
-class TopLevel : public KXmlGuiWindow
+class TopLevel : public KXmlGuiWindow, public Logger
 {
   Q_OBJECT
   Q_CLASSINFO("D-Bus Interface", "org.kde.kcachegrind")
@@ -83,6 +84,13 @@ public:
   /* convenience functions for often used context menu items */
   void addEventTypeMenu(QMenu*,bool);
   void addGoMenu(QMenu*);
+
+  // Logger overwrites: notifications for file loading
+  virtual void loadStart(const QString& filename);
+  virtual void loadProgress(int progress); // 0 - 100
+  virtual void loadWarning(int line, const QString& msg);
+  virtual void loadError(int line, const QString& msg);
+  virtual void loadFinished(const QString& msg); // msg could be error
 
 public slots:
   void newTrace();
@@ -197,9 +205,6 @@ public slots:
   // progress in status bar, empty message disables progress display
   void showStatus(const QString& msg, int progress);
   void showMessage(const QString&, int msec);
-  // messages from file loader
-  void showLoadError(const QString&,int,const QString&);
-  void showLoadWarning(const QString&,int,const QString&);
 
 private:
   void init();

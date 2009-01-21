@@ -119,7 +119,7 @@ TopLevel::TopLevel()
   _statusbar->addWidget(_statusLabel, 1);
 
   KConfig *kconfig = KGlobal::config().data();
-  Configuration::readOptions( kconfig );
+  Configuration::config()->readOptions();
   _openRecent->loadEntries( KConfigGroup( kconfig, "" ) );
 
   // set toggle after reading configuration
@@ -1929,13 +1929,14 @@ void TopLevel::updateStatusBar()
 
 void TopLevel::configure()
 {
-  if (ConfigDlg::configure(Configuration::config(), _data, this)) {
-    Configuration::saveOptions(KGlobal::config().data());
+    if (ConfigDlg::configure( (KConfiguration*) Configuration::config(),
+			      _data, this)) {
+      Configuration::config()->saveOptions();
 
     configChanged();
   }
   else
-    Configuration::readOptions(KGlobal::config().data());
+      Configuration::config()->readOptions();
 }
 
 bool TopLevel::queryClose()
@@ -1951,7 +1952,7 @@ bool TopLevel::queryExit()
     Configuration::setShowPercentage(_showPercentage);
     Configuration::setShowExpanded(_showExpanded);
     Configuration::setShowCycles(_showCycles);
-    Configuration::saveOptions(KGlobal::config().data());
+    Configuration::config()->saveOptions();
 
     saveCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 
@@ -2310,6 +2311,7 @@ void TopLevel::showStatus(const QString& msg, int progress)
 	static bool msgUpdateNeeded = true;
 
 	if (msg.isEmpty()) {
+	        //reset status
 		if (_progressBar) {
 			_statusbar->removeWidget(_progressBar);
 			delete _progressBar;
@@ -2352,14 +2354,33 @@ void TopLevel::showStatus(const QString& msg, int progress)
 	qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
 }
 
-void TopLevel::showLoadError(const QString& name, int line, const QString& msg)
+void TopLevel::loadStart(const QString& filename)
 {
-	kError() << "Loading" << name.ascii() << ":" << line << ": " << msg.ascii();
+    showStatus(QString("Loading %1").arg(filename), 0);
+    Logger::_filename = filename;
 }
 
-void TopLevel::showLoadWarning(const QString& name, int line, const QString& msg)
+void TopLevel::loadFinished(const QString& msg)
 {
-	kWarning() << "Loading" << name.ascii() << ":" << line << ": " << msg.ascii();
+    showStatus(QString::null, 0);
+    if (!msg.isEmpty())
+	showMessage(QString("Error loading %1: %2").arg(_filename).arg(msg),
+		    2000);
+}
+
+void TopLevel::loadProgress(int progress)
+{
+    showStatus(QString("Loading %1").arg(_filename), progress);
+}
+
+void TopLevel::loadError(int line, const QString& msg)
+{
+	kError() << "Loading" << _filename.ascii() << ":" << line << ": " << msg.ascii();
+}
+
+void TopLevel::loadWarning(int line, const QString& msg)
+{
+	kWarning() << "Loading" << _filename.ascii() << ":" << line << ": " << msg.ascii();
 }
 
 #include "toplevel.moc"

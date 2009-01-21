@@ -1,7 +1,3 @@
-# FIXME: Only for compiling now
-include_directories(
-	../kcachegrind )
-
 kde4_add_library(core STATIC
    cachegrindloader.cpp
    fixcost.cpp
@@ -9,5 +5,7 @@ kde4_add_library(core STATIC
    pool.cpp
    subcost.cpp
    tracedata.cpp
-   utils.cpp )
+   utils.cpp
+   logger.cpp
+   configuration.cpp )
 

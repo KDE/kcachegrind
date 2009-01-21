@@ -19,6 +19,7 @@
 
 #include "tracedata.h"
 
+#include <errno.h>
 #include <stdlib.h>
 
 #include <QFile>
@@ -29,7 +30,7 @@
 #include <klocale.h>
 #include <kdebug.h>
 
-#include "toplevel.h"
+#include "logger.h"
 #include "loader.h"
 #include "configuration.h"
 #include "utils.h"
@@ -4335,15 +4336,16 @@ QString TracePartList::names() const
 
 
 // create vectors with reasonable default sizes, but not wasting memory
-TraceData::TraceData(TopLevel* top)
+TraceData::TraceData(Logger* l)
 {
-    _topLevel = top;
+    _logger = l;
     init();
 }
 
 TraceData::TraceData(const QString& base)
 {
-    _topLevel = 0;
+    _logger = 0;
+
     init();
     load(base);
 }
@@ -4464,11 +4466,11 @@ void TraceData::load(const QString& base)
   QStringList::const_iterator it;
   unsigned int maxNumber = 0;
   for (it = strList.begin(); it != strList.end(); ++it ) {
-    TracePart* p = addPart( dir.path(), *it );
+    TracePart* p = addPart(dir.path(), *it );
 
     if (!p) {
-      kDebug() << "Error loading " << *it;
-      continue;
+	//kDebug() << "Error loading " << *it;
+	continue;
     }
 
     const QString& str = *it;
@@ -4510,9 +4512,6 @@ void TraceData::load(const QString& base)
 
   invalidateDynamicCost();
   updateFunctionCycles();
-
-  // clear loading messages from status bar
-  if (_topLevel) _topLevel->showStatus(QString(), 0);
 }
 
 TracePart* TraceData::addPart(const QString& dir, const QString& name)
@@ -4523,18 +4522,21 @@ TracePart* TraceData::addPart(const QString& dir, const QString& name)
 #endif
 
   QFile* file = new QFile(filename);
-
-  Loader* l = Loader::matchingLoader(file);
-  if (!l) return 0;
-
-  if (_topLevel) {
-      _topLevel->connect(l, SIGNAL(updateStatus(const QString&, int)),
-                         SLOT(showStatus(const QString&, int)));
-      _topLevel->connect(l, SIGNAL(loadError(const QString&, int, const QString&)),
-                         SLOT(showLoadError(const QString&, int, const QString&)));
-      _topLevel->connect(l, SIGNAL(loadWarning(const QString&, int, const QString&)),
-                         SLOT(showLoadWarning(const QString&, int, const QString&)));
+  if (!file->open( QIODevice::ReadOnly ) ) {
+      _logger->loadStart(filename);
+      _logger->loadFinished(QString(strerror( errno )));
+      return 0;
   }
+  Loader* l = Loader::matchingLoader(file);
+  if (!l) {
+      // special case emtpy file: ignore...
+      if (file->size() == 0) return 0;
+
+      _logger->loadStart(filename);
+      _logger->loadFinished(QString("Unknown file format"));
+      return 0;
+  }
+  l->setLogger(_logger);
 
   TracePart* part = new TracePart(this, file);
 
@@ -4543,7 +4545,7 @@ TracePart* TraceData::addPart(const QString& dir, const QString& name)
       part = 0;
   }
 
-  if (_topLevel) l->disconnect(_topLevel);
+  l->setLogger(0);
 
   return part;
 }

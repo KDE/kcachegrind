@@ -30,6 +30,7 @@
 #include <kaboutdata.h>
 #include <klocale.h>
 
+#include "kconfiguration.h"
 #include "toplevel.h"
 #include "tracedata.h"
 #include "loader.h"
@@ -57,6 +58,9 @@ int main( int argc, char ** argv )
   KApplication a;
   TopLevel* t;
   Loader::initLoaders();
+
+  KConfig* kc = KGlobal::config().data();
+  Configuration::setConfig(new KConfiguration(kc));
 
   if (a.isSessionRestored()){
     int n = 1;

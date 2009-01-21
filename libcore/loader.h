@@ -23,14 +23,13 @@
 #ifndef LOADER_H
 #define LOADER_H
 
-#include <QObject>
 #include <QList>
 #include <QString>
 
 class QFile;
 class TracePart;
 class Loader;
-
+class Logger;
 
 /**
  * To implement a new loader, inherit from the Loader class and
@@ -42,18 +41,16 @@ class Loader;
  * KCachegrind will use the first loader matching according to
  * canLoadTrace().
  *
- * The signals loadError() and loadWarning() can be emitted within
- * loadTrace() to signal problems when loading the file.
- * According messages are just shown as warnings or errors to the
+ * To show progress and warnings while loading,
+ *   loadStatus(), loadError() and loadWarning() should be called.
+ * These are just shown as status, warnings or errors to the
  * user, but do not show real failure, as even errors can be
  * recoverable. For unablility to load a file, return false in
  * loadTrace().
  */
 
-class Loader: public QObject
+class Loader
 {
-    Q_OBJECT
-
 public:
   Loader(const QString& name, const QString& desc);
   virtual ~Loader();
@@ -70,17 +67,25 @@ public:
   QString name() const { return _name; }
   QString description() const { return _description; }
 
-signals:
-  void updateStatus(const QString& statusmsg, int progress);
-  void loadError(const QString& filename, int line, const QString& msg);
-  void loadWarning(const QString& filename, int line, const QString& msg);
+  // consumer for notifications
+  void setLogger(Logger*);
+
+protected:
+  // notifications for the user
+  void loadStart(const QString& filename);
+  void loadProgress(int progress); // 0 - 100
+  void loadError(int line, const QString& msg);
+  void loadWarning(int line, const QString& msg);
+  void loadFinished(const QString &msg = QString::null);
+
+protected:
+  Logger* _logger;
 
 private:
   QString _name, _description;
 
   static QList<Loader*> _loaderList;
 };
-
 
 
 #endif

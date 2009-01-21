@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002, 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2002-2008 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -29,19 +29,21 @@
 
 #include "tracedata.h"
 
-class KConfig;
-
+/**
+ * Actual storage of the configuration has to be implemented
+ * in a derived class, which needs to overwrite save/readOptions.
+ * This uses the singleton pattern, with the need to set
+ * the global configuration object with setConfig() before use.
+ */
 class Configuration
 {
-  friend class ConfigDlg;
-
 public:
-  Configuration();
-
+  // must be set to an instance of a derived class before use
+  static void setConfig(Configuration*);
   static Configuration* config();
 
-  static void saveOptions(KConfig*);
-  static void readOptions(KConfig*);
+  virtual void saveOptions() = 0;
+  virtual void readOptions() = 0;
 
   // color for visualization of an object
   static QColor functionColor(TraceItem::CostType gt, TraceFunction*);
@@ -74,7 +76,17 @@ public:
   // upper limit for cutting of a call in cycle detection
   static double cycleCut();
 
-private:
+
+protected:
+  // do not instantiate this class
+  Configuration();
+  virtual ~Configuration();
+
+  QStringList knownTypes();
+  QString knownFormula(const QString& name);
+  QString knownLongName(const QString& name);
+  void addDefaultTypes();
+
   struct ColorSetting {
     QString name;
     QColor color;

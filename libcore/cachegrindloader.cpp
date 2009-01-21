@@ -16,8 +16,6 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include <errno.h>
-
 #include <QFile>
 #include <QVector>
 
@@ -150,12 +148,7 @@ bool CachegrindLoader::canLoadTrace(QFile* file)
 {
   if (!file) return false;
 
-  if (!file->isOpen()) {
-    if (!file->open( QIODevice::ReadOnly ) ) {
-      emit loadError(QFile::encodeName(_filename),0, QString(strerror( errno )));
-      return false;
-    }
-  }
+  Q_ASSERT(file->isOpen());
 
   /*
    * We recognize this as cachegrind/callgrind format if in the first
@@ -182,13 +175,7 @@ bool CachegrindLoader::loadTrace(TracePart* p)
    */
   CachegrindLoader l;
 
-  /* emit progress signals via the singleton loader */
-  connect(&l, SIGNAL(updateStatus(QString, int)),
-          this, SIGNAL(updateStatus(QString, int)));
-  connect(&l, SIGNAL(loadError(QString, int, QString)),
-          this, SIGNAL(loadError(QString, int, QString)));
-  connect(&l, SIGNAL(loadWarning(QString, int, QString)),
-          this, SIGNAL(loadWarning(QString, int, QString)));
+  l.setLogger(_logger);
 
   return l.loadTraceInternal(p);
 }
@@ -200,14 +187,13 @@ Loader* createCachegrindLoader()
 
 void CachegrindLoader::error(QString msg)
 {
-	emit loadError(_filename, _lineNo, msg);
+        loadError(_lineNo, msg);
 }
 
 void CachegrindLoader::warning(QString msg)
 {
-	emit loadWarning(_filename, _lineNo, msg);
+        loadWarning(_lineNo, msg);
 }
-
 
 /**
  * Return false if this is no position specification
@@ -721,17 +707,15 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
   _filename = pFile->name();
   _lineNo = 0;
 
+  loadStart(_filename);
+
   FixFile file(pFile);
   if (!file.exists()) {
-    error("File does not exist");
+    loadFinished("File does not exist");
     return false;
   }
-  if (0) kDebug() << "Loading " << _filename << " ...";
 
-  QString statusMsg = i18n("Loading %1", _filename);
   int statusProgress = 0;
-  emit updateStatus(statusMsg,statusProgress);
-
 
 #if USE_FIXCOST
   // FixCost Memory Pool
@@ -805,7 +789,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 		 * "long operations" (like file loading) are in progress,
 		 * this can temporarly switch to another operation.
 		 */
-		emit updateStatus(statusMsg,statusProgress);
+		loadProgress(statusProgress);
 	      }
 
 	      continue;
@@ -1280,8 +1264,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
     }
   }
 
-
-  emit updateStatus(statusMsg,100);
+  loadFinished();
 
   _part->invalidate();
   if (!totalsSet) {

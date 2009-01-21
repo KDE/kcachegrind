@@ -2,45 +2,45 @@ include_directories( ../libcore )
 
 ########### next target ###############
 
-set(kcachegrind_SRCS 
-   treemap.cpp 
-   main.cpp 
-   configuration.cpp 
-   functionselection.cpp 
-   coverage.cpp 
-   partgraph.cpp 
-   toplevel.cpp 
-   stackselection.cpp 
-   stackbrowser.cpp 
-   partselection.cpp 
-   configdlg.cpp 
-   traceitemview.cpp 
-   instrview.cpp 
-   tabview.cpp 
-   sourceview.cpp 
-   callmapview.cpp 
-   callview.cpp 
-   coverageview.cpp 
-   eventtypeview.cpp 
-   partview.cpp 
-   listutils.cpp 
-   eventtypeitem.cpp 
-   multiview.cpp 
-   callitem.cpp 
-   coverageitem.cpp 
-   sourceitem.cpp 
-   costlistitem.cpp 
-   partlistitem.cpp 
-   functionitem.cpp 
-   instritem.cpp 
-   stackitem.cpp 
+set(kcachegrind_SRCS
+   treemap.cpp
+   main.cpp
+   kconfiguration.cpp
+   functionselection.cpp
+   coverage.cpp
+   partgraph.cpp
+   toplevel.cpp
+   stackselection.cpp
+   stackbrowser.cpp
+   partselection.cpp
+   configdlg.cpp
+   traceitemview.cpp
+   instrview.cpp
+   tabview.cpp
+   sourceview.cpp
+   callmapview.cpp
+   callview.cpp
+   coverageview.cpp
+   eventtypeview.cpp
+   partview.cpp
+   listutils.cpp
+   eventtypeitem.cpp
+   multiview.cpp
+   callitem.cpp
+   coverageitem.cpp
+   sourceitem.cpp
+   costlistitem.cpp
+   partlistitem.cpp
+   functionitem.cpp
+   instritem.cpp
+   stackitem.cpp
    callgraphview.cpp )
 
 kde4_add_ui_files(kcachegrind_SRCS
 	stackselectionbase.ui
 	functionselectionbase.ui
 	partselectionbase.ui
-        configdlgbase.ui 
+        configdlgbase.ui
 	)
 
 kde4_add_app_icon(kcachegrind_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-kcachegrind.png")
