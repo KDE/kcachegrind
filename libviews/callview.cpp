@@ -42,15 +42,15 @@ CallView::CallView(bool showCallers, TraceItemView* parentView,
 {
     _showCallers = showCallers;
 
-    addColumn( i18n( "Cost" ) );
-    addColumn( i18n( "Cost 2" ) );
+    addColumn( tr( "Cost" ) );
+    addColumn( tr( "Cost 2" ) );
     if (_showCallers) {
-	addColumn( i18n( "Count" ) );
-	addColumn( i18n( "Caller" ) );
+	addColumn( tr( "Count" ) );
+	addColumn( tr( "Caller" ) );
     }
     else {
-	addColumn( i18n( "Count" ) );
-	addColumn( i18n( "Callee" ) );
+	addColumn( tr( "Count" ) );
+	addColumn( tr( "Callee" ) );
     }
 
     setSorting(0,false);
@@ -83,7 +83,7 @@ CallView::CallView(bool showCallers, TraceItemView* parentView,
 QString CallView::whatsThis() const
 {
     return _showCallers ?
-	i18n( "<b>List of direct Callers</b>"
+	tr( "<b>List of direct Callers</b>"
 	      "<p>This list shows all functions calling the "
 	      "current selected one directly, together with "
 	      "a call count and the cost spent in the current "
@@ -96,7 +96,7 @@ QString CallView::whatsThis() const
 	      "one of this information panel. "
 	      "If there are two panels (Split mode), the "
 	      "function of the other panel is changed instead.</p>") :
-	i18n( "<b>List of direct Callees</b>"
+	tr( "<b>List of direct Callees</b>"
 	      "<p>This list shows all functions called by the "
 	      "current selected one directly, together with "
 	      "a call count and the cost spent in this function "
@@ -121,12 +121,12 @@ void CallView::context(Q3ListViewItem* i, const QPoint & p, int col)
     f = _showCallers ? c->caller(true) : c->called(true);
     cycle = f->cycle();
 
-    popup.insertItem(i18n("Go to '%1'",
-		      Configuration::shortenSymbol(name)), 93);
+    popup.insertItem(tr("Go to '%1'")
+		     .arg(Configuration::shortenSymbol(name)), 93);
 
     if (cycle) {
 	name = Configuration::shortenSymbol(cycle->prettyName());
-	popup.insertItem(i18n("Go to '%1'", name), 94);
+	popup.insertItem(tr("Go to '%1'").arg(name), 94);
     }
 
     popup.insertSeparator();

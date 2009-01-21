@@ -80,7 +80,7 @@ void CallItem::updateCost()
     else {
 	_cc  = _call->callCount();
 	if (_cc == 0)
-	    cStr = i18n("(active)");
+	    cStr = QObject::tr("(active)");
 	else
 	    cStr = _call->prettyCallCount();
     }

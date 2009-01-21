@@ -48,11 +48,11 @@ SourceView::SourceView(TraceItemView* parentView,
   _lowList.setSortLow(true);
   _highList.setSortLow(false);
 
-  addColumn( i18n( "#" ) );
-  addColumn( i18n( "Cost" ) );
-  addColumn( i18n( "Cost 2" ) );
+  addColumn( tr( "#" ) );
+  addColumn( tr( "Cost" ) );
+  addColumn( tr( "Cost 2" ) );
   addColumn( "" );
-  addColumn( i18n( "Source (unknown)" ) );
+  addColumn( tr( "Source (unknown)" ) );
 
   setAllColumnsShowFocus(true);
   setColumnAlignment(0, Qt::AlignRight);
@@ -87,7 +87,7 @@ void SourceView::paintEmptyArea( QPainter * p, const QRect & r)
 
 QString SourceView::whatsThis() const
 {
-    return i18n( "<b>Annotated Source</b>"
+    return tr( "<b>Annotated Source</b>"
 		 "<p>The annotated source list shows the "
 		 "source lines of the current selected function "
 		 "together with (self) cost spent while executing the "
@@ -111,11 +111,11 @@ void SourceView::context(Q3ListViewItem* i, const QPoint & p, int c)
   TraceLine* line = lj ? lj->lineTo() : 0;
 
   if (f) {
-    popup.insertItem(i18n("Go to '%1'", Configuration::shortenSymbol(f->prettyName())), 93);
+      popup.insertItem(tr("Go to '%1'").arg(Configuration::shortenSymbol(f->prettyName())), 93);
     popup.addSeparator();
   }
   else if (line) {
-    popup.insertItem(i18n("Go to Line %1", line->name()), 93);
+      popup.insertItem(tr("Go to Line %1").arg(line->name()), 93);
     popup.insertSeparator();
   }
 
@@ -289,7 +289,7 @@ void SourceView::refresh()
   _arrowLevels = 0;
 
   if (!_data || !_activeItem) {
-    setColumnText(4, i18n("(No Source)"));
+    setColumnText(4, tr("(No Source)"));
     return;
   }
 
@@ -510,13 +510,13 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
       if (nextCostLineno == 0) {
 	  new SourceItem(this, this, fileno, 0, false,
-			 i18n("There is no cost of current selected type associated"));
+			 tr("There is no cost of current selected type associated"));
 	  new SourceItem(this, this, fileno, 1, false,
-			 i18n("with any source line of this function in file"));
+			 tr("with any source line of this function in file"));
 	  new SourceItem(this, this, fileno, 2, false,
 			 QString("    '%1'").arg(sf->function()->prettyName()));
 	  new SourceItem(this, this, fileno, 3, false,
-			 i18n("Thus, no annotated source can be shown."));
+			 tr("Thus, no annotated source can be shown."));
 	  return;
       }
   }
@@ -551,29 +551,29 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   // do it here, because the source directory could have been set before
   if (childCount()==0) {
     setColumnText(4, validSourceFile ?
-                  i18n("Source ('%1')", filename) :
-                  i18n("Source (unknown)"));
+                  tr("Source ('%1')").arg(filename) :
+                  tr("Source (unknown)"));
   }
   else {
     new SourceItem(this, this, fileno, 0, true,
                    validSourceFile ?
-                   i18n("--- Inlined from '%1' ---", filename) :
-                   i18n("--- Inlined from unknown source ---"));
+                   tr("--- Inlined from '%1' ---").arg(filename) :
+                   tr("--- Inlined from unknown source ---"));
   }
 
   if (nextCostLineno == 0) {
     new SourceItem(this, this, fileno, 0, false,
-                   i18n("There is no source available for the following function:"));
+                   tr("There is no source available for the following function:"));
     new SourceItem(this, this, fileno, 1, false,
                    QString("    '%1'").arg(sf->function()->prettyName()));
     if (sf->file()->name().isEmpty()) {
       new SourceItem(this, this, fileno, 2, false,
-                     i18n("This is because no debug information is present."));
+                     tr("This is because no debug information is present."));
       new SourceItem(this, this, fileno, 3, false,
-                     i18n("Recompile source and redo the profile run."));
+                     tr("Recompile source and redo the profile run."));
       if (sf->function()->object()) {
         new SourceItem(this, this, fileno, 4, false,
-                       i18n("The function is located in this ELF object:"));
+                       tr("The function is located in this ELF object:"));
         new SourceItem(this, this, fileno, 5, false,
                        QString("    '%1'")
                        .arg(sf->function()->object()->prettyName()));
@@ -581,13 +581,13 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     }
     else {
       new SourceItem(this, this, fileno, 2, false,
-                     i18n("This is because its source file cannot be found:"));
+                     tr("This is because its source file cannot be found:"));
       new SourceItem(this, this, fileno, 3, false,
                      QString("    '%1'").arg(sf->file()->name()));
       new SourceItem(this, this, fileno, 4, false,
-                     i18n("Add the folder of this file to the source folder list."));
+                     tr("Add the folder of this file to the source folder list."));
       new SourceItem(this, this, fileno, 5, false,
-                     i18n("The list can be found in the configuration dialog."));
+                     tr("The list can be found in the configuration dialog."));
     }
     return;
   }

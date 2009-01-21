@@ -64,7 +64,7 @@ CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, int skipped, Coverage
   _base = base;
   _groupType = TraceCost::NoCostType;
 
-  setText(3, i18np("(%1 function skipped)", "(%1 functions skipped)", _skipped));
+  setText(3, QObject::tr("(%n function(s) skipped)", "", _skipped));
 
   setCostType(ct);
   setGroupType(gt);
@@ -205,7 +205,7 @@ CalleeCoverageItem::CalleeCoverageItem(Q3ListView* parent, int skipped, Coverage
   _base = base;
   _groupType = TraceCost::NoCostType;
 
-  setText(4, i18np("(%1 function skipped)", "(%1 functions skipped)", _skipped));
+  setText(4, QObject::tr("(%n function(s) skipped)", "", _skipped));
 
   setCostType(ct);
   setGroupType(gt);

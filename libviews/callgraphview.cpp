@@ -419,12 +419,12 @@ QString GraphEdge::prettyName()
 		return _c->prettyName();
 
 	if (_from)
-		return i18n("Call(s) from %1", _from->prettyName());
+	    return QObject::tr("Call(s) from %1").arg(_from->prettyName());
 
 	if (_to)
-		return i18n("Call(s) to %1", _to->prettyName());
+	    return QObject::tr("Call(s) to %1").arg(_to->prettyName());
 
-	return i18n("(unknown call)");
+	return QObject::tr("(unknown call)");
 }
 
 TraceFunction* GraphEdge::visibleCaller()
@@ -1519,7 +1519,7 @@ CallGraphView::~CallGraphView()
 
 QString CallGraphView::whatsThis() const
 {
-	return i18n("<b>Call Graph around active Function</b>"
+	return tr("<b>Call Graph around active Function</b>"
 		"<p>Depending on configuration, this view shows "
 		"the call graph environment of the active function. "
 		"Note: the shown cost is <b>only</b> the cost which is "
@@ -1931,13 +1931,13 @@ void CallGraphView::showRenderWarning()
 	QString s;
 
 	if (_renderProcess)
-		s = i18n("Warning: a long lasting graph layouting is in progress.\n"
+		s = tr("Warning: a long lasting graph layouting is in progress.\n"
 			"Reduce node/edge limits for speedup.\n");
 	else
-		s = i18n("Layouting stopped.\n");
+		s = tr("Layouting stopped.\n");
 
-	s.append(i18n("The call graph has %1 nodes and %2 edges.\n",
-	        _exporter.nodeCount(), _exporter.edgeCount()));
+	s.append(tr("The call graph has %1 nodes and %2 edges.\n")
+		 .arg(_exporter.nodeCount()).arg(_exporter.edgeCount()));
 
 	showText(s);
 }
@@ -1970,7 +1970,7 @@ void CallGraphView::refresh()
 	}
 
 	if (!_data || !_activeItem) {
-		showText(i18n("No item activated for which to draw the call graph."));
+		showText(tr("No item activated for which to draw the call graph."));
 		return;
 	}
 
@@ -1981,7 +1981,7 @@ void CallGraphView::refresh()
 	case TraceItem::Call:
 		break;
 	default:
-		showText(i18n("No call graph can be drawn for the active item."));
+		showText(tr("No call graph can be drawn for the active item."));
 		return;
 	}
 
@@ -2008,9 +2008,9 @@ void CallGraphView::refresh()
 		kDebug() << "Running '" << _renderProcess->arguments().join(" ") << "'...";
 
 	if ( !_renderProcess->start() ) {
-		QString e = i18n("No call graph is available because the following\n"
-			"command cannot be run:\n'%1'\n", _renderProcess->arguments().join(" "));
-		e += i18n("Please check that 'dot' is installed (package GraphViz).");
+		QString e = tr("No call graph is available because the following\n"
+			       "command cannot be run:\n'%1'\n").arg(_renderProcess->arguments().join(" "));
+		e += tr("Please check that 'dot' is installed (package GraphViz).");
 		showText(e);
 
 		delete _renderProcess;
@@ -2389,15 +2389,15 @@ void CallGraphView::dotExited()
 	if (!_scene) {
 		_scene = new QGraphicsScene;
 
-		QString s = i18n("Error running the graph layouting tool.\n");
-		s += i18n("Please check that 'dot' is installed (package GraphViz).");
+		QString s = tr("Error running the graph layouting tool.\n");
+		s += tr("Please check that 'dot' is installed (package GraphViz).");
 		_scene->addSimpleText(s);
 		centerOn(0, 0);
 	} else if (!activeNode && !activeEdge) {
-		QString s = i18n("There is no call graph available for function\n"
-			"\t'%1'\n"
-			"because it has no cost of the selected event type.",
-		                 _activeItem->name());
+		QString s = tr("There is no call graph available for function\n"
+			       "\t'%1'\n"
+			       "because it has no cost of the selected event type.")
+		    .arg(_activeItem->name());
 		_scene->addSimpleText(s);
 		centerOn(0, 0);
 	}
@@ -2605,14 +2605,14 @@ QMenu* CallGraphView::callerDepthMenu(QWidget* parent)
 	QMenu* m;
 
 	m = new QMenu(parent);
-	a = addCallerDepthAction(m, i18n("Unlimited"), -1);
+	a = addCallerDepthAction(m, tr("Unlimited"), -1);
 	a->setEnabled(_funcLimit>0.005);
 	m->addSeparator();
-	addCallerDepthAction(m, i18nc("Depth 0", "None"), 0);
-	addCallerDepthAction(m, i18n("max. 2"), 2);
-	addCallerDepthAction(m, i18n("max. 5"), 5);
-	addCallerDepthAction(m, i18n("max. 10"), 10);
-	addCallerDepthAction(m, i18n("max. 15"), 15);
+	addCallerDepthAction(m, tr("Depth 0", "None"), 0);
+	addCallerDepthAction(m, tr("max. 2"), 2);
+	addCallerDepthAction(m, tr("max. 5"), 5);
+	addCallerDepthAction(m, tr("max. 10"), 10);
+	addCallerDepthAction(m, tr("max. 15"), 15);
 
 	connect(m, SIGNAL(triggered(QAction*)),
 			this, SLOT(callerDepthTriggered(QAction*)) );
@@ -2644,14 +2644,14 @@ QMenu* CallGraphView::calleeDepthMenu(QWidget* parent)
 	QMenu* m;
 
 	m = new QMenu(parent);
-	a = addCalleeDepthAction(m, i18n("Unlimited"), -1);
+	a = addCalleeDepthAction(m, tr("Unlimited"), -1);
 	a->setEnabled(_funcLimit>0.005);
 	m->addSeparator();
-	addCalleeDepthAction(m, i18nc("Depth 0", "None"), 0);
-	addCalleeDepthAction(m, i18n("max. 2"), 2);
-	addCalleeDepthAction(m, i18n("max. 5"), 5);
-	addCalleeDepthAction(m, i18n("max. 10"), 10);
-	addCalleeDepthAction(m, i18n("max. 15"), 15);
+	addCalleeDepthAction(m, tr("Depth 0", "None"), 0);
+	addCalleeDepthAction(m, tr("max. 2"), 2);
+	addCalleeDepthAction(m, tr("max. 5"), 5);
+	addCalleeDepthAction(m, tr("max. 10"), 10);
+	addCalleeDepthAction(m, tr("max. 15"), 15);
 
 	connect(m, SIGNAL(triggered(QAction*)),
 			this, SLOT(calleeDepthTriggered(QAction*)) );
@@ -2683,18 +2683,18 @@ QMenu* CallGraphView::nodeLimitMenu(QWidget* parent)
 	QMenu* m;
 
 	m = new QMenu(parent);
-	a = addNodeLimitAction(m, i18n("No Minimum"), 0.0);
+	a = addNodeLimitAction(m, tr("No Minimum"), 0.0);
 	// Unlimited node cost easily produces huge graphs such that 'dot'
 	// would need a long time to layout. For responsiveness, we only allow
 	// for unlimited node cost if a caller and callee depth limit is set.
 	a->setEnabled((_maxCallerDepth>=0) && (_maxCalleeDepth>=0));
 	m->addSeparator();
-	addNodeLimitAction(m, i18n("50 %"), .5);
-	addNodeLimitAction(m, i18n("20 %"), .2);
-	addNodeLimitAction(m, i18n("10 %"), .1);
-	addNodeLimitAction(m, i18n("5 %"), .05);
-	addNodeLimitAction(m, i18n("2 %"), .02);
-	addNodeLimitAction(m, i18n("1 %"), .01);
+	addNodeLimitAction(m, tr("50 %"), .5);
+	addNodeLimitAction(m, tr("20 %"), .2);
+	addNodeLimitAction(m, tr("10 %"), .1);
+	addNodeLimitAction(m, tr("5 %"), .05);
+	addNodeLimitAction(m, tr("2 %"), .02);
+	addNodeLimitAction(m, tr("1 %"), .01);
 
 	connect(m, SIGNAL(triggered(QAction*)),
 			this, SLOT(nodeLimitTriggered(QAction*)) );
@@ -2725,13 +2725,13 @@ QMenu* CallGraphView::callLimitMenu(QWidget* parent)
 	QMenu* m;
 
 	m = new QMenu(parent);
-	addCallLimitAction(m, i18n("Same as Node"), 1.0);
+	addCallLimitAction(m, tr("Same as Node"), 1.0);
 	// xgettext: no-c-format
-	addCallLimitAction(m, i18n("50 % of Node"), .5);
+	addCallLimitAction(m, tr("50 % of Node"), .5);
 	// xgettext: no-c-format
-	addCallLimitAction(m, i18n("20 % of Node"), .2);
+	addCallLimitAction(m, tr("20 % of Node"), .2);
 	// xgettext: no-c-format
-	addCallLimitAction(m, i18n("10 % of Node"), .1);
+	addCallLimitAction(m, tr("10 % of Node"), .1);
 
 	connect(m, SIGNAL(triggered(QAction*)),
 			this, SLOT(callLimitTriggered(QAction*)) );
@@ -2763,12 +2763,12 @@ QMenu* CallGraphView::zoomPosMenu(QWidget* parent)
 	QMenu* m;
 
 	m = new QMenu(parent);
-	addZoomPosAction(m, i18n("Top Left"), TopLeft);
-	addZoomPosAction(m, i18n("Top Right"), TopRight);
-	addZoomPosAction(m, i18n("Bottom Left"), BottomLeft);
-	addZoomPosAction(m, i18n("Bottom Right"), BottomRight);
-	addZoomPosAction(m, i18n("Automatic"), Auto);
-	addZoomPosAction(m, i18n("Hide"), Hide);
+	addZoomPosAction(m, tr("Top Left"), TopLeft);
+	addZoomPosAction(m, tr("Top Right"), TopRight);
+	addZoomPosAction(m, tr("Bottom Left"), BottomLeft);
+	addZoomPosAction(m, tr("Bottom Right"), BottomRight);
+	addZoomPosAction(m, tr("Automatic"), Auto);
+	addZoomPosAction(m, tr("Hide"), Hide);
 
 	connect(m, SIGNAL(triggered(QAction*)),
 			this, SLOT(zoomPosTriggered(QAction*)) );
@@ -2801,9 +2801,9 @@ QMenu* CallGraphView::layoutMenu(QWidget* parent)
 	QMenu* m;
 
 	m = new QMenu(parent);
-	addLayoutAction(m, i18n("Top to Down"), TopDown);
-	addLayoutAction(m, i18n("Left to Right"), LeftRight);
-	addLayoutAction(m, i18n("Circular"), Circular);
+	addLayoutAction(m, tr("Top to Down"), TopDown);
+	addLayoutAction(m, tr("Left to Right"), LeftRight);
+	addLayoutAction(m, tr("Circular"), Circular);
 
 	connect(m, SIGNAL(triggered(QAction*)),
 			this, SLOT(layoutTriggered(QAction*)) );
@@ -2838,11 +2838,11 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 			cycle = f->cycle();
 
 			QString name = f->prettyName();
-			popup.insertItem(i18n("Go to '%1'",
-			                      Configuration::shortenSymbol(name)), 93);
+			popup.insertItem(tr("Go to '%1'")
+					 .arg(Configuration::shortenSymbol(name)), 93);
 			if (cycle && (cycle != f)) {
 				name = Configuration::shortenSymbol(cycle->prettyName());
-				popup.insertItem(i18n("Go to '%1'", name), 94);
+				popup.insertItem(tr("Go to '%1'").arg(name), 94);
 			}
 			popup.addSeparator();
 		}
@@ -2860,8 +2860,8 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 			c = e->call();
 			if (c) {
 				QString name = c->prettyName();
-				popup.insertItem(i18n("Go to '%1'",
-				                      Configuration::shortenSymbol(name)), 95);
+				popup.insertItem(tr("Go to '%1'")
+						 .arg(Configuration::shortenSymbol(name)), 95);
 
 				popup.addSeparator();
 			}
@@ -2869,7 +2869,7 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 	}
 
 	if (_renderProcess) {
-		popup.insertItem(i18n("Stop Layouting"), 999);
+		popup.insertItem(tr("Stop Layouting"), 999);
 		popup.addSeparator();
 	}
 
@@ -2877,39 +2877,39 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 	popup.addSeparator();
 
 	Q3PopupMenu epopup;
-	epopup.insertItem(i18n("As PostScript"), 201);
-	epopup.insertItem(i18n("As Image ..."), 202);
+	epopup.insertItem(tr("As PostScript"), 201);
+	epopup.insertItem(tr("As Image ..."), 202);
 
-	popup.insertItem(i18n("Export Graph"), &epopup, 200);
+	popup.insertItem(tr("Export Graph"), &epopup, 200);
 	popup.addSeparator();
 
 	Q3PopupMenu gpopup;
 	gpopup.setCheckable(true);
-	gpopup.insertItem(i18n("Caller Depth"), callerDepthMenu(&gpopup));
-	gpopup.insertItem(i18n("Callee Depth"), calleeDepthMenu(&gpopup));
-	gpopup.insertItem(i18n("Min. Node Cost"), nodeLimitMenu(&gpopup));
-	gpopup.insertItem(i18n("Min. Call Cost"), callLimitMenu(&gpopup));
+	gpopup.insertItem(tr("Caller Depth"), callerDepthMenu(&gpopup));
+	gpopup.insertItem(tr("Callee Depth"), calleeDepthMenu(&gpopup));
+	gpopup.insertItem(tr("Min. Node Cost"), nodeLimitMenu(&gpopup));
+	gpopup.insertItem(tr("Min. Call Cost"), callLimitMenu(&gpopup));
 	gpopup.addSeparator();
-	gpopup.insertItem(i18n("Arrows for Skipped Calls"), 130);
+	gpopup.insertItem(tr("Arrows for Skipped Calls"), 130);
 	gpopup.setItemChecked(130, _showSkipped);
-	gpopup.insertItem(i18n("Inner-cycle Calls"), 131);
+	gpopup.insertItem(tr("Inner-cycle Calls"), 131);
 	gpopup.setItemChecked(131, _expandCycles);
-	gpopup.insertItem(i18n("Cluster Groups"), 132);
+	gpopup.insertItem(tr("Cluster Groups"), 132);
 	gpopup.setItemChecked(132, _clusterGroups);
 
 	Q3PopupMenu vpopup;
 	vpopup.setCheckable(true);
-	vpopup.insertItem(i18n("Compact"), 140);
-	vpopup.insertItem(i18n("Normal"), 141);
-	vpopup.insertItem(i18n("Tall"), 142);
+	vpopup.insertItem(tr("Compact"), 140);
+	vpopup.insertItem(tr("Normal"), 141);
+	vpopup.insertItem(tr("Tall"), 142);
 	vpopup.setItemChecked(140, _detailLevel == 0);
 	vpopup.setItemChecked(141, _detailLevel == 1);
 	vpopup.setItemChecked(142, _detailLevel == 2);
 
-	popup.insertItem(i18n("Graph"), &gpopup, 70);
-	popup.insertItem(i18n("Visualization"), &vpopup, 71);
-	popup.insertItem(i18n("Layout"), layoutMenu(&popup));
-	popup.insertItem(i18n("Birds-eye View"), zoomPosMenu(&popup));
+	popup.insertItem(tr("Graph"), &gpopup, 70);
+	popup.insertItem(tr("Visualization"), &vpopup, 71);
+	popup.insertItem(tr("Layout"), layoutMenu(&popup));
+	popup.insertItem(tr("Birds-eye View"), zoomPosMenu(&popup));
 
 	int r = popup.exec(e->globalPos());
 

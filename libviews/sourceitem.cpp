@@ -85,11 +85,11 @@ SourceItem::SourceItem(SourceView* sv, Q3ListViewItem* parent,
   SubCost cc = _lineCall->callCount();
   QString callStr = "  ";
   if (cc==0)
-    callStr += i18n("Active call to '%1'",
-                    Qt::escape(_lineCall->call()->calledName()));
+      callStr += QObject::tr("Active call to '%1'")
+	  .arg(Qt::escape(_lineCall->call()->calledName()));
   else
-    callStr += i18np("%1 call to '%2'", "%1 calls to '%2'", (uint64)cc,
-                     Qt::escape(_lineCall->call()->calledName()));
+      callStr += QObject::tr("%n call(s) '%2'", "", (uint64)cc)
+	  .arg(Qt::escape(_lineCall->call()->calledName()));
 
   TraceFunction* calledF = _lineCall->call()->called();
   calledF->addPrettyLocation(callStr);
@@ -125,14 +125,14 @@ SourceItem::SourceItem(SourceView* sv, Q3ListViewItem* parent,
 
   QString jStr;
   if (_lineJump->isCondJump())
-      jStr = i18n("Jump %1 of %2 times to %3",
-	   _lineJump->followedCount().pretty(),
-	   _lineJump->executedCount().pretty(),
-	   to);
+      jStr = QObject::tr("Jump %1 of %2 times to %3")
+	  .arg(_lineJump->followedCount().pretty())
+	  .arg(_lineJump->executedCount().pretty())
+	  .arg(to);
   else
-      jStr = i18n("Jump %1 times to %2",
-	   _lineJump->executedCount().pretty(),
-	   to);
+      jStr = QObject::tr("Jump %1 times to %2")
+	  .arg(_lineJump->executedCount().pretty())
+	  .arg(to);
 
   setText(4, jStr);
 }
@@ -169,7 +169,7 @@ void SourceItem::updateCost()
     p= loader->loadIcon(icon, KIconLoader::Small, 0,
                         KIconLoader::DefaultState, QStringList(), 0, true);
     if (p.isNull())
-      str = i18n("(cycle)");
+      str = QObject::tr("(cycle)");
 
     setText(1, str);
     setPixmap(1, p);

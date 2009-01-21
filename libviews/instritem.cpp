@@ -104,11 +104,10 @@ InstrItem::InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
   SubCost cc = _instrCall->callCount();
   QString callStr = "  ";
   if (cc==0)
-    callStr += i18n("Active call to '%1'",
-                    _instrCall->call()->calledName());
+    callStr += QObject::tr("Active call to '%1'").arg(_instrCall->call()->calledName());
   else
-    callStr += i18np("%1 call to '%2'", "%1 calls to '%2'", (uint64)cc,
-                     _instrCall->call()->calledName());
+    callStr += QObject::tr("%n call(s) to '%2'", "", (uint64)cc)
+                .arg(_instrCall->call()->calledName());
 
   TraceFunction* calledF = _instrCall->call()->called();
   calledF->addPrettyLocation(callStr);
@@ -136,14 +135,14 @@ InstrItem::InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
 
   QString jStr;
   if (_instrJump->isCondJump())
-      jStr = i18n("Jump %1 of %2 times to 0x%3",
-	   _instrJump->followedCount().pretty(),
-	   _instrJump->executedCount().pretty(),
-	   _instrJump->instrTo()->addr().toString());
+      jStr = QObject::tr("Jump %1 of %2 times to 0x%3")
+            .arg(_instrJump->followedCount().pretty())
+            .arg(_instrJump->executedCount().pretty())
+            .arg(_instrJump->instrTo()->addr().toString());
   else
-      jStr = i18n("Jump %1 times to 0x%2",
-	   _instrJump->executedCount().pretty(),
-	   _instrJump->instrTo()->addr().toString());
+      jStr = QObject::tr("Jump %1 times to 0x%2")
+            .arg(_instrJump->executedCount().pretty())
+            .arg(_instrJump->instrTo()->addr().toString());
 
   setText(6, jStr);
 
@@ -184,7 +183,7 @@ void InstrItem::updateCost()
     p= loader->loadIcon(icon, KIconLoader::Small, 0,
                         KIconLoader::DefaultState, QStringList(), 0, true);
     if (p.isNull())
-      str = i18n("(cycle)");
+      str = QObject::tr("(cycle)");
 
     setText(1, str);
     setPixmap(1, p);

@@ -44,17 +44,17 @@ CoverageView::CoverageView(bool showCallers, TraceItemView* parentView,
     _showCallers = showCallers;
 
 
-    addColumn( i18n( "Incl." ) );
+    addColumn( tr( "Incl." ) );
     if (_showCallers) {
-	addColumn( i18n( "Distance" ) );
-	addColumn( i18n( "Called" ) );
-	addColumn( i18n( "Caller" ) );
+	addColumn( tr( "Distance" ) );
+	addColumn( tr( "Called" ) );
+	addColumn( tr( "Caller" ) );
     }
     else {
-	addColumn( i18n( "Self" ) );
-	addColumn( i18n( "Distance" ) );
-	addColumn( i18n( "Calling" ) );
-	addColumn( i18n( "Callee" ) );
+	addColumn( tr( "Self" ) );
+	addColumn( tr( "Distance" ) );
+	addColumn( tr( "Calling" ) );
+	addColumn( tr( "Callee" ) );
 	setColumnAlignment(3, Qt::AlignRight);
     }
 
@@ -88,7 +88,7 @@ CoverageView::CoverageView(bool showCallers, TraceItemView* parentView,
 QString CoverageView::whatsThis() const
 {
     return _showCallers ?
-	i18n( "<b>List of all Callers</b>"
+	tr( "<b>List of all Callers</b>"
 	      "<p>This list shows all functions calling the "
 	      "current selected one, either directly or with "
 	      "several functions in-between on the stack; the "
@@ -118,7 +118,7 @@ QString CoverageView::whatsThis() const
 	      "If there are two panels (Split mode), the "
 	      "function of the other panel is changed instead.</p>") :
 
-	i18n( "<b>List of all Callees</b>"
+	tr( "<b>List of all Callees</b>"
 	      "<p>This list shows all functions called by the "
 	      "current selected one, either directly or with "
 	      "several function in-between on the stack; the "
@@ -161,7 +161,7 @@ void CoverageView::context(Q3ListViewItem* i, const QPoint & p, int c)
   }
 
   if (f) {
-    popup.insertItem(i18n("Go to '%1'", Configuration::shortenSymbol(f->prettyName())), 93);
+      popup.insertItem(tr("Go to '%1'").arg(Configuration::shortenSymbol(f->prettyName())), 93);
     popup.insertSeparator();
   }
 

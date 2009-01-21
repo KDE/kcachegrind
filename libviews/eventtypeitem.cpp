@@ -55,7 +55,7 @@ EventTypeItem::EventTypeItem(Q3ListView* parent, TraceCostItem* costItem,
       } 
   }
   else {
-      setText(0, i18n("Unknown Type"));
+      setText(0, QObject::tr("Unknown Type"));
   }
   update();
 }

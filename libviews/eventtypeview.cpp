@@ -41,12 +41,12 @@ EventTypeView::EventTypeView(TraceItemView* parentView,
 			   QWidget* parent, const char* name)
   : Q3ListView(parent, name), TraceItemView(parentView)
 {
-    addColumn( i18n( "Event Type" ) );
-    addColumn( i18n( "Incl." ) );
-    addColumn( i18n( "Self" ) );
-    addColumn( i18n( "Short" ) );
+    addColumn( tr( "Event Type" ) );
+    addColumn( tr( "Incl." ) );
+    addColumn( tr( "Self" ) );
+    addColumn( tr( "Short" ) );
     addColumn( QString::null );	//krazy:exclude=nullstrassign for old broken gcc
-    addColumn( i18n( "Formula" ) );
+    addColumn( tr( "Formula" ) );
 
     setSorting(-1);
     setAllColumnsShowFocus(true);
@@ -80,7 +80,7 @@ EventTypeView::EventTypeView(TraceItemView* parentView,
 
 QString EventTypeView::whatsThis() const
 {
-    return i18n( "<b>Cost Types List</b>"
+    return tr( "<b>Cost Types List</b>"
 		 "<p>This list shows all cost types available "
 		 "and what the self/inclusive cost of the "
 		 "current selected function is for that cost type.</p>"
@@ -97,24 +97,24 @@ void EventTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
   TraceEventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
 
   if (ct)
-    popup.insertItem(i18n("Set Secondary Event Type"), 99);
+    popup.insertItem(tr("Set Secondary Event Type"), 99);
   if (_eventType2)
-    popup.insertItem(i18n("Remove Secondary Event Type"), 98);
+    popup.insertItem(tr("Remove Secondary Event Type"), 98);
   if (popup.count()>0)
     popup.insertSeparator();
 
   if (ct && !ct->isReal()) {
-      popup.insertItem(i18n("Edit Long Name"), 93);
-      popup.insertItem(i18n("Edit Short Name"), 94);
-      popup.insertItem(i18n("Edit Formula"), 95);
-      popup.insertItem(i18n("Remove"), 96);
+      popup.insertItem(tr("Edit Long Name"), 93);
+      popup.insertItem(tr("Edit Short Name"), 94);
+      popup.insertItem(tr("Edit Formula"), 95);
+      popup.insertItem(tr("Remove"), 96);
       popup.insertSeparator();
   }
 
   addGoMenu(&popup);
 
   popup.insertSeparator();
-  popup.insertItem(i18n("New Cost Type ..."), 97);
+  popup.insertItem(tr("New Event Type ..."), 97);
 
   int r = popup.exec(p);
   if (r == 98) selectedEventType2(0);
@@ -148,13 +148,13 @@ void EventTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
   else if (r == 97) {
     int i = 1;
     while(1) {
-      if (!TraceEventType::knownDerivedType(i18n("New%1", i)))
+	if (!TraceEventType::knownDerivedType(tr("New%1").arg(i)))
 	break;
       i++;
     }
     // add same new cost type to this mapping and to known types
-    QString shortName = i18n("New%1", i);
-    QString longName  = i18n("New Cost Type %1", i);
+    QString shortName = tr("New%1").arg(i);
+    QString longName  = tr("New Event Type %1").arg(i);
     TraceEventType::add(new TraceEventType(shortName, longName, "0"));
     _data->mapping()->add(new TraceEventType(shortName, longName, "0"));
     refresh();

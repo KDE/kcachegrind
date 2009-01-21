@@ -1331,7 +1331,7 @@ void TreeMapWidget::setMaxDrawingDepth(int d)
 
 QString TreeMapWidget::defaultFieldType(int f) const
 {
-  return i18n("Text %1", f+1);
+    return tr("Text %1").arg(f+1);
 }
 
 QString TreeMapWidget::defaultFieldStop(int) const
@@ -2876,15 +2876,15 @@ void TreeMapWidget::addSplitDirectionItems(Q3PopupMenu* popup, int id)
   connect(popup, SIGNAL(activated(int)),
           this, SLOT(splitActivated(int)));
 
-  popup->insertItem(i18n("Recursive Bisection"), id);
-  popup->insertItem(i18n("Columns"),         id+1);
-  popup->insertItem(i18n("Rows"),            id+2);
-  popup->insertItem(i18n("Always Best"),     id+3);
-  popup->insertItem(i18n("Best"),            id+4);
-  popup->insertItem(i18n("Alternate (V)"),   id+5);
-  popup->insertItem(i18n("Alternate (H)"),   id+6);
-  popup->insertItem(i18n("Horizontal"),      id+7);
-  popup->insertItem(i18n("Vertical"),        id+8);
+  popup->insertItem(tr("Recursive Bisection"), id);
+  popup->insertItem(tr("Columns"),         id+1);
+  popup->insertItem(tr("Rows"),            id+2);
+  popup->insertItem(tr("Always Best"),     id+3);
+  popup->insertItem(tr("Best"),            id+4);
+  popup->insertItem(tr("Alternate (V)"),   id+5);
+  popup->insertItem(tr("Alternate (H)"),   id+6);
+  popup->insertItem(tr("Horizontal"),      id+7);
+  popup->insertItem(tr("Vertical"),        id+8);
 
   switch(splitMode()) {
     case TreeMapItem::Bisection:  popup->setItemChecked(id,true); break;
@@ -2939,24 +2939,24 @@ void TreeMapWidget::addVisualizationItems(Q3PopupMenu* popup, int id)
 
   Q3PopupMenu* spopup = new Q3PopupMenu();
   addSplitDirectionItems(spopup, id+100);
-  popup->insertItem(i18n("Nesting"), spopup, id);
+  popup->insertItem(tr("Nesting"), spopup, id);
 
-  popup->insertItem(i18n("Border"), bpopup, id+1);
-  bpopup->insertItem(i18n("Correct Borders Only"), id+2);
+  popup->insertItem(tr("Border"), bpopup, id+1);
+  bpopup->insertItem(tr("Correct Borders Only"), id+2);
   bpopup->addSeparator();
-  bpopup->insertItem(i18n("Width %1", 0), id+3);
-  bpopup->insertItem(i18n("Width %1", 1), id+4);
-  bpopup->insertItem(i18n("Width %1", 2), id+5);
-  bpopup->insertItem(i18n("Width %1", 3), id+6);
+  bpopup->insertItem(tr("Width %1").arg(0), id+3);
+  bpopup->insertItem(tr("Width %1").arg(1), id+4);
+  bpopup->insertItem(tr("Width %1").arg(2), id+5);
+  bpopup->insertItem(tr("Width %1").arg(3), id+6);
   bpopup->setItemChecked(id+2, skipIncorrectBorder());
   bpopup->setItemChecked(id+3, borderWidth()==0);
   bpopup->setItemChecked(id+4, borderWidth()==1);
   bpopup->setItemChecked(id+5, borderWidth()==2);
   bpopup->setItemChecked(id+6, borderWidth()==3);
 
-  popup->insertItem(i18n("Allow Rotation"), id+10);
+  popup->insertItem(tr("Allow Rotation"), id+10);
   popup->setItemChecked(id+10,allowRotation());
-  popup->insertItem(i18n("Shading"), id+11);
+  popup->insertItem(tr("Shading"), id+11);
   popup->setItemChecked(id+11,isShadingEnabled());
 
   if (_attr.size() ==0) return;
@@ -2969,15 +2969,15 @@ void TreeMapWidget::addVisualizationItems(Q3PopupMenu* popup, int id)
     tpopup = new Q3PopupMenu();
     tpopup->setCheckable(true);
     popup->insertItem(_attr[f].type, tpopup, id);
-    tpopup->insertItem(i18n("Visible"), id+1);
-    tpopup->insertItem(i18n("Take Space From Children"), id+2);
+    tpopup->insertItem(tr("Visible"), id+1);
+    tpopup->insertItem(tr("Take Space From Children"), id+2);
     tpopup->addSeparator();
-    tpopup->insertItem(i18n("Top Left"), id+3);
-    tpopup->insertItem(i18n("Top Center"), id+4);
-    tpopup->insertItem(i18n("Top Right"), id+5);
-    tpopup->insertItem(i18n("Bottom Left"), id+6);
-    tpopup->insertItem(i18n("Bottom Center"), id+7);
-    tpopup->insertItem(i18n("Bottom Right"), id+8);
+    tpopup->insertItem(tr("Top Left"), id+3);
+    tpopup->insertItem(tr("Top Center"), id+4);
+    tpopup->insertItem(tr("Top Right"), id+5);
+    tpopup->insertItem(tr("Bottom Left"), id+6);
+    tpopup->insertItem(tr("Bottom Center"), id+7);
+    tpopup->insertItem(tr("Bottom Right"), id+8);
 
     tpopup->setItemChecked(id+1,_attr[f].visible);
     tpopup->setItemEnabled(id+2,_attr[f].visible);
@@ -3054,7 +3054,7 @@ void TreeMapWidget::addFieldStopItems(Q3PopupMenu* popup,
   connect(popup, SIGNAL(activated(int)),
           this, SLOT(fieldStopActivated(int)));
 
-  popup->insertItem(i18n("No %1 Limit", fieldType(0)), id);
+  popup->insertItem(tr("No %1 Limit").arg(fieldType(0)), id);
   popup->setItemChecked(id, fieldStop(0).isEmpty());
   _menuItem = i;
   bool foundFieldStop = false;
@@ -3106,14 +3106,14 @@ void TreeMapWidget::addAreaStopItems(Q3PopupMenu* popup,
 
   bool foundArea = false;
 
-  popup->insertItem(i18n("No Area Limit"), id);
+  popup->insertItem(tr("No Area Limit"), id);
   popup->setItemChecked(id, minimalArea() == -1);
 
   if (i) {
     int area = i->width() * i->height();
     popup->addSeparator();
-    popup->insertItem(i18n("Area of '%1' (%2)",
-                        i->text(0), area), id+1);
+    popup->insertItem(tr("Area of '%1' (%2)")
+		      .arg(i->text(0)).arg(area), id+1);
     if (area == minimalArea()) {
       popup->setItemChecked(id+1, true);
       foundArea = true;
@@ -3123,7 +3123,7 @@ void TreeMapWidget::addAreaStopItems(Q3PopupMenu* popup,
   popup->addSeparator();
   int area = 100, count;
   for (count=0;count<3;count++) {
-    popup->insertItem(i18np("1 Pixel", "%1 Pixels", area), id+2+count);
+    popup->insertItem(tr("%n Pixel(s)", "", area), id+2+count);
     if (area == minimalArea()) {
       popup->setItemChecked(id+2+count, true);
       foundArea = true;
@@ -3134,14 +3134,14 @@ void TreeMapWidget::addAreaStopItems(Q3PopupMenu* popup,
   if (minimalArea()>0) {
     popup->addSeparator();
     if (!foundArea) {
-      popup->insertItem(i18np("1 Pixel", "%1 Pixels", minimalArea()), id+10);
+      popup->insertItem(tr("%n Pixel(s)", "", minimalArea()), id+10);
       popup->setItemChecked(id+10, true);
     }
 
-    popup->insertItem(i18n("Double Area Limit (to %1)",
-                        minimalArea()*2), id+5);
-    popup->insertItem(i18n("Halve Area Limit (to %1)",
-                        minimalArea()/2), id+6);
+    popup->insertItem(tr("Double Area Limit (to %1)")
+		      .arg(minimalArea()*2), id+5);
+    popup->insertItem(tr("Halve Area Limit (to %1)")
+		      .arg(minimalArea()/2), id+6);
   }
 }
 
@@ -3168,14 +3168,14 @@ void TreeMapWidget::addDepthStopItems(Q3PopupMenu* popup,
 
   bool foundDepth = false;
 
-  popup->insertItem(i18n("No Depth Limit"), id);
+  popup->insertItem(tr("No Depth Limit"), id);
   popup->setItemChecked(id, maxDrawingDepth() == -1);
 
   if (i) {
     int d = i->depth();
     popup->addSeparator();
-    popup->insertItem(i18n("Depth of '%1' (%2)",
-                        i->text(0), d), id+1);
+    popup->insertItem(tr("Depth of '%1' (%2)")
+		      .arg(i->text(0)).arg(d), id+1);
     if (d == maxDrawingDepth()) {
       popup->setItemChecked(id+1, true);
       foundDepth = true;
@@ -3185,14 +3185,14 @@ void TreeMapWidget::addDepthStopItems(Q3PopupMenu* popup,
   if (maxDrawingDepth()>1) {
     popup->addSeparator();
     if (!foundDepth) {
-      popup->insertItem(i18n("Depth %1", maxDrawingDepth()), id+10);
+	popup->insertItem(tr("Depth %1").arg(maxDrawingDepth()), id+10);
       popup->setItemChecked(id+10, true);
     }
 
-    popup->insertItem(i18n("Decrement (to %1)",
-                        maxDrawingDepth()-1), id+2);
-    popup->insertItem(i18n("Increment (to %1)",
-                        maxDrawingDepth()+1), id+3);
+    popup->insertItem(tr("Decrement (to %1)")
+		      .arg(maxDrawingDepth()-1), id+2);
+    popup->insertItem(tr("Increment (to %1)")
+		      .arg(maxDrawingDepth()+1), id+3);
   }
 }
 

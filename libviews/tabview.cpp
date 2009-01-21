@@ -74,25 +74,25 @@ void TabBar::mousePressEvent(QMouseEvent *e)
 		if (page) {
 			TraceItemView::Position p = _tabView->tabPosition(page);
 			if (p != TraceItemView::Top) {
-				popup.insertItem(i18n("Move to Top"), 81);
-				popup2.insertItem(i18nc("Move to Top", "Top"), 91);
+				popup.insertItem(tr("Move to Top"), 81);
+				popup2.insertItem(tr("Move to Top", "Top"), 91);
 			}
 			if (p != TraceItemView::Right) {
-				popup.insertItem(i18n("Move to Right"), 82);
-				popup2.insertItem(i18nc("Move to Right", "Right"), 92);
+				popup.insertItem(tr("Move to Right"), 82);
+				popup2.insertItem(tr("Move to Right", "Right"), 92);
 			}
 			if (p != TraceItemView::Bottom) {
-				popup.insertItem(i18n("Move to Bottom"), 83);
-				popup2.insertItem(i18nc("Move to Bottom", "Bottom"), 93);
+				popup.insertItem(tr("Move to Bottom"), 83);
+				popup2.insertItem(tr("Move to Bottom", "Bottom"), 93);
 			}
 			if (p != TraceItemView::Left) {
-				popup.insertItem(i18n("Move to Bottom Left"), 84);
-				popup2.insertItem(i18nc("Move to Bottom Left", "Bottom Left"), 94);
+				popup.insertItem(tr("Move to Bottom Left"), 84);
+				popup2.insertItem(tr("Move to Bottom Left", "Bottom Left"), 94);
 			}
-			popup.insertItem(i18n("Move Area To"), &popup2, 2);
+			popup.insertItem(tr("Move Area To"), &popup2, 2);
 			popup.insertSeparator();
-			popup.insertItem(i18n("Hide This Tab"), 80);
-			popup.insertItem(i18n("Hide Area"), 90);
+			popup.insertItem(tr("Hide This Tab"), 80);
+			popup.insertItem(tr("Hide Area"), 90);
 
 			if (_tabView->visibleTabs() <2) {
 				popup.setItemEnabled(80, false);
@@ -100,11 +100,11 @@ void TabBar::mousePressEvent(QMouseEvent *e)
 			} else if (_tabView->visibleAreas() <2)
 				popup.setItemEnabled(90, false);
 		}
-		popup3.insertItem(i18nc("Show on Top", "Top"), 101);
-		popup3.insertItem(i18nc("Show on Right", "Right"), 102);
-		popup3.insertItem(i18nc("Show on Bottom", "Bottom"), 103);
-		popup3.insertItem(i18nc("Show on Bottom Left", "Bottom Left"), 104);
-		popup.insertItem(i18n("Show Hidden On"), &popup3, 3);
+		popup3.insertItem(tr("Show on Top", "Top"), 101);
+		popup3.insertItem(tr("Show on Right", "Right"), 102);
+		popup3.insertItem(tr("Show on Bottom", "Bottom"), 103);
+		popup3.insertItem(tr("Show on Bottom Left", "Bottom Left"), 104);
+		popup.insertItem(tr("Show Hidden On"), &popup3, 3);
 
 		int r = popup.exec(mapToGlobal(e->pos() ) );
 
@@ -263,7 +263,7 @@ TabView::TabView(TraceItemView* parentView,
 
   _nameLabel = new KSqueezedTextLabel( this);
   _nameLabel->setObjectName( "nameLabel" );
-  _nameLabel->setText(i18n("(No profile data file loaded)"));
+  _nameLabel->setText(tr("(No profile data file loaded)"));
   vbox->addWidget( _nameLabel );
 
   _mainSplitter   = new QSplitter(Qt::Horizontal, this);
@@ -305,39 +305,39 @@ TabView::TabView(TraceItemView* parentView,
   // When changing a name of a view widget, the strings for default
   // visible tabs in TabView::readViewConfig have to be changed, too.
   
-  addTop( addTab( i18n("Types"),
+  addTop( addTab( tr("Types"),
 		  new EventTypeView(this, 0,
 				   "EventTypeView")));
-  addTop( addTab( i18n("Callers"),
+  addTop( addTab( tr("Callers"),
 		  new CallView(true, this, 0,
 			       "CallerView")));
-  addTop( addTab( i18n("All Callers"),
+  addTop( addTab( tr("All Callers"),
 		  new CoverageView(true, this, 0,
 				   "AllCallerView")));
-  addTop( addTab( i18n("Caller Map"),
+  addTop( addTab( tr("Caller Map"),
 		  new CallMapView(true, this, 0,
 				  "CallerMapView")));
-  addTop( addTab( i18n("Source Code"),
+  addTop( addTab( tr("Source Code"),
 		  new SourceView(this, 0,
 				 "SourceView")));
 
-  addBottom( addTab( i18n("Parts"),
+  addBottom( addTab( tr("Parts"),
 		     new PartView(this, 0,
 				  "PartView")));
-  addBottom( addTab( i18n("Call Graph"),
+  addBottom( addTab( tr("Call Graph"),
 		     new CallGraphView(this, 0,
 				       "CallGraphView")));
-  addBottom( addTab( i18n("Callees"),
+  addBottom( addTab( tr("Callees"),
 		     new CallView(false, this, 0,
 				  "CalleeView")));
-  addBottom( addTab( i18n("All Callees"),
+  addBottom( addTab( tr("All Callees"),
 		     new CoverageView(false, this, 0,
 				      "AllCalleeView")));
 
-  addBottom( addTab( i18n("Callee Map"),
+  addBottom( addTab( tr("Callee Map"),
 		     new CallMapView(false, this, 0,
 				     "CalleeMapView")));
-  addBottom( addTab( i18n("Assembly Code"),
+  addBottom( addTab( tr("Assembly Code"),
 		     new InstrView(this, 0,
 				   "InstrView")));
 
@@ -562,7 +562,7 @@ void TabView::moveTab(QWidget* w, Position p, bool wholeArea)
 
 QString TabView::whatsThis() const
 {
-    return i18n( "<b>Information Tabs</b>"
+    return tr( "<b>Information Tabs</b>"
 		 "<p>This widget shows information for the "
 		 "current selected function in different tabs: "
 		 "<ul>"
@@ -641,8 +641,8 @@ void TabView::doUpdate(int changeType)
 {
     if (changeType & (activeItemChanged | configChanged | dataChanged))
 
-	_nameLabel->setText( !_data ? i18n("(No Data loaded)") :
-			     !_activeItem ? i18n("(No function selected)") :
+	_nameLabel->setText( !_data ? tr("(No Data loaded)") :
+			     !_activeItem ? tr("(No function selected)") :
 			     _activeItem->prettyName());
 
 

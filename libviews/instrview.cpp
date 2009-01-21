@@ -145,14 +145,14 @@ InstrView::InstrView(TraceItemView* parentView,
   _lowList.setSortLow(true);
   _highList.setSortLow(false);
 
-  addColumn( i18n( "#" ) );
-  addColumn( i18n( "Cost" ) );
-  addColumn( i18n( "Cost 2" ) );
+  addColumn( tr( "#" ) );
+  addColumn( tr( "Cost" ) );
+  addColumn( tr( "Cost 2" ) );
   addColumn( "" );
-  addColumn( i18n( "Hex" ) );
+  addColumn( tr( "Hex" ) );
   addColumn( "" ); // Instruction
-  addColumn( i18n( "Assembler" ) );
-  addColumn( i18n( "Source Position" ) );
+  addColumn( tr( "Assembler" ) );
+  addColumn( tr( "Source Position" ) );
 
   setAllColumnsShowFocus(true);
   setColumnAlignment(1, Qt::AlignRight);
@@ -183,7 +183,7 @@ void InstrView::paintEmptyArea( QPainter * p, const QRect & r)
 
 QString InstrView::whatsThis() const
 {
-    return i18n( "<b>Annotated Assembler</b>"
+    return tr( "<b>Annotated Assembler</b>"
 		 "<p>The annotated assembler list shows the "
 		 "machine code instructions of the current selected "
 		 "function together with (self) cost spent while "
@@ -208,11 +208,11 @@ void InstrView::context(Q3ListViewItem* i, const QPoint & p, int c)
   TraceInstr* instr = ij ? ij->instrTo() : 0;
 
   if (f) {
-    popup.insertItem(i18n("Go to '%1'", Configuration::shortenSymbol(f->prettyName())), 93);
+      popup.insertItem(tr("Go to '%1'").arg(Configuration::shortenSymbol(f->prettyName())), 93);
     popup.insertSeparator();
   }
   else if (instr) {
-    popup.insertItem(i18n("Go to Address %1", instr->name()), 93);
+      popup.insertItem(tr("Go to Address %1").arg(instr->name()), 93);
     popup.insertSeparator();
   }
 
@@ -224,7 +224,7 @@ void InstrView::context(Q3ListViewItem* i, const QPoint & p, int c)
 
   popup.insertSeparator();
   popup.setCheckable(true);
-  popup.insertItem(i18n("Hex Code"), 94);
+  popup.insertItem(tr("Hex Code"), 94);
   if (_showHexCode) popup.setItemChecked(94,true);
 
   int r = popup.exec(p);
@@ -443,12 +443,12 @@ void InstrView::refresh()
     }
     if (!instrMap || (it == itEnd)) {
 	new InstrItem(this, this, 1,
-		      i18n("There is no instruction info in the profile data file."));
+		      tr("There is no instruction info in the profile data file."));
 	new InstrItem(this, this, 2,
-		      i18n("For the Valgrind Calltree Skin, rerun with option"));
-	new InstrItem(this, this, 3, i18n("      --dump-instr=yes"));
-	new InstrItem(this, this, 4, i18n("To see (conditional) jumps, additionally specify"));
-	new InstrItem(this, this, 5, i18n("      --trace-jump=yes"));
+		      tr("Tip: For Callgrind, rerun with option"));
+	new InstrItem(this, this, 3, tr("      --dump-instr=yes"));
+	new InstrItem(this, this, 4, tr("To see (conditional) jumps, additionally specify"));
+	new InstrItem(this, this, 5, tr("      --trace-jump=yes"));
 	return;
     }
 
@@ -646,14 +646,14 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     FILE* iFILE = popen(QFile::encodeName( popencmd ), "r");
     if (iFILE == 0) {
 	new InstrItem(this, this, 1,
-		      i18n("There is an error trying to execute the command"));
+		      tr("There is an error trying to execute the command"));
 	new InstrItem(this, this, 2, "");
 	new InstrItem(this, this, 3, popencmd);
 	new InstrItem(this, this, 4, "");
 	new InstrItem(this, this, 5,
-		      i18n("Check that you have installed 'objdump'."));
+		      tr("Check that you have installed 'objdump'."));
 	new InstrItem(this, this, 6,
-		      i18n("This utility can be found in the 'binutils' package."));
+		      tr("This utility can be found in the 'binutils' package."));
 	return false;
     }
     QFile file;
@@ -752,7 +752,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
       else {
 	  addr = costAddr;
 	  code = cmd = QString();
-	  args = i18n("(No Assembler)");
+	  args = tr("(No Assembler)");
 
 	  currInstr = &(*costIt);
 	  needCostAddr = true;
@@ -887,18 +887,18 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	// trace cost not machting code
 
 	new InstrItem(this, this, 1,
-		      i18np("There is %1 cost line without assembler code.",
-                           "There are %1 cost lines without assembler code.", noAssLines));
+		      tr("There are %1 cost line(s) without assembler code.",
+			 "", noAssLines));
 	new InstrItem(this, this, 2,
-		      i18n("This happens because the code of"));
+		      tr("This happens because the code of"));
 	new InstrItem(this, this, 3, QString("        %1").arg(objfile));
 	new InstrItem(this, this, 4,
-		      i18n("does not seem to match the profile data file."));
+		      tr("does not seem to match the profile data file."));
 	new InstrItem(this, this, 5, "");
 	new InstrItem(this, this, 6,
-		      i18n("Are you using an old profile data file or is the above mentioned"));
+		      tr("Are you using an old profile data file or is the above mentioned"));
 	new InstrItem(this, this, 7,
-		      i18n("ELF object from an updated installation/another machine?"));
+		      tr("ELF object from an updated installation/another machine?"));
 	new InstrItem(this, this, 8, "");
 	return false;
     }
@@ -906,16 +906,16 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     if (dumpedLines == 0) {
 	// no matching line read from popen
 	new InstrItem(this, this, 1,
-		      i18n("There seems to be an error trying to execute the command"));
+		      tr("There seems to be an error trying to execute the command"));
 	new InstrItem(this, this, 2, "");
 	new InstrItem(this, this, 3, popencmd);
 	new InstrItem(this, this, 4, "");
 	new InstrItem(this, this, 5,
-		      i18n("Check that the ELF object used in the command exists."));
+		      tr("Check that the ELF object used in the command exists."));
 	new InstrItem(this, this, 6,
-		      i18n("Check that you have installed 'objdump'."));
+		      tr("Check that you have installed 'objdump'."));
 	new InstrItem(this, this, 7,
-		      i18n("This utility can be found in the 'binutils' package."));
+		      tr("This utility can be found in the 'binutils' package."));
 	return false;
     }
 

@@ -44,12 +44,12 @@ PartView::PartView(TraceItemView* parentView,
 {
     _inSelectionUpdate = false;
 
-    addColumn( i18n( "Profile Part" ) );
-    addColumn( i18n( "Incl." ) );
-    addColumn( i18n( "Self" ) );
-    addColumn( i18n( "Called" ) );
-    //addColumn( i18n( "Fixed" ) );
-    addColumn( i18n( "Comment" ) );
+    addColumn( tr( "Profile Part" ) );
+    addColumn( tr( "Incl." ) );
+    addColumn( tr( "Self" ) );
+    addColumn( tr( "Called" ) );
+    //addColumn( tr( "Fixed" ) );
+    addColumn( tr( "Comment" ) );
 
     setAllColumnsShowFocus(true);
     setColumnAlignment(1, Qt::AlignRight);
@@ -71,7 +71,7 @@ PartView::PartView(TraceItemView* parentView,
 
 QString PartView::whatsThis() const
 {
-    return i18n( "<b>Trace Part List</b>"
+    return tr( "<b>Trace Part List</b>"
 		 "<p>This list shows all trace parts of the loaded "
 		 "trace. For each part, the "
 		 "self/inclusive cost of the current selected "
@@ -104,13 +104,13 @@ void PartView::context(Q3ListViewItem* i, const QPoint & pos, int)
   TracePart* p = i ? ((PartListItem*) i)->part() : 0;
 
   if (p) {
-    popup.insertItem(i18n("Select '%1'", p->name()), 93);
-    popup.insertItem(i18n("Hide '%1'", p->name()), 94);
+      popup.insertItem(tr("Select '%1'").arg(p->name()), 93);
+      popup.insertItem(tr("Hide '%1'").arg(p->name()), 94);
     popup.insertSeparator();
   }
 
-  popup.insertItem(i18n("Hide Selected"), 95);
-  popup.insertItem(i18n("Show All"), 96);
+  popup.insertItem(tr("Hide Selected"), 95);
+  popup.insertItem(tr("Show All"), 96);
   popup.insertSeparator();
 
   addGoMenu(&popup);

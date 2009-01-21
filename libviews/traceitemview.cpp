@@ -54,7 +54,7 @@ TraceItemView::TraceItemView(TraceItemView* parentView, TopLevelBase* top)
 
 QString TraceItemView::whatsThis() const
 {
-    return i18n("No description available");
+    return QObject::tr("No description available");
 }
 
 void TraceItemView::select(TraceItem* i)

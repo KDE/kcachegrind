@@ -47,14 +47,14 @@ PartListItem::PartListItem(Q3ListView* parent, TraceCostItem* costItem,
 #if 0
   QString partName = QString::number(part->partNumber());
   if (part->data()->maxThreadID() >1)
-      partName += i18n(" (Thread %1)", part->threadID());
+      partName += tr(" (Thread %1)").arg(part->threadID());
   setText(0, partName);
 #else
   setText(0, _part->prettyName());
 #endif
 
   if (_part->trigger().isEmpty())
-    setText(4,i18n("(none)"));
+    setText(4, QObject::tr("(none)"));
   else
     setText(4, _part->trigger());
 
@@ -150,7 +150,7 @@ void PartListItem::update()
   }
 
   if ((callers == 0) && (pf->calledContexts()>0))
-    str = i18n("(active)");
+    str = QObject::tr("(active)");
   else
     str = callers.pretty();
 

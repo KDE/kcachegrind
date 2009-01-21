@@ -60,11 +60,11 @@ CallMapView::CallMapView(bool showCallers, TraceItemView* parentView,
   setObjectName(name);
   _showCallers = showCallers;
 
-  setFieldType(0, i18nc("A thing's name", "Name" ));
-  setFieldType(1, i18n( "Cost" ));
-  setFieldType(2, i18n( "Location" ));
+  setFieldType(0, tr("A thing's name", "Name" ));
+  setFieldType(1, tr( "Cost" ));
+  setFieldType(2, tr( "Location" ));
   setFieldPosition(2, TreeMapItem::TopLeft);
-  setFieldType(3, i18n( "Calls" ));
+  setFieldType(3, tr( "Calls" ));
   setFieldPosition(3, TreeMapItem::TopRight);
 
   setSplitMode(DEFAULT_SPLITMODE);
@@ -99,14 +99,14 @@ CallMapView::CallMapView(bool showCallers, TraceItemView* parentView,
 QString CallMapView::whatsThis() const
 {
   QString s = _showCallers ?
-              i18n( "<b>Caller Map</b>"
+              tr( "<b>Caller Map</b>"
                     "<p>This graph shows the nested hierarchy of "
                     "all callers of the current activated function. "
                     "Each colored rectangle represents a function; "
                     "its size tries to be proportional to the cost spent "
                     "therein while the active function is running "
                     "(however, there are drawing constrains).</p>") :
-              i18n("<b>Call Map</b>"
+              tr("<b>Call Map</b>"
                    "<p>This graph shows the nested hierarchy of "
                    "all callees of the current activated function. "
                    "Each colored rectangle represents a function; "
@@ -114,7 +114,7 @@ QString CallMapView::whatsThis() const
                    "therein while the active function is running "
                    "(however, there are drawing constrains).</p>");
 
-  s += i18n( "<p>Appearance options can be found in the "
+  s += tr( "<p>Appearance options can be found in the "
              "in the context menu. To get exact size proportions, "
              "choose 'Hide incorrect borders'. As this mode can be "
              "<em>very</em> time consuming, you may want to limit "
@@ -168,7 +168,7 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   }
 
   if (item) {
-    popup.insertItem(i18n("Go To"), &fpopup, 100);
+    popup.insertItem(tr("Go To"), &fpopup, 100);
     count = 0;
     while (count<Configuration::maxSymbolCount() && item) {
       QString name = item->text(0);
@@ -183,33 +183,33 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   popup.insertSeparator();
 
   l1popup.setCheckable(true);
-  popup.insertItem(i18n("Stop at Depth"), &l1popup, 12);
+  popup.insertItem(tr("Stop at Depth"), &l1popup, 12);
 
   int maxDepth = maxDrawingDepth();
-  l1popup.insertItem(i18n("No Depth Limit"), 50);
+  l1popup.insertItem(tr("No Depth Limit"), 50);
   l1popup.setItemChecked(50, maxDepth==-1);
   l1popup.insertSeparator();
-  l1popup.insertItem(i18n("Depth 10"), 51);
+  l1popup.insertItem(tr("Depth 10"), 51);
   l1popup.setItemChecked(51, maxDepth==10);
-  l1popup.insertItem(i18n("Depth 15"), 52);
+  l1popup.insertItem(tr("Depth 15"), 52);
   l1popup.setItemChecked(52, maxDepth==15);
-  l1popup.insertItem(i18n("Depth 20"), 53);
+  l1popup.insertItem(tr("Depth 20"), 53);
   l1popup.setItemChecked(53, maxDepth==20);
   if (i) {
     l1popup.insertSeparator();
-    l1popup.insertItem(i18n("Depth of '%1' (%2)",
-                        shortCurrentName, i->depth()), 55);
+    l1popup.insertItem(tr("Depth of '%1' (%2)")
+		       .arg(shortCurrentName).arg(i->depth()), 55);
     l1popup.setItemChecked(55, maxDepth == i->depth());
   }
   if (maxDepth>0) {
     l1popup.insertSeparator();
-    l1popup.insertItem(i18n("Decrement Depth (to %1)", maxDepth-1), 56);
-    l1popup.insertItem(i18n("Increment Depth (to %1)", maxDepth+1), 57);
+    l1popup.insertItem(tr("Decrement Depth (to %1)").arg(maxDepth-1), 56);
+    l1popup.insertItem(tr("Increment Depth (to %1)").arg(maxDepth+1), 57);
   }
 
   l2popup.setCheckable(true);
-  popup.insertItem(i18n("Stop at Function"), &l2popup, 13);
-  l2popup.insertItem(i18n("No Function Limit"), 200);
+  popup.insertItem(tr("Stop at Function"), &l2popup, 13);
+  l2popup.insertItem(tr("No Function Limit"), 200);
   l2popup.setItemChecked(200, fieldStop(0).isEmpty());
   bool foundStopName = false;
   item = i;
@@ -239,71 +239,71 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   }
 
   l3popup.setCheckable(true);
-  popup.insertItem(i18n("Stop at Area"), &l3popup, 14);
+  popup.insertItem(tr("Stop at Area"), &l3popup, 14);
 
   int mArea = minimalArea();
-  l3popup.insertItem(i18n("No Area Limit"), 60);
+  l3popup.insertItem(tr("No Area Limit"), 60);
   l3popup.setItemChecked(60, mArea ==-1);
   l3popup.insertSeparator();
-  l3popup.insertItem(i18n("50 Pixels"), 63);
+  l3popup.insertItem(tr("50 Pixels"), 63);
   l3popup.setItemChecked(63, mArea==50);
-  l3popup.insertItem(i18n("100 Pixels"), 64);
+  l3popup.insertItem(tr("100 Pixels"), 64);
   l3popup.setItemChecked(64, mArea==100);
-  l3popup.insertItem(i18n("200 Pixels"), 65);
+  l3popup.insertItem(tr("200 Pixels"), 65);
   l3popup.setItemChecked(65, mArea==200);
-  l3popup.insertItem(i18n("500 Pixels"), 66);
+  l3popup.insertItem(tr("500 Pixels"), 66);
   l3popup.setItemChecked(66, mArea==500);
   int currentArea = 0;
   if (i) {
     currentArea = i->width() * i->height();
     l3popup.insertSeparator();
-    l3popup.insertItem(i18n("Area of '%1' (%2)",
-                        shortCurrentName, currentArea), 67);
+    l3popup.insertItem(tr("Area of '%1' (%2)")
+		       .arg(shortCurrentName).arg(currentArea), 67);
     l3popup.setItemChecked(67, mArea == currentArea);
   }
   if (mArea>0) {
     l3popup.insertSeparator();
-    l3popup.insertItem(i18n("Double Area Limit (to %1)",
-                        mArea*2), 68);
-    l3popup.insertItem(i18n("Half Area Limit (to %1)",
-                        mArea/2), 69);
+    l3popup.insertItem(tr("Double Area Limit (to %1)")
+		       .arg(mArea*2), 68);
+    l3popup.insertItem(tr("Half Area Limit (to %1)")
+		       .arg(mArea/2), 69);
   }
 
   popup.insertSeparator();
 
   vpopup.setCheckable(true);
-  popup.insertItem(i18n("Visualization"), &vpopup, 10);
+  popup.insertItem(tr("Visualization"), &vpopup, 10);
 
   Q3PopupMenu splitpopup;
   addSplitDirectionItems(&splitpopup, 1001);
-  vpopup.insertItem(i18n("Split Direction"), &splitpopup, 1000);
+  vpopup.insertItem(tr("Split Direction"), &splitpopup, 1000);
 
-  vpopup.insertItem(i18n("Skip Incorrect Borders"), 40);
+  vpopup.insertItem(tr("Skip Incorrect Borders"), 40);
   vpopup.setItemEnabled(40, !_showCallers);
   vpopup.setItemChecked(40, skipIncorrectBorder());
 
   bpopup.setCheckable(true);
-  vpopup.insertItem(i18n("Border Width"), &bpopup, 41);
-  bpopup.insertItem(i18n("Border 0"), 42);
+  vpopup.insertItem(tr("Border Width"), &bpopup, 41);
+  bpopup.insertItem(tr("Border 0"), 42);
   bpopup.setItemEnabled(42, !_showCallers);
   bpopup.setItemChecked(42, borderWidth()==0);
-  bpopup.insertItem(i18n("Border 1"), 43);
+  bpopup.insertItem(tr("Border 1"), 43);
   bpopup.setItemChecked(43, borderWidth()==1);
-  bpopup.insertItem(i18n("Border 2"), 44);
+  bpopup.insertItem(tr("Border 2"), 44);
   bpopup.setItemChecked(44, borderWidth()==2);
-  bpopup.insertItem(i18n("Border 3"), 45);
+  bpopup.insertItem(tr("Border 3"), 45);
   bpopup.setItemChecked(45, borderWidth()==3);
 
   vpopup.insertSeparator();
 
-  vpopup.insertItem(i18n("Draw Symbol Names"), 20);
-  vpopup.insertItem(i18n("Draw Cost"), 21);
-  vpopup.insertItem(i18n("Draw Location"), 22);
-  vpopup.insertItem(i18n("Draw Calls"), 23);
+  vpopup.insertItem(tr("Draw Symbol Names"), 20);
+  vpopup.insertItem(tr("Draw Cost"), 21);
+  vpopup.insertItem(tr("Draw Location"), 22);
+  vpopup.insertItem(tr("Draw Calls"), 23);
   vpopup.insertSeparator();
 
-  vpopup.insertItem(i18n("Ignore Proportions"), 24);
-  vpopup.insertItem(i18n("Allow Rotation"), 25);
+  vpopup.insertItem(tr("Ignore Proportions"), 24);
+  vpopup.insertItem(tr("Allow Rotation"), 25);
   if (!fieldVisible(0) &&
       !fieldVisible(1) &&
       !fieldVisible(2) &&
@@ -320,7 +320,7 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
     vpopup.setItemChecked(25,allowRotation());
   }
 
-  vpopup.insertItem(i18n("Shading"), 26);
+  vpopup.insertItem(tr("Shading"), 26);
   vpopup.setItemChecked(26,isShadingEnabled());
 
   int r = popup.exec(mapToGlobal(p));
@@ -433,7 +433,7 @@ void CallMapView::selectedSlot(TreeMapItem* item, bool kbd)
   if (item->text(0).isEmpty()) return;
 
   if (kbd) {
-      QString msg = i18n("Call Map: Current is '%1'", item->text(0));
+      QString msg = tr("Call Map: Current is '%1'").arg(item->text(0));
       if (_topLevel)
 	  _topLevel->showMessage(msg, 5000);
   }
@@ -601,7 +601,7 @@ QString CallMapBaseItem::text(int textNo) const
 {
   if (textNo == 0) {
     if (!_f)
-      return i18n("(no function)");
+      return QObject::tr("(no function)");
 
     return _f->prettyName();
   }
@@ -743,7 +743,7 @@ QString CallMapCallingItem::text(int textNo) const
 {
   if (textNo == 0) {
     if (!_c)
-      return i18n("(no call)");
+      return QObject::tr("(no call)");
 
     return _c->calledName();
   }
@@ -860,7 +860,7 @@ QString CallMapCallerItem::text(int textNo) const
 {
   if (textNo == 0) {
     if (!_c)
-      return i18n("(no call)");
+      return QObject::tr("(no call)");
 
     return _c->callerName();
   }
