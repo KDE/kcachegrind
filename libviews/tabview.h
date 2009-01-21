@@ -162,12 +162,16 @@ private:
   TabWidget* tabWidget(Position);
   void updateVisibility();
   void doUpdate(int);
+  void updateNameLabel(QString n = QString::null);
   void installFocusFilters();
 
   // this is true if width or height <= 1, and no child updates are done
   bool _isCollapsed;
 
   QLabel* _nameLabel;
+  QString _nameLabelText;
+  int _textWidth;
+
   QSplitter *_mainSplitter, *_leftSplitter, *_bottomSplitter;
   TabWidget *_topTW, *_leftTW, *_bottomTW, *_rightTW;
   Q3PtrList<TraceItemView> _tabs;

@@ -262,9 +262,12 @@ TabView::TabView(TraceItemView* parentView,
   vbox->setMargin( 6 );
 
   _nameLabel = new QLabel(this); //KSqueezedTextLabel( this);
+  _nameLabel->setSizePolicy(QSizePolicy( QSizePolicy::Ignored,
+					 QSizePolicy::Fixed ));
   _nameLabel->setObjectName( "nameLabel" );
   _nameLabel->setText(tr("(No profile data file loaded)"));
   vbox->addWidget( _nameLabel );
+  updateNameLabel(tr("(No profile data file loaded)"));
 
   _mainSplitter   = new QSplitter(Qt::Horizontal, this);
   _leftSplitter   = new Splitter(Qt::Vertical, _mainSplitter, "Left");
@@ -349,6 +352,27 @@ TabView::TabView(TraceItemView* parentView,
   updateVisibility();
 
   this->setWhatsThis( whatsThis() );
+}
+
+void TabView::updateNameLabel(QString n)
+{
+    QFontMetrics fm(_nameLabel->fontMetrics());
+
+    if (!n.isNull()) {
+	_nameLabelText = n;
+	_textWidth = fm.width(_nameLabelText);
+    }
+
+    int labelWidth = _nameLabel->size().width();
+    if (_textWidth > labelWidth) {
+	_nameLabel->setText(fm.elidedText(_nameLabelText,
+					  Qt::ElideMiddle, labelWidth));
+        _nameLabel->setToolTip(_nameLabelText);
+    }
+    else {
+	_nameLabel->setText(_nameLabelText);
+        _nameLabel->setToolTip(QString());
+    }
 }
 
 void TabView::setData(TraceData* d)
@@ -631,6 +655,8 @@ void TabView::setActive(bool a)
     QFont nameLabel_font(  _nameLabel->font() );
     nameLabel_font.setBold(a);
     _nameLabel->setFont( nameLabel_font );
+    // force recalculation of label width by passing current label text
+    updateNameLabel(_nameLabelText);
 
     if (0) qDebug("%s::setActive(%s)", name(), a ? "true":"false");
 
@@ -639,12 +665,14 @@ void TabView::setActive(bool a)
 
 void TabView::doUpdate(int changeType)
 {
-    if (changeType & (activeItemChanged | configChanged | dataChanged))
-
-	_nameLabel->setText( !_data ? tr("(No Data loaded)") :
-			     !_activeItem ? tr("(No function selected)") :
-			     _activeItem->prettyName());
-
+    if (changeType & (activeItemChanged |
+		      configChanged |
+		      dataChanged))
+    {
+	updateNameLabel( !_data ? tr("(No profile data file loaded)") :
+			 !_activeItem ? tr("(No function selected)") :
+			 _activeItem->prettyName() );
+    }
 
     // we use our own list iterators because setTabEnabled can
     // invoke tabChanged, which mangles with the lists, too
@@ -700,6 +728,8 @@ void TabView::visibleRectChangedSlot(TabWidget* tw)
 void TabView::resizeEvent(QResizeEvent* e)
 {
   QWidget::resizeEvent(e);
+
+  updateNameLabel();
 
   bool collapsed = (e->size().width()<=1) || (e->size().height()<=1);
   if (_isCollapsed != collapsed) {
