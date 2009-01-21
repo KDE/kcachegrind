@@ -1,7 +1,6 @@
 # FIXME: Only for compiling now
 include_directories(
-	../kcachegrind
-	${CMAKE_CURRENT_BINARY_DIR}/.. )
+	../kcachegrind )
 
 kde4_add_library(core STATIC
    cachegrindloader.cpp

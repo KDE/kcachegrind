@@ -26,13 +26,6 @@
 
 #include <QFile>
 
-#include <config-kcachegrind.h>
-
-#ifdef HAVE_MMAP
-#include <unistd.h>
-#include <sys/mman.h>
-#endif
-
 
 
 // class FixString
@@ -345,6 +338,8 @@ bool FixString::stripInt64(int64& v, bool stripSpaces)
 
 FixFile::FixFile(QFile* file)
 {
+  _file = file;
+
   if (!file) {
     _len = 0;
     _currentLeft = 0;
@@ -365,44 +360,36 @@ FixFile::FixFile(QFile* file)
   _openError = false;
   _used_mmap = false;
 
-#ifdef HAVE_MMAP
-    char *addr = 0;
-    size_t len = file->size();
-    if (len>0) addr = (char *) mmap( addr, len,
-                                     PROT_READ, MAP_PRIVATE,
-                                     file->handle(), 0 );
-    if (addr && (addr != MAP_FAILED)) {
-      // mmap succeeded
-        _base = addr;
-        _len = len;
-	_used_mmap = true;
+  uchar* addr = 0;
+  if (file->size() >0) addr = file->map( 0, file->size() );
+  if (addr) {
+      // map succeeded
+      _base = (char*) addr;
+      _len = file->size();
+      _used_mmap = true;
 
-	if (0) qDebug("Mapped '%s'", qPrintable( _filename ));
-    } else {
-#endif // HAVE_MMAP
-        // try reading the data into memory instead
-        _data = file->readAll();
-        _base = _data.data();
-        _len  = _data.size();
-#ifdef HAVE_MMAP
-    }
-#endif // HAVE_MMAP
+      if (0) qDebug("Mapped '%s'", qPrintable( _filename ));
+  }
+  else {
+      // try reading the data into memory instead
+      _data = file->readAll();
+      _base = _data.data();
+      _len  = _data.size();
+  }
 
-    _current     = _base;
-    _currentLeft = _len;
+  _current     = _base;
+  _currentLeft = _len;
 }
 
 FixFile::~FixFile()
 {
     // if the file was read into _data, it will be deleted automatically
 
-#ifdef HAVE_MMAP
-    if (_used_mmap) {
+    if (_used_mmap && _file) {
 	if (0) qDebug("Unmapping '%s'", qPrintable( _filename ));
-	if (munmap(_base, _len) != 0)
+	if (!_file->unmap( (uchar*) _base ))
 	    qWarning( "munmap: %s", strerror( errno ) );
     }
-#endif // HAVE_MMAP
 }
 
 bool FixFile::nextLine(FixString& str)

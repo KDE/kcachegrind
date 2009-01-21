@@ -118,6 +118,7 @@ class FixFile {
     QByteArray _data;
     unsigned _len, _currentLeft;
     bool _used_mmap, _openError;
+    QFile* _file;
     QString _filename;
 };
 
