@@ -408,18 +408,41 @@ void TopLevel::createMiscActions()
   QMenu* fileMenu = mBar->addMenu("&File");
 
   action = new QAction(tr("&New"), this);
-  action->setShortcut(tr("Ctrl+N"));
+  action->setShortcuts(QKeySequence::New);
   action->setStatusTip(tr("Open new empty window"));
   connect(action, SIGNAL(triggered()), this, SLOT(newWindow()));
+  fileMenu->addAction(action);
+
+  action = new QAction(tr("&Open..."), this);
+  action->setShortcuts(QKeySequence::Open);
+  action->setStatusTip(tr("Open profile data file"));
+  connect(action, SIGNAL(triggered()), this, SLOT(loadTrace()));
   fileMenu->addAction(action);
 
   _partDockShown = new QAction(tr("Show Parts"), this);
   _stackDockShown = new QAction(tr("Show Stack"), this);
   _functionDockShown = new QAction(tr("Show Profile"), this);
 
-  _taPercentage = new QAction(this);
-  _taExpanded = new QAction(this);
-  _taCycles = new QAction(this);
+  _taPercentage = new QAction(tr("Relative Cost"), this);
+  _taPercentage->setCheckable(true);
+  _taPercentage->setStatusTip(tr("Show Relative Costs"));
+  connect(_taPercentage, SIGNAL(triggered(bool) ), SLOT(togglePercentage()));
+
+  _taExpanded = new QAction(tr("Relative to Parent"), this);
+  _taExpanded->setCheckable(true);
+  _taExpanded->setStatusTip(tr("Show Percentage relative to Parent"));
+  connect(_taExpanded, SIGNAL(triggered(bool) ), SLOT(toggleExpanded()));
+
+  _taCycles = new QAction(tr("Detect Cycles"), this);
+  _taCycles->setCheckable(true);
+  _taCycles->setStatusTip(tr("Do Cycle Detection"));
+  connect(_taCycles, SIGNAL(triggered(bool) ), SLOT( toggleCycles() ));
+
+  QMenu* viewMenu = mBar->addMenu("&View");
+  viewMenu->addAction(_taPercentage);
+  viewMenu->addAction(_taExpanded);
+  viewMenu->addAction(_taCycles);
+
   _taSplit = new QAction(this);
   _taSplitDir = new QAction(this);
 
