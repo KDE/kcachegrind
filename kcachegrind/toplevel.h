@@ -219,6 +219,7 @@ private:
   QString traceKey();
   void restoreTraceTypes();
   void restoreTraceSettings();
+  void updateViewsOnChange(int);
 
   KStatusBar* _statusbar;
   QLabel* _statusLabel;

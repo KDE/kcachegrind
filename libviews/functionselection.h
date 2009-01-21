@@ -45,7 +45,6 @@ class FunctionSelection: public QWidget, public TraceItemView
 
 public:
   explicit FunctionSelection(TopLevelBase*, QWidget* parent = 0);
-  ~FunctionSelection();
 
   TraceCostItem* group(QString);
   void setGroup(TraceCostItem*);
@@ -53,6 +52,7 @@ public:
   bool setTopFunction();
 
   QWidget* widget() { return this; }
+  QString whatsThis() const;
 
   void addGroupMenu(Q3PopupMenu*);
 

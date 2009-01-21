@@ -66,7 +66,7 @@ public:
   enum Position { Hidden, Top, Right, Left, Bottom };
 
   explicit TraceItemView(TraceItemView* parentView, TopLevelBase* top = 0);
-  virtual ~TraceItemView() {}
+  virtual ~TraceItemView();
 
   virtual QString whatsThis() const;
 

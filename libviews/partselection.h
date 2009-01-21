@@ -28,6 +28,7 @@
 #include <QPoint>
 
 #include "tracedata.h"
+#include "traceitemview.h"
 
 class QLabel;
 class TraceFunction;
@@ -35,64 +36,51 @@ class TraceData;
 class TreeMapItem;
 class PartAreaWidget;
 
-
-class PartSelection: public QWidget
+class PartSelection: public QWidget, public TraceItemView
 {
   Q_OBJECT
 
 public:
-  PartSelection(QWidget* parent = 0);
-  virtual ~PartSelection();
+    explicit PartSelection(TopLevelBase*, QWidget* parent = 0);
 
-  TraceData* data() { return _data; }
-  void setData(TraceData*);
+    virtual QWidget* widget() { return this; }
+    QString whatsThis() const;
+    void setData(TraceData*);
 
-  PartAreaWidget* graph() { return _partAreaWidget; }
+    PartAreaWidget* graph() { return _partAreaWidget; }
 
-  void restoreOptions(const QString& prefix, const QString& postfix);
-  void saveOptions(const QString& prefix, const QString& postfix);
+    void saveOptions(const QString& prefix, const QString& postfix);
+    void restoreOptions(const QString& prefix, const QString& postfix);
 
 signals:
-  void activePartsChanged(const TracePartList& list);
-  void partsHideSelected();
-  void partsUnhideAll();
-  void groupChanged(TraceCostItem*);
-  void functionChanged(TraceItem*);
-  void showMessage(const QString&, int);
-  void goBack();
+    void partsHideSelected();
+    void partsUnhideAll();
 
 public slots:
-  void selectionChanged();
-  void doubleClicked(TreeMapItem*);
-  void contextMenuRequested(TreeMapItem*, const QPoint &);
-  void currentChangedSlot(TreeMapItem*, bool);
+    void selectionChanged();
+    void doubleClicked(TreeMapItem*);
+    void contextMenuRequested(TreeMapItem*, const QPoint &);
+    void currentChangedSlot(TreeMapItem*, bool);
 
-  void setPart(TracePart*);
-  void setEventType(TraceEventType*);
-  void setEventType2(TraceEventType*);
-  void setGroupType(TraceItem::CostType);
-  void setGroup(TraceCostItem*);
-  void setFunction(TraceFunction*);
-  void activePartsChangedSlot(const TracePartList& list);
-  void hiddenPartsChangedSlot(const TracePartList& list);
-  void refresh();
-  void showInfo(bool);
+    void hiddenPartsChangedSlot(const TracePartList& list);
+    void showInfo(bool);
 
 private:
-  void fillInfo();
+    // reimplementations of TraceItemView
+    TraceItem* canShow(TraceItem*);
+    void doUpdate(int);
 
-  TraceData* _data;
-  TraceEventType *_eventType, *_eventType2;
-  TraceItem::CostType _groupType;
-  TraceCostItem* _group;
-  TraceFunction* _function;
-  bool _showInfo;
-  bool _diagramMode;
-  bool _drawFrames;
-  bool _inSelectionUpdate;
+    // helper for doUpdate
+    void selectParts(const TracePartList& list);
+    void fillInfo();
 
-  PartAreaWidget* _partAreaWidget;
-  QLabel* _rangeLabel;
+    bool _showInfo;
+    bool _diagramMode;
+    bool _drawFrames;
+    bool _inSelectionUpdate;
+
+    PartAreaWidget* _partAreaWidget;
+    QLabel* _rangeLabel;
 };
 
 #endif

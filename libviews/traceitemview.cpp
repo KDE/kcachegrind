@@ -47,6 +47,9 @@ TraceItemView::TraceItemView(TraceItemView* parentView, TopLevelBase* top)
   _pos = Hidden;
 }
 
+TraceItemView::~TraceItemView()
+{}
+
 QString TraceItemView::whatsThis() const
 {
     return QObject::tr("No description available");

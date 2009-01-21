@@ -23,11 +23,11 @@
 #ifndef CALLMAPVIEW_H
 #define CALLMAPVIEW_H
 
+#include <QPixmap>
+
 #include "treemap.h"
 #include "tracedata.h"
 #include "traceitemview.h"
-//Added by qt3to4:
-#include <QPixmap>
 
 class CallMapView: public TreeMapWidget, public TraceItemView
 {

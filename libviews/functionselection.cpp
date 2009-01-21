@@ -164,10 +164,25 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
 
   // start hidden
   groupList->hide();
+
+  setWhatsThis(whatsThis());
 }
 
-FunctionSelection::~FunctionSelection()
+QString FunctionSelection::whatsThis() const
 {
+    return tr(
+	// xgettext: no-c-format
+	"<b>The Flat Profile</b>"
+	"<p>The flat profile contains a group and a function "
+	"selection list. The group list contains all groups "
+	"where costs "
+	"are spent in, depending on the chosen group type. "
+	"The group list is hidden when group type 'Function' "
+	"is selected.</p>"
+	"<p>The function list contains the functions of the "
+	"selected group (or all for 'Function' group type), "
+	"ordered by the costs spent therein. Functions with "
+	"costs less than 1% are hidden on default.</p>");
 }
 
 void FunctionSelection::searchReturnPressed()

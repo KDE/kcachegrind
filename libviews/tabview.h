@@ -121,7 +121,7 @@ public:
 		    QWidget* parent = 0, const char* name=0 );
 
   virtual QWidget* widget() { return this; }
-  QString whatsThis() const ;
+  QString whatsThis() const;
   void setData(TraceData*);
   bool isViewVisible() { return !_isCollapsed; }
   void selected(TraceItemView*, TraceItem*);

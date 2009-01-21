@@ -185,23 +185,10 @@ void TopLevel::setupPartSelection(PartSelection* ps)
 {
   // setup connections from the part selection widget
 
-  connect(ps, SIGNAL(activePartsChanged(const TracePartList&)),
-          this, SLOT(activePartsChangedSlot(const TracePartList&)));
-  connect(ps, SIGNAL(groupChanged(TraceCostItem*)),
-          this, SLOT(setGroupDelayed(TraceCostItem*)));
-  connect(ps, SIGNAL(functionChanged(TraceItem*)),
-          this, SLOT(setTraceItemDelayed(TraceItem*)));
-
-  connect(ps, SIGNAL(goBack()),
-          _stackSelection, SLOT(browserBack()));
-
   connect(ps, SIGNAL(partsHideSelected()),
           this, SLOT(partsHideSelectedSlotDelayed()));
   connect(ps, SIGNAL(partsUnhideAll()),
           this, SLOT(partsUnhideAllSlotDelayed()));
-
-  connect(ps, SIGNAL(showMessage(const QString&, int)),
-          _statusbar, SLOT(message(const QString&, int)));
 }
 
 /**
@@ -278,31 +265,8 @@ void TopLevel::createDocks()
   _partDock = new QDockWidget(this);
   _partDock->setObjectName("part dock");
   _partDock->setWindowTitle(i18n("Parts Overview"));
-  _partSelection = new PartSelection(_partDock);
+  _partSelection = new PartSelection(this, _partDock);
   _partDock->setWidget(_partSelection);
-  _partSelection->setWhatsThis( i18n(
-                   "<b>The Parts Overview</b>"
-                   "<p>A trace consists of multiple trace parts when "
-                   "there are several profile data files from one profile run. "
-                   "The Trace Part Overview dockable shows these, "
-                   "horizontally ordered in execution time; "
-                   "the rectangle sizes are proportional to the total "
-                   "cost spent in the parts. You can select one or several "
-                   "parts to constrain all costs shown to these parts only."
-                   "</p>"
-                   "<p>The parts are further subdivided: there is a "
-                   "partitioning and an callee split mode: "
-                   "<ul><li>Partitioning: You see the "
-                   "partitioning into groups for a trace part, according to "
-                   "the group type selected. E.g. if ELF object groups are "
-                   "selected, you see colored rectangles for each "
-                   "used ELF object (shared library or executable), sized "
-                   "according to the cost spent therein.</li>"
-                   "<li>Callee: A rectangle showing the inclusive "
-                   "cost of the current selected function in the trace part "
-                   "is shown. "
-                   "This is split up into smaller rectangles to show the costs of its "
-                   "callees.</li></ul></p>"));
 
   _stackDock = new QDockWidget(this);
   _stackDock->setObjectName("stack dock");
@@ -327,22 +291,7 @@ void TopLevel::createDocks()
   _functionDock->setObjectName("function dock");
   _functionDock->setWindowTitle(i18n("Flat Profile"));
   _functionSelection = new FunctionSelection(this, _functionDock);
-  _functionSelection->setTopLevel(this);
-
   _functionDock->setWidget(_functionSelection);
-  _functionSelection->setWhatsThis( i18n(
-                   // xgettext: no-c-format
-                   "<b>The Flat Profile</b>"
-                   "<p>The flat profile contains a group and a function "
-                   "selection list. The group list contains all groups "
-                   "where costs "
-                   "are spent in, depending on the chosen group type. "
-                   "The group list is hidden when group type 'Function' "
-                   "is selected.</p>"
-                   "<p>The function list contains the functions of the "
-                   "selected group (or all for 'Function' group type), "
-                   "ordered by the costs spent therein. Functions with "
-                   "costs less than 1% are hidden on default.</p>"));
 
 #if ENABLE_DUMPDOCK
   _dumpDock = new QDockWidget(this);
@@ -827,6 +776,18 @@ void TopLevel::setRelativeCost()
   setPercentage(true);
 }
 
+void TopLevel::updateViewsOnChange(int change)
+{
+  _partSelection->notifyChange(change);
+  _partSelection->updateView();
+
+  _functionSelection->notifyChange(change);
+  _functionSelection->updateView();
+
+  _multiView->notifyChange(change);
+  _multiView->updateView();
+}
+
 void TopLevel::setPercentage(bool show)
 {
   if (_showPercentage == show) return;
@@ -836,14 +797,9 @@ void TopLevel::setPercentage(bool show)
 
   GlobalConfig::setShowPercentage(_showPercentage);
 
-  _partSelection->refresh();
   _stackSelection->refresh();
 
-  _functionSelection->notifyChange(TraceItemView::configChanged);
-  _functionSelection->updateView();
-
-  _multiView->notifyChange(TraceItemView::configChanged);
-  _multiView->updateView();
+  updateViewsOnChange(TraceItemView::configChanged);
 }
 
 void TopLevel::toggleExpanded()
@@ -854,14 +810,9 @@ void TopLevel::toggleExpanded()
 
   GlobalConfig::setShowExpanded(_showExpanded);
 
-  _partSelection->refresh();
   _stackSelection->refresh();
 
-  _functionSelection->notifyChange(TraceItemView::configChanged);
-  _functionSelection->updateView();
-
-  _multiView->notifyChange(TraceItemView::configChanged);
-  _multiView->updateView();
+  updateViewsOnChange(TraceItemView::configChanged);
 }
 
 void TopLevel::toggleCycles()
@@ -877,14 +828,9 @@ void TopLevel::toggleCycles()
   _data->invalidateDynamicCost();
   _data->updateFunctionCycles();
 
-  _partSelection->refresh();
   _stackSelection->rebuildStackList();
 
-  _functionSelection->notifyChange(TraceItemView::configChanged);
-  _functionSelection->updateView();
-
-  _multiView->notifyChange(TraceItemView::configChanged);
-  _multiView->updateView();
+  updateViewsOnChange(TraceItemView::configChanged);
 }
 
 void TopLevel::partVisibilityChanged(bool v)
@@ -1135,6 +1081,8 @@ bool TopLevel::setEventType(TraceEventType* ct)
   }
 
   _partSelection->setEventType(_eventType);
+  _partSelection->updateView();
+
   _stackSelection->setEventType(_eventType);
 
   _functionSelection->setEventType(_eventType);
@@ -1163,6 +1111,8 @@ bool TopLevel::setEventType2(TraceEventType* ct)
   }
 
   _partSelection->setEventType2(_eventType2);
+  _partSelection->updateView();
+
   _stackSelection->setEventType2(_eventType2);
 
   _functionSelection->setEventType2(_eventType2);
@@ -1230,7 +1180,9 @@ bool TopLevel::setGroupType(TraceItem::CostType gt)
     saGroup->setCurrentItem(idx);
 
   _stackSelection->setGroupType(_groupType);
-  _partSelection->setGroupType(_groupType);
+
+  _partSelection->set(_groupType);
+  _partSelection->updateView();
 
   _functionSelection->set(_groupType);
   _functionSelection->updateView();
@@ -1282,16 +1234,18 @@ bool TopLevel::setFunction(QString s)
 
 bool TopLevel::setFunction(TraceFunction* f)
 {
+  if (_function == f) return false;
+  _function = f;
+
   _multiView->activate(f);
   _multiView->updateView();
 
   _functionSelection->activate(f);
   _functionSelection->updateView();
 
-  if (_function == f) return false;
-  _function = f;
+  _partSelection->activate(f);
+  _partSelection->updateView();
 
-  _partSelection->setFunction(_function);
   _stackSelection->setFunction(_function);
 
   StackBrowser* b = _stackSelection->browser();
@@ -1471,6 +1425,8 @@ void TopLevel::setData(TraceData* data)
 
   if (_data) {
     _partSelection->setData(0);
+    _partSelection->updateView();
+
     _stackSelection->setData(0);
 
     _functionSelection->setData(0);
@@ -1515,7 +1471,10 @@ void TopLevel::setData(TraceData* data)
     _saCost2->setCurrentItem(0);
 
   _partSelection->setData(_data);
+  _partSelection->updateView();
+
   _stackSelection->setData(_data);
+
   _functionSelection->setData(_data);
   _functionSelection->updateView();
   _multiView->setData(_data);
@@ -1959,14 +1918,9 @@ void TopLevel::configChanged()
   // invalidate found/cached dirs of source files
   _data->resetSourceDirs();
 
-  _partSelection->refresh();
   _stackSelection->refresh();
 
-  _functionSelection->notifyChange(TraceItemView::configChanged);
-  _functionSelection->updateView();
-
-  _multiView->notifyChange(TraceItemView::configChanged);
-  _multiView->updateView();
+  updateViewsOnChange(TraceItemView::configChanged);
 }
 
 void TopLevel::slotShowTipOnStart() {
@@ -1991,7 +1945,8 @@ void TopLevel::activePartsChangedSlot(const TracePartList& list)
   }
   _activeParts = list;
 
-  _partSelection->activePartsChangedSlot(list);
+  _partSelection->set(list);
+  _partSelection->updateView();
 
   _multiView->set(list);
   _multiView->updateView();
