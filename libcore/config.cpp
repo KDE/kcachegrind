@@ -59,9 +59,9 @@ ConfigGroup::~ConfigGroup()
 void ConfigGroup::setValue(const QString&, const QVariant&, const QVariant&)
 {}
 
-QVariant ConfigGroup::value(const QString&, const QVariant&) const
+QVariant ConfigGroup::value(const QString&, const QVariant& def) const
 {
-    return QVariant();
+    return def;
 }
 
 
