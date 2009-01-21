@@ -4,3 +4,8 @@ libcore/libviews in Qt-only apps, such as IDEs.
 As it is useless to provide a stripped-down Qt-only application
 within a KDE package together with the full-blown KDE version,
 it is not installed.
+
+For demonstration purpose, qcachegrind can be build without KDE libs
+at all, using just qmake with the example qcachegrind.pro file.
+For this, run "qmake; make".
+
