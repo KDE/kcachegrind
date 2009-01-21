@@ -28,11 +28,6 @@
  * Just a simple command line tool using libcore
  */
 
-const char* pretty(const SubCost& c)
-{
-    return qPrintable(c.pretty(','));
-}
-
 
 int main(int argc, char** argv)
 {
@@ -65,17 +60,20 @@ int main(int argc, char** argv)
 
     qDebug("\nTotals for event types:");
 
+    QString p;
     TraceEventType* et;
     for (int i=0;i<m->realCount();i++) {
 	et = m->realType(i);
+	p = d->subCost(et).pretty();
 	qDebug(" %12s   %s",
-	       pretty(d->subCost(et)),
+	       qPrintable(p),
 	       qPrintable(et->longName()));
     }
     for (int i=0;i<m->derivedCount();i++) {
 	et = m->derivedType(i);
+	p = d->subCost(et).pretty();
 	qDebug(" %12s   %s (derived)",
-	       pretty(d->subCost(et)),
+	       qPrintable(p),
 	       qPrintable(et->longName()));
     }
 
@@ -97,8 +95,9 @@ int main(int argc, char** argv)
 
     for(int i=0;i<hc.realCount();i++) {
 	f = (TraceFunction*)hc[i];
+	p = f->inclusive()->subCost(et).pretty();
 	qDebug(" %12s   %s (%s)",
-	       pretty(f->inclusive()->subCost(et)),
+	       qPrintable(p),
 	       qPrintable(f->name()),
 	       qPrintable(f->object()->name()));
     }
