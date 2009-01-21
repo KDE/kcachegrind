@@ -1,0 +1,9 @@
+Currently, this directory just contains _example_ code for using
+KCachegrind's libcore for command line tools. It is not expected
+to be packaged with KCachegrind (therefore, nothing is installed).
+
+Eventually, it will grow into a convertion/merge/filter tool for
+profile data, and a replacement for the callgrind_annotate
+script from the Valgrind package (which is broken as it does not
+handle profile data with instruction granularity, as well as
+cycle detection).

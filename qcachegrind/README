@@ -1,0 +1,6 @@
+This directory just contains _example_ code for using KCachegrind's
+libcore/libviews in Qt-only apps, such as IDEs.
+
+As it is useless to provide a stripped-down Qt-only application
+within a KDE package together with the full-blown KDE version,
+it is not installed.
