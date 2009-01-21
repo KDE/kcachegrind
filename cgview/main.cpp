@@ -41,7 +41,7 @@ int main(int argc, char** argv)
 
     QStringList list = app.arguments();
     list.pop_front();
-    if (list.count() == 0) {
+    if (list.isEmpty()) {
 	qDebug("Usage: cgview file ...");
 	return 1;
     }
@@ -102,3 +102,4 @@ int main(int argc, char** argv)
 	       qPrintable(f->object()->name()));
     }
 }
+
