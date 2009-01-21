@@ -3029,7 +3029,7 @@ QString CallGraphView::zoomPosString(ZoomPosition p)
 }
 
 void CallGraphView::readViewConfig(KConfig* c, const QString& prefix,
-                                   const QString& postfix, bool)
+                                   const QString& postfix)
 {
 	KConfigGroup g = configGroup(c, prefix, postfix);
 
@@ -3052,7 +3052,7 @@ void CallGraphView::readViewConfig(KConfig* c, const QString& prefix,
 }
 
 void CallGraphView::saveViewConfig(KConfig* c, const QString& prefix,
-                                   const QString& postfix, bool)
+                                   const QString& postfix)
 {
 	KConfigGroup g(c, prefix+postfix);
 

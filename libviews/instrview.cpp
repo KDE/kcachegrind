@@ -942,7 +942,7 @@ void InstrView::updateInstrItems()
 }
 
 void InstrView::readViewConfig(KConfig* c,
-                               const QString& prefix, const QString& postfix, bool)
+                               const QString& prefix, const QString& postfix)
 {
     KConfigGroup g = configGroup(c, prefix, postfix);
 
@@ -952,7 +952,7 @@ void InstrView::readViewConfig(KConfig* c,
 }
 
 void InstrView::saveViewConfig(KConfig* c,
-                               const QString& prefix, const QString& postfix, bool)
+                               const QString& prefix, const QString& postfix)
 {
     KConfigGroup g(c, (prefix+postfix).ascii());
 

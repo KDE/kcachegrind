@@ -24,6 +24,10 @@
 
 class ConfigStorage;
 
+// helper functions for storing specific values
+QList<int> toIntList(QStringList l);
+QStringList toStringList(QList<int> l);
+
 /**
  * A group of configuration settings.
  * Actual implementation for the backends is done in derived classes.

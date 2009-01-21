@@ -580,8 +580,8 @@ public:
 			       const char* name = 0);
 	~CallGraphView();
 
-	void readViewConfig(KConfig*, const QString& prefix, const QString& postfix, bool);
-	void saveViewConfig(KConfig*, const QString& prefix, const QString& postfix, bool);
+	void readViewConfig(KConfig*, const QString& prefix, const QString& postfix);
+	void saveViewConfig(KConfig*, const QString& prefix, const QString& postfix);
 
 	QWidget* widget()
 	{

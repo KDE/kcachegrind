@@ -31,6 +31,7 @@
 #include <kconfiggroup.h>
 #include <QDebug>
 
+#include "config.h"
 #include "tabview.h"
 
 
@@ -169,59 +170,81 @@ void MultiView::doUpdate(int changeType)
 }
 
 
+void MultiView::restoreLayout(const QString& prefix, const QString& postfix)
+{
+    ConfigGroup* g = ConfigStorage::group(prefix, postfix);
+
+    int panelCount = g->value("Panels", 1).toInt();;
+    QString o      = g->value("Orientation", QString("Vertical")).toString();
+    QString active = g->value("ActivePanel", QString()).toString();
+
+    setChildCount(panelCount);
+    setOrientation( o == QString("Horizontal") ?
+		    Qt::Horizontal : Qt::Vertical );
+    if ( panelCount>1 ) {
+	QList<int> sizes = toIntList(g->value("PanelSizes", QStringList()).toStringList());
+	setSizes(sizes);
+    }
+    delete g;
+
+    TabView* tv, *activeTV = 0;
+    for(tv=_views.first();tv;tv=_views.next()) {
+	if (tv->name() == active) activeTV=tv;
+	tv->restoreLayout( QString("%1-%2").arg(prefix).arg(tv->name()),
+			   postfix);
+    }
+
+    // activate panel after restoring
+    if (!activeTV) activeTV = _views.first();
+
+    if (_active == activeTV)
+	TraceItemView::activated(_active->activeItem());
+    else
+	activeTV->setActive(true);
+}
+
+void MultiView::saveLayout(const QString& prefix, const QString& postfix)
+{
+    ConfigGroup* g = ConfigStorage::group(prefix + postfix);
+
+    g->setValue("Panels", childCount());
+    g->setValue("Orientation",
+		QString( (orientation() == Qt::Horizontal) ?
+			 "Horizontal" : "Vertical"),
+		QString("Vertical"));
+
+    g->setValue("PanelSizes", toStringList(sizes()));
+    g->setValue("ActivePanel", _active ? _active->name() : QString("none"));
+    delete g;
+
+    TabView* tv;
+    for(tv=_views.first();tv;tv=_views.next())
+	tv->saveLayout(QString("%1-%2").arg(prefix).arg(tv->name()),
+		       postfix);
+}
+
+
+
 void MultiView::readViewConfig(KConfig* c,
-                               const QString& prefix, const QString& postfix,
-                               bool withOptions)
+                               const QString& prefix, const QString& postfix)
 {
   if (0) qDebug("%s::readConfig(%s%s)", name(),
 		prefix.ascii(), postfix.ascii());
 
-  QString active;
-  KConfigGroup g = configGroup(c, prefix, postfix);
-  int n = g.readEntry("Panels", 1);
-  setChildCount(n);
-  setOrientation( (g.readEntry("Orientation") == QString("Horizontal")) ?
-		  Qt::Horizontal : Qt::Vertical );
-
-  if ( n>1 )
-    setSizes(g.readEntry("PanelSizes",QList<int>()));
-
-  active = g.readEntry("ActivePanel", "");
-
-  TabView* tv, *activeTV = 0;
+  TabView* tv;
   for(tv=_views.first();tv;tv=_views.next()) {
-    if (tv->name() == active) activeTV=tv;
-    tv->readViewConfig(c, QString("%1-%2").arg(prefix).arg(tv->name()),
-		       postfix, withOptions);
+      tv->readViewConfig(c, QString("%1-%2").arg(prefix).arg(tv->name()),
+			 postfix);
   }
-
-  // activate panel after restoring
-  if (!activeTV) activeTV = _views.first();
-
-  if (_active == activeTV)
-    TraceItemView::activated(_active->activeItem());
-  else
-    activeTV->setActive(true);
 }
 
 void MultiView::saveViewConfig(KConfig* c,
-                               const QString& prefix, const QString& postfix,
-                               bool withOptions)
+                               const QString& prefix, const QString& postfix)
 {
-  KConfigGroup g(c, (prefix+postfix).toAscii().constData());
-
-  g.writeEntry("Panels", childCount());
-  g.writeEntry("Orientation",
-	       (orientation() == Qt::Horizontal) ?
-	       "Horizontal" : "Vertical");
-
-  g.writeEntry("PanelSizes", sizes());
-  g.writeEntry("ActivePanel", _active ? _active->name() : "none");
-
   TabView* tv;
   for(tv=_views.first();tv;tv=_views.next())
     tv->saveViewConfig(c, QString("%1-%2").arg(prefix).arg(tv->name()),
-		       postfix, withOptions);
+		       postfix);
 }
 
 

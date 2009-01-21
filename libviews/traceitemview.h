@@ -73,6 +73,9 @@ public:
 
   virtual QString whatsThis() const;
 
+  virtual void saveLayout(const QString& prefix, const QString& postfix);
+  virtual void restoreLayout(const QString& prefix, const QString& postfix);
+
   static KConfigGroup configGroup(KConfig*, const QString& prefix, const QString& postfix);
   static void writeConfigEntry(KConfigGroup&, const char* pKey, const QString& value,
                                const char* def, bool bNLS = false);
@@ -82,10 +85,8 @@ public:
                                bool value, bool def);
   static void writeConfigEntry(KConfigGroup&, const char* pKey,
                                double value, double def);
-  virtual void readViewConfig(KConfig*, const QString& prefix, const QString& postfix,
-			      bool withOptions);
-  virtual void saveViewConfig(KConfig*, const QString& prefix, const QString& postfix,
-			      bool withOptions);
+  virtual void readViewConfig(KConfig*, const QString& prefix, const QString& postfix);
+  virtual void saveViewConfig(KConfig*, const QString& prefix, const QString& postfix);
 
   // Immediate remove all references to old data, and set the new.
   // This resets the visualization state.

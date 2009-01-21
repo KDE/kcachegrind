@@ -60,6 +60,12 @@ void TraceItemView::select(TraceItem* i)
     _newSelectedItem = i;
 }
 
+void TraceItemView::saveLayout(const QString&, const QString&)
+{}
+
+void TraceItemView::restoreLayout(const QString&, const QString&)
+{}
+
 KConfigGroup TraceItemView::configGroup(KConfig* c,
                                         const QString& group, const QString& post)
 {
@@ -111,11 +117,11 @@ void TraceItemView::writeConfigEntry(KConfigGroup& c, const char* pKey,
 	c.writeEntry(pKey, value);
 }
 
-void TraceItemView::readViewConfig(KConfig*, const QString&, const QString&, bool)
+void TraceItemView::readViewConfig(KConfig*, const QString&, const QString&)
 {}
 
 #if 1
-void TraceItemView::saveViewConfig(KConfig*, const QString&, const QString&, bool)
+void TraceItemView::saveViewConfig(KConfig*, const QString&, const QString&)
 {}
 #else
 void TraceItemView::saveViewConfig(KConfig* c,

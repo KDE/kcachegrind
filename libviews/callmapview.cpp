@@ -952,7 +952,7 @@ QColor CallMapCallerItem::backColor() const
 }
 
 void CallMapView::readViewConfig(KConfig* c,
-                                 const QString& prefix, const QString& postfix, bool)
+                                 const QString& prefix, const QString& postfix)
 {
     KConfigGroup g = configGroup(c, prefix, postfix);
 
@@ -978,7 +978,7 @@ void CallMapView::readViewConfig(KConfig* c,
 }
 
 void CallMapView::saveViewConfig(KConfig* c,
-                                 const QString& prefix, const QString& postfix, bool)
+                                 const QString& prefix, const QString& postfix)
 {
     KConfigGroup g(c, (prefix+postfix).ascii());
 
