@@ -7,11 +7,9 @@ set(kcachegrind_SRCS
    main.cpp
    kconfiguration.cpp
    functionselection.cpp
-   coverage.cpp
    partgraph.cpp
    toplevel.cpp
    stackselection.cpp
-   stackbrowser.cpp
    partselection.cpp
    configdlg.cpp
    traceitemview.cpp

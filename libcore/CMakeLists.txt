@@ -5,6 +5,8 @@ kde4_add_library(core STATIC
    pool.cpp
    subcost.cpp
    tracedata.cpp
+   coverage.cpp
+   stackbrowser.cpp
    utils.cpp
    logger.cpp
    configuration.cpp )
