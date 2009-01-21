@@ -73,6 +73,7 @@
 #include "stackbrowser.h"
 #include "tracedata.h"
 #include "globalconfig.h"
+#include "config.h"
 #include "configdlg.h"
 #include "multiview.h"
 #include "callgraphview.h"
@@ -212,19 +213,16 @@ void TopLevel::setupPartSelection(PartSelection* ps)
  */
 void TopLevel::saveCurrentState(const QString& postfix)
 {
-  KConfig *kconfig = KGlobal::config().data();
-  QByteArray pf = postfix.ascii();
+  QString eventType = _eventType ? _eventType->name() : QString("?");
+  QString eventType2 = _eventType2 ? _eventType2->name() : QString("?");
 
-  KConfigGroup psConfig(kconfig, QLatin1String("PartOverview")+pf);
-  _partSelection->saveVisualisationConfig(&psConfig);
+  ConfigGroup* stateConfig = ConfigStorage::group(QString("CurrentState") + postfix);
+  stateConfig->setValue("EventType", eventType);
+  stateConfig->setValue("EventType2", eventType2);
+  stateConfig->setValue("GroupType", TraceItem::typeName(_groupType));
+  delete stateConfig;
 
-  KConfigGroup stateConfig(kconfig, QLatin1String("CurrentState")+pf);
-  stateConfig.writeEntry("EventType",
-			 _eventType ? _eventType->name() : QString("?"));
-  stateConfig.writeEntry("EventType2",
-			 _eventType2 ? _eventType2->name() : QString("?"));
-  stateConfig.writeEntry("GroupType", TraceItem::typeName(_groupType));
-
+  _partSelection->saveOptions(QString("PartOverview"), postfix);
   _multiView->saveLayout(QString("MainView"), postfix);
   _multiView->saveOptions(QString("MainView"), postfix);
 }
@@ -265,19 +263,10 @@ void TopLevel::saveTraceSettings()
  */
 void TopLevel::restoreCurrentState(const QString& postfix)
 {
-  KConfig *kconfig = KGlobal::config().data();
-  QStringList gList = kconfig->groupList();
-  QByteArray pf = postfix.ascii();
-
-  // dock properties (not position, this should be have done before)
-  QString group = QLatin1String("PartOverview");
-  if (gList.contains(group+pf))
-  	group += pf;
-  KConfigGroup psConfig(kconfig, group);
-  _partSelection->readVisualisationConfig(&psConfig);
-
+  _partSelection->restoreOptions(QString("PartOverview"), postfix);
   _multiView->restoreLayout(QString("MainView"), postfix);
   _multiView->restoreOptions(QString("MainView"), postfix);
+
   _taSplit->setChecked(_multiView->childCount()>1);
   _taSplitDir->setEnabled(_multiView->childCount()>1);
   _taSplitDir->setChecked(_multiView->orientation() == Qt::Horizontal);

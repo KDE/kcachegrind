@@ -47,7 +47,7 @@
 #include "dumpselection.h"
 #endif
 
-//#include "partselection.h"
+#include "partselection.h"
 #include "functionselection.h"
 //#include "stackselection.h"
 //#include "stackbrowser.h"
@@ -163,7 +163,7 @@ void TopLevel::init()
 void TopLevel::setupPartSelection(PartSelection* ps)
 {
   // setup connections from the part selection widget
-#if 0
+
   connect(ps, SIGNAL(activePartsChanged(const TracePartList&)),
           this, SLOT(activePartsChangedSlot(const TracePartList&)));
   connect(ps, SIGNAL(groupChanged(TraceCostItem*)),
@@ -171,8 +171,8 @@ void TopLevel::setupPartSelection(PartSelection* ps)
   connect(ps, SIGNAL(functionChanged(TraceItem*)),
           this, SLOT(setTraceItemDelayed(TraceItem*)));
 
-  connect(ps, SIGNAL(goBack()),
-          _stackSelection, SLOT(browserBack()));
+  //connect(ps, SIGNAL(goBack()),
+  //        _stackSelection, SLOT(browserBack()));
 
   connect(ps, SIGNAL(partsHideSelected()),
           this, SLOT(partsHideSelectedSlotDelayed()));
@@ -181,7 +181,6 @@ void TopLevel::setupPartSelection(PartSelection* ps)
 
   connect(ps, SIGNAL(showMessage(const QString&, int)),
           _statusbar, SLOT(message(const QString&, int)));
-#endif
 }
 
 /**
@@ -193,14 +192,6 @@ void TopLevel::setupPartSelection(PartSelection* ps)
  */
 void TopLevel::saveCurrentState(const QString& postfix)
 {
-#if 0
-  KConfig *kconfig = KGlobal::config().data();
-  QByteArray pf = postfix.ascii();
-
-  KConfigGroup psConfig(kconfig, QLatin1String("PartOverview")+pf);
-  _partSelection->saveVisualisationConfig(&psConfig);
-#endif
-
   QString eventType = _eventType ? _eventType->name() : QString("?");
   QString eventType2 = _eventType2 ? _eventType2->name() : QString("?");
 
@@ -210,6 +201,7 @@ void TopLevel::saveCurrentState(const QString& postfix)
   stateConfig->setValue("GroupType", TraceItem::typeName(_groupType));
   delete stateConfig;
 
+  _partSelection->saveOptions(QString("PartOverview"), postfix);
   _multiView->saveLayout(QString("MainView"), postfix);
   _multiView->saveOptions(QString("MainView"), postfix);
 }
@@ -252,19 +244,7 @@ void TopLevel::saveTraceSettings()
  */
 void TopLevel::restoreCurrentState(const QString& postfix)
 {
-#if 0
-  KConfig *kconfig = KGlobal::config().data();
-  QStringList gList = kconfig->groupList();
-  QByteArray pf = postfix.ascii();
-
-  // dock properties (not position, this should be have done before)
-  QString group = QLatin1String("PartOverview");
-  if (gList.contains(group+pf))
-      group += pf;
-  KConfigGroup psConfig(kconfig, group);
-  _partSelection->readVisualisationConfig(&psConfig);
-#endif
-
+  _partSelection->restoreOptions(QString("PartOverview"), postfix);
   _multiView->restoreLayout(QString("MainView"), postfix);
   _multiView->restoreOptions(QString("MainView"), postfix);
 
@@ -279,7 +259,7 @@ void TopLevel::createDocks()
   _partDock = new QDockWidget(this);
   _partDock->setObjectName("part dock");
   _partDock->setWindowTitle(tr("Parts Overview"));
-  _partSelection = new QWidget(_partDock); // PartSelection(_partDock);
+  _partSelection = new PartSelection(_partDock);
   _partDock->setWidget(_partSelection);
   _partSelection->setWhatsThis( tr(
                    "<b>The Parts Overview</b>"
@@ -321,14 +301,13 @@ void TopLevel::createDocks()
                    "cost used for all calls from the function in the line "
                    "above.</p>"));
 
-  connect(_stackSelection, SIGNAL(functionSelected(TraceItem*)),
-          this, SLOT(setTraceItemDelayed(TraceItem*)));
+  //connect(_stackSelection, SIGNAL(functionSelected(TraceItem*)),
+  //        this, SLOT(setTraceItemDelayed(TraceItem*)));
 
   _functionDock = new QDockWidget(this);
   _functionDock->setObjectName("function dock");
   _functionDock->setWindowTitle(tr("Flat Profile"));
   _functionSelection = new FunctionSelection(this, _functionDock);
-  //_functionSelection->setTopLevel(this);
 
   _functionDock->setWidget(_functionSelection);
   _functionSelection->setWhatsThis( tr(
@@ -393,8 +372,9 @@ void TopLevel::createDocks()
 	_dumpDock->hide();
 #endif
 
-	//KConfigGroup dockConfig(KGlobal::config(), "Docks");
-	//_forcePartDock = dockConfig.readEntry("ForcePartDockVisible", false);
+	ConfigGroup* dockConfig = ConfigStorage::group("Docks");
+	_forcePartDock = dockConfig->value("ForcePartDockVisible", false).toBool();
+	delete dockConfig;
 }
 
 
@@ -857,10 +837,8 @@ void TopLevel::setPercentage(bool show)
 
   GlobalConfig::setShowPercentage(_showPercentage);
 
-#if 0
   _partSelection->refresh();
-  _stackSelection->refresh();
-#endif
+  //_stackSelection->refresh();
 
   _functionSelection->notifyChange(TraceItemView::configChanged);
   _functionSelection->updateView();
@@ -877,10 +855,8 @@ void TopLevel::toggleExpanded()
 
   GlobalConfig::setShowExpanded(_showExpanded);
 
-#if 0
   _partSelection->refresh();
-  _stackSelection->refresh();
-#endif
+  //_stackSelection->refresh();
 
   _functionSelection->notifyChange(TraceItemView::configChanged);
   _functionSelection->updateView();
@@ -902,10 +878,8 @@ void TopLevel::toggleCycles()
   _data->invalidateDynamicCost();
   _data->updateFunctionCycles();
 
-#if 0
   _partSelection->refresh();
-  _stackSelection->rebuildStackList();
-#endif
+  //_stackSelection->rebuildStackList();
 
   _functionSelection->notifyChange(TraceItemView::configChanged);
   _functionSelection->updateView();
@@ -1133,10 +1107,8 @@ bool TopLevel::setEventType(TraceEventType* ct)
       }
   }
 
-#if 0
   _partSelection->setEventType(_eventType);
-  _stackSelection->setEventType(_eventType);
-#endif
+  //_stackSelection->setEventType(_eventType);
 
   _functionSelection->setEventType(_eventType);
   _functionSelection->updateView();
@@ -1162,10 +1134,9 @@ bool TopLevel::setEventType2(TraceEventType* ct)
     if (*it == longName)
     {}//_saCost2->setCurrentItem(idx);
   }
-#if 0
+
   _partSelection->setEventType2(_eventType2);
-  _stackSelection->setEventType2(_eventType2);
-#endif
+  //_stackSelection->setEventType2(_eventType2);
 
   _functionSelection->setEventType2(_eventType2);
   _functionSelection->updateView();
@@ -1233,8 +1204,9 @@ bool TopLevel::setGroupType(TraceItem::CostType gt)
     saGroup->setCurrentItem(idx);
 
   _stackSelection->setGroupType(_groupType);
-  _partSelection->setGroupType(_groupType);
 #endif
+
+  _partSelection->setGroupType(_groupType);
 
   _functionSelection->set(_groupType);
   _functionSelection->updateView();
@@ -1293,8 +1265,10 @@ bool TopLevel::setFunction(TraceFunction* f)
 
   if (_function == f) return false;
   _function = f;
-#if 0
+
   _partSelection->setFunction(_function);
+
+#if 0
   _stackSelection->setFunction(_function);
 
   StackBrowser* b = _stackSelection->browser();
@@ -1476,10 +1450,8 @@ void TopLevel::setData(TraceData* data)
   saveTraceSettings();
 
   if (_data) {
-#if 0
     _partSelection->setData(0);
-    _stackSelection->setData(0);
-#endif
+    //_stackSelection->setData(0);
 
     _functionSelection->setData(0);
     _functionSelection->updateView();
@@ -1526,9 +1498,10 @@ void TopLevel::setData(TraceData* data)
   if (types.count()>0)
       _saCost2->setCurrentItem(0);
 
-  _partSelection->setData(_data);
   _stackSelection->setData(_data);
 #endif
+
+  _partSelection->setData(_data);
 
   _functionSelection->setData(_data);
   _functionSelection->updateView();
@@ -1982,7 +1955,7 @@ bool TopLevel::queryExit()
     GlobalConfig::setShowCycles(_showCycles);
     GlobalConfig::config()->saveOptions();
 
-    //saveCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+    saveCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 
   // toolbar and dock positions are automatically stored
 
@@ -1991,8 +1964,10 @@ bool TopLevel::queryExit()
   _forcePartDock = false;
   if (_data && (_data->parts().count()<2) && _partDock->isVisible())
     _forcePartDock=true;
-  //KConfigGroup dockConfig(KGlobal::config(), "Docks");
-  //dockConfig.writeEntry("ForcePartDockVisible", _forcePartDock);
+
+  ConfigGroup* dockConfig = ConfigStorage::group("Docks");
+  dockConfig->setValue("ForcePartDockVisible", _forcePartDock, false);
+  delete dockConfig;
 
   return true;
 }
@@ -2028,10 +2003,8 @@ void TopLevel::configChanged()
   // invalidate found/cached dirs of source files
   _data->resetSourceDirs();
 
-#if 0
   _partSelection->refresh();
-  _stackSelection->refresh();
-#endif
+  //_stackSelection->refresh();
 
   _functionSelection->notifyChange(TraceItemView::configChanged);
   _functionSelection->updateView();
@@ -2062,10 +2035,8 @@ void TopLevel::activePartsChangedSlot(const TracePartList& list)
   }
   _activeParts = list;
 
-#if 0
   _partSelection->activePartsChangedSlot(list);
-  _stackSelection->refresh();
-#endif
+  //_stackSelection->refresh();
 
   _functionSelection->set(list);
   _functionSelection->updateView();
@@ -2099,7 +2070,7 @@ void TopLevel::partsHideSelectedSlot()
   }
 
   _hiddenParts = newHidden;
-  //_partSelection->hiddenPartsChangedSlot(_hiddenParts);
+  _partSelection->hiddenPartsChangedSlot(_hiddenParts);
 
 #if 0
   _mainWidget1->hiddenPartsChangedSlot(_hiddenParts);
@@ -2120,7 +2091,8 @@ void TopLevel::partsUnhideAllSlot()
   if (!_data) return;
 
   _hiddenParts.clear();
-  //_partSelection->hiddenPartsChangedSlot(_hiddenParts);
+  _partSelection->hiddenPartsChangedSlot(_hiddenParts);
+
 #if 0
   _mainWidget1->hiddenPartsChangedSlot(_hiddenParts);
   _mainWidget2->hiddenPartsChangedSlot(_hiddenParts);

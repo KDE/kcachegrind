@@ -24,41 +24,33 @@
 #ifndef PARTSELECTION_H
 #define PARTSELECTION_H
 
-#include <qobject.h>
+#include <QWidget>
+#include <QPoint>
 
-#include "ui_partselectionbase.h"
-#include "partgraph.h"
 #include "tracedata.h"
 
-class KConfigGroup;
+class QLabel;
 class TraceFunction;
 class TraceData;
 class TreeMapItem;
-
-class PartSelectionBase : public QWidget, public Ui::PartSelectionBase
-{
-public:
-  PartSelectionBase( QWidget *parent ) : QWidget( parent ) {
-    setupUi( this );
-  }
-};
+class PartAreaWidget;
 
 
-class PartSelection: public PartSelectionBase
+class PartSelection: public QWidget
 {
   Q_OBJECT
 
 public:
-  PartSelection( QWidget* parent = 0);
-  ~PartSelection();
+  PartSelection(QWidget* parent = 0);
+  virtual ~PartSelection();
 
   TraceData* data() { return _data; }
   void setData(TraceData*);
 
-  PartAreaWidget* graph() { return partAreaWidget; }
+  PartAreaWidget* graph() { return _partAreaWidget; }
 
-  void readVisualisationConfig(KConfigGroup*);
-  void saveVisualisationConfig(KConfigGroup*);
+  void restoreOptions(const QString& prefix, const QString& postfix);
+  void saveOptions(const QString& prefix, const QString& postfix);
 
 signals:
   void activePartsChanged(const TracePartList& list);
@@ -97,8 +89,10 @@ private:
   bool _showInfo;
   bool _diagramMode;
   bool _drawFrames;
-
   bool _inSelectionUpdate;
+
+  PartAreaWidget* _partAreaWidget;
+  QLabel* _rangeLabel;
 };
 
 #endif

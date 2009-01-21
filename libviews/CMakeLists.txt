@@ -1,6 +1,8 @@
 include_directories( ../libcore )
 
 set(libviews_SRCS
+   partgraph.cpp
+   partselection.cpp
    functionitem.cpp
    costlistitem.cpp
    functionselection.cpp

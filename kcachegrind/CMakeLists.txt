@@ -5,17 +5,14 @@ include_directories( ../libcore ../libviews )
 set(kcachegrind_SRCS
    main.cpp
    kdeconfig.cpp
-   partgraph.cpp
    toplevel.cpp
    stackselection.cpp
    stackitem.cpp
-   partselection.cpp
    configdlg.cpp
    )
 
 kde4_add_ui_files(kcachegrind_SRCS
 	stackselectionbase.ui
-	partselectionbase.ui
         configdlgbase.ui
 	)
 

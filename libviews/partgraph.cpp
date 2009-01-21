@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2003,2009 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -23,8 +23,6 @@
 #include "partgraph.h"
 
 #include <QPixmap>
-
-#include <klocale.h>
 
 #include "globalconfig.h"
 #include "listutils.h"
@@ -167,7 +165,7 @@ QString PartAreaWidget::tipString(TreeMapItem* i) const
   while (i && i->rtti()==3) i = i->parent();
 
   if (i && i->rtti()==2) {
-    itemTip = i18n("Profile Part %1", i->text(0));
+      itemTip = QObject::tr("Profile Part %1").arg(i->text(0));
     if (!i->text(1).isEmpty())
         itemTip += " (" + i->text(1) + ')';
 
@@ -226,10 +224,10 @@ QString BasePartItem::text(int textNo) const
 {
   if (textNo == 0) {
     if (!_data)
-      return i18n("(no trace)");
+	return QObject::tr("(no trace)");
 
     if (_data->parts().count() == 0)
-      return i18n("(no part)");
+	return QObject::tr("(no part)");
   }
   return QString();
 }
@@ -423,7 +421,7 @@ QString SubPartItem::text(int textNo) const
 {
   if (textNo == 0) {
     if (!_partCostItem)
-      return i18n("(unknown)");
+	return QObject::tr("(unknown)");
 
     return _partCostItem->dependant()->prettyName();
   }

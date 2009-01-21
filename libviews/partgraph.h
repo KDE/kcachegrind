@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2003,2009 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -23,10 +23,10 @@
 #ifndef PARTGRAPH_H
 #define PARTGRAPH_H
 
+#include <QPixmap>
+
 #include "treemap.h"
 #include "tracedata.h"
-//Added by qt3to4:
-#include <QPixmap>
 
 class PartAreaWidget: public TreeMapWidget
 {
