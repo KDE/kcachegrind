@@ -48,9 +48,9 @@ QStringList GlobalConfig::knownTypes()
 
 QString GlobalConfig::knownFormula(const QString& name)
 {
-  if (name =="L1m") return QString("I1mr + D1mr + D1mw");
-  if (name =="L2m") return QString("I2mr + D2mr + D2mw");
-  if (name =="CEst") return QString("Ir + 10 L1m + 100 L2m");
+  if (name == "L1m") return QString("I1mr + D1mr + D1mw");
+  if (name == "L2m") return QString("I2mr + D2mr + D2mw");
+  if (name == "CEst") return QString("Ir + 10 L1m + 100 L2m");
 
   return QString();
 }
@@ -58,20 +58,20 @@ QString GlobalConfig::knownFormula(const QString& name)
 QString GlobalConfig::knownLongName(const QString& name)
 {
     if (name == "Ir") return QObject::tr("Instruction Fetch");
-    if (name =="Dr") return QObject::tr("Data Read Access");
-    if (name =="Dw") return QObject::tr("Data Write Access");
-    if (name =="I1mr") return QObject::tr("L1 Instr. Fetch Miss");
-    if (name =="D1mr") return QObject::tr("L1 Data Read Miss");
-    if (name =="D1mw") return QObject::tr("L1 Data Write Miss");
-    if (name =="I2mr") return QObject::tr("L2 Instr. Fetch Miss");
-    if (name =="D2mr") return QObject::tr("L2 Data Read Miss");
-    if (name =="D2mw") return QObject::tr("L2 Data Write Miss");
-    if (name =="Smp") return QObject::tr("Samples");
-    if (name =="Sys") return QObject::tr("System Time");
-    if (name =="User") return QObject::tr("User Time");
-    if (name =="L1m") return QObject::tr("L1 Miss Sum");
-    if (name =="L2m") return QObject::tr("L2 Miss Sum");
-    if (name =="CEst") return QObject::tr("Cycle Estimation");
+    if (name == "Dr") return QObject::tr("Data Read Access");
+    if (name == "Dw") return QObject::tr("Data Write Access");
+    if (name == "I1mr") return QObject::tr("L1 Instr. Fetch Miss");
+    if (name == "D1mr") return QObject::tr("L1 Data Read Miss");
+    if (name == "D1mw") return QObject::tr("L1 Data Write Miss");
+    if (name == "I2mr") return QObject::tr("L2 Instr. Fetch Miss");
+    if (name == "D2mr") return QObject::tr("L2 Data Read Miss");
+    if (name == "D2mw") return QObject::tr("L2 Data Write Miss");
+    if (name == "Smp") return QObject::tr("Samples");
+    if (name == "Sys") return QObject::tr("System Time");
+    if (name == "User") return QObject::tr("User Time");
+    if (name == "L1m") return QObject::tr("L1 Miss Sum");
+    if (name == "L2m") return QObject::tr("L2 Miss Sum");
+    if (name == "CEst") return QObject::tr("Cycle Estimation");
 
     return QString();
 }
@@ -172,12 +172,11 @@ void GlobalConfig::saveOptions()
     for (int i=0; i<etCount; i++) {
 	TraceEventType* t = TraceEventType::knownType(i);
 	etConfig->setValue( QString("Name%1").arg(i+1), t->name());
-
 	etConfig->setValue( QString("Longname%1").arg(i+1),
 			    t->longName(),
-			    knownLongName(t->name()).utf8() );
+			    knownLongName(t->name()) );
 	etConfig->setValue( QString("Formula%1").arg(i+1),
-			    t->formula(), knownFormula(t->name()).utf8());
+			    t->formula(), knownFormula(t->name()) );
     }
     delete etConfig;
 }
