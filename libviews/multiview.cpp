@@ -211,7 +211,8 @@ void MultiView::saveLayout(const QString& prefix, const QString& postfix)
 		QString("Vertical"));
 
     g->setValue("PanelSizes", toStringList(sizes()));
-    g->setValue("ActivePanel", _active ? _active->name() : QString("none"));
+    g->setValue("ActivePanel",
+		_active ? QString(_active->name()) : QString("none"));
     delete g;
 
     TabView* tv;
