@@ -52,6 +52,22 @@
 #include "callgraphview.h"
 
 
+// defaults for subviews in TabView
+
+#define DEFAULT_TOPTABS \
+    "EventTypeView" << "CallerView" << "AllCallerView" \
+    << "CalleeMapView" << "SourceView"
+#define DEFAULT_BOTTOMTABS \
+    "PartView" << "CalleeView" << "CallGraphView" \
+    << "AllCalleeView" << "CallerMapView" << "InstrView"
+
+#define DEFAULT_ACTIVETOP "CallerView"
+#define DEFAULT_ACTIVEBOTTOM "CalleeView"
+
+#define DEFAULT_RIGHTSIZE 0
+#define DEFAULT_TOPSIZE   50
+#define DEFAULT_LEFTSIZE  0
+
 // TabBar
 
 TabBar::TabBar(TabView* v, QTabWidget* parent, const char *name) :
@@ -305,9 +321,7 @@ TabView::TabView(TraceItemView* parentView,
 
 
   // default positions...
-
-  // When changing a name of a view widget, the strings for default
-  // visible tabs in TabView::readViewConfig have to be changed, too.
+  // Keep following order in sync with DEFAULT_xxxTABS defines!
   
   addTop( addTab( tr("Types"),
 		  new EventTypeView(this, 0,
@@ -318,9 +332,9 @@ TabView::TabView(TraceItemView* parentView,
   addTop( addTab( tr("All Callers"),
 		  new CoverageView(true, this, 0,
 				   "AllCallerView")));
-  addTop( addTab( tr("Caller Map"),
-		  new CallMapView(true, this, 0,
-				  "CallerMapView")));
+  addTop( addTab( tr("Callee Map"),
+		  new CallMapView(false, this, 0,
+				  "CalleeMapView")));
   addTop( addTab( tr("Source Code"),
 		  new SourceView(this, 0,
 				 "SourceView")));
@@ -328,19 +342,18 @@ TabView::TabView(TraceItemView* parentView,
   addBottom( addTab( tr("Parts"),
 		     new PartView(this, 0,
 				  "PartView")));
-  addBottom( addTab( tr("Call Graph"),
-		     new CallGraphView(this, 0,
-				       "CallGraphView")));
   addBottom( addTab( tr("Callees"),
 		     new CallView(false, this, 0,
 				  "CalleeView")));
+  addBottom( addTab( tr("Call Graph"),
+		     new CallGraphView(this, 0,
+				       "CallGraphView")));
   addBottom( addTab( tr("All Callees"),
 		     new CoverageView(false, this, 0,
 				      "AllCalleeView")));
-
-  addBottom( addTab( tr("Callee Map"),
-		     new CallMapView(false, this, 0,
-				     "CalleeMapView")));
+  addBottom( addTab( tr("Caller Map"),
+		     new CallMapView(true, this, 0,
+				     "CallerMapView")));
   addBottom( addTab( tr("Assembly Code"),
 		     new InstrView(this, 0,
 				   "InstrView")));
@@ -757,23 +770,35 @@ void TabView::restoreLayout(const QString& prefix, const QString& postfix)
 {
     ConfigGroup* g = ConfigStorage::group(prefix, postfix);
 
-    QStringList list;
-    list << QString("100") << QString("100");
-    QStringList mainSizes = g->value("MainSizes",list).toStringList();
-    QStringList leftSizes = g->value("LeftSizes",list).toStringList();
-    QStringList bottomSizes = g->value("BottomSizes",list).toStringList();
+    int rightSize = g->value("RightSize", DEFAULT_RIGHTSIZE).toInt();
+    int topSize = g->value("TopSize", DEFAULT_TOPSIZE).toInt();
+    int leftSize = g->value("LeftSize", DEFAULT_LEFTSIZE).toInt();
 
-    _mainSplitter->setSizes(toIntList(mainSizes));
-    _leftSplitter->setSizes(toIntList(leftSizes));
-    _bottomSplitter->setSizes(toIntList(bottomSizes));
+    QList<int> mainSizes, leftSizes, bottomSizes;
 
-    QString activeT = g->value("ActiveTop", QString("CallerView")).toString();
-    QString activeB = g->value("ActiveBottom", QString("CalleeView")).toString();
+    int mainWidth = _mainSplitter->width();
+    mainSizes << (100 - rightSize)*mainWidth/100 << rightSize*mainWidth/100;
+    _mainSplitter->setSizes(mainSizes);
+
+    int leftHeight = _leftSplitter->height();
+    leftSizes << topSize*leftHeight/100 << (100 - topSize)*leftHeight/100;
+    _leftSplitter->setSizes(leftSizes);
+
+    int bottomWidth = _bottomSplitter->width();
+    bottomSizes << leftSize*bottomWidth/100 << (100 - leftSize)*bottomWidth/100;
+    _bottomSplitter->setSizes(bottomSizes);
+
+    QString activeT = g->value("ActiveTop", QString(DEFAULT_ACTIVETOP)).toString();
+    QString activeB = g->value("ActiveBottom", QString(DEFAULT_ACTIVEBOTTOM)).toString();
     QString activeL = g->value("ActiveLeft", QString()).toString();
     QString activeR = g->value("ActiveRight", QString()).toString();
 
-    QStringList topTabs    = g->value("TopTabs",QStringList()).toStringList();
-    QStringList bottomTabs = g->value("BottomTabs",QStringList()).toStringList();
+    QStringList topTabsDefault, bottomTabsDefault;
+    topTabsDefault << DEFAULT_TOPTABS;
+    bottomTabsDefault << DEFAULT_BOTTOMTABS;
+
+    QStringList topTabs    = g->value("TopTabs",topTabsDefault).toStringList();
+    QStringList bottomTabs = g->value("BottomTabs",bottomTabsDefault).toStringList();
     QStringList leftTabs   = g->value("LeftTabs",QStringList()).toStringList();
     QStringList rightTabs  = g->value("RightTabs",QStringList()).toStringList();
 
@@ -782,10 +807,8 @@ void TabView::restoreLayout(const QString& prefix, const QString& postfix)
     if (topTabs.isEmpty() && bottomTabs.isEmpty() &&
         rightTabs.isEmpty() && leftTabs.isEmpty()) {
       // no tabs visible ?! Reset to default
-      topTabs << "EventTypeView" << "CallerView" << "AllCallerView"
-              << "CalleeMapView" << "SourceView";
-      bottomTabs << "PartView" << "CalleeView" << "CallGraphView"
-                 << "AllCalleeView" << "CallerMapView" << "InstrView";
+	topTabs = topTabsDefault;
+	bottomTabs = bottomTabsDefault;
     }
 
     TraceItemView *activeTop = 0, *activeBottom = 0;
@@ -830,35 +853,42 @@ void TabView::saveLayout(const QString& prefix, const QString& postfix)
 {
     ConfigGroup* g = ConfigStorage::group(prefix + postfix);
 
-    QStringList list;
-    list << QString("100") << QString("100");
-    g->setValue("MainSizes", toStringList(_mainSplitter->sizes()), list);
-    g->setValue("LeftSizes", toStringList(_leftSplitter->sizes()), list);
-    g->setValue("BottomSizes", toStringList(_bottomSplitter->sizes()), list);
+    // convert splitter sizes into percentage numbers
+    QList<int> s;
+    s = _mainSplitter->sizes();
+    int rightSize = 100 * s[1]/(s[0]+s[1]);
+    s = _leftSplitter->sizes();
+    int topSize = 100 * s[0]/(s[0]+s[1]);
+    s = _bottomSplitter->sizes();
+    int leftSize = 100 * s[0]/(s[0]+s[1]);
+
+    g->setValue("RightSize", rightSize, DEFAULT_RIGHTSIZE);
+    g->setValue("TopSize", topSize, DEFAULT_TOPSIZE);
+    g->setValue("LeftSize", leftSize, DEFAULT_LEFTSIZE);
 
     QString a;
     if ((_topTW->count()>0) &&
         (_topTW->isTabEnabled(_topTW->currentPage())))
       a = QString(_topTW->currentPage()->name());
-    g->setValue("ActiveTop", a);
+    g->setValue("ActiveTop", a, QString(DEFAULT_ACTIVETOP));
 
     a = QString();
     if ((_bottomTW->count()>0) &&
         (_bottomTW->isTabEnabled(_bottomTW->currentPage())))
       a = QString(_bottomTW->currentPage()->name());
-    g->setValue("ActiveBottom", a);
+    g->setValue("ActiveBottom", a, QString(DEFAULT_ACTIVEBOTTOM));
 
     a = QString();
     if ((_leftTW->count()>0) &&
         (_leftTW->isTabEnabled(_leftTW->currentPage())))
       a = QString(_leftTW->currentPage()->name());
-    g->setValue("ActiveLeft", a);
+    g->setValue("ActiveLeft", a, QString());
 
     a= QString();
     if ((_rightTW->count()>0) &&
         (_rightTW->isTabEnabled(_rightTW->currentPage())))
       a = QString(_rightTW->currentPage()->name());
-    g->setValue("ActiveRight", a);
+    g->setValue("ActiveRight", a, QString());
 
     QStringList topList, bottomList, leftList, rightList;
     TraceItemView *v;
@@ -884,10 +914,14 @@ void TabView::saveLayout(const QString& prefix, const QString& postfix)
       }
     }
 
-    g->setValue("TopTabs", topList);
-    g->setValue("BottomTabs", bottomList);
-    g->setValue("LeftTabs", leftList);
-    g->setValue("RightTabs", rightList);
+    QStringList topTabsDefault, bottomTabsDefault;
+    topTabsDefault << DEFAULT_TOPTABS;
+    bottomTabsDefault << DEFAULT_BOTTOMTABS;
+
+    g->setValue("TopTabs", topList, topTabsDefault);
+    g->setValue("BottomTabs", bottomList, bottomTabsDefault);
+    g->setValue("LeftTabs", leftList, QStringList());
+    g->setValue("RightTabs", rightList, QStringList());
 
     delete g;
 }
