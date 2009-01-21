@@ -40,7 +40,7 @@ QStringList toStringList(QList<int> l)
 
     int i;
     foreach(i, l)
-	sList << QString(i);
+	sList << QString::number(i);
 
     return sList;
 }
