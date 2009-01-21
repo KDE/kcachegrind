@@ -43,7 +43,7 @@ bool SubCost::set(const char** ps)
     return true;
 }
 
-QString SubCost::pretty()
+QString SubCost::pretty(char sep) const
 {
     unsigned long long n = v;
 
@@ -53,7 +53,7 @@ QString SubCost::pretty()
     QString res = "";
 
     while (n) {
-	if ((i>0) && !(i%3)) res = ' ' + res;
+	if ((i>0) && !(i%3)) res = sep + res;
 	i++;
 	res = QChar('0'+int(n%10)) + res;
 	n /= 10;

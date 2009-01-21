@@ -61,7 +61,7 @@ class SubCost
      * Convert SubCost value into a QString,
      * spaced every 3 digits.
      */
-    QString pretty();
+    QString pretty(char sep = ' ') const;
 
     uint64 v;
 };
