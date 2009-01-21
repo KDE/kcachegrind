@@ -24,6 +24,7 @@ macro_additional_clean_files(
 	)
 ENDIF(NOT WIN32)
 
+add_subdirectory( libcore )
 add_subdirectory( kcachegrind ) 
 add_subdirectory( pics ) 
 add_subdirectory( converters ) 

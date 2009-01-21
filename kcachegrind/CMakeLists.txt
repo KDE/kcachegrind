@@ -1,15 +1,9 @@
-
-include_directories( ${CMAKE_CURRENT_BINARY_DIR}/.. ) 
-
-
+include_directories( ../libcore )
 
 ########### next target ###############
 
 set(kcachegrind_SRCS 
-   loader.cpp 
-   cachegrindloader.cpp 
    treemap.cpp 
-   pool.cpp 
    main.cpp 
    configuration.cpp 
    functionselection.cpp 
@@ -18,12 +12,8 @@ set(kcachegrind_SRCS
    toplevel.cpp 
    stackselection.cpp 
    stackbrowser.cpp 
-   subcost.cpp 
-   tracedata.cpp 
    partselection.cpp 
    configdlg.cpp 
-   utils.cpp 
-   fixcost.cpp 
    traceitemview.cpp 
    instrview.cpp 
    tabview.cpp 
@@ -57,7 +47,7 @@ kde4_add_app_icon(kcachegrind_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-kcachegr
 
 kde4_add_executable(kcachegrind ${kcachegrind_SRCS})
 
-target_link_libraries(kcachegrind  ${KDE4_KIO_LIBS} ${QT_QT3SUPPORT_LIBRARY})
+target_link_libraries(kcachegrind core ${KDE4_KIO_LIBS} ${QT_QT3SUPPORT_LIBRARY})
 
 install(TARGETS kcachegrind  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
