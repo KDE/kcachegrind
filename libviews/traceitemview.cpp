@@ -25,8 +25,6 @@
 #include <QWidget>
 
 #include <kconfig.h>
-#include <klocale.h>
-#include <kdebug.h>
 #include <kconfiggroup.h>
 
 #include "toplevelbase.h"
@@ -263,41 +261,35 @@ void TraceItemView::updateView(bool force)
   if (!force && (_status == nothingChanged)) return;
 
 #if TRACE_UPDATES
-  kDebug() << (widget() ? widget()->name() : "TraceItemView")
+  qDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::doUpdate ( "
             << ((_status & dataChanged) ? "data ":"")
             << ((_status & configChanged) ? "config ":"")
-            << ")" << endl;
+            << ")";
 
   if (_status & partsChanged)
-    kDebug() << "  Part List "
-              << _partList.names()
-              << endl;
+    qDebug() << "  Part List "
+	     << _partList.names();
 
   if (_status & eventTypeChanged)
-    kDebug() << "  Cost type "
-              << (_eventType ? qPrintable( _eventType->name() ) : "?")
-              << endl;
+    qDebug() << "  Cost type "
+	     << (_eventType ? qPrintable( _eventType->name() ) : "?");
 
   if (_status & eventType2Changed)
-    kDebug() << "  Cost type 2 "
-              << (_eventType2 ? qPrintable( _eventType2->name() ) : "?")
-              << endl;
+    qDebug() << "  Cost type 2 "
+	     << (_eventType2 ? qPrintable( _eventType2->name() ) : "?");
 
   if (_status & groupTypeChanged)
-    kDebug() << "  Group type "
-              << TraceItem::typeName(_groupType)
-              << endl;
+    qDebug() << "  Group type "
+	     << TraceItem::typeName(_groupType);
 
   if (_status & activeItemChanged)
-    kDebug() << "  Active: "
-              << (_activeItem ? qPrintable( _activeItem->fullName() ) : "?")
-              << endl;
+    qDebug() << "  Active: "
+	     << (_activeItem ? qPrintable( _activeItem->fullName() ) : "?");
 
   if (_status & selectedItemChanged)
-    kDebug() << "  Selected: "
-              << (_selectedItem ? qPrintable( _selectedItem->fullName() ) : "?")
-              << endl;
+    qDebug() << "  Selected: "
+	     << (_selectedItem ? qPrintable( _selectedItem->fullName() ) : "?");
 #endif
 
   int st = _status;
@@ -315,7 +307,7 @@ void TraceItemView::updateView(bool force)
 void TraceItemView::selected(TraceItemView* /*sender*/, TraceItem* i)
 {
 #if TRACE_UPDATES
-  kDebug() << (widget() ? widget()->name() : "TraceItemView")
+  qDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::selected "
             << (i ? qPrintable( i->name() ): "(nil)")
             << ", sender "
@@ -328,11 +320,11 @@ void TraceItemView::selected(TraceItemView* /*sender*/, TraceItem* i)
 void TraceItemView::partsSelected(TraceItemView* /*sender*/, const TracePartList& l)
 {
 #if TRACE_UPDATES
-  kDebug() << (widget() ? widget()->name() : "TraceItemView")
+  qDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::selected "
             << l.names()
             << ", sender "
-            << sender->widget()->name() << endl;
+            << sender->widget()->name();
 #endif
 
   if (_parentView)
@@ -344,11 +336,11 @@ void TraceItemView::partsSelected(TraceItemView* /*sender*/, const TracePartList
 void TraceItemView::activated(TraceItemView* /*sender*/, TraceItem* i)
 {
 #if TRACE_UPDATES
-  kDebug() << (widget() ? widget()->name() : "TraceItemView")
+  qDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::activated "
             << (i ? qPrintable( i->name() ) : "(nil)")
             << ", sender "
-            << sender->widget()->name() << endl;
+            << sender->widget()->name();
 #endif
 
   if (_parentView)
@@ -403,9 +395,9 @@ void TraceItemView::partsSelected(const TracePartList& l)
 void TraceItemView::activated(TraceItem* i)
 {
 #if TRACE_UPDATES
-  kDebug() << (widget() ? widget()->name() : "TraceItemView")
+  qDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::activated "
-            << (i ? qPrintable( i->name() ): "(nil)") << endl;
+            << (i ? qPrintable( i->name() ): "(nil)");
 #endif
 
   if (_parentView)

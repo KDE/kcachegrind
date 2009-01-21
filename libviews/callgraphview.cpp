@@ -25,7 +25,10 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include <QDebug>
 #include <QFile>
+#include <QFileDialog>
+#include <QTemporaryFile>
 #include <QTextStream>
 #include <QMatrix>
 #include <QPair>
@@ -45,12 +48,7 @@
 #include <Qt3Support/Q3PopupMenu>
 #include <Qt3Support/Q3Process>
 
-#include <kdebug.h>
-#include <klocale.h>
 #include <kconfig.h>
-#include <ktemporaryfile.h>
-#include <kiconloader.h>
-#include <kfiledialog.h>
 #include <kconfiggroup.h>
 
 #include "configuration.h"
@@ -589,8 +587,8 @@ void GraphExporter::reset(TraceData*, TraceItem* i, TraceEventType* ct,
 		return;
 
 	if (filename.isEmpty()) {
-		_tmpFile = new KTemporaryFile();
-		_tmpFile->setSuffix(".dot");
+		_tmpFile = new QTemporaryFile();
+		//_tmpFile->setSuffix(".dot");
 		_tmpFile->setAutoRemove(false);
 		_tmpFile->open();
 		_dotName = _tmpFile->fileName();
@@ -674,7 +672,7 @@ void GraphExporter::writeDot()
 	else {
 		file = new QFile(_dotName);
 		if ( !file->open(QIODevice::WriteOnly ) ) {
-			kError() << "Can not write dot file '"<< _dotName << "'"<< endl;
+			qDebug() << "Can not write dot file '"<< _dotName << "'";
                         delete file;
 			return;
 		}
@@ -955,8 +953,8 @@ void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallees,
                                double factor)
 {
 #if DEBUG_GRAPH
-	kDebug() << "buildGraph(" << f->prettyName() << "," << d << "," << factor
-	<< ") [to " << (toCallees ? "Callees":"Callers") << "]" << endl;
+	qDebug() << "buildGraph(" << f->prettyName() << "," << d << "," << factor
+	<< ") [to " << (toCallees ? "Callees":"Callers") << "]";
 #endif
 
 	double oldIncl = 0.0;
@@ -1288,11 +1286,13 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce, int x,
 
 	if (e->call() && (e->call()->isRecursion() || e->call()->inCycle())) {
 		QString icon = "edit-undo";
+#if 0
 		KIconLoader* loader = KIconLoader::global();
 		QPixmap p= loader->loadIcon(icon, KIconLoader::Small, 0,
 		                            KIconLoader::DefaultState, QStringList(), 0,
 		                            true);
 		setPixmap(0, p);
+#endif
 	}
 
 	setToolTip(QString("%1 (%2)").arg(text(0)).arg(text(1)));
@@ -1986,7 +1986,7 @@ void CallGraphView::refresh()
 	}
 
 	if (1)
-		kDebug() << "CallGraphView::refresh";
+		qDebug() << "CallGraphView::refresh";
 
 	_selectedNode = 0;
 	_selectedEdge = 0;
@@ -2005,7 +2005,7 @@ void CallGraphView::refresh()
 	connect(_renderProcess, SIGNAL(processExited()), this, SLOT(dotExited()));
 
 	if (1)
-		kDebug() << "Running '" << _renderProcess->arguments().join(" ") << "'...";
+		qDebug() << "Running '" << _renderProcess->arguments().join(" ") << "'...";
 
 	if ( !_renderProcess->start() ) {
 		QString e = tr("No call graph is available because the following\n"
@@ -2117,27 +2117,27 @@ void CallGraphView::dotExited()
 				_scene->setBackgroundBrush(Qt::white);
 
 #if DEBUG_GRAPH
-				kDebug() << _exporter.filename().ascii() << ":" << lineno
+				qDebug() << _exporter.filename().ascii() << ":" << lineno
 					<< " - graph (" << dotWidth << " x " << dotHeight
-					<< ") => (" << w << " x " << h << ")" << endl;
+					<< ") => (" << w << " x " << h << ")";
 #endif
 			} else
-				kWarning() << "Ignoring 2nd 'graph' from dot ("
-				        << _exporter.filename() << ":"<< lineno << ")"<< endl;
+				qDebug() << "Ignoring 2nd 'graph' from dot ("
+				        << _exporter.filename() << ":"<< lineno << ")";
 			continue;
 		}
 
-    if ((cmd != "node") && (cmd != "edge")) {
-			kWarning() << "Ignoring unknown command '"<< cmd
+		if ((cmd != "node") && (cmd != "edge")) {
+			qDebug() << "Ignoring unknown command '"<< cmd
 			        << "' from dot ("<< _exporter.filename() << ":"<< lineno
-			        << ")"<< endl;
+			        << ")";
 			continue;
 		}
 
 		if (_scene == 0) {
-			kWarning() << "Ignoring '"<< cmd
+			qDebug() << "Ignoring '"<< cmd
 			        << "' without 'graph' from dot ("<< _exporter.filename()
-			        << ":"<< lineno << ")"<< endl;
+			        << ":"<< lineno << ")";
 			continue;
 		}
 
@@ -2160,7 +2160,7 @@ void CallGraphView::dotExited()
 			int h = (int)(scaleY * height);
 
 #if DEBUG_GRAPH
-			kDebug() << _exporter.filename() << ":" << lineno
+			qDebug() << _exporter.filename() << ":" << lineno
 			<< " - node '" << nodeName << "' ( "
 			<< x << "/" << y << " - "
 			<< width << "x" << height << " ) => ("
@@ -2216,9 +2216,9 @@ void CallGraphView::dotExited()
 		GraphEdge* e = _exporter.edge(_exporter.toFunc(node1Name),
 		                              _exporter.toFunc(node2Name));
 		if (!e) {
-			kWarning() << "Unknown edge '"<< node1Name << "'-'"<< node2Name
+			qDebug() << "Unknown edge '"<< node1Name << "'-'"<< node2Name
 			        << "' from dot ("<< _exporter.filename() << ":"<< lineno
-			        << ")"<< endl;
+			        << ")";
 			continue;
 		}
 		e->setVisible(true);
@@ -2951,8 +2951,7 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 		if (!_scene)
 			return;
 
-		QString fn = KFileDialog::getSaveFileName(KUrl("kfiledialog:///"),
-		                                          "*.png");
+		QString fn = QFileDialog::getSaveFileName(this, tr("Save Image"));
 
 		if (!fn.isEmpty()) {
 			QRect r = _scene->sceneRect().toRect();

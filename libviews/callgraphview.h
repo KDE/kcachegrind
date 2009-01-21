@@ -46,8 +46,8 @@
 #include "traceitemview.h"
 
 class Q3Process;
+class QTemporaryFile;
 
-class KTemporaryFile;
 class CanvasNode;
 class CanvasEdge;
 class GraphEdge;
@@ -353,7 +353,7 @@ private:
 	TraceItem* _item;
 	TraceEventType* _eventType;
 	TraceItem::CostType _groupType;
-	KTemporaryFile* _tmpFile;
+	QTemporaryFile* _tmpFile;
 	double _realFuncLimit, _realCallLimit;
 	int _maxDepth;
 	bool _graphCreated;

@@ -28,8 +28,8 @@
 #include <QObject>
 
 #include <kconfig.h>
-#include <kdebug.h>
 #include <kconfiggroup.h>
+#include <QDebug>
 
 #include "tabview.h"
 
@@ -80,8 +80,8 @@ void MultiView::appendView()
 	    _groupType, _partList, _activeItem, 0);
     tv->updateView();
 
-    if (0) kDebug() << "MultiView::appendView, now "
-		     << _views.count() << endl;
+    if (0) qDebug() << "MultiView::appendView, now "
+		     << _views.count();
 }
 
 void MultiView::removeView()
@@ -100,8 +100,8 @@ void MultiView::removeView()
     _views.removeRef(last);
     delete last;
 
-    if (0) kDebug() << "MultiView::removeView, now "
-		     << _views.count() << endl;
+    if (0) qDebug() << "MultiView::removeView, now "
+		     << _views.count();
 }
 
 
@@ -109,8 +109,8 @@ void MultiView::tabActivated(TabView* newActiveTab)
 {
     if (_active == newActiveTab) return;
 
-    if (0) kDebug() << "MultiView::tabActivated "
-		     << newActiveTab->name() << endl;
+    if (0) qDebug() << "MultiView::tabActivated "
+		     << newActiveTab->name();
 
     TraceItem* oldActiveItem = 0;
     if (_active) {
@@ -126,8 +126,8 @@ void MultiView::tabActivated(TabView* newActiveTab)
 
 void MultiView::selected(TraceItemView* sender, TraceItem* i)
 {
-    if (0) kDebug() << "MultiView::selected " << i->name()
-		     << ", sender " << sender->widget()->name() << endl;
+    if (0) qDebug() << "MultiView::selected " << i->name()
+		     << ", sender " << sender->widget()->name();
 
      // we react only on selection changes of the active TabView
     if (sender != (TraceItemView*)_active) return;
@@ -145,8 +145,8 @@ void MultiView::selected(TraceItemView* sender, TraceItem* i)
 
 void MultiView::activated(TraceItemView* sender, TraceItem* i)
 {
-    if (0) kDebug() << "MultiView::activated " << i->name()
-		     << ", sender " << sender->widget()->name() << endl;
+    if (0) qDebug() << "MultiView::activated " << i->name()
+		     << ", sender " << sender->widget()->name();
 
     // we react only on selection changes of the active TabView
     if (sender != (TraceItemView*)_active) return;

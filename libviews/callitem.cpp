@@ -24,9 +24,6 @@
 
 #include <QPixmap>
 
-#include <klocale.h>
-#include <kiconloader.h>
-
 #include "configuration.h"
 #include "listutils.h"
 #include "callview.h"
@@ -147,9 +144,11 @@ void CallItem::updateCost()
     if (sameCycle && !selectedIsCycle && !shownIsCycle) {
 
 	QString icon = "edit-undo";
+#if 0 // TODO
 	KIconLoader* loader = KIconLoader::global();
 	p= loader->loadIcon(icon, KIconLoader::Small, 0,
 			    KIconLoader::DefaultState, QStringList(), 0, true);
+#endif
     }
     setPixmap(2, p);
 }

@@ -26,10 +26,6 @@
 #include <QPainter>
 #include <QPolygon>
 
-#include <klocale.h>
-#include <kiconloader.h>
-#include <kdebug.h>
-
 #include "configuration.h"
 #include "listutils.h"
 #include "instrview.h"
@@ -179,9 +175,11 @@ void InstrItem::updateCost()
     QPixmap p;
 
     QString icon = "edit-undo";
+#if 0 // TODO
     KIconLoader* loader = KIconLoader::global();
     p= loader->loadIcon(icon, KIconLoader::Small, 0,
                         KIconLoader::DefaultState, QStringList(), 0, true);
+#endif
     if (p.isNull())
       str = QObject::tr("(cycle)");
 
@@ -352,7 +350,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       if ((_instrJump == _jump[i]) &&
 	  (_jump[i]->instrFrom()->addr() == _addr)) {
 
-	  //kDebug() << "InstrItem " << _addr.toString() << ": start " << i;
+	  //qDebug() << "InstrItem " << _addr.toString() << ": start " << i;
 	  if (start<0) start = i;
 	  if (_jump[i]->instrTo()->addr() <= _addr)
 	      y2 = yy;
@@ -362,7 +360,7 @@ void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
       else if (!_instrJump && !_instrCall &&
 	       (_jump[i]->instrTo()->addr() == _addr)) {
 
-	  //kDebug() << "InstrItem " << _addr.toString() << ": end " << i;
+	  //qDebug() << "InstrItem " << _addr.toString() << ": end " << i;
 	  if (end<0) end = i;
 	  if (_jump[i]->instrFrom()->addr() < _addr)
 	      y2 = yy;

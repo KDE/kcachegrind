@@ -24,9 +24,6 @@
 #include <QRegExp>
 #include <QPixmap>
 
-#include <klocale.h>
-#include <kiconloader.h>
-
 #include "listutils.h"
 #include "coverage.h"
 #include "configuration.h"

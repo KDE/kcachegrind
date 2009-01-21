@@ -28,9 +28,6 @@
 #include <QPolygon>
 #include <QTextDocument>
 
-#include <klocale.h>
-#include <kiconloader.h>
-
 #include "configuration.h"
 #include "listutils.h"
 #include "sourceview.h"
@@ -165,9 +162,11 @@ void SourceItem::updateCost()
     QPixmap p;
 
     QString icon = "edit-undo";
+#if 0 // TODO
     KIconLoader* loader = KIconLoader::global();
     p= loader->loadIcon(icon, KIconLoader::Small, 0,
                         KIconLoader::DefaultState, QStringList(), 0, true);
+#endif
     if (p.isNull())
       str = QObject::tr("(cycle)");
 

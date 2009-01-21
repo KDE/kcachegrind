@@ -24,10 +24,8 @@
 
 #include <QDir>
 #include <QFile>
+#include <QDebug>
 #include <Qt3Support/Q3PopupMenu>
-
-#include <klocale.h>
-#include <kdebug.h>
 
 #include "configuration.h"
 #include "sourceitem.h"
@@ -499,10 +497,10 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
 	  nextCostLineno     = (lineIt == lineItEnd) ? 0 : (*lineIt).lineno();
 	  if (nextCostLineno<0) {
-	    kError() << "SourceView::fillSourceFile: Negative line number "
-		      << nextCostLineno << endl
-		      << "  Function '" << sf->function()->name() << "'" << endl
-		      << "  File '" << sf->file()->name() << "'" << endl;
+	    qDebug() << "SourceView::fillSourceFile: Negative line number "
+			<< nextCostLineno;
+	    qDebug() << "  Function '" << sf->function()->name() << "'";
+	    qDebug() << "  File '" << sf->file()->name() << "'";
 	    nextCostLineno = 0;
 	  }
 	    

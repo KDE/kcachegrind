@@ -36,10 +36,11 @@
 #include <QSplitter>
 #include <Qt3Support/Q3PtrList>
 
-#include <ksqueezedtextlabel.h>
+//#include <ksqueezedtextlabel.h>
 
 #include "traceitemview.h"
 
+class QLabel;
 class TabView;
 
 /**
@@ -166,7 +167,7 @@ private:
   // this is true if width or height <= 1, and no child updates are done
   bool _isCollapsed;
 
-  KSqueezedTextLabel* _nameLabel;
+  QLabel* _nameLabel;
   QSplitter *_mainSplitter, *_leftSplitter, *_bottomSplitter;
   TabWidget *_topTW, *_leftTW, *_bottomTW, *_rightTW;
   Q3PtrList<TraceItemView> _tabs;

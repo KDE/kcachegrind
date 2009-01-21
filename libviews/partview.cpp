@@ -26,8 +26,6 @@
 #include <Qt3Support/Q3PopupMenu>
 #include <Qt3Support/Q3Header>
 
-#include <klocale.h>
-
 #include "configuration.h"
 #include "partlistitem.h"
 #include "toplevelbase.h"

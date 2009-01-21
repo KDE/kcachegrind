@@ -24,6 +24,7 @@
 
 #include "tabview.h"
 
+#include <QLabel>
 #include <QSplitter>
 #include <QTabWidget>
 #include <QLayout>
@@ -37,7 +38,6 @@
 #include <Qt3Support/Q3PopupMenu>
 #include <Qt3Support/Q3PtrList>
 
-#include <klocale.h>
 #include <kconfig.h>
 #include <kconfiggroup.h>
 
@@ -261,7 +261,7 @@ TabView::TabView(TraceItemView* parentView,
   vbox->setSpacing( 6 );
   vbox->setMargin( 6 );
 
-  _nameLabel = new KSqueezedTextLabel( this);
+  _nameLabel = new QLabel(this); //KSqueezedTextLabel( this);
   _nameLabel->setObjectName( "nameLabel" );
   _nameLabel->setText(tr("(No profile data file loaded)"));
   vbox->addWidget( _nameLabel );

@@ -24,8 +24,6 @@
 
 #include <QPixmap>
 
-#include <klocale.h>
-
 #include "configuration.h"
 #include "listutils.h"
 

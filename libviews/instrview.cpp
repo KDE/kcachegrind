@@ -24,13 +24,12 @@
 
 #include <assert.h>
 
+#include <QDebug>
 #include <QFile>
 #include <QRegExp>
 #include <Qt3Support/Q3PopupMenu>
 
-#include <klocale.h>
 #include <kconfig.h>
-#include <kdebug.h>
 #include <kconfiggroup.h>
 
 #include "configuration.h"
@@ -583,8 +582,8 @@ void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
 	for(iEnd=0;iEnd<_arrowLevels;iEnd++)
 	    if (_jump[iEnd] == ij) break;
 	if (iEnd==_arrowLevels) {
-	  kDebug() << "InstrView: no jump start for end at 0x"
-		    << highAddr.toString() << " ?" << endl;
+	  qDebug() << "InstrView: no jump start for end at 0x"
+		    << highAddr.toString() << " ?";
 	  iEnd = -1;
 	}
 
@@ -701,7 +700,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
           if (objAddr != 0) break;
         }
 
-        if (0) kDebug() << "Got ObjAddr: 0x" << objAddr.toString();
+        if (0) qDebug() << "Got ObjAddr: 0x" << objAddr.toString();
       }
 
       // try to keep objAddr in [costAddr;nextCostAddr]
@@ -720,8 +719,8 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	  costAddr = nextCostAddr;
 	  nextCostAddr = (it == itEnd) ? Addr(0) : (*it).addr();
 
-	  if (0) kDebug() << "Got nextCostAddr: 0x" << nextCostAddr.toString()
-			   << ", costAddr 0x" << costAddr.toString() << endl;
+	  if (0) qDebug() << "Got nextCostAddr: 0x" << nextCostAddr.toString()
+			   << ", costAddr 0x" << costAddr.toString();
       }
 
       // if we have no more address from objdump, stop
@@ -744,10 +743,10 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 
 	  needObjAddr = true;
 
-	  if (0) kDebug() << "Dump Obj Addr: 0x" << addr.toString()
+	  if (0) qDebug() << "Dump Obj Addr: 0x" << addr.toString()
 			   << " [" << cmd << " " << args << "], cost (0x"
 			   << costAddr.toString() << ", next 0x"
-			   << nextCostAddr.toString() << ")" << endl;
+			   << nextCostAddr.toString() << ")";
       }
       else {
 	  addr = costAddr;
@@ -758,8 +757,8 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	  needCostAddr = true;
 
 	  noAssLines++;
-	  if (0) kDebug() << "Dump Cost Addr: 0x" << addr.toString()
-			   << " (no ass), objAddr 0x" << objAddr.toString() << endl;
+	  if (0) qDebug() << "Dump Cost Addr: 0x" << addr.toString()
+			   << " (no ass), objAddr 0x" << objAddr.toString();
       }
 
       // update inside
@@ -767,7 +766,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	  if (currInstr) inside = true;
       }
       else {
-	if (0) kDebug() << "Check if 0x" << addr.toString() << " is in ]0x"
+	if (0) qDebug() << "Check if 0x" << addr.toString() << " is in ]0x"
 			 << costAddr.toString() << ",0x"
 			 << (nextCostAddr - 3*Configuration::noCostInside()).toString()
 			 << "[" << endl;
@@ -804,9 +803,9 @@ bool InstrView::fillInstrRange(TraceFunction* function,
       ii = new InstrItem(this, this, addr, inside,
                          code, cmd, args, currInstr);
       dumpedLines++;
-      if (0) kDebug() << "Dumped 0x" << addr.toString() << " "
+      if (0) qDebug() << "Dumped 0x" << addr.toString() << " "
 		       << (inside ? "Inside " : "Outside")
-		       << (currInstr ? "Cost" : "") << endl;
+		      << (currInstr ? "Cost" : "");
 
       // no calls/jumps if we have no cost for this line
       if (!currInstr) continue;
