@@ -36,8 +36,6 @@
 #include <QSplitter>
 #include <Qt3Support/Q3PtrList>
 
-//#include <ksqueezedtextlabel.h>
-
 #include "traceitemview.h"
 
 class QLabel;
@@ -142,9 +140,8 @@ public:
 
   void saveLayout(const QString& prefix, const QString& postfix);
   void restoreLayout(const QString& prefix, const QString& postfix);
-
-  void readViewConfig(KConfig*, const QString& prefix, const QString& postfix);
-  void saveViewConfig(KConfig*, const QString& prefix, const QString& postfix);
+  void saveOptions(const QString& prefix, const QString& postfix);
+  void restoreOptions(const QString& prefix, const QString& postfix);
 
 public slots:
   void tabChanged(QWidget*);

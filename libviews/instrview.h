@@ -41,8 +41,8 @@ public:
   virtual QWidget* widget() { return this; }
   QString whatsThis() const;
 
-  void readViewConfig(KConfig*, const QString& prefix, const QString& postfix);
-  void saveViewConfig(KConfig*, const QString& prefix, const QString& postfix);
+  void restoreOptions(const QString& prefix, const QString& postfix);
+  void saveOptions(const QString& prefix, const QString& postfix);
 
 protected:
   int arrowLevels() { return _arrowLevels; }

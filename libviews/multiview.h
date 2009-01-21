@@ -52,9 +52,8 @@ public:
 
   void saveLayout(const QString& prefix, const QString& postfix);
   void restoreLayout(const QString& prefix, const QString& postfix);
-
-  void readViewConfig(KConfig*, const QString& prefix, const QString& postfix);
-  void saveViewConfig(KConfig*, const QString& prefix, const QString& postfix);
+  void saveOptions(const QString& prefix, const QString& postfix);
+  void restoreOptions(const QString& prefix, const QString& postfix);
 
 public slots:
     void tabActivated(TabView*);

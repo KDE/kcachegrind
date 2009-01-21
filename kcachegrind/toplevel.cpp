@@ -226,7 +226,7 @@ void TopLevel::saveCurrentState(const QString& postfix)
   stateConfig.writeEntry("GroupType", TraceItem::typeName(_groupType));
 
   _multiView->saveLayout(QString("MainView"), postfix);
-  _multiView->saveViewConfig(kconfig, QString("MainView"), postfix);
+  _multiView->saveOptions(QString("MainView"), postfix);
 }
 
 /**
@@ -277,7 +277,7 @@ void TopLevel::restoreCurrentState(const QString& postfix)
   _partSelection->readVisualisationConfig(&psConfig);
 
   _multiView->restoreLayout(QString("MainView"), postfix);
-  _multiView->readViewConfig(kconfig, QString("MainView"), postfix);
+  _multiView->restoreOptions(QString("MainView"), postfix);
   _taSplit->setChecked(_multiView->childCount()>1);
   _taSplitDir->setEnabled(_multiView->childCount()>1);
   _taSplitDir->setChecked(_multiView->orientation() == Qt::Horizontal);

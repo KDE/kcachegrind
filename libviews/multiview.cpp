@@ -26,9 +26,6 @@
 #include "multiview.h"
 
 #include <QObject>
-
-#include <kconfig.h>
-#include <kconfiggroup.h>
 #include <QDebug>
 
 #include "config.h"
@@ -225,26 +222,20 @@ void MultiView::saveLayout(const QString& prefix, const QString& postfix)
 
 
 
-void MultiView::readViewConfig(KConfig* c,
-                               const QString& prefix, const QString& postfix)
+void MultiView::restoreOptions(const QString& prefix, const QString& postfix)
 {
-  if (0) qDebug("%s::readConfig(%s%s)", name(),
-		prefix.ascii(), postfix.ascii());
-
-  TabView* tv;
-  for(tv=_views.first();tv;tv=_views.next()) {
-      tv->readViewConfig(c, QString("%1-%2").arg(prefix).arg(tv->name()),
-			 postfix);
-  }
+    TabView* tv;
+    for(tv=_views.first();tv;tv=_views.next())
+	tv->restoreOptions(QString("%1-%2").arg(prefix).arg(tv->name()),
+			   postfix);
 }
 
-void MultiView::saveViewConfig(KConfig* c,
-                               const QString& prefix, const QString& postfix)
+void MultiView::saveOptions(const QString& prefix, const QString& postfix)
 {
-  TabView* tv;
-  for(tv=_views.first();tv;tv=_views.next())
-    tv->saveViewConfig(c, QString("%1-%2").arg(prefix).arg(tv->name()),
-		       postfix);
+    TabView* tv;
+    for(tv=_views.first();tv;tv=_views.next())
+	tv->saveOptions(QString("%1-%2").arg(prefix).arg(tv->name()),
+			postfix);
 }
 
 

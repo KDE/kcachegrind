@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2003-2009 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -27,9 +27,6 @@
 
 class QWidget;
 class QMenu;
-
-class KConfig;
-class KConfigGroup;
 
 class TopLevelBase;
 
@@ -73,20 +70,11 @@ public:
 
   virtual QString whatsThis() const;
 
+  // visualization layout and options (uses ConfigStorage)
   virtual void saveLayout(const QString& prefix, const QString& postfix);
   virtual void restoreLayout(const QString& prefix, const QString& postfix);
-
-  static KConfigGroup configGroup(KConfig*, const QString& prefix, const QString& postfix);
-  static void writeConfigEntry(KConfigGroup&, const char* pKey, const QString& value,
-                               const char* def, bool bNLS = false);
-  static void writeConfigEntry(KConfigGroup&, const char* pKey,
-                               int value, int def);
-  static void writeConfigEntry(KConfigGroup&, const char* pKey,
-                               bool value, bool def);
-  static void writeConfigEntry(KConfigGroup&, const char* pKey,
-                               double value, double def);
-  virtual void readViewConfig(KConfig*, const QString& prefix, const QString& postfix);
-  virtual void saveViewConfig(KConfig*, const QString& prefix, const QString& postfix);
+  virtual void saveOptions(const QString& prefix, const QString& postfix);
+  virtual void restoreOptions(const QString& prefix, const QString& postfix);
 
   // Immediate remove all references to old data, and set the new.
   // This resets the visualization state.

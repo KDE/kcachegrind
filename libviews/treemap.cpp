@@ -39,8 +39,6 @@
 #include <Qt3Support/Q3PtrList>
 #include <Qt3Support/Q3PopupMenu>
 
-#include <kconfig.h>
-#include <kconfiggroup.h>
 
 // set this to 1 to enable debug output
 #define DEBUG_DRAWING 0
@@ -3193,89 +3191,5 @@ void TreeMapWidget::addDepthStopItems(Q3PopupMenu* popup,
   }
 }
 
-
-
-/*----------------------------------------------------------------
- * Option saving/restoring
- */
-
-void TreeMapWidget::saveOptions(KConfigGroup* config, const QString& prefix)
-{
-  config->writeEntry(prefix+"Nesting", splitModeString());
-  config->writeEntry(prefix+"AllowRotation", allowRotation());
-  config->writeEntry(prefix+"ShadingEnabled", isShadingEnabled());
-  config->writeEntry(prefix+"OnlyCorrectBorder", skipIncorrectBorder());
-  config->writeEntry(prefix+"BorderWidth", borderWidth());
-  config->writeEntry(prefix+"MaxDepth", maxDrawingDepth());
-  config->writeEntry(prefix+"MinimalArea", minimalArea());
-
-  int f, fCount = _attr.size();
-  config->writeEntry(prefix+"FieldCount", fCount);
-  for (f=0;f<fCount;f++) {
-    config->writeEntry(QString(prefix+"FieldVisible%1").arg(f),
-                       _attr[f].visible);
-    config->writeEntry(QString(prefix+"FieldForced%1").arg(f),
-                       _attr[f].forced);
-    config->writeEntry(QString(prefix+"FieldStop%1").arg(f),
-                       _attr[f].stop);
-    config->writeEntry(QString(prefix+"FieldPosition%1").arg(f),
-                       fieldPositionString(f));
-  }
-}
-
-
-void TreeMapWidget::restoreOptions(KConfigGroup* config, const QString& prefix)
-{
-  bool enabled;
-  int num;
-  QString str;
-
-  str = config->readEntry(prefix+"Nesting", QString());
-  if (!str.isEmpty()) setSplitMode(str);
-
-  if (config->hasKey(prefix+"AllowRotation")) {
-    enabled = config->readEntry(prefix+"AllowRotation", true);
-    setAllowRotation(enabled);
-  }
-
-  if (config->hasKey(prefix+"ShadingEnabled")) {
-    enabled = config->readEntry(prefix+"ShadingEnabled", true);
-    setShadingEnabled(enabled);
-  }
-
-  if (config->hasKey(prefix+"OnlyCorrectBorder")) {
-    enabled = config->readEntry(prefix+"OnlyCorrectBorder", false);
-    setSkipIncorrectBorder(enabled);
-  }
-
-  num = config->readEntry(prefix+"BorderWidth", -2);
-  if (num!=-2) setBorderWidth(num);
-
-  num = config->readEntry(prefix+"MaxDepth", -2);
-  if (num!=-2) setMaxDrawingDepth(num);
-
-  num = config->readEntry(prefix+"MinimalArea", -2);
-  if (num!=-2) setMinimalArea(num);
-
-  num = config->readEntry(prefix+"FieldCount", -2);
-  if (num<=0 || num>MAX_FIELD) return;
-
-  int f;
-  for (f=0;f<num;f++) {
-    str = QString(prefix+"FieldVisible%1").arg(f);
-    if (config->hasKey(str))
-      setFieldVisible(f, config->readEntry(str,false));
-
-    str = QString(prefix+"FieldForced%1").arg(f);
-    if (config->hasKey(str))
-      setFieldForced(f, config->readEntry(str,false));
-
-    str = config->readEntry(QString(prefix+"FieldStop%1").arg(f),QString());
-    setFieldStop(f, str);
-
-    str = config->readEntry(QString(prefix+"FieldPosition%1").arg(f),QString());
-    if (!str.isEmpty()) setFieldPosition(f, str);
-  }
-}
 
 #include "treemap.moc"

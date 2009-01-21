@@ -38,9 +38,6 @@
 #include <Qt3Support/Q3PopupMenu>
 #include <Qt3Support/Q3PtrList>
 
-#include <kconfig.h>
-#include <kconfiggroup.h>
-
 #include "config.h"
 #include "eventtypeview.h"
 #include "partview.h"
@@ -926,30 +923,27 @@ void TabView::saveLayout(const QString& prefix, const QString& postfix)
     delete g;
 }
 
-void TabView::readViewConfig(KConfig* c,
-			     const QString& prefix, const QString& postfix)
+void TabView::restoreOptions(const QString& prefix, const QString& postfix)
 {
-    if (0) qDebug("%s::readConfig(%s%s)", name(),
-		  prefix.ascii(), postfix.ascii());
-
-    KConfigGroup g = configGroup(c, prefix, postfix);
-
     TraceItemView *v;
     Q3PtrListIterator<TraceItemView> it( _tabs );
     while ( (v=it.current()) != 0) {
       ++it;
 
-      v->readViewConfig(c,
-			QString("%1-%2").arg(prefix).arg(v->widget()->name()),
+      v->restoreOptions(QString("%1-%2").arg(prefix).arg(v->widget()->name()),
 			postfix);
     }
 
     if (!_data) return;
 
-    QString activeType = g.readEntry("ActiveItemType", "");
-    QString activeName = g.readEntry("ActiveItemName", "");
-    QString selectedType = g.readEntry("SelectedItemType", "");
-    QString selectedName = g.readEntry("SelectedItemName", "");
+    ConfigGroup* g = ConfigStorage::group(prefix, postfix);
+
+    QString activeType = g->value("ActiveItemType", QString()).toString();
+    QString activeName = g->value("ActiveItemName", QString()).toString();
+    QString selectedType = g->value("SelectedItemType", QString()).toString();
+    QString selectedName = g->value("SelectedItemName", QString()).toString();
+
+    delete g;
 
     // restore active item
     TraceItem::CostType t = TraceItem::costType(activeType);
@@ -968,26 +962,27 @@ void TabView::readViewConfig(KConfig* c,
     updateView();
 }
 
-void TabView::saveViewConfig(KConfig* c,
-			     const QString& prefix, const QString& postfix)
+void TabView::saveOptions(const QString& prefix, const QString& postfix)
 {
-    KConfigGroup g(c, (prefix+postfix).ascii());
-
     if (_activeItem) {
-	g.writeEntry("ActiveItemType",
-                     TraceItem::typeName(_activeItem->type()));
-	g.writeEntry("ActiveItemName", _activeItem->name());
+	ConfigGroup* g = ConfigStorage::group(prefix + postfix);
+
+	g->setValue("ActiveItemType",
+		    TraceItem::typeName(_activeItem->type()));
+	g->setValue("ActiveItemName", _activeItem->name());
+
 	if (_selectedItem) {
-	    g.writeEntry("SelectedItemType",
-			 TraceItem::typeName(_selectedItem->type()));
-	    g.writeEntry("SelectedItemName", _selectedItem->name());
+	    g->setValue("SelectedItemType",
+			TraceItem::typeName(_selectedItem->type()));
+	    g->setValue("SelectedItemName", _selectedItem->name());
 	}
+	delete g;
     }
 
     TraceItemView *v;
     for (v=_tabs.first();v;v=_tabs.next())
-	v->saveViewConfig(c, QString("%1-%2").arg(prefix)
-			  .arg(v->widget()->name()), postfix);
+	v->saveOptions(QString("%1-%2").arg(prefix)
+		       .arg(v->widget()->name()), postfix);
 }
 
 #include "tabview.moc"

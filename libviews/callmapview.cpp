@@ -26,9 +26,7 @@
 #include <QPixmap>
 #include <Qt3Support/Q3PopupMenu>
 
-#include <klocale.h>
-#include <kiconloader.h>
-
+#include "config.h"
 #include "globalconfig.h"
 #include "listutils.h"
 #include "toplevelbase.h"
@@ -48,6 +46,8 @@
 #define DEFAULT_FORCESTRINGS false
 #define DEFAULT_ROTATION     true
 #define DEFAULT_SHADING      true
+#define DEFAULT_STOPNAME     ""
+#define DEFAULT_MAXDEPTH     -1
 #define DEFAULT_MAXAREA      100
 
 
@@ -951,51 +951,52 @@ QColor CallMapCallerItem::backColor() const
   return w->groupColor(_c->caller());
 }
 
-void CallMapView::readViewConfig(KConfig* c,
-                                 const QString& prefix, const QString& postfix)
+void CallMapView::restoreOptions(const QString& prefix, const QString& postfix)
 {
-    KConfigGroup g = configGroup(c, prefix, postfix);
+    ConfigGroup* g = ConfigStorage::group(prefix, postfix);
 
-    setSplitMode(g.readEntry("SplitMode", DEFAULT_SPLITMODE));
+    setSplitMode(g->value("SplitMode", QString(DEFAULT_SPLITMODE)).toString());
 
-    setFieldVisible(0, g.readEntry("DrawName", DEFAULT_DRAWNAME));
-    setFieldVisible(1, g.readEntry("DrawCost", DEFAULT_DRAWCOST));
-    setFieldVisible(2, g.readEntry("DrawLocation", DEFAULT_DRAWLOCATION));
-    setFieldVisible(3, g.readEntry("DrawCalls", DEFAULT_DRAWCALLS));
+    setFieldVisible(0, g->value("DrawName", DEFAULT_DRAWNAME).toBool());
+    setFieldVisible(1, g->value("DrawCost", DEFAULT_DRAWCOST).toBool());
+    setFieldVisible(2, g->value("DrawLocation", DEFAULT_DRAWLOCATION).toBool());
+    setFieldVisible(3, g->value("DrawCalls", DEFAULT_DRAWCALLS).toBool());
 
-    bool enable = g.readEntry("ForceStrings", DEFAULT_FORCESTRINGS);
+    bool enable = g->value("ForceStrings", DEFAULT_FORCESTRINGS).toBool();
     setFieldForced(0, enable);
     setFieldForced(1, enable);
     setFieldForced(2, enable);
     setFieldForced(3, enable);
 
-    setAllowRotation(g.readEntry("AllowRotation", DEFAULT_ROTATION));
-    setShadingEnabled(g.readEntry("Shading", DEFAULT_SHADING));
-    setFieldStop(0, g.readEntry("StopName"));
-    setMaxDrawingDepth(g.readEntry("MaxDepth", -1));
-    setMinimalArea(g.readEntry("MaxArea", DEFAULT_MAXAREA));
+    setAllowRotation(g->value("AllowRotation", DEFAULT_ROTATION).toBool());
+    setShadingEnabled(g->value("Shading", DEFAULT_SHADING).toBool());
+    setFieldStop(0, g->value("StopName", QString(DEFAULT_STOPNAME)).toString());
+    setMaxDrawingDepth(g->value("MaxDepth", DEFAULT_MAXDEPTH).toInt());
+    setMinimalArea(g->value("MaxArea", DEFAULT_MAXAREA).toInt());
 
+    delete g;
 }
 
-void CallMapView::saveViewConfig(KConfig* c,
-                                 const QString& prefix, const QString& postfix)
+void CallMapView::saveOptions(const QString& prefix, const QString& postfix)
 {
-    KConfigGroup g(c, (prefix+postfix).ascii());
+    ConfigGroup* g = ConfigStorage::group(prefix + postfix);
 
-    writeConfigEntry(g, "SplitMode", splitModeString(), DEFAULT_SPLITMODE);
-    writeConfigEntry(g, "DrawName", fieldVisible(0), DEFAULT_DRAWNAME);
-    writeConfigEntry(g, "DrawCost", fieldVisible(1), DEFAULT_DRAWCOST);
-    writeConfigEntry(g, "DrawLocation", fieldVisible(2), DEFAULT_DRAWLOCATION);
-    writeConfigEntry(g, "DrawCalls", fieldVisible(3), DEFAULT_DRAWCALLS);
+    g->setValue("SplitMode", splitModeString(), QString(DEFAULT_SPLITMODE));
+    g->setValue("DrawName", fieldVisible(0), DEFAULT_DRAWNAME);
+    g->setValue("DrawCost", fieldVisible(1), DEFAULT_DRAWCOST);
+    g->setValue("DrawLocation", fieldVisible(2), DEFAULT_DRAWLOCATION);
+    g->setValue("DrawCalls", fieldVisible(3), DEFAULT_DRAWCALLS);
     // when option for all text (0-3)
-    writeConfigEntry(g, "ForceStrings", fieldForced(0), DEFAULT_FORCESTRINGS);
+    g->setValue("ForceStrings", fieldForced(0), DEFAULT_FORCESTRINGS);
 
-    writeConfigEntry(g, "AllowRotation", allowRotation(), DEFAULT_ROTATION);
-    writeConfigEntry(g, "Shading", isShadingEnabled(), DEFAULT_SHADING);
+    g->setValue("AllowRotation", allowRotation(), DEFAULT_ROTATION);
+    g->setValue("Shading", isShadingEnabled(), DEFAULT_SHADING);
 
-    writeConfigEntry(g, "StopName", fieldStop(0), "");
-    writeConfigEntry(g, "MaxDepth", maxDrawingDepth(), -1);
-    writeConfigEntry(g, "MaxArea", minimalArea(), DEFAULT_MAXAREA);
+    g->setValue("StopName", fieldStop(0), QString(DEFAULT_STOPNAME));
+    g->setValue("MaxDepth", maxDrawingDepth(), DEFAULT_MAXDEPTH);
+    g->setValue("MaxArea", minimalArea(), DEFAULT_MAXAREA);
+
+    delete g;
 }
 
 #include "callmapview.moc"

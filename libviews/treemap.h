@@ -44,7 +44,6 @@
 #include <QContextMenuEvent>
 #include <Q3PopupMenu>
 #include <QMouseEvent>
-#include <kconfiggroup.h>
 
 class Q3PopupMenu;
 class TreeMapTip;
@@ -52,8 +51,6 @@ class TreeMapWidget;
 class TreeMapItem;
 class TreeMapItemList;
 class QString;
-
-class KConfigGroup;
 
 
 /**
@@ -616,12 +613,6 @@ public:
 
   void setBorderWidth(int w);
   int borderWidth() const { return _borderWidth; }
-
-  /**
-   * Save/restore options.
-   */
-  void saveOptions(KConfigGroup*, const QString& prefix = QString());
-  void restoreOptions(KConfigGroup*, const QString& prefix = QString());
 
   /**
    * These functions populate given popup menus.

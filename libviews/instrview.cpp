@@ -29,9 +29,7 @@
 #include <QRegExp>
 #include <Qt3Support/Q3PopupMenu>
 
-#include <kconfig.h>
-#include <kconfiggroup.h>
-
+#include "config.h"
 #include "globalconfig.h"
 #include "instritem.h"
 
@@ -941,22 +939,20 @@ void InstrView::updateInstrItems()
     }
 }
 
-void InstrView::readViewConfig(KConfig* c,
-                               const QString& prefix, const QString& postfix)
+void InstrView::restoreOptions(const QString& prefix, const QString& postfix)
 {
-    KConfigGroup g = configGroup(c, prefix, postfix);
+    ConfigGroup* g = ConfigStorage::group(prefix, postfix);
 
-    if (0) qDebug("InstrView::readViewConfig");
-
-    _showHexCode  = g.readEntry("ShowHexCode", DEFAULT_SHOWHEXCODE);
+    _showHexCode  = g->value("ShowHexCode", DEFAULT_SHOWHEXCODE).toBool();
+    delete g;
 }
 
-void InstrView::saveViewConfig(KConfig* c,
-                               const QString& prefix, const QString& postfix)
+void InstrView::saveOptions(const QString& prefix, const QString& postfix)
 {
-    KConfigGroup g(c, (prefix+postfix).ascii());
+    ConfigGroup* g = ConfigStorage::group(prefix + postfix);
 
-    writeConfigEntry(g, "ShowHexCode", _showHexCode, DEFAULT_SHOWHEXCODE);
+    g->setValue("ShowHexCode", _showHexCode, DEFAULT_SHOWHEXCODE);
+    delete g;
 }
 
 #include "instrview.moc"

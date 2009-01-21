@@ -48,9 +48,8 @@
 #include <Qt3Support/Q3PopupMenu>
 #include <Qt3Support/Q3Process>
 
-#include <kconfig.h>
-#include <kconfiggroup.h>
 
+#include "config.h"
 #include "globalconfig.h"
 #include "listutils.h"
 
@@ -59,16 +58,16 @@
 
 // CallGraphView defaults
 
-#define DEFAULT_FUNCLIMIT   .05
-#define DEFAULT_CALLLIMIT    1.
-#define DEFAULT_MAXCALLER    2
-#define DEFAULT_MAXCALLEE   -1
-#define DEFAULT_SHOWSKIPPED  false
-#define DEFAULT_EXPANDCYCLES false
+#define DEFAULT_FUNCLIMIT     .05
+#define DEFAULT_CALLLIMIT     1.
+#define DEFAULT_MAXCALLER     2
+#define DEFAULT_MAXCALLEE     -1
+#define DEFAULT_SHOWSKIPPED   false
+#define DEFAULT_EXPANDCYCLES  false
 #define DEFAULT_CLUSTERGROUPS false
-#define DEFAULT_DETAILLEVEL  1
-#define DEFAULT_LAYOUT       GraphOptions::TopDown
-#define DEFAULT_ZOOMPOS      Auto
+#define DEFAULT_DETAILLEVEL   1
+#define DEFAULT_LAYOUT        GraphOptions::TopDown
+#define DEFAULT_ZOOMPOS       Auto
 
 
 // LessThen functors as helpers for sorting of graph edges
@@ -3028,46 +3027,43 @@ QString CallGraphView::zoomPosString(ZoomPosition p)
 	return QString();
 }
 
-void CallGraphView::readViewConfig(KConfig* c, const QString& prefix,
-                                   const QString& postfix)
+void CallGraphView::restoreOptions(const QString& prefix, const QString& postfix)
 {
-	KConfigGroup g = configGroup(c, prefix, postfix);
+    ConfigGroup* g = ConfigStorage::group(prefix, postfix);
 
-	if (0)
-		qDebug("CallGraphView::readViewConfig");
+    _maxCallerDepth = g->value("MaxCaller", DEFAULT_MAXCALLER).toInt();
+    _maxCalleeDepth = g->value("MaxCallee", DEFAULT_MAXCALLEE).toInt();
+    _funcLimit = g->value("FuncLimit", DEFAULT_FUNCLIMIT).toDouble();
+    _callLimit = g->value("CallLimit", DEFAULT_CALLLIMIT).toDouble();
+    _showSkipped = g->value("ShowSkipped", DEFAULT_SHOWSKIPPED).toBool();
+    _expandCycles = g->value("ExpandCycles", DEFAULT_EXPANDCYCLES).toBool();
+    _clusterGroups = g->value("ClusterGroups", DEFAULT_CLUSTERGROUPS).toBool();
+    _detailLevel = g->value("DetailLevel", DEFAULT_DETAILLEVEL).toInt();
+    _layout = GraphOptions::layout(g->value("Layout",
+					    layoutString(DEFAULT_LAYOUT)).toString());
+    _zoomPosition = zoomPos(g->value("ZoomPosition",
+				     zoomPosString(DEFAULT_ZOOMPOS)).toString());
 
-	_maxCallerDepth = g.readEntry("MaxCaller", DEFAULT_MAXCALLER);
-	_maxCalleeDepth = g.readEntry("MaxCallee", DEFAULT_MAXCALLEE);
-	_funcLimit = g.readEntry("FuncLimit", DEFAULT_FUNCLIMIT);
-	_callLimit = g.readEntry("CallLimit", DEFAULT_CALLLIMIT);
-	_showSkipped = g.readEntry("ShowSkipped", DEFAULT_SHOWSKIPPED);
-	_expandCycles = g.readEntry("ExpandCycles", DEFAULT_EXPANDCYCLES);
-	_clusterGroups = g.readEntry("ClusterGroups", DEFAULT_CLUSTERGROUPS);
-	_detailLevel = g.readEntry("DetailLevel", DEFAULT_DETAILLEVEL);
-	_layout = GraphOptions::layout(g.readEntry("Layout",
-	                                           layoutString(DEFAULT_LAYOUT)));
-	_zoomPosition = zoomPos(g.readEntry("ZoomPosition",
-	                                    zoomPosString(DEFAULT_ZOOMPOS)));
-
+    delete g;
 }
 
-void CallGraphView::saveViewConfig(KConfig* c, const QString& prefix,
-                                   const QString& postfix)
+void CallGraphView::saveOptions(const QString& prefix, const QString& postfix)
 {
-	KConfigGroup g(c, prefix+postfix);
+    ConfigGroup* g = ConfigStorage::group(prefix + postfix);
 
-	writeConfigEntry(g, "MaxCaller", _maxCallerDepth, DEFAULT_MAXCALLER);
-	writeConfigEntry(g, "MaxCallee", _maxCalleeDepth, DEFAULT_MAXCALLEE);
-	writeConfigEntry(g, "FuncLimit", _funcLimit, DEFAULT_FUNCLIMIT);
-	writeConfigEntry(g, "CallLimit", _callLimit, DEFAULT_CALLLIMIT);
-	writeConfigEntry(g, "ShowSkipped", _showSkipped, DEFAULT_SHOWSKIPPED);
-	writeConfigEntry(g, "ExpandCycles", _expandCycles, DEFAULT_EXPANDCYCLES);
-	writeConfigEntry(g, "ClusterGroups", _clusterGroups, DEFAULT_CLUSTERGROUPS);
-	writeConfigEntry(g, "DetailLevel", _detailLevel, DEFAULT_DETAILLEVEL);
-	writeConfigEntry(g, "Layout", layoutString(_layout),
-	                 layoutString(DEFAULT_LAYOUT).toUtf8().data());
-	writeConfigEntry(g, "ZoomPosition", zoomPosString(_zoomPosition),
-	                 zoomPosString(DEFAULT_ZOOMPOS).toUtf8().data());
+    g->setValue("MaxCaller", _maxCallerDepth, DEFAULT_MAXCALLER);
+    g->setValue("MaxCallee", _maxCalleeDepth, DEFAULT_MAXCALLEE);
+    g->setValue("FuncLimit", _funcLimit, DEFAULT_FUNCLIMIT);
+    g->setValue("CallLimit", _callLimit, DEFAULT_CALLLIMIT);
+    g->setValue("ShowSkipped", _showSkipped, DEFAULT_SHOWSKIPPED);
+    g->setValue("ExpandCycles", _expandCycles, DEFAULT_EXPANDCYCLES);
+    g->setValue("ClusterGroups", _clusterGroups, DEFAULT_CLUSTERGROUPS);
+    g->setValue("DetailLevel", _detailLevel, DEFAULT_DETAILLEVEL);
+    g->setValue("Layout", layoutString(_layout), layoutString(DEFAULT_LAYOUT));
+    g->setValue("ZoomPosition", zoomPosString(_zoomPosition),
+		zoomPosString(DEFAULT_ZOOMPOS));
+
+    delete g;
 }
 
 #include "callgraphview.moc"

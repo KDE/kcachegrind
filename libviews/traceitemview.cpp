@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2003-2009 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -23,9 +23,6 @@
 #include "traceitemview.h"
 
 #include <QWidget>
-
-#include <kconfig.h>
-#include <kconfiggroup.h>
 
 #include "toplevelbase.h"
 
@@ -61,77 +58,27 @@ void TraceItemView::select(TraceItem* i)
 }
 
 void TraceItemView::saveLayout(const QString&, const QString&)
-{}
+{
+#if 0
+    qDebug("In '%s', saveLayout not implemented",
+	   widget()->name());
+#endif
+}
+
+void TraceItemView::saveOptions(const QString&, const QString&)
+{
+#if 0
+    qDebug("In '%s', saveOptions not implemented",
+	   widget()->name());
+#endif
+}
 
 void TraceItemView::restoreLayout(const QString&, const QString&)
 {}
 
-KConfigGroup TraceItemView::configGroup(KConfig* c,
-                                        const QString& group, const QString& post)
-{
-    QStringList gList = c->groupList();
-    QString g = group;
-    if (gList.contains(group+post) ) g += post;
-    return KConfigGroup(c, g);
-}
-
-void TraceItemView::writeConfigEntry(KConfigGroup &c, const char* pKey,
-				     const QString& value, const char* def, bool bNLS)
-{
-    if ((value.isEmpty() && ((def == 0) || (*def == 0))) ||
-	(value == QString(def)))
-	c.deleteEntry(pKey);
-    else
-	{
-		if( bNLS )
-			c.writeEntry(pKey, value, KConfigBase::Normal|KConfigBase::Localized);
-		else
-			c.writeEntry(pKey, value);
-	}
-}
-
-void TraceItemView::writeConfigEntry(KConfigGroup& c, const char* pKey,
-				     int value, int def)
-{
-    if (value == def)
-	c.deleteEntry(pKey);
-    else
-	c.writeEntry(pKey, value);
-}
-
-void TraceItemView::writeConfigEntry(KConfigGroup& c, const char* pKey,
-				     double value, double def)
-{
-    if (value == def)
-	c.deleteEntry(pKey);
-    else
-	c.writeEntry(pKey, value);
-}
-
-void TraceItemView::writeConfigEntry(KConfigGroup& c, const char* pKey,
-				     bool value, bool def)
-{
-    if (value == def)
-	c.deleteEntry(pKey);
-    else
-	c.writeEntry(pKey, value);
-}
-
-void TraceItemView::readViewConfig(KConfig*, const QString&, const QString&)
+void TraceItemView::restoreOptions(const QString&, const QString&)
 {}
 
-#if 1
-void TraceItemView::saveViewConfig(KConfig*, const QString&, const QString&)
-{}
-#else
-void TraceItemView::saveViewConfig(KConfig* c,
-                                   const QString& prefix, const QString& postfix, bool)
-{
-    // write a dummy config entry to see missing virtual functions
-    KConfigGroup g(c, prefix+postfix);
-    g.writeEntry("SaveNotImplemented", true);
-}
-#endif
 
 bool TraceItemView::activate(TraceItem* i)
 {
