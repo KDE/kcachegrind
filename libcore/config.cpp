@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002-2008 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2008 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -22,10 +22,8 @@
 // ConfigGroup
 //
 
-ConfigGroup::ConfigGroup(const QString& group)
-{
-    _group = group;
-}
+ConfigGroup::ConfigGroup()
+{}
 
 ConfigGroup::~ConfigGroup()
 {}
@@ -36,24 +34,6 @@ void ConfigGroup::setValue(const QString&, const QVariant&, const QVariant&)
 QVariant ConfigGroup::value(const QString&, const QVariant&) const
 {
     return QVariant();
-}
-
-void ConfigGroup::addSubGroup(const QString& prefix, const QString& postfix)
-{
-    _prefix = prefix;
-    _postfix = postfix;
-    _groupWrites = 0;
-}
-
-void ConfigGroup::finishSubGroup()
-{
-    _prefix = QString::null;
-    _postfix = QString::null;
-}
-
-bool ConfigGroup::hasSubGroup(const QString&, const QString&)
-{
-    return false;
 }
 
 
@@ -71,11 +51,12 @@ ConfigStorage::ConfigStorage()
 ConfigStorage::~ConfigStorage()
 {}
 
-ConfigGroup* ConfigStorage::group(const QString& group)
+ConfigGroup* ConfigStorage::group(const QString& group,
+				  const QString& optSuffix)
 {
     Q_ASSERT(_storage != 0);
 
-    return _storage->getGroup(group);
+    return _storage->getGroup(group, optSuffix);
 }
 
 void ConfigStorage::setStorage(ConfigStorage* storage)
@@ -83,7 +64,7 @@ void ConfigStorage::setStorage(ConfigStorage* storage)
     _storage = storage;
 }
 
-ConfigGroup* ConfigStorage::getGroup(const QString& group)
+ConfigGroup* ConfigStorage::getGroup(const QString&, const QString&)
 {
-    return new ConfigGroup(group);
+    return new ConfigGroup();
 }

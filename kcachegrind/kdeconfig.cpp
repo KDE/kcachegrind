@@ -35,42 +35,45 @@
 // KDEConfigGroup
 //
 
-KDEConfigGroup::KDEConfigGroup(const QString& group, KConfig* kconfig)
-    : ConfigGroup(group)
+KDEConfigGroup::KDEConfigGroup(KConfigGroup* group, bool readOnly)
 {
-    _kconfig = kconfig;
+    _kgroup = group;
+    _readOnly = readOnly;
+}
+
+KDEConfigGroup::~KDEConfigGroup()
+{
+    delete _kgroup;
 }
 
 void KDEConfigGroup::setValue(const QString& key, const QVariant& value,
 			      const QVariant& defaultValue)
 {
-    KConfigGroup c(_kconfig, _prefix + _group + _postfix);
+    if ((_kgroup == 0) || _readOnly) return;
 
     if (value == defaultValue) {
-	c.deleteEntry(key);
+	_kgroup->deleteEntry(key);
 	return;
     }
 
-    _groupWrites++;
-
     switch(value.type()) {
 	case QVariant::Bool:
-	    c.writeEntry(key, value.toBool());
+	    _kgroup->writeEntry(key, value.toBool());
 	    break;
 	case QVariant::Int:
-	    c.writeEntry(key, value.toInt());
+	    _kgroup->writeEntry(key, value.toInt());
 	    break;
 	case QVariant::Double:
-	    c.writeEntry(key, value.toDouble());
+	    _kgroup->writeEntry(key, value.toDouble());
 	    break;
 	case QVariant::String:
-	    c.writeEntry(key, value.toString());
+	    _kgroup->writeEntry(key, value.toString());
 	    break;
 	case QVariant::StringList:
-	    c.writeEntry(key, value.toStringList());
+	    _kgroup->writeEntry(key, value.toStringList());
 	    break;
 	case QVariant::Color:
-	    c.writeEntry(key, value.value<QColor>());
+	    _kgroup->writeEntry(key, value.value<QColor>());
 	    break;
 	default:
 	    qFatal("KDEConfigGroup::setValue - QVariant type %s not supported",
@@ -78,63 +81,37 @@ void KDEConfigGroup::setValue(const QString& key, const QVariant& value,
     }
 }
 
-QVariant KDEConfigGroup::value(const QString & key,
-			       const QVariant & defaultValue) const
+QVariant KDEConfigGroup::value(const QString& key,
+			       const QVariant& defaultValue) const
 {
-    KConfigGroup c(_kconfig, _prefix + _group + _postfix);
+    if (_kgroup == 0) return defaultValue;
 
     switch(defaultValue.type()) {
 	case QVariant::Bool:
-	    return QVariant(c.readEntry(key, defaultValue.toBool()));
+	    return QVariant(_kgroup->readEntry(key,
+					       defaultValue.toBool()));
 	case QVariant::Int:
-	    return QVariant(c.readEntry(key, defaultValue.toInt()));
+	    return QVariant(_kgroup->readEntry(key,
+					       defaultValue.toInt()));
 	case QVariant::Double:
-	    return QVariant(c.readEntry(key, defaultValue.toDouble()));
+	    return QVariant(_kgroup->readEntry(key,
+					       defaultValue.toDouble()));
 	case QVariant::String:
-	    return QVariant(c.readEntry(key, defaultValue.toString()));
+	    return QVariant(_kgroup->readEntry(key,
+					       defaultValue.toString()));
 	case QVariant::StringList:
-	    return QVariant(c.readEntry(key, defaultValue.toStringList()));
+	    return QVariant(_kgroup->readEntry(key,
+					       defaultValue.toStringList()));
 	case QVariant::Color:
-	    return QVariant(c.readEntry(key, defaultValue.value<QColor>()));
+	    return QVariant(_kgroup->readEntry(key,
+					       defaultValue.value<QColor>()));
 	default:
 	    qFatal("KDEConfigGroup::value - QVariant type %s not supported",
 		   defaultValue.typeName());
     }
-    return QVariant();
+    return defaultValue;
 }
 
-void KDEConfigGroup::addSubGroup(const QString& prefix, const QString& postfix)
-{
-    ConfigGroup::addSubGroup(prefix, postfix);
-}
-
-
-void KDEConfigGroup::finishSubGroup()
-{
-    KConfigGroup c(_kconfig, _prefix + _group + _postfix);
-
-    if (_groupWrites == 0)
-	c.deleteEntry("subgroup");
-    else
-	c.writeEntry("subgroup", true);
-}
-
-bool KDEConfigGroup::hasSubGroup(const QString& prefix, const QString& optionalPostfix)
-{
-    KConfigGroup c(_kconfig, prefix + _group + optionalPostfix);
-    if (c.readEntry("subgroup", false)) {
-	ConfigGroup::addSubGroup(prefix, optionalPostfix);
-	return true;
-    }
-
-    KConfigGroup c2(_kconfig, prefix + _group);
-    if (c.readEntry("subgroup", false)) {
-	ConfigGroup::addSubGroup(prefix, QString());
-	return true;
-    }
-
-    return false;
-}
 
 
 //
@@ -146,7 +123,26 @@ KDEConfigStorage::KDEConfigStorage(KConfig* kconfig)
     _kconfig = kconfig;
 }
 
-ConfigGroup* KDEConfigStorage::getGroup(const QString& group)
+ConfigGroup* KDEConfigStorage::getGroup(const QString& group,
+					const QString& optSuffix)
 {
-    return new KDEConfigGroup(group, _kconfig);
+    KConfigGroup* g;
+    bool readOnly;
+
+    if (!optSuffix.isEmpty()) {
+	readOnly = true;
+	QStringList gList = _kconfig->groupList();
+	if (gList.contains(group+optSuffix))
+	    g = new KConfigGroup(_kconfig, group+optSuffix);
+	else if (gList.contains(group))
+	    g = new KConfigGroup(_kconfig, group);
+	else
+	    g = 0;
+    }
+    else {
+	readOnly = false;
+	g = new KConfigGroup(_kconfig, group);
+    }
+
+    return new KDEConfigGroup(g, readOnly);
 }

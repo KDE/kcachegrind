@@ -26,6 +26,7 @@
 #include "config.h"
 
 class KConfig;
+class KConfigGroup;
 class KDEConfigStorage;
 
 class KDEConfigGroup: public ConfigGroup
@@ -33,17 +34,17 @@ class KDEConfigGroup: public ConfigGroup
     friend class KDEConfigStorage;
 
 public:
+    ~KDEConfigGroup();
+
     void setValue(const QString& key, const QVariant& value,
 		  const QVariant& defaultValue = QVariant());
     QVariant value(const QString& key, const QVariant& defaultValue) const;
-    void addSubGroup(const QString& prefix, const QString& postfix);
-    void finishSubGroup();
-    bool hasSubGroup(const QString& prefix, const QString& optionalPostfix);
 
 private:
-    KDEConfigGroup(const QString& group, KConfig* kconfig);
+    KDEConfigGroup(KConfigGroup*, bool);
 
-    KConfig* _kconfig;
+    KConfigGroup* _kgroup;
+    bool _readOnly;
 };
 
 
@@ -53,7 +54,8 @@ public:
   KDEConfigStorage(KConfig*);
 
 private:
-  ConfigGroup* getGroup(const QString& group);
+  ConfigGroup* getGroup(const QString& group,
+			const QString& optSuffix);
 
   KConfig* _kconfig;
 };

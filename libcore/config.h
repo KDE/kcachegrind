@@ -38,26 +38,17 @@ public:
     // when value is defaultValue, any previous stored value is removed
     virtual void setValue(const QString& key, const QVariant& value,
 			  const QVariant& defaultValue = QVariant());
-    virtual QVariant value(const QString & key, const QVariant& defaultValue) const;
+    virtual QVariant value(const QString & key,
+			   const QVariant& defaultValue) const;
 
+    // the template version is needed for GUI Qt types
     template<typename T>
     inline T value(const QString & key,
 		   const QVariant & defaultValue = QVariant()) const
     { return qVariantValue<T>( value(key, defaultValue) ); }
 
-    // all following setValue() calls will store into subgroup
-    virtual void addSubGroup(const QString& prefix, const QString& postfix);
-    virtual void finishSubGroup();
-
-    // all following value() calls will use a subgroup if existing (returns true);
-    virtual bool hasSubGroup(const QString& prefix, const QString& optionalPostfix);
-
 protected:
-    ConfigGroup(const QString& group);
-
-    QString _group;
-    QString _prefix, _postfix;
-    bool _groupWrites;
+    ConfigGroup();
 };
 
 /**
@@ -71,11 +62,16 @@ public:
     ConfigStorage();
     virtual ~ConfigStorage();
 
-    static ConfigGroup* group(const QString& group);
+    // if second parameter is not-empty, first search for an existing
+    // group using the optional suffix, and then without.
+    // the group gets readonly.
+    static ConfigGroup* group(const QString& group,
+			      const QString& optSuffix = QString());
     static void setStorage(ConfigStorage*);
 
 protected:
-    virtual ConfigGroup* getGroup(const QString& group);
+    virtual ConfigGroup* getGroup(const QString& group,
+				  const QString& optSuffix);
 
     static ConfigStorage* _storage;
 };
