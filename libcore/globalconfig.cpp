@@ -27,6 +27,19 @@
 #include "config.h"
 #include "tracedata.h"
 
+
+// GlobalConfig defaults
+#define DEFAULT_SHOWPERCENTAGE   true
+#define DEFAULT_SHOWEXPANDED     false
+#define DEFAULT_SHOWCYCLES       true
+#define DEFAULT_CYCLECUT         0.0
+#define DEFAULT_PERCENTPRECISION 2
+#define DEFAULT_MAXSYMBOLLENGTH  30
+#define DEFAULT_MAXSYMBOLCOUNT   10
+#define DEFAULT_MAXLISTCOUNT     100
+#define DEFAULT_CONTEXT          3
+#define DEFAULT_NOCOSTINSIDE     20
+
 //
 // Some predefined event types...
 //
@@ -91,21 +104,21 @@ GlobalConfig::GlobalConfig()
   _colors.setAutoDelete(true);
   _objectSourceDirs.setAutoDelete(true);
 
-  // defaults
-  _showPercentage = true;
-  _showExpanded = false;
-  _showCycles = true;
-  _cycleCut = 0.0;
-  _percentPrecision = 2;
+  // general presentation options
+  _showPercentage   = DEFAULT_SHOWPERCENTAGE;
+  _showExpanded     = DEFAULT_SHOWEXPANDED;
+  _showCycles       = DEFAULT_SHOWCYCLES;
+  _cycleCut         = DEFAULT_CYCLECUT;
+  _percentPrecision = DEFAULT_PERCENTPRECISION;
 
   // max symbol count/length in tooltip/popup
-  _maxSymbolLength = 30;
-  _maxSymbolCount = 10;
-  _maxListCount = 100;
+  _maxSymbolLength  = DEFAULT_MAXSYMBOLLENGTH;
+  _maxSymbolCount   = DEFAULT_MAXSYMBOLCOUNT;
+  _maxListCount     = DEFAULT_MAXLISTCOUNT;
 
   // annotation behaviour
-  _context = 3;
-  _noCostInside   = 20;
+  _context          = DEFAULT_CONTEXT;
+  _noCostInside     = DEFAULT_NOCOSTINSIDE;
 }
 
 GlobalConfig* GlobalConfig::config()
@@ -153,16 +166,26 @@ void GlobalConfig::saveOptions()
 
     // general options
     ConfigGroup* generalConfig = ConfigStorage::group("General");
-    generalConfig->setValue("ShowPercentage", _showPercentage);
-    generalConfig->setValue("ShowExpanded", _showExpanded);
-    generalConfig->setValue("ShowCycles", _showCycles);
-    generalConfig->setValue("CycleCut", _cycleCut);
-    generalConfig->setValue("MaxSymbolCount", _maxSymbolCount);
-    generalConfig->setValue("MaxListCount", _maxListCount);
-    generalConfig->setValue("MaxSymbolLength", _maxSymbolLength);
-    generalConfig->setValue("PercentPrecision", _percentPrecision);
-    generalConfig->setValue("Context", _context);
-    generalConfig->setValue("NoCostInside", _noCostInside);
+    generalConfig->setValue("ShowPercentage", _showPercentage,
+			    DEFAULT_SHOWPERCENTAGE);
+    generalConfig->setValue("ShowExpanded", _showExpanded,
+			    DEFAULT_SHOWEXPANDED);
+    generalConfig->setValue("ShowCycles", _showCycles,
+			    DEFAULT_SHOWCYCLES);
+    generalConfig->setValue("CycleCut", _cycleCut,
+			    DEFAULT_CYCLECUT);
+    generalConfig->setValue("PercentPrecision", _percentPrecision,
+			    DEFAULT_PERCENTPRECISION);
+    generalConfig->setValue("MaxSymbolLength", _maxSymbolLength,
+			    DEFAULT_MAXSYMBOLLENGTH);
+    generalConfig->setValue("MaxSymbolCount", _maxSymbolCount,
+			    DEFAULT_MAXSYMBOLCOUNT);
+    generalConfig->setValue("MaxListCount", _maxListCount,
+			    DEFAULT_MAXLISTCOUNT);
+    generalConfig->setValue("Context", _context,
+			    DEFAULT_CONTEXT);
+    generalConfig->setValue("NoCostInside", _noCostInside,
+			    DEFAULT_NOCOSTINSIDE);
     delete generalConfig;
 
     // event types
@@ -204,8 +227,10 @@ void GlobalConfig::readOptions()
     ConfigGroup* colorConfig = ConfigStorage::group("CostColors");
     count = colorConfig->value("Count", 0).toInt();
     for (i=1;i<=count;i++) {
-	QString n = colorConfig->value(QString("Name%1").arg(i),QString()).toString();
-	QColor color = colorConfig->value<QColor>(QString("Color%1").arg(i), QColor(Qt::black));
+	QString n = colorConfig->value(QString("Name%1").arg(i),
+				       QString()).toString();
+	QColor color = colorConfig->value<QColor>(QString("Color%1").arg(i),
+						  QColor(Qt::black));
 
 	if (n.isEmpty()) continue;
 
@@ -227,8 +252,10 @@ void GlobalConfig::readOptions()
     _objectSourceDirs.clear();
     if (count>17) _objectSourceDirs.resize(count);
     for (i=1;i<=count;i++) {
-	QString n = sourceConfig->value(QString("Object%1").arg(i),QString()).toString();
-	dirs = sourceConfig->value(QString("Dirs%1").arg(i), QStringList()).toStringList();
+	QString n = sourceConfig->value(QString("Object%1").arg(i),
+					QString()).toString();
+	dirs = sourceConfig->value(QString("Dirs%1").arg(i),
+				   QStringList()).toStringList();
 
 	if (n.isEmpty() || (dirs.count()==0)) continue;
 
@@ -238,16 +265,26 @@ void GlobalConfig::readOptions()
 
     // general options
     ConfigGroup* generalConfig = ConfigStorage::group("General");
-    _showPercentage = generalConfig->value("ShowPercentage", true).toBool();
-    _showExpanded = generalConfig->value("ShowExpanded", false).toBool();
-    _showCycles = generalConfig->value("ShowCycles", true).toBool();
-    _cycleCut = generalConfig->value("CycleCut", 0.0).toDouble();
-    _maxSymbolCount = generalConfig->value("MaxSymbolCount", 10).toInt();
-    _maxListCount = generalConfig->value("MaxListCount", 100).toInt();
-    _maxSymbolLength = generalConfig->value("MaxSymbolLength", 30).toInt();
-    _percentPrecision = generalConfig->value("PercentPrecision", 2).toInt();
-    _context = generalConfig->value("Context", 3).toInt();
-    _noCostInside   = generalConfig->value("NoCostInside", 20).toInt();
+    _showPercentage   = generalConfig->value("ShowPercentage",
+					     DEFAULT_SHOWPERCENTAGE).toBool();
+    _showExpanded     = generalConfig->value("ShowExpanded",
+					     DEFAULT_SHOWEXPANDED).toBool();
+    _showCycles       = generalConfig->value("ShowCycles",
+					     DEFAULT_SHOWCYCLES).toBool();
+    _cycleCut         = generalConfig->value("CycleCut",
+					     DEFAULT_CYCLECUT).toDouble();
+    _percentPrecision = generalConfig->value("PercentPrecision",
+					     DEFAULT_PERCENTPRECISION).toInt();
+    _maxSymbolLength  = generalConfig->value("MaxSymbolLength",
+					     DEFAULT_MAXSYMBOLLENGTH).toInt();
+    _maxSymbolCount   = generalConfig->value("MaxSymbolCount",
+					     DEFAULT_MAXSYMBOLCOUNT).toInt();
+    _maxListCount     = generalConfig->value("MaxListCount",
+					     DEFAULT_MAXLISTCOUNT).toInt();
+    _context          = generalConfig->value("Context",
+					     DEFAULT_CONTEXT).toInt();
+    _noCostInside     = generalConfig->value("NoCostInside",
+					     DEFAULT_NOCOSTINSIDE).toInt();
     delete generalConfig;
 
     // event types
@@ -261,10 +298,13 @@ void GlobalConfig::readOptions()
     }
 
     for (int i=1;i<=etCount;i++) {
-	QString n = etConfig->value(QString("Name%1").arg(i),QString()).toString();
-	QString l = etConfig->value(QString("Longname%1").arg(i),QString()).toString();
+	QString n = etConfig->value(QString("Name%1").arg(i),
+				    QString()).toString();
+	QString l = etConfig->value(QString("Longname%1").arg(i),
+				    QString()).toString();
 	if (l.isEmpty()) l = knownLongName(n);
-	QString f = etConfig->value(QString("Formula%1").arg(i), QString()).toString();
+	QString f = etConfig->value(QString("Formula%1").arg(i),
+				    QString()).toString();
 	if (f.isEmpty()) f = knownFormula(n);
 
 	TraceEventType::add(new TraceEventType(n, l, f));
