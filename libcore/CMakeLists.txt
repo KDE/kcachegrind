@@ -9,7 +9,8 @@ set(core_SRCS
    stackbrowser.cpp
    utils.cpp
    logger.cpp
-   configuration.cpp )
+   config.cpp
+   globalconfig.cpp )
 
 qt4_automoc(${core_SRCS})
 add_library(core STATIC ${core_SRCS})

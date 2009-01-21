@@ -26,7 +26,7 @@
 
 #include <klocale.h>
 
-#include "configuration.h"
+#include "globalconfig.h"
 #include "listutils.h"
 #include "stackselection.h"
 
@@ -65,7 +65,7 @@ StackItem::StackItem(StackSelection* ss,
 
 void StackItem::updateGroup()
 {
-  QColor c = Configuration::functionColor(_view->groupType(),
+  QColor c = GlobalConfig::functionColor(_view->groupType(),
 					  _function);
   setPixmap(3, colorPixmap(10, 10, c));
 }
@@ -86,9 +86,9 @@ void StackItem::updateCost()
   else {
     double sum  = 100.0 * _sum / total;
 
-    if (Configuration::showPercentage())
+    if (GlobalConfig::showPercentage())
       setText(0, QString("%1")
-	      .arg(sum, 0, 'f', Configuration::percentPrecision()));
+	      .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
     else
       setText(0, _call->prettySubCost(ct));
     
@@ -108,9 +108,9 @@ void StackItem::updateCost()
   else {
     double sum  = 100.0 * _sum / total;
 
-    if (Configuration::showPercentage())
+    if (GlobalConfig::showPercentage())
       setText(1, QString("%1")
-	      .arg(sum, 0, 'f', Configuration::percentPrecision()));
+	      .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
     else
       setText(1, _call->prettySubCost(ct2));
     

@@ -29,7 +29,7 @@
 #include <kiconloader.h>
 
 #include "listutils.h"
-#include "configuration.h"
+#include "globalconfig.h"
 
 
 // FunctionItem
@@ -102,7 +102,7 @@ void  FunctionItem::setGroupType(TraceCost::CostType gt)
   _groupPixValid = false;
   viewList()->repaint();
 #else
-  QColor c = Configuration::functionColor(_groupType, _function);
+  QColor c = GlobalConfig::functionColor(_groupType, _function);
   setPixmap(3, colorPixmap(10, 10, c));
 #endif
 }
@@ -119,7 +119,7 @@ void FunctionItem::update()
   QString str;
 
   TraceCost* selfCost = _function->data();
-  if (Configuration::showExpanded()) {
+  if (GlobalConfig::showExpanded()) {
       switch(_groupType) {
       case TraceCost::Object: selfCost = _function->object(); break;
       case TraceCost::Class:  selfCost = _function->cls(); break;
@@ -137,8 +137,8 @@ void FunctionItem::update()
     // for all skipped functions, cost is below the given function
     _sum  = _function->inclusive()->subCost(_costType);
     double incl  = 100.0 * _sum / inclTotal;
-    if (Configuration::showPercentage())
-      str = QString("%1").arg(incl, 0, 'f', Configuration::percentPrecision());
+    if (GlobalConfig::showPercentage())
+      str = QString("%1").arg(incl, 0, 'f', GlobalConfig::percentPrecision());
     else
       str = _function->inclusive()->prettySubCost(_costType);
     str = "< " + str;
@@ -166,9 +166,9 @@ void FunctionItem::update()
   }
   else {
       double incl  = 100.0 * _sum / inclTotal;
-      if (Configuration::showPercentage())
+      if (GlobalConfig::showPercentage())
 	  setText(0, QString("%1")
-		  .arg(incl, 0, 'f', Configuration::percentPrecision()));
+		  .arg(incl, 0, 'f', GlobalConfig::percentPrecision()));
       else
 	  setText(0, _function->inclusive()->prettySubCost(_costType));
 
@@ -184,9 +184,9 @@ void FunctionItem::update()
   else {
       double self  = 100.0 * _pure / selfTotal;
 
-      if (Configuration::showPercentage())
+      if (GlobalConfig::showPercentage())
 	  setText(1, QString("%1")
-		  .arg(self, 0, 'f', Configuration::percentPrecision()));
+		  .arg(self, 0, 'f', GlobalConfig::percentPrecision()));
       else
 	  setText(1, _function->prettySubCost(_costType));
 

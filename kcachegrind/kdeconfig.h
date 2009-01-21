@@ -20,26 +20,42 @@
  * Configuration for KCachegrind
  */
 
-#ifndef KCONFIGURATION_H
-#define KCONFIGURATION_H
+#ifndef KDECONFIG_H
+#define KDECONFIG_H
 
-#include "configuration.h"
+#include "config.h"
 
 class KConfig;
+class KDEConfigStorage;
 
-class KConfiguration : public Configuration
+class KDEConfigGroup: public ConfigGroup
 {
-  friend class ConfigDlg;
+    friend class KDEConfigStorage;
 
 public:
-  KConfiguration(KConfig*);
-
-  void saveOptions();
-  void readOptions();
+    void setValue(const QString& key, const QVariant& value,
+		  const QVariant& defaultValue = QVariant());
+    QVariant value(const QString& key, const QVariant& defaultValue) const;
+    void addSubGroup(const QString& prefix, const QString& postfix);
+    void finishSubGroup();
+    bool hasSubGroup(const QString& prefix, const QString& optionalPostfix);
 
 private:
-  KConfig* _kconfig;
+    KDEConfigGroup(const QString& group, KConfig* kconfig);
+
+    KConfig* _kconfig;
 };
 
+
+class KDEConfigStorage : public ConfigStorage
+{
+public:
+  KDEConfigStorage(KConfig*);
+
+private:
+  ConfigGroup* getGroup(const QString& group);
+
+  KConfig* _kconfig;
+};
 
 #endif

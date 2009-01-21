@@ -28,7 +28,7 @@
 #include <QPolygon>
 #include <QTextDocument>
 
-#include "configuration.h"
+#include "globalconfig.h"
 #include "listutils.h"
 #include "sourceview.h"
 
@@ -140,7 +140,7 @@ void SourceItem::updateGroup()
   if (!_lineCall) return;
 
   TraceFunction* f = _lineCall->call()->called();
-  QColor c = Configuration::functionColor(_view->groupType(), f);
+  QColor c = GlobalConfig::functionColor(_view->groupType(), f);
   setPixmap(4, colorPixmap(10, 10, c));
 }
 
@@ -178,7 +178,7 @@ void SourceItem::updateCost()
   }
 
   TraceCost* totalCost;
-  if (Configuration::showExpanded())
+  if (GlobalConfig::showExpanded())
     totalCost = _line->functionSource()->function()->inclusive();
   else
     totalCost = _line->functionSource()->function()->data();
@@ -193,9 +193,9 @@ void SourceItem::updateCost()
     double total = totalCost->subCost(ct);
     double pure  = 100.0 * _pure / total;
 
-    if (Configuration::showPercentage())
+    if (GlobalConfig::showPercentage())
       setText(1, QString("%1")
-	      .arg(pure, 0, 'f', Configuration::percentPrecision()));
+	      .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
     else
       setText(1, _pure.pretty());
 
@@ -212,9 +212,9 @@ void SourceItem::updateCost()
     double total = totalCost->subCost(ct2);
     double pure2  = 100.0 * _pure2 / total;
 
-    if (Configuration::showPercentage())
+    if (GlobalConfig::showPercentage())
       setText(2, QString("%1")
-	      .arg(pure2, 0, 'f', Configuration::percentPrecision()));
+	      .arg(pure2, 0, 'f', GlobalConfig::percentPrecision()));
     else
       setText(2, _pure2.pretty());
 

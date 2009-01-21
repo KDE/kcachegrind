@@ -17,11 +17,11 @@
 */
 
 /*
- * Configuration for KCachegrind
+ * Global configuration for KCachegrind
  */
 
-#ifndef CONFIGURATION_H
-#define CONFIGURATION_H
+#ifndef GLOBALCONFIG_H
+#define GLOBALCONFIG_H
 
 #include <qcolor.h>
 #include <qstringlist.h>
@@ -30,24 +30,21 @@
 #include "tracedata.h"
 
 /**
- * Actual storage of the configuration has to be implemented
- * in a derived class, which needs to overwrite save/readOptions.
- * This uses the singleton pattern, with the need to set
- * the global configuration object with setConfig() before use.
+ * Global configuration.
+ * A singleton.
  */
-class Configuration
+class GlobalConfig
 {
+    friend class ConfigDlg;
+
 public:
-  Configuration();
-  virtual ~Configuration();
+  GlobalConfig();
 
+  // gets the singleton instance
+  static GlobalConfig* config();
 
-  // must be set to an instance of a derived class before use
-  static void setConfig(Configuration*);
-  static Configuration* config();
-
-  virtual void saveOptions();
-  virtual void readOptions();
+  void saveOptions();
+  void readOptions();
 
   // color for visualization of an object
   static QColor functionColor(TraceItem::CostType gt, TraceFunction*);
@@ -106,8 +103,8 @@ protected:
   int _maxSymbolLength, _maxSymbolCount, _maxListCount;
   int _context, _noCostInside;
 
-  static Configuration* _config;
+  static GlobalConfig* _config;
 };
 
+#endif // GLOBALCONFIG_H
 
-#endif

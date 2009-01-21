@@ -24,7 +24,7 @@
 #define CONFIGDLG_H
 
 #include "ui_configdlgbase.h"
-#include "kconfiguration.h"
+#include "globalconfig.h"
 
 class TraceData;
 
@@ -41,11 +41,11 @@ class ConfigDlg : public ConfigDlgBase
   Q_OBJECT
 
 public:
-  ConfigDlg(KConfiguration*, TraceData*,
+  ConfigDlg(GlobalConfig*, TraceData*,
             QWidget* parent = 0);
   ~ConfigDlg();
 
-  static bool configure(KConfiguration*, TraceData*, QWidget*);
+  static bool configure(GlobalConfig*, TraceData*, QWidget*);
 
 protected slots:
   void objectActivated(const QString &);
@@ -62,10 +62,10 @@ protected slots:
   void dirsAddPressed();
 
 private:
-  KConfiguration* _config;
+  GlobalConfig* _config;
   TraceData* _data;
 
-  KConfiguration::ColorSetting *_objectCS, *_classCS, *_fileCS;
+  GlobalConfig::ColorSetting *_objectCS, *_classCS, *_fileCS;
   Q3ListViewItem* _dirItem;
 };
 

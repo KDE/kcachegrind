@@ -20,7 +20,8 @@
 
 #include "tracedata.h"
 #include "loader.h"
-#include "configuration.h"
+#include "config.h"
+#include "globalconfig.h"
 #include "logger.h"
 
 /*
@@ -40,9 +41,8 @@ int main(int argc, char** argv)
     qDebug("cgview: display callgrind files. (C) 2008 J. Weidendorfer\n");
 
     Loader::initLoaders();
-    Configuration* c = new Configuration();
-    Configuration::setConfig(c);
-    c->addDefaultTypes();
+    ConfigStorage::setStorage(new ConfigStorage);
+    GlobalConfig::config()->addDefaultTypes();
 
     QStringList list = app.arguments();
     list.pop_front();

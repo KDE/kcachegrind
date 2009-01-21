@@ -25,7 +25,7 @@
 
 #include <Qt3Support/Q3PopupMenu>
 
-#include "configuration.h"
+#include "globalconfig.h"
 #include "callitem.h"
 
 
@@ -120,10 +120,10 @@ void CallView::context(Q3ListViewItem* i, const QPoint & p, int col)
     cycle = f->cycle();
 
     popup.insertItem(tr("Go to '%1'")
-		     .arg(Configuration::shortenSymbol(name)), 93);
+		     .arg(GlobalConfig::shortenSymbol(name)), 93);
 
     if (cycle) {
-	name = Configuration::shortenSymbol(cycle->prettyName());
+	name = GlobalConfig::shortenSymbol(cycle->prettyName());
 	popup.insertItem(tr("Go to '%1'").arg(name), 94);
     }
 

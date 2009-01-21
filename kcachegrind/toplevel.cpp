@@ -72,7 +72,7 @@
 #include "stackselection.h"
 #include "stackbrowser.h"
 #include "tracedata.h"
-#include "configuration.h"
+#include "globalconfig.h"
 #include "configdlg.h"
 #include "multiview.h"
 #include "callgraphview.h"
@@ -119,13 +119,13 @@ TopLevel::TopLevel()
   _statusbar->addWidget(_statusLabel, 1);
 
   KConfig *kconfig = KGlobal::config().data();
-  Configuration::config()->readOptions();
+  GlobalConfig::config()->readOptions();
   _openRecent->loadEntries( KConfigGroup( kconfig, "" ) );
 
   // set toggle after reading configuration
-  _showPercentage = Configuration::showPercentage();
-  _showExpanded   = Configuration::showExpanded();
-  _showCycles     = Configuration::showCycles();
+  _showPercentage = GlobalConfig::showPercentage();
+  _showExpanded   = GlobalConfig::showExpanded();
+  _showCycles     = GlobalConfig::showCycles();
   _taPercentage->setChecked(_showPercentage);
   _taExpanded->setChecked(_showExpanded);
   _taCycles->setChecked(_showCycles);
@@ -843,7 +843,7 @@ void TopLevel::setPercentage(bool show)
   if (_taPercentage->isChecked() != show)
     _taPercentage->setChecked(show);
 
-  Configuration::setShowPercentage(_showPercentage);
+  GlobalConfig::setShowPercentage(_showPercentage);
 
   _partSelection->refresh();
   _stackSelection->refresh();
@@ -861,7 +861,7 @@ void TopLevel::toggleExpanded()
   if (_showExpanded == show) return;
   _showExpanded = show;
 
-  Configuration::setShowExpanded(_showExpanded);
+  GlobalConfig::setShowExpanded(_showExpanded);
 
   _partSelection->refresh();
   _stackSelection->refresh();
@@ -879,7 +879,7 @@ void TopLevel::toggleCycles()
   if (_showCycles == show) return;
   _showCycles = show;
 
-  Configuration::setShowCycles(_showCycles);
+  GlobalConfig::setShowCycles(_showCycles);
 
   if (!_data) return;
 
@@ -1926,14 +1926,14 @@ void TopLevel::updateStatusBar()
 
 void TopLevel::configure()
 {
-    if (ConfigDlg::configure( (KConfiguration*) Configuration::config(),
+    if (ConfigDlg::configure( (GlobalConfig*) GlobalConfig::config(),
 			      _data, this)) {
-      Configuration::config()->saveOptions();
+      GlobalConfig::config()->saveOptions();
 
     configChanged();
   }
   else
-      Configuration::config()->readOptions();
+      GlobalConfig::config()->readOptions();
 }
 
 bool TopLevel::queryClose()
@@ -1946,10 +1946,10 @@ bool TopLevel::queryClose()
 bool TopLevel::queryExit()
 {
     // save current toplevel options as defaults...
-    Configuration::setShowPercentage(_showPercentage);
-    Configuration::setShowExpanded(_showExpanded);
-    Configuration::setShowCycles(_showCycles);
-    Configuration::config()->saveOptions();
+    GlobalConfig::setShowPercentage(_showPercentage);
+    GlobalConfig::setShowExpanded(_showExpanded);
+    GlobalConfig::setShowCycles(_showCycles);
+    GlobalConfig::config()->saveOptions();
 
     saveCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 
@@ -1992,7 +1992,7 @@ void TopLevel::splitDirSlot()
 void TopLevel::configChanged()
 {
   //qDebug("TopLevel::configChanged");
-  //_showPercentage->setChecked(Configuration::showPercentage());
+  //_showPercentage->setChecked(GlobalConfig::showPercentage());
 
   // invalidate found/cached dirs of source files
   _data->resetSourceDirs();
@@ -2149,13 +2149,13 @@ void TopLevel::forwardAboutToShow()
   }
 
   int count = 1;
-  while (count<Configuration::maxSymbolCount() && hi) {
+  while (count<GlobalConfig::maxSymbolCount() && hi) {
     f = hi->function();
     if (!f) break;
 
     QString name = f->prettyName();
-    if ((int)name.length()>Configuration::maxSymbolLength())
-      name = name.left(Configuration::maxSymbolLength()) + "...";
+    if ((int)name.length()>GlobalConfig::maxSymbolLength())
+      name = name.left(GlobalConfig::maxSymbolLength()) + "...";
 
     //qDebug("forward: Adding %s", name.ascii());
     action = popup->addAction(name);
@@ -2188,13 +2188,13 @@ void TopLevel::backAboutToShow()
   }
 
   int count = 1;
-  while (count<Configuration::maxSymbolCount() && hi) {
+  while (count<GlobalConfig::maxSymbolCount() && hi) {
     f = hi->function();
     if (!f) break;
 
     QString name = f->prettyName();
-    if ((int)name.length()>Configuration::maxSymbolLength())
-      name = name.left(Configuration::maxSymbolLength()) + "...";
+    if ((int)name.length()>GlobalConfig::maxSymbolLength())
+      name = name.left(GlobalConfig::maxSymbolLength()) + "...";
 
     //qDebug("back: Adding %s", name.ascii());
     action = popup->addAction(name);
@@ -2226,10 +2226,10 @@ void TopLevel::upAboutToShow()
   }
 
   int count = 1;
-  while (count<Configuration::maxSymbolCount() && f) {
+  while (count<GlobalConfig::maxSymbolCount() && f) {
     QString name = f->prettyName();
-    if ((int)name.length()>Configuration::maxSymbolLength())
-      name = name.left(Configuration::maxSymbolLength()) + "...";
+    if ((int)name.length()>GlobalConfig::maxSymbolLength())
+      name = name.left(GlobalConfig::maxSymbolLength()) + "...";
 
     action = popup->addAction(name);
     action->setData(count);

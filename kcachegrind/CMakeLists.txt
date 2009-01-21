@@ -4,7 +4,7 @@ include_directories( ../libcore ../libviews )
 
 set(kcachegrind_SRCS
    main.cpp
-   kconfiguration.cpp
+   kdeconfig.cpp
    functionselection.cpp
    partgraph.cpp
    toplevel.cpp

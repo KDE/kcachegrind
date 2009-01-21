@@ -30,7 +30,7 @@
 
 #include "logger.h"
 #include "loader.h"
-#include "configuration.h"
+#include "globalconfig.h"
 #include "utils.h"
 #include "fixcost.h"
 
@@ -1145,7 +1145,7 @@ int TraceEventTypeMapping::add(TraceEventType* et)
     }
     _real[_realCount] = et;
     et->setRealIndex(_realCount);
-    _realColor[_realCount] = Configuration::eventTypeColor(et);
+    _realColor[_realCount] = GlobalConfig::eventTypeColor(et);
 
     _realCount++;
     return _realCount-1;
@@ -3729,7 +3729,7 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
   }
   else base = inclusive()->subCost(0);
 
-  SubCost cutLimit = SubCost(base * Configuration::cycleCut());
+  SubCost cutLimit = SubCost(base * GlobalConfig::cycleCut());
 
   if (0) {
       qDebug("%s (%d) Visiting %s",
@@ -4991,7 +4991,7 @@ void TraceData::updateFunctionCycles()
   for ( it = _functionMap.begin(); it != _functionMap.end(); ++it )
     (*it).cycleReset();
 
-  if (!Configuration::showCycles()) return;
+  if (!GlobalConfig::showCycles()) return;
 
   _inFunctionCycleUpdate = true;
 

@@ -29,7 +29,7 @@
 #include <klocale.h>
 #include <kiconloader.h>
 
-#include "configuration.h"
+#include "globalconfig.h"
 #include "listutils.h"
 #include "toplevelbase.h"
 
@@ -160,17 +160,17 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   QString shortCurrentName;
   if (i) {
     shortCurrentName = i->text(0);
-    if ((int)shortCurrentName.length() > Configuration::maxSymbolLength())
+    if ((int)shortCurrentName.length() > GlobalConfig::maxSymbolLength())
       shortCurrentName =
-        shortCurrentName.left(Configuration::maxSymbolLength()) + "...";
+        shortCurrentName.left(GlobalConfig::maxSymbolLength()) + "...";
   }
 
   if (item) {
     popup.insertItem(tr("Go To"), &fpopup, 100);
     count = 0;
-    while (count<Configuration::maxSymbolCount() && item) {
+    while (count<GlobalConfig::maxSymbolCount() && item) {
       QString name = item->text(0);
-      fpopup.insertItem(Configuration::shortenSymbol(name), 101+count);
+      fpopup.insertItem(GlobalConfig::shortenSymbol(name), 101+count);
       item = item->parent();
       count++;
     }
@@ -214,10 +214,10 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   if (i) {
     l2popup.insertSeparator();
     count = 0;
-    while (count<Configuration::maxSymbolCount() && item) {
+    while (count<GlobalConfig::maxSymbolCount() && item) {
       QString name = item->text(0);
-      if ((int)name.length()>Configuration::maxSymbolLength())
-        name = name.left(Configuration::maxSymbolLength()) + "...";
+      if ((int)name.length()>GlobalConfig::maxSymbolLength())
+        name = name.left(GlobalConfig::maxSymbolLength()) + "...";
       l2popup.insertItem(name, 201+count);
       if (item->text(0) == fieldStop(0)) {
         l2popup.setItemChecked(201+count, true);
@@ -230,8 +230,8 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
   if (!foundStopName && !fieldStop(0).isEmpty()) {
     l2popup.insertSeparator();
     QString name = fieldStop(0);
-    if ((int)name.length()>Configuration::maxSymbolLength())
-      name = name.left(Configuration::maxSymbolLength()) + "...";
+    if ((int)name.length()>GlobalConfig::maxSymbolLength())
+      name = name.left(GlobalConfig::maxSymbolLength()) + "...";
     l2popup.insertItem(name, 199);
     l2popup.setItemChecked(199, true);
   }
@@ -513,7 +513,7 @@ void CallMapView::doUpdate(int changeType)
       }
       ((CallMapBaseItem*)base())->setFunction(f);
   }
-  else if ( ((changeType & partsChanged) && Configuration::showCycles()) ||
+  else if ( ((changeType & partsChanged) && GlobalConfig::showCycles()) ||
             (changeType & dataChanged) ||
             (changeType & configChanged)) {
     /* regenerates the treemap because traceitems were added/removed */
@@ -536,7 +536,7 @@ QColor CallMapView::groupColor(TraceFunction* f) const
   if (!f)
       return palette().color( QPalette::Button );
 
-  return Configuration::functionColor(_groupType, f);
+  return GlobalConfig::functionColor(_groupType, f);
 }
 
 
@@ -548,10 +548,10 @@ QString CallMapView::tipString(TreeMapItem* i) const
   //qDebug("CallMapView::tipString for '%s'", i->text(0).ascii());
 
   // first, SubPartItem's
-  while (i && count<Configuration::maxSymbolCount()) {
+  while (i && count<GlobalConfig::maxSymbolCount()) {
     itemTip = i->text(0);
-    if ((int)itemTip.length()>Configuration::maxSymbolLength())
-      itemTip = itemTip.left(Configuration::maxSymbolLength()) + "...";
+    if ((int)itemTip.length()>GlobalConfig::maxSymbolLength())
+      itemTip = itemTip.left(GlobalConfig::maxSymbolLength()) + "...";
 
     if (!i->text(1).isEmpty())
       itemTip += " (" + i->text(1) + ')';
@@ -562,7 +562,7 @@ QString CallMapView::tipString(TreeMapItem* i) const
     i = i->parent();
     count++;
   }
-  if (count == Configuration::maxSymbolCount()) tip += "\n...";
+  if (count == GlobalConfig::maxSymbolCount()) tip += "\n...";
 
   return tip;
 }
@@ -573,7 +573,7 @@ TraceCost* CallMapView::totalCost()
   TraceFunction* f = ((CallMapBaseItem*)base())->function();
   if (!f) return 0;
 
-  return Configuration::showExpanded() ? f->inclusive() : f->data();
+  return GlobalConfig::showExpanded() ? f->inclusive() : f->data();
 }
 
 
@@ -613,7 +613,7 @@ QString CallMapBaseItem::text(int textNo) const
   TraceEventType* ct = ((CallMapView*)widget())->eventType();
   TraceCost* t      = ((CallMapView*)widget())->totalCost();
 
-  if (Configuration::showPercentage()) {
+  if (GlobalConfig::showPercentage()) {
       double sum, total = t->subCost(ct);
       if (total == 0.0)
 	  sum = 100.0;
@@ -621,7 +621,7 @@ QString CallMapBaseItem::text(int textNo) const
 	  sum = 100.0 * _f->inclusive()->subCost(ct) / total;
 
       return QString("%1 %")
-	  .arg(sum, 0, 'f', Configuration::percentPrecision());
+	  .arg(sum, 0, 'f', GlobalConfig::percentPrecision());
   }
   return _f->inclusive()->prettySubCost(ct);
 }
@@ -754,12 +754,12 @@ QString CallMapCallingItem::text(int textNo) const
   ct = ((CallMapView*)widget())->eventType();
 
   SubCost val = SubCost(_factor * _c->subCost(ct));
-  if (Configuration::showPercentage()) {
+  if (GlobalConfig::showPercentage()) {
     // percentage relative to function cost
     TraceCost* t = ((CallMapView*)widget())->totalCost();
     double p  = 100.0 * _factor * _c->subCost(ct) / t->subCost(ct);
     return QString("%1 %")
-      .arg(p, 0, 'f', Configuration::percentPrecision());
+      .arg(p, 0, 'f', GlobalConfig::percentPrecision());
   }
   return val.pretty();
 }
@@ -871,11 +871,11 @@ QString CallMapCallerItem::text(int textNo) const
   ct = ((CallMapView*)widget())->eventType();
 
   SubCost val = SubCost(_factor * _c->subCost(ct));
-  if (Configuration::showPercentage()) {
+  if (GlobalConfig::showPercentage()) {
     TraceCost* t = ((CallMapView*)widget())->totalCost();
     double p  = 100.0 * _factor * _c->subCost(ct) / t->subCost(ct);
     return QString("%1 %")
-      .arg(p, 0, 'f', Configuration::percentPrecision());
+      .arg(p, 0, 'f', GlobalConfig::percentPrecision());
   }
   return val.pretty();
 }

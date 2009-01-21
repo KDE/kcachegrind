@@ -26,7 +26,7 @@
 #include <QPainter>
 #include <QPolygon>
 
-#include "configuration.h"
+#include "globalconfig.h"
 #include "listutils.h"
 #include "instrview.h"
 
@@ -152,7 +152,7 @@ void InstrItem::updateGroup()
   if (!_instrCall) return;
 
   TraceFunction* f = _instrCall->call()->called();
-  QColor c = Configuration::functionColor(_view->groupType(), f);
+  QColor c = GlobalConfig::functionColor(_view->groupType(), f);
   setPixmap(6, colorPixmap(10, 10, c));
 }
 
@@ -191,7 +191,7 @@ void InstrItem::updateCost()
   }
 
   TraceCost* totalCost;
-  if (Configuration::showExpanded())
+  if (GlobalConfig::showExpanded())
       totalCost = _instr->function()->inclusive();
   else
       totalCost = _instr->function()->data();
@@ -206,9 +206,9 @@ void InstrItem::updateCost()
     double total = totalCost->subCost(ct);
     double pure  = 100.0 * _pure / total;
 
-    if (Configuration::showPercentage())
+    if (GlobalConfig::showPercentage())
       setText(1, QString("%1")
-	      .arg(pure, 0, 'f', Configuration::percentPrecision()));
+	      .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
     else
       setText(1, _pure.pretty());
 
@@ -225,9 +225,9 @@ void InstrItem::updateCost()
     double total = totalCost->subCost(ct2);
     double pure  = 100.0 * _pure2 / total;
 
-    if (Configuration::showPercentage())
+    if (GlobalConfig::showPercentage())
       setText(2, QString("%1")
-	      .arg(pure, 0, 'f', Configuration::percentPrecision()));
+	      .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
     else
       setText(2, _pure2.pretty());
 

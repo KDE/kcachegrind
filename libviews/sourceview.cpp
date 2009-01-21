@@ -27,7 +27,7 @@
 #include <QDebug>
 #include <Qt3Support/Q3PopupMenu>
 
-#include "configuration.h"
+#include "globalconfig.h"
 #include "sourceitem.h"
 
 
@@ -109,7 +109,7 @@ void SourceView::context(Q3ListViewItem* i, const QPoint & p, int c)
   TraceLine* line = lj ? lj->lineTo() : 0;
 
   if (f) {
-      popup.insertItem(tr("Go to '%1'").arg(Configuration::shortenSymbol(f->prettyName())), 93);
+      popup.insertItem(tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName())), 93);
     popup.addSeparator();
   }
   else if (line) {
@@ -527,8 +527,8 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   if (nextCostLineno>0) {
     // we have debug info... search for source file
     if (!QFile::exists(filename)) {
-      QStringList list = Configuration::sourceDirs(_data,
-						   sf->function()->object());
+      QStringList list = GlobalConfig::sourceDirs(_data,
+						  sf->function()->object());
       QStringList::const_iterator it;
 
       for ( it = list.begin(); it != list.end(); ++it ) {
@@ -679,11 +679,11 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     else {
 	if ( (fileLineno > lastCostLineno) &&
 	     ((nextCostLineno == 0) ||
-	      (fileLineno < nextCostLineno - Configuration::noCostInside()) ))
+	      (fileLineno < nextCostLineno - GlobalConfig::noCostInside()) ))
 	    inside = false;
     }
 
-    int context = Configuration::context();
+    int context = GlobalConfig::context();
 
     if ( ((lastCostLineno==0) || (fileLineno > lastCostLineno + context)) &&
 	 ((nextCostLineno==0) || (fileLineno < nextCostLineno - context))) {

@@ -24,7 +24,7 @@
 
 #include <QPixmap>
 
-#include "configuration.h"
+#include "globalconfig.h"
 #include "listutils.h"
 
 
@@ -83,7 +83,7 @@ void EventTypeItem::update()
                      (TraceFunction*)_costItem : 0;
 
   TraceCost* selfTotalCost = f ? f->data() : d;
-  if (f && Configuration::showExpanded()) {
+  if (f && GlobalConfig::showExpanded()) {
       switch(_groupType) {
       case TraceCost::Object: selfTotalCost = f->object(); break;
       case TraceCost::Class:  selfTotalCost = f->cls(); break;
@@ -102,9 +102,9 @@ void EventTypeItem::update()
   // for all cost items there is a self cost
   _pure = _costItem ? _costItem->subCost(_eventType) : SubCost(0);
   double pure  = 100.0 * _pure / selfTotal;
-  if (Configuration::showPercentage()) {
+  if (GlobalConfig::showPercentage()) {
     setText(2, QString("%1")
-            .arg(pure, 0, 'f', Configuration::percentPrecision()));
+            .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
   }
   else if (_costItem)
     setText(2, _costItem->prettySubCost(_eventType));
@@ -119,9 +119,9 @@ void EventTypeItem::update()
 
   _sum = f->inclusive()->subCost(_eventType);
   double sum  = 100.0 * _sum / total;
-  if (Configuration::showPercentage()) {
+  if (GlobalConfig::showPercentage()) {
     setText(1, QString("%1")
-            .arg(sum, 0, 'f', Configuration::percentPrecision()));
+            .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
   }
   else
     setText(1, _sum.pretty());

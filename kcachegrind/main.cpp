@@ -30,7 +30,7 @@
 #include <kaboutdata.h>
 #include <klocale.h>
 
-#include "kconfiguration.h"
+#include "kdeconfig.h"
 #include "toplevel.h"
 #include "tracedata.h"
 #include "loader.h"
@@ -60,7 +60,7 @@ int main( int argc, char ** argv )
   Loader::initLoaders();
 
   KConfig* kc = KGlobal::config().data();
-  Configuration::setConfig(new KConfiguration(kc));
+  ConfigStorage::setStorage(new KDEConfigStorage(kc));
 
   if (a.isSessionRestored()){
     int n = 1;

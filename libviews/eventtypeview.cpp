@@ -25,7 +25,6 @@
 
 #include <Qt3Support/Q3PopupMenu>
 
-#include "configuration.h"
 #include "eventtypeitem.h"
 #include "toplevelbase.h"
 

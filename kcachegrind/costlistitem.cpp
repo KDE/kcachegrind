@@ -29,7 +29,7 @@
 
 #include "listutils.h"
 #include "coverage.h"
-#include "configuration.h"
+#include "globalconfig.h"
 
 
 // CostListItem
@@ -47,7 +47,7 @@ CostListItem::CostListItem(Q3ListView* parent, TraceCostItem* costItem,
   if (costItem) {
     updateName();
     setPixmap(1, colorPixmap(10, 10,
-			     Configuration::groupColor(_costItem)));
+			     GlobalConfig::groupColor(_costItem)));
   }
 }
 
@@ -99,8 +99,8 @@ void CostListItem::update()
   _pure = _costItem->subCost(_costType);
   double pure  = 100.0 * _pure / total;
   QString str;
-  if (Configuration::showPercentage())
-    str = QString("%1").arg(pure, 0, 'f', Configuration::percentPrecision());
+  if (GlobalConfig::showPercentage())
+    str = QString("%1").arg(pure, 0, 'f', GlobalConfig::percentPrecision());
   else
     str = _costItem->prettySubCost(_costType);
 

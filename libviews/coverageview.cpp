@@ -25,7 +25,7 @@
 
 #include <Qt3Support/Q3PopupMenu>
 
-#include "configuration.h"
+#include "globalconfig.h"
 #include "coverageitem.h"
 #include "coverage.h"
 
@@ -159,7 +159,7 @@ void CoverageView::context(Q3ListViewItem* i, const QPoint & p, int c)
   }
 
   if (f) {
-      popup.insertItem(tr("Go to '%1'").arg(Configuration::shortenSymbol(f->prettyName())), 93);
+      popup.insertItem(tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName())), 93);
     popup.insertSeparator();
   }
 
@@ -279,7 +279,7 @@ void CoverageView::refresh()
     TraceFunction* ff;
     TraceFunctionList l;
 
-    _hc.clear(Configuration::maxListCount());
+    _hc.clear(GlobalConfig::maxListCount());
     SubCost realSum = f->inclusive()->subCost(_eventType);
 
     if (_showCallers)

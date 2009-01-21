@@ -24,7 +24,7 @@
 
 #include <QPixmap>
 
-#include "configuration.h"
+#include "globalconfig.h"
 #include "listutils.h"
 #include "coverage.h"
 
@@ -74,7 +74,7 @@ void CallerCoverageItem::setGroupType(TraceCost::CostType gt)
   if (_groupType == gt) return;
   _groupType = gt;
 
-  QColor c = Configuration::functionColor(_groupType, _function);
+  QColor c = GlobalConfig::functionColor(_groupType, _function);
   setPixmap(3, colorPixmap(10, 10, c));
 }
 
@@ -96,8 +96,8 @@ void CallerCoverageItem::update()
   SubCost realSum = _base->inclusive()->subCost(_costType);
   _sum = SubCost(realSum * _coverage->inclusive());
   QString str;
-  if (Configuration::showPercentage())
-    str = QString("%1").arg(_pSum, 0, 'f', Configuration::percentPrecision());
+  if (GlobalConfig::showPercentage())
+    str = QString("%1").arg(_pSum, 0, 'f', GlobalConfig::percentPrecision());
   else
     str = _sum.pretty();
 
@@ -215,7 +215,7 @@ void CalleeCoverageItem::setGroupType(TraceCost::CostType gt)
   if (_groupType == gt) return;
   _groupType = gt;
 
-  QColor c = Configuration::functionColor(_groupType, _function);
+  QColor c = GlobalConfig::functionColor(_groupType, _function);
   setPixmap(4, colorPixmap(10, 10, c));
 }
 
@@ -242,8 +242,8 @@ void CalleeCoverageItem::update()
 
 
   QString str;
-  if (Configuration::showPercentage())
-    str = QString("%1").arg(_pSum, 0, 'f', Configuration::percentPrecision());
+  if (GlobalConfig::showPercentage())
+    str = QString("%1").arg(_pSum, 0, 'f', GlobalConfig::percentPrecision());
   else
     str = _sum.pretty();
 
@@ -258,9 +258,9 @@ void CalleeCoverageItem::update()
  _pSelf = 100.0 * _coverage->self();
  _self = SubCost(realSum * _coverage->self());
 
- if (Configuration::showPercentage()) {
+ if (GlobalConfig::showPercentage()) {
     setText(1, QString("%1")
-            .arg(_pSelf, 0, 'f', Configuration::percentPrecision()));
+            .arg(_pSelf, 0, 'f', GlobalConfig::percentPrecision()));
   }
   else {
     setText(1, _self.pretty());

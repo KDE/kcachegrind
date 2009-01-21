@@ -26,7 +26,7 @@
 
 #include "listutils.h"
 #include "coverage.h"
-#include "configuration.h"
+#include "globalconfig.h"
 
 
 // PartListItem
@@ -84,7 +84,7 @@ void PartListItem::update()
   double total = _part->subCost(_costType);
 
   TraceCost* selfTotalCost = _part;
-  if (pf && Configuration::showExpanded()) {
+  if (pf && GlobalConfig::showExpanded()) {
       switch(_groupType) {
       case TraceCost::Object: selfTotalCost = pf->partObject(); break;
       case TraceCost::Class:  selfTotalCost = pf->partClass(); break;
@@ -103,9 +103,9 @@ void PartListItem::update()
   }
   else {
     double pure  = 100.0 * _pure / selfTotal;
-    if (Configuration::showPercentage()) {
+    if (GlobalConfig::showPercentage()) {
       setText(2, QString("%1")
-              .arg(pure, 0, 'f', Configuration::percentPrecision()));
+              .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
     }
     else
       setText(2, _partCostItem->prettySubCost(_costType));
@@ -119,9 +119,9 @@ void PartListItem::update()
   }
   else {
     double sum  = 100.0 * _sum / total;
-    if (Configuration::showPercentage()) {
+    if (GlobalConfig::showPercentage()) {
       setText(1, QString("%1")
-              .arg(sum, 0, 'f', Configuration::percentPrecision()));
+              .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
     }
     else
       setText(1, _sum.pretty());

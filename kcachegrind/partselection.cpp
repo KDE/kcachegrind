@@ -37,7 +37,7 @@
 #include <kconfiggroup.h>
 
 #include "partgraph.h"
-#include "configuration.h"
+#include "globalconfig.h"
 
 PartSelection::PartSelection( QWidget* parent)
   : PartSelectionBase(parent)
@@ -312,7 +312,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
       if (c->type() == TraceItem::PartFunction)
         if ( ((TracePartFunction*)c)->function() == _function) break;
 
-      str = i18n("Go to '%1'", Configuration::shortenSymbol(ni->text(0)));
+      str = i18n("Go to '%1'", GlobalConfig::shortenSymbol(ni->text(0)));
       popup.insertItem(str, id);
       ni = ni->parent();
       id++;

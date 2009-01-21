@@ -51,7 +51,7 @@
 #include <kconfig.h>
 #include <kconfiggroup.h>
 
-#include "configuration.h"
+#include "globalconfig.h"
 #include "listutils.h"
 
 
@@ -751,8 +751,8 @@ void GraphExporter::writeDot()
 
 		if (_go->clusterGroups() && i) {
 			QString iabr = i->prettyName();
-			if ((int)iabr.length() > Configuration::maxSymbolLength())
-				iabr = iabr.left(Configuration::maxSymbolLength()) + "...";
+			if ((int)iabr.length() > GlobalConfig::maxSymbolLength())
+				iabr = iabr.left(GlobalConfig::maxSymbolLength()) + "...";
 
 			*stream << QString("subgraph \"cluster%1\" { label=\"%2\";\n")
 			.arg(cluster).arg(iabr);
@@ -762,8 +762,8 @@ void GraphExporter::writeDot()
 			TraceFunction* f = np->function();
 
 			QString abr = f->prettyName();
-			if ((int)abr.length() > Configuration::maxSymbolLength())
-				abr = abr.left(Configuration::maxSymbolLength()) + "...";
+			if ((int)abr.length() > GlobalConfig::maxSymbolLength())
+				abr = abr.left(GlobalConfig::maxSymbolLength()) + "...";
 
 			*stream << QString("  F%1 [").arg((long)f, 0, 16);
 			if (_useBox) {
@@ -1172,7 +1172,7 @@ CanvasNode::CanvasNode(CallGraphView* v, GraphNode* n, int x, int y, int w,
 		setText(0, _node->function()->prettyName());
 
 	TraceCost* totalCost;
-	if (Configuration::showExpanded()) {
+	if (GlobalConfig::showExpanded()) {
 		if (_view->activeFunction()) {
 			if (_view->activeFunction()->cycle())
 				totalCost = _view->activeFunction()->cycle()->inclusive();
@@ -1184,9 +1184,9 @@ CanvasNode::CanvasNode(CallGraphView* v, GraphNode* n, int x, int y, int w,
 		totalCost = ((TraceItemView*)_view)->data();
 	double total = totalCost->subCost(_view->eventType());
 	double inclP = 100.0 * n->incl/ total;
-	if (Configuration::showPercentage())
+	if (GlobalConfig::showPercentage())
 		setText(1, QString("%1 %")
-		.arg(inclP, 0, 'f', Configuration::percentPrecision()));
+		.arg(inclP, 0, 'f', GlobalConfig::percentPrecision()));
 	else
 		setText(1, SubCost(n->incl).pretty());
 	setPixmap(1, percentagePixmap(25, 10, (int)(inclP+.5), Qt::blue, true));
@@ -1205,7 +1205,7 @@ void CanvasNode::updateGroup()
 	if (!_view || !_node)
 		return;
 
-	QColor c = Configuration::functionColor(_view->groupType(),
+	QColor c = GlobalConfig::functionColor(_view->groupType(),
 	                                        _node->function());
 	setBackColor(c);
 	update();
@@ -1258,7 +1258,7 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce, int x,
 
 	setPosition(1, DrawParams::BottomCenter);
 	TraceCost* totalCost;
-	if (Configuration::showExpanded()) {
+	if (GlobalConfig::showExpanded()) {
 		if (_view->activeFunction()) {
 			if (_view->activeFunction()->cycle())
 				totalCost = _view->activeFunction()->cycle()->inclusive();
@@ -1270,9 +1270,9 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce, int x,
 		totalCost = ((TraceItemView*)_view)->data();
 	double total = totalCost->subCost(_view->eventType());
 	double inclP = 100.0 * e->cost/ total;
-	if (Configuration::showPercentage())
+	if (GlobalConfig::showPercentage())
 		setText(1, QString("%1 %")
-		.arg(inclP, 0, 'f', Configuration::percentPrecision()));
+		.arg(inclP, 0, 'f', GlobalConfig::percentPrecision()));
 	else
 		setText(1, SubCost(e->cost).pretty());
 
@@ -2839,9 +2839,9 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 
 			QString name = f->prettyName();
 			popup.insertItem(tr("Go to '%1'")
-					 .arg(Configuration::shortenSymbol(name)), 93);
+					 .arg(GlobalConfig::shortenSymbol(name)), 93);
 			if (cycle && (cycle != f)) {
-				name = Configuration::shortenSymbol(cycle->prettyName());
+				name = GlobalConfig::shortenSymbol(cycle->prettyName());
 				popup.insertItem(tr("Go to '%1'").arg(name), 94);
 			}
 			popup.addSeparator();
@@ -2861,7 +2861,7 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 			if (c) {
 				QString name = c->prettyName();
 				popup.insertItem(tr("Go to '%1'")
-						 .arg(Configuration::shortenSymbol(name)), 95);
+						 .arg(GlobalConfig::shortenSymbol(name)), 95);
 
 				popup.addSeparator();
 			}

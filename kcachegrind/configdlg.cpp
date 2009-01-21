@@ -35,10 +35,10 @@
 #include <knumvalidator.h>
 
 #include "tracedata.h"
-#include "kconfiguration.h"
+#include "globalconfig.h"
 
 
-ConfigDlg::ConfigDlg(KConfiguration* c, TraceData* data,
+ConfigDlg::ConfigDlg(GlobalConfig* c, TraceData* data,
                      QWidget* parent)
   :ConfigDlgBase(parent)
 {
@@ -123,7 +123,7 @@ ConfigDlg::ConfigDlg(KConfiguration* c, TraceData* data,
     fList.append((*fit).prettyName());
 
   // then already defined colors (have to check for duplicates!)
-  Q3DictIterator<Configuration::ColorSetting> it( c->_colors );
+  Q3DictIterator<GlobalConfig::ColorSetting> it( c->_colors );
   for( ; it.current(); ++it ) {
     if ((*it)->automatic) continue;
 
@@ -199,7 +199,7 @@ ConfigDlg::~ConfigDlg()
 {
 }
 
-bool ConfigDlg::configure(KConfiguration* c, TraceData* d, QWidget* p)
+bool ConfigDlg::configure(GlobalConfig* c, TraceData* d, QWidget* p)
 {
   ConfigDlg dlg(c, d, p);
 
@@ -233,9 +233,9 @@ void ConfigDlg::objectActivated(const QString & s)
 
   QString n = TraceCost::typeName(TraceCost::Object) + '-' + s;
 
-  Configuration::ColorSetting* cs = _config->_colors[n];
+  GlobalConfig::ColorSetting* cs = _config->_colors[n];
   if (!cs)
-    cs = Configuration::color(n);
+    cs = GlobalConfig::color(n);
 //  else
 //    qDebug("found color %s", n.ascii());
 
@@ -277,9 +277,9 @@ void ConfigDlg::classActivated(const QString & s)
 
   QString n = TraceCost::typeName(TraceCost::Class) + '-' + s;
 
-  Configuration::ColorSetting* cs = _config->_colors[n];
+  GlobalConfig::ColorSetting* cs = _config->_colors[n];
   if (!cs)
-    cs = Configuration::color(n);
+    cs = GlobalConfig::color(n);
 
   _classCS = cs;
 
@@ -308,9 +308,9 @@ void ConfigDlg::fileActivated(const QString & s)
 
   QString n = TraceCost::typeName(TraceCost::File) + '-' + s;
 
-  Configuration::ColorSetting* cs = _config->_colors[n];
+  GlobalConfig::ColorSetting* cs = _config->_colors[n];
   if (!cs)
-    cs = Configuration::color(n);
+    cs = GlobalConfig::color(n);
 
   _fileCS = cs;
 

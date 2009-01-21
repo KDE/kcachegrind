@@ -38,7 +38,7 @@
 #include "partgraph.h"
 #include "functionitem.h"
 #include "costlistitem.h"
-#include "configuration.h"
+#include "globalconfig.h"
 #include "toplevel.h"
 
 
@@ -175,7 +175,7 @@ void FunctionSelection::functionContext(Q3ListViewItem* i,
 	if (i) {
 		f = ((FunctionItem*) i)->function();
 		if (f) {
-			popup.insertItem(i18n("Go to '%1'", Configuration::shortenSymbol(f->prettyName())), 93);
+			popup.insertItem(i18n("Go to '%1'", GlobalConfig::shortenSymbol(f->prettyName())), 93);
 			popup.insertSeparator();
 		}
 	}
@@ -440,7 +440,7 @@ void FunctionSelection::refresh()
   // Always show group of current function, even if cost below low limit.
   //
 
-  _hc.clear(Configuration::maxListCount());
+  _hc.clear(GlobalConfig::maxListCount());
 
   TraceCostItem *group;
 
@@ -623,7 +623,7 @@ void FunctionSelection::groupSelected(Q3ListViewItem* i)
   setCostColumnWidths();
 
   double total;
-  if (Configuration::showExpanded())
+  if (GlobalConfig::showExpanded())
       total = (double) g->subCost(_eventType);
   else
       total = (double) _data->subCost(_eventType);
@@ -639,7 +639,7 @@ void FunctionSelection::groupSelected(Q3ListViewItem* i)
 
   FunctionItem* fitem = 0;
   TraceFunction *f;
-  _hc.clear(Configuration::maxListCount());
+  _hc.clear(GlobalConfig::maxListCount());
   for (f=list.first();f;f=list.next()) {
     if (re.search(f->prettyName())<0) continue;
 
@@ -767,7 +767,7 @@ void FunctionSelection::query(QString query)
   TraceFunction* f = 0;
   TraceFunctionList list2;
 
-  _hc.clear(Configuration::maxListCount());
+  _hc.clear(GlobalConfig::maxListCount());
 
   TraceFunctionMap::Iterator it;
   for ( it = _data->functionMap().begin();

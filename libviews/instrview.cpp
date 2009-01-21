@@ -32,7 +32,7 @@
 #include <kconfig.h>
 #include <kconfiggroup.h>
 
-#include "configuration.h"
+#include "globalconfig.h"
 #include "instritem.h"
 
 
@@ -207,7 +207,7 @@ void InstrView::context(Q3ListViewItem* i, const QPoint & p, int c)
   TraceInstr* instr = ij ? ij->instrTo() : 0;
 
   if (f) {
-      popup.insertItem(tr("Go to '%1'").arg(Configuration::shortenSymbol(f->prettyName())), 93);
+      popup.insertItem(tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName())), 93);
     popup.insertSeparator();
   }
   else if (instr) {
@@ -768,17 +768,17 @@ bool InstrView::fillInstrRange(TraceFunction* function,
       else {
 	if (0) qDebug() << "Check if 0x" << addr.toString() << " is in ]0x"
 			 << costAddr.toString() << ",0x"
-			 << (nextCostAddr - 3*Configuration::noCostInside()).toString()
+			 << (nextCostAddr - 3*GlobalConfig::noCostInside()).toString()
 			 << "[" << endl;
 
 	  // Suppose a average instruction len of 3 bytes
 	  if ( (addr > costAddr) &&
 	       ((nextCostAddr==0) ||
-		(addr < nextCostAddr - 3*Configuration::noCostInside()) ))
+		(addr < nextCostAddr - 3*GlobalConfig::noCostInside()) ))
 	      inside = false;
       }
 
-      int context = Configuration::context();
+      int context = GlobalConfig::context();
 
       if ( ((costAddr==0)     || (addr > costAddr + 3*context)) &&
            ((nextCostAddr==0) || (addr < nextCostAddr - 3*context)) ) {

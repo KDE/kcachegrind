@@ -24,7 +24,7 @@
 
 #include <QPixmap>
 
-#include "configuration.h"
+#include "globalconfig.h"
 #include "listutils.h"
 #include "callview.h"
 
@@ -60,7 +60,7 @@ CallItem::CallItem(CallView* view, Q3ListView* parent, TraceCall* c)
 
 void  CallItem::updateGroup()
 {
-  QColor c = Configuration::functionColor(_view->groupType(), _shown);
+  QColor c = GlobalConfig::functionColor(_view->groupType(), _shown);
   setPixmap(3, colorPixmap(10, 10, c));
 }
 
@@ -84,7 +84,7 @@ void CallItem::updateCost()
     setText(2, cStr);
 
     TraceCost* totalCost;
-    if (Configuration::showExpanded()) {
+    if (GlobalConfig::showExpanded()) {
       if (_active->cycle())
         totalCost = _active->cycle()->inclusive();
       else
@@ -106,9 +106,9 @@ void CallItem::updateCost()
     else {
 	double sum  = 100.0 * _sum / total;
 
-	if (Configuration::showPercentage())
+	if (GlobalConfig::showPercentage())
 	    setText(0, QString("%1")
-		    .arg(sum, 0, 'f', Configuration::percentPrecision()));
+		    .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
 	else
 	    setText(0, _call->prettySubCost(ct));
 
@@ -130,9 +130,9 @@ void CallItem::updateCost()
       else {
 	double sum  = 100.0 * _sum2 / total;
 	
-	if (Configuration::showPercentage())
+	if (GlobalConfig::showPercentage())
 	  setText(1, QString("%1")
-		  .arg(sum, 0, 'f', Configuration::percentPrecision()));
+		  .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
 	else
 	  setText(1, _call->prettySubCost(ct2));
 

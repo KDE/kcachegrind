@@ -26,7 +26,7 @@
 
 #include <klocale.h>
 
-#include "configuration.h"
+#include "globalconfig.h"
 #include "listutils.h"
 
 
@@ -136,7 +136,7 @@ QColor PartAreaWidget::groupColor(TraceFunction* f) const
   if (!f)
       return palette().color( QPalette::Button );
 
-  return Configuration::functionColor(_groupType, f);
+  return GlobalConfig::functionColor(_groupType, f);
 }
 
 QString PartAreaWidget::tipString(TreeMapItem* i) const
@@ -147,10 +147,10 @@ QString PartAreaWidget::tipString(TreeMapItem* i) const
   //qDebug("PartAreaWidget::tipString for '%s'", i->name().ascii());
 
   // first, SubPartItem's
-  while (i && count<Configuration::maxSymbolCount() && i->rtti() == 3) {
+  while (i && count<GlobalConfig::maxSymbolCount() && i->rtti() == 3) {
     itemTip = i->text(0);
-    if ((int)itemTip.length()>Configuration::maxSymbolLength())
-      itemTip = itemTip.left(Configuration::maxSymbolLength()) + "...";
+    if ((int)itemTip.length()>GlobalConfig::maxSymbolLength())
+      itemTip = itemTip.left(GlobalConfig::maxSymbolLength()) + "...";
 
     if (!i->text(1).isEmpty())
       itemTip += " (" + i->text(1) + ')';
@@ -275,11 +275,11 @@ QString PartItem::text(int textNo) const
   ct = w->eventType();
   v = _p->subCost(ct);
 
-  if (Configuration::showPercentage()) {
+  if (GlobalConfig::showPercentage()) {
     TraceCost* t = _p->data()->totals();
     double p  = 100.0 * v / t->subCost(ct);
     return QString("%1 %")
-      .arg(p, 0, 'f', Configuration::percentPrecision());
+      .arg(p, 0, 'f', GlobalConfig::percentPrecision());
   }
   return v.pretty();
 }
@@ -441,12 +441,12 @@ QString SubPartItem::text(int textNo) const
   else
     v = _partCostItem->subCost(ct);
 
-  if (Configuration::showPercentage()) {
-    TraceCost* t = Configuration::showExpanded() ?
+  if (GlobalConfig::showPercentage()) {
+    TraceCost* t = GlobalConfig::showExpanded() ?
 	_partCostItem->part() : _partCostItem->part()->data()->totals();
     double p  = 100.0 * v / t->subCost(ct);
     return QString("%1 %")
-      .arg(p, 0, 'f', Configuration::percentPrecision());
+      .arg(p, 0, 'f', GlobalConfig::percentPrecision());
   }
   return v.pretty();
 }
@@ -459,7 +459,7 @@ QPixmap SubPartItem::pixmap(int i) const
 
     PartAreaWidget* w = (PartAreaWidget*)widget();
     TraceEventType* ct = w->eventType();
-    TraceCost* t = Configuration::showExpanded() ?
+    TraceCost* t = GlobalConfig::showExpanded() ?
 	_partCostItem->part() : _partCostItem->part()->data()->totals();
     TraceCost* c;
     if (w->visualization() == PartAreaWidget::Inclusive)
@@ -530,7 +530,7 @@ QColor SubPartItem::backColor() const
   if (w->visualization() == PartAreaWidget::Inclusive)
     return w->groupColor((TraceFunction*)(_partCostItem->dependant()));
 
-  return Configuration::groupColor(_partCostItem->dependant());
+  return GlobalConfig::groupColor(_partCostItem->dependant());
 }
 
 
