@@ -54,7 +54,6 @@
 #include <kconfiggroup.h>
 
 #include "configuration.h"
-#include "toplevel.h"
 #include "listutils.h"
 
 
@@ -1175,7 +1174,7 @@ CanvasNode::CanvasNode(CallGraphView* v, GraphNode* n, int x, int y, int w,
 		setText(0, _node->function()->prettyName());
 
 	TraceCost* totalCost;
-	if (_view->topLevel()->showExpanded()) {
+	if (Configuration::showExpanded()) {
 		if (_view->activeFunction()) {
 			if (_view->activeFunction()->cycle())
 				totalCost = _view->activeFunction()->cycle()->inclusive();
@@ -1187,7 +1186,7 @@ CanvasNode::CanvasNode(CallGraphView* v, GraphNode* n, int x, int y, int w,
 		totalCost = ((TraceItemView*)_view)->data();
 	double total = totalCost->subCost(_view->eventType());
 	double inclP = 100.0 * n->incl/ total;
-	if (_view->topLevel()->showPercentage())
+	if (Configuration::showPercentage())
 		setText(1, QString("%1 %")
 		.arg(inclP, 0, 'f', Configuration::percentPrecision()));
 	else
@@ -1261,7 +1260,7 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce, int x,
 
 	setPosition(1, DrawParams::BottomCenter);
 	TraceCost* totalCost;
-	if (_view->topLevel()->showExpanded()) {
+	if (Configuration::showExpanded()) {
 		if (_view->activeFunction()) {
 			if (_view->activeFunction()->cycle())
 				totalCost = _view->activeFunction()->cycle()->inclusive();
@@ -1273,7 +1272,7 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce, int x,
 		totalCost = ((TraceItemView*)_view)->data();
 	double total = totalCost->subCost(_view->eventType());
 	double inclP = 100.0 * e->cost/ total;
-	if (_view->topLevel()->showPercentage())
+	if (Configuration::showPercentage())
 		setText(1, QString("%1 %")
 		.arg(inclP, 0, 'f', Configuration::percentPrecision()));
 	else

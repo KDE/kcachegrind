@@ -33,7 +33,7 @@
 
 #include "configuration.h"
 #include "listutils.h"
-#include "toplevel.h"
+#include "toplevelbase.h"
 
 
 //

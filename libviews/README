@@ -1,0 +1,87 @@
+OVERVIEW
+
+This directory contains widgets which display views
+into profile data. A view either shows some aspect of
+the profile data directly, are is a container for
+other views.
+
+All views are subclasses of TraceItemView.
+
+Implementation of all views depend on Qt only.
+KDE-specific views, these should be in kcachegrind/.
+
+
+VIEWS
+
+
+Container views
+---------------
+
+TabView
+
+A Tabview embeds multiple views with the same cost item
+selected/activated. The views can be arranged either
+on top of each other using tabs for selection, or nearside
+each other in four regions (right/top/left/bottom).
+
+Multiview
+
+A Multiview is a horizontal or vertical series of embedded views,
+separated by splitters.
+Eeach embedded view can have its own cost item selection/activation.
+One of the views has the focus, and thus providing the
+selection/activation of the multiview itself.
+Selection in one view changes the activation in the next view to
+the right/bottom (with wrap around).
+
+
+Detailed views
+--------------
+
+EventTypeView
+
+A list of event types measured in the profile experiment,
+attributed with the costs of the currently activated cost item.
+
+CallView
+
+A list of callers/callees of the currently activated cost item.
+
+CallMapView
+
+A treemap showing the nesting of callers/callees starting from
+the currently activated cost item.
+
+CallGraphView
+
+A graph around the currently activated cost item, with edges
+being the call relations. Only nodes and edges with cost over a
+given threshould are shown.
+
+CoverageView
+
+Similar to the CallView list, the coverage list includes not
+only direct callers/callees, but also indirect.
+
+SourceView
+
+Annotated source.
+
+InstrView
+
+Annotated assembly.
+
+PartView
+
+List of loaded profile data parts
+
+
+Misc
+----
+
+TreeMap
+
+Generic widget for treemaps
+
+listutils.cpp
+helpers for lists in views

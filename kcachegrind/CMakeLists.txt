@@ -1,38 +1,19 @@
-include_directories( ../libcore )
+include_directories( ../libcore ../libviews )
 
 ########### next target ###############
 
 set(kcachegrind_SRCS
-   treemap.cpp
    main.cpp
    kconfiguration.cpp
    functionselection.cpp
    partgraph.cpp
    toplevel.cpp
    stackselection.cpp
+   stackitem.cpp
    partselection.cpp
    configdlg.cpp
-   traceitemview.cpp
-   instrview.cpp
-   tabview.cpp
-   sourceview.cpp
-   callmapview.cpp
-   callview.cpp
-   coverageview.cpp
-   eventtypeview.cpp
-   partview.cpp
-   listutils.cpp
-   eventtypeitem.cpp
-   multiview.cpp
-   callitem.cpp
-   coverageitem.cpp
-   sourceitem.cpp
    costlistitem.cpp
-   partlistitem.cpp
-   functionitem.cpp
-   instritem.cpp
-   stackitem.cpp
-   callgraphview.cpp )
+   functionitem.cpp )
 
 kde4_add_ui_files(kcachegrind_SRCS
 	stackselectionbase.ui
@@ -45,7 +26,7 @@ kde4_add_app_icon(kcachegrind_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-kcachegr
 
 kde4_add_executable(kcachegrind ${kcachegrind_SRCS})
 
-target_link_libraries(kcachegrind core ${KDE4_KIO_LIBS} ${QT_QT3SUPPORT_LIBRARY})
+target_link_libraries(kcachegrind core views ${KDE4_KIO_LIBS} ${QT_QT3SUPPORT_LIBRARY})
 
 install(TARGETS kcachegrind  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

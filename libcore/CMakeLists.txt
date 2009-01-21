@@ -1,4 +1,4 @@
-kde4_add_library(core STATIC
+set(core_SRCS
    cachegrindloader.cpp
    fixcost.cpp
    loader.cpp
@@ -11,3 +11,5 @@ kde4_add_library(core STATIC
    logger.cpp
    configuration.cpp )
 
+qt4_automoc(${core_SRCS})
+add_library(core STATIC ${core_SRCS})

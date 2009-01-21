@@ -30,7 +30,7 @@
 
 #include "configuration.h"
 #include "partlistitem.h"
-#include "toplevel.h"
+#include "toplevelbase.h"
 
 
 //

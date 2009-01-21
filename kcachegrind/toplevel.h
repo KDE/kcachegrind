@@ -31,6 +31,7 @@
 #include "logger.h"
 #include "traceitemview.h"
 #include "tracedata.h"
+#include "toplevelbase.h"
 
 class MultiView;
 class QLineEdit;
@@ -53,7 +54,7 @@ class DumpSelection;
 class StackSelection;
 class TraceFunction;
 
-class TopLevel : public KXmlGuiWindow, public Logger
+class TopLevel : public KXmlGuiWindow, public Logger, public TopLevelBase
 {
   Q_OBJECT
   Q_CLASSINFO("D-Bus Interface", "org.kde.kcachegrind")

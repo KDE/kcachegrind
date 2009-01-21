@@ -29,7 +29,7 @@
 
 #include "configuration.h"
 #include "eventtypeitem.h"
-#include "toplevel.h"
+#include "toplevelbase.h"
 
 
 //

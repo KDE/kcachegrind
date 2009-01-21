@@ -21,6 +21,7 @@ ENDIF(NOT WIN32)
 
 add_subdirectory( libcore )
 add_subdirectory( cgview )
+add_subdirectory( libviews )
 add_subdirectory( kcachegrind ) 
 add_subdirectory( pics ) 
 add_subdirectory( converters ) 

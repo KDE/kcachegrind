@@ -30,7 +30,6 @@
 #include "configuration.h"
 #include "listutils.h"
 #include "callview.h"
-#include "toplevel.h"
 
 
 // CallItem
@@ -88,7 +87,7 @@ void CallItem::updateCost()
     setText(2, cStr);
 
     TraceCost* totalCost;
-    if (_view->topLevel()->showExpanded()) {
+    if (Configuration::showExpanded()) {
       if (_active->cycle())
         totalCost = _active->cycle()->inclusive();
       else
@@ -110,7 +109,7 @@ void CallItem::updateCost()
     else {
 	double sum  = 100.0 * _sum / total;
 
-	if (_view->topLevel()->showPercentage())
+	if (Configuration::showPercentage())
 	    setText(0, QString("%1")
 		    .arg(sum, 0, 'f', Configuration::percentPrecision()));
 	else
@@ -134,7 +133,7 @@ void CallItem::updateCost()
       else {
 	double sum  = 100.0 * _sum2 / total;
 	
-	if (_view->topLevel()->showPercentage())
+	if (Configuration::showPercentage())
 	  setText(1, QString("%1")
 		  .arg(sum, 0, 'f', Configuration::percentPrecision()));
 	else

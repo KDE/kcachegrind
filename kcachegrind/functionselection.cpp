@@ -239,8 +239,8 @@ void FunctionSelection::addGroupMenu(Q3PopupMenu* popup)
   case TraceItem::FunctionCycle: popup1->setItemChecked(4, true); break;
   default: break;
   }
-  connect(popup1,SIGNAL(activated(int)),
-	  _topLevel,SLOT(groupTypeSelected(int)));
+  connect(popup1, SIGNAL(activated(int)),
+	  (TopLevel*) _topLevel, SLOT(groupTypeSelected(int)));
 
   popup->insertItem(i18n("Grouping"), popup1);
 }    

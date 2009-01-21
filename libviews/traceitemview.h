@@ -31,7 +31,7 @@ class QMenu;
 class KConfig;
 class KConfigGroup;
 
-class TopLevel;
+class TopLevelBase;
 
 /**
  * Abstract Base Class for KCachegrind Views
@@ -68,7 +68,7 @@ public:
   // a TraceItemView can have a position in a parent container
   enum Position { Hidden, Top, Right, Left, Bottom };
 
-  explicit TraceItemView(TraceItemView* parentView, TopLevel* top = 0);
+  explicit TraceItemView(TraceItemView* parentView, TopLevelBase* top = 0);
   virtual ~TraceItemView() {}
 
   virtual QString whatsThis() const;
@@ -135,8 +135,8 @@ public:
   int status() const { return _status; }
 
   // pointer to top level window to e.g. show status messages
-  void setTopLevel(TopLevel* t) { _topLevel = t; }
-  TopLevel* topLevel() const { return _topLevel; }
+  void setTopLevel(TopLevelBase* t) { _topLevel = t; }
+  TopLevelBase* topLevel() const { return _topLevel; }
 
   void setPosition(Position p) { _pos = p; }
   Position position() const { return _pos; }
@@ -181,7 +181,7 @@ protected:
   virtual void doUpdate(int changeType);
 
   TraceItemView* _parentView;
-  TopLevel* _topLevel;
+  TopLevelBase* _topLevel;
 
   TraceData* _data;
   TracePartList _partList;

@@ -843,7 +843,6 @@ void TopLevel::setPercentage(bool show)
   if (_taPercentage->isChecked() != show)
     _taPercentage->setChecked(show);
 
-  // FIXME: Delete when no view gets this config from Configuration
   Configuration::setShowPercentage(_showPercentage);
 
   _partSelection->refresh();
@@ -862,7 +861,6 @@ void TopLevel::toggleExpanded()
   if (_showExpanded == show) return;
   _showExpanded = show;
 
-  // FIXME: Delete when no view gets this config from Configuration
   Configuration::setShowExpanded(_showExpanded);
 
   _partSelection->refresh();
@@ -881,7 +879,6 @@ void TopLevel::toggleCycles()
   if (_showCycles == show) return;
   _showCycles = show;
 
-  // FIXME: Delete when no view gets this config from Configuration
   Configuration::setShowCycles(_showCycles);
 
   if (!_data) return;

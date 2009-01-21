@@ -29,7 +29,7 @@
 #include "traceitemview.h"
 #include "tracedata.h"
 #include "listutils.h"
-
+#include "toplevel.h"
 
 class Q3PopupMenu;
 

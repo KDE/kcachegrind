@@ -1,0 +1,19 @@
+Visualization state problem (16.12.08)
+--------------------------------------
+
+A view on profile data should use its own visualization state, such
+as currently selected/activated item, attributes such as
+absolute/percentage and so on.
+A view can be console output, a toplevel window (we want to support
+multiple for the same data!), or even subviews inside of a view
+(different cost item activations (REALLY NEEDED)).
+
+Currently, this visualization state is stored either
+* in the single Configuration object
+* attribute of toplevel windows (eg. options from tool bar)
+
+Problems:
+* Which configuration options persistent between runs of the app?
+
+Todo:
+* Use separate VisualizationState objects

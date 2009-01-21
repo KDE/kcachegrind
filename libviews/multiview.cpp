@@ -38,7 +38,7 @@
 // MultiView
 //
 
-MultiView::MultiView(TopLevel* top, QWidget* parent)
+MultiView::MultiView(TopLevelBase* top, QWidget* parent)
     : QSplitter(parent), TraceItemView(0, top)
 {
   // default

@@ -29,12 +29,12 @@
 #include <kdebug.h>
 #include <kconfiggroup.h>
 
-#include "toplevel.h"
+#include "toplevelbase.h"
 
 
 #define TRACE_UPDATES 0
 
-TraceItemView::TraceItemView(TraceItemView* parentView, TopLevel* top)
+TraceItemView::TraceItemView(TraceItemView* parentView, TopLevelBase* top)
 {
   _parentView = parentView;
   _topLevel = top ? top : parentView->topLevel();
