@@ -41,6 +41,8 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QEventLoop>
+#include <QToolBar>
+#include <QMessageBox>
 #include <QtDBus/QDBusConnection>
 
 #if ENABLE_DUMPDOCK
@@ -404,6 +406,10 @@ void TopLevel::createMiscActions()
 {
   QString hint;
   QAction* action;
+
+  QToolBar* tb = new QToolBar(tr("Main Toolbar"), this);
+  addToolBar(Qt::TopToolBarArea, tb);
+
   QMenuBar* mBar = menuBar();
   QMenu* fileMenu = mBar->addMenu("&File");
 
@@ -417,6 +423,15 @@ void TopLevel::createMiscActions()
   action->setShortcuts(QKeySequence::Open);
   action->setStatusTip(tr("Open profile data file"));
   connect(action, SIGNAL(triggered()), this, SLOT(loadTrace()));
+  fileMenu->addAction(action);
+  tb->addAction(action);
+  tb->addSeparator();
+
+  action = new QAction(tr("E&xit"), this);
+  action->setShortcut(tr("Ctrl+Q"));
+  action->setStatusTip(tr("Exit the application"));
+  connect(action, SIGNAL(triggered()), this, SLOT(close()));
+  fileMenu->addSeparator();
   fileMenu->addAction(action);
 
   _partDockShown = new QAction(tr("Show Parts"), this);
@@ -443,8 +458,68 @@ void TopLevel::createMiscActions()
   viewMenu->addAction(_taExpanded);
   viewMenu->addAction(_taCycles);
 
+  tb->addAction(_taCycles);
+  tb->addAction(_taPercentage);
+  tb->addAction(_taExpanded);
+  tb->addSeparator();
+
   _taSplit = new QAction(this);
   _taSplitDir = new QAction(this);
+
+  _paUp = new QAction(tr( "Up" ), this );
+  _paUp->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Up) );
+  _paUp->setStatusTip(tr("Go Up in Call Stack"));
+  _paUp->setMenu(new QMenu(this));
+  connect( _paUp, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserUp() ) );
+  connect( _paUp->menu(), SIGNAL( aboutToShow() ),
+	    this, SLOT( upAboutToShow() ) );
+  connect( _paUp->menu(), SIGNAL( triggered( QAction* ) ),
+	    this, SLOT( upTriggered( QAction* ) ) );
+  hint = tr("Go to last selected caller of current function");
+  _paUp->setToolTip( hint );
+  _paUp->setWhatsThis( hint );
+
+  _paBack = new QAction(tr("Back"), this);
+  _paBack->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Left) );
+  _paBack->setStatusTip(tr("Go Back"));
+  _paBack->setMenu(new QMenu(this));
+  connect( _paBack, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserBack() ) );
+  connect( _paBack->menu(), SIGNAL( aboutToShow() ),
+           this, SLOT( backAboutToShow() ) );
+  connect( _paBack->menu(), SIGNAL( triggered( QAction* ) ),
+           this, SLOT( backTriggered( QAction* ) ) );
+  hint = tr("Go back in function selection history");
+  _paBack->setToolTip( hint );
+  _paBack->setWhatsThis( hint );
+
+  _paForward = new QAction(tr("Forward"), this);
+  _paForward->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Right) );
+  _paForward->setStatusTip(tr("Go Forward"));
+  _paForward->setMenu(new QMenu(this));
+  connect( _paForward, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserForward() ) );
+  connect( _paForward->menu(), SIGNAL( aboutToShow() ),
+           this, SLOT( forwardAboutToShow() ) );
+  connect( _paForward->menu(), SIGNAL( triggered( QAction* ) ),
+           this, SLOT( forwardTriggered( QAction* ) ) );
+  hint = tr("Go forward in function selection history");
+  _paForward->setToolTip( hint );
+  _paForward->setWhatsThis( hint );
+
+  QMenu* goMenu = mBar->addMenu("&Go");
+  goMenu->addAction(_paBack);
+  goMenu->addAction(_paForward);
+  goMenu->addAction(_paUp);
+
+  tb->addAction(_paBack);
+  tb->addAction(_paForward);
+  tb->addAction(_paUp);
+
+  action = new QAction(tr("&About"), this);
+  action->setStatusTip(tr("Show the application's About box"));
+  connect(action, SIGNAL(triggered()), this, SLOT(about()));
+
+  QMenu* helpMenu = mBar->addMenu("&Help");
+  helpMenu->addAction(action);
 
 #if 0
 
@@ -744,6 +819,15 @@ void TopLevel::createActions()
   createLayoutActions();
 }
 
+void TopLevel::about()
+{
+    QString text;
+    text = tr("<b>QCachegrind</b> is a GUI for browsing profile visualization.<br>"
+	      "It is a reduced, Qt-only version of <b>KCachegrind</b>.<p>"
+	      "Author and maintainer: Josef Weidendorfer (Josef.Weidendorfer@gmx.de)");
+    QMessageBox::about(this, tr("About QCachegrind"), text);
+}
+
 void TopLevel::toggleStatusBar()
 {
   if (statusBar()->isVisible())
@@ -807,6 +891,7 @@ void TopLevel::setPercentage(bool show)
   _showPercentage = show;
   if (_taPercentage->isChecked() != show)
     _taPercentage->setChecked(show);
+  _taExpanded->setEnabled(show);
 
   GlobalConfig::setShowPercentage(_showPercentage);
 
@@ -1254,8 +1339,8 @@ bool TopLevel::setFunction(TraceFunction* f)
   StackBrowser* b = _stackSelection->browser();
   if (b) {
     // do not disable up: a press forces stack-up extending...
-    //_paForward->setEnabled(b->canGoForward());
-    //_paBack->setEnabled(b->canGoBack());
+    _paForward->setEnabled(b->canGoForward());
+    _paBack->setEnabled(b->canGoBack());
   }
 
 #if TRACE_UPDATES
@@ -2123,7 +2208,6 @@ void TopLevel::forceTraceReload()
 
 void TopLevel::forwardAboutToShow()
 {
-#if 0
   QMenu *popup = _paForward->menu();
 
   popup->clear();
@@ -2159,12 +2243,10 @@ void TopLevel::forwardAboutToShow()
     hi = hi->next();
     count++;
   }
-#endif
 }
 
 void TopLevel::backAboutToShow()
 {
-#if 0
   QMenu *popup = _paBack->menu();
 
   popup->clear();
@@ -2200,12 +2282,10 @@ void TopLevel::backAboutToShow()
     hi = hi->last();
     count++;
   }
-#endif
 }
 
 void TopLevel::upAboutToShow()
 {
-#if 0
   QMenu *popup = _paUp->menu();
 
   popup->clear();
@@ -2236,12 +2316,10 @@ void TopLevel::upAboutToShow()
     f = hi->stack()->caller(f, false);
     count++;
   }
-#endif
 }
 
 void TopLevel::forwardTriggered(QAction* action)
 {
-#if 0
   int count = action->data().toInt(0);
   //qDebug("forwardTriggered: %d", count);
   if( count <= 0)
@@ -2255,12 +2333,10 @@ void TopLevel::forwardTriggered(QAction* action)
     count--;
   }
   _stackSelection->browserForward();
-#endif
 }
 
 void TopLevel::backTriggered(QAction* action)
 {
-#if 0
   int count = action->data().toInt(0);
   //qDebug("backTriggered: %d", count);
   if( count <= 0)
@@ -2274,12 +2350,10 @@ void TopLevel::backTriggered(QAction* action)
     count--;
   }
   _stackSelection->browserBack();
-#endif
 }
 
 void TopLevel::upTriggered(QAction* action)
 {
-#if 0
   int count = action->data().toInt(0);
   //qDebug("upTriggered: %d", count);
   if( count <= 0)
@@ -2299,7 +2373,6 @@ void TopLevel::upTriggered(QAction* action)
   //qDebug("upActivated: %s", f ? f->prettyName().ascii() : "??" );
   if (f)
     setFunction(f);
-#endif
 }
 
 void TopLevel::showMessage(const QString& msg, int ms)

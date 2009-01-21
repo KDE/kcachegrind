@@ -107,6 +107,7 @@ public slots:
   void configure();
   void querySlot();
   void dummySlot();
+  void about();
 
   // layouts
   void layoutDuplicate();
@@ -237,7 +238,7 @@ private:
   QAction *_functionDockShown, *_dumpDockShown;
   QAction *_taPercentage, *_taExpanded, *_taCycles;
   QAction *_taDump, *_taSplit, *_taSplitDir;
-  //KToolBarPopupAction *_paForward, *_paBack, *_paUp;
+  QAction *_paForward, *_paBack, *_paUp;
 
   TraceFunction* _function;
   const QObject* _lastSender;
