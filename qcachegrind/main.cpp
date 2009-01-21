@@ -45,7 +45,7 @@ int main( int argc, char ** argv )
     QStringList list = app.arguments();
     list.pop_front();
     QString file;
-    if (list.count()>0) {
+    if (!list.isEmpty()) {
 	foreach(file, list) {
 	    t = new TopLevel();
 	    t->show();
