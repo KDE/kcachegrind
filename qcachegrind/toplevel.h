@@ -26,6 +26,8 @@
 #include <qdatetime.h>
 #include <QLabel>
 #include <QMainWindow>
+#include <QStringList>
+#include <QString>
 
 #include "logger.h"
 #include "traceitemview.h"
@@ -55,6 +57,7 @@ class TopLevel : public QMainWindow, public Logger, public TopLevelBase
 {
   Q_OBJECT
   Q_CLASSINFO("D-Bus Interface", "net.sf.qcachegrind")
+
 public:
   TopLevel();
   ~TopLevel();
@@ -248,6 +251,7 @@ private:
   // subcost types used for visualization
   TraceEventType* _eventType;
   TraceEventType* _eventType2;
+  QStringList _eventTypes;
   // grouping of function list
   TraceItem::CostType _groupType;
   // selected group

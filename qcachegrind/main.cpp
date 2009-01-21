@@ -23,7 +23,9 @@
 #include <QFile>
 #include <QApplication>
 
-#include "configuration.h"
+#include "qtconfig.h"
+#include "config.h"
+#include "globalconfig.h"
 #include "toplevel.h"
 #include "tracedata.h"
 #include "loader.h"
@@ -34,7 +36,11 @@ int main( int argc, char ** argv )
     TopLevel* t;
     Loader::initLoaders();
 
-    Configuration::setConfig(new Configuration());
+    QCoreApplication::setOrganizationName("kcachegrind.sf.net");
+    QCoreApplication::setOrganizationDomain("kcachegrind.sf.net");
+    QCoreApplication::setApplicationName("QCachegrind");
+    ConfigStorage::setStorage(new QtConfigStorage);
+    GlobalConfig::config()->addDefaultTypes();
 
     QStringList list = app.arguments();
     list.pop_front();

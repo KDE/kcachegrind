@@ -52,20 +52,21 @@
 //#include "stackselection.h"
 //#include "stackbrowser.h"
 #include "tracedata.h"
-#include "configuration.h"
+#include "config.h"
+#include "globalconfig.h"
 //#include "configdlg.h"
 #include "multiview.h"
 #include "callgraphview.h"
 
 TopLevel::TopLevel()
 {
-    QDBusConnection::sessionBus().registerObject("/KCachegrind", this,
+    QDBusConnection::sessionBus().registerObject("/QCachegrind", this,
 						 QDBusConnection::ExportScriptableSlots);
   init();
 
   createDocks();
 
-  _multiView = new MultiView(this, this );
+  _multiView = new MultiView(this, this);
   _multiView->setObjectName("MultiView");
   setCentralWidget(_multiView);
 
@@ -98,14 +99,13 @@ TopLevel::TopLevel()
 #endif
   _statusbar->addWidget(_statusLabel, 1);
 
-  //KConfig *kconfig = KGlobal::config().data();
-  Configuration::config()->readOptions();
+  GlobalConfig::config()->readOptions();
   //_openRecent->loadEntries( KConfigGroup( kconfig, "" ) );
 
   // set toggle after reading configuration
-  _showPercentage = Configuration::showPercentage();
-  _showExpanded   = Configuration::showExpanded();
-  _showCycles     = Configuration::showCycles();
+  _showPercentage = GlobalConfig::showPercentage();
+  _showExpanded   = GlobalConfig::showExpanded();
+  _showCycles     = GlobalConfig::showCycles();
   _taPercentage->setChecked(_showPercentage);
   _taExpanded->setChecked(_showExpanded);
   _taCycles->setChecked(_showCycles);
@@ -121,7 +121,7 @@ TopLevel::TopLevel()
   //setAutoSaveSettings();
 
   // restore current state settings (not configuration options)
-  //restoreCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+  restoreCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 
   // if this is the first toplevel, show tip of day
   //if (memberList().count() == 1)
@@ -199,16 +199,19 @@ void TopLevel::saveCurrentState(const QString& postfix)
 
   KConfigGroup psConfig(kconfig, QLatin1String("PartOverview")+pf);
   _partSelection->saveVisualisationConfig(&psConfig);
-
-  KConfigGroup stateConfig(kconfig, QLatin1String("CurrentState")+pf);
-  stateConfig.writeEntry("EventType",
-			 _eventType ? _eventType->name() : QString("?"));
-  stateConfig.writeEntry("EventType2",
-			 _eventType2 ? _eventType2->name() : QString("?"));
-  stateConfig.writeEntry("GroupType", TraceItem::typeName(_groupType));
-
-  _multiView->saveViewConfig(kconfig, QString("MainView"), postfix, true);
 #endif
+
+  QString eventType = _eventType ? _eventType->name() : QString("?");
+  QString eventType2 = _eventType2 ? _eventType2->name() : QString("?");
+
+  ConfigGroup* stateConfig = ConfigStorage::group(QString("CurrentState") + postfix);
+  stateConfig->setValue("EventType", eventType);
+  stateConfig->setValue("EventType2", eventType2);
+  stateConfig->setValue("GroupType", TraceItem::typeName(_groupType));
+  delete stateConfig;
+
+  _multiView->saveLayout(QString("MainView"), postfix);
+  _multiView->saveOptions(QString("MainView"), postfix);
 }
 
 /**
@@ -218,25 +221,26 @@ void TopLevel::saveCurrentState(const QString& postfix)
 void TopLevel::saveTraceSettings()
 {
   QString key = traceKey();
-#if 0
-  KConfigGroup pConfig(KGlobal::config(), "TracePositions");
-  pConfig.writeEntry(QString("EventType%1").arg(key),
-                     _eventType ? _eventType->name() : QString("?"));
-  pConfig.writeEntry(QString("EventType2%1").arg(key),
-                     _eventType2 ? _eventType2->name() : QString("?"));
-  pConfig.writeEntry(QString("GroupType%1").arg(key),
-                     TraceItem::typeName(_groupType));
+  QString eventType = _eventType ? _eventType->name() : QString("?");
+  QString eventType2 = _eventType2 ? _eventType2->name() : QString("?");
 
-  if (!_data) return;
+  ConfigGroup* lConfig = ConfigStorage::group("Layouts");
+  lConfig->setValue(QString("Count%1").arg(key), _layoutCount);
+  lConfig->setValue(QString("Current%1").arg(key), _layoutCurrent);
+  delete lConfig;
 
-  KConfigGroup aConfig(KGlobal::config(), "Layouts");
-  aConfig.writeEntry(QString("Count%1").arg(key), _layoutCount);
-  aConfig.writeEntry(QString("Current%1").arg(key), _layoutCurrent);
+  ConfigGroup* pConfig = ConfigStorage::group("TracePositions");
+  pConfig->setValue(QString("EventType%1").arg(key), eventType);
+  pConfig->setValue(QString("EventType2%1").arg(key), eventType2);
+  pConfig->setValue(QString("GroupType%1").arg(key),
+		    TraceItem::typeName(_groupType));
 
-  saveCurrentState(key);
-  pConfig.writeEntry(QString("Group%1").arg(key),
-                     _group ? _group->name() : QString::null);	//krazy:exclude=nullstrassign for old broken gcc
-#endif
+  if (_data) {
+      pConfig->setValue(QString("Group%1").arg(key),
+			_group ? _group->name() : QString::null); //krazy:exclude=nullstrassign for old broken gcc
+      saveCurrentState(key);
+  }
+  delete pConfig;
 }
 
 /**
@@ -259,12 +263,14 @@ void TopLevel::restoreCurrentState(const QString& postfix)
       group += pf;
   KConfigGroup psConfig(kconfig, group);
   _partSelection->readVisualisationConfig(&psConfig);
+#endif
 
-  _multiView->readViewConfig(kconfig, QString::fromLatin1("MainView"), postfix, true);
+  _multiView->restoreLayout(QString("MainView"), postfix);
+  _multiView->restoreOptions(QString("MainView"), postfix);
+
   _taSplit->setChecked(_multiView->childCount()>1);
   _taSplitDir->setEnabled(_multiView->childCount()>1);
   _taSplitDir->setChecked(_multiView->orientation() == Qt::Horizontal);
-#endif
 }
 
 
@@ -484,6 +490,8 @@ void TopLevel::createMiscActions()
   _taPercentage = new QAction(this);
   _taExpanded = new QAction(this);
   _taCycles = new QAction(this);
+  _taSplit = new QAction(this);
+  _taSplitDir = new QAction(this);
 
 #if 0
 
@@ -847,7 +855,7 @@ void TopLevel::setPercentage(bool show)
   if (_taPercentage->isChecked() != show)
     _taPercentage->setChecked(show);
 
-  Configuration::setShowPercentage(_showPercentage);
+  GlobalConfig::setShowPercentage(_showPercentage);
 
 #if 0
   _partSelection->refresh();
@@ -867,7 +875,7 @@ void TopLevel::toggleExpanded()
   if (_showExpanded == show) return;
   _showExpanded = show;
 
-  Configuration::setShowExpanded(_showExpanded);
+  GlobalConfig::setShowExpanded(_showExpanded);
 
 #if 0
   _partSelection->refresh();
@@ -887,7 +895,7 @@ void TopLevel::toggleCycles()
   if (_showCycles == show) return;
   _showCycles = show;
 
-  Configuration::setShowCycles(_showCycles);
+  GlobalConfig::setShowCycles(_showCycles);
 
   if (!_data) return;
 
@@ -1499,6 +1507,8 @@ void TopLevel::setData(TraceData* data)
       for (int i=0;i<m->derivedCount();i++)
 	  types << m->derivedType(i)->longName();
   }
+  _eventTypes = types;
+
 #if 0
   _saCost->setItems(types);
   _saCost->setComboWidth(300);
@@ -1678,33 +1688,34 @@ QString TopLevel::traceKey()
 void TopLevel::restoreTraceTypes()
 {
   QString key = traceKey();
-#if 0
-  KConfigGroup cConfig(KGlobal::config(), "CurrentState");
-  KConfigGroup pConfig(KGlobal::config(), "TracePositions");
-
   QString groupType, costType, costType2;
-  groupType =  pConfig.readEntry(QString("GroupType%1").arg(key),QString());
-  costType  =  pConfig.readEntry(QString("CostType%1").arg(key),QString());
-  costType2 =  pConfig.readEntry(QString("CostType2%1").arg(key),QString());
 
-  if (groupType.isEmpty()) groupType = cConfig.readEntry("GroupType",QString());
-  if (costType.isEmpty()) costType = cConfig.readEntry("CostType",QString());
-  if (costType2.isEmpty()) costType2 = cConfig.readEntry("CostType2",QString());
+  ConfigGroup* pConfig = ConfigStorage::group("TracePositions");
+  groupType =  pConfig->value(QString("GroupType%1").arg(key),QString()).toString();
+  costType  =  pConfig->value(QString("CostType%1").arg(key),QString()).toString();
+  costType2 =  pConfig->value(QString("CostType2%1").arg(key),QString()).toString();
+  delete pConfig;
+
+  ConfigGroup* cConfig = ConfigStorage::group("CurrentState");
+  if (groupType.isEmpty()) groupType = cConfig->value("GroupType",QString()).toString();
+  if (costType.isEmpty()) costType = cConfig->value("CostType",QString()).toString();
+  if (costType2.isEmpty()) costType2 = cConfig->value("CostType2",QString()).toString();
+  delete cConfig;
 
   setGroupType(groupType);
   setEventType(costType);
   setEventType2(costType2);
 
-  // if still no cost type set, use first available
-  if (!_eventType && !_saCost->items().isEmpty())
-      eventTypeSelected(_saCost->items().first());
+  // if still no event type set, use first available
+  if (!_eventType && !_eventTypes.isEmpty())
+      eventTypeSelected(_eventTypes.first());
 
-  KConfigGroup aConfig(KGlobal::config(), "Layouts");
-  _layoutCount = aConfig.readEntry(QString("Count%1").arg(key), 0);
-  _layoutCurrent = aConfig.readEntry(QString("Current%1").arg(key), 0);
+  ConfigGroup* aConfig = ConfigStorage::group("Layouts");
+  _layoutCount = aConfig->value(QString("Count%1").arg(key), 0).toInt();
+  _layoutCurrent = aConfig->value(QString("Current%1").arg(key), 0).toInt();
+  delete aConfig;
   if (_layoutCount == 0) layoutRestore();
   updateLayoutActions();
-#endif
 }
 
 
@@ -1716,11 +1727,11 @@ void TopLevel::restoreTraceTypes()
 void TopLevel::restoreTraceSettings()
 {
   if (!_data) return;
-#if 0
+
   QString key = traceKey();
 
-  KConfigGroup pConfig(KGlobal::config(), "TracePositions");
-  QString group = pConfig.readEntry(QString("Group%1").arg(key),QString());
+  ConfigGroup* pConfig = ConfigStorage::group("TracePositions");
+  QString group = pConfig->value(QString("Group%1").arg(key),QString()).toString();
   if (!group.isEmpty()) setGroup(group);
 
   restoreCurrentState(key);
@@ -1729,10 +1740,21 @@ void TopLevel::restoreTraceSettings()
   // to restore last active item...
   if (!_traceItemDelayed) {
     // function not available any more.. try with "main"
-    if (!setFunction("main"))
-      _functionSelection->setTopFunction();
-  }
+      if (!setFunction("main")) {
+#if 0
+	_functionSelection->setTopFunction();
+#else
+	HighestCostList hc;
+	hc.clear(50);
+	TraceFunctionMap::Iterator it;
+	for ( it = _data->functionMap().begin();
+	      it != _data->functionMap().end(); ++it )
+	    hc.addCost(&(*it), (*it).inclusive()->subCost(_eventType));
+
+	setFunction( (TraceFunction*) hc[0]);
 #endif
+      }
+  }
 }
 
 
@@ -1929,14 +1951,14 @@ void TopLevel::updateStatusBar()
 void TopLevel::configure()
 {
 #if 0
-    if (ConfigDlg::configure( (KConfiguration*) Configuration::config(),
+    if (ConfigDlg::configure( (KConfiguration*) GlobalConfig::config(),
 			      _data, this)) {
-      Configuration::config()->saveOptions();
+      GlobalConfig::config()->saveOptions();
 
     configChanged();
   }
   else
-      Configuration::config()->readOptions();
+      GlobalConfig::config()->readOptions();
 #endif
 }
 
@@ -1950,10 +1972,10 @@ bool TopLevel::queryClose()
 bool TopLevel::queryExit()
 {
     // save current toplevel options as defaults...
-    Configuration::setShowPercentage(_showPercentage);
-    Configuration::setShowExpanded(_showExpanded);
-    Configuration::setShowCycles(_showCycles);
-    Configuration::config()->saveOptions();
+    GlobalConfig::setShowPercentage(_showPercentage);
+    GlobalConfig::setShowExpanded(_showExpanded);
+    GlobalConfig::setShowCycles(_showCycles);
+    GlobalConfig::config()->saveOptions();
 
     //saveCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 
@@ -1996,7 +2018,7 @@ void TopLevel::splitDirSlot()
 void TopLevel::configChanged()
 {
   //qDebug("TopLevel::configChanged");
-  //_showPercentage->setChecked(Configuration::showPercentage());
+  //_showPercentage->setChecked(GlobalConfig::showPercentage());
 
   // invalidate found/cached dirs of source files
   _data->resetSourceDirs();
@@ -2157,13 +2179,13 @@ void TopLevel::forwardAboutToShow()
   }
 
   int count = 1;
-  while (count<Configuration::maxSymbolCount() && hi) {
+  while (count<GlobalConfig::maxSymbolCount() && hi) {
     f = hi->function();
     if (!f) break;
 
     QString name = f->prettyName();
-    if ((int)name.length()>Configuration::maxSymbolLength())
-      name = name.left(Configuration::maxSymbolLength()) + "...";
+    if ((int)name.length()>GlobalConfig::maxSymbolLength())
+      name = name.left(GlobalConfig::maxSymbolLength()) + "...";
 
     //qDebug("forward: Adding %s", name.ascii());
     action = popup->addAction(name);
@@ -2198,13 +2220,13 @@ void TopLevel::backAboutToShow()
   }
 
   int count = 1;
-  while (count<Configuration::maxSymbolCount() && hi) {
+  while (count<GlobalConfig::maxSymbolCount() && hi) {
     f = hi->function();
     if (!f) break;
 
     QString name = f->prettyName();
-    if ((int)name.length()>Configuration::maxSymbolLength())
-      name = name.left(Configuration::maxSymbolLength()) + "...";
+    if ((int)name.length()>GlobalConfig::maxSymbolLength())
+      name = name.left(GlobalConfig::maxSymbolLength()) + "...";
 
     //qDebug("back: Adding %s", name.ascii());
     action = popup->addAction(name);
@@ -2238,10 +2260,10 @@ void TopLevel::upAboutToShow()
   }
 
   int count = 1;
-  while (count<Configuration::maxSymbolCount() && f) {
+  while (count<GlobalConfig::maxSymbolCount() && f) {
     QString name = f->prettyName();
-    if ((int)name.length()>Configuration::maxSymbolLength())
-      name = name.left(Configuration::maxSymbolLength()) + "...";
+    if ((int)name.length()>GlobalConfig::maxSymbolLength())
+      name = name.left(GlobalConfig::maxSymbolLength()) + "...";
 
     action = popup->addAction(name);
     action->setData(count);

@@ -1,6 +1,6 @@
 include_directories(../libcore ../libviews)
 
-set(qcachegrind_SRCS main.cpp toplevel.cpp)
+set(qcachegrind_SRCS main.cpp toplevel.cpp qtconfig.cpp)
 
 qt4_automoc(${qcachegrind_SRCS})
 
