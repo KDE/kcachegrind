@@ -35,31 +35,4 @@ QPixmap partitionPixmap(int w, int h, double* hist, QColor*,
 			int maxIndex, bool framed);
 QPixmap costPixmap(TraceEventType* ct, TraceCost* cost, double total, bool framed);
 
-/**
- * A class to calculate the <maxSize> TraceCost items
- * with highest cost.
- */
-
-class HighestCostList
-{
- public:
-    HighestCostList();
-    
-    void clear(int maxSize);
-    void addCost(TraceCost*, SubCost);
-    int count() { return _count; }
-    int realCount() { return (_count > _maxSize) ? _maxSize:_count; }
-    int maxSize() { return _maxSize; }
-    bool hasMore() { return _count > _maxSize; }
-    TraceCost* operator[] (int i)
-	{ return (i>=0 && i<_count && i<_maxSize) ? _item[i] : 0; }
-    
- private:
-    TraceCostList _list;
-    int _maxSize, _count;
-    TraceEventType* _costType;
-    QVector<TraceCost*> _item;
-    QVector<SubCost> _cost;
-};
-
 #endif

@@ -18,9 +18,7 @@
 
 #include <QFile>
 #include <QVector>
-
-#include <klocale.h>
-#include <kdebug.h>
+#include <QDebug>
 
 #include "loader.h"
 #include "tracedata.h"
@@ -252,10 +250,10 @@ bool CachegrindLoader::parsePosition(FixString& line,
 
 #if TRACE_LOADER
       if (newPos.fromAddr == newPos.toAddr)
-	kDebug() << " Got Addr " << newPos.fromAddr.toString();
+	qDebug() << " Got Addr " << newPos.fromAddr.toString();
       else
-	kDebug() << " Got AddrRange " << newPos.fromAddr.toString()
-		  << ":" << newPos.toAddr.toString() << endl;
+	qDebug() << " Got AddrRange " << newPos.fromAddr.toString()
+		  << ":" << newPos.toAddr.toString();
 #endif
 
     }
@@ -310,10 +308,10 @@ bool CachegrindLoader::parsePosition(FixString& line,
 
 #if TRACE_LOADER
       if (newPos.fromLine == newPos.toLine)
-	kDebug() << " Got Line " << newPos.fromLine;
+	qDebug() << " Got Line " << newPos.fromLine;
       else
-	kDebug() << " Got LineRange " << newPos.fromLine
-		  << ":" << newPos.toLine << endl;
+	qDebug() << " Got LineRange " << newPos.fromLine
+		  << ":" << newPos.toLine;
 #endif
 
     }
@@ -360,8 +358,8 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
     if (_objectVector.size() <= index) {
       int newSize = index * 2;
 #if TRACE_LOADER
-      kDebug() << " CachegrindLoader: objectVector enlarged to "
-		<< newSize << endl;
+      qDebug() << " CachegrindLoader: objectVector enlarged to "
+		<< newSize;
 #endif
       _objectVector.resize(newSize);
     }
@@ -409,8 +407,8 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
     if (_fileVector.size() <= index) {
       int newSize = index * 2;
 #if TRACE_LOADER
-      kDebug() << " CachegrindLoader::fileVector enlarged to "
-		<< newSize << endl;
+      qDebug() << " CachegrindLoader::fileVector enlarged to "
+		<< newSize;
 #endif
       _fileVector.resize(newSize);
     }
@@ -463,8 +461,8 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
     if (_functionVector.size() <= index) {
       int newSize = index * 2;
 #if TRACE_LOADER
-      kDebug() << " CachegrindLoader::functionVector enlarged to "
-		<< newSize << endl;
+      qDebug() << " CachegrindLoader::functionVector enlarged to "
+		<< newSize;
 #endif
       _functionVector.resize(newSize);
     }
@@ -480,11 +478,11 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
     _functionVector.replace(index, f);
 
 #if TRACE_LOADER
-    kDebug() << "compressedFunction: Inserted at Index " << index
+    qDebug() << "compressedFunction: Inserted at Index " << index
 	      << "\n  " << f->fullName()
 	      << "\n  in " << f->cls()->fullName()
 	      << "\n  in " << f->file()->fullName()
-	      << "\n  in " << f->object()->fullName() << endl;
+	      << "\n  in " << f->object()->fullName();
 #endif
   }
   else {
@@ -737,8 +735,8 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
       _lineNo++;
 
 #if TRACE_LOADER
-      kDebug() << "[CachegrindLoader] " << _filename << ":" << _lineNo
-		<< " - '" << QString(line) << "'" << endl;
+      qDebug() << "[CachegrindLoader] " << _filename << ":" << _lineNo
+		<< " - '" << QString(line) << "'";
 #endif
 
       // if we cannot strip a character, this was an empty line
@@ -1096,17 +1094,16 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 #endif
 
 #if TRACE_LOADER
-      kDebug() << _filename << ":" << _lineNo
-		<< endl << "  currentInstr "
-		<< (currentInstr ? currentInstr->toString().ascii() : ".")
-		<< endl << "  currentLine "
-		<< (currentLine ? currentLine->toString().ascii() : ".")
-		<< "( file " << currentFile->name() << ")"
-		<< endl << "  currentFunction "
-		<< currentFunction->prettyName().ascii()
-		<< endl << "  currentCalled "
-		<< (currentCalledFunction ? currentCalledFunction->prettyName().ascii() : ".")
-		<< endl;
+      qDebug() << _filename << ":" << _lineNo;
+      qDebug() << "  currentInstr "
+	       << (currentInstr ? currentInstr->toString().ascii() : ".");
+      qDebug() << "  currentLine "
+	       << (currentLine ? currentLine->toString().ascii() : ".")
+	       << "( file " << currentFile->name() << ")";
+      qDebug() << "  currentFunction "
+	       << currentFunction->prettyName().ascii();
+      qDebug() << "  currentCalled "
+	       << (currentCalledFunction ? currentCalledFunction->prettyName().ascii() : ".");
 #endif
 
     // create cost item
@@ -1240,17 +1237,17 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 #endif
 
       if (0) {
-	kDebug() << _filename << ":" << _lineNo
+	qDebug() << _filename << ":" << _lineNo
 		  << " - jump from 0x" << currentPos.fromAddr.toString()
 		  << " (line " << currentPos.fromLine
 		  << ") to 0x" << targetPos.fromAddr.toString()
-		  << " (line " << targetPos.fromLine << ")" << endl;
+		  << " (line " << targetPos.fromLine << ")";
 
 	if (nextLineType == BoringJump)
-	  kDebug() << " Boring Jump, count " << jumpsExecuted.pretty();
+	  qDebug() << " Boring Jump, count " << jumpsExecuted.pretty();
 	else
-	  kDebug() << " Cond. Jump, followed " << jumpsFollowed.pretty()
-		    << ", executed " << jumpsExecuted.pretty() << endl;
+	  qDebug() << " Cond. Jump, followed " << jumpsFollowed.pretty()
+		    << ", executed " << jumpsExecuted.pretty();
       }
 
       nextLineType = SelfCost;

@@ -1,4 +1,3 @@
-
 project(kcachegrind)
 
 set( KCACHEGRIND_VERSION "0.5.0kde")
@@ -21,6 +20,7 @@ macro_additional_clean_files(
 ENDIF(NOT WIN32)
 
 add_subdirectory( libcore )
+add_subdirectory( cgview )
 add_subdirectory( kcachegrind ) 
 add_subdirectory( pics ) 
 add_subdirectory( converters ) 

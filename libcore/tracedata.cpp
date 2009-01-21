@@ -26,9 +26,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QRegExp>
-
-#include <klocale.h>
-#include <kdebug.h>
+#include <QDebug>
 
 #include "logger.h"
 #include "loader.h"
@@ -205,7 +203,7 @@ QString TraceItem::i18nTypeName(CostType t)
     if (!_i18nTypeName) {
 	_i18nTypeName = new QString [MaxCostType+1];
 	for(int i=0;i<=MaxCostType;i++)
-	    _i18nTypeName[i] = i18n(typeName((CostType)i).utf8().data());
+	    _i18nTypeName[i] = QObject::tr(typeName((CostType)i).utf8().data());
     }
     if (t<0 || t> MaxCostType) t = MaxCostType;
     return _i18nTypeName[t];
@@ -1093,8 +1091,8 @@ TraceSubMapping* TraceEventTypeMapping::subMapping(const QString& types, bool cr
   if (!create && (newCount>0)) return 0;
 
   if (newCount+_realCount > TraceCost::MaxRealIndex) {
-    kDebug() << "TraceCostMapping::subMapping: No space for "
-	      << newCount << " sub costs." << endl;
+    qDebug() << "TraceCostMapping::subMapping: No space for "
+	      << newCount << " sub costs.";
     return 0;
   }
 

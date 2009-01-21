@@ -233,43 +233,4 @@ QPixmap costPixmap(TraceEventType* ct, TraceCost* cost, double total, bool frame
 
 
 
-// HighestCostList
-
-HighestCostList::HighestCostList()
-{
-    _maxSize = 0;
-    _count = 0;
-    _costType = 0;
-}
-
-void HighestCostList::clear(int maxSize)
-{
-    _maxSize = maxSize;
-    _count = 0;
-    _item.resize(maxSize);
-    _cost.resize(maxSize);
-}
-
-void HighestCostList::addCost(TraceCost* c, SubCost cost)
-{
-    int i;
-
-    _count++;
-    if (_count > _maxSize) {
-	if (_cost[_maxSize-1] >= cost) return;
-	i = _maxSize-1;
-    }
-    else i = _count-1;
-
-    for(; i>0; i--) {
-	if (_cost[i-1] >= cost) break;
-	else {
-	    _cost[i] = _cost[i-1];
-	    _item[i] = _item[i-1];
-	}
-    }
-    _cost[i] = cost;
-    _item[i] = c;
-}
-
 	    

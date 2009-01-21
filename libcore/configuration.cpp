@@ -23,7 +23,7 @@
 #include <QtDebug>
 
 // FIXME: Need to get rid of KDE dependencies in libcore
-#include <klocale.h>
+//#include <klocale.h>
 
 #include "configuration.h"
 #include "tracedata.h"
@@ -123,6 +123,12 @@ void Configuration::setConfig(Configuration* c)
 {
     _config = c;
 }
+
+void Configuration::saveOptions()
+{}
+
+void Configuration::readOptions()
+{}
 
 void Configuration::addDefaultTypes()
 {

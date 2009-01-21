@@ -19,6 +19,9 @@
 #ifndef SUBCOST_H
 #define SUBCOST_H
 
+#include <QVector>
+#include <Q3PtrList>
+
 #include "utils.h"
 
 typedef unsigned long long uint64;
@@ -62,5 +65,37 @@ class SubCost
 
     uint64 v;
 };
+
+class TraceCost;
+class TraceEventType;
+typedef Q3PtrList<TraceCost> TraceCostList;
+
+/**
+ * A class to calculate the <maxSize> TraceCost items
+ * with highest cost.
+ */
+
+class HighestCostList
+{
+ public:
+    HighestCostList();
+
+    void clear(int maxSize);
+    void addCost(TraceCost*, SubCost);
+    int count() { return _count; }
+    int realCount() { return (_count > _maxSize) ? _maxSize:_count; }
+    int maxSize() { return _maxSize; }
+    bool hasMore() { return _count > _maxSize; }
+    TraceCost* operator[] (int i)
+	{ return (i>=0 && i<_count && i<_maxSize) ? _item[i] : 0; }
+
+ private:
+    TraceCostList _list;
+    int _maxSize, _count;
+    TraceEventType* _costType;
+    QVector<TraceCost*> _item;
+    QVector<SubCost> _cost;
+};
+
 
 #endif

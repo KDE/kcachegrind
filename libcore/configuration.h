@@ -38,12 +38,16 @@
 class Configuration
 {
 public:
+  Configuration();
+  virtual ~Configuration();
+
+
   // must be set to an instance of a derived class before use
   static void setConfig(Configuration*);
   static Configuration* config();
 
-  virtual void saveOptions() = 0;
-  virtual void readOptions() = 0;
+  virtual void saveOptions();
+  virtual void readOptions();
 
   // color for visualization of an object
   static QColor functionColor(TraceItem::CostType gt, TraceFunction*);
@@ -76,16 +80,12 @@ public:
   // upper limit for cutting of a call in cycle detection
   static double cycleCut();
 
+  void addDefaultTypes();
 
 protected:
-  // do not instantiate this class
-  Configuration();
-  virtual ~Configuration();
-
   QStringList knownTypes();
   QString knownFormula(const QString& name);
   QString knownLongName(const QString& name);
-  void addDefaultTypes();
 
   struct ColorSetting {
     QString name;

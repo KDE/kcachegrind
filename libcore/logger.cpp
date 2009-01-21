@@ -65,5 +65,5 @@ void Logger::loadFinished(const QString& msg)
     if (msg.isEmpty())
 	qDebug() << "File" << _filename << "loaded.";
     else
-	qDebug() << "Error loading file" << _filename << ":" << msg;
+	qDebug() << "Error loading file" << _filename << ":" << qPrintable(msg);
 }
