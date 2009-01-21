@@ -526,17 +526,15 @@ void TopLevel::createMiscActions()
 
   _taPercentage = actionCollection()->add<KToggleAction>("view_percentage");
   _taPercentage->setIcon(KIcon("percent"));
-  _taPercentage->setText(i18n("Show Relative Costs"));
+  _taPercentage->setText(i18n("Relative"));
   connect(_taPercentage, SIGNAL(triggered(bool) ), SLOT(togglePercentage()));
-  _taPercentage->setCheckedState(KGuiItem(i18n("Show Absolute Costs")));
-
   hint = i18n("Show relative instead of absolute costs");
   _taPercentage->setToolTip( hint );
   _taPercentage->setWhatsThis( hint );
 
   _taExpanded = actionCollection()->add<KToggleAction>("view_expanded");
   _taExpanded->setIcon(KIcon("move"));
-  _taExpanded->setText(i18n("Percentage Relative to Parent"));
+  _taExpanded->setText(i18n("Relative to Parent"));
   connect(_taExpanded, SIGNAL(triggered(bool) ), SLOT(toggleExpanded()));
 
   hint = i18n("Show percentage costs relative to parent");
@@ -560,9 +558,8 @@ void TopLevel::createMiscActions()
 
   _taCycles = actionCollection()->add<KToggleAction>("view_cycles");
   _taCycles->setIcon(KIcon("edit-undo"));
-  _taCycles->setText(i18n( "Do Cycle Detection" ));
+  _taCycles->setText(i18n( "Cycle Detection" ));
   connect(_taCycles, SIGNAL(triggered(bool) ), SLOT( toggleCycles() ));
-  _taCycles->setCheckedState(KGuiItem(i18n("Skip Cycle Detection")));
 
   hint = i18n("<b>Detect recursive cycles</b>"
               "<p>If this is switched off, the treemap drawing will show "

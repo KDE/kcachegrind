@@ -40,16 +40,14 @@
 
  <ToolBar name="mainToolBar" noMerge="1"><text>Main Toolbar</text>
   <Action name="file_open"/>
-  <Action name="reload"/>
-  <Action name="dump"/> 
   <Separator/>
-  <Action name="go_up"/>
   <Action name="go_back"/>
   <Action name="go_forward"/>
+  <Action name="go_up"/>
   <Separator/>
   <Action name="view_percentage"/>
-  <Action name="view_expanded"/>
   <Action name="view_cycles"/>
+  <Action name="view_expanded"/>
  </ToolBar>
  <ToolBar name="stateToolBar" noMerge="1"><text>State Toolbar</text> 
   <Action name="view_cost_type"/>
