@@ -17,7 +17,7 @@ INCLUDEPATH += . ../libcore ../libviews
 
 # generate *.moc files from headers, they get included from *.cpp
 new_moc.CONFIG = no_link moc_verify
-new_moc.output  = {QMAKE_FILE_BASE}.moc
+new_moc.output  = ${QMAKE_FILE_BASE}.moc
 new_moc.commands = moc ${QMAKE_FILE_NAME} -o ${QMAKE_FILE_OUT}
 new_moc.depend_command = g++ -E -M ${QMAKE_FILE_NAME} | sed "s,^.*: ,,"
 new_moc.input = NHEADERS
