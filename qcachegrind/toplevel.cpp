@@ -21,7 +21,6 @@
  */
 
 #define TRACE_UPDATES 0
-#define ENABLE_DUMPDOCK 0
 
 #include "toplevel.h"
 
@@ -44,10 +43,6 @@
 #include <QToolBar>
 #include <QMessageBox>
 #include <QtDBus/QDBusConnection>
-
-#if ENABLE_DUMPDOCK
-#include "dumpselection.h"
-#endif
 
 #include "partselection.h"
 #include "functionselection.h"
@@ -85,20 +80,8 @@ TopLevel::TopLevel()
   connect(_functionDock, SIGNAL(visibilityChanged(bool)),
           this, SLOT(functionVisibilityChanged(bool)));
 
-#if ENABLE_DUMPDOCK
-  _dumpDockShown->setChecked(!_dumpDock->isHidden());
-  connect(_dumpDock, SIGNAL(visibilityChanged(bool)),
-          this, SLOT(dumpVisibilityChanged(bool)));
-#endif
-
   _statusbar = statusBar();
   _statusLabel = new QLabel(_statusbar);
-#if 0
-  // how to do avoid main window resizing on large statusbar label?
-  QSizePolicy p(QSizePolicy::Fixed, QSizePolicy::Expanding);
-  _statusLabel->setSizePolicy(p);
-  _statusbar->setSizePolicy(p);
-#endif
   _statusbar->addWidget(_statusLabel, 1);
 
   GlobalConfig::config()->readOptions();
@@ -114,20 +97,10 @@ TopLevel::TopLevel()
 
   setupPartSelection(_partSelection);
 
-  // KCachegrind for KDE 3.0.x does not allow to hide toolbars...
-  //setStandardToolBarMenuEnabled(true);
-
-  // QT dock windows are created before (using QT position restoring)
-  //createGUI();
-
   //setAutoSaveSettings();
 
   // restore current state settings (not configuration options)
   restoreCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
-
-  // if this is the first toplevel, show tip of day
-  //if (memberList().count() == 1)
-  //  QTimer::singleShot( 200, this, SLOT(slotShowTipOnStart()) );
 }
 
 void TopLevel::init()
@@ -276,57 +249,15 @@ void TopLevel::createDocks()
   _functionSelection = new FunctionSelection(this, _functionDock);
   _functionDock->setWidget(_functionSelection);
 
-#if ENABLE_DUMPDOCK
-  _dumpDock = new QDockWidget(this);
-  _dumpDock->setWindowTitle(tr("Profile Dumps"));
-  _dumpSelection = new DumpSelection(this, _dumpDock,
-                                     "dumpSelection");
-  _dumpSelection->setTopLevel(this);
+    // default positions, will be adjusted automatically by stored state in config
+    addDockWidget(Qt::LeftDockWidgetArea, _partDock );
+    addDockWidget(Qt::LeftDockWidgetArea, _stackDock );
+    addDockWidget(Qt::LeftDockWidgetArea, _functionDock );
+    _stackDock->hide();
 
-  _dumpDock->setWidget(_dumpSelection);
-  _dumpSelection->setWhatsThis( tr(
-                   "<b>Profile Dumps</b>"
-                   "<p>This dockable shows in the top part the list of "
-                   "loadable profile dumps in all subdirectories of: "
-                   "<ul><li>current working directory of KCachegrind, "
-                   "i.e. where it was started from, and </li>"
-                   "<li>the default profile dump directory given in the "
-                   "configuration.</li></ul> "
-                   "The list is sorted according to the target command "
-                   "profiled in the corresponding dump.</p>"
-                   "<p>On selecting a profile dump, information for it "
-                   "is shown in the bottom area of the dockable: "
-                   "<ul><li><b>Options</b> allows you to view the profiled "
-                   "command and profile options of this dump. By changing "
-                   "any item, a new (yet unexisting) profile template "
-                   "is created. Press <b>Run Profile</b> to start a "
-                   "profile run with these options in the background. </li>"
-                   "<li><b>Info</b> gives detailed info on the selected "
-                   "dump like event cost summary and properties of the "
-                   "simulated cache. </li>"
-                   "<li><b>State</b> is only available for current happening "
-                   "profiles runs. Press <b>Update</b> to see different "
-                   "counters of the run, and a stack trace of the current "
-                   "position in the program profiled. Check the <b>Every</b> "
-                   "option to let KCachegrind regularly poll these data. "
-                   "Check the <b>Sync</b> option to let the dockable activate "
-                   "the top function in the current loaded dump.</li></ul></p>"));
-#endif
-
-	// default positions, will be adjusted automatically by stored state in config
-	addDockWidget(Qt::LeftDockWidgetArea, _partDock );
-	addDockWidget(Qt::LeftDockWidgetArea, _stackDock );
-	addDockWidget(Qt::LeftDockWidgetArea, _functionDock );
-	_stackDock->hide();
-
-#if ENABLE_DUMPDOCK
-	addDockWidget( Qt::LeftDockWidgetArea, _dumpDock );
-	_dumpDock->hide();
-#endif
-
-	ConfigGroup* dockConfig = ConfigStorage::group("Docks");
-	_forcePartDock = dockConfig->value("ForcePartDockVisible", false).toBool();
-	delete dockConfig;
+    ConfigGroup* dockConfig = ConfigStorage::group("Docks");
+    _forcePartDock = dockConfig->value("ForcePartDockVisible", false).toBool();
+    delete dockConfig;
 }
 
 
@@ -614,15 +545,6 @@ void TopLevel::createMiscActions()
   _functionDockShown->setToolTip( hint );
   _functionDockShown->setWhatsThis( hint );
 
-#if ENABLE_DUMPDOCK
-  _dumpDockShown = actionCollection()->add<KToggleAction>("settings_show_dumpdock",
-                                                          this, SLOT(toggleDumpDock()));
-  _dumpDockShown->setText(tr("Profile Dumps"));
-  hint = tr("Show/Hide the Profile Dumps Dockable");
-  _dumpDockShown->setToolTip( hint );
-  _dumpDockShown->setWhatsThis( hint );
-#endif
-
   _taPercentage = actionCollection()->add<KToggleAction>("view_percentage");
   _taPercentage->setIcon(KIcon("percent"));
   _taPercentage->setText(tr("Show Relative Costs"));
@@ -852,16 +774,6 @@ void TopLevel::toggleStackDock()
     _stackDock->hide();
 }
 
-void TopLevel::toggleDumpDock()
-{
-#if ENABLE_DUMPDOCK
-  if (!_dumpDock->isVisible())
-    _dumpDock->show();
-  else
-    _dumpDock->hide();
-#endif
-}
-
 void TopLevel::toggleFunctionDock()
 {
   if (!_functionDock->isVisible())
@@ -962,17 +874,6 @@ void TopLevel::stackVisibilityChanged(bool v)
   _stackDockShown->setChecked(v);
 }
 
-#if ENABLE_DUMPDOCK
-void TopLevel::dumpVisibilityChanged(bool v)
-#else
-void TopLevel::dumpVisibilityChanged(bool)
-#endif
-{
-#if ENABLE_DUMPDOCK
-  _dumpDockShown->setChecked(v);
-#endif
-}
-
 void TopLevel::functionVisibilityChanged(bool v)
 {
   _functionDockShown->setChecked(v);
@@ -984,24 +885,6 @@ void TopLevel::functionVisibilityChanged(bool v)
 void TopLevel::querySlot()
 {
 //  _functionSelection->query(queryLineEdit->text());
-}
-
-void TopLevel::configureKeys()
-{
-    //KShortcutsDialog::configure(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, this);
-}
-
-
-void TopLevel::configureToolbars()
-{
-#if 0
-  KEditToolBar *dlg = new KEditToolBar(guiFactory(), this);
-
-  if (dlg->exec())
-    createGUI();
-
-  delete dlg;
-#endif
 }
 
 
@@ -2084,13 +1967,6 @@ void TopLevel::configChanged()
   _multiView->updateView();
 }
 
-void TopLevel::slotShowTipOnStart() {
-    //KTipDialog::showTip(this);
-}
-
-void TopLevel::slotShowTip() {
-    //KTipDialog::showTip( this, QString(), true );
-}
 
 void TopLevel::dummySlot()
 {

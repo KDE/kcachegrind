@@ -45,7 +45,6 @@ class TraceData;
 class MainWidget;
 class PartSelection;
 class FunctionSelection;
-class DumpSelection;
 class StackSelection;
 class TraceFunction;
 
@@ -124,17 +123,13 @@ public slots:
   void groupTypeSelected(int);
   void splitSlot();
   void splitDirSlot();
-  void configureToolbars();
-  void configureKeys();
   bool queryExit();
   bool queryClose();
   void togglePartDock();
   void toggleStackDock();
   void toggleFunctionDock();
-  void toggleDumpDock();
   void toggleStatusBar();
   void partVisibilityChanged(bool);
-  void dumpVisibilityChanged(bool);
   void stackVisibilityChanged(bool);
   void functionVisibilityChanged(bool);
   void togglePercentage();
@@ -197,8 +192,6 @@ public slots:
   void configChanged();
 
   //void refresh();
-  void slotShowTipOnStart();
-  void slotShowTip();
 
   // progress in status bar, empty message disables progress display
   void showStatus(const QString& msg, int progress);
@@ -225,17 +218,16 @@ private:
 
   MultiView* _multiView;
   FunctionSelection* _functionSelection;
-  DumpSelection* _dumpSelection;
   PartSelection* _partSelection;
   StackSelection* _stackSelection;
   QLineEdit* queryLineEdit;
 
-  QDockWidget *_partDock, *_stackDock, *_functionDock, *_dumpDock;
+  QDockWidget *_partDock, *_stackDock, *_functionDock;
   bool _forcePartDock;
 
   //KSelectAction *_saCost, *_saCost2, *saGroup;
   QAction *_partDockShown, *_stackDockShown;
-  QAction *_functionDockShown, *_dumpDockShown;
+  QAction *_functionDockShown;
   QAction *_taPercentage, *_taExpanded, *_taCycles;
   QAction *_taDump, *_taSplit, *_taSplitDir;
   QAction *_paForward, *_paBack, *_paUp;
