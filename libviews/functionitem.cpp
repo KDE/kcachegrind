@@ -115,7 +115,7 @@ void FunctionItem::update()
   double inclTotal = _function->data()->subCost(_costType);
   QString str;
 
-  TraceCost* selfCost = _function->data();
+  ProfileCostArray* selfCost = _function->data();
   if (GlobalConfig::showExpanded()) {
       switch(_groupType) {
 	  case ProfileContext::Object: selfCost = _function->object(); break;

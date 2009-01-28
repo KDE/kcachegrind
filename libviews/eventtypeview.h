@@ -45,7 +45,7 @@ private slots:
   void renamedSlot(Q3ListViewItem*,int,const QString&);
 
 private:
-  TraceItem* canShow(TraceItem*);
+  ProfileCost* canShow(ProfileCost*);
   void doUpdate(int);
   void refresh();
 };

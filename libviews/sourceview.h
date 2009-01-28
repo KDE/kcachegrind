@@ -51,7 +51,7 @@ private slots:
   void activatedSlot(Q3ListViewItem *);
 
 private:
-  TraceItem* canShow(TraceItem*);
+  ProfileCost* canShow(ProfileCost*);
   void doUpdate(int);
   void refresh();
   void updateJumpArray(uint,SourceItem*,bool,bool);

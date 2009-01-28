@@ -83,7 +83,7 @@ void CallItem::updateCost()
     }
     setText(2, cStr);
 
-    TraceCost* totalCost;
+    ProfileCostArray* totalCost;
     if (GlobalConfig::showExpanded()) {
       if (_active->cycle())
         totalCost = _active->cycle()->inclusive();

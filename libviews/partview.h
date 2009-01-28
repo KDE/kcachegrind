@@ -45,7 +45,7 @@ private slots:
   void selectionChangedSlot();
 
 private:
-  TraceItem* canShow(TraceItem*);
+  ProfileCost* canShow(ProfileCost*);
   void doUpdate(int);
 
   bool _inSelectionUpdate;

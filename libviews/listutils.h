@@ -33,6 +33,6 @@ QPixmap colorPixmap(int w, int h, QColor c);
 QPixmap percentagePixmap(int w, int h, int percent, QColor c, bool framed);
 QPixmap partitionPixmap(int w, int h, double* hist, QColor*,
 			int maxIndex, bool framed);
-QPixmap costPixmap(TraceEventType* ct, TraceCost* cost, double total, bool framed);
+QPixmap costPixmap(TraceEventType* ct, ProfileCostArray* cost, double total, bool framed);
 
 #endif

@@ -200,7 +200,7 @@ void CoverageView::activatedSlot(Q3ListViewItem * i)
   if (f) activated(f);
 }
 
-TraceItem* CoverageView::canShow(TraceItem* i)
+ProfileCost* CoverageView::canShow(ProfileCost* i)
 {
   ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
 

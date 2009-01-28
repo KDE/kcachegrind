@@ -46,7 +46,7 @@ public:
   void saveOptions(const QString& prefix, const QString& postfix);
 
   bool showCallers() const { return _showCallers; }
-  TraceCost* totalCost();
+  ProfileCostArray* totalCost();
   QString tipString(TreeMapItem*) const;
   QColor groupColor(TraceFunction*) const;
 
@@ -56,7 +56,7 @@ private slots:
   void activatedSlot(TreeMapItem*);
 
 private:
-  TraceItem* canShow(TraceItem*);
+  ProfileCost* canShow(ProfileCost*);
   void doUpdate(int);
 
   bool _showCallers;

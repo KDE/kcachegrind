@@ -172,7 +172,7 @@ void EventTypeView::activatedSlot(Q3ListViewItem * i)
       selectedEventType2(ct);
 }
 
-TraceItem* EventTypeView::canShow(TraceItem* i)
+ProfileCost* EventTypeView::canShow(ProfileCost* i)
 {
     if (!i) return 0;
 

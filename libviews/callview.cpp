@@ -146,7 +146,7 @@ void CallView::selectedSlot(Q3ListViewItem * i)
   if (!i) return;
   TraceCall* c = ((CallItem*) i)->call();
   // Should we skip cycles here?
-  TraceItem* f = _showCallers ? c->caller(false) : c->called(false);
+  ProfileCost* f = _showCallers ? c->caller(false) : c->called(false);
 
   _selectedItem = f;
   selected(f);
@@ -157,12 +157,12 @@ void CallView::activatedSlot(Q3ListViewItem * i)
   if (!i) return;
   TraceCall* c = ((CallItem*) i)->call();
   // skip cycles: use the context menu to get to the cycle...
-  TraceItem* f = _showCallers ? c->caller(true) : c->called(true);
+  ProfileCost* f = _showCallers ? c->caller(true) : c->called(true);
 
   activated(f);
 }
 
-TraceItem* CallView::canShow(TraceItem* i)
+ProfileCost* CallView::canShow(ProfileCost* i)
 {
   ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
 
@@ -188,7 +188,7 @@ void CallView::doUpdate(int changeType)
 
 	CallItem* ci = (CallItem*) Q3ListView::selectedItem();
 	TraceCall* c;
-	TraceItem* ti;
+	ProfileCost* ti;
 	if (ci) {
 	    c = ci->call();
 	    ti = _showCallers ? c->caller() : c->called();

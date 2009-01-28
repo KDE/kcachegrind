@@ -183,7 +183,7 @@ void SourceView::activatedSlot(Q3ListViewItem * i)
   }
 }
 
-TraceItem* SourceView::canShow(TraceItem* i)
+ProfileCost* SourceView::canShow(ProfileCost* i)
 {
   ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
   TraceFunction* f = 0;

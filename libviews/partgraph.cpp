@@ -274,7 +274,7 @@ QString PartItem::text(int textNo) const
   v = _p->subCost(ct);
 
   if (GlobalConfig::showPercentage()) {
-    TraceCost* t = _p->data()->totals();
+    ProfileCostArray* t = _p->data()->totals();
     double p  = 100.0 * v / t->subCost(ct);
     return QString("%1 %")
       .arg(p, 0, 'f', GlobalConfig::percentPrecision());
@@ -329,7 +329,7 @@ TreeMapItemList* PartItem::children()
 {
   if (initialized()) return _children;
 
-  TraceCost* c;
+  ProfileCostArray* c;
 //    qDebug("Create Part subitems (%s)", name().ascii());
 
   PartAreaWidget* w = (PartAreaWidget*)widget();
@@ -411,7 +411,7 @@ QColor PartItem::backColor() const
 
 // SubPartItem
 
-SubPartItem::SubPartItem(TraceCost* c)
+SubPartItem::SubPartItem(ProfileCostArray* c)
 {
   _partCostItem = c;
   _factor=1;
@@ -440,7 +440,7 @@ QString SubPartItem::text(int textNo) const
     v = _partCostItem->subCost(ct);
 
   if (GlobalConfig::showPercentage()) {
-    TraceCost* t = GlobalConfig::showExpanded() ?
+    ProfileCostArray* t = GlobalConfig::showExpanded() ?
 	_partCostItem->part() : _partCostItem->part()->data()->totals();
     double p  = 100.0 * v / t->subCost(ct);
     return QString("%1 %")
@@ -457,9 +457,9 @@ QPixmap SubPartItem::pixmap(int i) const
 
     PartAreaWidget* w = (PartAreaWidget*)widget();
     TraceEventType* ct = w->eventType();
-    TraceCost* t = GlobalConfig::showExpanded() ?
+    ProfileCostArray* t = GlobalConfig::showExpanded() ?
 	_partCostItem->part() : _partCostItem->part()->data()->totals();
-    TraceCost* c;
+    ProfileCostArray* c;
     if (w->visualization() == PartAreaWidget::Inclusive)
 	c = ((TracePartFunction*)_partCostItem)->inclusive();
     else
@@ -511,7 +511,7 @@ TreeMapItemList* SubPartItem::children()
       l = ((TracePartFunction*)_partCostItem)->partCallings();
       for (call=l.first();call;call=l.next()) {
         TraceFunction* called = call->call()->called();
-        TraceCost* partCalled = called->findDepFromPart(call->part());
+        ProfileCostArray* partCalled = called->findDepFromPart(call->part());
         if (partCalled)
           addItem(new SubPartItem(partCalled));
       }

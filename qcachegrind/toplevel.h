@@ -171,7 +171,7 @@ public slots:
   void setEventType2Delayed(TraceEventType*);
   void setGroupTypeDelayed(ProfileContext::Type);
   void setGroupDelayed(TraceCostItem*);
-  void setTraceItemDelayed(TraceItem*);
+  void setTraceItemDelayed(ProfileCost*);
   void partsHideSelectedSlotDelayed();
   void partsUnhideAllSlotDelayed();
   void goBack();
@@ -259,7 +259,7 @@ private:
   TraceEventType* _eventType2Delayed;
   ProfileContext::Type _groupTypeDelayed;
   TraceCostItem* _groupDelayed;
-  TraceItem* _traceItemDelayed;
+  ProfileCost* _traceItemDelayed;
   QString _loadTraceDelayed;
   TraceItemView::Direction _directionDelayed;
 

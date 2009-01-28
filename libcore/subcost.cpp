@@ -81,7 +81,7 @@ void HighestCostList::clear(int maxSize)
     _cost.resize(maxSize);
 }
 
-void HighestCostList::addCost(TraceCost* c, SubCost cost)
+void HighestCostList::addCost(ProfileCostArray* c, SubCost cost)
 {
     int i;
 

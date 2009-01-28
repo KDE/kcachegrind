@@ -34,7 +34,7 @@ class TopLevelBase;
  * Abstract Base Class for KCachegrind Views
  *
  * This class delivers the shared functionality of all KCachegrind
- * Views for one TraceItem (like Function, Object...), the "active"
+ * Views for one ProfileCost (like Function, Object...), the "active"
  * item. Additional view attributes are current primary cost type,
  * an optional secondary cost type, group type,
  * and possibly a selected costitem in this view.
@@ -88,13 +88,13 @@ public:
   void set(ProfileContext::Type g) { _newGroupType = g; }
   void set(const TracePartList& l) { _newPartList = l; }
   // returns false if nothing can be shown for this trace item
-  bool activate(TraceItem* i);
-  void select(TraceItem* i);
+  bool activate(ProfileCost* i);
+  void select(ProfileCost* i);
   void notifyChange(int changeType) { _status |= changeType; }
   // all in one
   bool set(int, TraceData*, TraceEventType*, TraceEventType*,
 	   ProfileContext::Type, const TracePartList&,
-	   TraceItem*, TraceItem*);
+	   ProfileCost*, ProfileCost*);
 
   // general update request, call if view is/gets visible
   void updateView(bool force = false);
@@ -103,19 +103,19 @@ public:
    * Notification from child views.
    * Default implementation notifies parent
    */
-  virtual void selected(TraceItemView* sender, TraceItem*);
+  virtual void selected(TraceItemView* sender, ProfileCost*);
   virtual void partsSelected(TraceItemView* sender, const TracePartList&);
   virtual void directionActivated(TraceItemView* sender, Direction);
   virtual void selectedEventType(TraceItemView* sender, TraceEventType*);
   virtual void selectedEventType2(TraceItemView* sender, TraceEventType*);
-  virtual void activated(TraceItemView* sender, TraceItem*);
+  virtual void activated(TraceItemView* sender, ProfileCost*);
   virtual void selectedGroupType(TraceItemView* sender, ProfileContext::Type);
 
   // getters...
   // always get the newest values
   TraceData* data() const { return _newData; }
-  TraceItem* activeItem() const { return _newActiveItem; }
-  TraceItem* selectedItem() const { return _newSelectedItem; }
+  ProfileCost* activeItem() const { return _newActiveItem; }
+  ProfileCost* selectedItem() const { return _newSelectedItem; }
   TraceEventType* eventType() const { return _newEventType; }
   TraceEventType* eventType2() const { return _newEventType2; }
   ProfileContext::Type groupType() const { return _newGroupType; }
@@ -147,7 +147,7 @@ public:
    * Use the methods like data() instead of _data here, as
    * _data possibly will give old/wrong information.
    */
-  virtual TraceItem* canShow(TraceItem* i) { return i; }
+  virtual ProfileCost* canShow(ProfileCost* i) { return i; }
 
   /* convenience functions for often used context menu items */
   void addEventTypeMenu(QMenu*,bool withCost2 = true);
@@ -155,9 +155,9 @@ public:
 
 protected:
   // helpers to call selected()/activated() of parentView
-  void selected(TraceItem*);
+  void selected(ProfileCost*);
   void partsSelected(const TracePartList&);
-  void activated(TraceItem*);
+  void activated(ProfileCost*);
   void selectedEventType(TraceEventType*);
   void selectedEventType2(TraceEventType*);
   void selectedGroupType(ProfileContext::Type);
@@ -176,14 +176,14 @@ protected:
 
   TraceData* _data;
   TracePartList _partList;
-  TraceItem *_activeItem, *_selectedItem;
+  ProfileCost *_activeItem, *_selectedItem;
   TraceEventType *_eventType, *_eventType2;
   ProfileContext::Type _groupType;
 
 private:
   TraceData* _newData;
   TracePartList _newPartList;
-  TraceItem *_newActiveItem, *_newSelectedItem;
+  ProfileCost *_newActiveItem, *_newSelectedItem;
   TraceEventType *_newEventType, *_newEventType2;
   ProfileContext::Type _newGroupType;
 

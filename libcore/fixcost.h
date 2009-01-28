@@ -62,7 +62,7 @@ class FixCost
 
     void *operator new(size_t size, FixPool*);
 
-    void addTo(TraceCost*);
+    void addTo(ProfileCostArray*);
 
     TracePart* part() const { return _part; }
     bool isLineRegion() const { return _pos.isLineRegion(); }
@@ -107,7 +107,7 @@ class FixCallCost
     void *operator new(size_t size, FixPool*);
 
     void addTo(TraceCallCost*);
-    void setMax(TraceCost*);
+    void setMax(ProfileCostArray*);
 
     TracePart* part() const { return _part; }
     unsigned int line() const { return _line; }

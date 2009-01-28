@@ -137,7 +137,7 @@ void PartSelection::setData(TraceData* data)
 }
 
 
-TraceItem* PartSelection::canShow(TraceItem* i)
+ProfileCost* PartSelection::canShow(ProfileCost* i)
 {
     ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
 
@@ -255,7 +255,7 @@ void PartSelection::doubleClicked(TreeMapItem* i)
 {
     if (!i || i->rtti() != 3) return;
 
-    TraceCost* c = ((SubPartItem*) i)->partCostItem();
+    ProfileCostArray* c = ((SubPartItem*) i)->partCostItem();
     TraceCostItem* ci = 0;
 
     switch(c->type()) {
@@ -362,7 +362,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
 	TreeMapItem* ni = i;
 	int id = 100;
 	while (ni && ni->rtti() == 3) {
-	    TraceCost* c = ((SubPartItem*)ni)->partCostItem();
+	    ProfileCostArray* c = ((SubPartItem*)ni)->partCostItem();
 	    if (c->type() == ProfileContext::PartFunction)
 		if ( ((TracePartFunction*)c)->function() == _selectedItem) break;
 

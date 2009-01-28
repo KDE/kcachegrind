@@ -556,7 +556,7 @@ GraphExporter::~GraphExporter()
 }
 
 
-void GraphExporter::reset(TraceData*, TraceItem* i, TraceEventType* ct,
+void GraphExporter::reset(TraceData*, ProfileCost* i, TraceEventType* ct,
                           ProfileContext::Type gt, QString filename)
 {
 	_graphCreated = false;
@@ -1170,7 +1170,7 @@ CanvasNode::CanvasNode(CallGraphView* v, GraphNode* n, int x, int y, int w,
 	if (_node->function())
 		setText(0, _node->function()->prettyName());
 
-	TraceCost* totalCost;
+	ProfileCostArray* totalCost;
 	if (GlobalConfig::showExpanded()) {
 		if (_view->activeFunction()) {
 			if (_view->activeFunction()->cycle())
@@ -1178,7 +1178,7 @@ CanvasNode::CanvasNode(CallGraphView* v, GraphNode* n, int x, int y, int w,
 			else
 				totalCost = _view->activeFunction()->inclusive();
 		} else
-			totalCost = (TraceCost*) _view->activeItem();
+			totalCost = (ProfileCostArray*) _view->activeItem();
 	} else
 		totalCost = ((TraceItemView*)_view)->data();
 	double total = totalCost->subCost(_view->eventType());
@@ -1256,7 +1256,7 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce, int x,
 		return;
 
 	setPosition(1, DrawParams::BottomCenter);
-	TraceCost* totalCost;
+	ProfileCostArray* totalCost;
 	if (GlobalConfig::showExpanded()) {
 		if (_view->activeFunction()) {
 			if (_view->activeFunction()->cycle())
@@ -1264,7 +1264,7 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce, int x,
 			else
 				totalCost = _view->activeFunction()->inclusive();
 		} else
-			totalCost = (TraceCost*) _view->activeItem();
+			totalCost = (ProfileCostArray*) _view->activeItem();
 	} else
 		totalCost = ((TraceItemView*)_view)->data();
 	double total = totalCost->subCost(_view->eventType());
@@ -1791,7 +1791,7 @@ void CallGraphView::resizeEvent(QResizeEvent* e)
 		updateSizes(e->size());
 }
 
-TraceItem* CallGraphView::canShow(TraceItem* i)
+ProfileCost* CallGraphView::canShow(ProfileCost* i)
 {
 	if (i) {
 		switch (i->type()) {

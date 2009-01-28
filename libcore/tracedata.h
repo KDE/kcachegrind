@@ -41,17 +41,17 @@ class QFile;
 
 /**
  * All cost items are classes prefixed with "Trace".
- * "TraceCost" holds basic cost metrics for the simplest, smallest
+ * "ProfileCostArray" holds basic cost metrics for the simplest, smallest
  * trace entity: These are events counted for an instruction at
  * a specific memory address of the traced program.
- * All other cost items are derived from TraceCost, and add needed
+ * All other cost items are derived from ProfileCostArray, and add needed
  * cost metrics, e.g. for a call the number of calls that happened.
  *
  * Abstract, i.e. never instantiated cost items are
- * - TraceCost: Basic cost metrics (instr/read/write access + cache events)
+ * - ProfileCostArray: Basic cost metrics (instr/read/write access + cache events)
  * - TraceCallCost: Additional call count cost metric.
- * - TraceInclusiveCost: Additional TraceCost aggregated.
- * - TraceListCost: Adds dependency to a list of TraceCost's
+ * - TraceInclusiveCost: Additional ProfileCostArray aggregated.
+ * - TraceListCost: Adds dependency to a list of ProfileCostArray's
  * - TraceCallListCost: same for list of TraceCallCost's
  * - TraceInclusiveListCost: same for list of TraceInclusiveCost's
  * - TraceCostItem: Base for cost items for "interesting" costs:
@@ -127,7 +127,7 @@ class FixPool;
 class DynPool;
 class Logger;
 
-class TraceCost;
+class ProfileCostArray;
 class TraceEventType;
 class TraceEventTypeMapping;
 class TraceSubMapping;
@@ -163,7 +163,7 @@ class TraceFile;
 class TracePart;
 class TraceData;
 
-typedef Q3PtrList<TraceCost> TraceCostList;
+typedef Q3PtrList<ProfileCostArray> TraceCostList;
 typedef Q3PtrList<TraceJumpCost> TraceJumpCostList;
 typedef Q3PtrList<TraceCallCost> TraceCallCostList;
 typedef Q3PtrList<TraceInclusiveCost> TraceInclusiveCostList;
@@ -284,12 +284,12 @@ private:
 /**
  * Base class for cost items.
  */
-class TraceItem
+class ProfileCost
 {
 public:
 
-    TraceItem(ProfileContext*);
-    virtual ~TraceItem();
+    ProfileCost(ProfileContext*);
+    virtual ~ProfileCost();
 
     ProfileContext* context() const { return _context; }
     ProfileContext::Type type() const { return context()->type(); }
@@ -337,15 +337,15 @@ public:
    * Sets a dependant to be invalidated when this cost is invalidated.
    * Call this function directly after the constructor.
    */
-  void setDependant(TraceItem* d) { _dep = d; }
+  void setDependant(ProfileCost* d) { _dep = d; }
 
-  TraceItem* dependant() { return _dep; }
+  ProfileCost* dependant() { return _dep; }
 
   /**
    * If this item is from a single profile data file, position
    * points to a TracePart, otherwise to a TraceData object.
    */
-  void setPosition(TraceItem* p) { _position = p; }
+  void setPosition(ProfileCost* p) { _position = p; }
 
   // getters for specific positions, to be overwritten
   virtual TracePart* part();
@@ -363,8 +363,8 @@ public:
   ProfileContext* _context;
   bool _dirty;
 
-  TraceItem* _position;
-  TraceItem* _dep;
+  ProfileCost* _position;
+  ProfileCost* _dep;
 };
 
 
@@ -373,22 +373,22 @@ public:
  * An array of basic cost metrics for a trace item.
  *
  * The semantic of specific indexes is stored in the
- * TraceEventTypeMapping of the TraceData object holding this TraceCost.
+ * TraceEventTypeMapping of the TraceData object holding this ProfileCostArray.
  */
-class TraceCost: public TraceItem
+class ProfileCostArray: public ProfileCost
 {
 public:
   /**
-   * The maximal number of subcosts a TraceCost can have.
+   * The maximal number of subcosts a ProfileCostArray can have.
    */
   static const int MaxRealIndex;
 #define MaxRealIndexValue 13
   static const int InvalidIndex;
 
 
-  TraceCost(ProfileContext*);
-  TraceCost();
-  virtual ~TraceCost();
+  ProfileCostArray(ProfileContext*);
+  ProfileCostArray();
+  virtual ~ProfileCostArray();
 
   virtual QString costString(TraceEventTypeMapping*);
 
@@ -401,14 +401,14 @@ public:
   void addCost(TraceSubMapping*, const char*);
   void addCost(TraceSubMapping*, FixString&);
   // add the cost of another item
-  void addCost(TraceCost* item);
+  void addCost(ProfileCostArray* item);
   void addCost(int index, SubCost value);
 
   // maximal cost
   void maxCost(TraceSubMapping*, FixString&);
-  void maxCost(TraceCost* item);
+  void maxCost(ProfileCostArray* item);
   void maxCost(int index, SubCost value);
-  TraceCost diff(TraceCost* item);
+  ProfileCostArray diff(ProfileCostArray* item);
 
   virtual void invalidate();
 
@@ -473,7 +473,7 @@ public:
   void setMapping(TraceEventTypeMapping* m);
   void setFormula(const QString&);
   // default arg is for specifying a real type, but index unknown
-  void setRealIndex(int r = TraceCost::MaxRealIndex);
+  void setRealIndex(int r = ProfileCostArray::MaxRealIndex);
 
   const QString& name() { return _name; }
   const QString& longName() { return _longName; }
@@ -489,14 +489,14 @@ public:
   bool parseFormula();
   QString parsedFormula();
 
-  SubCost subCost(TraceCost*);
+  SubCost subCost(ProfileCostArray*);
 
   /*
    * For virtual costs, returns a histogram for use with
    * partitionPixmap().
    * Returns maximal real index.
    */
-  int histCost(TraceCost* c, double total, double* hist);
+  int histCost(ProfileCostArray* c, double total, double* hist);
 
   // application wide known types, referenced by short name
   // next 2 functions return a new type object instance
@@ -524,7 +524,7 @@ private:
  * A class for managing a set of event types.
  *
  * Each event type has an index:
- * - Real events are in range [0 .. TraceCost:MaxRealIndex[
+ * - Real events are in range [0 .. ProfileCostArray:MaxRealIndex[
  * - Derived events are in range [MaxRealIndex, ...]
  */
 class TraceEventTypeMapping
@@ -545,7 +545,7 @@ public:
   bool remove(TraceEventType*);
   int realCount() { return _realCount; }
   int derivedCount() { return _derivedCount; }
-  int minDerivedIndex() { return TraceCost::MaxRealIndex; }
+  int minDerivedIndex() { return ProfileCostArray::MaxRealIndex; }
   TraceEventType* type(int);
   TraceEventType* realType(int);
   TraceEventType* derivedType(int);
@@ -602,16 +602,16 @@ public:
    */
   bool isIdentity() { return _isIdentity; }
   int realIndex(int i)
-    { return (i<0 || i>=_count) ? TraceCost::InvalidIndex : _realIndex[i]; }
+    { return (i<0 || i>=_count) ? ProfileCostArray::InvalidIndex : _realIndex[i]; }
 
   /*
    * Allows an iteration over the sorted list of all real indexes not used in
-   * this submapping, up to topIndex (use TraceCost::MaxRealIndex for all).
+   * this submapping, up to topIndex (use ProfileCostArray::MaxRealIndex for all).
    * Usage: for(i = firstUnused(); i < topIndex; i = nextUnused(i)) { LOOP }
    */
   int firstUnused() { return _firstUnused; }
   int nextUnused(int i) {
-      if (i<0 || i>=TraceCost::MaxRealIndex) return TraceCost::InvalidIndex;
+      if (i<0 || i>=ProfileCostArray::MaxRealIndex) return ProfileCostArray::InvalidIndex;
       return _nextUnused[i]; }
 
 private:
@@ -626,7 +626,7 @@ private:
 /**
  * Cost of a (conditional) jump.
  */
-class TraceJumpCost: public TraceItem
+class TraceJumpCost: public ProfileCost
 {
  public:
     TraceJumpCost(ProfileContext*);
@@ -653,7 +653,7 @@ class TraceJumpCost: public TraceItem
 /**
  * Cost item with additional call count metric.
  */
-class TraceCallCost: public TraceCost
+class TraceCallCost: public ProfileCostArray
 {
  public:
   TraceCallCost(ProfileContext*);
@@ -676,7 +676,7 @@ class TraceCallCost: public TraceCost
 /**
  * Cost item with additional inclusive metric
  */
-class TraceInclusiveCost: public TraceCost
+class TraceInclusiveCost: public ProfileCostArray
 {
  public:
   TraceInclusiveCost(ProfileContext*);
@@ -687,11 +687,11 @@ class TraceInclusiveCost: public TraceCost
   virtual void clear();
 
   // additional cost metric
-  TraceCost* inclusive();
-  void addInclusive(TraceCost*);
+  ProfileCostArray* inclusive();
+  void addInclusive(ProfileCostArray*);
 
  protected:
-  TraceCost _inclusive;
+  ProfileCostArray _inclusive;
 };
 
 
@@ -699,7 +699,7 @@ class TraceInclusiveCost: public TraceCost
  * Cost Item
  * depends on a list of cost items.
  */
-class TraceListCost: public TraceCost
+class TraceListCost: public ProfileCostArray
 {
  public:
   TraceListCost(ProfileContext*);
@@ -709,8 +709,8 @@ class TraceListCost: public TraceCost
   virtual void update();
 
   TraceCostList& deps() { return _deps; }
-  void addDep(TraceCost*);
-  TraceCost* findDepFromPart(TracePart*);
+  void addDep(ProfileCostArray*);
+  ProfileCostArray* findDepFromPart(TracePart*);
 
  protected:
   // overwrite in subclass to change update behaviour
@@ -720,7 +720,7 @@ class TraceListCost: public TraceCost
 
  private:
   // very temporary: cached
-  TraceCost* _lastDep;
+  ProfileCostArray* _lastDep;
 };
 
 
@@ -860,7 +860,7 @@ public:
  * Cost of a code instruction address from a trace file.
  * Cost is always up to date, no lazy update needed.
  */
-class TracePartInstr: public TraceCost
+class TracePartInstr: public ProfileCostArray
 {
 public:
   TracePartInstr(TraceInstr*);
@@ -909,7 +909,7 @@ public:
  * Cost of a line from a trace file.
  * Cost is always up to date, no lazy update needed.
  */
-class TracePartLine: public TraceCost
+class TracePartLine: public ProfileCostArray
 {
 public:
   TracePartLine(TraceLine*);
@@ -1107,7 +1107,7 @@ public:
   void setPartNumber(int n);
   void setThreadID(int t);
   void setProcessID(int p);
-  TraceCost* totals() { return &_totals; }
+  ProfileCostArray* totals() { return &_totals; }
   /* we get owner of the submapping */
   void setFixSubMapping(TraceSubMapping* sm) { _fixSubMapping = sm; }
   TraceSubMapping* fixSubMapping() { return _fixSubMapping; }
@@ -1129,7 +1129,7 @@ private:
   bool _active;
 
   // the totals line
-  TraceCost _totals;
+  ProfileCostArray _totals;
 
   // submapping for all fix costs of this part
   TraceSubMapping* _fixSubMapping;
@@ -1485,7 +1485,7 @@ public:
  * An instance of this class holds all lines of one source file
  * for a function in a map
  */
-class TraceFunctionSource: public TraceCost
+class TraceFunctionSource: public ProfileCostArray
 {
 public:
   TraceFunctionSource(TraceFunction*, TraceFile*);
@@ -1811,7 +1811,7 @@ class TraceObject: public TraceCostItem
  * generated with cachegrind on one command.
  *
  */
-class TraceData: public TraceCost
+class TraceData: public ProfileCostArray
 {
  public:
   TraceData(Logger* l = 0);
@@ -1872,8 +1872,8 @@ class TraceData: public TraceCost
    * For Function, a parent of type Obj/File/Class can be given, but
    * is not needed.
    */
-  TraceCost* search(ProfileContext::Type, QString,
-		    TraceEventType* ct = 0, TraceCost* parent = 0);
+  ProfileCostArray* search(ProfileContext::Type, QString,
+		    TraceEventType* ct = 0, ProfileCostArray* parent = 0);
 
   // for pretty function names without signature if unique...
   TraceFunctionMap::Iterator functionIterator(TraceFunction*);
@@ -1887,11 +1887,11 @@ class TraceData: public TraceCost
 
   const TraceFunctionCycleList& functionCycles() { return _functionCycles; }
 
-  TraceCost* callMax() { return &_callMax; }
+  ProfileCostArray* callMax() { return &_callMax; }
 
   void setCommand(const QString& command) { _command = command; }
   QString command() const { return _command; }
-  TraceCost* totals() { return &_totals; }
+  ProfileCostArray* totals() { return &_totals; }
   void setMaxThreadID(int tid) { _maxThreadID = tid; }
   int maxThreadID() const { return _maxThreadID; }
   void setMaxPartNumber(int n) { _maxPartNumber = n; }
@@ -1929,7 +1929,7 @@ class TraceData: public TraceCost
   DynPool* _dynPool;
 
   // always the trace totals (not dependent on active parts)
-  TraceCost _totals;
+  ProfileCostArray _totals;
   int _maxThreadID;
   int _maxPartNumber;
 
@@ -1942,7 +1942,7 @@ class TraceData: public TraceCost
 
   // Max of all costs of calls: This allows to see if the incl. cost can
   // be hidden for a cost type, as it is always the same as self cost
-  TraceCost _callMax;
+  ProfileCostArray _callMax;
 
   // cycles
   TraceFunctionCycleList _functionCycles;

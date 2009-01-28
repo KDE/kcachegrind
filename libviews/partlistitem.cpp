@@ -83,7 +83,7 @@ void PartListItem::update()
 
   double total = _part->subCost(_costType);
 
-  TraceCost* selfTotalCost = _part;
+  ProfileCostArray* selfTotalCost = _part;
   if (pf && GlobalConfig::showExpanded()) {
       switch(_groupType) {
       case ProfileContext::Object: selfTotalCost = pf->partObject(); break;

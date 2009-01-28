@@ -290,7 +290,7 @@ void InstrView::activatedSlot(Q3ListViewItem * i)
 }
 
 
-TraceItem* InstrView::canShow(TraceItem* i)
+ProfileCost* InstrView::canShow(ProfileCost* i)
 {
     ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
   TraceFunction* f = 0;

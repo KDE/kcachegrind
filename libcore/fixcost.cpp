@@ -55,7 +55,7 @@ void* FixCost::operator new(size_t size, FixPool* pool)
     return pool->allocate(size);
 }
 
-void FixCost::addTo(TraceCost* c)
+void FixCost::addTo(ProfileCostArray* c)
 {
     TraceSubMapping* sm = _part->fixSubMapping();
 
@@ -127,7 +127,7 @@ void FixCallCost::addTo(TraceCallCost* c)
 		  _cost[_count].pretty().ascii());
 }
 
-void FixCallCost::setMax(TraceCost* c)
+void FixCallCost::setMax(ProfileCostArray* c)
 {
     TraceSubMapping* sm = _part->fixSubMapping();
 

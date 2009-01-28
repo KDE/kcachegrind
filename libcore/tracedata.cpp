@@ -38,8 +38,8 @@
 #define TRACE_DEBUG      0
 #define TRACE_ASSERTIONS 0
 
-const int TraceCost::MaxRealIndex = MaxRealIndexValue;
-const int TraceCost::InvalidIndex = -1;
+const int ProfileCostArray::MaxRealIndex = MaxRealIndexValue;
+const int ProfileCostArray::InvalidIndex = -1;
 
 //---------------------------------------------------
 // Addr
@@ -236,9 +236,9 @@ ProfileContext::Type ProfileContext::i18nType(const QString& s)
 
 
 //---------------------------------------------------
-// TraceItem
+// ProfileCost
 
-TraceItem::TraceItem(ProfileContext* c)
+ProfileCost::ProfileCost(ProfileContext* c)
 {
   _position = 0;
   _dep = 0;
@@ -247,22 +247,22 @@ TraceItem::TraceItem(ProfileContext* c)
   _context = c;
 }
 
-TraceItem::~TraceItem()
+ProfileCost::~ProfileCost()
 {}
 
 
-void TraceItem::clear()
+void ProfileCost::clear()
 {
     invalidate();
 }
 
 
-QString TraceItem::costString(TraceEventTypeMapping*)
+QString ProfileCost::costString(TraceEventTypeMapping*)
 {
     return QString("(no cost)");
 }
 
-QString TraceItem::name() const
+QString ProfileCost::name() const
 {
   if (part()) {
       return QObject::tr("%1 from %2").arg(_dep->name()).arg(part()->name());
@@ -274,25 +274,25 @@ QString TraceItem::name() const
   return QObject::tr("(unknown)");
 }
 
-QString TraceItem::prettyName() const
+QString ProfileCost::prettyName() const
 {
     if (name().isEmpty()) return QObject::tr("(unknown)");
     return name();
 }
 
 
-QString TraceItem::fullName() const
+QString ProfileCost::fullName() const
 {
   return QString("%1 %2")
     .arg(ProfileContext::typeName(type())).arg(prettyName());
 }
 
-QString TraceItem::toString()
+QString ProfileCost::toString()
 {
   return QString("%1\n  [%3]").arg(fullName()).arg(costString(0));
 }
 
-void TraceItem::invalidate()
+void ProfileCost::invalidate()
 {
   if (_dirty) return;
   _dirty = true;
@@ -301,66 +301,66 @@ void TraceItem::invalidate()
     _dep->invalidate();
 }
 
-void TraceItem::update()
+void ProfileCost::update()
 {
   _dirty = false;
 }
 
-TracePart* TraceItem::part()
+TracePart* ProfileCost::part()
 {
   return _position ? _position->part() : 0;
 }
 
-const TracePart* TraceItem::part() const
+const TracePart* ProfileCost::part() const
 {
   return _position ? _position->part() : 0;
 }
 
-TraceData* TraceItem::data()
+TraceData* ProfileCost::data()
 {
   return _position ? _position->data() : 0;
 }
 
-const TraceData* TraceItem::data() const
+const TraceData* ProfileCost::data() const
 {
   return _position ? _position->data() : 0;
 }
 
 
 //---------------------------------------------------
-// TraceCost
+// ProfileCostArray
 
-TraceCost::TraceCost(ProfileContext* context)
-    : TraceItem(context)
+ProfileCostArray::ProfileCostArray(ProfileContext* context)
+    : ProfileCost(context)
 {
   _cachedType = 0; // no virtual value cached
 
-  TraceCost::clear();
+  ProfileCostArray::clear();
 }
 
-TraceCost::TraceCost()
-    : TraceItem(ProfileContext::context(ProfileContext::UnknownType))
+ProfileCostArray::ProfileCostArray()
+    : ProfileCost(ProfileContext::context(ProfileContext::UnknownType))
 {
   _cachedType = 0; // no virtual value cached
 
-  TraceCost::clear();
+  ProfileCostArray::clear();
 }
 
-TraceCost::~TraceCost()
+ProfileCostArray::~ProfileCostArray()
 {}
 
 
-void TraceCost::clear()
+void ProfileCostArray::clear()
 {
     // simple set usage count to 0
     _count = 0;
 
-    TraceItem::clear();
+    ProfileCost::clear();
 }
 
 
 
-void TraceCost::set(TraceSubMapping* sm, const char* s)
+void ProfileCostArray::set(TraceSubMapping* sm, const char* s)
 {
     if (!sm) return;
     if (!s) {
@@ -383,7 +383,7 @@ void TraceCost::set(TraceSubMapping* sm, const char* s)
 	while(1) {
 	    index = sm->realIndex(i);
 	    if (maxIndex<index) maxIndex=index;
-	    if (index == TraceCost::InvalidIndex) break;
+	    if (index == ProfileCostArray::InvalidIndex) break;
 	    if (!_cost[index].set(&s)) break;
 	    i++;
 	}
@@ -396,7 +396,7 @@ void TraceCost::set(TraceSubMapping* sm, const char* s)
     invalidate();
 }
 
-void TraceCost::set(TraceSubMapping* sm, FixString & s)
+void ProfileCostArray::set(TraceSubMapping* sm, FixString & s)
 {
     if (!sm) return;
 
@@ -415,7 +415,7 @@ void TraceCost::set(TraceSubMapping* sm, FixString & s)
 	while(1) {
 	    index = sm->realIndex(i);
 	    if (maxIndex<index) maxIndex=index;
-	    if (index == TraceCost::InvalidIndex) break;
+	    if (index == ProfileCostArray::InvalidIndex) break;
 	    if (!s.stripUInt64(_cost[index])) break;
 	    i++;
 	}
@@ -428,7 +428,7 @@ void TraceCost::set(TraceSubMapping* sm, FixString & s)
 }
 
 
-void TraceCost::addCost(TraceSubMapping* sm, const char* s)
+void ProfileCostArray::addCost(TraceSubMapping* sm, const char* s)
 {
     if (!sm || !s) return;
 
@@ -452,7 +452,7 @@ void TraceCost::addCost(TraceSubMapping* sm, const char* s)
 	    if (!v.set(&s)) break;
 	    index = sm->realIndex(i);
 	    if (maxIndex<index) maxIndex=index;
-	    if (index == TraceCost::InvalidIndex) break;
+	    if (index == ProfileCostArray::InvalidIndex) break;
 	    if (index<_count)
 		_cost[index] += v;
 	    else
@@ -474,12 +474,12 @@ void TraceCost::addCost(TraceSubMapping* sm, const char* s)
 #if TRACE_DEBUG
     _dirty = false; // do not recurse !
     qDebug("%s\n now %s", qPrintable( fullName() ),
-	   qPrintable( TraceCost::costString(0) ));
+	   qPrintable( ProfileCostArray::costString(0) ));
     _dirty = true; // because of invalidate()
 #endif
 }
 
-void TraceCost::addCost(TraceSubMapping* sm, FixString & s)
+void ProfileCostArray::addCost(TraceSubMapping* sm, FixString & s)
 {
     if (!sm) return;
 
@@ -505,7 +505,7 @@ void TraceCost::addCost(TraceSubMapping* sm, FixString & s)
 	    if (!s.stripUInt64(v)) break;
 	    index = sm->realIndex(i);
 	    if (maxIndex<index) maxIndex=index;
-	    if (index == TraceCost::InvalidIndex) break;
+	    if (index == ProfileCostArray::InvalidIndex) break;
 	    if (index<_count)
 		_cost[index] += v;
 	    else
@@ -526,14 +526,14 @@ void TraceCost::addCost(TraceSubMapping* sm, FixString & s)
 #if TRACE_DEBUG
     _dirty = false; // do not recurse !
     qDebug("%s\n now %s", qPrintable( fullName() ),
-	   qPrintable( TraceCost::costString(0 ) ) );
+	   qPrintable( ProfileCostArray::costString(0 ) ) );
     _dirty = true; // because of invalidate()
 #endif
 }
 
 
 // update each subcost to be maximum of old and given costs
-void TraceCost::maxCost(TraceSubMapping* sm, FixString & s)
+void ProfileCostArray::maxCost(TraceSubMapping* sm, FixString & s)
 {
     if (!sm) return;
 
@@ -560,7 +560,7 @@ void TraceCost::maxCost(TraceSubMapping* sm, FixString & s)
 	    if (!s.stripUInt64(v)) break;
 	    index = sm->realIndex(i);
 	    if (maxIndex<index) maxIndex=index;
-	    if (index == TraceCost::InvalidIndex) break;
+	    if (index == ProfileCostArray::InvalidIndex) break;
 	    if (index<_count) {
 	      if (v>_cost[index]) _cost[index] = v;
 	    }
@@ -582,13 +582,13 @@ void TraceCost::maxCost(TraceSubMapping* sm, FixString & s)
 #if TRACE_DEBUG
     _dirty = false; // do not recurse !
     qDebug("%s\n now %s", qPrintable( fullName() ),
-	   qPrintable(TraceCost::costString(0)));
+	   qPrintable(ProfileCostArray::costString(0)));
     _dirty = true; // because of invalidate()
 #endif
 }
 
 
-void TraceCost::addCost(TraceCost* item)
+void ProfileCostArray::addCost(ProfileCostArray* item)
 {
     int i;
 
@@ -617,12 +617,12 @@ void TraceCost::addCost(TraceCost* item)
     _dirty = false; // do not recurse !
     qDebug("%s added cost item\n %s\n  now %s",
 	   qPrintable( fullName() ), qPrintable(item->fullName()),
-	   qPrintable(TraceCost::costString(0)));
+	   qPrintable(ProfileCostArray::costString(0)));
     _dirty = true; // because of invalidate()
 #endif
 }
 
-void TraceCost::maxCost(TraceCost* item)
+void ProfileCostArray::maxCost(ProfileCostArray* item)
 {
     int i;
 
@@ -651,12 +651,12 @@ void TraceCost::maxCost(TraceCost* item)
     _dirty = false; // do not recurse !
     qDebug("%s added cost item\n %s\n  now %s",
 	   qPrintable( fullName() ), qPrintable(item->fullName()),
-	   qPrintable( TraceCost::costString(0) ));
+	   qPrintable( ProfileCostArray::costString(0) ));
     _dirty = true; // because of invalidate()
 #endif
 }
 
-void TraceCost::addCost(int type, SubCost value)
+void ProfileCostArray::addCost(int type, SubCost value)
 {
     if (type<0 || type>=MaxRealIndex) return;
     if (type<_count)
@@ -672,7 +672,7 @@ void TraceCost::addCost(int type, SubCost value)
     invalidate();
 }
 
-void TraceCost::maxCost(int type, SubCost value)
+void ProfileCostArray::maxCost(int type, SubCost value)
 {
     if (type<0 || type>=MaxRealIndex) return;
     if (type<_count) {
@@ -690,9 +690,9 @@ void TraceCost::maxCost(int type, SubCost value)
 }
 
 
-TraceCost TraceCost::diff(TraceCost* item)
+ProfileCostArray ProfileCostArray::diff(ProfileCostArray* item)
 {
-    TraceCost res(context());
+    ProfileCostArray res(context());
 
   // we have to update the other item if needed
   // because we access the item costs directly
@@ -707,13 +707,13 @@ TraceCost TraceCost::diff(TraceCost* item)
   return res;
 }
 
-QString TraceCost::costString(TraceEventTypeMapping* m)
+QString ProfileCostArray::costString(TraceEventTypeMapping* m)
 {
   QString res;
 
   if (_dirty) update();
 
-  int maxIndex = m ? m->realCount() : TraceCost::MaxRealIndex;
+  int maxIndex = m ? m->realCount() : ProfileCostArray::MaxRealIndex;
   for (int i = 0; i<maxIndex; i++) {
     if (!res.isEmpty()) res += ", ";
     if (m) res += m->type(i)->name() + ' ';
@@ -724,7 +724,7 @@ QString TraceCost::costString(TraceEventTypeMapping* m)
 }
 
 
-void TraceCost::invalidate()
+void ProfileCostArray::invalidate()
 {
   if (_dirty) return;
   _dirty = true;
@@ -734,13 +734,13 @@ void TraceCost::invalidate()
     _dep->invalidate();
 }
 
-void TraceCost::update()
+void ProfileCostArray::update()
 {
   _dirty = false;
 }
 
 // this is only for real types
-SubCost TraceCost::subCost(int idx)
+SubCost ProfileCostArray::subCost(int idx)
 {
     if (idx<0) return 0;
 
@@ -752,7 +752,7 @@ SubCost TraceCost::subCost(int idx)
     return _cost[idx];
 }
 
-SubCost TraceCost::subCost(TraceEventType* t)
+SubCost ProfileCostArray::subCost(TraceEventType* t)
 {
   if (!t) return 0;
   if (_cachedType != t) {
@@ -762,7 +762,7 @@ SubCost TraceCost::subCost(TraceEventType* t)
   return _cachedCost;
 }
 
-QString TraceCost::prettySubCost(TraceEventType* t)
+QString ProfileCostArray::prettySubCost(TraceEventType* t)
 {
     return subCost(t).pretty();
 }
@@ -773,7 +773,7 @@ QString TraceCost::prettySubCost(TraceEventType* t)
 // TraceJumpCost
 
 TraceJumpCost::TraceJumpCost(ProfileContext* c)
-    :TraceItem(c)
+    :ProfileCost(c)
 {
     TraceJumpCost::clear();
 }
@@ -831,18 +831,18 @@ TraceEventType::TraceEventType(const QString& name, const QString& longName,
   _longName = longName;
   _formula = formula;
   _mapping = 0;
-  _realIndex = TraceCost::InvalidIndex;
+  _realIndex = ProfileCostArray::InvalidIndex;
   _parsed = false;
   _inParsing = false;
 
-  for (int i=0; i<TraceCost::MaxRealIndex;i++)
+  for (int i=0; i<ProfileCostArray::MaxRealIndex;i++)
     _coefficient[i] = 0;
 }
 
 void TraceEventType::setFormula(const QString& formula)
 {
   _formula = formula;
-  _realIndex = TraceCost::InvalidIndex;
+  _realIndex = ProfileCostArray::InvalidIndex;
   _parsed = false;
 }
 
@@ -852,12 +852,12 @@ void TraceEventType::setMapping(TraceEventTypeMapping* m)
   _mapping = m;
 }
 
-// setting the index to TraceCost::MaxRealIndex makes it a
+// setting the index to ProfileCostArray::MaxRealIndex makes it a
 // real type with unspecified index
 void TraceEventType::setRealIndex(int i)
 {
-  if (i<0 || i>TraceCost::MaxRealIndex)
-    i=TraceCost::InvalidIndex;
+  if (i<0 || i>ProfileCostArray::MaxRealIndex)
+    i=ProfileCostArray::InvalidIndex;
 
   _realIndex = i;
   _formula = QString();
@@ -879,7 +879,7 @@ bool TraceEventType::parseFormula()
 
   _inParsing = true;
 
-  for (int i=0; i<TraceCost::MaxRealIndex;i++)
+  for (int i=0; i<ProfileCostArray::MaxRealIndex;i++)
     _coefficient[i] = 0;
 
   QRegExp rx( "((?:\\+|\\-)?)\\s*(\\d*)\\s*\\*?\\s*(\\w+)" );
@@ -915,7 +915,7 @@ bool TraceEventType::parseFormula()
       _coefficient[eventType->realIndex()] += factor;
     else {
       eventType->parseFormula();
-      for (int i=0; i<TraceCost::MaxRealIndex;i++)
+      for (int i=0; i<ProfileCostArray::MaxRealIndex;i++)
         _coefficient[i] += factor * eventType->_coefficient[i];
     }
   }
@@ -932,7 +932,7 @@ QString TraceEventType::parsedFormula()
 
   if (!parseFormula()) return res;
 
-  for (int i=0; i<TraceCost::MaxRealIndex;i++) {
+  for (int i=0; i<ProfileCostArray::MaxRealIndex;i++) {
     int c = _coefficient[i];
     if (c == 0) continue;
 
@@ -953,9 +953,9 @@ QString TraceEventType::parsedFormula()
   return res;
 }
 
-SubCost TraceEventType::subCost(TraceCost* c)
+SubCost TraceEventType::subCost(ProfileCostArray* c)
 {
-  if (_realIndex != TraceCost::InvalidIndex)
+  if (_realIndex != ProfileCostArray::InvalidIndex)
     return c->subCost(_realIndex);
 
   if (!_parsed) {
@@ -971,7 +971,7 @@ SubCost TraceEventType::subCost(TraceCost* c)
   return res;
 }
 
-int TraceEventType::histCost(TraceCost* c, double total, double* hist)
+int TraceEventType::histCost(ProfileCostArray* c, double total, double* hist)
 {
   if (total == 0.0) return 0;
 
@@ -1090,16 +1090,16 @@ TraceEventTypeMapping::TraceEventTypeMapping()
 {
   _realCount = 0;
   _derivedCount = 0;
-  for (int i=0;i<TraceCost::MaxRealIndex;i++) _real[i] = 0;
-  for (int i=0;i<TraceCost::MaxRealIndex;i++) _derived[i] = 0;
+  for (int i=0;i<ProfileCostArray::MaxRealIndex;i++) _real[i] = 0;
+  for (int i=0;i<ProfileCostArray::MaxRealIndex;i++) _derived[i] = 0;
 }
 
 TraceEventTypeMapping::~TraceEventTypeMapping()
 {
-  for (int i=0;i<TraceCost::MaxRealIndex;i++)
+  for (int i=0;i<ProfileCostArray::MaxRealIndex;i++)
     if (_real[i]) delete _real[i];
 
-  for (int i=0;i<TraceCost::MaxRealIndex;i++)
+  for (int i=0;i<ProfileCostArray::MaxRealIndex;i++)
     if (_derived[i]) delete _derived[i];
 }
 
@@ -1117,7 +1117,7 @@ TraceSubMapping* TraceEventTypeMapping::subMapping(const QString& types, bool cr
     while((pos2<len) && !types[pos2].isSpace()) pos2++;
     if (pos2 == pos) break;
 
-    if (realIndex(types.mid(pos,pos2-pos)) == TraceCost::InvalidIndex)
+    if (realIndex(types.mid(pos,pos2-pos)) == ProfileCostArray::InvalidIndex)
       newCount++;
 
     pos = pos2;
@@ -1125,7 +1125,7 @@ TraceSubMapping* TraceEventTypeMapping::subMapping(const QString& types, bool cr
 
   if (!create && (newCount>0)) return 0;
 
-  if (newCount+_realCount > TraceCost::MaxRealIndex) {
+  if (newCount+_realCount > ProfileCostArray::MaxRealIndex) {
     qDebug() << "TraceCostMapping::subMapping: No space for "
 	      << newCount << " sub costs.";
     return 0;
@@ -1168,15 +1168,15 @@ int TraceEventTypeMapping::addReal(const QString& t)
 // this transfers ownership of the type!
 int TraceEventTypeMapping::add(TraceEventType* et)
 {
-  if (!et) return TraceCost::InvalidIndex;
+  if (!et) return ProfileCostArray::InvalidIndex;
 
   et->setMapping(this);
 
   if (et->isReal()) {
-    if (_realCount >= TraceCost::MaxRealIndex) {
+    if (_realCount >= ProfileCostArray::MaxRealIndex) {
       qDebug("WARNING: Maximum for real event types reached (on adding '%s')",
              qPrintable(et->name()));
-      return TraceCost::InvalidIndex;
+      return ProfileCostArray::InvalidIndex;
     }
     _real[_realCount] = et;
     et->setRealIndex(_realCount);
@@ -1186,10 +1186,10 @@ int TraceEventTypeMapping::add(TraceEventType* et)
     return _realCount-1;
   }
 
-  if (_derivedCount >= TraceCost::MaxRealIndex) {
+  if (_derivedCount >= ProfileCostArray::MaxRealIndex) {
     qDebug("WARNING: Maximum for virtual event types reached (on adding '%s')",
            qPrintable(et->name()));
-    return TraceCost::InvalidIndex;
+    return ProfileCostArray::InvalidIndex;
   }
   _derived[_derivedCount] = et;
   _derivedCount++;
@@ -1244,7 +1244,7 @@ TraceEventType* TraceEventTypeMapping::type(int t)
   if (t<0) return 0;
   if (t<_realCount) return _real[t];
 
-  t -= TraceCost::MaxRealIndex;
+  t -= ProfileCostArray::MaxRealIndex;
   if (t<0) return 0;
   if (t<_derivedCount) return _derived[t];
 
@@ -1284,7 +1284,7 @@ int TraceEventTypeMapping::realIndex(const QString& name)
     if (_real[i] && (_real[i]->name() == name))
       return i;
 
-  return TraceCost::InvalidIndex;
+  return ProfileCostArray::InvalidIndex;
 }
 
 int TraceEventTypeMapping::index(const QString& name)
@@ -1295,9 +1295,9 @@ int TraceEventTypeMapping::index(const QString& name)
 
   for (int i=0;i<_derivedCount;i++)
     if (_derived[i] && (_derived[i]->name() == name))
-      return TraceCost::MaxRealIndex + 1 + i;
+      return ProfileCostArray::MaxRealIndex + 1 + i;
 
-  return TraceCost::InvalidIndex;
+  return ProfileCostArray::InvalidIndex;
 }
 
 int TraceEventTypeMapping::addKnownDerivedTypes()
@@ -1311,7 +1311,7 @@ int TraceEventTypeMapping::addKnownDerivedTypes()
     for (i=0; i<knownCount; i++) {
       TraceEventType* t = TraceEventType::knownType(i);
       if (t->isReal()) continue;
-      if (index(t->name()) != TraceCost::InvalidIndex) continue;
+      if (index(t->name()) != ProfileCostArray::InvalidIndex) continue;
       t->setMapping(this);
       if (t->parseFormula()) {
         addDiff++;
@@ -1340,8 +1340,8 @@ void TraceSubMapping::clear()
   _count = 0;
   _isIdentity = true;
   _firstUnused = 0;
-  for(int i=0;i<TraceCost::MaxRealIndex;i++) {
-    _realIndex[i] = TraceCost::InvalidIndex;
+  for(int i=0;i<ProfileCostArray::MaxRealIndex;i++) {
+    _realIndex[i] = ProfileCostArray::InvalidIndex;
     _nextUnused[i] = i+1;
   }
 }
@@ -1359,7 +1359,7 @@ bool TraceSubMapping::append(int type)
   if (!_mapping) return false;
   if ((type<0) || (type >= _mapping->realCount())) return false;
 
-  if ( _count >=  TraceCost::MaxRealIndex) return false;
+  if ( _count >=  ProfileCostArray::MaxRealIndex) return false;
 
   _realIndex[_count] = type;
 
@@ -1379,7 +1379,7 @@ bool TraceSubMapping::append(int type)
 // TraceCallCost
 
 TraceCallCost::TraceCallCost(ProfileContext* context)
-    : TraceCost(context)
+    : ProfileCostArray(context)
 {
   _callCount = 0;
 }
@@ -1391,7 +1391,7 @@ TraceCallCost::~TraceCallCost()
 QString TraceCallCost::costString(TraceEventTypeMapping* m)
 {
   return QString("%1, Calls %2")
-      .arg(TraceCost::costString(m))
+      .arg(ProfileCostArray::costString(m))
       .arg(_callCount.pretty());
 }
 
@@ -1403,7 +1403,7 @@ QString TraceCallCost::prettyCallCount()
 void TraceCallCost::clear()
 {
   _callCount = 0;
-  TraceCost::clear();
+  ProfileCostArray::clear();
 }
 
 SubCost TraceCallCost::callCount()
@@ -1425,7 +1425,7 @@ void TraceCallCost::addCallCount(SubCost c)
 // TraceInclusiveCost
 
 TraceInclusiveCost::TraceInclusiveCost(ProfileContext* context)
-    : TraceCost(context), _inclusive(context)
+    : ProfileCostArray(context), _inclusive(context)
 {}
 
 TraceInclusiveCost::~TraceInclusiveCost()
@@ -1434,24 +1434,24 @@ TraceInclusiveCost::~TraceInclusiveCost()
 QString TraceInclusiveCost::costString(TraceEventTypeMapping* m)
 {
   return QString("%1, Inclusive %2")
-    .arg(TraceCost::costString(m))
+    .arg(ProfileCostArray::costString(m))
     .arg(_inclusive.costString(m));
 }
 
 void TraceInclusiveCost::clear()
 {
   _inclusive.clear();
-  TraceCost::clear();
+  ProfileCostArray::clear();
 }
 
-TraceCost* TraceInclusiveCost::inclusive()
+ProfileCostArray* TraceInclusiveCost::inclusive()
 {
   if (_dirty) update();
 
   return &_inclusive;
 }
 
-void TraceInclusiveCost::addInclusive(TraceCost* c)
+void TraceInclusiveCost::addInclusive(ProfileCostArray* c)
 {
   _inclusive.addCost(c);
 
@@ -1463,7 +1463,7 @@ void TraceInclusiveCost::addInclusive(TraceCost* c)
 // TraceListCost
 
 TraceListCost::TraceListCost(ProfileContext* context)
-    : TraceCost(context)
+    : ProfileCostArray(context)
 {
   _lastDep = 0;
 }
@@ -1471,7 +1471,7 @@ TraceListCost::TraceListCost(ProfileContext* context)
 TraceListCost::~TraceListCost()
 {}
 
-void TraceListCost::addDep(TraceCost* dep)
+void TraceListCost::addDep(ProfileCostArray* dep)
 {
 #if TRACE_ASSERTIONS
   if (_deps.findRef(dep)>=0) {
@@ -1492,12 +1492,12 @@ void TraceListCost::addDep(TraceCost* dep)
 #endif
 }
 
-TraceCost* TraceListCost::findDepFromPart(TracePart* part)
+ProfileCostArray* TraceListCost::findDepFromPart(TracePart* part)
 {
   if (_lastDep && _lastDep->part() == part)
     return _lastDep;
 
-  TraceCost* dep;
+  ProfileCostArray* dep;
   for (dep = _deps.first(); dep; dep = _deps.next())
     if (dep->part() == part) {
       _lastDep = dep;
@@ -1517,7 +1517,7 @@ void TraceListCost::update()
 #endif
 
   clear();
-  TraceCost* item;
+  ProfileCostArray* item;
   for (item = _deps.first(); item; item = _deps.next()) {
     if (onlyActiveParts())
       if (!item->part() || !item->part()->isActive()) continue;
@@ -1797,7 +1797,7 @@ TracePartInstrCall::~TracePartInstrCall()
 // TracePartInstr
 
 TracePartInstr::TracePartInstr(TraceInstr* instr)
-  : TraceCost(ProfileContext::context(ProfileContext::PartInstr))
+  : ProfileCostArray(ProfileContext::context(ProfileContext::PartInstr))
 {
   _dep = instr;
 }
@@ -1837,7 +1837,7 @@ TracePartLineCall::~TracePartLineCall()
 // TracePartLine
 
 TracePartLine::TracePartLine(TraceLine* line)
-  : TraceCost(ProfileContext::context(ProfileContext::PartLine))
+  : ProfileCostArray(ProfileContext::context(ProfileContext::PartLine))
 {
   _dep = line;
 }
@@ -2102,7 +2102,7 @@ void TracePartFunction::update()
   // self cost
 #if !USE_FIXCOST
   if (_partLines.count()>0) {
-    TraceCost::clear();
+    ProfileCostArray::clear();
 
     TracePartLine* line;
     for (line = _partLines.first(); line; line = _partLines.next())
@@ -2110,7 +2110,7 @@ void TracePartFunction::update()
   }
 #else
   if (_firstFixCost) {
-    TraceCost::clear();
+    ProfileCostArray::clear();
 
     FixCost* item;
     for (item = _firstFixCost; item; item = item->nextCostOfPartFunction())
@@ -2902,7 +2902,7 @@ TraceCostItem::~TraceCostItem()
 
 TraceFunctionSource::TraceFunctionSource(TraceFunction* function,
 					 TraceFile* file)
-    : TraceCost(ProfileContext::context(ProfileContext::FunctionSource))
+    : ProfileCostArray(ProfileContext::context(ProfileContext::FunctionSource))
 {
   _file = file;
   _function = function;
@@ -4399,14 +4399,14 @@ QString TracePartList::names() const
 
 // create vectors with reasonable default sizes, but not wasting memory
 TraceData::TraceData(Logger* l)
-    : TraceCost(ProfileContext::context(ProfileContext::Data))
+    : ProfileCostArray(ProfileContext::context(ProfileContext::Data))
 {
     _logger = l;
     init();
 }
 
 TraceData::TraceData(const QString& base)
-    : TraceCost(ProfileContext::context(ProfileContext::Data))
+    : ProfileCostArray(ProfileContext::context(ProfileContext::Data))
 {
     _logger = 0;
 
@@ -4894,10 +4894,10 @@ void TraceData::update()
   _dirty = false;
 }
 
-TraceCost* TraceData::search(ProfileContext::Type t, QString name,
-			     TraceEventType* ct, TraceCost* parent)
+ProfileCostArray* TraceData::search(ProfileContext::Type t, QString name,
+			     TraceEventType* ct, ProfileCostArray* parent)
 {
-    TraceCost* result = 0;
+    ProfileCostArray* result = 0;
     ProfileContext::Type pt;
     SubCost sc, scTop = 0;
 

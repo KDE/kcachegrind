@@ -132,7 +132,7 @@ void PartView::selectionChangedSlot()
 }
 
 
-TraceItem* PartView::canShow(TraceItem* i)
+ProfileCost* PartView::canShow(ProfileCost* i)
 {
   if (!TraceItemView::data()) return 0;
   if (TraceItemView::data()->parts().count()>1) return i;

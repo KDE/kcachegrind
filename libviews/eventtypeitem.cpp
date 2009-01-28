@@ -82,7 +82,7 @@ void EventTypeItem::update()
   TraceFunction* f = (_costItem && _costItem->type()==ProfileContext::Function) ?
                      (TraceFunction*)_costItem : 0;
 
-  TraceCost* selfTotalCost = f ? f->data() : d;
+  ProfileCostArray* selfTotalCost = f ? f->data() : d;
   if (f && GlobalConfig::showExpanded()) {
       switch(_groupType) {
       case ProfileContext::Object: selfTotalCost = f->object(); break;

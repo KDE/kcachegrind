@@ -113,9 +113,9 @@ private:
 class SubPartItem: public TreeMapItem
 {
 public:
-  SubPartItem(TraceCost*);
+  SubPartItem(ProfileCostArray*);
   int rtti() const { return 3; }
-  TraceCost* partCostItem() { return _partCostItem; }
+  ProfileCostArray* partCostItem() { return _partCostItem; }
   double value() const;
   double sum() const;
   SplitMode splitMode() const { return Vertical; }
@@ -125,7 +125,7 @@ public:
   QColor backColor() const;
 
 private:
-  TraceCost* _partCostItem;
+  ProfileCostArray* _partCostItem;
   unsigned int _factor;
 };
 

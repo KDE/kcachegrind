@@ -51,7 +51,7 @@ public:
   ProfileContext::Type groupType() { return _groupType; }
 
 signals:
-  void functionSelected(TraceItem*);
+  void functionSelected(ProfileCost*);
 
 public slots:
   void setFunction(TraceFunction*);

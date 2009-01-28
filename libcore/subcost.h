@@ -66,12 +66,12 @@ class SubCost
     uint64 v;
 };
 
-class TraceCost;
+class ProfileCostArray;
 class TraceEventType;
-typedef Q3PtrList<TraceCost> TraceCostList;
+typedef Q3PtrList<ProfileCostArray> TraceCostList;
 
 /**
- * A class to calculate the <maxSize> TraceCost items
+ * A class to calculate the <maxSize> ProfileCostArray items
  * with highest cost.
  */
 
@@ -81,19 +81,19 @@ class HighestCostList
     HighestCostList();
 
     void clear(int maxSize);
-    void addCost(TraceCost*, SubCost);
+    void addCost(ProfileCostArray*, SubCost);
     int count() { return _count; }
     int realCount() { return (_count > _maxSize) ? _maxSize:_count; }
     int maxSize() { return _maxSize; }
     bool hasMore() { return _count > _maxSize; }
-    TraceCost* operator[] (int i)
+    ProfileCostArray* operator[] (int i)
 	{ return (i>=0 && i<_count && i<_maxSize) ? _item[i] : 0; }
 
  private:
     TraceCostList _list;
     int _maxSize, _count;
     TraceEventType* _costType;
-    QVector<TraceCost*> _item;
+    QVector<ProfileCostArray*> _item;
     QVector<SubCost> _cost;
 };
 

@@ -315,7 +315,7 @@ void FunctionSelection::groupTypeSelected(int cg)
 }
 
 
-TraceItem* FunctionSelection::canShow(TraceItem* i)
+ProfileCost* FunctionSelection::canShow(ProfileCost* i)
 {
     ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
 

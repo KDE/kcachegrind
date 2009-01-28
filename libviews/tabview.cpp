@@ -753,7 +753,7 @@ void TabView::resizeEvent(QResizeEvent* e)
          e->size().width(), e->size().height());
 }
 
-void TabView::selected(TraceItemView*, TraceItem* s)
+void TabView::selected(TraceItemView*, ProfileCost* s)
 {
     // we set selected item for our own children
     select(s);
@@ -948,14 +948,14 @@ void TabView::restoreOptions(const QString& prefix, const QString& postfix)
     // restore active item
     ProfileContext::Type t = ProfileContext::type(activeType);
     if (t==ProfileContext::InvalidType) t = ProfileContext::Function;
-    TraceCost* activeItem = _data->search(t, activeName, _eventType);
+    ProfileCostArray* activeItem = _data->search(t, activeName, _eventType);
     if (!activeItem) return;
     activate(activeItem);
 
     // restore selected item
     t = ProfileContext::type(selectedType);
     if (t==ProfileContext::InvalidType) t = ProfileContext::Function;
-    TraceCost* selectedItem = _data->search(t, selectedName,
+    ProfileCostArray* selectedItem = _data->search(t, selectedName,
 					    _eventType, activeItem);
     if (selectedItem) select(selectedItem);
 

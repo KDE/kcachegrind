@@ -36,7 +36,7 @@ public:
                TraceEventType* ct, ProfileContext::Type gt, TracePart* part);
 
   int compare(Q3ListViewItem * i, int col, bool ascending ) const;
-  TraceCost* partCostItem() { return _partCostItem; }
+  ProfileCostArray* partCostItem() { return _partCostItem; }
   void setCostType(TraceEventType* ct);
   void setGroupType(ProfileContext::Type);
   TracePart* part() { return _part; }
@@ -46,7 +46,7 @@ private:
   SubCost _sum, _pure;
   SubCost _callers;
   TraceEventType* _costType;
-  TraceCost* _partCostItem;
+  ProfileCostArray* _partCostItem;
   TracePart* _part;
   ProfileContext::Type _groupType;
 };

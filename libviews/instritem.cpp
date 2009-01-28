@@ -164,8 +164,8 @@ void InstrItem::updateCost()
   if (!_instr) return;
   if (_instrJump) return;
 
-  TraceCost* instrCost = _instrCall ?
-      (TraceCost*)_instrCall : (TraceCost*)_instr;
+  ProfileCostArray* instrCost = _instrCall ?
+      (ProfileCostArray*)_instrCall : (ProfileCostArray*)_instr;
 
   // do not show any cost inside of cycles
   if (_instrCall &&
@@ -190,7 +190,7 @@ void InstrItem::updateCost()
     return;
   }
 
-  TraceCost* totalCost;
+  ProfileCostArray* totalCost;
   if (GlobalConfig::showExpanded())
       totalCost = _instr->function()->inclusive();
   else

@@ -457,7 +457,7 @@ void CallMapView::selectedSlot(TreeMapItem* item, bool kbd)
   }
 }
 
-TraceItem* CallMapView::canShow(TraceItem* i)
+ProfileCost* CallMapView::canShow(ProfileCost* i)
 {
   ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
 
@@ -568,7 +568,7 @@ QString CallMapView::tipString(TreeMapItem* i) const
 }
 
 
-TraceCost* CallMapView::totalCost()
+ProfileCostArray* CallMapView::totalCost()
 {
   TraceFunction* f = ((CallMapBaseItem*)base())->function();
   if (!f) return 0;
@@ -611,7 +611,7 @@ QString CallMapBaseItem::text(int textNo) const
   if (textNo != 1) return QString();
 
   TraceEventType* ct = ((CallMapView*)widget())->eventType();
-  TraceCost* t      = ((CallMapView*)widget())->totalCost();
+  ProfileCostArray* t      = ((CallMapView*)widget())->totalCost();
 
   if (GlobalConfig::showPercentage()) {
       double sum, total = t->subCost(ct);
@@ -631,7 +631,7 @@ QPixmap CallMapBaseItem::pixmap(int i) const
     if ((i != 1) || !_f) return QPixmap();
 
     TraceEventType* ct = ((CallMapView*)widget())->eventType();
-    TraceCost* t      = ((CallMapView*)widget())->totalCost();
+    ProfileCostArray* t      = ((CallMapView*)widget())->totalCost();
 
     // colored level meter with frame
     return costPixmap( ct, _f->inclusive(), (double) (t->subCost(ct)), true);
@@ -756,7 +756,7 @@ QString CallMapCallingItem::text(int textNo) const
   SubCost val = SubCost(_factor * _c->subCost(ct));
   if (GlobalConfig::showPercentage()) {
     // percentage relative to function cost
-    TraceCost* t = ((CallMapView*)widget())->totalCost();
+    ProfileCostArray* t = ((CallMapView*)widget())->totalCost();
     double p  = 100.0 * _factor * _c->subCost(ct) / t->subCost(ct);
     return QString("%1 %")
       .arg(p, 0, 'f', GlobalConfig::percentPrecision());
@@ -770,7 +770,7 @@ QPixmap CallMapCallingItem::pixmap(int i) const
 
     // Cost pixmap
     TraceEventType* ct = ((CallMapView*)widget())->eventType();
-    TraceCost* t      = ((CallMapView*)widget())->totalCost();
+    ProfileCostArray* t      = ((CallMapView*)widget())->totalCost();
 
     // colored level meter with frame
     return costPixmap( ct, _c, t->subCost(ct) / _factor, true);
@@ -872,7 +872,7 @@ QString CallMapCallerItem::text(int textNo) const
 
   SubCost val = SubCost(_factor * _c->subCost(ct));
   if (GlobalConfig::showPercentage()) {
-    TraceCost* t = ((CallMapView*)widget())->totalCost();
+    ProfileCostArray* t = ((CallMapView*)widget())->totalCost();
     double p  = 100.0 * _factor * _c->subCost(ct) / t->subCost(ct);
     return QString("%1 %")
       .arg(p, 0, 'f', GlobalConfig::percentPrecision());
@@ -887,7 +887,7 @@ QPixmap CallMapCallerItem::pixmap(int i) const
 
     // Cost pixmap
     TraceEventType* ct = ((CallMapView*)widget())->eventType();
-    TraceCost* t      = ((CallMapView*)widget())->totalCost();
+    ProfileCostArray* t      = ((CallMapView*)widget())->totalCost();
 
     // colored level meter with frame
     return costPixmap( ct, _c, t->subCost(ct) / _factor, true );

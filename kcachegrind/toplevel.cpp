@@ -284,8 +284,8 @@ void TopLevel::createDocks()
                    "cost used for all calls from the function in the line "
                    "above.</p>"));
 
-  connect(_stackSelection, SIGNAL(functionSelected(TraceItem*)),
-          this, SLOT(setTraceItemDelayed(TraceItem*)));
+  connect(_stackSelection, SIGNAL(functionSelected(ProfileCost*)),
+          this, SLOT(setTraceItemDelayed(ProfileCost*)));
 
   _functionDock = new QDockWidget(this);
   _functionDock->setObjectName("function dock");
@@ -1223,7 +1223,7 @@ bool TopLevel::setFunction(QString s)
 {
   if (!_data) return false;
 
-  TraceCost* f = _data->search(ProfileContext::Function, s, _eventType);
+  ProfileCostArray* f = _data->search(ProfileContext::Function, s, _eventType);
   if (!f) return false;
 
   return setFunction((TraceFunction*)f);
@@ -1355,7 +1355,7 @@ void TopLevel::setDirectionDelayed()
 }
 
 
-void TopLevel::setTraceItemDelayed(TraceItem* i)
+void TopLevel::setTraceItemDelayed(ProfileCost* i)
 {
   // no need to select same item a 2nd time...
   if (_traceItemDelayed == i) return;

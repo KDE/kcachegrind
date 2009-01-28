@@ -38,7 +38,7 @@ public:
 
     /* notify about changes in the visualization state from profile views */
     virtual void activePartsChangedSlot(const TracePartList& list) = 0;
-    virtual void setTraceItemDelayed(TraceItem*) = 0;
+    virtual void setTraceItemDelayed(ProfileCost*) = 0;
     virtual void setEventTypeDelayed(TraceEventType*) = 0;
     virtual void setEventType2Delayed(TraceEventType*) = 0;
     virtual void setGroupTypeDelayed(ProfileContext::Type) = 0;

@@ -152,7 +152,7 @@ void SourceItem::updateCost()
   if (!_line) return;
   if (_lineJump) return;
 
-  TraceCost* lineCost = _lineCall ? (TraceCost*)_lineCall : (TraceCost*)_line;
+  ProfileCostArray* lineCost = _lineCall ? (ProfileCostArray*)_lineCall : (ProfileCostArray*)_line;
 
   // do not show any cost inside of cycles
   if (_lineCall &&
@@ -177,7 +177,7 @@ void SourceItem::updateCost()
     return;
   }
 
-  TraceCost* totalCost;
+  ProfileCostArray* totalCost;
   if (GlobalConfig::showExpanded())
     totalCost = _line->functionSource()->function()->inclusive();
   else

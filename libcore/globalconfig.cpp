@@ -326,7 +326,7 @@ void GlobalConfig::addDefaultTypes()
     }
 }
 
-QColor GlobalConfig::groupColor(TraceItem* cost)
+QColor GlobalConfig::groupColor(ProfileCost* cost)
 {
    QString n;
 
@@ -353,7 +353,7 @@ QColor GlobalConfig::eventTypeColor(TraceEventType* t)
 QColor GlobalConfig::functionColor(ProfileContext::Type gt,
                                     TraceFunction* f)
 {
-  TraceCost* group = f;
+  ProfileCostArray* group = f;
   QString n;
 
   switch(gt) {
