@@ -231,6 +231,8 @@ private:
   QAction *_taPercentage, *_taExpanded, *_taCycles;
   QAction *_taDump, *_taSplit, *_taSplitDir;
   QAction *_paForward, *_paBack, *_paUp;
+  QAction *_layoutNext, *_layoutPrev, *_layoutRemove, *_layoutDup;
+  QAction *_layoutRestore, *_layoutSave;
 
   TraceFunction* _function;
   const QObject* _lastSender;

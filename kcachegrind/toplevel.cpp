@@ -1691,99 +1691,100 @@ void TopLevel::restoreTraceSettings()
 
 void TopLevel::layoutDuplicate()
 {
-  // save current and allocate a new slot
-  _multiView->saveLayout(QString("Layout%1-MainView").arg(_layoutCurrent),
-			 traceKey());
-  _layoutCurrent = _layoutCount;
-  _layoutCount++;
+    // save current and allocate a new slot
+    _multiView->saveLayout(QString("Layout%1-MainView").arg(_layoutCurrent),
+			   traceKey());
+    _layoutCurrent = _layoutCount;
+    _layoutCount++;
 
-  updateLayoutActions();
+    updateLayoutActions();
 
-  kDebug() << "TopLevel::layoutDuplicate: count " << _layoutCount;
+    if (0) kDebug() << "TopLevel::layoutDuplicate: count " << _layoutCount;
 }
 
 void TopLevel::layoutRemove()
 {
-  if (_layoutCount <2) return;
+    if (_layoutCount <2) return;
 
-  int from = _layoutCount-1;
-  if (_layoutCurrent == from) { _layoutCurrent--; from--; }
-  // restore from last and decrement count
-  _multiView->restoreLayout(QString("Layout%1-MainView").arg(from),
-			    traceKey());
-  _layoutCount--;
+    int from = _layoutCount-1;
+    if (_layoutCurrent == from) { _layoutCurrent--; from--; }
 
-  updateLayoutActions();
+    // restore from last and decrement count
+    _multiView->restoreLayout(QString("Layout%1-MainView").arg(from),
+			      traceKey());
+    _layoutCount--;
+
+    updateLayoutActions();
 }
 
 void TopLevel::layoutNext()
 {
-  if (_layoutCount <2) return;
+    if (_layoutCount <2) return;
 
-  QString key = traceKey();
-  QString layoutPrefix = QString("Layout%1-MainView");
+    QString key = traceKey();
+    QString layoutPrefix = QString("Layout%1-MainView");
 
-  _multiView->saveLayout(layoutPrefix.arg(_layoutCurrent), key);
-  _layoutCurrent++;
-  if (_layoutCurrent == _layoutCount) _layoutCurrent = 0;
-  _multiView->restoreLayout(layoutPrefix.arg(_layoutCurrent), key);
+    _multiView->saveLayout(layoutPrefix.arg(_layoutCurrent), key);
+    _layoutCurrent++;
+    if (_layoutCurrent == _layoutCount) _layoutCurrent = 0;
+    _multiView->restoreLayout(layoutPrefix.arg(_layoutCurrent), key);
 
-  if (0) kDebug() << "TopLevel::layoutNext: current "
-		   << _layoutCurrent << endl;
+    if (0) kDebug() << "TopLevel::layoutNext: current "
+		    << _layoutCurrent << endl;
 }
 
 void TopLevel::layoutPrevious()
 {
-  if (_layoutCount <2) return;
+    if (_layoutCount <2) return;
 
-  QString key = traceKey();
-  QString layoutPrefix = QString("Layout%1-MainView");
+    QString key = traceKey();
+    QString layoutPrefix = QString("Layout%1-MainView");
 
-  _multiView->saveLayout(layoutPrefix.arg(_layoutCurrent), key);
-  _layoutCurrent--;
-  if (_layoutCurrent <0) _layoutCurrent = _layoutCount-1;
-  _multiView->restoreLayout(layoutPrefix.arg(_layoutCurrent), key);
+    _multiView->saveLayout(layoutPrefix.arg(_layoutCurrent), key);
+    _layoutCurrent--;
+    if (_layoutCurrent <0) _layoutCurrent = _layoutCount-1;
+    _multiView->restoreLayout(layoutPrefix.arg(_layoutCurrent), key);
 
-  if (0) kDebug() << "TopLevel::layoutPrevious: current "
-		   << _layoutCurrent << endl;
+    if (0) kDebug() << "TopLevel::layoutPrevious: current "
+		    << _layoutCurrent << endl;
 }
 
 void TopLevel::layoutSave()
 {
-  QString key = traceKey();
-  QString layoutPrefix = QString("Layout%1-MainView");
+    QString key = traceKey();
+    QString layoutPrefix = QString("Layout%1-MainView");
 
-  _multiView->saveLayout(layoutPrefix.arg(_layoutCurrent), key);
+    _multiView->saveLayout(layoutPrefix.arg(_layoutCurrent), key);
 
-  // save all layouts as defaults (ie. without any group name postfix)
-  for(int i=0;i<_layoutCount;i++) {
-      _multiView->restoreLayout(layoutPrefix.arg(i), key);
-      _multiView->saveLayout(layoutPrefix.arg(i), QString());
-  }
-  // restore the previously saved current layout
-  _multiView->restoreLayout(layoutPrefix.arg(_layoutCurrent), key);
+    // save all layouts as defaults (ie. without any group name postfix)
+    for(int i=0;i<_layoutCount;i++) {
+	_multiView->restoreLayout(layoutPrefix.arg(i), key);
+	_multiView->saveLayout(layoutPrefix.arg(i), QString());
+    }
+    // restore the previously saved current layout
+    _multiView->restoreLayout(layoutPrefix.arg(_layoutCurrent), key);
 
-  KConfig *config = KGlobal::config().data();
-  KConfigGroup aConfig(config, "Layouts");
-  aConfig.writeEntry("DefaultCount", _layoutCount);
-  aConfig.writeEntry("DefaultCurrent", _layoutCurrent);
+    ConfigGroup* layoutConfig = ConfigStorage::group("Layouts");
+    layoutConfig->setValue("DefaultCount", _layoutCount);
+    layoutConfig->setValue("DefaultCurrent", _layoutCurrent);
+    delete layoutConfig;
 }
 
 void TopLevel::layoutRestore()
 {
-  KConfig *config = KGlobal::config().data();
-  KConfigGroup aConfig(config, "Layouts");
-  _layoutCount = aConfig.readEntry("DefaultCount", 0);
-  _layoutCurrent = aConfig.readEntry("DefaultCurrent", 0);
-  if (_layoutCount == 0) {
-    _layoutCount++;
-    return;
-  }
+    KConfig *config = KGlobal::config().data();
+    KConfigGroup aConfig(config, "Layouts");
+    _layoutCount = aConfig.readEntry("DefaultCount", 0);
+    _layoutCurrent = aConfig.readEntry("DefaultCurrent", 0);
+    if (_layoutCount == 0) {
+	_layoutCount++;
+	return;
+    }
 
-  QString layoutPrefix = QString("Layout%1-MainView");
-  _multiView->restoreLayout( layoutPrefix.arg(_layoutCurrent), traceKey());
+    QString layoutPrefix = QString("Layout%1-MainView");
+    _multiView->restoreLayout( layoutPrefix.arg(_layoutCurrent), traceKey());
 
-  updateLayoutActions();
+    updateLayoutActions();
 }
 
 
