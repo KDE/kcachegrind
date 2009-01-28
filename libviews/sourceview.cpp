@@ -185,20 +185,20 @@ void SourceView::activatedSlot(Q3ListViewItem * i)
 
 TraceItem* SourceView::canShow(TraceItem* i)
 {
-  TraceItem::CostType t = i ? i->type() : TraceItem::NoCostType;
+  ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
   TraceFunction* f = 0;
 
   switch(t) {
-  case TraceItem::Function:
+  case ProfileContext::Function:
       f = (TraceFunction*) i;
       break;
 
-  case TraceItem::Instr:
+  case ProfileContext::Instr:
       f = ((TraceInstr*)i)->function();
       select(i);
       break;
 
-  case TraceItem::Line:
+  case ProfileContext::Line:
       f = ((TraceLine*)i)->functionSource()->function();
       select(i);
       break;
@@ -221,9 +221,9 @@ void SourceView::doUpdate(int changeType)
       }
 
       TraceLine* sLine = 0;
-      if (_selectedItem->type() == TraceItem::Line)
+      if (_selectedItem->type() == ProfileContext::Line)
 	  sLine = (TraceLine*) _selectedItem;
-      if (_selectedItem->type() == TraceItem::Instr)
+      if (_selectedItem->type() == ProfileContext::Instr)
 	  sLine = ((TraceInstr*)_selectedItem)->line();
 
       SourceItem* si = (SourceItem*)Q3ListView::selectedItem();
@@ -291,14 +291,14 @@ void SourceView::refresh()
     return;
   }
 
-  TraceItem::CostType t = _activeItem->type();
+  ProfileContext::Type t = _activeItem->type();
   TraceFunction* f = 0;
-  if (t == TraceItem::Function) f = (TraceFunction*) _activeItem;
-  if (t == TraceItem::Instr) {
+  if (t == ProfileContext::Function) f = (TraceFunction*) _activeItem;
+  if (t == ProfileContext::Instr) {
     f = ((TraceInstr*)_activeItem)->function();
     if (!_selectedItem) _selectedItem = _activeItem;
   }
-  if (t == TraceItem::Line) {
+  if (t == ProfileContext::Line) {
     f = ((TraceLine*)_activeItem)->functionSource()->function();
     if (!_selectedItem) _selectedItem = _activeItem;
   }
@@ -476,9 +476,9 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
   TraceLine* sLine = 0;
   if (_selectedItem) {
-    if (_selectedItem->type() == TraceItem::Line)
+    if (_selectedItem->type() == ProfileContext::Line)
       sLine = (TraceLine*) _selectedItem;
-    if (_selectedItem->type() == TraceItem::Instr)
+    if (_selectedItem->type() == ProfileContext::Instr)
       sLine = ((TraceInstr*)_selectedItem)->line();
   }
 

@@ -40,14 +40,14 @@ public:
 
   void setData(TraceData* d);
   void setEventType(TraceEventType* ct);
-  void setGroupType(TraceCost::CostType gt);
+  void setGroupType(ProfileContext::Type gt);
   void setVisualization(VisualizationMode);
   void setZoomFunction(bool zoomFunction);
   void setCallLevels(int callLevels);
   void setFunction(TraceFunction* f);
 
   TraceEventType* eventType() const { return _eventType; }
-  TraceCost::CostType groupType() const { return _groupType; }
+  ProfileContext::Type groupType() const { return _groupType; }
   TraceFunction* function() const { return _function; }
   VisualizationMode visualization() const { return _visualization; }
   bool zoomFunction() const { return _zoomFunction; }
@@ -64,7 +64,7 @@ private:
 
   TraceData* _data;
   TraceEventType* _eventType;
-  TraceCost::CostType _groupType;
+  ProfileContext::Type _groupType;
   TraceFunction* _function;
   VisualizationMode _visualization;
   bool _zoomFunction;

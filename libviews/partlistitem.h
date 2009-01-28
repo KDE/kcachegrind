@@ -33,12 +33,12 @@ class PartListItem: public Q3ListViewItem
 {
 public:
   PartListItem(Q3ListView* parent, TraceCostItem* costItem,
-               TraceEventType* ct, TraceCost::CostType gt, TracePart* part);
+               TraceEventType* ct, ProfileContext::Type gt, TracePart* part);
 
   int compare(Q3ListViewItem * i, int col, bool ascending ) const;
   TraceCost* partCostItem() { return _partCostItem; }
   void setCostType(TraceEventType* ct);
-  void setGroupType(TraceCost::CostType);
+  void setGroupType(ProfileContext::Type);
   TracePart* part() { return _part; }
   void update();
 
@@ -48,7 +48,7 @@ private:
   TraceEventType* _costType;
   TraceCost* _partCostItem;
   TracePart* _part;
-  TraceCost::CostType _groupType;
+  ProfileContext::Type _groupType;
 };
 
 #endif

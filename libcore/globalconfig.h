@@ -47,7 +47,7 @@ public:
   void readOptions();
 
   // color for visualization of an object
-  static QColor functionColor(TraceItem::CostType gt, TraceFunction*);
+  static QColor functionColor(ProfileContext::Type gt, TraceFunction*);
   static QColor groupColor(TraceItem*);
   static QColor eventTypeColor(TraceEventType*);
   static QStringList sourceDirs(TraceData*, TraceObject* o = 0);
@@ -64,7 +64,7 @@ public:
   static int maxSymbolCount();
   // max. number of items in lists
   static int maxListCount();
-  
+
   // how many lines of context to show before/after annotated source/assembler
   static int context();
   // how many lines without cost are still regarded as inside a function

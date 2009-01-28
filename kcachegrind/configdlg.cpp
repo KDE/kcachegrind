@@ -92,9 +92,9 @@ ConfigDlg::ConfigDlg(GlobalConfig* c, TraceData* data,
 
   connect(PushButton2, SIGNAL(clicked()),SLOT(accept()));
   connect(PushButton1, SIGNAL(clicked()),SLOT(reject()));
-  QString objectPrefix = TraceCost::typeName(TraceCost::Object);
-  QString classPrefix = TraceCost::typeName(TraceCost::Class);
-  QString filePrefix = TraceCost::typeName(TraceCost::File);
+  QString objectPrefix = ProfileContext::typeName(ProfileContext::Object);
+  QString classPrefix = ProfileContext::typeName(ProfileContext::Class);
+  QString filePrefix = ProfileContext::typeName(ProfileContext::File);
 
   objectCombo->setDuplicatesEnabled(false);
   classCombo->setDuplicatesEnabled(false);
@@ -231,7 +231,7 @@ void ConfigDlg::objectActivated(const QString & s)
 
   if (s.isEmpty()) { _objectCS=0; return; }
 
-  QString n = TraceCost::typeName(TraceCost::Object) + '-' + s;
+  QString n = ProfileContext::typeName(ProfileContext::Object) + '-' + s;
 
   GlobalConfig::ColorSetting* cs = _config->_colors[n];
   if (!cs)
@@ -275,7 +275,7 @@ void ConfigDlg::classActivated(const QString & s)
 
   if (s.isEmpty()) { _classCS=0; return; }
 
-  QString n = TraceCost::typeName(TraceCost::Class) + '-' + s;
+  QString n = ProfileContext::typeName(ProfileContext::Class) + '-' + s;
 
   GlobalConfig::ColorSetting* cs = _config->_colors[n];
   if (!cs)
@@ -306,7 +306,7 @@ void ConfigDlg::fileActivated(const QString & s)
 
   if (s.isEmpty()) { _fileCS=0; return; }
 
-  QString n = TraceCost::typeName(TraceCost::File) + '-' + s;
+  QString n = ProfileContext::typeName(ProfileContext::File) + '-' + s;
 
   GlobalConfig::ColorSetting* cs = _config->_colors[n];
   if (!cs)

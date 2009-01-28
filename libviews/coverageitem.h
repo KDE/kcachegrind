@@ -31,22 +31,24 @@ class Coverage;
 class CallerCoverageItem: public Q3ListViewItem
 {
 public:
-  CallerCoverageItem(Q3ListView* parent, Coverage* c, TraceFunction* base,
-                     TraceEventType* ct, TraceCost::CostType gt);
-  CallerCoverageItem(Q3ListView* parent, int skipped, Coverage* c, TraceFunction* base,
-                     TraceEventType* ct, TraceCost::CostType gt);
+  CallerCoverageItem(Q3ListView* parent, Coverage* c,
+		     TraceFunction* base,
+                     TraceEventType* ct, ProfileContext::Type gt);
+  CallerCoverageItem(Q3ListView* parent, int skipped, Coverage* c,
+		     TraceFunction* base,
+                     TraceEventType* ct, ProfileContext::Type gt);
 
   int compare(Q3ListViewItem * i, int col, bool ascending ) const;
   TraceFunction* function() { return (_skipped) ? 0 : _function; }
   void setCostType(TraceEventType* ct);
-  void setGroupType(TraceCost::CostType);
+  void setGroupType(ProfileContext::Type);
   void update();
 
 private:
   float _pSum;
   SubCost _sum;
   TraceEventType* _costType;
-  TraceCost::CostType _groupType;
+  ProfileContext::Type _groupType;
   SubCost _cc;
   int _distance, _skipped;
   TraceFunction *_function, *_base;
@@ -57,22 +59,24 @@ private:
 class CalleeCoverageItem: public Q3ListViewItem
 {
 public:
-  CalleeCoverageItem(Q3ListView* parent, Coverage* c, TraceFunction* base,
-                     TraceEventType* ct, TraceCost::CostType gt);
-  CalleeCoverageItem(Q3ListView* parent, int skipped, Coverage* c, TraceFunction* base,
-                     TraceEventType* ct, TraceCost::CostType gt);
+  CalleeCoverageItem(Q3ListView* parent, Coverage* c,
+		     TraceFunction* base,
+                     TraceEventType* ct, ProfileContext::Type gt);
+  CalleeCoverageItem(Q3ListView* parent, int skipped, Coverage* c,
+		     TraceFunction* base,
+                     TraceEventType* ct, ProfileContext::Type gt);
 
   int compare(Q3ListViewItem * i, int col, bool ascending ) const;
   TraceFunction* function() { return (_skipped) ? 0 : _function; }
   void setCostType(TraceEventType* ct);
-  void setGroupType(TraceCost::CostType);
+  void setGroupType(ProfileContext::Type);
   void update();
 
 private:
   float _pSum, _pSelf;
   SubCost _sum, _self;
   TraceEventType* _costType;
-  TraceCost::CostType _groupType;
+  ProfileContext::Type _groupType;
   SubCost _cc;
   int _distance, _skipped;
   TraceFunction *_function, *_base;

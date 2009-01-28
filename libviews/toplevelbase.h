@@ -41,7 +41,7 @@ public:
     virtual void setTraceItemDelayed(TraceItem*) = 0;
     virtual void setEventTypeDelayed(TraceEventType*) = 0;
     virtual void setEventType2Delayed(TraceEventType*) = 0;
-    virtual void setGroupTypeDelayed(TraceItem::CostType) = 0;
+    virtual void setGroupTypeDelayed(ProfileContext::Type) = 0;
     virtual void setDirectionDelayed(TraceItemView::Direction) = 0;
     virtual void configChanged() = 0;
 

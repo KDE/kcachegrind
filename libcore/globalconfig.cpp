@@ -333,7 +333,7 @@ QColor GlobalConfig::groupColor(TraceItem* cost)
   if (!cost)
     n = QString("default");
   else
-    n = TraceCost::typeName(cost->type()) + '-' + cost->prettyName();
+    n = ProfileContext::typeName(cost->type()) + '-' + cost->prettyName();
 
   return color(n)->color;
 }
@@ -350,23 +350,23 @@ QColor GlobalConfig::eventTypeColor(TraceEventType* t)
    return color(n)->color;
 }
 
-QColor GlobalConfig::functionColor(TraceCost::CostType gt,
+QColor GlobalConfig::functionColor(ProfileContext::Type gt,
                                     TraceFunction* f)
 {
   TraceCost* group = f;
   QString n;
 
   switch(gt) {
-  case TraceCost::Object: group = f->object(); break;
-  case TraceCost::Class:  group = f->cls(); break;
-  case TraceCost::File:   group = f->file(); break;
+  case ProfileContext::Object: group = f->object(); break;
+  case ProfileContext::Class:  group = f->cls(); break;
+  case ProfileContext::File:   group = f->file(); break;
   default:
     break;
   }
 
   if (group != f) {
     // first look for manual color of a function in a group
-    n = TraceCost::typeName(group->type()) +
+    n = ProfileContext::typeName(group->type()) +
         '-' + group->prettyName() +
         '-' + f->prettyName();
 

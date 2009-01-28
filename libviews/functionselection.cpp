@@ -95,10 +95,10 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
   // order has to match mapping in groupTypeSelected()
   QStringList args;
   args << tr("(No Grouping)")
-       << TraceCost::i18nTypeName(TraceItem::Object)
-       << TraceCost::i18nTypeName(TraceItem::File)
-       << TraceCost::i18nTypeName(TraceItem::Class)
-       << TraceCost::i18nTypeName(TraceItem::FunctionCycle);
+       << ProfileContext::i18nTypeName(ProfileContext::Object)
+       << ProfileContext::i18nTypeName(ProfileContext::File)
+       << ProfileContext::i18nTypeName(ProfileContext::Class)
+       << ProfileContext::i18nTypeName(ProfileContext::FunctionCycle);
   groupBox->addItems(args);
   connect(groupBox, SIGNAL(activated(int)),
 	  this, SLOT(groupTypeSelected(int)));
@@ -190,7 +190,7 @@ void FunctionSelection::searchReturnPressed()
   query(searchEdit->text());
 
   Q3ListViewItem* item;
-  if (_groupType != TraceItem::Function) {
+  if (_groupType != ProfileContext::Function) {
       // if current group not matching, select first matching group
       item  = groupList->currentItem();
       if (!item || !item->isVisible()) {
@@ -280,19 +280,19 @@ void FunctionSelection::addGroupMenu(Q3PopupMenu* popup)
   Q3PopupMenu *popup1 = new Q3PopupMenu(popup);
   popup1->setCheckable(true);
 
-  if (_groupType != TraceItem::Function) {
+  if (_groupType != ProfileContext::Function) {
     popup1->insertItem(tr("No Grouping"),0);
     popup1->insertSeparator();
   }
-  popup1->insertItem(TraceCost::i18nTypeName(TraceItem::Object),1);
-  popup1->insertItem(TraceCost::i18nTypeName(TraceItem::File),2);
-  popup1->insertItem(TraceCost::i18nTypeName(TraceItem::Class),3);
-  popup1->insertItem(TraceCost::i18nTypeName(TraceItem::FunctionCycle),4);
+  popup1->insertItem(ProfileContext::i18nTypeName(ProfileContext::Object),1);
+  popup1->insertItem(ProfileContext::i18nTypeName(ProfileContext::File),2);
+  popup1->insertItem(ProfileContext::i18nTypeName(ProfileContext::Class),3);
+  popup1->insertItem(ProfileContext::i18nTypeName(ProfileContext::FunctionCycle),4);
   switch(_groupType) {
-  case TraceItem::Object:        popup1->setItemChecked(1, true); break;
-  case TraceItem::File:          popup1->setItemChecked(2, true); break;
-  case TraceItem::Class:         popup1->setItemChecked(3, true); break;
-  case TraceItem::FunctionCycle: popup1->setItemChecked(4, true); break;
+  case ProfileContext::Object:        popup1->setItemChecked(1, true); break;
+  case ProfileContext::File:          popup1->setItemChecked(2, true); break;
+  case ProfileContext::Class:         popup1->setItemChecked(3, true); break;
+  case ProfileContext::FunctionCycle: popup1->setItemChecked(4, true); break;
   default: break;
   }
   connect(popup1, SIGNAL(activated(int)),
@@ -305,11 +305,11 @@ void FunctionSelection::addGroupMenu(Q3PopupMenu* popup)
 void FunctionSelection::groupTypeSelected(int cg)
 {
     switch(cg) {
-	case 0: selectedGroupType( TraceItem::Function ); break;
-	case 1: selectedGroupType( TraceItem::Object ); break;
-	case 2: selectedGroupType( TraceItem::File ); break;
-	case 3: selectedGroupType( TraceItem::Class ); break;
-	case 4: selectedGroupType( TraceItem::FunctionCycle ); break;
+	case 0: selectedGroupType( ProfileContext::Function ); break;
+	case 1: selectedGroupType( ProfileContext::Object ); break;
+	case 2: selectedGroupType( ProfileContext::File ); break;
+	case 3: selectedGroupType( ProfileContext::Class ); break;
+	case 4: selectedGroupType( ProfileContext::FunctionCycle ); break;
 	default: break;
     }
 }
@@ -317,21 +317,21 @@ void FunctionSelection::groupTypeSelected(int cg)
 
 TraceItem* FunctionSelection::canShow(TraceItem* i)
 {
-    TraceItem::CostType t = i ? i->type() : TraceItem::NoCostType;
+    ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
 
     switch(t) {
-    case TraceItem::Function:
-    case TraceItem::FunctionCycle:
-    case TraceItem::Object:
-    case TraceItem::File:
-    case TraceItem::Class:
+    case ProfileContext::Function:
+    case ProfileContext::FunctionCycle:
+    case ProfileContext::Object:
+    case ProfileContext::File:
+    case ProfileContext::Class:
 	break;
 
-    case TraceItem::Instr:
+    case ProfileContext::Instr:
 	i = ((TraceInstr*)i)->function();
 	break;
 
-    case TraceItem::Line:
+    case ProfileContext::Line:
 	i = ((TraceLine*)i)->functionSource()->function();
 	break;
 
@@ -357,9 +357,9 @@ void FunctionSelection::doUpdate(int changeType)
 	    return;
 	}
 	switch(_activeItem->type()) {
-	case TraceItem::Object:
-	case TraceItem::File:
-	case TraceItem::Class:
+	case ProfileContext::Object:
+	case ProfileContext::File:
+	case ProfileContext::Class:
 	    setGroup((TraceCostItem*)_activeItem);
 	    return;
 	default: break;
@@ -381,10 +381,10 @@ void FunctionSelection::doUpdate(int changeType)
 
 	// select cost item group of function
 	switch(_groupType) {
-	case TraceItem::Object: setGroup(f->object()); break;
-	case TraceItem::Class:  setGroup(f->cls()); break;
-	case TraceItem::File:   setGroup(f->file());  break;
-	case TraceItem::FunctionCycle: setGroup(f->cycle());  break;
+	case ProfileContext::Object: setGroup(f->object()); break;
+	case ProfileContext::Class:  setGroup(f->cls()); break;
+	case ProfileContext::File:   setGroup(f->file());  break;
+	case ProfileContext::FunctionCycle: setGroup(f->cycle());  break;
 	default:
 	    break;
 	}
@@ -407,15 +407,15 @@ void FunctionSelection::doUpdate(int changeType)
     }
 
     if (changeType & groupTypeChanged) {
-	if (_activeItem && (_activeItem->type() == TraceItem::Function)) {
+	if (_activeItem && (_activeItem->type() == ProfileContext::Function)) {
 	    TraceFunction* f = (TraceFunction*) _activeItem;
 
 	    // select cost item group of function
 	    switch(_groupType) {
-	    case TraceItem::Object: _group = f->object(); break;
-	    case TraceItem::Class:  _group = f->cls(); break;
-	    case TraceItem::File:   _group = f->file();  break;
-	    case TraceItem::FunctionCycle: _group = f->cycle();  break;
+	    case ProfileContext::Object: _group = f->object(); break;
+	    case ProfileContext::Class:  _group = f->cls(); break;
+	    case ProfileContext::File:   _group = f->file();  break;
+	    case ProfileContext::FunctionCycle: _group = f->cycle();  break;
 	    default:
 		_group = 0;
 		break;
@@ -424,15 +424,15 @@ void FunctionSelection::doUpdate(int changeType)
 
 	int id;
 	switch(_groupType) {
-	case TraceItem::Object: id = 1; break;
-	case TraceItem::File:   id = 2; break;
-	case TraceItem::Class:  id = 3; break;
-	case TraceItem::FunctionCycle: id = 4; break;
+	case ProfileContext::Object: id = 1; break;
+	case ProfileContext::File:   id = 2; break;
+	case ProfileContext::Class:  id = 3; break;
+	case ProfileContext::FunctionCycle: id = 4; break;
 	default: id = 0; break;
 	}
 	groupBox->setCurrentIndex(id);
 
-	if (_groupType == TraceItem::Function)
+	if (_groupType == ProfileContext::Function)
 	    groupList->hide();
 	else
 	    groupList->show();
@@ -483,7 +483,7 @@ void FunctionSelection::refresh()
     // the new functions make them as wide as needed
     groupList->setColumnWidth(0, 50);
 
-    groupList->setColumnText(1, TraceItem::i18nTypeName(_groupType));
+    groupList->setColumnText(1, ProfileContext::i18nTypeName(_groupType));
 
     if (!_data || _data->parts().count()==0) {
 	functionList->clear();
@@ -518,28 +518,28 @@ void FunctionSelection::refresh()
     _group = (TraceCostItem*) _activeItem;
 
   switch(_groupType) {
-  case TraceItem::Object:
+  case ProfileContext::Object:
 
     for ( oit = _data->objectMap().begin();
           oit != _data->objectMap().end(); ++oit )
       _hc.addCost(&(*oit), (*oit).subCost(_eventType));
     break;
 
-  case TraceItem::Class:
+  case ProfileContext::Class:
 
     for ( cit = _data->classMap().begin();
           cit != _data->classMap().end(); ++cit )
       _hc.addCost(&(*cit), (*cit).subCost(_eventType));
     break;
 
-  case TraceItem::File:
+  case ProfileContext::File:
 
     for ( fit = _data->fileMap().begin();
           fit != _data->fileMap().end(); ++fit )
       _hc.addCost(&(*fit), (*fit).subCost(_eventType));
     break;
 
-  case TraceItem::FunctionCycle:
+  case ProfileContext::FunctionCycle:
     {
       // add all cycles
       TraceFunctionCycleList l =  _data->functionCycles();
@@ -584,8 +584,8 @@ void FunctionSelection::refresh()
 	_hc.addCost(f, f->inclusive()->subCost(_eventType));
 
       if (_activeItem &&
-	  ((_activeItem->type() == TraceItem::Function) ||
-	   (_activeItem->type() == TraceItem::FunctionCycle)))
+	  ((_activeItem->type() == ProfileContext::Function) ||
+	   (_activeItem->type() == ProfileContext::FunctionCycle)))
 	fitem = new FunctionItem(functionList, (TraceFunction*)_activeItem,
 				 _eventType, _groupType);
 
@@ -669,16 +669,16 @@ void FunctionSelection::groupSelected(Q3ListViewItem* i)
   TraceFunctionList list;
 
   switch(g->type()) {
-  case TraceItem::Object:
+  case ProfileContext::Object:
     list = ((TraceObject*)g)->functions();
     break;
-  case TraceItem::Class:
+  case ProfileContext::Class:
     list = ((TraceClass*)g)->functions();
     break;
-  case TraceItem::File:
+  case ProfileContext::File:
     list = ((TraceFile*)g)->functions();
     break;
-  case TraceItem::FunctionCycle:
+  case ProfileContext::FunctionCycle:
     list = ((TraceFunctionCycle*)g)->members();
     break;
   default:
@@ -844,28 +844,28 @@ void FunctionSelection::query(QString query)
     f = &(*it);
     if (re.search(f->prettyName())>=0) {
       if (_group) {
-	if (_groupType==TraceItem::Object) {
+	if (_groupType==ProfileContext::Object) {
 	  if (_groupSize.contains(f->object()))
 	    _groupSize[f->object()]++;
 	  else
 	    _groupSize[f->object()] = 1;
 	  if (f->object() != _group) continue;
 	}
-	else if (_groupType==TraceItem::Class) {
+	else if (_groupType==ProfileContext::Class) {
 	  if (_groupSize.contains(f->cls()))
 	    _groupSize[f->cls()]++;
 	  else
 	    _groupSize[f->cls()] = 1;
 	  if (f->cls() != _group) continue;
 	}
-	else if (_groupType==TraceItem::File) {
+	else if (_groupType==ProfileContext::File) {
 	  if (_groupSize.contains(f->file()))
 	    _groupSize[f->file()]++;
 	  else
 	    _groupSize[f->file()] = 1;
 	  if (f->file() != _group) continue;
 	}
-	else if (_groupType==TraceItem::FunctionCycle) {
+	else if (_groupType==ProfileContext::FunctionCycle) {
 	  if (_groupSize.contains(f->cycle()))
 	    _groupSize[f->cycle()]++;
 	  else

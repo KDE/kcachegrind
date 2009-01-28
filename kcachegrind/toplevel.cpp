@@ -160,7 +160,7 @@ void TopLevel::init()
   _function = 0;
   _eventType = 0;
   _eventType2 = 0;
-  _groupType = TraceCost::NoCostType;
+  _groupType = ProfileContext::InvalidType;
   _group = 0;
 
   _layoutCurrent = 0;
@@ -170,7 +170,7 @@ void TopLevel::init()
   _traceItemDelayed = 0;
   _eventTypeDelayed = 0;
   _eventType2Delayed = 0;
-  _groupTypeDelayed = TraceCost::NoCostType;
+  _groupTypeDelayed = ProfileContext::InvalidType;
   _groupDelayed = 0;
   _directionDelayed = TraceItemView::None;
   _lastSender = 0;
@@ -206,7 +206,7 @@ void TopLevel::saveCurrentState(const QString& postfix)
   ConfigGroup* stateConfig = ConfigStorage::group(QString("CurrentState") + postfix);
   stateConfig->setValue("EventType", eventType);
   stateConfig->setValue("EventType2", eventType2);
-  stateConfig->setValue("GroupType", TraceItem::typeName(_groupType));
+  stateConfig->setValue("GroupType", ProfileContext::typeName(_groupType));
   delete stateConfig;
 
   _partSelection->saveOptions(QString("PartOverview"), postfix);
@@ -228,7 +228,7 @@ void TopLevel::saveTraceSettings()
   pConfig.writeEntry(QString("EventType2%1").arg(key),
                      _eventType2 ? _eventType2->name() : QString("?"));
   pConfig.writeEntry(QString("GroupType%1").arg(key),
-                     TraceItem::typeName(_groupType));
+                     ProfileContext::typeName(_groupType));
 
   if (!_data) return;
 
@@ -679,10 +679,10 @@ void TopLevel::createMiscActions()
   QStringList args;
 
   args << i18n("(No Grouping)")
-       << TraceCost::i18nTypeName(TraceItem::Object)
-       << TraceCost::i18nTypeName(TraceItem::File)
-       << TraceCost::i18nTypeName(TraceItem::Class)
-       << TraceCost::i18nTypeName(TraceItem::FunctionCycle);
+       << ProfileContext::i18nTypeName(ProfileContext::Object)
+       << ProfileContext::i18nTypeName(ProfileContext::File)
+       << ProfileContext::i18nTypeName(ProfileContext::Class)
+       << ProfileContext::i18nTypeName(ProfileContext::FunctionCycle);
 
   saGroup->setItems(args);
   connect( saGroup, SIGNAL(triggered(int)),
@@ -1127,46 +1127,46 @@ bool TopLevel::setEventType2(TraceEventType* ct)
 void TopLevel::groupTypeSelected(int cg)
 {
   switch(cg) {
-  case 0: setGroupType( TraceItem::Function ); break;
-  case 1: setGroupType( TraceItem::Object ); break;
-  case 2: setGroupType( TraceItem::File ); break;
-  case 3: setGroupType( TraceItem::Class ); break;
-  case 4: setGroupType( TraceItem::FunctionCycle ); break;
+  case 0: setGroupType( ProfileContext::Function ); break;
+  case 1: setGroupType( ProfileContext::Object ); break;
+  case 2: setGroupType( ProfileContext::File ); break;
+  case 3: setGroupType( ProfileContext::Class ); break;
+  case 4: setGroupType( ProfileContext::FunctionCycle ); break;
   default: break;
   }
 }
 
 bool TopLevel::setGroupType(QString s)
 {
-  TraceItem::CostType gt;
+  ProfileContext::Type gt;
 
-  gt = (_data) ? _data->costType(s) : TraceData::costType(s);
+  gt = ProfileContext::type(s);
   // only allow Function/Object/File/Class as grouptype
   switch(gt) {
-  case TraceItem::Object:
-  case TraceItem::File:
-  case TraceItem::Class:
-  case TraceItem::FunctionCycle:
+  case ProfileContext::Object:
+  case ProfileContext::File:
+  case ProfileContext::Class:
+  case ProfileContext::FunctionCycle:
     break;
   default:
-    gt = TraceItem::Function;
+    gt = ProfileContext::Function;
   }
 
   return setGroupType(gt);
 }
 
-bool TopLevel::setGroupType(TraceItem::CostType gt)
+bool TopLevel::setGroupType(ProfileContext::Type gt)
 {
   if (_groupType == gt) return false;
   _groupType = gt;
 
   int idx = -1;
   switch(gt) {
-  case TraceItem::Function: idx = 0; break;
-  case TraceItem::Object: idx = 1; break;
-  case TraceItem::File: idx = 2; break;
-  case TraceItem::Class: idx = 3; break;
-  case TraceItem::FunctionCycle: idx = 4; break;
+  case ProfileContext::Function: idx = 0; break;
+  case ProfileContext::Object: idx = 1; break;
+  case ProfileContext::File: idx = 2; break;
+  case ProfileContext::Class: idx = 3; break;
+  case ProfileContext::FunctionCycle: idx = 4; break;
   default:
     break;
   }
@@ -1223,7 +1223,7 @@ bool TopLevel::setFunction(QString s)
 {
   if (!_data) return false;
 
-  TraceCost* f = _data->search(TraceItem::Function, s, _eventType);
+  TraceCost* f = _data->search(ProfileContext::Function, s, _eventType);
   if (!f) return false;
 
   return setFunction((TraceFunction*)f);
@@ -1291,7 +1291,7 @@ void TopLevel::setEventType2Delayed()
   setEventType2(_eventType2Delayed);
 }
 
-void TopLevel::setGroupTypeDelayed(TraceItem::CostType gt)
+void TopLevel::setGroupTypeDelayed(ProfileContext::Type gt)
 {
   _groupTypeDelayed = gt;
   QTimer::singleShot (0, this, SLOT(setGroupTypeDelayed()));
@@ -1378,21 +1378,21 @@ void TopLevel::setTraceItemDelayed()
     if (!_traceItemDelayed) return;
 
     switch(_traceItemDelayed->type()) {
-    case TraceItem::Function:
-    case TraceItem::FunctionCycle:
+    case ProfileContext::Function:
+    case ProfileContext::FunctionCycle:
       setFunction((TraceFunction*)_traceItemDelayed);
       break;
 
-    case TraceItem::Object:
-    case TraceItem::File:
-    case TraceItem::Class:
+    case ProfileContext::Object:
+    case ProfileContext::File:
+    case ProfileContext::Class:
 	setGroup((TraceCostItem*)_traceItemDelayed);
 	break;
 
 #if 0
 	// this conflicts with the selection policy of InstrView ?!?
-    case TraceItem::Instr:
-    case TraceItem::Line:
+    case ProfileContext::Instr:
+    case ProfileContext::Line:
 	// only for multiview
 	_multiView->activate(_traceItemDelayed);
 	_multiView->updateView();
@@ -1833,9 +1833,9 @@ void TopLevel::updateStatusBar()
 
   /* Not working... should give group of selected function
 
-  if (_groupType != TraceItem::Function) {
+  if (_groupType != ProfileContext::Function) {
     status += QString(" - %1 '%2'")
-              .arg(TraceItem::i18nTypeName(_groupType))
+              .arg(ProfileContext::i18nTypeName(_groupType))
               .arg(_group ? _group->prettyName() : i18n("(None)"));
   }
   */

@@ -164,11 +164,11 @@ void CallView::activatedSlot(Q3ListViewItem * i)
 
 TraceItem* CallView::canShow(TraceItem* i)
 {
-  TraceItem::CostType t = i ? i->type() : TraceItem::NoCostType;
+  ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
 
   switch(t) {
-  case TraceItem::Function:
-  case TraceItem::FunctionCycle:
+  case ProfileContext::Function:
+  case ProfileContext::FunctionCycle:
       return i;
   default:
       break;

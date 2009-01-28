@@ -40,7 +40,7 @@ TraceItemView::TraceItemView(TraceItemView* parentView, TopLevelBase* top)
   _selectedItem = _newSelectedItem = 0;
   _eventType = _newEventType = 0;
   _eventType2 = _newEventType2 = 0;
-  _groupType = _newGroupType = TraceItem::NoCostType;
+  _groupType = _newGroupType = ProfileContext::InvalidType;
 
   _status = nothingChanged;
   _inUpdate = false;
@@ -93,10 +93,10 @@ bool TraceItemView::activate(TraceItem* i)
 
 TraceFunction* TraceItemView::activeFunction()
 {
-    TraceItem::CostType t = _activeItem->type();
+    ProfileContext::Type t = _activeItem->type();
     switch(t) {
-    case TraceItem::Function:
-    case TraceItem::FunctionCycle:
+    case ProfileContext::Function:
+    case ProfileContext::FunctionCycle:
 	return (TraceFunction*) _activeItem;
     default:
 	break;
@@ -106,7 +106,7 @@ TraceFunction* TraceItemView::activeFunction()
 
 bool TraceItemView::set(int changeType, TraceData* d,
 			TraceEventType* t1, TraceEventType* t2,
-			TraceItem::CostType g, const TracePartList& l,
+			ProfileContext::Type g, const TracePartList& l,
                         TraceItem* a, TraceItem* s)
 {
   _status |= changeType;
@@ -143,7 +143,7 @@ void TraceItemView::setData(TraceData* d)
   _selectedItem = _newSelectedItem = 0;
   _eventType = _newEventType = 0;
   _eventType2 = _newEventType2 = 0;
-  _groupType = _newGroupType = TraceItem::NoCostType;
+  _groupType = _newGroupType = ProfileContext::InvalidType;
   _partList.clear();
   _newPartList.clear();
 
@@ -237,7 +237,7 @@ void TraceItemView::updateView(bool force)
 
   if (_status & groupTypeChanged)
     qDebug() << "  Group type "
-	     << TraceItem::typeName(_groupType);
+	     << ProfileContext::typeName(_groupType);
 
   if (_status & activeItemChanged)
     qDebug() << "  Active: "
@@ -321,7 +321,7 @@ void TraceItemView::selectedEventType2(TraceItemView*, TraceEventType* t)
       if (_topLevel) _topLevel->setEventType2Delayed(t);
 }
 
-void TraceItemView::selectedGroupType(TraceItemView*, TraceItem::CostType t)
+void TraceItemView::selectedGroupType(TraceItemView*, ProfileContext::Type t)
 {
   if (_parentView)
       _parentView->selectedGroupType(this, t);
@@ -387,7 +387,7 @@ void TraceItemView::selectedEventType2(TraceEventType* t)
       if (_topLevel) _topLevel->setEventType2Delayed(t);
 }
 
-void TraceItemView::selectedGroupType(TraceItem::CostType t)
+void TraceItemView::selectedGroupType(ProfileContext::Type t)
 {
   if (_parentView)
       _parentView->selectedGroupType(this, t);

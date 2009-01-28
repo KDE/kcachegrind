@@ -177,12 +177,12 @@ TraceItem* EventTypeView::canShow(TraceItem* i)
     if (!i) return 0;
 
     switch(i->type()) {
-    case TraceCost::Object:
-    case TraceCost::Class:
-    case TraceCost::File:
-    case TraceCost::Call:
-    case TraceCost::FunctionCycle:
-    case TraceCost::Function:
+    case ProfileContext::Object:
+    case ProfileContext::Class:
+    case ProfileContext::File:
+    case ProfileContext::Call:
+    case ProfileContext::FunctionCycle:
+    case ProfileContext::Function:
 	break;
     default:
 	return 0;
@@ -237,11 +237,11 @@ void EventTypeView::refresh()
 
     if (!_data || !_activeItem) return;
     switch(_activeItem->type()) {
-    case TraceCost::Object:
-    case TraceCost::Class:
-    case TraceCost::File:
-    case TraceCost::FunctionCycle:
-    case TraceCost::Function:
+    case ProfileContext::Object:
+    case ProfileContext::Class:
+    case ProfileContext::File:
+    case ProfileContext::FunctionCycle:
+    case ProfileContext::Function:
 	break;
     default:
 	return;

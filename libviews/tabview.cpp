@@ -946,15 +946,15 @@ void TabView::restoreOptions(const QString& prefix, const QString& postfix)
     delete g;
 
     // restore active item
-    TraceItem::CostType t = TraceItem::costType(activeType);
-    if (t==TraceItem::NoCostType) t = TraceItem::Function;
+    ProfileContext::Type t = ProfileContext::type(activeType);
+    if (t==ProfileContext::InvalidType) t = ProfileContext::Function;
     TraceCost* activeItem = _data->search(t, activeName, _eventType);
     if (!activeItem) return;
     activate(activeItem);
 
     // restore selected item
-    t = TraceItem::costType(selectedType);
-    if (t==TraceItem::NoCostType) t = TraceItem::Function;
+    t = ProfileContext::type(selectedType);
+    if (t==ProfileContext::InvalidType) t = ProfileContext::Function;
     TraceCost* selectedItem = _data->search(t, selectedName,
 					    _eventType, activeItem);
     if (selectedItem) select(selectedItem);
@@ -968,12 +968,12 @@ void TabView::saveOptions(const QString& prefix, const QString& postfix)
 	ConfigGroup* g = ConfigStorage::group(prefix + postfix);
 
 	g->setValue("ActiveItemType",
-		    TraceItem::typeName(_activeItem->type()));
+		    ProfileContext::typeName(_activeItem->type()));
 	g->setValue("ActiveItemName", _activeItem->name());
 
 	if (_selectedItem) {
 	    g->setValue("SelectedItemType",
-			TraceItem::typeName(_selectedItem->type()));
+			ProfileContext::typeName(_selectedItem->type()));
 	    g->setValue("SelectedItemName", _selectedItem->name());
 	}
 	delete g;

@@ -194,9 +194,9 @@ void PartView::refresh()
 
     if (!_data || !_activeItem) return;
 
-    TraceItem::CostType t = _activeItem->type();
+    ProfileContext::Type t = _activeItem->type();
     TraceFunction* f = 0;
-    if (t == TraceItem::Function) f = (TraceFunction*) _activeItem;
+    if (t == ProfileContext::Function) f = (TraceFunction*) _activeItem;
     if (!f) return;
 
     TracePart* part;

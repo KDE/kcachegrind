@@ -37,7 +37,7 @@ PartAreaWidget::PartAreaWidget(QWidget* parent)
   _function = 0;
 
   _eventType = 0;
-  _groupType = TraceCost::NoCostType;
+  _groupType = ProfileContext::InvalidType;
   _visualization = NoVisualization;
   _zoomFunction = false;
   _callLevels = 1;
@@ -109,7 +109,7 @@ void PartAreaWidget::setFunction(TraceFunction* f)
     refreshParts();
 }
 
-void PartAreaWidget::setGroupType(TraceCost::CostType gt)
+void PartAreaWidget::setGroupType(ProfileContext::Type gt)
 {
   _groupType = gt;
 
@@ -346,7 +346,7 @@ TreeMapItemList* PartItem::children()
 
   switch( ((PartAreaWidget*)widget())->groupType() ) {
 
-  case TraceCost::Object:
+  case ProfileContext::Object:
   {
     TraceObjectMap::Iterator it;
     for ( it = _p->data()->objectMap().begin();
@@ -358,7 +358,7 @@ TreeMapItemList* PartItem::children()
   }
   break;
 
-  case TraceCost::Class:
+  case ProfileContext::Class:
   {
     TraceClassMap::Iterator it;
     for ( it = _p->data()->classMap().begin();
@@ -370,7 +370,7 @@ TreeMapItemList* PartItem::children()
   }
   break;
 
-  case TraceCost::File:
+  case ProfileContext::File:
   {
     TraceFileMap::Iterator it;
     for ( it = _p->data()->fileMap().begin();
@@ -382,7 +382,7 @@ TreeMapItemList* PartItem::children()
   }
   break;
 
-  case TraceCost::Function:
+  case ProfileContext::Function:
   {
     TraceFunctionMap::Iterator it;
     for ( it = _p->data()->functionMap().begin();

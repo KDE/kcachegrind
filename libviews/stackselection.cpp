@@ -45,7 +45,7 @@ StackSelection::StackSelection(QWidget* parent)
   _function = 0;
   _eventType = 0;
   _eventType2 = 0;
-  _groupType = TraceItem::Function;
+  _groupType = ProfileContext::Function;
 
   setWindowTitle(tr("Stack Selection"));
 
@@ -232,7 +232,7 @@ void StackSelection::setEventType2(TraceEventType* ct)
   }
 }
 
-void StackSelection::setGroupType(TraceItem::CostType gt)
+void StackSelection::setGroupType(ProfileContext::Type gt)
 {
   if (_groupType == gt) return;
   _groupType = gt;

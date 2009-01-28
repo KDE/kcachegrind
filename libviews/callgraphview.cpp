@@ -532,11 +532,11 @@ GraphExporter::GraphExporter()
 	_go = this;
 	_tmpFile = 0;
 	_item = 0;
-	reset(0, 0, 0, TraceItem::NoCostType, QString());
+	reset(0, 0, 0, ProfileContext::InvalidType, QString());
 }
 
 GraphExporter::GraphExporter(TraceData* d, TraceFunction* f,
-                             TraceEventType* ct, TraceItem::CostType gt,
+                             TraceEventType* ct, ProfileContext::Type gt,
                              QString filename)
 {
 	_go = this;
@@ -557,7 +557,7 @@ GraphExporter::~GraphExporter()
 
 
 void GraphExporter::reset(TraceData*, TraceItem* i, TraceEventType* ct,
-                          TraceItem::CostType gt, QString filename)
+                          ProfileContext::Type gt, QString filename)
 {
 	_graphCreated = false;
 	_nodeMap.clear();
@@ -570,9 +570,9 @@ void GraphExporter::reset(TraceData*, TraceItem* i, TraceEventType* ct,
 
 	if (i) {
 		switch (i->type()) {
-		case TraceItem::Function:
-		case TraceItem::FunctionCycle:
-		case TraceItem::Call:
+		case ProfileContext::Function:
+		case ProfileContext::FunctionCycle:
+		case ProfileContext::Call:
 			break;
 		default:
 			i = 0;
@@ -616,8 +616,8 @@ void GraphExporter::createGraph()
 		return;
 	_graphCreated = true;
 
-	if ((_item->type() == TraceItem::Function) ||(_item->type()
-	        == TraceItem::FunctionCycle)) {
+	if ((_item->type() == ProfileContext::Function) ||(_item->type()
+	        == ProfileContext::FunctionCycle)) {
 		TraceFunction* f = (TraceFunction*) _item;
 
 		double incl = f->inclusive()->subCost(_eventType);
@@ -694,11 +694,11 @@ void GraphExporter::writeDot()
 	} else if (_go->layout() == Circular) {
 		TraceFunction *f = 0;
 		switch (_item->type()) {
-		case TraceItem::Function:
-		case TraceItem::FunctionCycle:
+		case ProfileContext::Function:
+		case ProfileContext::FunctionCycle:
 			f = (TraceFunction*) _item;
 			break;
-		case TraceItem::Call:
+		case ProfileContext::Call:
 			f = ((TraceCall*)_item)->caller(true);
 			break;
 		default:
@@ -723,16 +723,16 @@ void GraphExporter::writeDot()
 		TraceCostItem* g;
 		TraceFunction* f = n.function();
 		switch (_groupType) {
-		case TraceItem::Object:
+		case ProfileContext::Object:
 			g = f->object();
 			break;
-		case TraceItem::Class:
+		case ProfileContext::Class:
 			g = f->cls();
 			break;
-		case TraceItem::File:
+		case ProfileContext::File:
 			g = f->file();
 			break;
-		case TraceItem::FunctionCycle:
+		case ProfileContext::FunctionCycle:
 			g = f->cycle();
 			break;
 		default:
@@ -1795,9 +1795,9 @@ TraceItem* CallGraphView::canShow(TraceItem* i)
 {
 	if (i) {
 		switch (i->type()) {
-		case TraceItem::Function:
-		case TraceItem::FunctionCycle:
-		case TraceItem::Call:
+		case ProfileContext::Function:
+		case ProfileContext::FunctionCycle:
+		case ProfileContext::Call:
 			return i;
 		default:
 			break;
@@ -1821,12 +1821,12 @@ void CallGraphView::doUpdate(int changeType)
 
 		GraphNode* n = 0;
 		GraphEdge* e = 0;
-		if ((_selectedItem->type() == TraceItem::Function)
-		        ||(_selectedItem->type() == TraceItem::FunctionCycle)) {
+		if ((_selectedItem->type() == ProfileContext::Function)
+		        ||(_selectedItem->type() == ProfileContext::FunctionCycle)) {
 			n = _exporter.node((TraceFunction*)_selectedItem);
 			if (n == _selectedNode)
 				return;
-		} else if (_selectedItem->type() == TraceItem::Call) {
+		} else if (_selectedItem->type() == ProfileContext::Call) {
 			TraceCall* c = (TraceCall*)_selectedItem;
 			e = _exporter.edge(c->caller(false), c->called(false));
 			if (e == _selectedEdge)
@@ -1973,11 +1973,11 @@ void CallGraphView::refresh()
 		return;
 	}
 
-	TraceItem::CostType t = _activeItem->type();
+	ProfileContext::Type t = _activeItem->type();
 	switch (t) {
-	case TraceItem::Function:
-	case TraceItem::FunctionCycle:
-	case TraceItem::Call:
+	case ProfileContext::Function:
+	case ProfileContext::FunctionCycle:
+	case ProfileContext::Call:
 		break;
 	default:
 		showText(tr("No call graph can be drawn for the active item."));

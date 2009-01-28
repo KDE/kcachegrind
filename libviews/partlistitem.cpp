@@ -32,7 +32,7 @@
 // PartListItem
 
 PartListItem::PartListItem(Q3ListView* parent, TraceCostItem* costItem,
-                           TraceEventType* ct, TraceCost::CostType gt,
+                           TraceEventType* ct, ProfileContext::Type gt,
 			   TracePart* part)
   :Q3ListViewItem(parent)
 {
@@ -66,7 +66,7 @@ void PartListItem::setCostType(TraceEventType* ct)
     update();
 }
 
-void PartListItem::setGroupType(TraceCost::CostType gt)
+void PartListItem::setGroupType(ProfileContext::Type gt)
 {
     if (_groupType == gt) return;
 
@@ -78,7 +78,7 @@ void PartListItem::update()
 {
   TracePartFunction* pf;
   pf = !_partCostItem ? 0 :
-       (_partCostItem->type()==TraceCost::PartFunction) ?
+       (_partCostItem->type()==ProfileContext::PartFunction) ?
        ((TracePartFunction*)_partCostItem) : 0;
 
   double total = _part->subCost(_costType);
@@ -86,9 +86,9 @@ void PartListItem::update()
   TraceCost* selfTotalCost = _part;
   if (pf && GlobalConfig::showExpanded()) {
       switch(_groupType) {
-      case TraceCost::Object: selfTotalCost = pf->partObject(); break;
-      case TraceCost::Class:  selfTotalCost = pf->partClass(); break;
-      case TraceCost::File:   selfTotalCost = pf->partFile(); break;
+      case ProfileContext::Object: selfTotalCost = pf->partObject(); break;
+      case ProfileContext::Class:  selfTotalCost = pf->partClass(); break;
+      case ProfileContext::File:   selfTotalCost = pf->partFile(); break;
       default: break;
       }
   }

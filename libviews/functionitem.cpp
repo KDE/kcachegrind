@@ -32,7 +32,7 @@
 // FunctionItem
 
 FunctionItem::FunctionItem(Q3ListView* parent, TraceFunction* f,
-                           TraceEventType* ct, TraceCost::CostType gt)
+                           TraceEventType* ct, ProfileContext::Type gt)
   :Q3ListViewItem(parent)
 {
 #if 0
@@ -42,7 +42,7 @@ FunctionItem::FunctionItem(Q3ListView* parent, TraceFunction* f,
 
     _function = f;
     _skipped = 0;
-    _groupType = TraceCost::NoCostType;
+    _groupType = ProfileContext::InvalidType;
     setGroupType(gt);
     setCostType(ct);
 
@@ -60,7 +60,7 @@ FunctionItem::FunctionItem(Q3ListView* parent, int skipped,
 #endif
     _skipped = skipped;
     _function = f;
-    _groupType = TraceCost::NoCostType;
+    _groupType = ProfileContext::InvalidType;
     setCostType(ct);
 
     setText(3, QObject::tr("(%n function(s) skipped)", "", skipped));
@@ -88,7 +88,7 @@ const QPixmap* FunctionItem::pixmap(int column) const
 }
 #endif
 
-void  FunctionItem::setGroupType(TraceCost::CostType gt)
+void  FunctionItem::setGroupType(ProfileContext::Type gt)
 {
   if (_skipped) return;
   if (_groupType == gt) return;
@@ -118,9 +118,9 @@ void FunctionItem::update()
   TraceCost* selfCost = _function->data();
   if (GlobalConfig::showExpanded()) {
       switch(_groupType) {
-      case TraceCost::Object: selfCost = _function->object(); break;
-      case TraceCost::Class:  selfCost = _function->cls(); break;
-      case TraceCost::File:   selfCost = _function->file(); break;
+	  case ProfileContext::Object: selfCost = _function->object(); break;
+	  case ProfileContext::Class:  selfCost = _function->cls(); break;
+	  case ProfileContext::File:   selfCost = _function->file(); break;
       default: break;
       }
   }

@@ -66,7 +66,7 @@ public:
   void createActions();
   void createDocks();
 
-  TraceItem::CostType groupType() { return _groupType; }
+  ProfileContext::Type groupType() { return _groupType; }
   TraceEventType* eventType() { return _eventType; }
   TraceEventType* eventType2() { return _eventType2; }
   TracePartList activeParts() { return _activeParts; }
@@ -153,7 +153,7 @@ public slots:
   bool setEventType2(QString);
   bool setEventType(QAction*);
   bool setEventType2(QAction*);
-  bool setGroupType(TraceItem::CostType);
+  bool setGroupType(ProfileContext::Type);
   bool setGroupType(QString);
   bool setGroup(TraceCostItem*);
   bool setGroup(QString);
@@ -169,7 +169,7 @@ public slots:
    */
   void setEventTypeDelayed(TraceEventType*);
   void setEventType2Delayed(TraceEventType*);
-  void setGroupTypeDelayed(TraceItem::CostType);
+  void setGroupTypeDelayed(ProfileContext::Type);
   void setGroupDelayed(TraceCostItem*);
   void setTraceItemDelayed(TraceItem*);
   void partsHideSelectedSlotDelayed();
@@ -244,7 +244,7 @@ private:
   TraceEventType* _eventType2;
   QStringList _eventTypes;
   // grouping of function list
-  TraceItem::CostType _groupType;
+  ProfileContext::Type _groupType;
   // selected group
   TraceCostItem* _group;
   // selected parts
@@ -257,7 +257,7 @@ private:
   // for delayed slots
   TraceEventType* _eventTypeDelayed;
   TraceEventType* _eventType2Delayed;
-  TraceItem::CostType _groupTypeDelayed;
+  ProfileContext::Type _groupTypeDelayed;
   TraceCostItem* _groupDelayed;
   TraceItem* _traceItemDelayed;
   QString _loadTraceDelayed;

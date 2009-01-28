@@ -35,14 +35,14 @@
 CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, Coverage* c,
                                        TraceFunction* base,
                                        TraceEventType* ct,
-                                       TraceCost::CostType gt)
+                                       ProfileContext::Type gt)
     : Q3ListViewItem(parent)
 {
   _skipped = 0;
   _coverage = c;
   _function = c->function();
   _base = base;
-  _groupType = TraceCost::NoCostType;
+  _groupType = ProfileContext::InvalidType;
 
   setText(3, _function->prettyNameWithLocation());
 
@@ -53,14 +53,14 @@ CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, Coverage* c,
 CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, int skipped, Coverage* c,
                                        TraceFunction* base,
                                        TraceEventType* ct,
-                                       TraceCost::CostType gt)
+                                       ProfileContext::Type gt)
     : Q3ListViewItem(parent)
 {
   _skipped = skipped;
   _coverage = c;
   _function = c->function();
   _base = base;
-  _groupType = TraceCost::NoCostType;
+  _groupType = ProfileContext::InvalidType;
 
   setText(3, QObject::tr("(%n function(s) skipped)", "", _skipped));
 
@@ -68,7 +68,7 @@ CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, int skipped, Coverage
   setGroupType(gt);
 }
 
-void CallerCoverageItem::setGroupType(TraceCost::CostType gt)
+void CallerCoverageItem::setGroupType(ProfileContext::Type gt)
 {
   if (_skipped) return;
   if (_groupType == gt) return;
@@ -175,14 +175,14 @@ int CallerCoverageItem::compare(Q3ListViewItem * i,
 CalleeCoverageItem::CalleeCoverageItem(Q3ListView* parent, Coverage* c,
                                        TraceFunction* base,
                                        TraceEventType* ct,
-                                       TraceCost::CostType gt)
+                                       ProfileContext::Type gt)
     : Q3ListViewItem(parent)
 {
   _skipped = 0;
   _coverage = c;
   _function = c ? c->function() : 0;
   _base = base;
-  _groupType = TraceCost::NoCostType;
+  _groupType = ProfileContext::InvalidType;
 
   if ( _function )
      setText(4, _function->prettyNameWithLocation());
@@ -194,14 +194,14 @@ CalleeCoverageItem::CalleeCoverageItem(Q3ListView* parent, Coverage* c,
 CalleeCoverageItem::CalleeCoverageItem(Q3ListView* parent, int skipped, Coverage* c,
                                        TraceFunction* base,
                                        TraceEventType* ct,
-                                       TraceCost::CostType gt)
+                                       ProfileContext::Type gt)
     : Q3ListViewItem(parent)
 {
   _skipped = skipped;
   _coverage = c;
   _function = c ? c->function() : 0;
   _base = base;
-  _groupType = TraceCost::NoCostType;
+  _groupType = ProfileContext::InvalidType;
 
   setText(4, QObject::tr("(%n function(s) skipped)", "", _skipped));
 
@@ -209,7 +209,7 @@ CalleeCoverageItem::CalleeCoverageItem(Q3ListView* parent, int skipped, Coverage
   setGroupType(gt);
 }
 
-void CalleeCoverageItem::setGroupType(TraceCost::CostType gt)
+void CalleeCoverageItem::setGroupType(ProfileContext::Type gt)
 {
   if (_skipped) return;
   if (_groupType == gt) return;

@@ -32,7 +32,7 @@
 
 
 EventTypeItem::EventTypeItem(Q3ListView* parent, TraceCostItem* costItem,
-                           TraceEventType* ct, TraceCost::CostType gt)
+                           TraceEventType* ct, ProfileContext::Type gt)
   :Q3ListViewItem(parent)
 {
   _costItem = costItem;
@@ -58,7 +58,7 @@ EventTypeItem::EventTypeItem(Q3ListView* parent, TraceCostItem* costItem,
   update();
 }
 
-void EventTypeItem::setGroupType(TraceCost::CostType gt)
+void EventTypeItem::setGroupType(ProfileContext::Type gt)
 {
     if (_groupType == gt) return;
 
@@ -79,20 +79,20 @@ void EventTypeItem::update()
     return;
   }
 
-  TraceFunction* f = (_costItem && _costItem->type()==TraceCost::Function) ?
+  TraceFunction* f = (_costItem && _costItem->type()==ProfileContext::Function) ?
                      (TraceFunction*)_costItem : 0;
 
   TraceCost* selfTotalCost = f ? f->data() : d;
   if (f && GlobalConfig::showExpanded()) {
       switch(_groupType) {
-      case TraceCost::Object: selfTotalCost = f->object(); break;
-      case TraceCost::Class:  selfTotalCost = f->cls(); break;
-      case TraceCost::File:   selfTotalCost = f->file(); break;
-      case TraceCost::FunctionCycle: selfTotalCost = f->cycle(); break;
+      case ProfileContext::Object: selfTotalCost = f->object(); break;
+      case ProfileContext::Class:  selfTotalCost = f->cls(); break;
+      case ProfileContext::File:   selfTotalCost = f->file(); break;
+      case ProfileContext::FunctionCycle: selfTotalCost = f->cycle(); break;
       default: break;
       }
   }
-  if (_costItem && _costItem->type()==TraceCost::FunctionCycle) {
+  if (_costItem && _costItem->type()==ProfileContext::FunctionCycle) {
       f = (TraceFunction*)_costItem;
       selfTotalCost = f->data();
   }

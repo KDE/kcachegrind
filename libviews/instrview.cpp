@@ -292,20 +292,20 @@ void InstrView::activatedSlot(Q3ListViewItem * i)
 
 TraceItem* InstrView::canShow(TraceItem* i)
 {
-  TraceItem::CostType t = i ? i->type() : TraceItem::NoCostType;
+    ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
   TraceFunction* f = 0;
 
   switch(t) {
-  case TraceItem::Function:
+  case ProfileContext::Function:
       f = (TraceFunction*) i;
       break;
 
-  case TraceItem::Instr:
+  case ProfileContext::Instr:
       f = ((TraceInstr*)i)->function();
       select(i);
       break;
 
-  case TraceItem::Line:
+  case ProfileContext::Line:
       f = ((TraceLine*)i)->functionSource()->function();
       select(i);
       break;
@@ -408,14 +408,14 @@ void InstrView::refresh()
 
     if (!_data || !_activeItem) return;
 
-    TraceItem::CostType t = _activeItem->type();
+    ProfileContext::Type t = _activeItem->type();
     TraceFunction* f = 0;
-    if (t == TraceItem::Function) f = (TraceFunction*) _activeItem;
-    if (t == TraceItem::Instr) {
+    if (t == ProfileContext::Function) f = (TraceFunction*) _activeItem;
+    if (t == ProfileContext::Instr) {
 	f = ((TraceInstr*)_activeItem)->function();
 	if (!_selectedItem) _selectedItem = _activeItem;
     }
-    if (t == TraceItem::Line) {
+    if (t == ProfileContext::Line) {
 	f = ((TraceLine*)_activeItem)->functionSource()->function();
 	if (!_selectedItem) _selectedItem = _activeItem;
     }

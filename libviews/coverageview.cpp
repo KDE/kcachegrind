@@ -202,11 +202,11 @@ void CoverageView::activatedSlot(Q3ListViewItem * i)
 
 TraceItem* CoverageView::canShow(TraceItem* i)
 {
-  TraceItem::CostType t = i ? i->type() : TraceItem::NoCostType;
+  ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
 
   switch(t) {
-  case TraceItem::Function:
-  case TraceItem::FunctionCycle:
+  case ProfileContext::Function:
+  case ProfileContext::FunctionCycle:
       return i;
   default:
       break;
@@ -270,10 +270,10 @@ void CoverageView::refresh()
 
     if (!_data || !_activeItem) return;
 
-    TraceItem::CostType t = _activeItem->type();
+    ProfileContext::Type t = _activeItem->type();
     TraceFunction* f = 0;
-    if (t == TraceItem::Function) f = (TraceFunction*) _activeItem;
-    if (t == TraceItem::FunctionCycle) f = (TraceFunction*) _activeItem;
+    if (t == ProfileContext::Function) f = (TraceFunction*) _activeItem;
+    if (t == ProfileContext::FunctionCycle) f = (TraceFunction*) _activeItem;
     if (!f) return;
 
     TraceFunction* ff;

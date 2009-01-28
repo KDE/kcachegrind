@@ -139,11 +139,11 @@ void PartSelection::setData(TraceData* data)
 
 TraceItem* PartSelection::canShow(TraceItem* i)
 {
-    TraceItem::CostType t = i ? i->type() : TraceItem::NoCostType;
+    ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
 
     switch(t) {
-	case TraceItem::Function:
-	case TraceItem::FunctionCycle:
+	case ProfileContext::Function:
+	case ProfileContext::FunctionCycle:
 	    return i;
 	default:
 	    break;
@@ -209,8 +209,8 @@ void PartSelection::doUpdate(int changeType)
 
         if (_activeItem) {
             switch(_activeItem->type()) {
-            case TraceItem::Function:
-            case TraceItem::FunctionCycle:
+            case ProfileContext::Function:
+            case ProfileContext::FunctionCycle:
                 f = (TraceFunction*)_activeItem;
                 break;
             default:
@@ -259,7 +259,7 @@ void PartSelection::doubleClicked(TreeMapItem* i)
     TraceCostItem* ci = 0;
 
     switch(c->type()) {
-	case TraceItem::PartFunction:
+	case ProfileContext::PartFunction:
 	{
 	    TraceFunction* f = ((TracePartFunction*)c)->function();
 	    if (f)
@@ -267,13 +267,13 @@ void PartSelection::doubleClicked(TreeMapItem* i)
 	}
 	return;
 
-	case TraceItem::PartObject:
+	case ProfileContext::PartObject:
 	    ci = ((TracePartObject*)c)->object();
 	    break;
-	case TraceItem::PartClass:
+	case ProfileContext::PartClass:
 	    ci = ((TracePartClass*)c)->cls();
 	    break;
-	case TraceItem::PartFile:
+	case ProfileContext::PartFile:
 	    ci = ((TracePartFile*)c)->file();
 	    break;
 	default:
@@ -363,7 +363,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
 	int id = 100;
 	while (ni && ni->rtti() == 3) {
 	    TraceCost* c = ((SubPartItem*)ni)->partCostItem();
-	    if (c->type() == TraceItem::PartFunction)
+	    if (c->type() == ProfileContext::PartFunction)
 		if ( ((TracePartFunction*)c)->function() == _selectedItem) break;
 
 	    str = tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(ni->text(0)));

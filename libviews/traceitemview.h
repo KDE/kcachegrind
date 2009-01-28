@@ -85,7 +85,7 @@ public:
   // change from parent, call updateView() to update lazily (only if visible)
   void setEventType(TraceEventType* t) { _newEventType = t; }
   void setEventType2(TraceEventType* t) { _newEventType2 = t; }
-  void set(TraceItem::CostType g) { _newGroupType = g; }
+  void set(ProfileContext::Type g) { _newGroupType = g; }
   void set(const TracePartList& l) { _newPartList = l; }
   // returns false if nothing can be shown for this trace item
   bool activate(TraceItem* i);
@@ -93,7 +93,7 @@ public:
   void notifyChange(int changeType) { _status |= changeType; }
   // all in one
   bool set(int, TraceData*, TraceEventType*, TraceEventType*,
-	   TraceItem::CostType, const TracePartList&,
+	   ProfileContext::Type, const TracePartList&,
 	   TraceItem*, TraceItem*);
 
   // general update request, call if view is/gets visible
@@ -109,7 +109,7 @@ public:
   virtual void selectedEventType(TraceItemView* sender, TraceEventType*);
   virtual void selectedEventType2(TraceItemView* sender, TraceEventType*);
   virtual void activated(TraceItemView* sender, TraceItem*);
-  virtual void selectedGroupType(TraceItemView* sender, TraceItem::CostType);
+  virtual void selectedGroupType(TraceItemView* sender, ProfileContext::Type);
 
   // getters...
   // always get the newest values
@@ -118,7 +118,7 @@ public:
   TraceItem* selectedItem() const { return _newSelectedItem; }
   TraceEventType* eventType() const { return _newEventType; }
   TraceEventType* eventType2() const { return _newEventType2; }
-  TraceItem::CostType groupType() const { return _newGroupType; }
+  ProfileContext::Type groupType() const { return _newGroupType; }
   const TracePartList& partList() const { return _newPartList; }
 
   TraceFunction* activeFunction();
@@ -160,7 +160,7 @@ protected:
   void activated(TraceItem*);
   void selectedEventType(TraceEventType*);
   void selectedEventType2(TraceEventType*);
-  void selectedGroupType(TraceItem::CostType);
+  void selectedGroupType(ProfileContext::Type);
   void directionActivated(TraceItemView::Direction);
 
   /* Is this view visible?
@@ -178,14 +178,14 @@ protected:
   TracePartList _partList;
   TraceItem *_activeItem, *_selectedItem;
   TraceEventType *_eventType, *_eventType2;
-  TraceItem::CostType _groupType;
+  ProfileContext::Type _groupType;
 
 private:
   TraceData* _newData;
   TracePartList _newPartList;
   TraceItem *_newActiveItem, *_newSelectedItem;
   TraceEventType *_newEventType, *_newEventType2;
-  TraceItem::CostType _newGroupType;
+  ProfileContext::Type _newGroupType;
 
   QString _title;
   int _status;

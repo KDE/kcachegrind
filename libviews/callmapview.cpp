@@ -459,11 +459,11 @@ void CallMapView::selectedSlot(TreeMapItem* item, bool kbd)
 
 TraceItem* CallMapView::canShow(TraceItem* i)
 {
-  TraceItem::CostType t = i ? i->type() : TraceItem::NoCostType;
+  ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
 
   switch(t) {
-  case TraceItem::Function:
-  case TraceItem::FunctionCycle:
+  case ProfileContext::Function:
+  case ProfileContext::FunctionCycle:
       return i;
   default:
       break;
@@ -481,8 +481,8 @@ void CallMapView::doUpdate(int changeType)
 
 	if (_selectedItem) {
 	    switch(_selectedItem->type()) {
-	    case TraceItem::Function:
-	    case TraceItem::FunctionCycle:
+	    case ProfileContext::Function:
+	    case ProfileContext::FunctionCycle:
 		f = (TraceFunction*)_selectedItem;
 		break;
 	    default:
@@ -503,8 +503,8 @@ void CallMapView::doUpdate(int changeType)
 
       if (_activeItem) {
 	  switch(_activeItem->type()) {
-	  case TraceItem::Function:
-	  case TraceItem::FunctionCycle:
+	  case ProfileContext::Function:
+	  case ProfileContext::FunctionCycle:
 	      f = (TraceFunction*)_activeItem;
 	      break;
 	  default:

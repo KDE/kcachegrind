@@ -48,7 +48,7 @@ public:
   StackBrowser* browser() const { return _browser; }
   TraceEventType* eventType() { return _eventType; }
   TraceEventType* eventType2() { return _eventType2; }
-  TraceItem::CostType groupType() { return _groupType; }
+  ProfileContext::Type groupType() { return _groupType; }
 
 signals:
   void functionSelected(TraceItem*);
@@ -57,7 +57,7 @@ public slots:
   void setFunction(TraceFunction*);
   void setEventType(TraceEventType*);
   void setEventType2(TraceEventType*);
-  void setGroupType(TraceItem::CostType);
+  void setGroupType(ProfileContext::Type);
 
   void stackSelected(Q3ListViewItem*);
   void browserBack();
@@ -76,7 +76,7 @@ private:
   TraceFunction* _function;
   TraceEventType* _eventType;
   TraceEventType* _eventType2;
-  TraceItem::CostType _groupType;
+  ProfileContext::Type _groupType;
 
   Q3ListView* _stackList;
 };
