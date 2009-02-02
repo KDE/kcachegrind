@@ -361,7 +361,13 @@ FixFile::FixFile(QFile* file)
   _used_mmap = false;
 
   uchar* addr = 0;
-  if (file->size() >0) addr = file->map( 0, file->size() );
+
+#if QT_VERSION >= 0x040400
+  // QFile::map was introduced with Qt 4.4
+  if (file->size() >0)
+      addr = file->map( 0, file->size() );
+#endif
+
   if (addr) {
       // map succeeded
       _base = (char*) addr;
@@ -372,6 +378,7 @@ FixFile::FixFile(QFile* file)
   }
   else {
       // try reading the data into memory instead
+      file->seek(0);
       _data = file->readAll();
       _base = _data.data();
       _len  = _data.size();
@@ -387,8 +394,10 @@ FixFile::~FixFile()
 
     if (_used_mmap && _file) {
 	if (0) qDebug("Unmapping '%s'", qPrintable( _filename ));
+#if QT_VERSION >= 0x040400
 	if (!_file->unmap( (uchar*) _base ))
 	    qWarning( "munmap: %s", strerror( errno ) );
+#endif
     }
 }
 
