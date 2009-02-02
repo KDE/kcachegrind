@@ -16,11 +16,13 @@
    Boston, MA 02110-1301, USA.
 */
 
+#include "loader.h"
+
 #include <QFile>
 #include <QVector>
 #include <QDebug>
 
-#include "loader.h"
+#include "addr.h"
 #include "tracedata.h"
 #include "utils.h"
 #include "fixcost.h"

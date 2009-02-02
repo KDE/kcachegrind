@@ -18,7 +18,7 @@
 
 #include "fixcost.h"
 #include "utils.h"
-
+#include "addr.h"
 
 // FixCost
 

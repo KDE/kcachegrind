@@ -1,10 +1,14 @@
 set(core_SRCS
+   context.cpp
+   cost.cpp
+   eventtype.cpp
+   subcost.cpp
+   addr.cpp
+   tracedata.cpp
+   loader.cpp
    cachegrindloader.cpp
    fixcost.cpp
-   loader.cpp
    pool.cpp
-   subcost.cpp
-   tracedata.cpp
    coverage.cpp
    stackbrowser.cpp
    utils.cpp
