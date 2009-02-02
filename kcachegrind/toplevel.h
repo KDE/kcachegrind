@@ -72,8 +72,8 @@ public:
   void createDocks();
 
   ProfileContext::Type groupType() { return _groupType; }
-  TraceEventType* eventType() { return _eventType; }
-  TraceEventType* eventType2() { return _eventType2; }
+  EventType* eventType() { return _eventType; }
+  EventType* eventType2() { return _eventType2; }
   TracePartList activeParts() { return _activeParts; }
   TracePartList hiddenParts() { return _hiddenParts; }
 
@@ -155,8 +155,8 @@ public slots:
   void upAboutToShow();
   void upTriggered(QAction*);
 
-  bool setEventType(TraceEventType*);
-  bool setEventType2(TraceEventType*);
+  bool setEventType(EventType*);
+  bool setEventType2(EventType*);
   bool setEventType(QString);
   bool setEventType2(QString);
   bool setEventType(QAction*);
@@ -175,8 +175,8 @@ public slots:
    * So they can be called from event handlers that
    * are not allowed to delete list entries.
    */
-  void setEventTypeDelayed(TraceEventType*);
-  void setEventType2Delayed(TraceEventType*);
+  void setEventTypeDelayed(EventType*);
+  void setEventType2Delayed(EventType*);
   void setGroupTypeDelayed(ProfileContext::Type);
   void setGroupDelayed(TraceCostItem*);
   void setTraceItemDelayed(ProfileCost*);
@@ -250,8 +250,8 @@ private:
   // trace data shown in this window
   TraceData* _data;
   // subcost types used for visualization
-  TraceEventType* _eventType;
-  TraceEventType* _eventType2;
+  EventType* _eventType;
+  EventType* _eventType2;
   // grouping of function list
   ProfileContext::Type _groupType;
   // selected group
@@ -264,8 +264,8 @@ private:
   int _layoutCurrent, _layoutCount;
 
   // for delayed slots
-  TraceEventType* _eventTypeDelayed;
-  TraceEventType* _eventType2Delayed;
+  EventType* _eventTypeDelayed;
+  EventType* _eventType2Delayed;
   ProfileContext::Type _groupTypeDelayed;
   TraceCostItem* _groupDelayed;
   ProfileCost* _traceItemDelayed;

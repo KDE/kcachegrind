@@ -91,7 +91,7 @@ void EventTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
 {
   Q3PopupMenu popup;
 
-  TraceEventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
+  EventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
 
   if (ct)
     popup.insertItem(tr("Set Secondary Event Type"), 99);
@@ -122,8 +122,8 @@ void EventTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
   else if (r == 96) {
 
     // search for a previous type 
-    TraceEventType* prev = 0, *ct = 0;
-    TraceEventTypeMapping* m = _data->mapping();
+    EventType* prev = 0, *ct = 0;
+    EventTypeSet* m = _data->eventTypes();
     for (int i=0;i<m->realCount();i++) {
 	ct = m->realType(i);
 	if (ct) prev = ct;
@@ -134,7 +134,7 @@ void EventTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
 	if (ct) prev = ct;
     }
 
-    if (_data->mapping()->remove(ct)) {
+    if (_data->eventTypes()->remove(ct)) {
       // select previous cost type
       selectedEventType(prev);
       if (_eventType2 == ct)
@@ -145,29 +145,29 @@ void EventTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
   else if (r == 97) {
     int i = 1;
     while(1) {
-	if (!TraceEventType::knownDerivedType(tr("New%1").arg(i)))
+	if (!EventType::knownDerivedType(tr("New%1").arg(i)))
 	break;
       i++;
     }
-    // add same new cost type to this mapping and to known types
+    // add same new cost type to this set and to known types
     QString shortName = tr("New%1").arg(i);
     QString longName  = tr("New Event Type %1").arg(i);
-    TraceEventType::add(new TraceEventType(shortName, longName, "0"));
-    _data->mapping()->add(new TraceEventType(shortName, longName, "0"));
+    EventType::add(new EventType(shortName, longName, "0"));
+    _data->eventTypes()->add(new EventType(shortName, longName, "0"));
     refresh();
   }
 }
 
 void EventTypeView::selectedSlot(Q3ListViewItem * i)
 {
-    TraceEventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
+    EventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
     if (ct)
 	selectedEventType(ct);
 }
 
 void EventTypeView::activatedSlot(Q3ListViewItem * i)
 {
-  TraceEventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
+  EventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
   if (ct)
       selectedEventType2(ct);
 }
@@ -248,12 +248,12 @@ void EventTypeView::refresh()
     }
     TraceCostItem* c = (TraceCostItem*) _activeItem;
 
-    TraceEventType* ct =0 ;
+    EventType* ct =0 ;
     Q3ListViewItem* item = 0;
     QString sumStr, pureStr;
     Q3ListViewItem* costItem=0;
 
-    TraceEventTypeMapping* m = _data->mapping();
+    EventTypeSet* m = _data->eventTypes();
     for (int i=m->derivedCount()-1;i>=0;i--) {
 	ct = m->derivedType(i);
 	if (!ct) continue;
@@ -277,14 +277,14 @@ void EventTypeView::refresh()
 
 void EventTypeView::renamedSlot(Q3ListViewItem* item,int c,const QString& t)
 {
-  TraceEventType* ct = item ? ((EventTypeItem*) item)->eventType() : 0;
+  EventType* ct = item ? ((EventTypeItem*) item)->eventType() : 0;
   if (!ct || ct->isReal()) return;
 
   // search for matching known Type
-  int knownCount = TraceEventType::knownTypeCount();
-  TraceEventType* known = 0;
+  int knownCount = EventType::knownTypeCount();
+  EventType* known = 0;
   for (int i=0; i<knownCount; i++) {
-      known = TraceEventType::knownType(i);
+      known = EventType::knownType(i);
       if (known->name() == ct->name()) break;
   }
 

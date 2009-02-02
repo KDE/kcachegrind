@@ -30,17 +30,17 @@ class EventTypeItem: public Q3ListViewItem
 {
 public:
   EventTypeItem(Q3ListView* parent, TraceCostItem* costItem,
-               TraceEventType* ct, ProfileContext::Type gt);
+               EventType* ct, ProfileContext::Type gt);
 
   int compare(Q3ListViewItem * i, int col, bool ascending ) const;
   void setGroupType(ProfileContext::Type);
   TraceCostItem* costItem() { return _costItem; }
-  TraceEventType* eventType() { return _eventType; }
+  EventType* eventType() { return _eventType; }
   void update();
 
 private:
   SubCost _sum, _pure;
-  TraceEventType* _eventType;
+  EventType* _eventType;
   TraceCostItem* _costItem;
   ProfileContext::Type _groupType;
 };

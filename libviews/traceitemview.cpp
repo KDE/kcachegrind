@@ -105,7 +105,7 @@ TraceFunction* TraceItemView::activeFunction()
 }
 
 bool TraceItemView::set(int changeType, TraceData* d,
-			TraceEventType* t1, TraceEventType* t2,
+			EventType* t1, EventType* t2,
 			ProfileContext::Type g, const TracePartList& l,
                         ProfileCost* a, ProfileCost* s)
 {
@@ -305,7 +305,7 @@ void TraceItemView::activated(TraceItemView* /*sender*/, ProfileCost* i)
       if (_topLevel) _topLevel->setTraceItemDelayed(i);
 }
 
-void TraceItemView::selectedEventType(TraceItemView*, TraceEventType* t)
+void TraceItemView::selectedEventType(TraceItemView*, EventType* t)
 {
   if (_parentView)
       _parentView->selectedEventType(this, t);
@@ -313,7 +313,7 @@ void TraceItemView::selectedEventType(TraceItemView*, TraceEventType* t)
       if (_topLevel) _topLevel->setEventTypeDelayed(t);
 }
 
-void TraceItemView::selectedEventType2(TraceItemView*, TraceEventType* t)
+void TraceItemView::selectedEventType2(TraceItemView*, EventType* t)
 {
   if (_parentView)
       _parentView->selectedEventType2(this, t);
@@ -371,7 +371,7 @@ void TraceItemView::activated(ProfileCost* i)
       if (_topLevel) _topLevel->setTraceItemDelayed(i);
 }
 
-void TraceItemView::selectedEventType(TraceEventType* t)
+void TraceItemView::selectedEventType(EventType* t)
 {
   if (_parentView)
       _parentView->selectedEventType(this, t);
@@ -379,7 +379,7 @@ void TraceItemView::selectedEventType(TraceEventType* t)
       if (_topLevel) _topLevel->setEventTypeDelayed(t);
 }
 
-void TraceItemView::selectedEventType2(TraceEventType* t)
+void TraceItemView::selectedEventType2(EventType* t)
 {
   if (_parentView)
       _parentView->selectedEventType2(this, t);

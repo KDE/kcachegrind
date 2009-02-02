@@ -28,7 +28,7 @@ FixCost::FixCost(TracePart* part, FixPool* pool,
                  TracePartFunction* partFunction,
 		 FixString& s)
 {
-    int maxCount = part->fixSubMapping()->count();
+    int maxCount = part->eventTypeMapping()->count();
 
     _part = part;
     _functionSource = functionSource;
@@ -57,7 +57,7 @@ void* FixCost::operator new(size_t size, FixPool* pool)
 
 void FixCost::addTo(ProfileCostArray* c)
 {
-    TraceSubMapping* sm = _part->fixSubMapping();
+    EventTypeMapping* sm = _part->eventTypeMapping();
 
     int i, realIndex;
 
@@ -81,7 +81,7 @@ FixCallCost::FixCallCost(TracePart* part, FixPool* pool,
                 addr.toString().ascii(), line,
 		callCount.pretty().ascii());
 
-  int maxCount = part->fixSubMapping()->count();
+  int maxCount = part->eventTypeMapping()->count();
 
     _part = part;
     _functionSource = functionSource;
@@ -112,7 +112,7 @@ void* FixCallCost::operator new(size_t size, FixPool* pool)
 
 void FixCallCost::addTo(TraceCallCost* c)
 {
-    TraceSubMapping* sm = _part->fixSubMapping();
+    EventTypeMapping* sm = _part->eventTypeMapping();
 
     int i, realIndex;
 
@@ -129,7 +129,7 @@ void FixCallCost::addTo(TraceCallCost* c)
 
 void FixCallCost::setMax(ProfileCostArray* c)
 {
-    TraceSubMapping* sm = _part->fixSubMapping();
+    EventTypeMapping* sm = _part->eventTypeMapping();
 
     int i, realIndex;
 

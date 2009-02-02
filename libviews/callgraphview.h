@@ -298,12 +298,12 @@ class GraphExporter : public StorableGraphOptions
 {
 public:
 	GraphExporter();
-	GraphExporter(TraceData*, TraceFunction*, TraceEventType*,
+	GraphExporter(TraceData*, TraceFunction*, EventType*,
 	              ProfileContext::Type,
 		      QString filename = QString());
 	virtual ~GraphExporter();
 
-	void reset(TraceData*, ProfileCost*, TraceEventType*,
+	void reset(TraceData*, ProfileCost*, EventType*,
 		   ProfileContext::Type,
 		   QString filename = QString());
 
@@ -353,7 +353,7 @@ private:
 
 	QString _dotName;
 	ProfileCost* _item;
-	TraceEventType* _eventType;
+	EventType* _eventType;
 	ProfileContext::Type _groupType;
 	QTemporaryFile* _tmpFile;
 	double _realFuncLimit, _realCallLimit;

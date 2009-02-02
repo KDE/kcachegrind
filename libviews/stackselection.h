@@ -46,8 +46,8 @@ public:
   TraceData* data() const { return _data; }
   void setData(TraceData*);
   StackBrowser* browser() const { return _browser; }
-  TraceEventType* eventType() { return _eventType; }
-  TraceEventType* eventType2() { return _eventType2; }
+  EventType* eventType() { return _eventType; }
+  EventType* eventType2() { return _eventType2; }
   ProfileContext::Type groupType() { return _groupType; }
 
 signals:
@@ -55,8 +55,8 @@ signals:
 
 public slots:
   void setFunction(TraceFunction*);
-  void setEventType(TraceEventType*);
-  void setEventType2(TraceEventType*);
+  void setEventType(EventType*);
+  void setEventType2(EventType*);
   void setGroupType(ProfileContext::Type);
 
   void stackSelected(Q3ListViewItem*);
@@ -74,8 +74,8 @@ private:
   StackBrowser* _browser;
   Q3ListViewItem* _item;
   TraceFunction* _function;
-  TraceEventType* _eventType;
-  TraceEventType* _eventType2;
+  EventType* _eventType;
+  EventType* _eventType2;
   ProfileContext::Type _groupType;
 
   Q3ListView* _stackList;

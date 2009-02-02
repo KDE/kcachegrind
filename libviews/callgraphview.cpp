@@ -536,7 +536,7 @@ GraphExporter::GraphExporter()
 }
 
 GraphExporter::GraphExporter(TraceData* d, TraceFunction* f,
-                             TraceEventType* ct, ProfileContext::Type gt,
+                             EventType* ct, ProfileContext::Type gt,
                              QString filename)
 {
 	_go = this;
@@ -556,7 +556,7 @@ GraphExporter::~GraphExporter()
 }
 
 
-void GraphExporter::reset(TraceData*, ProfileCost* i, TraceEventType* ct,
+void GraphExporter::reset(TraceData*, ProfileCost* i, EventType* ct,
                           ProfileContext::Type gt, QString filename)
 {
 	_graphCreated = false;

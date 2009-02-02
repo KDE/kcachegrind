@@ -61,7 +61,7 @@ void PartAreaWidget::changeHidden(const TracePartList& list)
 }
 
 
-void PartAreaWidget::setEventType(TraceEventType* ct)
+void PartAreaWidget::setEventType(EventType* ct)
 {
   _eventType = ct;
 
@@ -266,7 +266,7 @@ QString PartItem::text(int textNo) const
   if (textNo != 1)
     return QString();
 
-  TraceEventType* ct;
+  EventType* ct;
   PartAreaWidget* w = (PartAreaWidget*)widget();
   SubCost v;
 
@@ -289,7 +289,7 @@ QPixmap PartItem::pixmap(int i) const
 
     // Cost pixmap
 
-    TraceEventType* ct = ((PartAreaWidget*)widget())->eventType();
+    EventType* ct = ((PartAreaWidget*)widget())->eventType();
     return costPixmap( ct, _p, (double) (_p->data()->totals()->subCost(ct)), false );
 }
 
@@ -297,7 +297,7 @@ QPixmap PartItem::pixmap(int i) const
 double PartItem::value() const
 {
   PartAreaWidget* w = (PartAreaWidget*)widget();
-  TraceEventType* ct = w->eventType();
+  EventType* ct = w->eventType();
   if ((w->visualization() == PartAreaWidget::Inclusive) &&
       w->zoomFunction()) {
 
@@ -429,7 +429,7 @@ QString SubPartItem::text(int textNo) const
   if (textNo != 1)
     return QString();
 
-  TraceEventType* ct;
+  EventType* ct;
   PartAreaWidget* w = (PartAreaWidget*)widget();
   SubCost v;
 
@@ -456,7 +456,7 @@ QPixmap SubPartItem::pixmap(int i) const
     // Cost pixmap
 
     PartAreaWidget* w = (PartAreaWidget*)widget();
-    TraceEventType* ct = w->eventType();
+    EventType* ct = w->eventType();
     ProfileCostArray* t = GlobalConfig::showExpanded() ?
 	_partCostItem->part() : _partCostItem->part()->data()->totals();
     ProfileCostArray* c;
@@ -470,7 +470,7 @@ QPixmap SubPartItem::pixmap(int i) const
 
 double SubPartItem::value() const
 {
-  TraceEventType* ct;
+  EventType* ct;
   PartAreaWidget* w = (PartAreaWidget*)widget();
 
   ct = w->eventType();

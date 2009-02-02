@@ -72,7 +72,7 @@ private:
   QString _filename;
   int _lineNo;
 
-  TraceSubMapping* subMapping;
+  EventTypeMapping* mapping;
   TraceData* _data;
   TracePart* _part;
 
@@ -686,7 +686,7 @@ void CachegrindLoader::clearPosition()
   jumpsFollowed = 0;
   jumpsExecuted = 0;
 
-  subMapping = 0;
+  mapping = 0;
 }
 
 
@@ -952,12 +952,12 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 
 	case 'e':
 
-	    // events:
-	    if (line.stripPrefix("vents:")) {
-		subMapping = _data->mapping()->subMapping(line);
-                part->setFixSubMapping(subMapping);
-		continue;
-	    }
+		// events:
+		if (line.stripPrefix("vents:")) {
+			mapping = _data->eventTypes()->createMapping(line);
+			part->setEventMapping(mapping);
+			continue;
+		}
 
 	    // event:<name>[=<formula>][:<long name>]
 	    if (line.stripPrefix("vent:")) {
@@ -976,7 +976,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 
 	      // add to known cost types
 	      if (line.isEmpty()) line = e;
-	      TraceEventType::add(new TraceEventType(e,line,f));
+	      EventType::add(new EventType(e,line,f));
 	      continue;
 	    }
 	    break;
@@ -1017,12 +1017,12 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 
 	    // summary:
 	    if (line.stripPrefix("ummary:")) {
-		if (!subMapping) {
+		if (!mapping) {
 			error(QString("No event line found. Skipping file"));
 			return false;
 		}
 
-		part->totals()->set(subMapping, line);
+		part->totals()->set(mapping, line);
 		continue;
 	    }
 
@@ -1048,7 +1048,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 	continue;
       }
 
-      if (!subMapping) {
+      if (!mapping) {
         error(QString("No event line found. Skipping file"));
         return false;
       }
@@ -1128,17 +1128,17 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 	      int l = line.len();
 	      const char* s = line.ascii();
 
-	      partInstr->addCost(subMapping, line);
+	      partInstr->addCost(mapping, line);
 	      line.set(s,l);
 	  }
 	  else
-	      partInstr->addCost(subMapping, line);
+	      partInstr->addCost(mapping, line);
       }
 
       if (hasLineInfo) {
 	  TracePartLine* partLine;
 	  partLine = currentLine->partLine(part, currentPartFunction);
-	  partLine->addCost(subMapping, line);
+	  partLine->addCost(mapping, line);
       }
 #endif
 
@@ -1177,11 +1177,11 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 	      int l = line.len();
 	      const char* s = line.ascii();
 
-	      partInstrCall->addCost(subMapping, line);
+	      partInstrCall->addCost(mapping, line);
 	      line.set(s,l);
 	  }
 	  else
-	      partInstrCall->addCost(subMapping, line);
+	      partInstrCall->addCost(mapping, line);
 
 	  // update maximum of call cost
 	  _data->callMax()->maxCost(partInstrCall);
@@ -1195,7 +1195,7 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 	  partLineCall = lineCall->partLineCall(part, partCalling);
 
 	  partLineCall->addCallCount(currentCallCount);
-	  partLineCall->addCost(subMapping, line);
+	  partLineCall->addCost(mapping, line);
 
 	  // update maximum of call cost
 	  _data->callMax()->maxCost(partLineCall);

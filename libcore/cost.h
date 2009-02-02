@@ -25,9 +25,9 @@
 #include "context.h"
 #include "utils.h"
 
-class TraceEventType;
-class TraceEventTypeMapping;
-class TraceSubMapping;
+class EventType;
+class EventTypeSet;
+class EventTypeMapping;
 class TracePart;
 class TraceData;
 
@@ -57,7 +57,7 @@ public:
   /**
    * Returns text of all cost metrics
    */
-  virtual QString costString(TraceEventTypeMapping*);
+  virtual QString costString(EventTypeSet*);
 
   /**
    * Returns type name + dynamic name
@@ -123,7 +123,7 @@ public:
  * An array of basic cost metrics for a trace item.
  *
  * The semantic of specific indexes is stored in the
- * TraceEventTypeMapping of the TraceData object holding this ProfileCostArray.
+ * EventTypeSet of the TraceData object holding this ProfileCostArray.
  */
 class ProfileCostArray: public ProfileCost
 {
@@ -140,22 +140,22 @@ public:
   ProfileCostArray();
   virtual ~ProfileCostArray();
 
-  virtual QString costString(TraceEventTypeMapping*);
+  virtual QString costString(EventTypeSet*);
 
   virtual void clear();
 
-  // set the cost according to a submapping and a list of ASCII numbers
-  void set(TraceSubMapping*, const char*);
-  void set(TraceSubMapping*, FixString&);
-  // add a cost according to a submapping and a list of ASCII numbers
-  void addCost(TraceSubMapping*, const char*);
-  void addCost(TraceSubMapping*, FixString&);
+  // set costs according to the mapping order of event types
+  void set(EventTypeMapping*, const char*);
+  void set(EventTypeMapping*, FixString&);
+  // add costs according to the mapping order of event types
+  void addCost(EventTypeMapping*, const char*);
+  void addCost(EventTypeMapping*, FixString&);
   // add the cost of another item
   void addCost(ProfileCostArray* item);
   void addCost(int index, SubCost value);
 
   // maximal cost
-  void maxCost(TraceSubMapping*, FixString&);
+  void maxCost(EventTypeMapping*, FixString&);
   void maxCost(ProfileCostArray* item);
   void maxCost(int index, SubCost value);
   ProfileCostArray diff(ProfileCostArray* item);
@@ -165,7 +165,7 @@ public:
   /** Returns a sub cost. This automatically triggers
    * a call to update() if needed.
    */
-  SubCost subCost(TraceEventType*);
+  SubCost subCost(EventType*);
 
   /**
    * Same as above, but only for real types
@@ -175,7 +175,7 @@ public:
   /** Returns a cost attribute converted to a string
    * (with space after every 3 digits)
    */
-  QString prettySubCost(TraceEventType*);
+  QString prettySubCost(EventType*);
 
  protected:
   virtual void update();
@@ -185,7 +185,7 @@ public:
 
   // cache last virtual subcost for faster access
   SubCost _cachedCost;
-  TraceEventType* _cachedType;
+  EventType* _cachedType;
 };
 
 

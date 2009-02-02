@@ -83,8 +83,8 @@ public:
   virtual void setData(TraceData* d);
 
   // change from parent, call updateView() to update lazily (only if visible)
-  void setEventType(TraceEventType* t) { _newEventType = t; }
-  void setEventType2(TraceEventType* t) { _newEventType2 = t; }
+  void setEventType(EventType* t) { _newEventType = t; }
+  void setEventType2(EventType* t) { _newEventType2 = t; }
   void set(ProfileContext::Type g) { _newGroupType = g; }
   void set(const TracePartList& l) { _newPartList = l; }
   // returns false if nothing can be shown for this trace item
@@ -92,7 +92,7 @@ public:
   void select(ProfileCost* i);
   void notifyChange(int changeType) { _status |= changeType; }
   // all in one
-  bool set(int, TraceData*, TraceEventType*, TraceEventType*,
+  bool set(int, TraceData*, EventType*, EventType*,
 	   ProfileContext::Type, const TracePartList&,
 	   ProfileCost*, ProfileCost*);
 
@@ -106,8 +106,8 @@ public:
   virtual void selected(TraceItemView* sender, ProfileCost*);
   virtual void partsSelected(TraceItemView* sender, const TracePartList&);
   virtual void directionActivated(TraceItemView* sender, Direction);
-  virtual void selectedEventType(TraceItemView* sender, TraceEventType*);
-  virtual void selectedEventType2(TraceItemView* sender, TraceEventType*);
+  virtual void selectedEventType(TraceItemView* sender, EventType*);
+  virtual void selectedEventType2(TraceItemView* sender, EventType*);
   virtual void activated(TraceItemView* sender, ProfileCost*);
   virtual void selectedGroupType(TraceItemView* sender, ProfileContext::Type);
 
@@ -116,8 +116,8 @@ public:
   TraceData* data() const { return _newData; }
   ProfileCost* activeItem() const { return _newActiveItem; }
   ProfileCost* selectedItem() const { return _newSelectedItem; }
-  TraceEventType* eventType() const { return _newEventType; }
-  TraceEventType* eventType2() const { return _newEventType2; }
+  EventType* eventType() const { return _newEventType; }
+  EventType* eventType2() const { return _newEventType2; }
   ProfileContext::Type groupType() const { return _newGroupType; }
   const TracePartList& partList() const { return _newPartList; }
 
@@ -158,8 +158,8 @@ protected:
   void selected(ProfileCost*);
   void partsSelected(const TracePartList&);
   void activated(ProfileCost*);
-  void selectedEventType(TraceEventType*);
-  void selectedEventType2(TraceEventType*);
+  void selectedEventType(EventType*);
+  void selectedEventType2(EventType*);
   void selectedGroupType(ProfileContext::Type);
   void directionActivated(TraceItemView::Direction);
 
@@ -177,14 +177,14 @@ protected:
   TraceData* _data;
   TracePartList _partList;
   ProfileCost *_activeItem, *_selectedItem;
-  TraceEventType *_eventType, *_eventType2;
+  EventType *_eventType, *_eventType2;
   ProfileContext::Type _groupType;
 
 private:
   TraceData* _newData;
   TracePartList _newPartList;
   ProfileCost *_newActiveItem, *_newSelectedItem;
-  TraceEventType *_newEventType, *_newEventType2;
+  EventType *_newEventType, *_newEventType2;
   ProfileContext::Type _newGroupType;
 
   QString _title;

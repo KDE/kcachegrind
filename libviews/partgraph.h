@@ -39,14 +39,14 @@ public:
   PartAreaWidget(QWidget* parent=0);
 
   void setData(TraceData* d);
-  void setEventType(TraceEventType* ct);
+  void setEventType(EventType* ct);
   void setGroupType(ProfileContext::Type gt);
   void setVisualization(VisualizationMode);
   void setZoomFunction(bool zoomFunction);
   void setCallLevels(int callLevels);
   void setFunction(TraceFunction* f);
 
-  TraceEventType* eventType() const { return _eventType; }
+  EventType* eventType() const { return _eventType; }
   ProfileContext::Type groupType() const { return _groupType; }
   TraceFunction* function() const { return _function; }
   VisualizationMode visualization() const { return _visualization; }
@@ -63,7 +63,7 @@ private:
   void refreshParts();
 
   TraceData* _data;
-  TraceEventType* _eventType;
+  EventType* _eventType;
   ProfileContext::Type _groupType;
   TraceFunction* _function;
   VisualizationMode _visualization;

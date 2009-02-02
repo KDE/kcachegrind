@@ -52,7 +52,7 @@ int main(int argc, char** argv)
     foreach(file, list)
 	d->load(file);
 
-    TraceEventTypeMapping* m = d->mapping();
+    EventTypeSet* m = d->eventTypes();
     if (m->realCount() == 0) {
 	qDebug("Error: No event types found.");
 	return 1;
@@ -61,7 +61,7 @@ int main(int argc, char** argv)
     qDebug("\nTotals for event types:");
 
     QString p;
-    TraceEventType* et;
+    EventType* et;
     for (int i=0;i<m->realCount();i++) {
 	et = m->realType(i);
 	p = d->subCost(et).pretty();

@@ -190,10 +190,10 @@ void GlobalConfig::saveOptions()
 
     // event types
     ConfigGroup* etConfig = ConfigStorage::group("EventTypes");
-    int etCount = TraceEventType::knownTypeCount();
+    int etCount = EventType::knownTypeCount();
     etConfig->setValue( "Count", etCount);
     for (int i=0; i<etCount; i++) {
-	TraceEventType* t = TraceEventType::knownType(i);
+	EventType* t = EventType::knownType(i);
 	etConfig->setValue( QString("Name%1").arg(i+1), t->name());
 	etConfig->setValue( QString("Longname%1").arg(i+1),
 			    t->longName(),
@@ -288,7 +288,7 @@ void GlobalConfig::readOptions()
     delete generalConfig;
 
     // event types
-    if (TraceEventType::knownTypeCount() >0) return; // already read
+    if (EventType::knownTypeCount() >0) return; // already read
     ConfigGroup* etConfig = ConfigStorage::group("EventTypes");
     int etCount = etConfig->value("Count", 0).toInt();
 
@@ -307,7 +307,7 @@ void GlobalConfig::readOptions()
 				    QString()).toString();
 	if (f.isEmpty()) f = knownFormula(n);
 
-	TraceEventType::add(new TraceEventType(n, l, f));
+	EventType::add(new EventType(n, l, f));
     }
     delete etConfig;
 }
@@ -315,14 +315,14 @@ void GlobalConfig::readOptions()
 void GlobalConfig::addDefaultTypes()
 {
     QString longName, formula;
-    TraceEventType* ct;
+    EventType* ct;
     QStringList l = knownTypes();
     for ( QStringList::const_iterator it = l.begin();
 	  it != l.end(); ++it ) {
         longName = knownLongName(*it);
         formula  = knownFormula(*it);
-        ct = new TraceEventType(*it, longName, formula);
-        TraceEventType::add(ct);
+        ct = new EventType(*it, longName, formula);
+        EventType::add(ct);
     }
 }
 
@@ -338,7 +338,7 @@ QColor GlobalConfig::groupColor(ProfileCost* cost)
   return color(n)->color;
 }
 
-QColor GlobalConfig::eventTypeColor(TraceEventType* t)
+QColor GlobalConfig::eventTypeColor(EventType* t)
 {
    QString n;
 

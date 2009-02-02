@@ -610,7 +610,7 @@ QString CallMapBaseItem::text(int textNo) const
   if (textNo == 3) return _f->calledCount().pretty();
   if (textNo != 1) return QString();
 
-  TraceEventType* ct = ((CallMapView*)widget())->eventType();
+  EventType* ct = ((CallMapView*)widget())->eventType();
   ProfileCostArray* t      = ((CallMapView*)widget())->totalCost();
 
   if (GlobalConfig::showPercentage()) {
@@ -630,7 +630,7 @@ QPixmap CallMapBaseItem::pixmap(int i) const
 {
     if ((i != 1) || !_f) return QPixmap();
 
-    TraceEventType* ct = ((CallMapView*)widget())->eventType();
+    EventType* ct = ((CallMapView*)widget())->eventType();
     ProfileCostArray* t      = ((CallMapView*)widget())->totalCost();
 
     // colored level meter with frame
@@ -642,7 +642,7 @@ double CallMapBaseItem::value() const
 {
   if (!_f) return 0.0;
 
-  TraceEventType* ct;
+  EventType* ct;
   ct = ((CallMapView*)widget())->eventType();
   return (double) _f->inclusive()->subCost(ct);
 }
@@ -750,7 +750,7 @@ QString CallMapCallingItem::text(int textNo) const
   if (textNo == 3) return SubCost(_factor * _c->callCount()).pretty();
   if (textNo != 1) return QString();
 
-  TraceEventType* ct;
+  EventType* ct;
   ct = ((CallMapView*)widget())->eventType();
 
   SubCost val = SubCost(_factor * _c->subCost(ct));
@@ -769,7 +769,7 @@ QPixmap CallMapCallingItem::pixmap(int i) const
     if (i != 1) return QPixmap();
 
     // Cost pixmap
-    TraceEventType* ct = ((CallMapView*)widget())->eventType();
+    EventType* ct = ((CallMapView*)widget())->eventType();
     ProfileCostArray* t      = ((CallMapView*)widget())->totalCost();
 
     // colored level meter with frame
@@ -779,7 +779,7 @@ QPixmap CallMapCallingItem::pixmap(int i) const
 
 double CallMapCallingItem::value() const
 {
-  TraceEventType* ct;
+  EventType* ct;
   ct = ((CallMapView*)widget())->eventType();
   return _factor * _c->subCost(ct);
 }
@@ -800,7 +800,7 @@ TreeMapItemList* CallMapCallingItem::children()
   if (!initialized()) {
     if (0) qDebug("Create Calling subitems (%s)", path(0).join("/").ascii());
 
-    TraceEventType* ct;
+    EventType* ct;
     ct = ((CallMapView*)widget())->eventType();
 
     // same as sum()
@@ -867,7 +867,7 @@ QString CallMapCallerItem::text(int textNo) const
   if (textNo == 3) return SubCost(_factor * _c->callCount()).pretty();
   if (textNo != 1) return QString();
 
-  TraceEventType* ct;
+  EventType* ct;
   ct = ((CallMapView*)widget())->eventType();
 
   SubCost val = SubCost(_factor * _c->subCost(ct));
@@ -886,7 +886,7 @@ QPixmap CallMapCallerItem::pixmap(int i) const
     if (i != 1) return QPixmap();
 
     // Cost pixmap
-    TraceEventType* ct = ((CallMapView*)widget())->eventType();
+    EventType* ct = ((CallMapView*)widget())->eventType();
     ProfileCostArray* t      = ((CallMapView*)widget())->totalCost();
 
     // colored level meter with frame
@@ -896,7 +896,7 @@ QPixmap CallMapCallerItem::pixmap(int i) const
 
 double CallMapCallerItem::value() const
 {
-  TraceEventType* ct;
+  EventType* ct;
   ct = ((CallMapView*)widget())->eventType();
   return (double) _c->subCost(ct);
 }
@@ -912,7 +912,7 @@ TreeMapItemList* CallMapCallerItem::children()
   if (!initialized()) {
     //qDebug("Create Caller subitems (%s)", name().ascii());
 
-    TraceEventType* ct;
+    EventType* ct;
     ct = ((CallMapView*)widget())->eventType();
 
     SubCost s = _c->caller()->inclusive()->subCost(ct);

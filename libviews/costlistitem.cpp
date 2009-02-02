@@ -33,7 +33,7 @@
 
 
 CostListItem::CostListItem(Q3ListView* parent, TraceCostItem* costItem,
-                           TraceEventType* ct, int size)
+                           EventType* ct, int size)
   :Q3ListViewItem(parent)
 {
   _groupSize = size;
@@ -49,7 +49,7 @@ CostListItem::CostListItem(Q3ListView* parent, TraceCostItem* costItem,
 }
 
 CostListItem::CostListItem(Q3ListView* parent, int skipped,
-			   TraceCostItem* costItem, TraceEventType* ct)
+			   TraceCostItem* costItem, EventType* ct)
   :Q3ListViewItem(parent)
 {
   _skipped = skipped;
@@ -59,7 +59,7 @@ CostListItem::CostListItem(Q3ListView* parent, int skipped,
   setText(1, QObject::tr("(%n item(s) skipped)", "", _skipped));
 }
 
-void CostListItem::setCostType(TraceEventType* ct)
+void CostListItem::setCostType(EventType* ct)
 {
   _costType = ct;
   update();

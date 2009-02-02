@@ -67,7 +67,7 @@ class SubCost
 };
 
 class ProfileCostArray;
-class TraceEventType;
+class EventType;
 typedef Q3PtrList<ProfileCostArray> TraceCostList;
 
 /**
@@ -92,7 +92,7 @@ class HighestCostList
  private:
     TraceCostList _list;
     int _maxSize, _count;
-    TraceEventType* _costType;
+    EventType* _costType;
     QVector<ProfileCostArray*> _item;
     QVector<SubCost> _cost;
 };

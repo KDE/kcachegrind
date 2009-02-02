@@ -24,17 +24,17 @@
 #include "globalconfig.h"
 
 //---------------------------------------------------
-// TraceEventType
+// EventType
 
-QList<TraceEventType*>* TraceEventType::_knownTypes = 0;
+QList<EventType*>* EventType::_knownTypes = 0;
 
-TraceEventType::TraceEventType(const QString& name, const QString& longName,
+EventType::EventType(const QString& name, const QString& longName,
                                const QString& formula)
 {
   _name = name;
   _longName = longName;
   _formula = formula;
-  _mapping = 0;
+  _set = 0;
   _realIndex = ProfileCostArray::InvalidIndex;
   _parsed = false;
   _inParsing = false;
@@ -43,22 +43,22 @@ TraceEventType::TraceEventType(const QString& name, const QString& longName,
     _coefficient[i] = 0;
 }
 
-void TraceEventType::setFormula(const QString& formula)
+void EventType::setFormula(const QString& formula)
 {
   _formula = formula;
   _realIndex = ProfileCostArray::InvalidIndex;
   _parsed = false;
 }
 
-void TraceEventType::setMapping(TraceEventTypeMapping* m)
+void EventType::setEventTypeSet(EventTypeSet* m)
 {
   _parsed = false;
-  _mapping = m;
+  _set = m;
 }
 
 // setting the index to ProfileCostArray::MaxRealIndex makes it a
 // real type with unspecified index
-void TraceEventType::setRealIndex(int i)
+void EventType::setRealIndex(int i)
 {
   if (i<0 || i>ProfileCostArray::MaxRealIndex)
     i=ProfileCostArray::InvalidIndex;
@@ -68,7 +68,7 @@ void TraceEventType::setRealIndex(int i)
 }
 
 // checks for existing types and sets coefficients
-bool TraceEventType::parseFormula()
+bool EventType::parseFormula()
 {
   if (_parsed) return true;
   if (_inParsing) {
@@ -76,8 +76,8 @@ bool TraceEventType::parseFormula()
     return false;
   }
 
-  if (!_mapping) {
-    qDebug("TraceEventType::parseFormula: No mapping set!");
+  if (!_set) {
+    qDebug("TraceEventType::parseFormula: Container of this event type unknown!");
     return false;
   }
 
@@ -90,7 +90,7 @@ bool TraceEventType::parseFormula()
 
   int factor, pos;
   QString costName;
-  TraceEventType* eventType;
+  EventType* eventType;
 
   pos = 0;
   while (1) {
@@ -103,7 +103,7 @@ bool TraceEventType::parseFormula()
     //       qPrintable(rx.cap(1)), qPrintable(rx.cap(2)), qPrintable(rx.cap(3)));
 
     costName = rx.cap(3);
-    eventType = _mapping->type(costName);
+    eventType = _set->type(costName);
     if (!eventType) {
 	// qDebug("Cost type '%s': In formula cost '%s' unknown.",
         //     qPrintable(_name), qPrintable(costName));
@@ -130,7 +130,7 @@ bool TraceEventType::parseFormula()
   return true;
 }
 
-QString TraceEventType::parsedFormula()
+QString EventType::parsedFormula()
 {
   QString res;
 
@@ -147,7 +147,7 @@ QString TraceEventType::parsedFormula()
     if (c<0) { res += "- "; c = -c; }
     res += QString::number(c);
 
-    TraceEventType* t = _mapping->type(i);
+    EventType* t = _set->type(i);
     if (!t) continue;
 
     if (!t->name().isEmpty())
@@ -157,7 +157,7 @@ QString TraceEventType::parsedFormula()
   return res;
 }
 
-SubCost TraceEventType::subCost(ProfileCostArray* c)
+SubCost EventType::subCost(ProfileCostArray* c)
 {
   if (_realIndex != ProfileCostArray::InvalidIndex)
     return c->subCost(_realIndex);
@@ -167,7 +167,7 @@ SubCost TraceEventType::subCost(ProfileCostArray* c)
   }
   SubCost res = 0;
 
-  int rc = _mapping->realCount();
+  int rc = _set->realCount();
   for (int i = 0;i<rc;i++)
     if (_coefficient[i] != 0)
       res += _coefficient[i] * c->subCost(i);
@@ -175,7 +175,7 @@ SubCost TraceEventType::subCost(ProfileCostArray* c)
   return res;
 }
 
-int TraceEventType::histCost(ProfileCostArray* c, double total, double* hist)
+int EventType::histCost(ProfileCostArray* c, double total, double* hist)
 {
   if (total == 0.0) return 0;
 
@@ -183,7 +183,7 @@ int TraceEventType::histCost(ProfileCostArray* c, double total, double* hist)
     if (!parseFormula()) return 0;
   }
 
-  int rc = _mapping->realCount();
+  int rc = _set->realCount();
   for (int i = 0;i<rc;i++) {
     if (_coefficient[i] != 0)
       hist[i] = _coefficient[i] * c->subCost(i) / total;
@@ -197,26 +197,26 @@ int TraceEventType::histCost(ProfileCostArray* c, double total, double* hist)
 
 
 
-TraceEventType* TraceEventType::knownRealType(const QString& n)
+EventType* EventType::knownRealType(const QString& n)
 {
   if (!_knownTypes) return 0;
 
-  foreach (TraceEventType* t, *_knownTypes)
+  foreach (EventType* t, *_knownTypes)
     if (t->isReal() && (t->name() == n)) {
-      TraceEventType* type = new TraceEventType(*t);
+      EventType* type = new EventType(*t);
       return type;
     }
 
   return 0;
 }
 
-TraceEventType* TraceEventType::knownDerivedType(const QString& n)
+EventType* EventType::knownDerivedType(const QString& n)
 {
   if (!_knownTypes) return 0;
 
-  foreach (TraceEventType* t, *_knownTypes)
+  foreach (EventType* t, *_knownTypes)
     if (!t->isReal() && (t->name() == n)) {
-      TraceEventType* type = new TraceEventType(*t);
+      EventType* type = new EventType(*t);
       return type;
     }
 
@@ -224,17 +224,17 @@ TraceEventType* TraceEventType::knownDerivedType(const QString& n)
 }
 
 // we take ownership
-void TraceEventType::add(TraceEventType* t)
+void EventType::add(EventType* t)
 {
   if (!t) return;
 
-  t->setMapping(0);
+  t->setEventTypeSet(0);
 
   if (!_knownTypes)
-    _knownTypes = new QList<TraceEventType*>;
+    _knownTypes = new QList<EventType*>;
 
   /* Already known? */
-  TraceEventType* kt = 0;
+  EventType* kt = 0;
   foreach (kt, *_knownTypes)
       if (kt->name() == t->name()) {
 	  // Overwrite old type
@@ -251,18 +251,18 @@ void TraceEventType::add(TraceEventType* t)
 }
 
 
-int TraceEventType::knownTypeCount()
+int EventType::knownTypeCount()
 {
   if (!_knownTypes) return 0;
 
   return _knownTypes->count();
 }
 
-bool TraceEventType::remove(const QString& n)
+bool EventType::remove(const QString& n)
 {
   if (!_knownTypes) return false;
 
-  foreach (TraceEventType* t, *_knownTypes)
+  foreach (EventType* t, *_knownTypes)
     if (!t->isReal() && (t->name() == n)) {
       _knownTypes->removeAll(t);
       delete t;
@@ -272,7 +272,7 @@ bool TraceEventType::remove(const QString& n)
   return false;
 }
 
-TraceEventType* TraceEventType::knownType(int i)
+EventType* EventType::knownType(int i)
 {
   if (!_knownTypes) return 0;
   if (i<0 || i>=(int)_knownTypes->count()) return 0;
@@ -280,17 +280,17 @@ TraceEventType* TraceEventType::knownType(int i)
   return _knownTypes->at(i);
 }
 
-QColor TraceEventType::color()
+QColor EventType::color()
 {
-  if (!_mapping) return QColor();
-  return _mapping->realColors()[_realIndex];
+  if (!_set) return QColor();
+  return _set->realColors()[_realIndex];
 }
 
 
 //---------------------------------------------------
-// TraceEventTypeMapping
+// EventTypeSet
 
-TraceEventTypeMapping::TraceEventTypeMapping()
+EventTypeSet::EventTypeSet()
 {
   _realCount = 0;
   _derivedCount = 0;
@@ -298,7 +298,7 @@ TraceEventTypeMapping::TraceEventTypeMapping()
   for (int i=0;i<ProfileCostArray::MaxRealIndex;i++) _derived[i] = 0;
 }
 
-TraceEventTypeMapping::~TraceEventTypeMapping()
+EventTypeSet::~EventTypeSet()
 {
   for (int i=0;i<ProfileCostArray::MaxRealIndex;i++)
     if (_real[i]) delete _real[i];
@@ -307,9 +307,9 @@ TraceEventTypeMapping::~TraceEventTypeMapping()
     if (_derived[i]) delete _derived[i];
 }
 
-TraceSubMapping* TraceEventTypeMapping::subMapping(const QString& types, bool create)
+EventTypeMapping* EventTypeSet::createMapping(const QString& types)
 {
-  // first check if there is enough space in the mapping
+  // first check if there is enough space in the set
   int newCount = 0;
   int pos = 0, pos2, len = types.length();
 
@@ -327,15 +327,15 @@ TraceSubMapping* TraceEventTypeMapping::subMapping(const QString& types, bool cr
     pos = pos2;
   }
 
-  if (!create && (newCount>0)) return 0;
+  if (newCount == 0) return 0;
 
   if (newCount+_realCount > ProfileCostArray::MaxRealIndex) {
-    qDebug() << "TraceCostMapping::subMapping: No space for "
-	      << newCount << " sub costs.";
+    qDebug() << "EventTypeSet::createMapping: No space for "
+	      << newCount << " cost entries.";
     return 0;
   }
 
-  TraceSubMapping* sm = new TraceSubMapping(this);
+  EventTypeMapping* mapping = new EventTypeMapping(this);
 
   pos = 0;
   while (1) {
@@ -346,21 +346,21 @@ TraceSubMapping* TraceEventTypeMapping::subMapping(const QString& types, bool cr
     while((pos2<len) && !types[pos2].isSpace()) pos2++;
     if (pos2 == pos) break;
 
-    sm->append(addReal(types.mid(pos,pos2-pos)));
+    mapping->append(addReal(types.mid(pos,pos2-pos)));
 
     pos = pos2;
   }
 
-  return sm;
+  return mapping;
 }
 
-int TraceEventTypeMapping::addReal(const QString& t)
+int EventTypeSet::addReal(const QString& t)
 {
   int index = realIndex(t);
   if (index>=0) return index;
 
-  TraceEventType* ct = TraceEventType::knownRealType(t);
-  if (!ct) ct = new TraceEventType(t, t);
+  EventType* ct = EventType::knownRealType(t);
+  if (!ct) ct = new EventType(t, t);
 
   // make it real
   ct->setRealIndex();
@@ -368,13 +368,13 @@ int TraceEventTypeMapping::addReal(const QString& t)
   return add(ct);
 }
 
-// add an event type to a mapping
+// add an event type to a set
 // this transfers ownership of the type!
-int TraceEventTypeMapping::add(TraceEventType* et)
+int EventTypeSet::add(EventType* et)
 {
   if (!et) return ProfileCostArray::InvalidIndex;
 
-  et->setMapping(this);
+  et->setEventTypeSet(this);
 
   if (et->isReal()) {
     if (_realCount >= ProfileCostArray::MaxRealIndex) {
@@ -401,10 +401,10 @@ int TraceEventTypeMapping::add(TraceEventType* et)
 }
 
 // we delete the type: t is invalid when returning true!
-bool TraceEventTypeMapping::remove(TraceEventType* t)
+bool EventTypeSet::remove(EventType* t)
 {
   if (!t) return false;
-  if (t->mapping() != this) return false;
+  if (t->set() != this) return false;
 
   // do not delete real types
   if (t->isReal()) return false;
@@ -417,7 +417,7 @@ bool TraceEventTypeMapping::remove(TraceEventType* t)
   if (i == _derivedCount) return false;
 
   // delete known type with same name
-  TraceEventType::remove(t->name());
+  EventType::remove(t->name());
 
   // delete this type
   _derived[i] = 0;
@@ -430,20 +430,20 @@ bool TraceEventTypeMapping::remove(TraceEventType* t)
 }
 
 
-TraceEventType* TraceEventTypeMapping::realType(int t)
+EventType* EventTypeSet::realType(int t)
 {
   if (t<0 || t>=_realCount) return 0;
   return _real[t];
 }
 
-TraceEventType* TraceEventTypeMapping::derivedType(int t)
+EventType* EventTypeSet::derivedType(int t)
 {
   if (t<0 || t>=_derivedCount) return 0;
   return _derived[t];
 }
 
 
-TraceEventType* TraceEventTypeMapping::type(int t)
+EventType* EventTypeSet::type(int t)
 {
   if (t<0) return 0;
   if (t<_realCount) return _real[t];
@@ -455,7 +455,7 @@ TraceEventType* TraceEventTypeMapping::type(int t)
   return 0;
 }
 
-TraceEventType* TraceEventTypeMapping::type(const QString& name)
+EventType* EventTypeSet::type(const QString& name)
 {
   for (int i=0;i<_realCount;i++)
     if (_real[i] && (_real[i]->name() == name))
@@ -468,7 +468,7 @@ TraceEventType* TraceEventTypeMapping::type(const QString& name)
   return 0;
 }
 
-TraceEventType* TraceEventTypeMapping::typeForLong(const QString& name)
+EventType* EventTypeSet::typeForLong(const QString& name)
 {
   for (int i=0;i<_realCount;i++)
     if (_real[i] && (_real[i]->longName() == name))
@@ -482,7 +482,7 @@ TraceEventType* TraceEventTypeMapping::typeForLong(const QString& name)
 }
 
 
-int TraceEventTypeMapping::realIndex(const QString& name)
+int EventTypeSet::realIndex(const QString& name)
 {
   for (int i=0;i<_realCount;i++)
     if (_real[i] && (_real[i]->name() == name))
@@ -491,7 +491,7 @@ int TraceEventTypeMapping::realIndex(const QString& name)
   return ProfileCostArray::InvalidIndex;
 }
 
-int TraceEventTypeMapping::index(const QString& name)
+int EventTypeSet::index(const QString& name)
 {
   for (int i=0;i<_realCount;i++)
     if (_real[i] && (_real[i]->name() == name))
@@ -504,24 +504,24 @@ int TraceEventTypeMapping::index(const QString& name)
   return ProfileCostArray::InvalidIndex;
 }
 
-int TraceEventTypeMapping::addKnownDerivedTypes()
+int EventTypeSet::addKnownDerivedTypes()
 {
   int addCount = 0;
   int addDiff, i;
-  int knownCount = TraceEventType::knownTypeCount();
+  int knownCount = EventType::knownTypeCount();
 
   while (1) {
     addDiff = 0;
     for (i=0; i<knownCount; i++) {
-      TraceEventType* t = TraceEventType::knownType(i);
+      EventType* t = EventType::knownType(i);
       if (t->isReal()) continue;
       if (index(t->name()) != ProfileCostArray::InvalidIndex) continue;
-      t->setMapping(this);
+      t->setEventTypeSet(this);
       if (t->parseFormula()) {
         addDiff++;
-        add(new TraceEventType(t->name(), t->longName(), t->formula()));
+        add(new EventType(t->name(), t->longName(), t->formula()));
       }
-      t->setMapping(0);
+      t->setEventTypeSet(0);
     }
     if (addDiff == 0) break;
     addCount += addDiff;
@@ -531,15 +531,15 @@ int TraceEventTypeMapping::addKnownDerivedTypes()
 
 
 //---------------------------------------------------
-// TraceSubMapping
+// EventTypeMapping
 
-TraceSubMapping::TraceSubMapping(TraceEventTypeMapping* mapping)
+EventTypeMapping::EventTypeMapping(EventTypeSet* set)
 {
-  _mapping = mapping;
+  _set = set;
   clear();
 }
 
-void TraceSubMapping::clear()
+void EventTypeMapping::clear()
 {
   _count = 0;
   _isIdentity = true;
@@ -550,18 +550,18 @@ void TraceSubMapping::clear()
   }
 }
 
-bool TraceSubMapping::append(const QString& type, bool create)
+bool EventTypeMapping::append(const QString& type, bool create)
 {
-  if (!_mapping) return false;
-  int index = create ? _mapping->addReal(type) : _mapping->realIndex(type);
+  if (!_set) return false;
+  int index = create ? _set->addReal(type) : _set->realIndex(type);
 
   return append(index);
 }
 
-bool TraceSubMapping::append(int type)
+bool EventTypeMapping::append(int type)
 {
-  if (!_mapping) return false;
-  if ((type<0) || (type >= _mapping->realCount())) return false;
+  if (!_set) return false;
+  if ((type<0) || (type >= _set->realCount())) return false;
 
   if ( _count >=  ProfileCostArray::MaxRealIndex) return false;
 

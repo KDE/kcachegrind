@@ -45,7 +45,7 @@ void ProfileCost::clear()
 }
 
 
-QString ProfileCost::costString(TraceEventTypeMapping*)
+QString ProfileCost::costString(EventTypeSet*)
 {
     return QString("(no cost)");
 }
@@ -153,9 +153,9 @@ void ProfileCostArray::clear()
 
 
 
-void ProfileCostArray::set(TraceSubMapping* sm, const char* s)
+void ProfileCostArray::set(EventTypeMapping* mapping, const char* s)
 {
-    if (!sm) return;
+    if (!mapping) return;
     if (!s) {
 	if (_count>0) clear();
 	return;
@@ -163,9 +163,9 @@ void ProfileCostArray::set(TraceSubMapping* sm, const char* s)
 
     while(*s == ' ') s++;
 
-    if (sm->isIdentity()) {
+    if (mapping->isIdentity()) {
 	int i = 0;
-	while(i<sm->count()) {
+	while(i<mapping->count()) {
 	    if (!_cost[i].set(&s)) break;
 	    i++;
 	}
@@ -174,14 +174,14 @@ void ProfileCostArray::set(TraceSubMapping* sm, const char* s)
     else {
 	int i = 0, maxIndex = 0, index;
 	while(1) {
-	    index = sm->realIndex(i);
+	    index = mapping->realIndex(i);
 	    if (maxIndex<index) maxIndex=index;
 	    if (index == ProfileCostArray::InvalidIndex) break;
 	    if (!_cost[index].set(&s)) break;
 	    i++;
 	}
 	// we have to set all costs of unused indexes till maxIndex to zero
-	for(i=sm->firstUnused(); i<=maxIndex; i=sm->nextUnused(i))
+	for(i=mapping->firstUnused(); i<=maxIndex; i=mapping->nextUnused(i))
 	    _cost[i] = 0;
 	_count = maxIndex;
     }
@@ -189,15 +189,15 @@ void ProfileCostArray::set(TraceSubMapping* sm, const char* s)
     invalidate();
 }
 
-void ProfileCostArray::set(TraceSubMapping* sm, FixString & s)
+void ProfileCostArray::set(EventTypeMapping* mapping, FixString & s)
 {
-    if (!sm) return;
+    if (!mapping) return;
 
     s.stripSpaces();
 
-    if (sm->isIdentity()) {
+    if (mapping->isIdentity()) {
 	int i = 0;
-	while(i<sm->count()) {
+	while(i<mapping->count()) {
 	    if (!s.stripUInt64(_cost[i])) break;
 	    i++;
 	}
@@ -206,14 +206,14 @@ void ProfileCostArray::set(TraceSubMapping* sm, FixString & s)
     else {
 	int i = 0, maxIndex = 0, index;
 	while(1) {
-	    index = sm->realIndex(i);
+	    index = mapping->realIndex(i);
 	    if (maxIndex<index) maxIndex=index;
 	    if (index == ProfileCostArray::InvalidIndex) break;
 	    if (!s.stripUInt64(_cost[index])) break;
 	    i++;
 	}
 	// we have to set all costs of unused indexes till maxIndex to zero
-	for(i=sm->firstUnused(); i<=maxIndex; i=sm->nextUnused(i))
+	for(i=mapping->firstUnused(); i<=maxIndex; i=mapping->nextUnused(i))
 	    _cost[i] = 0;
 	_count = maxIndex+1;
     }
@@ -221,15 +221,15 @@ void ProfileCostArray::set(TraceSubMapping* sm, FixString & s)
 }
 
 
-void ProfileCostArray::addCost(TraceSubMapping* sm, const char* s)
+void ProfileCostArray::addCost(EventTypeMapping* mapping, const char* s)
 {
-    if (!sm || !s) return;
+    if (!mapping || !s) return;
 
     SubCost v;
 
-    if (sm->isIdentity()) {
+    if (mapping->isIdentity()) {
 	int i = 0;
-	while(i<sm->count()) {
+	while(i<mapping->count()) {
 	    if (!v.set(&s)) break;
 	    if (i<_count)
 		_cost[i] += v;
@@ -243,7 +243,7 @@ void ProfileCostArray::addCost(TraceSubMapping* sm, const char* s)
 	int i = 0, maxIndex = 0, index;
 	while(1) {
 	    if (!v.set(&s)) break;
-	    index = sm->realIndex(i);
+	    index = mapping->realIndex(i);
 	    if (maxIndex<index) maxIndex=index;
 	    if (index == ProfileCostArray::InvalidIndex) break;
 	    if (index<_count)
@@ -255,7 +255,7 @@ void ProfileCostArray::addCost(TraceSubMapping* sm, const char* s)
 	if (maxIndex >= _count) {
 	    /* we have to set all costs of unused indexes in the interval
 	     *  [_count;maxIndex] to zero */
-	    for(i=sm->nextUnused(_count-1); i<=maxIndex; i=sm->nextUnused(i))
+	    for(i=mapping->nextUnused(_count-1); i<=maxIndex; i=mapping->nextUnused(i))
 		_cost[i] = 0;
 	    _count = maxIndex+1;
 	}
@@ -272,17 +272,17 @@ void ProfileCostArray::addCost(TraceSubMapping* sm, const char* s)
 #endif
 }
 
-void ProfileCostArray::addCost(TraceSubMapping* sm, FixString & s)
+void ProfileCostArray::addCost(EventTypeMapping* mapping, FixString & s)
 {
-    if (!sm) return;
+    if (!mapping) return;
 
     s.stripSpaces();
 
     SubCost v;
 
-    if (sm->isIdentity()) {
+    if (mapping->isIdentity()) {
 	int i = 0;
-	while(i<sm->count()) {
+	while(i<mapping->count()) {
 	    if (!s.stripUInt64(v)) break;
 	    if (i<_count)
 		_cost[i] += v;
@@ -296,7 +296,7 @@ void ProfileCostArray::addCost(TraceSubMapping* sm, FixString & s)
 	int i = 0, maxIndex = 0, index;
 	while(1) {
 	    if (!s.stripUInt64(v)) break;
-	    index = sm->realIndex(i);
+	    index = mapping->realIndex(i);
 	    if (maxIndex<index) maxIndex=index;
 	    if (index == ProfileCostArray::InvalidIndex) break;
 	    if (index<_count)
@@ -308,7 +308,7 @@ void ProfileCostArray::addCost(TraceSubMapping* sm, FixString & s)
 	if (maxIndex >= _count) {
 	    /* we have to set all costs of unused indexes in the interval
 	     *  [_count;maxIndex] to zero */
-	    for(i=sm->nextUnused(_count-1); i<=maxIndex; i=sm->nextUnused(i))
+	    for(i=mapping->nextUnused(_count-1); i<=maxIndex; i=mapping->nextUnused(i))
 		_cost[i] = 0;
 	    _count = maxIndex+1;
 	}
@@ -326,17 +326,17 @@ void ProfileCostArray::addCost(TraceSubMapping* sm, FixString & s)
 
 
 // update each subcost to be maximum of old and given costs
-void ProfileCostArray::maxCost(TraceSubMapping* sm, FixString & s)
+void ProfileCostArray::maxCost(EventTypeMapping* mapping, FixString & s)
 {
-    if (!sm) return;
+    if (!mapping) return;
 
     s.stripSpaces();
 
     SubCost v;
 
-    if (sm->isIdentity()) {
+    if (mapping->isIdentity()) {
 	int i = 0;
-	while(i<sm->count()) {
+	while(i<mapping->count()) {
 	    if (!s.stripUInt64(v)) break;
 	    if (i<_count) {
 	      if (v>_cost[i]) _cost[i] = v;
@@ -351,7 +351,7 @@ void ProfileCostArray::maxCost(TraceSubMapping* sm, FixString & s)
 	int i = 0, maxIndex = 0, index;
 	while(1) {
 	    if (!s.stripUInt64(v)) break;
-	    index = sm->realIndex(i);
+	    index = mapping->realIndex(i);
 	    if (maxIndex<index) maxIndex=index;
 	    if (index == ProfileCostArray::InvalidIndex) break;
 	    if (index<_count) {
@@ -364,7 +364,7 @@ void ProfileCostArray::maxCost(TraceSubMapping* sm, FixString & s)
 	if (maxIndex >= _count) {
 	    /* we have to set all costs of unused indexes in the interval
 	     *  [_count;maxIndex] to zero */
-	    for(i=sm->nextUnused(_count-1); i<=maxIndex; i=sm->nextUnused(i))
+	    for(i=mapping->nextUnused(_count-1); i<=maxIndex; i=mapping->nextUnused(i))
 		_cost[i] = 0;
 	    _count = maxIndex+1;
 	}
@@ -500,16 +500,16 @@ ProfileCostArray ProfileCostArray::diff(ProfileCostArray* item)
   return res;
 }
 
-QString ProfileCostArray::costString(TraceEventTypeMapping* m)
+QString ProfileCostArray::costString(EventTypeSet* set)
 {
   QString res;
 
   if (_dirty) update();
 
-  int maxIndex = m ? m->realCount() : ProfileCostArray::MaxRealIndex;
+  int maxIndex = set ? set->realCount() : ProfileCostArray::MaxRealIndex;
   for (int i = 0; i<maxIndex; i++) {
     if (!res.isEmpty()) res += ", ";
-    if (m) res += m->type(i)->name() + ' ';
+    if (set) res += set->type(i)->name() + ' ';
 
     res += subCost(i).pretty();
   }
@@ -545,7 +545,7 @@ SubCost ProfileCostArray::subCost(int idx)
     return _cost[idx];
 }
 
-SubCost ProfileCostArray::subCost(TraceEventType* t)
+SubCost ProfileCostArray::subCost(EventType* t)
 {
   if (!t) return 0;
   if (_cachedType != t) {
@@ -555,7 +555,7 @@ SubCost ProfileCostArray::subCost(TraceEventType* t)
   return _cachedCost;
 }
 
-QString ProfileCostArray::prettySubCost(TraceEventType* t)
+QString ProfileCostArray::prettySubCost(EventType* t)
 {
     return subCost(t).pretty();
 }

@@ -25,7 +25,7 @@
 #include "subcost.h"
 #include "cost.h"
 
-class TraceEventTypeMapping;
+class EventTypeSet;
 
 /**
  * A cost type, e.g. "L1 Read Miss", short "l1rm".
@@ -36,12 +36,12 @@ class TraceEventTypeMapping;
  *
  * For a virtual cost type, set a formula to calculate it:
  * e.g. for "Read Misses" : "l1rm + l2rm".
- * To allow for parsing, you must specify a TraceEventTypeMapping
+ * To allow for parsing, you must specify a EventTypeSet
  * with according cost types (e.g. "l1rm" and "l2rm" for above formula).
  *
  * The cost type with empty name is the "const" cost type.
  */
-class TraceEventType
+class EventType
 {
 public:
 
@@ -51,13 +51,13 @@ public:
    * <longName> is a long localized string, e.g. "L1 Read Miss"
    * <formula> uses short names to reference other types
    */
-  explicit TraceEventType(const QString& name,
+  explicit EventType(const QString& name,
                           const QString& longName = QString(),
                           const QString& formula = QString());
 
   void setName(const QString& n) { _name = n; }
   void setLongName(const QString& n) { _longName = n; }
-  void setMapping(TraceEventTypeMapping* m);
+  void setEventTypeSet(EventTypeSet* m);
   void setFormula(const QString&);
   // default arg is for specifying a real type, but index unknown
   void setRealIndex(int r = ProfileCostArray::MaxRealIndex);
@@ -65,7 +65,7 @@ public:
   const QString& name() { return _name; }
   const QString& longName() { return _longName; }
   const QString& formula() { return _formula; }
-  TraceEventTypeMapping* mapping() { return _mapping; }
+  EventTypeSet* set() { return _set; }
   int realIndex() { return _realIndex; }
   bool isReal() { return _formula.isEmpty(); }
   QColor color();
@@ -87,23 +87,23 @@ public:
 
   // application wide known types, referenced by short name
   // next 2 functions return a new type object instance
-  static TraceEventType* knownRealType(const QString&);
-  static TraceEventType* knownDerivedType(const QString&);
-  static void add(TraceEventType*);
+  static EventType* knownRealType(const QString&);
+  static EventType* knownDerivedType(const QString&);
+  static void add(EventType*);
   static bool remove(const QString&);
   static int knownTypeCount();
-  static TraceEventType* knownType(int);
+  static EventType* knownType(int);
 
 private:
 
   QString _name, _longName, _formula;
-  TraceEventTypeMapping* _mapping;
+  EventTypeSet* _set;
   bool _parsed, _inParsing;
   // index MaxRealIndex is for constant addition
   int _coefficient[MaxRealIndexValue];
   int _realIndex;
 
-  static QList<TraceEventType*>* _knownTypes;
+  static QList<EventType*>* _knownTypes;
 };
 
 
@@ -114,30 +114,30 @@ private:
  * - Real events are in range [0 .. ProfileCostArray:MaxRealIndex[
  * - Derived events are in range [MaxRealIndex, ...]
  */
-class TraceEventTypeMapping
+class EventTypeSet
 {
 public:
-  TraceEventTypeMapping();
-  ~TraceEventTypeMapping();
+  EventTypeSet();
+  ~EventTypeSet();
 
   /**
-   * Defines a sub mapping with a list of real event types
-   * If <create> is false, checks if this is a existing sub mapping.
+   * Defines a mapping from indexes into a list of costs to real event types
+   * If <create> is false, checks if this is a existing sub set.
    */
-  TraceSubMapping* subMapping(const QString& types, bool create = true);
+  EventTypeMapping* createMapping(const QString& types);
 
   // "knows" about some real types
   int addReal(const QString&);
-  int add(TraceEventType*);
-  bool remove(TraceEventType*);
+  int add(EventType*);
+  bool remove(EventType*);
   int realCount() { return _realCount; }
   int derivedCount() { return _derivedCount; }
   int minDerivedIndex() { return ProfileCostArray::MaxRealIndex; }
-  TraceEventType* type(int);
-  TraceEventType* realType(int);
-  TraceEventType* derivedType(int);
-  TraceEventType* type(const QString&);
-  TraceEventType* typeForLong(const QString&);
+  EventType* type(int);
+  EventType* realType(int);
+  EventType* derivedType(int);
+  EventType* type(const QString&);
+  EventType* typeForLong(const QString&);
   int realIndex(const QString&);
   int index(const QString&);
   QColor* realColors() { return _realColor; }
@@ -149,30 +149,30 @@ public:
 
 private:
   // we support only a fixed number of real and derived types
-  TraceEventType* _real[MaxRealIndexValue];
+  EventType* _real[MaxRealIndexValue];
   QColor _realColor[MaxRealIndexValue];
-  TraceEventType* _derived[MaxRealIndexValue];
+  EventType* _derived[MaxRealIndexValue];
   int _realCount, _derivedCount;
 };
 
 /**
- * A submapping of a TraceEventTypeMapping
+ * A index list into a EventTypeSet
  *
- * This is a fixed ordered list of indexes for real cost types
- * in a mapping.
+ * This ordered list maps from indexes into real cost types
+ * of a set.
  *
- * You can define a mapping by requesting submappings. Undefined cost
- * types will get a new real type index.
- *  TraceEventTypeMapping m;
- *  sm1 = m.subMapping("Event1 Cost1 Cost2");  // returns submap [0,1,2]
- *  sm2 = m.subMapping("Event2 Cost3 Event1"); // returns submap [3,4,0]
- * Real types of m will be:
+ * You can define a set of event types by requesting submaps by name.
+ * Every new event type name will get a new real type index.
+ *  EventTypeSet s;
+ *  m1 = s.createMapping("Event1 Cost1 Cost2");  // returns mapping [0,1,2]
+ *  m2 = s.createMapping("Event2 Cost3 Event1"); // returns mapping [3,4,0]
+ * Real types of s will be:
  *  (0:Event1, 1:Cost1, 2:Cost2, 3:Event2, 4:Cost3)
  */
-class TraceSubMapping
+class EventTypeMapping
 {
 public:
-  TraceSubMapping(TraceEventTypeMapping*);
+  EventTypeMapping(EventTypeSet*);
 
   bool append(const QString&, bool create=true);
   bool append(int);
@@ -184,7 +184,7 @@ public:
   int count() { return _count; }
 
   /**
-   * Is this submapping the identity( i.e. realIndex(i)=i ) ?
+   * Is this mapping the identity( i.e. realIndex(i)=i ) ?
    * This often allows for optimizations.
    */
   bool isIdentity() { return _isIdentity; }
@@ -193,7 +193,7 @@ public:
 
   /*
    * Allows an iteration over the sorted list of all real indexes not used in
-   * this submapping, up to topIndex (use ProfileCostArray::MaxRealIndex for all).
+   * this mapping, up to topIndex (use ProfileCostArray::MaxRealIndex for all).
    * Usage: for(i = firstUnused(); i < topIndex; i = nextUnused(i)) { LOOP }
    */
   int firstUnused() { return _firstUnused; }
@@ -202,7 +202,7 @@ public:
       return _nextUnused[i]; }
 
 private:
-  TraceEventTypeMapping* _mapping;
+  EventTypeSet* _set;
   int _count, _firstUnused;
   bool _isIdentity;
   int _realIndex[MaxRealIndexValue];

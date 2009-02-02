@@ -196,7 +196,7 @@ void InstrItem::updateCost()
   else
       totalCost = _instr->function()->data();
 
-  TraceEventType *ct = _view->eventType();
+  EventType *ct = _view->eventType();
   _pure = ct ? instrCost->subCost(ct) : SubCost(0);
   if (_pure == 0) {
     setText(1, QString());
@@ -215,7 +215,7 @@ void InstrItem::updateCost()
     setPixmap(1, costPixmap(ct, instrCost, total, false));
   }
 
-  TraceEventType *ct2 = _view->eventType2();
+  EventType *ct2 = _view->eventType2();
   _pure2 = ct2 ? instrCost->subCost(ct2) : SubCost(0);
   if (_pure2 == 0) {
     setText(2, QString());

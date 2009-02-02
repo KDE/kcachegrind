@@ -183,7 +183,7 @@ void SourceItem::updateCost()
   else
     totalCost = _line->functionSource()->function()->data();
 
-  TraceEventType* ct = _view->eventType();
+  EventType* ct = _view->eventType();
   _pure = ct ? lineCost->subCost(ct) : SubCost(0);
   if (_pure == 0) {
     setText(1, QString());
@@ -202,7 +202,7 @@ void SourceItem::updateCost()
     setPixmap(1, costPixmap(ct, lineCost, total, false));
   }
 
-  TraceEventType* ct2 = _view->eventType2();
+  EventType* ct2 = _view->eventType2();
   _pure2 = ct2 ? lineCost->subCost(ct2) : SubCost(0);
   if (_pure2 == 0) {
     setText(2, QString());

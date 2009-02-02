@@ -32,7 +32,7 @@
 
 
 EventTypeItem::EventTypeItem(Q3ListView* parent, TraceCostItem* costItem,
-                           TraceEventType* ct, ProfileContext::Type gt)
+                           EventType* ct, ProfileContext::Type gt)
   :Q3ListViewItem(parent)
 {
   _costItem = costItem;

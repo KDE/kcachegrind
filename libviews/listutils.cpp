@@ -212,7 +212,7 @@ QPixmap partitionPixmap(int w, int h,
 }
 
 
-QPixmap costPixmap(TraceEventType* ct, ProfileCostArray* cost, double total, bool framed)
+QPixmap costPixmap(EventType* ct, ProfileCostArray* cost, double total, bool framed)
 {
     if (!ct) return QPixmap();
 
@@ -224,7 +224,7 @@ QPixmap costPixmap(TraceEventType* ct, ProfileCostArray* cost, double total, boo
 
     int maxIndex;
     double h[MaxRealIndexValue];
-    QColor* cs = ct->mapping()->realColors();
+    QColor* cs = ct->set()->realColors();
     maxIndex = ct->histCost(cost, total, h);
 
     if (maxIndex ==0) return QPixmap();    

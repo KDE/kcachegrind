@@ -82,7 +82,7 @@ public:
    * with function->coverage()->percentage()
    */
   static TraceFunctionList coverage(TraceFunction* f, CoverageMode m,
-                                    TraceEventType* ct);
+                                    EventType* ct);
 
 private:
   void addCallerCoverage(TraceFunctionList& l, double, int d);
@@ -95,7 +95,7 @@ private:
   double _inclHisto[maxHistogramDepthValue];
 
   // temporary set for one coverage analysis
-  static TraceEventType* _costType;
+  static EventType* _costType;
 };
 
 #endif

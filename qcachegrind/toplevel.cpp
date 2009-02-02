@@ -998,43 +998,43 @@ void TopLevel::exportGraph()
 
 bool TopLevel::setEventType(QString s)
 {
-  TraceEventType* ct;
+  EventType* ct;
 
-  ct = (_data) ? _data->mapping()->type(s) : 0;
+  ct = (_data) ? _data->eventTypes()->type(s) : 0;
 
   // if costtype with given name not found, use first available
-  if (!ct && _data) ct = _data->mapping()->type(0);
+  if (!ct && _data) ct = _data->eventTypes()->type(0);
 
   return setEventType(ct);
 }
 
 bool TopLevel::setEventType2(QString s)
 {
-  TraceEventType* ct;
+  EventType* ct;
 
   // Special type tr("(Hidden)") gives 0
-  ct = (_data) ? _data->mapping()->type(s) : 0;
+  ct = (_data) ? _data->eventTypes()->type(s) : 0;
 
   return setEventType2(ct);
 }
 
 void TopLevel::eventTypeSelected(const QString& s)
 {
-  TraceEventType* ct;
+  EventType* ct;
 
-  ct = (_data) ? _data->mapping()->typeForLong(s) : 0;
+  ct = (_data) ? _data->eventTypes()->typeForLong(s) : 0;
   setEventType(ct);
 }
 
 void TopLevel::eventType2Selected(const QString& s)
 {
-  TraceEventType* ct;
+  EventType* ct;
 
-  ct = (_data) ? _data->mapping()->typeForLong(s) : 0;
+  ct = (_data) ? _data->eventTypes()->typeForLong(s) : 0;
   setEventType2(ct);
 }
 
-bool TopLevel::setEventType(TraceEventType* ct)
+bool TopLevel::setEventType(EventType* ct)
 {
   if (_eventType == ct) return false;
   _eventType = ct;
@@ -1062,7 +1062,7 @@ bool TopLevel::setEventType(TraceEventType* ct)
   return true;
 }
 
-bool TopLevel::setEventType2(TraceEventType* ct)
+bool TopLevel::setEventType2(EventType* ct)
 {
   if (_eventType2 == ct) return false;
   _eventType2 = ct;
@@ -1237,13 +1237,13 @@ bool TopLevel::setFunction(TraceFunction* f)
  * temporary variable. And one parameterless slot for
  * forwarding, using this temporary.
  */
-void TopLevel::setEventTypeDelayed(TraceEventType* ct)
+void TopLevel::setEventTypeDelayed(EventType* ct)
 {
   _eventTypeDelayed = ct;
   QTimer::singleShot (0, this, SLOT(setEventTypeDelayed()));
 }
 
-void TopLevel::setEventType2Delayed(TraceEventType* ct)
+void TopLevel::setEventType2Delayed(EventType* ct)
 {
   _eventType2Delayed = ct;
   QTimer::singleShot (0, this, SLOT(setEventType2Delayed()));
@@ -1412,7 +1412,7 @@ void TopLevel::setData(TraceData* data)
 
   if (_data) {
       /* add all supported virtual types */
-      TraceEventTypeMapping* m = _data->mapping();
+      EventTypeSet* m = _data->eventTypes();
       m->addKnownDerivedTypes();
 
       /* first, fill selection list with available cost types */
@@ -1474,7 +1474,7 @@ void TopLevel::setData(TraceData* data)
   updateStatusBar();
 
   if (_data)
-      setEventType(_data->mapping()->realType(0));
+      setEventType(_data->eventTypes()->realType(0));
 }
 
 void TopLevel::addEventTypeMenu(QMenu* popup, bool withCost2)
@@ -1499,8 +1499,8 @@ void TopLevel::addEventTypeMenu(QMenu* popup, bool withCost2)
       }
     }
 
-    TraceEventTypeMapping* m = _data->mapping();
-    TraceEventType* ct;
+    EventTypeSet* m = _data->eventTypes();
+    EventType* ct;
     for (int i=0;i<m->realCount();i++) {
       ct = m->realType(i);
 
@@ -1547,8 +1547,8 @@ bool TopLevel::setEventType(QAction* action)
   if (!_data) return false;
   int id = action->data().toInt(0);
 
-  TraceEventTypeMapping* m = _data->mapping();
-  TraceEventType* ct=0;
+  EventTypeSet* m = _data->eventTypes();
+  EventType* ct=0;
   if (id >=100 && id<199) ct = m->realType(id-100);
   if (id >=200 && id<299) ct = m->derivedType(id-200);
 
@@ -1560,8 +1560,8 @@ bool TopLevel::setEventType2(QAction* action)
   if (!_data) return false;
   int id = action->data().toInt(0);
 
-  TraceEventTypeMapping* m = _data->mapping();
-  TraceEventType* ct=0;
+  EventTypeSet* m = _data->eventTypes();
+  EventType* ct=0;
   if (id >=100 && id<199) ct = m->realType(id-100);
   if (id >=200 && id<299) ct = m->derivedType(id-200);
 

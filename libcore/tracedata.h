@@ -131,9 +131,9 @@ class DynPool;
 class Logger;
 
 class ProfileCostArray;
-class TraceEventType;
-class TraceEventTypeMapping;
-class TraceSubMapping;
+class EventType;
+class EventTypeSet;
+class EventTypeMapping;
 class TraceJumpCost;
 class TraceCallCost;
 class TraceInclusiveCost;
@@ -208,7 +208,7 @@ class TraceJumpCost: public ProfileCost
     virtual ~TraceJumpCost();
 
     // reimplementations for cost addition
-    virtual QString costString(TraceEventTypeMapping* m);
+    virtual QString costString(EventTypeSet* m);
     virtual void clear();
 
     void addCost(TraceJumpCost*);
@@ -235,7 +235,7 @@ class TraceCallCost: public ProfileCostArray
   virtual ~TraceCallCost();
 
   // reimplementations for cost addition
-  virtual QString costString(TraceEventTypeMapping* m);
+  virtual QString costString(EventTypeSet* m);
   virtual void clear();
 
   // additional cost metric
@@ -258,7 +258,7 @@ class TraceInclusiveCost: public ProfileCostArray
   virtual ~TraceInclusiveCost();
 
   // reimplementations for cost addition
-  virtual QString costString(TraceEventTypeMapping* m);
+  virtual QString costString(EventTypeSet* m);
   virtual void clear();
 
   // additional cost metric
@@ -551,7 +551,7 @@ public:
   virtual ~TracePartFunction();
 
   virtual void update();
-  virtual QString costString(TraceEventTypeMapping* m);
+  virtual QString costString(EventTypeSet* m);
 
   void addPartInstr(TracePartInstr*);
   void addPartLine(TracePartLine*);
@@ -683,9 +683,9 @@ public:
   void setThreadID(int t);
   void setProcessID(int p);
   ProfileCostArray* totals() { return &_totals; }
-  /* we get owner of the submapping */
-  void setFixSubMapping(TraceSubMapping* sm) { _fixSubMapping = sm; }
-  TraceSubMapping* fixSubMapping() { return _fixSubMapping; }
+  /* passes ownership of mapping */
+  void setEventMapping(EventTypeMapping* sm) { _eventTypeMapping = sm; }
+  EventTypeMapping* eventTypeMapping() { return _eventTypeMapping; }
 
   // returns true if something changed
   bool activate(bool);
@@ -706,8 +706,8 @@ private:
   // the totals line
   ProfileCostArray _totals;
 
-  // submapping for all fix costs of this part
-  TraceSubMapping* _fixSubMapping;
+  // event type mapping for all fix costs of this part
+  EventTypeMapping* _eventTypeMapping;
 };
 
 
@@ -941,7 +941,7 @@ class TraceInstr: public TraceListCost
   TraceLine* line() const { return _line; }
   const TraceInstrJumpList& instrJumps() const { return _instrJumps; }
   const TraceInstrCallList& instrCalls() const { return _instrCalls; }
-  bool hasCost(TraceEventType*);
+  bool hasCost(EventType*);
 
   // only to be called after default constructor
   void setAddr(const Addr addr) { _addr = addr; }
@@ -984,7 +984,7 @@ public:
 
 
   bool isValid() { return _sourceFile != 0; }
-  bool hasCost(TraceEventType*);
+  bool hasCost(EventType*);
   TraceFunctionSource* functionSource() const { return _sourceFile; }
   uint lineno() const { return _lineno; }
   const TraceLineCallList& lineCalls() const { return _lineCalls; }
@@ -1399,7 +1399,7 @@ class TraceData: public ProfileCostArray
   /**
    * Loads a trace file.
    *
-   * This adjusts the TraceEventTypeMapping according to given cost types
+   * This adjusts the EventTypeSet according to given cost types
    */
   void load(const QString&);
 
@@ -1424,7 +1424,7 @@ class TraceData: public ProfileCostArray
   QString shortTraceName() const;
   QString activePartRange();
 
-  TraceEventTypeMapping* mapping() { return &_mapping; }
+  EventTypeSet* eventTypes() { return &_eventTypes; }
 
   // memory pools
   FixPool* fixPool();
@@ -1448,7 +1448,7 @@ class TraceData: public ProfileCostArray
    * is not needed.
    */
   ProfileCostArray* search(ProfileContext::Type, QString,
-		    TraceEventType* ct = 0, ProfileCostArray* parent = 0);
+		    EventType* ct = 0, ProfileCostArray* parent = 0);
 
   // for pretty function names without signature if unique...
   TraceFunctionMap::Iterator functionIterator(TraceFunction*);
@@ -1497,8 +1497,8 @@ class TraceData: public ProfileCostArray
 
   TracePartList _parts;
 
-  // The mapping for all costs
-  TraceEventTypeMapping _mapping;
+  // The set for all costs
+  EventTypeSet _eventTypes;
 
   FixPool* _fixPool;
   DynPool* _dynPool;

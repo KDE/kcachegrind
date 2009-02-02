@@ -67,7 +67,7 @@ SubCost TraceJumpCost::followedCount()
     return _followedCount;
 }
 
-QString TraceJumpCost::costString(TraceEventTypeMapping*)
+QString TraceJumpCost::costString(EventTypeSet*)
 {
   if (_dirty) update();
 
@@ -105,7 +105,7 @@ TraceCallCost::~TraceCallCost()
 {}
 
 
-QString TraceCallCost::costString(TraceEventTypeMapping* m)
+QString TraceCallCost::costString(EventTypeSet* m)
 {
   return QString("%1, Calls %2")
       .arg(ProfileCostArray::costString(m))
@@ -148,7 +148,7 @@ TraceInclusiveCost::TraceInclusiveCost(ProfileContext* context)
 TraceInclusiveCost::~TraceInclusiveCost()
 {}
 
-QString TraceInclusiveCost::costString(TraceEventTypeMapping* m)
+QString TraceInclusiveCost::costString(EventTypeSet* m)
 {
   return QString("%1, Inclusive %2")
     .arg(ProfileCostArray::costString(m))
@@ -650,7 +650,7 @@ QString TracePartFunction::prettyCallingCount()
   return _callingCount.pretty();
 }
 
-QString TracePartFunction::costString(TraceEventTypeMapping* m)
+QString TracePartFunction::costString(EventTypeSet* m)
 {
   update();
 
@@ -1398,7 +1398,7 @@ TraceInstr::TraceInstr()
 TraceInstr::~TraceInstr()
 {}
 
-bool TraceInstr::hasCost(TraceEventType* ct)
+bool TraceInstr::hasCost(EventType* ct)
 {
     bool res = subCost(ct) > 0;
     if (!res) {
@@ -1498,7 +1498,7 @@ TraceLine::TraceLine()
 TraceLine::~TraceLine()
 {}
 
-bool TraceLine::hasCost(TraceEventType* ct)
+bool TraceLine::hasCost(EventType* ct)
 {
     bool res = subCost(ct) > 0;
     if (!res) {
@@ -3018,14 +3018,13 @@ TracePart::TracePart(TraceData* data, QFile* file)
   _tid = 0;
   _pid = 0;
 
-  _fixSubMapping = 0;
+  _eventTypeMapping = 0;
 }
 
 TracePart::~TracePart()
 {
   delete _file;
-
-  delete _fixSubMapping;
+  delete _eventTypeMapping;
 }
 
 void TracePart::setPartNumber(int n)
@@ -3612,7 +3611,7 @@ void TraceData::update()
 }
 
 ProfileCostArray* TraceData::search(ProfileContext::Type t, QString name,
-			     TraceEventType* ct, ProfileCostArray* parent)
+			     EventType* ct, ProfileCostArray* parent)
 {
     ProfileCostArray* result = 0;
     ProfileContext::Type pt;

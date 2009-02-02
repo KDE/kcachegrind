@@ -198,7 +198,7 @@ void StackSelection::refresh()
     ((StackItem*)item)->updateCost();
 }
 
-void StackSelection::setEventType(TraceEventType* ct)
+void StackSelection::setEventType(EventType* ct)
 {
   if (ct == _eventType) return;
   _eventType = ct;
@@ -212,7 +212,7 @@ void StackSelection::setEventType(TraceEventType* ct)
     ((StackItem*)item)->updateCost();
 }
 
-void StackSelection::setEventType2(TraceEventType* ct)
+void StackSelection::setEventType2(EventType* ct)
 {
   if (ct == _eventType2) return;
   _eventType2 = ct;

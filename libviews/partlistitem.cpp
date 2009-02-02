@@ -32,7 +32,7 @@
 // PartListItem
 
 PartListItem::PartListItem(Q3ListView* parent, TraceCostItem* costItem,
-                           TraceEventType* ct, ProfileContext::Type gt,
+                           EventType* ct, ProfileContext::Type gt,
 			   TracePart* part)
   :Q3ListViewItem(parent)
 {
@@ -58,7 +58,7 @@ PartListItem::PartListItem(Q3ListView* parent, TraceCostItem* costItem,
   update();
 }
 
-void PartListItem::setCostType(TraceEventType* ct)
+void PartListItem::setCostType(EventType* ct)
 {
     if (_costType == ct) return;
 

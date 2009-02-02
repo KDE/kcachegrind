@@ -49,7 +49,7 @@ public:
   // color for visualization of an object
   static QColor functionColor(ProfileContext::Type gt, TraceFunction*);
   static QColor groupColor(ProfileCost*);
-  static QColor eventTypeColor(TraceEventType*);
+  static QColor eventTypeColor(EventType*);
   static QStringList sourceDirs(TraceData*, TraceObject* o = 0);
   static bool showPercentage();
   static bool showExpanded();

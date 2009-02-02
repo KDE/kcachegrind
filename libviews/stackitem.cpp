@@ -74,7 +74,7 @@ void StackItem::updateCost()
 
   setText(2, _call->prettyCallCount());
 
-  TraceEventType* ct = _view->eventType();
+  EventType* ct = _view->eventType();
   _sum = _call->subCost(ct);
   double total = _call->called()->data()->subCost(ct);
   if (total == 0.0) {
@@ -94,7 +94,7 @@ void StackItem::updateCost()
   }
 
   // if _eventType2 is 0, column1 is hidden, no change needed
-  TraceEventType* ct2 = _view->eventType2();
+  EventType* ct2 = _view->eventType2();
   if (!ct2) return;
 
   _sum = _call->subCost(ct2);
