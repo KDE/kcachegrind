@@ -141,8 +141,6 @@ INCLUDE_GRAPH          =
 INCLUDED_BY_GRAPH      = 
 GRAPHICAL_HIERARCHY    = 
 DOT_PATH               = 
-MAX_DOT_GRAPH_WIDTH    = 
-MAX_DOT_GRAPH_HEIGHT   = 
 GENERATE_LEGEND        = 
 DOT_CLEANUP            = 
 #---------------------------------------------------------------------------
