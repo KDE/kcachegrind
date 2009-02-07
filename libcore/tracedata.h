@@ -92,7 +92,7 @@ class QFile;
  *  TracePart          fixed     TracePartLine's
  *  TraceData          dynamic   TracePart's
  *
- * As there exists only one TraceData object for a traced program, its the
+ * As there exists only one TraceData object for a traced program, it is the
  * owner of some "high level" cost items. The following shows the owner
  * relationship of the cost item classes, together with references.
  *
