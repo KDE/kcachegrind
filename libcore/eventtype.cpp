@@ -327,8 +327,6 @@ EventTypeMapping* EventTypeSet::createMapping(const QString& types)
     pos = pos2;
   }
 
-  if (newCount == 0) return 0;
-
   if (newCount+_realCount > ProfileCostArray::MaxRealIndex) {
     qDebug() << "EventTypeSet::createMapping: No space for "
 	      << newCount << " cost entries.";
