@@ -41,6 +41,7 @@
 #include <QFileDialog>
 #include <QEventLoop>
 #include <QToolBar>
+#include <QComboBox>
 #include <QMessageBox>
 #include <QtDBus/QDBusConnection>
 
@@ -269,22 +270,6 @@ TopLevel::~TopLevel()
   delete _data;
 }
 
-#if 0
-void TopLevel::saveProperties(KConfigGroup & c)
-{
-  c.writeEntry("TraceName", _data->traceName());
-}
-
-void TopLevel::readProperties(const KConfigGroup &c)
-{
-  QString traceName = c.readEntry("TraceName");
-  if (!traceName.isEmpty()) {
-      TraceData* d = new TraceData(this);
-      d->load(traceName);
-      setData(d);
-  }
-}
-#endif
 
 void TopLevel::createLayoutActions()
 {
@@ -441,6 +426,7 @@ void TopLevel::createMiscActions()
   tb->addAction(_paBack);
   tb->addAction(_paForward);
   tb->addAction(_paUp);
+  tb->addSeparator();
 
   action = new QAction(tr("&About"), this);
   action->setStatusTip(tr("Show the application's About box"));
@@ -448,6 +434,15 @@ void TopLevel::createMiscActions()
 
   QMenu* helpMenu = mBar->addMenu("&Help");
   helpMenu->addAction(action);
+
+  _eventTypeBox = new QComboBox(this);
+  _eventTypeBox->setMinimumContentsLength(25);
+  hint = tr("Select primary event type of costs");
+  _eventTypeBox->setToolTip( hint );
+  connect( _eventTypeBox, SIGNAL(activated(const QString&)),
+           this, SLOT(eventTypeSelected(const QString&)));
+  tb->addWidget(_eventTypeBox);
+
 
 #if 0
 
@@ -1043,12 +1038,8 @@ bool TopLevel::setEventType(EventType* ct)
   _eventType = ct;
 
   if (ct) {
-      int idx=0;
-      QStringList l;// = _saCost->items();
-      for (QStringList::const_iterator it = l.begin(); it != l.end(); ++it, ++idx ) {
-	  if (*it == ct->longName())
-	  {}//_saCost->setCurrentItem(idx);
-      }
+      int idx = _eventTypeBox->findText(ct->longName());
+      _eventTypeBox->setCurrentIndex(idx);
   }
 
   _partSelection->setEventType(_eventType);
@@ -1071,13 +1062,6 @@ bool TopLevel::setEventType2(EventType* ct)
   _eventType2 = ct;
 
   QString longName = ct ? ct->longName() : tr("(Hidden)");
-
-  int idx=0;
-  QStringList l;// = _saCost2->items();
-  for (QStringList::const_iterator it = l.begin(); it != l.end(); ++it, ++idx ) {
-    if (*it == longName)
-    {}//_saCost2->setCurrentItem(idx);
-  }
 
   _partSelection->setEventType2(_eventType2);
   _stackSelection->setEventType2(_eventType2);
@@ -1425,6 +1409,8 @@ void TopLevel::setData(TraceData* data)
 	  types << m->derivedType(i)->longName();
   }
   _eventTypes = types;
+
+  _eventTypeBox->addItems(types);
 
 #if 0
   _saCost->setItems(types);

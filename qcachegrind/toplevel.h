@@ -38,6 +38,7 @@ class MultiView;
 class QLineEdit;
 class QDockWidget;
 class QLabel;
+class QComboBox;
 class QProgressBar;
 class QMenu;
 
@@ -222,7 +223,7 @@ private:
   QDockWidget *_partDock, *_stackDock, *_functionDock;
   bool _forcePartDock;
 
-  //KSelectAction *_saCost, *_saCost2, *saGroup;
+  QComboBox* _eventTypeBox;
   QAction *_partDockShown, *_stackDockShown;
   QAction *_functionDockShown;
   QAction *_taPercentage, *_taExpanded, *_taCycles;
