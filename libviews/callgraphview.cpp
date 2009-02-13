@@ -2053,7 +2053,8 @@ void CallGraphView::dotExited()
 	double nodeHeight = 0.0;
 	while(1) {
 		line = dotStream->readLine();
-		if (line.isNull() || line.isEmpty()) continue;
+		if (line.isNull()) break;
+		if (line.isEmpty()) continue;
 		QTextStream lineStream(&line, QIODevice::ReadOnly);
 		lineStream >> cmd;
 		if (cmd != "node") continue;
@@ -2062,10 +2063,10 @@ void CallGraphView::dotExited()
 		nodeHeight = h.toDouble();
 		break;
 	}
-	Q_ASSERT(nodeHeight > 0.0);
-	scaleY = (8 + (1 + 2 * _detailLevel) * fontMetrics().height()) / nodeHeight;
-	scaleX = 80;
-
+	if (nodeHeight > 0.0) {
+		scaleY = (8 + (1 + 2 * _detailLevel) * fontMetrics().height()) / nodeHeight;
+		scaleX = 80;
+	}
 	dotStream->seek(0);
 	int lineno = 0;
 	while (1) {
