@@ -663,7 +663,7 @@ void FunctionSelection::groupSelected(Q3ListViewItem* i)
 
   TraceCostItem* g = ((CostListItem*) i)->costItem();
   if (!g) return;
-
+  if (g == _group) return;
   _group = g;
 
   TraceFunctionList list;
@@ -743,8 +743,11 @@ void FunctionSelection::groupSelected(Q3ListViewItem* i)
 
   // Do not emit signal if cost item was changed programatically
   if (!_inSetGroup) {
-      _selectedItem = g;
-      selected(g);
+      if (_topLevel)
+	  _topLevel->setGroupDelayed(g);
+
+      //_selectedItem = g;
+      //selected(g);
   }
 }
 

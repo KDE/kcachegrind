@@ -220,25 +220,28 @@ void TopLevel::saveCurrentState(const QString& postfix)
  */
 void TopLevel::saveTraceSettings()
 {
-  QString key = traceKey();
+    QString key = traceKey();
 
-  KConfigGroup pConfig(KGlobal::config(), "TracePositions");
-  pConfig.writeEntry(QString("EventType%1").arg(key),
-                     _eventType ? _eventType->name() : QString("?"));
-  pConfig.writeEntry(QString("EventType2%1").arg(key),
-                     _eventType2 ? _eventType2->name() : QString("?"));
-  pConfig.writeEntry(QString("GroupType%1").arg(key),
-                     ProfileContext::typeName(_groupType));
+    ConfigGroup* lConfig = ConfigStorage::group("Layouts");
+    lConfig->setValue(QString("Count%1").arg(key), _layoutCount);
+    lConfig->setValue(QString("Current%1").arg(key), _layoutCurrent);
+    delete lConfig;
 
-  if (!_data) return;
+    ConfigGroup* pConfig = ConfigStorage::group("TracePositions");
+    if (_eventType)
+	pConfig->setValue(QString("EventType%1").arg(key), _eventType->name());
+    if (_eventType2)
+	pConfig->setValue(QString("EventType2%1").arg(key), _eventType2->name());
+    if (_groupType != ProfileContext::InvalidType)
+	pConfig->setValue(QString("GroupType%1").arg(key),
+			  ProfileContext::typeName(_groupType));
 
-  KConfigGroup aConfig(KGlobal::config(), "Layouts");
-  aConfig.writeEntry(QString("Count%1").arg(key), _layoutCount);
-  aConfig.writeEntry(QString("Current%1").arg(key), _layoutCurrent);
-
-  saveCurrentState(key);
-  pConfig.writeEntry(QString("Group%1").arg(key),
-                     _group ? _group->name() : QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+    if (_data) {
+	if (_group)
+	    pConfig->setValue(QString("Group%1").arg(key), _group->name());
+	saveCurrentState(key);
+    }
+    delete pConfig;
 }
 
 /**
@@ -250,13 +253,13 @@ void TopLevel::saveTraceSettings()
  */
 void TopLevel::restoreCurrentState(const QString& postfix)
 {
-  _partSelection->restoreOptions(QString("PartOverview"), postfix);
-  _multiView->restoreLayout(QString("MainView"), postfix);
-  _multiView->restoreOptions(QString("MainView"), postfix);
+    _partSelection->restoreOptions(QString("PartOverview"), postfix);
+    _multiView->restoreLayout(QString("MainView"), postfix);
+    _multiView->restoreOptions(QString("MainView"), postfix);
 
-  _taSplit->setChecked(_multiView->childCount()>1);
-  _taSplitDir->setEnabled(_multiView->childCount()>1);
-  _taSplitDir->setChecked(_multiView->orientation() == Qt::Horizontal);
+    _taSplit->setChecked(_multiView->childCount()>1);
+    _taSplitDir->setEnabled(_multiView->childCount()>1);
+    _taSplitDir->setChecked(_multiView->orientation() == Qt::Horizontal);
 }
 
 
@@ -1194,29 +1197,23 @@ bool TopLevel::setGroupType(ProfileContext::Type gt)
 
 bool TopLevel::setGroup(QString s)
 {
-    return true;
-  TraceCostItem* ci = _functionSelection->group(s);
-  if (!ci)
-    return false;
+    TraceCostItem* ci = _functionSelection->group(s);
+    if (!ci)
+	return false;
 
-  return setGroup(ci);
+    return setGroup(ci);
 }
 
 
 bool TopLevel::setGroup(TraceCostItem* g)
 {
-  _multiView->activate(g);
-  _multiView->updateView();
-  _functionSelection->activate(g);
-  _functionSelection->updateView();
+    if (_group == g) return false;
+    _group = g;
 
-  if (_group == g) return false;
-  _group = g;
+    _functionSelection->setGroup(g);
+    updateStatusBar();
 
-
-  updateStatusBar();
-
-  return true;
+    return true;
 }
 
 bool TopLevel::setFunction(QString s)
@@ -1380,13 +1377,14 @@ void TopLevel::setTraceItemDelayed()
     switch(_traceItemDelayed->type()) {
     case ProfileContext::Function:
     case ProfileContext::FunctionCycle:
-      setFunction((TraceFunction*)_traceItemDelayed);
-      break;
+	setFunction((TraceFunction*)_traceItemDelayed);
+	break;
 
     case ProfileContext::Object:
     case ProfileContext::File:
     case ProfileContext::Class:
-	setGroup((TraceCostItem*)_traceItemDelayed);
+	_multiView->activate(_traceItemDelayed);
+	_multiView->updateView();
 	break;
 
 #if 0
@@ -1630,33 +1628,39 @@ QString TopLevel::traceKey()
 
 void TopLevel::restoreTraceTypes()
 {
-  QString key = traceKey();
+    QString key = traceKey();
+    QString groupType, eventType, eventType2;
 
-  KConfigGroup cConfig(KGlobal::config(), "CurrentState");
-  KConfigGroup pConfig(KGlobal::config(), "TracePositions");
+    ConfigGroup* pConfig = ConfigStorage::group("TracePositions");
+    groupType = pConfig->value(QString("GroupType%1").arg(key),QString()).toString();
+    eventType = pConfig->value(QString("EventType%1").arg(key),QString()).toString();
+    eventType2 = pConfig->value(QString("EventType2%1").arg(key),QString()).toString();
+    delete pConfig;
 
-  QString groupType, costType, costType2;
-  groupType =  pConfig.readEntry(QString("GroupType%1").arg(key),QString());
-  costType  =  pConfig.readEntry(QString("CostType%1").arg(key),QString());
-  costType2 =  pConfig.readEntry(QString("CostType2%1").arg(key),QString());
+    ConfigGroup* cConfig = ConfigStorage::group("CurrentState");
+    if (groupType.isEmpty())
+	groupType = cConfig->value("GroupType",QString()).toString();
+    if (eventType.isEmpty())
+	eventType = cConfig->value("EventType",QString()).toString();
+    if (eventType2.isEmpty())
+	eventType2 = cConfig->value("EventType2",QString()).toString();
+    delete cConfig;
 
-  if (groupType.isEmpty()) groupType = cConfig.readEntry("GroupType",QString());
-  if (costType.isEmpty()) costType = cConfig.readEntry("CostType",QString());
-  if (costType2.isEmpty()) costType2 = cConfig.readEntry("CostType2",QString());
+    setGroupType(groupType);
+    setEventType(eventType);
+    setEventType2(eventType2);
 
-  setGroupType(groupType);
-  setEventType(costType);
-  setEventType2(costType2);
+    // if still no cost type set, use first available
+    if (!_eventType && !_saCost->items().isEmpty())
+	eventTypeSelected(_saCost->items().first());
 
-  // if still no cost type set, use first available
-  if (!_eventType && !_saCost->items().isEmpty())
-      eventTypeSelected(_saCost->items().first());
+    ConfigGroup* aConfig = ConfigStorage::group("Layouts");
+    _layoutCount = aConfig->value(QString("Count%1").arg(key), 0).toInt();
+    _layoutCurrent = aConfig->value(QString("Current%1").arg(key), 0).toInt();
+    delete aConfig;
 
-  KConfigGroup aConfig(KGlobal::config(), "Layouts");
-  _layoutCount = aConfig.readEntry(QString("Count%1").arg(key), 0);
-  _layoutCurrent = aConfig.readEntry(QString("Current%1").arg(key), 0);
-  if (_layoutCount == 0) layoutRestore();
-  updateLayoutActions();
+    if (_layoutCount == 0) layoutRestore();
+    updateLayoutActions();
 }
 
 
@@ -1671,11 +1675,13 @@ void TopLevel::restoreTraceSettings()
 
   QString key = traceKey();
 
-  KConfigGroup pConfig(KGlobal::config(), "TracePositions");
-  QString group = pConfig.readEntry(QString("Group%1").arg(key),QString());
+  restoreCurrentState(key);
+
+  ConfigGroup* pConfig = ConfigStorage::group("TracePositions");
+  QString group = pConfig->value(QString("Group%1").arg(key),QString()).toString();
+  delete pConfig;
   if (!group.isEmpty()) setGroup(group);
 
-  restoreCurrentState(key);
 
   // restoreCurrentState() usually leads to a call to setTraceItemDelayed()
   // to restore last active item...

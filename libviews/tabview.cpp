@@ -950,14 +950,15 @@ void TabView::restoreOptions(const QString& prefix, const QString& postfix)
     if (t==ProfileContext::InvalidType) t = ProfileContext::Function;
     ProfileCostArray* activeItem = _data->search(t, activeName, _eventType);
     if (!activeItem) return;
-    activate(activeItem);
+    activated(activeItem);
 
     // restore selected item
     t = ProfileContext::type(selectedType);
     if (t==ProfileContext::InvalidType) t = ProfileContext::Function;
-    ProfileCostArray* selectedItem = _data->search(t, selectedName,
-					    _eventType, activeItem);
-    if (selectedItem) select(selectedItem);
+    ProfileCost* selectedItem = _data->search(t, selectedName,
+					      _eventType, activeItem);
+    if (selectedItem)
+	selected(this, selectedItem);
 
     updateView();
 }
