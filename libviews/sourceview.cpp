@@ -337,9 +337,11 @@ void SourceView::refresh()
 }
 
 
-// helper for fillSourceList:
-// search recursive for a file, starting from a base dir
-static bool checkFileExistance(QString& dir, const QString& name)
+/* Helper for fillSourceList:
+ * search recursive for a file, starting from a base dir
+ * If found, returns true and <dir> is set to the file path.
+ */
+static bool searchFileRecursive(QString& dir, const QString& name)
 {
   // we leave this in...
   qDebug("Checking %s/%s", dir.ascii(), name.ascii());
@@ -356,9 +358,59 @@ static bool checkFileExistance(QString& dir, const QString& name)
     if (*it == "." || *it == ".." || *it == "CVS") continue;
 
     dir = d.filePath(*it);
-    if (checkFileExistance(dir, name)) return true;
+    if (searchFileRecursive(dir, name)) return true;
   }
   return false;
+}
+
+/* Search for a source file in different places.
+ * If found, returns true and <dir> is set to the file path.
+ */
+bool SourceView::searchFile(QString& dir,
+			    TraceFunctionSource* sf)
+{
+    QString name = sf->file()->shortName();
+
+    if (QDir::isAbsolutePath(dir)) {
+	if (QFile::exists(dir + '/' + name)) return true;
+    }
+    else {
+	/* Directory is relative. Check
+	 * - relative to cwd
+	 * - relative to path of data file
+	 */
+	QString base = QDir::currentPath() + '/' + dir;
+	if (QFile::exists(base + '/' + name)) {
+	    dir = base;
+	    return true;
+	}
+
+	TracePart* firstPart = _data->parts().first();
+	if (firstPart) {
+	    QString file = firstPart->file()->fileName();
+	    if (QDir::isRelativePath(file))
+		file = QDir::currentPath() + '/' + file;
+	    int lastIndex = file.lastIndexOf("/");
+	    if (lastIndex >0)
+		base = file.left(lastIndex) + dir;
+	    else
+		base = QString("/") + dir;
+	    if (QFile::exists(base + '/' + name)) {
+		dir = base;
+		return true;
+	    }
+	}
+    }
+
+    QStringList list = GlobalConfig::sourceDirs(_data,
+						sf->function()->object());
+    QStringList::const_iterator it;
+    for ( it = list.begin(); it != list.end(); ++it ) {
+        dir = *it;
+        if (searchFileRecursive(dir, name)) return true;
+    }
+
+    return false;
 }
 
 
@@ -525,25 +577,14 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     filename = dir + '/' + filename;
 
   if (nextCostLineno>0) {
-    // we have debug info... search for source file
-    if (!QFile::exists(filename)) {
-      QStringList list = GlobalConfig::sourceDirs(_data,
-						  sf->function()->object());
-      QStringList::const_iterator it;
-
-      for ( it = list.begin(); it != list.end(); ++it ) {
-        dir = *it;
-        if (checkFileExistance(dir, sf->file()->shortName())) break;
+      // we have debug info... search for source file
+      if (searchFile(dir, sf)) {
+	  filename = dir + '/' + sf->file()->shortName();
+	  // no need to search again
+	  sf->file()->setDirectory(dir);
       }
-
-      if (it == list.end())
+      else
 	  nextCostLineno = 0;
-      else {
-        filename = dir + '/' + sf->file()->shortName();
-        // no need to search again
-        sf->file()->setDirectory(dir);
-      }
-    }
   }
 
   // do it here, because the source directory could have been set before

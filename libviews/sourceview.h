@@ -55,6 +55,7 @@ private:
   void doUpdate(int);
   void refresh();
   void updateJumpArray(uint,SourceItem*,bool,bool);
+  bool searchFile(QString&, TraceFunctionSource*);
   void fillSourceFile(TraceFunctionSource*, int);
   void updateSourceItems();
 
