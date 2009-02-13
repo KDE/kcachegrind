@@ -62,7 +62,13 @@ TopLevel::TopLevel()
     con.registerObject("/QCachegrind", this,
 		       QDBusConnection::ExportScriptableSlots);
 #endif
-  init();
+
+  _progressBar = 0;
+  _statusbar = 0;
+  _layoutCurrent = 0;
+  _layoutCount = 1;
+
+  resetState();
 
   createDocks();
 
@@ -106,13 +112,12 @@ TopLevel::TopLevel()
   restoreCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 }
 
-void TopLevel::init()
+
+// reset the visualization state, e.g. before loading new data
+void TopLevel::resetState()
 {
   _activeParts.clear();
   _hiddenParts.clear();
-
-  _progressBar = 0;
-  _statusbar = 0;
 
   _data = 0;
   _function = 0;
@@ -120,9 +125,6 @@ void TopLevel::init()
   _eventType2 = 0;
   _groupType = ProfileContext::InvalidType;
   _group = 0;
-
-  _layoutCurrent = 0;
-  _layoutCount = 1;
 
   // for delayed slots
   _traceItemDelayed = 0;
@@ -133,7 +135,6 @@ void TopLevel::init()
   _directionDelayed = TraceItemView::None;
   _lastSender = 0;
 }
-
 
 /**
  * Setup the part selection widget.
@@ -1406,7 +1407,7 @@ void TopLevel::setData(TraceData* data)
   }
 
   // reset members
-  init();
+  resetState();
 
   _data = data;
 
@@ -2226,12 +2227,14 @@ void TopLevel::showStatus(const QString& msg, int progress)
 {
 	static bool msgUpdateNeeded = true;
 
+	if (!_statusbar) return;
+
 	if (msg.isEmpty()) {
 	        //reset status
 		if (_progressBar) {
-			_statusbar->removeWidget(_progressBar);
-			delete _progressBar;
-			_progressBar = 0;
+		    _statusbar->removeWidget(_progressBar);
+		    delete _progressBar;
+		    _progressBar = 0;
 		}
 		_statusbar->clear();
 		_progressMsg = msg;

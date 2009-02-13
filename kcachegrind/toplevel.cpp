@@ -2222,6 +2222,8 @@ void TopLevel::showStatus(const QString& msg, int progress)
 {
 	static bool msgUpdateNeeded = true;
 
+	if (!_statusbar) return;
+
 	if (msg.isEmpty()) {
 	        //reset status
 		if (_progressBar) {
