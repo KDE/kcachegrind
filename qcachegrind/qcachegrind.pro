@@ -10,7 +10,8 @@
 #
 
 TEMPLATE = app
-QT += qt3support dbus
+QT += qt3support
+unix:QT += dbus
 TARGET =
 DEPENDPATH += . ../libcore ../libviews
 INCLUDEPATH += . ../libcore ../libviews
@@ -26,27 +27,31 @@ QMAKE_EXTRA_COMPILERS = new_moc
 # Input
 NHEADERS += qtconfig.h \
            toplevel.h \
+           ../libcore/context.h \
+           ../libcore/cost.h \
+           ../libcore/subcost.h \
+           ../libcore/eventtype.h \
+           ../libcore/addr.h \
            ../libcore/config.h \
            ../libcore/globalconfig.h \
            ../libcore/tracedata.h \
-           ../libcore/subcost.h \
            ../libcore/utils.h \
            ../libcore/logger.h \
+           ../libcore/loader.h \
+           ../libcore/fixcost.h \
+           ../libcore/pool.h \
+           ../libcore/coverage.h \
+           ../libcore/stackbrowser.h \
            ../libviews/traceitemview.h \
            ../libviews/toplevelbase.h \
-           ../libcore/loader.h \
            ../libviews/partselection.h \
            ../libviews/functionselection.h \
            ../libviews/listutils.h \
            ../libviews/stackselection.h \
-           ../libcore/stackbrowser.h \
            ../libviews/multiview.h \
            ../libviews/tabview.h \
            ../libviews/callgraphview.h \
            ../libviews/treemap.h \
-           ../libcore/fixcost.h \
-           ../libcore/pool.h \
-           ../libcore/coverage.h \
            ../libviews/callitem.h \
            ../libviews/callview.h \
            ../libviews/callmapview.h \
@@ -67,6 +72,11 @@ NHEADERS += qtconfig.h \
 SOURCES += main.cpp \
            qtconfig.cpp \
            toplevel.cpp \
+           ../libcore/context.cpp \
+           ../libcore/cost.cpp \
+           ../libcore/subcost.cpp \
+           ../libcore/eventtype.cpp \
+           ../libcore/addr.cpp \
            ../libcore/cachegrindloader.cpp \
            ../libcore/config.cpp \
            ../libcore/coverage.cpp \
@@ -76,7 +86,6 @@ SOURCES += main.cpp \
            ../libcore/logger.cpp \
            ../libcore/pool.cpp \
            ../libcore/stackbrowser.cpp \
-           ../libcore/subcost.cpp \
            ../libcore/tracedata.cpp \
            ../libcore/utils.cpp \
            ../libviews/callgraphview.cpp \

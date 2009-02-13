@@ -57,8 +57,11 @@
 
 TopLevel::TopLevel()
 {
-    QDBusConnection::sessionBus().registerObject("/QCachegrind", this,
-						 QDBusConnection::ExportScriptableSlots);
+#ifndef QT_NO_DBUS
+    QDBusConnection con = QDBusConnection::sessionBus();
+    con.registerObject("/QCachegrind", this,
+		       QDBusConnection::ExportScriptableSlots);
+#endif
   init();
 
   createDocks();
