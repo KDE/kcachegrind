@@ -26,7 +26,6 @@
 
 #include "tracedata.h"
 #include "traceitemview.h"
-//#include "ui_configdlgbase.h"
 
 //
 // QtConfigGroup

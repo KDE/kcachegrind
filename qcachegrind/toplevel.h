@@ -60,11 +60,10 @@ public:
   TraceData* data() { return _data; }
   void setData(TraceData*);
 
-  //virtual void saveProperties(KConfigGroup &);
-  //virtual void readProperties(const KConfigGroup &);
-
   void createActions();
   void createDocks();
+
+  void closeEvent(QCloseEvent*);
 
   ProfileContext::Type groupType() { return _groupType; }
   EventType* eventType() { return _eventType; }
@@ -123,8 +122,6 @@ public slots:
   void groupTypeSelected(int);
   void splitSlot();
   void splitDirSlot();
-  bool queryExit();
-  bool queryClose();
   void togglePartDock();
   void toggleStackDock();
   void toggleFunctionDock();

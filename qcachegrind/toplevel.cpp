@@ -63,53 +63,58 @@ TopLevel::TopLevel()
 		       QDBusConnection::ExportScriptableSlots);
 #endif
 
-  _progressBar = 0;
-  _statusbar = 0;
-  _layoutCurrent = 0;
-  _layoutCount = 1;
+    _progressBar = 0;
+    _statusbar = statusBar();
+    _statusLabel = new QLabel(_statusbar);
+    _statusbar->addWidget(_statusLabel, 1);
 
-  resetState();
+    resetState();
 
-  createDocks();
+    createDocks();
+    createActions();
 
-  _multiView = new MultiView(this, this);
-  _multiView->setObjectName("MultiView");
-  setCentralWidget(_multiView);
+    _multiView = new MultiView(this, this);
+    _multiView->setObjectName("MultiView");
+    setCentralWidget(_multiView);
 
-  createActions();
+    _partDockShown->setChecked(!_partDock->isHidden());
+    _stackDockShown->setChecked(!_stackDock->isHidden());
+    _functionDockShown->setChecked(!_functionDock->isHidden());
 
-  _partDockShown->setChecked(!_partDock->isHidden());
-  _stackDockShown->setChecked(!_stackDock->isHidden());
-  _functionDockShown->setChecked(!_functionDock->isHidden());
+    connect(_partDock, SIGNAL(visibilityChanged(bool)),
+	    this, SLOT(partVisibilityChanged(bool)));
+    connect(_stackDock, SIGNAL(visibilityChanged(bool)),
+	    this, SLOT(stackVisibilityChanged(bool)));
+    connect(_functionDock, SIGNAL(visibilityChanged(bool)),
+	    this, SLOT(functionVisibilityChanged(bool)));
 
-  connect(_partDock, SIGNAL(visibilityChanged(bool)),
-          this, SLOT(partVisibilityChanged(bool)));
-  connect(_stackDock, SIGNAL(visibilityChanged(bool)),
-          this, SLOT(stackVisibilityChanged(bool)));
-  connect(_functionDock, SIGNAL(visibilityChanged(bool)),
-          this, SLOT(functionVisibilityChanged(bool)));
+    GlobalConfig::config()->readOptions();
 
-  _statusbar = statusBar();
-  _statusLabel = new QLabel(_statusbar);
-  _statusbar->addWidget(_statusLabel, 1);
+    // set toggle after reading configuration
+    _showPercentage = GlobalConfig::showPercentage();
+    _showExpanded   = GlobalConfig::showExpanded();
+    _showCycles     = GlobalConfig::showCycles();
+    _taPercentage->setChecked(_showPercentage);
+    _taExpanded->setChecked(_showExpanded);
+    _taCycles->setChecked(_showCycles);
 
-  GlobalConfig::config()->readOptions();
-  //_openRecent->loadEntries( KConfigGroup( kconfig, "" ) );
+    setupPartSelection(_partSelection);
 
-  // set toggle after reading configuration
-  _showPercentage = GlobalConfig::showPercentage();
-  _showExpanded   = GlobalConfig::showExpanded();
-  _showCycles     = GlobalConfig::showCycles();
-  _taPercentage->setChecked(_showPercentage);
-  _taExpanded->setChecked(_showExpanded);
-  _taCycles->setChecked(_showCycles);
+    // restore current state settings (not configuration options)
+    restoreCurrentState(QString::null);
 
-  setupPartSelection(_partSelection);
+    // restore docks & toolbars from config
+    QByteArray state, geometry;
+    ConfigGroup* topConfig = ConfigStorage::group("TopWindow");
+    _forcePartDock = topConfig->value("ForcePartDockVisible", false).toBool();
+    state = topConfig->value("State", QByteArray()).toByteArray();
+    geometry = topConfig->value("Geometry", QByteArray()).toByteArray();
+    delete topConfig;
 
-  //setAutoSaveSettings();
-
-  // restore current state settings (not configuration options)
-  restoreCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+    if (!geometry.isEmpty())
+	restoreGeometry(geometry);
+    if (!state.isEmpty())
+	restoreState(state);
 }
 
 
@@ -203,34 +208,31 @@ void TopLevel::saveTraceSettings()
 }
 
 /**
- * This restores the current state of the main window and
- * sub widgets.
- *
- * This does NOT restore any positions. This is done automatically for
- * KToolbar, and manually in the createDocks() for QT docks..
+ * This restores the current visualization state of the main window and
+ * of the profile views.
  */
 void TopLevel::restoreCurrentState(const QString& postfix)
 {
-  _partSelection->restoreOptions(QString("PartOverview"), postfix);
-  _multiView->restoreLayout(QString("MainView"), postfix);
-  _multiView->restoreOptions(QString("MainView"), postfix);
+    _partSelection->restoreOptions(QString("PartOverview"), postfix);
+    _multiView->restoreLayout(QString("MainView"), postfix);
+    _multiView->restoreOptions(QString("MainView"), postfix);
 
-  _taSplit->setChecked(_multiView->childCount()>1);
-  _taSplitDir->setEnabled(_multiView->childCount()>1);
-  _taSplitDir->setChecked(_multiView->orientation() == Qt::Horizontal);
+    _taSplit->setChecked(_multiView->childCount()>1);
+    _taSplitDir->setEnabled(_multiView->childCount()>1);
+    _taSplitDir->setChecked(_multiView->orientation() == Qt::Horizontal);
 }
 
 
 void TopLevel::createDocks()
 {
   _partDock = new QDockWidget(this);
-  _partDock->setObjectName("part dock");
+  _partDock->setObjectName("part-dock");
   _partDock->setWindowTitle(tr("Parts Overview"));
   _partSelection = new PartSelection(this, _partDock);
   _partDock->setWidget(_partSelection);
 
   _stackDock = new QDockWidget(this);
-  _stackDock->setObjectName("stack dock");
+  _stackDock->setObjectName("stack-dock");
   // Why is the caption only correct with a close button?
   _stackSelection = new StackSelection(_stackDock);
   _stackDock->setWidget(_stackSelection);
@@ -249,7 +251,7 @@ void TopLevel::createDocks()
           this, SLOT(setTraceItemDelayed(ProfileCost*)));
 
   _functionDock = new QDockWidget(this);
-  _functionDock->setObjectName("function dock");
+  _functionDock->setObjectName("function-dock");
   _functionDock->setWindowTitle(tr("Flat Profile"));
   _functionSelection = new FunctionSelection(this, _functionDock);
   _functionDock->setWidget(_functionSelection);
@@ -259,10 +261,6 @@ void TopLevel::createDocks()
     addDockWidget(Qt::LeftDockWidgetArea, _stackDock );
     addDockWidget(Qt::LeftDockWidgetArea, _functionDock );
     _stackDock->hide();
-
-    ConfigGroup* dockConfig = ConfigStorage::group("Docks");
-    _forcePartDock = dockConfig->value("ForcePartDockVisible", false).toBool();
-    delete dockConfig;
 }
 
 
@@ -325,6 +323,7 @@ void TopLevel::createMiscActions()
   QAction* action;
 
   QToolBar* tb = new QToolBar(tr("Main Toolbar"), this);
+  tb->setObjectName("main-toolbar");
   addToolBar(Qt::TopToolBarArea, tb);
 
   QMenuBar* mBar = menuBar();
@@ -1858,14 +1857,7 @@ void TopLevel::configure()
 #endif
 }
 
-bool TopLevel::queryClose()
-{
-    //saveTraceSettings();
-
-  return true;
-}
-
-bool TopLevel::queryExit()
+void TopLevel::closeEvent(QCloseEvent* event)
 {
     // save current toplevel options as defaults...
     GlobalConfig::setShowPercentage(_showPercentage);
@@ -1873,21 +1865,21 @@ bool TopLevel::queryExit()
     GlobalConfig::setShowCycles(_showCycles);
     GlobalConfig::config()->saveOptions();
 
-    saveCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+    saveCurrentState(QString::null);
 
-  // toolbar and dock positions are automatically stored
+    // if part dock was chosen visible even for only 1 part loaded,
+    // keep this choice...
+    _forcePartDock = false;
+    if (_data && (_data->parts().count()<2) && _partDock->isVisible())
+	_forcePartDock=true;
 
-  // if part dock was chosen visible even for only 1 part loaded,
-  // keep this choice...
-  _forcePartDock = false;
-  if (_data && (_data->parts().count()<2) && _partDock->isVisible())
-    _forcePartDock=true;
+    ConfigGroup* topConfig = ConfigStorage::group("TopWindow");
+    topConfig->setValue("ForcePartDockVisible", _forcePartDock, false);
+    topConfig->setValue("State", saveState());
+    topConfig->setValue("Geometry", saveGeometry());
+    delete topConfig;
 
-  ConfigGroup* dockConfig = ConfigStorage::group("Docks");
-  dockConfig->setValue("ForcePartDockVisible", _forcePartDock, false);
-  delete dockConfig;
-
-  return true;
+    event->accept();
 }
 
 
