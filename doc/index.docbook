@@ -136,7 +136,7 @@ are of interest, the cache simulator can be switched off.
 
 <para>
 Cache simulation is the first step in approximating real times; as
-,on modern systems, runtime is very sensitive to the exploitation
+on modern systems, runtime is very sensitive to the exploitation
 of so called caches (small and fast buffers which accelerate repeated
 accesses to the same main memory cells.) 
 &cachegrind; does cache simulation by catching
@@ -550,7 +550,7 @@ By choosing an event type from the list, you change the type of costs shown all 
 <sect2>
 <title>Call Lists</title>
 <para>
-These lists show calls to/from the current active function. With ''all' callers/callees functions are meant which can be reached in caller/callee direction, even when other functions are in between.
+These lists show calls to/from the current active function. With 'all' callers/callees functions are meant which can be reached in caller/callee direction, even when other functions are in between.
 </para>
 <para>
 Call list views include:
