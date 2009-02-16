@@ -63,6 +63,8 @@ public:
 
   void createActions();
   void createDocks();
+  void createMenu();
+  void createToolbar();
 
   void closeEvent(QCloseEvent*);
 
@@ -71,11 +73,6 @@ public:
   EventType* eventType2() { return _eventType2; }
   TracePartList activeParts() { return _activeParts; }
   TracePartList hiddenParts() { return _hiddenParts; }
-
-  // current config
-  bool showPercentage() const { return _showPercentage; }
-  bool showExpanded() const { return _showExpanded; }
-  bool showCycles() const { return _showCycles; }
 
   /* convenience functions for often used context menu items */
   void addEventTypeMenu(QMenu*,bool);
@@ -89,23 +86,17 @@ public:
   virtual void loadFinished(const QString& msg); // msg could be error
 
 public slots:
-  void newTrace();
   void loadTrace();
-  //void loadTrace(const KUrl&);
-  void loadTrace(QString);
+  void loadTrace(QString, bool addToRecentFiles = true);
   void addTrace();
-  //void addTrace(const KUrl&);
   void addTrace(QString);
 
-  // for quick showing the main window...
-  void loadDelayed(QString);
+  // shows the main window before loading to see loading progress
+  void loadDelayed(QString, bool addToRecentFiles = true);
 
   void reload();
   void exportGraph();
   void newWindow();
-  void configure();
-  void querySlot();
-  void dummySlot();
   void about();
 
   // layouts
@@ -121,14 +112,11 @@ public slots:
   void eventTypeSelected(const QString&);
   void eventType2Selected(const QString&);
   void groupTypeSelected(int);
-  void splitSlot();
-  void splitDirSlot();
+  void toggleSplitted();
+  void toggleSplitDirection();
   void togglePartDock();
   void toggleStackDock();
   void toggleFunctionDock();
-  void toggleStatusBar();
-  void partVisibilityChanged(bool);
-  void stackVisibilityChanged(bool);
   void functionVisibilityChanged(bool);
   void togglePercentage();
   void setPercentage(bool);
@@ -138,6 +126,9 @@ public slots:
   void toggleCycles();
   void forceTrace();
   void forceTraceReload();
+  void recentFilesMenuAboutToShow();
+  void recentFilesTriggered(QAction*);
+  void sidebarMenuAboutToShow();
   void forwardAboutToShow();
   void forwardTriggered(QAction*);
   void backAboutToShow();
@@ -210,27 +201,31 @@ private:
 
   QStatusBar* _statusbar;
   QLabel* _statusLabel;
-  //KRecentFilesAction* _openRecent;
-  bool _twoMainWidgets;
-  Qt::Orientation _spOrientation;
+  QString _progressMsg;
+  QTime _progressStart;
+  QProgressBar* _progressBar;
 
   MultiView* _multiView;
+  Qt::Orientation _spOrientation;
+  bool _twoMainWidgets;
   FunctionSelection* _functionSelection;
   PartSelection* _partSelection;
   StackSelection* _stackSelection;
-  QLineEdit* queryLineEdit;
-
   QDockWidget *_partDock, *_stackDock, *_functionDock;
   bool _forcePartDock;
 
-  QComboBox* _eventTypeBox;
-  QAction *_partDockShown, *_stackDockShown;
-  QAction *_functionDockShown;
-  QAction *_taPercentage, *_taExpanded, *_taCycles;
-  QAction *_taDump, *_taSplit, *_taSplitDir;
-  QAction *_paForward, *_paBack, *_paUp;
+  // menu/toolbar actions
+  QAction *_newAction, *_openAction, *_addAction, *_reloadAction;
+  QAction *_exportAction, *_dumpToggleAction, *_exitAction;
+  QAction *_sidebarMenuAction, *_recentFilesMenuAction;
+  QAction *_cyclesToggleAction, *_percentageToggleAction;
+  QAction *_expandedToggleAction;
+  QAction *_splittedToggleAction, *_splitDirectionToggleAction;
   QAction *_layoutNext, *_layoutPrev, *_layoutRemove, *_layoutDup;
   QAction *_layoutRestore, *_layoutSave;
+  QAction *_upAction, *_forwardAction, *_backAction;
+  QAction *_aboutAction;
+  QComboBox* _eventTypeBox;
 
   TraceFunction* _function;
   const QObject* _lastSender;
@@ -259,15 +254,8 @@ private:
   TraceCostItem* _groupDelayed;
   ProfileCost* _traceItemDelayed;
   QString _loadTraceDelayed;
+  bool _addToRecentFiles;
   TraceItemView::Direction _directionDelayed;
-
-  // for status progress display
-  QString _progressMsg;
-  QTime _progressStart;
-  QProgressBar* _progressBar;
-
-  // toplevel configuration options
-  bool _showPercentage, _showExpanded, _showCycles;
 };
 
 #endif

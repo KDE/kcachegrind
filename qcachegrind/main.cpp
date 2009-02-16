@@ -56,7 +56,7 @@ int main( int argc, char ** argv )
 	// load trace in current dir
 	t = new TopLevel();
 	t->show();
-	t->loadDelayed(".");
+	t->loadDelayed(".", false);
     }
 
     return app.exec();

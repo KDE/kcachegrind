@@ -69,37 +69,21 @@ TopLevel::TopLevel()
     _statusLabel = new QLabel(_statusbar);
     _statusbar->addWidget(_statusLabel, 1);
 
+    _layoutCount = 1;
+    _layoutCurrent = 0;
+
     resetState();
 
-    createDocks();
+    GlobalConfig::config()->readOptions();
+
     createActions();
+    createDocks();
+    createMenu();
+    createToolbar();
 
     _multiView = new MultiView(this, this);
     _multiView->setObjectName("MultiView");
     setCentralWidget(_multiView);
-
-    _partDockShown->setChecked(!_partDock->isHidden());
-    _stackDockShown->setChecked(!_stackDock->isHidden());
-    _functionDockShown->setChecked(!_functionDock->isHidden());
-
-    connect(_partDock, SIGNAL(visibilityChanged(bool)),
-	    this, SLOT(partVisibilityChanged(bool)));
-    connect(_stackDock, SIGNAL(visibilityChanged(bool)),
-	    this, SLOT(stackVisibilityChanged(bool)));
-    connect(_functionDock, SIGNAL(visibilityChanged(bool)),
-	    this, SLOT(functionVisibilityChanged(bool)));
-
-    GlobalConfig::config()->readOptions();
-
-    // set toggle after reading configuration
-    _showPercentage = GlobalConfig::showPercentage();
-    _showExpanded   = GlobalConfig::showExpanded();
-    _showCycles     = GlobalConfig::showCycles();
-    _taPercentage->setChecked(_showPercentage);
-    _taExpanded->setChecked(_showExpanded);
-    _taCycles->setChecked(_showCycles);
-
-    setupPartSelection(_partSelection);
 
     // restore current state settings (not configuration options)
     restoreCurrentState(QString::null);
@@ -120,43 +104,34 @@ TopLevel::TopLevel()
     setWindowIcon(QIcon(":/app.png"));
 }
 
+TopLevel::~TopLevel()
+{
+    delete _data;
+}
 
 // reset the visualization state, e.g. before loading new data
 void TopLevel::resetState()
 {
-  _activeParts.clear();
-  _hiddenParts.clear();
+    _activeParts.clear();
+    _hiddenParts.clear();
 
-  _data = 0;
-  _function = 0;
-  _eventType = 0;
-  _eventType2 = 0;
-  _groupType = ProfileContext::InvalidType;
-  _group = 0;
+    _data = 0;
+    _function = 0;
+    _eventType = 0;
+    _eventType2 = 0;
+    _groupType = ProfileContext::InvalidType;
+    _group = 0;
 
-  // for delayed slots
-  _traceItemDelayed = 0;
-  _eventTypeDelayed = 0;
-  _eventType2Delayed = 0;
-  _groupTypeDelayed = ProfileContext::InvalidType;
-  _groupDelayed = 0;
-  _directionDelayed = TraceItemView::None;
-  _lastSender = 0;
+    // for delayed slots
+    _traceItemDelayed = 0;
+    _eventTypeDelayed = 0;
+    _eventType2Delayed = 0;
+    _groupTypeDelayed = ProfileContext::InvalidType;
+    _groupDelayed = 0;
+    _directionDelayed = TraceItemView::None;
+    _lastSender = 0;
 }
 
-/**
- * Setup the part selection widget.
- * Statusbar has to be created before.
- */
-void TopLevel::setupPartSelection(PartSelection* ps)
-{
-  // setup connections from the part selection widget
-
-  connect(ps, SIGNAL(partsHideSelected()),
-          this, SLOT(partsHideSelectedSlotDelayed()));
-  connect(ps, SIGNAL(partsUnhideAll()),
-          this, SLOT(partsUnhideAllSlotDelayed()));
-}
 
 /**
  * This saves the current state of the main window and
@@ -222,27 +197,84 @@ void TopLevel::restoreCurrentState(const QString& postfix)
     _multiView->restoreLayout(QString("MainView"), postfix);
     _multiView->restoreOptions(QString("MainView"), postfix);
 
-    _taSplit->setChecked(_multiView->childCount()>1);
-    _taSplitDir->setEnabled(_multiView->childCount()>1);
-    _taSplitDir->setChecked(_multiView->orientation() == Qt::Horizontal);
+    _splittedToggleAction->setChecked(_multiView->childCount()>1);
+    _splitDirectionToggleAction->setEnabled(_multiView->childCount()>1);
+    _splitDirectionToggleAction->setChecked(_multiView->orientation() ==
+					    Qt::Horizontal);
 }
 
+void TopLevel::sidebarMenuAboutToShow()
+{
+    QAction* action;
+    QMenu *popup = _sidebarMenuAction->menu();
+
+    popup->clear();
+
+    action = popup->addAction(tr("Parts Overview"));
+    action->setCheckable(true);
+    action->setChecked(_partDock->isVisible());
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(togglePartDock()));
+
+    action = popup->addAction(tr("Top Cost Call Stack"));
+    action->setCheckable(true);
+    action->setChecked(_stackDock->isVisible());
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(toggleStackDock()));
+
+    action = popup->addAction(tr("Flat Profile"));
+    action->setCheckable(true);
+    action->setChecked(_functionDock->isVisible());
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(toggleFunctionDock()));
+}
+
+void TopLevel::recentFilesMenuAboutToShow()
+{
+    QAction* action;
+    QStringList recentFiles;
+    QMenu *popup = _recentFilesMenuAction->menu();
+
+    popup->clear();
+
+    ConfigGroup* generalConfig = ConfigStorage::group("GeneralSettings");
+    recentFiles = generalConfig->value("RecentFiles",
+				       QStringList()).toStringList();
+    delete generalConfig;
+
+    if (recentFiles.count() == 0)
+	popup->addAction(tr("(No recent files)"));
+    else {
+	QString file;
+	foreach(file, recentFiles)
+	    action = popup->addAction(file);
+    }
+}
+
+void TopLevel::recentFilesTriggered(QAction* action)
+{
+    if (action)
+	loadTrace(action->text());
+}
 
 void TopLevel::createDocks()
 {
-  _partDock = new QDockWidget(this);
-  _partDock->setObjectName("part-dock");
-  _partDock->setWindowTitle(tr("Parts Overview"));
-  _partSelection = new PartSelection(this, _partDock);
-  _partDock->setWidget(_partSelection);
+    // part visualization/selection side bar
+    _partDock = new QDockWidget(this);
+    _partDock->setObjectName("part-dock");
+    _partDock->setWindowTitle(tr("Parts Overview"));
+    _partSelection = new PartSelection(this, _partDock);
+    _partDock->setWidget(_partSelection);
 
-  _stackDock = new QDockWidget(this);
-  _stackDock->setObjectName("stack-dock");
-  // Why is the caption only correct with a close button?
-  _stackSelection = new StackSelection(_stackDock);
-  _stackDock->setWidget(_stackSelection);
-  _stackDock->setWindowTitle(tr("Top Cost Call Stack"));
-  _stackSelection->setWhatsThis( tr(
+    connect(_partSelection, SIGNAL(partsHideSelected()),
+	    this, SLOT(partsHideSelectedSlotDelayed()));
+    connect(_partSelection, SIGNAL(partsUnhideAll()),
+	    this, SLOT(partsUnhideAllSlotDelayed()));
+
+    // stack selection side bar
+    _stackDock = new QDockWidget(this);
+    _stackDock->setObjectName("stack-dock");
+    _stackSelection = new StackSelection(_stackDock);
+    _stackDock->setWidget(_stackSelection);
+    _stackDock->setWindowTitle(tr("Top Cost Call Stack"));
+    _stackSelection->setWhatsThis( tr(
                    "<b>The Top Cost Call Stack</b>"
                    "<p>This is a purely fictional 'most probable' call stack. "
                    "It is built up by starting with the current selected "
@@ -251,32 +283,183 @@ void TopLevel::createDocks()
                    "<p>The <b>Cost</b> and <b>Calls</b> columns show the "
                    "cost used for all calls from the function in the line "
                    "above.</p>"));
+    connect(_stackSelection, SIGNAL(functionSelected(ProfileCost*)),
+	    this, SLOT(setTraceItemDelayed(ProfileCost*)));
+    // actions are already created
+    connect(_upAction, SIGNAL(triggered(bool)),
+	    _stackSelection, SLOT(browserUp()) );
+    connect(_backAction, SIGNAL(triggered(bool)),
+	    _stackSelection, SLOT(browserBack()) );
+    connect(_forwardAction, SIGNAL(triggered(bool)),
+	    _stackSelection, SLOT(browserForward()));
 
-  connect(_stackSelection, SIGNAL(functionSelected(ProfileCost*)),
-          this, SLOT(setTraceItemDelayed(ProfileCost*)));
+    // flat function profile side bar
+    _functionDock = new QDockWidget(this);
+    _functionDock->setObjectName("function-dock");
+    _functionDock->setWindowTitle(tr("Flat Profile"));
+    _functionSelection = new FunctionSelection(this, _functionDock);
+    _functionDock->setWidget(_functionSelection);
+    // functionDock needs call to updateView() when getting visible
+    connect(_functionDock, SIGNAL(visibilityChanged(bool)),
+	    this, SLOT(functionVisibilityChanged(bool)));
 
-  _functionDock = new QDockWidget(this);
-  _functionDock->setObjectName("function-dock");
-  _functionDock->setWindowTitle(tr("Flat Profile"));
-  _functionSelection = new FunctionSelection(this, _functionDock);
-  _functionDock->setWidget(_functionSelection);
-
-    // default positions, will be adjusted automatically by stored state in config
+    // defaults (later to be adjusted from stored state in config)
     addDockWidget(Qt::LeftDockWidgetArea, _partDock );
     addDockWidget(Qt::LeftDockWidgetArea, _stackDock );
     addDockWidget(Qt::LeftDockWidgetArea, _functionDock );
     _stackDock->hide();
+    _partDock->hide();
 }
 
 
-TopLevel::~TopLevel()
-{
-  delete _data;
-}
 
 
-void TopLevel::createLayoutActions()
+void TopLevel::createActions()
 {
+    QString hint;
+    QIcon icon;
+
+    // file menu actions
+    _newAction = new QAction(tr("&New"), this);
+    _newAction->setShortcuts(QKeySequence::New);
+    _newAction->setStatusTip(tr("Open new empty window"));
+    connect(_newAction, SIGNAL(triggered()), this, SLOT(newWindow()));
+
+    icon = QApplication::style()->standardIcon(QStyle::SP_DialogOpenButton);
+    _openAction = new QAction(icon, tr("&Open..."), this);
+    _openAction->setShortcuts(QKeySequence::Open);
+    _openAction->setStatusTip(tr("Open profile data file"));
+    connect(_openAction, SIGNAL(triggered()), this, SLOT(loadTrace()));
+
+    _addAction = new QAction(tr( "&Add..." ), this);
+    _addAction->setStatusTip(tr("Add profile data to current window"));
+    connect(_addAction, SIGNAL(triggered(bool)), SLOT(addTrace()));
+
+    _reloadAction = new QAction(tr("&Reload", "Reload a document"), this);
+    _reloadAction->setStatusTip(tr("Reload profile data including new parts"));
+    connect(_reloadAction, SIGNAL(triggered(bool)), SLOT(reload()));
+
+    _exportAction = new QAction(tr("Export Graph"), this);
+    _exportAction->setStatusTip(tr("Generate GraphViz file 'callgraph.dot'"));
+    connect(_exportAction, SIGNAL(triggered(bool)), SLOT(exportGraph()));
+
+    _dumpToggleAction = new QAction(tr("Callgrind Dump"), this);
+    _dumpToggleAction->setCheckable(true);
+    _dumpToggleAction->setStatusTip(
+	tr("Trigger Callgrind to dump profile data"));
+    hint = tr("<b>Force Dump</b>"
+              "<p>This forces a dump for a Callgrind profile run "
+              "in the current directory. This action is checked while "
+              "KCachegrind looks for the dump. If the dump is "
+              "finished, it automatically reloads the current trace. "
+              "If this is the one from the running Callgrind, the new "
+              "created trace part will be loaded, too.</p>"
+              "<p>Force dump creates a file 'callgrind.cmd', and "
+              "checks every second for its existence. A running "
+              "Callgrind will detect this file, dump a trace part, "
+              "and delete 'callgrind.cmd'. "
+              "The deletion is detected by KCachegrind, "
+              "and it does a Reload. If there is <em>no</em> Callgrind "
+              "running, press 'Force Dump' again to cancel the dump "
+              "request. This deletes 'callgrind.cmd' itself and "
+              "stops polling for a new dump.</p>"
+              "<p>Note: A Callgrind run <em>only</em> detects "
+              "existence of 'callgrind.cmd' when actively running "
+              "a few milliseconds, i.e. "
+              "<em>not</em> sleeping. Tip: For a profiled GUI program, "
+              "you can awake Callgrind e.g. by resizing a window "
+              "of the program.</p>");
+    _dumpToggleAction->setWhatsThis(hint);
+    connect(_dumpToggleAction, SIGNAL(triggered(bool)),
+	    this, SLOT(forceTrace()));
+
+    _recentFilesMenuAction = new QAction(tr("Open &Recent"), this);
+    _recentFilesMenuAction->setMenu(new QMenu(this));
+    connect(_recentFilesMenuAction->menu(), SIGNAL(aboutToShow()),
+	     this, SLOT(recentFilesMenuAboutToShow()));
+    connect(_recentFilesMenuAction->menu(), SIGNAL(triggered(QAction*)),
+	    this, SLOT(recentFilesTriggered(QAction*)));
+
+    _exitAction = new QAction(tr("E&xit"), this);
+    _exitAction->setShortcut(tr("Ctrl+Q"));
+    _exitAction->setStatusTip(tr("Exit the application"));
+    connect(_exitAction, SIGNAL(triggered()), this, SLOT(close()));
+
+    // view menu actions
+    icon = QApplication::style()->standardIcon(QStyle::SP_BrowserReload);
+    _cyclesToggleAction = new QAction(icon, tr("Detect Cycles"), this);
+    _cyclesToggleAction->setCheckable(true);
+    _cyclesToggleAction->setStatusTip(tr("Do Cycle Detection"));
+    hint = tr("<b>Detect recursive cycles</b>"
+              "<p>If this is switched off, the treemap drawing will show "
+              "black areas when a recursive call is made instead of drawing "
+	      "the recursion ad infinitum. Note that "
+              "the size of black areas often will be wrong, as inside "
+	      "recursive cycles the cost of calls cannot be determined; "
+	      "the error is small, "
+              "however, for false cycles (see documentation).</p>"
+              "<p>The correct handling for cycles is to detect them and "
+	      "collapse all functions of a cycle into an artificial "
+	      "function, which is done when this option is selected. "
+	      "Unfortunately, with GUI applications, this often will "
+              "lead to huge false cycles, making the analysis impossible; "
+	      "therefore, there is the option to switch this off.</p>");
+    _cyclesToggleAction->setWhatsThis(hint);
+    connect(_cyclesToggleAction, SIGNAL(triggered(bool)),
+	    this, SLOT(toggleCycles()));
+    _cyclesToggleAction->setChecked(GlobalConfig::showCycles());
+
+    _percentageToggleAction = new QAction(QIcon(":/percent.png"),
+					  tr("Relative Cost"), this);
+    _percentageToggleAction->setCheckable(true);
+    _percentageToggleAction->setStatusTip(tr("Show Relative Costs"));
+    connect(_percentageToggleAction, SIGNAL(triggered(bool)),
+	    this, SLOT(togglePercentage()));
+    _percentageToggleAction->setChecked(GlobalConfig::showPercentage());
+
+    _expandedToggleAction = new QAction(tr("Relative to Parent"), this);
+    _expandedToggleAction->setCheckable(true);
+    _expandedToggleAction->setStatusTip(
+	tr("Show Percentage relative to Parent"));
+    hint = tr("<b>Show percentage costs relative to parent</b>"
+              "<p>If this is switched off, percentage costs are always "
+	      "shown relative to the total cost of the profile part(s) "
+	      "that are currently browsed. By turning on this option, "
+	      "percentage cost of shown cost items will be relative "
+	      "to the parent cost item.</p>"
+              "<ul><table>"
+              "<tr><td><b>Cost Type</b></td><td><b>Parent Cost</b></td></tr>"
+              "<tr><td>Function Inclusive</td><td>Total</td></tr>"
+              "<tr><td>Function Self</td><td>Function Group (*)/Total</td></tr>"
+              "<tr><td>Call</td><td>Function Inclusive</td></tr>"
+              "<tr><td>Source Line</td><td>Function Inclusive</td></tr>"
+              "</table></ul>"
+              "<p>(*) Only if function grouping is switched on "
+	      "(e.g. ELF object grouping).</p>");
+    _expandedToggleAction->setWhatsThis( hint );
+    connect(_expandedToggleAction, SIGNAL(triggered(bool)),
+	    this, SLOT(toggleExpanded()));
+    _expandedToggleAction->setChecked(GlobalConfig::showExpanded());
+
+    _splittedToggleAction = new QAction(tr("Splitted Visualization"), this);
+    _splittedToggleAction->setCheckable(true);
+    _splittedToggleAction->setStatusTip(
+	tr("Show visualization of two cost items"));
+    connect(_splittedToggleAction, SIGNAL(triggered(bool)),
+	    this, SLOT(toggleSplitted()));
+
+    _splitDirectionToggleAction = new QAction(tr("Split Horizontal"), this);
+    _splitDirectionToggleAction->setCheckable(true);
+    _splitDirectionToggleAction->setStatusTip(
+	tr("Split visualization area horizontally"));
+    connect(_splitDirectionToggleAction, SIGNAL(triggered(bool)),
+	    this, SLOT(toggleSplitDirection()));
+
+    _sidebarMenuAction = new QAction(tr("Sidebars"), this);
+    _sidebarMenuAction->setMenu(new QMenu(this));
+    connect( _sidebarMenuAction->menu(), SIGNAL( aboutToShow() ),
+	     this, SLOT( sidebarMenuAboutToShow() ));
+
     _layoutDup = new QAction(tr("&Duplicate"), this);
     connect(_layoutDup, SIGNAL(triggered()), SLOT(layoutDuplicate()));
     _layoutDup->setShortcut(Qt::CTRL + Qt::Key_Plus);
@@ -303,447 +486,126 @@ void TopLevel::createLayoutActions()
     _layoutSave = new QAction(tr("&Save as Default"), this);
     connect(_layoutSave, SIGNAL(triggered()), SLOT(layoutSave()));
     _layoutSave->setStatusTip(tr("Save layouts as default"));
+
+    // go menu actions
+    icon = QApplication::style()->standardIcon(QStyle::SP_ArrowUp);
+    _upAction = new QAction(icon, tr( "Up" ), this );
+    _upAction->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Up) );
+    _upAction->setStatusTip(tr("Go Up in Call Stack"));
+    _upAction->setMenu(new QMenu(this));
+    connect(_upAction->menu(), SIGNAL(aboutToShow()),
+	    this, SLOT(upAboutToShow()) );
+    connect(_upAction->menu(), SIGNAL(triggered(QAction*)),
+	    this, SLOT(upTriggered(QAction*)) );
+    hint = tr("Go to last selected caller of current function");
+    _upAction->setToolTip(hint);
+
+    icon = QApplication::style()->standardIcon(QStyle::SP_ArrowBack);
+    _backAction = new QAction(icon, tr("Back"), this);
+    _backAction->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Left) );
+    _backAction->setStatusTip(tr("Go Back"));
+    _backAction->setMenu(new QMenu(this));
+    connect(_backAction->menu(), SIGNAL(aboutToShow()),
+           this, SLOT(backAboutToShow()) );
+    connect(_backAction->menu(), SIGNAL(triggered(QAction*)),
+	    this, SLOT(backTriggered(QAction*)) );
+    hint = tr("Go back in function selection history");
+    _backAction->setToolTip(hint);
+
+    icon = QApplication::style()->standardIcon(QStyle::SP_ArrowForward);
+    _forwardAction = new QAction(icon, tr("Forward"), this);
+    _forwardAction->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Right) );
+    _forwardAction->setStatusTip(tr("Go Forward"));
+    _forwardAction->setMenu(new QMenu(this));
+    connect(_forwardAction->menu(), SIGNAL(aboutToShow()),
+	    this, SLOT(forwardAboutToShow()) );
+    connect(_forwardAction->menu(), SIGNAL(triggered(QAction*)),
+	    this, SLOT(forwardTriggered(QAction*)) );
+    hint = tr("Go forward in function selection history");
+    _forwardAction->setToolTip( hint );
+
+    // help menu actions
+    _aboutAction = new QAction(tr("&About"), this);
+    _aboutAction->setStatusTip(tr("Show the application's About box"));
+    connect(_aboutAction, SIGNAL(triggered()), this, SLOT(about()));
+
+    // toolbar actions
+    _eventTypeBox = new QComboBox(this);
+    _eventTypeBox->setMinimumContentsLength(25);
+    hint = tr("Select primary event type of costs");
+    _eventTypeBox->setToolTip( hint );
+    connect( _eventTypeBox, SIGNAL(activated(const QString&)),
+	     this, SLOT(eventTypeSelected(const QString&)));
 }
 
-// TODO: split this up...
-void TopLevel::createMiscActions()
+void TopLevel::createMenu()
 {
-  QString hint;
-  QAction* action;
-  QIcon icon;
-
-  QToolBar* tb = new QToolBar(tr("Main Toolbar"), this);
-  tb->setObjectName("main-toolbar");
-  addToolBar(Qt::TopToolBarArea, tb);
-
-  QMenuBar* mBar = menuBar();
-  QMenu* fileMenu = mBar->addMenu(tr("&File"));
-
-  action = new QAction(tr("&New"), this);
-  action->setShortcuts(QKeySequence::New);
-  action->setStatusTip(tr("Open new empty window"));
-  connect(action, SIGNAL(triggered()), this, SLOT(newWindow()));
-  fileMenu->addAction(action);
-
-  icon = QApplication::style()->standardIcon(QStyle::SP_DialogOpenButton);
-  action = new QAction(icon, tr("&Open..."), this);
-  action->setShortcuts(QKeySequence::Open);
-  action->setStatusTip(tr("Open profile data file"));
-  connect(action, SIGNAL(triggered()), this, SLOT(loadTrace()));
-  fileMenu->addAction(action);
-  tb->addAction(action);
-  tb->addSeparator();
-
-  action = new QAction(tr("E&xit"), this);
-  action->setShortcut(tr("Ctrl+Q"));
-  action->setStatusTip(tr("Exit the application"));
-  connect(action, SIGNAL(triggered()), this, SLOT(close()));
-  fileMenu->addSeparator();
-  fileMenu->addAction(action);
-
-  _partDockShown = new QAction(tr("Show Parts"), this);
-  _stackDockShown = new QAction(tr("Show Stack"), this);
-  _functionDockShown = new QAction(tr("Show Profile"), this);
-
-  _taPercentage = new QAction(QIcon(":/percent.png"),
-			      tr("Relative Cost"), this);
-  _taPercentage->setCheckable(true);
-  _taPercentage->setStatusTip(tr("Show Relative Costs"));
-  connect(_taPercentage, SIGNAL(triggered(bool) ), SLOT(togglePercentage()));
-
-  _taExpanded = new QAction(tr("Relative to Parent"), this);
-  _taExpanded->setCheckable(true);
-  _taExpanded->setStatusTip(tr("Show Percentage relative to Parent"));
-  connect(_taExpanded, SIGNAL(triggered(bool) ), SLOT(toggleExpanded()));
-
-  icon = QApplication::style()->standardIcon(QStyle::SP_BrowserReload);
-  _taCycles = new QAction(icon, tr("Detect Cycles"), this);
-  _taCycles->setCheckable(true);
-  _taCycles->setStatusTip(tr("Do Cycle Detection"));
-  connect(_taCycles, SIGNAL(triggered(bool) ), SLOT( toggleCycles() ));
-
-  QMenu* viewMenu = mBar->addMenu(tr("&View"));
-  viewMenu->addAction(_taPercentage);
-  viewMenu->addAction(_taExpanded);
-  viewMenu->addAction(_taCycles);
-
-  tb->addAction(_taCycles);
-  tb->addAction(_taPercentage);
-  tb->addAction(_taExpanded);
-  tb->addSeparator();
-
-  createLayoutActions();
-  QMenu* layoutMenu = viewMenu->addMenu(tr("&Layout"));
-  layoutMenu->addAction(_layoutDup);
-  layoutMenu->addAction(_layoutRemove);
-  layoutMenu->addSeparator();
-  layoutMenu->addAction(_layoutPrev);
-  layoutMenu->addAction(_layoutNext);
-  layoutMenu->addSeparator();
-  layoutMenu->addAction(_layoutSave);
-  layoutMenu->addAction(_layoutRestore);
-  //updateLayoutActions();
-
-  _taSplit = new QAction(this);
-  _taSplitDir = new QAction(this);
-
-
-  icon = QApplication::style()->standardIcon(QStyle::SP_ArrowUp);
-  _paUp = new QAction(icon, tr( "Up" ), this );
-  _paUp->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Up) );
-  _paUp->setStatusTip(tr("Go Up in Call Stack"));
-  _paUp->setMenu(new QMenu(this));
-  connect( _paUp, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserUp() ) );
-  connect( _paUp->menu(), SIGNAL( aboutToShow() ),
-	    this, SLOT( upAboutToShow() ) );
-  connect( _paUp->menu(), SIGNAL( triggered( QAction* ) ),
-	    this, SLOT( upTriggered( QAction* ) ) );
-  hint = tr("Go to last selected caller of current function");
-  _paUp->setToolTip( hint );
-  _paUp->setWhatsThis( hint );
-
-  icon = QApplication::style()->standardIcon(QStyle::SP_ArrowBack);
-  _paBack = new QAction(icon, tr("Back"), this);
-  _paBack->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Left) );
-  _paBack->setStatusTip(tr("Go Back"));
-  _paBack->setMenu(new QMenu(this));
-  connect( _paBack, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserBack() ) );
-  connect( _paBack->menu(), SIGNAL( aboutToShow() ),
-           this, SLOT( backAboutToShow() ) );
-  connect( _paBack->menu(), SIGNAL( triggered( QAction* ) ),
-           this, SLOT( backTriggered( QAction* ) ) );
-  hint = tr("Go back in function selection history");
-  _paBack->setToolTip( hint );
-  _paBack->setWhatsThis( hint );
-
-  icon = QApplication::style()->standardIcon(QStyle::SP_ArrowForward);
-  _paForward = new QAction(icon, tr("Forward"), this);
-  _paForward->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Right) );
-  _paForward->setStatusTip(tr("Go Forward"));
-  _paForward->setMenu(new QMenu(this));
-  connect( _paForward, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserForward() ) );
-  connect( _paForward->menu(), SIGNAL( aboutToShow() ),
-           this, SLOT( forwardAboutToShow() ) );
-  connect( _paForward->menu(), SIGNAL( triggered( QAction* ) ),
-           this, SLOT( forwardTriggered( QAction* ) ) );
-  hint = tr("Go forward in function selection history");
-  _paForward->setToolTip( hint );
-  _paForward->setWhatsThis( hint );
-
-  QMenu* goMenu = mBar->addMenu("&Go");
-  goMenu->addAction(_paBack);
-  goMenu->addAction(_paForward);
-  goMenu->addAction(_paUp);
-
-  tb->addAction(_paBack);
-  tb->addAction(_paForward);
-  tb->addAction(_paUp);
-  tb->addSeparator();
-
-  action = new QAction(tr("&About"), this);
-  action->setStatusTip(tr("Show the application's About box"));
-  connect(action, SIGNAL(triggered()), this, SLOT(about()));
-
-  QMenu* helpMenu = mBar->addMenu("&Help");
-  helpMenu->addAction(action);
-
-  _eventTypeBox = new QComboBox(this);
-  _eventTypeBox->setMinimumContentsLength(25);
-  hint = tr("Select primary event type of costs");
-  _eventTypeBox->setToolTip( hint );
-  connect( _eventTypeBox, SIGNAL(activated(const QString&)),
-           this, SLOT(eventTypeSelected(const QString&)));
-  tb->addWidget(_eventTypeBox);
-
-
-#if 0
-
-  action = actionCollection()->addAction( "file_add" );
-  action->setText( tr( "&Add..." ) );
-  connect(action, SIGNAL(triggered(bool) ), SLOT(addTrace()));
-  hint = tr("<b>Add Profile Data</b>"
-              "<p>This opens an additional profile data file in the current window.</p>");
-  action->setWhatsThis( hint );
-
-  action = actionCollection()->addAction( "reload" );
-  action->setIcon( KIcon("view-refresh") );
-  action->setText( trc("Reload a document", "&Reload" ) );
-  connect(action, SIGNAL(triggered(bool) ), SLOT( reload() ));
-  action->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Reload));
-  hint = tr("<b>Reload Profile Data</b>"
-              "<p>This loads any new created parts, too.</p>");
-  action->setWhatsThis( hint );
-
-  action = actionCollection()->addAction( "export" );
-  action->setText( tr( "&Export Graph" ) );
-  connect(action, SIGNAL(triggered(bool) ), SLOT(exportGraph()));
-
-  hint = tr("<b>Export Call Graph</b>"
-              "<p>Generates a file with extension .dot for the tools "
-              "of the GraphViz package.</p>");
-  action->setWhatsThis( hint );
-
-
-  _taDump = actionCollection()->add<KToggleAction>( "dump" );
-  _taDump->setIcon( KIcon("edit-redo") );
-  _taDump->setText( tr( "&Force Dump" ) );
-  connect(_taDump, SIGNAL(triggered(bool) ), SLOT( forceTrace() ));
-  _taDump->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Redo));
-  hint = tr("<b>Force Dump</b>"
-              "<p>This forces a dump for a Callgrind profile run "
-              "in the current directory. This action is checked while "
-              "KCachegrind looks for the dump. If the dump is "
-              "finished, it automatically reloads the current trace. "
-              "If this is the one from the running Callgrind, the new "
-              "created trace part will be loaded, too.</p>"
-              "<p>Force dump creates a file 'callgrind.cmd', and "
-              "checks every second for its existence. A running "
-              "Callgrind will detect this file, dump a trace part, "
-              "and delete 'callgrind.cmd'. "
-              "The deletion is detected by KCachegrind, "
-              "and it does a Reload. If there is <em>no</em> Callgrind "
-              "running, press 'Force Dump' again to cancel the dump "
-              "request. This deletes 'callgrind.cmd' itself and "
-              "stops polling for a new dump.</p>"
-              "<p>Note: A Callgrind run <em>only</em> detects "
-              "existence of 'callgrind.cmd' when actively running "
-              "a few milliseconds, i.e. "
-              "<em>not</em> sleeping. Tip: For a profiled GUI program, "
-              "you can awake Callgrind e.g. by resizing a window "
-              "of the program.</p>");
-  _taDump->setWhatsThis( hint );
-
-  action = KStandardAction::open(this, SLOT(loadTrace()), actionCollection());
-  hint = tr("<b>Open Profile Data</b>"
-              "<p>This opens a profile data file, with possible multiple parts</p>");
-  action->setToolTip( hint );
-  action->setWhatsThis( hint );
-
-  _openRecent = KStandardAction::openRecent(this, SLOT(loadTrace(const KUrl&)),
-                                       actionCollection());
-
-  KStandardAction::showStatusbar(this,
-                            SLOT(toggleStatusBar()), actionCollection());
-
-  _partDockShown = actionCollection()->add<KToggleAction>("settings_show_partdock");
-  _partDockShown->setText(tr("Parts Overview"));
-  connect(_partDockShown, SIGNAL(triggered(bool) ), SLOT(togglePartDock()));
-
-  hint = tr("Show/Hide the Parts Overview Dockable");
-  _partDockShown->setToolTip( hint );
-  _partDockShown->setWhatsThis( hint );
-
-  _stackDockShown = actionCollection()->add<KToggleAction>("settings_show_stackdock");
-  _stackDockShown->setText(tr("Call Stack"));
-  connect(_stackDockShown, SIGNAL(triggered(bool) ), SLOT(toggleStackDock()));
-
-  hint = tr("Show/Hide the Call Stack Dockable");
-  _stackDockShown->setToolTip( hint );
-  _stackDockShown->setWhatsThis( hint );
-
-  _functionDockShown = actionCollection()->add<KToggleAction>("settings_show_profiledock");
-  _functionDockShown->setText(tr("Function Profile"));
-  connect(_functionDockShown, SIGNAL(triggered(bool) ), SLOT(toggleFunctionDock()));
-
-  hint = tr("Show/Hide the Function Profile Dockable");
-  _functionDockShown->setToolTip( hint );
-  _functionDockShown->setWhatsThis( hint );
-
-  _taPercentage = actionCollection()->add<KToggleAction>("view_percentage");
-  _taPercentage->setIcon(KIcon("percent"));
-  _taPercentage->setText(tr("Show Relative Costs"));
-  connect(_taPercentage, SIGNAL(triggered(bool) ), SLOT(togglePercentage()));
-  _taPercentage->setCheckedState(KGuiItem(tr("Show Absolute Costs")));
-
-  hint = tr("Show relative instead of absolute costs");
-  _taPercentage->setToolTip( hint );
-  _taPercentage->setWhatsThis( hint );
-
-  _taExpanded = actionCollection()->add<KToggleAction>("view_expanded");
-  _taExpanded->setIcon(KIcon("move"));
-  _taExpanded->setText(tr("Percentage Relative to Parent"));
-  connect(_taExpanded, SIGNAL(triggered(bool) ), SLOT(toggleExpanded()));
-
-  hint = tr("Show percentage costs relative to parent");
-  _taExpanded->setToolTip( hint );
-  _taExpanded->setWhatsThis( hint );
-
-  hint = tr("<b>Show percentage costs relative to parent</b>"
-              "<p>If this is switched off, percentage costs are always shown "
-              "relative to the total cost of the profile part(s) that are "
-              "currently browsed. By turning on this option, percentage cost "
-              "of shown cost items will be relative to the parent cost item.</p>"
-              "<ul><table>"
-              "<tr><td><b>Cost Type</b></td><td><b>Parent Cost</b></td></tr>"
-              "<tr><td>Function Cumulative</td><td>Total</td></tr>"
-              "<tr><td>Function Self</td><td>Function Group (*) / Total</td></tr>"
-              "<tr><td>Call</td><td>Function Inclusive</td></tr>"
-              "<tr><td>Source Line</td><td>Function Inclusive</td></tr>"
-              "</table></ul>"
-              "<p>(*) Only if function grouping is switched on (e.g. ELF object grouping).</p>");
-  _taExpanded->setWhatsThis( hint );
-
-  _taCycles = actionCollection()->add<KToggleAction>("view_cycles");
-  _taCycles->setIcon(KIcon("edit-undo"));
-  _taCycles->setText(tr( "Do Cycle Detection" ));
-  connect(_taCycles, SIGNAL(triggered(bool) ), SLOT( toggleCycles() ));
-  _taCycles->setCheckedState(KGuiItem(tr("Skip Cycle Detection")));
-
-  hint = tr("<b>Detect recursive cycles</b>"
-              "<p>If this is switched off, the treemap drawing will show "
-              "black areas when a recursive call is made instead of drawing the "
-              "recursion ad infinitum. Note that "
-              "the size of black areas often will be wrong, as inside recursive "
-              "cycles the cost of calls cannot be determined; the error is small, "
-              "however, for false cycles (see documentation).</p>"
-              "<p>The correct handling for cycles is to detect them and collapse all "
-              "functions of a cycle into an artificial function, which is done when this "
-              "option is selected. Unfortunately, with GUI applications, this often will "
-              "lead to huge false cycles, making the analysis impossible; therefore, there "
-              "is the option to switch this off.</p>");
-  _taCycles->setWhatsThis( hint );
-
-  KStandardAction::quit(this, SLOT(close()), actionCollection());
-  KStandardAction::preferences(this, SLOT(configure()), actionCollection());
-  KStandardAction::keyBindings(this, SLOT(configureKeys()), actionCollection());
-  KStandardAction::configureToolbars(this,SLOT(configureToolbars()),
-                                actionCollection());
-#if 0
-  action = KStandardAction::back(_stackSelection, SLOT(browserBack()),
-                            actionCollection());
-  hint = tr("Go back in function selection history");
-  action->setToolTip( hint );
-  action->setWhatsThis( hint );
-
-  action = KStandardAction::forward(_stackSelection, SLOT(browserForward()),
-                      actionCollection());
-  hint = tr("Go forward in function selection history");
-  action->setToolTip( hint );
-  action->setWhatsThis( hint );
-
-  action = KStandardAction::up(_stackSelection, SLOT(browserUp()),
-                      actionCollection());
-  hint = tr("<b>Go Up</b>"
-              "<p>Go to last selected caller of current function. "
-              "If no caller was visited, use that with highest cost.</p>");
-  action->setToolTip( hint );
-  action->setWhatsThis( hint );
-#else
-  _paUp = new KToolBarPopupAction( KIcon( "go-up" ), tr( "&Up" ), this );
-  _paUp->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Up) );
-  connect( _paUp, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserUp() ) );
-  actionCollection()->addAction( "go_up", _paUp );
-  connect( _paUp->menu(), SIGNAL( aboutToShow() ),
-	    this, SLOT( upAboutToShow() ) );
-  connect( _paUp->menu(), SIGNAL( triggered( QAction* ) ),
-	    this, SLOT( upTriggered( QAction* ) ) );
-  hint = tr("<b>Go Up</b>"
-              "<p>Go to last selected caller of current function. "
-              "If no caller was visited, use that with highest cost.</p>");
-  _paUp->setToolTip( hint );
-  _paUp->setWhatsThis( hint );
-
-  QPair< KGuiItem, KGuiItem > backForward = KStandardGuiItem::backAndForward();
-  _paBack = new KToolBarPopupAction( backForward.first.icon(), backForward.first.text(), this );
-  _paBack->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Left) );
-  connect( _paBack, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserBack() ) );
-  actionCollection()->addAction( "go_back", _paBack );
-  connect( _paBack->menu(), SIGNAL( aboutToShow() ),
-           this, SLOT( backAboutToShow() ) );
-  connect( _paBack->menu(), SIGNAL( triggered( QAction* ) ),
-           this, SLOT( backTriggered( QAction* ) ) );
-  hint = tr("Go back in function selection history");
-  _paBack->setToolTip( hint );
-  _paBack->setWhatsThis( hint );
-
-  _paForward = new KToolBarPopupAction( backForward.second.icon(), backForward.second.text(), this );
-  _paForward->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Right) );
-  connect( _paForward, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserForward() ) );
-  actionCollection()->addAction( "go_forward", _paForward );
-  connect( _paForward->menu(), SIGNAL( aboutToShow() ),
-           this, SLOT( forwardAboutToShow() ) );
-  connect( _paForward->menu(), SIGNAL( triggered( QAction* ) ),
-           this, SLOT( forwardTriggered( QAction* ) ) );
-  hint = tr("Go forward in function selection history");
-  _paForward->setToolTip( hint );
-  _paForward->setWhatsThis( hint );
-#endif
-
-  _saCost = actionCollection()->add<KSelectAction>("view_cost_type");
-  _saCost->setText(tr("Primary Event Type"));
-  hint = tr("Select primary event type of costs");
-  _saCost->setComboWidth(300);
-  _saCost->setToolTip( hint );
-  _saCost->setWhatsThis( hint );
-
-  // A dummy entry forces a minimum size of combobox in toolbar
-  QStringList dummyItems;
-  dummyItems << tr("(Placeholder for list of event types)");
-  _saCost->setItems(dummyItems);
-
-  // cost types are dependent on loaded data, thus KSelectAction
-  // is filled in setData()
-  connect( _saCost, SIGNAL(triggered(const QString&)),
-           this, SLOT(eventTypeSelected(const QString&)));
-
-  _saCost2 = actionCollection()->add<KSelectAction>("view_cost_type2");
-  _saCost2->setText(tr("Secondary Event Type"));
-  hint = tr("Select secondary event type for cost e.g. shown in annotations");
-  _saCost2->setComboWidth(300);
-  _saCost2->setToolTip( hint );
-  _saCost2->setWhatsThis( hint );
-  _saCost2->setItems(dummyItems);
-
-  connect( _saCost2, SIGNAL(triggered(const QString&)),
-           this, SLOT(eventType2Selected(const QString&)));
-
-  saGroup = actionCollection()->add<KSelectAction>("view_group_type");
-  saGroup->setText(tr("Grouping"));
-
-  hint = tr("Select how functions are grouped into higher level cost items");
-  saGroup->setToolTip( hint );
-  saGroup->setWhatsThis( hint );
-
-  QStringList args;
-
-  args << tr("(No Grouping)")
-       << ProfileContext::trTypeName(ProfileContext::Object)
-       << ProfileContext::trTypeName(ProfileContext::File)
-       << ProfileContext::trTypeName(ProfileContext::Class)
-       << ProfileContext::trTypeName(ProfileContext::FunctionCycle);
-
-  saGroup->setItems(args);
-  connect( saGroup, SIGNAL(triggered(int)),
-           this, SLOT(groupTypeSelected(int)));
-
-  _taSplit = actionCollection()->add<KToggleAction>("view_split");
-  _taSplit->setIcon(KIcon("view-split-left-right"));
-  _taSplit->setText(tr("Split"));
-  connect(_taSplit, SIGNAL(triggered(bool) ), SLOT(splitSlot()));
-
-  hint = tr("Show two information panels");
-  _taSplit->setToolTip( hint );
-  _taSplit->setWhatsThis( hint );
-
- _taSplitDir = actionCollection()->add<KToggleAction>("view_split_dir");
- _taSplitDir->setIcon(KIcon("view-split-left-right"));
- _taSplitDir->setText(tr("Split Horizontal"));
- connect(_taSplitDir, SIGNAL(triggered(bool) ), SLOT(splitDirSlot()));
-
-  hint = tr("Change Split Orientation when main window is split.");
-  _taSplitDir->setToolTip( hint );
-  _taSplitDir->setWhatsThis( hint );
-
-  // copied from KMail...
-  KStandardAction::tipOfDay( this, SLOT( slotShowTip() ), actionCollection() );
-#endif
+    QMenuBar* mBar = menuBar();
+
+    QMenu* fileMenu = mBar->addMenu(tr("&File"));
+    fileMenu->addAction(_newAction);
+    fileMenu->addAction(_openAction);
+    fileMenu->addAction(_recentFilesMenuAction);
+    fileMenu->addAction(_addAction);
+    fileMenu->addSeparator();
+    fileMenu->addAction(_reloadAction);
+    fileMenu->addAction(_exportAction);
+    fileMenu->addAction(_dumpToggleAction);
+    fileMenu->addSeparator();
+    fileMenu->addAction(_exitAction);
+
+    QMenu* layoutMenu = new QMenu(tr("&Layout"), this);
+    layoutMenu->addAction(_layoutDup);
+    layoutMenu->addAction(_layoutRemove);
+    layoutMenu->addSeparator();
+    layoutMenu->addAction(_layoutPrev);
+    layoutMenu->addAction(_layoutNext);
+    layoutMenu->addSeparator();
+    layoutMenu->addAction(_layoutSave);
+    layoutMenu->addAction(_layoutRestore);
+
+    QMenu* viewMenu = mBar->addMenu(tr("&View"));
+    viewMenu->addAction(_cyclesToggleAction);
+    viewMenu->addAction(_percentageToggleAction);
+    viewMenu->addAction(_expandedToggleAction);
+    viewMenu->addSeparator();
+    viewMenu->addAction(_splittedToggleAction);
+    viewMenu->addAction(_splitDirectionToggleAction);
+    viewMenu->addMenu(layoutMenu);
+    viewMenu->addSeparator();
+    viewMenu->addAction(_sidebarMenuAction);
+
+    QMenu* goMenu = mBar->addMenu("&Go");
+    goMenu->addAction(_backAction);
+    goMenu->addAction(_forwardAction);
+    goMenu->addAction(_upAction);
+
+    QMenu* helpMenu = mBar->addMenu("&Help");
+    helpMenu->addAction(_aboutAction);
 }
 
-void TopLevel::createActions()
+void TopLevel::createToolbar()
 {
-  createMiscActions();
-  createLayoutActions();
+    QToolBar* tb = new QToolBar(tr("Main Toolbar"), this);
+    tb->setObjectName("main-toolbar");
+    addToolBar(Qt::TopToolBarArea, tb);
+
+    tb->addAction(_openAction);
+    tb->addSeparator();
+
+    tb->addAction(_cyclesToggleAction);
+    tb->addAction(_percentageToggleAction);
+    tb->addAction(_expandedToggleAction);
+    tb->addSeparator();
+
+    tb->addAction(_backAction);
+    tb->addAction(_forwardAction);
+    tb->addAction(_upAction);
+    tb->addSeparator();
+
+    tb->addWidget(_eventTypeBox);
 }
+
 
 void TopLevel::about()
 {
@@ -756,17 +618,11 @@ void TopLevel::about()
 	      "<a href=\"http://kcachegrind.sf.net\">homepage</a> of the "
 	      "KCachegrind project.</p>"
 	      "Author and maintainer: "
-	      "<a href=\"mailto:Josef.Weidendorfer@gmx.de\">Josef Weidendorfer</a>");
+	      "<a href=\"mailto:Josef.Weidendorfer@gmx.de\">"
+	      "Josef Weidendorfer</a>");
     QMessageBox::about(this, tr("About QCachegrind"), text);
 }
 
-void TopLevel::toggleStatusBar()
-{
-  if (statusBar()->isVisible())
-    statusBar()->hide();
-  else
-    statusBar()->show();
-}
 
 void TopLevel::togglePartDock()
 {
@@ -794,7 +650,7 @@ void TopLevel::toggleFunctionDock()
 
 void TopLevel::togglePercentage()
 {
-  setPercentage(_taPercentage->isChecked());
+  setPercentage(_percentageToggleAction->isChecked());
 }
 
 void TopLevel::setAbsoluteCost()
@@ -809,206 +665,202 @@ void TopLevel::setRelativeCost()
 
 void TopLevel::setPercentage(bool show)
 {
-  if (_showPercentage == show) return;
-  _showPercentage = show;
-  if (_taPercentage->isChecked() != show)
-    _taPercentage->setChecked(show);
-  _taExpanded->setEnabled(show);
+    if (GlobalConfig::showPercentage() == show) return;
+    if (_percentageToggleAction->isChecked() != show)
+	_percentageToggleAction->setChecked(show);
+    _expandedToggleAction->setEnabled(show);
+    GlobalConfig::setShowPercentage(show);
 
-  GlobalConfig::setShowPercentage(_showPercentage);
+    _partSelection->notifyChange(TraceItemView::configChanged);
+    _partSelection->updateView();
 
-  _partSelection->notifyChange(TraceItemView::configChanged);
-  _partSelection->updateView();
+    _stackSelection->refresh();
 
-  _stackSelection->refresh();
+    _functionSelection->notifyChange(TraceItemView::configChanged);
+    _functionSelection->updateView();
 
-  _functionSelection->notifyChange(TraceItemView::configChanged);
-  _functionSelection->updateView();
-
-  _multiView->notifyChange(TraceItemView::configChanged);
-  _multiView->updateView();
+    _multiView->notifyChange(TraceItemView::configChanged);
+    _multiView->updateView();
 }
 
 void TopLevel::toggleExpanded()
 {
-  bool show = _taExpanded->isChecked();
-  if (_showExpanded == show) return;
-  _showExpanded = show;
+    bool show = _expandedToggleAction->isChecked();
+    if (GlobalConfig::showExpanded() == show) return;
+    GlobalConfig::setShowExpanded(show);
 
-  GlobalConfig::setShowExpanded(_showExpanded);
+    _partSelection->notifyChange(TraceItemView::configChanged);
+    _partSelection->updateView();
 
-  _partSelection->notifyChange(TraceItemView::configChanged);
-  _partSelection->updateView();
+    _stackSelection->refresh();
 
-  _stackSelection->refresh();
+    _functionSelection->notifyChange(TraceItemView::configChanged);
+    _functionSelection->updateView();
 
-  _functionSelection->notifyChange(TraceItemView::configChanged);
-  _functionSelection->updateView();
-
-  _multiView->notifyChange(TraceItemView::configChanged);
-  _multiView->updateView();
+    _multiView->notifyChange(TraceItemView::configChanged);
+    _multiView->updateView();
 }
 
 void TopLevel::toggleCycles()
 {
-  bool show = _taCycles->isChecked();
-  if (_showCycles == show) return;
-  _showCycles = show;
+    bool show = _cyclesToggleAction->isChecked();
+    if (GlobalConfig::showCycles() == show) return;
+    GlobalConfig::setShowCycles(show);
 
-  GlobalConfig::setShowCycles(_showCycles);
+    if (!_data) return;
 
-  if (!_data) return;
+    _data->invalidateDynamicCost();
+    _data->updateFunctionCycles();
 
-  _data->invalidateDynamicCost();
-  _data->updateFunctionCycles();
+    _partSelection->notifyChange(TraceItemView::configChanged);
+    _partSelection->updateView();
 
-  _partSelection->notifyChange(TraceItemView::configChanged);
-  _partSelection->updateView();
+    _stackSelection->rebuildStackList();
 
-  _stackSelection->rebuildStackList();
+    _functionSelection->notifyChange(TraceItemView::configChanged);
+    _functionSelection->updateView();
 
-  _functionSelection->notifyChange(TraceItemView::configChanged);
-  _functionSelection->updateView();
-
-  _multiView->notifyChange(TraceItemView::configChanged);
-  _multiView->updateView();
+    _multiView->notifyChange(TraceItemView::configChanged);
+    _multiView->updateView();
 }
 
-void TopLevel::partVisibilityChanged(bool v)
-{
-  _partDockShown->setChecked(v);
-}
-
-void TopLevel::stackVisibilityChanged(bool v)
-{
-  _stackDockShown->setChecked(v);
-}
 
 void TopLevel::functionVisibilityChanged(bool v)
 {
-  _functionDockShown->setChecked(v);
-  if (v)
-    _functionSelection->updateView();
+    if (v)
+	_functionSelection->updateView();
 }
 
-
-void TopLevel::querySlot()
-{
-//  _functionSelection->query(queryLineEdit->text());
-}
-
-
-void TopLevel::newTrace()
-{
-  // start cachegrind on command...
-}
 
 void TopLevel::newWindow()
 {
-  TopLevel* t = new TopLevel();
-  t->show();
+    TopLevel* t = new TopLevel();
+    t->show();
 }
 
 
 void TopLevel::loadTrace()
 {
-    QString fileName = QFileDialog::getOpenFileName(this,
-						    tr("Open Callgrind Data"),
-						    QString::null,
-						    tr("Callgrind Files (callgrind.*)"));
-    loadTrace(fileName);
+    QString file;
+    file = QFileDialog::getOpenFileName(this,
+					tr("Open Callgrind Data"),
+					QString::null,
+					tr("Callgrind Files (callgrind.*)"));
+    loadTrace(file);
 }
 
-void TopLevel::loadTrace(QString file)
+void TopLevel::loadTrace(QString file, bool addToRecentFiles)
 {
-  if (file.isEmpty()) return;
+    if (file.isEmpty()) return;
 
-  if (_data && _data->parts().count()>0) {
+    if (_data && _data->parts().count()>0) {
 
-    // In new window
-    TopLevel* t = new TopLevel();
-    t->show();
-    t->loadDelayed(file);
-    return;
-  }
+	// In new window
+	TopLevel* t = new TopLevel();
+	t->show();
+	t->loadDelayed(file, addToRecentFiles);
+	return;
+    }
 
-  // this constructor enables progress bar callbacks
-  TraceData* d = new TraceData(this);
-  d->load(file);
-  setData(d);
+    // this constructor enables progress bar callbacks
+    TraceData* d = new TraceData(this);
+    int filesLoaded = d->load(file);
+    if (filesLoaded >0)
+	setData(d);
+
+    if (!addToRecentFiles) return;
+
+    // add to recent file list in config
+    QStringList recentFiles;
+    ConfigGroup* generalConfig = ConfigStorage::group("GeneralSettings");
+    recentFiles = generalConfig->value("RecentFiles",
+				       QStringList()).toStringList();
+    recentFiles.removeAll(file);
+    if (filesLoaded >0)
+	recentFiles.prepend(file);
+    if (recentFiles.count() >5)
+	recentFiles.removeLast();
+    generalConfig->setValue("RecentFiles", recentFiles);
+    delete generalConfig;
 }
 
 
 void TopLevel::addTrace()
 {
-    QString fileName = QFileDialog::getOpenFileName(this,
-						    tr("Add Callgrind Data"),
-						    QString::null,
-						    tr("Callgrind Files (callgrind.*)"));
-    addTrace(fileName);
+    QString file;
+    file = QFileDialog::getOpenFileName(this,
+					tr("Add Callgrind Data"),
+					QString::null,
+					tr("Callgrind Files (callgrind.*)"));
+    addTrace(file);
 }
 
 
 void TopLevel::addTrace(QString file)
 {
-  if (file.isEmpty()) return;
+    if (file.isEmpty()) return;
 
-  if (_data) {
-    _data->load(file);
+    if (_data) {
+	_data->load(file);
 
-    // GUI update for added data
-    configChanged();
-    return;
-  }
+	// GUI update for added data
+	configChanged();
+	return;
+    }
 
-  // this constructor enables progress bar callbacks
-  TraceData* d = new TraceData(this);
-  d->load(file);
-  setData(d);
+    // this constructor enables progress bar callbacks
+    TraceData* d = new TraceData(this);
+    int filesLoaded = d->load(file);
+    if (filesLoaded >0)
+	setData(d);
 }
 
 
 
-void TopLevel::loadDelayed(QString file)
+void TopLevel::loadDelayed(QString file, bool addToRecentFiles)
 {
-  _loadTraceDelayed = file;
-  QTimer::singleShot(0, this, SLOT(loadTraceDelayed()));
+    _loadTraceDelayed = file;
+    _addToRecentFiles = addToRecentFiles;
+    QTimer::singleShot(0, this, SLOT(loadTraceDelayed()));
 }
 
 void TopLevel::loadTraceDelayed()
 {
-  if (_loadTraceDelayed.isEmpty()) return;
+    if (_loadTraceDelayed.isEmpty()) return;
 
-  loadTrace(_loadTraceDelayed);
-  _loadTraceDelayed = QString();
+    loadTrace(_loadTraceDelayed, _addToRecentFiles);
+    _loadTraceDelayed = QString();
 }
 
 
 void TopLevel::reload()
 {
-  QString trace;
-  if (!_data || _data->parts().count()==0)
-    trace = "."; // open first trace found in dir
-  else
-    trace = _data->traceName();
+    QString trace;
+    if (!_data || _data->parts().count()==0)
+	trace = "."; // open first trace found in dir
+    else
+	trace = _data->traceName();
 
-  // this also keeps sure we have the same browsing position...
-  TraceData* d = new TraceData(this);
-  d->load(trace);
-  setData(d);
+    // this also keeps sure we have the same browsing position...
+    TraceData* d = new TraceData(this);
+    d->load(trace);
+    setData(d);
 }
 
 void TopLevel::exportGraph()
 {
-  if (!_data || !_function) return;
+    if (!_data || !_function) return;
 
-  QString n = QString("callgraph.dot");
-  GraphExporter ge(_data, _function, _eventType, _groupType, n);
-  ge.writeDot();
+    QString n = QString("callgraph.dot");
+    GraphExporter ge(_data, _function, _eventType, _groupType, n);
+    ge.writeDot();
 
-  QString cmd = QString("(dot %1 -Tps > %2.ps; kghostview %3.ps)&")
-                .arg(n).arg(n).arg(n);
-  system(QFile::encodeName( cmd ));
+#ifdef Q_OS_UNIX
+    // shell commands only work in UNIX
+    QString cmd = QString("(dot %1 -Tps > %2.ps; kghostview %3.ps)&")
+	.arg(n).arg(n).arg(n);
+    ::system(QFile::encodeName( cmd ));
+#endif
 }
 
 
@@ -1216,8 +1068,8 @@ bool TopLevel::setFunction(TraceFunction* f)
   StackBrowser* b = _stackSelection->browser();
   if (b) {
     // do not disable up: a press forces stack-up extending...
-    _paForward->setEnabled(b->canGoForward());
-    _paBack->setEnabled(b->canGoBack());
+    _forwardAction->setEnabled(b->canGoForward());
+    _backAction->setEnabled(b->canGoBack());
   }
 
 #if TRACE_UPDATES
@@ -1449,14 +1301,10 @@ void TopLevel::setData(TraceData* data)
   }
   setWindowTitle(caption);
 
-  if (!_data || (!_forcePartDock && _data->parts().count()<2)) {
+  if (!_data || (!_forcePartDock && _data->parts().count()<2))
     _partDock->hide();
-    _partDockShown->setChecked(false);
-  }
-  else {
+  else
     _partDock->show();
-    _partDockShown->setChecked(true);
-  }
 
   updateStatusBar();
 }
@@ -1518,7 +1366,7 @@ void TopLevel::addEventTypeMenu(QMenu* popup, bool withCost2)
     }
   }
 
-  if (_showPercentage)
+  if (GlobalConfig::showPercentage())
     popup->addAction(tr("Show Absolute Cost"),
 		      this, SLOT(setAbsoluteCost()));
   else
@@ -1828,9 +1676,9 @@ void TopLevel::updateStatusBar()
   _statusLabel->setText(status);
 }
 
+#if 0
 void TopLevel::configure()
 {
-#if 0
     if (ConfigDlg::configure( (KConfiguration*) GlobalConfig::config(),
 			      _data, this)) {
       GlobalConfig::config()->saveOptions();
@@ -1839,15 +1687,11 @@ void TopLevel::configure()
   }
   else
       GlobalConfig::config()->readOptions();
-#endif
 }
+#endif
 
 void TopLevel::closeEvent(QCloseEvent* event)
 {
-    // save current toplevel options as defaults...
-    GlobalConfig::setShowPercentage(_showPercentage);
-    GlobalConfig::setShowExpanded(_showExpanded);
-    GlobalConfig::setShowCycles(_showCycles);
     GlobalConfig::config()->saveOptions();
 
     saveTraceSettings();
@@ -1869,7 +1713,7 @@ void TopLevel::closeEvent(QCloseEvent* event)
 }
 
 
-void TopLevel::splitSlot()
+void TopLevel::toggleSplitted()
 {
     int count = _multiView->childCount();
     if (count<1) count = 1;
@@ -1877,14 +1721,15 @@ void TopLevel::splitSlot()
     count = 3-count;
     _multiView->setChildCount(count);
 
-    _taSplit->setChecked(count>1);
-    _taSplitDir->setEnabled(count>1);
-    _taSplitDir->setChecked(_multiView->orientation() == Qt::Horizontal);
+    _splittedToggleAction->setChecked(count>1);
+    _splitDirectionToggleAction->setEnabled(count>1);
+    _splitDirectionToggleAction->setChecked(_multiView->orientation() ==
+					    Qt::Horizontal);
 }
 
-void TopLevel::splitDirSlot()
+void TopLevel::toggleSplitDirection()
 {
-  _multiView->setOrientation( _taSplitDir->isChecked() ?
+  _multiView->setOrientation( _splitDirectionToggleAction->isChecked() ?
                               Qt::Horizontal : Qt::Vertical );
 }
 
@@ -1912,9 +1757,6 @@ void TopLevel::configChanged()
 }
 
 
-void TopLevel::dummySlot()
-{
-}
 
 void TopLevel::activePartsChangedSlot(const TracePartList& list)
 {
@@ -2003,7 +1845,7 @@ void TopLevel::forceTrace()
     cmd.write("DUMP\n", 5);
     cmd.close();
   }
-  if (_taDump->isChecked())
+  if (_dumpToggleAction->isChecked())
     QTimer::singleShot( 1000, this, SLOT(forceTraceReload()) );
   else {
     // cancel request
@@ -2018,17 +1860,17 @@ void TopLevel::forceTraceReload()
 
   QFile cmd("callgrind.cmd");
   if (cmd.exists()) {
-    if (_taDump->isChecked())
+    if (_dumpToggleAction->isChecked())
       QTimer::singleShot( 1000, this, SLOT(forceTraceReload()) );
     return;
   }
-  _taDump->setChecked(false);
+  _dumpToggleAction->setChecked(false);
   reload();
 }
 
 void TopLevel::forwardAboutToShow()
 {
-  QMenu *popup = _paForward->menu();
+  QMenu *popup = _forwardAction->menu();
 
   popup->clear();
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
@@ -2067,7 +1909,7 @@ void TopLevel::forwardAboutToShow()
 
 void TopLevel::backAboutToShow()
 {
-  QMenu *popup = _paBack->menu();
+  QMenu *popup = _backAction->menu();
 
   popup->clear();
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
@@ -2106,7 +1948,7 @@ void TopLevel::backAboutToShow()
 
 void TopLevel::upAboutToShow()
 {
-  QMenu *popup = _paUp->menu();
+  QMenu *popup = _upAction->menu();
 
   popup->clear();
   StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
