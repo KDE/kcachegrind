@@ -3,8 +3,9 @@ include_directories(../libcore ../libviews)
 set(qcachegrind_SRCS main.cpp toplevel.cpp qtconfig.cpp)
 
 qt4_automoc(${qcachegrind_SRCS})
+qt4_add_resources(qcachegrind_RSRC qcachegrind.qrc)
 
-add_executable(qcachegrind ${qcachegrind_SRCS})
+add_executable(qcachegrind ${qcachegrind_SRCS} ${qcachegrind_RSRC})
 
 target_link_libraries(qcachegrind
 	 core views

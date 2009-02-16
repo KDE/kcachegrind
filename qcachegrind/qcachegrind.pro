@@ -15,6 +15,7 @@ unix:QT += dbus
 TARGET =
 DEPENDPATH += . ../libcore ../libviews
 INCLUDEPATH += . ../libcore ../libviews
+RESOURCES = qcachegrind.qrc
 
 # generate *.moc files from headers, they get included from *.cpp
 new_moc.CONFIG = no_link moc_verify

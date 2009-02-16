@@ -116,6 +116,8 @@ TopLevel::TopLevel()
 	restoreGeometry(geometry);
     if (!state.isEmpty())
 	restoreState(state);
+
+    setWindowIcon(QIcon(":/app.png"));
 }
 
 
@@ -308,6 +310,7 @@ void TopLevel::createMiscActions()
 {
   QString hint;
   QAction* action;
+  QIcon icon;
 
   QToolBar* tb = new QToolBar(tr("Main Toolbar"), this);
   tb->setObjectName("main-toolbar");
@@ -322,7 +325,8 @@ void TopLevel::createMiscActions()
   connect(action, SIGNAL(triggered()), this, SLOT(newWindow()));
   fileMenu->addAction(action);
 
-  action = new QAction(tr("&Open..."), this);
+  icon = QApplication::style()->standardIcon(QStyle::SP_DialogOpenButton);
+  action = new QAction(icon, tr("&Open..."), this);
   action->setShortcuts(QKeySequence::Open);
   action->setStatusTip(tr("Open profile data file"));
   connect(action, SIGNAL(triggered()), this, SLOT(loadTrace()));
@@ -341,7 +345,8 @@ void TopLevel::createMiscActions()
   _stackDockShown = new QAction(tr("Show Stack"), this);
   _functionDockShown = new QAction(tr("Show Profile"), this);
 
-  _taPercentage = new QAction(tr("Relative Cost"), this);
+  _taPercentage = new QAction(QIcon(":/percent.png"),
+			      tr("Relative Cost"), this);
   _taPercentage->setCheckable(true);
   _taPercentage->setStatusTip(tr("Show Relative Costs"));
   connect(_taPercentage, SIGNAL(triggered(bool) ), SLOT(togglePercentage()));
@@ -351,7 +356,8 @@ void TopLevel::createMiscActions()
   _taExpanded->setStatusTip(tr("Show Percentage relative to Parent"));
   connect(_taExpanded, SIGNAL(triggered(bool) ), SLOT(toggleExpanded()));
 
-  _taCycles = new QAction(tr("Detect Cycles"), this);
+  icon = QApplication::style()->standardIcon(QStyle::SP_BrowserReload);
+  _taCycles = new QAction(icon, tr("Detect Cycles"), this);
   _taCycles->setCheckable(true);
   _taCycles->setStatusTip(tr("Do Cycle Detection"));
   connect(_taCycles, SIGNAL(triggered(bool) ), SLOT( toggleCycles() ));
@@ -381,7 +387,9 @@ void TopLevel::createMiscActions()
   _taSplit = new QAction(this);
   _taSplitDir = new QAction(this);
 
-  _paUp = new QAction(tr( "Up" ), this );
+
+  icon = QApplication::style()->standardIcon(QStyle::SP_ArrowUp);
+  _paUp = new QAction(icon, tr( "Up" ), this );
   _paUp->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Up) );
   _paUp->setStatusTip(tr("Go Up in Call Stack"));
   _paUp->setMenu(new QMenu(this));
@@ -394,7 +402,8 @@ void TopLevel::createMiscActions()
   _paUp->setToolTip( hint );
   _paUp->setWhatsThis( hint );
 
-  _paBack = new QAction(tr("Back"), this);
+  icon = QApplication::style()->standardIcon(QStyle::SP_ArrowBack);
+  _paBack = new QAction(icon, tr("Back"), this);
   _paBack->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Left) );
   _paBack->setStatusTip(tr("Go Back"));
   _paBack->setMenu(new QMenu(this));
@@ -407,7 +416,8 @@ void TopLevel::createMiscActions()
   _paBack->setToolTip( hint );
   _paBack->setWhatsThis( hint );
 
-  _paForward = new QAction(tr("Forward"), this);
+  icon = QApplication::style()->standardIcon(QStyle::SP_ArrowForward);
+  _paForward = new QAction(icon, tr("Forward"), this);
   _paForward->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Right) );
   _paForward->setStatusTip(tr("Go Forward"));
   _paForward->setMenu(new QMenu(this));
@@ -738,9 +748,15 @@ void TopLevel::createActions()
 void TopLevel::about()
 {
     QString text;
-    text = tr("<b>QCachegrind</b> is a GUI for browsing profile visualization.<br>"
-	      "It is a reduced, Qt-only version of <b>KCachegrind</b>.<p>"
-	      "Author and maintainer: Josef Weidendorfer (Josef.Weidendorfer@gmx.de)");
+    text = tr("<p>QCachegrind is a graphical user interface for analysing "
+	      "profiling data, which helps in the performance optimization "
+	      "phase of developing a computer program. "
+	      "QCachegrind is open-source, and it is distributed under the "
+	      "terms of the GPL v2. For details and source code, see the "
+	      "<a href=\"http://kcachegrind.sf.net\">homepage</a> of the "
+	      "KCachegrind project.</p>"
+	      "Author and maintainer: "
+	      "<a href=\"mailto:Josef.Weidendorfer@gmx.de\">Josef Weidendorfer</a>");
     QMessageBox::about(this, tr("About QCachegrind"), text);
 }
 
