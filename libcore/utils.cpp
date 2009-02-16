@@ -424,7 +424,10 @@ bool FixFile::nextLine(FixString& str)
 	       (unsigned long) (_current - _base), _currentLeft-left, tmp);
     }
 
-    str.set(_current, _currentLeft-left);
+    int len =  _currentLeft-left;
+    // get rid of any carriage return at end
+    if ((len>0) && (*(current-1) == '\r')) len--;
+    str.set(_current, len);
 
     if (*current == '\n') {
 	current++;

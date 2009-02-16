@@ -354,9 +354,8 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
   int index = name.mid(1, p-1).toInt();
   TraceObject* o = 0;
   p++;
-  if ((int)name.length()>p) {
-    while(name.at(p).isSpace()) p++;
-
+  while((name.length()>p) && name.at(p).isSpace()) p++;
+  if (name.length()>p) {
     if (_objectVector.size() <= index) {
       int newSize = index * 2;
 #if TRACE_LOADER
@@ -403,9 +402,8 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
   int index = name.mid(1, p-1).toUInt();
   TraceFile* f = 0;
   p++;
-  if ((int)name.length()>p) {
-    while(name.at(p).isSpace()) p++;
-
+  while((name.length()>p) && name.at(p).isSpace()) p++;
+  if (name.length()>p) {
     if (_fileVector.size() <= index) {
       int newSize = index * 2;
 #if TRACE_LOADER
@@ -457,9 +455,8 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
   int index = name.mid(1, p-1).toUInt();
   TraceFunction* f = 0;
   p++;
-  if ((int)name.length()>p) {
-    while(name.at(p).isSpace()) p++;
-
+  while((name.length()>p) && name.at(p).isSpace()) p++;
+  if (name.length()>p) {
     if (_functionVector.size() <= index) {
       int newSize = index * 2;
 #if TRACE_LOADER
@@ -498,6 +495,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
     // model) has the same object and file as here given to us, but that was wrong:
     // that holds only if we make this assumption on the model...
   }
+
 
   return f;
 }
