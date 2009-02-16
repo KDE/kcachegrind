@@ -208,7 +208,7 @@ public slots:
   void showMessage(const QString&, int msec);
 
 private:
-  void init();
+  void resetState();
   void createLayoutActions();
   void createMiscActions();
   void setupMainWidget(MainWidget*);

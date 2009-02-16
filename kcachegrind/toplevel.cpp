@@ -82,13 +82,25 @@ TopLevel::TopLevel()
   : KXmlGuiWindow(0)
 {
     QDBusConnection::sessionBus().registerObject("/KCachegrind", this, QDBusConnection::ExportScriptableSlots);
-  init();
 
-  createDocks();
+    _progressBar = 0;
+    _statusbar = statusBar();
+    _statusLabel = new QLabel(_statusbar);
+    _statusbar->addWidget(_statusLabel, 1);
 
-  _multiView = new MultiView(this, this );
-  _multiView->setObjectName("MultiView");
-  setCentralWidget(_multiView);
+    _layoutCount = 1;
+    _layoutCurrent = 0;
+
+    resetState();
+
+    KConfig *kconfig = KGlobal::config().data();
+    GlobalConfig::config()->readOptions();
+
+    createDocks();
+
+    _multiView = new MultiView(this, this );
+    _multiView->setObjectName("MultiView");
+    setCentralWidget(_multiView);
 
   createActions();
 
@@ -109,19 +121,6 @@ TopLevel::TopLevel()
           this, SLOT(dumpVisibilityChanged(bool)));
 #endif
 
-  _statusbar = statusBar();
-  _statusLabel = new QLabel(_statusbar);
-#if 0
-  // how to do avoid main window resizing on large statusbar label?
-  QSizePolicy p(QSizePolicy::Fixed, QSizePolicy::Expanding);
-  _statusLabel->setSizePolicy(p);
-  _statusbar->setSizePolicy(p);
-#endif
-  _statusbar->addWidget(_statusLabel, 1);
-
-  KConfig *kconfig = KGlobal::config().data();
-  GlobalConfig::config()->readOptions();
-  _openRecent->loadEntries( KConfigGroup( kconfig, "" ) );
 
   // set toggle after reading configuration
   _showPercentage = GlobalConfig::showPercentage();
@@ -135,6 +134,7 @@ TopLevel::TopLevel()
 
   // KCachegrind for KDE 3.0.x does not allow to hide toolbars...
   setStandardToolBarMenuEnabled(true);
+  _openRecent->loadEntries( KConfigGroup( kconfig, "" ) );
 
   // QT dock windows are created before (using QT position restoring)
   createGUI();
@@ -149,12 +149,10 @@ TopLevel::TopLevel()
     QTimer::singleShot( 200, this, SLOT(slotShowTipOnStart()) );
 }
 
-void TopLevel::init()
+void TopLevel::resetState()
 {
   _activeParts.clear();
   _hiddenParts.clear();
-
-  _progressBar = 0;
 
   _data = 0;
   _function = 0;
@@ -162,9 +160,6 @@ void TopLevel::init()
   _eventType2 = 0;
   _groupType = ProfileContext::InvalidType;
   _group = 0;
-
-  _layoutCurrent = 0;
-  _layoutCount = 1;
 
   // for delayed slots
   _traceItemDelayed = 0;
@@ -338,6 +333,7 @@ void TopLevel::createDocks()
 	addDockWidget(Qt::LeftDockWidgetArea, _stackDock );
 	addDockWidget(Qt::LeftDockWidgetArea, _functionDock );
 	_stackDock->hide();
+	_partDock->hide();
 
 #if ENABLE_DUMPDOCK
 	addDockWidget( Qt::LeftDockWidgetArea, _dumpDock );
@@ -365,8 +361,9 @@ void TopLevel::readProperties(const KConfigGroup &c)
   QString traceName = c.readEntry("TraceName");
   if (!traceName.isEmpty()) {
       TraceData* d = new TraceData(this);
-      d->load(traceName);
-      setData(d);
+      int filesLoaded = d->load(traceName);
+      if (filesLoaded >0)
+	  setData(d);
   }
 }
 
@@ -936,8 +933,9 @@ void TopLevel::loadTrace(QString file)
 
   // this constructor enables progress bar callbacks
   TraceData* d = new TraceData(this);
-  d->load(file);
-  setData(d);
+  int filesLoaded = d->load(file);
+  if (filesLoaded >0)
+      setData(d);
 }
 
 
@@ -979,8 +977,9 @@ void TopLevel::addTrace(QString file)
 
   // this constructor enables progress bar callbacks
   TraceData* d = new TraceData(this);
-  d->load(file);
-  setData(d);
+  int filesLoaded = d->load(file);
+  if (filesLoaded >0)
+      setData(d);
 }
 
 
@@ -1010,8 +1009,9 @@ void TopLevel::reload()
 
   // this also keeps sure we have the same browsing position...
   TraceData* d = new TraceData(this);
-  d->load(trace);
-  setData(d);
+  int filesLoaded = d->load(trace);
+  if (filesLoaded >0)
+      setData(d);
 }
 
 void TopLevel::exportGraph()
@@ -1434,7 +1434,7 @@ void TopLevel::setData(TraceData* data)
   }
 
   // reset members
-  init();
+  resetState();
 
   _data = data;
 
