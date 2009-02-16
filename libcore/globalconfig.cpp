@@ -165,7 +165,7 @@ void GlobalConfig::saveOptions()
     delete sourceConfig;
 
     // general options
-    ConfigGroup* generalConfig = ConfigStorage::group("General");
+    ConfigGroup* generalConfig = ConfigStorage::group("GeneralSettings");
     generalConfig->setValue("ShowPercentage", _showPercentage,
 			    DEFAULT_SHOWPERCENTAGE);
     generalConfig->setValue("ShowExpanded", _showExpanded,
@@ -264,7 +264,7 @@ void GlobalConfig::readOptions()
     delete sourceConfig;
 
     // general options
-    ConfigGroup* generalConfig = ConfigStorage::group("General");
+    ConfigGroup* generalConfig = ConfigStorage::group("GeneralSettings");
     _showPercentage   = generalConfig->value("ShowPercentage",
 					     DEFAULT_SHOWPERCENTAGE).toBool();
     _showExpanded     = generalConfig->value("ShowExpanded",

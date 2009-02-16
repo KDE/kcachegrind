@@ -3177,11 +3177,12 @@ DynPool* TraceData::dynPool()
 
 /**
  * Two cases:
- *
  * - <base> is a directory: Load first profile data file available
  * - <base> is a file name without part/thread suffixes
+ *
+ * Returns false of nothing found to load
  */
-void TraceData::load(const QString& base)
+int TraceData::load(const QString& base)
 {
   bool baseExisting = true;
 
@@ -3228,7 +3229,7 @@ void TraceData::load(const QString& base)
 
   if (strList.count() == 0) {
       _traceName = base + '/' + file + ' ' + QObject::tr("(not found)");
-      return;
+      return 0;
   }
 
 
@@ -3245,6 +3246,7 @@ void TraceData::load(const QString& base)
 
   QStringList::const_iterator it;
   unsigned int maxNumber = 0;
+  int partsLoaded = 0;
   for (it = strList.begin(); it != strList.end(); ++it ) {
     TracePart* p = addPart(dir.path(), *it );
 
@@ -3287,11 +3289,15 @@ void TraceData::load(const QString& base)
     if (p->processID()==0) p->setProcessID(pid);
 
     _parts.append(p);
+    partsLoaded++;
   }
-  _parts.sort();
+  if (partsLoaded == 0) return 0;
 
+  _parts.sort();
   invalidateDynamicCost();
   updateFunctionCycles();
+
+  return partsLoaded;
 }
 
 TracePart* TraceData::addPart(const QString& dir, const QString& name)

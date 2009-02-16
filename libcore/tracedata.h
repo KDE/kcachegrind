@@ -1399,9 +1399,10 @@ class TraceData: public ProfileCostArray
   /**
    * Loads a trace file.
    *
-   * This adjusts the EventTypeSet according to given cost types
+   * This adjusts the EventTypeSet according to given cost types.
+   * Returns the number of parts loaded
    */
-  void load(const QString&);
+  int load(const QString&);
 
   /** returns true if something changed. These do NOT
    * invalidate the dynamic costs on a activation change,
