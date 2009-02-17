@@ -466,6 +466,7 @@ void FunctionSelection::setGroup(TraceCostItem* g)
     groupList->ensureItemVisible(item);
     // prohibit signalling of a group selection
     _inSetGroup = true;
+    _group = 0;
     groupList->setSelected(item, true);
     _inSetGroup = false;
   }
@@ -476,7 +477,6 @@ void FunctionSelection::setGroup(TraceCostItem* g)
 
 void FunctionSelection::refresh()
 {
-    groupList->setUpdatesEnabled(false);
     groupList->clear();
 
     // make cost columns as small as possible:
@@ -487,18 +487,11 @@ void FunctionSelection::refresh()
 
     if (!_data || _data->parts().count()==0) {
 	functionList->clear();
-	groupList->setUpdatesEnabled(true);
-	groupList->repaint();
 
 	// this clears all other lists
 	functionList->setSelected(functionList->firstChild(), true);
 	return;
     }
-
-  /*
-  qDebug("FunctionSelection::fillLists (%s)",
-         _data->command().ascii());
-  */
 
   TraceObjectMap::Iterator oit;
   TraceClassMap::Iterator cit;
@@ -562,8 +555,6 @@ void FunctionSelection::refresh()
 	  oldFunction = 0;
       }
 
-      // switching off QListView updates is buggy with some QT versions...
-      //functionList->setUpdatesEnabled(false);
       functionList->clear();
       setCostColumnWidths();
 
@@ -617,10 +608,6 @@ void FunctionSelection::refresh()
       else
 	functionList->clearSelection();
 
-      //functionList->setUpdatesEnabled(true);
-      //functionList->repaint();
-      groupList->setUpdatesEnabled(true);
-      groupList->repaint();
       return;
     }
   }
@@ -645,14 +632,12 @@ void FunctionSelection::refresh()
   if (item) {
     groupList->ensureItemVisible(item);
     _inSetGroup = true;
+    _group = 0;
     groupList->setSelected(item, true);
     _inSetGroup = false;
   }
   else
     groupList->clearSelection();
-
-  groupList->setUpdatesEnabled(true);
-  groupList->repaint();
 }
 
 
@@ -685,9 +670,6 @@ void FunctionSelection::groupSelected(Q3ListViewItem* i)
     return;
   }
 
-  // switching off QListView updates is buggy with some QT versions...
-  //functionList->setUpdatesEnabled(false);
-
   functionList->clear();
   setCostColumnWidths();
 
@@ -696,13 +678,6 @@ void FunctionSelection::groupSelected(Q3ListViewItem* i)
       total = (double) g->subCost(_eventType);
   else
       total = (double) _data->subCost(_eventType);
-#if 0
-  if (total == 0.0) {
-      functionList->setUpdatesEnabled(true);
-      functionList->repaint();
-      return;
-  }
-#endif
 
   QRegExp re(_searchString, false, true);
 
@@ -738,16 +713,10 @@ void FunctionSelection::groupSelected(Q3ListViewItem* i)
     _inSetFunction = false;
   }
 
-  //functionList->setUpdatesEnabled(true);
-  //functionList->repaint();
-
   // Do not emit signal if cost item was changed programatically
   if (!_inSetGroup) {
       if (_topLevel)
 	  _topLevel->setGroupDelayed(g);
-
-      //_selectedItem = g;
-      //selected(g);
   }
 }
 
