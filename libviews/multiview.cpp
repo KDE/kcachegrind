@@ -110,7 +110,7 @@ void MultiView::tabActivated(TabView* newActiveTab)
     if (0) qDebug() << "MultiView::tabActivated "
 		     << newActiveTab->name();
 
-    ProfileCost* oldActiveItem = 0;
+    CostItem* oldActiveItem = 0;
     if (_active) {
 	oldActiveItem = _active->activeItem();
 	_active->setActive(false);
@@ -122,7 +122,7 @@ void MultiView::tabActivated(TabView* newActiveTab)
 	TraceItemView::activated(_active->activeItem());
 }
 
-void MultiView::selected(TraceItemView* sender, ProfileCost* i)
+void MultiView::selected(TraceItemView* sender, CostItem* i)
 {
     if (0) qDebug() << "MultiView::selected " << i->name()
 		     << ", sender " << sender->widget()->name();
@@ -141,7 +141,7 @@ void MultiView::selected(TraceItemView* sender, ProfileCost* i)
     next->updateView();
 }
 
-void MultiView::activated(TraceItemView* sender, ProfileCost* i)
+void MultiView::activated(TraceItemView* sender, CostItem* i)
 {
     if (0) qDebug() << "MultiView::activated " << i->name()
 		     << ", sender " << sender->widget()->name();

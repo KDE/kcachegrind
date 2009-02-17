@@ -16,7 +16,7 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "cost.h"
+#include "costitem.h"
 
 #include "tracedata.h"
 
@@ -26,7 +26,7 @@
 //---------------------------------------------------
 // ProfileCost
 
-ProfileCost::ProfileCost(ProfileContext* c)
+CostItem::CostItem(ProfileContext* c)
 {
   _position = 0;
   _dep = 0;
@@ -35,22 +35,22 @@ ProfileCost::ProfileCost(ProfileContext* c)
   _context = c;
 }
 
-ProfileCost::~ProfileCost()
+CostItem::~CostItem()
 {}
 
 
-void ProfileCost::clear()
+void CostItem::clear()
 {
     invalidate();
 }
 
 
-QString ProfileCost::costString(EventTypeSet*)
+QString CostItem::costString(EventTypeSet*)
 {
     return QString("(no cost)");
 }
 
-QString ProfileCost::name() const
+QString CostItem::name() const
 {
   if (part()) {
       return QObject::tr("%1 from %2").arg(_dep->name()).arg(part()->name());
@@ -62,25 +62,25 @@ QString ProfileCost::name() const
   return QObject::tr("(unknown)");
 }
 
-QString ProfileCost::prettyName() const
+QString CostItem::prettyName() const
 {
     if (name().isEmpty()) return QObject::tr("(unknown)");
     return name();
 }
 
 
-QString ProfileCost::fullName() const
+QString CostItem::fullName() const
 {
   return QString("%1 %2")
     .arg(ProfileContext::typeName(type())).arg(prettyName());
 }
 
-QString ProfileCost::toString()
+QString CostItem::toString()
 {
   return QString("%1\n  [%3]").arg(fullName()).arg(costString(0));
 }
 
-void ProfileCost::invalidate()
+void CostItem::invalidate()
 {
   if (_dirty) return;
   _dirty = true;
@@ -89,27 +89,27 @@ void ProfileCost::invalidate()
     _dep->invalidate();
 }
 
-void ProfileCost::update()
+void CostItem::update()
 {
   _dirty = false;
 }
 
-TracePart* ProfileCost::part()
+TracePart* CostItem::part()
 {
   return _position ? _position->part() : 0;
 }
 
-const TracePart* ProfileCost::part() const
+const TracePart* CostItem::part() const
 {
   return _position ? _position->part() : 0;
 }
 
-TraceData* ProfileCost::data()
+TraceData* CostItem::data()
 {
   return _position ? _position->data() : 0;
 }
 
-const TraceData* ProfileCost::data() const
+const TraceData* CostItem::data() const
 {
   return _position ? _position->data() : 0;
 }
@@ -124,7 +124,7 @@ const int ProfileCostArray::InvalidIndex = -1;
 
 
 ProfileCostArray::ProfileCostArray(ProfileContext* context)
-    : ProfileCost(context)
+    : CostItem(context)
 {
   _cachedType = 0; // no virtual value cached
 
@@ -132,7 +132,7 @@ ProfileCostArray::ProfileCostArray(ProfileContext* context)
 }
 
 ProfileCostArray::ProfileCostArray()
-    : ProfileCost(ProfileContext::context(ProfileContext::UnknownType))
+    : CostItem(ProfileContext::context(ProfileContext::UnknownType))
 {
   _cachedType = 0; // no virtual value cached
 
@@ -148,7 +148,7 @@ void ProfileCostArray::clear()
     // simple set usage count to 0
     _count = 0;
 
-    ProfileCost::clear();
+    CostItem::clear();
 }
 
 

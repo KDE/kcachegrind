@@ -45,7 +45,7 @@
 // TraceJumpCost
 
 TraceJumpCost::TraceJumpCost(ProfileContext* c)
-    :ProfileCost(c)
+    :CostItem(c)
 {
     TraceJumpCost::clear();
 }

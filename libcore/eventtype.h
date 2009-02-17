@@ -23,7 +23,7 @@
 #include <QColor>
 
 #include "subcost.h"
-#include "cost.h"
+#include "costitem.h"
 
 class EventTypeSet;
 

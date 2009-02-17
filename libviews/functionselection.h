@@ -70,7 +70,7 @@ public slots:
   void groupContext(Q3ListViewItem*, const QPoint &, int);
 
 private:
-  ProfileCost* canShow(ProfileCost* i);
+  CostItem* canShow(CostItem* i);
   void doUpdate(int);
   void selectFunction();
   void refresh();

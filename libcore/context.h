@@ -23,7 +23,11 @@
 #include <QHash>
 
 /**
- * Base class for cost contexts.
+ * Base class for source contexts which event costs contained
+ * in a ProfileData instance, ie. a profiling experiment, can relate to.
+ *
+ * This only includes code/source related context. Any other cost
+ * context such as thread number, see DataContext, which relates to ProfileData.
  */
 class ProfileContext
 {

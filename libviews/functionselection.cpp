@@ -315,7 +315,7 @@ void FunctionSelection::groupTypeSelected(int cg)
 }
 
 
-ProfileCost* FunctionSelection::canShow(ProfileCost* i)
+CostItem* FunctionSelection::canShow(CostItem* i)
 {
     ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
 

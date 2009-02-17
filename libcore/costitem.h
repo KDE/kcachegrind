@@ -34,12 +34,12 @@ class TraceData;
 /**
  * Base class for cost items.
  */
-class ProfileCost
+class CostItem
 {
 public:
 
-    ProfileCost(ProfileContext*);
-    virtual ~ProfileCost();
+    CostItem(ProfileContext*);
+    virtual ~CostItem();
 
     ProfileContext* context() const { return _context; }
     ProfileContext::Type type() const { return context()->type(); }
@@ -87,15 +87,15 @@ public:
    * Sets a dependant to be invalidated when this cost is invalidated.
    * Call this function directly after the constructor.
    */
-  void setDependant(ProfileCost* d) { _dep = d; }
+  void setDependant(CostItem* d) { _dep = d; }
 
-  ProfileCost* dependant() { return _dep; }
+  CostItem* dependant() { return _dep; }
 
   /**
    * If this item is from a single profile data file, position
    * points to a TracePart, otherwise to a TraceData object.
    */
-  void setPosition(ProfileCost* p) { _position = p; }
+  void setPosition(CostItem* p) { _position = p; }
 
   // getters for specific positions, to be overwritten
   virtual TracePart* part();
@@ -113,8 +113,8 @@ public:
   ProfileContext* _context;
   bool _dirty;
 
-  ProfileCost* _position;
-  ProfileCost* _dep;
+  CostItem* _position;
+  CostItem* _dep;
 };
 
 
@@ -125,7 +125,7 @@ public:
  * The semantic of specific indexes is stored in the
  * EventTypeSet of the TraceData object holding this ProfileCostArray.
  */
-class ProfileCostArray: public ProfileCost
+class ProfileCostArray: public CostItem
 {
 public:
   /**

@@ -45,7 +45,7 @@ private slots:
   void renamedSlot(Q3ListViewItem*,int,const QString&);
 
 private:
-  ProfileCost* canShow(ProfileCost*);
+  CostItem* canShow(CostItem*);
   void doUpdate(int);
   void refresh();
 };

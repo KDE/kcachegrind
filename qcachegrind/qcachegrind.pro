@@ -29,7 +29,7 @@ QMAKE_EXTRA_COMPILERS = new_moc
 NHEADERS += qtconfig.h \
            toplevel.h \
            ../libcore/context.h \
-           ../libcore/cost.h \
+           ../libcore/costitem.h \
            ../libcore/subcost.h \
            ../libcore/eventtype.h \
            ../libcore/addr.h \
@@ -74,7 +74,7 @@ SOURCES += main.cpp \
            qtconfig.cpp \
            toplevel.cpp \
            ../libcore/context.cpp \
-           ../libcore/cost.cpp \
+           ../libcore/costitem.cpp \
            ../libcore/subcost.cpp \
            ../libcore/eventtype.cpp \
            ../libcore/addr.cpp \

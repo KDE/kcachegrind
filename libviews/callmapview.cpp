@@ -457,7 +457,7 @@ void CallMapView::selectedSlot(TreeMapItem* item, bool kbd)
   }
 }
 
-ProfileCost* CallMapView::canShow(ProfileCost* i)
+CostItem* CallMapView::canShow(CostItem* i)
 {
   ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
 

@@ -124,7 +124,7 @@ public:
   QString whatsThis() const;
   void setData(TraceData*);
   bool isViewVisible() { return !_isCollapsed; }
-  void selected(TraceItemView*, ProfileCost*);
+  void selected(TraceItemView*, CostItem*);
   bool active() const { return _active; }
   void setActive(bool);
 

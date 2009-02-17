@@ -283,8 +283,8 @@ void TopLevel::createDocks()
                    "<p>The <b>Cost</b> and <b>Calls</b> columns show the "
                    "cost used for all calls from the function in the line "
                    "above.</p>"));
-    connect(_stackSelection, SIGNAL(functionSelected(ProfileCost*)),
-	    this, SLOT(setTraceItemDelayed(ProfileCost*)));
+    connect(_stackSelection, SIGNAL(functionSelected(CostItem*)),
+	    this, SLOT(setTraceItemDelayed(CostItem*)));
     // actions are already created
     connect(_upAction, SIGNAL(triggered(bool)),
 	    _stackSelection, SLOT(browserUp()) );
@@ -1175,7 +1175,7 @@ void TopLevel::setDirectionDelayed()
 }
 
 
-void TopLevel::setTraceItemDelayed(ProfileCost* i)
+void TopLevel::setTraceItemDelayed(CostItem* i)
 {
   // no need to select same item a 2nd time...
   if (_traceItemDelayed == i) return;

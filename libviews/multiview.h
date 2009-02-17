@@ -47,8 +47,8 @@ public:
   void setChildCount(int);
   int childCount() { return _views.count(); }
 
-  void selected(TraceItemView*, ProfileCost*);
-  void activated(TraceItemView*, ProfileCost*);
+  void selected(TraceItemView*, CostItem*);
+  void activated(TraceItemView*, CostItem*);
 
   void saveLayout(const QString& prefix, const QString& postfix);
   void restoreLayout(const QString& prefix, const QString& postfix);

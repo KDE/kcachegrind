@@ -1,6 +1,6 @@
 set(core_SRCS
    context.cpp
-   cost.cpp
+   costitem.cpp
    eventtype.cpp
    subcost.cpp
    addr.cpp

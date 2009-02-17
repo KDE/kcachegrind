@@ -56,7 +56,7 @@ private slots:
   void activatedSlot(TreeMapItem*);
 
 private:
-  ProfileCost* canShow(ProfileCost*);
+  CostItem* canShow(CostItem*);
   void doUpdate(int);
 
   bool _showCallers;

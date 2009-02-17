@@ -137,7 +137,7 @@ void PartSelection::setData(TraceData* data)
 }
 
 
-ProfileCost* PartSelection::canShow(ProfileCost* i)
+CostItem* PartSelection::canShow(CostItem* i)
 {
     ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
 

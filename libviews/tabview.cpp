@@ -319,7 +319,7 @@ TabView::TabView(TraceItemView* parentView,
 
   // default positions...
   // Keep following order in sync with DEFAULT_xxxTABS defines!
-  
+
   addTop( addTab( tr("Types"),
 		  new EventTypeView(this, 0,
 				   "EventTypeView")));
@@ -753,7 +753,7 @@ void TabView::resizeEvent(QResizeEvent* e)
          e->size().width(), e->size().height());
 }
 
-void TabView::selected(TraceItemView*, ProfileCost* s)
+void TabView::selected(TraceItemView*, CostItem* s)
 {
     // we set selected item for our own children
     select(s);
@@ -955,8 +955,8 @@ void TabView::restoreOptions(const QString& prefix, const QString& postfix)
     // restore selected item
     t = ProfileContext::type(selectedType);
     if (t==ProfileContext::InvalidType) t = ProfileContext::Function;
-    ProfileCost* selectedItem = _data->search(t, selectedName,
-					      _eventType, activeItem);
+    ProfileCostArray* selectedItem;
+    selectedItem = _data->search(t, selectedName, _eventType, activeItem);
     if (selectedItem)
 	selected(this, selectedItem);
 

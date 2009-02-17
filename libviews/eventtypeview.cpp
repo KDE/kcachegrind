@@ -172,7 +172,7 @@ void EventTypeView::activatedSlot(Q3ListViewItem * i)
       selectedEventType2(ct);
 }
 
-ProfileCost* EventTypeView::canShow(ProfileCost* i)
+CostItem* EventTypeView::canShow(CostItem* i)
 {
     if (!i) return 0;
 

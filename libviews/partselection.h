@@ -67,7 +67,7 @@ public slots:
 
 private:
     // reimplementations of TraceItemView
-    ProfileCost* canShow(ProfileCost*);
+    CostItem* canShow(CostItem*);
     void doUpdate(int);
 
     // helper for doUpdate

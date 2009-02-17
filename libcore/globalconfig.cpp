@@ -326,7 +326,7 @@ void GlobalConfig::addDefaultTypes()
     }
 }
 
-QColor GlobalConfig::groupColor(ProfileCost* cost)
+QColor GlobalConfig::groupColor(CostItem* cost)
 {
    QString n;
 

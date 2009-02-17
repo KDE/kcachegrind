@@ -34,6 +34,7 @@
 
 #include <QList>
 
+#include "costitem.h"
 #include "subcost.h"
 #include "utils.h"
 #include "addr.h"
@@ -201,7 +202,7 @@ typedef QMap<Addr, TraceInstr> TraceInstrMap;
 /**
  * Cost of a (conditional) jump.
  */
-class TraceJumpCost: public ProfileCost
+class TraceJumpCost: public CostItem
 {
  public:
     TraceJumpCost(ProfileContext*);

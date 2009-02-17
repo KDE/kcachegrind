@@ -88,13 +88,13 @@ public:
   void set(ProfileContext::Type g) { _newGroupType = g; }
   void set(const TracePartList& l) { _newPartList = l; }
   // returns false if nothing can be shown for this trace item
-  bool activate(ProfileCost* i);
-  void select(ProfileCost* i);
+  bool activate(CostItem* i);
+  void select(CostItem* i);
   void notifyChange(int changeType) { _status |= changeType; }
   // all in one
   bool set(int, TraceData*, EventType*, EventType*,
 	   ProfileContext::Type, const TracePartList&,
-	   ProfileCost*, ProfileCost*);
+	   CostItem*, CostItem*);
 
   // general update request, call if view is/gets visible
   void updateView(bool force = false);
@@ -103,19 +103,19 @@ public:
    * Notification from child views.
    * Default implementation notifies parent
    */
-  virtual void selected(TraceItemView* sender, ProfileCost*);
+  virtual void selected(TraceItemView* sender, CostItem*);
   virtual void partsSelected(TraceItemView* sender, const TracePartList&);
   virtual void directionActivated(TraceItemView* sender, Direction);
   virtual void selectedEventType(TraceItemView* sender, EventType*);
   virtual void selectedEventType2(TraceItemView* sender, EventType*);
-  virtual void activated(TraceItemView* sender, ProfileCost*);
+  virtual void activated(TraceItemView* sender, CostItem*);
   virtual void selectedGroupType(TraceItemView* sender, ProfileContext::Type);
 
   // getters...
   // always get the newest values
   TraceData* data() const { return _newData; }
-  ProfileCost* activeItem() const { return _newActiveItem; }
-  ProfileCost* selectedItem() const { return _newSelectedItem; }
+  CostItem* activeItem() const { return _newActiveItem; }
+  CostItem* selectedItem() const { return _newSelectedItem; }
   EventType* eventType() const { return _newEventType; }
   EventType* eventType2() const { return _newEventType2; }
   ProfileContext::Type groupType() const { return _newGroupType; }
@@ -147,7 +147,7 @@ public:
    * Use the methods like data() instead of _data here, as
    * _data possibly will give old/wrong information.
    */
-  virtual ProfileCost* canShow(ProfileCost* i) { return i; }
+  virtual CostItem* canShow(CostItem* i) { return i; }
 
   /* convenience functions for often used context menu items */
   void addEventTypeMenu(QMenu*,bool withCost2 = true);
@@ -155,9 +155,9 @@ public:
 
 protected:
   // helpers to call selected()/activated() of parentView
-  void selected(ProfileCost*);
+  void selected(CostItem*);
   void partsSelected(const TracePartList&);
-  void activated(ProfileCost*);
+  void activated(CostItem*);
   void selectedEventType(EventType*);
   void selectedEventType2(EventType*);
   void selectedGroupType(ProfileContext::Type);
@@ -176,14 +176,14 @@ protected:
 
   TraceData* _data;
   TracePartList _partList;
-  ProfileCost *_activeItem, *_selectedItem;
+  CostItem *_activeItem, *_selectedItem;
   EventType *_eventType, *_eventType2;
   ProfileContext::Type _groupType;
 
 private:
   TraceData* _newData;
   TracePartList _newPartList;
-  ProfileCost *_newActiveItem, *_newSelectedItem;
+  CostItem *_newActiveItem, *_newSelectedItem;
   EventType *_newEventType, *_newEventType2;
   ProfileContext::Type _newGroupType;
 

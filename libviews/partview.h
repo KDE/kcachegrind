@@ -45,7 +45,7 @@ private slots:
   void selectionChangedSlot();
 
 private:
-  ProfileCost* canShow(ProfileCost*);
+  CostItem* canShow(CostItem*);
   void doUpdate(int);
 
   bool _inSelectionUpdate;

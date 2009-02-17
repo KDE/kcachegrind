@@ -556,7 +556,7 @@ GraphExporter::~GraphExporter()
 }
 
 
-void GraphExporter::reset(TraceData*, ProfileCost* i, EventType* ct,
+void GraphExporter::reset(TraceData*, CostItem* i, EventType* ct,
                           ProfileContext::Type gt, QString filename)
 {
 	_graphCreated = false;
@@ -1791,7 +1791,7 @@ void CallGraphView::resizeEvent(QResizeEvent* e)
 		updateSizes(e->size());
 }
 
-ProfileCost* CallGraphView::canShow(ProfileCost* i)
+CostItem* CallGraphView::canShow(CostItem* i)
 {
 	if (i) {
 		switch (i->type()) {

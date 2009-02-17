@@ -55,7 +55,7 @@ QString TraceItemView::whatsThis() const
     return QObject::tr("No description available");
 }
 
-void TraceItemView::select(ProfileCost* i)
+void TraceItemView::select(CostItem* i)
 {
     _newSelectedItem = i;
 }
@@ -83,7 +83,7 @@ void TraceItemView::restoreOptions(const QString&, const QString&)
 {}
 
 
-bool TraceItemView::activate(ProfileCost* i)
+bool TraceItemView::activate(CostItem* i)
 {
     i = canShow(i);
     _newActiveItem = i;
@@ -107,7 +107,7 @@ TraceFunction* TraceItemView::activeFunction()
 bool TraceItemView::set(int changeType, TraceData* d,
 			EventType* t1, EventType* t2,
 			ProfileContext::Type g, const TracePartList& l,
-                        ProfileCost* a, ProfileCost* s)
+                        CostItem* a, CostItem* s)
 {
   _status |= changeType;
   _newData = d;
@@ -260,7 +260,7 @@ void TraceItemView::updateView(bool force)
 }
 
 
-void TraceItemView::selected(TraceItemView* /*sender*/, ProfileCost* i)
+void TraceItemView::selected(TraceItemView* /*sender*/, CostItem* i)
 {
 #if TRACE_UPDATES
   qDebug() << (widget() ? widget()->name() : "TraceItemView")
@@ -289,7 +289,7 @@ void TraceItemView::partsSelected(TraceItemView* /*sender*/, const TracePartList
     if (_topLevel) _topLevel->activePartsChangedSlot(l);
 }
 
-void TraceItemView::activated(TraceItemView* /*sender*/, ProfileCost* i)
+void TraceItemView::activated(TraceItemView* /*sender*/, CostItem* i)
 {
 #if TRACE_UPDATES
   qDebug() << (widget() ? widget()->name() : "TraceItemView")
@@ -342,7 +342,7 @@ void TraceItemView::doUpdate(int)
 {
 }
 
-void TraceItemView::selected(ProfileCost* i)
+void TraceItemView::selected(CostItem* i)
 {
   if (_parentView)
       _parentView->selected(this, i);
@@ -357,7 +357,7 @@ void TraceItemView::partsSelected(const TracePartList& l)
       if (_topLevel) _topLevel->activePartsChangedSlot(l);
 }
 
-void TraceItemView::activated(ProfileCost* i)
+void TraceItemView::activated(CostItem* i)
 {
 #if TRACE_UPDATES
   qDebug() << (widget() ? widget()->name() : "TraceItemView")

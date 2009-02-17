@@ -54,7 +54,7 @@ private slots:
   void activatedSlot(Q3ListViewItem *);
 
 private:
-  ProfileCost* canShow(ProfileCost*);
+  CostItem* canShow(CostItem*);
   void doUpdate(int);
   void refresh();
   void setColumnWidths();

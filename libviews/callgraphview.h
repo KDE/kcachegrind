@@ -303,7 +303,7 @@ public:
 		      QString filename = QString());
 	virtual ~GraphExporter();
 
-	void reset(TraceData*, ProfileCost*, EventType*,
+	void reset(TraceData*, CostItem*, EventType*,
 		   ProfileContext::Type,
 		   QString filename = QString());
 
@@ -352,7 +352,7 @@ private:
 	void buildGraph(TraceFunction*, int, bool, double);
 
 	QString _dotName;
-	ProfileCost* _item;
+	CostItem* _item;
 	EventType* _eventType;
 	ProfileContext::Type _groupType;
 	QTemporaryFile* _tmpFile;
@@ -631,7 +631,7 @@ protected:
 
 private:
 	void updateSizes(QSize s = QSize(0,0));
-	ProfileCost* canShow(ProfileCost*);
+	CostItem* canShow(CostItem*);
 	void doUpdate(int);
 	void refresh();
 	void makeFrame(CanvasNode*, bool active);
