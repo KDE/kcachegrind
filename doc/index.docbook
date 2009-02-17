@@ -204,17 +204,16 @@ with these tools, the next section provides short quickstart tutorials to get yo
 <title>&callgrind;</title>
 
 <para>
-&callgrind; is available from
-<ulink url="http://kcachegrind.sf.net">
-http://kcachegrind.sf.net</ulink>.
+&callgrind; is a part of &valgrind;, 
+<ulink url="http://valgrind.org">http://valgrind.org</ulink>.
 Note that it previously was called &calltree;, but that name was misleading.
 </para>
 
 <para>
 Most common use is to prefix the command line to start your application with
-<application>callgrind</application>, like in
+<application>valgrind --tool=callgrind</application>, like in
 
-<blockquote><para><command>callgrind myprogram myargs</command></para></blockquote>
+<blockquote><para><command>valgrind --tool-callgrind myprogram myargs</command></para></blockquote>
 
 At program termination, a file <filename>callgrind.out.pid</filename> will be
 generated which can be loaded into &kcachegrind;.
@@ -229,7 +228,7 @@ select the menu item View/Reload. This corresponds to a call to
 <symbol>KonqMainWindow::slotReload</symbol>. Use
 
 <blockquote><para><command>
-callgrind --dump-before=KonqMainWindow::slotReload konqueror </command></para></blockquote>
+valgrind --tool=callgrind --dump-before=KonqMainWindow::slotReload konqueror </command></para></blockquote>
 
 This will produce multiple profile data files with an additional
 sequential number at the end of the filename. A file without such an
@@ -273,7 +272,7 @@ on the system. Each one can be loaded into &kcachegrind; on its own.
 <title>User Interface Basics</title>
 
 <para>
-When starting &kcachegrind; with a profile data file as argument, or after loading one with File/Open, you will see a navigation panel containing the function list
+When starting &kcachegrind; with a profile data file as argument, or after loading one with <menuchoice><guimenu>File</guimenu> <guimenuitem>Open...</guimenuitem> </menuchoice>, you will see a navigation panel containing the function list
 at the left; and, on the right the main part, an area with visualizations for
 a selected function. This visualization area can be arbitrarily configured to
 show multiple visualizations at once.
@@ -637,7 +636,7 @@ Select such a call information line to activate the call destination.
 <listitem><para><action>
 Opens an empty toplevel window into which you can load profile data.
 </action>
-This action is not really needed, as File/Open will give you a new toplevel window when the current one shows already some data.
+This action is not really needed, as <menuchoice><guimenu>File</guimenu> <guimenuitem>Open...</guimenuitem> </menuchoice> will give you a new toplevel window when the current one shows already some data.
 </para></listitem>
 </varlistentry>
 
@@ -652,10 +651,10 @@ This action is not really needed, as File/Open will give you a new toplevel wind
 <listitem><para><action>
 Pops up the File Open Dialog to choose a profile data file to be loaded.
 </action>
-If there is some data already shown in the current toplevel window, this will open a new window; if you want to open additional profile data in the current window, use File/Add.
+If there is some data already shown in the current toplevel window, this will open a new window; if you want to open additional profile data in the current window, use <menuchoice><guimenu>File</guimenu> <guimenuitem>Add...</guimenuitem> </menuchoice>.
 </para>
 <para>
-The name of profile data files usually ends in ..-, where and are optional and are used for multiple profile data files belonging to one application run. By loading a file ending only in ., eventually existing data files for this run, but with additional endings, are loaded too.
+The name of profile data files usually ends in '.pid.part-threadID', where 'part' and 'threadID' are optional 'pid' and 'part' are used for multiple profile data files belonging to one application run. By loading a file ending only in '.pid', eventually existing data files for this run, but with additional endings, are loaded too.
 </para>
 <para>
 Example: If there exist profile data files cachegrind.out.123 and cachegrind.out.123.1, by loading the first, the second will be automatically loaded too.
@@ -665,7 +664,7 @@ Example: If there exist profile data files cachegrind.out.123 and cachegrind.out
 <varlistentry>
 <term><menuchoice>
 <guimenu>File</guimenu>
-<guimenuitem>Add</guimenuitem>
+<guimenuitem>Add...</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>
 Adds a profile data file to the current window.
@@ -800,7 +799,7 @@ So, for example, for main(), you will always have a inclusive cost of almost 100
 </question>
 <answer>
 <para>
-Obviously &kcachegrind; is wrongly installed on your system. It is recommended to compile it with the installation prefix to be your system wide &kde; base folder like <command>configure --prefix=/opt/kde3; make install</command>.
+Obviously &kcachegrind; is wrongly installed on your system. It is recommended to compile it with the installation prefix to be your system wide &kde; base folder like <command>configure --prefix=/opt/kde4; make install</command>.
 If you choose another folder like $HOME/kde, you should set the environment variable KDEDIR to this folder before running &kcachegrind;.
 </para>
 </answer>
@@ -913,7 +912,7 @@ further installation and compile instructions.
 <title>Requirements</title>
 
 <para>
-In order to successfully use &kcachegrind;, you need &kde; 3.x.  For
+In order to successfully use &kcachegrind;, you need &kde; 4.x.  For
 generating profile data, &cachegrind; or &calltree;/&callgrind; is recommend.
 </para>
 </sect1>
