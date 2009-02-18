@@ -47,6 +47,7 @@
 
 class QProcess;
 class QTemporaryFile;
+class QIODevice;
 
 class CanvasNode;
 class CanvasEdge;
@@ -330,7 +331,7 @@ public:
 	void createGraph();
 
 	// calls createGraph before dumping of not already created
-	void writeDot();
+	void writeDot(QIODevice* = 0);
 
 	// to map back to structures when parsing a layouted graph
 

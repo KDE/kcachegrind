@@ -658,7 +658,7 @@ void GraphExporter::createGraph()
 }
 
 
-void GraphExporter::writeDot()
+void GraphExporter::writeDot(QIODevice* device)
 {
 	if (!_item)
 		return;
@@ -666,16 +666,20 @@ void GraphExporter::writeDot()
 	QFile* file = 0;
 	QTextStream* stream = 0;
 
-	if (_tmpFile)
-		stream = new QTextStream(_tmpFile);
+	if (device)
+	    stream = new QTextStream(device);
 	else {
+	    if (_tmpFile)
+		stream = new QTextStream(_tmpFile);
+	    else {
 		file = new QFile(_dotName);
 		if ( !file->open(QIODevice::WriteOnly ) ) {
-			qDebug() << "Can not write dot file '"<< _dotName << "'";
-                        delete file;
-			return;
+		    qDebug() << "Can not write dot file '"<< _dotName << "'";
+		    delete file;
+		    return;
 		}
 		stream = new QTextStream(file);
+	    }
 	}
 
 	if (!_graphCreated)
@@ -886,15 +890,16 @@ void GraphExporter::writeDot()
 
 	*stream << "}\n";
 
-	if (_tmpFile) {
+	if (!device) {
+	    if (_tmpFile) {
 		stream->flush();
 		_tmpFile->seek(0);
-		delete stream;
-	} else {
+	    } else {
 		file->close();
 		delete file;
-		delete stream;
+	    }
 	}
+	delete stream;
 }
 
 void GraphExporter::sortEdges()
@@ -2011,8 +2016,6 @@ void CallGraphView::refresh()
 
 	_selectedNode = 0;
 	_selectedEdge = 0;
-	_exporter.reset(_data, _activeItem, _eventType, _groupType);
-	_exporter.writeDot();
 
 	/*
 	 * Call 'dot' asynchronoulsy in the background with the aim to
@@ -2035,7 +2038,7 @@ void CallGraphView::refresh()
 		renderProgram = "twopi";
 	else
 		renderProgram = "dot";
-	renderArgs << _exporter.filename() << "-Tplain";
+	renderArgs << "-Tplain";
 
 	_unparsedOutput = QString();
 
@@ -2047,6 +2050,11 @@ void CallGraphView::refresh()
 	connect(_renderProcess, SIGNAL(finished(int,QProcess::ExitStatus)),
 		this, SLOT(dotExited()));
 	_renderProcess->start(renderProgram, renderArgs);
+
+	_exporter.reset(_data, _activeItem, _eventType, _groupType);
+	_exporter.writeDot(_renderProcess);
+	_renderProcess->closeWriteChannel();
+
 	_renderProcessCmdLine =  renderProgram + " " + renderArgs.join(" ");
 
 	qDebug("CallGraphView::refresh: Started process %p, '%s'",
