@@ -44,9 +44,9 @@
 #include <QList>
 #include <QPixmap>
 #include <QDesktopWidget>
+#include <QProcess>
 #include <Qt3Support/Q3PointArray>
 #include <Qt3Support/Q3PopupMenu>
-#include <Qt3Support/Q3Process>
 
 
 #include "config.h"
@@ -1507,7 +1507,8 @@ CallGraphView::CallGraphView(TraceItemView* parentView, QWidget* parent,
 
 	_renderProcess = 0;
 	_prevSelectedNode = 0;
-	connect(&_renderTimer, SIGNAL(timeout()), this, SLOT(showRenderWarning()));
+	connect(&_renderTimer, SIGNAL(timeout()),
+		this, SLOT(showRenderWarning()));
 }
 
 CallGraphView::~CallGraphView()
@@ -1941,13 +1942,32 @@ void CallGraphView::showRenderWarning()
 	showText(s);
 }
 
+void CallGraphView::showRenderError(QString s)
+{
+    QString err;
+    err = tr("No graph available because the layouting process failed.\n");
+    if (_renderProcess)
+	err += tr("Trying to run the following command did not work:\n"
+		  "'%1'\n").arg(_renderProcessCmdLine);
+    err += tr("Please check that 'dot' is installed (package GraphViz).");
+
+    if (!s.isEmpty())
+	err += QString("\n\n%1").arg(s);
+
+    showText(err);
+}
+
 void CallGraphView::stopRendering()
 {
 	if (!_renderProcess)
 		return;
 
+	qDebug("CallGraphView::stopRendering: Killing QProcess %p",
+	       _renderProcess);
+
 	_renderProcess->kill();
-	delete _renderProcess;
+
+	// forget about this process, not interesting any longer
 	_renderProcess = 0;
 	_unparsedOutput = QString();
 
@@ -1956,9 +1976,9 @@ void CallGraphView::stopRendering()
 
 void CallGraphView::refresh()
 {
-	// trigger start of background rendering
+	// trigger start of new layouting via 'dot'
 	if (_renderProcess)
-		stopRendering();
+	    stopRendering();
 
 	// we want to keep a selected node item at the same global position
 	_prevSelectedNode = _selectedNode;
@@ -1969,7 +1989,8 @@ void CallGraphView::refresh()
 	}
 
 	if (!_data || !_activeItem) {
-		showText(tr("No item activated for which to draw the call graph."));
+		showText(tr("No item activated for which to "
+			    "draw the call graph."));
 		return;
 	}
 
@@ -1980,7 +2001,8 @@ void CallGraphView::refresh()
 	case ProfileContext::Call:
 		break;
 	default:
-		showText(tr("No call graph can be drawn for the active item."));
+		showText(tr("No call graph can be drawn for "
+			    "the active item."));
 		return;
 	}
 
@@ -1992,33 +2014,43 @@ void CallGraphView::refresh()
 	_exporter.reset(_data, _activeItem, _eventType, _groupType);
 	_exporter.writeDot();
 
-	_renderProcess = new Q3Process(this);
+	/*
+	 * Call 'dot' asynchronoulsy in the background with the aim to
+	 * - have responsive GUI while layout task runs (potentially long!)
+	 * - notify user about a long run, using a timer
+	 * - kill long running 'dot' processes when another layout is
+	 *   requested, as old data is not needed any more
+	 *
+	 * Even after killing a process, the QProcess needs some time
+	 * to make sure the process is destroyed; also, stdout data
+	 * still can be delivered after killing. Thus, there can/should be
+	 * multiple QProcess's at one time.
+	 * The QProcess we currently wait for data from is <_renderProcess>
+	 * Signals from other QProcesses are ignored with the exception of
+	 * the finished() signal, which triggers QProcess destruction.
+	 */
+	QString renderProgram;
+	QStringList renderArgs;
 	if (_layout == GraphOptions::Circular)
-		_renderProcess->addArgument("twopi");
+		renderProgram = "twopi";
 	else
-		_renderProcess->addArgument("dot");
-	_renderProcess->addArgument(_exporter.filename());
-	_renderProcess->addArgument("-Tplain");
-
-	connect(_renderProcess, SIGNAL(readyReadStdout()), this, SLOT(readDotOutput()));
-	connect(_renderProcess, SIGNAL(processExited()), this, SLOT(dotExited()));
-
-	if (1)
-		qDebug() << "Running '" << _renderProcess->arguments().join(" ") << "'...";
-
-	if ( !_renderProcess->start() ) {
-		QString e = tr("No call graph is available because the following\n"
-			       "command cannot be run:\n'%1'\n").arg(_renderProcess->arguments().join(" "));
-		e += tr("Please check that 'dot' is installed (package GraphViz).");
-		showText(e);
-
-		delete _renderProcess;
-		_renderProcess = 0;
-
-		return;
-	}
+		renderProgram = "dot";
+	renderArgs << _exporter.filename() << "-Tplain";
 
 	_unparsedOutput = QString();
+
+	_renderProcess = new QProcess(this);
+	connect(_renderProcess, SIGNAL(readyReadStandardOutput()),
+		this, SLOT(readDotOutput()));
+	connect(_renderProcess, SIGNAL(error(QProcess::ProcessError)),
+		this, SLOT(dotError()));
+	connect(_renderProcess, SIGNAL(finished(int,QProcess::ExitStatus)),
+		this, SLOT(dotExited()));
+	_renderProcess->start(renderProgram, renderArgs);
+	_renderProcessCmdLine =  renderProgram + " " + renderArgs.join(" ");
+
+	qDebug("CallGraphView::refresh: Started process %p, '%s'",
+	       _renderProcess, _renderProcessCmdLine.ascii());
 
 	// layouting of more than seconds is dubious
 	_renderTimer.setSingleShot(true);
@@ -2027,11 +2059,44 @@ void CallGraphView::refresh()
 
 void CallGraphView::readDotOutput()
 {
-	_unparsedOutput.append(_renderProcess->readStdout() );
+    QProcess* p = qobject_cast<QProcess*>(sender());
+    qDebug("CallGraphView::readDotOutput: QProcess %p", p);
+
+    // signal from old/uninteresting process?
+    if (!_renderProcess) return;
+    if (p != _renderProcess) return;
+
+    _unparsedOutput.append(_renderProcess->readAllStandardOutput());
 }
+
+void CallGraphView::dotError()
+{
+    QProcess* p = qobject_cast<QProcess*>(sender());
+    qDebug("CallGraphView::dotError: Got %d from QProcess %p",
+	   p->error(), p);
+
+    // signal from old/uninteresting process?
+    if (!_renderProcess) return;
+    if (p != _renderProcess) return;
+
+    showRenderError(_renderProcess->readAllStandardError());
+
+    // not interesting any longer
+    _renderProcess = 0;
+}
+
 
 void CallGraphView::dotExited()
 {
+    QProcess* p = qobject_cast<QProcess*>(sender());
+    qDebug("CallGraphView::dotExited: QProcess %p", p);
+    delete p;
+
+    // signal from old/uninteresting process?
+    if (!_renderProcess) return;
+    if (p != _renderProcess) return;
+    _renderProcess = 0;
+
 	QString line, cmd;
 	CanvasNode *rItem;
 	QGraphicsEllipseItem* eItem;

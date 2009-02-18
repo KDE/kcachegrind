@@ -45,7 +45,7 @@
 #include "tracedata.h"
 #include "traceitemview.h"
 
-class Q3Process;
+class QProcess;
 class QTemporaryFile;
 
 class CanvasNode;
@@ -605,8 +605,10 @@ public slots:
 	void zoomRectMoveFinished();
 
 	void showRenderWarning();
+	void showRenderError(QString);
 	void stopRendering();
 	void readDotOutput();
+	void dotError();
 	void dotExited();
 
 	// context menu trigger handlers
@@ -671,7 +673,8 @@ private:
 	ZoomPosition _zoomPosition, _lastAutoPosition;
 
 	// background rendering
-	Q3Process* _renderProcess;
+	QProcess* _renderProcess;
+	QString _renderProcessCmdLine;
 	QTimer _renderTimer;
 	GraphNode* _prevSelectedNode;
 	QPoint _prevSelectedPos;
