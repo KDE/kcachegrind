@@ -27,6 +27,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QRegExp>
+#include <QProcess>
 #include <Qt3Support/Q3PopupMenu>
 
 #include "config.h"
@@ -629,23 +630,29 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     dumpStartAddr = (nextCostAddr<20) ? Addr(0) : nextCostAddr -20;
     dumpEndAddr   = (*tmpIt).addr() +20;
 
-    // generate command
-    QString popencmd, objfile;
+    // call objdump synchroneously
+    QString objfile;
     objfile = function->object()->name();
     objfile = objfile.replace(QRegExp("[\"']"), ""); // security...
-    popencmd = QString("objdump -C -d "
-                       "--start-address=0x%1 --stop-address=0x%2 \"%3\"")
-	.arg(dumpStartAddr.toString()).arg(dumpEndAddr.toString())
-	.arg(objfile);
-    if (1) qDebug("Running '%s'...", popencmd.ascii());
+    QStringList objdumpArgs = QStringList()
+	<< "-C" << "-d"
+	<< QString("--start-address=0x%1").arg(dumpStartAddr.toString())
+	<< QString("--stop-address=0x%1").arg(dumpEndAddr.toString())
+	<< objfile;
+    QString objdumpCmd = "objdump " + objdumpArgs.join(" ");
+
+    if (1) qDebug("Running '%s'...", objdumpCmd.ascii());
 
     // and run...
-    FILE* iFILE = popen(QFile::encodeName( popencmd ), "r");
-    if (iFILE == 0) {
+    QProcess objdump;
+    objdump.start("objdump", objdumpArgs);
+    if (!objdump.waitForStarted() ||
+	!objdump.waitForFinished()) {
+
 	new InstrItem(this, this, 1,
 		      tr("There is an error trying to execute the command"));
 	new InstrItem(this, this, 2, "");
-	new InstrItem(this, this, 3, popencmd);
+	new InstrItem(this, this, 3, objdumpCmd);
 	new InstrItem(this, this, 4, "");
 	new InstrItem(this, this, 5,
 		      tr("Check that you have installed 'objdump'."));
@@ -653,8 +660,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 		      tr("This utility can be found in the 'binutils' package."));
 	return false;
     }
-    QFile file;
-    file.open(QIODevice::ReadOnly, iFILE);
+
 
 #define BUF_SIZE  256
 
@@ -678,7 +684,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 
         // read next objdump line
         while (1) {
-          readBytes=file.readLine(buf, BUF_SIZE);
+	  readBytes=objdump.readLine(buf, BUF_SIZE);
           if (readBytes<=0) {
 	    objAddr = 0;
 	    break;
@@ -687,7 +693,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
           objdumpLineno++;
           if (readBytes == BUF_SIZE) {
 	    qDebug("ERROR: Line %d of '%s' too long\n",
-                   objdumpLineno, popencmd.ascii());
+                   objdumpLineno, objdumpCmd.ascii());
           }
           else if ((readBytes>0) && (buf[readBytes-1] == '\n'))
 	    buf[readBytes-1] = 0;
@@ -855,9 +861,6 @@ bool InstrView::fillInstrRange(TraceFunction* function,
         _inSelectionUpdate = false;
     }
 
-    file.close();
-    pclose(iFILE);
-
     // for arrows: go down the list according to list sorting
     sort();
     Q3ListViewItem *item1, *item2;
@@ -905,7 +908,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	new InstrItem(this, this, 1,
 		      tr("There seems to be an error trying to execute the command"));
 	new InstrItem(this, this, 2, "");
-	new InstrItem(this, this, 3, popencmd);
+	new InstrItem(this, this, 3, objdumpCmd);
 	new InstrItem(this, this, 4, "");
 	new InstrItem(this, this, 5,
 		      tr("Check that the ELF object used in the command exists."));
