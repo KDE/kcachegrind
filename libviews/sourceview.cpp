@@ -559,13 +559,13 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
       }
 
       if (nextCostLineno == 0) {
-	  new SourceItem(this, this, fileno, 0, false,
-			 tr("There is no cost of current selected type associated"));
 	  new SourceItem(this, this, fileno, 1, false,
-			 tr("with any source line of this function in file"));
+			 tr("There is no cost of current selected type associated"));
 	  new SourceItem(this, this, fileno, 2, false,
-			 QString("    '%1'").arg(sf->function()->prettyName()));
+			 tr("with any source line of this function in file"));
 	  new SourceItem(this, this, fileno, 3, false,
+			 QString("    '%1'").arg(sf->function()->prettyName()));
+	  new SourceItem(this, this, fileno, 4, false,
 			 tr("Thus, no annotated source can be shown."));
 	  return;
       }
@@ -601,31 +601,31 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   }
 
   if (nextCostLineno == 0) {
-    new SourceItem(this, this, fileno, 0, false,
-                   tr("There is no source available for the following function:"));
     new SourceItem(this, this, fileno, 1, false,
+                   tr("There is no source available for the following function:"));
+    new SourceItem(this, this, fileno, 2, false,
                    QString("    '%1'").arg(sf->function()->prettyName()));
     if (sf->file()->name().isEmpty()) {
-      new SourceItem(this, this, fileno, 2, false,
-                     tr("This is because no debug information is present."));
       new SourceItem(this, this, fileno, 3, false,
+                     tr("This is because no debug information is present."));
+      new SourceItem(this, this, fileno, 4, false,
                      tr("Recompile source and redo the profile run."));
       if (sf->function()->object()) {
-        new SourceItem(this, this, fileno, 4, false,
+	new SourceItem(this, this, fileno, 5, false,
                        tr("The function is located in this ELF object:"));
-        new SourceItem(this, this, fileno, 5, false,
+	new SourceItem(this, this, fileno, 6, false,
                        QString("    '%1'")
                        .arg(sf->function()->object()->prettyName()));
       }
     }
     else {
-      new SourceItem(this, this, fileno, 2, false,
-                     tr("This is because its source file cannot be found:"));
       new SourceItem(this, this, fileno, 3, false,
-                     QString("    '%1'").arg(sf->file()->name()));
+                     tr("This is because its source file cannot be found:"));
       new SourceItem(this, this, fileno, 4, false,
-                     tr("Add the folder of this file to the source folder list."));
+                     QString("    '%1'").arg(sf->file()->name()));
       new SourceItem(this, this, fileno, 5, false,
+                     tr("Add the folder of this file to the source folder list."));
+      new SourceItem(this, this, fileno, 6, false,
                      tr("The list can be found in the configuration dialog."));
     }
     return;
