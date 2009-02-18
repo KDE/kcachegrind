@@ -417,7 +417,8 @@ void TopLevel::createActions()
 	    this, SLOT(togglePercentage()));
     _percentageToggleAction->setChecked(GlobalConfig::showPercentage());
 
-    _expandedToggleAction = new QAction(tr("Relative to Parent"), this);
+    _expandedToggleAction = new QAction(QIcon(":/move.png"),
+					tr("Relative to Parent"), this);
     _expandedToggleAction->setCheckable(true);
     _expandedToggleAction->setStatusTip(
 	tr("Show Percentage relative to Parent"));

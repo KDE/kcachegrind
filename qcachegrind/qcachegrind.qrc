@@ -1,6 +1,7 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
   <file alias="percent.png">../pics/hicolor/hi32-action-percent.png</file>
+  <file alias="move.png">../pics/hicolor/hi22-action-move.png</file>
   <file alias="app.png">../kcachegrind/hi48-app-kcachegrind.png</file>
 </qresource>
 </RCC>
