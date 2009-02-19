@@ -213,7 +213,7 @@ Note that it previously was called &calltree;, but that name was misleading.
 Most common use is to prefix the command line to start your application with
 <application>valgrind --tool=callgrind</application>, like in
 
-<blockquote><para><command>valgrind --tool-callgrind myprogram myargs</command></para></blockquote>
+<blockquote><para><command>valgrind --tool=callgrind myprogram myargs</command></para></blockquote>
 
 At program termination, a file <filename>callgrind.out.pid</filename> will be
 generated which can be loaded into &kcachegrind;.
