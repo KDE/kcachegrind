@@ -351,7 +351,7 @@ TabView::TabView(TraceItemView* parentView,
   addBottom( addTab( tr("Caller Map"),
 		     new CallMapView(true, this, 0,
 				     "CallerMapView")));
-  addBottom( addTab( tr("Assembly Code"),
+  addBottom( addTab( tr("Machine Code"),
 		     new InstrView(this, 0,
 				   "InstrView")));
 
@@ -615,11 +615,11 @@ QString TabView::whatsThis() const
 		 "but also indirect ones.</li>"
 		 "<li>The Call Graph tab shows a graphical "
 		 "visualization of the calls done by this function.</li>"
-		 "<li>The Source tab presents annotated source code "
+		 "<li>The Source Code tab presents annotated source code "
 		 "if debugging information and the source file "
 		 "is available.</li>"
-		 "<li>The Assembler tab presents annotated assembler code "
-		 "if trace information on instruction level "
+		 "<li>The Machine Code tab presents annotated assembly "
+		 "instructions if profile information on instruction level "
 		 "is available.</li></ul>"
 		 "For more information, see the <em>What's this</em> "
 		 "help of the corresponding tab widget</p>");

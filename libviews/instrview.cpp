@@ -151,7 +151,7 @@ InstrView::InstrView(TraceItemView* parentView,
   addColumn( "" );
   addColumn( tr( "Hex" ) );
   addColumn( "" ); // Instruction
-  addColumn( tr( "Assembler" ) );
+  addColumn( tr( "Assembly Instructions" ) );
   addColumn( tr( "Source Position" ) );
 
   setAllColumnsShowFocus(true);
@@ -183,16 +183,16 @@ void InstrView::paintEmptyArea( QPainter * p, const QRect & r)
 
 QString InstrView::whatsThis() const
 {
-    return tr( "<b>Annotated Assembler</b>"
-		 "<p>The annotated assembler list shows the "
-		 "machine code instructions of the current selected "
+    return tr( "<b>Annotated Machine Code</b>"
+		 "<p>The annotated machine code list shows the "
+		 "assembly instructions of the current selected "
 		 "function together with (self) cost spent while "
 		 "executing an instruction. If this is a call "
 		 "instruction, lines with details on the "
 		 "call happening are inserted into the source: "
 		 "the cost spent inside of the call, the "
 		 "number of calls happening, and the call destination.</p>"
-		 "<p>The disassembler output shown is generated with "
+		 "<p>The machine code shown is generated with "
 		 "the 'objdump' utility from the 'binutils' package.</p>"
 		 "<p>Select a line with call information to "
 		 "make the destination function of this call current.</p>");
@@ -793,7 +793,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
       else {
 	  addr = costAddr;
 	  code = cmd = QString();
-	  args = tr("(No Assembler)");
+	  args = tr("(No Instruction)");
 
 	  currInstr = &(*costIt);
 	  needCostAddr = true;
@@ -925,7 +925,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	// trace cost not machting code
 
 	new InstrItem(this, this, 1,
-		      tr("There are %1 cost line(s) without assembler code.",
+		      tr("There are %1 cost line(s) without machine code.",
 			 "", noAssLines));
 	new InstrItem(this, this, 2,
 		      tr("This happens because the code of"));
