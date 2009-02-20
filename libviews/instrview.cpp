@@ -660,11 +660,11 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     QString dir = function->object()->directory();
     if (!searchFile(dir, function->object())) {
 	new InstrItem(this, this, 1,
-		      tr("For annotated machine code, the following object file is needed:"));
-	new InstrItem(this, this, 2, "");
-	new InstrItem(this, this, 3, function->object()->name());
-	new InstrItem(this, this, 4, "");
-	new InstrItem(this, this, 5,
+		      tr("For annotated machine code, "
+			 "the following object file is needed:"));
+	new InstrItem(this, this, 2,
+		      QString("    '%1'").arg(function->object()->name()));
+	new InstrItem(this, this, 3,
 		      tr("This file can not be found."));
 	return false;
     }
@@ -689,12 +689,11 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 
 	new InstrItem(this, this, 1,
 		      tr("There is an error trying to execute the command"));
-	new InstrItem(this, this, 2, "");
-	new InstrItem(this, this, 3, objdumpCmd);
-	new InstrItem(this, this, 4, "");
-	new InstrItem(this, this, 5,
+	new InstrItem(this, this, 2,
+		      QString("    '%1'").arg(objdumpCmd));
+	new InstrItem(this, this, 3,
 		      tr("Check that you have installed 'objdump'."));
-	new InstrItem(this, this, 6,
+	new InstrItem(this, this, 4,
 		      tr("This utility can be found in the 'binutils' package."));
 	return false;
     }
@@ -929,7 +928,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 			 "", noAssLines));
 	new InstrItem(this, this, 2,
 		      tr("This happens because the code of"));
-	new InstrItem(this, this, 3, QString("        %1").arg(objfile));
+	new InstrItem(this, this, 3, QString("    %1").arg(objfile));
 	new InstrItem(this, this, 4,
 		      tr("does not seem to match the profile data file."));
 	new InstrItem(this, this, 5, "");
@@ -945,14 +944,13 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	// no matching line read from popen
 	new InstrItem(this, this, 1,
 		      tr("There seems to be an error trying to execute the command"));
-	new InstrItem(this, this, 2, "");
-	new InstrItem(this, this, 3, objdumpCmd);
-	new InstrItem(this, this, 4, "");
-	new InstrItem(this, this, 5,
+	new InstrItem(this, this, 2,
+		      QString("    '%1'").arg(objdumpCmd));
+	new InstrItem(this, this, 3,
 		      tr("Check that the ELF object used in the command exists."));
-	new InstrItem(this, this, 6,
+	new InstrItem(this, this, 4,
 		      tr("Check that you have installed 'objdump'."));
-	new InstrItem(this, this, 7,
+	new InstrItem(this, this, 5,
 		      tr("This utility can be found in the 'binutils' package."));
 	return false;
     }
