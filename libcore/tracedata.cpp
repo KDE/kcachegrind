@@ -2980,24 +2980,46 @@ void TraceObject::addFunction(TraceFunction* function)
 #endif
 }
 
-// strip path
-void TraceObject::setName(const QString& name)
+void TraceObject::setDirectory(const QString& dir)
 {
-  _name = name;
+    if (dir.endsWith('/'))
+	_dir = dir.left(dir.length()-1);
+    else
+	_dir = dir;
+}
 
-  int lastIndex = 0, index;
-  while ( (index=_name.indexOf("/", lastIndex)) >=0)
-    lastIndex = index+1;
+QString TraceObject::directory()
+{
+    if (!_dir.isEmpty()) return _dir;
 
-  _shortName = _name.mid(lastIndex);
+    int lastIndex = 0, index;
+    while ( (index=_name.indexOf("/", lastIndex)) >=0)
+	lastIndex = index+1;
+
+    if (lastIndex==0) return QString();
+
+    // without ending "/"
+    return _name.left(lastIndex-1);
+}
+
+
+QString TraceObject::shortName() const
+{
+    int lastIndex = 0, index;
+    while ( (index=_name.indexOf("/", lastIndex)) >=0)
+	lastIndex = index+1;
+
+    return _name.mid(lastIndex);
 }
 
 QString TraceObject::prettyName() const
 {
-  if (_shortName.isEmpty())
-    return QObject::tr("(unknown)");
+    QString sn = shortName();
 
-  return _shortName;
+    if (sn.isEmpty())
+	return QObject::tr("(unknown)");
+
+    return sn;
 }
 
 //---------------------------------------------------

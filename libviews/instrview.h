@@ -58,6 +58,7 @@ private:
   void doUpdate(int);
   void refresh();
   void setColumnWidths();
+  bool searchFile(QString&, TraceObject*);
   void fillInstr();
   void updateJumpArray(Addr,InstrItem*,bool,bool);
   bool fillInstrRange(TraceFunction*,

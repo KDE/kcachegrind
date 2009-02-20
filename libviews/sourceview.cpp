@@ -22,9 +22,11 @@
 
 #include "sourceview.h"
 
+#include <QDebug>
 #include <QDir>
 #include <QFile>
-#include <QDebug>
+#include <QFileInfo>
+
 #include <Qt3Support/Q3PopupMenu>
 
 #include "globalconfig.h"
@@ -387,16 +389,9 @@ bool SourceView::searchFile(QString& dir,
 
 	TracePart* firstPart = _data->parts().first();
 	if (firstPart) {
-	    QString file = firstPart->file()->fileName();
-	    if (QDir::isRelativePath(file))
-		file = QDir::currentPath() + '/' + file;
-	    int lastIndex = file.lastIndexOf("/");
-	    if (lastIndex >0)
-		base = file.left(lastIndex) + dir;
-	    else
-		base = QString("/") + dir;
-	    if (QFile::exists(base + '/' + name)) {
-		dir = base;
+	    QFileInfo partFile(*firstPart->file());
+	    if (QFileInfo(partFile.absolutePath(), name).exists()) {
+		dir = partFile.absolutePath();
 		return true;
 	    }
 	}

@@ -23,7 +23,7 @@
 #ifndef SOURCEVIEW_H
 #define SOURCEVIEW_H
 
-#include <q3listview.h>
+#include <Qt3Support/q3listview.h>
 #include "traceitemview.h"
 
 class SourceItem;

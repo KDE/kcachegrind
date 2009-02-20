@@ -25,7 +25,9 @@
 #include <assert.h>
 
 #include <QDebug>
+#include <QDir>
 #include <QFile>
+#include <QFileInfo>
 #include <QRegExp>
 #include <QProcess>
 #include <Qt3Support/Q3PopupMenu>
@@ -608,6 +610,31 @@ void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
 }
 
 
+bool InstrView::searchFile(QString& dir, TraceObject* o)
+{
+    QString filename = o->shortName();
+
+    if (QDir::isAbsolutePath(dir)) {
+	return QFile::exists(dir + '/' + filename);
+    }
+
+    QFileInfo fi(dir, filename);
+    if (fi.exists()) {
+	dir = fi.absolutePath();
+	return true;
+    }
+
+    TracePart* firstPart = _data->parts().first();
+    if (firstPart) {
+	QFileInfo partFile(*firstPart->file());
+	if (QFileInfo(partFile.absolutePath(), filename).exists()) {
+	    dir = partFile.absolutePath();
+	    return true;
+	}
+    }
+
+    return false;
+}
 
 /**
  * Fill up with instructions from cost range [it;itEnd[
@@ -630,10 +657,21 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     dumpStartAddr = (nextCostAddr<20) ? Addr(0) : nextCostAddr -20;
     dumpEndAddr   = (*tmpIt).addr() +20;
 
+    QString dir = function->object()->directory();
+    if (!searchFile(dir, function->object())) {
+	new InstrItem(this, this, 1,
+		      tr("For annotated machine code, the following object file is needed:"));
+	new InstrItem(this, this, 2, "");
+	new InstrItem(this, this, 3, function->object()->name());
+	new InstrItem(this, this, 4, "");
+	new InstrItem(this, this, 5,
+		      tr("This file can not be found."));
+	return false;
+    }
+    function->object()->setDirectory(dir);
+
     // call objdump synchroneously
-    QString objfile;
-    objfile = function->object()->name();
-    objfile = objfile.replace(QRegExp("[\"']"), ""); // security...
+    QString objfile = dir + '/' + function->object()->shortName();
     QStringList objdumpArgs = QStringList()
 	<< "-C" << "-d"
 	<< QString("--start-address=0x%1").arg(dumpStartAddr.toString())

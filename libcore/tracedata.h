@@ -1365,10 +1365,13 @@ class TraceObject: public TraceCostItem
   TraceObject();
   virtual ~TraceObject();
 
+  void setDirectory(const QString& dir);
+  void resetDirectory() { _dir = QString(); }
+  QString directory();
+
   void addFunction(TraceFunction*);
 
-  virtual void setName(const QString& name);
-  QString shortName() const { return _shortName; }
+  QString shortName() const;
   QString prettyName() const;
   const TraceFunctionList& functions() const { return _functions; }
 
@@ -1377,7 +1380,7 @@ class TraceObject: public TraceCostItem
 
  private:
   TraceFunctionList _functions;
-  QString _shortName;
+  QString _dir;
 };
 
 
