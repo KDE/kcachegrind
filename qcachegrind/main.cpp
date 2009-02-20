@@ -21,6 +21,7 @@
  */
 
 #include <QFile>
+#include <QDir>
 #include <QApplication>
 
 #include "qtconfig.h"
@@ -37,7 +38,6 @@ int main( int argc, char ** argv )
     Loader::initLoaders();
 
     QCoreApplication::setOrganizationName("kcachegrind.sf.net");
-    QCoreApplication::setOrganizationDomain("kcachegrind.sf.net");
     QCoreApplication::setApplicationName("QCachegrind");
     ConfigStorage::setStorage(new QtConfigStorage);
     GlobalConfig::config()->addDefaultTypes();
@@ -49,7 +49,7 @@ int main( int argc, char ** argv )
 	foreach(file, list) {
 	    t = new TopLevel();
 	    t->show();
-	    t->loadDelayed(file);
+	    t->loadDelayed( QDir::fromNativeSeparators(file) );
 	}
     }
     else {

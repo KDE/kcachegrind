@@ -243,15 +243,17 @@ void TopLevel::recentFilesMenuAboutToShow()
 	popup->addAction(tr("(No recent files)"));
     else {
 	QString file;
-	foreach(file, recentFiles)
-	    action = popup->addAction(file);
+	foreach(file, recentFiles) {
+	    // paths shown to user should use OS-native separators
+	    action = popup->addAction(QDir::toNativeSeparators(file));
+	}
     }
 }
 
 void TopLevel::recentFilesTriggered(QAction* action)
 {
     if (action)
-	loadTrace(action->text());
+	loadTrace(QDir::fromNativeSeparators(action->text()));
 }
 
 void TopLevel::createDocks()
@@ -1296,7 +1298,7 @@ void TopLevel::setData(TraceData* data)
 
   QString caption;
   if (_data) {
-    caption = _data->traceName();
+    caption = QDir::toNativeSeparators(_data->traceName());
     if (!_data->command().isEmpty())
       caption += " [" + _data->command() + ']';
   }
