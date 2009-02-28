@@ -103,14 +103,14 @@ QString CallMapView::whatsThis() const
                     "Each colored rectangle represents a function; "
                     "its size tries to be proportional to the cost spent "
                     "therein while the active function is running "
-                    "(however, there are drawing constrains).</p>") :
+                    "(however, there are drawing constraints).</p>") :
               tr("<b>Call Map</b>"
                    "<p>This graph shows the nested hierarchy of "
                    "all callees of the current activated function. "
                    "Each colored rectangle represents a function; "
                    "its size tries to be proportional to the cost spent "
                    "therein while the active function is running "
-                   "(however, there are drawing constrains).</p>");
+                   "(however, there are drawing constraints).</p>");
 
   s += tr( "<p>Appearance options can be found in the "
              "in the context menu. To get exact size proportions, "
