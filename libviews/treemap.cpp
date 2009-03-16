@@ -1632,6 +1632,7 @@ TreeMapItem* TreeMapWidget::visibleItem(TreeMapItem* i) const
 
 void TreeMapWidget::setSelected(TreeMapItem* item, bool selected)
 {
+    if (!item) return;
     item = possibleSelection(item);
     setCurrent(item);
 
@@ -1741,12 +1742,14 @@ bool TreeMapWidget::clearSelection(TreeMapItem* parent)
 
 bool TreeMapWidget::isSelected(TreeMapItem* i) const
 {
-  return _selection.containsRef(i)>0;
+    if (!i) return false;
+    return _selection.containsRef(i)>0;
 }
 
 bool TreeMapWidget::isTmpSelected(TreeMapItem* i)
 {
-  return _tmpSelection.containsRef(i)>0;
+    if (!i) return false;
+    return _tmpSelection.containsRef(i)>0;
 }
 
 
@@ -1759,7 +1762,7 @@ void TreeMapWidget::setCurrent(TreeMapItem* i, bool kbd)
 	// remove mark
 	_markNo = 0;
 
-	if (1) qDebug() << "setCurrent(" << i->path(0).join("/")
+        if (i) qDebug() << "setCurrent(" << i->path(0).join("/")
 			 << ") - mark removed";
 
 	// always complete redraw needed to remove mark
