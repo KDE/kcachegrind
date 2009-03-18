@@ -283,7 +283,7 @@ At first start, this area will be
 divided into a top and a bottom part, each with different visualizations
 selectable by tabs. To move visualization views, use the context menu of
 the tabs, and adjust the splitters between visualizations. To quickly switch
-between different visualization layouts, use View/Layouts/Duplicate, change
+between different visualization layouts, use View/Layout/Duplicate, change
 the layout and switch between layouts with View/Layout/Next (or, even better,
 use the corresponding keyboard shortcuts).
 </para>
