@@ -832,7 +832,7 @@ You have activated a function below main() with cost less than main(). For any f
 Profiling: The process of collecting statistical information about runtime characteristics of program runs.
 </para></listitem>
 <listitem><para>
-Tracing: The process of supervising a program run and storing events happening sorted by a timestap in a output file, the Trace.
+Tracing: The process of supervising a program run and storing events happening sorted by a timestamp into an output file, the Trace.
 </para></listitem>
 <listitem><para>
 Trace: A sequence of timestamped events that occurred while tracing a program run. Its size is typically linear to the execution time of the program run.
