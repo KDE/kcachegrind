@@ -853,10 +853,10 @@ Profile Project: A configuration for profile experiments used for one program wh
 Cost Entity: An abstract item related to source code to which event counts can be attributed. Dimensions for cost entities are code location (&eg; source line, function), data location (&eg; accessed data type, data object), execution location (&eg; thread, process), and tuples or triples of the aforementioned positions (&eg; calls, object access from statement, evicted data from cache).
 </para></listitem>
 <listitem><para>
-Event Type: The kind of event of which costs can be attributed to a cost entity. There exist real event types and inherited event types.
+Event Type: The kind of event of which costs can be attributed to a cost entity. There are real event types and inherited event types.
 </para></listitem>
 <listitem><para>
-Real Event Type: A event type that can be measured by a tool. This needs the existence of a sensor for the given event type.
+Real Event Type: An event type that can be measured by a tool. This needs the existence of a sensor for the given event type.
 </para></listitem>
 <listitem><para>
 Inherited Event Type: A virtual event type only visible in the visualization which is defined by a formula to be calculated from real event types.
