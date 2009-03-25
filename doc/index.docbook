@@ -166,7 +166,7 @@ to easily browse down and up the call graph, together with fast switching of the
 </para>
 
 <para>
-&kappname; is an visualization for profile data fulfilling these wishes. Despite being programmed first with browsing the data from &cachegrind; and &calltree; in mind, there are converters available to be able to display profile data produced by other tools. In the appendix, a description of the &cachegrind;/&callgrind; file format is given.
+&kappname; is a visualization for profile data fulfilling these wishes. Despite being programmed first with browsing the data from &cachegrind; and &calltree; in mind, there are converters available to be able to display profile data produced by other tools. In the appendix, a description of the &cachegrind;/&callgrind; file format is given.
 </para>
 
 <para>
@@ -439,7 +439,7 @@ For example, for an active function, the callee list shows all the functions cal
 <sect2>
 <title>Sidedocks</title>
 <para>
-Sidedocks (Dockables) are side windows which can be placed at any border of an &kcachegrind; window. They always contain a list of cost entities sorted in some manner.
+Sidedocks (Dockables) are side windows which can be placed at any border of a &kcachegrind; window. They always contain a list of cost entities sorted in some manner.
 <itemizedlist>
 <listitem><para>
 Function Profile.
@@ -472,7 +472,7 @@ Each tab view can hold up to four view areas, namely Top, Right, Left, and Botto
 <sect2>
 <title>Synchronized Visualization via Selected Entity in a Tab View</title>
 <para>
-Besides an active entity, each tab view has an selected entity. As most visualization types show multiple entities with the active one somehow centered, you can change the selected item by navigating inside a visualization (by clicking with the mouse or using the keyboard). Typically, selected items are shown in an highlighted state. By changing the selected entity in one of the visualizations of a tab view, all other visualizations in the tab view accordingly highlight the new selected entity.
+Besides an active entity, each tab view has a selected entity. As most visualization types show multiple entities with the active one somehow centered, you can change the selected item by navigating inside a visualization (by clicking with the mouse or using the keyboard). Typically, selected items are shown in a highlighted state. By changing the selected entity in one of the visualizations of a tab view, all other visualizations in the tab view accordingly highlight the new selected entity.
 </para>
 </sect2>
 
@@ -486,7 +486,7 @@ If there are multiple tab views, a selection change in one tab view leads to an 
 <sect2>
 <title>Layouts</title>
 <para>
-The layout of all the tab views of a window can be saved (see menu item View/Layout). After duplicating the current layout (Ctrl+Plus or menu) and changing some sizes or moving a visualization view to another area of an tab view, you can quickly switch between the old and the new layout via Ctrl+Left/Right. The set of layouts will be stored between &kcachegrind; sessions of the same profiled command. You can make the current set of layouts as the default one for new &kcachegrind; sessions, or restore to the default layout set.
+The layout of all the tab views of a window can be saved (see menu item View/Layout). After duplicating the current layout (Ctrl+Plus or menu) and changing some sizes or moving a visualization view to another area of a tab view, you can quickly switch between the old and the new layout via Ctrl+Left/Right. The set of layouts will be stored between &kcachegrind; sessions of the same profiled command. You can make the current set of layouts as the default one for new &kcachegrind; sessions, or restore to the default layout set.
 </para>
 </sect2>
 </sect1>
