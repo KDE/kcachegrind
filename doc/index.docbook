@@ -320,7 +320,7 @@ introduces terms used in the interface.
 <title>Cost Entities</title>
 
 <para>
-Cost counts of event types (like L2 Misses) are attributed to cost entities, which are items with relationship to source code or data structures of a given program. Cost entities not only can be simple code or data positions, but also position tuples.  For example, a call has a source and a target, or a data address can have a data type and an code position where its allocation happened.
+Cost counts of event types (like L2 Misses) are attributed to cost entities, which are items with relationship to source code or data structures of a given program. Cost entities not only can be simple code or data positions, but also position tuples.  For example, a call has a source and a target, or a data address can have a data type and a code position where its allocation happened.
 </para>
 
 <para>
