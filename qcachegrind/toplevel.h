@@ -224,7 +224,7 @@ private:
   QAction *_layoutNext, *_layoutPrev, *_layoutRemove, *_layoutDup;
   QAction *_layoutRestore, *_layoutSave;
   QAction *_upAction, *_forwardAction, *_backAction;
-  QAction *_aboutAction;
+  QAction *_aboutAction, *_aboutQtAction;
   QComboBox* _eventTypeBox;
 
   TraceFunction* _function;

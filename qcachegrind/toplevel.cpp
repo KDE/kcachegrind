@@ -528,9 +528,12 @@ void TopLevel::createActions()
     _forwardAction->setToolTip( hint );
 
     // help menu actions
-    _aboutAction = new QAction(tr("&About"), this);
+    _aboutAction = new QAction(tr("&About QCachegrind ..."), this);
     _aboutAction->setStatusTip(tr("Show the application's About box"));
     connect(_aboutAction, SIGNAL(triggered()), this, SLOT(about()));
+
+    _aboutQtAction = new QAction(tr("About Qt ..."), this);
+    connect(_aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 
     // toolbar actions
     _eventTypeBox = new QComboBox(this);
@@ -585,6 +588,7 @@ void TopLevel::createMenu()
 
     QMenu* helpMenu = mBar->addMenu("&Help");
     helpMenu->addAction(_aboutAction);
+    helpMenu->addAction(_aboutQtAction);
 }
 
 void TopLevel::createToolbar()
@@ -612,17 +616,20 @@ void TopLevel::createToolbar()
 
 void TopLevel::about()
 {
-    QString text;
-    text = tr("<p>QCachegrind is a graphical user interface for analysing "
+    QString text, version;
+    version = QLatin1String("0.5.1");
+    text = QString("<h3>QCachegrind %1</h3>").arg(version);
+    text += tr("<p>QCachegrind is a graphical user interface for analysing "
 	      "profiling data, which helps in the performance optimization "
 	      "phase of developing a computer program. "
 	      "QCachegrind is open-source, and it is distributed under the "
 	      "terms of the GPL v2. For details and source code, see the "
 	      "<a href=\"http://kcachegrind.sf.net\">homepage</a> of the "
 	      "KCachegrind project.</p>"
-	      "Author and maintainer: "
+              "Main author and maintainer: "
 	      "<a href=\"mailto:Josef.Weidendorfer@gmx.de\">"
-	      "Josef Weidendorfer</a>");
+              "Josef Weidendorfer</a><br>"
+              "(with lots of bug fixes and porting to Qt4 by the KDE team)");
     QMessageBox::about(this, tr("About QCachegrind"), text);
 }
 
