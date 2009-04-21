@@ -810,6 +810,7 @@ void GraphExporter::writeDot(QIODevice* device)
 
 		// remove dumped edges from n.callers/n.callees
 		from.removeEdge(&e);
+		to.removeEdge(&e);
 
 		*stream << QString("  F%1 -> F%2 [weight=%3")
 		.arg((long)e.from(), 0, 16)
@@ -837,9 +838,9 @@ void GraphExporter::writeDot(QIODevice* device)
 			if (n.incl <= _realFuncLimit)
 				continue;
 
-			costSum = n.calleeCostSum();
-			countSum = n.calleeCountSum();
-
+			// add edge for all skipped callers if cost sum is high enough
+			costSum = n.callerCostSum();
+			countSum = n.callerCountSum();
 			if (costSum > _realCallLimit) {
 
 				QPair<TraceFunction*,TraceFunction*> p(0, n.function());
@@ -858,9 +859,9 @@ void GraphExporter::writeDot(QIODevice* device)
 					.arg((int)log(costSum));
 			}
 
-			costSum = n.callerCostSum();
-			countSum = n.callerCountSum();
-
+			// add edge for all skipped callees if cost sum is high enough
+			costSum = n.calleeCostSum();
+			countSum = n.calleeCountSum();
 			if (costSum > _realCallLimit) {
 
 				QPair<TraceFunction*,TraceFunction*> p(n.function(), 0);
