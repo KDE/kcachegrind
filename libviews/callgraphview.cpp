@@ -1395,15 +1395,15 @@ void CanvasEdge::paint(QPainter* p,
 {
 	p->setRenderHint(QPainter::Antialiasing);
 
-	QPen pen = QPen(Qt::black);
-	pen.setWidthF(1.0/options->levelOfDetail * _thickness);
-	p->setPen(pen);
+	QPen mypen = pen();
+	mypen.setWidthF(1.0/options->levelOfDetail * _thickness);
+	p->setPen(mypen);
 	p->drawPath(path());
 
 	if (isSelected()) {
-		pen.setColor(Qt::red);
-		pen.setWidthF(1.0/options->levelOfDetail * _thickness/2.0);
-		p->setPen(pen);
+		mypen.setColor(Qt::red);
+		mypen.setWidthF(1.0/options->levelOfDetail * _thickness/2.0);
+		p->setPen(mypen);
 		p->drawPath(path());
 	}
 }
@@ -2244,7 +2244,7 @@ void CallGraphView::dotExited()
 			// Unnamed nodes with collapsed edges (with 'R' and 'S')
 			if (nodeName[0] == 'R'|| nodeName[0] == 'S') {
 				w = 10, h = 10;
-				eItem = new QGraphicsEllipseItem( QRectF(xx, yy, w, h) );
+				eItem = new QGraphicsEllipseItem( QRectF(xx-w/2, yy-h/2, w, h) );
 				_scene->addItem(eItem);
 				eItem->setBrush(Qt::gray);
 				eItem->setZValue(1.0);
@@ -2325,25 +2325,19 @@ void CallGraphView::dotExited()
 			continue;
 		}
 
-		// artifical calls should be blue
-		bool isArtifical = false;
-		if(e->fromNode()) {
-			TraceFunction* caller = e->fromNode()->function();
-			if (caller->cycle() == caller)
-				isArtifical = true;
-		}
-		if(e->toNode()) {
-			TraceFunction* called = e->toNode()->function();
-			if (called->cycle() == called)
-				isArtifical = true;
-		}
-		QColor arrowColor = isArtifical ? Qt::blue : Qt::black;
+		// calls into/out of cycles are special: make them blue
+		QColor arrowColor = Qt::black;
+		TraceFunction* caller = e->fromNode() ? e->fromNode()->function() : 0;
+		TraceFunction* called = e->toNode() ? e->toNode()->function() : 0;
+		if ( (caller && (caller->cycle() == caller)) ||
+			 (called && (called->cycle() == called)) ) arrowColor = Qt::blue;
 
 		sItem = new CanvasEdge(e);
 		_scene->addItem(sItem);
 		e->setCanvasEdge(sItem);
 		sItem->setControlPoints(pa);
-		sItem->setPen(QPen(arrowColor, 1 /*(int)log(log(e->cost))*/));
+		// width of pen will be adjusted in CanvasEdge::paint()
+		sItem->setPen(QPen(arrowColor));
 		sItem->setZValue(0.5);
 		sItem->show();
 
