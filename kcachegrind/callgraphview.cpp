@@ -2073,13 +2073,12 @@ void CallGraphView::dotExited()
       continue;
     }
 
-    // artifical calls should be blue
-    bool isArtifical = false;
-    TraceFunction* caller = e->fromNode()->function();
-    TraceFunction* called = e->toNode()->function();
-    if (caller->cycle() == caller) isArtifical = true;
-    if (called->cycle() == called) isArtifical = true;
-    QColor arrowColor = isArtifical ? Qt::blue : Qt::black;
+    // calls into/out of cycles are special: make them blue
+    QColor arrowColor = Qt::black;
+    TraceFunction* caller = e->fromNode() ? e->fromNode()->function() : 0;
+    TraceFunction* called = e->toNode() ? e->toNode()->function() : 0;
+    if ( (caller && (caller->cycle() == caller)) ||
+         (called && (called->cycle() == called)) ) arrowColor = Qt::blue;
 
     sItem = new CanvasEdge(e, _canvas);
     e->setCanvasEdge(sItem);
