@@ -334,7 +334,7 @@ void SourceView::refresh()
     setColumnWidthMode(2, Q3ListView::Manual);
     setColumnWidth(2, 0);
   }
-  // reset to the original position - this is useful when the view is refreshed just because we change between relative/absolute 
+  // reset to the original position - this is useful when the view is refreshed just because we change between relative/absolute
   verticalScrollBar()->setValue(originalPosition);
 }
 
@@ -355,8 +355,8 @@ static bool searchFileRecursive(QString& dir, const QString& name)
   d.setFilter( QDir::Dirs | QDir::NoSymLinks );
   d.setSorting( QDir::Unsorted );
   QStringList subdirs = d.entryList();
-  QStringList::const_iterator it =subdirs.begin();
-  for(; it != subdirs.end(); ++it ) {
+  QStringList::const_iterator it =subdirs.constBegin();
+  for(; it != subdirs.constEnd(); ++it ) {
     if (*it == "." || *it == ".." || *it == "CVS") continue;
 
     dir = d.filePath(*it);
@@ -400,7 +400,7 @@ bool SourceView::searchFile(QString& dir,
     QStringList list = GlobalConfig::sourceDirs(_data,
 						sf->function()->object());
     QStringList::const_iterator it;
-    for ( it = list.begin(); it != list.end(); ++it ) {
+    for ( it = list.constBegin(); it != list.constEnd(); ++it ) {
         dir = *it;
         if (searchFileRecursive(dir, name)) return true;
     }
@@ -513,7 +513,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 {
   if (!sf) return;
 
-  if (0) qDebug("Selected Item %s", 
+  if (0) qDebug("Selected Item %s",
 		_selectedItem ? _selectedItem->name().ascii() : "(none)");
 
   TraceLineMap::Iterator lineIt, lineItEnd;
@@ -550,7 +550,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 	    qDebug() << "  File '" << sf->file()->name() << "'";
 	    nextCostLineno = 0;
 	  }
-	    
+
       }
 
       if (nextCostLineno == 0) {
@@ -736,7 +736,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     else
 	skipLineWritten = false;
 
-    si = new SourceItem(this, this, 
+    si = new SourceItem(this, this,
 			fileno, fileLineno, inside, QString(buf),
                         currLine);
 
@@ -817,7 +817,7 @@ void SourceView::updateSourceItems()
     setColumnWidth(2, _eventType2 ? 50:0);
     // Allow resizing of column 2
     setColumnWidthMode(2, Q3ListView::Maximum);
-    
+
     if (_eventType)
       setColumnText(1, _eventType->name());
     if (_eventType2)

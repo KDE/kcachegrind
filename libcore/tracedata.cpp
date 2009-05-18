@@ -2132,7 +2132,7 @@ Addr TraceFunction::firstAddress() const
 {
     // ignore address 0 here
   if (!_instrMap || _instrMap->count() == 0) return 0;
-  TraceInstrMap::ConstIterator it = _instrMap->begin();
+  TraceInstrMap::ConstIterator it = _instrMap->constBegin();
   return (*it).addr();
 }
 
@@ -2140,7 +2140,7 @@ Addr TraceFunction::lastAddress() const
 {
     // ignore address 0 here
   if (!_instrMap || _instrMap->count() == 0) return 0;
-  TraceInstrMap::ConstIterator it = _instrMap->end();
+  TraceInstrMap::ConstIterator it = _instrMap->constEnd();
   --it;
   return (*it).addr();
 }
@@ -3222,8 +3222,8 @@ int TraceData::load(const QString& base)
 
       QStringList prefixList;
       prefixList << "callgrind.out" << "cachegrind.out";
-      for ( QStringList::const_iterator it = prefixList.begin();
-	    it != prefixList.end(); ++it ) {
+      for ( QStringList::const_iterator it = prefixList.constBegin();
+	    it != prefixList.constEnd(); ++it ) {
         file = *it;
 
 	// search for ".pid"
@@ -3269,7 +3269,7 @@ int TraceData::load(const QString& base)
   QStringList::const_iterator it;
   unsigned int maxNumber = 0;
   int partsLoaded = 0;
-  for (it = strList.begin(); it != strList.end(); ++it ) {
+  for (it = strList.constBegin(); it != strList.constEnd(); ++it ) {
     TracePart* p = addPart(dir.path(), *it );
 
     if (!p) {

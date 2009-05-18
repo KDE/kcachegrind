@@ -317,8 +317,8 @@ void GlobalConfig::addDefaultTypes()
     QString longName, formula;
     EventType* ct;
     QStringList l = knownTypes();
-    for ( QStringList::const_iterator it = l.begin();
-	  it != l.end(); ++it ) {
+    for ( QStringList::const_iterator it = l.constBegin();
+	  it != l.constEnd(); ++it ) {
         longName = knownLongName(*it);
         formula  = knownFormula(*it);
         ct = new EventType(*it, longName, formula);
