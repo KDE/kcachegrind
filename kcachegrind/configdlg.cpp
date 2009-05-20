@@ -106,21 +106,27 @@ ConfigDlg::ConfigDlg(GlobalConfig* c, TraceData* data,
   // first unspecified cost items from data
   TraceObjectMap::Iterator oit;
   QStringList oList;
-  for ( oit = data->objectMap().begin();
-        oit != data->objectMap().end(); ++oit )
-    oList.append((*oit).prettyName());
+  if (data) {
+    for ( oit = data->objectMap().begin();
+          oit != data->objectMap().end(); ++oit )
+      oList.append((*oit).prettyName());
+  }
 
   TraceClassMap::Iterator cit;
   QStringList cList;
-  for ( cit = data->classMap().begin();
-        cit != data->classMap().end(); ++cit )
-    cList.append((*cit).prettyName());
+  if (data) {
+    for ( cit = data->classMap().begin();
+          cit != data->classMap().end(); ++cit )
+      cList.append((*cit).prettyName());
+  }
 
   TraceFileMap::Iterator fit;
   QStringList fList;
-  for ( fit = data->fileMap().begin();
-        fit != data->fileMap().end(); ++fit )
-    fList.append((*fit).prettyName());
+  if (data) {
+    for ( fit = data->fileMap().begin();
+          fit != data->fileMap().end(); ++fit )
+      fList.append((*fit).prettyName());
+  }
 
   // then already defined colors (have to check for duplicates!)
   Q3DictIterator<GlobalConfig::ColorSetting> it( c->_colors );
@@ -165,19 +171,21 @@ ConfigDlg::ConfigDlg(GlobalConfig* c, TraceData* data,
     if (d.isEmpty()) d = "/";
     new Q3ListViewItem(i, d);
   }
-  for ( oit = data->objectMap().begin();
-        oit != data->objectMap().end(); ++oit ) {
-    QString n = (*oit).name();
-    i = new Q3ListViewItem(dirList, n);
-    i->setOpen(true);
-    QStringList* dirs = c->_objectSourceDirs[n];
-    if (!dirs) continue;
+  if (data) {
+    for ( oit = data->objectMap().begin();
+          oit != data->objectMap().end(); ++oit ) {
+      QString n = (*oit).name();
+      i = new Q3ListViewItem(dirList, n);
+      i->setOpen(true);
+      QStringList* dirs = c->_objectSourceDirs[n];
+      if (!dirs) continue;
 
-    sit = dirs->begin();
-    for(; sit != dirs->end(); ++sit ) {
-      QString d = (*sit);
-      if (d.isEmpty()) d = "/";
-      new Q3ListViewItem(i, d);
+      sit = dirs->begin();
+      for(; sit != dirs->end(); ++sit ) {
+        QString d = (*sit);
+        if (d.isEmpty()) d = "/";
+        new Q3ListViewItem(i, d);
+      }
     }
   }
 
