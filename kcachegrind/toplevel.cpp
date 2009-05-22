@@ -1074,7 +1074,8 @@ bool TopLevel::setEventType(EventType* ct)
   if (ct) {
       int idx=0;
       QStringList l = _saCost->items();
-      for (QStringList::const_iterator it = l.begin(); it != l.end(); ++it, ++idx ) {
+      // TODO replace with l.indexOf(ct->longName()) ?
+      for (QStringList::const_iterator it = l.constBegin(); it != l.constEnd(); ++it, ++idx ) {
 	  if (*it == ct->longName())
 	      _saCost->setCurrentItem(idx);
       }
@@ -1105,7 +1106,9 @@ bool TopLevel::setEventType2(EventType* ct)
 
   int idx=0;
   QStringList l = _saCost2->items();
-  for (QStringList::const_iterator it = l.begin(); it != l.end(); ++it, ++idx ) {
+
+  // TODO replace with indexOf(longName)?
+  for (QStringList::const_iterator it = l.constBegin(); it != l.constEnd(); ++it, ++idx ) {
     if (*it == longName)
       _saCost2->setCurrentItem(idx);
   }

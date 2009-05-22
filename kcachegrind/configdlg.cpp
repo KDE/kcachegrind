@@ -165,8 +165,8 @@ ConfigDlg::ConfigDlg(GlobalConfig* c, TraceData* data,
 
   Q3ListViewItem* i = new Q3ListViewItem(dirList, i18n("(always)"));
   i->setOpen(true);
-  QStringList::const_iterator sit = c->_generalSourceDirs.begin();
-  for(; sit != c->_generalSourceDirs.end(); ++sit ) {
+  QStringList::const_iterator sit = c->_generalSourceDirs.constBegin();
+  for(; sit != c->_generalSourceDirs.constEnd(); ++sit ) {
     QString d = (*sit);
     if (d.isEmpty()) d = "/";
     new Q3ListViewItem(i, d);
@@ -180,8 +180,8 @@ ConfigDlg::ConfigDlg(GlobalConfig* c, TraceData* data,
       QStringList* dirs = c->_objectSourceDirs[n];
       if (!dirs) continue;
 
-      sit = dirs->begin();
-      for(; sit != dirs->end(); ++sit ) {
+      sit = dirs->constBegin();
+      for(; sit != dirs->constEnd(); ++sit ) {
         QString d = (*sit);
         if (d.isEmpty()) d = "/";
         new Q3ListViewItem(i, d);
