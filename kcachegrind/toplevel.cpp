@@ -1919,11 +1919,10 @@ void TopLevel::splitDirSlot()
 // this is called after a config change in the dialog
 void TopLevel::configChanged()
 {
-  //qDebug("TopLevel::configChanged");
-  //_showPercentage->setChecked(GlobalConfig::showPercentage());
-
-  // invalidate found/cached dirs of source files
-  _data->resetSourceDirs();
+  // Invalidate found/cached dirs of source files if we have TraceData loaded.
+  if (_data) {
+    _data->resetSourceDirs();
+  }
 
   _stackSelection->refresh();
 

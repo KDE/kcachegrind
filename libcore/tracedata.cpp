@@ -2012,6 +2012,8 @@ QString TraceFunction::prettyName() const
   if (_name.isEmpty())
       return QObject::tr("(unknown)");
 
+#if 0
+  // TODO: Why was this disabled?
   int p = _name.indexOf('(');
   if (p>0) {
     // handle C++ "operator()" correct
@@ -2019,9 +2021,10 @@ QString TraceFunction::prettyName() const
 
     // we have a C++ symbol with argument types:
     // check for unique function name (inclusive '(' !)
-    //if (isUniquePrefix(_name.left(p+1)))
-    //  res = _name.left(p);
+    if (isUniquePrefix(_name.left(p+1)))
+      res = _name.left(p);
   }
+#endif
 
   // cycle members
   if (_cycle) {
