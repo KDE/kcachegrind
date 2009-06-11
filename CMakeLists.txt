@@ -1,5 +1,8 @@
 project(kcachegrind)
 
+# TODO port away from QT3_SUPPORT
+add_definitions(-DQT3_SUPPORT)
+
 set( KCACHEGRIND_VERSION "0.5.1kde")
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.h )
