@@ -360,7 +360,7 @@ void ConfigDlg::dirsDeletePressed()
     dirs = _config->_objectSourceDirs[objName];
   if (!dirs) return;
 
-  dirs->remove(_dirItem->text(0));
+  dirs->removeAll(_dirItem->text(0));
   delete _dirItem;
   _dirItem = 0;
 
