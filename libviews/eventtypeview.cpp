@@ -86,7 +86,6 @@ QString EventTypeView::whatsThis() const
 		 "all over KCachegrind to be the selected one.</p>");
 }
 
-
 void EventTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
 {
   Q3PopupMenu popup;
@@ -110,9 +109,11 @@ void EventTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
 
   addGoMenu(&popup);
 
-  popup.insertSeparator();
-  popup.insertItem(tr("New Event Type ..."), 97);
-
+  if( _data) 
+  {
+    popup.insertSeparator();
+    popup.insertItem(tr("New Event Type ..."), 97);
+  }
   int r = popup.exec(p);
   if (r == 98) selectedEventType2(0);
   else if (r == 99) selectedEventType2(ct);
