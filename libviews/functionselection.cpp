@@ -33,6 +33,7 @@
 #include <Qt3Support/Q3ListView>
 #include <Qt3Support/Q3PopupMenu>
 #include <Qt3Support/Q3Header>
+#include <QDebug>
 
 #include "traceitemview.h"
 #include "stackbrowser.h"
@@ -790,6 +791,8 @@ void FunctionSelection::updateGroupSizes(bool hideEmpty)
 
 void FunctionSelection::query(QString query)
 {
+  if(!_data)
+     return;  
   if (searchEdit->text() != query)
     searchEdit->setText(query);
   if (_searchString == query) {
@@ -848,14 +851,12 @@ void FunctionSelection::query(QString query)
       _hc.addCost(f, f->inclusive()->subCost(_eventType));
     }
   }
-
   updateGroupSizes(true);
 
   FunctionItem *fi, *item = 0;
 
   functionList->clear();
   setCostColumnWidths();
-
   for(int i=0;i<_hc.realCount();i++) {
       fi = new FunctionItem(functionList, (TraceFunction*)_hc[i],
 			    _eventType, _groupType);
