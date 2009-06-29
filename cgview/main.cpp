@@ -48,8 +48,7 @@ int main(int argc, char** argv)
 
     TraceData* d = new TraceData(new Logger);
 
-    QString file;
-    foreach(file, list)
+    foreach(const QString &file, list)
 	d->load(file);
 
     EventTypeSet* m = d->eventTypes();
