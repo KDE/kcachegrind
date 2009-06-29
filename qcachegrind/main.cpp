@@ -44,9 +44,8 @@ int main( int argc, char ** argv )
 
     QStringList list = app.arguments();
     list.pop_front();
-    QString file;
     if (!list.isEmpty()) {
-	foreach(file, list) {
+	foreach(const QString&file, list) {
 	    t = new TopLevel();
 	    t->show();
 	    t->loadDelayed( QDir::fromNativeSeparators(file) );
