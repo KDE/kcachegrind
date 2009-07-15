@@ -32,7 +32,7 @@ typedef unsigned long long uint64;
 class SubCost
 {
  public:
-    SubCost() {}
+    SubCost() { v=0; }
     SubCost(uint64 i) { v=i; }
     SubCost(unsigned i) { v=i; }
     SubCost(int i) { v=(unsigned)i; }
