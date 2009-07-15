@@ -2013,7 +2013,12 @@ QString TraceFunction::prettyName() const
       return QObject::tr("(unknown)");
 
 #if 0
-  // TODO: Why was this disabled?
+  // TODO: make it a configuration, but disabled by default.
+  //
+  // Stripping parameter signature of C++ symbols is fine
+  // if the function name is unique in the whole program.
+  // However, we only can detect if it is unique in the profile,
+  // which makes this "beautification" potentially confusing
   int p = _name.indexOf('(');
   if (p>0) {
     // handle C++ "operator()" correct
