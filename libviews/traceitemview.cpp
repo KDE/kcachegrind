@@ -93,6 +93,8 @@ bool TraceItemView::activate(CostItem* i)
 
 TraceFunction* TraceItemView::activeFunction()
 {
+    if (!_activeItem) return 0;
+
     ProfileContext::Type t = _activeItem->type();
     switch(t) {
     case ProfileContext::Function:
