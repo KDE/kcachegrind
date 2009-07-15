@@ -27,8 +27,7 @@ QList<int> toIntList(QStringList l)
 {
     QList<int> iList;
 
-    QString s;
-    foreach(s, l)
+    foreach(const QString& s, l)
 	iList << s.toInt();
 
     return iList;
@@ -38,8 +37,7 @@ QStringList toStringList(QList<int> l)
 {
     QStringList sList;
 
-    int i;
-    foreach(i, l)
+    foreach(int i, l)
 	sList << QString::number(i);
 
     return sList;

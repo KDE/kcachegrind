@@ -1072,13 +1072,10 @@ bool TopLevel::setEventType(EventType* ct)
   _eventType = ct;
 
   if (ct) {
-      int idx=0;
       QStringList l = _saCost->items();
-      // TODO replace with l.indexOf(ct->longName()) ?
-      for (QStringList::const_iterator it = l.constBegin(); it != l.constEnd(); ++it, ++idx ) {
-	  if (*it == ct->longName())
-	      _saCost->setCurrentItem(idx);
-      }
+      int idx = l.indexOf(ct->longName());
+      if (idx >= 0)
+	  _saCost->setCurrentItem(idx);
   }
 
   _partSelection->setEventType(_eventType);
@@ -1103,15 +1100,10 @@ bool TopLevel::setEventType2(EventType* ct)
   _eventType2 = ct;
 
   QString longName = ct ? ct->longName() : i18n("(Hidden)");
-
-  int idx=0;
   QStringList l = _saCost2->items();
-
-  // TODO replace with indexOf(longName)?
-  for (QStringList::const_iterator it = l.constBegin(); it != l.constEnd(); ++it, ++idx ) {
-    if (*it == longName)
+  int idx = l.indexOf(longName);
+  if (idx >= 0)
       _saCost2->setCurrentItem(idx);
-  }
 
   _partSelection->setEventType2(_eventType2);
   _partSelection->updateView();

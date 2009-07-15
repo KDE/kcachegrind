@@ -242,8 +242,7 @@ void TopLevel::recentFilesMenuAboutToShow()
     if (recentFiles.count() == 0)
 	popup->addAction(tr("(No recent files)"));
     else {
-	QString file;
-	foreach(file, recentFiles) {
+	foreach(const QString& file, recentFiles) {
 	    // paths shown to user should use OS-native separators
 	    action = popup->addAction(QDir::toNativeSeparators(file));
 	}
@@ -919,7 +918,7 @@ bool TopLevel::setEventType(EventType* ct)
 
   if (ct) {
       int idx = _eventTypeBox->findText(ct->longName());
-      _eventTypeBox->setCurrentIndex(idx);
+      if (idx >=0) _eventTypeBox->setCurrentIndex(idx);
   }
 
   _partSelection->setEventType(_eventType);

@@ -234,8 +234,7 @@ void EventType::add(EventType* t)
     _knownTypes = new QList<EventType*>;
 
   /* Already known? */
-  EventType* kt = 0;
-  foreach (kt, *_knownTypes)
+  foreach (EventType* kt, *_knownTypes)
       if (kt->name() == t->name()) {
 	  // Overwrite old type
 	  if (!t->longName().isEmpty() &&
