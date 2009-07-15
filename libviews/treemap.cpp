@@ -882,7 +882,10 @@ TreeMapItem::TreeMapItem(TreeMapItem* parent, double value,
 TreeMapItem::~TreeMapItem()
 {
   if (_children) delete _children;
-  if (_freeRects) delete _freeRects;
+  if (_freeRects) {
+      clearFreeRects();
+      delete _freeRects;
+  }
 
   // finally, notify widget about deletion
   if (_widget) _widget->deletingItem(this);
@@ -1099,7 +1102,10 @@ void TreeMapItem::clearItemRect()
 
 void TreeMapItem::clearFreeRects()
 {
-    if (_freeRects) _freeRects->clear();
+    if (!_freeRects) return;
+
+    while (!_freeRects->isEmpty())
+	delete _freeRects->takeFirst();
 }
 
 void TreeMapItem::addFreeRect(const QRect& r)
@@ -1107,20 +1113,18 @@ void TreeMapItem::addFreeRect(const QRect& r)
     // do not add invalid rects
     if ((r.width() < 1) || (r.height() < 1)) return;
 
-    if (!_freeRects) {
-	_freeRects = new Q3PtrList<QRect>;
-	_freeRects->setAutoDelete(true);
-    }
+    if (!_freeRects)
+	_freeRects = new QList<QRect*>;
 
     if (0) qDebug() << "addFree(" << path(0).join("/") << ", "
 		     << r.x() << "/" << r.y() << "-"
 		     << r.width() << "x" << r.height() << ")";
 
-    QRect* last = _freeRects->last();
-    if (!last) {
+    if (_freeRects->isEmpty()) {
 	_freeRects->append(new QRect(r));
 	return;
     }
+    QRect* last = _freeRects->last();
 
     // join rect with last rect if possible
     // this saves memory and does not make the tooltip flicker
@@ -2172,11 +2176,10 @@ bool TreeMapWidget::event(QEvent *event)
 	if (event->type() == QEvent::ToolTip) {
 		QHelpEvent *helpEvent = static_cast<QHelpEvent *>(event);
 		TreeMapItem* i = item(helpEvent->pos().x(), helpEvent->pos().y());
-		Q3PtrList<QRect>* rList = i ? i->freeRects() : 0;
+		QList<QRect*>* rList = i ? i->freeRects() : 0;
 		bool hasTip = false;
 		if (rList) {
-			QRect* r;
-			for (r=rList->first(); r; r=rList->next())
+			foreach(QRect* r, *rList)
 				if (r->contains(helpEvent->pos())) {
 					hasTip = true;
 					break;

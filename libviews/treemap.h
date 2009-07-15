@@ -310,7 +310,7 @@ public:
    * Used internally to enable tooltip.
    */
   void clearFreeRects();
-  Q3PtrList<QRect>* freeRects() const { return _freeRects; }
+  QList<QRect*>* freeRects() const { return _freeRects; }
   void addFreeRect(const QRect& r);
 
   /**
@@ -385,7 +385,7 @@ private:
 
   // temporary layout
   QRect _rect;
-  Q3PtrList<QRect>* _freeRects;
+  QList<QRect*>* _freeRects;
   int _depth;
 
   // temporary self value (when using level skipping)
