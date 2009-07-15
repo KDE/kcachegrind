@@ -54,6 +54,9 @@ void ProfileContext::cleanup()
 		delete [] _i18nTypeName;
 		_i18nTypeName = 0;
 	}
+
+	qDeleteAll(_contexts);
+	_contexts.clear();
 }
 
 QString ProfileContext::typeName(ProfileContext::Type t)

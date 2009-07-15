@@ -102,6 +102,7 @@ TopLevel::TopLevel()
 	restoreState(state);
 
     setWindowIcon(QIcon(":/app.png"));
+    setAttribute(Qt::WA_DeleteOnClose);
 }
 
 TopLevel::~TopLevel()

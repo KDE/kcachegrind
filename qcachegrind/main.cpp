@@ -58,5 +58,11 @@ int main( int argc, char ** argv )
 	t->loadDelayed(".", false);
     }
 
-    return app.exec();
+    int res = app.exec();
+
+    // to make leak checking in valgrind happy...
+    Loader::deleteLoaders();
+    ProfileContext::cleanup();
+
+    return res;
 }
