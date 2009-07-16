@@ -20,7 +20,7 @@
  * Configuration for QCachegrind
  */
 
-#include "qtconfig.h"
+#include "qcgconfig.h"
 
 #include <QSettings>
 
@@ -28,21 +28,21 @@
 #include "traceitemview.h"
 
 //
-// QtConfigGroup
+// QCGConfigGroup
 //
 
-QtConfigGroup::QtConfigGroup(QSettings* group, bool readOnly)
+QCGConfigGroup::QCGConfigGroup(QSettings* group, bool readOnly)
 {
     _group = group;
     _readOnly = readOnly;
 }
 
-QtConfigGroup::~QtConfigGroup()
+QCGConfigGroup::~QCGConfigGroup()
 {
     delete _group;
 }
 
-void QtConfigGroup::setValue(const QString& key, const QVariant& value,
+void QCGConfigGroup::setValue(const QString& key, const QVariant& value,
 			     const QVariant& defaultValue)
 {
     if ((_group == 0) || _readOnly) return;
@@ -53,7 +53,7 @@ void QtConfigGroup::setValue(const QString& key, const QVariant& value,
 	_group->setValue(key, value);
 }
 
-QVariant QtConfigGroup::value(const QString& key,
+QVariant QCGConfigGroup::value(const QString& key,
 			      const QVariant& defaultValue) const
 {
     if (_group == 0) return defaultValue;
@@ -64,13 +64,13 @@ QVariant QtConfigGroup::value(const QString& key,
 
 
 //
-// QtConfigStorage
+// QCGConfigStorage
 //
 
-QtConfigStorage::QtConfigStorage()
+QCGConfigStorage::QCGConfigStorage()
 {}
 
-ConfigGroup* QtConfigStorage::getGroup(const QString& group,
+ConfigGroup* QCGConfigStorage::getGroup(const QString& group,
 				       const QString& optSuffix)
 {
     QSettings* g = new QSettings;
@@ -93,5 +93,5 @@ ConfigGroup* QtConfigStorage::getGroup(const QString& group,
 	g->beginGroup(group);
     }
 
-    return new QtConfigGroup(g, readOnly);
+    return new QCGConfigGroup(g, readOnly);
 }

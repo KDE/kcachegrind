@@ -20,41 +20,41 @@
  * Configuration for QCachegrind
  */
 
-#ifndef QTCONFIG_H
-#define QTCONFIG_H
+#ifndef QCGCONFIG_H
+#define QCGCONFIG_H
 
 #include "config.h"
 
 class QSettings;
-class QtConfigStorage;
+class QCGConfigStorage;
 
-class QtConfigGroup: public ConfigGroup
+class QCGConfigGroup: public ConfigGroup
 {
-    friend class QtConfigStorage;
+    friend class QCGConfigStorage;
 
 public:
-    ~QtConfigGroup();
+    ~QCGConfigGroup();
 
     void setValue(const QString& key, const QVariant& value,
 		  const QVariant& defaultValue = QVariant());
     QVariant value(const QString& key, const QVariant& defaultValue) const;
 
 private:
-    QtConfigGroup(QSettings*, bool);
+    QCGConfigGroup(QSettings*, bool);
 
     QSettings* _group;
     bool _readOnly;
 };
 
 
-class QtConfigStorage : public ConfigStorage
+class QCGConfigStorage : public ConfigStorage
 {
 public:
-  QtConfigStorage();
+  QCGConfigStorage();
 
 private:
   ConfigGroup* getGroup(const QString& group,
 			const QString& optSuffix);
 };
 
-#endif
+#endif // QCGCONFIG_H

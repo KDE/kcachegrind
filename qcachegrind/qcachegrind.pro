@@ -26,8 +26,8 @@ new_moc.input = NHEADERS
 QMAKE_EXTRA_COMPILERS = new_moc
 
 # Input
-NHEADERS += qtconfig.h \
-           toplevel.h \
+NHEADERS += qcgconfig.h \
+           qcgtoplevel.h \
            ../libcore/context.h \
            ../libcore/costitem.h \
            ../libcore/subcost.h \
@@ -70,9 +70,9 @@ NHEADERS += qtconfig.h \
            ../libviews/sourceitem.h \
            ../libviews/sourceview.h \
            ../libviews/stackitem.h
-SOURCES += main.cpp \
-           qtconfig.cpp \
-           toplevel.cpp \
+SOURCES += qcgmain.cpp \
+           qcgconfig.cpp \
+           qcgtoplevel.cpp \
            ../libcore/context.cpp \
            ../libcore/costitem.cpp \
            ../libcore/subcost.cpp \

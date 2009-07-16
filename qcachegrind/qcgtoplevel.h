@@ -20,8 +20,8 @@
  * QCachegrind top level window
  */
 
-#ifndef TOPLEVEL_H
-#define TOPLEVEL_H
+#ifndef QCGTOPLEVEL_H
+#define QCGTOPLEVEL_H
 
 #include <qdatetime.h>
 #include <QLabel>
@@ -49,14 +49,14 @@ class FunctionSelection;
 class StackSelection;
 class TraceFunction;
 
-class TopLevel : public QMainWindow, public Logger, public TopLevelBase
+class QCGTopLevel : public QMainWindow, public Logger, public TopLevelBase
 {
   Q_OBJECT
   Q_CLASSINFO("D-Bus Interface", "net.sf.qcachegrind")
 
 public:
-  TopLevel();
-  ~TopLevel();
+  QCGTopLevel();
+  ~QCGTopLevel();
 
   TraceData* data() { return _data; }
   void setData(TraceData*);
@@ -258,4 +258,4 @@ private:
   TraceItemView::Direction _directionDelayed;
 };
 
-#endif
+#endif // QCGTOPLEVEL_H

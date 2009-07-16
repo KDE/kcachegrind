@@ -22,7 +22,7 @@
 
 #define TRACE_UPDATES 0
 
-#include "toplevel.h"
+#include "qcgtoplevel.h"
 
 #include <stdlib.h> // for system()
 
@@ -52,11 +52,10 @@
 #include "tracedata.h"
 #include "config.h"
 #include "globalconfig.h"
-//#include "configdlg.h"
 #include "multiview.h"
 #include "callgraphview.h"
 
-TopLevel::TopLevel()
+QCGTopLevel::QCGTopLevel()
 {
 #ifndef QT_NO_DBUS
     QDBusConnection con = QDBusConnection::sessionBus();
@@ -105,13 +104,13 @@ TopLevel::TopLevel()
     setAttribute(Qt::WA_DeleteOnClose);
 }
 
-TopLevel::~TopLevel()
+QCGTopLevel::~QCGTopLevel()
 {
     delete _data;
 }
 
 // reset the visualization state, e.g. before loading new data
-void TopLevel::resetState()
+void QCGTopLevel::resetState()
 {
     _activeParts.clear();
     _hiddenParts.clear();
@@ -141,7 +140,7 @@ void TopLevel::resetState()
  * No positions are saved. These is done automatically for
  * KToolbar, and manually in queryExit() for QT docks.
  */
-void TopLevel::saveCurrentState(const QString& postfix)
+void QCGTopLevel::saveCurrentState(const QString& postfix)
 {
     QString eventType, eventType2;
     if (_eventType) eventType = _eventType->name();
@@ -162,7 +161,7 @@ void TopLevel::saveCurrentState(const QString& postfix)
  * This function is called when a trace is closed.
  * Save browsing position for later restoring
  */
-void TopLevel::saveTraceSettings()
+void QCGTopLevel::saveTraceSettings()
 {
     QString key = traceKey();
 
@@ -192,7 +191,7 @@ void TopLevel::saveTraceSettings()
  * This restores the current visualization state of the main window and
  * of the profile views.
  */
-void TopLevel::restoreCurrentState(const QString& postfix)
+void QCGTopLevel::restoreCurrentState(const QString& postfix)
 {
     _partSelection->restoreOptions(QString("PartOverview"), postfix);
     _multiView->restoreLayout(QString("MainView"), postfix);
@@ -204,7 +203,7 @@ void TopLevel::restoreCurrentState(const QString& postfix)
 					    Qt::Horizontal);
 }
 
-void TopLevel::sidebarMenuAboutToShow()
+void QCGTopLevel::sidebarMenuAboutToShow()
 {
     QAction* action;
     QMenu *popup = _sidebarMenuAction->menu();
@@ -227,7 +226,7 @@ void TopLevel::sidebarMenuAboutToShow()
     connect(action, SIGNAL(triggered(bool)), this, SLOT(toggleFunctionDock()));
 }
 
-void TopLevel::recentFilesMenuAboutToShow()
+void QCGTopLevel::recentFilesMenuAboutToShow()
 {
     QAction* action;
     QStringList recentFiles;
@@ -250,13 +249,13 @@ void TopLevel::recentFilesMenuAboutToShow()
     }
 }
 
-void TopLevel::recentFilesTriggered(QAction* action)
+void QCGTopLevel::recentFilesTriggered(QAction* action)
 {
     if (action)
 	loadTrace(QDir::fromNativeSeparators(action->text()));
 }
 
-void TopLevel::createDocks()
+void QCGTopLevel::createDocks()
 {
     // part visualization/selection side bar
     _partDock = new QDockWidget(this);
@@ -316,7 +315,7 @@ void TopLevel::createDocks()
 
 
 
-void TopLevel::createActions()
+void QCGTopLevel::createActions()
 {
     QString hint;
     QIcon icon;
@@ -544,7 +543,7 @@ void TopLevel::createActions()
 	     this, SLOT(eventTypeSelected(const QString&)));
 }
 
-void TopLevel::createMenu()
+void QCGTopLevel::createMenu()
 {
     QMenuBar* mBar = menuBar();
 
@@ -591,7 +590,7 @@ void TopLevel::createMenu()
     helpMenu->addAction(_aboutQtAction);
 }
 
-void TopLevel::createToolbar()
+void QCGTopLevel::createToolbar()
 {
     QToolBar* tb = new QToolBar(tr("Main Toolbar"), this);
     tb->setObjectName("main-toolbar");
@@ -614,7 +613,7 @@ void TopLevel::createToolbar()
 }
 
 
-void TopLevel::about()
+void QCGTopLevel::about()
 {
     QString text, version;
     version = QLatin1String("0.5.1");
@@ -634,7 +633,7 @@ void TopLevel::about()
 }
 
 
-void TopLevel::togglePartDock()
+void QCGTopLevel::togglePartDock()
 {
   if (!_partDock->isVisible())
     _partDock->show();
@@ -642,7 +641,7 @@ void TopLevel::togglePartDock()
     _partDock->hide();
 }
 
-void TopLevel::toggleStackDock()
+void QCGTopLevel::toggleStackDock()
 {
   if (!_stackDock->isVisible())
     _stackDock->show();
@@ -650,7 +649,7 @@ void TopLevel::toggleStackDock()
     _stackDock->hide();
 }
 
-void TopLevel::toggleFunctionDock()
+void QCGTopLevel::toggleFunctionDock()
 {
   if (!_functionDock->isVisible())
     _functionDock->show();
@@ -658,22 +657,22 @@ void TopLevel::toggleFunctionDock()
     _functionDock->hide();
 }
 
-void TopLevel::togglePercentage()
+void QCGTopLevel::togglePercentage()
 {
   setPercentage(_percentageToggleAction->isChecked());
 }
 
-void TopLevel::setAbsoluteCost()
+void QCGTopLevel::setAbsoluteCost()
 {
   setPercentage(false);
 }
 
-void TopLevel::setRelativeCost()
+void QCGTopLevel::setRelativeCost()
 {
   setPercentage(true);
 }
 
-void TopLevel::setPercentage(bool show)
+void QCGTopLevel::setPercentage(bool show)
 {
     if (GlobalConfig::showPercentage() == show) return;
     if (_percentageToggleAction->isChecked() != show)
@@ -693,7 +692,7 @@ void TopLevel::setPercentage(bool show)
     _multiView->updateView();
 }
 
-void TopLevel::toggleExpanded()
+void QCGTopLevel::toggleExpanded()
 {
     bool show = _expandedToggleAction->isChecked();
     if (GlobalConfig::showExpanded() == show) return;
@@ -711,7 +710,7 @@ void TopLevel::toggleExpanded()
     _multiView->updateView();
 }
 
-void TopLevel::toggleCycles()
+void QCGTopLevel::toggleCycles()
 {
     bool show = _cyclesToggleAction->isChecked();
     if (GlobalConfig::showCycles() == show) return;
@@ -735,21 +734,21 @@ void TopLevel::toggleCycles()
 }
 
 
-void TopLevel::functionVisibilityChanged(bool v)
+void QCGTopLevel::functionVisibilityChanged(bool v)
 {
     if (v)
 	_functionSelection->updateView();
 }
 
 
-void TopLevel::newWindow()
+void QCGTopLevel::newWindow()
 {
-    TopLevel* t = new TopLevel();
+    QCGTopLevel* t = new QCGTopLevel();
     t->show();
 }
 
 
-void TopLevel::loadTrace()
+void QCGTopLevel::loadTrace()
 {
     QString file;
     file = QFileDialog::getOpenFileName(this,
@@ -759,14 +758,14 @@ void TopLevel::loadTrace()
     loadTrace(file);
 }
 
-void TopLevel::loadTrace(QString file, bool addToRecentFiles)
+void QCGTopLevel::loadTrace(QString file, bool addToRecentFiles)
 {
     if (file.isEmpty()) return;
 
     if (_data && _data->parts().count()>0) {
 
 	// In new window
-	TopLevel* t = new TopLevel();
+	QCGTopLevel* t = new QCGTopLevel();
 	t->show();
 	t->loadDelayed(file, addToRecentFiles);
 	return;
@@ -795,7 +794,7 @@ void TopLevel::loadTrace(QString file, bool addToRecentFiles)
 }
 
 
-void TopLevel::addTrace()
+void QCGTopLevel::addTrace()
 {
     QString file;
     file = QFileDialog::getOpenFileName(this,
@@ -806,7 +805,7 @@ void TopLevel::addTrace()
 }
 
 
-void TopLevel::addTrace(QString file)
+void QCGTopLevel::addTrace(QString file)
 {
     if (file.isEmpty()) return;
 
@@ -827,14 +826,14 @@ void TopLevel::addTrace(QString file)
 
 
 
-void TopLevel::loadDelayed(QString file, bool addToRecentFiles)
+void QCGTopLevel::loadDelayed(QString file, bool addToRecentFiles)
 {
     _loadTraceDelayed = file;
     _addToRecentFiles = addToRecentFiles;
     QTimer::singleShot(0, this, SLOT(loadTraceDelayed()));
 }
 
-void TopLevel::loadTraceDelayed()
+void QCGTopLevel::loadTraceDelayed()
 {
     if (_loadTraceDelayed.isEmpty()) return;
 
@@ -843,7 +842,7 @@ void TopLevel::loadTraceDelayed()
 }
 
 
-void TopLevel::reload()
+void QCGTopLevel::reload()
 {
     QString trace;
     if (!_data || _data->parts().count()==0)
@@ -857,7 +856,7 @@ void TopLevel::reload()
     setData(d);
 }
 
-void TopLevel::exportGraph()
+void QCGTopLevel::exportGraph()
 {
     if (!_data || !_function) return;
 
@@ -874,7 +873,7 @@ void TopLevel::exportGraph()
 }
 
 
-bool TopLevel::setEventType(QString s)
+bool QCGTopLevel::setEventType(QString s)
 {
   EventType* ct;
 
@@ -886,7 +885,7 @@ bool TopLevel::setEventType(QString s)
   return setEventType(ct);
 }
 
-bool TopLevel::setEventType2(QString s)
+bool QCGTopLevel::setEventType2(QString s)
 {
   EventType* ct;
 
@@ -896,7 +895,7 @@ bool TopLevel::setEventType2(QString s)
   return setEventType2(ct);
 }
 
-void TopLevel::eventTypeSelected(const QString& s)
+void QCGTopLevel::eventTypeSelected(const QString& s)
 {
   EventType* ct;
 
@@ -904,7 +903,7 @@ void TopLevel::eventTypeSelected(const QString& s)
   setEventType(ct);
 }
 
-void TopLevel::eventType2Selected(const QString& s)
+void QCGTopLevel::eventType2Selected(const QString& s)
 {
   EventType* ct;
 
@@ -912,7 +911,7 @@ void TopLevel::eventType2Selected(const QString& s)
   setEventType2(ct);
 }
 
-bool TopLevel::setEventType(EventType* ct)
+bool QCGTopLevel::setEventType(EventType* ct)
 {
   if (_eventType == ct) return false;
   _eventType = ct;
@@ -936,7 +935,7 @@ bool TopLevel::setEventType(EventType* ct)
   return true;
 }
 
-bool TopLevel::setEventType2(EventType* ct)
+bool QCGTopLevel::setEventType2(EventType* ct)
 {
   if (_eventType2 == ct) return false;
   _eventType2 = ct;
@@ -958,7 +957,7 @@ bool TopLevel::setEventType2(EventType* ct)
 }
 
 
-void TopLevel::groupTypeSelected(int cg)
+void QCGTopLevel::groupTypeSelected(int cg)
 {
   switch(cg) {
   case 0: setGroupType( ProfileContext::Function ); break;
@@ -970,7 +969,7 @@ void TopLevel::groupTypeSelected(int cg)
   }
 }
 
-bool TopLevel::setGroupType(QString s)
+bool QCGTopLevel::setGroupType(QString s)
 {
   ProfileContext::Type gt;
 
@@ -989,7 +988,7 @@ bool TopLevel::setGroupType(QString s)
   return setGroupType(gt);
 }
 
-bool TopLevel::setGroupType(ProfileContext::Type gt)
+bool QCGTopLevel::setGroupType(ProfileContext::Type gt)
 {
   if (_groupType == gt) return false;
   _groupType = gt;
@@ -1028,7 +1027,7 @@ bool TopLevel::setGroupType(ProfileContext::Type gt)
   return true;
 }
 
-bool TopLevel::setGroup(QString s)
+bool QCGTopLevel::setGroup(QString s)
 {
     TraceCostItem* ci = _functionSelection->group(s);
     if (!ci)
@@ -1038,7 +1037,7 @@ bool TopLevel::setGroup(QString s)
 }
 
 
-bool TopLevel::setGroup(TraceCostItem* g)
+bool QCGTopLevel::setGroup(TraceCostItem* g)
 {
     if (_group == g) return false;
     _group = g;
@@ -1049,7 +1048,7 @@ bool TopLevel::setGroup(TraceCostItem* g)
     return true;
 }
 
-bool TopLevel::setFunction(QString s)
+bool QCGTopLevel::setFunction(QString s)
 {
   if (!_data) return false;
 
@@ -1059,7 +1058,7 @@ bool TopLevel::setFunction(QString s)
   return setFunction((TraceFunction*)f);
 }
 
-bool TopLevel::setFunction(TraceFunction* f)
+bool QCGTopLevel::setFunction(TraceFunction* f)
 {
   if (_function == f) return false;
   _function = f;
@@ -1083,7 +1082,7 @@ bool TopLevel::setFunction(TraceFunction* f)
   }
 
 #if TRACE_UPDATES
-  qDebug("TopLevel::setFunction(%s), lastSender %s",
+  qDebug("QCGTopLevel::setFunction(%s), lastSender %s",
          f ? f->prettyName().ascii() : "0",
          _lastSender ? _lastSender->name() :"0" );
 #endif
@@ -1099,43 +1098,43 @@ bool TopLevel::setFunction(TraceFunction* f)
  * temporary variable. And one parameterless slot for
  * forwarding, using this temporary.
  */
-void TopLevel::setEventTypeDelayed(EventType* ct)
+void QCGTopLevel::setEventTypeDelayed(EventType* ct)
 {
   _eventTypeDelayed = ct;
   QTimer::singleShot (0, this, SLOT(setEventTypeDelayed()));
 }
 
-void TopLevel::setEventType2Delayed(EventType* ct)
+void QCGTopLevel::setEventType2Delayed(EventType* ct)
 {
   _eventType2Delayed = ct;
   QTimer::singleShot (0, this, SLOT(setEventType2Delayed()));
 }
 
-void TopLevel::setEventTypeDelayed()
+void QCGTopLevel::setEventTypeDelayed()
 {
   setEventType(_eventTypeDelayed);
 }
 
-void TopLevel::setEventType2Delayed()
+void QCGTopLevel::setEventType2Delayed()
 {
   setEventType2(_eventType2Delayed);
 }
 
-void TopLevel::setGroupTypeDelayed(ProfileContext::Type gt)
+void QCGTopLevel::setGroupTypeDelayed(ProfileContext::Type gt)
 {
   _groupTypeDelayed = gt;
   QTimer::singleShot (0, this, SLOT(setGroupTypeDelayed()));
 }
 
-void TopLevel::setGroupTypeDelayed()
+void QCGTopLevel::setGroupTypeDelayed()
 {
   setGroupType(_groupTypeDelayed);
 }
 
-void TopLevel::setGroupDelayed(TraceCostItem* g)
+void QCGTopLevel::setGroupDelayed(TraceCostItem* g)
 {
 #if TRACE_UPDATES
-  qDebug("TopLevel::setGroupDelayed(%s), sender %s",
+  qDebug("QCGTopLevel::setGroupDelayed(%s), sender %s",
          g ? g->prettyName().ascii() : "0",
          _lastSender ? _lastSender->name() :"0" );
 #endif
@@ -1144,18 +1143,18 @@ void TopLevel::setGroupDelayed(TraceCostItem* g)
   QTimer::singleShot (0, this, SLOT(setGroupDelayed()));
 }
 
-void TopLevel::setGroupDelayed()
+void QCGTopLevel::setGroupDelayed()
 {
   setGroup(_groupDelayed);
 }
 
-void TopLevel::setDirectionDelayed(TraceItemView::Direction d)
+void QCGTopLevel::setDirectionDelayed(TraceItemView::Direction d)
 {
   _directionDelayed = d;
   QTimer::singleShot (0, this, SLOT(setDirectionDelayed()));
 }
 
-void TopLevel::setDirectionDelayed()
+void QCGTopLevel::setDirectionDelayed()
 {
     switch(_directionDelayed) {
     case TraceItemView::Back:
@@ -1185,7 +1184,7 @@ void TopLevel::setDirectionDelayed()
 }
 
 
-void TopLevel::setTraceItemDelayed(CostItem* i)
+void QCGTopLevel::setTraceItemDelayed(CostItem* i)
 {
   // no need to select same item a 2nd time...
   if (_traceItemDelayed == i) return;
@@ -1195,7 +1194,7 @@ void TopLevel::setTraceItemDelayed(CostItem* i)
   qDebug() << "Selected " << (i ? i->prettyName() : "(none)");
 
 #if TRACE_UPDATES
-  qDebug("TopLevel::setTraceItemDelayed(%s), sender %s",
+  qDebug("QCGTopLevel::setTraceItemDelayed(%s), sender %s",
          i ? i->prettyName().ascii() : "0",
          _lastSender ? _lastSender->name() :"0" );
 #endif
@@ -1203,7 +1202,7 @@ void TopLevel::setTraceItemDelayed(CostItem* i)
   QTimer::singleShot (0, this, SLOT(setTraceItemDelayed()));
 }
 
-void TopLevel::setTraceItemDelayed()
+void QCGTopLevel::setTraceItemDelayed()
 {
     if (!_traceItemDelayed) return;
 
@@ -1243,7 +1242,7 @@ void TopLevel::setTraceItemDelayed()
  * of the TraceData object: on closing the window or opening
  * another trace, the object is destroyed.
  */
-void TopLevel::setData(TraceData* data)
+void QCGTopLevel::setData(TraceData* data)
 {
   if (data == _data) return;
 
@@ -1319,7 +1318,7 @@ void TopLevel::setData(TraceData* data)
   updateStatusBar();
 }
 
-void TopLevel::addEventTypeMenu(QMenu* popup, bool withCost2)
+void QCGTopLevel::addEventTypeMenu(QMenu* popup, bool withCost2)
 {
   if (_data) {
     QMenu *popup1, *popup2 = 0;
@@ -1384,7 +1383,7 @@ void TopLevel::addEventTypeMenu(QMenu* popup, bool withCost2)
 		      this, SLOT(setRelativeCost()));
 }
 
-bool TopLevel::setEventType(QAction* action)
+bool QCGTopLevel::setEventType(QAction* action)
 {
   if (!_data) return false;
   int id = action->data().toInt(0);
@@ -1397,7 +1396,7 @@ bool TopLevel::setEventType(QAction* action)
   return ct ? setEventType(ct) : false;
 }
 
-bool TopLevel::setEventType2(QAction* action)
+bool QCGTopLevel::setEventType2(QAction* action)
 {
   if (!_data) return false;
   int id = action->data().toInt(0);
@@ -1410,7 +1409,7 @@ bool TopLevel::setEventType2(QAction* action)
   return setEventType2(ct);
 }
 
-void TopLevel::addGoMenu(QMenu* popup)
+void QCGTopLevel::addGoMenu(QMenu* popup)
 {
   StackBrowser* b = _stackSelection->browser();
   if (b) {
@@ -1423,22 +1422,22 @@ void TopLevel::addGoMenu(QMenu* popup)
   popup->addAction(tr("Go Up"), this, SLOT(goUp()));
 }
 
-void TopLevel::goBack()
+void QCGTopLevel::goBack()
 {
   setDirectionDelayed(TraceItemView::Back);
 }
 
-void TopLevel::goForward()
+void QCGTopLevel::goForward()
 {
   setDirectionDelayed(TraceItemView::Forward);
 }
 
-void TopLevel::goUp()
+void QCGTopLevel::goUp()
 {
   setDirectionDelayed(TraceItemView::Up);
 }
 
-QString TopLevel::traceKey()
+QString QCGTopLevel::traceKey()
 {
   if (!_data || _data->command().isEmpty()) return QString();
 
@@ -1451,7 +1450,7 @@ QString TopLevel::traceKey()
 }
 
 
-void TopLevel::restoreTraceTypes()
+void QCGTopLevel::restoreTraceTypes()
 {
     QString key = traceKey();
     QString groupType, eventType, eventType2;
@@ -1494,7 +1493,7 @@ void TopLevel::restoreTraceTypes()
  * selection widget, because the group/function choosing depends on
  * filled lists in the function selection widget
  */
-void TopLevel::restoreTraceSettings()
+void QCGTopLevel::restoreTraceSettings()
 {
   if (!_data) return;
 
@@ -1531,7 +1530,7 @@ void TopLevel::restoreTraceSettings()
 
 /* Layout */
 
-void TopLevel::layoutDuplicate()
+void QCGTopLevel::layoutDuplicate()
 {
     // save current and allocate a new slot
     _multiView->saveLayout(QString("Layout%1-MainView").arg(_layoutCurrent),
@@ -1541,10 +1540,10 @@ void TopLevel::layoutDuplicate()
 
     updateLayoutActions();
 
-    qDebug() << "TopLevel::layoutDuplicate: count " << _layoutCount;
+    qDebug() << "QCGTopLevel::layoutDuplicate: count " << _layoutCount;
 }
 
-void TopLevel::layoutRemove()
+void QCGTopLevel::layoutRemove()
 {
     if (_layoutCount <2) return;
 
@@ -1558,10 +1557,10 @@ void TopLevel::layoutRemove()
 
     updateLayoutActions();
 
-    qDebug() << "TopLevel::layoutRemove: count " << _layoutCount;
+    qDebug() << "QCGTopLevel::layoutRemove: count " << _layoutCount;
 }
 
-void TopLevel::layoutNext()
+void QCGTopLevel::layoutNext()
 {
     if (_layoutCount <2) return;
 
@@ -1573,10 +1572,10 @@ void TopLevel::layoutNext()
     if (_layoutCurrent == _layoutCount) _layoutCurrent = 0;
     _multiView->restoreLayout(layoutPrefix.arg(_layoutCurrent), key);
 
-    qDebug() << "TopLevel::layoutNext: current " << _layoutCurrent;
+    qDebug() << "QCGTopLevel::layoutNext: current " << _layoutCurrent;
 }
 
-void TopLevel::layoutPrevious()
+void QCGTopLevel::layoutPrevious()
 {
     if (_layoutCount <2) return;
 
@@ -1588,10 +1587,10 @@ void TopLevel::layoutPrevious()
     if (_layoutCurrent <0) _layoutCurrent = _layoutCount-1;
     _multiView->restoreLayout(layoutPrefix.arg(_layoutCurrent), key);
 
-    qDebug() << "TopLevel::layoutPrevious: current " << _layoutCurrent;
+    qDebug() << "QCGTopLevel::layoutPrevious: current " << _layoutCurrent;
 }
 
-void TopLevel::layoutSave()
+void QCGTopLevel::layoutSave()
 {
     QString key = traceKey();
     QString layoutPrefix = QString("Layout%1-MainView");
@@ -1612,7 +1611,7 @@ void TopLevel::layoutSave()
     delete layoutConfig;
 }
 
-void TopLevel::layoutRestore()
+void QCGTopLevel::layoutRestore()
 {
     ConfigGroup* layoutConfig = ConfigStorage::group("Layouts");
     _layoutCount = layoutConfig->value("DefaultCount", 0).toInt();
@@ -1631,7 +1630,7 @@ void TopLevel::layoutRestore()
 }
 
 
-void TopLevel::updateLayoutActions()
+void QCGTopLevel::updateLayoutActions()
 {
     if (_layoutNext)
 	_layoutNext->setEnabled(_layoutCount>1);
@@ -1648,7 +1647,7 @@ void TopLevel::updateLayoutActions()
 }
 
 
-void TopLevel::updateStatusBar()
+void QCGTopLevel::updateStatusBar()
 {
   if (!_data || _data->parts().count()==0) {
     _statusLabel->setText(tr("No profile data file loaded."));
@@ -1687,7 +1686,7 @@ void TopLevel::updateStatusBar()
 }
 
 #if 0
-void TopLevel::configure()
+void QCGTopLevel::configure()
 {
     if (ConfigDlg::configure( (KConfiguration*) GlobalConfig::config(),
 			      _data, this)) {
@@ -1700,7 +1699,7 @@ void TopLevel::configure()
 }
 #endif
 
-void TopLevel::closeEvent(QCloseEvent* event)
+void QCGTopLevel::closeEvent(QCloseEvent* event)
 {
     GlobalConfig::config()->saveOptions();
 
@@ -1723,7 +1722,7 @@ void TopLevel::closeEvent(QCloseEvent* event)
 }
 
 
-void TopLevel::toggleSplitted()
+void QCGTopLevel::toggleSplitted()
 {
     int count = _multiView->childCount();
     if (count<1) count = 1;
@@ -1737,7 +1736,7 @@ void TopLevel::toggleSplitted()
 					    Qt::Horizontal);
 }
 
-void TopLevel::toggleSplitDirection()
+void QCGTopLevel::toggleSplitDirection()
 {
   _multiView->setOrientation( _splitDirectionToggleAction->isChecked() ?
                               Qt::Horizontal : Qt::Vertical );
@@ -1746,9 +1745,9 @@ void TopLevel::toggleSplitDirection()
 
 
 // this is called after a config change in the dialog
-void TopLevel::configChanged()
+void QCGTopLevel::configChanged()
 {
-  //qDebug("TopLevel::configChanged");
+  //qDebug("QCGTopLevel::configChanged");
   //_showPercentage->setChecked(GlobalConfig::showPercentage());
 
   // invalidate found/cached dirs of source files
@@ -1768,12 +1767,12 @@ void TopLevel::configChanged()
 
 
 
-void TopLevel::activePartsChangedSlot(const TracePartList& list)
+void QCGTopLevel::activePartsChangedSlot(const TracePartList& list)
 {
   if (!_data) return;
 
   if (!_data->activateParts(list)) {
-//    qDebug("TopLevel::activePartsChangedSlot: No Change!");
+//    qDebug("QCGTopLevel::activePartsChangedSlot: No Change!");
     return;
   }
   _activeParts = list;
@@ -1792,14 +1791,14 @@ void TopLevel::activePartsChangedSlot(const TracePartList& list)
   updateStatusBar();
 }
 
-void TopLevel::partsHideSelectedSlotDelayed()
+void QCGTopLevel::partsHideSelectedSlotDelayed()
 {
   QTimer::singleShot( 0, this, SLOT(partsHideSelectedSlot()) );
 }
 
 // this puts selected parts into hidden list,
 // deselects them and makes the remaining parts selected
-void TopLevel::partsHideSelectedSlot()
+void QCGTopLevel::partsHideSelectedSlot()
 {
   if (!_data) return;
 
@@ -1825,13 +1824,13 @@ void TopLevel::partsHideSelectedSlot()
   activePartsChangedSlot(newActive);
 }
 
-void TopLevel::partsUnhideAllSlotDelayed()
+void QCGTopLevel::partsUnhideAllSlotDelayed()
 {
   QTimer::singleShot( 0, this, SLOT(partsUnhideAllSlot()) );
 }
 
 // this unhides all hidden parts. Does NOT change selection
-void TopLevel::partsUnhideAllSlot()
+void QCGTopLevel::partsUnhideAllSlot()
 {
   if (!_data) return;
 
@@ -1844,7 +1843,7 @@ void TopLevel::partsUnhideAllSlot()
 #endif
 }
 
-void TopLevel::forceTrace()
+void QCGTopLevel::forceTrace()
 {
 //  qDebug("forceTrace");
 
@@ -1864,7 +1863,7 @@ void TopLevel::forceTrace()
 
 }
 
-void TopLevel::forceTraceReload()
+void QCGTopLevel::forceTraceReload()
 {
 //  qDebug("forceTraceReload");
 
@@ -1878,7 +1877,7 @@ void TopLevel::forceTraceReload()
   reload();
 }
 
-void TopLevel::forwardAboutToShow()
+void QCGTopLevel::forwardAboutToShow()
 {
   QMenu *popup = _forwardAction->menu();
 
@@ -1917,7 +1916,7 @@ void TopLevel::forwardAboutToShow()
   }
 }
 
-void TopLevel::backAboutToShow()
+void QCGTopLevel::backAboutToShow()
 {
   QMenu *popup = _backAction->menu();
 
@@ -1956,7 +1955,7 @@ void TopLevel::backAboutToShow()
   }
 }
 
-void TopLevel::upAboutToShow()
+void QCGTopLevel::upAboutToShow()
 {
   QMenu *popup = _upAction->menu();
 
@@ -1990,7 +1989,7 @@ void TopLevel::upAboutToShow()
   }
 }
 
-void TopLevel::forwardTriggered(QAction* action)
+void QCGTopLevel::forwardTriggered(QAction* action)
 {
   int count = action->data().toInt(0);
   //qDebug("forwardTriggered: %d", count);
@@ -2007,7 +2006,7 @@ void TopLevel::forwardTriggered(QAction* action)
   _stackSelection->browserForward();
 }
 
-void TopLevel::backTriggered(QAction* action)
+void QCGTopLevel::backTriggered(QAction* action)
 {
   int count = action->data().toInt(0);
   //qDebug("backTriggered: %d", count);
@@ -2024,7 +2023,7 @@ void TopLevel::backTriggered(QAction* action)
   _stackSelection->browserBack();
 }
 
-void TopLevel::upTriggered(QAction* action)
+void QCGTopLevel::upTriggered(QAction* action)
 {
   int count = action->data().toInt(0);
   //qDebug("upTriggered: %d", count);
@@ -2047,13 +2046,13 @@ void TopLevel::upTriggered(QAction* action)
     setFunction(f);
 }
 
-void TopLevel::showMessage(const QString& msg, int ms)
+void QCGTopLevel::showMessage(const QString& msg, int ms)
 {
 	if (_statusbar)
 		_statusbar->message(msg, ms);
 }
 
-void TopLevel::showStatus(const QString& msg, int progress)
+void QCGTopLevel::showStatus(const QString& msg, int progress)
 {
 	static bool msgUpdateNeeded = true;
 
@@ -2103,13 +2102,13 @@ void TopLevel::showStatus(const QString& msg, int progress)
 	qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
 }
 
-void TopLevel::loadStart(const QString& filename)
+void QCGTopLevel::loadStart(const QString& filename)
 {
     showStatus(QString("Loading %1").arg(filename), 0);
     Logger::_filename = filename;
 }
 
-void TopLevel::loadFinished(const QString& msg)
+void QCGTopLevel::loadFinished(const QString& msg)
 {
     showStatus(QString::null, 0);
     if (!msg.isEmpty())
@@ -2117,19 +2116,19 @@ void TopLevel::loadFinished(const QString& msg)
 		    2000);
 }
 
-void TopLevel::loadProgress(int progress)
+void QCGTopLevel::loadProgress(int progress)
 {
     showStatus(QString("Loading %1").arg(_filename), progress);
 }
 
-void TopLevel::loadError(int line, const QString& msg)
+void QCGTopLevel::loadError(int line, const QString& msg)
 {
     qCritical() << "Loading" << _filename.ascii() << ":" << line << ": " << msg.ascii();
 }
 
-void TopLevel::loadWarning(int line, const QString& msg)
+void QCGTopLevel::loadWarning(int line, const QString& msg)
 {
     qWarning() << "Loading" << _filename.ascii() << ":" << line << ": " << msg.ascii();
 }
 
-#include "toplevel.moc"
+#include "qcgtoplevel.moc"

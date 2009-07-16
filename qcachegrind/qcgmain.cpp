@@ -24,36 +24,36 @@
 #include <QDir>
 #include <QApplication>
 
-#include "qtconfig.h"
+#include "qcgconfig.h"
 #include "config.h"
 #include "globalconfig.h"
-#include "toplevel.h"
+#include "qcgtoplevel.h"
 #include "tracedata.h"
 #include "loader.h"
 
 int main( int argc, char ** argv )
 {
     QApplication app(argc, argv);
-    TopLevel* t;
+    QCGTopLevel* t;
     Loader::initLoaders();
 
     QCoreApplication::setOrganizationName("kcachegrind.sf.net");
     QCoreApplication::setApplicationName("QCachegrind");
-    ConfigStorage::setStorage(new QtConfigStorage);
+    ConfigStorage::setStorage(new QCGConfigStorage);
     GlobalConfig::config()->addDefaultTypes();
 
     QStringList list = app.arguments();
     list.pop_front();
     if (!list.isEmpty()) {
 	foreach(const QString& file, list) {
-	    t = new TopLevel();
+	    t = new QCGTopLevel();
 	    t->show();
 	    t->loadDelayed( QDir::fromNativeSeparators(file) );
 	}
     }
     else {
 	// load trace in current dir
-	t = new TopLevel();
+	t = new QCGTopLevel();
 	t->show();
 	t->loadDelayed(".", false);
     }
