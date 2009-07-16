@@ -841,7 +841,6 @@ TreeMapItem::TreeMapItem(TreeMapItem* parent, double value)
   _index = -1;
   _depth = -1; // not set
   _unused_self = 0;
-  _freeRects = 0;
 
   if (_parent) {
     // take sorting from parent
@@ -874,7 +873,6 @@ TreeMapItem::TreeMapItem(TreeMapItem* parent, double value,
   _index = -1;
   _depth = -1; // not set
   _unused_self = 0;
-  _freeRects = 0;
 
   if (_parent) _parent->addItem(this);
 }
@@ -882,10 +880,6 @@ TreeMapItem::TreeMapItem(TreeMapItem* parent, double value,
 TreeMapItem::~TreeMapItem()
 {
   if (_children) delete _children;
-  if (_freeRects) {
-      clearFreeRects();
-      delete _freeRects;
-  }
 
   // finally, notify widget about deletion
   if (_widget) _widget->deletingItem(this);
@@ -1102,10 +1096,7 @@ void TreeMapItem::clearItemRect()
 
 void TreeMapItem::clearFreeRects()
 {
-    if (!_freeRects) return;
-
-    while (!_freeRects->isEmpty())
-	delete _freeRects->takeFirst();
+    _freeRects.clear();
 }
 
 void TreeMapItem::addFreeRect(const QRect& r)
@@ -1113,44 +1104,40 @@ void TreeMapItem::addFreeRect(const QRect& r)
     // do not add invalid rects
     if ((r.width() < 1) || (r.height() < 1)) return;
 
-    if (!_freeRects)
-	_freeRects = new QList<QRect*>;
-
     if (0) qDebug() << "addFree(" << path(0).join("/") << ", "
 		     << r.x() << "/" << r.y() << "-"
 		     << r.width() << "x" << r.height() << ")";
 
-    if (_freeRects->isEmpty()) {
-	_freeRects->append(new QRect(r));
+    if (_freeRects.isEmpty()) {
+	_freeRects.append(r);
 	return;
     }
-    QRect* last = _freeRects->last();
 
     // join rect with last rect if possible
     // this saves memory and does not make the tooltip flicker
-
+    QRect& last = _freeRects.last();
     bool replaced = false;
-    if ((last->left() == r.left()) && (last->width() == r.width())) {
-	if ((last->bottom()+1 == r.top()) || (r.bottom()+1 == last->top())) {
-	    *last |= r;
+    if ((last.left() == r.left()) && (last.width() == r.width())) {
+	if ((last.bottom()+1 == r.top()) || (r.bottom()+1 == last.top())) {
+	    last |= r;
 	    replaced = true;
 	}
     }
-    else if ((last->top() == r.top()) && (last->height() == r.height())) {
-	if ((last->right()+1 == r.left()) || (r.right()+1 == last->left())) {
-	    *last |= r;
+    else if ((last.top() == r.top()) && (last.height() == r.height())) {
+	if ((last.right()+1 == r.left()) || (r.right()+1 == last.left())) {
+	    last |= r;
 	    replaced = true;
 	}
     }
 
     if (!replaced) {
-	_freeRects->append(new QRect(r));
+	_freeRects.append(r);
 	return;
     }
 
     if (0) qDebug() << "  united with last to ("
-		     << last->x() << "/" << last->y() << "-"
-		     << last->width() << "x" << last->height() << ")";
+		     << last.x() << "/" << last.y() << "-"
+		     << last.width() << "x" << last.height() << ")";
 }
 
 
@@ -2173,24 +2160,25 @@ void TreeMapWidget::fontChange( const QFont& )
 // react on tooltip events
 bool TreeMapWidget::event(QEvent *event)
 {
-	if (event->type() == QEvent::ToolTip) {
-		QHelpEvent *helpEvent = static_cast<QHelpEvent *>(event);
-		TreeMapItem* i = item(helpEvent->pos().x(), helpEvent->pos().y());
-		QList<QRect*>* rList = i ? i->freeRects() : 0;
-		bool hasTip = false;
-		if (rList) {
-			foreach(QRect* r, *rList)
-				if (r->contains(helpEvent->pos())) {
-					hasTip = true;
-					break;
-				}
+    if (event->type() == QEvent::ToolTip) {
+	QHelpEvent *helpEvent = static_cast<QHelpEvent *>(event);
+	TreeMapItem* i = item(helpEvent->pos().x(), helpEvent->pos().y());
+	bool hasTip = false;
+	if (i) {
+	    const QList<QRect>& rList = i->freeRects();
+	    foreach(const QRect& r, rList) {
+		if (r.contains(helpEvent->pos())) {
+		    hasTip = true;
+		    break;
 		}
-		if (hasTip)
-			QToolTip::showText(helpEvent->globalPos(), tipString(i));
-		else
-			QToolTip::hideText();
+	    }
 	}
-	return QWidget::event(event);
+	if (hasTip)
+	    QToolTip::showText(helpEvent->globalPos(), tipString(i));
+	else
+	    QToolTip::hideText();
+    }
+    return QWidget::event(event);
 }
 
 void TreeMapWidget::paintEvent( QPaintEvent * )
