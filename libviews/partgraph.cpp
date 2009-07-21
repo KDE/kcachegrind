@@ -90,10 +90,9 @@ void PartAreaWidget::setCallLevels(int callLevels)
 void PartAreaWidget::refreshParts()
 {
   // rebuild only subparts to keep part selection state
-  TreeMapItem* i;
   TreeMapItemList* l = base()->children();
   if (l)
-    for (i=l->first();i;i=l->next())
+    foreach(TreeMapItem* i, *l)
       i->refresh();
 
   // but resize part areas
@@ -115,10 +114,9 @@ void PartAreaWidget::setGroupType(ProfileContext::Type gt)
 
   // rebuild hierarchy below parts.
   // thus, selected parts stay selected
-  TreeMapItem* i;
   TreeMapItemList* l = base()->children();
   if (l)
-    for (i=l->first();i;i=l->next())
+    foreach(TreeMapItem* i, *l)
       i->refresh();
 
   base()->redraw();

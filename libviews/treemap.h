@@ -33,8 +33,6 @@
 #include <qstring.h>
 #include <qwidget.h>
 #include <qpixmap.h>
-#include <q3ptrlist.h>
-#include <q3valuevector.h>
 #include <qcolor.h>
 #include <qapplication.h>
 #include <qstringlist.h>
@@ -42,7 +40,6 @@
 #include <QPaintEvent>
 #include <QKeyEvent>
 #include <QContextMenuEvent>
-#include <Q3PopupMenu>
 #include <QMouseEvent>
 
 class Q3PopupMenu;
@@ -205,15 +202,11 @@ private:
 };
 
 
-class TreeMapItemList: public Q3PtrList<TreeMapItem>
+class TreeMapItemList: public QList<TreeMapItem*>
 {
 public:
   TreeMapItem* commonParent();
-protected:
-  int compareItems ( Item item1, Item item2 );
 };
-
-typedef Q3PtrListIterator<TreeMapItem> TreeMapItemListIterator;
 
 
 /**
@@ -706,9 +699,9 @@ private:
   bool horizontal(TreeMapItem* i, const QRect& r);
   void drawFill(TreeMapItem*,QPainter* p, const QRect& r);
   void drawFill(TreeMapItem*,QPainter* p, const QRect& r,
-                TreeMapItemListIterator it, int len, bool goBack);
+		TreeMapItemList* list, int idx, int len, bool goBack);
   bool drawItemArray(QPainter* p, TreeMapItem*, const QRect& r, double,
-                     TreeMapItemListIterator it, int len, bool);
+		     TreeMapItemList* list, int idx, int len, bool);
   bool resizeAttr(int);
 
   TreeMapItem* _base;

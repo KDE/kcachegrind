@@ -163,7 +163,7 @@ void PartSelection::selectParts(const TracePartList& list)
     TreeMapItem* i;
     TreeMapItemList l = *_partAreaWidget->base()->children();
     // first deselect inactive, then select active (makes current active)
-    for (i=l.first();i;i=l.next()) {
+    foreach(i, l) {
 	TracePart* part = ((PartItem*)i)->part();
 	bool active = (list.containsRef(part)>0);
 	if (!active && _partAreaWidget->isSelected(i)) {
@@ -175,7 +175,7 @@ void PartSelection::selectParts(const TracePartList& list)
 	    _partAreaWidget->setSelected(i, false);
 	}
     }
-    for (i=l.first();i;i=l.next()) {
+    foreach(i, l) {
 	TracePart* part = ((PartItem*)i)->part();
 	bool active = (list.containsRef(part)>0);
 	if (active && !_partAreaWidget->isSelected(i)) {
@@ -295,20 +295,19 @@ void PartSelection::selectionChanged()
     bool nothingSelected = true;
 
     TracePartList pList;
-    TreeMapItem* i;
     TracePart* part;
 
     // if nothing is selected, activate all parts
     TreeMapItemList* list = _partAreaWidget->base()->children();
     if (!list) return;
 
-    for (i=list->first();i;i=list->next())
+    foreach(TreeMapItem* i, *list)
 	if (_partAreaWidget->isSelected(i)) {
 	    nothingSelected = false;
 	    break;
 	}
 
-    for (i=list->first();i;i=list->next()) {
+    foreach(TreeMapItem* i, *list) {
 	part = ((PartItem*)i)->part();
 	bool active = nothingSelected || _partAreaWidget->isSelected(i);
 	if (active) {

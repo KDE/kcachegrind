@@ -36,7 +36,6 @@
 #include <QContextMenuEvent>
 #include <QMouseEvent>
 #include <QToolTip>
-#include <Qt3Support/Q3PtrList>
 #include <Qt3Support/Q3PopupMenu>
 
 
@@ -792,41 +791,40 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
 // TreeMapItemList
 //
 
-int TreeMapItemList::compareItems ( Item item1, Item item2 )
-{
-  bool ascending;
-  int result;
-
-  TreeMapItem* parent = ((TreeMapItem*)item1)->parent();
-  // should not happen
-  if (!parent) return 0;
-
-  int textNo = parent->sorting(&ascending);
-
-  if (textNo < 0) {
-    double diff = ((TreeMapItem*)item1)->value() -
-                  ((TreeMapItem*)item2)->value();
-    result = (diff < -.9) ? -1 : (diff > .9) ? 1 : 0;
-  }
-  else
-    result = (((TreeMapItem*)item1)->text(textNo) <
-	      ((TreeMapItem*)item2)->text(textNo)) ? -1 : 1;
-
-  return ascending ? result : -result;
-}
-
 
 TreeMapItem* TreeMapItemList::commonParent()
 {
-  TreeMapItem* parent, *item;
-  parent = first();
-  if (parent)
-    while( (item = next()) != 0)
-      parent = parent->commonParent(item);
+  if (isEmpty()) return 0;
+
+  TreeMapItem* parent = first();
+  for(int i = 1; parent && i<size(); i++)
+      parent = parent->commonParent(at(i));
 
   return parent;
 }
 
+class TreeMapItemLessThan
+{
+public:
+    bool operator()(const TreeMapItem* i1, const TreeMapItem* i2) const
+    {
+	TreeMapItem* p = i1->parent();
+	// should not happen
+	if (!p) return false;
+
+	bool ascending;
+	bool result;
+	int textNo = p->sorting(&ascending);
+	if (textNo < 0)
+	    result = i1->value() < i2->value();
+	else
+	    result = i1->text(textNo) < i2->text(textNo);
+
+	return ascending ? result : !result;
+    }
+};
+
+TreeMapItemLessThan treeMapItemLessThan;
 
 // TreeMapItem
 
@@ -879,7 +877,11 @@ TreeMapItem::TreeMapItem(TreeMapItem* parent, double value,
 
 TreeMapItem::~TreeMapItem()
 {
-  if (_children) delete _children;
+    if (_children) {
+	qDeleteAll(*_children);
+	delete _children;
+	_children = 0;
+    }
 
   // finally, notify widget about deletion
   if (_widget) _widget->deletingItem(this);
@@ -923,6 +925,7 @@ void TreeMapItem::clear()
     // delete selected items below this item from selection
     if (_widget) _widget->clearSelection(this);
 
+    qDeleteAll(*_children);
     delete _children;
     _children = 0;
   }
@@ -966,7 +969,6 @@ bool TreeMapItem::initialized()
 {
   if (!_children) {
     _children = new TreeMapItemList;
-    _children->setAutoDelete(true);
     return false;
   }
   return true;
@@ -976,16 +978,14 @@ void TreeMapItem::addItem(TreeMapItem* i)
 {
   if (!i) return;
 
-  if (!_children) {
+  if (!_children)
     _children = new TreeMapItemList;
-    _children->setAutoDelete(true);
-  }
+
   i->setParent(this);
 
-  if (sorting(0) == -1)
-    _children->append(i); // preserve insertion order
-  else
-    _children->inSort(i);
+  _children->append(i); // preserve insertion order
+  if (sorting(0) != -1)
+    qSort(_children->begin(), _children->end(), treeMapItemLessThan);
 }
 
 
@@ -1051,17 +1051,19 @@ void TreeMapItem::setSorting(int textNo, bool ascending)
     _sortAscending = ascending;
     _sortTextNo = textNo;
 
-    if (_children && _sortTextNo != -1) _children->sort();
+    if (_children && _sortTextNo != -1)
+	qSort(_children->begin(), _children->end(), treeMapItemLessThan);
 }
 
 void TreeMapItem::resort(bool recursive)
 {
   if (!_children) return;
 
-  if (_sortTextNo != -1) _children->sort();
+  if (_sortTextNo != -1)
+      qSort(_children->begin(), _children->end(), treeMapItemLessThan);
 
   if (recursive)
-    for (TreeMapItem* i=_children->first(); i; i=_children->next())
+    foreach(TreeMapItem* i, *_children)
       i->resort(recursive);
 }
 
@@ -1081,10 +1083,9 @@ int TreeMapItem::rtti() const
 
 TreeMapItemList* TreeMapItem::children()
 {
-  if (!_children) {
+  if (!_children)
     _children = new TreeMapItemList;
-    _children->setAutoDelete(true);
-  }
+
   return _children;
 }
 
@@ -1497,11 +1498,8 @@ void TreeMapWidget::setMinimalArea(int area)
 void TreeMapWidget::deletingItem(TreeMapItem* i)
 {
   // remove any references to the item to be deleted
-  while(_selection.findRef(i) > -1)
-    _selection.remove();
-
-  while(_tmpSelection.findRef(i) > -1)
-    _tmpSelection.remove();
+  _selection.removeAll(i);
+  _tmpSelection.removeAll(i);
 
   if (_current == i) _current = 0;
   if (_oldCurrent == i) _oldCurrent = 0;
@@ -1550,8 +1548,9 @@ TreeMapItem* TreeMapWidget::item(int x, int y) const
     if (!list)
       i = 0;
     else {
-      int idx=0;
-      for (i=list->first();i;i=list->next(),idx++) {
+      int idx;
+      for (idx=0; idx<list->size(); idx++) {
+	i = list->at(idx);
 
         if (DEBUG_DRAWING)
 	    qDebug() << "  Checking " << i->path(0).join("/") << " ("
@@ -1610,7 +1609,7 @@ TreeMapItem* TreeMapWidget::visibleItem(TreeMapItem* i) const
                 (i->itemRect().height() <1))) {
       TreeMapItem* p = i->parent();
       if (!p) break;
-      int idx = p->children()->findRef(i);
+      int idx = p->children()->indexOf(i);
       idx--;
       if (idx<0)
         i = p;
@@ -1656,19 +1655,15 @@ TreeMapItemList TreeMapWidget::diff(TreeMapItemList& l1,
 				    TreeMapItemList& l2)
 {
   TreeMapItemList l;
-  TreeMapItemListIterator it1(l1), it2(l2);
+  TreeMapItem* i;
 
-  TreeMapItem* item;
-  while ( (item = it1.current()) != 0 ) {
-    ++it1;
-    if (l2.containsRef(item) > 0) continue;
-    l.append(item);
-  }
-  while ( (item = it2.current()) != 0 ) {
-    ++it2;
-    if (l1.containsRef(item) > 0) continue;
-    l.append(item);
-  }
+  foreach(i, l1)
+    if (!l2.contains(i))
+      l.append(i);
+
+  foreach(i, l2)
+    if (!l1.contains(i))
+      l.append(i);
 
   return l;
 }
@@ -1690,19 +1685,15 @@ TreeMapItem* TreeMapWidget::setTmpSelected(TreeMapItem* item, bool selected)
   }
   else {
     if (selected) {
-      TreeMapItem* i=_tmpSelection.first();
-      while (i) {
-	if (i->isChildOf(item) || item->isChildOf(i)) {
-	  _tmpSelection.remove();
-	  i = _tmpSelection.current();
-	}
-	else
-	  i = _tmpSelection.next();
-      }
-      _tmpSelection.append(item);
+	// first remove any selection which is parent or child of <item>
+	foreach(TreeMapItem* i, _tmpSelection)
+	    if (i->isChildOf(item) || item->isChildOf(i))
+		_tmpSelection.removeAll(i);
+
+	_tmpSelection.append(item);
     }
     else
-      _tmpSelection.removeRef(item);
+      _tmpSelection.removeAll(item);
   }
 
   return diff(old, _tmpSelection).commonParent();
@@ -1713,15 +1704,10 @@ bool TreeMapWidget::clearSelection(TreeMapItem* parent)
 {
   TreeMapItemList old = _selection;
 
-  TreeMapItem* i=_selection.first();
-  while (i) {
-    if (i->isChildOf(parent)) {
-      _selection.remove();
-      i = _selection.current();
-    }
-    else
-      i = _selection.next();
-  }
+  // remove any selection which is child of <parent>
+  foreach(TreeMapItem* i, _selection)
+      if (i->isChildOf(parent))
+	  _selection.removeAll(i);
 
   TreeMapItem* changed = diff(old, _selection).commonParent();
   if (changed) {
@@ -1734,13 +1720,13 @@ bool TreeMapWidget::clearSelection(TreeMapItem* parent)
 bool TreeMapWidget::isSelected(TreeMapItem* i) const
 {
     if (!i) return false;
-    return _selection.containsRef(i)>0;
+    return _selection.contains(i);
 }
 
 bool TreeMapWidget::isTmpSelected(TreeMapItem* i)
 {
     if (!i) return false;
-    return _tmpSelection.containsRef(i)>0;
+    return _tmpSelection.contains(i);
 }
 
 
@@ -1815,9 +1801,8 @@ TreeMapItem* TreeMapWidget::setTmpRangeSelection(TreeMapItem* i1,
   TreeMapItemList* list = commonParent->children();
   if (!list) return changed;
 
-  TreeMapItem* i = list->first();
   bool between = false;
-  while (i) {
+  foreach(TreeMapItem* i, *list) {
     if (between) {
       if (i==i1 || i==i2) break;
       changed2 = setTmpSelected(i, selected);
@@ -1825,7 +1810,6 @@ TreeMapItem* TreeMapWidget::setTmpRangeSelection(TreeMapItem* i1,
     }
     else if (i==i1 || i==i2)
       between = true;
-    i = list->next();
   }
 
   return changed;
@@ -2005,7 +1989,7 @@ int nextVisible(TreeMapItem* i)
   TreeMapItem* p = i->parent();
   if (!p || p->itemRect().isEmpty()) return -1;
 
-  int idx = p->children()->findRef(i);
+  int idx = p->children()->indexOf(i);
   if (idx<0) return -1;
 
   while (idx < (int)p->children()->count()-1) {
@@ -2023,7 +2007,7 @@ int prevVisible(TreeMapItem* i)
   TreeMapItem* p = i->parent();
   if (!p || p->itemRect().isEmpty()) return -1;
 
-  int idx = p->children()->findRef(i);
+  int idx = p->children()->indexOf(i);
   if (idx<0) return -1;
 
   while (idx > 0) {
@@ -2270,10 +2254,10 @@ void TreeMapWidget::drawItem(QPainter* p,
       isSelected = (i!=0);
   }
   else {
-      for (i=_tmpSelection.first();i;i=_tmpSelection.next())
-	  if (item->isChildOf(i)) break;
-
-      isSelected = (i!=0);
+      isSelected = false;
+      foreach(i, _tmpSelection)
+	  if (item->isChildOf(i))
+	      isSelected = true;
   }
 
   bool isCurrent = _current && item->isChildOf(_current);
@@ -2367,7 +2351,7 @@ void TreeMapWidget::drawItems(QPainter* p,
   if (stopDrawing) {
     if (list) {
       // invalidate rects
-      for (i=list->first();i;i=list->next())
+      foreach(i, *list)
         i->clearItemRect();
     }
     // tooltip apears on whole item rect
@@ -2396,7 +2380,7 @@ void TreeMapWidget::drawItems(QPainter* p,
 
   // own sum
   child_sum = 0;
-  for (i=list->first();i;i=list->next()) {
+  foreach(i, *list) {
     child_sum += i->value();
     if (DEBUG_DRAWING)
       qDebug() << "  child: " << i->text(0) << ", value "
@@ -2510,15 +2494,14 @@ void TreeMapWidget::drawItems(QPainter* p,
     goBack = false;
   }
 
-  TreeMapItemListIterator it(*list);
-  if (goBack) it.toLast();
+  int idx = goBack ? (list->size()-1) : 0;
 
   if (item->splitMode() == TreeMapItem::Columns) {
     int len = list->count();
     bool drawDetails = true;
 
     while (len>0 && user_sum>0) {
-      TreeMapItemListIterator first = it;
+      int firstIdx = idx;
       double valSum = 0;
       int lenLeft = len;
       int columns = (int)(sqrt((double)len * r.width()/r.height())+.5);
@@ -2526,8 +2509,8 @@ void TreeMapWidget::drawItems(QPainter* p,
 
       while (lenLeft>0 && ((double)valSum*(len-lenLeft) <
                            (double)len*user_sum/columns/columns)) {
-        valSum += it.current()->value();
-        if (goBack) --it; else ++it;
+	valSum += list->at(idx)->value();
+	if (goBack) --idx; else ++idx;
         lenLeft--;
       }
 
@@ -2542,13 +2525,13 @@ void TreeMapWidget::drawItems(QPainter* p,
 	  }
 	  else {
 	      // fill rest with hash pattern
-	      drawFill(item, p, r, first, len, goBack);
+	      drawFill(item, p, r, list, firstIdx, len, goBack);
 	      break;
 	  }
       }
       else {
         drawDetails = drawItemArray(p, item, firstRect,
-                                    valSum, first, len-lenLeft, goBack);
+				    valSum, list, firstIdx, len-lenLeft, goBack);
       }
       r.setRect(r.x()+nextPos, r.y(), r.width()-nextPos, r.height());
       user_sum -= valSum;
@@ -2558,7 +2541,7 @@ void TreeMapWidget::drawItems(QPainter* p,
         if (item->sorting(0) == -1)
           drawDetails = true;
         else {
-          drawFill(item, p, r, it, len, goBack);
+	  drawFill(item, p, r, list, idx, len, goBack);
           break;
         }
       }
@@ -2569,7 +2552,7 @@ void TreeMapWidget::drawItems(QPainter* p,
     bool drawDetails = true;
 
     while (len>0 && user_sum>0) {
-      TreeMapItemListIterator first = it;
+      int firstIdx = idx;
       double valSum = 0;
       int lenLeft = len;
       int rows = (int)(sqrt((double)len * r.height()/r.width())+.5);
@@ -2577,8 +2560,8 @@ void TreeMapWidget::drawItems(QPainter* p,
 
       while (lenLeft>0 && ((double)valSum*(len-lenLeft) <
                            (double)len*user_sum/rows/rows)) {
-        valSum += it.current()->value();
-        if (goBack) --it; else ++it;
+	valSum += list->at(idx)->value();
+	if (goBack) --idx; else ++idx;
         lenLeft--;
       }
 
@@ -2591,13 +2574,13 @@ void TreeMapWidget::drawItems(QPainter* p,
 	    drawFill(item, p, firstRect);
         }
         else {
-	    drawFill(item, p, r, first, len, goBack);
+	    drawFill(item, p, r, list, firstIdx, len, goBack);
 	    break;
         }
       }
       else {
         drawDetails = drawItemArray(p, item, firstRect,
-                                    valSum, first, len-lenLeft, goBack);
+				    valSum, list, firstIdx, len-lenLeft, goBack);
       }
       r.setRect(r.x(), r.y()+nextPos, r.width(), r.height()-nextPos);
       user_sum -= valSum;
@@ -2607,14 +2590,14 @@ void TreeMapWidget::drawItems(QPainter* p,
         if (item->sorting(0) == -1)
           drawDetails = true;
         else {
-          drawFill(item, p, r, it, len, goBack);
+	  drawFill(item, p, r, list, idx, len, goBack);
           break;
         }
       }
     }
   }
   else
-    drawItemArray(p, item, r, user_sum, it, list->count(), goBack);
+    drawItemArray(p, item, r, user_sum, list, idx, list->count(), goBack);
 
   if (DEBUG_DRAWING)
       qDebug() << "-drawItems(" << item->path(0).join("/") << ")";
@@ -2631,7 +2614,7 @@ void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, const QRect& r)
 
 // fills area with a pattern if to small to draw children
 void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, const QRect& r,
-                             TreeMapItemListIterator it, int len, bool goBack)
+			     TreeMapItemList* list, int idx, int len, bool goBack)
 {
   if (DEBUG_DRAWING)
       qDebug() << "  +drawFill(" << r.x() << "/" << r.y()
@@ -2644,13 +2627,13 @@ void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, const QRect& r,
   i->addFreeRect(r);
 
   // reset rects
-  while (len>0 && it.current()) {
+  while (len>0 && (i=list->at(idx))) {
 
       if (DEBUG_DRAWING)
-	  qDebug() << "   Reset Rect " << (*it)->path(0).join("/");
+	  qDebug() << "   Reset Rect " << i->path(0).join("/");
 
-      (*it)->clearItemRect();
-      if (goBack) --it; else ++it;
+      i->clearItemRect();
+      if (goBack) --idx; else ++idx;
       len--;
   }
   if (DEBUG_DRAWING)
@@ -2662,7 +2645,7 @@ void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, const QRect& r,
 // returns false if rect gets to small
 bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
                                   const QRect& r, double user_sum,
-                                  TreeMapItemListIterator it, int len,
+				  TreeMapItemList* list, int idx, int len,
 				  bool goBack)
 {
   if (user_sum == 0) return false;
@@ -2675,7 +2658,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
       ((_minimalArea > 0) &&
        (r.width() * r.height() < _minimalArea))) {
 
-    drawFill(item, p, r, it, len, goBack);
+    drawFill(item, p, r, list, idx, len, goBack);
     return false;
   }
 
@@ -2686,13 +2669,13 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
 
   if (len>2 && (item->splitMode() == TreeMapItem::Bisection)) {
 
-    TreeMapItemListIterator first = it;
+    int firstIdx = idx;
     double valSum = 0;
     int lenLeft = len;
     //while (lenLeft>0 && valSum<user_sum/2) {
     while (lenLeft>len/2) {
-      valSum += it.current()->value();
-      if (goBack) --it; else ++it;
+      valSum += list->at(idx)->value();
+      if (goBack) --idx; else ++idx;
       lenLeft--;
     }
 
@@ -2704,14 +2687,14 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
       int halfPos = (int)((double)r.width() * valSum / user_sum);
       QRect firstRect = QRect(r.x(), r.y(), halfPos, r.height());
       drawOn = drawItemArray(p, item, firstRect,
-                             valSum, first, len-lenLeft, goBack);
+			     valSum, list, firstIdx, len-lenLeft, goBack);
       secondRect.setRect(r.x()+halfPos, r.y(), r.width()-halfPos, r.height());
     }
     else {
       int halfPos = (int)((double)r.height() * valSum / user_sum);
       QRect firstRect = QRect(r.x(), r.y(), r.width(), halfPos);
       drawOn = drawItemArray(p, item, firstRect,
-                             valSum, first, len-lenLeft, goBack);
+			     valSum, list, firstIdx, len-lenLeft, goBack);
       secondRect.setRect(r.x(), r.y()+halfPos, r.width(), r.height()-halfPos);
     }
 
@@ -2721,9 +2704,9 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
     // second half
     if (drawOn)
       drawOn = drawItemArray(p, item, secondRect, user_sum - valSum,
-                             it, lenLeft, goBack);
+			     list, idx, lenLeft, goBack);
     else {
-      drawFill(item, p, secondRect, it, len, goBack);
+      drawFill(item, p, secondRect, list, idx, len, goBack);
     }
 
     if (DEBUG_DRAWING)
@@ -2738,14 +2721,14 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
   TreeMapItem* i;
   QRect fullRect = r;
   while (len>0) {
-    i = it.current();
+    i = list->at(idx);
     if (user_sum <= 0) {
 
       if (DEBUG_DRAWING)
 	  qDebug() << "drawItemArray: Reset " << i->path(0).join("/");
 
       i->clearItemRect();
-      if (goBack) --it; else ++it;
+      if (goBack) --idx; else ++idx;
       len--;
       continue;
     }
@@ -2756,7 +2739,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
         ((_minimalArea > 0) &&
          (fullRect.width() * fullRect.height() < _minimalArea))) {
 
-      drawFill(item, p, fullRect, it, len, goBack);
+      drawFill(item, p, fullRect, list, idx, len, goBack);
       if (DEBUG_DRAWING)
 	  qDebug() << " -drawItemArray(" << item->path(0).join("/")
 		    << "): Stop";
@@ -2772,7 +2755,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
     if (nextPos>lastPos) nextPos = lastPos;
 
     if ((item->sorting(0) != -1) && (nextPos < _visibleWidth)) {
-      drawFill(item, p, fullRect, it, len, goBack);
+      drawFill(item, p, fullRect, list, idx, len, goBack);
       if (DEBUG_DRAWING)
 	  qDebug() << " -drawItemArray(" << item->path(0).join("/")
 		    << "): Stop";
@@ -2827,7 +2810,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
     }
 
     user_sum -= val;
-    if (goBack) --it; else ++it;
+    if (goBack) --idx; else ++idx;
     len--;
   }
 
