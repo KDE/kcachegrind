@@ -353,7 +353,8 @@ TopLevel::~TopLevel()
 
 void TopLevel::saveProperties(KConfigGroup & c)
 {
-  c.writeEntry("TraceName", _data->traceName());
+  if ( _data )
+    c.writeEntry("TraceName", _data->traceName());
 }
 
 void TopLevel::readProperties(const KConfigGroup &c)
