@@ -46,7 +46,6 @@
 #include <QDesktopWidget>
 #include <QProcess>
 #include <QMenu>
-#include <Qt3Support/Q3PointArray>
 
 
 #include "config.h"
@@ -2283,7 +2282,7 @@ void CallGraphView::dotExited()
 
 		QString node1Name, node2Name, label, edgeX, edgeY;
 		double x, y;
-		Q3PointArray pa;
+		QPolygon poly;
 		int points, i;
 		lineStream >> node1Name >> node2Name >> points;
 
@@ -2304,7 +2303,7 @@ void CallGraphView::dotExited()
 		if (0)
 			qDebug("  Edge with %d points:", points);
 
-		pa.resize(points);
+		poly.resize(points);
 		for (i=0; i<points; i++) {
 			if (lineStream.atEnd())
 				break;
@@ -2318,7 +2317,7 @@ void CallGraphView::dotExited()
 			if (0)
 				qDebug("   P %d: ( %f / %f ) => ( %d / %d)", i, x, y, xx, yy);
 
-			pa.setPoint(i, xx, yy);
+			poly.setPoint(i, xx, yy);
 		}
 		if (i < points) {
 			qDebug("CallGraphView: Can not read %d spline points (%s:%d)",
@@ -2336,7 +2335,7 @@ void CallGraphView::dotExited()
 		sItem = new CanvasEdge(e);
 		_scene->addItem(sItem);
 		e->setCanvasEdge(sItem);
-		sItem->setControlPoints(pa);
+		sItem->setControlPoints(poly);
 		// width of pen will be adjusted in CanvasEdge::paint()
 		sItem->setPen(QPen(arrowColor));
 		sItem->setZValue(0.5);
@@ -2357,16 +2356,16 @@ void CallGraphView::dotExited()
 		CanvasNode* fromNode = e->fromNode() ? e->fromNode()->canvasNode() : 0;
 		if (fromNode) {
 			QPointF toCenter = fromNode->rect().center();
-			qreal dx0 = pa.point(0).x() - toCenter.x();
-			qreal dy0 = pa.point(0).y() - toCenter.y();
-			qreal dx1 = pa.point(points-1).x() - toCenter.x();
-			qreal dy1 = pa.point(points-1).y() - toCenter.y();
+			qreal dx0 = poly.point(0).x() - toCenter.x();
+			qreal dy0 = poly.point(0).y() - toCenter.y();
+			qreal dx1 = poly.point(points-1).x() - toCenter.x();
+			qreal dy1 = poly.point(points-1).y() - toCenter.y();
 			if (dx0*dx0+dy0*dy0 > dx1*dx1+dy1*dy1) {
 				// start of spline is nearer to call target node
 				indexHead=-1;
 				while (arrowDir.isNull() && (indexHead<points-2)) {
 					indexHead++;
-					arrowDir = pa.point(indexHead) - pa.point(indexHead+1);
+					arrowDir = poly.point(indexHead) - poly.point(indexHead+1);
 				}
 			}
 		}
@@ -2376,7 +2375,7 @@ void CallGraphView::dotExited()
 			// sometimes the last spline points from dot are the same...
 			while (arrowDir.isNull() && (indexHead>1)) {
 				indexHead--;
-				arrowDir = pa.point(indexHead) - pa.point(indexHead-1);
+				arrowDir = poly.point(indexHead) - poly.point(indexHead-1);
 			}
 		}
 
@@ -2386,10 +2385,10 @@ void CallGraphView::dotExited()
 					arrowDir.y()*arrowDir.y()));
 
 			QPolygonF a;
-			a << QPointF(pa.point(indexHead) + arrowDir);
-			a << QPointF(pa.point(indexHead) + QPoint(arrowDir.y()/2,
+			a << QPointF(poly.point(indexHead) + arrowDir);
+			a << QPointF(poly.point(indexHead) + QPoint(arrowDir.y()/2,
 			                                          -arrowDir.x()/2));
-			a << QPointF(pa.point(indexHead) + QPoint(-arrowDir.y()/2,
+			a << QPointF(poly.point(indexHead) + QPoint(-arrowDir.y()/2,
 			                                          arrowDir.x()/2));
 
 			if (0)
