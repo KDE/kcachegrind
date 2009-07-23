@@ -552,14 +552,14 @@ TabWidget* TabView::tabWidget(Position p)
 
 void TabView::moveTab(QWidget* w, Position p, bool wholeArea)
 {
-    TraceItemView *v;
     Position origPos = Hidden;
     if (w) {
-	foreach(v, _tabs)
-	    if (v->widget() == w) break;
+	TraceItemView* found = 0;
+	foreach(TraceItemView* v, _tabs)
+	    if (v->widget() == w) { found = v; break; }
 
-	if (!v) return;
-	origPos = v->position();
+	if (!found) return;
+	origPos = found->position();
     }
     if (origPos == p) return;
 
@@ -568,12 +568,12 @@ void TabView::moveTab(QWidget* w, Position p, bool wholeArea)
     to = tabWidget(p);
 
     QList<TraceItemView*> tabs;
-    foreach(v, _tabs)
+    foreach(TraceItemView* v, _tabs)
 	if ((v->position() == origPos) &&
 	    (wholeArea || (v->widget() == w))) tabs.append(v);
 
     bool isEnabled;
-    foreach(v, tabs) {
+    foreach(TraceItemView* v, tabs) {
 	v->setPosition(p);
 	w = v->widget();
 

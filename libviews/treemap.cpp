@@ -1565,6 +1565,7 @@ TreeMapItem* TreeMapWidget::item(int x, int y) const
 	    break;
         }
       }
+      if (idx == list->size()) i = 0; // not contained in child
     }
 
     if (!i) {
@@ -1654,13 +1655,12 @@ TreeMapItemList TreeMapWidget::diff(TreeMapItemList& l1,
 				    TreeMapItemList& l2)
 {
   TreeMapItemList l;
-  TreeMapItem* i;
 
-  foreach(i, l1)
+  foreach(TreeMapItem* i, l1)
     if (!l2.contains(i))
       l.append(i);
 
-  foreach(i, l2)
+  foreach(TreeMapItem* i, l2)
     if (!l1.contains(i))
       l.append(i);
 
@@ -2243,32 +2243,35 @@ void TreeMapWidget::redraw(TreeMapItem* i)
 void TreeMapWidget::drawItem(QPainter* p,
                              TreeMapItem* item)
 {
-  bool isSelected = false;
-  TreeMapItem* i;
+    bool isSelected = false;
 
-  if (_markNo>0) {
-      for(i = item;i;i=i->parent())
-	  if (i->isMarked(_markNo)) break;
+    if (_markNo>0) {
+	for(TreeMapItem* i = item; i; i=i->parent()) {
+	    if (i->isMarked(_markNo)) {
+		isSelected = true;
+		break;
+	    }
+	}
+    }
+    else {
+	foreach(TreeMapItem* i, _tmpSelection) {
+	    if (item->isChildOf(i)) {
+		isSelected = true;
+		break;
+	    }
+	}
+    }
 
-      isSelected = (i!=0);
-  }
-  else {
-      isSelected = false;
-      foreach(i, _tmpSelection)
-	  if (item->isChildOf(i))
-	      isSelected = true;
-  }
+    bool isCurrent = _current && item->isChildOf(_current);
+    int dd = item->depth();
+    if (isTransparent(dd)) return;
 
-  bool isCurrent = _current && item->isChildOf(_current);
-  int dd = item->depth();
-  if (isTransparent(dd)) return;
-
-  RectDrawing d(item->itemRect());
-  item->setSelected(isSelected);
-  item->setCurrent(isCurrent);
-  item->setShaded(_shading);
-  item->drawFrame(drawFrame(dd));
-  d.drawBack(p, item);
+    RectDrawing d(item->itemRect());
+    item->setSelected(isSelected);
+    item->setCurrent(isCurrent);
+    item->setShaded(_shading);
+    item->drawFrame(drawFrame(dd));
+    d.drawBack(p, item);
 }
 
 
@@ -2312,7 +2315,6 @@ void TreeMapWidget::drawItems(QPainter* p,
                   origRect.width()-2*bw, origRect.height()-2*bw);
 
   TreeMapItemList* list = item->children();
-  TreeMapItem* i;
 
   bool stopDrawing = false;
 
@@ -2350,7 +2352,7 @@ void TreeMapWidget::drawItems(QPainter* p,
   if (stopDrawing) {
     if (list) {
       // invalidate rects
-      foreach(i, *list)
+      foreach(TreeMapItem* i, *list)
         i->clearItemRect();
     }
     // tooltip apears on whole item rect
@@ -2379,7 +2381,7 @@ void TreeMapWidget::drawItems(QPainter* p,
 
   // own sum
   child_sum = 0;
-  foreach(i, *list) {
+  foreach(TreeMapItem* i, *list) {
     child_sum += i->value();
     if (DEBUG_DRAWING)
       qDebug() << "  child: " << i->text(0) << ", value "

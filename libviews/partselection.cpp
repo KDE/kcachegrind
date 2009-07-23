@@ -160,10 +160,9 @@ void PartSelection::selectParts(const TracePartList& list)
 
     qDebug("Entering PartSelection::activePartsChangedSlot");
 
-    TreeMapItem* i;
     TreeMapItemList l = *_partAreaWidget->base()->children();
     // first deselect inactive, then select active (makes current active)
-    foreach(i, l) {
+    foreach(TreeMapItem* i, l) {
 	TracePart* part = ((PartItem*)i)->part();
 	bool active = (list.containsRef(part)>0);
 	if (!active && _partAreaWidget->isSelected(i)) {
@@ -175,7 +174,7 @@ void PartSelection::selectParts(const TracePartList& list)
 	    _partAreaWidget->setSelected(i, false);
 	}
     }
-    foreach(i, l) {
+    foreach(TreeMapItem* i, l) {
 	TracePart* part = ((PartItem*)i)->part();
 	bool active = (list.containsRef(part)>0);
 	if (active && !_partAreaWidget->isSelected(i)) {
