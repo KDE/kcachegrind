@@ -36,7 +36,6 @@
 #include <QResizeEvent>
 #include <QMouseEvent>
 #include <Qt3Support/Q3PopupMenu>
-#include <Qt3Support/Q3PtrList>
 
 #include "config.h"
 #include "eventtypeview.h"
@@ -388,11 +387,10 @@ void TabView::updateNameLabel(QString n)
 
 void TabView::setData(TraceData* d)
 {
-  TraceItemView::setData(d);
+    TraceItemView::setData(d);
 
-  TraceItemView* v;
-  for (v=_tabs.first();v;v=_tabs.next())
-    v->setData(d);
+    foreach(TraceItemView* v, _tabs)
+	v->setData(d);
 }
 
 TraceItemView* TabView::addTab(const QString& label, TraceItemView* view)
@@ -416,131 +414,140 @@ void TabView::addBottom(TraceItemView* view)
 
 TraceItemView::Position TabView::tabPosition(QWidget* w)
 {
-  TraceItemView* v;
-  for (v=_tabs.first();v;v=_tabs.next())
-    if (v->widget() == w) return v->position();
+    foreach(TraceItemView* v, _tabs)
+	if (v->widget() == w) return v->position();
 
-  return Hidden;
+    return Hidden;
 }
 
 int TabView::visibleTabs()
 {
-  int c = 0;
-  TraceItemView* v;
-  for (v=_tabs.first();v;v=_tabs.next()) {
-    if (v->position() == Hidden) continue;
-    c++;
-  }
-  return c;
+    int c = 0;
+    foreach(TraceItemView* v, _tabs) {
+	if (v->position() == Hidden) continue;
+	c++;
+    }
+    return c;
 }
 
+// calculate count of tabs in areas
+void TabView::tabCounts(int& top, int& bottom,
+			int& left, int& right)
+{
+    top = bottom = left = right = 0;
+
+    foreach(TraceItemView* v, _tabs) {
+	switch(v->position()) {
+	case TraceItemView::Top:
+	    top++;
+	    break;
+	case TraceItemView::Bottom:
+	    bottom++;
+	    break;
+	case TraceItemView::Left:
+	    left++;
+	    break;
+	case TraceItemView::Right:
+	    right++;
+	    break;
+	default:
+	    break;
+	}
+    }
+
+    if (0) qDebug("TabView::tabCounts top %d, bottom %d, left %d, right %d",
+		  top, bottom, left, right);
+}
 
 int TabView::visibleAreas()
 {
-  int c = 0, t = 0, b = 0, r = 0, l = 0;
-  TraceItemView* v;
-  for (v=_tabs.first();v;v=_tabs.next()) {
-    switch(v->position()) {
-    case TraceItemView::Top:    t++; break;
-    case TraceItemView::Bottom: b++; break;
-    case TraceItemView::Left:   l++; break;
-    case TraceItemView::Right:  r++; break;
-    default: break;
-    }
-  }
-  if (t>0) c++;
-  if (b>0) c++;
-  if (l>0) c++;
-  if (r>0) c++;
+    int count, top, bottom, left, right;
 
-  return c;
+    tabCounts(top, bottom, left, right);
+    count = 0;
+    if (top>0) count++;
+    if (bottom>0) count++;
+    if (left>0) count++;
+    if (right>0) count++;
+
+    return count;
 }
-
-
 
 // This hides/shows splitters and tabwidgets according to tab children
 void TabView::updateVisibility()
 {
-  // calculate count of tabs in areas
-  int t = 0, b = 0, r = 0, l = 0;
-  TraceItemView* v;
-  for (v=_tabs.first();v;v=_tabs.next()) {
-    switch(v->position()) {
-    case TraceItemView::Top:    t++; break;
-    case TraceItemView::Bottom: b++; break;
-    case TraceItemView::Left:   l++; break;
-    case TraceItemView::Right:  r++; break;
-    default: break;
-    }
-  }
+    int top, bottom, left, right;
 
-  if (0) qDebug("TabView::updateVisiblity t %d, b %d, l %d, r %d",
-		t, b, l, r);
+    tabCounts(top, bottom, left, right);
 
-  QList<int> s;
-  s.append(100);
+    QList<int> s;
+    s.append(100);
 
+    // children of mainSplitter
+    if (_rightTW->isHidden() != (right == 0)) {
+	if (right == 0) {
+	    _rightTW->hide();
+	}
+	else
+	    _rightTW->show();
+    }
+    if (_leftSplitter->isHidden() != (top+bottom+left == 0)) {
+	if (top+bottom+left == 0) {
+	    _leftSplitter->hide();
+	}
+	else
+	    _leftSplitter->show();
+    }
 
-  // children of mainSplitter
-  if (_rightTW->isHidden() != (r == 0)) {
-    if (r == 0) {
-      _rightTW->hide();
+    // children of leftSplitter
+    if (_topTW->isHidden() != (top == 0)) {
+	if (top == 0) {
+	    _topTW->hide();
+	}
+	else
+	    _topTW->show();
     }
-    else
-      _rightTW->show();
-  }
-  if (_leftSplitter->isHidden() != (t+b+l == 0)) {
-    if (t+b+l == 0) {
-      _leftSplitter->hide();
-    }
-    else
-      _leftSplitter->show();
-  }
 
-  // children of leftSplitter
-  if (_topTW->isHidden() != (t == 0)) {
-    if (t == 0) {
-      _topTW->hide();
+    if (_bottomSplitter->isHidden() != (bottom+left == 0)) {
+	if (bottom+left == 0) {
+	    _bottomSplitter->hide();
+	}
+	else
+	    _bottomSplitter->show();
     }
-    else
-      _topTW->show();
-  }
 
-  if (_bottomSplitter->isHidden() != (b+l == 0)) {
-    if (b+l == 0) {
-      _bottomSplitter->hide();
+    // children of bottomSplitter
+    if (_bottomTW->isHidden() != (bottom == 0)) {
+	if (bottom == 0) {
+	    _bottomTW->hide();
+	}
+	else
+	    _bottomTW->show();
     }
-    else
-      _bottomSplitter->show();
-  }
-
-  // children of bottomSplitter
-  if (_bottomTW->isHidden() != (b == 0)) {
-    if (b == 0) {
-      _bottomTW->hide();
+    if (_leftTW->isHidden() != (left == 0)) {
+	if (left == 0) {
+	    _leftTW->hide();
+	}
+	else
+	    _leftTW->show();
     }
-    else
-      _bottomTW->show();
-  }
-  if (_leftTW->isHidden() != (l == 0)) {
-    if (l == 0) {
-      _leftTW->hide();
-    }
-    else
-      _leftTW->show();
-  }
 }
 
 TabWidget* TabView::tabWidget(Position p)
 {
-  switch(p) {
-  case TraceItemView::Top:    return _topTW;
-  case TraceItemView::Bottom: return _bottomTW;
-  case TraceItemView::Left:   return _leftTW;
-  case TraceItemView::Right:  return _rightTW;
-  default: break;
-  }
-  return 0;
+    switch(p) {
+    case TraceItemView::Top:
+	return _topTW;
+    case TraceItemView::Bottom:
+	return _bottomTW;
+    case TraceItemView::Left:
+	return _leftTW;
+    case TraceItemView::Right:
+	return _rightTW;
+    default:
+	break;
+    }
+    return 0;
 }
 
 void TabView::moveTab(QWidget* w, Position p, bool wholeArea)
@@ -548,11 +555,11 @@ void TabView::moveTab(QWidget* w, Position p, bool wholeArea)
     TraceItemView *v;
     Position origPos = Hidden;
     if (w) {
-      for (v=_tabs.first();v;v=_tabs.next())
-        if (v->widget() == w) break;
+	foreach(v, _tabs)
+	    if (v->widget() == w) break;
 
-      if (!v) return;
-      origPos = v->position();
+	if (!v) return;
+	origPos = v->position();
     }
     if (origPos == p) return;
 
@@ -560,34 +567,34 @@ void TabView::moveTab(QWidget* w, Position p, bool wholeArea)
     from = tabWidget(origPos);
     to = tabWidget(p);
 
-    Q3PtrList<TraceItemView> tabs;
-    for (v=_tabs.first();v;v=_tabs.next())
-      if ((v->position() == origPos) &&
-          (wholeArea || (v->widget() == w))) tabs.append(v);
+    QList<TraceItemView*> tabs;
+    foreach(v, _tabs)
+	if ((v->position() == origPos) &&
+	    (wholeArea || (v->widget() == w))) tabs.append(v);
 
     bool isEnabled;
-    for (v=tabs.first();v;v=tabs.next()) {
-      v->setPosition(p);
-      w = v->widget();
+    foreach(v, tabs) {
+	v->setPosition(p);
+	w = v->widget();
 
-      if (from) {
-        isEnabled = from->isTabEnabled(w);
-        from->removePage(w);
-      }
-      else isEnabled = (v->canShow(_activeItem)!=0);
+	if (from) {
+	    isEnabled = from->isTabEnabled(w);
+	    from->removePage(w);
+	}
+	else isEnabled = (v->canShow(_activeItem)!=0);
 
       if (to) {
-        TraceItemView *vv;
         int idx = -1, i;
-        for(vv = _tabs.first(); vv && (vv!=v); vv = _tabs.next()) {
-          i = to->indexOf(vv->widget());
-          if (i>=0) idx = i;
+	foreach(TraceItemView* vv, _tabs) {
+	    if (v == vv) continue;
+	    i = to->indexOf(vv->widget());
+	    if (i>=0) idx = i;
         }
         to->insertTab(w, v->title(), idx+1);
         to->setTabEnabled(w, isEnabled);
         if (isEnabled) {
-          to->showPage(w);
-          v->updateView();
+	    to->showPage(w);
+	    v->updateView();
         }
       }
     }
@@ -685,55 +692,49 @@ void TabView::doUpdate(int changeType)
 			 _activeItem->prettyName() );
     }
 
-    // we use our own list iterators because setTabEnabled can
-    // invoke tabChanged, which mangles with the lists, too
     bool canShow;
-    TraceItemView *v;
-    Q3PtrListIterator<TraceItemView> it( _tabs );
-    while ( (v=it.current()) != 0) {
-      ++it;
+    foreach(TraceItemView *v, _tabs) {
 
-      TabWidget *tw = 0;
-      switch(v->position()) {
-      case TraceItemView::Top:    tw = _topTW; break;
-      case TraceItemView::Bottom: tw = _bottomTW; break;
-      case TraceItemView::Left:   tw = _leftTW; break;
-      case TraceItemView::Right:  tw = _rightTW; break;
-      default: break;
-      }
+	TabWidget *tw = 0;
+	switch(v->position()) {
+	case TraceItemView::Top:    tw = _topTW; break;
+	case TraceItemView::Bottom: tw = _bottomTW; break;
+	case TraceItemView::Left:   tw = _leftTW; break;
+	case TraceItemView::Right:  tw = _rightTW; break;
+	default: break;
+	}
 
-      // update even if hidden
-      if (tw) {
-        if (!tw->hasVisibleRect()) continue;
-      }
-      canShow = v->set(changeType, _data, _eventType, _eventType2,
-		       _groupType, _partList,
-                       _activeItem, _selectedItem);
-      v->notifyChange(changeType);
+	// update even if hidden
+	if (tw) {
+	    if (!tw->hasVisibleRect()) continue;
+	}
+	canShow = v->set(changeType, _data, _eventType, _eventType2,
+			 _groupType, _partList,
+			 _activeItem, _selectedItem);
+	v->notifyChange(changeType);
 
-      if (!tw) continue;
-      if (tw->isTabEnabled(v->widget()) != canShow)
-        tw->setTabEnabled(v->widget(), canShow);
+	if (!tw) continue;
+	if (tw->isTabEnabled(v->widget()) != canShow)
+	    tw->setTabEnabled(v->widget(), canShow);
 
-      if (v->widget() == tw->currentPage())
-        v->updateView();
+	if (v->widget() == tw->currentPage())
+	    v->updateView();
     }
 }
 
 
 void TabView::tabChanged(QWidget* w)
 {
-  TraceItemView *v;
-  for (v=_tabs.first();v;v=_tabs.next())
-    if (v->widget() == w) v->updateView();
+    foreach(TraceItemView *v, _tabs)
+	if (v->widget() == w) v->updateView();
 }
 
 void TabView::visibleRectChangedSlot(TabWidget* tw)
 {
-  if (0) qDebug("%s: %svisible !",
-                tw->name(), tw->hasVisibleRect() ? "":"un");
+    if (0) qDebug("%s: %svisible !",
+		  tw->name(), tw->hasVisibleRect() ? "":"un");
 
-  if (tw->hasVisibleRect()) doUpdate(0);
+    if (tw->hasVisibleRect()) doUpdate(0);
 }
 
 void TabView::resizeEvent(QResizeEvent* e)
@@ -812,11 +813,7 @@ void TabView::restoreLayout(const QString& prefix, const QString& postfix)
     TraceItemView *activeLeft = 0, *activeRight = 0;
 
     moveTab(0, TraceItemView::Top, true);
-    TraceItemView *v;
-    Q3PtrListIterator<TraceItemView> it( _tabs );
-    while ( (v=it.current()) != 0) {
-      ++it;
-
+    foreach(TraceItemView *v, _tabs) {
       QString n = QString(v->widget()->name());
       if (topTabs.contains(n)) {
         moveTab(v->widget(), TraceItemView::Top);
@@ -888,8 +885,7 @@ void TabView::saveLayout(const QString& prefix, const QString& postfix)
     g->setValue("ActiveRight", a, QString());
 
     QStringList topList, bottomList, leftList, rightList;
-    TraceItemView *v;
-    for (v=_tabs.first();v;v=_tabs.next()) {
+    foreach(TraceItemView *v, _tabs) {
       switch(v->position()) {
       case TraceItemView::Top:
         topList << QString(v->widget()->name());
@@ -925,14 +921,9 @@ void TabView::saveLayout(const QString& prefix, const QString& postfix)
 
 void TabView::restoreOptions(const QString& prefix, const QString& postfix)
 {
-    TraceItemView *v;
-    Q3PtrListIterator<TraceItemView> it( _tabs );
-    while ( (v=it.current()) != 0) {
-      ++it;
-
+    foreach(TraceItemView *v, _tabs)
       v->restoreOptions(QString("%1-%2").arg(prefix).arg(v->widget()->name()),
 			postfix);
-    }
 
     if (!_data) return;
 
@@ -980,8 +971,7 @@ void TabView::saveOptions(const QString& prefix, const QString& postfix)
 	delete g;
     }
 
-    TraceItemView *v;
-    for (v=_tabs.first();v;v=_tabs.next())
+    foreach(TraceItemView *v, _tabs)
 	v->saveOptions(QString("%1-%2").arg(prefix)
 		       .arg(v->widget()->name()), postfix);
 }

@@ -34,7 +34,7 @@
 #include <QResizeEvent>
 #include <QEvent>
 #include <QSplitter>
-#include <Qt3Support/Q3PtrList>
+#include <QList>
 
 #include "traceitemview.h"
 
@@ -164,6 +164,7 @@ private:
   void doUpdate(int);
   void updateNameLabel(QString n = QString::null);
   void installFocusFilters();
+  void tabCounts(int&, int&, int&, int&);
 
   // this is true if width or height <= 1, and no child updates are done
   bool _isCollapsed;
@@ -174,7 +175,7 @@ private:
 
   QSplitter *_mainSplitter, *_leftSplitter, *_bottomSplitter;
   TabWidget *_topTW, *_leftTW, *_bottomTW, *_rightTW;
-  Q3PtrList<TraceItemView> _tabs;
+  QList<TraceItemView*> _tabs;
 
   QWidget* _lastFocus;
   bool _active;
