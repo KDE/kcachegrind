@@ -643,17 +643,17 @@ private:
 
 	// context menu builders
 	QAction* addCallerDepthAction(QMenu*,QString,int);
-	QMenu* callerDepthMenu(QWidget*);
+	QMenu* addCallerDepthMenu(QMenu*);
 	QAction* addCalleeDepthAction(QMenu*,QString,int);
-	QMenu* calleeDepthMenu(QWidget*);
+	QMenu* addCalleeDepthMenu(QMenu*);
 	QAction* addNodeLimitAction(QMenu*,QString,double);
-	QMenu* nodeLimitMenu(QWidget*);
+	QMenu* addNodeLimitMenu(QMenu*);
 	QAction* addCallLimitAction(QMenu*,QString,double);
-	QMenu* callLimitMenu(QWidget*);
+	QMenu* addCallLimitMenu(QMenu*);
 	QAction* addZoomPosAction(QMenu*,QString,ZoomPosition);
-	QMenu* zoomPosMenu(QWidget*);
+	QMenu* addZoomPosMenu(QMenu*);
 	QAction* addLayoutAction(QMenu*,QString,Layout);
-	QMenu* layoutMenu(QWidget*);
+	QMenu* addLayoutMenu(QMenu*);
 
 	QGraphicsScene *_scene;
 	int _xMargin, _yMargin;

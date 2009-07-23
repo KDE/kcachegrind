@@ -45,8 +45,8 @@
 #include <QPixmap>
 #include <QDesktopWidget>
 #include <QProcess>
+#include <QMenu>
 #include <Qt3Support/Q3PointArray>
-#include <Qt3Support/Q3PopupMenu>
 
 
 #include "config.h"
@@ -2667,12 +2667,12 @@ QAction* CallGraphView::addCallerDepthAction(QMenu* m, QString s, int d)
 	return a;
 }
 
-QMenu* CallGraphView::callerDepthMenu(QWidget* parent)
+QMenu* CallGraphView::addCallerDepthMenu(QMenu* menu)
 {
 	QAction* a;
 	QMenu* m;
 
-	m = new QMenu(parent);
+	m = menu->addMenu(tr("Caller Depth"));
 	a = addCallerDepthAction(m, tr("Unlimited"), -1);
 	a->setEnabled(_funcLimit>0.005);
 	m->addSeparator();
@@ -2706,12 +2706,12 @@ QAction* CallGraphView::addCalleeDepthAction(QMenu* m, QString s, int d)
 	return a;
 }
 
-QMenu* CallGraphView::calleeDepthMenu(QWidget* parent)
+QMenu* CallGraphView::addCalleeDepthMenu(QMenu* menu)
 {
 	QAction* a;
 	QMenu* m;
 
-	m = new QMenu(parent);
+	m = menu->addMenu(tr("Callee Depth"));
 	a = addCalleeDepthAction(m, tr("Unlimited"), -1);
 	a->setEnabled(_funcLimit>0.005);
 	m->addSeparator();
@@ -2745,12 +2745,12 @@ QAction* CallGraphView::addNodeLimitAction(QMenu* m, QString s, double l)
 	return a;
 }
 
-QMenu* CallGraphView::nodeLimitMenu(QWidget* parent)
+QMenu* CallGraphView::addNodeLimitMenu(QMenu* menu)
 {
 	QAction* a;
 	QMenu* m;
 
-	m = new QMenu(parent);
+	m = menu->addMenu(tr("Min. Node Cost"));
 	a = addNodeLimitAction(m, tr("No Minimum"), 0.0);
 	// Unlimited node cost easily produces huge graphs such that 'dot'
 	// would need a long time to layout. For responsiveness, we only allow
@@ -2788,11 +2788,11 @@ QAction* CallGraphView::addCallLimitAction(QMenu* m, QString s, double l)
 	return a;
 }
 
-QMenu* CallGraphView::callLimitMenu(QWidget* parent)
+QMenu* CallGraphView::addCallLimitMenu(QMenu* menu)
 {
 	QMenu* m;
 
-	m = new QMenu(parent);
+	m = menu->addMenu(tr("Min. Call Cost"));
 	addCallLimitAction(m, tr("Same as Node"), 1.0);
 	// xgettext: no-c-format
 	addCallLimitAction(m, tr("50 % of Node"), .5);
@@ -2826,11 +2826,9 @@ QAction* CallGraphView::addZoomPosAction(QMenu* m, QString s,
 	return a;
 }
 
-QMenu* CallGraphView::zoomPosMenu(QWidget* parent)
+QMenu* CallGraphView::addZoomPosMenu(QMenu* menu)
 {
-	QMenu* m;
-
-	m = new QMenu(parent);
+	QMenu* m = menu->addMenu(tr("Birds-eye View"));
 	addZoomPosAction(m, tr("Top Left"), TopLeft);
 	addZoomPosAction(m, tr("Top Right"), TopRight);
 	addZoomPosAction(m, tr("Bottom Left"), BottomLeft);
@@ -2864,11 +2862,9 @@ QAction* CallGraphView::addLayoutAction(QMenu* m, QString s,
 	return a;
 }
 
-QMenu* CallGraphView::layoutMenu(QWidget* parent)
+QMenu* CallGraphView::addLayoutMenu(QMenu* menu)
 {
-	QMenu* m;
-
-	m = new QMenu(parent);
+	QMenu* m = menu->addMenu(tr("Layout"));
 	addLayoutAction(m, tr("Top to Down"), TopDown);
 	addLayoutAction(m, tr("Left to Right"), LeftRight);
 	addLayoutAction(m, tr("Circular"), Circular);
@@ -2893,10 +2889,13 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 
 	QGraphicsItem* i = itemAt(e->pos());
 
-	Q3PopupMenu popup;
+	QMenu popup;
 	TraceFunction *f = 0, *cycle = 0;
 	TraceCall* c = 0;
 
+	QAction* activateFunction = 0;
+	QAction* activateCycle = 0;
+	QAction* activateCall = 0;
 	if (i) {
 		if (i->type() == CANVAS_NODE) {
 			GraphNode* n = ((CanvasNode*)i)->node();
@@ -2906,11 +2905,12 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 			cycle = f->cycle();
 
 			QString name = f->prettyName();
-			popup.insertItem(tr("Go to '%1'")
-					 .arg(GlobalConfig::shortenSymbol(name)), 93);
+			QString menuStr = tr("Go to '%1'")
+					 .arg(GlobalConfig::shortenSymbol(name));
+			activateFunction = popup.addAction(menuStr);
 			if (cycle && (cycle != f)) {
 				name = GlobalConfig::shortenSymbol(cycle->prettyName());
-				popup.insertItem(tr("Go to '%1'").arg(name), 94);
+				activateCycle = popup.addAction(tr("Go to '%1'").arg(name));
 			}
 			popup.addSeparator();
 		}
@@ -2928,78 +2928,80 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 			c = e->call();
 			if (c) {
 				QString name = c->prettyName();
-				popup.insertItem(tr("Go to '%1'")
-						 .arg(GlobalConfig::shortenSymbol(name)), 95);
+				QString menuStr = tr("Go to '%1'")
+						  .arg(GlobalConfig::shortenSymbol(name));
+				activateCall = popup.addAction(menuStr);
 
 				popup.addSeparator();
 			}
 		}
 	}
 
+	QAction* stopLayout = 0;
 	if (_renderProcess) {
-		popup.insertItem(tr("Stop Layouting"), 999);
+		stopLayout = popup.addAction(tr("Stop Layouting"));
 		popup.addSeparator();
 	}
 
 	addGoMenu(&popup);
 	popup.addSeparator();
 
-	Q3PopupMenu epopup;
-	epopup.insertItem(tr("As PostScript"), 201);
-	epopup.insertItem(tr("As Image ..."), 202);
-
-	popup.insertItem(tr("Export Graph"), &epopup, 200);
+	QMenu* epopup = popup.addMenu(tr("Export Graph"));
+	QAction* exportAsPostscript = epopup->addAction(tr("As PostScript"));
+	QAction* exportAsImage = epopup->addAction(tr("As Image ..."));
 	popup.addSeparator();
 
-	Q3PopupMenu gpopup;
-	gpopup.setCheckable(true);
-	gpopup.insertItem(tr("Caller Depth"), callerDepthMenu(&gpopup));
-	gpopup.insertItem(tr("Callee Depth"), calleeDepthMenu(&gpopup));
-	gpopup.insertItem(tr("Min. Node Cost"), nodeLimitMenu(&gpopup));
-	gpopup.insertItem(tr("Min. Call Cost"), callLimitMenu(&gpopup));
-	gpopup.addSeparator();
-	gpopup.insertItem(tr("Arrows for Skipped Calls"), 130);
-	gpopup.setItemChecked(130, _showSkipped);
-	gpopup.insertItem(tr("Inner-cycle Calls"), 131);
-	gpopup.setItemChecked(131, _expandCycles);
-	gpopup.insertItem(tr("Cluster Groups"), 132);
-	gpopup.setItemChecked(132, _clusterGroups);
+	QMenu* gpopup = popup.addMenu(tr("Graph"));
+	addCallerDepthMenu(gpopup);
+	addCalleeDepthMenu(gpopup);
+	addNodeLimitMenu(gpopup);
+	addCallLimitMenu(gpopup);
+	gpopup->addSeparator();
 
-	Q3PopupMenu vpopup;
-	vpopup.setCheckable(true);
-	vpopup.insertItem(tr("Compact"), 140);
-	vpopup.insertItem(tr("Normal"), 141);
-	vpopup.insertItem(tr("Tall"), 142);
-	vpopup.setItemChecked(140, _detailLevel == 0);
-	vpopup.setItemChecked(141, _detailLevel == 1);
-	vpopup.setItemChecked(142, _detailLevel == 2);
+	QAction* toggleSkipped;
+	toggleSkipped = gpopup->addAction(tr("Arrows for Skipped Calls"));
+	toggleSkipped->setCheckable(true);
+	toggleSkipped->setChecked(_showSkipped);
 
-	popup.insertItem(tr("Graph"), &gpopup, 70);
-	popup.insertItem(tr("Visualization"), &vpopup, 71);
-	popup.insertItem(tr("Layout"), layoutMenu(&popup));
-	popup.insertItem(tr("Birds-eye View"), zoomPosMenu(&popup));
+	QAction* toggleExpand;
+	toggleExpand = gpopup->addAction(tr("Inner-cycle Calls"));
+	toggleExpand->setCheckable(true);
+	toggleExpand->setChecked(_expandCycles);
 
-	int r = popup.exec(e->globalPos());
+	QAction* toggleCluster;
+	toggleCluster = gpopup->addAction(tr("Cluster Groups"));
+	toggleCluster->setCheckable(true);
+	toggleCluster->setChecked(_clusterGroups);
 
-	switch (r) {
-	case 93:
-		activated(f);
-		break;
-	case 94:
-		activated(cycle);
-		break;
-	case 95:
-		activated(c);
-		break;
+	QMenu* vpopup = popup.addMenu(tr("Visualization"));
+	QAction* layoutCompact = vpopup->addAction(tr("Compact"));
+	layoutCompact->setCheckable(true);
+	layoutCompact->setChecked(_detailLevel == 0);
+	QAction* layoutNormal = vpopup->addAction(tr("Normal"));
+	layoutNormal->setCheckable(true);
+	layoutNormal->setChecked(_detailLevel == 1);
+	QAction* layoutTall = vpopup->addAction(tr("Tall"));
+	layoutTall->setCheckable(true);
+	layoutTall->setChecked(_detailLevel == 2);
 
-	case 999:
-		stopRendering();
-		break;
+	addLayoutMenu(&popup);
+	addZoomPosMenu(&popup);
 
-	case 201: {
+	QAction* a = popup.exec(e->globalPos());
+
+	if (a == activateFunction)
+	    activated(f);
+	else if (a == activateCycle)
+	    activated(cycle);
+	else if (a == activateCall)
+	    activated(c);
+
+	else if (a == stopLayout)
+	    stopRendering();
+
+	else if (a == exportAsPostscript) {
 		TraceFunction* f = activeFunction();
-		if (!f)
-			break;
+		if (!f) return;
 
 		QString n = QString("callgraph");
 		GraphExporter ge(TraceItemView::data(), f, eventType(), groupType(),
@@ -3011,13 +3013,9 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 		.arg(n).arg(n).arg(n);
 		system(cmd.toAscii());
 	}
-		break;
-
-	case 202:
+	else if (a == exportAsImage) {
 		// write current content of canvas as image to file
-	{
-		if (!_scene)
-			return;
+		if (!_scene) return;
 
 		QString fn = QFileDialog::getSaveFileName(this, tr("Save Image"));
 
@@ -3029,34 +3027,32 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 			pix.save(fn, "PNG");
 		}
 	}
-		break;
 
-	case 130:
-		_showSkipped = !_showSkipped;
-		break;
-	case 131:
-		_expandCycles = !_expandCycles;
-		break;
-	case 132:
-		_clusterGroups = !_clusterGroups;
-		break;
-
-	case 140:
-		_detailLevel = 0;
-		break;
-	case 141:
-		_detailLevel = 1;
-		break;
-	case 142:
-		_detailLevel = 2;
-		break;
-
-	default:
-		break;
+	else if (a == toggleSkipped) {
+	    _showSkipped = !_showSkipped;
+	    refresh();
+	}
+	else if (a == toggleExpand) {
+	    _expandCycles = !_expandCycles;
+	    refresh();
+	}
+	else if (a == toggleCluster) {
+	    _clusterGroups = !_clusterGroups;
+	    refresh();
 	}
 
-	if (r>99&& r<170)
-		refresh();
+	else if (a == layoutCompact) {
+	    _detailLevel = 0;
+	    refresh();
+	}
+	else if (a == layoutNormal) {
+	    _detailLevel = 1;
+	    refresh();
+	}
+	else if (a == layoutTall) {
+	    _detailLevel = 2;
+	    refresh();
+	}
 }
 
 
