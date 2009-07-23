@@ -1537,17 +1537,16 @@ QString TreeMapWidget::tipString(TreeMapItem* i) const
 
 TreeMapItem* TreeMapWidget::item(int x, int y) const
 {
-  TreeMapItem* p = _base;
-  TreeMapItem* i;
 
   if (!rect().contains(x, y)) return 0;
   if (DEBUG_DRAWING) qDebug() << "item(" << x << "," << y << "):";
 
+  TreeMapItem* p = _base;
+  TreeMapItem* i;
   while (1) {
     TreeMapItemList* list = p->children();
-    if (!list)
-      i = 0;
-    else {
+    i = 0;
+    if (list) {
       int idx;
       for (idx=0; idx<list->size(); idx++) {
 	i = list->at(idx);
