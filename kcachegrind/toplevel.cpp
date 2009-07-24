@@ -1023,9 +1023,13 @@ void TopLevel::exportGraph()
   GraphExporter ge(_data, _function, _eventType, _groupType, n);
   ge.writeDot();
 
+#ifdef Q_OS_UNIX
+  // shell commands only work in UNIX
   QString cmd = QString("(dot %1 -Tps > %2.ps; kghostview %3.ps)&")
                 .arg(n).arg(n).arg(n);
-  system(QFile::encodeName( cmd ));
+  if (::system(QFile::encodeName( cmd ))<0)
+	qDebug() << "TopLevel::exportGraph: can not run " << cmd;
+#endif
 }
 
 

@@ -868,7 +868,8 @@ void QCGTopLevel::exportGraph()
     // shell commands only work in UNIX
     QString cmd = QString("(dot %1 -Tps > %2.ps; kghostview %3.ps)&")
 	.arg(n).arg(n).arg(n);
-    ::system(QFile::encodeName( cmd ));
+    if (::system(QFile::encodeName( cmd ))<0)
+	qDebug() << "QCGTopLevel::exportGraph: can not run " << cmd;
 #endif
 }
 
