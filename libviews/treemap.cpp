@@ -2628,7 +2628,7 @@ void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, const QRect& r,
   i->addFreeRect(r);
 
   // reset rects
-  while (len>0 && (i=list->at(idx))) {
+  while (len>0 && (i=list->value(idx))) {
 
       if (DEBUG_DRAWING)
 	  qDebug() << "   Reset Rect " << i->path(0).join("/");
