@@ -23,9 +23,9 @@
 #ifndef GLOBALCONFIG_H
 #define GLOBALCONFIG_H
 
-#include <qcolor.h>
-#include <qstringlist.h>
-#include <q3dict.h>
+#include <QColor>
+#include <QStringList>
+#include <QHash>
 
 #include "tracedata.h"
 
@@ -39,6 +39,7 @@ class GlobalConfig
 
 public:
   GlobalConfig();
+  ~GlobalConfig();
 
   // gets the singleton instance
   static GlobalConfig* config();
@@ -92,10 +93,10 @@ protected:
 
   static ColorSetting* color(const QString&, bool createNew = true);
 
-  Q3Dict<ColorSetting> _colors;
+  QHash<QString, ColorSetting*> _colors;
 
   QStringList _generalSourceDirs;
-  Q3Dict<QStringList> _objectSourceDirs;
+  QHash<QString, QStringList> _objectSourceDirs;
 
   bool _showPercentage, _showExpanded, _showCycles;
   double _cycleCut;

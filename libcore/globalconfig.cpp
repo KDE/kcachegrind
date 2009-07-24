@@ -97,12 +97,8 @@ QString GlobalConfig::knownLongName(const QString& name)
 GlobalConfig* GlobalConfig::_config = 0;
 
 GlobalConfig::GlobalConfig()
-  :_colors(517)
 {
   _config = 0;
-
-  _colors.setAutoDelete(true);
-  _objectSourceDirs.setAutoDelete(true);
 
   // general presentation options
   _showPercentage   = DEFAULT_SHOWPERCENTAGE;
@@ -121,6 +117,12 @@ GlobalConfig::GlobalConfig()
   _noCostInside     = DEFAULT_NOCOSTINSIDE;
 }
 
+GlobalConfig::~GlobalConfig()
+{
+    qDeleteAll(_colors);
+    _colors.clear();
+}
+
 GlobalConfig* GlobalConfig::config()
 {
     if (_config == 0)
@@ -134,15 +136,13 @@ void GlobalConfig::saveOptions()
 {
     // color options
     ConfigGroup* colorConfig = ConfigStorage::group("CostColors");
-    Q3DictIterator<ColorSetting> it( _colors );
     int count = 1;
-    for( ; it.current(); ++it ) {
-	if ( !(*it)->automatic ) {
+    foreach(ColorSetting* cs, _colors) {
+	if ( !cs->automatic ) {
 	    colorConfig->setValue( QString("Name%1").arg(count),
-				   it.currentKey());
+				   cs->name);
 	    colorConfig->setValue( QString("Color%1").arg(count),
-				   (*it)->color);
-
+				   cs->color);
 	    count++;
 	}
     }
@@ -152,13 +152,14 @@ void GlobalConfig::saveOptions()
     // source options
     ConfigGroup* sourceConfig = ConfigStorage::group("Source");
     sourceConfig->setValue("Dirs", _generalSourceDirs);
-    Q3DictIterator<QStringList> it2( _objectSourceDirs );
+    QHashIterator<QString,QStringList> it( _objectSourceDirs );
     count = 1;
-    for( ; it2.current(); ++it2 ) {
+    while( it.hasNext() ) {
+	it.next();
 	sourceConfig->setValue( QString("Object%1").arg(count),
-				it2.currentKey());
+				it.key() );
 	sourceConfig->setValue( QString("Dirs%1").arg(count),
-				*(*it2));
+				it.value() );
 	count++;
     }
     sourceConfig->setValue("Count", count-1);
@@ -250,7 +251,6 @@ void GlobalConfig::readOptions()
     if (dirs.count()>0) _generalSourceDirs = dirs;
     count = sourceConfig->value("Count", 0).toInt();
     _objectSourceDirs.clear();
-    if (count>17) _objectSourceDirs.resize(count);
     for (i=1;i<=count;i++) {
 	QString n = sourceConfig->value(QString("Object%1").arg(i),
 					QString()).toString();
@@ -259,7 +259,7 @@ void GlobalConfig::readOptions()
 
 	if (n.isEmpty() || (dirs.count()==0)) continue;
 
-	_objectSourceDirs.insert(n, new QStringList(dirs));
+	_objectSourceDirs.insert(n, dirs);
     }
     delete sourceConfig;
 
@@ -414,7 +414,7 @@ GlobalConfig::ColorSetting* GlobalConfig::color(const QString& n, bool createNew
  */
 QStringList GlobalConfig::sourceDirs(TraceData* data, TraceObject* o)
 {
-  QStringList l = config()->_generalSourceDirs, *ol, *ol2 = 0;
+  QStringList l = config()->_generalSourceDirs, ol, ol2;
   TraceObjectMap::Iterator oit;
   for ( oit = data->objectMap().begin();
         oit != data->objectMap().end(); ++oit ) {
@@ -423,15 +423,13 @@ QStringList GlobalConfig::sourceDirs(TraceData* data, TraceObject* o)
       ol2 = ol;
       continue;
     }
-    if (!ol) continue;
 
-    for(int i=0;i<ol->count();i++)
-      l.prepend( (*ol)[i] );
+    for(int i=0;i<ol.count();i++)
+      l.prepend( ol[i] );
   }
-  if (ol2) {
-    for(int i=0;i<ol2->count();i++)
-      l.prepend( (*ol2)[i] );
-  }
+  for(int i=0;i<ol2.count();i++)
+    l.prepend( ol2[i] );
+
   if (0) qDebug() << "GlobalConfig::sourceDirs: " << l.join(":");
 
   return l;

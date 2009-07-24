@@ -129,11 +129,10 @@ ConfigDlg::ConfigDlg(GlobalConfig* c, TraceData* data,
   }
 
   // then already defined colors (have to check for duplicates!)
-  Q3DictIterator<GlobalConfig::ColorSetting> it( c->_colors );
-  for( ; it.current(); ++it ) {
-    if ((*it)->automatic) continue;
+  foreach(GlobalConfig::ColorSetting* cs, c->_colors) {
+    if (cs->automatic) continue;
 
-    QString n = it.currentKey();
+    QString n = cs->name;
     if (n.startsWith(objectPrefix)) {
       n = n.remove(0, objectPrefix.length()+1);
       if (oList.findIndex(n) == -1) oList.append(n);
@@ -177,11 +176,10 @@ ConfigDlg::ConfigDlg(GlobalConfig* c, TraceData* data,
       QString n = (*oit).name();
       i = new Q3ListViewItem(dirList, n);
       i->setOpen(true);
-      QStringList* dirs = c->_objectSourceDirs[n];
-      if (!dirs) continue;
+      QStringList dirs = c->_objectSourceDirs[n];
 
-      sit = dirs->constBegin();
-      for(; sit != dirs->constEnd(); ++sit ) {
+      sit = dirs.constBegin();
+      for(; sit != dirs.constEnd(); ++sit ) {
         QString d = (*sit);
         if (d.isEmpty()) d = "/";
         new Q3ListViewItem(i, d);
@@ -357,8 +355,7 @@ void ConfigDlg::dirsDeletePressed()
   if (objName == i18n("(always)"))
     dirs = &(_config->_generalSourceDirs);
   else
-    dirs = _config->_objectSourceDirs[objName];
-  if (!dirs) return;
+    dirs = &(_config->_objectSourceDirs[objName]);
 
   dirs->removeAll(_dirItem->text(0));
   delete _dirItem;
@@ -376,13 +373,8 @@ void ConfigDlg::dirsAddPressed()
   QStringList* dirs;
   if (objName == i18n("(always)"))
     dirs = &(_config->_generalSourceDirs);
-  else {
-    dirs = _config->_objectSourceDirs[objName];
-    if (!dirs) {
-      dirs = new QStringList;
-      _config->_objectSourceDirs.insert(objName, dirs);
-    }
-  }
+  else
+    dirs = &(_config->_objectSourceDirs[objName]);
 
   QString newDir;
   newDir = KFileDialog::getExistingDirectory(KUrl(),
