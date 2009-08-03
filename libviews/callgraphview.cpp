@@ -817,9 +817,11 @@ void GraphExporter::writeDot(QIODevice* device)
 		.arg((long)e.to(), 0, 16)
 		.arg((long)log(log(e.cost)));
 
-		if (_go->detailLevel() ==1)
-			*stream << QString(",label=\"%1\"")
-				.arg(SubCost(e.cost).pretty());
+		if (_go->detailLevel() ==1) {
+			*stream << QString(",label=\"%1 (%2x)\"")
+				.arg(SubCost(e.cost).pretty())
+				.arg(SubCost(e.count).pretty());
+		    }
 		else if (_go->detailLevel() ==2)
 			*stream << QString(",label=\"%3\\n%4 x\"")
 				.arg(SubCost(e.cost).pretty())
@@ -2947,7 +2949,7 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 	popup.addSeparator();
 
 	QMenu* epopup = popup.addMenu(tr("Export Graph"));
-	QAction* exportAsPostscript = epopup->addAction(tr("As PostScript"));
+	QAction* exportAsDot = epopup->addAction(tr("As DOT file ..."));
 	QAction* exportAsImage = epopup->addAction(tr("As Image ..."));
 	popup.addSeparator();
 
@@ -2999,32 +3001,38 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 	else if (a == stopLayout)
 	    stopRendering();
 
-	else if (a == exportAsPostscript) {
+	else if (a == exportAsDot) {
 		TraceFunction* f = activeFunction();
 		if (!f) return;
 
-		QString n = QString("callgraph");
-		GraphExporter ge(TraceItemView::data(), f, eventType(), groupType(),
-		                 QString("%1.dot").arg(n));
-		ge.setGraphOptions(this);
-		ge.writeDot();
+		QString n;
+		n = QFileDialog::getSaveFileName(this,
+						 tr("Export Graph As DOT file"),
+						 QString(), tr("Graphviz (*.dot)"));
 
-		QString cmd = QString("(dot %1.dot -Tps > %2.ps; kghostview %3.ps)&")
-		.arg(n).arg(n).arg(n);
-		system(cmd.toAscii());
+		if (!n.isEmpty()) {
+		    GraphExporter ge(TraceItemView::data(), f, eventType(),
+				     groupType(), n);
+		    ge.setGraphOptions(this);
+		    ge.writeDot();
+		}
 	}
 	else if (a == exportAsImage) {
 		// write current content of canvas as image to file
 		if (!_scene) return;
 
-		QString fn = QFileDialog::getSaveFileName(this, tr("Save Image"));
+		QString n;
+		n = QFileDialog::getSaveFileName(this,
+						 tr("Export Graph As Image"),
+						 QString(),
+						 tr("Images (*.png *.jpg)"));
 
-		if (!fn.isEmpty()) {
-			QRect r = _scene->sceneRect().toRect();
-			QPixmap pix(r.width(), r.height());
-			QPainter p(&pix);
-			_scene->render( &p );
-			pix.save(fn, "PNG");
+		if (!n.isEmpty()) {
+		    QRect r = _scene->sceneRect().toRect();
+		    QPixmap pix(r.width(), r.height());
+		    QPainter p(&pix);
+		    _scene->render( &p );
+		    pix.save(n);
 		}
 	}
 
