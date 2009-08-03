@@ -25,6 +25,7 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include <QApplication>
 #include <QDebug>
 #include <QFile>
 #include <QFileDialog>

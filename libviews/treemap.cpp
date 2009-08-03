@@ -25,6 +25,7 @@
 
 #include <math.h>
 
+#include <QApplication>
 #include <QDebug>
 #include <QPainter>
 #include <QRegExp>
@@ -36,6 +37,9 @@
 #include <QContextMenuEvent>
 #include <QMouseEvent>
 #include <QToolTip>
+#include <QStylePainter>
+#include <QStyleOptionFocusRect>
+
 #include <Qt3Support/Q3PopupMenu>
 
 
@@ -628,7 +632,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
       pixDrawn = false;
   }
 
-  // width of text and pixmap to be drawn	
+  // width of text and pixmap to be drawn
   int w = pixW + _fm->width(name);
 
   if (0) qDebug() << "  For '" << name << "': Unused " << unused
@@ -1189,13 +1193,11 @@ TreeMapWidget::TreeMapWidget(TreeMapItem* base,
 
   setAttribute(Qt::WA_NoSystemBackground, true);
   setFocusPolicy(Qt::StrongFocus);
-  //_tip = new TreeMapTip(this);
 }
 
 TreeMapWidget::~TreeMapWidget()
 {
   delete _base;
-  //delete _tip;
 }
 
 const QFont& TreeMapWidget::currentFont() const
@@ -2209,15 +2211,15 @@ void TreeMapWidget::drawTreeMap()
   }
 
   bitBlt( this, 0, 0, &_pixmap, 0, 0,
-          QWidget::width(), QWidget::height()); //, CopyROP, true);
+	  QWidget::width(), QWidget::height());
 
   if (hasFocus()) {
-    QPainter p(this);
-#if 0
-    style().drawPrimitive( QStyle::PE_FocusRect, &p,
-                           QRect(0, 0, QWidget::width(), QWidget::height()),
-                           colorGroup() );
-#endif
+    QStylePainter p(this);
+    QStyleOptionFocusRect opt;
+    opt.rect = rect();
+    opt.palette = palette();
+    opt.state = QStyle::State_None;
+    p.drawPrimitive( QStyle::PE_FrameFocusRect, opt );
   }
 }
 

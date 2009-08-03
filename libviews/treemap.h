@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002, 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2002-2009 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -30,24 +30,20 @@
 #ifndef TREEMAP_H
 #define TREEMAP_H
 
-#include <qstring.h>
-#include <qwidget.h>
-#include <qpixmap.h>
-#include <qcolor.h>
-#include <qapplication.h>
-#include <qstringlist.h>
-//Added by qt3to4:
+#include <QString>
+#include <QWidget>
+#include <QPixmap>
+#include <QColor>
+#include <QStringList>
 #include <QPaintEvent>
 #include <QKeyEvent>
 #include <QContextMenuEvent>
 #include <QMouseEvent>
 
 class Q3PopupMenu;
-class TreeMapTip;
 class TreeMapWidget;
 class TreeMapItem;
 class TreeMapItemList;
-class QString;
 
 
 /**
@@ -101,7 +97,7 @@ class StoredDrawParams: public DrawParams
 public:
   StoredDrawParams();
   explicit StoredDrawParams(const QColor& c,
-        		    bool selected = false, bool current = false);
+			    bool selected = false, bool current = false);
 
   // getters
   QString  text(int) const;
@@ -126,7 +122,7 @@ public:
   void setPixmap(int f, const QPixmap&);
   void setPosition(int f, Position);
   void setMaxLines(int f, int);
-  void setBackColor(QColor c) { _backColor = c; }
+  void setBackColor(const QColor& c) { _backColor = c; }
   void setSelected(bool b) { _selected = b; }
   void setCurrent(bool b) { _current = b; }
   void setShaded(bool b) { _shaded = b; }
@@ -706,7 +702,6 @@ private:
 
   TreeMapItem* _base;
   TreeMapItem *_current, *_pressed, *_lastOver, *_oldCurrent;
-  TreeMapTip* _tip;
   int _maxSelectDepth, _maxDrawingDepth;
 
   // attributes for field, per textNo
@@ -721,7 +716,7 @@ private:
   TreeMapItem::SplitMode _splitMode;
   int _visibleWidth, _stopArea, _minimalArea, _borderWidth;
   bool _reuseSpace, _skipIncorrectBorder, _drawSeparators, _shading;
-  bool _allowRotation;  
+  bool _allowRotation;
   bool _transparent[4], _drawFrame[4];
   TreeMapItem * _needsRefresh;
   TreeMapItemList _selection;

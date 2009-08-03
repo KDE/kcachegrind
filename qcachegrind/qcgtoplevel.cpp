@@ -26,6 +26,7 @@
 
 #include <stdlib.h> // for system()
 
+#include <QApplication>
 #include <QDebug>
 #include <QDockWidget>
 #include <QTimer>
