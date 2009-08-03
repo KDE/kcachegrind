@@ -47,7 +47,7 @@ QString SubCost::pretty(char sep) const
 {
     unsigned long long n = v;
 
-    if (n==0) return QString(" 0");
+    if (n==0) return QString("0");
 
     int i = 0;
     QString res = "";
@@ -58,7 +58,6 @@ QString SubCost::pretty(char sep) const
 	res = QChar('0'+int(n%10)) + res;
 	n /= 10;
     }
-    res = ' ' + res;
     return res;
 }
 
