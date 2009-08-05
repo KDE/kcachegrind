@@ -634,18 +634,11 @@ QString TabView::whatsThis() const
 
 void TabView::installFocusFilters()
 {
-#if 0
-    QObjectList *l = queryList("QWidget");
-    QObjectListIt it( *l );
-    QObject *obj;
-
-    while ( (obj = it.current()) != 0 ) {
-        ++it;
-	if ( ((QWidget*)obj)->isFocusEnabled() )
-	    obj->installEventFilter(this);
+    QList<QWidget*> wList = findChildren<QWidget*>();
+    foreach(QWidget* w, wList) {
+	if (w->focusPolicy() != Qt::NoFocus)
+	    w->installEventFilter(this);
     }
-    delete l;
-#endif
 }
 
 
