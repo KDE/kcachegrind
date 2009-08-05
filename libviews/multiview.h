@@ -26,10 +26,12 @@
 #ifndef MULTIVIEW_H
 #define MULTIVIEW_H
 
-#include <qsplitter.h>
-#include <q3ptrlist.h>
+#include <QSplitter>
+#include <QList>
+
 #include "traceitemview.h"
-#include "tabview.h" // because of QPtrList<TabView>
+
+class TabView;
 
 class MultiView : public QSplitter, public TraceItemView
 {
@@ -62,7 +64,7 @@ public slots:
   void doUpdate(int, bool);
 
   TabView* _active;
-  Q3PtrList<TabView> _views;
+  QList<TabView*> _views;
 };
 
 #endif
