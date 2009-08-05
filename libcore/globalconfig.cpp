@@ -382,7 +382,7 @@ GlobalConfig::ColorSetting* GlobalConfig::color(const QString& n, bool createNew
 
   // predefined ?
   GlobalConfig* c = config();
-  ColorSetting* cs = c->_colors[n];
+  ColorSetting* cs = c->_colors.value(n, 0);
   if (cs || !createNew) return cs;
 
   // automatic colors...
