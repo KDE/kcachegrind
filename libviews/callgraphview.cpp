@@ -1815,7 +1815,7 @@ CostItem* CallGraphView::canShow(CostItem* i)
 	return 0;
 }
 
-void CallGraphView::doUpdate(int changeType)
+void CallGraphView::doUpdate(int changeType, bool)
 {
 	// Special case ?
 	if (changeType == eventType2Changed)

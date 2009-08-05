@@ -214,7 +214,7 @@ CostItem* CoverageView::canShow(CostItem* i)
   return 0;
 }
 
-void CoverageView::doUpdate(int changeType)
+void CoverageView::doUpdate(int changeType, bool)
 {
     // Special case ?
     if (changeType == selectedItemChanged) {

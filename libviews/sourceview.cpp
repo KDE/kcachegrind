@@ -212,7 +212,7 @@ CostItem* SourceView::canShow(CostItem* i)
   return f;
 }
 
-void SourceView::doUpdate(int changeType)
+void SourceView::doUpdate(int changeType, bool)
 {
   // Special case ?
   if (changeType == selectedItemChanged) {

@@ -681,7 +681,7 @@ void TabView::setActive(bool a)
     if (a) emit tabActivated(this);
 }
 
-void TabView::doUpdate(int changeType)
+void TabView::doUpdate(int changeType, bool force)
 {
     if (changeType & (activeItemChanged |
 		      configChanged |
@@ -718,7 +718,7 @@ void TabView::doUpdate(int changeType)
 	    tw->setTabEnabled(v->widget(), canShow);
 
 	if (v->widget() == tw->currentPage())
-	    v->updateView();
+	    v->updateView(force);
     }
 }
 
@@ -734,7 +734,7 @@ void TabView::visibleRectChangedSlot(TabWidget* tw)
     if (0) qDebug("%s: %svisible !",
 		  tw->name(), tw->hasVisibleRect() ? "":"un");
 
-    if (tw->hasVisibleRect()) doUpdate(0);
+    if (tw->hasVisibleRect()) doUpdate(0, false);
 }
 
 void TabView::resizeEvent(QResizeEvent* e)

@@ -635,7 +635,7 @@ protected:
 private:
 	void updateSizes(QSize s = QSize(0,0));
 	CostItem* canShow(CostItem*);
-	void doUpdate(int);
+	void doUpdate(int, bool);
 	void refresh();
 	void makeFrame(CanvasNode*, bool active);
 	void clear();

@@ -52,7 +52,7 @@ private slots:
 
 private:
   CostItem* canShow(CostItem*);
-  void doUpdate(int);
+  void doUpdate(int, bool);
   void refresh();
   void updateJumpArray(uint,SourceItem*,bool,bool);
   bool searchFile(QString&, TraceFunctionSource*);

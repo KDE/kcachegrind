@@ -26,8 +26,24 @@
 
 #include "toplevelbase.h"
 
-
 #define TRACE_UPDATES 0
+
+
+// TraceItemViewUpdateTimer
+
+TraceItemViewUpdateTimer::TraceItemViewUpdateTimer(TraceItemView* view)
+{
+    _view = view;
+    setSingleShot(true);
+    connect(this, SIGNAL(timeout()), this, SLOT(timeoutTriggered()));
+}
+
+void TraceItemViewUpdateTimer::timeoutTriggered()
+{
+    _view->triggerUpdate(false);
+}
+
+// TraceItemView
 
 TraceItemView::TraceItemView(TraceItemView* parentView, TopLevelBase* top)
 {
@@ -43,12 +59,17 @@ TraceItemView::TraceItemView(TraceItemView* parentView, TopLevelBase* top)
   _groupType = _newGroupType = ProfileContext::InvalidType;
 
   _status = nothingChanged;
-  _inUpdate = false;
+  _needsUpdate = false;
   _pos = Hidden;
+
+  _mergeUpdates = true;
+  _updateTimer = new TraceItemViewUpdateTimer(this);
 }
 
 TraceItemView::~TraceItemView()
-{}
+{
+    delete _updateTimer;
+}
 
 QString TraceItemView::whatsThis() const
 {
@@ -153,9 +174,35 @@ void TraceItemView::setData(TraceData* d)
   _status = nothingChanged;
 }
 
+// force: update immediatly even if invisible and no change was detected
 void TraceItemView::updateView(bool force)
 {
-  if (!force && !isViewVisible()) return;
+    if (!_mergeUpdates || force) {
+	_needsUpdate = true;
+	_updateTimer->stop();
+	triggerUpdate(force);
+	return;
+    }
+
+    // if _needsUpdate is true, an update is already scheduled
+    if (_needsUpdate) return;
+
+    _needsUpdate = true;
+    _updateTimer->start(1);
+}
+
+
+void TraceItemView::triggerUpdate(bool force)
+{
+    // If already updated no need to update again.
+    // This can happen if a update by timer is scheduled, but a "force"d
+    // update is done before the timer triggers
+    if (!_needsUpdate) return;
+    _needsUpdate = false;
+
+    if (!force) {
+	if (!isViewVisible()) return;
+    }
 
   if (_newData != _data) {
     _status |= dataChanged;
@@ -252,13 +299,7 @@ void TraceItemView::updateView(bool force)
 
   int st = _status;
   _status = nothingChanged;
-  doUpdate(st);
-  return;
-
-  if (_inUpdate) return;
-  _inUpdate = true;
-  doUpdate(_status);
-  _inUpdate = false;
+  doUpdate(st, force);
 }
 
 
@@ -340,7 +381,7 @@ void TraceItemView::directionActivated(TraceItemView*, TraceItemView::Direction 
       if (_topLevel) _topLevel->setDirectionDelayed(d);
 }
 
-void TraceItemView::doUpdate(int)
+void TraceItemView::doUpdate(int, bool)
 {
 }
 
@@ -414,3 +455,5 @@ void TraceItemView::addGoMenu(QMenu* p)
 {
   if (_topLevel) _topLevel->addGoMenu(p);
 }
+
+#include "traceitemview.moc"

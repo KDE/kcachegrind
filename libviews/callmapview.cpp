@@ -471,7 +471,7 @@ CostItem* CallMapView::canShow(CostItem* i)
   return 0;
 }
 
-void CallMapView::doUpdate(int changeType)
+void CallMapView::doUpdate(int changeType, bool)
 {
     if (changeType == eventType2Changed) return;
 

@@ -46,7 +46,7 @@ private slots:
 
 private:
   CostItem* canShow(CostItem*);
-  void doUpdate(int);
+  void doUpdate(int, bool);
   void refresh();
 
   HighestCostList _hc;

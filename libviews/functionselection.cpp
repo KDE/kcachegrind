@@ -344,7 +344,7 @@ CostItem* FunctionSelection::canShow(CostItem* i)
 }
 
 
-void FunctionSelection::doUpdate(int changeType)
+void FunctionSelection::doUpdate(int changeType, bool)
 {
     // Special case ?
     if (changeType == selectedItemChanged) return;

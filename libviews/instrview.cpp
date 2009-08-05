@@ -321,7 +321,7 @@ CostItem* InstrView::canShow(CostItem* i)
 }
 
 
-void InstrView::doUpdate(int changeType)
+void InstrView::doUpdate(int changeType, bool)
 {
   // Special case ?
   if (changeType == selectedItemChanged) {

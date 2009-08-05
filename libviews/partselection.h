@@ -68,7 +68,7 @@ public slots:
 private:
     // reimplementations of TraceItemView
     CostItem* canShow(CostItem*);
-    void doUpdate(int);
+    void doUpdate(int, bool);
 
     // helper for doUpdate
     void selectParts(const TracePartList& list);

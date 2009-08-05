@@ -73,6 +73,9 @@ void MultiView::appendView()
     _views.append(tv);
     tv->show();
 
+    // no need to waste time with update merging
+    tv->setMergeUpdates(false);
+
     // set same attributes as in active view
     tv->set(0, _data, _eventType, _eventType2,
 	    _groupType, _partList, _activeItem, 0);
@@ -152,7 +155,7 @@ void MultiView::activated(TraceItemView* sender, CostItem* i)
     TraceItemView::activated(sender,i);
 }
 
-void MultiView::doUpdate(int changeType)
+void MultiView::doUpdate(int changeType, bool force)
 {
     TabView* tv;
     for(tv=_views.first(); tv; tv=_views.next()) {
@@ -162,7 +165,7 @@ void MultiView::doUpdate(int changeType)
 		tv->selectedItem());
 	tv->notifyChange(changeType);
 	if (tv->isViewVisible())
-	    tv->updateView();
+	    tv->updateView(force);
     }
 }
 

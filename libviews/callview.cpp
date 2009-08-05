@@ -176,7 +176,7 @@ CostItem* CallView::canShow(CostItem* i)
   return 0;
 }
 
-void CallView::doUpdate(int changeType)
+void CallView::doUpdate(int changeType, bool)
 {
     // Special case ?
     if (changeType == selectedItemChanged) {

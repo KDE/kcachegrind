@@ -71,7 +71,7 @@ public slots:
 
 private:
   CostItem* canShow(CostItem* i);
-  void doUpdate(int);
+  void doUpdate(int, bool);
   void selectFunction();
   void refresh();
   void setCostColumnWidths();

@@ -55,7 +55,7 @@ private slots:
 
 private:
   CostItem* canShow(CostItem*);
-  void doUpdate(int);
+  void doUpdate(int, bool);
   void refresh();
   void setColumnWidths();
   bool searchFile(QString&, TraceObject*);

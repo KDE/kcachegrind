@@ -192,7 +192,7 @@ void PartSelection::selectParts(const TracePartList& list)
 }
 
 
-void PartSelection::doUpdate(int changeType)
+void PartSelection::doUpdate(int changeType, bool)
 {
     if (changeType == eventType2Changed) return;
     if (changeType == selectedItemChanged) return;

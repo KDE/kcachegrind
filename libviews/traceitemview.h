@@ -23,12 +23,37 @@
 #ifndef TRACEITEMVIEW_H
 #define TRACEITEMVIEW_H
 
+#include <QTimer>
+
 #include "tracedata.h"
 
 class QWidget;
 class QMenu;
 
 class TopLevelBase;
+class TraceItemView;
+
+/* Helper class for TraceItemView for merging update requests.
+ *
+ * This can not be directly done in TraceItemView which can not have slots,
+ * as this would need TraceItemView to be inherited from QObject. However,
+ * we want subclasses of TraceItemView to also inherit from QWidget, and
+ * multiple inheritance of a QObject is impossible
+ */
+class TraceItemViewUpdateTimer: public QTimer
+{
+    Q_OBJECT
+
+public:
+    explicit TraceItemViewUpdateTimer(TraceItemView* view);
+
+private slots:
+    void timeoutTriggered();
+
+private:
+    TraceItemView* _view;
+};
+
 
 /**
  * Abstract Base Class for KCachegrind Views
@@ -44,6 +69,8 @@ class TopLevelBase;
  */
 class TraceItemView
 {
+    friend class TraceItemViewUpdateTimer;
+
 public:
 
   /**
@@ -96,7 +123,12 @@ public:
 	   ProfileContext::Type, const TracePartList&,
 	   CostItem*, CostItem*);
 
+  // if mergeUpdates is true (default), calls to updateView do not
+  // directly trigger an update of the view
+  void setMergeUpdates(bool b) { _mergeUpdates = b; }
+
   // general update request, call if view is/gets visible
+  // force: update immediatly even if invisible and no change was detected
   void updateView(bool force = false);
 
   /**
@@ -169,7 +201,7 @@ protected:
   virtual bool isViewVisible();
 
   // update handler (to be reimplemented)
-  virtual void doUpdate(int changeType);
+  virtual void doUpdate(int changeType, bool force);
 
   TraceItemView* _parentView;
   TopLevelBase* _topLevel;
@@ -181,16 +213,24 @@ protected:
   ProfileContext::Type _groupType;
 
 private:
+  /* Multiple update requests via updateView() are merged, and result in one
+   * call to triggerUpdate() after a timeout (using TraceItemViewUpdateTimer)
+   */
+  void triggerUpdate(bool force);
+
   TraceData* _newData;
   TracePartList _newPartList;
   CostItem *_newActiveItem, *_newSelectedItem;
   EventType *_newEventType, *_newEventType2;
   ProfileContext::Type _newGroupType;
+  TraceItemViewUpdateTimer* _updateTimer;
 
   QString _title;
   int _status;
-  bool _inUpdate;
+  bool _mergeUpdates, _needsUpdate;
   Position _pos;
 };
+
+
 
 #endif

@@ -59,7 +59,7 @@ public slots:
     void tabActivated(TabView*);
 
  private:
-  void doUpdate(int);
+  void doUpdate(int, bool);
 
   TabView* _active;
   Q3PtrList<TabView> _views;

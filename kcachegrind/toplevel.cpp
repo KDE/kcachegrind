@@ -1473,7 +1473,9 @@ void TopLevel::setData(TraceData* data)
   _functionSelection->setData(_data);
   _functionSelection->updateView();
   _multiView->setData(_data);
-  _multiView->updateView();
+  // Force update of _data in all children of _multiView
+  // This is needed to make restoring of activeItem work!
+  _multiView->updateView(true);
 
   /* this is needed to let the other widgets know the types */
   restoreTraceTypes();

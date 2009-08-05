@@ -161,7 +161,7 @@ private:
   void addBottom(TraceItemView*);
   TabWidget* tabWidget(Position);
   void updateVisibility();
-  void doUpdate(int);
+  void doUpdate(int, bool);
   void updateNameLabel(QString n = QString::null);
   void installFocusFilters();
   void tabCounts(int&, int&, int&, int&);

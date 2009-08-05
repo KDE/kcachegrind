@@ -139,7 +139,7 @@ CostItem* PartView::canShow(CostItem* i)
   return 0;
 }
 
-void PartView::doUpdate(int changeType)
+void PartView::doUpdate(int changeType, bool)
 {
     // Special case ?
     if (changeType == eventType2Changed) return;

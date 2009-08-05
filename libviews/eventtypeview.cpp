@@ -191,7 +191,7 @@ CostItem* EventTypeView::canShow(CostItem* i)
     return i;
 }
 
-void EventTypeView::doUpdate(int changeType)
+void EventTypeView::doUpdate(int changeType, bool)
 {
     // Special case ?
     if (changeType == selectedItemChanged) return;
