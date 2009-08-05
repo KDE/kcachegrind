@@ -18,8 +18,6 @@
 
 #include "stackbrowser.h"
 
-#include <Qt3Support/Q3ListView>
-
 
 // Stack
 
