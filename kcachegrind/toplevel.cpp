@@ -777,13 +777,8 @@ void TopLevel::setRelativeCost()
 void TopLevel::updateViewsOnChange(int change)
 {
   _partSelection->notifyChange(change);
-  _partSelection->updateView();
-
   _functionSelection->notifyChange(change);
-  _functionSelection->updateView();
-
   _multiView->notifyChange(change);
-  _multiView->updateView();
 }
 
 void TopLevel::setPercentage(bool show)
@@ -1084,15 +1079,9 @@ bool TopLevel::setEventType(EventType* ct)
   }
 
   _partSelection->setEventType(_eventType);
-  _partSelection->updateView();
-
   _stackSelection->setEventType(_eventType);
-
   _functionSelection->setEventType(_eventType);
-  _functionSelection->updateView();
-
   _multiView->setEventType(_eventType);
-  _multiView->updateView();
 
   updateStatusBar();
 
@@ -1111,15 +1100,9 @@ bool TopLevel::setEventType2(EventType* ct)
       _saCost2->setCurrentItem(idx);
 
   _partSelection->setEventType2(_eventType2);
-  _partSelection->updateView();
-
   _stackSelection->setEventType2(_eventType2);
-
   _functionSelection->setEventType2(_eventType2);
-  _functionSelection->updateView();
-
   _multiView->setEventType2(_eventType2);
-  _multiView->updateView();
 
   updateStatusBar();
 
@@ -1180,15 +1163,9 @@ bool TopLevel::setGroupType(ProfileContext::Type gt)
     saGroup->setCurrentItem(idx);
 
   _stackSelection->setGroupType(_groupType);
-
   _partSelection->set(_groupType);
-  _partSelection->updateView();
-
   _functionSelection->set(_groupType);
-  _functionSelection->updateView();
-
   _multiView->set(_groupType);
-  _multiView->updateView();
 
   updateStatusBar();
 
@@ -1232,14 +1209,8 @@ bool TopLevel::setFunction(TraceFunction* f)
   _function = f;
 
   _multiView->activate(f);
-  _multiView->updateView();
-
   _functionSelection->activate(f);
-  _functionSelection->updateView();
-
   _partSelection->activate(f);
-  _partSelection->updateView();
-
   _stackSelection->setFunction(_function);
 
   StackBrowser* b = _stackSelection->browser();
@@ -1384,7 +1355,6 @@ void TopLevel::setTraceItemDelayed()
     case ProfileContext::File:
     case ProfileContext::Class:
 	_multiView->activate(_traceItemDelayed);
-	_multiView->updateView();
 	break;
 
 #if 0
@@ -1393,7 +1363,6 @@ void TopLevel::setTraceItemDelayed()
     case ProfileContext::Line:
 	// only for multiview
 	_multiView->activate(_traceItemDelayed);
-	_multiView->updateView();
 	break;
 #endif
 
@@ -1420,14 +1389,10 @@ void TopLevel::setData(TraceData* data)
 
   if (_data) {
     _partSelection->setData(0);
-    _partSelection->updateView();
-
     _stackSelection->setData(0);
-
     _functionSelection->setData(0);
-    _functionSelection->updateView();
     _multiView->setData(0);
-    _multiView->updateView();
+    _multiView->updateView(true);
 
     // we are the owner...
     delete _data;
@@ -1466,12 +1431,8 @@ void TopLevel::setData(TraceData* data)
     _saCost2->setCurrentItem(0);
 
   _partSelection->setData(_data);
-  _partSelection->updateView();
-
   _stackSelection->setData(_data);
-
   _functionSelection->setData(_data);
-  _functionSelection->updateView();
   _multiView->setData(_data);
   // Force update of _data in all children of _multiView
   // This is needed to make restoring of activeItem work!
@@ -1951,14 +1912,8 @@ void TopLevel::activePartsChangedSlot(const TracePartList& list)
   _activeParts = list;
 
   _partSelection->set(list);
-  _partSelection->updateView();
-
   _multiView->set(list);
-  _multiView->updateView();
-
   _functionSelection->set(list);
-  _functionSelection->updateView();
-
   _stackSelection->refresh();
 
   updateStatusBar();

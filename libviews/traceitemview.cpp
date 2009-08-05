@@ -78,7 +78,10 @@ QString TraceItemView::whatsThis() const
 
 void TraceItemView::select(CostItem* i)
 {
+    if (_selectedItem == i) return;
+
     _newSelectedItem = i;
+    updateView();
 }
 
 void TraceItemView::saveLayout(const QString&, const QString&)
@@ -107,7 +110,10 @@ void TraceItemView::restoreOptions(const QString&, const QString&)
 bool TraceItemView::activate(CostItem* i)
 {
     i = canShow(i);
+    if (_activeItem == i) return (i != 0);
+
     _newActiveItem = i;
+    updateView();
 
     return (i != 0);
 }
@@ -140,12 +146,11 @@ bool TraceItemView::set(int changeType, TraceData* d,
   _newPartList = l;
   _newSelectedItem = s;
   _newActiveItem = canShow(a);
-  if (!_newActiveItem) {
+  if (!_newActiveItem)
       _newSelectedItem = 0;
-      return false;
-  }
+  updateView();
 
-  return true;
+  return (_newActiveItem != 0);
 }
 
 
@@ -159,6 +164,7 @@ bool TraceItemView::isViewVisible()
 
 void TraceItemView::setData(TraceData* d)
 {
+    if (_data == d) return;
   _newData = d;
 
   // invalidate all pointers to old data
@@ -172,6 +178,7 @@ void TraceItemView::setData(TraceData* d)
 
   // updateView will change this to dataChanged
   _status = nothingChanged;
+  updateView();
 }
 
 // force: update immediatly even if invisible and no change was detected

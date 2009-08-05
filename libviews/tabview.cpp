@@ -758,7 +758,6 @@ void TabView::selected(TraceItemView*, CostItem* s)
 {
     // we set selected item for our own children
     select(s);
-    updateView();
 
     // still forward to parent
     if (_parentView) _parentView->selected(this, s);
@@ -950,8 +949,6 @@ void TabView::restoreOptions(const QString& prefix, const QString& postfix)
     selectedItem = _data->search(t, selectedName, _eventType, activeItem);
     if (selectedItem)
 	selected(this, selectedItem);
-
-    updateView();
 }
 
 void TabView::saveOptions(const QString& prefix, const QString& postfix)

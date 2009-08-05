@@ -78,7 +78,6 @@ void MultiView::appendView()
     // set same attributes as in active view
     tv->set(0, _data, _eventType, _eventType2,
 	    _groupType, _partList, _activeItem, 0);
-    tv->updateView();
 
     if (0) qDebug() << "MultiView::appendView, now "
 		     << _views.count();
@@ -141,7 +140,6 @@ void MultiView::selected(TraceItemView* sender, CostItem* i)
     if (next == _active) return;
 
     next->activate(i);
-    next->updateView();
 }
 
 void MultiView::activated(TraceItemView* sender, CostItem* i)

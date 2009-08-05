@@ -682,15 +682,9 @@ void QCGTopLevel::setPercentage(bool show)
     GlobalConfig::setShowPercentage(show);
 
     _partSelection->notifyChange(TraceItemView::configChanged);
-    _partSelection->updateView();
-
     _stackSelection->refresh();
-
     _functionSelection->notifyChange(TraceItemView::configChanged);
-    _functionSelection->updateView();
-
     _multiView->notifyChange(TraceItemView::configChanged);
-    _multiView->updateView();
 }
 
 void QCGTopLevel::toggleExpanded()
@@ -700,15 +694,9 @@ void QCGTopLevel::toggleExpanded()
     GlobalConfig::setShowExpanded(show);
 
     _partSelection->notifyChange(TraceItemView::configChanged);
-    _partSelection->updateView();
-
     _stackSelection->refresh();
-
     _functionSelection->notifyChange(TraceItemView::configChanged);
-    _functionSelection->updateView();
-
     _multiView->notifyChange(TraceItemView::configChanged);
-    _multiView->updateView();
 }
 
 void QCGTopLevel::toggleCycles()
@@ -723,15 +711,9 @@ void QCGTopLevel::toggleCycles()
     _data->updateFunctionCycles();
 
     _partSelection->notifyChange(TraceItemView::configChanged);
-    _partSelection->updateView();
-
     _stackSelection->rebuildStackList();
-
     _functionSelection->notifyChange(TraceItemView::configChanged);
-    _functionSelection->updateView();
-
     _multiView->notifyChange(TraceItemView::configChanged);
-    _multiView->updateView();
 }
 
 
@@ -925,12 +907,8 @@ bool QCGTopLevel::setEventType(EventType* ct)
 
   _partSelection->setEventType(_eventType);
   _stackSelection->setEventType(_eventType);
-
   _functionSelection->setEventType(_eventType);
-  _functionSelection->updateView();
-
   _multiView->setEventType(_eventType);
-  _multiView->updateView();
 
   updateStatusBar();
 
@@ -946,12 +924,8 @@ bool QCGTopLevel::setEventType2(EventType* ct)
 
   _partSelection->setEventType2(_eventType2);
   _stackSelection->setEventType2(_eventType2);
-
   _functionSelection->setEventType2(_eventType2);
-  _functionSelection->updateView();
-
   _multiView->setEventType2(_eventType2);
-  _multiView->updateView();
 
   updateStatusBar();
 
@@ -1016,13 +990,8 @@ bool QCGTopLevel::setGroupType(ProfileContext::Type gt)
   _stackSelection->setGroupType(_groupType);
 
   _partSelection->set(_groupType);
-  _partSelection->updateView();
-
   _functionSelection->set(_groupType);
-  _functionSelection->updateView();
-
   _multiView->set(_groupType);
-  _multiView->updateView();
 
   updateStatusBar();
 
@@ -1066,14 +1035,8 @@ bool QCGTopLevel::setFunction(TraceFunction* f)
   _function = f;
 
   _multiView->activate(f);
-  _multiView->updateView();
-
   _functionSelection->activate(f);
-  _functionSelection->updateView();
-
   _partSelection->activate(f);
-  _partSelection->updateView();
-
   _stackSelection->setFunction(_function);
 
   StackBrowser* b = _stackSelection->browser();
@@ -1218,7 +1181,6 @@ void QCGTopLevel::setTraceItemDelayed()
     case ProfileContext::File:
     case ProfileContext::Class:
 	_multiView->activate(_traceItemDelayed);
-	_multiView->updateView();
 	break;
 
 #if 0
@@ -1227,7 +1189,6 @@ void QCGTopLevel::setTraceItemDelayed()
     case ProfileContext::Line:
 	// only for multiview
 	_multiView->activate(_traceItemDelayed);
-	_multiView->updateView();
 	break;
 #endif
 
@@ -1255,12 +1216,9 @@ void QCGTopLevel::setData(TraceData* data)
   if (_data) {
     _partSelection->setData(0);
     _stackSelection->setData(0);
-
     _functionSelection->setData(0);
-    _functionSelection->updateView();
-
     _multiView->setData(0);
-    _multiView->updateView();
+    _multiView->updateView(true);
 
     // we are the owner...
     delete _data;
@@ -1289,13 +1247,8 @@ void QCGTopLevel::setData(TraceData* data)
   _eventTypeBox->addItems(types);
 
   _stackSelection->setData(_data);
-
   _partSelection->setData(_data);
-  _partSelection->updateView();
-
   _functionSelection->setData(_data);
-  _functionSelection->updateView();
-
   _multiView->setData(_data);
   // Force update of _data in all children of _multiView
   // This is needed to make restoring of activeItem work!
@@ -1758,15 +1711,9 @@ void QCGTopLevel::configChanged()
   _data->resetSourceDirs();
 
   _partSelection->notifyChange(TraceItemView::configChanged);
-  _partSelection->updateView();
-
   _stackSelection->refresh();
-
   _functionSelection->notifyChange(TraceItemView::configChanged);
-  _functionSelection->updateView();
-
   _multiView->notifyChange(TraceItemView::configChanged);
-  _multiView->updateView();
 }
 
 
@@ -1782,15 +1729,9 @@ void QCGTopLevel::activePartsChangedSlot(const TracePartList& list)
   _activeParts = list;
 
   _partSelection->set(list);
-  _partSelection->updateView();
-
   _stackSelection->refresh();
-
   _functionSelection->set(list);
-  _functionSelection->updateView();
-
   _multiView->set(list);
-  _multiView->updateView();
 
   updateStatusBar();
 }

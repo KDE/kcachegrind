@@ -109,15 +109,15 @@ public:
   // Overwrite in container views to also set new data for all members.
   virtual void setData(TraceData* d);
 
-  // change from parent, call updateView() to update lazily (only if visible)
-  void setEventType(EventType* t) { _newEventType = t; }
-  void setEventType2(EventType* t) { _newEventType2 = t; }
-  void set(ProfileContext::Type g) { _newGroupType = g; }
-  void set(const TracePartList& l) { _newPartList = l; }
+  // modify visualization state, updates automatically
+  void setEventType(EventType* t) { _newEventType = t; updateView(); }
+  void setEventType2(EventType* t) { _newEventType2 = t; updateView(); }
+  void set(ProfileContext::Type g) { _newGroupType = g; updateView(); }
+  void set(const TracePartList& l) { _newPartList = l; updateView(); }
   // returns false if nothing can be shown for this trace item
   bool activate(CostItem* i);
   void select(CostItem* i);
-  void notifyChange(int changeType) { _status |= changeType; }
+  void notifyChange(int changeType) { _status |= changeType; updateView(); }
   // all in one
   bool set(int, TraceData*, EventType*, EventType*,
 	   ProfileContext::Type, const TracePartList&,
