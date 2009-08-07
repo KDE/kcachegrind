@@ -93,6 +93,7 @@ int main( int argc, char ** argv )
   // to make leak checking in valgrind happy...
   Loader::deleteLoaders();
   ProfileContext::cleanup();
+  ConfigStorage::cleanup();
 
   return res;
 }

@@ -40,9 +40,10 @@ public:
     QVariant value(const QString& key, const QVariant& defaultValue) const;
 
 private:
-    QCGConfigGroup(QSettings*, bool);
+    QCGConfigGroup(QSettings*, QString prefix, bool);
 
-    QSettings* _group;
+    QSettings* _settings;
+    QString _prefix;
     bool _readOnly;
 };
 
@@ -51,10 +52,13 @@ class QCGConfigStorage : public ConfigStorage
 {
 public:
   QCGConfigStorage();
+  ~QCGConfigStorage();
 
 private:
   ConfigGroup* getGroup(const QString& group,
 			const QString& optSuffix);
+
+  QSettings* _settings;
 };
 
 #endif // QCGCONFIG_H

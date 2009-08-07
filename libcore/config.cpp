@@ -90,6 +90,11 @@ void ConfigStorage::setStorage(ConfigStorage* storage)
     _storage = storage;
 }
 
+void ConfigStorage::cleanup()
+{
+    delete _storage;
+}
+
 ConfigGroup* ConfigStorage::getGroup(const QString&, const QString&)
 {
     return new ConfigGroup();

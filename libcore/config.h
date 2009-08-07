@@ -72,6 +72,7 @@ public:
     static ConfigGroup* group(const QString& group,
 			      const QString& optSuffix = QString());
     static void setStorage(ConfigStorage*);
+    static void cleanup();
 
 protected:
     virtual ConfigGroup* getGroup(const QString& group,

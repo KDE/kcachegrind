@@ -31,34 +31,36 @@
 // QCGConfigGroup
 //
 
-QCGConfigGroup::QCGConfigGroup(QSettings* group, bool readOnly)
+QCGConfigGroup::QCGConfigGroup(QSettings* settings, QString prefix,
+			       bool readOnly)
 {
-    _group = group;
+    _settings = settings;
+    _prefix = prefix;
     _readOnly = readOnly;
 }
 
 QCGConfigGroup::~QCGConfigGroup()
-{
-    delete _group;
-}
+{}
 
 void QCGConfigGroup::setValue(const QString& key, const QVariant& value,
 			     const QVariant& defaultValue)
 {
-    if ((_group == 0) || _readOnly) return;
+    if ((_settings == 0) || _readOnly) return;
 
+    QString fullKey = QString("%1/%2").arg(_prefix).arg(key);
     if (value == defaultValue)
-	_group->remove(key);
+	_settings->remove(fullKey);
     else
-	_group->setValue(key, value);
+	_settings->setValue(fullKey, value);
 }
 
 QVariant QCGConfigGroup::value(const QString& key,
-			      const QVariant& defaultValue) const
+			       const QVariant& defaultValue) const
 {
-    if (_group == 0) return defaultValue;
+    if (_settings == 0) return defaultValue;
 
-    return _group->value(key, defaultValue);
+    QString fullKey = QString("%1/%2").arg(_prefix).arg(key);
+    return _settings->value(fullKey, defaultValue);
 }
 
 
@@ -68,30 +70,29 @@ QVariant QCGConfigGroup::value(const QString& key,
 //
 
 QCGConfigStorage::QCGConfigStorage()
-{}
+{
+    _settings = new QSettings;
+}
+
+QCGConfigStorage::~QCGConfigStorage()
+{
+    delete _settings;
+}
 
 ConfigGroup* QCGConfigStorage::getGroup(const QString& group,
 				       const QString& optSuffix)
 {
-    QSettings* g = new QSettings;
-    bool readOnly;
+    // for writing
+    if (optSuffix.isEmpty())
+	return new QCGConfigGroup(_settings, group, false);
 
-    if (!optSuffix.isEmpty()) {
-	readOnly = true;
-	QStringList gList = g->childGroups();
-	if (gList.contains(group+optSuffix))
-	    g->beginGroup(group+optSuffix);
-	else if (gList.contains(group))
-	    g->beginGroup(group);
-	else {
-	    delete g;
-	    g = 0;
-	}
-    }
-    else {
-	readOnly = false;
-	g->beginGroup(group);
-    }
+    // for reading
+    QStringList gList = _settings->childGroups();
+    if (gList.contains(group+optSuffix))
+	return new QCGConfigGroup(_settings, group + optSuffix, true);
+    else if (gList.contains(group))
+	return new QCGConfigGroup(_settings, group, true);
 
-    return new QCGConfigGroup(g, readOnly);
+    // requested group does not exist, return only default values
+    return new QCGConfigGroup(0, QString::null, true);
 }
