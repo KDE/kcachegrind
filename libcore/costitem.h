@@ -97,6 +97,11 @@ public:
    */
   void setPosition(CostItem* p) { _position = p; }
 
+  /**
+   * Redefine the context after construction
+   */
+  void setContext(ProfileContext* context) { _context = context; }
+
   // getters for specific positions, to be overwritten
   virtual TracePart* part();
   virtual const TracePart* part() const;

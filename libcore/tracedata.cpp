@@ -2717,6 +2717,8 @@ TraceFunctionCycle::TraceFunctionCycle(TraceFunction* f, int n)
   _cycleNo = n;
   _cycle = this;
 
+  setContext(ProfileContext::context(ProfileContext::FunctionCycle));
+
   setPosition(f->data());
   setName(QString("<cycle %1>").arg(n));
 
