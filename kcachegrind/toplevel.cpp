@@ -649,9 +649,15 @@ void TopLevel::createMiscActions()
   _saCost->setToolTip( hint );
   _saCost->setWhatsThis( hint );
 
-  // A dummy entry forces a minimum size of combobox in toolbar
+  // This is needed because for KDE4, "_saCost->setComboWidth(300);" seems to
+  // have no effect. Instead, list box entry widths are used to determine the
+  // combobox width. However, at KCachegrind startup, we do not have yet
+  // a list of event types, as this depends on the profile data.
+  // In KDE 4.2, we used a translatable string, which did not really work as
+  // the semantic is not known to translators. Instead, we use a
+  // nontranslatable string now...
   QStringList dummyItems;
-  dummyItems << i18n("(Placeholder for list of event types)");
+  dummyItems << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
   _saCost->setItems(dummyItems);
 
   // cost types are dependent on loaded data, thus KSelectAction
