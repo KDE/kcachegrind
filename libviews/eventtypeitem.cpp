@@ -84,13 +84,15 @@ void EventTypeItem::update()
 
   ProfileCostArray* selfTotalCost = f ? f->data() : d;
   if (f && GlobalConfig::showExpanded()) {
+      ProfileCostArray* parent = 0;
       switch(_groupType) {
-      case ProfileContext::Object: selfTotalCost = f->object(); break;
-      case ProfileContext::Class:  selfTotalCost = f->cls(); break;
-      case ProfileContext::File:   selfTotalCost = f->file(); break;
-      case ProfileContext::FunctionCycle: selfTotalCost = f->cycle(); break;
+      case ProfileContext::Object:        parent = f->object(); break;
+      case ProfileContext::Class:         parent = f->cls(); break;
+      case ProfileContext::File:          parent = f->file(); break;
+      case ProfileContext::FunctionCycle: parent = f->cycle(); break;
       default: break;
       }
+      if (parent) selfTotalCost = parent;
   }
   if (_costItem && _costItem->type()==ProfileContext::FunctionCycle) {
       f = (TraceFunction*)_costItem;
