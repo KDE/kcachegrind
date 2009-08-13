@@ -32,11 +32,7 @@
 #include <QTimer>
 #include <QByteArray>
 #include <QLabel>
-#include <QStatusBar>
 #include <QMenuBar>
-#include <QLineEdit>
-#include <QTextStream>
-#include <QSizePolicy>
 #include <QProgressBar>
 #include <QFile>
 #include <QFileDialog>
@@ -45,6 +41,7 @@
 #include <QComboBox>
 #include <QMessageBox>
 #include <QtDBus/QDBusConnection>
+#include <QStatusBar>
 
 #include "partselection.h"
 #include "functionselection.h"

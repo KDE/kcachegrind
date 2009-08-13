@@ -22,7 +22,6 @@
 
 #include "coverageitem.h"
 
-#include <QPixmap>
 
 #include "globalconfig.h"
 #include "listutils.h"

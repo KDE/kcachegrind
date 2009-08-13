@@ -25,7 +25,6 @@
 
 #include "multiview.h"
 
-#include <QObject>
 #include <QDebug>
 
 #include "config.h"

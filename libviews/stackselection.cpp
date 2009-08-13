@@ -24,11 +24,7 @@
 
 #include "stackselection.h"
 
-#include <QTimer>
-#include <QLabel>
 #include <QPushButton>
-#include <QComboBox>
-#include <QLineEdit>
 #include <QVBoxLayout>
 #include <Qt3Support/Q3ListView>
 

@@ -28,7 +28,6 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
-#include <QRegExp>
 #include <QProcess>
 #include <Qt3Support/Q3PopupMenu>
 

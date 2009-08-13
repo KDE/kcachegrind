@@ -27,7 +27,6 @@
 #include <QLabel>
 #include <QSplitter>
 #include <QTabWidget>
-#include <QLayout>
 #include <QHideEvent>
 #include <QMoveEvent>
 #include <QEvent>

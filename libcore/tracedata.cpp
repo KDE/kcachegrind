@@ -25,7 +25,6 @@
 #include <QFile>
 #include <QDir>
 #include <QFileInfo>
-#include <QRegExp>
 #include <QDebug>
 
 #include "logger.h"

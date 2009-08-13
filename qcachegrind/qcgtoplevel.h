@@ -35,7 +35,6 @@
 #include "toplevelbase.h"
 
 class MultiView;
-class QLineEdit;
 class QDockWidget;
 class QLabel;
 class QComboBox;

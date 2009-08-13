@@ -20,8 +20,6 @@
 
 #include <math.h>
 
-#include <QPainter>
-#include <QRegExp>
 #include <QPixmap>
 
 #include "listutils.h"

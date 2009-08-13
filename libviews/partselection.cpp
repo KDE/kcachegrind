@@ -22,14 +22,11 @@
 
 #include "partselection.h"
 
-#include <QTimer>
 #include <QLabel>
 #include <QPushButton>
-#include <QComboBox>
-#include <QLineEdit>
-#include <QLayout>
 #include <Qt3Support/Q3ListView>
 #include <Qt3Support/Q3PopupMenu>
+#include <QVBoxLayout>
 
 #include "toplevelbase.h"
 #include "partgraph.h"

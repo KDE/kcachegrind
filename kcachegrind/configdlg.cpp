@@ -22,9 +22,7 @@
 
 #include "configdlg.h"
 
-#include <QComboBox>
 #include <QCheckBox>
-#include <QLineEdit>
 #include <QMessageBox>
 #include <Qt3Support/Q3ListView>
 #include <Qt3Support/Q3Dict>

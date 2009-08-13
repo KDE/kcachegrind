@@ -31,7 +31,6 @@
 #include "traceitemview.h"
 
 class QLabel;
-class TraceFunction;
 class TraceData;
 class TreeMapItem;
 class PartAreaWidget;

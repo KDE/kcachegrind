@@ -28,7 +28,6 @@
 #include <QApplication>
 #include <QDebug>
 #include <QPainter>
-#include <QRegExp>
 #include <QStyle>
 #include <QPixmap>
 #include <QPaintEvent>

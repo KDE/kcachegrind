@@ -20,7 +20,6 @@
  * QCachegrind startup
  */
 
-#include <QFile>
 #include <QDir>
 #include <QApplication>
 

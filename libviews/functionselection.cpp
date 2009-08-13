@@ -22,7 +22,6 @@
 
 #include "functionselection.h"
 
-#include <QTimer>
 #include <QLabel>
 #include <QPushButton>
 #include <QComboBox>

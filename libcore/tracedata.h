@@ -32,7 +32,6 @@
 #include <q3ptrvector.h>
 #include <qcolor.h>
 
-#include <QList>
 
 #include "costitem.h"
 #include "subcost.h"
@@ -123,7 +122,6 @@ class QFile;
  */
 
 
-class FixString;
 class FixCost;
 class FixCallCost;
 class FixJump;

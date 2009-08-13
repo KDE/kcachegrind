@@ -29,11 +29,7 @@
 
 #include <QDockWidget>
 #include <QTimer>
-#include <QByteArray>
 #include <QLabel>
-#include <QLineEdit>
-#include <QTextStream>
-#include <QSizePolicy>
 #include <QProgressBar>
 #include <QFile>
 #include <QEventLoop>
