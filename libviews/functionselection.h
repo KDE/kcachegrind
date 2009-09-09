@@ -31,7 +31,8 @@
 #include "listutils.h"
 #include "toplevelbase.h"
 
-class Q3PopupMenu;
+class QAction;
+class QMenu;
 class Q3ListView;
 class Q3ListViewItem;
 
@@ -55,12 +56,13 @@ public:
   QWidget* widget() { return this; }
   QString whatsThis() const;
 
-  void addGroupMenu(Q3PopupMenu*);
+  void addGroupMenu(QMenu*);
 
 public slots:
   void searchReturnPressed();
   void searchChanged(const QString&);
   void queryDelayed();
+  void groupTypeSelected(QAction*);
   void groupTypeSelected(int);
   void groupDoubleClicked( Q3ListViewItem* );
   void functionActivated( Q3ListViewItem* );
@@ -76,6 +78,8 @@ private:
   void refresh();
   void setCostColumnWidths();
   void updateGroupSizes(bool hideEmpty);
+  void addGroupAction(QMenu*, ProfileContext::Type,
+		      const QString& s = QString());
 
   TraceCostItem* _group;
 

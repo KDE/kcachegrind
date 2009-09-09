@@ -29,8 +29,9 @@
 #include <QRegExp>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QAction>
+#include <QMenu>
 #include <Qt3Support/Q3ListView>
-#include <Qt3Support/Q3PopupMenu>
 #include <Qt3Support/Q3Header>
 #include <QDebug>
 
@@ -225,92 +226,94 @@ void FunctionSelection::queryDelayed()
 void FunctionSelection::functionContext(Q3ListViewItem* i,
 					const QPoint & p, int c)
 {
-  Q3PopupMenu popup;
-  TraceFunction* f = 0;
+    QMenu popup;
+    TraceFunction* f = 0;
 
-	if (i) {
-		f = ((FunctionItem*) i)->function();
-		if (f) {
-		    popup.insertItem(tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName())), 93);
-		    popup.insertSeparator();
-		}
+    QAction* activateFunctionAction = 0;
+    if (i) {
+	f = ((FunctionItem*) i)->function();
+	if (f) {
+	    QString menuText = tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName()));
+	    activateFunctionAction = popup.addAction(menuText);
+	    popup.addSeparator();
 	}
+    }
 
-  if ((c == 0) || (c == 1)) {
-    addEventTypeMenu(&popup,false);
-    popup.insertSeparator();
-  }
-  addGroupMenu(&popup);  
-  popup.insertSeparator();
-  addGoMenu(&popup);
+    if ((c == 0) || (c == 1)) {
+	addEventTypeMenu(&popup,false);
+	popup.addSeparator();
+    }
+    addGroupMenu(&popup);
+    popup.addSeparator();
+    addGoMenu(&popup);
 
-  int r = popup.exec(p);
-  if (r == 93) activated(f);
+    QAction* a = popup.exec(p);
+    if (a == activateFunctionAction)
+	activated(f);
 }
 
 void FunctionSelection::groupContext(Q3ListViewItem* /*i*/,
 				     const QPoint & p, int c)
 {
-  Q3PopupMenu popup;
+  QMenu popup;
 
-#if 0
-  TraceCostItem* g = 0;
-  if (i) {
-      g = ((CostListItem*) i)->costItem();
-      if (!g) {
-	popup.insertItem(tr("Show All Items"), 93);
-	popup.insertSeparator();
-      }
-  }
-#endif
   if (c == 0) {
     addEventTypeMenu(&popup,false);
-    popup.insertSeparator();
+    popup.addSeparator();
   }
-  addGroupMenu(&popup);  
-  popup.insertSeparator();
+  addGroupMenu(&popup);
+  popup.addSeparator();
   addGoMenu(&popup);
 
   popup.exec(p);
 }
 
-
-void FunctionSelection::addGroupMenu(Q3PopupMenu* popup)
+void FunctionSelection::addGroupAction(QMenu* m,
+				       ProfileContext::Type v,
+				       const QString& s)
 {
-  Q3PopupMenu *popup1 = new Q3PopupMenu(popup);
-  popup1->setCheckable(true);
+    QAction* a;
+    if (s.isEmpty())
+	a = m->addAction(ProfileContext::i18nTypeName(v));
+    else
+	a = m->addAction(s);
+    a->setData((int)v);
+    a->setCheckable(true);
+    a->setChecked(_groupType == v);
+}
 
-  if (_groupType != ProfileContext::Function) {
-    popup1->insertItem(tr("No Grouping"),0);
-    popup1->insertSeparator();
-  }
-  popup1->insertItem(ProfileContext::i18nTypeName(ProfileContext::Object),1);
-  popup1->insertItem(ProfileContext::i18nTypeName(ProfileContext::File),2);
-  popup1->insertItem(ProfileContext::i18nTypeName(ProfileContext::Class),3);
-  popup1->insertItem(ProfileContext::i18nTypeName(ProfileContext::FunctionCycle),4);
-  switch(_groupType) {
-  case ProfileContext::Object:        popup1->setItemChecked(1, true); break;
-  case ProfileContext::File:          popup1->setItemChecked(2, true); break;
-  case ProfileContext::Class:         popup1->setItemChecked(3, true); break;
-  case ProfileContext::FunctionCycle: popup1->setItemChecked(4, true); break;
-  default: break;
-  }
-  connect(popup1, SIGNAL(activated(int)),
-	  this, SLOT(groupTypeSelected(int)));
+void FunctionSelection::addGroupMenu(QMenu* menu)
+{
+    QMenu* m = menu->addMenu(tr("Grouping"));
 
-  popup->insertItem(tr("Grouping"), popup1);
+    if (_groupType != ProfileContext::Function) {
+	addGroupAction(m,  ProfileContext::Function, tr("No Grouping"));
+	m->addSeparator();
+    }
+    addGroupAction(m, ProfileContext::Object);
+    addGroupAction(m, ProfileContext::File);
+    addGroupAction(m, ProfileContext::Class);
+    addGroupAction(m, ProfileContext::FunctionCycle);
+
+    connect(m, SIGNAL(triggered(QAction*)),
+	  this, SLOT(groupTypeSelected(QAction*)));
 }    
 
+
+void FunctionSelection::groupTypeSelected(QAction* a)
+{
+    selectedGroupType( (ProfileContext::Type) a->data().toInt() );
+}
 
 void FunctionSelection::groupTypeSelected(int cg)
 {
     switch(cg) {
-	case 0: selectedGroupType( ProfileContext::Function ); break;
-	case 1: selectedGroupType( ProfileContext::Object ); break;
-	case 2: selectedGroupType( ProfileContext::File ); break;
-	case 3: selectedGroupType( ProfileContext::Class ); break;
-	case 4: selectedGroupType( ProfileContext::FunctionCycle ); break;
-	default: break;
+    case 0: selectedGroupType( ProfileContext::Function ); break;
+    case 1: selectedGroupType( ProfileContext::Object ); break;
+    case 2: selectedGroupType( ProfileContext::File ); break;
+    case 3: selectedGroupType( ProfileContext::Class ); break;
+    case 4: selectedGroupType( ProfileContext::FunctionCycle ); break;
+    default: break;
     }
 }
 
