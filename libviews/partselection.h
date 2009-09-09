@@ -58,6 +58,7 @@ signals:
 public slots:
     void selectionChanged();
     void doubleClicked(TreeMapItem*);
+    void itemSelected();
     void contextMenuRequested(TreeMapItem*, const QPoint &);
     void currentChangedSlot(TreeMapItem*, bool);
 
