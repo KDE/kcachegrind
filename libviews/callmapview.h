@@ -29,6 +29,9 @@
 #include "tracedata.h"
 #include "traceitemview.h"
 
+class QAction;
+class QMenu;
+
 class CallMapView: public TreeMapWidget, public TraceItemView
 {
   Q_OBJECT
@@ -54,10 +57,25 @@ private slots:
   void context(TreeMapItem*,const QPoint &);
   void selectedSlot(TreeMapItem*, bool);
   void activatedSlot(TreeMapItem*);
+  void mapItemTriggered(QAction*);
+  void drawingDepthTriggered(QAction*);
+  void stopFunctionTriggered(QAction*);
+  void areaLimitTriggered(QAction*);
+  void borderWidthTriggered(QAction*);
 
 private:
   CostItem* canShow(CostItem*);
   void doUpdate(int, bool);
+
+  // context menu builders
+  void addItemListMenu(QMenu*,TreeMapItem*);
+  QAction* addDrawingDepthAction(QMenu*, const QString&, int);
+  void addDrawingDepthMenu(QMenu*, TreeMapItem*, const QString&);
+  QAction* addStopFunctionAction(QMenu*, const QString&, const QString&);
+  void addStopFunctionMenu(QMenu*, TreeMapItem*);
+  QAction* addAreaLimitAction(QMenu*, const QString&, int);
+  void addAreaLimitMenu(QMenu*, TreeMapItem*, const QString&);
+  QAction* addBorderWidthAction(QMenu*, const QString&, int);
 
   bool _showCallers;
 };

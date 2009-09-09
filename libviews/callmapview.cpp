@@ -24,7 +24,8 @@
 #include "callmapview.h"
 
 #include <QPixmap>
-#include <Qt3Support/Q3PopupMenu>
+#include <QAction>
+#include <QMenu>
 
 #include "config.h"
 #include "globalconfig.h"
@@ -141,21 +142,185 @@ void CallMapView::setData(TraceData* d)
   ((CallMapBaseItem*)base())->setFunction(0);
 }
 
+void CallMapView::addItemListMenu(QMenu* menu, TreeMapItem* item)
+{
+    QAction* a;
+
+    QMenu* m = menu->addMenu(tr("Go To"));
+    int count = 0;
+    while (count<GlobalConfig::maxSymbolCount() && item) {
+	QString name = item->text(0);
+	a = m->addAction(GlobalConfig::shortenSymbol(name));
+	a->setData(QVariant::fromValue( (void*)item ));
+	item = item->parent();
+	count++;
+    }
+    connect(m, SIGNAL(triggered(QAction*)),
+	    this, SLOT(mapItemTriggered(QAction*)) );
+}
+
+void CallMapView::mapItemTriggered(QAction* a)
+{
+    activatedSlot( (TreeMapItem*) a->data().value<void*>() );
+}
+
+QAction* CallMapView::addDrawingDepthAction(QMenu* m,
+					    const QString& s, int d)
+{
+    QAction* a = m->addAction(s);
+    a->setData(d);
+    a->setCheckable(true);
+    a->setChecked(maxDrawingDepth() == d);
+    return a;
+}
+
+void CallMapView::addDrawingDepthMenu(QMenu* menu,
+				      TreeMapItem* i, const QString& name)
+{
+    QMenu* m = menu->addMenu(tr("Stop at Depth"));
+    addDrawingDepthAction(m, tr("No Depth Limit"), -1);
+    m->addSeparator();
+    addDrawingDepthAction(m, tr("Depth 10"), 10);
+    addDrawingDepthAction(m, tr("Depth 15"), 15);
+    addDrawingDepthAction(m, tr("Depth 20"), 20);
+    if (i) {
+	m->addSeparator();
+	addDrawingDepthAction(m, tr("Depth of '%1' (%2)")
+			      .arg(name).arg(i->depth()),
+			      i->depth());
+    }
+    int maxDepth = maxDrawingDepth();
+    if (maxDepth>0) {
+	m->addSeparator();
+	addDrawingDepthAction(m, tr("Decrement Depth (to %1)").arg(maxDepth-1),
+			      maxDepth-1);
+	addDrawingDepthAction(m, tr("Increment Depth (to %1)").arg(maxDepth+1),
+			      maxDepth+1);
+    }
+
+    connect(m, SIGNAL(triggered(QAction*)),
+	    this, SLOT(drawingDepthTriggered(QAction*)) );
+}
+
+void CallMapView::drawingDepthTriggered(QAction* a)
+{
+    setMaxDrawingDepth(a->data().toInt());
+}
+
+QAction* CallMapView::addStopFunctionAction(QMenu* m,
+					    const QString& s,
+					    const QString& v)
+{
+    QAction* a = m->addAction(s);
+    a->setData(v);
+    a->setCheckable(true);
+    a->setChecked(fieldStop(0) == v);
+    return a;
+}
+
+void CallMapView::addStopFunctionMenu(QMenu* menu, TreeMapItem* item)
+{
+    QMenu* m = menu->addMenu(tr("Stop at Function"));
+    addStopFunctionAction(m, tr("No Function Limit"), QString());
+
+    bool foundStopName = false;
+    QAction* a;
+    if (item) {
+	m->addSeparator();
+	int count = 0;
+	while (count<GlobalConfig::maxSymbolCount() && item) {
+	    QString name = item->text(0);
+	    if ((int)name.length()>GlobalConfig::maxSymbolLength())
+		name = name.left(GlobalConfig::maxSymbolLength()) + "...";
+	    a = addStopFunctionAction(m, name, item->text(0));
+	    if (a->isChecked()) foundStopName = true;
+	    item = item->parent();
+	    count++;
+	}
+    }
+    if (!foundStopName && !fieldStop(0).isEmpty()) {
+	m->addSeparator();
+	QString name = fieldStop(0);
+	if ((int)name.length()>GlobalConfig::maxSymbolLength())
+	    name = name.left(GlobalConfig::maxSymbolLength()) + "...";
+	addStopFunctionAction(m, name, fieldStop(0));
+    }
+
+    connect(m, SIGNAL(triggered(QAction*)),
+	    this, SLOT(stopFunctionTriggered(QAction*)) );
+}
+
+void CallMapView::stopFunctionTriggered(QAction* a)
+{
+    setFieldStop(0, a->data().toString());
+}
+
+QAction* CallMapView::addAreaLimitAction(QMenu* m,
+					 const QString& s, int v)
+{
+    QAction* a = m->addAction(s);
+    a->setData(v);
+    a->setCheckable(true);
+    a->setChecked(minimalArea() == v);
+    return a;
+}
+
+void CallMapView::addAreaLimitMenu(QMenu* menu, TreeMapItem* i,
+				   const QString& name)
+{
+    QMenu* m = menu->addMenu(tr("Stop at Area"));
+    addAreaLimitAction(m, tr("No Area Limit"), -1);
+    m->addSeparator();
+    addAreaLimitAction(m, tr("100 Pixels"), 100);
+    addAreaLimitAction(m, tr("200 Pixels"), 200);
+    addAreaLimitAction(m, tr("500 Pixels"), 500);
+    addAreaLimitAction(m, tr("1000 Pixels"), 1000);
+
+    int currentArea = 0;
+    if (i) {
+	currentArea = i->width() * i->height();
+	m->addSeparator();
+	addAreaLimitAction(m, tr("Area of '%1' (%2)")
+			   .arg(name).arg(currentArea), currentArea);
+    }
+    int mArea = minimalArea();
+    if (mArea>0) {
+	m->addSeparator();
+	addAreaLimitAction(m, tr("Double Area Limit (to %1)")
+			   .arg(mArea*2), mArea*2);
+	addAreaLimitAction(m, tr("Half Area Limit (to %1)")
+			   .arg(mArea/2), mArea/2);
+    }
+
+    connect(m, SIGNAL(triggered(QAction*)),
+	    this, SLOT(areaLimitTriggered(QAction*)) );
+}
+
+void CallMapView::areaLimitTriggered(QAction* a)
+{
+    setMinimalArea(a->data().toInt());
+}
+
+QAction* CallMapView::addBorderWidthAction(QMenu* m, const QString& s, int v)
+{
+    QAction* a = m->addAction(s);
+    a->setData(v);
+    a->setCheckable(true);
+    a->setChecked(borderWidth() == v);
+    return a;
+}
+
+void CallMapView::borderWidthTriggered(QAction* a)
+{
+    setBorderWidth(a->data().toInt());
+}
+
 void CallMapView::context(TreeMapItem* i,const QPoint & p)
 {
   if (!i) return;
 
-  Q3PopupMenu popup;
-  Q3PopupMenu fpopup; // select function subpopup
-  Q3PopupMenu vpopup; // visualization subpopup
-  Q3PopupMenu dpopup; // split direction
-  Q3PopupMenu bpopup; // border subpopup
-  Q3PopupMenu l1popup; // depth limit subpopup
-  Q3PopupMenu l2popup; // function limit subpopup
-  Q3PopupMenu l3popup; // area limit subpopup
-
-  TreeMapItem* item = i;
-  int count;
+  QMenu popup;
+  QAction* a;
 
   QString shortCurrentName;
   if (i) {
@@ -165,246 +330,92 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
         shortCurrentName.left(GlobalConfig::maxSymbolLength()) + "...";
   }
 
-  if (item) {
-    popup.insertItem(tr("Go To"), &fpopup, 100);
-    count = 0;
-    while (count<GlobalConfig::maxSymbolCount() && item) {
-      QString name = item->text(0);
-      fpopup.insertItem(GlobalConfig::shortenSymbol(name), 101+count);
-      item = item->parent();
-      count++;
-    }
-    popup.insertSeparator();
+  if (i) {
+      addItemListMenu(&popup, i);
+      popup.addSeparator();
   }
-
   addGoMenu(&popup);
-  popup.insertSeparator();
+  popup.addSeparator();
+  addDrawingDepthMenu(&popup, i, shortCurrentName);
+  addStopFunctionMenu(&popup, i);
+  addAreaLimitMenu(&popup, i, shortCurrentName);
+  popup.addSeparator();
 
-  l1popup.setCheckable(true);
-  popup.insertItem(tr("Stop at Depth"), &l1popup, 12);
+  QMenu* vpopup = popup.addMenu(tr("Visualization"));
+  QMenu* spopup = vpopup->addMenu(tr("Split Direction"));
+  addSplitDirectionItems(spopup);
 
-  int maxDepth = maxDrawingDepth();
-  l1popup.insertItem(tr("No Depth Limit"), 50);
-  l1popup.setItemChecked(50, maxDepth==-1);
-  l1popup.insertSeparator();
-  l1popup.insertItem(tr("Depth 10"), 51);
-  l1popup.setItemChecked(51, maxDepth==10);
-  l1popup.insertItem(tr("Depth 15"), 52);
-  l1popup.setItemChecked(52, maxDepth==15);
-  l1popup.insertItem(tr("Depth 20"), 53);
-  l1popup.setItemChecked(53, maxDepth==20);
-  if (i) {
-    l1popup.insertSeparator();
-    l1popup.insertItem(tr("Depth of '%1' (%2)")
-		       .arg(shortCurrentName).arg(i->depth()), 55);
-    l1popup.setItemChecked(55, maxDepth == i->depth());
-  }
-  if (maxDepth>0) {
-    l1popup.insertSeparator();
-    l1popup.insertItem(tr("Decrement Depth (to %1)").arg(maxDepth-1), 56);
-    l1popup.insertItem(tr("Increment Depth (to %1)").arg(maxDepth+1), 57);
-  }
+  QAction* skipBorderAction = vpopup->addAction(tr("Skip Incorrect Borders"));
+  skipBorderAction->setEnabled(!_showCallers);
+  skipBorderAction->setCheckable(true);
+  skipBorderAction->setChecked(skipIncorrectBorder());
 
-  l2popup.setCheckable(true);
-  popup.insertItem(tr("Stop at Function"), &l2popup, 13);
-  l2popup.insertItem(tr("No Function Limit"), 200);
-  l2popup.setItemChecked(200, fieldStop(0).isEmpty());
-  bool foundStopName = false;
-  item = i;
-  if (i) {
-    l2popup.insertSeparator();
-    count = 0;
-    while (count<GlobalConfig::maxSymbolCount() && item) {
-      QString name = item->text(0);
-      if ((int)name.length()>GlobalConfig::maxSymbolLength())
-        name = name.left(GlobalConfig::maxSymbolLength()) + "...";
-      l2popup.insertItem(name, 201+count);
-      if (item->text(0) == fieldStop(0)) {
-        l2popup.setItemChecked(201+count, true);
-        foundStopName = true;
-      }
-      item = item->parent();
-      count++;
-    }
-  }
-  if (!foundStopName && !fieldStop(0).isEmpty()) {
-    l2popup.insertSeparator();
-    QString name = fieldStop(0);
-    if ((int)name.length()>GlobalConfig::maxSymbolLength())
-      name = name.left(GlobalConfig::maxSymbolLength()) + "...";
-    l2popup.insertItem(name, 199);
-    l2popup.setItemChecked(199, true);
-  }
+  QMenu* bpopup = vpopup->addMenu(tr("Border Width"));
+  a = addBorderWidthAction(bpopup, tr("Border 0"), 0);
+  a->setEnabled(!_showCallers);
+  addBorderWidthAction(bpopup, tr("Border 1"), 1);
+  addBorderWidthAction(bpopup, tr("Border 2"), 2);
+  addBorderWidthAction(bpopup, tr("Border 3"), 3);
+  connect(bpopup, SIGNAL(triggered(QAction*)),
+	  this, SLOT(borderWidthTriggered(QAction*)) );
+  vpopup->addSeparator();
 
-  l3popup.setCheckable(true);
-  popup.insertItem(tr("Stop at Area"), &l3popup, 14);
+  QAction* drawNamesAction = vpopup->addAction(tr("Draw Symbol Names"));
+  drawNamesAction->setCheckable(true);
+  QAction* drawCostAction = vpopup->addAction(tr("Draw Cost"));
+  drawCostAction->setCheckable(true);
+  QAction* drawLocationAction = vpopup->addAction(tr("Draw Location"));
+  drawLocationAction->setCheckable(true);
+  QAction* drawCallsAction = vpopup->addAction(tr("Draw Calls"));
+  drawCallsAction->setCheckable(true);
+  vpopup->addSeparator();
 
-  int mArea = minimalArea();
-  l3popup.insertItem(tr("No Area Limit"), 60);
-  l3popup.setItemChecked(60, mArea ==-1);
-  l3popup.insertSeparator();
-  l3popup.insertItem(tr("50 Pixels"), 63);
-  l3popup.setItemChecked(63, mArea==50);
-  l3popup.insertItem(tr("100 Pixels"), 64);
-  l3popup.setItemChecked(64, mArea==100);
-  l3popup.insertItem(tr("200 Pixels"), 65);
-  l3popup.setItemChecked(65, mArea==200);
-  l3popup.insertItem(tr("500 Pixels"), 66);
-  l3popup.setItemChecked(66, mArea==500);
-  int currentArea = 0;
-  if (i) {
-    currentArea = i->width() * i->height();
-    l3popup.insertSeparator();
-    l3popup.insertItem(tr("Area of '%1' (%2)")
-		       .arg(shortCurrentName).arg(currentArea), 67);
-    l3popup.setItemChecked(67, mArea == currentArea);
-  }
-  if (mArea>0) {
-    l3popup.insertSeparator();
-    l3popup.insertItem(tr("Double Area Limit (to %1)")
-		       .arg(mArea*2), 68);
-    l3popup.insertItem(tr("Half Area Limit (to %1)")
-		       .arg(mArea/2), 69);
-  }
-
-  popup.insertSeparator();
-
-  vpopup.setCheckable(true);
-  popup.insertItem(tr("Visualization"), &vpopup, 10);
-
-  Q3PopupMenu splitpopup;
-  addSplitDirectionItems(&splitpopup, 1001);
-  vpopup.insertItem(tr("Split Direction"), &splitpopup, 1000);
-
-  vpopup.insertItem(tr("Skip Incorrect Borders"), 40);
-  vpopup.setItemEnabled(40, !_showCallers);
-  vpopup.setItemChecked(40, skipIncorrectBorder());
-
-  bpopup.setCheckable(true);
-  vpopup.insertItem(tr("Border Width"), &bpopup, 41);
-  bpopup.insertItem(tr("Border 0"), 42);
-  bpopup.setItemEnabled(42, !_showCallers);
-  bpopup.setItemChecked(42, borderWidth()==0);
-  bpopup.insertItem(tr("Border 1"), 43);
-  bpopup.setItemChecked(43, borderWidth()==1);
-  bpopup.insertItem(tr("Border 2"), 44);
-  bpopup.setItemChecked(44, borderWidth()==2);
-  bpopup.insertItem(tr("Border 3"), 45);
-  bpopup.setItemChecked(45, borderWidth()==3);
-
-  vpopup.insertSeparator();
-
-  vpopup.insertItem(tr("Draw Symbol Names"), 20);
-  vpopup.insertItem(tr("Draw Cost"), 21);
-  vpopup.insertItem(tr("Draw Location"), 22);
-  vpopup.insertItem(tr("Draw Calls"), 23);
-  vpopup.insertSeparator();
-
-  vpopup.insertItem(tr("Ignore Proportions"), 24);
-  vpopup.insertItem(tr("Allow Rotation"), 25);
+  QAction* ignorePropAction = vpopup->addAction(tr("Ignore Proportions"));
+  ignorePropAction->setCheckable(true);
+  QAction* allowRotationAction = vpopup->addAction(tr("Allow Rotation"));
+  allowRotationAction->setCheckable(true);
   if (!fieldVisible(0) &&
       !fieldVisible(1) &&
       !fieldVisible(2) &&
       !fieldVisible(3)) {
-    vpopup.setItemEnabled(24, false);
-    vpopup.setItemEnabled(25, false);
+      ignorePropAction->setEnabled(false);
+      allowRotationAction->setEnabled(false);
   }
   else {
-    vpopup.setItemChecked(20,fieldVisible(0));
-    vpopup.setItemChecked(21,fieldVisible(1));
-    vpopup.setItemChecked(22,fieldVisible(2));
-    vpopup.setItemChecked(23,fieldVisible(3));
-    vpopup.setItemChecked(24,fieldForced(0));
-    vpopup.setItemChecked(25,allowRotation());
+      drawNamesAction->setChecked(fieldVisible(0));
+      drawCostAction->setChecked(fieldVisible(1));
+      drawLocationAction->setChecked(fieldVisible(2));
+      drawCallsAction->setChecked(fieldVisible(3));
+      ignorePropAction->setChecked(fieldForced(0));
+      allowRotationAction->setChecked(allowRotation());
   }
 
-  vpopup.insertItem(tr("Shading"), 26);
-  vpopup.setItemChecked(26,isShadingEnabled());
+  QAction* drawShadingAction = vpopup->addAction(tr("Shading"));
+  drawShadingAction->setCheckable(true);
+  drawShadingAction->setChecked(isShadingEnabled());
 
-  int r = popup.exec(mapToGlobal(p));
-
-  if (r>100 && r<150) {
-    r -= 100;
-    while (i && (r>1)) {
-      i=i->parent();
-      r--;
-    }
-    activatedSlot(i);
-    return;
+  a = popup.exec(mapToGlobal(p));
+  if (a == drawNamesAction)
+      setFieldVisible(0, !fieldVisible(0));
+  else if (a == drawCostAction)
+      setFieldVisible(1, !fieldVisible(1));
+  else if (a == drawLocationAction)
+      setFieldVisible(2, !fieldVisible(2));
+  else if (a == drawCallsAction)
+      setFieldVisible(3, !fieldVisible(3));
+  else if (a == ignorePropAction) {
+      bool newSetting = !fieldForced(0);
+      setFieldForced(0, newSetting);
+      setFieldForced(1, newSetting);
+      setFieldForced(2, newSetting);
+      setFieldForced(3, newSetting);
   }
-
-  if (r>200 && r<250) {
-    r -= 200;
-    while (i && (r>1)) {
-      i=i->parent();
-      r--;
-    }
-    if (i)
-      setFieldStop(0, i->text(0));
-
-    return;
-  }
-
-  bool newSetting;
-
-  switch(r) {
-  case 20:
-    setFieldVisible(0, !fieldVisible(0));
-    break;
-
-  case 21:
-    setFieldVisible(1, !fieldVisible(1));
-    break;
-
-  case 22:
-    setFieldVisible(2, !fieldVisible(2));
-    break;
-
-  case 23:
-    setFieldVisible(3, !fieldVisible(3));
-    break;
-
-  case 24:
-    newSetting = !fieldForced(0);
-    setFieldForced(0, newSetting);
-    setFieldForced(1, newSetting);
-    setFieldForced(2, newSetting);
-    setFieldForced(3, newSetting);
-    break;
-
-  case 25: setAllowRotation(!allowRotation()); break;
-  case 26: setShadingEnabled(!isShadingEnabled()); break;
-
-  case 40:
-    setSkipIncorrectBorder(!skipIncorrectBorder());
-    break;
-
-  case 42: setBorderWidth(0); break;
-  case 43: setBorderWidth(1); break;
-  case 44: setBorderWidth(2); break;
-  case 45: setBorderWidth(3); break;
-
-  case 50: setMaxDrawingDepth(-1); break;
-  case 51: setMaxDrawingDepth(10); break;
-  case 52: setMaxDrawingDepth(15); break;
-  case 53: setMaxDrawingDepth(20); break;
-  case 55: setMaxDrawingDepth(i->depth()); break;
-  case 56: setMaxDrawingDepth(maxDepth-1); break;
-  case 57: setMaxDrawingDepth(maxDepth+1); break;
-
-  case 200: setFieldStop(0, QString()); break;
-
-  case 60: setMinimalArea(-1); break;
-  case 61: setMinimalArea(10); break;
-  case 62: setMinimalArea(20); break;
-  case 63: setMinimalArea(50); break;
-  case 64: setMinimalArea(100); break;
-  case 65: setMinimalArea(200); break;
-  case 66: setMinimalArea(500); break;
-  case 67: setMinimalArea(currentArea); break;
-  case 68: setMinimalArea(mArea*2); break;
-  case 69: setMinimalArea(mArea/2); break;
-  }
+  else if (a == allowRotationAction)
+      setAllowRotation(!allowRotation());
+  else if (a == drawShadingAction)
+      setShadingEnabled(!isShadingEnabled());
+  else if (a == skipBorderAction)
+      setSkipIncorrectBorder(!skipIncorrectBorder());
 }
 
 void CallMapView::activatedSlot(TreeMapItem* item)

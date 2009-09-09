@@ -2828,50 +2828,33 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
  * Popup menus for option setting
  */
 
-void TreeMapWidget::splitActivated(int id)
+void TreeMapWidget::splitActivated(QAction* a)
 {
-  if      (id == _splitID)   setSplitMode(TreeMapItem::Bisection);
-  else if (id == _splitID+1) setSplitMode(TreeMapItem::Columns);
-  else if (id == _splitID+2) setSplitMode(TreeMapItem::Rows);
-  else if (id == _splitID+3) setSplitMode(TreeMapItem::AlwaysBest);
-  else if (id == _splitID+4) setSplitMode(TreeMapItem::Best);
-  else if (id == _splitID+5) setSplitMode(TreeMapItem::VAlternate);
-  else if (id == _splitID+6) setSplitMode(TreeMapItem::HAlternate);
-  else if (id == _splitID+7) setSplitMode(TreeMapItem::Horizontal);
-  else if (id == _splitID+8) setSplitMode(TreeMapItem::Vertical);
+    setSplitMode( (TreeMapItem::SplitMode) a->data().toInt());
 }
 
-
-void TreeMapWidget::addSplitDirectionItems(Q3PopupMenu* popup, int id)
+void TreeMapWidget::addSplitAction(QMenu* m, const QString& s, int v)
 {
-  _splitID = id;
-  popup->setCheckable(true);
+    QAction* a = m->addAction(s);
+    a->setData(v);
+    a->setCheckable(true);
+    a->setChecked(splitMode() == v);
+}
 
-  connect(popup, SIGNAL(activated(int)),
-          this, SLOT(splitActivated(int)));
+void TreeMapWidget::addSplitDirectionItems(QMenu* m)
+{
+    connect(m, SIGNAL(triggered(QAction*)),
+	    this, SLOT(splitActivated(QAction*)) );
 
-  popup->insertItem(tr("Recursive Bisection"), id);
-  popup->insertItem(tr("Columns"),         id+1);
-  popup->insertItem(tr("Rows"),            id+2);
-  popup->insertItem(tr("Always Best"),     id+3);
-  popup->insertItem(tr("Best"),            id+4);
-  popup->insertItem(tr("Alternate (V)"),   id+5);
-  popup->insertItem(tr("Alternate (H)"),   id+6);
-  popup->insertItem(tr("Horizontal"),      id+7);
-  popup->insertItem(tr("Vertical"),        id+8);
-
-  switch(splitMode()) {
-    case TreeMapItem::Bisection:  popup->setItemChecked(id,true); break;
-    case TreeMapItem::Columns:    popup->setItemChecked(id+1,true); break;
-    case TreeMapItem::Rows:       popup->setItemChecked(id+2,true); break;
-    case TreeMapItem::AlwaysBest: popup->setItemChecked(id+3,true); break;
-    case TreeMapItem::Best:       popup->setItemChecked(id+4,true); break;
-    case TreeMapItem::VAlternate: popup->setItemChecked(id+5,true); break;
-    case TreeMapItem::HAlternate: popup->setItemChecked(id+6,true); break;
-    case TreeMapItem::Horizontal: popup->setItemChecked(id+7,true); break;
-    case TreeMapItem::Vertical:   popup->setItemChecked(id+8,true); break;
-    default: break;
-  }
+    addSplitAction(m, tr("Recursive Bisection"), TreeMapItem::Bisection);
+    addSplitAction(m, tr("Columns"), TreeMapItem::Columns);
+    addSplitAction(m, tr("Rows"), TreeMapItem::Rows);
+    addSplitAction(m, tr("Always Best"), TreeMapItem::AlwaysBest);
+    addSplitAction(m, tr("Best"), TreeMapItem::Best);
+    addSplitAction(m, tr("Alternate (V)"), TreeMapItem::VAlternate);
+    addSplitAction(m, tr("Alternate (H)"), TreeMapItem::HAlternate);
+    addSplitAction(m, tr("Horizontal"), TreeMapItem::Horizontal);
+    addSplitAction(m, tr("Vertical"), TreeMapItem::Vertical);
 }
 
 void TreeMapWidget::visualizationActivated(int id)
@@ -2912,7 +2895,7 @@ void TreeMapWidget::addVisualizationItems(Q3PopupMenu* popup, int id)
           this, SLOT(visualizationActivated(int)));
 
   Q3PopupMenu* spopup = new Q3PopupMenu();
-  addSplitDirectionItems(spopup, id+100);
+  addSplitDirectionItems(spopup);
   popup->insertItem(tr("Nesting"), spopup, id);
 
   popup->insertItem(tr("Border"), bpopup, id+1);

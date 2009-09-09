@@ -40,6 +40,7 @@
 #include <QContextMenuEvent>
 #include <QMouseEvent>
 
+class QMenu;
 class Q3PopupMenu;
 class TreeMapWidget;
 class TreeMapItem;
@@ -605,11 +606,9 @@ public:
 
   /**
    * These functions populate given popup menus.
-   * The added items are already connected to handlers.
-   *
-   * The int is the menu id where to start for the items (100 IDs reserved).
+   * The added items are automatically connected to handlers.
    */
-  void addSplitDirectionItems(Q3PopupMenu*, int);
+  void addSplitDirectionItems(QMenu*);
   void addSelectionItems(Q3PopupMenu*, int, TreeMapItem*);
   void addFieldStopItems(Q3PopupMenu*, int, TreeMapItem*);
   void addAreaStopItems(Q3PopupMenu*, int, TreeMapItem*);
@@ -648,7 +647,7 @@ public:
   void deletingItem(TreeMapItem*);
 
 protected slots:
-  void splitActivated(int);
+  void splitActivated(QAction*);
   void selectionActivated(int);
   void fieldStopActivated(int);
   void areaStopActivated(int);
@@ -700,6 +699,8 @@ private:
 		     TreeMapItemList* list, int idx, int len, bool);
   bool resizeAttr(int);
 
+  void addSplitAction(QMenu*, const QString&, int);
+
   TreeMapItem* _base;
   TreeMapItem *_current, *_pressed, *_lastOver, *_oldCurrent;
   int _maxSelectDepth, _maxDrawingDepth;
@@ -723,7 +724,7 @@ private:
   int _markNo;
 
   // for the context menus: start IDs
-  int _splitID, _selectionID, _visID;
+  int _selectionID, _visID;
   int _fieldStopID, _areaStopID, _depthStopID;
   TreeMapItem* _menuItem;
 
