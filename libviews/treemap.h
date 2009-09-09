@@ -605,15 +605,10 @@ public:
   int borderWidth() const { return _borderWidth; }
 
   /**
-   * These functions populate given popup menus.
+   * Populate given menu with option items.
    * The added items are automatically connected to handlers.
    */
   void addSplitDirectionItems(QMenu*);
-  void addSelectionItems(Q3PopupMenu*, int, TreeMapItem*);
-  void addFieldStopItems(Q3PopupMenu*, int, TreeMapItem*);
-  void addAreaStopItems(Q3PopupMenu*, int, TreeMapItem*);
-  void addDepthStopItems(Q3PopupMenu*, int, TreeMapItem*);
-  void addVisualizationItems(Q3PopupMenu*, int);
 
   TreeMapWidget* widget() { return this; }
   TreeMapItem* current() const { return _current; }
@@ -648,11 +643,6 @@ public:
 
 protected slots:
   void splitActivated(QAction*);
-  void selectionActivated(int);
-  void fieldStopActivated(int);
-  void areaStopActivated(int);
-  void depthStopActivated(int);
-  void visualizationActivated(int);
 
 signals:
   void selectionChanged();
@@ -722,11 +712,6 @@ private:
   TreeMapItem * _needsRefresh;
   TreeMapItemList _selection;
   int _markNo;
-
-  // for the context menus: start IDs
-  int _selectionID, _visID;
-  int _fieldStopID, _areaStopID, _depthStopID;
-  TreeMapItem* _menuItem;
 
   // temporary selection while dragging, used for drawing
   // most of the time, _selection == _tmpSelection
