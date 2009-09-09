@@ -23,8 +23,8 @@
 
 #include "partview.h"
 
-#include <Qt3Support/Q3PopupMenu>
-#include <Qt3Support/Q3Header>
+#include <QAction>
+#include <QMenu>
 
 #include "partlistitem.h"
 #include "toplevelbase.h"
@@ -94,28 +94,12 @@ QString PartView::whatsThis() const
 }
 
 
-void PartView::context(Q3ListViewItem* i, const QPoint & pos, int)
+void PartView::context(Q3ListViewItem*, const QPoint & pos, int)
 {
-  Q3PopupMenu popup;
-
-  TracePart* p = i ? ((PartListItem*) i)->part() : 0;
-
-  if (p) {
-      popup.insertItem(tr("Select '%1'").arg(p->name()), 93);
-      popup.insertItem(tr("Hide '%1'").arg(p->name()), 94);
-    popup.insertSeparator();
-  }
-
-  popup.insertItem(tr("Hide Selected"), 95);
-  popup.insertItem(tr("Show All"), 96);
-  popup.insertSeparator();
+  QMenu popup;
 
   addGoMenu(&popup);
-
-  int r = popup.exec(pos);
-  if (r == 95) {
-    // TODO: ...
-  }
+  popup.exec(pos);
 }
 
 void PartView::selectionChangedSlot()
@@ -220,12 +204,6 @@ void PartView::refresh()
     }
 
     _inSelectionUpdate = false;
-
-    if (item) {
-	int headerHeight = header()->height();
-	int itemHeight = item->height();
-	setMinimumHeight(headerHeight + 2*itemHeight + 2);
-    }
 }
 
 #include "partview.moc"

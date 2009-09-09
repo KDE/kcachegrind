@@ -23,7 +23,8 @@
 
 #include "coverageview.h"
 
-#include <Qt3Support/Q3PopupMenu>
+#include <QAction>
+#include <QMenu>
 
 #include "globalconfig.h"
 #include "coverageitem.h"
@@ -149,7 +150,7 @@ QString CoverageView::whatsThis() const
 
 void CoverageView::context(Q3ListViewItem* i, const QPoint & p, int c)
 {
-  Q3PopupMenu popup;
+  QMenu popup;
 
   TraceFunction* f = 0;
   if (i) {
@@ -158,19 +159,22 @@ void CoverageView::context(Q3ListViewItem* i, const QPoint & p, int c)
 	  ((CalleeCoverageItem*)i)->function();
   }
 
+  QAction* activateFunctionAction = 0;
   if (f) {
-      popup.insertItem(tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName())), 93);
-    popup.insertSeparator();
+      QString menuText = tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName()));
+      activateFunctionAction = popup.addAction(menuText);
+      popup.addSeparator();
   }
 
    if ((c == 0) || (!_showCallers && c == 1)) {
     addEventTypeMenu(&popup, false);
-    popup.insertSeparator();
+    popup.addSeparator();
   }
   addGoMenu(&popup); 
 
-  int r = popup.exec(p);
-  if (r == 93) activated(f);
+  QAction* a = popup.exec(p);
+  if (a == activateFunctionAction)
+      activated(f);
 }
 
 void CoverageView::selectedSlot(Q3ListViewItem * i)

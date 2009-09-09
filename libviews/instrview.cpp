@@ -29,7 +29,8 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QProcess>
-#include <Qt3Support/Q3PopupMenu>
+#include <QAction>
+#include <QMenu>
 
 #include "config.h"
 #include "globalconfig.h"
@@ -199,39 +200,44 @@ QString InstrView::whatsThis() const
 
 void InstrView::context(Q3ListViewItem* i, const QPoint & p, int c)
 {
-  Q3PopupMenu popup;
+  QMenu popup;
 
   TraceInstrCall* ic = i ? ((InstrItem*) i)->instrCall() : 0;
   TraceInstrJump* ij = i ? ((InstrItem*) i)->instrJump() : 0;
   TraceFunction* f = ic ? ic->call()->called() : 0;
   TraceInstr* instr = ij ? ij->instrTo() : 0;
 
+  QAction* activateFunctionAction = 0;
+  QAction* activateInstrAction = 0;
   if (f) {
-      popup.insertItem(tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName())), 93);
-    popup.insertSeparator();
+      QString menuText = tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName()));
+      activateFunctionAction = popup.addAction(menuText);
+      popup.addSeparator();
   }
   else if (instr) {
-      popup.insertItem(tr("Go to Address %1").arg(instr->name()), 93);
-    popup.insertSeparator();
+      QString menuText = tr("Go to Address %1").arg(instr->name());
+      activateInstrAction = popup.addAction(menuText);
+      popup.addSeparator();
   }
 
   if ((c == 1) || (c == 2)) {
     addEventTypeMenu(&popup);
-    popup.insertSeparator();
+    popup.addSeparator();
   }
   addGoMenu(&popup);
+  popup.addSeparator();
 
-  popup.insertSeparator();
-  popup.setCheckable(true);
-  popup.insertItem(tr("Hex Code"), 94);
-  if (_showHexCode) popup.setItemChecked(94,true);
+  QAction* toggleHexAction = new QAction(tr("Hex Code"), &popup);
+  toggleHexAction->setCheckable(true);
+  toggleHexAction->setChecked(_showHexCode);
+  popup.addAction(toggleHexAction);
 
-  int r = popup.exec(p);
-  if (r == 93) {
-    if (f) activated(f);
-    if (instr) activated(instr);
-  }
-  else if (r == 94) {
+  QAction* a = popup.exec(p);
+  if (a == activateFunctionAction)
+      activated(f);
+  else if (a == activateInstrAction)
+      activated(instr);
+  else if (a == toggleHexAction) {
     _showHexCode = !_showHexCode;
     // remember width when hiding
     if (!_showHexCode)

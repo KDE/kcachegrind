@@ -23,7 +23,8 @@
 
 #include "callview.h"
 
-#include <Qt3Support/Q3PopupMenu>
+#include <QAction>
+#include <QMenu>
 
 #include "globalconfig.h"
 #include "callitem.h"
@@ -108,37 +109,41 @@ QString CallView::whatsThis() const
 
 void CallView::context(Q3ListViewItem* i, const QPoint & p, int col)
 {
-  Q3PopupMenu popup;
+  QMenu popup;
 
-  // Menu entry:
   TraceCall* c = i ? ((CallItem*) i)->call() : 0;
   TraceFunction *f = 0, *cycle = 0;
 
+  QAction* activateFunctionAction = 0;
+  QAction* activateCycleAction = 0;
   if (c) {
     QString name  = _showCallers ? c->callerName(true) : c->calledName(true);
     f = _showCallers ? c->caller(true) : c->called(true);
     cycle = f->cycle();
 
-    popup.insertItem(tr("Go to '%1'")
-		     .arg(GlobalConfig::shortenSymbol(name)), 93);
+    QString menuText = tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(name));
+    activateFunctionAction = popup.addAction(menuText);
 
     if (cycle) {
 	name = GlobalConfig::shortenSymbol(cycle->prettyName());
-	popup.insertItem(tr("Go to '%1'").arg(name), 94);
+        QString menuText = tr("Go to '%1'").arg(name);
+        activateCycleAction = popup.addAction(menuText);
     }
 
-    popup.insertSeparator();
+    popup.addSeparator();
   }
 
   if ((col == 0) || (col == 1)) {
     addEventTypeMenu(&popup);
-    popup.insertSeparator();
+    popup.addSeparator();
   }
   addGoMenu(&popup);
 
-  int r = popup.exec(p);
-  if (r == 93) activated(f);
-  else if (r == 94) activated(cycle);
+  QAction* a = popup.exec(p);
+  if (a == activateFunctionAction)
+      activated(f);
+  else if (a == activateCycleAction)
+      activated(cycle);
 }
 
 void CallView::selectedSlot(Q3ListViewItem * i)

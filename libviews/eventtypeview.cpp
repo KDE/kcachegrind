@@ -23,7 +23,8 @@
 
 #include "eventtypeview.h"
 
-#include <Qt3Support/Q3PopupMenu>
+#include <QAction>
+#include <QMenu>
 
 #include "eventtypeitem.h"
 #include "toplevelbase.h"
@@ -88,39 +89,46 @@ QString EventTypeView::whatsThis() const
 
 void EventTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
 {
-  Q3PopupMenu popup;
+  QMenu popup;
 
   EventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
 
+  QAction* selectType2Action = 0;
+  QAction* hideType2Action = 0;
   if (ct)
-    popup.insertItem(tr("Set Secondary Event Type"), 99);
+    selectType2Action = popup.addAction(tr("Set as Secondary Event Type"));
   if (_eventType2)
-    popup.insertItem(tr("Remove Secondary Event Type"), 98);
-  if (popup.count()>0)
-    popup.insertSeparator();
+    hideType2Action = popup.addAction(tr("Hide Secondary Event Type"));
+  if (!popup.isEmpty())
+    popup.addSeparator();
 
+  QAction* editLongNameAction = 0;
+  QAction* editShortNameAction = 0;
+  QAction* editFormulaAction = 0;
+  QAction* removeTypeAction = 0;
   if (ct && !ct->isReal()) {
-      popup.insertItem(tr("Edit Long Name"), 93);
-      popup.insertItem(tr("Edit Short Name"), 94);
-      popup.insertItem(tr("Edit Formula"), 95);
-      popup.insertItem(tr("Remove"), 96);
-      popup.insertSeparator();
+      editLongNameAction = popup.addAction(tr("Edit Long Name"));
+      editShortNameAction = popup.addAction(tr("Edit Short Name"));
+      editFormulaAction = popup.addAction(tr("Edit Formula"));
+      removeTypeAction = popup.addAction(tr("Remove"));
+      popup.addSeparator();
   }
 
   addGoMenu(&popup);
 
-  if( _data) 
-  {
-    popup.insertSeparator();
-    popup.insertItem(tr("New Event Type ..."), 97);
+  QAction* newTypeAction = 0;
+  if( _data) {
+      popup.addSeparator();
+      newTypeAction = popup.addAction(tr("New Event Type ..."));
   }
-  int r = popup.exec(p);
-  if (r == 98) selectedEventType2(0);
-  else if (r == 99) selectedEventType2(ct);
-  else if (r == 93) i->startRename(0);
-  else if (r == 94) i->startRename(3);
-  else if (r == 95) i->startRename(5);
-  else if (r == 96) {
+
+  QAction* a = popup.exec(p);
+  if (a == hideType2Action) selectedEventType2(0);
+  else if (a == selectType2Action) selectedEventType2(ct);
+  else if (a == editLongNameAction) i->startRename(0);
+  else if (a == editShortNameAction) i->startRename(3);
+  else if (a == editFormulaAction) i->startRename(5);
+  else if (a == removeTypeAction) {
 
     // search for a previous type 
     EventType* prev = 0, *ct = 0;
@@ -143,7 +151,7 @@ void EventTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
       refresh();
     }
   }
-  else if (r == 97) {
+  else if (a == newTypeAction) {
     int i = 1;
     while(1) {
 	if (!EventType::knownDerivedType(tr("New%1").arg(i)))

@@ -54,6 +54,8 @@ class TabBar : public QTabBar
   void mousePressEvent(QMouseEvent *e);
 
  private:
+  void context(QWidget*, const QPoint &);
+
   QTabWidget* _tabWidget;
   TabView* _tabView;
 };

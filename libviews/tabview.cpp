@@ -34,7 +34,8 @@
 #include <QVBoxLayout>
 #include <QResizeEvent>
 #include <QMouseEvent>
-#include <Qt3Support/Q3PopupMenu>
+#include <QAction>
+#include <QMenu>
 
 #include "config.h"
 #include "eventtypeview.h"
@@ -82,61 +83,100 @@ void TabBar::mousePressEvent(QMouseEvent *e)
 			setCurrentIndex(idx);
 			page = _tabWidget->widget(idx);
 		}
-		Q3PopupMenu popup, popup1, popup2, popup3;
-		if (page) {
-			TraceItemView::Position p = _tabView->tabPosition(page);
-			if (p != TraceItemView::Top) {
-				popup.insertItem(tr("Move to Top"), 81);
-				popup2.insertItem(tr("Move to Top", "Top"), 91);
-			}
-			if (p != TraceItemView::Right) {
-				popup.insertItem(tr("Move to Right"), 82);
-				popup2.insertItem(tr("Move to Right", "Right"), 92);
-			}
-			if (p != TraceItemView::Bottom) {
-				popup.insertItem(tr("Move to Bottom"), 83);
-				popup2.insertItem(tr("Move to Bottom", "Bottom"), 93);
-			}
-			if (p != TraceItemView::Left) {
-				popup.insertItem(tr("Move to Bottom Left"), 84);
-				popup2.insertItem(tr("Move to Bottom Left", "Bottom Left"), 94);
-			}
-			popup.insertItem(tr("Move Area To"), &popup2, 2);
-			popup.insertSeparator();
-			popup.insertItem(tr("Hide This Tab"), 80);
-			popup.insertItem(tr("Hide Area"), 90);
+		context(page, e->globalPos());
+	}
+	QTabBar::mousePressEvent(e );
+}
 
-			if (_tabView->visibleTabs() <2) {
-				popup.setItemEnabled(80, false);
-				popup.setItemEnabled(90, false);
-			} else if (_tabView->visibleAreas() <2)
-				popup.setItemEnabled(90, false);
+void TabBar::context(QWidget* page, const QPoint & pos)
+{
+	QMenu popup, popup2, popup3;
+
+	QAction* pageToTopAction = 0;
+	QAction* areaToTopAction = 0;
+	QAction* showOnTopAction = 0;
+	QAction* pageToRightAction = 0;
+	QAction* areaToRightAction = 0;
+	QAction* showOnRightAction = 0;
+	QAction* pageToBottomAction = 0;
+	QAction* areaToBottomAction = 0;
+	QAction* showOnBottomAction = 0;
+	QAction* pageToLeftAction = 0;
+	QAction* areaToLeftAction = 0;
+	QAction* showOnLeftAction = 0;
+	QAction* hidePageAction = 0;
+	QAction* hideAreaAction = 0;
+
+	if (page) {
+		TraceItemView::Position p = _tabView->tabPosition(page);
+		if (p != TraceItemView::Top) {
+			pageToTopAction = popup.addAction(tr("Move to Top"));
+			areaToTopAction = popup2.addAction(tr("Top", "Move to Top"));
 		}
-		popup3.insertItem(tr("Show on Top", "Top"), 101);
-		popup3.insertItem(tr("Show on Right", "Right"), 102);
-		popup3.insertItem(tr("Show on Bottom", "Bottom"), 103);
-		popup3.insertItem(tr("Show on Bottom Left", "Bottom Left"), 104);
-		popup.insertItem(tr("Show Hidden On"), &popup3, 3);
+		if (p != TraceItemView::Right) {
+			pageToRightAction = popup.addAction(tr("Move to Right"));
+			areaToRightAction = popup2.addAction(tr("Right", "Move to Right"));
+		}
+		if (p != TraceItemView::Bottom) {
+			pageToBottomAction = popup.addAction(tr("Move to Bottom"));
+			areaToBottomAction = popup2.addAction(tr("Bottom", "Move to Bottom"));
+		}
+		if (p != TraceItemView::Left) {
+			pageToLeftAction = popup.addAction(tr("Move to Bottom Left"));
+			areaToLeftAction = popup2.addAction(tr("Bottom Left", "Move to Bottom Left"));
+		}
+		popup2.setTitle(tr("Move Area To"));
+		popup.addMenu(&popup2);
+		popup.addSeparator();
+		hidePageAction = popup.addAction(tr("Hide This Tab"));
+		hideAreaAction = popup.addAction(tr("Hide Area"));
 
-		int r = popup.exec(mapToGlobal(e->pos() ) );
-
-		TraceItemView::Position p = TraceItemView::Hidden;
-		if ((r % 10) == 1)
-			p = TraceItemView::Top;
-		if ((r % 10) == 2)
-			p = TraceItemView::Right;
-		if ((r % 10) == 3)
-			p = TraceItemView::Bottom;
-		if ((r % 10) == 4)
-			p = TraceItemView::Left;
-
-		if (r>=80&& r<100)
-			_tabView->moveTab(page, p, r>=90);
-		if (r>=100&& r<110)
-			_tabView->moveTab(0, p, true);
+		if (_tabView->visibleTabs() <2) {
+			hidePageAction->setEnabled(false);
+			hideAreaAction->setEnabled(false);
+		} else if (_tabView->visibleAreas() <2)
+			hideAreaAction->setEnabled(false);
 	}
 
-	QTabBar::mousePressEvent(e );
+	showOnTopAction = popup3.addAction(tr("Top", "Show on Top"));
+	showOnRightAction = popup3.addAction(tr("Right", "Show on Right"));
+	showOnBottomAction = popup3.addAction(tr("Bottom", "Show on Bottom"));
+	showOnLeftAction = popup3.addAction(tr("Bottom Left", "Show on Bottom Left"));
+	popup3.setTitle(tr("Show Hidden On"));
+	popup.addMenu(&popup3);
+
+	QAction* a = popup.exec(pos);
+	if (a == hidePageAction)
+		_tabView->moveTab(page, TraceItemView::Hidden, false);
+	else if (a == hideAreaAction)
+		_tabView->moveTab(page, TraceItemView::Hidden, true);
+
+	else if (a == pageToTopAction)
+		_tabView->moveTab(page, TraceItemView::Top, false);
+	else if (a == pageToRightAction)
+		_tabView->moveTab(page, TraceItemView::Right, false);
+	else if (a == pageToBottomAction)
+		_tabView->moveTab(page, TraceItemView::Bottom, false);
+	else if (a == pageToLeftAction)
+		_tabView->moveTab(page, TraceItemView::Left, false);
+
+	else if (a == areaToTopAction)
+		_tabView->moveTab(page, TraceItemView::Top, true);
+	else if (a == areaToRightAction)
+		_tabView->moveTab(page, TraceItemView::Right, true);
+	else if (a == areaToBottomAction)
+		_tabView->moveTab(page, TraceItemView::Bottom, true);
+	else if (a == areaToLeftAction)
+		_tabView->moveTab(page, TraceItemView::Left, true);
+
+	else if (a == showOnTopAction)
+		_tabView->moveTab(0, TraceItemView::Top, true);
+	else if (a == showOnRightAction)
+		_tabView->moveTab(0, TraceItemView::Right, true);
+	else if (a == showOnBottomAction)
+		_tabView->moveTab(0, TraceItemView::Bottom, true);
+	else if (a == showOnLeftAction)
+		_tabView->moveTab(0, TraceItemView::Left, true);
 }
 
 

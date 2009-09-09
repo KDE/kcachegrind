@@ -26,8 +26,8 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
-
-#include <Qt3Support/Q3PopupMenu>
+#include <QAction>
+#include <QMenu>
 
 #include "globalconfig.h"
 #include "sourceitem.h"
@@ -102,21 +102,24 @@ QString SourceView::whatsThis() const
 
 void SourceView::context(Q3ListViewItem* i, const QPoint & p, int c)
 {
-  Q3PopupMenu popup;
+  QMenu popup;
 
-  // Menu entry:
   TraceLineCall* lc = i ? ((SourceItem*) i)->lineCall() : 0;
   TraceLineJump* lj = i ? ((SourceItem*) i)->lineJump() : 0;
   TraceFunction* f = lc ? lc->call()->called() : 0;
   TraceLine* line = lj ? lj->lineTo() : 0;
 
+  QAction* activateFunctionAction = 0;
+  QAction* activateLineAction = 0;
   if (f) {
-      popup.insertItem(tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName())), 93);
-    popup.addSeparator();
+      QString menuText = tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName()));
+      activateFunctionAction = popup.addAction(menuText);
+      popup.addSeparator();
   }
   else if (line) {
-      popup.insertItem(tr("Go to Line %1").arg(line->name()), 93);
-    popup.insertSeparator();
+      QString menuText = tr("Go to Line %1").arg(line->name());
+      activateLineAction = popup.addAction(menuText);
+      popup.addSeparator();
   }
 
   if ((c == 1) || (c == 2)) {
@@ -125,11 +128,11 @@ void SourceView::context(Q3ListViewItem* i, const QPoint & p, int c)
   }
   addGoMenu(&popup);
 
-  int r = popup.exec(p);
-  if (r == 93) {
-    if (f) activated(f);
-    if (line) activated(line);
-  }
+  QAction* a = popup.exec(p);
+  if (a == activateFunctionAction)
+      activated(f);
+  else if (a == activateLineAction)
+      activated(line);
 }
 
 
