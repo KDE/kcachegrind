@@ -24,7 +24,8 @@
 #include "treemap.h"
 
 #include <math.h>
-
+#include <QAction>
+#include <QMenu>
 #include <QApplication>
 #include <QDebug>
 #include <QPainter>
