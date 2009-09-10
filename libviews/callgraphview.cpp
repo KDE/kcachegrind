@@ -1242,8 +1242,13 @@ void CanvasNode::paint(QPainter* p,
 	p->drawRect(QRect(origRect.x(), origRect.y(), origRect.width()-1,
 	                  origRect.height()-1));
 
+#if QT_VERSION >= 0x040600
+	if (option->levelOfDetailFromTransform(p->transform()) < .5)
+	    return;
+#else
 	if (option->levelOfDetail < .5)
-		return;
+	    return;
+#endif
 
 	d.setRect(r);
 	d.drawField(p, 0, this);
@@ -1309,8 +1314,13 @@ void CanvasEdgeLabel::paint(QPainter* p,
                             const QStyleOptionGraphicsItem* option, QWidget*)
 {
 	// draw nothing in PanningView
+#if QT_VERSION >= 0x040600
+	if (option->levelOfDetailFromTransform(p->transform()) < .5)
+	    return;
+#else
 	if (option->levelOfDetail < .5)
 		return;
+#endif
 
 	QRect r = rect().toRect();
 
@@ -1394,18 +1404,25 @@ void CanvasEdge::setControlPoints(const QPolygon& pa)
 
 
 void CanvasEdge::paint(QPainter* p,
-		const QStyleOptionGraphicsItem* options, QWidget*)
+		const QStyleOptionGraphicsItem* option, QWidget*)
 {
 	p->setRenderHint(QPainter::Antialiasing);
 
+	qreal levelOfDetail;
+#if QT_VERSION >= 0x040600
+	levelOfDetail = option->levelOfDetailFromTransform(p->transform());
+#else
+	levelOfDetail = option->levelOfDetail;
+#endif
+
 	QPen mypen = pen();
-	mypen.setWidthF(1.0/options->levelOfDetail * _thickness);
+	mypen.setWidthF(1.0/levelOfDetail * _thickness);
 	p->setPen(mypen);
 	p->drawPath(path());
 
 	if (isSelected()) {
 		mypen.setColor(Qt::red);
-		mypen.setWidthF(1.0/options->levelOfDetail * _thickness/2.0);
+		mypen.setWidthF(1.0/levelOfDetail * _thickness/2.0);
 		p->setPen(mypen);
 		p->drawPath(path());
 	}
@@ -1460,7 +1477,13 @@ CanvasFrame::CanvasFrame(CanvasNode* n)
 void CanvasFrame::paint(QPainter* p,
 		const QStyleOptionGraphicsItem* option, QWidget*)
 {
-	if (option->levelOfDetail < .5) {
+	qreal levelOfDetail;
+#if QT_VERSION >= 0x040600
+	levelOfDetail = option->levelOfDetailFromTransform(p->transform());
+#else
+	levelOfDetail = option->levelOfDetail;
+#endif
+	if (levelOfDetail < .5) {
 		QRadialGradient g(rect().center(), rect().width()/3);
 		g.setColorAt(0.0, Qt::gray);
 		g.setColorAt(1.0, Qt::white);
