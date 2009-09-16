@@ -23,16 +23,17 @@
 #ifndef EVENTTYPEITEM_H
 #define EVENTTYPEITEM_H
 
-#include <q3listview.h>
+#include <QTreeWidgetItem>
+
 #include "tracedata.h"
 
-class EventTypeItem: public Q3ListViewItem
+class EventTypeItem: public QTreeWidgetItem
 {
 public:
-  EventTypeItem(Q3ListView* parent, TraceCostItem* costItem,
-               EventType* ct, ProfileContext::Type gt);
+  EventTypeItem(TraceCostItem* costItem,
+		EventType* ct, ProfileContext::Type gt);
 
-  int compare(Q3ListViewItem * i, int col, bool ascending ) const;
+  bool operator<(const QTreeWidgetItem &other) const;
   void setGroupType(ProfileContext::Type);
   TraceCostItem* costItem() { return _costItem; }
   EventType* eventType() { return _eventType; }

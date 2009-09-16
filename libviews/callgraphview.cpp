@@ -1085,6 +1085,7 @@ void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallees,
 		else
 			s = f2->inclusive()->subCost(_eventType);
 		SubCost v = call->subCost(_eventType);
+		// FIXME: Can s be 0?
 		buildGraph(f2, d+1, toCallees, factor * v / s);
 	}
 }

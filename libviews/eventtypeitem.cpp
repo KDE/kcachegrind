@@ -31,13 +31,17 @@
 // EventTypeItem
 
 
-EventTypeItem::EventTypeItem(Q3ListView* parent, TraceCostItem* costItem,
-                           EventType* ct, ProfileContext::Type gt)
-  :Q3ListViewItem(parent)
+EventTypeItem::EventTypeItem(TraceCostItem* costItem,
+			     EventType* ct, ProfileContext::Type gt)
 {
   _costItem = costItem;
   _eventType = ct;
   _groupType = gt;
+
+  setTextAlignment(1, Qt::AlignRight);
+  setTextAlignment(2, Qt::AlignRight);
+  setTextAlignment(3, Qt::AlignRight);
+  setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
   if (ct) {
       setText(0, ct->longName());
@@ -47,9 +51,8 @@ EventTypeItem::EventTypeItem(Q3ListView* parent, TraceCostItem* costItem,
       if (!formula.isEmpty()) {
 	  setText(4, "=");
 	  // we have a virtual type: allow editing
-	  setRenameEnabled(0, true);
-	  setRenameEnabled(3, true);
-	  setRenameEnabled(5, true);
+	  // FIXME: How to enable this only for columns 0,3,5 ?!
+	  setFlags(flags() | Qt::ItemIsEditable);
       } 
   }
   else {
@@ -73,9 +76,9 @@ void EventTypeItem::update()
 
   if (total == 0.0) {
     setText(1, "-");
-    setPixmap(1, QPixmap());
+    setIcon(1, QIcon());
     setText(2, "-");
-    setPixmap(2, QPixmap());
+    setIcon(2, QIcon());
     return;
   }
 
@@ -111,11 +114,11 @@ void EventTypeItem::update()
   else if (_costItem)
     setText(2, _costItem->prettySubCost(_eventType));
 
-  setPixmap(2, costPixmap(_eventType, _costItem, selfTotal, false));
+  setIcon(2, QIcon(costPixmap(_eventType, _costItem, selfTotal, false)));
 
   if (!f) {
     setText(1, "-");
-    setPixmap(1, QPixmap());
+    setIcon(1, QIcon());
     return;
   }
 
@@ -128,24 +131,19 @@ void EventTypeItem::update()
   else
     setText(1, _sum.pretty());
 
-  setPixmap(1, costPixmap(_eventType, f->inclusive(), total, false));
+  setIcon(1, QIcon(costPixmap(_eventType, f->inclusive(), total, false)));
 }
 
-
-int EventTypeItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
+bool EventTypeItem::operator<(const QTreeWidgetItem &other) const
 {
-  EventTypeItem* fi = (EventTypeItem*) i;
-  if (col==0) {
-    if (_sum < fi->_sum) return -1;
-    if (_sum > fi->_sum) return 1;
-    return 0;
-  }
-  if (col==1) {
-    if (_pure < fi->_pure) return -1;
-    if (_pure > fi->_pure) return 1;
-    return 0;
-  }
-  return Q3ListViewItem::compare(i, col, ascending);
+    int col = treeWidget()->sortColumn();
+    EventTypeItem* o = (EventTypeItem*) &other;
+    if (col==0)
+	return _sum < o->_sum;
+    if (col==1)
+	return _pure < o->_pure;
+
+    return QTreeWidgetItem::operator<(other);
 }
 
 

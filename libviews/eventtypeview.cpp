@@ -25,6 +25,7 @@
 
 #include <QAction>
 #include <QMenu>
+#include <QHeaderView>
 
 #include "eventtypeitem.h"
 #include "toplevelbase.h"
@@ -34,46 +35,50 @@
 // EventTypeView
 //
 
-
 EventTypeView::EventTypeView(TraceItemView* parentView,
-			   QWidget* parent, const char* name)
-  : Q3ListView(parent, name), TraceItemView(parentView)
+			     QWidget* parent, const char* name)
+  : QTreeWidget(parent), TraceItemView(parentView)
 {
-    addColumn( tr( "Event Type" ) );
-    addColumn( tr( "Incl." ) );
-    addColumn( tr( "Self" ) );
-    addColumn( tr( "Short" ) );
-    addColumn( QString::null );	//krazy:exclude=nullstrassign for old broken gcc
-    addColumn( tr( "Formula" ) );
+    setObjectName(name);
+    // forbid scaling icon pixmaps to smaller size
+    setIconSize(QSize(99,99));
+    setColumnCount(6);
+    QStringList labels;
+    labels  << tr( "Event Type" )
+	    << tr( "Incl." )
+	    << tr( "Self" )
+	    << tr( "Short" )
+	    << QString()
+	    << tr( "Formula" );
+    setHeaderLabels(labels);
+    // reduce minimum width for '=' column
+    header()->setMinimumSectionSize(10);
 
-    setSorting(-1);
+    setRootIsDecorated(false);
+    setSortingEnabled(false);
     setAllColumnsShowFocus(true);
-    setColumnAlignment(1, Qt::AlignRight);
-    setColumnAlignment(2, Qt::AlignRight);
-    setColumnAlignment(3, Qt::AlignRight);
     setMinimumHeight(50);
 
+
+    setContextMenuPolicy(Qt::CustomContextMenu);
     connect( this,
-	     SIGNAL( selectionChanged(Q3ListViewItem*) ),
-	     SLOT( selectedSlot(Q3ListViewItem*) ) );
+	     SIGNAL(customContextMenuRequested(const QPoint &)),
+	     SLOT(context(const QPoint &)));
 
+    // FIXME: Endless jumping among 2 types possible!
     connect( this,
-	     SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
-	     SLOT(context(Q3ListViewItem*, const QPoint &, int)));
+	     SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+	     SLOT(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)) );
 
     connect(this,
-	    SIGNAL(doubleClicked(Q3ListViewItem*)),
-	    SLOT(activatedSlot(Q3ListViewItem*)));
+	    SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
+	    SLOT(itemDoubleClicked(QTreeWidgetItem*,int)));
 
     connect(this,
-	    SIGNAL(returnPressed(Q3ListViewItem*)),
-	    SLOT(activatedSlot(Q3ListViewItem*)));
+	    SIGNAL(itemChanged(QTreeWidgetItem*,int)),
+	    SLOT(itemChanged(QTreeWidgetItem*,int)));
 
-    connect(this,
-	    SIGNAL(itemRenamed(Q3ListViewItem*,int,const QString&)),
-	    SLOT(renamedSlot(Q3ListViewItem*,int,const QString&)));
-
-    this->setWhatsThis( whatsThis() );
+    setWhatsThis( whatsThis() );
 }
 
 QString EventTypeView::whatsThis() const
@@ -87,10 +92,12 @@ QString EventTypeView::whatsThis() const
 		 "all over KCachegrind to be the selected one.</p>");
 }
 
-void EventTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
+
+void EventTypeView::context(const QPoint & p)
 {
   QMenu popup;
 
+  QTreeWidgetItem* i = itemAt(p);
   EventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
 
   QAction* selectType2Action = 0;
@@ -122,12 +129,12 @@ void EventTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
       newTypeAction = popup.addAction(tr("New Event Type ..."));
   }
 
-  QAction* a = popup.exec(p);
+  QAction* a = popup.exec(viewport()->mapToGlobal(p));
   if (a == hideType2Action) selectedEventType2(0);
   else if (a == selectType2Action) selectedEventType2(ct);
-  else if (a == editLongNameAction) i->startRename(0);
-  else if (a == editShortNameAction) i->startRename(3);
-  else if (a == editFormulaAction) i->startRename(5);
+  else if (a == editLongNameAction) editItem(i, 0);
+  else if (a == editShortNameAction) editItem(i, 3);
+  else if (a == editFormulaAction) editItem(i, 5);
   else if (a == removeTypeAction) {
 
     // search for a previous type 
@@ -167,14 +174,15 @@ void EventTypeView::context(Q3ListViewItem* i, const QPoint & p, int)
   }
 }
 
-void EventTypeView::selectedSlot(Q3ListViewItem * i)
+
+void EventTypeView::currentItemChanged(QTreeWidgetItem* i, QTreeWidgetItem*)
 {
     EventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
     if (ct)
 	selectedEventType(ct);
 }
 
-void EventTypeView::activatedSlot(Q3ListViewItem * i)
+void EventTypeView::itemDoubleClicked(QTreeWidgetItem* i, int)
 {
   EventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
   if (ct)
@@ -207,29 +215,28 @@ void EventTypeView::doUpdate(int changeType, bool)
     if (changeType == eventType2Changed) return;
 
     if (changeType == groupTypeChanged) {
-	Q3ListViewItem *item;
-	for (item = firstChild();item;item = item->nextSibling())
-	    ((EventTypeItem*)item)->setGroupType(_groupType);
+	for(int i = 0; i < topLevelItemCount(); i++)
+	    ((EventTypeItem*)topLevelItem(i))->setGroupType(_groupType);
 
 	return;
     }
 
     if (changeType == eventTypeChanged) {
-	Q3ListViewItem *item;
-	for (item = firstChild();item;item = item->nextSibling())
-	    if ( ((EventTypeItem*)item)->eventType() == _eventType) {
-		setSelected(item, true);
-		ensureItemVisible(item);
+	for(int i = 0; i < topLevelItemCount(); i++) {
+	    EventTypeItem* item = (EventTypeItem*)topLevelItem(i);
+	    if ( item->eventType() == _eventType) {
+		setCurrentItem(item);
+		scrollToItem(item);
 		break;
 	    }
+	}
 
 	return;
     }
 
     if (changeType == partsChanged) {
-	Q3ListViewItem *item;
-	for (item = firstChild();item;item = item->nextSibling())
-	    ((EventTypeItem*)item)->update();
+	for(int i = 0; i < topLevelItemCount(); i++)
+	    ((EventTypeItem*)topLevelItem(i))->update();
 
 	return;
     }
@@ -257,34 +264,38 @@ void EventTypeView::refresh()
     }
     TraceCostItem* c = (TraceCostItem*) _activeItem;
 
-    EventType* ct =0 ;
-    Q3ListViewItem* item = 0;
+    EventType* ct =0;
+    QTreeWidgetItem* item = 0;
+    QTreeWidgetItem* selected = 0;
+    QList<QTreeWidgetItem*> items;
     QString sumStr, pureStr;
-    Q3ListViewItem* costItem=0;
 
     EventTypeSet* m = _data->eventTypes();
-    for (int i=m->derivedCount()-1;i>=0;i--) {
+    for (int i=0; i<m->realCount();i++) {
+	ct = m->realType(i);
+	item = new EventTypeItem(c, ct, _groupType);
+	if (ct == _eventType) selected = item;
+	items.append(item);
+    }
+    for (int i=0; i<m->derivedCount();i++) {
 	ct = m->derivedType(i);
 	if (!ct) continue;
-	item = new EventTypeItem(this, c, ct, _groupType);
-	if (ct == _eventType) costItem = item;
+	item = new EventTypeItem(c, ct, _groupType);
+	if (ct == _eventType) selected = item;
+	items.append(item);
     }
-    for (int i=m->realCount()-1;i>=0;i--) {
-	ct = m->realType(i);
-	item = new EventTypeItem(this, c, ct, _groupType);
-	if (ct == _eventType) costItem = item;
+    insertTopLevelItems(0,items);
+
+    if (selected) {
+	setCurrentItem(selected);
+	scrollToItem(selected);
     }
 
-    if (costItem) {
-	setSelected(costItem, true);
-	ensureItemVisible(costItem);
-    }
-
-    if (item) setMinimumHeight(3*item->height());
+    for(int c = 0; c<6; c++)
+	resizeColumnToContents(c);
 }
 
-
-void EventTypeView::renamedSlot(Q3ListViewItem* item,int c,const QString& t)
+void EventTypeView::itemChanged(QTreeWidgetItem* item, int c)
 {
   EventType* ct = item ? ((EventTypeItem*) item)->eventType() : 0;
   if (!ct || ct->isReal()) return;
@@ -297,6 +308,7 @@ void EventTypeView::renamedSlot(Q3ListViewItem* item,int c,const QString& t)
       if (known->name() == ct->name()) break;
   }
 
+  QString t = item->text(c);
   if (c == 0) {
       ct->setLongName(t);
       if (known) known->setLongName(t);

@@ -23,26 +23,27 @@
 #ifndef EVENTTYPEVIEW_H
 #define EVENTTYPEVIEW_H
 
-#include <q3listview.h>
+#include <QTreeWidget>
+
 #include "tracedata.h"
 #include "traceitemview.h"
 
-class EventTypeView: public Q3ListView, public TraceItemView
+class EventTypeView: public QTreeWidget, public TraceItemView
 {
   Q_OBJECT
 
 public:
   explicit EventTypeView(TraceItemView* parentView,
-	       QWidget* parent=0, const char* name=0);
+			 QWidget* parent = 0, const char* name = 0);
 
   virtual QWidget* widget() { return this; }
   QString whatsThis() const;
 
 private slots:
-  void context(Q3ListViewItem*,const QPoint &, int);
-  void selectedSlot(Q3ListViewItem*);
-  void activatedSlot(Q3ListViewItem*);
-  void renamedSlot(Q3ListViewItem*,int,const QString&);
+  void context(const QPoint&);
+  void currentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*);
+  void itemDoubleClicked(QTreeWidgetItem*, int);
+  void itemChanged(QTreeWidgetItem*, int);
 
 private:
   CostItem* canShow(CostItem*);
