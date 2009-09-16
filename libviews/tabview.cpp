@@ -192,7 +192,7 @@ void Splitter::moveEvent(QMoveEvent* e)
 {
   QSplitter::moveEvent(e);
 
-  if (0) qDebug("Splitter %s: Move", name());
+  if (0) qDebug("Splitter %s: Move", objectName().toLatin1().constData());
   checkVisiblity();
 }
 
@@ -231,7 +231,7 @@ void TabWidget::checkVisibility()
                         (visibleRect().height()>1);
 
   if (0) qDebug("TabWidget %s: VR (%dx%d) HasVisibleRect: %s => %s",
-                name(),
+		objectName().toLatin1().constData(),
                 visibleRect().width(), visibleRect().height(),
                 _hasVisibleRect ? "Yes":"No",
                 hasVisibleRect ? "Yes":"No");
@@ -246,7 +246,7 @@ void TabWidget::resizeEvent(QResizeEvent *e)
 {
   QTabWidget::resizeEvent(e);
   if (0) qDebug("TabWidget %s:\n  Resize from (%d/%d) to (%d/%d)",
-                name(),
+		objectName().toLatin1().constData(),
                 e->oldSize().width(), e->oldSize().height(),
                 e->size().width(), e->size().height());
   checkVisibility();
@@ -256,7 +256,7 @@ void TabWidget::showEvent(QShowEvent* e)
 {
   QTabWidget::showEvent(e);
 
-  if (0) qDebug("TabWidget %s: Show", name());
+  if (0) qDebug("TabWidget %s: Show", objectName().toLatin1().constData());
   checkVisibility();
 }
 
@@ -264,7 +264,7 @@ void TabWidget::hideEvent(QHideEvent* e)
 {
   QTabWidget::hideEvent(e);
 
-  if (0) qDebug("TabWidget %s: Hide", name());
+  if (0) qDebug("TabWidget %s: Hide", objectName().toLatin1().constData());
   checkVisibility();
 }
 
@@ -272,7 +272,7 @@ void TabWidget::moveEvent(QMoveEvent* e)
 {
   QTabWidget::moveEvent(e);
 
-  if (0) qDebug("TabWidget %s: Move", name());
+  if (0) qDebug("TabWidget %s: Move", objectName().toLatin1().constData());
   checkVisibility();
 }
 
@@ -708,7 +708,8 @@ void TabView::setActive(bool a)
     // force recalculation of label width by passing current label text
     updateNameLabel(_nameLabelText);
 
-    if (0) qDebug("%s::setActive(%s)", name(), a ? "true":"false");
+    if (0) qDebug("%s::setActive(%s)", objectName().toLatin1().constData(),
+		  a ? "true":"false");
 
     if (a) emit tabActivated(this);
 }
@@ -764,7 +765,8 @@ void TabView::tabChanged(QWidget* w)
 void TabView::visibleRectChangedSlot(TabWidget* tw)
 {
     if (0) qDebug("%s: %svisible !",
-		  tw->name(), tw->hasVisibleRect() ? "":"un");
+		  tw->objectName().toLatin1().constData(),
+		  tw->hasVisibleRect() ? "":"un");
 
     if (tw->hasVisibleRect()) doUpdate(0, false);
 }
@@ -845,7 +847,7 @@ void TabView::restoreLayout(const QString& prefix, const QString& postfix)
 
     moveTab(0, TraceItemView::Top, true);
     foreach(TraceItemView *v, _tabs) {
-      QString n = QString(v->widget()->name());
+      QString n = v->widget()->objectName();
       if (topTabs.contains(n)) {
         moveTab(v->widget(), TraceItemView::Top);
         if (n == activeT) activeTop = v;
@@ -894,44 +896,44 @@ void TabView::saveLayout(const QString& prefix, const QString& postfix)
     QString a;
     if ((_topTW->count()>0) &&
         (_topTW->isTabEnabled(_topTW->currentPage())))
-      a = QString(_topTW->currentPage()->name());
+      a = _topTW->currentPage()->objectName();
     g->setValue("ActiveTop", a, QString(DEFAULT_ACTIVETOP));
 
     a = QString();
     if ((_bottomTW->count()>0) &&
         (_bottomTW->isTabEnabled(_bottomTW->currentPage())))
-      a = QString(_bottomTW->currentPage()->name());
+      a = _bottomTW->currentPage()->objectName();
     g->setValue("ActiveBottom", a, QString(DEFAULT_ACTIVEBOTTOM));
 
     a = QString();
     if ((_leftTW->count()>0) &&
         (_leftTW->isTabEnabled(_leftTW->currentPage())))
-      a = QString(_leftTW->currentPage()->name());
+      a = _leftTW->currentPage()->objectName();
     g->setValue("ActiveLeft", a, QString());
 
     a= QString();
     if ((_rightTW->count()>0) &&
         (_rightTW->isTabEnabled(_rightTW->currentPage())))
-      a = QString(_rightTW->currentPage()->name());
+      a = _rightTW->currentPage()->objectName();
     g->setValue("ActiveRight", a, QString());
 
     QStringList topList, bottomList, leftList, rightList;
     foreach(TraceItemView *v, _tabs) {
       switch(v->position()) {
       case TraceItemView::Top:
-        topList << QString(v->widget()->name());
+	topList << v->widget()->objectName();
         break;
 
       case TraceItemView::Bottom:
-        bottomList << QString(v->widget()->name());
+	bottomList << v->widget()->objectName();
         break;
 
       case TraceItemView::Left:
-        leftList << QString(v->widget()->name());
+	leftList << v->widget()->objectName();
         break;
 
       case TraceItemView::Right:
-        rightList << QString(v->widget()->name());
+	rightList << v->widget()->objectName();
         break;
 
       default: break;
@@ -953,7 +955,7 @@ void TabView::saveLayout(const QString& prefix, const QString& postfix)
 void TabView::restoreOptions(const QString& prefix, const QString& postfix)
 {
     foreach(TraceItemView *v, _tabs)
-      v->restoreOptions(QString("%1-%2").arg(prefix).arg(v->widget()->name()),
+      v->restoreOptions(QString("%1-%2").arg(prefix).arg(v->widget()->objectName()),
 			postfix);
 
     if (!_data) return;
@@ -1002,7 +1004,7 @@ void TabView::saveOptions(const QString& prefix, const QString& postfix)
 
     foreach(TraceItemView *v, _tabs)
 	v->saveOptions(QString("%1-%2").arg(prefix)
-		       .arg(v->widget()->name()), postfix);
+		       .arg(v->widget()->objectName()), postfix);
 }
 
 #include "tabview.moc"
