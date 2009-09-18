@@ -919,7 +919,7 @@ void TopLevel::loadTrace(const KUrl& url)
   }
 }
 
-void TopLevel::loadTrace(const QString &file)
+void TopLevel::loadTrace(QString file)
 {
   if (file.isEmpty()) return;
 
