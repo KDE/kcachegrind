@@ -55,6 +55,7 @@
 #include <kshortcutsdialog.h>
 #include <ktip.h>
 #include <kmenu.h>
+#include <kmessagebox.h>
 #include <kdebug.h>
 #include <kicon.h>
 #include <kconfiggroup.h>
@@ -913,10 +914,12 @@ void TopLevel::loadTrace(const KUrl& url)
 
     loadTrace(tmpFile);
     KIO::NetAccess::removeTempFile( tmpFile );
+  } else {
+    KMessageBox::error(this, i18n("Could not open the file \"%1\". Check it exists and you have enough permissions to read it.", url.prettyUrl()));
   }
 }
 
-void TopLevel::loadTrace(QString file)
+void TopLevel::loadTrace(const QString &file)
 {
   if (file.isEmpty()) return;
 
