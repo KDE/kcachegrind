@@ -55,6 +55,7 @@ int main( int argc, char ** argv )
   KCmdLineArgs::addCmdLineOptions( options );
 
   KApplication a;
+  KGlobal::locale()->insertCatalog("kcachegrind_qt");
   TopLevel* t;
   Loader::initLoaders();
 
