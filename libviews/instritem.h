@@ -26,6 +26,8 @@
 #include <q3listview.h>
 #include "tracedata.h"
 
+#include <QColorGroup>
+
 class InstrView;
 
 class InstrItem: public Q3ListViewItem
