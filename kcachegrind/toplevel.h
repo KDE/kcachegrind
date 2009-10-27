@@ -25,7 +25,6 @@
 
 #include <qdatetime.h>
 #include <QLabel>
-#include <KUrl>
 
 #include <kxmlguiwindow.h>
 
@@ -270,7 +269,7 @@ private:
   ProfileContext::Type _groupTypeDelayed;
   TraceCostItem* _groupDelayed;
   CostItem* _traceItemDelayed;
-  KUrl _loadTraceDelayed;
+  QString _loadTraceDelayed;
   TraceItemView::Direction _directionDelayed;
 
   // for status progress display

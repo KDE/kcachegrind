@@ -995,7 +995,11 @@ void TopLevel::loadTraceDelayed()
 {
   if (_loadTraceDelayed.isEmpty()) return;
 
-  loadTrace(_loadTraceDelayed);
+  // if URL scheme is missing (URL is relative), this is a local file
+  if (KUrl::isRelativeUrl(_loadTraceDelayed))
+      loadTrace(_loadTraceDelayed);
+  else
+      loadTrace(KUrl(_loadTraceDelayed));
   _loadTraceDelayed = QString();
 }
 
