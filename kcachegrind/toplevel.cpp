@@ -915,13 +915,22 @@ void TopLevel::loadTrace(const KUrl& url)
     loadTrace(tmpFile);
     KIO::NetAccess::removeTempFile( tmpFile );
   } else {
-    KMessageBox::error(this, i18n("Could not open the file \"%1\". Check it exists and you have enough permissions to read it.", url.prettyUrl()));
+    KMessageBox::error(this, i18n("Could not open the file \"%1\". "
+                                  "Check it exists and you have enough "
+                                  "permissions to read it.", url.prettyUrl()));
   }
 }
 
+/* if file name is ".": load first file found in current directory, but do
+ * not show an error message if nothing could be loaded
+ */
 void TopLevel::loadTrace(QString file)
 {
   if (file.isEmpty()) return;
+
+  bool showError = true;
+  if (file == QString("."))
+      showError = false;
 
   if (_data && _data->parts().count()>0) {
 
@@ -937,6 +946,10 @@ void TopLevel::loadTrace(QString file)
   int filesLoaded = d->load(file);
   if (filesLoaded >0)
       setData(d);
+  else if (showError)
+      KMessageBox::error(this, i18n("Could not open the file \"%1\". "
+                                    "Check it exists and you have enough "
+                                    "permissions to read it.", file));
 }
 
 

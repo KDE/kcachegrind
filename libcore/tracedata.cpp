@@ -3211,7 +3211,7 @@ DynPool* TraceData::dynPool()
  * - <base> is a directory: Load first profile data file available
  * - <base> is a file name without part/thread suffixes
  *
- * Returns false of nothing found to load
+ * Returns 0 if nothing found to load
  */
 int TraceData::load(const QString& base)
 {
