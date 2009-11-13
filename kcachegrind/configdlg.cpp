@@ -172,6 +172,7 @@ ConfigDlg::ConfigDlg(GlobalConfig* c, TraceData* data,
     for ( oit = data->objectMap().begin();
           oit != data->objectMap().end(); ++oit ) {
       QString n = (*oit).name();
+      if (n.isEmpty()) continue;
       i = new Q3ListViewItem(dirList, n);
       i->setOpen(true);
       QStringList dirs = c->_objectSourceDirs[n];
