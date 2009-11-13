@@ -531,7 +531,7 @@ void QCGTopLevel::createActions()
     connect(_configureAction, SIGNAL(triggered()), this, SLOT(configure()));
 
     // help menu actions
-    _aboutAction = new QAction(tr("&About QCachegrind ..."), this);
+    _aboutAction = new QAction(tr("&About QCachegrind..."), this);
     _aboutAction->setStatusTip(tr("Show the application's About box"));
     connect(_aboutAction, SIGNAL(triggered()), this, SLOT(about()));
 

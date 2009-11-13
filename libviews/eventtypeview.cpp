@@ -126,7 +126,7 @@ void EventTypeView::context(const QPoint & p)
   QAction* newTypeAction = 0;
   if( _data) {
       popup.addSeparator();
-      newTypeAction = popup.addAction(tr("New Event Type ..."));
+      newTypeAction = popup.addAction(tr("New Event Type..."));
   }
 
   QAction* a = popup.exec(viewport()->mapToGlobal(p));

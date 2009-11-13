@@ -2973,8 +2973,8 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 	popup.addSeparator();
 
 	QMenu* epopup = popup.addMenu(tr("Export Graph"));
-	QAction* exportAsDot = epopup->addAction(tr("As DOT file ..."));
-	QAction* exportAsImage = epopup->addAction(tr("As Image ..."));
+	QAction* exportAsDot = epopup->addAction(tr("As DOT file..."));
+	QAction* exportAsImage = epopup->addAction(tr("As Image..."));
 	popup.addSeparator();
 
 	QMenu* gpopup = popup.addMenu(tr("Graph"));
