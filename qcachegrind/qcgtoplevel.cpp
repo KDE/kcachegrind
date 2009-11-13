@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002, 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2002 - 2009 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -575,15 +575,16 @@ void QCGTopLevel::createMenu()
     viewMenu->addAction(_splittedToggleAction);
     viewMenu->addAction(_splitDirectionToggleAction);
     viewMenu->addMenu(layoutMenu);
-    viewMenu->addSeparator();
-    viewMenu->addAction(_sidebarMenuAction);
 
-    QMenu* goMenu = mBar->addMenu("&Go");
+    QMenu* goMenu = mBar->addMenu(tr("&Go"));
     goMenu->addAction(_backAction);
     goMenu->addAction(_forwardAction);
     goMenu->addAction(_upAction);
 
-    QMenu* helpMenu = mBar->addMenu("&Help");
+    QMenu* settingsMenu = mBar->addMenu(tr("&Settings"));
+    settingsMenu->addAction(_sidebarMenuAction);
+
+    QMenu* helpMenu = mBar->addMenu(tr("&Help"));
     helpMenu->addAction(_aboutAction);
     helpMenu->addAction(_aboutQtAction);
 }
@@ -1639,19 +1640,6 @@ void QCGTopLevel::updateStatusBar()
   _statusLabel->setText(status);
 }
 
-#if 0
-void QCGTopLevel::configure()
-{
-    if (ConfigDlg::configure( (KConfiguration*) GlobalConfig::config(),
-			      _data, this)) {
-      GlobalConfig::config()->saveOptions();
-
-    configChanged();
-  }
-  else
-      GlobalConfig::config()->readOptions();
-}
-#endif
 
 void QCGTopLevel::closeEvent(QCloseEvent* event)
 {
@@ -1701,16 +1689,14 @@ void QCGTopLevel::toggleSplitDirection()
 // this is called after a config change in the dialog
 void QCGTopLevel::configChanged()
 {
-  //qDebug("QCGTopLevel::configChanged");
-  //_showPercentage->setChecked(GlobalConfig::showPercentage());
-
   // invalidate found/cached dirs of source files
-  _data->resetSourceDirs();
+    if (_data)
+	_data->resetSourceDirs();
 
-  _partSelection->notifyChange(TraceItemView::configChanged);
-  _stackSelection->refresh();
-  _functionSelection->notifyChange(TraceItemView::configChanged);
-  _multiView->notifyChange(TraceItemView::configChanged);
+    _partSelection->notifyChange(TraceItemView::configChanged);
+    _stackSelection->refresh();
+    _functionSelection->notifyChange(TraceItemView::configChanged);
+    _multiView->notifyChange(TraceItemView::configChanged);
 }
 
 
