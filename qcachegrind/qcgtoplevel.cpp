@@ -526,7 +526,7 @@ void QCGTopLevel::createActions()
     _forwardAction->setToolTip( hint );
 
     // settings menu actions
-    _configureAction = new QAction(tr("&Configure"), this);
+    _configureAction = new QAction(tr("&Configure..."), this);
     _configureAction->setStatusTip(tr("Configure QCachegrind"));
     connect(_configureAction, SIGNAL(triggered()), this, SLOT(configure()));
 
@@ -535,7 +535,7 @@ void QCGTopLevel::createActions()
     _aboutAction->setStatusTip(tr("Show the application's About box"));
     connect(_aboutAction, SIGNAL(triggered()), this, SLOT(about()));
 
-    _aboutQtAction = new QAction(tr("About Qt ..."), this);
+    _aboutQtAction = new QAction(tr("About Qt..."), this);
     connect(_aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 
     // toolbar actions

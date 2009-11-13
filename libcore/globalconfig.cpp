@@ -515,3 +515,33 @@ int GlobalConfig::noCostInside()
 {
   return config()->_noCostInside;
 }
+
+void GlobalConfig::setPercentPrecision(int v)
+{
+    if ((v<1) || (v >5)) return;
+    _percentPrecision = v;
+}
+
+void GlobalConfig::setMaxSymbolLength(int v)
+{
+    if ((v<1) || (v >1000)) return;
+    _maxSymbolLength = v;
+}
+
+void GlobalConfig::setMaxSymbolCount(int v)
+{
+    if ((v<1) || (v >50)) return;
+    _maxSymbolCount = v;
+}
+
+void GlobalConfig::setMaxListCount(int v)
+{
+    if ((v<1) || (v >500)) return;
+    _maxListCount = v;
+}
+
+void GlobalConfig::setContext(int v)
+{
+    if ((v<1) || (v >500)) return;
+    _context = v;
+}

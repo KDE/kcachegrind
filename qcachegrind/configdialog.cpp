@@ -32,6 +32,7 @@
 #include <QVBoxLayout>
 #include <QTimer>
 
+#include "generalsettings.h"
 
 //
 // ConfigDialog
@@ -79,7 +80,8 @@ ConfigDialog::ConfigDialog(TraceData* /*data*/, QWidget* parent, QString s)
             this, SLOT(listItemChanged(QString)));
     connect(&_clearTimer, SIGNAL(timeout()), this, SLOT(clearError()));
 
-    addPage(new ConfigPage(this, "Test", "Test Page"));
+    addPage(new GeneralSettings(this));
+
     activate(s);
 }
 

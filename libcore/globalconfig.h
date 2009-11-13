@@ -71,6 +71,12 @@ public:
   // how many lines without cost are still regarded as inside a function
   static int noCostInside();
 
+  void setPercentPrecision(int);
+  void setMaxSymbolLength(int);
+  void setMaxSymbolCount(int);
+  void setMaxListCount(int);
+  void setContext(int);
+
   static void setShowPercentage(bool);
   static void setShowExpanded(bool);
 
