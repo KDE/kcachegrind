@@ -52,6 +52,7 @@
 #include "globalconfig.h"
 #include "multiview.h"
 #include "callgraphview.h"
+#include "configdialog.h"
 
 QCGTopLevel::QCGTopLevel()
 {
@@ -524,6 +525,11 @@ void QCGTopLevel::createActions()
     hint = tr("Go forward in function selection history");
     _forwardAction->setToolTip( hint );
 
+    // settings menu actions
+    _configureAction = new QAction(tr("&Configure"), this);
+    _configureAction->setStatusTip(tr("Configure QCachegrind"));
+    connect(_configureAction, SIGNAL(triggered()), this, SLOT(configure()));
+
     // help menu actions
     _aboutAction = new QAction(tr("&About QCachegrind ..."), this);
     _aboutAction->setStatusTip(tr("Show the application's About box"));
@@ -583,6 +589,8 @@ void QCGTopLevel::createMenu()
 
     QMenu* settingsMenu = mBar->addMenu(tr("&Settings"));
     settingsMenu->addAction(_sidebarMenuAction);
+    settingsMenu->addSeparator();
+    settingsMenu->addAction(_configureAction);
 
     QMenu* helpMenu = mBar->addMenu(tr("&Help"));
     helpMenu->addAction(_aboutAction);
@@ -631,6 +639,15 @@ void QCGTopLevel::about()
     QMessageBox::about(this, tr("About QCachegrind"), text);
 }
 
+void QCGTopLevel::configure(QString s)
+{
+    ConfigDialog d(_data, this, s);
+
+    if (d.exec() == QDialog::Accepted) {
+	GlobalConfig::config()->saveOptions();
+	configChanged();
+    }
+}
 
 void QCGTopLevel::togglePartDock()
 {

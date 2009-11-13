@@ -28,6 +28,8 @@ QMAKE_EXTRA_COMPILERS = new_moc
 # Input
 NHEADERS += qcgconfig.h \
            qcgtoplevel.h \
+	   configdialog.h \
+	   configpage.h \
            ../libcore/context.h \
            ../libcore/costitem.h \
            ../libcore/subcost.h \
@@ -73,6 +75,8 @@ NHEADERS += qcgconfig.h \
 SOURCES += qcgmain.cpp \
            qcgconfig.cpp \
            qcgtoplevel.cpp \
+	   configdialog.cpp \
+	   configpage.cpp \
            ../libcore/context.cpp \
            ../libcore/costitem.cpp \
            ../libcore/subcost.cpp \

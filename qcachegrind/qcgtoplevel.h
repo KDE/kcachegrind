@@ -96,6 +96,7 @@ public slots:
   void reload();
   void exportGraph();
   void newWindow();
+  void configure(QString page = QString::null);
   void about();
 
   // layouts
@@ -223,7 +224,7 @@ private:
   QAction *_layoutNext, *_layoutPrev, *_layoutRemove, *_layoutDup;
   QAction *_layoutRestore, *_layoutSave;
   QAction *_upAction, *_forwardAction, *_backAction;
-  QAction *_aboutAction, *_aboutQtAction;
+  QAction *_configureAction, *_aboutAction, *_aboutQtAction;
   QComboBox* _eventTypeBox;
 
   TraceFunction* _function;
