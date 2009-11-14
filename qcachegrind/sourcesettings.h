@@ -17,52 +17,45 @@
 */
 
 /*
- * QCachegrind configuration dialog
+ * Source annotation directory settings config page
  */
 
-#ifndef CONFIGDIALOG_H
-#define CONFIGDIALOG_H
-
-#include <QString>
-#include <QDialog>
-#include <QMap>
-#include <QTimer>
+#ifndef SOURCESETTINGS_H
+#define SOURCESETTINGS_H
 
 #include "configpage.h"
-
-class QWidget;
-class QLabel;
-class QListWidget;
-class QStackedWidget;
+#include "ui_sourcesettings.h"
 
 class TraceData;
+class QTreeWidgetItem;
 
-class ConfigDialog: public QDialog
+class SourceSettings: public ConfigPage
 {
     Q_OBJECT
 
 public:
-    // If s is not empty, navigate to a given setting on opening
-    ConfigDialog(TraceData* data, QWidget* parent, QString s = QString::null);
+    SourceSettings(TraceData* data, QWidget* parent);
+    virtual ~SourceSettings() {}
 
-    void activate(QString);
-    QString currentPage();
+    bool check(QString&, QString&);
+    void accept();
+    void activate(QString s);
 
 public slots:
-    void accept();
-    void listItemChanged(QString);
-    void clearError();
+    void addClicked();
+    void deleteClicked();
+    void browseClicked();
+    void dirListItemChanged(QTreeWidgetItem*, QTreeWidgetItem*);
+    void objectChanged(QString);
+    void dirEditChanged(QString);
 
 private:
-    void addPage(ConfigPage*);
+    void update();
 
-    QLabel* _titleLabel;
-    QLabel* _errorLabel;
-    QListWidget *_listWidget;
-    QStackedWidget *_widgetStack;
-    QMap<QString,ConfigPage*> _pages;
-    QString _activeSetting;
-    QTimer _clearTimer;
+    Ui::SourceSettings ui;
+    QTreeWidgetItem* _current;
+    QString _always;
 };
 
-#endif // CONFIGDIALOG
+
+#endif // SOURCESETTINGS_H

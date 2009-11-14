@@ -71,6 +71,11 @@ public:
   // how many lines without cost are still regarded as inside a function
   static int noCostInside();
 
+  const QStringList& generalSourceDirs();
+  QStringList objectSourceDirs(QString);
+  void setGeneralSourceDirs(QStringList);
+  void setObjectSourceDirs(QString, QStringList);
+
   void setPercentPrecision(int);
   void setMaxSymbolLength(int);
   void setMaxSymbolCount(int);

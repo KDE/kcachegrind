@@ -26,13 +26,14 @@ new_moc.input = NHEADERS
 QMAKE_EXTRA_COMPILERS = new_moc
 
 # Input
-FORMS += generalsettings.ui
+FORMS += generalsettings.ui sourcesettings.ui
 
 NHEADERS += qcgconfig.h \
            qcgtoplevel.h \
            configdialog.h \
            configpage.h \
            generalsettings.h \
+	   sourcesettings.h \
            ../libcore/context.h \
            ../libcore/costitem.h \
            ../libcore/subcost.h \
@@ -82,6 +83,7 @@ SOURCES += qcgmain.cpp \
            configdialog.cpp \
            configpage.cpp \
            generalsettings.cpp \
+	   sourcesettings.cpp \
            ../libcore/context.cpp \
            ../libcore/costitem.cpp \
            ../libcore/subcost.cpp \

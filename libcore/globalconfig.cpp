@@ -545,3 +545,29 @@ void GlobalConfig::setContext(int v)
     if ((v<1) || (v >500)) return;
     _context = v;
 }
+
+const QStringList& GlobalConfig::generalSourceDirs()
+{
+    return _generalSourceDirs;
+}
+
+QStringList GlobalConfig::objectSourceDirs(QString obj)
+{
+    if (_objectSourceDirs.contains(obj))
+	return _objectSourceDirs[obj];
+    else
+	return QStringList();
+}
+
+void GlobalConfig::setGeneralSourceDirs(QStringList dirs)
+{
+    _generalSourceDirs = dirs;
+}
+
+void GlobalConfig::setObjectSourceDirs(QString obj, QStringList dirs)
+{
+    if (dirs.count() == 0)
+	_objectSourceDirs.remove(obj);
+    else
+	_objectSourceDirs.insert(obj, dirs);
+}

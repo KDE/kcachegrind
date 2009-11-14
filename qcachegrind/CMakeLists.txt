@@ -2,10 +2,10 @@ include_directories(../libcore ../libviews)
 
 set(qcachegrind_SRCS qcgmain.cpp qcgtoplevel.cpp qcgconfig.cpp
                      configdialog.cpp configpage.cpp
-                     generalsettings.cpp)
+		     generalsettings.cpp sourcesettings.cpp)
 
 qt4_automoc(${qcachegrind_SRCS})
-qt4_wrap_ui(qcachegrind_H generalsettings.ui)
+qt4_wrap_ui(qcachegrind_H generalsettings.ui sourcesettings.ui)
 qt4_add_resources(qcachegrind_RSRC qcachegrind.qrc)
 
 add_executable(qcachegrind ${qcachegrind_SRCS} ${qcachegrind_H} ${qcachegrind_RSRC})

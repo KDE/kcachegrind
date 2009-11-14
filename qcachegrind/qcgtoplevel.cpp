@@ -641,12 +641,17 @@ void QCGTopLevel::about()
 
 void QCGTopLevel::configure(QString s)
 {
+    static QString lastPage = QString::null;
+
+    // if no specific config item should be focussed, use last page
+    if (s.isEmpty()) s = lastPage;
     ConfigDialog d(_data, this, s);
 
     if (d.exec() == QDialog::Accepted) {
 	GlobalConfig::config()->saveOptions();
 	configChanged();
     }
+    lastPage = d.currentPage();
 }
 
 void QCGTopLevel::togglePartDock()

@@ -33,18 +33,19 @@
 #include <QTimer>
 
 #include "generalsettings.h"
+#include "sourcesettings.h"
 
 //
 // ConfigDialog
 //
 
-ConfigDialog::ConfigDialog(TraceData* /*data*/, QWidget* parent, QString s)
+ConfigDialog::ConfigDialog(TraceData* data, QWidget* parent, QString s)
     : QDialog(parent)
 {
     setWindowTitle(tr("Configure QCachegrind"));
 
     _listWidget = new QListWidget(this);
-    _listWidget->setMaximumWidth(100);
+    _listWidget->setMaximumWidth(140);
     _widgetStack = new QStackedWidget(this);
     _titleLabel = new QLabel(this);
     QFont labelFont;
@@ -81,6 +82,7 @@ ConfigDialog::ConfigDialog(TraceData* /*data*/, QWidget* parent, QString s)
     connect(&_clearTimer, SIGNAL(timeout()), this, SLOT(clearError()));
 
     addPage(new GeneralSettings(this));
+    addPage(new SourceSettings(data, this));
 
     activate(s);
 }
@@ -133,6 +135,11 @@ void ConfigDialog::activate(QString s)
         else
             _listWidget->setCurrentRow(row);
     }
+}
+
+QString ConfigDialog::currentPage()
+{
+    return _listWidget->currentItem()->text();
 }
 
 void ConfigDialog::accept()
