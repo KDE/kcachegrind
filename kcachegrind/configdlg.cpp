@@ -127,10 +127,10 @@ ConfigDlg::ConfigDlg(GlobalConfig* c, TraceData* data,
   }
 
   // then already defined colors (have to check for duplicates!)
-  foreach(GlobalConfig::ColorSetting* cs, c->_colors) {
-    if (cs->automatic) continue;
+  foreach(ConfigColorSetting* cs, c->_colors) {
+    if (cs->_automatic) continue;
 
-    QString n = cs->name;
+    QString n = cs->_name;
     if (n.startsWith(objectPrefix)) {
       n = n.remove(0, objectPrefix.length()+1);
       if (oList.findIndex(n) == -1) oList.append(n);
@@ -238,16 +238,16 @@ void ConfigDlg::objectActivated(const QString & s)
 
   QString n = ProfileContext::typeName(ProfileContext::Object) + '-' + s;
 
-  GlobalConfig::ColorSetting* cs = _config->_colors[n];
+  ConfigColorSetting* cs = _config->_colors[n];
   if (!cs)
-    cs = GlobalConfig::color(n);
+    cs = GlobalConfig::colorSetting(n);
 //  else
 //    qDebug("found color %s", n.ascii());
 
   _objectCS = cs;
 
-  objectCheck->setChecked(cs->automatic);
-  objectColor->setColor(cs->color);
+  objectCheck->setChecked(cs->_automatic);
+  objectColor->setColor(cs->_color);
 
   /*
   qDebug("Found Color %s, automatic to %s",
@@ -260,7 +260,7 @@ void ConfigDlg::objectActivated(const QString & s)
 void ConfigDlg::objectCheckChanged(bool b)
 {
   if (_objectCS) {
-    _objectCS->automatic = b;
+    _objectCS->_automatic = b;
     /*
     qDebug("Set Color %s automatic to %s",
            _objectCS->name.ascii(),
@@ -271,7 +271,7 @@ void ConfigDlg::objectCheckChanged(bool b)
 
 void ConfigDlg::objectColorChanged(const QColor & c)
 {
-  if (_objectCS) _objectCS->color = c;
+  if (_objectCS) _objectCS->_color = c;
 }
 
 void ConfigDlg::classActivated(const QString & s)
@@ -282,26 +282,26 @@ void ConfigDlg::classActivated(const QString & s)
 
   QString n = ProfileContext::typeName(ProfileContext::Class) + '-' + s;
 
-  GlobalConfig::ColorSetting* cs = _config->_colors[n];
+  ConfigColorSetting* cs = _config->_colors[n];
   if (!cs)
-    cs = GlobalConfig::color(n);
+    cs = GlobalConfig::colorSetting(n);
 
   _classCS = cs;
 
-  classCheck->setChecked(cs->automatic);
-  classColor->setColor(cs->color);
+  classCheck->setChecked(cs->_automatic);
+  classColor->setColor(cs->_color);
 
 }
 
 
 void ConfigDlg::classCheckChanged(bool b)
 {
-  if (_classCS) _classCS->automatic = b;
+  if (_classCS) _classCS->_automatic = b;
 }
 
 void ConfigDlg::classColorChanged(const QColor & c)
 {
-  if (_classCS) _classCS->color = c;
+  if (_classCS) _classCS->_color = c;
 }
 
 
@@ -313,25 +313,25 @@ void ConfigDlg::fileActivated(const QString & s)
 
   QString n = ProfileContext::typeName(ProfileContext::File) + '-' + s;
 
-  GlobalConfig::ColorSetting* cs = _config->_colors[n];
+  ConfigColorSetting* cs = _config->_colors[n];
   if (!cs)
-    cs = GlobalConfig::color(n);
+    cs = GlobalConfig::colorSetting(n);
 
   _fileCS = cs;
 
-  fileCheck->setChecked(cs->automatic);
-  fileColor->setColor(cs->color);
+  fileCheck->setChecked(cs->_automatic);
+  fileColor->setColor(cs->_color);
 }
 
 
 void ConfigDlg::fileCheckChanged(bool b)
 {
-  if (_fileCS) _fileCS->automatic = b;
+  if (_fileCS) _fileCS->_automatic = b;
 }
 
 void ConfigDlg::fileColorChanged(const QColor & c)
 {
-  if (_fileCS) _fileCS->color = c;
+  if (_fileCS) _fileCS->_color = c;
 }
 
 

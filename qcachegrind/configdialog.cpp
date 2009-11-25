@@ -34,6 +34,7 @@
 
 #include "generalsettings.h"
 #include "sourcesettings.h"
+#include "colorsettings.h"
 
 //
 // ConfigDialog
@@ -83,6 +84,7 @@ ConfigDialog::ConfigDialog(TraceData* data, QWidget* parent, QString s)
 
     addPage(new GeneralSettings(this));
     addPage(new SourceSettings(data, this));
+    addPage(new ColorSettings(data, this));
 
     activate(s);
 }

@@ -65,7 +65,7 @@ private:
   GlobalConfig* _config;
   TraceData* _data;
 
-  GlobalConfig::ColorSetting *_objectCS, *_classCS, *_fileCS;
+  ConfigColorSetting *_objectCS, *_classCS, *_fileCS;
   Q3ListViewItem* _dirItem;
 };
 

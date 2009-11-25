@@ -1184,6 +1184,7 @@ class TraceFunction: public TraceCostItem
   QString location(int maxFiles = 0) const;
 
   QString prettyName() const;
+  static QString prettyEmptyName();
   QString prettyLocation(int maxFiles = 0) const;
   QString prettyNameWithLocation(int maxFiles = 1) const;
   void addPrettyLocation(QString&, int maxFiles = 1) const;
@@ -1306,6 +1307,7 @@ class TraceClass: public TraceCostItem
   virtual ~TraceClass();
 
   virtual QString prettyName() const;
+  static QString prettyEmptyName();
 
   void addFunction(TraceFunction*);
   const TraceFunctionList& functions() const { return _functions; }
@@ -1339,6 +1341,7 @@ class TraceFile: public TraceCostItem
   QString shortName() const;
   QString prettyName() const;
   QString prettyLongName() const;
+  static QString prettyEmptyName();
   const TraceFunctionList& functions() const { return _functions; }
   const TraceFunctionSourceList& sourceFiles() const
     { return _sourceFiles; }
@@ -1371,6 +1374,7 @@ class TraceObject: public TraceCostItem
 
   QString shortName() const;
   QString prettyName() const;
+  static QString prettyEmptyName();
   const TraceFunctionList& functions() const { return _functions; }
 
   // part factory

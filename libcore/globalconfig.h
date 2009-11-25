@@ -29,6 +29,42 @@
 
 #include "tracedata.h"
 
+class GlobalConfig;
+
+/**
+ * Color setting for a cost item
+ * Helper class for color settings in configuration.
+ *
+ * Objects can only be instantiated by the singleton GlobalConfig
+ * and therefore are unique; changes will be saved as configuration.
+ */
+class ConfigColorSetting
+{
+    friend class GlobalConfig;
+    friend class ConfigDlg;
+
+public:
+    QColor color() const { return _color; }
+    bool automatic() const { return _automatic; }
+
+    static QColor colorForName(QString);
+    // returns automatic color calculated from name, but does not change color
+    QColor autoColor() const;
+
+    // explicitly set a color, switches off automatic mode
+    void setColor(const QColor&);
+    // reset to automatic mode
+    void reset();
+
+private:
+    ConfigColorSetting(QString n); // color calculated from name
+    ConfigColorSetting(QString, QColor); // color set explicitly
+
+    QString _name;
+    QColor _color;
+    bool _automatic;
+};
+
 /**
  * Global configuration.
  * A singleton.
@@ -51,6 +87,9 @@ public:
   static QColor functionColor(ProfileContext::Type gt, TraceFunction*);
   static QColor groupColor(CostItem*);
   static QColor eventTypeColor(EventType*);
+  static ConfigColorSetting* groupColorSetting(CostItem*);
+  static ConfigColorSetting* groupColorSetting(ProfileContext::Type, QString);
+
   static QStringList sourceDirs(TraceData*, TraceObject* o = 0);
   static bool showPercentage();
   static bool showExpanded();
@@ -96,15 +135,8 @@ protected:
   QString knownFormula(const QString& name);
   QString knownLongName(const QString& name);
 
-  struct ColorSetting {
-    QString name;
-    QColor color;
-    bool automatic;
-  };
-
-  static ColorSetting* color(const QString&, bool createNew = true);
-
-  QHash<QString, ColorSetting*> _colors;
+  static ConfigColorSetting* colorSetting(const QString&, bool createNew = true);
+  QHash<QString, ConfigColorSetting*> _colors;
 
   QStringList _generalSourceDirs;
   QHash<QString, QStringList> _objectSourceDirs;

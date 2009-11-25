@@ -1589,7 +1589,7 @@ QString TraceLine::name() const
 {
     QString fileShortName = _sourceFile->file()->shortName();
     if (fileShortName.isEmpty())
-	return QObject::tr("(unknown)");
+	return TraceFile::prettyEmptyName();
 
     return QString("%1:%2")
 	.arg(fileShortName).arg(_lineno);
@@ -2009,7 +2009,7 @@ QString TraceFunction::prettyName() const
   QString res = _name;
 
   if (_name.isEmpty())
-      return QObject::tr("(unknown)");
+      return prettyEmptyName();
 
 #if 0
   // TODO: make it a configuration, but disabled by default.
@@ -2040,6 +2040,11 @@ QString TraceFunction::prettyName() const
 
 
   return res;
+}
+
+QString TraceFunction::prettyEmptyName()
+{
+    return QObject::tr("(unknown)");
 }
 
 /*
@@ -2785,8 +2790,13 @@ TraceClass::~TraceClass()
 QString TraceClass::prettyName() const
 {
   if (_name.isEmpty())
-    return QString("(global)");
+    return prettyEmptyName();
   return _name;
+}
+
+QString TraceClass::prettyEmptyName()
+{
+    return QObject::tr("(global)");
 }
 
 TracePartClass* TraceClass::partClass(TracePart* part)
@@ -2930,15 +2940,20 @@ QString TraceFile::prettyName() const
     QString sn = shortName();
 
     if (sn.isEmpty())
-	return QObject::tr("(unknown)");
+	return prettyEmptyName();
 
     return sn;
+}
+
+QString TraceFile::prettyEmptyName()
+{
+    return QObject::tr("(unknown)");
 }
 
 QString TraceFile::prettyLongName() const
 {
   if (_name.isEmpty())
-    return QObject::tr("(unknown)");
+    return prettyEmptyName();
   return _name;
 }
 
@@ -3026,9 +3041,14 @@ QString TraceObject::prettyName() const
     QString sn = shortName();
 
     if (sn.isEmpty())
-	return QObject::tr("(unknown)");
+	return prettyEmptyName();
 
     return sn;
+}
+
+QString TraceObject::prettyEmptyName()
+{
+    return QObject::tr("(unknown)");
 }
 
 //---------------------------------------------------
@@ -3870,5 +3890,4 @@ void TraceData::updateClassCycles()
 void TraceData::updateFileCycles()
 {
 }
-
 
