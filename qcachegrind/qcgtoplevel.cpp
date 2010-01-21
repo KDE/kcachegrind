@@ -42,6 +42,7 @@
 #include <QMessageBox>
 #include <QtDBus/QDBusConnection>
 #include <QStatusBar>
+#include <QWhatsThis>
 
 #include "partselection.h"
 #include "functionselection.h"
@@ -593,6 +594,8 @@ void QCGTopLevel::createMenu()
     settingsMenu->addAction(_configureAction);
 
     QMenu* helpMenu = mBar->addMenu(tr("&Help"));
+    helpMenu->addAction(QWhatsThis::createAction(this));
+    helpMenu->addSeparator();
     helpMenu->addAction(_aboutAction);
     helpMenu->addAction(_aboutQtAction);
 }
