@@ -266,19 +266,19 @@ void GlobalConfig::readOptions()
 
     // color options
     _colors.clear();
-    // colors for default cost types:
+    // colors for default event types:
     //  red for L2 misses, green for L1 misses, blue for normal accesses
-    colorSetting("CostType-I2mr")->_color = QColor(240, 0, 0);
-    colorSetting("CostType-D2mr")->_color = QColor(180,40,40);
-    colorSetting("CostType-D2mw")->_color = QColor(120,80,80);
+    colorSetting("EventType-I2mr")->_color = QColor(240, 0, 0);
+    colorSetting("EventType-D2mr")->_color = QColor(180,40,40);
+    colorSetting("EventType-D2mw")->_color = QColor(120,80,80);
 
-    colorSetting("CostType-I1mr")->_color = QColor(0, 240, 0);
-    colorSetting("CostType-D1mr")->_color = QColor(40,180,40);
-    colorSetting("CostType-D1mw")->_color = QColor(80,120,80);
+    colorSetting("EventType-I1mr")->_color = QColor(0, 240, 0);
+    colorSetting("EventType-D1mr")->_color = QColor(40,180,40);
+    colorSetting("EventType-D1mw")->_color = QColor(80,120,80);
 
-    colorSetting("CostType-Ir")->_color = QColor(0, 0, 240);
-    colorSetting("CostType-Dr")->_color = QColor(40,40,180);
-    colorSetting("CostType-Dw")->_color = QColor(80,80,120);
+    colorSetting("EventType-Ir")->_color = QColor(0, 0, 240);
+    colorSetting("EventType-Dr")->_color = QColor(40,40,180);
+    colorSetting("EventType-Dw")->_color = QColor(80,80,120);
 
     ConfigGroup* colorConfig = ConfigStorage::group("CostColors");
     count = colorConfig->value("Count", 0).toInt();
@@ -386,7 +386,7 @@ ConfigColorSetting* GlobalConfig::groupColorSetting(CostItem* cost)
    if (!cost)
      return colorSetting(QString("default"));
 
-   return groupColorSetting(cost->type(), cost->prettyName());
+   return groupColorSetting(cost->type(), cost->name());
 }
 
 ConfigColorSetting* GlobalConfig::groupColorSetting(ProfileContext::Type t,
@@ -406,9 +406,9 @@ QColor GlobalConfig::eventTypeColor(EventType* t)
    QString n;
 
    if (!t)
-     n = QString("CostType-default");
+     n = QString("EventType-default");
    else
-     n = QString("CostType-%1").arg(t->name());
+     n = QString("EventType-%1").arg(t->name());
 
    return colorSetting(n)->color();
 }
@@ -430,8 +430,8 @@ QColor GlobalConfig::functionColor(ProfileContext::Type gt,
   if (group != f) {
     // first look for manual color of a function in a group
     n = ProfileContext::typeName(group->type()) +
-        '-' + group->prettyName() +
-        '-' + f->prettyName();
+        '-' + group->name() +
+        '-' + f->name();
 
     ConfigColorSetting* cs = colorSetting(n, false);
     if (cs) return cs->color();
