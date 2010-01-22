@@ -418,6 +418,23 @@ void QCGTopLevel::createActions()
 	    this, SLOT(togglePercentage()));
     _percentageToggleAction->setChecked(GlobalConfig::showPercentage());
 
+    _hideTemplatesToggleAction = new QAction(QIcon(":/hidetemplates.png"),
+                                             tr("Shorten Templates"), this);
+    _hideTemplatesToggleAction->setCheckable(true);
+    _hideTemplatesToggleAction->setStatusTip(tr("Hide Template Parameters "
+                                                "in C++ Symbols"));
+    connect(_hideTemplatesToggleAction, SIGNAL(triggered(bool)),
+            this, SLOT(toggleHideTemplates()));
+    _hideTemplatesToggleAction->setChecked(GlobalConfig::hideTemplates());
+    hint = tr("<b>Hide Template Parameters in C++ Symbols</b>"
+              "<p>If this is switched on, every symbol displayed will have "
+              "any C++ template parameters hidden, just showing &lt;&gt; "
+              "instead of a potentially nested template parameter.</p>"
+              "<p>In this mode, you can hover the mouse pointer over the "
+              "activated symbol label to show a tooltip with the "
+              "unabbreviated symbol.</p>");
+    _hideTemplatesToggleAction->setWhatsThis(hint);
+
     _expandedToggleAction = new QAction(QIcon(":/move.png"),
 					tr("Relative to Parent"), this);
     _expandedToggleAction->setCheckable(true);
@@ -578,6 +595,7 @@ void QCGTopLevel::createMenu()
     viewMenu->addAction(_cyclesToggleAction);
     viewMenu->addAction(_percentageToggleAction);
     viewMenu->addAction(_expandedToggleAction);
+    viewMenu->addAction(_hideTemplatesToggleAction);
     viewMenu->addSeparator();
     viewMenu->addAction(_splittedToggleAction);
     viewMenu->addAction(_splitDirectionToggleAction);
@@ -612,6 +630,7 @@ void QCGTopLevel::createToolbar()
     tb->addAction(_cyclesToggleAction);
     tb->addAction(_percentageToggleAction);
     tb->addAction(_expandedToggleAction);
+    tb->addAction(_hideTemplatesToggleAction);
     tb->addSeparator();
 
     tb->addAction(_backAction);
@@ -686,6 +705,7 @@ void QCGTopLevel::togglePercentage()
   setPercentage(_percentageToggleAction->isChecked());
 }
 
+
 void QCGTopLevel::setAbsoluteCost()
 {
   setPercentage(false);
@@ -703,6 +723,18 @@ void QCGTopLevel::setPercentage(bool show)
 	_percentageToggleAction->setChecked(show);
     _expandedToggleAction->setEnabled(show);
     GlobalConfig::setShowPercentage(show);
+
+    _partSelection->notifyChange(TraceItemView::configChanged);
+    _stackSelection->refresh();
+    _functionSelection->notifyChange(TraceItemView::configChanged);
+    _multiView->notifyChange(TraceItemView::configChanged);
+}
+
+void QCGTopLevel::toggleHideTemplates()
+{
+    bool show = _hideTemplatesToggleAction->isChecked();
+    if (GlobalConfig::hideTemplates() == show) return;
+    GlobalConfig::setHideTemplates(show);
 
     _partSelection->notifyChange(TraceItemView::configChanged);
     _stackSelection->refresh();

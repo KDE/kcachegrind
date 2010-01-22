@@ -94,6 +94,7 @@ public:
   static bool showPercentage();
   static bool showExpanded();
   static bool showCycles();
+  static bool hideTemplates();
 
   // lower percentage limit of cost items filled into lists
   static int percentPrecision();
@@ -125,6 +126,8 @@ public:
   static void setShowExpanded(bool);
 
   static void setShowCycles(bool);
+
+  static void setHideTemplates(bool);
   // upper limit for cutting of a call in cycle detection
   static double cycleCut();
 
@@ -141,7 +144,7 @@ protected:
   QStringList _generalSourceDirs;
   QHash<QString, QStringList> _objectSourceDirs;
 
-  bool _showPercentage, _showExpanded, _showCycles;
+  bool _showPercentage, _showExpanded, _showCycles, _hideTemplates;
   double _cycleCut;
   int _percentPrecision;
   int _maxSymbolLength, _maxSymbolCount, _maxListCount;

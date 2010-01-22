@@ -32,6 +32,7 @@
 #define DEFAULT_SHOWPERCENTAGE   true
 #define DEFAULT_SHOWEXPANDED     false
 #define DEFAULT_SHOWCYCLES       true
+#define DEFAULT_HIDETEMPLATES    false
 #define DEFAULT_CYCLECUT         0.0
 #define DEFAULT_PERCENTPRECISION 2
 #define DEFAULT_MAXSYMBOLLENGTH  30
@@ -157,6 +158,7 @@ GlobalConfig::GlobalConfig()
   _showCycles       = DEFAULT_SHOWCYCLES;
   _cycleCut         = DEFAULT_CYCLECUT;
   _percentPrecision = DEFAULT_PERCENTPRECISION;
+  _hideTemplates    = DEFAULT_HIDETEMPLATES;
 
   // max symbol count/length in tooltip/popup
   _maxSymbolLength  = DEFAULT_MAXSYMBOLLENGTH;
@@ -238,6 +240,8 @@ void GlobalConfig::saveOptions()
 			    DEFAULT_CONTEXT);
     generalConfig->setValue("NoCostInside", _noCostInside,
 			    DEFAULT_NOCOSTINSIDE);
+    generalConfig->setValue("HideTemplates", _hideTemplates,
+                            DEFAULT_HIDETEMPLATES);
     delete generalConfig;
 
     // event types
@@ -332,6 +336,8 @@ void GlobalConfig::readOptions()
 					     DEFAULT_CONTEXT).toInt();
     _noCostInside     = generalConfig->value("NoCostInside",
 					     DEFAULT_NOCOSTINSIDE).toInt();
+    _hideTemplates    = generalConfig->value("HideTemplates",
+		                             DEFAULT_HIDETEMPLATES).toBool();
     delete generalConfig;
 
     // event types
@@ -489,6 +495,11 @@ bool GlobalConfig::showCycles()
   return config()->_showCycles;
 }
 
+bool GlobalConfig::hideTemplates()
+{
+  return config()->_hideTemplates;
+}
+
 void GlobalConfig::setShowPercentage(bool s)
 {
   GlobalConfig* c = config();
@@ -511,6 +522,14 @@ void GlobalConfig::setShowCycles(bool s)
   if (c->_showCycles == s) return;
 
   c->_showCycles = s;
+}
+
+void GlobalConfig::setHideTemplates(bool s)
+{
+  GlobalConfig* c = config();
+  if (c->_hideTemplates == s) return;
+
+  c->_hideTemplates = s;
 }
 
 double GlobalConfig::cycleCut()

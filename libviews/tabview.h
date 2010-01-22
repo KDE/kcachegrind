@@ -172,7 +172,7 @@ private:
   bool _isCollapsed;
 
   QLabel* _nameLabel;
-  QString _nameLabelText;
+  QString _nameLabelText, _nameLabelTooltip;
   int _textWidth;
 
   QSplitter *_mainSplitter, *_leftSplitter, *_bottomSplitter;

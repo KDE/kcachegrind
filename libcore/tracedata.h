@@ -1184,6 +1184,7 @@ class TraceFunction: public TraceCostItem
   QString location(int maxFiles = 0) const;
 
   QString prettyName() const;
+  QString formattedName() const;
   static QString prettyEmptyName();
   QString prettyLocation(int maxFiles = 0) const;
   QString prettyNameWithLocation(int maxFiles = 1) const;

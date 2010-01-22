@@ -146,6 +146,7 @@ public slots:
   void setRelativeCost();
   void toggleExpanded();
   void toggleCycles();
+  void toggleHideTemplates();
   void forceTrace();
   void forceTraceReload();
   void forwardAboutToShow();
@@ -240,7 +241,7 @@ private:
   KSelectAction *_saCost, *_saCost2, *saGroup;
   KToggleAction *_partDockShown, *_stackDockShown;
   KToggleAction *_functionDockShown, *_dumpDockShown;
-  KToggleAction *_taPercentage, *_taExpanded, *_taCycles;
+  KToggleAction *_taPercentage, *_taExpanded, *_taCycles, *_taHideTemplates;
   KToggleAction *_taDump, *_taSplit, *_taSplitDir;
   KToolBarPopupAction *_paForward, *_paBack, *_paUp;
 
@@ -278,7 +279,7 @@ private:
   QProgressBar* _progressBar;
 
   // toplevel configuration options
-  bool _showPercentage, _showExpanded, _showCycles;
+  bool _showPercentage, _showExpanded, _showCycles, _hideTemplates;
 };
 
 #endif

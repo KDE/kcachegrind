@@ -123,9 +123,11 @@ TopLevel::TopLevel()
   _showPercentage = GlobalConfig::showPercentage();
   _showExpanded   = GlobalConfig::showExpanded();
   _showCycles     = GlobalConfig::showCycles();
+  _hideTemplates  = GlobalConfig::hideTemplates();
   _taPercentage->setChecked(_showPercentage);
   _taExpanded->setChecked(_showExpanded);
   _taCycles->setChecked(_showCycles);
+  _taHideTemplates->setChecked(_hideTemplates);
 
   setupPartSelection(_partSelection);
 
@@ -573,6 +575,20 @@ void TopLevel::createMiscActions()
               "is the option to switch this off.</p>");
   _taCycles->setWhatsThis( hint );
 
+  _taHideTemplates = actionCollection()->add<KToggleAction>("hide_templates");
+  _taHideTemplates->setIcon(KIcon("hidetemplates"));
+  _taHideTemplates->setText(i18n( "Shorten Templates" ));
+  connect(_taHideTemplates, SIGNAL(triggered(bool) ), SLOT( toggleHideTemplates() ));
+  _taHideTemplates->setToolTip(i18n( "Hide Template Parameters in C++ Symbols" ));
+  hint = i18n("<b>Hide Template Parameters in C++ Symbols</b>"
+              "<p>If this is switched on, every symbol displayed will have "
+              "any C++ template parameters hidden, just showing &lt;&gt; "
+              "instead of a potentially nested template parameter.</p>"
+              "<p>In this mode, you can hover the mouse pointer over the "
+              "activated symbol label to show a tooltip with the "
+              "unabbreviated symbol.</p>");
+  _taHideTemplates->setWhatsThis(hint);
+
   KStandardAction::quit(this, SLOT(close()), actionCollection());
   KStandardAction::preferences(this, SLOT(configure()), actionCollection());
   KStandardAction::keyBindings(this, SLOT(configureKeys()), actionCollection());
@@ -825,6 +841,19 @@ void TopLevel::toggleCycles()
   _data->updateFunctionCycles();
 
   _stackSelection->rebuildStackList();
+
+  updateViewsOnChange(TraceItemView::configChanged);
+}
+
+void TopLevel::toggleHideTemplates()
+{
+  bool b = _taHideTemplates->isChecked();
+  if (_hideTemplates == b) return;
+  _hideTemplates = b;
+
+  GlobalConfig::setHideTemplates(_hideTemplates);
+
+  _stackSelection->refresh();
 
   updateViewsOnChange(TraceItemView::configChanged);
 }
@@ -1859,6 +1888,7 @@ bool TopLevel::queryExit()
     GlobalConfig::setShowPercentage(_showPercentage);
     GlobalConfig::setShowExpanded(_showExpanded);
     GlobalConfig::setShowCycles(_showCycles);
+    GlobalConfig::setHideTemplates(_hideTemplates);
     GlobalConfig::config()->saveOptions();
 
     saveCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc

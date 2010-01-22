@@ -2011,6 +2011,25 @@ QString TraceFunction::prettyName() const
   if (_name.isEmpty())
       return prettyEmptyName();
 
+  if (GlobalConfig::hideTemplates()) {
+
+      res = QString();
+      int d = 0;
+      for(int i=0;i<_name.length();i++) {
+          switch(_name[i].toAscii()) {
+          case '<':
+              if (d<=0) res.append(_name[i]);
+              d++;
+              break;
+          case '>':
+              d--;
+              // fall trough
+          default:
+              if (d<=0) res.append(_name[i]);
+              break;
+          }
+      }
+  }
 #if 0
   // TODO: make it a configuration, but disabled by default.
   //
@@ -2040,6 +2059,46 @@ QString TraceFunction::prettyName() const
 
 
   return res;
+}
+
+QString TraceFunction::formattedName() const
+{
+    // produce a "rich" name only if templates are hidden
+    if (!GlobalConfig::hideTemplates() || _name.isEmpty()) return QString();
+
+    // bold, but inside template parameters normal, function arguments italic
+    QString rich("<b>");
+    int d = 0;
+    for(int i=0;i<_name.length();i++) {
+        switch(_name[i].toAscii()) {
+        case '&':
+            rich.append("&amp;");
+            break;
+        case '<':
+            d++;
+            rich.append("&lt;");
+            if (d==1)
+                rich.append("</b>");
+            break;
+        case '>':
+            d--;
+            if (d==0)
+                rich.append("<b>");
+            rich.append("&gt; "); // add space to allow for line break
+            break;
+        case '(':
+            rich.append("</b>(<i><b>");
+            break;
+        case ')':
+            rich.append("</b></i>)<b>");
+            break;
+        default:
+            rich.append(_name[i]);
+            break;
+        }
+    }
+    rich.append("</b>");
+    return rich;
 }
 
 QString TraceFunction::prettyEmptyName()

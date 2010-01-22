@@ -27,6 +27,7 @@
    <Action name="view_percentage"/>
    <Action name="view_expanded"/>
    <Action name="view_cycles"/>
+   <Action name="hide_templates"/>
   </Menu>
   <Menu name="settings">
    <Menu append="show_toolbar_merge"><text>Sidebars</text>
@@ -48,6 +49,7 @@
   <Action name="view_percentage"/>
   <Action name="view_cycles"/>
   <Action name="view_expanded"/>
+  <Action name="hide_templates"/>
  </ToolBar>
  <ToolBar name="stateToolBar" noMerge="1"><text>State Toolbar</text> 
   <Action name="view_cost_type"/>

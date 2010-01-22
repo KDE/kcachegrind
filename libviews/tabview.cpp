@@ -38,6 +38,7 @@
 #include <QMenu>
 
 #include "config.h"
+#include "globalconfig.h"
 #include "eventtypeview.h"
 #include "partview.h"
 #include "callview.h"
@@ -422,6 +423,8 @@ void TabView::updateNameLabel(QString n)
 	_nameLabel->setText(_nameLabelText);
         _nameLabel->setToolTip(QString());
     }
+    if (!_nameLabelTooltip.isEmpty())
+        _nameLabel->setToolTip(_nameLabelTooltip);
 }
 
 void TabView::setData(TraceData* d)
@@ -720,9 +723,16 @@ void TabView::doUpdate(int changeType, bool force)
 		      configChanged |
 		      dataChanged))
     {
-	updateNameLabel( !_data ? tr("(No profile data file loaded)") :
-			 !_activeItem ? tr("(No function selected)") :
-			 _activeItem->prettyName() );
+        if (_data && _activeItem) {
+            _nameLabelTooltip = _activeItem->formattedName();
+            updateNameLabel(_activeItem->prettyName());
+        }
+        else {
+            _nameLabelTooltip = QString();
+            updateNameLabel( !_data ?
+                             tr("(No profile data file loaded)") :
+                             tr("(No function selected)"));
+        }
     }
 
     bool canShow;

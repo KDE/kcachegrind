@@ -50,9 +50,14 @@ public:
   virtual QString name() const;
 
   /**
-   * Same as name, but sometimes nicer for humans :-)
+   * Similar to name, but prettyfied = more descriptive to humans
    */
   virtual QString prettyName() const;
+
+  /**
+   * A HTMLified version of name, can return empty string
+   */
+  virtual QString formattedName() const;
 
   /**
    * Returns text of all cost metrics

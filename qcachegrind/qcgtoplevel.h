@@ -122,6 +122,7 @@ public slots:
   void setPercentage(bool);
   void setAbsoluteCost();
   void setRelativeCost();
+  void toggleHideTemplates();
   void toggleExpanded();
   void toggleCycles();
   void forceTrace();
@@ -219,7 +220,7 @@ private:
   QAction *_exportAction, *_dumpToggleAction, *_exitAction;
   QAction *_sidebarMenuAction, *_recentFilesMenuAction;
   QAction *_cyclesToggleAction, *_percentageToggleAction;
-  QAction *_expandedToggleAction;
+  QAction *_expandedToggleAction, *_hideTemplatesToggleAction;
   QAction *_splittedToggleAction, *_splitDirectionToggleAction;
   QAction *_layoutNext, *_layoutPrev, *_layoutRemove, *_layoutDup;
   QAction *_layoutRestore, *_layoutSave;

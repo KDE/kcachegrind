@@ -68,6 +68,10 @@ QString CostItem::prettyName() const
     return name();
 }
 
+QString CostItem::formattedName() const
+{
+    return QString();
+}
 
 QString CostItem::fullName() const
 {
