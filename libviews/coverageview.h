@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2003-2009 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -23,26 +23,31 @@
 #ifndef COVERAGEVIEW_H
 #define COVERAGEVIEW_H
 
-#include <q3listview.h>
+#include <QTreeWidget>
+
 #include "tracedata.h"
 #include "traceitemview.h"
 #include "listutils.h"
 
-class CoverageView: public Q3ListView, public TraceItemView
+class CoverageView: public QTreeWidget, public TraceItemView
 {
   Q_OBJECT
 
 public:
   CoverageView(bool showCallers, TraceItemView* parentView,
-	       QWidget* parent=0, const char* name=0);
+               QWidget* parent = 0);
 
   virtual QWidget* widget() { return this; }
   QString whatsThis() const;
 
-private slots:
-  void context(Q3ListViewItem*,const QPoint &, int);
-  void selectedSlot(Q3ListViewItem*);
-  void activatedSlot(Q3ListViewItem*);
+protected slots:
+  void context(const QPoint &);
+  void selectedSlot(QTreeWidgetItem*, QTreeWidgetItem*);
+  void activatedSlot(QTreeWidgetItem*, int);
+  void headerClicked(int);
+
+protected:
+  void keyPressEvent(QKeyEvent* event);
 
 private:
   CostItem* canShow(CostItem*);

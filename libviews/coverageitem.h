@@ -23,22 +23,22 @@
 #ifndef COVERAGEITEM_H
 #define COVERAGEITEM_H
 
-#include <q3listview.h>
+#include <QTreeWidget>
 #include "tracedata.h"
 
 class Coverage;
 
-class CallerCoverageItem: public Q3ListViewItem
+class CallerCoverageItem: public QTreeWidgetItem
 {
 public:
-  CallerCoverageItem(Q3ListView* parent, Coverage* c,
+  CallerCoverageItem(QTreeWidget* parent, Coverage* c,
 		     TraceFunction* base,
                      EventType* ct, ProfileContext::Type gt);
-  CallerCoverageItem(Q3ListView* parent, int skipped, Coverage* c,
+  CallerCoverageItem(QTreeWidget* parent, int skipped, Coverage* c,
 		     TraceFunction* base,
                      EventType* ct, ProfileContext::Type gt);
 
-  int compare(Q3ListViewItem * i, int col, bool ascending ) const;
+  bool operator< ( const QTreeWidgetItem & other ) const;
   TraceFunction* function() { return (_skipped) ? 0 : _function; }
   void setCostType(EventType* ct);
   void setGroupType(ProfileContext::Type);
@@ -56,17 +56,17 @@ private:
 };
 
 
-class CalleeCoverageItem: public Q3ListViewItem
+class CalleeCoverageItem: public QTreeWidgetItem
 {
 public:
-  CalleeCoverageItem(Q3ListView* parent, Coverage* c,
+  CalleeCoverageItem(QTreeWidget* parent, Coverage* c,
 		     TraceFunction* base,
                      EventType* ct, ProfileContext::Type gt);
-  CalleeCoverageItem(Q3ListView* parent, int skipped, Coverage* c,
+  CalleeCoverageItem(QTreeWidget* parent, int skipped, Coverage* c,
 		     TraceFunction* base,
                      EventType* ct, ProfileContext::Type gt);
 
-  int compare(Q3ListViewItem * i, int col, bool ascending ) const;
+  bool operator< ( const QTreeWidgetItem & other ) const;
   TraceFunction* function() { return (_skipped) ? 0 : _function; }
   void setCostType(EventType* ct);
   void setGroupType(ProfileContext::Type);

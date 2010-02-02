@@ -25,6 +25,8 @@
 
 #include <QAction>
 #include <QMenu>
+#include <QHeaderView>
+#include <QKeyEvent>
 
 #include "globalconfig.h"
 #include "coverageitem.h"
@@ -36,52 +38,52 @@
 //
 
 
-CoverageView::CoverageView(bool showCallers, TraceItemView* parentView,
-			   QWidget* parent, const char* name)
-  : Q3ListView(parent, name), TraceItemView(parentView)
+CoverageView::CoverageView(bool showCallers, TraceItemView* parentView, QWidget* parent)
+    : QTreeWidget(parent), TraceItemView(parentView)
 {
     _showCallers = showCallers;
 
-
-    addColumn( tr( "Incl." ) );
+    QStringList labels;
+    labels  << tr( "Incl." );
     if (_showCallers) {
-	addColumn( tr( "Distance" ) );
-	addColumn( tr( "Called" ) );
-	addColumn( tr( "Caller" ) );
+        setColumnCount(4);
+        labels  << tr( "Distance" ),
+        labels  << tr( "Called" ),
+        labels  << tr( "Caller" );
     }
     else {
-	addColumn( tr( "Self" ) );
-	addColumn( tr( "Distance" ) );
-	addColumn( tr( "Calling" ) );
-	addColumn( tr( "Callee" ) );
-	setColumnAlignment(3, Qt::AlignRight);
+        setColumnCount(5);
+        labels  << tr( "Self" ),
+        labels  << tr( "Distance" ),
+        labels  << tr( "Calling" ),
+        labels  << tr( "Callee" );
     }
+    setHeaderLabels(labels);
 
-    setSorting(0,false);
-    setColumnAlignment(0, Qt::AlignRight);
-    setColumnAlignment(1, Qt::AlignRight);
-    setColumnAlignment(2, Qt::AlignRight);
+    // forbid scaling icon pixmaps to smaller size
+    setIconSize(QSize(99,99));
     setAllColumnsShowFocus(true);
-    setResizeMode(Q3ListView::LastColumn);
+    setRootIsDecorated(false);
+    // sorting will be enabled after refresh()
+    sortByColumn(0, Qt::DescendingOrder);
     setMinimumHeight(50);
 
-    connect( this,
-	     SIGNAL( selectionChanged(Q3ListViewItem*) ),
-	     SLOT( selectedSlot(Q3ListViewItem*) ) );
-
-    connect( this,
-	     SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
-	     SLOT(context(Q3ListViewItem*, const QPoint &, int)));
-
-    connect(this,
-	    SIGNAL(doubleClicked(Q3ListViewItem*)),
-	    SLOT(activatedSlot(Q3ListViewItem*)));
-
-    connect(this,
-	    SIGNAL(returnPressed(Q3ListViewItem*)),
-	    SLOT(activatedSlot(Q3ListViewItem*)));
-
     this->setWhatsThis( whatsThis() );
+
+    connect( this,
+             SIGNAL( currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+             SLOT( selectedSlot(QTreeWidgetItem*,QTreeWidgetItem*) ) );
+
+    connect( this,
+             SIGNAL(customContextMenuRequested(const QPoint &) ),
+             SLOT(context(const QPoint &)));
+
+    connect(this,
+            SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
+            SLOT(activatedSlot(QTreeWidgetItem*,int)));
+
+    connect(header(), SIGNAL(sectionClicked(int)),
+            this, SLOT(headerClicked(int)));
 }
 
 QString CoverageView::whatsThis() const
@@ -148,8 +150,10 @@ QString CoverageView::whatsThis() const
 	      "function of the other panel is changed instead.</p>");
 }
 
-void CoverageView::context(Q3ListViewItem* i, const QPoint & p, int c)
+void CoverageView::context(const QPoint & p)
 {
+  int c = columnAt(p.x());
+  QTreeWidgetItem* i = itemAt(p);
   QMenu popup;
 
   TraceFunction* f = 0;
@@ -174,16 +178,16 @@ void CoverageView::context(Q3ListViewItem* i, const QPoint & p, int c)
 
   QAction* a = popup.exec(p);
   if (a == activateFunctionAction)
-      activated(f);
+      TraceItemView::activated(f);
 }
 
-void CoverageView::selectedSlot(Q3ListViewItem * i)
+void CoverageView::selectedSlot(QTreeWidgetItem* i, QTreeWidgetItem*)
 {
   TraceFunction* f = 0;
   if (i) {
       f = _showCallers ?
-	  ((CallerCoverageItem*)i)->function() :
-	  ((CalleeCoverageItem*)i)->function();
+          ((CallerCoverageItem*)i)->function() :
+          ((CalleeCoverageItem*)i)->function();
   }
 
   if (f) {
@@ -192,16 +196,45 @@ void CoverageView::selectedSlot(Q3ListViewItem * i)
   }
 }
 
-void CoverageView::activatedSlot(Q3ListViewItem * i)
+void CoverageView::activatedSlot(QTreeWidgetItem* i, int)
 {
   TraceFunction* f = 0;
   if (i) {
       f = _showCallers ?
-	  ((CallerCoverageItem*)i)->function() :
-	  ((CalleeCoverageItem*)i)->function();
+          ((CallerCoverageItem*)i)->function() :
+          ((CalleeCoverageItem*)i)->function();
   }
 
-  if (f) activated(f);
+  if (f) TraceItemView::activated(f);
+}
+
+void CoverageView::headerClicked(int col)
+{
+    // distance and name columns should be sortable in both ways
+    if (_showCallers) {
+        if ((col == 1) || (col==3)) return;
+    }
+    else {
+        if ((col == 2) || (col==4)) return;
+    }
+
+    // all others only descending
+    sortByColumn(col, Qt::DescendingOrder);
+}
+
+void CoverageView::keyPressEvent(QKeyEvent* event)
+{
+    QTreeWidgetItem *item = currentItem();
+    if (item && ((event->key() == Qt::Key_Return) ||
+                 (event->key() == Qt::Key_Space)))
+    {
+        TraceFunction* f;
+        f = _showCallers ?
+            ((CallerCoverageItem*)item)->function() :
+            ((CalleeCoverageItem*)item)->function();
+        TraceItemView::activated(f);
+    }
+    QTreeView::keyPressEvent(event);
 }
 
 CostItem* CoverageView::canShow(CostItem* i)
@@ -229,7 +262,7 @@ void CoverageView::doUpdate(int changeType, bool)
 	}
 
 	TraceFunction* f = 0;
-	Q3ListViewItem* i = Q3ListView::selectedItem();
+        QTreeWidgetItem* i = currentItem();
 	if (i) {
 	    f = _showCallers ?
 		((CallerCoverageItem*)i)->function() :
@@ -237,13 +270,14 @@ void CoverageView::doUpdate(int changeType, bool)
 	}
 	if (f == _selectedItem) return;
 
-	Q3ListViewItem *item;
-	for (item = firstChild();item;item = item->nextSibling()) {
+        QTreeWidgetItem *item;
+        for (int i=0; i<topLevelItemCount(); i++) {
+            item = this->topLevelItem(i);
 	    f = _showCallers ?
 		((CallerCoverageItem*)item)->function() :
 		((CalleeCoverageItem*)item)->function();
 	    if (f == _selectedItem) {
-		ensureItemVisible(item);
+                scrollToItem(item);
 		setCurrentItem(item);
 		break;
 	    }
@@ -252,13 +286,14 @@ void CoverageView::doUpdate(int changeType, bool)
     }
 
     if (changeType == groupTypeChanged) {
-	Q3ListViewItem *item;
-	for (item = firstChild();item;item = item->nextSibling()) {
+        QTreeWidgetItem *item;
+        for (int i=0; i<topLevelItemCount();i++) {
+            item = topLevelItem(i);
 	    if (_showCallers)
 		((CallerCoverageItem*)item)->setGroupType(_groupType);
 	    else
-		((CalleeCoverageItem*)item)->setGroupType(_groupType);
-	}
+                ((CalleeCoverageItem*)item)->setGroupType(_groupType);
+        }
 	return;
     }
 
@@ -268,9 +303,6 @@ void CoverageView::doUpdate(int changeType, bool)
 void CoverageView::refresh()
 {
     clear();
-    setColumnWidth(0, 50);
-    if (!_showCallers)
-	setColumnWidth(1, 50);
 
     if (!_data || !_activeItem) return;
 
@@ -297,25 +329,38 @@ void CoverageView::refresh()
 	_hc.addCost(ff, SubCost(realSum * c->inclusive()));
     }
 
+    QList<QTreeWidgetItem*> items;
+    QTreeWidgetItem* item;
     for(int i=0;i<_hc.realCount();i++) {
       ff = (TraceFunction*) _hc[i];
       Coverage* c = (Coverage*) ff->assoziation(Coverage::Rtti);
       if (_showCallers)
-	new CallerCoverageItem(this, c, f, _eventType, _groupType);
+          item = new CallerCoverageItem(0, c, f, _eventType, _groupType);
       else
-	new CalleeCoverageItem(this, c, f, _eventType, _groupType);
+          item = new CalleeCoverageItem(0, c, f, _eventType, _groupType);
+      items.append(item);
     }
     if (_hc.hasMore()) {
       // a placeholder for all the functions skipped ...
       ff = (TraceFunction*) _hc[_hc.maxSize()-1];
       Coverage* c = (Coverage*) ff->assoziation(Coverage::Rtti);
       if (_showCallers)
-	new CallerCoverageItem(this, _hc.count() - _hc.maxSize(),
-			       c, f, _eventType, _groupType);
+        item = new CallerCoverageItem(0, _hc.count() - _hc.maxSize(),
+                                      c, f, _eventType, _groupType);
       else
-	new CalleeCoverageItem(this, _hc.count() - _hc.maxSize(),
-			       c, f, _eventType, _groupType);
+        item = new CalleeCoverageItem(0, _hc.count() - _hc.maxSize(),
+                                      c, f, _eventType, _groupType);
+      items.append(item);
     }
+
+    // when inserting, switch off sorting for performance reason
+    setSortingEnabled(false);
+    addTopLevelItems(items);
+    setSortingEnabled(true);
+    // enabling sorting switches on the indicator, but we want it off
+    header()->setSortIndicatorShown(false);
+    // resize to content now (section size still can be interactively changed)
+    header()->resizeSections(QHeaderView::ResizeToContents);
 }
 
 #include "coverageview.moc"

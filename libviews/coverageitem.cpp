@@ -31,11 +31,11 @@
 // CallerCoverageItem
 
 
-CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, Coverage* c,
+CallerCoverageItem::CallerCoverageItem(QTreeWidget* parent, Coverage* c,
                                        TraceFunction* base,
                                        EventType* ct,
                                        ProfileContext::Type gt)
-    : Q3ListViewItem(parent)
+    : QTreeWidgetItem(parent)
 {
   _skipped = 0;
   _coverage = c;
@@ -44,16 +44,18 @@ CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, Coverage* c,
   _groupType = ProfileContext::InvalidType;
 
   setText(3, _function->prettyNameWithLocation());
-
+  setTextAlignment(0, Qt::AlignRight);
+  setTextAlignment(1, Qt::AlignRight);
+  setTextAlignment(2, Qt::AlignRight);
   setCostType(ct);
   setGroupType(gt);
 }
 
-CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, int skipped, Coverage* c,
+CallerCoverageItem::CallerCoverageItem(QTreeWidget* parent, int skipped, Coverage* c,
                                        TraceFunction* base,
                                        EventType* ct,
                                        ProfileContext::Type gt)
-    : Q3ListViewItem(parent)
+    : QTreeWidgetItem(parent)
 {
   _skipped = skipped;
   _coverage = c;
@@ -62,7 +64,9 @@ CallerCoverageItem::CallerCoverageItem(Q3ListView* parent, int skipped, Coverage
   _groupType = ProfileContext::InvalidType;
 
   setText(3, QObject::tr("(%n function(s) skipped)", "", _skipped));
-
+  setTextAlignment(0, Qt::AlignRight);
+  setTextAlignment(1, Qt::AlignRight);
+  setTextAlignment(2, Qt::AlignRight);
   setCostType(ct);
   setGroupType(gt);
 }
@@ -74,7 +78,7 @@ void CallerCoverageItem::setGroupType(ProfileContext::Type gt)
   _groupType = gt;
 
   QColor c = GlobalConfig::functionColor(_groupType, _function);
-  setPixmap(3, colorPixmap(10, 10, c));
+  setIcon(3, colorPixmap(10, 10, c));
 }
 
 void CallerCoverageItem::setCostType(EventType* ct)
@@ -106,7 +110,7 @@ void CallerCoverageItem::update()
   }
 
   setText(0, str);
-  setPixmap(0, partitionPixmap(25, 10, _coverage->inclusiveHistogram(), 0,
+  setIcon(0, partitionPixmap(25, 10, _coverage->inclusiveHistogram(), 0,
                                Coverage::maxHistogramDepth, false));
 
   // call count
@@ -127,55 +131,44 @@ void CallerCoverageItem::update()
 }
 
 
-int CallerCoverageItem::compare(Q3ListViewItem * i,
-                                int col, bool ascending ) const
+bool CallerCoverageItem::operator<( const QTreeWidgetItem & other ) const
 {
   const CallerCoverageItem* ci1 = this;
-  const CallerCoverageItem* ci2 = (CallerCoverageItem*) i;
-
-  // we always want descending order
-  if (ascending) {
-    ci1 = ci2;
-    ci2 = this;
-  }
+  const CallerCoverageItem* ci2 = (CallerCoverageItem*) &other;
+  int col = treeWidget()->sortColumn();
 
   // a skip entry is always sorted last
-  if (ci1->_skipped) return -1;
-  if (ci2->_skipped) return 1;
+  if (ci1->_skipped) return true;
+  if (ci2->_skipped) return false;
 
   if (col==0) {
-    if (ci1->_pSum < ci2->_pSum) return -1;
-    if (ci1->_pSum > ci2->_pSum) return 1;
+    if (ci1->_pSum < ci2->_pSum) return true;
+    if (ci1->_pSum > ci2->_pSum) return false;
 
     // for same percentage (e.g. all 100%), use distance info
-    if (ci1->_distance < ci2->_distance) return -1;
-    if (ci1->_distance > ci2->_distance) return 1;
-    return 0;
+    return ci1->_distance < ci2->_distance;
   }
 
   if (col==1) {
-    if (ci1->_distance < ci2->_distance) return -1;
-    if (ci1->_distance > ci2->_distance) return 1;
-    return 0;
+    return ci1->_distance < ci2->_distance;
   }
 
   if (col==2) {
-    if (ci1->_cc < ci2->_cc) return -1;
-    if (ci1->_cc > ci2->_cc) return 1;
-    return 0;
+    return ci1->_cc < ci2->_cc;
   }
-  return Q3ListViewItem::compare(i, col, ascending);
+
+  return QTreeWidgetItem::operator <(other);
 }
+
 
 
 // CalleeCoverageItem
 
-
-CalleeCoverageItem::CalleeCoverageItem(Q3ListView* parent, Coverage* c,
+CalleeCoverageItem::CalleeCoverageItem(QTreeWidget* parent, Coverage* c,
                                        TraceFunction* base,
                                        EventType* ct,
                                        ProfileContext::Type gt)
-    : Q3ListViewItem(parent)
+    : QTreeWidgetItem(parent)
 {
   _skipped = 0;
   _coverage = c;
@@ -186,15 +179,20 @@ CalleeCoverageItem::CalleeCoverageItem(Q3ListView* parent, Coverage* c,
   if ( _function )
      setText(4, _function->prettyNameWithLocation());
 
+  setTextAlignment(0, Qt::AlignRight);
+  setTextAlignment(1, Qt::AlignRight);
+  setTextAlignment(2, Qt::AlignRight);
+  setTextAlignment(3, Qt::AlignRight);
+
   setCostType(ct);
   setGroupType(gt);
 }
 
-CalleeCoverageItem::CalleeCoverageItem(Q3ListView* parent, int skipped, Coverage* c,
+CalleeCoverageItem::CalleeCoverageItem(QTreeWidget* parent, int skipped, Coverage* c,
                                        TraceFunction* base,
                                        EventType* ct,
                                        ProfileContext::Type gt)
-    : Q3ListViewItem(parent)
+    : QTreeWidgetItem(parent)
 {
   _skipped = skipped;
   _coverage = c;
@@ -203,6 +201,11 @@ CalleeCoverageItem::CalleeCoverageItem(Q3ListView* parent, int skipped, Coverage
   _groupType = ProfileContext::InvalidType;
 
   setText(4, QObject::tr("(%n function(s) skipped)", "", _skipped));
+
+  setTextAlignment(0, Qt::AlignRight);
+  setTextAlignment(1, Qt::AlignRight);
+  setTextAlignment(2, Qt::AlignRight);
+  setTextAlignment(3, Qt::AlignRight);
 
   setCostType(ct);
   setGroupType(gt);
@@ -215,7 +218,7 @@ void CalleeCoverageItem::setGroupType(ProfileContext::Type gt)
   _groupType = gt;
 
   QColor c = GlobalConfig::functionColor(_groupType, _function);
-  setPixmap(4, colorPixmap(10, 10, c));
+  setIcon(4, colorPixmap(10, 10, c));
 }
 
 void CalleeCoverageItem::setCostType(EventType* ct)
@@ -265,9 +268,9 @@ void CalleeCoverageItem::update()
     setText(1, _self.pretty());
   }
 
-  setPixmap(0, partitionPixmap(25, 10, _coverage->inclusiveHistogram(), 0,
+  setIcon(0, partitionPixmap(25, 10, _coverage->inclusiveHistogram(), 0,
                                Coverage::maxHistogramDepth, false));
-  setPixmap(1, partitionPixmap(25, 10, _coverage->selfHistogram(), 0,
+  setIcon(1, partitionPixmap(25, 10, _coverage->selfHistogram(), 0,
                                Coverage::maxHistogramDepth, false));
 
 
@@ -296,48 +299,40 @@ void CalleeCoverageItem::update()
 }
 
 
-int CalleeCoverageItem::compare(Q3ListViewItem * i,
-                                int col, bool ascending ) const
+bool CalleeCoverageItem::operator<( const QTreeWidgetItem & other ) const
 {
-  CalleeCoverageItem* ci = (CalleeCoverageItem*) i;
-
+  CalleeCoverageItem* ci = (CalleeCoverageItem*) &other;
+  int col = treeWidget()->sortColumn();
   // a skip entry is always sorted last
-  if (_skipped) return -1;
-  if (ci->_skipped) return 1;
+  if (_skipped) return true;
+  if (ci->_skipped) return false;
 
   if (col==0) {
-    if (_pSum < ci->_pSum) return -1;
-    if (_pSum > ci->_pSum) return 1;
+    if (_pSum < ci->_pSum) return true;
+    if (_pSum > ci->_pSum) return false;
 
     // for same percentage (e.g. all 100%), use distance info
-    if (_distance < ci->_distance) return -1;
-    if (_distance > ci->_distance) return 1;
-    return 0;
+    return _distance < ci->_distance;
+
   }
 
   if (col==1) {
-    if (_pSelf < ci->_pSelf) return -1;
-    if (_pSelf > ci->_pSelf) return 1;
+    if (_pSelf < ci->_pSelf) return true;
+    if (_pSelf > ci->_pSelf) return false;
 
     // for same percentage (e.g. all 100%), use distance info
-    if (_distance < ci->_distance) return -1;
-    if (_distance > ci->_distance) return 1;
-    return 0;
+    return _distance < ci->_distance;
   }
 
   if (col==2) {
     // we want to sort the distance in contra direction to costs
-    if (_distance < ci->_distance) return  1;
-    if (_distance > ci->_distance) return -1;
-    return 0;
+    return _distance < ci->_distance;
   }
 
   if (col==3) {
-    if (_cc < ci->_cc) return -1;
-    if (_cc > ci->_cc) return 1;
-    return 0;
+    return _cc < ci->_cc;
   }
-  return Q3ListViewItem::compare(i, col, ascending);
+  return QTreeWidgetItem::operator <(other);
 }
 
 

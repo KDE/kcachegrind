@@ -355,6 +355,12 @@ TabView::TabView(TraceItemView* parentView,
   connect(_bottomTW, SIGNAL(visibleRectChanged(TabWidget*)),
           this, SLOT(visibleRectChangedSlot(TabWidget*)));
 
+  CoverageView * allCallerView = new CoverageView(true, this);
+  CoverageView * allCalleeView = new CoverageView(false, this);
+
+  // Options of visualization views are stored by their view name
+  allCallerView->setObjectName("AllCallerView");
+  allCalleeView->setObjectName("AllCalleeView");
 
   // default positions...
   // Keep following order in sync with DEFAULT_xxxTABS defines!
@@ -365,9 +371,7 @@ TabView::TabView(TraceItemView* parentView,
   addTop( addTab( tr("Callers"),
 		  new CallView(true, this, 0,
 			       "CallerView")));
-  addTop( addTab( tr("All Callers"),
-		  new CoverageView(true, this, 0,
-				   "AllCallerView")));
+  addTop( addTab( tr("All Callers"), allCallerView) );
   addTop( addTab( tr("Callee Map"),
 		  new CallMapView(false, this, 0,
 				  "CalleeMapView")));
@@ -384,9 +388,7 @@ TabView::TabView(TraceItemView* parentView,
   addBottom( addTab( tr("Call Graph"),
 		     new CallGraphView(this, 0,
 				       "CallGraphView")));
-  addBottom( addTab( tr("All Callees"),
-		     new CoverageView(false, this, 0,
-				      "AllCalleeView")));
+  addBottom( addTab( tr("All Callees"), allCalleeView) );
   addBottom( addTab( tr("Caller Map"),
 		     new CallMapView(true, this, 0,
 				     "CallerMapView")));
