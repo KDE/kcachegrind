@@ -83,10 +83,10 @@ SourceItem::SourceItem(SourceView* sv, Q3ListViewItem* parent,
   QString callStr = "  ";
   if (cc==0)
       callStr += QObject::tr("Active call to '%1'")
-	  .arg(Qt::escape(_lineCall->call()->calledName()));
+          .arg(_lineCall->call()->calledName());
   else
-      callStr += QObject::tr("%n call(s) '%2'", "", (uint64)cc)
-	  .arg(Qt::escape(_lineCall->call()->calledName()));
+      callStr += QObject::tr("%n call(s) to '%2'", "", (uint64)cc)
+          .arg(_lineCall->call()->calledName());
 
   TraceFunction* calledF = _lineCall->call()->called();
   calledF->addPrettyLocation(callStr);
