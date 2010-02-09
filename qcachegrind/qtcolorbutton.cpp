@@ -1,6 +1,7 @@
 /****************************************************************************
 **
 ** Copied from Qt 4.6.0 sources, directory tools/shared/qtgradienteditor
+** with small modifications to allow compilation with Qt 4.4
 **
 ** Copyright (C) 2009 Nokia Corporation and/or its subsidiary(-ies).
 ** All rights reserved.
@@ -61,7 +62,7 @@ public:
 
 void QtColorButtonPrivate::slotEditColor()
 {
-    const QColor newColor = QColorDialog::getColor(m_color, q_ptr, QString(), QColorDialog::ShowAlphaChannel);
+    const QColor newColor = QColorDialog::getColor(m_color, q_ptr);
     if (!newColor.isValid() || newColor == q_ptr->color())
         return;
     q_ptr->setColor(newColor);
@@ -124,6 +125,7 @@ QtColorButton::QtColorButton(QWidget *parent)
 
 QtColorButton::~QtColorButton()
 {
+    delete d_ptr;
 }
 
 void QtColorButton::setColor(const QColor &color)

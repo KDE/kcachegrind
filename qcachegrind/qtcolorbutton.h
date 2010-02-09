@@ -1,6 +1,7 @@
 /****************************************************************************
 **
 ** Copied from Qt 4.6.0 sources, directory tools/shared/qtgradienteditor
+** with small modifications to allow compilation with Qt 4.4
 **
 ** Copyright (C) 2009 Nokia Corporation and/or its subsidiary(-ies).
 ** All rights reserved.
@@ -67,7 +68,7 @@ protected:
     void dropEvent(QDropEvent *event);
 #endif
 private:
-    QScopedPointer<class QtColorButtonPrivate> d_ptr;
+    class QtColorButtonPrivate* d_ptr;
     Q_DECLARE_PRIVATE(QtColorButton)
     Q_DISABLE_COPY(QtColorButton)
     Q_PRIVATE_SLOT(d_func(), void slotEditColor())
