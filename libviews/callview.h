@@ -53,6 +53,7 @@ private:
   void doUpdate(int, bool);
   void refresh();
 
+  QStringList _headerLabels;
   bool _showCallers;
 };
 
