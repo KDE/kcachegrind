@@ -32,9 +32,13 @@
 // CallItem
 
 
-CallItem::CallItem(CallView* view, Q3ListView* parent, TraceCall* c)
-    : Q3ListViewItem(parent)
+CallItem::CallItem(CallView* view, QTreeWidget* parent, TraceCall* c)
+    : QTreeWidgetItem(parent)
 {
+    setTextAlignment(0, Qt::AlignRight);
+    setTextAlignment(1, Qt::AlignRight);
+    setTextAlignment(2, Qt::AlignRight);
+
   _call = c;
   _view = view;
 
@@ -61,7 +65,7 @@ CallItem::CallItem(CallView* view, Q3ListView* parent, TraceCall* c)
 void  CallItem::updateGroup()
 {
   QColor c = GlobalConfig::functionColor(_view->groupType(), _shown);
-  setPixmap(3, colorPixmap(10, 10, c));
+  setIcon(3, colorPixmap(10, 10, c));
 }
 
 void CallItem::updateCost()
@@ -101,7 +105,7 @@ void CallItem::updateCost()
 	QString str = "-";
 
 	setText(0, str);
-	setPixmap(0, QPixmap());
+        setIcon(0, QPixmap());
     }
     else {
 	double sum  = 100.0 * _sum / total;
@@ -112,7 +116,7 @@ void CallItem::updateCost()
 	else
 	    setText(0, _call->prettySubCost(ct));
 
-	setPixmap(0, costPixmap(ct, _call, total, false));
+        setIcon(0, costPixmap(ct, _call, total, false));
     }
 
     // Cost Type 2
@@ -125,7 +129,7 @@ void CallItem::updateCost()
 	QString str = "-";
 
 	setText(1, str);
-	setPixmap(1, QPixmap());
+        setIcon(1, QPixmap());
       }
       else {
 	double sum  = 100.0 * _sum2 / total;
@@ -136,7 +140,7 @@ void CallItem::updateCost()
 	else
 	  setText(1, _call->prettySubCost(ct2));
 
-	setPixmap(1, costPixmap(ct2, _call, total, false));
+        setIcon(1, costPixmap(ct2, _call, total, false));
       }
     }
 
@@ -150,36 +154,25 @@ void CallItem::updateCost()
 			    KIconLoader::DefaultState, QStringList(), 0, true);
 #endif
     }
-    setPixmap(2, p);
+    setIcon(2, p);
 }
 
 
-int CallItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
+bool CallItem::operator<(const QTreeWidgetItem& other) const
 {
+  int col = treeWidget()->sortColumn();
   const CallItem* ci1 = this;
-  const CallItem* ci2 = (CallItem*) i;
+  const CallItem* ci2 = (CallItem*) &other;
 
-  // we always want descending order
-  if (ascending) {
-    ci1 = ci2;
-    ci2 = this;
-  }
+  if (col==0)
+    return ci1->_sum < ci2->_sum;
 
-  if (col==0) {
-    if (ci1->_sum < ci2->_sum) return -1;
-    if (ci1->_sum > ci2->_sum) return 1;
-    return 0;
-  }
-  if (col==1) {
-    if (ci1->_sum2 < ci2->_sum2) return -1;
-    if (ci1->_sum2 > ci2->_sum2) return 1;
-    return 0;
-  }
-  if (col==2) {
-    if (ci1->_cc < ci2->_cc) return -1;
-    if (ci1->_cc > ci2->_cc) return 1;
-    return 0;
-  }
-  return Q3ListViewItem::compare(i, col, ascending);
+  if (col==1)
+    return ci1->_sum2 < ci2->_sum2;
+
+  if (col==2)
+   return ci1->_cc < ci2->_cc;
+
+  return QTreeWidgetItem::operator <(other);
 }
 

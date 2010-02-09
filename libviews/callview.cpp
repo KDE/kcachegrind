@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2003-2009 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -25,6 +25,9 @@
 
 #include <QAction>
 #include <QMenu>
+#include <QTreeWidget>
+#include <QHeaderView>
+#include <QKeyEvent>
 
 #include "globalconfig.h"
 #include "callitem.h"
@@ -35,48 +38,43 @@
 //
 
 
-CallView::CallView(bool showCallers, TraceItemView* parentView,
-		   QWidget* parent, const char* name)
-  : Q3ListView(parent, name), TraceItemView(parentView)
+CallView::CallView(bool showCallers, TraceItemView* parentView, QWidget* parent)
+    : QTreeWidget(parent), TraceItemView(parentView)
 {
     _showCallers = showCallers;
 
-    addColumn( tr( "Cost" ) );
-    addColumn( tr( "Cost 2" ) );
-    if (_showCallers) {
-	addColumn( tr( "Count" ) );
-	addColumn( tr( "Caller" ) );
-    }
-    else {
-	addColumn( tr( "Count" ) );
-	addColumn( tr( "Callee" ) );
-    }
+    setColumnCount(4);
+    QStringList labels;
+    labels  << tr( "Cost" )
+            << tr( "Cost 2" )
+            << tr( "Count" )
+            << ((_showCallers) ? tr( "Caller" ) : tr( "Callee" ));
+    setHeaderLabels(labels);
 
-    setSorting(0,false);
-    setColumnAlignment(0, Qt::AlignRight);
-    setColumnAlignment(1, Qt::AlignRight);
-    setColumnAlignment(2, Qt::AlignRight);
+    // forbid scaling icon pixmaps to smaller size
+    setIconSize(QSize(99,99));
     setAllColumnsShowFocus(true);
-    setResizeMode(Q3ListView::LastColumn);
+    setRootIsDecorated(false);
+    // sorting will be enabled after refresh()
+    sortByColumn(0, Qt::DescendingOrder);
     setMinimumHeight(50);
 
-    connect( this,
-	     SIGNAL( selectionChanged(Q3ListViewItem*) ),
-	     SLOT( selectedSlot(Q3ListViewItem*) ) );
-
-    connect( this,
-	     SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
-	     SLOT(context(Q3ListViewItem*, const QPoint &, int)));
-
-    connect(this,
-	    SIGNAL(doubleClicked(Q3ListViewItem*)),
-	    SLOT(activatedSlot(Q3ListViewItem*)));
-
-    connect(this,
-	    SIGNAL(returnPressed(Q3ListViewItem*)),
-	    SLOT(activatedSlot(Q3ListViewItem*)));
-
     this->setWhatsThis( whatsThis() );
+
+    connect( this,
+             SIGNAL( currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+             SLOT( selectedSlot(QTreeWidgetItem*,QTreeWidgetItem*) ) );
+
+    connect( this,
+             SIGNAL(customContextMenuRequested(const QPoint &) ),
+             SLOT(context(const QPoint &)));
+
+    connect(this,
+            SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
+            SLOT(activatedSlot(QTreeWidgetItem*,int)));
+
+    connect(header(), SIGNAL(sectionClicked(int)),
+            this, SLOT(headerClicked(int)));
 }
 
 QString CallView::whatsThis() const
@@ -107,10 +105,12 @@ QString CallView::whatsThis() const
 }
 
 
-void CallView::context(Q3ListViewItem* i, const QPoint & p, int col)
+void CallView::context(const QPoint & p)
 {
   QMenu popup;
 
+  int col = columnAt(p.x());
+  QTreeWidgetItem* i = itemAt(p);
   TraceCall* c = i ? ((CallItem*) i)->call() : 0;
   TraceFunction *f = 0, *cycle = 0;
 
@@ -141,12 +141,12 @@ void CallView::context(Q3ListViewItem* i, const QPoint & p, int col)
 
   QAction* a = popup.exec(p);
   if (a == activateFunctionAction)
-      activated(f);
+      TraceItemView::activated(f);
   else if (a == activateCycleAction)
-      activated(cycle);
+      TraceItemView::activated(cycle);
 }
 
-void CallView::selectedSlot(Q3ListViewItem * i)
+void CallView::selectedSlot(QTreeWidgetItem * i, QTreeWidgetItem *)
 {
   if (!i) return;
   TraceCall* c = ((CallItem*) i)->call();
@@ -157,14 +157,38 @@ void CallView::selectedSlot(Q3ListViewItem * i)
   selected(f);
 }
 
-void CallView::activatedSlot(Q3ListViewItem * i)
+void CallView::activatedSlot(QTreeWidgetItem* i,int)
 {
   if (!i) return;
+
   TraceCall* c = ((CallItem*) i)->call();
   // skip cycles: use the context menu to get to the cycle...
   CostItem* f = _showCallers ? c->caller(true) : c->called(true);
 
-  activated(f);
+  TraceItemView::activated(f);
+}
+
+void CallView::headerClicked(int col)
+{
+    // name columns should be sortable in both ways
+    if (col == 3) return;
+
+    // all others only descending
+    sortByColumn(col, Qt::DescendingOrder);
+}
+
+void CallView::keyPressEvent(QKeyEvent* event)
+{
+    QTreeWidgetItem *item = currentItem();
+    if (item && ((event->key() == Qt::Key_Return) ||
+                 (event->key() == Qt::Key_Space)))
+    {
+        TraceCall* c = ((CallItem*) item)->call();
+        CostItem* f = _showCallers ? c->caller(false) : c->called(false);
+
+        TraceItemView::activated(f);
+    }
+    QTreeView::keyPressEvent(event);
 }
 
 CostItem* CallView::canShow(CostItem* i)
@@ -191,7 +215,7 @@ void CallView::doUpdate(int changeType, bool)
 	    return;
 	}
 
-	CallItem* ci = (CallItem*) Q3ListView::selectedItem();
+        CallItem* ci = (CallItem*) currentItem();
 	TraceCall* c;
 	CostItem* ti;
 	if (ci) {
@@ -200,13 +224,14 @@ void CallView::doUpdate(int changeType, bool)
 	    if (ti == _selectedItem) return;
 	}
 
-	Q3ListViewItem *item;
-	for (item = firstChild();item;item = item->nextSibling()) {
+        QTreeWidgetItem *item = 0;
+        for (int i=0; i<topLevelItemCount();i++) {
+            item = topLevelItem(i);
 	    c = ((CallItem*) item)->call();
 	    ti = _showCallers ? c->caller() : c->called();
 	    if (ti == _selectedItem) {
-		ensureItemVisible(item);
-		setSelected(item,  true);
+                scrollToItem(item);
+                setCurrentItem(item);
 		break;
 	    }
 	}
@@ -215,9 +240,11 @@ void CallView::doUpdate(int changeType, bool)
     }
     
     if (changeType == groupTypeChanged) {
-	Q3ListViewItem *item;
-	for (item = firstChild();item;item = item->nextSibling())
+        QTreeWidgetItem *item;
+        for (int i=0; i<topLevelItemCount(); i++){
+            item = topLevelItem(i);
 	    ((CallItem*)item)->updateGroup();
+        }
 	return;
     }
 
@@ -227,13 +254,18 @@ void CallView::doUpdate(int changeType, bool)
 void CallView::refresh()
 {
     clear();
-    setColumnWidth(0, 50);
     setColumnWidth(1, _eventType2 ? 50:0);
-    setColumnWidth(2, 50);
+
+    QStringList labels;
+    labels  << tr( "Cost" )
+            << tr( "Cost 2" )
+            << tr( "Count" )
+            << ((_showCallers) ? tr( "Caller" ) : tr( "Callee" ));
     if (_eventType)
-      setColumnText(0, _eventType->name());
+        labels[0] = _eventType->name();
     if (_eventType2)
-      setColumnText(1, _eventType2->name());
+        labels[1] = _eventType2->name();
+    setHeaderLabels(labels);
 
     if (!_data || !_activeItem) return;
 
@@ -244,17 +276,22 @@ void CallView::refresh()
     // In the call lists, we skip cycles to show the real call relations
     TraceCallList l = _showCallers ? f->callers(true) : f->callings(true);
 
-    // Allow resizing of column 1
-    setColumnWidthMode(1, Q3ListView::Maximum);
-
+    QList<QTreeWidgetItem*> items;
     for (call=l.first();call;call=l.next())
 	if (call->subCost(_eventType)>0)
-	    new CallItem(this, this, call);
+            items.append(new CallItem(this, 0, call));
 
-    if (!_eventType2) {
-      setColumnWidthMode(1, Q3ListView::Manual);
-      setColumnWidth(1, 0);
-    }
+    // when inserting, switch off sorting for performance reason
+    setSortingEnabled(false);
+    addTopLevelItems(items);
+    setSortingEnabled(true);
+    // enabling sorting switches on the indicator, but we want it off
+    header()->setSortIndicatorShown(false);
+    // resize to content now (section size still can be interactively changed)
+    header()->resizeSections(QHeaderView::ResizeToContents);
+
+    if (!_eventType2)
+        setColumnWidth(1, 0);
 }
 
 #include "callview.moc"

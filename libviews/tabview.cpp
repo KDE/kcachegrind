@@ -355,10 +355,14 @@ TabView::TabView(TraceItemView* parentView,
   connect(_bottomTW, SIGNAL(visibleRectChanged(TabWidget*)),
           this, SLOT(visibleRectChangedSlot(TabWidget*)));
 
+  CallView* callerView = new CallView(true, this);
+  CallView* calleeView = new CallView(false, this);
   CoverageView * allCallerView = new CoverageView(true, this);
   CoverageView * allCalleeView = new CoverageView(false, this);
 
   // Options of visualization views are stored by their view name
+  callerView->setObjectName("CallerView");
+  calleeView->setObjectName("CalleeView");
   allCallerView->setObjectName("AllCallerView");
   allCalleeView->setObjectName("AllCalleeView");
 
@@ -368,9 +372,7 @@ TabView::TabView(TraceItemView* parentView,
   addTop( addTab( tr("Types"),
 		  new EventTypeView(this, 0,
 				   "EventTypeView")));
-  addTop( addTab( tr("Callers"),
-		  new CallView(true, this, 0,
-			       "CallerView")));
+  addTop( addTab( tr("Callers"), callerView) );
   addTop( addTab( tr("All Callers"), allCallerView) );
   addTop( addTab( tr("Callee Map"),
 		  new CallMapView(false, this, 0,
@@ -382,9 +384,7 @@ TabView::TabView(TraceItemView* parentView,
   addBottom( addTab( tr("Parts"),
 		     new PartView(this, 0,
 				  "PartView")));
-  addBottom( addTab( tr("Callees"),
-		     new CallView(false, this, 0,
-				  "CalleeView")));
+  addBottom( addTab( tr("Callees"), calleeView) );
   addBottom( addTab( tr("Call Graph"),
 		     new CallGraphView(this, 0,
 				       "CallGraphView")));
