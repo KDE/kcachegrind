@@ -65,6 +65,7 @@ CallView::CallView(bool showCallers, TraceItemView* parentView, QWidget* parent)
              SIGNAL( currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
              SLOT( selectedSlot(QTreeWidgetItem*,QTreeWidgetItem*) ) );
 
+    setContextMenuPolicy(Qt::CustomContextMenu);
     connect( this,
              SIGNAL(customContextMenuRequested(const QPoint &) ),
              SLOT(context(const QPoint &)));
@@ -109,6 +110,7 @@ void CallView::context(const QPoint & p)
 {
   QMenu popup;
 
+  // p is in local coordinates
   int col = columnAt(p.x());
   QTreeWidgetItem* i = itemAt(p);
   TraceCall* c = i ? ((CallItem*) i)->call() : 0;
@@ -139,7 +141,7 @@ void CallView::context(const QPoint & p)
   }
   addGoMenu(&popup);
 
-  QAction* a = popup.exec(p);
+  QAction* a = popup.exec(mapToGlobal(p + QPoint(0,header()->height())));
   if (a == activateFunctionAction)
       TraceItemView::activated(f);
   else if (a == activateCycleAction)

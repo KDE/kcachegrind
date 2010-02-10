@@ -74,6 +74,7 @@ CoverageView::CoverageView(bool showCallers, TraceItemView* parentView, QWidget*
              SIGNAL( currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
              SLOT( selectedSlot(QTreeWidgetItem*,QTreeWidgetItem*) ) );
 
+    setContextMenuPolicy(Qt::CustomContextMenu);
     connect( this,
              SIGNAL(customContextMenuRequested(const QPoint &) ),
              SLOT(context(const QPoint &)));
@@ -176,7 +177,7 @@ void CoverageView::context(const QPoint & p)
   }
   addGoMenu(&popup); 
 
-  QAction* a = popup.exec(p);
+  QAction* a = popup.exec(mapToGlobal(p + QPoint(0,header()->height())));
   if (a == activateFunctionAction)
       TraceItemView::activated(f);
 }
