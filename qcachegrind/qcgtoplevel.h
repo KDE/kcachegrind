@@ -247,6 +247,8 @@ private:
   TracePartList _hiddenParts;
   // layouts
   int _layoutCurrent, _layoutCount;
+  // remember last file directory for new QFileDialogs
+  QString _lastFile;
 
   // for delayed slots
   EventType* _eventTypeDelayed;

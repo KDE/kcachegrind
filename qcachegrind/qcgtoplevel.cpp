@@ -791,7 +791,7 @@ void QCGTopLevel::loadTrace()
     QString file;
     file = QFileDialog::getOpenFileName(this,
 					tr("Open Callgrind Data"),
-					QString::null,
+					_lastFile,
 					tr("Callgrind Files (callgrind.*)"));
     loadTrace(file);
 }
@@ -799,6 +799,7 @@ void QCGTopLevel::loadTrace()
 void QCGTopLevel::loadTrace(QString file, bool addToRecentFiles)
 {
     if (file.isEmpty()) return;
+    _lastFile = file;
 
     if (_data && _data->parts().count()>0) {
 
@@ -837,7 +838,7 @@ void QCGTopLevel::addTrace()
     QString file;
     file = QFileDialog::getOpenFileName(this,
 					tr("Add Callgrind Data"),
-					QString::null,
+					_lastFile,
 					tr("Callgrind Files (callgrind.*)"));
     addTrace(file);
 }
@@ -846,6 +847,7 @@ void QCGTopLevel::addTrace()
 void QCGTopLevel::addTrace(QString file)
 {
     if (file.isEmpty()) return;
+    _lastFile = file;
 
     if (_data) {
 	_data->load(file);
