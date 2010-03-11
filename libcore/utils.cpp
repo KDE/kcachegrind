@@ -24,6 +24,7 @@
 
 #include <errno.h>
 
+#include <QIODevice>
 #include <QFile>
 
 
@@ -336,7 +337,7 @@ bool FixString::stripInt64(int64& v, bool stripSpaces)
 
 // class FixFile
 
-FixFile::FixFile(QFile* file)
+FixFile::FixFile(QIODevice* file, const QString& filename)
 {
   _file = file;
 
@@ -347,7 +348,7 @@ FixFile::FixFile(QFile* file)
     return;
   }
 
-  _filename = file->name();
+  _filename = filename;
   if (!file->isOpen() && !file->open( QIODevice::ReadOnly ) ) {
     qWarning( "%s: %s", (const char*)QFile::encodeName(_filename),
 	      strerror( errno ) );
@@ -364,8 +365,12 @@ FixFile::FixFile(QFile* file)
 
 #if QT_VERSION >= 0x040400
   // QFile::map was introduced with Qt 4.4
-  if (file->size() >0)
-      addr = file->map( 0, file->size() );
+  if (file->size() >0) {
+      QFile* mappableDevice = dynamic_cast<QFile*>(file);
+      if (mappableDevice) {
+        addr = mappableDevice->map( 0, file->size() );
+      }
+  }
 #endif
 
   if (addr) {
@@ -395,7 +400,9 @@ FixFile::~FixFile()
     if (_used_mmap && _file) {
 	if (0) qDebug("Unmapping '%s'", qPrintable( _filename ));
 #if QT_VERSION >= 0x040400
-	if (!_file->unmap( (uchar*) _base ))
+	QFile* mappableDevice = dynamic_cast<QFile*>(_file);
+	Q_ASSERT(mappableDevice);
+	if (!mappableDevice->unmap( (uchar*) _base ))
 	    qWarning( "munmap: %s", strerror( errno ) );
 #endif
     }

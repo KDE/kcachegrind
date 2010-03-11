@@ -18,7 +18,7 @@
 
 #include "loader.h"
 
-#include <QFile>
+#include <QIODevice>
 #include <QVector>
 #include <QDebug>
 
@@ -40,7 +40,7 @@ class CachegrindLoader: public Loader
 public:
   CachegrindLoader();
 
-  bool canLoadTrace(QFile* file);
+  bool canLoadTrace(QIODevice* file);
   bool loadTrace(TracePart*);
   bool isPartOfTrace(QString file, TraceData*);
 
@@ -144,7 +144,7 @@ CachegrindLoader::CachegrindLoader()
     _emptyString = QString("");
 }
 
-bool CachegrindLoader::canLoadTrace(QFile* file)
+bool CachegrindLoader::canLoadTrace(QIODevice* file)
 {
   if (!file) return false;
 
@@ -698,16 +698,16 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
 
   _part     = part;
   _data     = part->data();
-  QFile* pFile = part->file();
+  QIODevice* pFile = part->file();
 
   if (!pFile) return false;
 
-  _filename = pFile->name();
+  _filename = part->name();
   _lineNo = 0;
 
   loadStart(_filename);
 
-  FixFile file(pFile);
+  FixFile file(pFile, _filename);
   if (!file.exists()) {
     loadFinished("File does not exist");
     return false;

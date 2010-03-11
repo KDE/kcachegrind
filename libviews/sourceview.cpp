@@ -392,7 +392,7 @@ bool SourceView::searchFile(QString& dir,
 
 	TracePart* firstPart = _data->parts().first();
 	if (firstPart) {
-	    QFileInfo partFile(*firstPart->file());
+	    QFileInfo partFile(firstPart->name());
 	    if (QFileInfo(partFile.absolutePath(), name).exists()) {
 		dir = partFile.absolutePath();
 		return true;

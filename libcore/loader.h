@@ -26,7 +26,7 @@
 #include <QList>
 #include <QString>
 
-class QFile;
+class QIODevice;
 class TracePart;
 class Loader;
 class Logger;
@@ -56,10 +56,10 @@ public:
   virtual ~Loader();
 
   // reimplement for a specific Loader
-  virtual bool canLoadTrace(QFile* file);
+  virtual bool canLoadTrace(QIODevice* file);
   virtual bool loadTrace(TracePart*);
 
-  static Loader* matchingLoader(QFile* file);
+  static Loader* matchingLoader(QIODevice* file);
   static Loader* loader(const QString& name);
   static void initLoaders();
   static void deleteLoaders();

@@ -25,7 +25,7 @@
 
 #include <qstring.h>
 
-class QFile;
+class QIODevice;
 
 typedef unsigned long long uint64;
 typedef long long int64;
@@ -100,7 +100,7 @@ class FixString {
 class FixFile {
 
  public:
-    FixFile(QFile*);
+    FixFile(QIODevice*, const QString&);
     ~FixFile();
 
     /**
@@ -118,7 +118,7 @@ class FixFile {
     QByteArray _data;
     unsigned _len, _currentLeft;
     bool _used_mmap, _openError;
-    QFile* _file;
+    QIODevice* _file;
     QString _filename;
 };
 

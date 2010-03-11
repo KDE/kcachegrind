@@ -221,6 +221,9 @@ private:
   void restoreTraceTypes();
   void restoreTraceSettings();
   void updateViewsOnChange(int);
+  /// open @p file, might be compressed
+  /// @return true when the file could be opened, false otherwise.
+  bool openDataFile(const QString& file);
 
   KStatusBar* _statusbar;
   QLabel* _statusLabel;

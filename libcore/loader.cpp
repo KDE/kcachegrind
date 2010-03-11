@@ -39,7 +39,7 @@ Loader::Loader(const QString& name, const QString& desc)
 Loader::~Loader()
 {}
 
-bool Loader::canLoadTrace(QFile*)
+bool Loader::canLoadTrace(QIODevice*)
 {
 	return false;
 }
@@ -49,7 +49,7 @@ bool Loader::loadTrace(TracePart*)
 	return false;
 }
 
-Loader* Loader::matchingLoader(QFile* file)
+Loader* Loader::matchingLoader(QIODevice* file)
 {
 	foreach (Loader* l, _loaderList)
 		if (l->canLoadTrace(file))

@@ -59,6 +59,8 @@
 #include <kdebug.h>
 #include <kicon.h>
 #include <kconfiggroup.h>
+#include <kfilterdev.h>
+#include <kmimetype.h>
 
 #if ENABLE_DUMPDOCK
 #include "dumpselection.h"
@@ -360,10 +362,7 @@ void TopLevel::readProperties(const KConfigGroup &c)
 {
   QString traceName = c.readEntry("TraceName");
   if (!traceName.isEmpty()) {
-      TraceData* d = new TraceData(this);
-      int filesLoaded = d->load(traceName);
-      if (filesLoaded >0)
-	  setData(d);
+      openDataFile(traceName);
   }
 }
 
@@ -971,11 +970,8 @@ void TopLevel::loadTrace(QString file)
   }
 
   // this constructor enables progress bar callbacks
-  TraceData* d = new TraceData(this);
-  int filesLoaded = d->load(file);
-  if (filesLoaded >0)
-      setData(d);
-  else if (showError)
+  bool loaded = openDataFile(file);
+  if (!loaded && showError)
       KMessageBox::error(this, i18n("Could not open the file \"%1\". "
                                     "Check it exists and you have enough "
                                     "permissions to read it.", file));
@@ -1019,10 +1015,7 @@ void TopLevel::addTrace(QString file)
   }
 
   // this constructor enables progress bar callbacks
-  TraceData* d = new TraceData(this);
-  int filesLoaded = d->load(file);
-  if (filesLoaded >0)
-      setData(d);
+  openDataFile(file);
 }
 
 
@@ -1055,10 +1048,7 @@ void TopLevel::reload()
     trace = _data->traceName();
 
   // this also keeps sure we have the same browsing position...
-  TraceData* d = new TraceData(this);
-  int filesLoaded = d->load(trace);
-  if (filesLoaded >0)
-      setData(d);
+  openDataFile(trace);
 }
 
 void TopLevel::exportGraph()
@@ -2309,6 +2299,28 @@ void TopLevel::loadError(int line, const QString& msg)
 void TopLevel::loadWarning(int line, const QString& msg)
 {
 	kWarning() << "Loading" << _filename.ascii() << ":" << line << ": " << msg.ascii();
+}
+
+bool TopLevel::openDataFile(const QString& file)
+{
+    TraceData* d = new TraceData(this);
+    int filesLoaded;
+
+    // see whether this file is compressed, than take the direct route
+    QString mimeType = KMimeType::findByFileContent(file)->name ();
+    QIODevice* compressed = KFilterDev::deviceForFile (file, mimeType, true);
+    if (compressed) {
+        filesLoaded = d->load(compressed, file);
+    } else {
+        // else fallback to string based method that can also find multi-part callgrind data.
+        filesLoaded = d->load(file);
+    }
+    if (filesLoaded > 0) {
+        setData(d);
+        return true;
+    } else {
+        return false;
+    }
 }
 
 #include "toplevel.moc"

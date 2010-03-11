@@ -657,7 +657,7 @@ public:
 class TracePart: public TraceListCost
 {
 public:
-  TracePart(TraceData*, QFile* file);
+  TracePart(TraceData*, QIODevice* file, const QString& filename);
   virtual ~TracePart();
 
   virtual TracePart* part() { return this; }
@@ -665,7 +665,8 @@ public:
 
   QString shortName() const;
   QString prettyName() const;
-  QFile* file() const { return _file; }
+  QIODevice* file() const { return _file; }
+  /// @return Name of the file.
   QString name() const { return _name; }
   QString description() const { return _descr; }
   QString trigger() const { return _trigger; }
@@ -691,7 +692,7 @@ public:
   bool isActive() { return _active; }
 
 private:
-  QFile* _file;
+  QIODevice* _file;
   QString _name;
   QString _descr;
   QString _trigger;
@@ -1398,6 +1399,7 @@ class TraceData: public ProfileCostArray
  public:
   TraceData(Logger* l = 0);
   TraceData(const QString& base);
+  TraceData(QIODevice* file, const QString& filename);
   virtual ~TraceData();
 
   virtual TraceData* data() { return this; }
@@ -1410,6 +1412,7 @@ class TraceData: public ProfileCostArray
    * Returns the number of parts loaded
    */
   int load(const QString&);
+  int load(QIODevice*, const QString&);
 
   /** returns true if something changed. These do NOT
    * invalidate the dynamic costs on a activation change,
@@ -1499,6 +1502,7 @@ class TraceData: public ProfileCostArray
   void init();
   // add trace part: events from one trace file
   TracePart* addPart(const QString& dir, const QString& file);
+  TracePart* addPart(QIODevice* file, const QString& filename);
 
   // for notification callbacks
   Logger* _logger;

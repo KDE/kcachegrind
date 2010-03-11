@@ -3113,15 +3113,14 @@ QString TraceObject::prettyEmptyName()
 //---------------------------------------------------
 // TracePart
 
-TracePart::TracePart(TraceData* data, QFile* file)
+TracePart::TracePart(TraceData* data, QIODevice* file, const QString& filename)
     : TraceListCost(ProfileContext::context(ProfileContext::Part))
 {
   setPosition(data);
 
   _dep = data;
   _file = file;
-  if (_file)
-    _name = _file->name();
+  _name = filename;
   _active = true;
 
   _number = 0;
@@ -3240,6 +3239,13 @@ TraceData::TraceData(const QString& base)
     load(base);
 }
 
+TraceData::TraceData(QIODevice* file, const QString& filename)
+    : ProfileCostArray(ProfileContext::context(ProfileContext::Data))
+{
+    _logger = 0;
+    init();
+    load(file, filename);
+}
 void TraceData::init()
 {
   _parts.setAutoDelete(true);
@@ -3410,6 +3416,19 @@ int TraceData::load(const QString& base)
   return partsLoaded;
 }
 
+int TraceData::load(QIODevice* file, const QString& filename)
+{
+    _traceName = filename;
+    TracePart* p = addPart(file, filename);
+    if (!p) {
+        return 0;
+    }
+    _parts.append(p);
+    invalidateDynamicCost();
+    updateFunctionCycles();
+    return 1;
+}
+
 TracePart* TraceData::addPart(const QString& dir, const QString& name)
 {
     QString filename = QString("%1/%2").arg(dir).arg(name);
@@ -3417,16 +3436,20 @@ TracePart* TraceData::addPart(const QString& dir, const QString& name)
   qDebug("TraceData::addPart('%s')", filename.ascii());
 #endif
 
-  QFile* file = new QFile(filename);
-  if (!file->open( QIODevice::ReadOnly ) ) {
+  return addPart(new QFile(filename), filename);
+}
+
+TracePart* TraceData::addPart(QIODevice* device, const QString& filename)
+{
+  if (!device->open( QIODevice::ReadOnly ) ) {
       _logger->loadStart(filename);
       _logger->loadFinished(QString(strerror( errno )));
       return 0;
   }
-  Loader* l = Loader::matchingLoader(file);
+  Loader* l = Loader::matchingLoader(device);
   if (!l) {
       // special case emtpy file: ignore...
-      if (file->size() == 0) return 0;
+      if (device->size() == 0) return 0;
 
       _logger->loadStart(filename);
       _logger->loadFinished(QString("Unknown file format"));
@@ -3434,7 +3457,7 @@ TracePart* TraceData::addPart(const QString& dir, const QString& name)
   }
   l->setLogger(_logger);
 
-  TracePart* part = new TracePart(this, file);
+  TracePart* part = new TracePart(this, device, filename);
 
   if (! l->loadTrace(part)) {
       delete part;

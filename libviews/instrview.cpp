@@ -631,7 +631,7 @@ bool InstrView::searchFile(QString& dir, TraceObject* o)
 
     TracePart* firstPart = _data->parts().first();
     if (firstPart) {
-	QFileInfo partFile(*firstPart->file());
+	QFileInfo partFile(firstPart->name());
 	if (QFileInfo(partFile.absolutePath(), filename).exists()) {
 	    dir = partFile.absolutePath();
 	    return true;
