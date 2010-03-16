@@ -782,7 +782,7 @@ void TracePartFunction::update()
 
 #if TRACE_DEBUG
   qDebug("TracePartFunction::update %s (Callers %d, Callings %d, lines %d)",
-         name().ascii(), _partCallers.count(), _partCallings.count(),
+         name().toAscii().constData(), _partCallers.count(), _partCallings.count(),
          _partLines.count());
 #endif
 
@@ -1570,7 +1570,7 @@ void TraceLine::addLineCall(TraceLineCall* lineCall)
 
     qDebug("ERROR: Adding line call, line %d\n  of %s to\n  %s ?!",
            lineCall->line()->lineno(),
-           caller->info().ascii(), function->info().ascii());
+           caller->info().toAscii().constData(), function->info().toAscii().constData());
     }
   }
 
@@ -1680,7 +1680,7 @@ TraceLine* TraceFunctionSource::line(uint lineno, bool createNew)
     if (!_lineMap) return 0;
     TraceLineMap::Iterator it = _lineMap->find(lineno);
     if (it == _lineMap->end()) return 0;
-    return &(it.data());
+    return &(it.value());
   }
 
   if (!_lineMap) _lineMap = new TraceLineMap;
@@ -1751,7 +1751,7 @@ TraceLineMap* TraceFunctionSource::lineMap()
   for(; pf; pf = (TracePartFunction*) pfList.next()) {
 
       if (0) qDebug("PartFunction %s:%d",
-		    pf->function()->name().ascii(), pf->part()->partNumber());
+		    pf->function()->name().toAscii().constData(), pf->part()->partNumber());
 
       FixCost* fc = pf->firstFixCost();
       for(; fc; fc = fc->nextCostOfPartFunction()) {
@@ -1809,7 +1809,7 @@ TraceLineMap* TraceFunctionSource::lineMap()
       for(; pc; pc = pcList.next()) {
 
 	  if (0) qDebug("PartCall %s:%d",
-			pc->call()->name().ascii(),
+			pc->call()->name().toAscii().constData(),
 			pf->part()->partNumber());
 
 	  FixCallCost* fcc = pc->firstFixCallCost();
@@ -1833,9 +1833,9 @@ TraceLineMap* TraceFunctionSource::lineMap()
 
 	      fcc->addTo(plc);
 	      if (0) qDebug("Add FixCallCost %s:%d/0x%s, CallCount %s",
-			    fcc->functionSource()->file()->shortName().ascii(),
-			    fcc->line(), fcc->addr().toString().ascii(),
-			    fcc->callCount().pretty().ascii());
+			    fcc->functionSource()->file()->shortName().toAscii().constData(),
+			    fcc->line(), fcc->addr().toString().toAscii().constData(),
+			    fcc->callCount().pretty().toAscii().constData());
 	  }
       }
   }
@@ -2227,7 +2227,7 @@ TraceInstr* TraceFunction::instr(Addr addr, bool createNew)
       TraceInstrMap::Iterator it = _instrMap->find(addr);
       if (it == _instrMap->end())
 	  return 0;
-      return &(it.data());
+      return &(it.value());
   }
 
   if (!_instrMap) _instrMap = new TraceInstrMap;
@@ -2309,7 +2309,7 @@ TraceFunctionSource* TraceFunction::sourceFile(TraceFile* file,
 
 #if TRACE_DEBUG
     qDebug("Created SourceFile %s [TraceFunction::line]",
-           file->name().ascii());
+           file->name().toAscii().constData());
 #endif
     file->addSourceFile(sourceFile);
   }
@@ -2457,7 +2457,7 @@ void TraceFunction::update()
 
 #if TRACE_DEBUG
   qDebug("Update %s (Callers %d, sourceFiles %d, instrs %d)",
-         _name.ascii(), _callers.count(),
+         _name.toAscii().constData(), _callers.count(),
 	 _sourceFiles.count(), _instrMap ? _instrMap->count():0);
 #endif
 
@@ -2583,12 +2583,12 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
 
   if (0) {
       qDebug("%s (%d) Visiting %s",
-	     QString().fill(' ', d).ascii(), pNo, prettyName().ascii());
+	     QString().fill(' ', d).toAscii().constData(), pNo, prettyName().toAscii().constData());
       qDebug("%s       Cum. %s, Max Caller %s, cut limit %s",
-	     QString().fill(' ', d).ascii(),
-	     inclusive()->subCost(0).pretty().ascii(),
-	     base.pretty().ascii(),
-	     cutLimit.pretty().ascii());
+	     QString().fill(' ', d).toAscii().constData(),
+	     inclusive()->subCost(0).pretty().toAscii().constData(),
+	     base.pretty().toAscii().constData(),
+	     cutLimit.pretty().toAscii().constData());
   }
 
   TraceCall *calling;
@@ -2599,9 +2599,9 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
       // cycle cut heuristic
       if (calling->subCost(0) < cutLimit) {
 	  if (0) qDebug("%s       Cut call to %s (cum. %s)",
-			QString().fill(' ', d).ascii(),
-			called->prettyName().ascii(),
-			calling->subCost(0).pretty().ascii());
+			QString().fill(' ', d).toAscii().constData(),
+			called->prettyName().toAscii().constData(),
+			calling->subCost(0).pretty().toAscii().constData());
 
 	  continue;
       }
@@ -2618,8 +2618,8 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
         _cycleLow = called->_cycleLow;
 
       if (0) qDebug("%s (low %d) Back to %s",
-                    QString().fill(' ', d).ascii(),
-                    _cycleLow, called->prettyName().ascii());
+                    QString().fill(' ', d).toAscii().constData(),
+                    _cycleLow, called->prettyName().toAscii().constData());
     }
   }
 
@@ -2635,7 +2635,7 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
 
       TraceFunctionCycle* cycle = data()->functionCycle(this);
       if (0) qDebug("Found Cycle %d with base %s:",
-             cycle->cycleNo(), prettyName().ascii());
+             cycle->cycleNo(), prettyName().toAscii().constData());
       while(*pTop) {
         TraceFunction* top = *pTop;
         cycle->add(top);
@@ -2644,7 +2644,7 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
         *pTop = top->_cycleStackDown;
         top->_cycleStackDown = 0;
 
-        if (0) qDebug("  %s", top->prettyName().ascii());
+        if (0) qDebug("  %s", top->prettyName().toAscii().constData());
         if (top == this) break;
       }
     }
@@ -2672,7 +2672,7 @@ TraceInstrMap* TraceFunction::instrMap()
   for(; pf; pf = (TracePartFunction*) pfList.next()) {
 
       if (0) qDebug("PartFunction %s:%d",
-		    pf->function()->name().ascii(), pf->part()->partNumber());
+		    pf->function()->name().toAscii().constData(), pf->part()->partNumber());
 
       FixCost* fc = pf->firstFixCost();
       for(; fc; fc = fc->nextCostOfPartFunction()) {
@@ -2729,7 +2729,7 @@ TraceInstrMap* TraceFunction::instrMap()
       for(; pc; pc = pcList.next()) {
 
 	  if (0) qDebug("PartCall %s:%d",
-			pc->call()->name().ascii(),
+			pc->call()->name().toAscii().constData(),
 			pf->part()->partNumber());
 
 	  FixCallCost* fcc = pc->firstFixCallCost();
@@ -2757,9 +2757,9 @@ TraceInstrMap* TraceFunction::instrMap()
 
 	      fcc->addTo(pic);
 	      if (0) qDebug("Add FixCallCost %s:%d/0x%s, CallCount %s",
-			    fcc->functionSource()->file()->shortName().ascii(),
-			    fcc->line(), fcc->addr().toString().ascii(),
-			    fcc->callCount().pretty().ascii());
+			    fcc->functionSource()->file()->shortName().toAscii().constData(),
+			    fcc->line(), fcc->addr().toString().toAscii().constData(),
+			    fcc->callCount().pretty().toAscii().constData());
 	  }
       }
   }
@@ -3321,7 +3321,7 @@ int TraceData::load(const QString& base)
         file = *it;
 
 	// search for ".pid"
-	QStringList strList = dir.entryList(file+".*", QDir::Files);
+	QStringList strList = dir.entryList(QStringList() << file+".*", QDir::Files);
 	if (strList.count()>0) {
 	  int l = file.length();
 	  file = strList.first();
@@ -3336,8 +3336,7 @@ int TraceData::load(const QString& base)
   }
 
   QStringList strList;
-  strList += dir.entryList(file+".*", QDir::Files);
-  strList += dir.entryList(file+"-*", QDir::Files);
+  strList += dir.entryList(QStringList() << file+".*" << file+"-*", QDir::Files);
 
   baseExisting = QFile::exists(_traceName);
   if (baseExisting)
@@ -3355,7 +3354,7 @@ int TraceData::load(const QString& base)
   pos--;
   while(pos>0) {
       if (file[pos] < '0' || file[pos] > '9') break;
-      pid += f * (file[pos].latin1() - '0');
+      pid += f * (file[pos].toLatin1() - '0');
       pos--;
       f *= 10;
   }
@@ -3380,7 +3379,7 @@ int TraceData::load(const QString& base)
 	pos++;
 	while(str.length()>pos) {
 	    if (str[pos] < '0' || str[pos] > '9') break;
-	    n = 10*n + (str[pos++].latin1() - '0');
+	    n = 10*n + (str[pos++].toLatin1() - '0');
 	}
     }
 
@@ -3390,11 +3389,11 @@ int TraceData::load(const QString& base)
 	pos++;
 	while(str.length()>pos) {
 	    if (str[pos] < '0' || str[pos] > '9') break;
-	    t = 10*t + (str[pos++].latin1() - '0');
+	    t = 10*t + (str[pos++].toLatin1() - '0');
 	}
     }
 
-    //qDebug("File %s: Part %d, Thread %d", (*it).ascii(), n, t);
+    //qDebug("File %s: Part %d, Thread %d", (*it).toAscii().constData(), n, t);
 
     if (p->partNumber()>0) n = p->partNumber();
     if (n>maxNumber) maxNumber = n;
@@ -3433,7 +3432,7 @@ TracePart* TraceData::addPart(const QString& dir, const QString& name)
 {
     QString filename = QString("%1/%2").arg(dir).arg(name);
 #if TRACE_DEBUG
-  qDebug("TraceData::addPart('%s')", filename.ascii());
+  qDebug("TraceData::addPart('%s')", filename.toAscii().constData());
 #endif
 
   return addPart(new QFile(filename), filename);
@@ -3676,7 +3675,7 @@ TraceFunction* TraceData::function(const QString& name,
   it = _functionMap.find(key);
   if (it == _functionMap.end()) {
       it = _functionMap.insert(key, TraceFunction());
-      TraceFunction& f = it.data();
+      TraceFunction& f = it.value();
 
       f.setPosition(this);
       f.setName(name);
@@ -3697,7 +3696,7 @@ TraceFunction* TraceData::function(const QString& name,
       file->addFunction(&f);
   }
 
-  return &(it.data());
+  return &(it.value());
 }
 
 TraceFunctionMap::Iterator TraceData::functionIterator(TraceFunction* f)

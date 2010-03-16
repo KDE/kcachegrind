@@ -292,7 +292,7 @@ HistoryItem::~HistoryItem()
 {
   if (0) qDebug("Deleting Stack History Item (sRef %d): %s",
          _stack->refCount(),
-         _function->name().ascii());
+         _function->name().toAscii().constData());
 
   if (_last)
     _last->_next = _next;

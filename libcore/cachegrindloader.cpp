@@ -160,11 +160,9 @@ bool CachegrindLoader::canLoadTrace(QIODevice* file)
 	return false;
   buf[read] = 0;
 
-  QByteArray s;
-  s.setRawData(buf, read+1);
-  int pos = s.find("events:");
+  QByteArray s = QByteArray::fromRawData(buf, read+1);
+  int pos = s.indexOf("events:");
   if (pos>0 && buf[pos-1] != '\n') pos = -1;
-  s.resetRawData(buf, read+1);
   return (pos>=0);
 }
 
@@ -701,7 +699,6 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
   QIODevice* pFile = part->file();
 
   if (!pFile) return false;
-
   _filename = part->name();
   _lineNo = 0;
 

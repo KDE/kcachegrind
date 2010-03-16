@@ -68,14 +68,13 @@ void ConfigColorSetting::setColor(const QColor& c)
 QColor ConfigColorSetting::colorForName(QString n)
 {
     int h = 0, s = 100;
-    const char* str = n.ascii();
-    while (*str) {
-      h = (h * 37 + s* (unsigned)*str) % 256;
-      s = (s * 17 + h* (unsigned)*str) % 192;
-      str++;
+    QByteArray str = n.toAscii();
+    foreach(const QChar c, n) {
+      h = (h * 37 + s* c.unicode()) % 256;
+      s = (s * 17 + h* c.unicode()) % 192;
     }
 
-    return QColor(h, 64+s, 192, QColor::Hsv);
+    return QColor::fromHsv(h, 64+s, 192);
 }
 
 QColor ConfigColorSetting::autoColor() const

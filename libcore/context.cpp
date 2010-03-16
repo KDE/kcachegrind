@@ -120,7 +120,7 @@ QString ProfileContext::i18nTypeName(Type t)
     if (!_i18nTypeName) {
 	_i18nTypeName = new QString [MaxType+1];
 	for(int i=0;i<=MaxType;i++)
-	    _i18nTypeName[i] = QObject::tr(typeName((Type)i).utf8().data());
+	    _i18nTypeName[i] = QObject::tr(typeName((Type)i).toUtf8());
     }
     if (t<0 || t> MaxType) t = MaxType;
     return _i18nTypeName[t];

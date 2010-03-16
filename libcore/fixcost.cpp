@@ -78,8 +78,8 @@ FixCallCost::FixCallCost(TracePart* part, FixPool* pool,
                          SubCost callCount, FixString& s)
 {
   if (0) qDebug("Got FixCallCost (addr 0x%s, line %d): calls %s",
-                addr.toString().ascii(), line,
-		callCount.pretty().ascii());
+                addr.toString().toAscii().constData(), line,
+		callCount.pretty().toAscii().constData());
 
   int maxCount = part->eventTypeMapping()->count();
 
@@ -123,8 +123,8 @@ void FixCallCost::addTo(TraceCallCost* c)
     c->addCallCount(_cost[_count]);
 
     if (0) qDebug("Adding from (addr 0x%s, ln %d): calls %s",
-                  _addr.toString().ascii(), _line,
-		  _cost[_count].pretty().ascii());
+                  _addr.toString().toAscii().constData(), _line,
+		  _cost[_count].pretty().toAscii().constData());
 }
 
 void FixCallCost::setMax(ProfileCostArray* c)

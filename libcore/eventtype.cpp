@@ -94,7 +94,7 @@ bool EventType::parseFormula()
 
   pos = 0;
   while (1) {
-    pos = rx.search(_formula, pos);
+    pos = rx.indexIn(_formula, pos);
     if (pos<0) break;
     pos += rx.matchedLength();
     if (rx.cap(0).isEmpty()) break;
