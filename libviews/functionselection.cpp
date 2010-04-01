@@ -862,7 +862,7 @@ void FunctionSelection::query(QString query)
   for(int i=0;i<_hc.realCount();i++) {
       fi = new FunctionItem(functionList, (TraceFunction*)_hc[i],
 			    _eventType, _groupType);
-      if (_activeItem == f) item = fi;
+      if (_activeItem == _hc[i]) item = fi;
   }
   if (_hc.hasMore()) {
       // a placeholder for all the functions skipped ...
