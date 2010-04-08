@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2002 - 2010 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -39,20 +39,20 @@ Loader::Loader(const QString& name, const QString& desc)
 Loader::~Loader()
 {}
 
-bool Loader::canLoadTrace(QIODevice*)
+bool Loader::canLoad(QIODevice*)
 {
 	return false;
 }
 
-bool Loader::loadTrace(TracePart*)
+int Loader::load(TraceData*, QIODevice*, const QString&)
 {
-	return false;
+        return 0;
 }
 
 Loader* Loader::matchingLoader(QIODevice* file)
 {
 	foreach (Loader* l, _loaderList)
-		if (l->canLoadTrace(file))
+                if (l->canLoad(file))
 			return l;
 
 	return 0;

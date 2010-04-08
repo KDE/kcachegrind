@@ -657,7 +657,7 @@ public:
 class TracePart: public TraceListCost
 {
 public:
-  TracePart(TraceData*, QIODevice* file, const QString& filename);
+  TracePart(TraceData*);
   virtual ~TracePart();
 
   virtual TracePart* part() { return this; }
@@ -665,8 +665,7 @@ public:
 
   QString shortName() const;
   QString prettyName() const;
-  QIODevice* file() const { return _file; }
-  /// @return Name of the file.
+  /// @return Name of the file this part was loaded from
   QString name() const { return _name; }
   QString description() const { return _descr; }
   QString trigger() const { return _trigger; }
@@ -679,6 +678,7 @@ public:
   void setTrigger(const QString& t) { _trigger = t; }
   void setTimeframe(const QString& t) { _timeframe = t; }
   void setVersion(const QString& v) { _version = v; }
+  void setName(const QString& n) { _name = n; }
   void setPartNumber(int n);
   void setThreadID(int t);
   void setProcessID(int p);
@@ -1425,6 +1425,9 @@ class TraceData: public ProfileCostArray
   bool activatePart(TracePart*, bool active);
   bool activateAll(bool active=true);
 
+  // to be used by loader
+  void addPart(TracePart*);
+
   TracePartList parts() const { return _parts; }
   TracePart* partWithName(const QString& name);
 
@@ -1500,9 +1503,8 @@ class TraceData: public ProfileCostArray
 
  private:
   void init();
-  // add trace part: events from one trace file
-  TracePart* addPart(const QString& dir, const QString& file);
-  TracePart* addPart(QIODevice* file, const QString& filename);
+  // add profile parts from one file
+  int internalLoad(QIODevice* file, const QString& filename);
 
   // for notification callbacks
   Logger* _logger;

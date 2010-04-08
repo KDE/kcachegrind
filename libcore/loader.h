@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002 - 2007 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2002 - 2010 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -27,26 +27,25 @@
 #include <QString>
 
 class QIODevice;
-class TracePart;
+class TraceData;
 class Loader;
 class Logger;
 
 /**
  * To implement a new loader, inherit from the Loader class and
- * and reimplement canLoadTrace() and loadTrace().
+ * and reimplement canLoad() and load().
  *
  * For registration, put into the static initLoaders() function
  * of this base class a _loaderList.append(new MyLoader()).
  *
- * KCachegrind will use the first loader matching according to
- * canLoadTrace().
+ * matchingLoader() returns the first loader able to load a file.
  *
  * To show progress and warnings while loading,
  *   loadStatus(), loadError() and loadWarning() should be called.
  * These are just shown as status, warnings or errors to the
  * user, but do not show real failure, as even errors can be
- * recoverable. For unablility to load a file, return false in
- * loadTrace().
+ * recoverable. For unablility to load a file, return 0 in
+ * load().
  */
 
 class Loader
@@ -56,8 +55,12 @@ public:
   virtual ~Loader();
 
   // reimplement for a specific Loader
-  virtual bool canLoadTrace(QIODevice* file);
-  virtual bool loadTrace(TracePart*);
+  virtual bool canLoad(QIODevice* file);
+  /* load a profile data file.
+   * for every section (time span covered by profile), create a TracePart
+   * return the number of sections loaded (0 on error)
+   */
+  virtual int load(TraceData*, QIODevice* file, const QString& filename);
 
   static Loader* matchingLoader(QIODevice* file);
   static Loader* loader(const QString& name);

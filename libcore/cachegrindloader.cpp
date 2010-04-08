@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002 - 2007 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2002 - 2010 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -40,15 +40,14 @@ class CachegrindLoader: public Loader
 public:
   CachegrindLoader();
 
-  bool canLoadTrace(QIODevice* file);
-  bool loadTrace(TracePart*);
-  bool isPartOfTrace(QString file, TraceData*);
+  bool canLoad(QIODevice* file);
+  int  load(TraceData*, QIODevice* file, const QString& filename);
 
 private:
   void error(QString);
   void warning(QString);
 
-  bool loadTraceInternal(TracePart*);
+  int loadInternal(TraceData*, QIODevice* file, const QString& filename);
 
   enum lineType { SelfCost, CallCost, BoringJump, CondJump };
 
@@ -144,7 +143,7 @@ CachegrindLoader::CachegrindLoader()
     _emptyString = QString("");
 }
 
-bool CachegrindLoader::canLoadTrace(QIODevice* file)
+bool CachegrindLoader::canLoad(QIODevice* file)
 {
   if (!file) return false;
 
@@ -166,7 +165,8 @@ bool CachegrindLoader::canLoadTrace(QIODevice* file)
   return (pos>=0);
 }
 
-bool CachegrindLoader::loadTrace(TracePart* p)
+int CachegrindLoader::load(TraceData* d,
+                           QIODevice* file, const QString& filename)
 {
   /* do the loading in a new object so parallel load
    * operations do not interfere each other.
@@ -175,7 +175,7 @@ bool CachegrindLoader::loadTrace(TracePart* p)
 
   l.setLogger(_logger);
 
-  return l.loadTraceInternal(p);
+  return l.loadInternal(d, file, filename);
 }
 
 Loader* createCachegrindLoader()
@@ -689,26 +689,29 @@ void CachegrindLoader::clearPosition()
 /**
  * The main import function...
  */
-bool CachegrindLoader::loadTraceInternal(TracePart* part)
+int CachegrindLoader::loadInternal(TraceData* data,
+                                   QIODevice* device, const QString& filename)
 {
   clearCompression();
   clearPosition();
 
-  _part     = part;
-  _data     = part->data();
-  QIODevice* pFile = part->file();
+  if (!data || !device) return 0;
 
-  if (!pFile) return false;
-  _filename = part->name();
+  _data = data;
+  _filename = filename;
   _lineNo = 0;
 
   loadStart(_filename);
 
-  FixFile file(pFile, _filename);
+  FixFile file(device, _filename);
   if (!file.exists()) {
     loadFinished("File does not exist");
     return false;
   }
+
+  TracePart* part = new TracePart(data);
+  part->setName(filename);
+  _part = part;
 
   int statusProgress = 0;
 
@@ -1266,8 +1269,9 @@ bool CachegrindLoader::loadTraceInternal(TracePart* part)
     _part->totals()->addCost(_part);
   }
 
-  pFile->close();
+  device->close();
 
-  return true;
+  data->addPart(_part);
+  return 1;
 }
 

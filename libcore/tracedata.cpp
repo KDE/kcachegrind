@@ -3113,16 +3113,13 @@ QString TraceObject::prettyEmptyName()
 //---------------------------------------------------
 // TracePart
 
-TracePart::TracePart(TraceData* data, QIODevice* file, const QString& filename)
+TracePart::TracePart(TraceData* data)
     : TraceListCost(ProfileContext::context(ProfileContext::Part))
 {
   setPosition(data);
 
   _dep = data;
-  _file = file;
-  _name = filename;
   _active = true;
-
   _number = 0;
   _tid = 0;
   _pid = 0;
@@ -3132,8 +3129,7 @@ TracePart::TracePart(TraceData* data, QIODevice* file, const QString& filename)
 
 TracePart::~TracePart()
 {
-  delete _file;
-  delete _eventTypeMapping;
+    delete _eventTypeMapping;
 }
 
 void TracePart::setPartNumber(int n)
@@ -3167,9 +3163,12 @@ QString TracePart::shortName() const
 
 QString TracePart::prettyName() const
 {
-    QString name = QString("%1.%2").arg(_pid).arg(_number);
-    if (data()->maxThreadID()>1)
-	name += QString("-%3").arg(_tid);
+    if (_pid==0) return shortName();
+    QString name = QString("PID %1").arg(_pid);
+    if (_number>0)
+        name += QString(", section %2").arg(_number);
+    if ((data()->maxThreadID()>1) && (_tid>0))
+        name += QString(", thread %3").arg(_tid);
     return name;
 }
 
@@ -3347,64 +3346,12 @@ int TraceData::load(const QString& base)
       return 0;
   }
 
-
-  // try to guess pid from file name
-  unsigned int pos = file.length();
-  unsigned int pid = 0, f=1;
-  pos--;
-  while(pos>0) {
-      if (file[pos] < '0' || file[pos] > '9') break;
-      pid += f * (file[pos].toLatin1() - '0');
-      pos--;
-      f *= 10;
-  }
-
   QStringList::const_iterator it;
-  unsigned int maxNumber = 0;
   int partsLoaded = 0;
   for (it = strList.constBegin(); it != strList.constEnd(); ++it ) {
-    TracePart* p = addPart(dir.path(), *it );
-
-    if (!p) {
-	//kDebug() << "Error loading " << *it;
-	continue;
-    }
-
-    const QString& str = *it;
-    int pos = file.length();
-
-    // try to guess part number from file name
-    unsigned int n = 0;
-    if ((str.length() > pos) && (str[pos] == '.')) {
-	pos++;
-	while(str.length()>pos) {
-	    if (str[pos] < '0' || str[pos] > '9') break;
-	    n = 10*n + (str[pos++].toLatin1() - '0');
-	}
-    }
-
-    // try to guess thread number from file name
-    unsigned int t = 0;
-    if ((str.length() > pos) && (str[pos] == '-')) {
-	pos++;
-	while(str.length()>pos) {
-	    if (str[pos] < '0' || str[pos] > '9') break;
-	    t = 10*t + (str[pos++].toLatin1() - '0');
-	}
-    }
-
-    //qDebug("File %s: Part %d, Thread %d", (*it).toAscii().constData(), n, t);
-
-    if (p->partNumber()>0) n = p->partNumber();
-    if (n>maxNumber) maxNumber = n;
-    if (n==0) n = maxNumber+1;
-    p->setPartNumber(n);
-
-    if (p->threadID()==0) p->setThreadID(t);
-    if (p->processID()==0) p->setProcessID(pid);
-
-    _parts.append(p);
-    partsLoaded++;
+      QString filename = QString("%1/%2").arg(dir.path()).arg(*it);
+      QFile file(filename);
+      partsLoaded += internalLoad(&file, filename);
   }
   if (partsLoaded == 0) return 0;
 
@@ -3418,33 +3365,22 @@ int TraceData::load(const QString& base)
 int TraceData::load(QIODevice* file, const QString& filename)
 {
     _traceName = filename;
-    TracePart* p = addPart(file, filename);
-    if (!p) {
-        return 0;
+    int partsLoaded = internalLoad(file, filename);
+    if (partsLoaded>0) {
+        invalidateDynamicCost();
+        updateFunctionCycles();
     }
-    _parts.append(p);
-    invalidateDynamicCost();
-    updateFunctionCycles();
-    return 1;
+    return partsLoaded;
 }
 
-TracePart* TraceData::addPart(const QString& dir, const QString& name)
-{
-    QString filename = QString("%1/%2").arg(dir).arg(name);
-#if TRACE_DEBUG
-  qDebug("TraceData::addPart('%s')", filename.toAscii().constData());
-#endif
-
-  return addPart(new QFile(filename), filename);
-}
-
-TracePart* TraceData::addPart(QIODevice* device, const QString& filename)
+int TraceData::internalLoad(QIODevice* device, const QString& filename)
 {
   if (!device->open( QIODevice::ReadOnly ) ) {
       _logger->loadStart(filename);
       _logger->loadFinished(QString(strerror( errno )));
       return 0;
   }
+
   Loader* l = Loader::matchingLoader(device);
   if (!l) {
       // special case emtpy file: ignore...
@@ -3456,16 +3392,11 @@ TracePart* TraceData::addPart(QIODevice* device, const QString& filename)
   }
   l->setLogger(_logger);
 
-  TracePart* part = new TracePart(this, device, filename);
-
-  if (! l->loadTrace(part)) {
-      delete part;
-      part = 0;
-  }
+  int partsLoaded = l->load(this, device, filename);
 
   l->setLogger(0);
 
-  return part;
+  return partsLoaded;
 }
 
 bool TraceData::activateParts(const TracePartList& l)
@@ -3516,6 +3447,17 @@ bool TraceData::activateAll(bool active)
   return activateParts(_parts, active);
 }
 
+void TraceData::addPart(TracePart* part)
+{
+    if (_parts.contains(part)>0) return;
+
+    if ((part->partNumber()==0) &&
+        (part->processID()==0)) {
+        _maxPartNumber++;
+        part->setPartNumber(_maxPartNumber);
+    }
+    _parts.append(part);
+}
 
 TracePart* TraceData::partWithName(const QString& name)
 {
