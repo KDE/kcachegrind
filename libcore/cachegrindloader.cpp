@@ -65,6 +65,8 @@ private:
   void setFunction(const QString&);
   void setCalledFunction(const QString&);
 
+  void prepareNewPart();
+
   QString _emptyString;
 
   // current line in file to read in
@@ -74,6 +76,7 @@ private:
   EventTypeMapping* mapping;
   TraceData* _data;
   TracePart* _part;
+  int partsAdded;
 
   // current position
   lineType nextLineType;
@@ -685,6 +688,26 @@ void CachegrindLoader::clearPosition()
   mapping = 0;
 }
 
+void CachegrindLoader::prepareNewPart()
+{
+    if (_part) {
+        // really new part needed?
+        if (mapping == 0) return;
+
+        // yes
+        _part->invalidate();
+        _part->totals()->clear();
+        _part->totals()->addCost(_part);
+        _data->addPart(_part);
+        partsAdded++;
+    }
+
+    clearCompression();
+    clearPosition();
+
+    _part = new TracePart(_data);
+    _part->setName(_filename);
+}
 
 /**
  * The main import function...
@@ -692,9 +715,6 @@ void CachegrindLoader::clearPosition()
 int CachegrindLoader::loadInternal(TraceData* data,
                                    QIODevice* device, const QString& filename)
 {
-  clearCompression();
-  clearPosition();
-
   if (!data || !device) return 0;
 
   _data = data;
@@ -706,12 +726,8 @@ int CachegrindLoader::loadInternal(TraceData* data,
   FixFile file(device, _filename);
   if (!file.exists()) {
     loadFinished("File does not exist");
-    return false;
+    return 0;
   }
-
-  TracePart* part = new TracePart(data);
-  part->setName(filename);
-  _part = part;
 
   int statusProgress = 0;
 
@@ -720,9 +736,12 @@ int CachegrindLoader::loadInternal(TraceData* data,
   FixPool* pool = _data->fixPool();
 #endif
 
+  _part = 0;
+  partsAdded = 0;
+  prepareNewPart();
+
   FixString line;
   char c;
-  bool totalsSet = false;
 
   // current position
   nextLineType  = SelfCost;
@@ -920,13 +939,14 @@ int CachegrindLoader::loadInternal(TraceData* data,
 
 	    // thread:
 	    if (line.stripPrefix("hread:")) {
-		part->setThreadID(QString(line).toInt());
+                prepareNewPart();
+                _part->setThreadID(QString(line).toInt());
 		continue;
 	    }
 
 	    // timeframe (BB):
 	    if (line.stripPrefix("imeframe (BB):")) {
-		part->setTimeframe(line);
+                _part->setTimeframe(line);
 		continue;
 	    }
 
@@ -941,7 +961,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 
 	      // desc: Trigger:
 	      if (line.stripPrefix("Trigger:")) {
-		part->setTrigger(line);
+                _part->setTrigger(line);
 	      }
 
 	      continue;
@@ -952,9 +972,10 @@ int CachegrindLoader::loadInternal(TraceData* data,
 
 		// events:
 		if (line.stripPrefix("vents:")) {
-			mapping = _data->eventTypes()->createMapping(line);
-			part->setEventMapping(mapping);
-			continue;
+                    prepareNewPart();
+                    mapping = _data->eventTypes()->createMapping(line);
+                    _part->setEventMapping(mapping);
+                    continue;
 		}
 
 	    // event:<name>[=<formula>][:<long name>]
@@ -983,18 +1004,21 @@ int CachegrindLoader::loadInternal(TraceData* data,
 
 	    // part:
 	    if (line.stripPrefix("art:")) {
-		part->setPartNumber(QString(line).toInt());
+                prepareNewPart();
+                _part->setPartNumber(QString(line).toInt());
 		continue;
 	    }
 
 	    // pid:
 	    if (line.stripPrefix("id:")) {
-		part->setProcessID(QString(line).toInt());
+                prepareNewPart();
+                _part->setProcessID(QString(line).toInt());
 		continue;
 	    }
 
 	    // positions:
 	    if (line.stripPrefix("ositions:")) {
+                prepareNewPart();
 		QString positions(line);
 		hasLineInfo = positions.contains("line");
 		hasAddrInfo = positions.contains("instr");
@@ -1006,7 +1030,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 
 	    // version:
 	    if (line.stripPrefix("ersion:")) {
-		part->setVersion(line);
+                // ignore for now
 		continue;
 	    }
 	    break;
@@ -1017,10 +1041,11 @@ int CachegrindLoader::loadInternal(TraceData* data,
 	    if (line.stripPrefix("ummary:")) {
 		if (!mapping) {
 			error(QString("No event line found. Skipping file"));
+                        delete _part;
 			return false;
 		}
 
-		part->totals()->set(mapping, line);
+                _part->totals()->set(mapping, line);
 		continue;
 	    }
 
@@ -1048,6 +1073,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 
       if (!mapping) {
         error(QString("No event line found. Skipping file"));
+        delete _part;
         return false;
       }
 
@@ -1111,7 +1137,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
     if (nextLineType == SelfCost) {
 
 #if USE_FIXCOST
-      new (pool) FixCost(part, pool,
+      new (pool) FixCost(_part, pool,
 			 currentFunctionSource,
 			 currentPos,
                          currentPartFunction,
@@ -1149,12 +1175,12 @@ int CachegrindLoader::loadInternal(TraceData* data,
 
       TraceCall* calling = currentFunction->calling(currentCalledFunction);
       TracePartCall* partCalling =
-        calling->partCall(part, currentPartFunction,
+        calling->partCall(_part, currentPartFunction,
                           currentCalledPartFunction);
 
 #if USE_FIXCOST
       FixCallCost* fcc;
-      fcc = new (pool) FixCallCost(part, pool,
+      fcc = new (pool) FixCallCost(_part, pool,
 				   currentFunctionSource,
 				   hasLineInfo ? currentPos.fromLine : 0,
 				   hasAddrInfo ? currentPos.fromAddr : Addr(0),
@@ -1221,7 +1247,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 	    currentFunctionSource;
 
 #if USE_FIXCOST
-      new (pool) FixJump(part, pool,
+      new (pool) FixJump(_part, pool,
 			 /* source */
 			 hasLineInfo ? currentPos.fromLine : 0,
 			 hasAddrInfo ? currentPos.fromAddr : 0,
@@ -1263,15 +1289,19 @@ int CachegrindLoader::loadInternal(TraceData* data,
 
   loadFinished();
 
-  _part->invalidate();
-  if (!totalsSet) {
-    _part->totals()->clear();
-    _part->totals()->addCost(_part);
+  if (mapping) {
+      _part->invalidate();
+      _part->totals()->clear();
+      _part->totals()->addCost(_part);
+      data->addPart(_part);
+      partsAdded++;
+  }
+  else {
+      delete _part;
   }
 
   device->close();
 
-  data->addPart(_part);
-  return 1;
+  return partsAdded;
 }
 
