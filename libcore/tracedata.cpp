@@ -213,12 +213,12 @@ ProfileCostArray* TraceListCost::findDepFromPart(TracePart* part)
   if (_lastDep && _lastDep->part() == part)
     return _lastDep;
 
-  ProfileCostArray* dep;
-  for (dep = _deps.first(); dep; dep = _deps.next())
+  foreach(ProfileCostArray* dep, _deps) {
     if (dep->part() == part) {
       _lastDep = dep;
       return dep;
     }
+  }
   return 0;
 }
 
@@ -233,8 +233,7 @@ void TraceListCost::update()
 #endif
 
   clear();
-  ProfileCostArray* item;
-  for (item = _deps.first(); item; item = _deps.next()) {
+  foreach(ProfileCostArray* item, _deps) {
     if (onlyActiveParts())
       if (!item->part() || !item->part()->isActive()) continue;
 
@@ -288,12 +287,12 @@ TraceJumpCost* TraceJumpListCost::findDepFromPart(TracePart* part)
   if (_lastDep && _lastDep->part() == part)
     return _lastDep;
 
-  TraceJumpCost* dep;
-  for (dep = _deps.first(); dep; dep = _deps.next())
+  foreach(TraceJumpCost* dep, _deps) {
     if (dep->part() == part) {
       _lastDep = dep;
       return dep;
     }
+  }
   return 0;
 }
 
@@ -308,8 +307,7 @@ void TraceJumpListCost::update()
 #endif
 
   clear();
-  TraceJumpCost* item;
-  for (item = _deps.first(); item; item = _deps.next()) {
+  foreach(TraceJumpCost* item, _deps) {
     if (onlyActiveParts())
       if (!item->part() || !item->part()->isActive()) continue;
 
@@ -363,12 +361,12 @@ TraceCallCost* TraceCallListCost::findDepFromPart(TracePart* part)
   if (_lastDep && _lastDep->part() == part)
     return _lastDep;
 
-  TraceCallCost* dep;
-  for (dep = _deps.first(); dep; dep = _deps.next())
+  foreach(TraceCallCost* dep, _deps) {
     if (dep->part() == part) {
       _lastDep = dep;
       return dep;
     }
+  }
   return 0;
 }
 
@@ -386,8 +384,7 @@ void TraceCallListCost::update()
    * i.e. do not change cost */
   if (_deps.count()>0) {
     clear();
-    TraceCallCost* item;
-    for (item = _deps.first(); item; item = _deps.next()) {
+    foreach(TraceCallCost* item, _deps) {
       if (onlyActiveParts())
 	if (!item->part() || !item->part()->isActive()) continue;
 
@@ -443,12 +440,12 @@ TraceInclusiveCost* TraceInclusiveListCost::findDepFromPart(TracePart* part)
   if (_lastDep && _lastDep->part() == part)
     return _lastDep;
 
-  TraceInclusiveCost* dep;
-  for (dep = _deps.first(); dep; dep = _deps.next())
+  foreach(TraceInclusiveCost* dep, _deps) {
     if (dep->part() == part) {
       _lastDep = dep;
       return dep;
     }
+  }
   return 0;
 }
 
@@ -462,8 +459,7 @@ void TraceInclusiveListCost::update()
 #endif
 
   clear();
-  TraceInclusiveCost* item;
-  for (item = _deps.first(); item; item = _deps.next()) {
+  foreach(TraceInclusiveCost* item, _deps) {
     if (onlyActiveParts())
       if (!item->part() || !item->part()->isActive()) continue;
 
@@ -1052,16 +1048,16 @@ TraceLineJump::TraceLineJump(TraceLine* lineFrom, TraceLine* lineTo,
 			     bool isCondJump)
     : TraceJumpListCost(ProfileContext::context(ProfileContext::LineJump))
 {
-  // we are the owner of TracePartLineJump's generated in our factory
-  _deps.setAutoDelete(true);
-
   _lineFrom = lineFrom;
   _lineTo   = lineTo;
   _isCondJump = isCondJump;
 }
 
 TraceLineJump::~TraceLineJump()
-{}
+{
+    // we are the owner of TracePartLineJump's generated in our factory
+    qDeleteAll(_deps);
+}
 
 
 TracePartLineJump* TraceLineJump::partLineJump(TracePart* part)
@@ -1130,15 +1126,15 @@ int TraceLineJumpList::compareItems ( Item item1, Item item2 )
 TraceInstrCall::TraceInstrCall(TraceCall* call, TraceInstr* instr)
     : TraceCallListCost(ProfileContext::context(ProfileContext::InstrCall))
 {
-  // we are the owner of TracePartInstrCall's generated in our factory
-  _deps.setAutoDelete(true);
-
   _call  = call;
   _instr = instr;
 }
 
 TraceInstrCall::~TraceInstrCall()
-{}
+{
+    // we are the owner of TracePartInstrCall's generated in our factory
+    qDeleteAll(_deps);
+}
 
 
 TracePartInstrCall* TraceInstrCall::partInstrCall(TracePart* part,
@@ -1169,15 +1165,16 @@ QString TraceInstrCall::name() const
 TraceLineCall::TraceLineCall(TraceCall* call, TraceLine* line)
     : TraceCallListCost(ProfileContext::context(ProfileContext::LineCall))
 {
-  // we are the owner of TracePartLineCall's generated in our factory
-  _deps.setAutoDelete(true);
-
   _call = call;
+
   _line = line;
 }
 
 TraceLineCall::~TraceLineCall()
-{}
+{
+    // we are the owner of TracePartLineCall's generated in our factory
+    qDeleteAll(_deps);
+}
 
 
 TracePartLineCall* TraceLineCall::partLineCall(TracePart* part,
@@ -1206,8 +1203,6 @@ QString TraceLineCall::name() const
 TraceCall::TraceCall(TraceFunction* caller, TraceFunction* called)
     : TraceCallListCost(ProfileContext::context(ProfileContext::Call))
 {
-  // we are the owner of all items generated in our factory
-  _deps.setAutoDelete(true);
   _lineCalls.setAutoDelete(true);
 
   _caller = caller;
@@ -1216,7 +1211,10 @@ TraceCall::TraceCall(TraceFunction* caller, TraceFunction* called)
 
 
 TraceCall::~TraceCall()
-{}
+{
+    // we are the owner of all items generated in our factory
+    qDeleteAll(_deps);
+}
 
 TracePartCall* TraceCall::partCall(TracePart* part,
                                    TracePartFunction* partCaller,
@@ -1385,8 +1383,6 @@ QString TraceCall::calledName(bool skipCycle) const
 TraceInstr::TraceInstr()
     : TraceListCost(ProfileContext::context(ProfileContext::Instr))
 {
-  // we are the owner of TracePartInstr's generated in our factory
-  _deps.setAutoDelete(true);
   _instrJumps.setAutoDelete(true);
 
   _addr = 0;
@@ -1395,7 +1391,10 @@ TraceInstr::TraceInstr()
 }
 
 TraceInstr::~TraceInstr()
-{}
+{
+    // we are the owner of TracePartInstr's generated in our factory
+    qDeleteAll(_deps);
+}
 
 bool TraceInstr::hasCost(EventType* ct)
 {
@@ -1486,8 +1485,6 @@ QString TraceInstr::prettyName() const
 TraceLine::TraceLine()
     : TraceListCost(ProfileContext::context(ProfileContext::Line))
 {
-  // we are the owner of TracePartLine's generated in our factory
-  _deps.setAutoDelete(true);
   _lineJumps.setAutoDelete(true);
 
   _lineno = 0;
@@ -1495,7 +1492,10 @@ TraceLine::TraceLine()
 }
 
 TraceLine::~TraceLine()
-{}
+{
+    // we are the owner of TracePartLine's generated in our factory
+    qDeleteAll(_deps);
+}
 
 bool TraceLine::hasCost(EventType* ct)
 {
@@ -1747,8 +1747,8 @@ TraceLineMap* TraceFunctionSource::lineMap()
    * - build TraceJumpLines using FixJump objects
    */
   TraceInclusiveCostList pfList = _function->deps();
-  TracePartFunction* pf = (TracePartFunction*) pfList.first();
-  for(; pf; pf = (TracePartFunction*) pfList.next()) {
+  foreach(TraceInclusiveCost* ic, pfList) {
+      TracePartFunction* pf = (TracePartFunction*) ic;
 
       if (0) qDebug("PartFunction %s:%d",
 		    pf->function()->name().toAscii().constData(), pf->part()->partNumber());
@@ -1915,8 +1915,6 @@ TraceFunction::TraceFunction()
   _cls = 0;
   _cycle = 0;
 
-    // we are the owner of items generated in our factory
-  _deps.setAutoDelete(true);
   _callings.setAutoDelete(true);
   _sourceFiles.setAutoDelete(true);
 
@@ -1932,8 +1930,10 @@ TraceFunction::TraceFunction()
 
 TraceFunction::~TraceFunction()
 {
-  _assoziations.setAutoDelete(true);
-  _assoziations.clear();
+  qDeleteAll(_assoziations);
+
+  // we are the owner of items generated in our factory
+  qDeleteAll(_deps);
 
   if (_instrMap) delete _instrMap;
 }
@@ -2484,8 +2484,7 @@ void TraceFunction::update()
 
   if (data()->inFunctionCycleUpdate() || !_cycle) {
       // usual case (no cycle member)
-      TraceInclusiveCost* item;
-      for (item=_deps.first();item;item=_deps.next()) {
+      foreach(TraceInclusiveCost* item, _deps) {
 	  if (!item->part() || !item->part()->isActive()) continue;
 
 	  addCost(item);
@@ -2514,8 +2513,7 @@ void TraceFunction::update()
     }
     else {
       // cycle member
-      TraceInclusiveCost* item;
-      for (item=_deps.first();item;item=_deps.next()) {
+      foreach(TraceInclusiveCost* item, _deps) {
 	if (!item->part() || !item->part()->isActive()) continue;
 
 	addCost(item);
@@ -2668,8 +2666,8 @@ TraceInstrMap* TraceFunction::instrMap()
   TracePartInstrCall* pic = 0;
 
   TraceInclusiveCostList pfList = deps();
-  TracePartFunction* pf = (TracePartFunction*) pfList.first();
-  for(; pf; pf = (TracePartFunction*) pfList.next()) {
+  foreach(TraceInclusiveCost* icost, pfList) {
+      TracePartFunction* pf = (TracePartFunction*) icost;
 
       if (0) qDebug("PartFunction %s:%d",
 		    pf->function()->name().toAscii().constData(), pf->part()->partNumber());
@@ -2838,13 +2836,13 @@ void TraceFunctionCycle::setup()
 
 TraceClass::TraceClass()
     : TraceCostItem(ProfileContext::context(ProfileContext::Class))
-{
-  // we are the owner of items generated in our factory
-  _deps.setAutoDelete(true);
-}
+{}
 
 TraceClass::~TraceClass()
-{}
+{
+    // we are the owner of items generated in our factory
+    qDeleteAll(_deps);
+}
 
 QString TraceClass::prettyName() const
 {
@@ -2898,13 +2896,13 @@ void TraceClass::addFunction(TraceFunction* function)
 
 TraceFile::TraceFile()
     : TraceCostItem(ProfileContext::context(ProfileContext::File))
-{
-  // we are the owner of items generated in our factory
-  _deps.setAutoDelete(true);
-}
+{}
 
 TraceFile::~TraceFile()
-{}
+{
+    // we are the owner of items generated in our factory
+    qDeleteAll(_deps);
+}
 
 TracePartFile* TraceFile::partFile(TracePart* part)
 {
@@ -3022,13 +3020,13 @@ QString TraceFile::prettyLongName() const
 
 TraceObject::TraceObject()
     : TraceCostItem(ProfileContext::context(ProfileContext::Object))
-{
-  // we are the owner of items generated in our factory
-  _deps.setAutoDelete(true);
-}
+{}
 
 TraceObject::~TraceObject()
-{}
+{
+    // we are the owner of items generated in our factory
+    qDeleteAll(_deps);
+}
 
 TracePartObject* TraceObject::partObject(TracePart* part)
 {

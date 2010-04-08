@@ -165,10 +165,10 @@ class TraceFile;
 class TracePart;
 class TraceData;
 
-typedef Q3PtrList<ProfileCostArray> TraceCostList;
-typedef Q3PtrList<TraceJumpCost> TraceJumpCostList;
-typedef Q3PtrList<TraceCallCost> TraceCallCostList;
-typedef Q3PtrList<TraceInclusiveCost> TraceInclusiveCostList;
+typedef QList<ProfileCostArray*> TraceCostList;
+typedef QList<TraceJumpCost*> TraceJumpCostList;
+typedef QList<TraceCallCost*> TraceCallCostList;
+typedef QList<TraceInclusiveCost*> TraceInclusiveCostList;
 
 typedef Q3PtrList<TracePartCall>  TracePartCallList;
 typedef Q3PtrList<TracePartInstr> TracePartInstrList;
@@ -689,7 +689,7 @@ public:
 
   // returns true if something changed
   bool activate(bool);
-  bool isActive() { return _active; }
+  bool isActive() const { return _active; }
 
 private:
   QIODevice* _file;

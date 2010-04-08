@@ -20,7 +20,7 @@ endif ("${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_SOURCE_DIR}")
 # TODO port away from QT3_SUPPORT
 add_definitions(-DQT3_SUPPORT)
 
-set( KCACHEGRIND_VERSION "0.5.1kde")
+set( KCACHEGRIND_VERSION "0.6kde")
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.h )
 

@@ -68,7 +68,7 @@ class SubCost
 
 class ProfileCostArray;
 class EventType;
-typedef Q3PtrList<ProfileCostArray> TraceCostList;
+typedef QList<ProfileCostArray*> TraceCostList;
 
 /**
  * A class to calculate the <maxSize> ProfileCostArray items
