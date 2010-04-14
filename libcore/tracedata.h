@@ -29,9 +29,7 @@
 #include <qstringlist.h>
 #include <q3ptrlist.h>
 #include <qmap.h>
-#include <q3ptrvector.h>
 #include <qcolor.h>
-
 
 #include "costitem.h"
 #include "subcost.h"
@@ -170,25 +168,25 @@ typedef QList<TraceJumpCost*> TraceJumpCostList;
 typedef QList<TraceCallCost*> TraceCallCostList;
 typedef QList<TraceInclusiveCost*> TraceInclusiveCostList;
 
-typedef Q3PtrList<TracePartCall>  TracePartCallList;
-typedef Q3PtrList<TracePartInstr> TracePartInstrList;
-typedef Q3PtrList<TracePartLine>  TracePartLineList;
-typedef Q3PtrList<TracePartLineRegion>  TracePartLineRegionList;
-typedef Q3PtrList<TracePartFunction>  TracePartFunctionList;
-typedef Q3PtrList<TracePartInstrCall> TracePartInstrCallList;
-typedef Q3PtrList<TracePartLineCall>  TracePartLineCallList;
+typedef QList<TracePartCall*> TracePartCallList;
+typedef QList<TracePartInstr*> TracePartInstrList;
+typedef QList<TracePartLine*> TracePartLineList;
+typedef QList<TracePartLineRegion*> TracePartLineRegionList;
+typedef QList<TracePartFunction*> TracePartFunctionList;
+typedef QList<TracePartInstrCall*> TracePartInstrCallList;
+typedef QList<TracePartLineCall*> TracePartLineCallList;
 
 
-typedef Q3PtrList<TraceInstr> TraceInstrList;
-typedef Q3PtrList<TraceLine> TraceLineList;
-typedef Q3PtrList<TraceInstrCall> TraceInstrCallList;
-typedef Q3PtrList<TraceLineCall> TraceLineCallList;
-typedef Q3PtrList<TraceCall> TraceCallList;
-typedef Q3PtrList<TraceFile> TraceFileList;
-typedef Q3PtrList<TraceLineRegion> TraceLineRegionList;
-typedef Q3PtrList<TraceFunctionSource> TraceFunctionSourceList;
-typedef Q3PtrList<TraceFunction> TraceFunctionList;
-typedef Q3PtrList<TraceFunctionCycle> TraceFunctionCycleList;
+typedef QList<TraceInstr*> TraceInstrList;
+typedef QList<TraceLine*> TraceLineList;
+typedef QList<TraceInstrCall*> TraceInstrCallList;
+typedef QList<TraceLineCall*> TraceLineCallList;
+typedef QList<TraceCall*> TraceCallList;
+typedef QList<TraceFile*> TraceFileList;
+typedef QList<TraceLineRegion*> TraceLineRegionList;
+typedef QList<TraceFunctionSource*> TraceFunctionSourceList;
+typedef QList<TraceFunction*> TraceFunctionList;
+typedef QList<TraceFunctionCycle*> TraceFunctionCycleList;
 typedef QMap<QString, TraceObject> TraceObjectMap;
 typedef QMap<QString, TraceClass> TraceClassMap;
 typedef QMap<QString, TraceFile> TraceFileMap;
@@ -1144,7 +1142,7 @@ class TraceAssoziation
   bool _valid;
 };
 
-typedef Q3PtrList<TraceAssoziation> TraceAssoziationList;
+typedef QList<TraceAssoziation*> TraceAssoziationList;
 
 /**
  * A traced function

@@ -501,13 +501,11 @@ TreeMapItemList* SubPartItem::children()
       return _children;
 
     if (w->visualization() == PartAreaWidget::Inclusive) {
-      TracePartCall* call;
-      TracePartCallList l;
-
       setSum(value());
 
+      TracePartCallList l;
       l = ((TracePartFunction*)_partCostItem)->partCallings();
-      for (call=l.first();call;call=l.next()) {
+      foreach(TracePartCall* call, l) {
         TraceFunction* called = call->call()->called();
         ProfileCostArray* partCalled = called->findDepFromPart(call->part());
         if (partCalled)

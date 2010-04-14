@@ -269,12 +269,11 @@ void CallView::refresh()
     TraceFunction* f = activeFunction();
     if (!f) return;
 
-    TraceCall* call;
     // In the call lists, we skip cycles to show the real call relations
     TraceCallList l = _showCallers ? f->callers(true) : f->callings(true);
 
     QList<QTreeWidgetItem*> items;
-    for (call=l.first();call;call=l.next())
+    foreach(TraceCall* call, l)
 	if (call->subCost(_eventType)>0)
             items.append(new CallItem(this, 0, call));
 

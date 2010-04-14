@@ -313,25 +313,26 @@ void CoverageView::refresh()
     if (t == ProfileContext::FunctionCycle) f = (TraceFunction*) _activeItem;
     if (!f) return;
 
-    TraceFunction* ff;
-    TraceFunctionList l;
+
 
     _hc.clear(GlobalConfig::maxListCount());
     SubCost realSum = f->inclusive()->subCost(_eventType);
 
+    TraceFunctionList l;
     if (_showCallers)
       l = Coverage::coverage(f, Coverage::Caller, _eventType);
     else
       l = Coverage::coverage(f, Coverage::Called, _eventType);
 
-    for (ff=l.first();ff;ff=l.next()) {
-      Coverage* c = (Coverage*) ff->assoziation(Coverage::Rtti);
+    foreach(TraceFunction* f2, l) {
+      Coverage* c = (Coverage*) f2->assoziation(Coverage::Rtti);
       if (c && (c->inclusive()>0.0))
-	_hc.addCost(ff, SubCost(realSum * c->inclusive()));
+        _hc.addCost(f2, SubCost(realSum * c->inclusive()));
     }
 
     QList<QTreeWidgetItem*> items;
     QTreeWidgetItem* item;
+    TraceFunction* ff;
     for(int i=0;i<_hc.realCount();i++) {
       ff = (TraceFunction*) _hc[i];
       Coverage* c = (Coverage*) ff->assoziation(Coverage::Rtti);

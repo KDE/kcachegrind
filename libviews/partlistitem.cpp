@@ -133,16 +133,12 @@ void PartListItem::update()
     return;
   }
 
-  TracePartCall* pc;
-  TracePartCallList pl;
-  SubCost callers, callees;
+  SubCost callers;
   QString str;
 
   callers = 0;
-  pl = pf->partCallers();
-  for (pc=pl.first();pc;pc=pl.next()) {
+  foreach(TracePartCall* pc, pf->partCallers())
     callers += pc->callCount();
-  }
 
   if ((callers == 0) && (pf->calledContexts()>0))
     str = QObject::tr("(active)");

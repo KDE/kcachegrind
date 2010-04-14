@@ -88,11 +88,10 @@ int main(int argc, char** argv)
 	hc.addCost(&(*it), (*it).inclusive()->subCost(et));
 
     TraceFunction *f;
-    TraceFunctionCycleList l =  d->functionCycles();
-    for (f=l.first();f;f=l.next())
+    foreach(f, d->functionCycles())
 	hc.addCost(f, f->inclusive()->subCost(et));
 
-    for(int i=0;i<hc.realCount();i++) {
+    for(int i=0; i<hc.realCount(); i++) {
 	f = (TraceFunction*)hc[i];
 	p = f->inclusive()->subCost(et).pretty();
 	qDebug(" %12s   %s (%s)",

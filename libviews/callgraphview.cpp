@@ -1009,13 +1009,12 @@ void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallees,
 		return;
 	}
 
-	TraceCall* call;
 	TraceFunction* f2;
 
 	// on entering a cycle, only go the FunctionCycle
 	TraceCallList l = toCallees ? f->callings(false) : f->callers(false);
 
-	for (call=l.first(); call; call=l.next()) {
+        foreach(TraceCall* call, l) {
 
 		f2 = toCallees ? call->called(false) : call->caller(false);
 

@@ -326,12 +326,12 @@ void SourceView::refresh()
   else
       fillSourceFile(mainSF, 0);
 
-  TraceFunctionSource* sf;
-  int fileno = 1;
-  TraceFunctionSourceList l = f->sourceFiles();
-  for (sf=l.first();sf;sf=l.next(), fileno++)
-    if (sf != mainSF)
-      fillSourceFile(sf, fileno);
+  int fileno = 0;
+  foreach(TraceFunctionSource* sf, f->sourceFiles()) {
+      fileno++;
+      if (sf != mainSF)
+          fillSourceFile(sf, fileno);
+  }
 
   if (!_eventType2) {
     setColumnWidthMode(2, Q3ListView::Manual);
@@ -754,9 +754,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     }
 
     si->setOpen(true);
-    TraceLineCallList list = currLine->lineCalls();
-    TraceLineCall* lc;
-    for (lc=list.first();lc;lc=list.next()) {
+    foreach(TraceLineCall* lc,  currLine->lineCalls()) {
 	if ((lc->subCost(_eventType)==0) &&
 	    (lc->subCost(_eventType2)==0)) continue;
 

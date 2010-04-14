@@ -122,9 +122,8 @@ void StackSelection::rebuildStackList()
   _stackList->setColumnWidthMode(1, Q3ListView::Maximum);
 
   TraceCallList l = item->stack()->calls();
-  TraceCall* call;
-  for (call=l.last();call;call=l.prev())
-    new StackItem(this, _stackList, call);
+  for(int i=l.count()-1; i>=0; i--)
+      new StackItem(this, _stackList, l.at(i));
 
   new StackItem(this, _stackList, top);
 

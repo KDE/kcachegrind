@@ -686,36 +686,30 @@ TreeMapItemList* CallMapBaseItem::children()
 		  w->showCallers() ? "Callers":"Callees",
 		  text(0).ascii());
 
-    TraceCall* call;
-
     setSorting(-1);
     if (w->showCallers()) {
-      TraceCallList l = _f->callers();
-      for (call=l.first();call;call=l.next()) {
+        foreach(TraceCall* call, _f->callers()) {
+            // do not show calls inside of a cycle
+            if (call->inCycle()>0) continue;
+            if (call->isRecursion()) continue;
 
-        // do not show calls inside of a cycle
-        if (call->inCycle()>0) continue;
-        if (call->isRecursion()) continue;
+            addItem(new CallMapCallerItem(1.0, call));
+        }
 
-        addItem(new CallMapCallerItem(1.0, call));
-      }
-
-      setSum(0);
+        setSum(0);
     }
     else {
-      TraceCallList l = _f->callings();
-      for (call=l.first();call;call=l.next()) {
+        foreach(TraceCall* call, _f->callings()) {
+            // do not show calls inside of a cycle
+            if (call->inCycle()>0) continue;
+            if (call->isRecursion()) continue;
 
-        // do not show calls inside of a cycle
-        if (call->inCycle()>0) continue;
-        if (call->isRecursion()) continue;
+            CallMapCallingItem* i = new CallMapCallingItem(1.0, call);
+            i->init();
+            addItem(i);
+        }
 
-        CallMapCallingItem* i = new CallMapCallingItem(1.0, call);
-        i->init();
-        addItem(i);
-      }
-
-      setSum(_f->inclusive()->subCost(w->eventType()));
+        setSum(_f->inclusive()->subCost(w->eventType()));
     }
     setSorting(-2, false);
   }
@@ -831,10 +825,7 @@ TreeMapItemList* CallMapCallingItem::children()
                _factor, v, s, newFactor);
 #endif
     setSorting(-1);
-    TraceCall* call;
-    TraceCallList l = _c->called()->callings();
-    for (call=l.first();call;call=l.next()) {
-
+    foreach(TraceCall* call, _c->called()->callings()) {
       // do not show calls inside of a cycle
       if (call->inCycle()>0) continue;
       if (call->isRecursion()) continue;
@@ -939,10 +930,7 @@ TreeMapItemList* CallMapCallerItem::children()
 #endif
     setSorting(-1);
 
-    TraceCall* call;
-    TraceCallList l = _c->caller()->callers();
-    for (call=l.first();call;call=l.next()) {
-
+    foreach(TraceCall* call, _c->caller()->callers()) {
       // do not show calls inside of a cycle
       if (call->inCycle()>0) continue;
       if (call->isRecursion()) continue;

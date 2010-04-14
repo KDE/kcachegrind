@@ -507,8 +507,6 @@ void FunctionSelection::refresh()
 
   _hc.clear(GlobalConfig::maxListCount());
 
-  TraceCostItem *group;
-
   // update group from _activeItem if possible
   if (_activeItem && (_activeItem->type() == _groupType))
     _group = (TraceCostItem*) _activeItem;
@@ -538,8 +536,7 @@ void FunctionSelection::refresh()
   case ProfileContext::FunctionCycle:
     {
       // add all cycles
-      TraceFunctionCycleList l =  _data->functionCycles();
-      for (group=l.first();group;group=l.next())
+      foreach(TraceCostItem *group, _data->functionCycles())
 	_hc.addCost(group, group->subCost(_eventType));
     }
 
@@ -566,15 +563,13 @@ void FunctionSelection::refresh()
 		    oldPos, (void*)oldItem);
 
       TraceFunctionMap::Iterator it;
-      TraceFunction *f;
       i = 0;
       fitem = 0;
       for ( it = _data->functionMap().begin();
 	    it != _data->functionMap().end(); ++it )
 	_hc.addCost(&(*it), (*it).inclusive()->subCost(_eventType));
 
-      TraceFunctionCycleList l =  _data->functionCycles();
-      for (f=l.first();f;f=l.next())
+      foreach(TraceFunction* f, _data->functionCycles())
 	_hc.addCost(f, f->inclusive()->subCost(_eventType));
 
       if (_activeItem &&
@@ -584,7 +579,7 @@ void FunctionSelection::refresh()
 				 _eventType, _groupType);
 
       for(int i=0;i<_hc.realCount();i++) {
-	f = (TraceFunction*)_hc[i];
+        TraceFunction *f = (TraceFunction*)_hc[i];
 	if (f == _activeItem) continue;
 	new FunctionItem(functionList, f, _eventType, _groupType);
       }
@@ -621,7 +616,7 @@ void FunctionSelection::refresh()
     item = new CostListItem(groupList, _group, _eventType);
 
   for(int i=0;i<_hc.realCount();i++) {
-    group = (TraceCostItem*)_hc[i];
+    TraceCostItem *group = (TraceCostItem*)_hc[i];
     // do not put group of active item twice into list
     if (group == _group) continue;
     new CostListItem(groupList, group, _eventType);
@@ -685,9 +680,8 @@ void FunctionSelection::groupSelected(Q3ListViewItem* i)
   QRegExp re(_searchString, false, true);
 
   FunctionItem* fitem = 0;
-  TraceFunction *f;
   _hc.clear(GlobalConfig::maxListCount());
-  for (f=list.first();f;f=list.next()) {
+  foreach(TraceFunction* f, list) {
     if (re.search(f->prettyName())<0) continue;
 
     _hc.addCost(f, f->inclusive()->subCost(_eventType));

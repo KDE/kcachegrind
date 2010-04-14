@@ -20,7 +20,7 @@
 #define SUBCOST_H
 
 #include <QVector>
-#include <Q3PtrList>
+#include <QList>
 
 #include "utils.h"
 

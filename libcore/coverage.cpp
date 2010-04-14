@@ -103,10 +103,6 @@ TraceFunctionList Coverage::coverage(TraceFunction* f, CoverageMode m,
 void Coverage::addCallerCoverage(TraceFunctionList& fList,
                                  double pBack, int d)
 {
-  TraceCallList cList;
-  TraceCall* call;
-  Coverage* c;
-
   if (_inRecursion) return;
 
   double incl;
@@ -144,15 +140,14 @@ void Coverage::addCallerCoverage(TraceFunctionList& fList,
 
   double callVal, pBackNew;
 
-  cList = _function->callers();
-  for (call=cList.first();call;call=cList.next()) {
+  foreach(TraceCall* call, _function->callers()) {
     if (call->inCycle()>0) continue;
     if (call->isRecursion()) continue;
 
     if (call->subCost(_costType)>0) {
       TraceFunction* caller = call->caller();
 
-      c = (Coverage*) caller->assoziation(rtti());
+      Coverage* c = (Coverage*) caller->assoziation(rtti());
       if (!c) {
         c = new Coverage();
         c->setFunction(caller);
@@ -201,10 +196,6 @@ void Coverage::addCallerCoverage(TraceFunctionList& fList,
 void Coverage::addCallingCoverage(TraceFunctionList& fList,
                                   double pForward, double pBack, int d)
 {
-  TraceCallList cList;
-  TraceCall* call;
-  Coverage* c;
-
   if (_inRecursion) return;
 
 #ifdef DEBUG_COVERAGE
@@ -260,15 +251,14 @@ void Coverage::addCallingCoverage(TraceFunctionList& fList,
 
   double callVal, pForwardNew, pBackNew;
 
-  cList = _function->callings();
-  for (call=cList.first();call;call=cList.next()) {
+  foreach(TraceCall* call, _function->callings()) {
     if (call->inCycle()>0) continue;
     if (call->isRecursion()) continue;
 
     if (call->subCost(_costType)>0) {
       TraceFunction* calling = call->called();
 
-      c = (Coverage*) calling->assoziation(rtti());
+      Coverage* c = (Coverage*) calling->assoziation(rtti());
       if (!c) {
         c = new Coverage();
         c->setFunction(calling);

@@ -868,9 +868,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
       }
 
       ii->setOpen(true);
-      TraceInstrCallList list = currInstr->instrCalls();
-      TraceInstrCall* ic;
-      for (ic=list.first();ic;ic=list.next()) {
+      foreach(TraceInstrCall* ic, currInstr->instrCalls()) {
 	  if ((ic->subCost(_eventType)==0) &&
 	      (ic->subCost(_eventType2)==0)) continue;
 

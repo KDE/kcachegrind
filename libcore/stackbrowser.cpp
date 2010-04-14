@@ -41,12 +41,10 @@ Stack::Stack(TraceFunction* f)
 
 void Stack::extendBottom()
 {
-  TraceCallList l;
-  TraceCall *c,  *call;
   SubCost most;
   TraceFunction* f;
 
-  if (_calls.last())
+  if (!_calls.isEmpty())
     f = _calls.last()->called();
   else
     f = _top;
@@ -60,10 +58,9 @@ void Stack::extendBottom()
 
   // try to extend to lower stack frames
   while (f && (max-- >0)) {
-    l = f->callings();
-    call = 0;
+    TraceCall* call = 0;
     most = 0;
-    for (c=l.first();c;c=l.next()) {
+    foreach(TraceCall* c, f->callings()) {
 	// no cycle calls in stack: could be deleted without notice
 	if (c->called()->cycle() == c->called()) continue;
 	// no simple recursions
@@ -89,8 +86,6 @@ void Stack::extendBottom()
 
 void Stack::extendTop()
 {
-  TraceCallList l;
-  TraceCall *c,  *call;
   SubCost most;
 
   int max = 10;
@@ -100,10 +95,9 @@ void Stack::extendTop()
 
   // try to extend to upper stack frames
   while (_top && (max-- >0)) {
-    l = _top->callers();
-    call = 0;
+    TraceCall* call = 0;
     most = 0;
-    for (c=l.first();c;c=l.next()) {
+    foreach(TraceCall* c, _top->callers()) {
 	// no cycle calls in stack: could be deleted without notice
 	if (c->caller()->cycle() == c->caller()) continue;
 	// no simple recursions
@@ -129,7 +123,6 @@ void Stack::extendTop()
 TraceFunction* Stack::caller(TraceFunction* fn, bool extend)
 {
   TraceFunction* f;
-  TraceCall* c;
 
   if (extend && (_top == fn)) {
     // extend at top
@@ -137,7 +130,7 @@ TraceFunction* Stack::caller(TraceFunction* fn, bool extend)
     f = _top;
   }
 
-  for (c=_calls.first();c;c=_calls.next()) {
+  foreach(TraceCall* c, _calls) {
     f = c->called();
     if (f == fn)
       return c->caller();
@@ -148,9 +141,8 @@ TraceFunction* Stack::caller(TraceFunction* fn, bool extend)
 TraceFunction* Stack::called(TraceFunction* fn, bool extend)
 {
   TraceFunction* f;
-  TraceCall* c;
 
-  for (c=_calls.first();c;c=_calls.next()) {
+  foreach(TraceCall* c, _calls) {
     f = c->caller();
     if (f == fn)
       return c->called();
@@ -161,7 +153,7 @@ TraceFunction* Stack::called(TraceFunction* fn, bool extend)
     extendBottom();
 
     // and search again
-    for (c=_calls.first();c;c=_calls.next()) {
+    foreach(TraceCall* c, _calls) {
       f = c->caller();
       if (f == fn)
         return c->called();
@@ -181,46 +173,35 @@ bool Stack::contains(TraceFunction* fn)
     return true;
 
   TraceFunction* f = _top;
-  TraceCall* c;
 
-  for (c=_calls.first();c;c=_calls.next()) {
+  foreach(TraceCall* c, _calls) {
     f = c->called();
     if (f == fn)
       return true;
   }
 
-  TraceCallList l;
-
   // try to extend at bottom (even if callCount 0)
-  l = f->callings();
-  for (c=l.first();c;c=l.next()) {
+  foreach(TraceCall* c, f->callings()) {
     f = c->called();
-    if (f == fn)
-      break;
-  }
+    if (f == fn) {
+        _calls.append(c);
 
-  if (c) {
-    _calls.append(c);
-
-    // extend at bottom after found one
-    extendBottom();
-    return true;
+        // extend at bottom after found one
+        extendBottom();
+        return true;
+    }
   }
 
   // try to extend at top (even if callCount 0)
-  l = _top->callers();
-  for (c=l.first();c;c=l.next()) {
+  foreach(TraceCall* c, _top->callers()) {
     f = c->caller();
-    if (f == fn)
-      break;
-  }
+    if (f == fn) {
+        _calls.prepend(c);
 
-  if (c) {
-    _calls.prepend(c);
-
-    // extend at top after found one
-    extendTop();
-    return true;
+        // extend at top after found one
+        extendTop();
+        return true;
+    }
   }
 
   return false;
@@ -229,40 +210,31 @@ bool Stack::contains(TraceFunction* fn)
 Stack* Stack::split(TraceFunction* f)
 {
   TraceCallList calls = _calls;
-  TraceCall *c, *c2;
 
   // cycles are listed on there own
   if (f->cycle() == f) return 0;
   if (_top->cycle() == _top) return false;
 
-  for (c=calls.first();c;c=calls.next()) {
-    TraceCallList l = c->called()->callings();
-    for (c2=l.first();c2;c2=l.next()) {
+  foreach(TraceCall* c, calls) {
+    foreach(TraceCall* c2, c->called()->callings()) {
       if (c2 == c) continue;
-      if (c2->called() == f)
-        break;
+      if (c2->called() != f) continue;
+
+      // remove bottom part
+      while (!calls.isEmpty() && (calls.last()!=c))
+        calls.removeLast();
+
+      calls.append(c2);
+      return new Stack(_top, calls);
     }
-    if (c2)
-      break;
   }
-
-  if (!c)
-    return 0;
-
-  // remove bottom part
-  calls.last();
-  while (calls.current() && calls.current()!=c)
-    calls.removeLast();
-
-  calls.append(c2);
-  return new Stack(_top, calls );
+  return 0;
 }
 
 QString Stack::toString()
 {
   QString res = _top->name();
-  TraceCall *c;
-  for (c=_calls.first();c;c=_calls.next())
+  foreach(TraceCall *c, _calls)
     res += "\n > " + c->called()->name();
 
   return res;

@@ -190,7 +190,7 @@ TraceListCost::~TraceListCost()
 void TraceListCost::addDep(ProfileCostArray* dep)
 {
 #if TRACE_ASSERTIONS
-  if (_deps.findRef(dep)>=0) {
+  if (_deps.contains(dep)) {
     qDebug("addDep: %s already in list!",
            qPrintable(dep->fullName()));
     return;
@@ -264,7 +264,7 @@ TraceJumpListCost::~TraceJumpListCost()
 void TraceJumpListCost::addDep(TraceJumpCost* dep)
 {
 #if TRACE_ASSERTIONS
-  if (_deps.findRef(dep)>=0) {
+  if (_deps.contains(dep)) {
     qDebug("addDep: %s already in list!",
            qPrintable(dep->fullName()));
     return;
@@ -338,7 +338,7 @@ TraceCallListCost::~TraceCallListCost()
 void TraceCallListCost::addDep(TraceCallCost* dep)
 {
 #if TRACE_ASSERTIONS
-  if (_deps.findRef(dep)>=0) {
+  if (_deps.contains(dep)) {
     qDebug("addDep: %s already in list!",
            qPrintable(dep->fullName()));
     return;
@@ -417,7 +417,7 @@ TraceInclusiveListCost::~TraceInclusiveListCost()
 void TraceInclusiveListCost::addDep(TraceInclusiveCost* dep)
 {
 #if TRACE_ASSERTIONS
-  if (_deps.findRef(dep)>=0) {
+  if (_deps.contains(dep)) {
     qDebug("addDep: %s already in list!",
            qPrintable(dep->fullName()));
     return;
@@ -662,7 +662,7 @@ QString TracePartFunction::costString(EventTypeSet* m)
 void TracePartFunction::addPartInstr(TracePartInstr* ref)
 {
 #if TRACE_ASSERTIONS
-  if (_partInstr.findRef(ref)>=0) {
+  if (_partInstr.contains(ref)) {
     qDebug("TracePartFunction::addPartInstr: %s already in list!",
            qPrintable(ref->name()));
     return;
@@ -683,7 +683,7 @@ void TracePartFunction::addPartInstr(TracePartInstr* ref)
 void TracePartFunction::addPartLine(TracePartLine* ref)
 {
 #if TRACE_ASSERTIONS
-  if (_partLines.findRef(ref)>=0) {
+  if (_partLines.contains(ref)) {
     qDebug("TracePartFunction::addPartLine: %s already in list!",
            qPrintable(ref->name()));
     return;
@@ -704,7 +704,7 @@ void TracePartFunction::addPartLine(TracePartLine* ref)
 void TracePartFunction::addPartCaller(TracePartCall* ref)
 {
 #if TRACE_ASSERTIONS
-  if (_partCallers.findRef(ref)>=0) {
+  if (_partCallers.contains(ref)) {
     qDebug("TracePartFunction::addPartCaller: %s already in list!",
            qPrintable(ref->name()));
     return;
@@ -725,7 +725,7 @@ void TracePartFunction::addPartCaller(TracePartCall* ref)
 void TracePartFunction::addPartCalling(TracePartCall* ref)
 {
 #if TRACE_ASSERTIONS
-  if (_partCallings.findRef(ref)>=0) {
+  if (_partCallings.contains(ref)) {
     qDebug("TracePartFunction::addPartCalling: %s already in list!",
            qPrintable(ref->name()));
     return;
@@ -788,9 +788,7 @@ void TracePartFunction::update()
   _callingContexts = 0;
 
   // calculate additional cost metrics
-  TracePartCall *caller, *calling;
-  for (caller=_partCallers.first();caller;caller=_partCallers.next()) {
-
+  foreach(TracePartCall* caller, _partCallers) {
     // FIXME
     if (caller->subCost(0)>0)
       _calledContexts++;
@@ -800,7 +798,7 @@ void TracePartFunction::update()
       _calledCount += c;
     }
   }
-  for (calling=_partCallings.first();calling;calling=_partCallings.next()) {
+  foreach(TracePartCall* calling, _partCallings) {
     // FIXME
     if (calling->subCost(0)>0)
       _callingContexts++;
@@ -848,7 +846,7 @@ void TracePartFunction::update()
   _inclusive.clear();
   if (_calledCount>0) {
       // inclusive cost: if possible, use caller sums
-    for (caller=_partCallers.first();caller;caller=_partCallers.next()) {
+    foreach(TracePartCall* caller, _partCallers) {
       // detect simple recursion (no cycle)
       if (caller->isRecursion()) continue;
 
@@ -857,7 +855,7 @@ void TracePartFunction::update()
   }
   else {
     // without caller info, use calling sum + line costs
-    for (calling=_partCallings.first();calling;calling=_partCallings.next()) {
+    foreach(TracePartCall* calling, _partCallings) {
       // detect simple recursion (no cycle)
       if (calling->isRecursion()) continue;
 
@@ -950,20 +948,21 @@ TraceInstrJump::~TraceInstrJump()
 
 TracePartInstrJump* TraceInstrJump::partInstrJump(TracePart* part)
 {
-  static TracePartInstrJump* item = 0;
+    static TracePartInstrJump* item = 0;
 
-  // shortcut
-  if (item && (item->instrJump()==this) && (item->part() == part)) return item;
+    // shortcut if recently used
+    if (item &&
+        (item->instrJump()==this) &&
+        (item->part() == part)) return item;
 
-  for(item = _first; item; item = item->next())
-    if (item->part() == part) break;
+    for(item = _first; item; item = item->next())
+        if (item->part() == part)
+            return item;
 
-  if (!item) {
     item = new TracePartInstrJump(this, _first);
     item->setPosition(part);
     _first = item;
-  }
-  return item;
+    return item;
 }
 
 void TraceInstrJump::update()
@@ -1203,8 +1202,6 @@ QString TraceLineCall::name() const
 TraceCall::TraceCall(TraceFunction* caller, TraceFunction* called)
     : TraceCallListCost(ProfileContext::context(ProfileContext::Call))
 {
-  _lineCalls.setAutoDelete(true);
-
   _caller = caller;
   _called = called;
 }
@@ -1212,8 +1209,9 @@ TraceCall::TraceCall(TraceFunction* caller, TraceFunction* called)
 
 TraceCall::~TraceCall()
 {
-    // we are the owner of all items generated in our factory
+    // we are the owner of all items generated in our factories
     qDeleteAll(_deps);
+    qDeleteAll(_lineCalls);
 }
 
 TracePartCall* TraceCall::partCall(TracePart* part,
@@ -1233,14 +1231,11 @@ TracePartCall* TraceCall::partCall(TracePart* part,
 
 TraceInstrCall* TraceCall::instrCall(TraceInstr* i)
 {
-  TraceInstrCall* icall;
-  for (icall=_instrCalls.first();icall;icall=_instrCalls.next())
-    if (icall->instr() == i)
-      break;
+    foreach(TraceInstrCall* icall, _instrCalls)
+        if (icall->instr() == i)
+            return icall;
 
-  if (!icall) {
-    icall = new TraceInstrCall(this, i);
-
+    TraceInstrCall* icall = new TraceInstrCall(this, i);
     _instrCalls.append(icall);
     invalidate();
 
@@ -1248,21 +1243,17 @@ TraceInstrCall* TraceCall::instrCall(TraceInstr* i)
     qDebug("Created %s [TraceCall::instrCall]", qPrintable(icall->fullName()));
 #endif
     i->addInstrCall(icall);
-  }
-  return icall;
+    return icall;
 }
 
 
 TraceLineCall* TraceCall::lineCall(TraceLine* l)
 {
-  TraceLineCall* lcall;
-  for (lcall=_lineCalls.first();lcall;lcall=_lineCalls.next())
-    if (lcall->line() == l)
-      break;
+    foreach(TraceLineCall* lcall, _lineCalls)
+        if (lcall->line() == l)
+            return lcall;
 
-  if (!lcall) {
-    lcall = new TraceLineCall(this, l);
-
+    TraceLineCall* lcall = new TraceLineCall(this, l);
     _lineCalls.append(lcall);
     invalidate();
 
@@ -1270,19 +1261,16 @@ TraceLineCall* TraceCall::lineCall(TraceLine* l)
     qDebug("Created %s [TraceCall::lineCall]", qPrintable(lcall->fullName()));
 #endif
     l->addLineCall(lcall);
-  }
-  return lcall;
+    return lcall;
 }
 
 
 void TraceCall::invalidateDynamicCost()
 {
-  TraceLineCall* lc;
-  for (lc=_lineCalls.first();lc;lc=_lineCalls.next())
+  foreach(TraceLineCall* lc, _lineCalls)
     lc->invalidate();
 
-  TraceInstrCall* ic;
-  for (ic=_instrCalls.first();ic;ic=_instrCalls.next())
+  foreach(TraceInstrCall* ic, _instrCalls)
     ic->invalidate();
 
   invalidate();
@@ -1398,21 +1386,19 @@ TraceInstr::~TraceInstr()
 
 bool TraceInstr::hasCost(EventType* ct)
 {
-    bool res = subCost(ct) > 0;
-    if (!res) {
-	TraceInstrCall* ic;
-	for(ic=_instrCalls.first();ic;ic=_instrCalls.next())
-	    if (ic->subCost(ct) > 0) break;
-	res = (ic != 0);
-	if (!res) {
-	    TraceInstrJump* ij;
-	    for(ij=_instrJumps.first();ij;ij=_instrJumps.next())
-		if (ij->executedCount() > 0) break;
-	    res = (ij != 0);
-	}
-    }
+    if (subCost(ct) >0)
+        return true;
 
-    return res;
+    foreach(TraceInstrCall* ic, _instrCalls)
+        if (ic->subCost(ct) >0)
+            return true;
+
+    TraceInstrJump* ij;
+    for(ij=_instrJumps.first(); ij; ij=_instrJumps.next())
+        if (ij->executedCount() >0)
+            return true;
+
+    return false;
 }
 
 TracePartInstr* TraceInstr::partInstr(TracePart* part,
@@ -1431,17 +1417,14 @@ TracePartInstr* TraceInstr::partInstr(TracePart* part,
 
 TraceInstrJump* TraceInstr::instrJump(TraceInstr* to, bool isJmpCond)
 {
-  TraceInstrJump* jump;
-  for (jump=_instrJumps.first();jump;jump=_instrJumps.next())
-    if (jump->instrTo() == to)
-      break;
+    TraceInstrJump* jump;
+    for (jump=_instrJumps.first();jump;jump=_instrJumps.next())
+        if (jump->instrTo() == to)
+            return jump;
 
-  if (!jump) {
     jump = new TraceInstrJump(this, to, isJmpCond);
-
     _instrJumps.append(jump);
-  }
-  return jump;
+    return jump;
 }
 
 
@@ -1449,7 +1432,7 @@ TraceInstrJump* TraceInstr::instrJump(TraceInstr* to, bool isJmpCond)
 void TraceInstr::addInstrCall(TraceInstrCall* instrCall)
 {
 #if TRACE_ASSERTIONS
-  if (_instrCalls.findRef(instrCall)>=0) return;
+  if (_instrCalls.contains(instrCall)) return;
 
   if (instrCall->instr() != this) {
     qDebug("Can not add instruction call to another instruction!");
@@ -1499,21 +1482,19 @@ TraceLine::~TraceLine()
 
 bool TraceLine::hasCost(EventType* ct)
 {
-    bool res = subCost(ct) > 0;
-    if (!res) {
-	TraceLineCall* lc;
-	for(lc=_lineCalls.first();lc;lc=_lineCalls.next())
-	    if (lc->subCost(ct) > 0) break;
-	res = (lc != 0);
-	if (!res) {
-	    TraceLineJump* lj;
-	    for(lj=_lineJumps.first();lj;lj=_lineJumps.next())
-		if (lj->executedCount() > 0) break;
-	    res = (lj != 0);
-	}
-    }
+    if (subCost(ct) >0)
+        return true;
 
-    return res;
+    foreach(TraceLineCall* lc, _lineCalls)
+        if (lc->subCost(ct) >0)
+            return true;
+
+    TraceLineJump* lj;
+    for(lj=_lineJumps.first(); lj; lj=_lineJumps.next())
+        if (lj->executedCount() >0)
+            return true;
+
+    return false;
 }
 
 TracePartLine* TraceLine::partLine(TracePart* part,
@@ -1534,24 +1515,21 @@ TracePartLine* TraceLine::partLine(TracePart* part,
 
 TraceLineJump* TraceLine::lineJump(TraceLine* to, bool isJmpCond)
 {
-  TraceLineJump* jump;
-  for (jump=_lineJumps.first();jump;jump=_lineJumps.next())
-    if (jump->lineTo() == to)
-      break;
+    TraceLineJump* jump;
+    for (jump=_lineJumps.first(); jump; jump=_lineJumps.next())
+        if (jump->lineTo() == to)
+            return jump;
 
-  if (!jump) {
     jump = new TraceLineJump(this, to, isJmpCond);
-
     _lineJumps.append(jump);
-  }
-  return jump;
+    return jump;
 }
 
 
 void TraceLine::addLineCall(TraceLineCall* lineCall)
 {
 #if TRACE_ASSERTIONS
-  if (_lineCalls.findRef(lineCall)>=0) return;
+  if (_lineCalls.contains(lineCall)) return;
 
   if (lineCall->line() != this) {
     qDebug("Can not add line call to another line!");
@@ -1746,8 +1724,7 @@ TraceLineMap* TraceFunctionSource::lineMap()
    * - build TraceLines (the line map) using FixCost objects
    * - build TraceJumpLines using FixJump objects
    */
-  TraceInclusiveCostList pfList = _function->deps();
-  foreach(TraceInclusiveCost* ic, pfList) {
+  foreach(TraceInclusiveCost* ic, _function->deps()) {
       TracePartFunction* pf = (TracePartFunction*) ic;
 
       if (0) qDebug("PartFunction %s:%d",
@@ -1803,10 +1780,7 @@ TraceLineMap* TraceFunctionSource::lineMap()
 	  fj->addTo(plj);
       }
 
-
-      TracePartCallList pcList = pf->partCallings();
-      TracePartCall* pc = pcList.first();
-      for(; pc; pc = pcList.next()) {
+      foreach(TracePartCall* pc, pf->partCallings()) {
 
 	  if (0) qDebug("PartCall %s:%d",
 			pc->call()->name().toAscii().constData(),
@@ -1915,9 +1889,6 @@ TraceFunction::TraceFunction()
   _cls = 0;
   _cycle = 0;
 
-  _callings.setAutoDelete(true);
-  _sourceFiles.setAutoDelete(true);
-
   _calledCount     = 0;
   _callingCount    = 0;
   _calledContexts  = 0;
@@ -1932,8 +1903,10 @@ TraceFunction::~TraceFunction()
 {
   qDeleteAll(_assoziations);
 
-  // we are the owner of items generated in our factory
+  // we are the owner of items generated in our factories
   qDeleteAll(_deps);
+  qDeleteAll(_callings);
+  qDeleteAll(_sourceFiles);
 
   if (_instrMap) delete _instrMap;
 }
@@ -1947,43 +1920,42 @@ void TraceFunction::addAssoziation(TraceAssoziation* a)
 
 void TraceFunction::removeAssoziation(TraceAssoziation* a)
 {
-  _assoziations.removeRef(a);
+  _assoziations.removeAll(a);
 }
 
 void TraceFunction::removeAssoziation(int rtti, bool reallyDelete)
 {
   if (rtti==0) {
     if (reallyDelete)
-      _assoziations.setAutoDelete(true);
+      qDeleteAll(_assoziations);
     _assoziations.clear();
-    _assoziations.setAutoDelete(false);
     return;
   }
 
-  TraceAssoziation* a;
-  for (a=_assoziations.first();a;a=_assoziations.next())
+  foreach(TraceAssoziation* a, _assoziations) {
     if (a->rtti() == rtti) {
       if (reallyDelete) delete a;
-      _assoziations.remove();
+      _assoziations.removeAll(a);
       return;
     }
+  }
 }
 
 void TraceFunction::invalidateAssoziation(int rtti)
 {
-  TraceAssoziation* a;
-  for (a=_assoziations.first();a;a=_assoziations.next())
-    if ((rtti==0) || (a->rtti() == rtti))
-      a->invalidate();
+    foreach(TraceAssoziation* a, _assoziations) {
+        if ((rtti==0) || (a->rtti() == rtti))
+            a->invalidate();
+    }
 }
 
 TraceAssoziation* TraceFunction::assoziation(int rtti)
 {
-  TraceAssoziation* a;
-  for (a=_assoziations.first();a;a=_assoziations.next())
-    if (a->rtti() == rtti)
-      return a;
-  return 0;
+    foreach(TraceAssoziation* a, _assoziations) {
+        if (a->rtti() == rtti)
+            return a;
+    }
+    return 0;
 }
 
 #if 0
@@ -2131,9 +2103,7 @@ QString TraceFunction::location(int maxFiles) const
 
   // add all source files
   int filesAdded = 0;
-  TraceFunctionSourceList list = _sourceFiles;
-  TraceFunctionSource* sourceFile = list.first();
-  for (;sourceFile;sourceFile=list.next()) {
+  foreach(TraceFunctionSource* sourceFile, _sourceFiles) {
     if (!sourceFile->file() ||
 	(sourceFile->file()->name().isEmpty()) )
       continue;
@@ -2253,7 +2223,7 @@ void TraceFunction::addCaller(TraceCall* caller)
     return;
   }
 
-  if (_callers.findRef(caller)>=0) return;
+  if (_callers.contains(caller)) return;
 #endif
 
   _callers.append(caller);
@@ -2269,14 +2239,11 @@ void TraceFunction::addCaller(TraceCall* caller)
 
 TraceCall* TraceFunction::calling(TraceFunction* called)
 {
-  TraceCall* calling;
-  for (calling=_callings.first();calling;calling=_callings.next())
-    if (calling->called() == called)
-      break;
+    foreach(TraceCall* calling, _callings)
+        if (calling->called() == called)
+            return calling;
 
-  if (!calling) {
-    calling = new TraceCall(this, called);
-
+    TraceCall* calling = new TraceCall(this, called);
     _callings.append(calling);
 
     // we have to invalidate ourself so invalidations from item propagate up
@@ -2286,22 +2253,21 @@ TraceCall* TraceFunction::calling(TraceFunction* called)
     qDebug("Created %s [TraceFunction::calling]", qPrintable(calling->fullName()));
 #endif
     called->addCaller(calling);
-  }
-  return calling;
+    return calling;
 }
 
 TraceFunctionSource* TraceFunction::sourceFile(TraceFile* file,
-                                                   bool createNew)
+                                               bool createNew)
 {
-  if (!file) file = _file;
+    if (!file) file = _file;
 
-  TraceFunctionSource* sourceFile = _sourceFiles.first();
-  for (;sourceFile;sourceFile=_sourceFiles.next())
-    if (sourceFile->file() == file) break;
+    foreach(TraceFunctionSource* sourceFile, _sourceFiles)
+        if (sourceFile->file() == file)
+            return sourceFile;
 
-  if (!sourceFile && createNew) {
-    sourceFile = new TraceFunctionSource(this, file);
+    if (!createNew) return 0;
 
+    TraceFunctionSource* sourceFile = new TraceFunctionSource(this, file);
     _sourceFiles.append(sourceFile);
 
     // we have to invalidate ourself so invalidations from item propagate up
@@ -2312,8 +2278,7 @@ TraceFunctionSource* TraceFunction::sourceFile(TraceFile* file,
            file->name().toAscii().constData());
 #endif
     file->addSourceFile(sourceFile);
-  }
-  return sourceFile;
+    return sourceFile;
 }
 
 TraceLine* TraceFunction::line(TraceFile* file, uint lineno,
@@ -2407,16 +2372,14 @@ TraceCallList TraceFunction::callers(bool skipCycle) const
   // fake the callers for cycle members
   if (_cycle && (_cycle != this)) {
     TraceCallList l;
-    TraceCall* c;
 
     // inner-cycle-callers
-    TraceCallList list=_callers;
-    for (c=list.first();c;c=list.next())
+    foreach(TraceCall* c, _callers)
       if (c->caller()->cycle() == _cycle)
         l.append(c);
 
     // call from cycle itself
-    for (c=_cycle->_callings.first();c;c=_cycle->_callings.next())
+    foreach(TraceCall* c, _cycle->_callings)
       if (c->called() == this) {
         l.append(c);
         return l;
@@ -2433,12 +2396,10 @@ const TraceCallList& TraceFunction::callings(bool /* skipCycle */) const
 
 void TraceFunction::invalidateDynamicCost()
 {
-  TraceCall* c;
-  for (c=_callings.first();c;c=_callings.next())
+  foreach(TraceCall* c, _callings)
     c->invalidateDynamicCost();
 
-  TraceFunctionSource* sf;
-  for (sf=_sourceFiles.first();sf;sf=_sourceFiles.next())
+  foreach(TraceFunctionSource* sf, _sourceFiles)
     sf->invalidateDynamicCost();
 
   if (_instrMap) {
@@ -2468,18 +2429,18 @@ void TraceFunction::update()
   clear();
 
   // context count is NOT the sum of part contexts
-  TraceCall *caller, *calling;
-  for (caller=_callers.first();caller;caller=_callers.next()) {
-    // FIXME
-    if (caller->subCost(0)>0)
-      _calledContexts++;
-    _calledCount += caller->callCount();
+  foreach(TraceCall *caller, _callers) {
+      // FIXME
+      if (caller->subCost(0) >0)
+          _calledContexts++;
+      _calledCount += caller->callCount();
   }
 
-  for (calling=_callings.first();calling;calling=_callings.next()) {
-    // FIXME
-    if (calling->subCost(0)>0)  _callingContexts++;
-    _callingCount += calling->callCount();
+  foreach(TraceCall* callee, _callings) {
+      // FIXME
+      if (callee->subCost(0) >0)
+          _callingContexts++;
+      _callingCount += callee->callCount();
   }
 
   if (data()->inFunctionCycleUpdate() || !_cycle) {
@@ -2493,22 +2454,20 @@ void TraceFunction::update()
   }
   else {
     // this is a cycle or cycle member
-    for (calling=_callings.first();calling;calling=_callings.next()) {
+    foreach(TraceCall* callee, _callings) {
 
 	// ignore inner-cycle member calls for inclusive cost
 	if ((_cycle != this) &&
-	    (calling->inCycle()>0))  continue;
+            (callee->inCycle()>0))  continue;
 
-	addInclusive(calling);
+        addInclusive(callee);
     }
 
     // self cost
     if (type() == ProfileContext::FunctionCycle) {
       // cycle: self cost is sum of cycle member self costs, but
       //        does not add to inclusive cost
-      TraceFunctionList mList = ((TraceFunctionCycle*)this)->members();
-      TraceFunction* m;
-      for (m=mList.first();m;m=mList.next())
+      foreach(TraceFunction* m, ((TraceFunctionCycle*)this)->members())
 	  addCost(m);
     }
     else {
@@ -2568,10 +2527,7 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
 
   SubCost base = 0;
   if (_callers.count()>0) {
-      TraceCallList l = _callers;
-      TraceCall *caller;
-
-      for (caller=l.first();caller;caller=l.next())
+      foreach(TraceCall* caller, _callers)
 	  if (caller->subCost(0) > base)
 	      base = caller->subCost(0);
   }
@@ -2589,17 +2545,15 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
 	     cutLimit.pretty().toAscii().constData());
   }
 
-  TraceCall *calling;
-  TraceCallList l = _callings;
-  for (calling=l.first();calling;calling=l.next()) {
-    TraceFunction* called = calling->called();
+  foreach(TraceCall *callee, _callings) {
+    TraceFunction* called = callee->called();
 
       // cycle cut heuristic
-      if (calling->subCost(0) < cutLimit) {
+      if (callee->subCost(0) < cutLimit) {
 	  if (0) qDebug("%s       Cut call to %s (cum. %s)",
 			QString().fill(' ', d).toAscii().constData(),
 			called->prettyName().toAscii().constData(),
-			calling->subCost(0).pretty().toAscii().constData());
+                        callee->subCost(0).pretty().toAscii().constData());
 
 	  continue;
       }
@@ -2665,8 +2619,7 @@ TraceInstrMap* TraceFunction::instrMap()
   TraceInstrCall* ic = 0;
   TracePartInstrCall* pic = 0;
 
-  TraceInclusiveCostList pfList = deps();
-  foreach(TraceInclusiveCost* icost, pfList) {
+  foreach(TraceInclusiveCost* icost, deps()) {
       TracePartFunction* pf = (TracePartFunction*) icost;
 
       if (0) qDebug("PartFunction %s:%d",
@@ -2722,9 +2675,7 @@ TraceInstrMap* TraceFunction::instrMap()
 	  fj->addTo(pij);
       }
 
-      TracePartCallList pcList = pf->partCallings();
-      TracePartCall* pc = pcList.first();
-      for(; pc; pc = pcList.next()) {
+      foreach(TracePartCall* pc, pf->partCallings()) {
 
 	  if (0) qDebug("PartCall %s:%d",
 			pc->call()->name().toAscii().constData(),
@@ -2808,19 +2759,16 @@ void TraceFunctionCycle::setup()
 {
   if (_members.count()==0) return;
 
-  TraceFunction* f;
-  for (f=_members.first();f;f=_members.next()) {
+  foreach(TraceFunction* f, _members) {
 
-    // the cycle takes all outside callers from its members
-    TraceCall *call;
-    TraceCallList l = f->callers();
-    for (call=l.first();call;call=l.next()) {
-      if (_members.containsRef(call->caller())>0) continue;
-      _callers.append(call);
-    }
+      // the cycle takes all outside callers from its members
+      foreach(TraceCall* call, f->callers()) {
+          if (_members.contains(call->caller())) continue;
+          _callers.append(call);
+      }
 
     // the cycle has a call to each member
-    call = new TraceCall(this, f);
+    TraceCall* call = new TraceCall(this, f);
     call->invalidate();
     _callings.append(call);
 
@@ -2875,7 +2823,7 @@ void TraceClass::addFunction(TraceFunction* function)
     return;
   }
 
-  if (_functions.findRef(function)>=0) return;
+  if (_functions.contains(function)) return;
 #endif
 
   _functions.append(function);
@@ -2923,7 +2871,7 @@ void TraceFile::addFunction(TraceFunction* function)
     return;
   }
 
-  if (_functions.findRef(function)>=0) return;
+  if (_functions.contains(function)) return;
 #endif
 
   _functions.append(function);
@@ -3047,7 +2995,7 @@ void TraceObject::addFunction(TraceFunction* function)
     return;
   }
 
-  if (_functions.findRef(function)>=0) return;
+  if (_functions.contains(function)) return;
 #endif
 
   _functions.append(function);
@@ -3804,8 +3752,7 @@ ProfileCostArray* TraceData::search(ProfileContext::Type t, QString name,
 	    TraceLineMap* lineMap;
 	    TraceLine* line;
 	    TraceLineMap::Iterator it;
-	    TraceFunctionSource* fs;
-	    for(fs = sList.first(); fs; fs = sList.next()) {
+            foreach(TraceFunctionSource* fs, sList) {
 		lineMap = fs->lineMap();
 		if (!lineMap) continue;
 
@@ -3829,15 +3776,16 @@ ProfileCostArray* TraceData::search(ProfileContext::Type t, QString name,
 
 TraceFunctionCycle* TraceData::functionCycle(TraceFunction* f)
 {
-  TraceFunctionCycle* cycle;
-  for (cycle=_functionCycles.first();cycle;cycle=_functionCycles.next())
-    if (cycle->base() == f) return cycle;
+    TraceFunctionCycle* cycle;
+    foreach(cycle, _functionCycles)
+        if (cycle->base() == f)
+            return cycle;
 
-  _functionCycleCount++;
-  cycle = new TraceFunctionCycle(f, _functionCycleCount);
+    _functionCycleCount++;
+    cycle = new TraceFunctionCycle(f, _functionCycleCount);
 
-  _functionCycles.append(cycle);
-  return cycle;
+    _functionCycles.append(cycle);
+    return cycle;
 }
 
 
@@ -3846,8 +3794,7 @@ void TraceData::updateFunctionCycles()
     //qDebug("Updating cycles...");
 
   // init cycle info
-  TraceFunctionCycle* cycle;
-  for (cycle=_functionCycles.first();cycle;cycle=_functionCycles.next())
+  foreach(TraceFunctionCycle* cycle, _functionCycles)
     cycle->init();
 
   TraceFunctionMap::Iterator it;
@@ -3886,7 +3833,7 @@ void TraceData::updateFunctionCycles()
   }
 
   // postprocess cycles
-  for (cycle=_functionCycles.first();cycle;cycle=_functionCycles.next())
+  foreach(TraceFunctionCycle* cycle, _functionCycles)
     cycle->setup();
 
   _inFunctionCycleUpdate = false;
