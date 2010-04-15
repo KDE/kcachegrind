@@ -1972,15 +1972,13 @@ void TopLevel::partsHideSelectedSlot()
 {
   if (!_data) return;
 
-  TracePart* part;
   TracePartList newHidden, newActive;
-  TracePartList l = _data->parts();
-  for (part=l.first();part;part=l.next()) {
-    if ((_activeParts.findRef(part)>=0) ||
-        (_hiddenParts.findRef(part)>=0))
-      newHidden.append(part);
-    else
-      newActive.append(part);
+  foreach(TracePart* part, _data->parts()) {
+      if (_activeParts.contains(part) ||
+          _hiddenParts.contains(part))
+          newHidden.append(part);
+      else
+          newActive.append(part);
   }
 
   _hiddenParts = newHidden;

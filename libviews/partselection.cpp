@@ -162,7 +162,7 @@ void PartSelection::selectParts(const TracePartList& list)
     // first deselect inactive, then select active (makes current active)
     foreach(TreeMapItem* i, l) {
 	TracePart* part = ((PartItem*)i)->part();
-	bool active = (list.containsRef(part)>0);
+        bool active = list.contains(part);
 	if (!active && _partAreaWidget->isSelected(i)) {
 #if 0
 	    qDebug("PartSelection::selectParts: Part %s changed to unselected.",
@@ -174,7 +174,7 @@ void PartSelection::selectParts(const TracePartList& list)
     }
     foreach(TreeMapItem* i, l) {
 	TracePart* part = ((PartItem*)i)->part();
-	bool active = (list.containsRef(part)>0);
+        bool active = list.contains(part);
 	if (active && !_partAreaWidget->isSelected(i)) {
 #if 0
 	    qDebug("PartSelection::selectParts: Part %s changed to selected.",

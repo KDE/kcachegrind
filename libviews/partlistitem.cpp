@@ -154,13 +154,9 @@ int PartListItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
 {
   PartListItem* fi = (PartListItem*) i;
   if (col==0) {
-      int mTID = _part->data()->maxThreadID()+1;
-      int mNum = _part->data()->maxPartNumber()+1;
-
-      return
-	  (_part->processID()  - fi->_part->processID()) * mTID * mNum +
-	  (_part->partNumber() - fi->_part->partNumber()) * mTID +
-	  (_part->threadID()   - fi->_part->threadID());
+      if (*_part < *(fi->_part)) return -1;
+      if (*(fi->_part) < *_part) return 1;
+      return 0;
   }
   if (col==1) {
     if (_sum < fi->_sum) return -1;

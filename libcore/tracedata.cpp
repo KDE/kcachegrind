@@ -3130,37 +3130,18 @@ bool TracePart::activate(bool active)
   return true;
 }
 
-
-
-//---------------------------------------------------
-// TracePartList
-
-int TracePartList::compareItems ( Item item1, Item item2 )
+bool TracePart::operator<(const TracePart& p2) const
 {
-    TracePart* p1 = (TracePart*) item1;
-    TracePart* p2 = (TracePart*) item2;
-    int mTID = p1->data()->maxThreadID()+1;
-    int mNum = p1->data()->maxPartNumber()+1;
+    if (processID() < p2.processID()) return true;
 
-    return
-	(p1->processID()  - p2->processID()) * mTID * mNum +
-	(p1->partNumber() - p2->partNumber()) * mTID +
-	(p1->threadID()   - p2->threadID());
+    if (processID() == p2.processID()) {
+        if (partNumber() < p2.partNumber()) return true;
+
+        if (partNumber() == p2.partNumber())
+            return (threadID() < p2.threadID());
+    }
+    return false;
 }
-
-QString TracePartList::names() const
-{
-  QString res;
-  TracePart* p;
-  TracePartList l = *this;
-  for (p=l.first();p;p=l.next()) {
-    if (!res.isEmpty()) res += ", ";
-    res += p->shortName();
-  }
-
-  return res;
-}
-
 
 
 //---------------------------------------------------
@@ -3191,10 +3172,9 @@ TraceData::TraceData(QIODevice* file, const QString& filename)
     init();
     load(file, filename);
 }
+
 void TraceData::init()
 {
-  _parts.setAutoDelete(true);
-
   _functionCycleCount = 0;
   _inFunctionCycleUpdate = false;
 
@@ -3206,8 +3186,10 @@ void TraceData::init()
 
 TraceData::~TraceData()
 {
-  if (_fixPool) delete _fixPool;
-  if (_dynPool) delete _dynPool;
+    qDeleteAll(_parts);
+
+    if (_fixPool) delete _fixPool;
+    if (_dynPool) delete _dynPool;
 }
 
 QString TraceData::shortTraceName() const
@@ -3235,6 +3217,10 @@ DynPool* TraceData::dynPool()
   return _dynPool;
 }
 
+bool partLessThan(const TracePart* p1, const TracePart* p2)
+{
+    return *p1 < *p2;
+}
 
 /**
  * Two cases:
@@ -3301,7 +3287,7 @@ int TraceData::load(const QString& base)
   }
   if (partsLoaded == 0) return 0;
 
-  _parts.sort();
+  qSort(_parts.begin(), _parts.end(), partLessThan);
   invalidateDynamicCost();
   updateFunctionCycles();
 
@@ -3349,9 +3335,8 @@ bool TraceData::activateParts(const TracePartList& l)
 {
   bool changed = false;
 
-  TracePart* part;
-  for (part=_parts.first();part;part=_parts.next())
-    if (part->activate(l.containsRef(part)>0))
+  foreach(TracePart* part, _parts)
+    if (part->activate(l.contains(part)))
         changed = true;
 
   if (changed) {
@@ -3369,11 +3354,11 @@ bool TraceData::activateParts(TracePartList l, bool active)
 {
   bool changed = false;
 
-  TracePart* part;
-  for (part=l.first();part;part=l.next())
-    if (_parts.findRef(part)>=0)
+  foreach(TracePart* part, l) {
+    if (_parts.contains(part))
       if (part->activate(active))
         changed = true;
+  }
 
   if (changed) {
       invalidateDynamicCost();
@@ -3407,36 +3392,36 @@ void TraceData::addPart(TracePart* part)
 
 TracePart* TraceData::partWithName(const QString& name)
 {
-  TracePart* part;
-  for (part=_parts.first();part;part=_parts.next())
-    if (part->name() == name)
-      return part;
-  return 0;
+    foreach(TracePart* part, _parts)
+        if (part->name() == name)
+            return part;
+    return 0;
 }
 
 QString TraceData::activePartRange()
 {
-  QString res;
-  int r1=-1, r2=-1, count=1;
-  TracePart* part;
-  for (part=_parts.first();part;part=_parts.next(), count++)
-    if (part->isActive()) {
-      if (r1<0) { r1 = r2 = count; }
-      else if (r2 == count-1) { r2 = count; }
-      else {
+    QString res;
+    int r1=-1, r2=-1, count=0;
+    foreach(TracePart* part, _parts) {
+        count++;
+        if (part->isActive()) {
+            if (r1<0) { r1 = r2 = count; }
+            else if (r2 == count-1) { r2 = count; }
+            else {
+                if (!res.isEmpty()) res += ';';
+                if (r1==r2) res += QString::number(r1);
+                else res += QString("%1-%2").arg(r1).arg(r2);
+                r1 = r2 = count;
+            }
+        }
+    }
+    if (r1>=0) {
         if (!res.isEmpty()) res += ';';
         if (r1==r2) res += QString::number(r1);
         else res += QString("%1-%2").arg(r1).arg(r2);
-        r1 = r2 = count;
-      }
     }
-  if (r1>=0) {
-    if (!res.isEmpty()) res += ';';
-    if (r1==r2) res += QString::number(r1);
-    else res += QString("%1-%2").arg(r1).arg(r2);
-  }
 
-  return res;
+    return res;
 }
 
 void TraceData::invalidateDynamicCost()
@@ -3626,11 +3611,10 @@ void TraceData::update()
   clear();
   _totals.clear();
 
-  TracePart* part;
-  for (part=_parts.first();part;part=_parts.next()) {
-    _totals.addCost(part->totals());
-    if (part->isActive())
-	addCost(part->totals());
+  foreach(TracePart* part, _parts) {
+      _totals.addCost(part->totals());
+      if (part->isActive())
+          addCost(part->totals());
   }
 
   _dirty = false;

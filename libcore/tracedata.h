@@ -175,7 +175,7 @@ typedef QList<TracePartLineRegion*> TracePartLineRegionList;
 typedef QList<TracePartFunction*> TracePartFunctionList;
 typedef QList<TracePartInstrCall*> TracePartInstrCallList;
 typedef QList<TracePartLineCall*> TracePartLineCallList;
-
+typedef QList<TracePart*> TracePartList;
 
 typedef QList<TraceInstr*> TraceInstrList;
 typedef QList<TraceLine*> TraceLineList;
@@ -669,9 +669,9 @@ public:
   QString trigger() const { return _trigger; }
   QString timeframe() const { return _timeframe; }
   QString version() const { return _version; }
-  int partNumber() { return _number; }
-  int threadID() { return _tid; }
-  int processID() { return _pid; }
+  int partNumber() const { return _number; }
+  int threadID() const { return _tid; }
+  int processID() const { return _pid; }
   void setDescription(const QString& d) { _descr = d; }
   void setTrigger(const QString& t) { _trigger = t; }
   void setTimeframe(const QString& t) { _timeframe = t; }
@@ -688,6 +688,9 @@ public:
   // returns true if something changed
   bool activate(bool);
   bool isActive() const { return _active; }
+
+  // for sorting
+  bool operator<(const TracePart&) const;
 
 private:
   QIODevice* _file;
@@ -708,14 +711,6 @@ private:
   EventTypeMapping* _eventTypeMapping;
 };
 
-
-class TracePartList: public Q3PtrList<TracePart>
-{
- public:
-  QString names() const;
- protected:
-  int compareItems ( Item item1, Item item2 );
-};
 
 
 /*-----------------------------------------------------------------

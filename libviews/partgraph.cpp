@@ -124,7 +124,7 @@ void PartAreaWidget::setGroupType(ProfileContext::Type gt)
 
 bool PartAreaWidget::isHidden(TracePart* part) const
 {
-  return (_hiddenParts.containsRef(part)>0);
+  return _hiddenParts.contains(part);
 }
 
 QColor PartAreaWidget::groupColor(TraceFunction* f) const
@@ -208,12 +208,10 @@ TreeMapItemList* BasePartItem::children()
 //    qDebug("Create Parts (%s)", name().ascii());
 
     PartAreaWidget* w = (PartAreaWidget*) widget();
-    TracePart* part;
-    TracePartList l = _data->parts();
-    for (part=l.first();part;part=l.next())
-      if (!w->isHidden(part))
-        addItem(new PartItem(part));
-  }
+    foreach(TracePart* part, _data->parts())
+        if (!w->isHidden(part))
+            addItem(new PartItem(part));
+}
 
   return _children;
 }

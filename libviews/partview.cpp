@@ -155,7 +155,7 @@ void PartView::doUpdate(int changeType, bool)
       for(;item;item = item->nextSibling()) {
         part = ((PartListItem*)item)->part();
 
-        if (_partList.containsRef(part)>0) {
+        if (_partList.contains(part)) {
           setSelected(item, true);
           ensureItemVisible(item);
         }
@@ -183,18 +183,16 @@ void PartView::refresh()
     if (t == ProfileContext::Function) f = (TraceFunction*) _activeItem;
     if (!f) return;
 
-    TracePart* part;
     TracePartList hidden;
     if (_topLevel)
 	hidden = _topLevel->hiddenParts();
 
-    TracePartList allParts = _data->parts();
 
     _inSelectionUpdate = true;
 
     Q3ListViewItem* item = 0;
-    for (part = allParts.first(); part; part = allParts.next()) {
-	if (hidden.findRef(part)>=0) continue;
+    foreach(TracePart* part, _data->parts()) {
+        if (hidden.contains(part)) continue;
 	item = new PartListItem(this, f, _eventType, _groupType, part);
 
 	if (part->isActive()) {
