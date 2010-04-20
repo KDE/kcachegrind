@@ -996,51 +996,6 @@ QString TraceInstrJump::name() const
 
 
 //---------------------------------------------------
-// TraceInstrJumpList
-
-
-int TraceInstrJumpList::compareItems ( Item item1, Item item2 )
-{
-    TraceInstrJump* ij1 = (TraceInstrJump*) item1;
-    TraceInstrJump* ij2 = (TraceInstrJump*) item2;
-
-    Addr addr1Low  = ij1->instrFrom()->addr();
-    Addr addr2Low  = ij2->instrFrom()->addr();
-    Addr addr1High = ij1->instrTo()->addr();
-    Addr addr2High = ij2->instrTo()->addr();
-    Addr t;
-
-    if (addr1Low > addr1High) {
-	t = addr1Low;
-	addr1Low = addr1High;
-	addr1High = t;
-    }
-
-    if (addr2Low > addr2High) {
-	t = addr2Low;
-	addr2Low = addr2High;
-	addr2High = t;
-    }
-
-    if (_sortLow) {
-	// we sort according to smallest instruction address
-	if (addr1Low != addr2Low) return (addr1Low > addr2Low) ? 1:-1;
-	// jump ends come before jump starts
-	if (addr1Low == ij1->instrTo()->addr()) return -1;
-	if (addr2Low == ij2->instrTo()->addr()) return 1;
-	return (addr1High > addr2High) ? 1:-1;
-    }
-
-    // we sort according to highest instruction address
-    if (addr1High != addr2High) return (addr1High > addr2High) ? 1:-1;
-    // jump ends come before jump starts
-    if (addr1High == ij1->instrTo()->addr()) return -1;
-    if (addr2High == ij2->instrTo()->addr()) return 1;
-    return (addr1Low > addr2Low) ? 1:-1;
-}
-
-
-//---------------------------------------------------
 // TraceLineJump
 
 TraceLineJump::TraceLineJump(TraceLine* lineFrom, TraceLine* lineTo,
@@ -1371,17 +1326,16 @@ QString TraceCall::calledName(bool skipCycle) const
 TraceInstr::TraceInstr()
     : TraceListCost(ProfileContext::context(ProfileContext::Instr))
 {
-  _instrJumps.setAutoDelete(true);
-
-  _addr = 0;
-  _line = 0;
-  _function = 0;
+    _addr = 0;
+    _line = 0;
+    _function = 0;
 }
 
 TraceInstr::~TraceInstr()
 {
-    // we are the owner of TracePartInstr's generated in our factory
+    // we are the owner of items generated in our factories
     qDeleteAll(_deps);
+    qDeleteAll(_instrJumps);
 }
 
 bool TraceInstr::hasCost(EventType* ct)
@@ -1393,8 +1347,7 @@ bool TraceInstr::hasCost(EventType* ct)
         if (ic->subCost(ct) >0)
             return true;
 
-    TraceInstrJump* ij;
-    for(ij=_instrJumps.first(); ij; ij=_instrJumps.next())
+    foreach(TraceInstrJump* ij, _instrJumps)
         if (ij->executedCount() >0)
             return true;
 
@@ -1417,12 +1370,11 @@ TracePartInstr* TraceInstr::partInstr(TracePart* part,
 
 TraceInstrJump* TraceInstr::instrJump(TraceInstr* to, bool isJmpCond)
 {
-    TraceInstrJump* jump;
-    for (jump=_instrJumps.first();jump;jump=_instrJumps.next())
+    foreach(TraceInstrJump* jump, _instrJumps)
         if (jump->instrTo() == to)
             return jump;
 
-    jump = new TraceInstrJump(this, to, isJmpCond);
+    TraceInstrJump* jump = new TraceInstrJump(this, to, isJmpCond);
     _instrJumps.append(jump);
     return jump;
 }

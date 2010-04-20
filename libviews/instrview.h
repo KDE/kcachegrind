@@ -72,6 +72,7 @@ private:
   // temporary needed on creation...
   QVector<TraceInstrJump*> _jump;
   TraceInstrJumpList _lowList, _highList;
+  TraceInstrJumpList::iterator _lowListIter, _highListIter;
 
   // remember width of hex code column if hidden
   int _lastHexCodeWidth;

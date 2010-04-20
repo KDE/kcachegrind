@@ -179,6 +179,7 @@ typedef QList<TracePart*> TracePartList;
 
 typedef QList<TraceInstr*> TraceInstrList;
 typedef QList<TraceLine*> TraceLineList;
+typedef QList<TraceInstrJump*> TraceInstrJumpList;
 typedef QList<TraceInstrCall*> TraceInstrCallList;
 typedef QList<TraceLineCall*> TraceLineCallList;
 typedef QList<TraceCall*> TraceCallList;
@@ -745,19 +746,6 @@ public:
     bool _isCondJump;
     // list of parts for this InstrJump
     TracePartInstrJump* _first;
-};
-
-class TraceInstrJumpList: public Q3PtrList<TraceInstrJump>
-{
- public:
-    TraceInstrJumpList() { _sortLow = true; }
-    void setSortLow(bool s) { _sortLow = s; }
-
- protected:
-  int compareItems ( Item item1, Item item2 );
-
- private:
-  bool _sortLow;
 };
 
 

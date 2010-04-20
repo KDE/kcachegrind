@@ -142,8 +142,6 @@ InstrView::InstrView(TraceItemView* parentView,
 
   _inSelectionUpdate = false;
   _arrowLevels = 0;
-  _lowList.setSortLow(true);
-  _highList.setSortLow(false);
 
   addColumn( tr( "#" ) );
   addColumn( tr( "Cost" ) );
@@ -393,6 +391,53 @@ void InstrView::setColumnWidths()
   }
 }
 
+// compare functions for jump arrow drawing
+
+// helper for compare
+void getInstrJumpAddresses(const TraceInstrJump* ij, Addr& low, Addr& high)
+{
+    low  = ij->instrFrom()->addr();
+    high = ij->instrTo()->addr();
+
+    if (low > high) {
+        Addr t = low;
+        low = high;
+        high = t;
+    }
+}
+
+// sort jumps according to lower instruction address
+bool instrJumpLowLessThan(const TraceInstrJump* ij1,
+                          const TraceInstrJump* ij2)
+{
+    Addr addr1Low, addr1High, addr2Low, addr2High;
+
+    getInstrJumpAddresses(ij1, addr1Low, addr1High);
+    getInstrJumpAddresses(ij2, addr2Low, addr2High);
+
+    if (addr1Low != addr2Low) return (addr1Low < addr2Low);
+    // jump ends come before jump starts
+    if (addr1Low == ij1->instrTo()->addr()) return true;
+    if (addr2Low == ij2->instrTo()->addr()) return false;
+    return (addr1High < addr2High);
+}
+
+// sort jumps according to higher instruction address
+bool instrJumpHighLessThan(const TraceInstrJump* ij1,
+                           const TraceInstrJump* ij2)
+{
+    Addr addr1Low, addr1High, addr2Low, addr2High;
+
+    getInstrJumpAddresses(ij1, addr1Low, addr1High);
+    getInstrJumpAddresses(ij2, addr2Low, addr2High);
+
+    if (addr1High != addr2High) return (addr1High < addr2High);
+    // jump ends come before jump starts
+    if (addr1High == ij1->instrTo()->addr()) return true;
+    if (addr2High == ij2->instrTo()->addr()) return false;
+    return (addr1Low < addr2Low);
+}
+
 void InstrView::refresh()
 {
     _arrowLevels = 0;
@@ -464,8 +509,7 @@ void InstrView::refresh()
     itStart = it;
     while(1) {
 	TraceInstrJumpList jlist = (*it).instrJumps();
-	TraceInstrJump* ij;
-	for (ij=jlist.first();ij;ij=jlist.next()) {
+        foreach(TraceInstrJump* ij, jlist) {
 	    if (ij->executedCount()==0) continue;
 	    _lowList.append(ij);
 	    _highList.append(ij);
@@ -478,10 +522,10 @@ void InstrView::refresh()
 	}
 	if (it == itEnd) break;
     }
-    _lowList.sort();
-    _highList.sort();
-    _lowList.first(); // iterators to list start
-    _highList.first();
+    qSort(_lowList.begin(), _lowList.end(), instrJumpLowLessThan);
+    qSort(_highList.begin(), _highList.end(), instrJumpHighLessThan);
+    _lowListIter = _lowList.begin(); // iterators to list start
+    _highListIter = _highList.begin();
     _arrowLevels = 0;
     _jump.resize(0);
 
@@ -525,7 +569,6 @@ void InstrView::refresh()
 void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
 				bool ignoreFrom, bool ignoreTo)
 {
-    TraceInstrJump* ij;
     Addr lowAddr, highAddr;
     int iEnd = -1, iStart = -1;
 
@@ -535,8 +578,8 @@ void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
 		  ? ii->instrJump()->instrTo()->name().ascii() : "?" );
 
     // check for new arrows starting from here downwards
-    ij=_lowList.current();
-    while(ij) {
+    while(_lowListIter != _lowList.end()) {
+        TraceInstrJump* ij= *_lowListIter;
 	lowAddr = ij->instrFrom()->addr();
 	if (ij->instrTo()->addr() < lowAddr)
 	    lowAddr = ij->instrTo()->addr();
@@ -568,14 +611,14 @@ void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
 	    if (0) qDebug("  new start at %d for %s", iStart, ij->name().ascii());
 	    _jump[iStart] = ij;
 	}
-	ij=_lowList.next();
+        _lowListIter++;
     }
 
     ii->setJumpArray(_jump);
 
     // check for active arrows ending here
-    ij=_highList.current();
-    while(ij) {
+    while(_highListIter != _highList.end()) {
+        TraceInstrJump* ij= *_highListIter;
 	highAddr = ij->instrFrom()->addr();
 	if (ij->instrTo()->addr() > highAddr) {
 	    highAddr = ij->instrTo()->addr();
@@ -603,7 +646,8 @@ void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
 			    ij->instrFrom()->name().ascii(),
 			    ij->instrTo()->name().ascii());
 
-	ij=_highList.next();
+        _highListIter++;
+
 	if (highAddr > addr)
 	    break;
 	else {
@@ -883,9 +927,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	      selected = ii2;
       }
 
-      TraceInstrJumpList jlist = currInstr->instrJumps();
-      TraceInstrJump* ij;
-      for (ij=jlist.first();ij;ij=jlist.next()) {
+      foreach(TraceInstrJump* ij, currInstr->instrJumps()) {
 	  if (ij->executedCount()==0) continue;
 
 	  new InstrItem(this, ii, addr, currInstr, ij);
