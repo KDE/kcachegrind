@@ -27,7 +27,6 @@
 
 #include <qstring.h>
 #include <qstringlist.h>
-#include <q3ptrlist.h>
 #include <qmap.h>
 #include <qcolor.h>
 
@@ -180,6 +179,7 @@ typedef QList<TracePart*> TracePartList;
 typedef QList<TraceInstr*> TraceInstrList;
 typedef QList<TraceLine*> TraceLineList;
 typedef QList<TraceInstrJump*> TraceInstrJumpList;
+typedef QList<TraceLineJump*> TraceLineJumpList;
 typedef QList<TraceInstrCall*> TraceInstrCallList;
 typedef QList<TraceLineCall*> TraceLineCallList;
 typedef QList<TraceCall*> TraceCallList;
@@ -774,20 +774,6 @@ class TraceLineJump: public TraceJumpListCost
  private:
   TraceLine *_lineFrom, *_lineTo;
   bool _isCondJump;
-};
-
-
-class TraceLineJumpList: public Q3PtrList<TraceLineJump>
-{
- public:
-    TraceLineJumpList() { _sortLow = true; }
-    void setSortLow(bool s) { _sortLow = s; }
-
- protected:
-  int compareItems ( Item item1, Item item2 );
-
- private:
-  bool _sortLow;
 };
 
 

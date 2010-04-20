@@ -1035,46 +1035,6 @@ QString TraceLineJump::name() const
 
 
 //---------------------------------------------------
-// TraceLineJumpList
-
-
-int TraceLineJumpList::compareItems ( Item item1, Item item2 )
-{
-    TraceLineJump* lj1 = (TraceLineJump*) item1;
-    TraceLineJump* lj2 = (TraceLineJump*) item2;
-
-    uint line1Low  = lj1->lineFrom()->lineno();
-    uint line2Low  = lj2->lineFrom()->lineno();
-    uint line1High = lj1->lineTo()->lineno();
-    uint line2High = lj2->lineTo()->lineno();
-    uint t;
-
-    if (line1Low > line1High) {
-	t = line1Low; line1Low = line1High; line1High = t;
-    }
-    if (line2Low > line2High) {
-	t = line2Low; line2Low = line2High; line2High = t;
-    }
-
-    if (_sortLow) {
-	// we sort according to smallest line number
-	if (line1Low != line2Low) return line1Low - line2Low;
-	// jump ends come before jump starts
-	if (line1Low == lj1->lineTo()->lineno()) return -1;
-	if (line2Low == lj2->lineTo()->lineno()) return 1;
-	return line1High - line2High;
-    }
-
-    // we sort according to highest line number
-    if (line1High != line2High) return line1High - line2High;
-    // jump ends come before jump starts
-    if (line1High == lj1->lineTo()->lineno()) return -1;
-    if (line2High == lj2->lineTo()->lineno()) return 1;
-    return line1Low - line2Low;
-}
-
-
-//---------------------------------------------------
 // TraceInstrCall
 
 TraceInstrCall::TraceInstrCall(TraceCall* call, TraceInstr* instr)
@@ -1420,16 +1380,15 @@ QString TraceInstr::prettyName() const
 TraceLine::TraceLine()
     : TraceListCost(ProfileContext::context(ProfileContext::Line))
 {
-  _lineJumps.setAutoDelete(true);
-
-  _lineno = 0;
-  _sourceFile = 0;
+    _lineno = 0;
+    _sourceFile = 0;
 }
 
 TraceLine::~TraceLine()
 {
-    // we are the owner of TracePartLine's generated in our factory
+    // we are the owner of items generated in our factories
     qDeleteAll(_deps);
+    qDeleteAll(_lineJumps);
 }
 
 bool TraceLine::hasCost(EventType* ct)
@@ -1441,8 +1400,7 @@ bool TraceLine::hasCost(EventType* ct)
         if (lc->subCost(ct) >0)
             return true;
 
-    TraceLineJump* lj;
-    for(lj=_lineJumps.first(); lj; lj=_lineJumps.next())
+    foreach(TraceLineJump* lj, _lineJumps)
         if (lj->executedCount() >0)
             return true;
 
@@ -1467,12 +1425,11 @@ TracePartLine* TraceLine::partLine(TracePart* part,
 
 TraceLineJump* TraceLine::lineJump(TraceLine* to, bool isJmpCond)
 {
-    TraceLineJump* jump;
-    for (jump=_lineJumps.first(); jump; jump=_lineJumps.next())
+    foreach(TraceLineJump* jump, _lineJumps)
         if (jump->lineTo() == to)
             return jump;
 
-    jump = new TraceLineJump(this, to, isJmpCond);
+    TraceLineJump* jump = new TraceLineJump(this, to, isJmpCond);
     _lineJumps.append(jump);
     return jump;
 }

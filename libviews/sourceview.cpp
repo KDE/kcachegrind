@@ -45,8 +45,6 @@ SourceView::SourceView(TraceItemView* parentView,
   _inSelectionUpdate = false;
 
   _arrowLevels = 0;
-  _lowList.setSortLow(true);
-  _highList.setSortLow(false);
 
   addColumn( tr( "#" ) );
   addColumn( tr( "Cost" ) );
@@ -415,7 +413,6 @@ bool SourceView::searchFile(QString& dir,
 void SourceView::updateJumpArray(uint lineno, SourceItem* si,
 				 bool ignoreFrom, bool ignoreTo)
 {
-    TraceLineJump* lj;
     uint lowLineno, highLineno;
     int iEnd = -1, iStart = -1;
 
@@ -424,9 +421,8 @@ void SourceView::updateJumpArray(uint lineno, SourceItem* si,
 		  si->lineJump()
 		  ? si->lineJump()->lineTo()->name().ascii() : "?" );
 
-
-    lj=_lowList.current();
-    while(lj) {
+    while(_lowListIter != _lowList.end()) {
+        TraceLineJump* lj= *_lowListIter;
 	lowLineno = lj->lineFrom()->lineno();
 	if (lj->lineTo()->lineno() < lowLineno)
 	    lowLineno = lj->lineTo()->lineno();
@@ -464,13 +460,13 @@ void SourceView::updateJumpArray(uint lineno, SourceItem* si,
 
 	    _jump[iStart] = lj;
 	}
-	lj=_lowList.next();
+        _lowListIter++;
     }
 
     si->setJumpArray(_jump);
 
-    lj=_highList.current();
-    while(lj) {
+    while(_highListIter != _highList.end()) {
+        TraceLineJump* lj= *_highListIter;
 	highLineno = lj->lineFrom()->lineno();
 	if (lj->lineTo()->lineno() > highLineno) {
 	    highLineno = lj->lineTo()->lineno();
@@ -486,7 +482,6 @@ void SourceView::updateJumpArray(uint lineno, SourceItem* si,
 	    qDebug("LineView: no jump start for end at %x ?", highLineno);
 	    iEnd = -1;
 	}
-	lj=_highList.next();
 
 	if (0 && (iEnd>=0))
 	    qDebug(" end %d (%s to %s)",
@@ -498,6 +493,8 @@ void SourceView::updateJumpArray(uint lineno, SourceItem* si,
 			    lj->lineFrom()->name().ascii(),
 			    lj->lineTo()->name().ascii());
 
+        _highListIter++;
+
 	if (highLineno > lineno)
 	    break;
 	else {
@@ -508,6 +505,52 @@ void SourceView::updateJumpArray(uint lineno, SourceItem* si,
     if (iEnd>=0) _jump[iEnd] = 0;
 }
 
+
+// compare functions for jump arrow drawing
+
+void getJumpLines(const TraceLineJump* jump, uint& low, uint& high)
+{
+    low  = jump->lineFrom()->lineno();
+    high = jump->lineTo()->lineno();
+
+    if (low > high) {
+        uint t = low;
+        low = high;
+        high = t;
+    }
+}
+
+// sort jumps according to lower line number
+bool lineJumpLowLessThan(const TraceLineJump* jump1,
+                          const TraceLineJump* jump2)
+{
+    uint line1Low, line1High, line2Low, line2High;
+
+    getJumpLines(jump1, line1Low, line1High);
+    getJumpLines(jump2, line2Low, line2High);
+
+    if (line1Low != line2Low) return (line1Low < line2Low);
+    // jump ends come before jump starts
+    if (line1Low == jump1->lineTo()->lineno()) return true;
+    if (line2Low == jump2->lineTo()->lineno()) return false;
+    return (line1High < line2High);
+}
+
+// sort jumps according to higher line number
+bool lineJumpHighLessThan(const TraceLineJump* jump1,
+                           const TraceLineJump* jump2)
+{
+    uint line1Low, line1High, line2Low, line2High;
+
+    getJumpLines(jump1, line1Low, line1High);
+    getJumpLines(jump2, line2Low, line2High);
+
+    if (line1High != line2High) return (line1High < line2High);
+    // jump ends come before jump starts
+    if (line1High == jump1->lineTo()->lineno()) return true;
+    if (line2High == jump2->lineTo()->lineno()) return false;
+    return (line1Low < line2Low);
+}
 
 /* If sourceList is empty we set the source file name into the header,
  * else this code is of a inlined function, and we add "inlined from..."
@@ -647,8 +690,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
       }
 
       TraceLineJumpList jlist = (*it).lineJumps();
-      TraceLineJump* lj;
-      for (lj=jlist.first();lj;lj=jlist.next()) {
+      foreach(TraceLineJump* lj, jlist) {
 	  if (lj->executedCount()==0) continue;
 	  // skip jumps to next source line with cost
 	  //if (lj->lineTo() == &(*nextIt)) continue;
@@ -659,12 +701,11 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
       it = nextIt;
       if (it == lineItEnd) break;
   }
-  _lowList.sort();
-  _highList.sort();
-  _lowList.first(); // iterators to list start
-  _highList.first();
+  qSort(_lowList.begin(), _lowList.end(), lineJumpLowLessThan);
+  qSort(_highList.begin(), _highList.end(), lineJumpHighLessThan);
+  _lowListIter = _lowList.begin(); // iterators to list start
+  _highListIter = _highList.begin();
   _jump.resize(0);
-
 
   char buf[256];
   bool inside = false, skipLineWritten = true;
@@ -769,9 +810,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 	  selected = si2;
     }
 
-    TraceLineJumpList jlist = currLine->lineJumps();
-    TraceLineJump* lj;
-    for (lj=jlist.first();lj;lj=jlist.next()) {
+    foreach(TraceLineJump* lj, currLine->lineJumps()) {
 	if (lj->executedCount()==0) continue;
 
 	new SourceItem(this, si, fileno, fileLineno, currLine, lj);

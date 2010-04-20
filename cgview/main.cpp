@@ -33,7 +33,7 @@ int main(int argc, char** argv)
 {
     QCoreApplication app(argc, argv);
 
-    qDebug("cgview: display callgrind files. (C) 2008 J. Weidendorfer\n");
+    qDebug("cgview: display callgrind files. (C) 2010 J. Weidendorfer\n");
 
     Loader::initLoaders();
     ConfigStorage::setStorage(new ConfigStorage);

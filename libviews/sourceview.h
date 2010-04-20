@@ -66,6 +66,7 @@ private:
   // temporary needed on creation...
   QVector<TraceLineJump*> _jump;
   TraceLineJumpList _lowList, _highList;
+  TraceLineJumpList::iterator _lowListIter, _highListIter;
 };
 
 #endif
