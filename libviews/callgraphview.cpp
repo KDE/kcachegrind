@@ -709,7 +709,7 @@ void GraphExporter::writeDot(QIODevice* device)
 			break;
 		}
 		if (f)
-			*stream << QString("  center=F%1;\n").arg((long)f, 0, 16);
+			*stream << QString("  center=F%1;\n").arg((qptrdiff)f, 0, 16);
 		*stream << QString("  overlap=false;\n  splines=true;\n");
 	}
 
@@ -768,7 +768,7 @@ void GraphExporter::writeDot(QIODevice* device)
 			if ((int)abr.length() > GlobalConfig::maxSymbolLength())
 				abr = abr.left(GlobalConfig::maxSymbolLength()) + "...";
 
-			*stream << QString("  F%1 [").arg((long)f, 0, 16);
+			*stream << QString("  F%1 [").arg((qptrdiff)f, 0, 16);
 			if (_useBox) {
 				// we want a minimal size for cost display
 				if ((int)abr.length() < 8) abr = abr + QString(8 - abr.length(),'_');
@@ -813,8 +813,8 @@ void GraphExporter::writeDot(QIODevice* device)
 		to.removeEdge(&e);
 
 		*stream << QString("  F%1 -> F%2 [weight=%3")
-		.arg((long)e.from(), 0, 16)
-		.arg((long)e.to(), 0, 16)
+		.arg((qptrdiff)e.from(), 0, 16)
+		.arg((qptrdiff)e.to(), 0, 16)
 		.arg((long)log(log(e.cost)));
 
 		if (_go->detailLevel() ==1) {
@@ -852,10 +852,10 @@ void GraphExporter::writeDot(QIODevice* device)
 				e->count = countSum;
 
 				*stream << QString("  R%1 [shape=point,label=\"\"];\n")
-					.arg((long)n.function(), 0, 16);
+					.arg((qptrdiff)n.function(), 0, 16);
 				*stream << QString("  R%1 -> F%2 [label=\"%3\\n%4 x\",weight=%5];\n")
-					.arg((long)n.function(), 0, 16)
-					.arg((long)n.function(), 0, 16)
+					.arg((qptrdiff)n.function(), 0, 16)
+					.arg((qptrdiff)n.function(), 0, 16)
 					.arg(SubCost(costSum).pretty())
 					.arg(SubCost(countSum).pretty())
 					.arg((int)log(costSum));
@@ -873,10 +873,10 @@ void GraphExporter::writeDot(QIODevice* device)
 				e->count = countSum;
 
 				*stream << QString("  S%1 [shape=point,label=\"\"];\n")
-					.arg((long)n.function(), 0, 16);
+					.arg((qptrdiff)n.function(), 0, 16);
 				*stream << QString("  F%1 -> S%2 [label=\"%3\\n%4 x\",weight=%5];\n")
-					.arg((long)n.function(), 0, 16)
-					.arg((long)n.function(), 0, 16)
+					.arg((qptrdiff)n.function(), 0, 16)
+					.arg((qptrdiff)n.function(), 0, 16)
 					.arg(SubCost(costSum).pretty())
 					.arg(SubCost(countSum).pretty())
 					.arg((int)log(costSum));
