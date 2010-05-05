@@ -279,12 +279,6 @@ EventType* EventType::knownType(int i)
   return _knownTypes->at(i);
 }
 
-QColor EventType::color()
-{
-  if (!_set) return QColor();
-  return _set->realColors()[_realIndex];
-}
-
 
 //---------------------------------------------------
 // EventTypeSet
@@ -381,7 +375,6 @@ int EventTypeSet::add(EventType* et)
     }
     _real[_realCount] = et;
     et->setRealIndex(_realCount);
-    _realColor[_realCount] = GlobalConfig::eventTypeColor(et);
 
     _realCount++;
     return _realCount-1;

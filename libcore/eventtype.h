@@ -20,7 +20,6 @@
 #define EVENTTYPE_H
 
 #include <QString>
-#include <QColor>
 
 #include "subcost.h"
 #include "costitem.h"
@@ -68,7 +67,6 @@ public:
   EventTypeSet* set() { return _set; }
   int realIndex() { return _realIndex; }
   bool isReal() { return _formula.isEmpty(); }
-  QColor color();
 
   /*
    * returns true if all cost type names can be resolved in formula
@@ -140,7 +138,6 @@ public:
   EventType* typeForLong(const QString&);
   int realIndex(const QString&);
   int index(const QString&);
-  QColor* realColors() { return _realColor; }
 
   /**
    * Adds all known derived event types that can be parsed
@@ -150,7 +147,6 @@ public:
 private:
   // we support only a fixed number of real and derived types
   EventType* _real[MaxRealIndexValue];
-  QColor _realColor[MaxRealIndexValue];
   EventType* _derived[MaxRealIndexValue];
   int _realCount, _derivedCount;
 };

@@ -28,7 +28,7 @@
 #include <QPolygon>
 #include <QTextDocument>
 
-#include "globalconfig.h"
+#include "globalguiconfig.h"
 #include "listutils.h"
 #include "sourceview.h"
 
@@ -140,7 +140,7 @@ void SourceItem::updateGroup()
   if (!_lineCall) return;
 
   TraceFunction* f = _lineCall->call()->called();
-  QColor c = GlobalConfig::functionColor(_view->groupType(), f);
+  QColor c = GlobalGUIConfig::functionColor(_view->groupType(), f);
   setPixmap(4, colorPixmap(10, 10, c));
 }
 

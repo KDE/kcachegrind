@@ -1,6 +1,7 @@
 include_directories( ../libcore )
 
 set(libviews_SRCS
+   globalguiconfig.cpp
    stackitem.cpp
    stackselection.cpp
    partgraph.cpp

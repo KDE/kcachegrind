@@ -51,6 +51,7 @@ NHEADERS += qcgconfig.h \
            ../libcore/pool.h \
            ../libcore/coverage.h \
            ../libcore/stackbrowser.h \
+           ../libviews/globalguiconfig.h \
            ../libviews/traceitemview.h \
            ../libviews/toplevelbase.h \
            ../libviews/partselection.h \
@@ -104,6 +105,7 @@ SOURCES += qcgmain.cpp \
            ../libcore/stackbrowser.cpp \
            ../libcore/tracedata.cpp \
            ../libcore/utils.cpp \
+           ../libviews/globalguiconfig.cpp \
            ../libviews/callgraphview.cpp \
            ../libviews/callitem.cpp \
            ../libviews/callmapview.cpp \

@@ -25,7 +25,7 @@
 
 #include "tracedata.h"
 #include "colorsettings.h"
-#include "globalconfig.h"
+#include "globalguiconfig.h"
 #include "listutils.h"
 
 //
@@ -37,7 +37,7 @@ static void insertColorItems(QTreeWidget* w, ProfileContext::Type type,
 {
     items.sort();
     foreach(QString s, items) {
-	ConfigColorSetting* cs = GlobalConfig::groupColorSetting(type, s);
+        ConfigColorSetting* cs = GlobalGUIConfig::groupColorSetting(type, s);
 	QTreeWidgetItem* i = new QTreeWidgetItem(w);
 	i->setText(0, ProfileContext::i18nTypeName(type));
 	i->setData(0, Qt::UserRole, QVariant::fromValue((void*)cs));

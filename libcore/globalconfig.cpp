@@ -42,54 +42,6 @@
 #define DEFAULT_NOCOSTINSIDE     20
 
 
-
-//
-// ConfigColorSettings
-//
-
-ConfigColorSetting::ConfigColorSetting(QString n)
-{
-    _name = n;
-    reset();
-}
-
-ConfigColorSetting::ConfigColorSetting(QString n, QColor c)
-{
-    _name = n;
-    setColor(c);
-}
-
-void ConfigColorSetting::setColor(const QColor& c)
-{
-    _color = c;
-    _automatic = (c == colorForName(_name));
-}
-
-QColor ConfigColorSetting::colorForName(QString n)
-{
-    int h = 0, s = 100;
-    QByteArray str = n.toAscii();
-    foreach(const QChar c, n) {
-      h = (h * 37 + s* c.unicode()) % 256;
-      s = (s * 17 + h* c.unicode()) % 192;
-    }
-
-    return QColor::fromHsv(h, 64+s, 192);
-}
-
-QColor ConfigColorSetting::autoColor() const
-{
-    return colorForName(_name);
-}
-
-void ConfigColorSetting::reset()
-{
-    _automatic = true;
-    _color = colorForName(_name);
-}
-
-
-
 //
 // GlobalConfig
 //
@@ -141,10 +93,6 @@ QString GlobalConfig::knownLongName(const QString& name)
 }
 
 
-//
-// GlobalConfig
-//
-
 GlobalConfig* GlobalConfig::_config = 0;
 
 GlobalConfig::GlobalConfig()
@@ -171,8 +119,6 @@ GlobalConfig::GlobalConfig()
 
 GlobalConfig::~GlobalConfig()
 {
-    qDeleteAll(_colors);
-    _colors.clear();
 }
 
 GlobalConfig* GlobalConfig::config()
@@ -186,26 +132,11 @@ GlobalConfig* GlobalConfig::config()
 
 void GlobalConfig::saveOptions()
 {
-    // color options
-    ConfigGroup* colorConfig = ConfigStorage::group("CostColors");
-    int count = 1;
-    foreach(ConfigColorSetting* cs, _colors) {
-	if ( !cs->_automatic ) {
-	    colorConfig->setValue( QString("Name%1").arg(count),
-				   cs->_name);
-	    colorConfig->setValue( QString("Color%1").arg(count),
-				   cs->_color);
-	    count++;
-	}
-    }
-    colorConfig->setValue("Count", count-1);
-    delete colorConfig;
-
     // source options
     ConfigGroup* sourceConfig = ConfigStorage::group("Source");
     sourceConfig->setValue("Dirs", _generalSourceDirs);
     QHashIterator<QString,QStringList> it( _objectSourceDirs );
-    count = 1;
+    int count = 1;
     while( it.hasNext() ) {
 	it.next();
 	sourceConfig->setValue( QString("Object%1").arg(count),
@@ -262,37 +193,6 @@ void GlobalConfig::saveOptions()
 void GlobalConfig::readOptions()
 {
     int i, count;
-
-    // color options
-    _colors.clear();
-    // colors for default event types:
-    //  red for L2 misses, green for L1 misses, blue for normal accesses
-    colorSetting("EventType-I2mr")->_color = QColor(240, 0, 0);
-    colorSetting("EventType-D2mr")->_color = QColor(180,40,40);
-    colorSetting("EventType-D2mw")->_color = QColor(120,80,80);
-
-    colorSetting("EventType-I1mr")->_color = QColor(0, 240, 0);
-    colorSetting("EventType-D1mr")->_color = QColor(40,180,40);
-    colorSetting("EventType-D1mw")->_color = QColor(80,120,80);
-
-    colorSetting("EventType-Ir")->_color = QColor(0, 0, 240);
-    colorSetting("EventType-Dr")->_color = QColor(40,40,180);
-    colorSetting("EventType-Dw")->_color = QColor(80,80,120);
-
-    ConfigGroup* colorConfig = ConfigStorage::group("CostColors");
-    count = colorConfig->value("Count", 0).toInt();
-    for (i=1;i<=count;i++) {
-	QString n = colorConfig->value(QString("Name%1").arg(i),
-				       QString()).toString();
-	QColor color = colorConfig->value<QColor>(QString("Color%1").arg(i),
-						  QColor(Qt::black));
-
-	if (n.isEmpty()) continue;
-
-	ConfigColorSetting* cs = new ConfigColorSetting(n,color);
-	_colors.insert(n, cs);
-    }
-    delete colorConfig;
 
     // source options
     ConfigGroup* sourceConfig = ConfigStorage::group("Source");
@@ -376,80 +276,6 @@ void GlobalConfig::addDefaultTypes()
         ct = new EventType(*it, longName, formula);
         EventType::add(ct);
     }
-}
-
-ConfigColorSetting* GlobalConfig::groupColorSetting(CostItem* cost)
-{
-    QString n;
-
-   if (!cost)
-     return colorSetting(QString("default"));
-
-   return groupColorSetting(cost->type(), cost->name());
-}
-
-ConfigColorSetting* GlobalConfig::groupColorSetting(ProfileContext::Type t,
-						    QString name)
-{
-    QString n = ProfileContext::typeName(t) + '-' + name;
-    return colorSetting(n);
-}
-
-QColor GlobalConfig::groupColor(CostItem* cost)
-{
-   return groupColorSetting(cost)->color();
-}
-
-QColor GlobalConfig::eventTypeColor(EventType* t)
-{
-   QString n;
-
-   if (!t)
-     n = QString("EventType-default");
-   else
-     n = QString("EventType-%1").arg(t->name());
-
-   return colorSetting(n)->color();
-}
-
-QColor GlobalConfig::functionColor(ProfileContext::Type gt,
-                                    TraceFunction* f)
-{
-  ProfileCostArray* group = f;
-  QString n;
-
-  switch(gt) {
-  case ProfileContext::Object: group = f->object(); break;
-  case ProfileContext::Class:  group = f->cls(); break;
-  case ProfileContext::File:   group = f->file(); break;
-  default:
-    break;
-  }
-
-  if (group != f) {
-    // first look for manual color of a function in a group
-    n = ProfileContext::typeName(group->type()) +
-        '-' + group->name() +
-        '-' + f->name();
-
-    ConfigColorSetting* cs = colorSetting(n, false);
-    if (cs) return cs->color();
-  }
-  return groupColor(group);
-}
-
-ConfigColorSetting* GlobalConfig::colorSetting(const QString& n,
-					       bool createNew)
-{
-  // predefined ?
-  GlobalConfig* c = config();
-  ConfigColorSetting* cs = c->_colors.value(n, 0);
-  if (cs || !createNew) return cs;
-
-  cs = new ConfigColorSetting(n);
-  c->_colors.insert(n, cs);
-
-  return cs;
 }
 
 /* Gives back a list of all Source Base Directories of Objects in

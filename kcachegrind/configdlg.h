@@ -24,9 +24,10 @@
 #define CONFIGDLG_H
 
 #include "ui_configdlgbase.h"
-#include "globalconfig.h"
 
 class TraceData;
+class GlobalGUIConfig;
+class ConfigColorSetting;
 
 class ConfigDlgBase : public QDialog, public Ui::ConfigDlgBase
 {
@@ -41,11 +42,11 @@ class ConfigDlg : public ConfigDlgBase
   Q_OBJECT
 
 public:
-  ConfigDlg(GlobalConfig*, TraceData*,
+  ConfigDlg(GlobalGUIConfig*, TraceData*,
             QWidget* parent = 0);
   ~ConfigDlg();
 
-  static bool configure(GlobalConfig*, TraceData*, QWidget*);
+  static bool configure(GlobalGUIConfig*, TraceData*, QWidget*);
 
 protected slots:
   void objectActivated(const QString &);
@@ -62,7 +63,7 @@ protected slots:
   void dirsAddPressed();
 
 private:
-  GlobalConfig* _config;
+  GlobalGUIConfig* _config;
   TraceData* _data;
 
   ConfigColorSetting *_objectCS, *_classCS, *_fileCS;

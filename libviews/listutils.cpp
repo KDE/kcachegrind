@@ -25,6 +25,7 @@
 #include <QPainter>
 #include <QPixmap>
 
+#include "globalguiconfig.h"
 
 #define COSTPIX_WIDTH 25
 
@@ -123,7 +124,7 @@ inline QColor partitionColor(int d, int max)
 
 
 QPixmap partitionPixmap(int w, int h,
-                        double* hist, QColor* cArray, int maxIndex, bool framed)
+                        double* hist, EventTypeSet* set, int maxIndex, bool framed)
 {
   int lastPos = 0, nextPos;
   double val=0.0, sum=0.0;
@@ -173,7 +174,10 @@ QPixmap partitionPixmap(int w, int h,
     diff = nextPos-lastPos;
     if (diff==0) { d++; continue; }
 
-    c = cArray ? cArray[d] : partitionColor(d,maxIndex);
+    if (set)
+        c = GlobalGUIConfig::eventTypeColor(set->realType(d));
+    else
+        c = partitionColor(d,maxIndex);
 
     x1 = ix1+lastPos;
     x2 = ix1+nextPos;
@@ -212,23 +216,23 @@ QPixmap partitionPixmap(int w, int h,
 }
 
 
-QPixmap costPixmap(EventType* ct, ProfileCostArray* cost, double total, bool framed)
+QPixmap costPixmap(EventType* ct, ProfileCostArray* cost,
+                   double total, bool framed)
 {
     if (!ct) return QPixmap();
 
     if (ct->isReal()) {
-	QColor color = ct->color();
+        QColor color = GlobalGUIConfig::eventTypeColor(ct);
 	double p = 100.0 * cost->subCost(ct) / total;
 	return percentagePixmap(COSTPIX_WIDTH, 10, (int)(p+.5), color, framed);
     }
 
     int maxIndex;
     double h[MaxRealIndexValue];
-    QColor* cs = ct->set()->realColors();
     maxIndex = ct->histCost(cost, total, h);
 
     if (maxIndex ==0) return QPixmap();    
-    return partitionPixmap(COSTPIX_WIDTH, 10, h, cs, maxIndex, framed);
+    return partitionPixmap(COSTPIX_WIDTH, 10, h, ct->set(), maxIndex, framed);
 }
 
 

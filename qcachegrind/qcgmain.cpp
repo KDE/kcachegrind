@@ -25,7 +25,7 @@
 
 #include "qcgconfig.h"
 #include "config.h"
-#include "globalconfig.h"
+#include "globalguiconfig.h"
 #include "qcgtoplevel.h"
 #include "tracedata.h"
 #include "loader.h"
@@ -39,7 +39,8 @@ int main( int argc, char ** argv )
     QCoreApplication::setOrganizationName("kcachegrind.sf.net");
     QCoreApplication::setApplicationName("QCachegrind");
     ConfigStorage::setStorage(new QCGConfigStorage);
-    GlobalConfig::config()->addDefaultTypes();
+    // creates global config object of type GlobalGUIConfig
+    //GlobalGUIConfig::config()->addDefaultTypes();
 
     QStringList list = app.arguments();
     list.pop_front();

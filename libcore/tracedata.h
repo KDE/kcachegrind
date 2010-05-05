@@ -28,7 +28,6 @@
 #include <qstring.h>
 #include <qstringlist.h>
 #include <qmap.h>
-#include <qcolor.h>
 
 #include "costitem.h"
 #include "subcost.h"

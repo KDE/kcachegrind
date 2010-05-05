@@ -24,7 +24,7 @@
 
 #include <QPixmap>
 
-#include "globalconfig.h"
+#include "globalguiconfig.h"
 #include "listutils.h"
 #include "callview.h"
 
@@ -64,7 +64,7 @@ CallItem::CallItem(CallView* view, QTreeWidget* parent, TraceCall* c)
 
 void  CallItem::updateGroup()
 {
-  QColor c = GlobalConfig::functionColor(_view->groupType(), _shown);
+  QColor c = GlobalGUIConfig::functionColor(_view->groupType(), _shown);
   setIcon(3, colorPixmap(10, 10, c));
 }
 

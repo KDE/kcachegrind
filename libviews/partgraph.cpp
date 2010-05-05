@@ -24,7 +24,7 @@
 
 #include <QPixmap>
 
-#include "globalconfig.h"
+#include "globalguiconfig.h"
 #include "listutils.h"
 
 
@@ -132,7 +132,7 @@ QColor PartAreaWidget::groupColor(TraceFunction* f) const
   if (!f)
       return palette().color( QPalette::Button );
 
-  return GlobalConfig::functionColor(_groupType, f);
+  return GlobalGUIConfig::functionColor(_groupType, f);
 }
 
 QString PartAreaWidget::tipString(TreeMapItem* i) const
@@ -522,7 +522,7 @@ QColor SubPartItem::backColor() const
   if (w->visualization() == PartAreaWidget::Inclusive)
     return w->groupColor((TraceFunction*)(_partCostItem->dependant()));
 
-  return GlobalConfig::groupColor(_partCostItem->dependant());
+  return GlobalGUIConfig::groupColor(_partCostItem->dependant());
 }
 
 

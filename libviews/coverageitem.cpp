@@ -23,7 +23,7 @@
 #include "coverageitem.h"
 
 
-#include "globalconfig.h"
+#include "globalguiconfig.h"
 #include "listutils.h"
 #include "coverage.h"
 
@@ -77,7 +77,7 @@ void CallerCoverageItem::setGroupType(ProfileContext::Type gt)
   if (_groupType == gt) return;
   _groupType = gt;
 
-  QColor c = GlobalConfig::functionColor(_groupType, _function);
+  QColor c = GlobalGUIConfig::functionColor(_groupType, _function);
   setIcon(3, colorPixmap(10, 10, c));
 }
 
@@ -217,7 +217,7 @@ void CalleeCoverageItem::setGroupType(ProfileContext::Type gt)
   if (_groupType == gt) return;
   _groupType = gt;
 
-  QColor c = GlobalConfig::functionColor(_groupType, _function);
+  QColor c = GlobalGUIConfig::functionColor(_groupType, _function);
   setIcon(4, colorPixmap(10, 10, c));
 }
 

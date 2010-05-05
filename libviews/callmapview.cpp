@@ -28,7 +28,7 @@
 #include <QMenu>
 
 #include "config.h"
-#include "globalconfig.h"
+#include "globalguiconfig.h"
 #include "listutils.h"
 #include "toplevelbase.h"
 
@@ -547,7 +547,7 @@ QColor CallMapView::groupColor(TraceFunction* f) const
   if (!f)
       return palette().color( QPalette::Button );
 
-  return GlobalConfig::functionColor(_groupType, f);
+  return GlobalGUIConfig::functionColor(_groupType, f);
 }
 
 

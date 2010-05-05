@@ -822,6 +822,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 
 	  // this sets addr, code, cmd, args
 	  bool isAssemblyInstr = parseLine(buf, addr, code, cmd, args);
+          Q_UNUSED(isAssemblyInstr);
 	  assert(isAssemblyInstr && (objAddr == addr));
 
 	  if (costAddr == objAddr) {

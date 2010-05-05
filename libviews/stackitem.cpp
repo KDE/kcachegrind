@@ -24,7 +24,7 @@
 
 #include <QPixmap>
 
-#include "globalconfig.h"
+#include "globalguiconfig.h"
 #include "listutils.h"
 #include "stackselection.h"
 
@@ -63,8 +63,8 @@ StackItem::StackItem(StackSelection* ss,
 
 void StackItem::updateGroup()
 {
-  QColor c = GlobalConfig::functionColor(_view->groupType(),
-					  _function);
+  QColor c = GlobalGUIConfig::functionColor(_view->groupType(),
+                                            _function);
   setPixmap(3, colorPixmap(10, 10, c));
 }
 

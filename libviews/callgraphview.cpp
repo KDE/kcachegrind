@@ -50,7 +50,7 @@
 
 
 #include "config.h"
-#include "globalconfig.h"
+#include "globalguiconfig.h"
 #include "listutils.h"
 
 
@@ -1212,8 +1212,8 @@ void CanvasNode::updateGroup()
 	if (!_view || !_node)
 		return;
 
-	QColor c = GlobalConfig::functionColor(_view->groupType(),
-	                                        _node->function());
+        QColor c = GlobalGUIConfig::functionColor(_view->groupType(),
+                                                  _node->function());
 	setBackColor(c);
 	update();
 }

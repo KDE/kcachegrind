@@ -33,10 +33,10 @@
 #include <knumvalidator.h>
 
 #include "tracedata.h"
-#include "globalconfig.h"
+#include "globalguiconfig.h"
 
 
-ConfigDlg::ConfigDlg(GlobalConfig* c, TraceData* data,
+ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
                      QWidget* parent)
   :ConfigDlgBase(parent)
 {
@@ -204,7 +204,7 @@ ConfigDlg::~ConfigDlg()
 {
 }
 
-bool ConfigDlg::configure(GlobalConfig* c, TraceData* d, QWidget* p)
+bool ConfigDlg::configure(GlobalGUIConfig* c, TraceData* d, QWidget* p)
 {
   ConfigDlg dlg(c, d, p);
 
@@ -240,7 +240,7 @@ void ConfigDlg::objectActivated(const QString & s)
 
   ConfigColorSetting* cs = _config->_colors[n];
   if (!cs)
-    cs = GlobalConfig::colorSetting(n);
+    cs = GlobalGUIConfig::colorSetting(n);
 //  else
 //    qDebug("found color %s", n.ascii());
 
@@ -284,7 +284,7 @@ void ConfigDlg::classActivated(const QString & s)
 
   ConfigColorSetting* cs = _config->_colors[n];
   if (!cs)
-    cs = GlobalConfig::colorSetting(n);
+    cs = GlobalGUIConfig::colorSetting(n);
 
   _classCS = cs;
 
@@ -315,7 +315,7 @@ void ConfigDlg::fileActivated(const QString & s)
 
   ConfigColorSetting* cs = _config->_colors[n];
   if (!cs)
-    cs = GlobalConfig::colorSetting(n);
+    cs = GlobalGUIConfig::colorSetting(n);
 
   _fileCS = cs;
 

@@ -50,7 +50,7 @@
 #include "stackbrowser.h"
 #include "tracedata.h"
 #include "config.h"
-#include "globalconfig.h"
+#include "globalguiconfig.h"
 #include "multiview.h"
 #include "callgraphview.h"
 #include "configdialog.h"
@@ -73,7 +73,7 @@ QCGTopLevel::QCGTopLevel()
 
     resetState();
 
-    GlobalConfig::config()->readOptions();
+    GlobalGUIConfig::config()->readOptions();
 
     createActions();
     createDocks();

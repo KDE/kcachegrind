@@ -24,7 +24,7 @@
 
 #include "listutils.h"
 #include "coverage.h"
-#include "globalconfig.h"
+#include "globalguiconfig.h"
 
 
 // CostListItem
@@ -42,7 +42,7 @@ CostListItem::CostListItem(Q3ListView* parent, TraceCostItem* costItem,
   if (costItem) {
     updateName();
     setPixmap(1, colorPixmap(10, 10,
-			     GlobalConfig::groupColor(_costItem)));
+                             GlobalGUIConfig::groupColor(_costItem)));
   }
 }
 

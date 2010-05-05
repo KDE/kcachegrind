@@ -71,7 +71,7 @@
 #include "stackselection.h"
 #include "stackbrowser.h"
 #include "tracedata.h"
-#include "globalconfig.h"
+#include "globalguiconfig.h"
 #include "config.h"
 #include "configdlg.h"
 #include "multiview.h"
@@ -93,7 +93,7 @@ TopLevel::TopLevel()
     resetState();
 
     KConfig *kconfig = KGlobal::config().data();
-    GlobalConfig::config()->readOptions();
+    GlobalGUIConfig::config()->readOptions();
 
     createDocks();
 
@@ -1855,14 +1855,14 @@ void TopLevel::updateStatusBar()
 
 void TopLevel::configure()
 {
-    if (ConfigDlg::configure( (GlobalConfig*) GlobalConfig::config(),
+    if (ConfigDlg::configure( GlobalGUIConfig::config(),
 			      _data, this)) {
-      GlobalConfig::config()->saveOptions();
+      GlobalGUIConfig::config()->saveOptions();
 
     configChanged();
   }
   else
-      GlobalConfig::config()->readOptions();
+      GlobalGUIConfig::config()->readOptions();
 }
 
 bool TopLevel::queryClose()
@@ -1879,7 +1879,7 @@ bool TopLevel::queryExit()
     GlobalConfig::setShowExpanded(_showExpanded);
     GlobalConfig::setShowCycles(_showCycles);
     GlobalConfig::setHideTemplates(_hideTemplates);
-    GlobalConfig::config()->saveOptions();
+    GlobalGUIConfig::config()->saveOptions();
 
     saveCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 

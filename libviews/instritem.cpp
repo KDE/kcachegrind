@@ -26,7 +26,7 @@
 #include <QPainter>
 #include <QPolygon>
 
-#include "globalconfig.h"
+#include "globalguiconfig.h"
 #include "listutils.h"
 #include "instrview.h"
 
@@ -152,7 +152,7 @@ void InstrItem::updateGroup()
   if (!_instrCall) return;
 
   TraceFunction* f = _instrCall->call()->called();
-  QColor c = GlobalConfig::functionColor(_view->groupType(), f);
+  QColor c = GlobalGUIConfig::functionColor(_view->groupType(), f);
   setPixmap(6, colorPixmap(10, 10, c));
 }
 

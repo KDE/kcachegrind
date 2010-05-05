@@ -25,8 +25,8 @@
 
 #include <QPixmap>
 
+#include "globalguiconfig.h"
 #include "listutils.h"
-#include "globalconfig.h"
 
 
 // FunctionItem
@@ -99,7 +99,7 @@ void  FunctionItem::setGroupType(ProfileContext::Type gt)
   _groupPixValid = false;
   viewList()->repaint();
 #else
-  QColor c = GlobalConfig::functionColor(_groupType, _function);
+  QColor c = GlobalGUIConfig::functionColor(_groupType, _function);
   setPixmap(3, colorPixmap(10, 10, c));
 #endif
 }
