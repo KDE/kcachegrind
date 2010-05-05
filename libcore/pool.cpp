@@ -101,6 +101,12 @@ bool FixPool::ensureSpace(unsigned int size)
 
     newChunk = (struct SpaceChunk*) malloc(sizeof(struct SpaceChunk) +
 					   CHUNK_SIZE);
+    if (!newChunk) {
+        qFatal("ERROR: Out of memory. Sorry. KCachegrind has to terminate.\n\n"
+               "You probably tried to load a profile data file too huge for"
+               "this system. You could try loading this file on a 64-bit OS.");
+        exit(1);
+    }
     newChunk->next = 0;
     newChunk->used = 0;
 
