@@ -46,16 +46,22 @@ Compilation and Installation
 -===========================
 
 
-QCachegrind only
-----------------
+QCachegrind
+-----------
 
 Requirements:
 * Qt 4.5 or higher (earlier Qt 4.x versions may work, but not tested)
 * Any platform supported by Qt4 (Linux, Windows, Mac OS X, ...)
 
 Compilation (from base directory):
-* "qmake; make; make install"
 
+	qmake; make; make install
+
+To not build in the source directories, do:
+
+	mkdir build; cd build; qmake ../qcg.pro; make; make install
+
+The build includes the command line tool "cgview".
 
 
 KCachegrind
@@ -66,7 +72,15 @@ Requirements:
 * CMake
 
 Commands (from basee directory):
-* "cmake .; make; make install"
+
+	cmake .; make; make install
+
+To not build in the source directories, do:
+
+	mkdir build; cd build; cmake ..; make; make install
+
+The build also compiles the command line tool "cgview" and "qcachegrind",
+the Qt-only version of KCachegrind. However, these are not installed.
 
 
 
@@ -74,7 +88,7 @@ Usage & Help
 -===========
 
 {K,Q}Cachegrind has detailed "What's this?" help for
-each GUI part. For further help, see quick starter pages
+each GUI part. For further help, see quick start pages
 on kcachegrind.sf.net
 
 
