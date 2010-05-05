@@ -55,6 +55,7 @@ CallView::CallView(bool showCallers, TraceItemView* parentView, QWidget* parent)
     setIconSize(QSize(99,99));
     setAllColumnsShowFocus(true);
     setRootIsDecorated(false);
+    setUniformRowHeights(true);
     // sorting will be enabled after refresh()
     sortByColumn(0, Qt::DescendingOrder);
     setMinimumHeight(50);
