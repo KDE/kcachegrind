@@ -29,12 +29,12 @@
 #define DUMPMANAGER_H
 
 #include <qstring.h>
-#include <q3ptrlist.h>
+#include <qlist.h>
 
 class Dump;
 class TraceData;
 
-typedef Q3PtrList<Dump> DumpList;
+typedef QList<Dump*> DumpList;
 
 
 /**
