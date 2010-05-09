@@ -51,6 +51,7 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
   _group = 0;
   _inSetGroup = false;
   _inSetFunction = false;
+  _functionListSortOrder = Qt::DescendingOrder;
 
   setTitle(tr("Function Profile"));
 
@@ -97,6 +98,8 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
   functionList->header()->setSortIndicatorShown(false);
   functionList->header()->setSortIndicator(0, Qt::DescendingOrder);
   functionList->header()->setResizeMode(QHeaderView::Interactive);
+  // for columns 3 and 4 (all others get resized)
+  functionList->header()->setDefaultSectionSize(200);
   functionList->setModel(functionListModel);
   vboxLayout->addWidget(functionList);
 
@@ -128,6 +131,8 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
 
   // single click release activation
   connect(functionList, SIGNAL(clicked(QModelIndex)),
+          this, SLOT(functionActivated(QModelIndex)));
+  connect(functionList, SIGNAL(activated(QModelIndex)),
           this, SLOT(functionActivated(QModelIndex)));
   connect(functionList, SIGNAL(customContextMenuRequested(const QPoint &)),
             this, SLOT(functionContext(const QPoint &)));
@@ -184,10 +189,9 @@ void FunctionSelection::searchReturnPressed()
 	  setGroup(((CostListItem*)item)->costItem());
 	  return;
       }
+      // activate top function in functionList
+      selectTopFunction();
   }
-
-  // activate top function in functionList
-  selectTopFunction();
 }
 
 // trigger the query after some delay, dependent on length
@@ -213,7 +217,7 @@ void FunctionSelection::functionContext(const QPoint & p)
     QAction* activateFunctionAction = 0;
     QModelIndex i = functionList->indexAt(p);
     if (i.isValid()) {
-        TraceFunction* f = functionListModel->function(i);
+        f = functionListModel->function(i);
 	if (f) {
 	    QString menuText = tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName()));
 	    activateFunctionAction = popup.addAction(menuText);
@@ -729,8 +733,6 @@ bool FunctionSelection::selectTopFunction()
 
 void FunctionSelection::setCostColumnWidths()
 {
-    functionList->header()->resizeSection(3, 200);
-    functionList->header()->resizeSection(4, 200);
     functionList->resizeColumnToContents(1);
 
     if (_eventType && (_eventType->subCost(_data->callMax())>0) ) {
@@ -745,7 +747,12 @@ void FunctionSelection::setCostColumnWidths()
 
 void FunctionSelection::functionHeaderClicked(int col)
 {
-    functionList->sortByColumn(col, Qt::DescendingOrder);
+    if ((_functionListSortOrder== Qt::AscendingOrder) || (col<3))
+        _functionListSortOrder = Qt::DescendingOrder;
+    else
+        _functionListSortOrder = Qt::AscendingOrder;
+
+    functionList->sortByColumn(col, _functionListSortOrder);
     selectFunction(dynamic_cast<TraceFunction*>(_activeItem), false);
     setCostColumnWidths();
 }

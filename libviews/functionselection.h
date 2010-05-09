@@ -103,6 +103,8 @@ private:
   Q3ListView *groupList;
   QTreeView *functionList;
   FunctionListModel* functionListModel;
+
+  Qt::SortOrder _functionListSortOrder;
 };
 
 #endif

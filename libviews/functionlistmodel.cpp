@@ -301,7 +301,10 @@ void FunctionListModel::computeFilteredList()
 void FunctionListModel::computeTopList()
 {
     _topList.clear();
-    if (_filteredList.isEmpty()) return;
+    if (_filteredList.isEmpty()) {
+        reset();
+        return;
+    }
 
     FunctionLessThan lessThan(_sortColumn, _sortOrder, _eventType);
     qStableSort(_filteredList.begin(), _filteredList.end(), lessThan);
