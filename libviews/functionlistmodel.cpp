@@ -208,9 +208,9 @@ void FunctionListModel::setMaxCount(int c)
     computeTopList();
 }
 
-void FunctionListModel::setData(TraceData *data,
-                                TraceCostItem *group, QString filterString,
-                                EventType * eventType)
+void FunctionListModel::resetModelData(TraceData *data,
+                                       TraceCostItem *group, QString filterString,
+                                       EventType * eventType)
 {
     _eventType = eventType;
 

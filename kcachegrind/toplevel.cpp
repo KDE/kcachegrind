@@ -1692,7 +1692,7 @@ void TopLevel::restoreTraceSettings()
   if (!_traceItemDelayed) {
     // function not available any more.. try with "main"
     if (!setFunction("main"))
-      _functionSelection->setTopFunction();
+      _functionSelection->selectTopFunction();
   }
 }
 

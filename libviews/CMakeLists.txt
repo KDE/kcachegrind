@@ -6,8 +6,8 @@ set(libviews_SRCS
    stackselection.cpp
    partgraph.cpp
    partselection.cpp
-   functionitem.cpp
    costlistitem.cpp
+   functionlistmodel.cpp
    functionselection.cpp
    toplevelbase.cpp
    listutils.cpp

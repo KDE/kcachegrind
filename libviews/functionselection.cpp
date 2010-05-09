@@ -491,7 +491,7 @@ void FunctionSelection::refresh()
     functionListModel->setMaxCount(GlobalConfig::maxListCount());
 
     if (!_data || _data->parts().count()==0) {
-        functionListModel->setData(0, 0, QString(), 0);
+        functionListModel->resetModelData(0, 0, QString(), 0);
         selectTopFunction();
 	return;
     }
@@ -541,7 +541,7 @@ void FunctionSelection::refresh()
   default:
     {
       _group = 0;
-      functionListModel->setData(_data, _group, _searchString, _eventType);
+      functionListModel->resetModelData(_data, _group, _searchString, _eventType);
       selectFunction(dynamic_cast<TraceFunction*>(_activeItem));
       setCostColumnWidths();
       return;
@@ -592,7 +592,7 @@ void FunctionSelection::groupSelected(Q3ListViewItem* i)
   if (g == _group) return;
   _group = g;
 
-  functionListModel->setData(_data, g, _searchString, _eventType);
+  functionListModel->resetModelData(_data, g, _searchString, _eventType);
   selectFunction(dynamic_cast<TraceFunction*>(_activeItem));
   setCostColumnWidths();
 
@@ -716,7 +716,7 @@ void FunctionSelection::query(QString query)
   }
   updateGroupSizes(true);
 
-  functionListModel->setData(_data, _group, _searchString, _eventType);
+  functionListModel->resetModelData(_data, _group, _searchString, _eventType);
   selectFunction(dynamic_cast<TraceFunction*>(_activeItem));
   setCostColumnWidths();
 }

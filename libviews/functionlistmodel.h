@@ -40,8 +40,8 @@ public:
      * - which are part of function group <group>
      * - whose name contains <filter>
      */
-    void setData(TraceData* data, TraceCostItem* group, QString filter,
-                 EventType* eventType);
+    void resetModelData(TraceData* data, TraceCostItem* group, QString filter,
+                        EventType* eventType);
 
     // reimplemented from QAbstractItemModel
     QVariant data(const QModelIndex&, int) const;
