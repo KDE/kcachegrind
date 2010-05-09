@@ -1526,7 +1526,7 @@ void QCGTopLevel::restoreTraceSettings()
     // function not available any more.. try with "main"
       if (!setFunction("main")) {
 #if 1
-	_functionSelection->setTopFunction();
+	_functionSelection->selectTopFunction();
 #else
 	HighestCostList hc;
 	hc.clear(50);

@@ -6,6 +6,7 @@ NHEADERS += \
     traceitemview.h \
     toplevelbase.h \
     partselection.h \
+    functionlistmodel.h \
     functionselection.h \
     listutils.h \
     stackselection.h \
@@ -21,7 +22,6 @@ NHEADERS += \
     coverageview.h \
     eventtypeitem.h \
     eventtypeview.h \
-    functionitem.h \
     instritem.h \
     instrview.h \
     partgraph.h \
@@ -42,7 +42,7 @@ SOURCES += \
     coverageview.cpp \
     eventtypeitem.cpp \
     eventtypeview.cpp \
-    functionitem.cpp \
+    functionlistmodel.cpp \
     functionselection.cpp \
     instritem.cpp \
     instrview.cpp \

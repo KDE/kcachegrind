@@ -25,6 +25,7 @@
 
 #include <QTimer>
 #include <QWidget>
+#include <QModelIndex>
 
 #include "tracedata.h"
 #include "traceitemview.h"
@@ -39,6 +40,8 @@ class Q3ListViewItem;
 class QLabel;
 class QComboBox;
 class QLineEdit;
+class QTreeView;
+class FunctionListModel;
 
 class FunctionSelection: public QWidget, public TraceItemView
 {
@@ -51,7 +54,7 @@ public:
   TraceCostItem* group(QString);
   void setGroup(TraceCostItem*);
   void query(QString);
-  bool setTopFunction();
+  bool selectTopFunction();
 
   QWidget* widget() { return this; }
   QString whatsThis() const;
@@ -62,14 +65,16 @@ public slots:
   void searchReturnPressed();
   void searchChanged(const QString&);
   void queryDelayed();
+
   void groupTypeSelected(QAction*);
   void groupTypeSelected(int);
   void groupDoubleClicked( Q3ListViewItem* );
-  void functionActivated( Q3ListViewItem* );
   void groupSelected( Q3ListViewItem* );
-  void functionSelected( Q3ListViewItem* );
-  void functionContext(Q3ListViewItem*, const QPoint &, int);
   void groupContext(Q3ListViewItem*, const QPoint &, int);
+
+  void functionActivated(const QModelIndex&);
+  void functionContext(const QPoint &);
+  void functionHeaderClicked(int);
 
 private:
   CostItem* canShow(CostItem* i);
@@ -80,6 +85,7 @@ private:
   void updateGroupSizes(bool hideEmpty);
   void addGroupAction(QMenu*, ProfileContext::Type,
 		      const QString& s = QString());
+  void selectFunction(TraceFunction* f, bool ensureVisible = true);
 
   TraceCostItem* _group;
 
@@ -95,7 +101,8 @@ private:
   QLineEdit *searchEdit;
   QComboBox *groupBox;
   Q3ListView *groupList;
-  Q3ListView *functionList;
+  QTreeView *functionList;
+  FunctionListModel* functionListModel;
 };
 
 #endif

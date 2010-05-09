@@ -34,12 +34,14 @@
 #include <Qt3Support/Q3ListView>
 #include <Qt3Support/Q3Header>
 #include <QDebug>
+#include <QTreeView>
+#include <QHeaderView>
 
 #include "traceitemview.h"
 #include "stackbrowser.h"
-#include "functionitem.h"
 #include "costlistitem.h"
 #include "globalconfig.h"
+#include "functionlistmodel.h"
 
 
 FunctionSelection::FunctionSelection( TopLevelBase* top,
@@ -83,14 +85,19 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
   groupList->setMaximumHeight(150);
   vboxLayout->addWidget(groupList);
 
-  functionList = new Q3ListView(this);
-  functionList->addColumn(tr("Incl."));
-  functionList->addColumn(tr("Self"));
-  functionList->addColumn(tr("Called"));
-  functionList->addColumn(tr("Function"));
-  functionList->addColumn(tr("Location"));
-  functionList->header()->setClickEnabled(true);
-  functionList->header()->setResizeEnabled(true);
+  functionListModel = new FunctionListModel();
+  functionListModel->setMaxCount(GlobalConfig::maxListCount());
+
+  functionList = new QTreeView(this);
+  functionList->setRootIsDecorated(false);
+  functionList->setAllColumnsShowFocus(true);
+  functionList->setContextMenuPolicy(Qt::CustomContextMenu);
+  functionList->setUniformRowHeights(true);
+  functionList->header()->setClickable(true);
+  functionList->header()->setSortIndicatorShown(false);
+  functionList->header()->setSortIndicator(0, Qt::DescendingOrder);
+  functionList->header()->setResizeMode(QHeaderView::Interactive);
+  functionList->setModel(functionListModel);
   vboxLayout->addWidget(functionList);
 
   // order has to match mapping in groupTypeSelected()
@@ -114,44 +121,18 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
 	  this, SLOT(searchReturnPressed()));
   searchEdit->setMinimumWidth(50);
 
-  // we start with desending cost sorting
-  functionList->setSorting(0,false);
-  functionList->setColumnAlignment(0, Qt::AlignRight);
-  functionList->setColumnAlignment(1, Qt::AlignRight);
-  functionList->setColumnAlignment(2, Qt::AlignRight);
-  functionList->setAllColumnsShowFocus(true);
-  // functionList->setShowSortIndicator(true);
-  // we can have very long function and location names
-  functionList->setColumnWidthMode(3, Q3ListView::Manual);
-  functionList->setColumnWidth(3, 200);
-  functionList->setColumnWidthMode(4, Q3ListView::Manual);
-  functionList->setColumnWidth(4, 200);
-
   groupList->setSorting(0,false);
   groupList->setColumnAlignment(0, Qt::AlignRight);
   groupList->setAllColumnsShowFocus(true);
-  // groupList->setShowSortIndicator(true);
   groupList->setResizeMode(Q3ListView::LastColumn);
 
-#if 0
-  // single click press activation
-  connect(functionList, SIGNAL(selectionChanged(Q3ListViewItem*)),
-          this, SLOT(functionActivated(Q3ListViewItem*)));
-  connect(functionList,
-	  SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
-          this, SLOT(functionContext(Q3ListViewItem*, const QPoint &, int)));
-#else
   // single click release activation
-  connect(functionList, SIGNAL(selectionChanged(Q3ListViewItem*)),
-          this, SLOT(functionSelected(Q3ListViewItem*)));
-  connect(functionList, SIGNAL(clicked(Q3ListViewItem*)),
-	  this, SLOT(functionActivated(Q3ListViewItem*)));
-  connect(functionList, SIGNAL(returnPressed(Q3ListViewItem*)),
-	  this, SLOT(functionActivated(Q3ListViewItem*)));
-  connect(functionList,
-	  SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
-          this, SLOT(functionContext(Q3ListViewItem*, const QPoint &, int)));
-#endif
+  connect(functionList, SIGNAL(clicked(QModelIndex)),
+          this, SLOT(functionActivated(QModelIndex)));
+  connect(functionList, SIGNAL(customContextMenuRequested(const QPoint &)),
+            this, SLOT(functionContext(const QPoint &)));
+  connect(functionList->header(), SIGNAL(sectionClicked(int)),
+            this, SLOT(functionHeaderClicked(int)));
 
   connect(groupList, SIGNAL(selectionChanged(Q3ListViewItem*)),
           this, SLOT(groupSelected(Q3ListViewItem*)));
@@ -205,7 +186,8 @@ void FunctionSelection::searchReturnPressed()
       }
   }
 
-  functionActivated(functionList->firstChild());
+  // activate top function in functionList
+  selectTopFunction();
 }
 
 // trigger the query after some delay, dependent on length
@@ -223,31 +205,32 @@ void FunctionSelection::queryDelayed()
   query(_searchDelayed);
 }
 
-void FunctionSelection::functionContext(Q3ListViewItem* i,
-					const QPoint & p, int c)
+void FunctionSelection::functionContext(const QPoint & p)
 {
     QMenu popup;
     TraceFunction* f = 0;
 
     QAction* activateFunctionAction = 0;
-    if (i) {
-	f = ((FunctionItem*) i)->function();
+    QModelIndex i = functionList->indexAt(p);
+    if (i.isValid()) {
+        TraceFunction* f = functionListModel->function(i);
 	if (f) {
 	    QString menuText = tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName()));
 	    activateFunctionAction = popup.addAction(menuText);
 	    popup.addSeparator();
 	}
+        if ((i.column() == 0) || (i.column() == 1)) {
+            addEventTypeMenu(&popup,false);
+            popup.addSeparator();
+        }
     }
 
-    if ((c == 0) || (c == 1)) {
-	addEventTypeMenu(&popup,false);
-	popup.addSeparator();
-    }
     addGroupMenu(&popup);
     popup.addSeparator();
     addGoMenu(&popup);
 
-    QAction* a = popup.exec(p);
+    QPoint pDiff = QPoint(0, functionList->header()->height());
+    QAction* a = popup.exec(functionList->mapToGlobal(p + pDiff));
     if (a == activateFunctionAction)
 	activated(f);
 }
@@ -346,6 +329,22 @@ CostItem* FunctionSelection::canShow(CostItem* i)
 }
 
 
+void FunctionSelection::selectFunction(TraceFunction* f,
+                                       bool ensureVisible)
+{
+    QModelIndex i = functionListModel->indexForFunction(f, true);
+    if (!i.isValid()) return;
+
+    if (ensureVisible)
+        functionList->scrollTo(i, QAbstractItemView::EnsureVisible);
+
+    _inSetFunction = true;
+    QModelIndex last = functionListModel->index(i.row(), 4);
+    QItemSelection s(i, last);
+    functionList->selectionModel()->select(s, QItemSelectionModel::ClearAndSelect);
+    _inSetFunction = false;
+}
+
 void FunctionSelection::doUpdate(int changeType, bool)
 {
     // Special case ?
@@ -372,9 +371,8 @@ void FunctionSelection::doUpdate(int changeType, bool)
 	TraceFunction* f = (TraceFunction*) _activeItem;
 
 	// if already current, nothing to do
-	Q3ListViewItem* i = functionList->currentItem();
-	if (i && (((FunctionItem*)i)->function() == f)) {
-	    functionList->setSelected(i,true);
+        QModelIndex i = functionList->currentIndex();
+        if (functionListModel->function(i) == f) {
 	    return;	    
 	}
 
@@ -392,20 +390,7 @@ void FunctionSelection::doUpdate(int changeType, bool)
 	    break;
 	}
 
-	Q3ListViewItem* item  = functionList->firstChild();
-	for (;item;item = item->nextSibling())
-	    if (((FunctionItem*)item)->function() == f)
-		break;
-
-	if (!item)
-	    item = new FunctionItem(functionList, f, _eventType, _groupType);
-
-	functionList->ensureItemVisible(item);
-	// prohibit signalling of a function selection
-	_inSetFunction = true;
-	functionList->setSelected(item, true);
-	_inSetFunction = false;
-
+        selectFunction(f);
 	return;
     }
 
@@ -485,31 +470,26 @@ void FunctionSelection::refresh()
     // make cost columns as small as possible:
     // the new functions make them as wide as needed
     groupList->setColumnWidth(0, 50);
-
     groupList->setColumnText(1, ProfileContext::i18nTypeName(_groupType));
 
-    if (!_data || _data->parts().count()==0) {
-	functionList->clear();
+    functionListModel->setMaxCount(GlobalConfig::maxListCount());
 
-	// this clears all other lists
-	functionList->setSelected(functionList->firstChild(), true);
+    if (!_data || _data->parts().count()==0) {
+        functionListModel->setData(0, 0, QString(), 0);
+        selectTopFunction();
 	return;
     }
+
 
   TraceObjectMap::Iterator oit;
   TraceClassMap::Iterator cit;
   TraceFileMap::Iterator fit;
-  Q3ListViewItem *i = 0, *item = 0, *fitem = 0;
 
   // Fill up group list.
   // Always show group of current function, even if cost below low limit.
   //
 
   _hc.clear(GlobalConfig::maxListCount());
-
-  // update group from _activeItem if possible
-  if (_activeItem && (_activeItem->type() == _groupType))
-    _group = (TraceCostItem*) _activeItem;
 
   switch(_groupType) {
   case ProfileContext::Object:
@@ -544,74 +524,21 @@ void FunctionSelection::refresh()
 
   default:
     {
-      Q3ListViewItem* oldItem = functionList->selectedItem();
-      TraceFunction* oldFunction = 0;
-      int oldPos = 0;
-      if (oldItem) {
-	oldFunction = ((FunctionItem*)oldItem)->function();
-	oldPos = oldItem->itemPos();
-	oldPos -= functionList->contentsY();
-	if (oldPos < 0 || oldPos > functionList->height())
-	  oldFunction = 0;
-      }
-
-      functionList->clear();
+      _group = 0;
+      functionListModel->setData(_data, _group, _searchString, _eventType);
+      selectFunction(dynamic_cast<TraceFunction*>(_activeItem));
       setCostColumnWidths();
-
-      if (0) qDebug("Function %s at %d, Item %p",
-		    oldFunction ? oldFunction->name().ascii() : "-",
-		    oldPos, (void*)oldItem);
-
-      TraceFunctionMap::Iterator it;
-      i = 0;
-      fitem = 0;
-      for ( it = _data->functionMap().begin();
-	    it != _data->functionMap().end(); ++it )
-	_hc.addCost(&(*it), (*it).inclusive()->subCost(_eventType));
-
-      foreach(TraceFunction* f, _data->functionCycles())
-	_hc.addCost(f, f->inclusive()->subCost(_eventType));
-
-      if (_activeItem &&
-	  ((_activeItem->type() == ProfileContext::Function) ||
-	   (_activeItem->type() == ProfileContext::FunctionCycle)))
-	fitem = new FunctionItem(functionList, (TraceFunction*)_activeItem,
-				 _eventType, _groupType);
-
-      for(int i=0;i<_hc.realCount();i++) {
-        TraceFunction *f = (TraceFunction*)_hc[i];
-	if (f == _activeItem) continue;
-	new FunctionItem(functionList, f, _eventType, _groupType);
-      }
-      if (_hc.hasMore()) {
-	// a placeholder for all the cost items skipped ...
-	new FunctionItem(functionList, _hc.count() - _hc.maxSize(),
-			 (TraceFunction*)_hc[_hc.maxSize()-1], _eventType);
-      }
-      functionList->sort();
-
-      if (fitem && oldFunction) {
-        _inSetFunction = true;
-	functionList->setSelected(fitem, true);
-        _inSetFunction = false;
-	int newPos = functionList->itemPos(fitem) - functionList->contentsY();
-	functionList->scrollBy(0, newPos-oldPos);
-      }
-      else if (fitem) {
-	functionList->ensureItemVisible(fitem);
-        _inSetFunction = true;
-	functionList->setSelected(fitem, true);
-        _inSetFunction = false;
-      }
-      else
-	functionList->clearSelection();
-
       return;
     }
   }
 
+  // update group from _activeItem if possible
+  if (_activeItem && (_activeItem->type() == _groupType))
+    _group = (TraceCostItem*) _activeItem;
+
   // we always put group of active item in list, even if
   // it would be skipped because of small costs
+  Q3ListViewItem *item = 0;
   if (_group)
     item = new CostListItem(groupList, _group, _eventType);
 
@@ -649,66 +576,9 @@ void FunctionSelection::groupSelected(Q3ListViewItem* i)
   if (g == _group) return;
   _group = g;
 
-  TraceFunctionList list;
-
-  switch(g->type()) {
-  case ProfileContext::Object:
-    list = ((TraceObject*)g)->functions();
-    break;
-  case ProfileContext::Class:
-    list = ((TraceClass*)g)->functions();
-    break;
-  case ProfileContext::File:
-    list = ((TraceFile*)g)->functions();
-    break;
-  case ProfileContext::FunctionCycle:
-    list = ((TraceFunctionCycle*)g)->members();
-    break;
-  default:
-    return;
-  }
-
-  functionList->clear();
+  functionListModel->setData(_data, g, _searchString, _eventType);
+  selectFunction(dynamic_cast<TraceFunction*>(_activeItem));
   setCostColumnWidths();
-
-  double total;
-  if (GlobalConfig::showExpanded())
-      total = (double) g->subCost(_eventType);
-  else
-      total = (double) _data->subCost(_eventType);
-
-  QRegExp re(_searchString, false, true);
-
-  FunctionItem* fitem = 0;
-  _hc.clear(GlobalConfig::maxListCount());
-  foreach(TraceFunction* f, list) {
-    if (re.search(f->prettyName())<0) continue;
-
-    _hc.addCost(f, f->inclusive()->subCost(_eventType));
-    if (_activeItem == f)
-      fitem = new FunctionItem(functionList, (TraceFunction*)_activeItem,
-			       _eventType, _groupType);
-  }
-
-  for(int i=0;i<_hc.realCount();i++) {
-    if (_activeItem == (TraceFunction*)_hc[i]) continue;
-    new FunctionItem(functionList, (TraceFunction*)_hc[i],
-		     _eventType, _groupType);
-  }
-
-  if (_hc.hasMore()) {
-    // a placeholder for all the functions skipped ...
-    new FunctionItem(functionList, _hc.count() - _hc.maxSize(),
-		     (TraceFunction*)_hc[_hc.maxSize()-1], _eventType);
-  }
-  functionList->sort();
-
-  if (fitem) {
-    functionList->ensureItemVisible(fitem);
-    _inSetFunction = true;
-    functionList->setSelected(fitem, true);
-    _inSetFunction = false;
-  }
 
   // Do not emit signal if cost item was changed programatically
   if (!_inSetGroup) {
@@ -743,30 +613,11 @@ TraceCostItem* FunctionSelection::group(QString s)
 }
 
 
-
-void FunctionSelection::functionSelected(Q3ListViewItem* i)
+void FunctionSelection::functionActivated(const QModelIndex& i)
 {
-  if (!i) return;
   if (!_data) return;
 
-  TraceFunction* f = ((FunctionItem*) i)->function();
-  if (!f) return;
-
-  //qDebug("FunctionSelection::functionSelected %s", f->name().ascii());
-
-  // Do not emit signal if function was changed programatically
-  if (!_inSetFunction) {
-      _selectedItem = f;
-      selected(f);
-  }
-}
-
-void FunctionSelection::functionActivated(Q3ListViewItem* i)
-{
-  if (!i) return;
-  if (!_data) return;
-  TraceFunction* f = ((FunctionItem*) i)->function();
-
+  TraceFunction* f = functionListModel->function(i);
   if (!f) return;
 
   if (!_inSetFunction)
@@ -849,61 +700,44 @@ void FunctionSelection::query(QString query)
   }
   updateGroupSizes(true);
 
-  FunctionItem *fi, *item = 0;
-
-  functionList->clear();
+  functionListModel->setData(_data, _group, _searchString, _eventType);
+  selectFunction(dynamic_cast<TraceFunction*>(_activeItem));
   setCostColumnWidths();
-  for(int i=0;i<_hc.realCount();i++) {
-      fi = new FunctionItem(functionList, (TraceFunction*)_hc[i],
-			    _eventType, _groupType);
-      if (_activeItem == _hc[i]) item = fi;
-  }
-  if (_hc.hasMore()) {
-      // a placeholder for all the functions skipped ...
-      new FunctionItem(functionList, _hc.count() - _hc.maxSize(),
-		       (TraceFunction*)_hc[_hc.maxSize()-1], _eventType);
-  }
-
-  functionList->sort();
-
-
-  if (item) {
-    functionList->ensureItemVisible(item);
-    _inSetFunction = true;
-    functionList->setSelected(item, true);
-    _inSetFunction = false;
-  }
-  else {
-    // this emits a function selection
-    functionList->setSelected(functionList->firstChild(), true);
-  }
 }
 
-bool FunctionSelection::setTopFunction()
+bool FunctionSelection::selectTopFunction()
 {
-  Q3ListViewItem* i = functionList->firstChild();
-  // this emits a function selection
-  functionList->setSelected(i, true);
-  functionActivated(i);
-  return i!=0;
+    QModelIndex i = functionListModel->index(0,0);
+    TraceFunction* f = functionListModel->function(i);
+    selectFunction(f);
+    functionActivated(i);
+
+    return (f!=0);
 }
 
 void FunctionSelection::setCostColumnWidths()
 {
-  if (_eventType && (_eventType->subCost(_data->callMax())>0) ) {
-    functionList->setColumnWidthMode(0, Q3ListView::Maximum);
-    functionList->setColumnWidth(0,50);
-    functionList->setColumnWidthMode(2, Q3ListView::Maximum);
-    functionList->setColumnWidth(2,50);
-  }
-  else {
-    functionList->setColumnWidthMode(0, Q3ListView::Manual);
-    functionList->setColumnWidth(0,0);
-    functionList->setColumnWidthMode(2, Q3ListView::Manual);
-    functionList->setColumnWidth(2,0);
-  }
+    functionList->header()->resizeSection(3, 200);
+    functionList->header()->resizeSection(4, 200);
+    functionList->resizeColumnToContents(1);
 
-  functionList->setColumnWidth(1, 50);
+    if (_eventType && (_eventType->subCost(_data->callMax())>0) ) {
+        functionList->resizeColumnToContents(0);
+        functionList->resizeColumnToContents(2);
+    }
+    else {
+        functionList->header()->resizeSection(0, 0);
+        functionList->header()->resizeSection(2, 0);
+    }
 }
+
+void FunctionSelection::functionHeaderClicked(int col)
+{
+    functionList->sortByColumn(col, Qt::DescendingOrder);
+    selectFunction(dynamic_cast<TraceFunction*>(_activeItem), false);
+    setCostColumnWidths();
+}
+
+
 
 #include "functionselection.moc"
