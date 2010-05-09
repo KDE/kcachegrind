@@ -34,6 +34,8 @@ FunctionListModel::FunctionListModel()
             << tr("Called")
             << tr("Function")
             << tr("Location");
+
+    _max0 = _max1 = _max2 = 0;
 }
 
 FunctionListModel::~FunctionListModel()
@@ -50,7 +52,7 @@ int FunctionListModel::rowCount(const QModelIndex& parent ) const
 
     int rowCount = _topList.count();
     // add one more row if functions are skipped
-    if (_topList.count() < _list.count()) rowCount++;
+    if (_topList.count() < _filteredList.count()) rowCount++;
     return rowCount;
 }
 
@@ -66,15 +68,16 @@ QVariant FunctionListModel::data(const QModelIndex &index, int role) const
     if (!index.isValid()) return QVariant();
 
     // the skipped items entry
-    if ( (_topList.count() < _list.count()) &&
+    if ( (_topList.count() < _filteredList.count()) &&
          (index.row() == _topList.count()) ) {
         if( (role != Qt::DisplayRole) || (index.column() != 3))
             return QVariant();
 
-        return tr("(%1 function(s) skipped)").arg(_list.count() - _topList.count());
+        return tr("(%1 function(s) skipped)").arg(_filteredList.count() - _topList.count());
     }
 
     TraceFunction *f = (TraceFunction*) index.internalPointer();
+    Q_ASSERT(f != 0);
     switch(role) {
     case Qt::TextAlignmentRole:
         return (index.column()<3) ? Qt::AlignRight : Qt::AlignLeft;
@@ -151,13 +154,16 @@ QModelIndex FunctionListModel::indexForFunction(TraceFunction *f, bool add)
     if (row<0) {
         // we only add a function from _list matching the filter
         if ( !add ||
-             !_list.contains(f) ||
-             (!_filterString.isEmpty() &&
-              (_filter.indexIn(f->name()) == -1)) ) return QModelIndex();
+             !_filteredList.contains(f) ) return QModelIndex();
 
-        row = _topList.count();
+        // find insertion point with current list order
+        FunctionLessThan lessThan(_sortColumn, _sortOrder, _eventType);
+        QList<TraceFunction*>::iterator insertPos;
+        insertPos = qLowerBound(_topList.begin(), _topList.end(),
+                                f, lessThan);
+        row = insertPos - _topList.begin();
         beginInsertRows(QModelIndex(), row, row);
-        _topList.append(f);
+        _topList.insert(row, f);
         endInsertRows();
     }
 
@@ -174,7 +180,7 @@ void FunctionListModel::sort(int column, Qt::SortOrder order)
 {
     _sortColumn = column;
     _sortOrder = order;
-    computeTop();
+    computeTopList();
 }
 
 void FunctionListModel::setFilter(QString filterString)
@@ -183,14 +189,23 @@ void FunctionListModel::setFilter(QString filterString)
     _filterString = filterString;
 
     _filter = QRegExp(_filterString, false, true);
-    computeTop();
+    computeFilteredList();
+    computeTopList();
+}
+
+void FunctionListModel::setEventType(EventType* et)
+{
+    _eventType = et;
+    // needed to recalculate max value entries
+    computeFilteredList();
+    computeTopList();
 }
 
 void FunctionListModel::setMaxCount(int c)
 {
     if (_maxCount == c) return;
     _maxCount = c;
-    computeTop();
+    computeTopList();
 }
 
 void FunctionListModel::setData(TraceData *data,
@@ -254,21 +269,56 @@ void FunctionListModel::setData(TraceData *data,
     _filterString = filterString;
     _filter = QRegExp(_filterString, false, true);
 
-    computeTop();
+    computeFilteredList();
+    computeTopList();
 }
 
-void FunctionListModel::computeTop()
+void FunctionListModel::computeFilteredList()
 {
-    FunctionLessThan lessThan(_sortColumn, _sortOrder, _eventType);
+    FunctionLessThan lessThan0(0, Qt::AscendingOrder, _eventType);
+    FunctionLessThan lessThan1(1, Qt::AscendingOrder, _eventType);
+    FunctionLessThan lessThan2(2, Qt::AscendingOrder, _eventType);
 
-    qStableSort(_list.begin(), _list.end(), lessThan);
-    _topList.clear();
+    // reset max functions
+    _max0 = 0;
+    _max1 = 0;
+    _max2 = 0;
+
+    _filteredList.clear();
+    int index = 0;
     foreach(TraceFunction* f, _list) {
         if (!_filterString.isEmpty())
             if (_filter.indexIn(f->name()) == -1) continue;
-        _topList.append(f);
-        if (_topList.count() == _maxCount) break;
+
+        _filteredList.append(f);
+        if (!_max0 || lessThan0(_max0, f)) { _max0 = f; }
+        if (!_max1 || lessThan1(_max1, f)) { _max1 = f; }
+        if (!_max2 || lessThan2(_max2, f)) { _max2 = f; }
+        index++;
     }
+}
+
+void FunctionListModel::computeTopList()
+{
+    _topList.clear();
+    if (_filteredList.isEmpty()) return;
+
+    FunctionLessThan lessThan(_sortColumn, _sortOrder, _eventType);
+    qStableSort(_filteredList.begin(), _filteredList.end(), lessThan);
+
+    foreach(TraceFunction* f, _filteredList) {
+        _topList.append(f);
+        if (_topList.count() >= _maxCount) break;
+    }
+
+    // append max entries
+    QList<TraceFunction*> maxList;
+    if (_max0 && !_topList.contains(_max0)) maxList.append(_max0);
+    if (_max1 && !_topList.contains(_max1)) maxList.append(_max1);
+    if (_max2 && !_topList.contains(_max2)) maxList.append(_max2);
+    qSort(maxList.begin(), maxList.end(), lessThan);
+    _topList.append(maxList);
+
     reset();
 }
 

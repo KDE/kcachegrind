@@ -88,7 +88,10 @@ private:
     QString getLocation(TraceFunction *f) const;
     QString getSkippedCost(TraceFunction *f, QPixmap *pixmap) const;
 
-    void computeTop();
+    // compute the list of candidates to show, ignoring order
+    void computeFilteredList();
+    // computes entries to show from candidates using current order
+    void computeTopList();
 
     QList<QVariant> _headerData;
     EventType *_eventType;
@@ -96,7 +99,12 @@ private:
     int _maxCount;
 
     QList<TraceFunction*> _list;
+    QList<TraceFunction*> _filteredList;
     QList<TraceFunction*> _topList;
+
+    // functions with max values at col.0/1/2 from candidate list:
+    // these are always shown to have same column widths when resorting
+    TraceFunction *_max0, *_max1, *_max2;
 
     int _sortColumn;
     Qt::SortOrder _sortOrder;

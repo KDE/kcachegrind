@@ -353,6 +353,18 @@ void FunctionSelection::doUpdate(int changeType, bool)
     // we do not show cost 2 at all...
     if (changeType == eventType2Changed) return;
 
+    if (changeType == eventTypeChanged) {
+        Q3ListViewItem* item  = groupList->firstChild();
+        for (;item;item = item->nextSibling())
+          ((CostListItem*)item)->setCostType(_eventType);
+
+        functionListModel->setEventType(_eventType);
+        // previous line resets the model: reselect active item
+        selectFunction(dynamic_cast<TraceFunction*>(_activeItem));
+        setCostColumnWidths();
+        return;
+    }
+
     if (changeType == activeItemChanged) {
 	if (_activeItem ==0) {
 	    functionList->clearSelection();
