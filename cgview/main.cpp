@@ -29,7 +29,7 @@
  * Just a simple command line tool using libcore
  */
 
-int showHelp(QTextStream& out, bool fullHelp = true)
+void showHelp(QTextStream& out, bool fullHelp = true)
 {
     out <<  "Show profiles from callgrind files. (C) 2010 J. Weidendorfer\n";
 
