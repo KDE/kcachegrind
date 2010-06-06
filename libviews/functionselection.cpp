@@ -392,9 +392,8 @@ void FunctionSelection::doUpdate(int changeType, bool)
 	    return;	    
 	}
 
-	// reset searchEdit (as not activated from this view)
-	_searchString = QString();
-	query(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+        // reset search (as not activated from this view)
+        query(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
 
 	// select cost item group of function
 	switch(_groupType) {
