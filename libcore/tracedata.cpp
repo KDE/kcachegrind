@@ -3449,9 +3449,29 @@ TraceFunction* TraceData::function(const QString& name,
     return 0;
   }
 
-  // Do not use file in key: A function can go over many files
-  // (inlined parts), but still is ONE function.
-  QString key = name + object->shortName();
+  // Use object name and file name as part of key, to get distinct
+  // function objects for functions with same name but defined in
+  // different ELF objects or different files (this is possible e.g.
+  // in C by using "static").
+  //
+  // Note about usage of this factory method by the Cachegrind loader:
+  // that dump format does not explicitly specify the attribution
+  // of functions to ELF objects and files. Rather, cost is attributed
+  // to ELF object, source file and function. We use the first cost
+  // seen for a function to bind an ELF object and source file to that
+  // function. Callgrind always prints the cost of the instruction at
+  // function entry first, so there, this strategy works.
+  // But such an order is not enforced by the format. If the cost of
+  // an inlined function from another source file would be printed first,
+  // the attribution would go wrong. The format also allows cost of
+  // the same function to be spreaded over the dump. With wrong
+  // attributions, it can happen that cost of the same function is
+  // interpreted as being from distinct functions.
+  // For a correct solution, the format needs to be more expressive,
+  // or the ordering of costs specified.
+  // Previously, the file name was left out from the key.
+  // The change was motivated by bug ID 3014067 (on SourceForge).
+  QString key = name + file->shortName() + object->shortName();
 
   TraceFunctionMap::Iterator it;
   it = _functionMap.find(key);
