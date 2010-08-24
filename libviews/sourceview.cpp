@@ -707,7 +707,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   _highListIter = _highList.begin();
   _jump.resize(0);
 
-  char buf[256];
+  char buf[160];
   bool inside = false, skipLineWritten = true;
   int readBytes;
   int fileLineno = 0;
@@ -724,9 +724,18 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
       buf[0] = 0;
     }
 
-    if (readBytes >= (int) sizeof( buf )) {
-      qDebug("%s:%d  Line too long\n",
-	     sf->file()->name().ascii(), fileLineno);
+    if ((readBytes >0) && (buf[readBytes-1] != '\n')) {
+        // sizeof (buf) was not enough for full line, discard the rest
+        // use QIODevice::readLine: it returns '\n' for any line ending
+        int r;
+        char buf2[32];
+        while(1) {
+            r = file.readLine(buf2, sizeof(buf2));
+            if ((r<=0) || (buf2[r-1] == '\n')) break;
+        }
+        // add dots as sign that we truncated the line
+        Q_ASSERT(readBytes>3);
+        buf[readBytes-1] = buf[readBytes-2] = buf[readBytes-3] = '.';
     }
     else if ((readBytes>0) && (buf[readBytes-1] == '\n'))
       buf[readBytes-1] = 0;
