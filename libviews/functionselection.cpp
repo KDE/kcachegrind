@@ -189,9 +189,10 @@ void FunctionSelection::searchReturnPressed()
 	  setGroup(((CostListItem*)item)->costItem());
 	  return;
       }
-      // activate top function in functionList
-      selectTopFunction();
   }
+  // activate top function in functionList
+  selectTopFunction();
+  functionList->setFocus();
 }
 
 // trigger the query after some delay, dependent on length
@@ -724,7 +725,11 @@ bool FunctionSelection::selectTopFunction()
 {
     QModelIndex i = functionListModel->index(0,0);
     TraceFunction* f = functionListModel->function(i);
+
+    // pre-select before activation to not trigger a refresh of this view
+    _activeItem = f;
     selectFunction(f);
+
     functionActivated(i);
 
     return (f!=0);
