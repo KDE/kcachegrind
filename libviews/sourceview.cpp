@@ -725,17 +725,24 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     }
 
     if ((readBytes >0) && (buf[readBytes-1] != '\n')) {
-        // sizeof (buf) was not enough for full line, discard the rest
-        // use QIODevice::readLine: it returns '\n' for any line ending
+        /* Something was read but not ending in newline. I.e.
+         * - buffer was not big enough: discard rest of line, add "..."
+         * - this is last line of file, not ending in newline
+         * NB: checking for '\n' is enough for all systems.
+         */
         int r;
         char buf2[32];
+        bool somethingRead = false;
         while(1) {
             r = file.readLine(buf2, sizeof(buf2));
             if ((r<=0) || (buf2[r-1] == '\n')) break;
+            somethingRead = true;
         }
-        // add dots as sign that we truncated the line
-        Q_ASSERT(readBytes>3);
-        buf[readBytes-1] = buf[readBytes-2] = buf[readBytes-3] = '.';
+        if (somethingRead) {
+            // add dots as sign that we truncated the line
+            Q_ASSERT(readBytes>3);
+            buf[readBytes-1] = buf[readBytes-2] = buf[readBytes-3] = '.';
+        }
     }
     else if ((readBytes>0) && (buf[readBytes-1] == '\n'))
       buf[readBytes-1] = 0;
