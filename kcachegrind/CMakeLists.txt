@@ -24,7 +24,7 @@ install(TARGETS kcachegrind  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
 
-install( FILES kcachegrind.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
+install( PROGRAMS kcachegrind.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES tips  DESTINATION  ${DATA_INSTALL_DIR}/kcachegrind )
 install( FILES kcachegrindui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kcachegrind )
 
