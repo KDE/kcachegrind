@@ -39,6 +39,8 @@ public:
   EventType* eventType() { return _eventType; }
   void update();
 
+  QVariant data(int column, int role) const;
+
 private:
   SubCost _sum, _pure;
   EventType* _eventType;

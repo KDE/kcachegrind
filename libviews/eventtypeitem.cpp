@@ -46,8 +46,8 @@ EventTypeItem::EventTypeItem(TraceCostItem* costItem,
   if (ct) {
       setText(0, ct->longName());
       setText(3, ct->name());
+      setText(5, ct->parsedFormula());
       QString formula = ct->formula();
-      setText(5, formula);
       if (!formula.isEmpty()) {
 	  setText(4, "=");
 	  // we have a virtual type: allow editing
@@ -144,6 +144,13 @@ bool EventTypeItem::operator<(const QTreeWidgetItem &other) const
 	return _pure < o->_pure;
 
     return QTreeWidgetItem::operator<(other);
+}
+
+QVariant EventTypeItem::data(int column, int role) const
+{
+    if ((column == 5) && (role == Qt::EditRole))
+        return QVariant(_eventType->formula());
+    return QTreeWidgetItem::data(column, role);
 }
 
 

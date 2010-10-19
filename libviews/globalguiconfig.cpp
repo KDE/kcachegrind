@@ -130,15 +130,23 @@ void GlobalGUIConfig::readOptions()
     // color options
     _colors.clear();
     // colors for default event types:
-    //  red for L2 misses, green for L1 misses, blue for normal accesses
+    //  red for LL/L2 misses
     colorSetting("EventType-I2mr")->_color = QColor(240, 0, 0);
     colorSetting("EventType-D2mr")->_color = QColor(180,40,40);
     colorSetting("EventType-D2mw")->_color = QColor(120,80,80);
-
+    colorSetting("EventType-ILmr")->_color = QColor(240, 0, 0);
+    colorSetting("EventType-DLmr")->_color = QColor(180,40,40);
+    colorSetting("EventType-DLmw")->_color = QColor(120,80,80);
+    //  green for L1 misses
     colorSetting("EventType-I1mr")->_color = QColor(0, 240, 0);
     colorSetting("EventType-D1mr")->_color = QColor(40,180,40);
     colorSetting("EventType-D1mw")->_color = QColor(80,120,80);
-
+    // yellow for branches/mispredictions
+    colorSetting("EventType-Bc") ->_color = QColor(240,240, 0);
+    colorSetting("EventType-Bcm")->_color = QColor(200,200,30);
+    colorSetting("EventType-Bi") ->_color = QColor(160,160,60);
+    colorSetting("EventType-Bim")->_color = QColor(120,120,90);
+    // blue for normal accesses
     colorSetting("EventType-Ir")->_color = QColor(0, 0, 240);
     colorSetting("EventType-Dr")->_color = QColor(40,40,180);
     colorSetting("EventType-Dw")->_color = QColor(80,80,120);

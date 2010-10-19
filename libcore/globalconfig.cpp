@@ -52,11 +52,19 @@ QStringList GlobalConfig::knownTypes()
   QStringList l;
 
   l << "Ir"   << "Dr"   << "Dw"
-    << "I1mr" << "D1mr" << "D1mw"
-    << "I2mr" << "D2mr" << "D2mw"
+    << "I1mr" << "D1mr" << "D1mw" << "L1m";
+  // Valgrind < 3.6.0
+  l << "I2mr" << "D2mr" << "D2mw" << "L2m";
+  // Valgrind 3.6.0: L2 events changed to to LL (last level) events
+  l << "ILmr" << "DLmr" << "DLmw" << "LLm";
 
-    << "Smp"  << "Sys"  << "User"
-    << "L1m"  << "L2m"  << "CEst";
+  // branch simulation
+  l << "Bi" << "Bim" << "Bc" << "Bcm" << "Bm";
+
+  // global bus events (e.g. CAS)
+  l << "Ge";
+
+  l << "Smp"  << "Sys"  << "User" << "CEst";
 
   return l;
 }
@@ -66,7 +74,10 @@ QString GlobalConfig::knownFormula(const QString& name)
 {
   if (name == "L1m") return QString("I1mr + D1mr + D1mw");
   if (name == "L2m") return QString("I2mr + D2mr + D2mw");
-  if (name == "CEst") return QString("Ir + 10 L1m + 100 L2m");
+  if (name == "LLm") return QString("ILmr + DLmr + DLmw");
+  if (name == "Bm")  return QString("Bim + Bcm");
+  if (name == "CEst")
+      return QString("Ir + 10 Bm + 10 L1m + 20 Ge + 100 L2m + 100 LLm");
 
   return QString();
 }
@@ -82,11 +93,21 @@ QString GlobalConfig::knownLongName(const QString& name)
     if (name == "I2mr") return QObject::tr("L2 Instr. Fetch Miss");
     if (name == "D2mr") return QObject::tr("L2 Data Read Miss");
     if (name == "D2mw") return QObject::tr("L2 Data Write Miss");
+    if (name == "ILmr") return QObject::tr("LL Instr. Fetch Miss");
+    if (name == "DLmr") return QObject::tr("LL Data Read Miss");
+    if (name == "DLmw") return QObject::tr("LL Data Write Miss");
+    if (name == "L1m") return QObject::tr("L1 Miss Sum");
+    if (name == "L2m") return QObject::tr("L2 Miss Sum");
+    if (name == "LLm") return QObject::tr("Last-level Miss Sum");
+    if (name == "Bi")  return QObject::tr("Indirect Branch");
+    if (name == "Bim") return QObject::tr("Mispredicted Ind. Branch");
+    if (name == "Bc")  return QObject::tr("Conditional Branch");
+    if (name == "Bcm") return QObject::tr("Mispredicted Cond. Branch");
+    if (name == "Bm")  return QObject::tr("Mispredicted Branch");
+    if (name == "Ge")  return QObject::tr("Global Bus Event");
     if (name == "Smp") return QObject::tr("Samples");
     if (name == "Sys") return QObject::tr("System Time");
     if (name == "User") return QObject::tr("User Time");
-    if (name == "L1m") return QObject::tr("L1 Miss Sum");
-    if (name == "L2m") return QObject::tr("L2 Miss Sum");
     if (name == "CEst") return QObject::tr("Cycle Estimation");
 
     return QString();
@@ -244,11 +265,6 @@ void GlobalConfig::readOptions()
     ConfigGroup* etConfig = ConfigStorage::group("EventTypes");
     int etCount = etConfig->value("Count", 0).toInt();
 
-    if (etCount == 0) {
-	addDefaultTypes();
-	return;
-    }
-
     for (int i=1;i<=etCount;i++) {
 	QString n = etConfig->value(QString("Name%1").arg(i),
 				    QString()).toString();
@@ -261,6 +277,10 @@ void GlobalConfig::readOptions()
 
 	EventType::add(new EventType(n, l, f));
     }
+
+    // this does only add yet non-existing types
+    addDefaultTypes();
+
     delete etConfig;
 }
 
@@ -274,7 +294,7 @@ void GlobalConfig::addDefaultTypes()
         longName = knownLongName(*it);
         formula  = knownFormula(*it);
         ct = new EventType(*it, longName, formula);
-        EventType::add(ct);
+        EventType::add(ct, false);
     }
 }
 

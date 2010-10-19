@@ -73,6 +73,7 @@ public:
    */
   bool parseFormula();
   QString parsedFormula();
+  QString parsedRealFormula();
 
   SubCost subCost(ProfileCostArray*);
 
@@ -87,14 +88,14 @@ public:
   // next 2 functions return a new type object instance
   static EventType* knownRealType(const QString&);
   static EventType* knownDerivedType(const QString&);
-  static void add(EventType*);
+  static void add(EventType*, bool overwriteExisting = true);
   static bool remove(const QString&);
   static int knownTypeCount();
   static EventType* knownType(int);
 
 private:
 
-  QString _name, _longName, _formula;
+  QString _name, _longName, _formula, _parsedFormula;
   EventTypeSet* _set;
   bool _parsed, _inParsing;
   // index MaxRealIndex is for constant addition

@@ -71,6 +71,8 @@ void EventType::setRealIndex(int i)
 bool EventType::parseFormula()
 {
   if (_parsed) return true;
+  if (isReal()) return true;
+
   if (_inParsing) {
     qDebug("TraceEventType::parseFormula: Recursion detected.");
     return false;
@@ -85,19 +87,23 @@ bool EventType::parseFormula()
 
   for (int i=0; i<ProfileCostArray::MaxRealIndex;i++)
     _coefficient[i] = 0;
+  _parsedFormula = QString();
 
   QRegExp rx( "((?:\\+|\\-)?)\\s*(\\d*)\\s*\\*?\\s*(\\w+)" );
 
-  int factor, pos;
+  int factor, pos, found, matching;
   QString costName;
   EventType* eventType;
 
+  found = 0;    // how many types are referenced in formula
+  matching = 0; // how many types actually are defined in profile data
   pos = 0;
   while (1) {
     pos = rx.indexIn(_formula, pos);
     if (pos<0) break;
     pos += rx.matchedLength();
     if (rx.cap(0).isEmpty()) break;
+    found++;
 
     //qDebug("parseFormula: matched '%s','%s','%s'",
     //       qPrintable(rx.cap(1)), qPrintable(rx.cap(2)), qPrintable(rx.cap(3)));
@@ -105,15 +111,25 @@ bool EventType::parseFormula()
     costName = rx.cap(3);
     eventType = _set->type(costName);
     if (!eventType) {
-	// qDebug("Cost type '%s': In formula cost '%s' unknown.",
+        //qDebug("Cost type '%s': In formula cost '%s' unknown.",
         //     qPrintable(_name), qPrintable(costName));
-
-	_inParsing = false;
-	return false;
+        continue;
     }
 
     factor = (rx.cap(2).isEmpty()) ? 1 : rx.cap(2).toInt();
     if (rx.cap(1) == "-") factor = -factor;
+    if (factor == 0) continue;
+
+    matching++;
+
+    if (!_parsedFormula.isEmpty()) {
+        _parsedFormula += QString(" %1 ").arg((factor>0) ? '+':'-');
+    }
+    else if (factor<0)
+        _parsedFormula += "- ";
+    if ((factor!=-1) && (factor!=1))
+        _parsedFormula += QString::number( (factor>0)?factor:-factor ) + ' ';
+    _parsedFormula += costName;
 
     if (eventType->isReal())
       _coefficient[eventType->realIndex()] += factor;
@@ -125,12 +141,27 @@ bool EventType::parseFormula()
   }
 
   _inParsing = false;
-  _parsed = true;
-
-  return true;
+  if (found == 0) {
+      // empty formula
+      _parsedFormula = QString("0");
+      _parsed = true;
+      return true;
+  }
+  if (matching>0) {
+      _parsed = true;
+      return true;
+  }
+  return false;
 }
 
+
 QString EventType::parsedFormula()
+{
+    parseFormula();
+    return _parsedFormula;
+}
+
+QString EventType::parsedRealFormula()
 {
   QString res;
 
@@ -224,7 +255,7 @@ EventType* EventType::knownDerivedType(const QString& n)
 }
 
 // we take ownership
-void EventType::add(EventType* t)
+void EventType::add(EventType* t, bool overwriteExisting)
 {
   if (!t) return;
 
@@ -236,11 +267,13 @@ void EventType::add(EventType* t)
   /* Already known? */
   foreach (EventType* kt, *_knownTypes)
       if (kt->name() == t->name()) {
-	  // Overwrite old type
-	  if (!t->longName().isEmpty() &&
-	      (t->longName() != t->name())) kt->setLongName(t->longName());
-	  if (!t->formula().isEmpty()) kt->setFormula(t->formula());
-
+          if (overwriteExisting) {
+              // Overwrite old type
+              if (!t->longName().isEmpty() && (t->longName() != t->name()))
+                  kt->setLongName(t->longName());
+              if (!t->formula().isEmpty())
+                  kt->setFormula(t->formula());
+          }
 	  delete t;
 	  return;
       }
