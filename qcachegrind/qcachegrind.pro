@@ -1,6 +1,10 @@
 TEMPLATE = app
 QT += qt3support
-unix:QT += dbus
+
+contains(QT_CONFIG, dbus) {
+    DEFINES += QT_DBUS_SUPPORT
+    QT += dbus
+}
 
 OBJECTS_DIR = $$OUT_PWD/../.obj
 

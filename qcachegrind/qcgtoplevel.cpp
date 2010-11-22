@@ -40,9 +40,12 @@
 #include <QToolBar>
 #include <QComboBox>
 #include <QMessageBox>
-#include <QtDBus/QDBusConnection>
 #include <QStatusBar>
 #include <QWhatsThis>
+
+#ifdef QT_DBUS_SUPPORT
+#include <QtDBus/QDBusConnection>
+#endif
 
 #include "partselection.h"
 #include "functionselection.h"
@@ -57,7 +60,7 @@
 
 QCGTopLevel::QCGTopLevel()
 {
-#ifndef QT_NO_DBUS
+#ifdef QT_DBUS_SUPPORT
     QDBusConnection con = QDBusConnection::sessionBus();
     con.registerObject("/QCachegrind", this,
 		       QDBusConnection::ExportScriptableSlots);
