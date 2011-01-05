@@ -207,7 +207,7 @@ DrawParams* RectDrawing::drawParams()
 
 void RectDrawing::setDrawParams(DrawParams* dp)
 {
-  if (_dp) delete _dp;
+  delete _dp;
   _dp = dp;
 }
 

@@ -1520,8 +1520,7 @@ TraceFunctionSource::TraceFunctionSource(TraceFunction* function,
 
 TraceFunctionSource::~TraceFunctionSource()
 {
-    if (_lineMap) delete _lineMap;
-    if (_line0) delete _line0;
+    delete _line0;
 }
 
 QString TraceFunctionSource::name() const
@@ -1817,7 +1816,7 @@ TraceFunction::~TraceFunction()
   qDeleteAll(_callings);
   qDeleteAll(_sourceFiles);
 
-  if (_instrMap) delete _instrMap;
+  delete _instrMap;
 }
 
 // no unique check is done!
@@ -3097,8 +3096,8 @@ TraceData::~TraceData()
 {
     qDeleteAll(_parts);
 
-    if (_fixPool) delete _fixPool;
-    if (_dynPool) delete _dynPool;
+    delete _fixPool;
+    delete _dynPool;
 }
 
 QString TraceData::shortTraceName() const

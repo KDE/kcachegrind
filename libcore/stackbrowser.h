@@ -42,7 +42,7 @@ public:
   void ref() { _refCount++; }
   // decrement reference count
   bool deref() { return --_refCount; }
-  int refCount() { return _refCount; }
+  int refCount() const { return _refCount; }
 
   TraceFunction* top() { return _top; }
   TraceCallList calls() { return _calls; }

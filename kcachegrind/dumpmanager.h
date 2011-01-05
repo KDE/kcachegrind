@@ -45,7 +45,7 @@ class Dump
 public:
   Dump(QString);
 
-  QString filename() { return _filename; }
+  QString filename() const { return _filename; }
 
 private:
   QString _filename;

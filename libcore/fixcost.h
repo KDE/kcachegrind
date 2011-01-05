@@ -158,7 +158,7 @@ class FixJump
     unsigned int targetLine() const { return _targetLine; }
     Addr targetAddr() const { return _targetAddr; }
     TraceFunctionSource* targetSource() const { return _targetSource; }
-    bool isCondJump() { return _isCondJump; }
+    bool isCondJump() const { return _isCondJump; }
     SubCost executedCount() const { return _cost[0]; }
     SubCost followedCount() const
 	{ return _isCondJump ? _cost[1] : SubCost(0); }
