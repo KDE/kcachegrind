@@ -394,9 +394,9 @@ int GlobalConfig::maxSymbolLength()
 
 QString GlobalConfig::shortenSymbol(const QString& s)
 {
-	if ((int)s.length() > maxSymbolLength())
-		return s.left(maxSymbolLength()) + "...";
-	return s;
+  if(s.length() > config()->_maxSymbolLength)
+    return s.left(config()->_maxSymbolLength) + QLatin1String("...");
+  return s;
 }
 
 int GlobalConfig::maxListCount()

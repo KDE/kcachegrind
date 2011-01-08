@@ -192,21 +192,12 @@ bool ConfigDlg::configure(GlobalGUIConfig* c, TraceData* d, QWidget* p)
 
   if (dlg.exec()) {
 
-    bool ok;
-    int newValue = dlg.maxListEdit->text().toUInt(&ok);
-    if (ok && newValue < 500)
-      c->_maxListCount = newValue;
-    else
-      QMessageBox::warning(p, i18n("KCachegrind Configuration"),
-                           i18n("The Maximum Number of List Items should be below 500."
-                                "The previous set value (%1) will still be used.",
-                                c->_maxListCount),
-                           QMessageBox::Ok, 0);
-
-    c->_maxSymbolCount = dlg.symbolCount->text().toInt();
-    c->_maxSymbolLength = dlg.symbolLength->text().toInt();
-    c->_percentPrecision = dlg.precisionEdit->text().toInt();
-    c->_context = dlg.contextEdit->text().toInt();
+    // max 499 per definition
+    c->_maxListCount = dlg.maxListEdit->value();
+    c->_maxSymbolCount = dlg.symbolCount->value();
+    c->_maxSymbolLength = dlg.symbolLength->value();
+    c->_percentPrecision = dlg.precisionEdit->value();
+    c->_context = dlg.contextEdit->value();
     return true;
   }
   return false;

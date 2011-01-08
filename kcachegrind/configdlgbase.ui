@@ -130,8 +130,11 @@
            </item>
            <item row="0" column="2">
             <widget class="KIntSpinBox" name="maxListEdit">
+             <property name="toolTip">
+              <string>The Maximum Number of List Items should be below 500.</string>
+             </property>
              <property name="maximum">
-              <number>9999</number>
+              <number>499</number>
              </property>
             </widget>
            </item>

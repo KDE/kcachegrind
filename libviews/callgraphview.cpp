@@ -753,10 +753,7 @@ void GraphExporter::writeDot(QIODevice* device)
 		TraceCostItem* i = lit.key();
 
 		if (_go->clusterGroups() && i) {
-			QString iabr = i->prettyName();
-			if ((int)iabr.length() > GlobalConfig::maxSymbolLength())
-				iabr = iabr.left(GlobalConfig::maxSymbolLength()) + "...";
-
+			QString iabr = GlobalConfig::shortenSymbol(i->prettyName());
 			*stream << QString("subgraph \"cluster%1\" { label=\"%2\";\n")
 			.arg(cluster).arg(iabr);
 		}
@@ -764,10 +761,7 @@ void GraphExporter::writeDot(QIODevice* device)
 		foreach(GraphNode* np, l) {
 			TraceFunction* f = np->function();
 
-			QString abr = f->prettyName();
-			if ((int)abr.length() > GlobalConfig::maxSymbolLength())
-				abr = abr.left(GlobalConfig::maxSymbolLength()) + "...";
-
+			QString abr = GlobalConfig::shortenSymbol(f->prettyName());
 			*stream << QString("  F%1 [").arg((qptrdiff)f, 0, 16);
 			if (_useBox) {
 				// we want a minimal size for cost display

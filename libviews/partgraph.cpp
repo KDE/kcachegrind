@@ -144,9 +144,7 @@ QString PartAreaWidget::tipString(TreeMapItem* i) const
 
   // first, SubPartItem's
   while (i && count<GlobalConfig::maxSymbolCount() && i->rtti() == 3) {
-    itemTip = i->text(0);
-    if ((int)itemTip.length()>GlobalConfig::maxSymbolLength())
-      itemTip = itemTip.left(GlobalConfig::maxSymbolLength()) + "...";
+    itemTip = GlobalConfig::shortenSymbol(i->text(0));
 
     if (!i->text(1).isEmpty())
       itemTip += " (" + i->text(1) + ')';

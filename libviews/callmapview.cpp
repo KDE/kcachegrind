@@ -229,9 +229,7 @@ void CallMapView::addStopFunctionMenu(QMenu* menu, TreeMapItem* item)
 	m->addSeparator();
 	int count = 0;
 	while (count<GlobalConfig::maxSymbolCount() && item) {
-	    QString name = item->text(0);
-	    if ((int)name.length()>GlobalConfig::maxSymbolLength())
-		name = name.left(GlobalConfig::maxSymbolLength()) + "...";
+	    QString name = GlobalConfig::shortenSymbol(item->text(0));
 	    a = addStopFunctionAction(m, name, item->text(0));
 	    if (a->isChecked()) foundStopName = true;
 	    item = item->parent();
@@ -240,9 +238,7 @@ void CallMapView::addStopFunctionMenu(QMenu* menu, TreeMapItem* item)
     }
     if (!foundStopName && !fieldStop(0).isEmpty()) {
 	m->addSeparator();
-	QString name = fieldStop(0);
-	if ((int)name.length()>GlobalConfig::maxSymbolLength())
-	    name = name.left(GlobalConfig::maxSymbolLength()) + "...";
+	QString name = GlobalConfig::shortenSymbol(fieldStop(0));
 	addStopFunctionAction(m, name, fieldStop(0));
     }
 
@@ -324,10 +320,7 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
 
   QString shortCurrentName;
   if (i) {
-    shortCurrentName = i->text(0);
-    if ((int)shortCurrentName.length() > GlobalConfig::maxSymbolLength())
-      shortCurrentName =
-        shortCurrentName.left(GlobalConfig::maxSymbolLength()) + "...";
+    shortCurrentName = GlobalConfig::shortenSymbol(i->text(0));
   }
 
   if (i) {
@@ -560,9 +553,7 @@ QString CallMapView::tipString(TreeMapItem* i) const
 
   // first, SubPartItem's
   while (i && count<GlobalConfig::maxSymbolCount()) {
-    itemTip = i->text(0);
-    if ((int)itemTip.length()>GlobalConfig::maxSymbolLength())
-      itemTip = itemTip.left(GlobalConfig::maxSymbolLength()) + "...";
+    itemTip = GlobalConfig::shortenSymbol(i->text(0));
 
     if (!i->text(1).isEmpty())
       itemTip += " (" + i->text(1) + ')';

@@ -2071,9 +2071,7 @@ void TopLevel::forwardAboutToShow()
     f = hi->function();
     if (!f) break;
 
-    QString name = f->prettyName();
-    if ((int)name.length()>GlobalConfig::maxSymbolLength())
-      name = name.left(GlobalConfig::maxSymbolLength()) + "...";
+    QString name = GlobalConfig::shortenSymbol(f->prettyName());
 
     //qDebug("forward: Adding %s", name.ascii());
     action = popup->addAction(name);
@@ -2110,9 +2108,7 @@ void TopLevel::backAboutToShow()
     f = hi->function();
     if (!f) break;
 
-    QString name = f->prettyName();
-    if ((int)name.length()>GlobalConfig::maxSymbolLength())
-      name = name.left(GlobalConfig::maxSymbolLength()) + "...";
+    QString name = GlobalConfig::shortenSymbol(f->prettyName());
 
     //qDebug("back: Adding %s", name.ascii());
     action = popup->addAction(name);
@@ -2145,9 +2141,7 @@ void TopLevel::upAboutToShow()
 
   int count = 1;
   while (count<GlobalConfig::maxSymbolCount() && f) {
-    QString name = f->prettyName();
-    if ((int)name.length()>GlobalConfig::maxSymbolLength())
-      name = name.left(GlobalConfig::maxSymbolLength()) + "...";
+    QString name = GlobalConfig::shortenSymbol(f->prettyName());
 
     action = popup->addAction(name);
     action->setData(count);
