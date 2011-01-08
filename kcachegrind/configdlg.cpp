@@ -24,8 +24,6 @@
 
 #include <QCheckBox>
 #include <QMessageBox>
-#include <Qt3Support/Q3ListView>
-#include <Qt3Support/Q3Dict>
 
 #include <kcolorbutton.h>
 #include <kfiledialog.h>
@@ -45,21 +43,6 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
   _objectCS = 0;
   _classCS = 0;
   _fileCS = 0;
-  KIntValidator * numValidator = new KIntValidator( this );
-  maxListEdit->setValidator(numValidator );
-  symbolCount->setValidator(numValidator );
-  symbolLength->setValidator(numValidator );
-  precisionEdit->setValidator(numValidator );
-  contextEdit->setValidator(numValidator );
-
-#if 0
-  Q3ListViewItem *oItem, *fItem, *cItem, *fnItem;
-  oItem = new(colorList, i18n("ELF Objects"));
-
-  fItem = new(colorList, i18n("Source Files"));
-  cItem = new(colorList, i18n("C++ Classes"));
-  fnItem = new(colorList, i18n("Function (no Grouping)"));
-#endif
 
   connect(objectCombo, SIGNAL(activated(const QString &)),
           this, SLOT(objectActivated(const QString &)));
@@ -88,8 +71,8 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
   connect(fileColor, SIGNAL(changed(const QColor &)),
           this, SLOT(fileColorChanged(const QColor &)));
 
-  connect(PushButton2, SIGNAL(clicked()),SLOT(accept()));
-  connect(PushButton1, SIGNAL(clicked()),SLOT(reject()));
+  connect(buttonBox, SIGNAL(accepted()),SLOT(accept()));
+  connect(buttonBox, SIGNAL(rejected()),SLOT(reject()));
   QString objectPrefix = ProfileContext::typeName(ProfileContext::Object);
   QString classPrefix = ProfileContext::typeName(ProfileContext::Class);
   QString filePrefix = ProfileContext::typeName(ProfileContext::File);
@@ -156,48 +139,47 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
   classActivated(classCombo->currentText());
   fileActivated(fileCombo->currentText());
 
-  maxListEdit->setText(QString::number(c->_maxListCount));
+  maxListEdit->setValue(c->_maxListCount);
 
-  _dirItem = 0;
-
-  Q3ListViewItem* i = new Q3ListViewItem(dirList, i18n("(always)"));
-  i->setOpen(true);
+  QTreeWidgetItem* i = new QTreeWidgetItem(dirList);
+  i->setText(0, i18n("(always)"));
+  i->setExpanded(true);
+  QTreeWidgetItem* root = i;
   QStringList::const_iterator sit = c->_generalSourceDirs.constBegin();
   for(; sit != c->_generalSourceDirs.constEnd(); ++sit ) {
-    QString d = (*sit);
-    if (d.isEmpty()) d = "/";
-    new Q3ListViewItem(i, d);
+    QTreeWidgetItem *item = new QTreeWidgetItem(i);
+    item->setText(0, sit->isEmpty() ? QDir::rootPath() : *sit);
   }
   if (data) {
     for ( oit = data->objectMap().begin();
           oit != data->objectMap().end(); ++oit ) {
-      QString n = (*oit).name();
+      const QString n = (*oit).name();
       if (n.isEmpty()) continue;
-      i = new Q3ListViewItem(dirList, n);
-      i->setOpen(true);
-      QStringList dirs = c->_objectSourceDirs[n];
+      i = new QTreeWidgetItem(dirList);
+      i->setText(0, n);
+      i->setExpanded(true);
+      const QStringList dirs = c->_objectSourceDirs[n];
 
       sit = dirs.constBegin();
       for(; sit != dirs.constEnd(); ++sit ) {
-        QString d = (*sit);
-        if (d.isEmpty()) d = "/";
-        new Q3ListViewItem(i, d);
+        QTreeWidgetItem *item = new QTreeWidgetItem(i);
+        item->setText(0, sit->isEmpty() ? QDir::rootPath() : *sit);
       }
     }
   }
 
-  connect(dirList, SIGNAL(selectionChanged(Q3ListViewItem*)),
-          this, SLOT(dirsItemChanged(Q3ListViewItem*)));
+  connect(dirList, SIGNAL(itemSelectionChanged()),
+          this, SLOT(dirsItemChanged()));
   connect(addDirButton, SIGNAL(clicked()),
           this, SLOT(dirsAddPressed()));
   connect(deleteDirButton, SIGNAL(clicked()),
           this, SLOT(dirsDeletePressed()));
-  dirList->setSelected(dirList->firstChild(), true);
+  dirList->setCurrentItem(root);
 
-  symbolCount->setText(QString::number(c->_maxSymbolCount));
-  symbolLength->setText(QString::number(c->_maxSymbolLength));
-  precisionEdit->setText(QString::number(c->_percentPrecision));
-  contextEdit->setText(QString::number(c->_context));
+  symbolCount->setValue(c->_maxSymbolCount);
+  symbolLength->setValue(c->_maxSymbolLength);
+  precisionEdit->setValue(c->_percentPrecision);
+  contextEdit->setValue(c->_context);
 }
 
 ConfigDlg::~ConfigDlg()
@@ -334,18 +316,24 @@ void ConfigDlg::fileColorChanged(const QColor & c)
   if (_fileCS) _fileCS->_color = c;
 }
 
-
-void ConfigDlg::dirsItemChanged(Q3ListViewItem* i)
+QTreeWidgetItem *ConfigDlg::getSelectedDirItem()
 {
-  _dirItem = i;
-  deleteDirButton->setEnabled(i->depth() == 1);
-  addDirButton->setEnabled(i->depth() == 0);
+  const QList<QTreeWidgetItem*> selectedItems = dirList->selectedItems();
+  return selectedItems.count() ? selectedItems[0] : NULL;
+}
+
+void ConfigDlg::dirsItemChanged()
+{
+  QTreeWidgetItem *dirItem = getSelectedDirItem();
+  deleteDirButton->setEnabled(dirItem && dirItem->parent() != NULL);
+  addDirButton->setEnabled(dirItem && dirItem->parent() == NULL);
 }
 
 void ConfigDlg::dirsDeletePressed()
 {
-  if (!_dirItem || (_dirItem->depth() == 0)) return;
-  Q3ListViewItem* p = _dirItem->parent();
+  QTreeWidgetItem *dirItem = getSelectedDirItem();
+  if (!dirItem || (dirItem->parent() == 0)) return;
+  QTreeWidgetItem* p = dirItem->parent();
   if (!p) return;
 
   QString objName = p->text(0);
@@ -356,18 +344,18 @@ void ConfigDlg::dirsDeletePressed()
   else
     dirs = &(_config->_objectSourceDirs[objName]);
 
-  dirs->removeAll(_dirItem->text(0));
-  delete _dirItem;
-  _dirItem = 0;
+  dirs->removeAll(dirItem->text(0));
+  delete dirItem;
 
   deleteDirButton->setEnabled(false);
 }
 
 void ConfigDlg::dirsAddPressed()
 {
-  if (!_dirItem || (_dirItem->depth() >0)) return;
+  QTreeWidgetItem *dirItem = getSelectedDirItem();
+  if (!dirItem || (dirItem->parent() != 0)) return;
 
-  QString objName = _dirItem->text(0);
+  QString objName = dirItem->text(0);
 
   QStringList* dirs;
   if (objName == i18n("(always)"))
@@ -382,14 +370,15 @@ void ConfigDlg::dirsAddPressed()
   if (newDir.isEmpty()) return;
 
   // even for '/', we strip the tailing slash
-  if (newDir.endsWith('/'))
+  if (newDir.endsWith(QLatin1Char('/')))
     newDir = newDir.left(newDir.length()-1);
 
   if (dirs->findIndex(newDir)>=0) return;
 
   dirs->append(newDir);
-  if (newDir.isEmpty()) newDir = QString("/");
-  new Q3ListViewItem(_dirItem, newDir);
+  if (newDir.isEmpty()) newDir = QDir::rootPath();
+  QTreeWidgetItem *item = new QTreeWidgetItem(dirItem);
+  item->setText(0, newDir);
 }
 
 #include "configdlg.moc"

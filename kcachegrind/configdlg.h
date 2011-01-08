@@ -58,16 +58,16 @@ protected slots:
   void fileActivated(const QString &);
   void fileCheckChanged(bool);
   void fileColorChanged(const QColor &);
-  void dirsItemChanged(Q3ListViewItem*);
+  void dirsItemChanged();
   void dirsDeletePressed();
   void dirsAddPressed();
 
 private:
+  QTreeWidgetItem *getSelectedDirItem();
   GlobalGUIConfig* _config;
   TraceData* _data;
 
   ConfigColorSetting *_objectCS, *_classCS, *_fileCS;
-  Q3ListViewItem* _dirItem;
 };
 
 #endif

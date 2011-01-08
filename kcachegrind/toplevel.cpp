@@ -30,6 +30,7 @@
 #include <QDockWidget>
 #include <QTimer>
 #include <QLabel>
+#include <QLineEdit>
 #include <QProgressBar>
 #include <QFile>
 #include <QEventLoop>
