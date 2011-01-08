@@ -2272,31 +2272,31 @@ void TopLevel::showStatus(const QString& msg, int progress)
 
 void TopLevel::loadStart(const QString& filename)
 {
-    showStatus(QString("Loading %1").arg(filename), 0);
+    showStatus(i18n("Loading %1").arg(filename), 0);
     Logger::_filename = filename;
 }
 
 void TopLevel::loadFinished(const QString& msg)
 {
-    showStatus(QString::null, 0);
+    showStatus(QString(), 0);
     if (!msg.isEmpty())
-	showMessage(QString("Error loading %1: %2").arg(_filename).arg(msg),
+        showMessage(i18n("Error loading %1: %2").arg(_filename).arg(msg),
 		    2000);
 }
 
 void TopLevel::loadProgress(int progress)
 {
-    showStatus(QString("Loading %1").arg(_filename), progress);
+    showStatus(i18n("Loading %1").arg(_filename), progress);
 }
 
 void TopLevel::loadError(int line, const QString& msg)
 {
-	kError() << "Loading" << _filename.ascii() << ":" << line << ": " << msg.ascii();
+    kError() << "Loading" << _filename << ":" << line << ": " << msg;
 }
 
 void TopLevel::loadWarning(int line, const QString& msg)
 {
-	kWarning() << "Loading" << _filename.ascii() << ":" << line << ": " << msg.ascii();
+    kWarning() << "Loading" << _filename << ":" << line << ": " << msg;
 }
 
 bool TopLevel::openDataFile(const QString& file)
