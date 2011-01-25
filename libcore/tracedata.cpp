@@ -1520,6 +1520,7 @@ TraceFunctionSource::TraceFunctionSource(TraceFunction* function,
 
 TraceFunctionSource::~TraceFunctionSource()
 {
+    delete _lineMap;
     delete _line0;
 }
 
