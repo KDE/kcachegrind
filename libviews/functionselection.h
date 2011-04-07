@@ -58,6 +58,7 @@ public:
 
   QWidget* widget() { return this; }
   QString whatsThis() const;
+  void setData(TraceData*);
 
   void addGroupMenu(QMenu*);
 

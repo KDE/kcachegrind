@@ -172,6 +172,17 @@ QString FunctionSelection::whatsThis() const
 	"costs less than 1% are hidden on default.</p>");
 }
 
+void FunctionSelection::setData(TraceData* d)
+{
+  TraceItemView::setData(d);
+
+  _group = 0;
+  _groupSize.clear();
+  _hc.clear(GlobalConfig::maxListCount());
+  groupList->clear();
+  functionListModel->resetModelData(d, 0, QString(), 0);
+}
+
 void FunctionSelection::searchReturnPressed()
 {
   query(searchEdit->text());

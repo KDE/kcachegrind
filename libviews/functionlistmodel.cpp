@@ -217,13 +217,15 @@ void FunctionListModel::resetModelData(TraceData *data,
     if (!group) {
         _list.clear();
         _groupType = ProfileContext::Function;
-        TraceFunctionMap::iterator i = data->functionMap().begin();
-        while (i != data->functionMap().end()) {
-            _list.append(&(i.value()));
-            ++i;
+        if (data) {
+            TraceFunctionMap::iterator i = data->functionMap().begin();
+            while (i != data->functionMap().end()) {
+                _list.append(&(i.value()));
+                ++i;
+            }
+            foreach(TraceFunction* f, data->functionCycles())
+                _list.append(f);
         }
-        foreach(TraceFunction* f, data->functionCycles())
-            _list.append(f);
     }
     else {
         _groupType = group->type();

@@ -1861,8 +1861,10 @@ void QCGTopLevel::forceTraceReload()
       QTimer::singleShot( 1000, this, SLOT(forceTraceReload()) );
     return;
   }
-  _dumpToggleAction->setChecked(false);
-  reload();
+  if (_dumpToggleAction->isChecked()) {
+      _dumpToggleAction->setChecked(false);
+      reload();
+  }
 }
 
 void QCGTopLevel::forwardAboutToShow()

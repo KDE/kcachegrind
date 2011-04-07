@@ -2041,8 +2041,10 @@ void TopLevel::forceTraceReload()
       QTimer::singleShot( 1000, this, SLOT(forceTraceReload()) );
     return;
   }
-  _taDump->setChecked(false);
-  reload();
+  if (_taDump->isChecked()) {
+      _taDump->setChecked(false);
+      reload();
+  }
 }
 
 void TopLevel::forwardAboutToShow()
