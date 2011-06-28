@@ -93,7 +93,6 @@ public slots:
   // shows the main window before loading to see loading progress
   void loadDelayed(QString, bool addToRecentFiles = true);
 
-  void reload();
   void exportGraph();
   void newWindow();
   void configure(QString page = QString::null);
@@ -125,8 +124,6 @@ public slots:
   void toggleHideTemplates();
   void toggleExpanded();
   void toggleCycles();
-  void forceTrace();
-  void forceTraceReload();
   void recentFilesMenuAboutToShow();
   void recentFilesTriggered(QAction*);
   void sidebarMenuAboutToShow();

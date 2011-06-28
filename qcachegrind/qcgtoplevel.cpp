@@ -339,43 +339,9 @@ void QCGTopLevel::createActions()
     _addAction->setStatusTip(tr("Add profile data to current window"));
     connect(_addAction, SIGNAL(triggered(bool)), SLOT(addTrace()));
 
-    _reloadAction = new QAction(tr("&Reload", "Reload a document"), this);
-    _reloadAction->setStatusTip(tr("Reload profile data including new parts"));
-    connect(_reloadAction, SIGNAL(triggered(bool)), SLOT(reload()));
-
     _exportAction = new QAction(tr("Export Graph"), this);
     _exportAction->setStatusTip(tr("Generate GraphViz file 'callgraph.dot'"));
     connect(_exportAction, SIGNAL(triggered(bool)), SLOT(exportGraph()));
-
-    _dumpToggleAction = new QAction(tr("Callgrind Dump"), this);
-    _dumpToggleAction->setCheckable(true);
-    _dumpToggleAction->setStatusTip(
-	tr("Trigger Callgrind to dump profile data"));
-    hint = tr("<b>Force Dump</b>"
-              "<p>This forces a dump for a Callgrind profile run "
-              "in the current directory. This action is checked while "
-              "KCachegrind looks for the dump. If the dump is "
-              "finished, it automatically reloads the current trace. "
-              "If this is the one from the running Callgrind, the new "
-              "created trace part will be loaded, too.</p>"
-              "<p>Force dump creates a file 'callgrind.cmd', and "
-              "checks every second for its existence. A running "
-              "Callgrind will detect this file, dump a trace part, "
-              "and delete 'callgrind.cmd'. "
-              "The deletion is detected by KCachegrind, "
-              "and it does a Reload. If there is <em>no</em> Callgrind "
-              "running, press 'Force Dump' again to cancel the dump "
-              "request. This deletes 'callgrind.cmd' itself and "
-              "stops polling for a new dump.</p>"
-              "<p>Note: A Callgrind run <em>only</em> detects "
-              "existence of 'callgrind.cmd' when actively running "
-              "a few milliseconds, i.e. "
-              "<em>not</em> sleeping. Tip: For a profiled GUI program, "
-              "you can awake Callgrind e.g. by resizing a window "
-              "of the program.</p>");
-    _dumpToggleAction->setWhatsThis(hint);
-    connect(_dumpToggleAction, SIGNAL(triggered(bool)),
-	    this, SLOT(forceTrace()));
 
     _recentFilesMenuAction = new QAction(tr("Open &Recent"), this);
     _recentFilesMenuAction->setMenu(new QMenu(this));
@@ -578,9 +544,7 @@ void QCGTopLevel::createMenu()
     fileMenu->addAction(_recentFilesMenuAction);
     fileMenu->addAction(_addAction);
     fileMenu->addSeparator();
-    fileMenu->addAction(_reloadAction);
     fileMenu->addAction(_exportAction);
-    fileMenu->addAction(_dumpToggleAction);
     fileMenu->addSeparator();
     fileMenu->addAction(_exitAction);
 
@@ -884,20 +848,6 @@ void QCGTopLevel::loadTraceDelayed()
     _loadTraceDelayed = QString();
 }
 
-
-void QCGTopLevel::reload()
-{
-    QString trace;
-    if (!_data || _data->parts().count()==0)
-	trace = "."; // open first trace found in dir
-    else
-	trace = _data->traceName();
-
-    // this also keeps sure we have the same browsing position...
-    TraceData* d = new TraceData(this);
-    d->load(trace);
-    setData(d);
-}
 
 void QCGTopLevel::exportGraph()
 {
@@ -1829,42 +1779,6 @@ void QCGTopLevel::partsUnhideAllSlot()
   _mainWidget1->hiddenPartsChangedSlot(_hiddenParts);
   _mainWidget2->hiddenPartsChangedSlot(_hiddenParts);
 #endif
-}
-
-void QCGTopLevel::forceTrace()
-{
-//  qDebug("forceTrace");
-
-  // Needs Callgrind now...
-  QFile cmd("callgrind.cmd");
-  if (!cmd.exists()) {
-    cmd.open(QIODevice::WriteOnly);
-    cmd.write("DUMP\n", 5);
-    cmd.close();
-  }
-  if (_dumpToggleAction->isChecked())
-    QTimer::singleShot( 1000, this, SLOT(forceTraceReload()) );
-  else {
-    // cancel request
-    cmd.remove();
-  }
-
-}
-
-void QCGTopLevel::forceTraceReload()
-{
-//  qDebug("forceTraceReload");
-
-  QFile cmd("callgrind.cmd");
-  if (cmd.exists()) {
-    if (_dumpToggleAction->isChecked())
-      QTimer::singleShot( 1000, this, SLOT(forceTraceReload()) );
-    return;
-  }
-  if (_dumpToggleAction->isChecked()) {
-      _dumpToggleAction->setChecked(false);
-      reload();
-  }
 }
 
 void QCGTopLevel::forwardAboutToShow()
