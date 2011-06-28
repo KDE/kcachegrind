@@ -362,22 +362,24 @@ int findBreak(int& breakPos, QString text, QFontMetrics* fm, int maxWidth)
 	if (usedWidth < maxWidth)
 		return usedWidth;
 
-	// now lower breakPos until best position is found.
-	// first by binary search, resulting in a position a little bit too large
+	// binary search for best break position in [bottomPos,breakPos].
+	// We want the result of the binary search to be a bit too large
 	int bottomPos = 0;
-	while(qAbs(maxWidth - usedWidth) > 3 * fm->maxWidth()) {
+	while(1) {
 		int halfPos = (bottomPos + breakPos)/2;
 		int halfWidth = fm->width(text, halfPos);
-		if (halfWidth < maxWidth)
-			bottomPos = halfPos;
-		else {
-			breakPos = halfPos;
-			usedWidth = halfWidth;
+		if (halfWidth < maxWidth) {
+			bottomPos = halfPos+1;
+			continue;
 		}
+		breakPos = halfPos;
+		usedWidth = halfWidth;
+		if (breakPos - bottomPos <3) break;
 	}
 
 	// final position by taking break boundaries into account.
-	// possible break boundaries are changing char categories but not middle of "Aa"
+	// possible break boundaries are changing char categories,
+	// but not middle of "Aa"
 	QChar::Category lastCat, cat;
 	int pos = breakPos;
 	lastCat = text[pos-1].category();
@@ -420,18 +422,19 @@ int findBreakBackwards(int& breakPos, QString text, QFontMetrics* fm, int maxWid
 	if (usedWidth < maxWidth)
 		return usedWidth;
 
-	// now raise breakPos until best position is found.
-	// first by binary search, resulting in a position a little bit too small
+	// binary search for best break position in [breakPos,topPos].
+	// We want the result of the binary search to be a bit too small
 	int topPos = text.length();
-	while(qAbs(maxWidth - usedWidth) > 3 * fm->maxWidth()) {
+	while(1) {
 		int halfPos = (breakPos + topPos)/2;
 		int halfWidth = fm->width(text.mid(halfPos));
-		if (halfWidth < maxWidth) {
-			breakPos = halfPos;
-			usedWidth = halfWidth;
+		if (halfWidth > maxWidth) {
+		    topPos = halfPos-1;
+		    continue;
 		}
-		else
-			topPos = halfPos;
+		breakPos = halfPos;
+		usedWidth = halfWidth;
+		if (topPos - breakPos <3) break;
 	}
 
 	// final position by taking break boundaries into account.
