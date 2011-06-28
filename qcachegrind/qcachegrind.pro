@@ -16,7 +16,8 @@ include(../libviews/libviews.pri)
 new_moc.CONFIG = no_link moc_verify
 new_moc.output  = ${QMAKE_FILE_BASE}.moc
 new_moc.commands = moc ${QMAKE_FILE_NAME} -o ${QMAKE_FILE_OUT}
-new_moc.depend_command = g++ -E -M ${QMAKE_FILE_NAME} | sed "s,^.*: ,,"
+# moc output only depends on file defining the QObject subclass
+new_moc.depend_command = echo ${QMAKE_FILE_NAME}
 new_moc.input = NHEADERS
 QMAKE_EXTRA_COMPILERS = new_moc
 
