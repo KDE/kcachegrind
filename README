@@ -63,6 +63,9 @@ To not build in the source directories, do:
 
 The build includes the command line tool "cgview".
 
+Copy the resulting "qcachegrind" binary from the build directory into
+your $PATH.
+
 
 KCachegrind
 ------------

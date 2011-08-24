@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Exec=qcachegrind %F
+MimeType=application/x-kcachegrind;
+Icon=kcachegrind
+Terminal=false
+Name=QCachegrind
+GenericName=Profiler Frontend
+Comment=Visualization of Performance Profiling Data
+Categories=Qt;Development;
