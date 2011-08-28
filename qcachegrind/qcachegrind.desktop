@@ -9,6 +9,7 @@ Name=QCachegrind
 Name[nl]=QCachegrind
 Name[pt]=QCachegrind
 Name[pt_BR]=QCachegrind
+Name[sv]=Qcachegrind
 Name[uk]=QCachegrind
 Name[x-test]=xxQCachegrindxx
 GenericName=Profiler Frontend
