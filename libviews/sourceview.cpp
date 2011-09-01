@@ -716,12 +716,14 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   TraceLine* currLine;
   SourceItem *si, *si2, *item = 0, *first = 0, *selected = 0;
   QFile file(filename);
+  bool fileEndReached = false;
   if (!file.open(QIODevice::ReadOnly)) return;
   while (1) {
     readBytes=file.readLine(buf, sizeof( buf ));
     if (readBytes<=0) {
       // for nice empty 4 lines after function with EOF
       buf[0] = 0;
+      if (readBytes<0) fileEndReached = true;
     }
 
     if ((readBytes >0) && (buf[readBytes-1] != '\n')) {
@@ -783,7 +785,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
     if ( ((lastCostLineno==0) || (fileLineno > lastCostLineno + context)) &&
 	 ((nextCostLineno==0) || (fileLineno < nextCostLineno - context))) {
-	if (lineIt == lineItEnd) break;
+	if ((lineIt == lineItEnd) || fileEndReached) break;
 
 	if (!skipLineWritten) {
 	    skipLineWritten = true;
