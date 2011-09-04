@@ -6,6 +6,7 @@ MimeType=application/x-kcachegrind;
 Icon=kcachegrind
 Terminal=false
 Name=QCachegrind
+Name[nb]=QCachegrind
 Name[nl]=QCachegrind
 Name[pt]=QCachegrind
 Name[pt_BR]=QCachegrind
