@@ -55,16 +55,25 @@ Requirements:
 
 Compilation (from base directory):
 
-	qmake; make; make install
+	qmake; make
 
 To not build in the source directories, do:
 
-	mkdir build; cd build; qmake ../qcg.pro; make; make install
+	mkdir build; cd build; qmake ../qcg.pro; make
 
 The build includes the command line tool "cgview".
 
 Copy the resulting "qcachegrind" binary from the build directory into
-your $PATH.
+your $PATH. For better desktop integration, it should be enough to
+copy the .desktop file and icons into standard places, such as:
+
+	sudo install -m 755 qcachegrind/qcachegrind /usr/local/bin
+	sudo install -m 644 qcachegrind/qcachegrind.desktop \
+		/usr/local/share/applications/
+	sudo install -m 644 kcachegrind/hi32-app-kcachegrind.png \
+		/usr/local/share/icons/hicolor/32x32/apps/kcachegrind.png
+	sudo install -m 644 kcachegrind/hi48-app-kcachegrind.png \
+		/usr/local/share/icons/hicolor/48x48/apps/kcachegrind.png
 
 
 KCachegrind
@@ -84,7 +93,7 @@ To not build in the source directories, do:
 
 The build also compiles the command line tool "cgview" and "qcachegrind",
 the Qt-only version of KCachegrind. However, these are not installed.
-
+If you want to also install qcachegrind, see instructions above.
 
 
 Usage & Help
