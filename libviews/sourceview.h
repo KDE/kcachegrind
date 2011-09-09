@@ -23,12 +23,12 @@
 #ifndef SOURCEVIEW_H
 #define SOURCEVIEW_H
 
-#include <Qt3Support/q3listview.h>
+#include <QTreeWidget>
 #include "traceitemview.h"
 
 class SourceItem;
 
-class SourceView : public Q3ListView, public TraceItemView
+class SourceView : public QTreeWidget, public TraceItemView
 {
   friend class SourceItem;
 
@@ -36,19 +36,17 @@ class SourceView : public Q3ListView, public TraceItemView
 
 public:
   explicit SourceView(TraceItemView* parentView,
-		      QWidget* parent = 0, const char* name = 0);
+		      QWidget* parent = 0);
 
   QWidget* widget() { return this; }
   QString whatsThis() const;
-
-protected:
   int arrowLevels() { return _arrowLevels; }
-  void paintEmptyArea( QPainter *, const QRect & );
 
-private slots:
-  void context(Q3ListViewItem*, const QPoint &, int);
-  void selectedSlot(Q3ListViewItem *);
-  void activatedSlot(Q3ListViewItem *);
+protected slots:
+  void context(const QPoint &);
+  void selectedSlot(QTreeWidgetItem*, QTreeWidgetItem*);
+  void activatedSlot(QTreeWidgetItem*,int);
+  void headerClicked(int);
 
 private:
   CostItem* canShow(CostItem*);
@@ -57,7 +55,6 @@ private:
   void updateJumpArray(uint,SourceItem*,bool,bool);
   bool searchFile(QString&, TraceFunctionSource*);
   void fillSourceFile(TraceFunctionSource*, int);
-  void updateSourceItems();
 
   bool _inSelectionUpdate;
 

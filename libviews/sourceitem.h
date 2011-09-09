@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2011 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -23,27 +23,29 @@
 #ifndef SOURCEITEM_H
 #define SOURCEITEM_H
 
-#include <q3listview.h>
+#include <QTreeWidget>
+#include <QItemDelegate>
+
 #include "tracedata.h"
 
 class SourceView;
 
-class SourceItem: public Q3ListViewItem
+class SourceItem: public QTreeWidgetItem
 {
 public:
   // for source lines
-  SourceItem(SourceView* sv, Q3ListView* parent, 
+  SourceItem(SourceView* sv, QTreeWidget* parent,
 	     int fileno, unsigned int lineno,
 	     bool inside, const QString& src,
              TraceLine* line = 0);
 
   // for call lines
-  SourceItem(SourceView* sv, Q3ListViewItem* parent, 
+  SourceItem(SourceView* sv, QTreeWidgetItem* parent,
 	     int fileno, unsigned int lineno,
              TraceLine* line, TraceLineCall* lineCall);
 
   // for jump lines
-  SourceItem(SourceView* sv, Q3ListViewItem* parent, 
+  SourceItem(SourceView* sv, QTreeWidgetItem* parent,
 	     int fileno, unsigned int lineno,
              TraceLine* line, TraceLineJump* lineJump);
 
@@ -53,21 +55,16 @@ public:
   TraceLine* line() const { return _line; }
   TraceLineCall* lineCall() const { return _lineCall; }
   TraceLineJump* lineJump() const { return _lineJump; }
+  TraceLineJump* jump(int i) const { return _jump[i]; }
+  int jumpCount() const { return _jump.size(); }
+  bool operator< ( const QTreeWidgetItem & other ) const;
 
-  int compare(Q3ListViewItem * i, int col, bool ascending ) const;
-
-  void paintCell( QPainter *p, const QColorGroup &cg,
-                  int column, int width, int alignment );
-  int width( const QFontMetrics& fm,
-             const Q3ListView* lv, int c ) const;
   void updateGroup();
   void updateCost();
 
   // arrow lines
   void setJumpArray(const QVector<TraceLineJump*>& a);
 
-protected:
-  void paintArrows(QPainter *p, const QColorGroup &cg, int width);
   QVector<TraceLineJump*> _jump;
 
 private:
@@ -81,4 +78,23 @@ private:
   TraceLineCall* _lineCall;
 };
 
-#endif
+
+// Delegate for drawing the arrows column
+
+class SourceItemDelegate : public QItemDelegate
+{
+public:
+    SourceItemDelegate(SourceView *parent);
+    void paint(QPainter *painter, const QStyleOptionViewItem &option,
+                   const QModelIndex & index ) const;
+    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index);
+protected:
+    void paintArrows(QPainter *p,
+                     const QStyleOptionViewItem &option,
+                     const QModelIndex &index) const;
+
+    SourceView* _parent;
+};
+
+
+#endif // SOURCEITEM_H

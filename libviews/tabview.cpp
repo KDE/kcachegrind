@@ -359,12 +359,14 @@ TabView::TabView(TraceItemView* parentView,
   CallView* calleeView = new CallView(false, this);
   CoverageView * allCallerView = new CoverageView(true, this);
   CoverageView * allCalleeView = new CoverageView(false, this);
+  SourceView* sourceView = new SourceView(this);
 
   // Options of visualization views are stored by their view name
   callerView->setObjectName("CallerView");
   calleeView->setObjectName("CalleeView");
   allCallerView->setObjectName("AllCallerView");
   allCalleeView->setObjectName("AllCalleeView");
+  sourceView->setObjectName("SourceView");
 
   // default positions...
   // Keep following order in sync with DEFAULT_xxxTABS defines!
@@ -377,9 +379,7 @@ TabView::TabView(TraceItemView* parentView,
   addTop( addTab( tr("Callee Map"),
 		  new CallMapView(false, this, 0,
 				  "CalleeMapView")));
-  addTop( addTab( tr("Source Code"),
-		  new SourceView(this, 0,
-				 "SourceView")));
+  addTop( addTab( tr("Source Code"), sourceView) );
 
   addBottom( addTab( tr("Parts"),
 		     new PartView(this, 0,

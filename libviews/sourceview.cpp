@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2011 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -28,9 +28,12 @@
 #include <QFileInfo>
 #include <QAction>
 #include <QMenu>
+#include <QScrollBar>
+#include <QHeaderView>
 
 #include "globalconfig.h"
 #include "sourceitem.h"
+
 
 
 //
@@ -39,49 +42,51 @@
 
 
 SourceView::SourceView(TraceItemView* parentView,
-                       QWidget* parent, const char* name)
-  : Q3ListView(parent, name), TraceItemView(parentView)
+                       QWidget* parent)
+  : QTreeWidget(parent), TraceItemView(parentView)
 {
   _inSelectionUpdate = false;
 
   _arrowLevels = 0;
 
-  addColumn( tr( "#" ) );
-  addColumn( tr( "Cost" ) );
-  addColumn( tr( "Cost 2" ) );
-  addColumn( "" );
-  addColumn( tr( "Source (unknown)" ) );
 
+  setColumnCount(5);
+  setRootIsDecorated(false);
   setAllColumnsShowFocus(true);
-  setColumnAlignment(0, Qt::AlignRight);
-  setColumnAlignment(1, Qt::AlignRight);
-  setColumnAlignment(2, Qt::AlignRight);
-  setResizeMode(Q3ListView::LastColumn);
+  setUniformRowHeights(true);
+  // collapsing call/jump lines by double-click is confusing
+  setExpandsOnDoubleClick(false);
 
-  connect(this,
-          SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
-          SLOT(context(Q3ListViewItem*, const QPoint &, int)));
+  QStringList headerLabels;
+  headerLabels << tr( "#" )
+               << tr( "Cost" )
+               << tr( "Cost 2" )
+               << ""
+               <<  tr( "Source (unknown)");
+  setHeaderLabels(headerLabels);
 
-  connect(this,
-          SIGNAL(selectionChanged(Q3ListViewItem*)),
-          SLOT(selectedSlot(Q3ListViewItem*)));
-
-  connect(this,
-          SIGNAL(doubleClicked(Q3ListViewItem*)),
-          SLOT(activatedSlot(Q3ListViewItem*)));
-
-  connect(this,
-          SIGNAL(returnPressed(Q3ListViewItem*)),
-          SLOT(activatedSlot(Q3ListViewItem*)));
-
+  // sorting will be enabled after refresh()
+  sortByColumn(0, Qt::AscendingOrder);
+  header()->setSortIndicatorShown(false);
+  this->setItemDelegate(new SourceItemDelegate(this));
   this->setWhatsThis( whatsThis());
-}
 
-void SourceView::paintEmptyArea( QPainter * p, const QRect & r)
-{
-  Q3ListView::paintEmptyArea(p, r);
-}
+  connect( this,
+           SIGNAL( currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+           SLOT( selectedSlot(QTreeWidgetItem*,QTreeWidgetItem*) ) );
 
+  setContextMenuPolicy(Qt::CustomContextMenu);
+  connect( this,
+           SIGNAL(customContextMenuRequested(const QPoint &) ),
+           SLOT(context(const QPoint &)));
+
+  connect(this,
+          SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
+          SLOT(activatedSlot(QTreeWidgetItem*,int)));
+
+  connect(header(), SIGNAL(sectionClicked(int)),
+          this, SLOT(headerClicked(int)));
+}
 
 QString SourceView::whatsThis() const
 {
@@ -98,8 +103,10 @@ QString SourceView::whatsThis() const
 		 "make the destination function current.</p>");
 }
 
-void SourceView::context(Q3ListViewItem* i, const QPoint & p, int c)
+void SourceView::context(const QPoint & p)
 {
+  int c = columnAt(p.x());
+  QTreeWidgetItem* i = itemAt(p);
   QMenu popup;
 
   TraceLineCall* lc = i ? ((SourceItem*) i)->lineCall() : 0;
@@ -126,15 +133,15 @@ void SourceView::context(Q3ListViewItem* i, const QPoint & p, int c)
   }
   addGoMenu(&popup);
 
-  QAction* a = popup.exec(p);
+  QAction* a = popup.exec(mapToGlobal(p + QPoint(0,header()->height())));
   if (a == activateFunctionAction)
-      activated(f);
+      TraceItemView::activated(f);
   else if (a == activateLineAction)
-      activated(line);
+      TraceItemView::activated(line);
 }
 
 
-void SourceView::selectedSlot(Q3ListViewItem * i)
+void SourceView::selectedSlot(QTreeWidgetItem *i, QTreeWidgetItem *)
 {
   if (!i) return;
   // programatically selected items are not signalled
@@ -166,23 +173,24 @@ void SourceView::selectedSlot(Q3ListViewItem * i)
   }
 }
 
-void SourceView::activatedSlot(Q3ListViewItem * i)
+void SourceView::activatedSlot(QTreeWidgetItem* i, int)
 {
   if (!i) return;
+
   TraceLineCall* lc = ((SourceItem*) i)->lineCall();
   TraceLineJump* lj = ((SourceItem*) i)->lineJump();
 
   if (!lc && !lj) {
       TraceLine* l = ((SourceItem*) i)->line();
-      if (l) activated(l);
+      if (l) TraceItemView::activated(l);
       return;
   }
 
   TraceFunction* f = lc ? lc->call()->called() : 0;
-  if (f) activated(f);
+  if (f) TraceItemView::activated(f);
   else {
     TraceLine* line = lj ? lj->lineTo() : 0;
-    if (line) activated(line);
+    if (line) TraceItemView::activated(line);
   }
 }
 
@@ -225,33 +233,38 @@ void SourceView::doUpdate(int changeType, bool)
 
       TraceLine* sLine = 0;
       if (_selectedItem->type() == ProfileContext::Line)
-	  sLine = (TraceLine*) _selectedItem;
+          sLine = (TraceLine*) _selectedItem;
       if (_selectedItem->type() == ProfileContext::Instr)
 	  sLine = ((TraceInstr*)_selectedItem)->line();
+      if (!sLine)
+          return;
 
-      SourceItem* si = (SourceItem*)Q3ListView::selectedItem();
+      QList<QTreeWidgetItem*> items = selectedItems();
+      SourceItem* si = (items.count() > 0) ? (SourceItem*)items[0] : 0;
       if (si) {
 	  if (si->line() == sLine) return;
 	  if (si->lineCall() &&
 	      (si->lineCall()->call()->called() == _selectedItem)) return;
       }
 
-      Q3ListViewItem *item, *item2;
-      for (item = firstChild();item;item = item->nextSibling()) {
+      QTreeWidgetItem *item, *item2;
+      for (int i=0; i<topLevelItemCount(); i++) {
+          item = topLevelItem(i);
 	  si = (SourceItem*)item;
 	  if (si->line() == sLine) {
-	      ensureItemVisible(item);
+              scrollToItem(item);
               _inSelectionUpdate = true;
 	      setCurrentItem(item);
               _inSelectionUpdate = false;
 	      break;
 	  }
-	  item2 = item->firstChild();
-	  for (;item2;item2 = item2->nextSibling()) {
+	  item2 = 0;
+          for (int j=0; i<item->childCount(); j++) {
+              item2 = item->child(j);
 	      si = (SourceItem*)item2;
 	      if (!si->lineCall()) continue;
 	      if (si->lineCall()->call()->called() == _selectedItem) {
-		  ensureItemVisible(item2);
+                  scrollToItem(item2);
                   _inSelectionUpdate = true;
 		  setCurrentItem(item2);
                   _inSelectionUpdate = false;
@@ -264,11 +277,19 @@ void SourceView::doUpdate(int changeType, bool)
   }
 
   if (changeType == groupTypeChanged) {
-    Q3ListViewItem *item, *item2;
-    for (item = firstChild();item;item = item->nextSibling())
-      for (item2 = item->firstChild();item2;item2 = item2->nextSibling())
-        ((SourceItem*)item2)->updateGroup();
+    QTreeWidgetItem *item, *item2;
+    for (int i=0; i<topLevelItemCount(); i++) {
+        item = topLevelItem(i);
+        for (int j=0; i<item->childCount(); i++) {
+            item2 = item->child(j);
+            ((SourceItem*)item2)->updateGroup();
+        }
+    }
   }
+
+  // On eventTypeChanged, we can not just change the costs shown in
+  // already existing items, as costs of 0 should make the line to not
+  // be shown at all. So we do a full refresh.
 
   refresh();
 }
@@ -281,17 +302,15 @@ void SourceView::refresh()
   setColumnWidth(1, 50);
   setColumnWidth(2, _eventType2 ? 50:0);
   setColumnWidth(3, 0); // arrows, defaults to invisible
-  setSorting(0); // always reset to line number sort
   if (_eventType)
-    setColumnText(1, _eventType->name());
+      headerItem()->setText(1, _eventType->name());
   if (_eventType2)
-    setColumnText(2, _eventType2->name());
+      headerItem()->setText(2, _eventType2->name());
 
   _arrowLevels = 0;
-
   if (!_data || !_activeItem) {
-    setColumnText(4, tr("(No Source)"));
-    return;
+      headerItem()->setText(4, tr("(No Source)"));
+      return;
   }
 
   ProfileContext::Type t = _activeItem->type();
@@ -307,9 +326,6 @@ void SourceView::refresh()
   }
 
   if (!f) return;
-
-  // Allow resizing of column 2
-  setColumnWidthMode(2, Q3ListView::Maximum);
 
   TraceFunctionSource* mainSF = f->sourceFile();
 
@@ -332,7 +348,7 @@ void SourceView::refresh()
   }
 
   if (!_eventType2) {
-    setColumnWidthMode(2, Q3ListView::Manual);
+      header()->setResizeMode(2, QHeaderView::Interactive);
     setColumnWidth(2, 0);
   }
   // reset to the original position - this is useful when the view is refreshed just because we change between relative/absolute
@@ -629,10 +645,10 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   }
 
   // do it here, because the source directory could have been set before
-  if (childCount()==0) {
-    setColumnText(4, validSourceFile ?
-                  tr("Source ('%1')").arg(filename) :
-                  tr("Source (unknown)"));
+  if (topLevelItemCount()==0) {
+      headerItem()->setText(4, validSourceFile ?
+                                tr("Source ('%1')").arg(filename) :
+                                tr("Source (unknown)"));
   }
   else {
     new SourceItem(this, this, fileno, 0, true,
@@ -671,7 +687,6 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     }
     return;
   }
-
 
   // initialisation for arrow drawing
   // create sorted list of jumps (for jump arrows)
@@ -713,6 +728,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   int fileLineno = 0;
   SubCost most = 0;
 
+  QList<QTreeWidgetItem*> items;
   TraceLine* currLine;
   SourceItem *si, *si2, *item = 0, *first = 0, *selected = 0;
   QFile file(filename);
@@ -798,9 +814,13 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     else
 	skipLineWritten = false;
 
-    si = new SourceItem(this, this,
-			fileno, fileLineno, inside, QString(buf),
+    QString s = QString(buf);
+    if(s.size() > 0 && s.at(s.length()-1) == '\r')
+        s = s.left(s.length()-1);
+    si = new SourceItem(this, 0,
+                        fileno, fileLineno, inside, s,
                         currLine);
+    items.append(si);
 
     if (!currLine) continue;
 
@@ -812,7 +832,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
       most = currLine->subCost(_eventType);
     }
 
-    si->setOpen(true);
+    si->setExpanded(true);
     foreach(TraceLineCall* lc,  currLine->lineCalls()) {
 	if ((lc->subCost(_eventType)==0) &&
 	    (lc->subCost(_eventType2)==0)) continue;
@@ -835,71 +855,60 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     }
   }
 
+  file.close();
+
+  setSortingEnabled(false);
+  addTopLevelItems(items);
+  this->expandAll();
+  setSortingEnabled(true);
+  // always reset to line number sort
+  sortByColumn(0, Qt::AscendingOrder);
+  header()->setSortIndicatorShown(false);
+  // Allow resizing of column 2
+  header()->setResizeMode(2, QHeaderView::ResizeToContents);
+
   if (selected) item = selected;
   if (item) first = item;
   if (first) {
-      ensureItemVisible(first);
+      scrollToItem(first);
       _inSelectionUpdate = true;
       setCurrentItem(first);
       _inSelectionUpdate = false;
   }
 
-  file.close();
-
   // for arrows: go down the list according to list sorting
-  sort();
-  Q3ListViewItem *item1, *item2;
-  for (item1=firstChild();item1;item1 = item1->nextSibling()) {
+  QTreeWidgetItem *item1, *item2;
+  for (int i=0; i<topLevelItemCount(); i++) {
+      item1 = topLevelItem(i);
       si = (SourceItem*)item1;
       updateJumpArray(si->lineno(), si, true, false);
 
-      for (item2=item1->firstChild();item2;item2 = item2->nextSibling()) {
-	  si2 = (SourceItem*)item2;
-	  if (si2->lineJump())
-	      updateJumpArray(si->lineno(), si2, false, true);
-	  else
-	      si2->setJumpArray(_jump);
+      for (int j=0; j<item1->childCount(); j++) {
+          item2 = item1->child(j);
+          si2 = (SourceItem*)item2;
+          if (si2->lineJump())
+              updateJumpArray(si->lineno(), si2, false, true);
+          else
+              si2->setJumpArray(_jump);
       }
   }
 
   if (arrowLevels())
-      setColumnWidth(3, 10 + 6*arrowLevels() + itemMargin() * 2);
+      //fix this: setColumnWidth(3, 10 + 6*arrowLevels() + itemMargin() * 2);
+      setColumnWidth(3, 10 + 6*arrowLevels() + 2);
   else
       setColumnWidth(3, 0);
 }
 
 
-void SourceView::updateSourceItems()
+void SourceView::headerClicked(int col)
 {
-    setColumnWidth(1, 50);
-    setColumnWidth(2, _eventType2 ? 50:0);
-    // Allow resizing of column 2
-    setColumnWidthMode(2, Q3ListView::Maximum);
-
-    if (_eventType)
-      setColumnText(1, _eventType->name());
-    if (_eventType2)
-      setColumnText(2, _eventType2->name());
-
-    SourceItem* si;
-    Q3ListViewItem* item  = firstChild();
-    for (;item;item = item->nextSibling()) {
-	si = (SourceItem*)item;
-	TraceLine* l = si->line();
-	if (!l) continue;
-
-	si->updateCost();
-
-	Q3ListViewItem *next, *i  = si->firstChild();
-	for (;i;i = next) {
-	    next = i->nextSibling();
-	    ((SourceItem*)i)->updateCost();
-	}
+    if (col == 0) {
+        sortByColumn(col, Qt::AscendingOrder);
     }
-
-    if (!_eventType2) {
-      setColumnWidthMode(2, Q3ListView::Manual);
-      setColumnWidth(2, 0);
+    //All others but Source Text column Descending
+    else if (col !=4) {
+        sortByColumn(col, Qt::DescendingOrder);
     }
 }
 

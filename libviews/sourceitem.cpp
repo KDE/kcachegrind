@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2011 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -33,14 +33,16 @@
 #include "sourceview.h"
 
 
+//
 // SourceItem
+//
 
 // for source lines
-SourceItem::SourceItem(SourceView* sv, Q3ListView* parent,
+SourceItem::SourceItem(SourceView* sv, QTreeWidget* parent,
 		       int fileno, unsigned int lineno,
                        bool inside, const QString& src,
                        TraceLine* line)
-    : Q3ListViewItem(parent)
+    : QTreeWidgetItem(parent)
 {
   _view = sv;
   _lineno = lineno;
@@ -49,6 +51,10 @@ SourceItem::SourceItem(SourceView* sv, Q3ListView* parent,
   _line = line;
   _lineCall = 0;
   _lineJump = 0;
+
+  setTextAlignment(0, Qt::AlignRight);
+  setTextAlignment(1, Qt::AlignRight);
+  setTextAlignment(2, Qt::AlignRight);
 
   if (src == "...")
       setText(0, src);
@@ -63,10 +69,10 @@ SourceItem::SourceItem(SourceView* sv, Q3ListView* parent,
 }
 
 // for call lines
-SourceItem::SourceItem(SourceView* sv, Q3ListViewItem* parent,
+SourceItem::SourceItem(SourceView* sv, QTreeWidgetItem* parent,
 		       int fileno, unsigned int lineno,
                        TraceLine* line, TraceLineCall* lineCall)
-    : Q3ListViewItem(parent)
+    : QTreeWidgetItem(parent)
 {
   _view = sv;
   _lineno = lineno;
@@ -75,6 +81,10 @@ SourceItem::SourceItem(SourceView* sv, Q3ListViewItem* parent,
   _line = line;
   _lineCall = lineCall;
   _lineJump = 0;
+
+  setTextAlignment(0, Qt::AlignRight);
+  setTextAlignment(1, Qt::AlignRight);
+  setTextAlignment(2, Qt::AlignRight);
 
   //qDebug("SourceItem: (file %d, line %d) Linecall to %s",
   //       fileno, lineno, _lineCall->call()->called()->prettyName().ascii());
@@ -98,10 +108,10 @@ SourceItem::SourceItem(SourceView* sv, Q3ListViewItem* parent,
 }
 
 // for jump lines
-SourceItem::SourceItem(SourceView* sv, Q3ListViewItem* parent,
+SourceItem::SourceItem(SourceView* sv, QTreeWidgetItem* parent,
 		       int fileno, unsigned int lineno,
                        TraceLine* line, TraceLineJump* lineJump)
-    : Q3ListViewItem(parent)
+    : QTreeWidgetItem(parent)
 {
   _view = sv;
   _lineno = lineno;
@@ -110,6 +120,10 @@ SourceItem::SourceItem(SourceView* sv, Q3ListViewItem* parent,
   _line = line;
   _lineCall = 0;
   _lineJump = lineJump;
+
+  setTextAlignment(0, Qt::AlignRight);
+  setTextAlignment(1, Qt::AlignRight);
+  setTextAlignment(2, Qt::AlignRight);
 
   //qDebug("SourceItem: (file %d, line %d) Linecall to %s",
   //       fileno, lineno, _lineCall->call()->called()->prettyName().ascii());
@@ -141,7 +155,7 @@ void SourceItem::updateGroup()
 
   TraceFunction* f = _lineCall->call()->called();
   QColor c = GlobalGUIConfig::functionColor(_view->groupType(), f);
-  setPixmap(4, colorPixmap(10, 10, c));
+  setIcon(4, colorPixmap(10, 10, c));
 }
 
 void SourceItem::updateCost()
@@ -171,9 +185,9 @@ void SourceItem::updateCost()
       str = QObject::tr("(cycle)");
 
     setText(1, str);
-    setPixmap(1, p);
+    setIcon(1, p);
     setText(2, str);
-    setPixmap(2, p);
+    setIcon(2, p);
     return;
   }
 
@@ -187,7 +201,7 @@ void SourceItem::updateCost()
   _pure = ct ? lineCost->subCost(ct) : SubCost(0);
   if (_pure == 0) {
     setText(1, QString());
-    setPixmap(1, QPixmap());
+    setIcon(1, QPixmap());
   }
   else {
     double total = totalCost->subCost(ct);
@@ -199,14 +213,14 @@ void SourceItem::updateCost()
     else
       setText(1, _pure.pretty());
 
-    setPixmap(1, costPixmap(ct, lineCost, total, false));
+    setIcon(1, costPixmap(ct, lineCost, total, false));
   }
 
   EventType* ct2 = _view->eventType2();
   _pure2 = ct2 ? lineCost->subCost(ct2) : SubCost(0);
   if (_pure2 == 0) {
     setText(2, QString());
-    setPixmap(2, QPixmap());
+    setIcon(2, QPixmap());
   }
   else {
     double total = totalCost->subCost(ct2);
@@ -218,91 +232,57 @@ void SourceItem::updateCost()
     else
       setText(2, _pure2.pretty());
 
-    setPixmap(2, costPixmap(ct2, lineCost, total, false));
+    setIcon(2, costPixmap(ct2, lineCost, total, false));
   }
 }
 
 
-int SourceItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
+bool SourceItem::operator < ( const QTreeWidgetItem & other ) const
 {
   const SourceItem* si1 = this;
-  const SourceItem* si2 = (SourceItem*) i;
-
-  // we always want descending order
-  if (((col>0) && ascending) ||
-      ((col==0) && !ascending) ) {
-    si1 = si2;
-    si2 = this;
-  }
+  const SourceItem* si2 = (SourceItem*) &other;
+  int col = treeWidget()->sortColumn();
 
   if (col==1) {
-    if (si1->_pure < si2->_pure) return -1;
-    if (si1->_pure > si2->_pure) return 1;
-    return 0;
+    return (si1->_pure < si2->_pure);
   }
   if (col==2) {
-    if (si1->_pure2 < si2->_pure2) return -1;
-    if (si1->_pure2 > si2->_pure2) return 1;
-    return 0;
+    return (si1->_pure2 < si2->_pure2);
   }
   if (col==0) {
     // Sort file numbers
-    if (si1->_fileno < si2->_fileno) return -1;
-    if (si1->_fileno > si2->_fileno) return 1;
+    if (si1->_fileno < si2->_fileno) return true;
+    if (si1->_fileno > si2->_fileno) return false;
 
     // Sort line numbers
-    if (si1->_lineno < si2->_lineno) return -1;
-    if (si1->_lineno > si2->_lineno) return 1;
+    if (si1->_lineno < si2->_lineno) return true;
+    if (si1->_lineno > si2->_lineno) return false;
 
     // Same line: code gets above calls/jumps
-    if (!si1->_lineCall && !si1->_lineJump) return -1;
-    if (!si2->_lineCall && !si2->_lineJump) return 1;
+    if (!si1->_lineCall && !si1->_lineJump) return true;
+    if (!si2->_lineCall && !si2->_lineJump) return false;
 
     // calls above jumps
-    if (si1->_lineCall && !si2->_lineCall) return -1;
-    if (si2->_lineCall && !si1->_lineCall) return 1;
+    if (si1->_lineCall && !si2->_lineCall) return true;
+    if (si2->_lineCall && !si1->_lineCall) return false;
 
     if (si1->_lineCall && si2->_lineCall) {
 	// Two calls: desending sort according costs
-	if (si1->_pure < si2->_pure) return 1;
-	if (si1->_pure > si2->_pure) return -1;
+        if (si1->_pure < si2->_pure) return true;
+        if (si1->_pure > si2->_pure) return false;
 
 	// Two calls: sort according function names
 	TraceFunction* f1 = si1->_lineCall->call()->called();
 	TraceFunction* f2 = si2->_lineCall->call()->called();
-	if (f1->prettyName() > f2->prettyName()) return 1;
-	return -1;
+        if (f1->prettyName() > f2->prettyName()) return false;
+        return true;
     }
 
     // Two jumps: descending sort according target line
-    if (si1->_lineJump->lineTo()->lineno() <
-	si2->_lineJump->lineTo()->lineno())
-	return -1;
-    if (si1->_lineJump->lineTo()->lineno() >
-	si2->_lineJump->lineTo()->lineno())
-	return 1;
-    return 0;
+    return (si1->_lineJump->lineTo()->lineno() <
+        si2->_lineJump->lineTo()->lineno());
   }
-  return Q3ListViewItem::compare(i, col, ascending);
-}
-
-void SourceItem::paintCell( QPainter *p, const QColorGroup &cg,
-                            int column, int width, int alignment )
-{
-  QColorGroup _cg( cg );
-
-  QColor color;
-  if ( !_inside || ((column==1) || (column==2)))
-    color = cg.color( QPalette::Button );
-  else if ((_lineCall || _lineJump) && column>2)
-    color = cg.color( QPalette::Midlight );
-  if (color.isValid())
-    _cg.setColor( listView()->viewport()->backgroundRole(), color);
-
-  if (column == 3)
-      paintArrows(p, _cg, width);
-  else
-      Q3ListViewItem::paintCell( p, _cg, column, width, alignment );
+  return QTreeWidgetItem::operator <(other);
 }
 
 void SourceItem::setJumpArray(const QVector<TraceLineJump*>& a)
@@ -310,140 +290,180 @@ void SourceItem::setJumpArray(const QVector<TraceLineJump*>& a)
     _jump = a;
 }
 
-void SourceItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
+
+
+//
+// SourceItemDelegate
+//
+
+SourceItemDelegate::SourceItemDelegate(SourceView *parent)
 {
-  Q3ListView *lv = listView();
-  if ( !lv ) return;
-  SourceView* sv = (SourceView*) lv;
-
-  QPalette pal = cg;
-  const QPalette::ColorRole crole = lv->viewport()->backgroundRole();
-  if (pal.brush(crole) != lv->palette().brush(crole))
-    p->fillRect(0, 0, width, height(), pal.brush(crole));
-  else
-    sv->paintEmptyArea( p, QRect( 0, 0, width, height() ) );
-
-  if ( isSelected() && lv->allColumnsShowFocus() )
-    p->fillRect( 0, 0, width, height(), cg.brush( QPalette::Highlight ) );
-
-  int marg = lv->itemMargin();
-  int yy = height()/2, y1, y2;
-  QColor c;
-
-  int start = -1, end = -1;
-
-  // draw line borders, detect start/stop of a line
-  for(int i=0;i< (int)_jump.size();i++) {
-      if (_jump[i] == 0) continue;
-
-      y1 = 0;
-      y2 = height();
-      if (_lineJump &&
-	  (_lineJump->lineTo() == _jump[i]->lineTo()) &&
-	  (_jump[i]->lineFrom()->lineno() == _lineno)) {
-
-	  if (start<0) start = i;
-	  if (_lineJump == _jump[i]) {
-	      if (_jump[i]->lineTo()->lineno() <= _lineno)
-		  y2 = yy;
-	      else
-		  y1 = yy;
-	  }
-      }
-      else if (!_lineJump && !_lineCall &&
-	       (_jump[i]->lineTo()->lineno() == _lineno)) {
-	  if (end<0) end = i;
-	  if (_jump[i]->lineFrom()->lineno() < _lineno)
-	      y2 = yy;
-	  else
-	      y1 = yy;
-      }
-
-      c = _jump[i]->isCondJump() ? Qt::red : Qt::blue;
-      p->fillRect( marg + 6*i, y1, 4, y2, c);
-      p->setPen(c.light());
-      p->drawLine( marg + 6*i, y1, marg + 6*i, y2);
-      p->setPen(c.dark());
-      p->drawLine( marg + 6*i +3, y1, marg + 6*i +3, y2);
-  }
-
-  // draw start/stop horizontal line
-  int x, y = yy-2, w, h = 4;
-  if (start >= 0) {
-      c = _jump[start]->isCondJump() ? Qt::red : Qt::blue;
-      x = marg + 6*start;
-      w = 6*(sv->arrowLevels() - start) + 10;
-      p->fillRect( x, y, w, h, c);
-      p->setPen(c.light());
-      p->drawLine(x, y, x+w-1, y);
-      p->drawLine(x, y, x, y+h-1);
-      p->setPen(c.dark());
-      p->drawLine(x+w-1, y, x+w-1, y+h-1);
-      p->drawLine(x+1, y+h-1, x+w-1, y+h-1);
-  }
-  if (end >= 0) {
-      c = _jump[end]->isCondJump() ? Qt::red : Qt::blue;
-      x = marg + 6*end;
-      w = 6*(sv->arrowLevels() - end) + 10;
-
-      QPolygon a;
-      a.putPoints(0, 8, x,y+h,
-		  x,y, x+w-8,y, x+w-8,y-2,
-		  x+w,yy,
-		  x+w-8,y+h+2, x+w-8,y+h,
-		  x,y+h);
-      p->setBrush(c);
-      p->drawConvexPolygon(a);
-
-      p->setPen(c.light());
-      p->drawPolyline(a.constData(), 5);
-      p->setPen(c.dark());
-      p->drawPolyline(a.constData() + 4, 2);
-      p->setPen(c.light());
-      p->drawPolyline(a.constData() + 5, 2);
-      p->setPen(c.dark());
-      p->drawPolyline(a.constData() + 6, 2);
-  }
-
-  // draw inner vertical line for start/stop
-  // this overwrites borders of horizontal line
-  for(int i=0;i< (int)_jump.size();i++) {
-      if (_jump[i] == 0) continue;
-
-      c = _jump[i]->isCondJump() ? Qt::red : Qt::blue;
-
-      if (_jump[i]->lineFrom()->lineno() == _lineno) {
-	  bool drawUp = true;
-	  if (_jump[i]->lineTo()->lineno() == _lineno)
-	      if (start<0) drawUp = false;
-	  if (_jump[i]->lineTo()->lineno() > _lineno) drawUp = false;
-	  if (drawUp)
-	      p->fillRect( marg + 6*i +1, 0, 2, yy, c);
-	  else
-	      p->fillRect( marg + 6*i +1, yy, 2, height()-yy, c);
-      }
-      else if (_jump[i]->lineTo()->lineno() == _lineno) {
-	  if (end<0) end = i;
-	  if (_jump[i]->lineFrom()->lineno() < _lineno)
-	      p->fillRect( marg + 6*i +1, 0, 2, yy, c);
-	  else
-	      p->fillRect( marg + 6*i +1, yy, 2, height()-yy, c);
-      }
-  }
-
+    _parent = parent;
 }
 
-int SourceItem::width( const QFontMetrics& fm,
-		       const Q3ListView* lv, int c ) const
+QSize SourceItemDelegate::sizeHint(const QStyleOptionViewItem &option,
+				   const QModelIndex &index)
 {
-  if (c != 3) return Q3ListViewItem::width(fm, lv, c);
+    QSize sz = QItemDelegate::sizeHint(option, index);
 
-  SourceView* sv = (SourceView*) lv;
-  int levels = sv->arrowLevels();
+    int c = index.column();
+    if (c != 3) return sz;
 
-  if (levels == 0) return 0;
+    SourceView* sv = (SourceView*) _parent;
+    int levels = sv->arrowLevels();
 
-  // 10 pixels for the arrow
-  return 10 + 6*levels + lv->itemMargin() * 2;
+    if (levels == 0)
+      return QSize(0, sz.height());
+
+    // 10 pixels for the arrow, 1 pixel margin left and right
+    return QSize(10 + 6*levels + 2, sz.height());
 }
 
+void SourceItemDelegate::paint(QPainter *painter,
+			       const QStyleOptionViewItem &option,
+			       const QModelIndex &index) const
+{
+    int column = index.column();
+    SourceItem* item = static_cast<SourceItem*>(index.internalPointer());
+
+    QColor color;
+    if ( !item->inside() || ((column==1) || (column==2)))
+      color = option.palette.color( QPalette::Button );
+    else if ((item->lineCall() || item->lineJump()) && column>2)
+      color = option.palette.color( QPalette::Midlight );
+    if (color.isValid())
+        _parent->model()->setData(index, color, Qt::BackgroundRole);
+
+    if(column==3)
+        paintArrows(painter, option, index);
+    else
+        QItemDelegate::paint(painter, option, index);
+}
+
+void SourceItemDelegate::paintArrows(QPainter *p,
+				     const QStyleOptionViewItem &option,
+				     const QModelIndex &index) const
+{
+    QTreeWidget *lv = _parent;
+    if ( !lv ) return;
+    SourceView* sv = (SourceView*) lv;
+    SourceItem* item = static_cast<SourceItem*>(index.internalPointer());
+    const QRect& rect = option.rect;
+    int height = rect.height();
+
+    p->save();
+    drawBackground(p, option, index);
+    p->translate(rect.topLeft());
+
+    int marg = 1;
+    int yy = height/2, y1, y2;
+    QColor c;
+
+    int start = -1, end = -1;
+
+    TraceLineJump* lineJump = item->lineJump();
+    uint lineno = item->lineno();
+    TraceLineCall* lineCall = item->lineCall();
+
+    // draw line borders, detect start/stop of a line
+    for(int i=0; i< item->jumpCount(); i++) {
+        TraceLineJump* jump = item->jump(i);
+        if (jump == 0) continue;
+
+        y1 = 0;
+        y2 = height;
+        if (lineJump &&
+            (lineJump->lineTo() == jump->lineTo()) &&
+            (jump->lineFrom()->lineno() == lineno)) {
+
+            if (start<0) start = i;
+            if (lineJump == jump) {
+                if (jump->lineTo()->lineno() <= lineno)
+                    y2 = yy;
+                else
+                    y1 = yy;
+            }
+        }
+        else if (!lineJump && !lineCall &&
+                 (jump->lineTo()->lineno() == lineno)) {
+            if (end<0) end = i;
+            if (jump->lineFrom()->lineno() < lineno)
+                y2 = yy;
+            else
+                y1 = yy;
+        }
+
+        c = jump->isCondJump() ? Qt::red : Qt::blue;
+        p->fillRect( marg + 6*i, y1, 4, y2, c);
+        p->setPen(c.light());
+        p->drawLine( marg + 6*i, y1, marg + 6*i, y2);
+        p->setPen(c.dark());
+        p->drawLine( marg + 6*i +3, y1, marg + 6*i +3, y2);
+    }
+
+    // draw start/stop horizontal line
+    int x, y = yy-2, w, h = 4;
+    if (start >= 0) {
+        c = item->jump(start)->isCondJump() ? Qt::red : Qt::blue;
+        x = marg + 6*start;
+        w = 6*(sv->arrowLevels() - start) + 10;
+        p->fillRect( x, y, w, h, c);
+        p->setPen(c.light());
+        p->drawLine(x, y, x+w-1, y);
+        p->drawLine(x, y, x, y+h-1);
+        p->setPen(c.dark());
+        p->drawLine(x+w-1, y, x+w-1, y+h-1);
+        p->drawLine(x+1, y+h-1, x+w-1, y+h-1);
+    }
+    if (end >= 0) {
+        c = item->jump(end)->isCondJump() ? Qt::red : Qt::blue;
+        x = marg + 6*end;
+        w = 6*(sv->arrowLevels() - end) + 10;
+
+        QPolygon a;
+        a.putPoints(0, 8, x,y+h,
+                    x,y, x+w-8,y, x+w-8,y-2,
+                    x+w,yy,
+                    x+w-8,y+h+2, x+w-8,y+h,
+                    x,y+h);
+        p->setBrush(c);
+        p->drawConvexPolygon(a);
+
+        p->setPen(c.light());
+        p->drawPolyline(a.constData(), 5);
+        p->setPen(c.dark());
+        p->drawPolyline(a.constData() + 4, 2);
+        p->setPen(c.light());
+        p->drawPolyline(a.constData() + 5, 2);
+        p->setPen(c.dark());
+        p->drawPolyline(a.constData() + 6, 2);
+    }
+
+    // draw inner vertical line for start/stop
+    // this overwrites borders of horizontal line
+    for(int i=0;i< item->jumpCount();i++) {
+        TraceLineJump* jump = item->jump(i);
+        if (jump == 0) continue;
+
+        c = jump->isCondJump() ? Qt::red : Qt::blue;
+
+        if (jump->lineFrom()->lineno() == lineno) {
+            bool drawUp = true;
+            if (jump->lineTo()->lineno() == lineno)
+                if (start<0) drawUp = false;
+            if (jump->lineTo()->lineno() > lineno) drawUp = false;
+            if (drawUp)
+                p->fillRect( marg + 6*i +1, 0, 2, yy, c);
+            else
+                p->fillRect( marg + 6*i +1, yy, 2, height-yy, c);
+        }
+        else if (jump->lineTo()->lineno() == lineno) {
+            if (end<0) end = i;
+            if (jump->lineFrom()->lineno() < lineno)
+                p->fillRect( marg + 6*i +1, 0, 2, yy, c);
+            else
+                p->fillRect( marg + 6*i +1, yy, 2, height-yy, c);
+        }
+    }
+    p->restore();
+}
