@@ -349,7 +349,7 @@ void SourceView::refresh()
 
   if (!_eventType2) {
       header()->setResizeMode(2, QHeaderView::Interactive);
-    setColumnWidth(2, 0);
+      setColumnWidth(2, 0);
   }
   // reset to the original position - this is useful when the view is refreshed just because we change between relative/absolute
   verticalScrollBar()->setValue(originalPosition);
@@ -857,6 +857,10 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
   file.close();
 
+  // Resize column 1/2 to contents
+  header()->setResizeMode(1, QHeaderView::ResizeToContents);
+  header()->setResizeMode(2, QHeaderView::ResizeToContents);
+
   setSortingEnabled(false);
   addTopLevelItems(items);
   this->expandAll();
@@ -864,8 +868,10 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   // always reset to line number sort
   sortByColumn(0, Qt::AscendingOrder);
   header()->setSortIndicatorShown(false);
-  // Allow resizing of column 2
-  header()->setResizeMode(2, QHeaderView::ResizeToContents);
+
+  // Reallow interactive column size change after resizing to content
+  header()->setResizeMode(1, QHeaderView::Interactive);
+  header()->setResizeMode(2, QHeaderView::Interactive);
 
   if (selected) item = selected;
   if (item) first = item;
