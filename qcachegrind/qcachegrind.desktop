@@ -13,6 +13,7 @@ Name[pt_BR]=QCachegrind
 Name[sv]=Qcachegrind
 Name[uk]=QCachegrind
 Name[x-test]=xxQCachegrindxx
+Name[zh_TW]=QCachegrind
 GenericName=Profiler Frontend
 GenericName[ast]=Interface del analizador de rendimientu
 GenericName[bs]=Profajlerski program
