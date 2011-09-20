@@ -57,6 +57,7 @@ public:
   void setName(const QString& n) { _name = n; }
   void setLongName(const QString& n) { _longName = n; }
   void setEventTypeSet(EventTypeSet* m);
+  // enforces event to be derived, even with empty formula
   void setFormula(const QString&);
   // default arg is for specifying a real type, but index unknown
   void setRealIndex(int r = ProfileCostArray::MaxRealIndex);
@@ -66,7 +67,7 @@ public:
   const QString& formula() { return _formula; }
   EventTypeSet* set() { return _set; }
   int realIndex() { return _realIndex; }
-  bool isReal() { return _formula.isEmpty(); }
+  bool isReal() { return _isReal; }
 
   /*
    * returns true if all cost type names can be resolved in formula
@@ -97,7 +98,7 @@ private:
 
   QString _name, _longName, _formula, _parsedFormula;
   EventTypeSet* _set;
-  bool _parsed, _inParsing;
+  bool _parsed, _inParsing, _isReal;
   // index MaxRealIndex is for constant addition
   int _coefficient[MaxRealIndexValue];
   int _realIndex;

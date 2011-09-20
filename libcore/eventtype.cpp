@@ -34,6 +34,7 @@ EventType::EventType(const QString& name, const QString& longName,
   _name = name;
   _longName = longName;
   _formula = formula;
+  _isReal = formula.isEmpty();
   _set = 0;
   _realIndex = ProfileCostArray::InvalidIndex;
   _parsed = false;
@@ -48,6 +49,7 @@ void EventType::setFormula(const QString& formula)
   _formula = formula;
   _realIndex = ProfileCostArray::InvalidIndex;
   _parsed = false;
+  _isReal = false;
 }
 
 void EventType::setEventTypeSet(EventTypeSet* m)
@@ -65,13 +67,14 @@ void EventType::setRealIndex(int i)
 
   _realIndex = i;
   _formula = QString();
+  _isReal = true;
 }
 
 // checks for existing types and sets coefficients
 bool EventType::parseFormula()
 {
-  if (_parsed) return true;
   if (isReal()) return true;
+  if (_parsed) return true;
 
   if (_inParsing) {
     qDebug("TraceEventType::parseFormula: Recursion detected.");
@@ -157,6 +160,8 @@ bool EventType::parseFormula()
 
 QString EventType::parsedFormula()
 {
+    if (isReal()) return QString();
+
     parseFormula();
     return _parsedFormula;
 }

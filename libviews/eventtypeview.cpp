@@ -168,8 +168,14 @@ void EventTypeView::context(const QPoint & p)
     // add same new cost type to this set and to known types
     QString shortName = tr("New%1").arg(i);
     QString longName  = tr("New Event Type %1").arg(i);
-    EventType::add(new EventType(shortName, longName, ""));
-    _data->eventTypes()->add(new EventType(shortName, longName, ""));
+    EventType* et;
+    et = new EventType(shortName, longName);
+    et->setFormula(QString()); // event is derived
+    EventType::add(et);
+    // EventType::add() took ownership, need new object
+    et = new EventType(shortName, longName);
+    et->setFormula(QString()); // event is derived
+    _data->eventTypes()->add(et);
     refresh();
   }
 }

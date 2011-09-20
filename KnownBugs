@@ -1,0 +1,23 @@
+Known Bugs
+
+* Cost values do not update after the formula of a derived event type
+  was changed. One has to change to another event type and back (9/2011)
+
+  Reason: For derived event types, class ProfileCostArray caches the cost,
+  calculated from the formula, as this is used multiple times. The cache
+  is only invalidated when the cost of another event type is requested.
+
+  Possible fix: Invalidate the cache of every cost item after a formula
+  change. Tricky and takes time. Better allocate a new event type and
+  remove old?
+
+* KCachegrind allows two event types to be shown. If they are set to the
+  same, and this event type is removed, KCachegrind crashes.
+
+  Reason: By design, only one of the event types can be changed at a time.
+  Still, on a change, the cost for the other event type is updated. As
+  the event type is already deleted, the crash happens.
+
+  Possible fix: delete event type after selecting another event type before.
+  Tricky, as change actions are delayed by a timer.
+  Another fix: do not allow the two event types to be the same.

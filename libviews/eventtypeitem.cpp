@@ -48,7 +48,7 @@ EventTypeItem::EventTypeItem(TraceCostItem* costItem,
       setText(3, ct->name());
       setText(5, ct->parsedFormula());
       QString formula = ct->formula();
-      if (!formula.isEmpty()) {
+      if (!ct->isReal()) {
 	  setText(4, "=");
 	  // we have a virtual type: allow editing
 	  // FIXME: How to enable this only for columns 0,3,5 ?!
