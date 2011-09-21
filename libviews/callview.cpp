@@ -45,11 +45,12 @@ CallView::CallView(bool showCallers, TraceItemView* parentView, QWidget* parent)
 
     setColumnCount(4);
 
-    _headerLabels  << tr( "Cost" )
-                   << tr( "Cost 2" )
-                   << tr( "Count" )
-                   << ((_showCallers) ? tr( "Caller" ) : tr( "Callee" ));
-    setHeaderLabels(_headerLabels);
+    QStringList headerLabels;
+    headerLabels << tr( "Cost" )
+                 << tr( "Cost 2" )
+                 << tr( "Count" )
+                 << ((_showCallers) ? tr( "Caller" ) : tr( "Callee" ));
+    setHeaderLabels(headerLabels);
 
     // forbid scaling icon pixmaps to smaller size
     setIconSize(QSize(99,99));
@@ -260,10 +261,9 @@ void CallView::refresh()
     setColumnWidth(1, _eventType2 ? 50:0);
 
     if (_eventType)
-        _headerLabels[0] = _eventType->name();
+        headerItem()->setText(0, _eventType->name());
     if (_eventType2)
-        _headerLabels[1] = _eventType2->name();
-    setHeaderLabels(_headerLabels);
+        headerItem()->setText(1, _eventType2->name());
 
     if (!_data || !_activeItem) return;
 
