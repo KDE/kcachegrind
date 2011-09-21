@@ -78,12 +78,18 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
   vboxLayout->setMargin(3);
   vboxLayout->addLayout(hboxLayout);
 
-  groupList = new Q3ListView(this);
-  groupList->addColumn(tr("Self"));
-  groupList->addColumn(tr("Group"));
-  groupList->header()->setClickEnabled(true);
-  groupList->header()->setResizeEnabled(true);
+  groupList = new QTreeWidget(this);
+  QStringList groupHeader;
+  groupHeader << tr("Self") << tr("Group");
+  groupList->setHeaderLabels(groupHeader);
+  groupList->header()->setClickable(true);
+  groupList->header()->setSortIndicatorShown(false);
+  groupList->header()->stretchLastSection();
+  groupList->setIconSize(QSize(99,99));
   groupList->setMaximumHeight(150);
+  groupList->setRootIsDecorated(false);
+  groupList->setUniformRowHeights(true);
+  groupList->sortByColumn(0, Qt::AscendingOrder);
   vboxLayout->addWidget(groupList);
 
   functionListModel = new FunctionListModel();
@@ -124,30 +130,30 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
 	  this, SLOT(searchReturnPressed()));
   searchEdit->setMinimumWidth(50);
 
-  groupList->setSorting(0,false);
-  groupList->setColumnAlignment(0, Qt::AlignRight);
-  groupList->setAllColumnsShowFocus(true);
-  groupList->setResizeMode(Q3ListView::LastColumn);
-
   // single click release activation
   connect(functionList, SIGNAL(clicked(QModelIndex)),
           this, SLOT(functionActivated(QModelIndex)));
   connect(functionList, SIGNAL(activated(QModelIndex)),
           this, SLOT(functionActivated(QModelIndex)));
   connect(functionList, SIGNAL(customContextMenuRequested(const QPoint &)),
-            this, SLOT(functionContext(const QPoint &)));
+          this, SLOT(functionContext(const QPoint &)));
   connect(functionList->header(), SIGNAL(sectionClicked(int)),
-            this, SLOT(functionHeaderClicked(int)));
+          this, SLOT(functionHeaderClicked(int)));
 
-  connect(groupList, SIGNAL(selectionChanged(Q3ListViewItem*)),
-          this, SLOT(groupSelected(Q3ListViewItem*)));
-  connect(groupList, SIGNAL(doubleClicked(Q3ListViewItem*)),
-	  this, SLOT(groupDoubleClicked(Q3ListViewItem*)));
-  connect(groupList, SIGNAL(returnPressed(Q3ListViewItem*)),
-	  this, SLOT(groupDoubleClicked(Q3ListViewItem*)));
   connect(groupList,
-	  SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
-          this, SLOT(groupContext(Q3ListViewItem*, const QPoint &, int)));
+          SIGNAL( currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+          this, SLOT( groupSelected(QTreeWidgetItem*,QTreeWidgetItem*) ) );
+  connect(groupList, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
+          this, SLOT(groupDoubleClicked(QTreeWidgetItem*,int)));
+  // FIXME : can not use SIGNAL(activated()), which could be single-click
+  //connect(groupList, SIGNAL(returnPressed(Q3ListViewItem*)),
+  //	  this, SLOT(groupDoubleClicked(Q3ListViewItem*)));
+  groupList->setContextMenuPolicy(Qt::CustomContextMenu);
+  connect(groupList,
+          SIGNAL(customContextMenuRequested(const QPoint &) ),
+          this, SLOT(groupContext(const QPoint &)));
+  connect(groupList->header(),
+          SIGNAL(sectionClicked(int)), this, SLOT(groupHeaderClicked(int)));
 
   // start hidden
   groupList->hide();
@@ -187,18 +193,21 @@ void FunctionSelection::searchReturnPressed()
 {
   query(searchEdit->text());
 
-  Q3ListViewItem* item;
+  QTreeWidgetItem* item;
   if (_groupType != ProfileContext::Function) {
       // if current group not matching, select first matching group
       item  = groupList->currentItem();
-      if (!item || !item->isVisible()) {
-	  item  = groupList->firstChild();
-	  for (;item;item = item->nextSibling())
-	      if (item->isVisible()) break;
-	  if (!item) return;
+      if (!item || item->isHidden()) {
+          int i;
+          item = 0;
+          for (i=0; i<groupList->topLevelItemCount(); i++) {
+              item = groupList->topLevelItem(i);
+              if (!item->isHidden()) break;
+          }
+          if (!item) return;
 
-	  setGroup(((CostListItem*)item)->costItem());
-	  return;
+          setGroup(((CostListItem*)item)->costItem());
+          return;
       }
   }
   // activate top function in functionList
@@ -251,20 +260,21 @@ void FunctionSelection::functionContext(const QPoint & p)
 	activated(f);
 }
 
-void FunctionSelection::groupContext(Q3ListViewItem* /*i*/,
-				     const QPoint & p, int c)
+void FunctionSelection::groupContext(const QPoint & p)
 {
-  QMenu popup;
+    QMenu popup;
 
-  if (c == 0) {
-    addEventTypeMenu(&popup,false);
+    int c = groupList->columnAt(p.x());
+    if (c == 0) {
+        addEventTypeMenu(&popup,false);
+        popup.addSeparator();
+    }
+    addGroupMenu(&popup);
     popup.addSeparator();
-  }
-  addGroupMenu(&popup);
-  popup.addSeparator();
-  addGoMenu(&popup);
+    addGoMenu(&popup);
 
-  popup.exec(p);
+    QPoint headerSize = QPoint(0, groupList->header()->height());
+    popup.exec(groupList->mapToGlobal(p + headerSize));
 }
 
 void FunctionSelection::addGroupAction(QMenu* m,
@@ -370,9 +380,18 @@ void FunctionSelection::doUpdate(int changeType, bool)
     if (changeType == eventType2Changed) return;
 
     if (changeType == eventTypeChanged) {
-        Q3ListViewItem* item  = groupList->firstChild();
-        for (;item;item = item->nextSibling())
-          ((CostListItem*)item)->setCostType(_eventType);
+        int i;
+        groupList->header()->setResizeMode(0, QHeaderView::ResizeToContents);
+        // need to disable sorting! Otherwise each change of shown cost
+        // reorders list and changes order returned by topLevelItem()
+        groupList->setSortingEnabled(false);
+        for (i=0; i<groupList->topLevelItemCount(); i++) {
+            CostListItem* item = (CostListItem*) groupList->topLevelItem(i);
+            item->setEventType(_eventType);
+        }
+        groupList->header()->setResizeMode(0, QHeaderView::Interactive);
+        groupList->setSortingEnabled(true);
+        groupList->header()->setSortIndicatorShown(false);
 
         functionListModel->setEventType(_eventType);
         // previous line resets the model: reselect active item
@@ -472,17 +491,20 @@ void FunctionSelection::setGroup(TraceCostItem* g)
   if (g == _group) return;
   _group = g;
 
-  Q3ListViewItem* item  = groupList->firstChild();
-  for (;item;item = item->nextSibling())
-    if (((CostListItem*)item)->costItem() == g)
-      break;
+  QTreeWidgetItem* item = 0;
+  int i;
+  for (i=0; i < groupList->topLevelItemCount(); i++) {
+      item = groupList->topLevelItem(i);
+      if (((CostListItem*)item)->costItem() == g)
+          break;
+  }
 
   if (item) {
-    groupList->ensureItemVisible(item);
+    groupList->scrollToItem(item);
     // prohibit signalling of a group selection
     _inSetGroup = true;
     _group = 0;
-    groupList->setSelected(item, true);
+    groupList->setCurrentItem(item);
     _inSetGroup = false;
   }
   else
@@ -497,7 +519,7 @@ void FunctionSelection::refresh()
     // make cost columns as small as possible:
     // the new functions make them as wide as needed
     groupList->setColumnWidth(0, 50);
-    groupList->setColumnText(1, ProfileContext::i18nTypeName(_groupType));
+    groupList->headerItem()->setText(1, ProfileContext::i18nTypeName(_groupType));
 
     functionListModel->setMaxCount(GlobalConfig::maxListCount());
 
@@ -563,29 +585,44 @@ void FunctionSelection::refresh()
   if (_activeItem && (_activeItem->type() == _groupType))
     _group = (TraceCostItem*) _activeItem;
 
+  QTreeWidgetItem *item = 0, *activeItem = 0;
+  QList<QTreeWidgetItem*> items;
+
   // we always put group of active item in list, even if
   // it would be skipped because of small costs
-  Q3ListViewItem *item = 0;
-  if (_group)
-    item = new CostListItem(groupList, _group, _eventType);
+  if (_group) {
+    activeItem = new CostListItem(groupList, _group, _eventType);
+    items.append(activeItem);
+  }
 
-  for(int i=0;i<_hc.realCount();i++) {
+  for(int i=0; i<_hc.realCount(); i++) {
     TraceCostItem *group = (TraceCostItem*)_hc[i];
     // do not put group of active item twice into list
     if (group == _group) continue;
-    new CostListItem(groupList, group, _eventType);
+    item = new CostListItem(groupList, group, _eventType);
+    items.append(item);
   }
   if (_hc.hasMore()) {
       // a placeholder for all the cost items skipped ...
-    new CostListItem(groupList, _hc.count() - _hc.maxSize(),
-		     (TraceCostItem*)_hc[_hc.maxSize()-1], _eventType);
+      item = new CostListItem(groupList, _hc.count() - _hc.maxSize(),
+                              (TraceCostItem*)_hc[_hc.maxSize()-1], _eventType);
+      items.append(item);
   }
-  groupList->sort();
-  if (item) {
-    groupList->ensureItemVisible(item);
+
+  groupList->header()->setResizeMode(0, QHeaderView::ResizeToContents);
+  groupList->setSortingEnabled(false);
+  groupList->addTopLevelItems(items);
+  groupList->setSortingEnabled(true);
+  // always reset to cost sorting
+  groupList->sortByColumn(0, Qt::DescendingOrder);
+  groupList->header()->setSortIndicatorShown(false);
+  groupList->header()->setResizeMode(0, QHeaderView::Interactive);
+
+  if (activeItem) {
+    groupList->scrollToItem(activeItem);
     _inSetGroup = true;
     _group = 0;
-    groupList->setSelected(item, true);
+    groupList->setCurrentItem(activeItem);
     _inSetGroup = false;
   }
   else
@@ -593,7 +630,7 @@ void FunctionSelection::refresh()
 }
 
 
-void FunctionSelection::groupSelected(Q3ListViewItem* i)
+void FunctionSelection::groupSelected(QTreeWidgetItem* i, QTreeWidgetItem*)
 {
   if (!i) return;
   if (!_data) return;
@@ -614,7 +651,7 @@ void FunctionSelection::groupSelected(Q3ListViewItem* i)
   }
 }
 
-void FunctionSelection::groupDoubleClicked(Q3ListViewItem* i)
+void FunctionSelection::groupDoubleClicked(QTreeWidgetItem* i, int)
 {
   if (!i) return;
   if (!_data) return;
@@ -627,16 +664,21 @@ void FunctionSelection::groupDoubleClicked(Q3ListViewItem* i)
   activated(g);
 }
 
+void FunctionSelection::groupHeaderClicked(int col)
+{
+    groupList->sortByColumn(col, Qt::DescendingOrder);
+}
 
 TraceCostItem* FunctionSelection::group(QString s)
 {
-  Q3ListViewItem *item;
-  item  = groupList->firstChild();
-  for(;item;item = item->nextSibling())
-    if (((CostListItem*)item)->costItem()->name() == s)
-      return ((CostListItem*)item)->costItem();
+    int i;
+    for (i=0; i<groupList->topLevelItemCount(); i++) {
+        CostListItem* item = (CostListItem*) groupList->topLevelItem(i);
+        if (item->costItem()->name() == s)
+          return item->costItem();
+    }
 
-  return 0;
+    return 0;
 }
 
 
@@ -653,14 +695,14 @@ void FunctionSelection::functionActivated(const QModelIndex& i)
 
 void FunctionSelection::updateGroupSizes(bool hideEmpty)
 {
-  Q3ListViewItem* item  = groupList->firstChild();
-  for (;item;item = item->nextSibling()) {
-    CostListItem* i = (CostListItem*)item;
-    int size = (_groupSize.contains(i->costItem())) ?
- 	_groupSize[i->costItem()] : -1;    
-    i->setSize(size);
-    i->setVisible(!hideEmpty || (size>0));
-  }
+    int i;
+    for (i=0; i<groupList->topLevelItemCount(); i++) {
+        CostListItem* item = (CostListItem*) groupList->topLevelItem(i);
+        int size = (_groupSize.contains(item->costItem())) ?
+                   _groupSize[item->costItem()] : -1;
+        item->setSize(size);
+        item->setHidden(hideEmpty && (size<0));
+    }
 }
 
 void FunctionSelection::query(QString query)

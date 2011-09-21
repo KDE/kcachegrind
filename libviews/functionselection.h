@@ -34,13 +34,12 @@
 
 class QAction;
 class QMenu;
-class Q3ListView;
-class Q3ListViewItem;
-
 class QLabel;
 class QComboBox;
 class QLineEdit;
 class QTreeView;
+class QTreeWidget;
+class QTreeWidgetItem;
 class FunctionListModel;
 
 class FunctionSelection: public QWidget, public TraceItemView
@@ -69,9 +68,10 @@ public slots:
 
   void groupTypeSelected(QAction*);
   void groupTypeSelected(int);
-  void groupDoubleClicked( Q3ListViewItem* );
-  void groupSelected( Q3ListViewItem* );
-  void groupContext(Q3ListViewItem*, const QPoint &, int);
+  void groupDoubleClicked(QTreeWidgetItem*, int);
+  void groupSelected(QTreeWidgetItem*, QTreeWidgetItem*);
+  void groupContext(const QPoint &);
+  void groupHeaderClicked(int);
 
   void functionActivated(const QModelIndex&);
   void functionContext(const QPoint &);
@@ -101,7 +101,7 @@ private:
   QLabel *searchLabel;
   QLineEdit *searchEdit;
   QComboBox *groupBox;
-  Q3ListView *groupList;
+  QTreeWidget *groupList;
   QTreeView *functionList;
   FunctionListModel* functionListModel;
 

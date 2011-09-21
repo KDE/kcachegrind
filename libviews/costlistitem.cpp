@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002, 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2002-2011 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -30,36 +30,40 @@
 // CostListItem
 
 
-CostListItem::CostListItem(Q3ListView* parent, TraceCostItem* costItem,
-                           EventType* ct, int size)
-  :Q3ListViewItem(parent)
+CostListItem::CostListItem(QTreeWidget* parent, TraceCostItem* costItem,
+                           EventType* et, int size)
+  :QTreeWidgetItem(parent)
 {
   _groupSize = size;
   _skipped = 0;
   _costItem = costItem;
-  setCostType(ct);
+  setEventType(et);
+
+  setTextAlignment(0, Qt::AlignRight);
 
   if (costItem) {
     updateName();
-    setPixmap(1, colorPixmap(10, 10,
-                             GlobalGUIConfig::groupColor(_costItem)));
+    setIcon(1, colorPixmap(10, 10,
+                           GlobalGUIConfig::groupColor(_costItem)));
   }
 }
 
-CostListItem::CostListItem(Q3ListView* parent, int skipped,
-			   TraceCostItem* costItem, EventType* ct)
-  :Q3ListViewItem(parent)
+CostListItem::CostListItem(QTreeWidget* parent, int skipped,
+                           TraceCostItem* costItem, EventType* et)
+  :QTreeWidgetItem(parent)
 {
   _skipped = skipped;
   _costItem = costItem;
-  setCostType(ct);
+  setEventType(et);
+
+  setTextAlignment(0, Qt::AlignRight);
 
   setText(1, QObject::tr("(%n item(s) skipped)", "", _skipped));
 }
 
-void CostListItem::setCostType(EventType* ct)
+void CostListItem::setEventType(EventType* et)
 {
-  _costType = ct;
+  _eventType = et;
   update();
 }
 
@@ -84,20 +88,20 @@ void CostListItem::update()
   if (!_costItem) return;
   TraceData* d = _costItem->data();
 
-  double total = d->subCost(_costType);
+  double total = d->subCost(_eventType);
   if (total == 0.0) {
     setText(0, QString("---"));
-    setPixmap(0, QPixmap());
+    setIcon(0, QPixmap());
     return;
   }
 
-  _pure = _costItem->subCost(_costType);
+  _pure = _costItem->subCost(_eventType);
   double pure  = 100.0 * _pure / total;
   QString str;
   if (GlobalConfig::showPercentage())
     str = QString("%1").arg(pure, 0, 'f', GlobalConfig::percentPrecision());
   else
-    str = _costItem->prettySubCost(_costType);
+    str = _costItem->prettySubCost(_eventType);
 
   if (_skipped) {
     // special handling for skip entries...
@@ -106,28 +110,21 @@ void CostListItem::update()
   }
 
   setText(0, str);
-  setPixmap(0, costPixmap(_costType, _costItem, total, false));
+  setIcon(0, costPixmap(_eventType, _costItem, total, false));
 }
 
-int CostListItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
+bool CostListItem::operator< ( const QTreeWidgetItem & other ) const
 {
   const CostListItem* fi1 = this;
-  const CostListItem* fi2 = (CostListItem*) i;
-
-  // we always want descending order
-  if (ascending) {
-    fi1 = fi2;
-    fi2 = this;
-  }
+  const CostListItem* fi2 = (CostListItem*) &other;
+  int col = treeWidget()->sortColumn();
 
   // a skip entry is always sorted last
-  if (fi1->_skipped) return -1;
-  if (fi2->_skipped) return 1;
+  if (fi1->_skipped) return true;
+  if (fi2->_skipped) return false;
 
-  if (col==0) {
-    if (fi1->_pure < fi2->_pure) return -1;
-    if (fi1->_pure > fi2->_pure) return 1;
-    return 0;
-  }
-  return Q3ListViewItem::compare(i, col, ascending);
+  if (col==0)
+      return (fi1->_pure < fi2->_pure);
+
+  return QTreeWidgetItem::operator <(other);
 }

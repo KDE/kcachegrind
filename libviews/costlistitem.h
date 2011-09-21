@@ -19,21 +19,22 @@
 #ifndef COSTLISTITEM_H
 #define COSTLISTITEM_H
 
-#include <q3listview.h>
+#include <QTreeWidget>
+
 #include "tracedata.h"
 
-class CostListItem: public Q3ListViewItem
+class CostListItem: public QTreeWidgetItem
 {
 public:
-  CostListItem(Q3ListView* parent, TraceCostItem* cost,
-               EventType* ct, int size = -1);
+  CostListItem(QTreeWidget* parent, TraceCostItem* cost,
+               EventType* et, int size = -1);
   // entry with multiple skipped items
-  CostListItem(Q3ListView* parent, int skipped, TraceCostItem* cost,
-               EventType* ct);
+  CostListItem(QTreeWidget* parent, int skipped, TraceCostItem* cost,
+               EventType* et);
 
-  int compare(Q3ListViewItem * i, int col, bool ascending ) const;
+  bool operator< ( const QTreeWidgetItem & other ) const;
   TraceCostItem* costItem() { return (_skipped) ? 0 : _costItem; }
-  void setCostType(EventType* ct);
+  void setEventType(EventType* et);
   void update();
   void setSize(int s);
 
@@ -41,7 +42,7 @@ private:
   void updateName();
 
   SubCost _pure;
-  EventType* _costType;
+  EventType* _eventType;
   TraceCostItem* _costItem;
   // >0 only for last item in list, if items are skipped 
   int _skipped;
