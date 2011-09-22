@@ -48,6 +48,9 @@ protected slots:
   void activatedSlot(QTreeWidgetItem*,int);
   void headerClicked(int);
 
+protected:
+  void keyPressEvent(QKeyEvent* event);
+
 private:
   CostItem* canShow(CostItem*);
   void doUpdate(int, bool);

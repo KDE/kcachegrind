@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2003-2011 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -30,13 +30,14 @@
 #include "listutils.h"
 #include "instrview.h"
 
-
+//
 // InstrItem
+//
 
 // for messages
-InstrItem::InstrItem(InstrView* iv, Q3ListView* parent,
+InstrItem::InstrItem(InstrView* iv, QTreeWidget* parent,
 		     Addr addr, const QString& msg)
-    : Q3ListViewItem(parent)
+    : QTreeWidgetItem(parent)
 {
   _view = iv;
   _addr = addr;
@@ -44,6 +45,10 @@ InstrItem::InstrItem(InstrView* iv, Q3ListView* parent,
   _instrCall = 0;
   _instrJump = 0;
   _inside = false;
+
+  setTextAlignment(0, Qt::AlignRight);
+  setTextAlignment(1, Qt::AlignRight);
+  setTextAlignment(2, Qt::AlignRight);
 
   setText(0, addr.pretty());
   setText(6, msg);
@@ -53,11 +58,11 @@ InstrItem::InstrItem(InstrView* iv, Q3ListView* parent,
 }
 
 // for code lines
-InstrItem::InstrItem(InstrView* iv, Q3ListView* parent,
+InstrItem::InstrItem(InstrView* iv, QTreeWidget* parent,
 		     Addr addr, bool inside,
 		     const QString& code, const QString& cmd,
 		     const QString& args, TraceInstr* instr)
-    : Q3ListViewItem(parent)
+    : QTreeWidgetItem(parent)
 {
   _view = iv;
   _addr = addr;
@@ -65,6 +70,10 @@ InstrItem::InstrItem(InstrView* iv, Q3ListView* parent,
   _instrCall = 0;
   _instrJump = 0;
   _inside = inside;
+
+  setTextAlignment(0, Qt::AlignRight);
+  setTextAlignment(1, Qt::AlignRight);
+  setTextAlignment(2, Qt::AlignRight);
 
   if (args == "...")
       setText(0, args);
@@ -83,9 +92,9 @@ InstrItem::InstrItem(InstrView* iv, Q3ListView* parent,
 }
 
 // for call lines
-InstrItem::InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
+InstrItem::InstrItem(InstrView* iv, QTreeWidgetItem* parent, Addr addr,
 		     TraceInstr* instr, TraceInstrCall* instrCall)
-    : Q3ListViewItem(parent)
+    : QTreeWidgetItem(parent)
 {
   _view = iv;
   _addr = addr;
@@ -94,16 +103,21 @@ InstrItem::InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
   _instrJump = 0;
   _inside = true;
 
+  setTextAlignment(0, Qt::AlignRight);
+  setTextAlignment(1, Qt::AlignRight);
+  setTextAlignment(2, Qt::AlignRight);
+
   //qDebug("InstrItem: (file %d, line %d) Linecall to %s",
   //       fileno, lineno, _lineCall->call()->called()->prettyName().ascii());
 
   SubCost cc = _instrCall->callCount();
   QString callStr = "  ";
   if (cc==0)
-    callStr += QObject::tr("Active call to '%1'").arg(_instrCall->call()->calledName());
+    callStr += QObject::tr("Active call to '%1'")
+               .arg(_instrCall->call()->calledName());
   else
     callStr += QObject::tr("%n call(s) to '%2'", "", (uint64)cc)
-                .arg(_instrCall->call()->calledName());
+               .arg(_instrCall->call()->calledName());
 
   TraceFunction* calledF = _instrCall->call()->called();
   calledF->addPrettyLocation(callStr);
@@ -115,9 +129,9 @@ InstrItem::InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
 }
 
 // for jump lines
-InstrItem::InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
+InstrItem::InstrItem(InstrView* iv, QTreeWidgetItem* parent, Addr addr,
 		     TraceInstr* instr, TraceInstrJump* instrJump)
-    : Q3ListViewItem(parent)
+    : QTreeWidgetItem(parent)
 {
   _view = iv;
   _addr = addr;
@@ -125,6 +139,10 @@ InstrItem::InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
   _instr = instr;
   _instrCall = 0;
   _instrJump = instrJump;
+
+  setTextAlignment(0, Qt::AlignRight);
+  setTextAlignment(1, Qt::AlignRight);
+  setTextAlignment(2, Qt::AlignRight);
 
   //qDebug("SourceItem: (file %d, line %d) Linecall to %s",
   //       fileno, lineno, _lineCall->call()->called()->prettyName().ascii());
@@ -153,7 +171,7 @@ void InstrItem::updateGroup()
 
   TraceFunction* f = _instrCall->call()->called();
   QColor c = GlobalGUIConfig::functionColor(_view->groupType(), f);
-  setPixmap(6, colorPixmap(10, 10, c));
+  setIcon(6, colorPixmap(10, 10, c));
 }
 
 void InstrItem::updateCost()
@@ -184,9 +202,9 @@ void InstrItem::updateCost()
       str = QObject::tr("(cycle)");
 
     setText(1, str);
-    setPixmap(1, p);
+    setIcon(1, p);
     setText(2, str);
-    setPixmap(2, p);
+    setIcon(2, p);
     return;
   }
 
@@ -196,14 +214,14 @@ void InstrItem::updateCost()
   else
       totalCost = _instr->function()->data();
 
-  EventType *ct = _view->eventType();
-  _pure = ct ? instrCost->subCost(ct) : SubCost(0);
+  EventType *et = _view->eventType();
+  _pure = et ? instrCost->subCost(et) : SubCost(0);
   if (_pure == 0) {
     setText(1, QString());
-    setPixmap(1, QPixmap());
+    setIcon(1, QPixmap());
   }
   else {
-    double total = totalCost->subCost(ct);
+    double total = totalCost->subCost(et);
     double pure  = 100.0 * _pure / total;
 
     if (GlobalConfig::showPercentage())
@@ -212,14 +230,14 @@ void InstrItem::updateCost()
     else
       setText(1, _pure.pretty());
 
-    setPixmap(1, costPixmap(ct, instrCost, total, false));
+    setIcon(1, costPixmap(et, instrCost, total, false));
   }
 
   EventType *ct2 = _view->eventType2();
   _pure2 = ct2 ? instrCost->subCost(ct2) : SubCost(0);
   if (_pure2 == 0) {
     setText(2, QString());
-    setPixmap(2, QPixmap());
+    setIcon(2, QPixmap());
   }
   else {
     double total = totalCost->subCost(ct2);
@@ -231,87 +249,50 @@ void InstrItem::updateCost()
     else
       setText(2, _pure2.pretty());
 
-    setPixmap(2, costPixmap(ct2, instrCost, total, false));
+    setIcon(2, costPixmap(ct2, instrCost, total, false));
   }
 }
 
-
-int InstrItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
+bool InstrItem::operator<( const QTreeWidgetItem & other ) const
 {
-  const InstrItem* ii1 = this;
-  const InstrItem* ii2 = (InstrItem*) i;
+    const InstrItem* ii1 = this;
+    const InstrItem* ii2 = (InstrItem*) &other;
+    int col = treeWidget()->sortColumn();
 
-  // we always want descending order
-  if (((col>0) && ascending) ||
-      ((col==0) && !ascending) ) {
-    ii1 = ii2;
-    ii2 = this;
-  }
+    if (col==1)
+        return (ii1->_pure < ii2->_pure);
 
-  if (col==1) {
-    if (ii1->_pure < ii2->_pure) return -1;
-    if (ii1->_pure > ii2->_pure) return 1;
-    return 0;
-  }
-  if (col==2) {
-    if (ii1->_pure2 < ii2->_pure2) return -1;
-    if (ii1->_pure2 > ii2->_pure2) return 1;
-    return 0;
-  }
-  if (col==0) {
-    if (ii1->_addr < ii2->_addr) return -1;
-    if (ii1->_addr > ii2->_addr) return 1;
+    if (col==2)
+        return (ii1->_pure2 < ii2->_pure2);
 
-    // Same address: code gets above calls/jumps
-    if (!ii1->_instrCall && !ii1->_instrJump) return -1;
-    if (!ii2->_instrCall && !ii2->_instrJump) return 1;
+    if (col==0) {
+        if (ii1->_addr < ii2->_addr) return true;
+        if (ii1->_addr > ii2->_addr) return false;
 
-    // calls above jumps
-    if (ii1->_instrCall && !ii2->_instrCall) return -1;
-    if (ii2->_instrCall && !ii1->_instrCall) return 1;
+        // Same address: code gets above calls/jumps
+        if (!ii1->_instrCall && !ii1->_instrJump) return true;
+        if (!ii2->_instrCall && !ii2->_instrJump) return false;
 
-    if (ii1->_instrCall && ii2->_instrCall) {
-	// Two calls: desending sort according costs
-	if (ii1->_pure < ii2->_pure) return 1;
-	if (ii1->_pure > ii2->_pure) return -1;
+        // calls above jumps
+        if (ii1->_instrCall && !ii2->_instrCall) return true;
+        if (ii2->_instrCall && !ii1->_instrCall) return false;
 
-	// Two calls: sort according function names
-	TraceFunction* f1 = ii1->_instrCall->call()->called();
-	TraceFunction* f2 = ii2->_instrCall->call()->called();
-	if (f1->prettyName() > f2->prettyName()) return 1;
-	return -1;
+        if (ii1->_instrCall && ii2->_instrCall) {
+            // Two calls: desending sort according costs
+            if (ii1->_pure < ii2->_pure) return true;
+            if (ii1->_pure > ii2->_pure) return false;
+
+            // Two calls: sort according function names
+            TraceFunction* f1 = ii1->_instrCall->call()->called();
+            TraceFunction* f2 = ii2->_instrCall->call()->called();
+            return (f1->prettyName() < f2->prettyName());
+        }
+
+        // Two jumps: descending sort according target address
+        return (ii1->_instrJump->instrTo()->addr() <
+                ii2->_instrJump->instrTo()->addr());
     }
-
-    // Two jumps: descending sort according target address
-    if (ii1->_instrJump->instrTo()->addr() <
-	ii2->_instrJump->instrTo()->addr())
-	return -1;
-    if (ii1->_instrJump->instrTo()->addr() >
-	ii2->_instrJump->instrTo()->addr())
-	return 1;
-    return 0;
-
-  }
-  return Q3ListViewItem::compare(i, col, ascending);
-}
-
-void InstrItem::paintCell( QPainter *p, const QColorGroup &cg,
-			   int column, int width, int alignment )
-{
-  QColorGroup _cg( cg );
-
-  QColor color;
-  if ( !_inside || ((column==1) || (column==2)))
-    color = cg.color( QPalette::Button );
-  else if ((_instrCall || _instrJump) && column>2)
-    color = cg.color( QPalette::Midlight );
-  if (color.isValid())
-    _cg.setColor( listView()->viewport()->backgroundRole(), color);
-
-  if (column == 3)
-    paintArrows(p, _cg, width);
-  else
-    Q3ListViewItem::paintCell( p, _cg, column, width, alignment );
+    return QTreeWidgetItem::operator<(other);
 }
 
 void InstrItem::setJumpArray(const QVector<TraceInstrJump*>& a)
@@ -319,153 +300,180 @@ void InstrItem::setJumpArray(const QVector<TraceInstrJump*>& a)
     _jump = a;
 }
 
-void InstrItem::paintArrows(QPainter *p, const QColorGroup &cg, int width)
+
+//
+// InstrItemDelegate
+//
+
+InstrItemDelegate::InstrItemDelegate(InstrView *parent)
 {
-  Q3ListView *lv = listView();
-  if ( !lv ) return;
-  InstrView* iv = (InstrView*) lv;
-
-  QPalette pal = cg;
-  const QPalette::ColorRole crole = lv->viewport()->backgroundRole();
-  if (pal.brush(crole) != lv->palette().brush(crole))
-    p->fillRect(0, 0, width, height(), pal.brush(crole));
-  else
-    iv->paintEmptyArea( p, QRect( 0, 0, width, height() ) );
-
-  if ( isSelected() && lv->allColumnsShowFocus() )
-    p->fillRect( 0, 0, width, height(), cg.brush( QPalette::Highlight ) );
-
-  int marg = lv->itemMargin();
-  int yy = height()/2, y1, y2;
-  QColor c;
-
-  int start = -1, end = -1;
-
-  // draw line borders, detect start/stop of a line
-  for(int i=0;i< (int)_jump.size();i++) {
-      if (_jump[i] == 0) continue;
-
-      y1 = 0;
-      y2 = height();
-      if ((_instrJump == _jump[i]) &&
-	  (_jump[i]->instrFrom()->addr() == _addr)) {
-
-	  //qDebug() << "InstrItem " << _addr.toString() << ": start " << i;
-	  if (start<0) start = i;
-	  if (_jump[i]->instrTo()->addr() <= _addr)
-	      y2 = yy;
-	  else
-	      y1 = yy;
-      }
-      else if (!_instrJump && !_instrCall &&
-	       (_jump[i]->instrTo()->addr() == _addr)) {
-
-	  //qDebug() << "InstrItem " << _addr.toString() << ": end " << i;
-	  if (end<0) end = i;
-	  if (_jump[i]->instrFrom()->addr() < _addr)
-	      y2 = yy;
-	  else
-	      y1 = yy;
-      }
-
-      c = _jump[i]->isCondJump() ? Qt::red : Qt::blue;
-#if 0
-      if (_jump[i] == ((TraceItemView*)_view)->selectedItem()) {
-	  p->fillRect( marg + 6*i-2, (y1==0) ? y1: y1-2,
-		       8, (y2-y1==height())? y2:y2+2,
-		       cg.brush( QPalette::Highlight ) );
-	  c = lv->colorGroup().highlightedText();
-      }
-#endif
-      p->fillRect( marg + 6*i, y1, 4, y2, c);
-      p->setPen(c.light());
-      p->drawLine( marg + 6*i, y1, marg + 6*i, y2);
-      p->setPen(c.dark());
-      p->drawLine( marg + 6*i +3, y1, marg + 6*i +3, y2);
-  }
-
-  // draw start/stop horizontal line
-  int x, y = yy-2, w, h = 4;
-  if (start >= 0) {
-#if 0
-      if (_jump[start] == ((TraceItemView*)_view)->selectedItem()) {
-	  c = lv->colorGroup().highlightedText();
-      }
-#endif
-      c = _jump[start]->isCondJump() ? Qt::red : Qt::blue;
-      x = marg + 6*start;
-      w = 6*(iv->arrowLevels() - start) + 10;
-      p->fillRect( x, y, w, h, c);
-      p->setPen(c.light());
-      p->drawLine(x, y, x+w-1, y);
-      p->drawLine(x, y, x, y+h-1);
-      p->setPen(c.dark());
-      p->drawLine(x+w-1, y, x+w-1, y+h-1);
-      p->drawLine(x+1, y+h-1, x+w-1, y+h-1);
-  }
-  if (end >= 0) {
-      c = _jump[end]->isCondJump() ? Qt::red : Qt::blue;
-      x = marg + 6*end;
-      w = 6*(iv->arrowLevels() - end) + 10;
-
-      QPolygon a;
-      a.putPoints(0, 8, x,y+h,
-		  x,y, x+w-8,y, x+w-8,y-2,
-		  x+w,yy,
-		  x+w-8,y+h+2, x+w-8,y+h,
-		  x,y+h);
-      p->setBrush(c);
-      p->drawConvexPolygon(a);
-
-      p->setPen(c.light());
-      p->drawPolyline(a.constData(), 5);
-      p->setPen(c.dark());
-      p->drawPolyline(a.constData() + 4, 2);
-      p->setPen(c.light());
-      p->drawPolyline(a.constData() + 5, 2);
-      p->setPen(c.dark());
-      p->drawPolyline(a.constData() + 6, 2);
-  }
-
-  // draw inner vertical line for start/stop
-  // this overwrites borders of horizontal line
-  for(int i=0;i< (int)_jump.size();i++) {
-      if (_jump[i] == 0) continue;
-
-      c = _jump[i]->isCondJump() ? Qt::red : Qt::blue;
-
-      if (_jump[i]->instrFrom()->addr() == _addr) {
-	  bool drawUp = true;
-	  if (_jump[i]->instrTo()->addr() == _addr)
-	      if (start<0) drawUp=false;
-	  if (_jump[i]->instrTo()->addr() > _addr) drawUp=false;
-	  if (drawUp)
-	      p->fillRect( marg + 6*i +1, 0, 2, yy, c);
-	  else
-	      p->fillRect( marg + 6*i +1, yy, 2, height()-yy, c);
-      }
-      else if (_jump[i]->instrTo()->addr() == _addr) {
-	  if (end<0) end = i;
-	  if (_jump[i]->instrFrom()->addr() < _addr)
-	      p->fillRect( marg + 6*i +1, 0, 2, yy, c);
-	  else
-	      p->fillRect( marg + 6*i +1, yy, 2, height()-yy, c);
-      }
-  }
-
+    _parent = parent;
 }
 
-int InstrItem::width( const QFontMetrics& fm,
-                      const Q3ListView* lv, int c ) const
+QSize InstrItemDelegate::sizeHint(const QStyleOptionViewItem &option,
+                                  const QModelIndex &index)
 {
-  if (c != 3) return Q3ListViewItem::width(fm, lv, c);
+    QSize sz = QItemDelegate::sizeHint(option, index);
 
-  InstrView* iv = (InstrView*) lv;
-  int levels = iv->arrowLevels();
+    int c = index.column();
+    if (c != 3) return sz;
 
-  if (levels == 0) return 0;
+    InstrView* iv = (InstrView*) _parent;
+    int levels = iv->arrowLevels();
 
-  // 10 pixels for the arrow
-  return 10 + 6*levels + lv->itemMargin() * 2;
+    if (levels == 0)
+        return QSize(0, sz.height());
+
+    // 10 pixels for the arrow, 1 pixel margin left and right
+    return QSize(10 + 6*levels + 2, sz.height());
+}
+
+void InstrItemDelegate::paint(QPainter *painter,
+			      const QStyleOptionViewItem &option,
+			      const QModelIndex &index) const
+{
+    int column = index.column();
+    InstrItem* item = static_cast<InstrItem*>(index.internalPointer());
+
+    QColor color;
+    if ( !item->inside() || ((column==1) || (column==2)))
+        color = option.palette.color( QPalette::Button );
+    else if ((item->instrCall() || item->instrJump()) && column>2)
+        color = option.palette.color( QPalette::Midlight );
+    if (color.isValid())
+        _parent->model()->setData(index, color, Qt::BackgroundRole);
+
+    if(column==3)
+        paintArrows(painter, option, index);
+    else
+        QItemDelegate::paint(painter, option, index);
+}
+
+void InstrItemDelegate::paintArrows(QPainter *p,
+				    const QStyleOptionViewItem &option,
+				    const QModelIndex &index) const
+{
+    QTreeWidget* tw = _parent;
+    if ( !tw ) return;
+    InstrView* iv = (InstrView*) tw;
+    InstrItem* item = static_cast<InstrItem*>(index.internalPointer());
+    const QRect& rect = option.rect;
+    int height = rect.height();
+
+    p->save();
+    drawBackground(p, option, index);
+    p->translate(rect.topLeft());
+
+    int marg = 1;
+    int yy = height/2, y1, y2;
+    QColor c;
+
+    int start = -1, end = -1;
+
+    TraceInstrJump* instrJump = item->instrJump();
+    Addr addr = item->addr();
+    TraceInstrCall* instrCall = item->instrCall();
+
+    // draw line borders, detect start/stop of a line
+    for(int i=0; i< item->jumpCount(); i++) {
+        TraceInstrJump* jump = item->jump(i);
+        if (jump == 0) continue;
+
+        y1 = 0;
+        y2 = height;
+        if ((instrJump == jump) &&
+            (jump->instrFrom()->addr() == addr)) {
+
+            //qDebug() << "InstrItem " << addr.toString() << ": start " << i;
+            if (start<0) start = i;
+            if (jump->instrTo()->addr() <= addr)
+                y2 = yy;
+            else
+                y1 = yy;
+        }
+        else if (!instrJump && !instrCall &&
+                 (jump->instrTo()->addr() == addr)) {
+
+            //qDebug() << "InstrItem " << addr.toString() << ": end " << i;
+            if (end<0) end = i;
+            if (jump->instrFrom()->addr() < addr)
+                y2 = yy;
+            else
+                y1 = yy;
+        }
+
+        c = jump->isCondJump() ? Qt::red : Qt::blue;
+        p->fillRect( marg + 6*i, y1, 4, y2, c);
+        p->setPen(c.light());
+        p->drawLine( marg + 6*i, y1, marg + 6*i, y2);
+        p->setPen(c.dark());
+        p->drawLine( marg + 6*i +3, y1, marg + 6*i +3, y2);
+    }
+
+    // draw start/stop horizontal line
+    int x, y = yy-2, w, h = 4;
+    if (start >= 0) {
+        c = item->jump(start)->isCondJump() ? Qt::red : Qt::blue;
+        x = marg + 6*start;
+        w = 6*(iv->arrowLevels() - start) + 10;
+        p->fillRect( x, y, w, h, c);
+        p->setPen(c.light());
+        p->drawLine(x, y, x+w-1, y);
+        p->drawLine(x, y, x, y+h-1);
+        p->setPen(c.dark());
+        p->drawLine(x+w-1, y, x+w-1, y+h-1);
+        p->drawLine(x+1, y+h-1, x+w-1, y+h-1);
+    }
+    if (end >= 0) {
+        c = item->jump(end)->isCondJump() ? Qt::red : Qt::blue;
+        x = marg + 6*end;
+        w = 6*(iv->arrowLevels() - end) + 10;
+
+        QPolygon a;
+        a.putPoints(0, 8, x,y+h,
+                    x,y, x+w-8,y, x+w-8,y-2,
+                    x+w,yy,
+                    x+w-8,y+h+2, x+w-8,y+h,
+                    x,y+h);
+        p->setBrush(c);
+        p->drawConvexPolygon(a);
+
+        p->setPen(c.light());
+        p->drawPolyline(a.constData(), 5);
+        p->setPen(c.dark());
+        p->drawPolyline(a.constData() + 4, 2);
+        p->setPen(c.light());
+        p->drawPolyline(a.constData() + 5, 2);
+        p->setPen(c.dark());
+        p->drawPolyline(a.constData() + 6, 2);
+    }
+
+    // draw inner vertical line for start/stop
+    // this overwrites borders of horizontal line
+    for(int i=0; i< item->jumpCount(); i++) {
+        TraceInstrJump* jump = item->jump(i);
+        if (jump == 0) continue;
+
+        c = jump->isCondJump() ? Qt::red : Qt::blue;
+
+        if (jump->instrFrom()->addr() == addr) {
+            bool drawUp = true;
+            if (jump->instrTo()->addr() == addr)
+                if (start<0) drawUp=false;
+            if (jump->instrTo()->addr() > addr) drawUp=false;
+            if (drawUp)
+                p->fillRect( marg + 6*i +1, 0, 2, yy, c);
+            else
+                p->fillRect( marg + 6*i +1, yy, 2, height-yy, c);
+        }
+        else if (jump->instrTo()->addr() == addr) {
+            if (end<0) end = i;
+            if (jump->instrFrom()->addr() < addr)
+                p->fillRect( marg + 6*i +1, 0, 2, yy, c);
+            else
+                p->fillRect( marg + 6*i +1, yy, 2, height-yy, c);
+        }
+    }
+    p->restore();
 }
 

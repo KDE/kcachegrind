@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2003-2011 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -23,56 +23,51 @@
 #ifndef INSTRITEM_H
 #define INSTRITEM_H
 
-#include <q3listview.h>
-#include "tracedata.h"
 
+#include <QTreeWidget>
+#include <QItemDelegate>
 #include <QColorGroup>
+
+#include "tracedata.h"
 
 class InstrView;
 
-class InstrItem: public Q3ListViewItem
+class InstrItem: public QTreeWidgetItem
 {
 
 public:
   // for messages
-  InstrItem(InstrView* iv, Q3ListView* parent,
+  InstrItem(InstrView* iv, QTreeWidget* parent,
 	    Addr addr, const QString&);
 
   // for instruction lines
-  InstrItem(InstrView* iv, Q3ListView* parent,
+  InstrItem(InstrView* iv, QTreeWidget* parent,
 	    Addr addr, bool inside,
 	    const QString&, const QString&, const QString&,
 	    TraceInstr* instr);
 
   // for call instr
-  InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
+  InstrItem(InstrView* iv, QTreeWidgetItem* parent, Addr addr,
 	    TraceInstr* instr, TraceInstrCall* instrCall);
 
   // for jump lines
-  InstrItem(InstrView* iv, Q3ListViewItem* parent, Addr addr,
+  InstrItem(InstrView* iv, QTreeWidgetItem* parent, Addr addr,
 	    TraceInstr* instr, TraceInstrJump* instrJump);
 
   Addr addr() const { return _addr; }
+  bool inside() const { return _inside; }
   TraceInstr* instr() const { return _instr; }
   TraceInstrCall* instrCall() const { return _instrCall; }
   TraceInstrJump* instrJump() const { return _instrJump; }
-
-  int compare(Q3ListViewItem * i, int col, bool ascending ) const;
-
-  void paintCell(QPainter *p, const QColorGroup &cg,
-                 int column, int width, int alignment );
-  int width( const QFontMetrics& fm,
-             const Q3ListView* lv, int c ) const;
+  TraceInstrJump* jump(int i) const { return _jump[i]; }
+  int jumpCount() const { return _jump.size(); }
+  bool operator< ( const QTreeWidgetItem & other ) const;
 
   void updateGroup();
   void updateCost();
 
   // arrow lines
   void setJumpArray(const QVector<TraceInstrJump*>& a);
-
-protected:
-  void paintArrows(QPainter *p, const QColorGroup &cg, int width);
-  QVector<TraceInstrJump*> _jump;
 
 private:
   InstrView* _view;
@@ -82,7 +77,28 @@ private:
   TraceInstrJump* _instrJump;
   TraceInstrCall* _instrCall;
   bool _inside;
+
+  QVector<TraceInstrJump*> _jump;
+};
+
+// Delegate for drawing the arrows column
+
+class InstrItemDelegate : public QItemDelegate
+{
+public:
+    InstrItemDelegate(InstrView *parent);
+    void paint(QPainter *painter, const QStyleOptionViewItem &option,
+               const QModelIndex & index ) const;
+    QSize sizeHint(const QStyleOptionViewItem &option,
+                   const QModelIndex &index);
+
+protected:
+    void paintArrows(QPainter *p,
+                     const QStyleOptionViewItem &option,
+                     const QModelIndex &index) const;
+
+    InstrView* _parent;
 };
 
 
-#endif
+#endif // INSTRITEM_H

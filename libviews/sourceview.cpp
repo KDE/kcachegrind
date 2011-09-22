@@ -30,6 +30,7 @@
 #include <QMenu>
 #include <QScrollBar>
 #include <QHeaderView>
+#include <QKeyEvent>
 
 #include "globalconfig.h"
 #include "sourceitem.h"
@@ -194,6 +195,17 @@ void SourceView::activatedSlot(QTreeWidgetItem* i, int)
   }
 }
 
+void SourceView::keyPressEvent(QKeyEvent* event)
+{
+    QTreeWidgetItem *item = currentItem();
+    if (item && ((event->key() == Qt::Key_Return) ||
+                 (event->key() == Qt::Key_Space)))
+    {
+        activatedSlot(item, 0);
+    }
+    QTreeView::keyPressEvent(event);
+}
+
 CostItem* SourceView::canShow(CostItem* i)
 {
   ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
@@ -277,14 +289,16 @@ void SourceView::doUpdate(int changeType, bool)
   }
 
   if (changeType == groupTypeChanged) {
-    QTreeWidgetItem *item, *item2;
-    for (int i=0; i<topLevelItemCount(); i++) {
-        item = topLevelItem(i);
-        for (int j=0; i<item->childCount(); i++) {
-            item2 = item->child(j);
-            ((SourceItem*)item2)->updateGroup();
-        }
-    }
+      // update group colors for call lines
+      QTreeWidgetItem *item, *item2;
+      for (int i=0; i<topLevelItemCount(); i++) {
+          item = topLevelItem(i);
+          for (int j=0; i<item->childCount(); i++) {
+              item2 = item->child(j);
+              ((SourceItem*)item2)->updateGroup();
+          }
+      }
+      return;
   }
 
   // On eventTypeChanged, we can not just change the costs shown in
@@ -351,7 +365,8 @@ void SourceView::refresh()
       header()->setResizeMode(2, QHeaderView::Interactive);
       setColumnWidth(2, 0);
   }
-  // reset to the original position - this is useful when the view is refreshed just because we change between relative/absolute
+  // reset to the original position - this is useful when the view
+  // is refreshed just because we change between relative/absolute
   verticalScrollBar()->setValue(originalPosition);
 }
 

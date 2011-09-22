@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2003-2011 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -23,12 +23,13 @@
 #ifndef INSTRVIEW_H
 #define INSTRVIEW_H
 
-#include <q3listview.h>
+#include <QTreeWidget>
+
 #include "traceitemview.h"
 
 class InstrItem;
 
-class InstrView : public Q3ListView, public TraceItemView
+class InstrView : public QTreeWidget, public TraceItemView
 {
   friend class InstrItem;
 
@@ -36,22 +37,23 @@ class InstrView : public Q3ListView, public TraceItemView
 
 public:
   explicit InstrView(TraceItemView* parentView,
-		     QWidget* parent = 0, const char* name = 0);
+                     QWidget* parent = 0);
 
   virtual QWidget* widget() { return this; }
   QString whatsThis() const;
+  int arrowLevels() { return _arrowLevels; }
 
   void restoreOptions(const QString& prefix, const QString& postfix);
   void saveOptions(const QString& prefix, const QString& postfix);
 
-protected:
-  int arrowLevels() { return _arrowLevels; }
-  void paintEmptyArea( QPainter *, const QRect & );
+protected slots:
+  void context(const QPoint &);
+  void selectedSlot(QTreeWidgetItem*, QTreeWidgetItem*);
+  void activatedSlot(QTreeWidgetItem*,int);
+  void headerClicked(int);
 
-private slots:
-  void context(Q3ListViewItem*, const QPoint &, int);
-  void selectedSlot(Q3ListViewItem *);
-  void activatedSlot(Q3ListViewItem *);
+protected:
+  void keyPressEvent(QKeyEvent* event);
 
 private:
   CostItem* canShow(CostItem*);
@@ -63,7 +65,6 @@ private:
   void updateJumpArray(Addr,InstrItem*,bool,bool);
   bool fillInstrRange(TraceFunction*,
                       TraceInstrMap::Iterator,TraceInstrMap::Iterator);
-  void updateInstrItems();
 
   bool _inSelectionUpdate;
 

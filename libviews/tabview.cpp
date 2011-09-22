@@ -360,6 +360,7 @@ TabView::TabView(TraceItemView* parentView,
   CoverageView * allCallerView = new CoverageView(true, this);
   CoverageView * allCalleeView = new CoverageView(false, this);
   SourceView* sourceView = new SourceView(this);
+  InstrView* instrView = new InstrView(this);
 
   // Options of visualization views are stored by their view name
   callerView->setObjectName("CallerView");
@@ -367,6 +368,7 @@ TabView::TabView(TraceItemView* parentView,
   allCallerView->setObjectName("AllCallerView");
   allCalleeView->setObjectName("AllCalleeView");
   sourceView->setObjectName("SourceView");
+  instrView->setObjectName("InstrView");
 
   // default positions...
   // Keep following order in sync with DEFAULT_xxxTABS defines!
@@ -392,9 +394,7 @@ TabView::TabView(TraceItemView* parentView,
   addBottom( addTab( tr("Caller Map"),
 		     new CallMapView(true, this, 0,
 				     "CallerMapView")));
-  addBottom( addTab( tr("Machine Code"),
-		     new InstrView(this, 0,
-				   "InstrView")));
+  addBottom( addTab( tr("Machine Code"), instrView) );
 
   // after all child widgets are created...
   _lastFocus = 0;

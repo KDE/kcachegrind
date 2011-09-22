@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2003-2011 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -31,6 +31,9 @@
 #include <QProcess>
 #include <QAction>
 #include <QMenu>
+#include <QScrollBar>
+#include <QHeaderView>
+#include <QKeyEvent>
 
 #include "config.h"
 #include "globalconfig.h"
@@ -134,50 +137,56 @@ static bool parseLine(const char* buf, Addr& addr,
 
 
 InstrView::InstrView(TraceItemView* parentView,
-                     QWidget* parent, const char* name)
-  : Q3ListView(parent, name), TraceItemView(parentView)
+                     QWidget* parent)
+  : QTreeWidget(parent), TraceItemView(parentView)
 {
-  _showHexCode = DEFAULT_SHOWHEXCODE;
-  _lastHexCodeWidth = 50;
+    _showHexCode = DEFAULT_SHOWHEXCODE;
+    _lastHexCodeWidth = 50;
 
-  _inSelectionUpdate = false;
-  _arrowLevels = 0;
+    _inSelectionUpdate = false;
+    _arrowLevels = 0;
 
-  addColumn( tr( "#" ) );
-  addColumn( tr( "Cost" ) );
-  addColumn( tr( "Cost 2" ) );
-  addColumn( "" );
-  addColumn( tr( "Hex" ) );
-  addColumn( "" ); // Instruction
-  addColumn( tr( "Assembly Instructions" ) );
-  addColumn( tr( "Source Position" ) );
+    QStringList headerLabels;
+    headerLabels << tr( "#" )
+                 << tr( "Cost" )
+                 << tr( "Cost 2" )
+                 << ""
+                 << tr( "Hex" )
+                 << "" // Mnenomic
+                 << tr( "Assembly Instructions" )
+                 << tr( "Source Position" );
+    setHeaderLabels(headerLabels);
+    setRootIsDecorated(false);
+    setAllColumnsShowFocus(true);
+    setUniformRowHeights(true);
+    // collapsing call/jump lines by double-click is confusing
+    setExpandsOnDoubleClick(false);
 
-  setAllColumnsShowFocus(true);
-  setColumnAlignment(1, Qt::AlignRight);
-  setColumnAlignment(2, Qt::AlignRight);
+    // sorting will be enabled after refresh()
+    sortByColumn(0, Qt::AscendingOrder);
+    header()->setSortIndicatorShown(false);
+    setItemDelegate(new InstrItemDelegate(this));
+    setWhatsThis( whatsThis() );
 
-  connect(this,
-          SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
-          SLOT(context(Q3ListViewItem*, const QPoint &, int)));
+    connect( this,
+             SIGNAL( currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+             SLOT( selectedSlot(QTreeWidgetItem*,QTreeWidgetItem*) ) );
 
-  connect(this, SIGNAL(selectionChanged(Q3ListViewItem*)),
-          SLOT(selectedSlot(Q3ListViewItem*)));
+    setContextMenuPolicy(Qt::CustomContextMenu);
+    connect( this,
+             SIGNAL(customContextMenuRequested(const QPoint &) ),
+             SLOT(context(const QPoint &)));
 
-  connect(this,
-          SIGNAL(doubleClicked(Q3ListViewItem*)),
-          SLOT(activatedSlot(Q3ListViewItem*)));
+    connect(this,
+            SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
+            SLOT(activatedSlot(QTreeWidgetItem*,int)));
 
-  connect(this,
-          SIGNAL(returnPressed(Q3ListViewItem*)),
-          SLOT(activatedSlot(Q3ListViewItem*)));
+    connect(header(), SIGNAL(sectionClicked(int)),
+            this, SLOT(headerClicked(int)));
 
-  this->setWhatsThis( whatsThis());
+    this->setWhatsThis( whatsThis());
 }
 
-void InstrView::paintEmptyArea( QPainter * p, const QRect & r)
-{
-  Q3ListView::paintEmptyArea(p, r);
-}
 
 QString InstrView::whatsThis() const
 {
@@ -196,9 +205,11 @@ QString InstrView::whatsThis() const
 		 "make the destination function of this call current.</p>");
 }
 
-void InstrView::context(Q3ListViewItem* i, const QPoint & p, int c)
+void InstrView::context(const QPoint & p)
 {
   QMenu popup;
+  int c = columnAt(p.x());
+  QTreeWidgetItem* i = itemAt(p);
 
   TraceInstrCall* ic = i ? ((InstrItem*) i)->instrCall() : 0;
   TraceInstrJump* ij = i ? ((InstrItem*) i)->instrJump() : 0;
@@ -230,11 +241,11 @@ void InstrView::context(Q3ListViewItem* i, const QPoint & p, int c)
   toggleHexAction->setChecked(_showHexCode);
   popup.addAction(toggleHexAction);
 
-  QAction* a = popup.exec(p);
+  QAction* a = popup.exec(mapToGlobal(p + QPoint(0,header()->height())));
   if (a == activateFunctionAction)
-      activated(f);
+      TraceItemView::activated(f);
   else if (a == activateInstrAction)
-      activated(instr);
+      TraceItemView::activated(instr);
   else if (a == toggleHexAction) {
     _showHexCode = !_showHexCode;
     // remember width when hiding
@@ -245,7 +256,7 @@ void InstrView::context(Q3ListViewItem* i, const QPoint & p, int c)
 }
 
 
-void InstrView::selectedSlot(Q3ListViewItem * i)
+void InstrView::selectedSlot(QTreeWidgetItem *i, QTreeWidgetItem *)
 {
   if (!i) return;
   // programatically selected items are not signalled
@@ -273,7 +284,7 @@ void InstrView::selectedSlot(Q3ListViewItem * i)
   }
 }
 
-void InstrView::activatedSlot(Q3ListViewItem * i)
+void InstrView::activatedSlot(QTreeWidgetItem* i, int)
 {
   if (!i) return;
   TraceInstrCall* ic = ((InstrItem*) i)->instrCall();
@@ -281,20 +292,30 @@ void InstrView::activatedSlot(Q3ListViewItem * i)
 
   if (!ic && !ij) {
       TraceInstr* instr = ((InstrItem*) i)->instr();
-      if (instr) activated(instr);
+      if (instr) TraceItemView::activated(instr);
       return;
   }
 
   if (ic) {
     TraceFunction* f = ic->call()->called();
-    if (f) activated(f);
+    if (f) TraceItemView::activated(f);
   }
   else if (ij) {
     TraceInstr* instr = ij->instrTo();
-    if (instr) activated(instr);
+    if (instr) TraceItemView::activated(instr);
   }
 }
 
+void InstrView::keyPressEvent(QKeyEvent* event)
+{
+    QTreeWidgetItem *item = currentItem();
+    if (item && ((event->key() == Qt::Key_Return) ||
+                 (event->key() == Qt::Key_Space)))
+    {
+        activatedSlot(item, 0);
+    }
+    QTreeView::keyPressEvent(event);
+}
 
 CostItem* InstrView::canShow(CostItem* i)
 {
@@ -334,29 +355,34 @@ void InstrView::doUpdate(int changeType, bool)
 	  return;
       }
 
-      InstrItem *ii = (InstrItem*)Q3ListView::selectedItem();
+      QList<QTreeWidgetItem*> items = selectedItems();
+      InstrItem* ii = (items.count() > 0) ? (InstrItem*)items[0] : 0;
       if (ii) {
 	  if ((ii->instr() == _selectedItem) ||
 	      (ii->instr() && (ii->instr()->line() == _selectedItem))) return;
+	  if (ii->instrCall() &&
+	      (ii->instrCall()->call()->called() == _selectedItem)) return;
       }
 
-      Q3ListViewItem *item, *item2;
-      for (item = firstChild();item;item = item->nextSibling()) {
+      QTreeWidgetItem *item, *item2;
+      for (int i=0; i<topLevelItemCount(); i++) {
+          item = topLevelItem(i);
 	  ii = (InstrItem*)item;
 	  if ((ii->instr() == _selectedItem) ||
 	      (ii->instr() && (ii->instr()->line() == _selectedItem))) {
-	      ensureItemVisible(item);
+	      scrollToItem(item);
               _inSelectionUpdate = true;
 	      setCurrentItem(item);
               _inSelectionUpdate = false;
 	      break;
 	  }
-	  item2 = item->firstChild();
-	  for (;item2;item2 = item2->nextSibling()) {
+	  item2 = 0;
+	  for (int j=0; i<item->childCount(); j++) {
+	      item2 = item->child(j);
 	      ii = (InstrItem*)item2;
 	      if (!ii->instrCall()) continue;
 	      if (ii->instrCall()->call()->called() == _selectedItem) {
-		  ensureItemVisible(item2);
+		  scrollToItem(item2);
                   _inSelectionUpdate = true;
 		  setCurrentItem(item2);
                   _inSelectionUpdate = false;
@@ -369,26 +395,34 @@ void InstrView::doUpdate(int changeType, bool)
   }
 
   if (changeType == groupTypeChanged) {
-    Q3ListViewItem *item, *item2;
-    for (item = firstChild();item;item = item->nextSibling())
-      for (item2 = item->firstChild();item2;item2 = item2->nextSibling())
-        ((InstrItem*)item2)->updateGroup();
-    return;
+      // update group colors for call lines
+      QTreeWidgetItem *item, *item2;
+      for (int i=0; i<topLevelItemCount(); i++) {
+          item = topLevelItem(i);
+          for (int j=0; i<item->childCount(); i++) {
+              item2 = item->child(j);
+              ((InstrItem*)item2)->updateGroup();
+          }
+      }
+      return;
   }
+
+  // On eventTypeChanged, we can not just change the costs shown in
+  // already existing items, as costs of 0 should make the line to not
+  // be shown at all. So we do a full refresh.
 
   refresh();
 }
 
 void InstrView::setColumnWidths()
 {
-  if (_showHexCode) {
-    setColumnWidthMode(4, Q3ListView::Maximum);
-    setColumnWidth(4, _lastHexCodeWidth);
-  }
-  else {
-    setColumnWidthMode(4, Q3ListView::Manual);
-    setColumnWidth(4, 0);
-  }
+    header()->setResizeMode(4, QHeaderView::Interactive);
+    if (_showHexCode) {
+        setColumnWidth(4, _lastHexCodeWidth);
+    }
+    else {
+        setColumnWidth(4, 0);
+    }
 }
 
 // compare functions for jump arrow drawing
@@ -440,10 +474,7 @@ bool instrJumpHighLessThan(const TraceInstrJump* ij1,
 
 void InstrView::refresh()
 {
-    _arrowLevels = 0;
-
-    // reset to automatic sizing to get column width
-    setColumnWidthMode(4, Q3ListView::Maximum);
+    int originalPosition = verticalScrollBar()->value();
 
     clear();
     setColumnWidth(0, 20);
@@ -451,14 +482,17 @@ void InstrView::refresh()
     setColumnWidth(2, _eventType2 ? 50:0);
     setColumnWidth(3, 0);   // arrows, defaults to invisible
     setColumnWidth(4, 0);   // hex code column
-    setColumnWidth(5, 20);  // command column
-    setColumnWidth(6, 200); // arg column
-    setSorting(0); // always reset to address number sort
-    if (_eventType)
-      setColumnText(1, _eventType->name());
-    if (_eventType2)
-      setColumnText(2, _eventType2->name());
+    setColumnWidth(5, 50);  // command column
+    setColumnWidth(6, 250); // arg column
+    // reset to automatic sizing to get column width
+    header()->setResizeMode(4, QHeaderView::ResizeToContents);
 
+    if (_eventType)
+      headerItem()->setText(1, _eventType->name());
+    if (_eventType2)
+      headerItem()->setText(2, _eventType2->name());
+
+    _arrowLevels = 0;
     if (!_data || !_activeItem) return;
 
     ProfileContext::Type t = _activeItem->type();
@@ -474,9 +508,6 @@ void InstrView::refresh()
     }
 
     if (!f) return;
-
-    // Allow resizing of column 2
-    setColumnWidthMode(2, Q3ListView::Maximum);
 
     // check for instruction map
     TraceInstrMap::Iterator itStart, it, tmpIt, itEnd;
@@ -555,9 +586,13 @@ void InstrView::refresh()
     setColumnWidths();
 
     if (!_eventType2) {
-      setColumnWidthMode(2, Q3ListView::Manual);
-      setColumnWidth(2, 0);
+        header()->setResizeMode(2, QHeaderView::Interactive);
+        setColumnWidth(2, 0);
     }
+
+    // reset to the original position - this is useful when the view
+    // is refreshed just because we change between relative/absolute
+    verticalScrollBar()->setValue(originalPosition);
 }
 
 /* This is called after adding instrItems, for each of them in
@@ -763,6 +798,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     costAddr = 0;
     objAddr  = 0;
 
+    QList<QTreeWidgetItem*> items;
     while (1) {
 
       if (needObjAddr) {
@@ -891,8 +927,10 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	  skipLineWritten = false;
 
 
-      ii = new InstrItem(this, this, addr, inside,
+      ii = new InstrItem(this, 0, addr, inside,
                          code, cmd, args, currInstr);
+      items.append(ii);
+
       dumpedLines++;
       if (0) qDebug() << "Dumped 0x" << addr.toString() << " "
 		       << (inside ? "Inside " : "Outside")
@@ -912,7 +950,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
         most = currInstr->subCost(_eventType);
       }
 
-      ii->setOpen(true);
+      ii->setExpanded(true);
       foreach(TraceInstrCall* ic, currInstr->instrCalls()) {
 	  if ((ic->subCost(_eventType)==0) &&
 	      (ic->subCost(_eventType2)==0)) continue;
@@ -935,23 +973,42 @@ bool InstrView::fillInstrRange(TraceFunction* function,
       }
     }
 
+    // Resize column 1/2 to contents
+    header()->setResizeMode(0, QHeaderView::ResizeToContents);
+    header()->setResizeMode(1, QHeaderView::ResizeToContents);
+    header()->setResizeMode(2, QHeaderView::ResizeToContents);
+
+    setSortingEnabled(false);
+    addTopLevelItems(items);
+    expandAll();
+    setSortingEnabled(true);
+    // always reset to line number sort
+    sortByColumn(0, Qt::AscendingOrder);
+    header()->setSortIndicatorShown(false);
+
+    // Reallow interactive column size change after resizing to content
+    header()->setResizeMode(0, QHeaderView::Interactive);
+    header()->setResizeMode(1, QHeaderView::Interactive);
+    header()->setResizeMode(2, QHeaderView::Interactive);
+
     if (selected) item = selected;
     if (item) first = item;
     if (first) {
-	ensureItemVisible(first);
+        scrollToItem(first);
         _inSelectionUpdate = true;
         setCurrentItem(first);
         _inSelectionUpdate = false;
     }
 
     // for arrows: go down the list according to list sorting
-    sort();
-    Q3ListViewItem *item1, *item2;
-    for (item1=firstChild();item1;item1 = item1->nextSibling()) {
+    QTreeWidgetItem *item1, *item2;
+    for (int i=0; i<topLevelItemCount(); i++) {
+        item1 = topLevelItem(i);
 	ii = (InstrItem*)item1;
 	updateJumpArray(ii->addr(), ii, true, false);
 
-	for (item2=item1->firstChild();item2;item2 = item2->nextSibling()) {
+	for (int j=0; j<item1->childCount(); j++) {
+	    item2 = item1->child(j);
 	    ii2 = (InstrItem*)item2;
 	    if (ii2->instrJump())
 		updateJumpArray(ii->addr(), ii2, false, true);
@@ -961,13 +1018,12 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     }
 
     if (arrowLevels())
-	setColumnWidth(3, 10 + 6*arrowLevels() + itemMargin() * 2);
+        setColumnWidth(3, 10 + 6*arrowLevels() + 2);
     else
 	setColumnWidth(3, 0);
 
-
     if (noAssLines > 1) {
-	// trace cost not machting code
+        // trace cost not matching code
 
 	new InstrItem(this, this, 1,
 		      tr("There are %n cost line(s) without machine code.", "", noAssLines));
@@ -1003,23 +1059,14 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     return true;
 }
 
-
-void InstrView::updateInstrItems()
+void InstrView::headerClicked(int col)
 {
-    InstrItem* ii;
-    Q3ListViewItem* item  = firstChild();
-    for (;item;item = item->nextSibling()) {
-	ii = (InstrItem*)item;
-	TraceInstr* instr = ii->instr();
-	if (!instr) continue;
-
-	ii->updateCost();
-
-	Q3ListViewItem *next, *i  = ii->firstChild();
-	for (;i;i = next) {
-	    next = i->nextSibling();
-	    ((InstrItem*)i)->updateCost();
-	}
+    if (col == 0) {
+        sortByColumn(col, Qt::AscendingOrder);
+    }
+    //All others but Source Text column Descending
+    else if (col <4) {
+        sortByColumn(col, Qt::DescendingOrder);
     }
 }
 
