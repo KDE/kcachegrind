@@ -32,12 +32,16 @@
 // StackItem
 
 StackItem::StackItem(StackSelection* ss, 
-		     Q3ListView* parent, TraceFunction* f)
-  :Q3ListViewItem(parent)
+                     QTreeWidget* parent, TraceFunction* f)
+  :QTreeWidgetItem(parent)
 {
   _view = ss;
   _function = f;
   _call = 0;
+
+  setTextAlignment(0, Qt::AlignRight);
+  setTextAlignment(1, Qt::AlignRight);
+  setTextAlignment(2, Qt::AlignRight);
 
   updateGroup();
   updateCost();
@@ -47,12 +51,16 @@ StackItem::StackItem(StackSelection* ss,
 }
 
 StackItem::StackItem(StackSelection* ss,
-		     Q3ListView* parent, TraceCall* call)
-  :Q3ListViewItem(parent)
+                     QTreeWidget* parent, TraceCall* call)
+  :QTreeWidgetItem(parent)
 {
   _view = ss;
   _call = call;
   _function = call->called();
+
+  setTextAlignment(0, Qt::AlignRight);
+  setTextAlignment(1, Qt::AlignRight);
+  setTextAlignment(2, Qt::AlignRight);
 
   updateGroup();
   updateCost();
@@ -65,7 +73,7 @@ void StackItem::updateGroup()
 {
   QColor c = GlobalGUIConfig::functionColor(_view->groupType(),
                                             _function);
-  setPixmap(3, colorPixmap(10, 10, c));
+  setIcon(3, colorPixmap(10, 10, c));
 }
 
 void StackItem::updateCost()
@@ -79,7 +87,7 @@ void StackItem::updateCost()
   double total = _call->called()->data()->subCost(ct);
   if (total == 0.0) {
     setText(0, "-");
-    setPixmap(0, QPixmap());
+    setIcon(0, QPixmap());
   }
   else {
     double sum  = 100.0 * _sum / total;
@@ -90,7 +98,7 @@ void StackItem::updateCost()
     else
       setText(0, _call->prettySubCost(ct));
     
-    setPixmap(0, costPixmap(ct, _call, total, false));
+    setIcon(0, costPixmap(ct, _call, total, false));
   }
 
   // if _eventType2 is 0, column1 is hidden, no change needed
@@ -101,7 +109,7 @@ void StackItem::updateCost()
   total = _call->called()->data()->subCost(ct2);
   if (total == 0.0) {
     setText(1, "-");
-    setPixmap(1, QPixmap());
+    setIcon(1, QPixmap());
   }
   else {
     double sum  = 100.0 * _sum / total;
@@ -112,6 +120,6 @@ void StackItem::updateCost()
     else
       setText(1, _call->prettySubCost(ct2));
     
-    setPixmap(1, costPixmap(ct2, _call, total, false));
+    setIcon(1, costPixmap(ct2, _call, total, false));
   }
 }

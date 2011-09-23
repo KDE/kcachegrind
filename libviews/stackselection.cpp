@@ -26,7 +26,8 @@
 
 #include <QPushButton>
 #include <QVBoxLayout>
-#include <Qt3Support/Q3ListView>
+#include <QTreeWidget>
+#include <QHeaderView>
 
 #include "stackbrowser.h"
 #include "stackitem.h"
@@ -37,7 +38,6 @@ StackSelection::StackSelection(QWidget* parent)
 {
   _data = 0;
   _browser = new StackBrowser();
-  _item = 0;
   _function = 0;
   _eventType = 0;
   _eventType2 = 0;
@@ -49,27 +49,26 @@ StackSelection::StackSelection(QWidget* parent)
   vboxLayout->setSpacing(6);
   vboxLayout->setMargin(3);
 
-  _stackList = new Q3ListView(this);
-  _stackList->addColumn(tr("Cost"));
-  _stackList->addColumn(tr("Cost2"));
-  _stackList->addColumn(tr("Calls"));
-  _stackList->addColumn(tr("Function"));
-  //_stackList->header()->setClickEnabled(true);
-  vboxLayout->addWidget(_stackList);
-
-  _stackList->setSorting(-1);
+  _stackList = new QTreeWidget(this);
+  QStringList headerLabels;
+  headerLabels << tr("Cost")
+               << tr("Cost2")
+               << tr("Calls")
+               << tr("Function");
+  _stackList->setHeaderLabels(headerLabels);
+  _stackList->setRootIsDecorated(false);
   _stackList->setAllColumnsShowFocus(true);
-  _stackList->setResizeMode(Q3ListView::LastColumn);
-  _stackList->setColumnAlignment(0, Qt::AlignRight);
-  _stackList->setColumnAlignment(1, Qt::AlignRight);
-  _stackList->setColumnAlignment(2, Qt::AlignRight);
+  _stackList->setUniformRowHeights(true);
+  _stackList->setSortingEnabled(false);
   _stackList->setColumnWidth(0, 50);
   // 2nd cost column hidden at first (_eventType2 == 0)
   _stackList->setColumnWidth(1, 0);
   _stackList->setColumnWidth(2, 50);
+  vboxLayout->addWidget(_stackList);
 
-  connect(_stackList, SIGNAL(selectionChanged(Q3ListViewItem*)),
-          this, SLOT(stackSelected(Q3ListViewItem*)));
+  connect(_stackList,
+          SIGNAL( currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+          this, SLOT( stackSelected(QTreeWidgetItem*,QTreeWidgetItem*) ) );
 }
 
 StackSelection::~StackSelection()
@@ -119,33 +118,42 @@ void StackSelection::rebuildStackList()
   TraceFunction* top = item->stack()->top();
   if (!top) return;
 
-  _stackList->setColumnWidthMode(1, Q3ListView::Maximum);
 
+  QList<QTreeWidgetItem*> items;
+  QTreeWidgetItem* activeItem;
   TraceCallList l = item->stack()->calls();
-  for(int i=l.count()-1; i>=0; i--)
-      new StackItem(this, _stackList, l.at(i));
+  for(int i=l.count()-1; i>=0; i--) {
+      StackItem* si = new StackItem(this, 0, l.at(i));
+      if (si->function() == item->function())
+          activeItem = si;
+      items.prepend(si);
+  }
+  StackItem* si = new StackItem(this, 0, top);
+  if (si->function() == item->function())
+      activeItem = si;
+  items.prepend(si);
 
-  new StackItem(this, _stackList, top);
+  _stackList->header()->setResizeMode(0, QHeaderView::ResizeToContents);
+  _stackList->header()->setResizeMode(1, QHeaderView::ResizeToContents);
+  _stackList->header()->setResizeMode(2, QHeaderView::ResizeToContents);
 
-  // select current function
-  Q3ListViewItem* i = _stackList->firstChild();
-  for (;i;i=i->nextSibling())
-    if (((StackItem*)i)->function() == item->function())
-      break;
-
-  if (i) {
+  _stackList->addTopLevelItems(items);
+  if (activeItem) {
     // this calls stackFunctionSelected()
-    _stackList->setCurrentItem(i);
-    _stackList->ensureItemVisible(i);
+    _stackList->setCurrentItem(activeItem);
+    _stackList->scrollToItem(activeItem);
   }
 
+  _stackList->header()->setResizeMode(0, QHeaderView::Interactive);
+  _stackList->header()->setResizeMode(1, QHeaderView::Interactive);
+  _stackList->header()->setResizeMode(2, QHeaderView::Interactive);
+
   if (!_eventType2) {
-    _stackList->setColumnWidthMode(1, Q3ListView::Manual);
     _stackList->setColumnWidth(1, 0);
   }
 }
 
-void StackSelection::stackSelected(Q3ListViewItem* i)
+void StackSelection::stackSelected(QTreeWidgetItem* i, QTreeWidgetItem*)
 {
   if (!i) return;
 
@@ -188,9 +196,19 @@ void StackSelection::browserDown()
 
 void StackSelection::refresh()
 {
-  Q3ListViewItem* item  = _stackList->firstChild();
-  for(;item;item = item->nextSibling())
-    ((StackItem*)item)->updateCost();
+    _stackList->header()->setResizeMode(0, QHeaderView::ResizeToContents);
+    _stackList->header()->setResizeMode(1, QHeaderView::ResizeToContents);
+
+    // there is no resorting allowed, so this is save
+    for(int i = 0; i < _stackList->topLevelItemCount(); i++) {
+        QTreeWidgetItem* item = _stackList->topLevelItem(i);
+        ((StackItem*)item)->updateCost();
+    }
+
+    if (!_eventType2) {
+        _stackList->header()->setResizeMode(1, QHeaderView::Interactive);
+        _stackList->setColumnWidth(1, 0);
+    }
 }
 
 void StackSelection::setEventType(EventType* ct)
@@ -198,13 +216,10 @@ void StackSelection::setEventType(EventType* ct)
   if (ct == _eventType) return;
   _eventType = ct;
 
-  _stackList->setColumnWidth(0, 50);
   if (_eventType)
-    _stackList->setColumnText(0, _eventType->name());
+    _stackList->headerItem()->setText(0, _eventType->name());
 
-  Q3ListViewItem* item  = _stackList->firstChild();
-  for(;item;item = item->nextSibling())
-    ((StackItem*)item)->updateCost();
+  refresh();
 }
 
 void StackSelection::setEventType2(EventType* ct)
@@ -212,19 +227,10 @@ void StackSelection::setEventType2(EventType* ct)
   if (ct == _eventType2) return;
   _eventType2 = ct;
 
-  _stackList->setColumnWidth(1, 50);
-  _stackList->setColumnWidthMode(1, Q3ListView::Maximum);
   if (_eventType2)
-    _stackList->setColumnText(1, _eventType2->name());
+    _stackList->headerItem()->setText(1, _eventType2->name());
 
-  Q3ListViewItem* item  = _stackList->firstChild();
-  for(;item;item = item->nextSibling())
-    ((StackItem*)item)->updateCost();
-
-  if (!_eventType2) {
-    _stackList->setColumnWidthMode(1, Q3ListView::Manual);
-    _stackList->setColumnWidth(1, 0);
-  }
+  refresh();
 }
 
 void StackSelection::setGroupType(ProfileContext::Type gt)
@@ -232,9 +238,10 @@ void StackSelection::setGroupType(ProfileContext::Type gt)
   if (_groupType == gt) return;
   _groupType = gt;
 
-  Q3ListViewItem* item  = _stackList->firstChild();
-  for(;item;item = item->nextSibling())
-    ((StackItem*)item)->updateGroup();
+  for(int i = 0; i < _stackList->topLevelItemCount(); i++) {
+      QTreeWidgetItem* item = _stackList->topLevelItem(i);
+      ((StackItem*)item)->updateGroup();
+  }
 }
 
 #include "stackselection.moc"

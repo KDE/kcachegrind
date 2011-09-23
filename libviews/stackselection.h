@@ -28,8 +28,8 @@
 #include <QWidget>
 #include "tracedata.h"
 
-class Q3ListView;
-class Q3ListViewItem;
+class QTreeWidget;
+class QTreeWidgetItem;
 class TraceFunction;
 class TraceData;
 class StackBrowser;
@@ -59,7 +59,7 @@ public slots:
   void setEventType2(EventType*);
   void setGroupType(ProfileContext::Type);
 
-  void stackSelected(Q3ListViewItem*);
+  void stackSelected(QTreeWidgetItem*,QTreeWidgetItem*);
   void browserBack();
   void browserForward();
   void browserUp();
@@ -72,13 +72,12 @@ private:
 
   TraceData* _data;
   StackBrowser* _browser;
-  Q3ListViewItem* _item;
   TraceFunction* _function;
   EventType* _eventType;
   EventType* _eventType2;
   ProfileContext::Type _groupType;
 
-  Q3ListView* _stackList;
+  QTreeWidget* _stackList;
 };
 
 #endif

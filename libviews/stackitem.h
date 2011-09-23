@@ -1,6 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003, 2004
-   Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2003-2011, Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -24,7 +23,8 @@
 #ifndef STACKITEM_H
 #define STACKITEM_H
 
-#include <q3listview.h>
+#include <QTreeWidget>
+
 #include "tracedata.h"
 
 class StackSelection;
@@ -32,12 +32,12 @@ class StackSelection;
 
 // for the stack browser
 
-class StackItem: public Q3ListViewItem
+class StackItem: public QTreeWidgetItem
 {
 public:
   // for top
-  StackItem(StackSelection* ss, Q3ListView* parent, TraceFunction* f);
-  StackItem(StackSelection* ss, Q3ListView* parent, TraceCall* c);
+  StackItem(StackSelection* ss, QTreeWidget* parent, TraceFunction* f);
+  StackItem(StackSelection* ss, QTreeWidget* parent, TraceCall* c);
 
   TraceFunction* function() { return _function; }
   TraceCall* call() { return _call; }
@@ -51,6 +51,4 @@ private:
   TraceCall* _call;
 };
 
-
-
-#endif
+#endif // STACKITEM_H
