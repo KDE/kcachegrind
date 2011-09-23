@@ -23,17 +23,17 @@
 #ifndef PARTVIEW_H
 #define PARTVIEW_H
 
-#include <q3listview.h>
+#include <QTreeWidget>
+
 #include "tracedata.h"
 #include "traceitemview.h"
 
-class PartView: public Q3ListView, public TraceItemView
+class PartView: public QTreeWidget, public TraceItemView
 {
   Q_OBJECT
 
 public:
-  explicit PartView(TraceItemView* parentView,
-		    QWidget* parent=0, const char* name=0);
+  explicit PartView(TraceItemView* parentView, QWidget* parent=0);
 
   virtual QWidget* widget() { return this; }
   QString whatsThis() const;
@@ -41,8 +41,9 @@ public:
   void refresh();
 
 private slots:
-  void context(Q3ListViewItem*,const QPoint &, int);
+  void context(const QPoint &);
   void selectionChangedSlot();
+  void headerClicked(int);
 
 private:
   CostItem* canShow(CostItem*);

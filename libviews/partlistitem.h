@@ -19,7 +19,8 @@
 #ifndef PARTLISTITEM_H
 #define PARTLISTITEM_H
 
-#include <q3listview.h>
+#include <QTreeWidget>
+
 #include "tracedata.h"
 
 /**
@@ -29,26 +30,26 @@
  *
  * Note: on a cost item / percentage change, the list is rebuild
  */
-class PartListItem: public Q3ListViewItem
+class PartListItem: public QTreeWidgetItem
 {
 public:
-  PartListItem(Q3ListView* parent, TraceCostItem* costItem,
+  PartListItem(QTreeWidget* parent, TraceCostItem* costItem,
                EventType* ct, ProfileContext::Type gt, TracePart* part);
 
-  int compare(Q3ListViewItem * i, int col, bool ascending ) const;
+  bool operator<(const QTreeWidgetItem& other) const;
   ProfileCostArray* partCostItem() { return _partCostItem; }
-  void setCostType(EventType* ct);
+  void setEventType(EventType* ct);
   void setGroupType(ProfileContext::Type);
   TracePart* part() { return _part; }
   void update();
 
 private:
   SubCost _sum, _pure;
-  SubCost _callers;
-  EventType* _costType;
+  SubCost _callCount;
+  EventType* _eventType;
   ProfileCostArray* _partCostItem;
   TracePart* _part;
   ProfileContext::Type _groupType;
 };
 
-#endif
+#endif // PARTLISTITEM_H

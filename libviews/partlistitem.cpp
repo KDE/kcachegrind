@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2003-2011 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -29,24 +29,21 @@
 
 // PartListItem
 
-PartListItem::PartListItem(Q3ListView* parent, TraceCostItem* costItem,
-                           EventType* ct, ProfileContext::Type gt,
+PartListItem::PartListItem(QTreeWidget* parent, TraceCostItem* costItem,
+			   EventType* et, ProfileContext::Type gt,
 			   TracePart* part)
-  :Q3ListViewItem(parent)
+  :QTreeWidgetItem(parent)
 {
   _partCostItem = costItem->findDepFromPart(part);
   _part = part;
   _groupType = gt;
-  _costType = ct;
+  _eventType = et;
 
-#if 0
-  QString partName = QString::number(part->partNumber());
-  if (part->data()->maxThreadID() >1)
-      partName += tr(" (Thread %1)").arg(part->threadID());
-  setText(0, partName);
-#else
+  setTextAlignment(0, Qt::AlignRight);
+  setTextAlignment(1, Qt::AlignRight);
+  setTextAlignment(2, Qt::AlignRight);
+
   setText(0, _part->prettyName());
-#endif
 
   if (_part->trigger().isEmpty())
     setText(4, QObject::tr("(none)"));
@@ -56,11 +53,11 @@ PartListItem::PartListItem(Q3ListView* parent, TraceCostItem* costItem,
   update();
 }
 
-void PartListItem::setCostType(EventType* ct)
+void PartListItem::setEventType(EventType* et)
 {
-    if (_costType == ct) return;
+    if (_eventType == et) return;
 
-    _costType = ct;
+    _eventType = et;
     update();
 }
 
@@ -79,7 +76,7 @@ void PartListItem::update()
        (_partCostItem->type()==ProfileContext::PartFunction) ?
        ((TracePartFunction*)_partCostItem) : 0;
 
-  double total = _part->subCost(_costType);
+  double total = _part->subCost(_eventType);
 
   ProfileCostArray* selfTotalCost = _part;
   if (pf && GlobalConfig::showExpanded()) {
@@ -90,14 +87,14 @@ void PartListItem::update()
       default: break;
       }
   }
-  double selfTotal = selfTotalCost->subCost(_costType);
+  double selfTotal = selfTotalCost->subCost(_eventType);
 
-  _pure = _partCostItem ? _partCostItem->subCost(_costType) : SubCost(0);
-  _sum = pf ? pf->inclusive()->subCost(_costType) : SubCost(0);
+  _pure = _partCostItem ? _partCostItem->subCost(_eventType) : SubCost(0);
+  _sum = pf ? pf->inclusive()->subCost(_eventType) : SubCost(0);
 
   if (selfTotal == 0 || !_partCostItem) {
     setText(2, QString("-"));
-    setPixmap(2, QPixmap());
+    setIcon(2, QPixmap());
   }
   else {
     double pure  = 100.0 * _pure / selfTotal;
@@ -106,14 +103,14 @@ void PartListItem::update()
               .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
     }
     else
-      setText(2, _partCostItem->prettySubCost(_costType));
+      setText(2, _partCostItem->prettySubCost(_eventType));
 
-    setPixmap(2, costPixmap(_costType, _partCostItem, selfTotal, false));
+    setIcon(2, costPixmap(_eventType, _partCostItem, selfTotal, false));
   }
 
   if (total == 0 || !pf) {
     setText(1, QString("-"));
-    setPixmap(1, QPixmap());
+    setIcon(1, QPixmap());
   }
   else {
     double sum  = 100.0 * _sum / total;
@@ -124,54 +121,48 @@ void PartListItem::update()
     else
       setText(1, _sum.pretty());
 
-    setPixmap(1, costPixmap(_costType, pf->inclusive(), total, false));
+    setIcon(1, costPixmap(_eventType, pf->inclusive(), total, false));
   }
 
   if (!pf) {
     setText(3, QString("-"));
-    _callers = 0;
+    _callCount = 0;
     return;
   }
 
-  SubCost callers;
+  SubCost callCount;
   QString str;
 
-  callers = 0;
+  callCount = 0;
   foreach(TracePartCall* pc, pf->partCallers())
-    callers += pc->callCount();
+    callCount += pc->callCount();
 
-  if ((callers == 0) && (pf->calledContexts()>0))
+  if ((callCount == 0) && (pf->calledContexts()>0))
     str = QObject::tr("(active)");
   else
-    str = callers.pretty();
+    str = callCount.pretty();
 
-  _callers = callers;
+  _callCount = callCount;
   setText(3, str);
 }
 
-
-int PartListItem::compare(Q3ListViewItem * i, int col, bool ascending ) const
+bool PartListItem::operator<(const QTreeWidgetItem& other) const
 {
-  PartListItem* fi = (PartListItem*) i;
-  if (col==0) {
-      if (*_part < *(fi->_part)) return -1;
-      if (*(fi->_part) < *_part) return 1;
-      return 0;
-  }
-  if (col==1) {
-    if (_sum < fi->_sum) return -1;
-    if (_sum > fi->_sum) return 1;
-    return 0;
-  }
-  if (col==2) {
-    if (_pure < fi->_pure) return -1;
-    if (_pure > fi->_pure) return 1;
-    return 0;
-  }
-  if (col==3) {
-    if (_callers < fi->_callers) return -1;
-    if (_callers > fi->_callers) return 1;
-    return 0;
-  }
-  return Q3ListViewItem::compare(i, col, ascending);
+    const PartListItem* pi1 = this;
+    const PartListItem* pi2 = (PartListItem*) &other;
+    int col = treeWidget()->sortColumn();
+
+    if (col==0)
+        return (pi1->_part < pi2->_part);
+
+    if (col==1)
+        return (pi1->_sum < pi2->_sum);
+
+    if (col==2)
+        return (pi1->_pure < pi2->_pure);
+
+    if (col==3)
+        return (pi1->_callCount < pi2->_callCount);
+
+    return QTreeWidgetItem::operator <(other);
 }

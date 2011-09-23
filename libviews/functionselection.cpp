@@ -31,8 +31,6 @@
 #include <QHBoxLayout>
 #include <QAction>
 #include <QMenu>
-#include <Qt3Support/Q3ListView>
-#include <Qt3Support/Q3Header>
 #include <QDebug>
 #include <QTreeView>
 #include <QHeaderView>
@@ -145,9 +143,7 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
           this, SLOT( groupSelected(QTreeWidgetItem*,QTreeWidgetItem*) ) );
   connect(groupList, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
           this, SLOT(groupDoubleClicked(QTreeWidgetItem*,int)));
-  // FIXME : can not use SIGNAL(activated()), which could be single-click
-  //connect(groupList, SIGNAL(returnPressed(Q3ListViewItem*)),
-  //	  this, SLOT(groupDoubleClicked(Q3ListViewItem*)));
+
   groupList->setContextMenuPolicy(Qt::CustomContextMenu);
   connect(groupList,
           SIGNAL(customContextMenuRequested(const QPoint &) ),

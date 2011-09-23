@@ -24,7 +24,6 @@
 
 #include <QLabel>
 #include <QPushButton>
-#include <Qt3Support/Q3ListView>
 #include <QVBoxLayout>
 #include <QAction>
 #include <QMenu>

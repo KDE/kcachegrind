@@ -361,6 +361,7 @@ TabView::TabView(TraceItemView* parentView,
   CoverageView * allCalleeView = new CoverageView(false, this);
   SourceView* sourceView = new SourceView(this);
   InstrView* instrView = new InstrView(this);
+  PartView* partView = new PartView(this);
 
   // Options of visualization views are stored by their view name
   callerView->setObjectName("CallerView");
@@ -369,6 +370,7 @@ TabView::TabView(TraceItemView* parentView,
   allCalleeView->setObjectName("AllCalleeView");
   sourceView->setObjectName("SourceView");
   instrView->setObjectName("InstrView");
+  partView->setObjectName("PartView");
 
   // default positions...
   // Keep following order in sync with DEFAULT_xxxTABS defines!
@@ -383,9 +385,7 @@ TabView::TabView(TraceItemView* parentView,
 				  "CalleeMapView")));
   addTop( addTab( tr("Source Code"), sourceView) );
 
-  addBottom( addTab( tr("Parts"),
-		     new PartView(this, 0,
-				  "PartView")));
+  addBottom( addTab( tr("Parts"), partView ) );
   addBottom( addTab( tr("Callees"), calleeView) );
   addBottom( addTab( tr("Call Graph"),
 		     new CallGraphView(this, 0,

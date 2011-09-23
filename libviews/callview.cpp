@@ -43,8 +43,6 @@ CallView::CallView(bool showCallers, TraceItemView* parentView, QWidget* parent)
 {
     _showCallers = showCallers;
 
-    setColumnCount(4);
-
     QStringList headerLabels;
     headerLabels << tr( "Cost" )
                  << tr( "Cost 2" )

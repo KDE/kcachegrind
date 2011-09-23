@@ -25,6 +25,9 @@
 
 #include <QAction>
 #include <QMenu>
+#include <QTreeWidget>
+#include <QHeaderView>
+#include <QKeyEvent>
 
 #include "partlistitem.h"
 #include "toplevelbase.h"
@@ -35,35 +38,39 @@
 //
 
 
-PartView::PartView(TraceItemView* parentView,
-		   QWidget* parent, const char* name)
-  : Q3ListView(parent, name), TraceItemView(parentView)
+PartView::PartView(TraceItemView* parentView, QWidget* parent)
+  : QTreeWidget(parent), TraceItemView(parentView)
 {
     _inSelectionUpdate = false;
 
-    addColumn( tr( "Profile Part" ) );
-    addColumn( tr( "Incl." ) );
-    addColumn( tr( "Self" ) );
-    addColumn( tr( "Called" ) );
-    //addColumn( tr( "Fixed" ) );
-    addColumn( tr( "Comment" ) );
+    QStringList headerLabels;
+    headerLabels << tr( "Profile Part" )
+                 << tr( "Incl." )
+                 << tr( "Self" )
+                 << tr( "Called" )
+                 << tr( "Comment" );
+    setHeaderLabels(headerLabels);
 
     setAllColumnsShowFocus(true);
-    setColumnAlignment(1, Qt::AlignRight);
-    setColumnAlignment(2, Qt::AlignRight);
-    setColumnAlignment(3, Qt::AlignRight);
+    setRootIsDecorated(false);
+    setUniformRowHeights(true);
+    // sorting will be enabled after refresh()
+    sortByColumn(0, Qt::DescendingOrder);
     setMinimumHeight(50);
-    setSelectionMode(Extended);
+    setSelectionMode(QAbstractItemView::ExtendedSelection);
 
-    connect( this,
-	     SIGNAL( selectionChanged() ),
+    connect( this, SIGNAL(itemSelectionChanged()),
 	     SLOT( selectionChangedSlot() ) );
 
+    setContextMenuPolicy(Qt::CustomContextMenu);
     connect( this,
-	     SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint &, int)),
-	     SLOT(context(Q3ListViewItem*, const QPoint &, int)));
+             SIGNAL(customContextMenuRequested(const QPoint &) ),
+             SLOT(context(const QPoint &)));
 
-    this->setWhatsThis( whatsThis() );
+    connect(header(), SIGNAL(sectionClicked(int)),
+            this, SLOT(headerClicked(int)));
+
+    setWhatsThis( whatsThis() );
 }
 
 QString PartView::whatsThis() const
@@ -94,27 +101,39 @@ QString PartView::whatsThis() const
 }
 
 
-void PartView::context(Q3ListViewItem*, const QPoint & pos, int)
+void PartView::context(const QPoint & p)
 {
   QMenu popup;
-
   addGoMenu(&popup);
-  popup.exec(pos);
+
+  // p is in local coordinates
+  popup.exec(mapToGlobal(p + QPoint(0,header()->height())));
 }
+
 
 void PartView::selectionChangedSlot()
 {
     if (_inSelectionUpdate) return;
 
     TracePartList l;
-    Q3ListViewItem* item  = firstChild();
-    for(;item;item = item->nextSibling())
-      if (item->isSelected())
+    QList<QTreeWidgetItem*> sItems = selectedItems();
+    foreach(QTreeWidgetItem* item, sItems)
         l.append( ((PartListItem*)item)->part() );
+
+    // nothing selected means all
+    if (l.isEmpty()) l = _data->parts();
 
     partsSelected(l);
 }
 
+void PartView::headerClicked(int col)
+{
+    // name columns should be sortable in both ways
+    if ((col == 0) || (col == 4)) return;
+
+    // all others only descending
+    sortByColumn(col, Qt::DescendingOrder);
+}
 
 CostItem* PartView::canShow(CostItem* i)
 {
@@ -130,17 +149,29 @@ void PartView::doUpdate(int changeType, bool)
     if (changeType == selectedItemChanged) return;
 
     if (changeType == groupTypeChanged) {
-	Q3ListViewItem *item;
-	for (item = firstChild();item;item = item->nextSibling())
-	    ((PartListItem*)item)->setGroupType(_groupType);
-
-	return;
+        QTreeWidgetItem *item;
+        for (int i=0; i<topLevelItemCount(); i++){
+            item = topLevelItem(i);
+            ((PartListItem*)item)->setGroupType(_groupType);
+        }
+        return;
     }
 
     if (changeType == eventTypeChanged) {
-	Q3ListViewItem *item;
-	for (item = firstChild();item;item = item->nextSibling())
-	  ((PartListItem*)item)->setCostType(_eventType);
+
+        header()->setResizeMode(1, QHeaderView::ResizeToContents);
+        header()->setResizeMode(2, QHeaderView::ResizeToContents);
+        // need to disable sorting! Otherwise each change of shown cost
+        // can reorders list and change order returned by topLevelItem()
+        setSortingEnabled(false);
+        for (int i=0; i< topLevelItemCount(); i++) {
+            PartListItem* item = (PartListItem*) topLevelItem(i);
+            item->setEventType(_eventType);
+        }
+        header()->setResizeMode(1, QHeaderView::Interactive);
+        header()->setResizeMode(2, QHeaderView::Interactive);
+        setSortingEnabled(true);
+        header()->setSortIndicatorShown(false);
 
 	return;
     }
@@ -149,18 +180,17 @@ void PartView::doUpdate(int changeType, bool)
 
       TracePart* part;
 
-      Q3ListViewItem* item;
       _inSelectionUpdate = true;
-      item  = firstChild();
-      for(;item;item = item->nextSibling()) {
-        part = ((PartListItem*)item)->part();
+      for (int i=0; i< topLevelItemCount(); i++) {
+          PartListItem* item = (PartListItem*) topLevelItem(i);
+          part = ((PartListItem*)item)->part();
 
-        if (_partList.contains(part)) {
-          setSelected(item, true);
-          ensureItemVisible(item);
-        }
-        else
-          setSelected(item, false);
+          if (_partList.contains(part)) {
+              item->setSelected(true);
+              scrollToItem(item);
+          }
+          else
+              item->setSelected(false);
       }
       _inSelectionUpdate = false;
 
@@ -172,11 +202,13 @@ void PartView::doUpdate(int changeType, bool)
 
 void PartView::refresh()
 {
-    clear();
     setColumnWidth(1, 50);
     setColumnWidth(2, 50);
 
-    if (!_data || !_activeItem) return;
+    if (!_data || !_activeItem) {
+        clear();
+        return;
+    }
 
     ProfileContext::Type t = _activeItem->type();
     TraceFunction* f = 0;
@@ -187,18 +219,29 @@ void PartView::refresh()
     if (_topLevel)
 	hidden = _topLevel->hiddenParts();
 
-
     _inSelectionUpdate = true;
+    clear();
 
-    Q3ListViewItem* item = 0;
+    QList<QTreeWidgetItem*> items;
+    QTreeWidgetItem* item;
     foreach(TracePart* part, _data->parts()) {
         if (hidden.contains(part)) continue;
-	item = new PartListItem(this, f, _eventType, _groupType, part);
+        item = new PartListItem(0, f, _eventType, _groupType, part);
+        items.append(item);
+    }
+    setSortingEnabled(false);
+    addTopLevelItems(items);
+    setSortingEnabled(true);
+    header()->setSortIndicatorShown(false);
+    header()->resizeSections(QHeaderView::ResizeToContents);
 
-	if (part->isActive()) {
-	    setSelected(item, true);
-	    ensureItemVisible(item);
-	}
+    foreach(item, items) {
+        TracePart* part = ((PartListItem*)item)->part();
+        if (hidden.contains(part)) continue;
+        if (part->isActive()) {
+            item->setSelected(true);
+            scrollToItem(item);
+        }
     }
 
     _inSelectionUpdate = false;
