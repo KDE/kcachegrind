@@ -72,7 +72,7 @@ class Splitter: public QSplitter
   Q_OBJECT
 
 public:
-  explicit Splitter(Qt::Orientation o, QWidget* parent = 0, const char* name = 0);
+  explicit Splitter(Qt::Orientation o, QWidget* parent = 0);
   void checkVisiblity();
 
 protected:
@@ -92,8 +92,7 @@ class TabWidget: public QTabWidget
 
 public:
 
-  explicit TabWidget(TabView*, QWidget* parent = 0,
-            const char* name = 0, Qt::WFlags f = 0);
+  explicit TabWidget(TabView*, QWidget* parent = 0);
 
   bool hasVisibleRect() { return _hasVisibleRect; }
   void checkVisibility();
@@ -120,7 +119,7 @@ class TabView : public QWidget, public TraceItemView
 public:
 
   explicit TabView( TraceItemView* parentView,
-		    QWidget* parent = 0, const char* name=0 );
+                    QWidget* parent = 0 );
 
   virtual QWidget* widget() { return this; }
   QString whatsThis() const;

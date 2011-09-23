@@ -111,7 +111,7 @@ void Coverage::addCallerCoverage(TraceFunctionList& fList,
   if (_active) {
 #ifdef DEBUG_COVERAGE
     qDebug("CallerCov: D %d, %s (was active, incl %f, self %f): newP %f", d,
-           _function->prettyName().ascii(), _incl, _self, pBack);
+           qPrintable(_function->prettyName()), _incl, _self, pBack);
 #endif
     _inRecursion = true;
   }
@@ -134,7 +134,7 @@ void Coverage::addCallerCoverage(TraceFunctionList& fList,
 
 #ifdef DEBUG_COVERAGE
     qDebug("CallerCov: D %d, %s (now active, new incl %f): newP %f",
-           d, _function->prettyName().ascii(), _incl, pBack);
+           d, qPrintable(_function->prettyName()), _incl, pBack);
 #endif
   }
 
@@ -208,7 +208,7 @@ void Coverage::addCallingCoverage(TraceFunctionList& fList,
 #ifdef DEBUG_COVERAGE
     qDebug("CngCov:%s - %s (incl %f, self %f): forward %f, back %f",
 	   spaces+strlen(spaces)-d,
-           _function->prettyName().ascii(), _incl, _self, pForward, pBack);
+	   qPrintable(_function->prettyName()), _incl, _self, pForward, pBack);
 #endif
 
 
@@ -218,7 +218,7 @@ void Coverage::addCallingCoverage(TraceFunctionList& fList,
 #ifdef DEBUG_COVERAGE
     qDebug("CngCov:%s < %s: STOP (is active)",
 	   spaces+strlen(spaces)-d,
-           _function->prettyName().ascii());
+	   qPrintable(_function->prettyName()));
 #endif
 
   }
@@ -245,7 +245,7 @@ void Coverage::addCallingCoverage(TraceFunctionList& fList,
 #ifdef DEBUG_COVERAGE
     qDebug("CngCov:%s < %s (incl %f, self %f)",
 	   spaces+strlen(spaces)-d,
-           _function->prettyName().ascii(), _incl, _self);
+	   qPrintable(_function->prettyName()), _incl, _self);
 #endif
   }
 
@@ -282,7 +282,7 @@ void Coverage::addCallingCoverage(TraceFunctionList& fList,
 #ifdef DEBUG_COVERAGE
         qDebug("CngCov:%s  > %s: forward %f, back %f, calls %f -> %f, now %f",
 	       spaces+strlen(spaces)-d,
-               calling->prettyName().ascii(),
+	       qPrintable(calling->prettyName()),
 	       pForwardNew, pBackNew,
 	       (double)call->callCount(),
 	       pBack * call->callCount(),

@@ -1122,14 +1122,14 @@ int CachegrindLoader::loadInternal(TraceData* data,
 #if TRACE_LOADER
       qDebug() << _filename << ":" << _lineNo;
       qDebug() << "  currentInstr "
-	       << (currentInstr ? currentInstr->toString().ascii() : ".");
+               << (currentInstr ? qPrintable(currentInstr->toString()) : ".");
       qDebug() << "  currentLine "
-	       << (currentLine ? currentLine->toString().ascii() : ".")
+               << (currentLine ? qPrintable(currentLine->toString()) : ".")
 	       << "( file " << currentFile->name() << ")";
       qDebug() << "  currentFunction "
-	       << currentFunction->prettyName().ascii();
+               << qPrintable(currentFunction->prettyName());
       qDebug() << "  currentCalled "
-	       << (currentCalledFunction ? currentCalledFunction->prettyName().ascii() : ".");
+               << (currentCalledFunction ? qPrintable(currentCalledFunction->prettyName()) : ".");
 #endif
 
     // create cost item

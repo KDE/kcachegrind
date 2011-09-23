@@ -1058,7 +1058,7 @@ bool QCGTopLevel::setFunction(TraceFunction* f)
 
 #if TRACE_UPDATES
   qDebug("QCGTopLevel::setFunction(%s), lastSender %s",
-         f ? f->prettyName().ascii() : "0",
+         f ? f->prettyName().toAscii() : "0",
          _lastSender ? _lastSender->name() :"0" );
 #endif
 
@@ -1110,7 +1110,7 @@ void QCGTopLevel::setGroupDelayed(TraceCostItem* g)
 {
 #if TRACE_UPDATES
   qDebug("QCGTopLevel::setGroupDelayed(%s), sender %s",
-         g ? g->prettyName().ascii() : "0",
+         g ? g->prettyName().toAscii() : "0",
          _lastSender ? _lastSender->name() :"0" );
 #endif
 
@@ -1170,7 +1170,7 @@ void QCGTopLevel::setTraceItemDelayed(CostItem* i)
 
 #if TRACE_UPDATES
   qDebug("QCGTopLevel::setTraceItemDelayed(%s), sender %s",
-         i ? i->prettyName().ascii() : "0",
+         i ? i->prettyName().toAscii() : "0",
          _lastSender ? _lastSender->name() :"0" );
 #endif
 
@@ -1609,8 +1609,8 @@ void QCGTopLevel::updateLayoutActions()
 	_layoutRemove->setEnabled(_layoutCount>1);
 
     if (_statusbar)
-	_statusbar->message(tr("Layout Count: %1").arg(_layoutCount),
-			    1000);
+        _statusbar->showMessage(tr("Layout Count: %1").arg(_layoutCount),
+                                1000);
 }
 
 
@@ -1809,7 +1809,7 @@ void QCGTopLevel::forwardAboutToShow()
 
     QString name = GlobalConfig::shortenSymbol(f->prettyName());
 
-    //qDebug("forward: Adding %s", name.ascii());
+    //qDebug("forward: Adding %s", name.toAscii());
     action = popup->addAction(name);
     action->setData(count);
 
@@ -1846,7 +1846,7 @@ void QCGTopLevel::backAboutToShow()
 
     QString name = GlobalConfig::shortenSymbol(f->prettyName());
 
-    //qDebug("back: Adding %s", name.ascii());
+    //qDebug("back: Adding %s", name.toAscii());
     action = popup->addAction(name);
     action->setData(count);
 
@@ -1939,7 +1939,7 @@ void QCGTopLevel::upTriggered(QAction* action)
     count--;
   }
 
-  //qDebug("upActivated: %s", f ? f->prettyName().ascii() : "??" );
+  //qDebug("upActivated: %s", f ? f->prettyName().toAscii() : "??" );
   if (f)
     setFunction(f);
 }
@@ -1947,7 +1947,7 @@ void QCGTopLevel::upTriggered(QAction* action)
 void QCGTopLevel::showMessage(const QString& msg, int ms)
 {
 	if (_statusbar)
-		_statusbar->message(msg, ms);
+		_statusbar->showMessage(msg, ms);
 }
 
 void QCGTopLevel::showStatus(const QString& msg, int progress)
@@ -1963,7 +1963,7 @@ void QCGTopLevel::showStatus(const QString& msg, int progress)
 		    delete _progressBar;
 		    _progressBar = 0;
 		}
-		_statusbar->clear();
+		_statusbar->clearMessage();
 		_progressMsg = msg;
 		return;
 	}
@@ -1983,7 +1983,7 @@ void QCGTopLevel::showStatus(const QString& msg, int progress)
 	if (!_progressBar) {
 		_progressBar = new QProgressBar(_statusbar);
 		_progressBar->setMaximumSize(200, _statusbar->height()-4);
-		_statusbar->addWidget(_progressBar, 1, true);
+		_statusbar->addPermanentWidget(_progressBar, 1);
 		_progressBar->show();
 		msgUpdateNeeded = true;
 	}
@@ -1991,7 +1991,7 @@ void QCGTopLevel::showStatus(const QString& msg, int progress)
 	_progressStart.restart();
 
 	if (msgUpdateNeeded) {
-		_statusbar->message(msg);
+		_statusbar->showMessage(msg);
 		msgUpdateNeeded = false;
 	}
 	_progressBar->setValue(progress);
@@ -2021,12 +2021,12 @@ void QCGTopLevel::loadProgress(int progress)
 
 void QCGTopLevel::loadError(int line, const QString& msg)
 {
-    qCritical() << "Loading" << _filename.ascii() << ":" << line << ": " << msg.ascii();
+    qCritical() << "Loading" << _filename << ":" << line << ": " << msg.toAscii();
 }
 
 void QCGTopLevel::loadWarning(int line, const QString& msg)
 {
-    qWarning() << "Loading" << _filename.ascii() << ":" << line << ": " << msg.ascii();
+    qWarning() << "Loading" << _filename.toAscii() << ":" << line << ": " << msg.toAscii();
 }
 
 #include "qcgtoplevel.moc"

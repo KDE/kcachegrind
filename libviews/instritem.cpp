@@ -108,7 +108,7 @@ InstrItem::InstrItem(InstrView* iv, QTreeWidgetItem* parent, Addr addr,
   setTextAlignment(2, Qt::AlignRight);
 
   //qDebug("InstrItem: (file %d, line %d) Linecall to %s",
-  //       fileno, lineno, _lineCall->call()->called()->prettyName().ascii());
+  //       fileno, lineno, _lineCall->call()->called()->prettyName().toAscii());
 
   SubCost cc = _instrCall->callCount();
   QString callStr = "  ";
@@ -145,7 +145,7 @@ InstrItem::InstrItem(InstrView* iv, QTreeWidgetItem* parent, Addr addr,
   setTextAlignment(2, Qt::AlignRight);
 
   //qDebug("SourceItem: (file %d, line %d) Linecall to %s",
-  //       fileno, lineno, _lineCall->call()->called()->prettyName().ascii());
+  //       fileno, lineno, _lineCall->call()->called()->prettyName().toAscii());
 
   QString jStr;
   if (_instrJump->isCondJump())
@@ -311,7 +311,7 @@ InstrItemDelegate::InstrItemDelegate(InstrView *parent)
 }
 
 QSize InstrItemDelegate::sizeHint(const QStyleOptionViewItem &option,
-                                  const QModelIndex &index)
+                                  const QModelIndex &index) const
 {
     QSize sz = QItemDelegate::sizeHint(option, index);
 

@@ -41,7 +41,7 @@ int main( int argc, char ** argv )
                        KCACHEGRIND_VERSION,
                        ki18n("KDE Frontend for Callgrind/Cachegrind"),
                        KAboutData::License_GPL,
-                       ki18n("(C) 2002 - 2010"), KLocalizedString(),
+                       ki18n("(C) 2002 - 2011"), KLocalizedString(),
 		       "http://kcachegrind.sf.net");
   aboutData.addAuthor(ki18n("Josef Weidendorfer"),
                       ki18n("Author/Maintainer"),

@@ -140,7 +140,7 @@ QString PartAreaWidget::tipString(TreeMapItem* i) const
   QString tip, itemTip;
   int count = 0;
 
-  //qDebug("PartAreaWidget::tipString for '%s'", i->name().ascii());
+  //qDebug("PartAreaWidget::tipString for '%s'", i->name().toAscii());
 
   // first, SubPartItem's
   while (i && count<GlobalConfig::maxSymbolCount() && i->rtti() == 3) {
@@ -172,7 +172,7 @@ QString PartAreaWidget::tipString(TreeMapItem* i) const
   }
 
 //  qDebug("PartAreaWidget:: tip %s, itemTip %s",
-//         tip.ascii(), itemTip.ascii());
+//         tip.toAscii(), itemTip.toAscii());
 
   return tip;
 }
@@ -203,7 +203,7 @@ TreeMapItemList* BasePartItem::children()
   if (!_data) return _children;
 
   if (!initialized()) {
-//    qDebug("Create Parts (%s)", name().ascii());
+//    qDebug("Create Parts (%s)", name().toAscii());
 
     PartAreaWidget* w = (PartAreaWidget*) widget();
     foreach(TracePart* part, _data->parts())
@@ -229,7 +229,7 @@ QString BasePartItem::text(int textNo) const
 
 QColor BasePartItem::backColor() const
 {
-  return widget()->palette().base();
+  return widget()->palette().base().color();
 }
 
 double BasePartItem::value() const
@@ -313,7 +313,7 @@ double PartItem::sum() const
   PartAreaWidget* w = (PartAreaWidget*)widget();
   if (w->visualization() == PartAreaWidget::Inclusive) {
     double s = value();
-    //qDebug("PartItem::sum [part %s]: %d", _p->name().ascii(), s);
+    //qDebug("PartItem::sum [part %s]: %d", _p->name().toAscii(), s);
     return s;
   }
   return 0.0;
@@ -324,7 +324,7 @@ TreeMapItemList* PartItem::children()
   if (initialized()) return _children;
 
   ProfileCostArray* c;
-//    qDebug("Create Part subitems (%s)", name().ascii());
+//    qDebug("Create Part subitems (%s)", name().toAscii());
 
   PartAreaWidget* w = (PartAreaWidget*)widget();
   if (w->visualization() == PartAreaWidget::Inclusive) {
@@ -480,7 +480,7 @@ double SubPartItem::sum() const
   PartAreaWidget* w = (PartAreaWidget*)widget();
   if (w->visualization() == PartAreaWidget::Inclusive) {
     double s = value();
-    //qDebug("SubPartItem::sum [Cost %s]: %d", _cost->name().ascii(), s);
+    //qDebug("SubPartItem::sum [Cost %s]: %d", _cost->name().toAscii(), s);
     return s;
   }
   return 0.0;
@@ -489,7 +489,7 @@ double SubPartItem::sum() const
 TreeMapItemList* SubPartItem::children()
 {
   if (!initialized()) {
-//    qDebug("Create Part sub-subitems (%s)", name().ascii());
+//    qDebug("Create Part sub-subitems (%s)", name().toAscii());
 
     PartAreaWidget* w = (PartAreaWidget*)widget();
 

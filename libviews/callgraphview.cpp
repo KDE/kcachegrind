@@ -231,7 +231,7 @@ TraceCall* GraphNode::visibleCaller()
 {
 	if (0)
 		qDebug("GraphNode::visibleCaller %s: last %d, count %d",
-		       _f->prettyName().ascii(), _lastCallerIndex, callers.count());
+		       qPrintable(_f->prettyName()), _lastCallerIndex, callers.count());
 
 	// can not use at(): index can be -1 (out of bounds), result is 0 then
 	GraphEdge* e = callers.value(_lastCallerIndex);
@@ -257,7 +257,7 @@ TraceCall* GraphNode::visibleCallee()
 {
 	if (0)
 		qDebug("GraphNode::visibleCallee %s: last %d, count %d",
-		       _f->prettyName().ascii(), _lastCalleeIndex, callees.count());
+		       qPrintable(_f->prettyName()), _lastCalleeIndex, callees.count());
 
 	GraphEdge* e = callees.value(_lastCalleeIndex);
 	if (e && !e->isVisible())
@@ -749,7 +749,7 @@ void GraphExporter::writeDot(QIODevice* device)
 	QMap<TraceCostItem*,QList<GraphNode*> >::Iterator lit;
 	int cluster = 0;
 	for (lit = nLists.begin(); lit != nLists.end(); ++lit, cluster++) {
-		QList<GraphNode*>& l = lit.data();
+		QList<GraphNode*>& l = lit.value();
 		TraceCostItem* i = lit.key();
 
 		if (_go->clusterGroups() && i) {
@@ -1033,7 +1033,8 @@ void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallees,
 		e.cost += cost;
 		e.count += count;
 		if (0)
-			qDebug("  Edge to %s, added cost %f, now %f", f2->prettyName().ascii(), cost, e.cost);
+			qDebug("  Edge to %s, added cost %f, now %f",
+			       qPrintable(f2->prettyName()), cost, e.cost);
 
 		// if this call goes into a FunctionCycle, we also show the real call
 		if (f2->cycle() == f2) {
@@ -1726,7 +1727,7 @@ void CallGraphView::keyPressEvent(QKeyEvent* e)
 	}
 
 	// move selected node/edge
-	if (!(e->state() & (Qt::ShiftModifier | Qt::ControlModifier))
+	if (!(e->modifiers() & (Qt::ShiftModifier | Qt::ControlModifier))
 	        &&(_selectedNode || _selectedEdge)&&((e->key() == Qt::Key_Up)
 	        ||(e->key() == Qt::Key_Down)||(e->key() == Qt::Key_Left)||(e->key()
 	        == Qt::Key_Right))) {
@@ -1996,7 +1997,8 @@ void CallGraphView::stopRendering()
 	_renderProcess = 0;
 	_unparsedOutput = QString();
 
-	_renderTimer.start(200, true);
+	_renderTimer.setSingleShot(true);
+	_renderTimer.start(200);
 }
 
 void CallGraphView::refresh()
@@ -2078,7 +2080,7 @@ void CallGraphView::refresh()
 	_renderProcessCmdLine =  renderProgram + " " + renderArgs.join(" ");
 
 	qDebug("CallGraphView::refresh: Started process %p, '%s'",
-	       _renderProcess, _renderProcessCmdLine.ascii());
+	       _renderProcess, qPrintable(_renderProcessCmdLine));
 
 	// layouting of more than seconds is dubious
 	_renderTimer.setSingleShot(true);
@@ -2176,8 +2178,8 @@ void CallGraphView::dotExited()
 
 		if (0)
 			qDebug("%s:%d - line '%s', cmd '%s'",
-			       _exporter.filename().ascii(),
-			       lineno, line.ascii(), cmd.ascii());
+			       qPrintable(_exporter.filename()),
+			       lineno, qPrintable(line), qPrintable(cmd));
 
 		if (cmd == "stop")
 			break;
@@ -2210,7 +2212,7 @@ void CallGraphView::dotExited()
 				_scene->setBackgroundBrush(Qt::white);
 
 #if DEBUG_GRAPH
-				qDebug() << _exporter.filename().ascii() << ":" << lineno
+				qDebug() << qPrintable(_exporter.filename()) << ":" << lineno
 					<< " - graph (" << dotWidth << " x " << dotHeight
 					<< ") => (" << w << " x " << h << ")";
 #endif
@@ -2273,7 +2275,8 @@ void CallGraphView::dotExited()
 			}
 
 			if (!n) {
-				qDebug("Warning: Unknown function '%s' ?!", nodeName.ascii());
+				qDebug("Warning: Unknown function '%s' ?!",
+				       qPrintable(nodeName));
 				continue;
 			}
 			n->setVisible(true);
@@ -2341,7 +2344,7 @@ void CallGraphView::dotExited()
 		}
 		if (i < points) {
 			qDebug("CallGraphView: Can not read %d spline points (%s:%d)",
-			       points, _exporter.filename().ascii(), lineno);
+			       points, qPrintable(_exporter.filename()), lineno);
 			continue;
 		}
 
@@ -2453,8 +2456,8 @@ void CallGraphView::dotExited()
 		int yy = (int)(scaleY * (dotHeight - y)+ _yMargin);
 
 		if (0)
-			qDebug("   Label '%s': ( %f / %f ) => ( %d / %d)", label.ascii(),
-			       x, y, xx, yy);
+			qDebug("   Label '%s': ( %f / %f ) => ( %d / %d)",
+				qPrintable(label), x, y, xx, yy);
 
 		// Fixed Dimensions for Label: 100 x 40
 		int w = 100;
@@ -2596,7 +2599,8 @@ void CallGraphView::mousePressEvent(QMouseEvent* e)
 		if (i->type() == CANVAS_NODE) {
 			GraphNode* n = ((CanvasNode*)i)->node();
 			if (0)
-				qDebug("CallGraphView: Got Node '%s'", n->function()->prettyName().ascii());
+				qDebug("CallGraphView: Got Node '%s'",
+				       qPrintable(n->function()->prettyName()));
 
 			selected(n->function());
 		}
@@ -2610,7 +2614,8 @@ void CallGraphView::mousePressEvent(QMouseEvent* e)
 		if (i->type() == CANVAS_EDGE) {
 			GraphEdge* e = ((CanvasEdge*)i)->edge();
 			if (0)
-				qDebug("CallGraphView: Got Edge '%s'", e->prettyName().ascii());
+				qDebug("CallGraphView: Got Edge '%s'",
+					qPrintable(e->prettyName()));
 
 			if (e->call())
 				selected(e->call());
@@ -2649,7 +2654,8 @@ void CallGraphView::mouseDoubleClickEvent(QMouseEvent* e)
 	if (i->type() == CANVAS_NODE) {
 		GraphNode* n = ((CanvasNode*)i)->node();
 		if (0)
-			qDebug("CallGraphView: Double Clicked on Node '%s'", n->function()->prettyName().ascii());
+			qDebug("CallGraphView: Double Clicked on Node '%s'",
+				qPrintable(n->function()->prettyName()));
 
 		activated(n->function());
 	}
@@ -2664,7 +2670,8 @@ void CallGraphView::mouseDoubleClickEvent(QMouseEvent* e)
 		GraphEdge* e = ((CanvasEdge*)i)->edge();
 		if (e->call()) {
 			if (0)
-				qDebug("CallGraphView: Double Clicked On Edge '%s'", e->call()->prettyName().ascii());
+				qDebug("CallGraphView: Double Clicked On Edge '%s'",
+				       qPrintable(e->call()->prettyName()));
 
 			activated(e->call());
 		}
@@ -2919,7 +2926,9 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 		if (i->type() == CANVAS_NODE) {
 			GraphNode* n = ((CanvasNode*)i)->node();
 			if (0)
-				qDebug("CallGraphView: Menu on Node '%s'", n->function()->prettyName().ascii());
+				qDebug("CallGraphView: Menu on Node '%s'",
+				       qPrintable(n->function()->prettyName()));
+
 			f = n->function();
 			cycle = f->cycle();
 
@@ -2943,7 +2952,9 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 		if (i->type() == CANVAS_EDGE) {
 			GraphEdge* e = ((CanvasEdge*)i)->edge();
 			if (0)
-				qDebug("CallGraphView: Menu on Edge '%s'", e->prettyName().ascii());
+				qDebug("CallGraphView: Menu on Edge '%s'",
+				       qPrintable(e->prettyName()));
+
 			c = e->call();
 			if (c) {
 				QString name = c->prettyName();

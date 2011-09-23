@@ -64,8 +64,8 @@ void MultiView::appendView()
 {
     int n = _views.count()+1;
 
-    TabView* tv = new TabView(this, this,
-			      QString("TabView-%1").arg(n).ascii());
+    TabView* tv = new TabView(this, this);
+    tv->setObjectName(QString("TabView-%1").arg(n));
     connect(tv, SIGNAL(tabActivated(TabView*)),
 	    this, SLOT(tabActivated(TabView*)) );
     _views.append(tv);
@@ -108,7 +108,7 @@ void MultiView::tabActivated(TabView* newActiveTab)
     if (_active == newActiveTab) return;
 
     if (0) qDebug() << "MultiView::tabActivated "
-		     << newActiveTab->name();
+                     << newActiveTab->objectName();
 
     CostItem* oldActiveItem = 0;
     if (_active) {
@@ -125,7 +125,7 @@ void MultiView::tabActivated(TabView* newActiveTab)
 void MultiView::selected(TraceItemView* sender, CostItem* i)
 {
     if (0) qDebug() << "MultiView::selected " << i->name()
-		     << ", sender " << sender->widget()->name();
+                     << ", sender " << sender->widget()->objectName();
 
      // we react only on selection changes of the active TabView
     if (sender != (TraceItemView*)_active) return;
@@ -144,7 +144,7 @@ void MultiView::selected(TraceItemView* sender, CostItem* i)
 void MultiView::activated(TraceItemView* sender, CostItem* i)
 {
     if (0) qDebug() << "MultiView::activated " << i->name()
-		     << ", sender " << sender->widget()->name();
+                     << ", sender " << sender->widget()->objectName();
 
     // we react only on selection changes of the active TabView
     if (sender != (TraceItemView*)_active) return;
@@ -185,8 +185,8 @@ void MultiView::restoreLayout(const QString& prefix, const QString& postfix)
 
     TabView* activeTV = 0;
     foreach(TabView* tv, _views) {
-	if (tv->name() == active) activeTV=tv;
-	tv->restoreLayout( QString("%1-%2").arg(prefix).arg(tv->name()),
+        if (tv->objectName() == active) activeTV=tv;
+        tv->restoreLayout( QString("%1-%2").arg(prefix).arg(tv->objectName()),
 			   postfix);
     }
 
@@ -211,11 +211,11 @@ void MultiView::saveLayout(const QString& prefix, const QString& postfix)
 
     g->setValue("PanelSizes", toStringList(sizes()));
     g->setValue("ActivePanel",
-		_active ? QString(_active->name()) : QString("none"));
+                _active ? QString(_active->objectName()) : QString("none"));
     delete g;
 
     foreach(TabView* tv, _views)
-	tv->saveLayout(QString("%1-%2").arg(prefix).arg(tv->name()),
+        tv->saveLayout(QString("%1-%2").arg(prefix).arg(tv->objectName()),
 		       postfix);
 }
 
@@ -224,14 +224,14 @@ void MultiView::saveLayout(const QString& prefix, const QString& postfix)
 void MultiView::restoreOptions(const QString& prefix, const QString& postfix)
 {
     foreach(TabView* tv, _views)
-	tv->restoreOptions(QString("%1-%2").arg(prefix).arg(tv->name()),
+        tv->restoreOptions(QString("%1-%2").arg(prefix).arg(tv->objectName()),
 			   postfix);
 }
 
 void MultiView::saveOptions(const QString& prefix, const QString& postfix)
 {
     foreach(TabView* tv, _views)
-	tv->saveOptions(QString("%1-%2").arg(prefix).arg(tv->name()),
+        tv->saveOptions(QString("%1-%2").arg(prefix).arg(tv->objectName()),
 			postfix);
 }
 

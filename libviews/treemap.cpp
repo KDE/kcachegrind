@@ -1846,8 +1846,8 @@ void TreeMapWidget::mousePressEvent( QMouseEvent* e )
 
   _pressed = i;
 
-  _inShiftDrag = e->state() & Qt::ShiftModifier;
-  _inControlDrag = e->state() & Qt::ControlModifier;
+  _inShiftDrag = e->modifiers() & Qt::ShiftModifier;
+  _inControlDrag = e->modifiers() & Qt::ControlModifier;
   _lastOver = _pressed;
 
   TreeMapItem* changed = 0;
@@ -2054,7 +2054,8 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
       setSelected(_current, !isSelected(_current));
       break;
     case Extended:
-      if ((e->state() & Qt::ControlModifier) || (e->state() & Qt::ShiftModifier))
+      if ((e->modifiers() & Qt::ControlModifier) ||
+          (e->modifiers() & Qt::ShiftModifier))
         setSelected(_current, !isSelected(_current));
       else {
         _selectionMode = Single;
@@ -2118,8 +2119,8 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
   }
 
   if (old == _current) return;
-  if (! (e->state() & Qt::ControlModifier)) return;
-  if (! (e->state() & Qt::ShiftModifier)) return;
+  if (! (e->modifiers() & Qt::ControlModifier)) return;
+  if (! (e->modifiers() & Qt::ShiftModifier)) return;
 
   switch(_selectionMode) {
   case NoSelection:
@@ -2131,7 +2132,7 @@ void TreeMapWidget::keyPressEvent( QKeyEvent* e )
     setSelected(_current, !isSelected(_current));
     break;
   case Extended:
-    if (e->state() & Qt::ControlModifier)
+    if (e->modifiers() & Qt::ControlModifier)
       setSelected(_current, !isSelected(_current));
     else
       setSelected(_current, isSelected(old));
@@ -2190,7 +2191,7 @@ void TreeMapWidget::drawTreeMap()
     if (_needsRefresh == _base) {
       // redraw whole widget
       _pixmap = QPixmap(size());
-      _pixmap.fill(backgroundColor());
+      _pixmap.fill(palette().color(backgroundRole()));
     }
     QPainter p(&_pixmap);
     if (_needsRefresh == _base) {
@@ -2211,8 +2212,9 @@ void TreeMapWidget::drawTreeMap()
     _needsRefresh = 0;
   }
 
-  bitBlt( this, 0, 0, &_pixmap, 0, 0,
-	  QWidget::width(), QWidget::height());
+  QPainter p(this);
+  p.drawPixmap(0, 0, _pixmap, 0, 0,
+               QWidget::width(), QWidget::height());
 
   if (hasFocus()) {
     QStylePainter p(this);

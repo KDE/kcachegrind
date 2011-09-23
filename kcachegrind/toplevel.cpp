@@ -1812,7 +1812,7 @@ void TopLevel::updateLayoutActions()
   ka = actionCollection()->action("layout_remove");
   if (ka) ka->setEnabled(_layoutCount>1);
 
-  _statusbar->message(i18n("Layout Count: %1", _layoutCount), 1000);
+  _statusbar->showMessage(i18n("Layout Count: %1", _layoutCount), 1000);
 }
 
 
@@ -2214,7 +2214,7 @@ void TopLevel::upTriggered(QAction* action)
 void TopLevel::showMessage(const QString& msg, int ms)
 {
 	if (_statusbar)
-		_statusbar->message(msg, ms);
+		_statusbar->showMessage(msg, ms);
 }
 
 void TopLevel::showStatus(const QString& msg, int progress)
@@ -2230,7 +2230,7 @@ void TopLevel::showStatus(const QString& msg, int progress)
 			delete _progressBar;
 			_progressBar = 0;
 		}
-		_statusbar->clear();
+		_statusbar->clearMessage();
 		_progressMsg = msg;
 		return;
 	}
@@ -2250,7 +2250,7 @@ void TopLevel::showStatus(const QString& msg, int progress)
 	if (!_progressBar) {
 		_progressBar = new QProgressBar(_statusbar);
 		_progressBar->setMaximumSize(200, _statusbar->height()-4);
-		_statusbar->addWidget(_progressBar, 1, true);
+		_statusbar->addPermanentWidget(_progressBar, 1);
 		_progressBar->show();
 		msgUpdateNeeded = true;
 	}
@@ -2258,7 +2258,7 @@ void TopLevel::showStatus(const QString& msg, int progress)
 	_progressStart.restart();
 
 	if (msgUpdateNeeded) {
-		_statusbar->message(msg);
+		_statusbar->showMessage(msg);
 		msgUpdateNeeded = false;
 	}
 	_progressBar->setValue(progress);

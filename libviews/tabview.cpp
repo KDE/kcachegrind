@@ -185,15 +185,15 @@ void TabBar::context(QWidget* page, const QPoint & pos)
 // Splitter
 //
 
-Splitter::Splitter(Qt::Orientation o, QWidget* parent, const char* name)
-  : QSplitter(o, parent, name)
+Splitter::Splitter(Qt::Orientation o, QWidget* parent)
+  : QSplitter(o, parent)
 {}
 
 void Splitter::moveEvent(QMoveEvent* e)
 {
   QSplitter::moveEvent(e);
 
-  if (0) qDebug("Splitter %s: Move", objectName().toLatin1().constData());
+  if (0) qDebug("Splitter %s: Move", qPrintable(objectName()));
   checkVisiblity();
 }
 
@@ -218,9 +218,8 @@ void Splitter::checkVisiblity()
 // TabWidget
 //
 
-TabWidget::TabWidget(TabView* v, QWidget* parent,
-                     const char* name, Qt::WFlags f)
-    : QTabWidget(parent, name, f)
+TabWidget::TabWidget(TabView* v, QWidget* parent)
+    : QTabWidget(parent)
 {
     _hasVisibleRect = false;
     setTabBar(new TabBar(v, this));
@@ -228,12 +227,13 @@ TabWidget::TabWidget(TabView* v, QWidget* parent,
 
 void TabWidget::checkVisibility()
 {
-  bool hasVisibleRect = (visibleRect().width()>1) &&
-                        (visibleRect().height()>1);
+  bool hasVisibleRect = (visibleRegion().boundingRect().width()>1) &&
+                        (visibleRegion().boundingRect().height()>1);
 
   if (0) qDebug("TabWidget %s: VR (%dx%d) HasVisibleRect: %s => %s",
-		objectName().toLatin1().constData(),
-                visibleRect().width(), visibleRect().height(),
+                qPrintable(objectName()),
+                visibleRegion().boundingRect().width(),
+                visibleRegion().boundingRect().height(),
                 _hasVisibleRect ? "Yes":"No",
                 hasVisibleRect ? "Yes":"No");
 
@@ -301,12 +301,10 @@ void TabWidget::moveEvent(QMoveEvent* e)
  *      bottomSplitter    mainSplitter
  */
 
-TabView::TabView(TraceItemView* parentView,
-                 QWidget* parent, const char* name)
+TabView::TabView(TraceItemView* parentView, QWidget* parent)
   : QWidget(parent), TraceItemView(parentView)
 {
   setFocusPolicy(Qt::StrongFocus);
-  setObjectName(name);
 
   _isCollapsed = true;
 
@@ -323,33 +321,38 @@ TabView::TabView(TraceItemView* parentView,
   updateNameLabel(tr("(No profile data file loaded)"));
 
   _mainSplitter   = new QSplitter(Qt::Horizontal, this);
-  _leftSplitter   = new Splitter(Qt::Vertical, _mainSplitter, "Left");
+  _leftSplitter   = new Splitter(Qt::Vertical, _mainSplitter);
+  _leftSplitter->setObjectName("Left");
   vbox->addWidget( _mainSplitter );
 
-  _rightTW = new TabWidget(this, _mainSplitter, "Right");
+  _rightTW = new TabWidget(this, _mainSplitter);
+  _rightTW->setObjectName("Right");
   connect(_rightTW, SIGNAL(currentChanged(QWidget*)),
           this, SLOT(tabChanged(QWidget*)));
   connect(_rightTW, SIGNAL(visibleRectChanged(TabWidget*)),
           this, SLOT(visibleRectChangedSlot(TabWidget*)));
 
-  _topTW = new TabWidget(this, _leftSplitter, "Top");
+  _topTW = new TabWidget(this, _leftSplitter);
+  _topTW->setObjectName("Top");
   connect(_topTW, SIGNAL(currentChanged(QWidget*)),
           this, SLOT(tabChanged(QWidget*)));
   connect(_topTW, SIGNAL(visibleRectChanged(TabWidget*)),
           this, SLOT(visibleRectChangedSlot(TabWidget*)));
 
-  _bottomSplitter = new Splitter(Qt::Horizontal,
-                                  _leftSplitter, "Bottom");
+  _bottomSplitter = new Splitter(Qt::Horizontal, _leftSplitter);
+  _bottomSplitter->setObjectName("Bottom");
 
-  _leftTW = new TabWidget(this, _bottomSplitter, "Left");
-  _leftTW->setTabPosition(QTabWidget::Bottom);
+  _leftTW = new TabWidget(this, _bottomSplitter);
+  _leftTW->setObjectName("Left");
+  _leftTW->setTabPosition(QTabWidget::South);
   connect(_leftTW, SIGNAL(currentChanged(QWidget*)),
           this, SLOT(tabChanged(QWidget*)));
   connect(_leftTW, SIGNAL(visibleRectChanged(TabWidget*)),
           this, SLOT(visibleRectChangedSlot(TabWidget*)));
 
-  _bottomTW = new TabWidget(this, _bottomSplitter, "Bottom");
-  _bottomTW->setTabPosition(QTabWidget::Bottom);
+  _bottomTW = new TabWidget(this, _bottomSplitter);
+  _bottomTW->setObjectName("Bottom");
+  _bottomTW->setTabPosition(QTabWidget::South);
   connect(_bottomTW, SIGNAL(currentChanged(QWidget*)),
           this, SLOT(tabChanged(QWidget*)));
   connect(_bottomTW, SIGNAL(visibleRectChanged(TabWidget*)),
@@ -447,13 +450,13 @@ TraceItemView* TabView::addTab(const QString& label, TraceItemView* view)
 void TabView::addTop(TraceItemView* view)
 {
   view->setPosition(TraceItemView::Top);
-  _topTW->insertTab(view->widget(), view->title());
+  _topTW->addTab(view->widget(), view->title());
 }
 
 void TabView::addBottom(TraceItemView* view)
 {
   view->setPosition(TraceItemView::Bottom);
-  _bottomTW->insertTab(view->widget(), view->title());
+  _bottomTW->addTab(view->widget(), view->title());
 }
 
 TraceItemView::Position TabView::tabPosition(QWidget* w)
@@ -622,8 +625,8 @@ void TabView::moveTab(QWidget* w, Position p, bool wholeArea)
 	w = v->widget();
 
 	if (from) {
-	    isEnabled = from->isTabEnabled(w);
-	    from->removePage(w);
+	    isEnabled = from->isTabEnabled(from->indexOf(w));
+	    from->removeTab(from->indexOf(w));
 	}
 	else isEnabled = (v->canShow(_activeItem)!=0);
 
@@ -634,10 +637,10 @@ void TabView::moveTab(QWidget* w, Position p, bool wholeArea)
 	    i = to->indexOf(vv->widget());
 	    if (i>=0) idx = i;
         }
-        to->insertTab(w, v->title(), idx+1);
-        to->setTabEnabled(w, isEnabled);
+        to->insertTab(idx+1, w, v->title());
+        to->setTabEnabled(to->indexOf(w), isEnabled);
         if (isEnabled) {
-	    to->showPage(w);
+            to->setCurrentIndex(to->indexOf(w));
 	    v->updateView();
         }
       }
@@ -759,10 +762,11 @@ void TabView::doUpdate(int changeType, bool force)
 	v->notifyChange(changeType);
 
 	if (!tw) continue;
-	if (tw->isTabEnabled(v->widget()) != canShow)
-	    tw->setTabEnabled(v->widget(), canShow);
+	int idx = tw->indexOf(v->widget());
+	if (tw->isTabEnabled(idx) != canShow)
+	    tw->setTabEnabled(idx, canShow);
 
-	if (v->widget() == tw->currentPage())
+	if (v->widget() == tw->currentWidget())
 	    v->updateView(force);
     }
 }
@@ -878,10 +882,14 @@ void TabView::restoreLayout(const QString& prefix, const QString& postfix)
       }
       else moveTab(v->widget(), Hidden);
     }
-    if (activeTop)   _topTW->showPage(activeTop->widget());
-    if (activeBottom)_bottomTW->showPage(activeBottom->widget());
-    if (activeLeft)  _leftTW->showPage(activeLeft->widget());
-    if (activeRight) _rightTW->showPage(activeRight->widget());
+    if (activeTop)
+        _topTW->setCurrentIndex(_topTW->indexOf(activeTop->widget()));
+    if (activeBottom)
+        _bottomTW->setCurrentIndex(_bottomTW->indexOf(activeBottom->widget()));
+    if (activeLeft)
+        _leftTW->setCurrentIndex(_leftTW->indexOf(activeLeft->widget()));
+    if (activeRight)
+        _rightTW->setCurrentIndex(_rightTW->indexOf(activeRight->widget()));
 
     if (!_data) return;
 
@@ -895,38 +903,43 @@ void TabView::saveLayout(const QString& prefix, const QString& postfix)
     // convert splitter sizes into percentage numbers
     QList<int> s;
     s = _mainSplitter->sizes();
-    int rightSize = 100 * s[1]/(s[0]+s[1]);
+    int rightSize = (s[0]+s[1]==0) ? 0 : (100 * s[1]/(s[0]+s[1]));
     s = _leftSplitter->sizes();
-    int topSize = 100 * s[0]/(s[0]+s[1]);
+    int topSize = (s[0]+s[1]==0) ? 0 : (100 * s[0]/(s[0]+s[1]));
     s = _bottomSplitter->sizes();
-    int leftSize = 100 * s[0]/(s[0]+s[1]);
+    int leftSize = (s[0]+s[1]==0) ? 0 : (100 * s[0]/(s[0]+s[1]));
 
     g->setValue("RightSize", rightSize, DEFAULT_RIGHTSIZE);
     g->setValue("TopSize", topSize, DEFAULT_TOPSIZE);
     g->setValue("LeftSize", leftSize, DEFAULT_LEFTSIZE);
 
     QString a;
+    QWidget* w;
+    w = _topTW->currentWidget();
     if ((_topTW->count()>0) &&
-        (_topTW->isTabEnabled(_topTW->currentPage())))
-      a = _topTW->currentPage()->objectName();
+        (_topTW->isTabEnabled(_topTW->indexOf(w))))
+      a = w->objectName();
     g->setValue("ActiveTop", a, QString(DEFAULT_ACTIVETOP));
 
     a = QString();
+    w = _bottomTW->currentWidget();
     if ((_bottomTW->count()>0) &&
-        (_bottomTW->isTabEnabled(_bottomTW->currentPage())))
-      a = _bottomTW->currentPage()->objectName();
+        (_bottomTW->isTabEnabled(_bottomTW->indexOf(w))))
+      a = w->objectName();
     g->setValue("ActiveBottom", a, QString(DEFAULT_ACTIVEBOTTOM));
 
     a = QString();
+    w = _leftTW->currentWidget();
     if ((_leftTW->count()>0) &&
-        (_leftTW->isTabEnabled(_leftTW->currentPage())))
-      a = _leftTW->currentPage()->objectName();
+        (_leftTW->isTabEnabled(_leftTW->indexOf(w))))
+      a = w->objectName();
     g->setValue("ActiveLeft", a, QString());
 
     a= QString();
+    w = _rightTW->currentWidget();
     if ((_rightTW->count()>0) &&
-        (_rightTW->isTabEnabled(_rightTW->currentPage())))
-      a = _rightTW->currentPage()->objectName();
+        (_rightTW->isTabEnabled(_rightTW->indexOf(w))))
+      a = w->objectName();
     g->setValue("ActiveRight", a, QString());
 
     QStringList topList, bottomList, leftList, rightList;

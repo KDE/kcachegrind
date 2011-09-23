@@ -116,15 +116,15 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
     QString n = cs->_name;
     if (n.startsWith(objectPrefix)) {
       n = n.remove(0, objectPrefix.length()+1);
-      if (oList.findIndex(n) == -1) oList.append(n);
+      if (oList.indexOf(n) == -1) oList.append(n);
     }
     else if (n.startsWith(classPrefix)) {
       n = n.remove(0, classPrefix.length()+1);
-      if (cList.findIndex(n) == -1) cList.append(n);
+      if (cList.indexOf(n) == -1) cList.append(n);
     }
     else if (n.startsWith(filePrefix)) {
       n = n.remove(0, filePrefix.length()+1);
-      if (fList.findIndex(n) == -1) fList.append(n);
+      if (fList.indexOf(n) == -1) fList.append(n);
     }
   }
 
@@ -364,7 +364,7 @@ void ConfigDlg::dirsAddPressed()
   if (newDir.endsWith(QLatin1Char('/')))
     newDir = newDir.left(newDir.length()-1);
 
-  if (dirs->findIndex(newDir)>=0) return;
+  if (dirs->indexOf(newDir)>=0) return;
 
   dirs->append(newDir);
   if (newDir.isEmpty()) newDir = QDir::rootPath();

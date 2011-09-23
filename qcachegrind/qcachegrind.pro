@@ -1,5 +1,4 @@
 TEMPLATE = app
-QT += qt3support
 
 contains(QT_CONFIG, dbus) {
     DEFINES += QT_DBUS_SUPPORT

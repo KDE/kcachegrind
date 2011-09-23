@@ -50,7 +50,6 @@ void ConfigColorSetting::setColor(const QColor& c)
 QColor ConfigColorSetting::colorForName(QString n)
 {
     int h = 0, s = 100;
-    QByteArray str = n.toAscii();
     foreach(const QChar c, n) {
       h = (h * 37 + s* c.unicode()) % 256;
       s = (s * 17 + h* c.unicode()) % 192;

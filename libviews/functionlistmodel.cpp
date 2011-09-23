@@ -26,7 +26,7 @@ FunctionListModel::FunctionListModel()
 {
     _maxCount = 300;
     _sortColumn = 0;
-    _sortOrder = Qt::Descending;
+    _sortOrder = Qt::DescendingOrder;
 
     _headerData
             << tr("Incl.")
@@ -188,7 +188,7 @@ void FunctionListModel::setFilter(QString filterString)
     if (_filterString == filterString) return;
     _filterString = filterString;
 
-    _filter = QRegExp(_filterString, false, true);
+    _filter = QRegExp(_filterString, Qt::CaseInsensitive, QRegExp::Wildcard);
     computeFilteredList();
     computeTopList();
 }
@@ -269,7 +269,7 @@ void FunctionListModel::resetModelData(TraceData *data,
     }
 
     _filterString = filterString;
-    _filter = QRegExp(_filterString, false, true);
+    _filter = QRegExp(_filterString, Qt::CaseInsensitive, QRegExp::Wildcard);
 
     computeFilteredList();
     computeTopList();

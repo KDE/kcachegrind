@@ -378,7 +378,7 @@ void SourceView::refresh()
 static bool searchFileRecursive(QString& dir, const QString& name)
 {
   // we leave this in...
-  qDebug("Checking %s/%s", dir.ascii(), name.ascii());
+  qDebug("Checking %s/%s", qPrintable(dir), qPrintable(name));
 
   if (QFile::exists(dir + '/' + name)) return true;
 
@@ -450,7 +450,7 @@ void SourceView::updateJumpArray(uint lineno, SourceItem* si,
     if (0) qDebug("updateJumpArray(line %d, jump to %s)",
 		  lineno,
 		  si->lineJump()
-		  ? si->lineJump()->lineTo()->name().ascii() : "?" );
+		  ? qPrintable(si->lineJump()->lineTo()->name()) : "?" );
 
     while(_lowListIter != _lowList.end()) {
         TraceLineJump* lj= *_lowListIter;
@@ -486,8 +486,8 @@ void SourceView::updateJumpArray(uint lineno, SourceItem* si,
 
 	    if (0) qDebug(" start %d (%s to %s)",
 			  iStart,
-			  lj->lineFrom()->name().ascii(),
-			  lj->lineTo()->name().ascii());
+			  qPrintable(lj->lineFrom()->name()),
+			  qPrintable(lj->lineTo()->name()));
 
 	    _jump[iStart] = lj;
 	}
@@ -517,12 +517,12 @@ void SourceView::updateJumpArray(uint lineno, SourceItem* si,
 	if (0 && (iEnd>=0))
 	    qDebug(" end %d (%s to %s)",
 		   iEnd,
-		   _jump[iEnd]->lineFrom()->name().ascii(),
-		   _jump[iEnd]->lineTo()->name().ascii());
+		   qPrintable(_jump[iEnd]->lineFrom()->name()),
+		   qPrintable(_jump[iEnd]->lineTo()->name()));
 
 	if (0 && lj) qDebug("next end: %s to %s",
-			    lj->lineFrom()->name().ascii(),
-			    lj->lineTo()->name().ascii());
+			    qPrintable(lj->lineFrom()->name()),
+			    qPrintable(lj->lineTo()->name()));
 
         _highListIter++;
 
@@ -591,7 +591,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   if (!sf) return;
 
   if (0) qDebug("Selected Item %s",
-		_selectedItem ? _selectedItem->name().ascii() : "(none)");
+                _selectedItem ? qPrintable(_selectedItem->name()) : "(none)");
 
   TraceLineMap::Iterator lineIt, lineItEnd;
   int nextCostLineno = 0, lastCostLineno = 0;

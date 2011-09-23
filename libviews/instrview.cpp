@@ -122,8 +122,8 @@ static bool parseLine(const char* buf, Addr& addr,
 	operands = QString::fromAscii(buf+pos, operandsLen);
 
     if (0) qDebug("For 0x%s: Code '%s', Mnemonic '%s', Operands '%s'",
-		  addr.toString().ascii(), code.ascii(),
-		  mnemonic.ascii(), operands.ascii());
+                  qPrintable(addr.toString()), qPrintable(code),
+                  qPrintable(mnemonic), qPrintable(operands));
 
     return true;
 }
@@ -608,9 +608,9 @@ void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
     int iEnd = -1, iStart = -1;
 
     if (0) qDebug("updateJumpArray(addr 0x%s, jump to %s)",
-		  addr.toString().ascii(),
+                  qPrintable(addr.toString()),
 		  ii->instrJump()
-		  ? ii->instrJump()->instrTo()->name().ascii() : "?" );
+		  ? qPrintable(ii->instrJump()->instrTo()->name()) : "?" );
 
     // check for new arrows starting from here downwards
     while(_lowListIter != _lowList.end()) {
@@ -643,7 +643,8 @@ void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
 		_arrowLevels++;
 		_jump.resize(_arrowLevels);
 	    }
-	    if (0) qDebug("  new start at %d for %s", iStart, ij->name().ascii());
+	    if (0) qDebug("  new start at %d for %s",
+			  iStart, qPrintable(ij->name()));
 	    _jump[iStart] = ij;
 	}
         _lowListIter++;
@@ -674,12 +675,12 @@ void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
 	if (0 && (iEnd>=0))
 	    qDebug(" end %d (%s to %s)",
 		   iEnd,
-		   _jump[iEnd]->instrFrom()->name().ascii(),
-		   _jump[iEnd]->instrTo()->name().ascii());
+		   qPrintable(_jump[iEnd]->instrFrom()->name()),
+		   qPrintable(_jump[iEnd]->instrTo()->name()));
 
 	if (0 && ij) qDebug("next end: %s to %s",
-			    ij->instrFrom()->name().ascii(),
-			    ij->instrTo()->name().ascii());
+			    qPrintable(ij->instrFrom()->name()),
+			    qPrintable(ij->instrTo()->name()));
 
         _highListIter++;
 
@@ -763,7 +764,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	<< objfile;
     QString objdumpCmd = "objdump " + objdumpArgs.join(" ");
 
-    if (1) qDebug("Running '%s'...", objdumpCmd.ascii());
+    if (1) qDebug("Running '%s'...", qPrintable(objdumpCmd));
 
     // and run...
     QProcess objdump;
@@ -815,7 +816,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
           objdumpLineno++;
           if (readBytes == BUF_SIZE) {
 	    qDebug("ERROR: Line %d of '%s' too long\n",
-                   objdumpLineno, objdumpCmd.ascii());
+		   objdumpLineno, qPrintable(objdumpCmd));
           }
           else if ((readBytes>0) && (buf[readBytes-1] == '\n'))
 	    buf[readBytes-1] = 0;

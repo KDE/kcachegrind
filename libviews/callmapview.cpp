@@ -549,7 +549,7 @@ QString CallMapView::tipString(TreeMapItem* i) const
   QString tip, itemTip;
   int count = 0;
 
-  //qDebug("CallMapView::tipString for '%s'", i->text(0).ascii());
+  //qDebug("CallMapView::tipString for '%s'", i->text(0).toAscii());
 
   // first, SubPartItem's
   while (i && count<GlobalConfig::maxSymbolCount()) {
@@ -675,7 +675,7 @@ TreeMapItemList* CallMapBaseItem::children()
 
     if (0) qDebug("Create Function %s (%s)",
 		  w->showCallers() ? "Callers":"Callees",
-		  text(0).ascii());
+		  qPrintable(text(0)));
 
     setSorting(-1);
     if (w->showCallers()) {
@@ -794,7 +794,8 @@ bool CallMapCallingItem::isMarked(int) const
 TreeMapItemList* CallMapCallingItem::children()
 {
   if (!initialized()) {
-    if (0) qDebug("Create Calling subitems (%s)", path(0).join("/").ascii());
+    if (0) qDebug("Create Calling subitems (%s)",
+                  qPrintable(path(0).join("/")));
 
     EventType* ct;
     ct = ((CallMapView*)widget())->eventType();
@@ -804,15 +805,15 @@ TreeMapItemList* CallMapCallingItem::children()
     SubCost v = _c->subCost(ct);
     if (v>s) {
       qDebug("Warning: CallingItem subVal %u > Sum %u (%s)",
-             (unsigned)v, (unsigned)s, _c->called()->prettyName().ascii());
+             (unsigned)v, (unsigned)s, qPrintable(_c->called()->prettyName()));
       v = s;
     }
     double newFactor = _factor * v / s;
 
 #if 0
     qDebug("CallingItem: Subitems of %s => %s, factor %f * %d/%d => %f",
-               _c->caller()->prettyName().ascii(),
-               _c->called()->prettyName().ascii(),
+               qPrintable(_c->caller()->prettyName()),
+               qPrintable(_c->called()->prettyName()),
                _factor, v, s, newFactor);
 #endif
     setSorting(-1);
@@ -903,7 +904,7 @@ bool CallMapCallerItem::isMarked(int) const
 TreeMapItemList* CallMapCallerItem::children()
 {
   if (!initialized()) {
-    //qDebug("Create Caller subitems (%s)", name().ascii());
+    //qDebug("Create Caller subitems (%s)", name().toAscii());
 
     EventType* ct;
     ct = ((CallMapView*)widget())->eventType();
@@ -915,8 +916,8 @@ TreeMapItemList* CallMapCallerItem::children()
 
 #if 0
     qDebug("CallerItem: Subitems of %s => %s, factor %f * %d/%d => %f",
-           _c->caller()->prettyName().ascii(),
-           _c->called()->prettyName().ascii(),
+           qPrintable(_c->caller()->prettyName()),
+           qPrintable(_c->called()->prettyName()),
            _factor, v, s, newFactor);
 #endif
     setSorting(-1);

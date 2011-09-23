@@ -165,7 +165,7 @@ void PartSelection::selectParts(const TracePartList& list)
 	if (!active && _partAreaWidget->isSelected(i)) {
 #if 0
 	    qDebug("PartSelection::selectParts: Part %s changed to unselected.",
-		   ((PartItem*)i)->part()->shortName().ascii());
+		   ((PartItem*)i)->part()->shortName());
 #endif
 
 	    _partAreaWidget->setSelected(i, false);
@@ -177,7 +177,7 @@ void PartSelection::selectParts(const TracePartList& list)
 	if (active && !_partAreaWidget->isSelected(i)) {
 #if 0
 	    qDebug("PartSelection::selectParts: Part %s changed to selected.",
-		   ((PartItem*)i)->part()->shortName().ascii());
+		   ((PartItem*)i)->part()->shortName()));
 #endif
 	    _partAreaWidget->setSelected(i, true);
 	}

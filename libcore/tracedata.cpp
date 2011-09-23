@@ -778,7 +778,7 @@ void TracePartFunction::update()
 
 #if TRACE_DEBUG
   qDebug("TracePartFunction::update %s (Callers %d, Callings %d, lines %d)",
-         name().toAscii().constData(), _partCallers.count(), _partCallings.count(),
+         qPrintable(name()), _partCallers.count(), _partCallings.count(),
          _partLines.count());
 #endif
 
@@ -1457,7 +1457,7 @@ void TraceLine::addLineCall(TraceLineCall* lineCall)
 
     qDebug("ERROR: Adding line call, line %d\n  of %s to\n  %s ?!",
            lineCall->line()->lineno(),
-           caller->info().toAscii().constData(), function->info().toAscii().constData());
+           qPrintable(caller->info()), qPrintable(function->info()));
     }
   }
 
@@ -1637,7 +1637,8 @@ TraceLineMap* TraceFunctionSource::lineMap()
       TracePartFunction* pf = (TracePartFunction*) ic;
 
       if (0) qDebug("PartFunction %s:%d",
-		    pf->function()->name().toAscii().constData(), pf->part()->partNumber());
+                    qPrintable(pf->function()->name()),
+                    pf->part()->partNumber());
 
       FixCost* fc = pf->firstFixCost();
       for(; fc; fc = fc->nextCostOfPartFunction()) {
@@ -1692,7 +1693,7 @@ TraceLineMap* TraceFunctionSource::lineMap()
       foreach(TracePartCall* pc, pf->partCallings()) {
 
 	  if (0) qDebug("PartCall %s:%d",
-			pc->call()->name().toAscii().constData(),
+			qPrintable(pc->call()->name()),
 			pf->part()->partNumber());
 
 	  FixCallCost* fcc = pc->firstFixCallCost();
@@ -1716,9 +1717,9 @@ TraceLineMap* TraceFunctionSource::lineMap()
 
 	      fcc->addTo(plc);
 	      if (0) qDebug("Add FixCallCost %s:%d/0x%s, CallCount %s",
-			    fcc->functionSource()->file()->shortName().toAscii().constData(),
-			    fcc->line(), fcc->addr().toString().toAscii().constData(),
-			    fcc->callCount().pretty().toAscii().constData());
+			    qPrintable(fcc->functionSource()->file()->shortName()),
+			    fcc->line(), qPrintable(fcc->addr().toString()),
+			    qPrintable(fcc->callCount().pretty()));
 	  }
       }
   }
@@ -2184,7 +2185,7 @@ TraceFunctionSource* TraceFunction::sourceFile(TraceFile* file,
 
 #if TRACE_DEBUG
     qDebug("Created SourceFile %s [TraceFunction::line]",
-           file->name().toAscii().constData());
+           qPrintable(file->name()));
 #endif
     file->addSourceFile(sourceFile);
     return sourceFile;
@@ -2327,7 +2328,7 @@ void TraceFunction::update()
 
 #if TRACE_DEBUG
   qDebug("Update %s (Callers %d, sourceFiles %d, instrs %d)",
-         _name.toAscii().constData(), _callers.count(),
+         qPrintable(_name), _callers.count(),
 	 _sourceFiles.count(), _instrMap ? _instrMap->count():0);
 #endif
 
@@ -2446,12 +2447,13 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
 
   if (0) {
       qDebug("%s (%d) Visiting %s",
-	     QString().fill(' ', d).toAscii().constData(), pNo, prettyName().toAscii().constData());
+             qPrintable(QString().fill(' ', d)),
+             pNo, qPrintable(prettyName()));
       qDebug("%s       Cum. %s, Max Caller %s, cut limit %s",
-	     QString().fill(' ', d).toAscii().constData(),
-	     inclusive()->subCost(0).pretty().toAscii().constData(),
-	     base.pretty().toAscii().constData(),
-	     cutLimit.pretty().toAscii().constData());
+             qPrintable(QString().fill(' ', d)),
+             qPrintable(inclusive()->subCost(0).pretty()),
+             qPrintable(base.pretty()),
+             qPrintable(cutLimit.pretty()));
   }
 
   foreach(TraceCall *callee, _callings) {
@@ -2460,9 +2462,9 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
       // cycle cut heuristic
       if (callee->subCost(0) < cutLimit) {
 	  if (0) qDebug("%s       Cut call to %s (cum. %s)",
-			QString().fill(' ', d).toAscii().constData(),
-			called->prettyName().toAscii().constData(),
-                        callee->subCost(0).pretty().toAscii().constData());
+			qPrintable(QString().fill(' ', d)),
+			qPrintable(called->prettyName()),
+			qPrintable(callee->subCost(0).pretty()));
 
 	  continue;
       }
@@ -2479,8 +2481,8 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
         _cycleLow = called->_cycleLow;
 
       if (0) qDebug("%s (low %d) Back to %s",
-                    QString().fill(' ', d).toAscii().constData(),
-                    _cycleLow, called->prettyName().toAscii().constData());
+                    qPrintable(QString().fill(' ', d)),
+                    _cycleLow, qPrintable(called->prettyName()));
     }
   }
 
@@ -2496,7 +2498,7 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
 
       TraceFunctionCycle* cycle = data()->functionCycle(this);
       if (0) qDebug("Found Cycle %d with base %s:",
-             cycle->cycleNo(), prettyName().toAscii().constData());
+             cycle->cycleNo(), qPrintable(prettyName()));
       while(*pTop) {
         TraceFunction* top = *pTop;
         cycle->add(top);
@@ -2505,7 +2507,7 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
         *pTop = top->_cycleStackDown;
         top->_cycleStackDown = 0;
 
-        if (0) qDebug("  %s", top->prettyName().toAscii().constData());
+        if (0) qDebug("  %s", qPrintable(top->prettyName()));
         if (top == this) break;
       }
     }
@@ -2532,7 +2534,8 @@ TraceInstrMap* TraceFunction::instrMap()
       TracePartFunction* pf = (TracePartFunction*) icost;
 
       if (0) qDebug("PartFunction %s:%d",
-		    pf->function()->name().toAscii().constData(), pf->part()->partNumber());
+                    qPrintable(pf->function()->name()),
+                    pf->part()->partNumber());
 
       FixCost* fc = pf->firstFixCost();
       for(; fc; fc = fc->nextCostOfPartFunction()) {
@@ -2587,7 +2590,7 @@ TraceInstrMap* TraceFunction::instrMap()
       foreach(TracePartCall* pc, pf->partCallings()) {
 
 	  if (0) qDebug("PartCall %s:%d",
-			pc->call()->name().toAscii().constData(),
+			qPrintable(pc->call()->name()),
 			pf->part()->partNumber());
 
 	  FixCallCost* fcc = pc->firstFixCallCost();
@@ -2615,9 +2618,9 @@ TraceInstrMap* TraceFunction::instrMap()
 
 	      fcc->addTo(pic);
 	      if (0) qDebug("Add FixCallCost %s:%d/0x%s, CallCount %s",
-			    fcc->functionSource()->file()->shortName().toAscii().constData(),
-			    fcc->line(), fcc->addr().toString().toAscii().constData(),
-			    fcc->callCount().pretty().toAscii().constData());
+			    qPrintable(fcc->functionSource()->file()->shortName()),
+			    fcc->line(), qPrintable(fcc->addr().toString()),
+			    qPrintable(fcc->callCount().pretty()));
 	  }
       }
   }

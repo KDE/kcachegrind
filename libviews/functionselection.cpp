@@ -218,7 +218,8 @@ void FunctionSelection::searchChanged(const QString& q)
   int ms = 100;
   if (q.length()<5) ms = 200;
   if (q.length()<2) ms = 300;
-  _searchTimer.start(ms,true);
+  _searchTimer.setSingleShot(true);
+  _searchTimer.start(ms);
 }
 
 void FunctionSelection::queryDelayed()
@@ -717,7 +718,7 @@ void FunctionSelection::query(QString query)
   }
   _searchString = query;
 
-  QRegExp re(query, false, true);
+  QRegExp re(query, Qt::CaseInsensitive, QRegExp::Wildcard);
   _groupSize.clear();
 
   TraceFunction* f = 0;
@@ -729,7 +730,7 @@ void FunctionSelection::query(QString query)
   for ( it = _data->functionMap().begin();
 	it != _data->functionMap().end(); ++it ) {
     f = &(*it);
-    if (re.search(f->prettyName())>=0) {
+    if (re.indexIn(f->prettyName())>=0) {
       if (_group) {
 	if (_groupType==ProfileContext::Object) {
 	  if (_groupSize.contains(f->object()))

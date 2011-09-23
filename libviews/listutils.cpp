@@ -118,8 +118,7 @@ QPixmap percentagePixmap(int w, int h, int percent, QColor c, bool framed)
 
 inline QColor partitionColor(int d, int max)
 {
-  return QColor( (720*d/max) % 360,
-                 255-(128*d/max), 192, QColor::Hsv);
+  return QColor::fromHsv((720*d/max) % 360, 255-(128*d/max), 192);
 }
 
 

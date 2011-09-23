@@ -120,7 +120,7 @@ void StackSelection::rebuildStackList()
 
 
   QList<QTreeWidgetItem*> items;
-  QTreeWidgetItem* activeItem;
+  QTreeWidgetItem* activeItem = 0;
   TraceCallList l = item->stack()->calls();
   for(int i=l.count()-1; i>=0; i--) {
       StackItem* si = new StackItem(this, 0, l.at(i));

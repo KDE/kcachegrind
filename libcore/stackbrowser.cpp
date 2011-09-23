@@ -255,16 +255,16 @@ HistoryItem::HistoryItem(Stack* stack, TraceFunction* function)
 
 /*
   qDebug("New Stack History Item (sRef %d): %s\n  %s",
-         _stack->refCount(), _function->name().ascii(),
-         _stack->toString().ascii());
+         _stack->refCount(), qPrintable(_function->name()),
+         qPrintable(_stack->toString()));
 */
 }
 
 HistoryItem::~HistoryItem()
 {
   if (0) qDebug("Deleting Stack History Item (sRef %d): %s",
-         _stack->refCount(),
-         _function->name().toAscii().constData());
+                _stack->refCount(),
+                qPrintable(_function->name()));
 
   if (_last)
     _last->_next = _next;
@@ -320,7 +320,7 @@ HistoryItem* StackBrowser::select(TraceFunction* f)
     _current->setLast(item);
   }
 
-  // qDebug("Selected %s in StackBrowser", f->name().ascii());
+  // qDebug("Selected %s in StackBrowser", qPrintable(f->name()));
 
   return _current;
 }

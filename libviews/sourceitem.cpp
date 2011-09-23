@@ -87,7 +87,7 @@ SourceItem::SourceItem(SourceView* sv, QTreeWidgetItem* parent,
   setTextAlignment(2, Qt::AlignRight);
 
   //qDebug("SourceItem: (file %d, line %d) Linecall to %s",
-  //       fileno, lineno, _lineCall->call()->called()->prettyName().ascii());
+  //       fileno, lineno, _lineCall->call()->called()->prettyName().toAscii());
 
   SubCost cc = _lineCall->callCount();
   QString callStr = "  ";
@@ -126,7 +126,7 @@ SourceItem::SourceItem(SourceView* sv, QTreeWidgetItem* parent,
   setTextAlignment(2, Qt::AlignRight);
 
   //qDebug("SourceItem: (file %d, line %d) Linecall to %s",
-  //       fileno, lineno, _lineCall->call()->called()->prettyName().ascii());
+  //       fileno, lineno, _lineCall->call()->called()->prettyName().toAscii());
 
   QString to;
   if (_lineJump->lineTo()->functionSource() == _line->functionSource())
@@ -302,7 +302,7 @@ SourceItemDelegate::SourceItemDelegate(SourceView *parent)
 }
 
 QSize SourceItemDelegate::sizeHint(const QStyleOptionViewItem &option,
-				   const QModelIndex &index)
+                                   const QModelIndex &index) const
 {
     QSize sz = QItemDelegate::sizeHint(option, index);
 
