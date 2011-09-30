@@ -7,6 +7,7 @@ Icon=kcachegrind
 Terminal=false
 Name=QCachegrind
 Name[ca]=QCachegrind
+Name[lt]=QCachegrind
 Name[nb]=QCachegrind
 Name[nl]=QCachegrind
 Name[pt]=QCachegrind
