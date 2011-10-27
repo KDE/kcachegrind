@@ -71,15 +71,15 @@ QPixmap colorPixmap(int w, int h, QColor c)
  */
 QPixmap percentagePixmap(int w, int h, int percent, QColor c, bool framed)
 {
-  int iw, ix1, ix2, ih, iy1, iy2;
+  int iw, ix1, ih, iy1, iy2;
 
   // inner rectangle to fill with bar
   if (framed) {
-    iw = w-2, ix1 = 1, ix2 = w-2;
+    iw = w-2, ix1 = 1;
     ih = h-2, iy1 = 1, iy2 = h-2;
   }
   else {
-    iw = w; ix1 = 0; ix2 = w-1;
+    iw = w; ix1 = 0;
     ih = h; iy1 = 0; iy2 = h-1;
   }
   
@@ -136,13 +136,13 @@ QPixmap partitionPixmap(int w, int h,
     }
 
   // inner rectangle to fill with bar
-  int iw, ix1, ix2, ih, iy1, iy2;
+  int iw, ix1, ih, iy1, iy2;
   if (framed) {
-    iw = w-2, ix1 = 1, ix2 = w-2;
+    iw = w-2, ix1 = 1;
     ih = h-2, iy1 = 1, iy2 = h-2;
   }
   else {
-    iw = w; ix1 = 0; ix2 = w-1;
+    iw = w; ix1 = 0;
     ih = h; iy1 = 0; iy2 = h-1;
   }
 
@@ -162,7 +162,7 @@ QPixmap partitionPixmap(int w, int h,
   QColor c, cLast;
   bool leftDrawn = false;
   int x1, x2=0;
-  int lastDiff=0, diff;
+  int diff;
   d=dmin;
   while (d<dmax+1) {
     val += hist[d];
@@ -202,7 +202,6 @@ QPixmap partitionPixmap(int w, int h,
     p.drawLine(x1, iy2, x2-1, iy2);
 
     lastPos = nextPos;
-    lastDiff = diff;
     cLast = c;
     d++;
   }

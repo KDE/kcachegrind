@@ -231,7 +231,6 @@ void QCGTopLevel::sidebarMenuAboutToShow()
 
 void QCGTopLevel::recentFilesMenuAboutToShow()
 {
-    QAction* action;
     QStringList recentFiles;
     QMenu *popup = _recentFilesMenuAction->menu();
 
@@ -247,7 +246,7 @@ void QCGTopLevel::recentFilesMenuAboutToShow()
     else {
 	foreach(const QString& file, recentFiles) {
 	    // paths shown to user should use OS-native separators
-	    action = popup->addAction(QDir::toNativeSeparators(file));
+	    popup->addAction(QDir::toNativeSeparators(file));
 	}
     }
 }
