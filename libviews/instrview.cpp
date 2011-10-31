@@ -61,6 +61,11 @@ static Addr parseAddr(char* buf)
     return addr;
 }
 
+static bool isHexDigit(char c)
+{
+    return (c >='0' && c <='9') || (c >='a' && c <='f');
+}
+
 /**
  * Parses a line from objdump assembly output, returning false for
  * a line without an assembly instruction. Otherwise, it sets the
@@ -84,15 +89,28 @@ static bool parseLine(const char* buf, Addr& addr,
     pos++;
     while(buf[pos]==' ' || buf[pos]=='\t') pos++;
 
-    // check for hex code, pattern "xx "* (with "x" being a lower case hex digit)
+    // check for hex code, patterns "xx "* / "xxxx "* / "xxxxxxxx"
+    // (with "x" being a lower case hex digit)
     start = pos;
     while(1) {
-	if (! ((buf[pos]>='0' && buf[pos]<='9') ||
-	       (buf[pos]>='a' && buf[pos]<='f')) ) break;
-	if (! ((buf[pos+1]>='0' && buf[pos+1]<='9') ||
-	       (buf[pos+1]>='a' && buf[pos+1]<='f')) ) break;
-	if (buf[pos+2] != ' ') break;
-	pos += 3;
+        if (! isHexDigit(buf[pos])) break;
+        if (! isHexDigit(buf[pos+1])) break;
+        if (buf[pos+2] == ' ') {
+            pos += 3;
+            continue;
+        }
+        if (! isHexDigit(buf[pos+2])) break;
+        if (! isHexDigit(buf[pos+3])) break;
+        if (buf[pos+4] == ' ') {
+            pos += 5;
+            continue;
+        }
+        if (! isHexDigit(buf[pos+4])) break;
+        if (! isHexDigit(buf[pos+5])) break;
+        if (! isHexDigit(buf[pos+6])) break;
+        if (! isHexDigit(buf[pos+7])) break;
+        if (buf[pos+8] != ' ') break;
+        pos += 9;
     }
     if (pos <= start) return false;
     code = QString::fromAscii(buf + start, pos - start - 1);
