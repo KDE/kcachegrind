@@ -34,6 +34,7 @@
 #include <QProgressBar>
 #include <QFile>
 #include <QEventLoop>
+#include <QProcess>
 #include <QtDBus/QDBusConnection>
 
 #include <ktoggleaction.h>
@@ -87,6 +88,7 @@ TopLevel::TopLevel()
     _statusbar = statusBar();
     _statusLabel = new QLabel(_statusbar);
     _statusbar->addWidget(_statusLabel, 1);
+    _ccProcess = 0;
 
     _layoutCount = 1;
     _layoutCurrent = 0;
@@ -2013,38 +2015,91 @@ void TopLevel::partsUnhideAllSlot()
 
 void TopLevel::forceTrace()
 {
-//  qDebug("forceTrace");
+    if (_ccProcess) {
+        // callgrind_control still running, cancel request
+        qDebug("TopLevel::forceTrace: killing old callgrind_control");
+        _ccProcess->kill();
+        delete _ccProcess;
+        _ccProcess = 0;
+        _ccOutput = QString();
+    }
+    if (!_taDump->isChecked()) return;
 
-  // Needs Callgrind now...
-  QFile cmd("callgrind.cmd");
-  if (!cmd.exists()) {
-    cmd.open(QIODevice::WriteOnly);
-    cmd.write("DUMP\n", 5);
-    cmd.close();
-  }
-  if (_taDump->isChecked())
-    QTimer::singleShot( 1000, this, SLOT(forceTraceReload()) );
-  else {
-    // cancel request
-    cmd.remove();
-  }
+    // get PID of first loaded part
+    int pid = 0;
+    TracePart* p = 0;
+    TracePartList pl;
+    if (_data) pl = _data->parts();
+    if (!pl.isEmpty()) p = pl.first();
+    if (p) pid = p->processID();
+    if (pid == 0) {
+        showMessage(i18n("Cannot determine receiver PID for dump request"),
+                    5000);
+        _taDump->setChecked(false);
+        return;
+    }
 
+    qDebug("TopLevel::forceTrace: run 'callgrind_control -d %d'", pid);
+
+    _ccProcess = new QProcess(this);
+    connect(_ccProcess, SIGNAL(readyReadStandardOutput()),
+            SLOT(ccReadOutput()));
+    connect(_ccProcess, SIGNAL(error(QProcess::ProcessError)),
+            SLOT(ccError(QProcess::ProcessError)));
+    connect(_ccProcess, SIGNAL(finished(int,QProcess::ExitStatus)),
+            SLOT(ccExit(int,QProcess::ExitStatus)));
+    _ccProcess->start(QString("callgrind_control -d %1").arg(pid),
+                      QIODevice::ReadOnly);
 }
 
-void TopLevel::forceTraceReload()
+void TopLevel::ccReadOutput()
 {
-//  qDebug("forceTraceReload");
+    QProcess* p = qobject_cast<QProcess*>(sender());
+    qDebug("TopLevel::ccReadOutput: QProcess %p", p);
 
-  QFile cmd("callgrind.cmd");
-  if (cmd.exists()) {
-    if (_taDump->isChecked())
-      QTimer::singleShot( 1000, this, SLOT(forceTraceReload()) );
-    return;
-  }
-  if (_taDump->isChecked()) {
-      _taDump->setChecked(false);
-      reload();
-  }
+    // signal from old/uninteresting process?
+    if (!_ccProcess) return;
+    if (p != _ccProcess) return;
+
+    _ccOutput.append(_ccProcess->readAllStandardOutput());
+}
+
+void TopLevel::ccError(QProcess::ProcessError e)
+{
+    QProcess* p = qobject_cast<QProcess*>(sender());
+    qDebug("TopLevel::ccError: Got %d from QProcess %p",
+           e, p);
+
+    // signal from old/uninteresting process?
+    if (!_ccProcess) return;
+    if (p != _ccProcess) return;
+
+    showMessage(i18n("Error running callgrind_control"), 5000);
+
+    _ccProcess->deleteLater();
+    _ccProcess = 0;
+}
+
+void TopLevel::ccExit(int exitCode, QProcess::ExitStatus s)
+{
+    QProcess* p = qobject_cast<QProcess*>(sender());
+    qDebug("TopLevel::ccExit: QProcess %p, exitCode %d",
+           p, exitCode);
+
+    // signal from old/uninteresting process?
+    if (!_ccProcess) return;
+    if (p != _ccProcess) return;
+    _ccProcess->deleteLater();
+    _ccProcess = 0;
+    _taDump->setChecked(false);
+
+    // if not successful no need to reload
+    if ((s == QProcess::CrashExit) || (exitCode != 0))
+        return;
+
+    // FIXME: Are we sure that file is completely
+    //        dumped after waiting one second?
+    QTimer::singleShot( 1000, this, SLOT(reload()) );
 }
 
 void TopLevel::forwardAboutToShow()
@@ -2317,5 +2372,6 @@ bool TopLevel::openDataFile(const QString& file)
         return false;
     }
 }
+
 
 #include "toplevel.moc"

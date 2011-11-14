@@ -25,6 +25,7 @@
 
 #include <qdatetime.h>
 #include <QLabel>
+#include <QProcess>
 
 #include <kxmlguiwindow.h>
 
@@ -148,7 +149,6 @@ public slots:
   void toggleCycles();
   void toggleHideTemplates();
   void forceTrace();
-  void forceTraceReload();
   void forwardAboutToShow();
   void forwardTriggered(QAction*);
   void backAboutToShow();
@@ -207,6 +207,11 @@ public slots:
   // progress in status bar, empty message disables progress display
   void showStatus(const QString& msg, int progress);
   void showMessage(const QString&, int msec);
+
+  // for running callgrind_control in the background
+  void ccReadOutput();
+  void ccError(QProcess::ProcessError);
+  void ccExit(int,QProcess::ExitStatus);
 
 private:
   void resetState();
@@ -283,6 +288,10 @@ private:
 
   // toplevel configuration options
   bool _showPercentage, _showExpanded, _showCycles, _hideTemplates;
+
+  // for running callgrind_control in the background
+  QProcess* _ccProcess;
+  QString _ccOutput;
 };
 
 #endif
