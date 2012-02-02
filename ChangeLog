@@ -1,3 +1,6 @@
+2011/11/14
+	* KCachegrind: use callgrind_control to request a dump.
+	  The old way will not work with Callgrind in VG > 3.7
+
 2011/9/23
 	* Compiles without Qt3 support
-	* Bump KCachegrind version to 0.7kde
