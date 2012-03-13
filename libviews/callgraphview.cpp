@@ -1994,6 +1994,7 @@ void CallGraphView::stopRendering()
 	_renderProcess->kill();
 
 	// forget about this process, not interesting any longer
+	_renderProcess->deleteLater();
 	_renderProcess = 0;
 	_unparsedOutput = QString();
 
@@ -2095,8 +2096,10 @@ void CallGraphView::readDotOutput()
     qDebug("CallGraphView::readDotOutput: QProcess %p", p);
 
     // signal from old/uninteresting process?
-    if (!_renderProcess) return;
-    if (p != _renderProcess) return;
+    if ((_renderProcess == 0) || (p != _renderProcess)) {
+        p->deleteLater();
+        return;
+    }
 
     _unparsedOutput.append(_renderProcess->readAllStandardOutput());
 }
@@ -2108,12 +2111,15 @@ void CallGraphView::dotError()
 	   p->error(), p);
 
     // signal from old/uninteresting process?
-    if (!_renderProcess) return;
-    if (p != _renderProcess) return;
+    if ((_renderProcess == 0) || (p != _renderProcess)) {
+        p->deleteLater();
+        return;
+    }
 
     showRenderError(_renderProcess->readAllStandardError());
 
     // not interesting any longer
+    _renderProcess->deleteLater();
     _renderProcess = 0;
 }
 
@@ -2122,11 +2128,15 @@ void CallGraphView::dotExited()
 {
     QProcess* p = qobject_cast<QProcess*>(sender());
     qDebug("CallGraphView::dotExited: QProcess %p", p);
-    delete p;
 
     // signal from old/uninteresting process?
-    if (!_renderProcess) return;
-    if (p != _renderProcess) return;
+    if ((_renderProcess == 0) || (p != _renderProcess)) {
+        p->deleteLater();
+        return;
+    }
+
+    _unparsedOutput.append(_renderProcess->readAllStandardOutput());
+    _renderProcess->deleteLater();
     _renderProcess = 0;
 
 	QString line, cmd;
