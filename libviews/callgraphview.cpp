@@ -2064,6 +2064,10 @@ void CallGraphView::refresh()
 
 	_unparsedOutput = QString();
 
+        // display warning if layouting takes > 1s
+        _renderTimer.setSingleShot(true);
+        _renderTimer.start(1000);
+
 	_renderProcess = new QProcess(this);
 	connect(_renderProcess, SIGNAL(readyReadStandardOutput()),
 		this, SLOT(readDotOutput()));
@@ -2071,20 +2075,18 @@ void CallGraphView::refresh()
 		this, SLOT(dotError()));
 	connect(_renderProcess, SIGNAL(finished(int,QProcess::ExitStatus)),
 		this, SLOT(dotExited()));
-	_renderProcess->start(renderProgram, renderArgs);
 
+        _renderProcessCmdLine =  renderProgram + " " + renderArgs.join(" ");
+        qDebug("CallGraphView::refresh: Starting process %p, '%s'",
+               _renderProcess, qPrintable(_renderProcessCmdLine));
+
+	// _renderProcess can be set to 0 on error after start().
+	// thus, we use a local copy afterwards
+	QProcess* p = _renderProcess;
+	p->start(renderProgram, renderArgs);
 	_exporter.reset(_data, _activeItem, _eventType, _groupType);
-	_exporter.writeDot(_renderProcess);
-	_renderProcess->closeWriteChannel();
-
-	_renderProcessCmdLine =  renderProgram + " " + renderArgs.join(" ");
-
-	qDebug("CallGraphView::refresh: Started process %p, '%s'",
-	       _renderProcess, qPrintable(_renderProcessCmdLine));
-
-	// layouting of more than seconds is dubious
-	_renderTimer.setSingleShot(true);
-	_renderTimer.start(1000);
+	_exporter.writeDot(p);
+	p->closeWriteChannel();
 }
 
 void CallGraphView::readDotOutput()
