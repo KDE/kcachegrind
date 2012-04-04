@@ -327,15 +327,15 @@ TabView::TabView(TraceItemView* parentView, QWidget* parent)
 
   _rightTW = new TabWidget(this, _mainSplitter);
   _rightTW->setObjectName("Right");
-  connect(_rightTW, SIGNAL(currentChanged(QWidget*)),
-          this, SLOT(tabChanged(QWidget*)));
+  connect(_rightTW, SIGNAL(currentChanged(int)),
+          this, SLOT(tabChanged(int)));
   connect(_rightTW, SIGNAL(visibleRectChanged(TabWidget*)),
           this, SLOT(visibleRectChangedSlot(TabWidget*)));
 
   _topTW = new TabWidget(this, _leftSplitter);
   _topTW->setObjectName("Top");
-  connect(_topTW, SIGNAL(currentChanged(QWidget*)),
-          this, SLOT(tabChanged(QWidget*)));
+  connect(_topTW, SIGNAL(currentChanged(int)),
+          this, SLOT(tabChanged(int)));
   connect(_topTW, SIGNAL(visibleRectChanged(TabWidget*)),
           this, SLOT(visibleRectChangedSlot(TabWidget*)));
 
@@ -345,16 +345,16 @@ TabView::TabView(TraceItemView* parentView, QWidget* parent)
   _leftTW = new TabWidget(this, _bottomSplitter);
   _leftTW->setObjectName("Left");
   _leftTW->setTabPosition(QTabWidget::South);
-  connect(_leftTW, SIGNAL(currentChanged(QWidget*)),
-          this, SLOT(tabChanged(QWidget*)));
+  connect(_leftTW, SIGNAL(currentChanged(int)),
+          this, SLOT(tabChanged(int)));
   connect(_leftTW, SIGNAL(visibleRectChanged(TabWidget*)),
           this, SLOT(visibleRectChangedSlot(TabWidget*)));
 
   _bottomTW = new TabWidget(this, _bottomSplitter);
   _bottomTW->setObjectName("Bottom");
   _bottomTW->setTabPosition(QTabWidget::South);
-  connect(_bottomTW, SIGNAL(currentChanged(QWidget*)),
-          this, SLOT(tabChanged(QWidget*)));
+  connect(_bottomTW, SIGNAL(currentChanged(int)),
+          this, SLOT(tabChanged(int)));
   connect(_bottomTW, SIGNAL(visibleRectChanged(TabWidget*)),
           this, SLOT(visibleRectChangedSlot(TabWidget*)));
 
@@ -772,8 +772,12 @@ void TabView::doUpdate(int changeType, bool force)
 }
 
 
-void TabView::tabChanged(QWidget* w)
+void TabView::tabChanged(int i)
 {
+    TabWidget* tw = qobject_cast<TabWidget*>(sender());
+    if (!tw) return;
+    QWidget* w = tw->widget(i);
+
     foreach(TraceItemView *v, _tabs)
 	if (v->widget() == w) v->updateView();
 }

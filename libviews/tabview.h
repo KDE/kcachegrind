@@ -145,7 +145,7 @@ public:
   void restoreOptions(const QString& prefix, const QString& postfix);
 
 public slots:
-  void tabChanged(QWidget*);
+  void tabChanged(int);
   void visibleRectChangedSlot(TabWidget*);
 
 signals:

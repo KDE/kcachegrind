@@ -26,7 +26,6 @@
 
 #include <QTreeWidget>
 #include <QItemDelegate>
-#include <QColorGroup>
 
 #include "tracedata.h"
 
