@@ -142,7 +142,7 @@ public:
    * The maximal number of subcosts a ProfileCostArray can have.
    */
   static const int MaxRealIndex;
-#define MaxRealIndexValue 20
+#define MaxRealIndexValue 30
   static const int InvalidIndex;
 
 
