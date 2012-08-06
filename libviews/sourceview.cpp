@@ -872,7 +872,8 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
   file.close();
 
-  // Resize column 1/2 to contents
+  // Resize column 0 (line number) and 1/2 (cost) to contents
+  header()->setResizeMode(0, QHeaderView::ResizeToContents);
   header()->setResizeMode(1, QHeaderView::ResizeToContents);
   header()->setResizeMode(2, QHeaderView::ResizeToContents);
 
@@ -885,6 +886,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   header()->setSortIndicatorShown(false);
 
   // Reallow interactive column size change after resizing to content
+  header()->setResizeMode(0, QHeaderView::Interactive);
   header()->setResizeMode(1, QHeaderView::Interactive);
   header()->setResizeMode(2, QHeaderView::Interactive);
 
