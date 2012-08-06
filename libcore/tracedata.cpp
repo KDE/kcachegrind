@@ -814,8 +814,7 @@ void TracePartFunction::update()
   if (_partLines.count()>0) {
     ProfileCostArray::clear();
 
-    TracePartLine* line;
-    for (line = _partLines.first(); line; line = _partLines.next())
+    foreach(TracePartLine* line, _partLines)
       addCost(line);
   }
 #else

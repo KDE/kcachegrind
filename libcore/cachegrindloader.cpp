@@ -1081,12 +1081,14 @@ int CachegrindLoader::loadInternal(TraceData* data,
       ensureFunction();
 
 
-#if USE_FIXCOST
+
       if (!currentFunctionSource ||
-	  (currentFunctionSource->file() != currentFile))
+          (currentFunctionSource->file() != currentFile)) {
 	  currentFunctionSource = currentFunction->sourceFile(currentFile,
 							      true);
-#else
+      }
+
+#if !USE_FIXCOST
       if (hasAddrInfo) {
 	  if (!currentInstr ||
 	      (currentInstr->addr() != currentPos.fromAddr)) {
@@ -1099,7 +1101,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 	        continue;
 	      }
 
-	      currentPartInstr = currentInstr->partInstr(part,
+	      currentPartInstr = currentInstr->partInstr(_part,
 							 currentPartFunction);
 	  }
       }
@@ -1108,10 +1110,9 @@ int CachegrindLoader::loadInternal(TraceData* data,
 	  if (!currentLine ||
 	      (currentLine->lineno() != currentPos.fromLine)) {
 
-	    currentLine = currentFunction->line(currentFile,
-						currentPos.fromLine,
-						true);
-	    currentPartLine = currentLine->partLine(part,
+	    currentLine = currentFunctionSource->line(currentPos.fromLine,
+						      true);
+	    currentPartLine = currentLine->partLine(_part,
 						    currentPartFunction);
 	  }
 	  if (hasAddrInfo && currentInstr)
@@ -1145,7 +1146,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 #else
       if (hasAddrInfo) {
 	  TracePartInstr* partInstr;
-	  partInstr = currentInstr->partInstr(part, currentPartFunction);
+	  partInstr = currentInstr->partInstr(_part, currentPartFunction);
 
 	  if (hasLineInfo) {
 	      // we need to set <line> back after reading for the line
@@ -1161,7 +1162,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 
       if (hasLineInfo) {
 	  TracePartLine* partLine;
-	  partLine = currentLine->partLine(part, currentPartFunction);
+	  partLine = currentLine->partLine(_part, currentPartFunction);
 	  partLine->addCost(mapping, line);
       }
 #endif
@@ -1193,7 +1194,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 	  TracePartInstrCall* partInstrCall;
 
 	  instrCall = calling->instrCall(currentInstr);
-	  partInstrCall = instrCall->partInstrCall(part, partCalling);
+	  partInstrCall = instrCall->partInstrCall(_part, partCalling);
 	  partInstrCall->addCallCount(currentCallCount);
 
 	  if (hasLineInfo) {
@@ -1216,7 +1217,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 	  TracePartLineCall* partLineCall;
 
 	  lineCall = calling->lineCall(currentLine);
-	  partLineCall = lineCall->partLineCall(part, partCalling);
+	  partLineCall = lineCall->partLineCall(_part, partCalling);
 
 	  partLineCall->addCallCount(currentCallCount);
 	  partLineCall->addCost(mapping, line);
@@ -1260,6 +1261,36 @@ int CachegrindLoader::loadInternal(TraceData* data,
 			 targetSource,
 			 (nextLineType == CondJump),
 			 jumpsExecuted, jumpsFollowed);
+#else
+	if (hasAddrInfo) {
+	    TraceInstr* jumpToInstr;
+	    TraceInstrJump* instrJump;
+	    TracePartInstrJump* partInstrJump;
+
+	    jumpToInstr = currentJumpToFunction->instr(targetPos.fromAddr,
+						       true);
+	    instrJump = currentInstr->instrJump(jumpToInstr,
+						(nextLineType == CondJump));
+	    partInstrJump = instrJump->partInstrJump(_part);
+	    partInstrJump->addExecutedCount(jumpsExecuted);
+	    if (nextLineType == CondJump)
+		partInstrJump->addFollowedCount(jumpsFollowed);
+	}
+
+        if (hasLineInfo) {
+            TraceLine* jumpToLine;
+            TraceLineJump* lineJump;
+            TracePartLineJump* partLineJump;
+
+	    jumpToLine = targetSource->line(targetPos.fromLine, true);
+	    lineJump = currentLine->lineJump(jumpToLine,
+					     (nextLineType == CondJump));
+	    partLineJump = lineJump->partLineJump(_part);
+
+            partLineJump->addExecutedCount(jumpsExecuted);
+            if (nextLineType == CondJump)
+                partLineJump->addFollowedCount(jumpsFollowed);
+        }
 #endif
 
       if (0) {
