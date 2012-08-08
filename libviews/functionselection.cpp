@@ -34,6 +34,8 @@
 #include <QDebug>
 #include <QTreeView>
 #include <QHeaderView>
+#include <QToolTip>
+#include <QHelpEvent>
 
 #include "traceitemview.h"
 #include "stackbrowser.h"
@@ -41,6 +43,47 @@
 #include "globalconfig.h"
 #include "functionlistmodel.h"
 
+
+// custom item delegate for function list
+AutoToolTipDelegate::AutoToolTipDelegate(QObject* parent)
+    : QStyledItemDelegate(parent)
+{}
+
+AutoToolTipDelegate::~AutoToolTipDelegate()
+{}
+
+bool AutoToolTipDelegate::helpEvent(QHelpEvent* e, QAbstractItemView* view,
+                                    const QStyleOptionViewItem& option,
+                                    const QModelIndex& index)
+{
+    if (!e || !view)
+        return false;
+
+    if ( e->type() != QEvent::ToolTip )
+        return QStyledItemDelegate::helpEvent(e, view, option, index);
+
+    QRect rect = view->visualRect(index);
+    QSize size = sizeHint(option, index);
+    if ( rect.width() < size.width() ) {
+        QVariant tooltip = index.data(Qt::DisplayRole);
+        if ( tooltip.canConvert<QString>() ) {
+            QToolTip::showText(e->globalPos(), tooltip.toString(), view );
+            return true;
+        }
+    }
+
+    if ( !QStyledItemDelegate::helpEvent( e, view, option, index ) )
+        QToolTip::hideText();
+
+    return true;
+}
+
+
+
+
+//
+// FunctionSelection
+//
 
 FunctionSelection::FunctionSelection( TopLevelBase* top,
 				      QWidget* parent)
@@ -96,6 +139,7 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
   functionList = new QTreeView(this);
   functionList->setRootIsDecorated(false);
   functionList->setAllColumnsShowFocus(true);
+  functionList->setAutoScroll(false);
   functionList->setContextMenuPolicy(Qt::CustomContextMenu);
   functionList->setUniformRowHeights(true);
   functionList->header()->setClickable(true);
@@ -105,6 +149,7 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
   // for columns 3 and 4 (all others get resized)
   functionList->header()->setDefaultSectionSize(200);
   functionList->setModel(functionListModel);
+  functionList->setItemDelegate(new AutoToolTipDelegate(functionList));
   vboxLayout->addWidget(functionList);
 
   // order has to match mapping in groupTypeSelected()

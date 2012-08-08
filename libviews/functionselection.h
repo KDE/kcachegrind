@@ -26,6 +26,7 @@
 #include <QTimer>
 #include <QWidget>
 #include <QModelIndex>
+#include <QStyledItemDelegate>
 
 #include "tracedata.h"
 #include "traceitemview.h"
@@ -106,6 +107,24 @@ private:
   FunctionListModel* functionListModel;
 
   Qt::SortOrder _functionListSortOrder;
+};
+
+
+/* Custom item delegate for function list:
+ * show tooltip for function name if truncated.
+ * (thanks to http://www.mimec.org/node/337)
+ */
+class AutoToolTipDelegate : public QStyledItemDelegate
+{
+    Q_OBJECT
+public:
+    AutoToolTipDelegate(QObject* parent = 0);
+    ~AutoToolTipDelegate();
+
+public slots:
+    bool helpEvent( QHelpEvent* e, QAbstractItemView* view,
+                    const QStyleOptionViewItem& option,
+                    const QModelIndex& index );
 };
 
 #endif
