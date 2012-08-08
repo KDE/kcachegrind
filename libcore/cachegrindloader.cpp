@@ -87,6 +87,7 @@ private:
   TraceObject* currentObject;
   TracePartObject* currentPartObject;
   TraceFile* currentFile;
+  TraceFile* currentFunctionFile;
   TracePartFile* currentPartFile;
   TraceFunction* currentFunction;
   TracePartFunction* currentPartFunction;
@@ -661,6 +662,7 @@ void CachegrindLoader::clearPosition()
   currentPartFunction = 0;
   currentFunctionSource = 0;
   currentFile = 0;
+  currentFunctionFile = 0;
   currentPartFile = 0;
   currentObject = 0;
   currentPartObject = 0;
@@ -782,9 +784,17 @@ int CachegrindLoader::loadInternal(TraceData* data,
 
 	case 'f':
 
-	    // fl=, fi=, fe=
-	    if (line.stripPrefix("l=") ||
-		line.stripPrefix("i=") ||
+	    // fl=
+	    if (line.stripPrefix("l=")) {
+
+	      setFile(line);
+	      // this is the default for new functions
+	      currentFunctionFile = currentFile;
+	      continue;
+	    }
+
+	    // fi=, fe=
+	    if (line.stripPrefix("i=") ||
 		line.stripPrefix("e=")) {
 
 	      setFile(line);
@@ -794,6 +804,8 @@ int CachegrindLoader::loadInternal(TraceData* data,
 	    // fn=
 	    if (line.stripPrefix("n=")) {
 
+	      if (currentFile != currentFunctionFile)
+		  currentFile = currentFunctionFile;
 	      setFunction(line);
 
 	      // on a new function, update status
