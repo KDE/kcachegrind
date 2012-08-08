@@ -1,7 +1,7 @@
 /****************************************************************************
 **
 ** Copied from Qt 4.6.0 sources, directory tools/shared/qtgradienteditor
-** with small modifications to allow compilation with Qt 4.4
+** with small modifications to allow compilation with Qt 4.4 and Qt 5.0
 **
 ** Copyright (C) 2009 Nokia Corporation and/or its subsidiary(-ies).
 ** All rights reserved.
@@ -34,11 +34,13 @@
 ****************************************************************************/
 
 #include "qtcolorbutton.h"
-#include <QtGui/QColorDialog>
-#include <QtGui/QPainter>
-#include <QtCore/QMimeData>
-#include <QtGui/QDragEnterEvent>
-#include <QtGui/QApplication>
+
+#include <QColorDialog>
+#include <QPainter>
+#include <QMimeData>
+#include <QDrag>
+#include <QDragEnterEvent>
+#include <QApplication>
 
 QT_BEGIN_NAMESPACE
 

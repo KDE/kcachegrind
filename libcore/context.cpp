@@ -16,6 +16,8 @@
    Boston, MA 02110-1301, USA.
 */
 
+#include <QObject>
+
 #include "context.h"
 
 //---------------------------------------------------
