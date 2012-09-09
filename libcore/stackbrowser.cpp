@@ -213,7 +213,7 @@ Stack* Stack::split(TraceFunction* f)
 
   // cycles are listed on there own
   if (f->cycle() == f) return 0;
-  if (_top->cycle() == _top) return false;
+  if (_top->cycle() == _top) return 0;
 
   foreach(TraceCall* c, calls) {
     foreach(TraceCall* c2, c->called()->callings()) {
