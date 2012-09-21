@@ -2020,12 +2020,14 @@ void QCGTopLevel::loadProgress(int progress)
 
 void QCGTopLevel::loadError(int line, const QString& msg)
 {
-    qCritical() << "Loading" << _filename << ":" << line << ": " << msg.toAscii();
+    qCritical() << "Loading" << _filename.toLatin1()
+                << ":" << line << ": " << msg.toLatin1();
 }
 
 void QCGTopLevel::loadWarning(int line, const QString& msg)
 {
-    qWarning() << "Loading" << _filename.toAscii() << ":" << line << ": " << msg.toAscii();
+    qWarning() << "Loading" << _filename.toLatin1()
+               << ":" << line << ": " << msg.toLatin1();
 }
 
 #include "qcgtoplevel.moc"

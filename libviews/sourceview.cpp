@@ -362,7 +362,11 @@ void SourceView::refresh()
   }
 
   if (!_eventType2) {
+#if QT_VERSION >= 0x050000
+      header()->setSectionResizeMode(2, QHeaderView::Interactive);
+#else
       header()->setResizeMode(2, QHeaderView::Interactive);
+#endif
       setColumnWidth(2, 0);
   }
   // reset to the original position - this is useful when the view
@@ -873,9 +877,15 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   file.close();
 
   // Resize column 0 (line number) and 1/2 (cost) to contents
+#if QT_VERSION >= 0x050000
+  header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+  header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+  header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
+#else
   header()->setResizeMode(0, QHeaderView::ResizeToContents);
   header()->setResizeMode(1, QHeaderView::ResizeToContents);
   header()->setResizeMode(2, QHeaderView::ResizeToContents);
+#endif
 
   setSortingEnabled(false);
   addTopLevelItems(items);
@@ -886,9 +896,15 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
   header()->setSortIndicatorShown(false);
 
   // Reallow interactive column size change after resizing to content
+#if QT_VERSION >= 0x050000
+  header()->setSectionResizeMode(0, QHeaderView::Interactive);
+  header()->setSectionResizeMode(1, QHeaderView::Interactive);
+  header()->setSectionResizeMode(2, QHeaderView::Interactive);
+#else
   header()->setResizeMode(0, QHeaderView::Interactive);
   header()->setResizeMode(1, QHeaderView::Interactive);
   header()->setResizeMode(2, QHeaderView::Interactive);
+#endif
 
   if (selected) item = selected;
   if (item) first = item;

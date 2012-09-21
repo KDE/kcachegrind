@@ -302,9 +302,10 @@ void FunctionListModel::computeFilteredList()
 
 void FunctionListModel::computeTopList()
 {
+    beginResetModel();
     _topList.clear();
     if (_filteredList.isEmpty()) {
-        reset();
+        endResetModel();
         return;
     }
 
@@ -324,7 +325,7 @@ void FunctionListModel::computeTopList()
     qSort(maxList.begin(), maxList.end(), lessThan);
     _topList.append(maxList);
 
-    reset();
+    endResetModel();
 }
 
 QString FunctionListModel::getName(TraceFunction *f) const

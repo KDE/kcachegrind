@@ -49,7 +49,7 @@ public:
     template<typename T>
     inline T value(const QString & key,
 		   const QVariant & defaultValue = QVariant()) const
-    { return qVariantValue<T>( value(key, defaultValue) ); }
+    { return qvariant_cast<T>( value(key, defaultValue) ); }
 
 protected:
     ConfigGroup();

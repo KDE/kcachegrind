@@ -1897,7 +1897,7 @@ QString TraceFunction::prettyName() const
       res = QString();
       int d = 0;
       for(int i=0;i<_name.length();i++) {
-          switch(_name[i].toAscii()) {
+          switch(_name[i].toLatin1()) {
           case '<':
               if (d<=0) res.append(_name[i]);
               d++;
@@ -1951,7 +1951,7 @@ QString TraceFunction::formattedName() const
     QString rich("<b>");
     int d = 0;
     for(int i=0;i<_name.length();i++) {
-        switch(_name[i].toAscii()) {
+        switch(_name[i].toLatin1()) {
         case '&':
             rich.append("&amp;");
             break;

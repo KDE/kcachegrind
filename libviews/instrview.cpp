@@ -113,7 +113,7 @@ static bool parseLine(const char* buf, Addr& addr,
         pos += 9;
     }
     if (pos <= start) return false;
-    code = QString::fromAscii(buf + start, pos - start - 1);
+    code = QString::fromLatin1(buf + start, pos - start - 1);
 
     // skip whitespace
     while(buf[pos]==' ' || buf[pos]=='\t') pos++;
@@ -121,7 +121,7 @@ static bool parseLine(const char* buf, Addr& addr,
     // check for mnemonic
     start = pos;
     while(buf[pos] && buf[pos]!=' ' && buf[pos]!='\t') pos++;
-    mnemonic = QString::fromAscii(buf + start, pos - start);
+    mnemonic = QString::fromLatin1(buf + start, pos - start);
 
     // skip whitespace
     while(buf[pos]==' '|| buf[pos]=='\t') pos++;
@@ -135,9 +135,9 @@ static bool parseLine(const char* buf, Addr& addr,
 
     // maximal 50 chars
     if (operandsLen > 50)
-	operands = QString::fromAscii(buf + pos, 47) + QString("...");
+        operands = QString::fromLatin1(buf + pos, 47) + QString("...");
     else
-	operands = QString::fromAscii(buf+pos, operandsLen);
+        operands = QString::fromLatin1(buf+pos, operandsLen);
 
     if (0) qDebug("For 0x%s: Code '%s', Mnemonic '%s', Operands '%s'",
                   qPrintable(addr.toString()), qPrintable(code),
@@ -434,7 +434,11 @@ void InstrView::doUpdate(int changeType, bool)
 
 void InstrView::setColumnWidths()
 {
+#if QT_VERSION >= 0x050000
+    header()->setSectionResizeMode(4, QHeaderView::Interactive);
+#else
     header()->setResizeMode(4, QHeaderView::Interactive);
+#endif
     if (_showHexCode) {
         setColumnWidth(4, _lastHexCodeWidth);
     }
@@ -502,8 +506,14 @@ void InstrView::refresh()
     setColumnWidth(4, 0);   // hex code column
     setColumnWidth(5, 50);  // command column
     setColumnWidth(6, 250); // arg column
+
     // reset to automatic sizing to get column width
+#if QT_VERSION >= 0x050000
+    header()->setSectionResizeMode(4, QHeaderView::ResizeToContents);
+#else
     header()->setResizeMode(4, QHeaderView::ResizeToContents);
+#endif
+
 
     if (_eventType)
       headerItem()->setText(1, _eventType->name());
@@ -604,7 +614,11 @@ void InstrView::refresh()
     setColumnWidths();
 
     if (!_eventType2) {
+#if QT_VERSION >= 0x050000
+        header()->setSectionResizeMode(2, QHeaderView::Interactive);
+#else
         header()->setResizeMode(2, QHeaderView::Interactive);
+#endif
         setColumnWidth(2, 0);
     }
 
@@ -993,9 +1007,15 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     }
 
     // Resize column 1/2 to contents
+#if QT_VERSION >= 0x050000
+    header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+    header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+    header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
+#else
     header()->setResizeMode(0, QHeaderView::ResizeToContents);
     header()->setResizeMode(1, QHeaderView::ResizeToContents);
     header()->setResizeMode(2, QHeaderView::ResizeToContents);
+#endif
 
     setSortingEnabled(false);
     addTopLevelItems(items);
@@ -1006,9 +1026,15 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     header()->setSortIndicatorShown(false);
 
     // Reallow interactive column size change after resizing to content
+#if QT_VERSION >= 0x050000
+    header()->setSectionResizeMode(0, QHeaderView::Interactive);
+    header()->setSectionResizeMode(1, QHeaderView::Interactive);
+    header()->setSectionResizeMode(2, QHeaderView::Interactive);
+#else
     header()->setResizeMode(0, QHeaderView::Interactive);
     header()->setResizeMode(1, QHeaderView::Interactive);
     header()->setResizeMode(2, QHeaderView::Interactive);
+#endif
 
     if (selected) item = selected;
     if (item) first = item;

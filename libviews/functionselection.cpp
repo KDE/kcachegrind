@@ -123,7 +123,12 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
   QStringList groupHeader;
   groupHeader << tr("Self") << tr("Group");
   groupList->setHeaderLabels(groupHeader);
+
+#if QT_VERSION >= 0x050000
+  groupList->header()->setSectionsClickable(true);
+#else
   groupList->header()->setClickable(true);
+#endif
   groupList->header()->setSortIndicatorShown(false);
   groupList->header()->stretchLastSection();
   groupList->setIconSize(QSize(99,99));
@@ -142,10 +147,15 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
   functionList->setAutoScroll(false);
   functionList->setContextMenuPolicy(Qt::CustomContextMenu);
   functionList->setUniformRowHeights(true);
+#if QT_VERSION >= 0x050000
+  functionList->header()->setSectionsClickable(true);
+  functionList->header()->setSectionResizeMode(QHeaderView::Interactive);
+#else
   functionList->header()->setClickable(true);
+  functionList->header()->setResizeMode(QHeaderView::Interactive);
+#endif
   functionList->header()->setSortIndicatorShown(false);
   functionList->header()->setSortIndicator(0, Qt::DescendingOrder);
-  functionList->header()->setResizeMode(QHeaderView::Interactive);
   // for columns 3 and 4 (all others get resized)
   functionList->header()->setDefaultSectionSize(200);
   functionList->setModel(functionListModel);
@@ -423,7 +433,12 @@ void FunctionSelection::doUpdate(int changeType, bool)
 
     if (changeType == eventTypeChanged) {
         int i;
+
+#if QT_VERSION >= 0x050000
+        groupList->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+#else
         groupList->header()->setResizeMode(0, QHeaderView::ResizeToContents);
+#endif
         // need to disable sorting! Otherwise each change of shown cost
         // reorders list and changes order returned by topLevelItem()
         groupList->setSortingEnabled(false);
@@ -431,7 +446,11 @@ void FunctionSelection::doUpdate(int changeType, bool)
             CostListItem* item = (CostListItem*) groupList->topLevelItem(i);
             item->setEventType(_eventType);
         }
+#if QT_VERSION >= 0x050000
+        groupList->header()->setSectionResizeMode(0, QHeaderView::Interactive);
+#else
         groupList->header()->setResizeMode(0, QHeaderView::Interactive);
+#endif
         groupList->setSortingEnabled(true);
         groupList->header()->setSortIndicatorShown(false);
 
@@ -651,14 +670,22 @@ void FunctionSelection::refresh()
       items.append(item);
   }
 
+#if QT_VERSION >= 0x050000
+  groupList->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+#else
   groupList->header()->setResizeMode(0, QHeaderView::ResizeToContents);
+#endif
   groupList->setSortingEnabled(false);
   groupList->addTopLevelItems(items);
   groupList->setSortingEnabled(true);
   // always reset to cost sorting
   groupList->sortByColumn(0, Qt::DescendingOrder);
   groupList->header()->setSortIndicatorShown(false);
+#if QT_VERSION >= 0x050000
+  groupList->header()->setSectionResizeMode(0, QHeaderView::Interactive);
+#else
   groupList->header()->setResizeMode(0, QHeaderView::Interactive);
+#endif
 
   if (activeItem) {
     groupList->scrollToItem(activeItem);

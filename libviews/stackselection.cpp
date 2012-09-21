@@ -133,9 +133,15 @@ void StackSelection::rebuildStackList()
       activeItem = si;
   items.prepend(si);
 
+#if QT_VERSION >= 0x050000
+  _stackList->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+  _stackList->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+  _stackList->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
+#else
   _stackList->header()->setResizeMode(0, QHeaderView::ResizeToContents);
   _stackList->header()->setResizeMode(1, QHeaderView::ResizeToContents);
   _stackList->header()->setResizeMode(2, QHeaderView::ResizeToContents);
+#endif
 
   _stackList->addTopLevelItems(items);
   if (activeItem) {
@@ -144,9 +150,15 @@ void StackSelection::rebuildStackList()
     _stackList->scrollToItem(activeItem);
   }
 
+#if QT_VERSION >= 0x050000
+  _stackList->header()->setSectionResizeMode(0, QHeaderView::Interactive);
+  _stackList->header()->setSectionResizeMode(1, QHeaderView::Interactive);
+  _stackList->header()->setSectionResizeMode(2, QHeaderView::Interactive);
+#else
   _stackList->header()->setResizeMode(0, QHeaderView::Interactive);
   _stackList->header()->setResizeMode(1, QHeaderView::Interactive);
   _stackList->header()->setResizeMode(2, QHeaderView::Interactive);
+#endif
 
   if (!_eventType2) {
     _stackList->setColumnWidth(1, 0);
@@ -196,8 +208,13 @@ void StackSelection::browserDown()
 
 void StackSelection::refresh()
 {
+#if QT_VERSION >= 0x050000
+    _stackList->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+    _stackList->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+#else
     _stackList->header()->setResizeMode(0, QHeaderView::ResizeToContents);
     _stackList->header()->setResizeMode(1, QHeaderView::ResizeToContents);
+#endif
 
     // there is no resorting allowed, so this is save
     for(int i = 0; i < _stackList->topLevelItemCount(); i++) {
@@ -206,7 +223,11 @@ void StackSelection::refresh()
     }
 
     if (!_eventType2) {
+#if QT_VERSION >= 0x050000
+        _stackList->header()->setSectionResizeMode(1, QHeaderView::Interactive);
+#else
         _stackList->header()->setResizeMode(1, QHeaderView::Interactive);
+#endif
         _stackList->setColumnWidth(1, 0);
     }
 }

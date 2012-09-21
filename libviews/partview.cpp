@@ -158,9 +158,13 @@ void PartView::doUpdate(int changeType, bool)
     }
 
     if (changeType == eventTypeChanged) {
-
+#if QT_VERSION >= 0x050000
+        header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+        header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
+#else
         header()->setResizeMode(1, QHeaderView::ResizeToContents);
         header()->setResizeMode(2, QHeaderView::ResizeToContents);
+#endif
         // need to disable sorting! Otherwise each change of shown cost
         // can reorders list and change order returned by topLevelItem()
         setSortingEnabled(false);
@@ -168,8 +172,13 @@ void PartView::doUpdate(int changeType, bool)
             PartListItem* item = (PartListItem*) topLevelItem(i);
             item->setEventType(_eventType);
         }
+#if QT_VERSION >= 0x050000
+        header()->setSectionResizeMode(1, QHeaderView::Interactive);
+        header()->setSectionResizeMode(2, QHeaderView::Interactive);
+#else
         header()->setResizeMode(1, QHeaderView::Interactive);
         header()->setResizeMode(2, QHeaderView::Interactive);
+#endif
         setSortingEnabled(true);
         header()->setSortIndicatorShown(false);
 
