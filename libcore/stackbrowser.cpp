@@ -53,6 +53,11 @@ void Stack::extendBottom()
   // do not follow calls from cycles
   if (f->cycle() == f) return;
 
+  // event type to use for the "most probable" call stack
+  // we simply take the first real event type
+  if ((_top->data() == 0) ||
+      (_top->data()->eventTypes()->realCount() <1)) return;
+  EventType* e = _top->data()->eventTypes()->realType(0);
 
   int max = 30;
 
@@ -67,7 +72,7 @@ void Stack::extendBottom()
 	if (c->called() == _top) continue;
 
       if (c->called()->name().isEmpty()) continue;
-      SubCost sc = c->subCost(0); // FIXME
+      SubCost sc = c->subCost(e);
       if (sc == 0) continue;
 
       if (sc > most) {
@@ -93,6 +98,12 @@ void Stack::extendTop()
   // do not follow calls from cycles
   if (_top->cycle() == _top) return;
 
+  // event type to use for the "most probable" call stack
+  // we simply take the first real event type
+  if ((_top->data() == 0) ||
+      (_top->data()->eventTypes()->realCount() <1)) return;
+  EventType* e = _top->data()->eventTypes()->realType(0);
+
   // try to extend to upper stack frames
   while (_top && (max-- >0)) {
     TraceCall* call = 0;
@@ -104,7 +115,7 @@ void Stack::extendTop()
 	if (c->caller() == _top) continue;
 
       if (c->caller()->name().isEmpty()) continue;
-      SubCost sc = c->subCost(0); // FIXME
+      SubCost sc = c->subCost(e);
       if (sc == 0) continue;
 
       if (sc > most) {

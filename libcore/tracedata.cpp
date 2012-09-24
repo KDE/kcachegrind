@@ -787,10 +787,12 @@ void TracePartFunction::update()
   _calledContexts  = 0;
   _callingContexts = 0;
 
+  // To calculate context counts, we just use first real event type (FIXME?)
+  EventType* e = data() ? data()->eventTypes()->realType(0) : 0;
+
   // calculate additional cost metrics
   foreach(TracePartCall* caller, _partCallers) {
-    // FIXME
-    if (caller->subCost(0)>0)
+    if (e && (caller->subCost(e) >0))
       _calledContexts++;
 
     SubCost c = caller->callCount();
@@ -799,8 +801,7 @@ void TracePartFunction::update()
     }
   }
   foreach(TracePartCall* calling, _partCallings) {
-    // FIXME
-    if (calling->subCost(0)>0)
+    if (e && (calling->subCost(e)>0))
       _callingContexts++;
 
     SubCost c = calling->callCount();
@@ -2337,17 +2338,18 @@ void TraceFunction::update()
   _callingContexts = 0;
   clear();
 
+  // To calculate context counts, we just use first real event type (FIXME?)
+  EventType* e = data() ? data()->eventTypes()->realType(0) : 0;
+
   // context count is NOT the sum of part contexts
   foreach(TraceCall *caller, _callers) {
-      // FIXME
-      if (caller->subCost(0) >0)
+      if (e && (caller->subCost(e) >0))
           _calledContexts++;
       _calledCount += caller->callCount();
   }
 
   foreach(TraceCall* callee, _callings) {
-      // FIXME
-      if (callee->subCost(0) >0)
+      if (e && (callee->subCost(e) >0))
           _callingContexts++;
       _callingCount += callee->callCount();
   }
@@ -2433,14 +2435,16 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
    * percent of the cost of the function.
    * FIXME: Which cost type to use for this heuristic ?!
    */
+  Q_ASSERT((data() != 0) && (data()->eventTypes()->realCount()>0));
+  EventType* e = data()->eventTypes()->realType(0);
 
   SubCost base = 0;
   if (_callers.count()>0) {
       foreach(TraceCall* caller, _callers)
-	  if (caller->subCost(0) > base)
-	      base = caller->subCost(0);
+          if (caller->subCost(e) > base)
+              base = caller->subCost(e);
   }
-  else base = inclusive()->subCost(0);
+  else base = inclusive()->subCost(e);
 
   SubCost cutLimit = SubCost(base * GlobalConfig::cycleCut());
 
@@ -2450,7 +2454,7 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
              pNo, qPrintable(prettyName()));
       qDebug("%s       Cum. %s, Max Caller %s, cut limit %s",
              qPrintable(QString().fill(' ', d)),
-             qPrintable(inclusive()->subCost(0).pretty()),
+             qPrintable(inclusive()->subCost(e).pretty()),
              qPrintable(base.pretty()),
              qPrintable(cutLimit.pretty()));
   }
@@ -2459,11 +2463,11 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
     TraceFunction* called = callee->called();
 
       // cycle cut heuristic
-      if (callee->subCost(0) < cutLimit) {
+      if (callee->subCost(e) < cutLimit) {
 	  if (0) qDebug("%s       Cut call to %s (cum. %s)",
 			qPrintable(QString().fill(' ', d)),
 			qPrintable(called->prettyName()),
-			qPrintable(callee->subCost(0).pretty()));
+			qPrintable(callee->subCost(e).pretty()));
 
 	  continue;
       }

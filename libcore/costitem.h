@@ -137,6 +137,7 @@ public:
  */
 class ProfileCostArray: public CostItem
 {
+    friend class EventType;
 public:
   /**
    * The maximal number of subcosts a ProfileCostArray can have.
@@ -177,11 +178,6 @@ public:
    */
   SubCost subCost(EventType*);
 
-  /**
-   * Same as above, but only for real types
-   */
-  SubCost subCost(int);
-
   /** Returns a cost attribute converted to a string
    * (with space after every 3 digits)
    */
@@ -189,6 +185,10 @@ public:
 
  protected:
   virtual void update();
+
+ private:
+  // Only used by friend class EventType: return subcost by index
+  SubCost subCost(int);
 
   SubCost _cost[MaxRealIndexValue];
   int _count; // only _count first indexes of _cost are used
