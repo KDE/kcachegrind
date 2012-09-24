@@ -1165,7 +1165,7 @@ void QCGTopLevel::setTraceItemDelayed(CostItem* i)
   _traceItemDelayed = i;
   _lastSender = sender();
 
-  qDebug() << "Selected " << (i ? i->prettyName() : "(none)");
+  qDebug() << "Selected " << (i ? i->fullName() : "(none)");
 
 #if TRACE_UPDATES
   qDebug("QCGTopLevel::setTraceItemDelayed(%s), sender %s",
@@ -2020,14 +2020,14 @@ void QCGTopLevel::loadProgress(int progress)
 
 void QCGTopLevel::loadError(int line, const QString& msg)
 {
-    qCritical() << "Loading" << _filename.toLatin1()
-                << ":" << line << ": " << msg.toLatin1();
+    qCritical() << "Loading" << _filename
+                << ":" << line << ": " << msg;
 }
 
 void QCGTopLevel::loadWarning(int line, const QString& msg)
 {
-    qWarning() << "Loading" << _filename.toLatin1()
-               << ":" << line << ": " << msg.toLatin1();
+    qWarning() << "Loading" << _filename
+               << ":" << line << ": " << msg;
 }
 
 #include "qcgtoplevel.moc"
