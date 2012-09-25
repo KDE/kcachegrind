@@ -131,39 +131,50 @@ ProfileCostArray::ProfileCostArray(ProfileContext* context)
     : CostItem(context)
 {
   _cachedType = 0; // no virtual value cached
-
-  ProfileCostArray::clear();
+  _allocCount = 0;
+  _count = 0;
+  _cost = 0;
 }
 
 ProfileCostArray::ProfileCostArray()
     : CostItem(ProfileContext::context(ProfileContext::UnknownType))
 {
   _cachedType = 0; // no virtual value cached
-
-  ProfileCostArray::clear();
+  _allocCount = 0;
+  _count = 0;
+  _cost = 0;
 }
 
 ProfileCostArray::~ProfileCostArray()
-{}
+{
+    if (_cost) delete[] _cost;
+}
 
 
 void ProfileCostArray::clear()
 {
-    // simple set usage count to 0
     _count = 0;
-
-    CostItem::clear();
+    invalidate();
 }
 
+void ProfileCostArray::reserve(int count)
+{
+    if (count <= _allocCount) return;
 
+    if (_cost) delete[] _cost;
+    _cost = new SubCost[count];
+    _allocCount = count;
+}
 
 void ProfileCostArray::set(EventTypeMapping* mapping, const char* s)
 {
     if (!mapping) return;
     if (!s) {
-	if (_count>0) clear();
+        clear();
 	return;
     }
+
+    reserve(mapping->set()->realCount());
 
     while(*s == ' ') s++;
 
@@ -189,6 +200,7 @@ void ProfileCostArray::set(EventTypeMapping* mapping, const char* s)
 	    _cost[i] = 0;
 	_count = maxIndex;
     }
+    Q_ASSERT(_count <= _allocCount);
     // a cost change has to be propagated (esp. in subclasses)
     invalidate();
 }
@@ -196,8 +208,13 @@ void ProfileCostArray::set(EventTypeMapping* mapping, const char* s)
 void ProfileCostArray::set(EventTypeMapping* mapping, FixString & s)
 {
     if (!mapping) return;
-
     s.stripSpaces();
+    if (s.isEmpty()) {
+        clear();
+        return;
+    }
+
+    reserve(mapping->set()->realCount());
 
     if (mapping->isIdentity()) {
 	int i = 0;
@@ -221,6 +238,7 @@ void ProfileCostArray::set(EventTypeMapping* mapping, FixString & s)
 	    _cost[i] = 0;
 	_count = maxIndex+1;
     }
+    Q_ASSERT(_count <= _allocCount);
     invalidate();
 }
 
@@ -228,9 +246,9 @@ void ProfileCostArray::set(EventTypeMapping* mapping, FixString & s)
 void ProfileCostArray::addCost(EventTypeMapping* mapping, const char* s)
 {
     if (!mapping || !s) return;
+    reserve(mapping->set()->realCount());
 
     SubCost v;
-
     if (mapping->isIdentity()) {
 	int i = 0;
 	while(i<mapping->count()) {
@@ -265,7 +283,7 @@ void ProfileCostArray::addCost(EventTypeMapping* mapping, const char* s)
 	}
     }
 
-    // a cost change has to be propagated (esp. in subclasses)
+    Q_ASSERT(_count <= _allocCount);
     invalidate();
 
 #if TRACE_DEBUG
@@ -279,11 +297,11 @@ void ProfileCostArray::addCost(EventTypeMapping* mapping, const char* s)
 void ProfileCostArray::addCost(EventTypeMapping* mapping, FixString & s)
 {
     if (!mapping) return;
-
     s.stripSpaces();
+    if (s.isEmpty()) return;
+    reserve(mapping->set()->realCount());
 
     SubCost v;
-
     if (mapping->isIdentity()) {
 	int i = 0;
 	while(i<mapping->count()) {
@@ -318,6 +336,7 @@ void ProfileCostArray::addCost(EventTypeMapping* mapping, FixString & s)
 	}
     }
 
+    Q_ASSERT(_count <= _allocCount);
     invalidate();
 
 #if TRACE_DEBUG
@@ -333,11 +352,11 @@ void ProfileCostArray::addCost(EventTypeMapping* mapping, FixString & s)
 void ProfileCostArray::maxCost(EventTypeMapping* mapping, FixString & s)
 {
     if (!mapping) return;
-
     s.stripSpaces();
+    if (s.isEmpty()) return;
+    reserve(mapping->set()->realCount());
 
     SubCost v;
-
     if (mapping->isIdentity()) {
 	int i = 0;
 	while(i<mapping->count()) {
@@ -374,6 +393,7 @@ void ProfileCostArray::maxCost(EventTypeMapping* mapping, FixString & s)
 	}
     }
 
+    Q_ASSERT(_count <= _allocCount);
     invalidate();
 
 #if TRACE_DEBUG
@@ -388,12 +408,14 @@ void ProfileCostArray::maxCost(EventTypeMapping* mapping, FixString & s)
 void ProfileCostArray::addCost(ProfileCostArray* item)
 {
     int i;
-
     if (!item) return;
 
     // we have to update the other item if needed
     // because we access the item costs directly
     if (item->_dirty) item->update();
+
+    // make sure we have enough space allocated
+    reserve(item->_count);
 
     if (item->_count < _count) {
 	for (i = 0; i<item->_count; i++)
@@ -407,7 +429,7 @@ void ProfileCostArray::addCost(ProfileCostArray* item)
 	_count = item->_count;
     }
 
-    // a cost change has to be propagated (esp. in subclasses)
+    Q_ASSERT(_count <= _allocCount);
     invalidate();
 
 #if TRACE_DEBUG
@@ -429,6 +451,9 @@ void ProfileCostArray::maxCost(ProfileCostArray* item)
     // because we access the item costs directly
     if (item->_dirty) item->update();
 
+    // make sure we have enough space allocated
+    reserve(item->_count);
+
     if (item->_count < _count) {
 	for (i = 0; i<item->_count; i++)
 	  if (_cost[i] < item->_cost[i]) _cost[i] = item->_cost[i];
@@ -441,7 +466,7 @@ void ProfileCostArray::maxCost(ProfileCostArray* item)
 	_count = item->_count;
     }
 
-    // a cost change has to be propagated (esp. in subclasses)
+    Q_ASSERT(_count <= _allocCount);
     invalidate();
 
 #if TRACE_DEBUG
@@ -453,36 +478,40 @@ void ProfileCostArray::maxCost(ProfileCostArray* item)
 #endif
 }
 
-void ProfileCostArray::addCost(int type, SubCost value)
+void ProfileCostArray::addCost(int realIndex, SubCost value)
 {
-    if (type<0 || type>=MaxRealIndex) return;
-    if (type<_count)
-	_cost[type] += value;
+    if (realIndex<0 || realIndex>=MaxRealIndex) return;
+
+    reserve(realIndex+1);
+    if (realIndex < _count)
+        _cost[realIndex] += value;
     else {
-	for(int i=_count;i<type;i++)
+        for(int i=_count;i<realIndex;i++)
 	    _cost[i] = 0;
-	_cost[type] = value;
-	_count = type+1;
+	_cost[realIndex] = value;
+	_count = realIndex+1;
     }
 
-    // a cost change has to be propagated (esp. in subclasses)
+    Q_ASSERT(_count <= _allocCount);
     invalidate();
 }
 
-void ProfileCostArray::maxCost(int type, SubCost value)
+void ProfileCostArray::maxCost(int realIndex, SubCost value)
 {
-    if (type<0 || type>=MaxRealIndex) return;
-    if (type<_count) {
-      if (value>_cost[type]) _cost[type] = value;
+    if (realIndex<0 || realIndex>=MaxRealIndex) return;
+
+    reserve(realIndex+1);
+    if (realIndex<_count) {
+      if (value>_cost[realIndex]) _cost[realIndex] = value;
     }
     else {
-	for(int i=_count;i<type;i++)
+        for(int i=_count;i<realIndex;i++)
 	    _cost[i] = 0;
-	_cost[type] = value;
-	_count = type+1;
+	_cost[realIndex] = value;
+	_count = realIndex+1;
     }
 
-    // a cost change has to be propagated (esp. in subclasses)
+    Q_ASSERT(_count <= _allocCount);
     invalidate();
 }
 
@@ -497,10 +526,12 @@ ProfileCostArray ProfileCostArray::diff(ProfileCostArray* item)
 
   int maxCount = (item->_count > _count) ? item->_count : _count;
 
-  res._count = maxCount;
+  res.reserve(maxCount);
   for (int i=0; i<maxCount;i++)
     res._cost[i] = item->subCost(i) - subCost(i);
+  res._count = maxCount;
 
+  Q_ASSERT(res._count <= res._allocCount);
   return res;
 }
 
@@ -548,6 +579,7 @@ SubCost ProfileCostArray::subCost(int idx)
 
     return _cost[idx];
 }
+
 
 SubCost ProfileCostArray::subCost(EventType* t)
 {

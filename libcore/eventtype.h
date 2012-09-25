@@ -176,6 +176,8 @@ public:
   bool append(int);
   void clear();
 
+  EventTypeSet* set() { return _set; }
+
   /**
    * Get number of used indexes
    */

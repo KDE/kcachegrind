@@ -155,6 +155,9 @@ public:
 
   virtual void clear();
 
+  // reserve space for cost
+  void reserve(int);
+
   // set costs according to the mapping order of event types
   void set(EventTypeMapping*, const char*);
   void set(EventTypeMapping*, FixString&);
@@ -190,8 +193,9 @@ public:
   // Only used by friend class EventType: return subcost by index
   SubCost subCost(int);
 
-  SubCost _cost[MaxRealIndexValue];
+  SubCost* _cost;
   int _count; // only _count first indexes of _cost are used
+  int _allocCount; // number of allocated subcost entries
 
   // cache last virtual subcost for faster access
   SubCost _cachedCost;
