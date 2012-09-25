@@ -128,6 +128,12 @@ public:
 };
 
 
+// The maximal number of subcosts in a ProfileCostArray and
+// event types in a EventSet. Does not really matter for memory
+// consumption as cost for a ProfileCostArray is dynamically
+// allocated depending on used number of event types, and there
+// will be only a low number of objects for EventType{,Set,Mapping}.
+#define MaxRealIndexValue 200
 
 /**
  * An array of basic cost metrics for a trace item.
@@ -140,10 +146,8 @@ class ProfileCostArray: public CostItem
     friend class EventType;
 public:
   /**
-   * The maximal number of subcosts a ProfileCostArray can have.
    */
   static const int MaxRealIndex;
-#define MaxRealIndexValue 30
   static const int InvalidIndex;
 
 
