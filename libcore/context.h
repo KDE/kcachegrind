@@ -34,7 +34,7 @@ class ProfileContext
 public:
     // RTTI for trace item classes, using type() method
     enum Type {
-	InvalidType, UnknownType,
+        InvalidType = 0, UnknownType,
 	PartInstr, Instr,
 	PartLine, Line,
 	PartInstrJump, InstrJump,
@@ -50,7 +50,7 @@ public:
 	Part, Data,
 	MaxType };
 
-    ProfileContext(ProfileContext::Type);
+    ProfileContext(ProfileContext::Type = InvalidType);
 
     ProfileContext::Type type() { return _type; }
 
@@ -70,7 +70,7 @@ public:
 private:
     Type _type;
 
-    static QHash<QString, ProfileContext*> _contexts;
+    static ProfileContext* _contexts;
     static QString* _typeName;
     static QString* _i18nTypeName;
 };

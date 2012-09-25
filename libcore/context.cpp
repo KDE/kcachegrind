@@ -23,8 +23,7 @@
 //---------------------------------------------------
 // ProfileContext
 
-QHash<QString, ProfileContext*> ProfileContext::_contexts;
-
+ProfileContext* ProfileContext::_contexts = 0;
 QString* ProfileContext::_typeName = 0;
 QString* ProfileContext::_i18nTypeName = 0;
 
@@ -36,14 +35,12 @@ ProfileContext::ProfileContext(ProfileContext::Type t)
 
 ProfileContext* ProfileContext::context(ProfileContext::Type t)
 {
-	QString key = QString("T%1").arg(t);
-	if (_contexts.contains(key))
-		return _contexts.value(key);
-
-	ProfileContext* c = new ProfileContext(t);
-	_contexts.insert(key, c);
-
-	return c;
+    if (!_contexts) {
+        _contexts = new ProfileContext[MaxType+1];
+        for(int i=0;i<=MaxType;i++)
+            _contexts[i] = ProfileContext((ProfileContext::Type)i);
+    }
+    return &(_contexts[t]);
 }
 
 void ProfileContext::cleanup()
@@ -56,9 +53,10 @@ void ProfileContext::cleanup()
 		delete [] _i18nTypeName;
 		_i18nTypeName = 0;
 	}
-
-	qDeleteAll(_contexts);
-	_contexts.clear();
+	if (_contexts) {
+	    delete [] _contexts;
+	    _contexts = 0;
+	}
 }
 
 QString ProfileContext::typeName(ProfileContext::Type t)
