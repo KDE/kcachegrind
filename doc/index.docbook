@@ -14,7 +14,7 @@
   <!ENTITY % English "INCLUDE">
 ]>
 
-<book lang="&language;">
+<book id="kcachegrind" lang="&language;">
 
 <bookinfo>
 <title>The &kcachegrind; Handbook</title>
