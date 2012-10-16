@@ -95,16 +95,16 @@ public:
   virtual void loadFinished(const QString& msg); // msg could be error
 
 public slots:
-  void newTrace();
-  void loadTrace();
-  void loadTrace(const KUrl&);
-  void loadTrace(QString);
-  void addTrace();
-  void addTrace(const KUrl&);
-  void addTrace(QString);
+  void load();
+  void load(const KUrl&);
+  void load(QString);
+  void add();
+  void add(const KUrl&);
+  void add(QString);
 
-  // for quick showing the main window...
+  // for quickly showing the main window...
   void loadDelayed(QString);
+  void loadDelayed(QStringList);
 
   void reload();
   void exportGraph();
@@ -278,7 +278,7 @@ private:
   ProfileContext::Type _groupTypeDelayed;
   TraceCostItem* _groupDelayed;
   CostItem* _traceItemDelayed;
-  QString _loadTraceDelayed;
+  QStringList _loadFilesDelayed;
   TraceItemView::Direction _directionDelayed;
 
   // for status progress display

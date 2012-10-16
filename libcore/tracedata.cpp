@@ -3071,23 +3071,6 @@ TraceData::TraceData(Logger* l)
     init();
 }
 
-TraceData::TraceData(const QString& base)
-    : ProfileCostArray(ProfileContext::context(ProfileContext::Data))
-{
-    _logger = 0;
-
-    init();
-    load(base);
-}
-
-TraceData::TraceData(QIODevice* file, const QString& filename)
-    : ProfileCostArray(ProfileContext::context(ProfileContext::Data))
-{
-    _logger = 0;
-    init();
-    load(file, filename);
-}
-
 void TraceData::init()
 {
   _functionCycleCount = 0;
@@ -3138,75 +3121,52 @@ bool partLessThan(const TracePart* p1, const TracePart* p2)
 }
 
 /**
- * Two cases:
- * - <base> is a directory: Load first profile data file available
- * - <base> is a file name without part/thread suffixes
+ * Load a list of files.
+ * If only one file is given, it is assumed to be a prefix, and all
+ * existing files with that prefix are loaded.
  *
  * Returns 0 if nothing found to load
  */
-int TraceData::load(const QString& base)
+int TraceData::load(QStringList files)
 {
-  bool baseExisting = true;
+    if (files.isEmpty()) return 0;
 
-  _traceName = base;
-  QFileInfo finfo(base);
-  QString file = finfo.fileName();
-  QDir dir = finfo.dir();
+    _traceName = files[0];
+    if (files.count() == 1) {
+        QString prefix = _traceName;
+        QFileInfo finfo(_traceName);
+        QDir dir = finfo.dir();
+        if (finfo.isDir()) {
+            prefix = "callgrind.out";
+            _traceName += "/callgrind.out";
+        }
 
-  if (!finfo.exists()) {
-    baseExisting = false;
-  }
-  else if (finfo.isDir()) {
-      // search for first profile data file in directory
-      dir = QDir(base);
+        files = dir.entryList(QStringList() << prefix + "*", QDir::Files);
+    }
 
-      QStringList prefixList;
-      prefixList << "callgrind.out" << "cachegrind.out";
-      for ( QStringList::const_iterator it = prefixList.constBegin();
-	    it != prefixList.constEnd(); ++it ) {
-        file = *it;
+    if (files.isEmpty()) {
+        _traceName += ' ' + QObject::tr("(not found)");
+        return 0;
+    }
 
-	// search for ".pid"
-	QStringList strList = dir.entryList(QStringList() << file+".*", QDir::Files);
-	if (strList.count()>0) {
-	  int l = file.length();
-	  file = strList.first();
-	  l++;
-	  while(file[l] >= '0' && file[l] <= '9') l++;
-	  file = file.left(l);
-	  break;
-	}
-      }
+    QStringList::const_iterator it;
+    int partsLoaded = 0;
+    for (it = files.constBegin(); it != files.constEnd(); ++it ) {
+        QFile file(*it);
+        partsLoaded += internalLoad(&file, *it);
+    }
+    if (partsLoaded == 0) return 0;
 
-      _traceName = dir.path() + '/' + file;
-  }
+    qSort(_parts.begin(), _parts.end(), partLessThan);
+    invalidateDynamicCost();
+    updateFunctionCycles();
 
-  QStringList strList;
-  strList += dir.entryList(QStringList() << file+".*" << file+"-*", QDir::Files);
+    return partsLoaded;
+}
 
-  baseExisting = QFile::exists(_traceName);
-  if (baseExisting)
-      strList << file;
-
-  if (strList.count() == 0) {
-      _traceName = base + '/' + file + ' ' + QObject::tr("(not found)");
-      return 0;
-  }
-
-  QStringList::const_iterator it;
-  int partsLoaded = 0;
-  for (it = strList.constBegin(); it != strList.constEnd(); ++it ) {
-      QString filename = QString("%1/%2").arg(dir.path()).arg(*it);
-      QFile file(filename);
-      partsLoaded += internalLoad(&file, filename);
-  }
-  if (partsLoaded == 0) return 0;
-
-  qSort(_parts.begin(), _parts.end(), partLessThan);
-  invalidateDynamicCost();
-  updateFunctionCycles();
-
-  return partsLoaded;
+int TraceData::load(QString file)
+{
+    return load(QStringList(file));
 }
 
 int TraceData::load(QIODevice* file, const QString& filename)

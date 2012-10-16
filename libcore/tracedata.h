@@ -1364,20 +1364,20 @@ class TraceData: public ProfileCostArray
 {
  public:
   TraceData(Logger* l = 0);
-  TraceData(const QString& base);
-  TraceData(QIODevice* file, const QString& filename);
   virtual ~TraceData();
 
   virtual TraceData* data() { return this; }
   virtual const TraceData* data() const { return this; }
 
   /**
-   * Loads a trace file.
+   * Loads profile data files.
+   * If a single file is given, it is assumed to be a prefix.
    *
    * This adjusts the EventTypeSet according to given cost types.
    * Returns the number of parts loaded
    */
-  int load(const QString&);
+  int load(QStringList files);
+  int load(QString file);
   int load(QIODevice*, const QString&);
 
   /** returns true if something changed. These do NOT

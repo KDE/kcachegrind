@@ -254,7 +254,7 @@ void QCGTopLevel::recentFilesMenuAboutToShow()
 void QCGTopLevel::recentFilesTriggered(QAction* action)
 {
     if (action)
-	loadTrace(QDir::fromNativeSeparators(action->text()));
+        load(QStringList(QDir::fromNativeSeparators(action->text())));
 }
 
 void QCGTopLevel::createDocks()
@@ -332,11 +332,11 @@ void QCGTopLevel::createActions()
     _openAction = new QAction(icon, tr("&Open..."), this);
     _openAction->setShortcuts(QKeySequence::Open);
     _openAction->setStatusTip(tr("Open profile data file"));
-    connect(_openAction, SIGNAL(triggered()), this, SLOT(loadTrace()));
+    connect(_openAction, SIGNAL(triggered()), this, SLOT(load()));
 
     _addAction = new QAction(tr( "&Add..." ), this);
     _addAction->setStatusTip(tr("Add profile data to current window"));
-    connect(_addAction, SIGNAL(triggered(bool)), SLOT(addTrace()));
+    connect(_addAction, SIGNAL(triggered(bool)), SLOT(add()));
 
     _exportAction = new QAction(tr("Export Graph"), this);
     _exportAction->setStatusTip(tr("Generate GraphViz file 'callgraph.dot'"));
@@ -752,33 +752,33 @@ void QCGTopLevel::newWindow()
 }
 
 
-void QCGTopLevel::loadTrace()
+void QCGTopLevel::load()
 {
-    QString file;
-    file = QFileDialog::getOpenFileName(this,
+    QStringList files;
+    files = QFileDialog::getOpenFileNames(this,
 					tr("Open Callgrind Data"),
 					_lastFile,
 					tr("Callgrind Files (callgrind.*);;All Files (*)"));
-    loadTrace(file);
+    load(files);
 }
 
-void QCGTopLevel::loadTrace(QString file, bool addToRecentFiles)
+void QCGTopLevel::load(QStringList files, bool addToRecentFiles)
 {
-    if (file.isEmpty()) return;
-    _lastFile = file;
+    if (files.isEmpty()) return;
+    _lastFile = files[0];
 
     if (_data && _data->parts().count()>0) {
 
 	// In new window
 	QCGTopLevel* t = new QCGTopLevel();
 	t->show();
-	t->loadDelayed(file, addToRecentFiles);
+	t->loadDelayed(files, addToRecentFiles);
 	return;
     }
 
     // this constructor enables progress bar callbacks
     TraceData* d = new TraceData(this);
-    int filesLoaded = d->load(file);
+    int filesLoaded = d->load(files);
     if (filesLoaded >0)
 	setData(d);
 
@@ -789,34 +789,36 @@ void QCGTopLevel::loadTrace(QString file, bool addToRecentFiles)
     ConfigGroup* generalConfig = ConfigStorage::group("GeneralSettings");
     recentFiles = generalConfig->value("RecentFiles",
 				       QStringList()).toStringList();
-    recentFiles.removeAll(file);
-    if (filesLoaded >0)
-	recentFiles.prepend(file);
-    if (recentFiles.count() >5)
-	recentFiles.removeLast();
+    foreach(QString file, files) {
+        recentFiles.removeAll(file);
+        if (filesLoaded >0)
+            recentFiles.prepend(file);
+        if (recentFiles.count() >5)
+            recentFiles.removeLast();
+    }
     generalConfig->setValue("RecentFiles", recentFiles);
     delete generalConfig;
 }
 
 
-void QCGTopLevel::addTrace()
+void QCGTopLevel::add()
 {
-    QString file;
-    file = QFileDialog::getOpenFileName(this,
+    QStringList files;
+    files = QFileDialog::getOpenFileNames(this,
 					tr("Add Callgrind Data"),
 					_lastFile,
 					tr("Callgrind Files (callgrind.*);;All Files (*)"));
-    addTrace(file);
+    add(files);
 }
 
 
-void QCGTopLevel::addTrace(QString file)
+void QCGTopLevel::add(QStringList files)
 {
-    if (file.isEmpty()) return;
-    _lastFile = file;
+    if (files.isEmpty()) return;
+    _lastFile = files[0];
 
     if (_data) {
-	_data->load(file);
+        _data->load(files);
 
 	// GUI update for added data
 	configChanged();
@@ -825,26 +827,33 @@ void QCGTopLevel::addTrace(QString file)
 
     // this constructor enables progress bar callbacks
     TraceData* d = new TraceData(this);
-    int filesLoaded = d->load(file);
+    int filesLoaded = d->load(files);
     if (filesLoaded >0)
 	setData(d);
 }
 
-
-
 void QCGTopLevel::loadDelayed(QString file, bool addToRecentFiles)
 {
-    _loadTraceDelayed = file;
+    _loadFilesDelayed << file;
+
     _addToRecentFiles = addToRecentFiles;
-    QTimer::singleShot(0, this, SLOT(loadTraceDelayed()));
+    QTimer::singleShot(0, this, SLOT(loadFilesDelayed()));
 }
 
-void QCGTopLevel::loadTraceDelayed()
+void QCGTopLevel::loadDelayed(QStringList files, bool addToRecentFiles)
 {
-    if (_loadTraceDelayed.isEmpty()) return;
+    _loadFilesDelayed << files;
 
-    loadTrace(_loadTraceDelayed, _addToRecentFiles);
-    _loadTraceDelayed = QString();
+    _addToRecentFiles = addToRecentFiles;
+    QTimer::singleShot(0, this, SLOT(loadFilesDelayed()));
+}
+
+void QCGTopLevel::loadFilesDelayed()
+{
+    if (_loadFilesDelayed.isEmpty()) return;
+
+    load(_loadFilesDelayed, _addToRecentFiles);
+    _loadFilesDelayed.clear();
 }
 
 

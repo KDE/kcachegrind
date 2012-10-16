@@ -73,10 +73,10 @@ int main( int argc, char ** argv )
     KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
     int nbArgs = args->count();
     if (nbArgs>0) {
-      for(int i = 0; i < nbArgs; i++) {
         t = new TopLevel();
         t->show();
-        t->loadDelayed(args->arg(i));
+        for(int i = 0; i < nbArgs; i++) {
+            t->loadDelayed(args->arg(i));
       }
     }
     else {

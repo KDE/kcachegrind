@@ -33,7 +33,6 @@
 int main( int argc, char ** argv )
 {
     QApplication app(argc, argv);
-    QCGTopLevel* t;
     Loader::initLoaders();
 
     QCoreApplication::setOrganizationName("kcachegrind.sf.net");
@@ -44,18 +43,15 @@ int main( int argc, char ** argv )
 
     QStringList list = app.arguments();
     list.pop_front();
-    if (!list.isEmpty()) {
-	foreach(const QString& file, list) {
-	    t = new QCGTopLevel();
-	    t->show();
-	    t->loadDelayed( QDir::fromNativeSeparators(file) );
-	}
+    QCGTopLevel* t = new QCGTopLevel();
+    t->show();
+    if (list.isEmpty()) {
+        // load files in current dir
+        t->loadDelayed( ".", false);
     }
     else {
-	// load trace in current dir
-	t = new QCGTopLevel();
-	t->show();
-	t->loadDelayed(".", false);
+        foreach(const QString& file, list)
+            t->loadDelayed( QDir::fromNativeSeparators(file) );
     }
 
     int res = app.exec();

@@ -85,13 +85,14 @@ public:
   virtual void loadFinished(const QString& msg); // msg could be error
 
 public slots:
-  void loadTrace();
-  void loadTrace(QString, bool addToRecentFiles = true);
-  void addTrace();
-  void addTrace(QString);
+  void load();
+  void load(QStringList files, bool addToRecentFiles = true);
+  void add();
+  void add(QStringList files);
 
   // shows the main window before loading to see loading progress
-  void loadDelayed(QString, bool addToRecentFiles = true);
+  void loadDelayed(QString file, bool addToRecentFiles = true);
+  void loadDelayed(QStringList files, bool addToRecentFiles = true);
 
   void exportGraph();
   void newWindow();
@@ -172,7 +173,7 @@ public slots:
   void setGroupTypeDelayed();
   void setGroupDelayed();
   void setTraceItemDelayed();
-  void loadTraceDelayed();
+  void loadFilesDelayed();
   void setDirectionDelayed();
 
   // configuration has changed
@@ -253,7 +254,7 @@ private:
   ProfileContext::Type _groupTypeDelayed;
   TraceCostItem* _groupDelayed;
   CostItem* _traceItemDelayed;
-  QString _loadTraceDelayed;
+  QStringList _loadFilesDelayed;
   bool _addToRecentFiles;
   TraceItemView::Direction _directionDelayed;
 };

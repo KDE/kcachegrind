@@ -428,7 +428,7 @@ void TopLevel::createMiscActions()
 
   action = actionCollection()->addAction( "file_add" );
   action->setText( i18n( "&Add..." ) );
-  connect(action, SIGNAL(triggered(bool) ), SLOT(addTrace()));
+  connect(action, SIGNAL(triggered(bool) ), SLOT(add()));
   hint = i18n("<b>Add Profile Data</b>"
               "<p>This opens an additional profile data file in the current window.</p>");
   action->setWhatsThis( hint );
@@ -481,13 +481,13 @@ void TopLevel::createMiscActions()
               "of the program.</p>");
   _taDump->setWhatsThis( hint );
 
-  action = KStandardAction::open(this, SLOT(loadTrace()), actionCollection());
+  action = KStandardAction::open(this, SLOT(load()), actionCollection());
   hint = i18n("<b>Open Profile Data</b>"
               "<p>This opens a profile data file, with possible multiple parts</p>");
   action->setToolTip( hint );
   action->setWhatsThis( hint );
 
-  _openRecent = KStandardAction::openRecent(this, SLOT(loadTrace(const KUrl&)),
+  _openRecent = KStandardAction::openRecent(this, SLOT(load(const KUrl&)),
                                        actionCollection());
 
   KStandardAction::showStatusbar(this,
@@ -911,11 +911,6 @@ void TopLevel::configureToolbars()
 }
 
 
-void TopLevel::newTrace()
-{
-  // start cachegrind on command...
-}
-
 void TopLevel::newWindow()
 {
   TopLevel* t = new TopLevel();
@@ -923,16 +918,16 @@ void TopLevel::newWindow()
 }
 
 
-void TopLevel::loadTrace()
+void TopLevel::load()
 {
     KUrl url = KFileDialog::getOpenUrl(KUrl("kfiledialog:///"),
                                        i18n("cachegrind.out* callgrind.out*|Callgrind Profile Data\n*|All Files"),
                                        this,
                                        i18n("Select Callgrind Profile Data"));
-    loadTrace(url);
+    load(url);
 }
 
-void TopLevel::loadTrace(const KUrl& url)
+void TopLevel::load(const KUrl& url)
 {
   if (url.isEmpty()) return;
 
@@ -943,7 +938,7 @@ void TopLevel::loadTrace(const KUrl& url)
     _openRecent->addUrl(url);
     _openRecent->saveEntries( KConfigGroup( KGlobal::config(), QString() ) );
 
-    loadTrace(tmpFile);
+    load(tmpFile);
     KIO::NetAccess::removeTempFile( tmpFile );
   } else {
     KMessageBox::error(this, i18n("Could not open the file \"%1\". "
@@ -955,7 +950,7 @@ void TopLevel::loadTrace(const KUrl& url)
 /* if file name is ".": load first file found in current directory, but do
  * not show an error message if nothing could be loaded
  */
-void TopLevel::loadTrace(QString file)
+void TopLevel::load(QString file)
 {
   if (file.isEmpty()) return;
 
@@ -972,7 +967,6 @@ void TopLevel::loadTrace(QString file)
     return;
   }
 
-  // this constructor enables progress bar callbacks
   bool loaded = openDataFile(file);
   if (!loaded && showError)
       KMessageBox::error(this, i18n("Could not open the file \"%1\". "
@@ -981,16 +975,16 @@ void TopLevel::loadTrace(QString file)
 }
 
 
-void TopLevel::addTrace()
+void TopLevel::add()
 {
     KUrl url = KFileDialog::getOpenUrl(KUrl(),
                                        i18n("cachegrind.out* callgrind.out*|Callgrind Profile Data\n*|All Files"),
                                        this,
                                        i18n("Add Callgrind Profile Data"));
-    addTrace(url);
+    add(url);
 }
 
-void TopLevel::addTrace(const KUrl& url)
+void TopLevel::add(const KUrl& url)
 {
   if (url.isEmpty()) return;
 
@@ -1000,12 +994,12 @@ void TopLevel::addTrace(const KUrl& url)
     _openRecent->addUrl(url);
     _openRecent->saveEntries( KGlobal::config()->group( QString() ) );
 
-    addTrace(tmpFile);
+    add(tmpFile);
     KIO::NetAccess::removeTempFile( tmpFile );
   }
 }
 
-void TopLevel::addTrace(QString file)
+void TopLevel::add(QString file)
 {
   if (file.isEmpty()) return;
 
@@ -1017,7 +1011,6 @@ void TopLevel::addTrace(QString file)
     return;
   }
 
-  // this constructor enables progress bar callbacks
   openDataFile(file);
 }
 
@@ -1025,20 +1018,36 @@ void TopLevel::addTrace(QString file)
 
 void TopLevel::loadDelayed(QString file)
 {
-  _loadTraceDelayed = file;
+  _loadFilesDelayed << file;
   QTimer::singleShot(0, this, SLOT(loadTraceDelayed()));
+}
+
+void TopLevel::loadDelayed(QStringList files)
+{
+    _loadFilesDelayed << files;
+    QTimer::singleShot(0, this, SLOT(loadTraceDelayed()));
 }
 
 void TopLevel::loadTraceDelayed()
 {
-  if (_loadTraceDelayed.isEmpty()) return;
+  if (_loadFilesDelayed.isEmpty()) return;
 
-  // if URL scheme is missing (URL is relative), this is a local file
-  if (KUrl::isRelativeUrl(_loadTraceDelayed))
-      loadTrace(_loadTraceDelayed);
-  else
-      loadTrace(KUrl(_loadTraceDelayed));
-  _loadTraceDelayed = QString();
+  if (_loadFilesDelayed.count()>1) {
+      // FIXME: we expect all files to be local and existing
+      TraceData* d = new TraceData(this);
+      d->load(_loadFilesDelayed);
+      setData(d);
+  }
+  else {
+      QString file = _loadFilesDelayed[0];
+
+      // if URL scheme is missing (URL is relative), this is a local file
+      if (KUrl::isRelativeUrl(file))
+          load(file);
+      else
+          load(KUrl(file));
+  }
+  _loadFilesDelayed.clear();
 }
 
 

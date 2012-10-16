@@ -66,8 +66,8 @@ int main(int argc, char** argv)
     bool sortByCount = false;
     bool showCalls = false;
     QString showEvent;
+    QStringList files;
 
-    TraceData* d = new TraceData(new Logger);
     for(int arg = 0; arg<list.count(); arg++) {
         if      (list[arg] == "-h") showHelp(out);
         else if (list[arg] == "-e") sortByExcl = true;
@@ -76,8 +76,10 @@ int main(int argc, char** argv)
         else if (list[arg] == "-c") sortByCount = true;
         else if (list[arg] == "-s") showEvent = list[++arg];
         else
-            d->load(list[arg]);
+            files << list[arg];
     }
+    TraceData* d = new TraceData(new Logger);
+    d->load(files);
 
     EventTypeSet* m = d->eventTypes();
     if (m->realCount() == 0) {
