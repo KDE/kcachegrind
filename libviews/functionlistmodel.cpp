@@ -141,7 +141,7 @@ QModelIndex FunctionListModel::index(int row, int column,
 
     //the skipped items entry
     if ( (_topList.count() < _list.count()) && (row == _topList.count()) )
-        return createIndex(row, column, 0);
+        return createIndex(row, column);
 
     return createIndex(row, column, (void*)_topList[row]);
 }
