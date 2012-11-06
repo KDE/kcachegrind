@@ -3133,8 +3133,8 @@ int TraceData::load(QStringList files)
 
     _traceName = files[0];
     if (files.count() == 1) {
-        QString prefix = _traceName;
         QFileInfo finfo(_traceName);
+        QString prefix = finfo.fileName();
         QDir dir = finfo.dir();
         if (finfo.isDir()) {
             prefix = "callgrind.out";
@@ -3142,6 +3142,10 @@ int TraceData::load(QStringList files)
         }
 
         files = dir.entryList(QStringList() << prefix + "*", QDir::Files);
+        QStringList::Iterator it = files.begin();
+        for (; it != files.end(); ++it ) {
+            *it = dir.path() + "/" + *it;
+        }
     }
 
     if (files.isEmpty()) {
