@@ -29,6 +29,7 @@ macro_additional_clean_files(
 	)
 ENDIF(NOT WIN32)
 
+add_subdirectory( doc )
 add_subdirectory( libcore )
 add_subdirectory( cgview )
 add_subdirectory( libviews )
