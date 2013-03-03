@@ -17,7 +17,7 @@ kde4_add_app_icon(kcachegrind_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-kcachegr
 
 kde4_add_executable(kcachegrind ${kcachegrind_SRCS})
 
-target_link_libraries(kcachegrind core views ${KDE4_KIO_LIBS} ${QT_QT3SUPPORT_LIBRARY})
+target_link_libraries(kcachegrind core views ${KDE4_KIO_LIBS})
 
 install(TARGETS kcachegrind  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
