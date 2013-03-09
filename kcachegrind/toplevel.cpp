@@ -1073,7 +1073,7 @@ void TopLevel::exportGraph()
 
 #ifdef Q_OS_UNIX
   // shell commands only work in UNIX
-  QString cmd = QString("(dot %1 -Tps > %2.ps; kghostview %3.ps)&")
+  QString cmd = QString("(dot %1 -Tps > %2.ps; xdg-open %3.ps)&")
                 .arg(n).arg(n).arg(n);
   if (::system(QFile::encodeName( cmd ))<0)
 	qDebug() << "TopLevel::exportGraph: can not run " << cmd;
