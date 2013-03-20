@@ -161,8 +161,14 @@ void ProfileCostArray::reserve(int count)
 {
     if (count <= _allocCount) return;
 
-    if (_cost) delete[] _cost;
-    _cost = new SubCost[count];
+    SubCost* newcost = new SubCost[count];
+    if (_cost) {
+        /* first _count values are valid and have to be preserved */
+        for(int i=0; i<_count; i++)
+            newcost[i] = _cost[i];
+        delete[] _cost;
+    }
+    _cost = newcost;
     _allocCount = count;
 }
 
