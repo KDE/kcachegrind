@@ -61,9 +61,10 @@ void FixCost::addTo(ProfileCostArray* c)
 
     int i, realIndex;
 
+    c->reserve(sm->maxRealIndex(_count)+1);
     for(i=0; i<_count; i++) {
-	realIndex = sm->realIndex(i);
-	c->addCost(realIndex, _cost[i]);
+        realIndex = sm->realIndex(i);
+        c->addCost(realIndex, _cost[i]);
     }
 }
 

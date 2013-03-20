@@ -579,6 +579,18 @@ void EventTypeMapping::clear()
   }
 }
 
+int EventTypeMapping::maxRealIndex(int count)
+{
+    if (count > _count) count = _count;
+    if (_isIdentity) return count-1;
+
+    int maxIndex = -1;
+    for(int j=0; j<count; j++)
+        if (maxIndex < _realIndex[j])
+            maxIndex = _realIndex[j];
+    return maxIndex;
+}
+
 bool EventTypeMapping::append(const QString& type, bool create)
 {
   if (!_set) return false;

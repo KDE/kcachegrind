@@ -487,6 +487,7 @@ void ProfileCostArray::maxCost(ProfileCostArray* item)
 void ProfileCostArray::addCost(int realIndex, SubCost value)
 {
     if (realIndex<0 || realIndex>=MaxRealIndex) return;
+    if (value == 0) return;
 
     reserve(realIndex+1);
     if (realIndex < _count)

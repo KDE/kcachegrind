@@ -191,7 +191,12 @@ public:
   int realIndex(int i)
     { return (i<0 || i>=_count) ? ProfileCostArray::InvalidIndex : _realIndex[i]; }
 
-  /*
+  /**
+   * Get maximal real index for the first <count> mapping indexes.
+   */
+  int maxRealIndex(int count);
+
+  /**
    * Allows an iteration over the sorted list of all real indexes not used in
    * this mapping, up to topIndex (use ProfileCostArray::MaxRealIndex for all).
    * Usage: for(i = firstUnused(); i < topIndex; i = nextUnused(i)) { LOOP }
