@@ -27,7 +27,7 @@ started with measuring the performance characteristics of the
 optimized binary, using representative input data. This process
 is called "Profiling". Any other way for performance optimization
 usually just wastes developer time.
-Propfile measurements show whether optimization is needed at all,
+Profile measurements show whether optimization is needed at all,
 and what improvement can be expected. Further, it pinpoint at
 functions and source lines where most time is spent, i.e. where an
 improvement has most influence on allover runtime.
@@ -50,8 +50,8 @@ QCachegrind
 -----------
 
 Requirements:
-* Qt 4.5 or higher (earlier Qt 4.x versions may work, but not tested)
-* Any platform supported by Qt4 (Linux, Windows, Mac OS X, ...)
+* Qt5.x (x >=0) or Qt4.y (y >=5) (earlier versions not tested)
+* Any platform supported by Qt (Linux, Windows, Mac OS X, ...)
 
 Compilation (from base directory):
 
