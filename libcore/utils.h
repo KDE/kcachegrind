@@ -86,7 +86,7 @@ class FixString {
     bool stripInt64(int64&, bool stripSpaces = true);
 
     operator QString() const
-	{ return QString::fromLatin1(_str,_len); }
+      { return QString::fromLocal8Bit(_str,_len); }
 
  private:
     const char* _str;
