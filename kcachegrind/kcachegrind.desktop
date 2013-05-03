@@ -1,7 +1,7 @@
 # KDE Config File
 [Desktop Entry]
 Type=Application
-Exec=kcachegrind -caption "%c" %u
+Exec=kcachegrind -caption %c %u
 MimeType=application/x-kcachegrind;
 Icon=kcachegrind
 X-DocPath=kcachegrind/index.html
