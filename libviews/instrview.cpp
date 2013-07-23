@@ -1006,15 +1006,17 @@ bool InstrView::fillInstrRange(TraceFunction* function,
       }
     }
 
-    // Resize column 1/2 to contents
+    // Resize columns with address/counts/opcode to contents
 #if QT_VERSION >= 0x050000
     header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
     header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
     header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
+    header()->setSectionResizeMode(5, QHeaderView::ResizeToContents);
 #else
     header()->setResizeMode(0, QHeaderView::ResizeToContents);
     header()->setResizeMode(1, QHeaderView::ResizeToContents);
     header()->setResizeMode(2, QHeaderView::ResizeToContents);
+    header()->setResizeMode(5, QHeaderView::ResizeToContents);
 #endif
 
     setSortingEnabled(false);
@@ -1030,10 +1032,12 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     header()->setSectionResizeMode(0, QHeaderView::Interactive);
     header()->setSectionResizeMode(1, QHeaderView::Interactive);
     header()->setSectionResizeMode(2, QHeaderView::Interactive);
+    header()->setSectionResizeMode(5, QHeaderView::Interactive);
 #else
     header()->setResizeMode(0, QHeaderView::Interactive);
     header()->setResizeMode(1, QHeaderView::Interactive);
     header()->setResizeMode(2, QHeaderView::Interactive);
+    header()->setResizeMode(5, QHeaderView::Interactive);
 #endif
 
     if (selected) item = selected;
