@@ -640,7 +640,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 	  new SourceItem(this, this, fileno, 2, false,
 			 tr("with any source line of this function in file"));
 	  new SourceItem(this, this, fileno, 3, false,
-			 QString("    '%1'").arg(sf->function()->prettyName()));
+             QString("    '%1'").arg(sf->file()->prettyName()));
 	  new SourceItem(this, this, fileno, 4, false,
 			 tr("Thus, no annotated source can be shown."));
 	  return;
