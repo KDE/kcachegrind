@@ -787,7 +787,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     }
     function->object()->setDirectory(dir);
 
-    // call objdump synchroneously
+    // call objdump synchronously
     QString objfile = dir + '/' + function->object()->shortName();
     QStringList objdumpArgs = QStringList()
 	<< "-C" << "-d"

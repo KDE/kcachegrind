@@ -631,7 +631,7 @@ void QCGTopLevel::configure(QString s)
 {
     static QString lastPage = QString::null;
 
-    // if no specific config item should be focussed, use last page
+    // if no specific config item should be focused, use last page
     if (s.isEmpty()) s = lastPage;
     ConfigDialog d(_data, this, s);
 

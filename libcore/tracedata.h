@@ -1084,7 +1084,7 @@ class TraceAssoziation
   bool isAssoziated();
 
   /**
-   * reset function to assoziate this object to.
+   * reset function to associate this object to.
    * returns true if assoziation could be established
    */
   bool setFunction(TraceFunction*);

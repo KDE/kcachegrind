@@ -181,7 +181,7 @@ void TraceItemView::setData(TraceData* d)
   updateView();
 }
 
-// force: update immediatly even if invisible and no change was detected
+// force: update immediately even if invisible and no change was detected
 void TraceItemView::updateView(bool force)
 {
     if (!_mergeUpdates || force) {

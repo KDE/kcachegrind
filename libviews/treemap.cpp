@@ -2360,7 +2360,7 @@ void TreeMapWidget::drawItems(QPainter* p,
       foreach(TreeMapItem* i, *list)
         i->clearItemRect();
     }
-    // tooltip apears on whole item rect
+    // tooltip appears on whole item rect
     item->addFreeRect(item->itemRect());
 
     // if we have space for text...

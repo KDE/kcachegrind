@@ -128,7 +128,7 @@ public:
   void setMergeUpdates(bool b) { _mergeUpdates = b; }
 
   // general update request, call if view is/gets visible
-  // force: update immediatly even if invisible and no change was detected
+  // force: update immediately even if invisible and no change was detected
   void updateView(bool force = false);
 
   /**
