@@ -190,6 +190,8 @@ public:
    */
   QString prettySubCost(EventType*);
 
+  QString prettySubCostPerCall(EventType* t, int calls);
+
  protected:
   virtual void update();
 

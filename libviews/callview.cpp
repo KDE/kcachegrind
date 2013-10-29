@@ -45,7 +45,9 @@ CallView::CallView(bool showCallers, TraceItemView* parentView, QWidget* parent)
 
     QStringList headerLabels;
     headerLabels << tr( "Cost" )
+                 << tr( "Cost per call" )
                  << tr( "Cost 2" )
+                 << tr( "Cost 2 per call" )
                  << tr( "Count" )
                  << ((_showCallers) ? tr( "Caller" ) : tr( "Callee" ));
     setHeaderLabels(headerLabels);
@@ -258,10 +260,14 @@ void CallView::refresh()
     clear();
     setColumnWidth(1, _eventType2 ? 50:0);
 
-    if (_eventType)
+    if (_eventType) {
         headerItem()->setText(0, _eventType->name());
-    if (_eventType2)
-        headerItem()->setText(1, _eventType2->name());
+        headerItem()->setText(1, tr("%1 per call").arg(_eventType->name()));
+    }
+    if (_eventType2) {
+        headerItem()->setText(2, _eventType2->name());
+        headerItem()->setText(3, tr("%1 per call").arg(_eventType2->name()));
+    }
 
     if (!_data || !_activeItem) return;
 
@@ -285,8 +291,10 @@ void CallView::refresh()
     // resize to content now (section size still can be interactively changed)
     header()->resizeSections(QHeaderView::ResizeToContents);
 
-    if (!_eventType2)
-        setColumnWidth(1, 0);
+    if (!_eventType2) {
+        setColumnWidth(2, 0);
+        setColumnWidth(3, 0);
+    }
 }
 
 #include "callview.moc"

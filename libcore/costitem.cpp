@@ -603,3 +603,8 @@ QString ProfileCostArray::prettySubCost(EventType* t)
     return subCost(t).pretty();
 }
 
+QString ProfileCostArray::prettySubCostPerCall(EventType* t, int calls)
+{
+    return SubCost(subCost(t) / calls).pretty();
+}
+

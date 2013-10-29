@@ -35,9 +35,8 @@
 CallItem::CallItem(CallView* view, QTreeWidget* parent, TraceCall* c)
     : QTreeWidgetItem(parent)
 {
-    setTextAlignment(0, Qt::AlignRight);
-    setTextAlignment(1, Qt::AlignRight);
-    setTextAlignment(2, Qt::AlignRight);
+    for (int i = 0 ; i < 5; ++i)
+        setTextAlignment(i, Qt::AlignRight);
 
   _call = c;
   _view = view;
@@ -57,7 +56,7 @@ CallItem::CallItem(CallView* view, QTreeWidget* parent, TraceCall* c)
 
   _shown->addPrettyLocation(fName);
 
-  setText(3, fName);
+  setText(5, fName);
   updateGroup();
   updateCost();
 }
@@ -65,7 +64,7 @@ CallItem::CallItem(CallView* view, QTreeWidget* parent, TraceCall* c)
 void  CallItem::updateGroup()
 {
   QColor c = GlobalGUIConfig::functionColor(_view->groupType(), _shown);
-  setIcon(3, colorPixmap(10, 10, c));
+  setIcon(5, colorPixmap(10, 10, c));
 }
 
 void CallItem::updateCost()
@@ -85,7 +84,7 @@ void CallItem::updateCost()
 	else
 	    cStr = _call->prettyCallCount();
     }
-    setText(2, cStr);
+    setText(4, cStr);
 
     ProfileCostArray* totalCost;
     if (GlobalConfig::showExpanded()) {
@@ -113,10 +112,11 @@ void CallItem::updateCost()
 	if (GlobalConfig::showPercentage())
 	    setText(0, QString("%1")
 		    .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
-	else
+	else {
 	    setText(0, _call->prettySubCost(ct));
-
+        }
         setIcon(0, costPixmap(ct, _call, total, false));
+        setText(1, _call->prettySubCostPerCall(ct, _cc));
     }
 
     // Cost Type 2
@@ -128,19 +128,20 @@ void CallItem::updateCost()
       if (total == 0.0) {
 	QString str = "-";
 
-	setText(1, str);
-        setIcon(1, QPixmap());
+	setText(2, str);
+        setIcon(2, QPixmap());
       }
       else {
 	double sum  = 100.0 * _sum2 / total;
 	
 	if (GlobalConfig::showPercentage())
-	  setText(1, QString("%1")
+	  setText(2, QString("%1")
 		  .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
-	else
-	  setText(1, _call->prettySubCost(ct2));
-
-        setIcon(1, costPixmap(ct2, _call, total, false));
+	else {
+	  setText(2, _call->prettySubCost(ct2));
+        }
+        setIcon(2, costPixmap(ct2, _call, total, false));
+        setText(3, _call->prettySubCostPerCall(ct, _cc));
       }
     }
 
@@ -154,7 +155,7 @@ void CallItem::updateCost()
 			    KIconLoader::DefaultState, QStringList(), 0, true);
 #endif
     }
-    setIcon(2, p);
+    setIcon(4, p);
 }
 
 
