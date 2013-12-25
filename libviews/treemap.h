@@ -41,7 +41,6 @@
 #include <QMouseEvent>
 
 class QMenu;
-class Q3PopupMenu;
 class TreeMapWidget;
 class TreeMapItem;
 class TreeMapItemList;
