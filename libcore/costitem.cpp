@@ -605,6 +605,14 @@ QString ProfileCostArray::prettySubCost(EventType* t)
 
 QString ProfileCostArray::prettySubCostPerCall(EventType* t, int calls)
 {
+    if (calls == 0) {
+        /* For callgrind, a call count of zero means that
+         * a function was already active when measuring started
+         * (even without that possibility, we never should crash).
+         * To show full cost, set <calls> to 1.
+         */
+        calls = 1;
+    }
     return SubCost(subCost(t) / calls).pretty();
 }
 
