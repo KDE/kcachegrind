@@ -147,7 +147,7 @@ void Coverage::addCallerCoverage(TraceFunctionList& fList,
     if (call->subCost(_costType)>0) {
       TraceFunction* caller = call->caller();
 
-      Coverage* c = (Coverage*) caller->assoziation(rtti());
+      Coverage* c = (Coverage*) caller->association(rtti());
       if (!c) {
         c = new Coverage();
         c->setFunction(caller);
@@ -258,7 +258,7 @@ void Coverage::addCallingCoverage(TraceFunctionList& fList,
     if (call->subCost(_costType)>0) {
       TraceFunction* calling = call->called();
 
-      Coverage* c = (Coverage*) calling->assoziation(rtti());
+      Coverage* c = (Coverage*) calling->association(rtti());
       if (!c) {
         c = new Coverage();
         c->setFunction(calling);

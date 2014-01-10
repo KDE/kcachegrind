@@ -326,7 +326,7 @@ void CoverageView::refresh()
       l = Coverage::coverage(f, Coverage::Called, _eventType);
 
     foreach(TraceFunction* f2, l) {
-      Coverage* c = (Coverage*) f2->assoziation(Coverage::Rtti);
+      Coverage* c = (Coverage*) f2->association(Coverage::Rtti);
       if (c && (c->inclusive()>0.0))
         _hc.addCost(f2, SubCost(realSum * c->inclusive()));
     }
@@ -336,7 +336,7 @@ void CoverageView::refresh()
     TraceFunction* ff;
     for(int i=0;i<_hc.realCount();i++) {
       ff = (TraceFunction*) _hc[i];
-      Coverage* c = (Coverage*) ff->assoziation(Coverage::Rtti);
+      Coverage* c = (Coverage*) ff->association(Coverage::Rtti);
       if (_showCallers)
           item = new CallerCoverageItem(0, c, f, _eventType, _groupType);
       else
@@ -346,7 +346,7 @@ void CoverageView::refresh()
     if (_hc.hasMore()) {
       // a placeholder for all the functions skipped ...
       ff = (TraceFunction*) _hc[_hc.maxSize()-1];
-      Coverage* c = (Coverage*) ff->assoziation(Coverage::Rtti);
+      Coverage* c = (Coverage*) ff->association(Coverage::Rtti);
       if (_showCallers)
         item = new CallerCoverageItem(0, _hc.count() - _hc.maxSize(),
                                       c, f, _eventType, _groupType);

@@ -1732,59 +1732,59 @@ TraceLineMap* TraceFunctionSource::lineMap()
 
 
 //---------------------------------------------------
-// TraceAssoziation
+// TraceAssociation
 
-TraceAssoziation::TraceAssoziation()
+TraceAssociation::TraceAssociation()
 {
   _function = 0;
   _valid = false;
 }
 
-TraceAssoziation::~TraceAssoziation()
+TraceAssociation::~TraceAssociation()
 {
   // do not delete from TraceFunction
-  if (_function) _function->removeAssoziation(this);
+  if (_function) _function->removeAssociation(this);
 }
 
-bool TraceAssoziation::isAssoziated()
+bool TraceAssociation::isAssociated()
 {
   if (!_function) return false;
 
-  return _function->assoziation(rtti())==this;
+  return _function->association(rtti())==this;
 }
 
-bool TraceAssoziation::setFunction(TraceFunction* f)
+bool TraceAssociation::setFunction(TraceFunction* f)
 {
   if (_function == f)
-    return isAssoziated();
+    return isAssociated();
 
   if (_function) {
     // do not delete ourself
-    _function->removeAssoziation(this);
+    _function->removeAssociation(this);
   }
 
   _function = f;
-  if (f && f->assoziation(rtti()) == 0) {
-    f->addAssoziation(this);
+  if (f && f->association(rtti()) == 0) {
+    f->addAssociation(this);
     return true;
   }
   return false;
 }
 
-void TraceAssoziation::clear(TraceData* d, int rtti)
+void TraceAssociation::clear(TraceData* d, int rtti)
 {
   TraceFunctionMap::Iterator it;
   for ( it = d->functionMap().begin();
         it != d->functionMap().end(); ++it )
-    (*it).removeAssoziation(rtti);
+    (*it).removeAssociation(rtti);
 }
 
-void TraceAssoziation::invalidate(TraceData* d, int rtti)
+void TraceAssociation::invalidate(TraceData* d, int rtti)
 {
   TraceFunctionMap::Iterator it;
   for ( it = d->functionMap().begin();
         it != d->functionMap().end(); ++it )
-    (*it).invalidateAssoziation(rtti);
+    (*it).invalidateAssociation(rtti);
 }
 
 
@@ -1811,7 +1811,7 @@ TraceFunction::TraceFunction()
 
 TraceFunction::~TraceFunction()
 {
-  qDeleteAll(_assoziations);
+  qDeleteAll(_associations);
 
   // we are the owner of items generated in our factories
   qDeleteAll(_deps);
@@ -1822,46 +1822,46 @@ TraceFunction::~TraceFunction()
 }
 
 // no unique check is done!
-void TraceFunction::addAssoziation(TraceAssoziation* a)
+void TraceFunction::addAssociation(TraceAssociation* a)
 {
   if (!a) return;
-  _assoziations.append(a);
+  _associations.append(a);
 }
 
-void TraceFunction::removeAssoziation(TraceAssoziation* a)
+void TraceFunction::removeAssociation(TraceAssociation* a)
 {
-  _assoziations.removeAll(a);
+  _associations.removeAll(a);
 }
 
-void TraceFunction::removeAssoziation(int rtti, bool reallyDelete)
+void TraceFunction::removeAssociation(int rtti, bool reallyDelete)
 {
   if (rtti==0) {
     if (reallyDelete)
-      qDeleteAll(_assoziations);
-    _assoziations.clear();
+      qDeleteAll(_associations);
+    _associations.clear();
     return;
   }
 
-  foreach(TraceAssoziation* a, _assoziations) {
+  foreach(TraceAssociation* a, _associations) {
     if (a->rtti() == rtti) {
       if (reallyDelete) delete a;
-      _assoziations.removeAll(a);
+      _associations.removeAll(a);
       return;
     }
   }
 }
 
-void TraceFunction::invalidateAssoziation(int rtti)
+void TraceFunction::invalidateAssociation(int rtti)
 {
-    foreach(TraceAssoziation* a, _assoziations) {
+    foreach(TraceAssociation* a, _associations) {
         if ((rtti==0) || (a->rtti() == rtti))
             a->invalidate();
     }
 }
 
-TraceAssoziation* TraceFunction::assoziation(int rtti)
+TraceAssociation* TraceFunction::association(int rtti)
 {
-    foreach(TraceAssoziation* a, _assoziations) {
+    foreach(TraceAssociation* a, _associations) {
         if (a->rtti() == rtti)
             return a;
     }

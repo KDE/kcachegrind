@@ -726,7 +726,7 @@ CallMapCallingItem::CallMapCallingItem(double factor, TraceCall* c)
 void CallMapCallingItem::init()
 {
 #if 0
-  // create assoziation: if not possible, i.e. an ass. already exists
+  // create association: if not possible, i.e. an ass. already exists
   // for the function, we need to draw the recursive version
   _recursive = !setFunction(_c->called());
   _valid = true;

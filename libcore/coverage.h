@@ -33,7 +33,7 @@
  * This function also holds the main routine for coverage analysis,
  * Coverage::coverage(), as static method.
  */
-class Coverage : public TraceAssoziation
+class Coverage : public TraceAssociation
 {
 public:
   /* Direction of coverage analysis */

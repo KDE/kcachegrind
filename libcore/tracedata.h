@@ -1062,30 +1062,30 @@ public:
 
 
 /**
- * For temporary assoziation of objects with TraceFunctions.
+ * For temporary association of objects with TraceFunctions.
  * Used in coverage analysis and TreeMap drawing.
  */
-class TraceAssoziation
+class TraceAssociation
 {
  public:
   /**
-   * Creates an invalid assoziation.
+   * Creates an invalid association.
    */
-  TraceAssoziation();
-  virtual ~TraceAssoziation();
+  TraceAssociation();
+  virtual ~TraceAssociation();
 
   // for runtime detection
   virtual int rtti() { return 0; }
 
   /**
-   * Could we set the function assoziation to ourself?
-   * This only can return false if this is a unique assoziation.
+   * Could we set the function association to ourself?
+   * This only can return false if this is a unique association.
    */
-  bool isAssoziated();
+  bool isAssociated();
 
   /**
    * reset function to associate this object to.
-   * returns true if assoziation could be established
+   * returns true if association could be established
    */
   bool setFunction(TraceFunction*);
   TraceFunction* function() { return _function; }
@@ -1094,14 +1094,14 @@ class TraceAssoziation
   bool isValid() { return _valid; }
 
   /**
-   * Delete all assoziations in TraceFunctions of data with
-   * rtti runtime info. rtti = 0: delete ALL assoziations.
+   * Delete all associations in TraceFunctions of data with
+   * rtti runtime info. rtti = 0: delete ALL associations.
    */
   static void clear(TraceData* data, int rtti);
 
   /**
-   * Invalidate all assoziations in TraceFunctions of data with
-   * rtti runtime info. rtti = 0: Invalidate ALL assoziations.
+   * Invalidate all associations in TraceFunctions of data with
+   * rtti runtime info. rtti = 0: Invalidate ALL associations.
    */
   static void invalidate(TraceData* data, int rtti);
 
@@ -1110,7 +1110,7 @@ class TraceAssoziation
   bool _valid;
 };
 
-typedef QList<TraceAssoziation*> TraceAssoziationList;
+typedef QList<TraceAssociation*> TraceAssociationList;
 
 /**
  * A traced function
@@ -1188,12 +1188,12 @@ class TraceFunction: public TraceCostItem
   void setClass(TraceClass* cls) { _cls = cls; }
   //void setMapIterator(TraceFunctionMap::Iterator it) { _myMapIterator = it; }
 
-  // see TraceFunctionAssoziation
-  void addAssoziation(TraceAssoziation* a);
-  void removeAssoziation(TraceAssoziation* a);
-  void removeAssoziation(int rtti, bool reallyDelete = true);
-  void invalidateAssoziation(int rtti);
-  TraceAssoziation* assoziation(int rtti);
+  // see TraceFunctionAssociation
+  void addAssociation(TraceAssociation* a);
+  void removeAssociation(TraceAssociation* a);
+  void removeAssociation(int rtti, bool reallyDelete = true);
+  void invalidateAssociation(int rtti);
+  TraceAssociation* association(int rtti);
 
   // cycles
   void setCycle(TraceFunctionCycle* c) { _cycle = c; }
@@ -1220,8 +1220,8 @@ class TraceFunction: public TraceCostItem
   TraceInstrMap* _instrMap; // we are owner
   bool _instrMapFilled;
 
-  // see TraceAssoziation
-  TraceAssoziationList _assoziations;
+  // see TraceAssociation
+  TraceAssociationList _associations;
 
   // for cycle detection
   int _cycleLow;
