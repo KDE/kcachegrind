@@ -9,15 +9,18 @@ set(kcachegrind_SRCS
    configdlg.cpp
    )
 
-kde4_add_ui_files(kcachegrind_SRCS
-        configdlgbase.ui
-	)
+qt5_wrap_ui(kcachegrind_SRCS configdlgbase.ui)
 
 kde4_add_app_icon(kcachegrind_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-kcachegrind.png")
 
 kde4_add_executable(kcachegrind ${kcachegrind_SRCS})
 
-target_link_libraries(kcachegrind core views ${KDE4_KIO_LIBS})
+set(kcachegrind_LIBS
+                 KF5::KDE4Support
+                 KF5::Archive
+)
+
+target_link_libraries(kcachegrind core views ${kcachegrind_LIBS})
 
 install(TARGETS kcachegrind  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

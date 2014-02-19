@@ -26,6 +26,7 @@
 #include <qdatetime.h>
 #include <QLabel>
 #include <QProcess>
+#include <QUrl>
 
 #include <kxmlguiwindow.h>
 
@@ -45,6 +46,7 @@ class KUrl;
 class KSelectAction;
 class KToggleAction;
 class KToolBarPopupAction;
+class KStatusBar;
 
 class TraceData;
 class KRecentFilesAction;
@@ -96,7 +98,8 @@ public:
 
 public slots:
   void load();
-  void load(const KUrl&);
+  void load(const QUrl&);
+  void load(const KUrl &url); // ### legacy, remove
   void load(QString);
   void add();
   void add(const KUrl&);
@@ -230,7 +233,7 @@ private:
   /// @return true when the file could be opened, false otherwise.
   bool openDataFile(const QString& file);
 
-  KStatusBar* _statusbar;
+  QStatusBar* _statusbar;
   QLabel* _statusLabel;
   KRecentFilesAction* _openRecent;
   bool _twoMainWidgets;

@@ -1,14 +1,32 @@
-cmake_minimum_required(VERSION 2.6)
-
 project(kcachegrind)
 
-find_package(KDE4 REQUIRED)
-include(KDE4Defaults)
-include(MacroLibrary)
+cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 
-set( CMAKE_REQUIRED_DEFINITIONS ${_KDE4_PLATFORM_DEFINITIONS} -DQT_STRICT_ITERATORS )
-add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
-include_directories(${CMAKE_SOURCE_DIR}	${CMAKE_BINARY_DIR} ${KDE4_INCLUDES} )
+# minimal requirements
+set (QT_MIN_VERSION "5.2.0")
+
+find_package(ECM 0.0.9 REQUIRED NO_MODULE)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+
+include(KDEInstallDirs)
+include(KDECMakeSettings)
+include(KDECompilerSettings)
+include(ECMOptionalAddSubdirectory)
+include(ECMInstallIcons)
+include(ECMSetupVersion)
+include(ECMMarkNonGuiExecutable)
+include(ECMGenerateHeaders)
+include(GenerateExportHeader)
+include(FeatureSummary)
+
+find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Widgets)
+
+find_package(KF5 CONFIG REQUIRED
+    Archive CoreAddons WidgetsAddons XmlGui KDE4Support
+)
+
+add_definitions(-DQT_STRICT_ITERATORS)
+include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
 
 set( KCACHEGRIND_VERSION "0.7.4kde")
 
@@ -19,15 +37,6 @@ IF(NOT WIN32)
   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/kcachegrind.lsm.cmake ${CMAKE_CURRENT_BINARY_DIR}/kcachegrind.lsm )
 ENDIF(NOT WIN32)
 
-macro_additional_clean_files( 
-	${CMAKE_CURRENT_BINARY_DIR}/version.h 
-	)
-IF(NOT WIN32)
-macro_additional_clean_files(
-	${CMAKE_CURRENT_BINARY_DIR}/kcachegrind.lsm 
-	${CMAKE_CURRENT_BINARY_DIR}/kcachegrind.spec
-	)
-ENDIF(NOT WIN32)
 
 add_subdirectory( doc )
 add_subdirectory( libcore )

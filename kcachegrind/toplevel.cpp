@@ -54,6 +54,7 @@
 #include <kfiledialog.h>
 #include <kio/netaccess.h>
 #include <kedittoolbar.h>
+#include <kshortcut.h>
 #include <kshortcutsdialog.h>
 #include <ktip.h>
 #include <kmenu.h>
@@ -61,7 +62,7 @@
 #include <kdebug.h>
 #include <kicon.h>
 #include <kconfiggroup.h>
-#include <kfilterdev.h>
+#include <KArchive/kfilterdev.h>
 #include <kmimetype.h>
 
 #if ENABLE_DUMPDOCK
@@ -372,7 +373,7 @@ void TopLevel::readProperties(const KConfigGroup &c)
 void TopLevel::createLayoutActions()
 {
   QString hint;
-  KAction* action;
+  QAction* action;
 
   action = actionCollection()->addAction( "layout_duplicate" );
   action->setText( i18n( "&Duplicate" ) );
@@ -420,7 +421,7 @@ void TopLevel::createLayoutActions()
 void TopLevel::createMiscActions()
 {
   QString hint;
-  KAction* action;
+  QAction* action;
 
   action = KStandardAction::openNew(this, SLOT(newWindow()), actionCollection());
   hint = i18n("<b>New</b><p>Open new empty KCachegrind window.</p>");
@@ -456,7 +457,7 @@ void TopLevel::createMiscActions()
   _taDump->setIcon( KIcon("edit-redo") );
   _taDump->setText( i18n( "&Force Dump" ) );
   connect(_taDump, SIGNAL(triggered(bool) ), SLOT( forceTrace() ));
-  _taDump->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Redo));
+  _taDump->setShortcut(QKeySequence::Undo);
   hint = i18n("<b>Force Dump</b>"
               "<p>This forces a dump for a Callgrind profile run "
               "in the current directory. This action is checked while "
@@ -927,7 +928,13 @@ void TopLevel::load()
     load(url);
 }
 
-void TopLevel::load(const KUrl& url)
+// ### legacy, remove
+void TopLevel::load(const KUrl &url)
+{
+    return load(static_cast<const QUrl &>(url));
+}
+
+void TopLevel::load(const QUrl& url)
 {
   if (url.isEmpty()) return;
 
@@ -943,7 +950,7 @@ void TopLevel::load(const KUrl& url)
   } else {
     KMessageBox::error(this, i18n("Could not open the file \"%1\". "
                                   "Check it exists and you have enough "
-                                  "permissions to read it.", url.prettyUrl()));
+                                  "permissions to read it.", url.toDisplayString()));
   }
 }
 

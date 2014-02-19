@@ -26,8 +26,10 @@
 
 #include <kapplication.h>
 #include <kcmdlineargs.h>
-#include <kaboutdata.h>
+#include <k4aboutdata.h>
 #include <klocale.h>
+#include <kglobal.h>
+#include <kstatusbar.h>
 
 #include "kdeconfig.h"
 #include "toplevel.h"
@@ -36,11 +38,11 @@
 
 int main( int argc, char ** argv )
 {
-  KAboutData aboutData("kcachegrind", 0,
+  K4AboutData aboutData("kcachegrind", 0,
                        ki18n("KCachegrind"),
                        KCACHEGRIND_VERSION,
                        ki18n("KDE Frontend for Callgrind/Cachegrind"),
-                       KAboutData::License_GPL,
+                       K4AboutData::License_GPL,
                        ki18n("(C) 2002 - 2011"), KLocalizedString(),
                        "http://kcachegrind.sf.net");
   aboutData.addAuthor(ki18n("Josef Weidendorfer"),

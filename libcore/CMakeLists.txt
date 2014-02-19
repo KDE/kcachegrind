@@ -16,5 +16,5 @@ set(core_SRCS
    config.cpp
    globalconfig.cpp )
 
-qt4_automoc(${core_SRCS})
+#qt5_automoc(${core_SRCS})
 add_library(core STATIC ${core_SRCS})
