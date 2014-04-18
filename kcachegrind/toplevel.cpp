@@ -60,7 +60,6 @@
 #include <ktip.h>
 #include <kmenu.h>
 #include <kmessagebox.h>
-#include <kdebug.h>
 #include <kicon.h>
 #include <kconfiggroup.h>
 #include <KArchive/kfilterdev.h>
@@ -1390,7 +1389,7 @@ void TopLevel::setTraceItemDelayed(CostItem* i)
   _traceItemDelayed = i;
   _lastSender = sender();
 
-  kDebug() << "Selected " << (i ? i->prettyName() : "(none)");
+  qDebug() << "Selected " << (i ? i->prettyName() : "(none)");
 
 #if TRACE_UPDATES
   qDebug("TopLevel::setTraceItemDelayed(%s), sender %s",
@@ -1728,7 +1727,7 @@ void TopLevel::layoutDuplicate()
 
     updateLayoutActions();
 
-    if (0) kDebug() << "TopLevel::layoutDuplicate: count " << _layoutCount;
+    if (0) qDebug() << "TopLevel::layoutDuplicate: count " << _layoutCount;
 }
 
 void TopLevel::layoutRemove()
@@ -1758,7 +1757,7 @@ void TopLevel::layoutNext()
     if (_layoutCurrent == _layoutCount) _layoutCurrent = 0;
     _multiView->restoreLayout(layoutPrefix.arg(_layoutCurrent), key);
 
-    if (0) kDebug() << "TopLevel::layoutNext: current "
+    if (0) qDebug() << "TopLevel::layoutNext: current "
 		    << _layoutCurrent << endl;
 }
 
@@ -1774,7 +1773,7 @@ void TopLevel::layoutPrevious()
     if (_layoutCurrent <0) _layoutCurrent = _layoutCount-1;
     _multiView->restoreLayout(layoutPrefix.arg(_layoutCurrent), key);
 
-    if (0) kDebug() << "TopLevel::layoutPrevious: current "
+    if (0) qDebug() << "TopLevel::layoutPrevious: current "
 		    << _layoutCurrent << endl;
 }
 
@@ -2359,12 +2358,12 @@ void TopLevel::loadProgress(int progress)
 
 void TopLevel::loadError(int line, const QString& msg)
 {
-    kError() << "Loading" << _filename << ":" << line << ": " << msg;
+    qCritical() << "Loading" << _filename << ":" << line << ": " << msg;
 }
 
 void TopLevel::loadWarning(int line, const QString& msg)
 {
-    kWarning() << "Loading" << _filename << ":" << line << ": " << msg;
+    qWarning() << "Loading" << _filename << ":" << line << ": " << msg;
 }
 
 bool TopLevel::openDataFile(const QString& file)

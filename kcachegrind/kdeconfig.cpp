@@ -24,7 +24,6 @@
 
 #include <kconfig.h>
 #include <klocale.h>
-#include <kdebug.h>
 #include <kconfiggroup.h>
 
 #include "tracedata.h"
