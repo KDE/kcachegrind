@@ -36,6 +36,7 @@
 #include <QEventLoop>
 #include <QProcess>
 #include <QtDBus/QDBusConnection>
+#include <QMimeDatabase>
 
 #include <ktoggleaction.h>
 #include <ktoolbarpopupaction.h>
@@ -63,7 +64,6 @@
 #include <kicon.h>
 #include <kconfiggroup.h>
 #include <KArchive/kfilterdev.h>
-#include <kmimetype.h>
 
 #if ENABLE_DUMPDOCK
 #include "dumpselection.h"
@@ -2373,7 +2373,9 @@ bool TopLevel::openDataFile(const QString& file)
     int filesLoaded;
 
     // see whether this file is compressed, than take the direct route
-    QString mimeType = KMimeType::findByFileContent(file)->name ();
+    QMimeDatabase dataBase;
+    QString mimeType = dataBase.mimeTypeForFile(file, QMimeDatabase::MatchContent).name();
+
     QIODevice* compressed = KFilterDev::deviceForFile (file, mimeType, true);
     if (compressed) {
         filesLoaded = d->load(compressed, file);
