@@ -21,7 +21,7 @@ include(FeatureSummary)
 
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Widgets)
 
-find_package(KF5 CONFIG REQUIRED
+find_package(KF5 REQUIRED
     Archive CoreAddons WidgetsAddons XmlGui KDE4Support
 )
 
