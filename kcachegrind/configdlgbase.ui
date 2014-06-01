@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>394</width>
-    <height>328</height>
+    <width>435</width>
+    <height>439</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -107,34 +107,34 @@
              </property>
             </spacer>
            </item>
-           <item row="4" column="2">
-            <widget class="KIntSpinBox" name="precisionEdit">
-             <property name="maximum">
-              <number>10</number>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="2">
-            <widget class="KIntSpinBox" name="symbolLength">
-             <property name="maximum">
-              <number>999</number>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="2">
-            <widget class="KIntSpinBox" name="symbolCount">
-             <property name="maximum">
-              <number>999</number>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="2">
-            <widget class="KIntSpinBox" name="maxListEdit">
+            <widget class="QSpinBox" name="maxListEdit">
              <property name="toolTip">
               <string>The Maximum Number of List Items should be below 500.</string>
              </property>
              <property name="maximum">
               <number>499</number>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QSpinBox" name="symbolCount">
+             <property name="maximum">
+              <number>999</number>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QSpinBox" name="symbolLength">
+             <property name="maximum">
+              <number>999</number>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="2">
+            <widget class="QSpinBox" name="precisionEdit">
+             <property name="maximum">
+              <number>10</number>
              </property>
             </widget>
            </item>
@@ -164,7 +164,16 @@
          </item>
          <item row="2" column="0">
           <layout class="QGridLayout">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <property name="spacing">
@@ -325,7 +334,7 @@
           </widget>
          </item>
          <item>
-          <widget class="KIntSpinBox" name="contextEdit"/>
+          <widget class="QSpinBox" name="contextEdit"/>
          </item>
         </layout>
        </item>
@@ -425,11 +434,6 @@
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>KIntSpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>knuminput.h</header>
-  </customwidget>
   <customwidget>
    <class>KDialogButtonBox</class>
    <extends>QDialogButtonBox</extends>
