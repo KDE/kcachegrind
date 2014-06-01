@@ -359,14 +359,14 @@
          <item row="0" column="1">
           <layout class="QVBoxLayout">
            <item>
-            <widget class="KPushButton" name="addDirButton">
+            <widget class="QPushButton" name="addDirButton">
              <property name="text">
               <string>Add</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="KPushButton" name="deleteDirButton">
+            <widget class="QPushButton" name="deleteDirButton">
              <property name="text">
               <string>Delete</string>
              </property>
@@ -425,7 +425,7 @@
     </widget>
    </item>
    <item>
-    <widget class="KDialogButtonBox" name="buttonBox">
+    <widget class="QDialogButtonBox" name="buttonBox">
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
@@ -434,16 +434,6 @@
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>KDialogButtonBox</class>
-   <extends>QDialogButtonBox</extends>
-   <header>kdialogbuttonbox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>KPushButton</class>
-   <extends>QPushButton</extends>
-   <header>kpushbutton.h</header>
-  </customwidget>
   <customwidget>
    <class>KComboBox</class>
    <extends>QComboBox</extends>
