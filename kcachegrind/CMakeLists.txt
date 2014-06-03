@@ -16,7 +16,7 @@ kde4_add_app_icon(kcachegrind_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-kcachegr
 kde4_add_executable(kcachegrind ${kcachegrind_SRCS})
 
 set(kcachegrind_LIBS
-                 KF5::KDE4Support
+                 KF5::KDELibs4Support
                  KF5::Archive
 )
 
