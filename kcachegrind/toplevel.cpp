@@ -60,7 +60,6 @@
 #include <ktip.h>
 #include <kmenu.h>
 #include <kmessagebox.h>
-#include <kicon.h>
 #include <kconfiggroup.h>
 #include <KArchive/kfilterdev.h>
 
@@ -434,7 +433,7 @@ void TopLevel::createMiscActions()
   action->setWhatsThis( hint );
 
   action = actionCollection()->addAction( "reload" );
-  action->setIcon( KIcon("view-refresh") );
+  action->setIcon( QIcon::fromTheme("view-refresh") );
   action->setText( i18nc("Reload a document", "&Reload" ) );
   connect(action, SIGNAL(triggered(bool) ), SLOT( reload() ));
   action->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Reload));
@@ -453,7 +452,7 @@ void TopLevel::createMiscActions()
 
 
   _taDump = actionCollection()->add<KToggleAction>( "dump" );
-  _taDump->setIcon( KIcon("edit-redo") );
+  _taDump->setIcon( QIcon::fromTheme("edit-redo") );
   _taDump->setText( i18n( "&Force Dump" ) );
   connect(_taDump, SIGNAL(triggered(bool) ), SLOT( forceTrace() ));
   _taDump->setShortcut(QKeySequence::Undo);
@@ -527,7 +526,7 @@ void TopLevel::createMiscActions()
 #endif
 
   _taPercentage = actionCollection()->add<KToggleAction>("view_percentage");
-  _taPercentage->setIcon(KIcon("percent"));
+  _taPercentage->setIcon(QIcon::fromTheme("percent"));
   _taPercentage->setText(i18n("Relative"));
   connect(_taPercentage, SIGNAL(triggered(bool) ), SLOT(togglePercentage()));
   hint = i18n("Show relative instead of absolute costs");
@@ -535,7 +534,7 @@ void TopLevel::createMiscActions()
   _taPercentage->setWhatsThis( hint );
 
   _taExpanded = actionCollection()->add<KToggleAction>("view_expanded");
-  _taExpanded->setIcon(KIcon("move"));
+  _taExpanded->setIcon(QIcon::fromTheme("move"));
   _taExpanded->setText(i18n("Relative to Parent"));
   connect(_taExpanded, SIGNAL(triggered(bool) ), SLOT(toggleExpanded()));
 
@@ -559,7 +558,7 @@ void TopLevel::createMiscActions()
   _taExpanded->setWhatsThis( hint );
 
   _taCycles = actionCollection()->add<KToggleAction>("view_cycles");
-  _taCycles->setIcon(KIcon("edit-undo"));
+  _taCycles->setIcon(QIcon::fromTheme("edit-undo"));
   _taCycles->setText(i18n( "Cycle Detection" ));
   connect(_taCycles, SIGNAL(triggered(bool) ), SLOT( toggleCycles() ));
 
@@ -578,7 +577,7 @@ void TopLevel::createMiscActions()
   _taCycles->setWhatsThis( hint );
 
   _taHideTemplates = actionCollection()->add<KToggleAction>("hide_templates");
-  _taHideTemplates->setIcon(KIcon("hidetemplates"));
+  _taHideTemplates->setIcon(QIcon::fromTheme("hidetemplates"));
   _taHideTemplates->setText(i18n( "Shorten Templates" ));
   connect(_taHideTemplates, SIGNAL(triggered(bool) ), SLOT( toggleHideTemplates() ));
   _taHideTemplates->setToolTip(i18n( "Hide Template Parameters in C++ Symbols" ));
@@ -617,7 +616,7 @@ void TopLevel::createMiscActions()
   action->setToolTip( hint );
   action->setWhatsThis( hint );
 #else
-  _paUp = new KToolBarPopupAction( KIcon( "go-up" ), i18n( "&Up" ), this );
+  _paUp = new KToolBarPopupAction( QIcon::fromTheme( "go-up" ), i18n( "&Up" ), this );
   _paUp->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Up) );
   connect( _paUp, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserUp() ) );
   actionCollection()->addAction( "go_up", _paUp );
@@ -711,7 +710,7 @@ void TopLevel::createMiscActions()
            this, SLOT(groupTypeSelected(int)));
 
   _taSplit = actionCollection()->add<KToggleAction>("view_split");
-  _taSplit->setIcon(KIcon("view-split-left-right"));
+  _taSplit->setIcon(QIcon::fromTheme("view-split-left-right"));
   _taSplit->setText(i18n("Split"));
   connect(_taSplit, SIGNAL(triggered(bool) ), SLOT(splitSlot()));
 
@@ -720,7 +719,7 @@ void TopLevel::createMiscActions()
   _taSplit->setWhatsThis( hint );
 
  _taSplitDir = actionCollection()->add<KToggleAction>("view_split_dir");
- _taSplitDir->setIcon(KIcon("view-split-left-right"));
+ _taSplitDir->setIcon(QIcon::fromTheme("view-split-left-right"));
  _taSplitDir->setText(i18n("Split Horizontal"));
  connect(_taSplitDir, SIGNAL(triggered(bool) ), SLOT(splitDirSlot()));
 
