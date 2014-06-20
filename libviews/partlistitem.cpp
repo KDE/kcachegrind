@@ -153,7 +153,7 @@ bool PartListItem::operator<(const QTreeWidgetItem& other) const
     int col = treeWidget()->sortColumn();
 
     if (col==0)
-        return (pi1->_part < pi2->_part);
+        return (*(pi1->_part) < *(pi2->_part));
 
     if (col==1)
         return (pi1->_sum < pi2->_sum);
