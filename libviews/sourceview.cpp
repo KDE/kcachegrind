@@ -248,13 +248,13 @@ void SourceView::doUpdate(int changeType, bool)
           sLine = (TraceLine*) _selectedItem;
       if (_selectedItem->type() == ProfileContext::Instr)
 	  sLine = ((TraceInstr*)_selectedItem)->line();
-      if (!sLine)
-          return;
+      if ((_selectedItem->type() != ProfileContext::Function) && (sLine == 0))
+	  return;
 
       QList<QTreeWidgetItem*> items = selectedItems();
       SourceItem* si = (items.count() > 0) ? (SourceItem*)items[0] : 0;
       if (si) {
-	  if (si->line() == sLine) return;
+	  if (sLine && (si->line() == sLine)) return;
 	  if (si->lineCall() &&
 	      (si->lineCall()->call()->called() == _selectedItem)) return;
       }
@@ -263,15 +263,15 @@ void SourceView::doUpdate(int changeType, bool)
       for (int i=0; i<topLevelItemCount(); i++) {
           item = topLevelItem(i);
 	  si = (SourceItem*)item;
-	  if (si->line() == sLine) {
+	  if (sLine && (si->line() == sLine)) {
               scrollToItem(item);
               _inSelectionUpdate = true;
 	      setCurrentItem(item);
               _inSelectionUpdate = false;
 	      break;
 	  }
-	  item2 = 0;
-          for (int j=0; i<item->childCount(); j++) {
+	  bool foundCall = false;
+	  for (int j=0; j<item->childCount(); j++) {
               item2 = item->child(j);
 	      si = (SourceItem*)item2;
 	      if (!si->lineCall()) continue;
@@ -280,10 +280,11 @@ void SourceView::doUpdate(int changeType, bool)
                   _inSelectionUpdate = true;
 		  setCurrentItem(item2);
                   _inSelectionUpdate = false;
+		  foundCall = true;
 		  break;
 	      }
 	  }
-	  if (item2) break;
+	  if (foundCall) break;
       }
       return;
   }
