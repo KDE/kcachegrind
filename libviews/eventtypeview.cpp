@@ -244,6 +244,8 @@ void EventTypeView::doUpdate(int changeType, bool)
 	for(int i = 0; i < topLevelItemCount(); i++)
 	    ((EventTypeItem*)topLevelItem(i))->update();
 
+	resizeColumnToContents(1);
+	resizeColumnToContents(2);
 	return;
     }
 
