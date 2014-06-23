@@ -133,7 +133,6 @@ public slots:
   void splitDirSlot();
   void configureToolbars();
   void configureKeys();
-  bool queryExit();
   bool queryClose();
   void togglePartDock();
   void toggleStackDock();

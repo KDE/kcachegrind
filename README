@@ -83,7 +83,7 @@ Requirements:
 * KDE 4.3 or higher: kdelibs development packages (libs & headers)
 * CMake
 
-Commands (from basee directory):
+Commands (from base directory):
 
 	cmake .; make; make install
 

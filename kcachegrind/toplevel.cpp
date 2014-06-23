@@ -194,7 +194,7 @@ void TopLevel::setupPartSelection(PartSelection* ps)
  * sub widgets.
  *
  * No positions are saved. These is done automatically for
- * KToolbar, and manually in queryExit() for QT docks.
+ * KToolbar, and manually in queryClose() for Qt docks.
  */
 void TopLevel::saveCurrentState(const QString& postfix)
 {
@@ -1886,11 +1886,6 @@ bool TopLevel::queryClose()
 {
   saveTraceSettings();
 
-  return true;
-}
-
-bool TopLevel::queryExit()
-{
     // save current toplevel options as defaults...
     GlobalConfig::setShowPercentage(_showPercentage);
     GlobalConfig::setShowExpanded(_showExpanded);
@@ -1898,7 +1893,7 @@ bool TopLevel::queryExit()
     GlobalConfig::setHideTemplates(_hideTemplates);
     GlobalGUIConfig::config()->saveOptions();
 
-    saveCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+    saveCurrentState(QString());
 
   // toolbar and dock positions are automatically stored
 

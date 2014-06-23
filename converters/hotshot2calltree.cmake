@@ -53,7 +53,7 @@
 #  * es fehlt noch ein Funktionsnamen Mangling, dass die Filenamen berücksichtigt,
 #    zZ sind alle __init__'s und alle run's schwer unterscheidbar :-(
 #
-version = "$Revision$"
+version = "Version ${KCACHEGRIND_VERSION}"
 progname = "hotshot2cachegrind"
 
 import os, sys
