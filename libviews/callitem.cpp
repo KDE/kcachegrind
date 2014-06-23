@@ -141,7 +141,7 @@ void CallItem::updateCost()
 	  setText(2, _call->prettySubCost(ct2));
         }
         setIcon(2, costPixmap(ct2, _call, total, false));
-        setText(3, _call->prettySubCostPerCall(ct, _cc));
+	setText(3, _call->prettySubCostPerCall(ct2, _cc));
       }
     }
 
@@ -168,10 +168,26 @@ bool CallItem::operator<(const QTreeWidgetItem& other) const
   if (col==0)
     return ci1->_sum < ci2->_sum;
 
-  if (col==1)
-    return ci1->_sum2 < ci2->_sum2;
+  if (col==1) {
+    uint64 cc1 = ci1->_cc;
+    uint64 cc2 = ci2->_cc;
+    if (cc1 == 0) cc1 = 1;
+    if (cc2 == 0) cc2 = 1;
+    return (ci1->_sum / cc1) < (ci2->_sum / cc2);
+  }
 
   if (col==2)
+    return ci1->_sum2 < ci2->_sum2;
+
+  if (col==3) {
+    uint64 cc1 = ci1->_cc;
+    uint64 cc2 = ci2->_cc;
+    if (cc1 == 0) cc1 = 1;
+    if (cc2 == 0) cc2 = 1;
+    return (ci1->_sum2 / cc1) < (ci2->_sum2 / cc2);
+  }
+
+  if (col==4)
    return ci1->_cc < ci2->_cc;
 
   return QTreeWidgetItem::operator <(other);

@@ -47,6 +47,7 @@ class SubCost
     bool set(FixString& s) { return s.stripUInt64(v); }
 
     operator uint64&() { return v; }
+    operator uint64() const { return v; }
 
     bool operator==(unsigned i) const { return v == i; }
     bool operator==(int i) const { return v == (unsigned)i; }
