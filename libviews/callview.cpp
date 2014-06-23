@@ -137,7 +137,8 @@ void CallView::context(const QPoint & p)
     popup.addSeparator();
   }
 
-  if ((col == 0) || (col == 1)) {
+  // add menu items to select event type if column displays cost for a type
+  if (col < 4) {
     addEventTypeMenu(&popup);
     popup.addSeparator();
   }
@@ -175,7 +176,7 @@ void CallView::activatedSlot(QTreeWidgetItem* i,int)
 void CallView::headerClicked(int col)
 {
     // name columns should be sortable in both ways
-    if (col == 3) return;
+    if (col == 5) return;
 
     // all others only descending
     sortByColumn(col, Qt::DescendingOrder);

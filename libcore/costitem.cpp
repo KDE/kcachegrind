@@ -603,7 +603,7 @@ QString ProfileCostArray::prettySubCost(EventType* t)
     return subCost(t).pretty();
 }
 
-QString ProfileCostArray::prettySubCostPerCall(EventType* t, int calls)
+QString ProfileCostArray::prettySubCostPerCall(EventType* t, uint64 calls)
 {
     if (calls == 0) {
         /* For callgrind, a call count of zero means that
