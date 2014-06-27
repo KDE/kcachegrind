@@ -306,6 +306,7 @@ void InstrItem::setJumpArray(const QVector<TraceInstrJump*>& a)
 //
 
 InstrItemDelegate::InstrItemDelegate(InstrView *parent)
+    : QItemDelegate(parent)
 {
     _parent = parent;
 }
