@@ -338,28 +338,19 @@ void InstrView::keyPressEvent(QKeyEvent* event)
 CostItem* InstrView::canShow(CostItem* i)
 {
     ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
-  TraceFunction* f = 0;
 
-  switch(t) {
-  case ProfileContext::Function:
-      f = (TraceFunction*) i;
-      break;
+    switch(t) {
+    case ProfileContext::Function:
+    case ProfileContext::Instr:
+    case ProfileContext::InstrJump:
+    case ProfileContext::Line:
+	return i;
 
-  case ProfileContext::Instr:
-      f = ((TraceInstr*)i)->function();
-      select(i);
-      break;
+    default:
+	break;
+    }
 
-  case ProfileContext::Line:
-      f = ((TraceLine*)i)->functionSource()->function();
-      select(i);
-      break;
-
-  default:
-      break;
-  }
-
-  return f;
+    return 0;
 }
 
 
@@ -382,12 +373,17 @@ void InstrView::doUpdate(int changeType, bool)
 	      (ii->instrCall()->call()->called() == _selectedItem)) return;
       }
 
+      TraceInstrJump* ij = 0;
+      if (_selectedItem->type() == ProfileContext::InstrJump)
+	  ij = (TraceInstrJump*) _selectedItem;
+
       QTreeWidgetItem *item, *item2;
       for (int i=0; i<topLevelItemCount(); i++) {
           item = topLevelItem(i);
 	  ii = (InstrItem*)item;
 	  if ((ii->instr() == _selectedItem) ||
-	      (ii->instr() && (ii->instr()->line() == _selectedItem))) {
+	      (ii->instr() && (ii->instr()->line() == _selectedItem)) ||
+	      (ij && (ij->instrTo() == ii->instr())) ) {
 	      scrollToItem(item);
               _inSelectionUpdate = true;
 	      setCurrentItem(item);

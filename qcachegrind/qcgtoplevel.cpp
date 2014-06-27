@@ -1201,14 +1201,11 @@ void QCGTopLevel::setTraceItemDelayed()
 	_multiView->activate(_traceItemDelayed);
 	break;
 
-#if 0
-	// this conflicts with the selection policy of InstrView ?!?
     case ProfileContext::Instr:
     case ProfileContext::Line:
 	// only for multiview
 	_multiView->activate(_traceItemDelayed);
 	break;
-#endif
 
     default: break;
     }
