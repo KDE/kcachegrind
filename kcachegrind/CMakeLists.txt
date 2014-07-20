@@ -13,7 +13,7 @@ qt5_wrap_ui(kcachegrind_SRCS configdlgbase.ui)
 
 kde4_add_app_icon(kcachegrind_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-kcachegrind.png")
 
-kde4_add_executable(kcachegrind ${kcachegrind_SRCS})
+add_executable(kcachegrind ${kcachegrind_SRCS})
 
 set(kcachegrind_LIBS
                  KF5::KDELibs4Support
@@ -31,6 +31,6 @@ install( PROGRAMS kcachegrind.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES tips  DESTINATION  ${DATA_INSTALL_DIR}/kcachegrind )
 install( FILES kcachegrindui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kcachegrind )
 
-kde4_install_icons( ${ICON_INSTALL_DIR}   )
+ecm_install_icons( ${ICON_INSTALL_DIR}   )
 
 
