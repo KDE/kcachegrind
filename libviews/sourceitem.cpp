@@ -297,6 +297,7 @@ void SourceItem::setJumpArray(const QVector<TraceLineJump*>& a)
 //
 
 SourceItemDelegate::SourceItemDelegate(SourceView *parent)
+    : QItemDelegate(parent)
 {
     _parent = parent;
 }
