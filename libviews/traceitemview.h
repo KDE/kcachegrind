@@ -78,8 +78,8 @@ public:
    * - <dataChanged> is used if e.g. cycles are recalculated
    */
   enum { nothingChanged      = 0,
-	 eventTypeChanged     = 1,
-	 eventType2Changed    = 2,
+	 eventTypeChanged    = 1,
+	 eventType2Changed   = 2,
 	 groupTypeChanged    = 4,
 	 partsChanged        = 8,
 	 activeItemChanged   = 16,
@@ -171,11 +171,11 @@ public:
   virtual QWidget* widget() = 0;
 
   /**
-   * This function is called when a new item should become active.
-   * Reimplement this in subclasses.
+   * Called when a new item is about to become active.
+   * Itemviews should reimplement this to notify that a
+   * given item cannot be shown (return 0) or should be
+   * redirected to another item to be shown as active.
    *
-   * Returns the real item to become active. You can call select() here.
-   * Return 0 if nothing can be shown.
    * Use the methods like data() instead of _data here, as
    * _data possibly will give old/wrong information.
    */

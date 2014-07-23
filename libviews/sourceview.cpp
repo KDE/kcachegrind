@@ -208,29 +208,19 @@ void SourceView::keyPressEvent(QKeyEvent* event)
 
 CostItem* SourceView::canShow(CostItem* i)
 {
-  ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
-  TraceFunction* f = 0;
+    ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
 
-  switch(t) {
-  case ProfileContext::Function:
-      f = (TraceFunction*) i;
-      break;
+    switch(t) {
+    case ProfileContext::Function:
+    case ProfileContext::Instr:
+    case ProfileContext::Line:
+	return i;
 
-  case ProfileContext::Instr:
-      f = ((TraceInstr*)i)->function();
-      select(i);
-      break;
+    default:
+	break;
+    }
 
-  case ProfileContext::Line:
-      f = ((TraceLine*)i)->functionSource()->function();
-      select(i);
-      break;
-
-  default:
-      break;
-  }
-
-  return f;
+    return 0;
 }
 
 void SourceView::doUpdate(int changeType, bool)
@@ -333,7 +323,8 @@ void SourceView::refresh()
   if (t == ProfileContext::Function) f = (TraceFunction*) _activeItem;
   if (t == ProfileContext::Instr) {
     f = ((TraceInstr*)_activeItem)->function();
-    if (!_selectedItem) _selectedItem = _activeItem;
+    if (!_selectedItem)
+	_selectedItem = ((TraceInstr*)_activeItem)->line();
   }
   if (t == ProfileContext::Line) {
     f = ((TraceLine*)_activeItem)->functionSource()->function();
@@ -372,6 +363,7 @@ void SourceView::refresh()
   }
   // reset to the original position - this is useful when the view
   // is refreshed just because we change between relative/absolute
+  // FIXME: this overrides scrolling to selected item
   verticalScrollBar()->setValue(originalPosition);
 }
 

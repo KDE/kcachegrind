@@ -22,6 +22,7 @@
 
 #include "traceitemview.h"
 
+#include <QtGlobal>
 #include <QWidget>
 
 #include "toplevelbase.h"
@@ -109,13 +110,14 @@ void TraceItemView::restoreOptions(const QString&, const QString&)
 
 bool TraceItemView::activate(CostItem* i)
 {
-    i = canShow(i);
-    if (_activeItem == i) return (i != 0);
+    _newActiveItem = canShow(i);
+    if (_activeItem != _newActiveItem) {
+	// new item activated, start with empty selection
+	_newSelectedItem = 0;
+	updateView();
+    }
 
-    _newActiveItem = i;
-    updateView();
-
-    return (i != 0);
+    return (_newActiveItem != 0);
 }
 
 TraceFunction* TraceItemView::activeFunction()
@@ -146,8 +148,10 @@ bool TraceItemView::set(int changeType, TraceData* d,
   _newPartList = l;
   _newSelectedItem = s;
   _newActiveItem = canShow(a);
-  if (!_newActiveItem)
+  if (_activeItem != _newActiveItem) {
+      // new item activated, start with empty selection
       _newSelectedItem = 0;
+  }
   updateView();
 
   return (_newActiveItem != 0);
@@ -273,35 +277,37 @@ void TraceItemView::triggerUpdate(bool force)
   if (!force && (_status == nothingChanged)) return;
 
 #if TRACE_UPDATES
-  qDebug() << (widget() ? widget()->name() : "TraceItemView")
-            << "::doUpdate ( "
-            << ((_status & dataChanged) ? "data ":"")
-            << ((_status & configChanged) ? "config ":"")
-            << ")";
+  qDebug("%s::doUpate",
+	 widget() ? qPrintable(widget()->objectName()) : "TraceItemView");
+
+  if (_status & dataChanged)
+      qDebug("  data changed");
+
+  if (_status & configChanged)
+      qDebug("  config changed");
 
   if (_status & partsChanged)
-    qDebug() << "  Part List "
-	     << _partList.names();
+      qDebug("  parts changed: %s", qPrintable(_partList[0]->name()) );
 
   if (_status & eventTypeChanged)
-    qDebug() << "  Cost type "
-	     << (_eventType ? qPrintable( _eventType->name() ) : "?");
+      qDebug("  event type 1 changed: %s",
+	     _eventType ? qPrintable( _eventType->name() ) : "(None)");
 
   if (_status & eventType2Changed)
-    qDebug() << "  Cost type 2 "
-	     << (_eventType2 ? qPrintable( _eventType2->name() ) : "?");
+      qDebug("  event type 2 changed: %s",
+	     _eventType2 ? qPrintable( _eventType2->name() ) : "(None)");
 
   if (_status & groupTypeChanged)
-    qDebug() << "  Group type "
-	     << ProfileContext::typeName(_groupType);
+      qDebug("  group type changed: %s",
+	     qPrintable(ProfileContext::typeName(_groupType)));
 
   if (_status & activeItemChanged)
-    qDebug() << "  Active: "
-	     << (_activeItem ? qPrintable( _activeItem->fullName() ) : "?");
+      qDebug("  active item changed: %s",
+	     _activeItem ? qPrintable( _activeItem->fullName() ) : "(none)");
 
   if (_status & selectedItemChanged)
-    qDebug() << "  Selected: "
-	     << (_selectedItem ? qPrintable( _selectedItem->fullName() ) : "?");
+      qDebug("  selected item changed: %s",
+	     _selectedItem ? qPrintable( _selectedItem->fullName() ) : "(none)");
 #endif
 
   int st = _status;
@@ -312,12 +318,11 @@ void TraceItemView::triggerUpdate(bool force)
 
 void TraceItemView::selected(TraceItemView* /*sender*/, CostItem* i)
 {
-#if TRACE_UPDATES
-  qDebug() << (widget() ? widget()->name() : "TraceItemView")
-            << "::selected "
-            << (i ? qPrintable( i->name() ): "(nil)")
-            << ", sender "
-            << sender->widget()->name() << endl;
+#if 0 // TRACE_UPDATES
+    qDebug("%s::selected( item %s, sender %s )",
+	   widget() ? qPrintable(widget()->objectName()) : "TraceItemView",
+	   i ? qPrintable( i->name() ): "(none)",
+	   qPrintable(sender->widget()->objectName()) );
 #endif
 
   if (_parentView) _parentView->selected(this, i);
@@ -325,7 +330,7 @@ void TraceItemView::selected(TraceItemView* /*sender*/, CostItem* i)
 
 void TraceItemView::partsSelected(TraceItemView* /*sender*/, const TracePartList& l)
 {
-#if TRACE_UPDATES
+#if 0 // TRACE_UPDATES
   qDebug() << (widget() ? widget()->name() : "TraceItemView")
             << "::selected "
             << l.names()
@@ -341,12 +346,11 @@ void TraceItemView::partsSelected(TraceItemView* /*sender*/, const TracePartList
 
 void TraceItemView::activated(TraceItemView* /*sender*/, CostItem* i)
 {
-#if TRACE_UPDATES
-  qDebug() << (widget() ? widget()->name() : "TraceItemView")
-            << "::activated "
-            << (i ? qPrintable( i->name() ) : "(nil)")
-            << ", sender "
-            << sender->widget()->name();
+#if 0 // TRACE_UPDATES
+    qDebug("%s::activated( item %s, sender %s )",
+	   widget() ? qPrintable(widget()->objectName()) : "TraceItemView",
+	   i ? qPrintable( i->name() ): "(none)",
+	   qPrintable(sender->widget()->objectName()) );
 #endif
 
   if (_parentView)
@@ -394,6 +398,12 @@ void TraceItemView::doUpdate(int, bool)
 
 void TraceItemView::selected(CostItem* i)
 {
+#if TRACE_UPDATES
+    qDebug("%s::selected( item %s )",
+	   widget() ? qPrintable(widget()->objectName()) : "TraceItemView",
+	   i ? qPrintable( i->name() ): "(none)" );
+#endif
+
   if (_parentView)
       _parentView->selected(this, i);
 
@@ -410,9 +420,9 @@ void TraceItemView::partsSelected(const TracePartList& l)
 void TraceItemView::activated(CostItem* i)
 {
 #if TRACE_UPDATES
-  qDebug() << (widget() ? widget()->name() : "TraceItemView")
-            << "::activated "
-            << (i ? qPrintable( i->name() ): "(nil)");
+    qDebug("%s::activated( item %s )",
+	   widget() ? qPrintable(widget()->objectName()) : "TraceItemView",
+	   i ? qPrintable( i->name() ): "(none)" );
 #endif
 
   if (_parentView)
