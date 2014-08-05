@@ -22,7 +22,7 @@ include(FeatureSummary)
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Widgets)
 
 find_package(KF5 REQUIRED
-    Archive CoreAddons WidgetsAddons XmlGui KDELibs4Support
+    Archive CoreAddons DocTools WidgetsAddons XmlGui KDELibs4Support
 )
 
 add_definitions(-DQT_STRICT_ITERATORS)
