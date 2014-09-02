@@ -26,7 +26,7 @@ find_package(KF5 REQUIRED
 )
 
 add_definitions(-DQT_STRICT_ITERATORS)
-include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
+include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR})
 
 set( KCACHEGRIND_VERSION "0.7.4kde")
 

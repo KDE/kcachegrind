@@ -16,5 +16,8 @@ set(core_SRCS
    config.cpp
    globalconfig.cpp )
 
-#qt5_automoc(${core_SRCS})
 add_library(core STATIC ${core_SRCS})
+
+target_link_libraries(core
+    Qt5::Core
+)

@@ -30,6 +30,10 @@ set(libviews_SRCS
    instritem.cpp
    partlistitem.cpp )
 
-#qt4_automoc(${libviews_SRCS})
 add_library(views STATIC ${libviews_SRCS})
-target_link_libraries(views core)
+
+target_link_libraries(views
+    core
+    Qt5::Gui
+    Qt5::Widgets
+)
