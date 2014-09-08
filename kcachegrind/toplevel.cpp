@@ -2368,7 +2368,7 @@ bool TopLevel::openDataFile(const QString& file)
     QMimeDatabase dataBase;
     QString mimeType = dataBase.mimeTypeForFile(file, QMimeDatabase::MatchContent).name();
 
-    QIODevice* compressed = KFilterDev::deviceForFile (file, mimeType, true);
+    QIODevice* compressed = new KCompressionDevice(file, KFilterDev::compressionTypeForMimeType(mimeType));
     if (compressed) {
         filesLoaded = d->load(compressed, file);
     } else {
