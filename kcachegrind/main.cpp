@@ -61,7 +61,7 @@ int main( int argc, char ** argv )
   TopLevel* t;
   Loader::initLoaders();
 
-  KConfig* kc = KGlobal::config().data();
+  KConfig* kc = KSharedConfig::openConfig().data();
   ConfigStorage::setStorage(new KDEConfigStorage(kc));
 
   if (a.isSessionRestored()){

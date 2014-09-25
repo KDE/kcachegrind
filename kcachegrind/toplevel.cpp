@@ -28,6 +28,7 @@
 #include <stdlib.h> // for system()
 
 #include <QDockWidget>
+#include <QDebug>
 #include <QTimer>
 #include <QLabel>
 #include <QLineEdit>
@@ -46,7 +47,6 @@
 #include <ktoolbar.h>
 #include <kstandardguiitem.h>
 #include <klocale.h>
-#include <kglobal.h>
 #include <kstatusbar.h>
 #include <kstandardshortcut.h>
 #include <kstandardaction.h>
@@ -93,7 +93,7 @@ TopLevel::TopLevel()
 
     resetState();
 
-    KConfig *kconfig = KGlobal::config().data();
+    KConfig *kconfig = KSharedConfig::openConfig().data();
     GlobalGUIConfig::config()->readOptions();
 
     createDocks();
@@ -342,7 +342,7 @@ void TopLevel::createDocks()
 	_dumpDock->hide();
 #endif
 
-	KConfigGroup dockConfig(KGlobal::config(), "Docks");
+	KConfigGroup dockConfig(KSharedConfig::openConfig(), "Docks");
 	_forcePartDock = dockConfig.readEntry("ForcePartDockVisible", false);
 }
 
@@ -940,7 +940,7 @@ void TopLevel::load(const QUrl& url)
   // for KDE 3.2: KIO::NetAccess::download with 2 args is deprecated
   if(KIO::NetAccess::download( url, tmpFile, this )) {
     _openRecent->addUrl(url);
-    _openRecent->saveEntries( KConfigGroup( KGlobal::config(), QString() ) );
+    _openRecent->saveEntries( KConfigGroup( KSharedConfig::openConfig(), QString() ) );
 
     load(tmpFile);
     KIO::NetAccess::removeTempFile( tmpFile );
@@ -996,7 +996,7 @@ void TopLevel::add(const KUrl& url)
   QString tmpFile;
   if(KIO::NetAccess::download( url, tmpFile, this )) {
     _openRecent->addUrl(url);
-    _openRecent->saveEntries( KGlobal::config()->group( QString() ) );
+    _openRecent->saveEntries( KSharedConfig::openConfig()->group( QString() ) );
 
     add(tmpFile);
     KIO::NetAccess::removeTempFile( tmpFile );
@@ -1798,7 +1798,7 @@ void TopLevel::layoutSave()
 
 void TopLevel::layoutRestore()
 {
-    KConfig *config = KGlobal::config().data();
+    KConfig *config = KSharedConfig::openConfig().data();
     KConfigGroup aConfig(config, "Layouts");
     _layoutCount = aConfig.readEntry("DefaultCount", 0);
     _layoutCurrent = aConfig.readEntry("DefaultCurrent", 0);
@@ -1901,7 +1901,7 @@ bool TopLevel::queryClose()
   _forcePartDock = false;
   if (_data && (_data->parts().count()<2) && _partDock->isVisible())
     _forcePartDock=true;
-  KConfigGroup dockConfig(KGlobal::config(), "Docks");
+  KConfigGroup dockConfig(KSharedConfig::openConfig(), "Docks");
   dockConfig.writeEntry("ForcePartDockVisible", _forcePartDock);
 
   return true;
