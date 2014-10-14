@@ -73,6 +73,9 @@ QPixmap percentagePixmap(int w, int h, int percent, QColor c, bool framed)
 {
   int iw, ix1, ih, iy1, iy2;
 
+  // at max, draw 100%
+  if (percent > 100) percent = 100;
+
   // inner rectangle to fill with bar
   if (framed) {
     iw = w-2, ix1 = 1;
