@@ -950,7 +950,7 @@ GraphEdge* GraphExporter::edge(TraceFunction* f1, TraceFunction* f2)
  * If on a further visit of the node/edge the limit is reached,
  * we use the whole node/edge cost and continue search.
  */
-void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallees,
+void GraphExporter::buildGraph(TraceFunction* f, int depth, bool toCallees,
                                double factor)
 {
 #if DEBUG_GRAPH
@@ -974,7 +974,9 @@ void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallees,
 	// A negative depth limit means "unlimited"
 	int maxDepth = toCallees ? _go->maxCalleeDepth()
 	        : _go->maxCallerDepth();
-	if ((maxDepth>=0) && (d >= maxDepth)) {
+	// Never go beyound a depth of 100
+	if ((maxDepth < 0) || (maxDepth>100)) maxDepth = 100;
+	if (depth >= maxDepth) {
 		if (0)
 			qDebug("  Cutoff, max depth reached");
 		return;
@@ -1080,7 +1082,7 @@ void GraphExporter::buildGraph(TraceFunction* f, int d, bool toCallees,
 			s = f2->inclusive()->subCost(_eventType);
 		SubCost v = call->subCost(_eventType);
 		// FIXME: Can s be 0?
-		buildGraph(f2, d+1, toCallees, factor * v / s);
+		buildGraph(f2, depth+1, toCallees, factor * v / s);
 	}
 }
 
