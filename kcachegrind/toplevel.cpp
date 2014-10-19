@@ -55,6 +55,7 @@
 #include <kfiledialog.h>
 #include <kio/netaccess.h>
 #include <kedittoolbar.h>
+#include <kshortcut.h>
 #include <kshortcutsdialog.h>
 #include <ktip.h>
 #include <kmenu.h>
@@ -375,7 +376,7 @@ void TopLevel::createLayoutActions()
   action = actionCollection()->addAction( "layout_duplicate" );
   action->setText( i18n( "&Duplicate" ) );
   connect(action, SIGNAL(triggered(bool)), SLOT(layoutDuplicate()));
-  action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_Plus));
+  action->setShortcuts(KShortcut(Qt::CTRL+Qt::Key_Plus));
   hint = i18n("<b>Duplicate Current Layout</b>"
               "<p>Make a copy of the current layout.</p>");
   action->setWhatsThis( hint );
@@ -390,14 +391,14 @@ void TopLevel::createLayoutActions()
   action = actionCollection()->addAction( "layout_next" );
   action->setText( i18n( "&Go to Next" ) );
   connect(action, SIGNAL(triggered(bool)), SLOT(layoutNext()));
-  action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_Right));
+  action->setShortcuts(KShortcut(Qt::CTRL+Qt::Key_Right));
   hint = i18n("Go to Next Layout");
   action->setWhatsThis( hint );
 
   action = actionCollection()->addAction( "layout_previous" );
   action->setText( i18n( "&Go to Previous" ) );
   connect(action, SIGNAL(triggered(bool)), SLOT(layoutPrevious()));
-  action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_Left));
+  action->setShortcuts(KShortcut(Qt::CTRL+Qt::Key_Left));
   hint = i18n("Go to Previous Layout");
   action->setWhatsThis( hint );
 
@@ -616,7 +617,7 @@ void TopLevel::createMiscActions()
   action->setWhatsThis( hint );
 #else
   _paUp = new KToolBarPopupAction( QIcon::fromTheme( "go-up" ), i18n( "&Up" ), this );
-  _paUp->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Up) );
+  _paUp->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Up) );
   connect( _paUp, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserUp() ) );
   actionCollection()->addAction( "go_up", _paUp );
   connect( _paUp->menu(), SIGNAL( aboutToShow() ),
@@ -631,7 +632,7 @@ void TopLevel::createMiscActions()
 
   QPair< KGuiItem, KGuiItem > backForward = KStandardGuiItem::backAndForward();
   _paBack = new KToolBarPopupAction( backForward.first.icon(), backForward.first.text(), this );
-  _paBack->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Left) );
+  _paBack->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Left) );
   connect( _paBack, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserBack() ) );
   actionCollection()->addAction( "go_back", _paBack );
   connect( _paBack->menu(), SIGNAL( aboutToShow() ),
@@ -643,7 +644,7 @@ void TopLevel::createMiscActions()
   _paBack->setWhatsThis( hint );
 
   _paForward = new KToolBarPopupAction( backForward.second.icon(), backForward.second.text(), this );
-  _paForward->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Right) );
+  _paForward->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Right) );
   connect( _paForward, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserForward() ) );
   actionCollection()->addAction( "go_forward", _paForward );
   connect( _paForward->menu(), SIGNAL( aboutToShow() ),
