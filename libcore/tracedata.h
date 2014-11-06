@@ -1363,6 +1363,9 @@ class TraceObject: public TraceCostItem
 class TraceData: public ProfileCostArray
 {
  public:
+  // profiled architecture (must be same for every part)
+  enum Arch { ArchUnknown, ArchARM };
+
   TraceData(Logger* l = 0);
   virtual ~TraceData();
 
@@ -1446,6 +1449,8 @@ class TraceData: public ProfileCostArray
 
   void setCommand(const QString& command) { _command = command; }
   QString command() const { return _command; }
+  void setArchitecture(Arch a) { _arch = a; }
+  Arch architecture() const { return _arch; }
   ProfileCostArray* totals() { return &_totals; }
   void setMaxThreadID(int tid) { _maxThreadID = tid; }
   int maxThreadID() const { return _maxThreadID; }
@@ -1493,6 +1498,7 @@ class TraceData: public ProfileCostArray
   TraceFileMap _fileMap;
   TraceFunctionMap _functionMap;
   QString _command;
+  Arch _arch;
   QString _traceName;
 
   // Max of all costs of calls: This allows to see if the incl. cost can

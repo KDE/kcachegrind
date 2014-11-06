@@ -55,6 +55,9 @@ class Addr
   Addr operator+(int d) const { return Addr(_v + d); }
   Addr operator-(int d) const { return Addr(_v - d); }
 
+  // return decremented address until it is a multiple of <a>, a power of 2
+  Addr alignedDown(int a) { return Addr(_v & ~( ((uint64)a) -1)); }
+
  private:
   uint64 _v;
 };
