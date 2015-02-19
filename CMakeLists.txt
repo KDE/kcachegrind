@@ -5,7 +5,7 @@ cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 # minimal requirements
 set (QT_MIN_VERSION "5.2.0")
 
-find_package(ECM 0.0.9 REQUIRED NO_MODULE)
+find_package(ECM 1.3.0 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 include(KDEInstallDirs)
@@ -46,3 +46,5 @@ add_subdirectory( kcachegrind )
 add_subdirectory( qcachegrind )
 add_subdirectory( pics )
 add_subdirectory( converters )
+
+feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
