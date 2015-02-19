@@ -2862,4 +2862,3 @@ void TreeMapWidget::addSplitDirectionItems(QMenu* m)
 }
 
 
-#include "treemap.moc"

@@ -990,4 +990,3 @@ void CallMapView::saveOptions(const QString& prefix, const QString& postfix)
     delete g;
 }
 
-#include "callmapview.moc"

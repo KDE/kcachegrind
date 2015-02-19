@@ -1131,4 +1131,3 @@ void InstrView::saveOptions(const QString& prefix, const QString& postfix)
     delete g;
 }
 
-#include "instrview.moc"

@@ -3181,5 +3181,4 @@ void CallGraphView::saveOptions(const QString& prefix, const QString& postfix)
     delete g;
 }
 
-#include "callgraphview.moc"
 

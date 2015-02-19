@@ -1036,4 +1036,3 @@ void TabView::saveOptions(const QString& prefix, const QString& postfix)
 		       .arg(v->widget()->objectName()), postfix);
 }
 
-#include "tabview.moc"

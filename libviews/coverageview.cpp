@@ -366,4 +366,3 @@ void CoverageView::refresh()
     header()->resizeSections(QHeaderView::ResizeToContents);
 }
 
-#include "coverageview.moc"

@@ -209,4 +209,3 @@ void SourceSettings::accept()
     }
 }
 
-#include "sourcesettings.moc"

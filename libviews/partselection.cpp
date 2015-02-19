@@ -595,4 +595,3 @@ void PartSelection::fillInfo()
   _rangeLabel->setText(info);
 }
 
-#include "partselection.moc"

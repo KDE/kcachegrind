@@ -524,4 +524,3 @@ QColor SubPartItem::backColor() const
 }
 
 
-#include "partgraph.moc"

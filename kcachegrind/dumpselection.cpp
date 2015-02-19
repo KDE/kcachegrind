@@ -45,5 +45,4 @@ DumpSelection::~DumpSelection()
 {}
 
 
-#include "dumpselection.moc"
 

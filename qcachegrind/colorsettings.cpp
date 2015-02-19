@@ -179,4 +179,3 @@ void ColorSettings::accept()
     }
 }
 
-#include "colorsettings.moc"

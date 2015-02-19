@@ -885,4 +885,3 @@ void FunctionSelection::functionHeaderClicked(int col)
 
 
 
-#include "functionselection.moc"

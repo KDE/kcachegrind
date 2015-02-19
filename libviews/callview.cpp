@@ -298,4 +298,3 @@ void CallView::refresh()
     }
 }
 
-#include "callview.moc"

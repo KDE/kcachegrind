@@ -372,4 +372,3 @@ void ConfigDlg::dirsAddPressed()
   item->setText(0, newDir);
 }
 
-#include "configdlg.moc"

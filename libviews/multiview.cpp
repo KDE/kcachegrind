@@ -236,4 +236,3 @@ void MultiView::saveOptions(const QString& prefix, const QString& postfix)
 }
 
 
-#include "multiview.moc"

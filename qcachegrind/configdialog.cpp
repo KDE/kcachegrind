@@ -165,4 +165,3 @@ void ConfigDialog::accept()
     QDialog::accept();
 }
 
-#include "configdialog.moc"

@@ -471,4 +471,3 @@ bool FunctionListModel::FunctionLessThan::operator()(TraceFunction *left,
 }
 
 
-#include "functionlistmodel.moc"
