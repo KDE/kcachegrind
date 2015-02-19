@@ -27,10 +27,10 @@ install(TARGETS kcachegrind  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
 
-install( PROGRAMS kcachegrind.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
+install( PROGRAMS org.kde.kcachegrind.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES tips  DESTINATION  ${DATA_INSTALL_DIR}/kcachegrind )
 install( FILES kcachegrindui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/kcachegrind )
 
-ecm_install_icons( ${ICON_INSTALL_DIR}   )
+ecm_install_icons( ICONS hi32-apps-kcachegrind.png  hi48-apps-kcachegrind.png DESTINATION ${ICON_INSTALL_DIR}   )
 
 
