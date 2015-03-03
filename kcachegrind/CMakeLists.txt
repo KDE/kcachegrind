@@ -9,9 +9,9 @@ set(kcachegrind_SRCS
    configdlg.cpp
    )
 
-qt5_wrap_ui(kcachegrind_SRCS configdlgbase.ui)
+ki18n_wrap_ui(kcachegrind_SRCS configdlgbase.ui)
 
-kde4_add_app_icon(kcachegrind_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-kcachegrind.png")
+kde4_add_app_icon(kcachegrind_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-apps-kcachegrind.png")
 
 add_executable(kcachegrind ${kcachegrind_SRCS})
 
