@@ -22,15 +22,15 @@ set(kcachegrind_LIBS
 
 target_link_libraries(kcachegrind core views ${kcachegrind_LIBS})
 
-install(TARGETS kcachegrind  ${INSTALL_TARGETS_DEFAULT_ARGS} )
+install(TARGETS kcachegrind  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
 
 ########### install files ###############
 
-install( PROGRAMS org.kde.kcachegrind.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
-install( FILES tips  DESTINATION  ${DATA_INSTALL_DIR}/kcachegrind )
-install( FILES kcachegrindui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/kcachegrind )
+install( PROGRAMS org.kde.kcachegrind.desktop  DESTINATION  ${KDE_INSTALL_APPDIR} )
+install( FILES tips  DESTINATION  ${KDE_INSTALL_DATADIR}/kcachegrind )
+install( FILES kcachegrindui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/kcachegrind )
 
-ecm_install_icons( ICONS hi32-apps-kcachegrind.png  hi48-apps-kcachegrind.png DESTINATION ${ICON_INSTALL_DIR}   )
+ecm_install_icons( ICONS hi32-apps-kcachegrind.png  hi48-apps-kcachegrind.png DESTINATION ${KDE_INSTALL_ICONDIR}   )
 
 

@@ -5,4 +5,4 @@ configure_file(
 
 install( PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/hotshot2calltree
 	 op2calltree pprof2calltree dprof2calltree memprof2calltree
-	 DESTINATION ${BIN_INSTALL_DIR} )
+	 DESTINATION ${KDE_INSTALL_BINDIR} )

@@ -17,4 +17,4 @@ target_link_libraries(qcachegrind
         Qt5::DBus)
 
 # do not install example code...
-# install(TARGETS qcachegrind ${INSTALL_TARGETS_DEFAULT_ARGS} )
+# install(TARGETS qcachegrind ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )

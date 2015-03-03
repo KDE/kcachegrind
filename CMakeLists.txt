@@ -5,7 +5,7 @@ cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 # minimal requirements
 set (QT_MIN_VERSION "5.2.0")
 
-find_package(ECM 1.3.0 REQUIRED NO_MODULE)
+find_package(ECM 1.7.0 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 include(KDEInstallDirs)
@@ -18,6 +18,7 @@ include(ECMMarkNonGuiExecutable)
 include(ECMGenerateHeaders)
 include(GenerateExportHeader)
 include(FeatureSummary)
+include(ECMAddAppIcon)
 
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Widgets)
 

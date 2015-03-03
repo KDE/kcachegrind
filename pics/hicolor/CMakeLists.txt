@@ -1,1 +1,1 @@
-ecm_install_icons( ${DATA_INSTALL_DIR}/kcachegrind/icons  )
+ecm_install_icons( ${KDE_INSTALL_DATADIR}/kcachegrind/icons  )
