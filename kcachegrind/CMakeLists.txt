@@ -11,7 +11,8 @@ set(kcachegrind_SRCS
 
 ki18n_wrap_ui(kcachegrind_SRCS configdlgbase.ui)
 
-kde4_add_app_icon(kcachegrind_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-apps-kcachegrind.png")
+file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/*-apps-kcachegrind.png")
+ecm_add_app_icon(kcachegrind_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(kcachegrind ${kcachegrind_SRCS})
 
@@ -31,6 +32,6 @@ install( PROGRAMS org.kde.kcachegrind.desktop  DESTINATION  ${KDE_INSTALL_APPDIR
 install( FILES tips  DESTINATION  ${KDE_INSTALL_DATADIR}/kcachegrind )
 install( FILES kcachegrindui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/kcachegrind )
 
-ecm_install_icons( ICONS hi32-apps-kcachegrind.png  hi48-apps-kcachegrind.png DESTINATION ${KDE_INSTALL_ICONDIR}   )
+ecm_install_icons( ICONS 32-apps-kcachegrind.png  48-apps-kcachegrind.png DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor   )
 
 

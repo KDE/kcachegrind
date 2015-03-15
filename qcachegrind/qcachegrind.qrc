@@ -3,6 +3,6 @@
   <file alias="percent.png">../pics/hicolor/hi32-actions-percent.png</file>
   <file alias="move.png">../pics/hicolor/hi22-actions-move.png</file>
   <file alias="hidetemplates.png">../pics/hicolor/hi22-actions-hidetemplates.png</file>
-  <file alias="app.png">../kcachegrind/hi48-apps-kcachegrind.png</file>
+  <file alias="app.png">../kcachegrind/48-apps-kcachegrind.png</file>
 </qresource>
 </RCC>
