@@ -1,8 +1,8 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
-  <file alias="percent.png">../pics/hicolor/hi32-actions-percent.png</file>
-  <file alias="move.png">../pics/hicolor/hi22-actions-move.png</file>
-  <file alias="hidetemplates.png">../pics/hicolor/hi22-actions-hidetemplates.png</file>
+  <file alias="percent.png">../pics/hicolor/32-actions-percent.png</file>
+  <file alias="move.png">../pics/hicolor/22-actions-move.png</file>
+  <file alias="hidetemplates.png">../pics/hicolor/22-actions-hidetemplates.png</file>
   <file alias="app.png">../kcachegrind/48-apps-kcachegrind.png</file>
 </qresource>
 </RCC>
