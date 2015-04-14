@@ -20,6 +20,8 @@
 
 #include "tracedata.h"
 
+#include <QObject>
+
 #define TRACE_DEBUG      0
 #define TRACE_ASSERTIONS 0
 
