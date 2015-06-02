@@ -24,12 +24,11 @@
 #include "../version.h"
 
 
-#include <kapplication.h>
-#include <kcmdlineargs.h>
-#include <k4aboutdata.h>
-#include <klocale.h>
-#include <kglobal.h>
-#include <kstatusbar.h>
+#include <QApplication>
+#include <QCommandLineParser>
+#include <KAboutData>
+#include <KLocalizedString>
+#include <KSharedConfig>
 
 #include "kdeconfig.h"
 #include "toplevel.h"
@@ -38,27 +37,19 @@
 
 int main( int argc, char ** argv )
 {
-  K4AboutData aboutData("kcachegrind", 0,
-                       ki18n("KCachegrind"),
+  QApplication a(argc, argv);
+  KAboutData aboutData("kcachegrind",
+                       i18n("KCachegrind"),
                        KCACHEGRIND_VERSION,
-                       ki18n("KDE Frontend for Callgrind/Cachegrind"),
-                       K4AboutData::License_GPL,
-                       ki18n("(C) 2002 - 2011"), KLocalizedString(),
+                       i18n("KDE Frontend for Callgrind/Cachegrind"),
+                       KAboutLicense::GPL,
+                       i18n("(C) 2002 - 2011"), QString(),
                        "http://kcachegrind.sf.net");
-  aboutData.addAuthor(ki18n("Josef Weidendorfer"),
-                      ki18n("Author/Maintainer"),
+  aboutData.addAuthor(i18n("Josef Weidendorfer"),
+                      i18n("Author/Maintainer"),
                       "Josef.Weidendorfer@gmx.de");
 
-  KCmdLineArgs::init(argc, argv, &aboutData);
-
-  KCmdLineOptions options;
-  //options.add("r <exec>", ki18n("Run <exec> under cachegrind"));
-  options.add("+[trace]", ki18n("Show information of this trace"));
-  KCmdLineArgs::addCmdLineOptions( options );
-
-  KApplication a;
-  KGlobal::locale()->insertCatalog("kcachegrind_qt");
-  TopLevel* t;
+//   KGlobal::locale()->insertCatalog("kcachegrind_qt");
   Loader::initLoaders();
 
   KConfig* kc = KSharedConfig::openConfig().data();
@@ -72,13 +63,22 @@ int main( int argc, char ** argv )
     }
   }
   else {
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-    int nbArgs = args->count();
+    TopLevel* t;
+
+    QCommandLineParser parser;
+    parser.addPositionalArgument("trace", i18n("Show information of this trace"), i18n("[trace...]"));
+    parser.addVersionOption();
+    parser.addHelpOption();
+    aboutData.setupCommandLine(&parser);
+    parser.process(a);
+    aboutData.processCommandLine(&parser);
+
+    int nbArgs = parser.positionalArguments().count();
     if (nbArgs>0) {
         t = new TopLevel();
         t->show();
-        for(int i = 0; i < nbArgs; i++) {
-            t->loadDelayed(args->arg(i));
+        foreach(const QString &arg, parser.positionalArguments()) {
+            t->loadDelayed(arg);
       }
     }
     else {
