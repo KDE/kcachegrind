@@ -162,7 +162,7 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
   functionList->setItemDelegate(new AutoToolTipDelegate(functionList));
   vboxLayout->addWidget(functionList);
 
-  // order has to match mapping in groupTypeSelected()
+  // only to adjust size, will be repopulated on data change
   QStringList args;
   args << tr("(No Grouping)")
        << ProfileContext::i18nTypeName(ProfileContext::Object)
@@ -351,9 +351,12 @@ void FunctionSelection::addGroupMenu(QMenu* menu)
 	addGroupAction(m,  ProfileContext::Function, tr("No Grouping"));
 	m->addSeparator();
     }
-    addGroupAction(m, ProfileContext::Object);
-    addGroupAction(m, ProfileContext::File);
-    addGroupAction(m, ProfileContext::Class);
+    if (_data->objectMap().count()>1)
+	addGroupAction(m, ProfileContext::Object);
+    if (_data->fileMap().count()>1)
+	addGroupAction(m, ProfileContext::File);
+    if (_data->classMap().count()>1)
+	addGroupAction(m, ProfileContext::Class);
     addGroupAction(m, ProfileContext::FunctionCycle);
 
     connect(m, SIGNAL(triggered(QAction*)),
@@ -368,16 +371,12 @@ void FunctionSelection::groupTypeSelected(QAction* a)
 
 void FunctionSelection::groupTypeSelected(int cg)
 {
-    switch(cg) {
-    case 0: selectedGroupType( ProfileContext::Function ); break;
-    case 1: selectedGroupType( ProfileContext::Object ); break;
-    case 2: selectedGroupType( ProfileContext::File ); break;
-    case 3: selectedGroupType( ProfileContext::Class ); break;
-    case 4: selectedGroupType( ProfileContext::FunctionCycle ); break;
-    default: break;
-    }
-}
+    int t = groupBox->itemData(cg).toInt();
+    if (t == 0)
+	t = ProfileContext::Function; // always works
 
+    selectedGroupType((ProfileContext::Type) t);
+}
 
 CostItem* FunctionSelection::canShow(CostItem* i)
 {
@@ -501,6 +500,24 @@ void FunctionSelection::doUpdate(int changeType, bool)
 	return;
     }
 
+    if (changeType & dataChanged) {
+	groupBox->clear();
+	groupBox->addItem(tr("(No Grouping)"), ProfileContext::Function);
+	if (_data) {
+	    if (_data->objectMap().count()>1)
+		groupBox->addItem(ProfileContext::i18nTypeName(ProfileContext::Object),
+				  ProfileContext::Object);
+	    if (_data->fileMap().count()>1)
+		groupBox->addItem(ProfileContext::i18nTypeName(ProfileContext::File),
+				  ProfileContext::File);
+	    if (_data->classMap().count()>1)
+		groupBox->addItem(ProfileContext::i18nTypeName(ProfileContext::Class),
+				  ProfileContext::Class);
+	    groupBox->addItem(ProfileContext::i18nTypeName(ProfileContext::FunctionCycle),
+			      ProfileContext::FunctionCycle);
+	}
+    }
+
     if (changeType & groupTypeChanged) {
 	if (_activeItem && (_activeItem->type() == ProfileContext::Function)) {
 	    TraceFunction* f = (TraceFunction*) _activeItem;
@@ -517,14 +534,8 @@ void FunctionSelection::doUpdate(int changeType, bool)
 	    }
 	}
 
-	int id;
-	switch(_groupType) {
-	case ProfileContext::Object: id = 1; break;
-	case ProfileContext::File:   id = 2; break;
-	case ProfileContext::Class:  id = 3; break;
-	case ProfileContext::FunctionCycle: id = 4; break;
-	default: id = 0; break;
-	}
+	int id = groupBox->findData(_groupType);
+	if (id < 0) id = 0; // if not found, default to first entry
 	groupBox->setCurrentIndex(id);
 
 	if (_groupType == ProfileContext::Function)
