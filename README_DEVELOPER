@@ -58,6 +58,19 @@ another CostItem - in such cases, it is not required to refresh the whole
 view. Otherwise, TraceViewItem::refresh() gets called, which is expected
 to do a complete refresh of the visualization.
 
+The basic visualization task of subclasses of TraceItemView's is to visualize
+one CostItem (the "active" CostItem), typically e.g. a function
+(TraceFunction). Further, there is a "selected" CostItem. This usually is
+a subitem of the active, visualized CostItem, e.g. a source line from the
+active function (TraceLine), or another function in the call graph around
+the active function.
+
+TraceItemView's may not be able to show a given CostItem, but want to show
+another CostItem instead, or show nothing. In the latter case, they get
+grayed out. This behavior is encoded through TraceItemView::canShow, which,
+given a CostItem to visualize, returns the replacement it can visualize
+instead, or 0 if it cannot show anything.
+
 Every top-level window visualizes exactly one profile data (_data),
 and consists of some subviews (FunctionSelection on the left, MultiView on
 the right, with various TabViews embedded) which all inherit from
