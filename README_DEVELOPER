@@ -1,0 +1,66 @@
+A short guide into the internal design of KCachegrind
+=====================================================
+
+
+Basics of the data model
+------------------------
+
+KCachegrind is a visualization of constant data. This makes the
+data model quite simple. However, as the visualization may require
+a lot of aggregation/summation of a huge number of raw data points in
+all kind of different ways, this aggregation is done in a lazy way.
+Only when the visualization asks for aggregated data, and the data was
+never requested before, aggregation is done.
+This makes the loading of large files faster: only the hierarchy of
+records (e.g. instructions belonging to a source line, source lines
+belong to a function, multiple functions are part of an ELF object)
+is built while loading a file, but no aggregation of data is done.
+Further, this reduces memory consumption.
+
+Important classes of the data model:
+
+* TraceData is a representation of profile data from one profile session,
+  possibly consisting of multiple parts, where each part corresponds to a
+  loaded file
+
+* any record/entry of a some profile data is inherited from CostItem,
+  and this is a complete hierarchy, which gets automatically built
+  when loading a file. E.g. TraceData itself inherits from CostItem.
+
+* every record/entry usually consists of different fields, and
+  are indexed by so-called EventType's. So-called "derived" event
+  types are not actually backed by real fields with concrete data,
+  but get calculated on-demand using a given formula referencing
+  fields with real data.
+
+
+Basics of the GUI
+-----------------
+
+At any time, every view visualizes some CostItem from loaded profile data.
+More concretely, the "visualization state" consists of e.g. the
+current CostItem to show, a curent EventType to show, from which
+part(s) to show, which sub-CostItem should be shown selected and so on.
+
+Every view is inherited from the TraceItemView class, which manages the
+visualization state. TraceItemView's can be setup in a hierarchical
+fashion, and make sure to keep the visualization state consistent between
+each other. E.g. item selection by mouse are forwarded to the parent view,
+which passes the new selection back to all its sub-views.
+
+When a subclass of TraceItemView is asked to change its visualization state,
+it actually only starts a timer, and all state change wishes get merged
+until a time-out happens.
+Then, TraceViewItem::doUpdate() gets called with an argument telling what
+parts of the visualization state should be changed. There, one can do
+special handling if only one thing is to be changed, such as selection of
+another CostItem - in such cases, it is not required to refresh the whole
+view. Otherwise, TraceViewItem::refresh() gets called, which is expected
+to do a complete refresh of the visualization.
+
+Every top-level window visualizes exactly one profile data (_data),
+and consists of some subviews (FunctionSelection on the left, MultiView on
+the right, with various TabViews embedded) which all inherit from
+TraceItemView, always synced to show some visualization state at a given
+time.
+
