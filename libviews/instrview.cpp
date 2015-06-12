@@ -837,16 +837,12 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	<< QString("--stop-address=0x%1").arg(dumpEndAddr.toString())
 	<< objfile;
 
-    QProcess objdump;
-    objdump.setArguments(objdumpArgs);
-    objdump.setProgram(getObjDump());
-
-    QString objdumpCmd;
-    objdumpCmd = objdump.program() + " " + objdump.arguments().join(" ");
+    QString objdumpCmd = getObjDump() + " " + objdumpArgs.join(" ");
     qDebug("Running '%s'...", qPrintable(objdumpCmd));
 
     // and run...
-    objdump.start();
+    QProcess objdump;
+    objdump.start(getObjDump(), objdumpArgs);
     if (!objdump.waitForStarted() ||
 	!objdump.waitForFinished()) {
 
