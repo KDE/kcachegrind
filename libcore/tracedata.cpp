@@ -3080,6 +3080,8 @@ void TraceData::init()
   _maxPartNumber = 0;
   _fixPool = 0;
   _dynPool = 0;
+
+  _arch = ArchUnknown;
 }
 
 TraceData::~TraceData()

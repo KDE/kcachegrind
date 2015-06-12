@@ -944,6 +944,19 @@ int CachegrindLoader::loadInternal(TraceData* data,
 	case '#':
 	    continue;
 
+	case 'a':
+	    // "arch: arm"
+	    if (line.stripPrefix("rch: arm")) {
+		TraceData::Arch a = _data->architecture();
+		if ((a != TraceData::ArchUnknown) &&
+		    (a != TraceData::ArchARM)) {
+		    error(QString("Redefined architecture!"));
+		}
+		_data->setArchitecture(TraceData::ArchARM);
+		continue;
+	    }
+	    break;
+
 	case 't':
 
 	    // totals:

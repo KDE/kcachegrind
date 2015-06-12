@@ -34,6 +34,7 @@
 #include <QScrollBar>
 #include <QHeaderView>
 #include <QKeyEvent>
+#include <QProcessEnvironment>
 
 #include "config.h"
 #include "globalconfig.h"
@@ -45,7 +46,31 @@
 #define DEFAULT_SHOWHEXCODE true
 
 
-// Helpers for parsing output of 'objdump'
+// Helpers
+
+// check environment variables
+
+QProcessEnvironment env;
+
+static
+QString getSysRoot()
+{
+    if (env.isEmpty())
+	env = QProcessEnvironment::systemEnvironment();
+
+    return env.value("SYSROOT");
+}
+
+static
+QString getObjDump()
+{
+    if (env.isEmpty())
+	env = QProcessEnvironment::systemEnvironment();
+
+    return env.value("OBJDUMP", "objdump");
+}
+
+// parsing output of 'objdump'
 
 static Addr parseAddr(char* buf)
 {
@@ -728,7 +753,17 @@ bool InstrView::searchFile(QString& dir, TraceObject* o)
     QString filename = o->shortName();
 
     if (QDir::isAbsolutePath(dir)) {
-	return QFile::exists(dir + '/' + filename);
+	if (QFile::exists(dir + '/' + filename))
+	    return true;
+
+	QString sysRoot = getSysRoot();
+	if (!sysRoot.isEmpty()) {
+	    if (!dir.startsWith('/') && !sysRoot.endsWith('/'))
+		sysRoot += '/';
+	    dir = sysRoot + dir;
+	    return QFile::exists(dir + '/' + filename);
+	}
+	return false;
     }
 
     QFileInfo fi(dir, filename);
@@ -759,6 +794,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     Addr costAddr, nextCostAddr, objAddr, addr;
     Addr dumpStartAddr, dumpEndAddr;
     TraceInstrMap::Iterator costIt;
+    bool isArm = (function->data()->architecture() == TraceData::ArchARM);
 
     // should not happen
     if (it == itEnd) return false;
@@ -767,8 +803,15 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     TraceInstrMap::Iterator tmpIt = itEnd;
     --tmpIt;
     nextCostAddr = (*it).addr();
+
+    if (isArm) {
+	// for Arm: address always even (even for Thumb encoding)
+	nextCostAddr = nextCostAddr.alignedDown(2);
+    }
+
     dumpStartAddr = (nextCostAddr<20) ? Addr(0) : nextCostAddr -20;
     dumpEndAddr   = (*tmpIt).addr() +20;
+
 
     QString dir = function->object()->directory();
     if (!searchFile(dir, function->object())) {
@@ -779,6 +822,9 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 		      QString("    '%1'").arg(function->object()->name()));
 	new InstrItem(this, this, 3,
 		      tr("This file can not be found."));
+	if (isArm)
+	    new InstrItem(this, this, 4,
+			  tr("If cross-compiled, set SYSROOT variable."));
 	return false;
     }
     function->object()->setDirectory(dir);
@@ -790,13 +836,17 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	<< QString("--start-address=0x%1").arg(dumpStartAddr.toString())
 	<< QString("--stop-address=0x%1").arg(dumpEndAddr.toString())
 	<< objfile;
-    QString objdumpCmd = "objdump " + objdumpArgs.join(" ");
 
-    if (1) qDebug("Running '%s'...", qPrintable(objdumpCmd));
+    QProcess objdump;
+    objdump.setArguments(objdumpArgs);
+    objdump.setProgram(getObjDump());
+
+    QString objdumpCmd;
+    objdumpCmd = objdump.program() + " " + objdump.arguments().join(" ");
+    qDebug("Running '%s'...", qPrintable(objdumpCmd));
 
     // and run...
-    QProcess objdump;
-    objdump.start("objdump", objdumpArgs);
+    objdump.start();
     if (!objdump.waitForStarted() ||
 	!objdump.waitForFinished()) {
 
@@ -873,6 +923,8 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	  }
 	  costAddr = nextCostAddr;
 	  nextCostAddr = (it == itEnd) ? Addr(0) : (*it).addr();
+	  if (isArm)
+	      nextCostAddr = nextCostAddr.alignedDown(2);
 
 	  if (0) qDebug() << "Got nextCostAddr: 0x" << nextCostAddr.toString()
 			   << ", costAddr 0x" << costAddr.toString();
