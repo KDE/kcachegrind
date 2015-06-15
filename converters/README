@@ -17,8 +17,8 @@ Thanks go to
 * Jörg Beyer <job@webde-ag.de> for
   hotshot2calltree
 
-If you want to write a converter, have a look at the calltree format
-description on the web site (kcachegrind.sf.net).
+If you want to write a converter, have a look at the callgrind format
+description on the web site (kcachegrind.github.io).
 
 Josef
 

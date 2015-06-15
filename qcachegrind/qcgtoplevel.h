@@ -51,7 +51,7 @@ class TraceFunction;
 class QCGTopLevel : public QMainWindow, public Logger, public TopLevelBase
 {
   Q_OBJECT
-  Q_CLASSINFO("D-Bus Interface", "net.sf.qcachegrind")
+  Q_CLASSINFO("D-Bus Interface", "io.github.qcachegrind")
 
 public:
   QCGTopLevel();

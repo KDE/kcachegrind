@@ -406,7 +406,7 @@ functions around the selected one.
 
 <para>
 To explore the &GUI; further, in addition to this manual, also have a look at
-the documentation section <ulink url="http://kcachegrind.sf.net">on the Web
+the documentation section <ulink url="https://kcachegrind.github.io">on the Web
 site</ulink>.
 Also, every widget in &kcachegrind; has <quote>What's this</quote> help.
 </para>
@@ -1157,7 +1157,7 @@ Thanks for all the bug reports and suggestions from different users.
 <para>
 &kcachegrind; is part of the &package; package of &kde;. For less supported
 interim releases, &callgrind; and further documentation, see
-<ulink url="http://kcachegrind.sf.net">the Web page</ulink>. Look there for
+<ulink url="https://kcachegrind.github.io">the Web page</ulink>. Look there for
 further installation and compile instructions.
 </para>
 </sect1>
