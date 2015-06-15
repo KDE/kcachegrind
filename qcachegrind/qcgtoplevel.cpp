@@ -618,12 +618,12 @@ void QCGTopLevel::about()
 	      "phase of developing a computer program. "
 	      "QCachegrind is open-source, and it is distributed under the "
 	      "terms of the GPL v2. For details and source code, see the "
-	      "<a href=\"http://kcachegrind.sf.net\">homepage</a> of the "
+	      "<a href=\"https://kcachegrind.github.io\">homepage</a> of the "
 	      "KCachegrind project.</p>"
               "Main author and maintainer: "
 	      "<a href=\"mailto:Josef.Weidendorfer@gmx.de\">"
               "Josef Weidendorfer</a><br>"
-              "(with lots of bug fixes and porting to Qt4 by the KDE team)");
+              "(with lots of bug fixes/porting help by the KDE community)");
     QMessageBox::about(this, tr("About QCachegrind"), text);
 }
 

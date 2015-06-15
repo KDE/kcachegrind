@@ -5,7 +5,7 @@ Release:   1
 Copyright: GPL
 Group:     Development/Tools
 Vendor:    (none)
-URL:       http://kcachegrind.sourceforge.net
+URL:       https://kcachegrind.github.io
 Packager:  Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 Source:    kcachegrind-${KCACHEGRIND_VERSION}.tar.gz
 BuildRoot: /var/tmp/build

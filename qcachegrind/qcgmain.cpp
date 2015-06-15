@@ -35,7 +35,7 @@ int main( int argc, char ** argv )
     QApplication app(argc, argv);
     Loader::initLoaders();
 
-    QCoreApplication::setOrganizationName("kcachegrind.sf.net");
+    QCoreApplication::setOrganizationName("kcachegrind.github.io");
     QCoreApplication::setApplicationName("QCachegrind");
     ConfigStorage::setStorage(new QCGConfigStorage);
     // creates global config object of type GlobalGUIConfig
