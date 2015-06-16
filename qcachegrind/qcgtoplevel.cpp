@@ -174,10 +174,11 @@ void QCGTopLevel::saveTraceSettings()
     delete lConfig;
 
     ConfigGroup* pConfig = ConfigStorage::group("TracePositions");
-    if (_eventType)
-	pConfig->setValue(QString("EventType%1").arg(key), _eventType->name());
-    if (_eventType2)
-	pConfig->setValue(QString("EventType2%1").arg(key), _eventType2->name());
+    QString eventType, eventType2;
+    if (_eventType) eventType = _eventType->name();
+    if (_eventType2) eventType2 = _eventType2->name();
+    pConfig->setValue(QString("EventType%1").arg(key), eventType);
+    pConfig->setValue(QString("EventType2%1").arg(key), eventType2);
     if (_groupType != ProfileContext::InvalidType)
 	pConfig->setValue(QString("GroupType%1").arg(key),
 			  ProfileContext::typeName(_groupType));

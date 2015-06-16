@@ -579,6 +579,7 @@ void InstrView::refresh()
 	new InstrItem(this, this, 3, tr("      --dump-instr=yes"));
 	new InstrItem(this, this, 4, tr("To see (conditional) jumps, additionally specify"));
 	new InstrItem(this, this, 5, tr("      --collect-jumps=yes"));
+	setColumnWidths();
 	return;
     }
 
