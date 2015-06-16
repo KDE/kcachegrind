@@ -73,6 +73,7 @@ public:
     QStringList objectSourceDirs(QString);
     void setGeneralSourceDirs(QStringList);
     void setObjectSourceDirs(QString, QStringList);
+    void clearObjectSourceDirs();
 
     void setPercentPrecision(int);
     void setMaxSymbolLength(int);
