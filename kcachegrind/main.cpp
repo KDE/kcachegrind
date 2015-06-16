@@ -49,6 +49,8 @@ int main( int argc, char ** argv )
                       i18n("Author/Maintainer"),
                       "Josef.Weidendorfer@gmx.de");
 
+  KAboutData::setApplicationData(aboutData);
+
 //   KGlobal::locale()->insertCatalog("kcachegrind_qt");
   Loader::initLoaders();
 
