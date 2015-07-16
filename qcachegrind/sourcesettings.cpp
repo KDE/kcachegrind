@@ -200,6 +200,10 @@ void SourceSettings::accept()
 	QTreeWidgetItem* item = ui.dirList->topLevelItem(idx);
 	dirs[item->text(0)] << item->text(1);
     }
+
+    c->setGeneralSourceDirs(QStringList());
+    c->clearObjectSourceDirs();
+
     QHash<QString, QStringList>::const_iterator oit = dirs.constBegin();
     for(;oit != dirs.constEnd(); ++oit) {
 	if (oit.key() == _always)

@@ -27,6 +27,7 @@
 #include <QPainter>
 #include <QPolygon>
 #include <QTextDocument>
+#include <QLineEdit>
 
 #include "globalguiconfig.h"
 #include "listutils.h"
@@ -63,6 +64,9 @@ SourceItem::SourceItem(SourceView* sv, QTreeWidget* parent,
 
   QString s = src;
   setText(4, s.replace( QRegExp("\t"), "        " ));
+
+  // to allow text selection after double click
+  setFlags(flags() | Qt::ItemIsEditable);
 
   updateGroup();
   updateCost();
@@ -300,6 +304,16 @@ SourceItemDelegate::SourceItemDelegate(SourceView *parent)
     : QItemDelegate(parent)
 {
     _parent = parent;
+}
+
+QWidget* SourceItemDelegate::createEditor(QWidget *parent,
+					  const QStyleOptionViewItem &option,
+					  const QModelIndex &index) const
+{
+    QWidget* w = QItemDelegate::createEditor(parent, option, index);
+    QLineEdit* e = qobject_cast<QLineEdit*>(w);
+    if (e) e->setReadOnly(true);
+    return w;
 }
 
 QSize SourceItemDelegate::sizeHint(const QStyleOptionViewItem &option,

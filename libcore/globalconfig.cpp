@@ -474,3 +474,8 @@ void GlobalConfig::setObjectSourceDirs(QString obj, QStringList dirs)
     else
 	_objectSourceDirs.insert(obj, dirs);
 }
+
+void GlobalConfig::clearObjectSourceDirs()
+{
+    _objectSourceDirs.clear();
+}

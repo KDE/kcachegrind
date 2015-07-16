@@ -50,7 +50,6 @@ SourceView::SourceView(TraceItemView* parentView,
 
   _arrowLevels = 0;
 
-
   setColumnCount(5);
   setRootIsDecorated(false);
   setAllColumnsShowFocus(true);
@@ -63,7 +62,7 @@ SourceView::SourceView(TraceItemView* parentView,
                << tr( "Cost" )
                << tr( "Cost 2" )
                << ""
-               <<  tr( "Source (unknown)");
+	       <<  tr( "Source");
   setHeaderLabels(headerLabels);
 
   // sorting will be enabled after refresh()
@@ -314,7 +313,6 @@ void SourceView::refresh()
 
   _arrowLevels = 0;
   if (!_data || !_activeItem) {
-      headerItem()->setText(4, tr("(No Source)"));
       return;
   }
 
@@ -658,9 +656,9 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
   // do it here, because the source directory could have been set before
   if (topLevelItemCount()==0) {
-      headerItem()->setText(4, validSourceFile ?
-                                tr("Source ('%1')").arg(filename) :
-                                tr("Source (unknown)"));
+      if (validSourceFile && (nextCostLineno != 0))
+	  new SourceItem(this, this, fileno, 0, true,
+			 tr("--- From '%1' ---").arg(filename));
   }
   else {
     new SourceItem(this, this, fileno, 0, true,
