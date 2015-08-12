@@ -20,11 +20,12 @@
  * Color settings config page
  */
 
+#include "colorsettings.h"
+
 #include <QTreeWidgetItem>
 #include <QFileDialog>
 
 #include "tracedata.h"
-#include "colorsettings.h"
 #include "globalguiconfig.h"
 #include "listutils.h"
 

@@ -72,12 +72,12 @@ SourceView::SourceView(TraceItemView* parentView,
   this->setWhatsThis( whatsThis());
 
   connect( this,
-           SIGNAL( currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
-           SLOT( selectedSlot(QTreeWidgetItem*,QTreeWidgetItem*) ) );
+           SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+           SLOT(selectedSlot(QTreeWidgetItem*,QTreeWidgetItem*)));
 
   setContextMenuPolicy(Qt::CustomContextMenu);
   connect( this,
-           SIGNAL(customContextMenuRequested(const QPoint &) ),
+           SIGNAL(customContextMenuRequested(const QPoint &)),
            SLOT(context(const QPoint &)));
 
   connect(this,
@@ -470,7 +470,7 @@ void SourceView::updateJumpArray(uint lineno, SourceItem* si,
 #endif
 
 	if (iStart == asize) {
-	    for(iStart=0;iStart<asize;iStart++)
+            for(iStart=0; iStart<asize; ++iStart)
 		if (_jump[iStart] == 0) break;
 
 	    if (iStart== asize) {
@@ -502,7 +502,7 @@ void SourceView::updateJumpArray(uint lineno, SourceItem* si,
 
 	if (highLineno > lineno) break;
 
-	for(iEnd=0;iEnd< (int)_jump.size();iEnd++)
+        for(iEnd=0; iEnd< (int)_jump.size(); ++iEnd)
 	    if (_jump[iEnd] == lj) break;
 	if (iEnd == (int)_jump.size()) {
 	    qDebug("LineView: no jump start for end at %x ?", highLineno);

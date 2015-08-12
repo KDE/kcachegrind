@@ -152,7 +152,7 @@ void GlobalGUIConfig::readOptions()
 
     ConfigGroup* colorConfig = ConfigStorage::group("CostColors");
     count = colorConfig->value("Count", 0).toInt();
-    for (i=1;i<=count;i++) {
+    for(i=1; i<=count; ++i) {
         QString n = colorConfig->value(QString("Name%1").arg(i),
                                        QString()).toString();
         QColor color = colorConfig->value<QColor>(QString("Color%1").arg(i),

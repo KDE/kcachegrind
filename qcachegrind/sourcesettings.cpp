@@ -20,11 +20,12 @@
  * Source annotation directory settings config page
  */
 
+#include "sourcesettings.h"
+
 #include <QTreeWidgetItem>
 #include <QFileDialog>
 
 #include "tracedata.h"
-#include "sourcesettings.h"
 #include "globalconfig.h"
 
 //

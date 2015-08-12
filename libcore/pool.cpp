@@ -16,10 +16,11 @@
    Boston, MA 02110-1301, USA.
 */
 
+#include "pool.h"
+
 #include <string.h>
 #include <stdlib.h>
 #include <qglobal.h>
-#include "pool.h"
 
 // FixPool
 

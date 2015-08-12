@@ -222,7 +222,7 @@ void GlobalConfig::readOptions()
     if (dirs.count()>0) _generalSourceDirs = dirs;
     count = sourceConfig->value("Count", 0).toInt();
     _objectSourceDirs.clear();
-    for (i=1;i<=count;i++) {
+    for(i=1; i<=count; ++i) {
 	QString n = sourceConfig->value(QString("Object%1").arg(i),
 					QString()).toString();
 	dirs = sourceConfig->value(QString("Dirs%1").arg(i),

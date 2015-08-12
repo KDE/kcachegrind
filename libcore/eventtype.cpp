@@ -541,7 +541,7 @@ int EventTypeSet::addKnownDerivedTypes()
 
   while (1) {
     addDiff = 0;
-    for (i=0; i<knownCount; i++) {
+    for (i=0; i<knownCount; ++i) {
       EventType* t = EventType::knownType(i);
       if (t->isReal()) continue;
       if (index(t->name()) != ProfileCostArray::InvalidIndex) continue;

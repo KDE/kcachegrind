@@ -2341,7 +2341,7 @@ void CallGraphView::dotExited()
 			qDebug("  Edge with %d points:", points);
 
 		poly.resize(points);
-		for (i=0; i<points; i++) {
+                for (i=0; i<points; ++i) {
 			if (lineStream.atEnd())
 				break;
 			lineStream >> edgeX >> edgeY;
