@@ -164,7 +164,7 @@ private:
 class RectDrawing
 {
 public:
-  RectDrawing(const QRect&);
+  explicit RectDrawing(const QRect&);
   ~RectDrawing();
 
   // The default DrawParams object used.

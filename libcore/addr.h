@@ -32,6 +32,7 @@ class Addr
 {
  public:
   Addr() { _v=0; }
+  // no "explicit": we want implicit conversion
   Addr(uint64 v) { _v = v; }
 
   // Interpretes char data at s as hex (without "0x" prefix)

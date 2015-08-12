@@ -29,7 +29,7 @@
 class GeneralSettings: public ConfigPage
 {
 public:
-    GeneralSettings(QWidget* parent);
+    explicit GeneralSettings(QWidget* parent);
     virtual ~GeneralSettings() {}
 
     bool check(QString&, QString&);

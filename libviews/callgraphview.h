@@ -380,7 +380,7 @@ class PanningView : public QGraphicsView
 	Q_OBJECT
 
 public:
-	PanningView(QWidget * parent = 0);
+        explicit PanningView(QWidget * parent = 0);
 
 	void setZoomRect(const QRectF& r);
 
@@ -473,7 +473,7 @@ private:
 class CanvasEdgeArrow : public QGraphicsPolygonItem
 {
 public:
-	CanvasEdgeArrow(CanvasEdge*);
+        explicit CanvasEdgeArrow(CanvasEdge*);
 
 	void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
 
@@ -495,7 +495,7 @@ private:
 class CanvasEdge : public QGraphicsPathItem
 {
 public:
-	CanvasEdge(GraphEdge*);
+        explicit CanvasEdge(GraphEdge*);
 
 	void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
 
@@ -545,7 +545,7 @@ private:
 class CanvasFrame : public QGraphicsRectItem
 {
 public:
-	CanvasFrame(CanvasNode*);
+        explicit CanvasFrame(CanvasNode*);
 
 	int type() const
 	{

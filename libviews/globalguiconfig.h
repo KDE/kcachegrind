@@ -55,7 +55,7 @@ public:
     void reset();
 
 private:
-    ConfigColorSetting(QString n); // color calculated from name
+    explicit ConfigColorSetting(QString n); // color calculated from name
     ConfigColorSetting(QString, QColor); // color set explicitly
 
     QString _name;

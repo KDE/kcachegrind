@@ -85,7 +85,7 @@ private:
 class InstrItemDelegate : public QItemDelegate
 {
 public:
-    InstrItemDelegate(InstrView *parent);
+    explicit InstrItemDelegate(InstrView *parent);
     void paint(QPainter *painter, const QStyleOptionViewItem &option,
                const QModelIndex & index ) const;
     QSize sizeHint(const QStyleOptionViewItem &option,

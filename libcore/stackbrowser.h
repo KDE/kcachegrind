@@ -26,7 +26,7 @@
 class Stack
 {
 public:
-  Stack(TraceFunction*);
+  explicit Stack(TraceFunction*);
 
   // extend the stack at top/bottom if possible
   bool contains(TraceFunction*);

@@ -50,7 +50,7 @@ public:
 	Part, Data,
 	MaxType };
 
-    ProfileContext(ProfileContext::Type = InvalidType);
+    explicit ProfileContext(ProfileContext::Type = InvalidType);
 
     ProfileContext::Type type() { return _type; }
 

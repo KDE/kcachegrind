@@ -84,7 +84,7 @@ private:
 class SourceItemDelegate : public QItemDelegate
 {
 public:
-    SourceItemDelegate(SourceView *parent);
+    explicit SourceItemDelegate(SourceView *parent);
     void paint(QPainter *painter, const QStyleOptionViewItem &option,
                    const QModelIndex & index ) const;
     QSize sizeHint(const QStyleOptionViewItem &option,

@@ -170,7 +170,7 @@ private:
 class EventTypeMapping
 {
 public:
-  EventTypeMapping(EventTypeSet*);
+  explicit EventTypeMapping(EventTypeSet*);
 
   bool append(const QString&, bool create=true);
   bool append(int);

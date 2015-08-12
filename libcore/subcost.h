@@ -33,6 +33,7 @@ class SubCost
 {
  public:
     SubCost() { v=0; }
+    // no "explicit": we allow implicit conversions
     SubCost(uint64 i) { v=i; }
     SubCost(unsigned i) { v=i; }
     SubCost(int i) { v=(unsigned)i; }

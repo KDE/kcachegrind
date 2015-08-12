@@ -40,7 +40,7 @@ class StackSelection : public QWidget
   Q_OBJECT
 
 public:
-  StackSelection(QWidget* parent = 0);
+  explicit StackSelection(QWidget* parent = 0);
   ~StackSelection();
 
   TraceData* data() const { return _data; }

@@ -38,7 +38,7 @@ class CostItem
 {
 public:
 
-    CostItem(ProfileContext*);
+    explicit CostItem(ProfileContext*);
     virtual ~CostItem();
 
     ProfileContext* context() const { return _context; }
@@ -151,7 +151,7 @@ public:
   static const int InvalidIndex;
 
 
-  ProfileCostArray(ProfileContext*);
+  explicit ProfileCostArray(ProfileContext*);
   ProfileCostArray();
   virtual ~ProfileCostArray();
 
