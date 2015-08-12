@@ -426,13 +426,13 @@ void ProfileCostArray::addCost(ProfileCostArray* item)
     reserve(item->_count);
 
     if (item->_count < _count) {
-	for (i = 0; i<item->_count; i++)
+        for (i = 0; i<item->_count; ++i)
 	    _cost[i] += item->_cost[i];
     }
     else {
-	for (i = 0; i<_count; i++)
+        for (i = 0; i<_count; ++i)
 	    _cost[i] += item->_cost[i];
-	for (; i<item->_count; i++)
+        for (; i<item->_count; ++i)
 	    _cost[i] = item->_cost[i];
 	_count = item->_count;
     }
@@ -463,13 +463,13 @@ void ProfileCostArray::maxCost(ProfileCostArray* item)
     reserve(item->_count);
 
     if (item->_count < _count) {
-	for (i = 0; i<item->_count; i++)
+        for (i = 0; i<item->_count; ++i)
 	  if (_cost[i] < item->_cost[i]) _cost[i] = item->_cost[i];
     }
     else {
-	for (i = 0; i<_count; i++)
+        for (i = 0; i<_count; ++i)
 	  if (_cost[i] < item->_cost[i]) _cost[i] = item->_cost[i];
-	for (; i<item->_count; i++)
+        for (; i<item->_count; ++i)
 	    _cost[i] = item->_cost[i];
 	_count = item->_count;
     }

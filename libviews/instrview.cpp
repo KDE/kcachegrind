@@ -691,7 +691,7 @@ void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
 #endif
 
 	if (iStart==_arrowLevels) {
-	    for(iStart=0;iStart<_arrowLevels;iStart++)
+            for(iStart=0; iStart<_arrowLevels; ++iStart)
 		if (_jump[iStart] == 0) break;
 	    if (iStart==_arrowLevels) {
 		_arrowLevels++;
@@ -718,7 +718,7 @@ void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
 
 	if (highAddr > addr) break;
 
-	for(iEnd=0;iEnd<_arrowLevels;iEnd++)
+        for(iEnd=0; iEnd<_arrowLevels; ++iEnd)
 	    if (_jump[iEnd] == ij) break;
 	if (iEnd==_arrowLevels) {
 	  qDebug() << "InstrView: no jump start for end at 0x"

@@ -64,8 +64,8 @@ CallView::CallView(bool showCallers, TraceItemView* parentView, QWidget* parent)
     this->setWhatsThis( whatsThis() );
 
     connect( this,
-             SIGNAL( currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
-             SLOT( selectedSlot(QTreeWidgetItem*,QTreeWidgetItem*) ) );
+             SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+             SLOT(selectedSlot(QTreeWidgetItem*,QTreeWidgetItem*)) );
 
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect( this,

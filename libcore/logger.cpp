@@ -20,9 +20,9 @@
  * Default implementation for notification dispatcher: use qDebug
  */
 
-#include <QtDebug>
-
 #include "logger.h"
+
+#include <QtDebug>
 
 
 /// Logger

@@ -441,7 +441,7 @@ void FunctionSelection::doUpdate(int changeType, bool)
         // need to disable sorting! Otherwise each change of shown cost
         // reorders list and changes order returned by topLevelItem()
         groupList->setSortingEnabled(false);
-        for (i=0; i<groupList->topLevelItemCount(); i++) {
+        for (i=0; i<groupList->topLevelItemCount(); ++i) {
             CostListItem* item = (CostListItem*) groupList->topLevelItem(i);
             item->setEventType(_eventType);
         }
