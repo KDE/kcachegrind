@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002 - 2009 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (c) 2002-2015 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -201,7 +201,7 @@ typedef QMap<Addr, TraceInstr> TraceInstrMap;
 class TraceJumpCost: public CostItem
 {
  public:
-    TraceJumpCost(ProfileContext*);
+    explicit TraceJumpCost(ProfileContext*);
     virtual ~TraceJumpCost();
 
     // reimplementations for cost addition
@@ -228,7 +228,7 @@ class TraceJumpCost: public CostItem
 class TraceCallCost: public ProfileCostArray
 {
  public:
-  TraceCallCost(ProfileContext*);
+  explicit TraceCallCost(ProfileContext*);
   virtual ~TraceCallCost();
 
   // reimplementations for cost addition
@@ -251,7 +251,7 @@ class TraceCallCost: public ProfileCostArray
 class TraceInclusiveCost: public ProfileCostArray
 {
  public:
-  TraceInclusiveCost(ProfileContext*);
+  explicit TraceInclusiveCost(ProfileContext*);
   virtual ~TraceInclusiveCost();
 
   // reimplementations for cost addition
@@ -274,7 +274,7 @@ class TraceInclusiveCost: public ProfileCostArray
 class TraceListCost: public ProfileCostArray
 {
  public:
-  TraceListCost(ProfileContext*);
+  explicit TraceListCost(ProfileContext*);
   virtual ~TraceListCost();
 
   // reimplementation for dependency list
@@ -303,7 +303,7 @@ class TraceListCost: public ProfileCostArray
 class TraceJumpListCost: public TraceJumpCost
 {
  public:
-  TraceJumpListCost(ProfileContext*);
+  explicit TraceJumpListCost(ProfileContext*);
   virtual ~TraceJumpListCost();
 
   // reimplementation for dependency list
@@ -334,7 +334,7 @@ class TraceJumpListCost: public TraceJumpCost
 class TraceCallListCost: public TraceCallCost
 {
  public:
-  TraceCallListCost(ProfileContext*);
+  explicit TraceCallListCost(ProfileContext*);
   virtual ~TraceCallListCost();
 
   // reimplementation for dependency list
@@ -362,7 +362,7 @@ class TraceCallListCost: public TraceCallCost
 class TraceInclusiveListCost: public TraceInclusiveCost
 {
  public:
-  TraceInclusiveListCost(ProfileContext*);
+  explicit TraceInclusiveListCost(ProfileContext*);
   virtual ~TraceInclusiveListCost();
 
   // reimplementation for dependency
@@ -419,7 +419,7 @@ class TracePartInstrJump: public TraceJumpCost
 class TracePartInstrCall: public TraceCallCost
 {
 public:
-  TracePartInstrCall(TraceInstrCall*);
+  explicit TracePartInstrCall(TraceInstrCall*);
   virtual ~TracePartInstrCall();
 
   // fix cost item
@@ -435,7 +435,7 @@ public:
 class TracePartInstr: public ProfileCostArray
 {
 public:
-  TracePartInstr(TraceInstr*);
+  explicit TracePartInstr(TraceInstr*);
   virtual ~TracePartInstr();
 
   // fix cost item
@@ -451,7 +451,7 @@ public:
 class TracePartLineJump: public TraceJumpCost
 {
  public:
-    TracePartLineJump(TraceLineJump*);
+    explicit TracePartLineJump(TraceLineJump*);
     virtual ~TracePartLineJump();
 
     // fix cost item
@@ -467,7 +467,7 @@ class TracePartLineJump: public TraceJumpCost
 class TracePartLineCall: public TraceCallCost
 {
 public:
-  TracePartLineCall(TraceLineCall*);
+  explicit TracePartLineCall(TraceLineCall*);
   virtual ~TracePartLineCall();
 
   // fix cost item
@@ -484,7 +484,7 @@ public:
 class TracePartLine: public ProfileCostArray
 {
 public:
-  TracePartLine(TraceLine*);
+  explicit TracePartLine(TraceLine*);
   virtual ~TracePartLine();
 
   // fix cost item
@@ -500,7 +500,7 @@ public:
 class TracePartLineRegion: public TraceInclusiveCost
 {
 public:
-  TracePartLineRegion(TraceLineRegion*);
+  explicit TracePartLineRegion(TraceLineRegion*);
   virtual ~TracePartLineRegion();
 
   virtual void update();
@@ -516,7 +516,7 @@ public:
 class TracePartCall: public TraceCallListCost
 {
 public:
-  TracePartCall(TraceCall* call);
+  explicit TracePartCall(TraceCall* call);
   virtual ~TracePartCall();
 
   // calls a function itself?
@@ -607,7 +607,7 @@ private:
 class TracePartClass: public TraceInclusiveListCost
 {
 public:
-  TracePartClass(TraceClass*);
+  explicit TracePartClass(TraceClass*);
   virtual ~TracePartClass();
 
   QString prettyName() const;
@@ -624,7 +624,7 @@ public:
 class TracePartFile: public TraceInclusiveListCost
 {
 public:
-  TracePartFile(TraceFile*);
+  explicit TracePartFile(TraceFile*);
   virtual ~TracePartFile();
 
   TraceFile* file() { return (TraceFile*)_dep; }
@@ -639,7 +639,7 @@ public:
 class TracePartObject: public TraceInclusiveListCost
 {
 public:
-  TracePartObject(TraceObject*);
+  explicit TracePartObject(TraceObject*);
   virtual ~TracePartObject();
 
   TraceObject* object() const { return (TraceObject*)_dep; }
@@ -655,7 +655,7 @@ public:
 class TracePart: public TraceListCost
 {
 public:
-  TracePart(TraceData*);
+  explicit TracePart(TraceData*);
   virtual ~TracePart();
 
   virtual TracePart* part() { return this; }
@@ -980,7 +980,7 @@ public:
 class TraceCostItem: public TraceInclusiveListCost
 {
  public:
-  TraceCostItem(ProfileContext*);
+  explicit TraceCostItem(ProfileContext*);
   virtual ~TraceCostItem();
 
   virtual QString name() const { return _name; }
@@ -1366,7 +1366,7 @@ class TraceData: public ProfileCostArray
   // profiled architecture (must be same for every part)
   enum Arch { ArchUnknown, ArchARM };
 
-  TraceData(Logger* l = 0);
+  explicit TraceData(Logger* l = 0);
   virtual ~TraceData();
 
   virtual TraceData* data() { return this; }

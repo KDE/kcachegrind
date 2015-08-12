@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002 - 2009 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (c) 2002-2015 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -38,7 +38,7 @@ class CostItem
 {
 public:
 
-    CostItem(ProfileContext*);
+    explicit CostItem(ProfileContext*);
     virtual ~CostItem();
 
     ProfileContext* context() const { return _context; }
@@ -151,7 +151,7 @@ public:
   static const int InvalidIndex;
 
 
-  ProfileCostArray(ProfileContext*);
+  explicit ProfileCostArray(ProfileContext*);
   ProfileCostArray();
   virtual ~ProfileCostArray();
 

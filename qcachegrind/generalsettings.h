@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2009 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (c) 2009-2015 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -29,7 +29,7 @@
 class GeneralSettings: public ConfigPage
 {
 public:
-    GeneralSettings(QWidget* parent);
+    explicit GeneralSettings(QWidget* parent);
     virtual ~GeneralSettings() {}
 
     bool check(QString&, QString&);

@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002 - 2009 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (c) 2002-2015 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -170,7 +170,7 @@ private:
 class EventTypeMapping
 {
 public:
-  EventTypeMapping(EventTypeSet*);
+  explicit EventTypeMapping(EventTypeSet*);
 
   bool append(const QString&, bool create=true);
   bool append(int);

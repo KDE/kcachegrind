@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003-2011 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (c) 2003-2015 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -85,7 +85,7 @@ private:
 class InstrItemDelegate : public QItemDelegate
 {
 public:
-    InstrItemDelegate(InstrView *parent);
+    explicit InstrItemDelegate(InstrView *parent);
     void paint(QPainter *painter, const QStyleOptionViewItem &option,
                const QModelIndex & index ) const;
     QSize sizeHint(const QStyleOptionViewItem &option,

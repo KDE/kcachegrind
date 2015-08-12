@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002-2004 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (c) 2002-2015 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -33,6 +33,7 @@ class SubCost
 {
  public:
     SubCost() { v=0; }
+    // no "explicit": we allow implicit conversions
     SubCost(uint64 i) { v=i; }
     SubCost(unsigned i) { v=i; }
     SubCost(int i) { v=(unsigned)i; }

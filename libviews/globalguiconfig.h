@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2010 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (c) 2010-2015 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -55,7 +55,7 @@ public:
     void reset();
 
 private:
-    ConfigColorSetting(QString n); // color calculated from name
+    explicit ConfigColorSetting(QString n); // color calculated from name
     ConfigColorSetting(QString, QColor); // color set explicitly
 
     QString _name;

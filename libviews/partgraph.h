@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003,2009 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (c) 2003-2015 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -36,7 +36,7 @@ public:
   // Visualization inside of trace parts
   enum VisualizationMode { NoVisualization, Partitioning, Inclusive };
 
-  PartAreaWidget(QWidget* parent=0);
+  explicit PartAreaWidget(QWidget* parent=0);
 
   void setData(TraceData* d);
   void setEventType(EventType* ct);
@@ -94,7 +94,7 @@ private:
 class PartItem: public TreeMapItem
 {
 public:
-  PartItem(TracePart* p);
+  explicit PartItem(TracePart* p);
   int rtti() const { return 2; }
   TracePart* part() { return _p; }
   double value() const;
@@ -113,7 +113,7 @@ private:
 class SubPartItem: public TreeMapItem
 {
 public:
-  SubPartItem(ProfileCostArray*);
+  explicit SubPartItem(ProfileCostArray*);
   int rtti() const { return 3; }
   ProfileCostArray* partCostItem() { return _partCostItem; }
   double value() const;

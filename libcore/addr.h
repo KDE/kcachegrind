@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002 - 2009 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (c) 2002-2015 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -32,6 +32,7 @@ class Addr
 {
  public:
   Addr() { _v=0; }
+  // no "explicit": we want implicit conversion
   Addr(uint64 v) { _v = v; }
 
   // Interpretes char data at s as hex (without "0x" prefix)

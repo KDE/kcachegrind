@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2002, 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (c) 2002-2015 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -118,7 +118,7 @@ class AutoToolTipDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
 public:
-    AutoToolTipDelegate(QObject* parent = 0);
+    explicit AutoToolTipDelegate(QObject* parent = 0);
     ~AutoToolTipDelegate();
 
 public slots:
