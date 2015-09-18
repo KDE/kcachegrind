@@ -18,6 +18,8 @@
 
 #include "costitem.h"
 
+#include <QObject>
+
 #include "tracedata.h"
 
 #define TRACE_DEBUG      0
