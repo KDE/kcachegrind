@@ -91,14 +91,14 @@ ColorSettings::ColorSettings(TraceData* data, QWidget* parent)
     ui.colorList->resizeColumnToContents(1);
     ui.colorList->resizeColumnToContents(2);
 
-    connect(ui.resetButton, SIGNAL(clicked()),
-	    this, SLOT(resetClicked()));
+    connect(ui.resetButton, &QAbstractButton::clicked,
+	    this, &ColorSettings::resetClicked);
     connect(ui.colorList,
-	    SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+	    &QTreeWidget::currentItemChanged,
 	    this,
-	    SLOT(colorListItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)));
-    connect(ui.colorButton, SIGNAL(colorChanged(const QColor &)),
-	    this, SLOT(colorChanged(const QColor &)));
+	    &ColorSettings::colorListItemChanged);
+    connect(ui.colorButton, &QtColorButton::colorChanged,
+	    this, &ColorSettings::colorChanged);
 
     _current = 0;
     update();

@@ -49,7 +49,7 @@ EventTypeItem::EventTypeItem(TraceCostItem* costItem,
       setText(5, ct->parsedFormula());
       QString formula = ct->formula();
       if (!ct->isReal()) {
-	  setText(4, "=");
+	  setText(4, QStringLiteral("="));
 	  // we have a virtual type: allow editing
 	  // FIXME: How to enable this only for columns 0,3,5 ?!
 	  setFlags(flags() | Qt::ItemIsEditable);
@@ -75,9 +75,9 @@ void EventTypeItem::update()
   double total = d ? ((double)d->subCost(_eventType)) : 0.0;
 
   if (total == 0.0) {
-    setText(1, "-");
+    setText(1, QStringLiteral("-"));
     setIcon(1, QIcon());
-    setText(2, "-");
+    setText(2, QStringLiteral("-"));
     setIcon(2, QIcon());
     return;
   }
@@ -108,7 +108,7 @@ void EventTypeItem::update()
   _pure = _costItem ? _costItem->subCost(_eventType) : SubCost(0);
   double pure  = 100.0 * _pure / selfTotal;
   if (GlobalConfig::showPercentage()) {
-    setText(2, QString("%1")
+    setText(2, QStringLiteral("%1")
             .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
   }
   else if (_costItem)
@@ -117,7 +117,7 @@ void EventTypeItem::update()
   setIcon(2, QIcon(costPixmap(_eventType, _costItem, selfTotal, false)));
 
   if (!f) {
-    setText(1, "-");
+    setText(1, QStringLiteral("-"));
     setIcon(1, QIcon());
     return;
   }
@@ -125,7 +125,7 @@ void EventTypeItem::update()
   _sum = f->inclusive()->subCost(_eventType);
   double sum  = 100.0 * _sum / total;
   if (GlobalConfig::showPercentage()) {
-    setText(1, QString("%1")
+    setText(1, QStringLiteral("%1")
             .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
   }
   else

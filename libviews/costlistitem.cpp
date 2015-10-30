@@ -72,7 +72,7 @@ void CostListItem::updateName()
   if (!_costItem) return;
 
   QString n = _costItem->prettyName();
-  if (_groupSize>=0) n += QString(" (%1)").arg(_groupSize);
+  if (_groupSize>=0) n += QStringLiteral(" (%1)").arg(_groupSize);
 
   setText(1, n);
 }
@@ -90,7 +90,7 @@ void CostListItem::update()
 
   double total = d->subCost(_eventType);
   if (total == 0.0) {
-    setText(0, QString("---"));
+    setText(0, QStringLiteral("---"));
     setIcon(0, QPixmap());
     return;
   }
@@ -99,13 +99,13 @@ void CostListItem::update()
   double pure  = 100.0 * _pure / total;
   QString str;
   if (GlobalConfig::showPercentage())
-    str = QString("%1").arg(pure, 0, 'f', GlobalConfig::percentPrecision());
+    str = QStringLiteral("%1").arg(pure, 0, 'f', GlobalConfig::percentPrecision());
   else
     str = _costItem->prettySubCost(_eventType);
 
   if (_skipped) {
     // special handling for skip entries...
-    setText(0, QString("< %1").arg(str));
+    setText(0, QStringLiteral("< %1").arg(str));
     return;
   }
 

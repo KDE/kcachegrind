@@ -35,8 +35,8 @@ int main( int argc, char ** argv )
     QApplication app(argc, argv);
     Loader::initLoaders();
 
-    QCoreApplication::setOrganizationName("kcachegrind.github.io");
-    QCoreApplication::setApplicationName("QCachegrind");
+    QCoreApplication::setOrganizationName(QStringLiteral("kcachegrind.github.io"));
+    QCoreApplication::setApplicationName(QStringLiteral("QCachegrind"));
     ConfigStorage::setStorage(new QCGConfigStorage);
     // creates global config object of type GlobalGUIConfig
     //GlobalGUIConfig::config()->addDefaultTypes();
@@ -47,7 +47,7 @@ int main( int argc, char ** argv )
     t->show();
     if (list.isEmpty()) {
         // load files in current dir
-        t->loadDelayed( ".", false);
+        t->loadDelayed( QStringLiteral("."), false);
     }
     else {
         foreach(const QString& file, list)

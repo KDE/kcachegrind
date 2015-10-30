@@ -487,17 +487,17 @@ TraceCall* GraphEdge::priorVisible()
 QString GraphOptions::layoutString(Layout l)
 {
 	if (l == Circular)
-		return QString("Circular");
+		return QStringLiteral("Circular");
 	if (l == LeftRight)
-		return QString("LeftRight");
-	return QString("TopDown");
+		return QStringLiteral("LeftRight");
+	return QStringLiteral("TopDown");
 }
 
 GraphOptions::Layout GraphOptions::layout(QString s)
 {
-	if (s == QString("Circular"))
+	if (s == QStringLiteral("Circular"))
 		return Circular;
-	if (s == QString("LeftRight"))
+	if (s == QStringLiteral("LeftRight"))
 		return LeftRight;
 	return TopDown;
 }
@@ -694,7 +694,7 @@ void GraphExporter::writeDot(QIODevice* device)
 	*stream << "digraph \"callgraph\" {\n";
 
 	if (_go->layout() == LeftRight) {
-		*stream << QString("  rankdir=LR;\n");
+		*stream << QStringLiteral("  rankdir=LR;\n");
 	} else if (_go->layout() == Circular) {
 		TraceFunction *f = 0;
 		switch (_item->type()) {
@@ -709,8 +709,8 @@ void GraphExporter::writeDot(QIODevice* device)
 			break;
 		}
 		if (f)
-			*stream << QString("  center=F%1;\n").arg((qptrdiff)f, 0, 16);
-		*stream << QString("  overlap=false;\n  splines=true;\n");
+			*stream << QStringLiteral("  center=F%1;\n").arg((qptrdiff)f, 0, 16);
+		*stream << QStringLiteral("  overlap=false;\n  splines=true;\n");
 	}
 
 	// for clustering
@@ -754,7 +754,7 @@ void GraphExporter::writeDot(QIODevice* device)
 
 		if (_go->clusterGroups() && i) {
 			QString iabr = GlobalConfig::shortenSymbol(i->prettyName());
-			*stream << QString("subgraph \"cluster%1\" { label=\"%2\";\n")
+			*stream << QStringLiteral("subgraph \"cluster%1\" { label=\"%2\";\n")
 			.arg(cluster).arg(iabr);
 		}
 
@@ -762,23 +762,23 @@ void GraphExporter::writeDot(QIODevice* device)
 			TraceFunction* f = np->function();
 
 			QString abr = GlobalConfig::shortenSymbol(f->prettyName());
-			*stream << QString("  F%1 [").arg((qptrdiff)f, 0, 16);
+			*stream << QStringLiteral("  F%1 [").arg((qptrdiff)f, 0, 16);
 			if (_useBox) {
 				// we want a minimal size for cost display
 				if ((int)abr.length() < 8) abr = abr + QString(8 - abr.length(),'_');
 
 				// make label 3 lines for CallGraphView
-				*stream << QString("shape=box,label=\"** %1 **\\n**\\n%2\"];\n")
+				*stream << QStringLiteral("shape=box,label=\"** %1 **\\n**\\n%2\"];\n")
 				.arg(abr)
 				.arg(SubCost(np->incl).pretty());
 			} else
-				*stream << QString("label=\"%1\\n%2\"];\n")
+				*stream << QStringLiteral("label=\"%1\\n%2\"];\n")
 				.arg(abr)
 				.arg(SubCost(np->incl).pretty());
 		}
 
 		if (_go->clusterGroups() && i)
-			*stream << QString("}\n");
+			*stream << QStringLiteral("}\n");
 	}
 
 	GraphEdgeMap::Iterator eit;
@@ -806,22 +806,22 @@ void GraphExporter::writeDot(QIODevice* device)
 		from.removeEdge(&e);
 		to.removeEdge(&e);
 
-		*stream << QString("  F%1 -> F%2 [weight=%3")
+		*stream << QStringLiteral("  F%1 -> F%2 [weight=%3")
 		.arg((qptrdiff)e.from(), 0, 16)
 		.arg((qptrdiff)e.to(), 0, 16)
 		.arg((long)log(log(e.cost)));
 
 		if (_go->detailLevel() ==1) {
-			*stream << QString(",label=\"%1 (%2x)\"")
+			*stream << QStringLiteral(",label=\"%1 (%2x)\"")
 				.arg(SubCost(e.cost).pretty())
 				.arg(SubCost(e.count).pretty());
 		    }
 		else if (_go->detailLevel() ==2)
-			*stream << QString(",label=\"%3\\n%4 x\"")
+			*stream << QStringLiteral(",label=\"%3\\n%4 x\"")
 				.arg(SubCost(e.cost).pretty())
 				.arg(SubCost(e.count).pretty());
 
-		*stream << QString("];\n");
+		*stream << QStringLiteral("];\n");
 	}
 
 	if (_go->showSkipped()) {
@@ -845,9 +845,9 @@ void GraphExporter::writeDot(QIODevice* device)
 				e->cost = costSum;
 				e->count = countSum;
 
-				*stream << QString("  R%1 [shape=point,label=\"\"];\n")
+				*stream << QStringLiteral("  R%1 [shape=point,label=\"\"];\n")
 					.arg((qptrdiff)n.function(), 0, 16);
-				*stream << QString("  R%1 -> F%2 [label=\"%3\\n%4 x\",weight=%5];\n")
+				*stream << QStringLiteral("  R%1 -> F%2 [label=\"%3\\n%4 x\",weight=%5];\n")
 					.arg((qptrdiff)n.function(), 0, 16)
 					.arg((qptrdiff)n.function(), 0, 16)
 					.arg(SubCost(costSum).pretty())
@@ -866,9 +866,9 @@ void GraphExporter::writeDot(QIODevice* device)
 				e->cost = costSum;
 				e->count = countSum;
 
-				*stream << QString("  S%1 [shape=point,label=\"\"];\n")
+				*stream << QStringLiteral("  S%1 [shape=point,label=\"\"];\n")
 					.arg((qptrdiff)n.function(), 0, 16);
-				*stream << QString("  F%1 -> S%2 [label=\"%3\\n%4 x\",weight=%5];\n")
+				*stream << QStringLiteral("  F%1 -> S%2 [label=\"%3\\n%4 x\",weight=%5];\n")
 					.arg((qptrdiff)n.function(), 0, 16)
 					.arg((qptrdiff)n.function(), 0, 16)
 					.arg(SubCost(costSum).pretty())
@@ -913,7 +913,7 @@ TraceFunction* GraphExporter::toFunc(QString s)
 	if (s[0] != 'F')
 		return 0;
 	bool ok;
-	TraceFunction* f = (TraceFunction*) s.mid(1).toULongLong(&ok, 16);
+	TraceFunction* f = (TraceFunction*) s.midRef(1).toULongLong(&ok, 16);
 	if (!ok)
 		return 0;
 
@@ -1189,13 +1189,13 @@ CanvasNode::CanvasNode(CallGraphView* v, GraphNode* n, int x, int y, int w,
 	double total = totalCost->subCost(_view->eventType());
 	double inclP = 100.0 * n->incl/ total;
 	if (GlobalConfig::showPercentage())
-		setText(1, QString("%1 %")
+		setText(1, QStringLiteral("%1 %")
 		.arg(inclP, 0, 'f', GlobalConfig::percentPrecision()));
 	else
 		setText(1, SubCost(n->incl).pretty());
 	setPixmap(1, percentagePixmap(25, 10, (int)(inclP+.5), Qt::blue, true));
 
-	setToolTip(QString("%1 (%2)").arg(text(0)).arg(text(1)));
+	setToolTip(QStringLiteral("%1 (%2)").arg(text(0)).arg(text(1)));
 }
 
 void CanvasNode::setSelected(bool s)
@@ -1280,21 +1280,21 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce, int x,
 	double total = totalCost->subCost(_view->eventType());
 	double inclP = 100.0 * e->cost/ total;
 	if (GlobalConfig::showPercentage())
-		setText(1, QString("%1 %")
+		setText(1, QStringLiteral("%1 %")
 		.arg(inclP, 0, 'f', GlobalConfig::percentPrecision()));
 	else
 		setText(1, SubCost(e->cost).pretty());
 
 	setPosition(0, DrawParams::TopCenter);
 	SubCost count((e->count < 1.0) ? 1.0 : e->count);
-	setText(0, QString("%1 x").arg(count.pretty()));
+	setText(0, QStringLiteral("%1 x").arg(count.pretty()));
 	setPixmap(0, percentagePixmap(25, 10, (int)(inclP+.5), Qt::blue, true));
 
 	_percentage = inclP;
 	if (_percentage > 100.0) _percentage = 100.0;
 
 	if (e->call() && (e->call()->isRecursion() || e->call()->inCycle())) {
-		QString icon = "edit-undo";
+		QString icon = QStringLiteral("edit-undo");
 #if 0
 		KIconLoader* loader = KIconLoader::global();
 		QPixmap p= loader->loadIcon(icon, KIconLoader::Small, 0,
@@ -1304,7 +1304,7 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce, int x,
 #endif
 	}
 
-	setToolTip(QString("%1 (%2)").arg(text(0)).arg(text(1)));
+	setToolTip(QStringLiteral("%1 (%2)").arg(text(0)).arg(text(1)));
 }
 
 void CanvasEdgeLabel::paint(QPainter* p,
@@ -1363,7 +1363,7 @@ void CanvasEdge::setLabel(CanvasEdgeLabel* l)
 	_label = l;
 
 	if (l) {
-		QString tip = QString("%1 (%2)").arg(l->text(0)).arg(l->text(1));
+		QString tip = QStringLiteral("%1 (%2)").arg(l->text(0)).arg(l->text(1));
 
 		setToolTip(tip);
 		if (_arrow) _arrow->setToolTip(tip);
@@ -1377,7 +1377,7 @@ void CanvasEdge::setArrow(CanvasEdgeArrow* a)
 {
 	_arrow = a;
 
-	if (a && _label) a->setToolTip(QString("%1 (%2)")
+	if (a && _label) a->setToolTip(QStringLiteral("%1 (%2)")
 	                               .arg(_label->text(0)).arg(_label->text(1)));
 }
 
@@ -1525,8 +1525,8 @@ CallGraphView::CallGraphView(TraceItemView* parentView, QWidget* parent,
 	setFocusPolicy(Qt::StrongFocus);
 	setAttribute(Qt::WA_NoSystemBackground, true);
 
-	connect(_panningView, SIGNAL(zoomRectMoved(qreal,qreal)), this, SLOT(zoomRectMoved(qreal,qreal)));
-	connect(_panningView, SIGNAL(zoomRectMoveFinished()), this, SLOT(zoomRectMoveFinished()));
+	connect(_panningView, &PanningView::zoomRectMoved, this, &CallGraphView::zoomRectMoved);
+	connect(_panningView, &PanningView::zoomRectMoveFinished, this, &CallGraphView::zoomRectMoveFinished);
 
 	this->setWhatsThis(whatsThis() );
 
@@ -1535,8 +1535,8 @@ CallGraphView::CallGraphView(TraceItemView* parentView, QWidget* parent,
 
 	_renderProcess = 0;
 	_prevSelectedNode = 0;
-	connect(&_renderTimer, SIGNAL(timeout()),
-		this, SLOT(showRenderWarning()));
+	connect(&_renderTimer, &QTimer::timeout,
+		this, &CallGraphView::showRenderWarning);
 }
 
 CallGraphView::~CallGraphView()
@@ -1980,7 +1980,7 @@ void CallGraphView::showRenderError(QString s)
     err += tr("Please check that 'dot' is installed (package GraphViz).");
 
     if (!s.isEmpty())
-	err += QString("\n\n%1").arg(s);
+	err += QStringLiteral("\n\n%1").arg(s);
 
     showText(err);
 }
@@ -2060,10 +2060,10 @@ void CallGraphView::refresh()
 	QString renderProgram;
 	QStringList renderArgs;
 	if (_layout == GraphOptions::Circular)
-		renderProgram = "twopi";
+		renderProgram = QStringLiteral("twopi");
 	else
-		renderProgram = "dot";
-	renderArgs << "-Tplain";
+		renderProgram = QStringLiteral("dot");
+	renderArgs << QStringLiteral("-Tplain");
 
 	_unparsedOutput = QString();
 
@@ -2072,14 +2072,14 @@ void CallGraphView::refresh()
         _renderTimer.start(1000);
 
 	_renderProcess = new QProcess(this);
-	connect(_renderProcess, SIGNAL(readyReadStandardOutput()),
-		this, SLOT(readDotOutput()));
+	connect(_renderProcess, &QProcess::readyReadStandardOutput,
+		this, &CallGraphView::readDotOutput);
 	connect(_renderProcess, SIGNAL(error(QProcess::ProcessError)),
 		this, SLOT(dotError()));
 	connect(_renderProcess, SIGNAL(finished(int,QProcess::ExitStatus)),
 		this, SLOT(dotExited()));
 
-        _renderProcessCmdLine =  renderProgram + " " + renderArgs.join(" ");
+        _renderProcessCmdLine =  renderProgram + " " + renderArgs.join(QStringLiteral(" "));
         qDebug("CallGraphView::refresh: Starting process %p, '%s'",
                _renderProcess, qPrintable(_renderProcessCmdLine));
 
@@ -2166,7 +2166,7 @@ void CallGraphView::dotExited()
 		if (line.isEmpty()) continue;
 		QTextStream lineStream(&line, QIODevice::ReadOnly);
 		lineStream >> cmd;
-		if (cmd != "node") continue;
+		if (cmd != QLatin1String("node")) continue;
 		QString s, h;
 		lineStream >> s /*name*/ >> s /*x*/ >> s /*y*/ >> s /*width*/ >> h /*height*/;
 		nodeHeight = h.toDouble();
@@ -2195,10 +2195,10 @@ void CallGraphView::dotExited()
 			       qPrintable(_exporter.filename()),
 			       lineno, qPrintable(line), qPrintable(cmd));
 
-		if (cmd == "stop")
+		if (cmd == QLatin1String("stop"))
 			break;
 
-		if (cmd == "graph") {
+		if (cmd == QLatin1String("graph")) {
 			QString dotWidthString, dotHeightString;
 			// scale will not be used
 			lineStream >> scale >> dotWidthString >> dotHeightString;
@@ -2236,7 +2236,7 @@ void CallGraphView::dotExited()
 			continue;
 		}
 
-		if ((cmd != "node") && (cmd != "edge")) {
+		if ((cmd != QLatin1String("node")) && (cmd != QLatin1String("edge"))) {
 			qDebug() << "Ignoring unknown command '"<< cmd
 			        << "' from dot ("<< _exporter.filename() << ":"<< lineno
 			        << ")";
@@ -2250,7 +2250,7 @@ void CallGraphView::dotExited()
 			continue;
 		}
 
-		if (cmd == "node") {
+		if (cmd == QLatin1String("node")) {
 			// x, y are centered in node
 			QString nodeName, label, nodeX, nodeY, nodeWidth, nodeHeight;
 			double x, y, width, height;
@@ -2722,8 +2722,8 @@ QMenu* CallGraphView::addCallerDepthMenu(QMenu* menu)
 	addCallerDepthAction(m, tr("max. 10"), 10);
 	addCallerDepthAction(m, tr("max. 15"), 15);
 
-	connect(m, SIGNAL(triggered(QAction*)),
-			this, SLOT(callerDepthTriggered(QAction*)) );
+	connect(m, &QMenu::triggered,
+			this, &CallGraphView::callerDepthTriggered );
 
 	return m;
 }
@@ -2761,8 +2761,8 @@ QMenu* CallGraphView::addCalleeDepthMenu(QMenu* menu)
 	addCalleeDepthAction(m, tr("max. 10"), 10);
 	addCalleeDepthAction(m, tr("max. 15"), 15);
 
-	connect(m, SIGNAL(triggered(QAction*)),
-			this, SLOT(calleeDepthTriggered(QAction*)) );
+	connect(m, &QMenu::triggered,
+			this, &CallGraphView::calleeDepthTriggered );
 
 	return m;
 }
@@ -2804,8 +2804,8 @@ QMenu* CallGraphView::addNodeLimitMenu(QMenu* menu)
 	addNodeLimitAction(m, tr("2 %"), .02);
 	addNodeLimitAction(m, tr("1 %"), .01);
 
-	connect(m, SIGNAL(triggered(QAction*)),
-			this, SLOT(nodeLimitTriggered(QAction*)) );
+	connect(m, &QMenu::triggered,
+			this, &CallGraphView::nodeLimitTriggered );
 
 	return m;
 }
@@ -2841,8 +2841,8 @@ QMenu* CallGraphView::addCallLimitMenu(QMenu* menu)
 	// xgettext: no-c-format
 	addCallLimitAction(m, tr("10 % of Node"), .1);
 
-	connect(m, SIGNAL(triggered(QAction*)),
-			this, SLOT(callLimitTriggered(QAction*)) );
+	connect(m, &QMenu::triggered,
+			this, &CallGraphView::callLimitTriggered );
 
 	return m;
 }
@@ -2876,8 +2876,8 @@ QMenu* CallGraphView::addZoomPosMenu(QMenu* menu)
 	addZoomPosAction(m, tr("Automatic"), Auto);
 	addZoomPosAction(m, tr("Hide"), Hide);
 
-	connect(m, SIGNAL(triggered(QAction*)),
-			this, SLOT(zoomPosTriggered(QAction*)) );
+	connect(m, &QMenu::triggered,
+			this, &CallGraphView::zoomPosTriggered );
 
 	return m;
 }
@@ -2909,8 +2909,8 @@ QMenu* CallGraphView::addLayoutMenu(QMenu* menu)
 	addLayoutAction(m, tr("Left to Right"), LeftRight);
 	addLayoutAction(m, tr("Circular"), Circular);
 
-	connect(m, SIGNAL(triggered(QAction*)),
-			this, SLOT(layoutTriggered(QAction*)) );
+	connect(m, &QMenu::triggered,
+			this, &CallGraphView::layoutTriggered );
 
 	return m;
 }
@@ -3108,17 +3108,17 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 
 CallGraphView::ZoomPosition CallGraphView::zoomPos(QString s)
 {
-	if (s == QString("TopLeft"))
+	if (s == QStringLiteral("TopLeft"))
 		return TopLeft;
-	if (s == QString("TopRight"))
+	if (s == QStringLiteral("TopRight"))
 		return TopRight;
-	if (s == QString("BottomLeft"))
+	if (s == QStringLiteral("BottomLeft"))
 		return BottomLeft;
-	if (s == QString("BottomRight"))
+	if (s == QStringLiteral("BottomRight"))
 		return BottomRight;
-	if (s == QString("Automatic"))
+	if (s == QStringLiteral("Automatic"))
 		return Auto;
-	if (s == QString("Hide"))
+	if (s == QStringLiteral("Hide"))
 		return Hide;
 
 	return DEFAULT_ZOOMPOS;
@@ -3127,17 +3127,17 @@ CallGraphView::ZoomPosition CallGraphView::zoomPos(QString s)
 QString CallGraphView::zoomPosString(ZoomPosition p)
 {
 	if (p == TopLeft)
-		return QString("TopLeft");
+		return QStringLiteral("TopLeft");
 	if (p == TopRight)
-		return QString("TopRight");
+		return QStringLiteral("TopRight");
 	if (p == BottomLeft)
-		return QString("BottomLeft");
+		return QStringLiteral("BottomLeft");
 	if (p == BottomRight)
-		return QString("BottomRight");
+		return QStringLiteral("BottomRight");
 	if (p == Auto)
-		return QString("Automatic");
+		return QStringLiteral("Automatic");
 	if (p == Hide)
-		return QString("Hide");
+		return QStringLiteral("Hide");
 
 	return QString();
 }
@@ -3146,17 +3146,17 @@ void CallGraphView::restoreOptions(const QString& prefix, const QString& postfix
 {
     ConfigGroup* g = ConfigStorage::group(prefix, postfix);
 
-    _maxCallerDepth = g->value("MaxCaller", DEFAULT_MAXCALLER).toInt();
-    _maxCalleeDepth = g->value("MaxCallee", DEFAULT_MAXCALLEE).toInt();
-    _funcLimit = g->value("FuncLimit", DEFAULT_FUNCLIMIT).toDouble();
-    _callLimit = g->value("CallLimit", DEFAULT_CALLLIMIT).toDouble();
-    _showSkipped = g->value("ShowSkipped", DEFAULT_SHOWSKIPPED).toBool();
-    _expandCycles = g->value("ExpandCycles", DEFAULT_EXPANDCYCLES).toBool();
-    _clusterGroups = g->value("ClusterGroups", DEFAULT_CLUSTERGROUPS).toBool();
-    _detailLevel = g->value("DetailLevel", DEFAULT_DETAILLEVEL).toInt();
-    _layout = GraphOptions::layout(g->value("Layout",
+    _maxCallerDepth = g->value(QStringLiteral("MaxCaller"), DEFAULT_MAXCALLER).toInt();
+    _maxCalleeDepth = g->value(QStringLiteral("MaxCallee"), DEFAULT_MAXCALLEE).toInt();
+    _funcLimit = g->value(QStringLiteral("FuncLimit"), DEFAULT_FUNCLIMIT).toDouble();
+    _callLimit = g->value(QStringLiteral("CallLimit"), DEFAULT_CALLLIMIT).toDouble();
+    _showSkipped = g->value(QStringLiteral("ShowSkipped"), DEFAULT_SHOWSKIPPED).toBool();
+    _expandCycles = g->value(QStringLiteral("ExpandCycles"), DEFAULT_EXPANDCYCLES).toBool();
+    _clusterGroups = g->value(QStringLiteral("ClusterGroups"), DEFAULT_CLUSTERGROUPS).toBool();
+    _detailLevel = g->value(QStringLiteral("DetailLevel"), DEFAULT_DETAILLEVEL).toInt();
+    _layout = GraphOptions::layout(g->value(QStringLiteral("Layout"),
 					    layoutString(DEFAULT_LAYOUT)).toString());
-    _zoomPosition = zoomPos(g->value("ZoomPosition",
+    _zoomPosition = zoomPos(g->value(QStringLiteral("ZoomPosition"),
 				     zoomPosString(DEFAULT_ZOOMPOS)).toString());
 
     delete g;
@@ -3166,16 +3166,16 @@ void CallGraphView::saveOptions(const QString& prefix, const QString& postfix)
 {
     ConfigGroup* g = ConfigStorage::group(prefix + postfix);
 
-    g->setValue("MaxCaller", _maxCallerDepth, DEFAULT_MAXCALLER);
-    g->setValue("MaxCallee", _maxCalleeDepth, DEFAULT_MAXCALLEE);
-    g->setValue("FuncLimit", _funcLimit, DEFAULT_FUNCLIMIT);
-    g->setValue("CallLimit", _callLimit, DEFAULT_CALLLIMIT);
-    g->setValue("ShowSkipped", _showSkipped, DEFAULT_SHOWSKIPPED);
-    g->setValue("ExpandCycles", _expandCycles, DEFAULT_EXPANDCYCLES);
-    g->setValue("ClusterGroups", _clusterGroups, DEFAULT_CLUSTERGROUPS);
-    g->setValue("DetailLevel", _detailLevel, DEFAULT_DETAILLEVEL);
-    g->setValue("Layout", layoutString(_layout), layoutString(DEFAULT_LAYOUT));
-    g->setValue("ZoomPosition", zoomPosString(_zoomPosition),
+    g->setValue(QStringLiteral("MaxCaller"), _maxCallerDepth, DEFAULT_MAXCALLER);
+    g->setValue(QStringLiteral("MaxCallee"), _maxCalleeDepth, DEFAULT_MAXCALLEE);
+    g->setValue(QStringLiteral("FuncLimit"), _funcLimit, DEFAULT_FUNCLIMIT);
+    g->setValue(QStringLiteral("CallLimit"), _callLimit, DEFAULT_CALLLIMIT);
+    g->setValue(QStringLiteral("ShowSkipped"), _showSkipped, DEFAULT_SHOWSKIPPED);
+    g->setValue(QStringLiteral("ExpandCycles"), _expandCycles, DEFAULT_EXPANDCYCLES);
+    g->setValue(QStringLiteral("ClusterGroups"), _clusterGroups, DEFAULT_CLUSTERGROUPS);
+    g->setValue(QStringLiteral("DetailLevel"), _detailLevel, DEFAULT_DETAILLEVEL);
+    g->setValue(QStringLiteral("Layout"), layoutString(_layout), layoutString(DEFAULT_LAYOUT));
+    g->setValue(QStringLiteral("ZoomPosition"), zoomPosString(_zoomPosition),
 		zoomPosString(DEFAULT_ZOOMPOS));
 
     delete g;

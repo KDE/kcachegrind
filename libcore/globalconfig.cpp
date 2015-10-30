@@ -51,20 +51,20 @@ QStringList GlobalConfig::knownTypes()
 {
   QStringList l;
 
-  l << "Ir"   << "Dr"   << "Dw"
-    << "I1mr" << "D1mr" << "D1mw" << "L1m";
+  l << QStringLiteral("Ir")   << QStringLiteral("Dr")   << QStringLiteral("Dw")
+    << QStringLiteral("I1mr") << QStringLiteral("D1mr") << QStringLiteral("D1mw") << QStringLiteral("L1m");
   // Valgrind < 3.6.0
-  l << "I2mr" << "D2mr" << "D2mw" << "L2m";
+  l << QStringLiteral("I2mr") << QStringLiteral("D2mr") << QStringLiteral("D2mw") << QStringLiteral("L2m");
   // Valgrind 3.6.0: L2 events changed to to LL (last level) events
-  l << "ILmr" << "DLmr" << "DLmw" << "LLm";
+  l << QStringLiteral("ILmr") << QStringLiteral("DLmr") << QStringLiteral("DLmw") << QStringLiteral("LLm");
 
   // branch simulation
-  l << "Bi" << "Bim" << "Bc" << "Bcm" << "Bm";
+  l << QStringLiteral("Bi") << QStringLiteral("Bim") << QStringLiteral("Bc") << QStringLiteral("Bcm") << QStringLiteral("Bm");
 
   // global bus events (e.g. CAS)
-  l << "Ge";
+  l << QStringLiteral("Ge");
 
-  l << "Smp"  << "Sys"  << "User" << "CEst";
+  l << QStringLiteral("Smp")  << QStringLiteral("Sys")  << QStringLiteral("User") << QStringLiteral("CEst");
 
   return l;
 }
@@ -72,43 +72,43 @@ QStringList GlobalConfig::knownTypes()
 
 QString GlobalConfig::knownFormula(const QString& name)
 {
-  if (name == "L1m") return QString("I1mr + D1mr + D1mw");
-  if (name == "L2m") return QString("I2mr + D2mr + D2mw");
-  if (name == "LLm") return QString("ILmr + DLmr + DLmw");
-  if (name == "Bm")  return QString("Bim + Bcm");
-  if (name == "CEst")
-      return QString("Ir + 10 Bm + 10 L1m + 20 Ge + 100 L2m + 100 LLm");
+  if (name == QLatin1String("L1m")) return QStringLiteral("I1mr + D1mr + D1mw");
+  if (name == QLatin1String("L2m")) return QStringLiteral("I2mr + D2mr + D2mw");
+  if (name == QLatin1String("LLm")) return QStringLiteral("ILmr + DLmr + DLmw");
+  if (name == QLatin1String("Bm"))  return QStringLiteral("Bim + Bcm");
+  if (name == QLatin1String("CEst"))
+      return QStringLiteral("Ir + 10 Bm + 10 L1m + 20 Ge + 100 L2m + 100 LLm");
 
   return QString();
 }
 
 QString GlobalConfig::knownLongName(const QString& name)
 {
-    if (name == "Ir") return QObject::tr("Instruction Fetch");
-    if (name == "Dr") return QObject::tr("Data Read Access");
-    if (name == "Dw") return QObject::tr("Data Write Access");
-    if (name == "I1mr") return QObject::tr("L1 Instr. Fetch Miss");
-    if (name == "D1mr") return QObject::tr("L1 Data Read Miss");
-    if (name == "D1mw") return QObject::tr("L1 Data Write Miss");
-    if (name == "I2mr") return QObject::tr("L2 Instr. Fetch Miss");
-    if (name == "D2mr") return QObject::tr("L2 Data Read Miss");
-    if (name == "D2mw") return QObject::tr("L2 Data Write Miss");
-    if (name == "ILmr") return QObject::tr("LL Instr. Fetch Miss");
-    if (name == "DLmr") return QObject::tr("LL Data Read Miss");
-    if (name == "DLmw") return QObject::tr("LL Data Write Miss");
-    if (name == "L1m") return QObject::tr("L1 Miss Sum");
-    if (name == "L2m") return QObject::tr("L2 Miss Sum");
-    if (name == "LLm") return QObject::tr("Last-level Miss Sum");
-    if (name == "Bi")  return QObject::tr("Indirect Branch");
-    if (name == "Bim") return QObject::tr("Mispredicted Ind. Branch");
-    if (name == "Bc")  return QObject::tr("Conditional Branch");
-    if (name == "Bcm") return QObject::tr("Mispredicted Cond. Branch");
-    if (name == "Bm")  return QObject::tr("Mispredicted Branch");
-    if (name == "Ge")  return QObject::tr("Global Bus Event");
-    if (name == "Smp") return QObject::tr("Samples");
-    if (name == "Sys") return QObject::tr("System Time");
-    if (name == "User") return QObject::tr("User Time");
-    if (name == "CEst") return QObject::tr("Cycle Estimation");
+    if (name == QLatin1String("Ir")) return QObject::tr("Instruction Fetch");
+    if (name == QLatin1String("Dr")) return QObject::tr("Data Read Access");
+    if (name == QLatin1String("Dw")) return QObject::tr("Data Write Access");
+    if (name == QLatin1String("I1mr")) return QObject::tr("L1 Instr. Fetch Miss");
+    if (name == QLatin1String("D1mr")) return QObject::tr("L1 Data Read Miss");
+    if (name == QLatin1String("D1mw")) return QObject::tr("L1 Data Write Miss");
+    if (name == QLatin1String("I2mr")) return QObject::tr("L2 Instr. Fetch Miss");
+    if (name == QLatin1String("D2mr")) return QObject::tr("L2 Data Read Miss");
+    if (name == QLatin1String("D2mw")) return QObject::tr("L2 Data Write Miss");
+    if (name == QLatin1String("ILmr")) return QObject::tr("LL Instr. Fetch Miss");
+    if (name == QLatin1String("DLmr")) return QObject::tr("LL Data Read Miss");
+    if (name == QLatin1String("DLmw")) return QObject::tr("LL Data Write Miss");
+    if (name == QLatin1String("L1m")) return QObject::tr("L1 Miss Sum");
+    if (name == QLatin1String("L2m")) return QObject::tr("L2 Miss Sum");
+    if (name == QLatin1String("LLm")) return QObject::tr("Last-level Miss Sum");
+    if (name == QLatin1String("Bi"))  return QObject::tr("Indirect Branch");
+    if (name == QLatin1String("Bim")) return QObject::tr("Mispredicted Ind. Branch");
+    if (name == QLatin1String("Bc"))  return QObject::tr("Conditional Branch");
+    if (name == QLatin1String("Bcm")) return QObject::tr("Mispredicted Cond. Branch");
+    if (name == QLatin1String("Bm"))  return QObject::tr("Mispredicted Branch");
+    if (name == QLatin1String("Ge"))  return QObject::tr("Global Bus Event");
+    if (name == QLatin1String("Smp")) return QObject::tr("Samples");
+    if (name == QLatin1String("Sys")) return QObject::tr("System Time");
+    if (name == QLatin1String("User")) return QObject::tr("User Time");
+    if (name == QLatin1String("CEst")) return QObject::tr("Cycle Estimation");
 
     return QString();
 }
@@ -154,58 +154,58 @@ GlobalConfig* GlobalConfig::config()
 void GlobalConfig::saveOptions()
 {
     // source options
-    ConfigGroup* sourceConfig = ConfigStorage::group("Source");
-    sourceConfig->setValue("Dirs", _generalSourceDirs);
+    ConfigGroup* sourceConfig = ConfigStorage::group(QStringLiteral("Source"));
+    sourceConfig->setValue(QStringLiteral("Dirs"), _generalSourceDirs);
     QHashIterator<QString,QStringList> it( _objectSourceDirs );
     int count = 1;
     while( it.hasNext() ) {
 	it.next();
-	sourceConfig->setValue( QString("Object%1").arg(count),
+	sourceConfig->setValue( QStringLiteral("Object%1").arg(count),
 				it.key() );
-	sourceConfig->setValue( QString("Dirs%1").arg(count),
+	sourceConfig->setValue( QStringLiteral("Dirs%1").arg(count),
 				it.value() );
 	count++;
     }
-    sourceConfig->setValue("Count", count-1);
+    sourceConfig->setValue(QStringLiteral("Count"), count-1);
     delete sourceConfig;
 
     // general options
-    ConfigGroup* generalConfig = ConfigStorage::group("GeneralSettings");
-    generalConfig->setValue("ShowPercentage", _showPercentage,
+    ConfigGroup* generalConfig = ConfigStorage::group(QStringLiteral("GeneralSettings"));
+    generalConfig->setValue(QStringLiteral("ShowPercentage"), _showPercentage,
 			    DEFAULT_SHOWPERCENTAGE);
-    generalConfig->setValue("ShowExpanded", _showExpanded,
+    generalConfig->setValue(QStringLiteral("ShowExpanded"), _showExpanded,
 			    DEFAULT_SHOWEXPANDED);
-    generalConfig->setValue("ShowCycles", _showCycles,
+    generalConfig->setValue(QStringLiteral("ShowCycles"), _showCycles,
 			    DEFAULT_SHOWCYCLES);
-    generalConfig->setValue("CycleCut", _cycleCut,
+    generalConfig->setValue(QStringLiteral("CycleCut"), _cycleCut,
 			    DEFAULT_CYCLECUT);
-    generalConfig->setValue("PercentPrecision", _percentPrecision,
+    generalConfig->setValue(QStringLiteral("PercentPrecision"), _percentPrecision,
 			    DEFAULT_PERCENTPRECISION);
-    generalConfig->setValue("MaxSymbolLength", _maxSymbolLength,
+    generalConfig->setValue(QStringLiteral("MaxSymbolLength"), _maxSymbolLength,
 			    DEFAULT_MAXSYMBOLLENGTH);
-    generalConfig->setValue("MaxSymbolCount", _maxSymbolCount,
+    generalConfig->setValue(QStringLiteral("MaxSymbolCount"), _maxSymbolCount,
 			    DEFAULT_MAXSYMBOLCOUNT);
-    generalConfig->setValue("MaxListCount", _maxListCount,
+    generalConfig->setValue(QStringLiteral("MaxListCount"), _maxListCount,
 			    DEFAULT_MAXLISTCOUNT);
-    generalConfig->setValue("Context", _context,
+    generalConfig->setValue(QStringLiteral("Context"), _context,
 			    DEFAULT_CONTEXT);
-    generalConfig->setValue("NoCostInside", _noCostInside,
+    generalConfig->setValue(QStringLiteral("NoCostInside"), _noCostInside,
 			    DEFAULT_NOCOSTINSIDE);
-    generalConfig->setValue("HideTemplates", _hideTemplates,
+    generalConfig->setValue(QStringLiteral("HideTemplates"), _hideTemplates,
                             DEFAULT_HIDETEMPLATES);
     delete generalConfig;
 
     // event types
-    ConfigGroup* etConfig = ConfigStorage::group("EventTypes");
+    ConfigGroup* etConfig = ConfigStorage::group(QStringLiteral("EventTypes"));
     int etCount = EventType::knownTypeCount();
-    etConfig->setValue( "Count", etCount);
+    etConfig->setValue( QStringLiteral("Count"), etCount);
     for (int i=0; i<etCount; i++) {
 	EventType* t = EventType::knownType(i);
-	etConfig->setValue( QString("Name%1").arg(i+1), t->name());
-	etConfig->setValue( QString("Longname%1").arg(i+1),
+	etConfig->setValue( QStringLiteral("Name%1").arg(i+1), t->name());
+	etConfig->setValue( QStringLiteral("Longname%1").arg(i+1),
 			    t->longName(),
 			    knownLongName(t->name()) );
-	etConfig->setValue( QString("Formula%1").arg(i+1),
+	etConfig->setValue( QStringLiteral("Formula%1").arg(i+1),
 			    t->formula(), knownFormula(t->name()) );
     }
     delete etConfig;
@@ -216,16 +216,16 @@ void GlobalConfig::readOptions()
     int i, count;
 
     // source options
-    ConfigGroup* sourceConfig = ConfigStorage::group("Source");
+    ConfigGroup* sourceConfig = ConfigStorage::group(QStringLiteral("Source"));
     QStringList dirs;
-    dirs = sourceConfig->value("Dirs", QStringList()).toStringList();
+    dirs = sourceConfig->value(QStringLiteral("Dirs"), QStringList()).toStringList();
     if (dirs.count()>0) _generalSourceDirs = dirs;
-    count = sourceConfig->value("Count", 0).toInt();
+    count = sourceConfig->value(QStringLiteral("Count"), 0).toInt();
     _objectSourceDirs.clear();
     for(i=1; i<=count; ++i) {
-	QString n = sourceConfig->value(QString("Object%1").arg(i),
+	QString n = sourceConfig->value(QStringLiteral("Object%1").arg(i),
 					QString()).toString();
-	dirs = sourceConfig->value(QString("Dirs%1").arg(i),
+	dirs = sourceConfig->value(QStringLiteral("Dirs%1").arg(i),
 				   QStringList()).toStringList();
 
 	if (n.isEmpty() || (dirs.count()==0)) continue;
@@ -235,43 +235,43 @@ void GlobalConfig::readOptions()
     delete sourceConfig;
 
     // general options
-    ConfigGroup* generalConfig = ConfigStorage::group("GeneralSettings");
-    _showPercentage   = generalConfig->value("ShowPercentage",
+    ConfigGroup* generalConfig = ConfigStorage::group(QStringLiteral("GeneralSettings"));
+    _showPercentage   = generalConfig->value(QStringLiteral("ShowPercentage"),
 					     DEFAULT_SHOWPERCENTAGE).toBool();
-    _showExpanded     = generalConfig->value("ShowExpanded",
+    _showExpanded     = generalConfig->value(QStringLiteral("ShowExpanded"),
 					     DEFAULT_SHOWEXPANDED).toBool();
-    _showCycles       = generalConfig->value("ShowCycles",
+    _showCycles       = generalConfig->value(QStringLiteral("ShowCycles"),
 					     DEFAULT_SHOWCYCLES).toBool();
-    _cycleCut         = generalConfig->value("CycleCut",
+    _cycleCut         = generalConfig->value(QStringLiteral("CycleCut"),
 					     DEFAULT_CYCLECUT).toDouble();
-    _percentPrecision = generalConfig->value("PercentPrecision",
+    _percentPrecision = generalConfig->value(QStringLiteral("PercentPrecision"),
 					     DEFAULT_PERCENTPRECISION).toInt();
-    _maxSymbolLength  = generalConfig->value("MaxSymbolLength",
+    _maxSymbolLength  = generalConfig->value(QStringLiteral("MaxSymbolLength"),
 					     DEFAULT_MAXSYMBOLLENGTH).toInt();
-    _maxSymbolCount   = generalConfig->value("MaxSymbolCount",
+    _maxSymbolCount   = generalConfig->value(QStringLiteral("MaxSymbolCount"),
 					     DEFAULT_MAXSYMBOLCOUNT).toInt();
-    _maxListCount     = generalConfig->value("MaxListCount",
+    _maxListCount     = generalConfig->value(QStringLiteral("MaxListCount"),
 					     DEFAULT_MAXLISTCOUNT).toInt();
-    _context          = generalConfig->value("Context",
+    _context          = generalConfig->value(QStringLiteral("Context"),
 					     DEFAULT_CONTEXT).toInt();
-    _noCostInside     = generalConfig->value("NoCostInside",
+    _noCostInside     = generalConfig->value(QStringLiteral("NoCostInside"),
 					     DEFAULT_NOCOSTINSIDE).toInt();
-    _hideTemplates    = generalConfig->value("HideTemplates",
+    _hideTemplates    = generalConfig->value(QStringLiteral("HideTemplates"),
 		                             DEFAULT_HIDETEMPLATES).toBool();
     delete generalConfig;
 
     // event types
     if (EventType::knownTypeCount() >0) return; // already read
-    ConfigGroup* etConfig = ConfigStorage::group("EventTypes");
-    int etCount = etConfig->value("Count", 0).toInt();
+    ConfigGroup* etConfig = ConfigStorage::group(QStringLiteral("EventTypes"));
+    int etCount = etConfig->value(QStringLiteral("Count"), 0).toInt();
 
     for (int i=1;i<=etCount;i++) {
-	QString n = etConfig->value(QString("Name%1").arg(i),
+	QString n = etConfig->value(QStringLiteral("Name%1").arg(i),
 				    QString()).toString();
-	QString l = etConfig->value(QString("Longname%1").arg(i),
+	QString l = etConfig->value(QStringLiteral("Longname%1").arg(i),
 				    QString()).toString();
 	if (l.isEmpty()) l = knownLongName(n);
-	QString f = etConfig->value(QString("Formula%1").arg(i),
+	QString f = etConfig->value(QStringLiteral("Formula%1").arg(i),
 				    QString()).toString();
 	if (f.isEmpty()) f = knownFormula(n);
 
@@ -320,7 +320,7 @@ QStringList GlobalConfig::sourceDirs(TraceData* data, TraceObject* o)
   for(int i=0;i<ol2.count();i++)
     l.prepend( ol2[i] );
 
-  if (0) qDebug() << "GlobalConfig::sourceDirs: " << l.join(":");
+  if (0) qDebug() << "GlobalConfig::sourceDirs: " << l.join(QStringLiteral(":"));
 
   return l;
 }
@@ -395,7 +395,7 @@ int GlobalConfig::maxSymbolLength()
 QString GlobalConfig::shortenSymbol(const QString& s)
 {
   if(s.length() > config()->_maxSymbolLength)
-    return s.left(config()->_maxSymbolLength) + QLatin1String("...");
+    return s.left(config()->_maxSymbolLength) + QStringLiteral("...");
   return s;
 }
 

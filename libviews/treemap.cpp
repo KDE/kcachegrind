@@ -609,7 +609,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
 
   // stop as soon as possible when there is no space for "..."
   static int dotW = 0;
-  if (!dotW) dotW = _fm->width("...");
+  if (!dotW) dotW = _fm->width(QStringLiteral("..."));
   if (width < dotW) return false;
 
   // get text and pixmap now, only if we need to, because it is possible
@@ -1110,7 +1110,7 @@ void TreeMapItem::addFreeRect(const QRect& r)
     // do not add invalid rects
     if ((r.width() < 1) || (r.height() < 1)) return;
 
-    if (0) qDebug() << "addFree(" << path(0).join("/") << ", "
+    if (0) qDebug() << "addFree(" << path(0).join(QStringLiteral("/")) << ", "
 		     << r.x() << "/" << r.y() << "-"
 		     << r.width() << "x" << r.height() << ")";
 
@@ -1221,15 +1221,15 @@ TreeMapItem::SplitMode TreeMapWidget::splitMode() const
 
 bool TreeMapWidget::setSplitMode(const QString& mode)
 {
-  if (mode == "Bisection") setSplitMode(TreeMapItem::Bisection);
-  else if (mode == "Columns") setSplitMode(TreeMapItem::Columns);
-  else if (mode == "Rows") setSplitMode(TreeMapItem::Rows);
-  else if (mode == "AlwaysBest") setSplitMode(TreeMapItem::AlwaysBest);
-  else if (mode == "Best")       setSplitMode(TreeMapItem::Best);
-  else if (mode == "HAlternate") setSplitMode(TreeMapItem::HAlternate);
-  else if (mode == "VAlternate") setSplitMode(TreeMapItem::VAlternate);
-  else if (mode == "Horizontal") setSplitMode(TreeMapItem::Horizontal);
-  else if (mode == "Vertical")   setSplitMode(TreeMapItem::Vertical);
+  if (mode == QLatin1String("Bisection")) setSplitMode(TreeMapItem::Bisection);
+  else if (mode == QLatin1String("Columns")) setSplitMode(TreeMapItem::Columns);
+  else if (mode == QLatin1String("Rows")) setSplitMode(TreeMapItem::Rows);
+  else if (mode == QLatin1String("AlwaysBest")) setSplitMode(TreeMapItem::AlwaysBest);
+  else if (mode == QLatin1String("Best"))       setSplitMode(TreeMapItem::Best);
+  else if (mode == QLatin1String("HAlternate")) setSplitMode(TreeMapItem::HAlternate);
+  else if (mode == QLatin1String("VAlternate")) setSplitMode(TreeMapItem::VAlternate);
+  else if (mode == QLatin1String("Horizontal")) setSplitMode(TreeMapItem::Horizontal);
+  else if (mode == QLatin1String("Vertical"))   setSplitMode(TreeMapItem::Vertical);
   else return false;
 
   return true;
@@ -1239,16 +1239,16 @@ QString TreeMapWidget::splitModeString() const
 {
   QString mode;
   switch(splitMode()) {
-    case TreeMapItem::Bisection:  mode = "Bisection"; break;
-    case TreeMapItem::Columns:    mode = "Columns"; break;
-    case TreeMapItem::Rows:       mode = "Rows"; break;
-    case TreeMapItem::AlwaysBest: mode = "AlwaysBest"; break;
-    case TreeMapItem::Best:       mode = "Best"; break;
-    case TreeMapItem::HAlternate: mode = "HAlternate"; break;
-    case TreeMapItem::VAlternate: mode = "VAlternate"; break;
-    case TreeMapItem::Horizontal: mode = "Horizontal"; break;
-    case TreeMapItem::Vertical:   mode = "Vertical"; break;
-    default: mode = "Unknown"; break;
+    case TreeMapItem::Bisection:  mode = QStringLiteral("Bisection"); break;
+    case TreeMapItem::Columns:    mode = QStringLiteral("Columns"); break;
+    case TreeMapItem::Rows:       mode = QStringLiteral("Rows"); break;
+    case TreeMapItem::AlwaysBest: mode = QStringLiteral("AlwaysBest"); break;
+    case TreeMapItem::Best:       mode = QStringLiteral("Best"); break;
+    case TreeMapItem::HAlternate: mode = QStringLiteral("HAlternate"); break;
+    case TreeMapItem::VAlternate: mode = QStringLiteral("VAlternate"); break;
+    case TreeMapItem::Horizontal: mode = QStringLiteral("Horizontal"); break;
+    case TreeMapItem::Vertical:   mode = QStringLiteral("Vertical"); break;
+    default: mode = QStringLiteral("Unknown"); break;
   }
   return mode;
 }
@@ -1460,33 +1460,33 @@ DrawParams::Position TreeMapWidget::fieldPosition(int f) const
 
 void TreeMapWidget::setFieldPosition(int f, const QString& pos)
 {
-  if (pos == "TopLeft")
+  if (pos == QLatin1String("TopLeft"))
     setFieldPosition(f, DrawParams::TopLeft);
-  else if (pos == "TopCenter")
+  else if (pos == QLatin1String("TopCenter"))
     setFieldPosition(f, DrawParams::TopCenter);
-  else if (pos == "TopRight")
+  else if (pos == QLatin1String("TopRight"))
     setFieldPosition(f, DrawParams::TopRight);
-  else if (pos == "BottomLeft")
+  else if (pos == QLatin1String("BottomLeft"))
     setFieldPosition(f, DrawParams::BottomLeft);
-  else if (pos == "BottomCenter")
+  else if (pos == QLatin1String("BottomCenter"))
     setFieldPosition(f, DrawParams::BottomCenter);
-  else if (pos == "BottomRight")
+  else if (pos == QLatin1String("BottomRight"))
     setFieldPosition(f, DrawParams::BottomRight);
-  else if (pos == "Default")
+  else if (pos == QLatin1String("Default"))
     setFieldPosition(f, DrawParams::Default);
 }
 
 QString TreeMapWidget::fieldPositionString(int f) const
 {
   TreeMapItem::Position pos = fieldPosition(f);
-  if (pos == DrawParams::TopLeft) return QString("TopLeft");
-  if (pos == DrawParams::TopCenter) return QString("TopCenter");
-  if (pos == DrawParams::TopRight) return QString("TopRight");
-  if (pos == DrawParams::BottomLeft) return QString("BottomLeft");
-  if (pos == DrawParams::BottomCenter) return QString("BottomCenter");
-  if (pos == DrawParams::BottomRight) return QString("BottomRight");
-  if (pos == DrawParams::Default) return QString("Default");
-  return QString("unknown");
+  if (pos == DrawParams::TopLeft) return QStringLiteral("TopLeft");
+  if (pos == DrawParams::TopCenter) return QStringLiteral("TopCenter");
+  if (pos == DrawParams::TopRight) return QStringLiteral("TopRight");
+  if (pos == DrawParams::BottomLeft) return QStringLiteral("BottomLeft");
+  if (pos == DrawParams::BottomCenter) return QStringLiteral("BottomCenter");
+  if (pos == DrawParams::BottomRight) return QStringLiteral("BottomRight");
+  if (pos == DrawParams::Default) return QStringLiteral("Default");
+  return QStringLiteral("unknown");
 }
 
 void TreeMapWidget::setMinimalArea(int area)
@@ -1555,7 +1555,7 @@ TreeMapItem* TreeMapWidget::item(int x, int y) const
 	i = list->at(idx);
 
         if (DEBUG_DRAWING)
-	    qDebug() << "  Checking " << i->path(0).join("/") << " ("
+	    qDebug() << "  Checking " << i->path(0).join(QStringLiteral("/")) << " ("
 		      << i->itemRect().x() << "/" << i->itemRect().y()
 		      << "-" << i->itemRect().width()
 		      << "x" << i->itemRect().height() << ")";
@@ -1578,7 +1578,7 @@ TreeMapItem* TreeMapWidget::item(int x, int y) const
 
         if (DEBUG_DRAWING)
 	    qDebug() << "item(" << x << "," << y << "): Got "
-		      << p->path(0).join("/") << " (Size "
+		      << p->path(0).join(QStringLiteral("/")) << " (Size "
 		      << p->itemRect().width() << "x" << p->itemRect().height()
 		      << ", Val " << p->value() << ")";
       }
@@ -1639,7 +1639,7 @@ void TreeMapWidget::setSelected(TreeMapItem* item, bool selected)
     redraw(changed);
 
     if (0) qDebug() << (selected ? "S":"Des") << "elected Item "
-		     << (item ? item->path(0).join("") : QString("(null)"))
+		     << (item ? item->path(0).join(QLatin1String("")) : QStringLiteral("(null)"))
 		     << " (depth " << (item ? item->depth() : -1)
 		     << ")";
 }
@@ -1741,7 +1741,7 @@ void TreeMapWidget::setCurrent(TreeMapItem* i, bool kbd)
 	// remove mark
 	_markNo = 0;
 
-        if (i) qDebug() << "setCurrent(" << i->path(0).join("/")
+        if (i) qDebug() << "setCurrent(" << i->path(0).join(QStringLiteral("/"))
 			 << ") - mark removed";
 
 	// always complete redraw needed to remove mark
@@ -2186,7 +2186,7 @@ void TreeMapWidget::drawTreeMap()
   if (_needsRefresh) {
 
     if (DEBUG_DRAWING)
-      qDebug() << "Redrawing " << _needsRefresh->path(0).join("/");
+      qDebug() << "Redrawing " << _needsRefresh->path(0).join(QStringLiteral("/"));
 
     if (_needsRefresh == _base) {
       // redraw whole widget
@@ -2305,7 +2305,7 @@ void TreeMapWidget::drawItems(QPainter* p,
                               TreeMapItem* item)
 {
     if (DEBUG_DRAWING)
-	qDebug() << "+drawItems(" << item->path(0).join("/") << ", "
+	qDebug() << "+drawItems(" << item->path(0).join(QStringLiteral("/")) << ", "
 		  << item->itemRect().x() << "/" << item->itemRect().y()
 		  << "-" << item->itemRect().width() << "x"
 		  << item->itemRect().height() << "), Val " << item->value()
@@ -2375,7 +2375,7 @@ void TreeMapWidget::drawItems(QPainter* p,
     r = d.remainingRect(item);
 
     if (DEBUG_DRAWING)
-	qDebug() << "-drawItems(" << item->path(0).join("/") << ")";
+	qDebug() << "-drawItems(" << item->path(0).join(QStringLiteral("/")) << ")";
     return;
   }
 
@@ -2475,7 +2475,7 @@ void TreeMapWidget::drawItems(QPainter* p,
     // set selfRect (not occupied by children) for tooltip
     item->addFreeRect(sr);
 
-    if (0) qDebug() << "Item " << item->path(0).join("/") << ": SelfR "
+    if (0) qDebug() << "Item " << item->path(0).join(QStringLiteral("/")) << ": SelfR "
 		     << sr.x() << "/" << sr.y() << "-" << sr.width()
 		     << "/" << sr.height() << ", self " << self << "/"
 		     << user_sum;
@@ -2606,7 +2606,7 @@ void TreeMapWidget::drawItems(QPainter* p,
     drawItemArray(p, item, r, user_sum, list, idx, list->count(), goBack);
 
   if (DEBUG_DRAWING)
-      qDebug() << "-drawItems(" << item->path(0).join("/") << ")";
+      qDebug() << "-drawItems(" << item->path(0).join(QStringLiteral("/")) << ")";
 }
 
 // fills area with a pattern if to small to draw children
@@ -2636,7 +2636,7 @@ void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, const QRect& r,
   while (len>0 && (i=list->value(idx))) {
 
       if (DEBUG_DRAWING)
-	  qDebug() << "   Reset Rect " << i->path(0).join("/");
+	  qDebug() << "   Reset Rect " << i->path(0).join(QStringLiteral("/"));
 
       i->clearItemRect();
       if (goBack) --idx; else ++idx;
@@ -2669,7 +2669,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
   }
 
   if (DEBUG_DRAWING)
-      qDebug() << " +drawItemArray(" << item->path(0).join("/")
+      qDebug() << " +drawItemArray(" << item->path(0).join(QStringLiteral("/"))
 		<< ", " << r.x() << "/" << r.y() << "-" << r.width()
 		<< "x" << r.height() << ")";
 
@@ -2716,7 +2716,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
     }
 
     if (DEBUG_DRAWING)
-	qDebug() << " -drawItemArray(" << item->path(0).join("/")
+	qDebug() << " -drawItemArray(" << item->path(0).join(QStringLiteral("/"))
 		  << ")";
 
     return drawOn;
@@ -2731,7 +2731,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
     if (user_sum <= 0) {
 
       if (DEBUG_DRAWING)
-	  qDebug() << "drawItemArray: Reset " << i->path(0).join("/");
+	  qDebug() << "drawItemArray: Reset " << i->path(0).join(QStringLiteral("/"));
 
       i->clearItemRect();
       if (goBack) --idx; else ++idx;
@@ -2747,7 +2747,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
 
       drawFill(item, p, fullRect, list, idx, len, goBack);
       if (DEBUG_DRAWING)
-	  qDebug() << " -drawItemArray(" << item->path(0).join("/")
+	  qDebug() << " -drawItemArray(" << item->path(0).join(QStringLiteral("/"))
 		    << "): Stop";
       return false;
     }
@@ -2763,7 +2763,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
     if ((item->sorting(0) != -1) && (nextPos < _visibleWidth)) {
       drawFill(item, p, fullRect, list, idx, len, goBack);
       if (DEBUG_DRAWING)
-	  qDebug() << " -drawItemArray(" << item->path(0).join("/")
+	  qDebug() << " -drawItemArray(" << item->path(0).join(QStringLiteral("/"))
 		    << "): Stop";
       return false;
     }
@@ -2821,7 +2821,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
   }
 
   if (DEBUG_DRAWING)
-      qDebug() << " -drawItemArray(" << item->path(0).join("/")
+      qDebug() << " -drawItemArray(" << item->path(0).join(QStringLiteral("/"))
 		<< "): Continue";
 
   return true;
@@ -2847,8 +2847,8 @@ void TreeMapWidget::addSplitAction(QMenu* m, const QString& s, int v)
 
 void TreeMapWidget::addSplitDirectionItems(QMenu* m)
 {
-    connect(m, SIGNAL(triggered(QAction*)),
-	    this, SLOT(splitActivated(QAction*)) );
+    connect(m, &QMenu::triggered,
+	    this, &TreeMapWidget::splitActivated );
 
     addSplitAction(m, tr("Recursive Bisection"), TreeMapItem::Bisection);
     addSplitAction(m, tr("Columns"), TreeMapItem::Columns);

@@ -105,18 +105,18 @@ GlobalGUIConfig* GlobalGUIConfig::config()
 void GlobalGUIConfig::saveOptions()
 {
     // color options
-    ConfigGroup* colorConfig = ConfigStorage::group("CostColors");
+    ConfigGroup* colorConfig = ConfigStorage::group(QStringLiteral("CostColors"));
     int count = 1;
     foreach(ConfigColorSetting* cs, _colors) {
         if ( !cs->_automatic ) {
-            colorConfig->setValue( QString("Name%1").arg(count),
+            colorConfig->setValue( QStringLiteral("Name%1").arg(count),
                                    cs->_name);
-            colorConfig->setValue( QString("Color%1").arg(count),
+            colorConfig->setValue( QStringLiteral("Color%1").arg(count),
                                    cs->_color);
             count++;
         }
     }
-    colorConfig->setValue("Count", count-1);
+    colorConfig->setValue(QStringLiteral("Count"), count-1);
     delete colorConfig;
 
     GlobalConfig::saveOptions();
@@ -130,32 +130,32 @@ void GlobalGUIConfig::readOptions()
     _colors.clear();
     // colors for default event types:
     //  red for LL/L2 misses
-    colorSetting("EventType-I2mr")->_color = QColor(240, 0, 0);
-    colorSetting("EventType-D2mr")->_color = QColor(180,40,40);
-    colorSetting("EventType-D2mw")->_color = QColor(120,80,80);
-    colorSetting("EventType-ILmr")->_color = QColor(240, 0, 0);
-    colorSetting("EventType-DLmr")->_color = QColor(180,40,40);
-    colorSetting("EventType-DLmw")->_color = QColor(120,80,80);
+    colorSetting(QStringLiteral("EventType-I2mr"))->_color = QColor(240, 0, 0);
+    colorSetting(QStringLiteral("EventType-D2mr"))->_color = QColor(180,40,40);
+    colorSetting(QStringLiteral("EventType-D2mw"))->_color = QColor(120,80,80);
+    colorSetting(QStringLiteral("EventType-ILmr"))->_color = QColor(240, 0, 0);
+    colorSetting(QStringLiteral("EventType-DLmr"))->_color = QColor(180,40,40);
+    colorSetting(QStringLiteral("EventType-DLmw"))->_color = QColor(120,80,80);
     //  green for L1 misses
-    colorSetting("EventType-I1mr")->_color = QColor(0, 240, 0);
-    colorSetting("EventType-D1mr")->_color = QColor(40,180,40);
-    colorSetting("EventType-D1mw")->_color = QColor(80,120,80);
+    colorSetting(QStringLiteral("EventType-I1mr"))->_color = QColor(0, 240, 0);
+    colorSetting(QStringLiteral("EventType-D1mr"))->_color = QColor(40,180,40);
+    colorSetting(QStringLiteral("EventType-D1mw"))->_color = QColor(80,120,80);
     // yellow for branches/mispredictions
-    colorSetting("EventType-Bc") ->_color = QColor(240,240, 0);
-    colorSetting("EventType-Bcm")->_color = QColor(200,200,30);
-    colorSetting("EventType-Bi") ->_color = QColor(160,160,60);
-    colorSetting("EventType-Bim")->_color = QColor(120,120,90);
+    colorSetting(QStringLiteral("EventType-Bc")) ->_color = QColor(240,240, 0);
+    colorSetting(QStringLiteral("EventType-Bcm"))->_color = QColor(200,200,30);
+    colorSetting(QStringLiteral("EventType-Bi")) ->_color = QColor(160,160,60);
+    colorSetting(QStringLiteral("EventType-Bim"))->_color = QColor(120,120,90);
     // blue for normal accesses
-    colorSetting("EventType-Ir")->_color = QColor(0, 0, 240);
-    colorSetting("EventType-Dr")->_color = QColor(40,40,180);
-    colorSetting("EventType-Dw")->_color = QColor(80,80,120);
+    colorSetting(QStringLiteral("EventType-Ir"))->_color = QColor(0, 0, 240);
+    colorSetting(QStringLiteral("EventType-Dr"))->_color = QColor(40,40,180);
+    colorSetting(QStringLiteral("EventType-Dw"))->_color = QColor(80,80,120);
 
-    ConfigGroup* colorConfig = ConfigStorage::group("CostColors");
-    count = colorConfig->value("Count", 0).toInt();
+    ConfigGroup* colorConfig = ConfigStorage::group(QStringLiteral("CostColors"));
+    count = colorConfig->value(QStringLiteral("Count"), 0).toInt();
     for(i=1; i<=count; ++i) {
-        QString n = colorConfig->value(QString("Name%1").arg(i),
+        QString n = colorConfig->value(QStringLiteral("Name%1").arg(i),
                                        QString()).toString();
-        QColor color = colorConfig->value<QColor>(QString("Color%1").arg(i),
+        QColor color = colorConfig->value<QColor>(QStringLiteral("Color%1").arg(i),
                                                   QColor(Qt::black));
 
         if (n.isEmpty()) continue;
@@ -173,7 +173,7 @@ ConfigColorSetting* GlobalGUIConfig::groupColorSetting(CostItem* cost)
     QString n;
 
     if (!cost)
-        return colorSetting(QString("default"));
+        return colorSetting(QStringLiteral("default"));
 
     return groupColorSetting(cost->type(), cost->name());
 }
@@ -195,9 +195,9 @@ QColor GlobalGUIConfig::eventTypeColor(EventType* t)
     QString n;
 
     if (!t)
-        n = QString("EventType-default");
+        n = QStringLiteral("EventType-default");
     else
-        n = QString("EventType-%1").arg(t->name());
+        n = QStringLiteral("EventType-%1").arg(t->name());
 
     return colorSetting(n)->color();
 }

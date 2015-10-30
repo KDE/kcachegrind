@@ -70,7 +70,7 @@ QString TraceJumpCost::costString(EventTypeSet*)
 {
   if (_dirty) update();
 
-  return QString("%1/%2")
+  return QStringLiteral("%1/%2")
       .arg(_followedCount.pretty())
       .arg(_executedCount.pretty());
 }
@@ -106,7 +106,7 @@ TraceCallCost::~TraceCallCost()
 
 QString TraceCallCost::costString(EventTypeSet* m)
 {
-  return QString("%1, Calls %2")
+  return QStringLiteral("%1, Calls %2")
       .arg(ProfileCostArray::costString(m))
       .arg(_callCount.pretty());
 }
@@ -149,7 +149,7 @@ TraceInclusiveCost::~TraceInclusiveCost()
 
 QString TraceInclusiveCost::costString(EventTypeSet* m)
 {
-  return QString("%1, Inclusive %2")
+  return QStringLiteral("%1, Inclusive %2")
     .arg(ProfileCostArray::costString(m))
     .arg(_inclusive.costString(m));
 }
@@ -650,9 +650,9 @@ QString TracePartFunction::costString(EventTypeSet* m)
   update();
 
   QString res = TraceInclusiveCost::costString(m);
-  res += QString(", called from %1: %2")
+  res += QStringLiteral(", called from %1: %2")
          .arg(_calledContexts).arg(prettyCalledCount());
-  res += QString(", calling from %1: %2")
+  res += QStringLiteral(", calling from %1: %2")
          .arg(_callingContexts).arg(prettyCallingCount());
 
   return res;
@@ -888,8 +888,8 @@ TracePartClass::~TracePartClass()
 
 QString TracePartClass::prettyName() const
 {
-  return QString("%1 from %2")
-    .arg( _dep->name().isEmpty() ? QString("(global)") : _dep->name())
+  return QStringLiteral("%1 from %2")
+    .arg( _dep->name().isEmpty() ? QStringLiteral("(global)") : _dep->name())
     .arg(part()->name());
 }
 
@@ -989,7 +989,7 @@ void TraceInstrJump::update()
 
 QString TraceInstrJump::name() const
 {
-  return QString("jump at 0x%1 to 0x%2")
+  return QStringLiteral("jump at 0x%1 to 0x%2")
     .arg(_instrFrom->addr().toString())
     .arg(_instrTo->addr().toString());
 }
@@ -1028,7 +1028,7 @@ TracePartLineJump* TraceLineJump::partLineJump(TracePart* part)
 
 QString TraceLineJump::name() const
 {
-  return QString("jump at %1 to %2")
+  return QStringLiteral("jump at %1 to %2")
       .arg(_lineFrom->prettyName())
       .arg(_lineTo->prettyName());
 }
@@ -1069,7 +1069,7 @@ TracePartInstrCall* TraceInstrCall::partInstrCall(TracePart* part,
 
 QString TraceInstrCall::name() const
 {
-  return QString("%1 at %2").arg(_call->name()).arg(_instr->name());
+  return QStringLiteral("%1 at %2").arg(_call->name()).arg(_instr->name());
 }
 
 
@@ -1107,7 +1107,7 @@ TracePartLineCall* TraceLineCall::partLineCall(TracePart* part,
 
 QString TraceLineCall::name() const
 {
-  return QString("%1 at %2").arg(_call->name()).arg(_line->name());
+  return QStringLiteral("%1 at %2").arg(_call->name()).arg(_line->name());
 }
 
 
@@ -1194,7 +1194,7 @@ void TraceCall::invalidateDynamicCost()
 
 QString TraceCall::name() const
 {
-  return QString("%1 => %2")
+  return QStringLiteral("%1 => %2")
     .arg(_caller->name())
     .arg(_called->name());
 }
@@ -1365,12 +1365,12 @@ void TraceInstr::addInstrCall(TraceInstrCall* instrCall)
 
 QString TraceInstr::name() const
 {
-    return QString("0x%1").arg(_addr.toString());
+    return QStringLiteral("0x%1").arg(_addr.toString());
 }
 
 QString TraceInstr::prettyName() const
 {
-    return QString("0x%1").arg(_addr.toString());
+    return QStringLiteral("0x%1").arg(_addr.toString());
 }
 
 
@@ -1478,13 +1478,13 @@ QString TraceLine::name() const
     if (fileShortName.isEmpty())
 	return TraceFile::prettyEmptyName();
 
-    return QString("%1:%2")
+    return QStringLiteral("%1:%2")
 	.arg(fileShortName).arg(_lineno);
 }
 
 QString TraceLine::prettyName() const
 {
-  return QString("%1 [%2]")
+  return QStringLiteral("%1 [%2]")
     .arg(name()).arg(_sourceFile->function()->prettyName());
 }
 
@@ -1526,7 +1526,7 @@ TraceFunctionSource::~TraceFunctionSource()
 
 QString TraceFunctionSource::name() const
 {
-  return QString("%1 for %2").arg(_file->name()).arg(_function->name());
+  return QStringLiteral("%1 for %2").arg(_file->name()).arg(_function->name());
 }
 
 uint TraceFunctionSource::firstLineno()
@@ -1934,9 +1934,9 @@ QString TraceFunction::prettyName() const
   // cycle members
   if (_cycle) {
     if (_cycle != this)
-      res = QString("%1 <cycle %2>").arg(res).arg(_cycle->cycleNo());
+      res = QStringLiteral("%1 <cycle %2>").arg(res).arg(_cycle->cycleNo());
     else
-      res = QString("<cycle %2>").arg(_cycle->cycleNo());
+      res = QStringLiteral("<cycle %2>").arg(_cycle->cycleNo());
   }
 
 
@@ -1949,7 +1949,7 @@ QString TraceFunction::formattedName() const
     if (!GlobalConfig::hideTemplates() || _name.isEmpty()) return QString();
 
     // bold, but inside template parameters normal, function arguments italic
-    QString rich("<b>");
+    QString rich(QStringLiteral("<b>"));
     int d = 0;
     for(int i=0;i<_name.length();i++) {
         switch(_name[i].toLatin1()) {
@@ -2023,7 +2023,7 @@ QString TraceFunction::location(int maxFiles) const
     filesAdded++;
 
     if ((maxFiles>0) && (filesAdded>maxFiles)) {
-	loc += "...";
+	loc += QLatin1String("...");
 	break;
     }
     loc += sourceFile->file()->shortName();
@@ -2057,7 +2057,7 @@ void TraceFunction::addPrettyLocation(QString& s, int maxFiles) const
     QString l = location(maxFiles);
     if (l.isEmpty()) return;
 
-    s += QString(" (%1)").arg(l);
+    s += QStringLiteral(" (%1)").arg(l);
 }
 
 QString TraceFunction::prettyNameWithLocation(int maxFiles) const
@@ -2065,16 +2065,16 @@ QString TraceFunction::prettyNameWithLocation(int maxFiles) const
     QString l = location(maxFiles);
     if (l.isEmpty()) return prettyName();
 
-    return QString("%1 (%2)").arg(prettyName()).arg(l);
+    return QStringLiteral("%1 (%2)").arg(prettyName()).arg(l);
 }
 
 QString TraceFunction::info() const
 {
     QString l = location();
     if (l.isEmpty())
-	return QString("Function %1").arg(name());
+	return QStringLiteral("Function %1").arg(name());
 
-    return QString("Function %1 (location %2)")
+    return QStringLiteral("Function %1 (location %2)")
 	.arg(name()).arg(l);
 }
 
@@ -2647,7 +2647,7 @@ TraceFunctionCycle::TraceFunctionCycle(TraceFunction* f, int n)
   setContext(ProfileContext::context(ProfileContext::FunctionCycle));
 
   setPosition(f->data());
-  setName(QString("<cycle %1>").arg(n));
+  setName(QStringLiteral("<cycle %1>").arg(n));
 
   // reset to attributes of base function
   setFile(_base->file());
@@ -2836,7 +2836,7 @@ QString TraceFile::directory()
   if (!_dir.isEmpty()) return _dir;
 
   int lastIndex = 0, index;
-  while ( (index=_name.indexOf("/", lastIndex)) >=0)
+  while ( (index=_name.indexOf(QStringLiteral("/"), lastIndex)) >=0)
     lastIndex = index+1;
 
   if (lastIndex==0) return QString();
@@ -2849,7 +2849,7 @@ QString TraceFile::directory()
 QString TraceFile::shortName() const
 {
   int lastIndex = 0, index;
-  while ( (index=_name.indexOf("/", lastIndex)) >=0)
+  while ( (index=_name.indexOf(QStringLiteral("/"), lastIndex)) >=0)
     lastIndex = index+1;
 
   return _name.mid(lastIndex);
@@ -2937,7 +2937,7 @@ QString TraceObject::directory()
     if (!_dir.isEmpty()) return _dir;
 
     int lastIndex = 0, index;
-    while ( (index=_name.indexOf("/", lastIndex)) >=0)
+    while ( (index=_name.indexOf(QStringLiteral("/"), lastIndex)) >=0)
 	lastIndex = index+1;
 
     if (lastIndex==0) return QString();
@@ -2950,7 +2950,7 @@ QString TraceObject::directory()
 QString TraceObject::shortName() const
 {
     int lastIndex = 0, index;
-    while ( (index=_name.indexOf("/", lastIndex)) >=0)
+    while ( (index=_name.indexOf(QStringLiteral("/"), lastIndex)) >=0)
 	lastIndex = index+1;
 
     return _name.mid(lastIndex);
@@ -3016,7 +3016,7 @@ void TracePart::setProcessID(int pid)
 QString TracePart::shortName() const
 {
   int lastIndex = 0, index;
-  while ( (index=_name.indexOf("/", lastIndex)) >=0)
+  while ( (index=_name.indexOf(QStringLiteral("/"), lastIndex)) >=0)
     lastIndex = index+1;
 
   return _name.mid(lastIndex);
@@ -3025,11 +3025,11 @@ QString TracePart::shortName() const
 QString TracePart::prettyName() const
 {
     if (_pid==0) return shortName();
-    QString name = QString("PID %1").arg(_pid);
+    QString name = QStringLiteral("PID %1").arg(_pid);
     if (_number>0)
-        name += QString(", section %2").arg(_number);
+        name += QStringLiteral(", section %2").arg(_number);
     if ((data()->maxThreadID()>1) && (_tid>0))
-        name += QString(", thread %3").arg(_tid);
+        name += QStringLiteral(", thread %3").arg(_tid);
     return name;
 }
 
@@ -3095,7 +3095,7 @@ TraceData::~TraceData()
 QString TraceData::shortTraceName() const
 {
   int lastIndex = 0, index;
-  while ( (index=_traceName.indexOf("/", lastIndex)) >=0)
+  while ( (index=_traceName.indexOf(QStringLiteral("/"), lastIndex)) >=0)
     lastIndex = index+1;
 
   return _traceName.mid(lastIndex);
@@ -3139,8 +3139,8 @@ int TraceData::load(QStringList files)
         QString prefix = finfo.fileName();
         QDir dir = finfo.dir();
         if (finfo.isDir()) {
-            prefix = "callgrind.out";
-            _traceName += "/callgrind.out";
+            prefix = QStringLiteral("callgrind.out");
+            _traceName += QLatin1String("/callgrind.out");
         }
 
         files = dir.entryList(QStringList() << prefix + "*", QDir::Files);
@@ -3200,7 +3200,7 @@ int TraceData::internalLoad(QIODevice* device, const QString& filename)
       if (device->size() == 0) return 0;
 
       _logger->loadStart(filename);
-      _logger->loadFinished(QString("Unknown file format"));
+      _logger->loadFinished(QStringLiteral("Unknown file format"));
       return 0;
   }
   l->setLogger(_logger);
@@ -3291,7 +3291,7 @@ QString TraceData::activePartRange()
             else {
                 if (!res.isEmpty()) res += ';';
                 if (r1==r2) res += QString::number(r1);
-                else res += QString("%1-%2").arg(r1).arg(r2);
+                else res += QStringLiteral("%1-%2").arg(r1).arg(r2);
                 r1 = r2 = count;
             }
         }
@@ -3299,7 +3299,7 @@ QString TraceData::activePartRange()
     if (r1>=0) {
         if (!res.isEmpty()) res += ';';
         if (r1==r2) res += QString::number(r1);
-        else res += QString("%1-%2").arg(r1).arg(r2);
+        else res += QStringLiteral("%1-%2").arg(r1).arg(r2);
     }
 
     return res;
@@ -3384,7 +3384,7 @@ TraceClass* TraceData::cls(const QString& fnName, QString& shortName)
       pIndex = sIndex;
 #endif
 
-  while ((index=fnName.indexOf("::", lastIndex)) >=0) {
+  while ((index=fnName.indexOf(QStringLiteral("::"), lastIndex)) >=0) {
     if (pIndex>=0 && pIndex<index) break;
     lastIndex = index+2;
   }

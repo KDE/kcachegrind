@@ -76,7 +76,7 @@ void CallItem::updateCost()
 
     QString cStr;
     if ((selectedIsCycle || shownIsCycle) && sameCycle)
-	cStr = "-";
+	cStr = QStringLiteral("-");
     else {
 	_cc  = _call->callCount();
 	if (_cc == 0)
@@ -101,7 +101,7 @@ void CallItem::updateCost()
     double total = totalCost->subCost(ct);
 
     if (total == 0.0) {
-	QString str = "-";
+	QString str = QStringLiteral("-");
 
 	setText(0, str);
         setIcon(0, QPixmap());
@@ -110,7 +110,7 @@ void CallItem::updateCost()
 	double sum  = 100.0 * _sum / total;
 
 	if (GlobalConfig::showPercentage())
-	    setText(0, QString("%1")
+	    setText(0, QStringLiteral("%1")
 		    .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
 	else {
 	    setText(0, _call->prettySubCost(ct));
@@ -126,7 +126,7 @@ void CallItem::updateCost()
       double total = totalCost->subCost(ct2);
 
       if (total == 0.0) {
-	QString str = "-";
+	QString str = QStringLiteral("-");
 
 	setText(2, str);
         setIcon(2, QPixmap());
@@ -135,7 +135,7 @@ void CallItem::updateCost()
 	double sum  = 100.0 * _sum2 / total;
 	
 	if (GlobalConfig::showPercentage())
-	  setText(2, QString("%1")
+	  setText(2, QStringLiteral("%1")
 		  .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
 	else {
 	  setText(2, _call->prettySubCost(ct2));
@@ -148,7 +148,7 @@ void CallItem::updateCost()
     QPixmap p;
     if (sameCycle && !selectedIsCycle && !shownIsCycle) {
 
-	QString icon = "edit-undo";
+	QString icon = QStringLiteral("edit-undo");
 #if 0 // TODO
 	KIconLoader* loader = KIconLoader::global();
 	p= loader->loadIcon(icon, KIconLoader::Small, 0,

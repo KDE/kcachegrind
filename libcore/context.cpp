@@ -65,7 +65,7 @@ QString ProfileContext::typeName(ProfileContext::Type t)
 	_typeName = new QString [MaxType+1];
 	QString* strs = _typeName;
 	for(int i=0;i<=MaxType;i++)
-	    strs[i] = QString("?");
+	    strs[i] = QStringLiteral("?");
 
 	strs[InvalidType] = QT_TR_NOOP("Invalid Context");
 	strs[UnknownType] = QT_TR_NOOP("Unknown Context");

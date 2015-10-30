@@ -315,48 +315,48 @@ TabView::TabView(TraceItemView* parentView, QWidget* parent)
   _nameLabel = new QLabel(this); //KSqueezedTextLabel( this);
   _nameLabel->setSizePolicy(QSizePolicy( QSizePolicy::Ignored,
 					 QSizePolicy::Fixed ));
-  _nameLabel->setObjectName( "nameLabel" );
+  _nameLabel->setObjectName( QStringLiteral("nameLabel") );
   _nameLabel->setText(tr("(No profile data file loaded)"));
   vbox->addWidget( _nameLabel );
   updateNameLabel(tr("(No profile data file loaded)"));
 
   _mainSplitter   = new QSplitter(Qt::Horizontal, this);
   _leftSplitter   = new Splitter(Qt::Vertical, _mainSplitter);
-  _leftSplitter->setObjectName("Left");
+  _leftSplitter->setObjectName(QStringLiteral("Left"));
   vbox->addWidget( _mainSplitter );
 
   _rightTW = new TabWidget(this, _mainSplitter);
-  _rightTW->setObjectName("Right");
-  connect(_rightTW, SIGNAL(currentChanged(int)),
-          this, SLOT(tabChanged(int)));
-  connect(_rightTW, SIGNAL(visibleRectChanged(TabWidget*)),
-          this, SLOT(visibleRectChangedSlot(TabWidget*)));
+  _rightTW->setObjectName(QStringLiteral("Right"));
+  connect(_rightTW, &QTabWidget::currentChanged,
+          this, &TabView::tabChanged);
+  connect(_rightTW, &TabWidget::visibleRectChanged,
+          this, &TabView::visibleRectChangedSlot);
 
   _topTW = new TabWidget(this, _leftSplitter);
-  _topTW->setObjectName("Top");
-  connect(_topTW, SIGNAL(currentChanged(int)),
-          this, SLOT(tabChanged(int)));
-  connect(_topTW, SIGNAL(visibleRectChanged(TabWidget*)),
-          this, SLOT(visibleRectChangedSlot(TabWidget*)));
+  _topTW->setObjectName(QStringLiteral("Top"));
+  connect(_topTW, &QTabWidget::currentChanged,
+          this, &TabView::tabChanged);
+  connect(_topTW, &TabWidget::visibleRectChanged,
+          this, &TabView::visibleRectChangedSlot);
 
   _bottomSplitter = new Splitter(Qt::Horizontal, _leftSplitter);
-  _bottomSplitter->setObjectName("Bottom");
+  _bottomSplitter->setObjectName(QStringLiteral("Bottom"));
 
   _leftTW = new TabWidget(this, _bottomSplitter);
-  _leftTW->setObjectName("Left");
+  _leftTW->setObjectName(QStringLiteral("Left"));
   _leftTW->setTabPosition(QTabWidget::South);
-  connect(_leftTW, SIGNAL(currentChanged(int)),
-          this, SLOT(tabChanged(int)));
-  connect(_leftTW, SIGNAL(visibleRectChanged(TabWidget*)),
-          this, SLOT(visibleRectChangedSlot(TabWidget*)));
+  connect(_leftTW, &QTabWidget::currentChanged,
+          this, &TabView::tabChanged);
+  connect(_leftTW, &TabWidget::visibleRectChanged,
+          this, &TabView::visibleRectChangedSlot);
 
   _bottomTW = new TabWidget(this, _bottomSplitter);
-  _bottomTW->setObjectName("Bottom");
+  _bottomTW->setObjectName(QStringLiteral("Bottom"));
   _bottomTW->setTabPosition(QTabWidget::South);
-  connect(_bottomTW, SIGNAL(currentChanged(int)),
-          this, SLOT(tabChanged(int)));
-  connect(_bottomTW, SIGNAL(visibleRectChanged(TabWidget*)),
-          this, SLOT(visibleRectChangedSlot(TabWidget*)));
+  connect(_bottomTW, &QTabWidget::currentChanged,
+          this, &TabView::tabChanged);
+  connect(_bottomTW, &TabWidget::visibleRectChanged,
+          this, &TabView::visibleRectChangedSlot);
 
   CallView* callerView = new CallView(true, this);
   CallView* calleeView = new CallView(false, this);
@@ -367,13 +367,13 @@ TabView::TabView(TraceItemView* parentView, QWidget* parent)
   PartView* partView = new PartView(this);
 
   // Options of visualization views are stored by their view name
-  callerView->setObjectName("CallerView");
-  calleeView->setObjectName("CalleeView");
-  allCallerView->setObjectName("AllCallerView");
-  allCalleeView->setObjectName("AllCalleeView");
-  sourceView->setObjectName("SourceView");
-  instrView->setObjectName("InstrView");
-  partView->setObjectName("PartView");
+  callerView->setObjectName(QStringLiteral("CallerView"));
+  calleeView->setObjectName(QStringLiteral("CalleeView"));
+  allCallerView->setObjectName(QStringLiteral("AllCallerView"));
+  allCalleeView->setObjectName(QStringLiteral("AllCalleeView"));
+  sourceView->setObjectName(QStringLiteral("SourceView"));
+  instrView->setObjectName(QStringLiteral("InstrView"));
+  partView->setObjectName(QStringLiteral("PartView"));
 
   // default positions...
   // Keep following order in sync with DEFAULT_xxxTABS defines!
@@ -821,9 +821,9 @@ void TabView::restoreLayout(const QString& prefix, const QString& postfix)
 {
     ConfigGroup* g = ConfigStorage::group(prefix, postfix);
 
-    int rightSize = g->value("RightSize", DEFAULT_RIGHTSIZE).toInt();
-    int topSize = g->value("TopSize", DEFAULT_TOPSIZE).toInt();
-    int leftSize = g->value("LeftSize", DEFAULT_LEFTSIZE).toInt();
+    int rightSize = g->value(QStringLiteral("RightSize"), DEFAULT_RIGHTSIZE).toInt();
+    int topSize = g->value(QStringLiteral("TopSize"), DEFAULT_TOPSIZE).toInt();
+    int leftSize = g->value(QStringLiteral("LeftSize"), DEFAULT_LEFTSIZE).toInt();
 
     QList<int> mainSizes, leftSizes, bottomSizes;
 
@@ -839,19 +839,19 @@ void TabView::restoreLayout(const QString& prefix, const QString& postfix)
     bottomSizes << leftSize*bottomWidth/100 << (100 - leftSize)*bottomWidth/100;
     _bottomSplitter->setSizes(bottomSizes);
 
-    QString activeT = g->value("ActiveTop", QString(DEFAULT_ACTIVETOP)).toString();
-    QString activeB = g->value("ActiveBottom", QString(DEFAULT_ACTIVEBOTTOM)).toString();
-    QString activeL = g->value("ActiveLeft", QString()).toString();
-    QString activeR = g->value("ActiveRight", QString()).toString();
+    QString activeT = g->value(QStringLiteral("ActiveTop"), QStringLiteral(DEFAULT_ACTIVETOP)).toString();
+    QString activeB = g->value(QStringLiteral("ActiveBottom"), QStringLiteral(DEFAULT_ACTIVEBOTTOM)).toString();
+    QString activeL = g->value(QStringLiteral("ActiveLeft"), QString()).toString();
+    QString activeR = g->value(QStringLiteral("ActiveRight"), QString()).toString();
 
     QStringList topTabsDefault, bottomTabsDefault;
     topTabsDefault << DEFAULT_TOPTABS;
     bottomTabsDefault << DEFAULT_BOTTOMTABS;
 
-    QStringList topTabs    = g->value("TopTabs",topTabsDefault).toStringList();
-    QStringList bottomTabs = g->value("BottomTabs",bottomTabsDefault).toStringList();
-    QStringList leftTabs   = g->value("LeftTabs",QStringList()).toStringList();
-    QStringList rightTabs  = g->value("RightTabs",QStringList()).toStringList();
+    QStringList topTabs    = g->value(QStringLiteral("TopTabs"),topTabsDefault).toStringList();
+    QStringList bottomTabs = g->value(QStringLiteral("BottomTabs"),bottomTabsDefault).toStringList();
+    QStringList leftTabs   = g->value(QStringLiteral("LeftTabs"),QStringList()).toStringList();
+    QStringList rightTabs  = g->value(QStringLiteral("RightTabs"),QStringList()).toStringList();
 
     delete g;
 
@@ -913,9 +913,9 @@ void TabView::saveLayout(const QString& prefix, const QString& postfix)
     s = _bottomSplitter->sizes();
     int leftSize = (s[0]+s[1]==0) ? 0 : (100 * s[0]/(s[0]+s[1]));
 
-    g->setValue("RightSize", rightSize, DEFAULT_RIGHTSIZE);
-    g->setValue("TopSize", topSize, DEFAULT_TOPSIZE);
-    g->setValue("LeftSize", leftSize, DEFAULT_LEFTSIZE);
+    g->setValue(QStringLiteral("RightSize"), rightSize, DEFAULT_RIGHTSIZE);
+    g->setValue(QStringLiteral("TopSize"), topSize, DEFAULT_TOPSIZE);
+    g->setValue(QStringLiteral("LeftSize"), leftSize, DEFAULT_LEFTSIZE);
 
     QString a;
     QWidget* w;
@@ -923,28 +923,28 @@ void TabView::saveLayout(const QString& prefix, const QString& postfix)
     if ((_topTW->count()>0) &&
         (_topTW->isTabEnabled(_topTW->indexOf(w))))
       a = w->objectName();
-    g->setValue("ActiveTop", a, QString(DEFAULT_ACTIVETOP));
+    g->setValue(QStringLiteral("ActiveTop"), a, QStringLiteral(DEFAULT_ACTIVETOP));
 
     a = QString();
     w = _bottomTW->currentWidget();
     if ((_bottomTW->count()>0) &&
         (_bottomTW->isTabEnabled(_bottomTW->indexOf(w))))
       a = w->objectName();
-    g->setValue("ActiveBottom", a, QString(DEFAULT_ACTIVEBOTTOM));
+    g->setValue(QStringLiteral("ActiveBottom"), a, QStringLiteral(DEFAULT_ACTIVEBOTTOM));
 
     a = QString();
     w = _leftTW->currentWidget();
     if ((_leftTW->count()>0) &&
         (_leftTW->isTabEnabled(_leftTW->indexOf(w))))
       a = w->objectName();
-    g->setValue("ActiveLeft", a, QString());
+    g->setValue(QStringLiteral("ActiveLeft"), a, QString());
 
     a= QString();
     w = _rightTW->currentWidget();
     if ((_rightTW->count()>0) &&
         (_rightTW->isTabEnabled(_rightTW->indexOf(w))))
       a = w->objectName();
-    g->setValue("ActiveRight", a, QString());
+    g->setValue(QStringLiteral("ActiveRight"), a, QString());
 
     QStringList topList, bottomList, leftList, rightList;
     foreach(TraceItemView *v, _tabs) {
@@ -973,10 +973,10 @@ void TabView::saveLayout(const QString& prefix, const QString& postfix)
     topTabsDefault << DEFAULT_TOPTABS;
     bottomTabsDefault << DEFAULT_BOTTOMTABS;
 
-    g->setValue("TopTabs", topList, topTabsDefault);
-    g->setValue("BottomTabs", bottomList, bottomTabsDefault);
-    g->setValue("LeftTabs", leftList, QStringList());
-    g->setValue("RightTabs", rightList, QStringList());
+    g->setValue(QStringLiteral("TopTabs"), topList, topTabsDefault);
+    g->setValue(QStringLiteral("BottomTabs"), bottomList, bottomTabsDefault);
+    g->setValue(QStringLiteral("LeftTabs"), leftList, QStringList());
+    g->setValue(QStringLiteral("RightTabs"), rightList, QStringList());
 
     delete g;
 }
@@ -984,17 +984,17 @@ void TabView::saveLayout(const QString& prefix, const QString& postfix)
 void TabView::restoreOptions(const QString& prefix, const QString& postfix)
 {
     foreach(TraceItemView *v, _tabs)
-      v->restoreOptions(QString("%1-%2").arg(prefix).arg(v->widget()->objectName()),
+      v->restoreOptions(QStringLiteral("%1-%2").arg(prefix).arg(v->widget()->objectName()),
 			postfix);
 
     if (!_data) return;
 
     ConfigGroup* g = ConfigStorage::group(prefix, postfix);
 
-    QString activeType = g->value("ActiveItemType", QString()).toString();
-    QString activeName = g->value("ActiveItemName", QString()).toString();
-    QString selectedType = g->value("SelectedItemType", QString()).toString();
-    QString selectedName = g->value("SelectedItemName", QString()).toString();
+    QString activeType = g->value(QStringLiteral("ActiveItemType"), QString()).toString();
+    QString activeName = g->value(QStringLiteral("ActiveItemName"), QString()).toString();
+    QString selectedType = g->value(QStringLiteral("SelectedItemType"), QString()).toString();
+    QString selectedName = g->value(QStringLiteral("SelectedItemName"), QString()).toString();
 
     delete g;
 
@@ -1019,20 +1019,20 @@ void TabView::saveOptions(const QString& prefix, const QString& postfix)
     if (_activeItem) {
 	ConfigGroup* g = ConfigStorage::group(prefix + postfix);
 
-	g->setValue("ActiveItemType",
+	g->setValue(QStringLiteral("ActiveItemType"),
 		    ProfileContext::typeName(_activeItem->type()));
-	g->setValue("ActiveItemName", _activeItem->name());
+	g->setValue(QStringLiteral("ActiveItemName"), _activeItem->name());
 
 	if (_selectedItem) {
-	    g->setValue("SelectedItemType",
+	    g->setValue(QStringLiteral("SelectedItemType"),
 			ProfileContext::typeName(_selectedItem->type()));
-	    g->setValue("SelectedItemName", _selectedItem->name());
+	    g->setValue(QStringLiteral("SelectedItemName"), _selectedItem->name());
 	}
 	delete g;
     }
 
     foreach(TraceItemView *v, _tabs)
-	v->saveOptions(QString("%1-%2").arg(prefix)
+	v->saveOptions(QStringLiteral("%1-%2").arg(prefix)
 		       .arg(v->widget()->objectName()), postfix);
 }
 

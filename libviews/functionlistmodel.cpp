@@ -357,13 +357,13 @@ QString FunctionListModel::getSelfCost(TraceFunction *f) const
     }
     double selfTotal = selfCost->subCost(_eventType);
     if (selfTotal == 0.0)
-      return "-";
+      return QStringLiteral("-");
 
     // self
     SubCost pure = f->subCost(_eventType);
     double self  = 100.0 * pure / selfTotal;
     if (GlobalConfig::showPercentage())
-        return QString("%1")
+        return QStringLiteral("%1")
         .arg(self, 0, 'f', GlobalConfig::percentPrecision());
     else
         return f->prettySubCost(_eventType);
@@ -391,12 +391,12 @@ QString FunctionListModel::getInclCost(TraceFunction *f) const
 {
     double inclTotal = f->data()->subCost(_eventType);
     if (inclTotal == 0.0)
-      return "-";
+      return QStringLiteral("-");
 
     SubCost sum  = f->inclusive()->subCost(_eventType);
     double incl  = 100.0 * sum / inclTotal;
     if (GlobalConfig::showPercentage())
-        return QString("%1")
+        return QStringLiteral("%1")
         .arg(incl, 0, 'f', GlobalConfig::percentPrecision());
     else
         return f->inclusive()->prettySubCost(_eventType);
@@ -419,9 +419,9 @@ QString FunctionListModel::getCallCount(TraceFunction *f) const
       str = f->prettyCalledCount();
     else {
       if (f == f->cycle())
-        str = QString("-");
+        str = QStringLiteral("-");
       else
-        str = QString("(0)");
+        str = QStringLiteral("(0)");
     }
     return str;
 }

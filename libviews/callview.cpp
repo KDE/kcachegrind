@@ -64,20 +64,20 @@ CallView::CallView(bool showCallers, TraceItemView* parentView, QWidget* parent)
     this->setWhatsThis( whatsThis() );
 
     connect( this,
-             SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
-             SLOT(selectedSlot(QTreeWidgetItem*,QTreeWidgetItem*)) );
+             &QTreeWidget::currentItemChanged,
+             this, &CallView::selectedSlot );
 
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect( this,
-             SIGNAL(customContextMenuRequested(const QPoint &) ),
-             SLOT(context(const QPoint &)));
+             &QWidget::customContextMenuRequested,
+             this, &CallView::context);
 
     connect(this,
-            SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
-            SLOT(activatedSlot(QTreeWidgetItem*,int)));
+            &QTreeWidget::itemDoubleClicked,
+            this, &CallView::activatedSlot);
 
-    connect(header(), SIGNAL(sectionClicked(int)),
-            this, SLOT(headerClicked(int)));
+    connect(header(), &QHeaderView::sectionClicked,
+            this, &CallView::headerClicked);
 }
 
 QString CallView::whatsThis() const

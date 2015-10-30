@@ -69,12 +69,12 @@ int main(int argc, char** argv)
     QStringList files;
 
     for(int arg = 0; arg<list.count(); arg++) {
-        if      (list[arg] == "-h") showHelp(out);
-        else if (list[arg] == "-e") sortByExcl = true;
-        else if (list[arg] == "-n") GlobalConfig::setShowCycles(false);
-        else if (list[arg] == "-b") showCalls = true;
-        else if (list[arg] == "-c") sortByCount = true;
-        else if (list[arg] == "-s") showEvent = list[++arg];
+        if      (list[arg] == QLatin1String("-h")) showHelp(out);
+        else if (list[arg] == QLatin1String("-e")) sortByExcl = true;
+        else if (list[arg] == QLatin1String("-n")) GlobalConfig::setShowCycles(false);
+        else if (list[arg] == QLatin1String("-b")) showCalls = true;
+        else if (list[arg] == QLatin1String("-c")) sortByCount = true;
+        else if (list[arg] == QLatin1String("-s")) showEvent = list[++arg];
         else
             files << list[arg];
     }

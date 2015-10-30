@@ -36,7 +36,7 @@ TraceItemViewUpdateTimer::TraceItemViewUpdateTimer(TraceItemView* view)
 {
     _view = view;
     setSingleShot(true);
-    connect(this, SIGNAL(timeout()), this, SLOT(timeoutTriggered()));
+    connect(this, &QTimer::timeout, this, &TraceItemViewUpdateTimer::timeoutTriggered);
 }
 
 void TraceItemViewUpdateTimer::timeoutTriggered()

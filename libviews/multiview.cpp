@@ -65,9 +65,9 @@ void MultiView::appendView()
     int n = _views.count()+1;
 
     TabView* tv = new TabView(this, this);
-    tv->setObjectName(QString("TabView-%1").arg(n));
-    connect(tv, SIGNAL(tabActivated(TabView*)),
-	    this, SLOT(tabActivated(TabView*)) );
+    tv->setObjectName(QStringLiteral("TabView-%1").arg(n));
+    connect(tv, &TabView::tabActivated,
+	    this, &MultiView::tabActivated );
     _views.append(tv);
     tv->show();
 
@@ -170,15 +170,15 @@ void MultiView::restoreLayout(const QString& prefix, const QString& postfix)
 {
     ConfigGroup* g = ConfigStorage::group(prefix, postfix);
 
-    int panelCount = g->value("Panels", 1).toInt();;
-    QString o      = g->value("Orientation", QString("Vertical")).toString();
-    QString active = g->value("ActivePanel", QString()).toString();
+    int panelCount = g->value(QStringLiteral("Panels"), 1).toInt();;
+    QString o      = g->value(QStringLiteral("Orientation"), QStringLiteral("Vertical")).toString();
+    QString active = g->value(QStringLiteral("ActivePanel"), QString()).toString();
 
     setChildCount(panelCount);
-    setOrientation( o == QString("Horizontal") ?
+    setOrientation( o == QStringLiteral("Horizontal") ?
 		    Qt::Horizontal : Qt::Vertical );
     if ( panelCount>1 ) {
-	QList<int> sizes = toIntList(g->value("PanelSizes", QStringList()).toStringList());
+	QList<int> sizes = toIntList(g->value(QStringLiteral("PanelSizes"), QStringList()).toStringList());
 	setSizes(sizes);
     }
     delete g;
@@ -186,7 +186,7 @@ void MultiView::restoreLayout(const QString& prefix, const QString& postfix)
     TabView* activeTV = 0;
     foreach(TabView* tv, _views) {
         if (tv->objectName() == active) activeTV=tv;
-        tv->restoreLayout( QString("%1-%2").arg(prefix).arg(tv->objectName()),
+        tv->restoreLayout( QStringLiteral("%1-%2").arg(prefix).arg(tv->objectName()),
 			   postfix);
     }
 
@@ -203,19 +203,19 @@ void MultiView::saveLayout(const QString& prefix, const QString& postfix)
 {
     ConfigGroup* g = ConfigStorage::group(prefix + postfix);
 
-    g->setValue("Panels", childCount());
-    g->setValue("Orientation",
+    g->setValue(QStringLiteral("Panels"), childCount());
+    g->setValue(QStringLiteral("Orientation"),
 		QString( (orientation() == Qt::Horizontal) ?
 			 "Horizontal" : "Vertical"),
-		QString("Vertical"));
+		QStringLiteral("Vertical"));
 
-    g->setValue("PanelSizes", toStringList(sizes()));
-    g->setValue("ActivePanel",
-                _active ? QString(_active->objectName()) : QString("none"));
+    g->setValue(QStringLiteral("PanelSizes"), toStringList(sizes()));
+    g->setValue(QStringLiteral("ActivePanel"),
+                _active ? QString(_active->objectName()) : QStringLiteral("none"));
     delete g;
 
     foreach(TabView* tv, _views)
-        tv->saveLayout(QString("%1-%2").arg(prefix).arg(tv->objectName()),
+        tv->saveLayout(QStringLiteral("%1-%2").arg(prefix).arg(tv->objectName()),
 		       postfix);
 }
 
@@ -224,14 +224,14 @@ void MultiView::saveLayout(const QString& prefix, const QString& postfix)
 void MultiView::restoreOptions(const QString& prefix, const QString& postfix)
 {
     foreach(TabView* tv, _views)
-        tv->restoreOptions(QString("%1-%2").arg(prefix).arg(tv->objectName()),
+        tv->restoreOptions(QStringLiteral("%1-%2").arg(prefix).arg(tv->objectName()),
 			   postfix);
 }
 
 void MultiView::saveOptions(const QString& prefix, const QString& postfix)
 {
     foreach(TabView* tv, _views)
-        tv->saveOptions(QString("%1-%2").arg(prefix).arg(tv->objectName()),
+        tv->saveOptions(QStringLiteral("%1-%2").arg(prefix).arg(tv->objectName()),
 			postfix);
 }
 

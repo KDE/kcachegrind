@@ -46,7 +46,7 @@ StackItem::StackItem(StackSelection* ss,
   updateGroup();
   updateCost();
 
-  setText(2, QString("-- "));
+  setText(2, QStringLiteral("-- "));
   setText(3, f->prettyName());
 }
 
@@ -86,14 +86,14 @@ void StackItem::updateCost()
   _sum = _call->subCost(ct);
   double total = _call->called()->data()->subCost(ct);
   if (total == 0.0) {
-    setText(0, "-");
+    setText(0, QStringLiteral("-"));
     setIcon(0, QPixmap());
   }
   else {
     double sum  = 100.0 * _sum / total;
 
     if (GlobalConfig::showPercentage())
-      setText(0, QString("%1")
+      setText(0, QStringLiteral("%1")
 	      .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
     else
       setText(0, _call->prettySubCost(ct));
@@ -108,14 +108,14 @@ void StackItem::updateCost()
   _sum = _call->subCost(ct2);
   total = _call->called()->data()->subCost(ct2);
   if (total == 0.0) {
-    setText(1, "-");
+    setText(1, QStringLiteral("-"));
     setIcon(1, QPixmap());
   }
   else {
     double sum  = 100.0 * _sum / total;
 
     if (GlobalConfig::showPercentage())
-      setText(1, QString("%1")
+      setText(1, QStringLiteral("%1")
 	      .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
     else
       setText(1, _call->prettySubCost(ct2));

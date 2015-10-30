@@ -92,7 +92,7 @@ bool EventType::parseFormula()
     _coefficient[i] = 0;
   _parsedFormula = QString();
 
-  QRegExp rx( "((?:\\+|\\-)?)\\s*(\\d*)\\s*\\*?\\s*(\\w+)" );
+  QRegExp rx( QStringLiteral("((?:\\+|\\-)?)\\s*(\\d*)\\s*\\*?\\s*(\\w+)") );
 
   int factor, pos, found, matching;
   QString costName;
@@ -120,16 +120,16 @@ bool EventType::parseFormula()
     }
 
     factor = (rx.cap(2).isEmpty()) ? 1 : rx.cap(2).toInt();
-    if (rx.cap(1) == "-") factor = -factor;
+    if (rx.cap(1) == QLatin1String("-")) factor = -factor;
     if (factor == 0) continue;
 
     matching++;
 
     if (!_parsedFormula.isEmpty()) {
-        _parsedFormula += QString(" %1 ").arg((factor>0) ? '+':'-');
+        _parsedFormula += QStringLiteral(" %1 ").arg((factor>0) ? '+':'-');
     }
     else if (factor<0)
-        _parsedFormula += "- ";
+        _parsedFormula += QLatin1String("- ");
     if ((factor!=-1) && (factor!=1))
         _parsedFormula += QString::number( (factor>0)?factor:-factor ) + ' ';
     _parsedFormula += costName;
@@ -146,7 +146,7 @@ bool EventType::parseFormula()
   _inParsing = false;
   if (found == 0) {
       // empty formula
-      _parsedFormula = QString("0");
+      _parsedFormula = QStringLiteral("0");
       _parsed = true;
       return true;
   }
@@ -178,16 +178,16 @@ QString EventType::parsedRealFormula()
 
     if (!res.isEmpty()) {
       res += ' ';
-      if (c>0) res += "+ ";
+      if (c>0) res += QLatin1String("+ ");
     }
-    if (c<0) { res += "- "; c = -c; }
+    if (c<0) { res += QLatin1String("- "); c = -c; }
     res += QString::number(c);
 
     EventType* t = _set->type(i);
     if (!t) continue;
 
     if (!t->name().isEmpty())
-      res += QString(" * %1").arg(t->name());
+      res += QStringLiteral(" * %1").arg(t->name());
   }
 
   return res;

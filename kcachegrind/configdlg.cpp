@@ -48,31 +48,31 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
           this, SLOT(objectActivated(const QString &)));
   connect(objectCombo, SIGNAL(textChanged(const QString &)),
           this, SLOT(objectActivated(const QString &)));
-  connect(objectCheck, SIGNAL(toggled(bool)),
-          this, SLOT(objectCheckChanged(bool)));
-  connect(objectColor, SIGNAL(changed(const QColor &)),
-          this, SLOT(objectColorChanged(const QColor &)));
+  connect(objectCheck, &QAbstractButton::toggled,
+          this, &ConfigDlg::objectCheckChanged);
+  connect(objectColor, &KColorButton::changed,
+          this, &ConfigDlg::objectColorChanged);
 
   connect(classCombo, SIGNAL(activated(const QString &)),
           this, SLOT(classActivated(const QString &)));
   connect(classCombo, SIGNAL(textChanged(const QString &)),
           this, SLOT(classActivated(const QString &)));
-  connect(classCheck, SIGNAL(toggled(bool)),
-          this, SLOT(classCheckChanged(bool)));
-  connect(classColor, SIGNAL(changed(const QColor &)),
-          this, SLOT(classColorChanged(const QColor &)));
+  connect(classCheck, &QAbstractButton::toggled,
+          this, &ConfigDlg::classCheckChanged);
+  connect(classColor, &KColorButton::changed,
+          this, &ConfigDlg::classColorChanged);
 
   connect(fileCombo, SIGNAL(activated(const QString &)),
           this, SLOT(fileActivated(const QString &)));
   connect(fileCombo, SIGNAL(textChanged(const QString &)),
           this, SLOT(fileActivated(const QString &)));
-  connect(fileCheck, SIGNAL(toggled(bool)),
-          this, SLOT(fileCheckChanged(bool)));
-  connect(fileColor, SIGNAL(changed(const QColor &)),
-          this, SLOT(fileColorChanged(const QColor &)));
+  connect(fileCheck, &QAbstractButton::toggled,
+          this, &ConfigDlg::fileCheckChanged);
+  connect(fileColor, &KColorButton::changed,
+          this, &ConfigDlg::fileColorChanged);
 
-  connect(buttonBox, SIGNAL(accepted()),SLOT(accept()));
-  connect(buttonBox, SIGNAL(rejected()),SLOT(reject()));
+  connect(buttonBox, &QDialogButtonBox::accepted,this, &QDialog::accept);
+  connect(buttonBox, &QDialogButtonBox::rejected,this, &QDialog::reject);
   QString objectPrefix = ProfileContext::typeName(ProfileContext::Object);
   QString classPrefix = ProfileContext::typeName(ProfileContext::Class);
   QString filePrefix = ProfileContext::typeName(ProfileContext::File);
@@ -168,12 +168,12 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
     }
   }
 
-  connect(dirList, SIGNAL(itemSelectionChanged()),
-          this, SLOT(dirsItemChanged()));
-  connect(addDirButton, SIGNAL(clicked()),
-          this, SLOT(dirsAddPressed()));
-  connect(deleteDirButton, SIGNAL(clicked()),
-          this, SLOT(dirsDeletePressed()));
+  connect(dirList, &QTreeWidget::itemSelectionChanged,
+          this, &ConfigDlg::dirsItemChanged);
+  connect(addDirButton, &QAbstractButton::clicked,
+          this, &ConfigDlg::dirsAddPressed);
+  connect(deleteDirButton, &QAbstractButton::clicked,
+          this, &ConfigDlg::dirsDeletePressed);
   dirList->setCurrentItem(root);
 
   symbolCount->setValue(c->_maxSymbolCount);

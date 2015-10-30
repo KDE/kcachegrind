@@ -48,7 +48,7 @@ SourceSettings::SourceSettings(TraceData* data, QWidget* parent)
     QStringList::const_iterator sit = c->generalSourceDirs().constBegin();
     for(; sit != c->generalSourceDirs().constEnd(); ++sit ) {
       QString d = (*sit);
-      if (d.isEmpty()) d = "/";
+      if (d.isEmpty()) d = QStringLiteral("/");
       i = new QTreeWidgetItem();
       i->setText(0, _always);
       i->setText(1, d);
@@ -68,7 +68,7 @@ SourceSettings::SourceSettings(TraceData* data, QWidget* parent)
 	sit = dirs.constBegin();
 	for(; sit != dirs.constEnd(); ++sit ) {
 	  QString d = (*sit);
-	  if (d.isEmpty()) d = "/";
+	  if (d.isEmpty()) d = QStringLiteral("/");
 	  i = new QTreeWidgetItem();
 	  i->setText(0, n);
 	  i->setText(1, d);
@@ -80,16 +80,16 @@ SourceSettings::SourceSettings(TraceData* data, QWidget* parent)
     ui.objectBox->addItems(objItems);
     ui.objectBox->setCurrentIndex(0);
 
-    connect(ui.addDirButton, SIGNAL(clicked()),
-	    this, SLOT(addClicked()));
-    connect(ui.deleteDirButton, SIGNAL(clicked()),
-	    this, SLOT(deleteClicked()));
-    connect(ui.browseDirButton, SIGNAL(clicked()),
-	    this, SLOT(browseClicked()));
+    connect(ui.addDirButton, &QAbstractButton::clicked,
+	    this, &SourceSettings::addClicked);
+    connect(ui.deleteDirButton, &QAbstractButton::clicked,
+	    this, &SourceSettings::deleteClicked);
+    connect(ui.browseDirButton, &QAbstractButton::clicked,
+	    this, &SourceSettings::browseClicked);
     connect(ui.dirList,
-	    SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+	    &QTreeWidget::currentItemChanged,
 	    this,
-	    SLOT(dirListItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)));
+	    &SourceSettings::dirListItemChanged);
     connect(ui.objectBox,
 	    SIGNAL(currentIndexChanged(QString)),
 	    this, SLOT(objectChanged(QString)));
@@ -186,7 +186,7 @@ bool SourceSettings::check(QString& errorMsg, QString& errorItem)
 	QString dir = item->text(1);
 	if (QDir(dir).exists()) continue;
 	errorMsg = tr("Directory does not exist");
-	errorItem = QString("%1").arg(idx+1);
+	errorItem = QStringLiteral("%1").arg(idx+1);
 	return false;
     }
     return true;

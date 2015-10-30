@@ -40,11 +40,11 @@ GeneralSettings::GeneralSettings(QWidget* parent)
     ui.precisionEdit->setText(QString::number(c->percentPrecision()));
     ui.contextEdit->setText(QString::number(c->context()));
 
-    _names.insert(QString("maxListEdit"), ui.maxListEdit);
-    _names.insert(QString("symbolCount"), ui.symbolCount);
-    _names.insert(QString("symbolLength"), ui.symbolLength);
-    _names.insert(QString("precisionEdit"), ui.precisionEdit);
-    _names.insert(QString("contextEdit"), ui.contextEdit);
+    _names.insert(QStringLiteral("maxListEdit"), ui.maxListEdit);
+    _names.insert(QStringLiteral("symbolCount"), ui.symbolCount);
+    _names.insert(QStringLiteral("symbolLength"), ui.symbolLength);
+    _names.insert(QStringLiteral("precisionEdit"), ui.precisionEdit);
+    _names.insert(QStringLiteral("contextEdit"), ui.contextEdit);
 }
 
 
@@ -54,35 +54,35 @@ bool GeneralSettings::check(QString& errorMsg, QString& errorItem)
     v = ui.maxListEdit->text().toUInt();
     if ((v <1) || (v >500)) {
         errorMsg = inRangeError(1, 500);
-        errorItem = QString("maxListEdit");
+        errorItem = QStringLiteral("maxListEdit");
         return false;
     }
 
     v = ui.symbolCount->text().toInt();
     if ((v <1) || (v >50)) {
         errorMsg = inRangeError(1, 50);
-        errorItem = QString("symbolCount");
+        errorItem = QStringLiteral("symbolCount");
         return false;
     }
 
     v = ui.symbolLength->text().toInt();
     if ((v <1) || (v >1000)) {
         errorMsg = inRangeError(1, 1000);
-        errorItem = QString("symbolLength");
+        errorItem = QStringLiteral("symbolLength");
         return false;
     }
 
     v = ui.precisionEdit->text().toInt();
     if ((v <1) || (v >5)) {
         errorMsg = inRangeError(1, 5);
-        errorItem = QString("precisionEdit");
+        errorItem = QStringLiteral("precisionEdit");
         return false;
     }
 
     v = ui.contextEdit->text().toInt();
     if ((v <1) || (v >500)) {
         errorMsg = inRangeError(1, 500);
-        errorItem = QString("contextEdit");
+        errorItem = QStringLiteral("contextEdit");
         return false;
     }
 

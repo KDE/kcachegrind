@@ -57,13 +57,13 @@ SourceItem::SourceItem(SourceView* sv, QTreeWidget* parent,
   setTextAlignment(1, Qt::AlignRight);
   setTextAlignment(2, Qt::AlignRight);
 
-  if (src == "...")
+  if (src == QLatin1String("..."))
       setText(0, src);
   else
       setText(0, QString::number(lineno));
 
   QString s = src;
-  setText(4, s.replace( QRegExp("\t"), "        " ));
+  setText(4, s.replace( QRegExp(QStringLiteral("\t")), QStringLiteral("        ") ));
 
   // to allow text selection after double click
   setFlags(flags() | Qt::ItemIsEditable);
@@ -94,7 +94,7 @@ SourceItem::SourceItem(SourceView* sv, QTreeWidgetItem* parent,
   //       fileno, lineno, _lineCall->call()->called()->prettyName().toAscii());
 
   SubCost cc = _lineCall->callCount();
-  QString callStr = "  ";
+  QString callStr = QStringLiteral("  ");
   if (cc==0)
       callStr += QObject::tr("Active call to '%1'")
           .arg(_lineCall->call()->calledName());
@@ -179,7 +179,7 @@ void SourceItem::updateCost()
     QString str;
     QPixmap p;
 
-    QString icon = "edit-undo";
+    QString icon = QStringLiteral("edit-undo");
 #if 0 // TODO
     KIconLoader* loader = KIconLoader::global();
     p= loader->loadIcon(icon, KIconLoader::Small, 0,
@@ -212,7 +212,7 @@ void SourceItem::updateCost()
     double pure  = 100.0 * _pure / total;
 
     if (GlobalConfig::showPercentage())
-      setText(1, QString("%1")
+      setText(1, QStringLiteral("%1")
 	      .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
     else
       setText(1, _pure.pretty());
@@ -231,7 +231,7 @@ void SourceItem::updateCost()
     double pure2  = 100.0 * _pure2 / total;
 
     if (GlobalConfig::showPercentage())
-      setText(2, QString("%1")
+      setText(2, QStringLiteral("%1")
 	      .arg(pure2, 0, 'f', GlobalConfig::percentPrecision()));
     else
       setText(2, _pure2.pretty());

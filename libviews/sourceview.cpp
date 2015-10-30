@@ -61,7 +61,7 @@ SourceView::SourceView(TraceItemView* parentView,
   headerLabels << tr( "#" )
                << tr( "Cost" )
                << tr( "Cost 2" )
-               << ""
+               << QLatin1String("")
 	       <<  tr( "Source");
   setHeaderLabels(headerLabels);
 
@@ -72,20 +72,20 @@ SourceView::SourceView(TraceItemView* parentView,
   this->setWhatsThis( whatsThis());
 
   connect( this,
-           SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
-           SLOT(selectedSlot(QTreeWidgetItem*,QTreeWidgetItem*)));
+           &QTreeWidget::currentItemChanged,
+           this, &SourceView::selectedSlot);
 
   setContextMenuPolicy(Qt::CustomContextMenu);
   connect( this,
-           SIGNAL(customContextMenuRequested(const QPoint &)),
-           SLOT(context(const QPoint &)));
+           &QWidget::customContextMenuRequested,
+           this, &SourceView::context);
 
   connect(this,
-          SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
-          SLOT(activatedSlot(QTreeWidgetItem*,int)));
+          &QTreeWidget::itemDoubleClicked,
+          this, &SourceView::activatedSlot);
 
-  connect(header(), SIGNAL(sectionClicked(int)),
-          this, SLOT(headerClicked(int)));
+  connect(header(), &QHeaderView::sectionClicked,
+          this, &SourceView::headerClicked);
 }
 
 QString SourceView::whatsThis() const
@@ -384,7 +384,7 @@ static bool searchFileRecursive(QString& dir, const QString& name)
   QStringList subdirs = d.entryList();
   QStringList::const_iterator it =subdirs.constBegin();
   for(; it != subdirs.constEnd(); ++it ) {
-    if (*it == "." || *it == ".." || *it == "CVS") continue;
+    if (*it == QLatin1String(".") || *it == QLatin1String("..") || *it == QLatin1String("CVS")) continue;
 
     dir = d.filePath(*it);
     if (searchFileRecursive(dir, name)) return true;
@@ -631,7 +631,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 	  new SourceItem(this, this, fileno, 2, false,
 			 tr("with any source line of this function in file"));
 	  new SourceItem(this, this, fileno, 3, false,
-             QString("    '%1'").arg(sf->file()->prettyName()));
+             QStringLiteral("    '%1'").arg(sf->file()->prettyName()));
 	  new SourceItem(this, this, fileno, 4, false,
 			 tr("Thus, no annotated source can be shown."));
 	  return;
@@ -671,7 +671,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
     new SourceItem(this, this, fileno, 1, false,
                    tr("There is no source available for the following function:"));
     new SourceItem(this, this, fileno, 2, false,
-                   QString("    '%1'").arg(sf->function()->prettyName()));
+                   QStringLiteral("    '%1'").arg(sf->function()->prettyName()));
     if (sf->file()->name().isEmpty()) {
       new SourceItem(this, this, fileno, 3, false,
                      tr("This is because no debug information is present."));
@@ -681,7 +681,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 	new SourceItem(this, this, fileno, 5, false,
                        tr("The function is located in this ELF object:"));
 	new SourceItem(this, this, fileno, 6, false,
-                       QString("    '%1'")
+                       QStringLiteral("    '%1'")
                        .arg(sf->function()->object()->prettyName()));
       }
     }
@@ -689,7 +689,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
       new SourceItem(this, this, fileno, 3, false,
                      tr("This is because its source file cannot be found:"));
       new SourceItem(this, this, fileno, 4, false,
-                     QString("    '%1'").arg(sf->file()->name()));
+                     QStringLiteral("    '%1'").arg(sf->file()->name()));
       new SourceItem(this, this, fileno, 5, false,
                      tr("Add the folder of this file to the source folder list."));
       new SourceItem(this, this, fileno, 6, false,

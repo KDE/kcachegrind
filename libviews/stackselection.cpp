@@ -67,8 +67,8 @@ StackSelection::StackSelection(QWidget* parent)
   vboxLayout->addWidget(_stackList);
 
   connect(_stackList,
-          SIGNAL( currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
-          this, SLOT( stackSelected(QTreeWidgetItem*,QTreeWidgetItem*) ) );
+          &QTreeWidget::currentItemChanged,
+          this, &StackSelection::stackSelected );
 }
 
 StackSelection::~StackSelection()

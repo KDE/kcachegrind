@@ -141,10 +141,10 @@ private:
 
 
 CachegrindLoader::CachegrindLoader()
-  : Loader("Callgrind",
+  : Loader(QStringLiteral("Callgrind"),
            QObject::tr( "Import filter for Cachegrind/Callgrind generated profile data files") )
 {
-    _emptyString = QString("");
+    _emptyString = QLatin1String("");
 }
 
 bool CachegrindLoader::canLoad(QIODevice* file)
@@ -283,7 +283,7 @@ bool CachegrindLoader::parsePosition(FixString& line,
 	line.stripFirst(c);
 	line.stripUInt(diff, false);
 	if (currentPos.fromLine < diff) {
-		error(QString("Negative line number %1")
+		error(QStringLiteral("Negative line number %1")
 		      .arg((int)currentPos.fromLine - (int)diff));
 	  diff = currentPos.fromLine;
 	}
@@ -339,7 +339,7 @@ void CachegrindLoader::clearCompression()
 
 const QString& CachegrindLoader::checkUnknown(const QString& n)
 {
-    if (n == "???") return _emptyString;
+    if (n == QLatin1String("???")) return _emptyString;
     return n;
 }
 
@@ -350,10 +350,10 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
   // compressed format using _objectVector
   int p = name.indexOf(')');
   if (p<2) {
-	  error(QString("Invalid compressed ELF object ('%1')").arg(name));
+	  error(QStringLiteral("Invalid compressed ELF object ('%1')").arg(name));
 	  return 0;
   }
-  int index = name.mid(1, p-1).toInt();
+  int index = name.midRef(1, p-1).toInt();
   TraceObject* o = 0;
   p++;
   while((name.length()>p) && name.at(p).isSpace()) p++;
@@ -370,7 +370,7 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
     QString realName = checkUnknown(name.mid(p));
     o = (TraceObject*) _objectVector.at(index);
     if (o && (o->name() != realName)) {
-      error(QString("Redefinition of compressed ELF object index %1 (was '%2') to %3")
+      error(QStringLiteral("Redefinition of compressed ELF object index %1 (was '%2') to %3")
             .arg(index).arg(o->name()).arg(realName));
     }
 
@@ -380,7 +380,7 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
   else {
     if ((_objectVector.size() <= index) ||
 	( (o=(TraceObject*)_objectVector.at(index)) == 0)) {
-      error(QString("Undefined compressed ELF object index %1").arg(index));
+      error(QStringLiteral("Undefined compressed ELF object index %1").arg(index));
       return 0;
     }
   }
@@ -398,10 +398,10 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
   // compressed format using _fileVector
   int p = name.indexOf(')');
   if (p<2) {
-	  error(QString("Invalid compressed file ('%1')").arg(name));
+	  error(QStringLiteral("Invalid compressed file ('%1')").arg(name));
 	  return 0;
   }
-  int index = name.mid(1, p-1).toUInt();
+  int index = name.midRef(1, p-1).toUInt();
   TraceFile* f = 0;
   p++;
   while((name.length()>p) && name.at(p).isSpace()) p++;
@@ -418,7 +418,7 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
     QString realName = checkUnknown(name.mid(p));
     f = (TraceFile*) _fileVector.at(index);
     if (f && (f->name() != realName)) {
-      error(QString("Redefinition of compressed file index %1 (was '%2') to %3")
+      error(QStringLiteral("Redefinition of compressed file index %1 (was '%2') to %3")
             .arg(index).arg(f->name()).arg(realName));
     }
 
@@ -428,7 +428,7 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
   else {
     if ((_fileVector.size() <= index) ||
 	( (f=(TraceFile*)_fileVector.at(index)) == 0)) {
-      error(QString("Undefined compressed file index %1").arg(index));
+      error(QStringLiteral("Undefined compressed file index %1").arg(index));
       return 0;
     }
   }
@@ -449,12 +449,12 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
   // compressed format using _functionVector
   int p = name.indexOf(')');
   if (p<2) {
-	  error(QString("Invalid compressed function ('%1')").arg(name));
+	  error(QStringLiteral("Invalid compressed function ('%1')").arg(name));
 	  return 0;
   }
 
 
-  int index = name.mid(1, p-1).toUInt();
+  int index = name.midRef(1, p-1).toUInt();
   TraceFunction* f = 0;
   p++;
   while((name.length()>p) && name.at(p).isSpace()) p++;
@@ -471,7 +471,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
     QString realName = checkUnknown(name.mid(p));
     f = (TraceFunction*) _functionVector.at(index);
     if (f && (f->name() != realName)) {
-      error(QString("Redefinition of compressed function index %1 (was '%2') to %3")
+      error(QStringLiteral("Redefinition of compressed function index %1 (was '%2') to %3")
             .arg(index).arg(f->name()).arg(realName));
     }
 
@@ -489,7 +489,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
   else {
     if ((_functionVector.size() <= index) ||
 	( (f=(TraceFunction*)_functionVector.at(index)) == 0)) {
-      error(QString("Undefined compressed function index %1").arg(index));
+      error(QStringLiteral("Undefined compressed function index %1").arg(index));
       return 0;
     }
 
@@ -516,7 +516,7 @@ void CachegrindLoader::setObject(const QString& name)
 {
   currentObject = compressedObject(name);
   if (!currentObject) {
-	  error(QString("Invalid ELF object specification, setting to unknown"));
+	  error(QStringLiteral("Invalid ELF object specification, setting to unknown"));
 
     currentObject = _data->object(_emptyString);
   }
@@ -531,7 +531,7 @@ void CachegrindLoader::setCalledObject(const QString& name)
   currentCalledObject = compressedObject(name);
 
   if (!currentCalledObject) {
-	  error(QString("Invalid specification of called ELF object, setting to unknown"));
+	  error(QStringLiteral("Invalid specification of called ELF object, setting to unknown"));
 
     currentCalledObject = _data->object(_emptyString);
   }
@@ -554,7 +554,7 @@ void CachegrindLoader::setFile(const QString& name)
   currentFile = compressedFile(name);
 
   if (!currentFile) {
-	  error(QString("Invalid file specification, setting to unknown"));
+	  error(QStringLiteral("Invalid file specification, setting to unknown"));
 
     currentFile = _data->file(_emptyString);
   }
@@ -569,7 +569,7 @@ void CachegrindLoader::setCalledFile(const QString& name)
   currentCalledFile = compressedFile(name);
 
   if (!currentCalledFile) {
-	  error(QString("Invalid specification of called file, setting to unknown"));
+	  error(QStringLiteral("Invalid specification of called file, setting to unknown"));
 
     currentCalledFile = _data->file(_emptyString);
   }
@@ -582,7 +582,7 @@ void CachegrindLoader::ensureFunction()
 {
   if (currentFunction) return;
 
-  error(QString("Function not specified, setting to unknown"));
+  error(QStringLiteral("Function not specified, setting to unknown"));
 
   ensureFile();
   ensureObject();
@@ -605,7 +605,7 @@ void CachegrindLoader::setFunction(const QString& name)
 					currentObject);
 
   if (!currentFunction) {
-	  error(QString("Invalid function specification, setting to unknown"));
+	  error(QStringLiteral("Invalid function specification, setting to unknown"));
 
     currentFunction = _data->function(_emptyString,
 				      currentFile,
@@ -639,7 +639,7 @@ void CachegrindLoader::setCalledFunction(const QString& name)
 					     currentCalledFile,
 					     currentCalledObject);
   if (!currentCalledFunction) {
-    error("Invalid called function, setting to unknown");
+    error(QStringLiteral("Invalid called function, setting to unknown"));
 
     currentCalledFunction = _data->function(_emptyString,
 					    currentCalledFile,
@@ -727,7 +727,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 
   FixFile file(device, _filename);
   if (!file.exists()) {
-    loadFinished("File does not exist");
+    loadFinished(QStringLiteral("File does not exist"));
     return 0;
   }
 
@@ -769,7 +769,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 
 	  // parse position(s)
 	  if (!parsePosition(line, currentPos)) {
-		  error(QString("Invalid position specification '%1'").arg(line));
+		  error(QStringLiteral("Invalid position specification '%1'").arg(line));
 	      continue;
 	  }
 
@@ -861,7 +861,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 		if (!_data->command().isEmpty() &&
 		    _data->command() != command) {
 
-		  error(QString("Redefined command, was '%1'").arg(_data->command()));
+		  error(QStringLiteral("Redefined command, was '%1'").arg(_data->command()));
 		}
 		_data->setCommand(command);
 		continue;
@@ -887,7 +887,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 		    parsePosition(line, targetPos);
 
 		if (!valid) {
-			error(QString("Invalid line after 'jcnd'"));
+			error(QStringLiteral("Invalid line after 'jcnd'"));
 		}
 		else
 		    nextLineType = CondJump;
@@ -901,7 +901,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 		    parsePosition(line, targetPos);
 
 		if (!valid) {
-			error(QString("Invalid line after 'jump'"));
+			error(QStringLiteral("Invalid line after 'jump'"));
 		}
 		else
 		    nextLineType = BoringJump;
@@ -950,7 +950,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 		TraceData::Arch a = _data->architecture();
 		if ((a != TraceData::ArchUnknown) &&
 		    (a != TraceData::ArchARM)) {
-		    error(QString("Redefined architecture!"));
+		    error(QStringLiteral("Redefined architecture!"));
 		}
 		_data->setArchitecture(TraceData::ArchARM);
 		continue;
@@ -1009,7 +1009,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 
 	      FixString e, f, l;
 	      if (!line.stripName(e)) {
-				error(QString("Invalid event"));
+				error(QStringLiteral("Invalid event"));
 		continue;
 	      }
 	      line.stripSpaces();
@@ -1045,8 +1045,8 @@ int CachegrindLoader::loadInternal(TraceData* data,
 	    if (line.stripPrefix("ositions:")) {
                 prepareNewPart();
 		QString positions(line);
-		hasLineInfo = positions.contains("line");
-		hasAddrInfo = positions.contains("instr");
+		hasLineInfo = positions.contains(QStringLiteral("line"));
+		hasAddrInfo = positions.contains(QStringLiteral("instr"));
 		continue;
 	    }
 	    break;
@@ -1065,7 +1065,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 	    // summary:
 	    if (line.stripPrefix("ummary:")) {
 		if (!mapping) {
-			error(QString("No event line found. Skipping file"));
+			error(QStringLiteral("No event line found. Skipping file"));
                         delete _part;
 			return false;
 		}
@@ -1083,7 +1083,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 		line.stripUInt64(currentCallCount);
 		nextLineType = CallCost;
 
-		warning(QString("Old file format using deprecated 'rcalls'"));
+		warning(QStringLiteral("Old file format using deprecated 'rcalls'"));
 		continue;
 	    }
 	    break;
@@ -1092,12 +1092,12 @@ int CachegrindLoader::loadInternal(TraceData* data,
 	    break;
 	}
 
-	error(QString("Invalid line '%1%2'").arg(c).arg(line));
+	error(QStringLiteral("Invalid line '%1%2'").arg(c).arg(line));
 	continue;
       }
 
       if (!mapping) {
-        error(QString("No event line found. Skipping file"));
+        error(QStringLiteral("No event line found. Skipping file"));
         delete _part;
         return false;
       }
@@ -1193,7 +1193,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 #endif
 
       if (!line.isEmpty()) {
-        error(QString("Garbage at end of cost line ('%1')").arg(line));
+        error(QStringLiteral("Garbage at end of cost line ('%1')").arg(line));
       }
     }
     else if (nextLineType == CallCost) {
@@ -1258,7 +1258,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
       currentCallCount = 0;
 
       if (!line.isEmpty()) {
-        error(QString("Garbage at end of call cost line ('%1')").arg(line));
+        error(QStringLiteral("Garbage at end of call cost line ('%1')").arg(line));
       }
     }
     else { // (nextLineType == BoringJump || nextLineType == CondJump)
@@ -1337,7 +1337,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
       currentJumpToFile = 0;
 
       if (!line.isEmpty()) {
-        error(QString("Garbage at end of jump cost line ('%1')").arg(line));
+        error(QStringLiteral("Garbage at end of jump cost line ('%1')").arg(line));
       }
 
     }

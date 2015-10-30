@@ -59,16 +59,16 @@ PartView::PartView(TraceItemView* parentView, QWidget* parent)
     setMinimumHeight(50);
     setSelectionMode(QAbstractItemView::ExtendedSelection);
 
-    connect( this, SIGNAL(itemSelectionChanged()),
-	     SLOT( selectionChangedSlot() ) );
+    connect( this, &QTreeWidget::itemSelectionChanged,
+	     this, &PartView::selectionChangedSlot );
 
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect( this,
-             SIGNAL(customContextMenuRequested(const QPoint &) ),
-             SLOT(context(const QPoint &)));
+             &QWidget::customContextMenuRequested,
+             this, &PartView::context);
 
-    connect(header(), SIGNAL(sectionClicked(int)),
-            this, SLOT(headerClicked(int)));
+    connect(header(), &QHeaderView::sectionClicked,
+            this, &PartView::headerClicked);
 
     setWhatsThis( whatsThis() );
 }

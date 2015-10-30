@@ -174,37 +174,37 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
 	  this, SLOT(groupTypeSelected(int)));
 
   // search while typing...
-  connect(searchEdit, SIGNAL(textChanged(const QString&)),
-	  this, SLOT(searchChanged(const QString&)));
-  connect(&_searchTimer, SIGNAL(timeout()),
-	  this, SLOT(queryDelayed()));
+  connect(searchEdit, &QLineEdit::textChanged,
+	  this, &FunctionSelection::searchChanged);
+  connect(&_searchTimer, &QTimer::timeout,
+	  this, &FunctionSelection::queryDelayed);
   // select first matching group/function on return
-  connect(searchEdit, SIGNAL(returnPressed()),
-	  this, SLOT(searchReturnPressed()));
+  connect(searchEdit, &QLineEdit::returnPressed,
+	  this, &FunctionSelection::searchReturnPressed);
   searchEdit->setMinimumWidth(50);
 
   // single click release activation
-  connect(functionList, SIGNAL(clicked(QModelIndex)),
-          this, SLOT(functionActivated(QModelIndex)));
-  connect(functionList, SIGNAL(activated(QModelIndex)),
-          this, SLOT(functionActivated(QModelIndex)));
-  connect(functionList, SIGNAL(customContextMenuRequested(const QPoint &)),
-          this, SLOT(functionContext(const QPoint &)));
-  connect(functionList->header(), SIGNAL(sectionClicked(int)),
-          this, SLOT(functionHeaderClicked(int)));
+  connect(functionList, &QAbstractItemView::clicked,
+          this, &FunctionSelection::functionActivated);
+  connect(functionList, &QAbstractItemView::activated,
+          this, &FunctionSelection::functionActivated);
+  connect(functionList, &QWidget::customContextMenuRequested,
+          this, &FunctionSelection::functionContext);
+  connect(functionList->header(), &QHeaderView::sectionClicked,
+          this, &FunctionSelection::functionHeaderClicked);
 
   connect(groupList,
-          SIGNAL( currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
-          this, SLOT( groupSelected(QTreeWidgetItem*,QTreeWidgetItem*) ) );
-  connect(groupList, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
-          this, SLOT(groupDoubleClicked(QTreeWidgetItem*,int)));
+          &QTreeWidget::currentItemChanged,
+          this, &FunctionSelection::groupSelected );
+  connect(groupList, &QTreeWidget::itemDoubleClicked,
+          this, &FunctionSelection::groupDoubleClicked);
 
   groupList->setContextMenuPolicy(Qt::CustomContextMenu);
   connect(groupList,
-          SIGNAL(customContextMenuRequested(const QPoint &) ),
-          this, SLOT(groupContext(const QPoint &)));
+          &QWidget::customContextMenuRequested,
+          this, &FunctionSelection::groupContext);
   connect(groupList->header(),
-          SIGNAL(sectionClicked(int)), this, SLOT(groupHeaderClicked(int)));
+          &QHeaderView::sectionClicked, this, &FunctionSelection::groupHeaderClicked);
 
   // start hidden
   groupList->hide();

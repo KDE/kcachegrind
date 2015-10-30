@@ -58,7 +58,7 @@ QString getSysRoot()
     if (env.isEmpty())
 	env = QProcessEnvironment::systemEnvironment();
 
-    return env.value("SYSROOT");
+    return env.value(QStringLiteral("SYSROOT"));
 }
 
 static
@@ -67,7 +67,7 @@ QString getObjDump()
     if (env.isEmpty())
 	env = QProcessEnvironment::systemEnvironment();
 
-    return env.value("OBJDUMP", "objdump");
+    return env.value(QStringLiteral("OBJDUMP"), QStringLiteral("objdump"));
 }
 
 // parsing output of 'objdump'
@@ -160,7 +160,7 @@ static bool parseLine(const char* buf, Addr& addr,
 
     // maximal 50 chars
     if (operandsLen > 50)
-        operands = QString::fromLatin1(buf + pos, 47) + QString("...");
+        operands = QString::fromLatin1(buf + pos, 47) + QStringLiteral("...");
     else
         operands = QString::fromLatin1(buf+pos, operandsLen);
 
@@ -193,9 +193,9 @@ InstrView::InstrView(TraceItemView* parentView,
     headerLabels << tr( "#" )
                  << tr( "Cost" )
                  << tr( "Cost 2" )
-                 << ""
+                 << QLatin1String("")
                  << tr( "Hex" )
-                 << "" // Mnenomic
+                 << QLatin1String("") // Mnenomic
                  << tr( "Assembly Instructions" )
                  << tr( "Source Position" );
     setHeaderLabels(headerLabels);
@@ -212,20 +212,20 @@ InstrView::InstrView(TraceItemView* parentView,
     setWhatsThis( whatsThis() );
 
     connect( this,
-             SIGNAL( currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
-             SLOT( selectedSlot(QTreeWidgetItem*,QTreeWidgetItem*) ) );
+             &QTreeWidget::currentItemChanged,
+             this, &InstrView::selectedSlot );
 
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect( this,
-             SIGNAL(customContextMenuRequested(const QPoint &) ),
-             SLOT(context(const QPoint &)));
+             &QWidget::customContextMenuRequested,
+             this, &InstrView::context);
 
     connect(this,
-            SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
-            SLOT(activatedSlot(QTreeWidgetItem*,int)));
+            &QTreeWidget::itemDoubleClicked,
+            this, &InstrView::activatedSlot);
 
-    connect(header(), SIGNAL(sectionClicked(int)),
-            this, SLOT(headerClicked(int)));
+    connect(header(), &QHeaderView::sectionClicked,
+            this, &InstrView::headerClicked);
 
     this->setWhatsThis( whatsThis());
 }
@@ -820,7 +820,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 		      tr("For annotated machine code, "
 			 "the following object file is needed:"));
 	new InstrItem(this, this, 2,
-		      QString("    '%1'").arg(function->object()->name()));
+		      QStringLiteral("    '%1'").arg(function->object()->name()));
 	new InstrItem(this, this, 3,
 		      tr("This file can not be found."));
 	if (isArm)
@@ -833,12 +833,12 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     // call objdump synchronously
     QString objfile = dir + '/' + function->object()->shortName();
     QStringList objdumpArgs = QStringList()
-	<< "-C" << "-d"
-	<< QString("--start-address=0x%1").arg(dumpStartAddr.toString())
-	<< QString("--stop-address=0x%1").arg(dumpEndAddr.toString())
+	<< QStringLiteral("-C") << QStringLiteral("-d")
+	<< QStringLiteral("--start-address=0x%1").arg(dumpStartAddr.toString())
+	<< QStringLiteral("--stop-address=0x%1").arg(dumpEndAddr.toString())
 	<< objfile;
 
-    QString objdumpCmd = getObjDump() + " " + objdumpArgs.join(" ");
+    QString objdumpCmd = getObjDump() + " " + objdumpArgs.join(QStringLiteral(" "));
     qDebug("Running '%s'...", qPrintable(objdumpCmd));
 
     // and run...
@@ -850,7 +850,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	new InstrItem(this, this, 1,
 		      tr("There is an error trying to execute the command"));
 	new InstrItem(this, this, 2,
-		      QString("    '%1'").arg(objdumpCmd));
+		      QStringLiteral("    '%1'").arg(objdumpCmd));
 	new InstrItem(this, this, 3,
 		      tr("Check that you have installed 'objdump'."));
 	new InstrItem(this, this, 4,
@@ -996,7 +996,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	      skipLineWritten = true;
 	      // a "skipping" line: print "..." instead of a line number
 	      code = cmd = QString();
-	      args = QString("...");
+	      args = QStringLiteral("...");
 	  }
 	  else
 	      continue;
@@ -1123,15 +1123,15 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 		      tr("There are %n cost line(s) without machine code.", "", noAssLines));
 	new InstrItem(this, this, 2,
 		      tr("This happens because the code of"));
-	new InstrItem(this, this, 3, QString("    %1").arg(objfile));
+	new InstrItem(this, this, 3, QStringLiteral("    %1").arg(objfile));
 	new InstrItem(this, this, 4,
 		      tr("does not seem to match the profile data file."));
-	new InstrItem(this, this, 5, "");
+	new InstrItem(this, this, 5, QLatin1String(""));
 	new InstrItem(this, this, 6,
 		      tr("Are you using an old profile data file or is the above mentioned"));
 	new InstrItem(this, this, 7,
 		      tr("ELF object from an updated installation/another machine?"));
-	new InstrItem(this, this, 8, "");
+	new InstrItem(this, this, 8, QLatin1String(""));
 	return false;
     }
 
@@ -1140,7 +1140,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	new InstrItem(this, this, 1,
 		      tr("There seems to be an error trying to execute the command"));
 	new InstrItem(this, this, 2,
-		      QString("    '%1'").arg(objdumpCmd));
+		      QStringLiteral("    '%1'").arg(objdumpCmd));
 	new InstrItem(this, this, 3,
 		      tr("Check that the ELF object used in the command exists."));
 	new InstrItem(this, this, 4,
@@ -1168,7 +1168,7 @@ void InstrView::restoreOptions(const QString& prefix, const QString& postfix)
 {
     ConfigGroup* g = ConfigStorage::group(prefix, postfix);
 
-    _showHexCode  = g->value("ShowHexCode", DEFAULT_SHOWHEXCODE).toBool();
+    _showHexCode  = g->value(QStringLiteral("ShowHexCode"), DEFAULT_SHOWHEXCODE).toBool();
     delete g;
 }
 
@@ -1176,7 +1176,7 @@ void InstrView::saveOptions(const QString& prefix, const QString& postfix)
 {
     ConfigGroup* g = ConfigStorage::group(prefix + postfix);
 
-    g->setValue("ShowHexCode", _showHexCode, DEFAULT_SHOWHEXCODE);
+    g->setValue(QStringLiteral("ShowHexCode"), _showHexCode, DEFAULT_SHOWHEXCODE);
     delete g;
 }
 

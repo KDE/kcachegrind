@@ -93,13 +93,13 @@ void PartListItem::update()
   _sum = pf ? pf->inclusive()->subCost(_eventType) : SubCost(0);
 
   if (selfTotal == 0 || !_partCostItem) {
-    setText(2, QString("-"));
+    setText(2, QStringLiteral("-"));
     setIcon(2, QPixmap());
   }
   else {
     double pure  = 100.0 * _pure / selfTotal;
     if (GlobalConfig::showPercentage()) {
-      setText(2, QString("%1")
+      setText(2, QStringLiteral("%1")
               .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
     }
     else
@@ -109,13 +109,13 @@ void PartListItem::update()
   }
 
   if (total == 0 || !pf) {
-    setText(1, QString("-"));
+    setText(1, QStringLiteral("-"));
     setIcon(1, QPixmap());
   }
   else {
     double sum  = 100.0 * _sum / total;
     if (GlobalConfig::showPercentage()) {
-      setText(1, QString("%1")
+      setText(1, QStringLiteral("%1")
               .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
     }
     else
@@ -125,7 +125,7 @@ void PartListItem::update()
   }
 
   if (!pf) {
-    setText(3, QString("-"));
+    setText(3, QStringLiteral("-"));
     _callCount = 0;
     return;
   }

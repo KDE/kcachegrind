@@ -49,7 +49,7 @@ int Addr::set(const char *s)
 
 QString Addr::toString() const
 {
-  if (_v == 0) return QString("0");
+  if (_v == 0) return QStringLiteral("0");
 
   uint64 n = _v;
   QString hex;
@@ -66,7 +66,7 @@ QString Addr::toString() const
 
 QString Addr::pretty() const
 {
-  if (_v == 0) return QString("0");
+  if (_v == 0) return QStringLiteral("0");
 
   uint64 n = _v;
   int p = 0;

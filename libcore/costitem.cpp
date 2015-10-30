@@ -49,7 +49,7 @@ void CostItem::clear()
 
 QString CostItem::costString(EventTypeSet*)
 {
-    return QString("(no cost)");
+    return QStringLiteral("(no cost)");
 }
 
 QString CostItem::name() const
@@ -77,13 +77,13 @@ QString CostItem::formattedName() const
 
 QString CostItem::fullName() const
 {
-  return QString("%1 %2")
+  return QStringLiteral("%1 %2")
     .arg(ProfileContext::typeName(type())).arg(prettyName());
 }
 
 QString CostItem::toString()
 {
-  return QString("%1\n  [%3]").arg(fullName()).arg(costString(0));
+  return QStringLiteral("%1\n  [%3]").arg(fullName()).arg(costString(0));
 }
 
 void CostItem::invalidate()
@@ -552,7 +552,7 @@ QString ProfileCostArray::costString(EventTypeSet* set)
 
   int maxIndex = set ? set->realCount() : ProfileCostArray::MaxRealIndex;
   for (int i = 0; i<maxIndex; i++) {
-    if (!res.isEmpty()) res += ", ";
+    if (!res.isEmpty()) res += QLatin1String(", ");
     if (set) res += set->type(i)->name() + ' ';
 
     res += subCost(i).pretty();

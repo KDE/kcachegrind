@@ -72,20 +72,20 @@ CoverageView::CoverageView(bool showCallers, TraceItemView* parentView, QWidget*
     this->setWhatsThis( whatsThis() );
 
     connect( this,
-             SIGNAL( currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
-             SLOT( selectedSlot(QTreeWidgetItem*,QTreeWidgetItem*) ) );
+             &QTreeWidget::currentItemChanged,
+             this, &CoverageView::selectedSlot );
 
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect( this,
-             SIGNAL(customContextMenuRequested(const QPoint &) ),
-             SLOT(context(const QPoint &)));
+             &QWidget::customContextMenuRequested,
+             this, &CoverageView::context);
 
     connect(this,
-            SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
-            SLOT(activatedSlot(QTreeWidgetItem*,int)));
+            &QTreeWidget::itemDoubleClicked,
+            this, &CoverageView::activatedSlot);
 
-    connect(header(), SIGNAL(sectionClicked(int)),
-            this, SLOT(headerClicked(int)));
+    connect(header(), &QHeaderView::sectionClicked,
+            this, &CoverageView::headerClicked);
 }
 
 QString CoverageView::whatsThis() const

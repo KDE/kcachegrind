@@ -100,12 +100,12 @@ void CallerCoverageItem::update()
   _sum = SubCost(realSum * _coverage->inclusive());
   QString str;
   if (GlobalConfig::showPercentage())
-    str = QString("%1").arg(_pSum, 0, 'f', GlobalConfig::percentPrecision());
+    str = QStringLiteral("%1").arg(_pSum, 0, 'f', GlobalConfig::percentPrecision());
   else
     str = _sum.pretty();
 
   if (_skipped) {
-    setText(0, QString("< %1").arg(str));
+    setText(0, QStringLiteral("< %1").arg(str));
     return;
   }
 
@@ -115,7 +115,7 @@ void CallerCoverageItem::update()
 
   // call count
   _cc  = SubCost(_coverage->callCount());
-  setText(2, _cc ? _cc.pretty() : QString("(0)"));
+  setText(2, _cc ? _cc.pretty() : QStringLiteral("(0)"));
 
   // distance (min/max/median)
   _distance = _coverage->inclusiveMedian();
@@ -123,7 +123,7 @@ void CallerCoverageItem::update()
   if (_coverage->minDistance() == _coverage->maxDistance())
     distString = QString::number(_distance);
   else
-    distString = QString("%1-%2 (%3)")
+    distString = QStringLiteral("%1-%2 (%3)")
                  .arg(_coverage->minDistance())
                  .arg(_coverage->maxDistance())
                  .arg(_distance);
@@ -245,12 +245,12 @@ void CalleeCoverageItem::update()
 
   QString str;
   if (GlobalConfig::showPercentage())
-    str = QString("%1").arg(_pSum, 0, 'f', GlobalConfig::percentPrecision());
+    str = QStringLiteral("%1").arg(_pSum, 0, 'f', GlobalConfig::percentPrecision());
   else
     str = _sum.pretty();
 
   if (_skipped) {
-    str = QString("< %1").arg(str);
+    str = QStringLiteral("< %1").arg(str);
     setText(0, str);
     setText(1, str);
     return;
@@ -261,7 +261,7 @@ void CalleeCoverageItem::update()
  _self = SubCost(realSum * _coverage->self());
 
  if (GlobalConfig::showPercentage()) {
-    setText(1, QString("%1")
+    setText(1, QStringLiteral("%1")
             .arg(_pSelf, 0, 'f', GlobalConfig::percentPrecision()));
   }
   else {
@@ -275,7 +275,7 @@ void CalleeCoverageItem::update()
 
 
   _cc  = SubCost(_coverage->callCount());
-  setText(3, _cc ? _cc.pretty() : QString("(0)"));
+  setText(3, _cc ? _cc.pretty() : QStringLiteral("(0)"));
 
   // for comparations
   _distance = _coverage->inclusiveMedian();
@@ -288,9 +288,9 @@ void CalleeCoverageItem::update()
     if (_distance == sMed)
       med = QString::number(_distance);
     else
-      med = QString("%1/%2").arg(_distance).arg(sMed);
+      med = QStringLiteral("%1/%2").arg(_distance).arg(sMed);
 
-    distString = QString("%1-%2 (%3)")
+    distString = QStringLiteral("%1-%2 (%3)")
                  .arg(_coverage->minDistance())
                  .arg(_coverage->maxDistance())
                  .arg(med);

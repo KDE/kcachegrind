@@ -47,10 +47,10 @@ QString SubCost::pretty(char sep) const
 {
     unsigned long long n = v;
 
-    if (n==0) return QString("0");
+    if (n==0) return QStringLiteral("0");
 
     int i = 0;
-    QString res = "";
+    QString res = QLatin1String("");
 
     while (n) {
 	if ((i>0) && !(i%3)) res = sep + res;

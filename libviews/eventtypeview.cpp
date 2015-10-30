@@ -62,8 +62,8 @@ EventTypeView::EventTypeView(TraceItemView* parentView,
 
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect( this,
-	     SIGNAL(customContextMenuRequested(const QPoint &)),
-	     SLOT(context(const QPoint &)));
+	     &QWidget::customContextMenuRequested,
+	     this, &EventTypeView::context);
 
     // FIXME: Endless jumping among 2 types possible!
     connect( this,

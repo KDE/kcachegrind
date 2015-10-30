@@ -81,7 +81,7 @@
 TopLevel::TopLevel()
   : KXmlGuiWindow(0)
 {
-    QDBusConnection::sessionBus().registerObject("/KCachegrind", this, QDBusConnection::ExportScriptableSlots);
+    QDBusConnection::sessionBus().registerObject(QStringLiteral("/KCachegrind"), this, QDBusConnection::ExportScriptableSlots);
 
     _progressBar = 0;
     _statusbar = statusBar();
@@ -100,7 +100,7 @@ TopLevel::TopLevel()
     createDocks();
 
     _multiView = new MultiView(this, this );
-    _multiView->setObjectName("MultiView");
+    _multiView->setObjectName(QStringLiteral("MultiView"));
     setCentralWidget(_multiView);
 
   createActions();
@@ -109,12 +109,12 @@ TopLevel::TopLevel()
   _stackDockShown->setChecked(!_stackDock->isHidden());
   _functionDockShown->setChecked(!_functionDock->isHidden());
 
-  connect(_partDock, SIGNAL(visibilityChanged(bool)),
-          this, SLOT(partVisibilityChanged(bool)));
-  connect(_stackDock, SIGNAL(visibilityChanged(bool)),
-          this, SLOT(stackVisibilityChanged(bool)));
-  connect(_functionDock, SIGNAL(visibilityChanged(bool)),
-          this, SLOT(functionVisibilityChanged(bool)));
+  connect(_partDock, &QDockWidget::visibilityChanged,
+          this, &TopLevel::partVisibilityChanged);
+  connect(_stackDock, &QDockWidget::visibilityChanged,
+          this, &TopLevel::stackVisibilityChanged);
+  connect(_functionDock, &QDockWidget::visibilityChanged,
+          this, &TopLevel::functionVisibilityChanged);
 
 #if ENABLE_DUMPDOCK
   _dumpDockShown->setChecked(!_dumpDock->isHidden());
@@ -149,7 +149,7 @@ TopLevel::TopLevel()
 
   // if this is the first toplevel, show tip of day
   if (memberList().count() == 1)
-    QTimer::singleShot( 200, this, SLOT(slotShowTipOnStart()) );
+    QTimer::singleShot( 200, this, &TopLevel::slotShowTipOnStart );
 }
 
 void TopLevel::resetState()
@@ -183,10 +183,10 @@ void TopLevel::setupPartSelection(PartSelection* ps)
 {
   // setup connections from the part selection widget
 
-  connect(ps, SIGNAL(partsHideSelected()),
-          this, SLOT(partsHideSelectedSlotDelayed()));
-  connect(ps, SIGNAL(partsUnhideAll()),
-          this, SLOT(partsUnhideAllSlotDelayed()));
+  connect(ps, &PartSelection::partsHideSelected,
+          this, &TopLevel::partsHideSelectedSlotDelayed);
+  connect(ps, &PartSelection::partsUnhideAll,
+          this, &TopLevel::partsUnhideAllSlotDelayed);
 }
 
 /**
@@ -198,18 +198,18 @@ void TopLevel::setupPartSelection(PartSelection* ps)
  */
 void TopLevel::saveCurrentState(const QString& postfix)
 {
-  QString eventType = _eventType ? _eventType->name() : QString("?");
-  QString eventType2 = _eventType2 ? _eventType2->name() : QString("?");
+  QString eventType = _eventType ? _eventType->name() : QStringLiteral("?");
+  QString eventType2 = _eventType2 ? _eventType2->name() : QStringLiteral("?");
 
-  ConfigGroup* stateConfig = ConfigStorage::group(QString("CurrentState") + postfix);
-  stateConfig->setValue("EventType", eventType);
-  stateConfig->setValue("EventType2", eventType2);
-  stateConfig->setValue("GroupType", ProfileContext::typeName(_groupType));
+  ConfigGroup* stateConfig = ConfigStorage::group(QStringLiteral("CurrentState") + postfix);
+  stateConfig->setValue(QStringLiteral("EventType"), eventType);
+  stateConfig->setValue(QStringLiteral("EventType2"), eventType2);
+  stateConfig->setValue(QStringLiteral("GroupType"), ProfileContext::typeName(_groupType));
   delete stateConfig;
 
-  _partSelection->saveOptions(QString("PartOverview"), postfix);
-  _multiView->saveLayout(QString("MainView"), postfix);
-  _multiView->saveOptions(QString("MainView"), postfix);
+  _partSelection->saveOptions(QStringLiteral("PartOverview"), postfix);
+  _multiView->saveLayout(QStringLiteral("MainView"), postfix);
+  _multiView->saveOptions(QStringLiteral("MainView"), postfix);
 }
 
 /**
@@ -220,23 +220,23 @@ void TopLevel::saveTraceSettings()
 {
     QString key = traceKey();
 
-    ConfigGroup* lConfig = ConfigStorage::group("Layouts");
-    lConfig->setValue(QString("Count%1").arg(key), _layoutCount);
-    lConfig->setValue(QString("Current%1").arg(key), _layoutCurrent);
+    ConfigGroup* lConfig = ConfigStorage::group(QStringLiteral("Layouts"));
+    lConfig->setValue(QStringLiteral("Count%1").arg(key), _layoutCount);
+    lConfig->setValue(QStringLiteral("Current%1").arg(key), _layoutCurrent);
     delete lConfig;
 
-    ConfigGroup* pConfig = ConfigStorage::group("TracePositions");
+    ConfigGroup* pConfig = ConfigStorage::group(QStringLiteral("TracePositions"));
     if (_eventType)
-	pConfig->setValue(QString("EventType%1").arg(key), _eventType->name());
+	pConfig->setValue(QStringLiteral("EventType%1").arg(key), _eventType->name());
     if (_eventType2)
-	pConfig->setValue(QString("EventType2%1").arg(key), _eventType2->name());
+	pConfig->setValue(QStringLiteral("EventType2%1").arg(key), _eventType2->name());
     if (_groupType != ProfileContext::InvalidType)
-	pConfig->setValue(QString("GroupType%1").arg(key),
+	pConfig->setValue(QStringLiteral("GroupType%1").arg(key),
 			  ProfileContext::typeName(_groupType));
 
     if (_data) {
 	if (_group)
-	    pConfig->setValue(QString("Group%1").arg(key), _group->name());
+	    pConfig->setValue(QStringLiteral("Group%1").arg(key), _group->name());
 	saveCurrentState(key);
     }
     delete pConfig;
@@ -251,9 +251,9 @@ void TopLevel::saveTraceSettings()
  */
 void TopLevel::restoreCurrentState(const QString& postfix)
 {
-    _partSelection->restoreOptions(QString("PartOverview"), postfix);
-    _multiView->restoreLayout(QString("MainView"), postfix);
-    _multiView->restoreOptions(QString("MainView"), postfix);
+    _partSelection->restoreOptions(QStringLiteral("PartOverview"), postfix);
+    _multiView->restoreLayout(QStringLiteral("MainView"), postfix);
+    _multiView->restoreOptions(QStringLiteral("MainView"), postfix);
 
     _taSplit->setChecked(_multiView->childCount()>1);
     _taSplitDir->setEnabled(_multiView->childCount()>1);
@@ -264,13 +264,13 @@ void TopLevel::restoreCurrentState(const QString& postfix)
 void TopLevel::createDocks()
 {
   _partDock = new QDockWidget(this);
-  _partDock->setObjectName("part dock");
+  _partDock->setObjectName(QStringLiteral("part dock"));
   _partDock->setWindowTitle(i18n("Parts Overview"));
   _partSelection = new PartSelection(this, _partDock);
   _partDock->setWidget(_partSelection);
 
   _stackDock = new QDockWidget(this);
-  _stackDock->setObjectName("stack dock");
+  _stackDock->setObjectName(QStringLiteral("stack dock"));
   // Why is the caption only correct with a close button?
   _stackSelection = new StackSelection(_stackDock);
   _stackDock->setWidget(_stackSelection);
@@ -289,7 +289,7 @@ void TopLevel::createDocks()
           this, SLOT(setTraceItemDelayed(CostItem*)));
 
   _functionDock = new QDockWidget(this);
-  _functionDock->setObjectName("function dock");
+  _functionDock->setObjectName(QStringLiteral("function dock"));
   _functionDock->setWindowTitle(i18n("Flat Profile"));
   _functionSelection = new FunctionSelection(this, _functionDock);
   _functionDock->setWidget(_functionSelection);
@@ -373,44 +373,44 @@ void TopLevel::createLayoutActions()
   QString hint;
   QAction* action;
 
-  action = actionCollection()->addAction( "layout_duplicate" );
+  action = actionCollection()->addAction( QStringLiteral("layout_duplicate") );
   action->setText( i18n( "&Duplicate" ) );
-  connect(action, SIGNAL(triggered(bool)), SLOT(layoutDuplicate()));
+  connect(action, &QAction::triggered, this, &TopLevel::layoutDuplicate);
   action->setShortcuts(KShortcut(Qt::CTRL+Qt::Key_Plus));
   hint = i18n("<b>Duplicate Current Layout</b>"
               "<p>Make a copy of the current layout.</p>");
   action->setWhatsThis( hint );
 
-  action = actionCollection()->addAction( "layout_remove" );
+  action = actionCollection()->addAction( QStringLiteral("layout_remove") );
   action->setText( i18n( "&Remove" ) );
-  connect(action, SIGNAL(triggered(bool) ), SLOT(layoutRemove()));
+  connect(action, &QAction::triggered, this, &TopLevel::layoutRemove);
   hint = i18n("<b>Remove Current Layout</b>"
               "<p>Delete current layout and make the previous active.</p>");
   action->setWhatsThis( hint );
 
-  action = actionCollection()->addAction( "layout_next" );
+  action = actionCollection()->addAction( QStringLiteral("layout_next") );
   action->setText( i18n( "&Go to Next" ) );
-  connect(action, SIGNAL(triggered(bool)), SLOT(layoutNext()));
+  connect(action, &QAction::triggered, this, &TopLevel::layoutNext);
   action->setShortcuts(KShortcut(Qt::CTRL+Qt::Key_Right));
   hint = i18n("Go to Next Layout");
   action->setWhatsThis( hint );
 
-  action = actionCollection()->addAction( "layout_previous" );
+  action = actionCollection()->addAction( QStringLiteral("layout_previous") );
   action->setText( i18n( "&Go to Previous" ) );
-  connect(action, SIGNAL(triggered(bool)), SLOT(layoutPrevious()));
+  connect(action, &QAction::triggered, this, &TopLevel::layoutPrevious);
   action->setShortcuts(KShortcut(Qt::CTRL+Qt::Key_Left));
   hint = i18n("Go to Previous Layout");
   action->setWhatsThis( hint );
 
-  action = actionCollection()->addAction( "layout_restore" );
+  action = actionCollection()->addAction( QStringLiteral("layout_restore") );
   action->setText( i18n( "&Restore to Default" ) );
-  connect(action, SIGNAL(triggered(bool) ), SLOT(layoutRestore()));
+  connect(action, &QAction::triggered, this, &TopLevel::layoutRestore);
   hint = i18n("Restore Layouts to Default");
   action->setWhatsThis( hint );
 
-  action = actionCollection()->addAction( "layout_save" );
+  action = actionCollection()->addAction( QStringLiteral("layout_save") );
   action->setText( i18n( "&Save as Default" ) );
-  connect(action, SIGNAL(triggered(bool) ), SLOT(layoutSave()));
+  connect(action, &QAction::triggered, this, &TopLevel::layoutSave);
   hint = i18n("Save Layouts as Default");
   action->setWhatsThis( hint );
 }
@@ -425,25 +425,25 @@ void TopLevel::createMiscActions()
   hint = i18n("<b>New</b><p>Open new empty KCachegrind window.</p>");
   action->setWhatsThis( hint );
 
-  action = actionCollection()->addAction( "file_add" );
+  action = actionCollection()->addAction( QStringLiteral("file_add") );
   action->setText( i18n( "&Add..." ) );
   connect(action, SIGNAL(triggered(bool) ), SLOT(add()));
   hint = i18n("<b>Add Profile Data</b>"
               "<p>This opens an additional profile data file in the current window.</p>");
   action->setWhatsThis( hint );
 
-  action = actionCollection()->addAction( "reload" );
-  action->setIcon( QIcon::fromTheme("view-refresh") );
+  action = actionCollection()->addAction( QStringLiteral("reload") );
+  action->setIcon( QIcon::fromTheme(QStringLiteral("view-refresh")) );
   action->setText( i18nc("Reload a document", "&Reload" ) );
-  connect(action, SIGNAL(triggered(bool) ), SLOT( reload() ));
+  connect(action, &QAction::triggered, this, &TopLevel::reload);
   action->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Reload));
   hint = i18n("<b>Reload Profile Data</b>"
               "<p>This loads any new created parts, too.</p>");
   action->setWhatsThis( hint );
 
-  action = actionCollection()->addAction( "export" );
+  action = actionCollection()->addAction( QStringLiteral("export") );
   action->setText( i18n( "&Export Graph" ) );
-  connect(action, SIGNAL(triggered(bool) ), SLOT(exportGraph()));
+  connect(action, &QAction::triggered, this, &TopLevel::exportGraph);
 
   hint = i18n("<b>Export Call Graph</b>"
               "<p>Generates a file with extension .dot for the tools "
@@ -451,10 +451,10 @@ void TopLevel::createMiscActions()
   action->setWhatsThis( hint );
 
 
-  _taDump = actionCollection()->add<KToggleAction>( "dump" );
-  _taDump->setIcon( QIcon::fromTheme("edit-redo") );
+  _taDump = actionCollection()->add<KToggleAction>( QStringLiteral("dump") );
+  _taDump->setIcon( QIcon::fromTheme(QStringLiteral("edit-redo")) );
   _taDump->setText( i18n( "&Force Dump" ) );
-  connect(_taDump, SIGNAL(triggered(bool) ), SLOT( forceTrace() ));
+  connect(_taDump, &QAction::triggered, this, &TopLevel::forceTrace);
   _taDump->setShortcut(QKeySequence::Undo);
   hint = i18n("<b>Force Dump</b>"
               "<p>This forces a dump for a Callgrind profile run "
@@ -492,25 +492,25 @@ void TopLevel::createMiscActions()
   KStandardAction::showStatusbar(this,
                             SLOT(toggleStatusBar()), actionCollection());
 
-  _partDockShown = actionCollection()->add<KToggleAction>("settings_show_partdock");
+  _partDockShown = actionCollection()->add<KToggleAction>(QStringLiteral("settings_show_partdock"));
   _partDockShown->setText(i18n("Parts Overview"));
-  connect(_partDockShown, SIGNAL(triggered(bool) ), SLOT(togglePartDock()));
+  connect(_partDockShown, &QAction::triggered, this, &TopLevel::togglePartDock);
 
   hint = i18n("Show/Hide the Parts Overview Dockable");
   _partDockShown->setToolTip( hint );
   _partDockShown->setWhatsThis( hint );
 
-  _stackDockShown = actionCollection()->add<KToggleAction>("settings_show_stackdock");
+  _stackDockShown = actionCollection()->add<KToggleAction>(QStringLiteral("settings_show_stackdock"));
   _stackDockShown->setText(i18n("Call Stack"));
-  connect(_stackDockShown, SIGNAL(triggered(bool) ), SLOT(toggleStackDock()));
+  connect(_stackDockShown, &QAction::triggered, this, &TopLevel::toggleStackDock);
 
   hint = i18n("Show/Hide the Call Stack Dockable");
   _stackDockShown->setToolTip( hint );
   _stackDockShown->setWhatsThis( hint );
 
-  _functionDockShown = actionCollection()->add<KToggleAction>("settings_show_profiledock");
+  _functionDockShown = actionCollection()->add<KToggleAction>(QStringLiteral("settings_show_profiledock"));
   _functionDockShown->setText(i18n("Function Profile"));
-  connect(_functionDockShown, SIGNAL(triggered(bool) ), SLOT(toggleFunctionDock()));
+  connect(_functionDockShown, &QAction::triggered, this, &TopLevel::toggleFunctionDock);
 
   hint = i18n("Show/Hide the Function Profile Dockable");
   _functionDockShown->setToolTip( hint );
@@ -525,18 +525,18 @@ void TopLevel::createMiscActions()
   _dumpDockShown->setWhatsThis( hint );
 #endif
 
-  _taPercentage = actionCollection()->add<KToggleAction>("view_percentage");
-  _taPercentage->setIcon(QIcon::fromTheme("percent"));
+  _taPercentage = actionCollection()->add<KToggleAction>(QStringLiteral("view_percentage"));
+  _taPercentage->setIcon(QIcon::fromTheme(QStringLiteral("percent")));
   _taPercentage->setText(i18n("Relative"));
-  connect(_taPercentage, SIGNAL(triggered(bool) ), SLOT(togglePercentage()));
+  connect(_taPercentage, &QAction::triggered, this, &TopLevel::togglePercentage);
   hint = i18n("Show relative instead of absolute costs");
   _taPercentage->setToolTip( hint );
   _taPercentage->setWhatsThis( hint );
 
-  _taExpanded = actionCollection()->add<KToggleAction>("view_expanded");
-  _taExpanded->setIcon(QIcon::fromTheme("move"));
+  _taExpanded = actionCollection()->add<KToggleAction>(QStringLiteral("view_expanded"));
+  _taExpanded->setIcon(QIcon::fromTheme(QStringLiteral("move")));
   _taExpanded->setText(i18n("Relative to Parent"));
-  connect(_taExpanded, SIGNAL(triggered(bool) ), SLOT(toggleExpanded()));
+  connect(_taExpanded, &QAction::triggered, this, &TopLevel::toggleExpanded);
 
   hint = i18n("Show percentage costs relative to parent");
   _taExpanded->setToolTip( hint );
@@ -557,10 +557,10 @@ void TopLevel::createMiscActions()
               "<p>(*) Only if function grouping is switched on (e.g. ELF object grouping).</p>");
   _taExpanded->setWhatsThis( hint );
 
-  _taCycles = actionCollection()->add<KToggleAction>("view_cycles");
-  _taCycles->setIcon(QIcon::fromTheme("edit-undo"));
+  _taCycles = actionCollection()->add<KToggleAction>(QStringLiteral("view_cycles"));
+  _taCycles->setIcon(QIcon::fromTheme(QStringLiteral("edit-undo")));
   _taCycles->setText(i18n( "Cycle Detection" ));
-  connect(_taCycles, SIGNAL(triggered(bool) ), SLOT( toggleCycles() ));
+  connect(_taCycles, &QAction::triggered, this, &TopLevel::toggleCycles);
 
   hint = i18n("<b>Detect recursive cycles</b>"
               "<p>If this is switched off, the treemap drawing will show "
@@ -576,10 +576,10 @@ void TopLevel::createMiscActions()
               "is the option to switch this off.</p>");
   _taCycles->setWhatsThis( hint );
 
-  _taHideTemplates = actionCollection()->add<KToggleAction>("hide_templates");
-  _taHideTemplates->setIcon(QIcon::fromTheme("hidetemplates"));
+  _taHideTemplates = actionCollection()->add<KToggleAction>(QStringLiteral("hide_templates"));
+  _taHideTemplates->setIcon(QIcon::fromTheme(QStringLiteral("hidetemplates")));
   _taHideTemplates->setText(i18n( "Shorten Templates" ));
-  connect(_taHideTemplates, SIGNAL(triggered(bool) ), SLOT( toggleHideTemplates() ));
+  connect(_taHideTemplates, &QAction::triggered, this, &TopLevel::toggleHideTemplates);
   _taHideTemplates->setToolTip(i18n( "Hide Template Parameters in C++ Symbols" ));
   hint = i18n("<b>Hide Template Parameters in C++ Symbols</b>"
               "<p>If this is switched on, every symbol displayed will have "
@@ -616,14 +616,14 @@ void TopLevel::createMiscActions()
   action->setToolTip( hint );
   action->setWhatsThis( hint );
 #else
-  _paUp = new KToolBarPopupAction( QIcon::fromTheme( "go-up" ), i18n( "&Up" ), this );
+  _paUp = new KToolBarPopupAction( QIcon::fromTheme( QStringLiteral("go-up") ), i18n( "&Up" ), this );
   _paUp->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Up) );
-  connect( _paUp, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserUp() ) );
-  actionCollection()->addAction( "go_up", _paUp );
-  connect( _paUp->menu(), SIGNAL( aboutToShow() ),
-	    this, SLOT( upAboutToShow() ) );
-  connect( _paUp->menu(), SIGNAL( triggered( QAction* ) ),
-	    this, SLOT( upTriggered( QAction* ) ) );
+  connect( _paUp, &QAction::triggered, _stackSelection, &StackSelection::browserUp );
+  actionCollection()->addAction( QStringLiteral("go_up"), _paUp );
+  connect( _paUp->menu(), &QMenu::aboutToShow,
+	    this, &TopLevel::upAboutToShow );
+  connect( _paUp->menu(), &QMenu::triggered,
+	    this, &TopLevel::upTriggered );
   hint = i18n("<b>Go Up</b>"
               "<p>Go to last selected caller of current function. "
               "If no caller was visited, use that with highest cost.</p>");
@@ -633,30 +633,30 @@ void TopLevel::createMiscActions()
   QPair< KGuiItem, KGuiItem > backForward = KStandardGuiItem::backAndForward();
   _paBack = new KToolBarPopupAction( backForward.first.icon(), backForward.first.text(), this );
   _paBack->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Left) );
-  connect( _paBack, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserBack() ) );
-  actionCollection()->addAction( "go_back", _paBack );
-  connect( _paBack->menu(), SIGNAL( aboutToShow() ),
-           this, SLOT( backAboutToShow() ) );
-  connect( _paBack->menu(), SIGNAL( triggered( QAction* ) ),
-           this, SLOT( backTriggered( QAction* ) ) );
+  connect( _paBack, &QAction::triggered, _stackSelection, &StackSelection::browserBack );
+  actionCollection()->addAction( QStringLiteral("go_back"), _paBack );
+  connect( _paBack->menu(), &QMenu::aboutToShow,
+           this, &TopLevel::backAboutToShow );
+  connect( _paBack->menu(), &QMenu::triggered,
+           this, &TopLevel::backTriggered );
   hint = i18n("Go back in function selection history");
   _paBack->setToolTip( hint );
   _paBack->setWhatsThis( hint );
 
   _paForward = new KToolBarPopupAction( backForward.second.icon(), backForward.second.text(), this );
   _paForward->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Right) );
-  connect( _paForward, SIGNAL( triggered( bool ) ), _stackSelection, SLOT( browserForward() ) );
-  actionCollection()->addAction( "go_forward", _paForward );
-  connect( _paForward->menu(), SIGNAL( aboutToShow() ),
-           this, SLOT( forwardAboutToShow() ) );
-  connect( _paForward->menu(), SIGNAL( triggered( QAction* ) ),
-           this, SLOT( forwardTriggered( QAction* ) ) );
+  connect( _paForward, &QAction::triggered, _stackSelection, &StackSelection::browserForward );
+  actionCollection()->addAction( QStringLiteral("go_forward"), _paForward );
+  connect( _paForward->menu(), &QMenu::aboutToShow,
+           this, &TopLevel::forwardAboutToShow );
+  connect( _paForward->menu(), &QMenu::triggered,
+           this, &TopLevel::forwardTriggered );
   hint = i18n("Go forward in function selection history");
   _paForward->setToolTip( hint );
   _paForward->setWhatsThis( hint );
 #endif
 
-  _saCost = actionCollection()->add<KSelectAction>("view_cost_type");
+  _saCost = actionCollection()->add<KSelectAction>(QStringLiteral("view_cost_type"));
   _saCost->setText(i18n("Primary Event Type"));
   hint = i18n("Select primary event type of costs");
   _saCost->setComboWidth(300);
@@ -671,7 +671,7 @@ void TopLevel::createMiscActions()
   // the semantic is not known to translators. Instead, we use a
   // nontranslatable string now...
   QStringList dummyItems;
-  dummyItems << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+  dummyItems << QStringLiteral("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
   _saCost->setItems(dummyItems);
 
   // cost types are dependent on loaded data, thus KSelectAction
@@ -679,7 +679,7 @@ void TopLevel::createMiscActions()
   connect( _saCost, SIGNAL(triggered(const QString&)),
            this, SLOT(eventTypeSelected(const QString&)));
 
-  _saCost2 = actionCollection()->add<KSelectAction>("view_cost_type2");
+  _saCost2 = actionCollection()->add<KSelectAction>(QStringLiteral("view_cost_type2"));
   _saCost2->setText(i18n("Secondary Event Type"));
   hint = i18n("Select secondary event type for cost e.g. shown in annotations");
   _saCost2->setComboWidth(300);
@@ -690,7 +690,7 @@ void TopLevel::createMiscActions()
   connect( _saCost2, SIGNAL(triggered(const QString&)),
            this, SLOT(eventType2Selected(const QString&)));
 
-  saGroup = actionCollection()->add<KSelectAction>("view_group_type");
+  saGroup = actionCollection()->add<KSelectAction>(QStringLiteral("view_group_type"));
   saGroup->setText(i18n("Grouping"));
 
   hint = i18n("Select how functions are grouped into higher level cost items");
@@ -709,19 +709,19 @@ void TopLevel::createMiscActions()
   connect( saGroup, SIGNAL(triggered(int)),
            this, SLOT(groupTypeSelected(int)));
 
-  _taSplit = actionCollection()->add<KToggleAction>("view_split");
-  _taSplit->setIcon(QIcon::fromTheme("view-split-left-right"));
+  _taSplit = actionCollection()->add<KToggleAction>(QStringLiteral("view_split"));
+  _taSplit->setIcon(QIcon::fromTheme(QStringLiteral("view-split-left-right")));
   _taSplit->setText(i18n("Split"));
-  connect(_taSplit, SIGNAL(triggered(bool) ), SLOT(splitSlot()));
+  connect(_taSplit, &QAction::triggered, this, &TopLevel::splitSlot);
 
   hint = i18n("Show two information panels");
   _taSplit->setToolTip( hint );
   _taSplit->setWhatsThis( hint );
 
- _taSplitDir = actionCollection()->add<KToggleAction>("view_split_dir");
- _taSplitDir->setIcon(QIcon::fromTheme("view-split-left-right"));
+ _taSplitDir = actionCollection()->add<KToggleAction>(QStringLiteral("view_split_dir"));
+ _taSplitDir->setIcon(QIcon::fromTheme(QStringLiteral("view-split-left-right")));
  _taSplitDir->setText(i18n("Split Horizontal"));
- connect(_taSplitDir, SIGNAL(triggered(bool) ), SLOT(splitDirSlot()));
+ connect(_taSplitDir, &QAction::triggered, this, &TopLevel::splitDirSlot);
 
   hint = i18n("Change Split Orientation when main window is split.");
   _taSplitDir->setToolTip( hint );
@@ -960,7 +960,7 @@ void TopLevel::load(QString file)
   if (file.isEmpty()) return;
 
   bool showError = true;
-  if (file == QString("."))
+  if (file == QStringLiteral("."))
       showError = false;
 
   if (_data && _data->parts().count()>0) {
@@ -1024,13 +1024,13 @@ void TopLevel::add(QString file)
 void TopLevel::loadDelayed(QString file)
 {
   _loadFilesDelayed << file;
-  QTimer::singleShot(0, this, SLOT(loadTraceDelayed()));
+  QTimer::singleShot(0, this, &TopLevel::loadTraceDelayed);
 }
 
 void TopLevel::loadDelayed(QStringList files)
 {
     _loadFilesDelayed << files;
-    QTimer::singleShot(0, this, SLOT(loadTraceDelayed()));
+    QTimer::singleShot(0, this, &TopLevel::loadTraceDelayed);
 }
 
 void TopLevel::loadTraceDelayed()
@@ -1060,7 +1060,7 @@ void TopLevel::reload()
 {
   QString trace;
   if (!_data || _data->parts().count()==0)
-    trace = "."; // open first trace found in dir
+    trace = QStringLiteral("."); // open first trace found in dir
   else
     trace = _data->traceName();
 
@@ -1072,13 +1072,13 @@ void TopLevel::exportGraph()
 {
   if (!_data || !_function) return;
 
-  QString n = QString("callgraph.dot");
+  QString n = QStringLiteral("callgraph.dot");
   GraphExporter ge(_data, _function, _eventType, _groupType, n);
   ge.writeDot();
 
 #ifdef Q_OS_UNIX
   // shell commands only work in UNIX
-  QString cmd = QString("(dot %1 -Tps > %2.ps; xdg-open %3.ps)&")
+  QString cmd = QStringLiteral("(dot %1 -Tps > %2.ps; xdg-open %3.ps)&")
                 .arg(n).arg(n).arg(n);
   if (::system(QFile::encodeName( cmd ))<0)
 	qDebug() << "TopLevel::exportGraph: can not run " << cmd;
@@ -1388,7 +1388,7 @@ void TopLevel::setTraceItemDelayed(CostItem* i)
   _traceItemDelayed = i;
   _lastSender = sender();
 
-  qDebug() << "Selected " << (i ? i->prettyName() : "(none)");
+  qDebug() << "Selected " << (i ? i->prettyName() : QStringLiteral("(none)"));
 
 #if TRACE_UPDATES
   qDebug("TopLevel::setTraceItemDelayed(%s), sender %s",
@@ -1643,7 +1643,7 @@ QString TopLevel::traceKey()
   for (int l=0;l<name.length();l++)
     if (name[l].isLetterOrNumber()) key += name[l];
 
-  return QString("-") + key;
+  return QStringLiteral("-") + key;
 }
 
 
@@ -1652,19 +1652,19 @@ void TopLevel::restoreTraceTypes()
     QString key = traceKey();
     QString groupType, eventType, eventType2;
 
-    ConfigGroup* pConfig = ConfigStorage::group("TracePositions");
-    groupType = pConfig->value(QString("GroupType%1").arg(key),QString()).toString();
-    eventType = pConfig->value(QString("EventType%1").arg(key),QString()).toString();
-    eventType2 = pConfig->value(QString("EventType2%1").arg(key),QString()).toString();
+    ConfigGroup* pConfig = ConfigStorage::group(QStringLiteral("TracePositions"));
+    groupType = pConfig->value(QStringLiteral("GroupType%1").arg(key),QString()).toString();
+    eventType = pConfig->value(QStringLiteral("EventType%1").arg(key),QString()).toString();
+    eventType2 = pConfig->value(QStringLiteral("EventType2%1").arg(key),QString()).toString();
     delete pConfig;
 
-    ConfigGroup* cConfig = ConfigStorage::group("CurrentState");
+    ConfigGroup* cConfig = ConfigStorage::group(QStringLiteral("CurrentState"));
     if (groupType.isEmpty())
-	groupType = cConfig->value("GroupType",QString()).toString();
+	groupType = cConfig->value(QStringLiteral("GroupType"),QString()).toString();
     if (eventType.isEmpty())
-	eventType = cConfig->value("EventType",QString()).toString();
+	eventType = cConfig->value(QStringLiteral("EventType"),QString()).toString();
     if (eventType2.isEmpty())
-	eventType2 = cConfig->value("EventType2",QString()).toString();
+	eventType2 = cConfig->value(QStringLiteral("EventType2"),QString()).toString();
     delete cConfig;
 
     setGroupType(groupType);
@@ -1675,9 +1675,9 @@ void TopLevel::restoreTraceTypes()
     if (!_eventType && !_saCost->items().isEmpty())
 	eventTypeSelected(_saCost->items().first());
 
-    ConfigGroup* aConfig = ConfigStorage::group("Layouts");
-    _layoutCount = aConfig->value(QString("Count%1").arg(key), 0).toInt();
-    _layoutCurrent = aConfig->value(QString("Current%1").arg(key), 0).toInt();
+    ConfigGroup* aConfig = ConfigStorage::group(QStringLiteral("Layouts"));
+    _layoutCount = aConfig->value(QStringLiteral("Count%1").arg(key), 0).toInt();
+    _layoutCurrent = aConfig->value(QStringLiteral("Current%1").arg(key), 0).toInt();
     delete aConfig;
 
     if (_layoutCount == 0) layoutRestore();
@@ -1698,8 +1698,8 @@ void TopLevel::restoreTraceSettings()
 
   restoreCurrentState(key);
 
-  ConfigGroup* pConfig = ConfigStorage::group("TracePositions");
-  QString group = pConfig->value(QString("Group%1").arg(key),QString()).toString();
+  ConfigGroup* pConfig = ConfigStorage::group(QStringLiteral("TracePositions"));
+  QString group = pConfig->value(QStringLiteral("Group%1").arg(key),QString()).toString();
   delete pConfig;
   if (!group.isEmpty()) setGroup(group);
 
@@ -1708,7 +1708,7 @@ void TopLevel::restoreTraceSettings()
   // to restore last active item...
   if (!_traceItemDelayed) {
     // function not available any more.. try with "main"
-    if (!setFunction("main"))
+    if (!setFunction(QStringLiteral("main")))
       _functionSelection->selectTopFunction();
   }
 }
@@ -1719,7 +1719,7 @@ void TopLevel::restoreTraceSettings()
 void TopLevel::layoutDuplicate()
 {
     // save current and allocate a new slot
-    _multiView->saveLayout(QString("Layout%1-MainView").arg(_layoutCurrent),
+    _multiView->saveLayout(QStringLiteral("Layout%1-MainView").arg(_layoutCurrent),
 			   traceKey());
     _layoutCurrent = _layoutCount;
     _layoutCount++;
@@ -1737,7 +1737,7 @@ void TopLevel::layoutRemove()
     if (_layoutCurrent == from) { _layoutCurrent--; from--; }
 
     // restore from last and decrement count
-    _multiView->restoreLayout(QString("Layout%1-MainView").arg(from),
+    _multiView->restoreLayout(QStringLiteral("Layout%1-MainView").arg(from),
 			      traceKey());
     _layoutCount--;
 
@@ -1749,7 +1749,7 @@ void TopLevel::layoutNext()
     if (_layoutCount <2) return;
 
     QString key = traceKey();
-    QString layoutPrefix = QString("Layout%1-MainView");
+    QString layoutPrefix = QStringLiteral("Layout%1-MainView");
 
     _multiView->saveLayout(layoutPrefix.arg(_layoutCurrent), key);
     _layoutCurrent++;
@@ -1765,7 +1765,7 @@ void TopLevel::layoutPrevious()
     if (_layoutCount <2) return;
 
     QString key = traceKey();
-    QString layoutPrefix = QString("Layout%1-MainView");
+    QString layoutPrefix = QStringLiteral("Layout%1-MainView");
 
     _multiView->saveLayout(layoutPrefix.arg(_layoutCurrent), key);
     _layoutCurrent--;
@@ -1779,7 +1779,7 @@ void TopLevel::layoutPrevious()
 void TopLevel::layoutSave()
 {
     QString key = traceKey();
-    QString layoutPrefix = QString("Layout%1-MainView");
+    QString layoutPrefix = QStringLiteral("Layout%1-MainView");
 
     _multiView->saveLayout(layoutPrefix.arg(_layoutCurrent), key);
 
@@ -1791,9 +1791,9 @@ void TopLevel::layoutSave()
     // restore the previously saved current layout
     _multiView->restoreLayout(layoutPrefix.arg(_layoutCurrent), key);
 
-    ConfigGroup* layoutConfig = ConfigStorage::group("Layouts");
-    layoutConfig->setValue("DefaultCount", _layoutCount);
-    layoutConfig->setValue("DefaultCurrent", _layoutCurrent);
+    ConfigGroup* layoutConfig = ConfigStorage::group(QStringLiteral("Layouts"));
+    layoutConfig->setValue(QStringLiteral("DefaultCount"), _layoutCount);
+    layoutConfig->setValue(QStringLiteral("DefaultCurrent"), _layoutCurrent);
     delete layoutConfig;
 }
 
@@ -1808,7 +1808,7 @@ void TopLevel::layoutRestore()
 	return;
     }
 
-    QString layoutPrefix = QString("Layout%1-MainView");
+    QString layoutPrefix = QStringLiteral("Layout%1-MainView");
     _multiView->restoreLayout( layoutPrefix.arg(_layoutCurrent), traceKey());
 
     updateLayoutActions();
@@ -1819,13 +1819,13 @@ void TopLevel::updateLayoutActions()
 {
   QAction* ka;
 
-  ka = actionCollection()->action("layout_next");
+  ka = actionCollection()->action(QStringLiteral("layout_next"));
   if (ka) ka->setEnabled(_layoutCount>1);
 
-  ka = actionCollection()->action("layout_previous");
+  ka = actionCollection()->action(QStringLiteral("layout_previous"));
   if (ka) ka->setEnabled(_layoutCount>1);
 
-  ka = actionCollection()->action("layout_remove");
+  ka = actionCollection()->action(QStringLiteral("layout_remove"));
   if (ka) ka->setEnabled(_layoutCount>1);
 
   _statusbar->showMessage(i18n("Layout Count: %1", _layoutCount), 1000);
@@ -1839,7 +1839,7 @@ void TopLevel::updateStatusBar()
     return;
   }
 
-  QString status = QString("%1 [%2] - ")
+  QString status = QStringLiteral("%1 [%2] - ")
                    .arg(_data->shortTraceName())
                    .arg(_data->activePartRange());
 
@@ -1975,7 +1975,7 @@ void TopLevel::activePartsChangedSlot(const TracePartList& list)
 
 void TopLevel::partsHideSelectedSlotDelayed()
 {
-  QTimer::singleShot( 0, this, SLOT(partsHideSelectedSlot()) );
+  QTimer::singleShot( 0, this, &TopLevel::partsHideSelectedSlot );
 }
 
 // this puts selected parts into hidden list,
@@ -2006,7 +2006,7 @@ void TopLevel::partsHideSelectedSlot()
 
 void TopLevel::partsUnhideAllSlotDelayed()
 {
-  QTimer::singleShot( 0, this, SLOT(partsUnhideAllSlot()) );
+  QTimer::singleShot( 0, this, &TopLevel::partsUnhideAllSlot );
 }
 
 // this unhides all hidden parts. Does NOT change selection
@@ -2051,13 +2051,13 @@ void TopLevel::forceTrace()
     qDebug("TopLevel::forceTrace: run 'callgrind_control -d %d'", pid);
 
     _ccProcess = new QProcess(this);
-    connect(_ccProcess, SIGNAL(readyReadStandardOutput()),
-            SLOT(ccReadOutput()));
+    connect(_ccProcess, &QProcess::readyReadStandardOutput,
+            this, &TopLevel::ccReadOutput);
     connect(_ccProcess, SIGNAL(error(QProcess::ProcessError)),
             SLOT(ccError(QProcess::ProcessError)));
     connect(_ccProcess, SIGNAL(finished(int,QProcess::ExitStatus)),
             SLOT(ccExit(int,QProcess::ExitStatus)));
-    _ccProcess->start(QString("callgrind_control -d %1").arg(pid),
+    _ccProcess->start(QStringLiteral("callgrind_control -d %1").arg(pid),
                       QIODevice::ReadOnly);
 }
 
@@ -2108,7 +2108,7 @@ void TopLevel::ccExit(int exitCode, QProcess::ExitStatus s)
 
     // FIXME: Are we sure that file is completely
     //        dumped after waiting one second?
-    QTimer::singleShot( 1000, this, SLOT(reload()) );
+    QTimer::singleShot( 1000, this, &TopLevel::reload );
 }
 
 void TopLevel::forwardAboutToShow()

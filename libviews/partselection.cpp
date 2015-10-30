@@ -89,14 +89,14 @@ PartSelection::PartSelection( TopLevelBase* top,
 
   connect(_partAreaWidget, SIGNAL(selectionChanged()),
           this, SLOT(selectionChanged()));
-  connect(_partAreaWidget, SIGNAL(currentChanged(TreeMapItem*, bool)),
-          this, SLOT(currentChangedSlot(TreeMapItem*, bool)));
-  connect(_partAreaWidget, SIGNAL(doubleClicked(TreeMapItem*)),
-          this, SLOT(doubleClicked(TreeMapItem*)));
+  connect(_partAreaWidget, &TreeMapWidget::currentChanged,
+          this, &PartSelection::currentChangedSlot);
+  connect(_partAreaWidget, &TreeMapWidget::doubleClicked,
+          this, &PartSelection::doubleClicked);
   connect(_partAreaWidget,
-          SIGNAL(contextMenuRequested(TreeMapItem*,const QPoint &)),
+          &TreeMapWidget::contextMenuRequested,
           this,
-          SLOT(contextMenuRequested(TreeMapItem*,const QPoint &)));
+          &PartSelection::contextMenuRequested);
 
   setWhatsThis(whatsThis());
 }
@@ -371,7 +371,7 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
 	    str = tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(ni->text(0)));
 	    a = popup.addAction(str);
 	    a->setData(QVariant::fromValue( (void*)ni ));
-	    connect(a, SIGNAL(triggered()), this, SLOT(itemSelected()));
+	    connect(a, &QAction::triggered, this, &PartSelection::itemSelected);
 	    ni = ni->parent();
 	}
     }
@@ -484,39 +484,39 @@ void PartSelection::restoreOptions(const QString& prefix, const QString& postfix
 {
     ConfigGroup* g = ConfigStorage::group(prefix, postfix);
 
-    QString pmode = g->value("PartitionMode",
-			     QString(DEFAULT_PARTITIONMODE)).toString();
-    if (pmode == "Inclusive")
+    QString pmode = g->value(QStringLiteral("PartitionMode"),
+			     QStringLiteral(DEFAULT_PARTITIONMODE)).toString();
+    if (pmode == QLatin1String("Inclusive"))
 	_partAreaWidget->setVisualization(PartAreaWidget::Inclusive);
     else
 	_partAreaWidget->setVisualization(PartAreaWidget::Partitioning);
 
-    _diagramMode = g->value("DiagramMode", DEFAULT_DIAGRAMMODE).toBool();
+    _diagramMode = g->value(QStringLiteral("DiagramMode"), DEFAULT_DIAGRAMMODE).toBool();
     _partAreaWidget->setTransparent(2,_diagramMode);
 
-    _drawFrames = g->value("DrawFrames", DEFAULT_DRAWFRAMES).toBool();
+    _drawFrames = g->value(QStringLiteral("DrawFrames"), DEFAULT_DRAWFRAMES).toBool();
     _partAreaWidget->drawFrame(2,_drawFrames);
     _partAreaWidget->drawFrame(3,_drawFrames);
 
-    showInfo(g->value("ShowInfo", DEFAULT_SHOWINFO).toBool());
+    showInfo(g->value(QStringLiteral("ShowInfo"), DEFAULT_SHOWINFO).toBool());
 
-    bool enable = g->value("FunctionZoom", DEFAULT_FUNCTIONZOOM).toBool();
+    bool enable = g->value(QStringLiteral("FunctionZoom"), DEFAULT_FUNCTIONZOOM).toBool();
     _partAreaWidget->setZoomFunction(enable);
 
-    int levels = g->value("CalleeLevels", DEFAULT_CALLEELEVELS).toInt();
+    int levels = g->value(QStringLiteral("CalleeLevels"), DEFAULT_CALLEELEVELS).toInt();
     _partAreaWidget->setCallLevels(levels);
 
-    enable = g->value("DrawName", DEFAULT_DRAWNAME).toBool();
+    enable = g->value(QStringLiteral("DrawName"), DEFAULT_DRAWNAME).toBool();
     _partAreaWidget->setFieldVisible(0, enable);
 
-    enable = g->value("DrawCost", DEFAULT_DRAWCOST).toBool();
+    enable = g->value(QStringLiteral("DrawCost"), DEFAULT_DRAWCOST).toBool();
     _partAreaWidget->setFieldVisible(1, enable);
 
-    enable = g->value("ForceStrings", DEFAULT_FORCESTRINGS).toBool();
+    enable = g->value(QStringLiteral("ForceStrings"), DEFAULT_FORCESTRINGS).toBool();
     _partAreaWidget->setFieldForced(0, enable);
     _partAreaWidget->setFieldForced(1, enable);
 
-    enable = g->value("AllowRotation", DEFAULT_ALLOWROTATION).toBool();
+    enable = g->value(QStringLiteral("AllowRotation"), DEFAULT_ALLOWROTATION).toBool();
     _partAreaWidget->setAllowRotation(enable);
 
     delete g;
@@ -528,26 +528,26 @@ void PartSelection::saveOptions(const QString& prefix, const QString& postfix)
 
     QString mode;
     if (_partAreaWidget->visualization() == PartAreaWidget::Inclusive)
-	mode = "Inclusive";
+	mode = QStringLiteral("Inclusive");
     else
-	mode = "Partitioning";
+	mode = QStringLiteral("Partitioning");
 
-    g->setValue("PartitionMode", mode, QString(DEFAULT_PARTITIONMODE));
-    g->setValue("DiagramMode", _diagramMode, DEFAULT_DIAGRAMMODE);
-    g->setValue("DrawFrames", _drawFrames, DEFAULT_DRAWFRAMES);
-    g->setValue("ShowInfo", _showInfo, DEFAULT_SHOWINFO);
+    g->setValue(QStringLiteral("PartitionMode"), mode, QStringLiteral(DEFAULT_PARTITIONMODE));
+    g->setValue(QStringLiteral("DiagramMode"), _diagramMode, DEFAULT_DIAGRAMMODE);
+    g->setValue(QStringLiteral("DrawFrames"), _drawFrames, DEFAULT_DRAWFRAMES);
+    g->setValue(QStringLiteral("ShowInfo"), _showInfo, DEFAULT_SHOWINFO);
 
-    g->setValue("FunctionZoom",
+    g->setValue(QStringLiteral("FunctionZoom"),
 		_partAreaWidget->zoomFunction(), DEFAULT_FUNCTIONZOOM);
-    g->setValue("CalleeLevels",
+    g->setValue(QStringLiteral("CalleeLevels"),
 		_partAreaWidget->callLevels(), DEFAULT_CALLEELEVELS);
-    g->setValue("DrawName",
+    g->setValue(QStringLiteral("DrawName"),
 		_partAreaWidget->fieldVisible(0), DEFAULT_DRAWNAME);
-    g->setValue("DrawCost",
+    g->setValue(QStringLiteral("DrawCost"),
 		_partAreaWidget->fieldVisible(1), DEFAULT_DRAWCOST);
-    g->setValue("ForceStrings",
+    g->setValue(QStringLiteral("ForceStrings"),
 		_partAreaWidget->fieldForced(0), DEFAULT_FORCESTRINGS);
-    g->setValue("AllowRotation",
+    g->setValue(QStringLiteral("AllowRotation"),
 		_partAreaWidget->allowRotation(), DEFAULT_ALLOWROTATION);
 
     delete g;

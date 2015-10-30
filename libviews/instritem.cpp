@@ -75,7 +75,7 @@ InstrItem::InstrItem(InstrView* iv, QTreeWidget* parent,
   setTextAlignment(1, Qt::AlignRight);
   setTextAlignment(2, Qt::AlignRight);
 
-  if (args == "...")
+  if (args == QLatin1String("..."))
       setText(0, args);
   else
       setText(0, addr.pretty());
@@ -111,7 +111,7 @@ InstrItem::InstrItem(InstrView* iv, QTreeWidgetItem* parent, Addr addr,
   //       fileno, lineno, _lineCall->call()->called()->prettyName().toAscii());
 
   SubCost cc = _instrCall->callCount();
-  QString callStr = "  ";
+  QString callStr = QStringLiteral("  ");
   if (cc==0)
     callStr += QObject::tr("Active call to '%1'")
                .arg(_instrCall->call()->calledName());
@@ -192,7 +192,7 @@ void InstrItem::updateCost()
     QString str;
     QPixmap p;
 
-    QString icon = "edit-undo";
+    QString icon = QStringLiteral("edit-undo");
 #if 0 // TODO
     KIconLoader* loader = KIconLoader::global();
     p= loader->loadIcon(icon, KIconLoader::Small, 0,
@@ -225,7 +225,7 @@ void InstrItem::updateCost()
     double pure  = 100.0 * _pure / total;
 
     if (GlobalConfig::showPercentage())
-      setText(1, QString("%1")
+      setText(1, QStringLiteral("%1")
 	      .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
     else
       setText(1, _pure.pretty());
@@ -244,7 +244,7 @@ void InstrItem::updateCost()
     double pure  = 100.0 * _pure2 / total;
 
     if (GlobalConfig::showPercentage())
-      setText(2, QString("%1")
+      setText(2, QStringLiteral("%1")
 	      .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
     else
       setText(2, _pure2.pretty());

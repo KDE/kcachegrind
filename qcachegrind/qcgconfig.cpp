@@ -47,7 +47,7 @@ void QCGConfigGroup::setValue(const QString& key, const QVariant& value,
 {
     if ((_settings == 0) || _readOnly) return;
 
-    QString fullKey = QString("%1/%2").arg(_prefix).arg(key);
+    QString fullKey = QStringLiteral("%1/%2").arg(_prefix).arg(key);
     if (value == defaultValue)
 	_settings->remove(fullKey);
     else
@@ -59,7 +59,7 @@ QVariant QCGConfigGroup::value(const QString& key,
 {
     if (_settings == 0) return defaultValue;
 
-    QString fullKey = QString("%1/%2").arg(_prefix).arg(key);
+    QString fullKey = QStringLiteral("%1/%2").arg(_prefix).arg(key);
     return _settings->value(fullKey, defaultValue);
 }
 

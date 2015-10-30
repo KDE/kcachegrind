@@ -38,16 +38,16 @@
 int main( int argc, char ** argv )
 {
   QApplication a(argc, argv);
-  KAboutData aboutData("kcachegrind",
+  KAboutData aboutData(QStringLiteral("kcachegrind"),
                        i18n("KCachegrind"),
                        KCACHEGRIND_VERSION,
                        i18n("KDE Frontend for Callgrind/Cachegrind"),
                        KAboutLicense::GPL,
                        i18n("(C) 2002 - 2015"), QString(),
-                       "https://kcachegrind.github.io");
+                       QStringLiteral("https://kcachegrind.github.io"));
   aboutData.addAuthor(i18n("Josef Weidendorfer"),
                       i18n("Author/Maintainer"),
-                      "Josef.Weidendorfer@gmx.de");
+                      QStringLiteral("Josef.Weidendorfer@gmx.de"));
 
   KAboutData::setApplicationData(aboutData);
 
@@ -68,7 +68,7 @@ int main( int argc, char ** argv )
     TopLevel* t;
 
     QCommandLineParser parser;
-    parser.addPositionalArgument("trace", i18n("Show information of this trace"), i18n("[trace...]"));
+    parser.addPositionalArgument(QStringLiteral("trace"), i18n("Show information of this trace"), i18n("[trace...]"));
     parser.addVersionOption();
     parser.addHelpOption();
     aboutData.setupCommandLine(&parser);
@@ -87,11 +87,11 @@ int main( int argc, char ** argv )
       // load trace in current dir
       t = new TopLevel();
       t->show();
-      t->loadDelayed(".");
+      t->loadDelayed(QStringLiteral("."));
     }
   }
 
-  a.connect( &a, SIGNAL( lastWindowClosed() ), &a, SLOT( quit() ) );
+  a.connect( &a, &QGuiApplication::lastWindowClosed, &a, &QCoreApplication::quit );
   int res = a.exec();
 
   // to make leak checking in valgrind happy...

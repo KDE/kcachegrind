@@ -77,10 +77,10 @@ ConfigDialog::ConfigDialog(TraceData* data, QWidget* parent, QString s)
     vbox->addWidget(bbox);
 
     connect(bbox, SIGNAL(accepted()), this, SLOT(accept()));
-    connect(bbox, SIGNAL(rejected()), this, SLOT(reject()));
+    connect(bbox, &QDialogButtonBox::rejected, this, &QDialog::reject);
     connect(_listWidget, SIGNAL(currentTextChanged(QString)),
             this, SLOT(listItemChanged(QString)));
-    connect(&_clearTimer, SIGNAL(timeout()), this, SLOT(clearError()));
+    connect(&_clearTimer, &QTimer::timeout, this, &ConfigDialog::clearError);
 
     addPage(new GeneralSettings(this));
     addPage(new SourceSettings(data, this));
@@ -121,7 +121,7 @@ void ConfigDialog::activate(QString s)
 
     QString page = s;
     _activeSetting.clear();
-    int p = s.indexOf("/");
+    int p = s.indexOf(QStringLiteral("/"));
     if (p>0) {
         page = s.left(p);
         _activeSetting = s.mid(p+1);
@@ -151,11 +151,11 @@ void ConfigDialog::accept()
     foreach(p, _pages)
         if (!p->check(errorMsg, errorItem)) {
             if (!errorMsg.isEmpty()) {
-                errorMsg = QString("<font color=red>%1</color>").arg(errorMsg);
+                errorMsg = QStringLiteral("<font color=red>%1</color>").arg(errorMsg);
                 _errorLabel->setText(errorMsg);
                 _clearTimer.start(5000);
             }
-            activate(QString("%1/%2").arg(p->title(), errorItem));
+            activate(QStringLiteral("%1/%2").arg(p->title(), errorItem));
 	    return;
 	}
 

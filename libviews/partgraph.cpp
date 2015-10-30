@@ -270,7 +270,7 @@ QString PartItem::text(int textNo) const
   if (GlobalConfig::showPercentage()) {
     ProfileCostArray* t = _p->data()->totals();
     double p  = 100.0 * v / t->subCost(ct);
-    return QString("%1 %")
+    return QStringLiteral("%1 %")
       .arg(p, 0, 'f', GlobalConfig::percentPrecision());
   }
   return v.pretty();
@@ -437,7 +437,7 @@ QString SubPartItem::text(int textNo) const
     ProfileCostArray* t = GlobalConfig::showExpanded() ?
 	_partCostItem->part() : _partCostItem->part()->data()->totals();
     double p  = 100.0 * v / t->subCost(ct);
-    return QString("%1 %")
+    return QStringLiteral("%1 %")
       .arg(p, 0, 'f', GlobalConfig::percentPrecision());
   }
   return v.pretty();
