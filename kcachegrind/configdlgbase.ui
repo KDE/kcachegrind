@@ -268,7 +268,7 @@
             </spacer>
            </item>
            <item row="0" column="1">
-            <widget class="KComboBox" name="objectCombo">
+            <widget class="QComboBox" name="objectCombo">
              <property name="minimumSize">
               <size>
                <width>150</width>
@@ -281,14 +281,14 @@
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="KComboBox" name="classCombo">
+            <widget class="QComboBox" name="classCombo">
              <property name="editable">
               <bool>true</bool>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="KComboBox" name="fileCombo">
+            <widget class="QComboBox" name="fileCombo">
              <property name="editable">
               <bool>true</bool>
              </property>
@@ -434,11 +434,6 @@
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>KComboBox</class>
-   <extends>QComboBox</extends>
-   <header>kcombobox.h</header>
-  </customwidget>
   <customwidget>
    <class>KColorButton</class>
    <extends>QPushButton</extends>
