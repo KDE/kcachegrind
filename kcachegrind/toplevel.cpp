@@ -55,7 +55,6 @@
 #include <kfiledialog.h>
 #include <kio/netaccess.h>
 #include <kedittoolbar.h>
-#include <kshortcut.h>
 #include <kshortcutsdialog.h>
 #include <ktip.h>
 #include <kmenu.h>
@@ -376,7 +375,7 @@ void TopLevel::createLayoutActions()
   action = actionCollection()->addAction( QStringLiteral("layout_duplicate") );
   action->setText( i18n( "&Duplicate" ) );
   connect(action, &QAction::triggered, this, &TopLevel::layoutDuplicate);
-  action->setShortcuts(KShortcut(Qt::CTRL+Qt::Key_Plus));
+  action->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Plus));
   hint = i18n("<b>Duplicate Current Layout</b>"
               "<p>Make a copy of the current layout.</p>");
   action->setWhatsThis( hint );
@@ -391,14 +390,14 @@ void TopLevel::createLayoutActions()
   action = actionCollection()->addAction( QStringLiteral("layout_next") );
   action->setText( i18n( "&Go to Next" ) );
   connect(action, &QAction::triggered, this, &TopLevel::layoutNext);
-  action->setShortcuts(KShortcut(Qt::CTRL+Qt::Key_Right));
+  action->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Right));
   hint = i18n("Go to Next Layout");
   action->setWhatsThis( hint );
 
   action = actionCollection()->addAction( QStringLiteral("layout_previous") );
   action->setText( i18n( "&Go to Previous" ) );
   connect(action, &QAction::triggered, this, &TopLevel::layoutPrevious);
-  action->setShortcuts(KShortcut(Qt::CTRL+Qt::Key_Left));
+  action->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Left));
   hint = i18n("Go to Previous Layout");
   action->setWhatsThis( hint );
 
@@ -595,30 +594,12 @@ void TopLevel::createMiscActions()
   KStandardAction::keyBindings(this, SLOT(configureKeys()), actionCollection());
   KStandardAction::configureToolbars(this,SLOT(configureToolbars()),
                                 actionCollection());
-#if 0
-  action = KStandardAction::back(_stackSelection, SLOT(browserBack()),
-                            actionCollection());
-  hint = i18n("Go back in function selection history");
-  action->setToolTip( hint );
-  action->setWhatsThis( hint );
 
-  action = KStandardAction::forward(_stackSelection, SLOT(browserForward()),
-                      actionCollection());
-  hint = i18n("Go forward in function selection history");
-  action->setToolTip( hint );
-  action->setWhatsThis( hint );
-
-  action = KStandardAction::up(_stackSelection, SLOT(browserUp()),
-                      actionCollection());
-  hint = i18n("<b>Go Up</b>"
-              "<p>Go to last selected caller of current function. "
-              "If no caller was visited, use that with highest cost.</p>");
-  action->setToolTip( hint );
-  action->setWhatsThis( hint );
-#else
-  _paUp = new KToolBarPopupAction( QIcon::fromTheme( QStringLiteral("go-up") ), i18n( "&Up" ), this );
-  _paUp->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Up) );
-  connect( _paUp, &QAction::triggered, _stackSelection, &StackSelection::browserUp );
+  _paUp = new KToolBarPopupAction( QIcon::fromTheme( QStringLiteral("go-up") ),
+                                   i18n( "&Up" ), this );
+  _paUp->setShortcut( QKeySequence(Qt::ALT + Qt::Key_Up) );
+  connect( _paUp, &QAction::triggered,
+           _stackSelection, &StackSelection::browserUp );
   actionCollection()->addAction( QStringLiteral("go_up"), _paUp );
   connect( _paUp->menu(), &QMenu::aboutToShow,
 	    this, &TopLevel::upAboutToShow );
@@ -631,9 +612,11 @@ void TopLevel::createMiscActions()
   _paUp->setWhatsThis( hint );
 
   QPair< KGuiItem, KGuiItem > backForward = KStandardGuiItem::backAndForward();
-  _paBack = new KToolBarPopupAction( backForward.first.icon(), backForward.first.text(), this );
-  _paBack->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Left) );
-  connect( _paBack, &QAction::triggered, _stackSelection, &StackSelection::browserBack );
+  _paBack = new KToolBarPopupAction( backForward.first.icon(),
+                                     backForward.first.text(), this );
+  _paBack->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Left) );
+  connect( _paBack, &QAction::triggered,
+           _stackSelection, &StackSelection::browserBack );
   actionCollection()->addAction( QStringLiteral("go_back"), _paBack );
   connect( _paBack->menu(), &QMenu::aboutToShow,
            this, &TopLevel::backAboutToShow );
@@ -643,9 +626,11 @@ void TopLevel::createMiscActions()
   _paBack->setToolTip( hint );
   _paBack->setWhatsThis( hint );
 
-  _paForward = new KToolBarPopupAction( backForward.second.icon(), backForward.second.text(), this );
-  _paForward->setShortcuts( KShortcut(Qt::ALT+Qt::Key_Right) );
-  connect( _paForward, &QAction::triggered, _stackSelection, &StackSelection::browserForward );
+  _paForward = new KToolBarPopupAction( backForward.second.icon(),
+                                        backForward.second.text(), this );
+  _paForward->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Right) );
+  connect( _paForward, &QAction::triggered,
+           _stackSelection, &StackSelection::browserForward );
   actionCollection()->addAction( QStringLiteral("go_forward"), _paForward );
   connect( _paForward->menu(), &QMenu::aboutToShow,
            this, &TopLevel::forwardAboutToShow );
@@ -654,7 +639,6 @@ void TopLevel::createMiscActions()
   hint = i18n("Go forward in function selection history");
   _paForward->setToolTip( hint );
   _paForward->setWhatsThis( hint );
-#endif
 
   _saCost = actionCollection()->add<KSelectAction>(QStringLiteral("view_cost_type"));
   _saCost->setText(i18n("Primary Event Type"));
