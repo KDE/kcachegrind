@@ -51,7 +51,7 @@
 #include <kstandardshortcut.h>
 #include <kstandardaction.h>
 #include <kaction.h>
-#include <kurl.h>
+#include <QUrl>
 #include <kfiledialog.h>
 #include <kio/netaccess.h>
 #include <kedittoolbar.h>
@@ -485,7 +485,7 @@ void TopLevel::createMiscActions()
   action->setToolTip( hint );
   action->setWhatsThis( hint );
 
-  _openRecent = KStandardAction::openRecent(this, SLOT(load(const KUrl&)),
+  _openRecent = KStandardAction::openRecent(this, SLOT(load(const QUrl&)),
                                        actionCollection());
 
   KStandardAction::showStatusbar(this,
@@ -903,17 +903,11 @@ void TopLevel::newWindow()
 
 void TopLevel::load()
 {
-    KUrl url = KFileDialog::getOpenUrl(KUrl("kfiledialog:///"),
+    QUrl url = KFileDialog::getOpenUrl(QUrl("kfiledialog:///"),
                                        i18n("cachegrind.out* callgrind.out*|Callgrind Profile Data\n*|All Files"),
                                        this,
                                        i18n("Select Callgrind Profile Data"));
     load(url);
-}
-
-// ### legacy, remove
-void TopLevel::load(const KUrl &url)
-{
-    return load(static_cast<const QUrl &>(url));
 }
 
 void TopLevel::load(const QUrl& url)
@@ -966,14 +960,14 @@ void TopLevel::load(QString file)
 
 void TopLevel::add()
 {
-    KUrl url = KFileDialog::getOpenUrl(KUrl(),
+    QUrl url = KFileDialog::getOpenUrl(QUrl(),
                                        i18n("cachegrind.out* callgrind.out*|Callgrind Profile Data\n*|All Files"),
                                        this,
                                        i18n("Add Callgrind Profile Data"));
     add(url);
 }
 
-void TopLevel::add(const KUrl& url)
+void TopLevel::add(const QUrl &url)
 {
   if (url.isEmpty()) return;
 
@@ -1031,10 +1025,11 @@ void TopLevel::loadTraceDelayed()
       QString file = _loadFilesDelayed[0];
 
       // if URL scheme is missing (URL is relative), this is a local file
-      if (KUrl::isRelativeUrl(file))
-          load(file);
+      QUrl u = QUrl::fromUserInput(file, QString(), QUrl::AssumeLocalFile);
+      if (u.isLocalFile())
+          load(file); // special case for local file: maybe just prefix
       else
-          load(KUrl(file));
+          load(u);
   }
   _loadFilesDelayed.clear();
 }
@@ -2353,8 +2348,11 @@ bool TopLevel::openDataFile(const QString& file)
     QMimeDatabase dataBase;
     QString mimeType = dataBase.mimeTypeForFile(file, QMimeDatabase::MatchContent).name();
 
-    QIODevice* compressed = new KCompressionDevice(file, KFilterDev::compressionTypeForMimeType(mimeType));
-    if (compressed) {
+    KCompressionDevice* compressed;
+    compressed = new KCompressionDevice(file,
+                                        KFilterDev::compressionTypeForMimeType(mimeType));
+    if (compressed &&
+        (compressed->compressionType() != KCompressionDevice::None)) {
         filesLoaded = d->load(compressed, file);
     } else {
         // else fallback to string based method that can also find multi-part callgrind data.

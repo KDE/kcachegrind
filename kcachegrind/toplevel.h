@@ -42,7 +42,7 @@ class QLabel;
 class QProgressBar;
 class QMenu;
 
-class KUrl;
+class QUrl;
 class KSelectAction;
 class KToggleAction;
 class KToolBarPopupAction;
@@ -99,10 +99,9 @@ public:
 public slots:
   void load();
   void load(const QUrl&);
-  void load(const KUrl &url); // ### legacy, remove
   void load(QString);
   void add();
-  void add(const KUrl&);
+  void add(const QUrl&);
   void add(QString);
 
   // for quickly showing the main window...
