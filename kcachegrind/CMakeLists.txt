@@ -17,7 +17,6 @@ ecm_add_app_icon(kcachegrind_SRCS ICONS ${ICONS_SRCS})
 add_executable(kcachegrind ${kcachegrind_SRCS})
 
 set(kcachegrind_LIBS
-                 KF5::KDELibs4Support
                  KF5::Archive
 )
 
