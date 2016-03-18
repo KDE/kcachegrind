@@ -239,8 +239,7 @@ EventType* EventType::knownRealType(const QString& n)
 
   foreach (EventType* t, *_knownTypes)
     if (t->isReal() && (t->name() == n)) {
-      EventType* type = new EventType(*t);
-      return type;
+      return t;
     }
 
   return 0;
@@ -252,8 +251,7 @@ EventType* EventType::knownDerivedType(const QString& n)
 
   foreach (EventType* t, *_knownTypes)
     if (!t->isReal() && (t->name() == n)) {
-      EventType* type = new EventType(*t);
-      return type;
+      return t;
     }
 
   return 0;
@@ -332,10 +330,10 @@ EventTypeSet::EventTypeSet()
 EventTypeSet::~EventTypeSet()
 {
   for (int i=0;i<ProfileCostArray::MaxRealIndex;i++)
-    if (_real[i]) delete _real[i];
+    delete _real[i];
 
   for (int i=0;i<ProfileCostArray::MaxRealIndex;i++)
-    if (_derived[i]) delete _derived[i];
+    delete _derived[i];
 }
 
 EventTypeMapping* EventTypeSet::createMapping(const QString& types)
@@ -390,7 +388,8 @@ int EventTypeSet::addReal(const QString& t)
   if (index>=0) return index;
 
   EventType* ct = EventType::knownRealType(t);
-  if (!ct) ct = new EventType(t, t);
+  if (ct) ct = new EventType(*ct); //clone it
+  else    ct = new EventType(t, t);
 
   // make it real
   ct->setRealIndex();
