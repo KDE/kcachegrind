@@ -161,8 +161,8 @@ void EventTypeView::context(const QPoint & p)
   else if (a == newTypeAction) {
     int i = 1;
     while(1) {
-	if (!EventType::knownDerivedType(tr("New%1").arg(i)))
-	break;
+      if (!EventType::hasKnownDerivedType(tr("New%1").arg(i)))
+        break;
       i++;
     }
     // add same new cost type to this set and to known types

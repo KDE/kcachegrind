@@ -231,27 +231,50 @@ int EventType::histCost(ProfileCostArray* c, double total, double* hist)
 }
 
 
+bool EventType::hasKnownRealType(const QString& n)
+{
+  if (!_knownTypes) return false;
 
+  foreach (EventType* t, *_knownTypes)
+    if (t->isReal() && (t->name() == n))
+      return true;
 
-EventType* EventType::knownRealType(const QString& n)
+  return false;
+}
+
+bool EventType::hasKnownDerivedType(const QString& n)
+{
+  if (!_knownTypes) return false;
+
+  foreach (EventType* t, *_knownTypes)
+    if (!t->isReal() && (t->name() == n))
+      return true;
+
+  return false;
+}
+
+EventType* EventType::cloneKnownRealType(const QString& n)
 {
   if (!_knownTypes) return 0;
 
   foreach (EventType* t, *_knownTypes)
     if (t->isReal() && (t->name() == n)) {
-      return t;
+      EventType* type = new EventType(*t);
+      return type;
     }
 
   return 0;
 }
 
-EventType* EventType::knownDerivedType(const QString& n)
+
+EventType* EventType::cloneKnownDerivedType(const QString& n)
 {
   if (!_knownTypes) return 0;
 
   foreach (EventType* t, *_knownTypes)
     if (!t->isReal() && (t->name() == n)) {
-      return t;
+      EventType* type = new EventType(*t);
+      return type;
     }
 
   return 0;
@@ -387,9 +410,8 @@ int EventTypeSet::addReal(const QString& t)
   int index = realIndex(t);
   if (index>=0) return index;
 
-  EventType* ct = EventType::knownRealType(t);
-  if (ct) ct = new EventType(*ct); //clone it
-  else    ct = new EventType(t, t);
+  EventType* ct = EventType::cloneKnownRealType(t);
+  if (!ct) ct = new EventType(t, t);
 
   // make it real
   ct->setRealIndex();

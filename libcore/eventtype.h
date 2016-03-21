@@ -86,9 +86,11 @@ public:
   int histCost(ProfileCostArray* c, double total, double* hist);
 
   // application wide known types, referenced by short name
-  // next 2 functions return a new type object instance
-  static EventType* knownRealType(const QString&);
-  static EventType* knownDerivedType(const QString&);
+  // next 2 functions return a new event type instance
+  static EventType* cloneKnownRealType(const QString&);
+  static EventType* cloneKnownDerivedType(const QString&);
+  static bool hasKnownRealType(const QString&);
+  static bool hasKnownDerivedType(const QString&);
   static void add(EventType*, bool overwriteExisting = true);
   static bool remove(const QString&);
   static int knownTypeCount();
