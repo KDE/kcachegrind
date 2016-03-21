@@ -322,8 +322,16 @@ void EventTypeView::itemChanged(QTreeWidgetItem* item, int c)
       if (known) known->setLongName(t);
   }
   else if (c == 3) {
-      ct->setName(t);
-      if (known) known->setName(t);
+      // not allowed to use already existing short name
+      if (EventType::hasKnownRealType(t) || EventType::hasKnownDerivedType(t)) {
+          if (_topLevel)
+              _topLevel->showMessage("Error: Event type name already used",
+                                     5000);
+      }
+      else {
+          ct->setName(t);
+          if (known) known->setName(t);
+      }
   }
   else if (c == 5) {
       ct->setFormula(t);
