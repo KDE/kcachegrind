@@ -195,19 +195,25 @@ void GlobalConfig::saveOptions()
                             DEFAULT_HIDETEMPLATES);
     delete generalConfig;
 
-    // event types
+    // store known event types
     ConfigGroup* etConfig = ConfigStorage::group(QStringLiteral("EventTypes"));
     int etCount = EventType::knownTypeCount();
-    etConfig->setValue( QStringLiteral("Count"), etCount);
-    for (int i=0; i<etCount; i++) {
-	EventType* t = EventType::knownType(i);
-	etConfig->setValue( QStringLiteral("Name%1").arg(i+1), t->name());
-	etConfig->setValue( QStringLiteral("Longname%1").arg(i+1),
-			    t->longName(),
-			    knownLongName(t->name()) );
-	etConfig->setValue( QStringLiteral("Formula%1").arg(i+1),
-			    t->formula(), knownFormula(t->name()) );
+    int j = 0; // counter for config keys
+    for (int i = 0; i<etCount; i++) {
+        EventType* t = EventType::knownType(i);
+        // do not store derived event types with empty formula
+        // (these can exist when new type gets added with context menu)
+        if (!t->isReal() && t->formula().isEmpty()) continue;
+
+        etConfig->setValue( QStringLiteral("Name%1").arg(j+1), t->name());
+        etConfig->setValue( QStringLiteral("Longname%1").arg(j+1),
+                            t->longName(),
+                            knownLongName(t->name()) );
+        etConfig->setValue( QStringLiteral("Formula%1").arg(j+1),
+                            t->formula(), knownFormula(t->name()) );
+        j++;
     }
+    etConfig->setValue( QStringLiteral("Count"), j);
     delete etConfig;
 }
 
