@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (C) 2003 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (C) 2003-2016 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -43,7 +43,7 @@ int main( int argc, char ** argv )
                        KCACHEGRIND_VERSION,
                        i18n("KDE Frontend for Callgrind/Cachegrind"),
                        KAboutLicense::GPL,
-                       i18n("(C) 2002 - 2015"), QString(),
+                       i18n("(C) 2002 - 2016"), QString(),
                        QStringLiteral("https://kcachegrind.github.io"));
   aboutData.addAuthor(i18n("Josef Weidendorfer"),
                       i18n("Author/Maintainer"),

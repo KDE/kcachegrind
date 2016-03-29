@@ -1,5 +1,5 @@
 /* This file is part of KCachegrind.
-   Copyright (c) 2008-2015 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+   Copyright (c) 2008-2016 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
 
    KCachegrind is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -31,7 +31,7 @@
 
 void showHelp(QTextStream& out, bool fullHelp = true)
 {
-    out <<  "Show profiles from callgrind files. (c) 2010-2015 J. Weidendorfer\n";
+    out <<  "Show profiles from callgrind files. (c) 2010-2016 J. Weidendorfer\n";
 
     if (!fullHelp)
         out << "Type 'cgview -h' for help." << endl;
