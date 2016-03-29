@@ -17,7 +17,11 @@ ecm_add_app_icon(kcachegrind_SRCS ICONS ${ICONS_SRCS})
 add_executable(kcachegrind ${kcachegrind_SRCS})
 
 set(kcachegrind_LIBS
-                 KF5::Archive
+  KF5::Archive
+  KF5::CoreAddons
+  KF5::I18n
+  KF5::XmlGui
+  KF5::KDELibs4Support
 )
 
 target_link_libraries(kcachegrind core views ${kcachegrind_LIBS})

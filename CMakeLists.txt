@@ -23,7 +23,7 @@ include(ECMAddAppIcon)
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Widgets)
 
 find_package(KF5 REQUIRED
-    Archive CoreAddons DocTools WidgetsAddons XmlGui I18n
+  Archive CoreAddons DocTools WidgetsAddons XmlGui I18n KDELibs4Support
 )
 
 add_definitions(-DQT_STRICT_ITERATORS)
