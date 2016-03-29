@@ -23,7 +23,6 @@
 #include "kdeconfig.h"
 
 #include <kconfig.h>
-#include <klocale.h>
 #include <kconfiggroup.h>
 
 #include "tracedata.h"

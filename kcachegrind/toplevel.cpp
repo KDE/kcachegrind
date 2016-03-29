@@ -27,17 +27,22 @@
 
 #include <stdlib.h> // for system()
 
-#include <QDockWidget>
 #include <QDebug>
-#include <QTimer>
+#include <QDockWidget>
+#include <QEventLoop>
+#include <QFile>
+#include <QFileDialog>
 #include <QLabel>
 #include <QLineEdit>
-#include <QProgressBar>
-#include <QFile>
-#include <QEventLoop>
-#include <QProcess>
-#include <QtDBus/QDBusConnection>
+#include <QMenu>
 #include <QMimeDatabase>
+#include <QProcess>
+#include <QProgressBar>
+#include <QStatusBar>
+#include <QTemporaryFile>
+#include <QTimer>
+#include <QUrl>
+#include <QtDBus/QDBusConnection>
 
 #include <ktoggleaction.h>
 #include <ktoolbarpopupaction.h>
@@ -46,19 +51,15 @@
 #include <krecentfilesaction.h>
 #include <ktoolbar.h>
 #include <kstandardguiitem.h>
-#include <klocale.h>
-#include <kstatusbar.h>
 #include <kstandardshortcut.h>
 #include <kstandardaction.h>
-#include <kaction.h>
-#include <QUrl>
-#include <kfiledialog.h>
-#include <kio/netaccess.h>
+#include <kio/job.h>
+#include <kjobwidgets.h>
 #include <kedittoolbar.h>
 #include <kshortcutsdialog.h>
 #include <ktip.h>
-#include <kmenu.h>
 #include <kmessagebox.h>
+#include <ksharedconfig.h>
 #include <kconfiggroup.h>
 #include <KArchive/kfilterdev.h>
 
@@ -903,10 +904,11 @@ void TopLevel::newWindow()
 
 void TopLevel::load()
 {
-    QUrl url = KFileDialog::getOpenUrl(QUrl("kfiledialog:///"),
-                                       i18n("cachegrind.out* callgrind.out*|Callgrind Profile Data\n*|All Files"),
-                                       this,
-                                       i18n("Select Callgrind Profile Data"));
+    QUrl url = QFileDialog::getOpenFileUrl(this,
+                                           i18n("Select Callgrind Profile Data"),
+                                           QString(),
+                                           i18n("Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"));
+
     load(url);
 }
 
@@ -914,19 +916,29 @@ void TopLevel::load(const QUrl& url)
 {
   if (url.isEmpty()) return;
 
-  // network transparency
-  QString tmpFile;
-  // for KDE 3.2: KIO::NetAccess::download with 2 args is deprecated
-  if(KIO::NetAccess::download( url, tmpFile, this )) {
-    _openRecent->addUrl(url);
-    _openRecent->saveEntries( KConfigGroup( KSharedConfig::openConfig(), QString() ) );
+  QString tmpFileName;
+  QTemporaryFile tmpFile;
+  if (url.isLocalFile()) {
+      tmpFileName = url.toLocalFile();
+  }
+  else if (tmpFile.open()){
+      // network transparency
+      tmpFileName = tmpFile.fileName();
+      KIO::FileCopyJob *job = KIO::file_copy(url,
+                                             QUrl::fromLocalFile(tmpFileName));
+      KJobWidgets::setWindow(job, this);
+      job->exec();
+  }
+  if (!tmpFileName.isEmpty()) {
+      _openRecent->addUrl(url);
+      _openRecent->saveEntries( KConfigGroup( KSharedConfig::openConfig(), QString() ) );
 
-    load(tmpFile);
-    KIO::NetAccess::removeTempFile( tmpFile );
+      load(tmpFileName);
   } else {
-    KMessageBox::error(this, i18n("Could not open the file \"%1\". "
-                                  "Check it exists and you have enough "
-                                  "permissions to read it.", url.toDisplayString()));
+      KMessageBox::error(this, i18n("Could not open the file \"%1\". "
+                                    "Check it exists and you have enough "
+                                    "permissions to read it.",
+                                    url.toDisplayString()));
   }
 }
 
@@ -960,10 +972,11 @@ void TopLevel::load(QString file)
 
 void TopLevel::add()
 {
-    QUrl url = KFileDialog::getOpenUrl(QUrl(),
-                                       i18n("cachegrind.out* callgrind.out*|Callgrind Profile Data\n*|All Files"),
-                                       this,
-                                       i18n("Add Callgrind Profile Data"));
+    QUrl url = QFileDialog::getOpenFileUrl(this,
+                                           i18n("Add Callgrind Profile Data"),
+                                           QString(),
+                                           i18n("Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"));
+
     add(url);
 }
 
@@ -971,14 +984,24 @@ void TopLevel::add(const QUrl &url)
 {
   if (url.isEmpty()) return;
 
-  // network transparency
-  QString tmpFile;
-  if(KIO::NetAccess::download( url, tmpFile, this )) {
+  QString tmpFileName;
+  QTemporaryFile tmpFile;
+  if (url.isLocalFile()) {
+      tmpFileName = url.toLocalFile();
+  }
+  else if (tmpFile.open()){
+      // network transparency
+      tmpFileName = tmpFile.fileName();
+      KIO::FileCopyJob *job = KIO::file_copy(url,
+                                             QUrl::fromLocalFile(tmpFileName));
+      KJobWidgets::setWindow(job, this);
+      job->exec();
+  }
+  if (!tmpFileName.isEmpty()) {
     _openRecent->addUrl(url);
     _openRecent->saveEntries( KSharedConfig::openConfig()->group( QString() ) );
 
-    add(tmpFile);
-    KIO::NetAccess::removeTempFile( tmpFile );
+    add(tmpFileName);
   }
 }
 

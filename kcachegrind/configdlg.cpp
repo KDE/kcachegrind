@@ -23,12 +23,11 @@
 #include "configdlg.h"
 
 #include <QCheckBox>
+#include <QDir>
+#include <QFileDialog>
 #include <QMessageBox>
 
 #include <kcolorbutton.h>
-#include <kfiledialog.h>
-#include <klocale.h>
-#include <knumvalidator.h>
 
 #include "tracedata.h"
 #include "globalguiconfig.h"
@@ -46,7 +45,7 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
 
   connect(objectCombo, SIGNAL(activated(const QString &)),
           this, SLOT(objectActivated(const QString &)));
-  connect(objectCombo, SIGNAL(textChanged(const QString &)),
+  connect(objectCombo, SIGNAL(editTextChanged(const QString &)),
           this, SLOT(objectActivated(const QString &)));
   connect(objectCheck, &QAbstractButton::toggled,
           this, &ConfigDlg::objectCheckChanged);
@@ -55,7 +54,7 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
 
   connect(classCombo, SIGNAL(activated(const QString &)),
           this, SLOT(classActivated(const QString &)));
-  connect(classCombo, SIGNAL(textChanged(const QString &)),
+  connect(classCombo, SIGNAL(editTextChanged(const QString &)),
           this, SLOT(classActivated(const QString &)));
   connect(classCheck, &QAbstractButton::toggled,
           this, &ConfigDlg::classCheckChanged);
@@ -64,7 +63,7 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
 
   connect(fileCombo, SIGNAL(activated(const QString &)),
           this, SLOT(fileActivated(const QString &)));
-  connect(fileCombo, SIGNAL(textChanged(const QString &)),
+  connect(fileCombo, SIGNAL(editTextChanged(const QString &)),
           this, SLOT(fileActivated(const QString &)));
   connect(fileCheck, &QAbstractButton::toggled,
           this, &ConfigDlg::fileCheckChanged);
@@ -355,8 +354,7 @@ void ConfigDlg::dirsAddPressed()
     dirs = &(_config->_objectSourceDirs[objName]);
 
   QString newDir;
-  newDir = KFileDialog::getExistingDirectory(QUrl(),
-                                             this,
+  newDir = QFileDialog::getExistingDirectory(this,
                                              i18n("Choose Source Folder"));
   if (newDir.isEmpty()) return;
 
