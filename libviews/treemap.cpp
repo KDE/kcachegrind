@@ -876,6 +876,8 @@ TreeMapItem::TreeMapItem(TreeMapItem* parent, double value,
   _index = -1;
   _depth = -1; // not set
   _unused_self = 0;
+  _sortAscending = false;
+  _sortTextNo = -1; // default: no sorting
 
   if (_parent) _parent->addItem(this);
 }
