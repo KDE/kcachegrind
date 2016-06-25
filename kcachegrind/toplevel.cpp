@@ -906,7 +906,7 @@ void TopLevel::load()
 {
     QUrl url = QFileDialog::getOpenFileUrl(this,
                                            i18n("Select Callgrind Profile Data"),
-                                           QString(),
+                                           QUrl(),
                                            i18n("Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"));
 
     load(url);
@@ -974,7 +974,7 @@ void TopLevel::add()
 {
     QUrl url = QFileDialog::getOpenFileUrl(this,
                                            i18n("Add Callgrind Profile Data"),
-                                           QString(),
+                                           QUrl(),
                                            i18n("Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"));
 
     add(url);
