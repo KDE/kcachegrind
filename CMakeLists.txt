@@ -26,7 +26,7 @@ find_package(KF5 REQUIRED
   Archive CoreAddons DocTools WidgetsAddons XmlGui I18n Config KIO
 )
 
-if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
 add_definitions(-DQT_STRICT_ITERATORS)
 endif()
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
