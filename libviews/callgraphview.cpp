@@ -754,6 +754,8 @@ void GraphExporter::writeDot(QIODevice* device)
 
 		if (_go->clusterGroups() && i) {
 			QString iabr = GlobalConfig::shortenSymbol(i->prettyName());
+			// escape quotation marks in symbols to avoid invalid dot syntax
+			iabr.replace("\"", "\\\"");
 			*stream << QStringLiteral("subgraph \"cluster%1\" { label=\"%2\";\n")
 			.arg(cluster).arg(iabr);
 		}
@@ -762,6 +764,8 @@ void GraphExporter::writeDot(QIODevice* device)
 			TraceFunction* f = np->function();
 
 			QString abr = GlobalConfig::shortenSymbol(f->prettyName());
+			// escape quotation marks to avoid invalid dot syntax
+			abr.replace("\"", "\\\"");
 			*stream << QStringLiteral("  F%1 [").arg((qptrdiff)f, 0, 16);
 			if (_useBox) {
 				// we want a minimal size for cost display
