@@ -54,7 +54,7 @@
 
 CallMapView::CallMapView(bool showCallers, TraceItemView* parentView,
                          QWidget* parent, const char* name)
-  : TreeMapWidget(new CallMapBaseItem(), parent),  TraceItemView(parentView)
+  : TreeMapWidget(new CallMapRootItem(), parent),  TraceItemView(parentView)
 {
   setObjectName(name);
   _showCallers = showCallers;
@@ -139,7 +139,7 @@ void CallMapView::setData(TraceData* d)
 {
   TraceItemView::setData(d);
 
-  ((CallMapBaseItem*)base())->setFunction(0);
+  ((CallMapRootItem*)base())->setFunction(0);
 }
 
 void CallMapView::addItemListMenu(QMenu* menu, TreeMapItem* item)
@@ -149,7 +149,7 @@ void CallMapView::addItemListMenu(QMenu* menu, TreeMapItem* item)
     QMenu* m = menu->addMenu(tr("Go To"));
     int count = 0;
     while (count<GlobalConfig::maxSymbolCount() && item) {
-	QString name = item->text(0);
+	QString name = item->text(IDX_FUNCNAME);
 	a = m->addAction(GlobalConfig::shortenSymbol(name));
 	a->setData(QVariant::fromValue( (void*)item ));
 	item = item->parent();
@@ -229,8 +229,8 @@ void CallMapView::addStopFunctionMenu(QMenu* menu, TreeMapItem* item)
 	m->addSeparator();
 	int count = 0;
 	while (count<GlobalConfig::maxSymbolCount() && item) {
-	    QString name = GlobalConfig::shortenSymbol(item->text(0));
-	    a = addStopFunctionAction(m, name, item->text(0));
+	    QString name = GlobalConfig::shortenSymbol(item->text(IDX_FUNCNAME));
+	    a = addStopFunctionAction(m, name, item->text(IDX_FUNCNAME));
 	    if (a->isChecked()) foundStopName = true;
 	    item = item->parent();
 	    count++;
@@ -320,7 +320,7 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
 
   QString shortCurrentName;
   if (i) {
-    shortCurrentName = GlobalConfig::shortenSymbol(i->text(0));
+    shortCurrentName = GlobalConfig::shortenSymbol(i->text(IDX_FUNCNAME));
   }
 
   if (i) {
@@ -416,7 +416,7 @@ void CallMapView::activatedSlot(TreeMapItem* item)
   if (!item) return;
 
   if (item->rtti() == 1) {
-    CallMapBaseItem* bi = (CallMapBaseItem*)item;
+    CallMapRootItem* bi = (CallMapRootItem*)item;
     activated(bi->function());
   }
   else if (item->rtti() == 2) {
@@ -432,10 +432,10 @@ void CallMapView::activatedSlot(TreeMapItem* item)
 void CallMapView::selectedSlot(TreeMapItem* item, bool kbd)
 {
   if (!item) return;
-  if (item->text(0).isEmpty()) return;
+  if (item->text(IDX_FUNCNAME).isEmpty()) return;
 
   if (kbd) {
-      QString msg = tr("Call Map: Current is '%1'").arg(item->text(0));
+      QString msg = tr("Call Map: Current is '%1'").arg(item->text(IDX_FUNCNAME));
       if (_topLevel)
 	  _topLevel->showMessage(msg, 5000);
   }
@@ -443,7 +443,7 @@ void CallMapView::selectedSlot(TreeMapItem* item, bool kbd)
   TraceFunction* f = 0;
 
   if (item->rtti() == 1) {
-    CallMapBaseItem* bi = (CallMapBaseItem*)item;
+    CallMapRootItem* bi = (CallMapRootItem*)item;
     f = bi->function();
   }
   else if (item->rtti() == 2) {
@@ -515,7 +515,7 @@ void CallMapView::doUpdate(int changeType, bool)
 	      break;
 	  }
       }
-      ((CallMapBaseItem*)base())->setFunction(f);
+      ((CallMapRootItem*)base())->setFunction(f);
   }
   else if ( ((changeType & partsChanged) && GlobalConfig::showCycles()) ||
             (changeType & dataChanged) ||
@@ -572,7 +572,7 @@ QString CallMapView::tipString(TreeMapItem* i) const
 
 ProfileCostArray* CallMapView::totalCost()
 {
-  TraceFunction* f = ((CallMapBaseItem*)base())->function();
+  TraceFunction* f = ((CallMapRootItem*)base())->function();
   if (!f) return 0;
 
   return GlobalConfig::showExpanded() ? f->inclusive() : f->data();
@@ -580,15 +580,42 @@ ProfileCostArray* CallMapView::totalCost()
 
 
 
+// CallMapItemBase
 
-// CallMapBaseItem
+int CallMapItemBase::maxLines(int i) const
+{
+    if ((i == IDX_FUNCNAME) || (i == IDX_LOCATION)) return 1;
+    return 0;
+}
 
-CallMapBaseItem::CallMapBaseItem()
+bool CallMapItemBase::allowBreak(int i) const
+{
+    if ((i == IDX_COST) || (i == IDX_CALLCOUNT)) return false;
+    return true;
+}
+
+bool CallMapItemBase::allowTruncation(int i) const
+{
+    if ((i == IDX_COST) || (i == IDX_CALLCOUNT)) return false;
+    return true;
+}
+
+DrawParams::Position CallMapItemBase::position(int i) const
+{
+    if ((i == IDX_FUNCNAME) || (i == IDX_LOCATION)) return TopLeft;
+    return TopRight;
+}
+
+
+
+// CallMapRootItem
+
+CallMapRootItem::CallMapRootItem()
 {
   _f = 0;
 }
 
-void CallMapBaseItem::setFunction(TraceFunction* f)
+void CallMapRootItem::setFunction(TraceFunction* f)
 {
   if (f == _f) return;
 
@@ -597,7 +624,7 @@ void CallMapBaseItem::setFunction(TraceFunction* f)
 }
 
 
-QString CallMapBaseItem::text(int i) const
+QString CallMapRootItem::text(int i) const
 {
   if (i == IDX_FUNCNAME) {
     if (!_f)
@@ -608,12 +635,15 @@ QString CallMapBaseItem::text(int i) const
 
   if (!_f) return QString();
 
-  if (i == IDX_LOCATION) return _f->prettyLocation();
-  if (i == IDX_CALLCOUNT) return _f->calledCount().pretty();
-  if (i != IDX_COST) return QString();
+  if (i == IDX_LOCATION)
+      return _f->prettyLocation();
+  if (i == IDX_CALLCOUNT)
+      return QString("%1 x").arg(_f->calledCount().pretty());
+  if (i != IDX_COST)
+      return QString();
 
   EventType* ct = ((CallMapView*)widget())->eventType();
-  ProfileCostArray* t      = ((CallMapView*)widget())->totalCost();
+  ProfileCostArray* t = ((CallMapView*)widget())->totalCost();
 
   if (GlobalConfig::showPercentage()) {
       double sum, total = t->subCost(ct);
@@ -628,20 +658,8 @@ QString CallMapBaseItem::text(int i) const
   return _f->inclusive()->prettySubCost(ct);
 }
 
-int CallMapBaseItem::maxLines(int i) const
-{
-    if (i == IDX_FUNCNAME) return 1; // one line for function name
-    return 0; // no limit
-}
 
-DrawParams::Position CallMapBaseItem::position(int i) const
-{
-    if (i == IDX_FUNCNAME) return TopLeft;
-    if (i == IDX_COST) return TopRight;
-    return Default;
-}
-
-QPixmap CallMapBaseItem::pixmap(int i) const
+QPixmap CallMapRootItem::pixmap(int i) const
 {
     if ((i != IDX_COST) || !_f) return QPixmap();
 
@@ -653,7 +671,7 @@ QPixmap CallMapBaseItem::pixmap(int i) const
 }
 
 
-double CallMapBaseItem::value() const
+double CallMapRootItem::value() const
 {
   if (!_f) return 0.0;
 
@@ -663,7 +681,7 @@ double CallMapBaseItem::value() const
 }
 
 
-double CallMapBaseItem::sum() const
+double CallMapRootItem::sum() const
 {
   if (!_f) return 0.0;
 
@@ -676,19 +694,19 @@ double CallMapBaseItem::sum() const
 }
 
 
-bool CallMapBaseItem::isMarked(int) const
+bool CallMapRootItem::isMarked(int) const
 {
     return ((CallMapView*)widget())->selectedItem() == _f;
 }
 
-TreeMapItemList* CallMapBaseItem::children()
+TreeMapItemList* CallMapRootItem::children()
 {
   if (_f && !initialized()) {
     CallMapView* w = (CallMapView*)widget();
 
     if (0) qDebug("Create Function %s (%s)",
 		  w->showCallers() ? "Callers":"Callees",
-		  qPrintable(text(0)));
+		  qPrintable(text(IDX_FUNCNAME)));
 
     setSorting(-1);
     if (w->showCallers()) {
@@ -721,7 +739,7 @@ TreeMapItemList* CallMapBaseItem::children()
   return _children;
 }
 
-QColor CallMapBaseItem::backColor() const
+QColor CallMapRootItem::backColor() const
 {
   return ((CallMapView*)widget())->groupColor(_f);
 }
@@ -755,9 +773,12 @@ QString CallMapCallingItem::text(int textNo) const
     return _c->calledName();
   }
 
-  if (textNo == IDX_LOCATION) return _c->called()->prettyLocation();
-  if (textNo == IDX_CALLCOUNT) return SubCost(_factor * _c->callCount()).pretty();
-  if (textNo != IDX_COST) return QString();
+  if (textNo == IDX_LOCATION)
+      return _c->called()->prettyLocation();
+  if (textNo == IDX_CALLCOUNT)
+      return QString("%1 x").arg(SubCost(_factor * _c->callCount()).pretty());
+  if (textNo != IDX_COST)
+      return QString();
 
   EventType* ct;
   ct = ((CallMapView*)widget())->eventType();
@@ -773,24 +794,6 @@ QString CallMapCallingItem::text(int textNo) const
   return val.pretty();
 }
 
-int CallMapCallingItem::maxLines(int i) const
-{
-    if (i == IDX_FUNCNAME) return 1; // one line for function name
-    return 0; // no limit
-}
-
-bool CallMapCallingItem::allowBreak(int i) const
-{
-    if (i == IDX_COST) return false;
-    return true;
-}
-
-DrawParams::Position CallMapCallingItem::position(int i) const
-{
-    if (i == IDX_FUNCNAME) return TopLeft;
-    if (i == IDX_COST) return TopRight;
-    return Default;
-}
 
 QPixmap CallMapCallingItem::pixmap(int i) const
 {
@@ -798,7 +801,7 @@ QPixmap CallMapCallingItem::pixmap(int i) const
 
     // Cost pixmap
     EventType* ct = ((CallMapView*)widget())->eventType();
-    ProfileCostArray* t      = ((CallMapView*)widget())->totalCost();
+    ProfileCostArray* t = ((CallMapView*)widget())->totalCost();
 
     // colored level meter with frame
     return costPixmap( ct, _c, t->subCost(ct) / _factor, true);
@@ -880,18 +883,21 @@ CallMapCallerItem::CallMapCallerItem(double factor, TraceCall* c)
   _c = c;
 }
 
-QString CallMapCallerItem::text(int textNo) const
+QString CallMapCallerItem::text(int i) const
 {
-  if (textNo == IDX_FUNCNAME) {
+  if (i == IDX_FUNCNAME) {
     if (!_c)
       return QObject::tr("(no call)");
 
     return _c->callerName();
   }
 
-  if (textNo == IDX_LOCATION) return _c->caller()->prettyLocation();
-  if (textNo == IDX_CALLCOUNT) return SubCost(_factor * _c->callCount()).pretty();
-  if (textNo != IDX_COST) return QString();
+  if (i == IDX_LOCATION)
+      return _c->caller()->prettyLocation();
+  if (i == IDX_CALLCOUNT)
+      return QString("%1 x").arg(SubCost(_factor * _c->callCount()).pretty());
+  if (i != IDX_COST)
+      return QString();
 
   EventType* ct;
   ct = ((CallMapView*)widget())->eventType();
@@ -906,26 +912,13 @@ QString CallMapCallerItem::text(int textNo) const
   return val.pretty();
 }
 
-int CallMapCallerItem::maxLines(int i) const
-{
-    if (i == IDX_FUNCNAME) return 1; // one line for function name
-    return 0; // no limit
-}
-
-DrawParams::Position CallMapCallerItem::position(int i) const
-{
-    if (i == IDX_FUNCNAME) return TopLeft;
-    if (i == IDX_COST) return TopRight;
-    return Default;
-}
-
 QPixmap CallMapCallerItem::pixmap(int i) const
 {
     if (i != IDX_COST) return QPixmap();
 
     // Cost pixmap
     EventType* ct = ((CallMapView*)widget())->eventType();
-    ProfileCostArray* t      = ((CallMapView*)widget())->totalCost();
+    ProfileCostArray* t = ((CallMapView*)widget())->totalCost();
 
     // colored level meter with frame
     return costPixmap( ct, _c, t->subCost(ct) / _factor, true );

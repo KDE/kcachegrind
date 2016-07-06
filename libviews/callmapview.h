@@ -90,10 +90,20 @@ private:
 #define IDX_LOCATION  2
 #define IDX_CALLCOUNT 3
 
-class CallMapBaseItem: public TreeMapItem
+// base class providing same layout configuration
+class CallMapItemBase: public TreeMapItem
 {
 public:
-  CallMapBaseItem();
+    int maxLines(int) const;
+    bool allowBreak(int) const;
+    bool allowTruncation(int) const;
+    Position position(int) const;
+};
+
+class CallMapRootItem: public CallMapItemBase
+{
+public:
+  CallMapRootItem();
 
   void setFunction(TraceFunction* f);
   TraceFunction* function() { return _f; }
@@ -102,8 +112,6 @@ public:
   double value() const;
   bool isMarked(int) const;
   QString text(int) const;
-  int maxLines(int) const;
-  Position position(int) const;
   QPixmap pixmap(int) const;
   TreeMapItemList* children();
   QColor backColor() const;
@@ -113,7 +121,7 @@ private:
 };
 
 
-class CallMapCallingItem: public TreeMapItem
+class CallMapCallingItem: public CallMapItemBase
 {
 public:
   CallMapCallingItem(double factor, TraceCall* c);
@@ -125,9 +133,6 @@ public:
   double sum() const;
   bool isMarked(int) const;
   QString text(int) const;
-  int maxLines(int) const;
-  bool allowBreak(int) const;
-  Position position(int) const;
   QPixmap pixmap(int) const;
   TreeMapItemList* children();
   QColor backColor() const;
@@ -137,7 +142,7 @@ private:
   double _factor;
 };
 
-class CallMapCallerItem: public TreeMapItem
+class CallMapCallerItem: public CallMapItemBase
 {
 public:
   CallMapCallerItem(double factor, TraceCall* c);
@@ -146,9 +151,7 @@ public:
   TraceFunction* function() { return _c->caller(); }
   double value() const;
   bool isMarked(int) const;
-  QString text(int) const;
-  int maxLines(int) const;
-  Position position(int) const;
+  QString text(int i) const;
   QPixmap pixmap(int) const;
   TreeMapItemList* children();
   QColor backColor() const;
