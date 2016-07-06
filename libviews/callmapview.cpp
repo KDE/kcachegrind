@@ -628,6 +628,12 @@ QString CallMapBaseItem::text(int textNo) const
   return _f->inclusive()->prettySubCost(ct);
 }
 
+int CallMapBaseItem::maxLines(int i) const
+{
+    if (i == 0) return 1; // one line for function name
+    return 0; // no limit
+}
+
 QPixmap CallMapBaseItem::pixmap(int i) const
 {
     if ((i != 1) || !_f) return QPixmap();
@@ -760,6 +766,12 @@ QString CallMapCallingItem::text(int textNo) const
   return val.pretty();
 }
 
+int CallMapCallingItem::maxLines(int i) const
+{
+    if (i == 0) return 1; // one line for function name
+    return 0; // no limit
+}
+
 QPixmap CallMapCallingItem::pixmap(int i) const
 {
     if (i != 1) return QPixmap();
@@ -874,6 +886,11 @@ QString CallMapCallerItem::text(int textNo) const
   return val.pretty();
 }
 
+int CallMapCallerItem::maxLines(int i) const
+{
+    if (i == 0) return 1; // one line for function name
+    return 0; // no limit
+}
 
 QPixmap CallMapCallerItem::pixmap(int i) const
 {

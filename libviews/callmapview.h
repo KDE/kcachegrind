@@ -96,6 +96,7 @@ public:
   double value() const ;
   bool isMarked(int) const;
   QString text(int) const;
+  int maxLines(int) const;
   QPixmap pixmap(int) const;
   TreeMapItemList* children();
   QColor backColor() const;
@@ -117,6 +118,7 @@ public:
   double sum() const;
   bool isMarked(int) const;
   QString text(int) const;
+  int maxLines(int) const;
   QPixmap pixmap(int) const;
   TreeMapItemList* children();
   QColor backColor() const;
@@ -136,6 +138,7 @@ public:
   double value() const;
   bool isMarked(int) const;
   QString text(int) const;
+  int maxLines(int) const;
   QPixmap pixmap(int) const;
   TreeMapItemList* children();
   QColor backColor() const;
