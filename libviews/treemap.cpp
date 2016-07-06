@@ -428,7 +428,7 @@ int findBreakBackwards(int& breakPos, QString text, QFontMetrics* fm, int maxWid
 	while(1) {
 		int halfPos = (breakPos + topPos)/2;
 		int halfWidth = fm->width(text.mid(halfPos));
-		if (halfWidth > maxWidth) {
+		if (halfWidth < maxWidth) {
 		    topPos = halfPos-1;
 		    continue;
 		}
@@ -587,6 +587,9 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
   }
   if (lines<1) return false;
 
+  // keep some space between fields if part of line already used
+  if (unused > 0 && unused < width)
+      unused -= _fm->averageCharWidth();
 
   int y = isBottom ? height - h : 0;
 
@@ -712,16 +715,21 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
 		remaining = QString();
 
 	/* truncate and add ... if needed */
-	if (w > unusedWidth) {
+	if (dp->allowTruncation(f) && w > unusedWidth) {
 		name = _fm->elidedText(name, Qt::ElideRight, unusedWidth - pixW);
 		w = _fm->width(name) + pixW;
 	}
 
+    if (w > unusedWidth) {
+        name = QString();
+        w = pixW;
+    }
+
     int x = 0;
     if (isCenter)
-      x = (unusedWidth - w)/2;
+      x = (width - w)/2;
     else if (isRight)
-      x = unusedWidth - w;
+      x = width - w;
 
     if (!pixDrawn) {
         pixY = y+(h-pixH)/2; // default: center vertically

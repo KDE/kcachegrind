@@ -78,6 +78,8 @@ public:
   virtual int      maxLines(int) const { return 0; }
   // allow breaking up content into multiple lines?
   virtual bool     allowBreak(int) const { return true; }
+  // truncate or show nothing if space not enough?
+  virtual bool     allowTruncation(int) const { return true; }
   virtual int      fieldCount() const { return 0; }
 
   virtual QColor   backColor() const { return Qt::white; }
