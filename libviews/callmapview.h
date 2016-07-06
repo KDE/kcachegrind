@@ -82,7 +82,13 @@ private:
 
 
 
-// Subitems of CallMap
+// Subitems in CallMapView
+
+// text field indexes: lower indexes get priority if space is not enough
+#define IDX_COST      0
+#define IDX_FUNCNAME  1
+#define IDX_LOCATION  2
+#define IDX_CALLCOUNT 3
 
 class CallMapBaseItem: public TreeMapItem
 {
@@ -93,10 +99,11 @@ public:
   TraceFunction* function() { return _f; }
   int rtti() const { return 1; }
   double sum() const;
-  double value() const ;
+  double value() const;
   bool isMarked(int) const;
   QString text(int) const;
   int maxLines(int) const;
+  Position position(int) const;
   QPixmap pixmap(int) const;
   TreeMapItemList* children();
   QColor backColor() const;
@@ -119,6 +126,8 @@ public:
   bool isMarked(int) const;
   QString text(int) const;
   int maxLines(int) const;
+  bool allowBreak(int) const;
+  Position position(int) const;
   QPixmap pixmap(int) const;
   TreeMapItemList* children();
   QColor backColor() const;
@@ -139,6 +148,7 @@ public:
   bool isMarked(int) const;
   QString text(int) const;
   int maxLines(int) const;
+  Position position(int) const;
   QPixmap pixmap(int) const;
   TreeMapItemList* children();
   QColor backColor() const;

@@ -553,10 +553,10 @@ QString CallMapView::tipString(TreeMapItem* i) const
 
   // first, SubPartItem's
   while (i && count<GlobalConfig::maxSymbolCount()) {
-    itemTip = GlobalConfig::shortenSymbol(i->text(0));
+    itemTip = GlobalConfig::shortenSymbol(i->text(IDX_FUNCNAME));
 
-    if (!i->text(1).isEmpty())
-      itemTip += " (" + i->text(1) + ')';
+    if (!i->text(IDX_COST).isEmpty())
+      itemTip += " (" + i->text(IDX_COST) + ')';
 
     if (!tip.isEmpty()) tip += '\n';
 
@@ -597,9 +597,9 @@ void CallMapBaseItem::setFunction(TraceFunction* f)
 }
 
 
-QString CallMapBaseItem::text(int textNo) const
+QString CallMapBaseItem::text(int i) const
 {
-  if (textNo == 0) {
+  if (i == IDX_FUNCNAME) {
     if (!_f)
       return QObject::tr("(no function)");
 
@@ -608,9 +608,9 @@ QString CallMapBaseItem::text(int textNo) const
 
   if (!_f) return QString();
 
-  if (textNo == 2) return _f->prettyLocation();
-  if (textNo == 3) return _f->calledCount().pretty();
-  if (textNo != 1) return QString();
+  if (i == IDX_LOCATION) return _f->prettyLocation();
+  if (i == IDX_CALLCOUNT) return _f->calledCount().pretty();
+  if (i != IDX_COST) return QString();
 
   EventType* ct = ((CallMapView*)widget())->eventType();
   ProfileCostArray* t      = ((CallMapView*)widget())->totalCost();
@@ -630,13 +630,20 @@ QString CallMapBaseItem::text(int textNo) const
 
 int CallMapBaseItem::maxLines(int i) const
 {
-    if (i == 0) return 1; // one line for function name
+    if (i == IDX_FUNCNAME) return 1; // one line for function name
     return 0; // no limit
+}
+
+DrawParams::Position CallMapBaseItem::position(int i) const
+{
+    if (i == IDX_FUNCNAME) return TopLeft;
+    if (i == IDX_COST) return TopRight;
+    return Default;
 }
 
 QPixmap CallMapBaseItem::pixmap(int i) const
 {
-    if ((i != 1) || !_f) return QPixmap();
+    if ((i != IDX_COST) || !_f) return QPixmap();
 
     EventType* ct = ((CallMapView*)widget())->eventType();
     ProfileCostArray* t      = ((CallMapView*)widget())->totalCost();
@@ -741,16 +748,16 @@ void CallMapCallingItem::init()
 
 QString CallMapCallingItem::text(int textNo) const
 {
-  if (textNo == 0) {
+  if (textNo == IDX_FUNCNAME) {
     if (!_c)
       return QObject::tr("(no call)");
 
     return _c->calledName();
   }
 
-  if (textNo == 2) return _c->called()->prettyLocation();
-  if (textNo == 3) return SubCost(_factor * _c->callCount()).pretty();
-  if (textNo != 1) return QString();
+  if (textNo == IDX_LOCATION) return _c->called()->prettyLocation();
+  if (textNo == IDX_CALLCOUNT) return SubCost(_factor * _c->callCount()).pretty();
+  if (textNo != IDX_COST) return QString();
 
   EventType* ct;
   ct = ((CallMapView*)widget())->eventType();
@@ -768,13 +775,26 @@ QString CallMapCallingItem::text(int textNo) const
 
 int CallMapCallingItem::maxLines(int i) const
 {
-    if (i == 0) return 1; // one line for function name
+    if (i == IDX_FUNCNAME) return 1; // one line for function name
     return 0; // no limit
+}
+
+bool CallMapCallingItem::allowBreak(int i) const
+{
+    if (i == IDX_COST) return false;
+    return true;
+}
+
+DrawParams::Position CallMapCallingItem::position(int i) const
+{
+    if (i == IDX_FUNCNAME) return TopLeft;
+    if (i == IDX_COST) return TopRight;
+    return Default;
 }
 
 QPixmap CallMapCallingItem::pixmap(int i) const
 {
-    if (i != 1) return QPixmap();
+    if (i != IDX_COST) return QPixmap();
 
     // Cost pixmap
     EventType* ct = ((CallMapView*)widget())->eventType();
@@ -862,16 +882,16 @@ CallMapCallerItem::CallMapCallerItem(double factor, TraceCall* c)
 
 QString CallMapCallerItem::text(int textNo) const
 {
-  if (textNo == 0) {
+  if (textNo == IDX_FUNCNAME) {
     if (!_c)
       return QObject::tr("(no call)");
 
     return _c->callerName();
   }
 
-  if (textNo == 2) return _c->caller()->prettyLocation();
-  if (textNo == 3) return SubCost(_factor * _c->callCount()).pretty();
-  if (textNo != 1) return QString();
+  if (textNo == IDX_LOCATION) return _c->caller()->prettyLocation();
+  if (textNo == IDX_CALLCOUNT) return SubCost(_factor * _c->callCount()).pretty();
+  if (textNo != IDX_COST) return QString();
 
   EventType* ct;
   ct = ((CallMapView*)widget())->eventType();
@@ -888,13 +908,20 @@ QString CallMapCallerItem::text(int textNo) const
 
 int CallMapCallerItem::maxLines(int i) const
 {
-    if (i == 0) return 1; // one line for function name
+    if (i == IDX_FUNCNAME) return 1; // one line for function name
     return 0; // no limit
+}
+
+DrawParams::Position CallMapCallerItem::position(int i) const
+{
+    if (i == IDX_FUNCNAME) return TopLeft;
+    if (i == IDX_COST) return TopRight;
+    return Default;
 }
 
 QPixmap CallMapCallerItem::pixmap(int i) const
 {
-    if (i != 1) return QPixmap();
+    if (i != IDX_COST) return QPixmap();
 
     // Cost pixmap
     EventType* ct = ((CallMapView*)widget())->eventType();

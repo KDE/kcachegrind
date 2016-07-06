@@ -78,9 +78,6 @@ public:
   virtual int      maxLines(int) const { return 0; }
   // allow breaking up content into multiple lines?
   virtual bool     allowBreak(int) const { return true; }
-  // force to 1st line (truncate if overlap with other field)
-  virtual bool     forceT(int) const { return true; }
-
   virtual int      fieldCount() const { return 0; }
 
   virtual QColor   backColor() const { return Qt::white; }
