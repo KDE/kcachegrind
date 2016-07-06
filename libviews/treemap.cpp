@@ -2367,7 +2367,10 @@ void TreeMapWidget::drawItems(QPainter* p,
     if ((r.height() < _fontHeight) || (r.width() < _fontHeight)) return;
 
     RectDrawing d(r);
-    item->setRotated(_allowRotation && (r.height() > r.width()));
+    // draw text fields rotated to split direction
+    bool rotate = !horizontal(item, r);
+    if (_allowRotation) rotate = (r.height() > r.width());
+    item->setRotated(rotate);
     for (int no=0;no<(int)_attr.size();no++) {
       if (!fieldVisible(no)) continue;
       d.drawField(p, no, item);
@@ -2399,7 +2402,10 @@ void TreeMapWidget::drawItems(QPainter* p,
   if ((r.height() >= _fontHeight) && (r.width() >= _fontHeight)) {
 
     RectDrawing d(r);
-    item->setRotated(_allowRotation && (r.height() > r.width()));
+    // draw text fields rotated to split direction
+    bool rotate = !horizontal(item, r);
+    if (_allowRotation) rotate = (r.height() > r.width());
+    item->setRotated(rotate);
     for (int no=0;no<(int)_attr.size();no++) {
       if (!fieldVisible(no)) continue;
       if (!fieldForced(no)) continue;
@@ -2425,8 +2431,6 @@ void TreeMapWidget::drawItems(QPainter* p,
     self = 0;
   }
   else {
-    self = user_sum - child_sum;
-
     if (user_sum < child_sum) {
       //qDebug() << "TreeMWidget " <<
       //       item->path() << ": User sum " << user_sum << " < Child Items sum " << child_sum;
@@ -2436,30 +2440,17 @@ void TreeMapWidget::drawItems(QPainter* p,
       self = 0.0;
     }
     else {
-      // Try to put the border waste in self
-      // percent of wasted space on border...
-      float borderArea = origRect.width() * origRect.height();
-      borderArea = (borderArea - r.width()*r.height())/borderArea;
-      unsigned borderValue = (unsigned)(borderArea * user_sum);
-
-      if (borderValue > self) {
-        if (_skipIncorrectBorder) {
-          r = origRect;
-          // should add my self to nested self and set my self =0
-        }
-        else
-          self = 0.0;
-      }
-      else
-        self -= borderValue;
-
-      user_sum = child_sum + self;
+      self = user_sum - child_sum;
     }
   }
 
-  bool rotate = (_allowRotation && (r.height() > r.width()));
+  // use requested splitting algorithm: we rotate for horizontal splits
+  bool rotate = horizontal(item, r);
   int self_length = (int)( ((rotate) ? r.width() : r.height()) *
-			   self / user_sum + .5);
+                           self / user_sum + .5);
+  // drawn border belongs to self (TODO: option _skipIncorrectBorder)
+  self_length -= 2 * item->borderWidth();
+
   if (self_length > 0) {
     // take space for self cost
     QRect sr = r;
