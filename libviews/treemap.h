@@ -76,6 +76,8 @@ public:
   virtual Position position(int) const = 0;
   // 0: no limit, negative: leave at least -maxLines() free
   virtual int      maxLines(int) const { return 0; }
+  // allow breaking up content into multiple lines?
+  virtual bool     allowBreak(int) const { return true; }
   virtual int      fieldCount() const { return 0; }
 
   virtual QColor   backColor() const { return Qt::white; }

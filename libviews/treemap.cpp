@@ -639,9 +639,13 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
   if (0) qDebug() << "  For '" << name << "': Unused " << unused
 		   << ", StrW " << w << ", Width " << width;
 
+  // adjust available lines according to maxLines
+  int max = dp->maxLines(f);
+  if ((max > 0) && (lines>max)) lines = max;
+
   // if we have limited space at 1st line:
   // use it only if whole name does fit in last line...
-  if ((unused < width) && (w > unused)) {
+  if ((lines>1) && (unused < width) && (w > unused)) {
     y = isBottom ? (y-h) : (y+h);
     lines--;
 
@@ -652,6 +656,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
       _usedBottomLeft = _usedBottomCenter = _usedBottomRight = 0;
     else
       _usedTopLeft = _usedTopCenter = _usedTopRight = 0;
+    unused = width;
   }
 
   p->save();
@@ -665,11 +670,6 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
   else
     p->translate(r.x()+2, r.y());
 
-
-  // adjust available lines according to maxLines
-  int max = dp->maxLines(f);
-  if ((max > 0) && (lines>max)) lines = max;
-
   /* loop over name parts to break up string depending on available width.
    * every char category change is supposed a possible break,
    * with the exception Uppercase=>Lowercase.
@@ -680,14 +680,15 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
    */
   QString remaining;
   int origLines = lines;
+  int unusedWidth = unused;
   while (lines>0) {
 
 	// more than one line: search for line break
-	if (w>width && lines>1) {
+	if (dp->allowBreak(f) && w>unusedWidth && lines>1) {
 		int breakPos;
 
 		if (!isBottom) {
-			w = pixW + findBreak(breakPos, name, _fm, width - pixW);
+			w = pixW + findBreak(breakPos, name, _fm, unusedWidth - pixW);
 
 			remaining = name.mid(breakPos);
 			// remove space on break point
@@ -697,7 +698,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
 				name = name.left(breakPos);
 		}
 		else { // bottom
-			w = pixW + findBreakBackwards(breakPos, name, _fm, width - pixW);
+			w = pixW + findBreakBackwards(breakPos, name, _fm, unusedWidth - pixW);
 
 			remaining = name.left(breakPos);
 			// remove space on break point
@@ -711,16 +712,16 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
 		remaining = QString();
 
 	/* truncate and add ... if needed */
-	if (w > width) {
-		name = _fm->elidedText(name, Qt::ElideRight, width - pixW);
+	if (w > unusedWidth) {
+		name = _fm->elidedText(name, Qt::ElideRight, unusedWidth - pixW);
 		w = _fm->width(name) + pixW;
 	}
 
     int x = 0;
     if (isCenter)
-      x = (width - w)/2;
+      x = (unusedWidth - w)/2;
     else if (isRight)
-      x = width - w;
+      x = unusedWidth - w;
 
     if (!pixDrawn) {
         pixY = y+(h-pixH)/2; // default: center vertically
@@ -738,7 +739,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
 		     << x+pixW << "/" << y;
 
     p->drawText( x+pixW, y,
-		 width - pixW, h,
+		 unusedWidth - pixW, h,
 		 Qt::AlignLeft, name);
     y = isBottom ? (y-h) : (y+h);
     lines--;
@@ -746,6 +747,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
     if (remaining.isEmpty()) break;
     name = remaining;
     w = pixW + _fm->width(name);
+    unusedWidth = width;
   }
 
   // make sure the pix stays visible
@@ -2369,7 +2371,10 @@ void TreeMapWidget::drawItems(QPainter* p,
     if ((r.height() < _fontHeight) || (r.width() < _fontHeight)) return;
 
     RectDrawing d(r);
-    item->setRotated(_allowRotation && (r.height() > r.width()));
+    // draw text fields rotated to split direction
+    bool rotate = !horizontal(item, r);
+    if (_allowRotation) rotate = (r.height() > r.width());
+    item->setRotated(rotate);
     for (int no=0;no<(int)_attr.size();no++) {
       if (!fieldVisible(no)) continue;
       d.drawField(p, no, item);
@@ -2401,7 +2406,10 @@ void TreeMapWidget::drawItems(QPainter* p,
   if ((r.height() >= _fontHeight) && (r.width() >= _fontHeight)) {
 
     RectDrawing d(r);
-    item->setRotated(_allowRotation && (r.height() > r.width()));
+    // draw text fields rotated to split direction
+    bool rotate = !horizontal(item, r);
+    if (_allowRotation) rotate = (r.height() > r.width());
+    item->setRotated(rotate);
     for (int no=0;no<(int)_attr.size();no++) {
       if (!fieldVisible(no)) continue;
       if (!fieldForced(no)) continue;
@@ -2427,8 +2435,6 @@ void TreeMapWidget::drawItems(QPainter* p,
     self = 0;
   }
   else {
-    self = user_sum - child_sum;
-
     if (user_sum < child_sum) {
       //qDebug() << "TreeMWidget " <<
       //       item->path() << ": User sum " << user_sum << " < Child Items sum " << child_sum;
@@ -2438,30 +2444,17 @@ void TreeMapWidget::drawItems(QPainter* p,
       self = 0.0;
     }
     else {
-      // Try to put the border waste in self
-      // percent of wasted space on border...
-      float borderArea = origRect.width() * origRect.height();
-      borderArea = (borderArea - r.width()*r.height())/borderArea;
-      unsigned borderValue = (unsigned)(borderArea * user_sum);
-
-      if (borderValue > self) {
-        if (_skipIncorrectBorder) {
-          r = origRect;
-          // should add my self to nested self and set my self =0
-        }
-        else
-          self = 0.0;
-      }
-      else
-        self -= borderValue;
-
-      user_sum = child_sum + self;
+      self = user_sum - child_sum;
     }
   }
 
-  bool rotate = (_allowRotation && (r.height() > r.width()));
+  // use requested splitting algorithm: we rotate for horizontal splits
+  bool rotate = horizontal(item, r);
   int self_length = (int)( ((rotate) ? r.width() : r.height()) *
-			   self / user_sum + .5);
+                           self / user_sum + .5);
+  // drawn border belongs to self (TODO: option _skipIncorrectBorder)
+  self_length -= 2 * item->borderWidth();
+
   if (self_length > 0) {
     // take space for self cost
     QRect sr = r;
