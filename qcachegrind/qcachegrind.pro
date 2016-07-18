@@ -4,6 +4,10 @@ greaterThan(QT_MAJOR_VERSION, 4) {
     QT += widgets
 }
 
+greaterThan(QT_VERSION, 5.7) {
+    CONFIG += c++11
+}
+
 contains(QT_CONFIG, dbus) {
     DEFINES += QT_DBUS_SUPPORT
     QT += dbus
