@@ -179,12 +179,9 @@ void SourceItem::updateCost()
     QString str;
     QPixmap p;
 
-    QString icon = QStringLiteral("edit-undo");
-#if 0 // TODO
-    KIconLoader* loader = KIconLoader::global();
-    p= loader->loadIcon(icon, KIconLoader::Small, 0,
-                        KIconLoader::DefaultState, QStringList(), 0, true);
-#endif
+    QFontMetrics fm(font(4));
+    p = QIcon::fromTheme(QStringLiteral("edit-undo")).pixmap(fm.height());
+
     if (p.isNull())
       str = QObject::tr("(cycle)");
 
