@@ -22,7 +22,7 @@
 
 #include "callitem.h"
 
-#include <QPixmap>
+#include <QFontMetrics>
 
 #include "globalguiconfig.h"
 #include "listutils.h"
@@ -104,7 +104,7 @@ void CallItem::updateCost()
 	QString str = QStringLiteral("-");
 
 	setText(0, str);
-        setIcon(0, QPixmap());
+        setIcon(0, QIcon());
     }
     else {
 	double sum  = 100.0 * _sum / total;
@@ -129,7 +129,7 @@ void CallItem::updateCost()
 	QString str = QStringLiteral("-");
 
 	setText(2, str);
-        setIcon(2, QPixmap());
+        setIcon(2, QIcon());
       }
       else {
 	double sum  = 100.0 * _sum2 / total;
@@ -145,15 +145,10 @@ void CallItem::updateCost()
       }
     }
 
-    QPixmap p;
+    QIcon p;
     if (sameCycle && !selectedIsCycle && !shownIsCycle) {
-
-	QString icon = QStringLiteral("edit-undo");
-#if 0 // TODO
-	KIconLoader* loader = KIconLoader::global();
-	p= loader->loadIcon(icon, KIconLoader::Small, 0,
-			    KIconLoader::DefaultState, QStringList(), 0, true);
-#endif
+        QFontMetrics fm(font(4));
+        p = QIcon::fromTheme(QStringLiteral("edit-undo")).pixmap(fm.height());
     }
     setIcon(4, p);
 }
