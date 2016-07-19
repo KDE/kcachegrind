@@ -22,43 +22,43 @@ struct perf_header {
 class PerfLoader : public Loader
 {
 public:
-    QByteArray hostname;
-    QByteArray osRelease;
-    QByteArray perfVersion;
-    QByteArray architecture;
+    QString hostname;
+    QString osRelease;
+    QString perfVersion;
+    QString architecture;
     quint32 cpusOnline, cpusAvailable;
-    QByteArray cpuDescription;
-    QByteArray cpuId;
+    QString cpuDescription;
+    QString cpuId;
     quint64 memoryAvailable;
-    QByteArray commandLine;
-    QList<QByteArray> cpuCores;
-    QList<QByteArray> cpuThreads;
+    QString commandLine;
+    QList<QString> cpuCores;
+    QList<QString> cpuThreads;
 
     enum HeaderFlags {
         HEADER_RESERVED         = 0,    /* always cleared */
         HEADER_FIRST_FEATURE    = 1,
         HEADER_TRACING_DATA     = 1,
-        HEADER_BUILD_ID,
+        HEADER_BUILD_ID = (1 << 2),
 
-        HEADER_HOSTNAME,
-        HEADER_OSRELEASE,
-        HEADER_VERSION,
-        HEADER_ARCH,
-        HEADER_NRCPUS,
-        HEADER_CPUDESC,
-        HEADER_CPUID,
-        HEADER_TOTAL_MEM,
-        HEADER_CMDLINE,
-        HEADER_EVENT_DESC,
-        HEADER_CPU_TOPOLOGY,
-        HEADER_NUMA_TOPOLOGY,
-        HEADER_BRANCH_STACK,
-        HEADER_PMU_MAPPINGS,
-        HEADER_GROUP_DESC,
-        HEADER_AUXTRACE,
-        HEADER_STAT,
-        HEADER_CACHE,
-        HEADER_LAST_FEATURE,
+        HEADER_HOSTNAME = (1 << 3),
+        HEADER_OSRELEASE = (1 << 4),
+        HEADER_VERSION = (1 << 5),
+        HEADER_ARCH = (1 << 6),
+        HEADER_NRCPUS = (1 << 7),
+        HEADER_CPUDESC = (1 << 8),
+        HEADER_CPUID = (1 << 9),
+        HEADER_TOTAL_MEM = (1 << 10),
+        HEADER_CMDLINE = (1 << 11),
+        HEADER_EVENT_DESC = (1 << 12),
+        HEADER_CPU_TOPOLOGY = (1 << 13),
+        HEADER_NUMA_TOPOLOGY = (1 << 14),
+        HEADER_BRANCH_STACK = (1 << 15),
+        HEADER_PMU_MAPPINGS = (1 << 16),
+        HEADER_GROUP_DESC = (1 << 17),
+        HEADER_AUXTRACE = (1 << 18),
+        HEADER_STAT = (1 << 19),
+        HEADER_CACHE = (1 << 20),
+        HEADER_LAST_FEATURE = (1 << 21),
         HEADER_FEAT_BITS        = 256,
      };
 
@@ -73,9 +73,9 @@ public:
     bool readEventTypes(quint64 attributeSize);
 
     quint64 headerStart();
-    void headerEnd();
-    QByteArray readString();
-    QList<QByteArray> readStringList();
+    bool headerEnd();
+    QString readString();
+    QStringList readStringList();
 
     bool readTracingDataHeader();
     bool readBuildHeader();
@@ -98,6 +98,9 @@ public:
     bool readStatHeader();
     bool readCacheHeader();
 
+    quint64 dataOffset;
+    quint64 dataSize;
+
     QDataStream m_stream;
 };
 
@@ -111,18 +114,25 @@ PerfLoader::PerfLoader() :
 {
 }
 
-static const QByteArray FILEMAGIC("PERFILE2");
 PerfLoader::~PerfLoader()
 {
 }
+
+static const QByteArray FILEMAGIC("PERFILE2");
+static const quint64 MAGIC_BIG_ENDIAN = 0x32454c4946524550ULL;
+static const quint64 MAGIC_LITTLE_ENDIAN = 0x50455246494c4532ULL;
 
 bool PerfLoader::canLoad(QIODevice *file)
 {
     Q_ASSERT(file);
 
+    file->reset();
 
-    QByteArray magic = file->read(FILEMAGIC.size());
-    if (magic != FILEMAGIC) {
+    QDataStream stream(file);
+    quint64 magic;
+    stream >> magic;
+    if (magic != MAGIC_LITTLE_ENDIAN && magic != MAGIC_BIG_ENDIAN) {
+        qDebug() << "Invalid magic:" << magic;
         return false;
     }
 
@@ -134,26 +144,38 @@ int PerfLoader::load(TraceData *, QIODevice *file, const QString &filename)
     Q_UNUSED(filename);
 
     file->reset();
-    file->read(FILEMAGIC.size());
-
     m_stream.setDevice(file);
+
+    quint64 magic;
+    m_stream >> magic;
+    if (magic == MAGIC_LITTLE_ENDIAN) {
+        m_stream.setByteOrder(QDataStream::LittleEndian);
+    } else {
+        m_stream.setByteOrder(QDataStream::BigEndian);
+    }
 
     quint64 headerSize, attributeSize;
     m_stream >> headerSize >> attributeSize;
+    qDebug() << "Header size:" << headerSize;
+    qDebug() << "Attribute size:" << attributeSize;
 
     if (!readAttributes(attributeSize)) {
+        qWarning() << "Can't read attributes";
         return false;
     }
     if (!readData()) {
+        qWarning() << "Can't read data";
         return false;
     }
     if (!readEventTypes(attributeSize)) {
+        qWarning() << "Can't read event types";
         return false;
     }
 
     quint64 flags;
-    quint64 flags1[3];
-    m_stream >> flags >> flags1[0] >> flags1[1] >> flags1[2];
+    m_stream >> flags;
+
+    m_stream.device()->seek(dataOffset + dataSize);
 
     if (flags & HEADER_TRACING_DATA) {
         if (!readTracingDataHeader()) {
@@ -162,114 +184,136 @@ int PerfLoader::load(TraceData *, QIODevice *file, const QString &filename)
     }
     if (flags & HEADER_BUILD_ID) {
         if (!readBuildHeader()) {
+            qWarning() << "Invalid build header";
             return false;
         }
     }
 
     if (flags & HEADER_HOSTNAME) {
         if (!readHostnameHeader()) {
+            qWarning() << "Invalid hostname header";
             return false;
         }
+    } else {
+        qWarning() << "Hostname feature is guaranteed to be here, something is wrong";
+        return false;
     }
 
     if (flags & HEADER_OSRELEASE) {
         if (!readOsReleaseHeader()) {
+            qWarning() << "Invalid OS release header";
             return false;
         }
     }
 
     if (flags & HEADER_VERSION) {
         if (!readVersionHeader()) {
+            qWarning() << "Invalid version header";
             return false;
         }
     }
 
     if (flags & HEADER_ARCH) {
         if (!readArchHeader()) {
+            qWarning() << "Invalid architecture header";
             return false;
         }
     }
 
     if (flags & HEADER_NRCPUS) {
         if (!readCpuNumberHeader()) {
+            qWarning() << "Invalid cpu number header";
             return false;
         }
     }
 
     if (flags & HEADER_CPUDESC) {
         if (!readCpuDescriptionHeader()) {
+            qWarning() << "Invalid cpu description header";
             return false;
         }
     }
 
     if (flags & HEADER_CPUID) {
         if (!readCpuIdHeader()) {
+            qWarning() << "Invalid cpu id header";
             return false;
         }
     }
 
     if (flags & HEADER_TOTAL_MEM) {
         if (!readTotalMemHeader()) {
+            qWarning() << "Invalid total memory header";
             return false;
         }
     }
 
     if (flags & HEADER_CMDLINE) {
         if (!readCmdLineHeader()) {
+            qWarning() << "Invalid command line header";
             return false;
         }
     }
 
     if (flags & HEADER_EVENT_DESC) {
         if (!readEventDescHeader()) {
+            qWarning() << "Invalid command description header";
             return false;
         }
     }
 
     if (flags & HEADER_CPU_TOPOLOGY) {
         if (!readCpuTopologyHeader()) {
+            qWarning() << "Invalid cpu topology header";
             return false;
         }
     }
 
     if (flags & HEADER_NUMA_TOPOLOGY) {
         if (!readNumaTopologyHeader()) {
+            qWarning() << "Invalid numa topology header";
             return false;
         }
     }
 
     if (flags & HEADER_BRANCH_STACK) {
         if (!readBranchStackHeader()) {
+            qWarning() << "Invalid branch stack header";
             return false;
         }
     }
 
     if (flags & HEADER_PMU_MAPPINGS) {
         if (!readPmuMappingHeader()) {
+            qWarning() << "Invalid pmu mapping header";
             return false;
         }
     }
 
     if (flags & HEADER_GROUP_DESC) {
         if (!readGroupDescHeader()) {
+            qWarning() << "Invalid group description header";
             return false;
         }
     }
 
     if (flags & HEADER_AUXTRACE) {
         if (!readAuxTraceHeader()) {
+            qWarning() << "Invalid aux trace header";
             return false;
         }
     }
 
     if (flags & HEADER_STAT) {
         if (!readStatHeader()) {
+            qWarning() << "Invalid stat header";
             return false;
         }
     }
 
     if (flags & HEADER_CACHE) {
         if (!readCacheHeader()) {
+            qWarning() << "Invalid cache header";
             return false;
         }
     }
@@ -280,9 +324,10 @@ int PerfLoader::load(TraceData *, QIODevice *file, const QString &filename)
 
 bool PerfLoader::readAttributes(quint64 attributeSize)
 {
-    quint64 length = headerStart();
+    Q_UNUSED(attributeSize);
 
-    qDebug() << length / attributeSize;
+    qDebug() << "Attribute section size:" << headerStart();
+
 
     /*
      * This is an array of perf_event_attrs, each attr_size bytes long, which defines
@@ -290,14 +335,15 @@ bool PerfLoader::readAttributes(quint64 attributeSize)
      * description.
      */
 
-    headerEnd();
-
-    return true;
+    return headerEnd();
 }
 
 bool PerfLoader::readData()
 {
-    headerStart();
+    dataSize = headerStart();
+    dataOffset = m_stream.device()->pos();
+
+    qDebug() << "Data size" << dataSize;
 
     /*
      * This section is the bulk of the file. It consist of a stream of perf_events
@@ -307,14 +353,12 @@ bool PerfLoader::readData()
      * see: https://lwn.net/Articles/644919/
      */
 
-    headerEnd();
-
-    return true;
+    return headerEnd();
 }
 
 bool PerfLoader::readEventTypes(quint64 attributeSize)
 {
-    headerStart();
+    qDebug() << "Event types length" << headerStart();
 
 
     /*
@@ -329,26 +373,29 @@ bool PerfLoader::readEventTypes(quint64 attributeSize)
 //        struct perf_file_section ids;
 //      ids points to a array of uint64_t defining the ids for event attr attr.
     {
-        quint64 length = headerStart();
-        quint64 ids[length];
-        for (size_t i=0; i<length / sizeof(quint64); i++) {
-            m_stream >> ids[i];
-        }
+//        quint64 length = headerStart();
+//        quint64 ids[length];
+//        for (size_t i=0; i<length / sizeof(quint64); i++) {
+//            m_stream >> ids[i];
+//        }
 
-        headerEnd();
+//        headerEnd();
     }
 
 //    }
 
-    headerEnd();
-
-    return true;
+    return headerEnd();
 }
 
 quint64 PerfLoader::headerStart()
 {
-    quint64 offset, length;
+    qint64 offset, length;
     m_stream >> offset >> length;
+    if (offset > m_stream.device()->size()) {
+        qWarning() << "Invalid header offset" << offset;
+        m_stream.device()->close();
+        return 0;
+    }
 
     m_stream.device()->startTransaction();
     m_stream.device()->seek(offset);
@@ -356,21 +403,38 @@ quint64 PerfLoader::headerStart()
     return length;
 }
 
-void PerfLoader::headerEnd()
+bool PerfLoader::headerEnd()
 {
+    QString errorString = m_stream.device()->errorString();
+    if (!m_stream.device()->isTransactionStarted()) {
+        qWarning() << "Transaction not started!";
+        return false;
+    }
+    if (m_stream.status() != QDataStream::Ok) {
+        qWarning() << "Error while ending transactions" << errorString;
+        m_stream.device()->rollbackTransaction();
+        return false;
+    }
     m_stream.device()->rollbackTransaction();
+
+    return true;
 }
 
-QByteArray PerfLoader::readString()
+QString PerfLoader::readString()
 {
     quint32 stringLength;
     m_stream >> stringLength;
-    return m_stream.device()->read(stringLength);
+    if (stringLength > 512) {
+        qWarning() << "Abnormal string length";
+        m_stream.device()->close();
+        return QString();
+    }
+    return QString::fromLocal8Bit(m_stream.device()->read(stringLength));
 }
 
-QList<QByteArray> PerfLoader::readStringList()
+QStringList PerfLoader::readStringList()
 {
-    QList<QByteArray> list;
+    QStringList list;
 
     quint32 stringsCount;
     m_stream >> stringsCount;
@@ -385,9 +449,7 @@ bool PerfLoader::readTracingDataHeader()
 {
     headerStart();
     //TODO
-    headerEnd();
-
-    return true;
+    return headerEnd();
 }
 
 bool PerfLoader::readBuildHeader()
@@ -408,90 +470,80 @@ bool PerfLoader::readBuildHeader()
 //        char			 filename[header.size - offsetof(struct build_id_event, filename)];
 //    };
 
-    headerEnd();
-
-    return true;
+    return headerEnd();
 }
 
 bool PerfLoader::readHostnameHeader()
 {
     headerStart();
     hostname = readString();
-    headerEnd();
-
-    return true;
+    qDebug() << "Hostname:" << hostname;
+    return headerEnd();
 }
 
 bool PerfLoader::readOsReleaseHeader()
 {
     headerStart();
     osRelease = readString();
-    headerEnd();
-
-    return true;
+    qDebug() << "OS release:" << osRelease;
+    return headerEnd();
 }
 
 bool PerfLoader::readVersionHeader()
 {
     headerStart();
     perfVersion = readString();
-    headerEnd();
-
-    return true;
+    qDebug() << "perf version:" << perfVersion;
+    return headerEnd();
 }
 
 bool PerfLoader::readArchHeader()
 {
     headerStart();
     architecture = readString();
-    headerEnd();
-
-    return true;
+    qDebug() << "Architecture" << architecture;
+    return headerEnd();
 }
 
 bool PerfLoader::readCpuNumberHeader()
 {
     headerStart();
     m_stream >> cpusOnline >> cpusAvailable;
-    headerEnd();
-
-    return true;
+    qDebug() << "CPUs online" << cpusOnline;
+    qDebug() << "CPUs available" << cpusAvailable;
+    return headerEnd();
 }
 
 bool PerfLoader::readCpuDescriptionHeader()
 {
     headerStart();
     cpuDescription = readString();
-    headerEnd();
-
-    return true;
+    qDebug() << "CPU description:" << cpuDescription;
+    return headerEnd();
 }
 
 bool PerfLoader::readCpuIdHeader()
 {
     headerStart();
     cpuId = readString();
-    headerEnd();
-
-    return true;
+    qDebug() << "CPU ID:" << cpuId;
+    return headerEnd();
 }
 
 bool PerfLoader::readTotalMemHeader()
 {
     headerStart();
     m_stream >> memoryAvailable;
-    headerEnd();
-
-    return true;
+    qDebug() << "Total memory available:" << memoryAvailable;
+    return headerEnd();
 }
 
 bool PerfLoader::readCmdLineHeader()
 {
     headerStart();
     commandLine = readString();
-    headerEnd();
-
-    return true;
+    qDebug() << "Command line:" << commandLine;
+    return headerEnd();
 }
 
 bool PerfLoader::readEventDescHeader()
@@ -515,9 +567,7 @@ bool PerfLoader::readEventDescHeader()
 //        } events[nr]; // Variable length records
 //    };
 
-    headerEnd();
-
-    return true;
+    return headerEnd();
 }
 
 bool PerfLoader::readCpuTopologyHeader()
@@ -525,9 +575,10 @@ bool PerfLoader::readCpuTopologyHeader()
     headerStart();
     cpuCores = readStringList();
     cpuThreads = readStringList();
-    headerEnd();
 
-    return true;
+    qDebug() << "CPU cores:" << cpuCores;
+    qDebug() << "CPU threads:" << cpuThreads;
+    return headerEnd();
 }
 
 bool PerfLoader::readNumaTopologyHeader()
@@ -549,9 +600,7 @@ bool PerfLoader::readNumaTopologyHeader()
 //       } nodes[nr]; /* Variable length records */
 //   };
 
-   headerEnd();
-
-   return true;
+   return headerEnd();
 }
 
 bool PerfLoader::readBranchStackHeader()
@@ -560,8 +609,7 @@ bool PerfLoader::readBranchStackHeader()
 
     // Not implemented in perf.
 
-    headerEnd();
-    return true;
+    return headerEnd();
 }
 
 bool PerfLoader::readPmuMappingHeader()
@@ -580,9 +628,7 @@ bool PerfLoader::readPmuMappingHeader()
 //           } [nr]; /* Variable length records */
 //    };
 
-    headerEnd();
-
-    return true;
+    return headerEnd();
 }
 
 bool PerfLoader::readGroupDescHeader()
@@ -601,9 +647,7 @@ bool PerfLoader::readGroupDescHeader()
 //    };
 
 
-    headerEnd();
-
-    return true;
+    return headerEnd();
 }
 
 bool PerfLoader::readAuxTraceHeader()
@@ -644,23 +688,20 @@ bool PerfLoader::readAuxTraceHeader()
 
 //    other bits are reserved and should ignored for now
 
-    headerEnd();
-    return true;
+    return headerEnd();
 }
 
 bool PerfLoader::readStatHeader()
 {
     headerStart();
     // TODO
-    headerEnd();
-    return true;
+    return headerEnd();
 }
 
 bool PerfLoader::readCacheHeader()
 {
     headerStart();
     //TODO
-    headerEnd();
-    return true;
+    return headerEnd();
 }
 

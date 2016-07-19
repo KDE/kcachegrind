@@ -73,8 +73,9 @@ Loader* createPerfLoader();
 
 void Loader::initLoaders()
 {
-	_loaderList.append(createCachegrindLoader());
-	//_loaderList.append(GProfLoader::createLoader());
+    _loaderList.append(createCachegrindLoader());
+    _loaderList.append(createPerfLoader());
+    //_loaderList.append(GProfLoader::createLoader());
 }
 
 void Loader::deleteLoaders()
