@@ -34,4 +34,5 @@ SOURCES += \
     $$PWD/pool.cpp \
     $$PWD/stackbrowser.cpp \
     $$PWD/tracedata.cpp \
-    $$PWD/utils.cpp
+    $$PWD/utils.cpp \
+    $$PWD/perfloader.cpp

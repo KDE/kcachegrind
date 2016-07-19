@@ -69,6 +69,7 @@ Loader* Loader::loader(const QString& name)
 
 // factories of available loaders
 Loader* createCachegrindLoader();
+Loader* createPerfLoader();
 
 void Loader::initLoaders()
 {

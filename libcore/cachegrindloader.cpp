@@ -17,6 +17,7 @@
 */
 
 #include "loader.h"
+#include "tracedata.h"
 
 #include <QIODevice>
 #include <QVector>
