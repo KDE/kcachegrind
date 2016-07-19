@@ -3,6 +3,8 @@
 #include <QDataStream>
 #include <QDebug>
 
+#include <linux/perf_event.h>
+
 struct perf_file_section {
     uint64_t offset;	/* offset from start of file */
     uint64_t size;		/* size of the section */
@@ -98,6 +100,13 @@ public:
     bool readStatHeader();
     bool readCacheHeader();
 
+    bool readMmapEvent();
+    bool readLostEvent();
+    bool readThrottleEvent();
+    bool readReadEvent();
+    bool readSampleEvent();
+    bool readMmap2Event();
+
     quint64 dataOffset;
     quint64 dataSize;
 
@@ -158,6 +167,7 @@ int PerfLoader::load(TraceData *, QIODevice *file, const QString &filename)
     m_stream >> headerSize >> attributeSize;
     qDebug() << "Header size:" << headerSize;
     qDebug() << "Attribute size:" << attributeSize;
+    qDebug() << "sizeof attribute" << sizeof(perf_event_attr);
 
     if (!readAttributes(attributeSize)) {
         qWarning() << "Can't read attributes";
@@ -175,7 +185,12 @@ int PerfLoader::load(TraceData *, QIODevice *file, const QString &filename)
     quint64 flags;
     m_stream >> flags;
 
-    m_stream.device()->seek(dataOffset + dataSize);
+    if (!m_stream.device()->seek(dataOffset + dataSize)) {
+        qWarning() << "Unable to seek to header offset";
+        return false;
+    }
+    qDebug() << "Data offset" << dataOffset;
+    qDebug() << "header offset" << dataOffset + dataSize;
 
     if (flags & HEADER_TRACING_DATA) {
         if (!readTracingDataHeader()) {
@@ -326,7 +341,16 @@ bool PerfLoader::readAttributes(quint64 attributeSize)
 {
     Q_UNUSED(attributeSize);
 
-    qDebug() << "Attribute section size:" << headerStart();
+    quint64 sectionSize = headerStart();
+    quint64 count = sectionSize / attributeSize;
+    for (quint64 i=0; i<count; i++) {
+        quint32 type;
+        quint32 size;
+        m_stream >> type >> size;
+        qDebug() << "Type:" << type;
+        qDebug() << "Size:" << size;
+    }
+    qDebug() << count << "event types";
 
 
     /*
@@ -344,6 +368,24 @@ bool PerfLoader::readData()
     dataOffset = m_stream.device()->pos();
 
     qDebug() << "Data size" << dataSize;
+    while (m_stream.device()->pos() < dataSize + dataOffset) {
+        qint64 pos = m_stream.device()->pos();
+        quint32 type;
+        quint16 misc, size;
+        m_stream >> type >> misc >> size;
+        qDebug() << "Type" << type;
+        qDebug() << "Size" << size;
+        // http://lxr.free-electrons.com/source/include/uapi/linux/perf_event.h#L607
+        switch(type){
+        case 9:
+            readSampleEvent();
+        default:
+            qDebug() << type;
+        }
+
+        m_stream.device()->seek(pos + size);
+//        m_stream.skipRawData(size - (sizeof(type) + sizeof(misc) + sizeof(size)));
+    }
 
     /*
      * This section is the bulk of the file. It consist of a stream of perf_events
@@ -422,14 +464,9 @@ bool PerfLoader::headerEnd()
 
 QString PerfLoader::readString()
 {
-    quint32 stringLength;
-    m_stream >> stringLength;
-    if (stringLength > 512) {
-        qWarning() << "Abnormal string length";
-        m_stream.device()->close();
-        return QString();
-    }
-    return QString::fromLocal8Bit(m_stream.device()->read(stringLength));
+    QByteArray string;
+    m_stream >> string;
+    return QString::fromLocal8Bit(string);
 }
 
 QStringList PerfLoader::readStringList()
@@ -703,5 +740,35 @@ bool PerfLoader::readCacheHeader()
     headerStart();
     //TODO
     return headerEnd();
+}
+
+bool PerfLoader::readSampleEvent()
+{
+    quint64 identifier, ip;
+    quint32 pid, tid;
+    quint64 time, addr, id, stream_id;
+    quint32 cpu, res;
+    quint64 period;
+    m_stream >> identifier >> ip >> pid >> tid >> time >> addr >> id >> stream_id >> cpu >> res >> period;
+//    qDebug() << identifier << ip << pid << tid << time << addr << id << stream_id << cpu << res << period;
+    qDebug() << pid;
+    return true;
+    // struct read_format
+
+    quint64 callchainCount;
+    quint64 ips[callchainCount];
+
+    quint32 rawCount;
+    char rawData[rawCount];
+
+    quint64 branchStackCount;
+    quint64 branchFrom[branchStackCount], branchTo[branchStackCount], flags[branchStackCount];
+
+    quint64 sampleAbiRegs;
+
+    quint64 sampleStackSize;
+    char sampleStack[sampleStackSize];
+    quint64 sampleStackDynSize;
+
 }
 
