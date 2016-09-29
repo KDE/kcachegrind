@@ -436,7 +436,7 @@ bool FixFile::nextLine(FixString& str)
     if ((len>0) && (*(current-1) == '\r')) len--;
     str.set(_current, len);
 
-    if (*current == '\n') {
+    if ((left > 0) && (*current == '\n')) {
 	current++;
 	left--;
     }
