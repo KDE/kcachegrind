@@ -176,4 +176,3 @@ Comment[zh_TW]=效能分析資料視覺化
 X-DBUS-StartupType=Multi
 X-DBUS-ServiceName=org.kde.kcachegrind
 Categories=Qt;KDE;Development;
-X-DBUS-ServiceName=org.kde.kcachegrind
