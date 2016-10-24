@@ -1305,16 +1305,11 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce, int x,
 	_percentage = inclP;
 	if (_percentage > 100.0) _percentage = 100.0;
 
-	if (e->call() && (e->call()->isRecursion() || e->call()->inCycle())) {
-		QString icon = "edit-undo";
-#if 0
-		KIconLoader* loader = KIconLoader::global();
-		QPixmap p= loader->loadIcon(icon, KIconLoader::Small, 0,
-		                            KIconLoader::DefaultState, QStringList(), 0,
-		                            true);
-		setPixmap(0, p);
-#endif
-	}
+    if (e->call() && (e->call()->isRecursion() || e->call()->inCycle())) {
+        QFontMetrics fm(font());
+        QPixmap p = QIcon::fromTheme(QString("edit-undo")).pixmap(fm.height());
+        setPixmap(pixPos, p); // replace percentage pixmap
+    }
 }
 
 void CanvasEdgeLabel::paint(QPainter* p,
