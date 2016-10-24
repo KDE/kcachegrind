@@ -196,9 +196,8 @@ void InstrItem::updateCost()
     QString str;
     QPixmap p;
 
-    QFontMetrics fm(font(4));
+    QFontMetrics fm(font(1));
     p = QIcon::fromTheme(QStringLiteral("edit-undo")).pixmap(fm.height());
-
     if (p.isNull())
       str = QObject::tr("(cycle)");
 
