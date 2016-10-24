@@ -3496,6 +3496,12 @@ TraceFunctionMap::ConstIterator TraceData::functionEndIterator() const
   return _functionMap.end();
 }
 
+// _maxCallCount is maintained globally, and only updated at loading
+void TraceData::updateMaxCallCount(SubCost c)
+{
+    if (_maxCallCount < c)
+        _maxCallCount = c;
+}
 
 void TraceData::resetSourceDirs()
 {

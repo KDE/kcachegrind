@@ -872,14 +872,17 @@ void FunctionSelection::setCostColumnWidths()
 {
     functionList->resizeColumnToContents(1);
 
-    if (_eventType && (_eventType->subCost(_data->callMax())>0) ) {
-        functionList->resizeColumnToContents(0);
+    // hide call count column if all call counts given are zero
+    if (_data->maxCallCount() > 0)
         functionList->resizeColumnToContents(2);
-    }
-    else {
-        functionList->header()->resizeSection(0, 0);
+    else
         functionList->header()->resizeSection(2, 0);
-    }
+
+    // hide inclusive costs if all inclusive costs given are zero
+    if (_eventType && (_eventType->subCost(_data->callMax())>0) )
+        functionList->resizeColumnToContents(0);
+    else
+        functionList->header()->resizeSection(0, 0);
 }
 
 void FunctionSelection::functionHeaderClicked(int col)

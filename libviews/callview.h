@@ -52,6 +52,7 @@ private:
   CostItem* canShow(CostItem*);
   void doUpdate(int, bool);
   void refresh();
+  void setCostColumnWidths();
 
   bool _showCallers;
 };

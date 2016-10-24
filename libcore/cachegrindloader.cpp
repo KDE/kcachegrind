@@ -1213,6 +1213,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 				   partCalling,
 				   currentCallCount, line);
       fcc->setMax(_data->callMax());
+      _data->updateMaxCallCount(fcc->callCount());
 #else
       if (hasAddrInfo) {
 	  TraceInstrCall* instrCall;
@@ -1235,6 +1236,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 
 	  // update maximum of call cost
 	  _data->callMax()->maxCost(partInstrCall);
+      _data->updateMaxCallCount(partInstrCall->callCount());
       }
 
       if (hasLineInfo) {
@@ -1249,6 +1251,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
 
 	  // update maximum of call cost
 	  _data->callMax()->maxCost(partLineCall);
+      _data->updateMaxCallCount(partLineCall->callCount());
       }
 #endif
       currentCalledFile = 0;

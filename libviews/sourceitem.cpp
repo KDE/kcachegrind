@@ -95,9 +95,13 @@ SourceItem::SourceItem(SourceView* sv, QTreeWidgetItem* parent,
 
   SubCost cc = _lineCall->callCount();
   QString callStr = QStringLiteral("  ");
-  if (cc==0)
-      callStr += QObject::tr("Active call to '%1'")
-          .arg(_lineCall->call()->calledName());
+  if (cc==0) {
+      if (((TraceItemView*)_view)->data()->maxCallCount() > 0)
+          callStr += QObject::tr("Active call to '%1'");
+      else
+          callStr += QObject::tr("Call to '%1'");
+      callStr = callStr.arg(_lineCall->call()->calledName());
+  }
   else
       callStr += QObject::tr("%n call(s) to '%2'", "", (uint64)cc)
           .arg(_lineCall->call()->calledName());
