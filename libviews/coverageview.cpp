@@ -364,6 +364,11 @@ void CoverageView::refresh()
     header()->setSortIndicatorShown(false);
     // resize to content now (section size still can be interactively changed)
     header()->resizeSections(QHeaderView::ResizeToContents);
+
+    if (_data->maxCallCount() == 0) {
+        // hide call count
+        setColumnWidth(_showCallers ? 2 : 3, 0);
+    }
 }
 
 #include "coverageview.moc"

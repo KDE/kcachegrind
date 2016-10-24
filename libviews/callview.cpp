@@ -290,12 +290,33 @@ void CallView::refresh()
     // enabling sorting switches on the indicator, but we want it off
     header()->setSortIndicatorShown(false);
     // resize to content now (section size still can be interactively changed)
-    header()->resizeSections(QHeaderView::ResizeToContents);
+    setCostColumnWidths();
+}
 
-    if (!_eventType2) {
+void CallView::setCostColumnWidths()
+{
+    // inclusive cost columns
+    resizeColumnToContents(0);
+    if (_eventType2)
+        resizeColumnToContents(2);
+    else
         setColumnWidth(2, 0);
+
+    if (_data->maxCallCount() == 0) {
+        // hide "per call" columns and call count column
+        setColumnWidth(1, 0);
         setColumnWidth(3, 0);
+        setColumnWidth(4, 0);
+    }
+    else {
+        resizeColumnToContents(1);
+        if (_eventType2)
+            resizeColumnToContents(3);
+        else
+            setColumnWidth(3, 0);
+        resizeColumnToContents(4);
     }
 }
+
 
 #include "callview.moc"

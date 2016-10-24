@@ -1446,6 +1446,8 @@ class TraceData: public ProfileCostArray
   const TraceFunctionCycleList& functionCycles() { return _functionCycles; }
 
   ProfileCostArray* callMax() { return &_callMax; }
+  SubCost maxCallCount() { return _maxCallCount; }
+  void updateMaxCallCount(SubCost);
 
   void setCommand(const QString& command) { _command = command; }
   QString command() const { return _command; }
@@ -1504,6 +1506,7 @@ class TraceData: public ProfileCostArray
   // Max of all costs of calls: This allows to see if the incl. cost can
   // be hidden for a cost type, as it is always the same as self cost
   ProfileCostArray _callMax;
+  SubCost _maxCallCount;
 
   // cycles
   TraceFunctionCycleList _functionCycles;

@@ -1292,10 +1292,15 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce, int x,
 	else
 		setText(1, SubCost(e->cost).pretty());
 
-	setPosition(0, DrawParams::TopCenter);
-	SubCost count((e->count < 1.0) ? 1.0 : e->count);
-	setText(0, QString("%1 x").arg(count.pretty()));
-	setPixmap(0, percentagePixmap(25, 10, (int)(inclP+.5), Qt::blue, true));
+    int pixPos = 1;
+    if (((TraceItemView*)_view)->data()->maxCallCount() > 0) {
+        setPosition(0, DrawParams::TopCenter);
+        SubCost count((e->count < 1.0) ? 1.0 : e->count);
+        setText(0, QString("%1 x").arg(count.pretty()));
+        pixPos = 0;
+        setToolTip(QString("%1 (%2)").arg(text(0)).arg(text(1)));
+    }
+    setPixmap(pixPos, percentagePixmap(25, 10, (int)(inclP+.5), Qt::blue, true));
 
 	_percentage = inclP;
 	if (_percentage > 100.0) _percentage = 100.0;
@@ -1310,8 +1315,6 @@ CanvasEdgeLabel::CanvasEdgeLabel(CallGraphView* v, CanvasEdge* ce, int x,
 		setPixmap(0, p);
 #endif
 	}
-
-	setToolTip(QString("%1 (%2)").arg(text(0)).arg(text(1)));
 }
 
 void CanvasEdgeLabel::paint(QPainter* p,
