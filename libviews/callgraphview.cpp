@@ -1073,7 +1073,7 @@ void GraphExporter::buildGraph(TraceFunction* f, int depth, bool toCallees,
 		// from here with full incl. cost because of previous cutoffs
 		if ((e.cost >= _realCallLimit) && (oldCost < _realCallLimit))
 			cost = e.cost;
-		if (cost < _realCallLimit) {
+		if ((cost <= 0) || (cost <= _realCallLimit)) {
 			if (0)
 				qDebug("  Edge Cutoff, limit not reached");
 			continue;
@@ -1085,7 +1085,10 @@ void GraphExporter::buildGraph(TraceFunction* f, int depth, bool toCallees,
 		else
 			s = f2->inclusive()->subCost(_eventType);
 		SubCost v = call->subCost(_eventType);
-		// FIXME: Can s be 0?
+
+		// Never recurse if s or v is 0 (can happen with bogus input)
+		if ((v == 0) || (s== 0)) continue;
+
 		buildGraph(f2, depth+1, toCallees, factor * v / s);
 	}
 }
