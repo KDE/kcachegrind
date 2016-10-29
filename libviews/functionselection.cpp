@@ -351,11 +351,11 @@ void FunctionSelection::addGroupMenu(QMenu* menu)
 	addGroupAction(m,  ProfileContext::Function, tr("No Grouping"));
 	m->addSeparator();
     }
-    if (_data->objectMap().count()>1)
+    if (_data && _data->objectMap().count()>1)
 	addGroupAction(m, ProfileContext::Object);
-    if (_data->fileMap().count()>1)
+    if (_data && _data->fileMap().count()>1)
 	addGroupAction(m, ProfileContext::File);
-    if (_data->classMap().count()>1)
+    if (_data && _data->classMap().count()>1)
 	addGroupAction(m, ProfileContext::Class);
     addGroupAction(m, ProfileContext::FunctionCycle);
 
