@@ -302,7 +302,8 @@ void FunctionSelection::functionContext(const QPoint & p)
         }
     }
 
-    addGroupMenu(&popup);
+    QMenu* m = popup.addMenu(tr("Grouping"));
+    updateGroupingMenu(m);
     popup.addSeparator();
     addGoMenu(&popup);
 
@@ -321,7 +322,8 @@ void FunctionSelection::groupContext(const QPoint & p)
         addEventTypeMenu(&popup,false);
         popup.addSeparator();
     }
-    addGroupMenu(&popup);
+    QMenu* m = popup.addMenu(tr("Grouping"));
+    updateGroupingMenu(m);
     popup.addSeparator();
     addGoMenu(&popup);
 
@@ -343,24 +345,29 @@ void FunctionSelection::addGroupAction(QMenu* m,
     a->setChecked(_groupType == v);
 }
 
-void FunctionSelection::addGroupMenu(QMenu* menu)
+// Clears and repopulates the given menu with dynamic items for grouping.
+// Menu item handlers for setting the grouping are installed.
+void FunctionSelection::updateGroupingMenu(QMenu* m)
 {
-    QMenu* m = menu->addMenu(tr("Grouping"));
+    if (!m) return;
+    m->clear();
+
+    // use a unique connection, as we may be called multiple times
+    //  for same menu (e.g. for repopulating a menu related to a QAction)
+    connect(m, SIGNAL(triggered(QAction*)),
+            this, SLOT(groupTypeSelected(QAction*)), Qt::UniqueConnection);
 
     if (_groupType != ProfileContext::Function) {
-	addGroupAction(m,  ProfileContext::Function, tr("No Grouping"));
-	m->addSeparator();
+        addGroupAction(m,  ProfileContext::Function, tr("No Grouping"));
+        m->addSeparator();
     }
     if (_data && _data->objectMap().count()>1)
-	addGroupAction(m, ProfileContext::Object);
+        addGroupAction(m, ProfileContext::Object);
     if (_data && _data->fileMap().count()>1)
-	addGroupAction(m, ProfileContext::File);
+        addGroupAction(m, ProfileContext::File);
     if (_data && _data->classMap().count()>1)
-	addGroupAction(m, ProfileContext::Class);
+        addGroupAction(m, ProfileContext::Class);
     addGroupAction(m, ProfileContext::FunctionCycle);
-
-    connect(m, SIGNAL(triggered(QAction*)),
-	  this, SLOT(groupTypeSelected(QAction*)));
 }    
 
 

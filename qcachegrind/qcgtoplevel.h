@@ -134,6 +134,9 @@ public slots:
   void backTriggered(QAction*);
   void upAboutToShow();
   void upTriggered(QAction*);
+  void primaryAboutToShow();
+  void secondaryAboutToShow();
+  void groupingAboutToShow();
 
   bool setEventType(EventType*);
   bool setEventType2(EventType*);
@@ -191,6 +194,7 @@ private:
   void createMiscActions();
   void setupMainWidget(MainWidget*);
   void setupPartSelection(PartSelection*);
+  void updateEventTypeMenu(QMenu* m, bool secondary);
   void restoreCurrentState(const QString& postfix);
   void saveCurrentState(const QString& postfix);
   void saveTraceSettings();
@@ -219,6 +223,8 @@ private:
   QAction *_sidebarMenuAction, *_recentFilesMenuAction;
   QAction *_cyclesToggleAction, *_percentageToggleAction;
   QAction *_expandedToggleAction, *_hideTemplatesToggleAction;
+  QAction *_primaryMenuAction, *_secondaryMenuAction;
+  QAction *_groupingMenuAction;
   QAction *_splittedToggleAction, *_splitDirectionToggleAction;
   QAction *_layoutNext, *_layoutPrev, *_layoutRemove, *_layoutDup;
   QAction *_layoutRestore, *_layoutSave;
