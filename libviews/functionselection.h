@@ -60,7 +60,7 @@ public:
   QString whatsThis() const;
   void setData(TraceData*);
 
-  void addGroupMenu(QMenu*);
+  void updateGroupingMenu(QMenu*);
 
 public slots:
   void searchReturnPressed();

@@ -258,6 +258,24 @@ void QCGTopLevel::recentFilesTriggered(QAction* action)
         load(QStringList(QDir::fromNativeSeparators(action->text())));
 }
 
+void QCGTopLevel::primaryAboutToShow()
+{
+    updateEventTypeMenu(_primaryMenuAction->menu(), false);
+}
+
+void QCGTopLevel::secondaryAboutToShow()
+{
+    updateEventTypeMenu(_secondaryMenuAction->menu(), true);
+}
+
+void QCGTopLevel::groupingAboutToShow()
+{
+    if (!_functionSelection) return;
+    _functionSelection->updateGroupingMenu(_groupingMenuAction->menu());
+}
+
+
+
 void QCGTopLevel::createDocks()
 {
     // part visualization/selection side bar
@@ -356,6 +374,20 @@ void QCGTopLevel::createActions()
     connect(_exitAction, &QAction::triggered, this, &QWidget::close);
 
     // view menu actions
+
+    _primaryMenuAction = new QAction(tr( "Primary Event Type" ), this );
+    _primaryMenuAction->setMenu(new QMenu(this));
+    connect(_primaryMenuAction->menu(), &QMenu::aboutToShow,
+	    this, &QCGTopLevel::primaryAboutToShow );
+    _secondaryMenuAction = new QAction(tr( "Secondary Event Type" ), this );
+    _secondaryMenuAction->setMenu(new QMenu(this));
+    connect(_secondaryMenuAction->menu(), &QMenu::aboutToShow,
+	    this, &QCGTopLevel::secondaryAboutToShow );
+    _groupingMenuAction = new QAction(tr( "Grouping" ), this );
+    _groupingMenuAction->setMenu(new QMenu(this));
+    connect(_groupingMenuAction->menu(), &QMenu::aboutToShow,
+	    this, &QCGTopLevel::groupingAboutToShow );
+
     icon = QApplication::style()->standardIcon(QStyle::SP_BrowserReload);
     _cyclesToggleAction = new QAction(icon, tr("Detect Cycles"), this);
     _cyclesToggleAction->setCheckable(true);
@@ -559,14 +591,18 @@ void QCGTopLevel::createMenu()
     layoutMenu->addAction(_layoutRestore);
 
     QMenu* viewMenu = mBar->addMenu(tr("&View"));
+    viewMenu->addAction(_primaryMenuAction);
+    viewMenu->addAction(_secondaryMenuAction);
+    viewMenu->addAction(_groupingMenuAction);
+    viewMenu->addSeparator();
+    viewMenu->addMenu(layoutMenu);
+    viewMenu->addAction(_splittedToggleAction);
+    viewMenu->addAction(_splitDirectionToggleAction);
+    viewMenu->addSeparator();
     viewMenu->addAction(_cyclesToggleAction);
     viewMenu->addAction(_percentageToggleAction);
     viewMenu->addAction(_expandedToggleAction);
     viewMenu->addAction(_hideTemplatesToggleAction);
-    viewMenu->addSeparator();
-    viewMenu->addAction(_splittedToggleAction);
-    viewMenu->addAction(_splitDirectionToggleAction);
-    viewMenu->addMenu(layoutMenu);
 
     QMenu* goMenu = mBar->addMenu(tr("&Go"));
     goMenu->addAction(_backAction);
@@ -1291,60 +1327,66 @@ void QCGTopLevel::setData(TraceData* data)
   updateStatusBar();
 }
 
+// Clears and repopulates the given menu with dynamic items for event types.
+// Menu item handlers for setting the types are installed.
+void QCGTopLevel::updateEventTypeMenu(QMenu* m, bool secondary)
+{
+    QAction* action;
+
+    if (!m) return;
+    m->clear();
+
+    if (!_data) {
+        // no data loaded yet
+        m->addAction(tr("(None)"));
+        return;
+    }
+
+    if (secondary) {
+        connect(m, SIGNAL(triggered(QAction*)),
+                this, SLOT(setEventType2(QAction*)), Qt::UniqueConnection);
+
+        if (_eventType2 != 0) {
+            action = m->addAction(tr("Hide"));
+            action->setData(199);
+            m->addSeparator();
+        }
+    }
+    else {
+        connect(m, SIGNAL(triggered(QAction*)),
+	            this, SLOT(setEventType(QAction*)), Qt::UniqueConnection);
+    }
+
+    EventTypeSet* ets = _data->eventTypes();
+    EventType* et;
+    EventType* selected = secondary ? _eventType2 : _eventType;
+    for (int i = 0; i < ets->realCount(); i++) {
+        et = ets->realType(i);
+
+        action = m->addAction(et->longName());
+        action->setCheckable(true);
+        action->setData(100+i);
+        if (et == selected) action->setChecked(true);
+    }
+    for (int i = 0; i < ets->derivedCount(); i++) {
+      et = ets->derivedType(i);
+
+      action = m->addAction(et->longName());
+      action->setCheckable(true);
+      action->setData(200+i);
+      if (et == selected) action->setChecked(true);
+    }
+}
+
 void QCGTopLevel::addEventTypeMenu(QMenu* popup, bool withCost2)
 {
   if (_data) {
-    QMenu *popup1, *popup2 = 0;
-    QAction* action;
-
-    popup1 = popup->addMenu(tr("Primary Event Type"));
-    connect(popup1, SIGNAL(triggered(QAction*)),
-	     this, SLOT(setEventType(QAction*)));
+    QMenu* menu = popup->addMenu(tr("Primary Event Type"));
+    updateEventTypeMenu(menu, false);
 
     if (withCost2) {
-      popup2 = popup->addMenu(tr("Secondary Event Type"));
-      connect(popup2, SIGNAL(triggered(QAction*)),
-	       this, SLOT(setEventType2(QAction*)));
-
-      if (_eventType2) {
-	action = popup2->addAction(tr("Hide"));
-	action->setData(199);
-	popup2->addSeparator();
-      }
-    }
-
-    EventTypeSet* m = _data->eventTypes();
-    EventType* ct;
-    for (int i=0;i<m->realCount();i++) {
-      ct = m->realType(i);
-
-      action = popup1->addAction(ct->longName());
-      action->setCheckable(true);
-      action->setData(100+i);
-      if (_eventType == ct) action->setChecked(true);
-
-      if (popup2) {
-	action = popup2->addAction(ct->longName());
-	action->setCheckable(true);
-	action->setData(100+i);
-	if (_eventType2 == ct) action->setChecked(true);
-      }
-    }
-
-    for (int i=0;i<m->derivedCount();i++) {
-      ct = m->derivedType(i);
-
-      action = popup1->addAction(ct->longName());
-      action->setCheckable(true);
-      action->setData(200+i);
-      if (_eventType == ct) action->setChecked(true);
-
-      if (popup2) {
-	action = popup2->addAction(ct->longName());
-	action->setCheckable(true);
-	action->setData(200+i);
-	if (_eventType2 == ct) action->setChecked(true);
-      }
+        QMenu* menu = popup->addMenu(tr("Secondary Event Type"));
+        updateEventTypeMenu(menu, true);
     }
   }
 
