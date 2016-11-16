@@ -377,16 +377,16 @@ void QCGTopLevel::createActions()
 
     _primaryMenuAction = new QAction(tr( "Primary Event Type" ), this );
     _primaryMenuAction->setMenu(new QMenu(this));
-    connect(_primaryMenuAction->menu(), &QMenu::aboutToShow,
-	    this, &QCGTopLevel::primaryAboutToShow );
+    connect(_primaryMenuAction->menu(), SIGNAL(aboutToShow()),
+	    this, SLOT(QCGTopLevel::primaryAboutToShow()) );
     _secondaryMenuAction = new QAction(tr( "Secondary Event Type" ), this );
     _secondaryMenuAction->setMenu(new QMenu(this));
-    connect(_secondaryMenuAction->menu(), &QMenu::aboutToShow,
-	    this, &QCGTopLevel::secondaryAboutToShow );
+    connect(_secondaryMenuAction->menu(), SIGNAL(aboutToShow()),
+	    this, SLOT(QCGTopLevel::secondaryAboutToShow()) );
     _groupingMenuAction = new QAction(tr( "Grouping" ), this );
     _groupingMenuAction->setMenu(new QMenu(this));
-    connect(_groupingMenuAction->menu(), &QMenu::aboutToShow,
-	    this, &QCGTopLevel::groupingAboutToShow );
+    connect(_groupingMenuAction->menu(), SIGNAL(aboutToShow()),
+	    this, SLOT(QCGTopLevel::groupingAboutToShow()) );
 
     icon = QApplication::style()->standardIcon(QStyle::SP_BrowserReload);
     _cyclesToggleAction = new QAction(icon, tr("Detect Cycles"), this);
