@@ -648,7 +648,7 @@ void QCGTopLevel::createToolbar()
 void QCGTopLevel::about()
 {
     QString text, version;
-    version = QStringLiteral("0.7.4kde");
+    version = QStringLiteral("0.8.0kde");
     text = QStringLiteral("<h3>QCachegrind %1</h3>").arg(version);
     text += tr("<p>QCachegrind is a graphical user interface for analysing "
 	      "profiling data, which helps in the performance optimization "

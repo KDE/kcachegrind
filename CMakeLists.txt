@@ -33,7 +33,7 @@ add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
 
 include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR})
 
-set( KCACHEGRIND_VERSION "0.7.4kde")
+set( KCACHEGRIND_VERSION "0.8.0kde")
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.h )
 
