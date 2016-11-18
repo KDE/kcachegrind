@@ -61,7 +61,7 @@ SourceView::SourceView(TraceItemView* parentView,
   headerLabels << tr( "#" )
                << tr( "Cost" )
                << tr( "Cost 2" )
-               << QLatin1String("")
+               << QString()
 	       <<  tr( "Source");
   setHeaderLabels(headerLabels);
 

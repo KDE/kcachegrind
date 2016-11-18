@@ -193,9 +193,9 @@ InstrView::InstrView(TraceItemView* parentView,
     headerLabels << tr( "#" )
                  << tr( "Cost" )
                  << tr( "Cost 2" )
-                 << QLatin1String("")
+                 << QString()
                  << tr( "Hex" )
-                 << QLatin1String("") // Mnenomic
+                 << QString() // Mnenomic
                  << tr( "Assembly Instructions" )
                  << tr( "Source Position" );
     setHeaderLabels(headerLabels);
@@ -1128,12 +1128,12 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 	new InstrItem(this, this, 3, QStringLiteral("    %1").arg(objfile));
 	new InstrItem(this, this, 4,
 		      tr("does not seem to match the profile data file."));
-	new InstrItem(this, this, 5, QLatin1String(""));
+	new InstrItem(this, this, 5, QString());
 	new InstrItem(this, this, 6,
 		      tr("Are you using an old profile data file or is the above mentioned"));
 	new InstrItem(this, this, 7,
 		      tr("ELF object from an updated installation/another machine?"));
-	new InstrItem(this, this, 8, QLatin1String(""));
+	new InstrItem(this, this, 8, QString());
 	return false;
     }
 

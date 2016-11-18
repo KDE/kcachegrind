@@ -144,7 +144,6 @@ CachegrindLoader::CachegrindLoader()
   : Loader(QStringLiteral("Callgrind"),
            QObject::tr( "Import filter for Cachegrind/Callgrind generated profile data files") )
 {
-    _emptyString = QLatin1String("");
 }
 
 bool CachegrindLoader::canLoad(QIODevice* file)

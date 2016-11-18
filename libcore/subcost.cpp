@@ -50,7 +50,7 @@ QString SubCost::pretty(char sep) const
     if (n==0) return QStringLiteral("0");
 
     int i = 0;
-    QString res = QLatin1String("");
+    QString res;
 
     while (n) {
 	if ((i>0) && !(i%3)) res = sep + res;

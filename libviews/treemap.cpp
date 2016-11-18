@@ -1651,7 +1651,7 @@ void TreeMapWidget::setSelected(TreeMapItem* item, bool selected)
     redraw(changed);
 
     if (0) qDebug() << (selected ? "S":"Des") << "elected Item "
-		     << (item ? item->path(0).join(QLatin1String("")) : QStringLiteral("(null)"))
+		     << (item ? item->path(0).join(QString()) : QStringLiteral("(null)"))
 		     << " (depth " << (item ? item->depth() : -1)
 		     << ")";
 }
