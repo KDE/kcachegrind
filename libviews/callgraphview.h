@@ -358,7 +358,6 @@ private:
     ProfileContext::Type _groupType;
     QTemporaryFile* _tmpFile;
     double _realFuncLimit, _realCallLimit;
-    int _maxDepth;
     bool _graphCreated;
 
     GraphOptions* _go;

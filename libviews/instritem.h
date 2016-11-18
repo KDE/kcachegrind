@@ -84,6 +84,7 @@ private:
 
 class InstrItemDelegate : public QItemDelegate
 {
+    Q_OBJECT
 public:
     explicit InstrItemDelegate(InstrView *parent);
     void paint(QPainter *painter, const QStyleOptionViewItem &option,

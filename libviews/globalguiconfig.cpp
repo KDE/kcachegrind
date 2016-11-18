@@ -170,8 +170,6 @@ void GlobalGUIConfig::readOptions()
 
 ConfigColorSetting* GlobalGUIConfig::groupColorSetting(CostItem* cost)
 {
-    QString n;
-
     if (!cost)
         return colorSetting(QStringLiteral("default"));
 

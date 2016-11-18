@@ -31,6 +31,7 @@ class ConfigColorSetting;
 
 class ConfigDlgBase : public QDialog, public Ui::ConfigDlgBase
 {
+  Q_OBJECT
 public:
     ConfigDlgBase( QWidget *parent ) : QDialog( parent ) {
         setupUi( this );

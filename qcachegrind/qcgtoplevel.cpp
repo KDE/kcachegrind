@@ -826,7 +826,7 @@ void QCGTopLevel::load(QStringList files, bool addToRecentFiles)
     ConfigGroup* generalConfig = ConfigStorage::group(QStringLiteral("GeneralSettings"));
     recentFiles = generalConfig->value(QStringLiteral("RecentFiles"),
                                        QStringList()).toStringList();
-    foreach(QString file, files) {
+    foreach(const QString& file, files) {
         recentFiles.removeAll(file);
         if (filesLoaded >0)
             recentFiles.prepend(file);
@@ -974,8 +974,6 @@ bool QCGTopLevel::setEventType2(EventType* ct)
 {
     if (_eventType2 == ct) return false;
     _eventType2 = ct;
-
-    QString longName = ct ? ct->longName() : tr("(Hidden)");
 
     _partSelection->setEventType2(_eventType2);
     _stackSelection->setEventType2(_eventType2);

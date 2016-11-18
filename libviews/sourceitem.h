@@ -83,6 +83,7 @@ private:
 
 class SourceItemDelegate : public QItemDelegate
 {
+    Q_OBJECT
 public:
     explicit SourceItemDelegate(SourceView *parent);
     void paint(QPainter *painter, const QStyleOptionViewItem &option,

@@ -89,7 +89,6 @@ int main(int argc, char** argv)
 
     out << "\nTotals for event types:\n";
 
-    QString p;
     EventType* et;
     for (int i=0;i<m->realCount();i++) {
         et = m->realType(i);

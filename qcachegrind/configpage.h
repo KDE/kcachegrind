@@ -29,6 +29,7 @@
 
 class ConfigPage: public QWidget
 {
+    Q_OBJECT
 public:
     ConfigPage(QWidget* parent, QString title, QString longTitle = QString());
     virtual ~ConfigPage() {}

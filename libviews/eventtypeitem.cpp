@@ -47,7 +47,6 @@ EventTypeItem::EventTypeItem(TraceCostItem* costItem,
         setText(0, ct->longName());
         setText(3, ct->name());
         setText(5, ct->parsedFormula());
-        QString formula = ct->formula();
         if (!ct->isReal()) {
             setText(4, QStringLiteral("="));
             // we have a virtual type: allow editing

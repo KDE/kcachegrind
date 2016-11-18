@@ -37,7 +37,7 @@ static void insertColorItems(QTreeWidget* w, ProfileContext::Type type,
                              QStringList items)
 {
     items.sort();
-    foreach(QString s, items) {
+    foreach(const QString &s, items) {
         ConfigColorSetting* cs = GlobalGUIConfig::groupColorSetting(type, s);
         QTreeWidgetItem* i = new QTreeWidgetItem(w);
         i->setText(0, ProfileContext::i18nTypeName(type));

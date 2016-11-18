@@ -276,7 +276,6 @@ void EventTypeView::refresh()
     QTreeWidgetItem* item = 0;
     QTreeWidgetItem* selected = 0;
     QList<QTreeWidgetItem*> items;
-    QString sumStr, pureStr;
 
     EventTypeSet* m = _data->eventTypes();
     for (int i=0; i<m->realCount();i++) {

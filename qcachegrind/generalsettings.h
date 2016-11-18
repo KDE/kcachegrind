@@ -28,6 +28,7 @@
 
 class GeneralSettings: public ConfigPage
 {
+    Q_OBJECT
 public:
     explicit GeneralSettings(QWidget* parent);
     virtual ~GeneralSettings() {}

@@ -693,7 +693,6 @@ public:
     bool operator<(const TracePart&) const;
 
 private:
-    QIODevice* _file;
     QString _name;
     QString _descr;
     QString _trigger;

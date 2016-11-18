@@ -2072,7 +2072,7 @@ void TopLevel::ccReadOutput()
     if (!_ccProcess) return;
     if (p != _ccProcess) return;
 
-    _ccOutput.append(_ccProcess->readAllStandardOutput());
+    _ccOutput.append(QString(_ccProcess->readAllStandardOutput()));
 }
 
 void TopLevel::ccError(QProcess::ProcessError e)

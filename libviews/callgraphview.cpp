@@ -2257,7 +2257,7 @@ void CallGraphView::dotExited()
 
         if (cmd == QLatin1String("node")) {
             // x, y are centered in node
-            QString nodeName, label, nodeX, nodeY, nodeWidth, nodeHeight;
+            QString nodeName, nodeX, nodeY, nodeWidth, nodeHeight;
             double x, y, width, height;
             lineStream >> nodeName >> nodeX >> nodeY >> nodeWidth
                     >> nodeHeight;
