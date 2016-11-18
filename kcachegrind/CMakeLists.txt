@@ -9,7 +9,7 @@ set(kcachegrind_SRCS
    configdlg.cpp
    )
 
-ki18n_wrap_ui(kcachegrind_SRCS configdlgbase.ui)
+ki18n_wrap_ui(kcachegrind_SRCS configdlgbase.ui dumpselectionbaseui)
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/*-apps-kcachegrind.png")
 ecm_add_app_icon(kcachegrind_SRCS ICONS ${ICONS_SRCS})
