@@ -8,8 +8,6 @@
   <!ENTITY oprofile "<application>OProfile</application>">
   <!ENTITY EBS "<acronym>EBS</acronym>">
   <!ENTITY TBS "<acronym>TBS</acronym>">
-  <!ENTITY kappname "&kcachegrind;">
-  <!ENTITY package "kdesdk">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE">
 ]>
@@ -52,12 +50,12 @@
 </copyright>
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2009-10-07</date>
-<releaseinfo>0.5.1</releaseinfo>
+<date>2016-11-18</date>
+<releaseinfo>0.8.0 (Applications 17.04)</releaseinfo>
 
 <abstract>
 <para>
-&kcachegrind; is a profile data visualization tool, written using the &kde;
+&kcachegrind; is a profile data visualization tool, written using the &kf5-full; 
 environment.
 </para>
 </abstract>
@@ -78,7 +76,7 @@ environment.
 <title>Introduction</title>
 
 <para>
-&kappname; is a browser for data produced by profiling tools.
+&kcachegrind; is a browser for data produced by profiling tools.
 This chapter explains what profiling is for, how it is done, and
 gives some examples of profiling tools available.
 </para>
@@ -240,7 +238,7 @@ application to accomplish this task.
 </para>
 
 <para>
-&kappname; is a visualization tool for profile data fulfilling these wishes.
+&kcachegrind; is a visualization tool for profile data fulfilling these wishes.
 Despite being programmed first with browsing the data from &cachegrind; and
 &calltree; in mind, there are converters available to be able to display profile
 data produced by other tools. In the appendix, a description of the
@@ -250,7 +248,7 @@ data produced by other tools. In the appendix, a description of the
 <para>
 Besides a list of functions sorted according exclusive or inclusive cost
 metrics, and optionally grouped by source file, shared library or C++ class,
-&kappname; features various views for a selected function, namely:
+&kcachegrind; features various views for a selected function, namely:
 <itemizedlist>
 <listitem><para>a call-graph view, which shows a section of the call graph
 around the selected function,</para>
@@ -857,7 +855,7 @@ Select such a call information line to activate the call destination.
 <title>The main &kcachegrind; window</title>
 
 <sect2>
-<title>The <guimenu>File</guimenu> Menu</title>
+<title>The File Menu</title>
 <para>
 <variablelist>
 
@@ -942,7 +940,7 @@ data file was generated for an already loaded application run.
 </shortcut>
 <guimenu>File</guimenu><guimenuitem>Quit</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Quits</action> &kappname;</para></listitem>
+<listitem><para><action>Quits</action> &kcachegrind;</para></listitem>
 </varlistentry>
 </variablelist>
 </para>
@@ -954,9 +952,6 @@ data file was generated for an already loaded application run.
 
 <chapter id="faq">
 <title>Questions and Answers</title>
-
-&reporting.bugs;
-&updating.documentation;
 
 <qandaset id="faqlist">
 
@@ -993,26 +988,6 @@ referred to as <quote>Exclusive</quote> costs.
 So, for example, for <function>main()</function>, you will always have an
 inclusive cost of almost 100%, whereas the self cost is negligible when the real
 work is done in another function.
-</para>
-</answer>
-</qandaentry>
-
-<qandaentry>
-<question>
-<para>The toolbar and menubar of my &kcachegrind; look spartan. Is this
-normal?</para>
-</question>
-<answer>
-<para>
-&kcachegrind; has probably been installed incorrectly on your system. It is
-recommended to compile it with the installation prefix set to your system-wide
-&kde; base folder, like <userinput><command>configure
-<option>--prefix=<replaceable>/opt/kde4</replaceable></option></command>;
-<command>make install</command></userinput>.
-If you choose another folder, like <filename
-class="directory">$<envar>HOME</envar>/kde</filename>, you should set the
-environment variable <envar>KDEDIR</envar> to this folder before running
-&kcachegrind;.
 </para>
 </answer>
 </qandaentry>
@@ -1147,46 +1122,6 @@ Thanks for all the bug reports and suggestions from different users.
 &underFDL;        	 <!-- FDL License -->
 
 </chapter>
-
-<appendix id="installation">
-<title>Installation</title>
-
-<sect1 id="getting-kcachegrind">
-<title>How to obtain &kcachegrind;</title>
-
-<para>
-&kcachegrind; is part of the &package; package of &kde;. For less supported
-interim releases, &callgrind; and further documentation, see
-<ulink url="https://kcachegrind.github.io">the Web page</ulink>. Look there for
-further installation and compile instructions.
-</para>
-</sect1>
-
-<sect1 id="requirements">
-<title>Requirements</title>
-
-<para>
-In order to use &kcachegrind;, you need &kde; 4.x. To generate profile data,
-&cachegrind; or &calltree;/&callgrind; is recommended.
-</para>
-</sect1>
-
-<sect1 id="compilation">
-<title>Compilation and Installation</title>
-
-&install.compile.documentation;
-
-</sect1>
-
-<sect1 id="configuration">
-<title>Configuration</title>
-
-<para>All configuration options are either in the configuration dialog
-or in the context menus of the views.</para>
-
-</sect1>
-
-</appendix>
 
 &documentation.index;
 </book>
