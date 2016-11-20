@@ -58,6 +58,8 @@ CostListItem::CostListItem(QTreeWidget* parent, int skipped,
 
   setTextAlignment(0, Qt::AlignRight);
 
+  //~ singular (%n item skipped)
+  //~ plural (%n items skipped)
   setText(1, QObject::tr("(%n item(s) skipped)", "", _skipped));
 }
 

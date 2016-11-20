@@ -120,6 +120,8 @@ InstrItem::InstrItem(InstrView* iv, QTreeWidgetItem* parent, Addr addr,
       callStr = callStr.arg(_instrCall->call()->calledName());
   }
   else
+    //~ singular %n call to '%2'
+    //~ plural %n calls to '%2'
     callStr += QObject::tr("%n call(s) to '%2'", "", (uint64)cc)
                .arg(_instrCall->call()->calledName());
 

@@ -1119,6 +1119,8 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     if (noAssLines > 1) {
         // trace cost not matching code
 
+	//~ singular There is %n cost line without machine code.
+	//~ plural There are %n cost lines without machine code.
 	new InstrItem(this, this, 1,
 		      tr("There are %n cost line(s) without machine code.", "", noAssLines));
 	new InstrItem(this, this, 2,
