@@ -34,25 +34,25 @@
 //
 
 static void insertColorItems(QTreeWidget* w, ProfileContext::Type type,
-			QStringList items)
+                             QStringList items)
 {
     items.sort();
     foreach(QString s, items) {
         ConfigColorSetting* cs = GlobalGUIConfig::groupColorSetting(type, s);
-	QTreeWidgetItem* i = new QTreeWidgetItem(w);
-	i->setText(0, ProfileContext::i18nTypeName(type));
-	i->setData(0, Qt::UserRole, QVariant::fromValue((void*)cs));
-	i->setIcon(1, QIcon(colorPixmap(20,10, cs->color())));
-	i->setText(1, cs->automatic() ? QObject::tr("(auto)") : QString());
-	i->setData(1, Qt::UserRole, cs->color());
-	i->setText(2, s);
+        QTreeWidgetItem* i = new QTreeWidgetItem(w);
+        i->setText(0, ProfileContext::i18nTypeName(type));
+        i->setData(0, Qt::UserRole, QVariant::fromValue((void*)cs));
+        i->setIcon(1, QIcon(colorPixmap(20,10, cs->color())));
+        i->setText(1, cs->automatic() ? QObject::tr("(auto)") : QString());
+        i->setData(1, Qt::UserRole, cs->color());
+        i->setText(2, s);
     }
 }
 
 ColorSettings::ColorSettings(TraceData* data, QWidget* parent)
     : ConfigPage(parent,
-		 QObject::tr("Group Colors"),
-		 QObject::tr("Color Settings for Function Groups"))
+                 QObject::tr("Group Colors"),
+                 QObject::tr("Color Settings for Function Groups"))
 {
     ui.setupUi(this);
 
@@ -60,30 +60,30 @@ ColorSettings::ColorSettings(TraceData* data, QWidget* parent)
     ui.colorList->setSortingEnabled(false);
     QStringList items;
     if (data) {
-	TraceObjectMap::Iterator oit = data->objectMap().begin();
-	for(; oit != data->objectMap().end(); ++oit)
-	    items << (*oit).prettyName();
+        TraceObjectMap::Iterator oit = data->objectMap().begin();
+        for(; oit != data->objectMap().end(); ++oit)
+            items << (*oit).prettyName();
     }
     if (!items.contains(TraceObject::prettyEmptyName()))
-	items << TraceObject::prettyEmptyName();
+        items << TraceObject::prettyEmptyName();
     insertColorItems(ui.colorList, ProfileContext::Object, items);
     items.clear();
     if (data) {
-	TraceFileMap::Iterator fit = data->fileMap().begin();
-	for(; fit != data->fileMap().end(); ++fit)
-	    items << (*fit).prettyName();
+        TraceFileMap::Iterator fit = data->fileMap().begin();
+        for(; fit != data->fileMap().end(); ++fit)
+            items << (*fit).prettyName();
     }
     if (!items.contains(TraceFile::prettyEmptyName()))
-	items << TraceFile::prettyEmptyName();
+        items << TraceFile::prettyEmptyName();
     insertColorItems(ui.colorList, ProfileContext::File, items);
     items.clear();
     if (data) {
-	TraceClassMap::Iterator cit = data->classMap().begin();
-	for(; cit != data->classMap().end(); ++cit)
-	    items << (*cit).prettyName();
+        TraceClassMap::Iterator cit = data->classMap().begin();
+        for(; cit != data->classMap().end(); ++cit)
+            items << (*cit).prettyName();
     }
     if (!items.contains(TraceClass::prettyEmptyName()))
-	items << TraceClass::prettyEmptyName();
+        items << TraceClass::prettyEmptyName();
     insertColorItems(ui.colorList, ProfileContext::Class, items);
     ui.colorList->setSortingEnabled(true);
 
@@ -92,13 +92,13 @@ ColorSettings::ColorSettings(TraceData* data, QWidget* parent)
     ui.colorList->resizeColumnToContents(2);
 
     connect(ui.resetButton, &QAbstractButton::clicked,
-	    this, &ColorSettings::resetClicked);
+            this, &ColorSettings::resetClicked);
     connect(ui.colorList,
-	    &QTreeWidget::currentItemChanged,
-	    this,
-	    &ColorSettings::colorListItemChanged);
+            &QTreeWidget::currentItemChanged,
+            this,
+            &ColorSettings::colorListItemChanged);
     connect(ui.colorButton, &QtColorButton::colorChanged,
-	    this, &ColorSettings::colorChanged);
+            this, &ColorSettings::colorChanged);
 
     _current = 0;
     update();
@@ -119,9 +119,9 @@ void ColorSettings::activate(QString s)
 void ColorSettings::update()
 {
     if (!_current) {
-	ui.resetButton->setEnabled(false);
-	ui.colorButton->setEnabled(false);
-	return;
+        ui.resetButton->setEnabled(false);
+        ui.colorButton->setEnabled(false);
+        return;
     }
     ui.resetButton->setEnabled(true);
     ui.colorButton->setEnabled(true);
@@ -145,7 +145,7 @@ void ColorSettings::resetClicked()
 
 
 void ColorSettings::colorListItemChanged(QTreeWidgetItem* current,
-					 QTreeWidgetItem*)
+                                         QTreeWidgetItem*)
 {
     _current = current;
     update();
@@ -171,12 +171,12 @@ void ColorSettings::accept()
     ConfigColorSetting* cs;
     QColor c;
     for(int i = 0; i< ui.colorList->topLevelItemCount(); i++) {
-	item = ui.colorList->topLevelItem(i);
-	cs = (ConfigColorSetting*) item->data(0, Qt::UserRole).value<void*>();
-	c = item->data(1, Qt::UserRole).value<QColor>();
-	if (cs->color() == c) continue;
+        item = ui.colorList->topLevelItem(i);
+        cs = (ConfigColorSetting*) item->data(0, Qt::UserRole).value<void*>();
+        c = item->data(1, Qt::UserRole).value<QColor>();
+        if (cs->color() == c) continue;
 
-	cs->setColor(c);
+        cs->setColor(c);
     }
 }
 

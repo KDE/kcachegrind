@@ -50,219 +50,219 @@ class TraceFunction;
 
 class QCGTopLevel : public QMainWindow, public Logger, public TopLevelBase
 {
-  Q_OBJECT
-  Q_CLASSINFO("D-Bus Interface", "io.github.qcachegrind")
+    Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "io.github.qcachegrind")
 
 public:
-  QCGTopLevel();
-  ~QCGTopLevel();
+    QCGTopLevel();
+    ~QCGTopLevel();
 
-  TraceData* data() { return _data; }
-  void setData(TraceData*);
+    TraceData* data() { return _data; }
+    void setData(TraceData*);
 
-  void createActions();
-  void createDocks();
-  void createMenu();
-  void createToolbar();
+    void createActions();
+    void createDocks();
+    void createMenu();
+    void createToolbar();
 
-  void closeEvent(QCloseEvent*);
+    void closeEvent(QCloseEvent*);
 
-  ProfileContext::Type groupType() { return _groupType; }
-  EventType* eventType() { return _eventType; }
-  EventType* eventType2() { return _eventType2; }
-  TracePartList activeParts() { return _activeParts; }
-  TracePartList hiddenParts() { return _hiddenParts; }
+    ProfileContext::Type groupType() { return _groupType; }
+    EventType* eventType() { return _eventType; }
+    EventType* eventType2() { return _eventType2; }
+    TracePartList activeParts() { return _activeParts; }
+    TracePartList hiddenParts() { return _hiddenParts; }
 
-  /* convenience functions for often used context menu items */
-  void addEventTypeMenu(QMenu*,bool);
-  void addGoMenu(QMenu*);
+    /* convenience functions for often used context menu items */
+    void addEventTypeMenu(QMenu*,bool);
+    void addGoMenu(QMenu*);
 
-  // Logger overwrites: notifications for file loading
-  virtual void loadStart(const QString& filename);
-  virtual void loadProgress(int progress); // 0 - 100
-  virtual void loadWarning(int line, const QString& msg);
-  virtual void loadError(int line, const QString& msg);
-  virtual void loadFinished(const QString& msg); // msg could be error
+    // Logger overwrites: notifications for file loading
+    virtual void loadStart(const QString& filename);
+    virtual void loadProgress(int progress); // 0 - 100
+    virtual void loadWarning(int line, const QString& msg);
+    virtual void loadError(int line, const QString& msg);
+    virtual void loadFinished(const QString& msg); // msg could be error
 
 public slots:
-  void load();
-  void load(QStringList files, bool addToRecentFiles = true);
-  void add();
-  void add(QStringList files);
+    void load();
+    void load(QStringList files, bool addToRecentFiles = true);
+    void add();
+    void add(QStringList files);
 
-  // shows the main window before loading to see loading progress
-  void loadDelayed(QString file, bool addToRecentFiles = true);
-  void loadDelayed(QStringList files, bool addToRecentFiles = true);
+    // shows the main window before loading to see loading progress
+    void loadDelayed(QString file, bool addToRecentFiles = true);
+    void loadDelayed(QStringList files, bool addToRecentFiles = true);
 
-  void exportGraph();
-  void newWindow();
-  void configure(QString page = QString::null);
-  void about();
+    void exportGraph();
+    void newWindow();
+    void configure(QString page = QString::null);
+    void about();
 
-  // layouts
-  void layoutDuplicate();
-  void layoutRemove();
-  void layoutNext();
-  void layoutPrevious();
-  void layoutSave();
-  void layoutRestore();
-  void updateLayoutActions();
+    // layouts
+    void layoutDuplicate();
+    void layoutRemove();
+    void layoutNext();
+    void layoutPrevious();
+    void layoutSave();
+    void layoutRestore();
+    void updateLayoutActions();
 
-  void updateStatusBar();
-  void eventTypeSelected(const QString&);
-  void eventType2Selected(const QString&);
-  void groupTypeSelected(int);
-  void toggleSplitted();
-  void toggleSplitDirection();
-  void togglePartDock();
-  void toggleStackDock();
-  void toggleFunctionDock();
-  void functionVisibilityChanged(bool);
-  void togglePercentage();
-  void setPercentage(bool);
-  void setAbsoluteCost();
-  void setRelativeCost();
-  void toggleHideTemplates();
-  void toggleExpanded();
-  void toggleCycles();
-  void recentFilesMenuAboutToShow();
-  void recentFilesTriggered(QAction*);
-  void sidebarMenuAboutToShow();
-  void forwardAboutToShow();
-  void forwardTriggered(QAction*);
-  void backAboutToShow();
-  void backTriggered(QAction*);
-  void upAboutToShow();
-  void upTriggered(QAction*);
-  void primaryAboutToShow();
-  void secondaryAboutToShow();
-  void groupingAboutToShow();
+    void updateStatusBar();
+    void eventTypeSelected(const QString&);
+    void eventType2Selected(const QString&);
+    void groupTypeSelected(int);
+    void toggleSplitted();
+    void toggleSplitDirection();
+    void togglePartDock();
+    void toggleStackDock();
+    void toggleFunctionDock();
+    void functionVisibilityChanged(bool);
+    void togglePercentage();
+    void setPercentage(bool);
+    void setAbsoluteCost();
+    void setRelativeCost();
+    void toggleHideTemplates();
+    void toggleExpanded();
+    void toggleCycles();
+    void recentFilesMenuAboutToShow();
+    void recentFilesTriggered(QAction*);
+    void sidebarMenuAboutToShow();
+    void forwardAboutToShow();
+    void forwardTriggered(QAction*);
+    void backAboutToShow();
+    void backTriggered(QAction*);
+    void upAboutToShow();
+    void upTriggered(QAction*);
+    void primaryAboutToShow();
+    void secondaryAboutToShow();
+    void groupingAboutToShow();
 
-  bool setEventType(EventType*);
-  bool setEventType2(EventType*);
-  bool setEventType(QString);
-  bool setEventType2(QString);
-  bool setEventType(QAction*);
-  bool setEventType2(QAction*);
-  bool setGroupType(ProfileContext::Type);
-  bool setGroupType(QString);
-  bool setGroup(TraceCostItem*);
-  bool setGroup(QString);
-  bool setFunction(TraceFunction*);
-  bool setFunction(QString);
-  void activePartsChangedSlot(const TracePartList& list);
-  void partsHideSelectedSlot();
-  void partsUnhideAllSlot();
+    bool setEventType(EventType*);
+    bool setEventType2(EventType*);
+    bool setEventType(QString);
+    bool setEventType2(QString);
+    bool setEventType(QAction*);
+    bool setEventType2(QAction*);
+    bool setGroupType(ProfileContext::Type);
+    bool setGroupType(QString);
+    bool setGroup(TraceCostItem*);
+    bool setGroup(QString);
+    bool setFunction(TraceFunction*);
+    bool setFunction(QString);
+    void activePartsChangedSlot(const TracePartList& list);
+    void partsHideSelectedSlot();
+    void partsUnhideAllSlot();
 
-  /* These go back to mainloop first by using a timer.
+    /* These go back to mainloop first by using a timer.
    * So they can be called from event handlers that
    * are not allowed to delete list entries.
    */
-  void setEventTypeDelayed(EventType*);
-  void setEventType2Delayed(EventType*);
-  void setGroupTypeDelayed(ProfileContext::Type);
-  void setGroupDelayed(TraceCostItem*);
-  void setTraceItemDelayed(CostItem*);
-  void partsHideSelectedSlotDelayed();
-  void partsUnhideAllSlotDelayed();
-  void goBack();
-  void goForward();
-  void goUp();
-  void setDirectionDelayed(TraceItemView::Direction);
+    void setEventTypeDelayed(EventType*);
+    void setEventType2Delayed(EventType*);
+    void setGroupTypeDelayed(ProfileContext::Type);
+    void setGroupDelayed(TraceCostItem*);
+    void setTraceItemDelayed(CostItem*);
+    void partsHideSelectedSlotDelayed();
+    void partsUnhideAllSlotDelayed();
+    void goBack();
+    void goForward();
+    void goUp();
+    void setDirectionDelayed(TraceItemView::Direction);
 
-  /* SingleShot Slots (without parameters) for the delayed versions */
-  void setEventTypeDelayed();
-  void setEventType2Delayed();
-  void setGroupTypeDelayed();
-  void setGroupDelayed();
-  void setTraceItemDelayed();
-  void loadFilesDelayed();
-  void setDirectionDelayed();
+    /* SingleShot Slots (without parameters) for the delayed versions */
+    void setEventTypeDelayed();
+    void setEventType2Delayed();
+    void setGroupTypeDelayed();
+    void setGroupDelayed();
+    void setTraceItemDelayed();
+    void loadFilesDelayed();
+    void setDirectionDelayed();
 
-  // configuration has changed
-  void configChanged();
+    // configuration has changed
+    void configChanged();
 
-  //void refresh();
+    //void refresh();
 
-  // progress in status bar, empty message disables progress display
-  void showStatus(const QString& msg, int progress);
-  void showMessage(const QString&, int msec);
+    // progress in status bar, empty message disables progress display
+    void showStatus(const QString& msg, int progress);
+    void showMessage(const QString&, int msec);
 
 private:
-  void resetState();
-  void createLayoutActions();
-  void createMiscActions();
-  void setupMainWidget(MainWidget*);
-  void setupPartSelection(PartSelection*);
-  void updateEventTypeMenu(QMenu* m, bool secondary);
-  void restoreCurrentState(const QString& postfix);
-  void saveCurrentState(const QString& postfix);
-  void saveTraceSettings();
-  QString traceKey();
-  void restoreTraceTypes();
-  void restoreTraceSettings();
+    void resetState();
+    void createLayoutActions();
+    void createMiscActions();
+    void setupMainWidget(MainWidget*);
+    void setupPartSelection(PartSelection*);
+    void updateEventTypeMenu(QMenu* m, bool secondary);
+    void restoreCurrentState(const QString& postfix);
+    void saveCurrentState(const QString& postfix);
+    void saveTraceSettings();
+    QString traceKey();
+    void restoreTraceTypes();
+    void restoreTraceSettings();
 
-  QStatusBar* _statusbar;
-  QLabel* _statusLabel;
-  QString _progressMsg;
-  QTime _progressStart;
-  QProgressBar* _progressBar;
+    QStatusBar* _statusbar;
+    QLabel* _statusLabel;
+    QString _progressMsg;
+    QTime _progressStart;
+    QProgressBar* _progressBar;
 
-  MultiView* _multiView;
-  Qt::Orientation _spOrientation;
-  bool _twoMainWidgets;
-  FunctionSelection* _functionSelection;
-  PartSelection* _partSelection;
-  StackSelection* _stackSelection;
-  QDockWidget *_partDock, *_stackDock, *_functionDock;
-  bool _forcePartDock;
+    MultiView* _multiView;
+    Qt::Orientation _spOrientation;
+    bool _twoMainWidgets;
+    FunctionSelection* _functionSelection;
+    PartSelection* _partSelection;
+    StackSelection* _stackSelection;
+    QDockWidget *_partDock, *_stackDock, *_functionDock;
+    bool _forcePartDock;
 
-  // menu/toolbar actions
-  QAction *_newAction, *_openAction, *_addAction, *_reloadAction;
-  QAction *_exportAction, *_dumpToggleAction, *_exitAction;
-  QAction *_sidebarMenuAction, *_recentFilesMenuAction;
-  QAction *_cyclesToggleAction, *_percentageToggleAction;
-  QAction *_expandedToggleAction, *_hideTemplatesToggleAction;
-  QAction *_primaryMenuAction, *_secondaryMenuAction;
-  QAction *_groupingMenuAction;
-  QAction *_splittedToggleAction, *_splitDirectionToggleAction;
-  QAction *_layoutNext, *_layoutPrev, *_layoutRemove, *_layoutDup;
-  QAction *_layoutRestore, *_layoutSave;
-  QAction *_upAction, *_forwardAction, *_backAction;
-  QAction *_configureAction, *_aboutAction, *_aboutQtAction;
-  QComboBox* _eventTypeBox;
+    // menu/toolbar actions
+    QAction *_newAction, *_openAction, *_addAction, *_reloadAction;
+    QAction *_exportAction, *_dumpToggleAction, *_exitAction;
+    QAction *_sidebarMenuAction, *_recentFilesMenuAction;
+    QAction *_cyclesToggleAction, *_percentageToggleAction;
+    QAction *_expandedToggleAction, *_hideTemplatesToggleAction;
+    QAction *_primaryMenuAction, *_secondaryMenuAction;
+    QAction *_groupingMenuAction;
+    QAction *_splittedToggleAction, *_splitDirectionToggleAction;
+    QAction *_layoutNext, *_layoutPrev, *_layoutRemove, *_layoutDup;
+    QAction *_layoutRestore, *_layoutSave;
+    QAction *_upAction, *_forwardAction, *_backAction;
+    QAction *_configureAction, *_aboutAction, *_aboutQtAction;
+    QComboBox* _eventTypeBox;
 
-  TraceFunction* _function;
-  const QObject* _lastSender;
+    TraceFunction* _function;
+    const QObject* _lastSender;
 
-  // trace data shown in this window
-  TraceData* _data;
-  // subcost types used for visualization
-  EventType* _eventType;
-  EventType* _eventType2;
-  QStringList _eventTypes;
-  // grouping of function list
-  ProfileContext::Type _groupType;
-  // selected group
-  TraceCostItem* _group;
-  // selected parts
-  TracePartList _activeParts;
-  // hidden parts
-  TracePartList _hiddenParts;
-  // layouts
-  int _layoutCurrent, _layoutCount;
-  // remember last file directory for new QFileDialogs
-  QString _lastFile;
+    // trace data shown in this window
+    TraceData* _data;
+    // subcost types used for visualization
+    EventType* _eventType;
+    EventType* _eventType2;
+    QStringList _eventTypes;
+    // grouping of function list
+    ProfileContext::Type _groupType;
+    // selected group
+    TraceCostItem* _group;
+    // selected parts
+    TracePartList _activeParts;
+    // hidden parts
+    TracePartList _hiddenParts;
+    // layouts
+    int _layoutCurrent, _layoutCount;
+    // remember last file directory for new QFileDialogs
+    QString _lastFile;
 
-  // for delayed slots
-  EventType* _eventTypeDelayed;
-  EventType* _eventType2Delayed;
-  ProfileContext::Type _groupTypeDelayed;
-  TraceCostItem* _groupDelayed;
-  CostItem* _traceItemDelayed;
-  QStringList _loadFilesDelayed;
-  bool _addToRecentFiles;
-  TraceItemView::Direction _directionDelayed;
+    // for delayed slots
+    EventType* _eventTypeDelayed;
+    EventType* _eventType2Delayed;
+    ProfileContext::Type _groupTypeDelayed;
+    TraceCostItem* _groupDelayed;
+    CostItem* _traceItemDelayed;
+    QStringList _loadFilesDelayed;
+    bool _addToRecentFiles;
+    TraceItemView::Direction _directionDelayed;
 };
 
 #endif // QCGTOPLEVEL_H

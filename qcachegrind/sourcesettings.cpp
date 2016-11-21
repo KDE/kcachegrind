@@ -34,8 +34,8 @@
 
 SourceSettings::SourceSettings(TraceData* data, QWidget* parent)
     : ConfigPage(parent,
-		 QObject::tr("Source Annotation"),
-		 QObject::tr("Directory Settings for Source Annotation"))
+                 QObject::tr("Source Annotation"),
+                 QObject::tr("Directory Settings for Source Annotation"))
 {
     ui.setupUi(this);
 
@@ -47,54 +47,54 @@ SourceSettings::SourceSettings(TraceData* data, QWidget* parent)
     QTreeWidgetItem* i;
     QStringList::const_iterator sit = c->generalSourceDirs().constBegin();
     for(; sit != c->generalSourceDirs().constEnd(); ++sit ) {
-      QString d = (*sit);
-      if (d.isEmpty()) d = QStringLiteral("/");
-      i = new QTreeWidgetItem();
-      i->setText(0, _always);
-      i->setText(1, d);
-      ui.dirList->addTopLevelItem(i);
+        QString d = (*sit);
+        if (d.isEmpty()) d = QStringLiteral("/");
+        i = new QTreeWidgetItem();
+        i->setText(0, _always);
+        i->setText(1, d);
+        ui.dirList->addTopLevelItem(i);
     }
 
     QStringList objItems(_always);
     if (data) {
-	TraceObjectMap::Iterator oit;
-      for ( oit = data->objectMap().begin();
-	    oit != data->objectMap().end(); ++oit ) {
-	QString n = (*oit).name();
-	if (n.isEmpty()) continue;
-	objItems << n;
+        TraceObjectMap::Iterator oit;
+        for ( oit = data->objectMap().begin();
+              oit != data->objectMap().end(); ++oit ) {
+            QString n = (*oit).name();
+            if (n.isEmpty()) continue;
+            objItems << n;
 
-	const QStringList& dirs = c->objectSourceDirs(n);
-	sit = dirs.constBegin();
-	for(; sit != dirs.constEnd(); ++sit ) {
-	  QString d = (*sit);
-	  if (d.isEmpty()) d = QStringLiteral("/");
-	  i = new QTreeWidgetItem();
-	  i->setText(0, n);
-	  i->setText(1, d);
-	  ui.dirList->addTopLevelItem(i);
-	}
-      }
+            const QStringList& dirs = c->objectSourceDirs(n);
+            sit = dirs.constBegin();
+            for(; sit != dirs.constEnd(); ++sit ) {
+                QString d = (*sit);
+                if (d.isEmpty()) d = QStringLiteral("/");
+                i = new QTreeWidgetItem();
+                i->setText(0, n);
+                i->setText(1, d);
+                ui.dirList->addTopLevelItem(i);
+            }
+        }
     }
 
     ui.objectBox->addItems(objItems);
     ui.objectBox->setCurrentIndex(0);
 
     connect(ui.addDirButton, &QAbstractButton::clicked,
-	    this, &SourceSettings::addClicked);
+            this, &SourceSettings::addClicked);
     connect(ui.deleteDirButton, &QAbstractButton::clicked,
-	    this, &SourceSettings::deleteClicked);
+            this, &SourceSettings::deleteClicked);
     connect(ui.browseDirButton, &QAbstractButton::clicked,
-	    this, &SourceSettings::browseClicked);
+            this, &SourceSettings::browseClicked);
     connect(ui.dirList,
-	    &QTreeWidget::currentItemChanged,
-	    this,
-	    &SourceSettings::dirListItemChanged);
+            &QTreeWidget::currentItemChanged,
+            this,
+            &SourceSettings::dirListItemChanged);
     connect(ui.objectBox,
-	    SIGNAL(currentIndexChanged(QString)),
-	    this, SLOT(objectChanged(QString)));
+            SIGNAL(currentIndexChanged(QString)),
+            this, SLOT(objectChanged(QString)));
     connect(ui.dirEdit, SIGNAL(textChanged(QString)),
-	    this, SLOT(dirEditChanged(QString)));
+            this, SLOT(dirEditChanged(QString)));
 
     _current = 0;
     update();
@@ -112,11 +112,11 @@ void SourceSettings::activate(QString s)
 void SourceSettings::update()
 {
     if (!_current) {
-	ui.deleteDirButton->setEnabled(false);
-	ui.objectBox->setEnabled(false);
-	ui.dirEdit->setEnabled(false);
-	ui.browseDirButton->setEnabled(false);
-	return;
+        ui.deleteDirButton->setEnabled(false);
+        ui.objectBox->setEnabled(false);
+        ui.dirEdit->setEnabled(false);
+        ui.browseDirButton->setEnabled(false);
+        return;
     }
     ui.deleteDirButton->setEnabled(true);
     ui.objectBox->setEnabled(true);
@@ -144,8 +144,8 @@ void SourceSettings::deleteClicked()
     delete _current;
     // deletion can trigger a call to dirListItemChanged() !
     if (_current == i) {
-	_current = 0;
-	update();
+        _current = 0;
+        update();
     }
 }
 
@@ -153,13 +153,13 @@ void SourceSettings::browseClicked()
 {
     QString d;
     d = QFileDialog::getExistingDirectory(this,
-					  tr("Choose Source Directory"));
+                                          tr("Choose Source Directory"));
     if (!d.isEmpty())
-	ui.dirEdit->setText(d);
+        ui.dirEdit->setText(d);
 }
 
 void SourceSettings::dirListItemChanged(QTreeWidgetItem* current,
-					QTreeWidgetItem*)
+                                        QTreeWidgetItem*)
 {
     _current = current;
     update();
@@ -182,12 +182,12 @@ void SourceSettings::dirEditChanged(QString dir)
 bool SourceSettings::check(QString& errorMsg, QString& errorItem)
 {
     for(int idx=0; idx< ui.dirList->topLevelItemCount(); idx++) {
-	QTreeWidgetItem* item = ui.dirList->topLevelItem(idx);
-	QString dir = item->text(1);
-	if (QDir(dir).exists()) continue;
-	errorMsg = tr("Directory does not exist");
-	errorItem = QStringLiteral("%1").arg(idx+1);
-	return false;
+        QTreeWidgetItem* item = ui.dirList->topLevelItem(idx);
+        QString dir = item->text(1);
+        if (QDir(dir).exists()) continue;
+        errorMsg = tr("Directory does not exist");
+        errorItem = QStringLiteral("%1").arg(idx+1);
+        return false;
     }
     return true;
 }
@@ -198,8 +198,8 @@ void SourceSettings::accept()
 
     QHash<QString, QStringList> dirs;
     for(int idx=0; idx< ui.dirList->topLevelItemCount(); idx++) {
-	QTreeWidgetItem* item = ui.dirList->topLevelItem(idx);
-	dirs[item->text(0)] << item->text(1);
+        QTreeWidgetItem* item = ui.dirList->topLevelItem(idx);
+        dirs[item->text(0)] << item->text(1);
     }
 
     c->setGeneralSourceDirs(QStringList());
@@ -207,10 +207,10 @@ void SourceSettings::accept()
 
     QHash<QString, QStringList>::const_iterator oit = dirs.constBegin();
     for(;oit != dirs.constEnd(); ++oit) {
-	if (oit.key() == _always)
-	    c->setGeneralSourceDirs(oit.value());
-	else
-	    c->setObjectSourceDirs(oit.key(), oit.value());
+        if (oit.key() == _always)
+            c->setGeneralSourceDirs(oit.value());
+        else
+            c->setObjectSourceDirs(oit.key(), oit.value());
     }
 }
 

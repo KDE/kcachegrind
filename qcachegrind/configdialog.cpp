@@ -156,11 +156,11 @@ void ConfigDialog::accept()
                 _clearTimer.start(5000);
             }
             activate(QStringLiteral("%1/%2").arg(p->title(), errorItem));
-	    return;
-	}
+            return;
+        }
 
     foreach(p, _pages)
-	p->accept();
+        p->accept();
 
     QDialog::accept();
 }

@@ -30,7 +30,7 @@
 //
 
 ConfigPage::ConfigPage(QWidget* parent, QString title, QString longTitle)
-        : QWidget(parent)
+    : QWidget(parent)
 {
     _title = title;
     if (longTitle.isEmpty())

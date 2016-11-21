@@ -63,7 +63,7 @@ QCGTopLevel::QCGTopLevel()
 #ifdef QT_DBUS_SUPPORT
     QDBusConnection con = QDBusConnection::sessionBus();
     con.registerObject("/QCachegrind", this,
-		       QDBusConnection::ExportScriptableSlots);
+                       QDBusConnection::ExportScriptableSlots);
 #endif
 
     _progressBar = 0;
@@ -99,9 +99,9 @@ QCGTopLevel::QCGTopLevel()
     delete topConfig;
 
     if (!geometry.isEmpty())
-	restoreGeometry(geometry);
+        restoreGeometry(geometry);
     if (!state.isEmpty())
-	restoreState(state);
+        restoreState(state);
 
     setWindowIcon(QIcon(QStringLiteral(":/app.png")));
     setAttribute(Qt::WA_DeleteOnClose);
@@ -180,13 +180,13 @@ void QCGTopLevel::saveTraceSettings()
     pConfig->setValue(QStringLiteral("EventType%1").arg(key), eventType);
     pConfig->setValue(QStringLiteral("EventType2%1").arg(key), eventType2);
     if (_groupType != ProfileContext::InvalidType)
-	pConfig->setValue(QStringLiteral("GroupType%1").arg(key),
-			  ProfileContext::typeName(_groupType));
+        pConfig->setValue(QStringLiteral("GroupType%1").arg(key),
+                          ProfileContext::typeName(_groupType));
 
     if (_data) {
-	if (_group)
-	    pConfig->setValue(QStringLiteral("Group%1").arg(key), _group->name());
-	saveCurrentState(key);
+        if (_group)
+            pConfig->setValue(QStringLiteral("Group%1").arg(key), _group->name());
+        saveCurrentState(key);
     }
     delete pConfig;
 }
@@ -204,7 +204,7 @@ void QCGTopLevel::restoreCurrentState(const QString& postfix)
     _splittedToggleAction->setChecked(_multiView->childCount()>1);
     _splitDirectionToggleAction->setEnabled(_multiView->childCount()>1);
     _splitDirectionToggleAction->setChecked(_multiView->orientation() ==
-					    Qt::Horizontal);
+                                            Qt::Horizontal);
 }
 
 void QCGTopLevel::sidebarMenuAboutToShow()
@@ -239,16 +239,16 @@ void QCGTopLevel::recentFilesMenuAboutToShow()
 
     ConfigGroup* generalConfig = ConfigStorage::group(QStringLiteral("GeneralSettings"));
     recentFiles = generalConfig->value(QStringLiteral("RecentFiles"),
-				       QStringList()).toStringList();
+                                       QStringList()).toStringList();
     delete generalConfig;
 
     if (recentFiles.count() == 0)
-	popup->addAction(tr("(No recent files)"));
+        popup->addAction(tr("(No recent files)"));
     else {
-	foreach(const QString& file, recentFiles) {
-	    // paths shown to user should use OS-native separators
-	    popup->addAction(QDir::toNativeSeparators(file));
-	}
+        foreach(const QString& file, recentFiles) {
+            // paths shown to user should use OS-native separators
+            popup->addAction(QDir::toNativeSeparators(file));
+        }
     }
 }
 
@@ -286,9 +286,9 @@ void QCGTopLevel::createDocks()
     _partDock->setWidget(_partSelection);
 
     connect(_partSelection, &PartSelection::partsHideSelected,
-	    this, &QCGTopLevel::partsHideSelectedSlotDelayed);
+            this, &QCGTopLevel::partsHideSelectedSlotDelayed);
     connect(_partSelection, &PartSelection::partsUnhideAll,
-	    this, &QCGTopLevel::partsUnhideAllSlotDelayed);
+            this, &QCGTopLevel::partsUnhideAllSlotDelayed);
 
     // stack selection side bar
     _stackDock = new QDockWidget(this);
@@ -297,23 +297,23 @@ void QCGTopLevel::createDocks()
     _stackDock->setWidget(_stackSelection);
     _stackDock->setWindowTitle(tr("Top Cost Call Stack"));
     _stackSelection->setWhatsThis( tr(
-                   "<b>The Top Cost Call Stack</b>"
-                   "<p>This is a purely fictional 'most probable' call stack. "
-                   "It is built up by starting with the current selected "
-                   "function and adds the callers/callees with highest cost "
-                   "at the top and to bottom.</p>"
-                   "<p>The <b>Cost</b> and <b>Calls</b> columns show the "
-                   "cost used for all calls from the function in the line "
-                   "above.</p>"));
+                                       "<b>The Top Cost Call Stack</b>"
+                                       "<p>This is a purely fictional 'most probable' call stack. "
+                                       "It is built up by starting with the current selected "
+                                       "function and adds the callers/callees with highest cost "
+                                       "at the top and to bottom.</p>"
+                                       "<p>The <b>Cost</b> and <b>Calls</b> columns show the "
+                                       "cost used for all calls from the function in the line "
+                                       "above.</p>"));
     connect(_stackSelection, SIGNAL(functionSelected(CostItem*)),
-	    this, SLOT(setTraceItemDelayed(CostItem*)));
+            this, SLOT(setTraceItemDelayed(CostItem*)));
     // actions are already created
     connect(_upAction, &QAction::triggered,
-	    _stackSelection, &StackSelection::browserUp );
+            _stackSelection, &StackSelection::browserUp );
     connect(_backAction, &QAction::triggered,
-	    _stackSelection, &StackSelection::browserBack );
+            _stackSelection, &StackSelection::browserBack );
     connect(_forwardAction, &QAction::triggered,
-	    _stackSelection, &StackSelection::browserForward);
+            _stackSelection, &StackSelection::browserForward);
 
     // flat function profile side bar
     _functionDock = new QDockWidget(this);
@@ -323,7 +323,7 @@ void QCGTopLevel::createDocks()
     _functionDock->setWidget(_functionSelection);
     // functionDock needs call to updateView() when getting visible
     connect(_functionDock, &QDockWidget::visibilityChanged,
-	    this, &QCGTopLevel::functionVisibilityChanged);
+            this, &QCGTopLevel::functionVisibilityChanged);
 
     // defaults (later to be adjusted from stored state in config)
     addDockWidget(Qt::LeftDockWidgetArea, _partDock );
@@ -364,9 +364,9 @@ void QCGTopLevel::createActions()
     _recentFilesMenuAction = new QAction(tr("Open &Recent"), this);
     _recentFilesMenuAction->setMenu(new QMenu(this));
     connect(_recentFilesMenuAction->menu(), &QMenu::aboutToShow,
-	     this, &QCGTopLevel::recentFilesMenuAboutToShow);
+            this, &QCGTopLevel::recentFilesMenuAboutToShow);
     connect(_recentFilesMenuAction->menu(), &QMenu::triggered,
-	    this, &QCGTopLevel::recentFilesTriggered);
+            this, &QCGTopLevel::recentFilesTriggered);
 
     _exitAction = new QAction(tr("E&xit"), this);
     _exitAction->setShortcut(tr("Ctrl+Q"));
@@ -378,15 +378,15 @@ void QCGTopLevel::createActions()
     _primaryMenuAction = new QAction(tr( "Primary Event Type" ), this );
     _primaryMenuAction->setMenu(new QMenu(this));
     connect(_primaryMenuAction->menu(), &QMenu::aboutToShow,
-	    this, &QCGTopLevel::primaryAboutToShow );
+            this, &QCGTopLevel::primaryAboutToShow );
     _secondaryMenuAction = new QAction(tr( "Secondary Event Type" ), this );
     _secondaryMenuAction->setMenu(new QMenu(this));
     connect(_secondaryMenuAction->menu(), &QMenu::aboutToShow,
-	    this, &QCGTopLevel::secondaryAboutToShow );
+            this, &QCGTopLevel::secondaryAboutToShow );
     _groupingMenuAction = new QAction(tr( "Grouping" ), this );
     _groupingMenuAction->setMenu(new QMenu(this));
     connect(_groupingMenuAction->menu(), &QMenu::aboutToShow,
-	    this, &QCGTopLevel::groupingAboutToShow );
+            this, &QCGTopLevel::groupingAboutToShow );
 
     icon = QApplication::style()->standardIcon(QStyle::SP_BrowserReload);
     _cyclesToggleAction = new QAction(icon, tr("Detect Cycles"), this);
@@ -395,28 +395,28 @@ void QCGTopLevel::createActions()
     hint = tr("<b>Detect recursive cycles</b>"
               "<p>If this is switched off, the treemap drawing will show "
               "black areas when a recursive call is made instead of drawing "
-	      "the recursion ad infinitum. Note that "
+              "the recursion ad infinitum. Note that "
               "the size of black areas often will be wrong, as inside "
-	      "recursive cycles the cost of calls cannot be determined; "
-	      "the error is small, "
+              "recursive cycles the cost of calls cannot be determined; "
+              "the error is small, "
               "however, for false cycles (see documentation).</p>"
               "<p>The correct handling for cycles is to detect them and "
-	      "collapse all functions of a cycle into an artificial "
-	      "function, which is done when this option is selected. "
-	      "Unfortunately, with GUI applications, this often will "
+              "collapse all functions of a cycle into an artificial "
+              "function, which is done when this option is selected. "
+              "Unfortunately, with GUI applications, this often will "
               "lead to huge false cycles, making the analysis impossible; "
-	      "therefore, there is the option to switch this off.</p>");
+              "therefore, there is the option to switch this off.</p>");
     _cyclesToggleAction->setWhatsThis(hint);
     connect(_cyclesToggleAction, &QAction::triggered,
-	    this, &QCGTopLevel::toggleCycles);
+            this, &QCGTopLevel::toggleCycles);
     _cyclesToggleAction->setChecked(GlobalConfig::showCycles());
 
     _percentageToggleAction = new QAction(QIcon(QStringLiteral(":/percent.png")),
-					  tr("Relative Cost"), this);
+                                          tr("Relative Cost"), this);
     _percentageToggleAction->setCheckable(true);
     _percentageToggleAction->setStatusTip(tr("Show Relative Costs"));
     connect(_percentageToggleAction, &QAction::triggered,
-	    this, &QCGTopLevel::togglePercentage);
+            this, &QCGTopLevel::togglePercentage);
     _percentageToggleAction->setChecked(GlobalConfig::showPercentage());
 
     _hideTemplatesToggleAction = new QAction(QIcon(QStringLiteral(":/hidetemplates.png")),
@@ -437,16 +437,16 @@ void QCGTopLevel::createActions()
     _hideTemplatesToggleAction->setWhatsThis(hint);
 
     _expandedToggleAction = new QAction(QIcon(QStringLiteral(":/move.png")),
-					tr("Relative to Parent"), this);
+                                        tr("Relative to Parent"), this);
     _expandedToggleAction->setCheckable(true);
     _expandedToggleAction->setStatusTip(
-	tr("Show Percentage relative to Parent"));
+                tr("Show Percentage relative to Parent"));
     hint = tr("<b>Show percentage costs relative to parent</b>"
               "<p>If this is switched off, percentage costs are always "
-	      "shown relative to the total cost of the profile part(s) "
-	      "that are currently browsed. By turning on this option, "
-	      "percentage cost of shown cost items will be relative "
-	      "to the parent cost item.</p>"
+              "shown relative to the total cost of the profile part(s) "
+              "that are currently browsed. By turning on this option, "
+              "percentage cost of shown cost items will be relative "
+              "to the parent cost item.</p>"
               "<ul><table>"
               "<tr><td><b>Cost Type</b></td><td><b>Parent Cost</b></td></tr>"
               "<tr><td>Function Inclusive</td><td>Total</td></tr>"
@@ -455,30 +455,30 @@ void QCGTopLevel::createActions()
               "<tr><td>Source Line</td><td>Function Inclusive</td></tr>"
               "</table></ul>"
               "<p>(*) Only if function grouping is switched on "
-	      "(e.g. ELF object grouping).</p>");
+              "(e.g. ELF object grouping).</p>");
     _expandedToggleAction->setWhatsThis( hint );
     connect(_expandedToggleAction, &QAction::triggered,
-	    this, &QCGTopLevel::toggleExpanded);
+            this, &QCGTopLevel::toggleExpanded);
     _expandedToggleAction->setChecked(GlobalConfig::showExpanded());
 
     _splittedToggleAction = new QAction(tr("Splitted Visualization"), this);
     _splittedToggleAction->setCheckable(true);
     _splittedToggleAction->setStatusTip(
-	tr("Show visualization of two cost items"));
+                tr("Show visualization of two cost items"));
     connect(_splittedToggleAction, &QAction::triggered,
-	    this, &QCGTopLevel::toggleSplitted);
+            this, &QCGTopLevel::toggleSplitted);
 
     _splitDirectionToggleAction = new QAction(tr("Split Horizontal"), this);
     _splitDirectionToggleAction->setCheckable(true);
     _splitDirectionToggleAction->setStatusTip(
-	tr("Split visualization area horizontally"));
+                tr("Split visualization area horizontally"));
     connect(_splitDirectionToggleAction, &QAction::triggered,
-	    this, &QCGTopLevel::toggleSplitDirection);
+            this, &QCGTopLevel::toggleSplitDirection);
 
     _sidebarMenuAction = new QAction(tr("Sidebars"), this);
     _sidebarMenuAction->setMenu(new QMenu(this));
     connect( _sidebarMenuAction->menu(), &QMenu::aboutToShow,
-	     this, &QCGTopLevel::sidebarMenuAboutToShow);
+             this, &QCGTopLevel::sidebarMenuAboutToShow);
 
     _layoutDup = new QAction(tr("&Duplicate"), this);
     connect(_layoutDup, &QAction::triggered, this, &QCGTopLevel::layoutDuplicate);
@@ -514,9 +514,9 @@ void QCGTopLevel::createActions()
     _upAction->setStatusTip(tr("Go Up in Call Stack"));
     _upAction->setMenu(new QMenu(this));
     connect(_upAction->menu(), &QMenu::aboutToShow,
-	    this, &QCGTopLevel::upAboutToShow );
+            this, &QCGTopLevel::upAboutToShow );
     connect(_upAction->menu(), &QMenu::triggered,
-	    this, &QCGTopLevel::upTriggered );
+            this, &QCGTopLevel::upTriggered );
     hint = tr("Go to last selected caller of current function");
     _upAction->setToolTip(hint);
 
@@ -526,9 +526,9 @@ void QCGTopLevel::createActions()
     _backAction->setStatusTip(tr("Go Back"));
     _backAction->setMenu(new QMenu(this));
     connect(_backAction->menu(), &QMenu::aboutToShow,
-           this, &QCGTopLevel::backAboutToShow );
+            this, &QCGTopLevel::backAboutToShow );
     connect(_backAction->menu(), &QMenu::triggered,
-	    this, &QCGTopLevel::backTriggered );
+            this, &QCGTopLevel::backTriggered );
     hint = tr("Go back in function selection history");
     _backAction->setToolTip(hint);
 
@@ -538,9 +538,9 @@ void QCGTopLevel::createActions()
     _forwardAction->setStatusTip(tr("Go Forward"));
     _forwardAction->setMenu(new QMenu(this));
     connect(_forwardAction->menu(), &QMenu::aboutToShow,
-	    this, &QCGTopLevel::forwardAboutToShow );
+            this, &QCGTopLevel::forwardAboutToShow );
     connect(_forwardAction->menu(), &QMenu::triggered,
-	    this, &QCGTopLevel::forwardTriggered );
+            this, &QCGTopLevel::forwardTriggered );
     hint = tr("Go forward in function selection history");
     _forwardAction->setToolTip( hint );
 
@@ -563,7 +563,7 @@ void QCGTopLevel::createActions()
     hint = tr("Select primary event type of costs");
     _eventTypeBox->setToolTip( hint );
     connect( _eventTypeBox, SIGNAL(activated(const QString&)),
-	     this, SLOT(eventTypeSelected(const QString&)));
+             this, SLOT(eventTypeSelected(const QString&)));
 }
 
 void QCGTopLevel::createMenu()
@@ -651,16 +651,16 @@ void QCGTopLevel::about()
     version = QStringLiteral("0.8.0kde");
     text = QStringLiteral("<h3>QCachegrind %1</h3>").arg(version);
     text += tr("<p>QCachegrind is a graphical user interface for analysing "
-	      "profiling data, which helps in the performance optimization "
-	      "phase of developing a computer program. "
-	      "QCachegrind is open-source, and it is distributed under the "
-	      "terms of the GPL v2. For details and source code, see the "
-	      "<a href=\"https://kcachegrind.github.io\">homepage</a> of the "
-	      "KCachegrind project.</p>"
-              "Main author and maintainer: "
-	      "<a href=\"mailto:Josef.Weidendorfer@gmx.de\">"
-              "Josef Weidendorfer</a><br>"
-              "(with lots of bug fixes/porting help by the KDE community)");
+               "profiling data, which helps in the performance optimization "
+               "phase of developing a computer program. "
+               "QCachegrind is open-source, and it is distributed under the "
+               "terms of the GPL v2. For details and source code, see the "
+               "<a href=\"https://kcachegrind.github.io\">homepage</a> of the "
+               "KCachegrind project.</p>"
+               "Main author and maintainer: "
+               "<a href=\"mailto:Josef.Weidendorfer@gmx.de\">"
+               "Josef Weidendorfer</a><br>"
+               "(with lots of bug fixes/porting help by the KDE community)");
     QMessageBox::about(this, tr("About QCachegrind"), text);
 }
 
@@ -673,57 +673,57 @@ void QCGTopLevel::configure(QString s)
     ConfigDialog d(_data, this, s);
 
     if (d.exec() == QDialog::Accepted) {
-	GlobalConfig::config()->saveOptions();
-	configChanged();
+        GlobalConfig::config()->saveOptions();
+        configChanged();
     }
     lastPage = d.currentPage();
 }
 
 void QCGTopLevel::togglePartDock()
 {
-  if (!_partDock->isVisible())
-    _partDock->show();
-  else
-    _partDock->hide();
+    if (!_partDock->isVisible())
+        _partDock->show();
+    else
+        _partDock->hide();
 }
 
 void QCGTopLevel::toggleStackDock()
 {
-  if (!_stackDock->isVisible())
-    _stackDock->show();
-  else
-    _stackDock->hide();
+    if (!_stackDock->isVisible())
+        _stackDock->show();
+    else
+        _stackDock->hide();
 }
 
 void QCGTopLevel::toggleFunctionDock()
 {
-  if (!_functionDock->isVisible())
-    _functionDock->show();
-  else
-    _functionDock->hide();
+    if (!_functionDock->isVisible())
+        _functionDock->show();
+    else
+        _functionDock->hide();
 }
 
 void QCGTopLevel::togglePercentage()
 {
-  setPercentage(_percentageToggleAction->isChecked());
+    setPercentage(_percentageToggleAction->isChecked());
 }
 
 
 void QCGTopLevel::setAbsoluteCost()
 {
-  setPercentage(false);
+    setPercentage(false);
 }
 
 void QCGTopLevel::setRelativeCost()
 {
-  setPercentage(true);
+    setPercentage(true);
 }
 
 void QCGTopLevel::setPercentage(bool show)
 {
     if (GlobalConfig::showPercentage() == show) return;
     if (_percentageToggleAction->isChecked() != show)
-	_percentageToggleAction->setChecked(show);
+        _percentageToggleAction->setChecked(show);
     _expandedToggleAction->setEnabled(show);
     GlobalConfig::setShowPercentage(show);
 
@@ -778,7 +778,7 @@ void QCGTopLevel::toggleCycles()
 void QCGTopLevel::functionVisibilityChanged(bool v)
 {
     if (v)
-	_functionSelection->updateView();
+        _functionSelection->updateView();
 }
 
 
@@ -793,9 +793,9 @@ void QCGTopLevel::load()
 {
     QStringList files;
     files = QFileDialog::getOpenFileNames(this,
-					tr("Open Callgrind Data"),
-					_lastFile,
-					tr("Callgrind Files (callgrind.*);;All Files (*)"));
+                                          tr("Open Callgrind Data"),
+                                          _lastFile,
+                                          tr("Callgrind Files (callgrind.*);;All Files (*)"));
     load(files);
 }
 
@@ -806,18 +806,18 @@ void QCGTopLevel::load(QStringList files, bool addToRecentFiles)
 
     if (_data && _data->parts().count()>0) {
 
-	// In new window
-	QCGTopLevel* t = new QCGTopLevel();
-	t->show();
-	t->loadDelayed(files, addToRecentFiles);
-	return;
+        // In new window
+        QCGTopLevel* t = new QCGTopLevel();
+        t->show();
+        t->loadDelayed(files, addToRecentFiles);
+        return;
     }
 
     // this constructor enables progress bar callbacks
     TraceData* d = new TraceData(this);
     int filesLoaded = d->load(files);
     if (filesLoaded >0)
-	setData(d);
+        setData(d);
 
     if (!addToRecentFiles) return;
 
@@ -825,7 +825,7 @@ void QCGTopLevel::load(QStringList files, bool addToRecentFiles)
     QStringList recentFiles;
     ConfigGroup* generalConfig = ConfigStorage::group(QStringLiteral("GeneralSettings"));
     recentFiles = generalConfig->value(QStringLiteral("RecentFiles"),
-				       QStringList()).toStringList();
+                                       QStringList()).toStringList();
     foreach(QString file, files) {
         recentFiles.removeAll(file);
         if (filesLoaded >0)
@@ -842,9 +842,9 @@ void QCGTopLevel::add()
 {
     QStringList files;
     files = QFileDialog::getOpenFileNames(this,
-					tr("Add Callgrind Data"),
-					_lastFile,
-					tr("Callgrind Files (callgrind.*);;All Files (*)"));
+                                          tr("Add Callgrind Data"),
+                                          _lastFile,
+                                          tr("Callgrind Files (callgrind.*);;All Files (*)"));
     add(files);
 }
 
@@ -857,16 +857,16 @@ void QCGTopLevel::add(QStringList files)
     if (_data) {
         _data->load(files);
 
-	// GUI update for added data
-	configChanged();
-	return;
+        // GUI update for added data
+        configChanged();
+        return;
     }
 
     // this constructor enables progress bar callbacks
     TraceData* d = new TraceData(this);
     int filesLoaded = d->load(files);
     if (filesLoaded >0)
-	setData(d);
+        setData(d);
 }
 
 void QCGTopLevel::loadDelayed(QString file, bool addToRecentFiles)
@@ -905,159 +905,159 @@ void QCGTopLevel::exportGraph()
 #ifdef Q_OS_UNIX
     // shell commands only work in UNIX
     QString cmd = QStringLiteral("(dot %1 -Tps > %2.ps; xdg-open %3.ps)&")
-	.arg(n).arg(n).arg(n);
+                  .arg(n).arg(n).arg(n);
     if (::system(QFile::encodeName( cmd ))<0)
-	qDebug() << "QCGTopLevel::exportGraph: can not run " << cmd;
+        qDebug() << "QCGTopLevel::exportGraph: can not run " << cmd;
 #endif
 }
 
 
 bool QCGTopLevel::setEventType(QString s)
 {
-  EventType* ct;
+    EventType* ct;
 
-  ct = (_data) ? _data->eventTypes()->type(s) : 0;
+    ct = (_data) ? _data->eventTypes()->type(s) : 0;
 
-  // if costtype with given name not found, use first available
-  if (!ct && _data) ct = _data->eventTypes()->type(0);
+    // if costtype with given name not found, use first available
+    if (!ct && _data) ct = _data->eventTypes()->type(0);
 
-  return setEventType(ct);
+    return setEventType(ct);
 }
 
 bool QCGTopLevel::setEventType2(QString s)
 {
-  EventType* ct;
+    EventType* ct;
 
-  // Special type tr("(Hidden)") gives 0
-  ct = (_data) ? _data->eventTypes()->type(s) : 0;
+    // Special type tr("(Hidden)") gives 0
+    ct = (_data) ? _data->eventTypes()->type(s) : 0;
 
-  return setEventType2(ct);
+    return setEventType2(ct);
 }
 
 void QCGTopLevel::eventTypeSelected(const QString& s)
 {
-  EventType* ct;
+    EventType* ct;
 
-  ct = (_data) ? _data->eventTypes()->typeForLong(s) : 0;
-  setEventType(ct);
+    ct = (_data) ? _data->eventTypes()->typeForLong(s) : 0;
+    setEventType(ct);
 }
 
 void QCGTopLevel::eventType2Selected(const QString& s)
 {
-  EventType* ct;
+    EventType* ct;
 
-  ct = (_data) ? _data->eventTypes()->typeForLong(s) : 0;
-  setEventType2(ct);
+    ct = (_data) ? _data->eventTypes()->typeForLong(s) : 0;
+    setEventType2(ct);
 }
 
 bool QCGTopLevel::setEventType(EventType* ct)
 {
-  if (_eventType == ct) return false;
-  _eventType = ct;
+    if (_eventType == ct) return false;
+    _eventType = ct;
 
-  if (ct) {
-      int idx = _eventTypeBox->findText(ct->longName());
-      if (idx >=0) _eventTypeBox->setCurrentIndex(idx);
-  }
+    if (ct) {
+        int idx = _eventTypeBox->findText(ct->longName());
+        if (idx >=0) _eventTypeBox->setCurrentIndex(idx);
+    }
 
-  _partSelection->setEventType(_eventType);
-  _stackSelection->setEventType(_eventType);
-  _functionSelection->setEventType(_eventType);
-  _multiView->setEventType(_eventType);
+    _partSelection->setEventType(_eventType);
+    _stackSelection->setEventType(_eventType);
+    _functionSelection->setEventType(_eventType);
+    _multiView->setEventType(_eventType);
 
-  updateStatusBar();
+    updateStatusBar();
 
-  return true;
+    return true;
 }
 
 bool QCGTopLevel::setEventType2(EventType* ct)
 {
-  if (_eventType2 == ct) return false;
-  _eventType2 = ct;
+    if (_eventType2 == ct) return false;
+    _eventType2 = ct;
 
-  QString longName = ct ? ct->longName() : tr("(Hidden)");
+    QString longName = ct ? ct->longName() : tr("(Hidden)");
 
-  _partSelection->setEventType2(_eventType2);
-  _stackSelection->setEventType2(_eventType2);
-  _functionSelection->setEventType2(_eventType2);
-  _multiView->setEventType2(_eventType2);
+    _partSelection->setEventType2(_eventType2);
+    _stackSelection->setEventType2(_eventType2);
+    _functionSelection->setEventType2(_eventType2);
+    _multiView->setEventType2(_eventType2);
 
-  updateStatusBar();
+    updateStatusBar();
 
-  return true;
+    return true;
 }
 
 
 void QCGTopLevel::groupTypeSelected(int cg)
 {
-  switch(cg) {
-  case 0: setGroupType( ProfileContext::Function ); break;
-  case 1: setGroupType( ProfileContext::Object ); break;
-  case 2: setGroupType( ProfileContext::File ); break;
-  case 3: setGroupType( ProfileContext::Class ); break;
-  case 4: setGroupType( ProfileContext::FunctionCycle ); break;
-  default: break;
-  }
+    switch(cg) {
+    case 0: setGroupType( ProfileContext::Function ); break;
+    case 1: setGroupType( ProfileContext::Object ); break;
+    case 2: setGroupType( ProfileContext::File ); break;
+    case 3: setGroupType( ProfileContext::Class ); break;
+    case 4: setGroupType( ProfileContext::FunctionCycle ); break;
+    default: break;
+    }
 }
 
 bool QCGTopLevel::setGroupType(QString s)
 {
-  ProfileContext::Type gt;
+    ProfileContext::Type gt;
 
-  gt = ProfileContext::type(s);
-  // only allow Function/Object/File/Class as grouptype
-  switch(gt) {
-  case ProfileContext::Object:
-  case ProfileContext::File:
-  case ProfileContext::Class:
-  case ProfileContext::FunctionCycle:
-    break;
-  default:
-    gt = ProfileContext::Function;
-  }
+    gt = ProfileContext::type(s);
+    // only allow Function/Object/File/Class as grouptype
+    switch(gt) {
+    case ProfileContext::Object:
+    case ProfileContext::File:
+    case ProfileContext::Class:
+    case ProfileContext::FunctionCycle:
+        break;
+    default:
+        gt = ProfileContext::Function;
+    }
 
-  return setGroupType(gt);
+    return setGroupType(gt);
 }
 
 bool QCGTopLevel::setGroupType(ProfileContext::Type gt)
 {
-  if (_groupType == gt) return false;
-  _groupType = gt;
+    if (_groupType == gt) return false;
+    _groupType = gt;
 
-  int idx = -1;
-  switch(gt) {
-  case ProfileContext::Function: idx = 0; break;
-  case ProfileContext::Object: idx = 1; break;
-  case ProfileContext::File: idx = 2; break;
-  case ProfileContext::Class: idx = 3; break;
-  case ProfileContext::FunctionCycle: idx = 4; break;
-  default:
-    break;
-  }
+    int idx = -1;
+    switch(gt) {
+    case ProfileContext::Function: idx = 0; break;
+    case ProfileContext::Object: idx = 1; break;
+    case ProfileContext::File: idx = 2; break;
+    case ProfileContext::Class: idx = 3; break;
+    case ProfileContext::FunctionCycle: idx = 4; break;
+    default:
+        break;
+    }
 
-  if (idx==-1) return false;
+    if (idx==-1) return false;
 
 #if 0
-  if (saGroup->currentItem() != idx)
-    saGroup->setCurrentItem(idx);
+    if (saGroup->currentItem() != idx)
+        saGroup->setCurrentItem(idx);
 #endif
 
-  _stackSelection->setGroupType(_groupType);
+    _stackSelection->setGroupType(_groupType);
 
-  _partSelection->set(_groupType);
-  _functionSelection->set(_groupType);
-  _multiView->set(_groupType);
+    _partSelection->set(_groupType);
+    _functionSelection->set(_groupType);
+    _multiView->set(_groupType);
 
-  updateStatusBar();
+    updateStatusBar();
 
-  return true;
+    return true;
 }
 
 bool QCGTopLevel::setGroup(QString s)
 {
     TraceCostItem* ci = _functionSelection->group(s);
     if (!ci)
-	return false;
+        return false;
 
     return setGroup(ci);
 }
@@ -1076,38 +1076,38 @@ bool QCGTopLevel::setGroup(TraceCostItem* g)
 
 bool QCGTopLevel::setFunction(QString s)
 {
-  if (!_data) return false;
+    if (!_data) return false;
 
-  ProfileCostArray* f = _data->search(ProfileContext::Function, s, _eventType);
-  if (!f) return false;
+    ProfileCostArray* f = _data->search(ProfileContext::Function, s, _eventType);
+    if (!f) return false;
 
-  return setFunction((TraceFunction*)f);
+    return setFunction((TraceFunction*)f);
 }
 
 bool QCGTopLevel::setFunction(TraceFunction* f)
 {
-  if (_function == f) return false;
-  _function = f;
+    if (_function == f) return false;
+    _function = f;
 
-  _multiView->activate(f);
-  _functionSelection->activate(f);
-  _partSelection->activate(f);
-  _stackSelection->setFunction(_function);
+    _multiView->activate(f);
+    _functionSelection->activate(f);
+    _partSelection->activate(f);
+    _stackSelection->setFunction(_function);
 
-  StackBrowser* b = _stackSelection->browser();
-  if (b) {
-    // do not disable up: a press forces stack-up extending...
-    _forwardAction->setEnabled(b->canGoForward());
-    _backAction->setEnabled(b->canGoBack());
-  }
+    StackBrowser* b = _stackSelection->browser();
+    if (b) {
+        // do not disable up: a press forces stack-up extending...
+        _forwardAction->setEnabled(b->canGoForward());
+        _backAction->setEnabled(b->canGoBack());
+    }
 
 #if TRACE_UPDATES
-  qDebug("QCGTopLevel::setFunction(%s), lastSender %s",
-         f ? f->prettyName().toAscii() : "0",
-         _lastSender ? _lastSender->name() :"0" );
+    qDebug("QCGTopLevel::setFunction(%s), lastSender %s",
+           f ? f->prettyName().toAscii() : "0",
+           _lastSender ? _lastSender->name() :"0" );
 #endif
 
-  return true;
+    return true;
 }
 
 
@@ -1120,82 +1120,82 @@ bool QCGTopLevel::setFunction(TraceFunction* f)
  */
 void QCGTopLevel::setEventTypeDelayed(EventType* ct)
 {
-  _eventTypeDelayed = ct;
-  QTimer::singleShot (0, this, SLOT(setEventTypeDelayed()));
+    _eventTypeDelayed = ct;
+    QTimer::singleShot (0, this, SLOT(setEventTypeDelayed()));
 }
 
 void QCGTopLevel::setEventType2Delayed(EventType* ct)
 {
-  _eventType2Delayed = ct;
-  QTimer::singleShot (0, this, SLOT(setEventType2Delayed()));
+    _eventType2Delayed = ct;
+    QTimer::singleShot (0, this, SLOT(setEventType2Delayed()));
 }
 
 void QCGTopLevel::setEventTypeDelayed()
 {
-  setEventType(_eventTypeDelayed);
+    setEventType(_eventTypeDelayed);
 }
 
 void QCGTopLevel::setEventType2Delayed()
 {
-  setEventType2(_eventType2Delayed);
+    setEventType2(_eventType2Delayed);
 }
 
 void QCGTopLevel::setGroupTypeDelayed(ProfileContext::Type gt)
 {
-  _groupTypeDelayed = gt;
-  QTimer::singleShot (0, this, SLOT(setGroupTypeDelayed()));
+    _groupTypeDelayed = gt;
+    QTimer::singleShot (0, this, SLOT(setGroupTypeDelayed()));
 }
 
 void QCGTopLevel::setGroupTypeDelayed()
 {
-  setGroupType(_groupTypeDelayed);
+    setGroupType(_groupTypeDelayed);
 }
 
 void QCGTopLevel::setGroupDelayed(TraceCostItem* g)
 {
 #if TRACE_UPDATES
-  qDebug("QCGTopLevel::setGroupDelayed(%s), sender %s",
-         g ? g->prettyName().toAscii() : "0",
-         _lastSender ? _lastSender->name() :"0" );
+    qDebug("QCGTopLevel::setGroupDelayed(%s), sender %s",
+           g ? g->prettyName().toAscii() : "0",
+           _lastSender ? _lastSender->name() :"0" );
 #endif
 
-  _groupDelayed = g;
-  QTimer::singleShot (0, this, SLOT(setGroupDelayed()));
+    _groupDelayed = g;
+    QTimer::singleShot (0, this, SLOT(setGroupDelayed()));
 }
 
 void QCGTopLevel::setGroupDelayed()
 {
-  setGroup(_groupDelayed);
+    setGroup(_groupDelayed);
 }
 
 void QCGTopLevel::setDirectionDelayed(TraceItemView::Direction d)
 {
-  _directionDelayed = d;
-  QTimer::singleShot (0, this, SLOT(setDirectionDelayed()));
+    _directionDelayed = d;
+    QTimer::singleShot (0, this, SLOT(setDirectionDelayed()));
 }
 
 void QCGTopLevel::setDirectionDelayed()
 {
     switch(_directionDelayed) {
     case TraceItemView::Back:
-	_stackSelection->browserBack();
-	break;
+        _stackSelection->browserBack();
+        break;
 
     case TraceItemView::Forward:
         _stackSelection->browserForward();
-	break;
+        break;
 
     case TraceItemView::Up:
-	{
-	    StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
-	    HistoryItem* hi = b ? b->current() : 0;
-	    TraceFunction* f = hi ? hi->function() : 0;
+    {
+        StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
+        HistoryItem* hi = b ? b->current() : 0;
+        TraceFunction* f = hi ? hi->function() : 0;
 
-	    if (!f) break;
-	    f = hi->stack()->caller(f, false);
-	    if (f) setFunction(f);
-	}
-    break;
+        if (!f) break;
+        f = hi->stack()->caller(f, false);
+        if (f) setFunction(f);
+    }
+        break;
 
     default: break;
     }
@@ -1206,20 +1206,20 @@ void QCGTopLevel::setDirectionDelayed()
 
 void QCGTopLevel::setTraceItemDelayed(CostItem* i)
 {
-  // no need to select same item a 2nd time...
-  if (_traceItemDelayed == i) return;
-  _traceItemDelayed = i;
-  _lastSender = sender();
+    // no need to select same item a 2nd time...
+    if (_traceItemDelayed == i) return;
+    _traceItemDelayed = i;
+    _lastSender = sender();
 
-  qDebug() << "Selected " << (i ? i->fullName() : QStringLiteral("(none)"));
+    qDebug() << "Selected " << (i ? i->fullName() : QStringLiteral("(none)"));
 
 #if TRACE_UPDATES
-  qDebug("QCGTopLevel::setTraceItemDelayed(%s), sender %s",
-         i ? i->prettyName().toAscii() : "0",
-         _lastSender ? _lastSender->name() :"0" );
+    qDebug("QCGTopLevel::setTraceItemDelayed(%s), sender %s",
+           i ? i->prettyName().toAscii() : "0",
+           _lastSender ? _lastSender->name() :"0" );
 #endif
 
-  QTimer::singleShot (0, this, SLOT(setTraceItemDelayed()));
+    QTimer::singleShot (0, this, SLOT(setTraceItemDelayed()));
 }
 
 void QCGTopLevel::setTraceItemDelayed()
@@ -1229,20 +1229,20 @@ void QCGTopLevel::setTraceItemDelayed()
     switch(_traceItemDelayed->type()) {
     case ProfileContext::Function:
     case ProfileContext::FunctionCycle:
-	setFunction((TraceFunction*)_traceItemDelayed);
-	break;
+        setFunction((TraceFunction*)_traceItemDelayed);
+        break;
 
     case ProfileContext::Object:
     case ProfileContext::File:
     case ProfileContext::Class:
-	_multiView->activate(_traceItemDelayed);
-	break;
+        _multiView->activate(_traceItemDelayed);
+        break;
 
     case ProfileContext::Instr:
     case ProfileContext::Line:
-	// only for multiview
-	_multiView->activate(_traceItemDelayed);
-	break;
+        // only for multiview
+        _multiView->activate(_traceItemDelayed);
+        break;
 
     default: break;
     }
@@ -1259,72 +1259,72 @@ void QCGTopLevel::setTraceItemDelayed()
  */
 void QCGTopLevel::setData(TraceData* data)
 {
-  if (data == _data) return;
+    if (data == _data) return;
 
-  _lastSender = 0;
+    _lastSender = 0;
 
-  saveTraceSettings();
+    saveTraceSettings();
 
-  if (_data) {
-    _partSelection->setData(0);
-    _stackSelection->setData(0);
-    _functionSelection->setData(0);
-    _multiView->setData(0);
+    if (_data) {
+        _partSelection->setData(0);
+        _stackSelection->setData(0);
+        _functionSelection->setData(0);
+        _multiView->setData(0);
+        _multiView->updateView(true);
+
+        // we are the owner...
+        delete _data;
+    }
+
+    // reset members
+    resetState();
+
+    _data = data;
+
+    // fill cost type list
+    QStringList types;
+
+    if (_data) {
+        /* add all supported virtual types */
+        EventTypeSet* m = _data->eventTypes();
+        m->addKnownDerivedTypes();
+
+        /* first, fill selection list with available cost types */
+        for (int i=0;i<m->realCount();i++)
+            types << m->realType(i)->longName();
+        for (int i=0;i<m->derivedCount();i++)
+            types << m->derivedType(i)->longName();
+    }
+    _eventTypes = types;
+    _eventTypeBox->addItems(types);
+
+    _stackSelection->setData(_data);
+    _partSelection->setData(_data);
+    _functionSelection->setData(_data);
+    _multiView->setData(_data);
+    // Force update of _data in all children of _multiView
+    // This is needed to make restoring of activeItem work!
     _multiView->updateView(true);
 
-    // we are the owner...
-    delete _data;
-  }
+    /* this is needed to let the other widgets know the types */
+    restoreTraceTypes();
 
-  // reset members
-  resetState();
+    restoreTraceSettings();
 
-  _data = data;
+    QString caption;
+    if (_data) {
+        caption = QDir::toNativeSeparators(_data->traceName());
+        if (!_data->command().isEmpty())
+            caption += " [" + _data->command() + ']';
+    }
+    setWindowTitle(caption);
 
-  // fill cost type list
-  QStringList types;
+    if (!_data || (!_forcePartDock && _data->parts().count()<2))
+        _partDock->hide();
+    else
+        _partDock->show();
 
-  if (_data) {
-      /* add all supported virtual types */
-      EventTypeSet* m = _data->eventTypes();
-      m->addKnownDerivedTypes();
-
-      /* first, fill selection list with available cost types */
-      for (int i=0;i<m->realCount();i++)
-	  types << m->realType(i)->longName();
-      for (int i=0;i<m->derivedCount();i++)
-	  types << m->derivedType(i)->longName();
-  }
-  _eventTypes = types;
-  _eventTypeBox->addItems(types);
-
-  _stackSelection->setData(_data);
-  _partSelection->setData(_data);
-  _functionSelection->setData(_data);
-  _multiView->setData(_data);
-  // Force update of _data in all children of _multiView
-  // This is needed to make restoring of activeItem work!
-  _multiView->updateView(true);
-
-  /* this is needed to let the other widgets know the types */
-  restoreTraceTypes();
-
-  restoreTraceSettings();
-
-  QString caption;
-  if (_data) {
-    caption = QDir::toNativeSeparators(_data->traceName());
-    if (!_data->command().isEmpty())
-      caption += " [" + _data->command() + ']';
-  }
-  setWindowTitle(caption);
-
-  if (!_data || (!_forcePartDock && _data->parts().count()<2))
-    _partDock->hide();
-  else
-    _partDock->show();
-
-  updateStatusBar();
+    updateStatusBar();
 }
 
 // Clears and repopulates the given menu with dynamic items for event types.
@@ -1354,7 +1354,7 @@ void QCGTopLevel::updateEventTypeMenu(QMenu* m, bool secondary)
     }
     else {
         connect(m, SIGNAL(triggered(QAction*)),
-	            this, SLOT(setEventType(QAction*)), Qt::UniqueConnection);
+                this, SLOT(setEventType(QAction*)), Qt::UniqueConnection);
     }
 
     EventTypeSet* ets = _data->eventTypes();
@@ -1369,99 +1369,99 @@ void QCGTopLevel::updateEventTypeMenu(QMenu* m, bool secondary)
         if (et == selected) action->setChecked(true);
     }
     for (int i = 0; i < ets->derivedCount(); i++) {
-      et = ets->derivedType(i);
+        et = ets->derivedType(i);
 
-      action = m->addAction(et->longName());
-      action->setCheckable(true);
-      action->setData(200+i);
-      if (et == selected) action->setChecked(true);
+        action = m->addAction(et->longName());
+        action->setCheckable(true);
+        action->setData(200+i);
+        if (et == selected) action->setChecked(true);
     }
 }
 
 void QCGTopLevel::addEventTypeMenu(QMenu* popup, bool withCost2)
 {
-  if (_data) {
-    QMenu* menu = popup->addMenu(tr("Primary Event Type"));
-    updateEventTypeMenu(menu, false);
+    if (_data) {
+        QMenu* menu = popup->addMenu(tr("Primary Event Type"));
+        updateEventTypeMenu(menu, false);
 
-    if (withCost2) {
-        QMenu* menu = popup->addMenu(tr("Secondary Event Type"));
-        updateEventTypeMenu(menu, true);
+        if (withCost2) {
+            QMenu* menu = popup->addMenu(tr("Secondary Event Type"));
+            updateEventTypeMenu(menu, true);
+        }
     }
-  }
 
-  if (GlobalConfig::showPercentage())
-    popup->addAction(tr("Show Absolute Cost"),
-		      this, SLOT(setAbsoluteCost()));
-  else
-    popup->addAction(tr("Show Relative Cost"),
-		      this, SLOT(setRelativeCost()));
+    if (GlobalConfig::showPercentage())
+        popup->addAction(tr("Show Absolute Cost"),
+                         this, SLOT(setAbsoluteCost()));
+    else
+        popup->addAction(tr("Show Relative Cost"),
+                         this, SLOT(setRelativeCost()));
 }
 
 bool QCGTopLevel::setEventType(QAction* action)
 {
-  if (!_data) return false;
-  int id = action->data().toInt(0);
+    if (!_data) return false;
+    int id = action->data().toInt(0);
 
-  EventTypeSet* m = _data->eventTypes();
-  EventType* ct=0;
-  if (id >=100 && id<199) ct = m->realType(id-100);
-  if (id >=200 && id<299) ct = m->derivedType(id-200);
+    EventTypeSet* m = _data->eventTypes();
+    EventType* ct=0;
+    if (id >=100 && id<199) ct = m->realType(id-100);
+    if (id >=200 && id<299) ct = m->derivedType(id-200);
 
-  return ct ? setEventType(ct) : false;
+    return ct ? setEventType(ct) : false;
 }
 
 bool QCGTopLevel::setEventType2(QAction* action)
 {
-  if (!_data) return false;
-  int id = action->data().toInt(0);
+    if (!_data) return false;
+    int id = action->data().toInt(0);
 
-  EventTypeSet* m = _data->eventTypes();
-  EventType* ct=0;
-  if (id >=100 && id<199) ct = m->realType(id-100);
-  if (id >=200 && id<299) ct = m->derivedType(id-200);
+    EventTypeSet* m = _data->eventTypes();
+    EventType* ct=0;
+    if (id >=100 && id<199) ct = m->realType(id-100);
+    if (id >=200 && id<299) ct = m->derivedType(id-200);
 
-  return setEventType2(ct);
+    return setEventType2(ct);
 }
 
 void QCGTopLevel::addGoMenu(QMenu* popup)
 {
-  StackBrowser* b = _stackSelection->browser();
-  if (b) {
-      if (b->canGoBack())
-	  popup->addAction(tr("Go Back"), this, SLOT(goBack()));
-      if (b->canGoForward())
-	  popup->addAction(tr("Go Forward"), this, SLOT(goForward()));
-  }
-  // do not disable up: a press forces stack-up extending...
-  popup->addAction(tr("Go Up"), this, SLOT(goUp()));
+    StackBrowser* b = _stackSelection->browser();
+    if (b) {
+        if (b->canGoBack())
+            popup->addAction(tr("Go Back"), this, SLOT(goBack()));
+        if (b->canGoForward())
+            popup->addAction(tr("Go Forward"), this, SLOT(goForward()));
+    }
+    // do not disable up: a press forces stack-up extending...
+    popup->addAction(tr("Go Up"), this, SLOT(goUp()));
 }
 
 void QCGTopLevel::goBack()
 {
-  setDirectionDelayed(TraceItemView::Back);
+    setDirectionDelayed(TraceItemView::Back);
 }
 
 void QCGTopLevel::goForward()
 {
-  setDirectionDelayed(TraceItemView::Forward);
+    setDirectionDelayed(TraceItemView::Forward);
 }
 
 void QCGTopLevel::goUp()
 {
-  setDirectionDelayed(TraceItemView::Up);
+    setDirectionDelayed(TraceItemView::Up);
 }
 
 QString QCGTopLevel::traceKey()
 {
-  if (!_data || _data->command().isEmpty()) return QString();
+    if (!_data || _data->command().isEmpty()) return QString();
 
-  QString name = _data->command();
-  QString key;
-  for (int l=0;l<name.length();l++)
-    if (name[l].isLetterOrNumber()) key += name[l];
+    QString name = _data->command();
+    QString key;
+    for (int l=0;l<name.length();l++)
+        if (name[l].isLetterOrNumber()) key += name[l];
 
-  return QStringLiteral("-") + key;
+    return QStringLiteral("-") + key;
 }
 
 
@@ -1478,11 +1478,11 @@ void QCGTopLevel::restoreTraceTypes()
 
     ConfigGroup* cConfig = ConfigStorage::group(QStringLiteral("CurrentState"));
     if (groupType.isEmpty())
-	groupType = cConfig->value(QStringLiteral("GroupType"),QString()).toString();
+        groupType = cConfig->value(QStringLiteral("GroupType"),QString()).toString();
     if (eventType.isEmpty())
-	eventType = cConfig->value(QStringLiteral("EventType"),QString()).toString();
+        eventType = cConfig->value(QStringLiteral("EventType"),QString()).toString();
     if (eventType2.isEmpty())
-	eventType2 = cConfig->value(QStringLiteral("EventType2"),QString()).toString();
+        eventType2 = cConfig->value(QStringLiteral("EventType2"),QString()).toString();
     delete cConfig;
 
     setGroupType(groupType);
@@ -1491,7 +1491,7 @@ void QCGTopLevel::restoreTraceTypes()
 
     // if still no event type set, use first available
     if (!_eventType && !_eventTypes.isEmpty())
-	eventTypeSelected(_eventTypes.first());
+        eventTypeSelected(_eventTypes.first());
 
     ConfigGroup* aConfig = ConfigStorage::group(QStringLiteral("Layouts"));
     _layoutCount = aConfig->value(QStringLiteral("Count%1").arg(key), 0).toInt();
@@ -1510,36 +1510,36 @@ void QCGTopLevel::restoreTraceTypes()
  */
 void QCGTopLevel::restoreTraceSettings()
 {
-  if (!_data) return;
+    if (!_data) return;
 
-  QString key = traceKey();
+    QString key = traceKey();
 
-  restoreCurrentState(key);
+    restoreCurrentState(key);
 
-  ConfigGroup* pConfig = ConfigStorage::group(QStringLiteral("TracePositions"));
-  QString group = pConfig->value(QStringLiteral("Group%1").arg(key),QString()).toString();
-  delete pConfig;
-  if (!group.isEmpty()) setGroup(group);
+    ConfigGroup* pConfig = ConfigStorage::group(QStringLiteral("TracePositions"));
+    QString group = pConfig->value(QStringLiteral("Group%1").arg(key),QString()).toString();
+    delete pConfig;
+    if (!group.isEmpty()) setGroup(group);
 
-  // restoreCurrentState() usually leads to a call to setTraceItemDelayed()
-  // to restore last active item...
-  if (!_traceItemDelayed) {
-    // function not available any more.. try with "main"
-      if (!setFunction(QStringLiteral("main"))) {
+    // restoreCurrentState() usually leads to a call to setTraceItemDelayed()
+    // to restore last active item...
+    if (!_traceItemDelayed) {
+        // function not available any more.. try with "main"
+        if (!setFunction(QStringLiteral("main"))) {
 #if 1
-	_functionSelection->selectTopFunction();
+            _functionSelection->selectTopFunction();
 #else
-	HighestCostList hc;
-	hc.clear(50);
-	TraceFunctionMap::Iterator it;
-	for ( it = _data->functionMap().begin();
-	      it != _data->functionMap().end(); ++it )
-	    hc.addCost(&(*it), (*it).inclusive()->subCost(_eventType));
+            HighestCostList hc;
+            hc.clear(50);
+            TraceFunctionMap::Iterator it;
+            for ( it = _data->functionMap().begin();
+                  it != _data->functionMap().end(); ++it )
+                hc.addCost(&(*it), (*it).inclusive()->subCost(_eventType));
 
-	setFunction( (TraceFunction*) hc[0]);
+            setFunction( (TraceFunction*) hc[0]);
 #endif
-      }
-  }
+        }
+    }
 }
 
 
@@ -1549,7 +1549,7 @@ void QCGTopLevel::layoutDuplicate()
 {
     // save current and allocate a new slot
     _multiView->saveLayout(QStringLiteral("Layout%1-MainView").arg(_layoutCurrent),
-			   traceKey());
+                           traceKey());
     _layoutCurrent = _layoutCount;
     _layoutCount++;
 
@@ -1567,7 +1567,7 @@ void QCGTopLevel::layoutRemove()
 
     // restore from last and decrement count
     _multiView->restoreLayout(QStringLiteral("Layout%1-MainView").arg(from),
-			      traceKey());
+                              traceKey());
     _layoutCount--;
 
     updateLayoutActions();
@@ -1614,8 +1614,8 @@ void QCGTopLevel::layoutSave()
 
     // save all layouts as defaults (ie. without any group name postfix)
     for(int i=0;i<_layoutCount;i++) {
-	_multiView->restoreLayout(layoutPrefix.arg(i), key);
-	_multiView->saveLayout(layoutPrefix.arg(i), QString());
+        _multiView->restoreLayout(layoutPrefix.arg(i), key);
+        _multiView->saveLayout(layoutPrefix.arg(i), QString());
     }
     // restore the previously saved current layout
     _multiView->restoreLayout(layoutPrefix.arg(_layoutCurrent), key);
@@ -1634,8 +1634,8 @@ void QCGTopLevel::layoutRestore()
     delete layoutConfig;
 
     if (_layoutCount == 0) {
-	_layoutCount++;
-	return;
+        _layoutCount++;
+        return;
     }
 
     QString layoutPrefix = QStringLiteral("Layout%1-MainView");
@@ -1648,13 +1648,13 @@ void QCGTopLevel::layoutRestore()
 void QCGTopLevel::updateLayoutActions()
 {
     if (_layoutNext)
-	_layoutNext->setEnabled(_layoutCount>1);
+        _layoutNext->setEnabled(_layoutCount>1);
 
     if (_layoutPrev)
-	_layoutPrev->setEnabled(_layoutCount>1);
+        _layoutPrev->setEnabled(_layoutCount>1);
 
     if (_layoutRemove)
-	_layoutRemove->setEnabled(_layoutCount>1);
+        _layoutRemove->setEnabled(_layoutCount>1);
 
     if (_statusbar)
         _statusbar->showMessage(tr("Layout Count: %1").arg(_layoutCount),
@@ -1664,31 +1664,31 @@ void QCGTopLevel::updateLayoutActions()
 
 void QCGTopLevel::updateStatusBar()
 {
-  if (!_data || _data->parts().count()==0) {
-    _statusLabel->setText(tr("No profile data file loaded."));
-    return;
-  }
+    if (!_data || _data->parts().count()==0) {
+        _statusLabel->setText(tr("No profile data file loaded."));
+        return;
+    }
 
-  QString status = QStringLiteral("%1 [%2] - ")
-                   .arg(_data->shortTraceName())
-                   .arg(_data->activePartRange());
+    QString status = QStringLiteral("%1 [%2] - ")
+                     .arg(_data->shortTraceName())
+                     .arg(_data->activePartRange());
 
-  if (_eventType) {
-      status += tr("Total %1 Cost: %2")
-	  .arg(_eventType->longName())
-	  .arg(_data->prettySubCost(_eventType));
+    if (_eventType) {
+        status += tr("Total %1 Cost: %2")
+                  .arg(_eventType->longName())
+                  .arg(_data->prettySubCost(_eventType));
 
-    /* this gets too long...
+        /* this gets too long...
     if (_eventType2 && (_eventType2 != _eventType))
       status += tr(", %1 Cost: %2")
-	.arg(_eventType2->longName())
-	.arg(_data->prettySubCost(_eventType2));
+    .arg(_eventType2->longName())
+    .arg(_data->prettySubCost(_eventType2));
     */
-  }
-  else
-    status += tr("No event type selected");
+    }
+    else
+        status += tr("No event type selected");
 
-  /* Not working... should give group of selected function
+    /* Not working... should give group of selected function
 
   if (_groupType != ProfileContext::Function) {
     status += QString(" - %1 '%2'")
@@ -1697,7 +1697,7 @@ void QCGTopLevel::updateStatusBar()
   }
   */
 
-  _statusLabel->setText(status);
+    _statusLabel->setText(status);
 }
 
 
@@ -1712,7 +1712,7 @@ void QCGTopLevel::closeEvent(QCloseEvent* event)
     // keep this choice...
     _forcePartDock = false;
     if (_data && (_data->parts().count()<2) && _partDock->isVisible())
-	_forcePartDock=true;
+        _forcePartDock=true;
 
     ConfigGroup* topConfig = ConfigStorage::group(QStringLiteral("TopWindow"));
     topConfig->setValue(QStringLiteral("ForcePartDockVisible"), _forcePartDock, false);
@@ -1735,13 +1735,13 @@ void QCGTopLevel::toggleSplitted()
     _splittedToggleAction->setChecked(count>1);
     _splitDirectionToggleAction->setEnabled(count>1);
     _splitDirectionToggleAction->setChecked(_multiView->orientation() ==
-					    Qt::Horizontal);
+                                            Qt::Horizontal);
 }
 
 void QCGTopLevel::toggleSplitDirection()
 {
-  _multiView->setOrientation( _splitDirectionToggleAction->isChecked() ?
-                              Qt::Horizontal : Qt::Vertical );
+    _multiView->setOrientation( _splitDirectionToggleAction->isChecked() ?
+                                    Qt::Horizontal : Qt::Vertical );
 }
 
 
@@ -1749,9 +1749,9 @@ void QCGTopLevel::toggleSplitDirection()
 // this is called after a config change in the dialog
 void QCGTopLevel::configChanged()
 {
-  // invalidate found/cached dirs of source files
+    // invalidate found/cached dirs of source files
     if (_data)
-	_data->resetSourceDirs();
+        _data->resetSourceDirs();
 
     _partSelection->notifyChange(TraceItemView::configChanged);
     _stackSelection->refresh();
@@ -1763,289 +1763,289 @@ void QCGTopLevel::configChanged()
 
 void QCGTopLevel::activePartsChangedSlot(const TracePartList& list)
 {
-  if (!_data) return;
+    if (!_data) return;
 
-  if (!_data->activateParts(list)) {
-//    qDebug("QCGTopLevel::activePartsChangedSlot: No Change!");
-    return;
-  }
-  _activeParts = list;
+    if (!_data->activateParts(list)) {
+        //    qDebug("QCGTopLevel::activePartsChangedSlot: No Change!");
+        return;
+    }
+    _activeParts = list;
 
-  _partSelection->set(list);
-  _stackSelection->refresh();
-  _functionSelection->set(list);
-  _multiView->set(list);
+    _partSelection->set(list);
+    _stackSelection->refresh();
+    _functionSelection->set(list);
+    _multiView->set(list);
 
-  updateStatusBar();
+    updateStatusBar();
 }
 
 void QCGTopLevel::partsHideSelectedSlotDelayed()
 {
-  QTimer::singleShot( 0, this, &QCGTopLevel::partsHideSelectedSlot );
+    QTimer::singleShot( 0, this, &QCGTopLevel::partsHideSelectedSlot );
 }
 
 // this puts selected parts into hidden list,
 // deselects them and makes the remaining parts selected
 void QCGTopLevel::partsHideSelectedSlot()
 {
-  if (!_data) return;
+    if (!_data) return;
 
-  TracePartList newHidden, newActive;
-  foreach(TracePart* part, _data->parts()) {
-      if (_activeParts.contains(part) ||
-          _hiddenParts.contains(part))
-          newHidden.append(part);
-      else
-          newActive.append(part);
-  }
+    TracePartList newHidden, newActive;
+    foreach(TracePart* part, _data->parts()) {
+        if (_activeParts.contains(part) ||
+            _hiddenParts.contains(part))
+            newHidden.append(part);
+        else
+            newActive.append(part);
+    }
 
-  _hiddenParts = newHidden;
-  _partSelection->hiddenPartsChangedSlot(_hiddenParts);
+    _hiddenParts = newHidden;
+    _partSelection->hiddenPartsChangedSlot(_hiddenParts);
 
 #if 0
-  _mainWidget1->hiddenPartsChangedSlot(_hiddenParts);
-  _mainWidget2->hiddenPartsChangedSlot(_hiddenParts);
+    _mainWidget1->hiddenPartsChangedSlot(_hiddenParts);
+    _mainWidget2->hiddenPartsChangedSlot(_hiddenParts);
 #endif
 
-  activePartsChangedSlot(newActive);
+    activePartsChangedSlot(newActive);
 }
 
 void QCGTopLevel::partsUnhideAllSlotDelayed()
 {
-  QTimer::singleShot( 0, this, &QCGTopLevel::partsUnhideAllSlot );
+    QTimer::singleShot( 0, this, &QCGTopLevel::partsUnhideAllSlot );
 }
 
 // this unhides all hidden parts. Does NOT change selection
 void QCGTopLevel::partsUnhideAllSlot()
 {
-  if (!_data) return;
+    if (!_data) return;
 
-  _hiddenParts.clear();
-  _partSelection->hiddenPartsChangedSlot(_hiddenParts);
+    _hiddenParts.clear();
+    _partSelection->hiddenPartsChangedSlot(_hiddenParts);
 
 #if 0
-  _mainWidget1->hiddenPartsChangedSlot(_hiddenParts);
-  _mainWidget2->hiddenPartsChangedSlot(_hiddenParts);
+    _mainWidget1->hiddenPartsChangedSlot(_hiddenParts);
+    _mainWidget2->hiddenPartsChangedSlot(_hiddenParts);
 #endif
 }
 
 void QCGTopLevel::forwardAboutToShow()
 {
-  QMenu *popup = _forwardAction->menu();
+    QMenu *popup = _forwardAction->menu();
 
-  popup->clear();
-  StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
-  HistoryItem* hi = b ? b->current() : 0;
-  TraceFunction* f;
-  QAction* action;
+    popup->clear();
+    StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
+    HistoryItem* hi = b ? b->current() : 0;
+    TraceFunction* f;
+    QAction* action;
 
-  if (!hi) {
-    popup->addAction(tr("(No Stack)"));
-    return;
-  }
-
-  hi = hi->next();
-  if (!hi) {
-    popup->addAction(tr("(No next function)"));
-    return;
-  }
-
-  int count = 1;
-  while (count<GlobalConfig::maxSymbolCount() && hi) {
-    f = hi->function();
-    if (!f) break;
-
-    QString name = GlobalConfig::shortenSymbol(f->prettyName());
-
-    //qDebug("forward: Adding %s", name.toAscii());
-    action = popup->addAction(name);
-    action->setData(count);
+    if (!hi) {
+        popup->addAction(tr("(No Stack)"));
+        return;
+    }
 
     hi = hi->next();
-    count++;
-  }
+    if (!hi) {
+        popup->addAction(tr("(No next function)"));
+        return;
+    }
+
+    int count = 1;
+    while (count<GlobalConfig::maxSymbolCount() && hi) {
+        f = hi->function();
+        if (!f) break;
+
+        QString name = GlobalConfig::shortenSymbol(f->prettyName());
+
+        //qDebug("forward: Adding %s", name.toAscii());
+        action = popup->addAction(name);
+        action->setData(count);
+
+        hi = hi->next();
+        count++;
+    }
 }
 
 void QCGTopLevel::backAboutToShow()
 {
-  QMenu *popup = _backAction->menu();
+    QMenu *popup = _backAction->menu();
 
-  popup->clear();
-  StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
-  HistoryItem* hi = b ? b->current() : 0;
-  TraceFunction* f;
-  QAction* action;
+    popup->clear();
+    StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
+    HistoryItem* hi = b ? b->current() : 0;
+    TraceFunction* f;
+    QAction* action;
 
-  if (!hi) {
-    popup->addAction(tr("(No Stack)"));
-    return;
-  }
-
-  hi = hi->last();
-  if (!hi) {
-    popup->addAction(tr("(No previous function)"));
-    return;
-  }
-
-  int count = 1;
-  while (count<GlobalConfig::maxSymbolCount() && hi) {
-    f = hi->function();
-    if (!f) break;
-
-    QString name = GlobalConfig::shortenSymbol(f->prettyName());
-
-    //qDebug("back: Adding %s", name.toAscii());
-    action = popup->addAction(name);
-    action->setData(count);
+    if (!hi) {
+        popup->addAction(tr("(No Stack)"));
+        return;
+    }
 
     hi = hi->last();
-    count++;
-  }
+    if (!hi) {
+        popup->addAction(tr("(No previous function)"));
+        return;
+    }
+
+    int count = 1;
+    while (count<GlobalConfig::maxSymbolCount() && hi) {
+        f = hi->function();
+        if (!f) break;
+
+        QString name = GlobalConfig::shortenSymbol(f->prettyName());
+
+        //qDebug("back: Adding %s", name.toAscii());
+        action = popup->addAction(name);
+        action->setData(count);
+
+        hi = hi->last();
+        count++;
+    }
 }
 
 void QCGTopLevel::upAboutToShow()
 {
-  QMenu *popup = _upAction->menu();
+    QMenu *popup = _upAction->menu();
 
-  popup->clear();
-  StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
-  HistoryItem* hi = b ? b->current() : 0;
-  TraceFunction* f = hi ? hi->function() : 0;
-  QAction* action;
+    popup->clear();
+    StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
+    HistoryItem* hi = b ? b->current() : 0;
+    TraceFunction* f = hi ? hi->function() : 0;
+    QAction* action;
 
-  if (!f) {
-    popup->addAction(tr("(No Stack)"));
-    return;
-  }
-  f = hi->stack()->caller(f, false);
-  if (!f) {
-    popup->addAction(tr("(No Function Up)"));
-    return;
-  }
-
-  int count = 1;
-  while (count<GlobalConfig::maxSymbolCount() && f) {
-    QString name = GlobalConfig::shortenSymbol(f->prettyName());
-
-    action = popup->addAction(name);
-    action->setData(count);
-
+    if (!f) {
+        popup->addAction(tr("(No Stack)"));
+        return;
+    }
     f = hi->stack()->caller(f, false);
-    count++;
-  }
+    if (!f) {
+        popup->addAction(tr("(No Function Up)"));
+        return;
+    }
+
+    int count = 1;
+    while (count<GlobalConfig::maxSymbolCount() && f) {
+        QString name = GlobalConfig::shortenSymbol(f->prettyName());
+
+        action = popup->addAction(name);
+        action->setData(count);
+
+        f = hi->stack()->caller(f, false);
+        count++;
+    }
 }
 
 void QCGTopLevel::forwardTriggered(QAction* action)
 {
-  int count = action->data().toInt(0);
-  //qDebug("forwardTriggered: %d", count);
-  if( count <= 0)
-      return;
+    int count = action->data().toInt(0);
+    //qDebug("forwardTriggered: %d", count);
+    if( count <= 0)
+        return;
 
-  StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
-  if (!b) return;
+    StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
+    if (!b) return;
 
-  while (count>1) {
-    b->goForward();
-    count--;
-  }
-  _stackSelection->browserForward();
+    while (count>1) {
+        b->goForward();
+        count--;
+    }
+    _stackSelection->browserForward();
 }
 
 void QCGTopLevel::backTriggered(QAction* action)
 {
-  int count = action->data().toInt(0);
-  //qDebug("backTriggered: %d", count);
-  if( count <= 0)
-     return;
+    int count = action->data().toInt(0);
+    //qDebug("backTriggered: %d", count);
+    if( count <= 0)
+        return;
 
-  StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
-  if (!b) return;
+    StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
+    if (!b) return;
 
-  while (count>1) {
-    b->goBack();
-    count--;
-  }
-  _stackSelection->browserBack();
+    while (count>1) {
+        b->goBack();
+        count--;
+    }
+    _stackSelection->browserBack();
 }
 
 void QCGTopLevel::upTriggered(QAction* action)
 {
-  int count = action->data().toInt(0);
-  //qDebug("upTriggered: %d", count);
-  if( count <= 0)
-     return;
+    int count = action->data().toInt(0);
+    //qDebug("upTriggered: %d", count);
+    if( count <= 0)
+        return;
 
-  StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
-  HistoryItem* hi = b ? b->current() : 0;
-  if (!hi) return;
+    StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
+    HistoryItem* hi = b ? b->current() : 0;
+    if (!hi) return;
 
-  TraceFunction* f = hi->function();
+    TraceFunction* f = hi->function();
 
-  while (count>0 && f) {
-    f = hi->stack()->caller(f, false);
-    count--;
-  }
+    while (count>0 && f) {
+        f = hi->stack()->caller(f, false);
+        count--;
+    }
 
-  //qDebug("upActivated: %s", f ? f->prettyName().toAscii() : "??" );
-  if (f)
-    setFunction(f);
+    //qDebug("upActivated: %s", f ? f->prettyName().toAscii() : "??" );
+    if (f)
+        setFunction(f);
 }
 
 void QCGTopLevel::showMessage(const QString& msg, int ms)
 {
-	if (_statusbar)
-		_statusbar->showMessage(msg, ms);
+    if (_statusbar)
+        _statusbar->showMessage(msg, ms);
 }
 
 void QCGTopLevel::showStatus(const QString& msg, int progress)
 {
-	static bool msgUpdateNeeded = true;
+    static bool msgUpdateNeeded = true;
 
-	if (!_statusbar) return;
+    if (!_statusbar) return;
 
-	if (msg.isEmpty()) {
-	        //reset status
-		if (_progressBar) {
-		    _statusbar->removeWidget(_progressBar);
-		    delete _progressBar;
-		    _progressBar = 0;
-		}
-		_statusbar->clearMessage();
-		_progressMsg = msg;
-		return;
-	}
+    if (msg.isEmpty()) {
+        //reset status
+        if (_progressBar) {
+            _statusbar->removeWidget(_progressBar);
+            delete _progressBar;
+            _progressBar = 0;
+        }
+        _statusbar->clearMessage();
+        _progressMsg = msg;
+        return;
+    }
 
-	if (_progressMsg.isEmpty())
-		_progressStart.start();
+    if (_progressMsg.isEmpty())
+        _progressStart.start();
 
-	if (msg != _progressMsg) {
-		_progressMsg = msg;
-		msgUpdateNeeded = true;
-	}
+    if (msg != _progressMsg) {
+        _progressMsg = msg;
+        msgUpdateNeeded = true;
+    }
 
-	// do nothing if last change was less than 0.5 seconds ago
-	if (_progressStart.elapsed() < 500)
-		return;
+    // do nothing if last change was less than 0.5 seconds ago
+    if (_progressStart.elapsed() < 500)
+        return;
 
-	if (!_progressBar) {
-		_progressBar = new QProgressBar(_statusbar);
-		_progressBar->setMaximumSize(200, _statusbar->height()-4);
-		_statusbar->addPermanentWidget(_progressBar, 1);
-		_progressBar->show();
-		msgUpdateNeeded = true;
-	}
+    if (!_progressBar) {
+        _progressBar = new QProgressBar(_statusbar);
+        _progressBar->setMaximumSize(200, _statusbar->height()-4);
+        _statusbar->addPermanentWidget(_progressBar, 1);
+        _progressBar->show();
+        msgUpdateNeeded = true;
+    }
 
-	_progressStart.restart();
+    _progressStart.restart();
 
-	if (msgUpdateNeeded) {
-		_statusbar->showMessage(msg);
-		msgUpdateNeeded = false;
-	}
-	_progressBar->setValue(progress);
+    if (msgUpdateNeeded) {
+        _statusbar->showMessage(msg);
+        msgUpdateNeeded = false;
+    }
+    _progressBar->setValue(progress);
 
-	// let the progress bar update itself
-	qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
+    // let the progress bar update itself
+    qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
 }
 
 void QCGTopLevel::loadStart(const QString& filename)
@@ -2058,8 +2058,8 @@ void QCGTopLevel::loadFinished(const QString& msg)
 {
     showStatus(QString::null, 0);
     if (!msg.isEmpty())
-	showMessage(QStringLiteral("Error loading %1: %2").arg(_filename).arg(msg),
-		    2000);
+        showMessage(QStringLiteral("Error loading %1: %2").arg(_filename).arg(msg),
+                    2000);
 }
 
 void QCGTopLevel::loadProgress(int progress)

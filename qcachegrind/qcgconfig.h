@@ -36,7 +36,7 @@ public:
     ~QCGConfigGroup();
 
     void setValue(const QString& key, const QVariant& value,
-		  const QVariant& defaultValue = QVariant());
+                  const QVariant& defaultValue = QVariant());
     QVariant value(const QString& key, const QVariant& defaultValue) const;
 
 private:
@@ -51,14 +51,14 @@ private:
 class QCGConfigStorage : public ConfigStorage
 {
 public:
-  QCGConfigStorage();
-  ~QCGConfigStorage();
+    QCGConfigStorage();
+    ~QCGConfigStorage();
 
 private:
-  ConfigGroup* getGroup(const QString& group,
-			const QString& optSuffix);
+    ConfigGroup* getGroup(const QString& group,
+                          const QString& optSuffix);
 
-  QSettings* _settings;
+    QSettings* _settings;
 };
 
 #endif // QCGCONFIG_H

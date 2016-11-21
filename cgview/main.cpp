@@ -37,13 +37,13 @@ void showHelp(QTextStream& out, bool fullHelp = true)
         out << "Type 'cgview -h' for help." << endl;
     else
         out << "Usage: cgview [options] <file> ...\n\n"
-            "Options:\n"
-            " -h        Show this help text\n"
-            " -e        Sort list according to exclusive cost\n"
-            " -s <ev>   Sort and show counters for event <ev>\n"
-            " -c        Sort by call count\n"
-            " -b        Show butterfly (callers and callees)\n"
-            " -n        Do not detect recursive cycles" << endl;
+               "Options:\n"
+               " -h        Show this help text\n"
+               " -e        Sort list according to exclusive cost\n"
+               " -s <ev>   Sort and show counters for event <ev>\n"
+               " -c        Sort by call count\n"
+               " -b        Show butterfly (callers and callees)\n"
+               " -n        Do not detect recursive cycles" << endl;
 
     exit(1);
 }
@@ -84,7 +84,7 @@ int main(int argc, char** argv)
     EventTypeSet* m = d->eventTypes();
     if (m->realCount() == 0) {
         out << "Error: No event types found." << endl;
-	return 1;
+        return 1;
     }
 
     out << "\nTotals for event types:\n";
@@ -92,7 +92,7 @@ int main(int argc, char** argv)
     QString p;
     EventType* et;
     for (int i=0;i<m->realCount();i++) {
-	et = m->realType(i);
+        et = m->realType(i);
         out.setFieldWidth(14);
         out.setFieldAlignment(QTextStream::AlignRight);
         out << d->subCost(et).pretty();
@@ -100,13 +100,13 @@ int main(int argc, char** argv)
         out << "   " << et->longName() << " (" << et->name() << ")\n";
     }
     for (int i=0;i<m->derivedCount();i++) {
-	et = m->derivedType(i);
+        et = m->derivedType(i);
         out.setFieldWidth(14);
         out.setFieldAlignment(QTextStream::AlignRight);
         out << d->subCost(et).pretty();
         out.setFieldWidth(0);
         out << "   " << et->longName() <<
-                " (" << et->name() << " = " << et->formula() << ")\n";
+               " (" << et->name() << " = " << et->formula() << ")\n";
     }
     out << endl;
 
@@ -121,7 +121,7 @@ int main(int argc, char** argv)
     }
     Q_ASSERT( et!=0 );
     out << "Sorted by: " << (sortByExcl ? "Exclusive ":"Inclusive ")
-            << et->longName() << " (" << et->name() << ")" << endl;
+        << et->longName() << " (" << et->name() << ")" << endl;
 
     QList<TraceFunction*> flist;
     HighestCostList hc;
@@ -149,7 +149,7 @@ int main(int argc, char** argv)
 
     out.setFieldAlignment(QTextStream::AlignRight);
     for(int i=0; i<hc.realCount(); i++) {
-	f = (TraceFunction*)hc[i];
+        f = (TraceFunction*)hc[i];
 
         if (showCalls) {
             if (i>0) out << endl;
