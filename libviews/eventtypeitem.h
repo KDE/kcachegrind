@@ -30,22 +30,22 @@
 class EventTypeItem: public QTreeWidgetItem
 {
 public:
-  EventTypeItem(TraceCostItem* costItem,
-		EventType* ct, ProfileContext::Type gt);
+    EventTypeItem(TraceCostItem* costItem,
+                  EventType* ct, ProfileContext::Type gt);
 
-  bool operator<(const QTreeWidgetItem &other) const;
-  void setGroupType(ProfileContext::Type);
-  TraceCostItem* costItem() { return _costItem; }
-  EventType* eventType() { return _eventType; }
-  void update();
+    bool operator<(const QTreeWidgetItem &other) const;
+    void setGroupType(ProfileContext::Type);
+    TraceCostItem* costItem() { return _costItem; }
+    EventType* eventType() { return _eventType; }
+    void update();
 
-  QVariant data(int column, int role) const;
+    QVariant data(int column, int role) const;
 
 private:
-  SubCost _sum, _pure;
-  EventType* _eventType;
-  TraceCostItem* _costItem;
-  ProfileContext::Type _groupType;
+    SubCost _sum, _pure;
+    EventType* _eventType;
+    TraceCostItem* _costItem;
+    ProfileContext::Type _groupType;
 };
 
 #endif // EVENTTYPEITEM_H

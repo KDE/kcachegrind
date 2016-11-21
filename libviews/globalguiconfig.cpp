@@ -51,8 +51,8 @@ QColor ConfigColorSetting::colorForName(QString n)
 {
     int h = 0, s = 100;
     foreach(const QChar c, n) {
-      h = (h * 37 + s* c.unicode()) % 256;
-      s = (s * 17 + h* c.unicode()) % 192;
+        h = (h * 37 + s* c.unicode()) % 256;
+        s = (s * 17 + h* c.unicode()) % 192;
     }
 
     return QColor::fromHsv(h, 64+s, 192);

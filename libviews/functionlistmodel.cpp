@@ -231,35 +231,35 @@ void FunctionListModel::resetModelData(TraceData *data,
         _groupType = group->type();
         switch(_groupType) {
         case ProfileContext::Object:
-            {
-                TraceObject* o = dynamic_cast<TraceObject*>(group);
-                Q_ASSERT(o != 0);
-                _list = o->functions();
-            }
+        {
+            TraceObject* o = dynamic_cast<TraceObject*>(group);
+            Q_ASSERT(o != 0);
+            _list = o->functions();
+        }
             break;
 
         case ProfileContext::Class:
-            {
-                TraceClass* c = dynamic_cast<TraceClass*>(group);
-                Q_ASSERT(c != 0);
-                _list = c->functions();
-            }
+        {
+            TraceClass* c = dynamic_cast<TraceClass*>(group);
+            Q_ASSERT(c != 0);
+            _list = c->functions();
+        }
             break;
 
         case ProfileContext::File:
-            {
-                TraceFile* f = dynamic_cast<TraceFile*>(group);
-                Q_ASSERT(f != 0);
-                _list = f->functions();
-            }
+        {
+            TraceFile* f = dynamic_cast<TraceFile*>(group);
+            Q_ASSERT(f != 0);
+            _list = f->functions();
+        }
             break;
 
         case ProfileContext::FunctionCycle:
-            {
-                TraceFunctionCycle* c = dynamic_cast<TraceFunctionCycle*>(group);
-                Q_ASSERT(c != 0);
-                _list = c->members();
-            }
+        {
+            TraceFunctionCycle* c = dynamic_cast<TraceFunctionCycle*>(group);
+            Q_ASSERT(c != 0);
+            _list = c->members();
+        }
             break;
 
         default:
@@ -349,22 +349,22 @@ QString FunctionListModel::getSelfCost(TraceFunction *f) const
     ProfileCostArray* selfCost = f->data();
     if (GlobalConfig::showExpanded()) {
         switch(_groupType) {
-            case ProfileContext::Object: selfCost = f->object(); break;
-            case ProfileContext::Class:  selfCost = f->cls(); break;
-            case ProfileContext::File:   selfCost = f->file(); break;
+        case ProfileContext::Object: selfCost = f->object(); break;
+        case ProfileContext::Class:  selfCost = f->cls(); break;
+        case ProfileContext::File:   selfCost = f->file(); break;
         default: break;
         }
     }
     double selfTotal = selfCost->subCost(_eventType);
     if (selfTotal == 0.0)
-      return QStringLiteral("-");
+        return QStringLiteral("-");
 
     // self
     SubCost pure = f->subCost(_eventType);
     double self  = 100.0 * pure / selfTotal;
     if (GlobalConfig::showPercentage())
         return QStringLiteral("%1")
-        .arg(self, 0, 'f', GlobalConfig::percentPrecision());
+                .arg(self, 0, 'f', GlobalConfig::percentPrecision());
     else
         return f->prettySubCost(_eventType);
 }
@@ -374,15 +374,15 @@ QPixmap FunctionListModel::getSelfPixmap(TraceFunction *f) const
     ProfileCostArray* selfCost = f->data();
     if (GlobalConfig::showExpanded()) {
         switch(_groupType) {
-            case ProfileContext::Object: selfCost = f->object(); break;
-            case ProfileContext::Class:  selfCost = f->cls(); break;
-            case ProfileContext::File:   selfCost = f->file(); break;
+        case ProfileContext::Object: selfCost = f->object(); break;
+        case ProfileContext::Class:  selfCost = f->cls(); break;
+        case ProfileContext::File:   selfCost = f->file(); break;
         default: break;
         }
     }
     double selfTotal = selfCost->subCost(_eventType);
     if (selfTotal == 0.0)
-      return QPixmap();
+        return QPixmap();
 
     return costPixmap(_eventType, f, selfTotal, false);
 }
@@ -391,13 +391,13 @@ QString FunctionListModel::getInclCost(TraceFunction *f) const
 {
     double inclTotal = f->data()->subCost(_eventType);
     if (inclTotal == 0.0)
-      return QStringLiteral("-");
+        return QStringLiteral("-");
 
     SubCost sum  = f->inclusive()->subCost(_eventType);
     double incl  = 100.0 * sum / inclTotal;
     if (GlobalConfig::showPercentage())
         return QStringLiteral("%1")
-        .arg(incl, 0, 'f', GlobalConfig::percentPrecision());
+                .arg(incl, 0, 'f', GlobalConfig::percentPrecision());
     else
         return f->inclusive()->prettySubCost(_eventType);
 }
@@ -416,12 +416,12 @@ QString FunctionListModel::getCallCount(TraceFunction *f) const
 {
     QString str;
     if (f->calledCount() > 0)
-      str = f->prettyCalledCount();
+        str = f->prettyCalledCount();
     else {
-      if (f == f->cycle())
-        str = QStringLiteral("-");
-      else
-        str = QStringLiteral("(0)");
+        if (f == f->cycle())
+            str = QStringLiteral("-");
+        else
+            str = QStringLiteral("(0)");
     }
     return str;
 }
@@ -444,18 +444,18 @@ bool FunctionListModel::FunctionLessThan::operator()(TraceFunction *left,
 
     switch(_column) {
     case 0:
-        {
-            SubCost sum1 = f1->inclusive()->subCost(_eventType);
-            SubCost sum2 = f2->inclusive()->subCost(_eventType);
-            return sum1 < sum2;
-        }
+    {
+        SubCost sum1 = f1->inclusive()->subCost(_eventType);
+        SubCost sum2 = f2->inclusive()->subCost(_eventType);
+        return sum1 < sum2;
+    }
 
     case 1:
-        {
-            SubCost pure1 = f1->subCost(_eventType);
-            SubCost pure2 = f2->subCost(_eventType);
-            return pure1 < pure2;
-        }
+    {
+        SubCost pure1 = f1->subCost(_eventType);
+        SubCost pure2 = f2->subCost(_eventType);
+        return pure1 < pure2;
+    }
 
     case 2:
         return f1->calledCount() < f2->calledCount();

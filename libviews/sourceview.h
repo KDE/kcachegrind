@@ -30,43 +30,43 @@ class SourceItem;
 
 class SourceView : public QTreeWidget, public TraceItemView
 {
-  friend class SourceItem;
+    friend class SourceItem;
 
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit SourceView(TraceItemView* parentView,
-		      QWidget* parent = 0);
+    explicit SourceView(TraceItemView* parentView,
+                        QWidget* parent = 0);
 
-  QWidget* widget() { return this; }
-  QString whatsThis() const;
-  int arrowLevels() { return _arrowLevels; }
+    QWidget* widget() { return this; }
+    QString whatsThis() const;
+    int arrowLevels() { return _arrowLevels; }
 
 protected slots:
-  void context(const QPoint &);
-  void selectedSlot(QTreeWidgetItem*, QTreeWidgetItem*);
-  void activatedSlot(QTreeWidgetItem*,int);
-  void headerClicked(int);
+    void context(const QPoint &);
+    void selectedSlot(QTreeWidgetItem*, QTreeWidgetItem*);
+    void activatedSlot(QTreeWidgetItem*,int);
+    void headerClicked(int);
 
 protected:
-  void keyPressEvent(QKeyEvent* event);
+    void keyPressEvent(QKeyEvent* event);
 
 private:
-  CostItem* canShow(CostItem*);
-  void doUpdate(int, bool);
-  void refresh();
-  void updateJumpArray(uint,SourceItem*,bool,bool);
-  bool searchFile(QString&, TraceFunctionSource*);
-  void fillSourceFile(TraceFunctionSource*, int);
+    CostItem* canShow(CostItem*);
+    void doUpdate(int, bool);
+    void refresh();
+    void updateJumpArray(uint,SourceItem*,bool,bool);
+    bool searchFile(QString&, TraceFunctionSource*);
+    void fillSourceFile(TraceFunctionSource*, int);
 
-  bool _inSelectionUpdate;
+    bool _inSelectionUpdate;
 
-  // arrows
-  int _arrowLevels;
-  // temporary needed on creation...
-  QVector<TraceLineJump*> _jump;
-  TraceLineJumpList _lowList, _highList;
-  TraceLineJumpList::iterator _lowListIter, _highListIter;
+    // arrows
+    int _arrowLevels;
+    // temporary needed on creation...
+    QVector<TraceLineJump*> _jump;
+    TraceLineJumpList _lowList, _highList;
+    TraceLineJumpList::iterator _lowListIter, _highListIter;
 };
 
 #endif

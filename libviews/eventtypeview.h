@@ -30,25 +30,25 @@
 
 class EventTypeView: public QTreeWidget, public TraceItemView
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit EventTypeView(TraceItemView* parentView,
-			 QWidget* parent = 0, const char* name = 0);
+    explicit EventTypeView(TraceItemView* parentView,
+                           QWidget* parent = 0, const char* name = 0);
 
-  virtual QWidget* widget() { return this; }
-  QString whatsThis() const;
+    virtual QWidget* widget() { return this; }
+    QString whatsThis() const;
 
 private slots:
-  void context(const QPoint&);
-  void currentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*);
-  void itemDoubleClicked(QTreeWidgetItem*, int);
-  void itemChanged(QTreeWidgetItem*, int);
+    void context(const QPoint&);
+    void currentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*);
+    void itemDoubleClicked(QTreeWidgetItem*, int);
+    void itemChanged(QTreeWidgetItem*, int);
 
 private:
-  CostItem* canShow(CostItem*);
-  void doUpdate(int, bool);
-  void refresh();
+    CostItem* canShow(CostItem*);
+    void doUpdate(int, bool);
+    void refresh();
 };
 
 #endif

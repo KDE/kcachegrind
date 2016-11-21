@@ -36,223 +36,223 @@
 
 // for messages
 InstrItem::InstrItem(InstrView* iv, QTreeWidget* parent,
-		     Addr addr, const QString& msg)
+                     Addr addr, const QString& msg)
     : QTreeWidgetItem(parent)
 {
-  _view = iv;
-  _addr = addr;
-  _instr = 0;
-  _instrCall = 0;
-  _instrJump = 0;
-  _inside = false;
+    _view = iv;
+    _addr = addr;
+    _instr = 0;
+    _instrCall = 0;
+    _instrJump = 0;
+    _inside = false;
 
-  setTextAlignment(0, Qt::AlignRight);
-  setTextAlignment(1, Qt::AlignRight);
-  setTextAlignment(2, Qt::AlignRight);
+    setTextAlignment(0, Qt::AlignRight);
+    setTextAlignment(1, Qt::AlignRight);
+    setTextAlignment(2, Qt::AlignRight);
 
-  setText(0, addr.pretty());
-  setText(6, msg);
+    setText(0, addr.pretty());
+    setText(6, msg);
 
-  updateGroup();
-  updateCost();
+    updateGroup();
+    updateCost();
 }
 
 // for code lines
 InstrItem::InstrItem(InstrView* iv, QTreeWidget* parent,
-		     Addr addr, bool inside,
-		     const QString& code, const QString& cmd,
-		     const QString& args, TraceInstr* instr)
+                     Addr addr, bool inside,
+                     const QString& code, const QString& cmd,
+                     const QString& args, TraceInstr* instr)
     : QTreeWidgetItem(parent)
 {
-  _view = iv;
-  _addr = addr;
-  _instr = instr;
-  _instrCall = 0;
-  _instrJump = 0;
-  _inside = inside;
+    _view = iv;
+    _addr = addr;
+    _instr = instr;
+    _instrCall = 0;
+    _instrJump = 0;
+    _inside = inside;
 
-  setTextAlignment(0, Qt::AlignRight);
-  setTextAlignment(1, Qt::AlignRight);
-  setTextAlignment(2, Qt::AlignRight);
+    setTextAlignment(0, Qt::AlignRight);
+    setTextAlignment(1, Qt::AlignRight);
+    setTextAlignment(2, Qt::AlignRight);
 
-  if (args == QLatin1String("..."))
-      setText(0, args);
-  else
-      setText(0, addr.pretty());
-  setText(4, code);
-  setText(5, cmd);
-  setText(6, args);
+    if (args == QLatin1String("..."))
+        setText(0, args);
+    else
+        setText(0, addr.pretty());
+    setText(4, code);
+    setText(5, cmd);
+    setText(6, args);
 
-  TraceLine* l;
-  if (instr && (l = instr->line()))
-      setText(7, l->name());
+    TraceLine* l;
+    if (instr && (l = instr->line()))
+        setText(7, l->name());
 
-  updateGroup();
-  updateCost();
+    updateGroup();
+    updateCost();
 }
 
 // for call lines
 InstrItem::InstrItem(InstrView* iv, QTreeWidgetItem* parent, Addr addr,
-		     TraceInstr* instr, TraceInstrCall* instrCall)
+                     TraceInstr* instr, TraceInstrCall* instrCall)
     : QTreeWidgetItem(parent)
 {
-  _view = iv;
-  _addr = addr;
-  _instr = instr;
-  _instrCall = instrCall;
-  _instrJump = 0;
-  _inside = true;
+    _view = iv;
+    _addr = addr;
+    _instr = instr;
+    _instrCall = instrCall;
+    _instrJump = 0;
+    _inside = true;
 
-  setTextAlignment(0, Qt::AlignRight);
-  setTextAlignment(1, Qt::AlignRight);
-  setTextAlignment(2, Qt::AlignRight);
+    setTextAlignment(0, Qt::AlignRight);
+    setTextAlignment(1, Qt::AlignRight);
+    setTextAlignment(2, Qt::AlignRight);
 
-  //qDebug("InstrItem: (file %d, line %d) Linecall to %s",
-  //       fileno, lineno, _lineCall->call()->called()->prettyName().toAscii());
+    //qDebug("InstrItem: (file %d, line %d) Linecall to %s",
+    //       fileno, lineno, _lineCall->call()->called()->prettyName().toAscii());
 
-  SubCost cc = _instrCall->callCount();
-  QString callStr = QStringLiteral("  ");
-  if (cc==0) {
-      if (((TraceItemView*)_view)->data()->maxCallCount() > 0)
-          callStr += QObject::tr("Active call to '%1'");
-      else
-          callStr += QObject::tr("Call to '%1'");
-      callStr = callStr.arg(_instrCall->call()->calledName());
-  }
-  else
-    //~ singular %n call to '%2'
-    //~ plural %n calls to '%2'
-    callStr += QObject::tr("%n call(s) to '%2'", "", (uint64)cc)
-               .arg(_instrCall->call()->calledName());
+    SubCost cc = _instrCall->callCount();
+    QString callStr = QStringLiteral("  ");
+    if (cc==0) {
+        if (((TraceItemView*)_view)->data()->maxCallCount() > 0)
+            callStr += QObject::tr("Active call to '%1'");
+        else
+            callStr += QObject::tr("Call to '%1'");
+        callStr = callStr.arg(_instrCall->call()->calledName());
+    }
+    else
+        //~ singular %n call to '%2'
+        //~ plural %n calls to '%2'
+        callStr += QObject::tr("%n call(s) to '%2'", "", (uint64)cc)
+                   .arg(_instrCall->call()->calledName());
 
-  TraceFunction* calledF = _instrCall->call()->called();
-  calledF->addPrettyLocation(callStr);
+    TraceFunction* calledF = _instrCall->call()->called();
+    calledF->addPrettyLocation(callStr);
 
-  setText(6, callStr);
+    setText(6, callStr);
 
-  updateGroup();
-  updateCost();
+    updateGroup();
+    updateCost();
 }
 
 // for jump lines
 InstrItem::InstrItem(InstrView* iv, QTreeWidgetItem* parent, Addr addr,
-		     TraceInstr* instr, TraceInstrJump* instrJump)
+                     TraceInstr* instr, TraceInstrJump* instrJump)
     : QTreeWidgetItem(parent)
 {
-  _view = iv;
-  _addr = addr;
-  _inside = true;
-  _instr = instr;
-  _instrCall = 0;
-  _instrJump = instrJump;
+    _view = iv;
+    _addr = addr;
+    _inside = true;
+    _instr = instr;
+    _instrCall = 0;
+    _instrJump = instrJump;
 
-  setTextAlignment(0, Qt::AlignRight);
-  setTextAlignment(1, Qt::AlignRight);
-  setTextAlignment(2, Qt::AlignRight);
+    setTextAlignment(0, Qt::AlignRight);
+    setTextAlignment(1, Qt::AlignRight);
+    setTextAlignment(2, Qt::AlignRight);
 
-  //qDebug("SourceItem: (file %d, line %d) Linecall to %s",
-  //       fileno, lineno, _lineCall->call()->called()->prettyName().toAscii());
+    //qDebug("SourceItem: (file %d, line %d) Linecall to %s",
+    //       fileno, lineno, _lineCall->call()->called()->prettyName().toAscii());
 
-  QString jStr;
-  if (_instrJump->isCondJump())
-      jStr = QObject::tr("Jump %1 of %2 times to 0x%3")
-            .arg(_instrJump->followedCount().pretty())
-            .arg(_instrJump->executedCount().pretty())
-            .arg(_instrJump->instrTo()->addr().toString());
-  else
-      jStr = QObject::tr("Jump %1 times to 0x%2")
-            .arg(_instrJump->executedCount().pretty())
-            .arg(_instrJump->instrTo()->addr().toString());
+    QString jStr;
+    if (_instrJump->isCondJump())
+        jStr = QObject::tr("Jump %1 of %2 times to 0x%3")
+               .arg(_instrJump->followedCount().pretty())
+               .arg(_instrJump->executedCount().pretty())
+               .arg(_instrJump->instrTo()->addr().toString());
+    else
+        jStr = QObject::tr("Jump %1 times to 0x%2")
+               .arg(_instrJump->executedCount().pretty())
+               .arg(_instrJump->instrTo()->addr().toString());
 
-  setText(6, jStr);
+    setText(6, jStr);
 
-  updateGroup();
-  updateCost();
+    updateGroup();
+    updateCost();
 }
 
 
 void InstrItem::updateGroup()
 {
-  if (!_instrCall) return;
+    if (!_instrCall) return;
 
-  TraceFunction* f = _instrCall->call()->called();
-  QColor c = GlobalGUIConfig::functionColor(_view->groupType(), f);
-  setIcon(6, colorPixmap(10, 10, c));
+    TraceFunction* f = _instrCall->call()->called();
+    QColor c = GlobalGUIConfig::functionColor(_view->groupType(), f);
+    setIcon(6, colorPixmap(10, 10, c));
 }
 
 void InstrItem::updateCost()
 {
-  _pure = SubCost(0);
-  _pure2 = SubCost(0);
+    _pure = SubCost(0);
+    _pure2 = SubCost(0);
 
-  if (!_instr) return;
-  if (_instrJump) return;
+    if (!_instr) return;
+    if (_instrJump) return;
 
-  ProfileCostArray* instrCost = _instrCall ?
-      (ProfileCostArray*)_instrCall : (ProfileCostArray*)_instr;
+    ProfileCostArray* instrCost = _instrCall ?
+                                      (ProfileCostArray*)_instrCall : (ProfileCostArray*)_instr;
 
-  // do not show any cost inside of cycles
-  if (_instrCall &&
-      ((_instrCall->call()->inCycle()>0) ||
-       (_instrCall->call()->isRecursion()))) {
-    QString str;
-    QPixmap p;
+    // do not show any cost inside of cycles
+    if (_instrCall &&
+        ((_instrCall->call()->inCycle()>0) ||
+         (_instrCall->call()->isRecursion()))) {
+        QString str;
+        QPixmap p;
 
-    QFontMetrics fm(font(1));
-    p = QIcon::fromTheme(QStringLiteral("edit-undo")).pixmap(fm.height());
-    if (p.isNull())
-      str = QObject::tr("(cycle)");
+        QFontMetrics fm(font(1));
+        p = QIcon::fromTheme(QStringLiteral("edit-undo")).pixmap(fm.height());
+        if (p.isNull())
+            str = QObject::tr("(cycle)");
 
-    setText(1, str);
-    setIcon(1, p);
-    setText(2, str);
-    setIcon(2, p);
-    return;
-  }
+        setText(1, str);
+        setIcon(1, p);
+        setText(2, str);
+        setIcon(2, p);
+        return;
+    }
 
-  ProfileCostArray* totalCost;
-  if (GlobalConfig::showExpanded())
-      totalCost = _instr->function()->inclusive();
-  else
-      totalCost = _instr->function()->data();
-
-  EventType *et = _view->eventType();
-  _pure = et ? instrCost->subCost(et) : SubCost(0);
-  if (_pure == 0) {
-    setText(1, QString());
-    setIcon(1, QPixmap());
-  }
-  else {
-    double total = totalCost->subCost(et);
-    double pure  = 100.0 * _pure / total;
-
-    if (GlobalConfig::showPercentage())
-      setText(1, QStringLiteral("%1")
-	      .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
+    ProfileCostArray* totalCost;
+    if (GlobalConfig::showExpanded())
+        totalCost = _instr->function()->inclusive();
     else
-      setText(1, _pure.pretty());
+        totalCost = _instr->function()->data();
 
-    setIcon(1, costPixmap(et, instrCost, total, false));
-  }
+    EventType *et = _view->eventType();
+    _pure = et ? instrCost->subCost(et) : SubCost(0);
+    if (_pure == 0) {
+        setText(1, QString());
+        setIcon(1, QPixmap());
+    }
+    else {
+        double total = totalCost->subCost(et);
+        double pure  = 100.0 * _pure / total;
 
-  EventType *ct2 = _view->eventType2();
-  _pure2 = ct2 ? instrCost->subCost(ct2) : SubCost(0);
-  if (_pure2 == 0) {
-    setText(2, QString());
-    setIcon(2, QPixmap());
-  }
-  else {
-    double total = totalCost->subCost(ct2);
-    double pure  = 100.0 * _pure2 / total;
+        if (GlobalConfig::showPercentage())
+            setText(1, QStringLiteral("%1")
+                    .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
+        else
+            setText(1, _pure.pretty());
 
-    if (GlobalConfig::showPercentage())
-      setText(2, QStringLiteral("%1")
-	      .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
-    else
-      setText(2, _pure2.pretty());
+        setIcon(1, costPixmap(et, instrCost, total, false));
+    }
 
-    setIcon(2, costPixmap(ct2, instrCost, total, false));
-  }
+    EventType *ct2 = _view->eventType2();
+    _pure2 = ct2 ? instrCost->subCost(ct2) : SubCost(0);
+    if (_pure2 == 0) {
+        setText(2, QString());
+        setIcon(2, QPixmap());
+    }
+    else {
+        double total = totalCost->subCost(ct2);
+        double pure  = 100.0 * _pure2 / total;
+
+        if (GlobalConfig::showPercentage())
+            setText(2, QStringLiteral("%1")
+                    .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
+        else
+            setText(2, _pure2.pretty());
+
+        setIcon(2, costPixmap(ct2, instrCost, total, false));
+    }
 }
 
 bool InstrItem::operator<( const QTreeWidgetItem & other ) const
@@ -332,8 +332,8 @@ QSize InstrItemDelegate::sizeHint(const QStyleOptionViewItem &option,
 }
 
 void InstrItemDelegate::paint(QPainter *painter,
-			      const QStyleOptionViewItem &option,
-			      const QModelIndex &index) const
+                              const QStyleOptionViewItem &option,
+                              const QModelIndex &index) const
 {
     int column = index.column();
     InstrItem* item = static_cast<InstrItem*>(index.internalPointer());
@@ -353,8 +353,8 @@ void InstrItemDelegate::paint(QPainter *painter,
 }
 
 void InstrItemDelegate::paintArrows(QPainter *p,
-				    const QStyleOptionViewItem &option,
-				    const QModelIndex &index) const
+                                    const QStyleOptionViewItem &option,
+                                    const QModelIndex &index) const
 {
     QTreeWidget* tw = _parent;
     if ( !tw ) return;

@@ -83,94 +83,94 @@ CallView::CallView(bool showCallers, TraceItemView* parentView, QWidget* parent)
 QString CallView::whatsThis() const
 {
     return _showCallers ?
-	tr( "<b>List of direct Callers</b>"
-	      "<p>This list shows all functions calling the "
-	      "current selected one directly, together with "
-	      "a call count and the cost spent in the current "
-	      "selected function while being called from the "
-	      "function from the list.</p>"
-	      "<p>An icon instead of an inclusive cost specifies "
-	      "that this is a call inside of a recursive cycle. "
-	      "An inclusive cost makes no sense here.</p>"
-	      "<p>Selecting a function makes it the current selected "
-	      "one of this information panel. "
-	      "If there are two panels (Split mode), the "
-	      "function of the other panel is changed instead.</p>") :
-	tr( "<b>List of direct Callees</b>"
-	      "<p>This list shows all functions called by the "
-	      "current selected one directly, together with "
-	      "a call count and the cost spent in this function "
-	      "while being called from the selected function.</p>"
-	      "<p>Selecting a function makes it the current selected "
-	      "one of this information panel. "
-	      "If there are two panels (Split mode), the "
-	      "function of the other panel is changed instead.</p>");
+                tr( "<b>List of direct Callers</b>"
+                    "<p>This list shows all functions calling the "
+                    "current selected one directly, together with "
+                    "a call count and the cost spent in the current "
+                    "selected function while being called from the "
+                    "function from the list.</p>"
+                    "<p>An icon instead of an inclusive cost specifies "
+                    "that this is a call inside of a recursive cycle. "
+                    "An inclusive cost makes no sense here.</p>"
+                    "<p>Selecting a function makes it the current selected "
+                    "one of this information panel. "
+                    "If there are two panels (Split mode), the "
+                    "function of the other panel is changed instead.</p>") :
+                tr( "<b>List of direct Callees</b>"
+                    "<p>This list shows all functions called by the "
+                    "current selected one directly, together with "
+                    "a call count and the cost spent in this function "
+                    "while being called from the selected function.</p>"
+                    "<p>Selecting a function makes it the current selected "
+                    "one of this information panel. "
+                    "If there are two panels (Split mode), the "
+                    "function of the other panel is changed instead.</p>");
 }
 
 
 void CallView::context(const QPoint & p)
 {
-  QMenu popup;
+    QMenu popup;
 
-  // p is in local coordinates
-  int col = columnAt(p.x());
-  QTreeWidgetItem* i = itemAt(p);
-  TraceCall* c = i ? ((CallItem*) i)->call() : 0;
-  TraceFunction *f = 0, *cycle = 0;
+    // p is in local coordinates
+    int col = columnAt(p.x());
+    QTreeWidgetItem* i = itemAt(p);
+    TraceCall* c = i ? ((CallItem*) i)->call() : 0;
+    TraceFunction *f = 0, *cycle = 0;
 
-  QAction* activateFunctionAction = 0;
-  QAction* activateCycleAction = 0;
-  if (c) {
-    QString name  = _showCallers ? c->callerName(true) : c->calledName(true);
-    f = _showCallers ? c->caller(true) : c->called(true);
-    cycle = f->cycle();
+    QAction* activateFunctionAction = 0;
+    QAction* activateCycleAction = 0;
+    if (c) {
+        QString name  = _showCallers ? c->callerName(true) : c->calledName(true);
+        f = _showCallers ? c->caller(true) : c->called(true);
+        cycle = f->cycle();
 
-    QString menuText = tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(name));
-    activateFunctionAction = popup.addAction(menuText);
+        QString menuText = tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(name));
+        activateFunctionAction = popup.addAction(menuText);
 
-    if (cycle) {
-	name = GlobalConfig::shortenSymbol(cycle->prettyName());
-        QString menuText = tr("Go to '%1'").arg(name);
-        activateCycleAction = popup.addAction(menuText);
+        if (cycle) {
+            name = GlobalConfig::shortenSymbol(cycle->prettyName());
+            QString menuText = tr("Go to '%1'").arg(name);
+            activateCycleAction = popup.addAction(menuText);
+        }
+
+        popup.addSeparator();
     }
 
-    popup.addSeparator();
-  }
+    // add menu items to select event type if column displays cost for a type
+    if (col < 4) {
+        addEventTypeMenu(&popup);
+        popup.addSeparator();
+    }
+    addGoMenu(&popup);
 
-  // add menu items to select event type if column displays cost for a type
-  if (col < 4) {
-    addEventTypeMenu(&popup);
-    popup.addSeparator();
-  }
-  addGoMenu(&popup);
-
-  QAction* a = popup.exec(mapToGlobal(p + QPoint(0,header()->height())));
-  if (a == activateFunctionAction)
-      TraceItemView::activated(f);
-  else if (a == activateCycleAction)
-      TraceItemView::activated(cycle);
+    QAction* a = popup.exec(mapToGlobal(p + QPoint(0,header()->height())));
+    if (a == activateFunctionAction)
+        TraceItemView::activated(f);
+    else if (a == activateCycleAction)
+        TraceItemView::activated(cycle);
 }
 
 void CallView::selectedSlot(QTreeWidgetItem * i, QTreeWidgetItem *)
 {
-  if (!i) return;
-  TraceCall* c = ((CallItem*) i)->call();
-  // Should we skip cycles here?
-  CostItem* f = _showCallers ? c->caller(false) : c->called(false);
+    if (!i) return;
+    TraceCall* c = ((CallItem*) i)->call();
+    // Should we skip cycles here?
+    CostItem* f = _showCallers ? c->caller(false) : c->called(false);
 
-  _selectedItem = f;
-  selected(f);
+    _selectedItem = f;
+    selected(f);
 }
 
 void CallView::activatedSlot(QTreeWidgetItem* i,int)
 {
-  if (!i) return;
+    if (!i) return;
 
-  TraceCall* c = ((CallItem*) i)->call();
-  // skip cycles: use the context menu to get to the cycle...
-  CostItem* f = _showCallers ? c->caller(true) : c->called(true);
+    TraceCall* c = ((CallItem*) i)->call();
+    // skip cycles: use the context menu to get to the cycle...
+    CostItem* f = _showCallers ? c->caller(true) : c->called(true);
 
-  TraceItemView::activated(f);
+    TraceItemView::activated(f);
 }
 
 void CallView::headerClicked(int col)
@@ -198,16 +198,16 @@ void CallView::keyPressEvent(QKeyEvent* event)
 
 CostItem* CallView::canShow(CostItem* i)
 {
-  ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
+    ProfileContext::Type t = i ? i->type() : ProfileContext::InvalidType;
 
-  switch(t) {
-  case ProfileContext::Function:
-  case ProfileContext::FunctionCycle:
-      return i;
-  default:
-      break;
-  }
-  return 0;
+    switch(t) {
+    case ProfileContext::Function:
+    case ProfileContext::FunctionCycle:
+        return i;
+    default:
+        break;
+    }
+    return 0;
 }
 
 void CallView::doUpdate(int changeType, bool)
@@ -215,42 +215,42 @@ void CallView::doUpdate(int changeType, bool)
     // Special case ?
     if (changeType == selectedItemChanged) {
 
-	if (!_selectedItem) {
-	    clearSelection();
-	    return;
-	}
+        if (!_selectedItem) {
+            clearSelection();
+            return;
+        }
 
         CallItem* ci = (CallItem*) currentItem();
-	TraceCall* c;
-	CostItem* ti;
-	if (ci) {
-	    c = ci->call();
-	    ti = _showCallers ? c->caller() : c->called();
-	    if (ti == _selectedItem) return;
-	}
+        TraceCall* c;
+        CostItem* ti;
+        if (ci) {
+            c = ci->call();
+            ti = _showCallers ? c->caller() : c->called();
+            if (ti == _selectedItem) return;
+        }
 
         QTreeWidgetItem *item = 0;
         for (int i=0; i<topLevelItemCount();i++) {
             item = topLevelItem(i);
-	    c = ((CallItem*) item)->call();
-	    ti = _showCallers ? c->caller() : c->called();
-	    if (ti == _selectedItem) {
+            c = ((CallItem*) item)->call();
+            ti = _showCallers ? c->caller() : c->called();
+            if (ti == _selectedItem) {
                 scrollToItem(item);
                 setCurrentItem(item);
-		break;
-	    }
-	}
+                break;
+            }
+        }
         if (!item && ci) clearSelection();
-	return;
+        return;
     }
     
     if (changeType == groupTypeChanged) {
         QTreeWidgetItem *item;
         for (int i=0; i<topLevelItemCount(); i++){
             item = topLevelItem(i);
-	    ((CallItem*)item)->updateGroup();
+            ((CallItem*)item)->updateGroup();
         }
-	return;
+        return;
     }
 
     refresh();
@@ -280,7 +280,7 @@ void CallView::refresh()
 
     QList<QTreeWidgetItem*> items;
     foreach(TraceCall* call, l)
-	if (call->subCost(_eventType)>0)
+        if (call->subCost(_eventType)>0)
             items.append(new CallItem(this, 0, call));
 
     // when inserting, switch off sorting for performance reason

@@ -35,36 +35,36 @@ class TabView;
 
 class MultiView : public QSplitter, public TraceItemView
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit MultiView(TopLevelBase* top, QWidget* parent = 0);
+    explicit MultiView(TopLevelBase* top, QWidget* parent = 0);
 
-  QWidget* widget() { return this; }
-  TabView* activeTabView() const { return _active; }
-  void setData(TraceData*);
+    QWidget* widget() { return this; }
+    TabView* activeTabView() const { return _active; }
+    void setData(TraceData*);
 
-  void appendView();
-  void removeView();
-  void setChildCount(int);
-  int childCount() { return _views.count(); }
+    void appendView();
+    void removeView();
+    void setChildCount(int);
+    int childCount() { return _views.count(); }
 
-  void selected(TraceItemView*, CostItem*);
-  void activated(TraceItemView*, CostItem*);
+    void selected(TraceItemView*, CostItem*);
+    void activated(TraceItemView*, CostItem*);
 
-  void saveLayout(const QString& prefix, const QString& postfix);
-  void restoreLayout(const QString& prefix, const QString& postfix);
-  void saveOptions(const QString& prefix, const QString& postfix);
-  void restoreOptions(const QString& prefix, const QString& postfix);
+    void saveLayout(const QString& prefix, const QString& postfix);
+    void restoreLayout(const QString& prefix, const QString& postfix);
+    void saveOptions(const QString& prefix, const QString& postfix);
+    void restoreOptions(const QString& prefix, const QString& postfix);
 
 public slots:
     void tabActivated(TabView*);
 
- private:
-  void doUpdate(int, bool);
+private:
+    void doUpdate(int, bool);
 
-  TabView* _active;
-  QList<TabView*> _views;
+    TabView* _active;
+    QList<TabView*> _views;
 };
 
 #endif

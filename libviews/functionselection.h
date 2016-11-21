@@ -45,68 +45,68 @@ class FunctionListModel;
 
 class FunctionSelection: public QWidget, public TraceItemView
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit FunctionSelection(TopLevelBase*, QWidget* parent = 0);
+    explicit FunctionSelection(TopLevelBase*, QWidget* parent = 0);
 
-  TraceCostItem* group() { return _group; }
-  TraceCostItem* group(QString);
-  void setGroup(TraceCostItem*);
-  void query(QString);
-  bool selectTopFunction();
+    TraceCostItem* group() { return _group; }
+    TraceCostItem* group(QString);
+    void setGroup(TraceCostItem*);
+    void query(QString);
+    bool selectTopFunction();
 
-  QWidget* widget() { return this; }
-  QString whatsThis() const;
-  void setData(TraceData*);
+    QWidget* widget() { return this; }
+    QString whatsThis() const;
+    void setData(TraceData*);
 
-  void updateGroupingMenu(QMenu*);
+    void updateGroupingMenu(QMenu*);
 
 public slots:
-  void searchReturnPressed();
-  void searchChanged(const QString&);
-  void queryDelayed();
+    void searchReturnPressed();
+    void searchChanged(const QString&);
+    void queryDelayed();
 
-  void groupTypeSelected(QAction*);
-  void groupTypeSelected(int);
-  void groupDoubleClicked(QTreeWidgetItem*, int);
-  void groupSelected(QTreeWidgetItem*, QTreeWidgetItem*);
-  void groupContext(const QPoint &);
-  void groupHeaderClicked(int);
+    void groupTypeSelected(QAction*);
+    void groupTypeSelected(int);
+    void groupDoubleClicked(QTreeWidgetItem*, int);
+    void groupSelected(QTreeWidgetItem*, QTreeWidgetItem*);
+    void groupContext(const QPoint &);
+    void groupHeaderClicked(int);
 
-  void functionActivated(const QModelIndex&);
-  void functionContext(const QPoint &);
-  void functionHeaderClicked(int);
+    void functionActivated(const QModelIndex&);
+    void functionContext(const QPoint &);
+    void functionHeaderClicked(int);
 
 private:
-  CostItem* canShow(CostItem* i);
-  void doUpdate(int, bool);
-  void selectFunction();
-  void refresh();
-  void setCostColumnWidths();
-  void updateGroupSizes(bool hideEmpty);
-  void addGroupAction(QMenu*, ProfileContext::Type,
-		      const QString& s = QString());
-  void selectFunction(TraceFunction* f, bool ensureVisible = true);
+    CostItem* canShow(CostItem* i);
+    void doUpdate(int, bool);
+    void selectFunction();
+    void refresh();
+    void setCostColumnWidths();
+    void updateGroupSizes(bool hideEmpty);
+    void addGroupAction(QMenu*, ProfileContext::Type,
+                        const QString& s = QString());
+    void selectFunction(TraceFunction* f, bool ensureVisible = true);
 
-  TraceCostItem* _group;
+    TraceCostItem* _group;
 
-  QString _searchString, _searchDelayed;
-  QTimer _searchTimer;
-  QMap<TraceCostItem*,int> _groupSize;
+    QString _searchString, _searchDelayed;
+    QTimer _searchTimer;
+    QMap<TraceCostItem*,int> _groupSize;
 
-  HighestCostList _hc;
-  // when setting a
-  bool _inSetGroup, _inSetFunction;
+    HighestCostList _hc;
+    // when setting a
+    bool _inSetGroup, _inSetFunction;
 
-  QLabel *searchLabel;
-  QLineEdit *searchEdit;
-  QComboBox *groupBox;
-  QTreeWidget *groupList;
-  QTreeView *functionList;
-  FunctionListModel* functionListModel;
+    QLabel *searchLabel;
+    QLineEdit *searchEdit;
+    QComboBox *groupBox;
+    QTreeWidget *groupList;
+    QTreeView *functionList;
+    FunctionListModel* functionListModel;
 
-  Qt::SortOrder _functionListSortOrder;
+    Qt::SortOrder _functionListSortOrder;
 };
 
 

@@ -37,47 +37,47 @@ class StackBrowser;
 
 class StackSelection : public QWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit StackSelection(QWidget* parent = 0);
-  ~StackSelection();
+    explicit StackSelection(QWidget* parent = 0);
+    ~StackSelection();
 
-  TraceData* data() const { return _data; }
-  void setData(TraceData*);
-  StackBrowser* browser() const { return _browser; }
-  EventType* eventType() { return _eventType; }
-  EventType* eventType2() { return _eventType2; }
-  ProfileContext::Type groupType() { return _groupType; }
+    TraceData* data() const { return _data; }
+    void setData(TraceData*);
+    StackBrowser* browser() const { return _browser; }
+    EventType* eventType() { return _eventType; }
+    EventType* eventType2() { return _eventType2; }
+    ProfileContext::Type groupType() { return _groupType; }
 
 signals:
-  void functionSelected(CostItem*);
+    void functionSelected(CostItem*);
 
 public slots:
-  void setFunction(TraceFunction*);
-  void setEventType(EventType*);
-  void setEventType2(EventType*);
-  void setGroupType(ProfileContext::Type);
+    void setFunction(TraceFunction*);
+    void setEventType(EventType*);
+    void setEventType2(EventType*);
+    void setGroupType(ProfileContext::Type);
 
-  void stackSelected(QTreeWidgetItem*,QTreeWidgetItem*);
-  void browserBack();
-  void browserForward();
-  void browserUp();
-  void browserDown();
-  void refresh();
-  void rebuildStackList();
+    void stackSelected(QTreeWidgetItem*,QTreeWidgetItem*);
+    void browserBack();
+    void browserForward();
+    void browserUp();
+    void browserDown();
+    void refresh();
+    void rebuildStackList();
 
 private:
-  void selectFunction();
+    void selectFunction();
 
-  TraceData* _data;
-  StackBrowser* _browser;
-  TraceFunction* _function;
-  EventType* _eventType;
-  EventType* _eventType2;
-  ProfileContext::Type _groupType;
+    TraceData* _data;
+    StackBrowser* _browser;
+    TraceFunction* _function;
+    EventType* _eventType;
+    EventType* _eventType2;
+    ProfileContext::Type _groupType;
 
-  QTreeWidget* _stackList;
+    QTreeWidget* _stackList;
 };
 
 #endif

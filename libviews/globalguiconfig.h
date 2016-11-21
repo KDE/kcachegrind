@@ -76,22 +76,22 @@ public:
     GlobalGUIConfig();
     ~GlobalGUIConfig();
 
-  // gets the singleton instance
-  static GlobalGUIConfig* config();
+    // gets the singleton instance
+    static GlobalGUIConfig* config();
 
-  void saveOptions();
-  void readOptions();
+    void saveOptions();
+    void readOptions();
 
-  // color for visualization of an object
-  static QColor functionColor(ProfileContext::Type gt, TraceFunction*);
-  static QColor groupColor(CostItem*);
-  static QColor eventTypeColor(EventType*);
-  static ConfigColorSetting* groupColorSetting(CostItem*);
-  static ConfigColorSetting* groupColorSetting(ProfileContext::Type, QString);
+    // color for visualization of an object
+    static QColor functionColor(ProfileContext::Type gt, TraceFunction*);
+    static QColor groupColor(CostItem*);
+    static QColor eventTypeColor(EventType*);
+    static ConfigColorSetting* groupColorSetting(CostItem*);
+    static ConfigColorSetting* groupColorSetting(ProfileContext::Type, QString);
 
 protected:
-  static ConfigColorSetting* colorSetting(const QString&, bool createNew = true);
-  QHash<QString, ConfigColorSetting*> _colors;
+    static ConfigColorSetting* colorSetting(const QString&, bool createNew = true);
+    QHash<QString, ConfigColorSetting*> _colors;
 };
 
 #endif // GLOBALGUICONFIG_H

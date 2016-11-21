@@ -33,148 +33,148 @@
 PartAreaWidget::PartAreaWidget(QWidget* parent)
     : TreeMapWidget(new BasePartItem(), parent)
 {
-  _data = 0;
-  _function = 0;
+    _data = 0;
+    _function = 0;
 
-  _eventType = 0;
-  _groupType = ProfileContext::InvalidType;
-  _visualization = NoVisualization;
-  _zoomFunction = false;
-  _callLevels = 1;
+    _eventType = 0;
+    _groupType = ProfileContext::InvalidType;
+    _visualization = NoVisualization;
+    _zoomFunction = false;
+    _callLevels = 1;
 }
 
 void PartAreaWidget::setData(TraceData* data)
 {
-  if (data == _data) return;
+    if (data == _data) return;
 
-  _data = data;
-  _function = 0;
-  _hiddenParts.clear();
+    _data = data;
+    _function = 0;
+    _hiddenParts.clear();
 
-  ((BasePartItem*)base())->setData(data);
+    ((BasePartItem*)base())->setData(data);
 }
 
 void PartAreaWidget::changeHidden(const TracePartList& list)
 {
-  _hiddenParts = list;
-  base()->refresh();
+    _hiddenParts = list;
+    base()->refresh();
 }
 
 
 void PartAreaWidget::setEventType(EventType* ct)
 {
-  _eventType = ct;
+    _eventType = ct;
 
-  // this resizes items
-  base()->redraw();
+    // this resizes items
+    base()->redraw();
 }
 
 void PartAreaWidget::setVisualization(VisualizationMode m)
 {
-  _visualization = m;
-  refreshParts();
+    _visualization = m;
+    refreshParts();
 }
 
 void PartAreaWidget::setZoomFunction(bool zoomFunction)
 {
-  _zoomFunction = zoomFunction;
-  refreshParts();
+    _zoomFunction = zoomFunction;
+    refreshParts();
 }
 
 void PartAreaWidget::setCallLevels(int callLevels)
 {
-  _callLevels = callLevels;
-  refreshParts();
+    _callLevels = callLevels;
+    refreshParts();
 }
 
 void PartAreaWidget::refreshParts()
 {
-  // rebuild only subparts to keep part selection state
-  TreeMapItemList* l = base()->children();
-  if (l)
-    foreach(TreeMapItem* i, *l)
-      i->refresh();
+    // rebuild only subparts to keep part selection state
+    TreeMapItemList* l = base()->children();
+    if (l)
+        foreach(TreeMapItem* i, *l)
+            i->refresh();
 
-  // but resize part areas
-  base()->redraw();
+    // but resize part areas
+    base()->redraw();
 }
 
 
 void PartAreaWidget::setFunction(TraceFunction* f)
 {
-  _function = f;
+    _function = f;
 
-  if (_visualization == PartAreaWidget::Inclusive)
-    refreshParts();
+    if (_visualization == PartAreaWidget::Inclusive)
+        refreshParts();
 }
 
 void PartAreaWidget::setGroupType(ProfileContext::Type gt)
 {
-  _groupType = gt;
+    _groupType = gt;
 
-  // rebuild hierarchy below parts.
-  // thus, selected parts stay selected
-  TreeMapItemList* l = base()->children();
-  if (l)
-    foreach(TreeMapItem* i, *l)
-      i->refresh();
+    // rebuild hierarchy below parts.
+    // thus, selected parts stay selected
+    TreeMapItemList* l = base()->children();
+    if (l)
+        foreach(TreeMapItem* i, *l)
+            i->refresh();
 
-  base()->redraw();
+    base()->redraw();
 }
 
 bool PartAreaWidget::isHidden(TracePart* part) const
 {
-  return _hiddenParts.contains(part);
+    return _hiddenParts.contains(part);
 }
 
 QColor PartAreaWidget::groupColor(TraceFunction* f) const
 {
-  if (!f)
-      return palette().color( QPalette::Button );
+    if (!f)
+        return palette().color( QPalette::Button );
 
-  return GlobalGUIConfig::functionColor(_groupType, f);
+    return GlobalGUIConfig::functionColor(_groupType, f);
 }
 
 QString PartAreaWidget::tipString(TreeMapItem* i) const
 {
-  QString tip, itemTip;
-  int count = 0;
+    QString tip, itemTip;
+    int count = 0;
 
-  //qDebug("PartAreaWidget::tipString for '%s'", i->name().toAscii());
+    //qDebug("PartAreaWidget::tipString for '%s'", i->name().toAscii());
 
-  // first, SubPartItem's
-  while (i && count<GlobalConfig::maxSymbolCount() && i->rtti() == 3) {
-    itemTip = GlobalConfig::shortenSymbol(i->text(0));
+    // first, SubPartItem's
+    while (i && count<GlobalConfig::maxSymbolCount() && i->rtti() == 3) {
+        itemTip = GlobalConfig::shortenSymbol(i->text(0));
 
-    if (!i->text(1).isEmpty())
-      itemTip += " (" + i->text(1) + ')';
+        if (!i->text(1).isEmpty())
+            itemTip += " (" + i->text(1) + ')';
 
-    if (!tip.isEmpty())
-      itemTip += '\n';
+        if (!tip.isEmpty())
+            itemTip += '\n';
 
-    tip = itemTip + tip;
-    i = i->parent();
-    count++;
-  }
+        tip = itemTip + tip;
+        i = i->parent();
+        count++;
+    }
 
-  // skip to part
-  while (i && i->rtti()==3) i = i->parent();
+    // skip to part
+    while (i && i->rtti()==3) i = i->parent();
 
-  if (i && i->rtti()==2) {
-      itemTip = QObject::tr("Profile Part %1").arg(i->text(0));
-    if (!i->text(1).isEmpty())
-        itemTip += " (" + i->text(1) + ')';
+    if (i && i->rtti()==2) {
+        itemTip = QObject::tr("Profile Part %1").arg(i->text(0));
+        if (!i->text(1).isEmpty())
+            itemTip += " (" + i->text(1) + ')';
 
-    if (!tip.isEmpty())
-      itemTip += '\n';
+        if (!tip.isEmpty())
+            itemTip += '\n';
 
-    tip = itemTip + tip;
-  }
+        tip = itemTip + tip;
+    }
 
-//  qDebug("PartAreaWidget:: tip %s, itemTip %s",
-//         tip.toAscii(), itemTip.toAscii());
+    //  qDebug("PartAreaWidget:: tip %s, itemTip %s",
+    //         tip.toAscii(), itemTip.toAscii());
 
-  return tip;
+    return tip;
 }
 
 
@@ -184,60 +184,60 @@ QString PartAreaWidget::tipString(TreeMapItem* i) const
 // BasePartItem
 
 BasePartItem::BasePartItem()
-  : TreeMapItem()
+    : TreeMapItem()
 {
-  _data = 0;
-  setSorting(-1);
+    _data = 0;
+    setSorting(-1);
 }
 
 void BasePartItem::setData(TraceData* data)
 {
-  if (data == _data) return;
+    if (data == _data) return;
 
-  _data = data;
-  refresh();
+    _data = data;
+    refresh();
 }
 
 TreeMapItemList* BasePartItem::children()
 {
-  if (!_data) return _children;
+    if (!_data) return _children;
 
-  if (!initialized()) {
-//    qDebug("Create Parts (%s)", name().toAscii());
+    if (!initialized()) {
+        //    qDebug("Create Parts (%s)", name().toAscii());
 
-    PartAreaWidget* w = (PartAreaWidget*) widget();
-    foreach(TracePart* part, _data->parts())
-        if (!w->isHidden(part))
-            addItem(new PartItem(part));
-}
+        PartAreaWidget* w = (PartAreaWidget*) widget();
+        foreach(TracePart* part, _data->parts())
+            if (!w->isHidden(part))
+                addItem(new PartItem(part));
+    }
 
-  return _children;
+    return _children;
 }
 
 QString BasePartItem::text(int textNo) const
 {
-  if (textNo == 0) {
-    if (!_data)
-	return QObject::tr("(no trace)");
+    if (textNo == 0) {
+        if (!_data)
+            return QObject::tr("(no trace)");
 
-    if (_data->parts().count() == 0)
-	return QObject::tr("(no part)");
-  }
-  return QString();
+        if (_data->parts().count() == 0)
+            return QObject::tr("(no part)");
+    }
+    return QString();
 }
 
 
 QColor BasePartItem::backColor() const
 {
-  return widget()->palette().base().color();
+    return widget()->palette().base().color();
 }
 
 double BasePartItem::value() const
 {
-  if (!_data) return 0;
+    if (!_data) return 0;
 
-  PartAreaWidget* w = (PartAreaWidget*) widget();
-  return (double)_data->subCost(w->eventType());
+    PartAreaWidget* w = (PartAreaWidget*) widget();
+    return (double)_data->subCost(w->eventType());
 }
 
 
@@ -248,32 +248,32 @@ double BasePartItem::value() const
 
 PartItem::PartItem(TracePart* p)
 {
-  _p = p;
-  _factor=1;
+    _p = p;
+    _factor=1;
 }
 
 QString PartItem::text(int textNo) const
 {
-  if (textNo == 0)
-    return _p->prettyName();
+    if (textNo == 0)
+        return _p->prettyName();
 
-  if (textNo != 1)
-    return QString();
+    if (textNo != 1)
+        return QString();
 
-  EventType* ct;
-  PartAreaWidget* w = (PartAreaWidget*)widget();
-  SubCost v;
+    EventType* ct;
+    PartAreaWidget* w = (PartAreaWidget*)widget();
+    SubCost v;
 
-  ct = w->eventType();
-  v = _p->subCost(ct);
+    ct = w->eventType();
+    v = _p->subCost(ct);
 
-  if (GlobalConfig::showPercentage()) {
-    ProfileCostArray* t = _p->data()->totals();
-    double p  = 100.0 * v / t->subCost(ct);
-    return QStringLiteral("%1 %")
-      .arg(p, 0, 'f', GlobalConfig::percentPrecision());
-  }
-  return v.pretty();
+    if (GlobalConfig::showPercentage()) {
+        ProfileCostArray* t = _p->data()->totals();
+        double p  = 100.0 * v / t->subCost(ct);
+        return QStringLiteral("%1 %")
+                .arg(p, 0, 'f', GlobalConfig::percentPrecision());
+    }
+    return v.pretty();
 }
 
 
@@ -290,116 +290,116 @@ QPixmap PartItem::pixmap(int i) const
 
 double PartItem::value() const
 {
-  PartAreaWidget* w = (PartAreaWidget*)widget();
-  EventType* ct = w->eventType();
-  if ((w->visualization() == PartAreaWidget::Inclusive) &&
-      w->zoomFunction()) {
+    PartAreaWidget* w = (PartAreaWidget*)widget();
+    EventType* ct = w->eventType();
+    if ((w->visualization() == PartAreaWidget::Inclusive) &&
+        w->zoomFunction()) {
 
-    // use value of zoomed function
-    TraceFunction* f = w->function();
-    if (f) {
-      TracePartFunction* pf = (TracePartFunction*) f->findDepFromPart(_p);
-      if (pf)
-        return (double) pf->inclusive()->subCost(ct);
-      // when function is not available in part, hide part
-      return 0.0;
+        // use value of zoomed function
+        TraceFunction* f = w->function();
+        if (f) {
+            TracePartFunction* pf = (TracePartFunction*) f->findDepFromPart(_p);
+            if (pf)
+                return (double) pf->inclusive()->subCost(ct);
+            // when function is not available in part, hide part
+            return 0.0;
+        }
     }
-  }
-  return (double) _p->subCost(ct);
+    return (double) _p->subCost(ct);
 }
 
 double PartItem::sum() const
 {
-  PartAreaWidget* w = (PartAreaWidget*)widget();
-  if (w->visualization() == PartAreaWidget::Inclusive) {
-    double s = value();
-    //qDebug("PartItem::sum [part %s]: %d", _p->name().toAscii(), s);
-    return s;
-  }
-  return 0.0;
+    PartAreaWidget* w = (PartAreaWidget*)widget();
+    if (w->visualization() == PartAreaWidget::Inclusive) {
+        double s = value();
+        //qDebug("PartItem::sum [part %s]: %d", _p->name().toAscii(), s);
+        return s;
+    }
+    return 0.0;
 }
 
 TreeMapItemList* PartItem::children()
 {
-  if (initialized()) return _children;
+    if (initialized()) return _children;
 
-  ProfileCostArray* c;
-//    qDebug("Create Part subitems (%s)", name().toAscii());
+    ProfileCostArray* c;
+    //    qDebug("Create Part subitems (%s)", name().toAscii());
 
-  PartAreaWidget* w = (PartAreaWidget*)widget();
-  if (w->visualization() == PartAreaWidget::Inclusive) {
-    TraceFunction* f = w->function();
-    if (f) {
-      c = f->findDepFromPart(_p);
-      if (c) addItem(new SubPartItem(c));
+    PartAreaWidget* w = (PartAreaWidget*)widget();
+    if (w->visualization() == PartAreaWidget::Inclusive) {
+        TraceFunction* f = w->function();
+        if (f) {
+            c = f->findDepFromPart(_p);
+            if (c) addItem(new SubPartItem(c));
+        }
+
+        return _children;
+    }
+
+
+    switch( ((PartAreaWidget*)widget())->groupType() ) {
+
+    case ProfileContext::Object:
+    {
+        TraceObjectMap::Iterator it;
+        for ( it = _p->data()->objectMap().begin();
+              it != _p->data()->objectMap().end(); ++it ) {
+            c = (*it).findDepFromPart(_p);
+            if (c)
+                addItem(new SubPartItem(c));
+        }
+    }
+        break;
+
+    case ProfileContext::Class:
+    {
+        TraceClassMap::Iterator it;
+        for ( it = _p->data()->classMap().begin();
+              it != _p->data()->classMap().end(); ++it ) {
+            c = (*it).findDepFromPart(_p);
+            if (c)
+                addItem(new SubPartItem(c));
+        }
+    }
+        break;
+
+    case ProfileContext::File:
+    {
+        TraceFileMap::Iterator it;
+        for ( it = _p->data()->fileMap().begin();
+              it != _p->data()->fileMap().end(); ++it ) {
+            c = (*it).findDepFromPart(_p);
+            if (c)
+                addItem(new SubPartItem(c));
+        }
+    }
+        break;
+
+    case ProfileContext::Function:
+    {
+        TraceFunctionMap::Iterator it;
+        for ( it = _p->data()->functionMap().begin();
+              it != _p->data()->functionMap().end(); ++it ) {
+            c = (*it).findDepFromPart(_p);
+            if (c)
+                addItem(new SubPartItem(c));
+        }
+    }
+        break;
+
+    default:
+        break;
     }
 
     return _children;
-  }
-
-
-  switch( ((PartAreaWidget*)widget())->groupType() ) {
-
-  case ProfileContext::Object:
-  {
-    TraceObjectMap::Iterator it;
-    for ( it = _p->data()->objectMap().begin();
-          it != _p->data()->objectMap().end(); ++it ) {
-      c = (*it).findDepFromPart(_p);
-      if (c)
-        addItem(new SubPartItem(c));
-    }
-  }
-  break;
-
-  case ProfileContext::Class:
-  {
-    TraceClassMap::Iterator it;
-    for ( it = _p->data()->classMap().begin();
-          it != _p->data()->classMap().end(); ++it ) {
-      c = (*it).findDepFromPart(_p);
-      if (c)
-        addItem(new SubPartItem(c));
-    }
-  }
-  break;
-
-  case ProfileContext::File:
-  {
-    TraceFileMap::Iterator it;
-    for ( it = _p->data()->fileMap().begin();
-          it != _p->data()->fileMap().end(); ++it ) {
-      c = (*it).findDepFromPart(_p);
-      if (c)
-        addItem(new SubPartItem(c));
-    }
-  }
-  break;
-
-  case ProfileContext::Function:
-  {
-    TraceFunctionMap::Iterator it;
-    for ( it = _p->data()->functionMap().begin();
-          it != _p->data()->functionMap().end(); ++it ) {
-      c = (*it).findDepFromPart(_p);
-      if (c)
-        addItem(new SubPartItem(c));
-    }
-  }
-  break;
-
-  default:
-    break;
-  }
-
-  return _children;
 }
 
 
 QColor PartItem::backColor() const
 {
-  PartAreaWidget* w = (PartAreaWidget*)widget();
-  return w->groupColor(0);
+    PartAreaWidget* w = (PartAreaWidget*)widget();
+    return w->groupColor(0);
 }
 
 
@@ -407,40 +407,40 @@ QColor PartItem::backColor() const
 
 SubPartItem::SubPartItem(ProfileCostArray* c)
 {
-  _partCostItem = c;
-  _factor=1;
+    _partCostItem = c;
+    _factor=1;
 }
 
 QString SubPartItem::text(int textNo) const
 {
-  if (textNo == 0) {
-    if (!_partCostItem)
-	return QObject::tr("(unknown)");
+    if (textNo == 0) {
+        if (!_partCostItem)
+            return QObject::tr("(unknown)");
 
-    return _partCostItem->dependant()->prettyName();
-  }
+        return _partCostItem->dependant()->prettyName();
+    }
 
-  if (textNo != 1)
-    return QString();
+    if (textNo != 1)
+        return QString();
 
-  EventType* ct;
-  PartAreaWidget* w = (PartAreaWidget*)widget();
-  SubCost v;
+    EventType* ct;
+    PartAreaWidget* w = (PartAreaWidget*)widget();
+    SubCost v;
 
-  ct = w->eventType();
-  if (w->visualization() == PartAreaWidget::Inclusive)
-    v = ((TracePartFunction*)_partCostItem)->inclusive()->subCost(ct);
-  else
-    v = _partCostItem->subCost(ct);
+    ct = w->eventType();
+    if (w->visualization() == PartAreaWidget::Inclusive)
+        v = ((TracePartFunction*)_partCostItem)->inclusive()->subCost(ct);
+    else
+        v = _partCostItem->subCost(ct);
 
-  if (GlobalConfig::showPercentage()) {
-    ProfileCostArray* t = GlobalConfig::showExpanded() ?
-	_partCostItem->part() : _partCostItem->part()->data()->totals();
-    double p  = 100.0 * v / t->subCost(ct);
-    return QStringLiteral("%1 %")
-      .arg(p, 0, 'f', GlobalConfig::percentPrecision());
-  }
-  return v.pretty();
+    if (GlobalConfig::showPercentage()) {
+        ProfileCostArray* t = GlobalConfig::showExpanded() ?
+                                  _partCostItem->part() : _partCostItem->part()->data()->totals();
+        double p  = 100.0 * v / t->subCost(ct);
+        return QStringLiteral("%1 %")
+                .arg(p, 0, 'f', GlobalConfig::percentPrecision());
+    }
+    return v.pretty();
 }
 
 QPixmap SubPartItem::pixmap(int i) const
@@ -452,75 +452,75 @@ QPixmap SubPartItem::pixmap(int i) const
     PartAreaWidget* w = (PartAreaWidget*)widget();
     EventType* ct = w->eventType();
     ProfileCostArray* t = GlobalConfig::showExpanded() ?
-	_partCostItem->part() : _partCostItem->part()->data()->totals();
+                              _partCostItem->part() : _partCostItem->part()->data()->totals();
     ProfileCostArray* c;
     if (w->visualization() == PartAreaWidget::Inclusive)
-	c = ((TracePartFunction*)_partCostItem)->inclusive();
+        c = ((TracePartFunction*)_partCostItem)->inclusive();
     else
-	c = _partCostItem;
+        c = _partCostItem;
 
     return costPixmap( ct, c, (double) (t->subCost(ct)), false );
 }
 
 double SubPartItem::value() const
 {
-  EventType* ct;
-  PartAreaWidget* w = (PartAreaWidget*)widget();
+    EventType* ct;
+    PartAreaWidget* w = (PartAreaWidget*)widget();
 
-  ct = w->eventType();
-  if (w->visualization() == PartAreaWidget::Inclusive)
-    return (double)
-	((TracePartFunction*)_partCostItem)->inclusive()->subCost(ct);
+    ct = w->eventType();
+    if (w->visualization() == PartAreaWidget::Inclusive)
+        return (double)
+                ((TracePartFunction*)_partCostItem)->inclusive()->subCost(ct);
 
-  return (double) _partCostItem->subCost(ct);
+    return (double) _partCostItem->subCost(ct);
 }
 
 double SubPartItem::sum() const
 {
-  PartAreaWidget* w = (PartAreaWidget*)widget();
-  if (w->visualization() == PartAreaWidget::Inclusive) {
-    double s = value();
-    //qDebug("SubPartItem::sum [Cost %s]: %d", _cost->name().toAscii(), s);
-    return s;
-  }
-  return 0.0;
+    PartAreaWidget* w = (PartAreaWidget*)widget();
+    if (w->visualization() == PartAreaWidget::Inclusive) {
+        double s = value();
+        //qDebug("SubPartItem::sum [Cost %s]: %d", _cost->name().toAscii(), s);
+        return s;
+    }
+    return 0.0;
 }
 
 TreeMapItemList* SubPartItem::children()
 {
-  if (!initialized()) {
-//    qDebug("Create Part sub-subitems (%s)", name().toAscii());
+    if (!initialized()) {
+        //    qDebug("Create Part sub-subitems (%s)", name().toAscii());
 
-    PartAreaWidget* w = (PartAreaWidget*)widget();
+        PartAreaWidget* w = (PartAreaWidget*)widget();
 
-    if (depth()-2 > w->callLevels())
-      return _children;
+        if (depth()-2 > w->callLevels())
+            return _children;
 
-    if (w->visualization() == PartAreaWidget::Inclusive) {
-      setSum(value());
+        if (w->visualization() == PartAreaWidget::Inclusive) {
+            setSum(value());
 
-      TracePartCallList l;
-      l = ((TracePartFunction*)_partCostItem)->partCallings();
-      foreach(TracePartCall* call, l) {
-        TraceFunction* called = call->call()->called();
-        ProfileCostArray* partCalled = called->findDepFromPart(call->part());
-        if (partCalled)
-          addItem(new SubPartItem(partCalled));
-      }
+            TracePartCallList l;
+            l = ((TracePartFunction*)_partCostItem)->partCallings();
+            foreach(TracePartCall* call, l) {
+                TraceFunction* called = call->call()->called();
+                ProfileCostArray* partCalled = called->findDepFromPart(call->part());
+                if (partCalled)
+                    addItem(new SubPartItem(partCalled));
+            }
+        }
     }
-  }
 
-  return _children;
+    return _children;
 }
 
 
 QColor SubPartItem::backColor() const
 {
-  PartAreaWidget* w = (PartAreaWidget*)widget();
-  if (w->visualization() == PartAreaWidget::Inclusive)
-    return w->groupColor((TraceFunction*)(_partCostItem->dependant()));
+    PartAreaWidget* w = (PartAreaWidget*)widget();
+    if (w->visualization() == PartAreaWidget::Inclusive)
+        return w->groupColor((TraceFunction*)(_partCostItem->dependant()));
 
-  return GlobalGUIConfig::groupColor(_partCostItem->dependant());
+    return GlobalGUIConfig::groupColor(_partCostItem->dependant());
 }
 
 

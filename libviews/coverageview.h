@@ -31,31 +31,31 @@
 
 class CoverageView: public QTreeWidget, public TraceItemView
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  CoverageView(bool showCallers, TraceItemView* parentView,
-               QWidget* parent = 0);
+    CoverageView(bool showCallers, TraceItemView* parentView,
+                 QWidget* parent = 0);
 
-  virtual QWidget* widget() { return this; }
-  QString whatsThis() const;
+    virtual QWidget* widget() { return this; }
+    QString whatsThis() const;
 
 protected slots:
-  void context(const QPoint &);
-  void selectedSlot(QTreeWidgetItem*, QTreeWidgetItem*);
-  void activatedSlot(QTreeWidgetItem*, int);
-  void headerClicked(int);
+    void context(const QPoint &);
+    void selectedSlot(QTreeWidgetItem*, QTreeWidgetItem*);
+    void activatedSlot(QTreeWidgetItem*, int);
+    void headerClicked(int);
 
 protected:
-  void keyPressEvent(QKeyEvent* event);
+    void keyPressEvent(QKeyEvent* event);
 
 private:
-  CostItem* canShow(CostItem*);
-  void doUpdate(int, bool);
-  void refresh();
+    CostItem* canShow(CostItem*);
+    void doUpdate(int, bool);
+    void refresh();
 
-  HighestCostList _hc;
-  bool _showCallers;
+    HighestCostList _hc;
+    bool _showCallers;
 };
 
 #endif

@@ -30,26 +30,26 @@
 
 class PartView: public QTreeWidget, public TraceItemView
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit PartView(TraceItemView* parentView, QWidget* parent=0);
+    explicit PartView(TraceItemView* parentView, QWidget* parent=0);
 
-  virtual QWidget* widget() { return this; }
-  QString whatsThis() const;
+    virtual QWidget* widget() { return this; }
+    QString whatsThis() const;
 
-  void refresh();
+    void refresh();
 
 private slots:
-  void context(const QPoint &);
-  void selectionChangedSlot();
-  void headerClicked(int);
+    void context(const QPoint &);
+    void selectionChangedSlot();
+    void headerClicked(int);
 
 private:
-  CostItem* canShow(CostItem*);
-  void doUpdate(int, bool);
+    CostItem* canShow(CostItem*);
+    void doUpdate(int, bool);
 
-  bool _inSelectionUpdate;
+    bool _inSelectionUpdate;
 };
 
 #endif

@@ -30,27 +30,27 @@
 // PartListItem
 
 PartListItem::PartListItem(QTreeWidget* parent, TraceCostItem* costItem,
-			   EventType* et, ProfileContext::Type gt,
-			   TracePart* part)
-  :QTreeWidgetItem(parent)
+                           EventType* et, ProfileContext::Type gt,
+                           TracePart* part)
+    :QTreeWidgetItem(parent)
 {
-  _partCostItem = costItem->findDepFromPart(part);
-  _part = part;
-  _groupType = gt;
-  _eventType = et;
+    _partCostItem = costItem->findDepFromPart(part);
+    _part = part;
+    _groupType = gt;
+    _eventType = et;
 
-  setTextAlignment(0, Qt::AlignRight);
-  setTextAlignment(1, Qt::AlignRight);
-  setTextAlignment(2, Qt::AlignRight);
+    setTextAlignment(0, Qt::AlignRight);
+    setTextAlignment(1, Qt::AlignRight);
+    setTextAlignment(2, Qt::AlignRight);
 
-  setText(0, _part->prettyName());
+    setText(0, _part->prettyName());
 
-  if (_part->trigger().isEmpty())
-    setText(4, QObject::tr("(none)"));
-  else
-    setText(4, _part->trigger());
+    if (_part->trigger().isEmpty())
+        setText(4, QObject::tr("(none)"));
+    else
+        setText(4, _part->trigger());
 
-  update();
+    update();
 }
 
 void PartListItem::setEventType(EventType* et)
@@ -71,79 +71,79 @@ void PartListItem::setGroupType(ProfileContext::Type gt)
 
 void PartListItem::update()
 {
-  TracePartFunction* pf;
-  pf = !_partCostItem ? 0 :
-       (_partCostItem->type()==ProfileContext::PartFunction) ?
-       ((TracePartFunction*)_partCostItem) : 0;
+    TracePartFunction* pf;
+    pf = !_partCostItem ? 0 :
+                          (_partCostItem->type()==ProfileContext::PartFunction) ?
+                              ((TracePartFunction*)_partCostItem) : 0;
 
-  double total = _part->subCost(_eventType);
+    double total = _part->subCost(_eventType);
 
-  ProfileCostArray* selfTotalCost = _part;
-  if (pf && GlobalConfig::showExpanded()) {
-      switch(_groupType) {
-      case ProfileContext::Object: selfTotalCost = pf->partObject(); break;
-      case ProfileContext::Class:  selfTotalCost = pf->partClass(); break;
-      case ProfileContext::File:   selfTotalCost = pf->partFile(); break;
-      default: break;
-      }
-  }
-  double selfTotal = selfTotalCost->subCost(_eventType);
-
-  _pure = _partCostItem ? _partCostItem->subCost(_eventType) : SubCost(0);
-  _sum = pf ? pf->inclusive()->subCost(_eventType) : SubCost(0);
-
-  if (selfTotal == 0 || !_partCostItem) {
-    setText(2, QStringLiteral("-"));
-    setIcon(2, QPixmap());
-  }
-  else {
-    double pure  = 100.0 * _pure / selfTotal;
-    if (GlobalConfig::showPercentage()) {
-      setText(2, QStringLiteral("%1")
-              .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
+    ProfileCostArray* selfTotalCost = _part;
+    if (pf && GlobalConfig::showExpanded()) {
+        switch(_groupType) {
+        case ProfileContext::Object: selfTotalCost = pf->partObject(); break;
+        case ProfileContext::Class:  selfTotalCost = pf->partClass(); break;
+        case ProfileContext::File:   selfTotalCost = pf->partFile(); break;
+        default: break;
+        }
     }
-    else
-      setText(2, _partCostItem->prettySubCost(_eventType));
+    double selfTotal = selfTotalCost->subCost(_eventType);
 
-    setIcon(2, costPixmap(_eventType, _partCostItem, selfTotal, false));
-  }
+    _pure = _partCostItem ? _partCostItem->subCost(_eventType) : SubCost(0);
+    _sum = pf ? pf->inclusive()->subCost(_eventType) : SubCost(0);
 
-  if (total == 0 || !pf) {
-    setText(1, QStringLiteral("-"));
-    setIcon(1, QPixmap());
-  }
-  else {
-    double sum  = 100.0 * _sum / total;
-    if (GlobalConfig::showPercentage()) {
-      setText(1, QStringLiteral("%1")
-              .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
+    if (selfTotal == 0 || !_partCostItem) {
+        setText(2, QStringLiteral("-"));
+        setIcon(2, QPixmap());
     }
+    else {
+        double pure  = 100.0 * _pure / selfTotal;
+        if (GlobalConfig::showPercentage()) {
+            setText(2, QStringLiteral("%1")
+                    .arg(pure, 0, 'f', GlobalConfig::percentPrecision()));
+        }
+        else
+            setText(2, _partCostItem->prettySubCost(_eventType));
+
+        setIcon(2, costPixmap(_eventType, _partCostItem, selfTotal, false));
+    }
+
+    if (total == 0 || !pf) {
+        setText(1, QStringLiteral("-"));
+        setIcon(1, QPixmap());
+    }
+    else {
+        double sum  = 100.0 * _sum / total;
+        if (GlobalConfig::showPercentage()) {
+            setText(1, QStringLiteral("%1")
+                    .arg(sum, 0, 'f', GlobalConfig::percentPrecision()));
+        }
+        else
+            setText(1, _sum.pretty());
+
+        setIcon(1, costPixmap(_eventType, pf->inclusive(), total, false));
+    }
+
+    if (!pf) {
+        setText(3, QStringLiteral("-"));
+        _callCount = 0;
+        return;
+    }
+
+    SubCost callCount;
+    QString str;
+
+    callCount = 0;
+    foreach(TracePartCall* pc, pf->partCallers())
+        callCount += pc->callCount();
+
+    if ((callCount == 0) && (pf->calledContexts()>0))
+        str = QObject::tr("(active)");
     else
-      setText(1, _sum.pretty());
+        str = callCount.pretty();
 
-    setIcon(1, costPixmap(_eventType, pf->inclusive(), total, false));
-  }
-
-  if (!pf) {
-    setText(3, QStringLiteral("-"));
-    _callCount = 0;
-    return;
-  }
-
-  SubCost callCount;
-  QString str;
-
-  callCount = 0;
-  foreach(TracePartCall* pc, pf->partCallers())
-    callCount += pc->callCount();
-
-  if ((callCount == 0) && (pf->calledContexts()>0))
-    str = QObject::tr("(active)");
-  else
-    str = callCount.pretty();
-
-  _callCount = callCount;
-  setText(3, str);
+    _callCount = callCount;
+    setText(3, str);
 }
 
 bool PartListItem::operator<(const QTreeWidgetItem& other) const

@@ -29,32 +29,32 @@
 
 class CallView: public QTreeWidget, public TraceItemView
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  CallView(bool showCallers, TraceItemView* parentView,
-           QWidget* parent=0);
+    CallView(bool showCallers, TraceItemView* parentView,
+             QWidget* parent=0);
 
-  virtual QWidget* widget() { return this; }
-  QString whatsThis() const;
-  bool showCallers() const { return _showCallers; }
+    virtual QWidget* widget() { return this; }
+    QString whatsThis() const;
+    bool showCallers() const { return _showCallers; }
 
 protected slots:
-  void context(const QPoint &);
-  void selectedSlot(QTreeWidgetItem*, QTreeWidgetItem*);
-  void activatedSlot(QTreeWidgetItem*, int);
-  void headerClicked(int);
+    void context(const QPoint &);
+    void selectedSlot(QTreeWidgetItem*, QTreeWidgetItem*);
+    void activatedSlot(QTreeWidgetItem*, int);
+    void headerClicked(int);
 
 protected:
-  void keyPressEvent(QKeyEvent* event);
+    void keyPressEvent(QKeyEvent* event);
 
 private:
-  CostItem* canShow(CostItem*);
-  void doUpdate(int, bool);
-  void refresh();
-  void setCostColumnWidths();
+    CostItem* canShow(CostItem*);
+    void doUpdate(int, bool);
+    void refresh();
+    void setCostColumnWidths();
 
-  bool _showCallers;
+    bool _showCallers;
 };
 
 #endif

@@ -26,28 +26,28 @@
 class CostListItem: public QTreeWidgetItem
 {
 public:
-  CostListItem(QTreeWidget* parent, TraceCostItem* cost,
-               EventType* et, int size = -1);
-  // entry with multiple skipped items
-  CostListItem(QTreeWidget* parent, int skipped, TraceCostItem* cost,
-               EventType* et);
+    CostListItem(QTreeWidget* parent, TraceCostItem* cost,
+                 EventType* et, int size = -1);
+    // entry with multiple skipped items
+    CostListItem(QTreeWidget* parent, int skipped, TraceCostItem* cost,
+                 EventType* et);
 
-  bool operator< ( const QTreeWidgetItem & other ) const;
-  TraceCostItem* costItem() { return (_skipped) ? 0 : _costItem; }
-  void setEventType(EventType* et);
-  void update();
-  void setSize(int s);
+    bool operator< ( const QTreeWidgetItem & other ) const;
+    TraceCostItem* costItem() { return (_skipped) ? 0 : _costItem; }
+    void setEventType(EventType* et);
+    void update();
+    void setSize(int s);
 
 private:
-  void updateName();
+    void updateName();
 
-  SubCost _pure;
-  EventType* _eventType;
-  TraceCostItem* _costItem;
-  // >0 only for last item in list, if items are skipped 
-  int _skipped;
-  // number of items in group, is put in parenthesis after name
-  int _groupSize;
+    SubCost _pure;
+    EventType* _eventType;
+    TraceCostItem* _costItem;
+    // >0 only for last item in list, if items are skipped
+    int _skipped;
+    // number of items in group, is put in parenthesis after name
+    int _groupSize;
 };
 
 #endif

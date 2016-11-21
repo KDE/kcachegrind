@@ -35,20 +35,20 @@ class StackSelection;
 class StackItem: public QTreeWidgetItem
 {
 public:
-  // for top
-  StackItem(StackSelection* ss, QTreeWidget* parent, TraceFunction* f);
-  StackItem(StackSelection* ss, QTreeWidget* parent, TraceCall* c);
+    // for top
+    StackItem(StackSelection* ss, QTreeWidget* parent, TraceFunction* f);
+    StackItem(StackSelection* ss, QTreeWidget* parent, TraceCall* c);
 
-  TraceFunction* function() { return _function; }
-  TraceCall* call() { return _call; }
-  void updateGroup();
-  void updateCost();
+    TraceFunction* function() { return _function; }
+    TraceCall* call() { return _call; }
+    void updateGroup();
+    void updateCost();
 
 private:
-  StackSelection* _view;
-  SubCost _sum;
-  TraceFunction* _function;
-  TraceCall* _call;
+    StackSelection* _view;
+    SubCost _sum;
+    TraceFunction* _function;
+    TraceCall* _call;
 };
 
 #endif // STACKITEM_H

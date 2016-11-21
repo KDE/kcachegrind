@@ -46,18 +46,18 @@ class TabView;
  */
 class TabBar : public QTabBar
 {
-  Q_OBJECT
+    Q_OBJECT
 
- public:
-  TabBar(TabView*, QTabWidget* parent, const char *name = 0);
- protected:
-  void mousePressEvent(QMouseEvent *e);
+public:
+    TabBar(TabView*, QTabWidget* parent, const char *name = 0);
+protected:
+    void mousePressEvent(QMouseEvent *e);
 
- private:
-  void context(QWidget*, const QPoint &);
+private:
+    void context(QWidget*, const QPoint &);
 
-  QTabWidget* _tabWidget;
-  TabView* _tabView;
+    QTabWidget* _tabWidget;
+    TabView* _tabView;
 };
 
 
@@ -69,14 +69,14 @@ class TabBar : public QTabBar
  */
 class Splitter: public QSplitter
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit Splitter(Qt::Orientation o, QWidget* parent = 0);
-  void checkVisiblity();
+    explicit Splitter(Qt::Orientation o, QWidget* parent = 0);
+    void checkVisiblity();
 
 protected:
-  void moveEvent(QMoveEvent *);
+    void moveEvent(QMoveEvent *);
 };
 
 
@@ -88,98 +88,98 @@ protected:
  */
 class TabWidget: public QTabWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
 
-  explicit TabWidget(TabView*, QWidget* parent = 0);
+    explicit TabWidget(TabView*, QWidget* parent = 0);
 
-  bool hasVisibleRect() { return _hasVisibleRect; }
-  void checkVisibility();
+    bool hasVisibleRect() { return _hasVisibleRect; }
+    void checkVisibility();
 
 signals:
-  void visibleRectChanged(TabWidget*);
+    void visibleRectChanged(TabWidget*);
 
 protected:
-  void resizeEvent(QResizeEvent *);
-  void showEvent(QShowEvent *);
-  void hideEvent(QHideEvent *);
-  void moveEvent(QMoveEvent *);
+    void resizeEvent(QResizeEvent *);
+    void showEvent(QShowEvent *);
+    void hideEvent(QHideEvent *);
+    void moveEvent(QMoveEvent *);
 
 private:
-  bool _hasVisibleRect;
+    bool _hasVisibleRect;
 };
 
 
 
 class TabView : public QWidget, public TraceItemView
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
 
-  explicit TabView( TraceItemView* parentView,
-                    QWidget* parent = 0 );
+    explicit TabView( TraceItemView* parentView,
+                      QWidget* parent = 0 );
 
-  virtual QWidget* widget() { return this; }
-  QString whatsThis() const;
-  void setData(TraceData*);
-  bool isViewVisible() { return !_isCollapsed; }
-  void selected(TraceItemView*, CostItem*);
-  bool active() const { return _active; }
-  void setActive(bool);
+    virtual QWidget* widget() { return this; }
+    QString whatsThis() const;
+    void setData(TraceData*);
+    bool isViewVisible() { return !_isCollapsed; }
+    void selected(TraceItemView*, CostItem*);
+    bool active() const { return _active; }
+    void setActive(bool);
 
-  /**
-   * Rearrange tabs
-   * if <w> == 0, move hidden tabs
-   */
-  void moveTab(QWidget* w, Position, bool wholeArea = false);
+    /**
+     * Rearrange tabs
+     * if <w> == 0, move hidden tabs
+     */
+    void moveTab(QWidget* w, Position, bool wholeArea = false);
 
-  Position tabPosition(QWidget*);
-  int visibleTabs();
-  int visibleAreas();
+    Position tabPosition(QWidget*);
+    int visibleTabs();
+    int visibleAreas();
 
-  void saveLayout(const QString& prefix, const QString& postfix);
-  void restoreLayout(const QString& prefix, const QString& postfix);
-  void saveOptions(const QString& prefix, const QString& postfix);
-  void restoreOptions(const QString& prefix, const QString& postfix);
+    void saveLayout(const QString& prefix, const QString& postfix);
+    void restoreLayout(const QString& prefix, const QString& postfix);
+    void saveOptions(const QString& prefix, const QString& postfix);
+    void restoreOptions(const QString& prefix, const QString& postfix);
 
 public slots:
-  void tabChanged(int);
-  void visibleRectChangedSlot(TabWidget*);
+    void tabChanged(int);
+    void visibleRectChangedSlot(TabWidget*);
 
 signals:
-  void tabActivated(TabView*);
+    void tabActivated(TabView*);
 
 protected:
-  void resizeEvent(QResizeEvent *);
-  bool eventFilter(QObject*, QEvent*);
-  void mousePressEvent(QMouseEvent*);
+    void resizeEvent(QResizeEvent *);
+    bool eventFilter(QObject*, QEvent*);
+    void mousePressEvent(QMouseEvent*);
 
 private:
-  TraceItemView* addTab(const QString&, TraceItemView*);
-  void addTop(TraceItemView*);
-  void addBottom(TraceItemView*);
-  TabWidget* tabWidget(Position);
-  void updateVisibility();
-  void doUpdate(int, bool);
-  void updateNameLabel(QString n = QString::null);
-  void installFocusFilters();
-  void tabCounts(int&, int&, int&, int&);
+    TraceItemView* addTab(const QString&, TraceItemView*);
+    void addTop(TraceItemView*);
+    void addBottom(TraceItemView*);
+    TabWidget* tabWidget(Position);
+    void updateVisibility();
+    void doUpdate(int, bool);
+    void updateNameLabel(QString n = QString::null);
+    void installFocusFilters();
+    void tabCounts(int&, int&, int&, int&);
 
-  // this is true if width or height <= 1, and no child updates are done
-  bool _isCollapsed;
+    // this is true if width or height <= 1, and no child updates are done
+    bool _isCollapsed;
 
-  QLabel* _nameLabel;
-  QString _nameLabelText, _nameLabelTooltip;
-  int _textWidth;
+    QLabel* _nameLabel;
+    QString _nameLabelText, _nameLabelTooltip;
+    int _textWidth;
 
-  QSplitter *_mainSplitter, *_leftSplitter, *_bottomSplitter;
-  TabWidget *_topTW, *_leftTW, *_bottomTW, *_rightTW;
-  QList<TraceItemView*> _tabs;
+    QSplitter *_mainSplitter, *_leftSplitter, *_bottomSplitter;
+    TabWidget *_topTW, *_leftTW, *_bottomTW, *_rightTW;
+    QList<TraceItemView*> _tabs;
 
-  QWidget* _lastFocus;
-  bool _active;
+    QWidget* _lastFocus;
+    bool _active;
 };
 
 #endif

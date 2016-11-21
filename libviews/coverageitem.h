@@ -31,56 +31,56 @@ class Coverage;
 class CallerCoverageItem: public QTreeWidgetItem
 {
 public:
-  CallerCoverageItem(QTreeWidget* parent, Coverage* c,
-		     TraceFunction* base,
-                     EventType* ct, ProfileContext::Type gt);
-  CallerCoverageItem(QTreeWidget* parent, int skipped, Coverage* c,
-		     TraceFunction* base,
-                     EventType* ct, ProfileContext::Type gt);
+    CallerCoverageItem(QTreeWidget* parent, Coverage* c,
+                       TraceFunction* base,
+                       EventType* ct, ProfileContext::Type gt);
+    CallerCoverageItem(QTreeWidget* parent, int skipped, Coverage* c,
+                       TraceFunction* base,
+                       EventType* ct, ProfileContext::Type gt);
 
-  bool operator< ( const QTreeWidgetItem & other ) const;
-  TraceFunction* function() { return (_skipped) ? 0 : _function; }
-  void setCostType(EventType* ct);
-  void setGroupType(ProfileContext::Type);
-  void update();
+    bool operator< ( const QTreeWidgetItem & other ) const;
+    TraceFunction* function() { return (_skipped) ? 0 : _function; }
+    void setCostType(EventType* ct);
+    void setGroupType(ProfileContext::Type);
+    void update();
 
 private:
-  float _pSum;
-  SubCost _sum;
-  EventType* _costType;
-  ProfileContext::Type _groupType;
-  SubCost _cc;
-  int _distance, _skipped;
-  TraceFunction *_function, *_base;
-  Coverage* _coverage;
+    float _pSum;
+    SubCost _sum;
+    EventType* _costType;
+    ProfileContext::Type _groupType;
+    SubCost _cc;
+    int _distance, _skipped;
+    TraceFunction *_function, *_base;
+    Coverage* _coverage;
 };
 
 
 class CalleeCoverageItem: public QTreeWidgetItem
 {
 public:
-  CalleeCoverageItem(QTreeWidget* parent, Coverage* c,
-		     TraceFunction* base,
-                     EventType* ct, ProfileContext::Type gt);
-  CalleeCoverageItem(QTreeWidget* parent, int skipped, Coverage* c,
-		     TraceFunction* base,
-                     EventType* ct, ProfileContext::Type gt);
+    CalleeCoverageItem(QTreeWidget* parent, Coverage* c,
+                       TraceFunction* base,
+                       EventType* ct, ProfileContext::Type gt);
+    CalleeCoverageItem(QTreeWidget* parent, int skipped, Coverage* c,
+                       TraceFunction* base,
+                       EventType* ct, ProfileContext::Type gt);
 
-  bool operator< ( const QTreeWidgetItem & other ) const;
-  TraceFunction* function() { return (_skipped) ? 0 : _function; }
-  void setCostType(EventType* ct);
-  void setGroupType(ProfileContext::Type);
-  void update();
+    bool operator< ( const QTreeWidgetItem & other ) const;
+    TraceFunction* function() { return (_skipped) ? 0 : _function; }
+    void setCostType(EventType* ct);
+    void setGroupType(ProfileContext::Type);
+    void update();
 
 private:
-  float _pSum, _pSelf;
-  SubCost _sum, _self;
-  EventType* _costType;
-  ProfileContext::Type _groupType;
-  SubCost _cc;
-  int _distance, _skipped;
-  TraceFunction *_function, *_base;
-  Coverage* _coverage;
+    float _pSum, _pSelf;
+    SubCost _sum, _self;
+    EventType* _costType;
+    ProfileContext::Type _groupType;
+    SubCost _cc;
+    int _distance, _skipped;
+    TraceFunction *_function, *_base;
+    Coverage* _coverage;
 };
 
 #endif

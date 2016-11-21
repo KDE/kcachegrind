@@ -39,7 +39,7 @@
 
 
 PartView::PartView(TraceItemView* parentView, QWidget* parent)
-  : QTreeWidget(parent), TraceItemView(parentView)
+    : QTreeWidget(parent), TraceItemView(parentView)
 {
     _inSelectionUpdate = false;
 
@@ -60,7 +60,7 @@ PartView::PartView(TraceItemView* parentView, QWidget* parent)
     setSelectionMode(QAbstractItemView::ExtendedSelection);
 
     connect( this, &QTreeWidget::itemSelectionChanged,
-	     this, &PartView::selectionChangedSlot );
+             this, &PartView::selectionChangedSlot );
 
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect( this,
@@ -76,38 +76,38 @@ PartView::PartView(TraceItemView* parentView, QWidget* parent)
 QString PartView::whatsThis() const
 {
     return tr( "<b>Trace Part List</b>"
-		 "<p>This list shows all trace parts of the loaded "
-		 "trace. For each part, the "
-		 "self/inclusive cost of the current selected "
-		 "function, spent in the part, is shown; "
-		 "percentage costs are always relative to the "
-		 "total cost <em>of the part</em> (not to the whole "
-		 "trace as in the Trace Part Overview). "
-		 "Also shown are the calls happening to/from the "
-		 "current function inside of the trace part.</p>"
-		 "<p>By choosing one or more trace parts from the "
-		 "list, the costs shown all over KCachegrind will "
-		 "only be the ones spent in the selected part(s). "
-		 "If no list selection is shown, in fact all trace "
-		 "parts are selected implicitly.</p>"
-		 "<p>This is a multi-selection list. You can select "
-		 "ranges by dragging the mouse or use SHIFT/CTRL "
-		 "modifiers. "
-		 "Selection/Deselection of trace parts can also be "
-		 "done by using the Trace Part Overview Dockable. "
-		 "This one also supports multiple selection.</p>"
-		 "<p>Note that the list is hidden if only one trace "
-		 "part is loaded.</p>");
+               "<p>This list shows all trace parts of the loaded "
+               "trace. For each part, the "
+               "self/inclusive cost of the current selected "
+               "function, spent in the part, is shown; "
+               "percentage costs are always relative to the "
+               "total cost <em>of the part</em> (not to the whole "
+               "trace as in the Trace Part Overview). "
+               "Also shown are the calls happening to/from the "
+               "current function inside of the trace part.</p>"
+               "<p>By choosing one or more trace parts from the "
+               "list, the costs shown all over KCachegrind will "
+               "only be the ones spent in the selected part(s). "
+               "If no list selection is shown, in fact all trace "
+               "parts are selected implicitly.</p>"
+               "<p>This is a multi-selection list. You can select "
+               "ranges by dragging the mouse or use SHIFT/CTRL "
+               "modifiers. "
+               "Selection/Deselection of trace parts can also be "
+               "done by using the Trace Part Overview Dockable. "
+               "This one also supports multiple selection.</p>"
+               "<p>Note that the list is hidden if only one trace "
+               "part is loaded.</p>");
 }
 
 
 void PartView::context(const QPoint & p)
 {
-  QMenu popup;
-  addGoMenu(&popup);
+    QMenu popup;
+    addGoMenu(&popup);
 
-  // p is in local coordinates
-  popup.exec(mapToGlobal(p + QPoint(0,header()->height())));
+    // p is in local coordinates
+    popup.exec(mapToGlobal(p + QPoint(0,header()->height())));
 }
 
 
@@ -137,9 +137,9 @@ void PartView::headerClicked(int col)
 
 CostItem* PartView::canShow(CostItem* i)
 {
-  if (!TraceItemView::data()) return 0;
-  if (TraceItemView::data()->parts().count()>1) return i;
-  return 0;
+    if (!TraceItemView::data()) return 0;
+    if (TraceItemView::data()->parts().count()>1) return i;
+    return 0;
 }
 
 void PartView::doUpdate(int changeType, bool)
@@ -182,28 +182,28 @@ void PartView::doUpdate(int changeType, bool)
         setSortingEnabled(true);
         header()->setSortIndicatorShown(false);
 
-	return;
+        return;
     }
 
     if (changeType == partsChanged) {
 
-      TracePart* part;
+        TracePart* part;
 
-      _inSelectionUpdate = true;
-      for (int i=0; i< topLevelItemCount(); i++) {
-          PartListItem* item = (PartListItem*) topLevelItem(i);
-          part = ((PartListItem*)item)->part();
+        _inSelectionUpdate = true;
+        for (int i=0; i< topLevelItemCount(); i++) {
+            PartListItem* item = (PartListItem*) topLevelItem(i);
+            part = ((PartListItem*)item)->part();
 
-          if (_partList.contains(part)) {
-              item->setSelected(true);
-              scrollToItem(item);
-          }
-          else
-              item->setSelected(false);
-      }
-      _inSelectionUpdate = false;
+            if (_partList.contains(part)) {
+                item->setSelected(true);
+                scrollToItem(item);
+            }
+            else
+                item->setSelected(false);
+        }
+        _inSelectionUpdate = false;
 
-      return;
+        return;
     }
 
     refresh();
@@ -226,7 +226,7 @@ void PartView::refresh()
 
     TracePartList hidden;
     if (_topLevel)
-	hidden = _topLevel->hiddenParts();
+        hidden = _topLevel->hiddenParts();
 
     _inSelectionUpdate = true;
     clear();

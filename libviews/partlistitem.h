@@ -33,23 +33,23 @@
 class PartListItem: public QTreeWidgetItem
 {
 public:
-  PartListItem(QTreeWidget* parent, TraceCostItem* costItem,
-               EventType* ct, ProfileContext::Type gt, TracePart* part);
+    PartListItem(QTreeWidget* parent, TraceCostItem* costItem,
+                 EventType* ct, ProfileContext::Type gt, TracePart* part);
 
-  bool operator<(const QTreeWidgetItem& other) const;
-  ProfileCostArray* partCostItem() { return _partCostItem; }
-  void setEventType(EventType* ct);
-  void setGroupType(ProfileContext::Type);
-  TracePart* part() { return _part; }
-  void update();
+    bool operator<(const QTreeWidgetItem& other) const;
+    ProfileCostArray* partCostItem() { return _partCostItem; }
+    void setEventType(EventType* ct);
+    void setGroupType(ProfileContext::Type);
+    TracePart* part() { return _part; }
+    void update();
 
 private:
-  SubCost _sum, _pure;
-  SubCost _callCount;
-  EventType* _eventType;
-  ProfileCostArray* _partCostItem;
-  TracePart* _part;
-  ProfileContext::Type _groupType;
+    SubCost _sum, _pure;
+    SubCost _callCount;
+    EventType* _eventType;
+    ProfileCostArray* _partCostItem;
+    TracePart* _part;
+    ProfileContext::Type _groupType;
 };
 
 #endif // PARTLISTITEM_H

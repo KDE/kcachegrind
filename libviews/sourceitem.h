@@ -33,49 +33,49 @@ class SourceView;
 class SourceItem: public QTreeWidgetItem
 {
 public:
-  // for source lines
-  SourceItem(SourceView* sv, QTreeWidget* parent,
-	     int fileno, unsigned int lineno,
-	     bool inside, const QString& src,
-             TraceLine* line = 0);
+    // for source lines
+    SourceItem(SourceView* sv, QTreeWidget* parent,
+               int fileno, unsigned int lineno,
+               bool inside, const QString& src,
+               TraceLine* line = 0);
 
-  // for call lines
-  SourceItem(SourceView* sv, QTreeWidgetItem* parent,
-	     int fileno, unsigned int lineno,
-             TraceLine* line, TraceLineCall* lineCall);
+    // for call lines
+    SourceItem(SourceView* sv, QTreeWidgetItem* parent,
+               int fileno, unsigned int lineno,
+               TraceLine* line, TraceLineCall* lineCall);
 
-  // for jump lines
-  SourceItem(SourceView* sv, QTreeWidgetItem* parent,
-	     int fileno, unsigned int lineno,
-             TraceLine* line, TraceLineJump* lineJump);
+    // for jump lines
+    SourceItem(SourceView* sv, QTreeWidgetItem* parent,
+               int fileno, unsigned int lineno,
+               TraceLine* line, TraceLineJump* lineJump);
 
-  uint lineno() const { return _lineno; }
-  int fileNumber() const { return _fileno; }
-  bool inside() const { return _inside; }
-  TraceLine* line() const { return _line; }
-  TraceLineCall* lineCall() const { return _lineCall; }
-  TraceLineJump* lineJump() const { return _lineJump; }
-  TraceLineJump* jump(int i) const { return _jump[i]; }
-  int jumpCount() const { return _jump.size(); }
-  bool operator< ( const QTreeWidgetItem & other ) const;
+    uint lineno() const { return _lineno; }
+    int fileNumber() const { return _fileno; }
+    bool inside() const { return _inside; }
+    TraceLine* line() const { return _line; }
+    TraceLineCall* lineCall() const { return _lineCall; }
+    TraceLineJump* lineJump() const { return _lineJump; }
+    TraceLineJump* jump(int i) const { return _jump[i]; }
+    int jumpCount() const { return _jump.size(); }
+    bool operator< ( const QTreeWidgetItem & other ) const;
 
-  void updateGroup();
-  void updateCost();
+    void updateGroup();
+    void updateCost();
 
-  // arrow lines
-  void setJumpArray(const QVector<TraceLineJump*>& a);
+    // arrow lines
+    void setJumpArray(const QVector<TraceLineJump*>& a);
 
-  QVector<TraceLineJump*> _jump;
+    QVector<TraceLineJump*> _jump;
 
 private:
-  SourceView* _view;
-  SubCost _pure, _pure2;
-  uint _lineno;
-  int _fileno; // for line sorting (even with multiple files)
-  bool _inside;
-  TraceLine* _line;
-  TraceLineJump* _lineJump;
-  TraceLineCall* _lineCall;
+    SourceView* _view;
+    SubCost _pure, _pure2;
+    uint _lineno;
+    int _fileno; // for line sorting (even with multiple files)
+    bool _inside;
+    TraceLine* _line;
+    TraceLineJump* _lineJump;
+    TraceLineCall* _lineCall;
 };
 
 
@@ -86,12 +86,12 @@ class SourceItemDelegate : public QItemDelegate
 public:
     explicit SourceItemDelegate(SourceView *parent);
     void paint(QPainter *painter, const QStyleOptionViewItem &option,
-                   const QModelIndex & index ) const;
+               const QModelIndex & index ) const;
     QSize sizeHint(const QStyleOptionViewItem &option,
                    const QModelIndex &index) const;
     QWidget* createEditor(QWidget *parent,
-			  const QStyleOptionViewItem &option,
-			  const QModelIndex &index) const;
+                          const QStyleOptionViewItem &option,
+                          const QModelIndex &index) const;
 
 protected:
     void paintArrows(QPainter *p,

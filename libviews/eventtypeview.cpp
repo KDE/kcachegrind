@@ -36,8 +36,8 @@
 //
 
 EventTypeView::EventTypeView(TraceItemView* parentView,
-			     QWidget* parent, const char* name)
-  : QTreeWidget(parent), TraceItemView(parentView)
+                             QWidget* parent, const char* name)
+    : QTreeWidget(parent), TraceItemView(parentView)
 {
     setObjectName(name);
     // forbid scaling icon pixmaps to smaller size
@@ -45,11 +45,11 @@ EventTypeView::EventTypeView(TraceItemView* parentView,
     setColumnCount(6);
     QStringList labels;
     labels  << tr( "Event Type" )
-	    << tr( "Incl." )
-	    << tr( "Self" )
-	    << tr( "Short" )
-	    << QString()
-	    << tr( "Formula" );
+            << tr( "Incl." )
+            << tr( "Self" )
+            << tr( "Short" )
+            << QString()
+            << tr( "Formula" );
     setHeaderLabels(labels);
     // reduce minimum width for '=' column
     header()->setMinimumSectionSize(10);
@@ -62,21 +62,21 @@ EventTypeView::EventTypeView(TraceItemView* parentView,
 
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect( this,
-	     &QWidget::customContextMenuRequested,
-	     this, &EventTypeView::context);
+             &QWidget::customContextMenuRequested,
+             this, &EventTypeView::context);
 
     // FIXME: Endless jumping among 2 types possible!
     connect( this,
-	     SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
-	     SLOT(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)) );
+             SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+             SLOT(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)) );
 
     connect(this,
-	    SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
-	    SLOT(itemDoubleClicked(QTreeWidgetItem*,int)));
+            SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
+            SLOT(itemDoubleClicked(QTreeWidgetItem*,int)));
 
     connect(this,
-	    SIGNAL(itemChanged(QTreeWidgetItem*,int)),
-	    SLOT(itemChanged(QTreeWidgetItem*,int)));
+            SIGNAL(itemChanged(QTreeWidgetItem*,int)),
+            SLOT(itemChanged(QTreeWidgetItem*,int)));
 
     setWhatsThis( whatsThis() );
 }
@@ -84,100 +84,100 @@ EventTypeView::EventTypeView(TraceItemView* parentView,
 QString EventTypeView::whatsThis() const
 {
     return tr( "<b>Cost Types List</b>"
-		 "<p>This list shows all cost types available "
-		 "and what the self/inclusive cost of the "
-		 "current selected function is for that cost type.</p>"
-		 "<p>By choosing a cost type from the list, "
-		 "you change the cost type of costs shown "
-		 "all over KCachegrind to be the selected one.</p>");
+               "<p>This list shows all cost types available "
+               "and what the self/inclusive cost of the "
+               "current selected function is for that cost type.</p>"
+               "<p>By choosing a cost type from the list, "
+               "you change the cost type of costs shown "
+               "all over KCachegrind to be the selected one.</p>");
 }
 
 
 void EventTypeView::context(const QPoint & p)
 {
-  QMenu popup;
+    QMenu popup;
 
-  QTreeWidgetItem* i = itemAt(p);
-  EventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
+    QTreeWidgetItem* i = itemAt(p);
+    EventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
 
-  QAction* selectType2Action = 0;
-  QAction* hideType2Action = 0;
-  if (ct)
-    selectType2Action = popup.addAction(tr("Set as Secondary Event Type"));
-  if (_eventType2)
-    hideType2Action = popup.addAction(tr("Hide Secondary Event Type"));
-  if (!popup.isEmpty())
-    popup.addSeparator();
+    QAction* selectType2Action = 0;
+    QAction* hideType2Action = 0;
+    if (ct)
+        selectType2Action = popup.addAction(tr("Set as Secondary Event Type"));
+    if (_eventType2)
+        hideType2Action = popup.addAction(tr("Hide Secondary Event Type"));
+    if (!popup.isEmpty())
+        popup.addSeparator();
 
-  QAction* editLongNameAction = 0;
-  QAction* editShortNameAction = 0;
-  QAction* editFormulaAction = 0;
-  QAction* removeTypeAction = 0;
-  if (ct && !ct->isReal()) {
-      editLongNameAction = popup.addAction(tr("Edit Long Name"));
-      editShortNameAction = popup.addAction(tr("Edit Short Name"));
-      editFormulaAction = popup.addAction(tr("Edit Formula"));
-      removeTypeAction = popup.addAction(tr("Remove"));
-      popup.addSeparator();
-  }
-
-  addGoMenu(&popup);
-
-  QAction* newTypeAction = 0;
-  if( _data) {
-      popup.addSeparator();
-      newTypeAction = popup.addAction(tr("New Event Type..."));
-  }
-
-  QAction* a = popup.exec(viewport()->mapToGlobal(p));
-  if (a == hideType2Action) selectedEventType2(0);
-  else if (a == selectType2Action) selectedEventType2(ct);
-  else if (a == editLongNameAction) editItem(i, 0);
-  else if (a == editShortNameAction) editItem(i, 3);
-  else if (a == editFormulaAction) editItem(i, 5);
-  else if (a == removeTypeAction) {
-
-    // search for a previous type 
-    EventType* prev = 0, *ct = 0;
-    EventTypeSet* m = _data->eventTypes();
-    for (int i=0;i<m->realCount();i++) {
-	ct = m->realType(i);
-	if (ct) prev = ct;
-    }
-    for (int i=0;i<m->derivedCount();i++) {
-	ct = m->derivedType(i);
-	if (ct == _eventType) break;
-	if (ct) prev = ct;
+    QAction* editLongNameAction = 0;
+    QAction* editShortNameAction = 0;
+    QAction* editFormulaAction = 0;
+    QAction* removeTypeAction = 0;
+    if (ct && !ct->isReal()) {
+        editLongNameAction = popup.addAction(tr("Edit Long Name"));
+        editShortNameAction = popup.addAction(tr("Edit Short Name"));
+        editFormulaAction = popup.addAction(tr("Edit Formula"));
+        removeTypeAction = popup.addAction(tr("Remove"));
+        popup.addSeparator();
     }
 
-    if (_data->eventTypes()->remove(ct)) {
-      // select previous cost type
-      selectedEventType(prev);
-      if (_eventType2 == ct)
-	selectedEventType2(prev);
-      refresh();
+    addGoMenu(&popup);
+
+    QAction* newTypeAction = 0;
+    if( _data) {
+        popup.addSeparator();
+        newTypeAction = popup.addAction(tr("New Event Type..."));
     }
-  }
-  else if (a == newTypeAction) {
-    int i = 1;
-    while(1) {
-      if (!EventType::hasKnownDerivedType(tr("New%1").arg(i)))
-        break;
-      i++;
+
+    QAction* a = popup.exec(viewport()->mapToGlobal(p));
+    if (a == hideType2Action) selectedEventType2(0);
+    else if (a == selectType2Action) selectedEventType2(ct);
+    else if (a == editLongNameAction) editItem(i, 0);
+    else if (a == editShortNameAction) editItem(i, 3);
+    else if (a == editFormulaAction) editItem(i, 5);
+    else if (a == removeTypeAction) {
+
+        // search for a previous type
+        EventType* prev = 0, *ct = 0;
+        EventTypeSet* m = _data->eventTypes();
+        for (int i=0;i<m->realCount();i++) {
+            ct = m->realType(i);
+            if (ct) prev = ct;
+        }
+        for (int i=0;i<m->derivedCount();i++) {
+            ct = m->derivedType(i);
+            if (ct == _eventType) break;
+            if (ct) prev = ct;
+        }
+
+        if (_data->eventTypes()->remove(ct)) {
+            // select previous cost type
+            selectedEventType(prev);
+            if (_eventType2 == ct)
+                selectedEventType2(prev);
+            refresh();
+        }
     }
-    // add same new cost type to this set and to known types
-    QString shortName = tr("New%1").arg(i);
-    QString longName  = tr("New Event Type %1").arg(i);
-    EventType* et;
-    et = new EventType(shortName, longName);
-    et->setFormula(QString()); // event is derived
-    EventType::add(et);
-    // EventType::add() took ownership, need new object
-    et = new EventType(shortName, longName);
-    et->setFormula(QString()); // event is derived
-    _data->eventTypes()->add(et);
-    refresh();
-  }
+    else if (a == newTypeAction) {
+        int i = 1;
+        while(1) {
+            if (!EventType::hasKnownDerivedType(tr("New%1").arg(i)))
+                break;
+            i++;
+        }
+        // add same new cost type to this set and to known types
+        QString shortName = tr("New%1").arg(i);
+        QString longName  = tr("New Event Type %1").arg(i);
+        EventType* et;
+        et = new EventType(shortName, longName);
+        et->setFormula(QString()); // event is derived
+        EventType::add(et);
+        // EventType::add() took ownership, need new object
+        et = new EventType(shortName, longName);
+        et->setFormula(QString()); // event is derived
+        _data->eventTypes()->add(et);
+        refresh();
+    }
 }
 
 
@@ -185,14 +185,14 @@ void EventTypeView::currentItemChanged(QTreeWidgetItem* i, QTreeWidgetItem*)
 {
     EventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
     if (ct)
-	selectedEventType(ct);
+        selectedEventType(ct);
 }
 
 void EventTypeView::itemDoubleClicked(QTreeWidgetItem* i, int)
 {
-  EventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
-  if (ct)
-      selectedEventType2(ct);
+    EventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
+    if (ct)
+        selectedEventType2(ct);
 }
 
 CostItem* EventTypeView::canShow(CostItem* i)
@@ -206,9 +206,9 @@ CostItem* EventTypeView::canShow(CostItem* i)
     case ProfileContext::Call:
     case ProfileContext::FunctionCycle:
     case ProfileContext::Function:
-	break;
+        break;
     default:
-	return 0;
+        return 0;
     }
     return i;
 }
@@ -221,32 +221,32 @@ void EventTypeView::doUpdate(int changeType, bool)
     if (changeType == eventType2Changed) return;
 
     if (changeType == groupTypeChanged) {
-	for(int i = 0; i < topLevelItemCount(); i++)
-	    ((EventTypeItem*)topLevelItem(i))->setGroupType(_groupType);
+        for(int i = 0; i < topLevelItemCount(); i++)
+            ((EventTypeItem*)topLevelItem(i))->setGroupType(_groupType);
 
-	return;
+        return;
     }
 
     if (changeType == eventTypeChanged) {
-	for(int i = 0; i < topLevelItemCount(); i++) {
-	    EventTypeItem* item = (EventTypeItem*)topLevelItem(i);
-	    if ( item->eventType() == _eventType) {
-		setCurrentItem(item);
-		scrollToItem(item);
-		break;
-	    }
-	}
+        for(int i = 0; i < topLevelItemCount(); i++) {
+            EventTypeItem* item = (EventTypeItem*)topLevelItem(i);
+            if ( item->eventType() == _eventType) {
+                setCurrentItem(item);
+                scrollToItem(item);
+                break;
+            }
+        }
 
-	return;
+        return;
     }
 
     if (changeType == partsChanged) {
-	for(int i = 0; i < topLevelItemCount(); i++)
-	    ((EventTypeItem*)topLevelItem(i))->update();
+        for(int i = 0; i < topLevelItemCount(); i++)
+            ((EventTypeItem*)topLevelItem(i))->update();
 
-	resizeColumnToContents(1);
-	resizeColumnToContents(2);
-	return;
+        resizeColumnToContents(1);
+        resizeColumnToContents(2);
+        return;
     }
 
 
@@ -266,9 +266,9 @@ void EventTypeView::refresh()
     case ProfileContext::File:
     case ProfileContext::FunctionCycle:
     case ProfileContext::Function:
-	break;
+        break;
     default:
-	return;
+        return;
     }
     TraceCostItem* c = (TraceCostItem*) _activeItem;
 
@@ -280,66 +280,66 @@ void EventTypeView::refresh()
 
     EventTypeSet* m = _data->eventTypes();
     for (int i=0; i<m->realCount();i++) {
-	ct = m->realType(i);
-	item = new EventTypeItem(c, ct, _groupType);
-	if (ct == _eventType) selected = item;
-	items.append(item);
+        ct = m->realType(i);
+        item = new EventTypeItem(c, ct, _groupType);
+        if (ct == _eventType) selected = item;
+        items.append(item);
     }
     for (int i=0; i<m->derivedCount();i++) {
-	ct = m->derivedType(i);
-	if (!ct) continue;
-	item = new EventTypeItem(c, ct, _groupType);
-	if (ct == _eventType) selected = item;
-	items.append(item);
+        ct = m->derivedType(i);
+        if (!ct) continue;
+        item = new EventTypeItem(c, ct, _groupType);
+        if (ct == _eventType) selected = item;
+        items.append(item);
     }
     insertTopLevelItems(0,items);
 
     if (selected) {
-	setCurrentItem(selected);
-	scrollToItem(selected);
+        setCurrentItem(selected);
+        scrollToItem(selected);
     }
 
     for(int c = 0; c<6; c++)
-	resizeColumnToContents(c);
+        resizeColumnToContents(c);
 }
 
 void EventTypeView::itemChanged(QTreeWidgetItem* item, int c)
 {
-  EventType* ct = item ? ((EventTypeItem*) item)->eventType() : 0;
-  if (!ct || ct->isReal()) return;
+    EventType* ct = item ? ((EventTypeItem*) item)->eventType() : 0;
+    if (!ct || ct->isReal()) return;
 
-  // search for matching known Type
-  int knownCount = EventType::knownTypeCount();
-  EventType* known = 0;
-  for (int i=0; i<knownCount; i++) {
-      known = EventType::knownType(i);
-      if (known->name() == ct->name()) break;
-  }
+    // search for matching known Type
+    int knownCount = EventType::knownTypeCount();
+    EventType* known = 0;
+    for (int i=0; i<knownCount; i++) {
+        known = EventType::knownType(i);
+        if (known->name() == ct->name()) break;
+    }
 
-  QString t = item->text(c);
-  if (c == 0) {
-      ct->setLongName(t);
-      if (known) known->setLongName(t);
-  }
-  else if (c == 3) {
-      // not allowed to use already existing short name
-      if (EventType::hasKnownRealType(t) || EventType::hasKnownDerivedType(t)) {
-          if (_topLevel)
-              _topLevel->showMessage("Error: Event type name already used",
-                                     5000);
-      }
-      else {
-          ct->setName(t);
-          if (known) known->setName(t);
-      }
-  }
-  else if (c == 5) {
-      ct->setFormula(t);
-      if (known) known->setFormula(t);
-  }
-  else return;
+    QString t = item->text(c);
+    if (c == 0) {
+        ct->setLongName(t);
+        if (known) known->setLongName(t);
+    }
+    else if (c == 3) {
+        // not allowed to use already existing short name
+        if (EventType::hasKnownRealType(t) || EventType::hasKnownDerivedType(t)) {
+            if (_topLevel)
+                _topLevel->showMessage("Error: Event type name already used",
+                                       5000);
+        }
+        else {
+            ct->setName(t);
+            if (known) known->setName(t);
+        }
+    }
+    else if (c == 5) {
+        ct->setFormula(t);
+        if (known) known->setFormula(t);
+    }
+    else return;
 
-  if (_topLevel) _topLevel->configChanged();
-  refresh();
+    if (_topLevel) _topLevel->configChanged();
+    refresh();
 }
 

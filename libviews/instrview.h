@@ -31,55 +31,55 @@ class InstrItem;
 
 class InstrView : public QTreeWidget, public TraceItemView
 {
-  friend class InstrItem;
+    friend class InstrItem;
 
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit InstrView(TraceItemView* parentView,
-                     QWidget* parent = 0);
+    explicit InstrView(TraceItemView* parentView,
+                       QWidget* parent = 0);
 
-  virtual QWidget* widget() { return this; }
-  QString whatsThis() const;
-  int arrowLevels() { return _arrowLevels; }
+    virtual QWidget* widget() { return this; }
+    QString whatsThis() const;
+    int arrowLevels() { return _arrowLevels; }
 
-  void restoreOptions(const QString& prefix, const QString& postfix);
-  void saveOptions(const QString& prefix, const QString& postfix);
+    void restoreOptions(const QString& prefix, const QString& postfix);
+    void saveOptions(const QString& prefix, const QString& postfix);
 
 protected slots:
-  void context(const QPoint &);
-  void selectedSlot(QTreeWidgetItem*, QTreeWidgetItem*);
-  void activatedSlot(QTreeWidgetItem*,int);
-  void headerClicked(int);
+    void context(const QPoint &);
+    void selectedSlot(QTreeWidgetItem*, QTreeWidgetItem*);
+    void activatedSlot(QTreeWidgetItem*,int);
+    void headerClicked(int);
 
 protected:
-  void keyPressEvent(QKeyEvent* event);
+    void keyPressEvent(QKeyEvent* event);
 
 private:
-  CostItem* canShow(CostItem*);
-  void doUpdate(int, bool);
-  void refresh();
-  void setColumnWidths();
-  bool searchFile(QString&, TraceObject*);
-  void fillInstr();
-  void updateJumpArray(Addr,InstrItem*,bool,bool);
-  bool fillInstrRange(TraceFunction*,
-                      TraceInstrMap::Iterator,TraceInstrMap::Iterator);
+    CostItem* canShow(CostItem*);
+    void doUpdate(int, bool);
+    void refresh();
+    void setColumnWidths();
+    bool searchFile(QString&, TraceObject*);
+    void fillInstr();
+    void updateJumpArray(Addr,InstrItem*,bool,bool);
+    bool fillInstrRange(TraceFunction*,
+                        TraceInstrMap::Iterator,TraceInstrMap::Iterator);
 
-  bool _inSelectionUpdate;
+    bool _inSelectionUpdate;
 
-  // arrows
-  int _arrowLevels;
-  // temporary needed on creation...
-  QVector<TraceInstrJump*> _jump;
-  TraceInstrJumpList _lowList, _highList;
-  TraceInstrJumpList::iterator _lowListIter, _highListIter;
+    // arrows
+    int _arrowLevels;
+    // temporary needed on creation...
+    QVector<TraceInstrJump*> _jump;
+    TraceInstrJumpList _lowList, _highList;
+    TraceInstrJumpList::iterator _lowListIter, _highListIter;
 
-  // remember width of hex code column if hidden
-  int _lastHexCodeWidth;
+    // remember width of hex code column if hidden
+    int _lastHexCodeWidth;
 
-  // widget options
-  bool _showHexCode;
+    // widget options
+    bool _showHexCode;
 };
 
 #endif

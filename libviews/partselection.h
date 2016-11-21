@@ -37,7 +37,7 @@ class PartAreaWidget;
 
 class PartSelection: public QWidget, public TraceItemView
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
     explicit PartSelection(TopLevelBase*, QWidget* parent = 0);

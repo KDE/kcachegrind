@@ -34,176 +34,176 @@
 
 
 StackSelection::StackSelection(QWidget* parent)
-  : QWidget(parent)
+    : QWidget(parent)
 {
-  _data = 0;
-  _browser = new StackBrowser();
-  _function = 0;
-  _eventType = 0;
-  _eventType2 = 0;
-  _groupType = ProfileContext::Function;
+    _data = 0;
+    _browser = new StackBrowser();
+    _function = 0;
+    _eventType = 0;
+    _eventType2 = 0;
+    _groupType = ProfileContext::Function;
 
-  setWindowTitle(tr("Stack Selection"));
+    setWindowTitle(tr("Stack Selection"));
 
-  QVBoxLayout* vboxLayout = new QVBoxLayout(this);
-  vboxLayout->setSpacing(6);
-  vboxLayout->setMargin(3);
+    QVBoxLayout* vboxLayout = new QVBoxLayout(this);
+    vboxLayout->setSpacing(6);
+    vboxLayout->setMargin(3);
 
-  _stackList = new QTreeWidget(this);
-  QStringList headerLabels;
-  headerLabels << tr("Cost")
-               << tr("Cost2")
-               << tr("Calls")
-               << tr("Function");
-  _stackList->setHeaderLabels(headerLabels);
-  _stackList->setRootIsDecorated(false);
-  _stackList->setAllColumnsShowFocus(true);
-  _stackList->setUniformRowHeights(true);
-  _stackList->setSortingEnabled(false);
-  _stackList->setColumnWidth(0, 50);
-  // 2nd cost column hidden at first (_eventType2 == 0)
-  _stackList->setColumnWidth(1, 0);
-  _stackList->setColumnWidth(2, 50);
-  vboxLayout->addWidget(_stackList);
+    _stackList = new QTreeWidget(this);
+    QStringList headerLabels;
+    headerLabels << tr("Cost")
+                 << tr("Cost2")
+                 << tr("Calls")
+                 << tr("Function");
+    _stackList->setHeaderLabels(headerLabels);
+    _stackList->setRootIsDecorated(false);
+    _stackList->setAllColumnsShowFocus(true);
+    _stackList->setUniformRowHeights(true);
+    _stackList->setSortingEnabled(false);
+    _stackList->setColumnWidth(0, 50);
+    // 2nd cost column hidden at first (_eventType2 == 0)
+    _stackList->setColumnWidth(1, 0);
+    _stackList->setColumnWidth(2, 50);
+    vboxLayout->addWidget(_stackList);
 
-  connect(_stackList,
-          &QTreeWidget::currentItemChanged,
-          this, &StackSelection::stackSelected );
+    connect(_stackList,
+            &QTreeWidget::currentItemChanged,
+            this, &StackSelection::stackSelected );
 }
 
 StackSelection::~StackSelection()
 {
-  delete _browser;
+    delete _browser;
 }
 
 void StackSelection::setData(TraceData* data)
 {
-  if (_data == data) return;
+    if (_data == data) return;
 
-  _data = data;
+    _data = data;
 
-  _stackList->clear();
-   delete _browser;
-  _browser = new StackBrowser();
-  _function = 0;
+    _stackList->clear();
+    delete _browser;
+    _browser = new StackBrowser();
+    _function = 0;
 }
 
 
 void StackSelection::setFunction(TraceFunction* f)
 {
-  if (_function == f) return;
-  _function = f;
+    if (_function == f) return;
+    _function = f;
 
-  if (!_data || !_function) return;
+    if (!_data || !_function) return;
 
-  //qDebug() << "StackSelection::setFunction " << f->name();
+    //qDebug() << "StackSelection::setFunction " << f->name();
 
-  HistoryItem* item = _browser->current();
-  if (!item || item->function() != f) {
-    _browser->select(f);
-    rebuildStackList();
-  }
+    HistoryItem* item = _browser->current();
+    if (!item || item->function() != f) {
+        _browser->select(f);
+        rebuildStackList();
+    }
 }
 
 
 void StackSelection::rebuildStackList()
 {
-  HistoryItem* item = _browser->current();
-  _stackList->clear();
-  _stackList->setColumnWidth(0, 50);
-  _stackList->setColumnWidth(1, _eventType2 ? 50:0);
-  _stackList->setColumnWidth(2, 50);
-  if (!item || !item->stack()) return;
+    HistoryItem* item = _browser->current();
+    _stackList->clear();
+    _stackList->setColumnWidth(0, 50);
+    _stackList->setColumnWidth(1, _eventType2 ? 50:0);
+    _stackList->setColumnWidth(2, 50);
+    if (!item || !item->stack()) return;
 
-  TraceFunction* top = item->stack()->top();
-  if (!top) return;
+    TraceFunction* top = item->stack()->top();
+    if (!top) return;
 
 
-  QList<QTreeWidgetItem*> items;
-  QTreeWidgetItem* activeItem = 0;
-  TraceCallList l = item->stack()->calls();
-  for(int i=l.count()-1; i>=0; i--) {
-      StackItem* si = new StackItem(this, 0, l.at(i));
-      if (si->function() == item->function())
-          activeItem = si;
-      items.prepend(si);
-  }
-  StackItem* si = new StackItem(this, 0, top);
-  if (si->function() == item->function())
-      activeItem = si;
-  items.prepend(si);
-
-#if QT_VERSION >= 0x050000
-  _stackList->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
-  _stackList->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
-  _stackList->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
-#else
-  _stackList->header()->setResizeMode(0, QHeaderView::ResizeToContents);
-  _stackList->header()->setResizeMode(1, QHeaderView::ResizeToContents);
-  _stackList->header()->setResizeMode(2, QHeaderView::ResizeToContents);
-#endif
-
-  _stackList->addTopLevelItems(items);
-  if (activeItem) {
-    // this calls stackFunctionSelected()
-    _stackList->setCurrentItem(activeItem);
-    _stackList->scrollToItem(activeItem);
-  }
+    QList<QTreeWidgetItem*> items;
+    QTreeWidgetItem* activeItem = 0;
+    TraceCallList l = item->stack()->calls();
+    for(int i=l.count()-1; i>=0; i--) {
+        StackItem* si = new StackItem(this, 0, l.at(i));
+        if (si->function() == item->function())
+            activeItem = si;
+        items.prepend(si);
+    }
+    StackItem* si = new StackItem(this, 0, top);
+    if (si->function() == item->function())
+        activeItem = si;
+    items.prepend(si);
 
 #if QT_VERSION >= 0x050000
-  _stackList->header()->setSectionResizeMode(0, QHeaderView::Interactive);
-  _stackList->header()->setSectionResizeMode(1, QHeaderView::Interactive);
-  _stackList->header()->setSectionResizeMode(2, QHeaderView::Interactive);
+    _stackList->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+    _stackList->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+    _stackList->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
 #else
-  _stackList->header()->setResizeMode(0, QHeaderView::Interactive);
-  _stackList->header()->setResizeMode(1, QHeaderView::Interactive);
-  _stackList->header()->setResizeMode(2, QHeaderView::Interactive);
+    _stackList->header()->setResizeMode(0, QHeaderView::ResizeToContents);
+    _stackList->header()->setResizeMode(1, QHeaderView::ResizeToContents);
+    _stackList->header()->setResizeMode(2, QHeaderView::ResizeToContents);
 #endif
 
-  if (!_eventType2) {
-    _stackList->setColumnWidth(1, 0);
-  }
+    _stackList->addTopLevelItems(items);
+    if (activeItem) {
+        // this calls stackFunctionSelected()
+        _stackList->setCurrentItem(activeItem);
+        _stackList->scrollToItem(activeItem);
+    }
+
+#if QT_VERSION >= 0x050000
+    _stackList->header()->setSectionResizeMode(0, QHeaderView::Interactive);
+    _stackList->header()->setSectionResizeMode(1, QHeaderView::Interactive);
+    _stackList->header()->setSectionResizeMode(2, QHeaderView::Interactive);
+#else
+    _stackList->header()->setResizeMode(0, QHeaderView::Interactive);
+    _stackList->header()->setResizeMode(1, QHeaderView::Interactive);
+    _stackList->header()->setResizeMode(2, QHeaderView::Interactive);
+#endif
+
+    if (!_eventType2) {
+        _stackList->setColumnWidth(1, 0);
+    }
 }
 
 void StackSelection::stackSelected(QTreeWidgetItem* i, QTreeWidgetItem*)
 {
-  if (!i) return;
+    if (!i) return;
 
-  TraceFunction* f = ((StackItem*)i)->function();
-  emit functionSelected(f);
+    TraceFunction* f = ((StackItem*)i)->function();
+    emit functionSelected(f);
 }
 
 
 void StackSelection::browserBack()
 {
-  if (_browser && _browser->canGoBack()) {
-    _browser->goBack();
-    rebuildStackList();
-  }
+    if (_browser && _browser->canGoBack()) {
+        _browser->goBack();
+        rebuildStackList();
+    }
 }
 
 void StackSelection::browserForward()
 {
-  if (_browser && _browser->canGoForward()) {
-    _browser->goForward();
-    rebuildStackList();
-  }
+    if (_browser && _browser->canGoForward()) {
+        _browser->goForward();
+        rebuildStackList();
+    }
 }
 
 void StackSelection::browserUp()
 {
-  if (_browser) {
-    _browser->goUp();
-    rebuildStackList();
-  }
+    if (_browser) {
+        _browser->goUp();
+        rebuildStackList();
+    }
 }
 
 void StackSelection::browserDown()
 {
-  if (_browser) {
-    _browser->goDown();
-    rebuildStackList();
-  }
+    if (_browser) {
+        _browser->goDown();
+        rebuildStackList();
+    }
 }
 
 void StackSelection::refresh()
@@ -234,34 +234,34 @@ void StackSelection::refresh()
 
 void StackSelection::setEventType(EventType* ct)
 {
-  if (ct == _eventType) return;
-  _eventType = ct;
+    if (ct == _eventType) return;
+    _eventType = ct;
 
-  if (_eventType)
-    _stackList->headerItem()->setText(0, _eventType->name());
+    if (_eventType)
+        _stackList->headerItem()->setText(0, _eventType->name());
 
-  refresh();
+    refresh();
 }
 
 void StackSelection::setEventType2(EventType* ct)
 {
-  if (ct == _eventType2) return;
-  _eventType2 = ct;
+    if (ct == _eventType2) return;
+    _eventType2 = ct;
 
-  if (_eventType2)
-    _stackList->headerItem()->setText(1, _eventType2->name());
+    if (_eventType2)
+        _stackList->headerItem()->setText(1, _eventType2->name());
 
-  refresh();
+    refresh();
 }
 
 void StackSelection::setGroupType(ProfileContext::Type gt)
 {
-  if (_groupType == gt) return;
-  _groupType = gt;
+    if (_groupType == gt) return;
+    _groupType = gt;
 
-  for(int i = 0; i < _stackList->topLevelItemCount(); i++) {
-      QTreeWidgetItem* item = _stackList->topLevelItem(i);
-      ((StackItem*)item)->updateGroup();
-  }
+    for(int i = 0; i < _stackList->topLevelItemCount(); i++) {
+        QTreeWidgetItem* item = _stackList->topLevelItem(i);
+        ((StackItem*)item)->updateGroup();
+    }
 }
 
