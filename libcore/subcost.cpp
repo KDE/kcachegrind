@@ -34,8 +34,8 @@ bool SubCost::set(const char** ps)
     v = *s - '0';
     s++;
     while(*s >= '0' && *s <= '9') {
-	v = 10* v + (*s-'0');
-	s++;
+        v = 10* v + (*s-'0');
+        s++;
     }
     while(*s == ' ') s++;
     *ps = s;
@@ -53,10 +53,10 @@ QString SubCost::pretty(char sep) const
     QString res;
 
     while (n) {
-	if ((i>0) && !(i%3)) res = sep + res;
-	i++;
-	res = QChar('0'+int(n%10)) + res;
-	n /= 10;
+        if ((i>0) && !(i%3)) res = sep + res;
+        i++;
+        res = QChar('0'+int(n%10)) + res;
+        n /= 10;
     }
     return res;
 }
@@ -88,17 +88,17 @@ void HighestCostList::addCost(ProfileCostArray* c, SubCost cost)
 
     _count++;
     if (_count > _maxSize) {
-	if (_cost[_maxSize-1] >= cost) return;
-	i = _maxSize-1;
+        if (_cost[_maxSize-1] >= cost) return;
+        i = _maxSize-1;
     }
     else i = _count-1;
 
     for(; i>0; i--) {
-	if (_cost[i-1] >= cost) break;
-	else {
-	    _cost[i] = _cost[i-1];
-	    _item[i] = _item[i-1];
-	}
+        if (_cost[i-1] >= cost) break;
+        else {
+            _cost[i] = _cost[i-1];
+            _item[i] = _item[i-1];
+        }
     }
     _cost[i] = cost;
     _item[i] = c;

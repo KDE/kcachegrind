@@ -46,13 +46,13 @@ FixPool::~FixPool()
     struct SpaceChunk* chunk = _first, *next;
 
     while(chunk) {
-	next = chunk->next;
-	free(chunk);
-	chunk = next;
+        next = chunk->next;
+        free(chunk);
+        chunk = next;
     }
 
     if (0) qDebug("~FixPool: Had %d objects with total size %d\n",
-		  _count, _size);
+                  _count, _size);
 }
 
 void* FixPool::allocate(unsigned int size)
@@ -101,7 +101,7 @@ bool FixPool::ensureSpace(unsigned int size)
     if (size > CHUNK_SIZE) return false;
 
     newChunk = (struct SpaceChunk*) malloc(sizeof(struct SpaceChunk) +
-					   CHUNK_SIZE);
+                                           CHUNK_SIZE);
     if (!newChunk) {
         qFatal("ERROR: Out of memory. Sorry. KCachegrind has to terminate.\n\n"
                "You probably tried to load a profile data file too huge for"
@@ -112,11 +112,11 @@ bool FixPool::ensureSpace(unsigned int size)
     newChunk->used = 0;
 
     if (!_last) {
-	_last = _first = newChunk;
+        _last = _first = newChunk;
     }
     else {
-	_last->next = newChunk;
-	_last = newChunk;
+        _last->next = newChunk;
+        _last = newChunk;
     }
     return true;
 }
@@ -126,116 +126,116 @@ bool FixPool::ensureSpace(unsigned int size)
 
 DynPool::DynPool()
 {
-  _data = (char*) malloc(CHUNK_SIZE);
-  _used = 0;
-  _size = CHUNK_SIZE;
+    _data = (char*) malloc(CHUNK_SIZE);
+    _used = 0;
+    _size = CHUNK_SIZE;
 
-  // end marker
-  *(int*)_data = 0;
+    // end marker
+    *(int*)_data = 0;
 }
 
 DynPool::~DynPool()
 {
-  // we could check for correctness by iteration over all objects
+    // we could check for correctness by iteration over all objects
 
-  ::free(_data);
+    ::free(_data);
 }
 
 bool DynPool::allocate(char** ptr, unsigned int size)
 {
-  // round up to multiple of 4
-  size = (size+3) & ~3;
+    // round up to multiple of 4
+    size = (size+3) & ~3;
 
-  /* need 12 bytes more:
-   * - 4 bytes for forward chain
-   * - 4 bytes for pointer to ptr
-   * - 4 bytes as end marker (not used for new object)
-   */
-  if (!ensureSpace(size + 12)) return false;
+    /* need 12 bytes more:
+     * - 4 bytes for forward chain
+     * - 4 bytes for pointer to ptr
+     * - 4 bytes as end marker (not used for new object)
+     */
+    if (!ensureSpace(size + 12)) return false;
 
-  char** obj = (char**) (_data+_used);
-  obj[0] = (char*)(_data + _used + size + 8);
-  obj[1] = (char*)ptr;
-  *(int*)(_data+_used+size+8) = 0;
-  *ptr = _data+_used+8;
+    char** obj = (char**) (_data+_used);
+    obj[0] = (char*)(_data + _used + size + 8);
+    obj[1] = (char*)ptr;
+    *(int*)(_data+_used+size+8) = 0;
+    *ptr = _data+_used+8;
 
-  _used += size + 8;
+    _used += size + 8;
 
-  return true;
+    return true;
 }
 
 void DynPool::free(char** ptr)
 {
-  if (!ptr ||
-      !*ptr ||
-      (*(char**)(*ptr - 4)) != (char*)ptr )
-    qFatal("Chaining error in DynPool::free");
+    if (!ptr ||
+        !*ptr ||
+        (*(char**)(*ptr - 4)) != (char*)ptr )
+        qFatal("Chaining error in DynPool::free");
 
-  (*(char**)(*ptr - 4)) = 0;
-  *ptr = 0;
+    (*(char**)(*ptr - 4)) = 0;
+    *ptr = 0;
 }
 
 bool DynPool::ensureSpace(unsigned int size)
 {
-  if (_used + size <= _size) return true;
+    if (_used + size <= _size) return true;
 
-  unsigned int newsize = _size *3/2 + CHUNK_SIZE;
-  char* newdata = (char*) malloc(newsize);
+    unsigned int newsize = _size *3/2 + CHUNK_SIZE;
+    char* newdata = (char*) malloc(newsize);
 
-  unsigned int freed = 0, len;
-  char **p, **pnext, **pnew;
+    unsigned int freed = 0, len;
+    char **p, **pnext, **pnew;
 
-  qDebug("DynPool::ensureSpace size: %d => %d, used %d. %p => %p",
-	 _size, newsize, _used, _data, newdata);
+    qDebug("DynPool::ensureSpace size: %d => %d, used %d. %p => %p",
+           _size, newsize, _used, _data, newdata);
 
-  pnew = (char**) newdata;
-  p = (char**) _data;
-  while(*p) {
-    pnext = (char**) *p;
-    len = (char*)pnext - (char*)p;
+    pnew = (char**) newdata;
+    p = (char**) _data;
+    while(*p) {
+        pnext = (char**) *p;
+        len = (char*)pnext - (char*)p;
 
-    if (0) qDebug(" [%8p] Len %d (ptr %p), freed %d (=> %p)",
-		  p, len, p[1], freed, pnew);
+        if (0) qDebug(" [%8p] Len %d (ptr %p), freed %d (=> %p)",
+                      p, len, p[1], freed, pnew);
 
-    /* skip freed space ? */
-    if (p[1] == 0) {
-      freed += len;
-      p = pnext;
-      continue;
+        /* skip freed space ? */
+        if (p[1] == 0) {
+            freed += len;
+            p = pnext;
+            continue;
+        }
+
+        // new and old still at same address ?
+        if (pnew == p) {
+            pnew = p = pnext;
+            continue;
+        }
+
+        // copy object
+        pnew[0] = (char*)pnew + len;
+        pnew[1] = p[1];
+        memcpy((char*)pnew + 8, (char*)p + 8, len-8);
+
+        // update pointer to object
+        char** ptr = (char**) p[1];
+        if (*ptr != ((char*)p)+8)
+            qFatal("Chaining error in DynPool::ensureSpace");
+        *ptr = ((char*)pnew)+8;
+
+        pnew = (char**) pnew[0];
+        p = pnext;
     }
-    
-    // new and old still at same address ?
-    if (pnew == p) {
-      pnew = p = pnext;
-      continue;
-    }
+    pnew[0] = 0;
 
-    // copy object
-    pnew[0] = (char*)pnew + len;
-    pnew[1] = p[1];
-    memcpy((char*)pnew + 8, (char*)p + 8, len-8);
+    unsigned int newused = (char*)pnew - (char*)newdata;
+    qDebug("DynPool::ensureSpace size: %d => %d, used %d => %d (%d freed)",
+           _size, newsize, _used, newused, freed);
 
-    // update pointer to object
-    char** ptr = (char**) p[1];
-    if (*ptr != ((char*)p)+8)
-      qFatal("Chaining error in DynPool::ensureSpace");
-    *ptr = ((char*)pnew)+8;
+    ::free(_data);
+    _data = newdata;
+    _size = newsize;
+    _used = newused;
 
-    pnew = (char**) pnew[0];
-    p = pnext;
-  }
-  pnew[0] = 0;
-
-  unsigned int newused = (char*)pnew - (char*)newdata;
-  qDebug("DynPool::ensureSpace size: %d => %d, used %d => %d (%d freed)",
-	 _size, newsize, _used, newused, freed);
-  
-  ::free(_data);
-  _data = newdata;
-  _size = newsize;
-  _used = newused;
-
-  return true;
+    return true;
 }
 
 /* Testing the DynPool

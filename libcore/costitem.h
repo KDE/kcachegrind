@@ -44,87 +44,87 @@ public:
     ProfileContext* context() const { return _context; }
     ProfileContext::Type type() const { return context()->type(); }
 
-  /**
-   * Returns dynamic name info (without type)
-   */
-  virtual QString name() const;
+    /**
+     * Returns dynamic name info (without type)
+     */
+    virtual QString name() const;
 
-  /**
-   * Similar to name, but prettyfied = more descriptive to humans
-   */
-  virtual QString prettyName() const;
+    /**
+     * Similar to name, but prettyfied = more descriptive to humans
+     */
+    virtual QString prettyName() const;
 
-  /**
-   * A HTMLified version of name, can return empty string
-   */
-  virtual QString formattedName() const;
+    /**
+     * A HTMLified version of name, can return empty string
+     */
+    virtual QString formattedName() const;
 
-  /**
-   * Returns text of all cost metrics
-   */
-  virtual QString costString(EventTypeSet*);
+    /**
+     * Returns text of all cost metrics
+     */
+    virtual QString costString(EventTypeSet*);
 
-  /**
-   * Returns type name + dynamic name
-   */
-  QString fullName() const;
+    /**
+     * Returns type name + dynamic name
+     */
+    QString fullName() const;
 
-  /**
-   * Returns full name + cost text
-   */
-  QString toString();
+    /**
+     * Returns full name + cost text
+     */
+    QString toString();
 
-  /**
-   * Set all cost counters to zero
-   */
-  virtual void clear();
+    /**
+     * Set all cost counters to zero
+     */
+    virtual void clear();
 
-  /** Invalidate the cost attributes.
-   * An invalidated object needs to be recalculated when a cost
-   * attribute is requested (e.g. by subCost()).
-   * Has to be overwritten by subclasses when the cost influences costs of
-   * other cost items. If only one item depends on the cost of this item,
-   * it can by set with setDependant() without a need for overwriting.
-   */
-  virtual void invalidate();
+    /** Invalidate the cost attributes.
+     * An invalidated object needs to be recalculated when a cost
+     * attribute is requested (e.g. by subCost()).
+     * Has to be overwritten by subclasses when the cost influences costs of
+     * other cost items. If only one item depends on the cost of this item,
+     * it can by set with setDependant() without a need for overwriting.
+     */
+    virtual void invalidate();
 
-  /**
-   * Sets a dependant to be invalidated when this cost is invalidated.
-   * Call this function directly after the constructor.
-   */
-  void setDependant(CostItem* d) { _dep = d; }
+    /**
+     * Sets a dependant to be invalidated when this cost is invalidated.
+     * Call this function directly after the constructor.
+     */
+    void setDependant(CostItem* d) { _dep = d; }
 
-  CostItem* dependant() { return _dep; }
+    CostItem* dependant() { return _dep; }
 
-  /**
-   * If this item is from a single profile data file, position
-   * points to a TracePart, otherwise to a TraceData object.
-   */
-  void setPosition(CostItem* p) { _position = p; }
+    /**
+     * If this item is from a single profile data file, position
+     * points to a TracePart, otherwise to a TraceData object.
+     */
+    void setPosition(CostItem* p) { _position = p; }
 
-  /**
-   * Redefine the context after construction
-   */
-  void setContext(ProfileContext* context) { _context = context; }
+    /**
+     * Redefine the context after construction
+     */
+    void setContext(ProfileContext* context) { _context = context; }
 
-  // getters for specific positions, to be overwritten
-  virtual TracePart* part();
-  virtual const TracePart* part() const;
-  virtual TraceData* data();
-  virtual const TraceData* data() const;
+    // getters for specific positions, to be overwritten
+    virtual TracePart* part();
+    virtual const TracePart* part() const;
+    virtual TraceData* data();
+    virtual const TraceData* data() const;
 
- protected:
-  /** Updates cost attributes.
-   * This has to be called by subclasses that access cost attributes
-   * directly
-   */
-  virtual void update();
+protected:
+    /** Updates cost attributes.
+     * This has to be called by subclasses that access cost attributes
+     * directly
+     */
+    virtual void update();
 
-  ProfileContext* _context;
-  bool _dirty;
+    ProfileContext* _context;
+    bool _dirty;
 
-  CostItem* _position;
-  CostItem* _dep;
+    CostItem* _position;
+    CostItem* _dep;
 };
 
 
@@ -145,67 +145,67 @@ class ProfileCostArray: public CostItem
 {
     friend class EventType;
 public:
-  /**
-   */
-  static const int MaxRealIndex;
-  static const int InvalidIndex;
+    /**
+     */
+    static const int MaxRealIndex;
+    static const int InvalidIndex;
 
 
-  explicit ProfileCostArray(ProfileContext*);
-  ProfileCostArray();
-  virtual ~ProfileCostArray();
+    explicit ProfileCostArray(ProfileContext*);
+    ProfileCostArray();
+    virtual ~ProfileCostArray();
 
-  virtual QString costString(EventTypeSet*);
+    virtual QString costString(EventTypeSet*);
 
-  virtual void clear();
+    virtual void clear();
 
-  // reserve space for cost
-  void reserve(int);
+    // reserve space for cost
+    void reserve(int);
 
-  // set costs according to the mapping order of event types
-  void set(EventTypeMapping*, const char*);
-  void set(EventTypeMapping*, FixString&);
-  // add costs according to the mapping order of event types
-  void addCost(EventTypeMapping*, const char*);
-  void addCost(EventTypeMapping*, FixString&);
-  // add the cost of another item
-  void addCost(ProfileCostArray* item);
-  void addCost(int index, SubCost value);
+    // set costs according to the mapping order of event types
+    void set(EventTypeMapping*, const char*);
+    void set(EventTypeMapping*, FixString&);
+    // add costs according to the mapping order of event types
+    void addCost(EventTypeMapping*, const char*);
+    void addCost(EventTypeMapping*, FixString&);
+    // add the cost of another item
+    void addCost(ProfileCostArray* item);
+    void addCost(int index, SubCost value);
 
-  // maximal cost
-  void maxCost(EventTypeMapping*, FixString&);
-  void maxCost(ProfileCostArray* item);
-  void maxCost(int index, SubCost value);
-  ProfileCostArray diff(ProfileCostArray* item);
+    // maximal cost
+    void maxCost(EventTypeMapping*, FixString&);
+    void maxCost(ProfileCostArray* item);
+    void maxCost(int index, SubCost value);
+    ProfileCostArray diff(ProfileCostArray* item);
 
-  virtual void invalidate();
+    virtual void invalidate();
 
-  /** Returns a sub cost. This automatically triggers
-   * a call to update() if needed.
-   */
-  SubCost subCost(EventType*);
+    /** Returns a sub cost. This automatically triggers
+     * a call to update() if needed.
+     */
+    SubCost subCost(EventType*);
 
-  /** Returns a cost attribute converted to a string
-   * (with space after every 3 digits)
-   */
-  QString prettySubCost(EventType*);
+    /** Returns a cost attribute converted to a string
+     * (with space after every 3 digits)
+     */
+    QString prettySubCost(EventType*);
 
-  QString prettySubCostPerCall(EventType* t, uint64 calls);
+    QString prettySubCostPerCall(EventType* t, uint64 calls);
 
- protected:
-  virtual void update();
+protected:
+    virtual void update();
 
- private:
-  // Only used by friend class EventType: return subcost by index
-  SubCost subCost(int);
+private:
+    // Only used by friend class EventType: return subcost by index
+    SubCost subCost(int);
 
-  SubCost* _cost;
-  int _count; // only _count first indexes of _cost are used
-  int _allocCount; // number of allocated subcost entries
+    SubCost* _cost;
+    int _count; // only _count first indexes of _cost are used
+    int _allocCount; // number of allocated subcost entries
 
-  // cache last virtual subcost for faster access
-  SubCost _cachedCost;
-  EventType* _cachedType;
+    // cache last virtual subcost for faster access
+    SubCost _cachedCost;
+    EventType* _cachedType;
 };
 
 

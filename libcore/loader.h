@@ -51,43 +51,43 @@ class Logger;
 class Loader
 {
 public:
-  Loader(const QString& name, const QString& desc);
-  virtual ~Loader();
+    Loader(const QString& name, const QString& desc);
+    virtual ~Loader();
 
-  // reimplement for a specific Loader
-  virtual bool canLoad(QIODevice* file);
-  /* load a profile data file.
-   * for every section (time span covered by profile), create a TracePart
-   * return the number of sections loaded (0 on error)
-   */
-  virtual int load(TraceData*, QIODevice* file, const QString& filename);
+    // reimplement for a specific Loader
+    virtual bool canLoad(QIODevice* file);
+    /* load a profile data file.
+     * for every section (time span covered by profile), create a TracePart
+     * return the number of sections loaded (0 on error)
+     */
+    virtual int load(TraceData*, QIODevice* file, const QString& filename);
 
-  static Loader* matchingLoader(QIODevice* file);
-  static Loader* loader(const QString& name);
-  static void initLoaders();
-  static void deleteLoaders();
+    static Loader* matchingLoader(QIODevice* file);
+    static Loader* loader(const QString& name);
+    static void initLoaders();
+    static void deleteLoaders();
 
-  QString name() const { return _name; }
-  QString description() const { return _description; }
+    QString name() const { return _name; }
+    QString description() const { return _description; }
 
-  // consumer for notifications
-  void setLogger(Logger*);
-
-protected:
-  // notifications for the user
-  void loadStart(const QString& filename);
-  void loadProgress(int progress); // 0 - 100
-  void loadError(int line, const QString& msg);
-  void loadWarning(int line, const QString& msg);
-  void loadFinished(const QString &msg = QString::null);
+    // consumer for notifications
+    void setLogger(Logger*);
 
 protected:
-  Logger* _logger;
+    // notifications for the user
+    void loadStart(const QString& filename);
+    void loadProgress(int progress); // 0 - 100
+    void loadError(int line, const QString& msg);
+    void loadWarning(int line, const QString& msg);
+    void loadFinished(const QString &msg = QString::null);
+
+protected:
+    Logger* _logger;
 
 private:
-  QString _name, _description;
+    QString _name, _description;
 
-  static QList<Loader*> _loaderList;
+    static QList<Loader*> _loaderList;
 };
 
 

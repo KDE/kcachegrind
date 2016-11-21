@@ -31,17 +31,17 @@
 
 class PositionSpec
 {
- public:
-  PositionSpec()
+public:
+    PositionSpec()
     { fromLine = 0, toLine = 0, fromAddr = 0, toAddr = 0; }
-  PositionSpec(uint l1, uint l2, Addr a1, Addr a2)
+    PositionSpec(uint l1, uint l2, Addr a1, Addr a2)
     { fromLine = l1, toLine = l2, fromAddr = a1, toAddr = a2; }
 
-  bool isLineRegion() const { return (fromLine != toLine); }
-  bool isAddrRegion() const { return (fromAddr != toAddr); }
+    bool isLineRegion() const { return (fromLine != toLine); }
+    bool isAddrRegion() const { return (fromAddr != toAddr); }
 
-  uint fromLine, toLine;
-  Addr fromAddr, toAddr;
+    uint fromLine, toLine;
+    Addr fromAddr, toAddr;
 };
 
 /**
@@ -53,12 +53,12 @@ class PositionSpec
 class FixCost
 {
 
- public:
+public:
     FixCost(TracePart*, FixPool*,
-	    TraceFunctionSource*,
-	    PositionSpec&,
+            TraceFunctionSource*,
+            PositionSpec&,
             TracePartFunction*,
-	    FixString&);
+            FixString&);
 
     void *operator new(size_t size, FixPool*);
 
@@ -76,9 +76,9 @@ class FixCost
     TraceFunctionSource* functionSource() const { return _functionSource; }
 
     FixCost* nextCostOfPartFunction() const
-	{ return _nextCostOfPartFunction; }
+    { return _nextCostOfPartFunction; }
 
- private:
+private:
     int _count;
     SubCost*  _cost;
     PositionSpec _pos;
@@ -96,11 +96,11 @@ class FixCost
 class FixCallCost
 {
 
- public:
+public:
     FixCallCost(TracePart*, FixPool*,
                 TraceFunctionSource*,
                 unsigned int line,
-		Addr addr,
+                Addr addr,
                 TracePartCall*,
                 SubCost, FixString&);
 
@@ -115,9 +115,9 @@ class FixCallCost
     SubCost callCount() const { return _cost[_count]; }
     TraceFunctionSource* functionSource() const	{ return _functionSource; }
     FixCallCost* nextCostOfPartCall() const
-	{ return _nextCostOfPartCall; }
+    { return _nextCostOfPartCall; }
 
- private:
+private:
     // we use 1 SubCost more than _count: _cost[_count] is the call count
     int _count;
     SubCost*  _cost;
@@ -135,16 +135,16 @@ class FixCallCost
 class FixJump
 {
 
- public:
+public:
     FixJump(TracePart*, FixPool*,
-	    /* source position */
-	    unsigned int line, Addr addr,
-	    TracePartFunction*, TraceFunctionSource*,
-	    /* target position */
-	    unsigned int targetLine, Addr targetAddr,
-	    TraceFunction*, TraceFunctionSource*,
-	    bool isCondJump,
-	    SubCost, SubCost);
+            /* source position */
+            unsigned int line, Addr addr,
+            TracePartFunction*, TraceFunctionSource*,
+            /* target position */
+            unsigned int targetLine, Addr targetAddr,
+            TraceFunction*, TraceFunctionSource*,
+            bool isCondJump,
+            SubCost, SubCost);
 
     void *operator new(size_t size, FixPool*);
 
@@ -161,14 +161,14 @@ class FixJump
     bool isCondJump() const { return _isCondJump; }
     SubCost executedCount() const { return _cost[0]; }
     SubCost followedCount() const
-	{ return _isCondJump ? _cost[1] : SubCost(0); }
+    { return _isCondJump ? _cost[1] : SubCost(0); }
 
     FixJump* nextJumpOfPartFunction() const
-	{ return _nextJumpOfPartFunction; }
+    { return _nextJumpOfPartFunction; }
 
- private:
+private:
     bool _isCondJump;
-    SubCost*  _cost;
+    SubCost* _cost;
     unsigned int _line, _targetLine;
     Addr _addr, _targetAddr;
     

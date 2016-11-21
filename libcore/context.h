@@ -36,20 +36,20 @@ public:
     // RTTI for trace item classes, using type() method
     enum Type {
         InvalidType = 0, UnknownType,
-	PartInstr, Instr,
-	PartLine, Line,
-	PartInstrJump, InstrJump,
-	PartLineJump, LineJump,
-	PartInstrCall, InstrCall,
-	PartLineCall, LineCall,
-	PartCall, Call,
-	PartLineRegion, LineRegion,
-	PartFunction, FunctionSource, Function, FunctionCycle,
-	PartClass, Class, ClassCycle,
-	PartFile, File, FileCycle,
-	PartObject, Object, ObjectCycle,
-	Part, Data,
-	MaxType };
+        PartInstr, Instr,
+        PartLine, Line,
+        PartInstrJump, InstrJump,
+        PartLineJump, LineJump,
+        PartInstrCall, InstrCall,
+        PartLineCall, LineCall,
+        PartCall, Call,
+        PartLineRegion, LineRegion,
+        PartFunction, FunctionSource, Function, FunctionCycle,
+        PartClass, Class, ClassCycle,
+        PartFile, File, FileCycle,
+        PartObject, Object, ObjectCycle,
+        Part, Data,
+        MaxType };
 
     explicit ProfileContext(ProfileContext::Type = InvalidType);
 

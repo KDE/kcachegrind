@@ -33,7 +33,7 @@ struct SpaceChunk;
  */
 class FixPool
 {
- public:
+public:
     FixPool();
     ~FixPool();
 
@@ -55,7 +55,7 @@ class FixPool
      */
     bool allocateReserved(unsigned int size);
 
- private:
+private:
     /* Checks that there is enough space in the last chunk.
      * Returns false if this is not possible.
      */
@@ -76,7 +76,7 @@ class FixPool
  */
 class DynPool
 {
- public:
+public:
     DynPool();
     ~DynPool();
 
@@ -94,7 +94,7 @@ class DynPool
      */
     void free(char** ptr);
 
- private:
+private:
     /* Checks that there is enough space. If not,
      * it compactifies, possibly moving objects.
      */

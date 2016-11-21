@@ -49,37 +49,37 @@
 // Some predefined event types...
 QStringList GlobalConfig::knownTypes()
 {
-  QStringList l;
+    QStringList l;
 
-  l << QStringLiteral("Ir")   << QStringLiteral("Dr")   << QStringLiteral("Dw")
-    << QStringLiteral("I1mr") << QStringLiteral("D1mr") << QStringLiteral("D1mw") << QStringLiteral("L1m");
-  // Valgrind < 3.6.0
-  l << QStringLiteral("I2mr") << QStringLiteral("D2mr") << QStringLiteral("D2mw") << QStringLiteral("L2m");
-  // Valgrind 3.6.0: L2 events changed to to LL (last level) events
-  l << QStringLiteral("ILmr") << QStringLiteral("DLmr") << QStringLiteral("DLmw") << QStringLiteral("LLm");
+    l << QStringLiteral("Ir")   << QStringLiteral("Dr")   << QStringLiteral("Dw")
+      << QStringLiteral("I1mr") << QStringLiteral("D1mr") << QStringLiteral("D1mw") << QStringLiteral("L1m");
+    // Valgrind < 3.6.0
+    l << QStringLiteral("I2mr") << QStringLiteral("D2mr") << QStringLiteral("D2mw") << QStringLiteral("L2m");
+    // Valgrind 3.6.0: L2 events changed to to LL (last level) events
+    l << QStringLiteral("ILmr") << QStringLiteral("DLmr") << QStringLiteral("DLmw") << QStringLiteral("LLm");
 
-  // branch simulation
-  l << QStringLiteral("Bi") << QStringLiteral("Bim") << QStringLiteral("Bc") << QStringLiteral("Bcm") << QStringLiteral("Bm");
+    // branch simulation
+    l << QStringLiteral("Bi") << QStringLiteral("Bim") << QStringLiteral("Bc") << QStringLiteral("Bcm") << QStringLiteral("Bm");
 
-  // global bus events (e.g. CAS)
-  l << QStringLiteral("Ge");
+    // global bus events (e.g. CAS)
+    l << QStringLiteral("Ge");
 
-  l << QStringLiteral("Smp")  << QStringLiteral("Sys")  << QStringLiteral("User") << QStringLiteral("CEst");
+    l << QStringLiteral("Smp")  << QStringLiteral("Sys")  << QStringLiteral("User") << QStringLiteral("CEst");
 
-  return l;
+    return l;
 }
 
 
 QString GlobalConfig::knownFormula(const QString& name)
 {
-  if (name == QLatin1String("L1m")) return QStringLiteral("I1mr + D1mr + D1mw");
-  if (name == QLatin1String("L2m")) return QStringLiteral("I2mr + D2mr + D2mw");
-  if (name == QLatin1String("LLm")) return QStringLiteral("ILmr + DLmr + DLmw");
-  if (name == QLatin1String("Bm"))  return QStringLiteral("Bim + Bcm");
-  if (name == QLatin1String("CEst"))
-      return QStringLiteral("Ir + 10 Bm + 10 L1m + 20 Ge + 100 L2m + 100 LLm");
+    if (name == QLatin1String("L1m")) return QStringLiteral("I1mr + D1mr + D1mw");
+    if (name == QLatin1String("L2m")) return QStringLiteral("I2mr + D2mr + D2mw");
+    if (name == QLatin1String("LLm")) return QStringLiteral("ILmr + DLmr + DLmw");
+    if (name == QLatin1String("Bm"))  return QStringLiteral("Bim + Bcm");
+    if (name == QLatin1String("CEst"))
+        return QStringLiteral("Ir + 10 Bm + 10 L1m + 20 Ge + 100 L2m + 100 LLm");
 
-  return QString();
+    return QString();
 }
 
 QString GlobalConfig::knownLongName(const QString& name)
@@ -118,24 +118,24 @@ GlobalConfig* GlobalConfig::_config = 0;
 
 GlobalConfig::GlobalConfig()
 {
-  _config = 0;
+    _config = 0;
 
-  // general presentation options
-  _showPercentage   = DEFAULT_SHOWPERCENTAGE;
-  _showExpanded     = DEFAULT_SHOWEXPANDED;
-  _showCycles       = DEFAULT_SHOWCYCLES;
-  _cycleCut         = DEFAULT_CYCLECUT;
-  _percentPrecision = DEFAULT_PERCENTPRECISION;
-  _hideTemplates    = DEFAULT_HIDETEMPLATES;
+    // general presentation options
+    _showPercentage   = DEFAULT_SHOWPERCENTAGE;
+    _showExpanded     = DEFAULT_SHOWEXPANDED;
+    _showCycles       = DEFAULT_SHOWCYCLES;
+    _cycleCut         = DEFAULT_CYCLECUT;
+    _percentPrecision = DEFAULT_PERCENTPRECISION;
+    _hideTemplates    = DEFAULT_HIDETEMPLATES;
 
-  // max symbol count/length in tooltip/popup
-  _maxSymbolLength  = DEFAULT_MAXSYMBOLLENGTH;
-  _maxSymbolCount   = DEFAULT_MAXSYMBOLCOUNT;
-  _maxListCount     = DEFAULT_MAXLISTCOUNT;
+    // max symbol count/length in tooltip/popup
+    _maxSymbolLength  = DEFAULT_MAXSYMBOLLENGTH;
+    _maxSymbolCount   = DEFAULT_MAXSYMBOLCOUNT;
+    _maxListCount     = DEFAULT_MAXLISTCOUNT;
 
-  // annotation behaviour
-  _context          = DEFAULT_CONTEXT;
-  _noCostInside     = DEFAULT_NOCOSTINSIDE;
+    // annotation behaviour
+    _context          = DEFAULT_CONTEXT;
+    _noCostInside     = DEFAULT_NOCOSTINSIDE;
 }
 
 GlobalConfig::~GlobalConfig()
@@ -145,7 +145,7 @@ GlobalConfig::~GlobalConfig()
 GlobalConfig* GlobalConfig::config()
 {
     if (_config == 0)
-	_config = new GlobalConfig();
+        _config = new GlobalConfig();
 
     return _config;
 }
@@ -159,12 +159,12 @@ void GlobalConfig::saveOptions()
     QHashIterator<QString,QStringList> it( _objectSourceDirs );
     int count = 1;
     while( it.hasNext() ) {
-	it.next();
-	sourceConfig->setValue( QStringLiteral("Object%1").arg(count),
-				it.key() );
-	sourceConfig->setValue( QStringLiteral("Dirs%1").arg(count),
-				it.value() );
-	count++;
+        it.next();
+        sourceConfig->setValue( QStringLiteral("Object%1").arg(count),
+                                it.key() );
+        sourceConfig->setValue( QStringLiteral("Dirs%1").arg(count),
+                                it.value() );
+        count++;
     }
     sourceConfig->setValue(QStringLiteral("Count"), count-1);
     delete sourceConfig;
@@ -172,25 +172,25 @@ void GlobalConfig::saveOptions()
     // general options
     ConfigGroup* generalConfig = ConfigStorage::group(QStringLiteral("GeneralSettings"));
     generalConfig->setValue(QStringLiteral("ShowPercentage"), _showPercentage,
-			    DEFAULT_SHOWPERCENTAGE);
+                            DEFAULT_SHOWPERCENTAGE);
     generalConfig->setValue(QStringLiteral("ShowExpanded"), _showExpanded,
-			    DEFAULT_SHOWEXPANDED);
+                            DEFAULT_SHOWEXPANDED);
     generalConfig->setValue(QStringLiteral("ShowCycles"), _showCycles,
-			    DEFAULT_SHOWCYCLES);
+                            DEFAULT_SHOWCYCLES);
     generalConfig->setValue(QStringLiteral("CycleCut"), _cycleCut,
-			    DEFAULT_CYCLECUT);
+                            DEFAULT_CYCLECUT);
     generalConfig->setValue(QStringLiteral("PercentPrecision"), _percentPrecision,
-			    DEFAULT_PERCENTPRECISION);
+                            DEFAULT_PERCENTPRECISION);
     generalConfig->setValue(QStringLiteral("MaxSymbolLength"), _maxSymbolLength,
-			    DEFAULT_MAXSYMBOLLENGTH);
+                            DEFAULT_MAXSYMBOLLENGTH);
     generalConfig->setValue(QStringLiteral("MaxSymbolCount"), _maxSymbolCount,
-			    DEFAULT_MAXSYMBOLCOUNT);
+                            DEFAULT_MAXSYMBOLCOUNT);
     generalConfig->setValue(QStringLiteral("MaxListCount"), _maxListCount,
-			    DEFAULT_MAXLISTCOUNT);
+                            DEFAULT_MAXLISTCOUNT);
     generalConfig->setValue(QStringLiteral("Context"), _context,
-			    DEFAULT_CONTEXT);
+                            DEFAULT_CONTEXT);
     generalConfig->setValue(QStringLiteral("NoCostInside"), _noCostInside,
-			    DEFAULT_NOCOSTINSIDE);
+                            DEFAULT_NOCOSTINSIDE);
     generalConfig->setValue(QStringLiteral("HideTemplates"), _hideTemplates,
                             DEFAULT_HIDETEMPLATES);
     delete generalConfig;
@@ -229,41 +229,41 @@ void GlobalConfig::readOptions()
     count = sourceConfig->value(QStringLiteral("Count"), 0).toInt();
     _objectSourceDirs.clear();
     for(i=1; i<=count; ++i) {
-	QString n = sourceConfig->value(QStringLiteral("Object%1").arg(i),
-					QString()).toString();
-	dirs = sourceConfig->value(QStringLiteral("Dirs%1").arg(i),
-				   QStringList()).toStringList();
+        QString n = sourceConfig->value(QStringLiteral("Object%1").arg(i),
+                                        QString()).toString();
+        dirs = sourceConfig->value(QStringLiteral("Dirs%1").arg(i),
+                                   QStringList()).toStringList();
 
-	if (n.isEmpty() || (dirs.count()==0)) continue;
+        if (n.isEmpty() || (dirs.count()==0)) continue;
 
-	_objectSourceDirs.insert(n, dirs);
+        _objectSourceDirs.insert(n, dirs);
     }
     delete sourceConfig;
 
     // general options
     ConfigGroup* generalConfig = ConfigStorage::group(QStringLiteral("GeneralSettings"));
     _showPercentage   = generalConfig->value(QStringLiteral("ShowPercentage"),
-					     DEFAULT_SHOWPERCENTAGE).toBool();
+                                             DEFAULT_SHOWPERCENTAGE).toBool();
     _showExpanded     = generalConfig->value(QStringLiteral("ShowExpanded"),
-					     DEFAULT_SHOWEXPANDED).toBool();
+                                             DEFAULT_SHOWEXPANDED).toBool();
     _showCycles       = generalConfig->value(QStringLiteral("ShowCycles"),
-					     DEFAULT_SHOWCYCLES).toBool();
+                                             DEFAULT_SHOWCYCLES).toBool();
     _cycleCut         = generalConfig->value(QStringLiteral("CycleCut"),
-					     DEFAULT_CYCLECUT).toDouble();
+                                             DEFAULT_CYCLECUT).toDouble();
     _percentPrecision = generalConfig->value(QStringLiteral("PercentPrecision"),
-					     DEFAULT_PERCENTPRECISION).toInt();
+                                             DEFAULT_PERCENTPRECISION).toInt();
     _maxSymbolLength  = generalConfig->value(QStringLiteral("MaxSymbolLength"),
-					     DEFAULT_MAXSYMBOLLENGTH).toInt();
+                                             DEFAULT_MAXSYMBOLLENGTH).toInt();
     _maxSymbolCount   = generalConfig->value(QStringLiteral("MaxSymbolCount"),
-					     DEFAULT_MAXSYMBOLCOUNT).toInt();
+                                             DEFAULT_MAXSYMBOLCOUNT).toInt();
     _maxListCount     = generalConfig->value(QStringLiteral("MaxListCount"),
-					     DEFAULT_MAXLISTCOUNT).toInt();
+                                             DEFAULT_MAXLISTCOUNT).toInt();
     _context          = generalConfig->value(QStringLiteral("Context"),
-					     DEFAULT_CONTEXT).toInt();
+                                             DEFAULT_CONTEXT).toInt();
     _noCostInside     = generalConfig->value(QStringLiteral("NoCostInside"),
-					     DEFAULT_NOCOSTINSIDE).toInt();
+                                             DEFAULT_NOCOSTINSIDE).toInt();
     _hideTemplates    = generalConfig->value(QStringLiteral("HideTemplates"),
-		                             DEFAULT_HIDETEMPLATES).toBool();
+                                             DEFAULT_HIDETEMPLATES).toBool();
     delete generalConfig;
 
     // event types
@@ -272,16 +272,16 @@ void GlobalConfig::readOptions()
     int etCount = etConfig->value(QStringLiteral("Count"), 0).toInt();
 
     for (int i=1;i<=etCount;i++) {
-	QString n = etConfig->value(QStringLiteral("Name%1").arg(i),
-				    QString()).toString();
-	QString l = etConfig->value(QStringLiteral("Longname%1").arg(i),
-				    QString()).toString();
-	if (l.isEmpty()) l = knownLongName(n);
-	QString f = etConfig->value(QStringLiteral("Formula%1").arg(i),
-				    QString()).toString();
-	if (f.isEmpty()) f = knownFormula(n);
+        QString n = etConfig->value(QStringLiteral("Name%1").arg(i),
+                                    QString()).toString();
+        QString l = etConfig->value(QStringLiteral("Longname%1").arg(i),
+                                    QString()).toString();
+        if (l.isEmpty()) l = knownLongName(n);
+        QString f = etConfig->value(QStringLiteral("Formula%1").arg(i),
+                                    QString()).toString();
+        if (f.isEmpty()) f = knownFormula(n);
 
-	EventType::add(new EventType(n, l, f));
+        EventType::add(new EventType(n, l, f));
     }
 
     // this does only add yet non-existing types
@@ -296,7 +296,7 @@ void GlobalConfig::addDefaultTypes()
     EventType* ct;
     QStringList l = knownTypes();
     for ( QStringList::const_iterator it = l.constBegin();
-	  it != l.constEnd(); ++it ) {
+          it != l.constEnd(); ++it ) {
         longName = knownLongName(*it);
         formula  = knownFormula(*it);
         ct = new EventType(*it, longName, formula);
@@ -310,119 +310,119 @@ void GlobalConfig::addDefaultTypes()
  */
 QStringList GlobalConfig::sourceDirs(TraceData* data, TraceObject* o)
 {
-  QStringList l = config()->_generalSourceDirs, ol, ol2;
-  TraceObjectMap::Iterator oit;
-  for ( oit = data->objectMap().begin();
-        oit != data->objectMap().end(); ++oit ) {
-    ol = config()->_objectSourceDirs[(*oit).name()];
-    if (&(*oit) == o) {
-      ol2 = ol;
-      continue;
+    QStringList l = config()->_generalSourceDirs, ol, ol2;
+    TraceObjectMap::Iterator oit;
+    for ( oit = data->objectMap().begin();
+          oit != data->objectMap().end(); ++oit ) {
+        ol = config()->_objectSourceDirs[(*oit).name()];
+        if (&(*oit) == o) {
+            ol2 = ol;
+            continue;
+        }
+
+        for(int i=0;i<ol.count();i++)
+            l.prepend( ol[i] );
     }
+    for(int i=0;i<ol2.count();i++)
+        l.prepend( ol2[i] );
 
-    for(int i=0;i<ol.count();i++)
-      l.prepend( ol[i] );
-  }
-  for(int i=0;i<ol2.count();i++)
-    l.prepend( ol2[i] );
+    if (0) qDebug() << "GlobalConfig::sourceDirs: " << l.join(QStringLiteral(":"));
 
-  if (0) qDebug() << "GlobalConfig::sourceDirs: " << l.join(QStringLiteral(":"));
-
-  return l;
+    return l;
 }
 
 bool GlobalConfig::showPercentage()
 {
-  return config()->_showPercentage;
+    return config()->_showPercentage;
 }
 
 bool GlobalConfig::showExpanded()
 {
-  return config()->_showExpanded;
+    return config()->_showExpanded;
 }
 
 bool GlobalConfig::showCycles()
 {
-  return config()->_showCycles;
+    return config()->_showCycles;
 }
 
 bool GlobalConfig::hideTemplates()
 {
-  return config()->_hideTemplates;
+    return config()->_hideTemplates;
 }
 
 void GlobalConfig::setShowPercentage(bool s)
 {
-  GlobalConfig* c = config();
-  if (c->_showPercentage == s) return;
+    GlobalConfig* c = config();
+    if (c->_showPercentage == s) return;
 
-  c->_showPercentage = s;
+    c->_showPercentage = s;
 }
 
 void GlobalConfig::setShowExpanded(bool s)
 {
-  GlobalConfig* c = config();
-  if (c->_showExpanded == s) return;
+    GlobalConfig* c = config();
+    if (c->_showExpanded == s) return;
 
-  c->_showExpanded = s;
+    c->_showExpanded = s;
 }
 
 void GlobalConfig::setShowCycles(bool s)
 {
-  GlobalConfig* c = config();
-  if (c->_showCycles == s) return;
+    GlobalConfig* c = config();
+    if (c->_showCycles == s) return;
 
-  c->_showCycles = s;
+    c->_showCycles = s;
 }
 
 void GlobalConfig::setHideTemplates(bool s)
 {
-  GlobalConfig* c = config();
-  if (c->_hideTemplates == s) return;
+    GlobalConfig* c = config();
+    if (c->_hideTemplates == s) return;
 
-  c->_hideTemplates = s;
+    c->_hideTemplates = s;
 }
 
 double GlobalConfig::cycleCut()
 {
-  return config()->_cycleCut;
+    return config()->_cycleCut;
 }
 
 int GlobalConfig::percentPrecision()
 {
-  return config()->_percentPrecision;
+    return config()->_percentPrecision;
 }
 
 int GlobalConfig::maxSymbolLength()
 {
-  return config()->_maxSymbolLength;
+    return config()->_maxSymbolLength;
 }
 
 QString GlobalConfig::shortenSymbol(const QString& s)
 {
-  if(s.length() > config()->_maxSymbolLength)
-    return s.left(config()->_maxSymbolLength) + QStringLiteral("...");
-  return s;
+    if(s.length() > config()->_maxSymbolLength)
+        return s.left(config()->_maxSymbolLength) + QStringLiteral("...");
+    return s;
 }
 
 int GlobalConfig::maxListCount()
 {
-  return config()->_maxListCount;
+    return config()->_maxListCount;
 }
 
 int GlobalConfig::maxSymbolCount()
 {
-  return config()->_maxSymbolCount;
+    return config()->_maxSymbolCount;
 }
 
 int GlobalConfig::context()
 {
-  return config()->_context;
+    return config()->_context;
 }
 
 int GlobalConfig::noCostInside()
 {
-  return config()->_noCostInside;
+    return config()->_noCostInside;
 }
 
 void GlobalConfig::setPercentPrecision(int v)
@@ -463,9 +463,9 @@ const QStringList& GlobalConfig::generalSourceDirs()
 QStringList GlobalConfig::objectSourceDirs(QString obj)
 {
     if (_objectSourceDirs.contains(obj))
-	return _objectSourceDirs[obj];
+        return _objectSourceDirs[obj];
     else
-	return QStringList();
+        return QStringList();
 }
 
 void GlobalConfig::setGeneralSourceDirs(QStringList dirs)
@@ -476,9 +476,9 @@ void GlobalConfig::setGeneralSourceDirs(QStringList dirs)
 void GlobalConfig::setObjectSourceDirs(QString obj, QStringList dirs)
 {
     if (dirs.count() == 0)
-	_objectSourceDirs.remove(obj);
+        _objectSourceDirs.remove(obj);
     else
-	_objectSourceDirs.insert(obj, dirs);
+        _objectSourceDirs.insert(obj, dirs);
 }
 
 void GlobalConfig::clearObjectSourceDirs()

@@ -23,10 +23,10 @@
 // FixCost
 
 FixCost::FixCost(TracePart* part, FixPool* pool,
-		 TraceFunctionSource* functionSource,
-		 PositionSpec& pos,
+                 TraceFunctionSource* functionSource,
+                 PositionSpec& pos,
                  TracePartFunction* partFunction,
-		 FixString& s)
+                 FixString& s)
 {
     int maxCount = part->eventTypeMapping()->count();
 
@@ -38,16 +38,16 @@ FixCost::FixCost(TracePart* part, FixPool* pool,
     s.stripSpaces();
     int i = 0;
     while(i<maxCount) {
-	if (!s.stripUInt64(_cost[i])) break;
-	i++;
+        if (!s.stripUInt64(_cost[i])) break;
+        i++;
     }
     _count = i;
 
     if (!pool->allocateReserved(sizeof(SubCost) * _count))
-	_count = 0;
+        _count = 0;
 
     _nextCostOfPartFunction = partFunction ?
-	partFunction->setFirstFixCost(this) : 0;
+                                  partFunction->setFirstFixCost(this) : 0;
 }
 
 void* FixCost::operator new(size_t size, FixPool* pool)
@@ -73,16 +73,16 @@ void FixCost::addTo(ProfileCostArray* c)
 // FixCallCost
 
 FixCallCost::FixCallCost(TracePart* part, FixPool* pool,
-			 TraceFunctionSource* functionSource,
+                         TraceFunctionSource* functionSource,
                          unsigned int line, Addr addr,
                          TracePartCall* partCall,
                          SubCost callCount, FixString& s)
 {
-  if (0) qDebug("Got FixCallCost (addr 0x%s, line %d): calls %s",
-                qPrintable(addr.toString()), line,
-                qPrintable(callCount.pretty()));
+    if (0) qDebug("Got FixCallCost (addr 0x%s, line %d): calls %s",
+                  qPrintable(addr.toString()), line,
+                  qPrintable(callCount.pretty()));
 
-  int maxCount = part->eventTypeMapping()->count();
+    int maxCount = part->eventTypeMapping()->count();
 
     _part = part;
     _functionSource = functionSource;
@@ -93,15 +93,15 @@ FixCallCost::FixCallCost(TracePart* part, FixPool* pool,
     s.stripSpaces();
     int i = 0;
     while(i<maxCount) {
-	if (!s.stripUInt64(_cost[i])) break;
-	i++;
+        if (!s.stripUInt64(_cost[i])) break;
+        i++;
     }
     _count = i;
 
     if (!pool->allocateReserved(sizeof(SubCost) * (_count+1) ))
-      _count = 0;
+        _count = 0;
     else
-      _cost[_count] = callCount;
+        _cost[_count] = callCount;
 
     _nextCostOfPartCall = partCall ? partCall->setFirstFixCallCost(this) : 0;
 }
@@ -118,8 +118,8 @@ void FixCallCost::addTo(TraceCallCost* c)
     int i, realIndex;
 
     for(i=0; i<_count; i++) {
-	realIndex = sm->realIndex(i);
-	c->addCost(realIndex, _cost[i]);
+        realIndex = sm->realIndex(i);
+        c->addCost(realIndex, _cost[i]);
     }
     c->addCallCount(_cost[_count]);
 
@@ -135,8 +135,8 @@ void FixCallCost::setMax(ProfileCostArray* c)
     int i, realIndex;
 
     for(i=0; i<_count; i++) {
-	realIndex = sm->realIndex(i);
-	c->maxCost(realIndex, _cost[i]);
+        realIndex = sm->realIndex(i);
+        c->maxCost(realIndex, _cost[i]);
     }
 }
 
@@ -144,14 +144,14 @@ void FixCallCost::setMax(ProfileCostArray* c)
 // FixJump
 
 FixJump::FixJump(TracePart* part, FixPool* pool,
-		 unsigned int line, Addr addr,
-		 TracePartFunction* partFunction,
-		 TraceFunctionSource* source,
-		 unsigned int targetLine, Addr targetAddr,
-		 TraceFunction* targetFunction,
-		 TraceFunctionSource* targetSource,
-		 bool isCondJump,
-		 SubCost executed, SubCost followed)
+                 unsigned int line, Addr addr,
+                 TracePartFunction* partFunction,
+                 TraceFunctionSource* source,
+                 unsigned int targetLine, Addr targetAddr,
+                 TraceFunction* targetFunction,
+                 TraceFunctionSource* targetSource,
+                 bool isCondJump,
+                 SubCost executed, SubCost followed)
 {
     _part   = part;
     _source = source;
@@ -171,7 +171,7 @@ FixJump::FixJump(TracePart* part, FixPool* pool,
     if (isCondJump) _cost[1] = followed;
 
     _nextJumpOfPartFunction = partFunction ?
-	partFunction->setFirstFixJump(this) : 0;
+                                  partFunction->setFirstFixJump(this) : 0;
 }
 
 void* FixJump::operator new(size_t size, FixPool* pool)
@@ -182,6 +182,6 @@ void* FixJump::operator new(size_t size, FixPool* pool)
 void FixJump::addTo(TraceJumpCost* jc)
 {
     jc->addExecutedCount(_cost[0]);
-    if (_isCondJump) 
-	jc->addFollowedCount(_cost[1]);
+    if (_isCondJump)
+        jc->addFollowedCount(_cost[1]);
 }

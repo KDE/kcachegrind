@@ -31,7 +31,7 @@ typedef unsigned long long uint64;
  */
 class SubCost
 {
- public:
+public:
     SubCost() { v=0; }
     // no "explicit": we allow implicit conversions
     SubCost(uint64 i) { v=i; }
@@ -79,7 +79,7 @@ typedef QList<ProfileCostArray*> TraceCostList;
 
 class HighestCostList
 {
- public:
+public:
     HighestCostList();
 
     void clear(int maxSize);
@@ -89,9 +89,9 @@ class HighestCostList
     int maxSize() { return _maxSize; }
     bool hasMore() { return _count > _maxSize; }
     ProfileCostArray* operator[] (int i)
-	{ return (i>=0 && i<_count && i<_maxSize) ? _item[i] : 0; }
+    { return (i>=0 && i<_count && i<_maxSize) ? _item[i] : 0; }
 
- private:
+private:
     TraceCostList _list;
     int _maxSize, _count;
     EventType* _costType;

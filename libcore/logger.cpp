@@ -50,20 +50,20 @@ void Logger::loadProgress(int progress)
 void Logger::loadWarning(int line, const QString& msg)
 {
     qDebug() << "Warning in " << _filename << ", line" << line
-	     << ":" << msg;
+             << ":" << msg;
 }
 
 void Logger::loadError(int line, const QString& msg)
 {
     qDebug() << "Error in " << _filename << ", line" << line
-	     << ":" << msg;
+             << ":" << msg;
 }
 
 void Logger::loadFinished(const QString& msg)
 {
     _timer.stop();
     if (msg.isEmpty())
-	qDebug() << "File" << _filename << "loaded.";
+        qDebug() << "File" << _filename << "loaded.";
     else
-	qDebug() << "Error loading file" << _filename << ":" << qPrintable(msg);
+        qDebug() << "Error loading file" << _filename << ":" << qPrintable(msg);
 }

@@ -28,7 +28,7 @@ QList<int> toIntList(QStringList l)
     QList<int> iList;
 
     foreach(const QString& s, l)
-	iList << s.toInt();
+        iList << s.toInt();
 
     return iList;
 }
@@ -38,7 +38,7 @@ QStringList toStringList(QList<int> l)
     QStringList sList;
 
     foreach(int i, l)
-	sList << QString::number(i);
+        sList << QString::number(i);
 
     return sList;
 }
@@ -78,7 +78,7 @@ ConfigStorage::~ConfigStorage()
 {}
 
 ConfigGroup* ConfigStorage::group(const QString& group,
-				  const QString& optSuffix)
+                                  const QString& optSuffix)
 {
     Q_ASSERT(_storage != 0);
 

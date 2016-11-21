@@ -37,7 +37,7 @@ typedef long long int64;
  */
 class FixString {
 
- public:
+public:
     // constructor for an invalid string
     FixString() { _len = 0; _str = 0; }
 
@@ -55,7 +55,7 @@ class FixString {
 
     // sets <c> to first character and returns true if length >0
     bool first(char& c)
-	{ if (_len==0) return false; c=_str[0]; return true; }
+    { if (_len==0) return false; c=_str[0]; return true; }
 
     void set(const char* s, int l) { _str=s; _len=l; }
     bool stripFirst(char&);
@@ -86,9 +86,9 @@ class FixString {
     bool stripInt64(int64&, bool stripSpaces = true);
 
     operator QString() const
-      { return QString::fromLocal8Bit(_str,_len); }
+    { return QString::fromLocal8Bit(_str,_len); }
 
- private:
+private:
     const char* _str;
     int _len;
 };
@@ -99,7 +99,7 @@ class FixString {
  */
 class FixFile {
 
- public:
+public:
     FixFile(QIODevice*, const QString&);
     ~FixFile();
 
@@ -113,7 +113,7 @@ class FixFile {
     bool setCurrent(unsigned pos);
     void rewind() { setCurrent(0); }
 
- private:
+private:
     char *_base, *_current;
     QByteArray _data;
     unsigned _len, _currentLeft;
@@ -130,8 +130,8 @@ class FixFile {
 template<class type>
 class AppendList {
 
- public:
-  AppendList();
+public:
+    AppendList();
     ~AppendList() { clear(); }
 
     void setAutoDelete(bool);
@@ -145,14 +145,14 @@ class AppendList {
     type* first();
     type* next();
 
- private:
+private:
     static const int firstLen = 8;
     static const int maxLen = 256;
 
     struct AppendListChunk {
-	int size;
-	struct AppendListChunk* next;
-	type* data[1];
+        int size;
+        struct AppendListChunk* next;
+        type* data[1];
     };
 
     struct AppendListChunk *_next, *_current, *_last;

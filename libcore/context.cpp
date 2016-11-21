@@ -30,7 +30,7 @@ QString* ProfileContext::_i18nTypeName = 0;
 
 ProfileContext::ProfileContext(ProfileContext::Type t)
 {
-	_type = t;
+    _type = t;
 }
 
 ProfileContext* ProfileContext::context(ProfileContext::Type t)
@@ -45,56 +45,56 @@ ProfileContext* ProfileContext::context(ProfileContext::Type t)
 
 void ProfileContext::cleanup()
 {
-	if (_typeName) {
-		delete [] _typeName;
-		_typeName = 0;
-	}
-	if (_i18nTypeName) {
-		delete [] _i18nTypeName;
-		_i18nTypeName = 0;
-	}
-	if (_contexts) {
-	    delete [] _contexts;
-	    _contexts = 0;
-	}
+    if (_typeName) {
+        delete [] _typeName;
+        _typeName = 0;
+    }
+    if (_i18nTypeName) {
+        delete [] _i18nTypeName;
+        _i18nTypeName = 0;
+    }
+    if (_contexts) {
+        delete [] _contexts;
+        _contexts = 0;
+    }
 }
 
 QString ProfileContext::typeName(ProfileContext::Type t)
 {
     if (!_typeName) {
-	_typeName = new QString [MaxType+1];
-	QString* strs = _typeName;
-	for(int i=0;i<=MaxType;i++)
-	    strs[i] = QStringLiteral("?");
+        _typeName = new QString [MaxType+1];
+        QString* strs = _typeName;
+        for(int i=0;i<=MaxType;i++)
+            strs[i] = QStringLiteral("?");
 
-	strs[InvalidType] = QT_TR_NOOP("Invalid Context");
-	strs[UnknownType] = QT_TR_NOOP("Unknown Context");
-	strs[PartLine] = QT_TR_NOOP("Part Source Line");
-	strs[Line] = QT_TR_NOOP("Source Line");
-	strs[PartLineCall] = QT_TR_NOOP("Part Line Call");
-	strs[LineCall] = QT_TR_NOOP("Line Call");
-	strs[PartLineJump] = QT_TR_NOOP("Part Jump");
-	strs[LineJump] = QT_TR_NOOP("Jump");
-	strs[PartInstr] = QT_TR_NOOP("Part Instruction");
-	strs[Instr] = QT_TR_NOOP("Instruction");
-	strs[PartInstrJump] = QT_TR_NOOP("Part Instruction Jump");
-	strs[InstrJump] = QT_TR_NOOP("Instruction Jump");
-	strs[PartInstrCall] = QT_TR_NOOP("Part Instruction Call");
-	strs[InstrCall] = QT_TR_NOOP("Instruction Call");
-	strs[PartCall] = QT_TR_NOOP("Part Call");
-	strs[Call] = QT_TR_NOOP("Call");
-	strs[PartFunction] = QT_TR_NOOP("Part Function");
-	strs[FunctionSource] = QT_TR_NOOP("Function Source File");
-	strs[Function] = QT_TR_NOOP("Function");
-	strs[FunctionCycle] = QT_TR_NOOP("Function Cycle");
-	strs[PartClass] = QT_TR_NOOP("Part Class");
-	strs[Class] = QT_TR_NOOP("Class");
-	strs[PartFile] = QT_TR_NOOP("Part Source File");
-	strs[File] = QT_TR_NOOP("Source File");
-	strs[PartObject] = QT_TR_NOOP("Part ELF Object");
-	strs[Object] = QT_TR_NOOP("ELF Object");
-	strs[Part] = QT_TR_NOOP("Profile Part");
-	strs[Data] = QT_TR_NOOP("Program Trace");
+        strs[InvalidType] = QT_TR_NOOP("Invalid Context");
+        strs[UnknownType] = QT_TR_NOOP("Unknown Context");
+        strs[PartLine] = QT_TR_NOOP("Part Source Line");
+        strs[Line] = QT_TR_NOOP("Source Line");
+        strs[PartLineCall] = QT_TR_NOOP("Part Line Call");
+        strs[LineCall] = QT_TR_NOOP("Line Call");
+        strs[PartLineJump] = QT_TR_NOOP("Part Jump");
+        strs[LineJump] = QT_TR_NOOP("Jump");
+        strs[PartInstr] = QT_TR_NOOP("Part Instruction");
+        strs[Instr] = QT_TR_NOOP("Instruction");
+        strs[PartInstrJump] = QT_TR_NOOP("Part Instruction Jump");
+        strs[InstrJump] = QT_TR_NOOP("Instruction Jump");
+        strs[PartInstrCall] = QT_TR_NOOP("Part Instruction Call");
+        strs[InstrCall] = QT_TR_NOOP("Instruction Call");
+        strs[PartCall] = QT_TR_NOOP("Part Call");
+        strs[Call] = QT_TR_NOOP("Call");
+        strs[PartFunction] = QT_TR_NOOP("Part Function");
+        strs[FunctionSource] = QT_TR_NOOP("Function Source File");
+        strs[Function] = QT_TR_NOOP("Function");
+        strs[FunctionCycle] = QT_TR_NOOP("Function Cycle");
+        strs[PartClass] = QT_TR_NOOP("Part Class");
+        strs[Class] = QT_TR_NOOP("Class");
+        strs[PartFile] = QT_TR_NOOP("Part Source File");
+        strs[File] = QT_TR_NOOP("Source File");
+        strs[PartObject] = QT_TR_NOOP("Part ELF Object");
+        strs[Object] = QT_TR_NOOP("ELF Object");
+        strs[Part] = QT_TR_NOOP("Profile Part");
+        strs[Data] = QT_TR_NOOP("Program Trace");
     }
     if (t<0 || t> MaxType) t = MaxType;
     return _typeName[t];
@@ -107,9 +107,9 @@ ProfileContext::Type ProfileContext::type(const QString& s)
 
     Type type;
     for (int i=0; i<MaxType;i++) {
-	type = (Type) i;
-	if (typeName(type) == s)
-	    return type;
+        type = (Type) i;
+        if (typeName(type) == s)
+            return type;
     }
     return UnknownType;
 }
@@ -118,9 +118,9 @@ ProfileContext::Type ProfileContext::type(const QString& s)
 QString ProfileContext::i18nTypeName(Type t)
 {
     if (!_i18nTypeName) {
-	_i18nTypeName = new QString [MaxType+1];
-	for(int i=0;i<=MaxType;i++)
-	    _i18nTypeName[i] = QObject::tr(typeName((Type)i).toUtf8());
+        _i18nTypeName = new QString [MaxType+1];
+        for(int i=0;i<=MaxType;i++)
+            _i18nTypeName[i] = QObject::tr(typeName((Type)i).toUtf8());
     }
     if (t<0 || t> MaxType) t = MaxType;
     return _i18nTypeName[t];
@@ -133,9 +133,9 @@ ProfileContext::Type ProfileContext::i18nType(const QString& s)
 
     Type type;
     for (int i=0; i<MaxType;i++) {
-	type = (Type) i;
-	if (i18nTypeName(type) == s)
-	    return type;
+        type = (Type) i;
+        if (i18nTypeName(type) == s)
+            return type;
     }
     return UnknownType;
 }

@@ -41,14 +41,14 @@ public:
 
     // when value is defaultValue, any previous stored value is removed
     virtual void setValue(const QString& key, const QVariant& value,
-			  const QVariant& defaultValue = QVariant());
+                          const QVariant& defaultValue = QVariant());
     virtual QVariant value(const QString & key,
-			   const QVariant& defaultValue) const;
+                           const QVariant& defaultValue) const;
 
     // the template version is needed for GUI Qt types
     template<typename T>
     inline T value(const QString & key,
-		   const QVariant & defaultValue = QVariant()) const
+                   const QVariant & defaultValue = QVariant()) const
     { return qvariant_cast<T>( value(key, defaultValue) ); }
 
 protected:
@@ -70,13 +70,13 @@ public:
     // group using the optional suffix, and then without.
     // the group gets readonly.
     static ConfigGroup* group(const QString& group,
-			      const QString& optSuffix = QString());
+                              const QString& optSuffix = QString());
     static void setStorage(ConfigStorage*);
     static void cleanup();
 
 protected:
     virtual ConfigGroup* getGroup(const QString& group,
-				  const QString& optSuffix);
+                                  const QString& optSuffix);
 
     static ConfigStorage* _storage;
 };
