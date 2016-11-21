@@ -31,7 +31,6 @@
  */
 class ProfileContext
 {
-    Q_OBJECT
 
 public:
     // RTTI for trace item classes, using type() method
