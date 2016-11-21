@@ -20,7 +20,7 @@ include(GenerateExportHeader)
 include(FeatureSummary)
 include(ECMAddAppIcon)
 
-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Widgets)
+find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Gui Widgets)
 
 find_package(KF5 REQUIRED
   Archive CoreAddons DocTools WidgetsAddons XmlGui I18n Config KIO
@@ -31,7 +31,7 @@ add_definitions(-DQT_STRICT_ITERATORS)
 endif()
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
 
-include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR})
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set( KCACHEGRIND_VERSION "0.8.0kde")
 

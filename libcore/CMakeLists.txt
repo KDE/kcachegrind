@@ -17,7 +17,10 @@ set(core_SRCS
    globalconfig.cpp )
 
 add_library(core STATIC ${core_SRCS})
-
+target_include_directories(core
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
+)
 target_link_libraries(core
     Qt5::Core
 )

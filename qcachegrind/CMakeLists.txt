@@ -1,5 +1,3 @@
-include_directories(../libcore ../libviews)
-
 set(qcachegrind_SRCS qcgmain.cpp qcgtoplevel.cpp qcgconfig.cpp
 		     configdialog.cpp configpage.cpp qtcolorbutton.cpp
 		     generalsettings.cpp sourcesettings.cpp colorsettings.cpp)

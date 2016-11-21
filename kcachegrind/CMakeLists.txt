@@ -1,5 +1,3 @@
-include_directories( ../libcore ../libviews )
-
 ########### next target ###############
 
 set(kcachegrind_SRCS

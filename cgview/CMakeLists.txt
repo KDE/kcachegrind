@@ -1,4 +1,3 @@
-include_directories(../libcore)
 add_executable(cgview main.cpp)
 
 target_link_libraries(cgview core Qt5::Core)
