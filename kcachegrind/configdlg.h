@@ -32,42 +32,42 @@ class ConfigColorSetting;
 class ConfigDlgBase : public QDialog, public Ui::ConfigDlgBase
 {
 public:
-  ConfigDlgBase( QWidget *parent ) : QDialog( parent ) {
-    setupUi( this );
-  }
+    ConfigDlgBase( QWidget *parent ) : QDialog( parent ) {
+        setupUi( this );
+    }
 };
 
 class ConfigDlg : public ConfigDlgBase
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  ConfigDlg(GlobalGUIConfig*, TraceData*,
-            QWidget* parent = 0);
-  ~ConfigDlg();
+    ConfigDlg(GlobalGUIConfig*, TraceData*,
+              QWidget* parent = 0);
+    ~ConfigDlg();
 
-  static bool configure(GlobalGUIConfig*, TraceData*, QWidget*);
+    static bool configure(GlobalGUIConfig*, TraceData*, QWidget*);
 
 protected slots:
-  void objectActivated(const QString &);
-  void objectCheckChanged(bool);
-  void objectColorChanged(const QColor &);
-  void classActivated(const QString &);
-  void classCheckChanged(bool);
-  void classColorChanged(const QColor &);
-  void fileActivated(const QString &);
-  void fileCheckChanged(bool);
-  void fileColorChanged(const QColor &);
-  void dirsItemChanged();
-  void dirsDeletePressed();
-  void dirsAddPressed();
+    void objectActivated(const QString &);
+    void objectCheckChanged(bool);
+    void objectColorChanged(const QColor &);
+    void classActivated(const QString &);
+    void classCheckChanged(bool);
+    void classColorChanged(const QColor &);
+    void fileActivated(const QString &);
+    void fileCheckChanged(bool);
+    void fileColorChanged(const QColor &);
+    void dirsItemChanged();
+    void dirsDeletePressed();
+    void dirsAddPressed();
 
 private:
-  QTreeWidgetItem *getSelectedDirItem();
-  GlobalGUIConfig* _config;
-  TraceData* _data;
+    QTreeWidgetItem *getSelectedDirItem();
+    GlobalGUIConfig* _config;
+    TraceData* _data;
 
-  ConfigColorSetting *_objectCS, *_classCS, *_fileCS;
+    ConfigColorSetting *_objectCS, *_classCS, *_fileCS;
 };
 
 #endif

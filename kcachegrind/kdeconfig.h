@@ -37,7 +37,7 @@ public:
     ~KDEConfigGroup();
 
     void setValue(const QString& key, const QVariant& value,
-		  const QVariant& defaultValue = QVariant());
+                  const QVariant& defaultValue = QVariant());
     QVariant value(const QString& key, const QVariant& defaultValue) const;
 
 private:
@@ -51,13 +51,13 @@ private:
 class KDEConfigStorage : public ConfigStorage
 {
 public:
-  KDEConfigStorage(KConfig*);
+    KDEConfigStorage(KConfig*);
 
 private:
-  ConfigGroup* getGroup(const QString& group,
-			const QString& optSuffix);
+    ConfigGroup* getGroup(const QString& group,
+                          const QString& optSuffix);
 
-  KConfig* _kconfig;
+    KConfig* _kconfig;
 };
 
 #endif
