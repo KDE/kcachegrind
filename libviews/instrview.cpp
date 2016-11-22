@@ -603,8 +603,8 @@ void InstrView::refresh()
         }
         if (it == itEnd) break;
     }
-    qSort(_lowList.begin(), _lowList.end(), instrJumpLowLessThan);
-    qSort(_highList.begin(), _highList.end(), instrJumpHighLessThan);
+    std::sort(_lowList.begin(), _lowList.end(), instrJumpLowLessThan);
+    std::sort(_highList.begin(), _highList.end(), instrJumpHighLessThan);
     _lowListIter = _lowList.begin(); // iterators to list start
     _highListIter = _highList.begin();
     _arrowLevels = 0;

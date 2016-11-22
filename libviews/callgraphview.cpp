@@ -152,8 +152,8 @@ CalleeGraphEdgeLessThan calleeGraphEdgeLessThan;
 
 void GraphNode::sortEdges()
 {
-    qSort(callers.begin(), callers.end(), callerGraphEdgeLessThan);
-    qSort(callees.begin(), callees.end(), calleeGraphEdgeLessThan);
+    std::sort(callers.begin(), callers.end(), callerGraphEdgeLessThan);
+    std::sort(callees.begin(), callees.end(), calleeGraphEdgeLessThan);
 }
 
 void GraphNode::addCallee(GraphEdge* e)

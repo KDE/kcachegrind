@@ -159,8 +159,8 @@ QModelIndex FunctionListModel::indexForFunction(TraceFunction *f, bool add)
         // find insertion point with current list order
         FunctionLessThan lessThan(_sortColumn, _sortOrder, _eventType);
         QList<TraceFunction*>::iterator insertPos;
-        insertPos = qLowerBound(_topList.begin(), _topList.end(),
-                                f, lessThan);
+        insertPos = std::lower_bound(_topList.begin(), _topList.end(),
+                                     f, lessThan);
         row = insertPos - _topList.begin();
         beginInsertRows(QModelIndex(), row, row);
         _topList.insert(row, f);
@@ -310,7 +310,7 @@ void FunctionListModel::computeTopList()
     }
 
     FunctionLessThan lessThan(_sortColumn, _sortOrder, _eventType);
-    qStableSort(_filteredList.begin(), _filteredList.end(), lessThan);
+    std::stable_sort(_filteredList.begin(), _filteredList.end(), lessThan);
 
     foreach(TraceFunction* f, _filteredList) {
         _topList.append(f);
@@ -322,7 +322,7 @@ void FunctionListModel::computeTopList()
     if (_max0 && !_topList.contains(_max0)) maxList.append(_max0);
     if (_max1 && !_topList.contains(_max1)) maxList.append(_max1);
     if (_max2 && !_topList.contains(_max2)) maxList.append(_max2);
-    qSort(maxList.begin(), maxList.end(), lessThan);
+    std::stable_sort(maxList.begin(), maxList.end(), lessThan);
     _topList.append(maxList);
 
     endResetModel();

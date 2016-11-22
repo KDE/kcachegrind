@@ -3163,7 +3163,7 @@ int TraceData::load(QStringList files)
     }
     if (partsLoaded == 0) return 0;
 
-    qSort(_parts.begin(), _parts.end(), partLessThan);
+    std::sort(_parts.begin(), _parts.end(), partLessThan);
     invalidateDynamicCost();
     updateFunctionCycles();
 

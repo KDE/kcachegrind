@@ -726,8 +726,8 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
         it = nextIt;
         if (it == lineItEnd) break;
     }
-    qSort(_lowList.begin(), _lowList.end(), lineJumpLowLessThan);
-    qSort(_highList.begin(), _highList.end(), lineJumpHighLessThan);
+    std::sort(_lowList.begin(), _lowList.end(), lineJumpLowLessThan);
+    std::sort(_highList.begin(), _highList.end(), lineJumpHighLessThan);
     _lowListIter = _lowList.begin(); // iterators to list start
     _highListIter = _highList.begin();
     _jump.resize(0);

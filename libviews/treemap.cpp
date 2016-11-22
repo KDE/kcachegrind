@@ -1010,7 +1010,7 @@ void TreeMapItem::addItem(TreeMapItem* i)
 
     _children->append(i); // preserve insertion order
     if (sorting(0) != -1)
-        qSort(_children->begin(), _children->end(), treeMapItemLessThan);
+        std::sort(_children->begin(), _children->end(), treeMapItemLessThan);
 }
 
 
@@ -1077,7 +1077,7 @@ void TreeMapItem::setSorting(int textNo, bool ascending)
     _sortTextNo = textNo;
 
     if (_children && _sortTextNo != -1)
-        qSort(_children->begin(), _children->end(), treeMapItemLessThan);
+        std::sort(_children->begin(), _children->end(), treeMapItemLessThan);
 }
 
 void TreeMapItem::resort(bool recursive)
@@ -1085,7 +1085,7 @@ void TreeMapItem::resort(bool recursive)
     if (!_children) return;
 
     if (_sortTextNo != -1)
-        qSort(_children->begin(), _children->end(), treeMapItemLessThan);
+        std::sort(_children->begin(), _children->end(), treeMapItemLessThan);
 
     if (recursive)
         foreach(TreeMapItem* i, *_children)
