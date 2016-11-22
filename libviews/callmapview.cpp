@@ -53,7 +53,7 @@
 
 
 CallMapView::CallMapView(bool showCallers, TraceItemView* parentView,
-                         QWidget* parent, const char* name)
+                         QWidget* parent, const QString& name)
     : TreeMapWidget(new CallMapRootItem(), parent),  TraceItemView(parentView)
 {
     setObjectName(name);

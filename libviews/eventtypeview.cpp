@@ -36,7 +36,7 @@
 //
 
 EventTypeView::EventTypeView(TraceItemView* parentView,
-                             QWidget* parent, const char* name)
+                             QWidget* parent, const QString& name)
     : QTreeWidget(parent), TraceItemView(parentView)
 {
     setObjectName(name);

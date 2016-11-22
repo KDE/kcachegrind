@@ -1505,7 +1505,7 @@ void CanvasFrame::paint(QPainter* p,
 // CallGraphView
 //
 CallGraphView::CallGraphView(TraceItemView* parentView, QWidget* parent,
-                             const char* name) :
+                             const QString& name) :
     QGraphicsView(parent), TraceItemView(parentView)
 {
     setObjectName(name);

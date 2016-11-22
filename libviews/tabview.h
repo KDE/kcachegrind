@@ -49,7 +49,7 @@ class TabBar : public QTabBar
     Q_OBJECT
 
 public:
-    TabBar(TabView*, QTabWidget* parent, const char *name = 0);
+    TabBar(TabView*, QTabWidget* parent);
 protected:
     void mousePressEvent(QMouseEvent *e);
 

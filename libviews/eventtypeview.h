@@ -34,7 +34,7 @@ class EventTypeView: public QTreeWidget, public TraceItemView
 
 public:
     explicit EventTypeView(TraceItemView* parentView,
-                           QWidget* parent = 0, const char* name = 0);
+                           QWidget* parent, const QString& name);
 
     virtual QWidget* widget() { return this; }
     QString whatsThis() const;

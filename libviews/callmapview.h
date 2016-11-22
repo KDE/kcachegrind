@@ -39,7 +39,7 @@ class CallMapView: public TreeMapWidget, public TraceItemView
 public:
 
     CallMapView(bool showCallers, TraceItemView* parentView,
-                QWidget* parent=0, const char* name=0);
+                QWidget* parent, const QString& name);
 
     QWidget* widget() { return this; }
     QString whatsThis() const;

@@ -67,10 +67,9 @@
 
 // TabBar
 
-TabBar::TabBar(TabView* v, QTabWidget* parent, const char *name) :
+TabBar::TabBar(TabView* v, QTabWidget* parent) :
     QTabBar(parent)
 {
-    setObjectName(name);
     _tabWidget = parent;
     _tabView = v;
 }
