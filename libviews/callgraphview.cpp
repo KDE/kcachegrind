@@ -2108,7 +2108,7 @@ void CallGraphView::readDotOutput()
         return;
     }
 
-    _unparsedOutput.append(_renderProcess->readAllStandardOutput());
+    _unparsedOutput.append(QString::fromLocal8Bit(_renderProcess->readAllStandardOutput()));
 }
 
 void CallGraphView::dotError()
@@ -2123,7 +2123,7 @@ void CallGraphView::dotError()
         return;
     }
 
-    showRenderError(_renderProcess->readAllStandardError());
+    showRenderError(QString::fromLocal8Bit(_renderProcess->readAllStandardError()));
 
     // not interesting any longer
     _renderProcess->deleteLater();
@@ -2142,7 +2142,7 @@ void CallGraphView::dotExited()
         return;
     }
 
-    _unparsedOutput.append(_renderProcess->readAllStandardOutput());
+    _unparsedOutput.append(QString::fromLocal8Bit(_renderProcess->readAllStandardOutput()));
     _renderProcess->deleteLater();
     _renderProcess = 0;
 

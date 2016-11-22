@@ -3190,7 +3190,7 @@ int TraceData::internalLoad(QIODevice* device, const QString& filename)
 {
     if (!device->open( QIODevice::ReadOnly ) ) {
         _logger->loadStart(filename);
-        _logger->loadFinished(QString(strerror( errno )));
+        _logger->loadFinished(QString::fromLocal8Bit(strerror( errno )));
         return 0;
     }
 
