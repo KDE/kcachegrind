@@ -828,14 +828,22 @@ public:
         if (!p) return false;
 
         bool ascending;
-        bool result;
         int textNo = p->sorting(&ascending);
-        if (textNo < 0)
-            result = i1->value() < i2->value();
-        else
-            result = i1->text(textNo) < i2->text(textNo);
+        if (textNo < 0) {
+            double v1 = i1->value();
+            double v2 = i2->value();
+            if (ascending)
+                return v1 < v2;
+            else
+                return v2 < v1;
+        }
 
-        return ascending ? result : !result;
+        QString t1 = i1->text(textNo);
+        QString t2 = i2->text(textNo);
+        if (ascending)
+            return t1 < t2;
+        else
+            return t2 < t1;
     }
 };
 
