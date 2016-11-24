@@ -43,7 +43,7 @@ class ConfigDialog: public QDialog
 
 public:
     // If s is not empty, navigate to a given setting on opening
-    ConfigDialog(TraceData* data, QWidget* parent, QString s = QString::null);
+    ConfigDialog(TraceData* data, QWidget* parent, const QString &s = QString());
 
     void activate(QString);
     QString currentPage();

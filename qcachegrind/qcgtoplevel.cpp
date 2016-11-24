@@ -88,7 +88,7 @@ QCGTopLevel::QCGTopLevel()
     setCentralWidget(_multiView);
 
     // restore current state settings (not configuration options)
-    restoreCurrentState(QString::null);
+    restoreCurrentState(QString());
 
     // restore docks & toolbars from config
     QByteArray state, geometry;
@@ -666,7 +666,7 @@ void QCGTopLevel::about()
 
 void QCGTopLevel::configure(QString s)
 {
-    static QString lastPage = QString::null;
+    static QString lastPage;
 
     // if no specific config item should be focused, use last page
     if (s.isEmpty()) s = lastPage;
@@ -1704,7 +1704,7 @@ void QCGTopLevel::closeEvent(QCloseEvent* event)
     GlobalConfig::config()->saveOptions();
 
     saveTraceSettings();
-    saveCurrentState(QString::null);
+    saveCurrentState(QString());
 
     // if part dock was chosen visible even for only 1 part loaded,
     // keep this choice...
@@ -2054,7 +2054,7 @@ void QCGTopLevel::loadStart(const QString& filename)
 
 void QCGTopLevel::loadFinished(const QString& msg)
 {
-    showStatus(QString::null, 0);
+    showStatus(QString(), 0);
     if (!msg.isEmpty())
         showMessage(QStringLiteral("Error loading %1: %2").arg(_filename).arg(msg),
                     2000);

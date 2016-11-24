@@ -94,5 +94,5 @@ ConfigGroup* QCGConfigStorage::getGroup(const QString& group,
         return new QCGConfigGroup(_settings, group, true);
 
     // requested group does not exist, return only default values
-    return new QCGConfigGroup(0, QString::null, true);
+    return new QCGConfigGroup(0, QString(), true);
 }

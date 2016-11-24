@@ -40,7 +40,7 @@
 // ConfigDialog
 //
 
-ConfigDialog::ConfigDialog(TraceData* data, QWidget* parent, QString s)
+ConfigDialog::ConfigDialog(TraceData* data, QWidget* parent, const QString &s)
     : QDialog(parent)
 {
     setWindowTitle(tr("Configure QCachegrind"));

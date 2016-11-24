@@ -145,7 +145,7 @@ TopLevel::TopLevel()
     setAutoSaveSettings();
 
     // restore current state settings (not configuration options)
-    restoreCurrentState(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+    restoreCurrentState(QString());
 
     // if this is the first toplevel, show tip of day
     if (memberList().count() == 1)

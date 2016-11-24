@@ -163,7 +163,7 @@ private:
     TabWidget* tabWidget(Position);
     void updateVisibility();
     void doUpdate(int, bool);
-    void updateNameLabel(QString n = QString::null);
+    void updateNameLabel(const QString &n = QString());
     void installFocusFilters();
     void tabCounts(int&, int&, int&, int&);
 

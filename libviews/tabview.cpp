@@ -408,7 +408,7 @@ TabView::TabView(TraceItemView* parentView, QWidget* parent)
     this->setWhatsThis( whatsThis() );
 }
 
-void TabView::updateNameLabel(QString n)
+void TabView::updateNameLabel(const QString& n)
 {
     QFontMetrics fm(_nameLabel->fontMetrics());
 

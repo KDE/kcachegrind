@@ -96,7 +96,7 @@ public slots:
 
     void exportGraph();
     void newWindow();
-    void configure(QString page = QString::null);
+    void configure(QString page = QString());
     void about();
 
     // layouts

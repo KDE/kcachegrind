@@ -3389,7 +3389,7 @@ TraceClass* TraceData::cls(const QString& fnName, QString& shortName)
         lastIndex = index+2;
     }
 
-    QString clsName = (lastIndex < 3) ? QString::null :	//krazy:exclude=nullstrassign for old broken gcc
+    QString clsName = (lastIndex < 3) ? QString() :
                                         fnName.left(lastIndex-2);
     shortName = fnName.mid(lastIndex);
 

@@ -79,7 +79,7 @@ protected:
     void loadProgress(int progress); // 0 - 100
     void loadError(int line, const QString& msg);
     void loadWarning(int line, const QString& msg);
-    void loadFinished(const QString &msg = QString::null);
+    void loadFinished(const QString &msg = QString());
 
 protected:
     Logger* _logger;
