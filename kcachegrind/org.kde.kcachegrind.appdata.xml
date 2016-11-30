@@ -5,15 +5,19 @@
   <project_license>GPL-2.0+</project_license>
   <name>KCachegrind</name>
   <name xml:lang="ca">KCachegrind</name>
+  <name xml:lang="es">KCachegrind</name>
   <name xml:lang="nl">KCachegrind</name>
   <name xml:lang="pt">KCachegrind</name>
+  <name xml:lang="sk">KCachegrind</name>
   <name xml:lang="sv">Kcachegrind</name>
   <name xml:lang="uk">KCachegrind</name>
   <name xml:lang="x-test">xxKCachegrindxx</name>
   <summary>Profiler Frontend</summary>
   <summary xml:lang="ca">Frontal de l'analitzador del rendiment</summary>
+  <summary xml:lang="es">Interfaz de analizador de rendimiento</summary>
   <summary xml:lang="nl">Profiler-hulpprogramma</summary>
   <summary xml:lang="pt">Interface de Análise de Performance</summary>
+  <summary xml:lang="sk">Rozhranie pre profiláciu</summary>
   <summary xml:lang="sv">Profileringsgränssnitt</summary>
   <summary xml:lang="uk">Інтерфейс до Profiler</summary>
   <summary xml:lang="x-test">xxProfiler Frontendxx</summary>
@@ -22,15 +26,19 @@
       KCachegrind is a profile data visualization tool, used to determine the most time consuming parts in the execution of a program.
     </p>
     <p xml:lang="ca">El KCachegrind és una eina de visualització de dades d'anàlisi de rendiment, usada per determinar les parts que consumeixen més temps a l'execució d'un programa.</p>
+    <p xml:lang="es">KCachegrind es una herramienta de visualización de datos de análisis de rendimiento que se usa para determinar las partes de un programa que consumen más tiempo durante su ejecución.</p>
     <p xml:lang="nl">KCachegrind is een hulpmiddel voor visualisatie van profielgegevens en wordt gebruikt om de meest tijdrovende delen in het uitvoeren van een programma te bepalen.</p>
     <p xml:lang="pt">O KCachegrind é uma ferramenta de visualização de dados de performance, usado para determinar as partes que consomem mais tempo na execução de um programa.</p>
+    <p xml:lang="sk">KCachegrind je nástroj na vizualizáciu údajov profilu používaný na určenie časovo najnáročnejších častí v behu programu.</p>
     <p xml:lang="sv">Kcachegrind; är ett visualiseringsverktyg för profileringsdata, använt för att ta reda på delarna med störst tidsåtgång vid körning av ett program.</p>
     <p xml:lang="uk">KCachegrind — інструмент для показу даних профілювання. Ним можна скористатися для визначення частин програми, які найбільше навантажують систему.</p>
     <p xml:lang="x-test">xxKCachegrind is a profile data visualization tool, used to determine the most time consuming parts in the execution of a program.xx</p>
     <p>Features:</p>
     <p xml:lang="ca">Característiques:</p>
+    <p xml:lang="es">Funciones:</p>
     <p xml:lang="nl">Kenmerken:</p>
     <p xml:lang="pt">Funcionalidades:</p>
+    <p xml:lang="sk">Funkcie:</p>
     <p xml:lang="sv">Funktioner:</p>
     <p xml:lang="uk">Можливості:</p>
     <p xml:lang="x-test">xxFeatures:xx</p>
@@ -38,32 +46,56 @@
       <li>KCachegrind visualizes profiles (i.e. runtime characteristics) of applications in various ways,
           including call graph vizualisations and source/disassembler annotation.</li>
       <li xml:lang="ca">El KCachegrind visualitza els anàlisis de rendiment (és a dir, característiques en temps d'execució) de les aplicacions en diverses maneres, incloent les visualitzacions de les gràfiques de crides i anotacions del codi font/desassemblador.</li>
+      <li xml:lang="es">KCachegrind visualiza análisis de rendimiento (es decir, características en tiempo de ejecución) de las aplicaciones de diversos modos, incluyendo visualizaciones de gráficos de llamadas y anotaciones de código fuente/desensamblador.</li>
       <li xml:lang="nl">KCachegrind visualiseert profielen (d.w.z. karakteristieken tijdens uitvoeren) van toepassingen op verschillende manieren, inclusief visualisaties van aanroepgrafieken en bron/disassembler annotaties.</li>
       <li xml:lang="pt">O KCachegrind visualiza os dados de performance (características em execução) das aplicações de diversas formas, incluindo visualizações dos grafos de chamadas e a anotação da descodificação para código/Assembly.</li>
+      <li xml:lang="sk">KCachegrind vizualizuje profily (teda behovú charakteristiku) aplikácií rôznymi spôsobmi, vrátane vizualizácií grafov volaní a anotácií zdrojov/disassemblera.</li>
       <li xml:lang="sv">Kcachegrind åskådliggör profiler (dvs, körtidskarakteristik) för program på olika sätt, inklusive åskådliggörande av anropsdiagram och annotering med källkod och disassembler.</li>
       <li xml:lang="uk">KCachegrind візуалізує профілі (тобто динамічні характеристики роботи програми) програм у декілька способів, зокрема може показувати граф викликів та анотацію початкового або асемблерного коду.</li>
       <li xml:lang="x-test">xxKCachegrind visualizes profiles (i.e. runtime characteristics) of applications in various ways, including call graph vizualisations and source/disassembler annotation.xx</li>
       <li>It can load profiles generated by the cache simulation/call tracer Calltree, a Valgrind tool.
           Thus, profiling does not need any preparation, can cope with shared libraries and plugin architectures, and does not influence the measuring itself.</li>
       <li xml:lang="ca">Pot carregar anàlisis de rendiment generats pel traçador de simulacions/crides de la memòria cau Calltree, una eina del Valgrind. Així, l'anàlisi de rendiment no necessita cap preparació, pot funcionar amb biblioteques compartides i arquitectures de connectors, i no té influència sobre la pròpia mesura.</li>
+      <li xml:lang="es">Puede cargar análisis de rendimiento generados por el trazador de simulación de cache/llamadas Calltree, una herramienta de Valgrind. De este modo, el análisis no necesita ninguna preparación, puede manejar bibliotecas compartidas y arquitecturas de complementos, además de no influir en la propia medida.</li>
       <li xml:lang="nl">Het kan profielen laden gegenereerd door Calltree, de cache simulator/aanroepvolger, een Valgrind hulpmiddel. Profilering heeft geen enkele voorbereiding nodig, kan overweg met gedeelde bibliotheken en plug-in architecturen en heeft geen invloed op de meting zelf.</li>
       <li xml:lang="pt">Poderá carregar dados de análise gerados pelo sistema de registo/simulação da 'cache' Calltree, uma ferramenta do Valgrind. Como tal, a análise de performance não necessita de nenhuma preparação, poderá lidar bem com bibliotecas dinâmicas e arquitecturas de 'plugins', não influenciado a medição em si.</li>
+      <li xml:lang="sk">Môže načítať profily generované simuláciou cache/trasovaním volaní Caltree, nástrojom Valgrind. Teda, profilovanie nepotrebuje žiadnu prípravu, dá s zvládnuť so štandardnými knižnicami a architektúrami pluginov a neovplyvňuje samotné meranie.</li>
       <li xml:lang="sv">Det kan läsa in profiler skapade av cachesimulatorn och anropsspåraren Calltree, ett Valgrind-verktyg. Sålunda behöver inte profilering någon förberedelse, kan hantera delade bibliotek och arkitekturer med insticksprogram, och påverkar inte själva mätningen.</li>
       <li xml:lang="uk">Програма може завантажувати профілі, створені імітатором кешу та засобом трасування викликів Calltree, інструментом Valgrind. Таким чином, профілювання не потребує приготування, може бути виконане із різними спільними бібліотеками та архітектурами додатків, а також не змінюється у результаті виконання процесів вимірювання параметрів роботи.</li>
       <li xml:lang="x-test">xxIt can load profiles generated by the cache simulation/call tracer Calltree, a Valgrind tool. Thus, profiling does not need any preparation, can cope with shared libraries and plugin architectures, and does not influence the measuring itself.xx</li>
       <li>Converter scripts for OProfile, Perl, and PHP.</li>
+      <li xml:lang="ca">Convertidor de scripts de l'OProfile, Perl, i PHP.</li>
+      <li xml:lang="es">Scripts de conversión para OProfile, Perl y PHP.</li>
+      <li xml:lang="nl">Conversiescripts voor OProfile, Perl en PHP.</li>
+      <li xml:lang="pt">Programas de conversão para o OProfile, Perl e PHP.</li>
+      <li xml:lang="sk">Skripty konvertera pre OProfile, Perl a PHP.</li>
+      <li xml:lang="sv">Konverterar skript för OProfile, Perl och PHP.</li>
+      <li xml:lang="uk">Скрипти перетворення для OProfile, Perl та PHP.</li>
+      <li xml:lang="x-test">xxConverter scripts for OProfile, Perl, and PHP.xx</li>
       <li>Switching between multiple visualization layouts.</li>
       <li xml:lang="ca">Commutació entre diverses disposicions de visualització.</li>
+      <li xml:lang="es">Intercambio entre distintos esquemas de visualización.</li>
       <li xml:lang="nl">Schakelen tussen meerdere visualisatie indelingen.</li>
       <li xml:lang="pt">Mudança entre vários formatos de visualização.</li>
+      <li xml:lang="sk">Prepínanie medzi viacerými rozloženiami vizualizácie.</li>
       <li xml:lang="sv">Byter mellan flera visualiseringslayouter.</li>
       <li xml:lang="uk">Можливість перемикання між декількома режимами візуалізації.</li>
       <li xml:lang="x-test">xxSwitching between multiple visualization layouts.xx</li>
       <li>Call graph can be exported as image (PNG).</li>
+      <li xml:lang="ca">La gràfica de crides es pot exportar com a imatge (PNG).</li>
+      <li xml:lang="es">El gráfico de llamadas se puede exportar como imagen (PNG).</li>
+      <li xml:lang="nl">Aanroepgrafiek kan geëxporteerd worden als afbeelding (PNG).</li>
+      <li xml:lang="pt">O grafo de chamadas pode ser exportado como uma imagem (PNG).</li>
+      <li xml:lang="sk">Grafy volaní sa dajú exportovať do obrázku (PNG).</li>
+      <li xml:lang="sv">Anropsdiagram kan exporteras som bild (PNG).</li>
+      <li xml:lang="uk">Можливість експортування графу викликів у форматі зображення (PNG).</li>
+      <li xml:lang="x-test">xxCall graph can be exported as image (PNG).xx</li>
       <li>Simultaneous display of 2 event types in Call and Annotation View</li>
       <li xml:lang="ca">Visualització simultània de 2 tipus d'esdeveniments a la vista de crides i anotacions</li>
+      <li xml:lang="es">Visualización simultánea de 2 tipos de eventos en la vista de llamada y anotación</li>
       <li xml:lang="nl">Gelijktijdige tonen van 2 typen gebeurtenissen in Aanroep- en Annotatieweergave</li>
       <li xml:lang="pt">Apresentação simultânea de 2 tipos de eventos na Área de Chamadas e Anotações</li>
+      <li xml:lang="sk">Súčasné zobrazenie 2 typov udalostí v pohľade volaní a anotácií</li>
       <li xml:lang="sv">Visar samtidigt två händelsetyper i anrops- och annoteringsvyer.</li>
       <li xml:lang="uk">Можливість одночасного показу двох типів подій у режимі перегляду викликів і анотацій.</li>
       <li xml:lang="x-test">xxSimultaneous display of 2 event types in Call and Annotation Viewxx</li>
