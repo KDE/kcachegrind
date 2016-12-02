@@ -5,8 +5,10 @@
   <project_license>GPL-2.0+</project_license>
   <name>KCachegrind</name>
   <name xml:lang="ca">KCachegrind</name>
+  <name xml:lang="cs">KCachegrind</name>
   <name xml:lang="de">KCachegrind</name>
   <name xml:lang="es">KCachegrind</name>
+  <name xml:lang="it">KCachegrind</name>
   <name xml:lang="nl">KCachegrind</name>
   <name xml:lang="pt">KCachegrind</name>
   <name xml:lang="sk">KCachegrind</name>
@@ -15,6 +17,7 @@
   <name xml:lang="x-test">xxKCachegrindxx</name>
   <summary>Profiler Frontend</summary>
   <summary xml:lang="ca">Frontal de l'analitzador del rendiment</summary>
+  <summary xml:lang="cs">Rozhraní pro profilaci</summary>
   <summary xml:lang="de">Profiler-Oberfläche</summary>
   <summary xml:lang="es">Interfaz de analizador de rendimiento</summary>
   <summary xml:lang="nl">Profiler-hulpprogramma</summary>
@@ -37,8 +40,10 @@
     <p xml:lang="x-test">xxKCachegrind is a profile data visualization tool, used to determine the most time consuming parts in the execution of a program.xx</p>
     <p>Features:</p>
     <p xml:lang="ca">Característiques:</p>
+    <p xml:lang="cs">Vlastnosti:</p>
     <p xml:lang="de">Funktionen:</p>
     <p xml:lang="es">Funciones:</p>
+    <p xml:lang="it">Funzionalità:</p>
     <p xml:lang="nl">Kenmerken:</p>
     <p xml:lang="pt">Funcionalidades:</p>
     <p xml:lang="sk">Funkcie:</p>
@@ -69,6 +74,7 @@
       <li>Converter scripts for OProfile, Perl, and PHP.</li>
       <li xml:lang="ca">Convertidor de scripts de l'OProfile, Perl, i PHP.</li>
       <li xml:lang="es">Scripts de conversión para OProfile, Perl y PHP.</li>
+      <li xml:lang="it">Script di conversione per OProfile, Perl e PHP.</li>
       <li xml:lang="nl">Conversiescripts voor OProfile, Perl en PHP.</li>
       <li xml:lang="pt">Programas de conversão para o OProfile, Perl e PHP.</li>
       <li xml:lang="sk">Skripty konvertera pre OProfile, Perl a PHP.</li>
@@ -87,6 +93,7 @@
       <li>Call graph can be exported as image (PNG).</li>
       <li xml:lang="ca">La gràfica de crides es pot exportar com a imatge (PNG).</li>
       <li xml:lang="es">El gráfico de llamadas se puede exportar como imagen (PNG).</li>
+      <li xml:lang="it">Il grafico delle chiamate può essere esportato come immagine (PNG).</li>
       <li xml:lang="nl">Aanroepgrafiek kan geëxporteerd worden als afbeelding (PNG).</li>
       <li xml:lang="pt">O grafo de chamadas pode ser exportado como uma imagem (PNG).</li>
       <li xml:lang="sk">Grafy volaní sa dajú exportovať do obrázku (PNG).</li>
@@ -96,6 +103,7 @@
       <li>Simultaneous display of 2 event types in Call and Annotation View</li>
       <li xml:lang="ca">Visualització simultània de 2 tipus d'esdeveniments a la vista de crides i anotacions</li>
       <li xml:lang="es">Visualización simultánea de 2 tipos de eventos en la vista de llamada y anotación</li>
+      <li xml:lang="it">Visualizzazione simultanea di due tipi di eventi nelle viste delle chiamate delle annotazioni</li>
       <li xml:lang="nl">Gelijktijdige tonen van 2 typen gebeurtenissen in Aanroep- en Annotatieweergave</li>
       <li xml:lang="pt">Apresentação simultânea de 2 tipos de eventos na Área de Chamadas e Anotações</li>
       <li xml:lang="sk">Súčasné zobrazenie 2 typov udalostí v pohľade volaní a anotácií</li>
