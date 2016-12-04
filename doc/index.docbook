@@ -55,8 +55,7 @@
 
 <abstract>
 <para>
-&kcachegrind; is a profile data visualization tool, written using the &kf5-full; 
-environment.
+&kcachegrind; is a profile data visualization tool, written using &kf5-full;.
 </para>
 </abstract>
 
