@@ -24,6 +24,7 @@
   <summary xml:lang="de">Profiler-Oberfläche</summary>
   <summary xml:lang="en-GB">Profiler Frontend</summary>
   <summary xml:lang="es">Interfaz de analizador de rendimiento</summary>
+  <summary xml:lang="it">Interfaccia per la profilatura</summary>
   <summary xml:lang="nl">Profiler-hulpprogramma</summary>
   <summary xml:lang="pt">Interface de Análise de Performance</summary>
   <summary xml:lang="sk">Rozhranie pre profiláciu</summary>
@@ -38,6 +39,7 @@
     <p xml:lang="ca-valencia">El KCachegrind és una eina de visualització de dades d'anàlisi de rendiment, usada per determinar les parts que consumeixen més temps a l'execució d'un programa.</p>
     <p xml:lang="en-GB">KCachegrind is a profile data visualisation tool, used to determine the most time consuming parts in the execution of a program.</p>
     <p xml:lang="es">KCachegrind es una herramienta de visualización de datos de análisis de rendimiento que se usa para determinar las partes de un programa que consumen más tiempo durante su ejecución.</p>
+    <p xml:lang="it">KCachegrind è uno strumento di visualizzazione dei dati di profilatura, usato per determinare dove viene maggiormente speso il tempo durante l'esecuzione di un programma.</p>
     <p xml:lang="nl">KCachegrind is een hulpmiddel voor visualisatie van profielgegevens en wordt gebruikt om de meest tijdrovende delen in het uitvoeren van een programma te bepalen.</p>
     <p xml:lang="pt">O KCachegrind é uma ferramenta de visualização de dados de performance, usado para determinar as partes que consomem mais tempo na execução de um programa.</p>
     <p xml:lang="sk">KCachegrind je nástroj na vizualizáciu údajov profilu používaný na určenie časovo najnáročnejších častí v behu programu.</p>
@@ -65,6 +67,7 @@
       <li xml:lang="ca-valencia">El KCachegrind visualitza els anàlisis de rendiment (és a dir, característiques en temps d'execució) de les aplicacions en diverses maneres, incloent les visualitzacions de les gràfiques de crides i anotacions del codi font/desassemblador.</li>
       <li xml:lang="en-GB">KCachegrind visualises profiles (i.e. runtime characteristics) of applications in various ways, including call graph visualisations and source/disassembler annotation.</li>
       <li xml:lang="es">KCachegrind visualiza análisis de rendimiento (es decir, características en tiempo de ejecución) de las aplicaciones de diversos modos, incluyendo visualizaciones de gráficos de llamadas y anotaciones de código fuente/desensamblador.</li>
+      <li xml:lang="it">KCachegrind visualizza profili (cioè caratteristiche a tempo di esecuzione) delle applicazioni in vari modi, tra cui la visualizzazione del grafico delle chiamata e le annotazioni sul sorgente/dal disassemblatore.</li>
       <li xml:lang="nl">KCachegrind visualiseert profielen (d.w.z. karakteristieken tijdens uitvoeren) van toepassingen op verschillende manieren, inclusief visualisaties van aanroepgrafieken en bron/disassembler annotaties.</li>
       <li xml:lang="pt">O KCachegrind visualiza os dados de performance (características em execução) das aplicações de diversas formas, incluindo visualizações dos grafos de chamadas e a anotação da descodificação para código/Assembly.</li>
       <li xml:lang="sk">KCachegrind vizualizuje profily (teda behovú charakteristiku) aplikácií rôznymi spôsobmi, vrátane vizualizácií grafov volaní a anotácií zdrojov/disassemblera.</li>
