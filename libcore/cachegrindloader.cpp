@@ -149,24 +149,31 @@ CachegrindLoader::CachegrindLoader()
 
 bool CachegrindLoader::canLoad(QIODevice* file)
 {
-  if (!file) return false;
+    if (!file) return false;
 
-  Q_ASSERT(file->isOpen());
+    Q_ASSERT(file->isOpen());
 
-  /*
-   * We recognize this as cachegrind/callgrind format if in the first
-   * 2047 bytes we see the string "\nevents:"
-   */
-  char buf[2048];
-  int read = file->read(buf,2047);
-  if (read < 0)
-	return false;
-  buf[read] = 0;
+    /*
+     * We recognize this as cachegrind/callgrind format if in the first
+     * 2047 bytes we see the string "\nevents:" or "\ncreator: callgrind"
+     */
+    char buf[2048];
+    int read = file->read(buf,2047);
+    if (read < 0)
+        return false;
+    buf[read] = 0;
 
-  QByteArray s = QByteArray::fromRawData(buf, read+1);
-  int pos = s.indexOf("events:");
-  if (pos>0 && buf[pos-1] != '\n') pos = -1;
-  return (pos>=0);
+    QByteArray s = QByteArray::fromRawData(buf, read+1);
+    int pos = s.indexOf("events:");
+    if (pos>0 && buf[pos-1] != '\n') pos = -1;
+    if (pos>=0) return true;
+
+    // callgrind puts a "cmd:" line before "events:", and with big command
+    // lines, we need another way to detect such callgrind files...
+    pos = s.indexOf("creator: callgrind");
+    if (pos>0 && buf[pos-1] != '\n') pos = -1;
+
+    return (pos>=0);
 }
 
 int CachegrindLoader::load(TraceData* d,
