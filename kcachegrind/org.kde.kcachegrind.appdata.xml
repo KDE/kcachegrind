@@ -19,6 +19,7 @@
   <name xml:lang="sv">Kcachegrind</name>
   <name xml:lang="uk">KCachegrind</name>
   <name xml:lang="x-test">xxKCachegrindxx</name>
+  <name xml:lang="zh-CN">KCachegrind</name>
   <summary>Profiler Frontend</summary>
   <summary xml:lang="ca">Frontal de l'analitzador del rendiment</summary>
   <summary xml:lang="ca-valencia">Frontal de l'analitzador del rendiment</summary>
