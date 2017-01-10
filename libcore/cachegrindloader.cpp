@@ -153,8 +153,9 @@ bool CachegrindLoader::canLoad(QIODevice* file)
     Q_ASSERT(file->isOpen());
 
     /*
-     * We recognize this as cachegrind/callgrind format if in the first
-     * 2047 bytes we see the string "\nevents:" or "\ncreator: callgrind"
+     * We recognize this as cachegrind/callgrind format if
+     * - it starts with a line "# callgrind format", or
+     * - if the first 2047 bytes contain either "\nevents:" or "\ncreator:"
      */
     char buf[2048];
     int read = file->read(buf,2047);
@@ -163,13 +164,17 @@ bool CachegrindLoader::canLoad(QIODevice* file)
     buf[read] = 0;
 
     QByteArray s = QByteArray::fromRawData(buf, read+1);
+
+    if (s.indexOf("# callgrind format\n") == 0)
+        return true;
+
     int pos = s.indexOf("events:");
     if (pos>0 && buf[pos-1] != '\n') pos = -1;
     if (pos>=0) return true;
 
     // callgrind puts a "cmd:" line before "events:", and with big command
     // lines, we need another way to detect such callgrind files...
-    pos = s.indexOf("creator: callgrind");
+    pos = s.indexOf("creator:");
     if (pos>0 && buf[pos-1] != '\n') pos = -1;
 
     return (pos>=0);
@@ -1071,7 +1076,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
                 // summary:
                 if (line.stripPrefix("ummary:")) {
                     if (!mapping) {
-                        error(QStringLiteral("No event line found. Skipping file"));
+                        error(QStringLiteral("Invalid format: summary before data. Skipping file"));
                         delete _part;
                         return false;
                     }
@@ -1103,7 +1108,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
         }
 
         if (!mapping) {
-            error(QStringLiteral("No event line found. Skipping file"));
+            error(QStringLiteral("Invalid format: data found before 'events' line. Skipping file"));
             delete _part;
             return false;
         }
@@ -1362,6 +1367,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
         partsAdded++;
     }
     else {
+        error(QStringLiteral("No data found. Skipping file"));
         delete _part;
     }
 
