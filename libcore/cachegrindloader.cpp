@@ -164,13 +164,14 @@ bool CachegrindLoader::canLoad(QIODevice* file)
     buf[read] = 0;
 
     QByteArray s = QByteArray::fromRawData(buf, read+1);
+    if (s.indexOf("# callgrind format\n") == 0) return true;
     int pos = s.indexOf("events:");
     if (pos>0 && buf[pos-1] != '\n') pos = -1;
     if (pos>=0) return true;
 
     // callgrind puts a "cmd:" line before "events:", and with big command
     // lines, we need another way to detect such callgrind files...
-    pos = s.indexOf("creator: callgrind");
+    pos = s.indexOf("creator:");
     if (pos>0 && buf[pos-1] != '\n') pos = -1;
 
     return (pos>=0);
