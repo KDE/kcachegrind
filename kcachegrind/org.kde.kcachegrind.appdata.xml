@@ -22,6 +22,7 @@
   <name xml:lang="uk">KCachegrind</name>
   <name xml:lang="x-test">xxKCachegrindxx</name>
   <name xml:lang="zh-CN">KCachegrind</name>
+  <name xml:lang="zh-TW">KCachegrind</name>
   <summary>Profiler Frontend</summary>
   <summary xml:lang="ca">Frontal de l'analitzador del rendiment</summary>
   <summary xml:lang="ca-valencia">Frontal de l'analitzador del rendiment</summary>
@@ -39,6 +40,7 @@
   <summary xml:lang="sv">Profileringsgränssnitt</summary>
   <summary xml:lang="uk">Інтерфейс до Profiler</summary>
   <summary xml:lang="x-test">xxProfiler Frontendxx</summary>
+  <summary xml:lang="zh-TW">分析器前端</summary>
   <description>
     <p>
       KCachegrind is a profile data visualization tool, used to determine the most time consuming parts in the execution of a program.
