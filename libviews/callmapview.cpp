@@ -214,7 +214,7 @@ QAction* CallMapView::addStopFunctionAction(QMenu* m,
     QAction* a = m->addAction(s);
     a->setData(v);
     a->setCheckable(true);
-    a->setChecked(fieldStop(0) == v);
+    a->setChecked(fieldStop(IDX_FUNCNAME) == v);
     return a;
 }
 
@@ -236,10 +236,10 @@ void CallMapView::addStopFunctionMenu(QMenu* menu, TreeMapItem* item)
             count++;
         }
     }
-    if (!foundStopName && !fieldStop(0).isEmpty()) {
+    if (!foundStopName && !fieldStop(IDX_FUNCNAME).isEmpty()) {
         m->addSeparator();
-        QString name = GlobalConfig::shortenSymbol(fieldStop(0));
-        addStopFunctionAction(m, name, fieldStop(0));
+        QString name = GlobalConfig::shortenSymbol(fieldStop(IDX_FUNCNAME));
+        addStopFunctionAction(m, name, fieldStop(IDX_FUNCNAME));
     }
 
     connect(m, &QMenu::triggered,
@@ -248,7 +248,7 @@ void CallMapView::addStopFunctionMenu(QMenu* menu, TreeMapItem* item)
 
 void CallMapView::stopFunctionTriggered(QAction* a)
 {
-    setFieldStop(0, a->data().toString());
+    setFieldStop(IDX_FUNCNAME, a->data().toString());
 }
 
 QAction* CallMapView::addAreaLimitAction(QMenu* m,
@@ -375,10 +375,10 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
         allowRotationAction->setEnabled(false);
     }
     else {
-        drawNamesAction->setChecked(fieldVisible(0));
-        drawCostAction->setChecked(fieldVisible(1));
-        drawLocationAction->setChecked(fieldVisible(2));
-        drawCallsAction->setChecked(fieldVisible(3));
+        drawNamesAction->setChecked(fieldVisible(IDX_FUNCNAME));
+        drawCostAction->setChecked(fieldVisible(IDX_COST));
+        drawLocationAction->setChecked(fieldVisible(IDX_LOCATION));
+        drawCallsAction->setChecked(fieldVisible(IDX_CALLCOUNT));
         ignorePropAction->setChecked(fieldForced(0));
         allowRotationAction->setChecked(allowRotation());
     }
@@ -389,13 +389,13 @@ void CallMapView::context(TreeMapItem* i,const QPoint & p)
 
     a = popup.exec(mapToGlobal(p));
     if (a == drawNamesAction)
-        setFieldVisible(0, !fieldVisible(0));
+        setFieldVisible(IDX_FUNCNAME, !fieldVisible(IDX_FUNCNAME));
     else if (a == drawCostAction)
-        setFieldVisible(1, !fieldVisible(1));
+        setFieldVisible(IDX_COST, !fieldVisible(IDX_COST));
     else if (a == drawLocationAction)
-        setFieldVisible(2, !fieldVisible(2));
+        setFieldVisible(IDX_LOCATION, !fieldVisible(IDX_LOCATION));
     else if (a == drawCallsAction)
-        setFieldVisible(3, !fieldVisible(3));
+        setFieldVisible(IDX_CALLCOUNT, !fieldVisible(IDX_CALLCOUNT));
     else if (a == ignorePropAction) {
         bool newSetting = !fieldForced(0);
         setFieldForced(0, newSetting);
@@ -985,10 +985,14 @@ void CallMapView::restoreOptions(const QString& prefix, const QString& postfix)
 
     setSplitMode(g->value(QStringLiteral("SplitMode"), QStringLiteral(DEFAULT_SPLITMODE)).toString());
 
-    setFieldVisible(0, g->value(QStringLiteral("DrawName"), DEFAULT_DRAWNAME).toBool());
-    setFieldVisible(1, g->value(QStringLiteral("DrawCost"), DEFAULT_DRAWCOST).toBool());
-    setFieldVisible(2, g->value(QStringLiteral("DrawLocation"), DEFAULT_DRAWLOCATION).toBool());
-    setFieldVisible(3, g->value(QStringLiteral("DrawCalls"), DEFAULT_DRAWCALLS).toBool());
+    setFieldVisible(IDX_FUNCNAME,
+                    g->value(QStringLiteral("DrawName"), DEFAULT_DRAWNAME).toBool());
+    setFieldVisible(IDX_COST,
+                    g->value(QStringLiteral("DrawCost"), DEFAULT_DRAWCOST).toBool());
+    setFieldVisible(IDX_LOCATION,
+                    g->value(QStringLiteral("DrawLocation"), DEFAULT_DRAWLOCATION).toBool());
+    setFieldVisible(IDX_CALLCOUNT,
+                    g->value(QStringLiteral("DrawCalls"), DEFAULT_DRAWCALLS).toBool());
 
     bool enable = g->value(QStringLiteral("ForceStrings"), DEFAULT_FORCESTRINGS).toBool();
     setFieldForced(0, enable);
@@ -998,7 +1002,8 @@ void CallMapView::restoreOptions(const QString& prefix, const QString& postfix)
 
     setAllowRotation(g->value(QStringLiteral("AllowRotation"), DEFAULT_ROTATION).toBool());
     setShadingEnabled(g->value(QStringLiteral("Shading"), DEFAULT_SHADING).toBool());
-    setFieldStop(0, g->value(QStringLiteral("StopName"), QLatin1String(DEFAULT_STOPNAME)).toString());
+    setFieldStop(IDX_FUNCNAME,
+                 g->value(QStringLiteral("StopName"), QLatin1String(DEFAULT_STOPNAME)).toString());
     setMaxDrawingDepth(g->value(QStringLiteral("MaxDepth"), DEFAULT_MAXDEPTH).toInt());
     setMinimalArea(g->value(QStringLiteral("MaxArea"), DEFAULT_MAXAREA).toInt());
 
@@ -1010,17 +1015,21 @@ void CallMapView::saveOptions(const QString& prefix, const QString& postfix)
     ConfigGroup* g = ConfigStorage::group(prefix + postfix);
 
     g->setValue(QStringLiteral("SplitMode"), splitModeString(), QStringLiteral(DEFAULT_SPLITMODE));
-    g->setValue(QStringLiteral("DrawName"), fieldVisible(0), DEFAULT_DRAWNAME);
-    g->setValue(QStringLiteral("DrawCost"), fieldVisible(1), DEFAULT_DRAWCOST);
-    g->setValue(QStringLiteral("DrawLocation"), fieldVisible(2), DEFAULT_DRAWLOCATION);
-    g->setValue(QStringLiteral("DrawCalls"), fieldVisible(3), DEFAULT_DRAWCALLS);
+    g->setValue(QStringLiteral("DrawName"),
+                fieldVisible(IDX_FUNCNAME), DEFAULT_DRAWNAME);
+    g->setValue(QStringLiteral("DrawCost"),
+                fieldVisible(IDX_COST), DEFAULT_DRAWCOST);
+    g->setValue(QStringLiteral("DrawLocation"),
+                fieldVisible(IDX_LOCATION), DEFAULT_DRAWLOCATION);
+    g->setValue(QStringLiteral("DrawCalls"),
+                fieldVisible(IDX_CALLCOUNT), DEFAULT_DRAWCALLS);
     // when option for all text (0-3)
-    g->setValue(QStringLiteral("ForceStrings"), fieldForced(0), DEFAULT_FORCESTRINGS);
+    g->setValue(QStringLiteral("ForceStrings"), fieldForced(IDX_FUNCNAME), DEFAULT_FORCESTRINGS);
 
     g->setValue(QStringLiteral("AllowRotation"), allowRotation(), DEFAULT_ROTATION);
     g->setValue(QStringLiteral("Shading"), isShadingEnabled(), DEFAULT_SHADING);
 
-    g->setValue(QStringLiteral("StopName"), fieldStop(0), QLatin1String(DEFAULT_STOPNAME));
+    g->setValue(QStringLiteral("StopName"), fieldStop(IDX_FUNCNAME), QLatin1String(DEFAULT_STOPNAME));
     g->setValue(QStringLiteral("MaxDepth"), maxDrawingDepth(), DEFAULT_MAXDEPTH);
     g->setValue(QStringLiteral("MaxArea"), minimalArea(), DEFAULT_MAXAREA);
 
