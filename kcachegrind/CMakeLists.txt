@@ -5,6 +5,7 @@ set(kcachegrind_SRCS
    kdeconfig.cpp
    toplevel.cpp
    configdlg.cpp
+   ${kcachegrind_QM_LOADER}
    )
 
 ki18n_wrap_ui(kcachegrind_SRCS configdlgbase.ui dumpselectionbase.ui)
