@@ -112,6 +112,7 @@
       <li>Converter scripts for OProfile, Perl, and PHP.</li>
       <li xml:lang="ca">Convertidor de scripts de l'OProfile, Perl, i PHP.</li>
       <li xml:lang="ca-valencia">Convertidor de scripts de l'OProfile, Perl, i PHP.</li>
+      <li xml:lang="de">Konvertierungs-Skripte für OProfile, Perl und PHP.</li>
       <li xml:lang="en-GB">Converter scripts for OProfile, Perl, and PHP.</li>
       <li xml:lang="es">Scripts de conversión para OProfile, Perl y PHP.</li>
       <li xml:lang="gl">Scripts de conversión para OProfile, Perl e PHP.</li>
@@ -127,6 +128,7 @@
       <li>Switching between multiple visualization layouts.</li>
       <li xml:lang="ca">Commutació entre diverses disposicions de visualització.</li>
       <li xml:lang="ca-valencia">Commutació entre diverses disposicions de visualització.</li>
+      <li xml:lang="de">Wechseln zwischen mehreren Visualisierungs-Layouts.</li>
       <li xml:lang="en-GB">Switching between multiple visualisation layouts.</li>
       <li xml:lang="es">Intercambio entre distintos esquemas de visualización.</li>
       <li xml:lang="gl">Posibilidade de cambiar a calquera das varias disposicións de visualización.</li>
@@ -142,6 +144,7 @@
       <li>Call graph can be exported as image (PNG).</li>
       <li xml:lang="ca">La gràfica de crides es pot exportar com a imatge (PNG).</li>
       <li xml:lang="ca-valencia">La gràfica de crides es pot exportar com a imatge (PNG).</li>
+      <li xml:lang="de">Aufrufgraph kann als Bild im PNG-Format exportiert werden.</li>
       <li xml:lang="en-GB">Call graph can be exported as image (PNG).</li>
       <li xml:lang="es">El gráfico de llamadas se puede exportar como imagen (PNG).</li>
       <li xml:lang="gl">O gráfico de chamadas pode exportarse como imaxe (PNG).</li>
