@@ -40,7 +40,6 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINAR
 
 IF(NOT WIN32)
   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/kcachegrind.spec.cmake ${CMAKE_CURRENT_BINARY_DIR}/kcachegrind.spec )
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/kcachegrind.lsm.cmake ${CMAKE_CURRENT_BINARY_DIR}/kcachegrind.lsm )
 ENDIF(NOT WIN32)
 
 ecm_create_qm_loader(kcachegrind_QM_LOADER kcachegrind_qt)
