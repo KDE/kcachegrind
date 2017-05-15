@@ -47,6 +47,7 @@
     </p>
     <p xml:lang="ca">El KCachegrind és una eina de visualització de dades d'anàlisi de rendiment, usada per determinar les parts que consumeixen més temps a l'execució d'un programa.</p>
     <p xml:lang="ca-valencia">El KCachegrind és una eina de visualització de dades d'anàlisi de rendiment, usada per determinar les parts que consumeixen més temps a l'execució d'un programa.</p>
+    <p xml:lang="de">KCachegrind ist ein Werkzeug zur Visualisierung von Profildaten, um festzustellen, welche Teile bei der Ausführung eines Programms am meisten Zeit brauchen.</p>
     <p xml:lang="en-GB">KCachegrind is a profile data visualisation tool, used to determine the most time consuming parts in the execution of a program.</p>
     <p xml:lang="es">KCachegrind es una herramienta de visualización de datos de análisis de rendimiento que se usa para determinar las partes de un programa que consumen más tiempo durante su ejecución.</p>
     <p xml:lang="gl">KCachegrind é unha ferramenta de visualización de datos de rendemento que se usa para determinar as partes da execución dun programa que consumen máis tempo.</p>
