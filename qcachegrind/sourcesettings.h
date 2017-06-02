@@ -37,9 +37,9 @@ public:
     SourceSettings(TraceData* data, QWidget* parent);
     virtual ~SourceSettings() {}
 
-    bool check(QString&, QString&);
-    void accept();
-    void activate(QString s);
+    bool check(QString&, QString&) Q_DECL_OVERRIDE;
+    void accept() Q_DECL_OVERRIDE;
+    void activate(QString s) Q_DECL_OVERRIDE;
 
 public slots:
     void addClicked();

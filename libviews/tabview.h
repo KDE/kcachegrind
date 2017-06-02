@@ -51,7 +51,7 @@ class TabBar : public QTabBar
 public:
     TabBar(TabView*, QTabWidget* parent);
 protected:
-    void mousePressEvent(QMouseEvent *e);
+    void mousePressEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
 
 private:
     void context(QWidget*, const QPoint &);
@@ -76,7 +76,7 @@ public:
     void checkVisiblity();
 
 protected:
-    void moveEvent(QMoveEvent *);
+    void moveEvent(QMoveEvent *) Q_DECL_OVERRIDE;
 };
 
 
@@ -101,10 +101,10 @@ signals:
     void visibleRectChanged(TabWidget*);
 
 protected:
-    void resizeEvent(QResizeEvent *);
-    void showEvent(QShowEvent *);
-    void hideEvent(QHideEvent *);
-    void moveEvent(QMoveEvent *);
+    void resizeEvent(QResizeEvent *) Q_DECL_OVERRIDE;
+    void showEvent(QShowEvent *) Q_DECL_OVERRIDE;
+    void hideEvent(QHideEvent *) Q_DECL_OVERRIDE;
+    void moveEvent(QMoveEvent *) Q_DECL_OVERRIDE;
 
 private:
     bool _hasVisibleRect;
@@ -121,11 +121,11 @@ public:
     explicit TabView( TraceItemView* parentView,
                       QWidget* parent = 0 );
 
-    virtual QWidget* widget() { return this; }
-    QString whatsThis() const;
-    void setData(TraceData*);
-    bool isViewVisible() { return !_isCollapsed; }
-    void selected(TraceItemView*, CostItem*);
+    QWidget* widget() Q_DECL_OVERRIDE { return this; }
+    QString whatsThis() const Q_DECL_OVERRIDE;
+    void setData(TraceData*) Q_DECL_OVERRIDE;
+    bool isViewVisible() Q_DECL_OVERRIDE { return !_isCollapsed; }
+    void selected(TraceItemView*, CostItem*) Q_DECL_OVERRIDE;
     bool active() const { return _active; }
     void setActive(bool);
 
@@ -139,10 +139,10 @@ public:
     int visibleTabs();
     int visibleAreas();
 
-    void saveLayout(const QString& prefix, const QString& postfix);
-    void restoreLayout(const QString& prefix, const QString& postfix);
-    void saveOptions(const QString& prefix, const QString& postfix);
-    void restoreOptions(const QString& prefix, const QString& postfix);
+    void saveLayout(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
+    void restoreLayout(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
+    void saveOptions(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
+    void restoreOptions(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
 
 public slots:
     void tabChanged(int);
@@ -152,9 +152,9 @@ signals:
     void tabActivated(TabView*);
 
 protected:
-    void resizeEvent(QResizeEvent *);
-    bool eventFilter(QObject*, QEvent*);
-    void mousePressEvent(QMouseEvent*);
+    void resizeEvent(QResizeEvent *) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject*, QEvent*) Q_DECL_OVERRIDE;
+    void mousePressEvent(QMouseEvent*) Q_DECL_OVERRIDE;
 
 private:
     TraceItemView* addTab(const QString&, TraceItemView*);
@@ -162,7 +162,7 @@ private:
     void addBottom(TraceItemView*);
     TabWidget* tabWidget(Position);
     void updateVisibility();
-    void doUpdate(int, bool);
+    void doUpdate(int, bool) Q_DECL_OVERRIDE;
     void updateNameLabel(const QString &n = QString());
     void installFocusFilters();
     void tabCounts(int&, int&, int&, int&);

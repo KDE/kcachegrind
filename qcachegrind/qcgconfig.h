@@ -36,8 +36,8 @@ public:
     ~QCGConfigGroup();
 
     void setValue(const QString& key, const QVariant& value,
-                  const QVariant& defaultValue = QVariant());
-    QVariant value(const QString& key, const QVariant& defaultValue) const;
+                  const QVariant& defaultValue = QVariant()) Q_DECL_OVERRIDE;
+    QVariant value(const QString& key, const QVariant& defaultValue) const Q_DECL_OVERRIDE;
 
 private:
     QCGConfigGroup(QSettings*, QString prefix, bool);
@@ -56,7 +56,7 @@ public:
 
 private:
     ConfigGroup* getGroup(const QString& group,
-                          const QString& optSuffix);
+                          const QString& optSuffix) Q_DECL_OVERRIDE;
 
     QSettings* _settings;
 };

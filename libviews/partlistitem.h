@@ -36,7 +36,7 @@ public:
     PartListItem(QTreeWidget* parent, TraceCostItem* costItem,
                  EventType* ct, ProfileContext::Type gt, TracePart* part);
 
-    bool operator<(const QTreeWidgetItem& other) const;
+    bool operator<(const QTreeWidgetItem& other) const Q_DECL_OVERRIDE;
     ProfileCostArray* partCostItem() { return _partCostItem; }
     void setEventType(EventType* ct);
     void setGroupType(ProfileContext::Type);

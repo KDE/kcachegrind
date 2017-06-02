@@ -57,7 +57,7 @@ public:
     TraceLineJump* lineJump() const { return _lineJump; }
     TraceLineJump* jump(int i) const { return _jump[i]; }
     int jumpCount() const { return _jump.size(); }
-    bool operator< ( const QTreeWidgetItem & other ) const;
+    bool operator< ( const QTreeWidgetItem & other ) const Q_DECL_OVERRIDE;
 
     void updateGroup();
     void updateCost();
@@ -87,12 +87,12 @@ class SourceItemDelegate : public QItemDelegate
 public:
     explicit SourceItemDelegate(SourceView *parent);
     void paint(QPainter *painter, const QStyleOptionViewItem &option,
-               const QModelIndex & index ) const;
+               const QModelIndex & index ) const Q_DECL_OVERRIDE;
     QSize sizeHint(const QStyleOptionViewItem &option,
-                   const QModelIndex &index) const;
+                   const QModelIndex &index) const Q_DECL_OVERRIDE;
     QWidget* createEditor(QWidget *parent,
                           const QStyleOptionViewItem &option,
-                          const QModelIndex &index) const;
+                          const QModelIndex &index) const Q_DECL_OVERRIDE;
 
 protected:
     void paintArrows(QPainter *p,

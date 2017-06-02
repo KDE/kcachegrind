@@ -79,8 +79,8 @@ public:
     // gets the singleton instance
     static GlobalGUIConfig* config();
 
-    void saveOptions();
-    void readOptions();
+    void saveOptions() Q_DECL_OVERRIDE;
+    void readOptions() Q_DECL_OVERRIDE;
 
     // color for visualization of an object
     static QColor functionColor(ProfileContext::Type gt, TraceFunction*);

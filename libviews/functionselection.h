@@ -56,9 +56,9 @@ public:
     void query(QString);
     bool selectTopFunction();
 
-    QWidget* widget() { return this; }
-    QString whatsThis() const;
-    void setData(TraceData*);
+    QWidget* widget() Q_DECL_OVERRIDE { return this; }
+    QString whatsThis() const Q_DECL_OVERRIDE;
+    void setData(TraceData*) Q_DECL_OVERRIDE;
 
     void updateGroupingMenu(QMenu*);
 
@@ -79,8 +79,8 @@ public slots:
     void functionHeaderClicked(int);
 
 private:
-    CostItem* canShow(CostItem* i);
-    void doUpdate(int, bool);
+    CostItem* canShow(CostItem* i) Q_DECL_OVERRIDE;
+    void doUpdate(int, bool) Q_DECL_OVERRIDE;
     void selectFunction();
     void refresh();
     void setCostColumnWidths();
@@ -124,7 +124,7 @@ public:
 public slots:
     bool helpEvent( QHelpEvent* e, QAbstractItemView* view,
                     const QStyleOptionViewItem& option,
-                    const QModelIndex& index );
+                    const QModelIndex& index ) Q_DECL_OVERRIDE;
 };
 
 #endif

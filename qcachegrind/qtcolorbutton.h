@@ -59,13 +59,13 @@ public slots:
 signals:
     void colorChanged(const QColor &color);
 protected:
-    void paintEvent(QPaintEvent *event);
-    void mousePressEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
+    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
+    void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
+    void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
 #ifndef QT_NO_DRAGANDDROP
-    void dragEnterEvent(QDragEnterEvent *event);
-    void dragLeaveEvent(QDragLeaveEvent *event);
-    void dropEvent(QDropEvent *event);
+    void dragEnterEvent(QDragEnterEvent *event) Q_DECL_OVERRIDE;
+    void dragLeaveEvent(QDragLeaveEvent *event) Q_DECL_OVERRIDE;
+    void dropEvent(QDropEvent *event) Q_DECL_OVERRIDE;
 #endif
 private:
     class QtColorButtonPrivate* d_ptr;

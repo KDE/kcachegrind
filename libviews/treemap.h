@@ -104,20 +104,20 @@ public:
                               bool selected = false, bool current = false);
 
     // getters
-    QString  text(int) const;
-    QPixmap  pixmap(int) const;
-    Position position(int) const;
-    int      maxLines(int) const;
-    int      fieldCount() const { return _field.size(); }
+    QString  text(int) const Q_DECL_OVERRIDE;
+    QPixmap  pixmap(int) const Q_DECL_OVERRIDE;
+    Position position(int) const Q_DECL_OVERRIDE;
+    int      maxLines(int) const Q_DECL_OVERRIDE;
+    int      fieldCount() const Q_DECL_OVERRIDE { return _field.size(); }
 
-    QColor   backColor() const { return _backColor; }
-    bool selected() const { return _selected; }
-    bool current() const { return _current; }
-    bool shaded() const { return _shaded; }
-    bool rotated() const { return _rotated; }
-    bool drawFrame() const { return _drawFrame; }
+    QColor   backColor() const Q_DECL_OVERRIDE { return _backColor; }
+    bool selected() const Q_DECL_OVERRIDE { return _selected; }
+    bool current() const Q_DECL_OVERRIDE { return _current; }
+    bool shaded() const Q_DECL_OVERRIDE { return _shaded; }
+    bool rotated() const Q_DECL_OVERRIDE { return _rotated; }
+    bool drawFrame() const Q_DECL_OVERRIDE { return _drawFrame; }
 
-    const QFont& font() const;
+    const QFont& font() const Q_DECL_OVERRIDE;
 
     // attribute setters
     void setField(int f, const QString& t, const QPixmap& pm = QPixmap(),
@@ -326,8 +326,8 @@ public:
     virtual double sum() const;
     virtual double value() const;
     // replace "Default" position with setting from TreeMapWidget
-    virtual Position position(int) const;
-    virtual const QFont& font() const;
+    Position position(int) const Q_DECL_OVERRIDE;
+    const QFont& font() const Q_DECL_OVERRIDE;
     virtual bool isMarked(int) const;
 
     virtual int borderWidth() const;
@@ -664,15 +664,15 @@ signals:
     void contextMenuRequested(TreeMapItem*, const QPoint &);
 
 protected:
-    void mousePressEvent( QMouseEvent * );
-    void contextMenuEvent( QContextMenuEvent * );
-    void mouseReleaseEvent( QMouseEvent * );
-    void mouseMoveEvent( QMouseEvent * );
-    void mouseDoubleClickEvent( QMouseEvent * );
-    void keyPressEvent( QKeyEvent* );
-    void paintEvent( QPaintEvent * );
+    void mousePressEvent( QMouseEvent * ) Q_DECL_OVERRIDE;
+    void contextMenuEvent( QContextMenuEvent * ) Q_DECL_OVERRIDE;
+    void mouseReleaseEvent( QMouseEvent * ) Q_DECL_OVERRIDE;
+    void mouseMoveEvent( QMouseEvent * ) Q_DECL_OVERRIDE;
+    void mouseDoubleClickEvent( QMouseEvent * ) Q_DECL_OVERRIDE;
+    void keyPressEvent( QKeyEvent* ) Q_DECL_OVERRIDE;
+    void paintEvent( QPaintEvent * ) Q_DECL_OVERRIDE;
     void fontChange( const QFont& );
-    bool event(QEvent *event);
+    bool event(QEvent *event) Q_DECL_OVERRIDE;
 
 private:
     TreeMapItemList diff(TreeMapItemList&, TreeMapItemList&);

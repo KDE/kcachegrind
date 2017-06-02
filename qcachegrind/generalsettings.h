@@ -33,8 +33,8 @@ public:
     explicit GeneralSettings(QWidget* parent);
     virtual ~GeneralSettings() {}
 
-    bool check(QString&, QString&);
-    void accept();
+    bool check(QString&, QString&) Q_DECL_OVERRIDE;
+    void accept() Q_DECL_OVERRIDE;
 
 private:
     Ui::GeneralSettings ui;

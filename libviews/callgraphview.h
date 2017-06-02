@@ -260,15 +260,15 @@ public:
     StorableGraphOptions();
     virtual ~StorableGraphOptions(){}
     // implementation of getters
-    virtual double funcLimit() { return _funcLimit; }
-    virtual double callLimit() { return _callLimit; }
-    virtual int maxCallerDepth() { return _maxCallerDepth; }
-    virtual int maxCalleeDepth() { return _maxCalleeDepth; }
-    virtual bool showSkipped() { return _showSkipped; }
-    virtual bool expandCycles() { return _expandCycles; }
-    virtual bool clusterGroups() { return _clusterGroups; }
-    virtual int detailLevel() { return _detailLevel; }
-    virtual Layout layout() { return _layout; }
+    double funcLimit() Q_DECL_OVERRIDE { return _funcLimit; }
+    double callLimit() Q_DECL_OVERRIDE { return _callLimit; }
+    int maxCallerDepth() Q_DECL_OVERRIDE { return _maxCallerDepth; }
+    int maxCalleeDepth() Q_DECL_OVERRIDE { return _maxCalleeDepth; }
+    bool showSkipped() Q_DECL_OVERRIDE { return _showSkipped; }
+    bool expandCycles() Q_DECL_OVERRIDE { return _expandCycles; }
+    bool clusterGroups() Q_DECL_OVERRIDE { return _clusterGroups; }
+    int detailLevel() Q_DECL_OVERRIDE { return _detailLevel; }
+    Layout layout() Q_DECL_OVERRIDE { return _layout; }
 
     // setters
     void setMaxCallerDepth(int d) { _maxCallerDepth = d; }
@@ -388,10 +388,10 @@ signals:
     void zoomRectMoveFinished();
 
 protected:
-    void mousePressEvent(QMouseEvent*);
-    void mouseMoveEvent(QMouseEvent*);
-    void mouseReleaseEvent(QMouseEvent*);
-    void drawForeground(QPainter * p, const QRectF&);
+    void mousePressEvent(QMouseEvent*) Q_DECL_OVERRIDE;
+    void mouseMoveEvent(QMouseEvent*) Q_DECL_OVERRIDE;
+    void mouseReleaseEvent(QMouseEvent*) Q_DECL_OVERRIDE;
+    void drawForeground(QPainter * p, const QRectF&) Q_DECL_OVERRIDE;
 
     QRectF _zoomRect;
     bool _movingZoomRect;
@@ -421,14 +421,14 @@ public:
 
     void updateGroup();
     void setSelected(bool);
-    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
+    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) Q_DECL_OVERRIDE;
 
     GraphNode* node()
     {
         return _node;
     }
 
-    int type() const
+    int type() const Q_DECL_OVERRIDE
     {
         return CANVAS_NODE;
     }
@@ -444,14 +444,14 @@ class CanvasEdgeLabel : public QGraphicsRectItem, public StoredDrawParams
 public:
     CanvasEdgeLabel(CallGraphView*, CanvasEdge*, int, int, int, int);
 
-    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
+    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) Q_DECL_OVERRIDE;
 
     CanvasEdge* canvasEdge()
     {
         return _ce;
     }
 
-    int type() const
+    int type() const Q_DECL_OVERRIDE
     {
         return CANVAS_EDGELABEL;
     }
@@ -474,14 +474,14 @@ class CanvasEdgeArrow : public QGraphicsPolygonItem
 public:
     explicit CanvasEdgeArrow(CanvasEdge*);
 
-    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
+    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) Q_DECL_OVERRIDE;
 
     CanvasEdge* canvasEdge()
     {
         return _ce;
     }
 
-    int type() const
+    int type() const Q_DECL_OVERRIDE
     {
         return CANVAS_EDGEARROW;
     }
@@ -496,7 +496,7 @@ class CanvasEdge : public QGraphicsPathItem
 public:
     explicit CanvasEdge(GraphEdge*);
 
-    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
+    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) Q_DECL_OVERRIDE;
 
     void setSelected(bool);
 
@@ -526,7 +526,7 @@ public:
         return _edge;
     }
 
-    int type() const
+    int type() const Q_DECL_OVERRIDE
     {
         return CANVAS_EDGE;
     }
@@ -546,7 +546,7 @@ class CanvasFrame : public QGraphicsRectItem
 public:
     explicit CanvasFrame(CanvasNode*);
 
-    int type() const
+    int type() const Q_DECL_OVERRIDE
     {
         return CANVAS_FRAME;
     }
@@ -556,7 +556,7 @@ public:
         return false;
     }
 
-    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
+    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) Q_DECL_OVERRIDE;
 
 private:
     static QPixmap* _p;
@@ -582,15 +582,15 @@ public:
                            const QString& name);
     ~CallGraphView();
 
-    void restoreOptions(const QString& prefix, const QString& postfix);
-    void saveOptions(const QString& prefix, const QString& postfix);
+    void restoreOptions(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
+    void saveOptions(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
 
-    QWidget* widget()
+    QWidget* widget() Q_DECL_OVERRIDE
     {
         return this;
     }
 
-    QString whatsThis() const;
+    QString whatsThis() const Q_DECL_OVERRIDE;
 
     ZoomPosition zoomPos() const
     {
@@ -620,21 +620,21 @@ public slots:
     void layoutTriggered(QAction*);
 
 protected:
-    void resizeEvent(QResizeEvent*);
-    void mousePressEvent(QMouseEvent*);
-    void mouseMoveEvent(QMouseEvent*);
-    void mouseReleaseEvent(QMouseEvent*);
-    void mouseDoubleClickEvent(QMouseEvent*);
-    void contextMenuEvent(QContextMenuEvent*);
-    void keyPressEvent(QKeyEvent*);
-    void focusInEvent(QFocusEvent*);
-    void focusOutEvent(QFocusEvent*);
-    void scrollContentsBy(int dx, int dy);
+    void resizeEvent(QResizeEvent*) Q_DECL_OVERRIDE;
+    void mousePressEvent(QMouseEvent*) Q_DECL_OVERRIDE;
+    void mouseMoveEvent(QMouseEvent*) Q_DECL_OVERRIDE;
+    void mouseReleaseEvent(QMouseEvent*) Q_DECL_OVERRIDE;
+    void mouseDoubleClickEvent(QMouseEvent*) Q_DECL_OVERRIDE;
+    void contextMenuEvent(QContextMenuEvent*) Q_DECL_OVERRIDE;
+    void keyPressEvent(QKeyEvent*) Q_DECL_OVERRIDE;
+    void focusInEvent(QFocusEvent*) Q_DECL_OVERRIDE;
+    void focusOutEvent(QFocusEvent*) Q_DECL_OVERRIDE;
+    void scrollContentsBy(int dx, int dy) Q_DECL_OVERRIDE;
 
 private:
     void updateSizes(QSize s = QSize(0,0));
-    CostItem* canShow(CostItem*);
-    void doUpdate(int, bool);
+    CostItem* canShow(CostItem*) Q_DECL_OVERRIDE;
+    void doUpdate(int, bool) Q_DECL_OVERRIDE;
     void refresh();
     void makeFrame(CanvasNode*, bool active);
     void clear();

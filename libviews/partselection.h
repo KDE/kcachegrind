@@ -42,14 +42,14 @@ class PartSelection: public QWidget, public TraceItemView
 public:
     explicit PartSelection(TopLevelBase*, QWidget* parent = 0);
 
-    virtual QWidget* widget() { return this; }
-    QString whatsThis() const;
-    void setData(TraceData*);
+    QWidget* widget() Q_DECL_OVERRIDE { return this; }
+    QString whatsThis() const Q_DECL_OVERRIDE;
+    void setData(TraceData*) Q_DECL_OVERRIDE;
 
     PartAreaWidget* graph() { return _partAreaWidget; }
 
-    void saveOptions(const QString& prefix, const QString& postfix);
-    void restoreOptions(const QString& prefix, const QString& postfix);
+    void saveOptions(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
+    void restoreOptions(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
 
 signals:
     void partsHideSelected();
@@ -67,8 +67,8 @@ public slots:
 
 private:
     // reimplementations of TraceItemView
-    CostItem* canShow(CostItem*);
-    void doUpdate(int, bool);
+    CostItem* canShow(CostItem*) Q_DECL_OVERRIDE;
+    void doUpdate(int, bool) Q_DECL_OVERRIDE;
 
     // helper for doUpdate
     void selectParts(const TracePartList& list);

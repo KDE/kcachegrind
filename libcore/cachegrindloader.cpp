@@ -40,8 +40,8 @@ class CachegrindLoader: public Loader
 public:
     CachegrindLoader();
 
-    bool canLoad(QIODevice* file);
-    int  load(TraceData*, QIODevice* file, const QString& filename);
+    bool canLoad(QIODevice* file) Q_DECL_OVERRIDE;
+    int  load(TraceData*, QIODevice* file, const QString& filename) Q_DECL_OVERRIDE;
 
 private:
     void error(QString);
