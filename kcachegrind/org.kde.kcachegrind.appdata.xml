@@ -44,6 +44,7 @@
   <summary xml:lang="tr">Profil Önyüzü</summary>
   <summary xml:lang="uk">Інтерфейс до Profiler</summary>
   <summary xml:lang="x-test">xxProfiler Frontendxx</summary>
+  <summary xml:lang="zh-CN">性能测试数据前端</summary>
   <summary xml:lang="zh-TW">分析器前端</summary>
   <description>
     <p>
@@ -85,6 +86,7 @@
     <p xml:lang="tr">Özellikler:</p>
     <p xml:lang="uk">Можливості:</p>
     <p xml:lang="x-test">xxFeatures:xx</p>
+    <p xml:lang="zh-CN">功能：</p>
     <ul>
       <li>KCachegrind visualizes profiles (i.e. runtime characteristics) of applications in various ways,
           including call graph vizualisations and source/disassembler annotation.</li>
