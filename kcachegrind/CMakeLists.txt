@@ -35,6 +35,6 @@ install( PROGRAMS org.kde.kcachegrind.desktop  DESTINATION  ${KDE_INSTALL_APPDIR
 install( FILES tips  DESTINATION  ${KDE_INSTALL_DATADIR}/kcachegrind )
 install( FILES kcachegrindui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/kcachegrind )
 
-ecm_install_icons( ICONS 32-apps-kcachegrind.png  48-apps-kcachegrind.png DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor   )
+ecm_install_icons( ICONS 128-apps-kcachegrind.png 64-apps-kcachegrind.png 32-apps-kcachegrind.png  48-apps-kcachegrind.png DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor   )
 
 
