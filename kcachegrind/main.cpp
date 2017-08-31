@@ -49,6 +49,7 @@ int main( int argc, char ** argv )
     aboutData.addAuthor(i18n("Josef Weidendorfer"),
                         i18n("Author/Maintainer"),
                         QStringLiteral("Josef.Weidendorfer@gmx.de"));
+    aboutData.setDesktopFileName(QStringLiteral("org.kde.kcachegrind"));
 
     KAboutData::setApplicationData(aboutData);
 
