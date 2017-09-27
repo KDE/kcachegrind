@@ -84,6 +84,10 @@ public:
         const CanvasEdge* ce2 = ge2->canvasEdge();
 
         // sort invisible edges (ie. without matching CanvasEdge) in front
+        if (!ce1 && !ce2) {
+            // strict ordering required for std::sort
+            return (ge1 < ge2);
+        }
         if (!ce1) return true;
         if (!ce2) return false;
 

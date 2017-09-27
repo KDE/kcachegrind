@@ -494,8 +494,11 @@ bool instrJumpLowLessThan(const TraceInstrJump* ij1,
 
     if (addr1Low != addr2Low) return (addr1Low < addr2Low);
     // jump ends come before jump starts
-    if (addr1Low == ij1->instrTo()->addr()) return true;
-    if (addr2Low == ij2->instrTo()->addr()) return false;
+    bool low1IsEnd = (addr1Low == ij1->instrTo()->addr());
+    bool low2IsEnd = (addr2Low == ij2->instrTo()->addr());
+    if (low1IsEnd && !low2IsEnd) return true;
+    if (low2IsEnd && !low1IsEnd) return false;
+    // both the low address of jump 1 and 2 are end or start
     return (addr1High < addr2High);
 }
 
@@ -510,8 +513,11 @@ bool instrJumpHighLessThan(const TraceInstrJump* ij1,
 
     if (addr1High != addr2High) return (addr1High < addr2High);
     // jump ends come before jump starts
-    if (addr1High == ij1->instrTo()->addr()) return true;
-    if (addr2High == ij2->instrTo()->addr()) return false;
+    bool high1IsEnd = (addr1High == ij1->instrTo()->addr());
+    bool high2IsEnd = (addr2High == ij2->instrTo()->addr());
+    if (high1IsEnd && !high2IsEnd) return true;
+    if (high2IsEnd && !high1IsEnd) return false;
+    // both the high address of jump 1 and 2 are end or start
     return (addr1Low < addr2Low);
 }
 
