@@ -557,8 +557,11 @@ bool lineJumpLowLessThan(const TraceLineJump* jump1,
 
     if (line1Low != line2Low) return (line1Low < line2Low);
     // jump ends come before jump starts
-    if (line1Low == jump1->lineTo()->lineno()) return true;
-    if (line2Low == jump2->lineTo()->lineno()) return false;
+    bool low1IsEnd = (line1Low == jump1->lineTo()->lineno());
+    bool low2IsEnd = (line2Low == jump2->lineTo()->lineno());
+    if (low1IsEnd && !low2IsEnd) return true;
+    if (low2IsEnd && !low1IsEnd) return false;
+    // both the low line of jump 1 and 2 are end or start
     return (line1High < line2High);
 }
 
@@ -573,8 +576,11 @@ bool lineJumpHighLessThan(const TraceLineJump* jump1,
 
     if (line1High != line2High) return (line1High < line2High);
     // jump ends come before jump starts
-    if (line1High == jump1->lineTo()->lineno()) return true;
-    if (line2High == jump2->lineTo()->lineno()) return false;
+    bool high1IsEnd = (line1High == jump1->lineTo()->lineno());
+    bool high2IsEnd = (line2High == jump2->lineTo()->lineno());
+    if (high1IsEnd && !high2IsEnd) return true;
+    if (high2IsEnd && !high1IsEnd) return false;
+    // both the high line of jump 1 and 2 are end or start
     return (line1Low < line2Low);
 }
 
