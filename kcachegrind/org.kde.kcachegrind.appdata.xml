@@ -96,6 +96,7 @@
           including call graph vizualisations and source/disassembler annotation.</li>
       <li xml:lang="ca">El KCachegrind visualitza els anàlisis de rendiment (és a dir, característiques en temps d'execució) de les aplicacions en diverses maneres, incloent les visualitzacions de les gràfiques de crides i anotacions del codi font/desassemblador.</li>
       <li xml:lang="ca-valencia">El KCachegrind visualitza els anàlisis de rendiment (és a dir, característiques en temps d'execució) de les aplicacions en diverses maneres, incloent les visualitzacions de les gràfiques de crides i anotacions del codi font/desassemblador.</li>
+      <li xml:lang="de">KCachegrind visualisiert Profile (d.h. Laufzeitmerkmale) von Anwendungen auf verschiedene Art und Weise, einschließlich der Visualisierung von Aufrufdiagrammen und von Quelltext- und Disassembler-Anmerkungen.</li>
       <li xml:lang="en-GB">KCachegrind visualises profiles (i.e. runtime characteristics) of applications in various ways, including call graph visualisations and source/disassembler annotation.</li>
       <li xml:lang="es">KCachegrind visualiza análisis de rendimiento (es decir, características en tiempo de ejecución) de las aplicaciones de diversos modos, incluyendo visualizaciones de gráficos de llamadas y anotaciones de código fuente/desensamblador.</li>
       <li xml:lang="fr">KCachegrind permet d'afficher les caractéristiques d'exécution (le profilage) d'applications de nombreuses manières, notamment en affichant le graphe d'appels et les annotations des sources et du désassembleur.</li>
@@ -190,6 +191,7 @@
       <li>Simultaneous display of 2 event types in Call and Annotation View</li>
       <li xml:lang="ca">Visualització simultània de 2 tipus d'esdeveniments a la vista de crides i anotacions</li>
       <li xml:lang="ca-valencia">Visualització simultània de 2 tipus d'esdeveniments a la vista de crides i anotacions</li>
+      <li xml:lang="de">Gleichzeitige Anzeige von 2 Ereignisarten in der Aufruf- und Anmerkungsansicht</li>
       <li xml:lang="en-GB">Simultaneous display of 2 event types in Call and Annotation View</li>
       <li xml:lang="es">Visualización simultánea de 2 tipos de eventos en la vista de llamada y anotación</li>
       <li xml:lang="fr">Affichage simultané de 2 types d'évènements dans les vues Appel et Annotation</li>
