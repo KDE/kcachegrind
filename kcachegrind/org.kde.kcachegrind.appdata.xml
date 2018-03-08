@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component type="desktop">
-  <id>org.kde.kcachgrind.desktop</id>
+  <id>org.kde.kcachegrind.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>KCachegrind</name>
@@ -221,5 +221,6 @@
   <update_contact>Josef.Weidendorfer_at_gmx.de</update_contact>
   <provides>
     <binary>kcachegrind</binary>
+    <id>org.kde.kcachgrind.desktop</id>
   </provides>
 </component>
