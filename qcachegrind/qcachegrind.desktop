@@ -1,6 +1,5 @@
 [Desktop Entry]
 Type=Application
-Encoding=UTF-8
 Exec=qcachegrind %F
 MimeType=application/x-kcachegrind;
 Icon=kcachegrind
