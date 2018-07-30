@@ -70,6 +70,16 @@ QString getObjDump()
     return env.value(QStringLiteral("OBJDUMP"), QStringLiteral("objdump"));
 }
 
+static
+QString getObjDumpFormat()
+{
+    if (env.isEmpty())
+        env = QProcessEnvironment::systemEnvironment();
+
+    return env.value(QStringLiteral("OBJDUMP_FORMAT"));
+}
+
+
 // parsing output of 'objdump'
 
 static Addr parseAddr(char* buf)
@@ -838,18 +848,19 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 
     // call objdump synchronously
     QString objfile = dir + '/' + function->object()->shortName();
-    QStringList objdumpArgs = QStringList()
-                              << QStringLiteral("-C") << QStringLiteral("-d")
-                              << QStringLiteral("--start-address=0x%1").arg(dumpStartAddr.toString())
-                              << QStringLiteral("--stop-address=0x%1").arg(dumpEndAddr.toString())
-                              << objfile;
+    QString objdump_format = getObjDumpFormat();
+    if (objdump_format.isEmpty())
+        objdump_format = getObjDump() + " -C -d --start-address=0x%1 --stop-address=0x%2 %3";
+    QString objdumpCmd = objdump_format
+            .arg(dumpStartAddr.toString())
+            .arg(dumpEndAddr.toString())
+            .arg(objfile);
 
-    QString objdumpCmd = getObjDump() + " " + objdumpArgs.join(QStringLiteral(" "));
     qDebug("Running '%s'...", qPrintable(objdumpCmd));
 
     // and run...
     QProcess objdump;
-    objdump.start(getObjDump(), objdumpArgs);
+    objdump.start(objdumpCmd);
     if (!objdump.waitForStarted() ||
         !objdump.waitForFinished()) {
 
