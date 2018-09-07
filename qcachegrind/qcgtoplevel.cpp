@@ -44,7 +44,7 @@
 #include <QWhatsThis>
 
 #ifdef QT_DBUS_SUPPORT
-#include <QtDBus/QDBusConnection>
+#include <QDBusConnection>
 #endif
 
 #include "partselection.h"
@@ -562,8 +562,8 @@ void QCGTopLevel::createActions()
     _eventTypeBox->setMinimumContentsLength(25);
     hint = tr("Select primary event type of costs");
     _eventTypeBox->setToolTip( hint );
-    connect( _eventTypeBox, SIGNAL(activated(const QString&)),
-             this, SLOT(eventTypeSelected(const QString&)));
+    connect( _eventTypeBox, SIGNAL(activated(QString)),
+             this, SLOT(eventTypeSelected(QString)));
 }
 
 void QCGTopLevel::createMenu()

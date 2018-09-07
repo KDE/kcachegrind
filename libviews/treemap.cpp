@@ -1841,7 +1841,7 @@ void TreeMapWidget::contextMenuEvent( QContextMenuEvent* e )
 {
     //qDebug() << "TreeMapWidget::contextMenuEvent";
 
-    if ( receivers( SIGNAL(contextMenuRequested(TreeMapItem*, const QPoint &)) ) )
+    if ( receivers( SIGNAL(contextMenuRequested(TreeMapItem*,QPoint)) ) )
         e->accept();
 
     if ( e->reason() == QContextMenuEvent::Keyboard ) {

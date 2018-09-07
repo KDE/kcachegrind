@@ -43,28 +43,28 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
     _classCS = 0;
     _fileCS = 0;
 
-    connect(objectCombo, SIGNAL(activated(const QString &)),
-            this, SLOT(objectActivated(const QString &)));
-    connect(objectCombo, SIGNAL(editTextChanged(const QString &)),
-            this, SLOT(objectActivated(const QString &)));
+    connect(objectCombo, SIGNAL(activated(QString)),
+            this, SLOT(objectActivated(QString)));
+    connect(objectCombo, SIGNAL(editTextChanged(QString)),
+            this, SLOT(objectActivated(QString)));
     connect(objectCheck, &QAbstractButton::toggled,
             this, &ConfigDlg::objectCheckChanged);
     connect(objectColor, &KColorButton::changed,
             this, &ConfigDlg::objectColorChanged);
 
-    connect(classCombo, SIGNAL(activated(const QString &)),
-            this, SLOT(classActivated(const QString &)));
-    connect(classCombo, SIGNAL(editTextChanged(const QString &)),
-            this, SLOT(classActivated(const QString &)));
+    connect(classCombo, SIGNAL(activated(QString)),
+            this, SLOT(classActivated(QString)));
+    connect(classCombo, SIGNAL(editTextChanged(QString)),
+            this, SLOT(classActivated(QString)));
     connect(classCheck, &QAbstractButton::toggled,
             this, &ConfigDlg::classCheckChanged);
     connect(classColor, &KColorButton::changed,
             this, &ConfigDlg::classColorChanged);
 
-    connect(fileCombo, SIGNAL(activated(const QString &)),
-            this, SLOT(fileActivated(const QString &)));
-    connect(fileCombo, SIGNAL(editTextChanged(const QString &)),
-            this, SLOT(fileActivated(const QString &)));
+    connect(fileCombo, SIGNAL(activated(QString)),
+            this, SLOT(fileActivated(QString)));
+    connect(fileCombo, SIGNAL(editTextChanged(QString)),
+            this, SLOT(fileActivated(QString)));
     connect(fileCheck, &QAbstractButton::toggled,
             this, &ConfigDlg::fileCheckChanged);
     connect(fileColor, &KColorButton::changed,

@@ -42,7 +42,7 @@
 #include <QTemporaryFile>
 #include <QTimer>
 #include <QUrl>
-#include <QtDBus/QDBusConnection>
+#include <QDBusConnection>
 
 #include <ktoggleaction.h>
 #include <ktoolbarpopupaction.h>
@@ -427,7 +427,7 @@ void TopLevel::createMiscActions()
 
     action = actionCollection()->addAction( QStringLiteral("file_add") );
     action->setText( i18n( "&Add..." ) );
-    connect(action, SIGNAL(triggered(bool) ), SLOT(add()));
+    connect(action, SIGNAL(triggered(bool)), SLOT(add()));
     hint = i18n("<b>Add Profile Data</b>"
                 "<p>This opens an additional profile data file in the current window.</p>");
     action->setWhatsThis( hint );
@@ -486,7 +486,7 @@ void TopLevel::createMiscActions()
     action->setToolTip( hint );
     action->setWhatsThis( hint );
 
-    _openRecent = KStandardAction::openRecent(this, SLOT(load(const QUrl&)),
+    _openRecent = KStandardAction::openRecent(this, SLOT(load(QUrl)),
                                               actionCollection());
 
     KStandardAction::showStatusbar(this,
@@ -661,8 +661,8 @@ void TopLevel::createMiscActions()
 
     // cost types are dependent on loaded data, thus KSelectAction
     // is filled in setData()
-    connect( _saCost, SIGNAL(triggered(const QString&)),
-             this, SLOT(eventTypeSelected(const QString&)));
+    connect( _saCost, SIGNAL(triggered(QString)),
+             this, SLOT(eventTypeSelected(QString)));
 
     _saCost2 = actionCollection()->add<KSelectAction>(QStringLiteral("view_cost_type2"));
     _saCost2->setText(i18n("Secondary Event Type"));
@@ -672,8 +672,8 @@ void TopLevel::createMiscActions()
     _saCost2->setWhatsThis( hint );
     _saCost2->setItems(dummyItems);
 
-    connect( _saCost2, SIGNAL(triggered(const QString&)),
-             this, SLOT(eventType2Selected(const QString&)));
+    connect( _saCost2, SIGNAL(triggered(QString)),
+             this, SLOT(eventType2Selected(QString)));
 
     saGroup = actionCollection()->add<KSelectAction>(QStringLiteral("view_group_type"));
     saGroup->setText(i18n("Grouping"));
@@ -713,7 +713,7 @@ void TopLevel::createMiscActions()
     _taSplitDir->setWhatsThis( hint );
 
     // copied from KMail...
-    KStandardAction::tipOfDay( this, SLOT( slotShowTip() ), actionCollection() );
+    KStandardAction::tipOfDay( this, SLOT(slotShowTip()), actionCollection() );
 }
 
 void TopLevel::createActions()
