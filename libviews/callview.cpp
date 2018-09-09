@@ -259,7 +259,8 @@ void CallView::doUpdate(int changeType, bool)
 void CallView::refresh()
 {
     clear();
-    setColumnWidth(1, _eventType2 ? 50:0);
+    setColumnHidden(2, (_eventType2 == 0));
+    setColumnHidden(3, (_eventType2 == 0));
 
     if (_eventType) {
         headerItem()->setText(0, _eventType->name());
@@ -295,25 +296,34 @@ void CallView::refresh()
 
 void CallView::setCostColumnWidths()
 {
-    // inclusive cost columns
+    // first columns 0 + 2
     resizeColumnToContents(0);
-    if (_eventType2)
+    if (_eventType2) {
+        setColumnHidden(2, false);
         resizeColumnToContents(2);
-    else
-        setColumnWidth(2, 0);
-
-    if (_data->maxCallCount() == 0) {
-        // hide "per call" columns and call count column
-        setColumnWidth(1, 0);
-        setColumnWidth(3, 0);
-        setColumnWidth(4, 0);
     }
     else {
+        setColumnHidden(2, true);
+    }
+
+    // then "per call" columns
+    if (_data->maxCallCount() == 0) {
+        // hide "per call" columns and call count column
+        setColumnHidden(1, true);
+        setColumnHidden(3, true);
+        setColumnHidden(4, true);
+    }
+    else {
+        setColumnHidden(1, false);
         resizeColumnToContents(1);
-        if (_eventType2)
+        if (_eventType2) {
+            setColumnHidden(3, false);
             resizeColumnToContents(3);
+        }
         else
-            setColumnWidth(3, 0);
+            setColumnHidden(3, true);
+
+        setColumnHidden(4, false);
         resizeColumnToContents(4);
     }
 }

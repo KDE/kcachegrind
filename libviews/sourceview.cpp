@@ -304,8 +304,10 @@ void SourceView::refresh()
     clear();
     setColumnWidth(0, 20);
     setColumnWidth(1, 50);
-    setColumnWidth(2, _eventType2 ? 50:0);
-    setColumnWidth(3, 0); // arrows, defaults to invisible
+    setColumnHidden(2, (_eventType2 == 0));
+    setColumnWidth(2, 50);
+    // arrows, defaults to invisible
+    setColumnHidden(3, true);
     if (_eventType)
         headerItem()->setText(1, _eventType->name());
     if (_eventType2)
@@ -357,7 +359,6 @@ void SourceView::refresh()
 #else
         header()->setResizeMode(2, QHeaderView::Interactive);
 #endif
-        setColumnWidth(2, 0);
     }
     // reset to the original position - this is useful when the view
     // is refreshed just because we change between relative/absolute
@@ -929,11 +930,13 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
         }
     }
 
-    if (arrowLevels())
+    if (arrowLevels()) {
         //fix this: setColumnWidth(3, 10 + 6*arrowLevels() + itemMargin() * 2);
         setColumnWidth(3, 10 + 6*arrowLevels() + 2);
+        setColumnHidden(3, false);
+    }
     else
-        setColumnWidth(3, 0);
+        setColumnHidden(3, true);
 }
 
 

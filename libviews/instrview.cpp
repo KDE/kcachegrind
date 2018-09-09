@@ -304,6 +304,7 @@ void InstrView::context(const QPoint & p)
         // remember width when hiding
         if (!_showHexCode)
             _lastHexCodeWidth = columnWidth(4);
+        // fixme: when showing, width may be wrong if not initially shown
         setColumnWidths();
     }
 }
@@ -470,12 +471,9 @@ void InstrView::setColumnWidths()
 #else
     header()->setResizeMode(4, QHeaderView::Interactive);
 #endif
-    if (_showHexCode) {
+    setColumnHidden(4, !_showHexCode);
+    if (_showHexCode)
         setColumnWidth(4, _lastHexCodeWidth);
-    }
-    else {
-        setColumnWidth(4, 0);
-    }
 }
 
 // compare functions for jump arrow drawing
@@ -538,19 +536,12 @@ void InstrView::refresh()
     clear();
     setColumnWidth(0, 20);
     setColumnWidth(1, 50);
-    setColumnWidth(2, _eventType2 ? 50:0);
-    setColumnWidth(3, 0);   // arrows, defaults to invisible
-    setColumnWidth(4, 0);   // hex code column
+    setColumnHidden(2, (_eventType2 == 0));
+    setColumnWidth(2, 50);
+    setColumnHidden(3, true); // arrows, defaults to invisible
+    setColumnHidden(4, true); // hex code column, defaults to invisible
     setColumnWidth(5, 50);  // command column
     setColumnWidth(6, 250); // arg column
-
-    // reset to automatic sizing to get column width
-#if QT_VERSION >= 0x050000
-    header()->setSectionResizeMode(4, QHeaderView::ResizeToContents);
-#else
-    header()->setResizeMode(4, QHeaderView::ResizeToContents);
-#endif
-
 
     if (_eventType)
         headerItem()->setText(1, _eventType->name());
@@ -597,6 +588,16 @@ void InstrView::refresh()
         new InstrItem(this, this, 5, tr("      --collect-jumps=yes"));
         setColumnWidths();
         return;
+    }
+
+    if (_showHexCode) {
+        // make column visible and set to automatic sizing to get column width
+        setColumnHidden(4, false);
+#if QT_VERSION >= 0x050000
+        header()->setSectionResizeMode(4, QHeaderView::ResizeToContents);
+#else
+        header()->setResizeMode(4, QHeaderView::ResizeToContents);
+#endif
     }
 
     // initialisation for arrow drawing
@@ -657,7 +658,6 @@ void InstrView::refresh()
 #else
         header()->setResizeMode(2, QHeaderView::Interactive);
 #endif
-        setColumnWidth(2, 0);
     }
 
     // reset to the original position - this is useful when the view
@@ -1128,10 +1128,12 @@ bool InstrView::fillInstrRange(TraceFunction* function,
         }
     }
 
-    if (arrowLevels())
+    if (arrowLevels()) {
+        setColumnHidden(3, false);
         setColumnWidth(3, 10 + 6*arrowLevels() + 2);
+    }
     else
-        setColumnWidth(3, 0);
+        setColumnHidden(3, true);
 
     if (noAssLines > 1) {
         // trace cost not matching code
