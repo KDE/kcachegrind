@@ -107,6 +107,8 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
     hboxLayout->addWidget(searchLabel);
 
     searchEdit = new QLineEdit(this);
+    searchEdit->setClearButtonEnabled(true);
+    searchEdit->setPlaceholderText(tr("Search Query"));
     searchLabel->setBuddy(searchEdit);
     hboxLayout->addWidget(searchEdit);
 
