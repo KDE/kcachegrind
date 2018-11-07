@@ -225,6 +225,7 @@
   <url type="homepage">http://kde.org/applications/development/kcachegrind/</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kcachegrind</url>
   <url type="help">https://docs.kde.org/?application=kcachegrind</url>
+  <url type="donation">https://www.kde.org/community/donations/?app=kcachegrind&amp;source=appdata</url>
   <project_group>KDE</project_group>
   <update_contact>Josef.Weidendorfer_at_gmx.de</update_contact>
   <provides>
