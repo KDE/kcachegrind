@@ -43,7 +43,7 @@ public:
 
     /**
      * FixString never does a deep copy! You have to make sure that
-     * the string starting at the char pointer is valid trough the
+     * the string starting at the char pointer is valid through the
      * lifetime of FixString.
      */
     FixString(const char*, int len);

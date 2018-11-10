@@ -982,7 +982,7 @@ void GraphExporter::buildGraph(TraceFunction* f, int depth, bool toCallees,
     // A negative depth limit means "unlimited"
     int maxDepth = toCallees ? _go->maxCalleeDepth()
                              : _go->maxCallerDepth();
-    // Never go beyound a depth of 100
+    // Never go beyond a depth of 100
     if ((maxDepth < 0) || (maxDepth>100)) maxDepth = 100;
     if (depth >= maxDepth) {
         if (0)
@@ -2052,7 +2052,7 @@ void CallGraphView::refresh()
     _selectedEdge = 0;
 
     /*
-     * Call 'dot' asynchronoulsy in the background with the aim to
+     * Call 'dot' asynchronously in the background with the aim to
      * - have responsive GUI while layout task runs (potentially long!)
      * - notify user about a long run, using a timer
      * - kill long running 'dot' processes when another layout is

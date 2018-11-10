@@ -167,7 +167,7 @@ public:
     QString title() const { return _title; }
 
     // We depend on derived class to be a widget.
-    // Force overiding by making this abstract.
+    // Force overriding by making this abstract.
     virtual QWidget* widget() = 0;
 
     /**

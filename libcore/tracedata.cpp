@@ -3196,7 +3196,7 @@ int TraceData::internalLoad(QIODevice* device, const QString& filename)
 
     Loader* l = Loader::matchingLoader(device);
     if (!l) {
-        // special case emtpy file: ignore...
+        // special case empty file: ignore...
         if (device->size() == 0) return 0;
 
         _logger->loadStart(filename);
@@ -3436,7 +3436,7 @@ TraceFunction* TraceData::function(const QString& name,
     // But such an order is not enforced by the format. If the cost of
     // an inlined function from another source file would be printed first,
     // the attribution would go wrong. The format also allows cost of
-    // the same function to be spreaded over the dump. With wrong
+    // the same function to be spread over the dump. With wrong
     // attributions, it can happen that cost of the same function is
     // interpreted as being from distinct functions.
     // For a correct solution, the format needs to be more expressive,

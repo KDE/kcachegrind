@@ -55,7 +55,7 @@ QStringList GlobalConfig::knownTypes()
       << QStringLiteral("I1mr") << QStringLiteral("D1mr") << QStringLiteral("D1mw") << QStringLiteral("L1m");
     // Valgrind < 3.6.0
     l << QStringLiteral("I2mr") << QStringLiteral("D2mr") << QStringLiteral("D2mw") << QStringLiteral("L2m");
-    // Valgrind 3.6.0: L2 events changed to to LL (last level) events
+    // Valgrind 3.6.0: L2 events changed to LL (last level) events
     l << QStringLiteral("ILmr") << QStringLiteral("DLmr") << QStringLiteral("DLmw") << QStringLiteral("LLm");
 
     // branch simulation

@@ -50,7 +50,7 @@ QCachegrind
 -----------
 
 Requirements:
-* Qt5.x (x >=0) or Qt4.y (y >=5) (earlier versions not tested)
+* Qt5.x (x >=2) (earlier versions not tested)
 * Any platform supported by Qt (Linux, Windows, Mac OS X, ...)
 
 Compilation (from base directory):
@@ -80,7 +80,7 @@ KCachegrind
 ------------
 
 Requirements:
-* KDE 4.3 or higher: kdelibs development packages (libs & headers)
+* KF 5.12 or higher: Frameworks development packages (libs & headers)
 * CMake
 
 Commands (from base directory):

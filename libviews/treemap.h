@@ -529,14 +529,14 @@ public:
 
     /**
      * If a children value() is almost the parents sum(),
-     * it can happen that the border to be drawn for visibilty of
+     * it can happen that the border to be drawn for visibility of
      * nesting relations takes to much space, and the
      * parent/child size relation can not be mapped to a correct
      * area size relation.
      *
      * Either
      * (1) Ignore the incorrect drawing, or
-     * (2) Skip drawing of the parent level alltogether.
+     * (2) Skip drawing of the parent level altogether.
      */
     void setSkipIncorrectBorder(bool enable = true);
     bool skipIncorrectBorder() const { return _skipIncorrectBorder; }

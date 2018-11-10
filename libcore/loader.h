@@ -44,7 +44,7 @@ class Logger;
  *   loadStatus(), loadError() and loadWarning() should be called.
  * These are just shown as status, warnings or errors to the
  * user, but do not show real failure, as even errors can be
- * recoverable. For unablility to load a file, return 0 in
+ * recoverable. For inability to load a file, return 0 in
  * load().
  */
 

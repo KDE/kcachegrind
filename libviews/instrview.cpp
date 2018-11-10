@@ -1005,7 +1005,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
         if ( ((costAddr==0)     || (addr > costAddr + 3*context)) &&
              ((nextCostAddr==0) || (addr < nextCostAddr - 3*context)) ) {
 
-            // the very last skipLine can be ommitted
+            // the very last skipLine can be omitted
             if ((it == itEnd) &&
                 (itEnd == function->instrMap()->end())) skipLineWritten=true;
 

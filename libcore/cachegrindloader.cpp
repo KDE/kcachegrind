@@ -827,7 +827,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
                         /* When this signal is connected, it most probably
          * should lead to GUI update. Thus, when multiple
          * "long operations" (like file loading) are in progress,
-         * this can temporarly switch to another operation.
+         * this can temporarily switch to another operation.
          */
                         loadProgress(statusProgress);
                     }

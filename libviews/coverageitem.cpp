@@ -279,7 +279,7 @@ void CalleeCoverageItem::update()
     _cc  = SubCost(_coverage->callCount());
     setText(3, _cc ? _cc.pretty() : QStringLiteral("(0)"));
 
-    // for comparations
+    // for comparisons
     _distance = _coverage->inclusiveMedian();
     QString distString;
     if (_coverage->minDistance() == _coverage->maxDistance())
