@@ -219,6 +219,7 @@
   </description>
   <screenshots>
     <screenshot type="default">
+      <caption>Profiling data analysis with KCachegrind</caption>
       <image>http://kde.org/images/screenshots/kcachegrind.png</image>
     </screenshot>
   </screenshots>
