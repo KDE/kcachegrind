@@ -222,6 +222,7 @@
       <caption>Profiling data analysis with KCachegrind</caption>
       <caption xml:lang="ca">Anàlisi de dades del rendiment amb el KCachegrind</caption>
       <caption xml:lang="ca-valencia">Anàlisi de dades del rendiment amb el KCachegrind</caption>
+      <caption xml:lang="es">Análisis de datos de rendimiento con KCachegrind</caption>
       <caption xml:lang="nl">Analyse van gegevens profileren met KCachegrind</caption>
       <caption xml:lang="pt">Análise dos dados de performance com o KCachegrind</caption>
       <caption xml:lang="sv">Analys av profileringsdata med Kcachegrind</caption>
