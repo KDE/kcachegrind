@@ -1905,7 +1905,7 @@ QString TraceFunction::prettyName() const
                 break;
             case '>':
                 d--;
-                // fall trough
+                // fall through
             default:
                 if (d<=0) res.append(_name[i]);
                 break;
