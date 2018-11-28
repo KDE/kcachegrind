@@ -1084,6 +1084,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
                     _part->totals()->set(mapping, line);
                     continue;
                 }
+                break;
 
             case 'r':
 
