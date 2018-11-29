@@ -17,7 +17,6 @@
   <name xml:lang="nl">KCachegrind</name>
   <name xml:lang="pl">KCachegrind</name>
   <name xml:lang="pt">KCachegrind</name>
-  <name xml:lang="pt-BR">KCachegrind</name>
   <name xml:lang="ru">KCachegrind</name>
   <name xml:lang="sk">KCachegrind</name>
   <name xml:lang="sv">Kcachegrind</name>
@@ -40,7 +39,6 @@
   <summary xml:lang="nl">Profiler-hulpprogramma</summary>
   <summary xml:lang="pl">Nakładka programu profilującego</summary>
   <summary xml:lang="pt">Interface de Análise de Performance</summary>
-  <summary xml:lang="pt-BR">Interface de análise de performance</summary>
   <summary xml:lang="ru">Интерфейс к профилировщику</summary>
   <summary xml:lang="sk">Rozhranie pre profiláciu</summary>
   <summary xml:lang="sv">Profileringsgränssnitt</summary>
@@ -86,7 +84,6 @@
     <p xml:lang="nl">Kenmerken:</p>
     <p xml:lang="pl">Możliwości:</p>
     <p xml:lang="pt">Funcionalidades:</p>
-    <p xml:lang="pt-BR">Recursos:</p>
     <p xml:lang="ru">Возможности:</p>
     <p xml:lang="sk">Funkcie:</p>
     <p xml:lang="sv">Funktioner:</p>
