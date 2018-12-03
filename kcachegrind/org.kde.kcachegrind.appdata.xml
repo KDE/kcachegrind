@@ -224,6 +224,7 @@
       <caption xml:lang="ca">Anàlisi de dades del rendiment amb el KCachegrind</caption>
       <caption xml:lang="ca-valencia">Anàlisi de dades del rendiment amb el KCachegrind</caption>
       <caption xml:lang="de">Visualisierung eine Datenanalyse mit KCachegrind</caption>
+      <caption xml:lang="en-GB">Profiling data analysis with KCachegrind</caption>
       <caption xml:lang="es">Análisis de datos de rendimiento con KCachegrind</caption>
       <caption xml:lang="gl">Analizando datos de rendemento con KCachegrind</caption>
       <caption xml:lang="it">Analisi dei dati di profiling con KCachegrind</caption>
@@ -232,6 +233,7 @@
       <caption xml:lang="sv">Analys av profileringsdata med Kcachegrind</caption>
       <caption xml:lang="uk">Аналіз даних профілювання за допомогою KCachegrind</caption>
       <caption xml:lang="x-test">xxProfiling data analysis with KCachegrindxx</caption>
+      <caption xml:lang="zh-TW">在 KCachegrind 分析資料統計</caption>
       <image>http://kde.org/images/screenshots/kcachegrind.png</image>
     </screenshot>
   </screenshots>
