@@ -38,7 +38,8 @@ public:
     ~FixPool();
 
     /**
-     * Take <size> bytes from the pool
+     * Take @p size bytes from the pool
+     * @param size is the number of bytes
      */
     void* allocate(unsigned int size);
 
@@ -50,8 +51,9 @@ public:
     void* reserve(unsigned int size);
 
     /**
-     * Before calling this, you have to reserve at least <size> bytes
+     * Before calling this, you have to reserve at least @p size bytes
      * with reserveSpace().
+     * @param size is the number of bytes
      */
     bool allocateReserved(unsigned int size);
 
@@ -81,9 +83,10 @@ public:
     ~DynPool();
 
     /**
-     * Take <size> bytes from the pool, changing <*ptr>
+     * Take @p size bytes from the pool, changing @p *ptr
      * to point to this allocated space.
-     * <*ptr> will be changed if the object is moved.
+     * @param size is the number of bytes
+     * @param *ptr will be changed if the object is moved.
      * Returns false if no space available.
      */
     bool allocate(char** ptr, unsigned int size);

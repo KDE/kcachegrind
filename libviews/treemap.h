@@ -343,8 +343,8 @@ public:
     /**
      * Set the sorting for child drawing.
      *
-     * Default is no sorting: <textNo> = -1
-     * For value() sorting, use <textNo> = -2
+     * Default is no sorting: @p textNo = -1
+     * For value() sorting, use @p textNo = -2
      *
      * For fast sorting, set this to -1 before child insertions and call
      * again after inserting all children.
@@ -445,11 +445,11 @@ public:
     void setSelected(TreeMapItem*, bool selected = true);
 
     /**
-     * Switches on the marking <markNo>. Marking 0 switches off marking.
+     * Switches on the marking @p markNo. Marking 0 switches off marking.
      * This is mutually exclusive to selection, and is automatically
      * switched off when selection is changed (also by the user).
      * Marking is visually the same as selection, and is based on
-     * TreeMapItem::isMarked(<markNo>).
+     * TreeMapItem::isMarked(@c markNo).
      * This enables to programmatically show multiple selected items
      * at once even in single selection mode.
      */
@@ -518,10 +518,10 @@ public:
 
     /**
      * Items usually have a size proportional to their value().
-     * With <width>, you can give the minimum width
+     * With @p width, you can give the minimum width
      * of the resulting rectangle to still be drawn.
      * For space not used because of to small items, you can specify
-     * with <reuseSpace> if the background should shine through or
+     * with @p reuseSpace if the background should shine through or
      * the space will be used to enlarge the next item to be drawn
      * at this level.
      */
@@ -654,7 +654,7 @@ signals:
     /**
      * This signal is emitted if the current item changes.
      * If the change is done because of keyboard navigation,
-     * the <kbd> is set to true
+     * the @p keyboard is set to true
      */
     void currentChanged(TreeMapItem*, bool keyboard);
     void clicked(TreeMapItem*);

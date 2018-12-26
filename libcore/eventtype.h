@@ -45,10 +45,10 @@ class EventType
 public:
 
     /**
-     * <name> is a short (non-localized) identifier for the cost type,
+     * @param name is a short (non-localized) identifier for the cost type,
      *   e.g. "l1rm".
-     * <longName> is a long localized string, e.g. "L1 Read Miss"
-     * <formula> uses short names to reference other types
+     * @param longName is a long localized string, e.g. "L1 Read Miss"
+     * @param formula uses short names to reference other types
      */
     explicit EventType(const QString& name,
                        const QString& longName = QString(),
@@ -124,7 +124,7 @@ public:
 
     /**
      * Defines a mapping from indexes into a list of costs to real event types
-     * If <create> is false, checks if this is a existing sub set.
+     * @param types the types
      */
     EventTypeMapping* createMapping(const QString& types);
 
@@ -194,7 +194,8 @@ public:
     { return (i<0 || i>=_count) ? ProfileCostArray::InvalidIndex : _realIndex[i]; }
 
     /**
-     * Get maximal real index for the first <count> mapping indexes.
+     * Get maximal real index for the first @p count mapping indexes.
+     * @param count the count
      */
     int maxRealIndex(int count);
 

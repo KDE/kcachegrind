@@ -131,7 +131,10 @@ public:
 
     /**
      * Rearrange tabs
-     * if <w> == 0, move hidden tabs
+     * if @p w == 0, move hidden tabs
+     * @param w the widget
+     * @param p position
+     * @param wholeArea whether to move the whole area
      */
     void moveTab(QWidget* w, Position, bool wholeArea = false);
 

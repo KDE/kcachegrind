@@ -104,7 +104,9 @@ public:
     ~FixFile();
 
     /**
-     * Read next line into <str>. Returns false on error or EOF.
+     * Read next line into @p str.
+     * @param str is the target string
+     * @returns false on error or EOF.
      */
     bool nextLine(FixString& str);
     bool exists() { return !_openError; }

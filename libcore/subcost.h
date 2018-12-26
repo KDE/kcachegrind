@@ -73,7 +73,7 @@ class EventType;
 typedef QList<ProfileCostArray*> TraceCostList;
 
 /**
- * A class to calculate the <maxSize> ProfileCostArray items
+ * A class to calculate the maxSize ProfileCostArray items
  * with highest cost.
  */
 

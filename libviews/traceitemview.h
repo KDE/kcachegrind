@@ -75,7 +75,7 @@ public:
 
     /**
      * Change type for update functions
-     * - <dataChanged> is used if e.g. cycles are recalculated
+     * - @c dataChanged is used if e.g. cycles are recalculated
      */
     enum { nothingChanged      = 0,
            eventTypeChanged    = 1,
