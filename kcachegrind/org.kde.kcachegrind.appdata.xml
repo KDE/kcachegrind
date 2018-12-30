@@ -12,6 +12,7 @@
   <name xml:lang="es">KCachegrind</name>
   <name xml:lang="fr">KCachegrind</name>
   <name xml:lang="gl">KCachegrind</name>
+  <name xml:lang="id">KCachegrind</name>
   <name xml:lang="it">KCachegrind</name>
   <name xml:lang="ko">KCachegrind</name>
   <name xml:lang="nl">KCachegrind</name>
@@ -35,6 +36,7 @@
   <summary xml:lang="es">Interfaz de analizador de rendimiento</summary>
   <summary xml:lang="fr">Interface de profilage</summary>
   <summary xml:lang="gl">Interface de analizador de rendemento</summary>
+  <summary xml:lang="id">Frontend Pemprofil</summary>
   <summary xml:lang="it">Interfaccia per la profilatura</summary>
   <summary xml:lang="ko">프로파일러 프론트엔드</summary>
   <summary xml:lang="nl">Profiler-hulpprogramma</summary>
@@ -60,6 +62,7 @@
     <p xml:lang="es">KCachegrind es una herramienta de visualización de datos de análisis de rendimiento que se usa para determinar las partes de un programa que consumen más tiempo durante su ejecución.</p>
     <p xml:lang="fr">KCachegrind est un outil d'affichage des données de profilage, utilisé pour déterminer les segments prenant le plus de temps lors de l'exécution d'un programme.</p>
     <p xml:lang="gl">KCachegrind é unha ferramenta de visualización de datos de rendemento que se usa para determinar as partes da execución dun programa que consumen máis tempo.</p>
+    <p xml:lang="id">KCachegrind adalah sebuah alat virtualidasi data profil, digunakan untuk menentukan seberapa memakan waktu dalam eksekusi program.</p>
     <p xml:lang="it">KCachegrind è uno strumento di visualizzazione dei dati di profilatura, usato per determinare dove viene maggiormente speso il tempo durante l'esecuzione di un programma.</p>
     <p xml:lang="ko">KCachegrind는 프로그램을 프로파일링하여 실행 시간의 가장 많은 부분을 차지하는 항목을 찾습니다.</p>
     <p xml:lang="nl">KCachegrind is een hulpmiddel voor visualisatie van profielgegevens en wordt gebruikt om de meest tijdrovende delen in het uitvoeren van een programma te bepalen.</p>
@@ -81,6 +84,7 @@
     <p xml:lang="es">Funciones:</p>
     <p xml:lang="fr">Fonctionnalités :</p>
     <p xml:lang="gl">Funcionalidades:</p>
+    <p xml:lang="id">Fitur:</p>
     <p xml:lang="it">Funzionalità:</p>
     <p xml:lang="ko">기능:</p>
     <p xml:lang="nl">Kenmerken:</p>
@@ -105,6 +109,7 @@
       <li xml:lang="es">KCachegrind visualiza análisis de rendimiento (es decir, características en tiempo de ejecución) de las aplicaciones de diversos modos, incluyendo visualizaciones de gráficos de llamadas y anotaciones de código fuente/desensamblador.</li>
       <li xml:lang="fr">KCachegrind permet d'afficher les caractéristiques d'exécution (le profilage) d'applications de nombreuses manières, notamment en affichant le graphe d'appels et les annotations des sources et du désassembleur.</li>
       <li xml:lang="gl">Varios tipos de visualizacións dos datos de rendemento dun aplicativo, como un gráfico de chamadas ou anotacións no código fonte ou no código máquina.</li>
+      <li xml:lang="id">KCachegrind memvisualkan profil (mis. karakteristik runtime) pada aplikasi dalam beberapa cara, termasuk visualisasi grafik panggilan dan anotasi sumber/disassembler.</li>
       <li xml:lang="it">KCachegrind visualizza profili (cioè caratteristiche a tempo di esecuzione) delle applicazioni in vari modi, tra cui la visualizzazione del grafico delle chiamata e le annotazioni sul sorgente/dal disassemblatore.</li>
       <li xml:lang="ko">KCachegrind는 호출 그래프 시각화, 원본 코드/어셈블리 코드 표시 등 프로그램 프로필을 다양하게 시각화합니다.</li>
       <li xml:lang="nl">KCachegrind visualiseert profielen (d.w.z. karakteristieken tijdens uitvoeren) van toepassingen op verschillende manieren, inclusief visualisaties van aanroepgrafieken en bron/disassembler annotaties.</li>
@@ -126,6 +131,7 @@
       <li xml:lang="es">Puede cargar análisis de rendimiento generados por el trazador de simulación de cache/llamadas Calltree, una herramienta de Valgrind. De este modo, el análisis no necesita ninguna preparación, puede manejar bibliotecas compartidas y arquitecturas de complementos, además de no influir en la propia medida.</li>
       <li xml:lang="fr">Il est capable de charger les fichiers de profilage générés par l'outil de simulation de cache et de traçage des appels Calltree faisant partie de Valgrind. Le profilage ne demande aucune préparation, il gère les bibliothèques partagées et les architectures de modules externes et n'a pas d'effets de bords sur la mesure.</li>
       <li xml:lang="gl">Compatibilidade con datos de rendemento xerados por Calltree, unha ferramenta de Valgrind para a simulación da caché e o seguimento de chamadas. Así a xeración dos datos de rendemento non require de ningún tipo de preparación, as bibliotecas compartidas e as arquitecturas de complementos non resultan un problema, e a xeración dos datos de rendemento non ten ningún impacto nos datos xerados.</li>
+      <li xml:lang="id">Ini bisa memuat profil yang dihasilkan oleh simulasi/panggilan pelacak cache Calltree, alat Valgrind. Dengan demikian, pemprofilan tidak perlu persiapan apa pun, bisa mengatasi pustaka yang di-share dan arsitektur plugin, dan tidaklah mempengaruhi pengukuran itu sendiri.</li>
       <li xml:lang="it">Può caricare profili generati dal simulatore di cache/tracciatore di chiamate Calltree, uno strumento di Valgrind. In questo modo la profilatura non ha bisogno di alcuna preparazione, può gestire le librerie condivise e le architetture con estensioni, e non influenza la misurazione stessa.</li>
       <li xml:lang="ko">Valgrind 도구인 캐시 시뮬레이션/호출 추적기 Calltree의 프로필을 불러올 수 있습니다. 프로파일링 시 별도의 준비 과정이 필요하지 않으며, 공유 라이브러리 및 플러그인으로도 사용할 수 있으며, 측정에 영향을 주지 않습니다.</li>
       <li xml:lang="nl">Het kan profielen laden gegenereerd door Calltree, de cache simulator/aanroepvolger, een Valgrind hulpmiddel. Profilering heeft geen enkele voorbereiding nodig, kan overweg met gedeelde bibliotheken en plug-in architecturen en heeft geen invloed op de meting zelf.</li>
@@ -146,6 +152,7 @@
       <li xml:lang="es">Scripts de conversión para OProfile, Perl y PHP.</li>
       <li xml:lang="fr">Scripts de conversion pour OProfile, Perl et PHP</li>
       <li xml:lang="gl">Scripts de conversión para OProfile, Perl e PHP.</li>
+      <li xml:lang="id">Skrip pengkonversi untuk OProfile, Perl, dan PHP</li>
       <li xml:lang="it">Script di conversione per OProfile, Perl e PHP.</li>
       <li xml:lang="ko">OPropile, Perl, PHP 변환 스크립트.</li>
       <li xml:lang="nl">Conversiescripts voor OProfile, Perl en PHP.</li>
@@ -166,6 +173,7 @@
       <li xml:lang="es">Intercambio entre distintos esquemas de visualización.</li>
       <li xml:lang="fr">Basculer entre plusieurs dispositions d'affichage</li>
       <li xml:lang="gl">Posibilidade de cambiar a calquera das varias disposicións de visualización.</li>
+      <li xml:lang="id">Peralihan antara tataletak multi visualisasi</li>
       <li xml:lang="it">Passaggio tra differenti modalità di visualizzazione.</li>
       <li xml:lang="ko">여러 시각화 레이아웃 변경.</li>
       <li xml:lang="nl">Schakelen tussen meerdere visualisatie indelingen.</li>
@@ -186,6 +194,7 @@
       <li xml:lang="es">El gráfico de llamadas se puede exportar como imagen (PNG).</li>
       <li xml:lang="fr">Le graphe d'appels peut être exporté au format image (PNG).</li>
       <li xml:lang="gl">O gráfico de chamadas pode exportarse como imaxe (PNG).</li>
+      <li xml:lang="id">Grafik panggilan bisa diekspor sebagai image (PNG).</li>
       <li xml:lang="it">Il grafico delle chiamate può essere esportato come immagine (PNG).</li>
       <li xml:lang="ko">호출 그래프를 그림 파일(PNG)로 내보내기.</li>
       <li xml:lang="nl">Aanroepgrafiek kan geëxporteerd worden als afbeelding (PNG).</li>
@@ -206,6 +215,7 @@
       <li xml:lang="es">Visualización simultánea de 2 tipos de eventos en la vista de llamada y anotación</li>
       <li xml:lang="fr">Affichage simultané de 2 types d'évènements dans les vues Appel et Annotation</li>
       <li xml:lang="gl">Visualización simultánea de dous tipos de evento nas vistas de chamadas e de anotacións.</li>
+      <li xml:lang="id">Displai serempak dari tipe 2 peristiwa dalam Panggilan dan Tampilan Anotasi</li>
       <li xml:lang="it">Visualizzazione simultanea di due tipi di eventi nelle viste delle chiamate delle annotazioni</li>
       <li xml:lang="ko">호출 및 자세한 보기에서 두 개의 이벤트 형식 같이 표시</li>
       <li xml:lang="nl">Gelijktijdige tonen van 2 typen gebeurtenissen in Aanroep- en Annotatieweergave</li>
@@ -230,6 +240,7 @@
       <caption xml:lang="es">Análisis de datos de rendimiento con KCachegrind</caption>
       <caption xml:lang="fr">Analyse des données de profilage à l'aide de KCachegrind</caption>
       <caption xml:lang="gl">Analizando datos de rendemento con KCachegrind</caption>
+      <caption xml:lang="id">Pemprofilan analisis data dengan KCachegrind</caption>
       <caption xml:lang="it">Analisi dei dati di profiling con KCachegrind</caption>
       <caption xml:lang="nl">Analyse van gegevens profileren met KCachegrind</caption>
       <caption xml:lang="pt">Análise dos dados de performance com o KCachegrind</caption>
