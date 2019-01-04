@@ -34,7 +34,7 @@
 # and is provided completely free and without any warranty.
 #
 # This script is designed to convert the pprof output from 
-# APD (http://pecl.php.net/apd/) to one readable by kcachegrind. To use
+# APD (https://pecl.php.net/apd/) to one readable by kcachegrind. To use
 # this script:
 #
 # 1) Install APD.
