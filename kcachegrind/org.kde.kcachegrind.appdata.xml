@@ -248,10 +248,10 @@
       <caption xml:lang="uk">Аналіз даних профілювання за допомогою KCachegrind</caption>
       <caption xml:lang="x-test">xxProfiling data analysis with KCachegrindxx</caption>
       <caption xml:lang="zh-TW">在 KCachegrind 分析資料統計</caption>
-      <image>http://kde.org/images/screenshots/kcachegrind.png</image>
+      <image>https://kde.org/images/screenshots/kcachegrind.png</image>
     </screenshot>
   </screenshots>
-  <url type="homepage">http://kde.org/applications/development/kcachegrind/</url>
+  <url type="homepage">https://kde.org/applications/development/kcachegrind/</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kcachegrind</url>
   <url type="help">https://docs.kde.org/?application=kcachegrind</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kcachegrind&amp;source=appdata</url>
