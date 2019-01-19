@@ -34,7 +34,7 @@ class FunctionListModel : public QAbstractItemModel
 
 public:
     FunctionListModel();
-    ~FunctionListModel();
+    ~FunctionListModel() override;
 
     /* Data to show: all functions from <data>
      * - which are part of function group <group>
@@ -44,16 +44,16 @@ public:
                         EventType* eventType);
 
     // reimplemented from QAbstractItemModel
-    QVariant data(const QModelIndex&, int) const Q_DECL_OVERRIDE;
-    Qt::ItemFlags flags(const QModelIndex&) const Q_DECL_OVERRIDE;
+    QVariant data(const QModelIndex&, int) const override;
+    Qt::ItemFlags flags(const QModelIndex&) const override;
     QVariant headerData(int section, Qt::Orientation orientation,
-                        int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
+                        int role = Qt::DisplayRole) const override;
     QModelIndex index(int row, int column = 0,
-                      const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
-    QModelIndex parent(const QModelIndex &index) const Q_DECL_OVERRIDE;
-    int rowCount(const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
-    int columnCount(const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
-    void sort(int column, Qt::SortOrder order) Q_DECL_OVERRIDE;
+                      const QModelIndex &parent = QModelIndex()) const override;
+    QModelIndex parent(const QModelIndex &index) const override;
+    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+    int columnCount(const QModelIndex &parent = QModelIndex()) const override;
+    void sort(int column, Qt::SortOrder order) override;
 
     void setFilter(QString filter);
     void setEventType(EventType*);

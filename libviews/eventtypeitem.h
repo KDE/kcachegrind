@@ -33,13 +33,13 @@ public:
     EventTypeItem(TraceCostItem* costItem,
                   EventType* ct, ProfileContext::Type gt);
 
-    bool operator<(const QTreeWidgetItem &other) const Q_DECL_OVERRIDE;
+    bool operator<(const QTreeWidgetItem &other) const override;
     void setGroupType(ProfileContext::Type);
     TraceCostItem* costItem() { return _costItem; }
     EventType* eventType() { return _eventType; }
     void update();
 
-    QVariant data(int column, int role) const Q_DECL_OVERRIDE;
+    QVariant data(int column, int role) const override;
 
 private:
     SubCost _sum, _pure;

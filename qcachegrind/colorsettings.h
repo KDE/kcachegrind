@@ -36,11 +36,11 @@ class ColorSettings: public ConfigPage
 
 public:
     ColorSettings(TraceData* data, QWidget* parent);
-    virtual ~ColorSettings();
+    ~ColorSettings() override;
 
-    bool check(QString&, QString&) Q_DECL_OVERRIDE;
-    void accept() Q_DECL_OVERRIDE;
-    void activate(QString s) Q_DECL_OVERRIDE;
+    bool check(QString&, QString&) override;
+    void accept() override;
+    void activate(QString s) override;
 
 public slots:
     void resetClicked();

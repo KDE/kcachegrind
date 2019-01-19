@@ -55,7 +55,7 @@ class QCGTopLevel : public QMainWindow, public Logger, public TopLevelBase
 
 public:
     QCGTopLevel();
-    ~QCGTopLevel();
+    ~QCGTopLevel() override;
 
     TraceData* data() { return _data; }
     void setData(TraceData*);
@@ -65,24 +65,24 @@ public:
     void createMenu();
     void createToolbar();
 
-    void closeEvent(QCloseEvent*);
+    void closeEvent(QCloseEvent*) override;
 
     ProfileContext::Type groupType() { return _groupType; }
     EventType* eventType() { return _eventType; }
     EventType* eventType2() { return _eventType2; }
     TracePartList activeParts() { return _activeParts; }
-    TracePartList hiddenParts() { return _hiddenParts; }
+    TracePartList hiddenParts() override { return _hiddenParts; }
 
     /* convenience functions for often used context menu items */
-    void addEventTypeMenu(QMenu*,bool);
-    void addGoMenu(QMenu*);
+    void addEventTypeMenu(QMenu*,bool) override;
+    void addGoMenu(QMenu*) override;
 
     // Logger overwrites: notifications for file loading
-    virtual void loadStart(const QString& filename);
-    virtual void loadProgress(int progress); // 0 - 100
-    virtual void loadWarning(int line, const QString& msg);
-    virtual void loadError(int line, const QString& msg);
-    virtual void loadFinished(const QString& msg); // msg could be error
+    void loadStart(const QString& filename) override;
+    void loadProgress(int progress) override; // 0 - 100
+    void loadWarning(int line, const QString& msg) override;
+    void loadError(int line, const QString& msg) override;
+    void loadFinished(const QString& msg) override; // msg could be error
 
 public slots:
     void load();
@@ -150,7 +150,7 @@ public slots:
     bool setGroup(QString);
     bool setFunction(TraceFunction*);
     bool setFunction(QString);
-    void activePartsChangedSlot(const TracePartList& list);
+    void activePartsChangedSlot(const TracePartList& list) override;
     void partsHideSelectedSlot();
     void partsUnhideAllSlot();
 
@@ -158,17 +158,17 @@ public slots:
    * So they can be called from event handlers that
    * are not allowed to delete list entries.
    */
-    void setEventTypeDelayed(EventType*);
-    void setEventType2Delayed(EventType*);
-    void setGroupTypeDelayed(ProfileContext::Type);
-    void setGroupDelayed(TraceCostItem*);
-    void setTraceItemDelayed(CostItem*);
+    void setEventTypeDelayed(EventType*) override;
+    void setEventType2Delayed(EventType*) override;
+    void setGroupTypeDelayed(ProfileContext::Type) override;
+    void setGroupDelayed(TraceCostItem*) override;
+    void setTraceItemDelayed(CostItem*) override;
     void partsHideSelectedSlotDelayed();
     void partsUnhideAllSlotDelayed();
     void goBack();
     void goForward();
     void goUp();
-    void setDirectionDelayed(TraceItemView::Direction);
+    void setDirectionDelayed(TraceItemView::Direction) override;
 
     /* SingleShot Slots (without parameters) for the delayed versions */
     void setEventTypeDelayed();
@@ -180,13 +180,13 @@ public slots:
     void setDirectionDelayed();
 
     // configuration has changed
-    void configChanged();
+    void configChanged() override;
 
     //void refresh();
 
     // progress in status bar, empty message disables progress display
     void showStatus(const QString& msg, int progress);
-    void showMessage(const QString&, int msec);
+    void showMessage(const QString&, int msec) override;
 
 private:
     void resetState();

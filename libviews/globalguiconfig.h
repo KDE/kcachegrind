@@ -74,13 +74,13 @@ class GlobalGUIConfig: public GlobalConfig
 
 public:
     GlobalGUIConfig();
-    ~GlobalGUIConfig();
+    ~GlobalGUIConfig() override;
 
     // gets the singleton instance
     static GlobalGUIConfig* config();
 
-    void saveOptions() Q_DECL_OVERRIDE;
-    void readOptions() Q_DECL_OVERRIDE;
+    void saveOptions() override;
+    void readOptions() override;
 
     // color for visualization of an object
     static QColor functionColor(ProfileContext::Type gt, TraceFunction*);

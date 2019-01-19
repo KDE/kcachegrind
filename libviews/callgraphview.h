@@ -258,17 +258,17 @@ class StorableGraphOptions: public GraphOptions
 {
 public:
     StorableGraphOptions();
-    virtual ~StorableGraphOptions(){}
+    ~StorableGraphOptions() override{}
     // implementation of getters
-    double funcLimit() Q_DECL_OVERRIDE { return _funcLimit; }
-    double callLimit() Q_DECL_OVERRIDE { return _callLimit; }
-    int maxCallerDepth() Q_DECL_OVERRIDE { return _maxCallerDepth; }
-    int maxCalleeDepth() Q_DECL_OVERRIDE { return _maxCalleeDepth; }
-    bool showSkipped() Q_DECL_OVERRIDE { return _showSkipped; }
-    bool expandCycles() Q_DECL_OVERRIDE { return _expandCycles; }
-    bool clusterGroups() Q_DECL_OVERRIDE { return _clusterGroups; }
-    int detailLevel() Q_DECL_OVERRIDE { return _detailLevel; }
-    Layout layout() Q_DECL_OVERRIDE { return _layout; }
+    double funcLimit() override { return _funcLimit; }
+    double callLimit() override { return _callLimit; }
+    int maxCallerDepth() override { return _maxCallerDepth; }
+    int maxCalleeDepth() override { return _maxCalleeDepth; }
+    bool showSkipped() override { return _showSkipped; }
+    bool expandCycles() override { return _expandCycles; }
+    bool clusterGroups() override { return _clusterGroups; }
+    int detailLevel() override { return _detailLevel; }
+    Layout layout() override { return _layout; }
 
     // setters
     void setMaxCallerDepth(int d) { _maxCallerDepth = d; }
@@ -302,7 +302,7 @@ public:
     GraphExporter(TraceData*, TraceFunction*, EventType*,
                   ProfileContext::Type,
                   QString filename = QString());
-    virtual ~GraphExporter();
+    ~GraphExporter() override;
 
     void reset(TraceData*, CostItem*, EventType*,
                ProfileContext::Type,
@@ -388,10 +388,10 @@ signals:
     void zoomRectMoveFinished();
 
 protected:
-    void mousePressEvent(QMouseEvent*) Q_DECL_OVERRIDE;
-    void mouseMoveEvent(QMouseEvent*) Q_DECL_OVERRIDE;
-    void mouseReleaseEvent(QMouseEvent*) Q_DECL_OVERRIDE;
-    void drawForeground(QPainter * p, const QRectF&) Q_DECL_OVERRIDE;
+    void mousePressEvent(QMouseEvent*) override;
+    void mouseMoveEvent(QMouseEvent*) override;
+    void mouseReleaseEvent(QMouseEvent*) override;
+    void drawForeground(QPainter * p, const QRectF&) override;
 
     QRectF _zoomRect;
     bool _movingZoomRect;
@@ -421,14 +421,14 @@ public:
 
     void updateGroup();
     void setSelected(bool);
-    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) Q_DECL_OVERRIDE;
+    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) override;
 
     GraphNode* node()
     {
         return _node;
     }
 
-    int type() const Q_DECL_OVERRIDE
+    int type() const override
     {
         return CANVAS_NODE;
     }
@@ -444,14 +444,14 @@ class CanvasEdgeLabel : public QGraphicsRectItem, public StoredDrawParams
 public:
     CanvasEdgeLabel(CallGraphView*, CanvasEdge*, int, int, int, int);
 
-    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) Q_DECL_OVERRIDE;
+    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) override;
 
     CanvasEdge* canvasEdge()
     {
         return _ce;
     }
 
-    int type() const Q_DECL_OVERRIDE
+    int type() const override
     {
         return CANVAS_EDGELABEL;
     }
@@ -474,14 +474,14 @@ class CanvasEdgeArrow : public QGraphicsPolygonItem
 public:
     explicit CanvasEdgeArrow(CanvasEdge*);
 
-    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) Q_DECL_OVERRIDE;
+    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) override;
 
     CanvasEdge* canvasEdge()
     {
         return _ce;
     }
 
-    int type() const Q_DECL_OVERRIDE
+    int type() const override
     {
         return CANVAS_EDGEARROW;
     }
@@ -496,7 +496,7 @@ class CanvasEdge : public QGraphicsPathItem
 public:
     explicit CanvasEdge(GraphEdge*);
 
-    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) Q_DECL_OVERRIDE;
+    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) override;
 
     void setSelected(bool);
 
@@ -526,7 +526,7 @@ public:
         return _edge;
     }
 
-    int type() const Q_DECL_OVERRIDE
+    int type() const override
     {
         return CANVAS_EDGE;
     }
@@ -546,7 +546,7 @@ class CanvasFrame : public QGraphicsRectItem
 public:
     explicit CanvasFrame(CanvasNode*);
 
-    int type() const Q_DECL_OVERRIDE
+    int type() const override
     {
         return CANVAS_FRAME;
     }
@@ -556,7 +556,7 @@ public:
         return false;
     }
 
-    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) Q_DECL_OVERRIDE;
+    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) override;
 
 private:
     static QPixmap* _p;
@@ -580,17 +580,17 @@ public:
 
     explicit CallGraphView(TraceItemView* parentView, QWidget* parent,
                            const QString& name);
-    ~CallGraphView();
+    ~CallGraphView() override;
 
-    void restoreOptions(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
-    void saveOptions(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
+    void restoreOptions(const QString& prefix, const QString& postfix) override;
+    void saveOptions(const QString& prefix, const QString& postfix) override;
 
-    QWidget* widget() Q_DECL_OVERRIDE
+    QWidget* widget() override
     {
         return this;
     }
 
-    QString whatsThis() const Q_DECL_OVERRIDE;
+    QString whatsThis() const override;
 
     ZoomPosition zoomPos() const
     {
@@ -620,21 +620,21 @@ public slots:
     void layoutTriggered(QAction*);
 
 protected:
-    void resizeEvent(QResizeEvent*) Q_DECL_OVERRIDE;
-    void mousePressEvent(QMouseEvent*) Q_DECL_OVERRIDE;
-    void mouseMoveEvent(QMouseEvent*) Q_DECL_OVERRIDE;
-    void mouseReleaseEvent(QMouseEvent*) Q_DECL_OVERRIDE;
-    void mouseDoubleClickEvent(QMouseEvent*) Q_DECL_OVERRIDE;
-    void contextMenuEvent(QContextMenuEvent*) Q_DECL_OVERRIDE;
-    void keyPressEvent(QKeyEvent*) Q_DECL_OVERRIDE;
-    void focusInEvent(QFocusEvent*) Q_DECL_OVERRIDE;
-    void focusOutEvent(QFocusEvent*) Q_DECL_OVERRIDE;
-    void scrollContentsBy(int dx, int dy) Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent*) override;
+    void mousePressEvent(QMouseEvent*) override;
+    void mouseMoveEvent(QMouseEvent*) override;
+    void mouseReleaseEvent(QMouseEvent*) override;
+    void mouseDoubleClickEvent(QMouseEvent*) override;
+    void contextMenuEvent(QContextMenuEvent*) override;
+    void keyPressEvent(QKeyEvent*) override;
+    void focusInEvent(QFocusEvent*) override;
+    void focusOutEvent(QFocusEvent*) override;
+    void scrollContentsBy(int dx, int dy) override;
 
 private:
     void updateSizes(QSize s = QSize(0,0));
-    CostItem* canShow(CostItem*) Q_DECL_OVERRIDE;
-    void doUpdate(int, bool) Q_DECL_OVERRIDE;
+    CostItem* canShow(CostItem*) override;
+    void doUpdate(int, bool) override;
     void refresh();
     void makeFrame(CanvasNode*, bool active);
     void clear();

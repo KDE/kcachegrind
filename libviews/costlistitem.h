@@ -32,7 +32,7 @@ public:
     CostListItem(QTreeWidget* parent, int skipped, TraceCostItem* cost,
                  EventType* et);
 
-    bool operator< ( const QTreeWidgetItem & other ) const Q_DECL_OVERRIDE;
+    bool operator< ( const QTreeWidgetItem & other ) const override;
     TraceCostItem* costItem() { return (_skipped) ? 0 : _costItem; }
     void setEventType(EventType* et);
     void update();

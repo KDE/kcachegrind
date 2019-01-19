@@ -35,8 +35,8 @@ public:
     CallView(bool showCallers, TraceItemView* parentView,
              QWidget* parent=0);
 
-    QWidget* widget() Q_DECL_OVERRIDE { return this; }
-    QString whatsThis() const Q_DECL_OVERRIDE;
+    QWidget* widget() override { return this; }
+    QString whatsThis() const override;
     bool showCallers() const { return _showCallers; }
 
 protected slots:
@@ -46,11 +46,11 @@ protected slots:
     void headerClicked(int);
 
 protected:
-    void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
+    void keyPressEvent(QKeyEvent* event) override;
 
 private:
-    CostItem* canShow(CostItem*) Q_DECL_OVERRIDE;
-    void doUpdate(int, bool) Q_DECL_OVERRIDE;
+    CostItem* canShow(CostItem*) override;
+    void doUpdate(int, bool) override;
     void refresh();
     void setCostColumnWidths();
 

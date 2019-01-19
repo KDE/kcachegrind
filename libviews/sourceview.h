@@ -38,8 +38,8 @@ public:
     explicit SourceView(TraceItemView* parentView,
                         QWidget* parent = 0);
 
-    QWidget* widget() Q_DECL_OVERRIDE { return this; }
-    QString whatsThis() const Q_DECL_OVERRIDE;
+    QWidget* widget() override { return this; }
+    QString whatsThis() const override;
     int arrowLevels() { return _arrowLevels; }
 
 protected slots:
@@ -49,11 +49,11 @@ protected slots:
     void headerClicked(int);
 
 protected:
-    void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
+    void keyPressEvent(QKeyEvent* event) override;
 
 private:
-    CostItem* canShow(CostItem*) Q_DECL_OVERRIDE;
-    void doUpdate(int, bool) Q_DECL_OVERRIDE;
+    CostItem* canShow(CostItem*) override;
+    void doUpdate(int, bool) override;
     void refresh();
     void updateJumpArray(uint,SourceItem*,bool,bool);
     bool searchFile(QString&, TraceFunctionSource*);

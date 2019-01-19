@@ -41,7 +41,7 @@ class StackSelection : public QWidget
 
 public:
     explicit StackSelection(QWidget* parent = 0);
-    ~StackSelection();
+    ~StackSelection() override;
 
     TraceData* data() const { return _data; }
     void setData(TraceData*);

@@ -49,7 +49,7 @@ public:
     QString currentPage();
 
 public slots:
-    void accept() Q_DECL_OVERRIDE;
+    void accept() override;
     void listItemChanged(QString);
     void clearError();
 

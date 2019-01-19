@@ -202,11 +202,11 @@ class TraceJumpCost: public CostItem
 {
 public:
     explicit TraceJumpCost(ProfileContext*);
-    virtual ~TraceJumpCost();
+    ~TraceJumpCost() override;
 
     // reimplementations for cost addition
-    QString costString(EventTypeSet* m) Q_DECL_OVERRIDE;
-    void clear() Q_DECL_OVERRIDE;
+    QString costString(EventTypeSet* m) override;
+    void clear() override;
 
     void addCost(TraceJumpCost*);
 
@@ -229,11 +229,11 @@ class TraceCallCost: public ProfileCostArray
 {
 public:
     explicit TraceCallCost(ProfileContext*);
-    virtual ~TraceCallCost();
+    ~TraceCallCost() override;
 
     // reimplementations for cost addition
-    QString costString(EventTypeSet* m) Q_DECL_OVERRIDE;
-    void clear() Q_DECL_OVERRIDE;
+    QString costString(EventTypeSet* m) override;
+    void clear() override;
 
     // additional cost metric
     SubCost callCount();
@@ -252,11 +252,11 @@ class TraceInclusiveCost: public ProfileCostArray
 {
 public:
     explicit TraceInclusiveCost(ProfileContext*);
-    virtual ~TraceInclusiveCost();
+    ~TraceInclusiveCost() override;
 
     // reimplementations for cost addition
-    QString costString(EventTypeSet* m) Q_DECL_OVERRIDE;
-    void clear() Q_DECL_OVERRIDE;
+    QString costString(EventTypeSet* m) override;
+    void clear() override;
 
     // additional cost metric
     ProfileCostArray* inclusive();
@@ -275,10 +275,10 @@ class TraceListCost: public ProfileCostArray
 {
 public:
     explicit TraceListCost(ProfileContext*);
-    virtual ~TraceListCost();
+    ~TraceListCost() override;
 
     // reimplementation for dependency list
-    void update() Q_DECL_OVERRIDE;
+    void update() override;
 
     TraceCostList& deps() { return _deps; }
     void addDep(ProfileCostArray*);
@@ -304,10 +304,10 @@ class TraceJumpListCost: public TraceJumpCost
 {
 public:
     explicit TraceJumpListCost(ProfileContext*);
-    virtual ~TraceJumpListCost();
+    ~TraceJumpListCost() override;
 
     // reimplementation for dependency list
-    void update() Q_DECL_OVERRIDE;
+    void update() override;
 
     TraceJumpCostList deps() { return _deps; }
     void addDep(TraceJumpCost*);
@@ -335,10 +335,10 @@ class TraceCallListCost: public TraceCallCost
 {
 public:
     explicit TraceCallListCost(ProfileContext*);
-    virtual ~TraceCallListCost();
+    ~TraceCallListCost() override;
 
     // reimplementation for dependency list
-    void update() Q_DECL_OVERRIDE;
+    void update() override;
 
     TraceCallCostList deps() { return _deps; }
     void addDep(TraceCallCost*);
@@ -363,10 +363,10 @@ class TraceInclusiveListCost: public TraceInclusiveCost
 {
 public:
     explicit TraceInclusiveListCost(ProfileContext*);
-    virtual ~TraceInclusiveListCost();
+    ~TraceInclusiveListCost() override;
 
     // reimplementation for dependency
-    void update() Q_DECL_OVERRIDE;
+    void update() override;
 
     TraceInclusiveCostList deps() { return _deps; }
     void addDep(TraceInclusiveCost*);
@@ -399,10 +399,10 @@ class TracePartInstrJump: public TraceJumpCost
 {
 public:
     TracePartInstrJump(TraceInstrJump*, TracePartInstrJump*);
-    virtual ~TracePartInstrJump();
+    ~TracePartInstrJump() override;
 
     // fix cost item
-    void update() Q_DECL_OVERRIDE {}
+    void update() override {}
     TraceInstrJump* instrJump() const { return (TraceInstrJump*) _dep; }
     TracePartInstrJump* next() const { return _next; }
 
@@ -420,10 +420,10 @@ class TracePartInstrCall: public TraceCallCost
 {
 public:
     explicit TracePartInstrCall(TraceInstrCall*);
-    virtual ~TracePartInstrCall();
+    ~TracePartInstrCall() override;
 
     // fix cost item
-    void update() Q_DECL_OVERRIDE {}
+    void update() override {}
     TraceInstrCall* instrCall() const { return (TraceInstrCall*) _dep; }
 };
 
@@ -436,10 +436,10 @@ class TracePartInstr: public ProfileCostArray
 {
 public:
     explicit TracePartInstr(TraceInstr*);
-    virtual ~TracePartInstr();
+    ~TracePartInstr() override;
 
     // fix cost item
-    void update() Q_DECL_OVERRIDE {}
+    void update() override {}
 
     TraceInstr* instr() const { return (TraceInstr*)_dep; }
 };
@@ -452,10 +452,10 @@ class TracePartLineJump: public TraceJumpCost
 {
 public:
     explicit TracePartLineJump(TraceLineJump*);
-    virtual ~TracePartLineJump();
+    ~TracePartLineJump() override;
 
     // fix cost item
-    void update() Q_DECL_OVERRIDE {}
+    void update() override {}
     TraceLineJump* lineJump() const { return (TraceLineJump*) _dep; }
 };
 
@@ -468,10 +468,10 @@ class TracePartLineCall: public TraceCallCost
 {
 public:
     explicit TracePartLineCall(TraceLineCall*);
-    virtual ~TracePartLineCall();
+    ~TracePartLineCall() override;
 
     // fix cost item
-    void update() Q_DECL_OVERRIDE {}
+    void update() override {}
     TraceLineCall* lineCall() const { return (TraceLineCall*) _dep; }
 };
 
@@ -485,10 +485,10 @@ class TracePartLine: public ProfileCostArray
 {
 public:
     explicit TracePartLine(TraceLine*);
-    virtual ~TracePartLine();
+    ~TracePartLine() override;
 
     // fix cost item
-    void update() Q_DECL_OVERRIDE {}
+    void update() override {}
 
     TraceLine* line() const { return (TraceLine*)_dep; }
 };
@@ -501,9 +501,9 @@ class TracePartLineRegion: public TraceInclusiveCost
 {
 public:
     explicit TracePartLineRegion(TraceLineRegion*);
-    virtual ~TracePartLineRegion();
+    ~TracePartLineRegion() override;
 
-    void update() Q_DECL_OVERRIDE;
+    void update() override;
 
     TraceLineRegion* region() const { return (TraceLineRegion*)_dep; }
 };
@@ -517,13 +517,13 @@ class TracePartCall: public TraceCallListCost
 {
 public:
     explicit TracePartCall(TraceCall* call);
-    virtual ~TracePartCall();
+    ~TracePartCall() override;
 
     // calls a function itself?
     bool isRecursion();
 
     // reimplementation for dependency list
-    void update() Q_DECL_OVERRIDE;
+    void update() override;
 
     TraceCall* call() const { return (TraceCall*)_dep; }
 
@@ -545,10 +545,10 @@ class TracePartFunction: public TraceInclusiveCost
 public:
     TracePartFunction(TraceFunction*,
                       TracePartObject*, TracePartFile*);
-    virtual ~TracePartFunction();
+    ~TracePartFunction() override;
 
-    void update() Q_DECL_OVERRIDE;
-    QString costString(EventTypeSet* m) Q_DECL_OVERRIDE;
+    void update() override;
+    QString costString(EventTypeSet* m) override;
 
     void addPartInstr(TracePartInstr*);
     void addPartLine(TracePartLine*);
@@ -608,9 +608,9 @@ class TracePartClass: public TraceInclusiveListCost
 {
 public:
     explicit TracePartClass(TraceClass*);
-    virtual ~TracePartClass();
+    ~TracePartClass() override;
 
-    QString prettyName() const Q_DECL_OVERRIDE;
+    QString prettyName() const override;
 
     TraceClass* cls() { return (TraceClass*)_dep; }
     void addPartFunction(TracePartFunction* f) { addDep(f); }
@@ -625,7 +625,7 @@ class TracePartFile: public TraceInclusiveListCost
 {
 public:
     explicit TracePartFile(TraceFile*);
-    virtual ~TracePartFile();
+    ~TracePartFile() override;
 
     TraceFile* file() { return (TraceFile*)_dep; }
     void addPartFunction(TracePartFunction* f) { addDep(f); }
@@ -640,7 +640,7 @@ class TracePartObject: public TraceInclusiveListCost
 {
 public:
     explicit TracePartObject(TraceObject*);
-    virtual ~TracePartObject();
+    ~TracePartObject() override;
 
     TraceObject* object() const { return (TraceObject*)_dep; }
     void addPartFunction(TracePartFunction* f) { addDep(f); }
@@ -656,15 +656,15 @@ class TracePart: public TraceListCost
 {
 public:
     explicit TracePart(TraceData*);
-    virtual ~TracePart();
+    ~TracePart() override;
 
-    TracePart* part() Q_DECL_OVERRIDE { return this; }
-    const TracePart* part() const Q_DECL_OVERRIDE { return this; }
+    TracePart* part() override { return this; }
+    const TracePart* part() const override { return this; }
 
     QString shortName() const;
-    QString prettyName() const Q_DECL_OVERRIDE;
+    QString prettyName() const override;
     /// @return Name of the file this part was loaded from
-    QString name() const Q_DECL_OVERRIDE { return _name; }
+    QString name() const override { return _name; }
     QString description() const { return _descr; }
     QString trigger() const { return _trigger; }
     QString timeframe() const { return _timeframe; }
@@ -726,11 +726,11 @@ class TraceInstrJump: public TraceJumpCost
 public:
     TraceInstrJump(TraceInstr* instrFrom, TraceInstr* instrTo,
                    bool isCondJump);
-    virtual ~TraceInstrJump();
+    ~TraceInstrJump() override;
 
-    QString name() const Q_DECL_OVERRIDE;
+    QString name() const override;
 
-    void update() Q_DECL_OVERRIDE;
+    void update() override;
 
     TraceInstr* instrFrom() const { return _instrFrom; }
     TraceInstr* instrTo() const { return _instrTo; }
@@ -755,9 +755,9 @@ class TraceLineJump: public TraceJumpListCost
 public:
     TraceLineJump(TraceLine* lineFrom, TraceLine* lineTo,
                   bool isCondJump);
-    virtual ~TraceLineJump();
+    ~TraceLineJump() override;
 
-    QString name() const Q_DECL_OVERRIDE;
+    QString name() const override;
 
     TraceLine* lineFrom() const { return _lineFrom; }
     TraceLine* lineTo() const { return _lineTo; }
@@ -767,7 +767,7 @@ public:
     TracePartLineJump* partLineJump(TracePart*);
 
 protected:
-    bool onlyActiveParts() Q_DECL_OVERRIDE { return true; }
+    bool onlyActiveParts() override { return true; }
 
 private:
     TraceLine *_lineFrom, *_lineTo;
@@ -782,9 +782,9 @@ class TraceInstrCall: public TraceCallListCost
 {
 public:
     TraceInstrCall(TraceCall* call, TraceInstr* instr);
-    virtual ~TraceInstrCall();
+    ~TraceInstrCall() override;
 
-    QString name() const Q_DECL_OVERRIDE;
+    QString name() const override;
 
     TraceInstr* instr() const { return _instr; }
     TraceCall* call() const { return _call; }
@@ -793,7 +793,7 @@ public:
     TracePartInstrCall* partInstrCall(TracePart*, TracePartCall*);
 
 protected:
-    bool onlyActiveParts() Q_DECL_OVERRIDE { return true; }
+    bool onlyActiveParts() override { return true; }
 
 private:
     TraceInstr* _instr;
@@ -808,9 +808,9 @@ class TraceLineCall: public TraceCallListCost
 {
 public:
     TraceLineCall(TraceCall* call, TraceLine* line);
-    virtual ~TraceLineCall();
+    ~TraceLineCall() override;
 
-    QString name() const Q_DECL_OVERRIDE;
+    QString name() const override;
 
     TraceLine* line() const { return _line; }
     TraceCall* call() const { return _call; }
@@ -819,7 +819,7 @@ public:
     TracePartLineCall* partLineCall(TracePart*, TracePartCall*);
 
 protected:
-    bool onlyActiveParts() Q_DECL_OVERRIDE { return true; }
+    bool onlyActiveParts() override { return true; }
 
 private:
     TraceLine* _line;
@@ -835,9 +835,9 @@ class TraceCall: public TraceCallListCost
 {
 public:
     TraceCall(TraceFunction* caller, TraceFunction* called);
-    virtual ~TraceCall();
+    ~TraceCall() override;
 
-    QString name() const Q_DECL_OVERRIDE;
+    QString name() const override;
 
     // calls a function itself?
     bool isRecursion() { return _caller == _called; }
@@ -845,7 +845,7 @@ public:
     // return cycle number >0 if call is inside of a cycle
     int inCycle();
     // we need some special handling for cycle calls
-    void update() Q_DECL_OVERRIDE;
+    void update() override;
 
     void invalidateDynamicCost();
 
@@ -866,7 +866,7 @@ public:
     { FixCallCost* t = _firstFixCost; _firstFixCost = fc; return t; }
 
 protected:
-    bool onlyActiveParts() Q_DECL_OVERRIDE { return true; }
+    bool onlyActiveParts() override { return true; }
 
 private:
     TraceInstrCallList _instrCalls;
@@ -887,10 +887,10 @@ class TraceInstr: public TraceListCost
 {
 public:
     TraceInstr();
-    virtual ~TraceInstr();
+    ~TraceInstr() override;
 
-    QString name() const Q_DECL_OVERRIDE;
-    QString prettyName() const Q_DECL_OVERRIDE;
+    QString name() const override;
+    QString prettyName() const override;
 
     bool isValid() { return _addr != Addr(0); }
 
@@ -914,7 +914,7 @@ public:
     void setLine(TraceLine* l) { _line = l; }
 
 protected:
-    bool onlyActiveParts() Q_DECL_OVERRIDE { return true; }
+    bool onlyActiveParts() override { return true; }
 
 private:
     Addr _addr;
@@ -935,10 +935,10 @@ class TraceLine: public TraceListCost
 {
 public:
     TraceLine();
-    virtual ~TraceLine();
+    ~TraceLine() override;
 
-    QString name() const Q_DECL_OVERRIDE;
-    QString prettyName() const Q_DECL_OVERRIDE;
+    QString name() const override;
+    QString prettyName() const override;
 
     // factories
     TracePartLine* partLine(TracePart* part,
@@ -960,7 +960,7 @@ public:
     void setLineno(uint lineno) { _lineno = lineno; }
 
 protected:
-    bool onlyActiveParts() Q_DECL_OVERRIDE { return true; }
+    bool onlyActiveParts() override { return true; }
 
 private:
     TraceFunctionSource* _sourceFile;
@@ -980,13 +980,13 @@ class TraceCostItem: public TraceInclusiveListCost
 {
 public:
     explicit TraceCostItem(ProfileContext*);
-    virtual ~TraceCostItem();
+    ~TraceCostItem() override;
 
-    QString name() const Q_DECL_OVERRIDE { return _name; }
+    QString name() const override { return _name; }
     virtual void setName(const QString& name) { _name = name; }
 
 protected:
-    bool onlyActiveParts() Q_DECL_OVERRIDE { return true; }
+    bool onlyActiveParts() override { return true; }
 
 protected:
     QString _name;
@@ -1000,13 +1000,13 @@ class TraceLineRegion: public TraceInclusiveListCost
 {
 public:
     TraceLineRegion(uint from, uint to, QString name);
-    virtual ~TraceLineRegion();
+    ~TraceLineRegion() override;
 
-    void update() Q_DECL_OVERRIDE;
+    void update() override;
 
     uint from() const { return _from; }
     uint to() const { return _to; }
-    QString name() const Q_DECL_OVERRIDE { return _name; }
+    QString name() const override { return _name; }
 
     // factories
     TracePartLine* partLineRegion(TracePart* part,
@@ -1029,12 +1029,12 @@ class TraceFunctionSource: public ProfileCostArray
 {
 public:
     TraceFunctionSource(TraceFunction*, TraceFile*);
-    virtual ~TraceFunctionSource();
+    ~TraceFunctionSource() override;
 
-    QString name() const Q_DECL_OVERRIDE;
+    QString name() const override;
 
     // reimplementation for dependency map
-    void update() Q_DECL_OVERRIDE;
+    void update() override;
 
     TraceFile* file() const { return _file; }
     TraceFunction* function() const { return _function; }
@@ -1124,9 +1124,9 @@ public:
     TraceFunction();
     TraceFunction(TraceData* data, const QString& name,
                   TraceClass* cls, TraceFile* file, TraceObject* object);
-    virtual ~TraceFunction();
+    ~TraceFunction() override;
 
-    void update() Q_DECL_OVERRIDE;
+    void update() override;
 
     // this invalidate all subcosts of function depending on
     // active status of parts
@@ -1149,8 +1149,8 @@ public:
      */
     QString location(int maxFiles = 0) const;
 
-    QString prettyName() const Q_DECL_OVERRIDE;
-    QString formattedName() const Q_DECL_OVERRIDE;
+    QString prettyName() const override;
+    QString formattedName() const override;
     static QString prettyEmptyName();
     QString prettyLocation(int maxFiles = 0) const;
     QString prettyNameWithLocation(int maxFiles = 1) const;
@@ -1271,9 +1271,9 @@ class TraceClass: public TraceCostItem
 {
 public:
     TraceClass();
-    virtual ~TraceClass();
+    ~TraceClass() override;
 
-    QString prettyName() const Q_DECL_OVERRIDE;
+    QString prettyName() const override;
     static QString prettyEmptyName();
 
     void addFunction(TraceFunction*);
@@ -1295,7 +1295,7 @@ class TraceFile: public TraceCostItem
 {
 public:
     TraceFile();
-    virtual ~TraceFile();
+    ~TraceFile() override;
 
     void setDirectory(const QString& dir);
     void resetDirectory() { _dir = QString(); }
@@ -1306,7 +1306,7 @@ public:
 
     // without path
     QString shortName() const;
-    QString prettyName() const Q_DECL_OVERRIDE;
+    QString prettyName() const override;
     QString prettyLongName() const;
     static QString prettyEmptyName();
     const TraceFunctionList& functions() const { return _functions; }
@@ -1331,7 +1331,7 @@ class TraceObject: public TraceCostItem
 {
 public:
     TraceObject();
-    virtual ~TraceObject();
+    ~TraceObject() override;
 
     void setDirectory(const QString& dir);
     void resetDirectory() { _dir = QString(); }
@@ -1340,7 +1340,7 @@ public:
     void addFunction(TraceFunction*);
 
     QString shortName() const;
-    QString prettyName() const Q_DECL_OVERRIDE;
+    QString prettyName() const override;
     static QString prettyEmptyName();
     const TraceFunctionList& functions() const { return _functions; }
 
@@ -1366,10 +1366,10 @@ public:
     enum Arch { ArchUnknown, ArchARM };
 
     explicit TraceData(Logger* l = 0);
-    virtual ~TraceData();
+    ~TraceData() override;
 
-    TraceData* data() Q_DECL_OVERRIDE { return this; }
-    const TraceData* data() const Q_DECL_OVERRIDE { return this; }
+    TraceData* data() override { return this; }
+    const TraceData* data() const override { return this; }
 
     /**
      * Loads profile data files.
@@ -1461,7 +1461,7 @@ public:
     // reset all manually set directories for source files
     void resetSourceDirs();
 
-    void update() Q_DECL_OVERRIDE;
+    void update() override;
 
     // invalidates all cost items dependant on active state of parts
     void invalidateDynamicCost();

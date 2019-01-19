@@ -36,8 +36,8 @@ public:
     explicit EventTypeView(TraceItemView* parentView,
                            QWidget* parent, const QString& name);
 
-    QWidget* widget() Q_DECL_OVERRIDE { return this; }
-    QString whatsThis() const Q_DECL_OVERRIDE;
+    QWidget* widget() override { return this; }
+    QString whatsThis() const override;
 
 private slots:
     void context(const QPoint&);
@@ -46,8 +46,8 @@ private slots:
     void itemChanged(QTreeWidgetItem*, int);
 
 private:
-    CostItem* canShow(CostItem*) Q_DECL_OVERRIDE;
-    void doUpdate(int, bool) Q_DECL_OVERRIDE;
+    CostItem* canShow(CostItem*) override;
+    void doUpdate(int, bool) override;
     void refresh();
 };
 

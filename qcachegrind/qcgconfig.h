@@ -33,11 +33,11 @@ class QCGConfigGroup: public ConfigGroup
     friend class QCGConfigStorage;
 
 public:
-    ~QCGConfigGroup();
+    ~QCGConfigGroup() override;
 
     void setValue(const QString& key, const QVariant& value,
-                  const QVariant& defaultValue = QVariant()) Q_DECL_OVERRIDE;
-    QVariant value(const QString& key, const QVariant& defaultValue) const Q_DECL_OVERRIDE;
+                  const QVariant& defaultValue = QVariant()) override;
+    QVariant value(const QString& key, const QVariant& defaultValue) const override;
 
 private:
     QCGConfigGroup(QSettings*, QString prefix, bool);
@@ -52,11 +52,11 @@ class QCGConfigStorage : public ConfigStorage
 {
 public:
     QCGConfigStorage();
-    ~QCGConfigStorage();
+    ~QCGConfigStorage() override;
 
 private:
     ConfigGroup* getGroup(const QString& group,
-                          const QString& optSuffix) Q_DECL_OVERRIDE;
+                          const QString& optSuffix) override;
 
     QSettings* _settings;
 };

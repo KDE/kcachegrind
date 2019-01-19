@@ -153,11 +153,11 @@ public:
 
     explicit ProfileCostArray(ProfileContext*);
     ProfileCostArray();
-    virtual ~ProfileCostArray();
+    ~ProfileCostArray() override;
 
-    QString costString(EventTypeSet*) Q_DECL_OVERRIDE;
+    QString costString(EventTypeSet*) override;
 
-    void clear() Q_DECL_OVERRIDE;
+    void clear() override;
 
     // reserve space for cost
     void reserve(int);
@@ -178,7 +178,7 @@ public:
     void maxCost(int index, SubCost value);
     ProfileCostArray diff(ProfileCostArray* item);
 
-    void invalidate() Q_DECL_OVERRIDE;
+    void invalidate() override;
 
     /** Returns a sub cost. This automatically triggers
      * a call to update() if needed.
@@ -193,7 +193,7 @@ public:
     QString prettySubCostPerCall(EventType* t, uint64 calls);
 
 protected:
-    void update() Q_DECL_OVERRIDE;
+    void update() override;
 
 private:
     // Only used by friend class EventType: return subcost by index

@@ -31,10 +31,10 @@ class GeneralSettings: public ConfigPage
     Q_OBJECT
 public:
     explicit GeneralSettings(QWidget* parent);
-    virtual ~GeneralSettings() {}
+    ~GeneralSettings() override {}
 
-    bool check(QString&, QString&) Q_DECL_OVERRIDE;
-    void accept() Q_DECL_OVERRIDE;
+    bool check(QString&, QString&) override;
+    void accept() override;
 
 private:
     Ui::GeneralSettings ui;

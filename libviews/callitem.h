@@ -33,7 +33,7 @@ class CallItem: public QTreeWidgetItem
 public:
     CallItem(CallView*, QTreeWidget*, TraceCall* c);
 
-    bool operator<(const QTreeWidgetItem& other) const Q_DECL_OVERRIDE;
+    bool operator<(const QTreeWidgetItem& other) const override;
     TraceCall* call() { return _call; }
     CallView* view() { return _view; }
     void updateCost();

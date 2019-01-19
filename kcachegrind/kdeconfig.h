@@ -34,11 +34,11 @@ class KDEConfigGroup: public ConfigGroup
     friend class KDEConfigStorage;
 
 public:
-    ~KDEConfigGroup();
+    ~KDEConfigGroup() override;
 
     void setValue(const QString& key, const QVariant& value,
-                  const QVariant& defaultValue = QVariant()) Q_DECL_OVERRIDE;
-    QVariant value(const QString& key, const QVariant& defaultValue) const Q_DECL_OVERRIDE;
+                  const QVariant& defaultValue = QVariant()) override;
+    QVariant value(const QString& key, const QVariant& defaultValue) const override;
 
 private:
     KDEConfigGroup(KConfigGroup*, bool);
@@ -55,7 +55,7 @@ public:
 
 private:
     ConfigGroup* getGroup(const QString& group,
-                          const QString& optSuffix) Q_DECL_OVERRIDE;
+                          const QString& optSuffix) override;
 
     KConfig* _kconfig;
 };

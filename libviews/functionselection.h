@@ -56,9 +56,9 @@ public:
     void query(QString);
     bool selectTopFunction();
 
-    QWidget* widget() Q_DECL_OVERRIDE { return this; }
-    QString whatsThis() const Q_DECL_OVERRIDE;
-    void setData(TraceData*) Q_DECL_OVERRIDE;
+    QWidget* widget() override { return this; }
+    QString whatsThis() const override;
+    void setData(TraceData*) override;
 
     void updateGroupingMenu(QMenu*);
 
@@ -79,8 +79,8 @@ public slots:
     void functionHeaderClicked(int);
 
 private:
-    CostItem* canShow(CostItem* i) Q_DECL_OVERRIDE;
-    void doUpdate(int, bool) Q_DECL_OVERRIDE;
+    CostItem* canShow(CostItem* i) override;
+    void doUpdate(int, bool) override;
     void selectFunction();
     void refresh();
     void setCostColumnWidths();
@@ -119,12 +119,12 @@ class AutoToolTipDelegate : public QStyledItemDelegate
     Q_OBJECT
 public:
     explicit AutoToolTipDelegate(QObject* parent = 0);
-    ~AutoToolTipDelegate();
+    ~AutoToolTipDelegate() override;
 
 public slots:
     bool helpEvent( QHelpEvent* e, QAbstractItemView* view,
                     const QStyleOptionViewItem& option,
-                    const QModelIndex& index ) Q_DECL_OVERRIDE;
+                    const QModelIndex& index ) override;
 };
 
 #endif

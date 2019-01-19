@@ -45,7 +45,7 @@ class QtColorButton : public QToolButton
     Q_PROPERTY(bool backgroundCheckered READ isBackgroundCheckered WRITE setBackgroundCheckered)
 public:
     explicit QtColorButton(QWidget *parent = 0);
-    ~QtColorButton();
+    ~QtColorButton() override;
 
     bool isBackgroundCheckered() const;
     void setBackgroundCheckered(bool checkered);
@@ -59,13 +59,13 @@ public slots:
 signals:
     void colorChanged(const QColor &color);
 protected:
-    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
-    void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
-    void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
+    void paintEvent(QPaintEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
 #ifndef QT_NO_DRAGANDDROP
-    void dragEnterEvent(QDragEnterEvent *event) Q_DECL_OVERRIDE;
-    void dragLeaveEvent(QDragLeaveEvent *event) Q_DECL_OVERRIDE;
-    void dropEvent(QDropEvent *event) Q_DECL_OVERRIDE;
+    void dragEnterEvent(QDragEnterEvent *event) override;
+    void dragLeaveEvent(QDragLeaveEvent *event) override;
+    void dropEvent(QDropEvent *event) override;
 #endif
 private:
     class QtColorButtonPrivate* d_ptr;

@@ -35,8 +35,8 @@ class PartView: public QTreeWidget, public TraceItemView
 public:
     explicit PartView(TraceItemView* parentView, QWidget* parent=0);
 
-    QWidget* widget() Q_DECL_OVERRIDE { return this; }
-    QString whatsThis() const Q_DECL_OVERRIDE;
+    QWidget* widget() override { return this; }
+    QString whatsThis() const override;
 
     void refresh();
 
@@ -46,8 +46,8 @@ private slots:
     void headerClicked(int);
 
 private:
-    CostItem* canShow(CostItem*) Q_DECL_OVERRIDE;
-    void doUpdate(int, bool) Q_DECL_OVERRIDE;
+    CostItem* canShow(CostItem*) override;
+    void doUpdate(int, bool) override;
 
     bool _inSelectionUpdate;
 };

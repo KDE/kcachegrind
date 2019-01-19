@@ -32,7 +32,7 @@ class ConfigPage: public QWidget
     Q_OBJECT
 public:
     ConfigPage(QWidget* parent, QString title, QString longTitle = QString());
-    virtual ~ConfigPage() {}
+    ~ConfigPage() override {}
 
     QString title() { return _title; }
     QString longTitle() { return _longTitle; }

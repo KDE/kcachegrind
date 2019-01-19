@@ -39,12 +39,12 @@ public:
     explicit InstrView(TraceItemView* parentView,
                        QWidget* parent = 0);
 
-    QWidget* widget() Q_DECL_OVERRIDE { return this; }
-    QString whatsThis() const Q_DECL_OVERRIDE;
+    QWidget* widget() override { return this; }
+    QString whatsThis() const override;
     int arrowLevels() { return _arrowLevels; }
 
-    void restoreOptions(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
-    void saveOptions(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
+    void restoreOptions(const QString& prefix, const QString& postfix) override;
+    void saveOptions(const QString& prefix, const QString& postfix) override;
 
 protected slots:
     void context(const QPoint &);
@@ -53,11 +53,11 @@ protected slots:
     void headerClicked(int);
 
 protected:
-    void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
+    void keyPressEvent(QKeyEvent* event) override;
 
 private:
-    CostItem* canShow(CostItem*) Q_DECL_OVERRIDE;
-    void doUpdate(int, bool) Q_DECL_OVERRIDE;
+    CostItem* canShow(CostItem*) override;
+    void doUpdate(int, bool) override;
     void refresh();
     void setColumnWidths();
     bool searchFile(QString&, TraceObject*);

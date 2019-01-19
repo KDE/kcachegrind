@@ -40,28 +40,28 @@ class MultiView : public QSplitter, public TraceItemView
 public:
     explicit MultiView(TopLevelBase* top, QWidget* parent = 0);
 
-    QWidget* widget() Q_DECL_OVERRIDE { return this; }
+    QWidget* widget() override { return this; }
     TabView* activeTabView() const { return _active; }
-    void setData(TraceData*) Q_DECL_OVERRIDE;
+    void setData(TraceData*) override;
 
     void appendView();
     void removeView();
     void setChildCount(int);
     int childCount() { return _views.count(); }
 
-    void selected(TraceItemView*, CostItem*) Q_DECL_OVERRIDE;
-    void activated(TraceItemView*, CostItem*) Q_DECL_OVERRIDE;
+    void selected(TraceItemView*, CostItem*) override;
+    void activated(TraceItemView*, CostItem*) override;
 
-    void saveLayout(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
-    void restoreLayout(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
-    void saveOptions(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
-    void restoreOptions(const QString& prefix, const QString& postfix) Q_DECL_OVERRIDE;
+    void saveLayout(const QString& prefix, const QString& postfix) override;
+    void restoreLayout(const QString& prefix, const QString& postfix) override;
+    void saveOptions(const QString& prefix, const QString& postfix) override;
+    void restoreOptions(const QString& prefix, const QString& postfix) override;
 
 public slots:
     void tabActivated(TabView*);
 
 private:
-    void doUpdate(int, bool) Q_DECL_OVERRIDE;
+    void doUpdate(int, bool) override;
 
     TabView* _active;
     QList<TabView*> _views;

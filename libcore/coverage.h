@@ -47,7 +47,7 @@ public:
 
     Coverage();
 
-    int rtti() Q_DECL_OVERRIDE { return Rtti; }
+    int rtti() override { return Rtti; }
     void init();
 
     TraceFunction* function() { return _function; }
