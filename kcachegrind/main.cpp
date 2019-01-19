@@ -52,6 +52,7 @@ int main( int argc, char ** argv )
     aboutData.setDesktopFileName(QStringLiteral("org.kde.kcachegrind"));
 
     KAboutData::setApplicationData(aboutData);
+    QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("kcachegrind")));
 
     //   KGlobal::locale()->insertCatalog("kcachegrind_qt");
     Loader::initLoaders();
