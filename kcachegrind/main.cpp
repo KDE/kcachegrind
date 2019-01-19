@@ -71,8 +71,6 @@ int main( int argc, char ** argv )
 
         QCommandLineParser parser;
         parser.addPositionalArgument(QStringLiteral("trace"), i18n("Show information of this trace"), i18n("[trace...]"));
-        parser.addVersionOption();
-        parser.addHelpOption();
         aboutData.setupCommandLine(&parser);
         parser.process(a);
         aboutData.processCommandLine(&parser);
