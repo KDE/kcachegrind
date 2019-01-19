@@ -110,10 +110,10 @@ public:
     void setCaller(GraphEdge*);
     TraceFunction* nextVisible();
     TraceFunction* priorVisible();
-    TraceCall* nextVisibleCaller(GraphEdge* = 0);
-    TraceCall* nextVisibleCallee(GraphEdge* = 0);
-    TraceCall* priorVisibleCaller(GraphEdge* = 0);
-    TraceCall* priorVisibleCallee(GraphEdge* = 0);
+    TraceCall* nextVisibleCaller(GraphEdge* = nullptr);
+    TraceCall* nextVisibleCallee(GraphEdge* = nullptr);
+    TraceCall* priorVisibleCaller(GraphEdge* = nullptr);
+    TraceCall* priorVisibleCallee(GraphEdge* = nullptr);
 
     double self, incl;
 
@@ -218,7 +218,7 @@ public:
 
 private:
     // we have a _c *and* _from/_to because for collapsed edges,
-    // only _to or _from will be unequal NULL
+    // only _to or _from will be unequal nullptr
     TraceCall* _c;
     TraceFunction * _from, * _to;
     GraphNode *_fromNode, *_toNode;
@@ -325,13 +325,13 @@ public:
 
     // Set the object from which to get graph options for creation.
     // Default is this object itself (supply 0 for default)
-    void setGraphOptions(GraphOptions* go = 0);
+    void setGraphOptions(GraphOptions* go = nullptr);
 
     // Create a subgraph with given limits/maxDepths
     void createGraph();
 
     // calls createGraph before dumping of not already created
-    void writeDot(QIODevice* = 0);
+    void writeDot(QIODevice* = nullptr);
 
     // to map back to structures when parsing a layouted graph
 
@@ -379,7 +379,7 @@ class PanningView : public QGraphicsView
     Q_OBJECT
 
 public:
-    explicit PanningView(QWidget * parent = 0);
+    explicit PanningView(QWidget * parent = nullptr);
 
     void setZoomRect(const QRectF& r);
 

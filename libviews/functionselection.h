@@ -48,7 +48,7 @@ class FunctionSelection: public QWidget, public TraceItemView
     Q_OBJECT
 
 public:
-    explicit FunctionSelection(TopLevelBase*, QWidget* parent = 0);
+    explicit FunctionSelection(TopLevelBase*, QWidget* parent = nullptr);
 
     TraceCostItem* group() { return _group; }
     TraceCostItem* group(QString);
@@ -118,7 +118,7 @@ class AutoToolTipDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
 public:
-    explicit AutoToolTipDelegate(QObject* parent = 0);
+    explicit AutoToolTipDelegate(QObject* parent = nullptr);
     ~AutoToolTipDelegate() override;
 
 public slots:

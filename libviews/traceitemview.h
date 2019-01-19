@@ -92,7 +92,7 @@ public:
     // a TraceItemView can have a position in a parent container
     enum Position { Hidden, Top, Right, Left, Bottom };
 
-    explicit TraceItemView(TraceItemView* parentView, TopLevelBase* top = 0);
+    explicit TraceItemView(TraceItemView* parentView, TopLevelBase* top = nullptr);
     virtual ~TraceItemView();
 
     virtual QString whatsThis() const;

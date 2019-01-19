@@ -37,7 +37,7 @@ StackItem::StackItem(StackSelection* ss,
 {
     _view = ss;
     _function = f;
-    _call = 0;
+    _call = nullptr;
 
     setTextAlignment(0, Qt::AlignRight);
     setTextAlignment(1, Qt::AlignRight);

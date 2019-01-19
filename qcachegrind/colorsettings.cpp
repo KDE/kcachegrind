@@ -100,7 +100,7 @@ ColorSettings::ColorSettings(TraceData* data, QWidget* parent)
     connect(ui.colorButton, &QtColorButton::colorChanged,
             this, &ColorSettings::colorChanged);
 
-    _current = 0;
+    _current = nullptr;
     update();
 }
 

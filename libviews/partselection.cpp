@@ -51,7 +51,7 @@
 
 PartSelection::PartSelection( TopLevelBase* top,
                               QWidget* parent)
-    : QWidget(parent), TraceItemView(0, top)
+    : QWidget(parent), TraceItemView(nullptr, top)
 {
     _inSelectionUpdate = false;
 
@@ -145,7 +145,7 @@ CostItem* PartSelection::canShow(CostItem* i)
     default:
         break;
     }
-    return 0;
+    return nullptr;
 }
 
 /* Helper for doUpdate(), called on partsChanged event.
@@ -201,7 +201,7 @@ void PartSelection::doUpdate(int changeType, bool)
         _partAreaWidget->setGroupType(_groupType);
 
     if (changeType & activeItemChanged) {
-        TraceFunction* f = 0;
+        TraceFunction* f = nullptr;
 
         if (_activeItem) {
             switch(_activeItem->type()) {
@@ -252,7 +252,7 @@ void PartSelection::doubleClicked(TreeMapItem* i)
     if (!i || i->rtti() != 3) return;
 
     ProfileCostArray* c = ((SubPartItem*) i)->partCostItem();
-    TraceCostItem* ci = 0;
+    TraceCostItem* ci = nullptr;
 
     switch(c->type()) {
     case ProfileContext::PartFunction:
@@ -334,12 +334,12 @@ void PartSelection::contextMenuRequested(TreeMapItem* i,
     QAction* a;
 
     QString str;
-    TreeMapItem* s = 0;
+    TreeMapItem* s = nullptr;
 
-    QAction* selectPartAction = 0;
-    QAction* selectAllPartsAction = 0;
-    QAction* hidePartsAction = 0;
-    QAction* showPartsAction = 0;
+    QAction* selectPartAction = nullptr;
+    QAction* selectAllPartsAction = nullptr;
+    QAction* hidePartsAction = nullptr;
+    QAction* showPartsAction = nullptr;
     if (_data && (_data->parts().count()>1)) {
         s = _partAreaWidget->possibleSelection(i);
         if (!s->text(0).isEmpty()) {

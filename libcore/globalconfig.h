@@ -48,7 +48,7 @@ public:
     virtual void saveOptions();
     virtual void readOptions();
 
-    static QStringList sourceDirs(TraceData*, TraceObject* o = 0);
+    static QStringList sourceDirs(TraceData*, TraceObject* o = nullptr);
     static bool showPercentage();
     static bool showExpanded();
     static bool showCycles();

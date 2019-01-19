@@ -55,7 +55,7 @@ void Stack::extendBottom()
 
     // event type to use for the "most probable" call stack
     // we simply take the first real event type
-    if ((_top->data() == 0) ||
+    if ((_top->data() == nullptr) ||
         (_top->data()->eventTypes()->realCount() <1)) return;
     EventType* e = _top->data()->eventTypes()->realType(0);
 
@@ -63,7 +63,7 @@ void Stack::extendBottom()
 
     // try to extend to lower stack frames
     while (f && (max-- >0)) {
-        TraceCall* call = 0;
+        TraceCall* call = nullptr;
         most = 0;
         foreach(TraceCall* c, f->callings()) {
             // no cycle calls in stack: could be deleted without notice
@@ -100,13 +100,13 @@ void Stack::extendTop()
 
     // event type to use for the "most probable" call stack
     // we simply take the first real event type
-    if ((_top->data() == 0) ||
+    if ((_top->data() == nullptr) ||
         (_top->data()->eventTypes()->realCount() <1)) return;
     EventType* e = _top->data()->eventTypes()->realType(0);
 
     // try to extend to upper stack frames
     while (_top && (max-- >0)) {
-        TraceCall* call = 0;
+        TraceCall* call = nullptr;
         most = 0;
         foreach(TraceCall* c, _top->callers()) {
             // no cycle calls in stack: could be deleted without notice
@@ -146,7 +146,7 @@ TraceFunction* Stack::caller(TraceFunction* fn, bool extend)
         if (f == fn)
             return c->caller();
     }
-    return 0;
+    return nullptr;
 }
 
 TraceFunction* Stack::called(TraceFunction* fn, bool extend)
@@ -171,7 +171,7 @@ TraceFunction* Stack::called(TraceFunction* fn, bool extend)
         }
     }
 
-    return 0;
+    return nullptr;
 }
 
 bool Stack::contains(TraceFunction* fn)
@@ -223,8 +223,8 @@ Stack* Stack::split(TraceFunction* f)
     TraceCallList calls = _calls;
 
     // cycles are listed on there own
-    if (f->cycle() == f) return 0;
-    if (_top->cycle() == _top) return 0;
+    if (f->cycle() == f) return nullptr;
+    if (_top->cycle() == _top) return nullptr;
 
     foreach(TraceCall* c, calls) {
         foreach(TraceCall* c2, c->called()->callings()) {
@@ -239,7 +239,7 @@ Stack* Stack::split(TraceFunction* f)
             return new Stack(_top, calls);
         }
     }
-    return 0;
+    return nullptr;
 }
 
 QString Stack::toString()
@@ -261,8 +261,8 @@ HistoryItem::HistoryItem(Stack* stack, TraceFunction* function)
     if (_stack)
         _stack->ref();
 
-    _last = 0;
-    _next = 0;
+    _last = nullptr;
+    _next = nullptr;
 
     /*
   qDebug("New Stack History Item (sRef %d): %s\n  %s",
@@ -290,7 +290,7 @@ HistoryItem::~HistoryItem()
 
 StackBrowser::StackBrowser()
 {
-    _current = 0;
+    _current = nullptr;
 }
 
 StackBrowser::~StackBrowser()
@@ -309,7 +309,7 @@ HistoryItem* StackBrowser::select(TraceFunction* f)
         HistoryItem* item = _current;
         if (item->next()) {
             item = item->next();
-            item->last()->setNext(0);
+            item->last()->setNext(nullptr);
 
             while (item->next()) {
                 item = item->next();

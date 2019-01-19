@@ -50,8 +50,8 @@ SourceItem::SourceItem(SourceView* sv, QTreeWidget* parent,
     _fileno = fileno;
     _inside = inside;
     _line = line;
-    _lineCall = 0;
-    _lineJump = 0;
+    _lineCall = nullptr;
+    _lineJump = nullptr;
 
     setTextAlignment(0, Qt::AlignRight);
     setTextAlignment(1, Qt::AlignRight);
@@ -84,7 +84,7 @@ SourceItem::SourceItem(SourceView* sv, QTreeWidgetItem* parent,
     _inside = true;
     _line = line;
     _lineCall = lineCall;
-    _lineJump = 0;
+    _lineJump = nullptr;
 
     setTextAlignment(0, Qt::AlignRight);
     setTextAlignment(1, Qt::AlignRight);
@@ -126,7 +126,7 @@ SourceItem::SourceItem(SourceView* sv, QTreeWidgetItem* parent,
     _fileno = fileno;
     _inside = true;
     _line = line;
-    _lineCall = 0;
+    _lineCall = nullptr;
     _lineJump = lineJump;
 
     setTextAlignment(0, Qt::AlignRight);
@@ -384,7 +384,7 @@ void SourceItemDelegate::paintArrows(QPainter *p,
     // draw line borders, detect start/stop of a line
     for(int i=0; i< item->jumpCount(); i++) {
         TraceLineJump* jump = item->jump(i);
-        if (jump == 0) continue;
+        if (jump == nullptr) continue;
 
         y1 = 0;
         y2 = height;
@@ -459,7 +459,7 @@ void SourceItemDelegate::paintArrows(QPainter *p,
     // this overwrites borders of horizontal line
     for(int i=0;i< item->jumpCount();i++) {
         TraceLineJump* jump = item->jump(i);
-        if (jump == 0) continue;
+        if (jump == nullptr) continue;
 
         c = jump->isCondJump() ? Qt::red : Qt::blue;
 

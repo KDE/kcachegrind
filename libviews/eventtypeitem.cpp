@@ -70,7 +70,7 @@ void EventTypeItem::setGroupType(ProfileContext::Type gt)
 
 void EventTypeItem::update()
 {
-    TraceData* d = _costItem ? _costItem->data() : 0;
+    TraceData* d = _costItem ? _costItem->data() : nullptr;
     double total = d ? ((double)d->subCost(_eventType)) : 0.0;
 
     if (total == 0.0) {
@@ -82,11 +82,11 @@ void EventTypeItem::update()
     }
 
     TraceFunction* f = (_costItem && _costItem->type()==ProfileContext::Function) ?
-                           (TraceFunction*)_costItem : 0;
+                           (TraceFunction*)_costItem : nullptr;
 
     ProfileCostArray* selfTotalCost = f ? f->data() : d;
     if (f && GlobalConfig::showExpanded()) {
-        ProfileCostArray* parent = 0;
+        ProfileCostArray* parent = nullptr;
         switch(_groupType) {
         case ProfileContext::Object:        parent = f->object(); break;
         case ProfileContext::Class:         parent = f->cls(); break;

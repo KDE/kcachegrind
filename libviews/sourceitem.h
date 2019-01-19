@@ -37,7 +37,7 @@ public:
     SourceItem(SourceView* sv, QTreeWidget* parent,
                int fileno, unsigned int lineno,
                bool inside, const QString& src,
-               TraceLine* line = 0);
+               TraceLine* line = nullptr);
 
     // for call lines
     SourceItem(SourceView* sv, QTreeWidgetItem* parent,

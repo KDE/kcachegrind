@@ -26,7 +26,7 @@
 //---------------------------------------------------
 // EventType
 
-QList<EventType*>* EventType::_knownTypes = 0;
+QList<EventType*>* EventType::_knownTypes = nullptr;
 
 EventType::EventType(const QString& name, const QString& longName,
                      const QString& formula)
@@ -35,7 +35,7 @@ EventType::EventType(const QString& name, const QString& longName,
     _longName = longName;
     _formula = formula;
     _isReal = formula.isEmpty();
-    _set = 0;
+    _set = nullptr;
     _realIndex = ProfileCostArray::InvalidIndex;
     _parsed = false;
     _inParsing = false;
@@ -255,7 +255,7 @@ bool EventType::hasKnownDerivedType(const QString& n)
 
 EventType* EventType::cloneKnownRealType(const QString& n)
 {
-    if (!_knownTypes) return 0;
+    if (!_knownTypes) return nullptr;
 
     foreach (EventType* t, *_knownTypes)
         if (t->isReal() && (t->name() == n)) {
@@ -263,13 +263,13 @@ EventType* EventType::cloneKnownRealType(const QString& n)
             return type;
         }
 
-    return 0;
+    return nullptr;
 }
 
 
 EventType* EventType::cloneKnownDerivedType(const QString& n)
 {
-    if (!_knownTypes) return 0;
+    if (!_knownTypes) return nullptr;
 
     foreach (EventType* t, *_knownTypes)
         if (!t->isReal() && (t->name() == n)) {
@@ -277,7 +277,7 @@ EventType* EventType::cloneKnownDerivedType(const QString& n)
             return type;
         }
 
-    return 0;
+    return nullptr;
 }
 
 // we take ownership
@@ -285,7 +285,7 @@ void EventType::add(EventType* t, bool overwriteExisting)
 {
     if (!t) return;
 
-    t->setEventTypeSet(0);
+    t->setEventTypeSet(nullptr);
 
     if (!_knownTypes)
         _knownTypes = new QList<EventType*>;
@@ -332,8 +332,8 @@ bool EventType::remove(const QString& n)
 
 EventType* EventType::knownType(int i)
 {
-    if (!_knownTypes) return 0;
-    if (i<0 || i>=(int)_knownTypes->count()) return 0;
+    if (!_knownTypes) return nullptr;
+    if (i<0 || i>=(int)_knownTypes->count()) return nullptr;
 
     return _knownTypes->at(i);
 }
@@ -346,8 +346,8 @@ EventTypeSet::EventTypeSet()
 {
     _realCount = 0;
     _derivedCount = 0;
-    for (int i=0;i<ProfileCostArray::MaxRealIndex;i++) _real[i] = 0;
-    for (int i=0;i<ProfileCostArray::MaxRealIndex;i++) _derived[i] = 0;
+    for (int i=0;i<ProfileCostArray::MaxRealIndex;i++) _real[i] = nullptr;
+    for (int i=0;i<ProfileCostArray::MaxRealIndex;i++) _derived[i] = nullptr;
 }
 
 EventTypeSet::~EventTypeSet()
@@ -383,7 +383,7 @@ EventTypeMapping* EventTypeSet::createMapping(const QString& types)
         qDebug() << "EventTypeSet::createMapping: No space for "
                  << newCount << " cost entries.";
         qDebug() << "Increase MaxRealIndexValue in libcore/costitem.h and recompile.";
-        return 0;
+        return nullptr;
     }
 
     EventTypeMapping* mapping = new EventTypeMapping(this);
@@ -470,7 +470,7 @@ bool EventTypeSet::remove(EventType* t)
     EventType::remove(t->name());
 
     // delete this type
-    _derived[i] = 0;
+    _derived[i] = nullptr;
     delete t;
     if (i+1 == _derivedCount) {
         // we can reuse the last index
@@ -482,27 +482,27 @@ bool EventTypeSet::remove(EventType* t)
 
 EventType* EventTypeSet::realType(int t)
 {
-    if (t<0 || t>=_realCount) return 0;
+    if (t<0 || t>=_realCount) return nullptr;
     return _real[t];
 }
 
 EventType* EventTypeSet::derivedType(int t)
 {
-    if (t<0 || t>=_derivedCount) return 0;
+    if (t<0 || t>=_derivedCount) return nullptr;
     return _derived[t];
 }
 
 
 EventType* EventTypeSet::type(int t)
 {
-    if (t<0) return 0;
+    if (t<0) return nullptr;
     if (t<_realCount) return _real[t];
 
     t -= ProfileCostArray::MaxRealIndex;
-    if (t<0) return 0;
+    if (t<0) return nullptr;
     if (t<_derivedCount) return _derived[t];
 
-    return 0;
+    return nullptr;
 }
 
 EventType* EventTypeSet::type(const QString& name)
@@ -515,7 +515,7 @@ EventType* EventTypeSet::type(const QString& name)
         if (_derived[i] && (_derived[i]->name() == name))
             return _derived[i];
 
-    return 0;
+    return nullptr;
 }
 
 EventType* EventTypeSet::typeForLong(const QString& name)
@@ -528,7 +528,7 @@ EventType* EventTypeSet::typeForLong(const QString& name)
         if (_derived[i] && (_derived[i]->longName() == name))
             return _derived[i];
 
-    return 0;
+    return nullptr;
 }
 
 
@@ -571,7 +571,7 @@ int EventTypeSet::addKnownDerivedTypes()
                 addDiff++;
                 add(new EventType(t->name(), t->longName(), t->formula()));
             }
-            t->setEventTypeSet(0);
+            t->setEventTypeSet(nullptr);
         }
         if (addDiff == 0) break;
         addCount += addDiff;

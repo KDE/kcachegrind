@@ -137,9 +137,9 @@ void PartView::headerClicked(int col)
 
 CostItem* PartView::canShow(CostItem* i)
 {
-    if (!TraceItemView::data()) return 0;
+    if (!TraceItemView::data()) return nullptr;
     if (TraceItemView::data()->parts().count()>1) return i;
-    return 0;
+    return nullptr;
 }
 
 void PartView::doUpdate(int changeType, bool)
@@ -220,7 +220,7 @@ void PartView::refresh()
     }
 
     ProfileContext::Type t = _activeItem->type();
-    TraceFunction* f = 0;
+    TraceFunction* f = nullptr;
     if (t == ProfileContext::Function) f = (TraceFunction*) _activeItem;
     if (!f) return;
 
@@ -235,7 +235,7 @@ void PartView::refresh()
     QTreeWidgetItem* item;
     foreach(TracePart* part, _data->parts()) {
         if (hidden.contains(part)) continue;
-        item = new PartListItem(0, f, _eventType, _groupType, part);
+        item = new PartListItem(nullptr, f, _eventType, _groupType, part);
         items.append(item);
     }
     setSortingEnabled(false);

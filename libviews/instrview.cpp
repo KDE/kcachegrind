@@ -264,13 +264,13 @@ void InstrView::context(const QPoint & p)
     int c = columnAt(p.x());
     QTreeWidgetItem* i = itemAt(p);
 
-    TraceInstrCall* ic = i ? ((InstrItem*) i)->instrCall() : 0;
-    TraceInstrJump* ij = i ? ((InstrItem*) i)->instrJump() : 0;
-    TraceFunction* f = ic ? ic->call()->called() : 0;
-    TraceInstr* instr = ij ? ij->instrTo() : 0;
+    TraceInstrCall* ic = i ? ((InstrItem*) i)->instrCall() : nullptr;
+    TraceInstrJump* ij = i ? ((InstrItem*) i)->instrJump() : nullptr;
+    TraceFunction* f = ic ? ic->call()->called() : nullptr;
+    TraceInstr* instr = ij ? ij->instrTo() : nullptr;
 
-    QAction* activateFunctionAction = 0;
-    QAction* activateInstrAction = 0;
+    QAction* activateFunctionAction = nullptr;
+    QAction* activateInstrAction = nullptr;
     if (f) {
         QString menuText = tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName()));
         activateFunctionAction = popup.addAction(menuText);
@@ -386,7 +386,7 @@ CostItem* InstrView::canShow(CostItem* i)
         break;
     }
 
-    return 0;
+    return nullptr;
 }
 
 
@@ -401,7 +401,7 @@ void InstrView::doUpdate(int changeType, bool)
         }
 
         QList<QTreeWidgetItem*> items = selectedItems();
-        InstrItem* ii = (items.count() > 0) ? (InstrItem*)items[0] : 0;
+        InstrItem* ii = (items.count() > 0) ? (InstrItem*)items[0] : nullptr;
         if (ii) {
             if ((ii->instr() == _selectedItem) ||
                 (ii->instr() && (ii->instr()->line() == _selectedItem))) return;
@@ -409,7 +409,7 @@ void InstrView::doUpdate(int changeType, bool)
                 (ii->instrCall()->call()->called() == _selectedItem)) return;
         }
 
-        TraceInstrJump* ij = 0;
+        TraceInstrJump* ij = nullptr;
         if (_selectedItem->type() == ProfileContext::InstrJump)
             ij = (TraceInstrJump*) _selectedItem;
 
@@ -426,7 +426,7 @@ void InstrView::doUpdate(int changeType, bool)
                 _inSelectionUpdate = false;
                 break;
             }
-            item2 = 0;
+            item2 = nullptr;
             for (int j=0; i<item->childCount(); j++) {
                 item2 = item->child(j);
                 ii = (InstrItem*)item2;
@@ -536,7 +536,7 @@ void InstrView::refresh()
     clear();
     setColumnWidth(0, 20);
     setColumnWidth(1, 50);
-    setColumnHidden(2, (_eventType2 == 0));
+    setColumnHidden(2, (_eventType2 == nullptr));
     setColumnWidth(2, 50);
     setColumnHidden(3, true); // arrows, defaults to invisible
     setColumnHidden(4, true); // hex code column, defaults to invisible
@@ -552,7 +552,7 @@ void InstrView::refresh()
     if (!_data || !_activeItem) return;
 
     ProfileContext::Type t = _activeItem->type();
-    TraceFunction* f = 0;
+    TraceFunction* f = nullptr;
     if (t == ProfileContext::Function) f = (TraceFunction*) _activeItem;
     if (t == ProfileContext::Instr) {
         f = ((TraceInstr*)_activeItem)->function();
@@ -708,7 +708,7 @@ void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
 
         if (iStart==_arrowLevels) {
             for(iStart=0; iStart<_arrowLevels; ++iStart)
-                if (_jump[iStart] == 0) break;
+                if (_jump[iStart] == nullptr) break;
             if (iStart==_arrowLevels) {
                 _arrowLevels++;
                 _jump.resize(_arrowLevels);
@@ -757,11 +757,11 @@ void InstrView::updateJumpArray(Addr addr, InstrItem* ii,
         if (highAddr > addr)
             break;
         else {
-            if (iEnd>=0) _jump[iEnd] = 0;
+            if (iEnd>=0) _jump[iEnd] = nullptr;
             iEnd = -1;
         }
     }
-    if (iEnd>=0) _jump[iEnd] = 0;
+    if (iEnd>=0) _jump[iEnd] = nullptr;
 }
 
 
@@ -884,7 +884,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     int objdumpLineno = 0, dumpedLines = 0, noAssLines = 0;
     SubCost most = 0;
     TraceInstr* currInstr;
-    InstrItem *ii, *ii2, *item = 0, *first = 0, *selected = 0;
+    InstrItem *ii, *ii2, *item = nullptr, *first = nullptr, *selected = nullptr;
     QString code, cmd, args;
     bool needObjAddr = true, needCostAddr = true;
 
@@ -961,7 +961,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
                 needCostAddr = true;
             }
             else
-                currInstr = 0;
+                currInstr = nullptr;
 
             needObjAddr = true;
 
@@ -1022,7 +1022,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
             skipLineWritten = false;
 
 
-        ii = new InstrItem(this, 0, addr, inside,
+        ii = new InstrItem(this, nullptr, addr, inside,
                            code, cmd, args, currInstr);
         items.append(ii);
 

@@ -118,7 +118,7 @@ int main(int argc, char** argv)
             return 1;
         }
     }
-    Q_ASSERT( et!=0 );
+    Q_ASSERT( et!=nullptr );
     out << "Sorted by: " << (sortByExcl ? "Exclusive ":"Inclusive ")
         << et->longName() << " (" << et->name() << ")" << endl;
 

@@ -35,7 +35,7 @@ struct SpaceChunk
 
 FixPool::FixPool()
 {
-    _first = _last = 0;
+    _first = _last = nullptr;
     _reservation = 0;
     _count = 0;
     _size = 0;
@@ -57,7 +57,7 @@ FixPool::~FixPool()
 
 void* FixPool::allocate(unsigned int size)
 {
-    if (!ensureSpace(size)) return 0;
+    if (!ensureSpace(size)) return nullptr;
 
     _reservation = 0;
     void* result = _last->space + _last->used;
@@ -71,7 +71,7 @@ void* FixPool::allocate(unsigned int size)
 
 void* FixPool::reserve(unsigned int size)
 {
-    if (!ensureSpace(size)) return 0;
+    if (!ensureSpace(size)) return nullptr;
     _reservation = size;
 
     return _last->space + _last->used;
@@ -108,7 +108,7 @@ bool FixPool::ensureSpace(unsigned int size)
                "this system. You could try loading this file on a 64-bit OS.");
         exit(1);
     }
-    newChunk->next = 0;
+    newChunk->next = nullptr;
     newChunk->used = 0;
 
     if (!_last) {
@@ -171,8 +171,8 @@ void DynPool::free(char** ptr)
         (*(char**)(*ptr - 4)) != (char*)ptr )
         qFatal("Chaining error in DynPool::free");
 
-    (*(char**)(*ptr - 4)) = 0;
-    *ptr = 0;
+    (*(char**)(*ptr - 4)) = nullptr;
+    *ptr = nullptr;
 }
 
 bool DynPool::ensureSpace(unsigned int size)
@@ -198,7 +198,7 @@ bool DynPool::ensureSpace(unsigned int size)
                       p, len, p[1], freed, pnew);
 
         /* skip freed space ? */
-        if (p[1] == 0) {
+        if (p[1] == nullptr) {
             freed += len;
             p = pnext;
             continue;
@@ -224,7 +224,7 @@ bool DynPool::ensureSpace(unsigned int size)
         pnew = (char**) pnew[0];
         p = pnext;
     }
-    pnew[0] = 0;
+    pnew[0] = nullptr;
 
     unsigned int newused = (char*)pnew - (char*)newdata;
     qDebug("DynPool::ensureSpace size: %d => %d, used %d => %d (%d freed)",

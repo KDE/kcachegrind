@@ -39,7 +39,7 @@ public:
                        EventType* ct, ProfileContext::Type gt);
 
     bool operator< ( const QTreeWidgetItem & other ) const override;
-    TraceFunction* function() { return (_skipped) ? 0 : _function; }
+    TraceFunction* function() { return (_skipped) ? nullptr : _function; }
     void setCostType(EventType* ct);
     void setGroupType(ProfileContext::Type);
     void update();
@@ -67,7 +67,7 @@ public:
                        EventType* ct, ProfileContext::Type gt);
 
     bool operator< ( const QTreeWidgetItem & other ) const override;
-    TraceFunction* function() { return (_skipped) ? 0 : _function; }
+    TraceFunction* function() { return (_skipped) ? nullptr : _function; }
     void setCostType(EventType* ct);
     void setGroupType(ProfileContext::Type);
     void update();

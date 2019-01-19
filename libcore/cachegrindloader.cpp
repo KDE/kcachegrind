@@ -362,10 +362,10 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
     int p = name.indexOf(')');
     if (p<2) {
         error(QStringLiteral("Invalid compressed ELF object ('%1')").arg(name));
-        return 0;
+        return nullptr;
     }
     int index = name.midRef(1, p-1).toInt();
-    TraceObject* o = 0;
+    TraceObject* o = nullptr;
     p++;
     while((name.length()>p) && name.at(p).isSpace()) p++;
     if (name.length()>p) {
@@ -390,9 +390,9 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
     }
     else {
         if ((_objectVector.size() <= index) ||
-            ( (o=(TraceObject*)_objectVector.at(index)) == 0)) {
+            ( (o=(TraceObject*)_objectVector.at(index)) == nullptr)) {
             error(QStringLiteral("Undefined compressed ELF object index %1").arg(index));
-            return 0;
+            return nullptr;
         }
     }
 
@@ -410,10 +410,10 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
     int p = name.indexOf(')');
     if (p<2) {
         error(QStringLiteral("Invalid compressed file ('%1')").arg(name));
-        return 0;
+        return nullptr;
     }
     int index = name.midRef(1, p-1).toUInt();
-    TraceFile* f = 0;
+    TraceFile* f = nullptr;
     p++;
     while((name.length()>p) && name.at(p).isSpace()) p++;
     if (name.length()>p) {
@@ -438,9 +438,9 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
     }
     else {
         if ((_fileVector.size() <= index) ||
-            ( (f=(TraceFile*)_fileVector.at(index)) == 0)) {
+            ( (f=(TraceFile*)_fileVector.at(index)) == nullptr)) {
             error(QStringLiteral("Undefined compressed file index %1").arg(index));
-            return 0;
+            return nullptr;
         }
     }
 
@@ -461,12 +461,12 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
     int p = name.indexOf(')');
     if (p<2) {
         error(QStringLiteral("Invalid compressed function ('%1')").arg(name));
-        return 0;
+        return nullptr;
     }
 
 
     int index = name.midRef(1, p-1).toUInt();
-    TraceFunction* f = 0;
+    TraceFunction* f = nullptr;
     p++;
     while((name.length()>p) && name.at(p).isSpace()) p++;
     if (name.length()>p) {
@@ -499,9 +499,9 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
     }
     else {
         if ((_functionVector.size() <= index) ||
-            ( (f=(TraceFunction*)_functionVector.at(index)) == 0)) {
+            ( (f=(TraceFunction*)_functionVector.at(index)) == nullptr)) {
             error(QStringLiteral("Undefined compressed function index %1").arg(index));
-            return 0;
+            return nullptr;
         }
 
         // there was a check if the used function (returned from KCachegrinds
@@ -533,8 +533,8 @@ void CachegrindLoader::setObject(const QString& name)
     }
 
     currentPartObject = currentObject->partObject(_part);
-    currentFunction = 0;
-    currentPartFunction = 0;
+    currentFunction = nullptr;
+    currentPartFunction = nullptr;
 }
 
 void CachegrindLoader::setCalledObject(const QString& name)
@@ -571,8 +571,8 @@ void CachegrindLoader::setFile(const QString& name)
     }
 
     currentPartFile = currentFile->partFile(_part);
-    currentLine = 0;
-    currentPartLine = 0;
+    currentLine = nullptr;
+    currentPartLine = nullptr;
 }
 
 void CachegrindLoader::setCalledFile(const QString& name)
@@ -627,9 +627,9 @@ void CachegrindLoader::setFunction(const QString& name)
                                                         currentPartFile,
                                                         currentPartObject);
 
-    currentFunctionSource = 0;
-    currentLine = 0;
-    currentPartLine = 0;
+    currentFunctionSource = nullptr;
+    currentLine = nullptr;
+    currentPartLine = nullptr;
 }
 
 void CachegrindLoader::setCalledFunction(const QString& name)
@@ -669,43 +669,43 @@ void CachegrindLoader::clearPosition()
     currentPos = PositionSpec();
 
     // current function/line
-    currentFunction = 0;
-    currentPartFunction = 0;
-    currentFunctionSource = 0;
-    currentFile = 0;
-    currentFunctionFile = 0;
-    currentPartFile = 0;
-    currentObject = 0;
-    currentPartObject = 0;
-    currentLine = 0;
-    currentPartLine = 0;
-    currentInstr = 0;
-    currentPartInstr = 0;
+    currentFunction = nullptr;
+    currentPartFunction = nullptr;
+    currentFunctionSource = nullptr;
+    currentFile = nullptr;
+    currentFunctionFile = nullptr;
+    currentPartFile = nullptr;
+    currentObject = nullptr;
+    currentPartObject = nullptr;
+    currentLine = nullptr;
+    currentPartLine = nullptr;
+    currentInstr = nullptr;
+    currentPartInstr = nullptr;
 
     // current call
-    currentCalledObject = 0;
-    currentCalledPartObject = 0;
-    currentCalledFile = 0;
-    currentCalledPartFile = 0;
-    currentCalledFunction = 0;
-    currentCalledPartFunction = 0;
+    currentCalledObject = nullptr;
+    currentCalledPartObject = nullptr;
+    currentCalledFile = nullptr;
+    currentCalledPartFile = nullptr;
+    currentCalledFunction = nullptr;
+    currentCalledPartFunction = nullptr;
     currentCallCount = 0;
 
     // current jump
-    currentJumpToFile = 0;
-    currentJumpToFunction = 0;
+    currentJumpToFile = nullptr;
+    currentJumpToFunction = nullptr;
     targetPos = PositionSpec();
     jumpsFollowed = 0;
     jumpsExecuted = 0;
 
-    mapping = 0;
+    mapping = nullptr;
 }
 
 void CachegrindLoader::prepareNewPart()
 {
     if (_part) {
         // really new part needed?
-        if (mapping == 0) return;
+        if (mapping == nullptr) return;
 
         // yes
         _part->invalidate();
@@ -749,7 +749,7 @@ int CachegrindLoader::loadInternal(TraceData* data,
     FixPool* pool = _data->fixPool();
 #endif
 
-    _part = 0;
+    _part = nullptr;
     partsAdded = 0;
     prepareNewPart();
 
@@ -1266,10 +1266,10 @@ int CachegrindLoader::loadInternal(TraceData* data,
                 _data->updateMaxCallCount(partLineCall->callCount());
             }
 #endif
-            currentCalledFile = 0;
-            currentCalledPartFile = 0;
-            currentCalledObject = 0;
-            currentCalledPartObject = 0;
+            currentCalledFile = nullptr;
+            currentCalledPartFile = nullptr;
+            currentCalledObject = nullptr;
+            currentCalledPartObject = nullptr;
             currentCallCount = 0;
 
             if (!line.isEmpty()) {
@@ -1348,8 +1348,8 @@ int CachegrindLoader::loadInternal(TraceData* data,
             }
 
             nextLineType = SelfCost;
-            currentJumpToFunction = 0;
-            currentJumpToFile = 0;
+            currentJumpToFunction = nullptr;
+            currentJumpToFile = nullptr;
 
             if (!line.isEmpty()) {
                 error(QStringLiteral("Garbage at end of jump cost line ('%1')").arg(line));

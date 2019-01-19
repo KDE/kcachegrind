@@ -361,7 +361,7 @@ FixFile::FixFile(QIODevice* file, const QString& filename)
     _openError = false;
     _used_mmap = false;
 
-    uchar* addr = 0;
+    uchar* addr = nullptr;
 
 #if QT_VERSION >= 0x040400
     // QFile::map was introduced with Qt 4.4

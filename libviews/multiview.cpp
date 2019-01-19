@@ -36,7 +36,7 @@
 //
 
 MultiView::MultiView(TopLevelBase* top, QWidget* parent)
-    : QSplitter(parent), TraceItemView(0, top)
+    : QSplitter(parent), TraceItemView(nullptr, top)
 {
     // default
     setOrientation(Qt::Horizontal);
@@ -76,7 +76,7 @@ void MultiView::appendView()
 
     // set same attributes as in active view
     tv->set(0, _data, _eventType, _eventType2,
-            _groupType, _partList, _activeItem, 0);
+            _groupType, _partList, _activeItem, nullptr);
 
     if (0) qDebug() << "MultiView::appendView, now "
                     << _views.count();
@@ -110,7 +110,7 @@ void MultiView::tabActivated(TabView* newActiveTab)
     if (0) qDebug() << "MultiView::tabActivated "
                     << newActiveTab->objectName();
 
-    CostItem* oldActiveItem = 0;
+    CostItem* oldActiveItem = nullptr;
     if (_active) {
         oldActiveItem = _active->activeItem();
         _active->setActive(false);
@@ -183,7 +183,7 @@ void MultiView::restoreLayout(const QString& prefix, const QString& postfix)
     }
     delete g;
 
-    TabView* activeTV = 0;
+    TabView* activeTV = nullptr;
     foreach(TabView* tv, _views) {
         if (tv->objectName() == active) activeTV=tv;
         tv->restoreLayout( QStringLiteral("%1-%2").arg(prefix).arg(tv->objectName()),

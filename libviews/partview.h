@@ -33,7 +33,7 @@ class PartView: public QTreeWidget, public TraceItemView
     Q_OBJECT
 
 public:
-    explicit PartView(TraceItemView* parentView, QWidget* parent=0);
+    explicit PartView(TraceItemView* parentView, QWidget* parent=nullptr);
 
     QWidget* widget() override { return this; }
     QString whatsThis() const override;

@@ -89,7 +89,7 @@ public:
     int maxSize() { return _maxSize; }
     bool hasMore() { return _count > _maxSize; }
     ProfileCostArray* operator[] (int i)
-    { return (i>=0 && i<_count && i<_maxSize) ? _item[i] : 0; }
+    { return (i>=0 && i<_count && i<_maxSize) ? _item[i] : nullptr; }
 
 private:
     TraceCostList _list;

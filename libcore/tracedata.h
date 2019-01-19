@@ -948,7 +948,7 @@ public:
     void addLineCall(TraceLineCall*);
 
 
-    bool isValid() { return _sourceFile != 0; }
+    bool isValid() { return _sourceFile != nullptr; }
     bool hasCost(EventType*);
     TraceFunctionSource* functionSource() const { return _sourceFile; }
     uint lineno() const { return _lineno; }
@@ -1162,7 +1162,7 @@ public:
     TraceFile* file() const { return _file; }
     TraceObject* object() const { return _object; }
     // get the source file with lines from function declaration (not inlined)
-    TraceFunctionSource* sourceFile(TraceFile* file = 0,
+    TraceFunctionSource* sourceFile(TraceFile* file = nullptr,
                                     bool createNew = false);
     const TraceFunctionSourceList& sourceFiles() const
     { return _sourceFiles; }
@@ -1365,7 +1365,7 @@ public:
     // profiled architecture (must be same for every part)
     enum Arch { ArchUnknown, ArchARM };
 
-    explicit TraceData(Logger* l = 0);
+    explicit TraceData(Logger* l = nullptr);
     ~TraceData() override;
 
     TraceData* data() override { return this; }
@@ -1430,7 +1430,7 @@ public:
      * is not needed.
      */
     ProfileCostArray* search(ProfileContext::Type, QString,
-                             EventType* ct = 0, ProfileCostArray* parent = 0);
+                             EventType* ct = nullptr, ProfileCostArray* parent = nullptr);
 
     // for pretty function names without signature if unique...
     TraceFunctionMap::Iterator functionIterator(TraceFunction*);

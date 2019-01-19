@@ -112,7 +112,7 @@ void CallerCoverageItem::update()
     }
 
     setText(0, str);
-    setIcon(0, partitionPixmap(25, 10, _coverage->inclusiveHistogram(), 0,
+    setIcon(0, partitionPixmap(25, 10, _coverage->inclusiveHistogram(), nullptr,
                                Coverage::maxHistogramDepth, false));
 
     // call count
@@ -174,7 +174,7 @@ CalleeCoverageItem::CalleeCoverageItem(QTreeWidget* parent, Coverage* c,
 {
     _skipped = 0;
     _coverage = c;
-    _function = c ? c->function() : 0;
+    _function = c ? c->function() : nullptr;
     _base = base;
     _groupType = ProfileContext::InvalidType;
 
@@ -198,7 +198,7 @@ CalleeCoverageItem::CalleeCoverageItem(QTreeWidget* parent, int skipped, Coverag
 {
     _skipped = skipped;
     _coverage = c;
-    _function = c ? c->function() : 0;
+    _function = c ? c->function() : nullptr;
     _base = base;
     _groupType = ProfileContext::InvalidType;
 
@@ -270,9 +270,9 @@ void CalleeCoverageItem::update()
         setText(1, _self.pretty());
     }
 
-    setIcon(0, partitionPixmap(25, 10, _coverage->inclusiveHistogram(), 0,
+    setIcon(0, partitionPixmap(25, 10, _coverage->inclusiveHistogram(), nullptr,
                                Coverage::maxHistogramDepth, false));
-    setIcon(1, partitionPixmap(25, 10, _coverage->selfHistogram(), 0,
+    setIcon(1, partitionPixmap(25, 10, _coverage->selfHistogram(), nullptr,
                                Coverage::maxHistogramDepth, false));
 
 

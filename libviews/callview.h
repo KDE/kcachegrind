@@ -33,7 +33,7 @@ class CallView: public QTreeWidget, public TraceItemView
 
 public:
     CallView(bool showCallers, TraceItemView* parentView,
-             QWidget* parent=0);
+             QWidget* parent=nullptr);
 
     QWidget* widget() override { return this; }
     QString whatsThis() const override;

@@ -33,7 +33,7 @@ public:
                  EventType* et);
 
     bool operator< ( const QTreeWidgetItem & other ) const override;
-    TraceCostItem* costItem() { return (_skipped) ? 0 : _costItem; }
+    TraceCostItem* costItem() { return (_skipped) ? nullptr : _costItem; }
     void setEventType(EventType* et);
     void update();
     void setSize(int s);

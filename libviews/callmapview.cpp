@@ -139,7 +139,7 @@ void CallMapView::setData(TraceData* d)
 {
     TraceItemView::setData(d);
 
-    ((CallMapRootItem*)base())->setFunction(0);
+    ((CallMapRootItem*)base())->setFunction(nullptr);
 }
 
 void CallMapView::addItemListMenu(QMenu* menu, TreeMapItem* item)
@@ -440,7 +440,7 @@ void CallMapView::selectedSlot(TreeMapItem* item, bool kbd)
             _topLevel->showMessage(msg, 5000);
     }
 
-    TraceFunction* f = 0;
+    TraceFunction* f = nullptr;
 
     if (item->rtti() == 1) {
         CallMapRootItem* bi = (CallMapRootItem*)item;
@@ -472,7 +472,7 @@ CostItem* CallMapView::canShow(CostItem* i)
     default:
         break;
     }
-    return 0;
+    return nullptr;
 }
 
 void CallMapView::doUpdate(int changeType, bool)
@@ -481,7 +481,7 @@ void CallMapView::doUpdate(int changeType, bool)
 
     // if there is a selected item, always draw marking...
     if (changeType & selectedItemChanged) {
-        TraceFunction* f = 0;
+        TraceFunction* f = nullptr;
 
         if (_selectedItem) {
             switch(_selectedItem->type()) {
@@ -503,7 +503,7 @@ void CallMapView::doUpdate(int changeType, bool)
 
 
     if (changeType & activeItemChanged) {
-        TraceFunction* f = 0;
+        TraceFunction* f = nullptr;
 
         if (_activeItem) {
             switch(_activeItem->type()) {
@@ -573,7 +573,7 @@ QString CallMapView::tipString(TreeMapItem* i) const
 ProfileCostArray* CallMapView::totalCost()
 {
     TraceFunction* f = ((CallMapRootItem*)base())->function();
-    if (!f) return 0;
+    if (!f) return nullptr;
 
     return GlobalConfig::showExpanded() ? f->inclusive() : f->data();
 }
@@ -612,7 +612,7 @@ DrawParams::Position CallMapItemBase::position(int i) const
 
 CallMapRootItem::CallMapRootItem()
 {
-    _f = 0;
+    _f = nullptr;
 }
 
 void CallMapRootItem::setFunction(TraceFunction* f)

@@ -33,10 +33,10 @@
 PartAreaWidget::PartAreaWidget(QWidget* parent)
     : TreeMapWidget(new BasePartItem(), parent)
 {
-    _data = 0;
-    _function = 0;
+    _data = nullptr;
+    _function = nullptr;
 
-    _eventType = 0;
+    _eventType = nullptr;
     _groupType = ProfileContext::InvalidType;
     _visualization = NoVisualization;
     _zoomFunction = false;
@@ -48,7 +48,7 @@ void PartAreaWidget::setData(TraceData* data)
     if (data == _data) return;
 
     _data = data;
-    _function = 0;
+    _function = nullptr;
     _hiddenParts.clear();
 
     ((BasePartItem*)base())->setData(data);
@@ -186,7 +186,7 @@ QString PartAreaWidget::tipString(TreeMapItem* i) const
 BasePartItem::BasePartItem()
     : TreeMapItem()
 {
-    _data = 0;
+    _data = nullptr;
     setSorting(-1);
 }
 
@@ -399,7 +399,7 @@ TreeMapItemList* PartItem::children()
 QColor PartItem::backColor() const
 {
     PartAreaWidget* w = (PartAreaWidget*)widget();
-    return w->groupColor(0);
+    return w->groupColor(nullptr);
 }
 
 

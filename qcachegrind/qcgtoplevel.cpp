@@ -66,7 +66,7 @@ QCGTopLevel::QCGTopLevel()
                        QDBusConnection::ExportScriptableSlots);
 #endif
 
-    _progressBar = 0;
+    _progressBar = nullptr;
     _statusbar = statusBar();
     _statusLabel = new QLabel(_statusbar);
     _statusbar->addWidget(_statusLabel, 1);
@@ -118,21 +118,21 @@ void QCGTopLevel::resetState()
     _activeParts.clear();
     _hiddenParts.clear();
 
-    _data = 0;
-    _function = 0;
-    _eventType = 0;
-    _eventType2 = 0;
+    _data = nullptr;
+    _function = nullptr;
+    _eventType = nullptr;
+    _eventType2 = nullptr;
     _groupType = ProfileContext::InvalidType;
-    _group = 0;
+    _group = nullptr;
 
     // for delayed slots
-    _traceItemDelayed = 0;
-    _eventTypeDelayed = 0;
-    _eventType2Delayed = 0;
+    _traceItemDelayed = nullptr;
+    _eventTypeDelayed = nullptr;
+    _eventType2Delayed = nullptr;
     _groupTypeDelayed = ProfileContext::InvalidType;
-    _groupDelayed = 0;
+    _groupDelayed = nullptr;
     _directionDelayed = TraceItemView::None;
-    _lastSender = 0;
+    _lastSender = nullptr;
 }
 
 
@@ -916,7 +916,7 @@ bool QCGTopLevel::setEventType(QString s)
 {
     EventType* ct;
 
-    ct = (_data) ? _data->eventTypes()->type(s) : 0;
+    ct = (_data) ? _data->eventTypes()->type(s) : nullptr;
 
     // if costtype with given name not found, use first available
     if (!ct && _data) ct = _data->eventTypes()->type(0);
@@ -929,7 +929,7 @@ bool QCGTopLevel::setEventType2(QString s)
     EventType* ct;
 
     // Special type tr("(Hidden)") gives 0
-    ct = (_data) ? _data->eventTypes()->type(s) : 0;
+    ct = (_data) ? _data->eventTypes()->type(s) : nullptr;
 
     return setEventType2(ct);
 }
@@ -938,7 +938,7 @@ void QCGTopLevel::eventTypeSelected(const QString& s)
 {
     EventType* ct;
 
-    ct = (_data) ? _data->eventTypes()->typeForLong(s) : 0;
+    ct = (_data) ? _data->eventTypes()->typeForLong(s) : nullptr;
     setEventType(ct);
 }
 
@@ -946,7 +946,7 @@ void QCGTopLevel::eventType2Selected(const QString& s)
 {
     EventType* ct;
 
-    ct = (_data) ? _data->eventTypes()->typeForLong(s) : 0;
+    ct = (_data) ? _data->eventTypes()->typeForLong(s) : nullptr;
     setEventType2(ct);
 }
 
@@ -1185,9 +1185,9 @@ void QCGTopLevel::setDirectionDelayed()
 
     case TraceItemView::Up:
     {
-        StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
-        HistoryItem* hi = b ? b->current() : 0;
-        TraceFunction* f = hi ? hi->function() : 0;
+        StackBrowser* b = _stackSelection ? _stackSelection->browser() : nullptr;
+        HistoryItem* hi = b ? b->current() : nullptr;
+        TraceFunction* f = hi ? hi->function() : nullptr;
 
         if (!f) break;
         f = hi->stack()->caller(f, false);
@@ -1245,8 +1245,8 @@ void QCGTopLevel::setTraceItemDelayed()
     default: break;
     }
 
-    _traceItemDelayed = 0;
-    _lastSender = 0;
+    _traceItemDelayed = nullptr;
+    _lastSender = nullptr;
 }
 
 /**
@@ -1259,15 +1259,15 @@ void QCGTopLevel::setData(TraceData* data)
 {
     if (data == _data) return;
 
-    _lastSender = 0;
+    _lastSender = nullptr;
 
     saveTraceSettings();
 
     if (_data) {
-        _partSelection->setData(0);
-        _stackSelection->setData(0);
-        _functionSelection->setData(0);
-        _multiView->setData(0);
+        _partSelection->setData(nullptr);
+        _stackSelection->setData(nullptr);
+        _functionSelection->setData(nullptr);
+        _multiView->setData(nullptr);
         _multiView->updateView(true);
 
         // we are the owner...
@@ -1344,7 +1344,7 @@ void QCGTopLevel::updateEventTypeMenu(QMenu* m, bool secondary)
         connect(m, SIGNAL(triggered(QAction*)),
                 this, SLOT(setEventType2(QAction*)), Qt::UniqueConnection);
 
-        if (_eventType2 != 0) {
+        if (_eventType2 != nullptr) {
             action = m->addAction(tr("Hide"));
             action->setData(199);
             m->addSeparator();
@@ -1399,10 +1399,10 @@ void QCGTopLevel::addEventTypeMenu(QMenu* popup, bool withCost2)
 bool QCGTopLevel::setEventType(QAction* action)
 {
     if (!_data) return false;
-    int id = action->data().toInt(0);
+    int id = action->data().toInt(nullptr);
 
     EventTypeSet* m = _data->eventTypes();
-    EventType* ct=0;
+    EventType* ct=nullptr;
     if (id >=100 && id<199) ct = m->realType(id-100);
     if (id >=200 && id<299) ct = m->derivedType(id-200);
 
@@ -1412,10 +1412,10 @@ bool QCGTopLevel::setEventType(QAction* action)
 bool QCGTopLevel::setEventType2(QAction* action)
 {
     if (!_data) return false;
-    int id = action->data().toInt(0);
+    int id = action->data().toInt(nullptr);
 
     EventTypeSet* m = _data->eventTypes();
-    EventType* ct=0;
+    EventType* ct=nullptr;
     if (id >=100 && id<199) ct = m->realType(id-100);
     if (id >=200 && id<299) ct = m->derivedType(id-200);
 
@@ -1832,8 +1832,8 @@ void QCGTopLevel::forwardAboutToShow()
     QMenu *popup = _forwardAction->menu();
 
     popup->clear();
-    StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
-    HistoryItem* hi = b ? b->current() : 0;
+    StackBrowser* b = _stackSelection ? _stackSelection->browser() : nullptr;
+    HistoryItem* hi = b ? b->current() : nullptr;
     TraceFunction* f;
     QAction* action;
 
@@ -1869,8 +1869,8 @@ void QCGTopLevel::backAboutToShow()
     QMenu *popup = _backAction->menu();
 
     popup->clear();
-    StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
-    HistoryItem* hi = b ? b->current() : 0;
+    StackBrowser* b = _stackSelection ? _stackSelection->browser() : nullptr;
+    HistoryItem* hi = b ? b->current() : nullptr;
     TraceFunction* f;
     QAction* action;
 
@@ -1906,9 +1906,9 @@ void QCGTopLevel::upAboutToShow()
     QMenu *popup = _upAction->menu();
 
     popup->clear();
-    StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
-    HistoryItem* hi = b ? b->current() : 0;
-    TraceFunction* f = hi ? hi->function() : 0;
+    StackBrowser* b = _stackSelection ? _stackSelection->browser() : nullptr;
+    HistoryItem* hi = b ? b->current() : nullptr;
+    TraceFunction* f = hi ? hi->function() : nullptr;
     QAction* action;
 
     if (!f) {
@@ -1935,12 +1935,12 @@ void QCGTopLevel::upAboutToShow()
 
 void QCGTopLevel::forwardTriggered(QAction* action)
 {
-    int count = action->data().toInt(0);
+    int count = action->data().toInt(nullptr);
     //qDebug("forwardTriggered: %d", count);
     if( count <= 0)
         return;
 
-    StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
+    StackBrowser* b = _stackSelection ? _stackSelection->browser() : nullptr;
     if (!b) return;
 
     while (count>1) {
@@ -1952,12 +1952,12 @@ void QCGTopLevel::forwardTriggered(QAction* action)
 
 void QCGTopLevel::backTriggered(QAction* action)
 {
-    int count = action->data().toInt(0);
+    int count = action->data().toInt(nullptr);
     //qDebug("backTriggered: %d", count);
     if( count <= 0)
         return;
 
-    StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
+    StackBrowser* b = _stackSelection ? _stackSelection->browser() : nullptr;
     if (!b) return;
 
     while (count>1) {
@@ -1969,13 +1969,13 @@ void QCGTopLevel::backTriggered(QAction* action)
 
 void QCGTopLevel::upTriggered(QAction* action)
 {
-    int count = action->data().toInt(0);
+    int count = action->data().toInt(nullptr);
     //qDebug("upTriggered: %d", count);
     if( count <= 0)
         return;
 
-    StackBrowser* b = _stackSelection ? _stackSelection->browser() : 0;
-    HistoryItem* hi = b ? b->current() : 0;
+    StackBrowser* b = _stackSelection ? _stackSelection->browser() : nullptr;
+    HistoryItem* hi = b ? b->current() : nullptr;
     if (!hi) return;
 
     TraceFunction* f = hi->function();
@@ -2007,7 +2007,7 @@ void QCGTopLevel::showStatus(const QString& msg, int progress)
         if (_progressBar) {
             _statusbar->removeWidget(_progressBar);
             delete _progressBar;
-            _progressBar = 0;
+            _progressBar = nullptr;
         }
         _statusbar->clearMessage();
         _progressMsg = msg;

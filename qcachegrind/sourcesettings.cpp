@@ -96,7 +96,7 @@ SourceSettings::SourceSettings(TraceData* data, QWidget* parent)
     connect(ui.dirEdit, SIGNAL(textChanged(QString)),
             this, SLOT(dirEditChanged(QString)));
 
-    _current = 0;
+    _current = nullptr;
     update();
 }
 
@@ -144,7 +144,7 @@ void SourceSettings::deleteClicked()
     delete _current;
     // deletion can trigger a call to dirListItemChanged() !
     if (_current == i) {
-        _current = 0;
+        _current = nullptr;
         update();
     }
 }

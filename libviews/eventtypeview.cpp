@@ -98,10 +98,10 @@ void EventTypeView::context(const QPoint & p)
     QMenu popup;
 
     QTreeWidgetItem* i = itemAt(p);
-    EventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
+    EventType* ct = i ? ((EventTypeItem*) i)->eventType() : nullptr;
 
-    QAction* selectType2Action = 0;
-    QAction* hideType2Action = 0;
+    QAction* selectType2Action = nullptr;
+    QAction* hideType2Action = nullptr;
     if (ct)
         selectType2Action = popup.addAction(tr("Set as Secondary Event Type"));
     if (_eventType2)
@@ -109,10 +109,10 @@ void EventTypeView::context(const QPoint & p)
     if (!popup.isEmpty())
         popup.addSeparator();
 
-    QAction* editLongNameAction = 0;
-    QAction* editShortNameAction = 0;
-    QAction* editFormulaAction = 0;
-    QAction* removeTypeAction = 0;
+    QAction* editLongNameAction = nullptr;
+    QAction* editShortNameAction = nullptr;
+    QAction* editFormulaAction = nullptr;
+    QAction* removeTypeAction = nullptr;
     if (ct && !ct->isReal()) {
         editLongNameAction = popup.addAction(tr("Edit Long Name"));
         editShortNameAction = popup.addAction(tr("Edit Short Name"));
@@ -123,14 +123,14 @@ void EventTypeView::context(const QPoint & p)
 
     addGoMenu(&popup);
 
-    QAction* newTypeAction = 0;
+    QAction* newTypeAction = nullptr;
     if( _data) {
         popup.addSeparator();
         newTypeAction = popup.addAction(tr("New Event Type..."));
     }
 
     QAction* a = popup.exec(viewport()->mapToGlobal(p));
-    if (a == hideType2Action) selectedEventType2(0);
+    if (a == hideType2Action) selectedEventType2(nullptr);
     else if (a == selectType2Action) selectedEventType2(ct);
     else if (a == editLongNameAction) editItem(i, 0);
     else if (a == editShortNameAction) editItem(i, 3);
@@ -138,7 +138,7 @@ void EventTypeView::context(const QPoint & p)
     else if (a == removeTypeAction) {
 
         // search for a previous type
-        EventType* prev = 0, *ct = 0;
+        EventType* prev = nullptr, *ct = nullptr;
         EventTypeSet* m = _data->eventTypes();
         for (int i=0;i<m->realCount();i++) {
             ct = m->realType(i);
@@ -183,21 +183,21 @@ void EventTypeView::context(const QPoint & p)
 
 void EventTypeView::currentItemChanged(QTreeWidgetItem* i, QTreeWidgetItem*)
 {
-    EventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
+    EventType* ct = i ? ((EventTypeItem*) i)->eventType() : nullptr;
     if (ct)
         selectedEventType(ct);
 }
 
 void EventTypeView::itemDoubleClicked(QTreeWidgetItem* i, int)
 {
-    EventType* ct = i ? ((EventTypeItem*) i)->eventType() : 0;
+    EventType* ct = i ? ((EventTypeItem*) i)->eventType() : nullptr;
     if (ct)
         selectedEventType2(ct);
 }
 
 CostItem* EventTypeView::canShow(CostItem* i)
 {
-    if (!i) return 0;
+    if (!i) return nullptr;
 
     switch(i->type()) {
     case ProfileContext::Object:
@@ -208,7 +208,7 @@ CostItem* EventTypeView::canShow(CostItem* i)
     case ProfileContext::Function:
         break;
     default:
-        return 0;
+        return nullptr;
     }
     return i;
 }
@@ -272,9 +272,9 @@ void EventTypeView::refresh()
     }
     TraceCostItem* c = (TraceCostItem*) _activeItem;
 
-    EventType* ct =0;
-    QTreeWidgetItem* item = 0;
-    QTreeWidgetItem* selected = 0;
+    EventType* ct =nullptr;
+    QTreeWidgetItem* item = nullptr;
+    QTreeWidgetItem* selected = nullptr;
     QList<QTreeWidgetItem*> items;
 
     EventTypeSet* m = _data->eventTypes();
@@ -304,12 +304,12 @@ void EventTypeView::refresh()
 
 void EventTypeView::itemChanged(QTreeWidgetItem* item, int c)
 {
-    EventType* ct = item ? ((EventTypeItem*) item)->eventType() : 0;
+    EventType* ct = item ? ((EventTypeItem*) item)->eventType() : nullptr;
     if (!ct || ct->isReal()) return;
 
     // search for matching known Type
     int knownCount = EventType::knownTypeCount();
-    EventType* known = 0;
+    EventType* known = nullptr;
     for (int i=0; i<knownCount; i++) {
         known = EventType::knownType(i);
         if (known->name() == ct->name()) break;

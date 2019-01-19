@@ -72,9 +72,9 @@ void PartListItem::setGroupType(ProfileContext::Type gt)
 void PartListItem::update()
 {
     TracePartFunction* pf;
-    pf = !_partCostItem ? 0 :
+    pf = !_partCostItem ? nullptr :
                           (_partCostItem->type()==ProfileContext::PartFunction) ?
-                              ((TracePartFunction*)_partCostItem) : 0;
+                              ((TracePartFunction*)_partCostItem) : nullptr;
 
     double total = _part->subCost(_eventType);
 

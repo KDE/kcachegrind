@@ -41,9 +41,9 @@ InstrItem::InstrItem(InstrView* iv, QTreeWidget* parent,
 {
     _view = iv;
     _addr = addr;
-    _instr = 0;
-    _instrCall = 0;
-    _instrJump = 0;
+    _instr = nullptr;
+    _instrCall = nullptr;
+    _instrJump = nullptr;
     _inside = false;
 
     setTextAlignment(0, Qt::AlignRight);
@@ -67,8 +67,8 @@ InstrItem::InstrItem(InstrView* iv, QTreeWidget* parent,
     _view = iv;
     _addr = addr;
     _instr = instr;
-    _instrCall = 0;
-    _instrJump = 0;
+    _instrCall = nullptr;
+    _instrJump = nullptr;
     _inside = inside;
 
     setTextAlignment(0, Qt::AlignRight);
@@ -100,7 +100,7 @@ InstrItem::InstrItem(InstrView* iv, QTreeWidgetItem* parent, Addr addr,
     _addr = addr;
     _instr = instr;
     _instrCall = instrCall;
-    _instrJump = 0;
+    _instrJump = nullptr;
     _inside = true;
 
     setTextAlignment(0, Qt::AlignRight);
@@ -143,7 +143,7 @@ InstrItem::InstrItem(InstrView* iv, QTreeWidgetItem* parent, Addr addr,
     _addr = addr;
     _inside = true;
     _instr = instr;
-    _instrCall = 0;
+    _instrCall = nullptr;
     _instrJump = instrJump;
 
     setTextAlignment(0, Qt::AlignRight);
@@ -380,7 +380,7 @@ void InstrItemDelegate::paintArrows(QPainter *p,
     // draw line borders, detect start/stop of a line
     for(int i=0; i< item->jumpCount(); i++) {
         TraceInstrJump* jump = item->jump(i);
-        if (jump == 0) continue;
+        if (jump == nullptr) continue;
 
         y1 = 0;
         y2 = height;
@@ -455,7 +455,7 @@ void InstrItemDelegate::paintArrows(QPainter *p,
     // this overwrites borders of horizontal line
     for(int i=0; i< item->jumpCount(); i++) {
         TraceInstrJump* jump = item->jump(i);
-        if (jump == 0) continue;
+        if (jump == nullptr) continue;
 
         c = jump->isCondJump() ? Qt::red : Qt::blue;
 

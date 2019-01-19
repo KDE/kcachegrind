@@ -40,7 +40,7 @@ class PartSelection: public QWidget, public TraceItemView
     Q_OBJECT
 
 public:
-    explicit PartSelection(TopLevelBase*, QWidget* parent = 0);
+    explicit PartSelection(TopLevelBase*, QWidget* parent = nullptr);
 
     QWidget* widget() override { return this; }
     QString whatsThis() const override;

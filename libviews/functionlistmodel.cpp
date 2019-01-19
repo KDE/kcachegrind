@@ -22,7 +22,7 @@
 #include "listutils.h"
 
 FunctionListModel::FunctionListModel()
-    : QAbstractItemModel(0)
+    : QAbstractItemModel(nullptr)
 {
     _maxCount = 300;
     _sortColumn = 0;
@@ -35,7 +35,7 @@ FunctionListModel::FunctionListModel()
             << tr("Function")
             << tr("Location");
 
-    _max0 = _max1 = _max2 = 0;
+    _max0 = _max1 = _max2 = nullptr;
 }
 
 FunctionListModel::~FunctionListModel()
@@ -58,7 +58,7 @@ int FunctionListModel::rowCount(const QModelIndex& parent ) const
 
 TraceFunction* FunctionListModel::function(const QModelIndex& index)
 {
-    if (!index.isValid()) return 0;
+    if (!index.isValid()) return nullptr;
 
     return (TraceFunction*) index.internalPointer();
 }
@@ -77,7 +77,7 @@ QVariant FunctionListModel::data(const QModelIndex &index, int role) const
     }
 
     TraceFunction *f = (TraceFunction*) index.internalPointer();
-    Q_ASSERT(f != 0);
+    Q_ASSERT(f != nullptr);
     switch(role) {
     case Qt::TextAlignmentRole:
         return (index.column()<3) ? Qt::AlignRight : Qt::AlignLeft;
@@ -120,7 +120,7 @@ QVariant FunctionListModel::data(const QModelIndex &index, int role) const
 Qt::ItemFlags FunctionListModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
-        return 0;
+        return nullptr;
 
     return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 }
@@ -233,7 +233,7 @@ void FunctionListModel::resetModelData(TraceData *data,
         case ProfileContext::Object:
         {
             TraceObject* o = dynamic_cast<TraceObject*>(group);
-            Q_ASSERT(o != 0);
+            Q_ASSERT(o != nullptr);
             _list = o->functions();
         }
             break;
@@ -241,7 +241,7 @@ void FunctionListModel::resetModelData(TraceData *data,
         case ProfileContext::Class:
         {
             TraceClass* c = dynamic_cast<TraceClass*>(group);
-            Q_ASSERT(c != 0);
+            Q_ASSERT(c != nullptr);
             _list = c->functions();
         }
             break;
@@ -249,7 +249,7 @@ void FunctionListModel::resetModelData(TraceData *data,
         case ProfileContext::File:
         {
             TraceFile* f = dynamic_cast<TraceFile*>(group);
-            Q_ASSERT(f != 0);
+            Q_ASSERT(f != nullptr);
             _list = f->functions();
         }
             break;
@@ -257,7 +257,7 @@ void FunctionListModel::resetModelData(TraceData *data,
         case ProfileContext::FunctionCycle:
         {
             TraceFunctionCycle* c = dynamic_cast<TraceFunctionCycle*>(group);
-            Q_ASSERT(c != 0);
+            Q_ASSERT(c != nullptr);
             _list = c->members();
         }
             break;
@@ -282,9 +282,9 @@ void FunctionListModel::computeFilteredList()
     FunctionLessThan lessThan2(2, Qt::AscendingOrder, _eventType);
 
     // reset max functions
-    _max0 = 0;
-    _max1 = 0;
-    _max2 = 0;
+    _max0 = nullptr;
+    _max1 = nullptr;
+    _max2 = nullptr;
 
     _filteredList.clear();
     int index = 0;

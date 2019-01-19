@@ -44,7 +44,7 @@ class ConfigDlg : public ConfigDlgBase
 
 public:
     ConfigDlg(GlobalGUIConfig*, TraceData*,
-              QWidget* parent = 0);
+              QWidget* parent = nullptr);
     ~ConfigDlg() override;
 
     static bool configure(GlobalGUIConfig*, TraceData*, QWidget*);

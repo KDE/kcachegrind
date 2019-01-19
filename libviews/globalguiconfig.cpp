@@ -89,13 +89,13 @@ GlobalGUIConfig* GlobalGUIConfig::config()
 {
     GlobalGUIConfig* gc;
 
-    if (_config == 0) {
+    if (_config == nullptr) {
         gc = new GlobalGUIConfig();
         _config = gc;
     }
     else {
         gc = dynamic_cast<GlobalGUIConfig*>(_config);
-        if (gc == 0)
+        if (gc == nullptr)
             qFatal("Internal error: config object is not a GlobalGUIConfig.");
     }
 
@@ -231,7 +231,7 @@ ConfigColorSetting* GlobalGUIConfig::colorSetting(const QString& n,
 {
     // predefined ?
     GlobalGUIConfig* c = config();
-    ConfigColorSetting* cs = c->_colors.value(n, 0);
+    ConfigColorSetting* cs = c->_colors.value(n, nullptr);
     if (cs || !createNew) return cs;
 
     cs = new ConfigColorSetting(n);

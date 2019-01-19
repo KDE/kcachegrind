@@ -47,7 +47,7 @@ FixCost::FixCost(TracePart* part, FixPool* pool,
         _count = 0;
 
     _nextCostOfPartFunction = partFunction ?
-                                  partFunction->setFirstFixCost(this) : 0;
+                                  partFunction->setFirstFixCost(this) : nullptr;
 }
 
 void* FixCost::operator new(size_t size, FixPool* pool)
@@ -103,7 +103,7 @@ FixCallCost::FixCallCost(TracePart* part, FixPool* pool,
     else
         _cost[_count] = callCount;
 
-    _nextCostOfPartCall = partCall ? partCall->setFirstFixCallCost(this) : 0;
+    _nextCostOfPartCall = partCall ? partCall->setFirstFixCallCost(this) : nullptr;
 }
 
 void* FixCallCost::operator new(size_t size, FixPool* pool)
@@ -171,7 +171,7 @@ FixJump::FixJump(TracePart* part, FixPool* pool,
     if (isCondJump) _cost[1] = followed;
 
     _nextJumpOfPartFunction = partFunction ?
-                                  partFunction->setFirstFixJump(this) : 0;
+                                  partFunction->setFirstFixJump(this) : nullptr;
 }
 
 void* FixJump::operator new(size_t size, FixPool* pool)

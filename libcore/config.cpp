@@ -67,11 +67,11 @@ QVariant ConfigGroup::value(const QString&, const QVariant& def) const
 // ConfigStorage
 //
 
-ConfigStorage* ConfigStorage::_storage = 0;
+ConfigStorage* ConfigStorage::_storage = nullptr;
 
 ConfigStorage::ConfigStorage()
 {
-    _storage = 0;
+    _storage = nullptr;
 }
 
 ConfigStorage::~ConfigStorage()
@@ -80,7 +80,7 @@ ConfigStorage::~ConfigStorage()
 ConfigGroup* ConfigStorage::group(const QString& group,
                                   const QString& optSuffix)
 {
-    Q_ASSERT(_storage != 0);
+    Q_ASSERT(_storage != nullptr);
 
     return _storage->getGroup(group, optSuffix);
 }

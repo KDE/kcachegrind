@@ -181,7 +181,7 @@ void TraceInclusiveCost::addInclusive(ProfileCostArray* c)
 TraceListCost::TraceListCost(ProfileContext* context)
     : ProfileCostArray(context)
 {
-    _lastDep = 0;
+    _lastDep = nullptr;
 }
 
 TraceListCost::~TraceListCost()
@@ -219,7 +219,7 @@ ProfileCostArray* TraceListCost::findDepFromPart(TracePart* part)
             return dep;
         }
     }
-    return 0;
+    return nullptr;
 }
 
 
@@ -255,7 +255,7 @@ void TraceListCost::update()
 TraceJumpListCost::TraceJumpListCost(ProfileContext* context)
     : TraceJumpCost(context)
 {
-    _lastDep = 0;
+    _lastDep = nullptr;
 }
 
 TraceJumpListCost::~TraceJumpListCost()
@@ -293,7 +293,7 @@ TraceJumpCost* TraceJumpListCost::findDepFromPart(TracePart* part)
             return dep;
         }
     }
-    return 0;
+    return nullptr;
 }
 
 
@@ -329,7 +329,7 @@ void TraceJumpListCost::update()
 TraceCallListCost::TraceCallListCost(ProfileContext* context)
     : TraceCallCost(context)
 {
-    _lastDep = 0;
+    _lastDep = nullptr;
 }
 
 TraceCallListCost::~TraceCallListCost()
@@ -367,7 +367,7 @@ TraceCallCost* TraceCallListCost::findDepFromPart(TracePart* part)
             return dep;
         }
     }
-    return 0;
+    return nullptr;
 }
 
 
@@ -407,7 +407,7 @@ void TraceCallListCost::update()
 TraceInclusiveListCost::TraceInclusiveListCost(ProfileContext* context)
     : TraceInclusiveCost(context)
 {
-    _lastDep = 0;
+    _lastDep = nullptr;
 }
 
 TraceInclusiveListCost::~TraceInclusiveListCost()
@@ -446,7 +446,7 @@ TraceInclusiveCost* TraceInclusiveListCost::findDepFromPart(TracePart* part)
             return dep;
         }
     }
-    return 0;
+    return nullptr;
 }
 
 void TraceInclusiveListCost::update()
@@ -568,7 +568,7 @@ TracePartCall::TracePartCall(TraceCall* call)
 {
     _dep = call;
 
-    _firstFixCallCost = 0;
+    _firstFixCallCost = nullptr;
 }
 
 TracePartCall::~TracePartCall()
@@ -621,15 +621,15 @@ TracePartFunction::TracePartFunction(TraceFunction* function,
     _dep = function;
     _partObject = partObject;
     _partFile = partFile;
-    _partClass = 0;
+    _partClass = nullptr;
 
     _calledCount     = 0;
     _callingCount    = 0;
     _calledContexts  = 0;
     _callingContexts = 0;
 
-    _firstFixCost = 0;
-    _firstFixJump = 0;
+    _firstFixCost = nullptr;
+    _firstFixJump = nullptr;
 }
 
 TracePartFunction::~TracePartFunction()
@@ -788,7 +788,7 @@ void TracePartFunction::update()
     _callingContexts = 0;
 
     // To calculate context counts, we just use first real event type (FIXME?)
-    EventType* e = data() ? data()->eventTypes()->realType(0) : 0;
+    EventType* e = data() ? data()->eventTypes()->realType(0) : nullptr;
 
     // calculate additional cost metrics
     foreach(TracePartCall* caller, _partCallers) {
@@ -928,7 +928,7 @@ TraceInstrJump::TraceInstrJump(TraceInstr* instrFrom, TraceInstr* instrTo,
                                bool isCondJump)
     : TraceJumpCost(ProfileContext::context(ProfileContext::InstrJump))
 {
-    _first = 0;
+    _first = nullptr;
 
     _instrFrom = instrFrom;
     _instrTo = instrTo;
@@ -948,7 +948,7 @@ TraceInstrJump::~TraceInstrJump()
 
 TracePartInstrJump* TraceInstrJump::partInstrJump(TracePart* part)
 {
-    static TracePartInstrJump* item = 0;
+    static TracePartInstrJump* item = nullptr;
 
     // shortcut if recently used
     if (item &&
@@ -1270,7 +1270,7 @@ QString TraceCall::calledName(bool skipCycle) const
         TraceFunctionCycle* c = _called->cycle();
         if (c && _caller && (_caller->cycle() != c)) {
             // HACK to get rid of cycle postfix...
-            _called->setCycle(0);
+            _called->setCycle(nullptr);
             QString via = _called->prettyName();
             _called->setCycle(c);
             return QObject::tr("%1 via %2").arg(c->name()).arg(via);
@@ -1287,8 +1287,8 @@ TraceInstr::TraceInstr()
     : TraceListCost(ProfileContext::context(ProfileContext::Instr))
 {
     _addr = 0;
-    _line = 0;
-    _function = 0;
+    _line = nullptr;
+    _function = nullptr;
 }
 
 TraceInstr::~TraceInstr()
@@ -1381,7 +1381,7 @@ TraceLine::TraceLine()
     : TraceListCost(ProfileContext::context(ProfileContext::Line))
 {
     _lineno = 0;
-    _sourceFile = 0;
+    _sourceFile = nullptr;
 }
 
 TraceLine::~TraceLine()
@@ -1513,9 +1513,9 @@ TraceFunctionSource::TraceFunctionSource(TraceFunction* function,
     // the function is dependent from our cost sum
     _dep = _function;
 
-    _lineMap = 0;
+    _lineMap = nullptr;
     _lineMapFilled = false;
-    _line0 = 0;
+    _line0 = nullptr;
 }
 
 TraceFunctionSource::~TraceFunctionSource()
@@ -1555,7 +1555,7 @@ TraceLine* TraceFunctionSource::line(uint lineno, bool createNew)
 {
     if (lineno == 0) {
         if (!_line0) {
-            if (!createNew) return 0;
+            if (!createNew) return nullptr;
             _line0 = new TraceLine;
             _line0->setSourceFile(this);
             _line0->setLineno(0);
@@ -1564,9 +1564,9 @@ TraceLine* TraceFunctionSource::line(uint lineno, bool createNew)
     }
 
     if (!createNew) {
-        if (!_lineMap) return 0;
+        if (!_lineMap) return nullptr;
         TraceLineMap::Iterator it = _lineMap->find(lineno);
-        if (it == _lineMap->end()) return 0;
+        if (it == _lineMap->end()) return nullptr;
         return &(it.value());
     }
 
@@ -1624,10 +1624,10 @@ TraceLineMap* TraceFunctionSource::lineMap()
     if (!_lineMap)
         _lineMap = new TraceLineMap;
 
-    TraceLine* l = 0;
-    TracePartLine* pl = 0;
-    TraceLineCall* lc = 0;
-    TracePartLineCall* plc = 0;
+    TraceLine* l = nullptr;
+    TracePartLine* pl = nullptr;
+    TraceLineCall* lc = nullptr;
+    TracePartLineCall* plc = nullptr;
 
     /* go over all part objects for this function, and
      * - build TraceLines (the line map) using FixCost objects
@@ -1651,14 +1651,14 @@ TraceLineMap* TraceFunctionSource::lineMap()
                     l->setSourceFile(this);
                     l->setLineno(fc->line());
                 }
-                pl = 0;
+                pl = nullptr;
             }
             if (!pl || pl->part() != fc->part())
                 pl = l->partLine(fc->part(), pf);
             fc->addTo(pl);
         }
 
-        TraceLine* to = 0;
+        TraceLine* to = nullptr;
         TraceLineJump* lj;
         TracePartLineJump* plj;
         FixJump* fj = pf->firstFixJump();
@@ -1710,7 +1710,7 @@ TraceLineMap* TraceFunctionSource::lineMap()
                 }
                 if (!lc || lc->call() != pc->call() || lc->line() != l) {
                     lc = pc->call()->lineCall(l);
-                    plc = 0;
+                    plc = nullptr;
                 }
                 if (!plc || plc->part() != fcc->part())
                     plc = lc->partLineCall(fcc->part(), pc);
@@ -1736,7 +1736,7 @@ TraceLineMap* TraceFunctionSource::lineMap()
 
 TraceAssociation::TraceAssociation()
 {
-    _function = 0;
+    _function = nullptr;
     _valid = false;
 }
 
@@ -1764,7 +1764,7 @@ bool TraceAssociation::setFunction(TraceFunction* f)
     }
 
     _function = f;
-    if (f && f->association(rtti()) == 0) {
+    if (f && f->association(rtti()) == nullptr) {
         f->addAssociation(this);
         return true;
     }
@@ -1794,17 +1794,17 @@ void TraceAssociation::invalidate(TraceData* d, int rtti)
 TraceFunction::TraceFunction()
     : TraceCostItem(ProfileContext::context(ProfileContext::Function))
 {
-    _object = 0;
-    _file = 0;
-    _cls = 0;
-    _cycle = 0;
+    _object = nullptr;
+    _file = nullptr;
+    _cls = nullptr;
+    _cycle = nullptr;
 
     _calledCount     = 0;
     _callingCount    = 0;
     _calledContexts  = 0;
     _callingContexts = 0;
 
-    _instrMap = 0;
+    _instrMap = nullptr;
     _instrMapFilled = false;
 }
 
@@ -1865,7 +1865,7 @@ TraceAssociation* TraceFunction::association(int rtti)
         if (a->rtti() == rtti)
             return a;
     }
-    return 0;
+    return nullptr;
 }
 
 #if 0
@@ -2100,13 +2100,13 @@ Addr TraceFunction::lastAddress() const
 TraceInstr* TraceFunction::instr(Addr addr, bool createNew)
 {
     // address 0 not allowed
-    if (addr == Addr(0)) return 0;
+    if (addr == Addr(0)) return nullptr;
 
     if (!createNew) {
-        if (!_instrMap) return 0;
+        if (!_instrMap) return nullptr;
         TraceInstrMap::Iterator it = _instrMap->find(addr);
         if (it == _instrMap->end())
-            return 0;
+            return nullptr;
         return &(it.value());
     }
 
@@ -2175,7 +2175,7 @@ TraceFunctionSource* TraceFunction::sourceFile(TraceFile* file,
         if (sourceFile->file() == file)
             return sourceFile;
 
-    if (!createNew) return 0;
+    if (!createNew) return nullptr;
 
     TraceFunctionSource* sourceFile = new TraceFunctionSource(this, file);
     _sourceFiles.append(sourceFile);
@@ -2194,11 +2194,11 @@ TraceFunctionSource* TraceFunction::sourceFile(TraceFile* file,
 TraceLine* TraceFunction::line(TraceFile* file, uint lineno,
                                bool createNew)
 {
-    Q_ASSERT(file!=0);
+    Q_ASSERT(file!=nullptr);
 
     TraceFunctionSource* sf = sourceFile(file, createNew);
     if (!sf)
-        return 0;
+        return nullptr;
     else
         return sf->line(lineno, createNew);
 }
@@ -2227,7 +2227,7 @@ TracePartFunction* TraceFunction::partFunction(TracePart* part,
         if (partObject)
             partObject->addPartFunction(item);
     }
-    else if (item->partObject()==0 && partObject) {
+    else if (item->partObject()==nullptr && partObject) {
         item->setPartObject(partObject);
         partObject->addPartFunction(item);
     }
@@ -2339,7 +2339,7 @@ void TraceFunction::update()
     clear();
 
     // To calculate context counts, we just use first real event type (FIXME?)
-    EventType* e = data() ? data()->eventTypes()->realType(0) : 0;
+    EventType* e = data() ? data()->eventTypes()->realType(0) : nullptr;
 
     // context count is NOT the sum of part contexts
     foreach(TraceCall *caller, _callers) {
@@ -2411,8 +2411,8 @@ bool TraceFunction::isCycleMember()
 
 void TraceFunction::cycleReset()
 {
-    _cycle = 0;
-    _cycleStackDown = 0;
+    _cycle = nullptr;
+    _cycleStackDown = nullptr;
     _cycleLow = 0;
 }
 
@@ -2435,7 +2435,7 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
      * percent of the cost of the function.
      * FIXME: Which cost type to use for this heuristic ?!
      */
-    Q_ASSERT((data() != 0) && (data()->eventTypes()->realCount()>0));
+    Q_ASSERT((data() != nullptr) && (data()->eventTypes()->realCount()>0));
     EventType* e = data()->eventTypes()->realType(0);
 
     SubCost base = 0;
@@ -2494,7 +2494,7 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
 
         if (*pTop == this) {
             *pTop = _cycleStackDown;
-            _cycleStackDown = 0;
+            _cycleStackDown = nullptr;
         }
         else {
             // a SCC with >1 members
@@ -2508,7 +2508,7 @@ void TraceFunction::cycleDFS(int d, int& pNo, TraceFunction** pTop)
 
                 // remove from stack
                 *pTop = top->_cycleStackDown;
-                top->_cycleStackDown = 0;
+                top->_cycleStackDown = nullptr;
 
                 if (0) qDebug("  %s", qPrintable(top->prettyName()));
                 if (top == this) break;
@@ -2527,11 +2527,11 @@ TraceInstrMap* TraceFunction::instrMap()
     if (!_instrMap)
         _instrMap = new TraceInstrMap;
 
-    TraceLine* l = 0;
-    TraceInstr* i = 0;
-    TracePartInstr* pi = 0;
-    TraceInstrCall* ic = 0;
-    TracePartInstrCall* pic = 0;
+    TraceLine* l = nullptr;
+    TraceInstr* i = nullptr;
+    TracePartInstr* pi = nullptr;
+    TraceInstrCall* ic = nullptr;
+    TracePartInstrCall* pic = nullptr;
 
     foreach(TraceInclusiveCost* icost, deps()) {
         TracePartFunction* pf = (TracePartFunction*) icost;
@@ -2555,14 +2555,14 @@ TraceInstrMap* TraceFunction::instrMap()
                     i->setAddr(fc->addr());
                     i->setLine(l);
                 }
-                pi = 0;
+                pi = nullptr;
             }
             if (!pi || pi->part() != fc->part())
                 pi = i->partInstr(fc->part(), pf);
             fc->addTo(pi);
         }
 
-        TraceInstr* to = 0;
+        TraceInstr* to = nullptr;
         TraceInstrJump* ij;
         TracePartInstrJump* pij;
         FixJump* fj = pf->firstFixJump();
@@ -2614,7 +2614,7 @@ TraceInstrMap* TraceFunction::instrMap()
                 }
                 if (!ic || ic->call() != pc->call() || ic->instr() != i) {
                     ic = pc->call()->instrCall(i);
-                    pic = 0;
+                    pic = nullptr;
                 }
                 if (!pic || pic->part() != fcc->part())
                     pic = ic->partInstrCall(fcc->part(), pc);
@@ -2985,7 +2985,7 @@ TracePart::TracePart(TraceData* data)
     _tid = 0;
     _pid = 0;
 
-    _eventTypeMapping = 0;
+    _eventTypeMapping = nullptr;
 }
 
 TracePart::~TracePart()
@@ -3078,8 +3078,8 @@ void TraceData::init()
 
     _maxThreadID = 0;
     _maxPartNumber = 0;
-    _fixPool = 0;
-    _dynPool = 0;
+    _fixPool = nullptr;
+    _dynPool = nullptr;
 
     _arch = ArchUnknown;
 }
@@ -3207,7 +3207,7 @@ int TraceData::internalLoad(QIODevice* device, const QString& filename)
 
     int partsLoaded = l->load(this, device, filename);
 
-    l->setLogger(0);
+    l->setLogger(nullptr);
 
     return partsLoaded;
 }
@@ -3276,7 +3276,7 @@ TracePart* TraceData::partWithName(const QString& name)
     foreach(TracePart* part, _parts)
         if (part->name() == name)
             return part;
-    return 0;
+    return nullptr;
 }
 
 QString TraceData::activePartRange()
@@ -3418,7 +3418,7 @@ TraceFunction* TraceData::function(const QString& name,
 
     if (!file || !object || !c) {
         qDebug("ERROR - no file/object/class for %s ?!", qPrintable(name));
-        return 0;
+        return nullptr;
     }
 
     // Use object name and file name as part of key, to get distinct
@@ -3530,7 +3530,7 @@ void TraceData::update()
 ProfileCostArray* TraceData::search(ProfileContext::Type t, QString name,
                                     EventType* ct, ProfileCostArray* parent)
 {
-    ProfileCostArray* result = 0;
+    ProfileCostArray* result = nullptr;
     ProfileContext::Type pt;
     SubCost sc, scTop = 0;
 
@@ -3719,7 +3719,7 @@ void TraceData::updateFunctionCycles()
         }
 #endif
 
-        stackTop = 0;
+        stackTop = nullptr;
         (*it).cycleDFS(1, pNo, &stackTop);
     }
 

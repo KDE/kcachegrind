@@ -36,7 +36,7 @@ QPixmap colorPixmap(int w, int h, QColor c)
     static bool inited = false;
 
     if (!inited) {
-        for (int i=0;i<37;i++) pixs[i]=0;
+        for (int i=0;i<37;i++) pixs[i]=nullptr;
         inited = true;
     }
     int hash = (w+h+c.red()+c.green()+c.blue()) % 37;

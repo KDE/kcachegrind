@@ -39,9 +39,9 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
 {
     _config = c;
     _data = data;
-    _objectCS = 0;
-    _classCS = 0;
-    _fileCS = 0;
+    _objectCS = nullptr;
+    _classCS = nullptr;
+    _fileCS = nullptr;
 
     connect(objectCombo, SIGNAL(activated(QString)),
             this, SLOT(objectActivated(QString)));
@@ -206,7 +206,7 @@ void ConfigDlg::objectActivated(const QString & s)
 {
     //  qDebug("objectActivated: %s", s.ascii());
 
-    if (s.isEmpty()) { _objectCS=0; return; }
+    if (s.isEmpty()) { _objectCS=nullptr; return; }
 
     QString n = ProfileContext::typeName(ProfileContext::Object) + '-' + s;
 
@@ -250,7 +250,7 @@ void ConfigDlg::classActivated(const QString & s)
 {
     //  qDebug("classActivated: %s", s.ascii());
 
-    if (s.isEmpty()) { _classCS=0; return; }
+    if (s.isEmpty()) { _classCS=nullptr; return; }
 
     QString n = ProfileContext::typeName(ProfileContext::Class) + '-' + s;
 
@@ -281,7 +281,7 @@ void ConfigDlg::fileActivated(const QString & s)
 {
     //  qDebug("fileActivated: %s", s.ascii());
 
-    if (s.isEmpty()) { _fileCS=0; return; }
+    if (s.isEmpty()) { _fileCS=nullptr; return; }
 
     QString n = ProfileContext::typeName(ProfileContext::File) + '-' + s;
 
@@ -309,20 +309,20 @@ void ConfigDlg::fileColorChanged(const QColor & c)
 QTreeWidgetItem *ConfigDlg::getSelectedDirItem()
 {
     const QList<QTreeWidgetItem*> selectedItems = dirList->selectedItems();
-    return selectedItems.count() ? selectedItems[0] : NULL;
+    return selectedItems.count() ? selectedItems[0] : nullptr;
     }
 
     void ConfigDlg::dirsItemChanged()
     {
     QTreeWidgetItem *dirItem = getSelectedDirItem();
-    deleteDirButton->setEnabled(dirItem && dirItem->parent() != NULL);
-    addDirButton->setEnabled(dirItem && dirItem->parent() == NULL);
+    deleteDirButton->setEnabled(dirItem && dirItem->parent() != nullptr);
+    addDirButton->setEnabled(dirItem && dirItem->parent() == nullptr);
 }
 
 void ConfigDlg::dirsDeletePressed()
 {
     QTreeWidgetItem *dirItem = getSelectedDirItem();
-    if (!dirItem || (dirItem->parent() == 0)) return;
+    if (!dirItem || (dirItem->parent() == nullptr)) return;
     QTreeWidgetItem* p = dirItem->parent();
     if (!p) return;
 
@@ -343,7 +343,7 @@ void ConfigDlg::dirsDeletePressed()
 void ConfigDlg::dirsAddPressed()
 {
     QTreeWidgetItem *dirItem = getSelectedDirItem();
-    if (!dirItem || (dirItem->parent() != 0)) return;
+    if (!dirItem || (dirItem->parent() != nullptr)) return;
 
     QString objName = dirItem->text(0);
 

@@ -51,12 +51,12 @@ TraceItemView::TraceItemView(TraceItemView* parentView, TopLevelBase* top)
     _parentView = parentView;
     _topLevel = top ? top : parentView->topLevel();
 
-    _data = _newData = 0;
+    _data = _newData = nullptr;
     // _partList and _newPartList is empty
-    _activeItem = _newActiveItem = 0;
-    _selectedItem = _newSelectedItem = 0;
-    _eventType = _newEventType = 0;
-    _eventType2 = _newEventType2 = 0;
+    _activeItem = _newActiveItem = nullptr;
+    _selectedItem = _newSelectedItem = nullptr;
+    _eventType = _newEventType = nullptr;
+    _eventType2 = _newEventType2 = nullptr;
     _groupType = _newGroupType = ProfileContext::InvalidType;
 
     _status = nothingChanged;
@@ -113,16 +113,16 @@ bool TraceItemView::activate(CostItem* i)
     _newActiveItem = canShow(i);
     if (_activeItem != _newActiveItem) {
         // new item activated, start with empty selection
-        _newSelectedItem = 0;
+        _newSelectedItem = nullptr;
         updateView();
     }
 
-    return (_newActiveItem != 0);
+    return (_newActiveItem != nullptr);
 }
 
 TraceFunction* TraceItemView::activeFunction()
 {
-    if (!_activeItem) return 0;
+    if (!_activeItem) return nullptr;
 
     ProfileContext::Type t = _activeItem->type();
     switch(t) {
@@ -132,7 +132,7 @@ TraceFunction* TraceItemView::activeFunction()
     default:
         break;
     }
-    return 0;
+    return nullptr;
 }
 
 bool TraceItemView::set(int changeType, TraceData* d,
@@ -150,11 +150,11 @@ bool TraceItemView::set(int changeType, TraceData* d,
     _newActiveItem = canShow(a);
     if (_activeItem != _newActiveItem) {
         // new item activated, start with empty selection
-        _newSelectedItem = 0;
+        _newSelectedItem = nullptr;
     }
     updateView();
 
-    return (_newActiveItem != 0);
+    return (_newActiveItem != nullptr);
 }
 
 
@@ -172,10 +172,10 @@ void TraceItemView::setData(TraceData* d)
     _newData = d;
 
     // invalidate all pointers to old data
-    _activeItem = _newActiveItem = 0;
-    _selectedItem = _newSelectedItem = 0;
-    _eventType = _newEventType = 0;
-    _eventType2 = _newEventType2 = 0;
+    _activeItem = _newActiveItem = nullptr;
+    _selectedItem = _newSelectedItem = nullptr;
+    _eventType = _newEventType = nullptr;
+    _eventType2 = _newEventType2 = nullptr;
     _groupType = _newGroupType = ProfileContext::InvalidType;
     _partList.clear();
     _newPartList.clear();
@@ -236,7 +236,7 @@ void TraceItemView::triggerUpdate(bool force)
     if (_newActiveItem != _activeItem) {
 
         // when setting a new active item, there is no selection
-        _selectedItem = 0;
+        _selectedItem = nullptr;
 
         _status |= activeItemChanged;
         _activeItem = _newActiveItem;

@@ -47,7 +47,7 @@ KDEConfigGroup::~KDEConfigGroup()
 void KDEConfigGroup::setValue(const QString& key, const QVariant& value,
                               const QVariant& defaultValue)
 {
-    if ((_kgroup == 0) || _readOnly) return;
+    if ((_kgroup == nullptr) || _readOnly) return;
 
     if (value == defaultValue) {
         _kgroup->deleteEntry(key);
@@ -82,7 +82,7 @@ void KDEConfigGroup::setValue(const QString& key, const QVariant& value,
 QVariant KDEConfigGroup::value(const QString& key,
                                const QVariant& defaultValue) const
 {
-    if (_kgroup == 0) return defaultValue;
+    if (_kgroup == nullptr) return defaultValue;
 
     switch(defaultValue.type()) {
     case QVariant::Bool:
@@ -135,7 +135,7 @@ ConfigGroup* KDEConfigStorage::getGroup(const QString& group,
         else if (gList.contains(group))
             g = new KConfigGroup(_kconfig, group);
         else
-            g = 0;
+            g = nullptr;
     }
     else {
         readOnly = false;

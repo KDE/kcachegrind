@@ -78,7 +78,7 @@ void TabBar::mousePressEvent(QMouseEvent *e)
 {
     if (e->button() == Qt::RightButton) {
         int idx = tabAt(e->pos());
-        QWidget* page = 0;
+        QWidget* page = nullptr;
         if (idx >=0) {
             setCurrentIndex(idx);
             page = _tabWidget->widget(idx);
@@ -92,20 +92,20 @@ void TabBar::context(QWidget* page, const QPoint & pos)
 {
     QMenu popup, popup2, popup3;
 
-    QAction* pageToTopAction = 0;
-    QAction* areaToTopAction = 0;
-    QAction* showOnTopAction = 0;
-    QAction* pageToRightAction = 0;
-    QAction* areaToRightAction = 0;
-    QAction* showOnRightAction = 0;
-    QAction* pageToBottomAction = 0;
-    QAction* areaToBottomAction = 0;
-    QAction* showOnBottomAction = 0;
-    QAction* pageToLeftAction = 0;
-    QAction* areaToLeftAction = 0;
-    QAction* showOnLeftAction = 0;
-    QAction* hidePageAction = 0;
-    QAction* hideAreaAction = 0;
+    QAction* pageToTopAction = nullptr;
+    QAction* areaToTopAction = nullptr;
+    QAction* showOnTopAction = nullptr;
+    QAction* pageToRightAction = nullptr;
+    QAction* areaToRightAction = nullptr;
+    QAction* showOnRightAction = nullptr;
+    QAction* pageToBottomAction = nullptr;
+    QAction* areaToBottomAction = nullptr;
+    QAction* showOnBottomAction = nullptr;
+    QAction* pageToLeftAction = nullptr;
+    QAction* areaToLeftAction = nullptr;
+    QAction* showOnLeftAction = nullptr;
+    QAction* hidePageAction = nullptr;
+    QAction* hideAreaAction = nullptr;
 
     if (page) {
         TraceItemView::Position p = _tabView->tabPosition(page);
@@ -170,13 +170,13 @@ void TabBar::context(QWidget* page, const QPoint & pos)
         _tabView->moveTab(page, TraceItemView::Left, true);
 
     else if (a == showOnTopAction)
-        _tabView->moveTab(0, TraceItemView::Top, true);
+        _tabView->moveTab(nullptr, TraceItemView::Top, true);
     else if (a == showOnRightAction)
-        _tabView->moveTab(0, TraceItemView::Right, true);
+        _tabView->moveTab(nullptr, TraceItemView::Right, true);
     else if (a == showOnBottomAction)
-        _tabView->moveTab(0, TraceItemView::Bottom, true);
+        _tabView->moveTab(nullptr, TraceItemView::Bottom, true);
     else if (a == showOnLeftAction)
-        _tabView->moveTab(0, TraceItemView::Left, true);
+        _tabView->moveTab(nullptr, TraceItemView::Left, true);
 }
 
 
@@ -378,28 +378,28 @@ TabView::TabView(TraceItemView* parentView, QWidget* parent)
     // Keep following order in sync with DEFAULT_xxxTABS defines!
 
     addTop( addTab( tr("Types"),
-                    new EventTypeView(this, 0,
+                    new EventTypeView(this, nullptr,
                                       "EventTypeView")));
     addTop( addTab( tr("Callers"), callerView) );
     addTop( addTab( tr("All Callers"), allCallerView) );
     addTop( addTab( tr("Callee Map"),
-                    new CallMapView(false, this, 0,
+                    new CallMapView(false, this, nullptr,
                                     "CalleeMapView")));
     addTop( addTab( tr("Source Code"), sourceView) );
 
     addBottom( addTab( tr("Parts"), partView ) );
     addBottom( addTab( tr("Callees"), calleeView) );
     addBottom( addTab( tr("Call Graph"),
-                       new CallGraphView(this, 0,
+                       new CallGraphView(this, nullptr,
                                          "CallGraphView")));
     addBottom( addTab( tr("All Callees"), allCalleeView) );
     addBottom( addTab( tr("Caller Map"),
-                       new CallMapView(true, this, 0,
+                       new CallMapView(true, this, nullptr,
                                        "CallerMapView")));
     addBottom( addTab( tr("Machine Code"), instrView) );
 
     // after all child widgets are created...
-    _lastFocus = 0;
+    _lastFocus = nullptr;
     _active = false;
     installFocusFilters();
 
@@ -593,14 +593,14 @@ TabWidget* TabView::tabWidget(Position p)
     default:
         break;
     }
-    return 0;
+    return nullptr;
 }
 
 void TabView::moveTab(QWidget* w, Position p, bool wholeArea)
 {
     Position origPos = Hidden;
     if (w) {
-        TraceItemView* found = 0;
+        TraceItemView* found = nullptr;
         foreach(TraceItemView* v, _tabs)
             if (v->widget() == w) { found = v; break; }
 
@@ -627,7 +627,7 @@ void TabView::moveTab(QWidget* w, Position p, bool wholeArea)
             isEnabled = from->isTabEnabled(from->indexOf(w));
             from->removeTab(from->indexOf(w));
         }
-        else isEnabled = (v->canShow(_activeItem)!=0);
+        else isEnabled = (v->canShow(_activeItem)!=nullptr);
 
         if (to) {
             int idx = -1, i;
@@ -691,8 +691,8 @@ void TabView::installFocusFilters()
 bool TabView::eventFilter(QObject* o, QEvent* e)
 {
     if (e->type() == QEvent::FocusIn) {
-        _lastFocus = o->isWidgetType() ? (QWidget*) o : 0;
-        setActive(_lastFocus != 0);
+        _lastFocus = o->isWidgetType() ? (QWidget*) o : nullptr;
+        setActive(_lastFocus != nullptr);
     }
     return QWidget::eventFilter(o,e);
 }
@@ -742,7 +742,7 @@ void TabView::doUpdate(int changeType, bool force)
     bool canShow;
     foreach(TraceItemView *v, _tabs) {
 
-        TabWidget *tw = 0;
+        TabWidget *tw = nullptr;
         switch(v->position()) {
         case TraceItemView::Top:    tw = _topTW; break;
         case TraceItemView::Bottom: tw = _bottomTW; break;
@@ -861,10 +861,10 @@ void TabView::restoreLayout(const QString& prefix, const QString& postfix)
         bottomTabs = bottomTabsDefault;
     }
 
-    TraceItemView *activeTop = 0, *activeBottom = 0;
-    TraceItemView *activeLeft = 0, *activeRight = 0;
+    TraceItemView *activeTop = nullptr, *activeBottom = nullptr;
+    TraceItemView *activeLeft = nullptr, *activeRight = nullptr;
 
-    moveTab(0, TraceItemView::Top, true);
+    moveTab(nullptr, TraceItemView::Top, true);
     foreach(TraceItemView *v, _tabs) {
         QString n = v->widget()->objectName();
         if (topTabs.contains(n)) {

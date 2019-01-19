@@ -109,13 +109,13 @@ void SourceView::context(const QPoint & p)
     QTreeWidgetItem* i = itemAt(p);
     QMenu popup;
 
-    TraceLineCall* lc = i ? ((SourceItem*) i)->lineCall() : 0;
-    TraceLineJump* lj = i ? ((SourceItem*) i)->lineJump() : 0;
-    TraceFunction* f = lc ? lc->call()->called() : 0;
-    TraceLine* line = lj ? lj->lineTo() : 0;
+    TraceLineCall* lc = i ? ((SourceItem*) i)->lineCall() : nullptr;
+    TraceLineJump* lj = i ? ((SourceItem*) i)->lineJump() : nullptr;
+    TraceFunction* f = lc ? lc->call()->called() : nullptr;
+    TraceLine* line = lj ? lj->lineTo() : nullptr;
 
-    QAction* activateFunctionAction = 0;
-    QAction* activateLineAction = 0;
+    QAction* activateFunctionAction = nullptr;
+    QAction* activateLineAction = nullptr;
     if (f) {
         QString menuText = tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName()));
         activateFunctionAction = popup.addAction(menuText);
@@ -159,13 +159,13 @@ void SourceView::selectedSlot(QTreeWidgetItem *i, QTreeWidgetItem *)
         return;
     }
 
-    TraceFunction* f = lc ? lc->call()->called() : 0;
+    TraceFunction* f = lc ? lc->call()->called() : nullptr;
     if (f) {
         _selectedItem = f;
         selected(f);
     }
     else {
-        TraceLine* line = lj ? lj->lineTo() : 0;
+        TraceLine* line = lj ? lj->lineTo() : nullptr;
         if (line) {
             _selectedItem = line;
             selected(line);
@@ -186,10 +186,10 @@ void SourceView::activatedSlot(QTreeWidgetItem* i, int)
         return;
     }
 
-    TraceFunction* f = lc ? lc->call()->called() : 0;
+    TraceFunction* f = lc ? lc->call()->called() : nullptr;
     if (f) TraceItemView::activated(f);
     else {
-        TraceLine* line = lj ? lj->lineTo() : 0;
+        TraceLine* line = lj ? lj->lineTo() : nullptr;
         if (line) TraceItemView::activated(line);
     }
 }
@@ -219,7 +219,7 @@ CostItem* SourceView::canShow(CostItem* i)
         break;
     }
 
-    return 0;
+    return nullptr;
 }
 
 void SourceView::doUpdate(int changeType, bool)
@@ -232,16 +232,16 @@ void SourceView::doUpdate(int changeType, bool)
             return;
         }
 
-        TraceLine* sLine = 0;
+        TraceLine* sLine = nullptr;
         if (_selectedItem->type() == ProfileContext::Line)
             sLine = (TraceLine*) _selectedItem;
         if (_selectedItem->type() == ProfileContext::Instr)
             sLine = ((TraceInstr*)_selectedItem)->line();
-        if ((_selectedItem->type() != ProfileContext::Function) && (sLine == 0))
+        if ((_selectedItem->type() != ProfileContext::Function) && (sLine == nullptr))
             return;
 
         QList<QTreeWidgetItem*> items = selectedItems();
-        SourceItem* si = (items.count() > 0) ? (SourceItem*)items[0] : 0;
+        SourceItem* si = (items.count() > 0) ? (SourceItem*)items[0] : nullptr;
         if (si) {
             if (sLine && (si->line() == sLine)) return;
             if (si->lineCall() &&
@@ -304,7 +304,7 @@ void SourceView::refresh()
     clear();
     setColumnWidth(0, 20);
     setColumnWidth(1, 50);
-    setColumnHidden(2, (_eventType2 == 0));
+    setColumnHidden(2, (_eventType2 == nullptr));
     setColumnWidth(2, 50);
     // arrows, defaults to invisible
     setColumnHidden(3, true);
@@ -319,7 +319,7 @@ void SourceView::refresh()
     }
 
     ProfileContext::Type t = _activeItem->type();
-    TraceFunction* f = 0;
+    TraceFunction* f = nullptr;
     if (t == ProfileContext::Function) f = (TraceFunction*) _activeItem;
     if (t == ProfileContext::Instr) {
         f = ((TraceInstr*)_activeItem)->function();
@@ -472,7 +472,7 @@ void SourceView::updateJumpArray(uint lineno, SourceItem* si,
 
         if (iStart == asize) {
             for(iStart=0; iStart<asize; ++iStart)
-                if (_jump[iStart] == 0) break;
+                if (_jump[iStart] == nullptr) break;
 
             if (iStart== asize) {
                 asize++;
@@ -525,11 +525,11 @@ void SourceView::updateJumpArray(uint lineno, SourceItem* si,
         if (highLineno > lineno)
             break;
         else {
-            if (iEnd>=0) _jump[iEnd] = 0;
+            if (iEnd>=0) _jump[iEnd] = nullptr;
             iEnd = -1;
         }
     }
-    if (iEnd>=0) _jump[iEnd] = 0;
+    if (iEnd>=0) _jump[iEnd] = nullptr;
 }
 
 
@@ -600,7 +600,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
     bool validSourceFile = (!sf->file()->name().isEmpty());
 
-    TraceLine* sLine = 0;
+    TraceLine* sLine = nullptr;
     if (_selectedItem) {
         if (_selectedItem->type() == ProfileContext::Line)
             sLine = (TraceLine*) _selectedItem;
@@ -747,7 +747,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
 
     QList<QTreeWidgetItem*> items;
     TraceLine* currLine;
-    SourceItem *si, *si2, *item = 0, *first = 0, *selected = 0;
+    SourceItem *si, *si2, *item = nullptr, *first = nullptr, *selected = nullptr;
     QFile file(filename);
     bool fileEndReached = false;
     if (!file.open(QIODevice::ReadOnly)) return;
@@ -801,7 +801,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
             nextCostLineno = (lineIt == lineItEnd) ? 0 : (*lineIt).lineno();
         }
         else
-            currLine = 0;
+            currLine = nullptr;
 
         // update inside
         if (!inside) {
@@ -834,7 +834,7 @@ void SourceView::fillSourceFile(TraceFunctionSource* sf, int fileno)
         QString s = QString(buf);
         if(s.size() > 0 && s.at(s.length()-1) == '\r')
             s = s.left(s.length()-1);
-        si = new SourceItem(this, 0,
+        si = new SourceItem(this, nullptr,
                             fileno, fileLineno, inside, s,
                             currLine);
         items.append(si);

@@ -158,14 +158,14 @@ void CoverageView::context(const QPoint & p)
     QTreeWidgetItem* i = itemAt(p);
     QMenu popup;
 
-    TraceFunction* f = 0;
+    TraceFunction* f = nullptr;
     if (i) {
         f = _showCallers ?
                 ((CallerCoverageItem*)i)->function() :
                 ((CalleeCoverageItem*)i)->function();
     }
 
-    QAction* activateFunctionAction = 0;
+    QAction* activateFunctionAction = nullptr;
     if (f) {
         QString menuText = tr("Go to '%1'").arg(GlobalConfig::shortenSymbol(f->prettyName()));
         activateFunctionAction = popup.addAction(menuText);
@@ -185,7 +185,7 @@ void CoverageView::context(const QPoint & p)
 
 void CoverageView::selectedSlot(QTreeWidgetItem* i, QTreeWidgetItem*)
 {
-    TraceFunction* f = 0;
+    TraceFunction* f = nullptr;
     if (i) {
         f = _showCallers ?
                 ((CallerCoverageItem*)i)->function() :
@@ -200,7 +200,7 @@ void CoverageView::selectedSlot(QTreeWidgetItem* i, QTreeWidgetItem*)
 
 void CoverageView::activatedSlot(QTreeWidgetItem* i, int)
 {
-    TraceFunction* f = 0;
+    TraceFunction* f = nullptr;
     if (i) {
         f = _showCallers ?
                 ((CallerCoverageItem*)i)->function() :
@@ -250,7 +250,7 @@ CostItem* CoverageView::canShow(CostItem* i)
     default:
         break;
     }
-    return 0;
+    return nullptr;
 }
 
 void CoverageView::doUpdate(int changeType, bool)
@@ -263,7 +263,7 @@ void CoverageView::doUpdate(int changeType, bool)
             return;
         }
 
-        TraceFunction* f = 0;
+        TraceFunction* f = nullptr;
         QTreeWidgetItem* i = currentItem();
         if (i) {
             f = _showCallers ?
@@ -309,7 +309,7 @@ void CoverageView::refresh()
     if (!_data || !_activeItem) return;
 
     ProfileContext::Type t = _activeItem->type();
-    TraceFunction* f = 0;
+    TraceFunction* f = nullptr;
     if (t == ProfileContext::Function) f = (TraceFunction*) _activeItem;
     if (t == ProfileContext::FunctionCycle) f = (TraceFunction*) _activeItem;
     if (!f) return;
@@ -338,9 +338,9 @@ void CoverageView::refresh()
         ff = (TraceFunction*) _hc[i];
         Coverage* c = (Coverage*) ff->association(Coverage::Rtti);
         if (_showCallers)
-            item = new CallerCoverageItem(0, c, f, _eventType, _groupType);
+            item = new CallerCoverageItem(nullptr, c, f, _eventType, _groupType);
         else
-            item = new CalleeCoverageItem(0, c, f, _eventType, _groupType);
+            item = new CalleeCoverageItem(nullptr, c, f, _eventType, _groupType);
         items.append(item);
     }
     if (_hc.hasMore()) {
@@ -348,10 +348,10 @@ void CoverageView::refresh()
         ff = (TraceFunction*) _hc[_hc.maxSize()-1];
         Coverage* c = (Coverage*) ff->association(Coverage::Rtti);
         if (_showCallers)
-            item = new CallerCoverageItem(0, _hc.count() - _hc.maxSize(),
+            item = new CallerCoverageItem(nullptr, _hc.count() - _hc.maxSize(),
                                           c, f, _eventType, _groupType);
         else
-            item = new CalleeCoverageItem(0, _hc.count() - _hc.maxSize(),
+            item = new CalleeCoverageItem(nullptr, _hc.count() - _hc.maxSize(),
                                           c, f, _eventType, _groupType);
         items.append(item);
     }

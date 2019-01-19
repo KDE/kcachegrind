@@ -23,9 +23,9 @@
 //---------------------------------------------------
 // ProfileContext
 
-ProfileContext* ProfileContext::_contexts = 0;
-QString* ProfileContext::_typeName = 0;
-QString* ProfileContext::_i18nTypeName = 0;
+ProfileContext* ProfileContext::_contexts = nullptr;
+QString* ProfileContext::_typeName = nullptr;
+QString* ProfileContext::_i18nTypeName = nullptr;
 
 
 ProfileContext::ProfileContext(ProfileContext::Type t)
@@ -47,15 +47,15 @@ void ProfileContext::cleanup()
 {
     if (_typeName) {
         delete [] _typeName;
-        _typeName = 0;
+        _typeName = nullptr;
     }
     if (_i18nTypeName) {
         delete [] _i18nTypeName;
-        _i18nTypeName = 0;
+        _i18nTypeName = nullptr;
     }
     if (_contexts) {
         delete [] _contexts;
-        _contexts = 0;
+        _contexts = nullptr;
     }
 }
 

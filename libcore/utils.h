@@ -39,7 +39,7 @@ class FixString {
 
 public:
     // constructor for an invalid string
-    FixString() { _len = 0; _str = 0; }
+    FixString() { _len = 0; _str = nullptr; }
 
     /**
      * FixString never does a deep copy! You have to make sure that
@@ -51,7 +51,7 @@ public:
     int len() { return _len; }
     const char* ascii() { return _str; }
     bool isEmpty() { return _len == 0; }
-    bool isValid() { return _str != 0; }
+    bool isValid() { return _str != nullptr; }
 
     // sets <c> to first character and returns true if length >0
     bool first(char& c)

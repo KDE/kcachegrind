@@ -45,7 +45,7 @@ QCGConfigGroup::~QCGConfigGroup()
 void QCGConfigGroup::setValue(const QString& key, const QVariant& value,
                               const QVariant& defaultValue)
 {
-    if ((_settings == 0) || _readOnly) return;
+    if ((_settings == nullptr) || _readOnly) return;
 
     QString fullKey = QStringLiteral("%1/%2").arg(_prefix).arg(key);
     if (value == defaultValue)
@@ -57,7 +57,7 @@ void QCGConfigGroup::setValue(const QString& key, const QVariant& value,
 QVariant QCGConfigGroup::value(const QString& key,
                                const QVariant& defaultValue) const
 {
-    if (_settings == 0) return defaultValue;
+    if (_settings == nullptr) return defaultValue;
 
     QString fullKey = QStringLiteral("%1/%2").arg(_prefix).arg(key);
     return _settings->value(fullKey, defaultValue);
@@ -94,5 +94,5 @@ ConfigGroup* QCGConfigStorage::getGroup(const QString& group,
         return new QCGConfigGroup(_settings, group, true);
 
     // requested group does not exist, return only default values
-    return new QCGConfigGroup(0, QString(), true);
+    return new QCGConfigGroup(nullptr, QString(), true);
 }

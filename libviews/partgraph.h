@@ -36,7 +36,7 @@ public:
     // Visualization inside of trace parts
     enum VisualizationMode { NoVisualization, Partitioning, Inclusive };
 
-    explicit PartAreaWidget(QWidget* parent=0);
+    explicit PartAreaWidget(QWidget* parent=nullptr);
 
     void setData(TraceData* d);
     void setEventType(EventType* ct);

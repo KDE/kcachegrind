@@ -115,11 +115,11 @@ void CallView::context(const QPoint & p)
     // p is in local coordinates
     int col = columnAt(p.x());
     QTreeWidgetItem* i = itemAt(p);
-    TraceCall* c = i ? ((CallItem*) i)->call() : 0;
-    TraceFunction *f = 0, *cycle = 0;
+    TraceCall* c = i ? ((CallItem*) i)->call() : nullptr;
+    TraceFunction *f = nullptr, *cycle = nullptr;
 
-    QAction* activateFunctionAction = 0;
-    QAction* activateCycleAction = 0;
+    QAction* activateFunctionAction = nullptr;
+    QAction* activateCycleAction = nullptr;
     if (c) {
         QString name  = _showCallers ? c->callerName(true) : c->calledName(true);
         f = _showCallers ? c->caller(true) : c->called(true);
@@ -207,7 +207,7 @@ CostItem* CallView::canShow(CostItem* i)
     default:
         break;
     }
-    return 0;
+    return nullptr;
 }
 
 void CallView::doUpdate(int changeType, bool)
@@ -229,7 +229,7 @@ void CallView::doUpdate(int changeType, bool)
             if (ti == _selectedItem) return;
         }
 
-        QTreeWidgetItem *item = 0;
+        QTreeWidgetItem *item = nullptr;
         for (int i=0; i<topLevelItemCount();i++) {
             item = topLevelItem(i);
             c = ((CallItem*) item)->call();
@@ -259,8 +259,8 @@ void CallView::doUpdate(int changeType, bool)
 void CallView::refresh()
 {
     clear();
-    setColumnHidden(2, (_eventType2 == 0));
-    setColumnHidden(3, (_eventType2 == 0));
+    setColumnHidden(2, (_eventType2 == nullptr));
+    setColumnHidden(3, (_eventType2 == nullptr));
 
     if (_eventType) {
         headerItem()->setText(0, _eventType->name());
@@ -282,7 +282,7 @@ void CallView::refresh()
     QList<QTreeWidgetItem*> items;
     foreach(TraceCall* call, l)
         if (call->subCost(_eventType)>0)
-            items.append(new CallItem(this, 0, call));
+            items.append(new CallItem(this, nullptr, call));
 
     // when inserting, switch off sorting for performance reason
     setSortingEnabled(false);

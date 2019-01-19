@@ -177,18 +177,18 @@ public:
     void setDrawParams(DrawParams*);
 
     // draw on a given QPainter, use this class as info provider per default
-    void drawBack(QPainter*, DrawParams* dp = 0);
+    void drawBack(QPainter*, DrawParams* dp = nullptr);
     /* Draw field at position() from pixmap()/text() with maxLines().
      * Returns true if something was drawn
      */
-    bool drawField(QPainter*, int f, DrawParams* dp = 0);
+    bool drawField(QPainter*, int f, DrawParams* dp = nullptr);
 
     // resets rectangle for free space
     void setRect(const QRect&);
 
     // Returns the rectangle area still free of text/pixmaps after
     // a number of drawText() calls.
-    QRect remainingRect(DrawParams* dp = 0);
+    QRect remainingRect(DrawParams* dp = nullptr);
 
 private:
     int _usedTopLeft, _usedTopCenter, _usedTopRight;
@@ -241,7 +241,7 @@ public:
                      HAlternate, VAlternate,
                      Horizontal, Vertical };
 
-    explicit TreeMapItem(TreeMapItem* parent = 0, double value = 1.0 );
+    explicit TreeMapItem(TreeMapItem* parent = nullptr, double value = 1.0 );
     TreeMapItem(TreeMapItem* parent, double value,
                 const QString& text1, const QString& text2 = QString(),
                 const QString& text3 = QString(), const QString& text4 = QString());
@@ -405,7 +405,7 @@ public:
     enum SelectionMode { Single, Multi, Extended, NoSelection };
 
     /* The widget gets owner of the base item */
-    explicit TreeMapWidget(TreeMapItem* base, QWidget* parent=0);
+    explicit TreeMapWidget(TreeMapItem* base, QWidget* parent=nullptr);
     ~TreeMapWidget() override;
 
     /**
@@ -460,7 +460,7 @@ public:
      * parent. When parent == 0, clears whole selection
      * Returns true if selection changed.
      */
-    bool clearSelection(TreeMapItem* parent = 0);
+    bool clearSelection(TreeMapItem* parent = nullptr);
 
     /**
      * Selects or unselects items in a range.

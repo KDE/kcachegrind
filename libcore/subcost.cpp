@@ -68,7 +68,7 @@ QString SubCost::pretty(char sep) const
 
 HighestCostList::HighestCostList()
 {
-    _costType = 0;
+    _costType = nullptr;
     clear(1);
 }
 

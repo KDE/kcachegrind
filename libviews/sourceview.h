@@ -36,7 +36,7 @@ class SourceView : public QTreeWidget, public TraceItemView
 
 public:
     explicit SourceView(TraceItemView* parentView,
-                        QWidget* parent = 0);
+                        QWidget* parent = nullptr);
 
     QWidget* widget() override { return this; }
     QString whatsThis() const override;

@@ -36,11 +36,11 @@
 StackSelection::StackSelection(QWidget* parent)
     : QWidget(parent)
 {
-    _data = 0;
+    _data = nullptr;
     _browser = new StackBrowser();
-    _function = 0;
-    _eventType = 0;
-    _eventType2 = 0;
+    _function = nullptr;
+    _eventType = nullptr;
+    _eventType2 = nullptr;
     _groupType = ProfileContext::Function;
 
     setWindowTitle(tr("Stack Selection"));
@@ -85,7 +85,7 @@ void StackSelection::setData(TraceData* data)
     _stackList->clear();
     delete _browser;
     _browser = new StackBrowser();
-    _function = 0;
+    _function = nullptr;
 }
 
 
@@ -120,15 +120,15 @@ void StackSelection::rebuildStackList()
 
 
     QList<QTreeWidgetItem*> items;
-    QTreeWidgetItem* activeItem = 0;
+    QTreeWidgetItem* activeItem = nullptr;
     TraceCallList l = item->stack()->calls();
     for(int i=l.count()-1; i>=0; i--) {
-        StackItem* si = new StackItem(this, 0, l.at(i));
+        StackItem* si = new StackItem(this, nullptr, l.at(i));
         if (si->function() == item->function())
             activeItem = si;
         items.prepend(si);
     }
-    StackItem* si = new StackItem(this, 0, top);
+    StackItem* si = new StackItem(this, nullptr, top);
     if (si->function() == item->function())
         activeItem = si;
     items.prepend(si);

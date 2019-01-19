@@ -30,8 +30,8 @@
 
 CostItem::CostItem(ProfileContext* c)
 {
-    _position = 0;
-    _dep = 0;
+    _position = nullptr;
+    _dep = nullptr;
     _dirty = true;
 
     _context = c;
@@ -83,7 +83,7 @@ QString CostItem::fullName() const
 
 QString CostItem::toString()
 {
-    return QStringLiteral("%1\n  [%3]").arg(fullName()).arg(costString(0));
+    return QStringLiteral("%1\n  [%3]").arg(fullName()).arg(costString(nullptr));
 }
 
 void CostItem::invalidate()
@@ -102,22 +102,22 @@ void CostItem::update()
 
 TracePart* CostItem::part()
 {
-    return _position ? _position->part() : 0;
+    return _position ? _position->part() : nullptr;
 }
 
 const TracePart* CostItem::part() const
 {
-    return _position ? _position->part() : 0;
+    return _position ? _position->part() : nullptr;
 }
 
 TraceData* CostItem::data()
 {
-    return _position ? _position->data() : 0;
+    return _position ? _position->data() : nullptr;
 }
 
 const TraceData* CostItem::data() const
 {
-    return _position ? _position->data() : 0;
+    return _position ? _position->data() : nullptr;
 }
 
 
@@ -132,19 +132,19 @@ const int ProfileCostArray::InvalidIndex = -1;
 ProfileCostArray::ProfileCostArray(ProfileContext* context)
     : CostItem(context)
 {
-    _cachedType = 0; // no virtual value cached
+    _cachedType = nullptr; // no virtual value cached
     _allocCount = 0;
     _count = 0;
-    _cost = 0;
+    _cost = nullptr;
 }
 
 ProfileCostArray::ProfileCostArray()
     : CostItem(ProfileContext::context(ProfileContext::UnknownType))
 {
-    _cachedType = 0; // no virtual value cached
+    _cachedType = nullptr; // no virtual value cached
     _allocCount = 0;
     _count = 0;
-    _cost = 0;
+    _cost = nullptr;
 }
 
 ProfileCostArray::~ProfileCostArray()
@@ -565,7 +565,7 @@ void ProfileCostArray::invalidate()
 {
     if (_dirty) return;
     _dirty = true;
-    _cachedType = 0; // cached value is invalid, too
+    _cachedType = nullptr; // cached value is invalid, too
 
     if (_dep)
         _dep->invalidate();

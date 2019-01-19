@@ -33,7 +33,7 @@ Loader::Loader(const QString& name, const QString& desc)
     _name = name;
     _description = desc;
 
-    _logger = 0;
+    _logger = nullptr;
 }
 
 Loader::~Loader()
@@ -55,7 +55,7 @@ Loader* Loader::matchingLoader(QIODevice* file)
         if (l->canLoad(file))
             return l;
 
-    return 0;
+    return nullptr;
 }
 
 Loader* Loader::loader(const QString& name)
@@ -64,7 +64,7 @@ Loader* Loader::loader(const QString& name)
         if (l->name() == name)
             return l;
 
-    return 0;
+    return nullptr;
 }
 
 // factories of available loaders

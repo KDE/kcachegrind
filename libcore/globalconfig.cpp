@@ -114,11 +114,11 @@ QString GlobalConfig::knownLongName(const QString& name)
 }
 
 
-GlobalConfig* GlobalConfig::_config = 0;
+GlobalConfig* GlobalConfig::_config = nullptr;
 
 GlobalConfig::GlobalConfig()
 {
-    _config = 0;
+    _config = nullptr;
 
     // general presentation options
     _showPercentage   = DEFAULT_SHOWPERCENTAGE;
@@ -144,7 +144,7 @@ GlobalConfig::~GlobalConfig()
 
 GlobalConfig* GlobalConfig::config()
 {
-    if (_config == 0)
+    if (_config == nullptr)
         _config = new GlobalConfig();
 
     return _config;
