@@ -3,10 +3,11 @@ cmake_minimum_required (VERSION 3.0)
 project(kcachegrind)
 
 # minimal requirements
-set (QT_MIN_VERSION "5.2.0")
+set (QT_MIN_VERSION "5.6.0")
+set (KF_MIN_VERSION "5.18.0")
 
-find_package(ECM 1.7.0 REQUIRED NO_MODULE)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)
@@ -23,7 +24,7 @@ include(ECMPoQmTools)
 
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Gui Widgets)
 
-find_package(KF5 REQUIRED
+find_package(KF5 ${KF_MIN_VERSION} REQUIRED
   Archive CoreAddons DocTools WidgetsAddons XmlGui I18n Config KIO
 )
 
