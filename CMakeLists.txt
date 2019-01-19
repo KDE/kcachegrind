@@ -1,6 +1,6 @@
-project(kcachegrind)
+cmake_minimum_required (VERSION 3.0)
 
-cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
+project(kcachegrind)
 
 # minimal requirements
 set (QT_MIN_VERSION "5.2.0")
