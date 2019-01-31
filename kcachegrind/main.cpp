@@ -29,6 +29,7 @@
 #include <KAboutData>
 #include <KLocalizedString>
 #include <KSharedConfig>
+#include <KDBusService>
 
 #include "kdeconfig.h"
 #include "toplevel.h"
@@ -49,9 +50,12 @@ int main( int argc, char ** argv )
     aboutData.addAuthor(i18n("Josef Weidendorfer"),
                         i18n("Author/Maintainer"),
                         QStringLiteral("Josef.Weidendorfer@gmx.de"));
+    aboutData.setOrganizationDomain("kde.org");
     aboutData.setDesktopFileName(QStringLiteral("org.kde.kcachegrind"));
 
     KAboutData::setApplicationData(aboutData);
+
+    KDBusService service(KDBusService::Multiple);
 
     //   KGlobal::locale()->insertCatalog("kcachegrind_qt");
     Loader::initLoaders();
