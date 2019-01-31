@@ -22,6 +22,7 @@ set(kcachegrind_LIBS
   KF5::XmlGui
   KF5::ConfigCore KF5::ConfigGui
   KF5::KIOCore KF5::KIOFileWidgets KF5::KIOWidgets KF5::KIONTLM
+  KF5::DBusAddons
 )
 
 target_link_libraries(kcachegrind core views ${kcachegrind_LIBS})

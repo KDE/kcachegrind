@@ -25,7 +25,15 @@ include(ECMPoQmTools)
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Gui Widgets)
 
 find_package(KF5 ${KF_MIN_VERSION} REQUIRED
-  Archive CoreAddons DocTools WidgetsAddons XmlGui I18n Config KIO
+    Archive
+    CoreAddons
+    DocTools
+    WidgetsAddons
+    XmlGui
+    I18n
+    Config
+    KIO
+    DBusAddons
 )
 
 if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
