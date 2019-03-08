@@ -491,7 +491,7 @@
                 </item>
               </layout>
             </widget>
-            <widget class="QWidget" name="tab" >
+            <widget class="QWidget" name="tab2" >
               <attribute name="title" >
                 <string>Info</string>
               </attribute>
@@ -600,7 +600,7 @@
                 </item>
               </layout>
             </widget>
-            <widget class="QWidget" name="tab" >
+            <widget class="QWidget" name="tab3" >
               <attribute name="title" >
                 <string>State</string>
               </attribute>
@@ -963,7 +963,7 @@
                 </item>
               </layout>
             </widget>
-            <widget class="QWidget" name="tab" >
+            <widget class="QWidget" name="tab4" >
               <attribute name="title" >
                 <string>Messages</string>
               </attribute>
