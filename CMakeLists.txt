@@ -36,8 +36,6 @@ add_definitions(-DQT_STRICT_ITERATORS)
 endif()
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
 
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
 set( KCACHEGRIND_VERSION "0.8.0kde")
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.h )
