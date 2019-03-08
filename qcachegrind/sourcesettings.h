@@ -41,7 +41,7 @@ public:
     void accept() override;
     void activate(QString s) override;
 
-public slots:
+public Q_SLOTS:
     void addClicked();
     void deleteClicked();
     void browseClicked();

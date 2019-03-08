@@ -53,7 +53,7 @@ public:
     QString tipString(TreeMapItem*) const override;
     QColor groupColor(TraceFunction*) const;
 
-private slots:
+private Q_SLOTS:
     void context(TreeMapItem*,const QPoint &);
     void selectedSlot(TreeMapItem*, bool);
     void activatedSlot(TreeMapItem*);

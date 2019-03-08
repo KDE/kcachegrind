@@ -47,7 +47,7 @@ class TraceItemViewUpdateTimer: public QTimer
 public:
     explicit TraceItemViewUpdateTimer(TraceItemView* view);
 
-private slots:
+private Q_SLOTS:
     void timeoutTriggered();
 
 private:

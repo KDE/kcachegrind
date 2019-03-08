@@ -42,7 +42,7 @@ public:
     QString whatsThis() const override;
     int arrowLevels() { return _arrowLevels; }
 
-protected slots:
+protected Q_SLOTS:
     void context(const QPoint &);
     void selectedSlot(QTreeWidgetItem*, QTreeWidgetItem*);
     void activatedSlot(QTreeWidgetItem*,int);

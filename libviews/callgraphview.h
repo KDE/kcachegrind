@@ -383,7 +383,7 @@ public:
 
     void setZoomRect(const QRectF& r);
 
-signals:
+Q_SIGNALS:
     void zoomRectMoved(qreal dx, qreal dy);
     void zoomRectMoveFinished();
 
@@ -600,7 +600,7 @@ public:
     static ZoomPosition zoomPos(QString);
     static QString zoomPosString(ZoomPosition);
 
-public slots:
+public Q_SLOTS:
     void zoomRectMoved(qreal, qreal);
     void zoomRectMoveFinished();
 

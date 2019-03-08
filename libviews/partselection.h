@@ -51,11 +51,11 @@ public:
     void saveOptions(const QString& prefix, const QString& postfix) override;
     void restoreOptions(const QString& prefix, const QString& postfix) override;
 
-signals:
+Q_SIGNALS:
     void partsHideSelected();
     void partsUnhideAll();
 
-public slots:
+public Q_SLOTS:
     void selectionChanged();
     void doubleClicked(TreeMapItem*);
     void itemSelected();

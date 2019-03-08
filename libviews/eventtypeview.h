@@ -39,7 +39,7 @@ public:
     QWidget* widget() override { return this; }
     QString whatsThis() const override;
 
-private slots:
+private Q_SLOTS:
     void context(const QPoint&);
     void currentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*);
     void itemDoubleClicked(QTreeWidgetItem*, int);

@@ -49,7 +49,7 @@ public:
 
     static bool configure(GlobalGUIConfig*, TraceData*, QWidget*);
 
-protected slots:
+protected Q_SLOTS:
     void objectActivated(const QString &);
     void objectCheckChanged(bool);
     void objectColorChanged(const QColor &);

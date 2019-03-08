@@ -39,7 +39,7 @@ public:
     QString whatsThis() const override;
     bool showCallers() const { return _showCallers; }
 
-protected slots:
+protected Q_SLOTS:
     void context(const QPoint &);
     void selectedSlot(QTreeWidgetItem*, QTreeWidgetItem*);
     void activatedSlot(QTreeWidgetItem*, int);

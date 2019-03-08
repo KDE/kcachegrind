@@ -62,7 +62,7 @@ public:
 
     void updateGroupingMenu(QMenu*);
 
-public slots:
+public Q_SLOTS:
     void searchReturnPressed();
     void searchChanged(const QString&);
     void queryDelayed();
@@ -121,7 +121,7 @@ public:
     explicit AutoToolTipDelegate(QObject* parent = nullptr);
     ~AutoToolTipDelegate() override;
 
-public slots:
+public Q_SLOTS:
     bool helpEvent( QHelpEvent* e, QAbstractItemView* view,
                     const QStyleOptionViewItem& option,
                     const QModelIndex& index ) override;

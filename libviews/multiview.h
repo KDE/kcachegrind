@@ -57,7 +57,7 @@ public:
     void saveOptions(const QString& prefix, const QString& postfix) override;
     void restoreOptions(const QString& prefix, const QString& postfix) override;
 
-public slots:
+public Q_SLOTS:
     void tabActivated(TabView*);
 
 private:

@@ -97,7 +97,7 @@ public:
     bool hasVisibleRect() { return _hasVisibleRect; }
     void checkVisibility();
 
-signals:
+Q_SIGNALS:
     void visibleRectChanged(TabWidget*);
 
 protected:
@@ -147,11 +147,11 @@ public:
     void saveOptions(const QString& prefix, const QString& postfix) override;
     void restoreOptions(const QString& prefix, const QString& postfix) override;
 
-public slots:
+public Q_SLOTS:
     void tabChanged(int);
     void visibleRectChangedSlot(TabWidget*);
 
-signals:
+Q_SIGNALS:
     void tabActivated(TabView*);
 
 protected:

@@ -644,10 +644,10 @@ public:
     // used internally when items are destroyed
     void deletingItem(TreeMapItem*);
 
-protected slots:
+protected Q_SLOTS:
     void splitActivated(QAction*);
 
-signals:
+Q_SIGNALS:
     void selectionChanged();
     void selectionChanged(TreeMapItem*);
 

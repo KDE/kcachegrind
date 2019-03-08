@@ -46,7 +46,7 @@ public:
     void restoreOptions(const QString& prefix, const QString& postfix) override;
     void saveOptions(const QString& prefix, const QString& postfix) override;
 
-protected slots:
+protected Q_SLOTS:
     void context(const QPoint &);
     void selectedSlot(QTreeWidgetItem*, QTreeWidgetItem*);
     void activatedSlot(QTreeWidgetItem*,int);

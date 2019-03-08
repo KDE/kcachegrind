@@ -42,7 +42,7 @@ public:
     void accept() override;
     void activate(QString s) override;
 
-public slots:
+public Q_SLOTS:
     void resetClicked();
     void colorListItemChanged(QTreeWidgetItem*, QTreeWidgetItem*);
     void colorChanged(const QColor &);

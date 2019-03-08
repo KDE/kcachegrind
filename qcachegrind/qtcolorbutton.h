@@ -52,11 +52,11 @@ public:
 
     QColor color() const;
 
-public slots:
+public Q_SLOTS:
 
     void setColor(const QColor &color);
 
-signals:
+Q_SIGNALS:
     void colorChanged(const QColor &color);
 protected:
     void paintEvent(QPaintEvent *event) override;

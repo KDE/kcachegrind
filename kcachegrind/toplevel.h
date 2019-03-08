@@ -96,7 +96,7 @@ public:
     void loadError(int line, const QString& msg) override;
     void loadFinished(const QString& msg) override; // msg could be error
 
-public slots:
+public Q_SLOTS:
     void load();
     void load(const QUrl&);
     void load(QString);

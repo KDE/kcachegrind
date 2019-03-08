@@ -40,7 +40,7 @@ public:
 
     void refresh();
 
-private slots:
+private Q_SLOTS:
     void context(const QPoint &);
     void selectionChangedSlot();
     void headerClicked(int);
