@@ -22,8 +22,8 @@
 
 #include "kdeconfig.h"
 
-#include <kconfig.h>
-#include <kconfiggroup.h>
+#include <KConfig>
+#include <KConfigGroup>
 
 #include "tracedata.h"
 #include "traceitemview.h"

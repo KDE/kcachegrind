@@ -28,7 +28,7 @@
 #include <QProcess>
 #include <QUrl>
 
-#include <kxmlguiwindow.h>
+#include <KXmlGuiWindow>
 
 #include "logger.h"
 #include "traceitemview.h"

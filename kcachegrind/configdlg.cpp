@@ -27,7 +27,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 
-#include <kcolorbutton.h>
+#include <KColorButton>
 
 #include "tracedata.h"
 #include "globalguiconfig.h"
