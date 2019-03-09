@@ -30,8 +30,10 @@ set(kcachegrind_LIBS
   KF5::CoreAddons
   KF5::I18n
   KF5::XmlGui
-  KF5::ConfigCore KF5::ConfigGui
-  KF5::KIOCore KF5::KIOFileWidgets KF5::KIOWidgets KF5::KIONTLM
+  KF5::ConfigCore
+  KF5::ConfigGui
+  KF5::KIOCore
+  KF5::KIOWidgets
   KF5::DBusAddons
 )
 
