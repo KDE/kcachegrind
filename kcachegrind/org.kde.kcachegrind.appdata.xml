@@ -244,6 +244,7 @@
       <caption xml:lang="gl">Analizando datos de rendemento con KCachegrind</caption>
       <caption xml:lang="id">Pemprofilan analisis data dengan KCachegrind</caption>
       <caption xml:lang="it">Analisi dei dati di profiling con KCachegrind</caption>
+      <caption xml:lang="ko">KCachegrind로 프로파일링 데이터 분석</caption>
       <caption xml:lang="nl">Analyse van gegevens profileren met KCachegrind</caption>
       <caption xml:lang="pl">Analiza danych profilowania z KCachegrind</caption>
       <caption xml:lang="pt">Análise dos dados de performance com o KCachegrind</caption>
