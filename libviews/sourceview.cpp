@@ -385,7 +385,7 @@ static bool searchFileRecursive(QString& dir, const QString& name)
     QStringList subdirs = d.entryList();
     QStringList::const_iterator it =subdirs.constBegin();
     for(; it != subdirs.constEnd(); ++it ) {
-        if (*it == QLatin1String(".") || *it == QLatin1String("..") || *it == QLatin1String("CVS")) continue;
+        if (*it == QLatin1Char('.') || *it == QLatin1String("..") || *it == QLatin1String("CVS")) continue;
 
         dir = d.filePath(*it);
         if (searchFileRecursive(dir, name)) return true;

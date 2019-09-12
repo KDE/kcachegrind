@@ -201,7 +201,7 @@ void TopLevel::saveCurrentState(const QString& postfix)
     QString eventType = _eventType ? _eventType->name() : QStringLiteral("?");
     QString eventType2 = _eventType2 ? _eventType2->name() : QStringLiteral("?");
 
-    ConfigGroup* stateConfig = ConfigStorage::group(QStringLiteral("CurrentState") + postfix);
+    ConfigGroup* stateConfig = ConfigStorage::group(QLatin1String("CurrentState") + postfix);
     stateConfig->setValue(QStringLiteral("EventType"), eventType);
     stateConfig->setValue(QStringLiteral("EventType2"), eventType2);
     stateConfig->setValue(QStringLiteral("GroupType"), ProfileContext::typeName(_groupType));
@@ -950,7 +950,7 @@ void TopLevel::load(QString file)
     if (file.isEmpty()) return;
 
     bool showError = true;
-    if (file == QStringLiteral("."))
+    if (file == QLatin1Char('.'))
         showError = false;
 
     if (_data && _data->parts().count()>0) {
@@ -1061,7 +1061,7 @@ void TopLevel::loadTraceDelayed()
 void TopLevel::reload()
 {
     QString trace;
-    if (!_data || _data->parts().count()==0)
+    if (!_data || _data->parts().isEmpty())
         trace = QStringLiteral("."); // open first trace found in dir
     else
         trace = _data->traceName();
@@ -1836,7 +1836,7 @@ void TopLevel::updateLayoutActions()
 
 void TopLevel::updateStatusBar()
 {
-    if (!_data || _data->parts().count()==0) {
+    if (!_data || _data->parts().isEmpty()) {
         _statusLabel->setText(i18n("No profile data file loaded."));
         return;
     }

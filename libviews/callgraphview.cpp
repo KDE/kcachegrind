@@ -499,9 +499,9 @@ QString GraphOptions::layoutString(Layout l)
 
 GraphOptions::Layout GraphOptions::layout(QString s)
 {
-    if (s == QStringLiteral("Circular"))
+    if (s == QLatin1String("Circular"))
         return Circular;
-    if (s == QStringLiteral("LeftRight"))
+    if (s == QLatin1String("LeftRight"))
         return LeftRight;
     return TopDown;
 }
@@ -2088,7 +2088,7 @@ void CallGraphView::refresh()
     connect(_renderProcess, SIGNAL(finished(int,QProcess::ExitStatus)),
             this, SLOT(dotExited()));
 
-    _renderProcessCmdLine =  renderProgram + " " + renderArgs.join(QStringLiteral(" "));
+    _renderProcessCmdLine =  renderProgram + QLatin1Char(' ') + renderArgs.join(QLatin1Char(' '));
     qDebug("CallGraphView::refresh: Starting process %p, '%s'",
            _renderProcess, qPrintable(_renderProcessCmdLine));
 
@@ -3119,17 +3119,17 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
 
 CallGraphView::ZoomPosition CallGraphView::zoomPos(QString s)
 {
-    if (s == QStringLiteral("TopLeft"))
+    if (s == QLatin1String("TopLeft"))
         return TopLeft;
-    if (s == QStringLiteral("TopRight"))
+    if (s == QLatin1String("TopRight"))
         return TopRight;
-    if (s == QStringLiteral("BottomLeft"))
+    if (s == QLatin1String("BottomLeft"))
         return BottomLeft;
-    if (s == QStringLiteral("BottomRight"))
+    if (s == QLatin1String("BottomRight"))
         return BottomRight;
-    if (s == QStringLiteral("Automatic"))
+    if (s == QLatin1String("Automatic"))
         return Auto;
-    if (s == QStringLiteral("Hide"))
+    if (s == QLatin1String("Hide"))
         return Hide;
 
     return DEFAULT_ZOOMPOS;

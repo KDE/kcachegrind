@@ -1056,8 +1056,8 @@ int CachegrindLoader::loadInternal(TraceData* data,
                 if (line.stripPrefix("ositions:")) {
                     prepareNewPart();
                     QString positions(line);
-                    hasLineInfo = positions.contains(QStringLiteral("line"));
-                    hasAddrInfo = positions.contains(QStringLiteral("instr"));
+                    hasLineInfo = positions.contains(QLatin1String("line"));
+                    hasAddrInfo = positions.contains(QLatin1String("instr"));
                     continue;
                 }
                 break;

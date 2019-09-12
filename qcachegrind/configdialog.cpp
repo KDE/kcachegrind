@@ -121,7 +121,7 @@ void ConfigDialog::activate(QString s)
 
     QString page = s;
     _activeSetting.clear();
-    int p = s.indexOf(QStringLiteral("/"));
+    int p = s.indexOf(QLatin1Char('/'));
     if (p>0) {
         page = s.left(p);
         _activeSetting = s.mid(p+1);

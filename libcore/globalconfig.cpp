@@ -234,7 +234,7 @@ void GlobalConfig::readOptions()
         dirs = sourceConfig->value(QStringLiteral("Dirs%1").arg(i),
                                    QStringList()).toStringList();
 
-        if (n.isEmpty() || (dirs.count()==0)) continue;
+        if (n.isEmpty() || (dirs.isEmpty())) continue;
 
         _objectSourceDirs.insert(n, dirs);
     }
@@ -326,7 +326,7 @@ QStringList GlobalConfig::sourceDirs(TraceData* data, TraceObject* o)
     for(int i=0;i<ol2.count();i++)
         l.prepend( ol2[i] );
 
-    if (0) qDebug() << "GlobalConfig::sourceDirs: " << l.join(QStringLiteral(":"));
+    if (0) qDebug() << "GlobalConfig::sourceDirs: " << l.join(QLatin1Char(':'));
 
     return l;
 }
@@ -475,7 +475,7 @@ void GlobalConfig::setGeneralSourceDirs(QStringList dirs)
 
 void GlobalConfig::setObjectSourceDirs(QString obj, QStringList dirs)
 {
-    if (dirs.count() == 0)
+    if (dirs.isEmpty())
         _objectSourceDirs.remove(obj);
     else
         _objectSourceDirs.insert(obj, dirs);

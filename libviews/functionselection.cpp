@@ -604,7 +604,7 @@ void FunctionSelection::refresh()
 
     functionListModel->setMaxCount(GlobalConfig::maxListCount());
 
-    if (!_data || _data->parts().count()==0) {
+    if (!_data || _data->parts().isEmpty()) {
         functionListModel->resetModelData(nullptr, nullptr, QString(), nullptr);
         selectTopFunction();
         return;

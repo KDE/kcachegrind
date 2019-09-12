@@ -2672,7 +2672,7 @@ void TraceFunctionCycle::add(TraceFunction* f)
 
 void TraceFunctionCycle::setup()
 {
-    if (_members.count()==0) return;
+    if (_members.isEmpty()) return;
 
     foreach(TraceFunction* f, _members) {
 
@@ -2836,7 +2836,7 @@ QString TraceFile::directory()
     if (!_dir.isEmpty()) return _dir;
 
     int lastIndex = 0, index;
-    while ( (index=_name.indexOf(QStringLiteral("/"), lastIndex)) >=0)
+    while ( (index=_name.indexOf(QLatin1Char('/'), lastIndex)) >=0)
         lastIndex = index+1;
 
     if (lastIndex==0) return QString();
@@ -2849,7 +2849,7 @@ QString TraceFile::directory()
 QString TraceFile::shortName() const
 {
     int lastIndex = 0, index;
-    while ( (index=_name.indexOf(QStringLiteral("/"), lastIndex)) >=0)
+    while ( (index=_name.indexOf(QLatin1Char('/'), lastIndex)) >=0)
         lastIndex = index+1;
 
     return _name.mid(lastIndex);
@@ -2937,7 +2937,7 @@ QString TraceObject::directory()
     if (!_dir.isEmpty()) return _dir;
 
     int lastIndex = 0, index;
-    while ( (index=_name.indexOf(QStringLiteral("/"), lastIndex)) >=0)
+    while ( (index=_name.indexOf(QLatin1Char('/'), lastIndex)) >=0)
         lastIndex = index+1;
 
     if (lastIndex==0) return QString();
@@ -2950,7 +2950,7 @@ QString TraceObject::directory()
 QString TraceObject::shortName() const
 {
     int lastIndex = 0, index;
-    while ( (index=_name.indexOf(QStringLiteral("/"), lastIndex)) >=0)
+    while ( (index=_name.indexOf(QLatin1Char('/'), lastIndex)) >=0)
         lastIndex = index+1;
 
     return _name.mid(lastIndex);
@@ -3016,7 +3016,7 @@ void TracePart::setProcessID(int pid)
 QString TracePart::shortName() const
 {
     int lastIndex = 0, index;
-    while ( (index=_name.indexOf(QStringLiteral("/"), lastIndex)) >=0)
+    while ( (index=_name.indexOf(QLatin1Char('/'), lastIndex)) >=0)
         lastIndex = index+1;
 
     return _name.mid(lastIndex);
@@ -3095,7 +3095,7 @@ TraceData::~TraceData()
 QString TraceData::shortTraceName() const
 {
     int lastIndex = 0, index;
-    while ( (index=_traceName.indexOf(QStringLiteral("/"), lastIndex)) >=0)
+    while ( (index=_traceName.indexOf(QLatin1Char('/'), lastIndex)) >=0)
         lastIndex = index+1;
 
     return _traceName.mid(lastIndex);
@@ -3384,7 +3384,7 @@ TraceClass* TraceData::cls(const QString& fnName, QString& shortName)
             pIndex = sIndex;
 #endif
 
-    while ((index=fnName.indexOf(QStringLiteral("::"), lastIndex)) >=0) {
+    while ((index=fnName.indexOf(QLatin1String("::"), lastIndex)) >=0) {
         if (pIndex>=0 && pIndex<index) break;
         lastIndex = index+2;
     }

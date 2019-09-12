@@ -149,7 +149,7 @@ void QCGTopLevel::saveCurrentState(const QString& postfix)
     if (_eventType) eventType = _eventType->name();
     if (_eventType2) eventType2 = _eventType2->name();
 
-    ConfigGroup* stateConfig = ConfigStorage::group(QStringLiteral("CurrentState") + postfix);
+    ConfigGroup* stateConfig = ConfigStorage::group(QLatin1String("CurrentState") + postfix);
     stateConfig->setValue(QStringLiteral("EventType"), eventType);
     stateConfig->setValue(QStringLiteral("EventType2"), eventType2);
     stateConfig->setValue(QStringLiteral("GroupType"), ProfileContext::typeName(_groupType));
@@ -242,7 +242,7 @@ void QCGTopLevel::recentFilesMenuAboutToShow()
                                        QStringList()).toStringList();
     delete generalConfig;
 
-    if (recentFiles.count() == 0)
+    if (recentFiles.isEmpty())
         popup->addAction(tr("(No recent files)"));
     else {
         foreach(const QString& file, recentFiles) {
@@ -1662,7 +1662,7 @@ void QCGTopLevel::updateLayoutActions()
 
 void QCGTopLevel::updateStatusBar()
 {
-    if (!_data || _data->parts().count()==0) {
+    if (!_data || _data->parts().isEmpty()) {
         _statusLabel->setText(tr("No profile data file loaded."));
         return;
     }

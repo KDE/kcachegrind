@@ -114,15 +114,15 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
 
         QString n = cs->_name;
         if (n.startsWith(objectPrefix)) {
-            n = n.remove(0, objectPrefix.length()+1);
+            n.remove(0, objectPrefix.length()+1);
             if (oList.indexOf(n) == -1) oList.append(n);
         }
         else if (n.startsWith(classPrefix)) {
-            n = n.remove(0, classPrefix.length()+1);
+            n.remove(0, classPrefix.length()+1);
             if (cList.indexOf(n) == -1) cList.append(n);
         }
         else if (n.startsWith(filePrefix)) {
-            n = n.remove(0, filePrefix.length()+1);
+            n.remove(0, filePrefix.length()+1);
             if (fList.indexOf(n) == -1) fList.append(n);
         }
     }

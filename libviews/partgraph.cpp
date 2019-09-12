@@ -220,7 +220,7 @@ QString BasePartItem::text(int textNo) const
         if (!_data)
             return QObject::tr("(no trace)");
 
-        if (_data->parts().count() == 0)
+        if (_data->parts().isEmpty())
             return QObject::tr("(no part)");
     }
     return QString();

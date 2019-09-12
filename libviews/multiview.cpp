@@ -175,7 +175,7 @@ void MultiView::restoreLayout(const QString& prefix, const QString& postfix)
     QString active = g->value(QStringLiteral("ActivePanel"), QString()).toString();
 
     setChildCount(panelCount);
-    setOrientation( o == QStringLiteral("Horizontal") ?
+    setOrientation( o == QLatin1String("Horizontal") ?
                         Qt::Horizontal : Qt::Vertical );
     if ( panelCount>1 ) {
         QList<int> sizes = toIntList(g->value(QStringLiteral("PanelSizes"), QStringList()).toStringList());

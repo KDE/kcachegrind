@@ -698,7 +698,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
                 if (name[breakPos-1].category() == QChar::Separator_Space)
                     name = name.left(breakPos-1);
                 else
-                    name = name.left(breakPos);
+                    name.truncate(breakPos);
             }
             else { // bottom
                 w = pixW + findBreakBackwards(breakPos, name, _fm, unusedWidth - pixW);
@@ -1130,7 +1130,7 @@ void TreeMapItem::addFreeRect(const QRect& r)
     // do not add invalid rects
     if ((r.width() < 1) || (r.height() < 1)) return;
 
-    if (0) qDebug() << "addFree(" << path(0).join(QStringLiteral("/")) << ", "
+    if (0) qDebug() << "addFree(" << path(0).join(QLatin1Char('/')) << ", "
                     << r.x() << "/" << r.y() << "-"
                     << r.width() << "x" << r.height() << ")";
 
@@ -1575,7 +1575,7 @@ TreeMapItem* TreeMapWidget::item(int x, int y) const
                 i = list->at(idx);
 
                 if (DEBUG_DRAWING)
-                    qDebug() << "  Checking " << i->path(0).join(QStringLiteral("/")) << " ("
+                    qDebug() << "  Checking " << i->path(0).join(QLatin1Char('/')) << " ("
                              << i->itemRect().x() << "/" << i->itemRect().y()
                              << "-" << i->itemRect().width()
                              << "x" << i->itemRect().height() << ")";
@@ -1598,7 +1598,7 @@ TreeMapItem* TreeMapWidget::item(int x, int y) const
 
                 if (DEBUG_DRAWING)
                     qDebug() << "item(" << x << "," << y << "): Got "
-                             << p->path(0).join(QStringLiteral("/")) << " (Size "
+                             << p->path(0).join(QLatin1Char('/')) << " (Size "
                              << p->itemRect().width() << "x" << p->itemRect().height()
                              << ", Val " << p->value() << ")";
             }
@@ -1761,7 +1761,7 @@ void TreeMapWidget::setCurrent(TreeMapItem* i, bool kbd)
         // remove mark
         _markNo = 0;
 
-        if (i) qDebug() << "setCurrent(" << i->path(0).join(QStringLiteral("/"))
+        if (i) qDebug() << "setCurrent(" << i->path(0).join(QLatin1Char('/'))
                         << ") - mark removed";
 
         // always complete redraw needed to remove mark
@@ -2206,7 +2206,7 @@ void TreeMapWidget::drawTreeMap()
     if (_needsRefresh) {
 
         if (DEBUG_DRAWING)
-            qDebug() << "Redrawing " << _needsRefresh->path(0).join(QStringLiteral("/"));
+            qDebug() << "Redrawing " << _needsRefresh->path(0).join(QLatin1Char('/'));
 
         if (_needsRefresh == _base) {
             // redraw whole widget
@@ -2325,7 +2325,7 @@ void TreeMapWidget::drawItems(QPainter* p,
                               TreeMapItem* item)
 {
     if (DEBUG_DRAWING)
-        qDebug() << "+drawItems(" << item->path(0).join(QStringLiteral("/")) << ", "
+        qDebug() << "+drawItems(" << item->path(0).join(QLatin1Char('/')) << ", "
                  << item->itemRect().x() << "/" << item->itemRect().y()
                  << "-" << item->itemRect().width() << "x"
                  << item->itemRect().height() << "), Val " << item->value()
@@ -2398,7 +2398,7 @@ void TreeMapWidget::drawItems(QPainter* p,
         r = d.remainingRect(item);
 
         if (DEBUG_DRAWING)
-            qDebug() << "-drawItems(" << item->path(0).join(QStringLiteral("/")) << ")";
+            qDebug() << "-drawItems(" << item->path(0).join(QLatin1Char('/')) << ")";
         return;
     }
 
@@ -2486,7 +2486,7 @@ void TreeMapWidget::drawItems(QPainter* p,
         // set selfRect (not occupied by children) for tooltip
         item->addFreeRect(sr);
 
-        if (0) qDebug() << "Item " << item->path(0).join(QStringLiteral("/")) << ": SelfR "
+        if (0) qDebug() << "Item " << item->path(0).join(QLatin1Char('/')) << ": SelfR "
                         << sr.x() << "/" << sr.y() << "-" << sr.width()
                         << "/" << sr.height() << ", self " << self << "/"
                         << user_sum;
@@ -2617,7 +2617,7 @@ void TreeMapWidget::drawItems(QPainter* p,
         drawItemArray(p, item, r, user_sum, list, idx, list->count(), goBack);
 
     if (DEBUG_DRAWING)
-        qDebug() << "-drawItems(" << item->path(0).join(QStringLiteral("/")) << ")";
+        qDebug() << "-drawItems(" << item->path(0).join(QLatin1Char('/')) << ")";
 }
 
 // fills area with a pattern if to small to draw children
@@ -2647,7 +2647,7 @@ void TreeMapWidget::drawFill(TreeMapItem* i, QPainter* p, const QRect& r,
     while (len>0 && (i=list->value(idx))) {
 
         if (DEBUG_DRAWING)
-            qDebug() << "   Reset Rect " << i->path(0).join(QStringLiteral("/"));
+            qDebug() << "   Reset Rect " << i->path(0).join(QLatin1Char('/'));
 
         i->clearItemRect();
         if (goBack) --idx; else ++idx;
@@ -2680,7 +2680,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
     }
 
     if (DEBUG_DRAWING)
-        qDebug() << " +drawItemArray(" << item->path(0).join(QStringLiteral("/"))
+        qDebug() << " +drawItemArray(" << item->path(0).join(QLatin1Char('/'))
                  << ", " << r.x() << "/" << r.y() << "-" << r.width()
                  << "x" << r.height() << ")";
 
@@ -2727,7 +2727,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
         }
 
         if (DEBUG_DRAWING)
-            qDebug() << " -drawItemArray(" << item->path(0).join(QStringLiteral("/"))
+            qDebug() << " -drawItemArray(" << item->path(0).join(QLatin1Char('/'))
                      << ")";
 
         return drawOn;
@@ -2742,7 +2742,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
         if (user_sum <= 0) {
 
             if (DEBUG_DRAWING)
-                qDebug() << "drawItemArray: Reset " << i->path(0).join(QStringLiteral("/"));
+                qDebug() << "drawItemArray: Reset " << i->path(0).join(QLatin1Char('/'));
 
             i->clearItemRect();
             if (goBack) --idx; else ++idx;
@@ -2758,7 +2758,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
 
             drawFill(item, p, fullRect, list, idx, len, goBack);
             if (DEBUG_DRAWING)
-                qDebug() << " -drawItemArray(" << item->path(0).join(QStringLiteral("/"))
+                qDebug() << " -drawItemArray(" << item->path(0).join(QLatin1Char('/'))
                          << "): Stop";
             return false;
         }
@@ -2774,7 +2774,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
         if ((item->sorting(nullptr) != -1) && (nextPos < _visibleWidth)) {
             drawFill(item, p, fullRect, list, idx, len, goBack);
             if (DEBUG_DRAWING)
-                qDebug() << " -drawItemArray(" << item->path(0).join(QStringLiteral("/"))
+                qDebug() << " -drawItemArray(" << item->path(0).join(QLatin1Char('/'))
                          << "): Stop";
             return false;
         }
@@ -2832,7 +2832,7 @@ bool TreeMapWidget::drawItemArray(QPainter* p, TreeMapItem* item,
     }
 
     if (DEBUG_DRAWING)
-        qDebug() << " -drawItemArray(" << item->path(0).join(QStringLiteral("/"))
+        qDebug() << " -drawItemArray(" << item->path(0).join(QLatin1Char('/'))
                  << "): Continue";
 
     return true;
