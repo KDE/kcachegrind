@@ -31,9 +31,6 @@ find_package(KF5 ${KF_MIN_VERSION} REQUIRED
     DBusAddons
 )
 
-if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
-add_definitions(-DQT_STRICT_ITERATORS)
-endif()
 add_definitions(
     -DQT_DEPRECATED_WARNINGS
     -DQT_DISABLE_DEPRECATED_BEFORE=0x050600
