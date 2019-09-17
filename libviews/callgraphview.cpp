@@ -1121,11 +1121,11 @@ void PanningView::drawForeground(QPainter * p, const QRectF&)
         return;
 
     QColor red(Qt::red);
-    QPen pen(red.dark());
+    QPen pen(red.darker());
     pen.setWidthF(2.0 / matrix().m11());
     p->setPen(pen);
 
-    QColor c(red.dark());
+    QColor c(red.darker());
     c.setAlphaF(0.05);
     p->setBrush(QBrush(c));
 

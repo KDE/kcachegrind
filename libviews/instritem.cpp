@@ -407,9 +407,9 @@ void InstrItemDelegate::paintArrows(QPainter *p,
 
         c = jump->isCondJump() ? Qt::red : Qt::blue;
         p->fillRect( marg + 6*i, y1, 4, y2, c);
-        p->setPen(c.light());
+        p->setPen(c.lighter());
         p->drawLine( marg + 6*i, y1, marg + 6*i, y2);
-        p->setPen(c.dark());
+        p->setPen(c.darker());
         p->drawLine( marg + 6*i +3, y1, marg + 6*i +3, y2);
     }
 
@@ -420,10 +420,10 @@ void InstrItemDelegate::paintArrows(QPainter *p,
         x = marg + 6*start;
         w = 6*(iv->arrowLevels() - start) + 10;
         p->fillRect( x, y, w, h, c);
-        p->setPen(c.light());
+        p->setPen(c.lighter());
         p->drawLine(x, y, x+w-1, y);
         p->drawLine(x, y, x, y+h-1);
-        p->setPen(c.dark());
+        p->setPen(c.darker());
         p->drawLine(x+w-1, y, x+w-1, y+h-1);
         p->drawLine(x+1, y+h-1, x+w-1, y+h-1);
     }
@@ -441,13 +441,13 @@ void InstrItemDelegate::paintArrows(QPainter *p,
         p->setBrush(c);
         p->drawConvexPolygon(a);
 
-        p->setPen(c.light());
+        p->setPen(c.lighter());
         p->drawPolyline(a.constData(), 5);
-        p->setPen(c.dark());
+        p->setPen(c.darker());
         p->drawPolyline(a.constData() + 4, 2);
-        p->setPen(c.light());
+        p->setPen(c.lighter());
         p->drawPolyline(a.constData() + 5, 2);
-        p->setPen(c.dark());
+        p->setPen(c.darker());
         p->drawPolyline(a.constData() + 6, 2);
     }
 

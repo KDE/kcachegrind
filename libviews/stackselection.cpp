@@ -47,7 +47,7 @@ StackSelection::StackSelection(QWidget* parent)
 
     QVBoxLayout* vboxLayout = new QVBoxLayout(this);
     vboxLayout->setSpacing(6);
-    vboxLayout->setMargin(3);
+    vboxLayout->setContentsMargins(3, 3, 3, 3);
 
     _stackList = new QTreeWidget(this);
     QStringList headerLabels;

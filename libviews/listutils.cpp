@@ -53,10 +53,10 @@ QPixmap colorPixmap(int w, int h, QColor c)
     QPixmap* pix = new QPixmap(w, h);
     pix->fill(c);
     QPainter p(pix);
-    p.setPen(c.light());
+    p.setPen(c.lighter());
     p.drawLine(0, 0, w-1, 0);
     p.drawLine(0, 0, 0, h-1);
-    p.setPen(c.dark());
+    p.setPen(c.darker());
     p.drawLine(w-1, 0, w-1, h-1);
     p.drawLine(0, h-1, w-1, h-1);
 
@@ -108,10 +108,10 @@ QPixmap percentagePixmap(int w, int h, int percent, QColor c, bool framed)
     int lastX2 = ix1+filled-2;
 
     // frame
-    p.setPen(c.light());
+    p.setPen(c.lighter());
     p.drawLine(ix1, iy1, lastX1, iy1);
     p.drawLine(ix1, iy1, ix1, iy2);
-    p.setPen(c.dark());
+    p.setPen(c.darker());
     p.drawLine(lastX1, iy1, lastX1, iy1+lastY);
     p.drawLine(lastX2, iy1+lastY, lastX2, iy2);
     p.drawLine(ix1+1, iy2, lastX2, iy2);
@@ -191,7 +191,7 @@ QPixmap partitionPixmap(int w, int h,
         p.drawRect(x1, iy1, x2-x1, ih-1);
 
         // lighter top border
-        p.setPen(c.light());
+        p.setPen(c.lighter());
         p.drawLine(x1, iy1, x2-1, iy1);
 
         // when width for last and current distance >2, draw full 3D effect...
@@ -201,7 +201,7 @@ QPixmap partitionPixmap(int w, int h,
         }
 
         // darker bottom border
-        p.setPen(c.dark());
+        p.setPen(c.darker());
         p.drawLine(x1, iy2, x2-1, iy2);
 
         lastPos = nextPos;

@@ -309,7 +309,7 @@ TabView::TabView(TraceItemView* parentView, QWidget* parent)
 
     QVBoxLayout* vbox = new QVBoxLayout( this );
     vbox->setSpacing( 6 );
-    vbox->setMargin( 6 );
+    vbox->setContentsMargins( 6 ,  6 ,  6 ,  6 );
 
     _nameLabel = new QLabel(this); //KSqueezedTextLabel( this);
     _nameLabel->setSizePolicy(QSizePolicy( QSizePolicy::Ignored,
@@ -414,7 +414,7 @@ void TabView::updateNameLabel(const QString& n)
 
     if (!n.isNull()) {
         _nameLabelText = n;
-        _textWidth = fm.width(_nameLabelText);
+        _textWidth = fm.boundingRect(_nameLabelText).width();
     }
 
     int labelWidth = _nameLabel->size().width();

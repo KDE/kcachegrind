@@ -257,13 +257,13 @@ void RectDrawing::drawBack(QPainter* p, DrawParams* dp)
 
     QRect r = _rect;
     QColor normal = dp->backColor();
-    if (dp->selected()) normal = normal.light();
+    if (dp->selected()) normal = normal.lighter();
     bool isCurrent = dp->current();
 
     if (dp->drawFrame() || isCurrent) {
         // 3D raised/sunken frame effect...
-        QColor high = normal.light();
-        QColor low = normal.dark();
+        QColor high = normal.lighter();
+        QColor low = normal.darker();
         p->setPen( isCurrent ? low:high);
         p->drawLine(r.left(), r.top(), r.right(), r.top());
         p->drawLine(r.left(), r.top(), r.left(), r.bottom());
@@ -358,7 +358,7 @@ int findBreak(int& breakPos, QString text, QFontMetrics* fm, int maxWidth)
 
     // does full text fit?
     breakPos = text.length();
-    usedWidth = fm->width(text);
+    usedWidth = fm->boundingRect(text).width();
     if (usedWidth < maxWidth)
         return usedWidth;
 
@@ -367,7 +367,7 @@ int findBreak(int& breakPos, QString text, QFontMetrics* fm, int maxWidth)
     int bottomPos = 0;
     while(1) {
         int halfPos = (bottomPos + breakPos)/2;
-        int halfWidth = fm->width(text, halfPos);
+        int halfWidth = fm->horizontalAdvance(text, halfPos);
         if (halfWidth < maxWidth) {
             bottomPos = halfPos+1;
             continue;
@@ -398,7 +398,7 @@ int findBreak(int& breakPos, QString text, QFontMetrics* fm, int maxWidth)
         lastCat = cat;
 
         breakPos = pos;
-        usedWidth = fm->width(text, breakPos);
+        usedWidth = fm->horizontalAdvance(text, breakPos);
         if (usedWidth < maxWidth) break;
     }
     return usedWidth;
@@ -418,7 +418,7 @@ int findBreakBackwards(int& breakPos, QString text, QFontMetrics* fm, int maxWid
 
     // does full text fit?
     breakPos = 0;
-    usedWidth = fm->width(text);
+    usedWidth = fm->boundingRect(text).width();
     if (usedWidth < maxWidth)
         return usedWidth;
 
@@ -427,7 +427,7 @@ int findBreakBackwards(int& breakPos, QString text, QFontMetrics* fm, int maxWid
     int topPos = text.length();
     while(1) {
         int halfPos = (breakPos + topPos)/2;
-        int halfWidth = fm->width(text.mid(halfPos));
+        int halfWidth = fm->boundingRect(text.mid(halfPos)).width();
         if (halfWidth < maxWidth) {
             topPos = halfPos-1;
             continue;
@@ -457,7 +457,7 @@ int findBreakBackwards(int& breakPos, QString text, QFontMetrics* fm, int maxWid
         lastCat = cat;
 
         breakPos = pos;
-        usedWidth = fm->width(text.mid(breakPos));
+        usedWidth = fm->boundingRect(text.mid(breakPos)).width();
         if (usedWidth < maxWidth) break;
     }
     return usedWidth;
@@ -612,7 +612,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
 
     // stop as soon as possible when there is no space for "..."
     static int dotW = 0;
-    if (!dotW) dotW = _fm->width(QStringLiteral("..."));
+    if (!dotW) dotW = _fm->boundingRect(QStringLiteral("...")).width();
     if (width < dotW) return false;
 
     // get text and pixmap now, only if we need to, because it is possible
@@ -637,7 +637,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
     }
 
     // width of text and pixmap to be drawn
-    int w = pixW + _fm->width(name);
+    int w = pixW + _fm->boundingRect(name).width();
 
     if (0) qDebug() << "  For '" << name << "': Unused " << unused
                     << ", StrW " << w << ", Width " << width;
@@ -717,7 +717,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
         /* truncate and add ... if needed */
         if (dp->allowTruncation(f) && w > unusedWidth) {
             name = _fm->elidedText(name, Qt::ElideRight, unusedWidth - pixW);
-            w = _fm->width(name) + pixW;
+            w = _fm->boundingRect(name).width() + pixW;
         }
 
         if (w > unusedWidth) {
@@ -754,7 +754,7 @@ bool RectDrawing::drawField(QPainter* p, int f, DrawParams* dp)
 
         if (remaining.isEmpty()) break;
         name = remaining;
-        w = pixW + _fm->width(name);
+        w = pixW + _fm->boundingRect(name).width();
         unusedWidth = width;
     }
 

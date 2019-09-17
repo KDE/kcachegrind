@@ -99,7 +99,7 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
     // first row with search label and group type combo
     QHBoxLayout* hboxLayout = new QHBoxLayout();
     hboxLayout->setSpacing(6);
-    hboxLayout->setMargin(0);
+    hboxLayout->setContentsMargins(0, 0, 0, 0);
 
     searchLabel = new QLabel(this);
     searchLabel->setText(tr("&Search:"));
@@ -118,7 +118,7 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
     // vertical layout: first row, group list, function list
     QVBoxLayout* vboxLayout = new QVBoxLayout(this);
     vboxLayout->setSpacing(6);
-    vboxLayout->setMargin(3);
+    vboxLayout->setContentsMargins(3, 3, 3, 3);
     vboxLayout->addLayout(hboxLayout);
 
     groupList = new QTreeWidget(this);

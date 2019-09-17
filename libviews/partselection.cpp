@@ -59,7 +59,7 @@ PartSelection::PartSelection( TopLevelBase* top,
 
     QVBoxLayout* vboxLayout = new QVBoxLayout(this);
     vboxLayout->setSpacing(6);
-    vboxLayout->setMargin(6);
+    vboxLayout->setContentsMargins(6, 6, 6, 6);
 
     _partAreaWidget = new PartAreaWidget(this);
     _partAreaWidget->setMinimumHeight(50);

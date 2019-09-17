@@ -3,8 +3,8 @@ cmake_minimum_required (VERSION 3.0)
 project(kcachegrind)
 
 # minimal requirements
-set (QT_MIN_VERSION "5.6.0")
-set (KF_MIN_VERSION "5.18.0")
+set (QT_MIN_VERSION "5.11.0")
+set (KF_MIN_VERSION "5.56.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
@@ -33,7 +33,6 @@ find_package(KF5 ${KF_MIN_VERSION} REQUIRED
 
 add_definitions(
     -DQT_DEPRECATED_WARNINGS
-    -DQT_DISABLE_DEPRECATED_BEFORE=0x050600
     -DQT_USE_QSTRINGBUILDER
     -DQT_NO_CAST_TO_ASCII
 #     -DQT_NO_CAST_FROM_ASCII
@@ -49,6 +48,9 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINAR
 IF(NOT WIN32)
   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/kcachegrind.spec.cmake ${CMAKE_CURRENT_BINARY_DIR}/kcachegrind.spec )
 ENDIF(NOT WIN32)
+if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
+   add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+endif()
 
 ecm_create_qm_loader(kcachegrind_QM_LOADER kcachegrind_qt)
 

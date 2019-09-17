@@ -23,6 +23,7 @@
 #include "configdlg.h"
 
 #include <QCheckBox>
+#include <QCompleter>
 #include <QDir>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -79,9 +80,9 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
     objectCombo->setDuplicatesEnabled(false);
     classCombo->setDuplicatesEnabled(false);
     fileCombo->setDuplicatesEnabled(false);
-    objectCombo->setAutoCompletion(true);
-    classCombo->setAutoCompletion(true);
-    fileCombo->setAutoCompletion(true);
+    objectCombo->setCompleter(new QCompleter(objectCombo));
+    classCombo->setCompleter(new QCompleter(classCombo));
+    fileCombo->setCompleter(new QCompleter(fileCombo));
 
     // first unspecified cost items from data
     TraceObjectMap::Iterator oit;
