@@ -63,7 +63,7 @@
     <p xml:lang="es">KCachegrind es una herramienta de visualización de datos de análisis de rendimiento que se usa para determinar las partes de un programa que consumen más tiempo durante su ejecución.</p>
     <p xml:lang="fr">KCachegrind est un outil d'affichage des données de profilage, utilisé pour déterminer les segments prenant le plus de temps lors de l'exécution d'un programme.</p>
     <p xml:lang="gl">KCachegrind é unha ferramenta de visualización de datos de rendemento que se usa para determinar as partes da execución dun programa que consumen máis tempo.</p>
-    <p xml:lang="id">KCachegrind adalah sebuah alat virtualidasi data profil, digunakan untuk menentukan seberapa memakan waktu dalam eksekusi program.</p>
+    <p xml:lang="id">KCachegrind adalah sebuah alat virtualidasi data profil, digunakan untuk menentukan seberapa memakan waktu dalam pengeksekusian program.</p>
     <p xml:lang="it">KCachegrind è uno strumento di visualizzazione dei dati di profilatura, usato per determinare dove viene maggiormente speso il tempo durante l'esecuzione di un programma.</p>
     <p xml:lang="ko">KCachegrind는 프로그램을 프로파일링하여 실행 시간의 가장 많은 부분을 차지하는 항목을 찾습니다.</p>
     <p xml:lang="nl">KCachegrind is een hulpmiddel voor visualisatie van profielgegevens en wordt gebruikt om de meest tijdrovende delen in het uitvoeren van een programma te bepalen.</p>
