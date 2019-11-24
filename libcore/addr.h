@@ -35,7 +35,7 @@ public:
     // no "explicit": we want implicit conversion
     Addr(uint64 v) { _v = v; }
 
-    // Interpretes char data at s as hex (without "0x" prefix)
+    // Interprets char data at s as hex (without "0x" prefix)
     // and return number of interpreted chars.
     int set(const char *s);
     bool set(FixString& s);

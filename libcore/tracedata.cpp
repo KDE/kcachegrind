@@ -3143,10 +3143,10 @@ int TraceData::load(QStringList files)
             _traceName += QLatin1String("/callgrind.out");
         }
 
-        files = dir.entryList(QStringList() << prefix + "*", QDir::Files);
+        files = dir.entryList(QStringList() << prefix + '*', QDir::Files);
         QStringList::Iterator it = files.begin();
         for (; it != files.end(); ++it ) {
-            *it = dir.path() + "/" + *it;
+            *it = dir.path() + '/' + *it;
         }
     }
 

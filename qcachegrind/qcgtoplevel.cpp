@@ -461,7 +461,7 @@ void QCGTopLevel::createActions()
             this, &QCGTopLevel::toggleExpanded);
     _expandedToggleAction->setChecked(GlobalConfig::showExpanded());
 
-    _splittedToggleAction = new QAction(tr("Splitted Visualization"), this);
+    _splittedToggleAction = new QAction(tr("Split Visualization"), this);
     _splittedToggleAction->setCheckable(true);
     _splittedToggleAction->setStatusTip(
                 tr("Show visualization of two cost items"));

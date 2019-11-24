@@ -84,17 +84,17 @@ public:
      * attribute is requested (e.g. by subCost()).
      * Has to be overwritten by subclasses when the cost influences costs of
      * other cost items. If only one item depends on the cost of this item,
-     * it can by set with setDependant() without a need for overwriting.
+     * it can by set with setDependent() without a need for overwriting.
      */
     virtual void invalidate();
 
     /**
-     * Sets a dependant to be invalidated when this cost is invalidated.
+     * Sets a dependent to be invalidated when this cost is invalidated.
      * Call this function directly after the constructor.
      */
-    void setDependant(CostItem* d) { _dep = d; }
+    void setDependent(CostItem* d) { _dep = d; }
 
-    CostItem* dependant() { return _dep; }
+    CostItem* dependent() { return _dep; }
 
     /**
      * If this item is from a single profile data file, position

@@ -112,7 +112,7 @@ private:
 
 /* Custom item delegate for function list:
  * show tooltip for function name if truncated.
- * (thanks to http://www.mimec.org/node/337)
+ * (thanks to https://www.mimec.org/blog/tooltips-for-truncated-items-in-a-qtreeview)
  */
 class AutoToolTipDelegate : public QStyledItemDelegate
 {

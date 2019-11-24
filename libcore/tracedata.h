@@ -1463,7 +1463,7 @@ public:
 
     void update() override;
 
-    // invalidates all cost items dependant on active state of parts
+    // invalidates all cost items dependent on active state of parts
     void invalidateDynamicCost();
 
     // cycle detection

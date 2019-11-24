@@ -417,7 +417,7 @@ QString SubPartItem::text(int textNo) const
         if (!_partCostItem)
             return QObject::tr("(unknown)");
 
-        return _partCostItem->dependant()->prettyName();
+        return _partCostItem->dependent()->prettyName();
     }
 
     if (textNo != 1)
@@ -518,9 +518,9 @@ QColor SubPartItem::backColor() const
 {
     PartAreaWidget* w = (PartAreaWidget*)widget();
     if (w->visualization() == PartAreaWidget::Inclusive)
-        return w->groupColor((TraceFunction*)(_partCostItem->dependant()));
+        return w->groupColor((TraceFunction*)(_partCostItem->dependent()));
 
-    return GlobalGUIConfig::groupColor(_partCostItem->dependant());
+    return GlobalGUIConfig::groupColor(_partCostItem->dependent());
 }
 
 
