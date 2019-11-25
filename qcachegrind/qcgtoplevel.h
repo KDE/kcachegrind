@@ -23,7 +23,7 @@
 #ifndef QCGTOPLEVEL_H
 #define QCGTOPLEVEL_H
 
-#include <qdatetime.h>
+#include <QElapsedTimer>
 #include <QLabel>
 #include <QMainWindow>
 #include <QStringList>
@@ -205,7 +205,7 @@ private:
     QStatusBar* _statusbar;
     QLabel* _statusLabel;
     QString _progressMsg;
-    QTime _progressStart;
+    QElapsedTimer _progressStart;
     QProgressBar* _progressBar;
 
     MultiView* _multiView;
