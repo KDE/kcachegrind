@@ -23,7 +23,7 @@
 #ifndef TOPLEVEL_H
 #define TOPLEVEL_H
 
-#include <qdatetime.h>
+#include <QElapsedTimer>
 #include <QLabel>
 #include <QProcess>
 #include <QUrl>
@@ -284,7 +284,7 @@ private:
 
     // for status progress display
     QString _progressMsg;
-    QTime _progressStart;
+    QElapsedTimer _progressStart;
     QProgressBar* _progressBar;
 
     // toplevel configuration options
