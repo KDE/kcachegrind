@@ -1759,7 +1759,7 @@ void TopLevel::layoutNext()
     _multiView->restoreLayout(layoutPrefix.arg(_layoutCurrent), key);
 
     if (0) qDebug() << "TopLevel::layoutNext: current "
-                    << _layoutCurrent << endl;
+                    << _layoutCurrent;
 }
 
 void TopLevel::layoutPrevious()
@@ -1775,7 +1775,7 @@ void TopLevel::layoutPrevious()
     _multiView->restoreLayout(layoutPrefix.arg(_layoutCurrent), key);
 
     if (0) qDebug() << "TopLevel::layoutPrevious: current "
-                    << _layoutCurrent << endl;
+                    << _layoutCurrent;
 }
 
 void TopLevel::layoutSave()
