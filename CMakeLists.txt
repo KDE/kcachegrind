@@ -48,9 +48,6 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINAR
 IF(NOT WIN32)
   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/kcachegrind.spec.cmake ${CMAKE_CURRENT_BINARY_DIR}/kcachegrind.spec )
 ENDIF(NOT WIN32)
-if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
-   add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
-endif()
 
 ecm_create_qm_loader(kcachegrind_QM_LOADER kcachegrind_qt)
 
