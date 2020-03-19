@@ -92,34 +92,34 @@ int main(int argc, char** argv)
     EventType* et;
     for (int i=0;i<m->realCount();i++) {
         et = m->realType(i);
-        out.setFieldWidth(14);
-        out.setFieldAlignment(QTextStream::AlignRight);
-        out << d->subCost(et).pretty();
-        out.setFieldWidth(0);
-        out << "   " << et->longName() << " (" << et->name() << ")\n";
+        std::cout.setFieldWidth(14);
+        std::cout.setFieldAlignment(QTextStream::AlignRight);
+        std::cout << d->subCost(et).pretty();
+        std::cout.setFieldWidth(0);
+        std::cout << "   " << et->longName() << " (" << et->name() << ")\n";
     }
     for (int i=0;i<m->derivedCount();i++) {
         et = m->derivedType(i);
-        out.setFieldWidth(14);
-        out.setFieldAlignment(QTextStream::AlignRight);
-        out << d->subCost(et).pretty();
-        out.setFieldWidth(0);
-        out << "   " << et->longName() <<
-               " (" << et->name() << " = " << et->formula() << ")\n";
+        std::cout.setFieldWidth(14);
+        std::cout.setFieldAlignment(QTextStream::AlignRight);
+        std::cout << d->subCost(et).pretty();
+        std::cout.setFieldWidth(0);
+        std::cout << "   " << et->longName() <<
+                     " (" << et->name() << " = " << et->formula() << ")\n";
     }
-    out << endl;
+    std::cout << endl;
 
     if (showEvent.isEmpty())
         et = m->realType(0);
     else {
         et = m->type(showEvent);
         if (!et) {
-            out << "Error: event '" << showEvent << "' not found." << endl;
+            std::cout << "Error: event '" << showEvent << "' not found." << endl;
             return 1;
         }
     }
     Q_ASSERT( et!=nullptr );
-    out << "Sorted by: " << (sortByExcl ? "Exclusive ":"Inclusive ")
+    std::cout << "Sorted by: " << (sortByExcl ? "Exclusive ":"Inclusive ")
         << et->longName() << " (" << et->name() << ")" << endl;
 
     QList<TraceFunction*> flist;
@@ -143,47 +143,47 @@ int main(int argc, char** argv)
     }
 
 
-    out << "\n     Inclusive     Exclusive       Called  Function name (DSO)\n";
-    out << " ==================================================================\n";
+    std::cout << "\n     Inclusive     Exclusive       Called  Function name (DSO)\n";
+    std::cout << " ==================================================================\n";
 
-    out.setFieldAlignment(QTextStream::AlignRight);
+    std::cout.setFieldAlignment(QTextStream::AlignRight);
     for(int i=0; i<hc.realCount(); i++) {
         f = (TraceFunction*)hc[i];
 
         if (showCalls) {
-            if (i>0) out << endl;
+            if (i>0) std::cout << endl;
             foreach(TraceCall* c, f->callers()) {
-                out << "  ";
-                out.setFieldWidth(14);
-                out << c->subCost(et).pretty();
-                out.setFieldWidth(0);
-                out << "            ";
-                out.setFieldWidth(13);
-                out << c->prettyCallCount();
-                out.setFieldWidth(0);
-                out << "    < " << c->caller()->prettyName() << endl;
+                std::cout << "  ";
+                std::cout.setFieldWidth(14);
+                std::cout << c->subCost(et).pretty();
+                std::cout.setFieldWidth(0);
+                std::cout << "            ";
+                std::cout.setFieldWidth(13);
+                std::cout << c->prettyCallCount();
+                std::cout.setFieldWidth(0);
+                std::cout << "    < " << c->caller()->prettyName() << endl;
             }
         }
 
-        out.setFieldWidth(14);
-        out << f->inclusive()->subCost(et).pretty();
-        out << f->subCost(et).pretty();
-        out.setFieldWidth(13);
-        out << f->prettyCalledCount();
-        out.setFieldWidth(0);
-        out << "  " << f->name() << " (" << f->object()->name() << ")" << endl;
+        std::cout.setFieldWidth(14);
+        std::cout << f->inclusive()->subCost(et).pretty();
+        std::cout << f->subCost(et).pretty();
+        std::cout.setFieldWidth(13);
+        std::cout << f->prettyCalledCount();
+        std::cout.setFieldWidth(0);
+        std::cout << "  " << f->name() << " (" << f->object()->name() << ")" << endl;
 
         if (showCalls) {
             foreach(TraceCall* c, f->callings()) {
-                out << "  ";
-                out.setFieldWidth(14);
-                out << c->subCost(et).pretty();
-                out.setFieldWidth(0);
-                out << "            ";
-                out.setFieldWidth(13);
-                out << c->prettyCallCount();
-                out.setFieldWidth(0);
-                out << "    > " << c->called()->prettyName() << endl;
+                std::cout << "  ";
+                std::cout.setFieldWidth(14);
+                std::cout << c->subCost(et).pretty();
+                std::cout.setFieldWidth(0);
+                std::cout << "            ";
+                std::cout.setFieldWidth(13);
+                std::cout << c->prettyCallCount();
+                std::cout.setFieldWidth(0);
+                std::cout << "    > " << c->called()->prettyName() << endl;
             }
         }
 
