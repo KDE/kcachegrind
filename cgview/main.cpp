@@ -29,21 +29,21 @@
  * Just a simple command line tool using libcore
  */
 
-void showHelp(QTextStream& out, bool fullHelp = true)
+void showHelp(bool fullHelp = true)
 {
-    out <<  "Show profiles from callgrind files. (c) 2010-2016 J. Weidendorfer\n";
+    std::cout <<  "Show profiles from callgrind files. (c) 2010-2016 J. Weidendorfer\n";
 
     if (!fullHelp)
-        out << "Type 'cgview -h' for help." << endl;
+        std::cout << "Type 'cgview -h' for help." << std::endl;
     else
-        out << "Usage: cgview [options] <file> ...\n\n"
+        std::cout << "Usage: cgview [options] <file> ...\n\n"
                "Options:\n"
                " -h        Show this help text\n"
                " -e        Sort list according to exclusive cost\n"
                " -s <ev>   Sort and show counters for event <ev>\n"
                " -c        Sort by call count\n"
                " -b        Show butterfly (callers and callees)\n"
-               " -n        Do not detect recursive cycles" << endl;
+               " -n        Do not detect recursive cycles" << std::endl;
 
     exit(1);
 }
@@ -52,7 +52,6 @@ void showHelp(QTextStream& out, bool fullHelp = true)
 int main(int argc, char** argv)
 {
     QCoreApplication app(argc, argv);
-    QTextStream out(stdout);
 
     Loader::initLoaders();
     ConfigStorage::setStorage(new ConfigStorage);
@@ -60,7 +59,7 @@ int main(int argc, char** argv)
 
     QStringList list = app.arguments();
     list.pop_front();
-    if (list.isEmpty()) showHelp(out, false);
+    if (list.isEmpty()) showHelp(false);
 
     bool sortByExcl = false;
     bool sortByCount = false;
@@ -69,7 +68,7 @@ int main(int argc, char** argv)
     QStringList files;
 
     for(int arg = 0; arg<list.count(); arg++) {
-        if      (list[arg] == QLatin1String("-h")) showHelp(out);
+        if      (list[arg] == QLatin1String("-h")) showHelp();
         else if (list[arg] == QLatin1String("-e")) sortByExcl = true;
         else if (list[arg] == QLatin1String("-n")) GlobalConfig::setShowCycles(false);
         else if (list[arg] == QLatin1String("-b")) showCalls = true;
@@ -83,11 +82,11 @@ int main(int argc, char** argv)
 
     EventTypeSet* m = d->eventTypes();
     if (m->realCount() == 0) {
-        out << "Error: No event types found." << endl;
+        std::cout << "Error: No event types found." << std::endl;
         return 1;
     }
 
-    out << "\nTotals for event types:\n";
+    std::cout << "\nTotals for event types:\n";
 
     EventType* et;
     for (int i=0;i<m->realCount();i++) {
