@@ -1,6 +1,12 @@
 cmake_minimum_required (VERSION 3.0)
 
-project(kcachegrind)
+# KDE Application Version, managed by release script
+set(RELEASE_SERVICE_VERSION_MAJOR "20")
+set(RELEASE_SERVICE_VERSION_MINOR "07")
+set(RELEASE_SERVICE_VERSION_MICRO "70")
+set(KCACHEGRIND_VERSION ${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VERSION_MINOR}.${RELEASE_SERVICE_VERSION_MICRO})
+
+project(kcachegrind VERSION ${KCACHEGRIND_VERSION})
 
 # minimal requirements
 set (QT_MIN_VERSION "5.11.0")
@@ -40,8 +46,6 @@ add_definitions(
     -DQT_NO_URL_CAST_FROM_STRING
     -DQT_NO_SIGNALS_SLOTS_KEYWORDS
 )
-
-set( KCACHEGRIND_VERSION "0.8.0kde")
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.h )
 
