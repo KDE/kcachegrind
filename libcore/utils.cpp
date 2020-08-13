@@ -278,6 +278,17 @@ bool FixString::stripInt64(int64& v, bool stripSpaces)
     }
 
     char c = *_str;
+    bool negative = false;
+    if (c == '-') {
+        negative = true;
+        _str++;
+        _len--;
+    }
+    if (_len==0) {
+        v = 0;
+        return false;
+    }
+    c = *_str;
     if (c<'0' || c>'9') {
         v = 0;
         return false;
@@ -319,6 +330,9 @@ bool FixString::stripInt64(int64& v, bool stripSpaces)
             l--;
         }
     }
+
+    if (negative)
+        v = -v;
 
     if (stripSpaces)
         while(l>0) {
