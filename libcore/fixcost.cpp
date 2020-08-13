@@ -38,7 +38,22 @@ FixCost::FixCost(TracePart* part, FixPool* pool,
     s.stripSpaces();
     int i = 0;
     while(i<maxCount) {
-        if (!s.stripUInt64(_cost[i])) break;
+        if (!s.stripUInt64(_cost[i])) {
+            // xdebug used to emit negative costs if it freed memory. It no
+            // longer does this. However, old cachegrind files still exist,
+            // and they cause KCacheGrind to constantly print messages about
+            // garbage (the negative cost it couldn't parse as unsigned) at
+            // the end of the line. This checks for a negative signed value if
+            // we can't find a positive one and clamps to zero, which is what
+            // xdebug does now itself. [1]
+            // [1]: xdebug commit 688c552e620dc5be7eea22cb893c6b71f395c6d4
+            int64 temp;
+            if (s.stripInt64(temp) && temp < 0) {
+                _cost[i] = 0;
+            } else {
+                break;
+            }
+        }
         i++;
     }
     _count = i;
@@ -93,7 +108,15 @@ FixCallCost::FixCallCost(TracePart* part, FixPool* pool,
     s.stripSpaces();
     int i = 0;
     while(i<maxCount) {
-        if (!s.stripUInt64(_cost[i])) break;
+        if (!s.stripUInt64(_cost[i])) {
+            // Same case as in the FixCost ctor.
+            int64 temp;
+            if (s.stripInt64(temp) && temp < 0) {
+                _cost[i] = 0;
+            } else {
+                break;
+            }
+        }
         i++;
     }
     _count = i;
