@@ -2,6 +2,10 @@ TEMPLATE = app
 QT -= gui
 CONFIG += console
 
+include (../version.pri)
+QMAKE_TARGET_PRODUCT = CGView
+QMAKE_TARGET_DESCRIPTION = CGView
+
 include(../libcore/libcore.pri)
 
 # This generate *.moc files from NHEADERS, which get included from *.cpp

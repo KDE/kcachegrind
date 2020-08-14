@@ -1,5 +1,12 @@
 TEMPLATE = app
 
+include (../version.pri)
+QMAKE_TARGET_PRODUCT = QCacheGrind
+QMAKE_TARGET_DESCRIPTION = QCacheGrind
+
+# Assembled from the KCacheGrind icon PNGs
+RC_ICONS = ../logo.ico
+
 greaterThan(QT_MAJOR_VERSION, 4) {
     QT += widgets
 }
