@@ -1,5 +1,6 @@
 TEMPLATE = app
 QT -= gui
+CONFIG += console
 
 include(../libcore/libcore.pri)
 
