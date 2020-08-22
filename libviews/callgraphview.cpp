@@ -27,6 +27,7 @@
 
 #include <QApplication>
 #include <QDebug>
+#include <QDesktopServices>
 #include <QFile>
 #include <QFileDialog>
 #include <QTemporaryFile>
@@ -662,10 +663,10 @@ void GraphExporter::createGraph()
 }
 
 
-void GraphExporter::writeDot(QIODevice* device)
+bool GraphExporter::writeDot(QIODevice* device)
 {
     if (!_item)
-        return;
+        return false;
 
     QFile* file = nullptr;
     QTextStream* stream = nullptr;
@@ -680,7 +681,7 @@ void GraphExporter::writeDot(QIODevice* device)
             if ( !file->open(QIODevice::WriteOnly ) ) {
                 qDebug() << "Can not write dot file '"<< _dotName << "'";
                 delete file;
-                return;
+                return false;
             }
             stream = new QTextStream(file);
         }
@@ -905,6 +906,64 @@ void GraphExporter::writeDot(QIODevice* device)
         }
     }
     delete stream;
+    return true;
+}
+
+bool GraphExporter::savePrompt(QWidget *parent, TraceData *data,
+                               TraceFunction *function, EventType *eventType,
+                               ProfileContext::Type groupType,
+                               CallGraphView* cgv)
+{
+    // More formats can be added; it's a matter of adding the filter and if
+    QFileDialog saveDialog(parent, QObject::tr("Export Graph"));
+    saveDialog.setMimeTypeFilters( {"text/vnd.graphviz", "application/pdf", "application/postscript"} );
+    saveDialog.setFileMode(QFileDialog::AnyFile);
+    saveDialog.setAcceptMode(QFileDialog::AcceptSave);
+
+    if (saveDialog.exec()) {
+        QString intendedName = saveDialog.selectedFiles().first();
+        if (intendedName.isNull() || intendedName.isEmpty())
+            return false;
+        bool wrote = false;
+        QString dotName, dotRenderType;
+        QTemporaryFile maybeTemp;
+        maybeTemp.open();
+        const QString mime = saveDialog.selectedMimeTypeFilter();
+        if (mime == "text/vnd.graphviz") {
+            dotName = intendedName;
+            dotRenderType = "";
+        }
+        else if (mime == "application/pdf") {
+            dotName = maybeTemp.fileName();
+            dotRenderType = "-Tpdf";
+        }
+        else if (mime == "application/postscript") {
+            dotName = maybeTemp.fileName();
+            dotRenderType = "-Tps";
+        }
+        GraphExporter ge(data, function, eventType, groupType, dotName);
+        if (cgv != nullptr)
+            ge.setGraphOptions(cgv);
+        wrote = ge.writeDot();
+        if (wrote && mime != "text/vnd.graphviz") {
+            QProcess proc;
+            proc.setStandardOutputFile(intendedName, QFile::Truncate);
+            proc.start("dot", { dotRenderType, dotName }, QProcess::ReadWrite);
+            proc.waitForFinished();
+            wrote = proc.exitStatus() == QProcess::NormalExit;
+
+            // Open in the default app, except for GraphViz files. The .dot
+            // association is usually for Microsoft Word templates and will
+            // open a word processor instead, which isn't what we want.
+            if (wrote) {
+                QDesktopServices::openUrl(QUrl::fromLocalFile(intendedName));
+            }
+        }
+
+        return wrote;
+    }
+
+    return false;
 }
 
 void GraphExporter::sortEdges()
@@ -3058,17 +3117,8 @@ void CallGraphView::contextMenuEvent(QContextMenuEvent* e)
         TraceFunction* f = activeFunction();
         if (!f) return;
 
-        QString n;
-        n = QFileDialog::getSaveFileName(this,
-                                         tr("Export Graph As DOT file"),
-                                         QString(), tr("Graphviz (*.dot)"));
-
-        if (!n.isEmpty()) {
-            GraphExporter ge(TraceItemView::data(), f, eventType(),
-                             groupType(), n);
-            ge.setGraphOptions(this);
-            ge.writeDot();
-        }
+        GraphExporter::savePrompt(this, TraceItemView::data(), f, eventType(),
+                                  groupType(), this);
     }
     else if (a == exportAsImage) {
         // write current content of canvas as image to file

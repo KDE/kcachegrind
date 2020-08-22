@@ -331,7 +331,12 @@ public:
     void createGraph();
 
     // calls createGraph before dumping of not already created
-    void writeDot(QIODevice* = nullptr);
+    bool writeDot(QIODevice* = nullptr);
+
+    // ephemereal save dialog and exporter
+    static bool savePrompt(QWidget *, TraceData*, TraceFunction*,
+                           EventType*, ProfileContext::Type,
+                           CallGraphView*);
 
     // to map back to structures when parsing a layouted graph
 

@@ -898,17 +898,7 @@ void QCGTopLevel::exportGraph()
 {
     if (!_data || !_function) return;
 
-    QString n = QStringLiteral("callgraph.dot");
-    GraphExporter ge(_data, _function, _eventType, _groupType, n);
-    ge.writeDot();
-
-#ifdef Q_OS_UNIX
-    // shell commands only work in UNIX
-    QString cmd = QStringLiteral("(dot %1 -Tps > %2.ps; xdg-open %3.ps)&")
-                  .arg(n).arg(n).arg(n);
-    if (::system(QFile::encodeName( cmd ))<0)
-        qDebug() << "QCGTopLevel::exportGraph: can not run " << cmd;
-#endif
+    GraphExporter::savePrompt(this, _data, _function, _eventType, _groupType, nullptr);
 }
 
 
