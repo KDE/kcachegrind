@@ -22,6 +22,7 @@
 
 #include "sourceitem.h"
 
+#include <QFontDatabase>
 #include <QPixmap>
 #include <QRegExp>
 #include <QPainter>
@@ -64,6 +65,9 @@ SourceItem::SourceItem(SourceView* sv, QTreeWidget* parent,
 
     QString s = src;
     setText(4, s.replace( QRegExp(QStringLiteral("\t")), QStringLiteral("        ") ));
+
+    QFont font = QFontDatabase::systemFont(QFontDatabase::FixedFont);
+    setFont(4, font); // the source code line
 
     // to allow text selection after double click
     setFlags(flags() | Qt::ItemIsEditable);

@@ -22,6 +22,7 @@
 
 #include "instritem.h"
 
+#include <QFontDatabase>
 #include <QPixmap>
 #include <QPainter>
 #include <QPolygon>
@@ -86,6 +87,12 @@ InstrItem::InstrItem(InstrView* iv, QTreeWidget* parent,
     TraceLine* l;
     if (instr && (l = instr->line()))
         setText(7, l->name());
+
+    QFont font = QFontDatabase::systemFont(QFontDatabase::FixedFont);
+    setFont(0, font); // #
+    setFont(4, font); // hex
+    setFont(5, font); // mnenomic
+    setFont(6, font); // instruction args
 
     updateGroup();
     updateCost();
