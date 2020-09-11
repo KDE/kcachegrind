@@ -20,7 +20,7 @@ jobs:
     - name: Install missing software on ubuntu
       run: |
           sudo apt-get update
-          sudo apt-get install extra-cmake-modules
+          sudo apt-get install extra-cmake-modules libkf5archive-dev
 
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
