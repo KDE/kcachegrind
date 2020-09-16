@@ -32,6 +32,11 @@
 
 int main( int argc, char ** argv )
 {
+#ifdef Q_OS_MAC
+    // Menu icons don't look right on macOS.
+    QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
+#endif
+
     QApplication app(argc, argv);
     Loader::initLoaders();
 
