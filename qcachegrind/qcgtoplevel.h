@@ -230,6 +230,7 @@ private:
     QAction *_layoutRestore, *_layoutSave;
     QAction *_upAction, *_forwardAction, *_backAction;
     QAction *_configureAction, *_aboutAction, *_aboutQtAction;
+    QAction *_minimizeAction, *_zoomAction;
     QComboBox* _eventTypeBox;
 
     TraceFunction* _function;

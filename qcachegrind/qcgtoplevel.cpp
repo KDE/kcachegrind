@@ -556,6 +556,16 @@ void QCGTopLevel::createActions()
     _configureAction->setStatusTip(tr("Configure QCachegrind"));
     connect(_configureAction, SIGNAL(triggered()), this, SLOT(configure()));
 
+    // window menu actions
+    _minimizeAction = new QAction(tr("&Minimize"), this);
+    _minimizeAction->setShortcut(Qt::CTRL + Qt::Key_M);
+    connect(_minimizeAction, &QAction::triggered, this, &QWidget::showMinimized);
+
+    _zoomAction = new QAction(tr("&Zoom"), this);
+    // on macOS, zoom doesn't have exactly the same semantics as maximize
+    // (it creates the best fit), but maximize is the usual copout answer
+    connect(_zoomAction, &QAction::triggered, this, &QWidget::showMaximized);
+
     // help menu actions
     _aboutAction = new QAction(tr("&About QCachegrind..."), this);
     _aboutAction->setMenuRole(QAction::AboutRole);
@@ -623,6 +633,12 @@ void QCGTopLevel::createMenu()
     goMenu->addAction(_forwardAction);
     goMenu->addAction(_upAction);
     fileMenu->addAction(_exitAction);
+
+#ifdef Q_OS_MAC
+    QMenu* windowMenu = mBar->addMenu(tr("&Window"));
+    windowMenu->addAction(_minimizeAction);
+    windowMenu->addAction(_zoomAction);
+#endif
 
     QMenu* helpMenu = mBar->addMenu(tr("&Help"));
     helpMenu->addAction(QWhatsThis::createAction(this));
