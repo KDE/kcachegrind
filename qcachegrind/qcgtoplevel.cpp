@@ -369,6 +369,7 @@ void QCGTopLevel::createActions()
             this, &QCGTopLevel::recentFilesTriggered);
 
     _exitAction = new QAction(tr("E&xit"), this);
+    _exitAction->setMenuRole(QAction::QuitRole);
     _exitAction->setShortcut(tr("Ctrl+Q"));
     _exitAction->setStatusTip(tr("Exit the application"));
     connect(_exitAction, &QAction::triggered, this, &QWidget::close);
@@ -546,15 +547,18 @@ void QCGTopLevel::createActions()
 
     // settings menu actions
     _configureAction = new QAction(tr("&Configure..."), this);
+    _configureAction->setMenuRole(QAction::PreferencesRole);
     _configureAction->setStatusTip(tr("Configure QCachegrind"));
     connect(_configureAction, SIGNAL(triggered()), this, SLOT(configure()));
 
     // help menu actions
     _aboutAction = new QAction(tr("&About QCachegrind..."), this);
+    _aboutAction->setMenuRole(QAction::AboutRole);
     _aboutAction->setStatusTip(tr("Show the application's About box"));
     connect(_aboutAction, &QAction::triggered, this, &QCGTopLevel::about);
 
     _aboutQtAction = new QAction(tr("About Qt..."), this);
+    _aboutQtAction->setMenuRole(QAction::AboutQtRole);
     connect(_aboutQtAction, &QAction::triggered, qApp, &QApplication::aboutQt);
 
     // toolbar actions
@@ -596,6 +600,7 @@ void QCGTopLevel::createMenu()
     viewMenu->addAction(_groupingMenuAction);
     viewMenu->addSeparator();
     viewMenu->addMenu(layoutMenu);
+    viewMenu->addAction(_sidebarMenuAction);
     viewMenu->addAction(_splittedToggleAction);
     viewMenu->addAction(_splitDirectionToggleAction);
     viewMenu->addSeparator();
@@ -603,16 +608,14 @@ void QCGTopLevel::createMenu()
     viewMenu->addAction(_percentageToggleAction);
     viewMenu->addAction(_expandedToggleAction);
     viewMenu->addAction(_hideTemplatesToggleAction);
+    viewMenu->addSeparator();
+    viewMenu->addAction(_configureAction);
 
     QMenu* goMenu = mBar->addMenu(tr("&Go"));
     goMenu->addAction(_backAction);
     goMenu->addAction(_forwardAction);
     goMenu->addAction(_upAction);
-
-    QMenu* settingsMenu = mBar->addMenu(tr("&Settings"));
-    settingsMenu->addAction(_sidebarMenuAction);
-    settingsMenu->addSeparator();
-    settingsMenu->addAction(_configureAction);
+    fileMenu->addAction(_exitAction);
 
     QMenu* helpMenu = mBar->addMenu(tr("&Help"));
     helpMenu->addAction(QWhatsThis::createAction(this));
