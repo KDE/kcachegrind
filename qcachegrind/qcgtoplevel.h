@@ -224,7 +224,7 @@ private:
     QAction *_cyclesToggleAction, *_percentageToggleAction;
     QAction *_expandedToggleAction, *_hideTemplatesToggleAction;
     QAction *_primaryMenuAction, *_secondaryMenuAction;
-    QAction *_groupingMenuAction;
+    QAction *_groupingMenuAction, *_closeAction;
     QAction *_splittedToggleAction, *_splitDirectionToggleAction;
     QAction *_layoutNext, *_layoutPrev, *_layoutRemove, *_layoutDup;
     QAction *_layoutRestore, *_layoutSave;

@@ -353,6 +353,11 @@ void QCGTopLevel::createActions()
     _openAction->setStatusTip(tr("Open profile data file"));
     connect(_openAction, SIGNAL(triggered()), this, SLOT(load()));
 
+    _closeAction = new QAction(tr("&Close"), this);
+    _closeAction->setShortcuts(QKeySequence::Close);
+    _closeAction->setStatusTip(tr("Close the current window"));
+    connect(_closeAction, SIGNAL(triggered()), this, SLOT(close()));
+
     _addAction = new QAction(tr( "&Add..." ), this);
     _addAction->setStatusTip(tr("Add profile data to current window"));
     connect(_addAction, SIGNAL(triggered(bool)), SLOT(add()));
@@ -581,6 +586,8 @@ void QCGTopLevel::createMenu()
     fileMenu->addAction(_addAction);
     fileMenu->addSeparator();
     fileMenu->addAction(_exportAction);
+    fileMenu->addSeparator();
+    fileMenu->addAction(_closeAction);
     fileMenu->addSeparator();
     fileMenu->addAction(_exitAction);
 
