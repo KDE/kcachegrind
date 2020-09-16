@@ -1,11 +1,19 @@
 TEMPLATE = app
 
 include (../version.pri)
+mac {
+    QMAKE_TARGET_BUNDLE_PREFIX = org.kde
+    # For the bundle name etc.
+    TARGET = QCachegrind
+    QMAKE_INFO_PLIST = qcachegrind.plist
+}
 QMAKE_TARGET_PRODUCT = QCacheGrind
 QMAKE_TARGET_DESCRIPTION = QCacheGrind
 
 # Assembled from the KCacheGrind icon PNGs
 RC_ICONS = ../logo.ico
+# Filename is significant on macOS
+ICON = ../logo.icns
 
 greaterThan(QT_MAJOR_VERSION, 4) {
     QT += widgets
