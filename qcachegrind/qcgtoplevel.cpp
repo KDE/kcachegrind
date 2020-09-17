@@ -378,7 +378,7 @@ void QCGTopLevel::createActions()
     _exitAction->setMenuRole(QAction::QuitRole);
     _exitAction->setShortcut(tr("Ctrl+Q"));
     _exitAction->setStatusTip(tr("Exit the application"));
-    connect(_exitAction, &QAction::triggered, this, &QWidget::close);
+    connect(_exitAction, &QAction::triggered, this, &QApplication::closeAllWindows);
 
     // view menu actions
 
