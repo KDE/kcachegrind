@@ -1864,7 +1864,6 @@ void QCGTopLevel::windowListAboutToShow()
             QAction *windowItem = windowMenu->addAction(windowTitle);
             windowItem->setData(QVariant::fromValue(topLevel));
             if (topLevel == this) {
-                qDebug() << "checked\n";
                 windowItem->setCheckable(true);
                 windowItem->setChecked(true);
             }
