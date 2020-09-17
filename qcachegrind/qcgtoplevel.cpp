@@ -42,6 +42,7 @@
 #include <QMessageBox>
 #include <QStatusBar>
 #include <QWhatsThis>
+#include <QWindow>
 
 #ifdef QT_DBUS_SUPPORT
 #include <QDBusConnection>
@@ -635,9 +636,12 @@ void QCGTopLevel::createMenu()
     fileMenu->addAction(_exitAction);
 
 #ifdef Q_OS_MAC
-    QMenu* windowMenu = mBar->addMenu(tr("&Window"));
-    windowMenu->addAction(_minimizeAction);
-    windowMenu->addAction(_zoomAction);
+    // class level for ease of manipulation
+    this->windowMenu = mBar->addMenu(tr("&Window"));
+    this->windowMenu->addAction(_minimizeAction);
+    this->windowMenu->addAction(_zoomAction);
+    connect(this->windowMenu, &QMenu::aboutToShow, this, &QCGTopLevel::windowListAboutToShow);
+    connect(this->windowMenu, &QMenu::triggered, this, &QCGTopLevel::windowListTriggered);
 #endif
 
     QMenu* helpMenu = mBar->addMenu(tr("&Help"));
@@ -1843,6 +1847,30 @@ void QCGTopLevel::partsUnhideAllSlot()
 #endif
 }
 
+void QCGTopLevel::windowListAboutToShow()
+{
+    windowMenu->clear();
+
+    windowMenu->addAction(_minimizeAction);
+    windowMenu->addAction(_zoomAction);
+    windowMenu->addSeparator();
+
+    auto windowList = QApplication::topLevelWidgets();
+    for (int i = 0; i < windowList.size(); i++) {
+        QWidget *topLevelRaw = windowList[i];
+        if (QCGTopLevel *topLevel = qobject_cast<QCGTopLevel*>(topLevelRaw)) {
+            QString windowTitle = topLevel->windowTitle();
+            QAction *windowItem = windowMenu->addAction(windowTitle);
+            windowItem->setData(QVariant::fromValue(topLevel));
+            if (topLevel == this) {
+                qDebug() << "checked\n";
+                windowItem->setCheckable(true);
+                windowItem->setChecked(true);
+            }
+        }
+    }
+}
+
 void QCGTopLevel::forwardAboutToShow()
 {
     QMenu *popup = _forwardAction->menu();
@@ -1946,6 +1974,20 @@ void QCGTopLevel::upAboutToShow()
 
         f = hi->stack()->caller(f, false);
         count++;
+    }
+}
+
+void QCGTopLevel::windowListTriggered(QAction* action)
+{
+    if (action == _minimizeAction || action == _zoomAction) {
+        // these are always in the menu for macOS
+        return;
+    }
+
+    QVariant data = action->data();
+    if (QCGTopLevel* tl = qvariant_cast<QCGTopLevel*>(data)) {
+        tl->activateWindow();
+        tl->raise();
     }
 }
 

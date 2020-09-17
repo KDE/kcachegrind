@@ -137,6 +137,8 @@ public Q_SLOTS:
     void primaryAboutToShow();
     void secondaryAboutToShow();
     void groupingAboutToShow();
+    void windowListTriggered(QAction*);
+    void windowListAboutToShow();
 
     bool setEventType(EventType*);
     bool setEventType2(EventType*);
@@ -231,6 +233,7 @@ private:
     QAction *_upAction, *_forwardAction, *_backAction;
     QAction *_configureAction, *_aboutAction, *_aboutQtAction;
     QAction *_minimizeAction, *_zoomAction;
+    QMenu *windowMenu;
     QComboBox* _eventTypeBox;
 
     TraceFunction* _function;
