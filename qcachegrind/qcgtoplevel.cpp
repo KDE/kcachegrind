@@ -1335,6 +1335,7 @@ void QCGTopLevel::setData(TraceData* data)
         if (!_data->command().isEmpty())
             caption += " [" + _data->command() + ']';
     }
+    setWindowFilePath(QDir::toNativeSeparators(_data->traceName()));
     setWindowTitle(caption);
 
     if (!_data || (!_forcePartDock && _data->parts().count()<2))
