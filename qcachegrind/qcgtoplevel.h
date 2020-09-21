@@ -236,6 +236,7 @@ private:
     QAction *_configureAction, *_aboutAction, *_aboutQtAction;
     QAction *_minimizeAction, *_zoomAction;
     QMenu *windowMenu, *macDockMenu;
+    QToolBar *tb;
     QComboBox* _eventTypeBox;
 
     TraceFunction* _function;

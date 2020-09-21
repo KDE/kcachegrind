@@ -81,8 +81,8 @@ QCGTopLevel::QCGTopLevel()
 
     createActions();
     createDocks();
-    createMenu();
     createToolbar();
+    createMenu();
 
     _multiView = new MultiView(this, this);
     _multiView->setObjectName(QStringLiteral("MultiView"));
@@ -617,6 +617,7 @@ void QCGTopLevel::createMenu()
     viewMenu->addAction(_secondaryMenuAction);
     viewMenu->addAction(_groupingMenuAction);
     viewMenu->addSeparator();
+    viewMenu->addAction(tb->toggleViewAction());
     viewMenu->addMenu(layoutMenu);
     viewMenu->addAction(_sidebarMenuAction);
     viewMenu->addAction(_splittedToggleAction);
@@ -660,7 +661,7 @@ void QCGTopLevel::createMenu()
 
 void QCGTopLevel::createToolbar()
 {
-    QToolBar* tb = new QToolBar(tr("Main Toolbar"), this);
+    tb = new QToolBar(tr("Main Toolbar"), this);
     tb->setObjectName(QStringLiteral("main-toolbar"));
     addToolBar(Qt::TopToolBarArea, tb);
 
