@@ -1858,13 +1858,19 @@ void QCGTopLevel::partsUnhideAllSlot()
 void QCGTopLevel::insertWindowList(QMenu* menu)
 {
     auto windowList = QApplication::topLevelWidgets();
+    auto activeWindow = QApplication::activeWindow();
+    // dock menu this corresponds to (IIRC) last window that installed one,
+    // so using it unless we have to is a bad idea
+    if (activeWindow == nullptr) {
+        activeWindow = this;
+    }
     for (int i = 0; i < windowList.size(); i++) {
         QWidget *topLevelRaw = windowList[i];
         if (QCGTopLevel *topLevel = qobject_cast<QCGTopLevel*>(topLevelRaw)) {
             QString windowTitle = topLevel->windowTitle();
             QAction *windowItem = menu->addAction(windowTitle);
             windowItem->setData(QVariant::fromValue(topLevel));
-            if (topLevel == this) {
+            if (topLevel == activeWindow) {
                 windowItem->setCheckable(true);
                 windowItem->setChecked(true);
             }
