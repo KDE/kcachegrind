@@ -139,6 +139,8 @@ public Q_SLOTS:
     void groupingAboutToShow();
     void windowListTriggered(QAction*);
     void windowListAboutToShow();
+    void macDockMenuAboutToShow();
+    void insertWindowList(QMenu*);
 
     bool setEventType(EventType*);
     bool setEventType2(EventType*);
@@ -229,11 +231,11 @@ private:
     QAction *_groupingMenuAction, *_closeAction;
     QAction *_splittedToggleAction, *_splitDirectionToggleAction;
     QAction *_layoutNext, *_layoutPrev, *_layoutRemove, *_layoutDup;
-    QAction *_layoutRestore, *_layoutSave;
+    QAction *_layoutRestore, *_layoutSave, *_toolbarToggleAction;
     QAction *_upAction, *_forwardAction, *_backAction;
     QAction *_configureAction, *_aboutAction, *_aboutQtAction;
     QAction *_minimizeAction, *_zoomAction;
-    QMenu *windowMenu;
+    QMenu *windowMenu, *macDockMenu;
     QComboBox* _eventTypeBox;
 
     TraceFunction* _function;

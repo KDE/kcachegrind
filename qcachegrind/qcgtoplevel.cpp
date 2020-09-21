@@ -642,6 +642,13 @@ void QCGTopLevel::createMenu()
     this->windowMenu->addAction(_zoomAction);
     connect(this->windowMenu, &QMenu::aboutToShow, this, &QCGTopLevel::windowListAboutToShow);
     connect(this->windowMenu, &QMenu::triggered, this, &QCGTopLevel::windowListTriggered);
+
+    // right-clicking the dock icon should be a window list
+    this->macDockMenu = new QMenu(this);
+    connect(this->macDockMenu, &QMenu::aboutToShow, this, &QCGTopLevel::macDockMenuAboutToShow);
+    // it can reuse the same events, it just needs a diff menu structure
+    connect(this->macDockMenu, &QMenu::triggered, this, &QCGTopLevel::windowListTriggered);
+    this->macDockMenu->setAsDockMenu();
 #endif
 
     QMenu* helpMenu = mBar->addMenu(tr("&Help"));
@@ -1848,6 +1855,23 @@ void QCGTopLevel::partsUnhideAllSlot()
 #endif
 }
 
+void QCGTopLevel::insertWindowList(QMenu* menu)
+{
+    auto windowList = QApplication::topLevelWidgets();
+    for (int i = 0; i < windowList.size(); i++) {
+        QWidget *topLevelRaw = windowList[i];
+        if (QCGTopLevel *topLevel = qobject_cast<QCGTopLevel*>(topLevelRaw)) {
+            QString windowTitle = topLevel->windowTitle();
+            QAction *windowItem = menu->addAction(windowTitle);
+            windowItem->setData(QVariant::fromValue(topLevel));
+            if (topLevel == this) {
+                windowItem->setCheckable(true);
+                windowItem->setChecked(true);
+            }
+        }
+    }
+}
+
 void QCGTopLevel::windowListAboutToShow()
 {
     windowMenu->clear();
@@ -1856,19 +1880,17 @@ void QCGTopLevel::windowListAboutToShow()
     windowMenu->addAction(_zoomAction);
     windowMenu->addSeparator();
 
-    auto windowList = QApplication::topLevelWidgets();
-    for (int i = 0; i < windowList.size(); i++) {
-        QWidget *topLevelRaw = windowList[i];
-        if (QCGTopLevel *topLevel = qobject_cast<QCGTopLevel*>(topLevelRaw)) {
-            QString windowTitle = topLevel->windowTitle();
-            QAction *windowItem = windowMenu->addAction(windowTitle);
-            windowItem->setData(QVariant::fromValue(topLevel));
-            if (topLevel == this) {
-                windowItem->setCheckable(true);
-                windowItem->setChecked(true);
-            }
-        }
-    }
+    insertWindowList(windowMenu);
+}
+
+void QCGTopLevel::macDockMenuAboutToShow()
+{
+    macDockMenu-> clear();
+
+    insertWindowList(macDockMenu);
+
+    macDockMenu->addSeparator();
+    macDockMenu->addAction(_newAction);
 }
 
 void QCGTopLevel::forwardAboutToShow()
