@@ -141,6 +141,7 @@ public Q_SLOTS:
     void windowListAboutToShow();
     void macDockMenuAboutToShow();
     void insertWindowList(QMenu*);
+    void reinstallMacDock();
 
     bool setEventType(EventType*);
     bool setEventType2(EventType*);

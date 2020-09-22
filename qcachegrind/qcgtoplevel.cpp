@@ -110,7 +110,32 @@ QCGTopLevel::QCGTopLevel()
 
 QCGTopLevel::~QCGTopLevel()
 {
+#ifdef Q_OS_MAC
+    // hacky way to reinstall the dock, since each toplevel has a dock menu,
+    // we don't do any global menu stuff on mac beyond what qt gives us, and
+    // when the last window that installed the dock menu dies, it goes away.
+    // reinstall it into another window if we can.
+    auto windowList = QApplication::topLevelWidgets();
+    for (int i = 0; i < windowList.size(); i++) {
+        QWidget *topLevelRaw = windowList[i];
+        if (QCGTopLevel *topLevel = qobject_cast<QCGTopLevel*>(topLevelRaw)) {
+            if (topLevel != this) {
+                topLevel->reinstallMacDock();
+                break;
+            }
+        }
+    }
+#endif
     delete _data;
+}
+
+void QCGTopLevel::reinstallMacDock()
+{
+#ifdef Q_OS_MAC
+    if (macDockMenu != nullptr) {
+        this->macDockMenu->setAsDockMenu();
+    }
+#endif
 }
 
 // reset the visualization state, e.g. before loading new data
@@ -649,7 +674,7 @@ void QCGTopLevel::createMenu()
     connect(this->macDockMenu, &QMenu::aboutToShow, this, &QCGTopLevel::macDockMenuAboutToShow);
     // it can reuse the same events, it just needs a diff menu structure
     connect(this->macDockMenu, &QMenu::triggered, this, &QCGTopLevel::windowListTriggered);
-    this->macDockMenu->setAsDockMenu();
+    reinstallMacDock();
 #endif
 
     QMenu* helpMenu = mBar->addMenu(tr("&Help"));
