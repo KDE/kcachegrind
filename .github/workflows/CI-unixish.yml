@@ -28,6 +28,11 @@ jobs:
             sudo apt-get update
             sudo apt-get install extra-cmake-modules libkf5archive-dev libkf5coreaddons-dev libkf5doctools-dev libkf5widgetsaddons-dev libkf5xmlgui-dev libkf5i18n-dev libkf5config-dev gettext kio-dev
 
+      - name: Install missing software on macos
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew install extra-cmake-modules
+
       - name: Create Build Environment
         run: cmake -E make_directory ${{runner.workspace}}/build
 
