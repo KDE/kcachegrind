@@ -31,7 +31,7 @@ jobs:
       - name: Install missing software on macos
         if: matrix.os == 'macos-latest'
         run: |
-          brew install extra-cmake-modules
+          brew install kde-extra-cmake-modules
 
       - name: Create Build Environment
         run: cmake -E make_directory ${{runner.workspace}}/build
