@@ -2,7 +2,7 @@ TEMPLATE = app
 
 include (../version.pri)
 mac {
-    QMAKE_TARGET_BUNDLE_PREFIX = org.kde
+    QMAKE_TARGET_BUNDLE_PREFIX = io.github.kcachegrind
     # For the bundle name etc.
     TARGET = QCachegrind
     QMAKE_INFO_PLIST = qcachegrind.plist
