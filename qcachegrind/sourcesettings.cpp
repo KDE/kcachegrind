@@ -128,11 +128,18 @@ void SourceSettings::update()
 
 void SourceSettings::addClicked()
 {
+    int prevItemCount = ui.dirList->topLevelItemCount();
     QTreeWidgetItem* i = new QTreeWidgetItem();
     i->setText(0, ui.objectBox->currentText());
     i->setText(1, tr("<insert valid directory>"));
     ui.dirList->addTopLevelItem(i);
     ui.dirList->setCurrentItem(i);
+    if (prevItemCount == 0 && ui.objectBox->currentText() == _always) {
+        // it's not obvious that you have to click browse after adding an item,
+        // but handle the case where we have no items and are looking for the
+        // default. give users an oppurtunity to select for multiple ELF objects
+        browseClicked();
+    }
 }
 
 void SourceSettings::deleteClicked()
@@ -153,7 +160,8 @@ void SourceSettings::browseClicked()
 {
     QString d;
     d = QFileDialog::getExistingDirectory(this,
-                                          tr("Choose Source Directory"));
+                                          tr("Choose Source Directory"),
+                                          ui.dirEdit->text());
     if (!d.isEmpty())
         ui.dirEdit->setText(d);
 }
