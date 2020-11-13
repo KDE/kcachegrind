@@ -30,7 +30,7 @@ int main( int argc, char ** argv )
     QApplication app(argc, argv);
     Loader::initLoaders();
 
-    QCoreApplication::setOrganizationName(QStringLiteral("kcachegrind.github.io"));
+    QCoreApplication::setOrganizationName(QStringLiteral("kde.org"));
     QCoreApplication::setApplicationName(QStringLiteral("QCachegrind"));
     ConfigStorage::setStorage(new QCGConfigStorage);
     // creates global config object of type GlobalGUIConfig
