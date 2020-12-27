@@ -1,45 +1,44 @@
 /****************************************************************************
+** Copied from Qt 5.6.3 sources, module qttools, directory src/shared/qtgradienteditor
+** with small modifications to match more modern C++ standards and for no alpha-channel
 **
-** Copied from Qt 4.6.0 sources, directory tools/shared/qtgradienteditor
-** with small modifications to allow compilation with Qt 4.4 and Qt 5.0
-**
-** Copyright (C) 2009 Nokia Corporation and/or its subsidiary(-ies).
-** All rights reserved.
-** Contact: Nokia Corporation (qt-info@nokia.com)
+** Copyright (C) 2015 The Qt Company Ltd.
+** Contact: http://www.qt.io/licensing/
 **
 ** This file is part of the tools applications of the Qt Toolkit.
 **
-** No Commercial Usage
-** This file contains pre-release code and may not be distributed.
-** You may use this file in accordance with the terms and conditions
-** contained in the Technology Preview License Agreement accompanying
-** this package.
+** $QT_BEGIN_LICENSE:LGPL21$
+** Commercial License Usage
+** Licensees holding valid commercial Qt licenses may use this file in
+** accordance with the commercial license agreement provided with the
+** Software or, alternatively, in accordance with the terms contained in
+** a written agreement between you and The Qt Company. For licensing terms
+** and conditions see http://www.qt.io/terms-conditions. For further
+** information use the contact form at http://www.qt.io/contact-us.
 **
 ** GNU Lesser General Public License Usage
 ** Alternatively, this file may be used under the terms of the GNU Lesser
-** General Public License version 2.1 as published by the Free Software
-** Foundation and appearing in the file LICENSE.LGPL included in the
-** packaging of this file.  Please review the following information to
-** ensure the GNU Lesser General Public License version 2.1 requirements
-** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+** General Public License version 2.1 or version 3 as published by the Free
+** Software Foundation and appearing in the file LICENSE.LGPLv21 and
+** LICENSE.LGPLv3 included in the packaging of this file. Please review the
+** following information to ensure the GNU Lesser General Public License
+** requirements will be met: https://www.gnu.org/licenses/lgpl.html and
+** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 **
-** In addition, as a special exception, Nokia gives you certain additional
-** rights.  These rights are described in the Nokia Qt LGPL Exception
+** As a special exception, The Qt Company gives you certain additional
+** rights. These rights are described in The Qt Company LGPL Exception
 ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
 **
-** If you have questions regarding the use of this file, please contact
-** Nokia at qt-info@nokia.com.
-**
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
 
 #include "qtcolorbutton.h"
-
 #include <QColorDialog>
 #include <QPainter>
 #include <QMimeData>
-#include <QDrag>
 #include <QDragEnterEvent>
+#include <QDrag>
 #include <QApplication>
 
 QT_BEGIN_NAMESPACE
@@ -127,7 +126,6 @@ QtColorButton::QtColorButton(QWidget *parent)
 
 QtColorButton::~QtColorButton()
 {
-    delete d_ptr;
 }
 
 void QtColorButton::setColor(const QColor &color)
