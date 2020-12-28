@@ -1,5 +1,5 @@
 configure_file(
-	${CMAKE_CURRENT_SOURCE_DIR}/hotshot2calltree.cmake
+	${CMAKE_CURRENT_SOURCE_DIR}/hotshot2calltree.in
 	${CMAKE_CURRENT_BINARY_DIR}/hotshot2calltree
 	)
 
