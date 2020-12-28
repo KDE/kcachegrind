@@ -64,4 +64,7 @@ add_subdirectory( qcachegrind )
 add_subdirectory( pics )
 add_subdirectory( converters )
 
+ki18n_install(po)
+kdoctools_install(po)
+
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
