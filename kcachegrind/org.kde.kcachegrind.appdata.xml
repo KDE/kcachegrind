@@ -181,6 +181,7 @@
       <li xml:lang="it">Script di conversione per OProfile, Perl e PHP.</li>
       <li xml:lang="ko">OPropile, Perl, PHP 변환 스크립트.</li>
       <li xml:lang="nl">Conversiescripts voor OProfile, Perl en PHP.</li>
+      <li xml:lang="nn">Konverteringsskript for OProfile, Perl og PHP.</li>
       <li xml:lang="pl">Przekształcanie skryptów dla OProfile, Perl oraz PHP.</li>
       <li xml:lang="pt">Programas de conversão para o OProfile, Perl e PHP.</li>
       <li xml:lang="pt-BR">Converta scripts para OProfile, Perl e PHP.</li>
@@ -206,6 +207,7 @@
       <li xml:lang="it">Passaggio tra differenti modalità di visualizzazione.</li>
       <li xml:lang="ko">여러 시각화 레이아웃 변경.</li>
       <li xml:lang="nl">Schakelen tussen meerdere visualisatie indelingen.</li>
+      <li xml:lang="nn">Byt mellom ulike visualiseringar.</li>
       <li xml:lang="pl">Przełaczanie pomiędzy wieloma układami obrazowania.</li>
       <li xml:lang="pt">Mudança entre vários formatos de visualização.</li>
       <li xml:lang="pt-BR">Alterne entre múltiplos layouts de visualização.</li>
@@ -231,6 +233,7 @@
       <li xml:lang="it">Il grafico delle chiamate può essere esportato come immagine (PNG).</li>
       <li xml:lang="ko">호출 그래프를 그림 파일(PNG)로 내보내기.</li>
       <li xml:lang="nl">Aanroepgrafiek kan geëxporteerd worden als afbeelding (PNG).</li>
+      <li xml:lang="nn">Kallgraf kan eksporterast som bilete (PNG-format).</li>
       <li xml:lang="pl">Graf wywołań można wyeksportować jako obraz (PNG).</li>
       <li xml:lang="pt">O grafo de chamadas pode ser exportado como uma imagem (PNG).</li>
       <li xml:lang="pt-BR">O grafo de chamadas pode ser exportado como imagem (PNG).</li>
