@@ -298,6 +298,7 @@
       <caption xml:lang="sv">Analys av profileringsdata med Kcachegrind</caption>
       <caption xml:lang="uk">Аналіз даних профілювання за допомогою KCachegrind</caption>
       <caption xml:lang="x-test">xxProfiling data analysis with KCachegrindxx</caption>
+      <caption xml:lang="zh-CN">使用 KCachegrind 分析数据</caption>
       <caption xml:lang="zh-TW">在 KCachegrind 分析資料統計</caption>
       <image>https://kde.org/images/screenshots/kcachegrind.png</image>
     </screenshot>
