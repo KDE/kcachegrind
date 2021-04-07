@@ -981,7 +981,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
             if (0) qDebug() << "Check if 0x" << addr.toString() << " is in ]0x"
                             << costAddr.toString() << ",0x"
                             << (nextCostAddr - 3*GlobalConfig::noCostInside()).toString()
-                            << "[" << endl;
+                            << "[";
 
             // Suppose a average instruction len of 3 bytes
             if ( (addr > costAddr) &&

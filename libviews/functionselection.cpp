@@ -16,7 +16,7 @@
 #include <QPushButton>
 #include <QComboBox>
 #include <QLineEdit>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QAction>
@@ -800,7 +800,8 @@ void FunctionSelection::query(QString query)
     }
     _searchString = query;
 
-    QRegExp re(query, Qt::CaseInsensitive, QRegExp::Wildcard);
+    QRegularExpression re(glob2Regex(query),
+                          QRegularExpression::CaseInsensitiveOption);
     _groupSize.clear();
 
     TraceFunction* f = nullptr;
@@ -812,7 +813,7 @@ void FunctionSelection::query(QString query)
     for ( it = _data->functionMap().begin();
           it != _data->functionMap().end(); ++it ) {
         f = &(*it);
-        if (re.indexIn(f->prettyName())>=0) {
+        if (re.isValid() && f->prettyName().contains(re)) {
             if (_group) {
                 if (_groupType==ProfileContext::Object) {
                     if (_groupSize.contains(f->object()))

@@ -14,7 +14,7 @@
 
 #include <QFontDatabase>
 #include <QPixmap>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QPainter>
 #include <QPolygon>
 #include <QTextDocument>
@@ -54,7 +54,7 @@ SourceItem::SourceItem(SourceView* sv, QTreeWidget* parent,
         setText(0, QString::number(lineno));
 
     QString s = src;
-    setText(4, s.replace( QRegExp(QStringLiteral("\t")), QStringLiteral("        ") ));
+    setText(4, s.replace( QStringLiteral("\t"), QStringLiteral("        ") ));
 
     QFont font = QFontDatabase::systemFont(QFontDatabase::FixedFont);
     setFont(4, font); // the source code line

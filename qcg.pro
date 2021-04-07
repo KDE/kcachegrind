@@ -6,8 +6,10 @@ lessThan(QT_MAJOR_VERSION, 5) {
     error("QCachegrind requires Qt 5.3 or greater")
 }
 
-lessThan(QT_MINOR_VERSION, 3) {
-    error("QCachegrind requires Qt 5.3 or greater")
+lessThan(QT_MAJOR_VERSION, 6) {
+    lessThan(QT_MINOR_VERSION, 3) {
+        error("QCachegrind requires Qt 5.3 or greater")
+    }
 }
 
 

@@ -24,7 +24,7 @@ void showHelp(QTextStream& out, bool fullHelp = true)
     out <<  "Show profiles from callgrind files. (c) 2010-2016 J. Weidendorfer\n";
 
     if (!fullHelp)
-        out << "Type 'cgview -h' for help." << endl;
+        out << "Type 'cgview -h' for help.\n";
     else
         out << "Usage: cgview [options] <file> ...\n\n"
                "Options:\n"
@@ -33,7 +33,7 @@ void showHelp(QTextStream& out, bool fullHelp = true)
                " -s <ev>   Sort and show counters for event <ev>\n"
                " -c        Sort by call count\n"
                " -b        Show butterfly (callers and callees)\n"
-               " -n        Do not detect recursive cycles" << endl;
+               " -n        Do not detect recursive cycles\n";
 
     exit(1);
 }
@@ -73,7 +73,7 @@ int main(int argc, char** argv)
 
     EventTypeSet* m = d->eventTypes();
     if (m->realCount() == 0) {
-        out << "Error: No event types found." << endl;
+        out << "Error: No event types found.\n";
         return 1;
     }
 
@@ -97,20 +97,20 @@ int main(int argc, char** argv)
         out << "   " << et->longName() <<
                " (" << et->name() << " = " << et->formula() << ")\n";
     }
-    out << endl;
+    out << "\n";
 
     if (showEvent.isEmpty())
         et = m->realType(0);
     else {
         et = m->type(showEvent);
         if (!et) {
-            out << "Error: event '" << showEvent << "' not found." << endl;
+            out << "Error: event '" << showEvent << "' not found.\n";
             return 1;
         }
     }
     Q_ASSERT( et!=nullptr );
     out << "Sorted by: " << (sortByExcl ? "Exclusive ":"Inclusive ")
-        << et->longName() << " (" << et->name() << ")" << endl;
+        << et->longName() << " (" << et->name() << ")\n";
 
     QList<TraceFunction*> flist;
     HighestCostList hc;
@@ -141,7 +141,7 @@ int main(int argc, char** argv)
         f = (TraceFunction*)hc[i];
 
         if (showCalls) {
-            if (i>0) out << endl;
+            if (i>0) out << "\n";
             foreach(TraceCall* c, f->callers()) {
                 out << "  ";
                 out.setFieldWidth(14);
@@ -151,7 +151,7 @@ int main(int argc, char** argv)
                 out.setFieldWidth(13);
                 out << c->prettyCallCount();
                 out.setFieldWidth(0);
-                out << "    < " << c->caller()->prettyName() << endl;
+                out << "    < " << c->caller()->prettyName() << "\n";
             }
         }
 
@@ -161,7 +161,7 @@ int main(int argc, char** argv)
         out.setFieldWidth(13);
         out << f->prettyCalledCount();
         out.setFieldWidth(0);
-        out << "  " << f->name() << " (" << f->object()->name() << ")" << endl;
+        out << "  " << f->name() << " (" << f->object()->name() << ")" << "\n";
 
         if (showCalls) {
             foreach(TraceCall* c, f->callings()) {
@@ -173,7 +173,7 @@ int main(int argc, char** argv)
                 out.setFieldWidth(13);
                 out << c->prettyCallCount();
                 out.setFieldWidth(0);
-                out << "    > " << c->called()->prettyName() << endl;
+                out << "    > " << c->called()->prettyName() << "\n";
             }
         }
 

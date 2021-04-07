@@ -8,7 +8,7 @@
 
 #include "eventtype.h"
 
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QDebug>
 
 #include "globalconfig.h"
@@ -82,26 +82,25 @@ bool EventType::parseFormula()
         _coefficient[i] = 0;
     _parsedFormula = QString();
 
-    QRegExp rx( QStringLiteral("((?:\\+|\\-)?)\\s*(\\d*)\\s*\\*?\\s*(\\w+)") );
+    QRegularExpression rx( QStringLiteral("((?:\\+|\\-)?)\\s*(\\d*)\\s*\\*?\\s*(\\w+)") );
 
-    int factor, pos, found, matching;
+    int factor, found, matching;
     QString costName;
     EventType* eventType;
 
     found = 0;    // how many types are referenced in formula
     matching = 0; // how many types actually are defined in profile data
-    pos = 0;
-    while (1) {
-        pos = rx.indexIn(_formula, pos);
-        if (pos<0) break;
-        pos += rx.matchedLength();
-        if (rx.cap(0).isEmpty()) break;
+    qsizetype from = 0;
+    QRegularExpressionMatch match;
+    while ((from = _formula.indexOf(rx, from, &match)) != -1) {
+        from += match.capturedLength();
+        if (match.captured(0).isEmpty()) break;
         found++;
 
         //qDebug("parseFormula: matched '%s','%s','%s'",
         //       qPrintable(rx.cap(1)), qPrintable(rx.cap(2)), qPrintable(rx.cap(3)));
 
-        costName = rx.cap(3);
+        costName = match.captured(3);
         eventType = _set->type(costName);
         if (!eventType) {
             //qDebug("Cost type '%s': In formula cost '%s' unknown.",
@@ -109,8 +108,8 @@ bool EventType::parseFormula()
             continue;
         }
 
-        factor = (rx.cap(2).isEmpty()) ? 1 : rx.cap(2).toInt();
-        if (rx.cap(1) == QLatin1String("-")) factor = -factor;
+        factor = (match.captured(2).isEmpty()) ? 1 : match.captured(2).toInt();
+        if (match.captured(1) == QLatin1String("-")) factor = -factor;
         if (factor == 0) continue;
 
         matching++;

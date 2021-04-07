@@ -22,7 +22,7 @@
 #include <QFileDialog>
 #include <QTemporaryFile>
 #include <QTextStream>
-#include <QMatrix>
+#include <QTransform>
 #include <QPair>
 #include <QPainter>
 #include <QStyle>
@@ -35,7 +35,7 @@
 #include <QContextMenuEvent>
 #include <QList>
 #include <QPixmap>
-#include <QDesktopWidget>
+#include <QScreen>
 #include <QProcess>
 #include <QMenu>
 
@@ -226,7 +226,7 @@ TraceCall* GraphNode::visibleCaller()
 {
     if (0)
         qDebug("GraphNode::visibleCaller %s: last %d, count %d",
-               qPrintable(_f->prettyName()), _lastCallerIndex, callers.count());
+               qPrintable(_f->prettyName()), _lastCallerIndex, (int) callers.count());
 
     // can not use at(): index can be -1 (out of bounds), result is 0 then
     GraphEdge* e = callers.value(_lastCallerIndex);
@@ -252,7 +252,7 @@ TraceCall* GraphNode::visibleCallee()
 {
     if (0)
         qDebug("GraphNode::visibleCallee %s: last %d, count %d",
-               qPrintable(_f->prettyName()), _lastCalleeIndex, callees.count());
+               qPrintable(_f->prettyName()), _lastCalleeIndex, (int) callees.count());
 
     GraphEdge* e = callees.value(_lastCalleeIndex);
     if (e && !e->isVisible())
@@ -970,7 +970,7 @@ TraceFunction* GraphExporter::toFunc(QString s)
     if (s[0] != 'F')
         return nullptr;
     bool ok;
-    TraceFunction* f = (TraceFunction*) s.midRef(1).toULongLong(&ok, 16);
+    TraceFunction* f = (TraceFunction*) s.mid(1).toULongLong(&ok, 16);
     if (!ok)
         return nullptr;
 
@@ -1171,7 +1171,7 @@ void PanningView::drawForeground(QPainter * p, const QRectF&)
 
     QColor red(Qt::red);
     QPen pen(red.darker());
-    pen.setWidthF(2.0 / matrix().m11());
+    pen.setWidthF(2.0 / transform().m11());
     p->setPen(pen);
 
     QColor c(red.darker());
@@ -1666,8 +1666,8 @@ void CallGraphView::updateSizes(QSize s)
             qDebug("Canvas Size: %fx%f, Content: %dx%d, Zoom: %f",
                    _scene->width(), _scene->height(), cWidth, cHeight, zoom);
 
-        QMatrix m;
-        _panningView->setMatrix(m.scale(zoom, zoom));
+        QTransform m;
+        _panningView->setTransform(m.scale(zoom, zoom));
 
         // make it a little bigger to compensate for widget frame
         _panningView->resize(int(cWidth * zoom) + 4, int(cHeight * zoom) + 4);
@@ -2270,12 +2270,12 @@ void CallGraphView::dotExited()
                 // We use as minimum canvas size the desktop size.
                 // Otherwise, the canvas would have to be resized on widget resize.
                 _xMargin = 50;
-                if (w < QApplication::desktop()->width())
-                    _xMargin += (QApplication::desktop()->width()-w)/2;
+                if (w < QApplication::primaryScreen()->size().width())
+                    _xMargin += (QApplication::primaryScreen()->size().width()-w)/2;
 
                 _yMargin = 50;
-                if (h < QApplication::desktop()->height())
-                    _yMargin += (QApplication::desktop()->height()-h)/2;
+                if (h < QApplication::primaryScreen()->size().height())
+                    _yMargin += (QApplication::primaryScreen()->size().height()-h)/2;
 
                 _scene = new QGraphicsScene( 0.0, 0.0,
                                              qreal(w+2*_xMargin), qreal(h+2*_yMargin));

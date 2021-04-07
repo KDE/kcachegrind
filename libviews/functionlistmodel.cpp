@@ -11,6 +11,29 @@
 #include "globalguiconfig.h"
 #include "listutils.h"
 
+/* helper for setting function filter: we want it to work similar to globbing:
+ * - escape most special characters in regexps: ( ) [ ] | . \
+ * - change * to .*
+ */
+QString glob2Regex(QString pattern)
+{
+    pattern.replace(QChar('\\'),QLatin1String("\\\\"));
+    pattern.replace(QChar('('),QLatin1String("\\("));
+    pattern.replace(QChar(')'),QLatin1String("\\)"));
+    pattern.replace(QChar('['),QLatin1String("\\["));
+    pattern.replace(QChar(']'),QLatin1String("\\]"));
+    pattern.replace(QChar('|'),QLatin1String("\\|"));
+    pattern.replace(QChar('.'),QLatin1String("\\."));
+    pattern.replace(QChar('*'),QLatin1String(".*"));
+
+    return pattern;
+}
+
+
+//
+// FunctionListModel
+//
+
 FunctionListModel::FunctionListModel()
     : QAbstractItemModel(nullptr)
 {
@@ -178,7 +201,8 @@ void FunctionListModel::setFilter(QString filterString)
     if (_filterString == filterString) return;
     _filterString = filterString;
 
-    _filter = QRegExp(_filterString, Qt::CaseInsensitive, QRegExp::Wildcard);
+    _filter = QRegularExpression(glob2Regex(_filterString),
+                                 QRegularExpression::CaseInsensitiveOption);
     computeFilteredList();
     computeTopList();
 }
@@ -259,7 +283,8 @@ void FunctionListModel::resetModelData(TraceData *data,
     }
 
     _filterString = filterString;
-    _filter = QRegExp(_filterString, Qt::CaseInsensitive, QRegExp::Wildcard);
+    _filter = QRegularExpression(glob2Regex(_filterString),
+                                 QRegularExpression::CaseInsensitiveOption);
 
     computeFilteredList();
     computeTopList();
@@ -279,8 +304,8 @@ void FunctionListModel::computeFilteredList()
     _filteredList.clear();
     int index = 0;
     foreach(TraceFunction* f, _list) {
-        if (!_filterString.isEmpty())
-            if (_filter.indexIn(f->name()) == -1) continue;
+        if (!_filterString.isEmpty() && _filter.isValid())
+            if (!f->name().contains(_filter)) continue;
 
         _filteredList.append(f);
         if (!_max0 || lessThan0(_max0, f)) { _max0 = f; }

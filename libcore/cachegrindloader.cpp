@@ -354,7 +354,7 @@ TraceObject* CachegrindLoader::compressedObject(const QString& name)
         error(QStringLiteral("Invalid compressed ELF object ('%1')").arg(name));
         return nullptr;
     }
-    int index = name.midRef(1, p-1).toInt();
+    int index = name.mid(1, p-1).toInt();
     TraceObject* o = nullptr;
     p++;
     while((name.length()>p) && name.at(p).isSpace()) p++;
@@ -402,7 +402,7 @@ TraceFile* CachegrindLoader::compressedFile(const QString& name)
         error(QStringLiteral("Invalid compressed file ('%1')").arg(name));
         return nullptr;
     }
-    int index = name.midRef(1, p-1).toUInt();
+    int index = name.mid(1, p-1).toUInt();
     TraceFile* f = nullptr;
     p++;
     while((name.length()>p) && name.at(p).isSpace()) p++;
@@ -455,7 +455,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
     }
 
 
-    int index = name.midRef(1, p-1).toUInt();
+    int index = name.mid(1, p-1).toUInt();
     TraceFunction* f = nullptr;
     p++;
     while((name.length()>p) && name.at(p).isSpace()) p++;

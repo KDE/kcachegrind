@@ -11,12 +11,14 @@
 
 #include <QAbstractItemModel>
 #include <QPixmap>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QList>
 
 #include "tracedata.h"
 #include "subcost.h"
 
+// helper for setting function filter
+QString glob2Regex(QString pattern);
 
 class FunctionListModel : public QAbstractItemModel
 {
@@ -98,7 +100,7 @@ private:
 
     int _sortColumn;
     Qt::SortOrder _sortOrder;
-    QRegExp _filter;
+    QRegularExpression _filter;
     QString _filterString;
 };
 
