@@ -357,7 +357,7 @@ int findBreak(int& breakPos, QString text, QFontMetrics* fm, int maxWidth)
     int bottomPos = 0;
     while(1) {
         int halfPos = (bottomPos + breakPos)/2;
-        int halfWidth = fm->horizontalAdvance(text, halfPos);
+        int halfWidth = fm->boundingRect(text.left(halfPos)).width();
         if (halfWidth < maxWidth) {
             bottomPos = halfPos+1;
             continue;
@@ -388,7 +388,7 @@ int findBreak(int& breakPos, QString text, QFontMetrics* fm, int maxWidth)
         lastCat = cat;
 
         breakPos = pos;
-        usedWidth = fm->horizontalAdvance(text, breakPos);
+        usedWidth = fm->boundingRect(text.left(breakPos)).width();
         if (usedWidth < maxWidth) break;
     }
     return usedWidth;
