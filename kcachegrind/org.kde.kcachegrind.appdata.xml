@@ -158,7 +158,7 @@
       <li xml:lang="fi">Se osaa ladata välimuistisimulointi- ja kutsujäljitin Calltree (Valgrind-työkalu) tuottamia profiileja, joten profilointi ei vaadi valmistelua, jaetut kirjastot ja liitännäisarkkitehtuurit riittävät, eikä profilointi vaikuta mittaustuloksiin.</li>
       <li xml:lang="fr">Il est capable de charger les fichiers de profilage générés par l'outil de simulation de cache et de traçage des appels Calltree faisant partie de Valgrind. Le profilage ne demande aucune préparation, il gère les bibliothèques partagées et les architectures de modules externes et n'a pas d'effets de bords sur la mesure.</li>
       <li xml:lang="gl">Compatibilidade con datos de rendemento xerados por Calltree, unha ferramenta de Valgrind para a simulación da caché e o seguimento de chamadas. Así a xeración dos datos de rendemento non require de ningún tipo de preparación, as bibliotecas compartidas e as arquitecturas de complementos non resultan un problema, e a xeración dos datos de rendemento non ten ningún impacto nos datos xerados.</li>
-      <li xml:lang="id">Ini bisa memuat profil yang dihasilkan oleh simulasi/panggilan pelacak cache Calltree, alat Valgrind. Dengan demikian, pemprofilan tidak perlu persiapan apa pun, bisa mengatasi pustaka yang digunakan bersama dan arsitektur plugin, dan tidaklah mempengaruhi pengukuran itu sendiri.</li>
+      <li xml:lang="id">Ini bisa memuat profil yang dihasilkan oleh simulasi/panggilan pelacak cache Calltree, alat Valgrind. Dengan demikian, pemprofilan tidak perlu persiapan apa pun, bisa mengatasi pustaka yang di-share dan arsitektur plugin, dan tidaklah mempengaruhi pengukuran itu sendiri.</li>
       <li xml:lang="it">Può caricare profili generati dal simulatore di cache/tracciatore di chiamate Calltree, uno strumento di Valgrind. In questo modo la profilatura non ha bisogno di alcuna preparazione, può gestire le librerie condivise e le architetture con estensioni, e non influenza la misurazione stessa.</li>
       <li xml:lang="ko">Valgrind 도구인 캐시 시뮬레이션/호출 추적기 Calltree의 프로필을 불러올 수 있습니다. 프로파일링 시 별도의 준비 과정이 필요하지 않으며, 공유 라이브러리 및 플러그인으로도 사용할 수 있으며, 측정에 영향을 주지 않습니다.</li>
       <li xml:lang="nl">Het kan profielen laden gegenereerd door Calltree, de cache simulator/aanroepvolger, een Valgrind hulpmiddel. Profilering heeft geen enkele voorbereiding nodig, kan overweg met gedeelde bibliotheken en plug-in architecturen en heeft geen invloed op de meting zelf.</li>
@@ -265,7 +265,7 @@
       <li xml:lang="fi">Kahden tapahtumatyypin samanaikainen näyttö kutsu- ja merkintänäkymissä</li>
       <li xml:lang="fr">Affichage simultané de 2 types d'évènements dans les vues Appel et Annotation</li>
       <li xml:lang="gl">Visualización simultánea de dous tipos de evento nas vistas de chamadas e de anotacións.</li>
-      <li xml:lang="id">Tampilan serentak dari tipe 2 peristiwa dalam Panggilan dan Tampilan Anotasi</li>
+      <li xml:lang="id">Displai serempak dari tipe 2 peristiwa dalam Panggilan dan Tampilan Anotasi</li>
       <li xml:lang="it">Visualizzazione simultanea di due tipi di eventi nelle viste delle chiamate delle annotazioni</li>
       <li xml:lang="ko">호출 및 자세한 보기에서 이벤트 형식 두 개 같이 표시</li>
       <li xml:lang="nl">Gelijktijdige tonen van 2 typen gebeurtenissen in Aanroep- en Annotatieweergave</li>
