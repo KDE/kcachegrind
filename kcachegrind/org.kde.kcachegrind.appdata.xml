@@ -56,7 +56,7 @@
   <summary xml:lang="sk">Rozhranie pre profiláciu</summary>
   <summary xml:lang="sl">Začelje profila izvajanja</summary>
   <summary xml:lang="sv">Profileringsgränssnitt</summary>
-  <summary xml:lang="tr">Profil Önyüzü</summary>
+  <summary xml:lang="tr">Profil Ön Yüzü</summary>
   <summary xml:lang="uk">Інтерфейс до Profiler</summary>
   <summary xml:lang="x-test">xxProfiler Frontendxx</summary>
   <summary xml:lang="zh-CN">分析器前端</summary>
@@ -307,6 +307,7 @@
       <caption xml:lang="sk">Analýza profilovaných údajov pomocou KCachegrind</caption>
       <caption xml:lang="sl">Analize podatkov profila s KCachegrind</caption>
       <caption xml:lang="sv">Analys av profileringsdata med Kcachegrind</caption>
+      <caption xml:lang="tr">KCachegrind ile veri analizini profille</caption>
       <caption xml:lang="uk">Аналіз даних профілювання за допомогою KCachegrind</caption>
       <caption xml:lang="x-test">xxProfiling data analysis with KCachegrindxx</caption>
       <caption xml:lang="zh-CN">使用 KCachegrind 分析数据</caption>
