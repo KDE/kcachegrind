@@ -176,7 +176,7 @@
       <li xml:lang="zh-TW">它可以載入生成自快取模擬 / call tracer Calltree 配置檔案，一個 Valgrind 工具。 因此，分析不需要任何的準備，可以應付函式庫和附加元件架構，並沒有影響測量自己。</li>
       <li>Converter scripts for OProfile, Perl, and PHP.</li>
       <li xml:lang="ca">Convertidor de scripts de l'OProfile, Perl i PHP.</li>
-      <li xml:lang="ca-valencia">Convertidor de scripts de l'OProfile, Perl i PHP.</li>
+      <li xml:lang="ca-valencia">Convertidor de scripts d'OProfile, Perl i PHP.</li>
       <li xml:lang="de">Konvertierungs-Skripte für OProfile, Perl und PHP.</li>
       <li xml:lang="en-GB">Converter scripts for OProfile, Perl, and PHP.</li>
       <li xml:lang="es">Scripts de conversión para OProfile, Perl y PHP.</li>
