@@ -1,0 +1,2266 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Alexander Lakhin <exclusion@gmail.com>, 2013.
+# Alexander Potashev <aspotashev@gmail.com>, 2014.
+# Dmitry Astankov <translation-team@basealt.ru>, 2020, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-18 02:14+0000\n"
+"PO-Revision-Date: 2021-01-13 14:38+0300\n"
+"Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
+"Language-Team: Basealt Translation Team\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 19.12.3\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: qtrich\n"
+"X-Qt-Contexts: true\n"
+
+#: libcore/cachegrindloader.cpp:135
+msgctxt "QObject|"
+msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+msgstr ""
+"Фильтр импорта для файлов данных, генерируемых профилировщиком Cachegrind/"
+"Callgrind"
+
+#: libcore/context.cpp:60
+msgctxt "ProfileContext|"
+msgid "Invalid Context"
+msgstr "Недопустимый контекст"
+
+#: libcore/context.cpp:61
+msgctxt "ProfileContext|"
+msgid "Unknown Context"
+msgstr "Неизвестный контекст"
+
+#: libcore/context.cpp:62
+msgctxt "ProfileContext|"
+msgid "Part Source Line"
+msgstr "Строка исходного кода (в части)"
+
+#: libcore/context.cpp:63
+msgctxt "ProfileContext|"
+msgid "Source Line"
+msgstr "Строка исходного кода"
+
+#: libcore/context.cpp:64
+msgctxt "ProfileContext|"
+msgid "Part Line Call"
+msgstr "Вызов строки (в части)"
+
+#: libcore/context.cpp:65
+msgctxt "ProfileContext|"
+msgid "Line Call"
+msgstr "Вызов строки"
+
+#: libcore/context.cpp:66
+msgctxt "ProfileContext|"
+msgid "Part Jump"
+msgstr "Переход (в части)"
+
+#: libcore/context.cpp:67
+msgctxt "ProfileContext|"
+msgid "Jump"
+msgstr "Переход"
+
+#: libcore/context.cpp:68
+msgctxt "ProfileContext|"
+msgid "Part Instruction"
+msgstr "Инструкция (в части)"
+
+#: libcore/context.cpp:69
+msgctxt "ProfileContext|"
+msgid "Instruction"
+msgstr "Инструкция"
+
+#: libcore/context.cpp:70
+msgctxt "ProfileContext|"
+msgid "Part Instruction Jump"
+msgstr "Инструкция перехода (в части)"
+
+#: libcore/context.cpp:71
+msgctxt "ProfileContext|"
+msgid "Instruction Jump"
+msgstr "Инструкция перехода"
+
+#: libcore/context.cpp:72
+msgctxt "ProfileContext|"
+msgid "Part Instruction Call"
+msgstr "Инструкция вызова (в части)"
+
+#: libcore/context.cpp:73
+msgctxt "ProfileContext|"
+msgid "Instruction Call"
+msgstr "Инструкция вызова"
+
+#: libcore/context.cpp:74
+msgctxt "ProfileContext|"
+msgid "Part Call"
+msgstr "Вызов (в части)"
+
+#: libcore/context.cpp:75
+msgctxt "ProfileContext|"
+msgid "Call"
+msgstr "Вызов"
+
+#: libcore/context.cpp:76
+msgctxt "ProfileContext|"
+msgid "Part Function"
+msgstr "Функция (в части)"
+
+#: libcore/context.cpp:77
+msgctxt "ProfileContext|"
+msgid "Function Source File"
+msgstr "Файл исходного кода функции"
+
+#: libcore/context.cpp:78
+msgctxt "ProfileContext|"
+msgid "Function"
+msgstr "Функция"
+
+#: libcore/context.cpp:79
+msgctxt "ProfileContext|"
+msgid "Function Cycle"
+msgstr "Цикл функций"
+
+#: libcore/context.cpp:80
+msgctxt "ProfileContext|"
+msgid "Part Class"
+msgstr "Класс (в части)"
+
+#: libcore/context.cpp:81
+msgctxt "ProfileContext|"
+msgid "Class"
+msgstr "Класс"
+
+#: libcore/context.cpp:82
+msgctxt "ProfileContext|"
+msgid "Part Source File"
+msgstr "Файл исходного кода (в части)"
+
+#: libcore/context.cpp:83
+msgctxt "ProfileContext|"
+msgid "Source File"
+msgstr "Файл исходного кода"
+
+#: libcore/context.cpp:84
+msgctxt "ProfileContext|"
+msgid "Part ELF Object"
+msgstr "Объект ELF (в части)"
+
+#: libcore/context.cpp:85
+msgctxt "ProfileContext|"
+msgid "ELF Object"
+msgstr "Объект ELF"
+
+#: libcore/context.cpp:86
+msgctxt "ProfileContext|"
+msgid "Profile Part"
+msgstr "Часть профиля"
+
+#: libcore/context.cpp:87
+msgctxt "ProfileContext|"
+msgid "Program Trace"
+msgstr "Данные трассировки программы"
+
+#: libcore/costitem.cpp:48
+#, qt-format
+msgctxt "QObject|"
+msgid "%1 from %2"
+msgstr "%1 из «%2»"
+
+#: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
+#: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
+#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
+msgctxt "QObject|"
+msgid "(unknown)"
+msgstr "(неизвестно)"
+
+#: libcore/globalconfig.cpp:77
+msgctxt "QObject|"
+msgid "Instruction Fetch"
+msgstr "Выборка инструкции"
+
+#: libcore/globalconfig.cpp:78
+msgctxt "QObject|"
+msgid "Data Read Access"
+msgstr "Доступ на чтение данных"
+
+#: libcore/globalconfig.cpp:79
+msgctxt "QObject|"
+msgid "Data Write Access"
+msgstr "Доступ на запись данных"
+
+#: libcore/globalconfig.cpp:80
+msgctxt "QObject|"
+msgid "L1 Instr. Fetch Miss"
+msgstr "Промах при выборке инструкции из кэша L1"
+
+#: libcore/globalconfig.cpp:81
+msgctxt "QObject|"
+msgid "L1 Data Read Miss"
+msgstr "Промах при чтении данных из кэша L1"
+
+#: libcore/globalconfig.cpp:82
+msgctxt "QObject|"
+msgid "L1 Data Write Miss"
+msgstr "Промах при записи данных в кэш L1"
+
+#: libcore/globalconfig.cpp:83
+msgctxt "QObject|"
+msgid "L2 Instr. Fetch Miss"
+msgstr "Промах при выборке инструкции из кэша L2"
+
+#: libcore/globalconfig.cpp:84
+msgctxt "QObject|"
+msgid "L2 Data Read Miss"
+msgstr "Промах при чтении данных из кэша L2"
+
+#: libcore/globalconfig.cpp:85
+msgctxt "QObject|"
+msgid "L2 Data Write Miss"
+msgstr "Промах при записи данных в кэш L2"
+
+#: libcore/globalconfig.cpp:86
+msgctxt "QObject|"
+msgid "LL Instr. Fetch Miss"
+msgstr "Промах при выборке инструкции из кэша LL"
+
+#: libcore/globalconfig.cpp:87
+msgctxt "QObject|"
+msgid "LL Data Read Miss"
+msgstr "Промах при чтении данных из кэша LL"
+
+#: libcore/globalconfig.cpp:88
+msgctxt "QObject|"
+msgid "LL Data Write Miss"
+msgstr "Промах при записи данных в кэш LL"
+
+#: libcore/globalconfig.cpp:89
+msgctxt "QObject|"
+msgid "L1 Miss Sum"
+msgstr "Всего промахов в кэше L1"
+
+#: libcore/globalconfig.cpp:90
+msgctxt "QObject|"
+msgid "L2 Miss Sum"
+msgstr "Всего промахов в кэше L2"
+
+#: libcore/globalconfig.cpp:91
+msgctxt "QObject|"
+msgid "Last-level Miss Sum"
+msgstr "Всего промахов в кэше LL"
+
+#: libcore/globalconfig.cpp:92
+msgctxt "QObject|"
+msgid "Indirect Branch"
+msgstr "Косвенное ветвление"
+
+#: libcore/globalconfig.cpp:93
+msgctxt "QObject|"
+msgid "Mispredicted Ind. Branch"
+msgstr "Неверно предсказанное косвенное ветвление"
+
+#: libcore/globalconfig.cpp:94
+msgctxt "QObject|"
+msgid "Conditional Branch"
+msgstr "Условное ветвление"
+
+#: libcore/globalconfig.cpp:95
+msgctxt "QObject|"
+msgid "Mispredicted Cond. Branch"
+msgstr "Неверно предсказанное условное ветвление"
+
+#: libcore/globalconfig.cpp:96
+msgctxt "QObject|"
+msgid "Mispredicted Branch"
+msgstr "Неверно предсказанное ветвление"
+
+#: libcore/globalconfig.cpp:97
+msgctxt "QObject|"
+msgid "Global Bus Event"
+msgstr "Глобальное событие шины"
+
+#: libcore/globalconfig.cpp:98
+msgctxt "QObject|"
+msgid "Samples"
+msgstr "Выборки"
+
+#: libcore/globalconfig.cpp:99
+msgctxt "QObject|"
+msgid "System Time"
+msgstr "Время системы"
+
+#: libcore/globalconfig.cpp:100
+msgctxt "QObject|"
+msgid "User Time"
+msgstr "Время пользователя"
+
+#: libcore/globalconfig.cpp:101
+msgctxt "QObject|"
+msgid "Cycle Estimation"
+msgstr "Оценка циклов"
+
+#: libcore/tracedata.cpp:1240
+msgctxt "QObject|"
+msgid "(no caller)"
+msgstr "(нет вызывающей)"
+
+#: libcore/tracedata.cpp:1247 libcore/tracedata.cpp:1266
+#, qt-format
+msgctxt "QObject|"
+msgid "%1 via %2"
+msgstr "%1 через %2"
+
+#: libcore/tracedata.cpp:1256
+msgctxt "QObject|"
+msgid "(no callee)"
+msgstr "(нет вызываемой)"
+
+#: libcore/tracedata.cpp:2709
+msgctxt "QObject|"
+msgid "(global)"
+msgstr "(глобальное)"
+
+#: libcore/tracedata.cpp:3144
+msgctxt "QObject|"
+msgid "(not found)"
+msgstr "(не найдено)"
+
+#: libcore/tracedata.cpp:3692
+msgctxt "TraceData|"
+msgid "Recalculating Function Cycles..."
+msgstr "Пересчёт циклов функций..."
+
+#: libviews/callgraphview.cpp:414
+#, qt-format
+msgctxt "QObject|"
+msgid "Call(s) from %1"
+msgstr "Вызов(ы) из %1"
+
+#: libviews/callgraphview.cpp:417
+#, qt-format
+msgctxt "QObject|"
+msgid "Call(s) to %1"
+msgstr "Вызов(ы) %1"
+
+#: libviews/callgraphview.cpp:419
+msgctxt "QObject|"
+msgid "(unknown call)"
+msgstr "(неизвестный вызов)"
+
+#: libviews/callgraphview.cpp:908
+msgctxt "QObject|"
+msgid "Export Graph"
+msgstr "Экспорт графа"
+
+#: libviews/callgraphview.cpp:1608
+msgctxt "CallGraphView|"
+msgid ""
+"<b>Call Graph around active Function</b><p>Depending on configuration, this "
+"view shows the call graph environment of the active function. Note: the "
+"shown cost is <b>only</b> the cost which is spent while the active function "
+"was actually running; i.e. the cost shown for main() - if it is visible - "
+"should be the same as the cost of the active function, as that is the part "
+"of inclusive cost of main() spent while the active function was running.</"
+"p><p>For cycles, blue call arrows indicate that this is an artificial call "
+"added for correct drawing which actually never happened.</p><p>If the graph "
+"is larger than the widget area, an overview panner is shown in one edge. "
+"There are similar visualization options to the Call Treemap; the selected "
+"function is highlighted.</p>"
+msgstr ""
+"<b>Граф вызовов вокруг активной функции</b><p>В зависимости от конфигурации "
+"это представление показывает окружение вызова активной функции. Обратите "
+"внимание, что отображаемая стоимость — это <b>только</b> стоимость, "
+"накопленная, когда активная функция действительно работала; например, "
+"стоимость для main() (если она показывается) должна быть равна стоимости "
+"активной функции, так как она составляет включённую стоимость main(), "
+"накопленную, когда работала активная функция.</p><p>Для циклов синие стрелки "
+"вызовов показывают, что это искусственный вызов, добавленный для "
+"иллюстрации, но никогда не происходивший.</p><p>Если граф больше размера "
+"панели, с краю появляется элемент панорамирования обзора. Подобный механизм "
+"визуализации есть и в дереве вызовов; при этом выбранная функция выделяется "
+"цветом.</p>"
+
+#: libviews/callgraphview.cpp:2020
+msgctxt "CallGraphView|"
+msgid ""
+"Warning: a long lasting graph layouting is in progress.\n"
+"Reduce node/edge limits for speedup.\n"
+msgstr ""
+"Предупреждение: выполняется построение сложного графа.\n"
+"Для ускорения процесса уменьшите ограничение числа узлов/рёбер.\n"
+
+#: libviews/callgraphview.cpp:2023
+msgctxt "CallGraphView|"
+msgid "Layouting stopped.\n"
+msgstr "Построение остановлено.\n"
+
+#: libviews/callgraphview.cpp:2025
+#, qt-format
+msgctxt "CallGraphView|"
+msgid "The call graph has %1 nodes and %2 edges.\n"
+msgstr "Граф вызовов содержит узлов: %1, рёбер: %2.\n"
+
+#: libviews/callgraphview.cpp:2034
+msgctxt "CallGraphView|"
+msgid "No graph available because the layouting process failed.\n"
+msgstr "Граф недоступен, поскольку процесс построения закончился ошибкой.\n"
+
+#: libviews/callgraphview.cpp:2036
+#, qt-format
+msgctxt "CallGraphView|"
+msgid ""
+"Trying to run the following command did not work:\n"
+"'%1'\n"
+msgstr ""
+"Попытка выполнить следующую команду не удалась:\n"
+"%1\n"
+
+#: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
+msgctxt "CallGraphView|"
+msgid "Please check that 'dot' is installed (package GraphViz)."
+msgstr "Проверьте, установлена ли программа dot из пакета GraphViz."
+
+#: libviews/callgraphview.cpp:2080
+msgctxt "CallGraphView|"
+msgid "No item activated for which to draw the call graph."
+msgstr "Нет активного элемента для построения графа вызовов."
+
+#: libviews/callgraphview.cpp:2092
+msgctxt "CallGraphView|"
+msgid "No call graph can be drawn for the active item."
+msgstr "Граф вызовов не может быть построен для активного элемента."
+
+#: libviews/callgraphview.cpp:2554
+msgctxt "CallGraphView|"
+msgid "Error running the graph layouting tool.\n"
+msgstr "При запуске средства построения графа произошла ошибка.\n"
+
+#: libviews/callgraphview.cpp:2559
+#, qt-format
+msgctxt "CallGraphView|"
+msgid ""
+"There is no call graph available for function\n"
+"\t'%1'\n"
+"because it has no cost of the selected event type."
+msgstr ""
+"Нет доступного графа вызовов для функции\n"
+"\t%1,\n"
+"поскольку у неё нет стоимости выбранного типа."
+
+#: libviews/callgraphview.cpp:2773
+msgctxt "CallGraphView|"
+msgid "Caller Depth"
+msgstr "Глубина вызывающих"
+
+#: libviews/callgraphview.cpp:2774 libviews/callgraphview.cpp:2814
+msgctxt "CallGraphView|"
+msgid "Unlimited"
+msgstr "Без ограничений"
+
+#: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
+msgctxt "CallGraphView|None"
+msgid "Depth 0"
+msgstr "Глубина 0"
+
+#: libviews/callgraphview.cpp:2778 libviews/callgraphview.cpp:2818
+msgctxt "CallGraphView|"
+msgid "max. 1"
+msgstr "Макс. 1"
+
+#: libviews/callgraphview.cpp:2779 libviews/callgraphview.cpp:2819
+msgctxt "CallGraphView|"
+msgid "max. 2"
+msgstr "Макс. 2"
+
+#: libviews/callgraphview.cpp:2780 libviews/callgraphview.cpp:2820
+msgctxt "CallGraphView|"
+msgid "max. 5"
+msgstr "Макс. 5"
+
+#: libviews/callgraphview.cpp:2781 libviews/callgraphview.cpp:2821
+msgctxt "CallGraphView|"
+msgid "max. 10"
+msgstr "Макс. 10"
+
+#: libviews/callgraphview.cpp:2782 libviews/callgraphview.cpp:2822
+msgctxt "CallGraphView|"
+msgid "max. 15"
+msgstr "Макс. 15"
+
+#: libviews/callgraphview.cpp:2813
+msgctxt "CallGraphView|"
+msgid "Callee Depth"
+msgstr "Глубина вызываемых"
+
+#: libviews/callgraphview.cpp:2853
+msgctxt "CallGraphView|"
+msgid "Min. Node Cost"
+msgstr "Мин. стоимость узла"
+
+#: libviews/callgraphview.cpp:2854
+msgctxt "CallGraphView|"
+msgid "No Minimum"
+msgstr "Без минимума"
+
+#: libviews/callgraphview.cpp:2860
+msgctxt "CallGraphView|"
+msgid "50 %"
+msgstr "50%"
+
+#: libviews/callgraphview.cpp:2861
+msgctxt "CallGraphView|"
+msgid "20 %"
+msgstr "20%"
+
+#: libviews/callgraphview.cpp:2862
+msgctxt "CallGraphView|"
+msgid "10 %"
+msgstr "10%"
+
+#: libviews/callgraphview.cpp:2863
+msgctxt "CallGraphView|"
+msgid "5 %"
+msgstr "5%"
+
+#: libviews/callgraphview.cpp:2864
+msgctxt "CallGraphView|"
+msgid "2 %"
+msgstr "2%"
+
+#: libviews/callgraphview.cpp:2865
+msgctxt "CallGraphView|"
+msgid "1 %"
+msgstr "1%"
+
+#: libviews/callgraphview.cpp:2895
+msgctxt "CallGraphView|"
+msgid "Min. Call Cost"
+msgstr "Мин. стоимость вызова"
+
+#: libviews/callgraphview.cpp:2896
+msgctxt "CallGraphView|"
+msgid "Same as Node"
+msgstr "100% стоимости узла"
+
+#: libviews/callgraphview.cpp:2898
+msgctxt "CallGraphView|"
+msgid "50 % of Node"
+msgstr "50% стоимости узла"
+
+#: libviews/callgraphview.cpp:2900
+msgctxt "CallGraphView|"
+msgid "20 % of Node"
+msgstr "20% стоимости узла"
+
+#: libviews/callgraphview.cpp:2902
+msgctxt "CallGraphView|"
+msgid "10 % of Node"
+msgstr "10% стоимости узла"
+
+#: libviews/callgraphview.cpp:2931
+msgctxt "CallGraphView|"
+msgid "Birds-eye View"
+msgstr "Окно обзора"
+
+#: libviews/callgraphview.cpp:2932
+msgctxt "CallGraphView|"
+msgid "Top Left"
+msgstr "Сверху слева"
+
+#: libviews/callgraphview.cpp:2933
+msgctxt "CallGraphView|"
+msgid "Top Right"
+msgstr "Сверху справа"
+
+#: libviews/callgraphview.cpp:2934
+msgctxt "CallGraphView|"
+msgid "Bottom Left"
+msgstr "Снизу слева"
+
+#: libviews/callgraphview.cpp:2935
+msgctxt "CallGraphView|"
+msgid "Bottom Right"
+msgstr "Снизу справа"
+
+#: libviews/callgraphview.cpp:2936
+msgctxt "CallGraphView|"
+msgid "Automatic"
+msgstr "Автоматически"
+
+#: libviews/callgraphview.cpp:2937
+msgctxt "CallGraphView|"
+msgid "Hide"
+msgstr "Скрыть"
+
+#: libviews/callgraphview.cpp:2967
+msgctxt "CallGraphView|"
+msgid "Layout"
+msgstr "Раскладка"
+
+#: libviews/callgraphview.cpp:2968
+msgctxt "CallGraphView|"
+msgid "Top to Down"
+msgstr "Сверху вниз"
+
+#: libviews/callgraphview.cpp:2969
+msgctxt "CallGraphView|"
+msgid "Left to Right"
+msgstr "Слева направо"
+
+#: libviews/callgraphview.cpp:2970
+msgctxt "CallGraphView|"
+msgid "Circular"
+msgstr "По кругу"
+
+#: libviews/callgraphview.cpp:3010 libviews/callgraphview.cpp:3015
+#: libviews/callgraphview.cpp:3035
+#, qt-format
+msgctxt "CallGraphView|"
+msgid "Go to '%1'"
+msgstr "Перейти к «%1»"
+
+#: libviews/callgraphview.cpp:3046
+msgctxt "CallGraphView|"
+msgid "Stop Layouting"
+msgstr "Остановить построение"
+
+#: libviews/callgraphview.cpp:3053
+msgctxt "CallGraphView|"
+msgid "Export Graph"
+msgstr "Экспортировать граф"
+
+#: libviews/callgraphview.cpp:3054
+msgctxt "CallGraphView|"
+msgid "As DOT file..."
+msgstr "Как файл DOT..."
+
+#: libviews/callgraphview.cpp:3055
+msgctxt "CallGraphView|"
+msgid "As Image..."
+msgstr "Как изображение..."
+
+#: libviews/callgraphview.cpp:3058
+msgctxt "CallGraphView|"
+msgid "Graph"
+msgstr "Граф"
+
+#: libviews/callgraphview.cpp:3066
+msgctxt "CallGraphView|"
+msgid "Arrows for Skipped Calls"
+msgstr "Стрелки пропущенных вызовов"
+
+#: libviews/callgraphview.cpp:3071
+msgctxt "CallGraphView|"
+msgid "Inner-cycle Calls"
+msgstr "Вызовы внутри циклов"
+
+#: libviews/callgraphview.cpp:3076
+msgctxt "CallGraphView|"
+msgid "Cluster Groups"
+msgstr "Объединять группы"
+
+#: libviews/callgraphview.cpp:3080
+msgctxt "CallGraphView|"
+msgid "Visualization"
+msgstr "Визуализация"
+
+#: libviews/callgraphview.cpp:3081
+msgctxt "CallGraphView|"
+msgid "Compact"
+msgstr "Компактная"
+
+#: libviews/callgraphview.cpp:3084
+msgctxt "CallGraphView|"
+msgid "Normal"
+msgstr "Обычная"
+
+#: libviews/callgraphview.cpp:3087
+msgctxt "CallGraphView|"
+msgid "Tall"
+msgstr "В высоту"
+
+#: libviews/callgraphview.cpp:3119
+msgctxt "CallGraphView|"
+msgid "Export Graph As Image"
+msgstr "Экспорт графа в виде изображения"
+
+#: libviews/callgraphview.cpp:3121
+msgctxt "CallGraphView|"
+msgid "Images (*.png *.jpg)"
+msgstr "Изображения (*.png *.jpg)"
+
+#: libviews/callitem.cpp:73 libviews/partlistitem.cpp:131
+msgctxt "QObject|"
+msgid "(active)"
+msgstr "(активно)"
+
+#: libviews/callmapview.cpp:52
+msgctxt "CallMapView|Name"
+msgid "A thing's name"
+msgstr "Имя объекта"
+
+#: libviews/callmapview.cpp:53
+msgctxt "CallMapView|"
+msgid "Cost"
+msgstr "Стоимость"
+
+#: libviews/callmapview.cpp:54
+msgctxt "CallMapView|"
+msgid "Location"
+msgstr "Расположение"
+
+#: libviews/callmapview.cpp:56
+msgctxt "CallMapView|"
+msgid "Calls"
+msgstr "Вызовы"
+
+#: libviews/callmapview.cpp:91
+msgctxt "CallMapView|"
+msgid ""
+"<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>Карта вызывающих</b><p>Этот граф показывает иерархическую схему "
+"вложенности всех функций, вызывающих текущую активную. Каждая функция "
+"представляется цветным прямоугольником, при этом его размер пропорционален "
+"стоимости, накопленной во время выполнения активной функции (хотя возможны "
+"неточности из-за ограничений изображения).</p>"
+
+#: libviews/callmapview.cpp:98
+msgctxt "CallMapView|"
+msgid ""
+"<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>Карта вызываемых</b><p>Этот граф показывает иерархическую схему "
+"вложенности всех функций, вызываемых текущей активной. Каждая функция "
+"представляется цветным прямоугольником, при этом его размер пропорционален "
+"стоимости, накопленной во время выполнения активной функции (хотя возможны "
+"неточности из-за ограничений изображения).</p>"
+
+#: libviews/callmapview.cpp:106
+msgctxt "CallMapView|"
+msgid ""
+"<p>Appearance options can be found in the in the context menu. To get exact "
+"size proportions, choose 'Hide incorrect borders'. As this mode can be "
+"<em>very</em> time consuming, you may want to limit the maximum drawn "
+"nesting level before. 'Best' determinates the split direction for children "
+"from the aspect ratio of the parent. 'Always Best' decides on remaining "
+"space for each sibling. 'Ignore Proportions' takes space for function name "
+"drawing <em>before</em> drawing children. Note that size proportions can get "
+"<em>heavily</em> wrong.</p><p>This is a <em>TreeMap</em> widget. Keyboard "
+"navigation is available with the left/right arrow keys for traversing "
+"siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
+"em> activates the current item.</p>"
+msgstr ""
+"<p>Параметры отображения можно найти в контекстном меню. Чтобы получить "
+"точные пропорции размеров, выберите пункт «Убрать неточные границы». Так как "
+"построение в этом режиме может выполняться <em>очень</em> долго, возможно, "
+"стоит предварительно ограничить максимальный уровень вложенности: "
+"«Наилучший» определяет направление разделения для потомков, исходя из "
+"соотношения сторон родителя; «Всегда наилучший» учитывает оставшееся место "
+"для каждого потомка; «Игнорировать пропорции» выделяет место для отображения "
+"имени функции <em>до</em> отображения потомков. Заметьте, что при этом "
+"пропорции могут быть <em>значительно</em> искажены.</p><p>Всё это реализует "
+"виджет <em>Древовидная карта</em>, предоставляющий также возможности "
+"навигации с помощью клавиш-стрелок влево/вправо по соседним элементам и "
+"вверх/вниз — на уровень вложенности выше/ниже. Клавиша <em>Enter</em> "
+"активирует текущий элемент.</p>"
+
+#: libviews/callmapview.cpp:139
+msgctxt "CallMapView|"
+msgid "Go To"
+msgstr "Перейти к"
+
+#: libviews/callmapview.cpp:170
+msgctxt "CallMapView|"
+msgid "Stop at Depth"
+msgstr "Остановиться при глубине"
+
+#: libviews/callmapview.cpp:171
+msgctxt "CallMapView|"
+msgid "No Depth Limit"
+msgstr "Без ограничения глубины"
+
+#: libviews/callmapview.cpp:173
+msgctxt "CallMapView|"
+msgid "Depth 10"
+msgstr "10"
+
+#: libviews/callmapview.cpp:174
+msgctxt "CallMapView|"
+msgid "Depth 15"
+msgstr "15"
+
+#: libviews/callmapview.cpp:175
+msgctxt "CallMapView|"
+msgid "Depth 20"
+msgstr "20"
+
+#: libviews/callmapview.cpp:178
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Depth of '%1' (%2)"
+msgstr "%2 (глубина «%1»)"
+
+#: libviews/callmapview.cpp:185
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Decrement Depth (to %1)"
+msgstr "Уменьшить глубину (до %1)"
+
+#: libviews/callmapview.cpp:187
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Increment Depth (to %1)"
+msgstr "Увеличить глубину (до %1)"
+
+#: libviews/callmapview.cpp:213
+msgctxt "CallMapView|"
+msgid "Stop at Function"
+msgstr "Остановиться на функции"
+
+#: libviews/callmapview.cpp:214
+msgctxt "CallMapView|"
+msgid "No Function Limit"
+msgstr "Без ограничения функций"
+
+#: libviews/callmapview.cpp:257
+msgctxt "CallMapView|"
+msgid "Stop at Area"
+msgstr "Остановиться на площади"
+
+#: libviews/callmapview.cpp:258
+msgctxt "CallMapView|"
+msgid "No Area Limit"
+msgstr "Без ограничения площади"
+
+#: libviews/callmapview.cpp:260
+msgctxt "CallMapView|"
+msgid "100 Pixels"
+msgstr "100 пикселов"
+
+#: libviews/callmapview.cpp:261
+msgctxt "CallMapView|"
+msgid "200 Pixels"
+msgstr "200 пикселов"
+
+#: libviews/callmapview.cpp:262
+msgctxt "CallMapView|"
+msgid "500 Pixels"
+msgstr "500 пикселов"
+
+#: libviews/callmapview.cpp:263
+msgctxt "CallMapView|"
+msgid "1000 Pixels"
+msgstr "1000 пикселов"
+
+#: libviews/callmapview.cpp:269
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Area of '%1' (%2)"
+msgstr "%2 (площадь «%1»)"
+
+#: libviews/callmapview.cpp:275
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Double Area Limit (to %1)"
+msgstr "Увеличить предел вдвое (до %1)"
+
+#: libviews/callmapview.cpp:277
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Half Area Limit (to %1)"
+msgstr "Уменьшить предел вдвое (до %1)"
+
+#: libviews/callmapview.cpp:327
+msgctxt "CallMapView|"
+msgid "Visualization"
+msgstr "Визуализация"
+
+#: libviews/callmapview.cpp:328
+msgctxt "CallMapView|"
+msgid "Split Direction"
+msgstr "Направление разделения"
+
+#: libviews/callmapview.cpp:331
+msgctxt "CallMapView|"
+msgid "Skip Incorrect Borders"
+msgstr "Убрать неточные границы"
+
+#: libviews/callmapview.cpp:336
+msgctxt "CallMapView|"
+msgid "Border Width"
+msgstr "Ширина границы"
+
+#: libviews/callmapview.cpp:337
+msgctxt "CallMapView|"
+msgid "Border 0"
+msgstr "Граница 0"
+
+#: libviews/callmapview.cpp:339
+msgctxt "CallMapView|"
+msgid "Border 1"
+msgstr "Граница 1"
+
+#: libviews/callmapview.cpp:340
+msgctxt "CallMapView|"
+msgid "Border 2"
+msgstr "Граница 2"
+
+#: libviews/callmapview.cpp:341
+msgctxt "CallMapView|"
+msgid "Border 3"
+msgstr "Граница 3"
+
+#: libviews/callmapview.cpp:346
+msgctxt "CallMapView|"
+msgid "Draw Symbol Names"
+msgstr "Выводить имена символов"
+
+#: libviews/callmapview.cpp:348
+msgctxt "CallMapView|"
+msgid "Draw Cost"
+msgstr "Выводить стоимость"
+
+#: libviews/callmapview.cpp:350
+msgctxt "CallMapView|"
+msgid "Draw Location"
+msgstr "Выводить расположение"
+
+#: libviews/callmapview.cpp:352
+msgctxt "CallMapView|"
+msgid "Draw Calls"
+msgstr "Выводить вызовы"
+
+#: libviews/callmapview.cpp:356
+msgctxt "CallMapView|"
+msgid "Ignore Proportions"
+msgstr "Игнорировать пропорции"
+
+#: libviews/callmapview.cpp:358
+msgctxt "CallMapView|"
+msgid "Allow Rotation"
+msgstr "Разрешить поворот"
+
+#: libviews/callmapview.cpp:376
+msgctxt "CallMapView|"
+msgid "Shading"
+msgstr "Затенение"
+
+#: libviews/callmapview.cpp:428
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Call Map: Current is '%1'"
+msgstr "Карта вызовов: текущий элемент «%1»"
+
+#: libviews/callmapview.cpp:621
+msgctxt "QObject|"
+msgid "(no function)"
+msgstr "(не функция)"
+
+#: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
+msgctxt "QObject|"
+msgid "(no call)"
+msgstr "(не вызов)"
+
+#: libviews/callview.cpp:37
+msgctxt "CallView|"
+msgid "Cost"
+msgstr "Стоимость"
+
+#: libviews/callview.cpp:38
+msgctxt "CallView|"
+msgid "Cost per call"
+msgstr "Стоимость на один вызов"
+
+#: libviews/callview.cpp:39
+msgctxt "CallView|"
+msgid "Cost 2"
+msgstr "Стоимость 2"
+
+#: libviews/callview.cpp:40
+msgctxt "CallView|"
+msgid "Cost 2 per call"
+msgstr "Стоимость 2 на один вызов"
+
+#: libviews/callview.cpp:41
+msgctxt "CallView|"
+msgid "Count"
+msgstr "Количество"
+
+#: libviews/callview.cpp:42
+msgctxt "CallView|"
+msgid "Caller"
+msgstr "Вызывающая"
+
+#: libviews/callview.cpp:42
+msgctxt "CallView|"
+msgid "Callee"
+msgstr "Вызываемая"
+
+#: libviews/callview.cpp:76
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callers</b><p>This list shows all functions calling the "
+"current selected one directly, together with a call count and the cost spent "
+"in the current selected function while being called from the function from "
+"the list.</p><p>An icon instead of an inclusive cost specifies that this is "
+"a call inside of a recursive cycle. An inclusive cost makes no sense here.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>Список непосредственно вызывающих</b><p>Этот список содержит все функции, "
+"непосредственно вызывающие текущую выбранную, с количеством вызовов и "
+"стоимостью, накопленной в текущей функции при её вызове из функции в списке."
+"</p><p>Значок вместо включённой стоимости указывает на то, что этот вызов "
+"имеет место в рекурсивном цикле. В таком случае включённая стоимость не "
+"имеет смысла.</p><p>При выборе функции она становится текущей в этой "
+"информационной панели. Если включены две панели (в режиме разделения), "
+"сменяется функция в другой панели.</p>"
+
+#: libviews/callview.cpp:89
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callees</b><p>This list shows all functions called by the "
+"current selected one directly, together with a call count and the cost spent "
+"in this function while being called from the selected function.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>Список непосредственно вызываемых</b><p>Этот список содержит все функции, "
+"непосредственно вызываемые текущей выбранной, с количеством вызовов и "
+"стоимостью, накопленными в данных функциях при вызове из текущей.</p><p>При "
+"выборе функции она становится текущей в этой информационной панели. Если "
+"включены две панели (в режиме разделения), сменяется функция в другой панели."
+"</p>"
+
+#: libviews/callview.cpp:118 libviews/callview.cpp:123
+#, qt-format
+msgctxt "CallView|"
+msgid "Go to '%1'"
+msgstr "Перейти к «%1»"
+
+#: libviews/callview.cpp:257 libviews/callview.cpp:261
+#, qt-format
+msgctxt "CallView|"
+msgid "%1 per call"
+msgstr "%1 на один вызов"
+
+#: libviews/costlistitem.cpp:53
+#, qt-format
+msgctxt "QObject|"
+msgid "(%n item(s) skipped)"
+msgid_plural "(%n item(s) skipped)"
+msgstr[0] "(пропущено элементов: %n)"
+msgstr[1] "(пропущено элементов: %n)"
+msgstr[2] "(пропущено элементов: %n)"
+
+#: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
+#, qt-format
+msgctxt "QObject|"
+msgid "(%n function(s) skipped)"
+msgid_plural "(%n function(s) skipped)"
+msgstr[0] "(пропущено функций: %n)"
+msgstr[1] "(пропущено функций: %n)"
+msgstr[2] "(пропущено функций: %n)"
+
+#: libviews/coverageview.cpp:37
+msgctxt "CoverageView|"
+msgid "Incl."
+msgstr "Вкл."
+
+#: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
+msgctxt "CoverageView|"
+msgid "Distance"
+msgstr "Дистанция"
+
+#: libviews/coverageview.cpp:41
+msgctxt "CoverageView|"
+msgid "Called"
+msgstr "Вызывалась"
+
+#: libviews/coverageview.cpp:42
+msgctxt "CoverageView|"
+msgid "Caller"
+msgstr "Вызывающая"
+
+#: libviews/coverageview.cpp:46
+msgctxt "CoverageView|"
+msgid "Self"
+msgstr "Сама"
+
+#: libviews/coverageview.cpp:48
+msgctxt "CoverageView|"
+msgid "Calling"
+msgstr "Вызывала"
+
+#: libviews/coverageview.cpp:49
+msgctxt "CoverageView|"
+msgid "Callee"
+msgstr "Вызываемая"
+
+#: libviews/coverageview.cpp:84
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callers</b><p>This list shows all functions calling the "
+"current selected one, either directly or with several functions in-between "
+"on the stack; the number of functions in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the selected function while a "
+"listed function is active; relative cost is the percentage of all cost spent "
+"in the selected function while the listed one is active. The cost graphic "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls from the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+"<b>Список всех вызывающих</b><p>Этот список содержит все функции, вызывающие "
+"текущую выбранную непосредственно или через несколько других функций в "
+"стеке. Число промежуточных функций плюс один называется <em>Дистанцией</em> "
+"(например, для функций A и C таких, что A вызывает C косвенно, вызывая B, "
+"которая, в свою очередь, вызывает C (то есть A => B => C), дистанция будет "
+"равна 2).</p><p>Абсолютная стоимость здесь — это стоимость, накопленная в "
+"выбранной функции, пока была активна данная функция в списке, а "
+"относительная — процент всей стоимости, накопленной в выбранной функции, "
+"пока была активна функция в списке. График стоимости показывает "
+"логарифмическое отношение стоимости, выделяя цветами разные дистанции.</"
+"p><p>Так как из одной и той же функции может вызываться множество других, в "
+"столбце «Дистанция» может отображаться диапазон дистанций для всех "
+"происходивших вызовов, при этом в скобках указывается средняя дистанция, то "
+"есть дистанция, с которой связана наибольшая стоимость.</p><p>При выборе "
+"функции она становится текущей в этой информационной панели. Если включены "
+"две панели (в режиме разделения), сменяется функция в другой панели.</p>"
+
+#: libviews/coverageview.cpp:114
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callees</b><p>This list shows all functions called by the "
+"current selected one, either directly or with several function in-between on "
+"the stack; the number of function in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the listed function while the "
+"selected is active; relative cost is the percentage of all cost spent in the "
+"listed function while the selected one is active. The cost graphic always "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls to the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+"<b>Список всех вызываемых</b><p>Этот список содержит все функции, вызываемые "
+"текущей выбранной непосредственно или через несколько других функций в "
+"стеке. Число промежуточных функций плюс один называется <em>Дистанцией</em> "
+"(например, для функций A и C таких, что A вызывает C косвенно, вызывая B, "
+"которая, в свою очередь, вызывает C (то есть A => B => C), дистанция будет "
+"равна 2).</p><p>Абсолютная стоимость здесь — это стоимость, накопленная в "
+"функции в списке, пока была активна выбранная, а относительная — процент "
+"всей стоимости, накопленной в функции в списке, пока была активна выбранная. "
+"График стоимости показывает логарифмическое отношение стоимости, выделяя "
+"цветами разные дистанции.</p><p>Так как одна и та же функция может "
+"вызываться из множества других, в столбце «Дистанция» может отображаться "
+"диапазон дистанций для всех происходивших вызовов, при этом в скобках "
+"указывается средняя дистанция, то есть дистанция, с которой связана "
+"наибольшая стоимость.</p><p>При выборе функции она становится текущей в этой "
+"информационной панели. Если включены две панели (в режиме разделения), "
+"сменяется функция в другой панели.</p>"
+
+#: libviews/coverageview.cpp:160
+#, qt-format
+msgctxt "CoverageView|"
+msgid "Go to '%1'"
+msgstr "Перейти к «%1»"
+
+#: libviews/eventtypeitem.cpp:48
+msgctxt "QObject|"
+msgid "Unknown Type"
+msgstr "Неизвестный тип"
+
+#: libviews/eventtypeview.cpp:37
+msgctxt "EventTypeView|"
+msgid "Event Type"
+msgstr "Тип событий"
+
+#: libviews/eventtypeview.cpp:38
+msgctxt "EventTypeView|"
+msgid "Incl."
+msgstr "Вкл."
+
+#: libviews/eventtypeview.cpp:39
+msgctxt "EventTypeView|"
+msgid "Self"
+msgstr "Сама"
+
+#: libviews/eventtypeview.cpp:40
+msgctxt "EventTypeView|"
+msgid "Short"
+msgstr "Сокращение"
+
+#: libviews/eventtypeview.cpp:42
+msgctxt "EventTypeView|"
+msgid "Formula"
+msgstr "Формула"
+
+#: libviews/eventtypeview.cpp:76
+msgctxt "EventTypeView|"
+msgid ""
+"<b>Cost Types List</b><p>This list shows all cost types available and what "
+"the self/inclusive cost of the current selected function is for that cost "
+"type.</p><p>By choosing a cost type from the list, you change the cost type "
+"of costs shown all over KCachegrind to be the selected one.</p>"
+msgstr ""
+"<b>Список типов стоимости</b><p>Этот список содержит все доступные типы "
+"стоимости и определения того, что понимается под стоимостью самой функции/"
+"включённой стоимостью данного типа для текущей функции.</p><p>Выберите тип "
+"стоимости в этом списке, чтобы изменить тип стоимостей, отображаемых в "
+"KCachegrind, на заданный.</p>"
+
+#: libviews/eventtypeview.cpp:96
+msgctxt "EventTypeView|"
+msgid "Set as Secondary Event Type"
+msgstr "Установить как вторичный тип событий"
+
+#: libviews/eventtypeview.cpp:98
+msgctxt "EventTypeView|"
+msgid "Hide Secondary Event Type"
+msgstr "Скрыть вторичный тип событий"
+
+#: libviews/eventtypeview.cpp:107
+msgctxt "EventTypeView|"
+msgid "Edit Long Name"
+msgstr "Изменить полное имя"
+
+#: libviews/eventtypeview.cpp:108
+msgctxt "EventTypeView|"
+msgid "Edit Short Name"
+msgstr "Изменить сокращение"
+
+#: libviews/eventtypeview.cpp:109
+msgctxt "EventTypeView|"
+msgid "Edit Formula"
+msgstr "Изменить формулу"
+
+#: libviews/eventtypeview.cpp:110
+msgctxt "EventTypeView|"
+msgid "Remove"
+msgstr "Удалить"
+
+#: libviews/eventtypeview.cpp:119
+msgctxt "EventTypeView|"
+msgid "New Event Type..."
+msgstr "Новый тип событий..."
+
+#: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
+#, qt-format
+msgctxt "EventTypeView|"
+msgid "New%1"
+msgstr "Новый%1"
+
+#: libviews/eventtypeview.cpp:160
+#, qt-format
+msgctxt "EventTypeView|"
+msgid "New Event Type %1"
+msgstr "Новый тип событий %1"
+
+#: libviews/functionlistmodel.cpp:45
+msgctxt "FunctionListModel|"
+msgid "Incl."
+msgstr "Вкл."
+
+#: libviews/functionlistmodel.cpp:46
+msgctxt "FunctionListModel|"
+msgid "Self"
+msgstr "Сама"
+
+#: libviews/functionlistmodel.cpp:47
+msgctxt "FunctionListModel|"
+msgid "Called"
+msgstr "Вызывалась"
+
+#: libviews/functionlistmodel.cpp:48
+msgctxt "FunctionListModel|"
+msgid "Function"
+msgstr "Функция"
+
+#: libviews/functionlistmodel.cpp:49
+msgctxt "FunctionListModel|"
+msgid "Location"
+msgstr "Расположение"
+
+#: libviews/functionlistmodel.cpp:89
+#, qt-format
+msgctxt "FunctionListModel|"
+msgid "(%1 function(s) skipped)"
+msgstr "(пропущено функций: %1)"
+
+#: libviews/functionselection.cpp:87
+msgctxt "FunctionSelection|"
+msgid "Function Profile"
+msgstr "Профилирование функций"
+
+#: libviews/functionselection.cpp:95
+msgctxt "FunctionSelection|"
+msgid "&Search:"
+msgstr "&Искать:"
+
+#: libviews/functionselection.cpp:101
+msgctxt "FunctionSelection|"
+msgid "Search Query"
+msgstr "Поисковый запрос"
+
+#: libviews/functionselection.cpp:116
+msgctxt "FunctionSelection|"
+msgid "Self"
+msgstr "Сама"
+
+#: libviews/functionselection.cpp:116
+msgctxt "FunctionSelection|"
+msgid "Group"
+msgstr "Группа"
+
+#: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
+msgctxt "FunctionSelection|"
+msgid "(No Grouping)"
+msgstr "(Без группировки)"
+
+#: libviews/functionselection.cpp:209
+msgctxt "FunctionSelection|"
+msgid ""
+"<b>The Flat Profile</b><p>The flat profile contains a group and a function "
+"selection list. The group list contains all groups where costs are spent in, "
+"depending on the chosen group type. The group list is hidden when group type "
+"'Function' is selected.</p><p>The function list contains the functions of "
+"the selected group (or all for 'Function' group type), ordered by the costs "
+"spent therein. Functions with costs less than 1% are hidden on default.</p>"
+msgstr ""
+"<b>Плоский профиль</b><p>Эта панель содержит список групп и список выбора "
+"функций. Список групп включает все группы, с которыми связана стоимость, в "
+"зависимости от выбранного типа группировки. При выборе типа «Без "
+"группировки» этот список скрывается.</p><p>Список функций включает функции "
+"выбранной группы (или все функции, если выбран тип «Без группировки»), "
+"упорядоченные по накопленной в них стоимости. Функции со стоимостью меньше "
+"1% по умолчанию не показываются.</p>"
+
+#: libviews/functionselection.cpp:287
+#, qt-format
+msgctxt "FunctionSelection|"
+msgid "Go to '%1'"
+msgstr "Перейти к «%1»"
+
+#: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
+msgctxt "FunctionSelection|"
+msgid "Grouping"
+msgstr "Группировка"
+
+#: libviews/functionselection.cpp:353
+msgctxt "FunctionSelection|"
+msgid "No Grouping"
+msgstr "Без группировки"
+
+#: libviews/instritem.cpp:114 libviews/sourceitem.cpp:94
+#, qt-format
+msgctxt "QObject|"
+msgid "Active call to '%1'"
+msgstr "Активный вызов функции %1"
+
+#: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
+#, qt-format
+msgctxt "QObject|"
+msgid "Call to '%1'"
+msgstr "Вызов(ы) %1"
+
+#: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
+#, qt-format
+msgctxt "QObject|"
+msgid "%n call(s) to '%2'"
+msgid_plural "%n call(s) to '%2'"
+msgstr[0] "Вызовов функции %2: %n"
+msgstr[1] "Вызовов функции %2: %n"
+msgstr[2] "Вызовов функции %2: %n"
+
+#: libviews/instritem.cpp:155
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to 0x%3"
+msgstr "Переход по адресу 0x%3 (кол-во: %1 из %2)"
+
+#: libviews/instritem.cpp:160
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 times to 0x%2"
+msgstr "Переход по адресу 0x%2 (кол-во: %1)"
+
+#: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
+msgctxt "QObject|"
+msgid "(cycle)"
+msgstr "(цикл)"
+
+#: libviews/instrview.cpp:193
+msgctxt "InstrView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/instrview.cpp:194
+msgctxt "InstrView|"
+msgid "Cost"
+msgstr "Стоимость"
+
+#: libviews/instrview.cpp:195
+msgctxt "InstrView|"
+msgid "Cost 2"
+msgstr "Стоимость 2"
+
+#: libviews/instrview.cpp:197
+msgctxt "InstrView|"
+msgid "Hex"
+msgstr "Шестн."
+
+#: libviews/instrview.cpp:199
+msgctxt "InstrView|"
+msgid "Assembly Instructions"
+msgstr "Инструкции ассемблера"
+
+#: libviews/instrview.cpp:200
+msgctxt "InstrView|"
+msgid "Source Position"
+msgstr "Место в исходном коде"
+
+#: libviews/instrview.cpp:236
+msgctxt "InstrView|"
+msgid ""
+"<b>Annotated Machine Code</b><p>The annotated machine code list shows the "
+"assembly instructions of the current selected function together with (self) "
+"cost spent while executing an instruction. If this is a call instruction, "
+"lines with details on the call happening are inserted into the source: the "
+"cost spent inside of the call, the number of calls happening, and the call "
+"destination.</p><p>The machine code shown is generated with the 'objdump' "
+"utility from the 'binutils' package.</p><p>Select a line with call "
+"information to make the destination function of this call current.</p>"
+msgstr ""
+"<b>Машинный код с аннотациями</b><p>Эта панель содержит список с "
+"инструкциями ассемблера, образующими текущую выбранную функцию, и стоимостью "
+"выполнения каждой инструкции. Если это инструкция вызова, в список "
+"добавляются дополнительные строки с информацией о данном вызове: стоимость, "
+"накопленная внутри вызова, число вызовов и целевой адрес.</p><p>Показанный "
+"здесь машинный код генерируется служебной программой objdump из пакета "
+"binutils.</p><p>При выборе строки с информацией о вызове вызываемая функция "
+"становится текущей.</p>"
+
+#: libviews/instrview.cpp:265
+#, qt-format
+msgctxt "InstrView|"
+msgid "Go to '%1'"
+msgstr "Перейти к «%1»"
+
+#: libviews/instrview.cpp:270
+#, qt-format
+msgctxt "InstrView|"
+msgid "Go to Address %1"
+msgstr "Перейти по адресу %1"
+
+#: libviews/instrview.cpp:282
+msgctxt "InstrView|"
+msgid "Hex Code"
+msgstr "Шестн. код"
+
+#: libviews/instrview.cpp:573
+msgctxt "InstrView|"
+msgid "There is no instruction info in the profile data file."
+msgstr "В файле данных профилирования нет информации об инструкциях."
+
+#: libviews/instrview.cpp:575
+msgctxt "InstrView|"
+msgid "Tip: For Callgrind, rerun with option"
+msgstr "Подсказка: для использования Callgrind укажите параметр"
+
+#: libviews/instrview.cpp:576
+msgctxt "InstrView|"
+msgid "      --dump-instr=yes"
+msgstr "      --dump-instr=yes"
+
+#: libviews/instrview.cpp:577
+msgctxt "InstrView|"
+msgid "To see (conditional) jumps, additionally specify"
+msgstr "Чтобы увидеть переходы (условные), дополнительно укажите"
+
+#: libviews/instrview.cpp:578
+msgctxt "InstrView|"
+msgid "      --collect-jumps=yes"
+msgstr "      --collect-jumps=yes"
+
+#: libviews/instrview.cpp:826
+msgctxt "InstrView|"
+msgid "For annotated machine code, the following object file is needed:"
+msgstr ""
+"Для машинного кода с аннотациями необходим следующий файл объектного кода:"
+
+#: libviews/instrview.cpp:831
+msgctxt "InstrView|"
+msgid "This file can not be found."
+msgstr "Не удалось обнаружить этот файл."
+
+#: libviews/instrview.cpp:834
+msgctxt "InstrView|"
+msgid "If cross-compiled, set SYSROOT variable."
+msgstr "В случае кросс-компиляции установите переменную SYSROOT."
+
+#: libviews/instrview.cpp:858
+msgctxt "InstrView|"
+msgid "There is an error trying to execute the command"
+msgstr "При попытке выполнения команды произошла ошибка"
+
+#: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
+msgctxt "InstrView|"
+msgid "Check that you have installed 'objdump'."
+msgstr "Проверьте, установлена ли в системе служебная программа objdump."
+
+#: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
+msgctxt "InstrView|"
+msgid "This utility can be found in the 'binutils' package."
+msgstr "Найти её можно в пакете binutils."
+
+#: libviews/instrview.cpp:966
+msgctxt "InstrView|"
+msgid "(No Instruction)"
+msgstr "(нет инструкции)"
+
+#: libviews/instrview.cpp:1134
+#, qt-format
+msgctxt "InstrView|"
+msgid "There are %n cost line(s) without machine code."
+msgid_plural "There are %n cost line(s) without machine code."
+msgstr[0] "Строк стоимости без машинного кода: %n."
+msgstr[1] "Строк стоимости без машинного кода: %n."
+msgstr[2] "Строк стоимости без машинного кода: %n."
+
+#: libviews/instrview.cpp:1136
+msgctxt "InstrView|"
+msgid "This happens because the code of"
+msgstr "Это вызвано тем, что код"
+
+#: libviews/instrview.cpp:1139
+msgctxt "InstrView|"
+msgid "does not seem to match the profile data file."
+msgstr "не соответствует файлу данных профилирования."
+
+#: libviews/instrview.cpp:1142
+msgctxt "InstrView|"
+msgid "Are you using an old profile data file or is the above mentioned"
+msgstr ""
+"Возможно, используется старый файл данных профилирования или вышеупомянутый "
+"объект ELF"
+
+#: libviews/instrview.cpp:1144
+msgctxt "InstrView|"
+msgid "ELF object from an updated installation/another machine?"
+msgstr "взят с обновлённой системы/другого компьютера."
+
+#: libviews/instrview.cpp:1152
+msgctxt "InstrView|"
+msgid "There seems to be an error trying to execute the command"
+msgstr "Вероятно, при попытке выполнения команды произошла ошибка"
+
+#: libviews/instrview.cpp:1156
+msgctxt "InstrView|"
+msgid "Check that the ELF object used in the command exists."
+msgstr "Проверьте, существует ли объект ELF, указанный в команде."
+
+#: libviews/partgraph.cpp:154
+#, qt-format
+msgctxt "QObject|"
+msgid "Profile Part %1"
+msgstr "Часть профилирования %1"
+
+#: libviews/partgraph.cpp:211
+msgctxt "QObject|"
+msgid "(no trace)"
+msgstr "(нет трассировки)"
+
+#: libviews/partgraph.cpp:214
+msgctxt "QObject|"
+msgid "(no part)"
+msgstr "(нет частей)"
+
+#: libviews/partlistitem.cpp:39
+msgctxt "QObject|"
+msgid "(none)"
+msgstr "(нет)"
+
+#: libviews/partselection.cpp:48
+msgctxt "PartSelection|"
+msgid "Parts Overview"
+msgstr "Обзор частей"
+
+#: libviews/partselection.cpp:61
+msgctxt "PartSelection|A thing's name"
+msgid "Name"
+msgstr "Имя"
+
+#: libviews/partselection.cpp:62
+msgctxt "PartSelection|"
+msgid "Cost"
+msgstr "Стоимость"
+
+#: libviews/partselection.cpp:69
+msgctxt "PartSelection|"
+msgid "(no trace parts)"
+msgstr "(нет частей трассировки)"
+
+#: libviews/partselection.cpp:96
+msgctxt "PartSelection|"
+msgid ""
+"<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+"there are several profile data files from one profile run. The Trace Part "
+"Overview dockable shows these, horizontally ordered in execution time; the "
+"rectangle sizes are proportional to the total cost spent in the parts. You "
+"can select one or several parts to constrain all costs shown to these parts "
+"only.</p><p>The parts are further subdivided: there is a partitioning and an "
+"callee split mode: <ul><li>Partitioning: You see the partitioning into "
+"groups for a trace part, according to the group type selected. E.g. if ELF "
+"object groups are selected, you see colored rectangles for each used ELF "
+"object (shared library or executable), sized according to the cost spent "
+"therein.</li><li>Callee: A rectangle showing the inclusive cost of the "
+"current selected function in the trace part is shown. This is split up into "
+"smaller rectangles to show the costs of its callees.</li></ul></p>"
+msgstr ""
+"<b>Обзор частей</b><p>Трассировка состоит из нескольких частей, когда в "
+"результате одного профилирования создаются несколько файлов с данными. Эти "
+"части показываются в данной панели в виде прямоугольников, упорядоченных по "
+"времени выполнения, при этом их размеры пропорциональны общей стоимости "
+"частей. Выберите одну или несколько частей, чтобы получить стоимости, "
+"относящиеся только к ним.</p><p>При этом возможны два варианта их "
+"дальнейшего разбиения: <ul><li>Режим разделения: части разделяются по "
+"группам в соответствии с выбранным типом группирования. Например, если "
+"выбрано группирование объектов ELF, будут показаны разноцветные "
+"прямоугольники для каждого задействованного объекта ELF (общей библиотеки "
+"или запускаемого файла) с размером, соответствующим их стоимости.</"
+"li><li>Режим вызываемых: для текущей функции, выбранной в отображаемой части "
+"трассировки, прямоугольники показывают включённую стоимость (стоимость "
+"вызываемых функций) в виде меньших прямоугольников.</li></ul></p>"
+
+#: libviews/partselection.cpp:231
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Profile Part Overview: Current is '%1'"
+msgstr "Обзор частей профилирования: текущая часть «%1»"
+
+#: libviews/partselection.cpp:337
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Deselect '%1'"
+msgstr "Отменить выбор «%1»"
+
+#: libviews/partselection.cpp:339
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Select '%1'"
+msgstr "Выбрать «%1»"
+
+#: libviews/partselection.cpp:344
+msgctxt "PartSelection|"
+msgid "Select All Parts"
+msgstr "Выбрать все части"
+
+#: libviews/partselection.cpp:345
+msgctxt "PartSelection|"
+msgid "Visible Parts"
+msgstr "Видимые части"
+
+#: libviews/partselection.cpp:346
+msgctxt "PartSelection|"
+msgid "Hide Selected Parts"
+msgstr "Скрыть выбранные части"
+
+#: libviews/partselection.cpp:347
+msgctxt "PartSelection|"
+msgid "Show Hidden Parts"
+msgstr "Показать скрытые части"
+
+#: libviews/partselection.cpp:361
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Go to '%1'"
+msgstr "Перейти к «%1»"
+
+#: libviews/partselection.cpp:370
+msgctxt "PartSelection|"
+msgid "Visualization"
+msgstr "Визуализация"
+
+#: libviews/partselection.cpp:371
+msgctxt "PartSelection|"
+msgid "Partitioning Mode"
+msgstr "Режим разделения"
+
+#: libviews/partselection.cpp:373
+msgctxt "PartSelection|"
+msgid "Zoom Function"
+msgstr "Функция увеличения"
+
+#: libviews/partselection.cpp:375
+msgctxt "PartSelection|"
+msgid "Show Direct Calls"
+msgstr "Показывать прямые вызовы"
+
+#: libviews/partselection.cpp:376
+msgctxt "PartSelection|"
+msgid "Increment Shown Call Levels"
+msgstr "Показывать больше уровней вызовов"
+
+#: libviews/partselection.cpp:377
+msgctxt "PartSelection|"
+msgid "Diagram Mode"
+msgstr "Режим диаграммы"
+
+#: libviews/partselection.cpp:392
+msgctxt "PartSelection|"
+msgid "Draw Names"
+msgstr "Выводить имена"
+
+#: libviews/partselection.cpp:394
+msgctxt "PartSelection|"
+msgid "Draw Costs"
+msgstr "Выводить стоимость"
+
+#: libviews/partselection.cpp:396
+msgctxt "PartSelection|"
+msgid "Ignore Proportions"
+msgstr "Игнорировать пропорции"
+
+#: libviews/partselection.cpp:398
+msgctxt "PartSelection|"
+msgid "Allow Rotation"
+msgstr "Разрешить поворот"
+
+#: libviews/partselection.cpp:400
+msgctxt "PartSelection|"
+msgid "Draw Frames"
+msgstr "Рисовать рамки"
+
+#: libviews/partselection.cpp:414
+msgctxt "PartSelection|"
+msgid "Hide Info"
+msgstr "Скрыть информацию"
+
+#: libviews/partselection.cpp:414
+msgctxt "PartSelection|"
+msgid "Show Info"
+msgstr "Отобразить информацию"
+
+#: libviews/partselection.cpp:562
+msgctxt "PartSelection|"
+msgid "(no trace loaded)"
+msgstr "(трассировка не загружена)"
+
+#: libviews/partview.cpp:37
+msgctxt "PartView|"
+msgid "Profile Part"
+msgstr "Часть профиля"
+
+#: libviews/partview.cpp:38
+msgctxt "PartView|"
+msgid "Incl."
+msgstr "Вкл."
+
+#: libviews/partview.cpp:39
+msgctxt "PartView|"
+msgid "Self"
+msgstr "Сама"
+
+#: libviews/partview.cpp:40
+msgctxt "PartView|"
+msgid "Called"
+msgstr "Вызывалась"
+
+#: libviews/partview.cpp:41
+msgctxt "PartView|"
+msgid "Comment"
+msgstr "Комментарий"
+
+#: libviews/partview.cpp:68
+msgctxt "PartView|"
+msgid ""
+"<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+"trace. For each part, the self/inclusive cost of the current selected "
+"function, spent in the part, is shown; percentage costs are always relative "
+"to the total cost <em>of the part</em> (not to the whole trace as in the "
+"Trace Part Overview). Also shown are the calls happening to/from the current "
+"function inside of the trace part.</p><p>By choosing one or more trace parts "
+"from the list, the costs shown all over KCachegrind will only be the ones "
+"spent in the selected part(s). If no list selection is shown, in fact all "
+"trace parts are selected implicitly.</p><p>This is a multi-selection list. "
+"You can select ranges by dragging the mouse or use SHIFT/CTRL modifiers. "
+"Selection/Deselection of trace parts can also be done by using the Trace "
+"Part Overview Dockable. This one also supports multiple selection.</"
+"p><p>Note that the list is hidden if only one trace part is loaded.</p>"
+msgstr ""
+"<b>Список частей трассировки</b><p>Этот список содержит все части "
+"загруженной трассировки. Для каждой части показывается собственная/"
+"включённая стоимость текущей выбранной функции, относящаяся к данной части. "
+"Процент стоимости рассчитывается относительно общей стоимости <em>части</em> "
+"(а не трассировки, как в «Обзоре частей»). Также здесь показываются вызовы "
+"текущей функции/из текущей функции, относящиеся к данной части трассировки.</"
+"p><p>При выборе одной или нескольких частей в этом списке KCachegrind будет "
+"везде отображать только ту стоимость, которая относится к выбранной части "
+"(частям). Если в этом списке ничего не выбрано, подразумевается, что выбраны "
+"все части трассировки.</p><p>Этот список поддерживает множественное "
+"выделение. Возможно выделить несколько частей/их диапазоны, перетаскивая "
+"мышь или используя SHIFT/CTRL. Кроме того, выделить/отменить выделение "
+"частей трассировки можно в панели «Обзор частей». Она также поддерживает "
+"множественный выбор.</p><p>Обратите внимание, что список частей не "
+"показывается, если загружена только одна часть.</p>"
+
+#: libviews/sourceitem.cpp:141
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to %3"
+msgstr "Переход к %3 (кол-во: %1 из %2)"
+
+#: libviews/sourceitem.cpp:146
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 times to %2"
+msgstr "Переход к %2 (кол-во: %1)"
+
+#: libviews/sourceview.cpp:51
+msgctxt "SourceView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/sourceview.cpp:52
+msgctxt "SourceView|"
+msgid "Cost"
+msgstr "Стоимость"
+
+#: libviews/sourceview.cpp:53
+msgctxt "SourceView|"
+msgid "Cost 2"
+msgstr "Стоимость 2"
+
+#: libviews/sourceview.cpp:55
+msgctxt "SourceView|"
+msgid "Source"
+msgstr "Исходный код"
+
+#: libviews/sourceview.cpp:83
+msgctxt "SourceView|"
+msgid ""
+"<b>Annotated Source</b><p>The annotated source list shows the source lines "
+"of the current selected function together with (self) cost spent while "
+"executing the code of this source line. If there was a call in a source "
+"line, lines with details on the call happening are inserted into the source: "
+"the cost spent inside of the call, the number of calls happening, and the "
+"call destination.</p><p>Select a inserted call information line to make the "
+"destination function current.</p>"
+msgstr ""
+"<b>Исходный код с аннотациями</b><p>Данный список содержит строки исходного "
+"кода для текущей выбранной функции со стоимостью самого кода, накопленной "
+"при выполнении данных строк. Если в какой-либо строке выполнялся вызов, "
+"дополнительно добавляются строки с информацией о данном вызове: стоимость, "
+"накопленная внутри вызова, число вызовов и целевая функция.</p><p>При выборе "
+"строки с информацией о вызове вызываемая функция становится текущей.</p>"
+
+#: libviews/sourceview.cpp:110
+#, qt-format
+msgctxt "SourceView|"
+msgid "Go to '%1'"
+msgstr "Перейти к «%1»"
+
+#: libviews/sourceview.cpp:115
+#, qt-format
+msgctxt "SourceView|"
+msgid "Go to Line %1"
+msgstr "Перейти к строке %1"
+
+#: libviews/sourceview.cpp:627
+msgctxt "SourceView|"
+msgid "There is no cost of current selected type associated"
+msgstr "Стоимость текущего типа не связана"
+
+#: libviews/sourceview.cpp:629
+msgctxt "SourceView|"
+msgid "with any source line of this function in file"
+msgstr "ни с одной строкой исходного кода этой функции в файле"
+
+#: libviews/sourceview.cpp:633
+msgctxt "SourceView|"
+msgid "Thus, no annotated source can be shown."
+msgstr "Поэтому исходный код с аннотациями не может быть показан."
+
+#: libviews/sourceview.cpp:658
+#, qt-format
+msgctxt "SourceView|"
+msgid "--- From '%1' ---"
+msgstr "--- Из «%1» ---"
+
+#: libviews/sourceview.cpp:663
+#, qt-format
+msgctxt "SourceView|"
+msgid "--- Inlined from '%1' ---"
+msgstr "--- Встроено из «%1» ---"
+
+#: libviews/sourceview.cpp:664
+msgctxt "SourceView|"
+msgid "--- Inlined from unknown source ---"
+msgstr "--- Встроено из неизвестного источника ---"
+
+#: libviews/sourceview.cpp:669
+msgctxt "SourceView|"
+msgid "There is no source available for the following function:"
+msgstr "Исходный код следующей функции недоступен:"
+
+#: libviews/sourceview.cpp:674
+msgctxt "SourceView|"
+msgid "This is because no debug information is present."
+msgstr "Это вызвано отсутствием отладочной информации."
+
+#: libviews/sourceview.cpp:676
+msgctxt "SourceView|"
+msgid "Recompile source and redo the profile run."
+msgstr "Перекомпилируйте исходный код и запустите профилирование снова."
+
+#: libviews/sourceview.cpp:679
+msgctxt "SourceView|"
+msgid "The function is located in this ELF object:"
+msgstr "Данная функция находится в следующем объекте ELF:"
+
+#: libviews/sourceview.cpp:687
+msgctxt "SourceView|"
+msgid "This is because its source file cannot be found:"
+msgstr "Это вызвано тем, что файл исходного кода не найден:"
+
+#: libviews/sourceview.cpp:691
+msgctxt "SourceView|"
+msgid "Add the folder of this file to the source folder list."
+msgstr ""
+"Добавьте путь к каталогу с этим файлом в список каталогов исходного кода."
+
+#: libviews/sourceview.cpp:693
+msgctxt "SourceView|"
+msgid "The list can be found in the configuration dialog."
+msgstr "Список находится в диалоговом окне настройки."
+
+#: libviews/stackselection.cpp:36
+msgctxt "StackSelection|"
+msgid "Stack Selection"
+msgstr "Выбор стека"
+
+#: libviews/stackselection.cpp:44
+msgctxt "StackSelection|"
+msgid "Cost"
+msgstr "Стоимость"
+
+#: libviews/stackselection.cpp:45
+msgctxt "StackSelection|"
+msgid "Cost2"
+msgstr "Стоимость2"
+
+#: libviews/stackselection.cpp:46
+msgctxt "StackSelection|"
+msgid "Calls"
+msgstr "Вызовы"
+
+#: libviews/stackselection.cpp:47
+msgctxt "StackSelection|"
+msgid "Function"
+msgstr "Функция"
+
+#: libviews/tabview.cpp:103
+msgctxt "TabBar|"
+msgid "Move to Top"
+msgstr "Переместить вверх"
+
+#: libviews/tabview.cpp:104
+msgctxt "TabBar|Move to Top"
+msgid "Top"
+msgstr "Вверх"
+
+#: libviews/tabview.cpp:107
+msgctxt "TabBar|"
+msgid "Move to Right"
+msgstr "Переместить вправо"
+
+#: libviews/tabview.cpp:108
+msgctxt "TabBar|Move to Right"
+msgid "Right"
+msgstr "Вправо"
+
+#: libviews/tabview.cpp:111
+msgctxt "TabBar|"
+msgid "Move to Bottom"
+msgstr "Переместить вниз"
+
+#: libviews/tabview.cpp:112
+msgctxt "TabBar|Move to Bottom"
+msgid "Bottom"
+msgstr "Вниз"
+
+#: libviews/tabview.cpp:115
+msgctxt "TabBar|"
+msgid "Move to Bottom Left"
+msgstr "Переместить вниз влево"
+
+#: libviews/tabview.cpp:116
+msgctxt "TabBar|Move to Bottom Left"
+msgid "Bottom Left"
+msgstr "Вниз влево"
+
+#: libviews/tabview.cpp:118
+msgctxt "TabBar|"
+msgid "Move Area To"
+msgstr "Переместить раздел..."
+
+#: libviews/tabview.cpp:121
+msgctxt "TabBar|"
+msgid "Hide This Tab"
+msgstr "Скрыть эту вкладку"
+
+#: libviews/tabview.cpp:122
+msgctxt "TabBar|"
+msgid "Hide Area"
+msgstr "Скрыть раздел"
+
+#: libviews/tabview.cpp:131
+msgctxt "TabBar|Show on Top"
+msgid "Top"
+msgstr "Сверху"
+
+#: libviews/tabview.cpp:132
+msgctxt "TabBar|Show on Right"
+msgid "Right"
+msgstr "Справа"
+
+#: libviews/tabview.cpp:133
+msgctxt "TabBar|Show on Bottom"
+msgid "Bottom"
+msgstr "Снизу"
+
+#: libviews/tabview.cpp:134
+msgctxt "TabBar|Show on Bottom Left"
+msgid "Bottom Left"
+msgstr "Снизу слева"
+
+#: libviews/tabview.cpp:135
+msgctxt "TabBar|"
+msgid "Show Hidden On"
+msgstr "Показать скрытые..."
+
+#: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
+msgctxt "TabView|"
+msgid "(No profile data file loaded)"
+msgstr "(файл с данными профилирования не загружен)"
+
+#: libviews/tabview.cpp:370
+msgctxt "TabView|"
+msgid "Types"
+msgstr "Типы"
+
+#: libviews/tabview.cpp:373
+msgctxt "TabView|"
+msgid "Callers"
+msgstr "Вызывающие"
+
+#: libviews/tabview.cpp:374
+msgctxt "TabView|"
+msgid "All Callers"
+msgstr "Все вызывающие"
+
+#: libviews/tabview.cpp:375
+msgctxt "TabView|"
+msgid "Callee Map"
+msgstr "Карта вызываемых"
+
+#: libviews/tabview.cpp:378
+msgctxt "TabView|"
+msgid "Source Code"
+msgstr "Исходный код"
+
+#: libviews/tabview.cpp:380
+msgctxt "TabView|"
+msgid "Parts"
+msgstr "Части"
+
+#: libviews/tabview.cpp:381
+msgctxt "TabView|"
+msgid "Callees"
+msgstr "Вызываемые"
+
+#: libviews/tabview.cpp:382
+msgctxt "TabView|"
+msgid "Call Graph"
+msgstr "Граф вызовов"
+
+#: libviews/tabview.cpp:385
+msgctxt "TabView|"
+msgid "All Callees"
+msgstr "Все вызываемые"
+
+#: libviews/tabview.cpp:386
+msgctxt "TabView|"
+msgid "Caller Map"
+msgstr "Карта вызывающих"
+
+#: libviews/tabview.cpp:389
+msgctxt "TabView|"
+msgid "Machine Code"
+msgstr "Машинный код"
+
+#: libviews/tabview.cpp:643
+msgctxt "TabView|"
+msgid ""
+"<b>Information Tabs</b><p>This widget shows information for the currently "
+"selected function in different tabs: <ul><li>The Costs tab shows a list of "
+"available event types and the inclusive and self-costs related to these "
+"types.</li><li>The Parts tab shows a list of trace parts if the trace "
+"consists of more than one part (otherwise, this tab is hidden). The cost of "
+"the selected function spent in the different parts together with the calls "
+"happening is shown.</li><li>The Call Lists tab shows direct callers and "
+"callees of the function in more detail.</li><li>The Coverage tab shows the "
+"same as the Call Lists tab, but also shows indirect callers and callees, not "
+"just direct ones.</li><li>The Call Graph tab shows a graphical visualization "
+"of the calls made by this function.</li><li>The Source Code tab presents "
+"annotated source code if debugging information and the source file are "
+"available.</li><li>The Machine Code tab presents annotated assembly "
+"instructions if profile information at instruction level is available.</li></"
+"ul>For more information, see the <em>What's This?</em> help of the "
+"corresponding tab widget.</p>"
+msgstr ""
+"<b>Информационные вкладки</b><p>Этот виджет показывает информацию о текущей "
+"выбранной функции на нескольких вкладках: <ul><li>На вкладке «Типы» "
+"показывается список доступных типов событий и стоимости самих функций/"
+"включённые стоимости, связанные с этими типами.</li><li>На вкладке «Части» "
+"можно увидеть список частей трассировки, если трассировка включает несколько "
+"частей (в противном случае эта вкладка скрыта), а также стоимость и число "
+"вызовов выбранной функции, связанные с каждой отдельной частью.</"
+"li><li>Списки на вкладках «Вызываемые»/«Вызывающие» показывают функции, "
+"вызываемые/вызывающие текущую выбранную с дополнительными подробностями.</"
+"li><li>Вкладки «Все вызываемые»/«Все вызывающие» подобны двум предыдущим, но "
+"включают, помимо непосредственных, ещё и косвенные вызовы.</li><li>Граф "
+"вызовов представляет графическую визуализацию вызовов, выполненных текущей "
+"функцией.</li><li>На вкладке «Исходный код» показывается исходный код с "
+"аннотациями (при наличии отладочной информации и файлов исходного кода).</"
+"li><li>Вкладка «Машинный код» представляет инструкции ассемблера с "
+"аннотациями (если в данных профиля есть сведения об инструкциях).</li></"
+"ul>Дополнительные сведения доступны в справке <em>Что это?</em> по "
+"интересующему элементу.</p>"
+
+#: libviews/tabview.cpp:728
+msgctxt "TabView|"
+msgid "(No function selected)"
+msgstr "(функция не выбрана)"
+
+#: libviews/traceitemview.cpp:67
+msgctxt "QObject|"
+msgid "No description available"
+msgstr "Описание отсутствует"
+
+#: libviews/treemap.cpp:1334
+#, qt-format
+msgctxt "TreeMapWidget|"
+msgid "Text %1"
+msgstr "Текст %1"
+
+#: libviews/treemap.cpp:2854
+msgctxt "TreeMapWidget|"
+msgid "Recursive Bisection"
+msgstr "Рекурсивный половинный"
+
+#: libviews/treemap.cpp:2855
+msgctxt "TreeMapWidget|"
+msgid "Columns"
+msgstr "Столбцы"
+
+#: libviews/treemap.cpp:2856
+msgctxt "TreeMapWidget|"
+msgid "Rows"
+msgstr "Строки"
+
+#: libviews/treemap.cpp:2857
+msgctxt "TreeMapWidget|"
+msgid "Always Best"
+msgstr "Всегда наилучший"
+
+#: libviews/treemap.cpp:2858
+msgctxt "TreeMapWidget|"
+msgid "Best"
+msgstr "Наилучший"
+
+#: libviews/treemap.cpp:2859
+msgctxt "TreeMapWidget|"
+msgid "Alternate (V)"
+msgstr "Альтернативный (верт.)"
+
+#: libviews/treemap.cpp:2860
+msgctxt "TreeMapWidget|"
+msgid "Alternate (H)"
+msgstr "Альтернативный (гор.)"
+
+#: libviews/treemap.cpp:2861
+msgctxt "TreeMapWidget|"
+msgid "Horizontal"
+msgstr "Горизонтальный"
+
+#: libviews/treemap.cpp:2862
+msgctxt "TreeMapWidget|"
+msgid "Vertical"
+msgstr "Вертикальный"
+
+#~ msgctxt "CallGraphView|"
+#~ msgid "Export Graph As DOT file"
+#~ msgstr "Экспорт графа в формате DOT"
+
+#~ msgctxt "CallGraphView|"
+#~ msgid "Graphviz (*.dot)"
+#~ msgstr "Graphviz (*.dot)"
+
+#~ msgctxt "Move to Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "влево вниз"
+
+#~ msgctxt "Show on Top"
+#~ msgid "Top"
+#~ msgstr "вверху"
+
+#~ msgctxt "Show on Right"
+#~ msgid "Right"
+#~ msgstr "справа"
+
+#~ msgctxt "Show on Bottom"
+#~ msgid "Bottom"
+#~ msgstr "снизу"
+
+#~ msgctxt "Show on Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "слева снизу"
+
+#~ msgid "Source (unknown)"
+#~ msgstr "Исходный код (неизвестен)"
+
+#~ msgid "(No Source)"
+#~ msgstr "(нет исходного кода)"
+
+#~ msgid "Source ('%1')"
+#~ msgstr "Исходный код ('%1')"

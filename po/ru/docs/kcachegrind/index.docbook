@@ -1,0 +1,385 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kcachegrind '<application
+>KCachegrind</application
+>'>
+  <!ENTITY cachegrind "<application
+>Cachegrind</application
+>">
+  <!ENTITY calltree "<application
+>Calltree</application
+>">
+  <!ENTITY valgrind "<application
+>Valgrind</application
+>">
+  <!ENTITY kappname "&kcachegrind;">
+  <!ENTITY package "kdesdk">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Russian "INCLUDE">
+]>
+
+<!-- ................................................................ -->
+
+<book lang="&language;">
+
+<bookinfo>
+<title
+>Руководство &kcachegrind;</title>
+
+<authorgroup>
+<author
+><firstname
+>Josef</firstname
+> <surname
+>Weidendorfer</surname
+> <affiliation
+> <address
+><email
+>Josef.Weidendorfer@gmx.de</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="translator"
+><firstname
+>Николай</firstname
+><surname
+>Шафоростов</surname
+><affiliation
+><address
+><email
+>shafff@ukr.net</email
+></address
+></affiliation
+><contrib
+>Перевод на русский</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<copyright>
+<year
+>2002-2004</year>
+<holder
+>Josef Weidendorfer</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2003-09-18</date>
+<releaseinfo
+>0.4.3</releaseinfo>
+
+<abstract>
+<para
+>&kcachegrind; - это интерфейс для программы &cachegrind;, которая входит в состав &valgrind;. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdesdk</keyword>
+<keyword
+>Cachegrind</keyword>
+<keyword
+>Valgrind</keyword>
+<keyword
+>Профилирование</keyword>
+</keywordset>
+
+</bookinfo>
+
+
+<chapter id="introduction">
+<title
+>Введение</title>
+
+<para
+>Завершающим шагом разработки качественного программного обеспечения обычно является его оптимизация, т.е. увеличение производительности. И чтобы не терять время на улучшение редко используемых функций, вы можете использовать профилирование. </para>
+
+<para
+>При этом программа запускается под контролем средства профилирования, что позволяет выполнять её трассировку. Вы сможете найти места, которые требуют оптимизации (циклы и т.д.), а потом проверить эффективность оптимизации. </para>
+
+<para
+>Наиболее известным средством профилирования является <application
+>gprof</application
+> (входит в комплект GCC). Откомпилируйте программу с ключом <option
+>-pg</option
+>; дальнейшее её выполнение приведёт к созданию файла <filename
+>gmon.out</filename
+>, который можно преобразовать в приемлемый для чтения вид командой <command
+>gprof</command
+>. В минусы такого способа следует отнести требуемый шаг компиляции приложения, которое должно быть статически подключено ("подлинковано"). </para>
+
+<para
+>&cachegrind; &mdash; другое средство профилирования, поставляемое в пакете &valgrind;. Оно использует эмуляцию процессора, доступную в &valgrind;, что позволяет перехватить все обращения к памяти без перекомпиляции программы; при этом можно использовать динамически подключаемые библиотеки и модули. Трассировка определяет число инструкций/обращений к данным, уровень непопаданий в кэш (1-го или 2-го уровня) и устанавливает соответствующее место в исходных кодах. К минусам можно отнести медлительность эмуляции процессора (снижение скорости в 50 раз). </para>
+
+<para
+>&calltree; - это расширение &cachegrind;, собирающее график вызовов программа "на лету". Он говорит о том, как функции вызывают одна другую и как много событий происходит во время выполнения функции. Кроме того, данные профилирования собираются и разделяются на потоки и контексты цепочки вызовов. Данные профилирования могут быть предоставлены на уровне инструкций. </para>
+
+<para
+>&kappname; &mdash; визуальный инструмент для просмотра данных профилирования, созданных &cachegrind; и &calltree;. </para>
+</chapter>
+
+<chapter id="using-kcachegrind">
+<title
+>Использование &kcachegrind;</title>
+
+<note>
+<para
+>К сожалению, этот документ не содержит достаточно информации. Вы можете посмотреть секцию документации на <ulink url="http://www.weidendorfers.de/kcachegrind"
+>http://kcachegrind.sf.net</ulink
+>. Кроме того, у всех графических элементов &kcachegrind; есть справка <quote
+>Что это?</quote
+>. </para>
+</note>
+
+<sect1>
+<title
+>Примеры</title>
+
+<para
+><ulink url="http://www.weidendorfers.de/kcachegrind"
+>Домашняя страница &kcachegrind;</ulink
+>. </para>
+</sect1>
+
+<sect1 id="features">
+<title
+>Возможности &kcachegrind;</title>
+
+<para
+>&kcachegrind; поддерживает произвольные типы событий, совмещение данных профилирования, группирование функций, ...</para>
+</sect1>
+
+<sect1 id="guidelines">
+<title
+>Общее руководство</title>
+
+<para
+>Эффективное профилирование...</para>
+
+</sect1>
+<sect1 id="tutorial">
+<title
+>Обучение</title>
+
+<para
+>Сеанс профилирования в &kcachegrind;.</para>
+
+</sect1>
+</chapter>
+
+<chapter id="commands">
+<title
+>Список команд</title>
+
+<sect1 id="kcachegrind-mainwindow">
+<title
+>Главное окно &kcachegrind;</title>
+<para
+></para>
+
+<sect2>
+<title
+>Меню <guimenu
+>Файл</guimenu
+></title>
+<para>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Файл</guimenu
+> <guimenuitem
+>Создать</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Создать новый документ</action
+></para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Файл</guimenu
+> <guimenuitem
+>Сохранить</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Сохранить изменённый документ</action
+></para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Файл</guimenu
+> <guimenuitem
+>Выход</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Выйти</action
+> из &kappname;</para
+></listitem>
+</varlistentry>
+</variablelist>
+</para>
+
+</sect2>
+
+</sect1>
+</chapter>
+
+<chapter id="faq">
+<title
+>Вопросы и ответы</title>
+&reporting.bugs; &updating.documentation; <qandaset id="faqlist">
+<qandaentry>
+<question>
+<para
+>&kcachegrind; выглядит забавно. Но я ничего не понял. Для чего он?</para>
+</question>
+<answer>
+<para
+>&kcachegrind; может пригодится на последней стадии разработки программного обеспечения, профилировании. Если вы не занимаетесь разработкой ПО, вам не нужна эта программа. </para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para
+>У меня проблемы при компиляции, что происходит?</para>
+</question>
+<answer>
+<para
+>Чаще всего, это из-за отсутствия поддержки &kde; в &Qt;. </para>
+</answer>
+</qandaentry>
+</qandaset>
+</chapter>
+
+<chapter id="credits">
+
+
+<title
+>Благодарности и лицензия</title>
+
+<para
+>&kappname; </para>
+<para
+>Спасибо Julian Seward за его превосходную &valgrind;, и Nicholas Nethercote за &cachegrind;. Без них не было бы <application
+>KCachegrind</application
+>. </para>
+<para
+>Спасибо всем за отчёты об ошибках/предложения. А также: <itemizedlist>
+<listitem
+><para
+>&kde;, основа для быстрой и комфортной разработки визуальных программ,</para>
+</listitem>
+<listitem
+><para
+>&Qt;, очень мощная библиотека визуальных компонентов</para>
+</listitem>
+<listitem
+><para
+>&Linux;, операционная система будущего</para>
+</listitem>
+</itemizedlist>
+</para>
+&underFDL; </chapter>
+
+<appendix id="installation">
+<title
+>Установка</title>
+
+<sect1 id="getting-kcachegrind">
+<title
+>Как получить &kcachegrind;</title>
+
+<para
+><ulink url="http://www.weidendorfers.de/kcachegrind"
+>Домашняя страница &kcachegrind;</ulink
+>. </para>
+</sect1>
+
+<sect1 id="requirements">
+<title
+>Требования</title>
+
+<para
+>&kde; 3.x, &cachegrind;. Для дерева вызовов, усовершенствуйте &valgrind; с помощью патча (на исходный код) call-tree, который вы можете найти на домашней странице &kcachegrind;. </para>
+</sect1>
+
+<sect1 id="compilation">
+<title
+>Сборка и установка</title>
+&install.compile.documentation; </sect1>
+
+<sect1 id="configuration">
+<title
+>Настройка</title>
+
+<para
+>Все параметры присутствуют или в окне настроек, или в контекстных меню диаграмм. </para>
+
+</sect1>
+
+</appendix>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,2725 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Toussis Manolis <manolis@koppermind.homelinux.org>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcachegrind_qt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-18 02:14+0000\n"
+"PO-Revision-Date: 2009-04-29 13:30+0300\n"
+"Last-Translator: Toussis Manolis <manolis@koppermind.homelinux.org>\n"
+"Language-Team: Greek <kde-i18n-el@kde.org>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 0.3\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Qt-Contexts: true\n"
+
+#: libcore/cachegrindloader.cpp:135
+#, fuzzy
+#| msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+msgctxt "QObject|"
+msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+msgstr "Φίλτρο εισαγωγής για αρχείο δεδομένων προφίλ Cachegrind/Callgrind"
+
+#: libcore/context.cpp:60
+#, fuzzy
+#| msgid "Invalid Context"
+msgctxt "ProfileContext|"
+msgid "Invalid Context"
+msgstr "Μη έγκυρο περιεχόμενο"
+
+#: libcore/context.cpp:61
+#, fuzzy
+#| msgid "Unknown Context"
+msgctxt "ProfileContext|"
+msgid "Unknown Context"
+msgstr "Άγνωστο περιεχόμενο"
+
+#: libcore/context.cpp:62
+#, fuzzy
+#| msgid "Part Source Line"
+msgctxt "ProfileContext|"
+msgid "Part Source Line"
+msgstr "Γραμμή πηγαίου τμήματος"
+
+#: libcore/context.cpp:63
+#, fuzzy
+#| msgid "Source Line"
+msgctxt "ProfileContext|"
+msgid "Source Line"
+msgstr "Γραμμή πηγαίου"
+
+#: libcore/context.cpp:64
+#, fuzzy
+#| msgid "Part Line Call"
+msgctxt "ProfileContext|"
+msgid "Part Line Call"
+msgstr "Γραμμή κλήσης τμήματος"
+
+#: libcore/context.cpp:65
+#, fuzzy
+#| msgid "Line Call"
+msgctxt "ProfileContext|"
+msgid "Line Call"
+msgstr "Γραμμής κλήσης"
+
+#: libcore/context.cpp:66
+#, fuzzy
+#| msgid "Part Jump"
+msgctxt "ProfileContext|"
+msgid "Part Jump"
+msgstr "Άλμα τμήματος"
+
+#: libcore/context.cpp:67
+#, fuzzy
+#| msgid "Jump"
+msgctxt "ProfileContext|"
+msgid "Jump"
+msgstr "Άλμα"
+
+#: libcore/context.cpp:68
+#, fuzzy
+#| msgid "Part Instruction"
+msgctxt "ProfileContext|"
+msgid "Part Instruction"
+msgstr "Εντολή τμήματος"
+
+#: libcore/context.cpp:69
+#, fuzzy
+#| msgid "Instruction"
+msgctxt "ProfileContext|"
+msgid "Instruction"
+msgstr "Εντολή"
+
+#: libcore/context.cpp:70
+#, fuzzy
+#| msgid "Part Instruction Jump"
+msgctxt "ProfileContext|"
+msgid "Part Instruction Jump"
+msgstr "Άλμα εντολής τμήματος"
+
+#: libcore/context.cpp:71
+#, fuzzy
+#| msgid "Instruction Jump"
+msgctxt "ProfileContext|"
+msgid "Instruction Jump"
+msgstr "Άλμα εντολής"
+
+#: libcore/context.cpp:72
+#, fuzzy
+#| msgid "Part Instruction Call"
+msgctxt "ProfileContext|"
+msgid "Part Instruction Call"
+msgstr "Κλήση εντολής τμήματος"
+
+#: libcore/context.cpp:73
+#, fuzzy
+#| msgid "Instruction Call"
+msgctxt "ProfileContext|"
+msgid "Instruction Call"
+msgstr "Κλήση εντολής"
+
+#: libcore/context.cpp:74
+#, fuzzy
+#| msgid "Part Call"
+msgctxt "ProfileContext|"
+msgid "Part Call"
+msgstr "Κλήση τμήματος"
+
+#: libcore/context.cpp:75
+#, fuzzy
+#| msgid "Call"
+msgctxt "ProfileContext|"
+msgid "Call"
+msgstr "Κλήση"
+
+#: libcore/context.cpp:76
+#, fuzzy
+#| msgid "Part Function"
+msgctxt "ProfileContext|"
+msgid "Part Function"
+msgstr "Συνάρτηση τμήματος"
+
+#: libcore/context.cpp:77
+#, fuzzy
+#| msgid "Function Source File"
+msgctxt "ProfileContext|"
+msgid "Function Source File"
+msgstr "Πηγαίο αρχείο συνάρτησης"
+
+#: libcore/context.cpp:78
+#, fuzzy
+#| msgid "Function"
+msgctxt "ProfileContext|"
+msgid "Function"
+msgstr "Συνάρτηση"
+
+#: libcore/context.cpp:79
+#, fuzzy
+#| msgid "Function Cycle"
+msgctxt "ProfileContext|"
+msgid "Function Cycle"
+msgstr "Κύκλος συνάρτησης"
+
+#: libcore/context.cpp:80
+#, fuzzy
+#| msgid "Part Class"
+msgctxt "ProfileContext|"
+msgid "Part Class"
+msgstr "Κλάση τμήματος"
+
+#: libcore/context.cpp:81
+#, fuzzy
+#| msgid "Class"
+msgctxt "ProfileContext|"
+msgid "Class"
+msgstr "Κλάση"
+
+#: libcore/context.cpp:82
+#, fuzzy
+#| msgid "Part Source File"
+msgctxt "ProfileContext|"
+msgid "Part Source File"
+msgstr "Πηγαίο αρχείο τμήματος"
+
+#: libcore/context.cpp:83
+#, fuzzy
+#| msgid "Source File"
+msgctxt "ProfileContext|"
+msgid "Source File"
+msgstr "Πηγαίο αρχείο"
+
+#: libcore/context.cpp:84
+#, fuzzy
+#| msgid "Part ELF Object"
+msgctxt "ProfileContext|"
+msgid "Part ELF Object"
+msgstr "Αντικείμενο ELF τμήματος"
+
+#: libcore/context.cpp:85
+#, fuzzy
+#| msgid "ELF Object"
+msgctxt "ProfileContext|"
+msgid "ELF Object"
+msgstr "Αντικείμενο ELF"
+
+#: libcore/context.cpp:86
+#, fuzzy
+#| msgid "Profile Part"
+msgctxt "ProfileContext|"
+msgid "Profile Part"
+msgstr "Τμήμα προφίλ"
+
+#: libcore/context.cpp:87
+#, fuzzy
+#| msgid "Program Trace"
+msgctxt "ProfileContext|"
+msgid "Program Trace"
+msgstr "Ίχνος προγράμματος"
+
+#: libcore/costitem.cpp:48
+#, fuzzy, qt-format
+#| msgid "%1 from %2"
+msgctxt "QObject|"
+msgid "%1 from %2"
+msgstr "%1 από %2"
+
+#: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
+#: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
+#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
+#, fuzzy
+#| msgid "(unknown)"
+msgctxt "QObject|"
+msgid "(unknown)"
+msgstr "(άγνωστο)"
+
+#: libcore/globalconfig.cpp:77
+#, fuzzy
+#| msgid "Instruction Fetch"
+msgctxt "QObject|"
+msgid "Instruction Fetch"
+msgstr "Ανάκτηση εντολής"
+
+#: libcore/globalconfig.cpp:78
+#, fuzzy
+#| msgid "Data Read Access"
+msgctxt "QObject|"
+msgid "Data Read Access"
+msgstr "Πρόσβαση ανάγνωσης δεδομένων"
+
+#: libcore/globalconfig.cpp:79
+#, fuzzy
+#| msgid "Data Write Access"
+msgctxt "QObject|"
+msgid "Data Write Access"
+msgstr "Πρόσβαση εγγραφής δεδομένων"
+
+#: libcore/globalconfig.cpp:80
+#, fuzzy
+#| msgid "L1 Instr. Fetch Miss"
+msgctxt "QObject|"
+msgid "L1 Instr. Fetch Miss"
+msgstr "L1 αστοχία ανάκτ. εντολών"
+
+#: libcore/globalconfig.cpp:81
+#, fuzzy
+#| msgid "L1 Data Read Miss"
+msgctxt "QObject|"
+msgid "L1 Data Read Miss"
+msgstr "L1 αστοχία ανάγν. δεδομ."
+
+#: libcore/globalconfig.cpp:82
+#, fuzzy
+#| msgid "L1 Data Write Miss"
+msgctxt "QObject|"
+msgid "L1 Data Write Miss"
+msgstr "L1 αστοχία εγγραφ. δεδομ."
+
+#: libcore/globalconfig.cpp:83
+#, fuzzy
+#| msgid "L2 Instr. Fetch Miss"
+msgctxt "QObject|"
+msgid "L2 Instr. Fetch Miss"
+msgstr "L2 αστοχία ανακτ. εντολών"
+
+#: libcore/globalconfig.cpp:84
+#, fuzzy
+#| msgid "L2 Data Read Miss"
+msgctxt "QObject|"
+msgid "L2 Data Read Miss"
+msgstr "L2 αστοχία ανάγν. δεδομ."
+
+#: libcore/globalconfig.cpp:85
+#, fuzzy
+#| msgid "L2 Data Write Miss"
+msgctxt "QObject|"
+msgid "L2 Data Write Miss"
+msgstr "L2 αστοχία εγγραφ. δεδομ."
+
+#: libcore/globalconfig.cpp:86
+#, fuzzy
+#| msgid "L1 Instr. Fetch Miss"
+msgctxt "QObject|"
+msgid "LL Instr. Fetch Miss"
+msgstr "L1 αστοχία ανάκτ. εντολών"
+
+#: libcore/globalconfig.cpp:87
+#, fuzzy
+#| msgid "L1 Data Read Miss"
+msgctxt "QObject|"
+msgid "LL Data Read Miss"
+msgstr "L1 αστοχία ανάγν. δεδομ."
+
+#: libcore/globalconfig.cpp:88
+#, fuzzy
+#| msgid "L1 Data Write Miss"
+msgctxt "QObject|"
+msgid "LL Data Write Miss"
+msgstr "L1 αστοχία εγγραφ. δεδομ."
+
+#: libcore/globalconfig.cpp:89
+#, fuzzy
+#| msgid "L1 Miss Sum"
+msgctxt "QObject|"
+msgid "L1 Miss Sum"
+msgstr "L1 αστοχία σύνολο"
+
+#: libcore/globalconfig.cpp:90
+#, fuzzy
+#| msgid "L2 Miss Sum"
+msgctxt "QObject|"
+msgid "L2 Miss Sum"
+msgstr "L2 αστοχία σύνολο"
+
+#: libcore/globalconfig.cpp:91
+#, fuzzy
+#| msgid "L1 Miss Sum"
+msgctxt "QObject|"
+msgid "Last-level Miss Sum"
+msgstr "L1 αστοχία σύνολο"
+
+#: libcore/globalconfig.cpp:92
+msgctxt "QObject|"
+msgid "Indirect Branch"
+msgstr ""
+
+#: libcore/globalconfig.cpp:93
+msgctxt "QObject|"
+msgid "Mispredicted Ind. Branch"
+msgstr ""
+
+#: libcore/globalconfig.cpp:94
+msgctxt "QObject|"
+msgid "Conditional Branch"
+msgstr ""
+
+#: libcore/globalconfig.cpp:95
+msgctxt "QObject|"
+msgid "Mispredicted Cond. Branch"
+msgstr ""
+
+#: libcore/globalconfig.cpp:96
+msgctxt "QObject|"
+msgid "Mispredicted Branch"
+msgstr ""
+
+#: libcore/globalconfig.cpp:97
+msgctxt "QObject|"
+msgid "Global Bus Event"
+msgstr ""
+
+#: libcore/globalconfig.cpp:98
+#, fuzzy
+#| msgid "Samples"
+msgctxt "QObject|"
+msgid "Samples"
+msgstr "Δείγματα"
+
+#: libcore/globalconfig.cpp:99
+#, fuzzy
+#| msgid "System Time"
+msgctxt "QObject|"
+msgid "System Time"
+msgstr "Χρόνος συστήματος"
+
+#: libcore/globalconfig.cpp:100
+#, fuzzy
+#| msgid "User Time"
+msgctxt "QObject|"
+msgid "User Time"
+msgstr "Χρόνος χρήστη"
+
+#: libcore/globalconfig.cpp:101
+#, fuzzy
+#| msgid "Cycle Estimation"
+msgctxt "QObject|"
+msgid "Cycle Estimation"
+msgstr "Εκτίμηση κύκλων"
+
+#: libcore/tracedata.cpp:1240
+#, fuzzy
+#| msgid "(no caller)"
+msgctxt "QObject|"
+msgid "(no caller)"
+msgstr "(καμία κλήση)"
+
+#: libcore/tracedata.cpp:1247 libcore/tracedata.cpp:1266
+#, fuzzy, qt-format
+#| msgid "%1 via %2"
+msgctxt "QObject|"
+msgid "%1 via %2"
+msgstr "%1 μέσω %2"
+
+#: libcore/tracedata.cpp:1256
+#, fuzzy
+#| msgid "(no callee)"
+msgctxt "QObject|"
+msgid "(no callee)"
+msgstr "(κανένα κληθέν)"
+
+#: libcore/tracedata.cpp:2709
+msgctxt "QObject|"
+msgid "(global)"
+msgstr ""
+
+#: libcore/tracedata.cpp:3144
+#, fuzzy
+#| msgid "(not found)"
+msgctxt "QObject|"
+msgid "(not found)"
+msgstr "(δε βρέθηκε)"
+
+#: libcore/tracedata.cpp:3692
+#, fuzzy
+#| msgid "Recalculating Function Cycles..."
+msgctxt "TraceData|"
+msgid "Recalculating Function Cycles..."
+msgstr "Επαναϋπολογισμός κύκλων συνάρτησης..."
+
+#: libviews/callgraphview.cpp:414
+#, fuzzy, qt-format
+#| msgid "Call(s) from %1"
+msgctxt "QObject|"
+msgid "Call(s) from %1"
+msgstr "Κλήση(εις) από %1"
+
+#: libviews/callgraphview.cpp:417
+#, fuzzy, qt-format
+#| msgid "Call(s) to %1"
+msgctxt "QObject|"
+msgid "Call(s) to %1"
+msgstr "Κλήση(εις) σε %1"
+
+#: libviews/callgraphview.cpp:419
+#, fuzzy
+#| msgid "(unknown call)"
+msgctxt "QObject|"
+msgid "(unknown call)"
+msgstr "(άγνωστη κλήση)"
+
+#: libviews/callgraphview.cpp:908
+#, fuzzy
+#| msgid "Export Graph"
+msgctxt "QObject|"
+msgid "Export Graph"
+msgstr "Εξαγωγή γραφήματος"
+
+#: libviews/callgraphview.cpp:1608
+#, fuzzy
+#| msgid ""
+#| "<b>Call Graph around active Function</b><p>Depending on configuration, "
+#| "this view shows the call graph environment of the active function. Note: "
+#| "the shown cost is <b>only</b> the cost which is spent while the active "
+#| "function was actually running; i.e. the cost shown for main() - if it is "
+#| "visible - should be the same as the cost of the active function, as that "
+#| "is the part of inclusive cost of main() spent while the active function "
+#| "was running.</p><p>For cycles, blue call arrows indicate that this is an "
+#| "artificial call added for correct drawing which actually never happened.</"
+#| "p><p>If the graph is larger than the widget area, an overview panner is "
+#| "shown in one edge. There are similar visualization options to the Call "
+#| "Treemap; the selected function is highlighted.</p>"
+msgctxt "CallGraphView|"
+msgid ""
+"<b>Call Graph around active Function</b><p>Depending on configuration, this "
+"view shows the call graph environment of the active function. Note: the "
+"shown cost is <b>only</b> the cost which is spent while the active function "
+"was actually running; i.e. the cost shown for main() - if it is visible - "
+"should be the same as the cost of the active function, as that is the part "
+"of inclusive cost of main() spent while the active function was running.</"
+"p><p>For cycles, blue call arrows indicate that this is an artificial call "
+"added for correct drawing which actually never happened.</p><p>If the graph "
+"is larger than the widget area, an overview panner is shown in one edge. "
+"There are similar visualization options to the Call Treemap; the selected "
+"function is highlighted.</p>"
+msgstr ""
+"<b>Γράφημα κλήσεων της ενεργής συνάρτησης</b><p>Ανάλογα με τις ρυθμίσεις, "
+"αυτή η προβολή εμφανίζει το γράφημα κλήσεων της ενεργής συνάρτησης. "
+"Σημείωση: το εμφανιζόμενο κόστος είναι <b>μόνο</b> το κόστος εκτέλεσης της "
+"ίδιας της ενεργής συνάρτησης: π.χ. το εμφανιζόμενο κόστος της main() - αν "
+"είναι ορατό - θα είναι το ίδιο με το κόστος της ενεργής συνάρτησης, καθώς "
+"αυτό είναι το τμήμα του συνολικού κόστους της main() κατά την εκτέλεση της "
+"ενεργής συνάρτησης.</p><p>Για τους κύκλους, τα μπλε βέλη κλήσης υποδηλώνουν "
+"μια τεχνητή κλήση που προστέθηκε για τη σωστή σχεδίαση ενώ δεν έχει συμβεί "
+"ποτέ.</p><p>Αν το γράφημα είναι μεγαλύτερο της περιοχής του γραφικού "
+"συστατικού, θα εμφανιστεί μια πανοραμική προβολή στο ένα άκρο.Υπάρχουν "
+"παρόμοιες ρυθμίσεις οπτικοποίησης στο δέντρο αντιστοιχιών κλήσεων: η "
+"επιλεγμένη συνάρτηση είναι τονισμένη</p>"
+
+#: libviews/callgraphview.cpp:2020
+#, fuzzy
+#| msgid ""
+#| "Warning: a long lasting graph layouting is in progress.\n"
+#| "Reduce node/edge limits for speedup.\n"
+msgctxt "CallGraphView|"
+msgid ""
+"Warning: a long lasting graph layouting is in progress.\n"
+"Reduce node/edge limits for speedup.\n"
+msgstr ""
+"Προειδοποίηση: βρίσκεται σε εξέλιξη η δημιουργία μιας διάταξης γραφήματος "
+"που θα διαρκέσει αρκετά.\n"
+"Μειώστε τα όρια κόμβων/άκρων για την επιτάχυνσή της.\n"
+
+#: libviews/callgraphview.cpp:2023
+#, fuzzy
+#| msgid "Layouting stopped.\n"
+msgctxt "CallGraphView|"
+msgid "Layouting stopped.\n"
+msgstr "Η δημιουργία διάταξης σταμάτησε.\n"
+
+#: libviews/callgraphview.cpp:2025
+#, fuzzy, qt-format
+#| msgid "The call graph has %1 nodes and %2 edges.\n"
+msgctxt "CallGraphView|"
+msgid "The call graph has %1 nodes and %2 edges.\n"
+msgstr "Το γράφημα κλήσεων έχει %1 κόμβους και %2 άκρων.\n"
+
+#: libviews/callgraphview.cpp:2034
+#, fuzzy
+#| msgid "No graph available because the layouting process failed.\n"
+msgctxt "CallGraphView|"
+msgid "No graph available because the layouting process failed.\n"
+msgstr ""
+"Το γράφημα δεν είναι διαθέσιμο καθώς η διεργασία δημιουργίας διάταξης "
+"απέτυχε.\n"
+
+#: libviews/callgraphview.cpp:2036
+#, fuzzy, qt-format
+#| msgid ""
+#| "Trying to run the following command did not work:\n"
+#| "'%1'\n"
+msgctxt "CallGraphView|"
+msgid ""
+"Trying to run the following command did not work:\n"
+"'%1'\n"
+msgstr ""
+"Αποτυχία προσπάθειας εκτέλεσης της παρακάτω εντολής:\n"
+"'%1'\n"
+
+#: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
+#, fuzzy
+#| msgid "Please check that 'dot' is installed (package GraphViz)."
+msgctxt "CallGraphView|"
+msgid "Please check that 'dot' is installed (package GraphViz)."
+msgstr "Παρακαλώ ελέγξτε ότι το 'dot' είναι εγκατεστημένο (πακέτο GraphViz)."
+
+#: libviews/callgraphview.cpp:2080
+#, fuzzy
+#| msgid "No item activated for which to draw the call graph."
+msgctxt "CallGraphView|"
+msgid "No item activated for which to draw the call graph."
+msgstr ""
+"Δεν ενεργοποιήθηκε κανένα αντικείμενο για τη σχεδίαση γραφήματος κλήσεων."
+
+#: libviews/callgraphview.cpp:2092
+#, fuzzy
+#| msgid "No call graph can be drawn for the active item."
+msgctxt "CallGraphView|"
+msgid "No call graph can be drawn for the active item."
+msgstr "Αδυναμία σχεδίασης γραφήματος κλήσεων για το ενεργό αντικείμενο."
+
+#: libviews/callgraphview.cpp:2554
+#, fuzzy
+#| msgid "Error running the graph layouting tool.\n"
+msgctxt "CallGraphView|"
+msgid "Error running the graph layouting tool.\n"
+msgstr ""
+"Σφάλμα κατά την εκτέλεση του εργαλείου δημιουργίας διάταξης γραφήματος.\n"
+
+#: libviews/callgraphview.cpp:2559
+#, fuzzy, qt-format
+#| msgid ""
+#| "There is no call graph available for function\n"
+#| "\t'%1'\n"
+#| "because it has no cost of the selected event type."
+msgctxt "CallGraphView|"
+msgid ""
+"There is no call graph available for function\n"
+"\t'%1'\n"
+"because it has no cost of the selected event type."
+msgstr ""
+"Δεν υπάρχει διαθέσιμο γράφημα κλήσεων για τη συνάρτηση\n"
+"\t'%1'\n"
+"επειδή δεν έχει κόστος για τον επιλεγμένο τύπο γεγονότος."
+
+#: libviews/callgraphview.cpp:2773
+#, fuzzy
+#| msgid "Caller Depth"
+msgctxt "CallGraphView|"
+msgid "Caller Depth"
+msgstr "Βάθος κλήσεων"
+
+#: libviews/callgraphview.cpp:2774 libviews/callgraphview.cpp:2814
+#, fuzzy
+#| msgid "Unlimited"
+msgctxt "CallGraphView|"
+msgid "Unlimited"
+msgstr "Απεριόριστο"
+
+#: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
+#, fuzzy
+#| msgctxt "None"
+#| msgid "Depth 0"
+msgctxt "CallGraphView|None"
+msgid "Depth 0"
+msgstr "Βάθος 0"
+
+#: libviews/callgraphview.cpp:2778 libviews/callgraphview.cpp:2818
+#, fuzzy
+#| msgid "max. 10"
+msgctxt "CallGraphView|"
+msgid "max. 1"
+msgstr "μεγ. 10"
+
+#: libviews/callgraphview.cpp:2779 libviews/callgraphview.cpp:2819
+#, fuzzy
+#| msgid "max. 2"
+msgctxt "CallGraphView|"
+msgid "max. 2"
+msgstr "μεγ. 2"
+
+#: libviews/callgraphview.cpp:2780 libviews/callgraphview.cpp:2820
+#, fuzzy
+#| msgid "max. 5"
+msgctxt "CallGraphView|"
+msgid "max. 5"
+msgstr "μεγ. 5"
+
+#: libviews/callgraphview.cpp:2781 libviews/callgraphview.cpp:2821
+#, fuzzy
+#| msgid "max. 10"
+msgctxt "CallGraphView|"
+msgid "max. 10"
+msgstr "μεγ. 10"
+
+#: libviews/callgraphview.cpp:2782 libviews/callgraphview.cpp:2822
+#, fuzzy
+#| msgid "max. 15"
+msgctxt "CallGraphView|"
+msgid "max. 15"
+msgstr "μεγ. 15"
+
+#: libviews/callgraphview.cpp:2813
+#, fuzzy
+#| msgid "Callee Depth"
+msgctxt "CallGraphView|"
+msgid "Callee Depth"
+msgstr "Βάθος κληθέντων"
+
+#: libviews/callgraphview.cpp:2853
+#, fuzzy
+#| msgid "Min. Node Cost"
+msgctxt "CallGraphView|"
+msgid "Min. Node Cost"
+msgstr "Ελάχ. κόστος κόμβου"
+
+#: libviews/callgraphview.cpp:2854
+#, fuzzy
+#| msgid "No Minimum"
+msgctxt "CallGraphView|"
+msgid "No Minimum"
+msgstr "Χωρίς ελάχιστο"
+
+#: libviews/callgraphview.cpp:2860
+#, fuzzy
+#| msgid "50 %"
+msgctxt "CallGraphView|"
+msgid "50 %"
+msgstr "50 %"
+
+#: libviews/callgraphview.cpp:2861
+#, fuzzy
+#| msgid "20 %"
+msgctxt "CallGraphView|"
+msgid "20 %"
+msgstr "20 %"
+
+#: libviews/callgraphview.cpp:2862
+#, fuzzy
+#| msgid "10 %"
+msgctxt "CallGraphView|"
+msgid "10 %"
+msgstr "10 %"
+
+#: libviews/callgraphview.cpp:2863
+#, fuzzy
+#| msgid "5 %"
+msgctxt "CallGraphView|"
+msgid "5 %"
+msgstr "5 %"
+
+#: libviews/callgraphview.cpp:2864
+#, fuzzy
+#| msgid "2 %"
+msgctxt "CallGraphView|"
+msgid "2 %"
+msgstr "2 %"
+
+#: libviews/callgraphview.cpp:2865
+#, fuzzy
+#| msgid "1 %"
+msgctxt "CallGraphView|"
+msgid "1 %"
+msgstr "1 %"
+
+#: libviews/callgraphview.cpp:2895
+#, fuzzy
+#| msgid "Min. Call Cost"
+msgctxt "CallGraphView|"
+msgid "Min. Call Cost"
+msgstr "Ελάχ. κόστος κλήσης"
+
+#: libviews/callgraphview.cpp:2896
+#, fuzzy
+#| msgid "Same as Node"
+msgctxt "CallGraphView|"
+msgid "Same as Node"
+msgstr "Όμοια με τον κόμβο"
+
+#: libviews/callgraphview.cpp:2898
+#, fuzzy
+#| msgid "50 % of Node"
+msgctxt "CallGraphView|"
+msgid "50 % of Node"
+msgstr "50 % του κόμβου"
+
+#: libviews/callgraphview.cpp:2900
+#, fuzzy
+#| msgid "20 % of Node"
+msgctxt "CallGraphView|"
+msgid "20 % of Node"
+msgstr "20 % του κόμβου"
+
+#: libviews/callgraphview.cpp:2902
+#, fuzzy
+#| msgid "10 % of Node"
+msgctxt "CallGraphView|"
+msgid "10 % of Node"
+msgstr "10 % του κόμβου"
+
+#: libviews/callgraphview.cpp:2931
+#, fuzzy
+#| msgid "Birds-eye View"
+msgctxt "CallGraphView|"
+msgid "Birds-eye View"
+msgstr "Πανοραμική προβολή"
+
+#: libviews/callgraphview.cpp:2932
+#, fuzzy
+#| msgid "Top Left"
+msgctxt "CallGraphView|"
+msgid "Top Left"
+msgstr "Πάνω αριστερά"
+
+#: libviews/callgraphview.cpp:2933
+#, fuzzy
+#| msgid "Top Right"
+msgctxt "CallGraphView|"
+msgid "Top Right"
+msgstr "Πάνω δεξιά"
+
+#: libviews/callgraphview.cpp:2934
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "CallGraphView|"
+msgid "Bottom Left"
+msgstr "Κάτω αριστερά"
+
+#: libviews/callgraphview.cpp:2935
+#, fuzzy
+#| msgid "Bottom Right"
+msgctxt "CallGraphView|"
+msgid "Bottom Right"
+msgstr "Κάτω δεξιά"
+
+#: libviews/callgraphview.cpp:2936
+#, fuzzy
+#| msgid "Automatic"
+msgctxt "CallGraphView|"
+msgid "Automatic"
+msgstr "Αυτόματο"
+
+#: libviews/callgraphview.cpp:2937
+#, fuzzy
+#| msgid "Hide"
+msgctxt "CallGraphView|"
+msgid "Hide"
+msgstr "Απόκρυψη"
+
+#: libviews/callgraphview.cpp:2967
+#, fuzzy
+#| msgid "Layout"
+msgctxt "CallGraphView|"
+msgid "Layout"
+msgstr "Διάταξη"
+
+#: libviews/callgraphview.cpp:2968
+#, fuzzy
+#| msgid "Top to Down"
+msgctxt "CallGraphView|"
+msgid "Top to Down"
+msgstr "Πάνω προς τα κάτω"
+
+#: libviews/callgraphview.cpp:2969
+#, fuzzy
+#| msgid "Left to Right"
+msgctxt "CallGraphView|"
+msgid "Left to Right"
+msgstr "Αριστερά προς τα δεξιά"
+
+#: libviews/callgraphview.cpp:2970
+#, fuzzy
+#| msgid "Circular"
+msgctxt "CallGraphView|"
+msgid "Circular"
+msgstr "Κυκλικά"
+
+#: libviews/callgraphview.cpp:3010 libviews/callgraphview.cpp:3015
+#: libviews/callgraphview.cpp:3035
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "CallGraphView|"
+msgid "Go to '%1'"
+msgstr "Μετάβαση σε '%1'"
+
+#: libviews/callgraphview.cpp:3046
+#, fuzzy
+#| msgid "Stop Layouting"
+msgctxt "CallGraphView|"
+msgid "Stop Layouting"
+msgstr "Σταμάτημα δημιουργίας διάταξης"
+
+#: libviews/callgraphview.cpp:3053
+#, fuzzy
+#| msgid "Export Graph"
+msgctxt "CallGraphView|"
+msgid "Export Graph"
+msgstr "Εξαγωγή γραφήματος"
+
+#: libviews/callgraphview.cpp:3054
+msgctxt "CallGraphView|"
+msgid "As DOT file..."
+msgstr ""
+
+#: libviews/callgraphview.cpp:3055
+#, fuzzy
+#| msgid "As Image ..."
+msgctxt "CallGraphView|"
+msgid "As Image..."
+msgstr "Ως εικόνα..."
+
+#: libviews/callgraphview.cpp:3058
+#, fuzzy
+#| msgid "Graph"
+msgctxt "CallGraphView|"
+msgid "Graph"
+msgstr "Γράφημα"
+
+#: libviews/callgraphview.cpp:3066
+#, fuzzy
+#| msgid "Arrows for Skipped Calls"
+msgctxt "CallGraphView|"
+msgid "Arrows for Skipped Calls"
+msgstr "Βέλη για παράλειψη κλήσεων"
+
+#: libviews/callgraphview.cpp:3071
+#, fuzzy
+#| msgid "Inner-cycle Calls"
+msgctxt "CallGraphView|"
+msgid "Inner-cycle Calls"
+msgstr "Κλήσεις εσώτερου κύκλου"
+
+#: libviews/callgraphview.cpp:3076
+#, fuzzy
+#| msgid "Cluster Groups"
+msgctxt "CallGraphView|"
+msgid "Cluster Groups"
+msgstr "Ομάδες συστοιχιών"
+
+#: libviews/callgraphview.cpp:3080
+#, fuzzy
+#| msgid "Visualization"
+msgctxt "CallGraphView|"
+msgid "Visualization"
+msgstr "Οπτικοποίηση"
+
+#: libviews/callgraphview.cpp:3081
+#, fuzzy
+#| msgid "Compact"
+msgctxt "CallGraphView|"
+msgid "Compact"
+msgstr "Συμπαγές"
+
+#: libviews/callgraphview.cpp:3084
+#, fuzzy
+#| msgid "Normal"
+msgctxt "CallGraphView|"
+msgid "Normal"
+msgstr "Κανονικό"
+
+#: libviews/callgraphview.cpp:3087
+#, fuzzy
+#| msgid "Tall"
+msgctxt "CallGraphView|"
+msgid "Tall"
+msgstr "Υψηλό"
+
+#: libviews/callgraphview.cpp:3119
+#, fuzzy
+#| msgid "Export Graph"
+msgctxt "CallGraphView|"
+msgid "Export Graph As Image"
+msgstr "Εξαγωγή γραφήματος"
+
+#: libviews/callgraphview.cpp:3121
+msgctxt "CallGraphView|"
+msgid "Images (*.png *.jpg)"
+msgstr ""
+
+#: libviews/callitem.cpp:73 libviews/partlistitem.cpp:131
+msgctxt "QObject|"
+msgid "(active)"
+msgstr ""
+
+#: libviews/callmapview.cpp:52
+msgctxt "CallMapView|Name"
+msgid "A thing's name"
+msgstr ""
+
+#: libviews/callmapview.cpp:53
+#, fuzzy
+#| msgid "Cost"
+msgctxt "CallMapView|"
+msgid "Cost"
+msgstr "Σύνολο %1 Κόστος: %2"
+
+#: libviews/callmapview.cpp:54
+#, fuzzy
+#| msgid "Function"
+msgctxt "CallMapView|"
+msgid "Location"
+msgstr "Συνάρτηση"
+
+#: libviews/callmapview.cpp:56
+#, fuzzy
+#| msgid "Calls"
+msgctxt "CallMapView|"
+msgid "Calls"
+msgstr "Κλήσεις"
+
+#: libviews/callmapview.cpp:91
+msgctxt "CallMapView|"
+msgid ""
+"<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+
+#: libviews/callmapview.cpp:98
+msgctxt "CallMapView|"
+msgid ""
+"<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+
+#: libviews/callmapview.cpp:106
+msgctxt "CallMapView|"
+msgid ""
+"<p>Appearance options can be found in the in the context menu. To get exact "
+"size proportions, choose 'Hide incorrect borders'. As this mode can be "
+"<em>very</em> time consuming, you may want to limit the maximum drawn "
+"nesting level before. 'Best' determinates the split direction for children "
+"from the aspect ratio of the parent. 'Always Best' decides on remaining "
+"space for each sibling. 'Ignore Proportions' takes space for function name "
+"drawing <em>before</em> drawing children. Note that size proportions can get "
+"<em>heavily</em> wrong.</p><p>This is a <em>TreeMap</em> widget. Keyboard "
+"navigation is available with the left/right arrow keys for traversing "
+"siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
+"em> activates the current item.</p>"
+msgstr ""
+
+#: libviews/callmapview.cpp:139
+msgctxt "CallMapView|"
+msgid "Go To"
+msgstr ""
+
+#: libviews/callmapview.cpp:170
+msgctxt "CallMapView|"
+msgid "Stop at Depth"
+msgstr ""
+
+#: libviews/callmapview.cpp:171
+msgctxt "CallMapView|"
+msgid "No Depth Limit"
+msgstr ""
+
+#: libviews/callmapview.cpp:173
+#, fuzzy
+#| msgctxt "None"
+#| msgid "Depth 0"
+msgctxt "CallMapView|"
+msgid "Depth 10"
+msgstr "Βάθος 0"
+
+#: libviews/callmapview.cpp:174
+#, fuzzy
+#| msgctxt "None"
+#| msgid "Depth 0"
+msgctxt "CallMapView|"
+msgid "Depth 15"
+msgstr "Βάθος 0"
+
+#: libviews/callmapview.cpp:175
+#, fuzzy
+#| msgctxt "None"
+#| msgid "Depth 0"
+msgctxt "CallMapView|"
+msgid "Depth 20"
+msgstr "Βάθος 0"
+
+#: libviews/callmapview.cpp:178
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Depth of '%1' (%2)"
+msgstr ""
+
+#: libviews/callmapview.cpp:185
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Decrement Depth (to %1)"
+msgstr ""
+
+#: libviews/callmapview.cpp:187
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Increment Depth (to %1)"
+msgstr ""
+
+#: libviews/callmapview.cpp:213
+#, fuzzy
+#| msgid "Part Function"
+msgctxt "CallMapView|"
+msgid "Stop at Function"
+msgstr "Συνάρτηση τμήματος"
+
+#: libviews/callmapview.cpp:214
+#, fuzzy
+#| msgid "Zoom Function"
+msgctxt "CallMapView|"
+msgid "No Function Limit"
+msgstr "Εστίαση συνάρτησης"
+
+#: libviews/callmapview.cpp:257
+msgctxt "CallMapView|"
+msgid "Stop at Area"
+msgstr ""
+
+#: libviews/callmapview.cpp:258
+msgctxt "CallMapView|"
+msgid "No Area Limit"
+msgstr ""
+
+#: libviews/callmapview.cpp:260
+msgctxt "CallMapView|"
+msgid "100 Pixels"
+msgstr ""
+
+#: libviews/callmapview.cpp:261
+msgctxt "CallMapView|"
+msgid "200 Pixels"
+msgstr ""
+
+#: libviews/callmapview.cpp:262
+msgctxt "CallMapView|"
+msgid "500 Pixels"
+msgstr ""
+
+#: libviews/callmapview.cpp:263
+msgctxt "CallMapView|"
+msgid "1000 Pixels"
+msgstr ""
+
+#: libviews/callmapview.cpp:269
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Area of '%1' (%2)"
+msgstr ""
+
+#: libviews/callmapview.cpp:275
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Double Area Limit (to %1)"
+msgstr ""
+
+#: libviews/callmapview.cpp:277
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Half Area Limit (to %1)"
+msgstr ""
+
+#: libviews/callmapview.cpp:327
+#, fuzzy
+#| msgid "Visualization"
+msgctxt "CallMapView|"
+msgid "Visualization"
+msgstr "Οπτικοποίηση"
+
+#: libviews/callmapview.cpp:328
+#, fuzzy
+#| msgid "Stack Selection"
+msgctxt "CallMapView|"
+msgid "Split Direction"
+msgstr "Επιλογή στοίβας"
+
+#: libviews/callmapview.cpp:331
+msgctxt "CallMapView|"
+msgid "Skip Incorrect Borders"
+msgstr ""
+
+#: libviews/callmapview.cpp:336
+msgctxt "CallMapView|"
+msgid "Border Width"
+msgstr ""
+
+#: libviews/callmapview.cpp:337
+msgctxt "CallMapView|"
+msgid "Border 0"
+msgstr ""
+
+#: libviews/callmapview.cpp:339
+msgctxt "CallMapView|"
+msgid "Border 1"
+msgstr ""
+
+#: libviews/callmapview.cpp:340
+msgctxt "CallMapView|"
+msgid "Border 2"
+msgstr ""
+
+#: libviews/callmapview.cpp:341
+msgctxt "CallMapView|"
+msgid "Border 3"
+msgstr ""
+
+#: libviews/callmapview.cpp:346
+#, fuzzy
+#| msgid "Draw Names"
+msgctxt "CallMapView|"
+msgid "Draw Symbol Names"
+msgstr "Σχεδίαση ονομάτων"
+
+#: libviews/callmapview.cpp:348
+#, fuzzy
+#| msgid "Draw Costs"
+msgctxt "CallMapView|"
+msgid "Draw Cost"
+msgstr "Σχεδίαση κόστους"
+
+#: libviews/callmapview.cpp:350
+#, fuzzy
+#| msgid "Draw Costs"
+msgctxt "CallMapView|"
+msgid "Draw Location"
+msgstr "Σχεδίαση κόστους"
+
+#: libviews/callmapview.cpp:352
+#, fuzzy
+#| msgid "Draw Costs"
+msgctxt "CallMapView|"
+msgid "Draw Calls"
+msgstr "Σχεδίαση κόστους"
+
+#: libviews/callmapview.cpp:356
+#, fuzzy
+#| msgid "Ignore Proportions"
+msgctxt "CallMapView|"
+msgid "Ignore Proportions"
+msgstr "Αγνόηση αναλογιών"
+
+#: libviews/callmapview.cpp:358
+#, fuzzy
+#| msgid "Allow Rotation"
+msgctxt "CallMapView|"
+msgid "Allow Rotation"
+msgstr "Επίτρεψε περιστροφή"
+
+#: libviews/callmapview.cpp:376
+msgctxt "CallMapView|"
+msgid "Shading"
+msgstr ""
+
+#: libviews/callmapview.cpp:428
+#, fuzzy, qt-format
+#| msgid "Profile Part Overview: Current is '%1'"
+msgctxt "CallMapView|"
+msgid "Call Map: Current is '%1'"
+msgstr "Περίληψη τμήματος προφίλ: τρέχον '%1'"
+
+#: libviews/callmapview.cpp:621
+#, fuzzy
+#| msgid "Zoom Function"
+msgctxt "QObject|"
+msgid "(no function)"
+msgstr "Εστίαση συνάρτησης"
+
+#: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
+#, fuzzy
+#| msgid "(no caller)"
+msgctxt "QObject|"
+msgid "(no call)"
+msgstr "(καμία κλήση)"
+
+#: libviews/callview.cpp:37
+#, fuzzy
+#| msgid "Cost"
+msgctxt "CallView|"
+msgid "Cost"
+msgstr "Σύνολο %1 Κόστος: %2"
+
+#: libviews/callview.cpp:38
+msgctxt "CallView|"
+msgid "Cost per call"
+msgstr ""
+
+#: libviews/callview.cpp:39
+#, fuzzy
+#| msgid "Cost 2"
+msgctxt "CallView|"
+msgid "Cost 2"
+msgstr "Κόστος 2"
+
+#: libviews/callview.cpp:40
+msgctxt "CallView|"
+msgid "Cost 2 per call"
+msgstr ""
+
+#: libviews/callview.cpp:41
+msgctxt "CallView|"
+msgid "Count"
+msgstr ""
+
+#: libviews/callview.cpp:42
+#, fuzzy
+#| msgid "Callers"
+msgctxt "CallView|"
+msgid "Caller"
+msgstr "Κλήσεις"
+
+#: libviews/callview.cpp:42
+#, fuzzy
+#| msgid "Callees"
+msgctxt "CallView|"
+msgid "Callee"
+msgstr "Κληθέντα"
+
+#: libviews/callview.cpp:76
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callers</b><p>This list shows all functions calling the "
+"current selected one directly, together with a call count and the cost spent "
+"in the current selected function while being called from the function from "
+"the list.</p><p>An icon instead of an inclusive cost specifies that this is "
+"a call inside of a recursive cycle. An inclusive cost makes no sense here.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+
+#: libviews/callview.cpp:89
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callees</b><p>This list shows all functions called by the "
+"current selected one directly, together with a call count and the cost spent "
+"in this function while being called from the selected function.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+
+#: libviews/callview.cpp:118 libviews/callview.cpp:123
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "CallView|"
+msgid "Go to '%1'"
+msgstr "Μετάβαση σε '%1'"
+
+#: libviews/callview.cpp:257 libviews/callview.cpp:261
+#, qt-format
+msgctxt "CallView|"
+msgid "%1 per call"
+msgstr ""
+
+#: libviews/costlistitem.cpp:53
+#, qt-format
+msgctxt "QObject|"
+msgid "(%n item(s) skipped)"
+msgid_plural "(%n item(s) skipped)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
+#, qt-format
+msgctxt "QObject|"
+msgid "(%n function(s) skipped)"
+msgid_plural "(%n function(s) skipped)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: libviews/coverageview.cpp:37
+msgctxt "CoverageView|"
+msgid "Incl."
+msgstr ""
+
+#: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
+msgctxt "CoverageView|"
+msgid "Distance"
+msgstr ""
+
+#: libviews/coverageview.cpp:41
+#, fuzzy
+#| msgid "Call"
+msgctxt "CoverageView|"
+msgid "Called"
+msgstr "Κλήση"
+
+#: libviews/coverageview.cpp:42
+#, fuzzy
+#| msgid "Callers"
+msgctxt "CoverageView|"
+msgid "Caller"
+msgstr "Κλήσεις"
+
+#: libviews/coverageview.cpp:46
+msgctxt "CoverageView|"
+msgid "Self"
+msgstr ""
+
+#: libviews/coverageview.cpp:48
+#, fuzzy
+#| msgid "Call"
+msgctxt "CoverageView|"
+msgid "Calling"
+msgstr "Κλήση"
+
+#: libviews/coverageview.cpp:49
+#, fuzzy
+#| msgid "Callees"
+msgctxt "CoverageView|"
+msgid "Callee"
+msgstr "Κληθέντα"
+
+#: libviews/coverageview.cpp:84
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callers</b><p>This list shows all functions calling the "
+"current selected one, either directly or with several functions in-between "
+"on the stack; the number of functions in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the selected function while a "
+"listed function is active; relative cost is the percentage of all cost spent "
+"in the selected function while the listed one is active. The cost graphic "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls from the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+
+#: libviews/coverageview.cpp:114
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callees</b><p>This list shows all functions called by the "
+"current selected one, either directly or with several function in-between on "
+"the stack; the number of function in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the listed function while the "
+"selected is active; relative cost is the percentage of all cost spent in the "
+"listed function while the selected one is active. The cost graphic always "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls to the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+
+#: libviews/coverageview.cpp:160
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "CoverageView|"
+msgid "Go to '%1'"
+msgstr "Μετάβαση σε '%1'"
+
+#: libviews/eventtypeitem.cpp:48
+#, fuzzy
+#| msgid "Unknown Context"
+msgctxt "QObject|"
+msgid "Unknown Type"
+msgstr "Άγνωστο περιεχόμενο"
+
+#: libviews/eventtypeview.cpp:37
+msgctxt "EventTypeView|"
+msgid "Event Type"
+msgstr ""
+
+#: libviews/eventtypeview.cpp:38
+msgctxt "EventTypeView|"
+msgid "Incl."
+msgstr ""
+
+#: libviews/eventtypeview.cpp:39
+msgctxt "EventTypeView|"
+msgid "Self"
+msgstr ""
+
+#: libviews/eventtypeview.cpp:40
+msgctxt "EventTypeView|"
+msgid "Short"
+msgstr ""
+
+#: libviews/eventtypeview.cpp:42
+msgctxt "EventTypeView|"
+msgid "Formula"
+msgstr ""
+
+#: libviews/eventtypeview.cpp:76
+msgctxt "EventTypeView|"
+msgid ""
+"<b>Cost Types List</b><p>This list shows all cost types available and what "
+"the self/inclusive cost of the current selected function is for that cost "
+"type.</p><p>By choosing a cost type from the list, you change the cost type "
+"of costs shown all over KCachegrind to be the selected one.</p>"
+msgstr ""
+
+#: libviews/eventtypeview.cpp:96
+msgctxt "EventTypeView|"
+msgid "Set as Secondary Event Type"
+msgstr ""
+
+#: libviews/eventtypeview.cpp:98
+msgctxt "EventTypeView|"
+msgid "Hide Secondary Event Type"
+msgstr ""
+
+#: libviews/eventtypeview.cpp:107
+msgctxt "EventTypeView|"
+msgid "Edit Long Name"
+msgstr ""
+
+#: libviews/eventtypeview.cpp:108
+msgctxt "EventTypeView|"
+msgid "Edit Short Name"
+msgstr ""
+
+#: libviews/eventtypeview.cpp:109
+msgctxt "EventTypeView|"
+msgid "Edit Formula"
+msgstr ""
+
+#: libviews/eventtypeview.cpp:110
+msgctxt "EventTypeView|"
+msgid "Remove"
+msgstr ""
+
+#: libviews/eventtypeview.cpp:119
+msgctxt "EventTypeView|"
+msgid "New Event Type..."
+msgstr ""
+
+#: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
+#, qt-format
+msgctxt "EventTypeView|"
+msgid "New%1"
+msgstr ""
+
+#: libviews/eventtypeview.cpp:160
+#, qt-format
+msgctxt "EventTypeView|"
+msgid "New Event Type %1"
+msgstr ""
+
+#: libviews/functionlistmodel.cpp:45
+msgctxt "FunctionListModel|"
+msgid "Incl."
+msgstr ""
+
+#: libviews/functionlistmodel.cpp:46
+msgctxt "FunctionListModel|"
+msgid "Self"
+msgstr ""
+
+#: libviews/functionlistmodel.cpp:47
+#, fuzzy
+#| msgid "Call"
+msgctxt "FunctionListModel|"
+msgid "Called"
+msgstr "Κλήση"
+
+#: libviews/functionlistmodel.cpp:48
+#, fuzzy
+#| msgid "Function"
+msgctxt "FunctionListModel|"
+msgid "Function"
+msgstr "Συνάρτηση"
+
+#: libviews/functionlistmodel.cpp:49
+#, fuzzy
+#| msgid "Function"
+msgctxt "FunctionListModel|"
+msgid "Location"
+msgstr "Συνάρτηση"
+
+#: libviews/functionlistmodel.cpp:89
+#, qt-format
+msgctxt "FunctionListModel|"
+msgid "(%1 function(s) skipped)"
+msgstr ""
+
+#: libviews/functionselection.cpp:87
+#, fuzzy
+#| msgid "Function Cycle"
+msgctxt "FunctionSelection|"
+msgid "Function Profile"
+msgstr "Κύκλος συνάρτησης"
+
+#: libviews/functionselection.cpp:95
+msgctxt "FunctionSelection|"
+msgid "&Search:"
+msgstr ""
+
+#: libviews/functionselection.cpp:101
+msgctxt "FunctionSelection|"
+msgid "Search Query"
+msgstr ""
+
+#: libviews/functionselection.cpp:116
+msgctxt "FunctionSelection|"
+msgid "Self"
+msgstr ""
+
+#: libviews/functionselection.cpp:116
+msgctxt "FunctionSelection|"
+msgid "Group"
+msgstr ""
+
+#: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
+#, fuzzy
+#| msgid "(No Instruction)"
+msgctxt "FunctionSelection|"
+msgid "(No Grouping)"
+msgstr "(Καμία εντολή)"
+
+#: libviews/functionselection.cpp:209
+msgctxt "FunctionSelection|"
+msgid ""
+"<b>The Flat Profile</b><p>The flat profile contains a group and a function "
+"selection list. The group list contains all groups where costs are spent in, "
+"depending on the chosen group type. The group list is hidden when group type "
+"'Function' is selected.</p><p>The function list contains the functions of "
+"the selected group (or all for 'Function' group type), ordered by the costs "
+"spent therein. Functions with costs less than 1% are hidden on default.</p>"
+msgstr ""
+
+#: libviews/functionselection.cpp:287
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "FunctionSelection|"
+msgid "Go to '%1'"
+msgstr "Μετάβαση σε '%1'"
+
+#: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
+msgctxt "FunctionSelection|"
+msgid "Grouping"
+msgstr ""
+
+#: libviews/functionselection.cpp:353
+msgctxt "FunctionSelection|"
+msgid "No Grouping"
+msgstr ""
+
+#: libviews/instritem.cpp:114 libviews/sourceitem.cpp:94
+#, fuzzy, qt-format
+#| msgid "Active call to '%1'"
+msgctxt "QObject|"
+msgid "Active call to '%1'"
+msgstr "Ενεργή κλήση στο '%1'"
+
+#: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
+#, fuzzy, qt-format
+#| msgid "Call(s) to %1"
+msgctxt "QObject|"
+msgid "Call to '%1'"
+msgstr "Κλήση(εις) σε %1"
+
+#: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
+#, fuzzy, qt-format
+#| msgid "Call(s) to %1"
+msgctxt "QObject|"
+msgid "%n call(s) to '%2'"
+msgid_plural "%n call(s) to '%2'"
+msgstr[0] "Κλήση(εις) σε %1"
+msgstr[1] "Κλήση(εις) σε %1"
+
+#: libviews/instritem.cpp:155
+#, fuzzy, qt-format
+#| msgid "Jump %1 of %2 times to 0x%3"
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to 0x%3"
+msgstr "Άλμα %1 από %2 φορές στο 0x%3"
+
+#: libviews/instritem.cpp:160
+#, fuzzy, qt-format
+#| msgid "Jump %1 times to 0x%2"
+msgctxt "QObject|"
+msgid "Jump %1 times to 0x%2"
+msgstr "Άλμα %1 φορές στο 0x%2"
+
+#: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
+#, fuzzy
+#| msgid "(cycle)"
+msgctxt "QObject|"
+msgid "(cycle)"
+msgstr "(κύκλος)"
+
+#: libviews/instrview.cpp:193
+#, fuzzy
+#| msgid "#"
+msgctxt "InstrView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/instrview.cpp:194
+#, fuzzy
+#| msgid "Cost"
+msgctxt "InstrView|"
+msgid "Cost"
+msgstr "Σύνολο %1 Κόστος: %2"
+
+#: libviews/instrview.cpp:195
+#, fuzzy
+#| msgid "Cost 2"
+msgctxt "InstrView|"
+msgid "Cost 2"
+msgstr "Κόστος 2"
+
+#: libviews/instrview.cpp:197
+#, fuzzy
+#| msgid "Hex"
+msgctxt "InstrView|"
+msgid "Hex"
+msgstr "Δεκαεξ"
+
+#: libviews/instrview.cpp:199
+#, fuzzy
+#| msgid "Assembly Instructions"
+msgctxt "InstrView|"
+msgid "Assembly Instructions"
+msgstr "Εντολές κώδικα μηχανής"
+
+#: libviews/instrview.cpp:200
+#, fuzzy
+#| msgid "Source Position"
+msgctxt "InstrView|"
+msgid "Source Position"
+msgstr "Θέση πηγαίου κώδικα"
+
+#: libviews/instrview.cpp:236
+#, fuzzy
+#| msgid ""
+#| "<b>Annotated Machine Code</b><p>The annotated machine code list shows the "
+#| "assembly instructions of the current selected function together with "
+#| "(self) cost spent while executing an instruction. If this is a call "
+#| "instruction, lines with details on the call happening are inserted into "
+#| "the source: the cost spent inside of the call, the number of calls "
+#| "happening, and the call destination.</p><p>The machine code shown is "
+#| "generated with the 'objdump' utility from the 'binutils' package.</"
+#| "p><p>Select a line with call information to make the destination function "
+#| "of this call current.</p>"
+msgctxt "InstrView|"
+msgid ""
+"<b>Annotated Machine Code</b><p>The annotated machine code list shows the "
+"assembly instructions of the current selected function together with (self) "
+"cost spent while executing an instruction. If this is a call instruction, "
+"lines with details on the call happening are inserted into the source: the "
+"cost spent inside of the call, the number of calls happening, and the call "
+"destination.</p><p>The machine code shown is generated with the 'objdump' "
+"utility from the 'binutils' package.</p><p>Select a line with call "
+"information to make the destination function of this call current.</p>"
+msgstr ""
+"<b>Κώδικας μηχανής με σημειώσεις</b><p>Εμφάνιση των εντολών κώδικα μηχανής "
+"(assembly) της τρέχουσας επιλεγμένης συνάρτησης μαζί με το κόστος (ίδιο) "
+"εκτέλεσης μιας εντολής. Αν πρόκειται για μια εντολή κλήσης, γίνεται εισαγωγή "
+"γραμμών στον πηγαίο κώδικα με λεπτομέρειες σχετικά με την κλήση: το κόστος "
+"εντός της κλήσης, τον αριθμό των κλήσεων και ο προορισμός της κλήσης.</"
+"p><p>Ο κώδικας μηχανής δημιουργείται με το εργαλείο 'objdump' από το πακέτο "
+"'binutils'.</p><p>Επιλέξτε μια γραμμή με πληροφορίες κλήσης για τον ορισμό "
+"της συνάρτησης προορισμού της κλήσης ως τρέχουσα.</p>"
+
+#: libviews/instrview.cpp:265
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "InstrView|"
+msgid "Go to '%1'"
+msgstr "Μετάβαση σε '%1'"
+
+#: libviews/instrview.cpp:270
+#, fuzzy, qt-format
+#| msgid "Go to Address %1"
+msgctxt "InstrView|"
+msgid "Go to Address %1"
+msgstr "Μετάβαση στη διεύθυνση %1"
+
+#: libviews/instrview.cpp:282
+#, fuzzy
+#| msgid "Hex Code"
+msgctxt "InstrView|"
+msgid "Hex Code"
+msgstr "Δεκαεξαδικό"
+
+#: libviews/instrview.cpp:573
+#, fuzzy
+#| msgid "There is no instruction info in the profile data file."
+msgctxt "InstrView|"
+msgid "There is no instruction info in the profile data file."
+msgstr "Δεν υπάρχουν πληροφορίες εντολών στο αρχείο δεδομένων προφίλ."
+
+#: libviews/instrview.cpp:575
+#, fuzzy
+#| msgid "Tip: For Callgrind, rerun with option"
+msgctxt "InstrView|"
+msgid "Tip: For Callgrind, rerun with option"
+msgstr "Συμβουλή: για το Callgrind, εκτελέστε ξανά με την επιλογή"
+
+#: libviews/instrview.cpp:576
+#, fuzzy
+#| msgid "      --dump-instr=yes"
+msgctxt "InstrView|"
+msgid "      --dump-instr=yes"
+msgstr "      --dump-instr=yes"
+
+#: libviews/instrview.cpp:577
+#, fuzzy
+#| msgid "To see (conditional) jumps, additionally specify"
+msgctxt "InstrView|"
+msgid "To see (conditional) jumps, additionally specify"
+msgstr "Για να δείτε (υπό συνθήκη) άλματα , προσθέστε επίσης"
+
+#: libviews/instrview.cpp:578
+#, fuzzy
+#| msgid "      --trace-jump=yes"
+msgctxt "InstrView|"
+msgid "      --collect-jumps=yes"
+msgstr "      --trace-jump=yes"
+
+#: libviews/instrview.cpp:826
+#, fuzzy
+#| msgid "For annotated machine code, the following object file is needed:"
+msgctxt "InstrView|"
+msgid "For annotated machine code, the following object file is needed:"
+msgstr ""
+"Για κώδικα μηχανής με σημειώσεις, απαιτείται το παρακάτω αρχείο αντικειμένου:"
+
+#: libviews/instrview.cpp:831
+#, fuzzy
+#| msgid "This file can not be found."
+msgctxt "InstrView|"
+msgid "This file can not be found."
+msgstr "Το αρχείο δεν μπορεί να βρεθεί."
+
+#: libviews/instrview.cpp:834
+msgctxt "InstrView|"
+msgid "If cross-compiled, set SYSROOT variable."
+msgstr ""
+
+#: libviews/instrview.cpp:858
+#, fuzzy
+#| msgid "There is an error trying to execute the command"
+msgctxt "InstrView|"
+msgid "There is an error trying to execute the command"
+msgstr "Υπάρχει ένα σφάλμα κατά την προσπάθεια εκτέλεσης της εντολής"
+
+#: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
+#, fuzzy
+#| msgid "Check that you have installed 'objdump'."
+msgctxt "InstrView|"
+msgid "Check that you have installed 'objdump'."
+msgstr "Ελέγξτε ότι έχετε εγκατεστημένο το 'objdump'."
+
+#: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
+#, fuzzy
+#| msgid "This utility can be found in the 'binutils' package."
+msgctxt "InstrView|"
+msgid "This utility can be found in the 'binutils' package."
+msgstr "Το εργαλείο αυτό μπορεί να βρεθεί στο πακέτο 'binutils'."
+
+#: libviews/instrview.cpp:966
+#, fuzzy
+#| msgid "(No Instruction)"
+msgctxt "InstrView|"
+msgid "(No Instruction)"
+msgstr "(Καμία εντολή)"
+
+#: libviews/instrview.cpp:1134
+#, qt-format
+msgctxt "InstrView|"
+msgid "There are %n cost line(s) without machine code."
+msgid_plural "There are %n cost line(s) without machine code."
+msgstr[0] ""
+msgstr[1] ""
+
+#: libviews/instrview.cpp:1136
+#, fuzzy
+#| msgid "This happens because the code of"
+msgctxt "InstrView|"
+msgid "This happens because the code of"
+msgstr "Αυτό συμβαίνει γιατί ο κώδικας του"
+
+#: libviews/instrview.cpp:1139
+#, fuzzy
+#| msgid "does not seem to match the profile data file."
+msgctxt "InstrView|"
+msgid "does not seem to match the profile data file."
+msgstr "δεν ταιριάζει με το αρχείο δεδομένων προφίλ."
+
+#: libviews/instrview.cpp:1142
+#, fuzzy
+#| msgid "Are you using an old profile data file or is the above mentioned"
+msgctxt "InstrView|"
+msgid "Are you using an old profile data file or is the above mentioned"
+msgstr "Χρησιμοποιείτε κάποιο παλιό αρχείο δεδομένων ή το παραπάνω"
+
+#: libviews/instrview.cpp:1144
+#, fuzzy
+#| msgid "ELF object from an updated installation/another machine?"
+msgctxt "InstrView|"
+msgid "ELF object from an updated installation/another machine?"
+msgstr ""
+"αντικείμενο ELF προέρχεται από κάποια ενημερωμένη εγκατάσταση/άλλο μηχάνημα;"
+
+#: libviews/instrview.cpp:1152
+#, fuzzy
+#| msgid "There seems to be an error trying to execute the command"
+msgctxt "InstrView|"
+msgid "There seems to be an error trying to execute the command"
+msgstr "Υπάρχει ένα σφάλμα κατά την προσπάθεια εκτέλεσης της εντολής"
+
+#: libviews/instrview.cpp:1156
+#, fuzzy
+#| msgid "Check that the ELF object used in the command exists."
+msgctxt "InstrView|"
+msgid "Check that the ELF object used in the command exists."
+msgstr ""
+"Ελέγξτε ότι το αντικείμενο ELF που χρησιμοποιείται στην εντολή υπάρχει."
+
+#: libviews/partgraph.cpp:154
+#, fuzzy, qt-format
+#| msgid "Profile Part"
+msgctxt "QObject|"
+msgid "Profile Part %1"
+msgstr "Τμήμα προφίλ"
+
+#: libviews/partgraph.cpp:211
+#, fuzzy
+#| msgid "(no trace parts)"
+msgctxt "QObject|"
+msgid "(no trace)"
+msgstr "(κανένα τμήμα ίχνους)"
+
+#: libviews/partgraph.cpp:214
+#, fuzzy
+#| msgid "(no trace parts)"
+msgctxt "QObject|"
+msgid "(no part)"
+msgstr "(κανένα τμήμα ίχνους)"
+
+#: libviews/partlistitem.cpp:39
+msgctxt "QObject|"
+msgid "(none)"
+msgstr ""
+
+#: libviews/partselection.cpp:48
+#, fuzzy
+#| msgid "Parts Overview"
+msgctxt "PartSelection|"
+msgid "Parts Overview"
+msgstr "Περίληψη τμημάτων"
+
+#: libviews/partselection.cpp:61
+#, fuzzy
+#| msgctxt "A thing's name"
+#| msgid "Name"
+msgctxt "PartSelection|A thing's name"
+msgid "Name"
+msgstr "Όνομα"
+
+#: libviews/partselection.cpp:62
+#, fuzzy
+#| msgid "Cost"
+msgctxt "PartSelection|"
+msgid "Cost"
+msgstr "Σύνολο %1 Κόστος: %2"
+
+#: libviews/partselection.cpp:69
+#, fuzzy
+#| msgid "(no trace parts)"
+msgctxt "PartSelection|"
+msgid "(no trace parts)"
+msgstr "(κανένα τμήμα ίχνους)"
+
+#: libviews/partselection.cpp:96
+#, fuzzy
+#| msgid ""
+#| "<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+#| "there are several profile data files from one profile run. The Trace Part "
+#| "Overview dockable shows these, horizontally ordered in execution time; "
+#| "the rectangle sizes are proportional to the total cost spent in the "
+#| "parts. You can select one or several parts to constrain all costs shown "
+#| "to these parts only.</p><p>The parts are further subdivided: there is a "
+#| "partitioning and an callee split mode: <ul><li>Partitioning: You see the "
+#| "partitioning into groups for a trace part, according to the group type "
+#| "selected. E.g. if ELF object groups are selected, you see colored "
+#| "rectangles for each used ELF object (shared library or executable), sized "
+#| "according to the cost spent therein.</li><li>Callee: A rectangle showing "
+#| "the inclusive cost of the current selected function in the trace part is "
+#| "shown. This is split up into smaller rectangles to show the costs of its "
+#| "callees.</li></ul></p>"
+msgctxt "PartSelection|"
+msgid ""
+"<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+"there are several profile data files from one profile run. The Trace Part "
+"Overview dockable shows these, horizontally ordered in execution time; the "
+"rectangle sizes are proportional to the total cost spent in the parts. You "
+"can select one or several parts to constrain all costs shown to these parts "
+"only.</p><p>The parts are further subdivided: there is a partitioning and an "
+"callee split mode: <ul><li>Partitioning: You see the partitioning into "
+"groups for a trace part, according to the group type selected. E.g. if ELF "
+"object groups are selected, you see colored rectangles for each used ELF "
+"object (shared library or executable), sized according to the cost spent "
+"therein.</li><li>Callee: A rectangle showing the inclusive cost of the "
+"current selected function in the trace part is shown. This is split up into "
+"smaller rectangles to show the costs of its callees.</li></ul></p>"
+msgstr ""
+"<b>Η περίληψη τμημάτων</b><p>Ένα ίχνος αποτελείται από πολλαπλά τμήματα "
+"ίχνους όταν υπάρχουν πολλά αρχεία δεδομένων προφίλ από μια εκτέλεση προφίλ. "
+"Η περίληψη τμημάτων εμφανίζει αυτά τα τμήματα, τοποθετημένα οριζόντια κατά "
+"το χρόνο εκτέλεσης: τα μεγέθη των ορθογωνίων είναι ανάλογα με το συνολικό "
+"κόστος των τμημάτων. Μπορείτε να επιλέξετε ένα ή πολλά τμήματα για τον "
+"περιορισμό εμφάνισης του κόστους γι' αυτά τα τμήματα μόνο.</p><p>Τα τμήματα "
+"διαιρούνται επιπλέον: υπάρχουν οι λειτουργίες τμηματοποίησης και διαχωρισμού "
+"κληθέντων: <ul><li>Τμηματοποίηση: εμφάνιση της τηματοποίησης ομάδων για ένα "
+"τμήμα ίχνους, σύμφωνα με τον επιλεγμένο τύπο ομάδας. Π.χ. Αν επιλεγουν οι "
+"ομάδες αντικειμένων ELF, θα δείτε χρωματιστά ορθογώνια για κάθε ένα "
+"αντικείμενο ELF (κοινόχρηστη βιβλιοθήκη ή εκτελέσιμο), με μέγεθος ανάλογα με "
+"το κόστος του.</li><li>Κληθέντα: εμφάνιση ενός ορθογωνίου που ορίζει το "
+"συνολικό κόστος της επιλεγμένης συνάρτησης στο τμήμα ίχνους. Αυτό "
+"διαχωρίζεται σε μικρότερα ορθογώνια που εμφανίζουν το κόστος των κληθέντων "
+"της συνάρτησης.</li></ul></p>"
+
+#: libviews/partselection.cpp:231
+#, fuzzy, qt-format
+#| msgid "Profile Part Overview: Current is '%1'"
+msgctxt "PartSelection|"
+msgid "Profile Part Overview: Current is '%1'"
+msgstr "Περίληψη τμήματος προφίλ: τρέχον '%1'"
+
+#: libviews/partselection.cpp:337
+#, fuzzy, qt-format
+#| msgid "Deselect '%1'"
+msgctxt "PartSelection|"
+msgid "Deselect '%1'"
+msgstr "Αποεπιλογή '%1'"
+
+#: libviews/partselection.cpp:339
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "PartSelection|"
+msgid "Select '%1'"
+msgstr "Επιλογή '%1'"
+
+#: libviews/partselection.cpp:344
+#, fuzzy
+#| msgid "Select All Parts"
+msgctxt "PartSelection|"
+msgid "Select All Parts"
+msgstr "Επιλογή όλων των τμημάτων"
+
+#: libviews/partselection.cpp:345
+#, fuzzy
+#| msgid "Visible Parts"
+msgctxt "PartSelection|"
+msgid "Visible Parts"
+msgstr "Ορατά τμήματα"
+
+#: libviews/partselection.cpp:346
+#, fuzzy
+#| msgid "Hide Selected Parts"
+msgctxt "PartSelection|"
+msgid "Hide Selected Parts"
+msgstr "Απόκρυψη επιλεγμένων τμημάτων"
+
+#: libviews/partselection.cpp:347
+#, fuzzy
+#| msgid "Unhide Hidden Parts"
+msgctxt "PartSelection|"
+msgid "Show Hidden Parts"
+msgstr "Εμφάνιση κρυφών τμημάτων"
+
+#: libviews/partselection.cpp:361
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "PartSelection|"
+msgid "Go to '%1'"
+msgstr "Μετάβαση σε '%1'"
+
+#: libviews/partselection.cpp:370
+#, fuzzy
+#| msgid "Visualization"
+msgctxt "PartSelection|"
+msgid "Visualization"
+msgstr "Οπτικοποίηση"
+
+#: libviews/partselection.cpp:371
+#, fuzzy
+#| msgid "Partitioning Mode"
+msgctxt "PartSelection|"
+msgid "Partitioning Mode"
+msgstr "Λειτουργία τμηματοποίησης"
+
+#: libviews/partselection.cpp:373
+#, fuzzy
+#| msgid "Zoom Function"
+msgctxt "PartSelection|"
+msgid "Zoom Function"
+msgstr "Εστίαση συνάρτησης"
+
+#: libviews/partselection.cpp:375
+#, fuzzy
+#| msgid "Show Direct Calls"
+msgctxt "PartSelection|"
+msgid "Show Direct Calls"
+msgstr "Εμφάνιση άμεσων κλήσεων"
+
+#: libviews/partselection.cpp:376
+#, fuzzy
+#| msgid "Increment Shown Call Levels"
+msgctxt "PartSelection|"
+msgid "Increment Shown Call Levels"
+msgstr "Αύξηση εμφανιζόμενων επιπέδων κλήσεων"
+
+#: libviews/partselection.cpp:377
+#, fuzzy
+#| msgid "Diagram Mode"
+msgctxt "PartSelection|"
+msgid "Diagram Mode"
+msgstr "Λειτουργία διαγράμματος"
+
+#: libviews/partselection.cpp:392
+#, fuzzy
+#| msgid "Draw Names"
+msgctxt "PartSelection|"
+msgid "Draw Names"
+msgstr "Σχεδίαση ονομάτων"
+
+#: libviews/partselection.cpp:394
+#, fuzzy
+#| msgid "Draw Costs"
+msgctxt "PartSelection|"
+msgid "Draw Costs"
+msgstr "Σχεδίαση κόστους"
+
+#: libviews/partselection.cpp:396
+#, fuzzy
+#| msgid "Ignore Proportions"
+msgctxt "PartSelection|"
+msgid "Ignore Proportions"
+msgstr "Αγνόηση αναλογιών"
+
+#: libviews/partselection.cpp:398
+#, fuzzy
+#| msgid "Allow Rotation"
+msgctxt "PartSelection|"
+msgid "Allow Rotation"
+msgstr "Επίτρεψε περιστροφή"
+
+#: libviews/partselection.cpp:400
+#, fuzzy
+#| msgid "Draw Frames"
+msgctxt "PartSelection|"
+msgid "Draw Frames"
+msgstr "Σχεδίαση πλαισίων"
+
+#: libviews/partselection.cpp:414
+#, fuzzy
+#| msgid "Hide Info"
+msgctxt "PartSelection|"
+msgid "Hide Info"
+msgstr "Απόκρυψη πληροφοριών"
+
+#: libviews/partselection.cpp:414
+#, fuzzy
+#| msgid "Show Info"
+msgctxt "PartSelection|"
+msgid "Show Info"
+msgstr "Εμφάνιση πληροφοριών"
+
+#: libviews/partselection.cpp:562
+#, fuzzy
+#| msgid "(no trace loaded)"
+msgctxt "PartSelection|"
+msgid "(no trace loaded)"
+msgstr "(δε φορτώθηκε ίχνος)"
+
+#: libviews/partview.cpp:37
+#, fuzzy
+#| msgid "Profile Part"
+msgctxt "PartView|"
+msgid "Profile Part"
+msgstr "Τμήμα προφίλ"
+
+#: libviews/partview.cpp:38
+msgctxt "PartView|"
+msgid "Incl."
+msgstr ""
+
+#: libviews/partview.cpp:39
+msgctxt "PartView|"
+msgid "Self"
+msgstr ""
+
+#: libviews/partview.cpp:40
+#, fuzzy
+#| msgid "Call"
+msgctxt "PartView|"
+msgid "Called"
+msgstr "Κλήση"
+
+#: libviews/partview.cpp:41
+msgctxt "PartView|"
+msgid "Comment"
+msgstr ""
+
+#: libviews/partview.cpp:68
+msgctxt "PartView|"
+msgid ""
+"<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+"trace. For each part, the self/inclusive cost of the current selected "
+"function, spent in the part, is shown; percentage costs are always relative "
+"to the total cost <em>of the part</em> (not to the whole trace as in the "
+"Trace Part Overview). Also shown are the calls happening to/from the current "
+"function inside of the trace part.</p><p>By choosing one or more trace parts "
+"from the list, the costs shown all over KCachegrind will only be the ones "
+"spent in the selected part(s). If no list selection is shown, in fact all "
+"trace parts are selected implicitly.</p><p>This is a multi-selection list. "
+"You can select ranges by dragging the mouse or use SHIFT/CTRL modifiers. "
+"Selection/Deselection of trace parts can also be done by using the Trace "
+"Part Overview Dockable. This one also supports multiple selection.</"
+"p><p>Note that the list is hidden if only one trace part is loaded.</p>"
+msgstr ""
+
+#: libviews/sourceitem.cpp:141
+#, fuzzy, qt-format
+#| msgid "Jump %1 of %2 times to %3"
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to %3"
+msgstr "Άλμα %1 από %2 φορές στο %3"
+
+#: libviews/sourceitem.cpp:146
+#, fuzzy, qt-format
+#| msgid "Jump %1 times to %2"
+msgctxt "QObject|"
+msgid "Jump %1 times to %2"
+msgstr "Άλμα %1 φορές στο %2"
+
+#: libviews/sourceview.cpp:51
+#, fuzzy
+#| msgid "#"
+msgctxt "SourceView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/sourceview.cpp:52
+#, fuzzy
+#| msgid "Cost"
+msgctxt "SourceView|"
+msgid "Cost"
+msgstr "Σύνολο %1 Κόστος: %2"
+
+#: libviews/sourceview.cpp:53
+#, fuzzy
+#| msgid "Cost 2"
+msgctxt "SourceView|"
+msgid "Cost 2"
+msgstr "Κόστος 2"
+
+#: libviews/sourceview.cpp:55
+#, fuzzy
+#| msgid "Source Line"
+msgctxt "SourceView|"
+msgid "Source"
+msgstr "Γραμμή πηγαίου"
+
+#: libviews/sourceview.cpp:83
+#, fuzzy
+#| msgid ""
+#| "<b>Annotated Machine Code</b><p>The annotated machine code list shows the "
+#| "assembly instructions of the current selected function together with "
+#| "(self) cost spent while executing an instruction. If this is a call "
+#| "instruction, lines with details on the call happening are inserted into "
+#| "the source: the cost spent inside of the call, the number of calls "
+#| "happening, and the call destination.</p><p>The machine code shown is "
+#| "generated with the 'objdump' utility from the 'binutils' package.</"
+#| "p><p>Select a line with call information to make the destination function "
+#| "of this call current.</p>"
+msgctxt "SourceView|"
+msgid ""
+"<b>Annotated Source</b><p>The annotated source list shows the source lines "
+"of the current selected function together with (self) cost spent while "
+"executing the code of this source line. If there was a call in a source "
+"line, lines with details on the call happening are inserted into the source: "
+"the cost spent inside of the call, the number of calls happening, and the "
+"call destination.</p><p>Select a inserted call information line to make the "
+"destination function current.</p>"
+msgstr ""
+"<b>Κώδικας μηχανής με σημειώσεις</b><p>Εμφάνιση των εντολών κώδικα μηχανής "
+"(assembly) της τρέχουσας επιλεγμένης συνάρτησης μαζί με το κόστος (ίδιο) "
+"εκτέλεσης μιας εντολής. Αν πρόκειται για μια εντολή κλήσης, γίνεται εισαγωγή "
+"γραμμών στον πηγαίο κώδικα με λεπτομέρειες σχετικά με την κλήση: το κόστος "
+"εντός της κλήσης, τον αριθμό των κλήσεων και ο προορισμός της κλήσης.</"
+"p><p>Ο κώδικας μηχανής δημιουργείται με το εργαλείο 'objdump' από το πακέτο "
+"'binutils'.</p><p>Επιλέξτε μια γραμμή με πληροφορίες κλήσης για τον ορισμό "
+"της συνάρτησης προορισμού της κλήσης ως τρέχουσα.</p>"
+
+#: libviews/sourceview.cpp:110
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "SourceView|"
+msgid "Go to '%1'"
+msgstr "Μετάβαση σε '%1'"
+
+#: libviews/sourceview.cpp:115
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "SourceView|"
+msgid "Go to Line %1"
+msgstr "Μετάβαση σε '%1'"
+
+#: libviews/sourceview.cpp:627
+msgctxt "SourceView|"
+msgid "There is no cost of current selected type associated"
+msgstr ""
+
+#: libviews/sourceview.cpp:629
+msgctxt "SourceView|"
+msgid "with any source line of this function in file"
+msgstr ""
+
+#: libviews/sourceview.cpp:633
+msgctxt "SourceView|"
+msgid "Thus, no annotated source can be shown."
+msgstr ""
+
+#: libviews/sourceview.cpp:658
+#, qt-format
+msgctxt "SourceView|"
+msgid "--- From '%1' ---"
+msgstr ""
+
+#: libviews/sourceview.cpp:663
+#, qt-format
+msgctxt "SourceView|"
+msgid "--- Inlined from '%1' ---"
+msgstr ""
+
+#: libviews/sourceview.cpp:664
+msgctxt "SourceView|"
+msgid "--- Inlined from unknown source ---"
+msgstr ""
+
+#: libviews/sourceview.cpp:669
+msgctxt "SourceView|"
+msgid "There is no source available for the following function:"
+msgstr ""
+
+#: libviews/sourceview.cpp:674
+msgctxt "SourceView|"
+msgid "This is because no debug information is present."
+msgstr ""
+
+#: libviews/sourceview.cpp:676
+msgctxt "SourceView|"
+msgid "Recompile source and redo the profile run."
+msgstr ""
+
+#: libviews/sourceview.cpp:679
+msgctxt "SourceView|"
+msgid "The function is located in this ELF object:"
+msgstr ""
+
+#: libviews/sourceview.cpp:687
+#, fuzzy
+#| msgid "This file can not be found."
+msgctxt "SourceView|"
+msgid "This is because its source file cannot be found:"
+msgstr "Το αρχείο δεν μπορεί να βρεθεί."
+
+#: libviews/sourceview.cpp:691
+msgctxt "SourceView|"
+msgid "Add the folder of this file to the source folder list."
+msgstr ""
+
+#: libviews/sourceview.cpp:693
+#, fuzzy
+#| msgid "This utility can be found in the 'binutils' package."
+msgctxt "SourceView|"
+msgid "The list can be found in the configuration dialog."
+msgstr "Το εργαλείο αυτό μπορεί να βρεθεί στο πακέτο 'binutils'."
+
+#: libviews/stackselection.cpp:36
+#, fuzzy
+#| msgid "Stack Selection"
+msgctxt "StackSelection|"
+msgid "Stack Selection"
+msgstr "Επιλογή στοίβας"
+
+#: libviews/stackselection.cpp:44
+#, fuzzy
+#| msgid "Cost"
+msgctxt "StackSelection|"
+msgid "Cost"
+msgstr "Σύνολο %1 Κόστος: %2"
+
+#: libviews/stackselection.cpp:45
+#, fuzzy
+#| msgid "Cost2"
+msgctxt "StackSelection|"
+msgid "Cost2"
+msgstr "Κόστος2"
+
+#: libviews/stackselection.cpp:46
+#, fuzzy
+#| msgid "Calls"
+msgctxt "StackSelection|"
+msgid "Calls"
+msgstr "Κλήσεις"
+
+#: libviews/stackselection.cpp:47
+#, fuzzy
+#| msgid "Function"
+msgctxt "StackSelection|"
+msgid "Function"
+msgstr "Συνάρτηση"
+
+#: libviews/tabview.cpp:103
+#, fuzzy
+#| msgid "Move to Top"
+msgctxt "TabBar|"
+msgid "Move to Top"
+msgstr "Μετακίνηση πάνω"
+
+#: libviews/tabview.cpp:104
+msgctxt "TabBar|Move to Top"
+msgid "Top"
+msgstr ""
+
+#: libviews/tabview.cpp:107
+#, fuzzy
+#| msgid "Move to Right"
+msgctxt "TabBar|"
+msgid "Move to Right"
+msgstr "Μετάβαση δεξιά"
+
+#: libviews/tabview.cpp:108
+#, fuzzy
+#| msgid "Top Right"
+msgctxt "TabBar|Move to Right"
+msgid "Right"
+msgstr "Πάνω δεξιά"
+
+#: libviews/tabview.cpp:111
+#, fuzzy
+#| msgid "Move to Bottom"
+msgctxt "TabBar|"
+msgid "Move to Bottom"
+msgstr "Μετακίνηση κάτω"
+
+#: libviews/tabview.cpp:112
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "TabBar|Move to Bottom"
+msgid "Bottom"
+msgstr "Κάτω αριστερά"
+
+#: libviews/tabview.cpp:115
+#, fuzzy
+#| msgid "Move to Bottom Left"
+msgctxt "TabBar|"
+msgid "Move to Bottom Left"
+msgstr "Μετακίνηση κάτω αριστερά"
+
+#: libviews/tabview.cpp:116
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "TabBar|Move to Bottom Left"
+msgid "Bottom Left"
+msgstr "Κάτω αριστερά"
+
+#: libviews/tabview.cpp:118
+#, fuzzy
+#| msgid "Move Area To"
+msgctxt "TabBar|"
+msgid "Move Area To"
+msgstr "Μετακίνηση περιοχής στο"
+
+#: libviews/tabview.cpp:121
+#, fuzzy
+#| msgid "Hide This Tab"
+msgctxt "TabBar|"
+msgid "Hide This Tab"
+msgstr "Απόκρυψη της καρτέλας"
+
+#: libviews/tabview.cpp:122
+#, fuzzy
+#| msgid "Hide Area"
+msgctxt "TabBar|"
+msgid "Hide Area"
+msgstr "Απόκρυψη περιοχής"
+
+#: libviews/tabview.cpp:131
+msgctxt "TabBar|Show on Top"
+msgid "Top"
+msgstr ""
+
+#: libviews/tabview.cpp:132
+#, fuzzy
+#| msgid "Top Right"
+msgctxt "TabBar|Show on Right"
+msgid "Right"
+msgstr "Πάνω δεξιά"
+
+#: libviews/tabview.cpp:133
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "TabBar|Show on Bottom"
+msgid "Bottom"
+msgstr "Κάτω αριστερά"
+
+#: libviews/tabview.cpp:134
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "TabBar|Show on Bottom Left"
+msgid "Bottom Left"
+msgstr "Κάτω αριστερά"
+
+#: libviews/tabview.cpp:135
+#, fuzzy
+#| msgid "Show Hidden On"
+msgctxt "TabBar|"
+msgid "Show Hidden On"
+msgstr "Εμφάνιση κρυφών ενεργό"
+
+#: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
+#, fuzzy
+#| msgid "(No profile data file loaded)"
+msgctxt "TabView|"
+msgid "(No profile data file loaded)"
+msgstr "(δε φορτώθηκε αρχείο δεδομένων προφίλ)"
+
+#: libviews/tabview.cpp:370
+#, fuzzy
+#| msgid "Types"
+msgctxt "TabView|"
+msgid "Types"
+msgstr "Τύποι"
+
+#: libviews/tabview.cpp:373
+#, fuzzy
+#| msgid "Callers"
+msgctxt "TabView|"
+msgid "Callers"
+msgstr "Κλήσεις"
+
+#: libviews/tabview.cpp:374
+#, fuzzy
+#| msgid "All Callers"
+msgctxt "TabView|"
+msgid "All Callers"
+msgstr "Όλες οι κλήσεις"
+
+#: libviews/tabview.cpp:375
+#, fuzzy
+#| msgid "Callee Map"
+msgctxt "TabView|"
+msgid "Callee Map"
+msgstr "Χάρτης κληθέντων"
+
+#: libviews/tabview.cpp:378
+#, fuzzy
+#| msgid "Source Code"
+msgctxt "TabView|"
+msgid "Source Code"
+msgstr "Πηγαίος κώδικας"
+
+#: libviews/tabview.cpp:380
+#, fuzzy
+#| msgid "Parts"
+msgctxt "TabView|"
+msgid "Parts"
+msgstr "Τμήματα"
+
+#: libviews/tabview.cpp:381
+#, fuzzy
+#| msgid "Callees"
+msgctxt "TabView|"
+msgid "Callees"
+msgstr "Κληθέντα"
+
+#: libviews/tabview.cpp:382
+#, fuzzy
+#| msgid "Call Graph"
+msgctxt "TabView|"
+msgid "Call Graph"
+msgstr "Γράφημα κλήσεων"
+
+#: libviews/tabview.cpp:385
+#, fuzzy
+#| msgid "All Callees"
+msgctxt "TabView|"
+msgid "All Callees"
+msgstr "Όλα τα κληθέντα"
+
+#: libviews/tabview.cpp:386
+#, fuzzy
+#| msgid "Caller Map"
+msgctxt "TabView|"
+msgid "Caller Map"
+msgstr "Χάρτης κλήσεων"
+
+#: libviews/tabview.cpp:389
+#, fuzzy
+#| msgid "Machine Code"
+msgctxt "TabView|"
+msgid "Machine Code"
+msgstr "Κώδικας μηχανής"
+
+#: libviews/tabview.cpp:643
+msgctxt "TabView|"
+msgid ""
+"<b>Information Tabs</b><p>This widget shows information for the currently "
+"selected function in different tabs: <ul><li>The Costs tab shows a list of "
+"available event types and the inclusive and self-costs related to these "
+"types.</li><li>The Parts tab shows a list of trace parts if the trace "
+"consists of more than one part (otherwise, this tab is hidden). The cost of "
+"the selected function spent in the different parts together with the calls "
+"happening is shown.</li><li>The Call Lists tab shows direct callers and "
+"callees of the function in more detail.</li><li>The Coverage tab shows the "
+"same as the Call Lists tab, but also shows indirect callers and callees, not "
+"just direct ones.</li><li>The Call Graph tab shows a graphical visualization "
+"of the calls made by this function.</li><li>The Source Code tab presents "
+"annotated source code if debugging information and the source file are "
+"available.</li><li>The Machine Code tab presents annotated assembly "
+"instructions if profile information at instruction level is available.</li></"
+"ul>For more information, see the <em>What's This?</em> help of the "
+"corresponding tab widget.</p>"
+msgstr ""
+
+#: libviews/tabview.cpp:728
+msgctxt "TabView|"
+msgid "(No function selected)"
+msgstr ""
+
+#: libviews/traceitemview.cpp:67
+#, fuzzy
+#| msgid "No description available"
+msgctxt "QObject|"
+msgid "No description available"
+msgstr "Μη διαθέσιμη περιγραφή"
+
+#: libviews/treemap.cpp:1334
+#, qt-format
+msgctxt "TreeMapWidget|"
+msgid "Text %1"
+msgstr ""
+
+#: libviews/treemap.cpp:2854
+msgctxt "TreeMapWidget|"
+msgid "Recursive Bisection"
+msgstr ""
+
+#: libviews/treemap.cpp:2855
+msgctxt "TreeMapWidget|"
+msgid "Columns"
+msgstr ""
+
+#: libviews/treemap.cpp:2856
+msgctxt "TreeMapWidget|"
+msgid "Rows"
+msgstr ""
+
+#: libviews/treemap.cpp:2857
+msgctxt "TreeMapWidget|"
+msgid "Always Best"
+msgstr ""
+
+#: libviews/treemap.cpp:2858
+msgctxt "TreeMapWidget|"
+msgid "Best"
+msgstr ""
+
+#: libviews/treemap.cpp:2859
+msgctxt "TreeMapWidget|"
+msgid "Alternate (V)"
+msgstr ""
+
+#: libviews/treemap.cpp:2860
+msgctxt "TreeMapWidget|"
+msgid "Alternate (H)"
+msgstr ""
+
+#: libviews/treemap.cpp:2861
+msgctxt "TreeMapWidget|"
+msgid "Horizontal"
+msgstr ""
+
+#: libviews/treemap.cpp:2862
+msgctxt "TreeMapWidget|"
+msgid "Vertical"
+msgstr ""
+
+#, fuzzy
+#~| msgid "Export Graph"
+#~ msgctxt "CallGraphView|"
+#~ msgid "Export Graph As DOT file"
+#~ msgstr "Εξαγωγή γραφήματος"
+
+#, fuzzy
+#~| msgid "Bottom Left"
+#~ msgctxt "Move to Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Κάτω αριστερά"
+
+#, fuzzy
+#~| msgid "Top Right"
+#~ msgctxt "Show on Right"
+#~ msgid "Right"
+#~ msgstr "Πάνω δεξιά"
+
+#, fuzzy
+#~| msgid "Bottom Left"
+#~ msgctxt "Show on Bottom"
+#~ msgid "Bottom"
+#~ msgstr "Κάτω αριστερά"
+
+#, fuzzy
+#~| msgid "Bottom Left"
+#~ msgctxt "Show on Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Κάτω αριστερά"
+
+#~ msgctxt "Top"
+#~ msgid "Move to Top"
+#~ msgstr "Μετακίνηση πάνω"
+
+#~ msgctxt "Right"
+#~ msgid "Move to Right"
+#~ msgstr "Μετακίνηση δεξιά"
+
+#~ msgctxt "Bottom"
+#~ msgid "Move to Bottom"
+#~ msgstr "Μετακίνηση κάτω"
+
+#~ msgctxt "Bottom Left"
+#~ msgid "Move to Bottom Left"
+#~ msgstr "Μετακίνηση κάτω αριστερά"
+
+#~ msgctxt "Top"
+#~ msgid "Show on Top"
+#~ msgstr "Εμφάνιση πάνω"
+
+#~ msgctxt "Right"
+#~ msgid "Show on Right"
+#~ msgstr "Εμφάνιση δεξιά"
+
+#~ msgctxt "Bottom"
+#~ msgid "Show on Bottom"
+#~ msgstr "Εμφάνιση κάτω"
+
+#~ msgctxt "Bottom Left"
+#~ msgid "Show on Bottom Left"
+#~ msgstr "Εμφάνιση κάτω αριστερά"
+
+#~ msgid "As PostScript"
+#~ msgstr "Ως PostScript"
+
+#~ msgid "Save Image"
+#~ msgstr "Αποθήκευση εικόνας"

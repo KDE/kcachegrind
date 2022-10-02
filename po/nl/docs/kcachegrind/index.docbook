@@ -1,0 +1,1220 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kcachegrind '<application
+>KCachegrind</application
+>'>
+  <!ENTITY cachegrind "<application
+>Cachegrind</application
+>">
+  <!ENTITY calltree "<application
+>Calltree</application
+>">
+  <!ENTITY callgrind "<application
+>Callgrind</application
+>">
+  <!ENTITY valgrind "<application
+>Valgrind</application
+>">
+  <!ENTITY oprofile "<application
+>OProfile</application
+>">
+  <!ENTITY EBS "<acronym
+>EBS</acronym
+>">
+  <!ENTITY TBS "<acronym
+>TBS</acronym
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Dutch "INCLUDE">
+]>
+
+<book id="kcachegrind" lang="&language;">
+
+<bookinfo>
+<title
+>Het handboek van &kcachegrind;</title>
+
+<authorgroup>
+<author
+><firstname
+>Josef</firstname
+> <surname
+>Weidendorfer</surname
+> <affiliation
+> <address
+><email
+>Josef.Weidendorfer@gmx.de</email
+></address>
+</affiliation>
+<contrib
+>Oorspronkelijke auteur van de documentatie</contrib>
+</author>
+
+<author
+><firstname
+>Federico</firstname
+> <surname
+>Zenith</surname
+> <affiliation
+> <address
+><email
+>federico.zenith@member.fsf.org</email
+></address>
+</affiliation>
+<contrib
+>Bijwerken en corrigeren</contrib>
+</author>
+
+&Freek.de.Kruijf;&Ronald.Stroethoff; 
+
+</authorgroup>
+
+<copyright>
+<year
+>2002-2004</year>
+<holder
+>&Josef.Weidendorfer;</holder
+>	
+</copyright>
+<copyright>
+<year
+>2009</year>
+<holder
+>Federico Zenith</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2016-11-18</date>
+<releaseinfo
+>0.8.0 (Applications 17.04)</releaseinfo>
+
+<abstract>
+<para
+>&kcachegrind; is een visualisatie hulpmiddel, geschreven met gebruik van &kf5-full;. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdesdk</keyword>
+<keyword
+>Cachegrind</keyword>
+<keyword
+>Callgrind</keyword>
+<keyword
+>Valgrind</keyword>
+<keyword
+>Profileren</keyword>
+</keywordset>
+
+</bookinfo>
+
+
+<chapter id="introduction">
+<title
+>Inleiding</title>
+
+<para
+>&kcachegrind; is een browser voor gegevens geproduceerd door profileringshulpmiddelen. Dit hoofdstuk legt uit waar profilering voor is, hoe het wordt gedaan en geeft enige voorbeelden van beschikbare profileringshulpmiddelen. </para>
+
+<sect1 id="introduction-profiling">
+<title
+>Profileren</title>
+
+<para
+>Bij het ontwikkelen van een programma is vaak een van de laatste stappen het optimaliseren van de prestaties. Omdat het niet zinvol is zelden gebruikte functies te optimaliseren, omdat dat verspilling van tijd is, is het nodig om te weten in welk deel van het programma de meeste tijd wordt gebruikt. </para>
+
+<para
+>Voor sequentiële code, volstaat het meestal om statistische data van een werkend programma zoals de gebruikte tijd in functies en coderegels te verzamelen. Dit heet profileren. Het programma werkt onder controle van een profilering-programma, wat aan het eind een overzicht geeft van de werking. Daarentegen worden voor parallelle code performance problemen meestal veroorzaakt doordat een processor aan het wachten is op data van een andere processor. Omdat de oorzaak van dit soort wachttijd niet makkelijk te achterhalen is, is het hier beter om "timestamped event traces" aan te maken. &kcachegrind; kan dit soort data niet visualiseren. </para>
+
+<para
+>Na het analyseren van de geproduceerde profilering-data, is het makkelijk om de hotspots en knelpunten van de code te vinden: bijvoorbeeld, aannames over call counts zijn controleerbaar en identificeerbare code regions kunt u optimaliseren. Daarna, moet u het resultaat van de optimalisatie controleren met nog een profile run. </para>
+</sect1>
+
+<sect1 id="introduction-methods">
+<title
+>Profileringmethodes</title>
+
+<para
+>Om precies de gepasseerde tijd te meten of om de gebeurtenissen tijdens de werking van een stuk code te noteren (&eg; een functie), moet er extra meet-code voor en achter het te onderzoeken code worden toegevoegd. Deze code leest de tijd, of een algemene gebeurtenis-teller, en berekent de verschillen. De originele code moet u dus voor de test wijzigen. Dit heet instrumentatie. Instrumentatie kan door de programmeur zelf, de compiler, of door het runtime systeem worden gedaan. Omdat interessante stukken code meestal genest zijn, beïnvloedt de overhead van de meting altijd de meting zelf. Instrumentatie moet u dus selectief toepassen en de resultaten moet u voorzichtig interpreteren. Dit maakt natuurlijk performance analyse door exacte metingen een complex proces.</para>
+
+<para
+>Precieze meting is mogelijk met behulp van de hardware counters (met tellers die bij iedere tik omhoog gaan) die in moderne processors aanwezig zijn, die bij iedere gebeurtenis een stap worden verhoogd. Omdat we gebeurtenissen aan stukken code willen toevoegen, zouden we (zonder de tellers) zelf iedere gebeurtenis moeten bijhouden door voor het geselecteerde stuk code een teller te verhogen. Dit in software uitvoeren is, natuurlijk, niet mogelijk; maar, aangenomen dat de gebeurtenissen netjes over de code verdeelt is, kunnen we alleen maar elke n-th gebeurtenis te kijken en niet naar elke gebeurtenis, een meetmethode is ontwikkelt waarvan de overhead inschakelbaar is: dit heet Sampling. Op tijd gebaseerde Sampling (&TBS;) gebruikt een timer om regelmatig naar een programma-teller voor het creëren van een histogram voor de programma code. Op gebeurtenissen gebaseerde Sampling (&EBS;) gebruikt de hardware tellers van moderne processors, en gebruikt een modus waar een interrupt handler wordt aangeroepen als de teller op nul is voor het genereren van een histogram van de bijbehorende gebeurtenis distributie: in de handler, zal de gebeurtenis teller altijd weer worden geïnitialiseerd tot het <symbol
+>n</symbol
+> van de meetmethode. Het voordeel van sampling is dat de code niet gewijzigd hoeft te worden, maar het blijft een compromis: de bovengenoemde aanname zal meer correct zijn als <symbol
+>n</symbol
+> klein is, maar hoe kleiner <symbol
+>n</symbol
+> is , hoe groter de overhead van de interrupt handler.</para>
+
+<para
+>Een andere meetmethode is het simuleren van gebeurtenissen in het computer systeem bij het uitvoeren van een gegeven code, &ie; executie gedreven simulatie. De simulatie is altijd afgeleid van een min of meer accuraat machine model; maar, met zeer gedetailleerde machine modellen, geeft dat vrij nauwkeurige benaderingen van de werkelijkheid, de simulatie tijd kan in de praktijk onacceptabel groot zijn. Het voordeel van simulatie is dat willekeurig ingewikkelde meting/simulatie code aan een gegeven code zonder storende resultaten kan worden toegevoegd. Door dit net voor de uitvoer te doen (runtime instrumentatie genaamd), met gebruik van de originele binary, is dit erg handig voor de gebruiker: een her-compilatie is dan niet nodig. Simulatie is bruikbaar als u alleen gedeeltes van machine met een eenvoudig model uitvoert; een ander voordeel is dat de door eenvoudige modellen geproduceerde resultaten vaak makkelijker te begrijpen zijn: vaak is het probleem met echte hardware dat in de resultaten elkaar overlappende effecten uit verschillende gedeeltes van de machine zitten.</para>
+</sect1>
+
+<sect1 id="introduction-tools">
+<title
+>Profileringshulpmiddelen</title>
+
+<para
+>Het meest bekend is het GCC profiling programma <application
+>gprof</application
+>: u moet het programma compileren met de optie <option
+>-pg</option
+>; het laten werken van het programma genereert een bestand <filename
+>gmon.out</filename
+>, dat u vervolgens in een door mensen leesbaar formaat kunt omzetten met <command
+>gprof</command
+>. Een nadeel is de benodigde her-compilatie om de executable voor te bereiden, die statistisch gelinkt moet zijn. De hier gebruikte methode is compiler-genereerde instrumentatie, die alle tussen functies uitgevoerde call arcs en bijbehorende call tellers meet, in samenwerking met &TBS;, die een histogram van de tijd-verdeling over de code geeft. Door beide stukken informatie te gebruiken, is het mogelijk om heuristisch alle door een functie gebruikte tijden te berekenen, &ie; de tijd die een functie inclusief alle aangeroepen functies heeft gebruikt </para>
+
+<para
+>Voor nauwkeurige metingen van gebeurtenissen, bestaan er bibliotheken met functies die hardware performance tellers kunnen uitlezen. Het meest bekend hier is de PerfCtr patch voor &Linux;, en de architectuur onafhankelijke bibliotheken PAPI en PCL. Maar toch, nauwkeurige metingen heeft instrumentatie van code nodig, zoals hierboven al gezegd. Naar keuze gebruikt u de bibliotheken zelf of gebruikt u automatische instrumentatie systemen zoals ADAPTOR (voor FORTRAN broncode instrumentatie) of DynaProf (code injectie via DynInst).</para>
+
+<para
+>&oprofile; is een systeembreed profileringshulpmiddel voor &Linux; met gebruik van Sampling. </para>
+
+<para
+>In veel aspecten is het gebruik van &cachegrind; of &callgrind; een handige manier van Profiling, deze zijn simulators die de runtime instrumentatie framework &valgrind; gebruiken. Omdat u hier geen toegang tot de hardware tellers hoeft te hebben (vaak onhandig met de huidige &Linux; installaties), en de binaries die u wilt profileren ongewijzigd kunnen blijven, is het een goed alternatief voor andere profileringshulpmiddelen. Het nadeel van simulatie - vertraging - kunt u verminderen door de simulatie alleen uit te voeren op de interessante programma-gedeeltes, en misschien alleen een paar iteraties van een loop. Zonder meting/simulatie instrumentatie, geeft het gebruik van uitsluitend &valgrind;alleen een vertraging 's factor van 3 tot 5. Wanneer alleen de call grafieken en call tellers interessant zijn , dan kunt u de cache simulator uitschakelen. </para>
+
+<para
+>Cache simulatie is de eerste stap in het benaderen van reële tijden, omdat runtime erg gevoelig is voor het gebruik van de zogenoemde <emphasis
+>caches</emphasis
+>, kleine en snelle buffers in moderne systemen die herhaalde toegang tot zelfde stukken hoofd geheugen versnellen. &cachegrind; voert cache simulatie uit door het catchen van geheugen-toegangen. In de geproduceerde data is ook het aantal uitlezingen van instructie/data geheugen mory accesses en gemiste eerste- en tweede-level cache uitlezingen, en de relatie tot de regels en functies in de broncode van het programma. Door het combineren van de aantal gemiste en gebruik van de miss latencies van standaard processors, is het mogelijk om een schatting van de gebruikte tijd te geven. </para>
+
+<para
+>&callgrind; is een uitbreiding van &cachegrind; dat grafiek van aanroepingen onmiddellijk opbouwt, &ie; hoe deze functies elkaar aanroepen en hoeveel gebeurtenissen tijdens een aangeroepen functie gebeuren. Maar de profile data kan ook voor elke thread call chain context apart worden verzameld. Het kan profiling data op instructie niveau geven voor annotatie van gedisassembleerde code. </para>
+</sect1>
+
+<sect1 id="introduction-visualization">
+<title
+>Visualisatie</title>
+
+<para
+>Profileringshulpmiddelen geven standaard grote hoeveelheden data. De wens om makkelijk omhoog en omlaag te bladeren door de call grafiek, samen met snel omschakelen van de functie-overzicht en de weergaven van verschillende gebeurtenistypen, doen verlangen naar een &GUI; programma die deze taak kan uitvoeren. </para>
+
+<para
+>&kcachegrind; is een visualisatiemiddel voor profileringsdata dat deze wensen kan vervullen. Ondanks dat het geprogrammeerd is met doorzoeken van de data van &cachegrind; en &calltree; in gedachte, zijn er converters beschikbaar om data weer te geven dat afkomstig is van andere hulpmiddelen. In de appendix is een beschrijving van het bestandsformaat van &cachegrind;/&callgrind; te vinden. </para>
+
+<para
+>Naast een lijst met functies die gesorteerd zijn op kosten, en optioneel gegroepeerd op bronbestand, shared library of C++ class, heeft &kcachegrind; ook verschillende weergaven-mogelijkheden voor een geselecteerde functie, namelijk: <itemizedlist>
+<listitem
+><para
+>Weergave van een call-grafiek, die een sectie van de call-grafieken rond de geselecteerde functie toont.</para>
+</listitem>
+<listitem
+><para
+>een boom-weergave, waarmee de relaties van geneste aanroepen worden weergegeven, samen met de bijbehorende kosten voor snelle visuele detectie van problematische functies.</para>
+</listitem>
+<listitem
+><para
+>Weergave van annotatie van broncode en disassembler, waarmee u details van de kosten ten opzichte van regels en assembler- instructies kunt bestuderen.</para>
+</listitem>
+</itemizedlist>
+
+</para>
+</sect1>
+</chapter>
+
+<chapter id="using-kcachegrind">
+<title
+>&kcachegrind; gebruiken</title>
+
+<sect1 id="using-profile">
+<title
+>Data-productie voor visualisatie</title>
+
+<para
+>Eerst moet u met behulp van een profilering-hulpmiddel performance data genereren door aspecten van het werkende programma te meten. &cachegrind; heeft zelf geen profileringshulpmiddel, maar u kunt het goed samen met &callgrind; gebruiken, en door een converter te gebruiken, kunt u het ook gebruiken om de data te visualiseren dat door &oprofile; is geproduceerd. Alhoewel het profileren met deze hulpmiddelen buiten de scoop van deze handleiding valt, geeft de volgende sectie een korte uitleg over daarmee te beginnen. </para>
+
+<sect2>
+<title
+>&callgrind;</title>
+
+<para
+>&callgrind; is een onderdeel van <ulink url="http://valgrind.org"
+>&valgrind;</ulink
+>. Merk op dat het in het verleden &calltree; werd genoemd , maar deze naam was misleidend. </para>
+
+<para
+>De meest voorkomende gebruik is het toevoegen van een voorvoegsel aan de commandoregel bij het starten van uw programma met <userinput
+><command
+>valgrind</command
+> <option
+>--tool=callgrind</option
+> </userinput
+>, zoals in: <blockquote
+><para
+><userinput
+> <command
+>valgrind</command
+> <option
+>--tool=callgrind</option
+> <replaceable
+>myprogram</replaceable
+> <replaceable
+>myargs</replaceable
+> </userinput
+></para
+></blockquote
+> Bij het beëindigen van het programma, zal er een bestand genaamd <filename
+>callgrind.out.<replaceable
+>pid</replaceable
+></filename
+> worden gegenereerd, dat u in &kcachegrind; kunt laden. </para>
+
+<para
+>Meer geavanceerd gebruik is het dumpen van profielgegevens bij het aanroepen van een opgeven functie in uw programma. B.v. voor &konqueror;, om alleen profielgegevens te zien van het renderen van een Web pagina, kunt u de beslissing nemen om de data te dumpen als u het menu-item <menuchoice
+><guimenu
+>Beeld</guimenu
+><guimenuitem
+>Herladen</guimenuitem
+></menuchoice
+> selecteert. Dit is overeenkomstig met een aanroep van <methodname
+>KonqMainWindow::slotReload</methodname
+>. Gebruik: <blockquote
+><para
+><userinput
+> <command
+>valgrind</command
+> <option
+>--tool=callgrind</option
+> <option
+>--dump-before=KonqMainWindow::slotReload</option
+> <replaceable
+>konqueror</replaceable
+> </userinput
+></para
+></blockquote
+> Dit zal meerdere profielgegevens-bestanden (met een extra volgnummer aan het eind van de bestandsnaam) produceren. Een bestand zonder een dergelijk nummer aan het eind (alleen eindigend op het proces-PID) wordt ook geproduceerd; door dit bestand in &kcachegrind; te laden, zullen alle andere ook worden geladen en zijn vervolgens zichtbaar in <guilabel
+>Profieloverzicht</guilabel
+> en de<guilabel
+>Profiel</guilabel
+>lijst. </para>
+
+</sect2>
+
+<sect2>
+<title
+>&oprofile;</title>
+
+<para
+>&oprofile; is beschikbaar via <ulink url="http://oprofile.sf.net"
+>zijn home pagina</ulink
+>. Volg de installatie instructies op de Web site, maar, voordat u dat doet, controleer eerst of uw distributie het niet al als pakket levert (zoals &SuSE;). </para>
+
+<para
+>Het systeemmbreed profileren is alleen voor de gebruiker root toegestaan, omdat u dan alle acties in het systeem kunt observeren; daarom moet u het volgende als root uitvoeren. Configureer eerst het profilering-proces met behulp van de &GUI; <command
+>oprof_start</command
+> of het programma voor de commandoregel <command
+>opcontrol</command
+>. Standaard configuratie moet de timer mode zijn (&TBS;, zie introductie). Om de meting te starten, start <userinput
+><command
+>opcontrol</command
+> <option
+>-s</option
+></userinput
+>. Start vervolgens het programma waarin u bent geïnteresseerd en, geef aan het eind het commando <userinput
+><command
+>opcontrol</command
+> <option
+>-d</option
+></userinput
+>. Dit zal de meetresultaten wegschrijven naar bestanden in de map <filename class="directory"
+>/var/lib/oprofile/samples/</filename
+>. Om de data te kunnen visualiseren in &kcachegrind;, geef in een lege map het volgende commando: <blockquote
+><para
+><userinput
+> <command
+>opreport</command
+> <option
+>-gdf</option
+> | <command
+>op2callgrind</command
+> </userinput
+></para
+></blockquote
+> Dit zal een heleboel bestanden produceren, een voor elke programma dat in het systeem draaide. Elk kunt u apart in &kcachegrind; laden. </para>
+
+</sect2>
+</sect1>
+
+<sect1 id="using-basics">
+<title
+>Gebruikersinterface</title>
+
+<para
+>Als u &kcachegrind; start met een profielgegevensbestand als argument, of na het via <menuchoice
+><guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Openen</guimenuitem
+></menuchoice
+> van laden van een ervan, krijgt u een navigatie-paneel te zien met de functie-lijst aan de linkerkant; en, aan de rechterkant het hoofdvenster, een ruimte met vensters voor een geselecteerde functie. Deze vensterruimte kunt u willekeurig indelen om meerdere vensters tegelijk te kunnen zien. </para>
+
+<para
+>Bij de eerste keer starten zal deze ruimte verdeelt zijn in een boven en een onder gedeelte, elk met verschillende tab-selecteerbare vensters. Om de vensters te verplaatsen, gebruikt u het tabs context menu, en pas de splitters tussen de vensters aan. Om snel tussen de verschillende beeld layouts te schakelen, gebruikt u <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>→</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Beeld</guimenu
+><guisubmenu
+>Layout</guisubmenu
+> <guimenuitem
+>Ga naar volgende</guimenuitem
+></menuchoice
+> en <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>←</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Beeld</guimenu
+><guisubmenu
+>Layout</guisubmenu
+> <guimenuitem
+>Ga naar vorige</guimenuitem
+></menuchoice
+>. </para>
+
+<para
+>Het active gebeurtenistype is belangrijk voor visualisatie: voor &callgrind;, is dit, bijvoorbeeld, gemiste cache of cyclus schatting; for &oprofile;, dit is voor de eenvoudigste gevallen <quote
+>Timer</quote
+>. U kunt het event type via een keuzelijst in de werkbalk of in het <guilabel
+>Gebeurtenistype</guilabel
+> venster. Een eerste overzicht van de runtime karakteristieken krijgt u te zien als u de functie <function
+>main</function
+> in de linker lijst selecteert; kijk vervolgens naar het venster met de call-grafiek. Daar ziet u de calls die in uw programma voorkomen. Merk op dat het call graph venster alleen functies toont die een groot aantal keren voorkomen. Door op een functie in de grafiek te dubbelklikken, krijgt u de door de geselecteerde functie aangeroepen functies te zien krijgen. </para>
+
+<para
+>Om de &GUI; verder te verkennen, kunt u ook behalve deze handleiding ook in de sectie documentatie <ulink url="http://kcachegrind.github.io"
+>van de Web site</ulink
+> kijken. Elke widget in &kcachegrind; heeft ook een <quote
+>Wat is dit</quote
+> hulp. </para>
+</sect1>
+
+</chapter>
+
+
+<chapter id="kcachegrind-concepts">
+<title
+>Basis idee</title>
+
+<para
+>Dit hoofdstuk legt enkele basisideeën van &kcachegrind; uit, en introduceert in het interface gebruikte termen. </para>
+
+<sect1 id="concepts-model">
+<title
+>Het Data Model voor Profile Data</title>
+
+<sect2>
+<title
+>Kostenelementen</title>
+
+<para
+>De kosten van gebeurtenistypes (zoals L2 Misses) worden ingedeeld als kostenelementen, wat items zijn met een relatie tot broncode of data structuren van een gegeven programma. Kostenelementen kunnen niet alleen eenvoudige code of data posities zijn, maar ook positie tuples. Bijvoorbeeld, een call heeft een bron en een doel, of een data adres kan een data type en een code positie waar zijn allocatie gebeurt. </para>
+
+<para
+>De kostenelementen die bij &kcachegrind; bekend zijn, volgen hieronder. Simple Positions: <variablelist
+> <varlistentry
+> <term
+>Instruction</term
+> <listitem
+><para
+> Een assembler instructie op een opgegeven adres. </para
+></listitem
+> </varlistentry
+> <varlistentry
+> <term
+>Source Line of a Function</term
+> <listitem
+><para
+> Alle instructies die de compiler (via debug informatie) mapt naar een opgegeven regel in de broncode (gespecificeerd door broncodebestand en regelnummer), en die in de context van een functie worden uitgevoerd. Dit laatste is nodig omdat regelcode in een inlined functie in de context van meerdere functies kan verschijnen. Instructie zonder enige mapping naar een daadwerkelijke coderegel worden gemapt naar regelnummer 0 in bestand <filename
+>???</filename
+>. </para
+></listitem
+> </varlistentry
+> <varlistentry
+> <term
+>Function</term
+> <listitem
+><para
+> Alle coderegels van een opgegeven functie horen bij de functie zelf. Een functie is gespecificeerd door zijn naam en de locatie in een binair object (indien beschikbaar). Dit laatste is nodig omdat elk binair object van een enkel programma functies met dezelfde naam kan hebben (deze zijn toegankelijk met &eg; met <function
+>dlopen</function
+> of <function
+>dlsym</function
+>; de runtime linker zoekt functies in een opgegeven zoek-volgorde voor gebruikte binary objects op). Als een profileringshulpmiddel het symboollabel van een functie niet kan vinden, &eg; omdat debug informatie niet beschikbaar is, ofwel het adres van de eerst uitgevoerde instructie standaard is gebruikt, of <function
+>???</function
+>. </para
+></listitem
+> </varlistentry
+> <varlistentry
+> <term
+>Binary Object</term
+> <listitem
+><para
+> Alle functies waarvan de code is binnen de range van een opgegeven binar object, of van het hoofd executable of een gedeelde library. </para
+></listitem
+> </varlistentry
+> <varlistentry
+> <term
+>Source File</term
+> <listitem
+><para
+> Alle functies waarvan de eerste instructie is gemapped naar een regel van de opgegeven broncodebestand. </para
+></listitem
+> </varlistentry
+> <varlistentry
+> <term
+>Class</term
+> <listitem
+><para
+> Symbol namen van functies zijn standaard hiërarchisch geordend in name spaces, &eg; C++ namespaces, of classes van object-georiënteerde talen; dus, een class kan functies van de class of ingebedde classes zelf hebben. </para
+></listitem
+> </varlistentry
+> <varlistentry
+> <term
+>Profile Part</term
+> <listitem
+><para
+> Een tijd sectie van een profile run, met een opgegeven thread ID, process ID, en uitgevoerde command line. </para
+></listitem
+> </varlistentry
+> </variablelist
+> Zoals u in de lijst kan zien, een set van kostenelementen veroorzaakt weer andere kostenelementen; dus, er is een inclusieve hiërarchie van kostenelementen. </para>
+
+<para
+>Positieons tuples: <itemizedlist
+> <listitem
+><para
+> Aanroep van instructie adres naar doel functie. </para
+></listitem
+> <listitem
+><para
+> Aanroep van doel functie vanuit coderegel. </para
+></listitem
+> <listitem
+><para
+>Aanroep van doel functie vanuit bron functie. </para
+></listitem
+> <listitem
+><para
+> (On)voorwaardelijke sprong van bron naar doel instructie. </para
+></listitem
+> <listitem
+><para
+> (On)voorwaardelijke sprong van bron naar doel regel. </para
+></listitem
+> </itemizedlist
+> Sprongen tussen functies zijn niet toegestaan, omdat dit geen zin heeft in een call graph; dus, constructs zoals exception handling en long jumps in C moeten zo nodig worden vertaald naar popping de call stack. </para>
+
+</sect2>
+
+
+<sect2>
+<title
+>Gebeurtenistypen</title>
+
+<para
+>U kunt willekeurige gebeurtenistypen opgeven in de profile data door ze een naam te geven. De kosten daarvan vergeleken met een kostenelement is een 64-bit integer. </para>
+<para
+>Gebeurtenistypen waarvan de kosten zijn opgegeven in een profile data bestand worden echte events genoemd. Daarnaast kunt u formules specificeren voor uit echte gebeurtenissen berekende event-types, die inherited events worden genoemd. </para>
+</sect2>
+
+</sect1>
+
+<sect1 id="concepts-state">
+<title
+>Toestand visualisatie</title>
+
+<para
+>De toestand visualisatie van een &kcachegrind; venster is inclusief: <itemizedlist
+> <listitem
+><para
+> de voor weergave gekozen primaire en secundaire gebeurtenistype, </para
+></listitem
+> <listitem
+><para
+> de functie groepering (gebruikt in het <guilabel
+>Functieprofiel</guilabel
+> lijst en element kleuring), </para
+></listitem
+> <listitem
+><para
+> de profielgegevens waarvan de kosten ook in de visualisatie zichtbaar moeten zijn, </para
+></listitem
+> <listitem
+><para
+> een actieve kostenelement (&eg; een uit het functie profiel zijdock geselecteerde functie), </para
+></listitem
+> <listitem
+><para
+> een geselecteerde kostenelement. </para
+></listitem
+> </itemizedlist
+> Deze toestanden beinvloedt de weergaven. </para>
+
+<para
+>Weergaven worden altijd voor een kostenelement getoond, de actieve. Als een opgegeven weergave ongeschikt is voor een kostenelement, dan is het uitgeschakeld: bij het selecteren van &eg; een &ELF; object in de groep-lijst, is een source annotatie niet zinvol. </para>
+
+<para
+>Bijvoorbeeld, voor een een actieve functie, toont de lijst met aangeroepenen alle functies die door de actieve zijn aangeroepen: u kunt een van deze functies selecteren zonder hem actief te maken. Daarnaast, als de call graph daarnaast wordt getoond, dan zal deze automatisch dezelfde functie selecteren. </para>
+
+</sect1>
+
+<sect1 id="concepts-guiparts">
+<title
+>Onderdelen van &GUI;</title>
+
+<sect2>
+<title
+>Zijdocken</title>
+<para
+>Zijdocken zijn zijvensters die u aan elke rand van een &kcachegrind;-venster kunt plaatsen. Zij hebben altijd een lijst met kostenelementen die op een bepaalde volgorde staan. <itemizedlist>
+<listitem
+><para
+>De <guilabel
+>Functieprofiel</guilabel
+> is een lijst met functies die de inclusive en exclusive kosten, getelde aanroepen, naam en positie van functies toont. </para
+></listitem>
+<listitem
+><para>
+<guilabel
+>Overzicht van de onderdelen</guilabel>
+</para
+></listitem>
+<listitem
+><para>
+<guilabel
+>Aanroepstapel</guilabel>
+</para
+></listitem>
+</itemizedlist>
+</para>
+</sect2>
+
+<sect2>
+<title
+>Weergavezone</title>
+<para
+>De weergavezone, standaard het rechter gedeelte van het hoofdvenster van &kcachegrind;, heeft een (standaard) of meerdere tabs, horizontaal of verticaal verdeelt. Elke tab heeft meerdere weergaven met elk een kostenelement tegelijk. De naam van dit element is aan de bovenkant van de tab te zien. Als er meerdere tabs zijn, dan is er maar een actief. In de actieve tab is de elementnaam vetgedrukt, en bepaalt de kostenelement van het &kcachegrind; -venster. </para>
+</sect2>
+
+<sect2>
+<title
+>Zones van een Tab</title>
+<para
+>Elke tab kan tot vier weergavezones hebben, genaamd Top, Right, Left, en Bottom. Elke zone kan meerdere opgestapelde weergaven hebben. Het zichtbare gedeelte van een zone is selecteerbaar door middel van een tabbalk. De tab balken van de rechter en bovenste gebieden zijn aan de bovenkant; de tab balken van de linker en onderste gebieden zijn aan de onderkant. U kunt instellen door middel van de contextmenu´s van de tab welk soort weergave in welke zone gaat. </para>
+</sect2>
+
+<sect2>
+<title
+>Gesynchroniseerde weergave met geselecteerde element in een Tab</title>
+<para
+>Naast een actief element, heeft elke tab een geselecteerde element. Omdat de meeste weergavetypes meerdere elementen tonen met de actieve op de een of andere manier gecentreerd, kunt u het geselecteerde item wijzigen door binnen de weergave te navigeren (door met de muis te klikken of door het toetsenbord te gebruiken). Standaard worden geselecteerde items als gemarkeerd getoond. Door de geselecteerde item in een van de weergaven in een tab te wijzigen, zijn in alle andere weergaven het nieuw geselecteerde item ook gemarkeerd. </para>
+</sect2>
+
+<sect2>
+<title
+>Synchronisatie tussen Tabs</title>
+<para
+>Als er meerdere tabs zijn, dan lijdt een selectiewijziging in een tab tot wijziging in activering in de volgende tab, onafhankelijk of dit rechts of onder daarvan is. Deze manier van linken zou, bijvoorbeeld, het mogelijk maken om snel te bladeren in call graphs. </para>
+</sect2>
+
+<sect2>
+<title
+>Indelingen</title>
+<para
+>De layout van alle tabs in een venster kunt u opslaan (<menuchoice
+><guimenu
+>Beeld </guimenu
+><guisubmenu
+>Layout</guisubmenu
+></menuchoice
+>). Na het dupliceren van de geselecteerde layout (<menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>+</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Beeld</guimenu
+> <guisubmenu
+>Layout</guisubmenu
+><guimenuitem
+>Dupliceren</guimenuitem
+> </menuchoice
+>) en het wijzigen van enkele afmetingen of het verplaatsen van een weergave naar een plek in een tab, kunt u snel heen en weer schakelen tussen de oude en de nieuwe layout via <keycombo action="simul"
+> &Ctrl;<keycap
+>←</keycap
+></keycombo
+> en <keycombo action="simul"
+>&Ctrl; <keycap
+>→</keycap
+></keycombo
+>. De verzameling layouts zullen tussen de sessies van &kcachegrind; met hetzelfde profilering-commando worden opgeslagen. U kunt de huidige verzameling layouts de standaard maken voor nieuwe &kcachegrind; sessies, of de standaard layout verzameling weer terugzetten. </para>
+</sect2>
+</sect1>
+
+<sect1 id="concepts-sidedocks">
+<title
+>Zijdocken</title>
+
+<sect2>
+<title
+>Kostenprofiel</title>
+<para
+>De <guilabel
+>Kostenprofiel</guilabel
+> heeft een lijst met groepen en een lijst met functies. In de lijst met groepen vindt u alle groepen waar kosten zijn gemaakt, afhankelijk van de gekozen type groep. De lijst met groepen is verborgen als groeperen is uitgeschakeld. </para>
+<para
+>De functie-lijst toont de functies van de geselecteerde groep (of alle functies als groeperen is uitgeschakeld), gesorteerd volgens een bepaalde kolom, &eg; inclusief of zelf gespendeerde kosten. Er is een maximum aantal functies die te zien zijn in de lijst, instelbaar in <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>KCachegrind instellen</guimenuitem
+></menuchoice
+>. </para>
+</sect2>
+
+<sect2>
+<title
+>Overzicht van de onderdelen</title>
+<para
+>In een profile run, is het mogelijk om meerdere profile data bestanden te produceren, die u samen in &kcachegrind; kunt laden. De zijdock <guilabel
+>Overzicht van geladen trace-profielbronnen</guilabel
+> toont deze, horizontaal geordend overeenkomstig het moment van creatie; het formaat rechthoek is overeenkomstig met de gespendeerde kosten van elk onderdeel. U kunt een of meerde profielen selecteren om de in de andere &kcachegrind;-weergaven zichtbare kosten te beperken. </para>
+<para
+>De details zijn verder onderverdeeld in een detail- en een inclusive kosten split mode: <variablelist>
+<varlistentry>
+<term
+><guilabel
+>Modus voor partitionering</guilabel
+></term>
+<listitem
+><para
+>De details zijn in groepen voor een profielgegevens te zien, overeenkomstig de geselecteerde type groep. Bijvoorbeeld, als u &ELF; object groepen zijn selecteert, dan ziet u gekleurde rechthoeken voor elk gebruikt &ELF; object (shared library of executable), de grootte overeenkomstig de kosten daarvan. </para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Diagrammodus</guilabel
+></term>
+<listitem
+><para
+>Een rechthoek toont de inclusieve kosten van de geselecteerde actieve functie in de getoonde details. Ook dit is verdeelt in de inclusieve kosten van de aangeroepenen. </para
+></listitem>
+</varlistentry>
+</variablelist>
+</para>
+</sect2>
+
+<sect2>
+<title
+>Aanroepstapel</title>
+<para
+>Dit is een puur fictieve <quote
+>meest waarschijnlijke</quote
+> call stack. Het wordt opgebouwd bij de start van de huidige actieve functie, en voegt de aanroepers en aangeroepenen toe met de hoogste kosten bovenaan. </para>
+<para
+>De kolommen <guilabel
+>Kosten</guilabel
+> en <guilabel
+>Aanroepen</guilabel
+> tonen de gebruikte kosten voor alle aanroepen van de functie in de regel erboven. </para>
+</sect2>
+</sect1>
+
+<sect1 id="concepts-views">
+<title
+>Weergaven</title>
+
+<sect2>
+<title
+>Gebeurtenistype</title>
+<para
+>De <guilabel
+>Gebeurtenistype</guilabel
+> lijst toont alle beschikbare kostentypes en de bijbehorende eigen en inclusieve kosten van de huidige actieve functie voor dat gebeurtenistype. </para>
+<para
+>Door uit de lijst een gebeurtenistype te kiezen, kunt u in de gehele &kcachegrind; de getoonde kostentype wijzigen naar de geselecteerde. </para>
+</sect2>
+
+<sect2>
+<title
+>Aanroep lijsten</title>
+<para
+>Deze lijst toont de calls naar en van de huidige actieve functie. Met <guilabel
+>Alle Callers</guilabel
+> en <guilabel
+>Alle Aangeroepenen</guilabel
+> betekenen die functies die bereikbaar zin in de richting van het aanroepen, zelfs als er andere functie er tussen zitten. </para>
+
+<para
+>De aanroeplijst is inclusief: <itemizedlist>
+<listitem
+><para
+>Directe <guilabel
+>Aanroepers</guilabel
+></para
+></listitem>
+<listitem
+><para
+>Directe <guilabel
+>Aangeroepenen</guilabel
+></para
+></listitem>
+<listitem
+><para
+><guilabel
+>Alle aanroepers</guilabel
+></para
+></listitem>
+<listitem
+><para
+><guilabel
+>Alle aangeroepenen</guilabel
+></para
+></listitem>
+</itemizedlist>
+</para>
+</sect2>
+
+<sect2>
+<title
+>Kaarten</title>
+<para
+>Een boomstructuur overzicht van het primaire gebeurtenistype, omhoog of omlaag in de call hierarchy. Elke gekleurde rechthoek stelt een functie voor; de grootte komt ongeveer overeen met de gespendeerde kosten als de functie actief is (maar, er zijn beperkingen in de weergave). </para>
+<para
+>Voor de <guilabel
+>Aanroeperskaart</guilabel
+>, toont de graaf de geneste hierarchy van alle aanroepers in de huidige geselecteerde functie; voor de <guilabel
+>Aangeroepenenkaart</guilabel
+>, toont het voor alle aangeroepenen. </para>
+<para
+>Weergave instellingen kunt u in het context menu vinden. Om precieze afmetingen te krijgen, selecteert u <guimenuitem
+>Incorrecte Borders overslaan</guimenuitem
+>. omdat deze modus veel computer-tijd kan gebruiken, wilt u wellicht het maximum aantal drawn nesting level beperken. <guilabel
+>Best</guilabel
+> determinates the split direction for children from the aspect ratio of the parent. <guilabel
+>Altijd Best</guilabel
+> beslist over de overblijvende ruimte voor elk broer. <guilabel
+>Ignore Proportions</guilabel
+> ruimte in beslag neemt voor de naam van de functie die van de kinderen afgaat. Merk op dat de proporties van de afmetingen erg kunnen afwijken. </para>
+<para
+>Toetsenbord navigatie is beschikbaar met de links en rechts pijltjestoetsen om door de neefjes te wandelen en de omhoog en omlaag pijltjestoetsen om een genest niveau omhoog en omlaag te gaan. &Enter; selecteert het huidige item. </para>
+</sect2>
+
+<sect2>
+<title
+>Graaf aanroepen</title>
+<para
+>Deze weergave toont de aanroep graaf rond de actieve functie. De getoonde kosten zijn alleen de gebruikte kosten als de actieve functie daadwerkelijk heeft gewerkt, &ie; de getoonde kosten voor <function
+>main()</function
+> (als het zichtbaar is) zou hetzelfde moeten zijn als de kosten van de actieve functie, omdat dit het gedeelte van de gebruikte inclusieve kosten zijn van <function
+>main()</function
+> terwijl het een werkend actieve functie was. </para>
+<para
+>Voor cycles, geven blauwe call pijlen aan dat dit een kunstmatige call is, die nooit echt is gebeurt, toegevoegd voor een correcte weergave. </para>
+<para
+>Als de graaf groter is dan de weergavezone, dan krijgt u een bird's eye view aan de zijkant te zien is. De opties voor weergave zijn vergelijkbaar met die van de call maps; de geselecteerde functie is gemarkeerd. </para>
+</sect2>
+
+<sect2>
+<title
+>Annotaties</title>
+<para
+>De annotaties van broncode of assembler lijsten tonen de broncoderegels of disassembled instructies van de huidige actieve functie samen met (zelf) gebruikte kosten voor het uitvoeren van de code van een broncoderegel of instructie. Als er een call was , dan zijn de regels met details over de call aan de bron toegevoegd: de (inclusieve) in de call gebruikte kosten, het aantal uitgevoerde calls, en het doel van de call. </para>
+<para
+>Selecteer dergelijke informatieregel over een call om het call-doel te activeren. </para>
+</sect2>
+</sect1>
+
+</chapter>
+
+
+<chapter id="commands">
+<title
+>Overzicht van de opdrachten</title>
+
+<sect1 id="kcachegrind-mainwindow">
+<title
+>Het hoofdvenster van &kcachegrind;</title>
+
+<sect2>
+<title
+>Het menu Bestand</title>
+<para>
+<variablelist>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Nieuw</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Opent een leeg top-level venster</action
+> waarin u profielgegevens kunt laden. Deze actie is niet echt noodzakelijk, omdat <menuchoice
+> <guimenu
+>Bestand</guimenu
+><guimenuitem
+>Openen</guimenuitem
+></menuchoice
+> u een nieuw top-level venster geeft indien de huidige al gegevens toont. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Openen</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Opent het &kde;-bestand venster</action
+> voor het kiezen welk profielbronbestand u wilt laden. Als er al data zichtbaar is in huidige top-level venster, dan opent een nieuw venster; als u extra profielgegevens in in het huidige venster openen, dan moet u <menuchoice
+> <guimenu
+>Bestand</guimenu
+><guimenuitem
+>Toevoegen</guimenuitem
+></menuchoice
+> gebruiken. </para>
+<para
+>De namen van de profielbronbestanden eindigen meestal in <literal role="extension"
+>.<replaceable
+>pid</replaceable
+>.<replaceable
+>part</replaceable
+>-<replaceable
+>threadID</replaceable
+></literal
+>, waar <replaceable
+>part</replaceable
+> en <replaceable
+>threadID</replaceable
+> optioneel zijn. <replaceable
+>pid</replaceable
+> en <replaceable
+>part</replaceable
+> worden gebruikt in het geval dat meerdere profielbronbestanden bij een programma run horen. Door het laden van een bestand dat met alleen <literal role="extension"
+><replaceable
+>pid</replaceable
+></literal
+> eindigt, zullen de ander bestanden die bij deze run horen met extra karakters eindigen ook geladen worden. </para>
+<informalexample
+><para
+>Als er de profielbronbestanden <filename
+>cachegrind.out.123</filename
+> en <filename
+>cachegrind.out.123.1</filename
+> bestaan , dan zal u door de eerste te laden, automatisch ook de tweede laden. </para
+></informalexample
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Bestand</guimenu
+><guimenuitem
+>Toevoegen</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Voegt een profielbronbestand toe</action
+> aan het huidige venster. Door dit te gebruiken, kunt u het laden van meerdere data-bestanden in hetzelfde top-level venster forceren zelfs als ze van dezelfde run zijn, zoals ingesteld door de profielbronbestand-conventie. U kunt dit bijvoorbeeld gebruiken voor het naast elkaar vergelijken. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo
+><keycap
+>F5</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Herladen</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Herlaad de profielgegevens</action
+>. Dit is handig als nog een profielbronbestand is gegenereerd voor een al geladen programma run. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Afsluiten</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Beëindigt</action
+> &kcachegrind;</para
+></listitem>
+</varlistentry>
+</variablelist>
+</para>
+
+</sect2>
+
+</sect1>
+</chapter>
+
+<chapter id="faq">
+<title
+>Vragen en antwoorden</title>
+
+<qandaset id="faqlist">
+
+
+<qandaentry>
+<question>
+<para
+>Waar is &kcachegrind; voor? Ik heb geen idee. </para>
+</question>
+<answer>
+<para
+>&kcachegrind; is behulpzaam in een late fase van software ontwikkeling, profilering genaamd. Als u geen programma´s ontwikkelt, dan heeft u &kcachegrind; niet nodig. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Wat is het verschil tussen <guilabel
+>Incl.</guilabel
+> en <guilabel
+>Self</guilabel
+>? </para>
+</question>
+<answer>
+<para
+>Dit zijn kostenelementen voor functies wat betreft sommige gebeurtenistypen. Omdat functies elkaar kunnen aanroepen (call), is het zinnig om onderscheidt te maken tussen de kosten van de functie zelf (<quote
+>Self Cost</quote
+>) en de kosten incusief alle aangeroepen functies (<quote
+>Inclusieve kosten</quote
+>). Aan <quote
+>Self</quote
+> wordt soms ook gerefereerd als <quote
+>Exclusieve</quote
+> kosten. </para>
+<para
+>Dus, bijvoorbeeld, voor <function
+>main()</function
+>, heeft u altijd inclusieve kosten van bijna 100%, waar de kosten zelf bijna verwaarloosbaar is omdat het echte werk in andere functies wordt gedaan. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Als ik dubbelklik op een functie lager in de <guilabel
+>Call Graph</guilabel
+> weergave, dan toont voor de functie <function
+>main()</function
+> dezelfde kosten als de gekozen functie. Zou dit niet constant 100% moeten zijn? </para>
+</question>
+<answer>
+<para
+>U een heeft een functie onder <function
+>main()</function
+> geactiveerd, die uiteraard minder kost dan <function
+>main()</function
+> zelf. Voor elke functie, wordt alleen het gedeelte van de kosten getoond als de <emphasis
+>geactiveerde</emphasis
+> functie werkend is; dat houdt in, dat de getoonde kosten voor elke functie kan nooit hoger zijn dan de kosten van de geactiveerde functie. </para>
+</answer>
+</qandaentry>
+
+
+</qandaset>
+</chapter>
+
+
+<glossary>
+
+<glossentry id="costentity">
+<glossterm
+>Kostenelementen</glossterm>
+<glossdef
+><para
+>Een abstract item in relatie tot broncode waaraan gebeurteniskosten kunnen worden toegewezen. Dimensies voor kostenelementen zijn code locatie (&eg; coderegel, functie), data locatie (&eg; accessed data type, data object), executie locatie (&eg; thread, process), en tuples of triples van de eerder genoemde posities (&eg; calls, object access van statement, evicted data van cache).</para
+></glossdef>
+</glossentry>
+
+<glossentry id="eventcosts">
+<glossterm
+>Gebeurteniskosten</glossterm>
+<glossdef
+><para
+>Totaal aantal gebeurtenissen van een bepaalde gebeurtenistype die optreden tijdens de uitvoering en die een relatie met een bepaalde kostenelement hebben. De kosten hebben een relatie met het element.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="eventtype">
+<glossterm
+>Gebeurtenistype</glossterm>
+<glossdef
+><para
+>Het soort gebeurtenis waarbij kosten aan een kostenelement kunnen worden toegewezen. Er zijn echte gebeurtenistypen en inherited event types.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="inheritedeventtype">
+<glossterm
+>Inherited gebeurtenistype</glossterm>
+<glossdef
+><para
+>Een virtueel gebeurtenistype alleen zichtbaar in de weergave, gedefinieerd door een formule zodat het uit echte gebeurtenistypen kan worden berekent.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="profiledatafile">
+<glossterm
+>Profielgegevensbestand</glossterm>
+<glossdef
+><para
+>Een bestand met in een profilering-experiment gemeten data, of een gedeelte daarvan, of geproduceerd door post-processing van een trace. De grootte daarvan is standaard linear met de grootte van de code van het programma.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="profiledatapart">
+<glossterm
+>Profile Data Part</glossterm>
+<glossdef
+><para
+>Data van een profielgegevensbestand</para
+></glossdef>
+</glossentry>
+
+<glossentry id="profileexperiment">
+<glossterm
+>Profilering-experiment</glossterm>
+<glossdef
+><para
+>Een programma dat werkt onder supervisie van profileringsprogramma, mogelijk meerdere profielgegevensbestanden van gedeeltes of threads van de run producerend.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="profileproject">
+<glossterm
+>Profilering project</glossterm>
+<glossdef
+><para
+>Een configuratie voor profilering experimenten gebruikt om een programma te profileren, misschien in meerdere versies. Vergelijkingen van profilering data is standaard alleen zinvol tussen profilering data geproduceerd in experimenten van een profilering project.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="profiling">
+<glossterm
+>Profileren</glossterm>
+<glossdef
+><para
+>Het proces van het verzamelen van statistische informatie over runtime karakteristieken van werkende programma´s.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="realeventtype">
+<glossterm
+>Echt gebeurtenistype</glossterm>
+<glossdef
+><para
+>Een gebeurtenistype dat meetbaar met een hulpprogramma. Dit vereist een sensor voor het gegeven gebeurtenistype.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="trace">
+<glossterm
+>Trace</glossterm>
+<glossdef
+><para
+>Een rij van timestamped gebeurtenissen die optraden tijdens het tracen van programma run. De grootte is standaard linear met de executie tijd van de programma run.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="tracepart">
+<glossterm
+>Trace Part</glossterm>
+<glosssee otherterm="profiledatapart"/>
+</glossentry>
+
+<glossentry id="tracing">
+<glossterm
+>Tracing</glossterm>
+<glossdef
+><para
+>Het proces van supervising een programma run en het opslaan van de gebeurtenissen, gesorteerd op een timestamp, in een output-bestand, de trace.</para
+></glossdef>
+</glossentry>
+
+</glossary>
+
+<chapter id="credits">
+
+<title
+>Dankbetuiging en licentie</title>
+
+<para
+>Dank aan Julian Seward voor zijn uitstekende &valgrind;, en Nicholas Nethercote voor de uitbreiding &cachegrind;. Zonder deze programma´s zou &kcachegrind; niet bestaan. Sommige ideeën voor deze &GUI; zijn van hun afkomstig. </para>
+<para
+>Dank voor alle bug-rapporten en suggesties van verschillende gebruikers. </para>
+
+&meld.fouten;&vertaling.freek;&vertaling.ronald; &underFDL; </chapter>
+
+&documentation.index;
+</book>

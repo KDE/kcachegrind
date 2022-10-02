@@ -1,0 +1,2215 @@
+# Martin Srebotnjak <miles@filmsi.net>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kcachegrind_qt\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-12-29 02:36+0100\n"
+"PO-Revision-Date: 2022-01-09 12:10+0100\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
+"Language-Team: Slovenian <lugos-slo@lugos.si>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
+"X-Qt-Contexts: true\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: libcore/cachegrindloader.cpp:135
+msgctxt "QObject|"
+msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+msgstr ""
+"Uvozni filter za datoteke s podatki o profilu, ustvarjene s Cachegrind/"
+"Callgrind"
+
+#: libcore/context.cpp:60
+msgctxt "ProfileContext|"
+msgid "Invalid Context"
+msgstr "Neveljaven kontekst"
+
+#: libcore/context.cpp:61
+msgctxt "ProfileContext|"
+msgid "Unknown Context"
+msgstr "Neznan kontekst"
+
+#: libcore/context.cpp:62
+msgctxt "ProfileContext|"
+msgid "Part Source Line"
+msgstr "Del izvorne vrstice"
+
+#: libcore/context.cpp:63
+msgctxt "ProfileContext|"
+msgid "Source Line"
+msgstr "Izvorna vrstica"
+
+#: libcore/context.cpp:64
+msgctxt "ProfileContext|"
+msgid "Part Line Call"
+msgstr "Klic dela vrstice"
+
+#: libcore/context.cpp:65
+msgctxt "ProfileContext|"
+msgid "Line Call"
+msgstr "Klic vrstice"
+
+#: libcore/context.cpp:66
+msgctxt "ProfileContext|"
+msgid "Part Jump"
+msgstr "Delni skok"
+
+#: libcore/context.cpp:67
+msgctxt "ProfileContext|"
+msgid "Jump"
+msgstr "Skok"
+
+#: libcore/context.cpp:68
+msgctxt "ProfileContext|"
+msgid "Part Instruction"
+msgstr "Delni ukaz"
+
+#: libcore/context.cpp:69
+msgctxt "ProfileContext|"
+msgid "Instruction"
+msgstr "Ukaz"
+
+#: libcore/context.cpp:70
+msgctxt "ProfileContext|"
+msgid "Part Instruction Jump"
+msgstr "Delni skok z ukazom"
+
+#: libcore/context.cpp:71
+msgctxt "ProfileContext|"
+msgid "Instruction Jump"
+msgstr "Skok z ukazom"
+
+#: libcore/context.cpp:72
+msgctxt "ProfileContext|"
+msgid "Part Instruction Call"
+msgstr "Delni klic z ukazom"
+
+#: libcore/context.cpp:73
+msgctxt "ProfileContext|"
+msgid "Instruction Call"
+msgstr "Klic ukaza"
+
+#: libcore/context.cpp:74
+msgctxt "ProfileContext|"
+msgid "Part Call"
+msgstr "Delni klic"
+
+#: libcore/context.cpp:75
+msgctxt "ProfileContext|"
+msgid "Call"
+msgstr "Klic"
+
+#: libcore/context.cpp:76
+msgctxt "ProfileContext|"
+msgid "Part Function"
+msgstr "Delna funkcija"
+
+#: libcore/context.cpp:77
+msgctxt "ProfileContext|"
+msgid "Function Source File"
+msgstr "Izvorna datoteka funkcije"
+
+#: libcore/context.cpp:78
+msgctxt "ProfileContext|"
+msgid "Function"
+msgstr "Funkcija"
+
+#: libcore/context.cpp:79
+msgctxt "ProfileContext|"
+msgid "Function Cycle"
+msgstr "Cikel funkcije"
+
+#: libcore/context.cpp:80
+msgctxt "ProfileContext|"
+msgid "Part Class"
+msgstr "Delni razred"
+
+#: libcore/context.cpp:81
+msgctxt "ProfileContext|"
+msgid "Class"
+msgstr "Razred"
+
+#: libcore/context.cpp:82
+msgctxt "ProfileContext|"
+msgid "Part Source File"
+msgstr "Delna izvorna datoteka"
+
+#: libcore/context.cpp:83
+msgctxt "ProfileContext|"
+msgid "Source File"
+msgstr "Izvorna datoteka"
+
+#: libcore/context.cpp:84
+msgctxt "ProfileContext|"
+msgid "Part ELF Object"
+msgstr "Delni predmet ELF"
+
+#: libcore/context.cpp:85
+msgctxt "ProfileContext|"
+msgid "ELF Object"
+msgstr "Predmet ELF"
+
+#: libcore/context.cpp:86
+msgctxt "ProfileContext|"
+msgid "Profile Part"
+msgstr "Delni profil"
+
+#: libcore/context.cpp:87
+msgctxt "ProfileContext|"
+msgid "Program Trace"
+msgstr "Sledenje programu"
+
+#: libcore/costitem.cpp:48
+#, qt-format
+msgctxt "QObject|"
+msgid "%1 from %2"
+msgstr "%1 iz %2"
+
+#: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
+#: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
+#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
+msgctxt "QObject|"
+msgid "(unknown)"
+msgstr "(neznano)"
+
+#: libcore/globalconfig.cpp:77
+msgctxt "QObject|"
+msgid "Instruction Fetch"
+msgstr "Pridobivanje ukaza"
+
+#: libcore/globalconfig.cpp:78
+msgctxt "QObject|"
+msgid "Data Read Access"
+msgstr "Dostop do branja podatkov"
+
+#: libcore/globalconfig.cpp:79
+msgctxt "QObject|"
+msgid "Data Write Access"
+msgstr "Dostop do pisanja podatkov"
+
+#: libcore/globalconfig.cpp:80
+msgctxt "QObject|"
+msgid "L1 Instr. Fetch Miss"
+msgstr "R1 Zgrešeno pridobivanje ukaza"
+
+#: libcore/globalconfig.cpp:81
+msgctxt "QObject|"
+msgid "L1 Data Read Miss"
+msgstr "R1 Zgrešeno branje podatkov"
+
+#: libcore/globalconfig.cpp:82
+msgctxt "QObject|"
+msgid "L1 Data Write Miss"
+msgstr "R1 Zgrešeno pisanje podatkov"
+
+#: libcore/globalconfig.cpp:83
+msgctxt "QObject|"
+msgid "L2 Instr. Fetch Miss"
+msgstr "R2 Zgrešeno pridobivanje ukaza"
+
+#: libcore/globalconfig.cpp:84
+msgctxt "QObject|"
+msgid "L2 Data Read Miss"
+msgstr "R2 Zgrešeno branje podatkov"
+
+#: libcore/globalconfig.cpp:85
+msgctxt "QObject|"
+msgid "L2 Data Write Miss"
+msgstr "R2 Zgrešeno pisanje podatkov"
+
+#: libcore/globalconfig.cpp:86
+msgctxt "QObject|"
+msgid "LL Instr. Fetch Miss"
+msgstr "ZR Zgrešeno pridobivanje ukaza"
+
+#: libcore/globalconfig.cpp:87
+msgctxt "QObject|"
+msgid "LL Data Read Miss"
+msgstr "ZR Zgrešeno branje podatkov"
+
+#: libcore/globalconfig.cpp:88
+msgctxt "QObject|"
+msgid "LL Data Write Miss"
+msgstr "ZR Zgrešeno zapisovanje podatkov"
+
+#: libcore/globalconfig.cpp:89
+msgctxt "QObject|"
+msgid "L1 Miss Sum"
+msgstr "R1 Zgrešena vsota"
+
+#: libcore/globalconfig.cpp:90
+msgctxt "QObject|"
+msgid "L2 Miss Sum"
+msgstr "R2 Zgrešena vsota"
+
+#: libcore/globalconfig.cpp:91
+msgctxt "QObject|"
+msgid "Last-level Miss Sum"
+msgstr "ZR Zgrešena vsota na zadnji ravni"
+
+#: libcore/globalconfig.cpp:92
+msgctxt "QObject|"
+msgid "Indirect Branch"
+msgstr "Posredna veja"
+
+#: libcore/globalconfig.cpp:93
+msgctxt "QObject|"
+msgid "Mispredicted Ind. Branch"
+msgstr "Napačno predvidena posr. veja"
+
+#: libcore/globalconfig.cpp:94
+msgctxt "QObject|"
+msgid "Conditional Branch"
+msgstr "Pogojna veja"
+
+#: libcore/globalconfig.cpp:95
+msgctxt "QObject|"
+msgid "Mispredicted Cond. Branch"
+msgstr "Napačno predvidena pog. veja"
+
+#: libcore/globalconfig.cpp:96
+msgctxt "QObject|"
+msgid "Mispredicted Branch"
+msgstr "Napačno predvidena veja"
+
+#: libcore/globalconfig.cpp:97
+msgctxt "QObject|"
+msgid "Global Bus Event"
+msgstr "Dogodek globalnega vodila"
+
+#: libcore/globalconfig.cpp:98
+msgctxt "QObject|"
+msgid "Samples"
+msgstr "Vzorci"
+
+#: libcore/globalconfig.cpp:99
+msgctxt "QObject|"
+msgid "System Time"
+msgstr "Sistemski čas"
+
+#: libcore/globalconfig.cpp:100
+msgctxt "QObject|"
+msgid "User Time"
+msgstr "Čas uporabnika"
+
+#: libcore/globalconfig.cpp:101
+msgctxt "QObject|"
+msgid "Cycle Estimation"
+msgstr "Ocena cikla"
+
+#: libcore/tracedata.cpp:1240
+msgctxt "QObject|"
+msgid "(no caller)"
+msgstr "(brez klicatelja)"
+
+#: libcore/tracedata.cpp:1247 libcore/tracedata.cpp:1266
+#, qt-format
+msgctxt "QObject|"
+msgid "%1 via %2"
+msgstr "%1 prek %2"
+
+#: libcore/tracedata.cpp:1256
+msgctxt "QObject|"
+msgid "(no callee)"
+msgstr "(brez klicanega)"
+
+#: libcore/tracedata.cpp:2709
+msgctxt "QObject|"
+msgid "(global)"
+msgstr "(globalno)"
+
+#: libcore/tracedata.cpp:3144
+msgctxt "QObject|"
+msgid "(not found)"
+msgstr "(ni mogoče najti)"
+
+#: libcore/tracedata.cpp:3692
+msgctxt "TraceData|"
+msgid "Recalculating Function Cycles..."
+msgstr "Ponovno izračunavanje ciklov funkcij ..."
+
+#: libviews/callgraphview.cpp:414
+#, qt-format
+msgctxt "QObject|"
+msgid "Call(s) from %1"
+msgstr "Klici iz %1"
+
+#: libviews/callgraphview.cpp:417
+#, qt-format
+msgctxt "QObject|"
+msgid "Call(s) to %1"
+msgstr "Klici na %1"
+
+#: libviews/callgraphview.cpp:419
+msgctxt "QObject|"
+msgid "(unknown call)"
+msgstr "(neznan klic)"
+
+#: libviews/callgraphview.cpp:908
+msgctxt "QObject|"
+msgid "Export Graph"
+msgstr "Izvozi graf"
+
+#: libviews/callgraphview.cpp:1608
+msgctxt "CallGraphView|"
+msgid ""
+"<b>Call Graph around active Function</b><p>Depending on configuration, this "
+"view shows the call graph environment of the active function. Note: the "
+"shown cost is <b>only</b> the cost which is spent while the active function "
+"was actually running; i.e. the cost shown for main() - if it is visible - "
+"should be the same as the cost of the active function, as that is the part "
+"of inclusive cost of main() spent while the active function was running.</"
+"p><p>For cycles, blue call arrows indicate that this is an artificial call "
+"added for correct drawing which actually never happened.</p><p>If the graph "
+"is larger than the widget area, an overview panner is shown in one edge. "
+"There are similar visualization options to the Call Treemap; the selected "
+"function is highlighted.</p>"
+msgstr ""
+"<b>Grafikon klicev okoli aktivne funkcije</b><p>Glede na konfiguracijo ta "
+"pogled prikazuje okolje grafa klicev aktivne funkcije. Opomba: prikazani "
+"strošek je samo strošek, ki se porabi, medtem ko je aktivna funkcija "
+"dejansko delovala; <b></b> torej stroški, prikazani za main() - če je to "
+"vidno - morajo biti enaki kot stroški aktivne funkcije, saj je to del "
+"vključujočih stroškov main(), porabljenih ob delovanju aktivne funkcije.</"
+"p><p>Za cikle modre klicne puščice kažejo, da je to umetni klic, dodan za "
+"pravilno risbo, ki se dejansko ni nikoli zgodil.</p><p>Če je graf večji od "
+"območja gradnika, je pregledni drsnik prikazan na enem robu. Obstajajo "
+"podobne možnosti vizualizacije za drevesni prikaz klicev; izbrana funkcija "
+"je poudarjena.</p>"
+
+#: libviews/callgraphview.cpp:2020
+msgctxt "CallGraphView|"
+msgid ""
+"Warning: a long lasting graph layouting is in progress.\n"
+"Reduce node/edge limits for speedup.\n"
+msgstr ""
+"Opozorilo: v teku je dolgotrajno postavljanje grafikona.\n"
+"Zmanjšajte omejitve vozlišč/robov za pospešitev.\n"
+
+#: libviews/callgraphview.cpp:2023
+msgctxt "CallGraphView|"
+msgid "Layouting stopped.\n"
+msgstr "Postavitev se je ustavila.\n"
+
+#: libviews/callgraphview.cpp:2025
+#, qt-format
+msgctxt "CallGraphView|"
+msgid "The call graph has %1 nodes and %2 edges.\n"
+msgstr "Grafikon klicev ima %1 vozlišč in %2 robov.\n"
+
+#: libviews/callgraphview.cpp:2034
+msgctxt "CallGraphView|"
+msgid "No graph available because the layouting process failed.\n"
+msgstr "Grafikon ni na voljo, ker postopek postavitve ni uspel.\n"
+
+#: libviews/callgraphview.cpp:2036
+#, qt-format
+msgctxt "CallGraphView|"
+msgid ""
+"Trying to run the following command did not work:\n"
+"'%1'\n"
+msgstr ""
+"Poskus zagona tega ukaza ni deloval:\n"
+"»%1«\n"
+
+#: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
+msgctxt "CallGraphView|"
+msgid "Please check that 'dot' is installed (package GraphViz)."
+msgstr "Preverite, ali je nameščen »dot« (paket GraphViz)."
+
+#: libviews/callgraphview.cpp:2080
+msgctxt "CallGraphView|"
+msgid "No item activated for which to draw the call graph."
+msgstr ""
+"Noben element ni aktiviran, za katerega bi lahko risali grafikon klicev."
+
+#: libviews/callgraphview.cpp:2092
+msgctxt "CallGraphView|"
+msgid "No call graph can be drawn for the active item."
+msgstr "Za aktivni element ni mogoče risati grafikona klicev."
+
+#: libviews/callgraphview.cpp:2554
+msgctxt "CallGraphView|"
+msgid "Error running the graph layouting tool.\n"
+msgstr "Napaka pri zagonu orodja za grafikona postavitve.\n"
+
+#: libviews/callgraphview.cpp:2559
+#, qt-format
+msgctxt "CallGraphView|"
+msgid ""
+"There is no call graph available for function\n"
+"\t'%1'\n"
+"because it has no cost of the selected event type."
+msgstr ""
+"Grafikon klicev ni na voljo za funkcijo\n"
+"\t»%1«,\n"
+"ker nima stroška izbrane vrste dogodka."
+
+#: libviews/callgraphview.cpp:2773
+msgctxt "CallGraphView|"
+msgid "Caller Depth"
+msgstr "Globina klicalca"
+
+#: libviews/callgraphview.cpp:2774 libviews/callgraphview.cpp:2814
+msgctxt "CallGraphView|"
+msgid "Unlimited"
+msgstr "Neomejeno"
+
+#: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
+msgctxt "CallGraphView|None"
+msgid "Depth 0"
+msgstr "Globina 0"
+
+#: libviews/callgraphview.cpp:2778 libviews/callgraphview.cpp:2818
+msgctxt "CallGraphView|"
+msgid "max. 1"
+msgstr "najv. 1"
+
+#: libviews/callgraphview.cpp:2779 libviews/callgraphview.cpp:2819
+msgctxt "CallGraphView|"
+msgid "max. 2"
+msgstr "najv. 2"
+
+#: libviews/callgraphview.cpp:2780 libviews/callgraphview.cpp:2820
+msgctxt "CallGraphView|"
+msgid "max. 5"
+msgstr "najv. 5"
+
+#: libviews/callgraphview.cpp:2781 libviews/callgraphview.cpp:2821
+msgctxt "CallGraphView|"
+msgid "max. 10"
+msgstr "najv. 10"
+
+#: libviews/callgraphview.cpp:2782 libviews/callgraphview.cpp:2822
+msgctxt "CallGraphView|"
+msgid "max. 15"
+msgstr "najv. 15"
+
+#: libviews/callgraphview.cpp:2813
+msgctxt "CallGraphView|"
+msgid "Callee Depth"
+msgstr "Globina klicanega"
+
+#: libviews/callgraphview.cpp:2853
+msgctxt "CallGraphView|"
+msgid "Min. Node Cost"
+msgstr "Najm. strošek vozlišča"
+
+#: libviews/callgraphview.cpp:2854
+msgctxt "CallGraphView|"
+msgid "No Minimum"
+msgstr "Brez najmanjšega"
+
+#: libviews/callgraphview.cpp:2860
+msgctxt "CallGraphView|"
+msgid "50 %"
+msgstr "50 %"
+
+#: libviews/callgraphview.cpp:2861
+msgctxt "CallGraphView|"
+msgid "20 %"
+msgstr "20 %"
+
+#: libviews/callgraphview.cpp:2862
+msgctxt "CallGraphView|"
+msgid "10 %"
+msgstr "10 %"
+
+#: libviews/callgraphview.cpp:2863
+msgctxt "CallGraphView|"
+msgid "5 %"
+msgstr "5 %"
+
+#: libviews/callgraphview.cpp:2864
+msgctxt "CallGraphView|"
+msgid "2 %"
+msgstr "2 %"
+
+#: libviews/callgraphview.cpp:2865
+msgctxt "CallGraphView|"
+msgid "1 %"
+msgstr "1 %"
+
+#: libviews/callgraphview.cpp:2895
+msgctxt "CallGraphView|"
+msgid "Min. Call Cost"
+msgstr "Najm. stroški klica"
+
+#: libviews/callgraphview.cpp:2896
+msgctxt "CallGraphView|"
+msgid "Same as Node"
+msgstr "Enako kot pri vozlišču"
+
+#: libviews/callgraphview.cpp:2898
+msgctxt "CallGraphView|"
+msgid "50 % of Node"
+msgstr "50 % vozlišča"
+
+#: libviews/callgraphview.cpp:2900
+msgctxt "CallGraphView|"
+msgid "20 % of Node"
+msgstr "20 % vozlišča"
+
+#: libviews/callgraphview.cpp:2902
+msgctxt "CallGraphView|"
+msgid "10 % of Node"
+msgstr "10 % vozlišča"
+
+#: libviews/callgraphview.cpp:2931
+msgctxt "CallGraphView|"
+msgid "Birds-eye View"
+msgstr "Ptičja perspektiva"
+
+#: libviews/callgraphview.cpp:2932
+msgctxt "CallGraphView|"
+msgid "Top Left"
+msgstr "Levo zgoraj"
+
+#: libviews/callgraphview.cpp:2933
+msgctxt "CallGraphView|"
+msgid "Top Right"
+msgstr "Desno zgoraj"
+
+#: libviews/callgraphview.cpp:2934
+msgctxt "CallGraphView|"
+msgid "Bottom Left"
+msgstr "Levo spodaj"
+
+#: libviews/callgraphview.cpp:2935
+msgctxt "CallGraphView|"
+msgid "Bottom Right"
+msgstr "Desno spodaj"
+
+#: libviews/callgraphview.cpp:2936
+msgctxt "CallGraphView|"
+msgid "Automatic"
+msgstr "Samodejno"
+
+#: libviews/callgraphview.cpp:2937
+msgctxt "CallGraphView|"
+msgid "Hide"
+msgstr "Skrij"
+
+#: libviews/callgraphview.cpp:2967
+msgctxt "CallGraphView|"
+msgid "Layout"
+msgstr "Postavitev"
+
+#: libviews/callgraphview.cpp:2968
+msgctxt "CallGraphView|"
+msgid "Top to Down"
+msgstr "Od vrha navzdol"
+
+#: libviews/callgraphview.cpp:2969
+msgctxt "CallGraphView|"
+msgid "Left to Right"
+msgstr "Od leve proti desni"
+
+#: libviews/callgraphview.cpp:2970
+msgctxt "CallGraphView|"
+msgid "Circular"
+msgstr "Krožno"
+
+#: libviews/callgraphview.cpp:3010 libviews/callgraphview.cpp:3015
+#: libviews/callgraphview.cpp:3035
+#, qt-format
+msgctxt "CallGraphView|"
+msgid "Go to '%1'"
+msgstr "Pojdi na »%1«"
+
+#: libviews/callgraphview.cpp:3046
+msgctxt "CallGraphView|"
+msgid "Stop Layouting"
+msgstr "Ustavi postavitev"
+
+#: libviews/callgraphview.cpp:3053
+msgctxt "CallGraphView|"
+msgid "Export Graph"
+msgstr "Izvozi grafikon"
+
+#: libviews/callgraphview.cpp:3054
+msgctxt "CallGraphView|"
+msgid "As DOT file..."
+msgstr "Kot datoteka DOT ..."
+
+#: libviews/callgraphview.cpp:3055
+msgctxt "CallGraphView|"
+msgid "As Image..."
+msgstr "Kot slika ..."
+
+#: libviews/callgraphview.cpp:3058
+msgctxt "CallGraphView|"
+msgid "Graph"
+msgstr "Grafikon"
+
+#: libviews/callgraphview.cpp:3066
+msgctxt "CallGraphView|"
+msgid "Arrows for Skipped Calls"
+msgstr "Puščice za preskočene klice"
+
+#: libviews/callgraphview.cpp:3071
+msgctxt "CallGraphView|"
+msgid "Inner-cycle Calls"
+msgstr "Klici v notranjem ciklu"
+
+#: libviews/callgraphview.cpp:3076
+msgctxt "CallGraphView|"
+msgid "Cluster Groups"
+msgstr "Skupine gruč"
+
+#: libviews/callgraphview.cpp:3080
+msgctxt "CallGraphView|"
+msgid "Visualization"
+msgstr "Vidna predstavitev"
+
+#: libviews/callgraphview.cpp:3081
+msgctxt "CallGraphView|"
+msgid "Compact"
+msgstr "Strnjeno"
+
+#: libviews/callgraphview.cpp:3084
+msgctxt "CallGraphView|"
+msgid "Normal"
+msgstr "Navadno"
+
+#: libviews/callgraphview.cpp:3087
+msgctxt "CallGraphView|"
+msgid "Tall"
+msgstr "Visoko"
+
+#: libviews/callgraphview.cpp:3119
+msgctxt "CallGraphView|"
+msgid "Export Graph As Image"
+msgstr "Izvozi grafikon kot sliko"
+
+#: libviews/callgraphview.cpp:3121
+msgctxt "CallGraphView|"
+msgid "Images (*.png *.jpg)"
+msgstr "Slike (*.png *.jpg)"
+
+#: libviews/callitem.cpp:73 libviews/partlistitem.cpp:131
+msgctxt "QObject|"
+msgid "(active)"
+msgstr "(aktivno)"
+
+#: libviews/callmapview.cpp:52
+msgctxt "CallMapView|Name"
+msgid "A thing's name"
+msgstr "Ime stvari."
+
+#: libviews/callmapview.cpp:53
+msgctxt "CallMapView|"
+msgid "Cost"
+msgstr "Strošek"
+
+#: libviews/callmapview.cpp:54
+msgctxt "CallMapView|"
+msgid "Location"
+msgstr "Mesto"
+
+#: libviews/callmapview.cpp:56
+msgctxt "CallMapView|"
+msgid "Calls"
+msgstr "Klici"
+
+#: libviews/callmapview.cpp:91
+msgctxt "CallMapView|"
+msgid ""
+"<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>Zemljevid klicalcev</b><p>Ta graf prikazuje gnezdeno hierarhijo vseh "
+"klicev trenutno aktivirane funkcije. Vsak barvni pravokotnik predstavlja "
+"funkcijo; njegova velikost poskuša biti sorazmerna s stroški, porabljenimi v "
+"tem času, ko deluje aktivna funkcija (vendar obstajajo omejitve).</p>"
+
+#: libviews/callmapview.cpp:98
+msgctxt "CallMapView|"
+msgid ""
+"<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>Zemljevid klicev</b><p>Ta graf prikazuje gnezdeno hierarhijo vseh "
+"klicanih s trenutno aktivirano funkcijo. Vsak barvni pravokotnik predstavlja "
+"funkcijo; njegova velikost poskuša biti sorazmerna s stroški, porabljenimi v "
+"tem času, ko deluje aktivna funkcija (vendar obstajajo omejitve).</p>"
+
+#: libviews/callmapview.cpp:106
+msgctxt "CallMapView|"
+msgid ""
+"<p>Appearance options can be found in the in the context menu. To get exact "
+"size proportions, choose 'Hide incorrect borders'. As this mode can be "
+"<em>very</em> time consuming, you may want to limit the maximum drawn "
+"nesting level before. 'Best' determinates the split direction for children "
+"from the aspect ratio of the parent. 'Always Best' decides on remaining "
+"space for each sibling. 'Ignore Proportions' takes space for function name "
+"drawing <em>before</em> drawing children. Note that size proportions can get "
+"<em>heavily</em> wrong.</p><p>This is a <em>TreeMap</em> widget. Keyboard "
+"navigation is available with the left/right arrow keys for traversing "
+"siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
+"em> activates the current item.</p>"
+msgstr ""
+"<p>Možnosti videza lahko najdete v kontekstnem meniju. Če želite dobiti "
+"točna razmerja velikosti, izberite »Skrij napačne obrobe«. Ker je ta način "
+"lahko <em>zelo</em> dolgotrajen, boste morda pred tem želeli omejiti "
+"največjo izrisano raven gnezdenja. »Najboljši« določa smer razcepa za "
+"podrejene elemente iz razmerja nadrejenih. »Vedno najboljši« odloča o "
+"preostalem prostoru za vsak enakovredni element. »Prezri proporcije« zavzame "
+"prostor za risanje imena funkcije <em>pred</em> risanjem podrejenih "
+"elementov. Upoštevajte, da so lahko deleži velikosti <em>močno</em> narobe.</"
+"p><p>To je gradnik <em>treeMap</em>. Krmarjenje po tipkovnici je na voljo z "
+"levo/desno smerno tipko za prehajanje enakovrednih elementov in s smerno "
+"tipko navzgor/navzdol za pomik po ravneh gnezdenja navzgor/navzdol. "
+"<em>Vračalka</em> aktivira trenutni element.</p>"
+
+#: libviews/callmapview.cpp:139
+msgctxt "CallMapView|"
+msgid "Go To"
+msgstr "Pojdi na"
+
+#: libviews/callmapview.cpp:170
+msgctxt "CallMapView|"
+msgid "Stop at Depth"
+msgstr "Ustavi se pri globini"
+
+#: libviews/callmapview.cpp:171
+msgctxt "CallMapView|"
+msgid "No Depth Limit"
+msgstr "Brez omejitve globine"
+
+#: libviews/callmapview.cpp:173
+msgctxt "CallMapView|"
+msgid "Depth 10"
+msgstr "Globina 10"
+
+#: libviews/callmapview.cpp:174
+msgctxt "CallMapView|"
+msgid "Depth 15"
+msgstr "Globina 15"
+
+#: libviews/callmapview.cpp:175
+msgctxt "CallMapView|"
+msgid "Depth 20"
+msgstr "Globina 20"
+
+#: libviews/callmapview.cpp:178
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Depth of '%1' (%2)"
+msgstr "Globina »%1« (%2)"
+
+#: libviews/callmapview.cpp:185
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Decrement Depth (to %1)"
+msgstr "Zmanjšaj globino (na %1)"
+
+#: libviews/callmapview.cpp:187
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Increment Depth (to %1)"
+msgstr "Zvišaj globino (na %1)"
+
+#: libviews/callmapview.cpp:213
+msgctxt "CallMapView|"
+msgid "Stop at Function"
+msgstr "Ustavi pri funkciji"
+
+#: libviews/callmapview.cpp:214
+msgctxt "CallMapView|"
+msgid "No Function Limit"
+msgstr "Brez omejitve s funkcijo"
+
+#: libviews/callmapview.cpp:257
+msgctxt "CallMapView|"
+msgid "Stop at Area"
+msgstr "Ustav na področju"
+
+#: libviews/callmapview.cpp:258
+msgctxt "CallMapView|"
+msgid "No Area Limit"
+msgstr "Brez omejitve področja"
+
+#: libviews/callmapview.cpp:260
+msgctxt "CallMapView|"
+msgid "100 Pixels"
+msgstr "100 sl. točk"
+
+#: libviews/callmapview.cpp:261
+msgctxt "CallMapView|"
+msgid "200 Pixels"
+msgstr "200 sl. točk"
+
+#: libviews/callmapview.cpp:262
+msgctxt "CallMapView|"
+msgid "500 Pixels"
+msgstr "500 sl. točk"
+
+#: libviews/callmapview.cpp:263
+msgctxt "CallMapView|"
+msgid "1000 Pixels"
+msgstr "1000 sl. točk"
+
+#: libviews/callmapview.cpp:269
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Area of '%1' (%2)"
+msgstr "Področje »%1« (%2)"
+
+#: libviews/callmapview.cpp:275
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Double Area Limit (to %1)"
+msgstr "Omejitev dvojnega področja (na %1)"
+
+#: libviews/callmapview.cpp:277
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Half Area Limit (to %1)"
+msgstr "Omejitev polovičnega področja (na %1)"
+
+#: libviews/callmapview.cpp:327
+msgctxt "CallMapView|"
+msgid "Visualization"
+msgstr "Vidna predstavitev"
+
+#: libviews/callmapview.cpp:328
+msgctxt "CallMapView|"
+msgid "Split Direction"
+msgstr "Razdeli smer"
+
+#: libviews/callmapview.cpp:331
+msgctxt "CallMapView|"
+msgid "Skip Incorrect Borders"
+msgstr "Preskoči napačne obrobe"
+
+#: libviews/callmapview.cpp:336
+msgctxt "CallMapView|"
+msgid "Border Width"
+msgstr "Širina obrobe"
+
+#: libviews/callmapview.cpp:337
+msgctxt "CallMapView|"
+msgid "Border 0"
+msgstr "Obroba 0"
+
+#: libviews/callmapview.cpp:339
+msgctxt "CallMapView|"
+msgid "Border 1"
+msgstr "Obroba 1"
+
+#: libviews/callmapview.cpp:340
+msgctxt "CallMapView|"
+msgid "Border 2"
+msgstr "Obroba 2"
+
+#: libviews/callmapview.cpp:341
+msgctxt "CallMapView|"
+msgid "Border 3"
+msgstr "Obroba 3"
+
+#: libviews/callmapview.cpp:346
+msgctxt "CallMapView|"
+msgid "Draw Symbol Names"
+msgstr "Nariši imena simbolov"
+
+#: libviews/callmapview.cpp:348
+msgctxt "CallMapView|"
+msgid "Draw Cost"
+msgstr "Nariši strošek"
+
+#: libviews/callmapview.cpp:350
+msgctxt "CallMapView|"
+msgid "Draw Location"
+msgstr "Nariši mesto"
+
+#: libviews/callmapview.cpp:352
+msgctxt "CallMapView|"
+msgid "Draw Calls"
+msgstr "Nariši klice"
+
+#: libviews/callmapview.cpp:356
+msgctxt "CallMapView|"
+msgid "Ignore Proportions"
+msgstr "Prezri deleže"
+
+#: libviews/callmapview.cpp:358
+msgctxt "CallMapView|"
+msgid "Allow Rotation"
+msgstr "Dovoli vrtenje"
+
+#: libviews/callmapview.cpp:376
+msgctxt "CallMapView|"
+msgid "Shading"
+msgstr "Senčenje"
+
+#: libviews/callmapview.cpp:428
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Call Map: Current is '%1'"
+msgstr "Zemljevid klicev: trenutno je »%1«"
+
+#: libviews/callmapview.cpp:621
+msgctxt "QObject|"
+msgid "(no function)"
+msgstr "(brez funkcije)"
+
+#: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
+msgctxt "QObject|"
+msgid "(no call)"
+msgstr "(brez klica)"
+
+#: libviews/callview.cpp:37
+msgctxt "CallView|"
+msgid "Cost"
+msgstr "Strošek"
+
+#: libviews/callview.cpp:38
+msgctxt "CallView|"
+msgid "Cost per call"
+msgstr "Strošek na klic"
+
+#: libviews/callview.cpp:39
+msgctxt "CallView|"
+msgid "Cost 2"
+msgstr "Strošek 2"
+
+#: libviews/callview.cpp:40
+msgctxt "CallView|"
+msgid "Cost 2 per call"
+msgstr "Strošek 2 na klic"
+
+#: libviews/callview.cpp:41
+msgctxt "CallView|"
+msgid "Count"
+msgstr "Števec"
+
+#: libviews/callview.cpp:42
+msgctxt "CallView|"
+msgid "Caller"
+msgstr "Klicatelj"
+
+#: libviews/callview.cpp:42
+msgctxt "CallView|"
+msgid "Callee"
+msgstr "Klicani"
+
+#: libviews/callview.cpp:76
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callers</b><p>This list shows all functions calling the "
+"current selected one directly, together with a call count and the cost spent "
+"in the current selected function while being called from the function from "
+"the list.</p><p>An icon instead of an inclusive cost specifies that this is "
+"a call inside of a recursive cycle. An inclusive cost makes no sense here.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>Seznam neposrednih klicateljev</b><p>Na tem seznamu so prikazane vse "
+"funkcije, ki kličejo trenutno izbrano funkcijo neposredno, skupaj s številom "
+"klicev in stroški, porabljeni v trenutni izbrani funkciji, medtem ko so "
+"klicani iz funkcije s seznama.</p><p>Ikona namesto vključujočih stroškov "
+"določa, da je to klic znotraj ponavljajočega se cikla. Vključujoč strošek "
+"tukaj nima smisla.</p><p>Z izbiro funkcije je trenutno izbrana ena od teh "
+"informacijskih plošč. Če obstajata dve plošči (način Razdeli), se namesto "
+"tega spremeni funkcija druge plošče.</p>"
+
+#: libviews/callview.cpp:89
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callees</b><p>This list shows all functions called by the "
+"current selected one directly, together with a call count and the cost spent "
+"in this function while being called from the selected function.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>Seznam neposredno klicanih</b><p>Na tem seznamu so prikazane vse "
+"funkcije, ki jih trenutno izbrana funkcija kliče neposredno, skupaj s "
+"številom klicev in stroški, porabljeni v tej funkciji, ko so klicani iz "
+"izbrane funkcije.</p><p>Z izbiro funkcije je trenutno izbrana ena od teh "
+"informacijskih plošč. Če obstajata dve plošči (način Razdeli), se namesto "
+"tega spremeni funkcija druge plošče.</p>"
+
+#: libviews/callview.cpp:118 libviews/callview.cpp:123
+#, qt-format
+msgctxt "CallView|"
+msgid "Go to '%1'"
+msgstr "Pojdi na »%1«"
+
+#: libviews/callview.cpp:257 libviews/callview.cpp:261
+#, qt-format
+msgctxt "CallView|"
+msgid "%1 per call"
+msgstr "%1 na klic"
+
+#: libviews/costlistitem.cpp:53
+#, qt-format
+msgctxt "QObject|"
+msgid "(%n item(s) skipped)"
+msgid_plural "(%n item(s) skipped)"
+msgstr[0] "(preskočen %n element)"
+msgstr[1] "(preskočena %n elementa)"
+msgstr[2] "(preskočeni %n elementi)"
+msgstr[3] "(preskočenih %n elementov)"
+
+#: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
+#, qt-format
+msgctxt "QObject|"
+msgid "(%n function(s) skipped)"
+msgid_plural "(%n function(s) skipped)"
+msgstr[0] "(preskočena %n funkcija)"
+msgstr[1] "(preskočeni %n funkciji)"
+msgstr[2] "(preskočene %n funkcije)"
+msgstr[3] "(preskočenih %n funkcij)"
+
+#: libviews/coverageview.cpp:37
+msgctxt "CoverageView|"
+msgid "Incl."
+msgstr "Vklj."
+
+#: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
+msgctxt "CoverageView|"
+msgid "Distance"
+msgstr "Razdalja"
+
+#: libviews/coverageview.cpp:41
+msgctxt "CoverageView|"
+msgid "Called"
+msgstr "Klicano"
+
+#: libviews/coverageview.cpp:42
+msgctxt "CoverageView|"
+msgid "Caller"
+msgstr "Klicatelj"
+
+#: libviews/coverageview.cpp:46
+msgctxt "CoverageView|"
+msgid "Self"
+msgstr "Sebe"
+
+#: libviews/coverageview.cpp:48
+msgctxt "CoverageView|"
+msgid "Calling"
+msgstr "Klicanje"
+
+#: libviews/coverageview.cpp:49
+msgctxt "CoverageView|"
+msgid "Callee"
+msgstr "Klicani"
+
+#: libviews/coverageview.cpp:84
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callers</b><p>This list shows all functions calling the "
+"current selected one, either directly or with several functions in-between "
+"on the stack; the number of functions in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the selected function while a "
+"listed function is active; relative cost is the percentage of all cost spent "
+"in the selected function while the listed one is active. The cost graphic "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls from the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+"<b>Seznam vseh klicateljev</b><p>Na tem seznamu so prikazane vse funkcije, "
+"ki kličejo trenutno izbrano funkcijo - neposredno ali z več vmesnimi "
+"funkcijami na skladu; število funkcij med njima plus ena se imenuje "
+"<em>Razdalja</em> (npr. za funkcijo A,B,C obstaja klic od A do C, ko A kliče "
+"B in B kliče C, torej A => B => C. Razdalja je v tem primeru 2).</"
+"p><p>Absolutni strošek je strošek, porabljen v izbrani funkciji, medtem ko "
+"je navedena funkcija aktivna; relativni strošek je odstotek vseh stroškov, "
+"porabljenih v izbrani funkciji, medtem ko je navedena funkcija aktivna. "
+"Grafika stroška prikazuje logaritemski odstotek z drugačno barvo za vsako "
+"razdaljo.</p><p>Ker je lahko veliko klicev iz iste funkcije, stolpec "
+"razdalje včasih prikazuje razpon razdalj za vse klice, ki se dogajajo; v "
+"oklepaju sledi srednja razdalja, torej razdalja, kjer se je zgodila večina "
+"stroškov klica.</p><p>Z izbiro funkcije je trenutno izbrana ena od teh "
+"informacijskih plošč. Če obstajata dve plošči (način Razdeli), se namesto "
+"tega spremeni funkcija druge plošče.</p>"
+
+#: libviews/coverageview.cpp:114
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callees</b><p>This list shows all functions called by the "
+"current selected one, either directly or with several function in-between on "
+"the stack; the number of function in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the listed function while the "
+"selected is active; relative cost is the percentage of all cost spent in the "
+"listed function while the selected one is active. The cost graphic always "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls to the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+"<b>Seznam vseh klicanih</b><p>Na tem seznamu so prikazane vse funkcije, ki "
+"jih kliče trenutno izbrana funkcija, bodisi neposredno bodisi z več "
+"funkcijami vmes na skladu; število funkcij med njima plus ena se imenuje "
+"<em>Razdalja</em> (npr. za funkcijo A,B,C obstajata klica od A do C, ko A "
+"kliče B in B kliče C, torej A => B => C. Razdalja je v tem primeru 2).</"
+"p><p>Absolutni prikazani stroški so stroški, porabljeni v navedeni funkciji, "
+"medtem ko je izbrano aktivno; relativni strošek je odstotek vseh stroškov, "
+"nastal v navedeni funkciji, medtem ko je izbrani del aktiven. Grafika "
+"stroška vedno prikazuje logaritemski odstotek z drugačno barvo za vsako "
+"razdaljo.</p><p>Ker je lahko veliko klicev iste funkcije, stolpec razdalje "
+"včasih prikazuje razpon razdalj za vse klice, ki se dogajajo; v oklepaju "
+"sledi srednja razdalja, torej razdalja, kjer se je zgodila večina stroškov "
+"klica.</p><p>Z izbiro funkcije je trenutno izbrana ena od teh informacijskih "
+"plošč. Če obstajata dve plošči (način Razdeli), se namesto tega spremeni "
+"funkcija druge plošče.</p>"
+
+#: libviews/coverageview.cpp:160
+#, qt-format
+msgctxt "CoverageView|"
+msgid "Go to '%1'"
+msgstr "Pojdi na »%1«"
+
+#: libviews/eventtypeitem.cpp:48
+msgctxt "QObject|"
+msgid "Unknown Type"
+msgstr "Neznana vrsta"
+
+#: libviews/eventtypeview.cpp:37
+msgctxt "EventTypeView|"
+msgid "Event Type"
+msgstr "Vrsta dogodka"
+
+#: libviews/eventtypeview.cpp:38
+msgctxt "EventTypeView|"
+msgid "Incl."
+msgstr "Vklj."
+
+#: libviews/eventtypeview.cpp:39
+msgctxt "EventTypeView|"
+msgid "Self"
+msgstr "Sebe"
+
+#: libviews/eventtypeview.cpp:40
+msgctxt "EventTypeView|"
+msgid "Short"
+msgstr "Kratko"
+
+#: libviews/eventtypeview.cpp:42
+msgctxt "EventTypeView|"
+msgid "Formula"
+msgstr "Formula"
+
+#: libviews/eventtypeview.cpp:76
+msgctxt "EventTypeView|"
+msgid ""
+"<b>Cost Types List</b><p>This list shows all cost types available and what "
+"the self/inclusive cost of the current selected function is for that cost "
+"type.</p><p>By choosing a cost type from the list, you change the cost type "
+"of costs shown all over KCachegrind to be the selected one.</p>"
+msgstr ""
+"<b>Seznam vrst stroškov</b><p>Ta seznam prikazuje vse vrste stroškov, ki so "
+"na voljo, in kakšen je sam/vključujoč strošek trenutne izbrane funkcije za "
+"to vrsto stroška.</p><p>Z izbiro vrste stroškov s seznama spremenite vrsto "
+"stroškov, prikazano po vsem KCachegrindu, tako da je izbrana.</p>"
+
+#: libviews/eventtypeview.cpp:96
+msgctxt "EventTypeView|"
+msgid "Set as Secondary Event Type"
+msgstr "Nastavi kot drugotno vrsto dogodkov"
+
+#: libviews/eventtypeview.cpp:98
+msgctxt "EventTypeView|"
+msgid "Hide Secondary Event Type"
+msgstr "Skrij drugotno vrsto dogodkov"
+
+#: libviews/eventtypeview.cpp:107
+msgctxt "EventTypeView|"
+msgid "Edit Long Name"
+msgstr "Uredi dolgo ime"
+
+#: libviews/eventtypeview.cpp:108
+msgctxt "EventTypeView|"
+msgid "Edit Short Name"
+msgstr "Uredi kratko ime"
+
+#: libviews/eventtypeview.cpp:109
+msgctxt "EventTypeView|"
+msgid "Edit Formula"
+msgstr "Uredi formulo"
+
+#: libviews/eventtypeview.cpp:110
+msgctxt "EventTypeView|"
+msgid "Remove"
+msgstr "Odstrani"
+
+#: libviews/eventtypeview.cpp:119
+msgctxt "EventTypeView|"
+msgid "New Event Type..."
+msgstr "Vrsta novega dogodka ..."
+
+#: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
+#, qt-format
+msgctxt "EventTypeView|"
+msgid "New%1"
+msgstr "Novo%1"
+
+#: libviews/eventtypeview.cpp:160
+#, qt-format
+msgctxt "EventTypeView|"
+msgid "New Event Type %1"
+msgstr "Vrsta novega dogodka %1"
+
+#: libviews/functionlistmodel.cpp:45
+msgctxt "FunctionListModel|"
+msgid "Incl."
+msgstr "Vklj."
+
+#: libviews/functionlistmodel.cpp:46
+msgctxt "FunctionListModel|"
+msgid "Self"
+msgstr "Sebe"
+
+#: libviews/functionlistmodel.cpp:47
+msgctxt "FunctionListModel|"
+msgid "Called"
+msgstr "Klicano"
+
+#: libviews/functionlistmodel.cpp:48
+msgctxt "FunctionListModel|"
+msgid "Function"
+msgstr "Funkcija"
+
+#: libviews/functionlistmodel.cpp:49
+msgctxt "FunctionListModel|"
+msgid "Location"
+msgstr "Mesto"
+
+#: libviews/functionlistmodel.cpp:89
+#, qt-format
+msgctxt "FunctionListModel|"
+msgid "(%1 function(s) skipped)"
+msgstr "(%1 preskočenih funkcij)"
+
+#: libviews/functionselection.cpp:87
+msgctxt "FunctionSelection|"
+msgid "Function Profile"
+msgstr "Profil funkcije"
+
+#: libviews/functionselection.cpp:95
+msgctxt "FunctionSelection|"
+msgid "&Search:"
+msgstr "&Išči:"
+
+#: libviews/functionselection.cpp:101
+msgctxt "FunctionSelection|"
+msgid "Search Query"
+msgstr "Vsebina iskanja"
+
+#: libviews/functionselection.cpp:116
+msgctxt "FunctionSelection|"
+msgid "Self"
+msgstr "Sebe"
+
+#: libviews/functionselection.cpp:116
+msgctxt "FunctionSelection|"
+msgid "Group"
+msgstr "Skupina"
+
+#: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
+msgctxt "FunctionSelection|"
+msgid "(No Grouping)"
+msgstr "(Brez združevanja v skupine)"
+
+#: libviews/functionselection.cpp:209
+msgctxt "FunctionSelection|"
+msgid ""
+"<b>The Flat Profile</b><p>The flat profile contains a group and a function "
+"selection list. The group list contains all groups where costs are spent in, "
+"depending on the chosen group type. The group list is hidden when group type "
+"'Function' is selected.</p><p>The function list contains the functions of "
+"the selected group (or all for 'Function' group type), ordered by the costs "
+"spent therein. Functions with costs less than 1% are hidden on default.</p>"
+msgstr ""
+"<b>Ploski profil</b><p>Ploski profil vsebuje skupino in seznam za izbiro "
+"funkcij. Seznam skupin vsebuje vse skupine, v katerih so stroški porabljeni, "
+"odvisno od izbrane vrste skupine. Seznam skupin je skrit, ko je izbrana "
+"vrsta skupine »Funkcija«.</p><p>Seznam funkcij vsebuje funkcije izbrane "
+"skupine (ali vse za vrsto skupine »Funkcija«), ki so jih naročili stroški, "
+"porabljeni v tem seznamu. Funkcije s stroški, manjšimi od 1 %, so privzeto "
+"skrite.</p>"
+
+#: libviews/functionselection.cpp:287
+#, qt-format
+msgctxt "FunctionSelection|"
+msgid "Go to '%1'"
+msgstr "Pojdi na »%1«"
+
+#: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
+msgctxt "FunctionSelection|"
+msgid "Grouping"
+msgstr "Združevanje"
+
+#: libviews/functionselection.cpp:353
+msgctxt "FunctionSelection|"
+msgid "No Grouping"
+msgstr "Brez združevanja"
+
+#: libviews/instritem.cpp:114 libviews/sourceitem.cpp:94
+#, qt-format
+msgctxt "QObject|"
+msgid "Active call to '%1'"
+msgstr "Aktivni klic na »%1«"
+
+#: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
+#, qt-format
+msgctxt "QObject|"
+msgid "Call to '%1'"
+msgstr "Klic na »%1«"
+
+#: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
+#, qt-format
+msgctxt "QObject|"
+msgid "%n call(s) to '%2'"
+msgid_plural "%n call(s) to '%2'"
+msgstr[0] "%n klic na %2"
+msgstr[1] "%n klica na %2"
+msgstr[2] "%n klici na %2"
+msgstr[3] "%n klicev na %2"
+
+#: libviews/instritem.cpp:155
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to 0x%3"
+msgstr "Skoči %1-krat od %2-krat na 0x%3"
+
+#: libviews/instritem.cpp:160
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 times to 0x%2"
+msgstr "Skoči %1-krat na 0x%2"
+
+#: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
+msgctxt "QObject|"
+msgid "(cycle)"
+msgstr "(kroži)"
+
+#: libviews/instrview.cpp:193
+msgctxt "InstrView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/instrview.cpp:194
+msgctxt "InstrView|"
+msgid "Cost"
+msgstr "Strošek"
+
+#: libviews/instrview.cpp:195
+msgctxt "InstrView|"
+msgid "Cost 2"
+msgstr "Strošek 2"
+
+#: libviews/instrview.cpp:197
+msgctxt "InstrView|"
+msgid "Hex"
+msgstr "Šestn. št."
+
+#: libviews/instrview.cpp:199
+msgctxt "InstrView|"
+msgid "Assembly Instructions"
+msgstr "Ukazi v zbirnem jeziku"
+
+#: libviews/instrview.cpp:200
+msgctxt "InstrView|"
+msgid "Source Position"
+msgstr "Položaj izvorne kode"
+
+#: libviews/instrview.cpp:236
+msgctxt "InstrView|"
+msgid ""
+"<b>Annotated Machine Code</b><p>The annotated machine code list shows the "
+"assembly instructions of the current selected function together with (self) "
+"cost spent while executing an instruction. If this is a call instruction, "
+"lines with details on the call happening are inserted into the source: the "
+"cost spent inside of the call, the number of calls happening, and the call "
+"destination.</p><p>The machine code shown is generated with the 'objdump' "
+"utility from the 'binutils' package.</p><p>Select a line with call "
+"information to make the destination function of this call current.</p>"
+msgstr ""
+"<b>Označena strojna koda</b><p>Na označenem izpisu strojne kode so prikazana "
+"izbirni ukazi za sestavljanje trenutne izbrane funkcije skupaj s (lastnimi) "
+"stroški, porabljenimi med izvšitvijo ukaza. Če je ta ukaz klic, se v izvorno "
+"kodo vstavijo vrstice s podrobnostmi o klicu: stroški, porabljeni s klicem, "
+"število klicev in cilj klica.</p><p>Prikazana strojna koda je ustvarjena s "
+"pripomočkom »objdump« iz paketa »binutils«.</p><p>Izberite vrstico z "
+"informacijami o klicu, da bo ciljna funkcija tega klica posodobljena.</p>"
+
+#: libviews/instrview.cpp:265
+#, qt-format
+msgctxt "InstrView|"
+msgid "Go to '%1'"
+msgstr "Pojdi na »%1«"
+
+#: libviews/instrview.cpp:270
+#, qt-format
+msgctxt "InstrView|"
+msgid "Go to Address %1"
+msgstr "Pojdi na naslov %1"
+
+#: libviews/instrview.cpp:282
+msgctxt "InstrView|"
+msgid "Hex Code"
+msgstr "Šestn. koda"
+
+#: libviews/instrview.cpp:573
+msgctxt "InstrView|"
+msgid "There is no instruction info in the profile data file."
+msgstr "V podatkovni datoteki profila ni informacij o ukazih."
+
+#: libviews/instrview.cpp:575
+msgctxt "InstrView|"
+msgid "Tip: For Callgrind, rerun with option"
+msgstr "Nasvet: za Callgrind ponovno zaženite z možnostjo"
+
+#: libviews/instrview.cpp:576
+msgctxt "InstrView|"
+msgid "      --dump-instr=yes"
+msgstr "      --dump-instr=yes"
+
+#: libviews/instrview.cpp:577
+msgctxt "InstrView|"
+msgid "To see (conditional) jumps, additionally specify"
+msgstr "Če si želite ogledati (pogojne) skoke, dodatno navedite"
+
+#: libviews/instrview.cpp:578
+msgctxt "InstrView|"
+msgid "      --collect-jumps=yes"
+msgstr "      --collect-jumps=yes"
+
+#: libviews/instrview.cpp:826
+msgctxt "InstrView|"
+msgid "For annotated machine code, the following object file is needed:"
+msgstr "Za označeno strojno kodo je potrebna naslednja predmetna datoteka:"
+
+#: libviews/instrview.cpp:831
+msgctxt "InstrView|"
+msgid "This file can not be found."
+msgstr "Te datoteke ni mogoče najti."
+
+#: libviews/instrview.cpp:834
+msgctxt "InstrView|"
+msgid "If cross-compiled, set SYSROOT variable."
+msgstr "Če je navzkrižno prevedeno, nastavite spremenljivko SYSROOT."
+
+#: libviews/instrview.cpp:858
+msgctxt "InstrView|"
+msgid "There is an error trying to execute the command"
+msgstr "Pri poskusu izvršitve ukaza je prišlo do napake"
+
+#: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
+msgctxt "InstrView|"
+msgid "Check that you have installed 'objdump'."
+msgstr "Preverite, ali ste namestili »objdump«."
+
+#: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
+msgctxt "InstrView|"
+msgid "This utility can be found in the 'binutils' package."
+msgstr "Ta pripomoček lahko najdete v paketu »binutils«."
+
+#: libviews/instrview.cpp:966
+msgctxt "InstrView|"
+msgid "(No Instruction)"
+msgstr "(Brez ukaza)"
+
+#: libviews/instrview.cpp:1134
+#, qt-format
+msgctxt "InstrView|"
+msgid "There are %n cost line(s) without machine code."
+msgid_plural "There are %n cost line(s) without machine code."
+msgstr[0] "Obstaja %n vrstica stroškov brez strojne kode."
+msgstr[1] "Obstajata %n vrstici stroškov brez strojne kode."
+msgstr[2] "Obstajajo %n vrstice stroškov brez strojne kode."
+msgstr[3] "Obstaja %n vrstic stroškov brez strojne kode."
+
+#: libviews/instrview.cpp:1136
+msgctxt "InstrView|"
+msgid "This happens because the code of"
+msgstr "To se zgodi, ker se koda"
+
+#: libviews/instrview.cpp:1139
+msgctxt "InstrView|"
+msgid "does not seem to match the profile data file."
+msgstr "ne ujema s podatkovno datoteko profila."
+
+#: libviews/instrview.cpp:1142
+msgctxt "InstrView|"
+msgid "Are you using an old profile data file or is the above mentioned"
+msgstr ""
+"Ali uporabljate staro podatkovno datoteko profila ali pa je zgoraj navedeni"
+
+#: libviews/instrview.cpp:1144
+msgctxt "InstrView|"
+msgid "ELF object from an updated installation/another machine?"
+msgstr "predmet ELF iz posodobljene namestitve/drugega računalnika?"
+
+#: libviews/instrview.cpp:1152
+msgctxt "InstrView|"
+msgid "There seems to be an error trying to execute the command"
+msgstr "Zdi se, da je prišlo do napake pri poskusu izvršitve ukaza"
+
+#: libviews/instrview.cpp:1156
+msgctxt "InstrView|"
+msgid "Check that the ELF object used in the command exists."
+msgstr "Preverite, da obstaja predmet ELF, uporabljen v ukazu."
+
+#: libviews/partgraph.cpp:154
+#, qt-format
+msgctxt "QObject|"
+msgid "Profile Part %1"
+msgstr "Del profila %1"
+
+#: libviews/partgraph.cpp:211
+msgctxt "QObject|"
+msgid "(no trace)"
+msgstr "(brez sledenja)"
+
+#: libviews/partgraph.cpp:214
+msgctxt "QObject|"
+msgid "(no part)"
+msgstr "(brez delov)"
+
+#: libviews/partlistitem.cpp:39
+msgctxt "QObject|"
+msgid "(none)"
+msgstr "(brez)"
+
+#: libviews/partselection.cpp:48
+msgctxt "PartSelection|"
+msgid "Parts Overview"
+msgstr "Pregled delov"
+
+#: libviews/partselection.cpp:61
+msgctxt "PartSelection|A thing's name"
+msgid "Name"
+msgstr "Ime"
+
+#: libviews/partselection.cpp:62
+msgctxt "PartSelection|"
+msgid "Cost"
+msgstr "Strošek"
+
+#: libviews/partselection.cpp:69
+msgctxt "PartSelection|"
+msgid "(no trace parts)"
+msgstr "(brez delov za sledenje)"
+
+#: libviews/partselection.cpp:96
+msgctxt "PartSelection|"
+msgid ""
+"<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+"there are several profile data files from one profile run. The Trace Part "
+"Overview dockable shows these, horizontally ordered in execution time; the "
+"rectangle sizes are proportional to the total cost spent in the parts. You "
+"can select one or several parts to constrain all costs shown to these parts "
+"only.</p><p>The parts are further subdivided: there is a partitioning and an "
+"callee split mode: <ul><li>Partitioning: You see the partitioning into "
+"groups for a trace part, according to the group type selected. E.g. if ELF "
+"object groups are selected, you see colored rectangles for each used ELF "
+"object (shared library or executable), sized according to the cost spent "
+"therein.</li><li>Callee: A rectangle showing the inclusive cost of the "
+"current selected function in the trace part is shown. This is split up into "
+"smaller rectangles to show the costs of its callees.</li></ul></p>"
+msgstr ""
+"<b>Pregled delov</b><p>Sledenje sestavlja več delov sledenja, ko je več "
+"podatkovnih datotek profila iz enega zagona profila. Pregled delov sledenja "
+"z možnim sidranjem prikazuje le-te, vodoravno razvrščene glede na čas "
+"izvršitve; velikosti pravokotnikov so sorazmerne s skupnimi stroški, "
+"porabljenimi v delih. Izberete lahko enega ali več delov, da omejite vse "
+"stroške, prikazane samo na teh delih.</p><p>Deli so nadalje razdeljeni: "
+"obstaja delitveni način in način deljenja klicatelja: <ul><li>Delitveni "
+"način: vidite deljenje na skupine za del za sledenje, glede na izbrano vrsto "
+"skupine. Primer: če so izbrane skupine predmetov ELF, vidite barvne "
+"pravokotnike za vsak uporabljeni predmet ELF (knjižnica v skupni rabi ali "
+"izvršitveni program), v velikosti glede na strošek, porabljen v tem predmetu."
+"</li><li>Klicatelj: Prikazan je pravokotnik, ki prikazuje vključujoče "
+"stroške trenutne izbrane funkcije v delu za sledenje. To je razdeljeno na "
+"manjše pravokotnike za prikaz stroškov svojih klicateljev.</li></ul></p>"
+
+#: libviews/partselection.cpp:231
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Profile Part Overview: Current is '%1'"
+msgstr "Pregled dela profila: trenutno je »%1«"
+
+#: libviews/partselection.cpp:337
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Deselect '%1'"
+msgstr "Prekliči izbor »%1«"
+
+#: libviews/partselection.cpp:339
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Select '%1'"
+msgstr "Izberi »%1«"
+
+#: libviews/partselection.cpp:344
+msgctxt "PartSelection|"
+msgid "Select All Parts"
+msgstr "Izberi vse dele"
+
+#: libviews/partselection.cpp:345
+msgctxt "PartSelection|"
+msgid "Visible Parts"
+msgstr "Vidni deli"
+
+#: libviews/partselection.cpp:346
+msgctxt "PartSelection|"
+msgid "Hide Selected Parts"
+msgstr "Skrij izbrane dele"
+
+#: libviews/partselection.cpp:347
+msgctxt "PartSelection|"
+msgid "Show Hidden Parts"
+msgstr "Pokaži skrite dele"
+
+#: libviews/partselection.cpp:361
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Go to '%1'"
+msgstr "Pojdi na »%1«"
+
+#: libviews/partselection.cpp:370
+msgctxt "PartSelection|"
+msgid "Visualization"
+msgstr "Vidna predstavitev"
+
+#: libviews/partselection.cpp:371
+msgctxt "PartSelection|"
+msgid "Partitioning Mode"
+msgstr "Delitveni način"
+
+#: libviews/partselection.cpp:373
+msgctxt "PartSelection|"
+msgid "Zoom Function"
+msgstr "Funkcija povečave"
+
+#: libviews/partselection.cpp:375
+msgctxt "PartSelection|"
+msgid "Show Direct Calls"
+msgstr "Pokaži neposredne klice"
+
+#: libviews/partselection.cpp:376
+msgctxt "PartSelection|"
+msgid "Increment Shown Call Levels"
+msgstr "Povečaj prikazane ravni klicev"
+
+#: libviews/partselection.cpp:377
+msgctxt "PartSelection|"
+msgid "Diagram Mode"
+msgstr "Način diagrama"
+
+#: libviews/partselection.cpp:392
+msgctxt "PartSelection|"
+msgid "Draw Names"
+msgstr "Nariši imena"
+
+#: libviews/partselection.cpp:394
+msgctxt "PartSelection|"
+msgid "Draw Costs"
+msgstr "Nariši stroške"
+
+#: libviews/partselection.cpp:396
+msgctxt "PartSelection|"
+msgid "Ignore Proportions"
+msgstr "Prezri deleže"
+
+#: libviews/partselection.cpp:398
+msgctxt "PartSelection|"
+msgid "Allow Rotation"
+msgstr "Dovoli vrtenje"
+
+#: libviews/partselection.cpp:400
+msgctxt "PartSelection|"
+msgid "Draw Frames"
+msgstr "Nariši okvirje"
+
+#: libviews/partselection.cpp:414
+msgctxt "PartSelection|"
+msgid "Hide Info"
+msgstr "Skrij informacije"
+
+#: libviews/partselection.cpp:414
+msgctxt "PartSelection|"
+msgid "Show Info"
+msgstr "Pokaži informacije"
+
+#: libviews/partselection.cpp:562
+msgctxt "PartSelection|"
+msgid "(no trace loaded)"
+msgstr "(ni naloženega sledenja)"
+
+#: libviews/partview.cpp:37
+msgctxt "PartView|"
+msgid "Profile Part"
+msgstr "Delni profil"
+
+#: libviews/partview.cpp:38
+msgctxt "PartView|"
+msgid "Incl."
+msgstr "Vklj."
+
+#: libviews/partview.cpp:39
+msgctxt "PartView|"
+msgid "Self"
+msgstr "Sebe"
+
+#: libviews/partview.cpp:40
+msgctxt "PartView|"
+msgid "Called"
+msgstr "Klicano"
+
+#: libviews/partview.cpp:41
+msgctxt "PartView|"
+msgid "Comment"
+msgstr "Komentar"
+
+#: libviews/partview.cpp:68
+msgctxt "PartView|"
+msgid ""
+"<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+"trace. For each part, the self/inclusive cost of the current selected "
+"function, spent in the part, is shown; percentage costs are always relative "
+"to the total cost <em>of the part</em> (not to the whole trace as in the "
+"Trace Part Overview). Also shown are the calls happening to/from the current "
+"function inside of the trace part.</p><p>By choosing one or more trace parts "
+"from the list, the costs shown all over KCachegrind will only be the ones "
+"spent in the selected part(s). If no list selection is shown, in fact all "
+"trace parts are selected implicitly.</p><p>This is a multi-selection list. "
+"You can select ranges by dragging the mouse or use SHIFT/CTRL modifiers. "
+"Selection/Deselection of trace parts can also be done by using the Trace "
+"Part Overview Dockable. This one also supports multiple selection.</"
+"p><p>Note that the list is hidden if only one trace part is loaded.</p>"
+msgstr ""
+"<b>Seznam sledenja delov</b><p>Ta seznam prikazuje vse sledilne dele "
+"naloženega sledenja. Za vsak del je prikazan lasten/vključujoč strošek "
+"trenutne izbrane funkcije, porabljen v delu; odstotni stroški so vedno v "
+"primerjavi s skupnimi stroški <em>dela</em> (ne glede na celotno sled, kot "
+"je v pregledu sledenja delov). Prikazani so tudi klici, ki se dogajajo v/iz "
+"trenutne funkcije znotraj sledenja delov.</p><p>Z izbiro enega ali več delov "
+"sledenja s seznama bodo stroški, prikazani po vsem KCachegrindu, le tisti, "
+"ki so porabljeni v izbranih delih. Če ni prikazan izbirni seznam, so "
+"dejansko vsi deli za sledenje implicitno izbrani.</p><p>To je seznam z več "
+"izbirami. Obsege lahko izberete tako, da povlečete miško ali uporabite "
+"spremenilni tipki dvigalka/krmilka. Izbor/izločitev delov za sledenje je "
+"mogoče opraviti tudi z uporabo pregleda sledenja delov, ki ga je mogoče "
+"sidrati. Ta podpira tudi večkratni izbor.</p><p>Upoštevajte, da je seznam "
+"skrit, če je naložen samo en del sledenja.</p>"
+
+#: libviews/sourceitem.cpp:141
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to %3"
+msgstr "Skok %1 od %2-ih na %3"
+
+#: libviews/sourceitem.cpp:146
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 times to %2"
+msgstr "Skoči %1-krat na %2"
+
+#: libviews/sourceview.cpp:51
+msgctxt "SourceView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/sourceview.cpp:52
+msgctxt "SourceView|"
+msgid "Cost"
+msgstr "Strošek"
+
+#: libviews/sourceview.cpp:53
+msgctxt "SourceView|"
+msgid "Cost 2"
+msgstr "Strošek 2"
+
+#: libviews/sourceview.cpp:55
+msgctxt "SourceView|"
+msgid "Source"
+msgstr "Vir"
+
+#: libviews/sourceview.cpp:83
+msgctxt "SourceView|"
+msgid ""
+"<b>Annotated Source</b><p>The annotated source list shows the source lines "
+"of the current selected function together with (self) cost spent while "
+"executing the code of this source line. If there was a call in a source "
+"line, lines with details on the call happening are inserted into the source: "
+"the cost spent inside of the call, the number of calls happening, and the "
+"call destination.</p><p>Select a inserted call information line to make the "
+"destination function current.</p>"
+msgstr ""
+"<b>Označena izvorna koda</b><p>Prikazani izpis izvorne kode prikazuje "
+"vrstice izvorne kode trenutno izbrane funkcije skupaj z (lastnimi) stroški, "
+"porabljenimi med izvajanjem kode te vrstice izvorne kode. Če je bil klic v "
+"izvorni vrstici, se vrstice s podrobnostmi o klicu vstavijo v izvorno kodo: "
+"strošek, porabljen v klicu, število klicev in cilj klica.</p><p>Izberite "
+"vstavljeno vrstico z informacijami o klicu, da bo ciljna funkcija "
+"posodobljena.</p>"
+
+#: libviews/sourceview.cpp:110
+#, qt-format
+msgctxt "SourceView|"
+msgid "Go to '%1'"
+msgstr "Pojdi na »%1«"
+
+#: libviews/sourceview.cpp:115
+#, qt-format
+msgctxt "SourceView|"
+msgid "Go to Line %1"
+msgstr "Pojdi v vrstico %1"
+
+#: libviews/sourceview.cpp:627
+msgctxt "SourceView|"
+msgid "There is no cost of current selected type associated"
+msgstr "Trenutno izbrana vrsta nima povezanih stroškov"
+
+#: libviews/sourceview.cpp:629
+msgctxt "SourceView|"
+msgid "with any source line of this function in file"
+msgstr "s katero koli izvorno vrstico te funkcije v datoteki"
+
+#: libviews/sourceview.cpp:633
+msgctxt "SourceView|"
+msgid "Thus, no annotated source can be shown."
+msgstr "Tako ni mogoče pokazati nobene označene izvorne kode."
+
+#: libviews/sourceview.cpp:658
+#, qt-format
+msgctxt "SourceView|"
+msgid "--- From '%1' ---"
+msgstr "--- iz »%1« ---"
+
+#: libviews/sourceview.cpp:663
+#, qt-format
+msgctxt "SourceView|"
+msgid "--- Inlined from '%1' ---"
+msgstr "--- medvrstičeno iz »%1« ---"
+
+#: libviews/sourceview.cpp:664
+msgctxt "SourceView|"
+msgid "--- Inlined from unknown source ---"
+msgstr "--- medvrstičeno iz neznanega vira ---"
+
+#: libviews/sourceview.cpp:669
+msgctxt "SourceView|"
+msgid "There is no source available for the following function:"
+msgstr "Vira ni na voljo za to funkcijo:"
+
+#: libviews/sourceview.cpp:674
+msgctxt "SourceView|"
+msgid "This is because no debug information is present."
+msgstr "To je zato, ker ni nobenih informacij o razhroščevanju."
+
+#: libviews/sourceview.cpp:676
+msgctxt "SourceView|"
+msgid "Recompile source and redo the profile run."
+msgstr "Ponovno prevedi izvorno kodo in ponovno izvedi zagon profila."
+
+#: libviews/sourceview.cpp:679
+msgctxt "SourceView|"
+msgid "The function is located in this ELF object:"
+msgstr "Funkcija se nahaja v tem predmetu ELF:"
+
+#: libviews/sourceview.cpp:687
+msgctxt "SourceView|"
+msgid "This is because its source file cannot be found:"
+msgstr "To je zato, ker izvorne datoteke ni mogoče najti:"
+
+#: libviews/sourceview.cpp:691
+msgctxt "SourceView|"
+msgid "Add the folder of this file to the source folder list."
+msgstr "Dodajte mapo te datoteke na seznam izvornih map."
+
+#: libviews/sourceview.cpp:693
+msgctxt "SourceView|"
+msgid "The list can be found in the configuration dialog."
+msgstr "Seznam lahko najdete v pogovornem oknu prilagoditev."
+
+#: libviews/stackselection.cpp:36
+msgctxt "StackSelection|"
+msgid "Stack Selection"
+msgstr "Izbor sklada"
+
+#: libviews/stackselection.cpp:44
+msgctxt "StackSelection|"
+msgid "Cost"
+msgstr "Strošek"
+
+#: libviews/stackselection.cpp:45
+msgctxt "StackSelection|"
+msgid "Cost2"
+msgstr "Strošek2"
+
+#: libviews/stackselection.cpp:46
+msgctxt "StackSelection|"
+msgid "Calls"
+msgstr "Klici"
+
+#: libviews/stackselection.cpp:47
+msgctxt "StackSelection|"
+msgid "Function"
+msgstr "Funkcija"
+
+#: libviews/tabview.cpp:103
+msgctxt "TabBar|"
+msgid "Move to Top"
+msgstr "Premakni na vrh"
+
+#: libviews/tabview.cpp:104
+msgctxt "TabBar|Move to Top"
+msgid "Top"
+msgstr "Na vrh"
+
+#: libviews/tabview.cpp:107
+msgctxt "TabBar|"
+msgid "Move to Right"
+msgstr "Premakni desno"
+
+#: libviews/tabview.cpp:108
+msgctxt "TabBar|Move to Right"
+msgid "Right"
+msgstr "Desno"
+
+#: libviews/tabview.cpp:111
+msgctxt "TabBar|"
+msgid "Move to Bottom"
+msgstr "Premakni na dno"
+
+#: libviews/tabview.cpp:112
+msgctxt "TabBar|Move to Bottom"
+msgid "Bottom"
+msgstr "Na dno"
+
+#: libviews/tabview.cpp:115
+msgctxt "TabBar|"
+msgid "Move to Bottom Left"
+msgstr "Premakni levo na dno"
+
+#: libviews/tabview.cpp:116
+msgctxt "TabBar|Move to Bottom Left"
+msgid "Bottom Left"
+msgstr "Levo spodaj"
+
+#: libviews/tabview.cpp:118
+msgctxt "TabBar|"
+msgid "Move Area To"
+msgstr "Premakni področje v"
+
+#: libviews/tabview.cpp:121
+msgctxt "TabBar|"
+msgid "Hide This Tab"
+msgstr "Skrij ta zavihek"
+
+#: libviews/tabview.cpp:122
+msgctxt "TabBar|"
+msgid "Hide Area"
+msgstr "Skrij področje"
+
+#: libviews/tabview.cpp:131
+msgctxt "TabBar|Show on Top"
+msgid "Top"
+msgstr "Na vrh"
+
+#: libviews/tabview.cpp:132
+msgctxt "TabBar|Show on Right"
+msgid "Right"
+msgstr "Desno"
+
+#: libviews/tabview.cpp:133
+msgctxt "TabBar|Show on Bottom"
+msgid "Bottom"
+msgstr "Na dno"
+
+#: libviews/tabview.cpp:134
+msgctxt "TabBar|Show on Bottom Left"
+msgid "Bottom Left"
+msgstr "Levo spodaj"
+
+#: libviews/tabview.cpp:135
+msgctxt "TabBar|"
+msgid "Show Hidden On"
+msgstr "Pokaži skrito na"
+
+#: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
+msgctxt "TabView|"
+msgid "(No profile data file loaded)"
+msgstr "(Podatkovna datoteka profila naložena)"
+
+#: libviews/tabview.cpp:370
+msgctxt "TabView|"
+msgid "Types"
+msgstr "Vrste"
+
+#: libviews/tabview.cpp:373
+msgctxt "TabView|"
+msgid "Callers"
+msgstr "Klicatelji"
+
+#: libviews/tabview.cpp:374
+msgctxt "TabView|"
+msgid "All Callers"
+msgstr "Vsi klicatelji"
+
+#: libviews/tabview.cpp:375
+msgctxt "TabView|"
+msgid "Callee Map"
+msgstr "Zemljevid klicanih"
+
+#: libviews/tabview.cpp:378
+msgctxt "TabView|"
+msgid "Source Code"
+msgstr "Izvorna koda"
+
+#: libviews/tabview.cpp:380
+msgctxt "TabView|"
+msgid "Parts"
+msgstr "Deli"
+
+#: libviews/tabview.cpp:381
+msgctxt "TabView|"
+msgid "Callees"
+msgstr "Klicani"
+
+#: libviews/tabview.cpp:382
+msgctxt "TabView|"
+msgid "Call Graph"
+msgstr "Grafikon klicev"
+
+#: libviews/tabview.cpp:385
+msgctxt "TabView|"
+msgid "All Callees"
+msgstr "Vsi klicani"
+
+#: libviews/tabview.cpp:386
+msgctxt "TabView|"
+msgid "Caller Map"
+msgstr "Zemljevid klicalcev"
+
+#: libviews/tabview.cpp:389
+msgctxt "TabView|"
+msgid "Machine Code"
+msgstr "Strojna koda"
+
+#: libviews/tabview.cpp:643
+msgctxt "TabView|"
+msgid ""
+"<b>Information Tabs</b><p>This widget shows information for the currently "
+"selected function in different tabs: <ul><li>The Costs tab shows a list of "
+"available event types and the inclusive and self-costs related to these "
+"types.</li><li>The Parts tab shows a list of trace parts if the trace "
+"consists of more than one part (otherwise, this tab is hidden). The cost of "
+"the selected function spent in the different parts together with the calls "
+"happening is shown.</li><li>The Call Lists tab shows direct callers and "
+"callees of the function in more detail.</li><li>The Coverage tab shows the "
+"same as the Call Lists tab, but also shows indirect callers and callees, not "
+"just direct ones.</li><li>The Call Graph tab shows a graphical visualization "
+"of the calls made by this function.</li><li>The Source Code tab presents "
+"annotated source code if debugging information and the source file are "
+"available.</li><li>The Machine Code tab presents annotated assembly "
+"instructions if profile information at instruction level is available.</li></"
+"ul>For more information, see the <em>What's This?</em> help of the "
+"corresponding tab widget.</p>"
+msgstr ""
+"<b>Zavihki z informacijami</b><p>Ta gradnik prikazuje informacije za "
+"trenutno izbrano funkcijo na različnih zavihkih: <ul><li>Na zavihku Stroški "
+"je prikazan seznam razpoložljivih vrst dogodkov ter vključujočih in lastnih "
+"stroškov, povezanih s temi vrstami.</li><li>Zavihek Deli prikazuje seznam "
+"delov za sledenje, če je sledenje sestavljeno iz več kot enega dela (sicer "
+"je ta zavihek skrit). Prikazani so stroški izbrane funkcije, porabljene v "
+"različnih delih skupaj s klici, ki se izvajajo.</li><li>Na zavihku Seznami "
+"klicev so podrobneje prikazani neposredni klicalci in klicani funkcije.</"
+"li><li>Zavihek Pokritost prikazuje enako kot zavihek Seznami klicev, "
+"prikazuje pa tudi posredne klicalce in klicane osebe, ne le neposredne.</"
+"li><li>Zavihek Graf klicev prikazuje grafično vizualizacijo klicev, ki jih "
+"je opravila ta funkcija.</li><li>Zavihek Izvorna koda predstavlja označeno "
+"izvorno kodo, če so na voljo informacije o odpravljanju napak in izvorna "
+"datoteka.</li><li>Zavihek Strojna koda predstavlja ukaze v zbirnem jeziku, "
+"če so na voljo informacije o profilu na ravni ukazov.</li></ul>Če želite več "
+"informacij, si oglejte pomoč <em>Kaj je to?</em> za ustrezni gradnika "
+"zavihka.</p>"
+
+#: libviews/tabview.cpp:728
+msgctxt "TabView|"
+msgid "(No function selected)"
+msgstr "(Funkcija ni izbrana)"
+
+#: libviews/traceitemview.cpp:67
+msgctxt "QObject|"
+msgid "No description available"
+msgstr "Ni na voljo nobenega opisa"
+
+#: libviews/treemap.cpp:1334
+#, qt-format
+msgctxt "TreeMapWidget|"
+msgid "Text %1"
+msgstr "Besedilo %1"
+
+#: libviews/treemap.cpp:2854
+msgctxt "TreeMapWidget|"
+msgid "Recursive Bisection"
+msgstr "Rekurzivna bisekcija"
+
+#: libviews/treemap.cpp:2855
+msgctxt "TreeMapWidget|"
+msgid "Columns"
+msgstr "Stolpci"
+
+#: libviews/treemap.cpp:2856
+msgctxt "TreeMapWidget|"
+msgid "Rows"
+msgstr "Vrstice"
+
+#: libviews/treemap.cpp:2857
+msgctxt "TreeMapWidget|"
+msgid "Always Best"
+msgstr "Vedno najboljše"
+
+#: libviews/treemap.cpp:2858
+msgctxt "TreeMapWidget|"
+msgid "Best"
+msgstr "Najboljše"
+
+#: libviews/treemap.cpp:2859
+msgctxt "TreeMapWidget|"
+msgid "Alternate (V)"
+msgstr "Nadomestno (V)"
+
+#: libviews/treemap.cpp:2860
+msgctxt "TreeMapWidget|"
+msgid "Alternate (H)"
+msgstr "Nadomestno (H)"
+
+#: libviews/treemap.cpp:2861
+msgctxt "TreeMapWidget|"
+msgid "Horizontal"
+msgstr "Vodoravno"
+
+#: libviews/treemap.cpp:2862
+msgctxt "TreeMapWidget|"
+msgid "Vertical"
+msgstr "Navpično"

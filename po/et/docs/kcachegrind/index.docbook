@@ -1,0 +1,1299 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kcachegrind '<application
+>KCachegrind</application
+>'>
+  <!ENTITY cachegrind "<application
+>Cachegrind</application
+>">
+  <!ENTITY calltree "<application
+>Calltree</application
+>">
+  <!ENTITY callgrind "<application
+>Callgrind</application
+>">
+  <!ENTITY valgrind "<application
+>Valgrind</application
+>">
+  <!ENTITY oprofile "<application
+>OProfile</application
+>">
+  <!ENTITY EBS "<acronym
+>EBS</acronym
+>">
+  <!ENTITY TBS "<acronym
+>TBS</acronym
+>">
+  <!ENTITY kappname "&kcachegrind;">
+  <!ENTITY package "kdesdk">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Estonian  "INCLUDE">
+]>
+
+<book id="kcachegrind" lang="&language;">
+
+<bookinfo>
+<title
+>&kcachegrind;i käsiraamat</title>
+
+<authorgroup>
+<author
+><firstname
+>Josef</firstname
+> <surname
+>Weidendorfer</surname
+> <affiliation
+> <address
+><email
+>Josef.Weidendorfer@gmx.de</email
+></address>
+</affiliation>
+<contrib
+>Dokumentatsiooni algne autor</contrib>
+</author>
+
+<author
+><firstname
+>Federico</firstname
+> <surname
+>Zenith</surname
+> <affiliation
+> <address
+><email
+>federico.zenith@member.fsf.org</email
+></address>
+</affiliation>
+<contrib
+>Uuendused ja parandused</contrib>
+</author>
+
+<othercredit role="translator"
+><firstname
+>Marek</firstname
+><surname
+>Laane</surname
+><affiliation
+><address
+><email
+>bald@starman.ee</email
+></address
+></affiliation
+><contrib
+>Tõlge eesti keelde</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<copyright>
+<year
+>2002-2004</year>
+<holder
+>&Josef.Weidendorfer;</holder
+>	
+</copyright>
+<copyright>
+<year
+>2009</year>
+<holder
+>Federico Zenith</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2009-10-07</date>
+<releaseinfo
+>0.5.1</releaseinfo>
+
+<abstract>
+<para
+>&kcachegrind; on &kde; töökeskkonna tarbeks loodud profileerimisandmete kuvamise tööriist. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdesdk</keyword>
+<keyword
+>Cachegrind</keyword>
+<keyword
+>Callgrind</keyword>
+<keyword
+>Valgrind</keyword>
+<keyword
+>Profileerimine</keyword>
+</keywordset>
+
+</bookinfo>
+
+
+<chapter id="introduction">
+<title
+>Sissejuhatus</title>
+
+<para
+>&kappname; on profileerimistööriistade tekitatud andmete brauser. Käesolevas peatükis selgitame, mida tähendab üldse profileerimine, kuidas seda tehakse ning räägime veidi olemasolevatest profileerimistööriistadest. </para>
+
+<sect1 id="introduction-profiling">
+<title
+>Profileerimine</title>
+
+<para
+>Programmi luues soovid kindlasti lõpuks muuta selle ka võimalikult kiireks (aga samas ikka töökindlaks!). Aeg on mõistagi kallis väärtus ja optimeerimisfunktsioone kasutatakse harva. Nii on sul vaja teada saada, milline osa programmist kulutab kõige rohkem aega. </para>
+
+<para
+>Jadakoodi puhul piisab tavaliselt programmide käituskarakteristika, näiteks funktsioonides ja koodiridades veedetud ajahulga statistiliste andmete kogumisest. Seda nimetatakse profileerimiseks. Vastav programm töötab profileerimistööriista kontrolli all, mis programmi täitmise lõppedes väljastab kokkuvõtte. Paralleelkoodi puhul on aga asjad teisiti - peamiselt tekitab jõudlusprobleeme see, kui üks protsessor ootab teiselt andmeid. Et sellist ooteaega ei ole tavaliselt võimalik väga lihtsalt muuta, on siin mõttekas genereerida ajatempliga sündmuste jäljed. Selliseid andmeid &kcachegrind; ei kuva. </para>
+
+<para
+>Profileerimisandmete analüüsimisel peaks olema üsna lihtne näha koodi nii-öelda pudelikaelu ning seejärel parandada näiteks väljakutsete esitamise viisi ja optimeerida koodi erinevaid piirkondi. Pärast seda saab uue profileerimisega kontrollida, kui edukas optimeerimine oli. </para>
+</sect1>
+
+<sect1 id="introduction-methods">
+<title
+>Profileerimismeetodid</title>
+
+<para
+>Koodi piirkonna (&eg; funktsiooni) täitmisele kuluva aja täpseks mõõtmiseks või selle käigus toimuvate sündmuste jäädvustamiseks tuleb antud piirkonna ette ja järele lisada mõõtmiskood. See arvestab aega või sündmusi ning arvutab erinevusi. See tähendab, et enne täitmist on vaja muuta originaalkoodi. Seda nimetatakse instrumentatsiooniks. Instrumentatsiooniga võib tegelda nii programmeerija ise, kompilaator või käitussüsteem. Et huvipakkuvad piirkonnad on enamasti pesastatud, mõjutab mõõtmise teostamine otseselt ka mõõtmistulemusi. Seepärast tuleb instrumentatsiooniga olla väga hoolas ning mõõtmise tulemusi enne järelduste tegemist põhjalikult uurida. Pole midagi parata - jõudlusanalüüs on täppismõõtmise korral keeruline ja aeganõudev ettevõtmine.</para>
+
+<para
+>Täppismõõtmise muudavad võimalikuks tänapäevaste protsessorite pakutavad riistvaralised loendurid (sealhulgas ajalist kasvu arvestavad loendurid), mis arvestavad iga sündmuse aega. Ilma loendurita tuleks meil sündmuste omistamisel koodi piirkondadele tegelda eraldi iga sündmusega, suurendades ise loenduri näitu antud koodi piirkonnas. Tarkvaraliselt ei ole see mõistagi võimalik, kuid eeldades, et sündmuste jaotus koodis on ühetaoline, kui me uurime iga sündmuse asemel ainult iga n-ndat sündmust, siis selle tarbeks on loodud häälestatav mõõtmismeetod, mida nimetatakse diskreetimiseks. Ajapõhine diskreetimine (TBS, Time Based Sampling) kasutab taimerit ja uurib regulaarselt programmi loendurit programmikoodi histogrammi loomiseks. Sündmusepõhine diskreetimine (EBS, Event Based Sampling) kasutab ära tänapäevaste protsessorite riistvaralisi loendureid ning töötab režiimis, milles loenduri alatäite korral kutsutakse välja katkestusetöötleja vastava sündmusjaotuse histogrammi tekitamiseks; töötlejas taaslähtestatakse sündmuseloendur alati diskreetimismeetodi <symbol
+>n</symbol
+>-väärtusele. Diskreetimise eeliseks on see, et koodi ei tule muuta, kuid see on siiski omamoodi kompromiss: mainitud eeldus võib olla korrektne, kui <symbol
+>n</symbol
+> on väike, aga mida väiksem on <symbol
+>n</symbol
+>, seda suurem on katkestusetöötleja üldkulu.</para>
+
+<para
+>Teine mõõtmisviis on selle matkimine, mis juhtub arvutis antud koodi täitmisel, &ie; täitmise simulatsioon. Simulatsioon arvestab alati enam-vähem täpse masinamudeliga, kuid väga konkreetsete nõuete korral, kus on vaja äärmiselt realistlikku täpsust, võib simulatsiooniaeg olla tegelikkuses talumatult suur. Simulatsiooni eeliseks on see, et koodi võib ilma häirivaid tulemusi kartmata lisada suvalist, ka keerukat mõõte/simulatsioonikoodi. Lisamine otse enne täitmist (niinimetatud käitusinstrumentatsioon) originaal-binaarfaili kasutades on kasutajale äärmiselt mugav, sest puudub vajadus taaskompileerimise järele. Simulatsioon on mõttekas siis, kui simuleeritakse ainult teatud masina osi lihtsa mudeliga. Teine positiivne joon on see, et lihtsa mudeli tekitatud tulemusi on enamasti suhteliselt lihtsam mõista - sageli ongi tegeliku riistvara probleemiks see, et tulemustesse satuvad masina erinevate osade omavahel kattuvad efektid.</para>
+</sect1>
+
+<sect1 id="introduction-tools">
+<title
+>Profileerimistööriistad</title>
+
+<para
+>Tuntuim sellistest tööriistadest on GCC profileerimistööriist <application
+>gprof</application
+>. Selle kasutamiseks tuleb programm kompileerida võtmega <option
+>-pg</option
+>, misjärel programmi käivitamine tekitab faili <filename
+>gmon.out</filename
+>, mille käsuga <command
+>gprof</command
+> saab muuta inimsilmale arusaadavale kujule. Puuduseks on aga vajadus kasutada kompileerimist, et ette valmistada käivitatav fail, mis peab olema staatiliselt lingitud. Meie kasutame kompilaatori genereeritud instrumentatsiooni, mis mõõdab funktsioonides esinevaid väljakutseteid ja arvestab vastavalt väljakutseid, koos TBS-iga, mis tagab koodi ajajaotuse histogrammi. Nende kahe infokogumi põhjal saab heuristiliselt arvutada funktsioonide kumulatiivset aega, &ie; aega, mis veedetakse funktsioonis koos kõigi sellest välja kutsutud funktsioonidega. </para>
+
+<para
+>Sündmuste toimumise täppismõõtmiseks on olemas selliste funktsioonidega teegid, mis suudavad lugeda riistvaraliste loendurite andmeid. Tuntumad neist on PerfCtr &Linux; jaoks ja arhitektuurist sõltumatud PAPI ning PCL teegid. Täppismõõtmine vajab siiski koodi instrumentatsiooni, nagu juba eespool märgitud. Teekide puhta kasutamise asemel võib kasutada ka automaatse instrumentatsiooni süsteeme, nagu ADAPTOR (FORTRAN-i lähtekoodi instrumentatsioon) või DynaProf (koodi sisestamine DynInst'i vahendusel).</para>
+
+<para
+>&oprofile; on diskreetimist kasutav &Linux; süsteemse profileerimise tööriist. </para>
+
+<para
+>Mitmes mõttes on profileerimiseks väga mugav kasutada &cachegrind;i või &callgrind;i, mis on käitusinstrumentatsiooni raamistikku &valgrind; kasutavad simulaatorid. Et nende puhul pole vaja ligipääsu riistvaralistele loenduritele (see on tänapäeva &Linux; distributsioonide puhul sageli keeruline) ning profileeritavad binaarfailid saab jätta muutmata, on need heaks alternatiiviks muudele profileerimistööriistadele. Simulatsiooni miinuspoole - aegluse - saab osaliselt kompenseerida simulatsiooni ainult huvipakkuvates programmide osades ning isegi võib-olla ainult silmuste mõningates kordustes ette võttes. Mõõtmis/simulatsiooniinstrumentatsioonita on Valgrindi aegluskoefitsient kõigest vahemikus 3 kuni 5. Pealegi võib juhul, kui sulle pakub huvi ainult väljakutsete graafik ja väljakutsete loendamine, lülitada välja vahemälu simulaatori. </para>
+
+<para
+>Vahemälu simulatsioon on esimene samm reaalaja hindamisel, kuivõrd tänapäevaste süsteemide korral on käitus äärmiselt tundlik niinimetatud <emphasis
+>vahemälu</emphasis
+> (väikesed ja kiired puhvrid, mis kiirendavad korduvaid pöördumisi ühtede ja samade mälupesade poole) kasutamisele. &cachegrind; simuleerib vahemälu mällupöördumisi jälitades. Saadud andmed hõlmavad instruktsioonide ja andmete mällupöördumiste ning 1. ja 2. taseme vahemälu vajakute arvu ja seondavad need käivitatava programmi lähteridade ja funktsioonidega. Tüüpiliste protsessorite vajakute latentsusaega kasutades saab vajakuid kombineerides hinnata kulunud aega. </para>
+
+<para
+>&callgrind; on &cachegrind;i laiend, mis loob käigult programmi väljakutsete graafiku, &ie; näitab, millised funktsioonid milliseid välja kutsuvad ja kui palju sündmusi funktsiooni töö ajal ette tuleb. Lisaks saab profileerimisandmeid koondada eraldi lõimedesse ja väljakutsete ahelatesse. See pakub profileerimisandmeid instruktsiooni tasemel, mis lubab dissambleeritud koodi annoteerimist. </para>
+</sect1>
+
+<sect1 id="introduction-visualization">
+<title
+>Kuvamine</title>
+
+<para
+>Profileerimistööriistad loovad tüüpiliselt päris palju andmeid. Soov võimalikult vähese vaevaga väljakutsete graafikus liikuda ning kiiresti lülituda funktsioonide sorteerimise režiimide ja erinevate sündmusetüüpide näitamise vahel ongi motiveerinud selleks kõige paremini sobivate graafiliste kasutajaliideste loomist. </para>
+
+<para
+>&kappname; on nende soovide täitja, võimaldades kuvada profileerimisandmeid. Kuigi algselt loodi see &cachegrind;i ja &calltree; andmete võimalikult hõlpsat sirvimist silmas pidades, on olemas konverterid, mis suudavad näidata ka muude tööriistade profileerimisandmeid. Lisas kirjeldame ka &cachegrind;i/&callgrind;i failivormingut. </para>
+
+<para
+>Lisaks funktsioonide nimekirjale, mida saab sorteerida kas tavalise või kumulatiivse kulu järgi ning rühmitada ka lähtefaili, jagatud teegi või C++-klassi järgi, pakub &kappname; valitud funktsiooni korral veel mitmeid vaateid, nimelt <itemizedlist>
+<listitem
+><para
+>väljakutsete graafiku vaade, mis näitab väljakutsete graafiku osa valitud funktsiooni piirkonnas,</para>
+</listitem>
+<listitem
+><para
+>puukaardivaade, mis näitab pesastatud väljakutsete seoseid, samuti kumulatiivset kulu, mis võimaldab kiiresti visuaalselt tuvastada problemaatilised funktsioonid,</para>
+</listitem>
+<listitem
+><para
+>lähtekoodi ja disassembleri annotatsioonivaade, mis võimaldab näha kuludetaile lähtekoodi ridade ja assembleri instruktsioonide suhtes.</para>
+</listitem>
+</itemizedlist>
+
+</para>
+</sect1>
+</chapter>
+
+<chapter id="using-kcachegrind">
+<title
+>&kcachegrind;i kasutamine</title>
+
+<sect1 id="using-profile">
+<title
+>Kuvatavate andmete tekitamine</title>
+
+<para
+>Kõik, kes jõudlust hinnata soovivad, tahavad mõistagi näha vastavaid andmeid, mõõtes profileerimistööriistaga rakenduse käituskarakteristika aspekte. &kcachegrind; ei paku omalt poolt ühtki profileerimistööriista, kuid tuleb sellega ometi hästi toime koostöös &callgrind;iga ning suudab konverteri vahendusel kuvada ka &oprofile;'i loodud andmeid. Kuigi käesolev käsiraamat ei ole pühendatud nende tööriistade põhjalikule tutvustamisele, räägime järgnevalt siiski neist lühidalt. </para>
+
+<sect2>
+<title
+>&callgrind;</title>
+
+<para
+>&callgrind; kuulub <ulink url="http://valgrind.org"
+>&valgrind;i</ulink
+> koosseisu. Pane tähele, et varem nimetati seda &calltree;'ks, aga see nimi oli eksitav. </para>
+
+<para
+>Kõige levinum on selle kasutamiseks käivitada rakendus käsurealt käsuga <userinput
+><command
+>valgrind</command
+> <option
+>--tool=callgrind</option
+> </userinput
+>,  näiteks <blockquote
+><para
+><userinput
+> <command
+>valgrind</command
+> <option
+>--tool=callgrind</option
+> <replaceable
+>myprogram</replaceable
+> <replaceable
+>myargs</replaceable
+> </userinput
+></para
+></blockquote
+> Programmi töö lõppemisel luuakse fail <filename
+>callgrind.out.<replaceable
+>pid</replaceable
+></filename
+>, mille saab laadida &kcachegrind;i. </para>
+
+<para
+>Veidi täiustatum viis on salvestada välja profileerimisandmed rakenduste määratud funktsiooni väljakutsumisel. Näiteks &konqueror;i korral ainult veebilehekülje renderdamise profileerimisandmete nägemiseks võib lasta andmed salvestada ainult siis, kui valitakse menüükäsk <menuchoice
+><guimenu
+>Vaade</guimenu
+><guimenuitem
+>Laadi uuesti</guimenuitem
+></menuchoice
+>. See vastab väljakutsele <methodname
+>KonqMainWindow::slotReload</methodname
+>, milleks kasuta käsku <blockquote
+><para
+><userinput
+> <command
+>valgrind</command
+> <option
+>--tool=callgrind</option
+> <option
+>--dump-before=KonqMainWindow::slotReload</option
+> <replaceable
+>konqueror</replaceable
+> </userinput
+></para
+></blockquote
+> See loob rea profileerimisandmete faile, mille nimele lisatakse lõppu järjestikku kasvavad numbrid. Luuakse ka ilma sellise numbrita fail, mille nime lõpus on ainult protsessi PID - selle faili avamisel &kcachegrind;is avatakse ka teised ning neid võib näha <guilabel
+>osade ülevaates</guilabel
+> ja <guilabel
+>osade</guilabel
+> nimekirjas. </para>
+
+</sect2>
+
+<sect2>
+<title
+>&oprofile;</title>
+
+<para
+>&oprofile;'i leiab <ulink url="http://oprofile.sf.net"
+>selle koduleheküljelt</ulink
+>. Järgi paigaldamiseks veebileheküljel toodud juhiseid, aga enne seda võiksid kontrollida, ega sinu distributsioon juba seda valmispakituna ei paku (nagu teeb näiteks &SuSE;). </para>
+
+<para
+>Süsteemne profileerimine on lubatud ainult administraatorile (root), kes ainsana saab jälgida kogu süsteemis toimuvat. Seepärast tuleb kõike järgnevat sooritada administraatori õigustes. Esmalt seadista profileerimisprotsess, kasutades graafilist kasutajaliidest <command
+>oprof_start</command
+> või käsureatööriista <command
+>opcontrol</command
+>. Standardseadistus peaks olema taimerirežiim (TBS, vaata selle kohta sissejuhatust). Mõõtmise käivitamiseks anna käsk <userinput
+><command
+>opcontrol</command
+> <option
+>-s</option
+></userinput
+>. Seejärel käivita vajalik rakendus ning anna hiljem käsk <userinput
+><command
+>opcontrol</command
+> <option
+>-d</option
+></userinput
+>. See kirjutab mõõtmistulemused failidena kataloogi <filename class="directory"
+>/var/lib/oprofile/samples/</filename
+>. Andmete kuvamiseks &kcachegrind;is anna tühjas kataloogis käsk: <blockquote
+><para
+><userinput
+> <command
+>opreport</command
+> <option
+>-gdf</option
+> | <command
+>op2callgrind</command
+> </userinput
+></para
+></blockquote
+> See tekitab hulga faile - üks iga süsteemis töötava programmi kohta. Kõik need saab ükshaaval &kcachegrind;is avada. </para>
+
+</sect2>
+</sect1>
+
+<sect1 id="using-basics">
+<title
+>Kasutajaliidese põhitõed</title>
+
+<para
+>Kui käivitada &kcachegrind; käsurealt profiiliandmetega või avada need menüükäsuga <menuchoice
+><guimenu
+>Fail</guimenu
+> <guimenuitem
+>Ava...</guimenuitem
+> </menuchoice
+>, näed vasakul külgriba funktsioonide nimekirjaga ning paremal, põhiosas, kuvatakse valitud funktsiooni. Vaateala on jagatud mitmeks, et näidata korraga mitut erinevat vaadet. </para>
+
+<para
+>Algul on ala jagatud ülemiseks ja alumiseks pooleks, mõlemas omad sakkidega valitavad vaated. Vaadete liigutamiseks kasuta sakkide kontekstimenüüd ning kohenda vaadetevahelisi eraldajaid. Kiireks lülitumiseks vaadete vahel kasuta <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>→</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Vaade</guimenu
+><guisubmenu
+>Paigutus</guisubmenu
+> <guimenuitem
+>Liigu järgmisele</guimenuitem
+></menuchoice
+> ja <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>←</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Vaade</guimenu
+><guisubmenu
+>Paigutus</guisubmenu
+> <guimenuitem
+>Liigu eelmisele</guimenuitem
+></menuchoice
+>. </para>
+
+<para
+>Kuvamisel on oluline aktiivne sündmuse tüüp: &callgrind;i korral on need näiteks vahemälu vajakud või tsükli hinnang, &oprofile;'i korral lihtsaimal juhul <quote
+>taimer</quote
+>. Sündmuse tüüpi saab muuta liitkastis tööriistaribal või <guilabel
+>sündmuse tüübbi</guilabel
+> vaates. Esimese ülevaate käituskarakteristikast saab vasakul nimekirjas funktsiooni <symbol
+>main</symbol
+> valides ning väljakutsete graafiku kuva uurides: nii näed, mis sinu programmis tegelikult toimub. Pane tähele, et väljakutsete graafiku vaates näidatakse ainult suurte sündmuste arvuga funktsioone. Graafikus mõnel funktsioonil topeltklõpsu tehes see muutub ning näitab väljakutsutud funktsioone valitud funktsiooni lähikonnas. </para>
+
+<para
+>Graafilise kasutajaliidese põhjalikumaks tundmaõppimiseks tasuks lisaks käesolevale käsiraamatule tutvuda dokumentatsiooniga <ulink url="https://kcachegrind.github.io"
+>veebileheküljel</ulink
+>. Lisaks sellele pakub iga &kcachegrind;i element abivõimalust <quote
+>Mis see on?</quote
+> </para>
+</sect1>
+
+</chapter>
+
+
+<chapter id="kcachegrind-concepts">
+<title
+>Peamised kontseptsioonid</title>
+
+<para
+>Selles peatükis seletame mõningaid &kcachegrind;i kontseptsioone ja tutvustame liideses kasutatavaid mõisteid. </para>
+
+<sect1 id="concepts-model">
+<title
+>Profileerimisandmete andmemudel</title>
+
+<sect2>
+<title
+>Kuluolemid</title>
+
+<para
+>Sündmuste tüüpide (näiteks L2 vajakute) kuluarvestus omistatakse kuluolemitele, mis on seotud antud programmi lähtekoodi või andmestruktuuridega. Kuluolemid ei pruugi olla lihtsalt koodi- või andmepositsioonid, need võivad olla ka positsioonijärjendid. Nii on näiteks väljakutsel allikas ja sihtmärk, andmeaadressil aga andmetüüp ja koodipositsioon, kus eraldus aset leiab. </para>
+
+<para
+>&kcachegrind; tunneb ja kasutab järgmisi kuluolemeid. Lihtsad positsioonid: <variablelist
+> <varlistentry
+> <term
+>Instruktsioon</term
+> <listitem
+><para
+> Assembleri instruktsioon määratud addressiga. </para
+></listitem
+> </varlistentry
+> <varlistentry
+> <term
+>Funktsiooni lähtekoodi rida</term
+> <listitem
+><para
+> Kõik instruktsioonid, mida kompilaator (silumisinfo vahendusel) seob antud lähtekoodi reaga, mis on määratud lähtekoodi faili nime ja reanumbriga ja mis käivitatakse mingi funktsiooni kontekstis. Viimast on vaja seepärast, et inline-funktsiooni sees esinev lähtekoodi rida võib esineda mitme funktsiooni kontekstis. Instruktsioonid, mis ei ole seotud reaalse lähtekoodi reaga, seotakse reaga 0 failis <filename
+>???</filename
+>. </para
+></listitem
+> </varlistentry
+> <varlistentry
+> <term
+>Funktsioon</term
+> <listitem
+><para
+> Funktsioon koosneb antud fuktsiooni kõigist lähtekoodi ridadest. Funktsiooni määrab selle nimi ja asukoht mingis binaarobjektis, kui see on saadaval. Viimast on vaja seepärast, et ühe programmi binaarobjektid võivad sisaldada samanimelisi funktsioone (neile pääseb ligi näiteks <function
+>dlopen</function
+> või <function
+>dlsym</function
+> abil; käituslinkur lahendab funktsioonid kasutatava binaarobjekti etteantud otsingujärjekorras). Kui profileerimistööriist ei suuda tuvastada funktsiooni sümbolnime (kui näiteks pole saadaval silumisinfot), kasutatakse tavaliselt esimesena käivitatud instruktsiooni aadressi või "<function
+>???</function
+>. </para
+></listitem
+> </varlistentry
+> <varlistentry
+> <term
+>Binaarobjekt</term
+> <listitem
+><para
+> Kõik funktsioonid, mille kood asub antud binaarobjekti vahemikus kas peamises käivitatavas failis või jagatud teegis. </para
+></listitem
+> </varlistentry
+> <varlistentry
+> <term
+>Lähtekoodi fail</term
+> <listitem
+><para
+> Kõik funktsioonid, mille esimene instruktsioon on seotud antud lähtekoodi faili reaga. </para
+></listitem
+> </varlistentry
+> <varlistentry
+> <term
+>Klass</term
+> <listitem
+><para
+> Funktsioonide sümbolnimed on tavaliselt hierarhiliselt korraldatud nimeruumidesse, &eg; C++ nimeruumidesse, või objektorienteeritud keele klassidesse. Nii võib klass sisaldada klassi funktsioone või ka põimitud klasse. </para
+></listitem
+> </varlistentry
+> <varlistentry
+> <term
+>Profiili osa</term
+> <listitem
+><para
+> Profileerimise mingi ajalõik antud lõime ID-ga, protsessi ID-ga ja käivitatud käsureaga. </para
+></listitem
+> </varlistentry
+> </variablelist
+> Nagu nimekirjast näha, võib üks kuluolemite kogum sageli defineerida mõne muu kuluolemi, mistõttu on olemas kuluolemite kumulatiivne hierarhia. </para>
+
+<para
+>Positsioonijärjendid: <itemizedlist
+> <listitem
+><para
+> Väljakutse instruktsiooniaadressilt sihtfunktsioonile. </para
+></listitem
+> <listitem
+><para
+> Väljakutse lähtekoodi realt sihtfunktsioonile. </para
+></listitem
+> <listitem
+><para
+> Väljakutse lähtekoodi funktsioonilt sihtfunktsioonile. </para
+></listitem
+> <listitem
+><para
+> Tingimuslik/tingimusteta hüpe lähtekoodist sihtinstruktsioonile. </para
+></listitem
+> <listitem
+><para
+> Tingimuslik/tingimusteta hüpe lähtekoodist sihtreale. </para
+></listitem
+> </itemizedlist
+> Hüpped funktsioonide vahel ei ole lubatud, sest neil ei ole ka väljakutsete graafikul mingit mõtet. Sestap tuleb sellised konstruktsioonid, nagu eranditöötlus ja C-keelele omased pikad hüpped vajaduse korral transleerida väljakutsete pinus. </para>
+
+</sect2>
+
+
+<sect2>
+<title
+>Sündmuste tüübid</title>
+
+<para
+>Profileerimisandmetes saab määrata igasuguseid sündmuste tüüpe neile nime andes. Nende kulu kuluolemi suhtes on 64-bitine täisarv. </para>
+<para
+>Sündmuste tüüpe, mille kulu on määratletud profileerimisandmete failis, nimetatakse reaalseteks sündmusteks. Lisaks võib määrata viisi, kuidas tuletatakse reaalsetest sündmustest muid sündmuste tüüpe. Viimaseid nimetatakse järglassündmusteks. </para>
+</sect2>
+
+</sect1>
+
+<sect1 id="concepts-state">
+<title
+>Kuvamisolek</title>
+
+<para
+>&kcachegrind;i akna kuvamisolek näitab: <itemizedlist
+> <listitem
+><para
+> esmast ja sekundaarset sündmuse tüüpi, </para
+></listitem
+> <listitem
+><para
+> funktsiooni rühmitust (kasutusel <guilabel
+>funktsiooni profiili</guilabel
+> nimekirjas ja olemi värvimisel), </para
+></listitem
+> <listitem
+><para
+> profiili osasid, mille kulu kuva arvestab, </para
+></listitem
+> <listitem
+><para
+> aktiivset kuluolemit (&eg; funktsiooni profiili külgdokilt valitud funktsiooni), </para
+></listitem
+> <listitem
+><para
+> valitud kuluolemit. </para
+></listitem
+> </itemizedlist
+> See olek mõjutab kuva. </para>
+
+<para
+>Vaade näitab alati üht, aktiivset kuluolemit. Kui kuluolemi korral ei ole kuvamine võimalik, siis seda ka ei näidata (&eg; kui valid rühmituse nimekirjas topeltklõpsuga &ELF;-objekti, ei ole &ELF;-objekti korral kuidagi võimalik lähtekoodi annotatsioon). </para>
+
+<para
+>Nii näitab aktiivse funktsiooni korral väljakutsutute nimekiri kõiki funktsioone, mida aktiivne funktsioon välja kutsub. Nende seast võib valida mõne seda aktiivseks muutmata. Kui väljakutsete graafikut näidatakse selle kõrval, valib see automaatselt sama funktsiooni. </para>
+
+</sect1>
+
+<sect1 id="concepts-guiparts">
+<title
+>Graafilise kasutajaliidese komponendid</title>
+
+<sect2>
+<title
+>Külgdokid</title>
+<para
+>Külgdokid ehk külgribad on aknad, mida võib seada mis tahes &kcachegrind;i peaakna serva. Need näitavad alati mingi reegli kohaselt sorteeritud kuluolemite nimekirja. <itemizedlist>
+<listitem
+><para
+><guilabel
+>Funktsiooni profiil</guilabel
+> on funktsioonide nimekiri, mis näitab kumulatiivset ja omakulu, väljakutsete arvu, funktsioonide nime ja asukohta. </para
+></listitem>
+<listitem
+><para>
+<guilabel
+>Osade ülevaade</guilabel>
+</para
+></listitem>
+<listitem
+><para>
+<guilabel
+>Väljakutsete pinu</guilabel>
+</para
+></listitem>
+</itemizedlist>
+</para>
+</sect2>
+
+<sect2>
+<title
+>Vaateala</title>
+<para
+>Vaateala, mis tavaliselt moodustab &kcachegrind;i peaakna parempoolse osa, koosneb ühest (vaikimisi) või enamast kaardist, mis on korraldatud kas rõhtsalt või püstiselt. Iga kaart näitab korraga ainult ühe kuluolemi vaadet. Olemi nime näeb kaardi ülaosas. Kui kaarte on palju, saab korraga ometi olla neist aktiivne ainult üks. Aktiivse kaardi olemi nime näidatakse rasvases kirjas ning see määrab ka &kcachegrind;i akna aktiivse kuluolemi. </para>
+</sect2>
+
+<sect2>
+<title
+>Kaardi alad</title>
+<para
+>Igal kaardil võib olla kuni neli vaateala, nimelt üleval, paremal, vasakul ja all. Igas alas võib olla mitu kaartidele eraldatud vaadet. Nähtava vaate saab valida kaardirealt. Ülemise ja parempoolse ala kaardiribad asuvad üleval, vasakpoolse ja alumise ala omad all. Selle, milline vaade on millisel alal, saab määrata kaartide kontekstimenüüst. </para>
+</sect2>
+
+<sect2>
+<title
+>Vaate sünkroniseerimine kaardil olemi valimisega</title>
+<para
+>Aktiivse olemi kõrval on igal kaardil ka valitud olem. Kuna enamik vaatetüüpe näitab mitmeid olemeid, seades mingil moel keskmesse aktiivse, saab valitud elementi vahetada vaate sees liikudes (hiireklõpsuga või klaviatuuri abil). Tavaliselt on valitud elemendid ka esile tõstetud. Valitud olemi muutmisel mõnes kaardi vaates tõstavad sama kaardi muud vaated samuti automaatselt esile uue valitud olemi. </para>
+</sect2>
+
+<sect2>
+<title
+>Sünkroniseerimine kaartide vahel</title>
+<para
+>Mitme kaardi korral toob valiku muutmine ühel kaardil kaasa muutuse järgmisel kaardil (suunaga paremale/alla). Selline sidumine võimaldab näiteks kiiresti lehitseda väljakutsete graafikuid. </para>
+</sect2>
+
+<sect2>
+<title
+>Paigutused</title>
+<para
+>Akna kõigi kaartide paigutuse saab salvestada (<menuchoice
+><guimenu
+>Vaade </guimenu
+><guisubmenu
+>Paigutus</guisubmenu
+></menuchoice
+>). Aktiivse paigutuse dubleerimisel (<menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>+</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Vaade</guimenu
+> <guisubmenu
+>Paigutus</guisubmenu
+><guimenuitem
+>Klooni</guimenuitem
+> </menuchoice
+>) ming mõne suuruse muutmiseks või kuva liigutamisel kaardivaates kuhugi mujale saab endise ja uue paigutuse vahel lülituda kiirklahviga <keycombo action="simul"
+> &Ctrl;<keycap
+>←</keycap
+></keycombo
+> ja <keycombo action="simul"
+>&Ctrl; <keycap
+>→</keycap
+></keycombo
+>. Paigutusi saab &kcachegrind;is salvestada ning need jäetakse seansside vahel meelde. Parajasti aktiivse paigutuse saab muuta kõigile uutele &kcachegrind;i seanssidele vaikepaigutuseks või siis taastada vaikepaigutuse. </para>
+</sect2>
+</sect1>
+
+<sect1 id="concepts-sidedocks">
+<title
+>Külgdokid</title>
+
+<sect2>
+<title
+>Lameprofiil</title>
+<para
+><guilabel
+>Lameprofiil</guilabel
+> koosneb gruppide ja funktsioonide nimekirjast. Gruppide nimekirja kuuluvad sõltuvalt valitud grupi tüübist kõik grupid, kus esineb kulu. Gruppide nimekiri on peidetud, kui rühmitamine ei ole sisse lülitatud. </para>
+<para
+>Funktsioonide nimekiri sisaldab valitud grupi funktsioone või kõiki funktsioone, kui rühmitamine ei ole sisse lülitatud. Funktsioonid on seatud järjekorda mõne veeru, näiteks kumulatiivse või omakulu järgi. Seda, kui palju funktsioone nimekirjas maksimaalselt näidatakse, saab määrata seadistustedialoogis (<menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>KCachegrindi seadistamine</guimenuitem
+></menuchoice
+>). </para>
+</sect2>
+
+<sect2>
+<title
+>Osade ülevaade</title>
+<para
+>Profileerimisel on võimalik luua mitu profiiliandmete faili, mida saab üheskoos &kcachegrind;is laadida. <guilabel
+>Osade ülevaate</guilabel
+> dokis näidatakse neid vastavalt loomisajale rõhtsalt korraldatuna, kusjuures ristkülikute suurus vastab antud osa kulule. Üht või mõnda osa valides saab piirata kulu, mida &kcachegrind; näitab muudes vaadetes, ainult valitud osaga või osadega. </para>
+<para
+>Osad on aga täiendavalt jagatud kas partitsioneerimis- või kumulatiivses režiimis: <variablelist>
+<varlistentry>
+<term
+><guilabel
+>Osadeks jagamise režiim</guilabel
+></term>
+<listitem
+><para
+>Partitsioneerimine: profiiliandmete osa on jagatud rühmadeks vastavalt valitud rühma tüübile. Kui näiteks valida &ELF;-objektide rühmad, näed iga kasutatud &ELF;-objekti (jagatud teegi või käivitatava faili) kohta värvilist ristkülikut, mille suurus sõltub objekti kulust. </para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Skeemirežiim</guilabel
+></term>
+<listitem
+><para
+>Selle puhul näidatakse parajasti aktiivse funktsiooni kumulatiivset kulu osas ristkülikuna. See omakorda on täiendavalt jagatud, näidates oma väljakutsutute kumulatiivset kulu. </para
+></listitem>
+</varlistentry>
+</variablelist>
+</para>
+</sect2>
+
+<sect2>
+<title
+>Väljakutsete pinu</title>
+<para
+>See on täiesti fiktiivne <quote
+>kõige tõenäolisem</quote
+> väljakutsete pinu. Seda alustatakse parajasti aktiivsest funktsioonist ning üles ja alla lisatake suurima kuluga väljakutsujad ja väljakutsutud. </para>
+<para
+>Veerud <guilabel
+>Kulu</guilabel
+> ja <guilabel
+>Väljakutsed</guilabel
+> näitavad kõigi mainitud rea väljakutsete kulu. </para>
+</sect2>
+</sect1>
+
+<sect1 id="concepts-views">
+<title
+>Vaated</title>
+
+<sect2>
+<title
+>Sündmuse tüüp</title>
+<para
+><guilabel
+>Sündmuse tüübi</guilabel
+> nimekiri näitab kõiki antud sündmuse tüübi parajasti aktiivse funktsiooni saadaolevaid kulutüüpe ning vastavat kumulatiivset ja omakulu. </para>
+<para
+>Nimekirjast sündmuse tüüpi valides saab muuta kõikjal &kcachegrind;is näidatavat kulutüüpi. </para>
+</sect2>
+
+<sect2>
+<title
+>Väljakutsete nimekirjad</title>
+<para
+>Need nimekirjad näitavaid väljakutseid nii parajasti aktiivsest funktsioonist kui parajasti aktiivsele funktsioonile. <guilabel
+>Kõik väljakutsujad</guilabel
+> ja <guilabel
+>kõik väljakutsutud</guilabel
+> tähendavad siin funktsioone, mida on võimalik väljakutsuja/väljakutsutu puhul jälgida isegi juhul, kui vahele jääb muid funktsioone. </para>
+
+<para
+>Väljakutsete nimekirjad on järgmised: <itemizedlist>
+<listitem
+><para
+>Otse<guilabel
+>väljakutsujad</guilabel
+></para
+></listitem>
+<listitem
+><para
+>Otse<guilabel
+>väljakutsutud</guilabel
+></para
+></listitem>
+<listitem
+><para
+><guilabel
+>Kõik väljakutsujad</guilabel
+></para
+></listitem>
+<listitem
+><para
+><guilabel
+>Kõik väljakutsutud</guilabel
+></para
+></listitem>
+</itemizedlist>
+</para>
+</sect2>
+
+<sect2>
+<title
+>Kaardid</title>
+<para
+>Esmase sündmuse tüübi puukujuline vaade piki väljakutsete hierarhiat üles või alla. Iga värviline ristkülik tähistab funktsiooni, selle suurus on aga võimalikult hästi proportsioonis kuluga ajal, mis aktiivne funktsioon töötab (proportsionaalsuse täpsusel on küll omad piirangud). </para>
+<para
+><guilabel
+>Väljakutsujate kaardi</guilabel
+> korral näitab graafik kõigi parajasti aktiivse funktsiooni väljakutsujate pesastatud hierarhiat. <guilabel
+>Väljakutsutute kaardi</guilabel
+> korral näitab graafik kõigi parajasti aktiivse funktsiooni väljakutsutute pesastatud hierarhiat. </para>
+<para
+>Välimuse valikud leiab kontekstimenüüst. Täpse suuruse näitamiseks vali <guimenuitem
+>Jäta vigased piirded vahele</guimenuitem
+>. Kuna see võib võtta tublisti aega, tasuks eelnevalt piirata kuvamise maksimaalne sügavus. <guilabel
+>Parim</guilabel
+> määratleb järglaste poolitamise suuna eellaste proportsiooni põhjal. <guilabel
+>Alati parim</guilabel
+> määratleb järelejäänud ruumi igale järglasele. <guilabel
+>Ignoreeri proportsioone</guilabel
+> jätab enne järglaste joonistamist ruumi funktsiooni nimele. Arvesta, et suuruse proportsioonid võivad eriti halval juhul olla tugevasti moonutatud. </para>
+<para
+>Järglaste vahel saab liikuda ka klaviatuuri abil, kasutades vasak- ja paremnoole klahve. Üles- ja allanoole klahvidega saab hierarhias taseme võrra üles- või allapoole liikuda. Klahv &Enter; aktiveerib elemendi, millel parajasti viibid. </para>
+</sect2>
+
+<sect2>
+<title
+>Väljakutsegraafik</title>
+<para
+>See näitab väljakutsete graafikut aktiivse funktsiooni piirkonnas. Näidatakse ainult kulu aktiivse funktsiooni tegeliku töötamise ajal, &ie; <function
+>main()</function
+> puhul, kui see muidugi on näha, näidatakse kulu, mis on tegelikult sama aktiivse funktsiooni kuluga, kuna see on osa <function
+>main()</function
+> kumulatiivsest kulust aktiivse funktsiooni töötamise ajal. </para>
+<para
+>Tsüklite puhul näitavad sinised väljakutsenooled, et tegemist on kunstliku väljakutsega, mis on lisatud ainult graafiku korrigeerimiseks ja mida tegelikult pole kunagi esinenud. </para>
+<para
+>Kui graafik ei mahu näitamisalasse ära, näidatakse küljel tillukest eelvaatlust. See sarnaneb kõiges täpselt väljakutsepuule ning valitud funktsioon on seal esile tõstetud. </para>
+</sect2>
+
+<sect2>
+<title
+>Annotatsioonid</title>
+<para
+>Annoteeritud lähtekoodi ja assembleri nimekiri näitab parajasti aktiivse funktsiooni lähtekoodiridu/disassembleeritud instruktsioone koos (oma)kuluga lähterea/instruktsiooni koodi täitmisel. Väljakutse korral lisatakse lähtekoodi read väljakutse detailidega: väljakutse (kumulatiivne) kulu, väljakutsete arv ja väljakutse sihtmärk. </para>
+<para
+>Väljakutse sihtmärgi aktiveerimiseks vali selline väljakutse infoga rida. </para>
+</sect2>
+</sect1>
+
+</chapter>
+
+
+<chapter id="commands">
+<title
+>Käskude seletused</title>
+
+<sect1 id="kcachegrind-mainwindow">
+<title
+>&kcachegrind;i peaaken</title>
+
+<sect2>
+<title
+>Menüü <guimenu
+>Fail</guimenu
+></title>
+<para>
+<variablelist>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fail</guimenu
+> <guimenuitem
+>Uus</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+> Avab tühja tipptaseme</action
+> akna, millesse saab laadida profileerimisandmed. Õigupoolest pole seda väga vajagi, sest <menuchoice
+><guimenu
+>Fail</guimenu
+> <guimenuitem
+>Ava...</guimenuitem
+> </menuchoice
+> tekitab samuti uue tipptaseme akna, mis näitab juba valitud andmeid. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fail</guimenu
+> <guimenuitem
+>Ava</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Avab &kde; failidialoogi</action
+>, milles saab valida laaditava profileerimisandmete faili. Kui parajasti avatud tipptaseme aknas on juba mingid andmed, avatakse uus aken. Kui soovid avada täiendavad profileerimisandmed aktiivses aknas, kasuta käsku <menuchoice
+><guimenu
+>Fail</guimenu
+> <guimenuitem
+>Lisa</guimenuitem
+> </menuchoice
+>. </para>
+<para
+>Profileerimisandmete failinime lõpus seisab tavaliselt  <literal role="extension"
+>.<replaceable
+>pid</replaceable
+>.<replaceable
+>part</replaceable
+>-<replaceable
+>threadID</replaceable
+></literal
+>, kus <replaceable
+>part</replaceable
+> ja <replaceable
+>threadID</replaceable
+> tähistavad ühe ja sama rakenduse profileerimise erinevaid andmefaile. Kui laadida fail, mille lõpus seisab ainult <literal role="extension"
+><replaceable
+>pid</replaceable
+></literal
+>, laetakse ühtlasi ka kõik antud profileerimise muude failinime lõppudega andmefailid. </para>
+<informalexample
+><para
+>Kui sul on profileerimisandmete failid <filename
+>cachegrind.out.123</filename
+> ja <filename
+>cachegrind.out.123.1</filename
+>, siis esimest laadides laetakse automaatselt ka teine. </para
+></informalexample
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Fail</guimenu
+> <guimenuitem
+>Lisa</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Lisab profileerimisandmete faili</action
+> aktiivsesse aknasse. Selle käsuga saab mitu andmefaili laadida ühes ja samas tipptaseme aknas isegi siis, kui need ei ole pärit ühest ja samast profileerimisest (sellele osutavad failinimed). Seda saab kasutada näiteks võrdlemiseks. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo
+><keycap
+>F5</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fail</guimenu
+> <guimenuitem
+>Laadi uuesti</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Laadib profileerimisandmed uuesti.</action
+> See on tõenäoliselt kõige huvipakkuvam siis, kui juba avatud rakenduse profiili jaoks on loodud uus profileerimisandmete fail. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fail</guimenu
+> <guimenuitem
+>Välju</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Lõpetab</action
+> &kappname;i töö</para
+></listitem>
+</varlistentry>
+</variablelist>
+</para>
+
+</sect2>
+
+</sect1>
+</chapter>
+
+<chapter id="faq">
+<title
+>Küsimused ja vastused</title>
+&reporting.bugs; &updating.documentation; <qandaset id="faqlist">
+
+
+<qandaentry>
+<question>
+<para
+>Milleks see &kcachegrind; üldse hea on? </para>
+</question>
+<answer>
+<para
+>&kcachegrind;ist on kasu tarkvara arendamise viimases järgus, mida nimetatakse profileerimiseks. Kui sa ei tööta ise tarkvara välja, ei ole sul ka &kcachegrind;iga midagi tarka peale hakata. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Mis on <guilabel
+>Kumul.</guilabel
+> ja <guilabel
+>Oma</guilabel
+> erinevus? </para>
+</question>
+<answer>
+<para
+>Need on teatud sündmuse tüübi korral funktsiooni kulu atribuudid. Kui üks funktsioon teist välja kutsub, on mõttekas eristada funktsiooni enda kulu (<quote
+>omakulu</quote
+>) ja nii selle kui kõigi väljakutsutud funktsioonide kulu (<quote
+>kumulatiivne kulu</quote
+>). </para>
+<para
+>Nii näiteks on <function
+>main()</function
+> korral kumulatiivne kulu alati peaaegu 100%, samas kui selle omakulu on tavaliselt tühine, sest tegeliku töö teevad ära muud funktsioonid. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Minu &kcachegrind;i tööriista- ja menüüriba näeb välja üsna tühi. Kas see peabki nii olema?</para>
+</question>
+<answer>
+<para
+>Ilmselt on &kcachegrind;i paigaldamisel midagi valesti läinud. Soovitatav on rakendus kompileerida paigaldusprefiksiga, milleks on sinu süsteemi &kde; baaskataloog, näiteks <userinput
+><command
+>configure <option
+>--prefix=<replaceable
+>/opt/kde4</replaceable
+></option
+></command
+>; <command
+>make install</command
+></userinput
+>. Kui valid mõne muu kataloogi, näiteks <filename class="directory"
+>$<envar
+>HOME</envar
+>/kde</filename
+>, peab panema keskkonnamuutuja <envar
+>KDEDIR</envar
+> enne &kcachegrind;i käivitamist sellele kataloogile osutama. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Kui ma teen <guilabel
+>väljakutsegraafikus</guilabel
+> funktsioonil topeltklõpsu, näitab see funktsiooni <function
+>main()</function
+> jaoks valitud funktsiooniga sama kulu. Kas see ei peaks olema üsna konstantselt 100%? </para>
+</question>
+<answer>
+<para
+>Sa aktiveerisid funktsiooni <function
+>main()</function
+> all, mille kulu on väiksem kui funktsioonil <function
+>main()</function
+>. Iga funktsiooni korral näidatakse ainult funktsiooni täieliku kulu osa ehk siis kulu <emphasis
+>aktiveeritud</emphasis
+> funktsiooni töötamise ajal, mis tähendab, et suvalise funktsiooni näidatav kulu ei saa kunagi olla suurem kui aktiveeritud funktsiooni kulu. </para>
+</answer>
+</qandaentry>
+
+
+</qandaset>
+</chapter>
+
+
+<glossary>
+
+<glossentry id="costentity">
+<glossterm
+>Kuluolem</glossterm>
+<glossdef
+><para
+>Abstraktne element, mis on seotud lähtekoodiga, mille sündmusi arvestatakse. Kuluolemi mõõtmeteks on koodi asukoht (&eg; lähterida, funktsioon), andmete asukoht (nt. kasutatud andmete tüüp, andmeobjekt), täitmise asukoht (&eg; lõim, protsess) ning eelmainitud asukohtade järjendid (&eg; väljakutsed, objekti kasutamine lausest, vahemälust väljatõrjutud andmed).</para
+></glossdef>
+</glossentry>
+
+<glossentry id="eventcosts">
+<glossterm
+>Sündmuste kulu</glossterm>
+<glossdef
+><para
+>Teatud sündmuse tüübi sündmuste summa täitmise ajal, mis on seotud teatud kuluolemiga. Kulu on seotud olemiga.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="eventtype">
+<glossterm
+>Sündmuse tüüp</glossterm>
+<glossdef
+><para
+>Sündmuse liik, mille kulu saab siduda kuluolemiga. Need jagunevad reaalseteks sündmuse tüüpideks ja päritud sündmuse tüüpideks.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="inheritedeventtype">
+<glossterm
+>Päritud sündmuse tüüp</glossterm>
+<glossdef
+><para
+>Virtuaalne sündmuse tüüp, mida näitab ainult vaade ja mis on määratud reaalsete sündmuste tüüpide põhjal teatud valemiga.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="profiledatafile">
+<glossterm
+>Profiiliandmete fail</glossterm>
+<glossdef
+><para
+>Fail, mis sisaldab profileerimiseksperimendi või selle osa käigus mõõdetud või jälituse järeltöötlusel loodud andmeid. Selle suurus on tavaliselt lineaarses sõltuvuses programmi koodi suurusest.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="profiledatapart">
+<glossterm
+>Profiiliandmete osa</glossterm>
+<glossdef
+><para
+>Profiiliandmete faili andmed.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="profileexperiment">
+<glossterm
+>Profileerimisekperiment</glossterm>
+<glossdef
+><para
+>Programmi töö profileerimistööriista kontrolli all, mis võib anda tulemuseks palju programmi osade või lõimede põhjal loodud profileerimisandmete faile.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="profileproject">
+<glossterm
+>Profileerimisprojekt</glossterm>
+<glossdef
+><para
+>Profileerimiseksperimentide seadistus mingi programmi jaoks, mida soovitakse profileerida (võib-olla ka selle mitmeid versioone). Profileerimisandmete võrdlemisel on tavaliselt mõtet ainult ühe profileerimisprojekti eksperimentidega loodud erinevate profileerimisandmete korral.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="profiling">
+<glossterm
+>Profileerimine</glossterm>
+<glossdef
+><para
+>Statistilise info kogumine töötava programmi käituskarakteristika kohta.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="realeventtype">
+<glossterm
+>Reaalne sündmuse tüüp</glossterm>
+<glossdef
+><para
+>Sündmuse tüüp, mida saab mõõta tööriistaga. See vajab sensori olemasolu antud sündmuse tüübile.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="trace">
+<glossterm
+>Jälitus</glossterm>
+<glossdef
+><para
+>Ajatempliga sündmuste jada, mis toimusid jälitatava programmi töötamise ajal. Selle suurus on tavaliselt lineaarses sõltuvuses programmi töötamise ajast.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="tracepart">
+<glossterm
+>Jälituse osa</glossterm>
+<glosssee otherterm="profiledatapart"/>
+</glossentry>
+
+<glossentry id="tracing">
+<glossterm
+>Jälitamine</glossterm>
+<glossdef
+><para
+>Programmi töötamise jälgimine ja toimuvate sündmuste salvestamine koos ajatemplitega väljundfaili ehk jälitusfaili.</para
+></glossdef>
+</glossentry>
+
+</glossary>
+
+<chapter id="credits">
+
+<title
+>Autorid ja litsents</title>
+
+<para
+>Tänud Julian Sewardile suurepärase &valgrind;i ja Nicholas Nethercote'ile &cachegrind;i lisanduse eest. Ilma nende programmideta ei oleks &kcachegrind;i lihtsalt olemas. Neilt on pärit ka hulk häid mõtteid &GUI; kohta. </para>
+<para
+>Tänud ka kõigile kasutajatele, kes saatsid vearaporteid ja ettepanekuid. </para>
+
+<para
+>Tõlge eesti keelde: Marek Laane <email
+>bald@starman.ee</email
+></para
+> 
+&underFDL; </chapter>
+
+<appendix id="installation">
+<title
+>Paigaldamine</title>
+
+<sect1 id="getting-kcachegrind">
+<title
+>&kcachegrind;i hankimine</title>
+
+<para
+>&kcachegrind; kuulub &kde; paketi &package; koosseisu. Vahepealseid vähemtoetatud väljalaskeid, &callgrind;i ja täiendava dokumentatsiooni leiab <ulink url="https://kcachegrind.github.io"
+>veebileheküljelt</ulink
+>. Sealt leiab täpsemaid juhiseid paigaldamise ja kompileerimise kohta. </para>
+</sect1>
+
+<sect1 id="requirements">
+<title
+>Nõuded</title>
+
+<para
+>&kcachegrind;i kasutamiseks on vajalik &kde; 4.x. Profileerimisandmete tekitamiseks on soovitatav kasutada &cachegrind;i või &calltree;/&callgrind;i. </para>
+</sect1>
+
+<sect1 id="compilation">
+<title
+>Kompileerimine ja paigaldamine</title>
+&install.compile.documentation; </sect1>
+
+<sect1 id="configuration">
+<title
+>Seadistamine</title>
+
+<para
+>Kõik seadistamisvõimalused leiab seadistustedialoogis või vaadete kontekstimenüüdes.</para>
+
+</sect1>
+
+</appendix>
+
+&documentation.index;
+</book>

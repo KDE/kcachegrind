@@ -1,0 +1,2772 @@
+# translation of kcachegrind.po to greek
+#
+# Spiros Georgaras <sng@hellug.gr>, 2005, 2006, 2007.
+# Andreas Vlachos <avlach@gmail.com>, 2005.
+# Toussis Manolis <manolis@koppermind.homelinux.org>, 2005, 2007, 2008, 2009.
+# Petros <pvidalis@gmail.com>, 2009, 2017.
+# Stelios <sstavra@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcachegrind\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-12-29 02:36+0100\n"
+"PO-Revision-Date: 2017-02-06 10:59+0200\n"
+"Last-Translator: Petros Vidalis <pvidalis@gmail.com>\n"
+"Language-Team: Greek <kde-i18n-doc@kde.org>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 2.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Σπύρος Γεωργαράς,Τούσης Μανώλης, Πέτρος Βιδάλης"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "sng@hellug.gr,manolis@koppermind.homelinux.org, pvidalis@gmail.com"
+
+#: kcachegrind/configdlg.cpp:135 kcachegrind/configdlg.cpp:323
+#: kcachegrind/configdlg.cpp:342
+#, kde-format
+msgid "(always)"
+msgstr "(πάντα)"
+
+#: kcachegrind/configdlg.cpp:349
+#, kde-format
+msgid "Choose Source Folder"
+msgstr "Επιλογή φακέλου πηγαίου κώδικα"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, ConfigDlgBase)
+#: kcachegrind/configdlgbase.ui:14
+#, kde-format
+msgid "Configuration"
+msgstr "Διαμόρφωση"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab1)
+#: kcachegrind/configdlgbase.ui:24
+#, kde-format
+msgid "General"
+msgstr "Γενικά"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel5)
+#: kcachegrind/configdlgbase.ui:34
+#, kde-format
+msgid "Maximum number of items in lists:"
+msgstr "Μέγιστος αριθμός αντικειμένων στις λίστες:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel3)
+#: kcachegrind/configdlgbase.ui:44
+#, kde-format
+msgid "Truncate symbols in tooltips and context menus"
+msgstr "Να αποκόπτονται τα σύμβολα στις υποδείξεις και στα σχετικά μενού"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2)
+#: kcachegrind/configdlgbase.ui:70
+#, kde-format
+msgid "when more than:"
+msgstr "όταν είναι περισσότερα από:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2_2)
+#: kcachegrind/configdlgbase.ui:80
+#, kde-format
+msgid "when longer than:"
+msgstr "όταν είναι μεγαλύτερα από:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3)
+#: kcachegrind/configdlgbase.ui:90
+#, kde-format
+msgid "Precision of percentage values:"
+msgstr "Ακρίβεια των τιμών των ποσοστών:"
+
+#. i18n: ectx: property (toolTip), widget (QSpinBox, maxListEdit)
+#: kcachegrind/configdlgbase.ui:113
+#, kde-format
+msgid "The Maximum Number of List Items should be below 500."
+msgstr ""
+"Ο μέγιστος αριθμός των αντικειμένων λίστας πρέπει να είναι κάτω από 500."
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1)
+#: kcachegrind/configdlgbase.ui:158
+#, kde-format
+msgid "Cost Item Colors"
+msgstr "Χρώματα αντικειμένων κόστους"
+
+#. i18n: ectx: property (text), widget (QCheckBox, fileCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, classCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, objectCheck)
+#: kcachegrind/configdlgbase.ui:185 kcachegrind/configdlgbase.ui:219
+#: kcachegrind/configdlgbase.ui:233
+#, kde-format
+msgid "Automatic"
+msgstr "Αυτόματο"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4)
+#: kcachegrind/configdlgbase.ui:192
+#, kde-format
+msgid "Object:"
+msgstr "Αντικείμενο:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2_2)
+#: kcachegrind/configdlgbase.ui:202
+#, kde-format
+msgid "Class:"
+msgstr "Κλάση:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
+#: kcachegrind/configdlgbase.ui:240
+#, kde-format
+msgid "File:"
+msgstr "Αρχείο:"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/configdlgbase.ui:321
+#, kde-format
+msgid "Annotations"
+msgstr "Σημειώσεις"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3_2)
+#: kcachegrind/configdlgbase.ui:329
+#, kde-format
+msgid "Context lines in annotations:"
+msgstr "Σχετικές γραμμές με σημειώσεις:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
+#: kcachegrind/configdlgbase.ui:350
+#, kde-format
+msgid "Source Folders"
+msgstr "Φάκελοι πηγαίου κώδικα"
+
+#. i18n: ectx: property (text), widget (QPushButton, addDirButton)
+#: kcachegrind/configdlgbase.ui:364
+#, kde-format
+msgid "Add"
+msgstr "Προσθήκη"
+
+#. i18n: ectx: property (text), widget (QPushButton, deleteDirButton)
+#: kcachegrind/configdlgbase.ui:371
+#, kde-format
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#. i18n: ectx: property (text), widget (QTreeWidget, dirList)
+#: kcachegrind/configdlgbase.ui:409
+#, kde-format
+msgid "Object / Related Source Base"
+msgstr "Βάση πηγαίου κώδικα σχετική με αντικείμενα"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
+#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:289
+#: kcachegrind/toplevel.cpp:512
+#, kde-format
+msgid "Profile Dumps"
+msgstr "Αποτυπώσεις προφίλ"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:24
+#, kde-format
+msgid "Target"
+msgstr "Προορισμός"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:46
+#, kde-format
+msgid "Time"
+msgstr "Χρόνος"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:57
+#, kde-format
+msgid "Path"
+msgstr "Διαδρομή"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab)
+#: kcachegrind/dumpselectionbase.ui:70
+#, kde-format
+msgid "Options"
+msgstr "Επιλογές"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: kcachegrind/dumpselectionbase.ui:87
+#, kde-format
+msgid "Target command:"
+msgstr "Εντολή προορισμού:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: kcachegrind/dumpselectionbase.ui:100
+#, kde-format
+msgid "Profiler options:"
+msgstr "Επιλογές προφίλ:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:111
+#, kde-format
+msgid "Option"
+msgstr "Επιλογή"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:122 kcachegrind/dumpselectionbase.ui:650
+#, kde-format
+msgid "Value"
+msgstr "Τιμή"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:133
+#, kde-format
+msgid "Trace"
+msgstr "Ίχνος"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:146 kcachegrind/dumpselectionbase.ui:730
+#, kde-format
+msgid "Jumps"
+msgstr "Άλματα"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:160
+#, kde-format
+msgid "Instructions"
+msgstr "Εντολές"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:175 kcachegrind/dumpselectionbase.ui:745
+#, kde-format
+msgid "Events"
+msgstr "Γεγονότα"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:188
+#, kde-format
+msgid "Full Cache"
+msgstr "Πλήρης προσωρινή μνήμη"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:202
+#, kde-format
+msgid "Custom"
+msgstr "Προσαρμοσμένο"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:217
+#, kde-format
+msgid "Collect"
+msgstr "Συλλογή"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:230
+#, kde-format
+msgid "At Startup"
+msgstr "Στην εκκίνηση"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:244
+#, kde-format
+msgid "While In"
+msgstr "Κατά τη διάρκεια"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:259
+#, kde-format
+msgid "Skip"
+msgstr "Παράλειψη"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:272
+#, kde-format
+msgid "PLT"
+msgstr "PLT"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:286 kcachegrind/dumpselectionbase.ui:898
+#, kde-format
+msgid "Function"
+msgstr "Συνάρτηση"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:301
+#, kde-format
+msgid "Dump Profile"
+msgstr "Αποτύπωση προφίλ"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:314
+#, kde-format
+msgid "Every BBs"
+msgstr "Κάθε BBs"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:328 kcachegrind/dumpselectionbase.ui:370
+#, kde-format
+msgid "On Entering"
+msgstr "Στην είσοδο"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:342
+#, kde-format
+msgid "On Leaving"
+msgstr "Στην έξοδο"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:357
+#, kde-format
+msgid "Zero Events"
+msgstr "Μηδέν γεγονότα"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:385
+#, kde-format
+msgid "Separate"
+msgstr "Διαχωρισμός"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:398
+#, kde-format
+msgid "Threads"
+msgstr "Νήματα"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:412
+#, kde-format
+msgid "Recursions"
+msgstr "Αναδρομές"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:426
+#, kde-format
+msgid "Call Chain"
+msgstr "Αλυσίδα κλήσεων"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
+#: kcachegrind/dumpselectionbase.ui:452
+#, kde-format
+msgid "Custom profiler options:"
+msgstr "Προσαρμοσμένες επιλογές προφίλ:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton2)
+#: kcachegrind/dumpselectionbase.ui:486
+#, kde-format
+msgid "Run New Profile"
+msgstr "Εκτέλεση νέου προφίλ"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/dumpselectionbase.ui:496
+#, kde-format
+msgid "Info"
+msgstr "Πληροφορίες"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: kcachegrind/dumpselectionbase.ui:505
+#, kde-format
+msgid "Dump reason:"
+msgstr "Λόγος αποτύπωσης:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: kcachegrind/dumpselectionbase.ui:518
+#, kde-format
+msgid "Event summary:"
+msgstr "Περίληψη γεγονότων:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:529
+#, kde-format
+msgid "Name"
+msgstr "Όνομα"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:540
+#, kde-format
+msgid "Sum"
+msgstr "Σύνολο"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: kcachegrind/dumpselectionbase.ui:554
+#, kde-format
+msgid "Miscellaneous:"
+msgstr "Διάφορα:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6)
+#: kcachegrind/dumpselectionbase.ui:588
+#, kde-format
+msgid "Show"
+msgstr "Εμφάνιση"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton5)
+#: kcachegrind/dumpselectionbase.ui:595
+#, kde-format
+msgid "Compare"
+msgstr "Σύγκριση"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab3)
+#: kcachegrind/dumpselectionbase.ui:605
+#, kde-format
+msgid "State"
+msgstr "Κατάσταση"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton1)
+#: kcachegrind/dumpselectionbase.ui:619
+#, kde-format
+msgid "Update"
+msgstr "Ενημέρωση"
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox1)
+#: kcachegrind/dumpselectionbase.ui:626
+#, kde-format
+msgid "Every [s]:"
+msgstr "Κάθε :"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:639
+#, kde-format
+msgid "Counter"
+msgstr "Μετρητής"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:661
+#, kde-format
+msgid "Dumps Done"
+msgstr "Έγιναν αποτυπώσεις"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:675
+#, kde-format
+msgid "Is Collecting"
+msgstr "συλλέγει"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:689
+#, kde-format
+msgid "Executed"
+msgstr "εκτελέστηκε"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:702
+#, kde-format
+msgid "Basic Blocks"
+msgstr "βασικά τμήματα"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:716
+#, kde-format
+msgid "Calls"
+msgstr "κλήσεις"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:758
+#, kde-format
+msgid "Ir"
+msgstr "Ir"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:773
+#, kde-format
+msgid "Distinct"
+msgstr "Ξεχωριστό"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:786
+#, kde-format
+msgid "ELF Objects"
+msgstr "Αντικείμενα ELF"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:800
+#, kde-format
+msgid "Functions"
+msgstr "Συναρτήσεις"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:814
+#, kde-format
+msgid "Contexts"
+msgstr "Σχετικό περιεχόμενο"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: kcachegrind/dumpselectionbase.ui:845
+#, kde-format
+msgid "Stack trace:"
+msgstr "Ίχνος στοίβας:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox2)
+#: kcachegrind/dumpselectionbase.ui:855
+#, kde-format
+msgid "Sync."
+msgstr "Συγχρονισμός"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:865
+#, kde-format
+msgid "#"
+msgstr "#"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:876
+#, kde-format
+msgid "Incl."
+msgstr "Προσθετικό"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:887
+#, kde-format
+msgid "Called"
+msgstr "Κλήθηκε"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:909
+#, kde-format
+msgid "Location"
+msgstr "Τοποθεσία"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton7)
+#: kcachegrind/dumpselectionbase.ui:928
+#, kde-format
+msgid "Start"
+msgstr "Εκκίνηση"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6_2)
+#: kcachegrind/dumpselectionbase.ui:951
+#, kde-format
+msgid "Zero"
+msgstr "Μηδενικό"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton4)
+#: kcachegrind/dumpselectionbase.ui:958
+#, kde-format
+msgid "Dump"
+msgstr "Αποτύπωση"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab4)
+#: kcachegrind/dumpselectionbase.ui:968
+#, kde-format
+msgid "Messages"
+msgstr "Μηνύματα"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton9)
+#: kcachegrind/dumpselectionbase.ui:985
+#, kde-format
+msgid "Kill Run"
+msgstr "Σκότωμα εκτέλεσης"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton8)
+#: kcachegrind/dumpselectionbase.ui:1008
+#, kde-format
+msgid "Clear"
+msgstr "Καθαρισμός"
+
+#. i18n: ectx: Menu (file)
+#: kcachegrind/kcachegrindui.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&Αρχείο"
+
+#. i18n: ectx: Menu (view)
+#: kcachegrind/kcachegrindui.rc:10
+#, kde-format
+msgid "&View"
+msgstr "Π&ροβολή"
+
+#. i18n: ectx: Menu (layouts)
+#: kcachegrind/kcachegrindui.rc:15
+#, kde-format
+msgid "&Layout"
+msgstr "&Διάταξη"
+
+#. i18n: ectx: Menu
+#: kcachegrind/kcachegrindui.rc:33
+#, kde-format
+msgid "Sidebars"
+msgstr "Πλάγιες γραμμές εργαλείων"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kcachegrind/kcachegrindui.rc:42
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Κύρια γραμμή εργαλείων"
+
+#. i18n: ectx: ToolBar (stateToolBar)
+#: kcachegrind/kcachegrindui.rc:54
+#, kde-format
+msgid "State Toolbar"
+msgstr "Γραμμή εργαλείων κατάστασης"
+
+#: kcachegrind/main.cpp:34
+#, kde-format
+msgid "KCachegrind"
+msgstr "KCachegrind"
+
+#: kcachegrind/main.cpp:36
+#, kde-format
+msgid "KDE Frontend for Callgrind/Cachegrind"
+msgstr "Πρόγραμμα διασύνδεσης του KDE για το Callgrind/Cachegrind"
+
+#: kcachegrind/main.cpp:38
+#, kde-format
+msgid "(C) 2002 - 2016"
+msgstr "(C) 2002 - 2016"
+
+#: kcachegrind/main.cpp:40
+#, kde-format
+msgid "Josef Weidendorfer"
+msgstr "Josef Weidendorfer"
+
+#: kcachegrind/main.cpp:41
+#, kde-format
+msgid "Author/Maintainer"
+msgstr "Συγγραφέας/συντηρητής"
+
+#: kcachegrind/main.cpp:68
+#, kde-format
+msgid "Show information of this trace"
+msgstr "Εμφάνιση πληροφοριών αυτού του ίχνους"
+
+#: kcachegrind/main.cpp:68
+#, kde-format
+msgid "[trace...]"
+msgstr "[ίχνος...]"
+
+#: kcachegrind/toplevel.cpp:258 kcachegrind/toplevel.cpp:486
+#, kde-format
+msgid "Parts Overview"
+msgstr "Περίληψη τμημάτων"
+
+#: kcachegrind/toplevel.cpp:267
+#, kde-format
+msgid "Top Cost Call Stack"
+msgstr "Στοίβα κλήσεων μέγιστου κόστους"
+
+#: kcachegrind/toplevel.cpp:269
+#, kde-format
+msgid ""
+"<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most probable' "
+"call stack. It is built up by starting with the current selected function "
+"and adds the callers/callees with highest cost at the top and to bottom.</"
+"p><p>The <b>Cost</b> and <b>Calls</b> columns show the cost used for all "
+"calls from the function in the line above.</p>"
+msgstr ""
+"<b>Η στοίβα κλήσεων μέγιστου κόστους</b><p>Αυτή είναι μια καθαρά φανταστική "
+"'το πιο πιθανόν' στοίβα κλήσης. Κατασκευάζεται ξεκινώντας με την τρέχουσα "
+"επιλεγμένη συνάρτηση και προσθέτοντας τις κλήσεις/κληθέντα με το μέγιστο "
+"κόστος από πάνω προς τα κάτω.</p><p>Οι στήλες <b>Κόστος</b> και <b>Κλήσεις</"
+"b> εμφανίζουν το κόστος που χρησιμοποιείται για όλες τις κλήσεις από τη "
+"συνάρτηση στη παραπάνω γραμμή.</p>"
+
+#: kcachegrind/toplevel.cpp:283
+#, kde-format
+msgid "Flat Profile"
+msgstr "Επίπεδο προφίλ"
+
+#: kcachegrind/toplevel.cpp:296
+#, kde-format
+msgid ""
+"<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
+"loadable profile dumps in all subdirectories of: <ul><li>current working "
+"directory of KCachegrind, i.e. where it was started from, and </li><li>the "
+"default profile dump directory given in the configuration.</li></ul> The "
+"list is sorted according to the target command profiled in the corresponding "
+"dump.</p><p>On selecting a profile dump, information for it is shown in the "
+"bottom area of the dockable: <ul><li><b>Options</b> allows you to view the "
+"profiled command and profile options of this dump. By changing any item, a "
+"new (yet unexisting) profile template is created. Press <b>Run Profile</b> "
+"to start a profile run with these options in the background. </"
+"li><li><b>Info</b> gives detailed info on the selected dump like event cost "
+"summary and properties of the simulated cache. </li><li><b>State</b> is only "
+"available for current happening profiles runs. Press <b>Update</b> to see "
+"different counters of the run, and a stack trace of the current position in "
+"the program profiled. Check the <b>Every</b> option to let KCachegrind "
+"regularly poll these data. Check the <b>Sync</b> option to let the dockable "
+"activate the top function in the current loaded dump.</li></ul></p>"
+msgstr ""
+"<b>Αποτυπώσεις προφίλ</b><p>Αυτή η προσάρτηση εμφανίζει στο πάνω τμήμα τη "
+"λίστα με τις αποτυπώσεις προφίλ όλων των υποκαταλόγων του: <ul><li>τρέχοντος "
+"καταλόγου εργασίας του KCachegrind, π.χ. από αυτόν που ξεκίνησε το "
+"πρόγραμμα, και </li><li>προκαθορισμένου καταλόγου αποτύπωσης προφίλ που "
+"είναι δοσμένο στη διαμόρφωση.</li></ul> Η λίστα ταξινομείται σύμφωνα με την "
+"εντολή προορισμού προφίλ στην αντίστοιχη αποτύπωση.</p><p>Κατά την επιλογή "
+"μιας αποτύπωσης προφίλ, εμφανίζονται πληροφορίες για αυτήν στην κάτω περιοχή "
+"της προσάρτησης: <ul><li>Οι <b>Επιλογές</b> σας επιτρέπουν να προβάλετε την "
+"εντολή προφίλ και τις επιλογές προφίλ της αποτύπωσης. Τροποποιώντας ένα "
+"αντικείμενο, ένα νέο (μη υπάρχον ακόμα) πρότυπο προφίλ δημιουργείται. Πιέστε "
+"την <b>Εκτέλεση προφίλ</b> για να αρχίσει εκτέλεση προφίλ στο παρασκήνιο με "
+"αυτές τις επιλογές. </li><li>Οι <b>Πληροφορίες</b> σας δίνουν αναλυτικές "
+"πληροφορίες για την επιλεγμένη αποτύπωση όπως σύνολα κόστους γεγονότων και "
+"ιδιότητες της προσομοιωμένης στοίβας. </li><li>Η <b>Κατάσταση</b> είναι "
+"διαθέσιμη μόνο για τα τρέχοντα εκτελούμενα προφίλ. Πιέστε <b>Ενημέρωση</b> "
+"για να δείτε διάφορους μετρητές της εκτέλεσης και ένα ίχνος της στοίβας της "
+"τρέχουσας θέσης στο πρόγραμμα. Ενεργοποιήστε την επιλογή <b>Κάθε</b> για να "
+"ελέγχει το KCachegrind συστηματικά αυτά τα δεδομένα. Ενεργοποιήστε την "
+"επιλογή <b>Συγχρονισμός</b> για να ενεργοποιηθεί η ανώτερη συνάρτηση στην "
+"τρέχουσα φορτωμένη αποτύπωση.</li></ul></p>"
+
+#: kcachegrind/toplevel.cpp:367
+#, kde-format
+msgid "&Duplicate"
+msgstr "&Αντίγραφο"
+
+#: kcachegrind/toplevel.cpp:370
+#, kde-format
+msgid ""
+"<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
+msgstr ""
+"<b>Αντίγραφο της τρέχουσας διάταξης</b><p>Δημιουργία ενός αντιγράφου της "
+"τρέχουσας διάταξης.</p>"
+
+#: kcachegrind/toplevel.cpp:375
+#, kde-format
+msgid "&Remove"
+msgstr "Α&φαίρεση"
+
+#: kcachegrind/toplevel.cpp:377
+#, kde-format
+msgid ""
+"<b>Remove Current Layout</b><p>Delete current layout and make the previous "
+"active.</p>"
+msgstr ""
+"<b>Αφαίρεση τρέχουσας διάταξης</b><p>Αφαίρεση της τρέχουσας διάταξης και "
+"ενεργοποίηση της προηγούμενης.</p>"
+
+#: kcachegrind/toplevel.cpp:382
+#, kde-format
+msgid "&Go to Next"
+msgstr "&Μετάβαση στην επόμενη"
+
+#: kcachegrind/toplevel.cpp:385
+#, kde-format
+msgid "Go to Next Layout"
+msgstr "Μετάβαση στην επόμενη διάταξη"
+
+#: kcachegrind/toplevel.cpp:389
+#, kde-format
+msgid "&Go to Previous"
+msgstr "&Μετάβαση στην προηγούμενη"
+
+#: kcachegrind/toplevel.cpp:392
+#, kde-format
+msgid "Go to Previous Layout"
+msgstr "Μετάβαση στην προηγούμενη διάταξη"
+
+#: kcachegrind/toplevel.cpp:396
+#, kde-format
+msgid "&Restore to Default"
+msgstr "&Επαναφορά προκαθορισμένων"
+
+#: kcachegrind/toplevel.cpp:398
+#, kde-format
+msgid "Restore Layouts to Default"
+msgstr "Επαναφορά των διατάξεων στα προκαθορισμένα"
+
+#: kcachegrind/toplevel.cpp:402
+#, kde-format
+msgid "&Save as Default"
+msgstr "&Αποθήκευση ως προκαθορισμένο"
+
+#: kcachegrind/toplevel.cpp:404
+#, kde-format
+msgid "Save Layouts as Default"
+msgstr "Αποθήκευση διατάξεων ως προκαθορισμένες"
+
+#: kcachegrind/toplevel.cpp:415
+#, kde-format
+msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
+msgstr "<b>Νέο</b><p>Ανοίγει ένα νέο κενό παράθυρο KCachegrind.</p>"
+
+#: kcachegrind/toplevel.cpp:419
+#, kde-format
+msgid "&Add..."
+msgstr "&Προσθήκη..."
+
+#: kcachegrind/toplevel.cpp:421
+#, kde-format
+msgid ""
+"<b>Add Profile Data</b><p>This opens an additional profile data file in the "
+"current window.</p>"
+msgstr ""
+"<b>Προσθήκη δεδομένων προφίλ</b><p>Ανοίγει ένα πρόσθετο αρχείο δεδομένων "
+"προφίλ στο τρέχον παράθυρο.</p>"
+
+#: kcachegrind/toplevel.cpp:427
+#, kde-format
+msgctxt "Reload a document"
+msgid "&Reload"
+msgstr "&Επαναφόρτωση"
+
+#: kcachegrind/toplevel.cpp:430
+#, kde-format
+msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
+msgstr ""
+"<b>Επαναφόρτωση δεδομένων προφίλ</b><p>Φόρτωση νέων τμημάτων, επίσης.</p>"
+
+#: kcachegrind/toplevel.cpp:435
+#, kde-format
+msgid "&Export Graph"
+msgstr "Ε&ξαγωγή γραφήματος"
+
+#: kcachegrind/toplevel.cpp:438
+#, kde-format
+msgid ""
+"<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
+"tools of the GraphViz package.</p>"
+msgstr ""
+"<b>Εξαγωγή γραφήματος κλήσεων</b><p>Δημιουργεί ένα αρχείο με επέκταση .dot "
+"για τη χρήση του με τα εργαλεία του πακέτου GraphViz.</p>"
+
+#: kcachegrind/toplevel.cpp:446
+#, kde-format
+msgid "&Force Dump"
+msgstr "&Εξαναγκασμός αποτύπωσης"
+
+#: kcachegrind/toplevel.cpp:449
+#, kde-format
+msgid ""
+"<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
+"current directory. This action is checked while KCachegrind looks for the "
+"dump. If the dump is finished, it automatically reloads the current trace. "
+"If this is the one from the running Callgrind, the new created trace part "
+"will be loaded, too.</p><p>Force dump creates a file 'callgrind.cmd', and "
+"checks every second for its existence. A running Callgrind will detect this "
+"file, dump a trace part, and delete 'callgrind.cmd'. The deletion is "
+"detected by KCachegrind, and it does a Reload. If there is <em>no</em> "
+"Callgrind running, press 'Force Dump' again to cancel the dump request. This "
+"deletes 'callgrind.cmd' itself and stops polling for a new dump.</p><p>Note: "
+"A Callgrind run <em>only</em> detects existence of 'callgrind.cmd' when "
+"actively running a few milliseconds, i.e. <em>not</em> sleeping. Tip: For a "
+"profiled GUI program, you can awake Callgrind e.g. by resizing a window of "
+"the program.</p>"
+msgstr ""
+"<b>Εξαναγκασμός αποτύπωσης</b><p>Αυτό εξαναγκάζει μια αποτύπωση για μια "
+"εκτέλεση προφίλ Callgrind στον τρέχοντα κατάλογο. Αυτή η ενέργεια ελέγχεται "
+"κατά την αναζήτηση αποτύπωσης από το KCachegrind. Αν η αποτύπωση τερματίσει, "
+"αυτόματα επαναφορτώνει το τρέχον ίχνος. Αν αυτό ανήκει στο τρέχον "
+"εκτελούμενο Callgrind, το δημιουργημένο τμήμα ίχνους θα φορτωθεί επίσης.</"
+"p><p>Ο εξαναγκασμός αποτύπωσης δημιουργεί ένα αρχείο 'callgrind.cmd', και "
+"ελέγχει κάθε δευτερόλεπτο για την ύπαρξή του. Ένα εκτελούμενο Callgrind θα "
+"ανιχνεύσει του αρχείο αυτό, θα αποτυπώσει ένα τμήμα ίχνους, και θα διαγράψει "
+"το 'callgrind.cmd'. Η διαγραφή ανιχνεύεται από το KCachegrind, και εκτελεί "
+"μια επαναφόρτωση. Αν <em>δεν</em> υπάρχει Callgrind που εκτελείται, πιέστε "
+"ξανά τον 'Εξαναγκασμό αποτύπωσης' για την ακύρωση της αίτησης αποτύπωσης. "
+"Αυτό θα διαγράψει το 'callgrind.cmd' και θα σταματήσει την ανίχνευση μιας "
+"νέας αποτύπωσης.</p><p>Σημείωση: Μια εκτέλεση Callgrind ανιχνεύει <em>μόνο</"
+"em> την ύπαρξη του 'callgrind.cmd' όταν εκτελείται ενεργά για λίγα χιλιοστά "
+"του δευτερολέπτου και <em>όχι</em> π.χ. όταν είναι σε αδράνεια. Συμβουλή: "
+"Για προφίλ προγράμματος με γραφικό περιβάλλον, μπορείτε να ενεργοποιήσετε το "
+"Callgrind π.χ. με αλλαγή μεγέθους του παραθύρου του προγράμματος.</p>"
+
+#: kcachegrind/toplevel.cpp:474
+#, kde-format
+msgid ""
+"<b>Open Profile Data</b><p>This opens a profile data file, with possible "
+"multiple parts</p>"
+msgstr ""
+"<b>Άνοιγμα δεδομένων προφίλ</b><p>Ανοίγει ένα αρχείο δεδομένων προφίλ, με "
+"δυνατότητα πολλών τμημάτων</p>"
+
+#: kcachegrind/toplevel.cpp:489
+#, kde-format
+msgid "Show/Hide the Parts Overview Dockable"
+msgstr "Εμφάνιση/απόκρυψη της προσάρτησης περίληψης τμημάτων"
+
+#: kcachegrind/toplevel.cpp:494
+#, kde-format
+msgid "Call Stack"
+msgstr "Στοίβα κλήσης"
+
+#: kcachegrind/toplevel.cpp:497
+#, kde-format
+msgid "Show/Hide the Call Stack Dockable"
+msgstr "Εμφάνιση/απόκρυψη της προσάρτησης στοίβας κλήσεων"
+
+#: kcachegrind/toplevel.cpp:502
+#, kde-format
+msgid "Function Profile"
+msgstr "Προφίλ συνάρτησης"
+
+#: kcachegrind/toplevel.cpp:505
+#, kde-format
+msgid "Show/Hide the Function Profile Dockable"
+msgstr "Εμφάνιση/απόκρυψη της προσάρτησης προφίλ συνάρτησης"
+
+#: kcachegrind/toplevel.cpp:513
+#, kde-format
+msgid "Show/Hide the Profile Dumps Dockable"
+msgstr "Εμφάνιση/απόκρυψη της προσάρτησης αποτυπώσεων προφίλ"
+
+#: kcachegrind/toplevel.cpp:520
+#, kde-format
+msgid "Relative"
+msgstr "Σχετικό"
+
+#: kcachegrind/toplevel.cpp:522
+#, kde-format
+msgid "Show relative instead of absolute costs"
+msgstr "Εμφάνιση σχετικού κόστους στη θέση του απόλυτου"
+
+#: kcachegrind/toplevel.cpp:528
+#, kde-format
+msgid "Relative to Parent"
+msgstr "Σχετικό με το γονέα"
+
+#: kcachegrind/toplevel.cpp:531
+#, kde-format
+msgid "Show percentage costs relative to parent"
+msgstr "Εμφάνιση ποσοστών κόστους σχετικό με το γονέα"
+
+#: kcachegrind/toplevel.cpp:535
+#, kde-format
+msgid ""
+"<b>Show percentage costs relative to parent</b><p>If this is switched off, "
+"percentage costs are always shown relative to the total cost of the profile "
+"part(s) that are currently browsed. By turning on this option, percentage "
+"cost of shown cost items will be relative to the parent cost item.</"
+"p><ul><table><tr><td><b>Cost Type</b></td><td><b>Parent Cost</b></td></"
+"tr><tr><td>Function Cumulative</td><td>Total</td></tr><tr><td>Function Self</"
+"td><td>Function Group (*) / Total</td></tr><tr><td>Call</td><td>Function "
+"Inclusive</td></tr><tr><td>Source Line</td><td>Function Inclusive</td></tr></"
+"table></ul><p>(*) Only if function grouping is switched on (e.g. ELF object "
+"grouping).</p>"
+msgstr ""
+"<b>Εμφάνιση ποσοστών κόστους σχετικό με το γονέα</b><p>Αν αυτό "
+"απενεργοποιηθεί, τα ποσοστά κόστους εμφανίζονται πάντα σχετικά με το "
+"συνολικό κόστος του τμήματος/ων προφίλ που γίνεται εξερεύνηση. "
+"Ενεργοποιώντας αυτή την επιλογή, τα ποσοστά κόστους εμφανίζονται σε σχέση με "
+"το γονικό αντικείμενο κόστους.</p><ul><table><tr><td><b>Τύπος κόστους </b></"
+"td><td><b>Κόστος γονέα</b></td></tr><tr><td>Αθροιστικό συνάρτησης </"
+"td><td>Συνολικό</td></tr><tr><td>Ιδίας συνάρτησης</td><td>Ομάδα συνάρτησης "
+"(*) / Συνολικό</td></tr><tr><td>Κλήση</td><td>Αθροιστικό συνάρτησης </td></"
+"tr><tr><td>Γραμμή πηγαίου κώδικα</td><td>Αθροιστικό συνάρτησης </td></tr></"
+"table></ul><p>(*) Μόνο αν η ομαδοποίηση συναρτήσεων είναι ενεργοποιημένη (π."
+"χ. ομαδοποίηση αντικειμένων ELF).</p>"
+
+#: kcachegrind/toplevel.cpp:552
+#, kde-format
+msgid "Cycle Detection"
+msgstr "Ανίχνευση κύκλων"
+
+#: kcachegrind/toplevel.cpp:555
+#, kde-format
+msgid ""
+"<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
+"drawing will show black areas when a recursive call is made instead of "
+"drawing the recursion ad infinitum. Note that the size of black areas often "
+"will be wrong, as inside recursive cycles the cost of calls cannot be "
+"determined; the error is small, however, for false cycles (see "
+"documentation).</p><p>The correct handling for cycles is to detect them and "
+"collapse all functions of a cycle into an artificial function, which is done "
+"when this option is selected. Unfortunately, with GUI applications, this "
+"often will lead to huge false cycles, making the analysis impossible; "
+"therefore, there is the option to switch this off.</p>"
+msgstr ""
+"<b>Ανίχνευση αναδρομικών κύκλων</b><p>Αν αυτό είναι απενεργοποιημένο, το "
+"δενδροδιάγραμμα θα εμφανίσει μαύρες περιοχές όταν μια αναδρομική κλίση "
+"εκτελεστεί αντί της αναδρομής. Σημειώστε ότι το μέγεθος των μαύρων περιοχών "
+"συχνά θα είναι εσφαλμένες, καθώς μέσα σε αναδρομικούς κύκλους δεν μπορεί να "
+"καθορισθεί ακριβώς το κόστος, το σφάλμα είναι μικρό ωστόσο για εσφαλμένους "
+"κύκλους (δείτε την τεκμηρίωση).</p><p>Ο σωστός τρόπος χειρισμού των κύκλων "
+"είναι η ανίχνευσή τους και η σύμπτυξη όλων των συναρτήσεων ενός κύκλος σε "
+"μια εικονική συνάρτηση, το οποίο γίνεται όταν η επιλογή είναι "
+"ενεργοποιημένη. Δυστυχώς, με τις εφαρμογές γραφικού περιβάλλοντος, αυτό "
+"συχνά έχει σαν αποτέλεσμα τεράστιους εσφαλμένους κύκλους, κάνοντας την "
+"ανάλυση αδύνατη, για αυτό, υπάρχει και η επιλογή απενεργοποίησης.</p>"
+
+#: kcachegrind/toplevel.cpp:571
+#, kde-format
+msgid "Shorten Templates"
+msgstr "Συντόμευση σε templates"
+
+#: kcachegrind/toplevel.cpp:573
+#, kde-format
+msgid "Hide Template Parameters in C++ Symbols"
+msgstr "Απόκρυψη template παραμέτρων σε C++ σύμβολα"
+
+#: kcachegrind/toplevel.cpp:574
+#, kde-format
+msgid ""
+"<b>Hide Template Parameters in C++ Symbols</b><p>If this is switched on, "
+"every symbol displayed will have any C++ template parameters hidden, just "
+"showing &lt;&gt; instead of a potentially nested template parameter.</"
+"p><p>In this mode, you can hover the mouse pointer over the activated symbol "
+"label to show a tooltip with the unabbreviated symbol.</p>"
+msgstr ""
+"<b>Απόκρυψη template παραμέτρων σε C++ σύμβολα</b><p>Αν αυτό είναι ενεργό, "
+"κάθε εμφανιζόμενο σύμβολο θα έχει τις C++ template παραμέτρους κρυμμένες, "
+"απλά δείχνοντας &lt;&gt; αντί μια δυνητικά φωλιασμένη template παράμετρο.</"
+"p><p>Στη λειτουργία αυτή, μπορείτε να περνάτε το δείκτη του ποντικιού πάνω "
+"από τον τίτλο του ενεργοποιημένου συμβόλου για να εμφανιστεί μια υπόδειξη με "
+"το πλήρες σύμβολο.</p>"
+
+#: kcachegrind/toplevel.cpp:590
+#, kde-format
+msgid "&Up"
+msgstr "&Πάνω"
+
+#: kcachegrind/toplevel.cpp:599
+#, kde-format
+msgid ""
+"<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
+"was visited, use that with highest cost.</p>"
+msgstr ""
+"<b>Μετάβαση πάνω</b><p>Μετάβαση στην τελευταία κλήση της τρέχουσας "
+"συνάρτησης. Αν δεν υπάρχει αυτή, χρησιμοποίησε αυτή με το μεγαλύτερο κόστος."
+"</p>"
+
+#: kcachegrind/toplevel.cpp:616
+#, kde-format
+msgid "Go back in function selection history"
+msgstr "Μετάβαση πίσω στο ιστορικό επιλογής συνάρτησης"
+
+#: kcachegrind/toplevel.cpp:630
+#, kde-format
+msgid "Go forward in function selection history"
+msgstr "Μετάβαση μπροστά στο ιστορικό επιλογής συνάρτησης"
+
+#: kcachegrind/toplevel.cpp:635 kcachegrind/toplevel.cpp:1512
+#, kde-format
+msgid "Primary Event Type"
+msgstr "Πρωτεύων τύπος γεγονότος"
+
+#: kcachegrind/toplevel.cpp:636
+#, kde-format
+msgid "Select primary event type of costs"
+msgstr "Επιλογή πρωτεύοντος τύπου γεγονότος για τα κόστη"
+
+#: kcachegrind/toplevel.cpp:658 kcachegrind/toplevel.cpp:1517
+#, kde-format
+msgid "Secondary Event Type"
+msgstr "Δευτερεύων τύπος γεγονότος"
+
+#: kcachegrind/toplevel.cpp:659
+#, kde-format
+msgid "Select secondary event type for cost e.g. shown in annotations"
+msgstr ""
+"Επιλογή δευτερεύοντος τύπου γεγονότος για τα κόστη, π.χ. για εμφάνιση στις "
+"σημειώσεις"
+
+#: kcachegrind/toplevel.cpp:669
+#, kde-format
+msgid "Grouping"
+msgstr "Ομαδοποίηση"
+
+#: kcachegrind/toplevel.cpp:671
+#, kde-format
+msgid "Select how functions are grouped into higher level cost items"
+msgstr ""
+"Επιλογή του τρόπου ομαδοποίησης συναρτήσεων σε ανώτερου επιπέδου αντικείμενα "
+"κόστους"
+
+#: kcachegrind/toplevel.cpp:677
+#, kde-format
+msgid "(No Grouping)"
+msgstr "(Χωρίς ομαδοποίηση)"
+
+#: kcachegrind/toplevel.cpp:689
+#, kde-format
+msgid "Split"
+msgstr "Διαίρεση"
+
+#: kcachegrind/toplevel.cpp:692
+#, kde-format
+msgid "Show two information panels"
+msgstr "Εμφάνιση δύο πινάκων πληροφοριών"
+
+#: kcachegrind/toplevel.cpp:698
+#, kde-format
+msgid "Split Horizontal"
+msgstr "Διαίρεση οριζόντια"
+
+#: kcachegrind/toplevel.cpp:701
+#, kde-format
+msgid "Change Split Orientation when main window is split."
+msgstr ""
+"Αλλαγή προσανατολισμού διαίρεσης όταν το κύριο παράθυρο είναι διαιρεμένο."
+
+#: kcachegrind/toplevel.cpp:898
+#, kde-format
+msgid "Select Callgrind Profile Data"
+msgstr "Επιλογή δεδομένων προφίλ Callgrind"
+
+#: kcachegrind/toplevel.cpp:900 kcachegrind/toplevel.cpp:968
+#, kde-format
+msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
+msgstr ""
+"Callgrind δεδομένα προφίλ (cachegrind.out* callgrind.out*);;Όλα τα αρχεία (*)"
+
+#: kcachegrind/toplevel.cpp:928 kcachegrind/toplevel.cpp:957
+#, kde-format
+msgid ""
+"Could not open the file \"%1\". Check it exists and you have enough "
+"permissions to read it."
+msgstr ""
+"Αδυναμία ανοίγματος του αρχείου \"%1\". Ελέγξτε αν υπάρχει και αν έχετε "
+"επαρκή δικαιώματα για να το διαβάσετε."
+
+#: kcachegrind/toplevel.cpp:966
+#, kde-format
+msgid "Add Callgrind Profile Data"
+msgstr "Προσθήκη δεδομένων προφίλ Callgrind"
+
+#: kcachegrind/toplevel.cpp:1136 kcachegrind/toplevel.cpp:1465
+#, kde-format
+msgid "(Hidden)"
+msgstr "(Κρυφό)"
+
+#: kcachegrind/toplevel.cpp:1522
+#, kde-format
+msgid "Hide"
+msgstr "Απόκρυψη"
+
+#: kcachegrind/toplevel.cpp:1564
+#, kde-format
+msgid "Show Absolute Cost"
+msgstr "Εμφάνιση απόλυτου κόστους"
+
+#: kcachegrind/toplevel.cpp:1567
+#, kde-format
+msgid "Show Relative Cost"
+msgstr "Εμφάνιση σχετικού κόστους"
+
+#: kcachegrind/toplevel.cpp:1599
+#, kde-format
+msgid "Go Back"
+msgstr "Μετάβαση πίσω"
+
+#: kcachegrind/toplevel.cpp:1600
+#, kde-format
+msgid "Go Forward"
+msgstr "Μετάβαση μπροστά"
+
+#: kcachegrind/toplevel.cpp:1601
+#, kde-format
+msgid "Go Up"
+msgstr "Μετάβαση πάνω"
+
+#: kcachegrind/toplevel.cpp:1813
+#, kde-format
+msgid "Layout Count: %1"
+msgstr "Αριθμός διατάξεων: %1"
+
+#: kcachegrind/toplevel.cpp:1820
+#, kde-format
+msgid "No profile data file loaded."
+msgstr "Δε φορτώθηκε αρχείο δεδομένων προφίλ."
+
+#: kcachegrind/toplevel.cpp:1829
+#, kde-format
+msgid "Total %1 Cost: %2"
+msgstr "Σύνολο %1 Κόστος: %2"
+
+#: kcachegrind/toplevel.cpp:1841
+#, kde-format
+msgid "No event type selected"
+msgstr "Δεν επιλέχθηκε τύπος γεγονότος"
+
+#: kcachegrind/toplevel.cpp:2027
+#, kde-format
+msgid "Cannot determine receiver PID for dump request"
+msgstr "Αδυναμία προσδιορισμού του PID του λήπτη για την αποτύπωση αίτησης"
+
+#: kcachegrind/toplevel.cpp:2068
+#, kde-format
+msgid "Error running callgrind_control"
+msgstr "Σφάλμα εκτέλεσης callgrind_control"
+
+#: kcachegrind/toplevel.cpp:2107 kcachegrind/toplevel.cpp:2144
+#: kcachegrind/toplevel.cpp:2181
+#, kde-format
+msgid "(No Stack)"
+msgstr "(Χωρίς στοίβα)"
+
+#: kcachegrind/toplevel.cpp:2113
+#, kde-format
+msgid "(No next function)"
+msgstr "(Χωρίς επόμενη συνάρτηση)"
+
+#: kcachegrind/toplevel.cpp:2150
+#, kde-format
+msgid "(No previous function)"
+msgstr "(Χωρίς προηγούμενη συνάρτηση)"
+
+#: kcachegrind/toplevel.cpp:2186
+#, kde-format
+msgid "(No Function Up)"
+msgstr "(Χωρίς άνω συνάρτηση)"
+
+#: kcachegrind/toplevel.cpp:2318 kcachegrind/toplevel.cpp:2332
+#, kde-format
+msgid "Loading %1"
+msgstr "Φόρτωση %1"
+
+#: kcachegrind/toplevel.cpp:2326
+#, kde-format
+msgid "Error loading %1: %2"
+msgstr "Σφάλμα φόρτωσης %1: %2"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, kde-format
+msgid ""
+"<p>...that the <em>What's this...</em> help for every GUI widget\n"
+"in KCachegrind contains detailed usage information for this widget?\n"
+"It is highly recommend to read at least these help texts on first\n"
+"use. Request <em>What's this...</em> help by pressing\n"
+"Shift-F1 and clicking on the widget.</p>\n"
+msgstr ""
+"<p>...ότι η βοήθεια <em>Τι είναι αυτό;</em> για κάθε γραφικό συστατικό του \n"
+"KCachegrind περιέχει αναλυτικές πληροφορίες χρήσης για το συστατικό;\n"
+"Προτείνεται να διαβάσετε αυτά τα βοηθητικά κείμενα τουλάχιστον κατά την\n"
+"πρώτη χρήση. Ζητήστε τη βοήθεια <em>Τι είναι αυτό;</em> πατώντας\n"
+"Shift-F1 και κάνοντας κλικ στο γραφικό συστατικό.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:12
+#, kde-format
+msgid ""
+"<p>...that you can get profile information at instruction level\n"
+"with Calltree when you provide the option <em>--dump-instr=yes</em>?\n"
+"Use the Assembler View for the instruction annotations.\n"
+"</p>\n"
+msgstr ""
+"<p>...ότι μπορείτε να ανακτήσετε πληροφορίες του προφίλ σε επίπεδο εντολών\n"
+"με το Calltree όταν δώσετε την επιλογή <em>--dump-instr=yes</em>;\n"
+"Χρησιμοποιήστε την προβολή τελεστών κώδικα μηχανής για σημειώσεις εντολών.\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:21
+#, kde-format
+msgid ""
+"<p>...that you can use Alt-Left/Right keys of your keyboard to go\n"
+"back/forward in the active object history ?</p>\n"
+msgstr ""
+"<p>...ότι μπορείτε να χρησιμοποιήσετε το πλήκτρα Alt-αριστερά/δεξιά του "
+"πληκτρολογίου σας\n"
+"για να κινηθείτε πίσω/μπροστά στο ιστορικό του ενεργού αντικειμένου;</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>...that you can navigate in the Callee/Caller Map View using\n"
+"arrow keys? Use Left/Right to change to siblings of the current\n"
+"item; use Up/Down to go one nesting level up/down. To select\n"
+"the current item, press Space, and to activate it, press Return.\n"
+"</p>\n"
+msgstr ""
+"<p>...ότι μπορείτε να περιηγηθείτε στην προβολή χάρτη κληθέντων/κλήσεων\n"
+"χρησιμοποιώντας τα βέλη του πληκτρολογίου; Με αριστερό/δεξί για μετάβαση "
+"σε \n"
+"απογόνους του τρέχοντος αντικειμένου, με πάνω/κάτω για μετάβαση σε "
+"διαφορετικό βάθος.\n"
+"Για επιλογή του τρέχοντος αντικειμένου πατήστε το Space, και για "
+"ενεργοποίηση το Enter.\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:38
+#, kde-format
+msgid ""
+"<p>...that you can navigate in the Call Graph View using\n"
+"arrow keys? Use Up/Down to go one calling level up/down, alternating\n"
+"between calls and functions. Use Left/Right to change to siblings of a "
+"current\n"
+"selected call. To activate the current item, press Return.\n"
+"</p>\n"
+msgstr ""
+"<p>...ότι μπορείτε να περιηγηθείτε στην προβολή του γραφήματος κλήσεων\n"
+" χρησιμοποιώντας τα βέλη του πληκτρολογίου; Χρησιμοποιήστε τα πάνω/κάτω για\n"
+"να μεταβείτε ένα επίπεδο κλήσης πάνω/κάτω και το αριστερό/δεξί για μετάβαση "
+"στους\n"
+"απογόνους της τρέχουσας επιλεγμένης κλήσης. Για ενεργοποίηση του τρέχοντος "
+"αντικειμένου, πατήστε το Enter.\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:48
+#, kde-format
+msgid ""
+"<p>...that you can rapidly locate a function by entering part of its\n"
+"name (case-insensitive) into the edit line of the toolbar\n"
+"and hit return?</p>\n"
+msgstr ""
+"<p>...ότι μπορείτε να εντοπίσετε γρήγορα μια συνάρτηση εισάγοντας τμήμα\n"
+"του ονόματός της (ευαισθησία σε πεζά/κεφαλαία) στη γραμμή επεξεργασίας\n"
+"της γραμμής εργαλείων και πατώντας το Enter;</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:56
+#, kde-format
+msgid ""
+"<p>...that you can assign custom colors to \n"
+"ELF objects/C++ Classes/Source Files for graph coloring\n"
+"in <em>Settings->Configure KCachegrind...</em>?</p>\n"
+msgstr ""
+"<p>...ότι μπορείτε να αντιστοιχίσετε προσαρμοσμένα χρώματα\n"
+"σε αντικείμενα ELF/κλάσεις C++/αρχεία πηγαίου κώδικα για το χρωματισμό\n"
+"γραφήματος στις <em>Ρυθμίσεις->Διαμόρφωση KCachegrind...</em>;</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:64
+#, kde-format
+msgid ""
+"<p>...that you can see if debug info is available for a selected \n"
+"function by looking at the location label in the Info tab or\n"
+"the source listing header in the source tab?</p>\n"
+"<p>There must be the name of the source file (with extension).\n"
+"If KCachegrind still does not show the source, make sure that you\n"
+"have added the directory of the source file to the\n"
+"<em>Source Directories</em> list in the configuration.\n"
+msgstr ""
+"<p>...ότι μπορείτε να δείτε αν πληροφορίες αποσφαλμάτωσης είναι διαθέσιμες \n"
+"για την επιλεγμένη συνάρτηση βλέποντας την ετικέτα τοποθεσίας στη καρτέλα \n"
+"πληροφοριών ή την επικεφαλίδα του πηγαίου κώδικα στην καρτέλα πηγαίου κώδικα;"
+"</p>\n"
+"<p>Πρέπει να υπάρχει το όνομα του αρχείου πηγαίου κώδικα (με επέκταση).\n"
+"Αν το KCachegrind συνεχίζει να μην εμφανίζει τον κώδικα, σιγουρευτείτε ότι\n"
+"έχετε προσθέσει τον κατάλογο του κώδικα στη λίστα \n"
+"<em>Καταλόγων πηγαίου κώδικα</em> στη διαμόρφωση.\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:76
+#, kde-format
+msgid ""
+"<p>...that you can configure whether KCachgrind should\n"
+"show absolute event counts or relative ones (percentage display)?</p>\n"
+msgstr ""
+"<p>...ότι μπορείτε να διαμορφώσετε αν θέλετε το KCachgrind να εμφανίζει\n"
+"απόλυτες μετρήσεις γεγονότων ή σχετικές (εμφάνιση ποσοστού);</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:83
+#, kde-format
+msgid ""
+"<p>...that you can configure the maximum number of items\n"
+"for all function lists in KCachegrind? Limiting the number\n"
+"of items is done to get a fast reacting GUI. The last item in\n"
+"the list will show you the number of skipped functions, together\n"
+"with a cost condition for these skipped functions.</p>\n"
+"<p>To activate a function with small costs, search for it and select\n"
+"it in the flat profile. Selecting functions with small cost will\n"
+"temporarily add them to the flat profile list.</p>\n"
+msgstr ""
+"<p>...ότι μπορείτε να διαμορφώσετε το μέγιστο αριθμό αντικειμένων\n"
+"για όλες τις λίστες συναρτήσεων του KCachegrind; Περιορίζοντας τον αριθμό\n"
+"αυτό γίνεται γρηγορότερη η λειτουργία αντίδρασης του γραφικού "
+"περιβάλλοντος. \n"
+"Το τελευταίο αντικείμενο της λίστας θα σας εμφανίζει τον αριθμό των "
+"συναρτήσεων που\n"
+"παραλείφθηκαν συνοδευόμενο με έναν μετρητή συνθηκών για αυτές τις "
+"συναρτήσεις.</p>\n"
+"<p>Για ενεργοποίηση μιας συνάρτησης με μικρό κόστος, αναζητήστε τις στο "
+"επίπεδο\n"
+"προφίλ. Επιλέγοντας συναρτήσεις με μικρό κόστος θα προστεθούν προσωρινά στο "
+"επίπεδο προφίλ.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>...that the Coverage tab - in contrast to the Call Lists tab -\n"
+"shows <em>all</em> functions that are calling the selected function\n"
+"(upper part) / are called by the selected function (bottom part),\n"
+"no matter how many function are between them on the stack?</p>\n"
+"<p>Examples:</p>\n"
+"<p>An entry in the upper list for function foo1() with a value of 50%\n"
+"with function bar() selected means that 50% of all the cost of function\n"
+"bar() happened while called from function foo1().</p>\n"
+"<p>An entry in the bottom list for function foo2() with a value of 50%\n"
+"with function bar() selected means that 50% of all the cost of function\n"
+"bar() happened while calling foo2() from bar().</p>\n"
+msgstr ""
+"<p>...ότι η καρτέλα κάλυψης - σε αντίθεση με την καρτέλα λίστας κλήσεων -\n"
+"εμφανίζει <em>όλες</em> τις συναρτήσεις που καλούν την επιλεγμένη συνάρτηση\n"
+"(πάνω τμήμα) / και καλούνται από την επιλεγμένη συνάρτηση (κάτω τμήμα),\n"
+"χωρίς να παίζει ρόλο ο αριθμός συναρτήσεων που βρίσκονται ανάμεσά τους στη "
+"στοίβα;</p>\n"
+"<p>Παραδείγματα:</p>\n"
+"<p>Μια καταχώρηση στην πάνω λίστα για τη συνάρτηση foo1() με μια τιμή 50%\n"
+"με επιλεγμένη τη συνάρτηση bar() σημαίνει ότι το 50% του κόστους της "
+"συνάρτησης\n"
+"bar() συνέβη κατά τις κλήσεις της συνάρτησης foo1().</p>\n"
+"<p>Μια καταχώρηση στην κάτω λίστα για τη συνάρτηση foo2() με μια τιμή 50%\n"
+"με επιλεγμένη τη συνάρτηση bar() σημαίνει ότι το 50% του κόστους της "
+"συνάρτησης\n"
+"bar() συνέβη κατά την κλήση της foo2() από την bar().</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:112
+#, kde-format
+msgid ""
+"<p>...that waiting for the tool tip inside of a tree map\n"
+"shows the list of names of the nested rectangles the mouse\n"
+"pointer is over?</p>\n"
+"<p>Items from this list can be selected by pressing the right\n"
+"mouse button.</p>\n"
+msgstr ""
+"<p>...ότι περιμένοντας για το εργαλείο συμβουλών μέσα σε ένα "
+"δενδροδιάγραμμα\n"
+"εμφανίζει μια λίστα με τα ονόματα των ορθογωνίων που βρίσκονται από κάτω στο "
+"σημείο\n"
+"που βρίσκεται το ποντίκι;</p>\n"
+"<p>Αντικείμενα αυτής της λίστας μπορούν να επιλεχθούν πατώντας το δεξί "
+"κουμπί \n"
+"του ποντικιού.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:122
+#, kde-format
+msgid ""
+"<p>...that you can constrain the cost counts shown to only a\n"
+"few parts of the whole trace by selecting these parts in the\n"
+"\"Trace Selection\" Dockable?</p>\n"
+"<p>To generate multiple parts in a profiling run with\n"
+"cachegrind, use e.g. option --cachedumps=xxx for parts\n"
+"of a length of xxx basic blocks (A basic block is a run\n"
+"of not-branching assembler statements inside of your program\n"
+"code).</p>\n"
+msgstr ""
+"<p>...ότι μπορείτε να περιορίσετε τους μετρητές κόστους που \n"
+"εμφανίζονται μόνο σε μικρά τμήματα όλου του ίχνους επιλέγοντας τα τμήματα\n"
+"αυτά στην προσάρτηση \"Επιλογής ίχνους\";</p>\n"
+"<p>Για τη δημιουργία πολλών τμημάτων κατά την εκτέλεση του προφίλ με το\n"
+"cachegrind, χρησιμοποιήστε π.χ. την επιλογή --cachedumps=xxx για τμήματα\n"
+"βασικού μήκους xxx (Ένα βασικό τμήμα είναι μια εκτέλεση \n"
+"εντολών κώδικα μηχανής χωρίς κλάδους μέσα στο πρόγραμμά\n"
+"σας).</p>\n"
+
+#~ msgid "&OK"
+#~ msgstr "&Εντάξει"
+
+#~ msgid "&Cancel"
+#~ msgstr "&Ακύρωση"
+
+#~ msgid "Source Files"
+#~ msgstr "Αρχεία πηγαίου κώδικα"
+
+#~ msgid "C++ Classes"
+#~ msgstr "Κλάσεις C++"
+
+#~ msgid "Function (no Grouping)"
+#~ msgstr "Συνάρτηση (χωρίς ομαδοποίηση)"
+
+#~ msgid "KCachegrind Configuration"
+#~ msgstr "Ρυθμίσεις KCachegrind"
+
+#~ msgid "(Placeholder for list of event types)"
+#~ msgstr "(Αντικαταστάτης για λίστα τύπων γεγονότος)"
+
+#~ msgid "Active call to '%1'"
+#~ msgstr "Ενεργή κλήση στο '%1'"
+
+#~ msgid "%1 call to '%2'"
+#~ msgid_plural "%1 calls to '%2'"
+#~ msgstr[0] "%1 κλήση στο '%2'"
+#~ msgstr[1] "%1 κλήσεις στο '%2'"
+
+#~ msgid "Jump %1 of %2 times to 0x%3"
+#~ msgstr "Άλμα %1 από %2 φορές στο 0x%3"
+
+#~ msgid "Jump %1 times to 0x%2"
+#~ msgstr "Άλμα %1 φορές στο 0x%2"
+
+#~ msgid "(cycle)"
+#~ msgstr "(κύκλος)"
+
+#~ msgid "Abstract Item"
+#~ msgstr "Αφηρημένο αντικείμενο"
+
+#~ msgid "Cost Item"
+#~ msgstr "Αντικείμενο κόστους"
+
+#~ msgid "Part Source Line"
+#~ msgstr "Τμήμα γραμμή πηγαίου κώδικα"
+
+#~ msgid "Source Line"
+#~ msgstr "Γραμμή πηγαίου κώδικα"
+
+#~ msgid "Part Line Call"
+#~ msgstr "Τμήμα γραμμή κλήσης"
+
+#~ msgid "Line Call"
+#~ msgstr "Γραμμή κλήσης"
+
+#~ msgid "Part Jump"
+#~ msgstr "Τμήμα άλμα"
+
+#~ msgid "Jump"
+#~ msgstr "Άλμα"
+
+#~ msgid "Part Instruction"
+#~ msgstr "Τμήμα εντολή"
+
+#~ msgid "Instruction"
+#~ msgstr "Εντολή"
+
+#~ msgid "Part Instruction Jump"
+#~ msgstr "Τμήμα εντολή άλματος"
+
+#~ msgid "Instruction Jump"
+#~ msgstr "Εντολή άλματος"
+
+#~ msgid "Part Instruction Call"
+#~ msgstr "Τμήμα εντολή κλήσης"
+
+#~ msgid "Instruction Call"
+#~ msgstr "Εντολή κλήσης"
+
+#~ msgid "Part Call"
+#~ msgstr "Τμήμα κλήση"
+
+#~ msgid "Call"
+#~ msgstr "Κλήση"
+
+#~ msgid "Part Function"
+#~ msgstr "Τμήμα συνάρτηση"
+
+#~ msgid "Function Source File"
+#~ msgstr "Αρχείο πηγαίου κώδικα συνάρτησης"
+
+#~ msgid "Function Cycle"
+#~ msgstr "Κύκλος συνάρτησης"
+
+#~ msgid "Part Class"
+#~ msgstr "Τμήμα κλάση"
+
+#~ msgid "Class"
+#~ msgstr "Κλάση"
+
+#~ msgid "Part Source File"
+#~ msgstr "Τμήμα αρχείο πηγαίου κώδικα"
+
+#~ msgid "Source File"
+#~ msgstr "Αρχείο πηγαίου κώδικα"
+
+#~ msgid "Part ELF Object"
+#~ msgstr "Τμήμα αντικείμενο ELF"
+
+#~ msgid "ELF Object"
+#~ msgstr "Αντικείμενο ELF"
+
+#~ msgid "Profile Part"
+#~ msgstr "Τμήμα προφίλ"
+
+#~ msgid "Program Trace"
+#~ msgstr "Ανίχνευση προγράμματος"
+
+#~ msgid "%1 from %2"
+#~ msgstr "%1 από %2"
+
+#~ msgid "(unknown)"
+#~ msgstr "(άγνωστο)"
+
+#~ msgid "(no caller)"
+#~ msgstr "(χωρίς κλήση)"
+
+#~ msgid "%1 via %2"
+#~ msgstr "%1 μέσω %2"
+
+#~ msgid "(no callee)"
+#~ msgstr "(χωρίς κληθέν)"
+
+#~ msgid "(not found)"
+#~ msgstr "(δε βρέθηκε)"
+
+#~ msgid "Recalculating Function Cycles..."
+#~ msgstr "Επαναϋπολογισμός κύκλων συνάρτησης..."
+
+#~ msgctxt "A thing's name"
+#~ msgid "Name"
+#~ msgstr "Όνομα"
+
+#~ msgid "Cost"
+#~ msgstr "Κόστος"
+
+#~ msgid "Profile Part Overview: Current is '%1'"
+#~ msgstr "Τμήμα προφίλ περίληψη: Το τρέχον είναι '%1'"
+
+#~ msgid "Deselect '%1'"
+#~ msgstr "Αποεπιλογή '%1'"
+
+#~ msgid "Select '%1'"
+#~ msgstr "Επιλογή '%1'"
+
+#~ msgid "Select All Parts"
+#~ msgstr "Επιλογή όλων των τμημάτων"
+
+#~ msgid "Visible Parts"
+#~ msgstr "Ορατά τμήματα"
+
+#~ msgid "Hide Selected Parts"
+#~ msgstr "Απόκρυψη επιλεγμένων τμημάτων"
+
+#~ msgid "Unhide Hidden Parts"
+#~ msgstr "Αναίρεση απόκρυψης κρυφών τμημάτων"
+
+#~ msgid "Go to '%1'"
+#~ msgstr "Μετάβαση στο '%1'"
+
+#~ msgid "Visualization"
+#~ msgstr "Αναπαράσταση"
+
+#~ msgid "Partitioning Mode"
+#~ msgstr "Λειτουργία τμηματοποίησης"
+
+#~ msgid "Diagram Mode"
+#~ msgstr "Λειτουργία διαγράμματος"
+
+#~ msgid "Zoom Function"
+#~ msgstr "Εστίαση συνάρτησης"
+
+#~ msgid "Show Direct Calls"
+#~ msgstr "Εμφάνιση άμεσων κλήσεων"
+
+#~ msgid "Increment Shown Call Levels"
+#~ msgstr "Αύξηση εμφανιζόμενων επιπέδων κλήσης"
+
+#~ msgid "Draw Names"
+#~ msgstr "Σχεδίαση ονομάτων"
+
+#~ msgid "Draw Costs"
+#~ msgstr "Σχεδίαση κοστών"
+
+#~ msgid "Ignore Proportions"
+#~ msgstr "Παράβλεψη αναλογιών"
+
+#~ msgid "Draw Frames"
+#~ msgstr "Σχεδίαση πλαισίων"
+
+#~ msgid "Allow Rotation"
+#~ msgstr "Επιτρέπεται περιστροφή"
+
+#~ msgid "Hide Info"
+#~ msgstr "Απόκρυψη πληροφοριών"
+
+#~ msgid "Show Info"
+#~ msgstr "Εμφάνιση πληροφοριών"
+
+#~ msgid "(no trace loaded)"
+#~ msgstr "(δε φορτώθηκε ίχνος)"
+
+#~ msgid "Jump %1 of %2 times to %3"
+#~ msgstr "Άλμα %1 από %2 φορές στο %3"
+
+#~ msgid "Jump %1 times to %2"
+#~ msgstr "Άλμα %1 φορές στο %2"
+
+#~ msgid "(%1 item skipped)"
+#~ msgid_plural "(%1 items skipped)"
+#~ msgstr[0] "(%1 αντικείμενο παραλείφθηκε)"
+#~ msgstr[1] "(%1 αντικείμενα παραλείφθηκαν)"
+
+#~ msgid "No description available"
+#~ msgstr "Χωρίς διαθέσιμη περιγραφή"
+
+#~ msgid ""
+#~ "<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+#~ "there are several profile data files from one profile run. The Trace Part "
+#~ "Overview dockable shows these, horizontally ordered in execution time; "
+#~ "the rectangle sizes are proportional to the total cost spent in the "
+#~ "parts. You can select one or several parts to constrain all costs shown "
+#~ "to these parts only.</p><p>The parts are further subdivided: there is a "
+#~ "partitioning and an callee split mode: <ul><li>Partitioning: You see the "
+#~ "partitioning into groups for a trace part, according to the group type "
+#~ "selected. E.g. if ELF object groups are selected, you see colored "
+#~ "rectangles for each used ELF object (shared library or executable), sized "
+#~ "according to the cost spent therein.</li><li>Callee: A rectangle showing "
+#~ "the inclusive cost of the current selected function in the trace part is "
+#~ "shown. This is split up into smaller rectangles to show the costs of its "
+#~ "callees.</li></ul></p>"
+#~ msgstr ""
+#~ "<b>Η περίληψη τμημάτων</b><p>Ένα ίχνος αποτελείται από πολλά τμήματα "
+#~ "ίχνους όταν υπάρχουν πολλά αρχεία δεδομένων προφίλ από μια εκτέλεση "
+#~ "προφίλ. Η προσάρτηση περίληψης τμημάτων ίχνους εμφανίζει αυτά, οριζόντια "
+#~ "ταξινομημένα με το χρόνο εκτέλεσης, Το μέγεθος των ορθογωνίων είναι "
+#~ "ανάλογα με το συνολικό κόστος που ξοδεύεται στα τμήματα. Μπορείτε να "
+#~ "επιλέξετε ένα ή περισσότερα τμήματα για να προσαρμόσετε όλα τα κόστη που "
+#~ "εμφανίζονται μόνο σε αυτά τα τμήματα.</p><p>Τα τμήματα υποδιαιρούνται "
+#~ "επιπλέον: υπάρχει μια λειτουργία τμηματοποίησης και μια λειτουργία "
+#~ "κληθέντων: <ul><li>Τμηματοποίηση: Βλέπετε την τμηματοποίηση σε ομάδες "
+#~ "ενός τμήματος ίχνους, σύμφωνα με τον τύπο της ομάδας που έχει επιλεγεί. Π."
+#~ "χ. αν είναι επιλεγμένες ομάδες αντικειμένων ELF, θα δείτε χρωματιστά "
+#~ "ορθογώνια για κάθε αντικείμενο ELF (κοινόχρηστη βιβλιοθήκη ή εκτελέσιμο), "
+#~ "με μέγεθος σύμφωνα με το κόστος που ξοδεύτηκε μέσα σε αυτό.</"
+#~ "li><li>Κληθέντα: Ένα ορθογώνιο εμφανίζει το προσθετικό κόστος της "
+#~ "τρέχουσας επιλεγμένης συνάρτησης στο τμήμα ίχνους που εμφανίζεται. Αυτό "
+#~ "χωρίζεται σε μικρότερα ορθογώνια σε μικρότερα που αναπαριστούν τα κόστη "
+#~ "των κληθέντων.</li></ul></p>"
+
+#~ msgid ""
+#~ "<b>The Flat Profile</b><p>The flat profile contains a group and a "
+#~ "function selection list. The group list contains all groups where costs "
+#~ "are spent in, depending on the chosen group type. The group list is "
+#~ "hidden when group type 'Function' is selected.</p><p>The function list "
+#~ "contains the functions of the selected group (or all for 'Function' group "
+#~ "type), ordered by the costs spent therein. Functions with costs less than "
+#~ "1% are hidden on default.</p>"
+#~ msgstr ""
+#~ "<b>Επίπεδο προφίλ</b><p>Το επίπεδο προφίλ περιέχει μια ομάδα και μια "
+#~ "λίστα επιλογής συναρτήσεων. Η λίστα ομάδων περιέχει όλες τις ομάδες όπου "
+#~ "ξοδεύτηκαν κόστη, ανάλογα με τον επιλεγμένο τύπο ομάδας. Η λίστα ομάδας "
+#~ "είναι κρυφή όταν ο τύπος ομάδας είναι 'Συνάρτηση'.</p><p>Η λίστα "
+#~ "συναρτήσεων περιέχει τις συναρτήσεις της επιλεγμένης ομάδας (ή όλες για "
+#~ "τύπο ομάδας 'Συνάρτηση'), ταξινομημένες με τα κόστη τους. Συναρτήσεις με "
+#~ "κόστος μικρότερο από 1% αποκρύπτονται εξ ορισμού.</p>"
+
+#~ msgid "Show Relative Costs"
+#~ msgstr "Εμφάνιση σχετικού κόστους"
+
+#~ msgid "Show Absolute Costs"
+#~ msgstr "Εμφάνιση απόλυτου κόστους"
+
+#~ msgid "Skip Cycle Detection"
+#~ msgstr "Αποφυγή ανίχνευσης κύκλων"
+
+#~ msgid "Cost 2"
+#~ msgstr "Κόστος 2"
+
+#~ msgid "Hex"
+#~ msgstr "Δεκαεξαδικό"
+
+#~ msgid "Assembler"
+#~ msgstr "Γλώσσα τελεστών κώδικα μηχανής"
+
+#~ msgid "Source Position"
+#~ msgstr "Θέση πηγαίου κώδικα"
+
+#~ msgid ""
+#~ "<b>Annotated Assembler</b><p>The annotated assembler list shows the "
+#~ "machine code instructions of the current selected function together with "
+#~ "(self) cost spent while executing an instruction. If this is a call "
+#~ "instruction, lines with details on the call happening are inserted into "
+#~ "the source: the cost spent inside of the call, the number of calls "
+#~ "happening, and the call destination.</p><p>The disassembler output shown "
+#~ "is generated with the 'objdump' utility from the 'binutils' package.</"
+#~ "p><p>Select a line with call information to make the destination function "
+#~ "of this call current.</p>"
+#~ msgstr ""
+#~ "<b>Επισήμανση τελεστών κώδικα μηχανής</b><p>Η λίστα αυτή εμφανίζει τις "
+#~ "εντολές του κώδικα μηχανής της τρέχουσας επιλεγμένης συνάρτησης μαζί με "
+#~ "το (ίδιο) κόστος που ξοδεύτηκε κατά την εκτέλεση της εντολής. Αν "
+#~ "πρόκειται για μια εντολή κλήσης, εισάγονται στον κώδικα γραμμές με "
+#~ "λεπτομέρειες της κλήσης, το κόστος μέσα στην κλήση, ο αριθμός κλήσεων και "
+#~ "ο προορισμός κλήσης.</p><p>Η έξοδος τελεστών κώδικα μηχανής που "
+#~ "εμφανίζεται, δημιουργείται με το εργαλείο 'objdump' από το πακέτο "
+#~ "'binutils'.</p><p>Επιλέξτε μια γραμμή πληροφοριών κλήσης για να ορίσετε "
+#~ "τη συνάρτηση προορισμού τρέχουσα.</p>"
+
+#~ msgid "Go to Address %1"
+#~ msgstr "Μετάβαση στη διεύθυνση %1"
+
+#~ msgid "Hex Code"
+#~ msgstr "Δεκαεξαδικός κώδικας"
+
+#~ msgid "There is no instruction info in the profile data file."
+#~ msgstr "Δεν υπάρχουν πληροφορίες εντολών στο αρχείο δεδομένων προφίλ."
+
+#~ msgid "For the Valgrind Calltree Skin, rerun with option"
+#~ msgstr "Για το Valgrind Calltree, εκτελέστε ξανά με την επιλογή"
+
+#~ msgid "      --dump-instr=yes"
+#~ msgstr "      --dump-instr=yes"
+
+#~ msgid "To see (conditional) jumps, additionally specify"
+#~ msgstr "Για να δείτε τα άλματα (υπό συνθήκη), προσθέστε επίσης"
+
+#~ msgid "      --trace-jump=yes"
+#~ msgstr "      --trace-jump=yes"
+
+#~ msgid "There is an error trying to execute the command"
+#~ msgstr "Υπήρξε σφάλμα κατά την προσπάθεια εκτέλεσης της εντολής"
+
+#~ msgid "Check that you have installed 'objdump'."
+#~ msgstr "Ελέγξτε ότι έχετε εγκατεστημένο το 'objdump'."
+
+#~ msgid "This utility can be found in the 'binutils' package."
+#~ msgstr "Αυτό το εργαλείο μπορεί να βρεθεί στο πακέτο 'binutils'."
+
+#~ msgid "(No Assembler)"
+#~ msgstr "(Χωρίς γλώσσα τελεστών μηχανής)"
+
+#~ msgid "There is %1 cost line without assembler code."
+#~ msgid_plural "There are %1 cost lines without assembler code."
+#~ msgstr[0] "Υπάρχει %1 γραμμή κόστους χωρίς κώδικα τελεστών μηχανής."
+#~ msgstr[1] "Υπάρχουν %1 γραμμές κόστους χωρίς κώδικα τελεστών μηχανής."
+
+#~ msgid "This happens because the code of"
+#~ msgstr "Αυτό συμβαίνει γιατί ο κώδικας του"
+
+#~ msgid "does not seem to match the profile data file."
+#~ msgstr "δε φαίνεται να ταιριάζει με το αρχείο δεδομένων προφίλ."
+
+#~ msgid "Are you using an old profile data file or is the above mentioned"
+#~ msgstr "Χρησιμοποιείτε ένα παλιό αρχείο δεδομένων προφίλ ή το παραπάνω"
+
+#~ msgid "ELF object from an updated installation/another machine?"
+#~ msgstr "αντικείμενο ELF προέρχεται από μια νέα εγκατάσταση/άλλη μηχανή;"
+
+#~ msgid "There seems to be an error trying to execute the command"
+#~ msgstr ""
+#~ "Φαίνεται να υπάρχει ένα σφάλμα κατά την προσπάθεια εκτέλεσης της εντολής"
+
+#~ msgid "Check that the ELF object used in the command exists."
+#~ msgstr "Ελέγξτε ότι το αντικείμενο ELF που χρησιμοποιείται υπάρχει."
+
+#~ msgid "Call(s) from %1"
+#~ msgstr "Κλήση(εις) από %1"
+
+#~ msgid "Call(s) to %1"
+#~ msgstr "Κλήση(εις) στο %1"
+
+#~ msgid "(unknown call)"
+#~ msgstr "(άγνωστη κλήση)"
+
+#~ msgid ""
+#~ "<b>Call Graph around active Function</b><p>Depending on configuration, "
+#~ "this view shows the call graph environment of the active function. Note: "
+#~ "the shown cost is <b>only</b> the cost which is spent while the active "
+#~ "function was actually running; i.e. the cost shown for main() - if it is "
+#~ "visible - should be the same as the cost of the active function, as that "
+#~ "is the part of inclusive cost of main() spent while the active function "
+#~ "was running.</p><p>For cycles, blue call arrows indicate that this is an "
+#~ "artificial call added for correct drawing which actually never happened.</"
+#~ "p><p>If the graph is larger than the widget area, an overview panner is "
+#~ "shown in one edge. There are similar visualization options to the Call "
+#~ "Treemap; the selected function is highlighted.</p>"
+#~ msgstr ""
+#~ "<b>Γράφημα κλήσεων της ενεργού συνάρτησης</b><p>Ανάλογα με τις ρυθμίσεις, "
+#~ "αυτή η προβολή εμφανίζει το γράφημα κλήσεων του περιβάλλοντος της ενεργού "
+#~ "συνάρτησης. Σημείωση: το εμφανιζόμενο κόστος είναι <b>μόνο</b> το κόστος "
+#~ "που πραγματικά ξοδεύτηκε κατά την εκτέλεση της ενεργού συνάρτησης, π.χ. "
+#~ "το κόστος για τη main() - αν είναι ορατό - θα πρέπει να είναι το ίδιο με "
+#~ "το κόστος της ενεργού συνάρτησης, εφόσον αυτό είναι το τμήμα του "
+#~ "αθροιστικού κόστους της main() κατά την εκτέλεση της ενεργού συνάρτησης.</"
+#~ "p><p>Για τους κύκλους, τα μπλε βέλη κλήσης δηλώνουν ότι είναι τεχνικές "
+#~ "κλήσεις που προστέθηκαν για το σωστό σχεδιασμό και δε συνέβησαν ποτέ.</"
+#~ "p><p>Αν το γράφημα είναι μεγαλύτερο από το μέγεθος του γραφικού "
+#~ "συστατικού, ένα πλαίσιο συνολικής προβολής εμφανίζεται στη μία άκρη. "
+#~ "Υπάρχουν αντίστοιχες επιλογές αναπαράστασης και στο δενδροδιάγραμμα "
+#~ "κλήσεων, για την ενεργή συνάρτηση.</p>"
+
+#~ msgid ""
+#~ "Warning: a long lasting graph layouting is in progress.\n"
+#~ "Reduce node/edge limits for speedup.\n"
+#~ msgstr ""
+#~ "Προειδοποίηση: βρίσκεται σε εκτέλεση μια μακρά διεργασία διάταξης "
+#~ "γραφήματος.\n"
+#~ "Μειώστε τα όρια κόμβων/άκρων για επιτάχυνση της διαδικασίας.\n"
+
+#~ msgid "Layouting stopped.\n"
+#~ msgstr "Η διάταξη σταμάτησε.\n"
+
+#~ msgid "The call graph has %1 nodes and %2 edges.\n"
+#~ msgstr "Το γράφημα κλήσεων έχει %1 κόμβους και %2 άκρα.\n"
+
+#~ msgid "No item activated for which to draw the call graph."
+#~ msgstr "Δεν ενεργοποιήθηκε αντικείμενο για το σχεδιασμό γραφήματος κλήσεων."
+
+#~ msgid "No call graph can be drawn for the active item."
+#~ msgstr "Δεν μπορεί να σχεδιαστεί γράφημα κλήσεων για το ενεργό αντικείμενο."
+
+#~ msgid ""
+#~ "No call graph is available because the following\n"
+#~ "command cannot be run:\n"
+#~ "'%1'\n"
+#~ msgstr ""
+#~ "Δεν είναι διαθέσιμο το γράφημα κλήσεων γιατί η παρακάτω\n"
+#~ "εντολή δεν μπορεί να εκτελεστεί:\n"
+#~ "'%1'\n"
+
+#~ msgid "Please check that 'dot' is installed (package GraphViz)."
+#~ msgstr ""
+#~ "Παρακαλώ ελέγξτε ότι το 'dot' είναι εγκατεστημένο (πακέτο GraphViz)."
+
+#~ msgid "Error running the graph layouting tool.\n"
+#~ msgstr "Σφάλμα κατά την εκτέλεση του εργαλείου διάταξης γραφήματος.\n"
+
+#~ msgid ""
+#~ "There is no call graph available for function\n"
+#~ "\t'%1'\n"
+#~ "because it has no cost of the selected event type."
+#~ msgstr ""
+#~ "Δεν υπάρχει διαθέσιμο γράφημα κλήσεων για τη συνάρτηση\n"
+#~ "\t'%1'\n"
+#~ "επειδή δεν έχει κόστος στον επιλεγμένο τύπο γεγονότος."
+
+#~ msgid "Unlimited"
+#~ msgstr "Απεριόριστο"
+
+#~ msgctxt "Depth 0"
+#~ msgid "None"
+#~ msgstr "Κανένα"
+
+#~ msgid "max. 2"
+#~ msgstr "μέγιστο 2"
+
+#~ msgid "max. 5"
+#~ msgstr "μέγιστο 5"
+
+#~ msgid "max. 10"
+#~ msgstr "μέγιστο 10"
+
+#~ msgid "max. 15"
+#~ msgstr "μέγιστο 15"
+
+#~ msgid "No Minimum"
+#~ msgstr "Χωρίς ελάχιστο"
+
+#~ msgid "50 %"
+#~ msgstr "50 %"
+
+#~ msgid "20 %"
+#~ msgstr "20 %"
+
+#~ msgid "10 %"
+#~ msgstr "10 %"
+
+#~ msgid "5 %"
+#~ msgstr "5 %"
+
+#~ msgid "2 %"
+#~ msgstr "2 %"
+
+#~ msgid "1 %"
+#~ msgstr "1 %"
+
+#~ msgid "Same as Node"
+#~ msgstr "Ίδιο με τον κόμβο"
+
+#~ msgid "50 % of Node"
+#~ msgstr "50 % του κόμβου"
+
+#~ msgid "20 % of Node"
+#~ msgstr "20 % του κόμβου"
+
+#~ msgid "10 % of Node"
+#~ msgstr "10 % του κόμβου"
+
+#~ msgid "Top Left"
+#~ msgstr "Πάνω αριστερά"
+
+#~ msgid "Top Right"
+#~ msgstr "Πάνω δεξιά"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Κάτω αριστερά"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Κάτω δεξιά"
+
+#~ msgid "Top to Down"
+#~ msgstr "Πάνω προς τα κάτω"
+
+#~ msgid "Left to Right"
+#~ msgstr "Αριστερά προς τα δεξιά"
+
+#~ msgid "Circular"
+#~ msgstr "Κυκλικά"
+
+#~ msgid "Stop Layouting"
+#~ msgstr "Σταμάτημα διάταξης"
+
+#~ msgid "As PostScript"
+#~ msgstr "Ως PostScript"
+
+#~ msgid "As Image ..."
+#~ msgstr "Ως εικόνα ..."
+
+#~ msgid "Export Graph"
+#~ msgstr "Εξαγωγή γραφήματος"
+
+#~ msgid "Caller Depth"
+#~ msgstr "Βάθος κλήσης"
+
+#~ msgid "Callee Depth"
+#~ msgstr "Βάθος κληθέντος"
+
+#~ msgid "Min. Node Cost"
+#~ msgstr "Ελάχιστο κόστος κόμβου"
+
+#~ msgid "Min. Call Cost"
+#~ msgstr "Ελάχιστο κόστος κλήσης"
+
+#~ msgid "Arrows for Skipped Calls"
+#~ msgstr "Βέλη για παράλειψη κλήσεων"
+
+#~ msgid "Inner-cycle Calls"
+#~ msgstr "Κλήσεις εσωτερικού κύκλου"
+
+#~ msgid "Cluster Groups"
+#~ msgstr "Ομάδες συστοιχειών"
+
+#~ msgid "Compact"
+#~ msgstr "Συμπαγής"
+
+#~ msgid "Normal"
+#~ msgstr "Κανονικό"
+
+#~ msgid "Tall"
+#~ msgstr "Υψηλό"
+
+#~ msgid "Graph"
+#~ msgstr "Γράφημα"
+
+#~ msgid "Layout"
+#~ msgstr "Διάταξη"
+
+#~ msgid "Birds-eye View"
+#~ msgstr "Προβολή από ψηλά"
+
+#~ msgid "(%1 function skipped)"
+#~ msgid_plural "(%1 functions skipped)"
+#~ msgstr[0] "(%1 συνάρτηση παραλείφθηκε)"
+#~ msgstr[1] "(%1 συναρτήσεις παραλείφθηκαν)"
+
+#~ msgid "Move to Top"
+#~ msgstr "Μετακίνηση πάνω"
+
+#~ msgctxt "Move to Top"
+#~ msgid "Top"
+#~ msgstr "Πάνω"
+
+#~ msgid "Move to Right"
+#~ msgstr "Μετακίνηση δεξιά"
+
+#~ msgctxt "Move to Right"
+#~ msgid "Right"
+#~ msgstr "Δεξιά"
+
+#~ msgid "Move to Bottom"
+#~ msgstr "Μετακίνηση κάτω"
+
+#~ msgctxt "Move to Bottom"
+#~ msgid "Bottom"
+#~ msgstr "Κάτω"
+
+#~ msgid "Move to Bottom Left"
+#~ msgstr "Μετακίνηση κάτω αριστερά"
+
+#~ msgctxt "Move to Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Κάτω αριστερά"
+
+#~ msgid "Move Area To"
+#~ msgstr "Μετακίνηση περιοχής στο"
+
+#~ msgid "Hide This Tab"
+#~ msgstr "Απόκρυψη αυτής της καρτέλας"
+
+#~ msgid "Hide Area"
+#~ msgstr "Απόκρυψη περιοχής"
+
+#~ msgctxt "Show on Top"
+#~ msgid "Top"
+#~ msgstr "Πάνω"
+
+#~ msgctxt "Show on Right"
+#~ msgid "Right"
+#~ msgstr "Δεξιά"
+
+#~ msgctxt "Show on Bottom"
+#~ msgid "Bottom"
+#~ msgstr "Κάτω"
+
+#~ msgctxt "Show on Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Κάτω αριστερά"
+
+#~ msgid "Show Hidden On"
+#~ msgstr "Εμφάνιση κρυφών ενεργοποιημένη"
+
+#~ msgid "(No profile data file loaded)"
+#~ msgstr "(Δε φορτώθηκε αρχείο δεδομένων προφίλ)"
+
+#~ msgid "Types"
+#~ msgstr "Τύποι"
+
+#~ msgid "Callers"
+#~ msgstr "Κλήσεις"
+
+#~ msgid "All Callers"
+#~ msgstr "Όλες οι κλήσεις"
+
+#~ msgid "Caller Map"
+#~ msgstr "Χάρτης κλήσης"
+
+#~ msgid "Source Code"
+#~ msgstr "Πηγαίος κώδικας"
+
+#~ msgid "Parts"
+#~ msgstr "Τμήματα"
+
+#~ msgid "Call Graph"
+#~ msgstr "Γράφημα κλήσεων"
+
+#~ msgid "Callees"
+#~ msgstr "Κληθέντα"
+
+#~ msgid "All Callees"
+#~ msgstr "Όλα τα κληθέντα"
+
+#~ msgid "Callee Map"
+#~ msgstr "Χάρτης κληθέντων"
+
+#~ msgid "Assembly Code"
+#~ msgstr "Κώδικας τελεστών μηχανής"
+
+#~ msgid ""
+#~ "<b>Information Tabs</b><p>This widget shows information for the current "
+#~ "selected function in different tabs: <ul><li>The Costs tab shows a list "
+#~ "of available event types and the inclusive and self costs regarding to "
+#~ "these types.</li><li>The Parts tab shows a list of trace parts if the "
+#~ "trace consists of more than one part (otherwise, this tab is hided). The "
+#~ "cost of the selected function spent in the different parts together with "
+#~ "the calls happening is shown.</li><li>The Call Lists tab shows direct "
+#~ "callers and callees of the function in more detail.</li><li>The Coverage "
+#~ "tab shows the same is the Call Lists tab, but not only direct callers and "
+#~ "callees but also indirect ones.</li><li>The Call Graph tab shows a "
+#~ "graphical visualization of the calls done by this function.</li><li>The "
+#~ "Source tab presents annotated source code if debugging information and "
+#~ "the source file is available.</li><li>The Assembler tab presents "
+#~ "annotated assembler code if trace information on instruction level is "
+#~ "available.</li></ul>For more information, see the <em>What's this</em> "
+#~ "help of the corresponding tab widget</p>"
+#~ msgstr ""
+#~ "<b>Καρτέλες πληροφοριών</b><p>Αυτό το γραφικό συστατικό εμφανίζει "
+#~ "πληροφορίες για την τρέχουσα επιλεγμένη συνάρτηση σε διάφορες καρτέλες: "
+#~ "<ul><li>Η καρτέλα κόστους εμφανίζει μια λίστα με τους διαθέσιμους τύπους "
+#~ "γεγονότων καθώς τα αθροιστικά και ίδια κόστη αυτών των τύπων.</li><li>Η "
+#~ "καρτέλα τμημάτων εμφανίζει μια λίστα με τα τμήματα ίχνους αν η ανίχνευση "
+#~ "αποτελείται από περισσότερα από ένα τμήματα (σε άλλη περίπτωση, η καρτέλα "
+#~ "αυτή είναι κρυφή). Εμφανίζει το κόστος της επιλεγμένης συνάρτησης που "
+#~ "ξοδεύτηκε στα διάφορα τμήματα μαζί με τις κλήσεις που συμβαίνουν.</"
+#~ "li><li>Η καρτέλα κλήσεων εμφανίζει μια λίστα των άμεσων κλήσεων και των "
+#~ "κληθέντων της συνάρτησης πιο αναλυτικά.</li><li>Η καρτέλα κάλυψης "
+#~ "εμφανίζει το ίδιο περιεχόμενο με την καρτέλα κλήσεων αλλά όχι μόνο των "
+#~ "άμεσων κλήσεων και κληθέντων αλλά και των έμμεσων.</li><li>Η καρτέλα "
+#~ "γραφήματος κλήσης εμφανίζει μια γραφική αναπαράσταση των κλήσεων που "
+#~ "γίνονται από αυτήν τη συνάρτηση.</li><li>Η καρτέλα πηγαίου κώδικα "
+#~ "παρουσιάζει επισημασμένο πηγαίο κώδικα αν είναι διαθέσιμες οι πληροφορίες "
+#~ "αποσφαλμάτωσης και το αρχείο πηγαίου κώδικα.</li><li>Η καρτέλα γλώσσας "
+#~ "τελεστών κώδικα μηχανής παρουσιάζει επισημασμένο των κώδικα τελεστών "
+#~ "μηχανής αν υπάρχει διαθέσιμη πληροφορία ίχνους σε επίπεδο εντολών.</li></"
+#~ "ul>Για περισσότερες πληροφορίες, δείτε τη βοήθεια <em>Τι είναι αυτό;</em> "
+#~ "στην αντίστοιχη καρτέλα του συστατικού</p>"
+
+#~ msgid "(No Data loaded)"
+#~ msgstr "(Δε φορτώθηκαν δεδομένα)"
+
+#~ msgid "(No function selected)"
+#~ msgstr "(Δεν επιλέχθηκε συνάρτηση)"
+
+#~ msgid "Source (unknown)"
+#~ msgstr "Πηγαίος κώδικας (άγνωστο)"
+
+#~ msgid ""
+#~ "<b>Annotated Source</b><p>The annotated source list shows the source "
+#~ "lines of the current selected function together with (self) cost spent "
+#~ "while executing the code of this source line. If there was a call in a "
+#~ "source line, lines with details on the call happening are inserted into "
+#~ "the source: the cost spent inside of the call, the number of calls "
+#~ "happening, and the call destination.</p><p>Select a inserted call "
+#~ "information line to make the destination function current.</p>"
+#~ msgstr ""
+#~ "<b>Επισήμανση πηγαίου κώδικα</b><p>Η λίστα επισήμανσης πηγαίου κώδικα "
+#~ "εμφανίζει τις γραμμές του πηγαίου κώδικα της τρέχουσας επιλεγμένης "
+#~ "συνάρτησης μαζί με το (ίδιο) κόστος που ξοδεύτηκε για την εκτέλεση του "
+#~ "κώδικα αυτής της γραμμής. Αν υπάρχει μια κλήση σε αυτήν τη γραμμή, "
+#~ "δίνονται πληροφορίες για την κλήση: το κόστος μέσα στη κλήση, τον αριθμό "
+#~ "των κλήσεων, και τον προορισμό της κλήσης.</p><p>Επιλέξτε μια γραμμή "
+#~ "πληροφοριών κλήσης για να ορίσετε τη συνάρτηση προορισμού ως τρέχουσα.</p>"
+
+#~ msgid "Go to Line %1"
+#~ msgstr "Μετάβαση στη γραμμή %1"
+
+#~ msgid "(No Source)"
+#~ msgstr "(Χωρίς πηγαίο κώδικα)"
+
+#~ msgid "There is no cost of current selected type associated"
+#~ msgstr "Δεν υπάρχει κόστος σχετιζόμενο με τον τρέχοντα επιλεγμένο τύπο"
+
+#~ msgid "with any source line of this function in file"
+#~ msgstr "σε καμία γραμμή κώδικα της συνάρτησης αυτής στο αρχείο"
+
+#~ msgid "Thus, no annotated source can be shown."
+#~ msgstr "Έτσι, δεν μπορεί να παρουσιαστεί επισημασμένος κώδικας."
+
+#~ msgid "Source ('%1')"
+#~ msgstr "Πηγαίος κώδικας ('%1')"
+
+#~ msgid "--- Inlined from '%1' ---"
+#~ msgstr "--- Ενσωμάτωση από '%1' ---"
+
+#~ msgid "--- Inlined from unknown source ---"
+#~ msgstr "--- Ενσωμάτωση από άγνωστη πηγή ---"
+
+#~ msgid "There is no source available for the following function:"
+#~ msgstr "Δεν υπάρχει διαθέσιμος πηγαίος κώδικας για την παρακάτω συνάρτηση:"
+
+#~ msgid "This is because no debug information is present."
+#~ msgstr "Αυτό συμβαίνει γιατί δεν υπάρχουν πληροφορίες αποσφαλμάτωσης."
+
+#~ msgid "Recompile source and redo the profile run."
+#~ msgstr "Μεταγλωττίστε ξανά τον πηγαίο κώδικα και εκτελέστε ξανά το προφίλ."
+
+#~ msgid "The function is located in this ELF object:"
+#~ msgstr "Αυτή η συνάρτηση βρίσκεται στο αντικείμενο ELF:"
+
+#~ msgid "This is because its source file cannot be found:"
+#~ msgstr "Αυτό συμβαίνει γιατί το αρχείο πηγαίου κώδικα δεν μπορεί να βρεθεί:"
+
+#~ msgid "Add the folder of this file to the source folder list."
+#~ msgstr ""
+#~ "Προσθέστε το φάκελο αυτού του αρχείου στη λίστα φακέλων πηγαίου κώδικα."
+
+#~ msgid "The list can be found in the configuration dialog."
+#~ msgstr "Αυτή η λίστα μπορεί να βρεθεί στο διάλογο ρύθμισης."
+
+#~ msgid " (Thread %1)"
+#~ msgstr " (Νήμα %1)"
+
+#~ msgid "(none)"
+#~ msgstr "(κανένα)"
+
+#~ msgid "Unknown Type"
+#~ msgstr "Άγνωστος τύπος"
+
+#~ msgid "Show All Items"
+#~ msgstr "Εμφάνιση όλων των αντικειμένων"
+
+#~ msgid "No Grouping"
+#~ msgstr "Χωρίς ομαδοποίηση"
+
+#~ msgid "Distance"
+#~ msgstr "Απόσταση"
+
+#~ msgid "Caller"
+#~ msgstr "Κλήση"
+
+#~ msgid "Self"
+#~ msgstr "Ίδιο"
+
+#~ msgid "Calling"
+#~ msgstr "Κλήση"
+
+#~ msgid "Callee"
+#~ msgstr "Κληθέν"
+
+#~ msgid ""
+#~ "<b>List of all Callers</b><p>This list shows all functions calling the "
+#~ "current selected one, either directly or with several functions in-"
+#~ "between on the stack; the number of functions in-between plus one is "
+#~ "called the <em>Distance</em> (e.g. for function A,B,C there exists a call "
+#~ "from A to C when A calls B and B calls C, i.e. A => B => C. The distance "
+#~ "here is 2).</p><p>Absolute cost shown is the cost spent in the selected "
+#~ "function while a listed function is active; relative cost is the "
+#~ "percentage of all cost spent in the selected function while the listed "
+#~ "one is active. The cost graphic shows logarithmic percentage with a "
+#~ "different color for each distance.</p><p>As there can be many calls from "
+#~ "the same function, the distance column sometimes shows the range of "
+#~ "distances for all calls happening; then, in parentheses, there is the "
+#~ "medium distance, i.e. the distance where most of the call costs happened."
+#~ "</p><p>Selecting a function makes it the current selected one of this "
+#~ "information panel. If there are two panels (Split mode), the function of "
+#~ "the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>Λίστα όλων των κλήσεων</b><p>Αυτή η λίστα εμφανίζει όλες τις "
+#~ "συναρτήσεις που καλούν την επιλεγμένη, είτε άμεσα είτε μέσω διάφορων "
+#~ "συναρτήσεων ανάμεσα στη στοίβα. Ο αριθμός των συναρτήσεων που βρίσκονται "
+#~ "ανάμεσα συν ένα ονομάζεται <em>Απόσταση</em> (π.χ. για τη συνάρτηση A,B,C "
+#~ "υπάρχει μια κλήση από το A στο C όταν το A καλεί το B και το B καλεί το "
+#~ "C, π.χ. A => B => C. Η απόσταση εδώ είναι 2).</p><p>Το απόλυτο κόστος "
+#~ "είναι το κόστος στην επιλεγμένη συνάρτηση όσο μια που εμφανίζεται είναι "
+#~ "ενεργή, ενώ το σχετικό κόστος είναι το ποσοστό του συνολικού κόστους που "
+#~ "ξοδεύτηκε στην επιλεγμένη συνάρτηση όσο η συνάρτηση που εμφανίζεται είναι "
+#~ "ενεργή. Το γράφημα κόστους εμφανίζει λογαριθμικό ποσοστό με διαφορετικό "
+#~ "χρώμα για κάθε απόσταση.</p><p>Καθώς μπορεί να υπάρχουν πολλές κλήσεις "
+#~ "από την ίδια συνάρτηση, η στήλη απόστασης μερικές φορές εμφανίζει το "
+#~ "εύρος των αποστάσεων για όλες τις κλήσεις που συμβαίνουν, ενώ σε "
+#~ "παρένθεση, υπάρχει η μέση απόσταση, δηλαδή. η απόσταση όπου συνέβησαν οι "
+#~ "περισσότερες κλήσεις κόστους.</p><p>Επιλέγοντας μιας συνάρτηση γίνεται η "
+#~ "τρέχουσα επιλεγμένη στον πίνακα πληροφοριών. Αν υπάρχουν δύο πίνακες "
+#~ "(λειτουργία διαίρεσης), η συνάρτηση του άλλου πίνακα είναι αυτή που "
+#~ "αλλάζει.</p>"
+
+#~ msgid ""
+#~ "<b>List of all Callees</b><p>This list shows all functions called by the "
+#~ "current selected one, either directly or with several function in-between "
+#~ "on the stack; the number of function in-between plus one is called the "
+#~ "<em>Distance</em> (e.g. for function A,B,C there exists a call from A to "
+#~ "C when A calls B and B calls C, i.e. A => B => C. The distance here is 2)."
+#~ "</p><p>Absolute cost shown is the cost spent in the listed function while "
+#~ "the selected is active; relative cost is the percentage of all cost spent "
+#~ "in the listed function while the selected one is active. The cost graphic "
+#~ "always shows logarithmic percentage with a different color for each "
+#~ "distance.</p><p>As there can be many calls to the same function, the "
+#~ "distance column sometimes shows the range of distances for all calls "
+#~ "happening; then, in parentheses, there is the medium distance, i.e. the "
+#~ "distance where most of the call costs happened.</p><p>Selecting a "
+#~ "function makes it the current selected one of this information panel. If "
+#~ "there are two panels (Split mode), the function of the other panel is "
+#~ "changed instead.</p>"
+#~ msgstr ""
+#~ "<b>Λίστα όλων των κληθέντων</b><p>Αυτή η λίστα εμφανίζει όλες τις "
+#~ "συναρτήσεις που καλούνται από την επιλεγμένη, είτε άμεσα είτε μέσω "
+#~ "διάφορων συναρτήσεων ανάμεσα στη στοίβα. Ο αριθμός των συναρτήσεων που "
+#~ "βρίσκονται ανάμεσα συν ένα ονομάζεται <em>Απόσταση</em> (π.χ. για τη "
+#~ "συνάρτηση A,B,C υπάρχει μια κλήση από το A στο C όταν το A καλεί το B και "
+#~ "το B καλεί το C, π.χ. A => B => C. Η απόσταση εδώ είναι 2).</p><p>Το "
+#~ "απόλυτο κόστος είναι το κόστος στην επιλεγμένη συνάρτηση όσο μια που "
+#~ "εμφανίζεται είναι ενεργή, ενώ το σχετικό κόστος είναι το ποσοστό του "
+#~ "συνολικού κόστους που ξοδεύτηκε στην επιλεγμένη συνάρτηση όσο η συνάρτηση "
+#~ "που εμφανίζεται είναι ενεργή. Το γράφημα κόστους εμφανίζει λογαριθμικό "
+#~ "ποσοστό με διαφορετικό χρώμα για κάθε απόσταση.</p><p>Καθώς μπορεί να "
+#~ "υπάρχουν πολλές κλήσεις από την ίδια συνάρτηση, η στήλη απόστασης μερικές "
+#~ "φορές εμφανίζει το εύρος των αποστάσεων για όλες τις κλήσεις που "
+#~ "συμβαίνουν, ενώ σε παρένθεση, υπάρχει η μέση απόσταση, δηλαδή. η απόσταση "
+#~ "όπου συνέβησαν οι περισσότερες κλήσεις κόστους.</p><p>Επιλέγοντας μιας "
+#~ "συνάρτηση γίνεται η τρέχουσα επιλεγμένη στον πίνακα πληροφοριών. Αν "
+#~ "υπάρχουν δύο πίνακες (λειτουργία διαίρεσης), η συνάρτηση του άλλου πίνακα "
+#~ "είναι αυτή που αλλάζει.</p>"
+
+#~ msgid "Instruction Fetch"
+#~ msgstr "Ανάκτηση εντολής"
+
+#~ msgid "Data Read Access"
+#~ msgstr "Πρόσβαση ανάγνωσης δεδομένων"
+
+#~ msgid "Data Write Access"
+#~ msgstr "Πρόσβαση εγγραφής δεδομένων"
+
+#~ msgid "L1 Instr. Fetch Miss"
+#~ msgstr "L1 αστοχία ανάκτησης εντολής"
+
+#~ msgid "L1 Data Read Miss"
+#~ msgstr "L1 αστοχία ανάγνωσης δεδομένων"
+
+#~ msgid "L1 Data Write Miss"
+#~ msgstr "L1 αστοχία εγγραφής δεδομένων"
+
+#~ msgid "L2 Instr. Fetch Miss"
+#~ msgstr "L2 αστοχία ανάκτησης εντολής"
+
+#~ msgid "L2 Data Read Miss"
+#~ msgstr "L2 αστοχία ανάγνωσης δεδομένων"
+
+#~ msgid "L2 Data Write Miss"
+#~ msgstr "L2 αστοχία εγγραφής δεδομένων"
+
+#~ msgid "Samples"
+#~ msgstr "Δείγματα"
+
+#~ msgid "System Time"
+#~ msgstr "Ώρα συστήματος"
+
+#~ msgid "User Time"
+#~ msgstr "Χρόνος χρήστη"
+
+#~ msgid "L1 Miss Sum"
+#~ msgstr "L1 σύνολο αστοχιών"
+
+#~ msgid "L2 Miss Sum"
+#~ msgstr "L2 σύνολο αστοχιών"
+
+#~ msgid "Cycle Estimation"
+#~ msgstr "Εκτίμηση κύκλων"
+
+#~ msgid "&Search:"
+#~ msgstr "&Αναζήτηση:"
+
+#~ msgid "Group"
+#~ msgstr "Ομάδα"
+
+#~ msgid "(no trace parts)"
+#~ msgstr "(χωρίς τμήματα ίχνους)"
+
+#~ msgid "Stack Selection"
+#~ msgstr "Επιλογή στοίβας"
+
+#~ msgid "Cost2"
+#~ msgstr "Κόστος2"
+
+#~ msgid "Text %1"
+#~ msgstr "Κείμενο %1"
+
+#~ msgid "Recursive Bisection"
+#~ msgstr "Αναδρομική διχοτόμηση"
+
+#~ msgid "Columns"
+#~ msgstr "Στήλες"
+
+#~ msgid "Rows"
+#~ msgstr "Γραμμές"
+
+#~ msgid "Always Best"
+#~ msgstr "Πάντα βέλτιστο"
+
+#~ msgid "Best"
+#~ msgstr "Βέλτιστο"
+
+#~ msgid "Alternate (V)"
+#~ msgstr "Εναλλακτικό (Κ)"
+
+#~ msgid "Alternate (H)"
+#~ msgstr "Εναλλακτικό (Ο)"
+
+#~ msgid "Horizontal"
+#~ msgstr "Οριζόντια"
+
+#~ msgid "Vertical"
+#~ msgstr "Κατακόρυφα"
+
+#~ msgid "Nesting"
+#~ msgstr "Βάθος"
+
+#~ msgid "Border"
+#~ msgstr "Περίγραμμα"
+
+#~ msgid "Correct Borders Only"
+#~ msgstr "Μόνο σωστά περιγράμματα"
+
+#~ msgid "Width %1"
+#~ msgstr "Πλάτος %1"
+
+#~ msgid "Shading"
+#~ msgstr "Σκίαση"
+
+#~ msgid "Visible"
+#~ msgstr "Ορατό"
+
+#~ msgid "Take Space From Children"
+#~ msgstr "Λήψη χώρου από τους απογόνους"
+
+#~ msgid "Top Center"
+#~ msgstr "Πάνω κέντρο"
+
+#~ msgid "Bottom Center"
+#~ msgstr "Κάτω κέντρο"
+
+#~ msgid "No %1 Limit"
+#~ msgstr "Χωρίς περιορισμό στο %1"
+
+#~ msgid "No Area Limit"
+#~ msgstr "Χωρίς περιορισμό περιοχής"
+
+#~ msgid "Area of '%1' (%2)"
+#~ msgstr "Περιοχή του '%1' (%2)"
+
+#~ msgid "1 Pixel"
+#~ msgid_plural "%1 Pixels"
+#~ msgstr[0] "1 εικονοστοιχείο"
+#~ msgstr[1] "%1 εικονοστοιχεία"
+
+#~ msgid "Double Area Limit (to %1)"
+#~ msgstr "Διπλάσιο όριο περιοχής (στο %1)"
+
+#~ msgid "Halve Area Limit (to %1)"
+#~ msgstr "Μισό όριο περιοχής (στο %1)"
+
+#~ msgid "No Depth Limit"
+#~ msgstr "Χωρίς όριο βάθους"
+
+#~ msgid "Depth of '%1' (%2)"
+#~ msgstr "Βάθος του '%1' (%2)"
+
+#~ msgid "Depth %1"
+#~ msgstr "Βάθος %1"
+
+#~ msgid "Decrement (to %1)"
+#~ msgstr "Μείωση (στο %1)"
+
+#~ msgid "Increment (to %1)"
+#~ msgstr "Αύξηση (στο %1)"
+
+#~ msgid ""
+#~ "<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers "
+#~ "of the current activated function. Each colored rectangle represents a "
+#~ "function; its size tries to be proportional to the cost spent therein "
+#~ "while the active function is running (however, there are drawing "
+#~ "constrains).</p>"
+#~ msgstr ""
+#~ "<b>Χάρτης κλήσης</b><p>Αυτό το γράφημα εμφανίζει το βάθος ιεραρχίας όλων "
+#~ "των κλήσεων της τρέχουσας ενεργοποιημένης συνάρτησης. Κάθε χρωματιστό "
+#~ "ορθογώνιο αναπαριστά μια συνάρτηση, ενώ το μέγεθός του προσπαθεί να είναι "
+#~ "ανάλογο με το κόστος που ξοδεύτηκε κατά την εκτέλεση της τρέχουσας "
+#~ "ενεργού συνάρτησης (ωστόσο , υπάρχουν περιορισμοί στη σχεδίαση).</p>"
+
+#~ msgid ""
+#~ "<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+#~ "the current activated function. Each colored rectangle represents a "
+#~ "function; its size tries to be proportional to the cost spent therein "
+#~ "while the active function is running (however, there are drawing "
+#~ "constrains).</p>"
+#~ msgstr ""
+#~ "<b>Χάρτης κλήσεων</b><p>Αυτό το γράφημα εμφανίζει το βάθος ιεραρχίας όλων "
+#~ "των κληθέντων της τρέχουσας ενεργοποιημένης συνάρτησης. Κάθε χρωματιστό "
+#~ "ορθογώνιο αναπαριστά μια συνάρτηση, ενώ το μέγεθός του προσπαθεί να είναι "
+#~ "ανάλογο με το κόστος που ξοδεύτηκε κατά την εκτέλεση της τρέχουσας "
+#~ "ενεργού συνάρτησης (ωστόσο , υπάρχουν περιορισμοί στη σχεδίαση).</p>"
+
+#~ msgid ""
+#~ "<p>Appearance options can be found in the in the context menu. To get "
+#~ "exact size proportions, choose 'Hide incorrect borders'. As this mode can "
+#~ "be <em>very</em> time consuming, you may want to limit the maximum drawn "
+#~ "nesting level before. 'Best' determinates the split direction for "
+#~ "children from the aspect ratio of the parent. 'Always Best' decides on "
+#~ "remaining space for each sibling. 'Ignore Proportions' takes space for "
+#~ "function name drawing <em>before</em> drawing children. Note that size "
+#~ "proportions can get <em>heavily</em> wrong.</p><p>This is a <em>TreeMap</"
+#~ "em> widget. Keyboard navigation is available with the left/right arrow "
+#~ "keys for traversing siblings, and up/down arrow keys to go a nesting "
+#~ "level up/down. <em>Return</em> activates the current item.</p>"
+#~ msgstr ""
+#~ "<p>Οι επιλογές εμφάνισης μπορούν να βρεθούν στο σχετικό μενού. Για να "
+#~ "ορίσετε ακριβείς αναλογίες μεγεθών, επιλέξτε 'Απόκρυψη εσφαλμένων "
+#~ "περιγραμμάτων'. Καθώς αυτή η λειτουργία μπορεί να γίνει <em>πολύ</em> "
+#~ "χρονοβόρα, μπορείτε να περιορίσετε το μέγιστο επίπεδο βάθους σχεδίασης "
+#~ "πιο πριν. Το 'Βέλτιστο' ορίζει την κατεύθυνση διαίρεσης των απογόνων από "
+#~ "την αναλογία του γονέα. Το 'Πάντα βέλτιστο' καθορίζει τον εναπομείναντα "
+#~ "χώρο για κάθε απόγονο. Το 'Παράβλεψη αναλογιών' ορίζει το χώρο σχεδίασης "
+#~ "του ονόματος συνάρτησης <em>πριν</em> τη σχεδίαση των απογόνων. Σημειώστε "
+#~ "ότι οι αναλογίες μεγέθους μπορεί να ορισθούν <em>έντονα</em> εσφαλμένες.</"
+#~ "p><p>Αυτό είναι ένα γραφικό συστατικό <em>δεντροδιαγράμματος</em>. Είναι "
+#~ "δυνατή η περιήγησή του με το πληκτρολόγιο με τα αριστερό/δεξιά πλήκτρα "
+#~ "για την μετάβαση μεταξύ των απογόνων, καθώς και τα πάνω/κάτω πλήκτρα για "
+#~ "την μετάβαση σε διαφορετικό βάθος. Το <em>Return</em> ενεργοποιεί το "
+#~ "τρέχον αντικείμενο.</p>"
+
+#~ msgid "Go To"
+#~ msgstr "Μετάβαση στο"
+
+#~ msgid "Stop at Depth"
+#~ msgstr "Σταμάτημα σε βάθος"
+
+#~ msgid "Depth 10"
+#~ msgstr "Βάθος 10"
+
+#~ msgid "Depth 15"
+#~ msgstr "Βάθος 15"
+
+#~ msgid "Depth 20"
+#~ msgstr "Βάθος 20"
+
+#~ msgid "Decrement Depth (to %1)"
+#~ msgstr "Μείωση βάθους (στο %1)"
+
+#~ msgid "Increment Depth (to %1)"
+#~ msgstr "Αύξηση βάθους (στο %1)"
+
+#~ msgid "Stop at Function"
+#~ msgstr "Σταμάτημα στη συνάρτηση"
+
+#~ msgid "No Function Limit"
+#~ msgstr "Χωρίς όριο συνάρτησης"
+
+#~ msgid "Stop at Area"
+#~ msgstr "Σταμάτημα στην περιοχή"
+
+#~ msgid "50 Pixels"
+#~ msgstr "50 εικονοστοιχεία"
+
+#~ msgid "100 Pixels"
+#~ msgstr "100 εικονοστοιχεία"
+
+#~ msgid "200 Pixels"
+#~ msgstr "200 εικονοστοιχεία"
+
+#~ msgid "500 Pixels"
+#~ msgstr "500 εικονοστοιχεία"
+
+#~ msgid "Half Area Limit (to %1)"
+#~ msgstr "Μισό όριο περιοχής (στο %1)"
+
+#~ msgid "Split Direction"
+#~ msgstr "Κατεύθυνση διαίρεσης"
+
+#~ msgid "Skip Incorrect Borders"
+#~ msgstr "Παράλειψη εσφαλμένων περιγραμμάτων"
+
+#~ msgid "Border Width"
+#~ msgstr "Πλάτος περιγράμματος"
+
+#~ msgid "Border 0"
+#~ msgstr "Περίγραμμα 0"
+
+#~ msgid "Border 1"
+#~ msgstr "Περίγραμμα 1"
+
+#~ msgid "Border 2"
+#~ msgstr "Περίγραμμα 2"
+
+#~ msgid "Border 3"
+#~ msgstr "Περίγραμμα 3"
+
+#~ msgid "Draw Symbol Names"
+#~ msgstr "Σχεδίαση ονομάτων συμβόλων"
+
+#~ msgid "Draw Cost"
+#~ msgstr "Σχεδίαση κόστους"
+
+#~ msgid "Draw Location"
+#~ msgstr "Σχεδίαση τοποθεσίας"
+
+#~ msgid "Draw Calls"
+#~ msgstr "Σχεδίαση κλήσεων"
+
+#~ msgid "Call Map: Current is '%1'"
+#~ msgstr "Χάρτης κλήσης: Ο τρέχων είναι ο '%1'"
+
+#~ msgid "(no function)"
+#~ msgstr "(χωρίς συνάρτηση)"
+
+#~ msgid "(no call)"
+#~ msgstr "(χωρίς κλήση)"
+
+#~ msgid "Event Type"
+#~ msgstr "Τύπος γεγονότος"
+
+#~ msgid "Short"
+#~ msgstr "Σύντομο"
+
+#~ msgid "Formula"
+#~ msgstr "Μαθηματική σχέση"
+
+#~ msgid ""
+#~ "<b>Cost Types List</b><p>This list shows all cost types available and "
+#~ "what the self/inclusive cost of the current selected function is for that "
+#~ "cost type.</p><p>By choosing a cost type from the list, you change the "
+#~ "cost type of costs shown all over KCachegrind to be the selected one.</p>"
+#~ msgstr ""
+#~ "<b>Λίστα τύπων κόστους</b><p>Αυτή η λίστα εμφανίζει όλους τους τύπους "
+#~ "κόστους που είναι διαθέσιμοι καθώς και ποιο είναι το ίδιο/προσθετικό "
+#~ "κόστος της τρέχουσας επιλεγμένης συνάρτησης για αυτόν τον τύπο κόστους.</"
+#~ "p><p>Επιλέγοντας έναν τύπο κόστους από τη λίστα, μπορείτε να "
+#~ "τροποποιήσετε τον τύπο κόστους όλων των κοστών που εμφανίζονται στο "
+#~ "KCachegrind στον επιλεγμένο.</p>"
+
+#~ msgid "Set Secondary Event Type"
+#~ msgstr "Ορισμός δευτερεύοντος τύπου γεγονότος"
+
+#~ msgid "Remove Secondary Event Type"
+#~ msgstr "Αφαίρεση δευτερεύοντος τύπου γεγονότος"
+
+#~ msgid "Edit Long Name"
+#~ msgstr "Επεξεργασία πλήρους ονόματος"
+
+#~ msgid "Edit Short Name"
+#~ msgstr "Επεξεργασία σύντομου ονόματος"
+
+#~ msgid "Edit Formula"
+#~ msgstr "Επεξεργασία μαθηματικής σχέσης"
+
+#~ msgid "Remove"
+#~ msgstr "Αφαίρεση"
+
+#~ msgid "New Cost Type ..."
+#~ msgstr "Νέος τύπος κόστους..."
+
+#~ msgid "New%1"
+#~ msgstr "Νέο%1"
+
+#~ msgid "New Cost Type %1"
+#~ msgstr "Νέος τύπος κόστους %1"
+
+#~ msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+#~ msgstr ""
+#~ "Εισαγωγή φίλτρου για τα αρχεία δεδομένων προφίλ του Cachegrind/Callgrind"
+
+#~ msgid "Count"
+#~ msgstr "Μέτρηση"
+
+#~ msgid ""
+#~ "<b>List of direct Callers</b><p>This list shows all functions calling the "
+#~ "current selected one directly, together with a call count and the cost "
+#~ "spent in the current selected function while being called from the "
+#~ "function from the list.</p><p>An icon instead of an inclusive cost "
+#~ "specifies that this is a call inside of a recursive cycle. An inclusive "
+#~ "cost makes no sense here.</p><p>Selecting a function makes it the current "
+#~ "selected one of this information panel. If there are two panels (Split "
+#~ "mode), the function of the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>Λίστα των άμεσων κλήσεων</b><p>Αυτή η λίστα εμφανίζει όλες τις "
+#~ "συναρτήσεις που καλούν την τρέχουσα επιλεγμένη συνάρτηση άμεσα, ενώ "
+#~ "συνοδεύεται από ένα μετρητή κλήσεων και κόστους της τρέχουσας επιλεγμένης "
+#~ "συνάρτησης από τη λίστα συναρτήσεων.</p><p>Ένα εικονίδιο στη θέση του "
+#~ "αθροιστικού κόστους υποδηλώνει ότι πρόκειται για κλήση μέσα σε έναν κύκλο "
+#~ "αναδρομικό. Έτσι ένα αθροιστικό κόστος δεν έχει καμία πρακτική σημασία σε "
+#~ "αυτή την περίπτωση.</p><p>Επιλέγοντας μια συνάρτηση αυτή ορίζεται ως η "
+#~ "τρέχουσα επιλεγμένη για αυτόν τον πίνακα πληροφοριών. Αν υπάρχουν δύο "
+#~ "πίνακες (Λειτουργία διαίρεσης), μεταβάλλεται η συνάρτηση του άλλου πίνακα."
+#~ "</p>"
+
+#~ msgid ""
+#~ "<b>List of direct Callees</b><p>This list shows all functions called by "
+#~ "the current selected one directly, together with a call count and the "
+#~ "cost spent in this function while being called from the selected function."
+#~ "</p><p>Selecting a function makes it the current selected one of this "
+#~ "information panel. If there are two panels (Split mode), the function of "
+#~ "the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>Λίστα των άμεσων κληθέντων</b><p>Αυτή η λίστα εμφανίζει όλες τις "
+#~ "συναρτήσεις που καλούνται από την τρέχουσα επιλεγμένη συνάρτηση άμεσα, "
+#~ "ενώ συνοδεύεται από ένα μετρητή κλήσεων και κόστους της τρέχουσας "
+#~ "επιλεγμένης συνάρτησης από τη λίστα συναρτήσεων.</p><p>Επιλέγοντας μια "
+#~ "συνάρτηση αυτή ορίζεται ως η τρέχουσα επιλεγμένη για αυτόν τον πίνακα "
+#~ "πληροφοριών. Αν υπάρχουν δύο πίνακες (Λειτουργία διαίρεσης), μεταβάλλεται "
+#~ "η συνάρτηση του άλλου πίνακα.</p>"
+
+#~ msgid "Profile Part %1"
+#~ msgstr "Τμήμα προφίλ %1"
+
+#~ msgid "(no trace)"
+#~ msgstr "(χωρίς ίχνος)"
+
+#~ msgid "(no part)"
+#~ msgstr "(χωρίς τμήμα)"
+
+#~ msgid "Comment"
+#~ msgstr "Σχόλιο"
+
+#~ msgid ""
+#~ "<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+#~ "trace. For each part, the self/inclusive cost of the current selected "
+#~ "function, spent in the part, is shown; percentage costs are always "
+#~ "relative to the total cost <em>of the part</em> (not to the whole trace "
+#~ "as in the Trace Part Overview). Also shown are the calls happening to/"
+#~ "from the current function inside of the trace part.</p><p>By choosing one "
+#~ "or more trace parts from the list, the costs shown all over KCachegrind "
+#~ "will only be the ones spent in the selected part(s). If no list selection "
+#~ "is shown, in fact all trace parts are selected implicitly.</p><p>This is "
+#~ "a multi-selection list. You can select ranges by dragging the mouse or "
+#~ "use SHIFT/CTRL modifiers. Selection/Deselection of trace parts can also "
+#~ "be done by using the Trace Part Overview Dockable. This one also supports "
+#~ "multiple selection.</p><p>Note that the list is hidden if only one trace "
+#~ "part is loaded.</p>"
+#~ msgstr ""
+#~ "<b>Λίστα τμημάτων ίχνους</b><p>Αυτή η λίστα εμφανίζει όλα τα τμήματα "
+#~ "ίχνους του φορτωμένου ίχνους. Για κάθε τμήμα το ίδιο/αθροιστικό κόστος "
+#~ "της τρέχουσας επιλεγμένης συνάρτησης, που ξοδεύτηκε στο τμήμα\n"
+#~ "εμφανίζεται, ενώ τα ποσοστά κόστους είναι πάντα σχετικά με το συνολικό "
+#~ "κόστος <em>του τμήματος</em> (όχι όλου του ίχνους όπως στην περίληψη του "
+#~ "ίχνους τμήματος). Επίσης εμφανίζονται οι κλήσεις που συμβαίνουν από/προς "
+#~ "την τρέχουσα συνάρτηση μέσα στο τμήμα ίχνους.</p><p>Επιλέγοντας ένα ή "
+#~ "περισσότερα τμήματα ίχνους από τη λίστα, τα κόστη που εμφανίζονται\n"
+#~ "στο KCachegrind θα είναι μόνο αυτά που ξοδεύτηκαν στα επιλεγμένα τμήματα. "
+#~ "Αν δεν εμφανίζεται λίστα επιλογής, όλα τα τμήματα ίχνους επιλέγονται "
+#~ "έμμεσα.</p><p>Αυτή είναι μια λίστα πολλαπλών επιλογών. Μπορείτε να "
+#~ "επιλέξετε ένα εύρος αντικειμένων σέρνοντας το ποντίκι ή χρησιμοποιώντας "
+#~ "τα SHIFT/CTRL. Η επιλογή/αποεπιλογή τμημάτων μπορεί επίσης να γίνει "
+#~ "χρησιμοποιώντας την προσάρτηση περίληψης τμημάτων ίχνους. Αυτό επιτρέπει "
+#~ "επίσης την πολλαπλή επιλογή.</p><p>Σημειώστε ότι η λίστα αυτή είναι κρυφή "
+#~ "μόνο αν ένα μόνο τμήμα ίχνους έχει φορτωθεί.</p>"
+
+#~ msgid "Hide '%1'"
+#~ msgstr "Απόκρυψη '%1'"
+
+#~ msgid "Hide Selected"
+#~ msgstr "Απόκρυψη επιλεγμένων"
+
+#~ msgid "Show All"
+#~ msgstr "Εμφάνιση όλων"

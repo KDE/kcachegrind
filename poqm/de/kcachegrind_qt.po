@@ -1,0 +1,3297 @@
+# Sebastian Stein <seb.kde@hpfsc.de>, 2003.
+# Josef Weidendorfer <Josef.Weidendorfer@gmx.de>, 2003, 2005.
+# Stephan Johach <hunsum@gmx.de>, 2003, 2005.
+# Thomas Diehl <thd@kde.org>, 2004.
+# Thomas Reitelbach <tr@erdfunkstelle.de>, 2005, 2006, 2008, 2009.
+# Frederik Schwarzer <schwarzer@kde.org>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2020.
+# Burkhard Lück <lueck@hube-lueck.de>, 2008, 2009, 2010, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2021.
+# Panagiotis Papadopoulos <pano_90@gmx.net>, 2011.
+# Rolf Eike Beer <kde@opensource.sf-tec.de>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcachegrind_qt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-18 02:14+0000\n"
+"PO-Revision-Date: 2021-03-30 06:26+0200\n"
+"Last-Translator: Burkhard Lück <lueck@hube-lueck.de>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Qt-Contexts: true\n"
+
+#: libcore/cachegrindloader.cpp:135
+msgctxt "QObject|"
+msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+msgstr "Importfilter für von Cachegrind/Callgrind erzeugte Profildateien"
+
+#: libcore/context.cpp:60
+msgctxt "ProfileContext|"
+msgid "Invalid Context"
+msgstr "Ungültiger Kontext"
+
+#: libcore/context.cpp:61
+msgctxt "ProfileContext|"
+msgid "Unknown Context"
+msgstr "Unbekannter Kontext"
+
+#: libcore/context.cpp:62
+msgctxt "ProfileContext|"
+msgid "Part Source Line"
+msgstr "Quellzeile in Profildatei"
+
+#: libcore/context.cpp:63
+msgctxt "ProfileContext|"
+msgid "Source Line"
+msgstr "Quellzeile"
+
+#: libcore/context.cpp:64
+msgctxt "ProfileContext|"
+msgid "Part Line Call"
+msgstr "Aufruf in Quellzeile in Profildatei"
+
+#: libcore/context.cpp:65
+msgctxt "ProfileContext|"
+msgid "Line Call"
+msgstr "Aufruf in Quellzeile"
+
+#: libcore/context.cpp:66
+msgctxt "ProfileContext|"
+msgid "Part Jump"
+msgstr "Sprung in Profildatei"
+
+#: libcore/context.cpp:67
+msgctxt "ProfileContext|"
+msgid "Jump"
+msgstr "Sprung"
+
+#: libcore/context.cpp:68
+msgctxt "ProfileContext|"
+msgid "Part Instruction"
+msgstr "Instruktion in Profildatei"
+
+#: libcore/context.cpp:69
+msgctxt "ProfileContext|"
+msgid "Instruction"
+msgstr "Instruktion"
+
+#: libcore/context.cpp:70
+msgctxt "ProfileContext|"
+msgid "Part Instruction Jump"
+msgstr "Sprung in Instruktion in Profildatei"
+
+#: libcore/context.cpp:71
+msgctxt "ProfileContext|"
+msgid "Instruction Jump"
+msgstr "Sprung in Instruktion"
+
+#: libcore/context.cpp:72
+msgctxt "ProfileContext|"
+msgid "Part Instruction Call"
+msgstr "Aufruf in Instruktion in Profildatei"
+
+#: libcore/context.cpp:73
+msgctxt "ProfileContext|"
+msgid "Instruction Call"
+msgstr "Aufruf in Instruktion"
+
+#: libcore/context.cpp:74
+msgctxt "ProfileContext|"
+msgid "Part Call"
+msgstr "Aufruf in Profildatei"
+
+#: libcore/context.cpp:75
+msgctxt "ProfileContext|"
+msgid "Call"
+msgstr "Aufruf"
+
+#: libcore/context.cpp:76
+msgctxt "ProfileContext|"
+msgid "Part Function"
+msgstr "Funktion in Profildatei"
+
+#: libcore/context.cpp:77
+msgctxt "ProfileContext|"
+msgid "Function Source File"
+msgstr "Quelldatei für eine Funktion"
+
+#: libcore/context.cpp:78
+msgctxt "ProfileContext|"
+msgid "Function"
+msgstr "Funktion"
+
+#: libcore/context.cpp:79
+msgctxt "ProfileContext|"
+msgid "Function Cycle"
+msgstr "Funktionszyklus"
+
+#: libcore/context.cpp:80
+msgctxt "ProfileContext|"
+msgid "Part Class"
+msgstr "Klasse in Profildatei"
+
+#: libcore/context.cpp:81
+msgctxt "ProfileContext|"
+msgid "Class"
+msgstr "Klasse"
+
+#: libcore/context.cpp:82
+msgctxt "ProfileContext|"
+msgid "Part Source File"
+msgstr "Quelldatei in Profildatei"
+
+#: libcore/context.cpp:83
+msgctxt "ProfileContext|"
+msgid "Source File"
+msgstr "Quelldatei"
+
+#: libcore/context.cpp:84
+msgctxt "ProfileContext|"
+msgid "Part ELF Object"
+msgstr "Binärobjekt in Profildatei"
+
+#: libcore/context.cpp:85
+msgctxt "ProfileContext|"
+msgid "ELF Object"
+msgstr "Binärobjekt"
+
+#: libcore/context.cpp:86
+msgctxt "ProfileContext|"
+msgid "Profile Part"
+msgstr "Profilabschnitt"
+
+#: libcore/context.cpp:87
+msgctxt "ProfileContext|"
+msgid "Program Trace"
+msgstr "Profildaten des Programms"
+
+#: libcore/costitem.cpp:48
+#, qt-format
+msgctxt "QObject|"
+msgid "%1 from %2"
+msgstr "%1 von %2"
+
+#: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
+#: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
+#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
+msgctxt "QObject|"
+msgid "(unknown)"
+msgstr "(unbekannt)"
+
+#: libcore/globalconfig.cpp:77
+msgctxt "QObject|"
+msgid "Instruction Fetch"
+msgstr "Ausgeführte Instruktion"
+
+#: libcore/globalconfig.cpp:78
+msgctxt "QObject|"
+msgid "Data Read Access"
+msgstr "Lesezugriff"
+
+#: libcore/globalconfig.cpp:79
+msgctxt "QObject|"
+msgid "Data Write Access"
+msgstr "Schreibzugriff"
+
+#: libcore/globalconfig.cpp:80
+msgctxt "QObject|"
+msgid "L1 Instr. Fetch Miss"
+msgstr "L1-Miss (Code)"
+
+#: libcore/globalconfig.cpp:81
+msgctxt "QObject|"
+msgid "L1 Data Read Miss"
+msgstr "L1-Miss (Lesezugriff)"
+
+#: libcore/globalconfig.cpp:82
+msgctxt "QObject|"
+msgid "L1 Data Write Miss"
+msgstr "L1-Miss (Schreibzugriff)"
+
+#: libcore/globalconfig.cpp:83
+msgctxt "QObject|"
+msgid "L2 Instr. Fetch Miss"
+msgstr "L2-Miss (Code)"
+
+#: libcore/globalconfig.cpp:84
+msgctxt "QObject|"
+msgid "L2 Data Read Miss"
+msgstr "L2-Miss (Lesezugriff)"
+
+#: libcore/globalconfig.cpp:85
+msgctxt "QObject|"
+msgid "L2 Data Write Miss"
+msgstr "L2-Miss (Schreibzugriff)"
+
+#: libcore/globalconfig.cpp:86
+msgctxt "QObject|"
+msgid "LL Instr. Fetch Miss"
+msgstr "LL-Miss (Code)"
+
+#: libcore/globalconfig.cpp:87
+msgctxt "QObject|"
+msgid "LL Data Read Miss"
+msgstr "LL-Miss (Lesezugriff)"
+
+#: libcore/globalconfig.cpp:88
+msgctxt "QObject|"
+msgid "LL Data Write Miss"
+msgstr "LL-Miss (Schreibzugriff)"
+
+#: libcore/globalconfig.cpp:89
+msgctxt "QObject|"
+msgid "L1 Miss Sum"
+msgstr "Summe L1-Fehlzugriffe"
+
+#: libcore/globalconfig.cpp:90
+msgctxt "QObject|"
+msgid "L2 Miss Sum"
+msgstr "Summe L2-Fehlzugriffe"
+
+#: libcore/globalconfig.cpp:91
+msgctxt "QObject|"
+msgid "Last-level Miss Sum"
+msgstr "Summe LL-Fehlzugriffe"
+
+#: libcore/globalconfig.cpp:92
+msgctxt "QObject|"
+msgid "Indirect Branch"
+msgstr "Indirekter Sprung"
+
+#: libcore/globalconfig.cpp:93
+msgctxt "QObject|"
+msgid "Mispredicted Ind. Branch"
+msgstr "Falsch vorhergesagter indirekter Sprung"
+
+#: libcore/globalconfig.cpp:94
+msgctxt "QObject|"
+msgid "Conditional Branch"
+msgstr "Bedingter Sprung"
+
+#: libcore/globalconfig.cpp:95
+msgctxt "QObject|"
+msgid "Mispredicted Cond. Branch"
+msgstr "Falsch vorhergesagter bedingter Sprung"
+
+#: libcore/globalconfig.cpp:96
+msgctxt "QObject|"
+msgid "Mispredicted Branch"
+msgstr "Falsch vorhergesagter Sprung"
+
+#: libcore/globalconfig.cpp:97
+msgctxt "QObject|"
+msgid "Global Bus Event"
+msgstr "Globales Busereignis"
+
+#: libcore/globalconfig.cpp:98
+msgctxt "QObject|"
+msgid "Samples"
+msgstr "Messpunkte"
+
+#: libcore/globalconfig.cpp:99
+msgctxt "QObject|"
+msgid "System Time"
+msgstr "Systemzeit"
+
+#: libcore/globalconfig.cpp:100
+msgctxt "QObject|"
+msgid "User Time"
+msgstr "Benutzerzeit"
+
+#: libcore/globalconfig.cpp:101
+msgctxt "QObject|"
+msgid "Cycle Estimation"
+msgstr "Abschätzung CPU-Takte"
+
+#: libcore/tracedata.cpp:1240
+msgctxt "QObject|"
+msgid "(no caller)"
+msgstr "(kein Aufrufer)"
+
+#: libcore/tracedata.cpp:1247 libcore/tracedata.cpp:1266
+#, qt-format
+msgctxt "QObject|"
+msgid "%1 via %2"
+msgstr "%1 über %2"
+
+#: libcore/tracedata.cpp:1256
+msgctxt "QObject|"
+msgid "(no callee)"
+msgstr "(kein Aufgerufener)"
+
+#: libcore/tracedata.cpp:2709
+msgctxt "QObject|"
+msgid "(global)"
+msgstr "(Global)"
+
+#: libcore/tracedata.cpp:3144
+msgctxt "QObject|"
+msgid "(not found)"
+msgstr "(nicht gefunden)"
+
+#: libcore/tracedata.cpp:3692
+msgctxt "TraceData|"
+msgid "Recalculating Function Cycles..."
+msgstr "Neuberechnen der Funktionszyklen ..."
+
+#: libviews/callgraphview.cpp:414
+#, qt-format
+msgctxt "QObject|"
+msgid "Call(s) from %1"
+msgstr "Aufruf(e) durch %1"
+
+#: libviews/callgraphview.cpp:417
+#, qt-format
+msgctxt "QObject|"
+msgid "Call(s) to %1"
+msgstr "Aufruf(e) von %1"
+
+#: libviews/callgraphview.cpp:419
+msgctxt "QObject|"
+msgid "(unknown call)"
+msgstr "(unbekannter Aufruf)"
+
+#: libviews/callgraphview.cpp:908
+msgctxt "QObject|"
+msgid "Export Graph"
+msgstr "Graph exportieren"
+
+#: libviews/callgraphview.cpp:1608
+msgctxt "CallGraphView|"
+msgid ""
+"<b>Call Graph around active Function</b><p>Depending on configuration, this "
+"view shows the call graph environment of the active function. Note: the "
+"shown cost is <b>only</b> the cost which is spent while the active function "
+"was actually running; i.e. the cost shown for main() - if it is visible - "
+"should be the same as the cost of the active function, as that is the part "
+"of inclusive cost of main() spent while the active function was running.</"
+"p><p>For cycles, blue call arrows indicate that this is an artificial call "
+"added for correct drawing which actually never happened.</p><p>If the graph "
+"is larger than the widget area, an overview panner is shown in one edge. "
+"There are similar visualization options to the Call Treemap; the selected "
+"function is highlighted.</p>"
+msgstr ""
+"<b>Aufrufgraph um aktuelle Funktion</b><p> Je nach Konfiguration zeigt diese "
+"Ansicht die Aufrufgraph-Umgebung der aktiven Funktion. Hinweis: Die "
+"gezeigten Kosten sind <b>lediglich</b> die bei der Ausführung der aktiven "
+"Funktion aufgetretenen Laufzeitkosten. So ergeben sich z. B. für main() – "
+"falls sichtbar – die gleichen Kosten wie für die aktive Funktion, da dies "
+"der Anteil inklusiver Kosten von main() während der Ausführung der aktiven "
+"Funktion ist.</p><p>Bei Zyklen werden blaue Aufrufpfeile hinzugefügt. Diese "
+"zeigen, dass es sich um einen künstlichen Aufruf handeln, der für die "
+"korrekte Darstellung hinzugefügt wurde, aber eigentlich nie stattfindet.</"
+"p><p>Ist der Graph größer als der Darstellungsberech, wird in einer Ecke "
+"eine Übersicht angezeigt. Ähnliche Darstellungsmöglichkeiten gibt es für die "
+"Aufrufbaumansicht; die gewählte Funktion wird hervorgehoben.</p>"
+
+#: libviews/callgraphview.cpp:2020
+msgctxt "CallGraphView|"
+msgid ""
+"Warning: a long lasting graph layouting is in progress.\n"
+"Reduce node/edge limits for speedup.\n"
+msgstr ""
+"Achtung: Eine lang andauernde Berechnung des Graphenlayouts ist im Gange.\n"
+"Zur Beschleunigung verringern Sie die Grenzwerte für Knoten und Kanten im "
+"Kontextmenü.\n"
+
+#: libviews/callgraphview.cpp:2023
+msgctxt "CallGraphView|"
+msgid "Layouting stopped.\n"
+msgstr "Berechnung des Graphenlayouts gestoppt.\n"
+
+#: libviews/callgraphview.cpp:2025
+#, qt-format
+msgctxt "CallGraphView|"
+msgid "The call graph has %1 nodes and %2 edges.\n"
+msgstr "Der Aufrufgraph hat %1 Knoten und %2 Kanten.\n"
+
+#: libviews/callgraphview.cpp:2034
+msgctxt "CallGraphView|"
+msgid "No graph available because the layouting process failed.\n"
+msgstr ""
+"Es wird kein Graph gezeichnet, da der Layout-Prozess fehlgeschlagen ist.\n"
+
+#: libviews/callgraphview.cpp:2036
+#, qt-format
+msgctxt "CallGraphView|"
+msgid ""
+"Trying to run the following command did not work:\n"
+"'%1'\n"
+msgstr ""
+"Der Versuch, den folgenden Befehl auszuführen, ist fehlgeschlagen:\n"
+"„%1“\n"
+
+#: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
+msgctxt "CallGraphView|"
+msgid "Please check that 'dot' is installed (package GraphViz)."
+msgstr ""
+"Bitte überprüfen Sie, ob „dot“ installiert ist (aus dem Paket GraphViz)."
+
+#: libviews/callgraphview.cpp:2080
+msgctxt "CallGraphView|"
+msgid "No item activated for which to draw the call graph."
+msgstr "Es ist kein Element aktiviert, um den Aufrufgraph zu zeichnen."
+
+#: libviews/callgraphview.cpp:2092
+msgctxt "CallGraphView|"
+msgid "No call graph can be drawn for the active item."
+msgstr "Für das aktive Element kann kein Aufrufgraph gezeichnet werden."
+
+#: libviews/callgraphview.cpp:2554
+msgctxt "CallGraphView|"
+msgid "Error running the graph layouting tool.\n"
+msgstr "Bei der Berechnung des Graphenlayouts ist ein Fehler aufgetreten.\n"
+
+#: libviews/callgraphview.cpp:2559
+#, qt-format
+msgctxt "CallGraphView|"
+msgid ""
+"There is no call graph available for function\n"
+"\t'%1'\n"
+"because it has no cost of the selected event type."
+msgstr ""
+"Es kann kein Aufrufgraph gezeichnet werden für die Funktion\n"
+"\t„%1“,\n"
+"da sie bezüglich des gewählten Ereignistypen keine Kosten aufweist."
+
+#: libviews/callgraphview.cpp:2773
+msgctxt "CallGraphView|"
+msgid "Caller Depth"
+msgstr "Tiefe in Richtung Aufrufer"
+
+#: libviews/callgraphview.cpp:2774 libviews/callgraphview.cpp:2814
+msgctxt "CallGraphView|"
+msgid "Unlimited"
+msgstr "Unbegrenzt"
+
+#: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
+msgctxt "CallGraphView|None"
+msgid "Depth 0"
+msgstr "Tiefe 0"
+
+#: libviews/callgraphview.cpp:2778 libviews/callgraphview.cpp:2818
+msgctxt "CallGraphView|"
+msgid "max. 1"
+msgstr "max. 1"
+
+#: libviews/callgraphview.cpp:2779 libviews/callgraphview.cpp:2819
+msgctxt "CallGraphView|"
+msgid "max. 2"
+msgstr "max. 2"
+
+#: libviews/callgraphview.cpp:2780 libviews/callgraphview.cpp:2820
+msgctxt "CallGraphView|"
+msgid "max. 5"
+msgstr "max. 5"
+
+#: libviews/callgraphview.cpp:2781 libviews/callgraphview.cpp:2821
+msgctxt "CallGraphView|"
+msgid "max. 10"
+msgstr "max. 10"
+
+#: libviews/callgraphview.cpp:2782 libviews/callgraphview.cpp:2822
+msgctxt "CallGraphView|"
+msgid "max. 15"
+msgstr "max. 15"
+
+#: libviews/callgraphview.cpp:2813
+msgctxt "CallGraphView|"
+msgid "Callee Depth"
+msgstr "Tiefe in Richtung Aufgerufener"
+
+#: libviews/callgraphview.cpp:2853
+msgctxt "CallGraphView|"
+msgid "Min. Node Cost"
+msgstr "Min. Knotenkosten"
+
+#: libviews/callgraphview.cpp:2854
+msgctxt "CallGraphView|"
+msgid "No Minimum"
+msgstr "Kein Minimum"
+
+#: libviews/callgraphview.cpp:2860
+msgctxt "CallGraphView|"
+msgid "50 %"
+msgstr "50 %"
+
+#: libviews/callgraphview.cpp:2861
+msgctxt "CallGraphView|"
+msgid "20 %"
+msgstr "20 %"
+
+#: libviews/callgraphview.cpp:2862
+msgctxt "CallGraphView|"
+msgid "10 %"
+msgstr "10 %"
+
+#: libviews/callgraphview.cpp:2863
+msgctxt "CallGraphView|"
+msgid "5 %"
+msgstr "5 %"
+
+#: libviews/callgraphview.cpp:2864
+msgctxt "CallGraphView|"
+msgid "2 %"
+msgstr "2 %"
+
+#: libviews/callgraphview.cpp:2865
+msgctxt "CallGraphView|"
+msgid "1 %"
+msgstr "1 %"
+
+#: libviews/callgraphview.cpp:2895
+msgctxt "CallGraphView|"
+msgid "Min. Call Cost"
+msgstr "Min. Aufrufkosten"
+
+#: libviews/callgraphview.cpp:2896
+msgctxt "CallGraphView|"
+msgid "Same as Node"
+msgstr "Wie Knoten"
+
+#: libviews/callgraphview.cpp:2898
+msgctxt "CallGraphView|"
+msgid "50 % of Node"
+msgstr "50 % des Knotens"
+
+#: libviews/callgraphview.cpp:2900
+msgctxt "CallGraphView|"
+msgid "20 % of Node"
+msgstr "20 % des Knotens"
+
+#: libviews/callgraphview.cpp:2902
+msgctxt "CallGraphView|"
+msgid "10 % of Node"
+msgstr "10 % des Knotens"
+
+#: libviews/callgraphview.cpp:2931
+msgctxt "CallGraphView|"
+msgid "Birds-eye View"
+msgstr "Übersicht"
+
+#: libviews/callgraphview.cpp:2932
+msgctxt "CallGraphView|"
+msgid "Top Left"
+msgstr "Oben links"
+
+#: libviews/callgraphview.cpp:2933
+msgctxt "CallGraphView|"
+msgid "Top Right"
+msgstr "Oben rechts"
+
+#: libviews/callgraphview.cpp:2934
+msgctxt "CallGraphView|"
+msgid "Bottom Left"
+msgstr "Unten links"
+
+#: libviews/callgraphview.cpp:2935
+msgctxt "CallGraphView|"
+msgid "Bottom Right"
+msgstr "Unten rechts"
+
+#: libviews/callgraphview.cpp:2936
+msgctxt "CallGraphView|"
+msgid "Automatic"
+msgstr "Automatisch"
+
+#: libviews/callgraphview.cpp:2937
+msgctxt "CallGraphView|"
+msgid "Hide"
+msgstr "Ausblenden"
+
+#: libviews/callgraphview.cpp:2967
+msgctxt "CallGraphView|"
+msgid "Layout"
+msgstr "Layout"
+
+#: libviews/callgraphview.cpp:2968
+msgctxt "CallGraphView|"
+msgid "Top to Down"
+msgstr "Oben nach Unten"
+
+#: libviews/callgraphview.cpp:2969
+msgctxt "CallGraphView|"
+msgid "Left to Right"
+msgstr "Links nach Rechts"
+
+#: libviews/callgraphview.cpp:2970
+msgctxt "CallGraphView|"
+msgid "Circular"
+msgstr "Kreisförmig"
+
+#: libviews/callgraphview.cpp:3010 libviews/callgraphview.cpp:3015
+#: libviews/callgraphview.cpp:3035
+#, qt-format
+msgctxt "CallGraphView|"
+msgid "Go to '%1'"
+msgstr "Gehe zu „%1“"
+
+#: libviews/callgraphview.cpp:3046
+msgctxt "CallGraphView|"
+msgid "Stop Layouting"
+msgstr "Anhalten der Berechnung des Graphlayouts"
+
+#: libviews/callgraphview.cpp:3053
+msgctxt "CallGraphView|"
+msgid "Export Graph"
+msgstr "Graph exportieren"
+
+#: libviews/callgraphview.cpp:3054
+msgctxt "CallGraphView|"
+msgid "As DOT file..."
+msgstr "Als DOT-Datei ..."
+
+#: libviews/callgraphview.cpp:3055
+msgctxt "CallGraphView|"
+msgid "As Image..."
+msgstr "Als Bild ..."
+
+#: libviews/callgraphview.cpp:3058
+msgctxt "CallGraphView|"
+msgid "Graph"
+msgstr "Graph"
+
+#: libviews/callgraphview.cpp:3066
+msgctxt "CallGraphView|"
+msgid "Arrows for Skipped Calls"
+msgstr "Pfeile für übersprungene Aufrufe"
+
+#: libviews/callgraphview.cpp:3071
+msgctxt "CallGraphView|"
+msgid "Inner-cycle Calls"
+msgstr "Innerzyklische Aufrufe"
+
+#: libviews/callgraphview.cpp:3076
+msgctxt "CallGraphView|"
+msgid "Cluster Groups"
+msgstr "Gruppe zusammenziehen"
+
+#: libviews/callgraphview.cpp:3080
+msgctxt "CallGraphView|"
+msgid "Visualization"
+msgstr "Darstellung"
+
+#: libviews/callgraphview.cpp:3081
+msgctxt "CallGraphView|"
+msgid "Compact"
+msgstr "Kompakt"
+
+#: libviews/callgraphview.cpp:3084
+msgctxt "CallGraphView|"
+msgid "Normal"
+msgstr "Normal"
+
+#: libviews/callgraphview.cpp:3087
+msgctxt "CallGraphView|"
+msgid "Tall"
+msgstr "Groß"
+
+#: libviews/callgraphview.cpp:3119
+msgctxt "CallGraphView|"
+msgid "Export Graph As Image"
+msgstr "Graph als Bild exportieren"
+
+#: libviews/callgraphview.cpp:3121
+msgctxt "CallGraphView|"
+msgid "Images (*.png *.jpg)"
+msgstr "Bilder (*.png *.jpg)"
+
+#: libviews/callitem.cpp:73 libviews/partlistitem.cpp:131
+msgctxt "QObject|"
+msgid "(active)"
+msgstr "(aktiv)"
+
+#: libviews/callmapview.cpp:52
+msgctxt "CallMapView|Name"
+msgid "A thing's name"
+msgstr "Der Name eines Gegenstandes"
+
+#: libviews/callmapview.cpp:53
+msgctxt "CallMapView|"
+msgid "Cost"
+msgstr "Kosten"
+
+#: libviews/callmapview.cpp:54
+msgctxt "CallMapView|"
+msgid "Location"
+msgstr "Ort"
+
+#: libviews/callmapview.cpp:56
+msgctxt "CallMapView|"
+msgid "Calls"
+msgstr "Aufrufe"
+
+#: libviews/callmapview.cpp:91
+msgctxt "CallMapView|"
+msgid ""
+"<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>Aufrufergraph</b><p>Dieser Graph zeigt die verschachtelte Hierarchie "
+"aller Aufrufer der aktuell gewählten Funktion. Jedes farbige Rechteck stellt "
+"eine Funktion dar. Die Fläche entspricht ungefähr den Laufzeitkosten der "
+"Funktion(es gibt allerdings gewisse Beschränkungen in der Darstellung).</p>"
+
+#: libviews/callmapview.cpp:98
+msgctxt "CallMapView|"
+msgid ""
+"<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>Aufrufgraph</b><p>Dieser Graph zeigt die verschachtelte Hierarchie aller "
+"Aufgerufenen der aktuell gewählten Funktion. Jedes farbige Rechteck stellt "
+"eine Funktion dar. Die Fläche entspricht ungefähr den darin aufgelaufenen "
+"Kosten, während die aktuelle Funktion ausgeführt wurde (es gibt allerdings "
+"gewisse Beschränkungen in der Darstellung).</p>"
+
+#: libviews/callmapview.cpp:106
+msgctxt "CallMapView|"
+msgid ""
+"<p>Appearance options can be found in the in the context menu. To get exact "
+"size proportions, choose 'Hide incorrect borders'. As this mode can be "
+"<em>very</em> time consuming, you may want to limit the maximum drawn "
+"nesting level before. 'Best' determinates the split direction for children "
+"from the aspect ratio of the parent. 'Always Best' decides on remaining "
+"space for each sibling. 'Ignore Proportions' takes space for function name "
+"drawing <em>before</em> drawing children. Note that size proportions can get "
+"<em>heavily</em> wrong.</p><p>This is a <em>TreeMap</em> widget. Keyboard "
+"navigation is available with the left/right arrow keys for traversing "
+"siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
+"em> activates the current item.</p>"
+msgstr ""
+"<p>Einstellungen für die Darstellung befinden sich in den Kontextmenüs. Um "
+"exakte Größenverhältnisse zu erhalten, wählen Sie „Ungenaue Ränder "
+"ausblenden“. Da dieser Modus <em>sehr</em> zeitaufwändig sein kann, sollten "
+"Sie vorher die maximale Verschachtelungstiefe begrenzen. „Beste "
+"Teilungsrichtung pro Ebene“ legt die Teilungsrichtung für die "
+"Untergeordneten nach dem Darstellungsverhältnis des Übergeordneten fest. "
+"„Immer Beste“ entscheidet nach dem verbleibenden Platz für die Geschwister. "
+"„Proportionen ignorieren“ nutzt den Platz zuerst für die "
+"Funktionsbeschriftung, <em>bevor</em> Untergeordnete dargestellt werden. "
+"Dadurch kann das Größenverhältnis <em>stark</em> abweichen.</p> <p>Es "
+"handelt sich um eine <em>Baumansicht</em>. Mit den Tasten Pfeil links/Pfeil "
+"rechts kann man sich zwischen benachbarten Geschwistern bewegen, mit Pfeil "
+"hoch/Pfeil runter bewegt man sich in der Verschachtelungsebene auf- und "
+"abwärts. Mit der <em>Eingabe</em>-Taste wird das aktuelle Objekt aktiviert.</"
+"p>"
+
+#: libviews/callmapview.cpp:139
+msgctxt "CallMapView|"
+msgid "Go To"
+msgstr "Gehe zu"
+
+#: libviews/callmapview.cpp:170
+msgctxt "CallMapView|"
+msgid "Stop at Depth"
+msgstr "Anhalten bei Tiefe"
+
+#: libviews/callmapview.cpp:171
+msgctxt "CallMapView|"
+msgid "No Depth Limit"
+msgstr "Keine Tiefenbeschränkung"
+
+#: libviews/callmapview.cpp:173
+msgctxt "CallMapView|"
+msgid "Depth 10"
+msgstr "Tiefe 10"
+
+#: libviews/callmapview.cpp:174
+msgctxt "CallMapView|"
+msgid "Depth 15"
+msgstr "Tiefe 15"
+
+#: libviews/callmapview.cpp:175
+msgctxt "CallMapView|"
+msgid "Depth 20"
+msgstr "Tiefe 20"
+
+#: libviews/callmapview.cpp:178
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Depth of '%1' (%2)"
+msgstr "Tiefe von „%1“ (%2)"
+
+#: libviews/callmapview.cpp:185
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Decrement Depth (to %1)"
+msgstr "Dekrementierungs-Tiefe (auf %1)"
+
+#: libviews/callmapview.cpp:187
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Increment Depth (to %1)"
+msgstr "Inkrementierungs-Tiefe (auf %1)"
+
+#: libviews/callmapview.cpp:213
+msgctxt "CallMapView|"
+msgid "Stop at Function"
+msgstr "Halten bei Funktion"
+
+#: libviews/callmapview.cpp:214
+msgctxt "CallMapView|"
+msgid "No Function Limit"
+msgstr "Keine Beschränkung"
+
+#: libviews/callmapview.cpp:257
+msgctxt "CallMapView|"
+msgid "Stop at Area"
+msgstr "Halten im Bereich"
+
+#: libviews/callmapview.cpp:258
+msgctxt "CallMapView|"
+msgid "No Area Limit"
+msgstr "Keine Flächenbeschränkung"
+
+#: libviews/callmapview.cpp:260
+msgctxt "CallMapView|"
+msgid "100 Pixels"
+msgstr "100 Pixel"
+
+#: libviews/callmapview.cpp:261
+msgctxt "CallMapView|"
+msgid "200 Pixels"
+msgstr "200 Pixel"
+
+#: libviews/callmapview.cpp:262
+msgctxt "CallMapView|"
+msgid "500 Pixels"
+msgstr "500 Pixel"
+
+#: libviews/callmapview.cpp:263
+msgctxt "CallMapView|"
+msgid "1000 Pixels"
+msgstr "1000 Pixels"
+
+#: libviews/callmapview.cpp:269
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Area of '%1' (%2)"
+msgstr "Fläche von „%1“ (%2)"
+
+#: libviews/callmapview.cpp:275
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Double Area Limit (to %1)"
+msgstr "Verdopple Flächenbeschränkung auf %1"
+
+#: libviews/callmapview.cpp:277
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Half Area Limit (to %1)"
+msgstr "Bereichsbegrenzung halbieren (auf %1)"
+
+#: libviews/callmapview.cpp:327
+msgctxt "CallMapView|"
+msgid "Visualization"
+msgstr "Darstellung"
+
+#: libviews/callmapview.cpp:328
+msgctxt "CallMapView|"
+msgid "Split Direction"
+msgstr "Aufteilungsrichtung"
+
+#: libviews/callmapview.cpp:331
+msgctxt "CallMapView|"
+msgid "Skip Incorrect Borders"
+msgstr "Unpassende Ränder nicht zeichnen"
+
+#: libviews/callmapview.cpp:336
+msgctxt "CallMapView|"
+msgid "Border Width"
+msgstr "Randbreite"
+
+#: libviews/callmapview.cpp:337
+msgctxt "CallMapView|"
+msgid "Border 0"
+msgstr "Randbreite 0"
+
+#: libviews/callmapview.cpp:339
+msgctxt "CallMapView|"
+msgid "Border 1"
+msgstr "Randbreite 1"
+
+#: libviews/callmapview.cpp:340
+msgctxt "CallMapView|"
+msgid "Border 2"
+msgstr "Randbreite 2"
+
+#: libviews/callmapview.cpp:341
+msgctxt "CallMapView|"
+msgid "Border 3"
+msgstr "Randbreite 3"
+
+#: libviews/callmapview.cpp:346
+msgctxt "CallMapView|"
+msgid "Draw Symbol Names"
+msgstr "Symbolnamen anzeigen"
+
+#: libviews/callmapview.cpp:348
+msgctxt "CallMapView|"
+msgid "Draw Cost"
+msgstr "Kosten anzeigen"
+
+#: libviews/callmapview.cpp:350
+msgctxt "CallMapView|"
+msgid "Draw Location"
+msgstr "Quelltextposition anzeigen"
+
+#: libviews/callmapview.cpp:352
+msgctxt "CallMapView|"
+msgid "Draw Calls"
+msgstr "Aufrufe anzeigen"
+
+#: libviews/callmapview.cpp:356
+msgctxt "CallMapView|"
+msgid "Ignore Proportions"
+msgstr "Proportionen ignorieren"
+
+#: libviews/callmapview.cpp:358
+msgctxt "CallMapView|"
+msgid "Allow Rotation"
+msgstr "Schriftdrehung"
+
+#: libviews/callmapview.cpp:376
+msgctxt "CallMapView|"
+msgid "Shading"
+msgstr "Schattierung"
+
+#: libviews/callmapview.cpp:428
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Call Map: Current is '%1'"
+msgstr "Aufrufkarte: Aktuell ist „%1“"
+
+#: libviews/callmapview.cpp:621
+msgctxt "QObject|"
+msgid "(no function)"
+msgstr "(keine Funktion)"
+
+#: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
+msgctxt "QObject|"
+msgid "(no call)"
+msgstr "(kein Aufruf)"
+
+#: libviews/callview.cpp:37
+msgctxt "CallView|"
+msgid "Cost"
+msgstr "Kosten"
+
+#: libviews/callview.cpp:38
+msgctxt "CallView|"
+msgid "Cost per call"
+msgstr "Kosten je Aufruf"
+
+#: libviews/callview.cpp:39
+msgctxt "CallView|"
+msgid "Cost 2"
+msgstr "Kosten 2"
+
+#: libviews/callview.cpp:40
+msgctxt "CallView|"
+msgid "Cost 2 per call"
+msgstr "Kosten 2 je Aufruf"
+
+#: libviews/callview.cpp:41
+msgctxt "CallView|"
+msgid "Count"
+msgstr "Zähler"
+
+#: libviews/callview.cpp:42
+msgctxt "CallView|"
+msgid "Caller"
+msgstr "Aufrufer"
+
+#: libviews/callview.cpp:42
+msgctxt "CallView|"
+msgid "Callee"
+msgstr "Aufgerufener"
+
+#: libviews/callview.cpp:76
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callers</b><p>This list shows all functions calling the "
+"current selected one directly, together with a call count and the cost spent "
+"in the current selected function while being called from the function from "
+"the list.</p><p>An icon instead of an inclusive cost specifies that this is "
+"a call inside of a recursive cycle. An inclusive cost makes no sense here.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>Liste direkter Aufrufer</b> <p>Diese Liste zeigt alle Funktionen, die die "
+"aktuell gewählte aufrufen zusammen mit der Aufrufanzahl und den "
+"(kumulierten) Kosten der gewählten Funktion bei Aufruf von der Funktion in "
+"der Liste.</p> <p>Ein Symbol anstelle kumulierter Kosten zeigt, dass dieser "
+"Aufruf zu einem rekursiven Zyklus gehört. An dieser Stelle machen kumulierte "
+"Kosten keinen Sinn.</p> <p>Durch Auswahl einer Funktion wird diese zur "
+"aktuell gewählten in diesem Fenster. Sind dagegen zwei getrennte Bereiche "
+"aktiv, dann wird die Funktion im anderen Fenster gewechselt.</p>"
+
+#: libviews/callview.cpp:89
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callees</b><p>This list shows all functions called by the "
+"current selected one directly, together with a call count and the cost spent "
+"in this function while being called from the selected function.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>Liste der direkt Aufgerufenen</b> <p>Diese Liste zeigt alle direkt durch "
+"die aktuell gewählte Funktion aufgerufenen Funktionen zusammen mit der "
+"Aufrufanzahl und den (kumulierten) Kosten, die in der aufgerufenen Funktion "
+"verursacht wurden, wenn diese durch die gewählte Funktion aufgerufen wurde.</"
+"p> <p>Durch die Auswahl einer Funktion wird diese zur aktuell gewählten in "
+"diesem Fenster. Wenn zwei Bereiche gezeigt werden, ändert sich hingegen die "
+"aktuell gewählte Funktion im anderen Fenster.</p>"
+
+#: libviews/callview.cpp:118 libviews/callview.cpp:123
+#, qt-format
+msgctxt "CallView|"
+msgid "Go to '%1'"
+msgstr "Gehe zu „%1“"
+
+#: libviews/callview.cpp:257 libviews/callview.cpp:261
+#, qt-format
+msgctxt "CallView|"
+msgid "%1 per call"
+msgstr "%1 je Aufruf"
+
+#: libviews/costlistitem.cpp:53
+#, qt-format
+msgctxt "QObject|"
+msgid "(%n item(s) skipped)"
+msgid_plural "(%n item(s) skipped)"
+msgstr[0] "(%n Eintrag übergangen)"
+msgstr[1] "(%n Einträge übergangen)"
+
+#: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
+#, qt-format
+msgctxt "QObject|"
+msgid "(%n function(s) skipped)"
+msgid_plural "(%n function(s) skipped)"
+msgstr[0] "(%n Funktion übersprungen)"
+msgstr[1] "(%n Funktionen übersprungen)"
+
+#: libviews/coverageview.cpp:37
+msgctxt "CoverageView|"
+msgid "Incl."
+msgstr "Inkl."
+
+#: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
+msgctxt "CoverageView|"
+msgid "Distance"
+msgstr "Distanz"
+
+#: libviews/coverageview.cpp:41
+msgctxt "CoverageView|"
+msgid "Called"
+msgstr "Aufgerufen"
+
+#: libviews/coverageview.cpp:42
+msgctxt "CoverageView|"
+msgid "Caller"
+msgstr "Aufrufer"
+
+#: libviews/coverageview.cpp:46
+msgctxt "CoverageView|"
+msgid "Self"
+msgstr "Exkl."
+
+#: libviews/coverageview.cpp:48
+msgctxt "CoverageView|"
+msgid "Calling"
+msgstr "Aufgerufen"
+
+#: libviews/coverageview.cpp:49
+msgctxt "CoverageView|"
+msgid "Callee"
+msgstr "Aufgerufener"
+
+#: libviews/coverageview.cpp:84
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callers</b><p>This list shows all functions calling the "
+"current selected one, either directly or with several functions in-between "
+"on the stack; the number of functions in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the selected function while a "
+"listed function is active; relative cost is the percentage of all cost spent "
+"in the selected function while the listed one is active. The cost graphic "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls from the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+"<b>Liste aller Aufrufer</b> <p>Diese Liste zeigt alle Funktionen, die die "
+"aktuell gewählte entweder direkt oder über mehrere Zwischenfunktionen "
+"aufrufen. Der Abstand zwischen zwei sich direkt aufrufenden Funktionen heißt "
+"<em>Distanz</em> und beträgt 1. Existieren z. B. drei Funktionen A, B und C, "
+"so beträgt die Distanz zwischen A und C 2, wenn A B aufruft und B C, also A "
+"=> B => C.</p> <p>Absolute Kosten sind die Kosten in der aktuellen Funktion, "
+"wenn die aufgeführte Funktion aktiv ist. Relative Kosten sind der "
+"Prozentsatz aller in der gewählten Funktion verursachten Kosten, während die "
+"aufgeführte aktiv war. Der Kostengraph zeigt logarithmische Prozentangaben "
+"für verschiedene Distanzen in verschiedenen Farben an.</p> <p>Da von der "
+"gleichen Funktion viele Aufrufe ausgehen können, zeigt die Distanzspalte "
+"manchmal den Distanzbereich für alle ausgeführten Aufrufe. In Klammern "
+"dahinter steht dann die mittlere Distanz.</p> <p>Durch Auswahl einer "
+"Funktion wird diese zur aktuellen in diesem Fenster. Arbeitet man mit zwei "
+"getrennten Bereichen, wird die Funktion im anderen Bereich durch Auswahl "
+"gewechselt.</p>"
+
+#: libviews/coverageview.cpp:114
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callees</b><p>This list shows all functions called by the "
+"current selected one, either directly or with several function in-between on "
+"the stack; the number of function in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the listed function while the "
+"selected is active; relative cost is the percentage of all cost spent in the "
+"listed function while the selected one is active. The cost graphic always "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls to the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+"<b>Liste aller Aufgerufenen</b><p>Diese Liste zeigt alle Funktionen, die "
+"durch die aktuell gewählte entweder direkt oder über mehrere "
+"Zwischenfunktionen aufgerufen wurden. Der Abstand zwischen zwei sich direkt "
+"aufrufenden Funktionen heißt <em>Distanz</em> und beträgt 1. Existieren z. "
+"B. drei Funktionen A, B und C, so beträgt die Distanz zwischen A und C 2, "
+"wenn A B aufruft und B C, also A => B => C.</p> <p>Absolute Kosten sind die "
+"Kosten in der aufgeführten Funktion, wenn die gewählte Funktion aktiv ist. "
+"Relative Kosten sind der Prozentsatz aller in der aufgeführten Funktion "
+"verursachten Kosten, während die gewählte aktiv war. Der Kostengraph zeigt "
+"logarithmische Prozentangaben für verschiedene Distanzen in verschiedenen "
+"Farben an.</p> <p>Da von der gleichen Funktion viele Aufrufe ausgehen "
+"können, zeigt die Distanzspalte manchmal den Distanzbereich für alle "
+"ausgeführten Aufrufe. In Klammern dahinter steht dann die mittlere Distanz, "
+"das ist die Distanz, über die der Hauptteil der Kosten verursacht wurde. </"
+"p> <p>Durch die Auswahl einer Funktion wird diese zur aktuellen in diesem "
+"Fenster. Arbeitet man mit zwei getrennten Bereichen, wird die Funktion im "
+"anderen Bereich durch Auswahl gewechselt.</p>"
+
+#: libviews/coverageview.cpp:160
+#, qt-format
+msgctxt "CoverageView|"
+msgid "Go to '%1'"
+msgstr "Gehe zu „%1“"
+
+#: libviews/eventtypeitem.cpp:48
+msgctxt "QObject|"
+msgid "Unknown Type"
+msgstr "Unbekannter Typ"
+
+#: libviews/eventtypeview.cpp:37
+msgctxt "EventTypeView|"
+msgid "Event Type"
+msgstr "Ereignistyp"
+
+#: libviews/eventtypeview.cpp:38
+msgctxt "EventTypeView|"
+msgid "Incl."
+msgstr "Inkl."
+
+#: libviews/eventtypeview.cpp:39
+msgctxt "EventTypeView|"
+msgid "Self"
+msgstr "Exkl."
+
+#: libviews/eventtypeview.cpp:40
+msgctxt "EventTypeView|"
+msgid "Short"
+msgstr "Kurz"
+
+#: libviews/eventtypeview.cpp:42
+msgctxt "EventTypeView|"
+msgid "Formula"
+msgstr "Formel"
+
+#: libviews/eventtypeview.cpp:76
+msgctxt "EventTypeView|"
+msgid ""
+"<b>Cost Types List</b><p>This list shows all cost types available and what "
+"the self/inclusive cost of the current selected function is for that cost "
+"type.</p><p>By choosing a cost type from the list, you change the cost type "
+"of costs shown all over KCachegrind to be the selected one.</p>"
+msgstr ""
+"<b>Liste der Kostentypen</b><p>Diese Liste zeigt alle verfügbaren "
+"Kostentypen sowie jeweils die inklusiven und exklusiven Kosten der "
+"ausgewählten Funktion an. </p><p>Durch Auswählen eines Ereignistyps aus der "
+"Liste werden alle in KCachegrind angezeigten Kosten auf den entsprechenden "
+"Typ gesetzt.</p>"
+
+#: libviews/eventtypeview.cpp:96
+msgctxt "EventTypeView|"
+msgid "Set as Secondary Event Type"
+msgstr "Festlegen als zweiten Ereignistyp"
+
+#: libviews/eventtypeview.cpp:98
+msgctxt "EventTypeView|"
+msgid "Hide Secondary Event Type"
+msgstr "Zweiten Ereignistyp ausblenden"
+
+#: libviews/eventtypeview.cpp:107
+msgctxt "EventTypeView|"
+msgid "Edit Long Name"
+msgstr "Langnamen bearbeiten"
+
+#: libviews/eventtypeview.cpp:108
+msgctxt "EventTypeView|"
+msgid "Edit Short Name"
+msgstr "Kurznamen bearbeiten"
+
+#: libviews/eventtypeview.cpp:109
+msgctxt "EventTypeView|"
+msgid "Edit Formula"
+msgstr "Formel bearbeiten"
+
+#: libviews/eventtypeview.cpp:110
+msgctxt "EventTypeView|"
+msgid "Remove"
+msgstr "Entfernen"
+
+#: libviews/eventtypeview.cpp:119
+msgctxt "EventTypeView|"
+msgid "New Event Type..."
+msgstr "Neuer Ereignistyp ..."
+
+#: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
+#, qt-format
+msgctxt "EventTypeView|"
+msgid "New%1"
+msgstr "Neu %1"
+
+#: libviews/eventtypeview.cpp:160
+#, qt-format
+msgctxt "EventTypeView|"
+msgid "New Event Type %1"
+msgstr "Neuer Ereignistyp %1"
+
+#: libviews/functionlistmodel.cpp:45
+msgctxt "FunctionListModel|"
+msgid "Incl."
+msgstr "Inkl."
+
+#: libviews/functionlistmodel.cpp:46
+msgctxt "FunctionListModel|"
+msgid "Self"
+msgstr "Exkl."
+
+#: libviews/functionlistmodel.cpp:47
+msgctxt "FunctionListModel|"
+msgid "Called"
+msgstr "Aufgerufen"
+
+#: libviews/functionlistmodel.cpp:48
+msgctxt "FunctionListModel|"
+msgid "Function"
+msgstr "Funktion"
+
+#: libviews/functionlistmodel.cpp:49
+msgctxt "FunctionListModel|"
+msgid "Location"
+msgstr "Ort"
+
+#: libviews/functionlistmodel.cpp:89
+#, qt-format
+msgctxt "FunctionListModel|"
+msgid "(%1 function(s) skipped)"
+msgstr "(%1 Funktion(en) übersprungen)"
+
+#: libviews/functionselection.cpp:87
+msgctxt "FunctionSelection|"
+msgid "Function Profile"
+msgstr "Funktionsprofil"
+
+#: libviews/functionselection.cpp:95
+msgctxt "FunctionSelection|"
+msgid "&Search:"
+msgstr "&Suche:"
+
+#: libviews/functionselection.cpp:101
+msgctxt "FunctionSelection|"
+msgid "Search Query"
+msgstr "Such-Anfrage"
+
+#: libviews/functionselection.cpp:116
+msgctxt "FunctionSelection|"
+msgid "Self"
+msgstr "Exkl."
+
+#: libviews/functionselection.cpp:116
+msgctxt "FunctionSelection|"
+msgid "Group"
+msgstr "Gruppe"
+
+#: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
+msgctxt "FunctionSelection|"
+msgid "(No Grouping)"
+msgstr "(keine Gruppierung)"
+
+#: libviews/functionselection.cpp:209
+msgctxt "FunctionSelection|"
+msgid ""
+"<b>The Flat Profile</b><p>The flat profile contains a group and a function "
+"selection list. The group list contains all groups where costs are spent in, "
+"depending on the chosen group type. The group list is hidden when group type "
+"'Function' is selected.</p><p>The function list contains the functions of "
+"the selected group (or all for 'Function' group type), ordered by the costs "
+"spent therein. Functions with costs less than 1% are hidden on default.</p>"
+msgstr ""
+"<b>Das Kostenprofil</b><p>Das Kostenprofil umfasst eine sortierte Liste für "
+"Funktionsgruppen und Funktionen. Die Gruppenliste enthält alle Gruppen mit "
+"den darin aufgewendeten Kosten, abhängig vom gewählten Gruppentyp. Ist der "
+"Gruppentyp „Funktion“ gewählt, wird die Gruppenliste ausgeblendet.</p> "
+"<p>Die Funktionsliste enthält alle Funktionen der gewählten Gruppe (oder "
+"alle Funktionen, wenn der Gruppentyp „Funktion“ gewählt wurde), "
+"standardmäßig sortiert nach den in den Funktionen aufgewendeten "
+"Inklusivkosten. Funktionen, deren Kosten weniger als 1 % betragen, werden "
+"standardmäßig ausgeblendet.</p> "
+
+#: libviews/functionselection.cpp:287
+#, qt-format
+msgctxt "FunctionSelection|"
+msgid "Go to '%1'"
+msgstr "Gehe zu „%1“"
+
+#: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
+msgctxt "FunctionSelection|"
+msgid "Grouping"
+msgstr "Gruppierung"
+
+#: libviews/functionselection.cpp:353
+msgctxt "FunctionSelection|"
+msgid "No Grouping"
+msgstr "Keine Gruppierung"
+
+#: libviews/instritem.cpp:114 libviews/sourceitem.cpp:94
+#, qt-format
+msgctxt "QObject|"
+msgid "Active call to '%1'"
+msgstr "Aktiver Aufruf von „%1“"
+
+#: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
+#, qt-format
+msgctxt "QObject|"
+msgid "Call to '%1'"
+msgstr "Aufruf von „%1“"
+
+#: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
+#, qt-format
+msgctxt "QObject|"
+msgid "%n call(s) to '%2'"
+msgid_plural "%n call(s) to '%2'"
+msgstr[0] "%n Aufruf von „%2“"
+msgstr[1] "%n Aufrufe von „%2“"
+
+#: libviews/instritem.cpp:155
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to 0x%3"
+msgstr "%1 von %2 Ausführungen nach 0x%3 springen"
+
+#: libviews/instritem.cpp:160
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 times to 0x%2"
+msgstr "%1 mal nach 0x%2 springen"
+
+#: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
+msgctxt "QObject|"
+msgid "(cycle)"
+msgstr "(Zyklus)"
+
+#: libviews/instrview.cpp:193
+msgctxt "InstrView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/instrview.cpp:194
+msgctxt "InstrView|"
+msgid "Cost"
+msgstr "Kosten"
+
+#: libviews/instrview.cpp:195
+msgctxt "InstrView|"
+msgid "Cost 2"
+msgstr "Kosten 2"
+
+#: libviews/instrview.cpp:197
+msgctxt "InstrView|"
+msgid "Hex"
+msgstr "Hexcode"
+
+#: libviews/instrview.cpp:199
+msgctxt "InstrView|"
+msgid "Assembly Instructions"
+msgstr "Assembler-Instruktionen"
+
+#: libviews/instrview.cpp:200
+msgctxt "InstrView|"
+msgid "Source Position"
+msgstr "Position im Quelltext"
+
+#: libviews/instrview.cpp:236
+msgctxt "InstrView|"
+msgid ""
+"<b>Annotated Machine Code</b><p>The annotated machine code list shows the "
+"assembly instructions of the current selected function together with (self) "
+"cost spent while executing an instruction. If this is a call instruction, "
+"lines with details on the call happening are inserted into the source: the "
+"cost spent inside of the call, the number of calls happening, and the call "
+"destination.</p><p>The machine code shown is generated with the 'objdump' "
+"utility from the 'binutils' package.</p><p>Select a line with call "
+"information to make the destination function of this call current.</p>"
+msgstr ""
+"<b>Kommentierter Maschinencode</b><p>Hier wird der Maschinencode der aktuell "
+"gewählten Funktion zusammen mit den Ausführungskosten der Befehle angezeigt. "
+"Handelt es sich um einen Aufruf, werden Zeilen mit detaillierten "
+"Informationen zum Aufruf in den Quelltext eingefügt: Dabei handelt es sich "
+"um die Ausführungskosten im Aufruf, die Anzahl der durchlaufenen Aufrufe "
+"sowie das Aufrufziel.</p><p>Der Maschinencode wird mit dem Befehl „objdump“ "
+"aus dem Paket „binutils“ erstellt.</p><p>Durch Anklicken eines Aufrufs wird "
+"die aufgerufene Funktion ausgewählt.</p>"
+
+#: libviews/instrview.cpp:265
+#, qt-format
+msgctxt "InstrView|"
+msgid "Go to '%1'"
+msgstr "Gehe zu „%1“"
+
+#: libviews/instrview.cpp:270
+#, qt-format
+msgctxt "InstrView|"
+msgid "Go to Address %1"
+msgstr "Gehe zu Adresse %1"
+
+#: libviews/instrview.cpp:282
+msgctxt "InstrView|"
+msgid "Hex Code"
+msgstr "Hexadezimalwert"
+
+#: libviews/instrview.cpp:573
+msgctxt "InstrView|"
+msgid "There is no instruction info in the profile data file."
+msgstr ""
+"Es existieren keine Informationen auf Assemblerbefehlsebene in der "
+"Profildatei."
+
+#: libviews/instrview.cpp:575
+msgctxt "InstrView|"
+msgid "Tip: For Callgrind, rerun with option"
+msgstr ""
+"Tipp: Bei Nutzung von Callgrind nehmen Sie die Messung bitte erneut unter "
+"Angabe der Option vor"
+
+#: libviews/instrview.cpp:576
+msgctxt "InstrView|"
+msgid "      --dump-instr=yes"
+msgstr "      --dump-instr=yes"
+
+#: libviews/instrview.cpp:577
+msgctxt "InstrView|"
+msgid "To see (conditional) jumps, additionally specify"
+msgstr "Um (bedingte) Sprünge zu sehen, verwendet Sie zusätzlich"
+
+#: libviews/instrview.cpp:578
+msgctxt "InstrView|"
+msgid "      --collect-jumps=yes"
+msgstr "      --collect-jumps=yes"
+
+#: libviews/instrview.cpp:826
+msgctxt "InstrView|"
+msgid "For annotated machine code, the following object file is needed:"
+msgstr ""
+"Für kommentierten Maschinencode wird die folgende Objektdatei benötigt:"
+
+#: libviews/instrview.cpp:831
+msgctxt "InstrView|"
+msgid "This file can not be found."
+msgstr "Diese Datei kann nicht gefunden werden."
+
+#: libviews/instrview.cpp:834
+msgctxt "InstrView|"
+msgid "If cross-compiled, set SYSROOT variable."
+msgstr "Bei Verwendung eines Cross-Compiler setzen Sie die Variable SYSROOT."
+
+#: libviews/instrview.cpp:858
+msgctxt "InstrView|"
+msgid "There is an error trying to execute the command"
+msgstr "Es ist ein Fehler bei der Ausführung des Befehls aufgetreten"
+
+#: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
+msgctxt "InstrView|"
+msgid "Check that you have installed 'objdump'."
+msgstr "Überprüfen Sie, ob „objdump“ installiert ist."
+
+#: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
+msgctxt "InstrView|"
+msgid "This utility can be found in the 'binutils' package."
+msgstr "Dieser Befehl stammt aus dem Paket „binutils“."
+
+#: libviews/instrview.cpp:966
+msgctxt "InstrView|"
+msgid "(No Instruction)"
+msgstr "(Keine Instruktion)"
+
+#: libviews/instrview.cpp:1134
+#, qt-format
+msgctxt "InstrView|"
+msgid "There are %n cost line(s) without machine code."
+msgid_plural "There are %n cost line(s) without machine code."
+msgstr[0] "Es gibt eine Zeile ohne Assemblercode."
+msgstr[1] "Es gibt %n Zeilen ohne Assemblercode."
+
+#: libviews/instrview.cpp:1136
+msgctxt "InstrView|"
+msgid "This happens because the code of"
+msgstr "Das passiert, weil der Quelltext von"
+
+#: libviews/instrview.cpp:1139
+msgctxt "InstrView|"
+msgid "does not seem to match the profile data file."
+msgstr "scheinbar nicht zur Profildatei passt."
+
+#: libviews/instrview.cpp:1142
+msgctxt "InstrView|"
+msgid "Are you using an old profile data file or is the above mentioned"
+msgstr "Benutzen Sie eine alte Profildatei oder ist das oben erwähnte"
+
+#: libviews/instrview.cpp:1144
+msgctxt "InstrView|"
+msgid "ELF object from an updated installation/another machine?"
+msgstr "Binärobjekt von einer neuen Installation oder einer anderen Maschine?"
+
+#: libviews/instrview.cpp:1152
+msgctxt "InstrView|"
+msgid "There seems to be an error trying to execute the command"
+msgstr ""
+"Es scheint einen Fehler bei der Ausführung des folgenden Befehls zu geben:"
+
+#: libviews/instrview.cpp:1156
+msgctxt "InstrView|"
+msgid "Check that the ELF object used in the command exists."
+msgstr "Überprüfen sie, ob das im Befehl angegebene Binärobjekt existiert."
+
+#: libviews/partgraph.cpp:154
+#, qt-format
+msgctxt "QObject|"
+msgid "Profile Part %1"
+msgstr "Profilabschnitt %1"
+
+#: libviews/partgraph.cpp:211
+msgctxt "QObject|"
+msgid "(no trace)"
+msgstr "(keine Profildatei geladen)"
+
+#: libviews/partgraph.cpp:214
+msgctxt "QObject|"
+msgid "(no part)"
+msgstr "(keine Profildatei geladen)"
+
+#: libviews/partlistitem.cpp:39
+msgctxt "QObject|"
+msgid "(none)"
+msgstr "(Nichts)"
+
+#: libviews/partselection.cpp:48
+msgctxt "PartSelection|"
+msgid "Parts Overview"
+msgstr "Übersicht der Profilabschnitte"
+
+#: libviews/partselection.cpp:61
+msgctxt "PartSelection|A thing's name"
+msgid "Name"
+msgstr "Name"
+
+#: libviews/partselection.cpp:62
+msgctxt "PartSelection|"
+msgid "Cost"
+msgstr "Kosten"
+
+#: libviews/partselection.cpp:69
+msgctxt "PartSelection|"
+msgid "(no trace parts)"
+msgstr "(keine Profildateien)"
+
+#: libviews/partselection.cpp:96
+msgctxt "PartSelection|"
+msgid ""
+"<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+"there are several profile data files from one profile run. The Trace Part "
+"Overview dockable shows these, horizontally ordered in execution time; the "
+"rectangle sizes are proportional to the total cost spent in the parts. You "
+"can select one or several parts to constrain all costs shown to these parts "
+"only.</p><p>The parts are further subdivided: there is a partitioning and an "
+"callee split mode: <ul><li>Partitioning: You see the partitioning into "
+"groups for a trace part, according to the group type selected. E.g. if ELF "
+"object groups are selected, you see colored rectangles for each used ELF "
+"object (shared library or executable), sized according to the cost spent "
+"therein.</li><li>Callee: A rectangle showing the inclusive cost of the "
+"current selected function in the trace part is shown. This is split up into "
+"smaller rectangles to show the costs of its callees.</li></ul></p>"
+msgstr ""
+"<b>Übersicht der Profilabschnitte</b><p>In einem KCachegrind-Fenster können "
+"gleichzeitig Informationen aus unterschiedlichen Profildateien angezeigt "
+"werden. Dies ist z. B. sinnvoll, wenn die Profildateien aus demselben "
+"Messvorgang stammen. Eine bei der Messung vorgenommene Nummerierung sorgt "
+"dafür, dass die Profildateien in dieser Übersicht dem gemessenen "
+"Zeitausschnitt entsprechend horizontal angeordnet werden. Die Rechteckgröße "
+"ist dabei proportional zu den in den Profildateien aufgeführten Kosten. "
+"Wählen Sie eine oder mehrere Profildateien aus, um sämtliche in KCachegrind "
+"angezeigten Kosten auf diese zu beschränken.</p> <p>Die den Profildateien "
+"entsprechenden Rechtecke sind je nach Anzeigemodus weiter unterteilt:"
+"<ul><li>Exklusivkosten-Modus: Es findet eine Unterteilung nach Gruppenarten "
+"statt, abhängig von der gewählten Gruppenart. Wurde z. B. die Gruppenart "
+"„Binärobjekte“ gewählt, stellen die eingebetteten Rechtecke der "
+"Profildateien die in den Binärobjekten aufgelaufenen Kosten dar.</li> "
+"<li>Inklusivkosten-Modus: Es wird ein Rechteck angezeigt, dessen Fläche den "
+"Inklusivkosten der ausgewählten Funktion entspricht. Dieses Rechteck ist zur "
+"Darstellung der Kosten der aufgerufenen Funktionen weiter untergliedert.</"
+"li></ul></p>"
+
+#: libviews/partselection.cpp:231
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Profile Part Overview: Current is '%1'"
+msgstr "Übersicht der Profilabschnitte: Aktuell ist „%1“"
+
+#: libviews/partselection.cpp:337
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Deselect '%1'"
+msgstr "„%1“ abwählen"
+
+#: libviews/partselection.cpp:339
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Select '%1'"
+msgstr "„%1“ auswählen"
+
+#: libviews/partselection.cpp:344
+msgctxt "PartSelection|"
+msgid "Select All Parts"
+msgstr "Alle geladenen Profildateien auswählen"
+
+#: libviews/partselection.cpp:345
+msgctxt "PartSelection|"
+msgid "Visible Parts"
+msgstr "Sichtbare Profildateien"
+
+#: libviews/partselection.cpp:346
+msgctxt "PartSelection|"
+msgid "Hide Selected Parts"
+msgstr "Ausgewählte Profildateien ausblenden"
+
+#: libviews/partselection.cpp:347
+msgctxt "PartSelection|"
+msgid "Show Hidden Parts"
+msgstr "Ausgeblendete Profildateien anzeigen"
+
+#: libviews/partselection.cpp:361
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Go to '%1'"
+msgstr "Gehe zu „%1“"
+
+#: libviews/partselection.cpp:370
+msgctxt "PartSelection|"
+msgid "Visualization"
+msgstr "Darstellung"
+
+#: libviews/partselection.cpp:371
+msgctxt "PartSelection|"
+msgid "Partitioning Mode"
+msgstr "Anzeigemodus für Details"
+
+#: libviews/partselection.cpp:373
+msgctxt "PartSelection|"
+msgid "Zoom Function"
+msgstr "Funktion heranholen"
+
+#: libviews/partselection.cpp:375
+msgctxt "PartSelection|"
+msgid "Show Direct Calls"
+msgstr "Direktaufrufe anzeigen"
+
+#: libviews/partselection.cpp:376
+msgctxt "PartSelection|"
+msgid "Increment Shown Call Levels"
+msgstr "Angezeigte Aufrufebenen erhöhen"
+
+#: libviews/partselection.cpp:377
+msgctxt "PartSelection|"
+msgid "Diagram Mode"
+msgstr "Diagramm-Modus"
+
+#: libviews/partselection.cpp:392
+msgctxt "PartSelection|"
+msgid "Draw Names"
+msgstr "Namen anzeigen"
+
+#: libviews/partselection.cpp:394
+msgctxt "PartSelection|"
+msgid "Draw Costs"
+msgstr "Kosten anzeigen"
+
+#: libviews/partselection.cpp:396
+msgctxt "PartSelection|"
+msgid "Ignore Proportions"
+msgstr "Proportionen ignorieren"
+
+#: libviews/partselection.cpp:398
+msgctxt "PartSelection|"
+msgid "Allow Rotation"
+msgstr "Schriftdrehung"
+
+#: libviews/partselection.cpp:400
+msgctxt "PartSelection|"
+msgid "Draw Frames"
+msgstr "Rahmen anzeigen"
+
+#: libviews/partselection.cpp:414
+msgctxt "PartSelection|"
+msgid "Hide Info"
+msgstr "Zusatzinformationen ausblenden"
+
+#: libviews/partselection.cpp:414
+msgctxt "PartSelection|"
+msgid "Show Info"
+msgstr "Zusatzinformationen anzeigen"
+
+#: libviews/partselection.cpp:562
+msgctxt "PartSelection|"
+msgid "(no trace loaded)"
+msgstr "(keine Profildateien geladen)"
+
+#: libviews/partview.cpp:37
+msgctxt "PartView|"
+msgid "Profile Part"
+msgstr "Profilabschnitt"
+
+#: libviews/partview.cpp:38
+msgctxt "PartView|"
+msgid "Incl."
+msgstr "Inkl."
+
+#: libviews/partview.cpp:39
+msgctxt "PartView|"
+msgid "Self"
+msgstr "Exkl."
+
+#: libviews/partview.cpp:40
+msgctxt "PartView|"
+msgid "Called"
+msgstr "Aufgerufen"
+
+#: libviews/partview.cpp:41
+msgctxt "PartView|"
+msgid "Comment"
+msgstr "Kommentar"
+
+#: libviews/partview.cpp:68
+msgctxt "PartView|"
+msgid ""
+"<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+"trace. For each part, the self/inclusive cost of the current selected "
+"function, spent in the part, is shown; percentage costs are always relative "
+"to the total cost <em>of the part</em> (not to the whole trace as in the "
+"Trace Part Overview). Also shown are the calls happening to/from the current "
+"function inside of the trace part.</p><p>By choosing one or more trace parts "
+"from the list, the costs shown all over KCachegrind will only be the ones "
+"spent in the selected part(s). If no list selection is shown, in fact all "
+"trace parts are selected implicitly.</p><p>This is a multi-selection list. "
+"You can select ranges by dragging the mouse or use SHIFT/CTRL modifiers. "
+"Selection/Deselection of trace parts can also be done by using the Trace "
+"Part Overview Dockable. This one also supports multiple selection.</"
+"p><p>Note that the list is hidden if only one trace part is loaded.</p>"
+msgstr ""
+"<b>Liste geladener Profildateien</b> <p>Diese Liste zeigt alle aktuell "
+"geladenen Profildateien. Für jede Datei werden die dort vermerkten "
+"exklusiven und inklusiven Kosten der aktuell gewählten Funktion angezeigt. "
+"Prozentuale Angaben sind immer relativ zu den Gesamtkosten in der "
+"Profildatei und nicht zur Summe der Kosten aller Profildateien. Weiterhin "
+"werden die Aufrufe in/aus der Funktion innerhalb einer Profildatei angezeigt."
+"</p> <p>Nach Ändern der Auswahl einer oder mehreren Profildateien beziehen "
+"sich die Kosten überall in KCachegrind immer auf die ausgewählten Dateien. "
+"Wurde kein Teil ausgewählt, werden implizit alle Dateien als ausgewählt "
+"behandelt.</p> <p>Diese Liste unterstützt Mehrfachauswahl. Sie können "
+"Bereiche durch Ziehen der Maus oder unter Nutzung der Umschalttasten Shift/"
+"Strg auswählen. Aus- und Abwählen von Dateien ist ebenfalls über dieses "
+"Fenster möglich.</p> <p>Diese Liste wird nicht angezeigt, wenn nur eine "
+"Profildatei geladen ist.</p>"
+
+#: libviews/sourceitem.cpp:141
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to %3"
+msgstr "Springe %1 mal nach %3 bei %2 Ausführungen "
+
+#: libviews/sourceitem.cpp:146
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 times to %2"
+msgstr "Springe %1 mal nach %2"
+
+#: libviews/sourceview.cpp:51
+msgctxt "SourceView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/sourceview.cpp:52
+msgctxt "SourceView|"
+msgid "Cost"
+msgstr "Kosten"
+
+#: libviews/sourceview.cpp:53
+msgctxt "SourceView|"
+msgid "Cost 2"
+msgstr "Kosten 2"
+
+#: libviews/sourceview.cpp:55
+msgctxt "SourceView|"
+msgid "Source"
+msgstr "Quelle"
+
+#: libviews/sourceview.cpp:83
+msgctxt "SourceView|"
+msgid ""
+"<b>Annotated Source</b><p>The annotated source list shows the source lines "
+"of the current selected function together with (self) cost spent while "
+"executing the code of this source line. If there was a call in a source "
+"line, lines with details on the call happening are inserted into the source: "
+"the cost spent inside of the call, the number of calls happening, and the "
+"call destination.</p><p>Select a inserted call information line to make the "
+"destination function current.</p>"
+msgstr ""
+"<b>Kommentierter Quelltext</b> <p>Die kommentierte Quelltextliste zeigt die "
+"Quelltextzeile der aktuell gewählten Funktion mit den aufgelaufenen "
+"Exklusivkosten für den Code der Quelltextzeile. Tritt in einer Zeile ein "
+"Aufruf auf, werden Zeilen mit weiteren Informationen über den Aufruf "
+"eingefügt. Dabei handelt es sich um die im Aufruf verbrauchten Kosten, die "
+"Anzahl der Aufrufe und das Ziel des Aufrufs.</p> <p>Durch Auswahl einer "
+"dieser Informationszeilen, wird die aufgerufene Funktion zur aktuellen "
+"Funktion.</p>"
+
+#: libviews/sourceview.cpp:110
+#, qt-format
+msgctxt "SourceView|"
+msgid "Go to '%1'"
+msgstr "Gehe zu „%1“"
+
+#: libviews/sourceview.cpp:115
+#, qt-format
+msgctxt "SourceView|"
+msgid "Go to Line %1"
+msgstr "Gehe zu Zeile %1"
+
+#: libviews/sourceview.cpp:627
+msgctxt "SourceView|"
+msgid "There is no cost of current selected type associated"
+msgstr "Es existieren keine Kosten für den aktuell ausgewählten Kostentyp"
+
+#: libviews/sourceview.cpp:629
+msgctxt "SourceView|"
+msgid "with any source line of this function in file"
+msgstr "für irgendeine Quelltextzeile dieser Funktion in der Datei"
+
+#: libviews/sourceview.cpp:633
+msgctxt "SourceView|"
+msgid "Thus, no annotated source can be shown."
+msgstr "Deshalb kann kein kommentierter Quelltext angezeigt werden."
+
+#: libviews/sourceview.cpp:658
+#, qt-format
+msgctxt "SourceView|"
+msgid "--- From '%1' ---"
+msgstr "--- Aus „%1“ ---"
+
+#: libviews/sourceview.cpp:663
+#, qt-format
+msgctxt "SourceView|"
+msgid "--- Inlined from '%1' ---"
+msgstr "--- Direkt eingefügt aus „%1“ ---"
+
+#: libviews/sourceview.cpp:664
+msgctxt "SourceView|"
+msgid "--- Inlined from unknown source ---"
+msgstr "--- Direkt eingefügt aus unbekannter Quelle ---"
+
+#: libviews/sourceview.cpp:669
+msgctxt "SourceView|"
+msgid "There is no source available for the following function:"
+msgstr "Es kann kein Quelltext für die folgende Funktion angezeigt werden:"
+
+#: libviews/sourceview.cpp:674
+msgctxt "SourceView|"
+msgid "This is because no debug information is present."
+msgstr "Es sind keine Debug-Informationen verfügbar."
+
+#: libviews/sourceview.cpp:676
+msgctxt "SourceView|"
+msgid "Recompile source and redo the profile run."
+msgstr ""
+"Kompilieren Sie das Programm mit Debug-Informationen neu und starten Sie die "
+"Profil-Messung erneut."
+
+#: libviews/sourceview.cpp:679
+msgctxt "SourceView|"
+msgid "The function is located in this ELF object:"
+msgstr "Die Funktion gehört zu folgendem Binärobjekt:"
+
+#: libviews/sourceview.cpp:687
+msgctxt "SourceView|"
+msgid "This is because its source file cannot be found:"
+msgstr "Folgende Quelldatei kann nicht gefunden werden:"
+
+#: libviews/sourceview.cpp:691
+msgctxt "SourceView|"
+msgid "Add the folder of this file to the source folder list."
+msgstr ""
+"Fügen Sie den Ordner dieser Datei der Ordnerliste der Quelldateien hinzu."
+
+#: libviews/sourceview.cpp:693
+msgctxt "SourceView|"
+msgid "The list can be found in the configuration dialog."
+msgstr "Diese Liste ist zu finden in der Konfiguration von KCachegrind."
+
+#: libviews/stackselection.cpp:36
+msgctxt "StackSelection|"
+msgid "Stack Selection"
+msgstr "Auswahl in Aufrufliste"
+
+#: libviews/stackselection.cpp:44
+msgctxt "StackSelection|"
+msgid "Cost"
+msgstr "Kosten"
+
+#: libviews/stackselection.cpp:45
+msgctxt "StackSelection|"
+msgid "Cost2"
+msgstr "Kosten2"
+
+#: libviews/stackselection.cpp:46
+msgctxt "StackSelection|"
+msgid "Calls"
+msgstr "Aufrufe"
+
+#: libviews/stackselection.cpp:47
+msgctxt "StackSelection|"
+msgid "Function"
+msgstr "Funktion"
+
+#: libviews/tabview.cpp:103
+msgctxt "TabBar|"
+msgid "Move to Top"
+msgstr "Nach oben verschieben"
+
+#: libviews/tabview.cpp:104
+msgctxt "TabBar|Move to Top"
+msgid "Top"
+msgstr "Oben"
+
+#: libviews/tabview.cpp:107
+msgctxt "TabBar|"
+msgid "Move to Right"
+msgstr "Nach rechts verschieben"
+
+#: libviews/tabview.cpp:108
+msgctxt "TabBar|Move to Right"
+msgid "Right"
+msgstr "Rechts"
+
+#: libviews/tabview.cpp:111
+msgctxt "TabBar|"
+msgid "Move to Bottom"
+msgstr "Nach unten verschieben"
+
+#: libviews/tabview.cpp:112
+msgctxt "TabBar|Move to Bottom"
+msgid "Bottom"
+msgstr "Unten"
+
+#: libviews/tabview.cpp:115
+msgctxt "TabBar|"
+msgid "Move to Bottom Left"
+msgstr "Nach unten links verschieben"
+
+#: libviews/tabview.cpp:116
+msgctxt "TabBar|Move to Bottom Left"
+msgid "Bottom Left"
+msgstr "Unten links"
+
+#: libviews/tabview.cpp:118
+msgctxt "TabBar|"
+msgid "Move Area To"
+msgstr "Bereich verschieben nach"
+
+#: libviews/tabview.cpp:121
+msgctxt "TabBar|"
+msgid "Hide This Tab"
+msgstr "Diesen Reiter ausblenden"
+
+#: libviews/tabview.cpp:122
+msgctxt "TabBar|"
+msgid "Hide Area"
+msgstr "Diesen Bereich ausblenden"
+
+#: libviews/tabview.cpp:131
+msgctxt "TabBar|Show on Top"
+msgid "Top"
+msgstr "Oben"
+
+#: libviews/tabview.cpp:132
+msgctxt "TabBar|Show on Right"
+msgid "Right"
+msgstr "Rechts"
+
+#: libviews/tabview.cpp:133
+msgctxt "TabBar|Show on Bottom"
+msgid "Bottom"
+msgstr "Unten"
+
+#: libviews/tabview.cpp:134
+msgctxt "TabBar|Show on Bottom Left"
+msgid "Bottom Left"
+msgstr "Unten links"
+
+#: libviews/tabview.cpp:135
+msgctxt "TabBar|"
+msgid "Show Hidden On"
+msgstr "Versteckte anzeigen"
+
+#: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
+msgctxt "TabView|"
+msgid "(No profile data file loaded)"
+msgstr "(Keine Profildatei geladen)"
+
+#: libviews/tabview.cpp:370
+msgctxt "TabView|"
+msgid "Types"
+msgstr "Kostentypen"
+
+#: libviews/tabview.cpp:373
+msgctxt "TabView|"
+msgid "Callers"
+msgstr "Aufrufer"
+
+#: libviews/tabview.cpp:374
+msgctxt "TabView|"
+msgid "All Callers"
+msgstr "Alle Aufrufer"
+
+#: libviews/tabview.cpp:375
+msgctxt "TabView|"
+msgid "Callee Map"
+msgstr "Aufrufkarte"
+
+#: libviews/tabview.cpp:378
+msgctxt "TabView|"
+msgid "Source Code"
+msgstr "Quelltext"
+
+#: libviews/tabview.cpp:380
+msgctxt "TabView|"
+msgid "Parts"
+msgstr "Profildateien"
+
+#: libviews/tabview.cpp:381
+msgctxt "TabView|"
+msgid "Callees"
+msgstr "Aufgerufene"
+
+#: libviews/tabview.cpp:382
+msgctxt "TabView|"
+msgid "Call Graph"
+msgstr "Aufrufgraph"
+
+#: libviews/tabview.cpp:385
+msgctxt "TabView|"
+msgid "All Callees"
+msgstr "Alle Aufgerufenen"
+
+#: libviews/tabview.cpp:386
+msgctxt "TabView|"
+msgid "Caller Map"
+msgstr "Aufruferkarte"
+
+#: libviews/tabview.cpp:389
+msgctxt "TabView|"
+msgid "Machine Code"
+msgstr "Maschinencode"
+
+#: libviews/tabview.cpp:643
+msgctxt "TabView|"
+msgid ""
+"<b>Information Tabs</b><p>This widget shows information for the currently "
+"selected function in different tabs: <ul><li>The Costs tab shows a list of "
+"available event types and the inclusive and self-costs related to these "
+"types.</li><li>The Parts tab shows a list of trace parts if the trace "
+"consists of more than one part (otherwise, this tab is hidden). The cost of "
+"the selected function spent in the different parts together with the calls "
+"happening is shown.</li><li>The Call Lists tab shows direct callers and "
+"callees of the function in more detail.</li><li>The Coverage tab shows the "
+"same as the Call Lists tab, but also shows indirect callers and callees, not "
+"just direct ones.</li><li>The Call Graph tab shows a graphical visualization "
+"of the calls made by this function.</li><li>The Source Code tab presents "
+"annotated source code if debugging information and the source file are "
+"available.</li><li>The Machine Code tab presents annotated assembly "
+"instructions if profile information at instruction level is available.</li></"
+"ul>For more information, see the <em>What's This?</em> help of the "
+"corresponding tab widget.</p>"
+msgstr ""
+"<b>Informationsanzeigen</b><p>Hier werden Informationen zur aktuell "
+"gewählten Funktion angezeigt:<ul><li>Die Ereignistyp-Liste stellt eine Liste "
+"mit verfügbaren Kostentypen sowie die zugehörigen Inklusiv- und "
+"Exklusivkosten dar.</li><li>Die Profildatenanzeige stellt eine Liste mit "
+"Profildaten an, wenn das Ablaufprotokoll aus mehreren Teilen besteht "
+"(ansonsten wird diese Anzeige ausgeblendet). Es werden die Kosten der "
+"gewählten Funktion in den verschiedenen Teilen sowie die ausgeführten "
+"Aufrufe angezeigt.</li><li>Die Anzeige der Aufrufer/Aufrufe stellt direkte "
+"Aufrufer und Aufgerufene der Funktion im Detail dar.</li><li>Die Anzeige "
+"aller Aufrufer/Aufrufe zeigt dieselbe Information an, jedoch nicht nur "
+"direkte Aufrufer und Aufgerufene, sondern auch indirekte.</li><li>Die "
+"Aufrufer- und Aufrufkarte zeigt eine grafische Darstellung, eine sogenannte "
+"TreeMap, an. Diese schachtelt in Richtung Aufrufer bzw. Aufgerufene der "
+"aktuellen Funktion.</li><li>Die Anzeige des Quelltextes stellt den "
+"kommentierten Quelltext dar, wenn Debug-Informationen und die Quelltextdatei "
+"zur Verfügung stehen.</li><li>Die Anzeige des Maschinencodes stellt die "
+"kommentierten Assembler-Instruktionen dar, wenn Profilinformationen auf "
+"Instruktionsbasis zur Verfügung stehen.</li></ul> Weitere Information finden "
+"Sie über die <em>Was ist das?</em>-Hilfe der entsprechenden "
+"Informationsanzeigen.</p>"
+
+#: libviews/tabview.cpp:728
+msgctxt "TabView|"
+msgid "(No function selected)"
+msgstr "(Keine Funktion ausgewählt)"
+
+#: libviews/traceitemview.cpp:67
+msgctxt "QObject|"
+msgid "No description available"
+msgstr "Keine Beschreibung verfügbar"
+
+#: libviews/treemap.cpp:1334
+#, qt-format
+msgctxt "TreeMapWidget|"
+msgid "Text %1"
+msgstr "Text %1"
+
+#: libviews/treemap.cpp:2854
+msgctxt "TreeMapWidget|"
+msgid "Recursive Bisection"
+msgstr "Rekursive Zweiteilung"
+
+#: libviews/treemap.cpp:2855
+msgctxt "TreeMapWidget|"
+msgid "Columns"
+msgstr "Spalten"
+
+#: libviews/treemap.cpp:2856
+msgctxt "TreeMapWidget|"
+msgid "Rows"
+msgstr "Zeilen"
+
+#: libviews/treemap.cpp:2857
+msgctxt "TreeMapWidget|"
+msgid "Always Best"
+msgstr "Immer beste Teilungsrichtung"
+
+#: libviews/treemap.cpp:2858
+msgctxt "TreeMapWidget|"
+msgid "Best"
+msgstr "Beste Teilungsrichtung pro Ebene"
+
+#: libviews/treemap.cpp:2859
+msgctxt "TreeMapWidget|"
+msgid "Alternate (V)"
+msgstr "Abwechselnd (Vertikal starten)"
+
+#: libviews/treemap.cpp:2860
+msgctxt "TreeMapWidget|"
+msgid "Alternate (H)"
+msgstr "Abwechselnd (Horizontal starten)"
+
+#: libviews/treemap.cpp:2861
+msgctxt "TreeMapWidget|"
+msgid "Horizontal"
+msgstr "Waagerecht"
+
+#: libviews/treemap.cpp:2862
+msgctxt "TreeMapWidget|"
+msgid "Vertical"
+msgstr "Senkrecht"
+
+#~ msgctxt "CallGraphView|"
+#~ msgid "Export Graph As DOT file"
+#~ msgstr "Graph als DOT-Datei exportieren"
+
+#~ msgctxt "CallGraphView|"
+#~ msgid "Graphviz (*.dot)"
+#~ msgstr "Graphviz (*.dot)"
+
+#~ msgctxt "A thing's name"
+#~ msgid "Name"
+#~ msgstr "Name"
+
+#~ msgctxt "Move to Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Unten links"
+
+#~ msgctxt "Show on Top"
+#~ msgid "Top"
+#~ msgstr "Oben"
+
+#~ msgctxt "Show on Right"
+#~ msgid "Right"
+#~ msgstr "Rechts"
+
+#~ msgctxt "Show on Bottom"
+#~ msgid "Bottom"
+#~ msgstr "Unten"
+
+#~ msgctxt "Show on Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Unten links"
+
+#~ msgid "Source (unknown)"
+#~ msgstr "Quelle (unbekannt)"
+
+#~ msgid "(No Source)"
+#~ msgstr "(Keine Quelle)"
+
+#~ msgid "Source ('%1')"
+#~ msgstr "Quelle („%1“)"
+
+#~ msgid " (Thread %1)"
+#~ msgstr " (Thread %1)"
+
+#~ msgctxt "Top"
+#~ msgid "Move to Top"
+#~ msgstr "Nach oben verschieben"
+
+#~ msgctxt "Right"
+#~ msgid "Move to Right"
+#~ msgstr "Nach rechts verschieben"
+
+#~ msgctxt "Bottom"
+#~ msgid "Move to Bottom"
+#~ msgstr "Nach unten verschieben"
+
+#~ msgctxt "Bottom Left"
+#~ msgid "Move to Bottom Left"
+#~ msgstr "Nach unten links verschieben"
+
+#~ msgctxt "Top"
+#~ msgid "Show on Top"
+#~ msgstr "Oben anzeigen"
+
+#~ msgctxt "Right"
+#~ msgid "Show on Right"
+#~ msgstr "Rechts anzeigen"
+
+#~ msgctxt "Bottom"
+#~ msgid "Show on Bottom"
+#~ msgstr "Unten anzeigen"
+
+#~ msgctxt "Bottom Left"
+#~ msgid "Show on Bottom Left"
+#~ msgstr "Unten links anzeigen"
+
+#~ msgid "Show All Items"
+#~ msgstr "Alle Elemente anzeigen"
+
+#~ msgid "Nesting"
+#~ msgstr "Verschachteln"
+
+#~ msgid "Border"
+#~ msgstr "Rand"
+
+#~ msgid "Correct Borders Only"
+#~ msgstr "Nur korrekter Ränder anzeigen"
+
+#~ msgid "Width %1"
+#~ msgstr "Breite %1"
+
+#~ msgid "Visible"
+#~ msgstr "Sichtbar"
+
+#~ msgid "Take Space From Children"
+#~ msgstr "Platz von eingebetteten Elementen ausnutzen"
+
+#~ msgid "Top Center"
+#~ msgstr "Oben mittig"
+
+#~ msgid "Bottom Center"
+#~ msgstr "Unten mittig"
+
+#~ msgid "No %1 Limit"
+#~ msgstr "Keine Beschränkung von %1"
+
+#~ msgid "Halve Area Limit (to %1)"
+#~ msgstr "Halbiere Flächenbeschränkung auf %1"
+
+#~ msgid "Depth %1"
+#~ msgstr "Tiefe %1"
+
+#~ msgid "Decrement (to %1)"
+#~ msgstr "Verringern (auf %1)"
+
+#~ msgid "Increment (to %1)"
+#~ msgstr "Erhöhen (auf %1)"
+
+#~ msgid "50 Pixels"
+#~ msgstr "50 Pixel"
+
+#~ msgid "Remove Secondary Event Type"
+#~ msgstr "Entfernen eines zweiten Ereignistyps"
+
+#~ msgid "Hide '%1'"
+#~ msgstr "„'%1“ ausblenden"
+
+#~ msgid "Hide Selected"
+#~ msgstr "Ausgewählte Elemente ausblenden"
+
+#~ msgid "Show All"
+#~ msgstr "Alle Elemente anzeigen"
+
+#~ msgid "As PostScript"
+#~ msgstr "Als PostScript"
+
+#~ msgid "Save Image"
+#~ msgstr "Bild speichern"
+
+#~ msgid "Abstract Item"
+#~ msgstr "Abstraktes Element"
+
+#~ msgid "Cost Item"
+#~ msgstr "Element mit Kosten"
+
+#~ msgid "Go Back"
+#~ msgstr "Gehe zurück"
+
+#~ msgid "Top Cost Call Stack"
+#~ msgstr "Aufrufliste nach Höchstkosten"
+
+#~ msgid ""
+#~ "<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most "
+#~ "probable' call stack. It is built up by starting with the current "
+#~ "selected function and adds the callers/callees with highest cost at the "
+#~ "top and to bottom.</p><p>The <b>Cost</b> and <b>Calls</b> columns show "
+#~ "the cost used for all calls from the function in the line above.</p>"
+#~ msgstr ""
+#~ "<b>Aufrufliste nach Höchstkosten</b><p>Dies ist eine fiktive, aber die "
+#~ "bezüglich der Kosten wahrscheinlichste Aufrufliste. Sie wird auf Basis "
+#~ "der aktuell ausgewählten Funktion erstellt und fügt die aufrufenden und "
+#~ "aufgerufenen Funktionen mit den höchsten Kosten oberhalb bzw. unterhalb "
+#~ "ein.</p> <p>Die Spalten für <b>Kosten</b> und <b>Aufrufe</b> zeigen die "
+#~ "Kosten an, die in dem Aufruf von der Funktion in der darüberliegenden "
+#~ "Zeile zu der Funktion in der aktuellen Zeile entstanden sind.</p>"
+
+#~ msgid "Flat Profile"
+#~ msgstr "Kostenprofil"
+
+#~ msgid "Profile Dumps"
+#~ msgstr "Profildateien"
+
+#~ msgid ""
+#~ "<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
+#~ "loadable profile dumps in all subdirectories of: <ul><li>current working "
+#~ "directory of KCachegrind, i.e. where it was started from, and </"
+#~ "li><li>the default profile dump directory given in the configuration.</"
+#~ "li></ul> The list is sorted according to the target command profiled in "
+#~ "the corresponding dump.</p><p>On selecting a profile dump, information "
+#~ "for it is shown in the bottom area of the dockable: <ul><li><b>Options</"
+#~ "b> allows you to view the profiled command and profile options of this "
+#~ "dump. By changing any item, a new (yet unexisting) profile template is "
+#~ "created. Press <b>Run Profile</b> to start a profile run with these "
+#~ "options in the background. </li><li><b>Info</b> gives detailed info on "
+#~ "the selected dump like event cost summary and properties of the simulated "
+#~ "cache. </li><li><b>State</b> is only available for current happening "
+#~ "profiles runs. Press <b>Update</b> to see different counters of the run, "
+#~ "and a stack trace of the current position in the program profiled. Check "
+#~ "the <b>Every</b> option to let KCachegrind regularly poll these data. "
+#~ "Check the <b>Sync</b> option to let the dockable activate the top "
+#~ "function in the current loaded dump.</li></ul></p>"
+#~ msgstr ""
+#~ "<b>Profildateien</b><p>Dieses andockbare Fenster zeigt im oberen Bereich "
+#~ "die Liste mit den ladbaren Profildateien in allen Unterverzeichnissen: "
+#~ "<ul><li>des aktuellen Arbeitsverzeichnisses von KCachegrind, z. B. das "
+#~ "Startverzeichnis</li><li>im voreingestellten Profildatei-Verzeichnis, das "
+#~ "in den Einstellungen gesetzt wird.</li></ul> Die Liste ist nach der in "
+#~ "der betreffnen Profildatei aufgeführten Befehlszeile sortiert.</"
+#~ "p><p>Durch Auswahl einer Profildatei werden Informationen im unteren "
+#~ "Bereich des Fensters angezeigt: <ul><li><b>Info</b> zeigt detaillierte "
+#~ "Informationen: die Zusammenfassung der Ereigniskosten und die "
+#~ "Eigenschaften des simulierten Cache.</li><li><b>Zustand</b> ist nur "
+#~ "verfügbar bei laufenden Messungen verfügbar. Durch Drücken von "
+#~ "<b>Aktualisieren</b> wird der aktuelle Zustand des Programmablaufes sowie "
+#~ "die aktuelle Aufrufliste angezeigt. Es gibt auch die Möglichkeit, den "
+#~ "Zustand periodisch aktualisieren zu lassen. Durch Drücken des Knopfes zum "
+#~ "Synchronisieren wird die oberste Funktion in der Aufruflisteaktiviert.</"
+#~ "li></ul></p>"
+
+#~ msgid "&Duplicate"
+#~ msgstr "&Kopieren"
+
+#~ msgid ""
+#~ "<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
+#~ msgstr ""
+#~ "<b>Kopieren des aktuellen Layouts</b><p>Eine Kopie des aktuellen Layouts "
+#~ "erstellen.</p>"
+
+#~ msgid "&Remove"
+#~ msgstr "&Entfernen"
+
+#~ msgid ""
+#~ "<b>Remove Current Layout</b><p>Delete current layout and make the "
+#~ "previous active.</p>"
+#~ msgstr ""
+#~ "<b>Entfernen des aktuellen Layouts</b> <p>Das vorherige Layout wird "
+#~ "benutzt, und das aktuelle gelöscht.</p>"
+
+#~ msgid "&Go to Next"
+#~ msgstr "&Nächstes Layout"
+
+#~ msgid "Go to Next Layout"
+#~ msgstr "Anwahl des nächsten Layouts"
+
+#~ msgid "&Go to Previous"
+#~ msgstr "&Vorheriges Layout"
+
+#~ msgid "Go to Previous Layout"
+#~ msgstr "Anwahl des vorherigen Layouts"
+
+#~ msgid "&Restore to Default"
+#~ msgstr "Standard wiederherstellen"
+
+#~ msgid "Restore Layouts to Default"
+#~ msgstr "Verfügbare Layouts der Standardvorgabe entnehmen"
+
+#~ msgid "&Save as Default"
+#~ msgstr "Als S&tandard speichern"
+
+#~ msgid "Save Layouts as Default"
+#~ msgstr "Aktuell verfügbare Layouts als Standard speichern"
+
+#~ msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
+#~ msgstr "<b>Neu</b><p>Öffnet ein neues, leeres Fenster.</p>"
+
+#~ msgid "&Add..."
+#~ msgstr "&Hinzufügen ..."
+
+#~ msgid ""
+#~ "<b>Add Profile Data</b><p>This opens an additional profile data file in "
+#~ "the current window.</p>"
+#~ msgstr ""
+#~ "<b>Hinzufügen einer Profildatei</b> <p>Dies fügt dem aktuellen "
+#~ "KCachegrind-Fenster die Daten einer weiteren Profildatei hinzu.</p>"
+
+#~ msgctxt "Reload a document"
+#~ msgid "&Reload"
+#~ msgstr "&Neu laden"
+
+#~ msgid ""
+#~ "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
+#~ msgstr ""
+#~ "<b>Profildateien neu laden</b><p>Hierdurch werden auch neu erzeugte "
+#~ "Profildateien einer laufenden Messung geladen.</p>"
+
+#~ msgid "&Export Graph"
+#~ msgstr "&Graph exportieren"
+
+#~ msgid ""
+#~ "<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
+#~ "tools of the GraphViz package.</p>"
+#~ msgstr ""
+#~ "<b>Aufrufgraph exportieren</b> <p>Erzeugt eine Datei mit der Endung .dot "
+#~ "für Werkzeuge des GraphViz Pakets.</p>"
+
+#~ msgid "&Force Dump"
+#~ msgstr "&Profildatei erzeugen"
+
+#~ msgid ""
+#~ "<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
+#~ "current directory. This action is checked while KCachegrind looks for the "
+#~ "dump. If the dump is finished, it automatically reloads the current "
+#~ "trace. If this is the one from the running Callgrind, the new created "
+#~ "trace part will be loaded, too.</p><p>Force dump creates a file "
+#~ "'callgrind.cmd', and checks every second for its existence. A running "
+#~ "Callgrind will detect this file, dump a trace part, and delete 'callgrind."
+#~ "cmd'. The deletion is detected by KCachegrind, and it does a Reload. If "
+#~ "there is <em>no</em> Callgrind running, press 'Force Dump' again to "
+#~ "cancel the dump request. This deletes 'callgrind.cmd' itself and stops "
+#~ "polling for a new dump.</p><p>Note: A Callgrind run <em>only</em> detects "
+#~ "existence of 'callgrind.cmd' when actively running a few milliseconds, i."
+#~ "e. <em>not</em> sleeping. Tip: For a profiled GUI program, you can awake "
+#~ "Callgrind e.g. by resizing a window of the program.</p>"
+#~ msgstr ""
+#~ "<b>Profildatei erzeugen</b> <p>Hierdurch wird ein Befehl an eine im "
+#~ "Hintergrund im selben Verzeichnis laufende Cachegrind-Messung gegeben, so "
+#~ "dass diese eine Profildatei erzeugt. Diese Option ist aktiviert, solange "
+#~ "KCachegrind auf die neu zu erzeugende Datei wartet. Wurde die Profildatei "
+#~ "fertig gestellt, wird diese automatisch geladen, wenn sie zu derselben "
+#~ "Messung gehört, zu der die schon geladenen Profildateien gehören.</p> "
+#~ "<p>Implementierungshinweis: Beim Aktivieren wird eine Datei ‚cachegrind."
+#~ "cmd‘ angelegt, deren Existenz einmal in der Sekunde überprüft wird. Wenn "
+#~ "Calltree läuft, entdeckt es diese Datei, erstellt eine Profildatei und "
+#~ "löscht die Datei ‚cachegrind.cmd‘. KCachegrind bemerkt das Löschen und "
+#~ "erstellt sie neu. Wenn Cachegrind <em>nicht</em> läuft, können Sie durch "
+#~ "wiederholtes Drücken von „Erzeugen einer Profildatei“ die Aktion "
+#~ "abbrechen. Dadurch wird ‚cachegrind.cmd‘ gelöscht.</p> <p>Hinweis: Ein "
+#~ "laufendes Cachegrind entdeckt das Vorhandensein der Datei ‚cachegrind."
+#~ "cmd‘ <em>nur</em>, wenn es tatsächlich aktiv arbeitet und <em>nicht</em>, "
+#~ "wenn es schläft. Tipp: Sie können Calltree  für ein überwachtes GUI-"
+#~ "Programm aufwecken, indem Sie eines der Programmfenster in der Größe "
+#~ "verändern.</p> "
+
+#~ msgid ""
+#~ "<b>Open Profile Data</b><p>This opens a profile data file, with possible "
+#~ "multiple parts</p>"
+#~ msgstr ""
+#~ "<b>Öffnen einer Profildatei</b><p>Dadurch können auch alle zu einer "
+#~ "Messung gehörenden Profildateien automatisch geöffnet werden.</p>"
+
+#~ msgid "Show/Hide the Parts Overview Dockable"
+#~ msgstr "Übersicht der Profilabschnitte anzeigen/ausblenden"
+
+#~ msgid "Call Stack"
+#~ msgstr "Aufrufliste nach Höchstkosten"
+
+#~ msgid "Show/Hide the Call Stack Dockable"
+#~ msgstr "Aufrufliste für Höchstkosten anzeigen/ausblenden"
+
+#~ msgid "Show/Hide the Function Profile Dockable"
+#~ msgstr "Funktionsprofil anzeigen/ausblenden"
+
+#~ msgid "Show/Hide the Profile Dumps Dockable"
+#~ msgstr "Liste ladbarer Profildateien anzeigen/ausblenden"
+
+#~ msgid "Show Relative Costs"
+#~ msgstr "Relative Kosten anzeigen"
+
+#~ msgid "Show Absolute Costs"
+#~ msgstr "Absolute Kosten anzeigen"
+
+#~ msgid "Show relative instead of absolute costs"
+#~ msgstr "Relative anstatt absoluter Kosten anzeigen"
+
+#~ msgid "Percentage Relative to Parent"
+#~ msgstr "Kostenbezug zu übergeordnetem Element"
+
+#~ msgid "Show percentage costs relative to parent"
+#~ msgstr ""
+#~ "Prozentuale Kosten bezogen auf Kosten des übergeordneten Elements anzeigen"
+
+#~ msgid ""
+#~ "<b>Show percentage costs relative to parent</b><p>If this is switched "
+#~ "off, percentage costs are always shown relative to the total cost of the "
+#~ "profile part(s) that are currently browsed. By turning on this option, "
+#~ "percentage cost of shown cost items will be relative to the parent cost "
+#~ "item.</p><ul><table><tr><td><b>Cost Type</b></td><td><b>Parent Cost</b></"
+#~ "td></tr><tr><td>Function Cumulative</td><td>Total</td></"
+#~ "tr><tr><td>Function Self</td><td>Function Group (*) / Total</td></"
+#~ "tr><tr><td>Call</td><td>Function Inclusive</td></tr><tr><td>Source Line</"
+#~ "td><td>Function Inclusive</td></tr></table></ul><p>(*) Only if function "
+#~ "grouping is switched on (e.g. ELF object grouping).</p>"
+#~ msgstr ""
+#~ "<b>Prozentuale Kosten bezogen auf Kosten des übergeordneten Elements "
+#~ "anzeigen</b><p>Ist diese Einstellung ausgeschaltet, werden die "
+#~ "prozentualen Kosten immer relativ zu den gesamten Kosten der aktuellen "
+#~ "Profildatei angezeigt. Durch das Anschalten dieser Option beziehen sich "
+#~ "die Prozentangaben auf die Kosten des übergeordneten Elements nach "
+#~ "folgender Tabelle.</p><ul><table><tr><td><b>Element</b></"
+#~ "td><td><b>Übergeordnetes Element</b></td></tr><tr><td>Funktion "
+#~ "(Inklusivkosten)</td><td>Gesamt</td></tr><tr><td>Funktion "
+#~ "(Exklusivkosten)</td><td>Funktionsgruppe (*) / Gesamt</td></"
+#~ "tr><tr><td>Aufruf</td><td>Funktion (Inklusivkosten)</td></"
+#~ "tr><tr><td>Quelltextzeile</td><td>Funktion (Inklusivkosten)</td></tr></"
+#~ "table></ul><p>(*) Nur wenn Funktionsgruppierung aktiviert ist (z. B. bei "
+#~ "ELF-Objekt-Gruppierung).</p>"
+
+#~ msgid "Do Cycle Detection"
+#~ msgstr "Zykluserkennung durchführen"
+
+#~ msgid "Skip Cycle Detection"
+#~ msgstr "Zykluserkennung überspringen"
+
+#~ msgid ""
+#~ "<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
+#~ "drawing will show black areas when a recursive call is made instead of "
+#~ "drawing the recursion ad infinitum. Note that the size of black areas "
+#~ "often will be wrong, as inside recursive cycles the cost of calls cannot "
+#~ "be determined; the error is small, however, for false cycles (see "
+#~ "documentation).</p><p>The correct handling for cycles is to detect them "
+#~ "and collapse all functions of a cycle into an artificial function, which "
+#~ "is done when this option is selected. Unfortunately, with GUI "
+#~ "applications, this often will lead to huge false cycles, making the "
+#~ "analysis impossible; therefore, there is the option to switch this off.</"
+#~ "p>"
+#~ msgstr ""
+#~ "<b>Erkennen rekursiver Funktionsaufrufe</b><p> Ist diese Einstellung "
+#~ "ausgeschaltet, zeigt die Treemap-Darstellung anstelle rekursiver Aufrufe "
+#~ "leere Bereiche an, anstatt die Rekursion bis ins Unendliche darzustellen. "
+#~ "Die Größe der leeren Bereiche ist oft falsch, da in rekursiven Zyklen die "
+#~ "Kosten von Aufrufen nicht bestimmt werden können. Allerdings ist der "
+#~ "Fehler bei falschen Zyklen gering (siehe Dokumentation).</p><p>Die "
+#~ "korrekte Behandlung rekursiver Funktionsaufrufe besteht darin, alle "
+#~ "beteiligten Funktionen eines Zyklus durch eine Scheinfunktion zu "
+#~ "ersetzen. Dies passiert, wenn diese Einstellung aktiv ist. Leider führt "
+#~ "gerade diesbei GUI Programmen zu Zyklen, die sehr viele Funktionen "
+#~ "enthalten und so eine sinnvolle Analyse unmöglich machen. Deshalb gibt es "
+#~ "die Möglichkeit, diese Option auszuschalten.</p>"
+
+#~ msgid "Go back in function selection history"
+#~ msgstr "Zurück im Verlauf der Funktionsauswahl"
+
+#~ msgid "Go forward in function selection history"
+#~ msgstr "Vorwärts im Verlauf der Funktionsauswahl"
+
+#~ msgid ""
+#~ "<b>Go Up</b><p>Go to last selected caller of current function. If no "
+#~ "caller was visited, use that with highest cost.</p>"
+#~ msgstr ""
+#~ "<b>Nach oben</b> <p>Gehe zum letzten gewählten Aufrufer der aktuellen "
+#~ "Funktion. Wenn kein Aufrufer besucht wurde, nimm den mit den höchsten "
+#~ "Kosten.</p>"
+
+#~ msgid "&Up"
+#~ msgstr "&Hoch"
+
+#~ msgid "Primary Event Type"
+#~ msgstr "Erster Ereignistyp"
+
+#~ msgid "Select primary event type of costs"
+#~ msgstr "Bitte wählen Sie den primären Ereignistyp für die Kosten."
+
+#~ msgid "(Placeholder for list of event types)"
+#~ msgstr "(Platzhalter für eine Liste von Ereignisarten)"
+
+#~ msgid "Secondary Event Type"
+#~ msgstr "Zweiter Ereignistyp"
+
+#~ msgid "Select secondary event type for cost e.g. shown in annotations"
+#~ msgstr ""
+#~ "Bitte wählen Sie den sekundären Ereignistyp für die Kosten (z. B. in "
+#~ "Anmerkungen)"
+
+#~ msgid "Select how functions are grouped into higher level cost items"
+#~ msgstr "Gruppierung von Funktionen in übergeordnete Kostenelemente"
+
+#~ msgid "Split"
+#~ msgstr "Teilen"
+
+#~ msgid "Show two information panels"
+#~ msgstr "Anzeige zweier Informationsbereiche"
+
+#~ msgid "Split Horizontal"
+#~ msgstr "Horizontal teilen"
+
+#~ msgid "Change Split Orientation when main window is split."
+#~ msgstr "Ändern der Teilungsrichtung des Hauptfensters."
+
+#~ msgid ""
+#~ "cachegrind.out* callgrind.out*|Callgrind Profile Data\n"
+#~ "*|All Files"
+#~ msgstr ""
+#~ "cachegrind.out* callgrind.out*|Callgrind-Profildatei\n"
+#~ "*|Alle Dateien"
+
+#~ msgid "Select Callgrind Profile Data"
+#~ msgstr "Auswahl der Profildatei"
+
+#~ msgid "Add Callgrind Profile Data"
+#~ msgstr "Hinzufügen einer Profildatei"
+
+#~ msgid "(Hidden)"
+#~ msgstr "(Versteckt)"
+
+#~ msgid "Show Absolute Cost"
+#~ msgstr "Anzeige absoluter Kosten"
+
+#~ msgid "Show Relative Cost"
+#~ msgstr "Anzeige relativer Kosten"
+
+#~ msgid "Go Forward"
+#~ msgstr "Gehe vorwärts"
+
+#~ msgid "Go Up"
+#~ msgstr "Gehe hoch"
+
+#~ msgid "Layout Count: %1"
+#~ msgstr "Anzahl der Layouts: %1"
+
+#~ msgid "No profile data file loaded."
+#~ msgstr "Es ist keine Profildatei geladen."
+
+#~ msgid "Total %1 Cost: %2"
+#~ msgstr "Gesamtkosten für %1: %2"
+
+#~ msgid "No event type selected"
+#~ msgstr "Es ist kein Ereignistyp ausgewählt"
+
+#~ msgid "(No Stack)"
+#~ msgstr "(Keine Aufrufliste)"
+
+#~ msgid "(No next function)"
+#~ msgstr "(Keine nächste Funktion)"
+
+#~ msgid "(No previous function)"
+#~ msgstr "(Keine vorherige Funktion)"
+
+#~ msgid "(No Function Up)"
+#~ msgstr "(Keine aufrufende Funktion)"
+
+#~ msgid "Assembler"
+#~ msgstr "Assembler"
+
+#~ msgid "(No Assembler)"
+#~ msgstr "(Kein Assembler)"
+
+#~ msgctxt "Depth 0"
+#~ msgid "None"
+#~ msgstr "Nichts"
+
+#~ msgid "KCachegrind"
+#~ msgstr "KCachegrind"
+
+#~ msgid "KDE Frontend for Callgrind/Cachegrind"
+#~ msgstr "KDE-Oberfläche für Callgrind/Cachegrind"
+
+#~ msgid "(C) 2002 - 2007"
+#~ msgstr "(C) 2002 - 2007"
+
+#~ msgid "Josef Weidendorfer"
+#~ msgstr "Josef Weidendorfer"
+
+#~ msgid "Author/Maintainer"
+#~ msgstr "Autor/Betreuer"
+
+#~ msgid "Show information of this trace"
+#~ msgstr "Informationen über diese Profildatei anzeigen"
+
+#~ msgid "Assembly Code"
+#~ msgstr "Assembler-Code"
+
+#~ msgid "(No Data loaded)"
+#~ msgstr "(Keine Daten geladen)"
+
+#~ msgid "Configuration"
+#~ msgstr "Einstellungen"
+
+#~ msgid "General"
+#~ msgstr "Allgemein"
+
+#~ msgid "Truncated when more/longer than:"
+#~ msgstr "Abgeschnitten. wenn länger/mehr als:"
+
+#~ msgid "Precision of percentage values:"
+#~ msgstr "Genauigkeit prozentualer Angaben:"
+
+#~ msgid "Symbols in tooltips and context menus"
+#~ msgstr "Symbole in Kurzinfo und Kontextmenüs"
+
+#~ msgid "Maximum number of items in lists:"
+#~ msgstr "Maximale Objektanzahl in Listen:"
+
+#~ msgid "Cost Item Colors"
+#~ msgstr "Farben für Kostenelemente"
+
+#~ msgid "Object:"
+#~ msgstr "Objekt:"
+
+#~ msgid "Class:"
+#~ msgstr "Klasse:"
+
+#~ msgid "File:"
+#~ msgstr "Datei:"
+
+#~ msgid "Annotations"
+#~ msgstr "Code-Kommentierung"
+
+#~ msgid "Context lines in annotations:"
+#~ msgstr "Kontextzeilen in Anmerkungen:"
+
+#~ msgid "Source Folders"
+#~ msgstr "Quellverzeichnisse"
+
+#~ msgid "Object / Related Source Base"
+#~ msgstr "Binärobjekt / Zugehöriges Basisverzeichnis der Quelltexte"
+
+#~ msgid "Add..."
+#~ msgstr "Hinzufügen ..."
+
+#~ msgid "Delete"
+#~ msgstr "Entfernen"
+
+#~ msgid "&OK"
+#~ msgstr "&OK"
+
+#~ msgid "&Cancel"
+#~ msgstr "&Abbrechen"
+
+#~ msgid "Target"
+#~ msgstr "Ziel"
+
+#~ msgid "Time"
+#~ msgstr "Zeit"
+
+#~ msgid "Path"
+#~ msgstr "Pfad"
+
+#~ msgid "Options"
+#~ msgstr "Einstellungen"
+
+#~ msgid "Target command:"
+#~ msgstr "Ziel-Anweisung:"
+
+#~ msgid "Profiler options:"
+#~ msgstr "Profiler-Einstellungen:"
+
+#~ msgid "Option"
+#~ msgstr "Option"
+
+#~ msgid "Value"
+#~ msgstr "Wert"
+
+#~ msgid "Trace"
+#~ msgstr "Profildatei"
+
+#~ msgid "Jumps"
+#~ msgstr "Sprünge"
+
+#~ msgid "Events"
+#~ msgstr "Ereignisse"
+
+#~ msgid "Full Cache"
+#~ msgstr "Vollständiger Zwischenspeicher"
+
+#~ msgid "Custom"
+#~ msgstr "Angepasst"
+
+#~ msgid "Collect"
+#~ msgstr "Sammeln"
+
+#~ msgid "At Startup"
+#~ msgstr "Beim Start"
+
+#~ msgid "While In"
+#~ msgstr "Solange in"
+
+#~ msgid "Skip"
+#~ msgstr "Überspringen"
+
+#~ msgid "PLT"
+#~ msgstr "PLT"
+
+#~ msgid "Dump Profile"
+#~ msgstr "Profildatei erzeugen"
+
+#~ msgid "Every BBs"
+#~ msgstr "Aller BBs"
+
+#~ msgid "On Entering"
+#~ msgstr "Bei Eintritt"
+
+#~ msgid "On Leaving"
+#~ msgstr "Bei Austritt"
+
+#~ msgid "Zero Events"
+#~ msgstr "Null-Ereignisse"
+
+#~ msgid "Separate"
+#~ msgstr "Unterteilen"
+
+#~ msgid "Threads"
+#~ msgstr "Threads"
+
+#~ msgid "Recursions"
+#~ msgstr "Rekursionen"
+
+#~ msgid "Call Chain"
+#~ msgstr "Aufrufkette"
+
+#~ msgid "Custom profiler options:"
+#~ msgstr "Eigene Profiler-Einstellungen:"
+
+#~ msgid "Run New Profile"
+#~ msgstr "Neue Profilmessung durchführen"
+
+#~ msgid "Info"
+#~ msgstr "Info"
+
+#~ msgid "Dump reason:"
+#~ msgstr "Grund der Profildatei-Erzeugung:"
+
+#~ msgid "Event summary:"
+#~ msgstr "Ereignis-Zusammenfassung:"
+
+#~ msgid "Sum"
+#~ msgstr "Summe"
+
+#~ msgid "Miscellaneous:"
+#~ msgstr "Verschiedenes:"
+
+#~ msgid "Show"
+#~ msgstr "Anzeigen"
+
+#~ msgid "Compare"
+#~ msgstr "Vergleichen"
+
+#~ msgid "State"
+#~ msgstr "Zustand"
+
+#~ msgid "Update"
+#~ msgstr "Aktualisieren"
+
+#~ msgid "Every [s]:"
+#~ msgstr "Alle [s]:"
+
+#~ msgid "Counter"
+#~ msgstr "Zähler"
+
+#~ msgid "Dumps Done"
+#~ msgstr "Profildateien erstellt"
+
+#~ msgid "Is Collecting"
+#~ msgstr "Es wird gesammelt"
+
+#~ msgid "Executed"
+#~ msgstr "Ausgeführt"
+
+#~ msgid "Basic Blocks"
+#~ msgstr "Basisblöcke"
+
+#~ msgid "Ir"
+#~ msgstr "Ir"
+
+#~ msgid "Distinct"
+#~ msgstr "Verschieden"
+
+#~ msgid "ELF Objects"
+#~ msgstr "Binärobjekte"
+
+#~ msgid "Functions"
+#~ msgstr "Funktionen"
+
+#~ msgid "Stack trace:"
+#~ msgstr "Aufrufliste:"
+
+#~ msgid "Sync."
+#~ msgstr "Sync."
+
+#~ msgid "Start"
+#~ msgstr "Start"
+
+#~ msgid "Zero"
+#~ msgstr "Null"
+
+#~ msgid "Dump"
+#~ msgstr "Profildatei"
+
+#~ msgid "Messages"
+#~ msgstr "Nachrichten"
+
+#~ msgid "Kill Run"
+#~ msgstr "Messung abbrechen"
+
+#~ msgid "Clear"
+#~ msgstr "Leeren"
+
+#~ msgid "&File"
+#~ msgstr "&Datei"
+
+#~ msgid "&View"
+#~ msgstr "&Ansicht"
+
+#~ msgid "&Layout"
+#~ msgstr "&Layout"
+
+#~ msgid "Sidebars"
+#~ msgstr "Seitenleisten"
+
+#~ msgid "Main Toolbar"
+#~ msgstr "Haupt-Werkzeugleiste"
+
+#~ msgid "State Toolbar"
+#~ msgstr "Zustandsleiste"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Sebastian Stein, Josef Weidendorfer"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "seb.kde@hpfsc.de, Josef.Weidendorfer@gmx.de"
+
+#~ msgid "1 Pixel"
+#~ msgid_plural "%1 Pixels"
+#~ msgstr[0] "1 Pixel"
+#~ msgstr[1] "%1 Pixel"
+
+#~ msgid "Loading %1"
+#~ msgstr "Laden von %1"
+
+#~ msgid ""
+#~ "<p>...that the <em>What's this...</em> help for every GUI widget\n"
+#~ "in KCachegrind contains detailed usage information for this widget?\n"
+#~ "It is highly recommend to read at least these help texts on first\n"
+#~ "use. Request <em>What's this...</em> help by pressing\n"
+#~ "Shift-F1 and clicking on the widget.</p>\n"
+#~ msgstr ""
+#~ "<p>Wussten Sie, dass die „<em>Was ist das?</em>“-Hilfe für jedes\n"
+#~ "GUI-Element in KCachegrind ausführliche Informationen bereitstellt?\n"
+#~ "Sie sollten zumindest diese Texte bei der ersten Benutzung lesen.\n"
+#~ "Dazu rufen Sie die „<em>Was ist das?</em>“-Hilfe durch Betätigen von\n"
+#~ "Umschalten+F1 und einem Klick auf das gewünschte GUI-Element auf.</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can get profile information at instruction level\n"
+#~ "with Calltree when you provide the option <em>--dump-instr=yes</em>?\n"
+#~ "Use the Assembler View for the instruction annotations.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>Wussten Sie, dass Sie mit Calltree Profilinformationen bis hinunter "
+#~ "auf Instruktionsebene erhalten können, wenn Sie die Option <em>--dump-"
+#~ "instr=yes</em> verwenden?\n"
+#~ "Benutzen Sie dazu die Anzeige für kommentierten Assemblercode</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can use Alt-Left/Right keys of your keyboard to go\n"
+#~ "back/forward in the active object history ?</p>\n"
+#~ msgstr ""
+#~ "<p>Wussten Sie, dass Sie mit der Tastenkombination Alt+Pfeil links/-"
+#~ "rechts vorwärts/rückwärts durch den Verlauf der Kostenelemente gehen "
+#~ "können?</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can navigate in the Callee/Caller Map View using\n"
+#~ "arrow keys? Use Left/Right to change to siblings of the current\n"
+#~ "item; use Up/Down to go one nesting level up/down. To select\n"
+#~ "the current item, press Space, and to activate it, press Return.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>Wussten Sie, dass Sie mit den Pfeiltasten durch die TreeMap-"
+#~ "Darstellungen navigieren können?\n"
+#~ "Mit Pfeil links/rechts wechseln Sie zu den Geschwistern des aktuellen "
+#~ "Elements; mit Pfeil hoch/runter gehen Sie eine Verschachtelungsebene "
+#~ "herauf/herunter. Um das aktuelle Objekt auszuwählen, betätigen Sie die "
+#~ "Leertaste, um es zu aktivieren die Eingabetaste.</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can navigate in the Call Graph View using\n"
+#~ "arrow keys? Use Up/Down to go one calling level up/down, alternating\n"
+#~ "between calls and functions. Use Left/Right to change to siblings of a "
+#~ "current\n"
+#~ "selected call. To activate the current item, press Return.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>Wussten Sie, dass Sie mit den Pfeiltasten im Aufrufgraph navigieren "
+#~ "kann? Mit „Pfeil hoch“ und „Pfeil runter“ gehen Sie eine Aufrufebene hoch/"
+#~ "runter. Dabei wechseln Sie zwischen Aufrufen und Funktionen. Mit der "
+#~ "„Pfeil links“- und „Pfeil rechts“-Taste wechseln Sie zu Geschwistern des "
+#~ "aktuell gewählten Aufrufs.\n"
+#~ "Um das aktuelle Objekt zu aktivieren, betätigen Sie die Eingabe-Taste.</"
+#~ "p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can rapidly locate a function by entering part of its\n"
+#~ "name (case-insensitive) into the edit line of the toolbar\n"
+#~ "and hit return?</p>\n"
+#~ msgstr ""
+#~ "<p>Wussten Sie, dass Sie eine Funktion sehr schnell finden können, indem "
+#~ "Sie einen Teil des Namens in die Suchleiste eingeben und mit der "
+#~ "Eingabetaste bestätigen?</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can assign custom colors to \n"
+#~ "ELF objects/C++ Classes/Source Files for graph coloring\n"
+#~ "in <em>Settings->Configure KCachegrind...</em>?</p>\n"
+#~ msgstr ""
+#~ "<p>Wussten Sie, dass Sie unter <em>Einstellungen->KCachegrind "
+#~ "einrichten ...</em>eigene Farben für Binärobjekte, C++-Klassen, "
+#~ "Quelltextdateien für die Graphfarben festlegen können?</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can see if debug info is available for a selected \n"
+#~ "function by looking at the location label in the Info tab or\n"
+#~ "the source listing header in the source tab?</p>\n"
+#~ "<p>There must be the name of the source file (with extension).\n"
+#~ "If KCachegrind still does not show the source, make sure that you\n"
+#~ "have added the directory of the source file to the\n"
+#~ "<em>Source Directories</em> list in the configuration.\n"
+#~ msgstr ""
+#~ "<p>Wussten Sie, dass Sie für eine gewählte Funktion das Vorliegen von\n"
+#~ "Debug-Informationen erkennen können, indem Sie auf die Quelltextposition\n"
+#~ "in den Karteireitern Information oder Quelltexte schauen?</p>\n"
+#~ "<p>Dort müssen Quelltextdateien (mit Erweiterungen) stehen. Zeigt\n"
+#~ "KCachegrind keine Quelltexte an, vergewissern Sie sich, dass das\n"
+#~ "Quellverzeichnis unter Einstellungen der Liste mit den\n"
+#~ "<em>Quellverzeichnissen</em> hinzugefügt wurde.</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can configure whether KCachgrind should\n"
+#~ "show absolute event counts or relative ones (percentage display)?</p>\n"
+#~ msgstr ""
+#~ "<p>Wussten Sie, dass in KCachegrind eingestellt werden kann, ob absolute "
+#~ "oder relative Ereigniszähler angezeigt werden sollen?</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can configure the maximum number of items\n"
+#~ "for all function lists in KCachegrind? Limiting the number\n"
+#~ "of items is done to get a fast reacting GUI. The last item in\n"
+#~ "the list will show you the number of skipped functions, together\n"
+#~ "with a cost condition for these skipped functions.</p>\n"
+#~ "<p>To activate a function with small costs, search for it and select\n"
+#~ "it in the flat profile. Selecting functions with small cost will\n"
+#~ "temporarily add them to the flat profile list.</p>\n"
+#~ msgstr ""
+#~ "<p>Wussten Sie, dass die maximale Anzahl von Listenobjekten für alle "
+#~ "Funktionslisten in KCachegrind eingestellt werden kann? Durch Reduzierung "
+#~ "des Wertes reagiert die Oberfläche schneller. Der letzte Eintrag zeigt "
+#~ "die übersprungenen Funktionen zusammen mit einer Kostenbedingung für "
+#~ "diese Funktionen.</p>\n"
+#~ "<p>Um eine Funktion mit geringen Kosten auszuwählen, suchen Sie diese und "
+#~ "wählen sie im Kostenprofil aus. Durch Auswahl einer Funktion mit geringen "
+#~ "Kosten wird diese temporär zur Kostenprofilliste hinzugefügt.</p>\n"
+
+#~ msgid ""
+#~ "<p>...that the Coverage tab - in contrast to the Call Lists tab -\n"
+#~ "shows <em>all</em> functions that are calling the selected function\n"
+#~ "(upper part) / are called by the selected function (bottom part),\n"
+#~ "no matter how many function are between them on the stack?</p>\n"
+#~ "<p>Examples:</p>\n"
+#~ "<p>An entry in the upper list for function foo1() with a value of 50%\n"
+#~ "with function bar() selected means that 50% of all the cost of function\n"
+#~ "bar() happened while called from function foo1().</p>\n"
+#~ "<p>An entry in the bottom list for function foo2() with a value of 50%\n"
+#~ "with function bar() selected means that 50% of all the cost of function\n"
+#~ "bar() happened while calling foo2() from bar().</p>\n"
+#~ msgstr ""
+#~ "<p>Wussten Sie, was es mit der Anzeige aller Aufrufer/Aufgerufenen auf "
+#~ "sich hat?</p>\n"
+#~ "<p>Beispiele:</p>\n"
+#~ "<p>Ein Eintrag in der oberen Liste für die Funktion foo1() mit einem Wert "
+#~ "von 50 % bei ausgewählter Funktion bar() bedeutet, dass 50 % aller durch "
+#~ "Funktion bar() verursachten Kosten auftraten, wenn diese durch foo1() "
+#~ "aufgerufen wurde.</p>\n"
+#~ "<p>Ein Eintrag in der unteren Liste für Funktion foo2() mit einem Wert "
+#~ "von 50 % bei ausgewählter Funktion bar() bedeutet, dass 50 % der in "
+#~ "Funktion bar() verursachten Kosten entstanden sind, wenn sie Funktion "
+#~ "foo2() aufgerufen hat.</p>\n"
+
+#~ msgid ""
+#~ "<p>...that waiting for the tool tip inside of a tree map\n"
+#~ "shows the list of names of the nested rectangles the mouse\n"
+#~ "pointer is over?</p>\n"
+#~ "<p>Items from this list can be selected by pressing the right\n"
+#~ "mouse button.</p>\n"
+#~ msgstr ""
+#~ "<p>Wussten Sie, dass die Kurzinfo in den TreeMap-Anzeigen eine Liste mit "
+#~ "den Namen der untergeordneten Rechtecke für das Gebiet unter dem "
+#~ "Mauszeiger zeigt?</p>\n"
+#~ "<p>Objekte können durch einen Klick mit der rechten Maustaste aus dieser "
+#~ "Liste ausgewählt werden.</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can constrain the cost counts shown to only a\n"
+#~ "few parts of the whole trace by selecting these parts in the\n"
+#~ "\"Trace Selection\" Dockable?</p>\n"
+#~ "<p>To generate multiple parts in a profiling run with\n"
+#~ "cachegrind, use e.g. option --cachedumps=xxx for parts\n"
+#~ "of a length of xxx basic blocks (A basic block is a run\n"
+#~ "of not-branching assembler statements inside of your program\n"
+#~ "code).</p>\n"
+#~ msgstr ""
+#~ "<p>Wussten Sie, dass Sie die angezeigten Kosten auf einen Teil des ganzen "
+#~ "Ablaufprotokolls beschränken können, indem Sie die Teile aus dem "
+#~ "„Profildatenfenster“ auswählen?</p>\n"
+#~ "<p>Während einer Profilerstellung mit cachegrind kann mit der Option --"
+#~ "cachedumps=xxx z. B. die Länge der Teile auf xxx Basisblöcke festgelegt "
+#~ "werden. Ein Basisblock ist eine Abfolge nicht verzweigender "
+#~ "Assemblerausdrückeinnerhalb des Programmcodes.</p>\n"
+
+#~ msgid "Source Files"
+#~ msgstr "Quelltext-Dateien"
+
+#~ msgid "C++ Classes"
+#~ msgstr "C++-Klassen"
+
+#~ msgid "Function (no Grouping)"
+#~ msgstr "Funktion (keine Gruppierung)"
+
+#~ msgid "(always)"
+#~ msgstr "(immer in Suche einbeziehen)"
+
+#~ msgid "KCachegrind Configuration"
+#~ msgstr "Einstellungen für KCachegrind"
+
+#~ msgid ""
+#~ "The Maximum Number of List Items should be below 500.The previous set "
+#~ "value (%1) will still be used."
+#~ msgstr ""
+#~ "Die maximale Anzahl der Listenobjekte muss weniger als 500 betragen. Es "
+#~ "wird der ursprüngliche Wert (%1) beibehalten."
+
+#~ msgid "Choose Source Folder"
+#~ msgstr "Quellordner auswählen"
+
+#~ msgid "Deselect"
+#~ msgstr "Abwählen von"
+
+#~ msgid "Select"
+#~ msgstr "Auswählen von"
+
+#~ msgid "Go to %1"
+#~ msgstr "Gehe zu %1"
+
+#~ msgid "Run <exec> under cachegrind"
+#~ msgstr "<exec> unter Callgrind ausführen"
+
+#~ msgid "< %1"
+#~ msgstr "< %1"
+
+#~ msgid "3 %"
+#~ msgstr "3%"
+
+#~ msgid "1.5 %"
+#~ msgstr "1.5%"
+
+#~ msgid "TopLeft"
+#~ msgstr "Oben Links"
+
+#~ msgid "TopRight"
+#~ msgstr "Oben Rechts"
+
+#~ msgid "BottomLeft"
+#~ msgstr "Unten Links"
+
+#~ msgid "BottomRight"
+#~ msgstr "Unten Rechts"
+
+#~ msgid "Visualisation"
+#~ msgstr "Darstellung"
+
+#~ msgid "Tip of the &Day..."
+#~ msgstr "&Tipp des Tages ..."
+
+#~ msgid "Show \"Tip of the Day\""
+#~ msgstr "„Tipp des Tages“ anzeigen"

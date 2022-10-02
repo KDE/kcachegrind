@@ -1,0 +1,2778 @@
+# translation of kcachegrind.po to Dutch
+# translation of kcachegrind.po to
+# Rinse de Vries <rinse@kde.nl>, 2004.
+# R.F. Pels <ruurd@tiscali.nl>, 2004.
+# Tom Albers <toma@kovoks.nl>, 2004.
+# Tom Albers <tomalbers@kde.nl>, 2004, 2005.
+# Rinse de Vries <RinseDeVries@home.nl>, 2005.
+# Bram Schoenmakers <bramschoenmakers@kde.nl>, 2005, 2006.
+# Rinse de Vries <rinsedevries@kde.nl>, 2007.
+# Antoon Tolboom <atolboo@casema.nl>, 2008.
+# Kristof Bal <kristof.bal@gmail.com>, 2009.
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2009, 2010, 2011, 2015, 2016.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcachegrind\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-12-29 02:36+0100\n"
+"PO-Revision-Date: 2016-11-20 14:15+0100\n"
+"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
+"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Rinse de Vries,Ruurd Pels,Freek de Kruijf"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "rinse@kde.nl,ruurd@tiscali.nl,freekdekruijf@kde.nl"
+
+#: kcachegrind/configdlg.cpp:135 kcachegrind/configdlg.cpp:323
+#: kcachegrind/configdlg.cpp:342
+#, kde-format
+msgid "(always)"
+msgstr "(altijd)"
+
+#: kcachegrind/configdlg.cpp:349
+#, kde-format
+msgid "Choose Source Folder"
+msgstr "Kies broncodemap"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, ConfigDlgBase)
+#: kcachegrind/configdlgbase.ui:14
+#, kde-format
+msgid "Configuration"
+msgstr "Configuratie"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab1)
+#: kcachegrind/configdlgbase.ui:24
+#, kde-format
+msgid "General"
+msgstr "Algemeen"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel5)
+#: kcachegrind/configdlgbase.ui:34
+#, kde-format
+msgid "Maximum number of items in lists:"
+msgstr "Maximaal aantal elementen in lijsten:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel3)
+#: kcachegrind/configdlgbase.ui:44
+#, kde-format
+msgid "Truncate symbols in tooltips and context menus"
+msgstr "Symbolen in tekstballonnen en contextmenu's afkorten"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2)
+#: kcachegrind/configdlgbase.ui:70
+#, kde-format
+msgid "when more than:"
+msgstr "indien meer dan:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2_2)
+#: kcachegrind/configdlgbase.ui:80
+#, kde-format
+msgid "when longer than:"
+msgstr "indien langer dan:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3)
+#: kcachegrind/configdlgbase.ui:90
+#, kde-format
+msgid "Precision of percentage values:"
+msgstr "Precisie van percentages:"
+
+#. i18n: ectx: property (toolTip), widget (QSpinBox, maxListEdit)
+#: kcachegrind/configdlgbase.ui:113
+#, kde-format
+msgid "The Maximum Number of List Items should be below 500."
+msgstr "Het maximum aantal elementen in lijsten dient lager te zijn dan 500."
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1)
+#: kcachegrind/configdlgbase.ui:158
+#, kde-format
+msgid "Cost Item Colors"
+msgstr "Kostenelement-kleuren"
+
+#. i18n: ectx: property (text), widget (QCheckBox, fileCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, classCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, objectCheck)
+#: kcachegrind/configdlgbase.ui:185 kcachegrind/configdlgbase.ui:219
+#: kcachegrind/configdlgbase.ui:233
+#, kde-format
+msgid "Automatic"
+msgstr "Automatisch"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4)
+#: kcachegrind/configdlgbase.ui:192
+#, kde-format
+msgid "Object:"
+msgstr "Object:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2_2)
+#: kcachegrind/configdlgbase.ui:202
+#, kde-format
+msgid "Class:"
+msgstr "Klasse:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
+#: kcachegrind/configdlgbase.ui:240
+#, kde-format
+msgid "File:"
+msgstr "Bestand:"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/configdlgbase.ui:321
+#, kde-format
+msgid "Annotations"
+msgstr "Annotaties"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3_2)
+#: kcachegrind/configdlgbase.ui:329
+#, kde-format
+msgid "Context lines in annotations:"
+msgstr "Contextregels in annotaties:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
+#: kcachegrind/configdlgbase.ui:350
+#, kde-format
+msgid "Source Folders"
+msgstr "Broncodemappen"
+
+#. i18n: ectx: property (text), widget (QPushButton, addDirButton)
+#: kcachegrind/configdlgbase.ui:364
+#, kde-format
+msgid "Add"
+msgstr "Toevoegen"
+
+#. i18n: ectx: property (text), widget (QPushButton, deleteDirButton)
+#: kcachegrind/configdlgbase.ui:371
+#, kde-format
+msgid "Delete"
+msgstr "Verwijderen"
+
+#. i18n: ectx: property (text), widget (QTreeWidget, dirList)
+#: kcachegrind/configdlgbase.ui:409
+#, kde-format
+msgid "Object / Related Source Base"
+msgstr "Object / gerelateerde broncodebasis"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
+#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:289
+#: kcachegrind/toplevel.cpp:512
+#, kde-format
+msgid "Profile Dumps"
+msgstr "Profielbronnen"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:24
+#, kde-format
+msgid "Target"
+msgstr "Doel"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:46
+#, kde-format
+msgid "Time"
+msgstr "Tijd"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:57
+#, kde-format
+msgid "Path"
+msgstr "Pad"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab)
+#: kcachegrind/dumpselectionbase.ui:70
+#, kde-format
+msgid "Options"
+msgstr "Opties"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: kcachegrind/dumpselectionbase.ui:87
+#, kde-format
+msgid "Target command:"
+msgstr "Doelcommando:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: kcachegrind/dumpselectionbase.ui:100
+#, kde-format
+msgid "Profiler options:"
+msgstr "Profiler-opties:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:111
+#, kde-format
+msgid "Option"
+msgstr "Optie"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:122 kcachegrind/dumpselectionbase.ui:650
+#, kde-format
+msgid "Value"
+msgstr "Waarde"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:133
+#, kde-format
+msgid "Trace"
+msgstr "Trace"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:146 kcachegrind/dumpselectionbase.ui:730
+#, kde-format
+msgid "Jumps"
+msgstr "Sprongen"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:160
+#, kde-format
+msgid "Instructions"
+msgstr "Instructies"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:175 kcachegrind/dumpselectionbase.ui:745
+#, kde-format
+msgid "Events"
+msgstr "Gebeurtenissen"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:188
+#, kde-format
+msgid "Full Cache"
+msgstr "Volledige cache"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:202
+#, kde-format
+msgid "Custom"
+msgstr "Aangepast"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:217
+#, kde-format
+msgid "Collect"
+msgstr "Verzamelen"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:230
+#, kde-format
+msgid "At Startup"
+msgstr "Bij het starten"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:244
+#, kde-format
+msgid "While In"
+msgstr "Gedurende"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:259
+#, kde-format
+msgid "Skip"
+msgstr "Overslaan"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:272
+#, kde-format
+msgid "PLT"
+msgstr "PLT"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:286 kcachegrind/dumpselectionbase.ui:898
+#, kde-format
+msgid "Function"
+msgstr "Functie"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:301
+#, kde-format
+msgid "Dump Profile"
+msgstr "Profiel dumpen"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:314
+#, kde-format
+msgid "Every BBs"
+msgstr "Alle BBs"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:328 kcachegrind/dumpselectionbase.ui:370
+#, kde-format
+msgid "On Entering"
+msgstr "Bij binnengaan"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:342
+#, kde-format
+msgid "On Leaving"
+msgstr "Bij verlaten"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:357
+#, kde-format
+msgid "Zero Events"
+msgstr "Nul gebeurtenissen"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:385
+#, kde-format
+msgid "Separate"
+msgstr "Afzonderlijk"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:398
+#, kde-format
+msgid "Threads"
+msgstr "Threads"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:412
+#, kde-format
+msgid "Recursions"
+msgstr "Recursies"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:426
+#, kde-format
+msgid "Call Chain"
+msgstr "Aanroepketting"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
+#: kcachegrind/dumpselectionbase.ui:452
+#, kde-format
+msgid "Custom profiler options:"
+msgstr "Aangepaste Profiler-opties:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton2)
+#: kcachegrind/dumpselectionbase.ui:486
+#, kde-format
+msgid "Run New Profile"
+msgstr "Maak nieuw profiel aan"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/dumpselectionbase.ui:496
+#, kde-format
+msgid "Info"
+msgstr "Informatie"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: kcachegrind/dumpselectionbase.ui:505
+#, kde-format
+msgid "Dump reason:"
+msgstr "Dump reden:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: kcachegrind/dumpselectionbase.ui:518
+#, kde-format
+msgid "Event summary:"
+msgstr "Overzicht gebeurtenissen:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:529
+#, kde-format
+msgid "Name"
+msgstr "Naam"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:540
+#, kde-format
+msgid "Sum"
+msgstr "Som"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: kcachegrind/dumpselectionbase.ui:554
+#, kde-format
+msgid "Miscellaneous:"
+msgstr "Overigen:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6)
+#: kcachegrind/dumpselectionbase.ui:588
+#, kde-format
+msgid "Show"
+msgstr "Tonen"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton5)
+#: kcachegrind/dumpselectionbase.ui:595
+#, kde-format
+msgid "Compare"
+msgstr "Vergelijken"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab3)
+#: kcachegrind/dumpselectionbase.ui:605
+#, kde-format
+msgid "State"
+msgstr "Status"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton1)
+#: kcachegrind/dumpselectionbase.ui:619
+#, kde-format
+msgid "Update"
+msgstr "Bijwerken"
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox1)
+#: kcachegrind/dumpselectionbase.ui:626
+#, kde-format
+msgid "Every [s]:"
+msgstr "Elke [s]:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:639
+#, kde-format
+msgid "Counter"
+msgstr "Teller"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:661
+#, kde-format
+msgid "Dumps Done"
+msgstr "Aantal uitgevoerde dumps"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:675
+#, kde-format
+msgid "Is Collecting"
+msgstr "Bezig met verzamelen"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:689
+#, kde-format
+msgid "Executed"
+msgstr "Uitgevoerd"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:702
+#, kde-format
+msgid "Basic Blocks"
+msgstr "Basisblokken"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:716
+#, kde-format
+msgid "Calls"
+msgstr "Aanroepen"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:758
+#, kde-format
+msgid "Ir"
+msgstr "Ir"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:773
+#, kde-format
+msgid "Distinct"
+msgstr "Onderscheidend"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:786
+#, kde-format
+msgid "ELF Objects"
+msgstr "ELF objecten"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:800
+#, kde-format
+msgid "Functions"
+msgstr "Functies"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:814
+#, kde-format
+msgid "Contexts"
+msgstr "Contexten"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: kcachegrind/dumpselectionbase.ui:845
+#, kde-format
+msgid "Stack trace:"
+msgstr "Stack-trace:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox2)
+#: kcachegrind/dumpselectionbase.ui:855
+#, kde-format
+msgid "Sync."
+msgstr "Synchr."
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:865
+#, kde-format
+msgid "#"
+msgstr "#"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:876
+#, kde-format
+msgid "Incl."
+msgstr "Incl."
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:887
+#, kde-format
+msgid "Called"
+msgstr "Aangeroepen"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:909
+#, kde-format
+msgid "Location"
+msgstr "Locatie"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton7)
+#: kcachegrind/dumpselectionbase.ui:928
+#, kde-format
+msgid "Start"
+msgstr "Starten"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6_2)
+#: kcachegrind/dumpselectionbase.ui:951
+#, kde-format
+msgid "Zero"
+msgstr "Nul"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton4)
+#: kcachegrind/dumpselectionbase.ui:958
+#, kde-format
+msgid "Dump"
+msgstr "Dump"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab4)
+#: kcachegrind/dumpselectionbase.ui:968
+#, kde-format
+msgid "Messages"
+msgstr "Meldingen"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton9)
+#: kcachegrind/dumpselectionbase.ui:985
+#, kde-format
+msgid "Kill Run"
+msgstr "Stop uitvoering"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton8)
+#: kcachegrind/dumpselectionbase.ui:1008
+#, kde-format
+msgid "Clear"
+msgstr "Wissen"
+
+#. i18n: ectx: Menu (file)
+#: kcachegrind/kcachegrindui.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&Bestand"
+
+#. i18n: ectx: Menu (view)
+#: kcachegrind/kcachegrindui.rc:10
+#, kde-format
+msgid "&View"
+msgstr "Beel&d"
+
+#. i18n: ectx: Menu (layouts)
+#: kcachegrind/kcachegrindui.rc:15
+#, kde-format
+msgid "&Layout"
+msgstr "&Layout"
+
+#. i18n: ectx: Menu
+#: kcachegrind/kcachegrindui.rc:33
+#, kde-format
+msgid "Sidebars"
+msgstr "Zijbalken"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kcachegrind/kcachegrindui.rc:42
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Hoofdwerkbalk"
+
+#. i18n: ectx: ToolBar (stateToolBar)
+#: kcachegrind/kcachegrindui.rc:54
+#, kde-format
+msgid "State Toolbar"
+msgstr "Toestandbalk"
+
+#: kcachegrind/main.cpp:34
+#, kde-format
+msgid "KCachegrind"
+msgstr "KCachegrind"
+
+#: kcachegrind/main.cpp:36
+#, kde-format
+msgid "KDE Frontend for Callgrind/Cachegrind"
+msgstr "KDE-schil voor Callgrind/Cachegrind"
+
+#: kcachegrind/main.cpp:38
+#, kde-format
+msgid "(C) 2002 - 2016"
+msgstr "(C) 2002 - 2016"
+
+#: kcachegrind/main.cpp:40
+#, kde-format
+msgid "Josef Weidendorfer"
+msgstr "Josef Weidendorfer"
+
+#: kcachegrind/main.cpp:41
+#, kde-format
+msgid "Author/Maintainer"
+msgstr "Auteur/onderhouder"
+
+#: kcachegrind/main.cpp:68
+#, kde-format
+msgid "Show information of this trace"
+msgstr "Toon informatie van deze trace"
+
+#: kcachegrind/main.cpp:68
+#, kde-format
+msgid "[trace...]"
+msgstr "[traceren...]"
+
+#: kcachegrind/toplevel.cpp:258 kcachegrind/toplevel.cpp:486
+#, kde-format
+msgid "Parts Overview"
+msgstr "Overzicht van delen"
+
+#: kcachegrind/toplevel.cpp:267
+#, kde-format
+msgid "Top Cost Call Stack"
+msgstr "Aanroeplijst naar hoogste kosten"
+
+#: kcachegrind/toplevel.cpp:269
+#, kde-format
+msgid ""
+"<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most probable' "
+"call stack. It is built up by starting with the current selected function "
+"and adds the callers/callees with highest cost at the top and to bottom.</"
+"p><p>The <b>Cost</b> and <b>Calls</b> columns show the cost used for all "
+"calls from the function in the line above.</p>"
+msgstr ""
+"<b>Aanroeplijst naar hoogste kosten</b> <p>Deze lijst is een lijst met "
+"fictieve, meest waarschijnlijke kosten. De lijst is opgebouwd, beginnend met "
+"de huidig geselecteerde functie en voegt de aanroepers/aangeroepenen met de "
+"hoogste kosten van boven naar beneden in.</p> <p>De kolommen voor <b>kosten</"
+"b> en <b>aanroepen</b> tonen de kosten die worden gebruikt voor alle "
+"aanroepen van de functie in de regel erboven.</p>"
+
+#: kcachegrind/toplevel.cpp:283
+#, kde-format
+msgid "Flat Profile"
+msgstr "Kostenprofiel"
+
+#: kcachegrind/toplevel.cpp:296
+#, kde-format
+msgid ""
+"<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
+"loadable profile dumps in all subdirectories of: <ul><li>current working "
+"directory of KCachegrind, i.e. where it was started from, and </li><li>the "
+"default profile dump directory given in the configuration.</li></ul> The "
+"list is sorted according to the target command profiled in the corresponding "
+"dump.</p><p>On selecting a profile dump, information for it is shown in the "
+"bottom area of the dockable: <ul><li><b>Options</b> allows you to view the "
+"profiled command and profile options of this dump. By changing any item, a "
+"new (yet unexisting) profile template is created. Press <b>Run Profile</b> "
+"to start a profile run with these options in the background. </"
+"li><li><b>Info</b> gives detailed info on the selected dump like event cost "
+"summary and properties of the simulated cache. </li><li><b>State</b> is only "
+"available for current happening profiles runs. Press <b>Update</b> to see "
+"different counters of the run, and a stack trace of the current position in "
+"the program profiled. Check the <b>Every</b> option to let KCachegrind "
+"regularly poll these data. Check the <b>Sync</b> option to let the dockable "
+"activate the top function in the current loaded dump.</li></ul></p>"
+msgstr ""
+"<b>Profielbronnen</b> <p>Dit venster toont in het bovenste gedeelte de lijst "
+"van laadbare profielbronnen in alle submappen van: <ul> <li>de huidige "
+"werkmap van KCachegrind, dus waarin het programma is gestart, en </li><li>de "
+"standaard profielbronnenmap die is opgegeven in de configuratie.</li></ul>De "
+"lijst is geordend op de door de betreffende profielbronnen aangevoerde "
+"commandoregel.</p><p>Door een profielbron te selecteren wordt de informatie "
+"in het onderste gedeelte van het venster getoond: <ul> <li><b>Opties</b> "
+"toont gedetailleerde informatie omtrent het commando dat is geprofileerd en "
+"de gebruikte opties bij het maken van het profielbestand. Door een element "
+"te wijzigen wordt een nieuw profileringssjabloon gemaakt. Door op <b>Profiel "
+"maken</b> te drukken start u een profileringsaktie met deze opties in de "
+"achtergrond.</li><li><b>Informatie</b> geeft gedetailleerde informatie "
+"betreffende de geselecteerde profielbron zoals een kostenoverzicht en de "
+"eigenschappen van de gesimuleerde cache.</li><li><b>Toestand</b> is alleen "
+"beschikbaar voor lopende profileringsakties. Druk op <b>Bijwerken</b> om "
+"verschillende tellers van de actie te zien en een stacktrace van de huidige "
+"uitvoerpositie in het geprofileerde programma. Selecteer de optie <b>Alles</"
+"b> om KCachegrind deze gegevens regelmatig bij te werken. Selecteer de optie "
+"<b>Synchroniseren</b> om het venster met de bovenste functie van de geladen "
+"profielbron te activeren.</li></ul></p>"
+
+#: kcachegrind/toplevel.cpp:367
+#, kde-format
+msgid "&Duplicate"
+msgstr "&Dupliceren"
+
+#: kcachegrind/toplevel.cpp:370
+#, kde-format
+msgid ""
+"<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
+msgstr ""
+"<b>Huidige layout dupliceren</b><p>Maak een kopie van de huidige layout.</p>"
+
+#: kcachegrind/toplevel.cpp:375
+#, kde-format
+msgid "&Remove"
+msgstr "&Verwijderen"
+
+#: kcachegrind/toplevel.cpp:377
+#, kde-format
+msgid ""
+"<b>Remove Current Layout</b><p>Delete current layout and make the previous "
+"active.</p>"
+msgstr ""
+"<b>Huidige layout verwijderen</b> <p>Verwijder de huidige layout en maak de "
+"vorige actief.</p>"
+
+#: kcachegrind/toplevel.cpp:382
+#, kde-format
+msgid "&Go to Next"
+msgstr "&Ga naar volgende"
+
+#: kcachegrind/toplevel.cpp:385
+#, kde-format
+msgid "Go to Next Layout"
+msgstr "Ga naar volgende layout"
+
+#: kcachegrind/toplevel.cpp:389
+#, kde-format
+msgid "&Go to Previous"
+msgstr "&Ga naar vorige"
+
+#: kcachegrind/toplevel.cpp:392
+#, kde-format
+msgid "Go to Previous Layout"
+msgstr "Ga naar de vorige layout"
+
+#: kcachegrind/toplevel.cpp:396
+#, kde-format
+msgid "&Restore to Default"
+msgstr "Te&rugzetten naar standaard"
+
+#: kcachegrind/toplevel.cpp:398
+#, kde-format
+msgid "Restore Layouts to Default"
+msgstr "Layouts terugzetten naar standaard"
+
+#: kcachegrind/toplevel.cpp:402
+#, kde-format
+msgid "&Save as Default"
+msgstr "Op&slaan als standaard"
+
+#: kcachegrind/toplevel.cpp:404
+#, kde-format
+msgid "Save Layouts as Default"
+msgstr "Layouts opslaan als standaard"
+
+#: kcachegrind/toplevel.cpp:415
+#, kde-format
+msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
+msgstr "<b>Nieuw</b><p>Opent een nieuw leeg venster.</p>"
+
+#: kcachegrind/toplevel.cpp:419
+#, kde-format
+msgid "&Add..."
+msgstr "&Toevoegen..."
+
+#: kcachegrind/toplevel.cpp:421
+#, kde-format
+msgid ""
+"<b>Add Profile Data</b><p>This opens an additional profile data file in the "
+"current window.</p>"
+msgstr ""
+"<b>Voeg profiel gegevens toe</b> <p>Dit opent een additioneel "
+"profielbronbestand in het huidige venster.</p>"
+
+#: kcachegrind/toplevel.cpp:427
+#, kde-format
+msgctxt "Reload a document"
+msgid "&Reload"
+msgstr "He&rladen"
+
+#: kcachegrind/toplevel.cpp:430
+#, kde-format
+msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
+msgstr ""
+"<b>Trace herladen</b><p>Dit laadt tevens alle nieuw-aangemaakte "
+"profielbronnen.</p>"
+
+#: kcachegrind/toplevel.cpp:435
+#, kde-format
+msgid "&Export Graph"
+msgstr "Grafiek &exporteren"
+
+#: kcachegrind/toplevel.cpp:438
+#, kde-format
+msgid ""
+"<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
+"tools of the GraphViz package.</p>"
+msgstr ""
+"<b>Aanroepgrafiek exporteren</b><p>Genereert een bestand met de extensie ."
+"dot, dat kan worden geopend met hulpprogramma's uit het pakket GraphViz.</p>"
+
+#: kcachegrind/toplevel.cpp:446
+#, kde-format
+msgid "&Force Dump"
+msgstr "Dump &forceren"
+
+#: kcachegrind/toplevel.cpp:449
+#, kde-format
+msgid ""
+"<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
+"current directory. This action is checked while KCachegrind looks for the "
+"dump. If the dump is finished, it automatically reloads the current trace. "
+"If this is the one from the running Callgrind, the new created trace part "
+"will be loaded, too.</p><p>Force dump creates a file 'callgrind.cmd', and "
+"checks every second for its existence. A running Callgrind will detect this "
+"file, dump a trace part, and delete 'callgrind.cmd'. The deletion is "
+"detected by KCachegrind, and it does a Reload. If there is <em>no</em> "
+"Callgrind running, press 'Force Dump' again to cancel the dump request. This "
+"deletes 'callgrind.cmd' itself and stops polling for a new dump.</p><p>Note: "
+"A Callgrind run <em>only</em> detects existence of 'callgrind.cmd' when "
+"actively running a few milliseconds, i.e. <em>not</em> sleeping. Tip: For a "
+"profiled GUI program, you can awake Callgrind e.g. by resizing a window of "
+"the program.</p>"
+msgstr ""
+"<b>Dump forceren</b><p>Dit forceert een dump voor een Callgrind "
+"profileringsactie in de huidige map. Deze actie wordt gecontroleerd terwijl "
+"KCachegrind de dump zoekt. Als de dump klaar is wordt de trace automatisch "
+"herladen. Als dit er een is van de lopende Cachegrind, dan wordt de nieuwe "
+"trace part ook geladen.</p><p>Dump forceren maakt een bestand 'callgrind."
+"cmd' en controleert elke seconde of dit bestand bestaat. Een lopende "
+"Callgrind zal dit bestand ontdekken, een trace dumpen en het bestand "
+"'callgrind.cmd' verwijderen. Als het bestand is verwijderd zal KCachegrind "
+"dit ontdekken en herladen. Als er <em>geen</em> lopend Cachegrind proces "
+"bestaat drukt u nogmaals op 'Dump forceren' om het dumpverzoek af te breken. "
+"Dit verwijderd het bestand  'cachegrind.cmd' en beëindigt de controle op "
+"nieuwe dumps.</p><p>Opmerking: een Callgrind-run ontdekt het bestaan van het "
+"cachegrind.cmd' bestand <em>alleen</em> als het te profileren programma een "
+"aantal milliseconden loopt, dat is: <em>niet</em> slaapt. Tip: in een "
+"programma met een grafische gebruikersinterface kunt u Callgrind dwingen te "
+"lopen door bijvoorbeeld het venster van het programma van afmeting te "
+"veranderen.</p>"
+
+#: kcachegrind/toplevel.cpp:474
+#, kde-format
+msgid ""
+"<b>Open Profile Data</b><p>This opens a profile data file, with possible "
+"multiple parts</p>"
+msgstr ""
+"<b>Trace openen</b><p> Dit opent een trace-bestand, waarbij eventuele "
+"bijhorende profielbronnen ook worden geopend.</p>"
+
+#: kcachegrind/toplevel.cpp:489
+#, kde-format
+msgid "Show/Hide the Parts Overview Dockable"
+msgstr "Overzicht van geladen Trace-profielbronnen tonen/verbergen"
+
+#: kcachegrind/toplevel.cpp:494
+#, kde-format
+msgid "Call Stack"
+msgstr "Aanroeplijst"
+
+#: kcachegrind/toplevel.cpp:497
+#, kde-format
+msgid "Show/Hide the Call Stack Dockable"
+msgstr "Aanroeplijst tonen/verbergen"
+
+#: kcachegrind/toplevel.cpp:502
+#, kde-format
+msgid "Function Profile"
+msgstr "Functieprofiel"
+
+#: kcachegrind/toplevel.cpp:505
+#, kde-format
+msgid "Show/Hide the Function Profile Dockable"
+msgstr "Functieprofieloverzicht tonen/verbergen"
+
+#: kcachegrind/toplevel.cpp:513
+#, kde-format
+msgid "Show/Hide the Profile Dumps Dockable"
+msgstr "Lijst met laadbare profielbronnen tonen/verbergen"
+
+#: kcachegrind/toplevel.cpp:520
+#, kde-format
+msgid "Relative"
+msgstr "Relatief"
+
+#: kcachegrind/toplevel.cpp:522
+#, kde-format
+msgid "Show relative instead of absolute costs"
+msgstr "Relatieve in plaats van absolute kosten tonen"
+
+#: kcachegrind/toplevel.cpp:528
+#, kde-format
+msgid "Relative to Parent"
+msgstr "Relatief ten opzichte van hoger element"
+
+#: kcachegrind/toplevel.cpp:531
+#, kde-format
+msgid "Show percentage costs relative to parent"
+msgstr "Procentuele kosten gebaseerd op de kosten van het hogere element tonen"
+
+#: kcachegrind/toplevel.cpp:535
+#, kde-format
+msgid ""
+"<b>Show percentage costs relative to parent</b><p>If this is switched off, "
+"percentage costs are always shown relative to the total cost of the profile "
+"part(s) that are currently browsed. By turning on this option, percentage "
+"cost of shown cost items will be relative to the parent cost item.</"
+"p><ul><table><tr><td><b>Cost Type</b></td><td><b>Parent Cost</b></td></"
+"tr><tr><td>Function Cumulative</td><td>Total</td></tr><tr><td>Function Self</"
+"td><td>Function Group (*) / Total</td></tr><tr><td>Call</td><td>Function "
+"Inclusive</td></tr><tr><td>Source Line</td><td>Function Inclusive</td></tr></"
+"table></ul><p>(*) Only if function grouping is switched on (e.g. ELF object "
+"grouping).</p>"
+msgstr ""
+"<b>Procentuele kosten ten opzichte van het hogere element tonen</b><p>Als "
+"dit uitgeschakeld is worden procentuele kosten alleen ten opzichte van de "
+"totale kosten van de profielbron of -bronnen getoond die momenteel worden "
+"geraadpleegd. Door deze optie aan te zetten worden de procentuele kosten ten "
+"opzichte van het hoger liggende element getoond.</"
+"p><ul><table><tr><td><b>Kostentype</b></td><td><b>Kosten hoger element</b></"
+"td></tr><tr><td>Cumulatief voor functie</td><td>Totaal</td></"
+"tr><tr><td>Alleen voor functie</td><td>Functiegroep (*) / Totaal</td></"
+"tr><tr><td>Aanroep</td><td>Cumulatief voor functie</td></"
+"tr><tr><td>Broncoderegel</td><td>Cumulatief voor functie</td></tr></table></"
+"ul><p>(*) Uitsluitend als functiegroepering is ingeschakeld (bijv. ELF-"
+"object groepering).</p>"
+
+#: kcachegrind/toplevel.cpp:552
+#, kde-format
+msgid "Cycle Detection"
+msgstr "Cyclusbepaling"
+
+#: kcachegrind/toplevel.cpp:555
+#, kde-format
+msgid ""
+"<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
+"drawing will show black areas when a recursive call is made instead of "
+"drawing the recursion ad infinitum. Note that the size of black areas often "
+"will be wrong, as inside recursive cycles the cost of calls cannot be "
+"determined; the error is small, however, for false cycles (see "
+"documentation).</p><p>The correct handling for cycles is to detect them and "
+"collapse all functions of a cycle into an artificial function, which is done "
+"when this option is selected. Unfortunately, with GUI applications, this "
+"often will lead to huge false cycles, making the analysis impossible; "
+"therefore, there is the option to switch this off.</p>"
+msgstr ""
+"<b>Cycli van recursieve aanroepen ontdekken</b><p>Als dit is uitgeschakeld "
+"zal de 'treemap'-tekening zwarte gebieden vertonen waar een recursieve "
+"aanroep wordt gedaan in plaats van de afzonderlijke aanroepen te tekenen. "
+"Merk op dat de zwarte gebieden vaak van een verkeerde afmeting zullen zijn "
+"omdat in recursieve cycli de kosten van een aanroep niet kunnen worden "
+"berekend. De fout is echter klein voor foute cycli (zie de documentatie).</"
+"p><p>De correcte afhandeling voor cycli is om ze te ontdekken en samen te "
+"voegen in een virtuele functie. Als deze optie aanstaat gebeurt dat. Helaas "
+"leidt dit bij programma's met een grafische gebruikersinterface vaak tot een "
+"groot aantal foute cycli waardoor een goede analyse niet kan worden gemaakt. "
+"Daarom bestaat de mogelijkheid om dit uit te schakelen.</p>"
+
+#: kcachegrind/toplevel.cpp:571
+#, kde-format
+msgid "Shorten Templates"
+msgstr "Sjablonen voor verkleinen"
+
+#: kcachegrind/toplevel.cpp:573
+#, kde-format
+msgid "Hide Template Parameters in C++ Symbols"
+msgstr "Sjabloonparameters in C++ Symbolen verbergen"
+
+#: kcachegrind/toplevel.cpp:574
+#, kde-format
+msgid ""
+"<b>Hide Template Parameters in C++ Symbols</b><p>If this is switched on, "
+"every symbol displayed will have any C++ template parameters hidden, just "
+"showing &lt;&gt; instead of a potentially nested template parameter.</"
+"p><p>In this mode, you can hover the mouse pointer over the activated symbol "
+"label to show a tooltip with the unabbreviated symbol.</p>"
+msgstr ""
+"<b>Sjabloonparameters in C++ Symbolen verbergen</b><p>Als dit is "
+"ingeschakeld, dan zijn van elk getoond symbool alle C++ sjabloonparameters "
+"verborgen, alleen tonend &lt;&gt; in plaats van een potentieel geneste "
+"sjabloonparameter.</p><p>In this modus, kunt met de muiswijzer over het "
+"geactiveerde symboollabel gaan om een tekstballon te tonen met het niet "
+"afgekorte symbool.</p>"
+
+#: kcachegrind/toplevel.cpp:590
+#, kde-format
+msgid "&Up"
+msgstr "&Omhoog"
+
+#: kcachegrind/toplevel.cpp:599
+#, kde-format
+msgid ""
+"<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
+"was visited, use that with highest cost.</p>"
+msgstr ""
+"<b>Ga omhoog</b><p>Ga naar de laatst geselecteerde aanroeper van de huidige "
+"functie. Als geen aanroeper is bezocht, gebruik dan degene met de hoogste "
+"kosten.</p>"
+
+#: kcachegrind/toplevel.cpp:616
+#, kde-format
+msgid "Go back in function selection history"
+msgstr "Ga terug in functieselectiegeschiedenis"
+
+#: kcachegrind/toplevel.cpp:630
+#, kde-format
+msgid "Go forward in function selection history"
+msgstr "Ga vooruit in functieselectiegeschiedenis"
+
+#: kcachegrind/toplevel.cpp:635 kcachegrind/toplevel.cpp:1512
+#, kde-format
+msgid "Primary Event Type"
+msgstr "Primair gebeurtenistype"
+
+#: kcachegrind/toplevel.cpp:636
+#, kde-format
+msgid "Select primary event type of costs"
+msgstr "Primair gebeurtenistype van kosten selecteren"
+
+#: kcachegrind/toplevel.cpp:658 kcachegrind/toplevel.cpp:1517
+#, kde-format
+msgid "Secondary Event Type"
+msgstr "Secundair gebeurtenistype"
+
+#: kcachegrind/toplevel.cpp:659
+#, kde-format
+msgid "Select secondary event type for cost e.g. shown in annotations"
+msgstr ""
+"Secundair gebeurtenistype voor kosten bijvoorbeeld getoond in annotaties"
+
+#: kcachegrind/toplevel.cpp:669
+#, kde-format
+msgid "Grouping"
+msgstr "Groepering"
+
+#: kcachegrind/toplevel.cpp:671
+#, kde-format
+msgid "Select how functions are grouped into higher level cost items"
+msgstr "Selecteer hoe functies worden gegroepeerd in hogere kostenelementen"
+
+#: kcachegrind/toplevel.cpp:677
+#, kde-format
+msgid "(No Grouping)"
+msgstr "(Geen groepering)"
+
+#: kcachegrind/toplevel.cpp:689
+#, kde-format
+msgid "Split"
+msgstr "Splitsen"
+
+#: kcachegrind/toplevel.cpp:692
+#, kde-format
+msgid "Show two information panels"
+msgstr "Laat twee informatiepanelen zien"
+
+#: kcachegrind/toplevel.cpp:698
+#, kde-format
+msgid "Split Horizontal"
+msgstr "Horizontaal splitsen"
+
+#: kcachegrind/toplevel.cpp:701
+#, kde-format
+msgid "Change Split Orientation when main window is split."
+msgstr "Wijzig de splitsingoriëntatie als het hoofdvenster gesplitst is."
+
+#: kcachegrind/toplevel.cpp:898
+#, kde-format
+msgid "Select Callgrind Profile Data"
+msgstr "Cachegrind-profielgegevens kiezen"
+
+#: kcachegrind/toplevel.cpp:900 kcachegrind/toplevel.cpp:968
+#, kde-format
+msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
+msgstr ""
+"Profielgegevens van Callgrind (cachegrind.out* callgrind.out*);;Alle "
+"bestanden (*)"
+
+#: kcachegrind/toplevel.cpp:928 kcachegrind/toplevel.cpp:957
+#, kde-format
+msgid ""
+"Could not open the file \"%1\". Check it exists and you have enough "
+"permissions to read it."
+msgstr ""
+"Kon het bestand \"%1\" niet openen. Controleer of het bestaat en of u genoeg "
+"rechten hebt om het te lezen."
+
+#: kcachegrind/toplevel.cpp:966
+#, kde-format
+msgid "Add Callgrind Profile Data"
+msgstr "Cachegrind profielgegevens toevoegen"
+
+#: kcachegrind/toplevel.cpp:1136 kcachegrind/toplevel.cpp:1465
+#, kde-format
+msgid "(Hidden)"
+msgstr "(Verborgen)"
+
+#: kcachegrind/toplevel.cpp:1522
+#, kde-format
+msgid "Hide"
+msgstr "Verbergen"
+
+#: kcachegrind/toplevel.cpp:1564
+#, kde-format
+msgid "Show Absolute Cost"
+msgstr "Absolute kosten tonen"
+
+#: kcachegrind/toplevel.cpp:1567
+#, kde-format
+msgid "Show Relative Cost"
+msgstr "Relatieve kosten tonen"
+
+#: kcachegrind/toplevel.cpp:1599
+#, kde-format
+msgid "Go Back"
+msgstr "Ga terug"
+
+#: kcachegrind/toplevel.cpp:1600
+#, kde-format
+msgid "Go Forward"
+msgstr "Ga verder"
+
+#: kcachegrind/toplevel.cpp:1601
+#, kde-format
+msgid "Go Up"
+msgstr "Ga omhoog"
+
+#: kcachegrind/toplevel.cpp:1813
+#, kde-format
+msgid "Layout Count: %1"
+msgstr "Aantal layouts: %1"
+
+#: kcachegrind/toplevel.cpp:1820
+#, kde-format
+msgid "No profile data file loaded."
+msgstr "Geen profielgegevensbestand geladen."
+
+#: kcachegrind/toplevel.cpp:1829
+#, kde-format
+msgid "Total %1 Cost: %2"
+msgstr "Totaal %1 kosten %2"
+
+#: kcachegrind/toplevel.cpp:1841
+#, kde-format
+msgid "No event type selected"
+msgstr "Geen gebeurtenistype geselecteerd"
+
+#: kcachegrind/toplevel.cpp:2027
+#, kde-format
+msgid "Cannot determine receiver PID for dump request"
+msgstr "Kan de PID van de ontvanger voor het dumpverzoek niet bepalen"
+
+#: kcachegrind/toplevel.cpp:2068
+#, kde-format
+msgid "Error running callgrind_control"
+msgstr "Fout bij het uitvoeren van callgrind_control"
+
+#: kcachegrind/toplevel.cpp:2107 kcachegrind/toplevel.cpp:2144
+#: kcachegrind/toplevel.cpp:2181
+#, kde-format
+msgid "(No Stack)"
+msgstr "(Geen stack)"
+
+#: kcachegrind/toplevel.cpp:2113
+#, kde-format
+msgid "(No next function)"
+msgstr "(Geen volgende functie)"
+
+#: kcachegrind/toplevel.cpp:2150
+#, kde-format
+msgid "(No previous function)"
+msgstr "(Geen vorige functie)"
+
+#: kcachegrind/toplevel.cpp:2186
+#, kde-format
+msgid "(No Function Up)"
+msgstr "(Geen bovenliggende functie)"
+
+#: kcachegrind/toplevel.cpp:2318 kcachegrind/toplevel.cpp:2332
+#, kde-format
+msgid "Loading %1"
+msgstr "%1 wordt geladen"
+
+#: kcachegrind/toplevel.cpp:2326
+#, kde-format
+msgid "Error loading %1: %2"
+msgstr "Fout bij het laden van %1: %2"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, kde-format
+msgid ""
+"<p>...that the <em>What's this...</em> help for every GUI widget\n"
+"in KCachegrind contains detailed usage information for this widget?\n"
+"It is highly recommend to read at least these help texts on first\n"
+"use. Request <em>What's this...</em> help by pressing\n"
+"Shift-F1 and clicking on the widget.</p>\n"
+msgstr ""
+"<p>de <em>Wat is dit?</em>-hulp bevat voor elk interface-element\n"
+"in KCachegrind gedetailleerde informatie omtrent het gebruik van het "
+"interface-element1\n"
+"Het is raadzaam om tenminste deze helpteksten te lezen voordat u het "
+"interface-element voor\n"
+" het eerst gebruikt. Gebruik <em>Wat is dit?</em> door Shift+F1 in te "
+"drukken en te klikken op het interface-element</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:12
+#, kde-format
+msgid ""
+"<p>...that you can get profile information at instruction level\n"
+"with Calltree when you provide the option <em>--dump-instr=yes</em>?\n"
+"Use the Assembler View for the instruction annotations.\n"
+"</p>\n"
+msgstr ""
+"<p>U kunt profielinformatie op instructieniveau\n"
+"met Calltree krijgen met de optie <em>--dump-instr=yes</em>.\n"
+"Gebruik het Assembler-venster voor geannoteerde instructies.\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:21
+#, kde-format
+msgid ""
+"<p>...that you can use Alt-Left/Right keys of your keyboard to go\n"
+"back/forward in the active object history ?</p>\n"
+msgstr ""
+"<p>U kunt de toetsen Alt-Links en Alt-Rechts gebruiken om\n"
+"door de geschiedenis van actieve objecten te lopen.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>...that you can navigate in the Callee/Caller Map View using\n"
+"arrow keys? Use Left/Right to change to siblings of the current\n"
+"item; use Up/Down to go one nesting level up/down. To select\n"
+"the current item, press Space, and to activate it, press Return.\n"
+"</p>\n"
+msgstr ""
+"<p>U kunt met de pijltjestoetsen navigeren in de aanroepenkaart en\n"
+"de aanroeperskaart met de pijltjestoetsen. Gebruik Links/Rechts om in\n"
+"het gelijke niveau te navigeren en Omhoog/Omlaag om het nestingniveau te\n"
+"wijzigen. Druk op Spatie om het huidige element te selecteren, druk op "
+"Return\n"
+"om het huidige element te activeren.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:38
+#, kde-format
+msgid ""
+"<p>...that you can navigate in the Call Graph View using\n"
+"arrow keys? Use Up/Down to go one calling level up/down, alternating\n"
+"between calls and functions. Use Left/Right to change to siblings of a "
+"current\n"
+"selected call. To activate the current item, press Return.\n"
+"</p>\n"
+msgstr ""
+"<p>U kunt in de aanroepengrafiek navigeren met de pijltjestoetsen.\n"
+"Gebruik Omhoog/Omlaag om het aanroepniveau te wijzigen terwijl u "
+"gelijktijdig\n"
+"afwisselt tussen aanroepen en functies. Gebruik Links/Rechts om te "
+"veranderen van\n"
+"aanroepen en functies op hetzelfde niveau. Om een huidig item te activeren\n"
+"drukt u op Return.\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:48
+#, kde-format
+msgid ""
+"<p>...that you can rapidly locate a function by entering part of its\n"
+"name (case-insensitive) into the edit line of the toolbar\n"
+"and hit return?</p>\n"
+msgstr ""
+"<p>U kunt snel een functie zoeken door een deel van de\n"
+"naam (niet hoofdlettergevoelig) in de invoerregel op de taakbals\n"
+"te tikken en op Return te drukken.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:56
+#, kde-format
+msgid ""
+"<p>...that you can assign custom colors to \n"
+"ELF objects/C++ Classes/Source Files for graph coloring\n"
+"in <em>Settings->Configure KCachegrind...</em>?</p>\n"
+msgstr ""
+"<p>U kunt eigen kleuren aan\n"
+"ELF objecten/C++ klassen/Broncodebestanden toekennen\n"
+"voor het gebruik in grafieken in \n"
+"<em>Instellingen->Configureer KCachegrind..</em>.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:64
+#, kde-format
+msgid ""
+"<p>...that you can see if debug info is available for a selected \n"
+"function by looking at the location label in the Info tab or\n"
+"the source listing header in the source tab?</p>\n"
+"<p>There must be the name of the source file (with extension).\n"
+"If KCachegrind still does not show the source, make sure that you\n"
+"have added the directory of the source file to the\n"
+"<em>Source Directories</em> list in the configuration.\n"
+msgstr ""
+"<p>U kunt zien of debug informatie aanwezig is voor een geselecteerde\n"
+"functie door te kijken naar de locatieaanduiding in het Informatie tabblad "
+"of\n"
+"de broncodelijst in het Broncode tabblad.</p>\n"
+"<p>Daar moet de naam van het broncodebestand (met extensie) aanwezig zijn.\n"
+"Als KCachegrind toch niet de broncode laat zien dient u te controleren of\n"
+"u de map met het broncodebestand hebt toegevoegd aan de\n"
+"<em>Broncodemappen</em> lijst in de configuratie.\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:76
+#, kde-format
+msgid ""
+"<p>...that you can configure whether KCachgrind should\n"
+"show absolute event counts or relative ones (percentage display)?</p>\n"
+msgstr ""
+"<p>U kunt instellen of KCachegrind absolute of relatieve "
+"gebeurtenistellingen\n"
+"laat zien (percentageafbeelding).</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:83
+#, kde-format
+msgid ""
+"<p>...that you can configure the maximum number of items\n"
+"for all function lists in KCachegrind? Limiting the number\n"
+"of items is done to get a fast reacting GUI. The last item in\n"
+"the list will show you the number of skipped functions, together\n"
+"with a cost condition for these skipped functions.</p>\n"
+"<p>To activate a function with small costs, search for it and select\n"
+"it in the flat profile. Selecting functions with small cost will\n"
+"temporarily add them to the flat profile list.</p>\n"
+msgstr ""
+"<p>U kunt het maximum aantal elementen voor alle functielijsten in\n"
+"KCachegrind instellen. Het beperken van het maximum aantal elementen\n"
+"zorgt ervoor dat de gebruikersinterface sneller wordt. Het laatste element\n"
+"in de lijst beeld het aantal overgeslagen functies af, samen met een \n"
+"kostenconditie voor deze overgeslagen functies.</p>\n"
+"<p>Om een functie met lage kosten te activeren kunt u naar \n"
+"deze functie zoeken en in de platte profiel selecteren. Het selecteren\n"
+"van deze functies voegt hen tijdelijk toe aan het profiel.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>...that the Coverage tab - in contrast to the Call Lists tab -\n"
+"shows <em>all</em> functions that are calling the selected function\n"
+"(upper part) / are called by the selected function (bottom part),\n"
+"no matter how many function are between them on the stack?</p>\n"
+"<p>Examples:</p>\n"
+"<p>An entry in the upper list for function foo1() with a value of 50%\n"
+"with function bar() selected means that 50% of all the cost of function\n"
+"bar() happened while called from function foo1().</p>\n"
+"<p>An entry in the bottom list for function foo2() with a value of 50%\n"
+"with function bar() selected means that 50% of all the cost of function\n"
+"bar() happened while calling foo2() from bar().</p>\n"
+msgstr ""
+"Het tabblad Dekking - in tegenstelling tot tabblad Aanroepen - laat \n"
+"<em>alle</em> functies zien die de geselecteerde functie-aanroepen (bovenste "
+"deel)\n"
+"en alle functies die aangeroepen worden door de geselecteerde functie "
+"(onderste deel),\n"
+"onafhankelijk van het aantal tussenliggende functies daartussen.\n"
+"<p>Voorbeelden:</p>\n"
+"<p>Een element in de bovenste lijst voor functie foo1() met een waarde van "
+"50%\n"
+"met functie bar() geselecteerd betekent dat 50 van alle kosten van functie "
+"bar()\n"
+"gespendeerd zijn terwijl ze vanuit functie foo1() zijn aangeroepen.</p>\n"
+"<p>Een element in de onderste lijst voor functie foo2() met een waarde van "
+"50%\n"
+"met functie bar() geselecteerd betekent dat 50% van alle kosten zijn "
+"gespendeerd\n"
+"in functie bar() terwijl deze functie foo2() aanriep.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:112
+#, kde-format
+msgid ""
+"<p>...that waiting for the tool tip inside of a tree map\n"
+"shows the list of names of the nested rectangles the mouse\n"
+"pointer is over?</p>\n"
+"<p>Items from this list can be selected by pressing the right\n"
+"mouse button.</p>\n"
+msgstr ""
+"<p>Als u met de muisaanwijzer boven een rechthoek in de treemap\n"
+"wacht krijgt u een tekstballon met alle namen van geneste rechthoeken op die "
+"positie.</p>\n"
+"<p>Elementen in deze lijst kunnen worden geselecteerd door\n"
+"de rechtermuisknop te bedienen.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:122
+#, kde-format
+msgid ""
+"<p>...that you can constrain the cost counts shown to only a\n"
+"few parts of the whole trace by selecting these parts in the\n"
+"\"Trace Selection\" Dockable?</p>\n"
+"<p>To generate multiple parts in a profiling run with\n"
+"cachegrind, use e.g. option --cachedumps=xxx for parts\n"
+"of a length of xxx basic blocks (A basic block is a run\n"
+"of not-branching assembler statements inside of your program\n"
+"code).</p>\n"
+msgstr ""
+"<p>U kunt de kostentellingen beperken door het aantal geselecteerde\n"
+"profieldelen te beperken in de Trace Selectie venster.</p>\n"
+"<p>Om meerdere profieldelen te genereren met cachegrind kunt u de optie\n"
+"'--cachedumps=xxx' voor profieldelen met een lengte van xxx basisblokken\n"
+"gebruiken. Een basisblok is een aaneensluiting van niet vertakkende "
+"assembler\n"
+"statements binnen uw programma.</p>\n"
+
+#~ msgid "&OK"
+#~ msgstr "&OK"
+
+#~ msgid "&Cancel"
+#~ msgstr "&Annuleren"
+
+#~ msgid "Source Files"
+#~ msgstr "Broncodebestanden"
+
+#~ msgid "C++ Classes"
+#~ msgstr "C++ klassen"
+
+#~ msgid "Function (no Grouping)"
+#~ msgstr "Functie (niet gegroepeerd)"
+
+#~ msgid "KCachegrind Configuration"
+#~ msgstr "KCachegrind configuratie"
+
+#~ msgid "(Placeholder for list of event types)"
+#~ msgstr "(Plaatshouder voor lijst van gebeurtenistypen)"
+
+#~ msgid "Active call to '%1'"
+#~ msgstr "Actieve aanroep naar '%1'"
+
+#~ msgid "%1 call to '%2'"
+#~ msgid_plural "%1 calls to '%2'"
+#~ msgstr[0] "%1 aanroep naar '%2'"
+#~ msgstr[1] "%1 aanroepen naar '%2'"
+
+#~ msgid "Jump %1 of %2 times to 0x%3"
+#~ msgstr "Sprong %1 van %2 maal naar 0x%3"
+
+#~ msgid "Jump %1 times to 0x%2"
+#~ msgstr "Sprong %1 maal naar 0x%2"
+
+#~ msgid "(cycle)"
+#~ msgstr "(cyclus)"
+
+#~ msgid "Abstract Item"
+#~ msgstr "Abstract element"
+
+#~ msgid "Cost Item"
+#~ msgstr "Kostenelement"
+
+#~ msgid "Part Source Line"
+#~ msgstr "Regel in profielbron"
+
+#~ msgid "Source Line"
+#~ msgstr "Broncoderegel"
+
+#~ msgid "Part Line Call"
+#~ msgstr "Aanroep in regel van profielbron"
+
+#~ msgid "Line Call"
+#~ msgstr "Aanroep in regel"
+
+#~ msgid "Part Jump"
+#~ msgstr "Sprong in profielbron"
+
+#~ msgid "Jump"
+#~ msgstr "Sprong"
+
+#~ msgid "Part Instruction"
+#~ msgstr "Instructie in profielbron"
+
+#~ msgid "Instruction"
+#~ msgstr "Instructie"
+
+#~ msgid "Part Instruction Jump"
+#~ msgstr "Instructiesprong in profielbron"
+
+#~ msgid "Instruction Jump"
+#~ msgstr "Instructiesprong"
+
+#~ msgid "Part Instruction Call"
+#~ msgstr "Aanroep in instructie in profielbron"
+
+#~ msgid "Instruction Call"
+#~ msgstr "Aanroep in instructie"
+
+#~ msgid "Part Call"
+#~ msgstr "Aanroep in profielbron"
+
+#~ msgid "Call"
+#~ msgstr "Aanroep"
+
+#~ msgid "Part Function"
+#~ msgstr "Functie in profielbron"
+
+#~ msgid "Function Source File"
+#~ msgstr "Broncodebestand van functie"
+
+#~ msgid "Function Cycle"
+#~ msgstr "Functiecyclus"
+
+#~ msgid "Part Class"
+#~ msgstr "Klasse in profielbron"
+
+#~ msgid "Class"
+#~ msgstr "Klasse"
+
+#~ msgid "Part Source File"
+#~ msgstr "Broncodebestand in profielbron"
+
+#~ msgid "Source File"
+#~ msgstr "Broncodebestand"
+
+#~ msgid "Part ELF Object"
+#~ msgstr "ELF-object in profielbron"
+
+#~ msgid "ELF Object"
+#~ msgstr "ELF-object"
+
+#~ msgid "Profile Part"
+#~ msgstr "Profielbron"
+
+#~ msgid "Program Trace"
+#~ msgstr "Programma-trace"
+
+#~ msgid "%1 from %2"
+#~ msgstr "%1 van %2"
+
+#~ msgid "(unknown)"
+#~ msgstr "(onbekend)"
+
+#~ msgid "(no caller)"
+#~ msgstr "(geen aanroeper)"
+
+#~ msgid "%1 via %2"
+#~ msgstr "%1 via %2"
+
+#~ msgid "(no callee)"
+#~ msgstr "(geen aangeroepene)"
+
+#~ msgid "(not found)"
+#~ msgstr "(niet gevonden)"
+
+#~ msgid "Recalculating Function Cycles..."
+#~ msgstr "Functiecycli worden opnieuw berekend..."
+
+#~ msgctxt "A thing's name"
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#~ msgid "Cost"
+#~ msgstr "Kosten"
+
+#~ msgid "Profile Part Overview: Current is '%1'"
+#~ msgstr "Overzicht van profielbronnen: huidige is '%1'"
+
+#~ msgid "Deselect '%1'"
+#~ msgstr "'%1' deselecteren"
+
+#~ msgid "Select '%1'"
+#~ msgstr "Selecteer '%1'"
+
+#~ msgid "Select All Parts"
+#~ msgstr "Alle profielbronnen selecteren"
+
+#~ msgid "Visible Parts"
+#~ msgstr "Zichtbare profielbronnen"
+
+#~ msgid "Hide Selected Parts"
+#~ msgstr "Geselecteerde profielbronnen verbergen"
+
+#~ msgid "Unhide Hidden Parts"
+#~ msgstr "Verborgen profielbronnen tonen"
+
+#~ msgid "Go to '%1'"
+#~ msgstr "Ga naar %1"
+
+#~ msgid "Visualization"
+#~ msgstr "Visualisatie"
+
+#~ msgid "Partitioning Mode"
+#~ msgstr "Weergavemodus voor details"
+
+#~ msgid "Diagram Mode"
+#~ msgstr "Diagrammodus"
+
+#~ msgid "Zoom Function"
+#~ msgstr "Alleen functiekosten"
+
+#~ msgid "Show Direct Calls"
+#~ msgstr "Directe aanroepen tonen"
+
+#~ msgid "Increment Shown Call Levels"
+#~ msgstr "Getoonde aanroepniveaus verhogen"
+
+#~ msgid "Draw Names"
+#~ msgstr "Namen tonen"
+
+#~ msgid "Draw Costs"
+#~ msgstr "Kosten tonen"
+
+#~ msgid "Ignore Proportions"
+#~ msgstr "Proporties negeren"
+
+#~ msgid "Draw Frames"
+#~ msgstr "Frames tekenen"
+
+#~ msgid "Allow Rotation"
+#~ msgstr "Rotatie toestaan"
+
+#~ msgid "Hide Info"
+#~ msgstr "Informatie verbergen"
+
+#~ msgid "Show Info"
+#~ msgstr "Informatie tonen"
+
+#~ msgid "(no trace loaded)"
+#~ msgstr "(geen trace geladen)"
+
+#~ msgid "Jump %1 of %2 times to %3"
+#~ msgstr "Sprong %1 van %2 naar %3"
+
+#~ msgid "Jump %1 times to %2"
+#~ msgstr "Sprong %1 naar %2"
+
+#~ msgid "(%1 item skipped)"
+#~ msgid_plural "(%1 items skipped)"
+#~ msgstr[0] "(%1 item overgeslagen)"
+#~ msgstr[1] "(%1 items overgeslagen)"
+
+#~ msgid "No description available"
+#~ msgstr "Geen beschrijving beschikbaar"
+
+#~ msgid ""
+#~ "<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+#~ "there are several profile data files from one profile run. The Trace Part "
+#~ "Overview dockable shows these, horizontally ordered in execution time; "
+#~ "the rectangle sizes are proportional to the total cost spent in the "
+#~ "parts. You can select one or several parts to constrain all costs shown "
+#~ "to these parts only.</p><p>The parts are further subdivided: there is a "
+#~ "partitioning and an callee split mode: <ul><li>Partitioning: You see the "
+#~ "partitioning into groups for a trace part, according to the group type "
+#~ "selected. E.g. if ELF object groups are selected, you see colored "
+#~ "rectangles for each used ELF object (shared library or executable), sized "
+#~ "according to the cost spent therein.</li><li>Callee: A rectangle showing "
+#~ "the inclusive cost of the current selected function in the trace part is "
+#~ "shown. This is split up into smaller rectangles to show the costs of its "
+#~ "callees.</li></ul></p>"
+#~ msgstr ""
+#~ "<b>Overzicht van Parts</b><p>Een trace bestaat vaak uit verschillende "
+#~ "trace-parts wanneer er meerdere profieldata-bestanden zijn binnen de "
+#~ "profieluitvoering. Dit aankoppelbare venster toont deze horizontaal "
+#~ "geordend op uitvoertijd. De rechthoekgroottes zijn proportioneel aan de "
+#~ "totale kosten uitgegeven in de profielbronnen. U kunt een of meerdere "
+#~ "profielbronnen selecteren om alle kosten te beperken tot die "
+#~ "profielbronnen.</p><p>De uit de profielbronnen ontstane rechthoeken zijn "
+#~ "op weergavemodus verder onderverdeeld: <ul><li>Exclusieve-kosten-modus: "
+#~ "er vindt een onderverdeling op groep plaats, afhankelijk van het gekozen "
+#~ "typegroep. Bijvoorbeeld als groeptype \"ELF-objecten\" wordt gekozen, dan "
+#~ "ziet u gekleurde rechthoeken voor elk gebruikt ELF-object (gedeelde "
+#~ "bibliotheek of uitvoerbaar bestand). De grootte is afhankelijk van de "
+#~ "uitgegeven kosten in elk ELF-object.</li><li>Inclusief-kosten-modus: er "
+#~ "wordt een rechthoek getoond die gecumuleerde kosten van de geselecteerde "
+#~ "functie in het trace-profielbron weergeeft. Deze is op zijn beurt "
+#~ "opgesplitst om de gecumuleerde kosten van de aangeroepen functies verder "
+#~ "onder te verdelen.</li></ul></p>"
+
+#~ msgid ""
+#~ "<b>The Flat Profile</b><p>The flat profile contains a group and a "
+#~ "function selection list. The group list contains all groups where costs "
+#~ "are spent in, depending on the chosen group type. The group list is "
+#~ "hidden when group type 'Function' is selected.</p><p>The function list "
+#~ "contains the functions of the selected group (or all for 'Function' group "
+#~ "type), ordered by the costs spent therein. Functions with costs less than "
+#~ "1% are hidden on default.</p>"
+#~ msgstr ""
+#~ "<b>Het kostenprofiel</b> <p>Het kostenprofiel bevat een gesorteerde lijst "
+#~ "voor functiegroepen en functies. De groepenlijst bevat alle groepen met "
+#~ "de daarin uitgegeven kosten, afhankelijk van het gekozen groepstype. De "
+#~ "groepenlijst is verborgen wanneer het groepstype 'Functie' is "
+#~ "geselecteerd. </p> <p>De functielijst bevat de functies van de "
+#~ "geselecteerde groep (of alle voor groepstype 'Functie'), geordend op de "
+#~ "erin uitgegeven kosten. Functies met kosten minder dan 1% worden "
+#~ "standaard verborgen.</p>"
+
+#~ msgid "Show Relative Costs"
+#~ msgstr "Relatieve kosten tonen"
+
+#~ msgid "Show Absolute Costs"
+#~ msgstr "Absolute kosten tonen"
+
+#~ msgid "Skip Cycle Detection"
+#~ msgstr "Cyclusbepaling overslaan"
+
+#~ msgid "Cost 2"
+#~ msgstr "Kosten 2"
+
+#~ msgid "Hex"
+#~ msgstr "Hex"
+
+#~ msgid "Assembler"
+#~ msgstr "Assembler"
+
+#~ msgid "Source Position"
+#~ msgstr "Broncodepositie"
+
+#~ msgid ""
+#~ "<b>Annotated Assembler</b><p>The annotated assembler list shows the "
+#~ "machine code instructions of the current selected function together with "
+#~ "(self) cost spent while executing an instruction. If this is a call "
+#~ "instruction, lines with details on the call happening are inserted into "
+#~ "the source: the cost spent inside of the call, the number of calls "
+#~ "happening, and the call destination.</p><p>The disassembler output shown "
+#~ "is generated with the 'objdump' utility from the 'binutils' package.</"
+#~ "p><p>Select a line with call information to make the destination function "
+#~ "of this call current.</p>"
+#~ msgstr ""
+#~ "<b>Geannoteerde machinecode</b> <p>De geannoteerde machinecodelijst laat "
+#~ "de machinecode-instructies van de huidig geselecteerde functie zien, "
+#~ "samen met (de eigen) kosten gespendeerd gedurende het uitvoeren van een "
+#~ "instructie. Als het een aanroepinstructie betreft worden regels die "
+#~ "details bevatten over de aanroep ingevoegd in de broncode. Dit zijn de "
+#~ "(cumulatieve) kosten gespendeerd binnen de aanroep, het aantal aanroepen "
+#~ "en het doel van de aanroep.</p><p>De gedisassembleerde uitvoer die wordt "
+#~ "getoond is met de 'objdump' utility uit het pakket 'binutils' gegenereerd."
+#~ "</p><p>Selecteer een regel met aanroepinformatie om de aangeroepen "
+#~ "functie de huidige functie te maken</p>"
+
+#~ msgid "Go to Address %1"
+#~ msgstr "Ga naar adres %1"
+
+#~ msgid "Hex Code"
+#~ msgstr "Hexcode"
+
+#~ msgid "There is no instruction info in the profile data file."
+#~ msgstr ""
+#~ "Er bevindt zich geen instructie-informatie in het profielgegevens-bestand."
+
+#~ msgid "For the Valgrind Calltree Skin, rerun with option"
+#~ msgstr "Om de Valgrind Calltree Skin te gebruiken, herstart met optie"
+
+#~ msgid "      --dump-instr=yes"
+#~ msgstr "      --dump-instr=yes"
+
+#~ msgid "To see (conditional) jumps, additionally specify"
+#~ msgstr "Om (conditionele) sprongen te zien specificeer aanvullend"
+
+#~ msgid "      --trace-jump=yes"
+#~ msgstr "     --trace-jump=yes"
+
+#~ msgid "There is an error trying to execute the command"
+#~ msgstr "Er is een fout opgetreden bij het uitvoeren van het commando"
+
+#~ msgid "Check that you have installed 'objdump'."
+#~ msgstr "Controleer of u 'objdump' op deze machine hebt geïnstalleerd."
+
+#~ msgid "This utility can be found in the 'binutils' package."
+#~ msgstr "Dit gereedschap bevindt zich in het 'binutils' pakket."
+
+#~ msgid "(No Assembler)"
+#~ msgstr "(Geen assembler)"
+
+#~ msgid "There is %1 cost line without assembler code."
+#~ msgid_plural "There are %1 cost lines without assembler code."
+#~ msgstr[0] "Er is %1 kostenregel zonder assemblercode."
+#~ msgstr[1] "Er zijn %1 kostenregels zonder assemblercode."
+
+#~ msgid "This happens because the code of"
+#~ msgstr "Dit gebeurt omdat de code van"
+
+#~ msgid "does not seem to match the profile data file."
+#~ msgstr "niet overeenkomstig lijkt te zijn met het profielgegevens-bestand."
+
+#~ msgid "Are you using an old profile data file or is the above mentioned"
+#~ msgstr ""
+#~ "Gebruikt u een oud profielgegevens-bestand of is het hierboven vermelde"
+
+#~ msgid "ELF object from an updated installation/another machine?"
+#~ msgstr "ELF-object van een bijgewerkte installatie of een andere machine?"
+
+#~ msgid "There seems to be an error trying to execute the command"
+#~ msgstr ""
+#~ "Er is blijkbaar een fout opgetreden bij het uitvoeren van het commando"
+
+#~ msgid "Check that the ELF object used in the command exists."
+#~ msgstr ""
+#~ "Controleer of het ELF-object dat u gebruikt in het commando bestaat."
+
+#~ msgid "Call(s) from %1"
+#~ msgstr "Aanroep(en) van %1"
+
+#~ msgid "Call(s) to %1"
+#~ msgstr "Aanroep(en) naar %1"
+
+#~ msgid "(unknown call)"
+#~ msgstr "(onbekende aanroep)"
+
+#~ msgid ""
+#~ "<b>Call Graph around active Function</b><p>Depending on configuration, "
+#~ "this view shows the call graph environment of the active function. Note: "
+#~ "the shown cost is <b>only</b> the cost which is spent while the active "
+#~ "function was actually running; i.e. the cost shown for main() - if it is "
+#~ "visible - should be the same as the cost of the active function, as that "
+#~ "is the part of inclusive cost of main() spent while the active function "
+#~ "was running.</p><p>For cycles, blue call arrows indicate that this is an "
+#~ "artificial call added for correct drawing which actually never happened.</"
+#~ "p><p>If the graph is larger than the widget area, an overview panner is "
+#~ "shown in one edge. There are similar visualization options to the Call "
+#~ "Treemap; the selected function is highlighted.</p>"
+#~ msgstr ""
+#~ "<b>Aanroepgrafiek rond actieve functie</b><p>Afhankelijk van de "
+#~ "configuratie laat dit venster een aanroepgrafiek van de actieve functie "
+#~ "zien. Opmerking: de getoonde kosten zijn <b>alleen</b> de kosten "
+#~ "gespendeerd terwijl de actieve functie uitgevoerd werd, dat wil zeggen "
+#~ "dat de getoonde kosten voor main() - als main() zichtbaar is - dezelfde "
+#~ "zouden moeten zijn als de kosten van de actieve functie, omdat dat de "
+#~ "inclusieve kosten zijn voor main() gespendeerd terwijl de actieve functie "
+#~ "uitgevoerd werd.</p><p> Voor cycli geven de blauwe pijlen aan dat dit een "
+#~ "kunstmatige aanroep is die is toegevoegd om correct te kunnen tekenen, "
+#~ "maar die in feite niet is uitgevoerd.</p><p>Als de grafiek groter is dan "
+#~ "het oppervlak van het venster, wordt een overzichtsvenster getoond aan "
+#~ "één kant van de grafiek. Er zijn vergelijkbare visualisatieopties voor de "
+#~ "aanroepen-treemap; de geselecteerde functie is gemarkeerd.</p>"
+
+#~ msgid ""
+#~ "Warning: a long lasting graph layouting is in progress.\n"
+#~ "Reduce node/edge limits for speedup.\n"
+#~ msgstr ""
+#~ "Waarschuwing: een langdurig grafisch proces is in uitvoering.\n"
+#~ "Reduceer node/edge limits om het sneller te laten verlopen.\n"
+
+#~ msgid "Layouting stopped.\n"
+#~ msgstr "Opmaken onderbroken.\n"
+
+#~ msgid "The call graph has %1 nodes and %2 edges.\n"
+#~ msgstr "De grafische aanroep heeft %1 nodes en %2 edges.\n"
+
+#~ msgid "No item activated for which to draw the call graph."
+#~ msgstr ""
+#~ "Geen element geactiveerd waarvoor de aanroepgraaf kan worden getoond."
+
+#~ msgid "No call graph can be drawn for the active item."
+#~ msgstr "Geen aanroepgraaf kan getoond worden voor het actieve item."
+
+#~ msgid ""
+#~ "No call graph is available because the following\n"
+#~ "command cannot be run:\n"
+#~ "'%1'\n"
+#~ msgstr ""
+#~ "Geen aanroepgraaf is beschikbaar doordat het volgende\n"
+#~ "commando niet uitgevoerd kan worden:\n"
+#~ "'%1'\n"
+
+#~ msgid "Please check that 'dot' is installed (package GraphViz)."
+#~ msgstr "Controleer of 'dot' is geïnstalleerd (pakket GraphViz)."
+
+#~ msgid "Error running the graph layouting tool.\n"
+#~ msgstr "Fout bij het uitvoeren van het grafische hulpprogramma.\n"
+
+#~ msgid ""
+#~ "There is no call graph available for function\n"
+#~ "\t'%1'\n"
+#~ "because it has no cost of the selected event type."
+#~ msgstr ""
+#~ "Er is geen graaf van aanroepen beschikbaar voor functie\n"
+#~ "\t'%1'\n"
+#~ "omdat er geen kosten van het geselecteerde gebeurtenistype zijn."
+
+#~ msgid "Unlimited"
+#~ msgstr "Onbeperkt"
+
+#~ msgctxt "Depth 0"
+#~ msgid "None"
+#~ msgstr "Geen"
+
+#~ msgid "max. 2"
+#~ msgstr "max. 2"
+
+#~ msgid "max. 5"
+#~ msgstr "max. 5"
+
+#~ msgid "max. 10"
+#~ msgstr "max. 10"
+
+#~ msgid "max. 15"
+#~ msgstr "max. 15"
+
+#~ msgid "No Minimum"
+#~ msgstr "Geen minimum"
+
+#~ msgid "50 %"
+#~ msgstr "50 %"
+
+#~ msgid "20 %"
+#~ msgstr "20 %"
+
+#~ msgid "10 %"
+#~ msgstr "10 %"
+
+#~ msgid "5 %"
+#~ msgstr "5 %"
+
+#~ msgid "2 %"
+#~ msgstr "2 %"
+
+#~ msgid "1 %"
+#~ msgstr "1 %"
+
+#~ msgid "Same as Node"
+#~ msgstr "Als knoop"
+
+#~ msgid "50 % of Node"
+#~ msgstr "50 % van knoop"
+
+#~ msgid "20 % of Node"
+#~ msgstr "20 % van knoop"
+
+#~ msgid "10 % of Node"
+#~ msgstr "10 % van knoop"
+
+#~ msgid "Top Left"
+#~ msgstr "Linksboven"
+
+#~ msgid "Top Right"
+#~ msgstr "Rechtsboven"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Linksonder"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Rechtsonder"
+
+#~ msgid "Top to Down"
+#~ msgstr "Van boven naar beneden"
+
+#~ msgid "Left to Right"
+#~ msgstr "Links naar rechts"
+
+#~ msgid "Circular"
+#~ msgstr "Cirkelvormig"
+
+#~ msgid "Stop Layouting"
+#~ msgstr "Stop opmaken"
+
+#~ msgid "As PostScript"
+#~ msgstr "Als Postscript"
+
+#~ msgid "As Image ..."
+#~ msgstr "Als afbeelding..."
+
+#~ msgid "Export Graph"
+#~ msgstr "Grafiek exporteren"
+
+#~ msgid "Caller Depth"
+#~ msgstr "Aanroeperdiepte"
+
+#~ msgid "Callee Depth"
+#~ msgstr "Aanroepdiepte"
+
+#~ msgid "Min. Node Cost"
+#~ msgstr "Min. knoopkosten"
+
+#~ msgid "Min. Call Cost"
+#~ msgstr "Min. aanroepkosten"
+
+#~ msgid "Arrows for Skipped Calls"
+#~ msgstr "Pijlen voor overgeslagen aanroepen"
+
+#~ msgid "Inner-cycle Calls"
+#~ msgstr "Intra-cyclus aanroepen"
+
+#~ msgid "Cluster Groups"
+#~ msgstr "Clustergroepen"
+
+#~ msgid "Compact"
+#~ msgstr "Compact"
+
+#~ msgid "Normal"
+#~ msgstr "Normaal"
+
+#~ msgid "Tall"
+#~ msgstr "Hoog"
+
+#~ msgid "Graph"
+#~ msgstr "Grafiek"
+
+#~ msgid "Layout"
+#~ msgstr "Indeling"
+
+#~ msgid "Birds-eye View"
+#~ msgstr "Vogelvlucht"
+
+#~ msgid "(%1 function skipped)"
+#~ msgid_plural "(%1 functions skipped)"
+#~ msgstr[0] "(%1 functie overgeslagen)"
+#~ msgstr[1] "(%1 functies overgeslagen)"
+
+#~ msgid "Move to Top"
+#~ msgstr "Ga naar het begin"
+
+#~ msgctxt "Move to Top"
+#~ msgid "Top"
+#~ msgstr "Boven"
+
+#~ msgid "Move to Right"
+#~ msgstr "Ga naar rechts"
+
+#~ msgctxt "Move to Right"
+#~ msgid "Right"
+#~ msgstr "Rechts"
+
+#~ msgid "Move to Bottom"
+#~ msgstr "Ga naar het einde"
+
+#~ msgctxt "Move to Bottom"
+#~ msgid "Bottom"
+#~ msgstr "Onder"
+
+#~ msgid "Move to Bottom Left"
+#~ msgstr "Ga naar linksonder"
+
+#~ msgctxt "Move to Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Linksonder"
+
+#~ msgid "Move Area To"
+#~ msgstr "Gebied verplaatsen naar"
+
+#~ msgid "Hide This Tab"
+#~ msgstr "Dit tabblad verbergen"
+
+#~ msgid "Hide Area"
+#~ msgstr "Gebied verbergen"
+
+#~ msgctxt "Show on Top"
+#~ msgid "Top"
+#~ msgstr "Boven"
+
+#~ msgctxt "Show on Right"
+#~ msgid "Right"
+#~ msgstr "Rechts"
+
+#~ msgctxt "Show on Bottom"
+#~ msgid "Bottom"
+#~ msgstr "Onder"
+
+#~ msgctxt "Show on Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Linksonder"
+
+#~ msgid "Show Hidden On"
+#~ msgstr "Verborgen tonen"
+
+#~ msgid "(No profile data file loaded)"
+#~ msgstr "(Geen profielgegevensbestand geladen)"
+
+#~ msgid "Types"
+#~ msgstr "Typen"
+
+#~ msgid "Callers"
+#~ msgstr "Aanroepers"
+
+#~ msgid "All Callers"
+#~ msgstr "Alle aanroepers"
+
+#~ msgid "Caller Map"
+#~ msgstr "Aanroeperskaart"
+
+#~ msgid "Source Code"
+#~ msgstr "Broncode"
+
+#~ msgid "Parts"
+#~ msgstr "Profieldelen"
+
+#~ msgid "Call Graph"
+#~ msgstr "Aanroepgrafiek"
+
+#~ msgid "Callees"
+#~ msgstr "Aangeroepenen"
+
+#~ msgid "All Callees"
+#~ msgstr "Alle aangeroepenen"
+
+#~ msgid "Callee Map"
+#~ msgstr "Aangeroepenenkaart"
+
+#~ msgid "Assembly Code"
+#~ msgstr "Assemblercode"
+
+#~ msgid ""
+#~ "<b>Information Tabs</b><p>This widget shows information for the current "
+#~ "selected function in different tabs: <ul><li>The Costs tab shows a list "
+#~ "of available event types and the inclusive and self costs regarding to "
+#~ "these types.</li><li>The Parts tab shows a list of trace parts if the "
+#~ "trace consists of more than one part (otherwise, this tab is hided). The "
+#~ "cost of the selected function spent in the different parts together with "
+#~ "the calls happening is shown.</li><li>The Call Lists tab shows direct "
+#~ "callers and callees of the function in more detail.</li><li>The Coverage "
+#~ "tab shows the same is the Call Lists tab, but not only direct callers and "
+#~ "callees but also indirect ones.</li><li>The Call Graph tab shows a "
+#~ "graphical visualization of the calls done by this function.</li><li>The "
+#~ "Source tab presents annotated source code if debugging information and "
+#~ "the source file is available.</li><li>The Assembler tab presents "
+#~ "annotated assembler code if trace information on instruction level is "
+#~ "available.</li></ul>For more information, see the <em>What's this</em> "
+#~ "help of the corresponding tab widget</p>"
+#~ msgstr ""
+#~ "<b>Informatietabbladen</b><p>De volgende tabbladen geven informatie over "
+#~ "de geselecteerde functie:<ul><li>Het tabblad Kosten geen een lijst van "
+#~ "mogelijke kosttypen en de cumulatieve en niet-cumulatieve kosten met "
+#~ "betrekking tot typen.</li><li>Het tabblad Profieldelen geeft een lijst "
+#~ "van profieldelen als de trace uit meer dan één deel bestaat (anders is "
+#~ "het tabblad verborgen). De kosten van de geselecteerde functie in andere "
+#~ "profieldelen samen met de aanroepen wordt getoond.</li><li>Het tabblad "
+#~ "Aanroepen laat de directe aanroepers en aangeroepenen van een functie "
+#~ "zien in detail.</li><li>Het tabblad Dekking laat hetzelfde zien als het "
+#~ "tabblad Aanroepen, inclusief indirecte aanroepen.</li><li>Het tabblad "
+#~ "Aanroepengrafiek laat een visuele representatie van de aanroepen gedaan "
+#~ "door deze functie zien.</li><li>Het tabblad Broncode laat de geannoteerde "
+#~ "broncode zien als debugging-informatie en de broncode zelf beschikbaar is."
+#~ "</li><li>Het tabblad Assembler laat een geannoteerde versie van de "
+#~ "assemblercode zien als trace-informatie op instructieniveau beschikbaar "
+#~ "is.</li></ul>Voor meer informatie kunt is de <em>Wat is dit?</em> hulp "
+#~ "van het corresponderende tabblad bekijken</p>"
+
+#~ msgid "(No Data loaded)"
+#~ msgstr "(Geen gegevens geladen)"
+
+#~ msgid "(No function selected)"
+#~ msgstr "(Geen functie geselecteerd)"
+
+#~ msgid "Source (unknown)"
+#~ msgstr "Broncode (onbekend)"
+
+#~ msgid ""
+#~ "<b>Annotated Source</b><p>The annotated source list shows the source "
+#~ "lines of the current selected function together with (self) cost spent "
+#~ "while executing the code of this source line. If there was a call in a "
+#~ "source line, lines with details on the call happening are inserted into "
+#~ "the source: the cost spent inside of the call, the number of calls "
+#~ "happening, and the call destination.</p><p>Select a inserted call "
+#~ "information line to make the destination function current.</p>"
+#~ msgstr ""
+#~ "<b>Geannoteerde broncode</b><p>De geannoteerde broncode laat de broncode "
+#~ "van de geselecteerde functie zien, samen met de kosten, gespendeerd voor "
+#~ "het uitvoeren van de regel broncode. Als er een aanroep in de broncode is "
+#~ "geschied zullen er extra regels worden ingevoegd met details betreffende "
+#~ "de aanroep. Deze details zijn de (cumulatieve) kosten van de aanroep, het "
+#~ "aantal uitgevoerde aanroepen en het doel van de aanroep.</p><p>Selecteer "
+#~ "een ingevoegde aanroepregel om de doelfunctie te selecteren.</p>"
+
+#~ msgid "Go to Line %1"
+#~ msgstr "Ga naar regel %1"
+
+#~ msgid "(No Source)"
+#~ msgstr "(Geen broncode)"
+
+#~ msgid "There is no cost of current selected type associated"
+#~ msgstr "Er zijn geen kosten van het geselecteerde type verbonden"
+
+#~ msgid "with any source line of this function in file"
+#~ msgstr "aan een regel in de broncode voor deze functie in het bestand"
+
+#~ msgid "Thus, no annotated source can be shown."
+#~ msgstr "Daarom kan geen geannoteerde broncode worden getoond."
+
+#~ msgid "Source ('%1')"
+#~ msgstr "Broncode (%1)"
+
+#~ msgid "--- Inlined from '%1' ---"
+#~ msgstr "--- inline van %1 ---"
+
+#~ msgid "--- Inlined from unknown source ---"
+#~ msgstr "--- Inline van onbekende bron ---"
+
+#~ msgid "There is no source available for the following function:"
+#~ msgstr "Er is geen broncode beschikbaar voor de volgende functie:"
+
+#~ msgid "This is because no debug information is present."
+#~ msgstr "Dit komt omdat er geen debug-informatie aanwezig is."
+
+#~ msgid "Recompile source and redo the profile run."
+#~ msgstr "Hercompileer de broncode en maak een nieuw profiel."
+
+#~ msgid "The function is located in this ELF object:"
+#~ msgstr "De functie bevindt zich in dit ELF-object:"
+
+#~ msgid "This is because its source file cannot be found:"
+#~ msgstr "Dit komt omdat haar broncodebestand niet kan worden gevonden:"
+
+#~ msgid "Add the folder of this file to the source folder list."
+#~ msgstr "Voeg de map toe van dit bestand aan de broncodemappenlijst."
+
+#~ msgid "The list can be found in the configuration dialog."
+#~ msgstr "De lijst kan worden gevonden in de instellingendialoog."
+
+#~ msgid " (Thread %1)"
+#~ msgstr "(Thread %1)"
+
+#~ msgid "(none)"
+#~ msgstr "(geen)"
+
+#~ msgid "Unknown Type"
+#~ msgstr "Onbekend type"
+
+#~ msgid "Show All Items"
+#~ msgstr "Alle elementen tonen"
+
+#~ msgid "No Grouping"
+#~ msgstr "Geen groepering"
+
+#~ msgid "Distance"
+#~ msgstr "Afstand"
+
+#~ msgid "Caller"
+#~ msgstr "Aanroeper"
+
+#~ msgid "Self"
+#~ msgstr "Zelf"
+
+#~ msgid "Calling"
+#~ msgstr "Aanroepen"
+
+#~ msgid "Callee"
+#~ msgstr "Aangeroepene"
+
+#~ msgid ""
+#~ "<b>List of all Callers</b><p>This list shows all functions calling the "
+#~ "current selected one, either directly or with several functions in-"
+#~ "between on the stack; the number of functions in-between plus one is "
+#~ "called the <em>Distance</em> (e.g. for function A,B,C there exists a call "
+#~ "from A to C when A calls B and B calls C, i.e. A => B => C. The distance "
+#~ "here is 2).</p><p>Absolute cost shown is the cost spent in the selected "
+#~ "function while a listed function is active; relative cost is the "
+#~ "percentage of all cost spent in the selected function while the listed "
+#~ "one is active. The cost graphic shows logarithmic percentage with a "
+#~ "different color for each distance.</p><p>As there can be many calls from "
+#~ "the same function, the distance column sometimes shows the range of "
+#~ "distances for all calls happening; then, in parentheses, there is the "
+#~ "medium distance, i.e. the distance where most of the call costs happened."
+#~ "</p><p>Selecting a function makes it the current selected one of this "
+#~ "information panel. If there are two panels (Split mode), the function of "
+#~ "the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>Lijst van alle aanroepers</b><p>Deze lijst laat alle functies zien die "
+#~ "de geselecteerde functie aanroepen, hetzij direct, hetzij door "
+#~ "tussenkomst van andere functies. Het aantal functies tussen een "
+#~ "aanroepende functie en de geselecteerde functie plus 1 is de <em>Afstand</"
+#~ "em>, dat wil zeggen, als er voor functies A, B en C een aanroep van A "
+#~ "naar C bestaat, zodanig dat functie A functie B aanroept en functie B "
+#~ "functie C aanroept, dan is de afstand gelijk aan 2.</p><p>De absolute "
+#~ "kosten voor de functie zijn de kosten gespendeerd terwijl de "
+#~ "geselecteerde functie actief was; de relatieve kosten is het percentage "
+#~ "van alle kosten gespendeerd in de geselecteerde functie terwijl de "
+#~ "aangegeven functie actief was. De kostengrafiek laat een logaritmisch "
+#~ "percentage met een afzonderlijke kleur voor elke afstand zien.</"
+#~ "p><p>Omdat het mogelijk is dat een functie zeer vaak wordt aangeroepen "
+#~ "wordt er soms een afstandsbereik getoond met tussen haakjes de mediale "
+#~ "afstand van de functies die in dat bereik vallen. De mediale afstand is "
+#~ "die afstand vanwaar de meeste aanroepen worden gedaan.</p><p>Als u een "
+#~ "functie selecteert wordt deze de huidig geselecteerde functie. Als er "
+#~ "twee panelen zijn (gesplitste modus) dan wordt de functie in het andere "
+#~ "paneel als geselecteerd gekozen.</p>"
+
+#~ msgid ""
+#~ "<b>List of all Callees</b><p>This list shows all functions called by the "
+#~ "current selected one, either directly or with several function in-between "
+#~ "on the stack; the number of function in-between plus one is called the "
+#~ "<em>Distance</em> (e.g. for function A,B,C there exists a call from A to "
+#~ "C when A calls B and B calls C, i.e. A => B => C. The distance here is 2)."
+#~ "</p><p>Absolute cost shown is the cost spent in the listed function while "
+#~ "the selected is active; relative cost is the percentage of all cost spent "
+#~ "in the listed function while the selected one is active. The cost graphic "
+#~ "always shows logarithmic percentage with a different color for each "
+#~ "distance.</p><p>As there can be many calls to the same function, the "
+#~ "distance column sometimes shows the range of distances for all calls "
+#~ "happening; then, in parentheses, there is the medium distance, i.e. the "
+#~ "distance where most of the call costs happened.</p><p>Selecting a "
+#~ "function makes it the current selected one of this information panel. If "
+#~ "there are two panels (Split mode), the function of the other panel is "
+#~ "changed instead.</p>"
+#~ msgstr ""
+#~ "<b>Lijst van alle aangeroepenen</b><p>Deze lijst laat alle functies zien "
+#~ "die door de geselecteerde functie worden aanroepen, hetzij direct hetzij "
+#~ "door tussenkomst van andere functies. Het aantal functies tussen een "
+#~ "aanroepende functie en de geselecteerde functie plus 1 is de <em>Afstand</"
+#~ "em>, dat wil zeggen, als er voor functies A, B en C een aanroep van A "
+#~ "naar C bestaat zodanig dat functie A functie B aanroept en functie B "
+#~ "functie C aanroept, dan is de afstand gelijk aan 2.</p><p>De absolute "
+#~ "kosten voor de aangegeven functie zijn de kosten gespendeerd terwijl de "
+#~ "geselecteerde functie actief was; de relatieve kosten is het percentage "
+#~ "van alle kosten gespendeerd in de aangegeven functie terwijl de huidig "
+#~ "geselecteerde functie actief was. De kostengrafiek laat een logaritmisch "
+#~ "percentage met een afzonderlijke kleur voor elke afstand zien.</"
+#~ "p><p>Omdat het mogelijk is dat een functie zeer vaak wordt aangeroepen "
+#~ "wordt er soms een afstandsbereik getoond met tussen haakjes de mediale "
+#~ "afstand van de functies die in dat bereik vallen. De mediale afstand is "
+#~ "die afstand vanwaar de meeste aanroepen worden gedaan.</p><p>Als u een "
+#~ "functie selecteert wordt deze de huidig geselecteerde functie. Als er "
+#~ "twee panelen zijn (gesplitste modus) dan wordt de functie in het andere "
+#~ "paneel als geselecteerd gekozen.</p>"
+
+#~ msgid "Instruction Fetch"
+#~ msgstr "Instructie fetch"
+
+#~ msgid "Data Read Access"
+#~ msgstr "Gegevensleestoegang"
+
+#~ msgid "Data Write Access"
+#~ msgstr "Gegevensschrijftoegang"
+
+#~ msgid "L1 Instr. Fetch Miss"
+#~ msgstr "L1 Instr.Fetch Mis"
+
+#~ msgid "L1 Data Read Miss"
+#~ msgstr "L1 Data Lees mis"
+
+#~ msgid "L1 Data Write Miss"
+#~ msgstr "L1 Data Schrijf mis"
+
+#~ msgid "L2 Instr. Fetch Miss"
+#~ msgstr "L2 Instr fetch mis"
+
+#~ msgid "L2 Data Read Miss"
+#~ msgstr "L2 Data Lees mis"
+
+#~ msgid "L2 Data Write Miss"
+#~ msgstr "L2 Data Schrijf mis"
+
+#~ msgid "Samples"
+#~ msgstr "Steekproeven"
+
+#~ msgid "System Time"
+#~ msgstr "Systeemtijd"
+
+#~ msgid "User Time"
+#~ msgstr "Gebruikerstijd"
+
+#~ msgid "L1 Miss Sum"
+#~ msgstr "L1 Gemist totaal"
+
+#~ msgid "L2 Miss Sum"
+#~ msgstr "L2 Gemist totaal"
+
+#~ msgid "Cycle Estimation"
+#~ msgstr "Cyclusschatting"
+
+#~ msgid "&Search:"
+#~ msgstr "&Zoeken:"
+
+#~ msgid "Group"
+#~ msgstr "Groep"
+
+#~ msgid "(no trace parts)"
+#~ msgstr "(geen profieldelen)"
+
+#~ msgid "Stack Selection"
+#~ msgstr "Stack selectie"
+
+#~ msgid "Cost2"
+#~ msgstr "Kosten2"
+
+#~ msgid "Text %1"
+#~ msgstr "Tekst %1"
+
+#~ msgid "Recursive Bisection"
+#~ msgstr "Recursieve bisectie"
+
+#~ msgid "Columns"
+#~ msgstr "Kolommen"
+
+#~ msgid "Rows"
+#~ msgstr "Rijen"
+
+#~ msgid "Always Best"
+#~ msgstr "Altijd beste"
+
+#~ msgid "Best"
+#~ msgstr "Beste"
+
+#~ msgid "Alternate (V)"
+#~ msgstr "Alternatief (V)"
+
+#~ msgid "Alternate (H)"
+#~ msgstr "Alternatief (H)"
+
+#~ msgid "Horizontal"
+#~ msgstr "Horizontaal"
+
+#~ msgid "Vertical"
+#~ msgstr "Verticaal"
+
+#~ msgid "Nesting"
+#~ msgstr "Genest"
+
+#~ msgid "Border"
+#~ msgstr "Rand"
+
+#~ msgid "Correct Borders Only"
+#~ msgstr "Alleen randen corrigeren"
+
+#~ msgid "Width %1"
+#~ msgstr "Breedte %1"
+
+#~ msgid "Shading"
+#~ msgstr "Schaduw"
+
+#~ msgid "Visible"
+#~ msgstr "Zichtbaar"
+
+#~ msgid "Take Space From Children"
+#~ msgstr "Ruimte van subitems gebruiken"
+
+#~ msgid "Top Center"
+#~ msgstr "Middenboven"
+
+#~ msgid "Bottom Center"
+#~ msgstr "Middenonder"
+
+#~ msgid "No %1 Limit"
+#~ msgstr "Geen limiet voor %1"
+
+#~ msgid "No Area Limit"
+#~ msgstr "Geen gebiedslimiet"
+
+#~ msgid "Area of '%1' (%2)"
+#~ msgstr "Gebied van '%1' (%2)"
+
+#~ msgid "1 Pixel"
+#~ msgid_plural "%1 Pixels"
+#~ msgstr[0] "1 pixel"
+#~ msgstr[1] "%1 pixels"
+
+#~ msgid "Double Area Limit (to %1)"
+#~ msgstr "Gebiedslimiet verdubbelen (naar %1)"
+
+#~ msgid "Halve Area Limit (to %1)"
+#~ msgstr "Gebiedslimiet halveren (tot %1)"
+
+#~ msgid "No Depth Limit"
+#~ msgstr "Geen dieptelimiet"
+
+#~ msgid "Depth of '%1' (%2)"
+#~ msgstr "Diepte van '%1' (%2)"
+
+#~ msgid "Depth %1"
+#~ msgstr "Diepte %1"
+
+#~ msgid "Decrement (to %1)"
+#~ msgstr "Verminderen (tot %1)"
+
+#~ msgid "Increment (to %1)"
+#~ msgstr "Vermeerderen (tot %1)"
+
+#~ msgid ""
+#~ "<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers "
+#~ "of the current activated function. Each colored rectangle represents a "
+#~ "function; its size tries to be proportional to the cost spent therein "
+#~ "while the active function is running (however, there are drawing "
+#~ "constrains).</p>"
+#~ msgstr ""
+#~ "<b>Aanroeperskaart</b><p>Deze grafiek laat een geneste hiërarchie zien "
+#~ "van alle aanroepers van de huidig geselecteerde functie. Elke gekleurde "
+#~ "rechthoek representeert een functie. De afmeting tracht proportioneel te "
+#~ "zijn met de kosten gespendeerd in die functie terwijl de actieve functie "
+#~ "loopt (hoewel er beperkingen zijn aan de accuratesse van de afbeelding)</"
+#~ "p>"
+
+#~ msgid ""
+#~ "<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+#~ "the current activated function. Each colored rectangle represents a "
+#~ "function; its size tries to be proportional to the cost spent therein "
+#~ "while the active function is running (however, there are drawing "
+#~ "constrains).</p>"
+#~ msgstr ""
+#~ "<b>Aanroepenkaart</b><p>Deze grafiek laat een geneste hiërarchie zien van "
+#~ "alle aangeroepen functies van de huidige geselecteerde functie. Elke "
+#~ "gekleurde rechthoek representeert een functie. De afmeting tracht "
+#~ "proportioneel te zijn met de kosten gespendeerd in die functie terwijl de "
+#~ "actieve functie loopt (hoewel er beperkingen zijn aan de accuratesse van "
+#~ "de afbeelding)</p>"
+
+#~ msgid ""
+#~ "<p>Appearance options can be found in the in the context menu. To get "
+#~ "exact size proportions, choose 'Hide incorrect borders'. As this mode can "
+#~ "be <em>very</em> time consuming, you may want to limit the maximum drawn "
+#~ "nesting level before. 'Best' determinates the split direction for "
+#~ "children from the aspect ratio of the parent. 'Always Best' decides on "
+#~ "remaining space for each sibling. 'Ignore Proportions' takes space for "
+#~ "function name drawing <em>before</em> drawing children. Note that size "
+#~ "proportions can get <em>heavily</em> wrong.</p><p>This is a <em>TreeMap</"
+#~ "em> widget. Keyboard navigation is available with the left/right arrow "
+#~ "keys for traversing siblings, and up/down arrow keys to go a nesting "
+#~ "level up/down. <em>Return</em> activates the current item.</p>"
+#~ msgstr ""
+#~ "<p>Weergave-opties kunnen worden gevonden in het contextmenu. Om exacte "
+#~ "afmetingen te krijgen kiest u 'Verberg incorrecte randen'. Omdat het "
+#~ "tekenen in deze modus <em>zeer</em> tijdrovend kan zijn is het raadzaam "
+#~ "het maximale aantal nestingniveaus van tevoren beperken. 'Beste' bepaalt "
+#~ "de splitsingrichting van de kinderen aan de hand van de "
+#~ "afbeeldingverhouding van het bovenliggende element. 'Altijd beste' "
+#~ "bepaalt op basis van de voor kinderen overgebleven ruimte. 'XXXIgnore "
+#~ "Proporties' gebruikt ruimte om de functienaam te tekenen <em>voordat</em> "
+#~ "de kinderen worden getekend. Merk op dat de afbeeldingproporties "
+#~ "<em>bijzonder</em> kunnen afwijken van de daadwerkelijke proporties.</"
+#~ "p><p>Dit is een <em>treemap</em> interface-element. Toetsenbordnavigatie "
+#~ "is mogelijk met de toetsen cursor rechts en cursor links om te itereren "
+#~ "binnen een gelijk generatieniveau terwijl de toetsen cursor omhoog en "
+#~ "cursor omlaag worden gebruikt om een nestingniveau omhoog en omlaag "
+#~ "bewerkstelligen. De <em>Return</em> toets activeert het huidige element.</"
+#~ "p>"
+
+#~ msgid "Go To"
+#~ msgstr "Ga naar"
+
+#~ msgid "Stop at Depth"
+#~ msgstr "Stoppen bij diepte"
+
+#~ msgid "Depth 10"
+#~ msgstr "Diepte 10"
+
+#~ msgid "Depth 15"
+#~ msgstr "Diepte 15"
+
+#~ msgid "Depth 20"
+#~ msgstr "Diepte 20"
+
+#~ msgid "Decrement Depth (to %1)"
+#~ msgstr "Verminder diepte (tot %1)"
+
+#~ msgid "Increment Depth (to %1)"
+#~ msgstr "Vermeerder diepte (tot %1)"
+
+#~ msgid "Stop at Function"
+#~ msgstr "Stop bij functie"
+
+#~ msgid "No Function Limit"
+#~ msgstr "Geen functielimiet"
+
+#~ msgid "Stop at Area"
+#~ msgstr "Stoppen bij gebied"
+
+#~ msgid "50 Pixels"
+#~ msgstr "50 pixels"
+
+#~ msgid "100 Pixels"
+#~ msgstr "100 pixels"
+
+#~ msgid "200 Pixels"
+#~ msgstr "200 pixels"
+
+#~ msgid "500 Pixels"
+#~ msgstr "500 pixels"
+
+#~ msgid "Half Area Limit (to %1)"
+#~ msgstr "Gebiedslimiet halveren (tot %1)"
+
+#~ msgid "Split Direction"
+#~ msgstr "Splits richting"
+
+#~ msgid "Skip Incorrect Borders"
+#~ msgstr "Foute randen overslaan"
+
+#~ msgid "Border Width"
+#~ msgstr "Randbreedte"
+
+#~ msgid "Border 0"
+#~ msgstr "Rand 0"
+
+#~ msgid "Border 1"
+#~ msgstr "Rand 1"
+
+#~ msgid "Border 2"
+#~ msgstr "Rand 2"
+
+#~ msgid "Border 3"
+#~ msgstr "Rand 3"
+
+#~ msgid "Draw Symbol Names"
+#~ msgstr "Teken symboolnamen"
+
+#~ msgid "Draw Cost"
+#~ msgstr "Teken kosten"
+
+#~ msgid "Draw Location"
+#~ msgstr "Teken locatie"
+
+#~ msgid "Draw Calls"
+#~ msgstr "Teken aanroepen"
+
+#~ msgid "Call Map: Current is '%1'"
+#~ msgstr "Aanroepkaart: Huidige is '%1'"
+
+#~ msgid "(no function)"
+#~ msgstr "(geen functie)"
+
+#~ msgid "(no call)"
+#~ msgstr "(geen aanroep)"
+
+#~ msgid "Event Type"
+#~ msgstr "Gebeurtenistype"
+
+#~ msgid "Short"
+#~ msgstr "Kort"
+
+#~ msgid "Formula"
+#~ msgstr "Formule"
+
+#~ msgid ""
+#~ "<b>Cost Types List</b><p>This list shows all cost types available and "
+#~ "what the self/inclusive cost of the current selected function is for that "
+#~ "cost type.</p><p>By choosing a cost type from the list, you change the "
+#~ "cost type of costs shown all over KCachegrind to be the selected one.</p>"
+#~ msgstr ""
+#~ "<b>Lijst met kostentypes</b><p> Deze lijst toont alle  beschikbare "
+#~ "kostentypes en wat de inclusieve en exclusieve kosten zijn van de "
+#~ "momenteel geselecteerde functie. </p><p>Door een kostentype te selecteren "
+#~ "in de lijst verandert u het type van alle kosten die in KCachegrind "
+#~ "worden getoond in die van het geselecteerde type.</p>"
+
+#~ msgid "Set Secondary Event Type"
+#~ msgstr "Secundair gebeurtenistype instellen"
+
+#~ msgid "Remove Secondary Event Type"
+#~ msgstr "Secundair gebeurtenistype verwijderen"
+
+#~ msgid "Edit Long Name"
+#~ msgstr "Lange naam bewerken"
+
+#~ msgid "Edit Short Name"
+#~ msgstr "Korte naam bewerken"
+
+#~ msgid "Edit Formula"
+#~ msgstr "Formule bewerken"
+
+#~ msgid "Remove"
+#~ msgstr "Verwijderen"
+
+#~ msgid "New Cost Type ..."
+#~ msgstr "Nieuw kostentype..."
+
+#~ msgid "New%1"
+#~ msgstr "Nieuw%1"
+
+#~ msgid "New Cost Type %1"
+#~ msgstr "Nieuw kostentype %1"
+
+#~ msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+#~ msgstr ""
+#~ "Importfilter voor door Cachegrind/Callgrind gegenereerde profielgegevens-"
+#~ "bestanden"
+
+#~ msgid "Count"
+#~ msgstr "Aantal"
+
+#~ msgid ""
+#~ "<b>List of direct Callers</b><p>This list shows all functions calling the "
+#~ "current selected one directly, together with a call count and the cost "
+#~ "spent in the current selected function while being called from the "
+#~ "function from the list.</p><p>An icon instead of an inclusive cost "
+#~ "specifies that this is a call inside of a recursive cycle. An inclusive "
+#~ "cost makes no sense here.</p><p>Selecting a function makes it the current "
+#~ "selected one of this information panel. If there are two panels (Split "
+#~ "mode), the function of the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>Lijst van directe aanroepers</b> <p>Deze lijst laat alle functies zien "
+#~ "die de huidig geselecteerde functie zonder tussenkomst van andere "
+#~ "functies aanroepen samen met het aantal aanroepen en de (cumulatieve) "
+#~ "kosten gespendeerd in de huidig geselecteerde functie terwijl zij is "
+#~ "aangeroepen uit de functie in de lijst.</p><p>Een icoon in plaats van "
+#~ "cumulatieve kosten specificeert dat dit een aanroep binnen een recursieve "
+#~ "cyclus is. Cumulatieve kosten hebben hier geen betekenis</p><p>Als u een "
+#~ "functie selecteert wordt dit de huidig geselecteerde functie. Als er twee "
+#~ "panelen zijn (Gesplitste modus) wordt de functie in het andere paneel de "
+#~ "huidig geselecteerde functie in dat paneel.</p>"
+
+#~ msgid ""
+#~ "<b>List of direct Callees</b><p>This list shows all functions called by "
+#~ "the current selected one directly, together with a call count and the "
+#~ "cost spent in this function while being called from the selected function."
+#~ "</p><p>Selecting a function makes it the current selected one of this "
+#~ "information panel. If there are two panels (Split mode), the function of "
+#~ "the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>Lijst van directe aanroepers</b><p>Deze lijst laat alle functies zien "
+#~ "die zonder tussenkomst van andere functies worden aangeroepen samen met "
+#~ "het aantal aanroepen en de (cumulatieve) kosten gespendeerd in deze "
+#~ "functie gedurende de aanroep van de huidige geselecteerde functie.</"
+#~ "p><p>Als u een functie selecteert wordt dit de huidig geselecteerde "
+#~ "functie. Als er twee panelen zijn (Gesplitste modus) wordt de functie in "
+#~ "het andere paneel de huidig geselecteerde functie in dat paneel.</p>"
+
+#~ msgid "Profile Part %1"
+#~ msgstr "Profieldeel %1"
+
+#~ msgid "(no trace)"
+#~ msgstr "(geen trace)"
+
+#~ msgid "(no part)"
+#~ msgstr "(geen profieldeel)"
+
+#~ msgid "Comment"
+#~ msgstr "Opmerking"
+
+#~ msgid ""
+#~ "<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+#~ "trace. For each part, the self/inclusive cost of the current selected "
+#~ "function, spent in the part, is shown; percentage costs are always "
+#~ "relative to the total cost <em>of the part</em> (not to the whole trace "
+#~ "as in the Trace Part Overview). Also shown are the calls happening to/"
+#~ "from the current function inside of the trace part.</p><p>By choosing one "
+#~ "or more trace parts from the list, the costs shown all over KCachegrind "
+#~ "will only be the ones spent in the selected part(s). If no list selection "
+#~ "is shown, in fact all trace parts are selected implicitly.</p><p>This is "
+#~ "a multi-selection list. You can select ranges by dragging the mouse or "
+#~ "use SHIFT/CTRL modifiers. Selection/Deselection of trace parts can also "
+#~ "be done by using the Trace Part Overview Dockable. This one also supports "
+#~ "multiple selection.</p><p>Note that the list is hidden if only one trace "
+#~ "part is loaded.</p>"
+#~ msgstr ""
+#~ "<b>Lijst van profieldelen</b><p>Deze lijst laat alle profieldelen van de "
+#~ "geladen trace zien. Voor elk deel worden de eigen/gecumuleerde kosten "
+#~ "getoond van het geselecteerde element in dat deel. De procentuele kosten "
+#~ "worden altijd relatief ten opzichte van de totale kosten <em>van dat "
+#~ "deel</em> getoond in tegenstelling tot de gehele trace zoals in het Trace "
+#~ "deel overzicht). Ook het aantal aanroepen van en naar de huidig "
+#~ "geselecteerde functie binnen het profieldeel worden getoond.</p><p> Door "
+#~ "één of meer profieldelen te kiezen uit de lijst worden de kosten in "
+#~ "KCachegrind getoond voor de geselecteerde delen. Als geen delen worden "
+#~ "geselecteerd worden impliciet alle delen gebruikt voor de "
+#~ "kostencalculatie.</p><p>Dit is een lijst waar u meerdere delen kunt "
+#~ "selecteren. U kunt een bereik van delen selecteren door de muis over de "
+#~ "delen te slepen of de Shift/Ctrl toetsen te gebruiken terwijl u delen "
+#~ "selecteert. Selectie en deselectie kan ook worden gedaan in het Trace "
+#~ "deel window. Ook deze lijst staat u toe meerdere delen te selecteren.</"
+#~ "p><p>Merk op dat de lijst verborgen is als er maar één tracedeel "
+#~ "beschikbaar is.</p>"
+
+#~ msgid "Hide '%1'"
+#~ msgstr "Verberg '%1'"
+
+#~ msgid "Hide Selected"
+#~ msgstr "Verberg geselecteerde elementen"
+
+#~ msgid "Show All"
+#~ msgstr "Alles tonen"

@@ -1,0 +1,3078 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Laszlo Papp <djszapi@archlinux.us>, 2010.
+# Tamas Krutki, 2011.
+# Kristóf Kiszel <ulysses@kubuntu.org>, 2011.
+# Balázs Úr <urbalazs@gmail.com>, 2012, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-18 02:14+0000\n"
+"PO-Revision-Date: 2014-06-24 20:17+0200\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Qt-Contexts: true\n"
+
+#: libcore/cachegrindloader.cpp:135
+#, fuzzy
+#| msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+msgctxt "QObject|"
+msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+msgstr "Importszűrő a Cachegrind/Callgrind által generált profilfájlokhoz"
+
+#: libcore/context.cpp:60
+#, fuzzy
+#| msgid "Invalid Context"
+msgctxt "ProfileContext|"
+msgid "Invalid Context"
+msgstr "Érvénytelen összefüggés"
+
+#: libcore/context.cpp:61
+#, fuzzy
+#| msgid "Unknown Context"
+msgctxt "ProfileContext|"
+msgid "Unknown Context"
+msgstr "Ismeretlen összefüggés"
+
+#: libcore/context.cpp:62
+#, fuzzy
+#| msgid "Part Source Line"
+msgctxt "ProfileContext|"
+msgid "Part Source Line"
+msgstr "Részleges forrás sor"
+
+#: libcore/context.cpp:63
+#, fuzzy
+#| msgid "Source Line"
+msgctxt "ProfileContext|"
+msgid "Source Line"
+msgstr "Forrás sor"
+
+#: libcore/context.cpp:64
+#, fuzzy
+#| msgid "Part Line Call"
+msgctxt "ProfileContext|"
+msgid "Part Line Call"
+msgstr "Részleges sor hívás"
+
+#: libcore/context.cpp:65
+#, fuzzy
+#| msgid "Line Call"
+msgctxt "ProfileContext|"
+msgid "Line Call"
+msgstr "Sor hívás"
+
+#: libcore/context.cpp:66
+#, fuzzy
+#| msgid "Part Jump"
+msgctxt "ProfileContext|"
+msgid "Part Jump"
+msgstr "Részleges ugrás"
+
+#: libcore/context.cpp:67
+#, fuzzy
+#| msgid "Jump"
+msgctxt "ProfileContext|"
+msgid "Jump"
+msgstr "Ugrás"
+
+#: libcore/context.cpp:68
+#, fuzzy
+#| msgid "Part Instruction"
+msgctxt "ProfileContext|"
+msgid "Part Instruction"
+msgstr "Részleges utasítás"
+
+#: libcore/context.cpp:69
+#, fuzzy
+#| msgid "Instruction"
+msgctxt "ProfileContext|"
+msgid "Instruction"
+msgstr "Utasítás"
+
+#: libcore/context.cpp:70
+#, fuzzy
+#| msgid "Part Instruction Jump"
+msgctxt "ProfileContext|"
+msgid "Part Instruction Jump"
+msgstr "Részleges utasítás ugrás"
+
+#: libcore/context.cpp:71
+#, fuzzy
+#| msgid "Instruction Jump"
+msgctxt "ProfileContext|"
+msgid "Instruction Jump"
+msgstr "Utasítás ugrás"
+
+#: libcore/context.cpp:72
+#, fuzzy
+#| msgid "Part Instruction Call"
+msgctxt "ProfileContext|"
+msgid "Part Instruction Call"
+msgstr "Részleges utasítás hívás"
+
+#: libcore/context.cpp:73
+#, fuzzy
+#| msgid "Instruction Call"
+msgctxt "ProfileContext|"
+msgid "Instruction Call"
+msgstr "Utasítás hívás"
+
+#: libcore/context.cpp:74
+#, fuzzy
+#| msgid "Part Call"
+msgctxt "ProfileContext|"
+msgid "Part Call"
+msgstr "Részleges hívás"
+
+#: libcore/context.cpp:75
+#, fuzzy
+#| msgid "Call"
+msgctxt "ProfileContext|"
+msgid "Call"
+msgstr "Hívás"
+
+#: libcore/context.cpp:76
+#, fuzzy
+#| msgid "Part Function"
+msgctxt "ProfileContext|"
+msgid "Part Function"
+msgstr "Részleges funkció"
+
+#: libcore/context.cpp:77
+#, fuzzy
+#| msgid "Function Source File"
+msgctxt "ProfileContext|"
+msgid "Function Source File"
+msgstr "Függvény forrás fájl"
+
+#: libcore/context.cpp:78
+#, fuzzy
+#| msgid "Function"
+msgctxt "ProfileContext|"
+msgid "Function"
+msgstr "Függvény"
+
+#: libcore/context.cpp:79
+#, fuzzy
+#| msgid "Function Cycle"
+msgctxt "ProfileContext|"
+msgid "Function Cycle"
+msgstr "Függvény ciklus"
+
+#: libcore/context.cpp:80
+#, fuzzy
+#| msgid "Part Class"
+msgctxt "ProfileContext|"
+msgid "Part Class"
+msgstr "Részleges osztály"
+
+#: libcore/context.cpp:81
+#, fuzzy
+#| msgid "Class"
+msgctxt "ProfileContext|"
+msgid "Class"
+msgstr "Osztály"
+
+#: libcore/context.cpp:82
+#, fuzzy
+#| msgid "Part Source File"
+msgctxt "ProfileContext|"
+msgid "Part Source File"
+msgstr "Részleges forrás fájl"
+
+#: libcore/context.cpp:83
+#, fuzzy
+#| msgid "Source File"
+msgctxt "ProfileContext|"
+msgid "Source File"
+msgstr "Forrás fájl"
+
+#: libcore/context.cpp:84
+#, fuzzy
+#| msgid "Part ELF Object"
+msgctxt "ProfileContext|"
+msgid "Part ELF Object"
+msgstr "Részleges ELF objektum"
+
+#: libcore/context.cpp:85
+#, fuzzy
+#| msgid "ELF Object"
+msgctxt "ProfileContext|"
+msgid "ELF Object"
+msgstr "ELF objektum"
+
+#: libcore/context.cpp:86
+#, fuzzy
+#| msgid "Profile Part"
+msgctxt "ProfileContext|"
+msgid "Profile Part"
+msgstr "Profil részlet"
+
+#: libcore/context.cpp:87
+#, fuzzy
+#| msgid "Program Trace"
+msgctxt "ProfileContext|"
+msgid "Program Trace"
+msgstr "Program követés"
+
+#: libcore/costitem.cpp:48
+#, fuzzy, qt-format
+#| msgid "%1 from %2"
+msgctxt "QObject|"
+msgid "%1 from %2"
+msgstr "%1 %2-ből"
+
+#: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
+#: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
+#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
+#, fuzzy
+#| msgid "(unknown)"
+msgctxt "QObject|"
+msgid "(unknown)"
+msgstr "(ismeretlen)"
+
+#: libcore/globalconfig.cpp:77
+#, fuzzy
+#| msgid "Instruction Fetch"
+msgctxt "QObject|"
+msgid "Instruction Fetch"
+msgstr "Utasításelérés"
+
+#: libcore/globalconfig.cpp:78
+#, fuzzy
+#| msgid "Data Read Access"
+msgctxt "QObject|"
+msgid "Data Read Access"
+msgstr "Adat olvasási hozzáférés"
+
+#: libcore/globalconfig.cpp:79
+#, fuzzy
+#| msgid "Data Write Access"
+msgctxt "QObject|"
+msgid "Data Write Access"
+msgstr "Adat írási hozzáférés"
+
+#: libcore/globalconfig.cpp:80
+#, fuzzy
+#| msgid "L1 Instr. Fetch Miss"
+msgctxt "QObject|"
+msgid "L1 Instr. Fetch Miss"
+msgstr "L1 Utasítás fetch hiány"
+
+#: libcore/globalconfig.cpp:81
+#, fuzzy
+#| msgid "L1 Data Read Miss"
+msgctxt "QObject|"
+msgid "L1 Data Read Miss"
+msgstr "L1 Adat olvasási hiány"
+
+#: libcore/globalconfig.cpp:82
+#, fuzzy
+#| msgid "L1 Data Write Miss"
+msgctxt "QObject|"
+msgid "L1 Data Write Miss"
+msgstr "L1 Adat írási hiány"
+
+#: libcore/globalconfig.cpp:83
+#, fuzzy
+#| msgid "L2 Instr. Fetch Miss"
+msgctxt "QObject|"
+msgid "L2 Instr. Fetch Miss"
+msgstr "L2 Utasítás fetch hiány"
+
+#: libcore/globalconfig.cpp:84
+#, fuzzy
+#| msgid "L2 Data Read Miss"
+msgctxt "QObject|"
+msgid "L2 Data Read Miss"
+msgstr "L2 Adat olvasási hiány"
+
+#: libcore/globalconfig.cpp:85
+#, fuzzy
+#| msgid "L2 Data Write Miss"
+msgctxt "QObject|"
+msgid "L2 Data Write Miss"
+msgstr "L2 Adat írási hiány"
+
+#: libcore/globalconfig.cpp:86
+#, fuzzy
+#| msgid "LL Instr. Fetch Miss"
+msgctxt "QObject|"
+msgid "LL Instr. Fetch Miss"
+msgstr "LL Utasítás fetch hiány"
+
+#: libcore/globalconfig.cpp:87
+#, fuzzy
+#| msgid "LL Data Read Miss"
+msgctxt "QObject|"
+msgid "LL Data Read Miss"
+msgstr "LL Adat olvasási hiány"
+
+#: libcore/globalconfig.cpp:88
+#, fuzzy
+#| msgid "LL Data Write Miss"
+msgctxt "QObject|"
+msgid "LL Data Write Miss"
+msgstr "LL Adat írási hiány"
+
+#: libcore/globalconfig.cpp:89
+#, fuzzy
+#| msgid "L1 Miss Sum"
+msgctxt "QObject|"
+msgid "L1 Miss Sum"
+msgstr "L1 hiányösszeg"
+
+#: libcore/globalconfig.cpp:90
+#, fuzzy
+#| msgid "L2 Miss Sum"
+msgctxt "QObject|"
+msgid "L2 Miss Sum"
+msgstr "L2 hiányösszeg"
+
+#: libcore/globalconfig.cpp:91
+#, fuzzy
+#| msgid "Last-level Miss Sum"
+msgctxt "QObject|"
+msgid "Last-level Miss Sum"
+msgstr "Last-level hiányösszeg"
+
+#: libcore/globalconfig.cpp:92
+#, fuzzy
+#| msgid "Indirect Branch"
+msgctxt "QObject|"
+msgid "Indirect Branch"
+msgstr "Indirekt elágazás"
+
+#: libcore/globalconfig.cpp:93
+#, fuzzy
+#| msgid "Mispredicted Ind. Branch"
+msgctxt "QObject|"
+msgid "Mispredicted Ind. Branch"
+msgstr "Hibásan feltételezett indirekt elágazás"
+
+#: libcore/globalconfig.cpp:94
+#, fuzzy
+#| msgid "Conditional Branch"
+msgctxt "QObject|"
+msgid "Conditional Branch"
+msgstr "Feltételes elágazás"
+
+#: libcore/globalconfig.cpp:95
+#, fuzzy
+#| msgid "Mispredicted Cond. Branch"
+msgctxt "QObject|"
+msgid "Mispredicted Cond. Branch"
+msgstr "Hibásan feltételezett feltételes elágazás"
+
+#: libcore/globalconfig.cpp:96
+#, fuzzy
+#| msgid "Mispredicted Branch"
+msgctxt "QObject|"
+msgid "Mispredicted Branch"
+msgstr "Hibásan feltételezett elágazás"
+
+#: libcore/globalconfig.cpp:97
+#, fuzzy
+#| msgid "Global Bus Event"
+msgctxt "QObject|"
+msgid "Global Bus Event"
+msgstr "Globális busz esemény"
+
+#: libcore/globalconfig.cpp:98
+#, fuzzy
+#| msgid "Samples"
+msgctxt "QObject|"
+msgid "Samples"
+msgstr "Minták"
+
+#: libcore/globalconfig.cpp:99
+#, fuzzy
+#| msgid "System Time"
+msgctxt "QObject|"
+msgid "System Time"
+msgstr "Rendszer idő"
+
+#: libcore/globalconfig.cpp:100
+#, fuzzy
+#| msgid "User Time"
+msgctxt "QObject|"
+msgid "User Time"
+msgstr "Felhasználó idő"
+
+#: libcore/globalconfig.cpp:101
+#, fuzzy
+#| msgid "Cycle Estimation"
+msgctxt "QObject|"
+msgid "Cycle Estimation"
+msgstr "Ciklusbecslés"
+
+#: libcore/tracedata.cpp:1240
+#, fuzzy
+#| msgid "(no caller)"
+msgctxt "QObject|"
+msgid "(no caller)"
+msgstr "(nincsen hívó)"
+
+#: libcore/tracedata.cpp:1247 libcore/tracedata.cpp:1266
+#, fuzzy, qt-format
+#| msgid "%1 via %2"
+msgctxt "QObject|"
+msgid "%1 via %2"
+msgstr "%1 %2- keresztül"
+
+#: libcore/tracedata.cpp:1256
+#, fuzzy
+#| msgid "(no callee)"
+msgctxt "QObject|"
+msgid "(no callee)"
+msgstr "(nincsen hívó)"
+
+#: libcore/tracedata.cpp:2709
+#, fuzzy
+#| msgid "(global)"
+msgctxt "QObject|"
+msgid "(global)"
+msgstr "(globális)"
+
+#: libcore/tracedata.cpp:3144
+#, fuzzy
+#| msgid "(not found)"
+msgctxt "QObject|"
+msgid "(not found)"
+msgstr "(nem található)"
+
+#: libcore/tracedata.cpp:3692
+#, fuzzy
+#| msgid "Recalculating Function Cycles..."
+msgctxt "TraceData|"
+msgid "Recalculating Function Cycles..."
+msgstr "Funkció ciklusok újra számítása..."
+
+#: libviews/callgraphview.cpp:414
+#, fuzzy, qt-format
+#| msgid "Call(s) from %1"
+msgctxt "QObject|"
+msgid "Call(s) from %1"
+msgstr "Hivás(ok) %1-től"
+
+#: libviews/callgraphview.cpp:417
+#, fuzzy, qt-format
+#| msgid "Call(s) to %1"
+msgctxt "QObject|"
+msgid "Call(s) to %1"
+msgstr "Hívás(ok) %1-re"
+
+#: libviews/callgraphview.cpp:419
+#, fuzzy
+#| msgid "(unknown call)"
+msgctxt "QObject|"
+msgid "(unknown call)"
+msgstr "(ismeretlen hívás)"
+
+#: libviews/callgraphview.cpp:908
+#, fuzzy
+#| msgid "Export Graph"
+msgctxt "QObject|"
+msgid "Export Graph"
+msgstr "Grafikon exportálása"
+
+#: libviews/callgraphview.cpp:1608
+#, fuzzy
+#| msgid ""
+#| "<b>Call Graph around active Function</b><p>Depending on configuration, "
+#| "this view shows the call graph environment of the active function. Note: "
+#| "the shown cost is <b>only</b> the cost which is spent while the active "
+#| "function was actually running; i.e. the cost shown for main() - if it is "
+#| "visible - should be the same as the cost of the active function, as that "
+#| "is the part of inclusive cost of main() spent while the active function "
+#| "was running.</p><p>For cycles, blue call arrows indicate that this is an "
+#| "artificial call added for correct drawing which actually never happened.</"
+#| "p><p>If the graph is larger than the widget area, an overview panner is "
+#| "shown in one edge. There are similar visualization options to the Call "
+#| "Treemap; the selected function is highlighted.</p>"
+msgctxt "CallGraphView|"
+msgid ""
+"<b>Call Graph around active Function</b><p>Depending on configuration, this "
+"view shows the call graph environment of the active function. Note: the "
+"shown cost is <b>only</b> the cost which is spent while the active function "
+"was actually running; i.e. the cost shown for main() - if it is visible - "
+"should be the same as the cost of the active function, as that is the part "
+"of inclusive cost of main() spent while the active function was running.</"
+"p><p>For cycles, blue call arrows indicate that this is an artificial call "
+"added for correct drawing which actually never happened.</p><p>If the graph "
+"is larger than the widget area, an overview panner is shown in one edge. "
+"There are similar visualization options to the Call Treemap; the selected "
+"function is highlighted.</p>"
+msgstr ""
+"<b>Hívási grafikon az aktív függvénynél</b><p>A beállításoktól függően az "
+"aktív függvény hívási grafikonját jeleníti meg. Megjegyzés: a megjelenített "
+"költség <b>csak az a költség</b>, amely az aktív függvény futása közben "
+"történt. Például a main() függvénynél megjelenő költségnek - ha az látható - "
+"ugyanannak kell lennie, mint az aktív függvényé, mert az része a main() "
+"költségének, amíg a függvény fut.</p><p>Ciklusok előfordulása esetén kék "
+"nyilak jelzik, hogy ez egy virtuális hívás a megfelelő megjeleníthetőség "
+"érdekében (de valójában nem történt meg).</p><p>Ha a grafikon nagyobb lenne, "
+"mint a grafikus elem területe, nézeti ablak jelenik meg az egyik szélnél. "
+"Hasonló megjelenítési opciók vannak a hívási fastruktúránál: a kijelölt "
+"függvény ki van emelve.</p>"
+
+#: libviews/callgraphview.cpp:2020
+#, fuzzy
+#| msgid ""
+#| "Warning: a long lasting graph layouting is in progress.\n"
+#| "Reduce node/edge limits for speedup.\n"
+msgctxt "CallGraphView|"
+msgid ""
+"Warning: a long lasting graph layouting is in progress.\n"
+"Reduce node/edge limits for speedup.\n"
+msgstr ""
+"Figyelmeztetés: egy sokáig tartó grafikus layout folyamatban van.\n"
+"Csomópont/szél korlátok csökkentése a felgyorsításért.\n"
+
+#: libviews/callgraphview.cpp:2023
+#, fuzzy
+#| msgid "Layouting stopped.\n"
+msgctxt "CallGraphView|"
+msgid "Layouting stopped.\n"
+msgstr "Layout készítés leállítva.\n"
+
+#: libviews/callgraphview.cpp:2025
+#, fuzzy, qt-format
+#| msgid "The call graph has %1 nodes and %2 edges.\n"
+msgctxt "CallGraphView|"
+msgid "The call graph has %1 nodes and %2 edges.\n"
+msgstr "A hívó grafikonnak %1 csomópontja és %2 széle van.\n"
+
+#: libviews/callgraphview.cpp:2034
+#, fuzzy
+#| msgid "No graph available because the layouting process failed.\n"
+msgctxt "CallGraphView|"
+msgid "No graph available because the layouting process failed.\n"
+msgstr ""
+"Nincsen elérhető grafikon, mert a layout készítő folyamat nem sikerült.\n"
+
+#: libviews/callgraphview.cpp:2036
+#, fuzzy, qt-format
+#| msgid ""
+#| "Trying to run the following command did not work:\n"
+#| "'%1'\n"
+msgctxt "CallGraphView|"
+msgid ""
+"Trying to run the following command did not work:\n"
+"'%1'\n"
+msgstr ""
+"A következő parancs futtatása nem működik:\n"
+"%1'\n"
+
+#: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
+#, fuzzy
+#| msgid "Please check that 'dot' is installed (package GraphViz)."
+msgctxt "CallGraphView|"
+msgid "Please check that 'dot' is installed (package GraphViz)."
+msgstr "Kérem ellenőrizze le, hogy a 'dot' telepítve van (GraphViz csomag)."
+
+#: libviews/callgraphview.cpp:2080
+#, fuzzy
+#| msgid "No item activated for which to draw the call graph."
+msgctxt "CallGraphView|"
+msgid "No item activated for which to draw the call graph."
+msgstr ""
+"Nincs olyan elem aktíválva, amelyre ki lehetne rajzolni a hívási grafikont."
+
+#: libviews/callgraphview.cpp:2092
+#, fuzzy
+#| msgid "No call graph can be drawn for the active item."
+msgctxt "CallGraphView|"
+msgid "No call graph can be drawn for the active item."
+msgstr ""
+"Nincs olyan hívási grafikon, amelyet ki lehet rajzolni az aktuális elemre."
+
+#: libviews/callgraphview.cpp:2554
+#, fuzzy
+#| msgid "Error running the graph layouting tool.\n"
+msgctxt "CallGraphView|"
+msgid "Error running the graph layouting tool.\n"
+msgstr "Hiba történt a grafikon layout készítő eszközének futtatásakor.\n"
+
+#: libviews/callgraphview.cpp:2559
+#, fuzzy, qt-format
+#| msgid ""
+#| "There is no call graph available for function\n"
+#| "\t'%1'\n"
+#| "because it has no cost of the selected event type."
+msgctxt "CallGraphView|"
+msgid ""
+"There is no call graph available for function\n"
+"\t'%1'\n"
+"because it has no cost of the selected event type."
+msgstr ""
+"Nincsen elérhető hívási grafikon a funkcióra.\n"
+"\t'%1'\n"
+"mert a kiválasztott esemény típusnak költsége."
+
+#: libviews/callgraphview.cpp:2773
+#, fuzzy
+#| msgid "Caller Depth"
+msgctxt "CallGraphView|"
+msgid "Caller Depth"
+msgstr "Hívó mélység"
+
+#: libviews/callgraphview.cpp:2774 libviews/callgraphview.cpp:2814
+#, fuzzy
+#| msgid "Unlimited"
+msgctxt "CallGraphView|"
+msgid "Unlimited"
+msgstr "Korlátlan"
+
+#: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
+#, fuzzy
+#| msgctxt "None"
+#| msgid "Depth 0"
+msgctxt "CallGraphView|None"
+msgid "Depth 0"
+msgstr "Mélység 0"
+
+#: libviews/callgraphview.cpp:2778 libviews/callgraphview.cpp:2818
+#, fuzzy
+#| msgid "max. 10"
+msgctxt "CallGraphView|"
+msgid "max. 1"
+msgstr "maximum 10"
+
+#: libviews/callgraphview.cpp:2779 libviews/callgraphview.cpp:2819
+#, fuzzy
+#| msgid "max. 2"
+msgctxt "CallGraphView|"
+msgid "max. 2"
+msgstr "maximum 2"
+
+#: libviews/callgraphview.cpp:2780 libviews/callgraphview.cpp:2820
+#, fuzzy
+#| msgid "max. 5"
+msgctxt "CallGraphView|"
+msgid "max. 5"
+msgstr "maximum 5"
+
+#: libviews/callgraphview.cpp:2781 libviews/callgraphview.cpp:2821
+#, fuzzy
+#| msgid "max. 10"
+msgctxt "CallGraphView|"
+msgid "max. 10"
+msgstr "maximum 10"
+
+#: libviews/callgraphview.cpp:2782 libviews/callgraphview.cpp:2822
+#, fuzzy
+#| msgid "max. 15"
+msgctxt "CallGraphView|"
+msgid "max. 15"
+msgstr "maximum 15"
+
+#: libviews/callgraphview.cpp:2813
+#, fuzzy
+#| msgid "Callee Depth"
+msgctxt "CallGraphView|"
+msgid "Callee Depth"
+msgstr "Hívó mélység"
+
+#: libviews/callgraphview.cpp:2853
+#, fuzzy
+#| msgid "Min. Node Cost"
+msgctxt "CallGraphView|"
+msgid "Min. Node Cost"
+msgstr "Minimum csomópont költség"
+
+#: libviews/callgraphview.cpp:2854
+#, fuzzy
+#| msgid "No Minimum"
+msgctxt "CallGraphView|"
+msgid "No Minimum"
+msgstr "Nincsen minimum"
+
+#: libviews/callgraphview.cpp:2860
+#, fuzzy
+#| msgid "50 %"
+msgctxt "CallGraphView|"
+msgid "50 %"
+msgstr "50 %"
+
+#: libviews/callgraphview.cpp:2861
+#, fuzzy
+#| msgid "20 %"
+msgctxt "CallGraphView|"
+msgid "20 %"
+msgstr "20 %"
+
+#: libviews/callgraphview.cpp:2862
+#, fuzzy
+#| msgid "10 %"
+msgctxt "CallGraphView|"
+msgid "10 %"
+msgstr "10 %"
+
+#: libviews/callgraphview.cpp:2863
+#, fuzzy
+#| msgid "5 %"
+msgctxt "CallGraphView|"
+msgid "5 %"
+msgstr "5 %"
+
+#: libviews/callgraphview.cpp:2864
+#, fuzzy
+#| msgid "2 %"
+msgctxt "CallGraphView|"
+msgid "2 %"
+msgstr "2 %"
+
+#: libviews/callgraphview.cpp:2865
+#, fuzzy
+#| msgid "1 %"
+msgctxt "CallGraphView|"
+msgid "1 %"
+msgstr "1 %"
+
+#: libviews/callgraphview.cpp:2895
+#, fuzzy
+#| msgid "Min. Call Cost"
+msgctxt "CallGraphView|"
+msgid "Min. Call Cost"
+msgstr "Minimális hívási költség"
+
+#: libviews/callgraphview.cpp:2896
+#, fuzzy
+#| msgid "Same as Node"
+msgctxt "CallGraphView|"
+msgid "Same as Node"
+msgstr "Ugyanaz, mint a csomópont"
+
+#: libviews/callgraphview.cpp:2898
+#, fuzzy
+#| msgid "50 % of Node"
+msgctxt "CallGraphView|"
+msgid "50 % of Node"
+msgstr "A csomópont 50 %-a"
+
+#: libviews/callgraphview.cpp:2900
+#, fuzzy
+#| msgid "20 % of Node"
+msgctxt "CallGraphView|"
+msgid "20 % of Node"
+msgstr "A csomópont 20%-a"
+
+#: libviews/callgraphview.cpp:2902
+#, fuzzy
+#| msgid "10 % of Node"
+msgctxt "CallGraphView|"
+msgid "10 % of Node"
+msgstr "A csomópont 10%-a"
+
+#: libviews/callgraphview.cpp:2931
+#, fuzzy
+#| msgid "Birds-eye View"
+msgctxt "CallGraphView|"
+msgid "Birds-eye View"
+msgstr "Madár szem nézet"
+
+#: libviews/callgraphview.cpp:2932
+#, fuzzy
+#| msgid "Top Left"
+msgctxt "CallGraphView|"
+msgid "Top Left"
+msgstr "Bal felső"
+
+#: libviews/callgraphview.cpp:2933
+#, fuzzy
+#| msgid "Top Right"
+msgctxt "CallGraphView|"
+msgid "Top Right"
+msgstr "Jobb felső"
+
+#: libviews/callgraphview.cpp:2934
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "CallGraphView|"
+msgid "Bottom Left"
+msgstr "Bal alsó"
+
+#: libviews/callgraphview.cpp:2935
+#, fuzzy
+#| msgid "Bottom Right"
+msgctxt "CallGraphView|"
+msgid "Bottom Right"
+msgstr "Jobb alsó"
+
+#: libviews/callgraphview.cpp:2936
+#, fuzzy
+#| msgid "Automatic"
+msgctxt "CallGraphView|"
+msgid "Automatic"
+msgstr "Automatikus"
+
+#: libviews/callgraphview.cpp:2937
+#, fuzzy
+#| msgid "Hide"
+msgctxt "CallGraphView|"
+msgid "Hide"
+msgstr "Elrejtés"
+
+#: libviews/callgraphview.cpp:2967
+#, fuzzy
+#| msgid "Layout"
+msgctxt "CallGraphView|"
+msgid "Layout"
+msgstr "Layout"
+
+#: libviews/callgraphview.cpp:2968
+#, fuzzy
+#| msgid "Top to Down"
+msgctxt "CallGraphView|"
+msgid "Top to Down"
+msgstr "Fentről le"
+
+#: libviews/callgraphview.cpp:2969
+#, fuzzy
+#| msgid "Left to Right"
+msgctxt "CallGraphView|"
+msgid "Left to Right"
+msgstr "Balról jobbra"
+
+#: libviews/callgraphview.cpp:2970
+#, fuzzy
+#| msgid "Circular"
+msgctxt "CallGraphView|"
+msgid "Circular"
+msgstr "Cirkuláris"
+
+#: libviews/callgraphview.cpp:3010 libviews/callgraphview.cpp:3015
+#: libviews/callgraphview.cpp:3035
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "CallGraphView|"
+msgid "Go to '%1'"
+msgstr "'%1'-re ugrás"
+
+#: libviews/callgraphview.cpp:3046
+#, fuzzy
+#| msgid "Stop Layouting"
+msgctxt "CallGraphView|"
+msgid "Stop Layouting"
+msgstr "Layout készítés leállítása"
+
+#: libviews/callgraphview.cpp:3053
+#, fuzzy
+#| msgid "Export Graph"
+msgctxt "CallGraphView|"
+msgid "Export Graph"
+msgstr "Grafikon exportálása"
+
+#: libviews/callgraphview.cpp:3054
+#, fuzzy
+#| msgid "As DOT file..."
+msgctxt "CallGraphView|"
+msgid "As DOT file..."
+msgstr "Mint egy DOT fájl..."
+
+#: libviews/callgraphview.cpp:3055
+#, fuzzy
+#| msgid "As Image..."
+msgctxt "CallGraphView|"
+msgid "As Image..."
+msgstr "Képként..."
+
+#: libviews/callgraphview.cpp:3058
+#, fuzzy
+#| msgid "Graph"
+msgctxt "CallGraphView|"
+msgid "Graph"
+msgstr "Grafikon"
+
+#: libviews/callgraphview.cpp:3066
+#, fuzzy
+#| msgid "Arrows for Skipped Calls"
+msgctxt "CallGraphView|"
+msgid "Arrows for Skipped Calls"
+msgstr "Nyilak a kihagyott hívásokra"
+
+#: libviews/callgraphview.cpp:3071
+#, fuzzy
+#| msgid "Inner-cycle Calls"
+msgctxt "CallGraphView|"
+msgid "Inner-cycle Calls"
+msgstr "Belső ciklus hívások"
+
+#: libviews/callgraphview.cpp:3076
+#, fuzzy
+#| msgid "Cluster Groups"
+msgctxt "CallGraphView|"
+msgid "Cluster Groups"
+msgstr "Csoportok"
+
+#: libviews/callgraphview.cpp:3080
+#, fuzzy
+#| msgid "Visualization"
+msgctxt "CallGraphView|"
+msgid "Visualization"
+msgstr "Vizualizáció"
+
+#: libviews/callgraphview.cpp:3081
+#, fuzzy
+#| msgid "Compact"
+msgctxt "CallGraphView|"
+msgid "Compact"
+msgstr "Kompakt"
+
+#: libviews/callgraphview.cpp:3084
+#, fuzzy
+#| msgid "Normal"
+msgctxt "CallGraphView|"
+msgid "Normal"
+msgstr "Normál"
+
+#: libviews/callgraphview.cpp:3087
+#, fuzzy
+#| msgid "Tall"
+msgctxt "CallGraphView|"
+msgid "Tall"
+msgstr "Beszéd"
+
+#: libviews/callgraphview.cpp:3119
+#, fuzzy
+#| msgid "Export Graph As Image"
+msgctxt "CallGraphView|"
+msgid "Export Graph As Image"
+msgstr "Grafikon exportálása képként"
+
+#: libviews/callgraphview.cpp:3121
+#, fuzzy
+#| msgid "Images (*.png *.jpg)"
+msgctxt "CallGraphView|"
+msgid "Images (*.png *.jpg)"
+msgstr "Képek (*.png *.jpg)"
+
+#: libviews/callitem.cpp:73 libviews/partlistitem.cpp:131
+#, fuzzy
+#| msgid "(active)"
+msgctxt "QObject|"
+msgid "(active)"
+msgstr "(aktív)"
+
+#: libviews/callmapview.cpp:52
+#, fuzzy
+#| msgctxt "Name"
+#| msgid "A thing's name"
+msgctxt "CallMapView|Name"
+msgid "A thing's name"
+msgstr "Egy dolog neve"
+
+#: libviews/callmapview.cpp:53
+#, fuzzy
+#| msgid "Cost"
+msgctxt "CallMapView|"
+msgid "Cost"
+msgstr "Költség"
+
+#: libviews/callmapview.cpp:54
+#, fuzzy
+#| msgid "Location"
+msgctxt "CallMapView|"
+msgid "Location"
+msgstr "Elhelyezkedés"
+
+#: libviews/callmapview.cpp:56
+#, fuzzy
+#| msgid "Calls"
+msgctxt "CallMapView|"
+msgid "Calls"
+msgstr "Hívások"
+
+#: libviews/callmapview.cpp:91
+#, fuzzy
+#| msgid ""
+#| "<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers "
+#| "of the current activated function. Each colored rectangle represents a "
+#| "function; its size tries to be proportional to the cost spent therein "
+#| "while the active function is running (however, there are drawing "
+#| "constraints).</p>"
+msgctxt "CallMapView|"
+msgid ""
+"<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>Hívó térkép</b><p>Ez a grafikon megjeleníti az aktuális, aktivált funkció "
+"összes hívójának  beágyazott hierarchiáját Mindegyik színezett téglalap "
+"bemutat egy funkciót; annak mérete lehetőleg arányos a költségével az aktív "
+"funkció futása közben (pedig, vannak rajz korlátozók).</p>"
+
+#: libviews/callmapview.cpp:98
+#, fuzzy
+#| msgid ""
+#| "<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+#| "the current activated function. Each colored rectangle represents a "
+#| "function; its size tries to be proportional to the cost spent therein "
+#| "while the active function is running (however, there are drawing "
+#| "constraints).</p>"
+msgctxt "CallMapView|"
+msgid ""
+"<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>Hívó térkép</b><p>Ez a grafikon megjeleníti az aktuális, aktivált funkció "
+"összes hívójának  beágyazott hierarchiáját Mindegyik színezett téglalap "
+"bemutat egy funkciót; annak mérete lehetőleg arányos a költségével az aktív "
+"funkció futása közben (pedig, vannak rajz korlátozók).</p>"
+
+#: libviews/callmapview.cpp:106
+#, fuzzy
+#| msgid ""
+#| "<p>Appearance options can be found in the in the context menu. To get "
+#| "exact size proportions, choose 'Hide incorrect borders'. As this mode can "
+#| "be <em>very</em> time consuming, you may want to limit the maximum drawn "
+#| "nesting level before. 'Best' determinates the split direction for "
+#| "children from the aspect ratio of the parent. 'Always Best' decides on "
+#| "remaining space for each sibling. 'Ignore Proportions' takes space for "
+#| "function name drawing <em>before</em> drawing children. Note that size "
+#| "proportions can get <em>heavily</em> wrong.</p><p>This is a <em>TreeMap</"
+#| "em> widget. Keyboard navigation is available with the left/right arrow "
+#| "keys for traversing siblings, and up/down arrow keys to go a nesting "
+#| "level up/down. <em>Return</em> activates the current item.</p>"
+msgctxt "CallMapView|"
+msgid ""
+"<p>Appearance options can be found in the in the context menu. To get exact "
+"size proportions, choose 'Hide incorrect borders'. As this mode can be "
+"<em>very</em> time consuming, you may want to limit the maximum drawn "
+"nesting level before. 'Best' determinates the split direction for children "
+"from the aspect ratio of the parent. 'Always Best' decides on remaining "
+"space for each sibling. 'Ignore Proportions' takes space for function name "
+"drawing <em>before</em> drawing children. Note that size proportions can get "
+"<em>heavily</em> wrong.</p><p>This is a <em>TreeMap</em> widget. Keyboard "
+"navigation is available with the left/right arrow keys for traversing "
+"siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
+"em> activates the current item.</p>"
+msgstr ""
+"<p>A megjelenítést befolyásoló opciók a felbukkanó menüben találhatók. Ha "
+"azt szeretné, hogy a méretek a pontos arányokat tükrözzék, jelölje be 'A "
+"pontatlan szegélyek elrejtése' opciót. Ilyenkor a megjelenítés <em>nagyon "
+"lelassulhat</em>, ezért érdemes lekorlátozni a maximális mélységet. „A "
+"legmegfelelőbb” opció az alárendelt elemek osztási arányát határozza meg a "
+"szülőelem nézetarányából. A „Mindig a legjobb” esetén a program meghatározza "
+"az egymás mellé rendelt elemek területét. „Az arányok figyelmen kívül "
+"hagyása” esetén a szülőelemek helyfoglalása az alárendelt elemek kirajzolása "
+"<em>előtt</em> történik. A méretarányok <em>nagy mértékben</em> eltérhetnek "
+"a valóságostól.</p><p>Ez egy <em>fastruktúra-térkép</em> elem. A "
+"billentyűzet használata esetén a jobbra/balra nyilakkal lehet az egy szinten "
+"található elemek között mozogni, a fel és le nyilakkal pedig a felsőbb "
+"illetve alsóbb szintekre lehet lépni. Az aktuális elemet az <em>Enter</em> "
+"lenyomásával lehet aktiválni.</p>"
+
+#: libviews/callmapview.cpp:139
+#, fuzzy
+#| msgid "Go To"
+msgctxt "CallMapView|"
+msgid "Go To"
+msgstr "Ugrás"
+
+#: libviews/callmapview.cpp:170
+#, fuzzy
+#| msgid "Stop at Depth"
+msgctxt "CallMapView|"
+msgid "Stop at Depth"
+msgstr "Leállítás mélységen"
+
+#: libviews/callmapview.cpp:171
+#, fuzzy
+#| msgid "No Depth Limit"
+msgctxt "CallMapView|"
+msgid "No Depth Limit"
+msgstr "Nincs mélység korlát"
+
+#: libviews/callmapview.cpp:173
+#, fuzzy
+#| msgid "Depth 10"
+msgctxt "CallMapView|"
+msgid "Depth 10"
+msgstr "10-s mélység"
+
+#: libviews/callmapview.cpp:174
+#, fuzzy
+#| msgid "Depth 15"
+msgctxt "CallMapView|"
+msgid "Depth 15"
+msgstr "15-s Mélység"
+
+#: libviews/callmapview.cpp:175
+#, fuzzy
+#| msgid "Depth 20"
+msgctxt "CallMapView|"
+msgid "Depth 20"
+msgstr "20-s mélység"
+
+#: libviews/callmapview.cpp:178
+#, fuzzy, qt-format
+#| msgid "Depth of '%1' (%2)"
+msgctxt "CallMapView|"
+msgid "Depth of '%1' (%2)"
+msgstr "'%1' mélység (%2)"
+
+#: libviews/callmapview.cpp:185
+#, fuzzy, qt-format
+#| msgid "Decrement Depth (to %1)"
+msgctxt "CallMapView|"
+msgid "Decrement Depth (to %1)"
+msgstr "Csökkenő mélység (%1-hez)"
+
+#: libviews/callmapview.cpp:187
+#, fuzzy, qt-format
+#| msgid "Increment Depth (to %1)"
+msgctxt "CallMapView|"
+msgid "Increment Depth (to %1)"
+msgstr "Növekvő mélység (%1-hez)"
+
+#: libviews/callmapview.cpp:213
+#, fuzzy
+#| msgid "Stop at Function"
+msgctxt "CallMapView|"
+msgid "Stop at Function"
+msgstr "Leállítás funkcióra"
+
+#: libviews/callmapview.cpp:214
+#, fuzzy
+#| msgid "No Function Limit"
+msgctxt "CallMapView|"
+msgid "No Function Limit"
+msgstr "Nincs funkció korlát"
+
+#: libviews/callmapview.cpp:257
+#, fuzzy
+#| msgid "Stop at Area"
+msgctxt "CallMapView|"
+msgid "Stop at Area"
+msgstr "Leállítás területre"
+
+#: libviews/callmapview.cpp:258
+#, fuzzy
+#| msgid "No Area Limit"
+msgctxt "CallMapView|"
+msgid "No Area Limit"
+msgstr "Nincs terület korlát"
+
+#: libviews/callmapview.cpp:260
+#, fuzzy
+#| msgid "100 Pixels"
+msgctxt "CallMapView|"
+msgid "100 Pixels"
+msgstr "100 Pixel"
+
+#: libviews/callmapview.cpp:261
+#, fuzzy
+#| msgid "200 Pixels"
+msgctxt "CallMapView|"
+msgid "200 Pixels"
+msgstr "200 Pixel"
+
+#: libviews/callmapview.cpp:262
+#, fuzzy
+#| msgid "500 Pixels"
+msgctxt "CallMapView|"
+msgid "500 Pixels"
+msgstr "500 Pixel"
+
+#: libviews/callmapview.cpp:263
+#, fuzzy
+#| msgid "1000 Pixels"
+msgctxt "CallMapView|"
+msgid "1000 Pixels"
+msgstr "1000 Pixel"
+
+#: libviews/callmapview.cpp:269
+#, fuzzy, qt-format
+#| msgid "Area of '%1' (%2)"
+msgctxt "CallMapView|"
+msgid "Area of '%1' (%2)"
+msgstr "'%1' területe (%2)"
+
+#: libviews/callmapview.cpp:275
+#, fuzzy, qt-format
+#| msgid "Double Area Limit (to %1)"
+msgctxt "CallMapView|"
+msgid "Double Area Limit (to %1)"
+msgstr "Dupla területű korlát (%1-hez)"
+
+#: libviews/callmapview.cpp:277
+#, fuzzy, qt-format
+#| msgid "Half Area Limit (to %1)"
+msgctxt "CallMapView|"
+msgid "Half Area Limit (to %1)"
+msgstr "Fél terület korlát (%1-hez)"
+
+#: libviews/callmapview.cpp:327
+#, fuzzy
+#| msgid "Visualization"
+msgctxt "CallMapView|"
+msgid "Visualization"
+msgstr "Vizualizáció"
+
+#: libviews/callmapview.cpp:328
+#, fuzzy
+#| msgid "Split Direction"
+msgctxt "CallMapView|"
+msgid "Split Direction"
+msgstr "Feldarabolási irány"
+
+#: libviews/callmapview.cpp:331
+#, fuzzy
+#| msgid "Skip Incorrect Borders"
+msgctxt "CallMapView|"
+msgid "Skip Incorrect Borders"
+msgstr "Nem megfelelő határok kihagyása"
+
+#: libviews/callmapview.cpp:336
+#, fuzzy
+#| msgid "Border Width"
+msgctxt "CallMapView|"
+msgid "Border Width"
+msgstr "Határ szélesség"
+
+#: libviews/callmapview.cpp:337
+#, fuzzy
+#| msgid "Border 0"
+msgctxt "CallMapView|"
+msgid "Border 0"
+msgstr "Határ 0"
+
+#: libviews/callmapview.cpp:339
+#, fuzzy
+#| msgid "Border 1"
+msgctxt "CallMapView|"
+msgid "Border 1"
+msgstr "Határ 1"
+
+#: libviews/callmapview.cpp:340
+#, fuzzy
+#| msgid "Border 2"
+msgctxt "CallMapView|"
+msgid "Border 2"
+msgstr "Határ 2"
+
+#: libviews/callmapview.cpp:341
+#, fuzzy
+#| msgid "Border 3"
+msgctxt "CallMapView|"
+msgid "Border 3"
+msgstr "Határ 3"
+
+#: libviews/callmapview.cpp:346
+#, fuzzy
+#| msgid "Draw Symbol Names"
+msgctxt "CallMapView|"
+msgid "Draw Symbol Names"
+msgstr "Szimbólum nevek kirajzolása"
+
+#: libviews/callmapview.cpp:348
+#, fuzzy
+#| msgid "Draw Cost"
+msgctxt "CallMapView|"
+msgid "Draw Cost"
+msgstr "Költség kirajzolása"
+
+#: libviews/callmapview.cpp:350
+#, fuzzy
+#| msgid "Draw Location"
+msgctxt "CallMapView|"
+msgid "Draw Location"
+msgstr "Elhelyezkedés kirajzolása"
+
+#: libviews/callmapview.cpp:352
+#, fuzzy
+#| msgid "Draw Calls"
+msgctxt "CallMapView|"
+msgid "Draw Calls"
+msgstr "Hívások kirajzolása"
+
+#: libviews/callmapview.cpp:356
+#, fuzzy
+#| msgid "Ignore Proportions"
+msgctxt "CallMapView|"
+msgid "Ignore Proportions"
+msgstr "Arányok mellőzése"
+
+#: libviews/callmapview.cpp:358
+#, fuzzy
+#| msgid "Allow Rotation"
+msgctxt "CallMapView|"
+msgid "Allow Rotation"
+msgstr "Forgatás engedélyezése"
+
+#: libviews/callmapview.cpp:376
+#, fuzzy
+#| msgid "Shading"
+msgctxt "CallMapView|"
+msgid "Shading"
+msgstr "Árnyékolás"
+
+#: libviews/callmapview.cpp:428
+#, fuzzy, qt-format
+#| msgid "Call Map: Current is '%1'"
+msgctxt "CallMapView|"
+msgid "Call Map: Current is '%1'"
+msgstr "Hívás térkép: '%1' az aktuális"
+
+#: libviews/callmapview.cpp:621
+#, fuzzy
+#| msgid "(no function)"
+msgctxt "QObject|"
+msgid "(no function)"
+msgstr "(nincsen funkció)"
+
+#: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
+#, fuzzy
+#| msgid "(no call)"
+msgctxt "QObject|"
+msgid "(no call)"
+msgstr "(nincsen hívás)"
+
+#: libviews/callview.cpp:37
+#, fuzzy
+#| msgid "Cost"
+msgctxt "CallView|"
+msgid "Cost"
+msgstr "Költség"
+
+#: libviews/callview.cpp:38
+#, fuzzy
+#| msgid "Cost per call"
+msgctxt "CallView|"
+msgid "Cost per call"
+msgstr "Hívásonkénti költség"
+
+#: libviews/callview.cpp:39
+#, fuzzy
+#| msgid "Cost 2"
+msgctxt "CallView|"
+msgid "Cost 2"
+msgstr "Költség 2"
+
+#: libviews/callview.cpp:40
+#, fuzzy
+#| msgid "Cost 2 per call"
+msgctxt "CallView|"
+msgid "Cost 2 per call"
+msgstr "Hívásonkénti költség 2"
+
+#: libviews/callview.cpp:41
+#, fuzzy
+#| msgid "Count"
+msgctxt "CallView|"
+msgid "Count"
+msgstr "Számlálás"
+
+#: libviews/callview.cpp:42
+#, fuzzy
+#| msgid "Caller"
+msgctxt "CallView|"
+msgid "Caller"
+msgstr "Hívó"
+
+#: libviews/callview.cpp:42
+#, fuzzy
+#| msgid "Callee"
+msgctxt "CallView|"
+msgid "Callee"
+msgstr "Hívó"
+
+#: libviews/callview.cpp:76
+#, fuzzy
+#| msgid ""
+#| "<b>List of direct Callers</b><p>This list shows all functions calling the "
+#| "current selected one directly, together with a call count and the cost "
+#| "spent in the current selected function while being called from the "
+#| "function from the list.</p><p>An icon instead of an inclusive cost "
+#| "specifies that this is a call inside of a recursive cycle. An inclusive "
+#| "cost makes no sense here.</p><p>Selecting a function makes it the current "
+#| "selected one of this information panel. If there are two panels (Split "
+#| "mode), the function of the other panel is changed instead.</p>"
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callers</b><p>This list shows all functions calling the "
+"current selected one directly, together with a call count and the cost spent "
+"in the current selected function while being called from the function from "
+"the list.</p><p>An icon instead of an inclusive cost specifies that this is "
+"a call inside of a recursive cycle. An inclusive cost makes no sense here.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>A közvetlen meghívó függvények listája</b><p>Ebben a listában a kijelölt "
+"függvényt közvetlenül meghívó függvények nevei jelennek meg, a hívások "
+"számával és a kumulatív költséggel együtt (ezek csak a kijelölt függvényre "
+"érvényes értékek!).</p><p>Ha ikon látható a kumulatív költség helyett, az "
+"azt jelenti, hogy a hívás egy rekurzív cikluson belülre esik. Ilyenkor a "
+"kumulatív költségnek nincs értelme.</p><p>Ha kijelöl egy függvényt, akkor az "
+"megjelenik ezen az információs panelen. Ha két panel van (osztott módban), "
+"akkor helyette a másik panelben fog megjelenni.</p>"
+
+#: libviews/callview.cpp:89
+#, fuzzy
+#| msgid ""
+#| "<b>List of direct Callees</b><p>This list shows all functions called by "
+#| "the current selected one directly, together with a call count and the "
+#| "cost spent in this function while being called from the selected function."
+#| "</p><p>Selecting a function makes it the current selected one of this "
+#| "information panel. If there are two panels (Split mode), the function of "
+#| "the other panel is changed instead.</p>"
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callees</b><p>This list shows all functions called by the "
+"current selected one directly, together with a call count and the cost spent "
+"in this function while being called from the selected function.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>A közvetlenül meghívott függvények listája</b><p>Ebben a listában az "
+"aktuális függvény által közvetlenül meghívott függvények listája látható, a "
+"hívások számával és a kumulatív költséggel együtt (ezek csak a kijelölt "
+"függvényre érvényes értékek!).</p><p>Ha kijelöl egy függvényt, akkor az "
+"megjelenik ezen az információs panelen. Ha két panel van (osztott módban), "
+"akkor helyette a másik panelben fog megjelenni.</p>"
+
+#: libviews/callview.cpp:118 libviews/callview.cpp:123
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "CallView|"
+msgid "Go to '%1'"
+msgstr "'%1'-re ugrás"
+
+#: libviews/callview.cpp:257 libviews/callview.cpp:261
+#, fuzzy, qt-format
+#| msgid "%1 per call"
+msgctxt "CallView|"
+msgid "%1 per call"
+msgstr "Hívásonkénti %1"
+
+#: libviews/costlistitem.cpp:53
+#, fuzzy, qt-format
+#| msgid "(%1 function(s) skipped)"
+msgctxt "QObject|"
+msgid "(%n item(s) skipped)"
+msgid_plural "(%n item(s) skipped)"
+msgstr[0] "(%1 függvény kihagyva)"
+msgstr[1] "(%1 függvény kihagyva)"
+
+#: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
+#, fuzzy, qt-format
+#| msgid "(%1 function(s) skipped)"
+msgctxt "QObject|"
+msgid "(%n function(s) skipped)"
+msgid_plural "(%n function(s) skipped)"
+msgstr[0] "(%1 függvény kihagyva)"
+msgstr[1] "(%1 függvény kihagyva)"
+
+#: libviews/coverageview.cpp:37
+#, fuzzy
+#| msgid "Incl."
+msgctxt "CoverageView|"
+msgid "Incl."
+msgstr "Beleértve."
+
+#: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
+#, fuzzy
+#| msgid "Distance"
+msgctxt "CoverageView|"
+msgid "Distance"
+msgstr "Távolság"
+
+#: libviews/coverageview.cpp:41
+#, fuzzy
+#| msgid "Called"
+msgctxt "CoverageView|"
+msgid "Called"
+msgstr "Hívott"
+
+#: libviews/coverageview.cpp:42
+#, fuzzy
+#| msgid "Caller"
+msgctxt "CoverageView|"
+msgid "Caller"
+msgstr "Hívó"
+
+#: libviews/coverageview.cpp:46
+#, fuzzy
+#| msgid "Self"
+msgctxt "CoverageView|"
+msgid "Self"
+msgstr "Saját maga"
+
+#: libviews/coverageview.cpp:48
+#, fuzzy
+#| msgid "Calling"
+msgctxt "CoverageView|"
+msgid "Calling"
+msgstr "Hívó"
+
+#: libviews/coverageview.cpp:49
+#, fuzzy
+#| msgid "Callee"
+msgctxt "CoverageView|"
+msgid "Callee"
+msgstr "Hívó"
+
+#: libviews/coverageview.cpp:84
+#, fuzzy
+#| msgid ""
+#| "<b>List of all Callers</b><p>This list shows all functions calling the "
+#| "current selected one, either directly or with several functions in-"
+#| "between on the stack; the number of functions in-between plus one is "
+#| "called the <em>Distance</em> (e.g. for function A,B,C there exists a call "
+#| "from A to C when A calls B and B calls C, i.e. A => B => C. The distance "
+#| "here is 2).</p><p>Absolute cost shown is the cost spent in the selected "
+#| "function while a listed function is active; relative cost is the "
+#| "percentage of all cost spent in the selected function while the listed "
+#| "one is active. The cost graphic shows logarithmic percentage with a "
+#| "different color for each distance.</p><p>As there can be many calls from "
+#| "the same function, the distance column sometimes shows the range of "
+#| "distances for all calls happening; then, in parentheses, there is the "
+#| "medium distance, i.e. the distance where most of the call costs happened."
+#| "</p><p>Selecting a function makes it the current selected one of this "
+#| "information panel. If there are two panels (Split mode), the function of "
+#| "the other panel is changed instead.</p>"
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callers</b><p>This list shows all functions calling the "
+"current selected one, either directly or with several functions in-between "
+"on the stack; the number of functions in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the selected function while a "
+"listed function is active; relative cost is the percentage of all cost spent "
+"in the selected function while the listed one is active. The cost graphic "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls from the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+"<b>A meghívások listája</b><p>Ebben a listában a kiválasztott függvényre "
+"történő függvényhívások helyei látszanak, akár közvetlenül, akár közvetve, "
+"több közbeeső függvény segítségével. A közbeeső függvények száma "
+"<em>Távolság</em> néven látható (pl. ha adott egy A, B és C függvény, ahol A "
+"hívja B-t, B hívja C-t, azaz A => B => C, akkor A és C távolsága 2).</"
+"p><p>Az abszolút költség az a költség, amely az aktuális függvényen belül "
+"keletkezik, a listában kijelölt függvény végrehajtásakor. A relatív költség "
+"az abszolút költség aránya a teljes költséghez (a listában kijelölt függvény "
+"költsége az aktív függvényen belül). A költség logaritmikus skálázású "
+"százalékos értékként jelenik meg, úgy, hogy minden távolság más színnel van "
+"kirajzolva.</p><p>Egy függvényből számtalan hívás indulhat egy kiszemelt "
+"függvényre, ezért a Távolság oszlopban néha egy adott értéktartományba eső "
+"hívások adatai jelennek meg, zárójelben mutatva a közepes távolságot (amely "
+"tehát a hívások átlagos távolsága).</p><p>Ha kijelöl egy függvényt, akkor az "
+"megjelenik ezen az információs panelen. Ha két panel van (osztott módban), "
+"akkor helyette a másik panelben fog megjelenni.</p>"
+
+#: libviews/coverageview.cpp:114
+#, fuzzy
+#| msgid ""
+#| "<b>List of all Callees</b><p>This list shows all functions called by the "
+#| "current selected one, either directly or with several function in-between "
+#| "on the stack; the number of function in-between plus one is called the "
+#| "<em>Distance</em> (e.g. for function A,B,C there exists a call from A to "
+#| "C when A calls B and B calls C, i.e. A => B => C. The distance here is 2)."
+#| "</p><p>Absolute cost shown is the cost spent in the listed function while "
+#| "the selected is active; relative cost is the percentage of all cost spent "
+#| "in the listed function while the selected one is active. The cost graphic "
+#| "always shows logarithmic percentage with a different color for each "
+#| "distance.</p><p>As there can be many calls to the same function, the "
+#| "distance column sometimes shows the range of distances for all calls "
+#| "happening; then, in parentheses, there is the medium distance, i.e. the "
+#| "distance where most of the call costs happened.</p><p>Selecting a "
+#| "function makes it the current selected one of this information panel. If "
+#| "there are two panels (Split mode), the function of the other panel is "
+#| "changed instead.</p>"
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callees</b><p>This list shows all functions called by the "
+"current selected one, either directly or with several function in-between on "
+"the stack; the number of function in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the listed function while the "
+"selected is active; relative cost is the percentage of all cost spent in the "
+"listed function while the selected one is active. The cost graphic always "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls to the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+"<b>A meghívott függvények listája</b><p>Ebben a listában a kiválasztott "
+"függvényből kiinduló függvényhívások látszanak, akár közvetlenül, akár "
+"közvetve történnek, több közbeeső függvény segítségével. A közbeeső "
+"függvények száma <em>Távolság</em> néven látható (pl. ha adott egy A, B és C "
+"függvény, ahol A hívja B-t, B hívja C-t, azaz A => B => C, akkor A és C "
+"távolsága 2).</p><p>Az abszolút költség az a költség, amely az aktuális "
+"függvényen belül keletkezik, a listában kijelölt függvény végrehajtásakor. A "
+"relatív költség az abszolút költség aránya a teljes költséghez (a listában "
+"kijelölt függvény költsége az aktív függvényen belül). A költség "
+"logaritmikus skálázású százalékos értékként jelenik meg, úgy, hogy minden "
+"távolság más színnel van kirajzolva.</p><p>Egy függvényből számtalan hívás "
+"indulhat egy kiszemelt függvényre, ezért a Távolság oszlopban néha egy adott "
+"értéktartományba eső hívások adatai jelennek meg, zárójelben mutatva a "
+"közepes távolságot (amely tehát a hívások átlagos távolsága).</p><p>Ha "
+"kijelöl egy függvényt, akkor az megjelenik ezen az információs panelen. Ha "
+"két panel van (osztott módban), akkor helyette a másik panelben fog "
+"megjelenni.</p>"
+
+#: libviews/coverageview.cpp:160
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "CoverageView|"
+msgid "Go to '%1'"
+msgstr "'%1'-re ugrás"
+
+#: libviews/eventtypeitem.cpp:48
+#, fuzzy
+#| msgid "Unknown Type"
+msgctxt "QObject|"
+msgid "Unknown Type"
+msgstr "Ismeretlen Típus"
+
+#: libviews/eventtypeview.cpp:37
+#, fuzzy
+#| msgid "Event Type"
+msgctxt "EventTypeView|"
+msgid "Event Type"
+msgstr "Esemény típus"
+
+#: libviews/eventtypeview.cpp:38
+#, fuzzy
+#| msgid "Incl."
+msgctxt "EventTypeView|"
+msgid "Incl."
+msgstr "Beleértve."
+
+#: libviews/eventtypeview.cpp:39
+#, fuzzy
+#| msgid "Self"
+msgctxt "EventTypeView|"
+msgid "Self"
+msgstr "Saját maga"
+
+#: libviews/eventtypeview.cpp:40
+#, fuzzy
+#| msgid "Short"
+msgctxt "EventTypeView|"
+msgid "Short"
+msgstr "Rövid"
+
+#: libviews/eventtypeview.cpp:42
+#, fuzzy
+#| msgid "Formula"
+msgctxt "EventTypeView|"
+msgid "Formula"
+msgstr "Szabály"
+
+#: libviews/eventtypeview.cpp:76
+#, fuzzy
+#| msgid ""
+#| "<b>Cost Types List</b><p>This list shows all cost types available and "
+#| "what the self/inclusive cost of the current selected function is for that "
+#| "cost type.</p><p>By choosing a cost type from the list, you change the "
+#| "cost type of costs shown all over KCachegrind to be the selected one.</p>"
+msgctxt "EventTypeView|"
+msgid ""
+"<b>Cost Types List</b><p>This list shows all cost types available and what "
+"the self/inclusive cost of the current selected function is for that cost "
+"type.</p><p>By choosing a cost type from the list, you change the cost type "
+"of costs shown all over KCachegrind to be the selected one.</p>"
+msgstr ""
+"<b>Költség típusok lista</b><p>Ez a lista megmutatja az összes elérhető és "
+"költség típust és a kiválasztott funkciók ön/beleértett költségét arra a "
+"költség típusra.</p><p>Egy költség típus kiválasztása a listáról, "
+"megváltoztatja a költségek költség típusát a KCachegrind felett, amik ki "
+"vannak választva.</p>"
+
+#: libviews/eventtypeview.cpp:96
+#, fuzzy
+#| msgid "Set as Secondary Event Type"
+msgctxt "EventTypeView|"
+msgid "Set as Secondary Event Type"
+msgstr "Beállítás másodlagos esemény  típusként"
+
+#: libviews/eventtypeview.cpp:98
+#, fuzzy
+#| msgid "Hide Secondary Event Type"
+msgctxt "EventTypeView|"
+msgid "Hide Secondary Event Type"
+msgstr "Másodlagos esemény típus elrejtése"
+
+#: libviews/eventtypeview.cpp:107
+#, fuzzy
+#| msgid "Edit Long Name"
+msgctxt "EventTypeView|"
+msgid "Edit Long Name"
+msgstr "Hosszú név szerkesztése"
+
+#: libviews/eventtypeview.cpp:108
+#, fuzzy
+#| msgid "Edit Short Name"
+msgctxt "EventTypeView|"
+msgid "Edit Short Name"
+msgstr "Rövid név szerkesztése"
+
+#: libviews/eventtypeview.cpp:109
+#, fuzzy
+#| msgid "Edit Formula"
+msgctxt "EventTypeView|"
+msgid "Edit Formula"
+msgstr "Szabály szerkesztése"
+
+#: libviews/eventtypeview.cpp:110
+#, fuzzy
+#| msgid "Remove"
+msgctxt "EventTypeView|"
+msgid "Remove"
+msgstr "Eltávolítás"
+
+#: libviews/eventtypeview.cpp:119
+#, fuzzy
+#| msgid "New Event Type..."
+msgctxt "EventTypeView|"
+msgid "New Event Type..."
+msgstr "Új esemény típus..."
+
+#: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
+#, fuzzy, qt-format
+#| msgid "New%1"
+msgctxt "EventTypeView|"
+msgid "New%1"
+msgstr "Új%1"
+
+#: libviews/eventtypeview.cpp:160
+#, fuzzy, qt-format
+#| msgid "New Event Type %1"
+msgctxt "EventTypeView|"
+msgid "New Event Type %1"
+msgstr "Új esemény típus %1"
+
+#: libviews/functionlistmodel.cpp:45
+#, fuzzy
+#| msgid "Incl."
+msgctxt "FunctionListModel|"
+msgid "Incl."
+msgstr "Beleértve."
+
+#: libviews/functionlistmodel.cpp:46
+#, fuzzy
+#| msgid "Self"
+msgctxt "FunctionListModel|"
+msgid "Self"
+msgstr "Saját maga"
+
+#: libviews/functionlistmodel.cpp:47
+#, fuzzy
+#| msgid "Called"
+msgctxt "FunctionListModel|"
+msgid "Called"
+msgstr "Hívott"
+
+#: libviews/functionlistmodel.cpp:48
+#, fuzzy
+#| msgid "Function"
+msgctxt "FunctionListModel|"
+msgid "Function"
+msgstr "Függvény"
+
+#: libviews/functionlistmodel.cpp:49
+#, fuzzy
+#| msgid "Location"
+msgctxt "FunctionListModel|"
+msgid "Location"
+msgstr "Elhelyezkedés"
+
+#: libviews/functionlistmodel.cpp:89
+#, fuzzy, qt-format
+#| msgid "(%1 function(s) skipped)"
+msgctxt "FunctionListModel|"
+msgid "(%1 function(s) skipped)"
+msgstr "(%1 függvény kihagyva)"
+
+#: libviews/functionselection.cpp:87
+#, fuzzy
+#| msgid "Function Profile"
+msgctxt "FunctionSelection|"
+msgid "Function Profile"
+msgstr "Funkció profil"
+
+#: libviews/functionselection.cpp:95
+#, fuzzy
+#| msgid "&Search:"
+msgctxt "FunctionSelection|"
+msgid "&Search:"
+msgstr "&Keresés:"
+
+#: libviews/functionselection.cpp:101
+#, fuzzy
+#| msgid "&Search:"
+msgctxt "FunctionSelection|"
+msgid "Search Query"
+msgstr "&Keresés:"
+
+#: libviews/functionselection.cpp:116
+#, fuzzy
+#| msgid "Self"
+msgctxt "FunctionSelection|"
+msgid "Self"
+msgstr "Saját maga"
+
+#: libviews/functionselection.cpp:116
+#, fuzzy
+#| msgid "Group"
+msgctxt "FunctionSelection|"
+msgid "Group"
+msgstr "Csoport"
+
+#: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
+#, fuzzy
+#| msgid "(No Grouping)"
+msgctxt "FunctionSelection|"
+msgid "(No Grouping)"
+msgstr "(Nincsen csoportosítás)"
+
+#: libviews/functionselection.cpp:209
+#, fuzzy
+#| msgid ""
+#| "<b>The Flat Profile</b><p>The flat profile contains a group and a "
+#| "function selection list. The group list contains all groups where costs "
+#| "are spent in, depending on the chosen group type. The group list is "
+#| "hidden when group type 'Function' is selected.</p><p>The function list "
+#| "contains the functions of the selected group (or all for 'Function' group "
+#| "type), ordered by the costs spent therein. Functions with costs less than "
+#| "1% are hidden on default.</p>"
+msgctxt "FunctionSelection|"
+msgid ""
+"<b>The Flat Profile</b><p>The flat profile contains a group and a function "
+"selection list. The group list contains all groups where costs are spent in, "
+"depending on the chosen group type. The group list is hidden when group type "
+"'Function' is selected.</p><p>The function list contains the functions of "
+"the selected group (or all for 'Function' group type), ordered by the costs "
+"spent therein. Functions with costs less than 1% are hidden on default.</p>"
+msgstr ""
+"<b>A lapos profil</b><p>A lapos profil tartalmaz egy csoport és egy funkció "
+"kiválasztása listát. A csoprot lista tartalmazza az összes csoportot, amikre "
+"a költségek lettek költve, a kiválasztott csoport típusától függően. A "
+"csoport lista rejtettm amikor a csoport típus 'Funkció' ki van választva.</"
+"p><p>A funkció lista tartalmazza a kiválasztott csoportok (vagy az összes "
+"'Funkció' csoport típus) funkcióit, a költségek alapján rendezve, amikbe "
+"kerültek. 1%-nál kisebb költségű funkciók el vannak rejtve alapértelmezetten."
+"</p>"
+
+#: libviews/functionselection.cpp:287
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "FunctionSelection|"
+msgid "Go to '%1'"
+msgstr "'%1'-re ugrás"
+
+#: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
+#, fuzzy
+#| msgid "Grouping"
+msgctxt "FunctionSelection|"
+msgid "Grouping"
+msgstr "Csoportosítás"
+
+#: libviews/functionselection.cpp:353
+#, fuzzy
+#| msgid "No Grouping"
+msgctxt "FunctionSelection|"
+msgid "No Grouping"
+msgstr "Nincsen csoportosítás"
+
+#: libviews/instritem.cpp:114 libviews/sourceitem.cpp:94
+#, fuzzy, qt-format
+#| msgid "Active call to '%1'"
+msgctxt "QObject|"
+msgid "Active call to '%1'"
+msgstr "Aktív hibás '%1'-re"
+
+#: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
+#, fuzzy, qt-format
+#| msgid "Call(s) to %1"
+msgctxt "QObject|"
+msgid "Call to '%1'"
+msgstr "Hívás(ok) %1-re"
+
+#: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
+#, fuzzy, qt-format
+#| msgid "Call(s) to %1"
+msgctxt "QObject|"
+msgid "%n call(s) to '%2'"
+msgid_plural "%n call(s) to '%2'"
+msgstr[0] "Hívás(ok) %1-re"
+msgstr[1] "Hívás(ok) %1-re"
+
+#: libviews/instritem.cpp:155
+#, fuzzy, qt-format
+#| msgid "Jump %1 of %2 times to 0x%3"
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to 0x%3"
+msgstr "Ugrás 0x%3-ra %2 %1 alkalommal"
+
+#: libviews/instritem.cpp:160
+#, fuzzy, qt-format
+#| msgid "Jump %1 times to 0x%2"
+msgctxt "QObject|"
+msgid "Jump %1 times to 0x%2"
+msgstr "Ugrás 0x%2-re %1 alkalommal"
+
+#: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
+#, fuzzy
+#| msgid "(cycle)"
+msgctxt "QObject|"
+msgid "(cycle)"
+msgstr "(ciklus)"
+
+#: libviews/instrview.cpp:193
+#, fuzzy
+#| msgid "#"
+msgctxt "InstrView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/instrview.cpp:194
+#, fuzzy
+#| msgid "Cost"
+msgctxt "InstrView|"
+msgid "Cost"
+msgstr "Költség"
+
+#: libviews/instrview.cpp:195
+#, fuzzy
+#| msgid "Cost 2"
+msgctxt "InstrView|"
+msgid "Cost 2"
+msgstr "Költség 2"
+
+#: libviews/instrview.cpp:197
+#, fuzzy
+#| msgid "Hex"
+msgctxt "InstrView|"
+msgid "Hex"
+msgstr "Hexa"
+
+#: libviews/instrview.cpp:199
+#, fuzzy
+#| msgid "Assembly Instructions"
+msgctxt "InstrView|"
+msgid "Assembly Instructions"
+msgstr "Assembly utasítások"
+
+#: libviews/instrview.cpp:200
+#, fuzzy
+#| msgid "Source Position"
+msgctxt "InstrView|"
+msgid "Source Position"
+msgstr "Forrás pozíció"
+
+#: libviews/instrview.cpp:236
+#, fuzzy
+#| msgid ""
+#| "<b>Annotated Source</b><p>The annotated source list shows the source "
+#| "lines of the current selected function together with (self) cost spent "
+#| "while executing the code of this source line. If there was a call in a "
+#| "source line, lines with details on the call happening are inserted into "
+#| "the source: the cost spent inside of the call, the number of calls "
+#| "happening, and the call destination.</p><p>Select a inserted call "
+#| "information line to make the destination function current.</p>"
+msgctxt "InstrView|"
+msgid ""
+"<b>Annotated Machine Code</b><p>The annotated machine code list shows the "
+"assembly instructions of the current selected function together with (self) "
+"cost spent while executing an instruction. If this is a call instruction, "
+"lines with details on the call happening are inserted into the source: the "
+"cost spent inside of the call, the number of calls happening, and the call "
+"destination.</p><p>The machine code shown is generated with the 'objdump' "
+"utility from the 'binutils' package.</p><p>Select a line with call "
+"information to make the destination function of this call current.</p>"
+msgstr ""
+"<b>Magyarázatos forrás</b><p>A magyarázatos forrás lista az aktuálisan "
+"kiválasztott funkciók forrás sorait jeleníti meg együtt (ön)költséggel ennek "
+"a forrás sor kódnak a végrehajtása közben. Ha volt egy hívás egy forrás "
+"sorban, a sorok a részletekkel együtt, amik a hívásnál történtek, be lesznek "
+"szúrva a forrásba: A költség, amit a híváson belsejében töltött, a hívások "
+"előfordulásának száma, és a hívás célja. Válasszon ki egy beszúrt hívási "
+"információs sort az aktuális cél funkciót elkészítéséhez.</p>"
+
+#: libviews/instrview.cpp:265
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "InstrView|"
+msgid "Go to '%1'"
+msgstr "'%1'-re ugrás"
+
+#: libviews/instrview.cpp:270
+#, fuzzy, qt-format
+#| msgid "Go to Address %1"
+msgctxt "InstrView|"
+msgid "Go to Address %1"
+msgstr "%1 címre ugrás"
+
+#: libviews/instrview.cpp:282
+#, fuzzy
+#| msgid "Hex Code"
+msgctxt "InstrView|"
+msgid "Hex Code"
+msgstr "Hexa kód"
+
+#: libviews/instrview.cpp:573
+#, fuzzy
+#| msgid "There is no instruction info in the profile data file."
+msgctxt "InstrView|"
+msgid "There is no instruction info in the profile data file."
+msgstr "Nincsen utasítás információ a profil adat fájlban."
+
+#: libviews/instrview.cpp:575
+#, fuzzy
+#| msgid "Tip: For Callgrind, rerun with option"
+msgctxt "InstrView|"
+msgid "Tip: For Callgrind, rerun with option"
+msgstr "Tipp: Callgrindre, futassa újra opciókkal"
+
+#: libviews/instrview.cpp:576
+#, fuzzy
+#| msgid "      --dump-instr=yes"
+msgctxt "InstrView|"
+msgid "      --dump-instr=yes"
+msgstr "      --dump-instr=yes"
+
+#: libviews/instrview.cpp:577
+#, fuzzy
+#| msgid "To see (conditional) jumps, additionally specify"
+msgctxt "InstrView|"
+msgid "To see (conditional) jumps, additionally specify"
+msgstr "Hogy lássa a (feltételes) ugrásokat, továbbá határozza meg"
+
+#: libviews/instrview.cpp:578
+#, fuzzy
+#| msgid "      --collect-jumps=yes"
+msgctxt "InstrView|"
+msgid "      --collect-jumps=yes"
+msgstr "      --collect-jumps=yes"
+
+#: libviews/instrview.cpp:826
+#, fuzzy
+#| msgid "For annotated machine code, the following object file is needed:"
+msgctxt "InstrView|"
+msgid "For annotated machine code, the following object file is needed:"
+msgstr "Magyarázatos gépi kódért, a következő fájl szükséges:"
+
+#: libviews/instrview.cpp:831
+#, fuzzy
+#| msgid "This file can not be found."
+msgctxt "InstrView|"
+msgid "This file can not be found."
+msgstr "Ez a fájl nem található."
+
+#: libviews/instrview.cpp:834
+msgctxt "InstrView|"
+msgid "If cross-compiled, set SYSROOT variable."
+msgstr ""
+
+#: libviews/instrview.cpp:858
+#, fuzzy
+#| msgid "There is an error trying to execute the command"
+msgctxt "InstrView|"
+msgid "There is an error trying to execute the command"
+msgstr "Hiba történt a parancs végrehajtásának megpróbálása közben"
+
+#: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
+#, fuzzy
+#| msgid "Check that you have installed 'objdump'."
+msgctxt "InstrView|"
+msgid "Check that you have installed 'objdump'."
+msgstr "Ellenőrizze le, hogy telepítette az 'objdump'-t."
+
+#: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
+#, fuzzy
+#| msgid "This utility can be found in the 'binutils' package."
+msgctxt "InstrView|"
+msgid "This utility can be found in the 'binutils' package."
+msgstr "Ez az eszköz a 'binutils' csomagban található."
+
+#: libviews/instrview.cpp:966
+#, fuzzy
+#| msgid "(No Instruction)"
+msgctxt "InstrView|"
+msgid "(No Instruction)"
+msgstr "(Nincsen utasítás)"
+
+#: libviews/instrview.cpp:1134
+#, qt-format
+msgctxt "InstrView|"
+msgid "There are %n cost line(s) without machine code."
+msgid_plural "There are %n cost line(s) without machine code."
+msgstr[0] ""
+msgstr[1] ""
+
+#: libviews/instrview.cpp:1136
+#, fuzzy
+#| msgid "This happens because the code of"
+msgctxt "InstrView|"
+msgid "This happens because the code of"
+msgstr "Ez történik a következő kód miatt"
+
+#: libviews/instrview.cpp:1139
+#, fuzzy
+#| msgid "does not seem to match the profile data file."
+msgctxt "InstrView|"
+msgid "does not seem to match the profile data file."
+msgstr "Úgy tűnik, hogy nem egyezik a profil adat fájl."
+
+#: libviews/instrview.cpp:1142
+#, fuzzy
+#| msgid "Are you using an old profile data file or is the above mentioned"
+msgctxt "InstrView|"
+msgid "Are you using an old profile data file or is the above mentioned"
+msgstr "Régi profil adat fájlt vagy a fentebb említettet használja"
+
+#: libviews/instrview.cpp:1144
+#, fuzzy
+#| msgid "ELF object from an updated installation/another machine?"
+msgctxt "InstrView|"
+msgid "ELF object from an updated installation/another machine?"
+msgstr "ELF objektum egy frissített telepítés/másik gépről?"
+
+#: libviews/instrview.cpp:1152
+#, fuzzy
+#| msgid "There seems to be an error trying to execute the command"
+msgctxt "InstrView|"
+msgid "There seems to be an error trying to execute the command"
+msgstr ""
+"Úgy tűnik, hogy egy hiba történt a parancs végrehajtásának megpróbálása "
+"közben"
+
+#: libviews/instrview.cpp:1156
+#, fuzzy
+#| msgid "Check that the ELF object used in the command exists."
+msgctxt "InstrView|"
+msgid "Check that the ELF object used in the command exists."
+msgstr "Ellenőrizze le, hogy a parancsban használt ELF objektum létezik-e."
+
+#: libviews/partgraph.cpp:154
+#, fuzzy, qt-format
+#| msgid "Profile Part %1"
+msgctxt "QObject|"
+msgid "Profile Part %1"
+msgstr "Profil rész %1"
+
+#: libviews/partgraph.cpp:211
+#, fuzzy
+#| msgid "(no trace)"
+msgctxt "QObject|"
+msgid "(no trace)"
+msgstr "(nincsen követés)"
+
+#: libviews/partgraph.cpp:214
+#, fuzzy
+#| msgid "(no part)"
+msgctxt "QObject|"
+msgid "(no part)"
+msgstr "(nincsen rész)"
+
+#: libviews/partlistitem.cpp:39
+#, fuzzy
+#| msgid "(none)"
+msgctxt "QObject|"
+msgid "(none)"
+msgstr "(semmi)"
+
+#: libviews/partselection.cpp:48
+#, fuzzy
+#| msgid "Parts Overview"
+msgctxt "PartSelection|"
+msgid "Parts Overview"
+msgstr "Részleges áttekintés"
+
+#: libviews/partselection.cpp:61
+#, fuzzy
+#| msgctxt "A thing's name"
+#| msgid "Name"
+msgctxt "PartSelection|A thing's name"
+msgid "Name"
+msgstr "Név"
+
+#: libviews/partselection.cpp:62
+#, fuzzy
+#| msgid "Cost"
+msgctxt "PartSelection|"
+msgid "Cost"
+msgstr "Költség"
+
+#: libviews/partselection.cpp:69
+#, fuzzy
+#| msgid "(no trace parts)"
+msgctxt "PartSelection|"
+msgid "(no trace parts)"
+msgstr "(nincsenek követési részletek)"
+
+#: libviews/partselection.cpp:96
+#, fuzzy
+#| msgid ""
+#| "<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+#| "there are several profile data files from one profile run. The Trace Part "
+#| "Overview dockable shows these, horizontally ordered in execution time; "
+#| "the rectangle sizes are proportional to the total cost spent in the "
+#| "parts. You can select one or several parts to constrain all costs shown "
+#| "to these parts only.</p><p>The parts are further subdivided: there is a "
+#| "partitioning and an callee split mode: <ul><li>Partitioning: You see the "
+#| "partitioning into groups for a trace part, according to the group type "
+#| "selected. E.g. if ELF object groups are selected, you see colored "
+#| "rectangles for each used ELF object (shared library or executable), sized "
+#| "according to the cost spent therein.</li><li>Callee: A rectangle showing "
+#| "the inclusive cost of the current selected function in the trace part is "
+#| "shown. This is split up into smaller rectangles to show the costs of its "
+#| "callees.</li></ul></p>"
+msgctxt "PartSelection|"
+msgid ""
+"<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+"there are several profile data files from one profile run. The Trace Part "
+"Overview dockable shows these, horizontally ordered in execution time; the "
+"rectangle sizes are proportional to the total cost spent in the parts. You "
+"can select one or several parts to constrain all costs shown to these parts "
+"only.</p><p>The parts are further subdivided: there is a partitioning and an "
+"callee split mode: <ul><li>Partitioning: You see the partitioning into "
+"groups for a trace part, according to the group type selected. E.g. if ELF "
+"object groups are selected, you see colored rectangles for each used ELF "
+"object (shared library or executable), sized according to the cost spent "
+"therein.</li><li>Callee: A rectangle showing the inclusive cost of the "
+"current selected function in the trace part is shown. This is split up into "
+"smaller rectangles to show the costs of its callees.</li></ul></p>"
+msgstr ""
+"<b>A nyomvonal-részek áttekintése</b><p>Egy nyomvonal több nyomvonalrészből "
+"áll, ha egy profilozási futtatásnál több nyomvonalfájl jön létre. A "
+"nyomvonalrész-áttekintő megmutatja ezeket, vízszintesen rendezve a "
+"végrehajtási idő szerint. A téglalapok mérete arányos a rész költségével. Ki "
+"lehet jelölni azokat a részeket, amelyek költségével szeretne foglalkozni.</"
+"p><p>Az egyes részek particionálással vagy kumulatív módon bonthatók tovább: "
+"<ul><li>Particionálás: a csoportok szerinti felbontás jeleníthető meg, a "
+"kiválasztott csoporttípusnak megfelelően. Ha például kijelöli az ELF "
+"objektumok csoportját, akkor színes téglalapok jelennek meg minden ELF "
+"objektumnál (osztott programkönyvtárnál és programfájlnál), a költségükkel "
+"arányos mérettel.</li><li>Meghívott: egy téglalap jelenik meg, mely a "
+"kiválasztott függvénynek a nyomvonalrészben keletkezett összesített "
+"költségét mutatja. A téglalap a meghívott függvények költségével arányos "
+"módon van tovább felosztva.</li></ul></p>"
+
+#: libviews/partselection.cpp:231
+#, fuzzy, qt-format
+#| msgid "Profile Part Overview: Current is '%1'"
+msgctxt "PartSelection|"
+msgid "Profile Part Overview: Current is '%1'"
+msgstr "Profil részlet áttekintés: az aktuális '%1'"
+
+#: libviews/partselection.cpp:337
+#, fuzzy, qt-format
+#| msgid "Deselect '%1'"
+msgctxt "PartSelection|"
+msgid "Deselect '%1'"
+msgstr "'%1' kiválasztás törlése"
+
+#: libviews/partselection.cpp:339
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "PartSelection|"
+msgid "Select '%1'"
+msgstr "'%1' kiválasztása"
+
+#: libviews/partselection.cpp:344
+#, fuzzy
+#| msgid "Select All Parts"
+msgctxt "PartSelection|"
+msgid "Select All Parts"
+msgstr "Az összes rész kiválasztása"
+
+#: libviews/partselection.cpp:345
+#, fuzzy
+#| msgid "Visible Parts"
+msgctxt "PartSelection|"
+msgid "Visible Parts"
+msgstr "Látható részek"
+
+#: libviews/partselection.cpp:346
+#, fuzzy
+#| msgid "Hide Selected Parts"
+msgctxt "PartSelection|"
+msgid "Hide Selected Parts"
+msgstr "Kiválasztott részek elrejtése"
+
+#: libviews/partselection.cpp:347
+#, fuzzy
+#| msgid "Show Hidden Parts"
+msgctxt "PartSelection|"
+msgid "Show Hidden Parts"
+msgstr "Rejtett részek megjelenítése"
+
+#: libviews/partselection.cpp:361
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "PartSelection|"
+msgid "Go to '%1'"
+msgstr "'%1'-re ugrás"
+
+#: libviews/partselection.cpp:370
+#, fuzzy
+#| msgid "Visualization"
+msgctxt "PartSelection|"
+msgid "Visualization"
+msgstr "Vizualizáció"
+
+#: libviews/partselection.cpp:371
+#, fuzzy
+#| msgid "Partitioning Mode"
+msgctxt "PartSelection|"
+msgid "Partitioning Mode"
+msgstr "Particionáló mód"
+
+#: libviews/partselection.cpp:373
+#, fuzzy
+#| msgid "Zoom Function"
+msgctxt "PartSelection|"
+msgid "Zoom Function"
+msgstr "Zoom funkció"
+
+#: libviews/partselection.cpp:375
+#, fuzzy
+#| msgid "Show Direct Calls"
+msgctxt "PartSelection|"
+msgid "Show Direct Calls"
+msgstr "Közvetlen hívások megjelenítése"
+
+#: libviews/partselection.cpp:376
+#, fuzzy
+#| msgid "Increment Shown Call Levels"
+msgctxt "PartSelection|"
+msgid "Increment Shown Call Levels"
+msgstr "Hívás szintek inkrementális megjelenítése"
+
+#: libviews/partselection.cpp:377
+#, fuzzy
+#| msgid "Diagram Mode"
+msgctxt "PartSelection|"
+msgid "Diagram Mode"
+msgstr "Diagram mód"
+
+#: libviews/partselection.cpp:392
+#, fuzzy
+#| msgid "Draw Names"
+msgctxt "PartSelection|"
+msgid "Draw Names"
+msgstr "Rajz nevek"
+
+#: libviews/partselection.cpp:394
+#, fuzzy
+#| msgid "Draw Costs"
+msgctxt "PartSelection|"
+msgid "Draw Costs"
+msgstr "Rajzolási költségek"
+
+#: libviews/partselection.cpp:396
+#, fuzzy
+#| msgid "Ignore Proportions"
+msgctxt "PartSelection|"
+msgid "Ignore Proportions"
+msgstr "Arányok mellőzése"
+
+#: libviews/partselection.cpp:398
+#, fuzzy
+#| msgid "Allow Rotation"
+msgctxt "PartSelection|"
+msgid "Allow Rotation"
+msgstr "Forgatás engedélyezése"
+
+#: libviews/partselection.cpp:400
+#, fuzzy
+#| msgid "Draw Frames"
+msgctxt "PartSelection|"
+msgid "Draw Frames"
+msgstr "Rajzolási keretek"
+
+#: libviews/partselection.cpp:414
+#, fuzzy
+#| msgid "Hide Info"
+msgctxt "PartSelection|"
+msgid "Hide Info"
+msgstr "Információ elrejtése"
+
+#: libviews/partselection.cpp:414
+#, fuzzy
+#| msgid "Show Info"
+msgctxt "PartSelection|"
+msgid "Show Info"
+msgstr "Információ megjelenítése"
+
+#: libviews/partselection.cpp:562
+#, fuzzy
+#| msgid "(no trace loaded)"
+msgctxt "PartSelection|"
+msgid "(no trace loaded)"
+msgstr "(nincsen követés betöltve)"
+
+#: libviews/partview.cpp:37
+#, fuzzy
+#| msgid "Profile Part"
+msgctxt "PartView|"
+msgid "Profile Part"
+msgstr "Profil részlet"
+
+#: libviews/partview.cpp:38
+#, fuzzy
+#| msgid "Incl."
+msgctxt "PartView|"
+msgid "Incl."
+msgstr "Beleértve."
+
+#: libviews/partview.cpp:39
+#, fuzzy
+#| msgid "Self"
+msgctxt "PartView|"
+msgid "Self"
+msgstr "Saját maga"
+
+#: libviews/partview.cpp:40
+#, fuzzy
+#| msgid "Called"
+msgctxt "PartView|"
+msgid "Called"
+msgstr "Hívott"
+
+#: libviews/partview.cpp:41
+#, fuzzy
+#| msgid "Comment"
+msgctxt "PartView|"
+msgid "Comment"
+msgstr "Megjegyzés"
+
+#: libviews/partview.cpp:68
+#, fuzzy
+#| msgid ""
+#| "<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+#| "trace. For each part, the self/inclusive cost of the current selected "
+#| "function, spent in the part, is shown; percentage costs are always "
+#| "relative to the total cost <em>of the part</em> (not to the whole trace "
+#| "as in the Trace Part Overview). Also shown are the calls happening to/"
+#| "from the current function inside of the trace part.</p><p>By choosing one "
+#| "or more trace parts from the list, the costs shown all over KCachegrind "
+#| "will only be the ones spent in the selected part(s). If no list selection "
+#| "is shown, in fact all trace parts are selected implicitly.</p><p>This is "
+#| "a multi-selection list. You can select ranges by dragging the mouse or "
+#| "use SHIFT/CTRL modifiers. Selection/Deselection of trace parts can also "
+#| "be done by using the Trace Part Overview Dockable. This one also supports "
+#| "multiple selection.</p><p>Note that the list is hidden if only one trace "
+#| "part is loaded.</p>"
+msgctxt "PartView|"
+msgid ""
+"<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+"trace. For each part, the self/inclusive cost of the current selected "
+"function, spent in the part, is shown; percentage costs are always relative "
+"to the total cost <em>of the part</em> (not to the whole trace as in the "
+"Trace Part Overview). Also shown are the calls happening to/from the current "
+"function inside of the trace part.</p><p>By choosing one or more trace parts "
+"from the list, the costs shown all over KCachegrind will only be the ones "
+"spent in the selected part(s). If no list selection is shown, in fact all "
+"trace parts are selected implicitly.</p><p>This is a multi-selection list. "
+"You can select ranges by dragging the mouse or use SHIFT/CTRL modifiers. "
+"Selection/Deselection of trace parts can also be done by using the Trace "
+"Part Overview Dockable. This one also supports multiple selection.</"
+"p><p>Note that the list is hidden if only one trace part is loaded.</p>"
+msgstr ""
+"<b>A nyomvonaldarabok listája</b><p>Ebben a listában a betöltött nyomvonal "
+"darabjai láthatók. Mindegyik darabnál megjelenik a kiválasztott függvényre "
+"eső önálló és kumulatív költség. A százalékos költségek mindig relatívak a "
+"<em>darab teljes költségéhez</em> (nem az egész nyomvonal költségéhez, mint "
+"az áttekintő nézetben). Megjelennek továbbá a kiválasztott függvényre "
+"irányuló és abból kiinduló függvényhívások költségei (a darabon belül).</"
+"p><p>Ha kiválaszt néhány nyomvonaldarabot a listából, akkor a KCachegrindban "
+"megjelenő költségeknél csak a darabokra eső hányadok jelennek meg. Ha nem "
+"látható kijelölés, akkor implicit módon az összes nyomvonaldarab ki lesz "
+"jelölve.</p><p>Ez egy többszörös kiválasztású lista, több tartomány is "
+"kijelölhető az egér és a Shift/Ctrl segítségével. A kiválasztások módosítása "
+"a nyomvonalrész-áttekintő elem segítségével is történhet (ott is lehet "
+"többszörös kijelölést használni).</p><p>A lista el van rejtve, ha csak egy "
+"darabból áll a nyomvonal.</p>"
+
+#: libviews/sourceitem.cpp:141
+#, fuzzy, qt-format
+#| msgid "Jump %1 of %2 times to %3"
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to %3"
+msgstr "%3-ra ugrás %2 %1 alkalommal"
+
+#: libviews/sourceitem.cpp:146
+#, fuzzy, qt-format
+#| msgid "Jump %1 times to %2"
+msgctxt "QObject|"
+msgid "Jump %1 times to %2"
+msgstr "Ugrás %2-re %1 alkalommal"
+
+#: libviews/sourceview.cpp:51
+#, fuzzy
+#| msgid "#"
+msgctxt "SourceView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/sourceview.cpp:52
+#, fuzzy
+#| msgid "Cost"
+msgctxt "SourceView|"
+msgid "Cost"
+msgstr "Költség"
+
+#: libviews/sourceview.cpp:53
+#, fuzzy
+#| msgid "Cost 2"
+msgctxt "SourceView|"
+msgid "Cost 2"
+msgstr "Költség 2"
+
+#: libviews/sourceview.cpp:55
+#, fuzzy
+#| msgid "Source Line"
+msgctxt "SourceView|"
+msgid "Source"
+msgstr "Forrás sor"
+
+#: libviews/sourceview.cpp:83
+#, fuzzy
+#| msgid ""
+#| "<b>Annotated Source</b><p>The annotated source list shows the source "
+#| "lines of the current selected function together with (self) cost spent "
+#| "while executing the code of this source line. If there was a call in a "
+#| "source line, lines with details on the call happening are inserted into "
+#| "the source: the cost spent inside of the call, the number of calls "
+#| "happening, and the call destination.</p><p>Select a inserted call "
+#| "information line to make the destination function current.</p>"
+msgctxt "SourceView|"
+msgid ""
+"<b>Annotated Source</b><p>The annotated source list shows the source lines "
+"of the current selected function together with (self) cost spent while "
+"executing the code of this source line. If there was a call in a source "
+"line, lines with details on the call happening are inserted into the source: "
+"the cost spent inside of the call, the number of calls happening, and the "
+"call destination.</p><p>Select a inserted call information line to make the "
+"destination function current.</p>"
+msgstr ""
+"<b>Magyarázatos forrás</b><p>A magyarázatos forrás lista az aktuálisan "
+"kiválasztott funkciók forrás sorait jeleníti meg együtt (ön)költséggel ennek "
+"a forrás sor kódnak a végrehajtása közben. Ha volt egy hívás egy forrás "
+"sorban, a sorok a részletekkel együtt, amik a hívásnál történtek, be lesznek "
+"szúrva a forrásba: A költség, amit a híváson belsejében töltött, a hívások "
+"előfordulásának száma, és a hívás célja. Válasszon ki egy beszúrt hívási "
+"információs sort az aktuális cél funkciót elkészítéséhez.</p>"
+
+#: libviews/sourceview.cpp:110
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "SourceView|"
+msgid "Go to '%1'"
+msgstr "'%1'-re ugrás"
+
+#: libviews/sourceview.cpp:115
+#, fuzzy, qt-format
+#| msgid "Go to Line %1"
+msgctxt "SourceView|"
+msgid "Go to Line %1"
+msgstr "%1 sorra ugrás"
+
+#: libviews/sourceview.cpp:627
+#, fuzzy
+#| msgid "There is no cost of current selected type associated"
+msgctxt "SourceView|"
+msgid "There is no cost of current selected type associated"
+msgstr ""
+"Az aktuálisan kiválasztott típusnak, amely össze van kapcsolva, nincsen "
+"költsége"
+
+#: libviews/sourceview.cpp:629
+#, fuzzy
+#| msgid "with any source line of this function in file"
+msgctxt "SourceView|"
+msgid "with any source line of this function in file"
+msgstr "Ennek a függvénynek bármely forrás sorával a fájlban"
+
+#: libviews/sourceview.cpp:633
+#, fuzzy
+#| msgid "Thus, no annotated source can be shown."
+msgctxt "SourceView|"
+msgid "Thus, no annotated source can be shown."
+msgstr "Ezért, nincsen megjeleníthető magyarázatos forrás."
+
+#: libviews/sourceview.cpp:658
+#, fuzzy, qt-format
+#| msgid "--- Inlined from '%1' ---"
+msgctxt "SourceView|"
+msgid "--- From '%1' ---"
+msgstr "--- Helyben kifejtve innen '%1' ---"
+
+#: libviews/sourceview.cpp:663
+#, fuzzy, qt-format
+#| msgid "--- Inlined from '%1' ---"
+msgctxt "SourceView|"
+msgid "--- Inlined from '%1' ---"
+msgstr "--- Helyben kifejtve innen '%1' ---"
+
+#: libviews/sourceview.cpp:664
+#, fuzzy
+#| msgid "--- Inlined from unknown source ---"
+msgctxt "SourceView|"
+msgid "--- Inlined from unknown source ---"
+msgstr "--- Helyben kifejtve ismeretlen forrásból ---"
+
+#: libviews/sourceview.cpp:669
+#, fuzzy
+#| msgid "There is no source available for the following function:"
+msgctxt "SourceView|"
+msgid "There is no source available for the following function:"
+msgstr "Nincsen elérhető forrás a következő függvényre:"
+
+#: libviews/sourceview.cpp:674
+#, fuzzy
+#| msgid "This is because no debug information is present."
+msgctxt "SourceView|"
+msgid "This is because no debug information is present."
+msgstr "Ez azért van, mert nincsen pillanatnyilag debug információ."
+
+#: libviews/sourceview.cpp:676
+#, fuzzy
+#| msgid "Recompile source and redo the profile run."
+msgctxt "SourceView|"
+msgid "Recompile source and redo the profile run."
+msgstr "Forrás újrafordítása és a profil futtatásának megismétlése."
+
+#: libviews/sourceview.cpp:679
+#, fuzzy
+#| msgid "The function is located in this ELF object:"
+msgctxt "SourceView|"
+msgid "The function is located in this ELF object:"
+msgstr "A függvény, mely ebben az ELF objektumban helyezkedik el:"
+
+#: libviews/sourceview.cpp:687
+#, fuzzy
+#| msgid "This is because its source file cannot be found:"
+msgctxt "SourceView|"
+msgid "This is because its source file cannot be found:"
+msgstr "Ez azért van, mert a forrás fájlja nem található:"
+
+#: libviews/sourceview.cpp:691
+#, fuzzy
+#| msgid "Add the folder of this file to the source folder list."
+msgctxt "SourceView|"
+msgid "Add the folder of this file to the source folder list."
+msgstr "Ennek a fájlnak a mappájának a hozzáadása a forrás mappa listához."
+
+#: libviews/sourceview.cpp:693
+#, fuzzy
+#| msgid "The list can be found in the configuration dialog."
+msgctxt "SourceView|"
+msgid "The list can be found in the configuration dialog."
+msgstr "A lista a konfigurációs párbeszédben található."
+
+#: libviews/stackselection.cpp:36
+#, fuzzy
+#| msgid "Stack Selection"
+msgctxt "StackSelection|"
+msgid "Stack Selection"
+msgstr "Verem kiválasztás"
+
+#: libviews/stackselection.cpp:44
+#, fuzzy
+#| msgid "Cost"
+msgctxt "StackSelection|"
+msgid "Cost"
+msgstr "Költség"
+
+#: libviews/stackselection.cpp:45
+#, fuzzy
+#| msgid "Cost2"
+msgctxt "StackSelection|"
+msgid "Cost2"
+msgstr "Költség2"
+
+#: libviews/stackselection.cpp:46
+#, fuzzy
+#| msgid "Calls"
+msgctxt "StackSelection|"
+msgid "Calls"
+msgstr "Hívások"
+
+#: libviews/stackselection.cpp:47
+#, fuzzy
+#| msgid "Function"
+msgctxt "StackSelection|"
+msgid "Function"
+msgstr "Függvény"
+
+#: libviews/tabview.cpp:103
+#, fuzzy
+#| msgid "Move to Top"
+msgctxt "TabBar|"
+msgid "Move to Top"
+msgstr "Felülre mozgatás"
+
+#: libviews/tabview.cpp:104
+#, fuzzy
+#| msgctxt "Move to Top"
+#| msgid "Top"
+msgctxt "TabBar|Move to Top"
+msgid "Top"
+msgstr "Felső"
+
+#: libviews/tabview.cpp:107
+#, fuzzy
+#| msgid "Move to Right"
+msgctxt "TabBar|"
+msgid "Move to Right"
+msgstr "Jobbra mozgatás"
+
+#: libviews/tabview.cpp:108
+#, fuzzy
+#| msgctxt "Move to Right"
+#| msgid "Right"
+msgctxt "TabBar|Move to Right"
+msgid "Right"
+msgstr "Jobb"
+
+#: libviews/tabview.cpp:111
+#, fuzzy
+#| msgid "Move to Bottom"
+msgctxt "TabBar|"
+msgid "Move to Bottom"
+msgstr "Lentre mozgatás"
+
+#: libviews/tabview.cpp:112
+#, fuzzy
+#| msgctxt "Move to Bottom"
+#| msgid "Bottom"
+msgctxt "TabBar|Move to Bottom"
+msgid "Bottom"
+msgstr "Lent"
+
+#: libviews/tabview.cpp:115
+#, fuzzy
+#| msgid "Move to Bottom Left"
+msgctxt "TabBar|"
+msgid "Move to Bottom Left"
+msgstr "Bal alulra mozgatás"
+
+#: libviews/tabview.cpp:116
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "TabBar|Move to Bottom Left"
+msgid "Bottom Left"
+msgstr "Bal alsó"
+
+#: libviews/tabview.cpp:118
+#, fuzzy
+#| msgid "Move Area To"
+msgctxt "TabBar|"
+msgid "Move Area To"
+msgstr "Terület mozgatása"
+
+#: libviews/tabview.cpp:121
+#, fuzzy
+#| msgid "Hide This Tab"
+msgctxt "TabBar|"
+msgid "Hide This Tab"
+msgstr "Ezen lap elrejtése"
+
+#: libviews/tabview.cpp:122
+#, fuzzy
+#| msgid "Hide Area"
+msgctxt "TabBar|"
+msgid "Hide Area"
+msgstr "Terület elrejtése"
+
+#: libviews/tabview.cpp:131
+#, fuzzy
+#| msgctxt "Move to Top"
+#| msgid "Top"
+msgctxt "TabBar|Show on Top"
+msgid "Top"
+msgstr "Felső"
+
+#: libviews/tabview.cpp:132
+#, fuzzy
+#| msgctxt "Move to Right"
+#| msgid "Right"
+msgctxt "TabBar|Show on Right"
+msgid "Right"
+msgstr "Jobb"
+
+#: libviews/tabview.cpp:133
+#, fuzzy
+#| msgctxt "Move to Bottom"
+#| msgid "Bottom"
+msgctxt "TabBar|Show on Bottom"
+msgid "Bottom"
+msgstr "Lent"
+
+#: libviews/tabview.cpp:134
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "TabBar|Show on Bottom Left"
+msgid "Bottom Left"
+msgstr "Bal alsó"
+
+#: libviews/tabview.cpp:135
+#, fuzzy
+#| msgid "Show Hidden On"
+msgctxt "TabBar|"
+msgid "Show Hidden On"
+msgstr "Rejtettek megjelenítése"
+
+#: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
+#, fuzzy
+#| msgid "(No profile data file loaded)"
+msgctxt "TabView|"
+msgid "(No profile data file loaded)"
+msgstr "(Nincsen profil adat fájl betöltve)"
+
+#: libviews/tabview.cpp:370
+#, fuzzy
+#| msgid "Types"
+msgctxt "TabView|"
+msgid "Types"
+msgstr "Típusok"
+
+#: libviews/tabview.cpp:373
+#, fuzzy
+#| msgid "Callers"
+msgctxt "TabView|"
+msgid "Callers"
+msgstr "Hívók"
+
+#: libviews/tabview.cpp:374
+#, fuzzy
+#| msgid "All Callers"
+msgctxt "TabView|"
+msgid "All Callers"
+msgstr "Az összes hívó"
+
+#: libviews/tabview.cpp:375
+#, fuzzy
+#| msgid "Callee Map"
+msgctxt "TabView|"
+msgid "Callee Map"
+msgstr "Hívási térkép"
+
+#: libviews/tabview.cpp:378
+#, fuzzy
+#| msgid "Source Code"
+msgctxt "TabView|"
+msgid "Source Code"
+msgstr "Forráskód"
+
+#: libviews/tabview.cpp:380
+#, fuzzy
+#| msgid "Parts"
+msgctxt "TabView|"
+msgid "Parts"
+msgstr "Részek"
+
+#: libviews/tabview.cpp:381
+#, fuzzy
+#| msgid "Callees"
+msgctxt "TabView|"
+msgid "Callees"
+msgstr "Hívók"
+
+#: libviews/tabview.cpp:382
+#, fuzzy
+#| msgid "Call Graph"
+msgctxt "TabView|"
+msgid "Call Graph"
+msgstr "Hivási grafikon"
+
+#: libviews/tabview.cpp:385
+#, fuzzy
+#| msgid "All Callees"
+msgctxt "TabView|"
+msgid "All Callees"
+msgstr "Az összes hívó"
+
+#: libviews/tabview.cpp:386
+#, fuzzy
+#| msgid "Caller Map"
+msgctxt "TabView|"
+msgid "Caller Map"
+msgstr "Hívó térkép"
+
+#: libviews/tabview.cpp:389
+#, fuzzy
+#| msgid "Machine Code"
+msgctxt "TabView|"
+msgid "Machine Code"
+msgstr "Gépi kód"
+
+#: libviews/tabview.cpp:643
+msgctxt "TabView|"
+msgid ""
+"<b>Information Tabs</b><p>This widget shows information for the currently "
+"selected function in different tabs: <ul><li>The Costs tab shows a list of "
+"available event types and the inclusive and self-costs related to these "
+"types.</li><li>The Parts tab shows a list of trace parts if the trace "
+"consists of more than one part (otherwise, this tab is hidden). The cost of "
+"the selected function spent in the different parts together with the calls "
+"happening is shown.</li><li>The Call Lists tab shows direct callers and "
+"callees of the function in more detail.</li><li>The Coverage tab shows the "
+"same as the Call Lists tab, but also shows indirect callers and callees, not "
+"just direct ones.</li><li>The Call Graph tab shows a graphical visualization "
+"of the calls made by this function.</li><li>The Source Code tab presents "
+"annotated source code if debugging information and the source file are "
+"available.</li><li>The Machine Code tab presents annotated assembly "
+"instructions if profile information at instruction level is available.</li></"
+"ul>For more information, see the <em>What's This?</em> help of the "
+"corresponding tab widget.</p>"
+msgstr ""
+
+#: libviews/tabview.cpp:728
+#, fuzzy
+#| msgid "(No function selected)"
+msgctxt "TabView|"
+msgid "(No function selected)"
+msgstr "(Nincsen funkció kiválasztva)"
+
+#: libviews/traceitemview.cpp:67
+#, fuzzy
+#| msgid "No description available"
+msgctxt "QObject|"
+msgid "No description available"
+msgstr "Nincsen elérhető leírás"
+
+#: libviews/treemap.cpp:1334
+#, fuzzy, qt-format
+#| msgid "Text %1"
+msgctxt "TreeMapWidget|"
+msgid "Text %1"
+msgstr "%1 szöveg"
+
+#: libviews/treemap.cpp:2854
+#, fuzzy
+#| msgid "Recursive Bisection"
+msgctxt "TreeMapWidget|"
+msgid "Recursive Bisection"
+msgstr "Rekurzív felezés"
+
+#: libviews/treemap.cpp:2855
+#, fuzzy
+#| msgid "Columns"
+msgctxt "TreeMapWidget|"
+msgid "Columns"
+msgstr "Oszlopok"
+
+#: libviews/treemap.cpp:2856
+#, fuzzy
+#| msgid "Rows"
+msgctxt "TreeMapWidget|"
+msgid "Rows"
+msgstr "Sorok"
+
+#: libviews/treemap.cpp:2857
+#, fuzzy
+#| msgid "Always Best"
+msgctxt "TreeMapWidget|"
+msgid "Always Best"
+msgstr "Mindig a legjobbat"
+
+#: libviews/treemap.cpp:2858
+#, fuzzy
+#| msgid "Best"
+msgctxt "TreeMapWidget|"
+msgid "Best"
+msgstr "Legjobb"
+
+#: libviews/treemap.cpp:2859
+#, fuzzy
+#| msgid "Alternate (V)"
+msgctxt "TreeMapWidget|"
+msgid "Alternate (V)"
+msgstr "Alternatív (V)"
+
+#: libviews/treemap.cpp:2860
+#, fuzzy
+#| msgid "Alternate (H)"
+msgctxt "TreeMapWidget|"
+msgid "Alternate (H)"
+msgstr "Alternatív (H)"
+
+#: libviews/treemap.cpp:2861
+#, fuzzy
+#| msgid "Horizontal"
+msgctxt "TreeMapWidget|"
+msgid "Horizontal"
+msgstr "Horizontális"
+
+#: libviews/treemap.cpp:2862
+#, fuzzy
+#| msgid "Vertical"
+msgctxt "TreeMapWidget|"
+msgid "Vertical"
+msgstr "Vertikális"
+
+#, fuzzy
+#~| msgid "Export Graph As DOT file"
+#~ msgctxt "CallGraphView|"
+#~ msgid "Export Graph As DOT file"
+#~ msgstr "Grafikon exportálása DOT fájlként"
+
+#, fuzzy
+#~| msgid "Graphviz (*.dot)"
+#~ msgctxt "CallGraphView|"
+#~ msgid "Graphviz (*.dot)"
+#~ msgstr "Graphviz (*.dot)"
+
+#~ msgctxt "Move to Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Bal alsó"
+
+#~ msgctxt "Show on Top"
+#~ msgid "Top"
+#~ msgstr "Felső"
+
+#~ msgctxt "Show on Right"
+#~ msgid "Right"
+#~ msgstr "Jobb"
+
+#~ msgctxt "Show on Bottom"
+#~ msgid "Bottom"
+#~ msgstr "Alsó"
+
+#~ msgctxt "Show on Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Bal alsó"
+
+#~ msgid "Source (unknown)"
+#~ msgstr "Forrás (ismeretlen)"
+
+#~ msgid "(No Source)"
+#~ msgstr "(Nincsen forrás)"
+
+#~ msgid "Source ('%1')"
+#~ msgstr "Forrás ('%1')"
+
+#~ msgid " (Thread %1)"
+#~ msgstr " (Szál %1)"

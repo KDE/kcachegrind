@@ -1,0 +1,2908 @@
+# translation of kcachegrind.po to
+# Language AR translations for PACKAGE package.
+# Automatically generated, 2007.
+# Youssef Chahibi <chahibi@gmail.com>, 2007.
+# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcachegrind\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-12-29 02:36+0100\n"
+"PO-Revision-Date: 2022-01-19 22:27+0400\n"
+"Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
+"Language-Team: ar\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Lokalize 21.07.70\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "صفا الفليج"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "safa1996alfulaij@gmail.com"
+
+#: kcachegrind/configdlg.cpp:135 kcachegrind/configdlg.cpp:323
+#: kcachegrind/configdlg.cpp:342
+#, kde-format
+msgid "(always)"
+msgstr "(دائما)"
+
+#: kcachegrind/configdlg.cpp:349
+#, fuzzy, kde-format
+msgid "Choose Source Folder"
+msgstr "اختر المصدر مجلّد"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, ConfigDlgBase)
+#: kcachegrind/configdlgbase.ui:14
+#, kde-format
+msgid "Configuration"
+msgstr "الضّبط"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab1)
+#: kcachegrind/configdlgbase.ui:24
+#, kde-format
+msgid "General"
+msgstr "عامّ"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel5)
+#: kcachegrind/configdlgbase.ui:34
+#, fuzzy, kde-format
+msgid "Maximum number of items in lists:"
+msgstr "الأقصى رقم من عناصر بوصة قوائم:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel3)
+#: kcachegrind/configdlgbase.ui:44
+#, fuzzy, kde-format
+msgid "Truncate symbols in tooltips and context menus"
+msgstr "رموز بوصة و سياق القوائم"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2)
+#: kcachegrind/configdlgbase.ui:70
+#, fuzzy, kde-format
+msgid "when more than:"
+msgstr "مقطوع المزيد:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2_2)
+#: kcachegrind/configdlgbase.ui:80
+#, fuzzy, kde-format
+msgid "when longer than:"
+msgstr "مقطوع المزيد:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3)
+#: kcachegrind/configdlgbase.ui:90
+#, fuzzy, kde-format
+msgid "Precision of percentage values:"
+msgstr "الدقّة من:"
+
+#. i18n: ectx: property (toolTip), widget (QSpinBox, maxListEdit)
+#: kcachegrind/configdlgbase.ui:113
+#, fuzzy, kde-format
+msgid "The Maximum Number of List Items should be below 500."
+msgstr "الـ الأقصى الرقم من قائمة عناصر أسفل الـ السابق set قيمة مُستخدَم."
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1)
+#: kcachegrind/configdlgbase.ui:158
+#, fuzzy, kde-format
+msgid "Cost Item Colors"
+msgstr "التكلفة عنصر الألوان"
+
+#. i18n: ectx: property (text), widget (QCheckBox, fileCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, classCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, objectCheck)
+#: kcachegrind/configdlgbase.ui:185 kcachegrind/configdlgbase.ui:219
+#: kcachegrind/configdlgbase.ui:233
+#, kde-format
+msgid "Automatic"
+msgstr "آليّ"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4)
+#: kcachegrind/configdlgbase.ui:192
+#, kde-format
+msgid "Object:"
+msgstr "الكائن:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2_2)
+#: kcachegrind/configdlgbase.ui:202
+#, kde-format
+msgid "Class:"
+msgstr "الفئة:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
+#: kcachegrind/configdlgbase.ui:240
+#, kde-format
+msgid "File:"
+msgstr "الملف:"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/configdlgbase.ui:321
+#, kde-format
+msgid "Annotations"
+msgstr "الشروح"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3_2)
+#: kcachegrind/configdlgbase.ui:329
+#, fuzzy, kde-format
+msgid "Context lines in annotations:"
+msgstr "السياق سطور بوصة:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
+#: kcachegrind/configdlgbase.ui:350
+#, fuzzy, kde-format
+msgid "Source Folders"
+msgstr "المصدر المجلّدات"
+
+#. i18n: ectx: property (text), widget (QPushButton, addDirButton)
+#: kcachegrind/configdlgbase.ui:364
+#, kde-format
+msgid "Add"
+msgstr "أضف"
+
+#. i18n: ectx: property (text), widget (QPushButton, deleteDirButton)
+#: kcachegrind/configdlgbase.ui:371
+#, kde-format
+msgid "Delete"
+msgstr "احذف"
+
+#. i18n: ectx: property (text), widget (QTreeWidget, dirList)
+#: kcachegrind/configdlgbase.ui:409
+#, fuzzy, kde-format
+msgid "Object / Related Source Base"
+msgstr "كائن متعلق المصدر الأساس"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
+#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:289
+#: kcachegrind/toplevel.cpp:512
+#, fuzzy, kde-format
+msgid "Profile Dumps"
+msgstr "الملف الشخصي النفايات"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:24
+#, kde-format
+msgid "Target"
+msgstr "الهدف"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:46
+#, kde-format
+msgid "Time"
+msgstr "الوقت"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:57
+#, kde-format
+msgid "Path"
+msgstr "المسار"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab)
+#: kcachegrind/dumpselectionbase.ui:70
+#, kde-format
+msgid "Options"
+msgstr "خيارات"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: kcachegrind/dumpselectionbase.ui:87
+#, fuzzy, kde-format
+msgid "Target command:"
+msgstr "الهدف أمر:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: kcachegrind/dumpselectionbase.ui:100
+#, fuzzy, kde-format
+msgid "Profiler options:"
+msgstr "المحلّل خيارات:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:111
+#, kde-format
+msgid "Option"
+msgstr "الخيار"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:122 kcachegrind/dumpselectionbase.ui:650
+#, kde-format
+msgid "Value"
+msgstr "القيمة"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:133
+#, kde-format
+msgid "Trace"
+msgstr "الأثر"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:146 kcachegrind/dumpselectionbase.ui:730
+#, kde-format
+msgid "Jumps"
+msgstr "القفزات"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:160
+#, kde-format
+msgid "Instructions"
+msgstr "التعليمات"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:175 kcachegrind/dumpselectionbase.ui:745
+#, kde-format
+msgid "Events"
+msgstr "الأحداث"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:188
+#, kde-format
+msgid "Full Cache"
+msgstr "كامل الذّاكرة المؤقّتة"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:202
+#, kde-format
+msgid "Custom"
+msgstr "مخصّص"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:217
+#, kde-format
+msgid "Collect"
+msgstr "اجمع"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:230
+#, kde-format
+msgid "At Startup"
+msgstr "عند بدء التشغيل:"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:244
+#, kde-format
+msgid "While In"
+msgstr "عند الدخول"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:259
+#, kde-format
+msgid "Skip"
+msgstr "تخطّى"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:272
+#, kde-format
+msgid "PLT"
+msgstr ""
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:286 kcachegrind/dumpselectionbase.ui:898
+#, kde-format
+msgid "Function"
+msgstr "الدالة"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:301
+#, kde-format
+msgid "Dump Profile"
+msgstr "تفريغ التشكيلة"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:314
+#, fuzzy, kde-format
+msgid "Every BBs"
+msgstr "كل"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:328 kcachegrind/dumpselectionbase.ui:370
+#, kde-format
+msgid "On Entering"
+msgstr "عند الدخول"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:342
+#, kde-format
+msgid "On Leaving"
+msgstr "عند المغادرة"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:357
+#, fuzzy, kde-format
+msgid "Zero Events"
+msgstr "صفر أحداث"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:385
+#, kde-format
+msgid "Separate"
+msgstr "منفصل"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:398
+#, kde-format
+msgid "Threads"
+msgstr "الخطوط"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:412
+#, fuzzy, kde-format
+msgid "Recursions"
+msgstr "التَصنيف التَكراري"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:426
+#, fuzzy, kde-format
+msgid "Call Chain"
+msgstr "نداء السلسلة"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
+#: kcachegrind/dumpselectionbase.ui:452
+#, fuzzy, kde-format
+msgid "Custom profiler options:"
+msgstr "مخصص خيارات:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton2)
+#: kcachegrind/dumpselectionbase.ui:486
+#, kde-format
+msgid "Run New Profile"
+msgstr "شغّل تشكيلة جديدة"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/dumpselectionbase.ui:496
+#, fuzzy, kde-format
+msgid "Info"
+msgstr "معلومات"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: kcachegrind/dumpselectionbase.ui:505
+#, fuzzy, kde-format
+msgid "Dump reason:"
+msgstr "تفريغ:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: kcachegrind/dumpselectionbase.ui:518
+#, fuzzy, kde-format
+msgid "Event summary:"
+msgstr "حدث الملخص:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:529
+#, fuzzy, kde-format
+msgid "Name"
+msgstr "الاسم"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:540
+#, fuzzy, kde-format
+msgid "Sum"
+msgstr "مجموع"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: kcachegrind/dumpselectionbase.ui:554
+#, kde-format
+msgid "Miscellaneous:"
+msgstr "متنوّع:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6)
+#: kcachegrind/dumpselectionbase.ui:588
+#, fuzzy, kde-format
+msgid "Show"
+msgstr "أظهر"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton5)
+#: kcachegrind/dumpselectionbase.ui:595
+#, kde-format
+msgid "Compare"
+msgstr "قارن"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab3)
+#: kcachegrind/dumpselectionbase.ui:605
+#, kde-format
+msgid "State"
+msgstr "الحالة"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton1)
+#: kcachegrind/dumpselectionbase.ui:619
+#, kde-format
+msgid "Update"
+msgstr "حدّث"
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox1)
+#: kcachegrind/dumpselectionbase.ui:626
+#, fuzzy, kde-format
+msgid "Every [s]:"
+msgstr "كل s:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:639
+#, kde-format
+msgid "Counter"
+msgstr "العدّاد"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:661
+#, fuzzy, kde-format
+msgid "Dumps Done"
+msgstr "النفايات تم"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:675
+#, fuzzy, kde-format
+msgid "Is Collecting"
+msgstr "هو الجمع"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:689
+#, fuzzy, kde-format
+msgid "Executed"
+msgstr "منفّذ"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:702
+#, fuzzy, kde-format
+msgid "Basic Blocks"
+msgstr "أساسي القوالب"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:716
+#, fuzzy, kde-format
+msgid "Calls"
+msgstr "اتصال"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:758
+#, fuzzy, kde-format
+msgid "Ir"
+msgstr "IR----"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:773
+#, kde-format
+msgid "Distinct"
+msgstr "مميز"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:786
+#, fuzzy, kde-format
+msgid "ELF Objects"
+msgstr "كائنات"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:800
+#, kde-format
+msgid "Functions"
+msgstr "الدّوال"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:814
+#, fuzzy, kde-format
+msgid "Contexts"
+msgstr "السياقات"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: kcachegrind/dumpselectionbase.ui:845
+#, fuzzy, kde-format
+msgid "Stack trace:"
+msgstr "الكومة:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox2)
+#: kcachegrind/dumpselectionbase.ui:855
+#, fuzzy, kde-format
+msgid "Sync."
+msgstr "مزامنة"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:865
+#, fuzzy, kde-format
+msgid "#"
+msgstr "#"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:876
+#, fuzzy, kde-format
+msgid "Incl."
+msgstr "المصاحبة."
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:887
+#, fuzzy, kde-format
+msgid "Called"
+msgstr "مسمّى"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:909
+#, fuzzy, kde-format
+msgid "Location"
+msgstr "المكان"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton7)
+#: kcachegrind/dumpselectionbase.ui:928
+#, fuzzy, kde-format
+msgid "Start"
+msgstr "ابدأ"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6_2)
+#: kcachegrind/dumpselectionbase.ui:951
+#, kde-format
+msgid "Zero"
+msgstr "صفر"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton4)
+#: kcachegrind/dumpselectionbase.ui:958
+#, fuzzy, kde-format
+msgid "Dump"
+msgstr "تفريغ"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab4)
+#: kcachegrind/dumpselectionbase.ui:968
+#, kde-format
+msgid "Messages"
+msgstr "رسائل"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton9)
+#: kcachegrind/dumpselectionbase.ui:985
+#, fuzzy, kde-format
+msgid "Kill Run"
+msgstr "اقتل شغّل"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton8)
+#: kcachegrind/dumpselectionbase.ui:1008
+#, kde-format
+msgid "Clear"
+msgstr "امسح"
+
+#. i18n: ectx: Menu (file)
+#: kcachegrind/kcachegrindui.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&ملف"
+
+#. i18n: ectx: Menu (view)
+#: kcachegrind/kcachegrindui.rc:10
+#, kde-format
+msgid "&View"
+msgstr "&عرض"
+
+#. i18n: ectx: Menu (layouts)
+#: kcachegrind/kcachegrindui.rc:15
+#, kde-format
+msgid "&Layout"
+msgstr "التّ&صميم"
+
+#. i18n: ectx: Menu
+#: kcachegrind/kcachegrindui.rc:33
+#, kde-format
+msgid "Sidebars"
+msgstr "الأشرطة الجانبية"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kcachegrind/kcachegrindui.rc:42
+#, kde-format
+msgid "Main Toolbar"
+msgstr "شريط الأدوات الرئيسي"
+
+#. i18n: ectx: ToolBar (stateToolBar)
+#: kcachegrind/kcachegrindui.rc:54
+#, fuzzy, kde-format
+msgid "State Toolbar"
+msgstr "الحالة شريط الأدوات"
+
+#: kcachegrind/main.cpp:34
+#, fuzzy, kde-format
+msgid "KCachegrind"
+msgstr "KCachegrind"
+
+#: kcachegrind/main.cpp:36
+#, fuzzy, kde-format
+msgid "KDE Frontend for Callgrind/Cachegrind"
+msgstr "كدي لـ"
+
+#: kcachegrind/main.cpp:38
+#, kde-format
+msgid "(C) 2002 - 2016"
+msgstr "(C) 2002 - 2016"
+
+#: kcachegrind/main.cpp:40
+#, fuzzy, kde-format
+msgid "Josef Weidendorfer"
+msgstr "جوزيف"
+
+#: kcachegrind/main.cpp:41
+#, fuzzy, kde-format
+msgid "Author/Maintainer"
+msgstr "المؤلف/الراعي"
+
+#: kcachegrind/main.cpp:68
+#, fuzzy, kde-format
+msgid "Show information of this trace"
+msgstr "اعرض معلومات من"
+
+#: kcachegrind/main.cpp:68
+#, kde-format
+msgid "[trace...]"
+msgstr "[أثر...]"
+
+#: kcachegrind/toplevel.cpp:258 kcachegrind/toplevel.cpp:486
+#, fuzzy, kde-format
+msgid "Parts Overview"
+msgstr "الأجزاء الرؤية العامة"
+
+#: kcachegrind/toplevel.cpp:267
+#, fuzzy, kde-format
+msgid "Top Cost Call Stack"
+msgstr "أعلى التكلفة نداء الكومة"
+
+#: kcachegrind/toplevel.cpp:269
+#, fuzzy, kde-format
+msgid ""
+"<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most probable' "
+"call stack. It is built up by starting with the current selected function "
+"and adds the callers/callees with highest cost at the top and to bottom.</"
+"p><p>The <b>Cost</b> and <b>Calls</b> columns show the cost used for all "
+"calls from the function in the line above.</p>"
+msgstr ""
+"<b> الـ أعلى التكلفة نداء الكومة</b><p> هذا هو a نداء رصة\n"
+"رصّ itإيطالياهو هو أعلى أداء بدء مع الحالي مُنتقى الدالة و مع الأعلى عند "
+"الأعلى و إلى الأسفل</p><p> الـ<b> التكلفة</b> و<b> النداءات</b> أعمدة إظهار "
+"مُستخدَم لـ الكل من الدالة بوصة سطر أعلى</p>"
+
+#: kcachegrind/toplevel.cpp:283
+#, fuzzy, kde-format
+msgid "Flat Profile"
+msgstr "مسطح الملف الشخصي"
+
+#: kcachegrind/toplevel.cpp:296
+#, fuzzy, kde-format
+msgid ""
+"<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
+"loadable profile dumps in all subdirectories of: <ul><li>current working "
+"directory of KCachegrind, i.e. where it was started from, and </li><li>the "
+"default profile dump directory given in the configuration.</li></ul> The "
+"list is sorted according to the target command profiled in the corresponding "
+"dump.</p><p>On selecting a profile dump, information for it is shown in the "
+"bottom area of the dockable: <ul><li><b>Options</b> allows you to view the "
+"profiled command and profile options of this dump. By changing any item, a "
+"new (yet unexisting) profile template is created. Press <b>Run Profile</b> "
+"to start a profile run with these options in the background. </"
+"li><li><b>Info</b> gives detailed info on the selected dump like event cost "
+"summary and properties of the simulated cache. </li><li><b>State</b> is only "
+"available for current happening profiles runs. Press <b>Update</b> to see "
+"different counters of the run, and a stack trace of the current position in "
+"the program profiled. Check the <b>Every</b> option to let KCachegrind "
+"regularly poll these data. Check the <b>Sync</b> option to let the dockable "
+"activate the top function in the current loaded dump.</li></ul></p>"
+msgstr ""
+"<b> الملف الشخصي النفايات</b><p> هذا بوصة الأعلى جزء قائمة من قابل للتحميل "
+"التوصيف بوصة الكل من<ul><li> الحالي دليل من KCachegrind i e الإيطالية من و</"
+"li><li> افتراضي التوصيف تفريغ دليل بوصة تشكيل</li></ul> الـ قائمة هو مُفرز "
+"هدف أمر بوصة تفريغ</p><p> تشغيل a التوصيف تفريغ معلومات لـ الإيطالية هو بوصة "
+"الأسفل منطقة من<ul><li><b> خيارات</b> إلى اعرض أمر و التوصيف خيارات من تفريغ "
+"بواسطة أي منها عنصر a جديد التوصيف قالب هو ضغط<b> شغّل الملف الشخصي</b> إلى "
+"تشغيل تنفيذ مع خيارات بوصة الخلفية</li><li><b> معلومات</b> معلومات يعمل "
+"مُنتقى تفريغ مثل الحدث الملخص و خصائِص من ذاكرة مخبئة\n"
+"تخزين مؤقت\n"
+"مَخبأ</li><li><b> الحالة</b> هو متوفّر لـ الحالي توصيفات ضغط<b> تحديث</b> إلى "
+"مختلف من تنفيذ و a رصة\n"
+"رصّ من الحالي الموضع بوصة برنامج كِش<b> كل</b> خيار إلى KCachegrind إستطلاع "
+"الرأى البيانات كِش<b> المصاحبة</b> خيار إلى نشّط الأعلى الدالة بوصة الحالي تمَ "
+"التحميل تفريغ</li></ul></p>"
+
+#: kcachegrind/toplevel.cpp:367
+#, kde-format
+msgid "&Duplicate"
+msgstr "&كرّر"
+
+#: kcachegrind/toplevel.cpp:370
+#, fuzzy, kde-format
+msgid ""
+"<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
+msgstr ""
+"<b> مضاعفة الحالي التصميم</b><p> Make a نسخ من الحالي تخطيط\n"
+"نسق</p>"
+
+#: kcachegrind/toplevel.cpp:375
+#, kde-format
+msgid "&Remove"
+msgstr "أ&زل"
+
+#: kcachegrind/toplevel.cpp:377
+#, fuzzy, kde-format
+msgid ""
+"<b>Remove Current Layout</b><p>Delete current layout and make the previous "
+"active.</p>"
+msgstr ""
+"<b> احذف الحالي التصميم</b><p> احذف الحالي تخطيط\n"
+"نسق و make السابق نشط</p>"
+
+#: kcachegrind/toplevel.cpp:382
+#, fuzzy, kde-format
+msgid "&Go to Next"
+msgstr "إذهب إلى التالي"
+
+#: kcachegrind/toplevel.cpp:385
+#, fuzzy, kde-format
+msgid "Go to Next Layout"
+msgstr "إذهب إلى التالي التصميم"
+
+#: kcachegrind/toplevel.cpp:389
+#, fuzzy, kde-format
+msgid "&Go to Previous"
+msgstr "إذهب إلى السابق"
+
+#: kcachegrind/toplevel.cpp:392
+#, fuzzy, kde-format
+msgid "Go to Previous Layout"
+msgstr "إذهب إلى السابق التصميم"
+
+#: kcachegrind/toplevel.cpp:396
+#, fuzzy, kde-format
+msgid "&Restore to Default"
+msgstr "استعادة إلى افتراضي"
+
+#: kcachegrind/toplevel.cpp:398
+#, fuzzy, kde-format
+msgid "Restore Layouts to Default"
+msgstr "استعادة التصاميم إلى افتراضي"
+
+#: kcachegrind/toplevel.cpp:402
+#, fuzzy, kde-format
+msgid "&Save as Default"
+msgstr "إحفظ &كإفتراضي"
+
+#: kcachegrind/toplevel.cpp:404
+#, fuzzy, kde-format
+msgid "Save Layouts as Default"
+msgstr "احفظ التصاميم افتراضي"
+
+#: kcachegrind/toplevel.cpp:415
+#, fuzzy, kde-format
+msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
+msgstr "<b> جديد</b><p> افتح جديد فارغ KCachegrind نافذة</p>"
+
+#: kcachegrind/toplevel.cpp:419
+#, kde-format
+msgid "&Add..."
+msgstr "أ&ضف..."
+
+#: kcachegrind/toplevel.cpp:421
+#, fuzzy, kde-format
+msgid ""
+"<b>Add Profile Data</b><p>This opens an additional profile data file in the "
+"current window.</p>"
+msgstr ""
+"<b> إضافة الملف الشخصي البيانات</b><p> هذا التوصيف البيانات ملفّ بوصة الحالي "
+"نافذة</p>"
+
+#: kcachegrind/toplevel.cpp:427
+#, kde-format
+msgctxt "Reload a document"
+msgid "&Reload"
+msgstr "أ&عد التحميل"
+
+#: kcachegrind/toplevel.cpp:430
+#, fuzzy, kde-format
+msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
+msgstr "<b> أعد التحميل الملف الشخصي البيانات</b><p> هذا أي منها جديد</p>"
+
+#: kcachegrind/toplevel.cpp:435
+#, fuzzy, kde-format
+msgid "&Export Graph"
+msgstr "صدِّر رسم بياني"
+
+#: kcachegrind/toplevel.cpp:438
+#, fuzzy, kde-format
+msgid ""
+"<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
+"tools of the GraphViz package.</p>"
+msgstr "<b> صدِّر نداء رسم بياني</b><p> يولّد a ملفّ مع إمتداد نقطة لـ من حزمة</p>"
+
+#: kcachegrind/toplevel.cpp:446
+#, fuzzy, kde-format
+msgid "&Force Dump"
+msgstr "فرِض تفريغ"
+
+#: kcachegrind/toplevel.cpp:449
+#, fuzzy, kde-format
+msgid ""
+"<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
+"current directory. This action is checked while KCachegrind looks for the "
+"dump. If the dump is finished, it automatically reloads the current trace. "
+"If this is the one from the running Callgrind, the new created trace part "
+"will be loaded, too.</p><p>Force dump creates a file 'callgrind.cmd', and "
+"checks every second for its existence. A running Callgrind will detect this "
+"file, dump a trace part, and delete 'callgrind.cmd'. The deletion is "
+"detected by KCachegrind, and it does a Reload. If there is <em>no</em> "
+"Callgrind running, press 'Force Dump' again to cancel the dump request. This "
+"deletes 'callgrind.cmd' itself and stops polling for a new dump.</p><p>Note: "
+"A Callgrind run <em>only</em> detects existence of 'callgrind.cmd' when "
+"actively running a few milliseconds, i.e. <em>not</em> sleeping. Tip: For a "
+"profiled GUI program, you can awake Callgrind e.g. by resizing a window of "
+"the program.</p>"
+msgstr ""
+"<b> فرِض تفريغ</b><p> هذا a تفريغ لـ a التوصيف تنفيذ بوصة الحالي دليل هذا "
+"الأفعال هو مؤكّد بينما KCachegrind لـ تفريغ إذا تفريغ هو إنتهيت الإيطالية "
+"الحالي إذا هو من جاري التنفيذ جديد جزء تمَ التحميل</p><p> فرِض تفريغ a ملفّ و "
+"كل ثانية لـ A جاري التنفيذ كشف ملفّ تفريغ a جزء و حذف الـ حذف هو أداء "
+"KCachegrind و الإيطالية a أعد التحميل إذا s<em> لا</em> جاري التنفيذ ضغط فرِض "
+"تفريغ إلى إلغاء تفريغ طلب هذا نفسها و لـ a جديد تفريغ</p><p> ملاحظة A "
+"تنفيذ<em></em> من جاري التنفيذ a ملي ثانية i e<em> ليس</em> تلميحة لـ a "
+"الواجهة الرسومية برنامج e g أداء a نافذة من برنامج</p>"
+
+#: kcachegrind/toplevel.cpp:474
+#, fuzzy, kde-format
+msgid ""
+"<b>Open Profile Data</b><p>This opens a profile data file, with possible "
+"multiple parts</p>"
+msgstr ""
+"<b> افتح الملف الشخصي البيانات</b><p> هذا a التوصيف البيانات ملفّ مع متعدد</p>"
+
+#: kcachegrind/toplevel.cpp:489
+#, fuzzy, kde-format
+msgid "Show/Hide the Parts Overview Dockable"
+msgstr "اعرض إخفاء الأجزاء الرؤية العامة قابل للإرساء"
+
+#: kcachegrind/toplevel.cpp:494
+#, kde-format
+msgid "Call Stack"
+msgstr "نادِ الرّصة"
+
+#: kcachegrind/toplevel.cpp:497
+#, fuzzy, kde-format
+msgid "Show/Hide the Call Stack Dockable"
+msgstr "اعرض إخفاء نداء الكومة قابل للإرساء"
+
+#: kcachegrind/toplevel.cpp:502
+#, fuzzy, kde-format
+msgid "Function Profile"
+msgstr "الوظيفة الملف الشخصي"
+
+#: kcachegrind/toplevel.cpp:505
+#, fuzzy, kde-format
+msgid "Show/Hide the Function Profile Dockable"
+msgstr "اعرض إخفاء الوظيفة الملف الشخصي قابل للإرساء"
+
+#: kcachegrind/toplevel.cpp:513
+#, fuzzy, kde-format
+msgid "Show/Hide the Profile Dumps Dockable"
+msgstr "اعرض إخفاء الملف الشخصي النفايات قابل للإرساء"
+
+#: kcachegrind/toplevel.cpp:520
+#, kde-format
+msgid "Relative"
+msgstr "نسبيّ"
+
+#: kcachegrind/toplevel.cpp:522
+#, fuzzy, kde-format
+msgid "Show relative instead of absolute costs"
+msgstr "اعرض نسبي من مطلق"
+
+#: kcachegrind/toplevel.cpp:528
+#, fuzzy, kde-format
+msgid "Relative to Parent"
+msgstr "نسبة مئوية نسبي إلى أب"
+
+#: kcachegrind/toplevel.cpp:531
+#, fuzzy, kde-format
+msgid "Show percentage costs relative to parent"
+msgstr "اعرض نسبي إلى أب"
+
+#: kcachegrind/toplevel.cpp:535
+#, fuzzy, kde-format
+msgid ""
+"<b>Show percentage costs relative to parent</b><p>If this is switched off, "
+"percentage costs are always shown relative to the total cost of the profile "
+"part(s) that are currently browsed. By turning on this option, percentage "
+"cost of shown cost items will be relative to the parent cost item.</"
+"p><ul><table><tr><td><b>Cost Type</b></td><td><b>Parent Cost</b></td></"
+"tr><tr><td>Function Cumulative</td><td>Total</td></tr><tr><td>Function Self</"
+"td><td>Function Group (*) / Total</td></tr><tr><td>Call</td><td>Function "
+"Inclusive</td></tr><tr><td>Source Line</td><td>Function Inclusive</td></tr></"
+"table></ul><p>(*) Only if function grouping is switched on (e.g. ELF object "
+"grouping).</p>"
+msgstr ""
+"<b> اعرض نسبي إلى أب</b><p> إذا هو موقف دائماً نسبي إلى الكلى من التوصيف جزء "
+"s بواسطة يعمل خيار من عناصر نسبي إلى أب عنصر<ul><table><tr><td><b> التكلفة "
+"النوع</td><td><b> أب التكلفة</td></tr><tr><td> الوظيفة متراكم</td><td> "
+"المجموع</td></tr><tr><td> الوظيفة ذاته</td><td> الوظيفة المجموعة المجموع</"
+"td></tr><tr><td> نداء</td><td> الوظيفة متراكم</td></tr><tr><td> المصدر خط</"
+"td><td> الوظيفة متراكم</td></tr></table><p> فقط IF الدالة هو يعمل e g كائن."
+
+#: kcachegrind/toplevel.cpp:552
+#, kde-format
+msgid "Cycle Detection"
+msgstr "تحديد حلقي"
+
+#: kcachegrind/toplevel.cpp:555
+#, fuzzy, kde-format
+msgid ""
+"<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
+"drawing will show black areas when a recursive call is made instead of "
+"drawing the recursion ad infinitum. Note that the size of black areas often "
+"will be wrong, as inside recursive cycles the cost of calls cannot be "
+"determined; the error is small, however, for false cycles (see "
+"documentation).</p><p>The correct handling for cycles is to detect them and "
+"collapse all functions of a cycle into an artificial function, which is done "
+"when this option is selected. Unfortunately, with GUI applications, this "
+"often will lead to huge false cycles, making the analysis impossible; "
+"therefore, there is the option to switch this off.</p>"
+msgstr ""
+"<b> اكتشاف</b><p> إذا هو موقف إظهار أسود a نداء هو من معاودة ملاحظة حجم من "
+"أسود خطأ داخل من خطأ هو صغير لـ خاطئ توثيق<p> الـ صح لـ هو إلى كشف و قلّص "
+"الكل من a دورة a وهمي الدالة هو done خيار هو مُنتقى لسوء الحظ مع الواجهة "
+"الرسومية تطبيقات إلى خاطئ تحليل هو خيار إلى تحول موقف."
+
+#: kcachegrind/toplevel.cpp:571
+#, kde-format
+msgid "Shorten Templates"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:573
+#, kde-format
+msgid "Hide Template Parameters in C++ Symbols"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:574
+#, kde-format
+msgid ""
+"<b>Hide Template Parameters in C++ Symbols</b><p>If this is switched on, "
+"every symbol displayed will have any C++ template parameters hidden, just "
+"showing &lt;&gt; instead of a potentially nested template parameter.</"
+"p><p>In this mode, you can hover the mouse pointer over the activated symbol "
+"label to show a tooltip with the unabbreviated symbol.</p>"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:590
+#, kde-format
+msgid "&Up"
+msgstr "لأ&على"
+
+#: kcachegrind/toplevel.cpp:599
+#, fuzzy, kde-format
+msgid ""
+"<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
+"was visited, use that with highest cost.</p>"
+msgstr ""
+"<b> إذهب أعلى</b><p> إذهب إلى الأخير مُنتقى من الحالي الدالة إذا لا استخدام "
+"مع الأعلى</p>"
+
+#: kcachegrind/toplevel.cpp:616
+#, fuzzy, kde-format
+msgid "Go back in function selection history"
+msgstr "إذهب إلى الخلف بوصة الدالة منتقى تاريخ"
+
+#: kcachegrind/toplevel.cpp:630
+#, fuzzy, kde-format
+msgid "Go forward in function selection history"
+msgstr "إذهب أمام بوصة الدالة منتقى تاريخ"
+
+#: kcachegrind/toplevel.cpp:635 kcachegrind/toplevel.cpp:1512
+#, fuzzy, kde-format
+msgid "Primary Event Type"
+msgstr "أوّلي حدث النوع"
+
+#: kcachegrind/toplevel.cpp:636
+#, fuzzy, kde-format
+msgid "Select primary event type of costs"
+msgstr "انتقِ أوّلي الحدث نوع من"
+
+#: kcachegrind/toplevel.cpp:658 kcachegrind/toplevel.cpp:1517
+#, fuzzy, kde-format
+msgid "Secondary Event Type"
+msgstr "ثانوي حدث النوع"
+
+#: kcachegrind/toplevel.cpp:659
+#, fuzzy, kde-format
+msgid "Select secondary event type for cost e.g. shown in annotations"
+msgstr "انتقِ ثانوي الحدث نوع لـ e g بوصة"
+
+#: kcachegrind/toplevel.cpp:669
+#, kde-format
+msgid "Grouping"
+msgstr "يجمّع"
+
+#: kcachegrind/toplevel.cpp:671
+#, fuzzy, kde-format
+msgid "Select how functions are grouped into higher level cost items"
+msgstr "انتقِ مستوى عناصر"
+
+#: kcachegrind/toplevel.cpp:677
+#, kde-format
+msgid "(No Grouping)"
+msgstr "(بلا تجميع)"
+
+#: kcachegrind/toplevel.cpp:689
+#, kde-format
+msgid "Split"
+msgstr "اقسم"
+
+#: kcachegrind/toplevel.cpp:692
+#, fuzzy, kde-format
+msgid "Show two information panels"
+msgstr "اعرض إثنان معلومات"
+
+#: kcachegrind/toplevel.cpp:698
+#, kde-format
+msgid "Split Horizontal"
+msgstr "اقسم أف&قياً"
+
+#: kcachegrind/toplevel.cpp:701
+#, fuzzy, kde-format
+msgid "Change Split Orientation when main window is split."
+msgstr "غيّر تقسيم الاتجاه رئيسي نافذة هو انقسام."
+
+#: kcachegrind/toplevel.cpp:898
+#, fuzzy, kde-format
+msgid "Select Callgrind Profile Data"
+msgstr "انتقِ الملف الشخصي البيانات"
+
+#: kcachegrind/toplevel.cpp:900 kcachegrind/toplevel.cpp:968
+#, fuzzy, kde-format
+msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
+msgstr "خارج خارج الملف الشخصي البيانات n الكل ملفات"
+
+#: kcachegrind/toplevel.cpp:928 kcachegrind/toplevel.cpp:957
+#, kde-format
+msgid ""
+"Could not open the file \"%1\". Check it exists and you have enough "
+"permissions to read it."
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:966
+#, fuzzy, kde-format
+msgid "Add Callgrind Profile Data"
+msgstr "إضافة الملف الشخصي البيانات"
+
+#: kcachegrind/toplevel.cpp:1136 kcachegrind/toplevel.cpp:1465
+#, fuzzy, kde-format
+msgid "(Hidden)"
+msgstr "(مخفي)"
+
+#: kcachegrind/toplevel.cpp:1522
+#, kde-format
+msgid "Hide"
+msgstr "أخفِ"
+
+#: kcachegrind/toplevel.cpp:1564
+#, fuzzy, kde-format
+msgid "Show Absolute Cost"
+msgstr "اعرض مطلق :: حتمي :: خالص :: كامل :: مُطبق التكلفة"
+
+#: kcachegrind/toplevel.cpp:1567
+#, fuzzy, kde-format
+msgid "Show Relative Cost"
+msgstr "اعرض نسبي التكلفة"
+
+#: kcachegrind/toplevel.cpp:1599
+#, kde-format
+msgid "Go Back"
+msgstr "عُد"
+
+#: kcachegrind/toplevel.cpp:1600
+#, kde-format
+msgid "Go Forward"
+msgstr "تقدم"
+
+#: kcachegrind/toplevel.cpp:1601
+#, kde-format
+msgid "Go Up"
+msgstr "اذهب إلى الأعلى"
+
+#: kcachegrind/toplevel.cpp:1813
+#, fuzzy, kde-format
+msgid "Layout Count: %1"
+msgstr "التصميم العدد 1"
+
+#: kcachegrind/toplevel.cpp:1820
+#, fuzzy, kde-format
+msgid "No profile data file loaded."
+msgstr "لا التوصيف البيانات ملفّ تمَ التحميل."
+
+#: kcachegrind/toplevel.cpp:1829
+#, fuzzy, kde-format
+msgid "Total %1 Cost: %2"
+msgstr "تكلفة كلية"
+
+#: kcachegrind/toplevel.cpp:1841
+#, fuzzy, kde-format
+msgid "No event type selected"
+msgstr "لا الحدث نوع مُنتقى"
+
+#: kcachegrind/toplevel.cpp:2027
+#, kde-format
+msgid "Cannot determine receiver PID for dump request"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:2068
+#, kde-format
+msgid "Error running callgrind_control"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:2107 kcachegrind/toplevel.cpp:2144
+#: kcachegrind/toplevel.cpp:2181
+#, fuzzy, kde-format
+msgid "(No Stack)"
+msgstr "لا الكومة"
+
+#: kcachegrind/toplevel.cpp:2113
+#, fuzzy, kde-format
+msgid "(No next function)"
+msgstr "لا التالي الدالة"
+
+#: kcachegrind/toplevel.cpp:2150
+#, fuzzy, kde-format
+msgid "(No previous function)"
+msgstr "لا السابق الدالة"
+
+#: kcachegrind/toplevel.cpp:2186
+#, fuzzy, kde-format
+msgid "(No Function Up)"
+msgstr "لا الوظيفة أعلى"
+
+#: kcachegrind/toplevel.cpp:2318 kcachegrind/toplevel.cpp:2332
+#, kde-format
+msgid "Loading %1"
+msgstr "يحمل %1"
+
+#: kcachegrind/toplevel.cpp:2326
+#, kde-format
+msgid "Error loading %1: %2"
+msgstr "خطأ في أثناء تحميل  %1:‏ %2"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, fuzzy, kde-format
+msgid ""
+"<p>...that the <em>What's this...</em> help for every GUI widget\n"
+"in KCachegrind contains detailed usage information for this widget?\n"
+"It is highly recommend to read at least these help texts on first\n"
+"use. Request <em>What's this...</em> help by pressing\n"
+"Shift-F1 and clicking on the widget.</p>\n"
+msgstr ""
+"<p><em> ماذا s</em> مساعدة لـ كل الواجهة الرسومية KCachegrind يحتوي استعمال "
+"معلومات لـ هو إلى قراءة عند مساعدة يعمل الأوّل الطلب<em> ماذا s</em> مساعدة "
+"أداء F1 و يعمل</p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:12
+#, fuzzy, kde-format
+msgid ""
+"<p>...that you can get profile information at instruction level\n"
+"with Calltree when you provide the option <em>--dump-instr=yes</em>?\n"
+"Use the Assembler View for the instruction annotations.\n"
+"</p>\n"
+msgstr ""
+"<p> get التوصيف معلومات عند تعليمة مستوى توفير خيار<em> تفريغ نعم</em> "
+"الجامع عرض لـ تعليمة\n"
+"</p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:21
+#, fuzzy, kde-format
+msgid ""
+"<p>...that you can use Alt-Left/Right keys of your keyboard to go\n"
+"back/forward in the active object history ?</p>\n"
+msgstr ""
+"<p> استخدام Alt يسار يمين من لوحة مفاتيح إلى اذهب أمام بوصة نشط كائن تاريخ</"
+"p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, fuzzy, kde-format
+msgid ""
+"<p>...that you can navigate in the Callee/Caller Map View using\n"
+"arrow keys? Use Left/Right to change to siblings of the current\n"
+"item; use Up/Down to go one nesting level up/down. To select\n"
+"the current item, press Space, and to activate it, press Return.\n"
+"</p>\n"
+msgstr ""
+"<p> بوصة العملية التي يتم الأتصال بها الشخص المتّصل الخريطة عرض إستعمل يسار "
+"يمين إلى تغيير إلى أخوات من الحالي استخدام أعلى أسفل إلى اذهب مستوى أعلى "
+"أسفل إلى تحديد الحالي عنصر ضغط فضائي و إلى نشّط الإيطالية ضغط Return\n"
+"</p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:38
+#, fuzzy, kde-format
+msgid ""
+"<p>...that you can navigate in the Call Graph View using\n"
+"arrow keys? Use Up/Down to go one calling level up/down, alternating\n"
+"between calls and functions. Use Left/Right to change to siblings of a "
+"current\n"
+"selected call. To activate the current item, press Return.\n"
+"</p>\n"
+msgstr ""
+"<p> بوصة نداء رسم بياني عرض إستعمل أعلى أسفل إلى اذهب مستوى أعلى أسفل متناوب "
+"و إستعمل يسار يمين إلى تغيير إلى أخوات من a الحالي نداء إلى نشّط الحالي عنصر "
+"ضغط Return\n"
+"</p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:48
+#, fuzzy, kde-format
+msgid ""
+"<p>...that you can rapidly locate a function by entering part of its\n"
+"name (case-insensitive) into the edit line of the toolbar\n"
+"and hit return?</p>\n"
+msgstr "<p> a الدالة أداء جزء من حالة حرّر سطر من شريط الأدوات عودة</p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:56
+#, fuzzy, kde-format
+msgid ""
+"<p>...that you can assign custom colors to \n"
+"ELF objects/C++ Classes/Source Files for graph coloring\n"
+"in <em>Settings->Configure KCachegrind...</em>?</p>\n"
+msgstr ""
+"<p> تعيين مخصص ألوان إلى C الأصناف المصدر ملفات لـ مبيان<em> إعدادات اضبط "
+"KCachegrind</em></p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:64
+#, fuzzy, kde-format
+msgid ""
+"<p>...that you can see if debug info is available for a selected \n"
+"function by looking at the location label in the Info tab or\n"
+"the source listing header in the source tab?</p>\n"
+"<p>There must be the name of the source file (with extension).\n"
+"If KCachegrind still does not show the source, make sure that you\n"
+"have added the directory of the source file to the\n"
+"<em>Source Directories</em> list in the configuration.\n"
+msgstr ""
+"<p> IF يصحح\n"
+"تنقيح معلومات هو متوفّر لـ a مُنتقى أداء عند موقع شارة بوصة معلومات لسان أو "
+"مصدر عرض عنوان رأسي بوصة مصدر لسان</p>\n"
+"<p> هناك الاسم من مصدر ملفّ مع إمتداد KCachegrind t إظهار مصدر make دليل من "
+"مصدر ملفّ إلى\n"
+"<em> المصدر الأدلة</em> قائمة بوصة تشكيل n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:76
+#, fuzzy, kde-format
+msgid ""
+"<p>...that you can configure whether KCachgrind should\n"
+"show absolute event counts or relative ones (percentage display)?</p>\n"
+msgstr "<p> أَعِّد مطلق الحدث أو نسبي عرض</p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:83
+#, fuzzy, kde-format
+msgid ""
+"<p>...that you can configure the maximum number of items\n"
+"for all function lists in KCachegrind? Limiting the number\n"
+"of items is done to get a fast reacting GUI. The last item in\n"
+"the list will show you the number of skipped functions, together\n"
+"with a cost condition for these skipped functions.</p>\n"
+"<p>To activate a function with small costs, search for it and select\n"
+"it in the flat profile. Selecting functions with small cost will\n"
+"temporarily add them to the flat profile list.</p>\n"
+msgstr ""
+"<p> أَعِّد الأقصى رقم من عناصر الكل الدالة قوائم بوصة KCachegrind التحديد رقم "
+"عناصر هو done إلى get a سريع الواجهة الرسومية الـ الأخير عنصر بوصة قائمة "
+"إظهار رقم من a شرط لـ</p>\n"
+"<p> إلى نشّط a الدالة مع صغير ابحث لـ الإيطالية و تحديد بوصة مسطح التوصيف "
+"الإختيار مع صغير اضف إلى مسطح التوصيف قائمة</p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, fuzzy, kde-format
+msgid ""
+"<p>...that the Coverage tab - in contrast to the Call Lists tab -\n"
+"shows <em>all</em> functions that are calling the selected function\n"
+"(upper part) / are called by the selected function (bottom part),\n"
+"no matter how many function are between them on the stack?</p>\n"
+"<p>Examples:</p>\n"
+"<p>An entry in the upper list for function foo1() with a value of 50%\n"
+"with function bar() selected means that 50% of all the cost of function\n"
+"bar() happened while called from function foo1().</p>\n"
+"<p>An entry in the bottom list for function foo2() with a value of 50%\n"
+"with function bar() selected means that 50% of all the cost of function\n"
+"bar() happened while calling foo2() from bar().</p>\n"
+msgstr ""
+"<p> التغطية لسان بوصة تباين إلى نداء القوائم لسان<em> الكل</em> مُنتقى الدالة "
+"n جزء أداء مُنتقى الدالة الأسفل جزء الدالة بين يعمل رصة\n"
+"رصّ</p>\n"
+"<p> أمثلة</p>\n"
+"<p> أداة تعريف خانة بوصة قائمة لـ الدالة مع a قيمة من الدالة شريط مُنتقى من "
+"الكل من الدالة بينما من الدالة</p>\n"
+"<p> أداة تعريف خانة بوصة الأسفل قائمة لـ الدالة مع a قيمة من الدالة شريط "
+"مُنتقى من الكل من الدالة بينما من شريط</p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:112
+#, fuzzy, kde-format
+msgid ""
+"<p>...that waiting for the tool tip inside of a tree map\n"
+"shows the list of names of the nested rectangles the mouse\n"
+"pointer is over?</p>\n"
+"<p>Items from this list can be selected by pressing the right\n"
+"mouse button.</p>\n"
+msgstr ""
+"<p> يجري الإنتظار... لـ أداة تلميحة داخل من a شجرة خريطة قائمة من من الماوس "
+"هو</p>\n"
+"<p> عناصر من قائمة مُنتقى أداء يمين زر</p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:122
+#, fuzzy, kde-format
+msgid ""
+"<p>...that you can constrain the cost counts shown to only a\n"
+"few parts of the whole trace by selecting these parts in the\n"
+"\"Trace Selection\" Dockable?</p>\n"
+"<p>To generate multiple parts in a profiling run with\n"
+"cachegrind, use e.g. option --cachedumps=xxx for parts\n"
+"of a length of xxx basic blocks (A basic block is a run\n"
+"of not-branching assembler statements inside of your program\n"
+"code).</p>\n"
+msgstr ""
+"<p> إلى a من أداء بوصة n تعقّب التحديد قابل للإرساء</p>\n"
+"<p> إلى توليد متعدد بوصة a تنفيذ مع استخدام e g خيار لـ a الطول من صناديق A "
+"مربع هو a تنفيذ ليس داخل من برنامج</p> n"
+
+#, fuzzy
+#~ msgid "&OK"
+#~ msgstr "&موافق"
+
+#, fuzzy
+#~ msgid "&Cancel"
+#~ msgstr "إل&غاء"
+
+#, fuzzy
+#~ msgid "Source Files"
+#~ msgstr "ملفات المشروع"
+
+#, fuzzy
+#~ msgid "C++ Classes"
+#~ msgstr "C الأصناف"
+
+#, fuzzy
+#~ msgid "Function (no Grouping)"
+#~ msgstr "الوظيفة لا التجميع"
+
+#, fuzzy
+#~ msgid "KCachegrind Configuration"
+#~ msgstr "KCachegrind إعدادات"
+
+#, fuzzy
+#~ msgid "Active call to '%1'"
+#~ msgstr "نشط نداء إلى"
+
+#, fuzzy
+#~ msgid "%1 call to '%2'"
+#~ msgid_plural "%1 calls to '%2'"
+#~ msgstr[0] "نداء إلى"
+#~ msgstr[1] "نداء إلى"
+#~ msgstr[2] ""
+#~ msgstr[3] ""
+#~ msgstr[4] ""
+#~ msgstr[5] ""
+
+#, fuzzy
+#~ msgid "Jump %1 of %2 times to 0x%3"
+#~ msgstr "إنتقلالقفزة من الوقت إلى 3"
+
+#, fuzzy
+#~ msgid "Jump %1 times to 0x%2"
+#~ msgstr "إنتقلالقفزة الوقت إلى 2"
+
+#, fuzzy
+#~ msgid "(cycle)"
+#~ msgstr "دورة"
+
+#, fuzzy
+#~ msgid "Abstract Item"
+#~ msgstr "الملخص عنصر"
+
+#, fuzzy
+#~ msgid "Cost Item"
+#~ msgstr "التكلفة عنصر"
+
+#, fuzzy
+#~ msgid "Part Source Line"
+#~ msgstr "جزءالجزء المصدر خط"
+
+#, fuzzy
+#~ msgid "Source Line"
+#~ msgstr "سطر المصدر"
+
+#, fuzzy
+#~ msgid "Part Line Call"
+#~ msgstr "جزءالجزء خط نداء"
+
+#, fuzzy
+#~ msgid "Line Call"
+#~ msgstr "خط نداء"
+
+#, fuzzy
+#~ msgid "Part Jump"
+#~ msgstr "جزءالجزء إنتقلالقفزة"
+
+#, fuzzy
+#~ msgid "Jump"
+#~ msgstr "إنتقلالقفزة"
+
+#, fuzzy
+#~ msgid "Part Instruction"
+#~ msgstr "جزءالجزء الأمر"
+
+#, fuzzy
+#~ msgid "Instruction"
+#~ msgstr "الأمر"
+
+#, fuzzy
+#~ msgid "Part Instruction Jump"
+#~ msgstr "جزءالجزء الأمر إنتقلالقفزة"
+
+#, fuzzy
+#~ msgid "Instruction Jump"
+#~ msgstr "الأمر إنتقلالقفزة"
+
+#, fuzzy
+#~ msgid "Part Instruction Call"
+#~ msgstr "جزءالجزء الأمر نداء"
+
+#, fuzzy
+#~ msgid "Instruction Call"
+#~ msgstr "الأمر نداء"
+
+#, fuzzy
+#~ msgid "Part Call"
+#~ msgstr "جزءالجزء نداء"
+
+#, fuzzy
+#~ msgid "Call"
+#~ msgstr "نداء"
+
+#, fuzzy
+#~ msgid "Part Function"
+#~ msgstr "جزءالجزء الوظيفة"
+
+#, fuzzy
+#~ msgid "Function Source File"
+#~ msgstr "الوظيفة المصدر ملف"
+
+#, fuzzy
+#~ msgid "Function Cycle"
+#~ msgstr "الوظيفة دَوْرة"
+
+#, fuzzy
+#~ msgid "Part Class"
+#~ msgstr "جزءالجزء الفئة"
+
+#, fuzzy
+#~ msgid "Class"
+#~ msgstr "الفئة"
+
+#, fuzzy
+#~ msgid "Part Source File"
+#~ msgstr "جزءالجزء المصدر ملف"
+
+#, fuzzy
+#~ msgid "Source File"
+#~ msgstr "ملف المصدر"
+
+#, fuzzy
+#~ msgid "Part ELF Object"
+#~ msgstr "جزءالجزء كائن"
+
+#, fuzzy
+#~ msgid "ELF Object"
+#~ msgstr "كائن"
+
+#, fuzzy
+#~ msgid "Profile Part"
+#~ msgstr "الملف الشخصي جزءالجزء"
+
+#, fuzzy
+#~ msgid "Program Trace"
+#~ msgstr "البرنامج تعقّب"
+
+#, fuzzy
+#~ msgid "%1 from %2"
+#~ msgstr "من 2"
+
+#, fuzzy
+#~ msgid "(unknown)"
+#~ msgstr "(مجهول)"
+
+#, fuzzy
+#~ msgid "(no caller)"
+#~ msgstr "لا"
+
+#, fuzzy
+#~ msgid "%1 via %2"
+#~ msgstr "2"
+
+#, fuzzy
+#~ msgid "(no callee)"
+#~ msgstr "لا منادى"
+
+#, fuzzy
+#~ msgid "(not found)"
+#~ msgstr "(غير موجود)"
+
+#, fuzzy
+#~ msgid "Recalculating Function Cycles..."
+#~ msgstr "المراجعة الوظيفة الدراجات."
+
+#, fuzzy
+#~ msgctxt "A thing's name"
+#~ msgid "Name"
+#~ msgstr "الاسم"
+
+#, fuzzy
+#~ msgid "Cost"
+#~ msgstr "التكلفة"
+
+#, fuzzy
+#~ msgid "Profile Part Overview: Current is '%1'"
+#~ msgstr "الملف الشخصي جزءالجزء الرؤية العامة الحالي هو"
+
+#, fuzzy
+#~ msgid "Deselect '%1'"
+#~ msgstr "انتقِ"
+
+#, fuzzy
+#~ msgid "Select '%1'"
+#~ msgstr "انتقِ"
+
+#, fuzzy
+#~ msgid "Select All Parts"
+#~ msgstr "انتقِ الكل الأجزاء"
+
+#, fuzzy
+#~ msgid "Visible Parts"
+#~ msgstr "مرئي الأجزاء"
+
+#, fuzzy
+#~ msgid "Hide Selected Parts"
+#~ msgstr "إخفاء مختار الأجزاء"
+
+#, fuzzy
+#~ msgid "Unhide Hidden Parts"
+#~ msgstr "غير جلد مخفي الأجزاء"
+
+#, fuzzy
+#~ msgid "Go to '%1'"
+#~ msgstr "إذهب إلى"
+
+#, fuzzy
+#~ msgid "Visualization"
+#~ msgstr "مجموعات مرئية"
+
+#, fuzzy
+#~ msgid "Partitioning Mode"
+#~ msgstr "التّجزئة الوضع"
+
+#, fuzzy
+#~ msgid "Diagram Mode"
+#~ msgstr "التخطيط الوضع"
+
+#, fuzzy
+#~ msgid "Zoom Function"
+#~ msgstr "تكبير الوظيفة"
+
+#, fuzzy
+#~ msgid "Show Direct Calls"
+#~ msgstr "اعرض مباشر النداءات"
+
+#, fuzzy
+#~ msgid "Increment Shown Call Levels"
+#~ msgstr "التزايد ظاهرة نداء المستويات"
+
+#, fuzzy
+#~ msgid "Draw Names"
+#~ msgstr "رسم الأسماء"
+
+#, fuzzy
+#~ msgid "Draw Costs"
+#~ msgstr "رسم تكلفة"
+
+#, fuzzy
+#~ msgid "Ignore Proportions"
+#~ msgstr "تجاهل الأبعاد"
+
+#, fuzzy
+#~ msgid "Draw Frames"
+#~ msgstr "رسم الإطارات"
+
+#, fuzzy
+#~ msgid "Allow Rotation"
+#~ msgstr "اسمح بالدوران"
+
+#, fuzzy
+#~ msgid "Hide Info"
+#~ msgstr "إخفاء معلومات"
+
+#, fuzzy
+#~ msgid "Show Info"
+#~ msgstr "اعرض معلومات"
+
+#, fuzzy
+#~ msgid "(no trace loaded)"
+#~ msgstr "لا تمَ التحميل"
+
+#, fuzzy
+#~ msgid "Jump %1 of %2 times to %3"
+#~ msgstr "إنتقلالقفزة من الوقت إلى 3"
+
+#, fuzzy
+#~ msgid "Jump %1 times to %2"
+#~ msgstr "إنتقلالقفزة الوقت إلى 2"
+
+#, fuzzy
+#~ msgid "(%1 item skipped)"
+#~ msgid_plural "(%1 items skipped)"
+#~ msgstr[0] "عنصر"
+#~ msgstr[1] "عنصر"
+#~ msgstr[2] ""
+#~ msgstr[3] ""
+#~ msgstr[4] ""
+#~ msgstr[5] ""
+
+#, fuzzy
+#~ msgid "No description available"
+#~ msgstr "لا وصف متوفر"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+#~ "there are several profile data files from one profile run. The Trace Part "
+#~ "Overview dockable shows these, horizontally ordered in execution time; "
+#~ "the rectangle sizes are proportional to the total cost spent in the "
+#~ "parts. You can select one or several parts to constrain all costs shown "
+#~ "to these parts only.</p><p>The parts are further subdivided: there is a "
+#~ "partitioning and an callee split mode: <ul><li>Partitioning: You see the "
+#~ "partitioning into groups for a trace part, according to the group type "
+#~ "selected. E.g. if ELF object groups are selected, you see colored "
+#~ "rectangles for each used ELF object (shared library or executable), sized "
+#~ "according to the cost spent therein.</li><li>Callee: A rectangle showing "
+#~ "the inclusive cost of the current selected function in the trace part is "
+#~ "shown. This is split up into smaller rectangles to show the costs of its "
+#~ "callees.</li></ul></p>"
+#~ msgstr ""
+#~ "<b> الـ الأجزاء الرؤية العامة</b><p> A من متعدد التوصيف البيانات ملفات من "
+#~ "التوصيف تنفيذ الـ تعقّب جزءالجزء الرؤية العامة أفقياً بوصة وقت متناسب إلى "
+#~ "الكلى بوصة أنت تحديد أو إلى الكل إلى</p><p> الـ هو a و منادى انقسام "
+#~ "نمط<ul><li> التّجزئة أنت لـ a جزء إلى المجموعة نوع مُنتقى E g IF كائن مُنتقى "
+#~ "لـ مُستخدَم كائن مكتبة أو تنفيذي إلى</li><li> العملية التي يتم الأتصال بها "
+#~ "A من الحالي مُنتقى الدالة بوصة جزء هو هذا هو انقسام أعلى إلى إظهار من</"
+#~ "li></ul></p>"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>The Flat Profile</b><p>The flat profile contains a group and a "
+#~ "function selection list. The group list contains all groups where costs "
+#~ "are spent in, depending on the chosen group type. The group list is "
+#~ "hidden when group type 'Function' is selected.</p><p>The function list "
+#~ "contains the functions of the selected group (or all for 'Function' group "
+#~ "type), ordered by the costs spent therein. Functions with costs less than "
+#~ "1% are hidden on default.</p>"
+#~ msgstr ""
+#~ "<b> الـ مسطح الملف الشخصي</b><p> الـ مسطح التوصيف يحتوي a المجموعة و a "
+#~ "الدالة منتقى قائمة الـ المجموعة قائمة يحتوي الكل بوصة يعمل المجموعة نوع "
+#~ "الـ المجموعة قائمة هو مخفي المجموعة نوع الوظيفة هو مُنتقى</p><p> الـ "
+#~ "الدالة قائمة يحتوي من مُنتقى المجموعة أو الكل لـ الوظيفة المجموعة نوع أداء "
+#~ "دالات مع مخفي يعمل افتراضي</p>"
+
+#, fuzzy
+#~ msgid "Show Relative Costs"
+#~ msgstr "اعرض نسبي تكلفة"
+
+#, fuzzy
+#~ msgid "Show Absolute Costs"
+#~ msgstr "اعرض مطلق :: حتمي :: خالص :: كامل :: مُطبق تكلفة"
+
+#, fuzzy
+#~ msgid "Skip Cycle Detection"
+#~ msgstr "تخطّي دَوْرة الكشف"
+
+#, fuzzy
+#~ msgid "Cost 2"
+#~ msgstr "التكلفة 2"
+
+#, fuzzy
+#~ msgid "Hex"
+#~ msgstr "ست عشري"
+
+#, fuzzy
+#~ msgid "Assembler"
+#~ msgstr "الجامع"
+
+#, fuzzy
+#~ msgid "Source Position"
+#~ msgstr "المصدر الموضع"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>Annotated Assembler</b><p>The annotated assembler list shows the "
+#~ "machine code instructions of the current selected function together with "
+#~ "(self) cost spent while executing an instruction. If this is a call "
+#~ "instruction, lines with details on the call happening are inserted into "
+#~ "the source: the cost spent inside of the call, the number of calls "
+#~ "happening, and the call destination.</p><p>The disassembler output shown "
+#~ "is generated with the 'objdump' utility from the 'binutils' package.</"
+#~ "p><p>Select a line with call information to make the destination function "
+#~ "of this call current.</p>"
+#~ msgstr ""
+#~ "<b> علّق الجامع</b><p> الـ قائمة آلة رمز من الحالي مُنتقى الدالة مع الشيء "
+#~ "بينما تعليمة إذا هو a نداء تعليمة سطور مع تفاصيل يعمل نداء مصدر داخل من "
+#~ "نداء رقم من و نداء مقصد</p><p> الـ مخرجات هو مع وسيلة من حزمة</p><p> انتقِ "
+#~ "a سطر مع نداء معلومات إلى make مقصد الدالة من نداء الحالي</p>"
+
+#, fuzzy
+#~ msgid "Go to Address %1"
+#~ msgstr "إذهب إلى العنوان 1"
+
+#, fuzzy
+#~ msgid "Hex Code"
+#~ msgstr "ست عشري الرّمز"
+
+#, fuzzy
+#~ msgid "There is no instruction info in the profile data file."
+#~ msgstr "هناك هو لا تعليمة معلومات بوصة التوصيف البيانات ملفّ."
+
+#, fuzzy
+#~ msgid "For the Valgrind Calltree Skin, rerun with option"
+#~ msgstr "لـ Valgrind الجلد مع خيار"
+
+#, fuzzy
+#~ msgid "      --dump-instr=yes"
+#~ msgstr "تفريغ نعم"
+
+#, fuzzy
+#~ msgid "To see (conditional) jumps, additionally specify"
+#~ msgstr "إلى تحديد"
+
+#, fuzzy
+#~ msgid "      --trace-jump=yes"
+#~ msgstr "قفز :: تجاوز نعم"
+
+#, fuzzy
+#~ msgid "There is an error trying to execute the command"
+#~ msgstr "هناك هو خطأ إلى نفِّذ أمر"
+
+#, fuzzy
+#~ msgid "Check that you have installed 'objdump'."
+#~ msgstr "كِش مُثبّتة."
+
+#, fuzzy
+#~ msgid "This utility can be found in the 'binutils' package."
+#~ msgstr "هذا وسيلة موجود بوصة حزمة."
+
+#, fuzzy
+#~ msgid "(No Assembler)"
+#~ msgstr "لا الجامع"
+
+#, fuzzy
+#~ msgid "There is %1 cost line without assembler code."
+#~ msgid_plural "There are %1 cost lines without assembler code."
+#~ msgstr[0] "هناك هو سطر رمز."
+#~ msgstr[1] "هناك هو سطر رمز."
+#~ msgstr[2] ""
+#~ msgstr[3] ""
+#~ msgstr[4] ""
+#~ msgstr[5] ""
+
+#, fuzzy
+#~ msgid "This happens because the code of"
+#~ msgstr "هذا رمز من"
+
+#, fuzzy
+#~ msgid "does not seem to match the profile data file."
+#~ msgstr "ليس إلى طابق التوصيف البيانات ملفّ."
+
+#, fuzzy
+#~ msgid "Are you using an old profile data file or is the above mentioned"
+#~ msgstr "هل التوصيف البيانات ملفّ أو هو أعلى"
+
+#, fuzzy
+#~ msgid "ELF object from an updated installation/another machine?"
+#~ msgstr "كائن من تثبيت آلة?"
+
+#, fuzzy
+#~ msgid "There seems to be an error trying to execute the command"
+#~ msgstr "هناك إلى خطأ إلى نفِّذ أمر"
+
+#, fuzzy
+#~ msgid "Check that the ELF object used in the command exists."
+#~ msgstr "كِش كائن مُستخدَم بوصة أمر موجود."
+
+#, fuzzy
+#~ msgid "Call(s) from %1"
+#~ msgstr "نداء s من 1"
+
+#, fuzzy
+#~ msgid "Call(s) to %1"
+#~ msgstr "نداء s إلى 1"
+
+#, fuzzy
+#~ msgid "(unknown call)"
+#~ msgstr "مجهول نداء"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>Call Graph around active Function</b><p>Depending on configuration, "
+#~ "this view shows the call graph environment of the active function. Note: "
+#~ "the shown cost is <b>only</b> the cost which is spent while the active "
+#~ "function was actually running; i.e. the cost shown for main() - if it is "
+#~ "visible - should be the same as the cost of the active function, as that "
+#~ "is the part of inclusive cost of main() spent while the active function "
+#~ "was running.</p><p>For cycles, blue call arrows indicate that this is an "
+#~ "artificial call added for correct drawing which actually never happened.</"
+#~ "p><p>If the graph is larger than the widget area, an overview panner is "
+#~ "shown in one edge. There are similar visualization options to the Call "
+#~ "Treemap; the selected function is highlighted.</p>"
+#~ msgstr ""
+#~ "<b> نداء رسم بياني نشط الوظيفة</b><p> الإعتماد يعمل تشكيل اعرض نداء مبيان "
+#~ "بيئة من نشط الدالة ملاحظة هو<b></b> هو بينما نشط الدالة جاري التنفيذ i e "
+#~ "لـ رئيسي IF الإيطالية s مرئي من نشط الدالة s جزء من من رئيسي بينما نشط "
+#~ "الدالة جاري التنفيذ</p><p> لـ أزرق نداء هو نداء لـ صح never</p><p> إذا "
+#~ "مبيان هو منطقة هو بوصة هناك رسوم مرئية خيارات إلى نداء مُنتقى الدالة هو</p>"
+
+#, fuzzy
+#~ msgid ""
+#~ "Warning: a long lasting graph layouting is in progress.\n"
+#~ "Reduce node/edge limits for speedup.\n"
+#~ msgstr "تحذير a مبيان هو بوصة progress عقدة لـ n"
+
+#, fuzzy
+#~ msgid "Layouting stopped.\n"
+#~ msgstr "موقف n"
+
+#, fuzzy
+#~ msgid "The call graph has %1 nodes and %2 edges.\n"
+#~ msgstr "الـ نداء مبيان و n"
+
+#, fuzzy
+#~ msgid "No item activated for which to draw the call graph."
+#~ msgstr "لا عنصر مُنشّط لـ إلى رسم نداء مبيان."
+
+#, fuzzy
+#~ msgid "No call graph can be drawn for the active item."
+#~ msgstr "لا نداء مبيان لـ نشط عنصر."
+
+#, fuzzy
+#~ msgid ""
+#~ "No call graph is available because the following\n"
+#~ "command cannot be run:\n"
+#~ "'%1'\n"
+#~ msgstr "لا نداء مبيان هو متوفّر متابعة تنفيذ n n"
+
+#, fuzzy
+#~ msgid "Please check that 'dot' is installed (package GraphViz)."
+#~ msgstr "رجاء تفقّد نقطة هو مُثبّتة حزمة."
+
+#, fuzzy
+#~ msgid "Error running the graph layouting tool.\n"
+#~ msgstr "خطأ جاري التنفيذ مبيان أداة n"
+
+#, fuzzy
+#~ msgid ""
+#~ "There is no call graph available for function\n"
+#~ "\t'%1'\n"
+#~ "because it has no cost of the selected event type."
+#~ msgstr ""
+#~ "هناك هو لا نداء مبيان متوفّر لـ الدالة n t الإيطالية لا من مُنتقى الحدث نوع."
+
+#, fuzzy
+#~ msgid "Unlimited"
+#~ msgstr "غير محدود"
+
+#, fuzzy
+#~ msgctxt "Depth 0"
+#~ msgid "None"
+#~ msgstr "لا شيء"
+
+#, fuzzy
+#~ msgid "max. 2"
+#~ msgstr "2"
+
+#, fuzzy
+#~ msgid "max. 5"
+#~ msgstr "5"
+
+#, fuzzy
+#~ msgid "max. 10"
+#~ msgstr "10"
+
+#, fuzzy
+#~ msgid "max. 15"
+#~ msgstr "15"
+
+#, fuzzy
+#~ msgid "No Minimum"
+#~ msgstr "لا الأدنى"
+
+#, fuzzy
+#~ msgid "50 %"
+#~ msgstr "50 %"
+
+#, fuzzy
+#~ msgid "Same as Node"
+#~ msgstr "سايم نقطة اتّصال"
+
+#, fuzzy
+#~ msgid "50 % of Node"
+#~ msgstr "من نقطة اتّصال"
+
+#, fuzzy
+#~ msgid "20 % of Node"
+#~ msgstr "من نقطة اتّصال"
+
+#, fuzzy
+#~ msgid "10 % of Node"
+#~ msgstr "من نقطة اتّصال"
+
+#, fuzzy
+#~ msgid "Top Left"
+#~ msgstr "أعلى اليسار"
+
+#, fuzzy
+#~ msgid "Top Right"
+#~ msgstr "أعلى اليمين"
+
+#, fuzzy
+#~ msgid "Bottom Left"
+#~ msgstr "أسفل اليسار"
+
+#, fuzzy
+#~ msgid "Bottom Right"
+#~ msgstr "أدنى اليمين"
+
+#, fuzzy
+#~ msgid "Top to Down"
+#~ msgstr "أعلى إلى أسفل"
+
+#, fuzzy
+#~ msgid "Left to Right"
+#~ msgstr "من اليسار إلى اليمين"
+
+#, fuzzy
+#~ msgid "Circular"
+#~ msgstr "مستدير"
+
+#, fuzzy
+#~ msgid "Stop Layouting"
+#~ msgstr "قف"
+
+#, fuzzy
+#~ msgid "As PostScript"
+#~ msgstr "ك PostScript"
+
+#, fuzzy
+#~ msgid "As Image ..."
+#~ msgstr "ك صورة."
+
+#, fuzzy
+#~ msgid "Export Graph"
+#~ msgstr "صدِّر رسم بياني"
+
+#, fuzzy
+#~ msgid "Caller Depth"
+#~ msgstr "الشخص المتّصل العمق"
+
+#, fuzzy
+#~ msgid "Callee Depth"
+#~ msgstr "العملية التي يتم الأتصال بها العمق"
+
+#, fuzzy
+#~ msgid "Min. Node Cost"
+#~ msgstr "الحد الأدنى نقطة اتّصال التكلفة"
+
+#, fuzzy
+#~ msgid "Min. Call Cost"
+#~ msgstr "الحد الأدنى نداء التكلفة"
+
+#, fuzzy
+#~ msgid "Arrows for Skipped Calls"
+#~ msgstr "أسهم لـ الغيت  النداءات"
+
+#, fuzzy
+#~ msgid "Inner-cycle Calls"
+#~ msgstr "داخلي دورة النداءات"
+
+#, fuzzy
+#~ msgid "Cluster Groups"
+#~ msgstr "عنقود المجموعات"
+
+#, fuzzy
+#~ msgid "Compact"
+#~ msgstr "الميثاق"
+
+#, fuzzy
+#~ msgid "Normal"
+#~ msgstr "عادي"
+
+#, fuzzy
+#~ msgid "Tall"
+#~ msgstr "طويل"
+
+#, fuzzy
+#~ msgid "Graph"
+#~ msgstr "رسم بياني"
+
+#, fuzzy
+#~ msgid "Layout"
+#~ msgstr "التصميم"
+
+#, fuzzy
+#~ msgid "Birds-eye View"
+#~ msgstr "الطّيور عرض"
+
+#, fuzzy
+#~ msgid "(%1 function skipped)"
+#~ msgid_plural "(%1 functions skipped)"
+#~ msgstr[0] "الدالة"
+#~ msgstr[1] "الدالة"
+#~ msgstr[2] ""
+#~ msgstr[3] ""
+#~ msgstr[4] ""
+#~ msgstr[5] ""
+
+#, fuzzy
+#~ msgid "Move to Top"
+#~ msgstr "نقل إلى أعلى"
+
+#, fuzzy
+#~ msgctxt "Move to Top"
+#~ msgid "Top"
+#~ msgstr "أعلى"
+
+#, fuzzy
+#~ msgid "Move to Right"
+#~ msgstr "نقل إلى يمين"
+
+#, fuzzy
+#~ msgctxt "Move to Right"
+#~ msgid "Right"
+#~ msgstr "يمين"
+
+#, fuzzy
+#~ msgid "Move to Bottom"
+#~ msgstr "نقل إلى أسفل"
+
+#, fuzzy
+#~ msgctxt "Move to Bottom"
+#~ msgid "Bottom"
+#~ msgstr "أسفل"
+
+#, fuzzy
+#~ msgid "Move to Bottom Left"
+#~ msgstr "نقل إلى أسفل يسار"
+
+#, fuzzy
+#~ msgctxt "Move to Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "أسفل اليسار"
+
+#, fuzzy
+#~ msgid "Move Area To"
+#~ msgstr "نقل مساحة إلى"
+
+#, fuzzy
+#~ msgid "Hide This Tab"
+#~ msgstr "إخفاء هذا لسان"
+
+#, fuzzy
+#~ msgid "Hide Area"
+#~ msgstr "إخفاء مساحة"
+
+#, fuzzy
+#~ msgctxt "Show on Top"
+#~ msgid "Top"
+#~ msgstr "أعلى"
+
+#, fuzzy
+#~ msgctxt "Show on Right"
+#~ msgid "Right"
+#~ msgstr "يمين"
+
+#, fuzzy
+#~ msgctxt "Show on Bottom"
+#~ msgid "Bottom"
+#~ msgstr "أسفل"
+
+#, fuzzy
+#~ msgctxt "Show on Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "أسفل اليسار"
+
+#, fuzzy
+#~ msgid "Show Hidden On"
+#~ msgstr "اعرض مخفي تشغيل"
+
+#, fuzzy
+#~ msgid "(No profile data file loaded)"
+#~ msgstr "لا التوصيف البيانات ملفّ تمَ التحميل"
+
+#, fuzzy
+#~ msgid "Types"
+#~ msgstr "أنواع"
+
+#, fuzzy
+#~ msgid "Callers"
+#~ msgstr "الأشخاص المتّصلون"
+
+#, fuzzy
+#~ msgid "All Callers"
+#~ msgstr "الكل الأشخاص المتّصلون"
+
+#, fuzzy
+#~ msgid "Caller Map"
+#~ msgstr "الشخص المتّصل الخريطة"
+
+#, fuzzy
+#~ msgid "Source Code"
+#~ msgstr "المصدر المجلّدات"
+
+#, fuzzy
+#~ msgid "Parts"
+#~ msgstr "الأجزاء"
+
+#, fuzzy
+#~ msgid "Call Graph"
+#~ msgstr "نداء رسم بياني"
+
+#, fuzzy
+#~ msgid "All Callees"
+#~ msgstr "الكل"
+
+#, fuzzy
+#~ msgid "Callee Map"
+#~ msgstr "العملية التي يتم الأتصال بها الخريطة"
+
+#, fuzzy
+#~ msgid "Assembly Code"
+#~ msgstr "الجامع"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>Information Tabs</b><p>This widget shows information for the current "
+#~ "selected function in different tabs: <ul><li>The Costs tab shows a list "
+#~ "of available event types and the inclusive and self costs regarding to "
+#~ "these types.</li><li>The Parts tab shows a list of trace parts if the "
+#~ "trace consists of more than one part (otherwise, this tab is hided). The "
+#~ "cost of the selected function spent in the different parts together with "
+#~ "the calls happening is shown.</li><li>The Call Lists tab shows direct "
+#~ "callers and callees of the function in more detail.</li><li>The Coverage "
+#~ "tab shows the same is the Call Lists tab, but not only direct callers and "
+#~ "callees but also indirect ones.</li><li>The Call Graph tab shows a "
+#~ "graphical visualization of the calls done by this function.</li><li>The "
+#~ "Source tab presents annotated source code if debugging information and "
+#~ "the source file is available.</li><li>The Assembler tab presents "
+#~ "annotated assembler code if trace information on instruction level is "
+#~ "available.</li></ul>For more information, see the <em>What's this</em> "
+#~ "help of the corresponding tab widget</p>"
+#~ msgstr ""
+#~ "<b> معلومات علامات الجدولة</b><p> هذا معلومات لـ الحالي مُنتقى الدالة بوصة "
+#~ "مختلف<ul><li> الـ تكلفة لسان a قائمة من متوفّر الحدث و و الشيء إلى</"
+#~ "li><li> الـ الأجزاء لسان a قائمة من IF من المزيد جزء لسان هو الـ من مُنتقى "
+#~ "الدالة بوصة مختلف مع هو</li><li> الـ نداء القوائم لسان و من الدالة بوصة "
+#~ "المزيد</li><li> الـ التغطية لسان هو نداء القوائم لسان ليس و</li><li> الـ "
+#~ "نداء رسم بياني لسان a رسومي رسوم مرئية من done أداء الدالة</li><li> الـ "
+#~ "المصدر لسان مصدر رمز IF تصحيح الأخطاء معلومات و مصدر ملفّ هو متوفّر</"
+#~ "li><li> الـ الجامع لسان رمز IF معلومات يعمل تعليمة مستوى هو متوفّر</li></"
+#~ "ul> لـ المزيد معلومات<em> ماذا s</em> مساعدة من لسان</p>"
+
+#, fuzzy
+#~ msgid "(No Data loaded)"
+#~ msgstr "لا البيانات تمَ التحميل"
+
+#, fuzzy
+#~ msgid "(No function selected)"
+#~ msgstr "لا الدالة مُنتقى"
+
+#, fuzzy
+#~ msgid "Source (unknown)"
+#~ msgstr "المصدر مجهول"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>Annotated Source</b><p>The annotated source list shows the source "
+#~ "lines of the current selected function together with (self) cost spent "
+#~ "while executing the code of this source line. If there was a call in a "
+#~ "source line, lines with details on the call happening are inserted into "
+#~ "the source: the cost spent inside of the call, the number of calls "
+#~ "happening, and the call destination.</p><p>Select a inserted call "
+#~ "information line to make the destination function current.</p>"
+#~ msgstr ""
+#~ "<b> علّق المصدر</b><p> الـ مصدر قائمة مصدر سطور من الحالي مُنتقى الدالة مع "
+#~ "الشيء بينما رمز من مصدر سطر إذا a نداء بوصة a مصدر سطر سطور مع تفاصيل "
+#~ "يعمل نداء مصدر داخل من نداء رقم من و نداء مقصد</p><p> انتقِ a نداء معلومات "
+#~ "سطر إلى make مقصد الدالة الحالي</p>"
+
+#, fuzzy
+#~ msgid "Go to Line %1"
+#~ msgstr "إذهب إلى خط 1"
+
+#, fuzzy
+#~ msgid "(No Source)"
+#~ msgstr "لا المصدر"
+
+#, fuzzy
+#~ msgid "There is no cost of current selected type associated"
+#~ msgstr "هناك هو لا من الحالي مُنتقى نوع"
+
+#, fuzzy
+#~ msgid "with any source line of this function in file"
+#~ msgstr "مع أي منها مصدر سطر من الدالة بوصة ملفّ"
+
+#, fuzzy
+#~ msgid "Thus, no annotated source can be shown."
+#~ msgstr "هكذا لا مصدر."
+
+#, fuzzy
+#~ msgid "Source ('%1')"
+#~ msgstr "المصدر"
+
+#, fuzzy
+#~ msgid "--- Inlined from '%1' ---"
+#~ msgstr "من"
+
+#, fuzzy
+#~ msgid "--- Inlined from unknown source ---"
+#~ msgstr "من مجهول مصدر"
+
+#, fuzzy
+#~ msgid "There is no source available for the following function:"
+#~ msgstr "هناك هو لا مصدر متوفّر لـ متابعة الدالة:"
+
+#, fuzzy
+#~ msgid "This is because no debug information is present."
+#~ msgstr ""
+#~ "هذا هو لا يصحح\n"
+#~ "تنقيح معلومات هو."
+
+#, fuzzy
+#~ msgid "Recompile source and redo the profile run."
+#~ msgstr "أعد تجميع مصدر و أعِد التوصيف تنفيذ."
+
+#, fuzzy
+#~ msgid "The function is located in this ELF object:"
+#~ msgstr "الـ الدالة هو بوصة كائن:"
+
+#, fuzzy
+#~ msgid "This is because its source file cannot be found:"
+#~ msgstr "هذا هو مصدر ملفّ موجود:"
+
+#, fuzzy
+#~ msgid "Add the folder of this file to the source folder list."
+#~ msgstr "إضافة مجلد من ملفّ إلى مصدر مجلد قائمة."
+
+#, fuzzy
+#~ msgid "The list can be found in the configuration dialog."
+#~ msgstr "الـ قائمة موجود بوصة تشكيل حوار."
+
+#, fuzzy
+#~ msgid " (Thread %1)"
+#~ msgstr "نقاش"
+
+#, fuzzy
+#~ msgid "(none)"
+#~ msgstr "(لاشيء)"
+
+#, fuzzy
+#~ msgid "Unknown Type"
+#~ msgstr "نوع غير معروف"
+
+#, fuzzy
+#~ msgid "Show All Items"
+#~ msgstr "اعرض الكل عناصر"
+
+#, fuzzy
+#~ msgid "No Grouping"
+#~ msgstr "لا التجميع"
+
+#, fuzzy
+#~ msgid "Distance"
+#~ msgstr "المسافة"
+
+#, fuzzy
+#~ msgid "Caller"
+#~ msgstr "الشخص المتّصل"
+
+#, fuzzy
+#~ msgid "Self"
+#~ msgstr "ذاته"
+
+#, fuzzy
+#~ msgid "Calling"
+#~ msgstr "الدعوة"
+
+#, fuzzy
+#~ msgid "Callee"
+#~ msgstr "العملية التي يتم الأتصال بها"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>List of all Callers</b><p>This list shows all functions calling the "
+#~ "current selected one, either directly or with several functions in-"
+#~ "between on the stack; the number of functions in-between plus one is "
+#~ "called the <em>Distance</em> (e.g. for function A,B,C there exists a call "
+#~ "from A to C when A calls B and B calls C, i.e. A => B => C. The distance "
+#~ "here is 2).</p><p>Absolute cost shown is the cost spent in the selected "
+#~ "function while a listed function is active; relative cost is the "
+#~ "percentage of all cost spent in the selected function while the listed "
+#~ "one is active. The cost graphic shows logarithmic percentage with a "
+#~ "different color for each distance.</p><p>As there can be many calls from "
+#~ "the same function, the distance column sometimes shows the range of "
+#~ "distances for all calls happening; then, in parentheses, there is the "
+#~ "medium distance, i.e. the distance where most of the call costs happened."
+#~ "</p><p>Selecting a function makes it the current selected one of this "
+#~ "information panel. If there are two panels (Split mode), the function of "
+#~ "the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b> قائمة من الكل الأشخاص المتّصلون</b><p> هذا قائمة الكل الحالي مُنتقى أو "
+#~ "مع بوصة بين يعمل رصة\n"
+#~ "رصّ رقم من بوصة بين زائد هو<em> المسافة</em> e g لـ الدالة A B C موجود a "
+#~ "نداء من A إلى C A B و B C i e A B C الـ هو</p><p> مطلق :: حتمي :: خالص :: "
+#~ "كامل :: مُطبق هو بوصة مُنتقى الدالة بينما a الدالة هو نشط نسبي هو من الكل "
+#~ "بوصة مُنتقى الدالة بينما هو نشط الـ رسم مع a مختلف اللّون لـ</p><p> ك من "
+#~ "الدالة عمود المدى من لـ الكل بوصة هو متوسط i e من نداء</p><p> الإختيار a "
+#~ "الدالة الإيطالية الحالي مُنتقى من معلومات شريط إذا إثنان تقسيم نمط الدالة "
+#~ "من غير ذلك شريط هو تغير</p>"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>List of all Callees</b><p>This list shows all functions called by the "
+#~ "current selected one, either directly or with several function in-between "
+#~ "on the stack; the number of function in-between plus one is called the "
+#~ "<em>Distance</em> (e.g. for function A,B,C there exists a call from A to "
+#~ "C when A calls B and B calls C, i.e. A => B => C. The distance here is 2)."
+#~ "</p><p>Absolute cost shown is the cost spent in the listed function while "
+#~ "the selected is active; relative cost is the percentage of all cost spent "
+#~ "in the listed function while the selected one is active. The cost graphic "
+#~ "always shows logarithmic percentage with a different color for each "
+#~ "distance.</p><p>As there can be many calls to the same function, the "
+#~ "distance column sometimes shows the range of distances for all calls "
+#~ "happening; then, in parentheses, there is the medium distance, i.e. the "
+#~ "distance where most of the call costs happened.</p><p>Selecting a "
+#~ "function makes it the current selected one of this information panel. If "
+#~ "there are two panels (Split mode), the function of the other panel is "
+#~ "changed instead.</p>"
+#~ msgstr ""
+#~ "<b> قائمة من الكل</b><p> هذا قائمة الكل أداء الحالي مُنتقى أو مع الدالة "
+#~ "بوصة بين يعمل رصة\n"
+#~ "رصّ رقم من الدالة بوصة بين زائد هو<em> المسافة</em> e g لـ الدالة A B C "
+#~ "موجود a نداء من A إلى C A B و B C i e A B C الـ هو</p><p> مطلق :: حتمي :: "
+#~ "خالص :: كامل :: مُطبق هو بوصة الدالة بينما مُنتقى هو نشط نسبي هو من الكل "
+#~ "بوصة الدالة بينما مُنتقى هو نشط الـ رسم دائماً مع a مختلف اللّون لـ</p><p> ك "
+#~ "إلى الدالة عمود المدى من لـ الكل بوصة هو متوسط i e من نداء</p><p> "
+#~ "الإختيار a الدالة الإيطالية الحالي مُنتقى من معلومات شريط إذا إثنان تقسيم "
+#~ "نمط الدالة من غير ذلك شريط هو تغير</p>"
+
+#, fuzzy
+#~ msgid "Instruction Fetch"
+#~ msgstr "الأمر تمكينإجلب"
+
+#, fuzzy
+#~ msgid "Data Read Access"
+#~ msgstr "البيانات اقرأ النفاذ"
+
+#, fuzzy
+#~ msgid "Data Write Access"
+#~ msgstr "البيانات اكتب النفاذ"
+
+#, fuzzy
+#~ msgid "L1 Instr. Fetch Miss"
+#~ msgstr "تمكينإجلب الآنسة"
+
+#, fuzzy
+#~ msgid "L1 Data Read Miss"
+#~ msgstr "البيانات اقرأ الآنسة"
+
+#, fuzzy
+#~ msgid "L1 Data Write Miss"
+#~ msgstr "البيانات اكتب الآنسة"
+
+#, fuzzy
+#~ msgid "L2 Instr. Fetch Miss"
+#~ msgstr "تمكينإجلب الآنسة"
+
+#, fuzzy
+#~ msgid "L2 Data Read Miss"
+#~ msgstr "البيانات اقرأ الآنسة"
+
+#, fuzzy
+#~ msgid "L2 Data Write Miss"
+#~ msgstr "البيانات اكتب الآنسة"
+
+#, fuzzy
+#~ msgid "Samples"
+#~ msgstr "العيينات"
+
+#, fuzzy
+#~ msgid "System Time"
+#~ msgstr "وقت النظام"
+
+#, fuzzy
+#~ msgid "User Time"
+#~ msgstr "المستخدم الوقت"
+
+#, fuzzy
+#~ msgid "L1 Miss Sum"
+#~ msgstr "الآنسة مجموع"
+
+#, fuzzy
+#~ msgid "L2 Miss Sum"
+#~ msgstr "الآنسة مجموع"
+
+#, fuzzy
+#~ msgid "Cycle Estimation"
+#~ msgstr "دَوْرة التقدير"
+
+#, fuzzy
+#~ msgid "&Search:"
+#~ msgstr "&بحث:"
+
+#, fuzzy
+#~ msgid "Group"
+#~ msgstr "المجموعة"
+
+#, fuzzy
+#~ msgid "(no trace parts)"
+#~ msgstr "لا"
+
+#, fuzzy
+#~ msgid "Stack Selection"
+#~ msgstr "الكومة التحديد"
+
+#, fuzzy
+#~ msgid "Text %1"
+#~ msgstr "نص %1"
+
+#, fuzzy
+#~ msgid "Columns"
+#~ msgstr "الأعمدة"
+
+#, fuzzy
+#~ msgid "Rows"
+#~ msgstr "صفوف"
+
+#, fuzzy
+#~ msgid "Always Best"
+#~ msgstr "دائمًا الأفضل"
+
+#, fuzzy
+#~ msgid "Best"
+#~ msgstr "الأفضل"
+
+#, fuzzy
+#~ msgid "Alternate (V)"
+#~ msgstr "بديل (V)"
+
+#, fuzzy
+#~ msgid "Alternate (H)"
+#~ msgstr "بديل (H)"
+
+#, fuzzy
+#~ msgid "Horizontal"
+#~ msgstr "أفقي"
+
+#, fuzzy
+#~ msgid "Vertical"
+#~ msgstr "رأسي"
+
+#, fuzzy
+#~ msgid "Nesting"
+#~ msgstr "متداخل ببعض"
+
+#, fuzzy
+#~ msgid "Border"
+#~ msgstr "حد"
+
+#, fuzzy
+#~ msgid "Correct Borders Only"
+#~ msgstr "صلّح الإطارات فقط"
+
+#, fuzzy
+#~ msgid "Width %1"
+#~ msgstr "العرض %1"
+
+#, fuzzy
+#~ msgid "Shading"
+#~ msgstr "تظليل"
+
+#, fuzzy
+#~ msgid "Visible"
+#~ msgstr "مرئي"
+
+#, fuzzy
+#~ msgid "Take Space From Children"
+#~ msgstr "خذ مسافة من الأولاد"
+
+#, fuzzy
+#~ msgid "Top Center"
+#~ msgstr "أعلى الوسط"
+
+#, fuzzy
+#~ msgid "Bottom Center"
+#~ msgstr "أسفل الوسط"
+
+#, fuzzy
+#~ msgid "No %1 Limit"
+#~ msgstr "لا %1 حدود"
+
+#, fuzzy
+#~ msgid "No Area Limit"
+#~ msgstr "لا حدود للمنطقة"
+
+#, fuzzy
+#~ msgid "Area of '%1' (%2)"
+#~ msgstr "منطقة لـ '%1' (%2)"
+
+#, fuzzy
+#~ msgid "1 Pixel"
+#~ msgid_plural "%1 Pixels"
+#~ msgstr[0] "بكسل"
+#~ msgstr[1] "بكسل"
+#~ msgstr[2] ""
+#~ msgstr[3] ""
+#~ msgstr[4] ""
+#~ msgstr[5] ""
+
+#, fuzzy
+#~ msgid "Double Area Limit (to %1)"
+#~ msgstr "ضعف حدود المساحة (إلى %1)"
+
+#, fuzzy
+#~ msgid "Halve Area Limit (to %1)"
+#~ msgstr "اقسم حدود المساحة الى النصف (حتى %1)"
+
+#, fuzzy
+#~ msgid "No Depth Limit"
+#~ msgstr "لا حدود للعمق"
+
+#, fuzzy
+#~ msgid "Depth of '%1' (%2)"
+#~ msgstr "العمق لـ '%1' (%2)"
+
+#, fuzzy
+#~ msgid "Depth %1"
+#~ msgstr "العمق %1"
+
+#, fuzzy
+#~ msgid "Decrement (to %1)"
+#~ msgstr "التناقص (إلى %1)"
+
+#, fuzzy
+#~ msgid "Increment (to %1)"
+#~ msgstr "الزيادة إلى (إلى %1)"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers "
+#~ "of the current activated function. Each colored rectangle represents a "
+#~ "function; its size tries to be proportional to the cost spent therein "
+#~ "while the active function is running (however, there are drawing "
+#~ "constrains).</p>"
+#~ msgstr ""
+#~ "<b> الشخص المتّصل الخريطة</b><p> هذا مبيان شجرة من الكل من الحالي مُنشّط "
+#~ "الدالة كل a الدالة حجم إلى متناسب إلى بينما نشط الدالة هو جاري التنفيذ</p>"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+#~ "the current activated function. Each colored rectangle represents a "
+#~ "function; its size tries to be proportional to the cost spent therein "
+#~ "while the active function is running (however, there are drawing "
+#~ "constrains).</p>"
+#~ msgstr ""
+#~ "<b> نداء الخريطة</b><p> هذا مبيان شجرة من الكل من الحالي مُنشّط الدالة كل a "
+#~ "الدالة حجم إلى متناسب إلى بينما نشط الدالة هو جاري التنفيذ</p>"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Appearance options can be found in the in the context menu. To get "
+#~ "exact size proportions, choose 'Hide incorrect borders'. As this mode can "
+#~ "be <em>very</em> time consuming, you may want to limit the maximum drawn "
+#~ "nesting level before. 'Best' determinates the split direction for "
+#~ "children from the aspect ratio of the parent. 'Always Best' decides on "
+#~ "remaining space for each sibling. 'Ignore Proportions' takes space for "
+#~ "function name drawing <em>before</em> drawing children. Note that size "
+#~ "proportions can get <em>heavily</em> wrong.</p><p>This is a <em>TreeMap</"
+#~ "em> widget. Keyboard navigation is available with the left/right arrow "
+#~ "keys for traversing siblings, and up/down arrow keys to go a nesting "
+#~ "level up/down. <em>Return</em> activates the current item.</p>"
+#~ msgstr ""
+#~ "<p> المظهر خيارات موجود بوصة بوصة سياق قائمة إلى get حجم اختيار إخفاء ك "
+#~ "نمط<em></em> وقت أيار إلى الأقصى مستوى قبل الأفضل انقسام لـ من جانب نسبة "
+#~ "من أب دائماً الأفضل يعمل باقٍ فراغ لـ تجاهل الأبعاد فراغ لـ الدالة "
+#~ "الاسم<em> قبل</em> ملاحظة حجم get<em></em> خطأ</p><p> هذا هو a<em></em> "
+#~ "لوحة المفاتيح تصفح هو متوفّر مع يسار يمين سهم لـ أخوات و أعلى أسفل سهم إلى "
+#~ "اذهب a مستوى أعلى أسفل<em> Return</em> الحالي عنصر</p>"
+
+#, fuzzy
+#~ msgid "Go To"
+#~ msgstr "إذهب إلى"
+
+#, fuzzy
+#~ msgid "Stop at Depth"
+#~ msgstr "توقف عند العمق"
+
+#, fuzzy
+#~ msgid "Depth 10"
+#~ msgstr "العمق 10"
+
+#, fuzzy
+#~ msgid "Depth 15"
+#~ msgstr "العمق 15"
+
+#, fuzzy
+#~ msgid "Depth 20"
+#~ msgstr "العمق 20"
+
+#, fuzzy
+#~ msgid "Decrement Depth (to %1)"
+#~ msgstr "التناقص العمق إلى"
+
+#, fuzzy
+#~ msgid "Increment Depth (to %1)"
+#~ msgstr "التزايد العمق إلى"
+
+#, fuzzy
+#~ msgid "Stop at Function"
+#~ msgstr "قف عند الوظيفة"
+
+#, fuzzy
+#~ msgid "No Function Limit"
+#~ msgstr "لا الوظيفة الحدّ"
+
+#, fuzzy
+#~ msgid "Stop at Area"
+#~ msgstr "قف على المساحة"
+
+#, fuzzy
+#~ msgid "50 Pixels"
+#~ msgstr "بكسلات"
+
+#, fuzzy
+#~ msgid "100 Pixels"
+#~ msgstr "بكسلات"
+
+#, fuzzy
+#~ msgid "200 Pixels"
+#~ msgstr "بكسلات"
+
+#, fuzzy
+#~ msgid "500 Pixels"
+#~ msgstr "بكسلات"
+
+#, fuzzy
+#~ msgid "Half Area Limit (to %1)"
+#~ msgstr "نصف مساحة الحدّ إلى"
+
+#, fuzzy
+#~ msgid "Split Direction"
+#~ msgstr "تقسيم الاتجاه"
+
+#, fuzzy
+#~ msgid "Skip Incorrect Borders"
+#~ msgstr "تخطّي خاطئ الحدود"
+
+#, fuzzy
+#~ msgid "Border Width"
+#~ msgstr "عرض الحد"
+
+#, fuzzy
+#~ msgid "Border 0"
+#~ msgstr "حد 0"
+
+#, fuzzy
+#~ msgid "Border 1"
+#~ msgstr "حد 1"
+
+#, fuzzy
+#~ msgid "Border 2"
+#~ msgstr "حد 2"
+
+#, fuzzy
+#~ msgid "Border 3"
+#~ msgstr "حد 3"
+
+#, fuzzy
+#~ msgid "Draw Symbol Names"
+#~ msgstr "رسم رمز الأسماء"
+
+#, fuzzy
+#~ msgid "Draw Cost"
+#~ msgstr "رسم التكلفة"
+
+#, fuzzy
+#~ msgid "Draw Location"
+#~ msgstr "رسم الموقع"
+
+#, fuzzy
+#~ msgid "Draw Calls"
+#~ msgstr "رسم النداءات"
+
+#, fuzzy
+#~ msgid "Call Map: Current is '%1'"
+#~ msgstr "نداء الخريطة الحالي هو"
+
+#, fuzzy
+#~ msgid "(no function)"
+#~ msgstr "لا الدالة"
+
+#, fuzzy
+#~ msgid "(no call)"
+#~ msgstr "لا نداء"
+
+#, fuzzy
+#~ msgid "Event Type"
+#~ msgstr "حدث النوع"
+
+#, fuzzy
+#~ msgid "Short"
+#~ msgstr "قصير"
+
+#, fuzzy
+#~ msgid "Formula"
+#~ msgstr "صيغة"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>Cost Types List</b><p>This list shows all cost types available and "
+#~ "what the self/inclusive cost of the current selected function is for that "
+#~ "cost type.</p><p>By choosing a cost type from the list, you change the "
+#~ "cost type of costs shown all over KCachegrind to be the selected one.</p>"
+#~ msgstr ""
+#~ "<b> التكلفة أنواع قائمة</b><p> هذا قائمة الكل متوفّر و الشيء من الحالي "
+#~ "مُنتقى الدالة هو لـ نوع</p><p> بواسطة a نوع من قائمة تغيير نوع من الكل "
+#~ "KCachegrind إلى مُنتقى</p>"
+
+#, fuzzy
+#~ msgid "Set Secondary Event Type"
+#~ msgstr "ضبط ثانوي حدث النوع"
+
+#, fuzzy
+#~ msgid "Remove Secondary Event Type"
+#~ msgstr "احذف ثانوي حدث النوع"
+
+#, fuzzy
+#~ msgid "Edit Long Name"
+#~ msgstr "تحرير طويل الاسم"
+
+#, fuzzy
+#~ msgid "Edit Short Name"
+#~ msgstr "تحرير قصير الاسم"
+
+#, fuzzy
+#~ msgid "Edit Formula"
+#~ msgstr "تحرير صيغة"
+
+#, fuzzy
+#~ msgid "Remove"
+#~ msgstr "احذف"
+
+#, fuzzy
+#~ msgid "New Cost Type ..."
+#~ msgstr "جديد التكلفة النوع."
+
+#, fuzzy
+#~ msgid "New%1"
+#~ msgstr "جديد 1"
+
+#, fuzzy
+#~ msgid "New Cost Type %1"
+#~ msgstr "جديد التكلفة النوع 1"
+
+#, fuzzy
+#~ msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+#~ msgstr "استيراد المرشّح لـ التوصيف البيانات ملفات"
+
+#, fuzzy
+#~ msgid "Count"
+#~ msgstr "العدد"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>List of direct Callers</b><p>This list shows all functions calling the "
+#~ "current selected one directly, together with a call count and the cost "
+#~ "spent in the current selected function while being called from the "
+#~ "function from the list.</p><p>An icon instead of an inclusive cost "
+#~ "specifies that this is a call inside of a recursive cycle. An inclusive "
+#~ "cost makes no sense here.</p><p>Selecting a function makes it the current "
+#~ "selected one of this information panel. If there are two panels (Split "
+#~ "mode), the function of the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b> قائمة من الأشخاص المتّصلون</b><p> هذا قائمة الكل الحالي مُنتقى مع a "
+#~ "نداء العدد و بوصة الحالي مُنتقى الدالة بينما من الدالة من قائمة</p><p> "
+#~ "أداة تعريف أيقونة من هو a نداء داخل من a دورة أداة تعريف لا</p><p> "
+#~ "الإختيار a الدالة الإيطالية الحالي مُنتقى من معلومات شريط إذا إثنان تقسيم "
+#~ "نمط الدالة من غير ذلك شريط هو تغير</p>"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>List of direct Callees</b><p>This list shows all functions called by "
+#~ "the current selected one directly, together with a call count and the "
+#~ "cost spent in this function while being called from the selected function."
+#~ "</p><p>Selecting a function makes it the current selected one of this "
+#~ "information panel. If there are two panels (Split mode), the function of "
+#~ "the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b> قائمة من</b><p> هذا قائمة الكل أداء الحالي مُنتقى مع a نداء العدد و "
+#~ "بوصة الدالة بينما من مُنتقى الدالة</p><p> الإختيار a الدالة الإيطالية "
+#~ "الحالي مُنتقى من معلومات شريط إذا إثنان تقسيم نمط الدالة من غير ذلك شريط "
+#~ "هو تغير</p>"
+
+#, fuzzy
+#~ msgid "Profile Part %1"
+#~ msgstr "الملف الشخصي جزءالجزء 1"
+
+#, fuzzy
+#~ msgid "(no trace)"
+#~ msgstr "لا"
+
+#, fuzzy
+#~ msgid "(no part)"
+#~ msgstr "لا جزء"
+
+#, fuzzy
+#~ msgid "Comment"
+#~ msgstr "تعليق"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+#~ "trace. For each part, the self/inclusive cost of the current selected "
+#~ "function, spent in the part, is shown; percentage costs are always "
+#~ "relative to the total cost <em>of the part</em> (not to the whole trace "
+#~ "as in the Trace Part Overview). Also shown are the calls happening to/"
+#~ "from the current function inside of the trace part.</p><p>By choosing one "
+#~ "or more trace parts from the list, the costs shown all over KCachegrind "
+#~ "will only be the ones spent in the selected part(s). If no list selection "
+#~ "is shown, in fact all trace parts are selected implicitly.</p><p>This is "
+#~ "a multi-selection list. You can select ranges by dragging the mouse or "
+#~ "use SHIFT/CTRL modifiers. Selection/Deselection of trace parts can also "
+#~ "be done by using the Trace Part Overview Dockable. This one also supports "
+#~ "multiple selection.</p><p>Note that the list is hidden if only one trace "
+#~ "part is loaded.</p>"
+#~ msgstr ""
+#~ "<b> تعقّب جزءالجزء قائمة</b><p> هذا قائمة الكل من تمَ التحميل لـ جزء الشيء "
+#~ "من الحالي مُنتقى الدالة بوصة جزء هو دائماً نسبي إلى الكلى<em> من جزء</em> "
+#~ "ليس إلى بوصة تعقّب جزءالجزء الرؤية العامة أيضًا إلى من الحالي الدالة داخل "
+#~ "من جزء</p><p> بواسطة أو المزيد من قائمة الكل KCachegrind بوصة مُنتقى جزء s "
+#~ "إذا لا قائمة منتقى هو بوصة الكل مُنتقى</p><p> هذا هو a منتقى قائمة أنت "
+#~ "تحديد أداء الماوس أو استخدام التحديد من done أداء تعقّب جزءالجزء الرؤية "
+#~ "العامة قابل للإرساء هذا متعدد منتقى</p><p> ملاحظة قائمة هو مخفي IF جزء هو "
+#~ "تمَ التحميل</p>"
+
+#, fuzzy
+#~ msgid "Hide '%1'"
+#~ msgstr "إخفاء"
+
+#, fuzzy
+#~ msgid "Hide Selected"
+#~ msgstr "إخفاء مختار"
+
+#, fuzzy
+#~ msgid "Show All"
+#~ msgstr "أعرض الكلّ"
+
+#, fuzzy
+#~ msgid "Deselect"
+#~ msgstr "ألغي الخيار"
+
+#, fuzzy
+#~ msgid "Select"
+#~ msgstr "انتقِ"
+
+#, fuzzy
+#~ msgid "Go to %1"
+#~ msgstr "إذهب إلى 1"
+
+#, fuzzy
+#~ msgid "Run <exec> under cachegrind"
+#~ msgstr "شغّل<exec>"
+
+#, fuzzy
+#~ msgid "Source"
+#~ msgstr "المصدر"

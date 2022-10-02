@@ -1,0 +1,2824 @@
+# translation of kcachegrind.po to Nepali
+# Nabin Gautam <nabin@mpp.org.np>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcachegrind\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-12-29 02:36+0100\n"
+"PO-Revision-Date: 2007-08-20 13:09+0545\n"
+"Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
+"Language-Team: Nepali <info@mpp.org.np>\n"
+"Language: ne\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n !=1\n"
+"\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Nabin Gautam"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "nabin@mpp.org.np"
+
+#: kcachegrind/configdlg.cpp:135 kcachegrind/configdlg.cpp:323
+#: kcachegrind/configdlg.cpp:342
+#, kde-format
+msgid "(always)"
+msgstr "(सधैँ)"
+
+#: kcachegrind/configdlg.cpp:349
+#, kde-format
+msgid "Choose Source Folder"
+msgstr "स्रोत फोल्डर रोज्नुहोस्"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, ConfigDlgBase)
+#: kcachegrind/configdlgbase.ui:14
+#, fuzzy, kde-format
+msgid "Configuration"
+msgstr "केडीई क्यासग्रिन्ड कन्फिगरेसन"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab1)
+#: kcachegrind/configdlgbase.ui:24
+#, kde-format
+msgid "General"
+msgstr "साधारण"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel5)
+#: kcachegrind/configdlgbase.ui:34
+#, kde-format
+msgid "Maximum number of items in lists:"
+msgstr "सूचीका विषयवस्तुको अधिकतम नम्बर"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel3)
+#: kcachegrind/configdlgbase.ui:44
+#, fuzzy, kde-format
+#| msgid "Symbols in tooltips and context menus"
+msgid "Truncate symbols in tooltips and context menus"
+msgstr "उपकरणटिप र प्रसङ्ग मेनुका प्रतीक"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2)
+#: kcachegrind/configdlgbase.ui:70
+#, fuzzy, kde-format
+#| msgid "Truncated when more/longer than:"
+msgid "when more than:"
+msgstr "यो भन्दा बढी/लामो हुँदा काटिएको:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2_2)
+#: kcachegrind/configdlgbase.ui:80
+#, fuzzy, kde-format
+#| msgid "Truncated when more/longer than:"
+msgid "when longer than:"
+msgstr "यो भन्दा बढी/लामो हुँदा काटिएको:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3)
+#: kcachegrind/configdlgbase.ui:90
+#, kde-format
+msgid "Precision of percentage values:"
+msgstr "प्रतिशत मानको शुद्धता:"
+
+#. i18n: ectx: property (toolTip), widget (QSpinBox, maxListEdit)
+#: kcachegrind/configdlgbase.ui:113
+#, fuzzy, kde-format
+#| msgid ""
+#| "The Maximum Number of List Items should be below 500.The previous set "
+#| "value (%1) will still be used."
+msgid "The Maximum Number of List Items should be below 500."
+msgstr ""
+"सूची विषयवस्तुको अधिकतम सङ्ख्या ५०० भन्दा थोरै हुनुपर्छ । अघिल्लो सेट मान(%1) पनि प्रयोग "
+"गरिनेछ ।"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1)
+#: kcachegrind/configdlgbase.ui:158
+#, kde-format
+msgid "Cost Item Colors"
+msgstr "लागत विषयवस्तु रङ"
+
+#. i18n: ectx: property (text), widget (QCheckBox, fileCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, classCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, objectCheck)
+#: kcachegrind/configdlgbase.ui:185 kcachegrind/configdlgbase.ui:219
+#: kcachegrind/configdlgbase.ui:233
+#, kde-format
+msgid "Automatic"
+msgstr "स्वचालित"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4)
+#: kcachegrind/configdlgbase.ui:192
+#, kde-format
+msgid "Object:"
+msgstr "वस्तु:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2_2)
+#: kcachegrind/configdlgbase.ui:202
+#, kde-format
+msgid "Class:"
+msgstr "बर्ग:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
+#: kcachegrind/configdlgbase.ui:240
+#, kde-format
+msgid "File:"
+msgstr "फाइल:"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/configdlgbase.ui:321
+#, kde-format
+msgid "Annotations"
+msgstr "एनोटेसन"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3_2)
+#: kcachegrind/configdlgbase.ui:329
+#, kde-format
+msgid "Context lines in annotations:"
+msgstr "एनोटेसनका प्रसङ्ग लाइन:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
+#: kcachegrind/configdlgbase.ui:350
+#, kde-format
+msgid "Source Folders"
+msgstr "स्रोत फोल्डर"
+
+#. i18n: ectx: property (text), widget (QPushButton, addDirButton)
+#: kcachegrind/configdlgbase.ui:364
+#, fuzzy, kde-format
+#| msgid "Add..."
+msgid "Add"
+msgstr "थप्नुहोस्..."
+
+#. i18n: ectx: property (text), widget (QPushButton, deleteDirButton)
+#: kcachegrind/configdlgbase.ui:371
+#, fuzzy, kde-format
+msgid "Delete"
+msgstr "चयनबाट हटाउनुहोस्"
+
+#. i18n: ectx: property (text), widget (QTreeWidget, dirList)
+#: kcachegrind/configdlgbase.ui:409
+#, kde-format
+msgid "Object / Related Source Base"
+msgstr "वस्तु / सम्बन्धित स्रोत आधार"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
+#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:289
+#: kcachegrind/toplevel.cpp:512
+#, kde-format
+msgid "Profile Dumps"
+msgstr "प्रोफाइल डम्प"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:24
+#, kde-format
+msgid "Target"
+msgstr "लक्ष्य"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:46
+#, kde-format
+msgid "Time"
+msgstr "समय"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:57
+#, kde-format
+msgid "Path"
+msgstr "मार्ग"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab)
+#: kcachegrind/dumpselectionbase.ui:70
+#, fuzzy, kde-format
+msgid "Options"
+msgstr "विकल्प"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: kcachegrind/dumpselectionbase.ui:87
+#, kde-format
+msgid "Target command:"
+msgstr "लक्ष्य आदेश:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: kcachegrind/dumpselectionbase.ui:100
+#, kde-format
+msgid "Profiler options:"
+msgstr "प्रोफाइलर विकल्प:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:111
+#, kde-format
+msgid "Option"
+msgstr "विकल्प"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:122 kcachegrind/dumpselectionbase.ui:650
+#, kde-format
+msgid "Value"
+msgstr "मान"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:133
+#, kde-format
+msgid "Trace"
+msgstr "पदचिन्ह"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:146 kcachegrind/dumpselectionbase.ui:730
+#, kde-format
+msgid "Jumps"
+msgstr "उफ्राइ"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:160
+#, kde-format
+msgid "Instructions"
+msgstr "निर्देशन"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:175 kcachegrind/dumpselectionbase.ui:745
+#, kde-format
+msgid "Events"
+msgstr "घटना"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:188
+#, kde-format
+msgid "Full Cache"
+msgstr "पूर्ण क्यास"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:202
+#, kde-format
+msgid "Custom"
+msgstr "अनुकूलन"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:217
+#, kde-format
+msgid "Collect"
+msgstr "सङ्कलन गर्नुहोस्"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:230
+#, kde-format
+msgid "At Startup"
+msgstr "सुरुआतमा"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:244
+#, kde-format
+msgid "While In"
+msgstr "भित्र हुँदा"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:259
+#, kde-format
+msgid "Skip"
+msgstr "फड्काउनुहोस्"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:272
+#, kde-format
+msgid "PLT"
+msgstr "पीएलटी"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:286 kcachegrind/dumpselectionbase.ui:898
+#, kde-format
+msgid "Function"
+msgstr "प्रकार्य"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:301
+#, kde-format
+msgid "Dump Profile"
+msgstr "डम्प प्रोफाइल"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:314
+#, kde-format
+msgid "Every BBs"
+msgstr "प्रत्येक बीबीहरू"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:328 kcachegrind/dumpselectionbase.ui:370
+#, kde-format
+msgid "On Entering"
+msgstr "प्रविष्ट गर्दा"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:342
+#, kde-format
+msgid "On Leaving"
+msgstr "छोड्दा"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:357
+#, kde-format
+msgid "Zero Events"
+msgstr "शून्य घटना"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:385
+#, kde-format
+msgid "Separate"
+msgstr "बिभाजन गर्नुहोस्"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:398
+#, kde-format
+msgid "Threads"
+msgstr "थ्रेड"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:412
+#, kde-format
+msgid "Recursions"
+msgstr "पुनरावृत्ती"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:426
+#, kde-format
+msgid "Call Chain"
+msgstr "कल श्रृङ्खला"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
+#: kcachegrind/dumpselectionbase.ui:452
+#, kde-format
+msgid "Custom profiler options:"
+msgstr "अनुकूलन प्रोफाइलर विकल्प:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton2)
+#: kcachegrind/dumpselectionbase.ui:486
+#, kde-format
+msgid "Run New Profile"
+msgstr "नयाँ प्रोफाइल चलाउनुहोस्"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/dumpselectionbase.ui:496
+#, kde-format
+msgid "Info"
+msgstr "सूचना"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: kcachegrind/dumpselectionbase.ui:505
+#, kde-format
+msgid "Dump reason:"
+msgstr "डम्प कारण:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: kcachegrind/dumpselectionbase.ui:518
+#, kde-format
+msgid "Event summary:"
+msgstr "घटना सारांश:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:529
+#, kde-format
+msgid "Name"
+msgstr "नाम"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:540
+#, kde-format
+msgid "Sum"
+msgstr "जोड"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: kcachegrind/dumpselectionbase.ui:554
+#, kde-format
+msgid "Miscellaneous:"
+msgstr "बिबिध:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6)
+#: kcachegrind/dumpselectionbase.ui:588
+#, kde-format
+msgid "Show"
+msgstr "देखाउनुहोस्"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton5)
+#: kcachegrind/dumpselectionbase.ui:595
+#, kde-format
+msgid "Compare"
+msgstr "तुलना गर्नुहोस्"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab3)
+#: kcachegrind/dumpselectionbase.ui:605
+#, kde-format
+msgid "State"
+msgstr "स्थिति"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton1)
+#: kcachegrind/dumpselectionbase.ui:619
+#, kde-format
+msgid "Update"
+msgstr "अद्यावधिक गर्नुहोस्"
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox1)
+#: kcachegrind/dumpselectionbase.ui:626
+#, kde-format
+msgid "Every [s]:"
+msgstr "प्रत्येक [s]:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:639
+#, kde-format
+msgid "Counter"
+msgstr "काउन्टर"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:661
+#, kde-format
+msgid "Dumps Done"
+msgstr "डम्प समाप्त"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:675
+#, kde-format
+msgid "Is Collecting"
+msgstr "सङ्कलन हुदैछ"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:689
+#, kde-format
+msgid "Executed"
+msgstr "कार्यान्वित"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:702
+#, kde-format
+msgid "Basic Blocks"
+msgstr "आधारभूत खण्ड"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:716
+#, kde-format
+msgid "Calls"
+msgstr "कल"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:758
+#, kde-format
+msgid "Ir"
+msgstr "Ir"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:773
+#, kde-format
+msgid "Distinct"
+msgstr "भिन्न"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:786
+#, kde-format
+msgid "ELF Objects"
+msgstr "ईएलएफ वस्तुहरू"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:800
+#, kde-format
+msgid "Functions"
+msgstr "प्रकार्यहरू"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:814
+#, kde-format
+msgid "Contexts"
+msgstr "प्रसङ्ग"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: kcachegrind/dumpselectionbase.ui:845
+#, kde-format
+msgid "Stack trace:"
+msgstr "थाक पदचिन्ह:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox2)
+#: kcachegrind/dumpselectionbase.ui:855
+#, kde-format
+msgid "Sync."
+msgstr "समक्रमण"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:865
+#, kde-format
+msgid "#"
+msgstr "#"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:876
+#, kde-format
+msgid "Incl."
+msgstr "Incl."
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:887
+#, kde-format
+msgid "Called"
+msgstr "कल गरिएको"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:909
+#, kde-format
+msgid "Location"
+msgstr "स्थान"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton7)
+#: kcachegrind/dumpselectionbase.ui:928
+#, kde-format
+msgid "Start"
+msgstr "सुरुआत"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6_2)
+#: kcachegrind/dumpselectionbase.ui:951
+#, kde-format
+msgid "Zero"
+msgstr "शून्य"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton4)
+#: kcachegrind/dumpselectionbase.ui:958
+#, kde-format
+msgid "Dump"
+msgstr "डम्प गर्नुहोस्"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab4)
+#: kcachegrind/dumpselectionbase.ui:968
+#, kde-format
+msgid "Messages"
+msgstr "सन्देश"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton9)
+#: kcachegrind/dumpselectionbase.ui:985
+#, kde-format
+msgid "Kill Run"
+msgstr "नष्ट गर्नुहोस् चलाउनुहोस्"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton8)
+#: kcachegrind/dumpselectionbase.ui:1008
+#, fuzzy, kde-format
+msgid "Clear"
+msgstr "कल गर्ने वाला"
+
+#. i18n: ectx: Menu (file)
+#: kcachegrind/kcachegrindui.rc:4
+#, fuzzy, kde-format
+msgid "&File"
+msgstr "फाइल:"
+
+#. i18n: ectx: Menu (view)
+#: kcachegrind/kcachegrindui.rc:10
+#, fuzzy, kde-format
+msgid "&View"
+msgstr "फाइल:"
+
+#. i18n: ectx: Menu (layouts)
+#: kcachegrind/kcachegrindui.rc:15
+#, kde-format
+msgid "&Layout"
+msgstr "सजावट"
+
+#. i18n: ectx: Menu
+#: kcachegrind/kcachegrindui.rc:33
+#, kde-format
+msgid "Sidebars"
+msgstr "छेउपट्टी"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kcachegrind/kcachegrindui.rc:42
+#, fuzzy, kde-format
+msgid "Main Toolbar"
+msgstr "विषयवस्तु उपकरणपट्टी"
+
+#. i18n: ectx: ToolBar (stateToolBar)
+#: kcachegrind/kcachegrindui.rc:54
+#, kde-format
+msgid "State Toolbar"
+msgstr "विषयवस्तु उपकरणपट्टी"
+
+#: kcachegrind/main.cpp:34
+#, kde-format
+msgid "KCachegrind"
+msgstr "केडीई क्यास ग्रिन्ड"
+
+#: kcachegrind/main.cpp:36
+#, fuzzy, kde-format
+#| msgid "KDE Frontend for Cachegrind"
+msgid "KDE Frontend for Callgrind/Cachegrind"
+msgstr "क्यासग्रिन्डका लागि केडीई फ्रन्टइन्ड"
+
+#: kcachegrind/main.cpp:38
+#, fuzzy, kde-format
+#| msgid "(C) 2002, 2003, 2004"
+msgid "(C) 2002 - 2016"
+msgstr "(प्रतिलिपि अधिकार) २००२, २००३, २००४"
+
+#: kcachegrind/main.cpp:40
+#, kde-format
+msgid "Josef Weidendorfer"
+msgstr ""
+
+#: kcachegrind/main.cpp:41
+#, kde-format
+msgid "Author/Maintainer"
+msgstr "लेखक/सम्भारकर्ता"
+
+#: kcachegrind/main.cpp:68
+#, kde-format
+msgid "Show information of this trace"
+msgstr "यो पदचिन्हको सूचना देखाउनुहोस्"
+
+#: kcachegrind/main.cpp:68
+#, kde-format
+msgid "[trace...]"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:258 kcachegrind/toplevel.cpp:486
+#, kde-format
+msgid "Parts Overview"
+msgstr "अवयव समीक्षा"
+
+#: kcachegrind/toplevel.cpp:267
+#, kde-format
+msgid "Top Cost Call Stack"
+msgstr "धेरै लागतको कल थाक"
+
+#: kcachegrind/toplevel.cpp:269
+#, kde-format
+msgid ""
+"<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most probable' "
+"call stack. It is built up by starting with the current selected function "
+"and adds the callers/callees with highest cost at the top and to bottom.</"
+"p><p>The <b>Cost</b> and <b>Calls</b> columns show the cost used for all "
+"calls from the function in the line above.</p>"
+msgstr ""
+"<b>सबैभन्दा धेरै लागतको कल थाक</b><p>यो केवल अवास्तविक 'सबैबन्दा धेरै सम्भावना भएको' कल "
+"थाक हो । यो हाल चयन गरिएको प्रकार्यबाट सुरु गरेर निर्माण गरिन्छ र माथि र तल सबैभन्दा "
+"उच्च लागत भएका कल गर्ने/कल प्राप्त गर्ने थप्दछ ।</p><p> <b>लागत</b> र <b>कल</b> "
+"स्तम्भले माथिको लाइनमा प्रकार्यका सबै कलहरूका लागि प्रयोग गरिएको लागत देखाउछ ।</p>"
+
+#: kcachegrind/toplevel.cpp:283
+#, kde-format
+msgid "Flat Profile"
+msgstr "फ्ल्याट प्रोफाइल"
+
+#: kcachegrind/toplevel.cpp:296
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
+#| "loadable profile dumps in all subdirectories of: <ul><li>current working "
+#| "directory of KCachegrind, i.e. where it was started from, and <li>the "
+#| "default profile dump directory given in the configuration.</ul> The list "
+#| "is sorted according the the target command profiled in the corresponding "
+#| "dump.</p><p>On selecting a profile dump, information for it is shown in "
+#| "the bottom area of the dockable: <ul><li><b>Options</b> allows you to "
+#| "view the profiled command and profile options of this dump. By changing "
+#| "any item, a new (yet unexisting) profile template is created. Press "
+#| "<b>Run Profile</b> to start aprofile run with these options in the "
+#| "background. <li><b>Info</b> gives detailed info on the selected dump like "
+#| "event cost summary and properties of the simulated cache. <li><b>State</"
+#| "b> is only available for current happening profiles runs. Press "
+#| "<b>Update</b> to see different counters of the run, and a stack trace of "
+#| "the current position in the program profiled. Check the <b>Every</b> "
+#| "option to let KCachegrind regularly poll these data. Check the <b>Sync</"
+#| "b> option to let the dockable activate the top function in the current "
+#| "loaded dump.</ul></p>"
+msgid ""
+"<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
+"loadable profile dumps in all subdirectories of: <ul><li>current working "
+"directory of KCachegrind, i.e. where it was started from, and </li><li>the "
+"default profile dump directory given in the configuration.</li></ul> The "
+"list is sorted according to the target command profiled in the corresponding "
+"dump.</p><p>On selecting a profile dump, information for it is shown in the "
+"bottom area of the dockable: <ul><li><b>Options</b> allows you to view the "
+"profiled command and profile options of this dump. By changing any item, a "
+"new (yet unexisting) profile template is created. Press <b>Run Profile</b> "
+"to start a profile run with these options in the background. </"
+"li><li><b>Info</b> gives detailed info on the selected dump like event cost "
+"summary and properties of the simulated cache. </li><li><b>State</b> is only "
+"available for current happening profiles runs. Press <b>Update</b> to see "
+"different counters of the run, and a stack trace of the current position in "
+"the program profiled. Check the <b>Every</b> option to let KCachegrind "
+"regularly poll these data. Check the <b>Sync</b> option to let the dockable "
+"activate the top function in the current loaded dump.</li></ul></p>"
+msgstr ""
+"<b>प्रोफाइल डम्प</b><p> यो dockable ले माथिल्लो भागमा: <ul><li>हाल कार्य गरिराखेको "
+"KCachegrind को डाइरेक्टरी, जस्तै: यो कहाँबाट सुरु भएको थियो, र <li>कन्फिगरेसनमा दिएको "
+"पूर्वनिर्धारित प्रोफाइल डम्प डाइरेक्टरीको सबै उप-डाइरेक्टरीमा लोड गर्न सकिने प्रोफाइल "
+"डम्पको सूची देखाउछ ।</ul> यो सूची अनुकूल डम्पमा प्रोफाइल गरिएका लक्ष्य आदेश अनुसार "
+"क्रमबद्ध गरिन्छ ।</p><p>यो प्रोफाइल डम्प चयन गर्दा, dockable: <ul><li><b>विकल्प</b> "
+"को तल्लो क्षेत्रमा देखिने सूचनाले तपाईँलाई यो डम्पका प्रोफाइल गरिएका आदेश र प्रोफाइल "
+"विकल्प हेर्न अनुमति दिन्छ । कुनै विषयवस्तु परिवर्तन गरेर, एउटा नयाँ (हालसम्म अवस्थित "
+"नभएको) प्रोफाइल सिर्जना गरिन्छ । पृष्ठभूमिमा यी विकल्पवाट प्रोफाइल चलाउन सुरुआत गर्न "
+"<b>प्रोफाइल चलाउनुहोस्</b> बटन थिच्नुहोस् । <li><b>सूचना</b> ले चयन गरिएका डम्प जस्तै "
+"घटना लागत सारांश र बनावटीक्यासका बिशेषताका बारेमा विस्तृत सूचना दिन्छ । "
+"<li><b>वस्तुस्थिति</b> हाल देखिने प्रोफाइल चलाउनका लागि मात्र उपलब्ध हुन्छ । चलाईका "
+"बिभिन्न गणक, र प्रोफाइल गरिएका कार्यक्रममा हालको थाक पदचिन्ह हेर्न <b>अद्यावधिक "
+"गर्नुहोस्</b> बटन थिच्नुहोस् । Kcachegrind लाई नियमित रुपमा यी डाटा तान्न दिन "
+"<b>प्रत्येक</b> विकल्प जाँच गर्नुहोस् । हाल लोड गरिएको डम्पमा dockable लाई माथिल्लो "
+"कार्य सक्रिय पार्न दिन <b>Sync</b> बटन जाँच गर्नुहोस् ।</ul></p>"
+
+#: kcachegrind/toplevel.cpp:367
+#, kde-format
+msgid "&Duplicate"
+msgstr "नक्कल प्रति बनाउनुहोस्"
+
+#: kcachegrind/toplevel.cpp:370
+#, kde-format
+msgid ""
+"<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
+msgstr ""
+"<b>हालको सजावट नक्कल प्रति बनाउनुहोस्</b><p>हालको सजावटको एउटा प्रतिलिपि गर्नुहोस् ।"
+"</p>"
+
+#: kcachegrind/toplevel.cpp:375
+#, kde-format
+msgid "&Remove"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:377
+#, kde-format
+msgid ""
+"<b>Remove Current Layout</b><p>Delete current layout and make the previous "
+"active.</p>"
+msgstr ""
+"<b>हालको सजावट हटाउनुहोस्</b><p>हालको सजावटलाई मेट्नुहोस् र अघिल्लोलाई सक्रिय "
+"बनाउनुहोस् ।</p>"
+
+#: kcachegrind/toplevel.cpp:382
+#, kde-format
+msgid "&Go to Next"
+msgstr "पछिल्लोमा जानुहोस्"
+
+#: kcachegrind/toplevel.cpp:385
+#, kde-format
+msgid "Go to Next Layout"
+msgstr "पछिल्लो सजावटमा जानुहोस्"
+
+#: kcachegrind/toplevel.cpp:389
+#, kde-format
+msgid "&Go to Previous"
+msgstr "अघिल्लोमा जानुहोस्"
+
+#: kcachegrind/toplevel.cpp:392
+#, kde-format
+msgid "Go to Previous Layout"
+msgstr "अघिल्लो सजावटमा जानुहोस्"
+
+#: kcachegrind/toplevel.cpp:396
+#, kde-format
+msgid "&Restore to Default"
+msgstr "पूर्वनिर्धारित रुपमा पुन: भण्डारण गर्नुहोस्"
+
+#: kcachegrind/toplevel.cpp:398
+#, kde-format
+msgid "Restore Layouts to Default"
+msgstr "पूर्वनिर्धारित रुपमा सजावट पुन: भण्डारण गर्नुहोस्"
+
+#: kcachegrind/toplevel.cpp:402
+#, kde-format
+msgid "&Save as Default"
+msgstr "पूर्वनिर्धारित रुपमा बचत गर्नुहोस्"
+
+#: kcachegrind/toplevel.cpp:404
+#, kde-format
+msgid "Save Layouts as Default"
+msgstr "पूर्वनिर्धारित रुपमा सजावट बचत गर्नुहोस्"
+
+#: kcachegrind/toplevel.cpp:415
+#, kde-format
+msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
+msgstr "<b>नयाँ</b><p>नयाँ खाली KCachegrind सञ्झ्याल खोल्दछ ।</p>"
+
+#: kcachegrind/toplevel.cpp:419
+#, kde-format
+msgid "&Add..."
+msgstr "थप्नुहोस्..."
+
+#: kcachegrind/toplevel.cpp:421
+#, kde-format
+msgid ""
+"<b>Add Profile Data</b><p>This opens an additional profile data file in the "
+"current window.</p>"
+msgstr ""
+"<b>प्रोफाइल डाटा थप्नुहोस्</b><p>यसले हालको सञ्झ्यालमा एउटा अतिरिक्त प्रोफाइल डाटा "
+"फाइल खोल्दछ ।</p>"
+
+#: kcachegrind/toplevel.cpp:427
+#, kde-format
+msgctxt "Reload a document"
+msgid "&Reload"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:430
+#, kde-format
+msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
+msgstr ""
+"<b>प्रोफाइल डाटा रिलोड गर्नुहोस्</b><p>यसले कुनै पनि नयाँ सिर्जित अवयव, लोड गर्दछ ।</p>"
+
+#: kcachegrind/toplevel.cpp:435
+#, kde-format
+msgid "&Export Graph"
+msgstr "ग्राफ निर्यात गर्नुहोस्"
+
+#: kcachegrind/toplevel.cpp:438
+#, kde-format
+msgid ""
+"<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
+"tools of the GraphViz package.</p>"
+msgstr ""
+"<b>कल ग्राफ निर्यात गर्नुहोस्</b><p>GraphViz प्याकेजको उपकरणका लागि extension .dot "
+"बाट फाइल उत्पन्न गर्छ ।</p>"
+
+#: kcachegrind/toplevel.cpp:446
+#, kde-format
+msgid "&Force Dump"
+msgstr "डम्प गर्न दबाब दिनुहोस्"
+
+#: kcachegrind/toplevel.cpp:449
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
+#| "current directory. This action is checked while KCachegrind looks for the "
+#| "dump. If the dump is finished, it automatically reloads the current "
+#| "trace. If this is the one from the running Callgrind, the new created "
+#| "trace part will be loaded, too.</p><p>Force dump creates a file "
+#| "'callgrind.cmd', and checks every second for its existence. A running "
+#| "Callgrind will detect this file, dump a trace part, and delete 'callgrind."
+#| "cmd'. The deletion is detected by KCachegrind, and it does a Reload. If "
+#| "there's <em>no</em> Callgrind running, press 'Force Dump' again to cancel "
+#| "the dump request. This deletes 'callgrind.cmd' itself and stops polling "
+#| "for a new dump.</p><p>Note: A Callgrind run <em>only</em> detects "
+#| "existence of 'callgrind.cmd' when actively running a few milliseconds, i."
+#| "e. <em>not</em> sleeping. Tip: For a profiled GUI program, you can awake "
+#| "Callgrind e.g. by resizing a window of the program.</p>"
+msgid ""
+"<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
+"current directory. This action is checked while KCachegrind looks for the "
+"dump. If the dump is finished, it automatically reloads the current trace. "
+"If this is the one from the running Callgrind, the new created trace part "
+"will be loaded, too.</p><p>Force dump creates a file 'callgrind.cmd', and "
+"checks every second for its existence. A running Callgrind will detect this "
+"file, dump a trace part, and delete 'callgrind.cmd'. The deletion is "
+"detected by KCachegrind, and it does a Reload. If there is <em>no</em> "
+"Callgrind running, press 'Force Dump' again to cancel the dump request. This "
+"deletes 'callgrind.cmd' itself and stops polling for a new dump.</p><p>Note: "
+"A Callgrind run <em>only</em> detects existence of 'callgrind.cmd' when "
+"actively running a few milliseconds, i.e. <em>not</em> sleeping. Tip: For a "
+"profiled GUI program, you can awake Callgrind e.g. by resizing a window of "
+"the program.</p>"
+msgstr ""
+"<b>डम्प गर्न दबाव दिनुहोस्</b><p>यसले हालको डाइरेक्टरीमा कलग्रिन्ड प्रोफाइल चलाउनका "
+"लागि डम्पलाई दबाव दिन्छ । यो कार्य डम्पका लागि KCachegrind हेर्दा जाँच गरिन्छ । यदि "
+"सम्प समाप्त भएमा, यसले स्वचालित रुपमा हालको पदचिन्ह रिलोड गर्दछ । यदि यो चलिराखेको "
+"कलग्रिन्ड मध्येक एक हो भने, नयाँ सिर्जना गरिएको पदचिन्ह अवयव पनि लोड गरिनेछ ।</"
+"p><p>डम्प दबावले फाइल 'callgrind.cmd' सिर्जना गर्छ, र यसको अस्तित्व प्रत्यक सेकेन्डमा "
+"जाँच गर्छ । एउट चलिराखेको कलग्रिन्डले यो फाइल पत्ता लगाउछ, पदचिन्ह अवयव डम्प गर्छ र "
+"'callgrind.cmd' मेट्दछ । मेटाइलाई KCachegrind द्वारा पत्ता लगाइन्छ, र यसलाई रिलोड "
+"गरिन्छ । यदि त्यहाँ कलग्रिन्ड चलिराखेको <em>छैन</em> भने, डम्प अनुरोध रद्द गर्न फेरि 'डम्प "
+"गर्न दबाव दिनुहोस्' बटन थिच्नुहोस् । यो आफैले 'callgrind.cmd' मेट्दछ र नयाँ डम्पका लागि "
+"तान्न रोक्दछ ।</p><p>द्रष्टव्य: चलेको कलग्रिन्डले <em>मात्र</em> कही मिलिसेकेन्ड सक्रिय "
+"रुपमा चलेको बेलामा 'callgrind.cmd' को अस्तित्व पत्ता लगाउछ, जस्तै अचल <em>नहुनु</em> । "
+"टीप: प्रोफाइल गरिएको जीयूआई कार्यक्रमका लागि, तपाईँले कल ग्रिन्डलाई चलाउन सक्नुहुन्छ "
+"जस्तै: कार्यक्रमको सञ्झ्याल रिसाइज गर्नु ।</p>"
+
+#: kcachegrind/toplevel.cpp:474
+#, kde-format
+msgid ""
+"<b>Open Profile Data</b><p>This opens a profile data file, with possible "
+"multiple parts</p>"
+msgstr ""
+"<b>प्रोफाइल डाटा खोल्नुहोस्</b><p>यसले सम्भावित बहुभागिय भागबाट, प्रोफाइल डाटा "
+"खोल्दछ</p>"
+
+#: kcachegrind/toplevel.cpp:489
+#, kde-format
+msgid "Show/Hide the Parts Overview Dockable"
+msgstr "Dockable अवयव समीक्षा देखाउनुहोस्/लुकाउनुहोस्"
+
+#: kcachegrind/toplevel.cpp:494
+#, kde-format
+msgid "Call Stack"
+msgstr "कल स्ट्याक"
+
+#: kcachegrind/toplevel.cpp:497
+#, kde-format
+msgid "Show/Hide the Call Stack Dockable"
+msgstr "Dockable कल स्ट्याक देखाउनुहोस्/लुकाउनुहोस्"
+
+#: kcachegrind/toplevel.cpp:502
+#, kde-format
+msgid "Function Profile"
+msgstr "प्रकार्य प्रोफाइल"
+
+#: kcachegrind/toplevel.cpp:505
+#, kde-format
+msgid "Show/Hide the Function Profile Dockable"
+msgstr "Dockable प्रकार्य प्रोफाइल देखाउनुहोस्/लुकाउनुहोस्"
+
+#: kcachegrind/toplevel.cpp:513
+#, kde-format
+msgid "Show/Hide the Profile Dumps Dockable"
+msgstr "Dockable प्रोफाइल डम्प देखाउनुहोस्/लुकाउनुहोस्"
+
+#: kcachegrind/toplevel.cpp:520
+#, fuzzy, kde-format
+#| msgid "(active)"
+msgid "Relative"
+msgstr "(सक्रिय)"
+
+#: kcachegrind/toplevel.cpp:522
+#, kde-format
+msgid "Show relative instead of absolute costs"
+msgstr "निश्चित लागतको साटोमा सापेक्षिक लागत देखाउनुहोस्"
+
+#: kcachegrind/toplevel.cpp:528
+#, fuzzy, kde-format
+#| msgid "Percentage Relative to Parent"
+msgid "Relative to Parent"
+msgstr "प्यारेन्टमा सापेक्षिक प्रतिशत"
+
+#: kcachegrind/toplevel.cpp:531
+#, kde-format
+msgid "Show percentage costs relative to parent"
+msgstr "प्यारेन्टमा सापेक्षिक लागत प्रतिशत देखाउनुहोस्"
+
+#: kcachegrind/toplevel.cpp:535
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>Show percentage costs relative to parent</b><p>If this is switched "
+#| "off, percentage costs are always shown relative to the total cost of the "
+#| "profile part(s) that are currently browsed. By turning on this option, "
+#| "percentage cost of shown cost items will be relative to the parent cost "
+#| "item.<ul><table><tr><td><b>Cost Type</td><td><b>Parent Cost</td></"
+#| "tr><tr><td>Function Cumulative</td><td>Total</td></tr><tr><td>Function "
+#| "Self</td><td>Function Group (*) / Total</td></tr><tr><td>Call</"
+#| "td><td>Function Cumulative</td></tr><tr><td>Source Line</td><td>Function "
+#| "Cumulative</td></tr></table><p>(*) Only if function grouping is switched "
+#| "on (e.g. ELF object grouping)."
+msgid ""
+"<b>Show percentage costs relative to parent</b><p>If this is switched off, "
+"percentage costs are always shown relative to the total cost of the profile "
+"part(s) that are currently browsed. By turning on this option, percentage "
+"cost of shown cost items will be relative to the parent cost item.</"
+"p><ul><table><tr><td><b>Cost Type</b></td><td><b>Parent Cost</b></td></"
+"tr><tr><td>Function Cumulative</td><td>Total</td></tr><tr><td>Function Self</"
+"td><td>Function Group (*) / Total</td></tr><tr><td>Call</td><td>Function "
+"Inclusive</td></tr><tr><td>Source Line</td><td>Function Inclusive</td></tr></"
+"table></ul><p>(*) Only if function grouping is switched on (e.g. ELF object "
+"grouping).</p>"
+msgstr ""
+"<b>प्यारेन्टको सापेक्षिक प्रतिशत लागत देखाउनुहोस्</b><p>यदि यो स्विच अफ गरिएको भएमा, "
+"प्रतिशत लागत सधैँ हाल ब्राउज गरिएका प्रोफाइल अवयव(हरू)को कूल लागतको सापेक्षमा देखाइन्छ "
+"। यो विकल्प खोल्दा, देखिएका लागत विषयवस्तुको लागत प्रतिशत प्यारेन्ट लागत विषयवस्तुसँग "
+"सापेक्षिक हुनेछन् ।<ul><table><tr><td><b>लागत प्रकार</td><td><b>प्यारेन्ट लागत</td></"
+"tr><tr><td>प्रकार्य सञ्चिती</td><td>Total</td></tr><tr><td>प्रकार्य</"
+"td><td>प्रकार्य समूह (*) / कूल</td></tr><tr><td>कूल</td><td>प्रकार्य सञ्चिती</td></"
+"tr><tr><td>स्रोत लाइन</td><td>प्रकार्य सञ्चिती</td></tr></table><p>(*) यदि "
+"प्रकार्य बर्गीकरण स्विच अन गर्दा मात्र(जस्तै ईएलएफ वस्तु बर्गीकरण) ।"
+
+#: kcachegrind/toplevel.cpp:552
+#, fuzzy, kde-format
+#| msgid "Do Cycle Detection"
+msgid "Cycle Detection"
+msgstr "चक्र खोजी गर्नुहोस्"
+
+#: kcachegrind/toplevel.cpp:555
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
+#| "drawing will show black areas when a recursive call is made instead of "
+#| "drawing the recursion ad infinitum. Note that the size of black areas "
+#| "often will be wrong, as inside recursive cycles the cost of calls cannot "
+#| "be determined; the error is small, however, for false cycles (see "
+#| "documentation).<p>The correct handling for cycles is to detect them and "
+#| "collapse all functions of a cycle into a virtual function, which is done "
+#| "when this option is selected. Unfortunately, with GUI applications, this "
+#| "often will lead to huge false cycles, making the analysis impossible; "
+#| "therefore, there is the option to switch this off."
+msgid ""
+"<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
+"drawing will show black areas when a recursive call is made instead of "
+"drawing the recursion ad infinitum. Note that the size of black areas often "
+"will be wrong, as inside recursive cycles the cost of calls cannot be "
+"determined; the error is small, however, for false cycles (see "
+"documentation).</p><p>The correct handling for cycles is to detect them and "
+"collapse all functions of a cycle into an artificial function, which is done "
+"when this option is selected. Unfortunately, with GUI applications, this "
+"often will lead to huge false cycles, making the analysis impossible; "
+"therefore, there is the option to switch this off.</p>"
+msgstr ""
+"<b>दोहोरिने चक्र पत्ता लगाउनुहोस्</b><p>यदि यो स्विच अफ गरिएमा, ट्री मानचित्र "
+"रेखाचित्रले पुनरावृत्ती ad अनन्तसम्म रेखचित्रको साटोमा पुनरावृत्तीक कल बनाउदा कालो क्षेत्र "
+"देखाउनेछ । याद गर्नुहोस् कहिलेकाही कालो क्षेत्रको साइज गलत हुनसक्छ, त्यसैले, त्रुटि सानो "
+"भएता पनि, गलत चक्रका लागि कलका भित्रपट्टीका पुनरावृत्तीक चक्र लागत निश्चित गर्न सकिने "
+"छैन (मिसिलीकरण हेर्नुहोस्) ।<p>चक्रको ठीक ह्यान्डलिङका लागि तिनीहरूलाई पत्ता लागाउनु "
+"पर्छ र अवास्तविक प्रकार्यमा चक्रका सबै प्रकार्य नष्ट गर्नुपर्छ, यो विकल्प चयन गरिएमा मात्र "
+"यो विकल्प गर्न सकिन्छ । दुर्भाग्यवश,जीयूआई अनुप्रयोगमा, धेरै गलत चकक्रहरू हुन्छन्, विश्लेषण "
+"असम्भव बनाउछन्; त्यसैले त्यहाँ यसलाई बन्द गर्ने विकल्प छ ।"
+
+#: kcachegrind/toplevel.cpp:571
+#, kde-format
+msgid "Shorten Templates"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:573
+#, kde-format
+msgid "Hide Template Parameters in C++ Symbols"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:574
+#, kde-format
+msgid ""
+"<b>Hide Template Parameters in C++ Symbols</b><p>If this is switched on, "
+"every symbol displayed will have any C++ template parameters hidden, just "
+"showing &lt;&gt; instead of a potentially nested template parameter.</"
+"p><p>In this mode, you can hover the mouse pointer over the activated symbol "
+"label to show a tooltip with the unabbreviated symbol.</p>"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:590
+#, kde-format
+msgid "&Up"
+msgstr "माथि"
+
+#: kcachegrind/toplevel.cpp:599
+#, kde-format
+msgid ""
+"<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
+"was visited, use that with highest cost.</p>"
+msgstr ""
+"<b>माथि जानुहोस्</b><p>हालको प्रकार्यको अन्त्यमा चयन गरिएको कलरमा जानुहोस् । यदि कलर "
+"अवलोकन गरिएको नभएमा, जसरी भए पनि प्रयोग गर्नुहोस् ।</p>"
+
+#: kcachegrind/toplevel.cpp:616
+#, kde-format
+msgid "Go back in function selection history"
+msgstr "इतिहास चयन प्रकार्यमा फर्कनुहोस्"
+
+#: kcachegrind/toplevel.cpp:630
+#, kde-format
+msgid "Go forward in function selection history"
+msgstr "इतिहास चयन प्रकार्यमा जानुहोस्"
+
+#: kcachegrind/toplevel.cpp:635 kcachegrind/toplevel.cpp:1512
+#, kde-format
+msgid "Primary Event Type"
+msgstr "प्राथमिक घटना प्रकार"
+
+#: kcachegrind/toplevel.cpp:636
+#, kde-format
+msgid "Select primary event type of costs"
+msgstr "लागतको प्राथमिक घटना प्रकार चयन गर्नुहोस्"
+
+#: kcachegrind/toplevel.cpp:658 kcachegrind/toplevel.cpp:1517
+#, kde-format
+msgid "Secondary Event Type"
+msgstr "गौण घटना प्रकार"
+
+#: kcachegrind/toplevel.cpp:659
+#, kde-format
+msgid "Select secondary event type for cost e.g. shown in annotations"
+msgstr "लागतका लागि एनोटेसनमा जस्तै देखिने गौण घटना प्रकार चयन गर्नुहोस्"
+
+#: kcachegrind/toplevel.cpp:669
+#, kde-format
+msgid "Grouping"
+msgstr "समूह"
+
+#: kcachegrind/toplevel.cpp:671
+#, kde-format
+msgid "Select how functions are grouped into higher level cost items"
+msgstr "उच्च स्तर लागत विषयवस्तुमा कसरी प्रकार्य बर्गीकृत गर्ने चयन गर्नुहोस्"
+
+#: kcachegrind/toplevel.cpp:677
+#, kde-format
+msgid "(No Grouping)"
+msgstr "(समूह छैन)"
+
+#: kcachegrind/toplevel.cpp:689
+#, kde-format
+msgid "Split"
+msgstr "बिभाजन गर्नुहोस्"
+
+#: kcachegrind/toplevel.cpp:692
+#, kde-format
+msgid "Show two information panels"
+msgstr "दुइवटा सूचना प्यानल देखाउनुहोस्"
+
+#: kcachegrind/toplevel.cpp:698
+#, kde-format
+msgid "Split Horizontal"
+msgstr "तेर्सो बिभाजन गर्नुहोस्"
+
+#: kcachegrind/toplevel.cpp:701
+#, kde-format
+msgid "Change Split Orientation when main window is split."
+msgstr "मुख्य सञ्झ्याल बिभाजन हुँदा बिभाजन अभिमुखीकरण परिवर्तन गर्नुहोस् ।"
+
+#: kcachegrind/toplevel.cpp:898
+#, kde-format
+msgid "Select Callgrind Profile Data"
+msgstr "Callgrind प्रोफाइल डाटा चयन गर्नुहोस्"
+
+#: kcachegrind/toplevel.cpp:900 kcachegrind/toplevel.cpp:968
+#, fuzzy, kde-format
+#| msgid ""
+#| "cachegrind.out* callgrind.out*|Callgrind Profile Data\n"
+#| "*|All Files"
+msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
+msgstr ""
+"cachegrind.out* callgrind.out*|Callgrind प्रोफाइल डाटा\n"
+"*|सबै फाइल"
+
+#: kcachegrind/toplevel.cpp:928 kcachegrind/toplevel.cpp:957
+#, kde-format
+msgid ""
+"Could not open the file \"%1\". Check it exists and you have enough "
+"permissions to read it."
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:966
+#, kde-format
+msgid "Add Callgrind Profile Data"
+msgstr "Callgrind प्रोफाइल डाटा थप्नुहोस्"
+
+#: kcachegrind/toplevel.cpp:1136 kcachegrind/toplevel.cpp:1465
+#, kde-format
+msgid "(Hidden)"
+msgstr "(लुकेको)"
+
+#: kcachegrind/toplevel.cpp:1522
+#, kde-format
+msgid "Hide"
+msgstr "लुकाउनुहोस्"
+
+#: kcachegrind/toplevel.cpp:1564
+#, kde-format
+msgid "Show Absolute Cost"
+msgstr "निश्चित लागत देखाउनुहोस्"
+
+#: kcachegrind/toplevel.cpp:1567
+#, kde-format
+msgid "Show Relative Cost"
+msgstr "सापेक्षिक लागत देखाउनुहोस्"
+
+#: kcachegrind/toplevel.cpp:1599
+#, kde-format
+msgid "Go Back"
+msgstr "पछाडि जानुहोस्"
+
+#: kcachegrind/toplevel.cpp:1600
+#, kde-format
+msgid "Go Forward"
+msgstr "अगाडि जानुहोस्"
+
+#: kcachegrind/toplevel.cpp:1601
+#, kde-format
+msgid "Go Up"
+msgstr "माथि जानुहोस्"
+
+#: kcachegrind/toplevel.cpp:1813
+#, kde-format
+msgid "Layout Count: %1"
+msgstr "सजावट गणना: %1"
+
+#: kcachegrind/toplevel.cpp:1820
+#, kde-format
+msgid "No profile data file loaded."
+msgstr "प्रोफाइल डाटा फाइल लोड गरिएको छैन ।"
+
+#: kcachegrind/toplevel.cpp:1829
+#, kde-format
+msgid "Total %1 Cost: %2"
+msgstr "कूल %1 लागत: %2"
+
+#: kcachegrind/toplevel.cpp:1841
+#, kde-format
+msgid "No event type selected"
+msgstr "घटना प्रकार चयन गरिएको छैन"
+
+#: kcachegrind/toplevel.cpp:2027
+#, kde-format
+msgid "Cannot determine receiver PID for dump request"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:2068
+#, kde-format
+msgid "Error running callgrind_control"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:2107 kcachegrind/toplevel.cpp:2144
+#: kcachegrind/toplevel.cpp:2181
+#, kde-format
+msgid "(No Stack)"
+msgstr "(थाक छैन)"
+
+#: kcachegrind/toplevel.cpp:2113
+#, kde-format
+msgid "(No next function)"
+msgstr "(पछिल्लो प्रकार्य छैन)"
+
+#: kcachegrind/toplevel.cpp:2150
+#, kde-format
+msgid "(No previous function)"
+msgstr "(अघिल्लो प्रकार्य छैन)"
+
+#: kcachegrind/toplevel.cpp:2186
+#, kde-format
+msgid "(No Function Up)"
+msgstr "(माथि प्रकार्य छैन)"
+
+#: kcachegrind/toplevel.cpp:2318 kcachegrind/toplevel.cpp:2332
+#, kde-format
+msgid "Loading %1"
+msgstr "लोड %1"
+
+#: kcachegrind/toplevel.cpp:2326
+#, fuzzy, kde-format
+#| msgid "Loading %1"
+msgid "Error loading %1: %2"
+msgstr "लोड %1"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, fuzzy, kde-format
+msgid ""
+"<p>...that the <em>What's this...</em> help for every GUI widget\n"
+"in KCachegrind contains detailed usage information for this widget?\n"
+"It is highly recommend to read at least these help texts on first\n"
+"use. Request <em>What's this...</em> help by pressing\n"
+"Shift-F1 and clicking on the widget.</p>\n"
+msgstr ""
+"<p>...के <em>यो के हो ?</em> ले प्रत्येक जीयूआई विजेटका\n"
+"लागि KCachegrind मा यो विजेटका लागि विस्तृत उपयोगि सूचनासमाविष्ट गर्छ ?\n"
+"पहिलो प्रयोगमा कम्तिमा पनि यी मद्दत पाठहरू पढ्न सिफारिस गरिन्छ । <em>यो के हो ?</"
+"em> मद्दत\n"
+"Shift+F1 थिचेर र विजेटमा क्लिक गरेर अनुरोध गर्नुहोस् ।</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:12
+#, kde-format
+msgid ""
+"<p>...that you can get profile information at instruction level\n"
+"with Calltree when you provide the option <em>--dump-instr=yes</em>?\n"
+"Use the Assembler View for the instruction annotations.\n"
+"</p>\n"
+msgstr ""
+"<p>...के तपाईँलाई विकल्प <em>--dump-instr=yes</em> उपलब्ध हुँदा\n"
+"निर्देशन स्तरसँगको कलट्रीमा प्रोफाइल सूचना प्राप्त गर्न सक्नुहुन्छ ?\n"
+"निर्देशन विवरणका लागि एसेम्बलर प्रयोग गर्नुहोस् ।\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:21
+#, kde-format
+msgid ""
+"<p>...that you can use Alt-Left/Right keys of your keyboard to go\n"
+"back/forward in the active object history ?</p>\n"
+msgstr ""
+"<p>...के तपाईँले सक्रिय वस्तु इतिहासमा पछाडि/अगाडि जान\n"
+"तपाईँको कुञ्जीपाटीको Alt-Left/Right कुञ्जीहरू प्रयोग गर्न सक्नुहुन्छ ?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>...that you can navigate in the Callee/Caller Map View using\n"
+"arrow keys? Use Left/Right to change to siblings of the current\n"
+"item; use Up/Down to go one nesting level up/down. To select\n"
+"the current item, press Space, and to activate it, press Return.\n"
+"</p>\n"
+msgstr ""
+"<p>...के तपाईँले बाँण कुञ्जी प्रयोग गरेर कल गर्ने/कल प्राप्त गर्ने मानचित्र दृश्यमा नेभिगेट\n"
+"गर्न सक्नुहुन्छ ? हालको विषयवस्तुको सम्बन्ध परिवर्तन गर्न बायाँ/दायाँ बटन प्रयोग गर्नुहोस्; "
+"एक नेस्टिङ\n"
+"स्तर माथि/तल जान माथि/तल बटन प्रयोग गर्नुहोस् । हालको विषयवस्तु चयन\n"
+"गर्न, Space थिच्नुहोस्, र यसलाई सक्रिय पार्न, फर्कनुहोस् बटनथिच्नुहोस् ।\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:38
+#, kde-format
+msgid ""
+"<p>...that you can navigate in the Call Graph View using\n"
+"arrow keys? Use Up/Down to go one calling level up/down, alternating\n"
+"between calls and functions. Use Left/Right to change to siblings of a "
+"current\n"
+"selected call. To activate the current item, press Return.\n"
+"</p>\n"
+msgstr ""
+"<p>...के तपाईँले वाँण कुञ्जीहरू प्रयोग गरेर कल ग्राफमा\n"
+" नेभिगेट गर्न सक्नुहुन् s?कल र प्रकार्य विकल्प बीचमा, एक कल स्तर\n"
+"माथि/तल जान माथि/तल बटन प्रयोग गर्नुहोस् ।.हाल चयन गरिएका कलको सम्बन्ध परिवर्तन गर्न "
+"बायाँtदायाँ बटन\n"
+"प्रयोग गर्नुहोस् ।.हालको विषयवस्तु सक्रिय पार्न, फर्कनुहोस् बटन थिचक्नुहोस् ।.\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:48
+#, kde-format
+msgid ""
+"<p>...that you can rapidly locate a function by entering part of its\n"
+"name (case-insensitive) into the edit line of the toolbar\n"
+"and hit return?</p>\n"
+msgstr ""
+"<p>...के तपाईँले उपकरणपट्टीको सम्पादन लाइनमा प्रकार्यका (केस-असम्वेदना) प्रविष्ट गरेर\n"
+"एउटा प्रकार्य तत्काल तोक्न सक्नुहुन्छ\n"
+"र फर्काउन सक्नुहुन्छ?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:56
+#, kde-format
+msgid ""
+"<p>...that you can assign custom colors to \n"
+"ELF objects/C++ Classes/Source Files for graph coloring\n"
+"in <em>Settings->Configure KCachegrind...</em>?</p>\n"
+msgstr ""
+"<p>...के तपाईँले <em>Settings->Configure\n"
+"KCachegrind...</em> को ग्राफ रङ्गाउनका लागिELF objects/C++ Classes/Source "
+"फाइलमा अनुकूलन रङ मानाङ्कन गर्न\n"
+"सक्नुहुन्छ ?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:64
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>...that you can see if debug info is available for a selected \n"
+#| "function by looking at the location label in the Info tab or\n"
+#| "the source listing header in the source tab?</p>\n"
+#| "<p>There must be the name of the source file (with extension).\n"
+#| "If KCachegrind still doesn't show the source, make sure that you\n"
+#| "have added the directory of the source file to the\n"
+#| "<em>Source Directories</em> list in the configuration.\n"
+msgid ""
+"<p>...that you can see if debug info is available for a selected \n"
+"function by looking at the location label in the Info tab or\n"
+"the source listing header in the source tab?</p>\n"
+"<p>There must be the name of the source file (with extension).\n"
+"If KCachegrind still does not show the source, make sure that you\n"
+"have added the directory of the source file to the\n"
+"<em>Source Directories</em> list in the configuration.\n"
+msgstr ""
+"<p>...के तपाईँले सूचना ट्याबको स्थान लेबुलमा वा स्रोतट्याबको\n"
+"स्रोत सूचीकृत हेडरमा हेरेर चयन गरिएका प्रकार्यका लागि त्रुटि सच्याउने सूचना\n"
+"उपलब्ध छ या छैन हेर्न सक्नुहुन्छ ?</p>\n"
+"<p>त्यहाँ स्रोत फाइलको नाम हुनुपर्नेछ (विस्तारसँग) ।\n"
+"यदि KCachegrind ले अझै स्रोत देखाउदैन भने, तपाईँले कन्फिगरेसनको <em>स्रोत डाइरक्टरी</em> "
+"सूचीमा स्रोतको डाइरेक्टरी फाइल थप्नुभएको छ छैन निश्चित गर्नुहोस् ।\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:76
+#, kde-format
+msgid ""
+"<p>...that you can configure whether KCachgrind should\n"
+"show absolute event counts or relative ones (percentage display)?</p>\n"
+msgstr ""
+"<p>...के तपाईँले KCachgrind ले निश्चित घटना गणना वा सम्बन्धित एक (प्रतिशत प्रदर्शन) "
+"देखाउनु पर्छ वा पर्दैन कन्फिगर गर्न सक्नुहुन्छ ?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:83
+#, kde-format
+msgid ""
+"<p>...that you can configure the maximum number of items\n"
+"for all function lists in KCachegrind? Limiting the number\n"
+"of items is done to get a fast reacting GUI. The last item in\n"
+"the list will show you the number of skipped functions, together\n"
+"with a cost condition for these skipped functions.</p>\n"
+"<p>To activate a function with small costs, search for it and select\n"
+"it in the flat profile. Selecting functions with small cost will\n"
+"temporarily add them to the flat profile list.</p>\n"
+msgstr ""
+"<p>...के तपाईँले KCachegrind का सबै प्रकार्य सूचीका लागि विषयवस्तुको\n"
+"अधिकतम सङ्ख्या कन्फिगर गर्न सक्नुहुन्छ ? छिटो प्रतिक्रिया दिने जीयूआई प्राप्त गर्न "
+"विषयवस्तुको सङ्ख्या\n"
+"सीमित गर्ने कार्य समाप्त भयो । तपाईँलाई सूचीको अन्तिम\n"
+"विषयवस्तुले फड्किएका प्रकार्यहरूसँग,तीनिहरूको\n"
+"लागि लागत सर्त देखाउनेछ</p>\n"
+"<p>सानो लागतबाट प्रकार्य सक्रिय पार्न, यसलाई खोजी गर्नुहोस् र यसलाई\n"
+"फ्ल्याट प्रोफाइलमा चयन गर्नुहोस् । प्रकार्यहरू सानो लागतमा चयन गर्दा तीनिहरूलाई फ्ल्याट "
+"प्रोफाइल सूचीमा\n"
+"अस्थायी रुपमा थपिने छन् ।</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>...that the Coverage tab - in contrast to the Call Lists tab -\n"
+"shows <em>all</em> functions that are calling the selected function\n"
+"(upper part) / are called by the selected function (bottom part),\n"
+"no matter how many function are between them on the stack?</p>\n"
+"<p>Examples:</p>\n"
+"<p>An entry in the upper list for function foo1() with a value of 50%\n"
+"with function bar() selected means that 50% of all the cost of function\n"
+"bar() happened while called from function foo1().</p>\n"
+"<p>An entry in the bottom list for function foo2() with a value of 50%\n"
+"with function bar() selected means that 50% of all the cost of function\n"
+"bar() happened while calling foo2() from bar().</p>\n"
+msgstr ""
+"<p>...के कल सूची ट्याबमा व्यतिरेक सूचीको - ढाक्ने ट्याबले -\n"
+"चयन गरिएका प्रकार्य (तल्लो भाग) द्वारा कल गर्ने चयन गरिएका प्रकार्य\n"
+"(माथिल्लो भाग) / <em>सबै</em> प्रकार्यहरू\n"
+"त्यो कुरा होइन थाकमा तीनिहरूको बीचमा कतिप्रकार्य छन्, देखाउछ ?</p>\n"
+"<p>उदाहरण:</p>\n"
+"<p> प्रकार्य पट्टी () मा 50%\n"
+"मान भएको प्रकार्य foo1() का लागि माथिल्लो सूचीको एउटा प्रविष्टि चयनले प्रकार्य foo1() "
+"बाट\n"
+"कल गर्दा देखिने सबै प्रकार्यपट्टी () लागतको 50% मान बताउछ ।</p>\n"
+"<p> प्रकार्य पट्टी () मा 50%\n"
+"मान भएको प्रकार्य foo2() का लागि माथिल्लो सूचीको एउटा प्रविष्टि चयनले प्रकार्य foo2() "
+"बाट\n"
+"कल गर्दा देखिने सबै प्रकार्यपट्टी () लागतको 50% मान बताउछ ।</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:112
+#, kde-format
+msgid ""
+"<p>...that waiting for the tool tip inside of a tree map\n"
+"shows the list of names of the nested rectangles the mouse\n"
+"pointer is over?</p>\n"
+"<p>Items from this list can be selected by pressing the right\n"
+"mouse button.</p>\n"
+msgstr ""
+"<p>...के ट्री मानचित्र भित्रको उपकरण टिपको प्रतिक्षामा\n"
+"माउस देखाउने माथि हुँदा\n"
+"नेस्टेड आयातको नामको सूची देखाउछ ?</p>\n"
+"<p>यो सूचीका विषयवस्तु माउसको दायाँबटन\n"
+"थिचेर चयन गर्न सकिन्छ ।</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:122
+#, kde-format
+msgid ""
+"<p>...that you can constrain the cost counts shown to only a\n"
+"few parts of the whole trace by selecting these parts in the\n"
+"\"Trace Selection\" Dockable?</p>\n"
+"<p>To generate multiple parts in a profiling run with\n"
+"cachegrind, use e.g. option --cachedumps=xxx for parts\n"
+"of a length of xxx basic blocks (A basic block is a run\n"
+"of not-branching assembler statements inside of your program\n"
+"code).</p>\n"
+msgstr ""
+"<p>...के तपाईँले \"पदचिन्ह चयन\" Dockable मा यी अवयव चयन\n"
+"गरेरसम्पूर्ण पदचिन्हका\n"
+"केही अवयवमा मात्र देखाउन लागत गणना नियन्त्रण गर्न सक्नुहुन्छ ?</p>\n"
+"<p>cachegrind बाट प्रोफाइलिङ रनमा बहुभागिय अवयव\n"
+"उत्पन्न गर्न, जस्तै: xxx आधारभूत खण्डको\n"
+"लम्बाइको अवयवका लागिoption --cachedumps=xxx प्रयोग गर्नुहोस् (आधारभूत\n"
+"खण्ड तपाईँको कार्यक्रम सङ्केतको भित्रपट्टिको शाखाबिहिन एसेम्बलर कथनको\n"
+"चलाई हो ।</p>\n"
+
+#~ msgid "Source Files"
+#~ msgstr "स्रोत फाइल"
+
+#~ msgid "C++ Classes"
+#~ msgstr "C++ बर्गहरू"
+
+#~ msgid "Function (no Grouping)"
+#~ msgstr "प्रकार्य (बर्गीकरण छैन)"
+
+#~ msgid "KCachegrind Configuration"
+#~ msgstr "केडीई क्यासग्रिन्ड कन्फिगरेसन"
+
+#~ msgid "Active call to '%1'"
+#~ msgstr "'%1' मा कल सक्रिय पार्नुहोस्"
+
+#~ msgid "%1 call to '%2'"
+#~ msgid_plural "%1 calls to '%2'"
+#~ msgstr[0] "'%2' लाई %1 कल"
+#~ msgstr[1] "'%2' लाई %1"
+
+#~ msgid "Jump %1 of %2 times to 0x%3"
+#~ msgstr "0x%3 मा %1 लाई %2 पटक फड्काउनुहोस्"
+
+#~ msgid "Jump %1 times to 0x%2"
+#~ msgstr "0x%2 मा %1 पटक फड्काउनुहोस्"
+
+#~ msgid "(cycle)"
+#~ msgstr "(चक्र)"
+
+#~ msgid "Abstract Item"
+#~ msgstr "संक्षेप विषयवस्तु"
+
+#~ msgid "Cost Item"
+#~ msgstr "लागत विषयवस्तु"
+
+#~ msgid "Part Source Line"
+#~ msgstr "अवयव स्रोत लाइन"
+
+#~ msgid "Source Line"
+#~ msgstr "स्रोत लाइन"
+
+#~ msgid "Part Line Call"
+#~ msgstr "अवयव लाइन कल"
+
+#~ msgid "Line Call"
+#~ msgstr "लाइन कल"
+
+#~ msgid "Part Jump"
+#~ msgstr "अवयव फड्काई"
+
+#~ msgid "Jump"
+#~ msgstr "उफ्रनु"
+
+#~ msgid "Part Instruction"
+#~ msgstr "अवयव निर्देशिका"
+
+#~ msgid "Instruction"
+#~ msgstr "निर्देशिका"
+
+#~ msgid "Part Instruction Jump"
+#~ msgstr "अवयव निर्देशिका फड्काई"
+
+#~ msgid "Instruction Jump"
+#~ msgstr "निर्देशिका फड्काई"
+
+#~ msgid "Part Instruction Call"
+#~ msgstr "अवयव निर्देशिका कल"
+
+#~ msgid "Instruction Call"
+#~ msgstr "निर्देशिका कल"
+
+#~ msgid "Part Call"
+#~ msgstr "अवयव कल"
+
+#~ msgid "Call"
+#~ msgstr "कल"
+
+#~ msgid "Part Function"
+#~ msgstr "अवयव प्रकार्य"
+
+#~ msgid "Function Source File"
+#~ msgstr "प्रकार्य स्रोत फाइल"
+
+#~ msgid "Function Cycle"
+#~ msgstr "प्रकार्य चक्र"
+
+#~ msgid "Part Class"
+#~ msgstr "अवयव बर्ग"
+
+#~ msgid "Class"
+#~ msgstr "बर्ग"
+
+#~ msgid "Part Source File"
+#~ msgstr "अवयव स्रोत फाइल"
+
+#~ msgid "Source File"
+#~ msgstr "स्रोत फाइल"
+
+#~ msgid "Part ELF Object"
+#~ msgstr "अवयव ईएलएफ विषयवस्तु"
+
+#~ msgid "ELF Object"
+#~ msgstr "ईएलएफ विषयवस्तु"
+
+#~ msgid "Profile Part"
+#~ msgstr "प्रोफाइल अवयव"
+
+#~ msgid "Program Trace"
+#~ msgstr "कार्यक्रम पादचिन्ह"
+
+#~ msgid "%1 from %2"
+#~ msgstr "%1 बाट %2"
+
+#~ msgid "(unknown)"
+#~ msgstr "(अज्ञात)"
+
+#~ msgid "(no caller)"
+#~ msgstr "(कल गर्ने वाला छैन)"
+
+#~ msgid "%1 via %2"
+#~ msgstr "%1 हुँदै %2"
+
+#~ msgid "(no callee)"
+#~ msgstr "(कल प्राप्त गर्ने छैन)"
+
+#~ msgid "(not found)"
+#~ msgstr "(फेला परेन)"
+
+#~ msgid "Recalculating Function Cycles..."
+#~ msgstr "प्रकार्य चक्र पुन: गणना गर्दैछ..."
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "A thing's name"
+#~ msgid "Name"
+#~ msgstr "नाम"
+
+#~ msgid "Cost"
+#~ msgstr "लागत"
+
+#~ msgid "Profile Part Overview: Current is '%1'"
+#~ msgstr "प्रोफाइल अवयव समीक्षा: हाल '%1' छ"
+
+#, fuzzy
+#~| msgid "Select '%1'"
+#~ msgid "Deselect '%1'"
+#~ msgstr "'%1' चयन गर्नुहोस्"
+
+#~ msgid "Select '%1'"
+#~ msgstr "'%1' चयन गर्नुहोस्"
+
+#~ msgid "Select All Parts"
+#~ msgstr "सबै अवयब चयन गर्नुहोस्"
+
+#~ msgid "Visible Parts"
+#~ msgstr "दृश्यात्मक अवयव"
+
+#~ msgid "Hide Selected Parts"
+#~ msgstr "चयन गरिएका अवयव लुकाउनुहोस्"
+
+#~ msgid "Unhide Hidden Parts"
+#~ msgstr "लुकेका भाग देखाउनुहोस्"
+
+#~ msgid "Go to '%1'"
+#~ msgstr "'%1' मा जानुहोस्"
+
+#~ msgid "Visualization"
+#~ msgstr "दृष्टिकरण"
+
+#~ msgid "Partitioning Mode"
+#~ msgstr "बिभाजन मोड"
+
+#~ msgid "Diagram Mode"
+#~ msgstr "रेखाचित्र मोड"
+
+#~ msgid "Zoom Function"
+#~ msgstr "जूम प्रकार्य"
+
+#~ msgid "Show Direct Calls"
+#~ msgstr "प्रत्यक्ष कलहरू देखाउनुहोस्"
+
+#~ msgid "Increment Shown Call Levels"
+#~ msgstr "कल स्तर देखाउने बढोत्तरी"
+
+#~ msgid "Draw Names"
+#~ msgstr "नाम लेख्नुहोस्"
+
+#~ msgid "Draw Costs"
+#~ msgstr "लागत देखाउनुहोस्"
+
+#~ msgid "Ignore Proportions"
+#~ msgstr "अनुपात उपेक्षा गर्नुहोस्"
+
+#~ msgid "Draw Frames"
+#~ msgstr "फ्रेम कोर्नुहोस्"
+
+#~ msgid "Allow Rotation"
+#~ msgstr "परिक्रमण अनुमति दिनुहोस्"
+
+#~ msgid "Hide Info"
+#~ msgstr "सूचना लुकाउनुहोस्"
+
+#~ msgid "Show Info"
+#~ msgstr "सूचना देखाउनुहोस्"
+
+#~ msgid "(no trace loaded)"
+#~ msgstr "(पदचिन्ह लोड गरिएको छैन)"
+
+#~ msgid "Jump %1 of %2 times to %3"
+#~ msgstr "%3 मा %1 लाई %2 पटक फड्काउनुहोस्"
+
+#~ msgid "Jump %1 times to %2"
+#~ msgstr "%2 मा %1 पटक फड्काउनुहोस्"
+
+#~ msgid "(%1 item skipped)"
+#~ msgid_plural "(%1 items skipped)"
+#~ msgstr[0] "(%1 विषयवस्तु फड्कियो)"
+#~ msgstr[1] "(%1 विषयवस्तु फड्कियो)"
+
+#~ msgid "No description available"
+#~ msgstr "विस्तृत विवरण उपलब्ध छैन"
+
+#~ msgid ""
+#~ "<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+#~ "there are several profile data files from one profile run. The Trace Part "
+#~ "Overview dockable shows these, horizontally ordered in execution time; "
+#~ "the rectangle sizes are proportional to the total cost spent in the "
+#~ "parts. You can select one or several parts to constrain all costs shown "
+#~ "to these parts only.</p><p>The parts are further subdivided: there is a "
+#~ "partitioning and an callee split mode: <ul><li>Partitioning: You see the "
+#~ "partitioning into groups for a trace part, according to the group type "
+#~ "selected. E.g. if ELF object groups are selected, you see colored "
+#~ "rectangles for each used ELF object (shared library or executable), sized "
+#~ "according to the cost spent therein.</li><li>Callee: A rectangle showing "
+#~ "the inclusive cost of the current selected function in the trace part is "
+#~ "shown. This is split up into smaller rectangles to show the costs of its "
+#~ "callees.</li></ul></p>"
+#~ msgstr ""
+#~ "<b>अवयव समीक्षा</b><p>एउटा पदचिन्हमा एकै प्रोफाइलबाट चलाउन धेरै प्रोफाइल डाटा "
+#~ "फाइलहरू छन् भने बहुबिध पदचिन्ह अवयव समाविष्ट हुन्छन् । पदचिन्ह अवयव समीक्षा dockable "
+#~ "ले, कार्यान्वयन समयको तेर्सो क्रमाङ्कन; अवयवमा लागेको कूल खर्च र आयतको साइज "
+#~ "समानुपातिक देखाउछ । तपाईँले यी अवयवमा मात्र सबै लागत देखाउन नियन्त्रण गर्न एक वा धेरै "
+#~ "अवयव चयन गर्न सक्नुहुन्छ ।</p><p>अवयवका अगाडिका उप-बिभाजन हुन्छन्: त्यहाँ बिभाजन र "
+#~ "एउटा कल प्राप्त गर्ने बिभाजन मोड हुन्छ: <ul><li>बिभाजन: तपाईँले चयन गरिएको समूह "
+#~ "प्रकार अनुसार, एउटा पदचिन्ह अवयवका लागि समूहमा बिभाजन देख्नुहुन्छ । जस्तै: यदि ईएलएफ "
+#~ "वस्तु समूह चयन गरेमा, तपाईँले प्रयोग गरिएका प्रत्येक ईएलएफ वस्तुका लागि (साझा लाइब्रेरी "
+#~ "वा कार्यान्वयनयोग्य), तिनमा खर्च गरिए अनुरुपका साइजका रङ लगाइएका आयत हेर्न सक्नुहुन्छ "
+#~ "।</li><li>कल प्राप्त गर्ने: पदचिन्ह अवयवमा हाल चयन गरिएका प्रकार्यको समाविष्ट "
+#~ "लागत देखाउने एउट आयत देखिन्छ । यसका कल प्राप्त गर्नेको लागत देखाउन यसलाई साना "
+#~ "आयातमा बिभाजन गरिन्छ ।</li></ul></p>"
+
+#, fuzzy
+#~| msgid ""
+#~| "<b>The Flat Profile</b><p>The flat profile contains a group and a "
+#~| "function selection list. The group list contains all groups where costs "
+#~| "are spent in, depending on the chosen group type. The group list is "
+#~| "hidden when group type 'Function' is selected.<p><p>The function list "
+#~| "contains the functions of the selected group (or all for 'Function' "
+#~| "group type), ordered by the costs spent therein. Functions with costs "
+#~| "less than 1% are hidden on default.</p>"
+#~ msgid ""
+#~ "<b>The Flat Profile</b><p>The flat profile contains a group and a "
+#~ "function selection list. The group list contains all groups where costs "
+#~ "are spent in, depending on the chosen group type. The group list is "
+#~ "hidden when group type 'Function' is selected.</p><p>The function list "
+#~ "contains the functions of the selected group (or all for 'Function' group "
+#~ "type), ordered by the costs spent therein. Functions with costs less than "
+#~ "1% are hidden on default.</p>"
+#~ msgstr ""
+#~ "<b>फ्ल्याट प्रोफाइल</b><p>फ्ल्याट प्रोफाइलमा एउटा समूह र प्रकार्य चयन सूची समाविष्ट "
+#~ "हुन्छ । समूह सूचीले रोजेको समूह प्रकारमा निर्भर लागत खर्च भएका सबै समूह समाविष्ट गर्छ । "
+#~ "The group list is hidden when group type 'Function' is selected.<p><p>The "
+#~ "function list contains the functions of the selected group (or all for "
+#~ "'Function' group type), ordered by the costs spent therein. Functions "
+#~ "with costs less than 1% are hidden on default.</p>"
+
+#~ msgid "Show Relative Costs"
+#~ msgstr "सापेक्ष लागत देखाउनुहोस्"
+
+#~ msgid "Show Absolute Costs"
+#~ msgstr "निरपेक्ष लागत देखाउनुहोस्"
+
+#~ msgid "Skip Cycle Detection"
+#~ msgstr "चक्र खोजी फड्काउनुहोस्"
+
+#~ msgid "Cost 2"
+#~ msgstr "लागत २"
+
+#~ msgid "Hex"
+#~ msgstr "हेक्स"
+
+#~ msgid "Assembler"
+#~ msgstr "एसेम्बलर"
+
+#~ msgid "Source Position"
+#~ msgstr "स्रोत वस्तुस्थिति"
+
+#~ msgid ""
+#~ "<b>Annotated Assembler</b><p>The annotated assembler list shows the "
+#~ "machine code instructions of the current selected function together with "
+#~ "(self) cost spent while executing an instruction. If this is a call "
+#~ "instruction, lines with details on the call happening are inserted into "
+#~ "the source: the cost spent inside of the call, the number of calls "
+#~ "happening, and the call destination.</p><p>The disassembler output shown "
+#~ "is generated with the 'objdump' utility from the 'binutils' package.</"
+#~ "p><p>Select a line with call information to make the destination function "
+#~ "of this call current.</p>"
+#~ msgstr ""
+#~ "<b>एनोटेसन एसेम्बलर</b><p>एनोटेसन गरिएको एसेम्बलर सूचीले निर्देशिका कार्यान्वयन गर्दा "
+#~ "हाल चयन गरिएको प्रकार्यको आफ्नो लागतको साथै मेसिन कोड निर्देशिका देखाउछ । यदि यो "
+#~ "कल निर्देशिका हो भने, कल गर्दाका विस्तृत विवरण सहितका लाइनहरू स्रोत: कलको लागेको "
+#~ "खर्च, कलको सङ्ख्या, र कल निर्दिष्ट स्थान घुस्छन् ।</p><p>देखिने डिसएसेम्बलर निर्गत "
+#~ "'binutils' प्याकेजको 'objdump' युटिलिटीबाट उत्पन्न हुन्छ ।</p><p>हालको कललाई "
+#~ "गन्तब्य प्रकार्य बनाउन कल सूचना भएको लाइन चयन गर्नुहोस् ।</p>"
+
+#~ msgid "Go to Address %1"
+#~ msgstr "%1 ठेगानामा जानुहोस्"
+
+#~ msgid "Hex Code"
+#~ msgstr "हेक्स कोड"
+
+#~ msgid "There is no instruction info in the profile data file."
+#~ msgstr "प्रोफाइल डाटा फाइलमा निर्देशिका सूचना छैन ।"
+
+#~ msgid "For the Valgrind Calltree Skin, rerun with option"
+#~ msgstr "भलग्रिन्ड कलट्री स्किनका लागि, विकल्पबाट पुन: चलाउनुहोस्"
+
+#~ msgid "      --dump-instr=yes"
+#~ msgstr "      --dump-instr=yes"
+
+#~ msgid "To see (conditional) jumps, additionally specify"
+#~ msgstr "(ससर्त) उफ्राइ हेर्न, थप निर्दिष्ट गर्नुहोस्"
+
+#~ msgid "      --trace-jump=yes"
+#~ msgstr "      --trace-jump=yes"
+
+#~ msgid "There is an error trying to execute the command"
+#~ msgstr "आदेश कार्यान्वयन गर्न प्रयास गर्दा त्यहाँ त्रुटि हुन्छ"
+
+#~ msgid "Check that you have installed 'objdump'."
+#~ msgstr "तपाईँले 'objdump' स्थापना गर्नुभएको छ या छैन जाँच गर्नुहोस् ।"
+
+#~ msgid "This utility can be found in the 'binutils' package."
+#~ msgstr "यो युटिलिटी 'binutils' प्याकेजमा फेला पार्न सकिने छ ।"
+
+#~ msgid "(No Assembler)"
+#~ msgstr "(एसेम्बलर छैन)"
+
+#~ msgid "There is %1 cost line without assembler code."
+#~ msgid_plural "There are %1 cost lines without assembler code."
+#~ msgstr[0] "त्यहाँ एसेम्बलर कोड नभएको %1 लागत लाइन छ ।"
+#~ msgstr[1] "त्यहाँ एसेम्बलर कोड नभएका %1 लागत लाइन छन् ।"
+
+#~ msgid "This happens because the code of"
+#~ msgstr "यो कोडका कारणले यस्तो हुन्छ"
+
+#~ msgid "does not seem to match the profile data file."
+#~ msgstr "प्रोफाइल डाटा फाइलसँग मिल्ने देखिदैन ।"
+
+#~ msgid "Are you using an old profile data file or is the above mentioned"
+#~ msgstr "तपाईँले पुरानो प्रोफाइल डाटा फाइल वा माथि उल्येख गरेको फाइल प्रयोग गर्नुभएकोछ"
+
+#~ msgid "ELF object from an updated installation/another machine?"
+#~ msgstr "अद्यावधिक स्थापना/ अर्को मेसिनबाट वस्तु ईएलएफ गर्नुहुन्छ ?"
+
+#~ msgid "There seems to be an error trying to execute the command"
+#~ msgstr "आदेश कार्यान्वयन गर्ने प्रयास गर्दा त्यहाँ त्रुटि हुने देखिन्छ"
+
+#~ msgid "Check that the ELF object used in the command exists."
+#~ msgstr "आदेशमा प्रयोग गरिएको ईएलएफ वस्तु अवस्थित छ या छैन जाँच गर्नुहोस् ।"
+
+#~ msgid "Call(s) from %1"
+#~ msgstr "%1 बाट कल(हरू)"
+
+#~ msgid "Call(s) to %1"
+#~ msgstr "%1 मा कल(हरू)"
+
+#~ msgid "(unknown call)"
+#~ msgstr "(अज्ञात कल)"
+
+#, fuzzy
+#~| msgid ""
+#~| "<b>Call Graph around active Function</b><p>Depending on configuration, "
+#~| "this view shows the call graph environment of the active function. Note: "
+#~| "the shown cost is <b>only</b> the cost which is spent while the active "
+#~| "function was actually running; i.e. the cost shown for main() - if it's "
+#~| "visible - should be the same as the cost of the active function, as "
+#~| "that's the part of inclusive cost of main() spent while the active "
+#~| "function was running.</p><p>For cycles, blue call arrows indicate that "
+#~| "this is an artificial call added for correct drawing which actually "
+#~| "never happened.</p><p>If the graph is larger than the widget area, an "
+#~| "overview panner is shown in one edge. There are similar visualization "
+#~| "options to the Call Treemap; the selected function is highlighted.<p>"
+#~ msgid ""
+#~ "<b>Call Graph around active Function</b><p>Depending on configuration, "
+#~ "this view shows the call graph environment of the active function. Note: "
+#~ "the shown cost is <b>only</b> the cost which is spent while the active "
+#~ "function was actually running; i.e. the cost shown for main() - if it is "
+#~ "visible - should be the same as the cost of the active function, as that "
+#~ "is the part of inclusive cost of main() spent while the active function "
+#~ "was running.</p><p>For cycles, blue call arrows indicate that this is an "
+#~ "artificial call added for correct drawing which actually never happened.</"
+#~ "p><p>If the graph is larger than the widget area, an overview panner is "
+#~ "shown in one edge. There are similar visualization options to the Call "
+#~ "Treemap; the selected function is highlighted.</p>"
+#~ msgstr ""
+#~ "<b>कल ग्राफ वरिपरिको सक्रिय प्रकार्य</b><p>कन्फिगेसनमा निर्भर रहेर, यो दृश्यले सक्रिय "
+#~ "प्रकार्यको कल ग्राफ परिवेश देखाउछ । द्रष्टव्य: देखिएको लागत सक्रिय प्रकार्य वास्तवमै "
+#~ "चलिरहेको समयको <b>मात्र</b> खर्च हो: उदाहरणको लागि, मुख्यको लागि देखाएको लागत() "
+#~ "- यदि यो दृश्यात्मक भएमा - सक्रिय प्रकार्यको लागत जस्तै समान हुनुपर्नेछ, त्यस्तै त्यो "
+#~ "सक्रिय प्रकार्य चलेको समयको मुख्य() लागतको समाविष्ट लागतको भाग हो ।</"
+#~ "p><p>चक्रहरूका लागि , निलो कल बाँणहरूले कहिल्यै देखा नपरेका ठीक रेखा चित्रका लागि "
+#~ "थपिएको कृत्रिम कल भएको सङ्केत गर्छ ।</p><p>यदि ग्राफ विजेट क्षेत्र भन्दा ठूलो भएमा, "
+#~ "एउटा किनारामा एउटा समीक्षा प्यानर देखिन्छ । कल ट्रीमानचित्रमा त्यहाँ समान दृष्टीकरण "
+#~ "विकल्प छन्; चयन गरिएका प्रकार्य हाइलाइट गरिन्छ ।<p>"
+
+#~ msgid ""
+#~ "Warning: a long lasting graph layouting is in progress.\n"
+#~ "Reduce node/edge limits for speedup.\n"
+#~ msgstr ""
+#~ "चेतावनी: एउटा अन्त्यसम्म रहने ग्राफ सजावट प्रगतिमा छ ।\n"
+#~ "गति बढाउनका लागि नोड/किनारा दायरा घटाउनुहोस् ।\n"
+
+#~ msgid "Layouting stopped.\n"
+#~ msgstr "सजावट कार्य रोकियो ।\n"
+
+#~ msgid "The call graph has %1 nodes and %2 edges.\n"
+#~ msgstr "कल ग्राफमा %1 नोड र %2 किनारा छन् ।\n"
+
+#~ msgid "No item activated for which to draw the call graph."
+#~ msgstr "कल ग्राफ कोर्नका लागि विषयवस्तु सक्रिय पारिएको छैन ।"
+
+#~ msgid "No call graph can be drawn for the active item."
+#~ msgstr "सक्रिय वस्तुका लागि कल ग्राफ कोर्न सकिने छैन ।"
+
+#~ msgid ""
+#~ "No call graph is available because the following\n"
+#~ "command cannot be run:\n"
+#~ "'%1'\n"
+#~ msgstr ""
+#~ "निम्न आदेश चलाउन नसकिने कारणले\n"
+#~ "कल ग्राफ उपलब्ध हुदैन:\n"
+#~ "'%1'\n"
+
+#~ msgid "Please check that 'dot' is installed (package GraphViz)."
+#~ msgstr "कृपया 'dot' स्थापना भएको छ छैन जाँच गर्नुहोस् (प्याकेज GraphViz) ।"
+
+#~ msgid "Error running the graph layouting tool.\n"
+#~ msgstr "ग्राफ सजावट उपकरण चलाउँदा त्रुटि ।\n"
+
+#~ msgid ""
+#~ "There is no call graph available for function\n"
+#~ "\t'%1'\n"
+#~ "because it has no cost of the selected event type."
+#~ msgstr ""
+#~ "त्यहाँ \t'%1'\n"
+#~ "प्रकार्यका लागि कल ग्राफ उपलब्ध छैन\n"
+#~ "किनकी यसको चयन गरिएको घटना प्रकारको लागत छैन ।"
+
+#~ msgid "Unlimited"
+#~ msgstr "असीमित"
+
+#, fuzzy
+#~| msgid "None"
+#~ msgctxt "Depth 0"
+#~ msgid "None"
+#~ msgstr "कुनै पनि होइन"
+
+#~ msgid "max. 2"
+#~ msgstr "अधिकतम २"
+
+#~ msgid "max. 5"
+#~ msgstr "अधिकतम ५"
+
+#~ msgid "max. 10"
+#~ msgstr "अधिकतम १०"
+
+#~ msgid "max. 15"
+#~ msgstr "अधिकतम १५"
+
+#~ msgid "No Minimum"
+#~ msgstr "न्यूनतम छैन"
+
+#~ msgid "50 %"
+#~ msgstr "५० %"
+
+#~ msgid "20 %"
+#~ msgstr "२० %"
+
+#~ msgid "10 %"
+#~ msgstr "१० %"
+
+#~ msgid "5 %"
+#~ msgstr "५ %"
+
+#~ msgid "2 %"
+#~ msgstr "२ %"
+
+#~ msgid "1 %"
+#~ msgstr "१ %"
+
+#~ msgid "Same as Node"
+#~ msgstr "नोड जस्तै"
+
+#~ msgid "50 % of Node"
+#~ msgstr "50 % of Node"
+
+#~ msgid "20 % of Node"
+#~ msgstr "20 % of Node"
+
+#~ msgid "10 % of Node"
+#~ msgstr "10 % of नोडको"
+
+#~ msgid "Top Left"
+#~ msgstr "माथि बायाँ"
+
+#~ msgid "Top Right"
+#~ msgstr "माथि दायाँ"
+
+#~ msgid "Bottom Left"
+#~ msgstr "तल बायाँ"
+
+#~ msgid "Bottom Right"
+#~ msgstr "तल दायाँ"
+
+#~ msgid "Top to Down"
+#~ msgstr "माथि देखि तलसम्म"
+
+#~ msgid "Left to Right"
+#~ msgstr "बायाँ देखि दायाँसम्म"
+
+#~ msgid "Circular"
+#~ msgstr "वृत्ताकार"
+
+#~ msgid "Stop Layouting"
+#~ msgstr "सजावट गर्न रोक्नुहोस्"
+
+#~ msgid "As PostScript"
+#~ msgstr "पोस्टस्क्रिप्ट अनुरुप"
+
+#~ msgid "As Image ..."
+#~ msgstr "छवि अनुरुप ..."
+
+#~ msgid "Export Graph"
+#~ msgstr "ग्राफ निर्यात गर्नुहोस्"
+
+#~ msgid "Caller Depth"
+#~ msgstr "कल गर्नेको प्रौढता"
+
+#~ msgid "Callee Depth"
+#~ msgstr "कल प्राप्त गर्नेको प्रौढता"
+
+#~ msgid "Min. Node Cost"
+#~ msgstr "न्यूनतम नोड लागत"
+
+#~ msgid "Min. Call Cost"
+#~ msgstr "न्यूनतम कल लागत"
+
+#~ msgid "Arrows for Skipped Calls"
+#~ msgstr "फड्किएका कलका लागि बाँणहरू"
+
+#~ msgid "Inner-cycle Calls"
+#~ msgstr "आन्तरिक-चक्रिय कल"
+
+#~ msgid "Cluster Groups"
+#~ msgstr "झुप्पा समूह"
+
+#~ msgid "Compact"
+#~ msgstr "सङ्कुचित"
+
+#~ msgid "Normal"
+#~ msgstr "सामान्य"
+
+#~ msgid "Tall"
+#~ msgstr "अग्लो"
+
+#~ msgid "Graph"
+#~ msgstr "ग्राफ"
+
+#, fuzzy
+#~| msgid "&Layout"
+#~ msgid "Layout"
+#~ msgstr "सजावट"
+
+#~ msgid "Birds-eye View"
+#~ msgstr "Birds-eye दृश्य"
+
+#~ msgid "(%1 function skipped)"
+#~ msgid_plural "(%1 functions skipped)"
+#~ msgstr[0] "(%1 प्रकार्य फड्कियो)"
+#~ msgstr[1] "(%1 प्रकार्य फड्कियो)"
+
+#~ msgid "Move to Top"
+#~ msgstr "माथितिर सार्नुहोस्"
+
+#, fuzzy
+#~ msgctxt "Move to Top"
+#~ msgid "Top"
+#~ msgstr "माथिको बायाँ"
+
+#~ msgid "Move to Right"
+#~ msgstr "दायाँतिर सार्नुहोस्"
+
+#, fuzzy
+#~ msgctxt "Move to Right"
+#~ msgid "Right"
+#~ msgstr "माथिको दायाँ"
+
+#~ msgid "Move to Bottom"
+#~ msgstr "तलतिर सार्नुहोस्"
+
+#, fuzzy
+#~ msgctxt "Move to Bottom"
+#~ msgid "Bottom"
+#~ msgstr "तलको दायाँ"
+
+#~ msgid "Move to Bottom Left"
+#~ msgstr "तल बायाँतिर सार्नुहोस्"
+
+#, fuzzy
+#~| msgid "Bottom Left"
+#~ msgctxt "Move to Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "तल बायाँ"
+
+#~ msgid "Move Area To"
+#~ msgstr "यतातिर क्षेत्र सार्नुहोस्"
+
+#~ msgid "Hide This Tab"
+#~ msgstr "यो ट्याब लुकाउनुहोस्"
+
+#~ msgid "Hide Area"
+#~ msgstr "क्षेत्र लुकाउनुहोस्"
+
+#, fuzzy
+#~ msgctxt "Show on Top"
+#~ msgid "Top"
+#~ msgstr "माथिको बायाँ"
+
+#, fuzzy
+#~ msgctxt "Show on Right"
+#~ msgid "Right"
+#~ msgstr "माथिको दायाँ"
+
+#, fuzzy
+#~ msgctxt "Show on Bottom"
+#~ msgid "Bottom"
+#~ msgstr "तलको दायाँ"
+
+#, fuzzy
+#~| msgid "Bottom Left"
+#~ msgctxt "Show on Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "तल बायाँ"
+
+#~ msgid "Show Hidden On"
+#~ msgstr "यसमा लुकेका देखाउनुहोस्"
+
+#~ msgid "(No profile data file loaded)"
+#~ msgstr "(प्रोफाइल डाटा फाइल लोड गरिएको छैन)"
+
+#~ msgid "Types"
+#~ msgstr "प्रकार"
+
+#~ msgid "Callers"
+#~ msgstr "कल गर्नेवाला"
+
+#~ msgid "All Callers"
+#~ msgstr "सबै कल गर्नेवाला"
+
+#~ msgid "Caller Map"
+#~ msgstr "कल गर्नेवाला मानचित्र"
+
+#, fuzzy
+#~| msgid "Source Folders"
+#~ msgid "Source Code"
+#~ msgstr "स्रोत फोल्डर"
+
+#~ msgid "Parts"
+#~ msgstr "भाग"
+
+#~ msgid "Call Graph"
+#~ msgstr "कल ग्राफ"
+
+#~ msgid "Callees"
+#~ msgstr "कल प्राप्त गर्ने वाला"
+
+#~ msgid "All Callees"
+#~ msgstr "सबै कल प्राप्त गर्ने वाला"
+
+#~ msgid "Callee Map"
+#~ msgstr "कल प्राप्त गर्ने वाला मानचित्र"
+
+#, fuzzy
+#~| msgid "Assembler"
+#~ msgid "Assembly Code"
+#~ msgstr "एसेम्बलर"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>Information Tabs</b><p>This widget shows information for the current "
+#~ "selected function in different tabs: <ul><li>The Costs tab shows a list "
+#~ "of available event types and the inclusive and self costs regarding to "
+#~ "these types.</li><li>The Parts tab shows a list of trace parts if the "
+#~ "trace consists of more than one part (otherwise, this tab is hided). The "
+#~ "cost of the selected function spent in the different parts together with "
+#~ "the calls happening is shown.</li><li>The Call Lists tab shows direct "
+#~ "callers and callees of the function in more detail.</li><li>The Coverage "
+#~ "tab shows the same is the Call Lists tab, but not only direct callers and "
+#~ "callees but also indirect ones.</li><li>The Call Graph tab shows a "
+#~ "graphical visualization of the calls done by this function.</li><li>The "
+#~ "Source tab presents annotated source code if debugging information and "
+#~ "the source file is available.</li><li>The Assembler tab presents "
+#~ "annotated assembler code if trace information on instruction level is "
+#~ "available.</li></ul>For more information, see the <em>What's this</em> "
+#~ "help of the corresponding tab widget</p>"
+#~ msgstr ""
+#~ "<b>सूचना ट्याब</b><p>यो विजेटले बिभिन्न ट्याबमा हाल चयन गरिएका प्रकार्यका लागि "
+#~ "सूचना देखाउछ: <ul><li>लागत ट्याबले उपलब्ध घटना प्रकार र समाविष्ट लागत र यी "
+#~ "प्रकारका सम्बन्धमा आफ्नो लागत देखाउछ ।</li><li>अबयव ट्याबले पदचिन्हमा एक भन्दा धेरै "
+#~ "अबयव समाविष्ट भएमा पदचिन्ह अबयव सूची देखाउछ (अन्यथा, यो ट्याब लुकेको हुन्छ) । चयन "
+#~ "गरिएको प्रकार्य लागतको बिभिन्न अबयवमा लागेको खर्च साथसाथै आइपर्ने कल देखिन्छ ।</"
+#~ "li><li>कल सूची ट्याबले प्रकार्यका सीधै कल गर्ने र कल प्राप्त गर्नेको विस्तृत विवरण "
+#~ "देखाउछ ।</li><li>ढाक्नुहोस् ट्याबले कल सूची ट्याले जस्तै, तर सीधै कल गर्ने र कल प्राप्त "
+#~ "गर्ने मात्र नभई सीधै कल नगर्ने र कल प्राप्त नगर्नेलाई पनि देखाउछ ।</li><li>कल ग्राफ "
+#~ "ट्याबले यो प्रकार्यद्वारा गरिएका कलको ग्राफिकल दृष्टीकरण देखाउछ ।</li><li>स्रोत "
+#~ "ट्याबले यदि त्रुटि सच्याउने सूचना र स्रोत फाइल उपलब्ध भएमा एनोटेसन गरिएका स्रोत "
+#~ "सङ्केतन देखाउछ ।</li><li>एसेम्बलर ट्यबले निर्देशिका स्तरमा पदचिन्ह सूचना उपलब्ध भएमा "
+#~ "एनोटेसन गरिएका एसेम्बलर सङ्केतन प्रस्तुत गर्छ ।</li></ul>बढी जानकारीका लागि, सङ्गती "
+#~ "ट्याब विजेटको <em>यो के हो ?</em> मद्दत हेर्नुहोस्</p>"
+
+#~ msgid "(No Data loaded)"
+#~ msgstr "(डाटा लोड गरिएको छैन)न)"
+
+#~ msgid "(No function selected)"
+#~ msgstr "(प्रकार्य चयन गरिएको छैन)"
+
+#~ msgid "Source (unknown)"
+#~ msgstr "स्रोत (अज्ञात)"
+
+#~ msgid ""
+#~ "<b>Annotated Source</b><p>The annotated source list shows the source "
+#~ "lines of the current selected function together with (self) cost spent "
+#~ "while executing the code of this source line. If there was a call in a "
+#~ "source line, lines with details on the call happening are inserted into "
+#~ "the source: the cost spent inside of the call, the number of calls "
+#~ "happening, and the call destination.</p><p>Select a inserted call "
+#~ "information line to make the destination function current.</p>"
+#~ msgstr ""
+#~ "<b>एनोटेसन गरिएको स्रोत</b><p>एनोटेसन गरिएको स्रोत सूचीले यो स्रोत लाइनको सङ्केतन "
+#~ "कार्यान्वयन गर्ने समयमा लागेको (आफ्नो) खर्चको साथमा हाल चयन गरिएको प्रकार्यको स्रोत "
+#~ "लाइन देखाउछ । यदि स्रोत लाइनमा कल भएमा, स्रोतमा कल देखापर्दा विस्तृत विवरण भएका "
+#~ "लाएनसँग: कल गर्दा खर्च भएको लागत, गरिएका कलहरूको सङ्ख्या, र कल लक्षित स्थान "
+#~ "घुसाइन्छ ।</p><p>हालको प्रकार्य लक्षित स्थान बनाउन घुसाइएको कल सूचना चयन गर्नुहोस् ।"
+#~ "</p>"
+
+#~ msgid "Go to Line %1"
+#~ msgstr "लाइन %1 मा जानुहोस्"
+
+#~ msgid "(No Source)"
+#~ msgstr "(स्रोत छैन)"
+
+#~ msgid "There is no cost of current selected type associated"
+#~ msgstr "त्यहाँ हाल चयन गरिएका प्रकार सम्बन्धित लागत छैन"
+
+#~ msgid "with any source line of this function in file"
+#~ msgstr "फाइलमा यो प्रकार्यको कुनै पनि स्रोत लाइनसँग"
+
+#~ msgid "Thus, no annotated source can be shown."
+#~ msgstr "त्यसैले, ब्याख्या गरिएका स्रोत देखाउन सकिने छैन ।"
+
+#~ msgid "Source ('%1')"
+#~ msgstr "स्रोत ('%1')"
+
+#~ msgid "--- Inlined from '%1' ---"
+#~ msgstr "--- '%1' बाट इनलाइन गरिएको ---"
+
+#~ msgid "--- Inlined from unknown source ---"
+#~ msgstr "--- अज्ञात स्रोतबाट इनलाइन गरिएको ---"
+
+#~ msgid "There is no source available for the following function:"
+#~ msgstr "निम्न प्रकार्यका लागि त्यहाँ स्रोत उपलब्ध छैन:"
+
+#~ msgid "This is because no debug information is present."
+#~ msgstr "यो त्रुटि सच्याउने सूचना प्रस्तुत नहुनाको कारणले हो ।"
+
+#~ msgid "Recompile source and redo the profile run."
+#~ msgstr "स्रोत पुन: कम्पाइल गर्नुहोस् र प्रोफाइल चलाउन रिडु गर्नुहोस् ।"
+
+#~ msgid "The function is located in this ELF object:"
+#~ msgstr "प्रकार्य यो ईएलएफ विषयवस्तुमा तोकिएको छ:"
+
+#~ msgid "This is because its source file cannot be found:"
+#~ msgstr "यसको स्रोत फाइल फेला पार्न नसकिने कारणले यस्तो हुन्छ:"
+
+#~ msgid "Add the folder of this file to the source folder list."
+#~ msgstr "स्रोत फोल्डर सूचीमा यो फाइलको फोल्डर थप्नुहोस ।"
+
+#~ msgid "The list can be found in the configuration dialog."
+#~ msgstr "सूची कन्फिगरेसन संवादमा फेला पार्न सकिनेछ ।"
+
+#~ msgid " (Thread %1)"
+#~ msgstr " (थ्रेड %1)"
+
+#~ msgid "(none)"
+#~ msgstr "(कुनै होइन)"
+
+#~ msgid "Unknown Type"
+#~ msgstr "अज्ञात प्रकार"
+
+#~ msgid "Show All Items"
+#~ msgstr "सबै विषयवस्तु देखाउनुहोस्"
+
+#~ msgid "No Grouping"
+#~ msgstr "बर्गीकरण छैन"
+
+#~ msgid "Distance"
+#~ msgstr "दूरी"
+
+#~ msgid "Caller"
+#~ msgstr "कल गर्ने वाला"
+
+#~ msgid "Self"
+#~ msgstr "नीजि"
+
+#~ msgid "Calling"
+#~ msgstr "कलिङ"
+
+#~ msgid "Callee"
+#~ msgstr "कल प्राप्त गर्ने वाला"
+
+#~ msgid ""
+#~ "<b>List of all Callers</b><p>This list shows all functions calling the "
+#~ "current selected one, either directly or with several functions in-"
+#~ "between on the stack; the number of functions in-between plus one is "
+#~ "called the <em>Distance</em> (e.g. for function A,B,C there exists a call "
+#~ "from A to C when A calls B and B calls C, i.e. A => B => C. The distance "
+#~ "here is 2).</p><p>Absolute cost shown is the cost spent in the selected "
+#~ "function while a listed function is active; relative cost is the "
+#~ "percentage of all cost spent in the selected function while the listed "
+#~ "one is active. The cost graphic shows logarithmic percentage with a "
+#~ "different color for each distance.</p><p>As there can be many calls from "
+#~ "the same function, the distance column sometimes shows the range of "
+#~ "distances for all calls happening; then, in parentheses, there is the "
+#~ "medium distance, i.e. the distance where most of the call costs happened."
+#~ "</p><p>Selecting a function makes it the current selected one of this "
+#~ "information panel. If there are two panels (Split mode), the function of "
+#~ "the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>कल गर्ने सबैको सूची</b><p>यो सूचीले हाल चयन गरिएको एकमा, प्रत्यक्ष वा थाकका धेरै "
+#~ "प्रकार्यहरू बीचमा सबै प्रकार्यहरूको कल देखाउछ; प्लस एक बीचका प्रकार्यका नम्बरलाई "
+#~ "<em>दूरी</em> भनिन्छ (जस्तै, प्रकार्य A,B,C का लागि त्यहाँ A ले B लाई र B ले C लाई "
+#~ "कल गर्दा त्यहाँ A ले C लाई गर्ने कल अवस्थित हुन्छ, त्यसैले A => B => C. यहाँ दूरी 2) छ ।"
+#~ "</p><p>देखिएको निश्चित लागत सूचीकृत प्रकार्य सक्रिय हुँदा चयन गरिएको प्रकार्यमा खर्च "
+#~ "भएको लागत हो; सापेक्षित लागत सूचीकृत एक सक्रिय हुँदा चयन गरिएका प्राकर्यमा खर्च "
+#~ "भएको सबै लागतको प्रतिशत हो । लागत ग्राफले प्रत्येक दूरीका लागि भिन्न रङका लघुगणक "
+#~ "प्रतिशत देखाउछ ।</p><p>त्यहाँ एउटै प्रकार्यका धेरै कल हुन सक्ने भएता पनि, दूरी स्तम्भले "
+#~ "कहिलेकाँही आइपर्ने सबै कलको दायरा देखाउछ; त्यसपछि, उपवाक्यमा, त्यहाँ मध्यम दूरी हुन्छ, "
+#~ "उदाहरणका लागि, धेरैजसो कल लागत देखापर्ने स्थान । </p><p>एउटा प्रकार्यलाई चयन गर्दा "
+#~ "यसलाई सूचना प्यानलमा हाल चयन गरिएको एक बनाउछ । यदि त्यहाँ दुइ प्यानल भएमा "
+#~ "(बिभाजन मोड), यसको सटोमा अन्य प्यानलको प्रकार्य परिवर्तन हुन्छ ।</p>"
+
+#~ msgid ""
+#~ "<b>List of all Callees</b><p>This list shows all functions called by the "
+#~ "current selected one, either directly or with several function in-between "
+#~ "on the stack; the number of function in-between plus one is called the "
+#~ "<em>Distance</em> (e.g. for function A,B,C there exists a call from A to "
+#~ "C when A calls B and B calls C, i.e. A => B => C. The distance here is 2)."
+#~ "</p><p>Absolute cost shown is the cost spent in the listed function while "
+#~ "the selected is active; relative cost is the percentage of all cost spent "
+#~ "in the listed function while the selected one is active. The cost graphic "
+#~ "always shows logarithmic percentage with a different color for each "
+#~ "distance.</p><p>As there can be many calls to the same function, the "
+#~ "distance column sometimes shows the range of distances for all calls "
+#~ "happening; then, in parentheses, there is the medium distance, i.e. the "
+#~ "distance where most of the call costs happened.</p><p>Selecting a "
+#~ "function makes it the current selected one of this information panel. If "
+#~ "there are two panels (Split mode), the function of the other panel is "
+#~ "changed instead.</p>"
+#~ msgstr ""
+#~ "<b>कल प्राप्त गर्नेको सूची</b><p>यो सूचीले हाल चयन गरिएको एकमा, प्रत्यक्ष वा थाकका "
+#~ "धेरै प्रकार्यहरू बीचमा सबै प्रकार्यहरूको कल देखाउछ; प्लस एक बीचका प्रकार्यका नम्बरलाई "
+#~ "<em>दूरी</em> भनिन्छ (जस्तै, प्रकार्य A,B,C का लागि त्यहाँ A ले B लाई र B ले C लाई "
+#~ "कल गर्दा त्यहाँ A ले C लाई गर्ने कल अवस्थित हुन्छ, त्यसैले A => B => C. यहाँ दूरी 2) छ ।"
+#~ "</p><p>देखिएको निश्चित लागत चयन गरिएको एक सक्रिय हुँदा सूचीकरण प्रकार्यमा लागेको "
+#~ "खर्चको लागत हो; सापेक्षित लागत चयन गरिएको एक सक्रिय हुँदा सूचीकृत प्राकर्यमा खर्च "
+#~ "भएका सबै लागतको प्रतिशत हो । लागत ग्राफले सधैँ प्रत्येक दूरी भिन्न रङका लघुगणक प्रतिशत "
+#~ "देखाउछ ।</p><p>त्यहाँ एउटै प्रकार्यमा धेरै कल हुन सक्ने भएता पनि, दूरी स्तम्भले कहिलेकाँही "
+#~ "आइपर्ने सबै कलको लागि दायरा देखाउछ; त्यसपछि, उपवाक्यमा, त्यहाँ मध्यम दूरी हुन्छ, "
+#~ "उदाहरणका लागि, धेरैजसो कल लागत देखापर्ने स्थान ।</p><p>एउटा प्रकार्यलाई चयन गर्दा "
+#~ "यसलाई सूचना प्यानलमा हाल चयन गरिएको एक बनाउछ । यदि त्यहाँ दुइ प्यानल भएमा "
+#~ "(बिभाजन मोड), यसको सटोमा अन्य प्यानलको प्रकार्य परिवर्तन हुन्छ ।</p>"
+
+#~ msgid "Instruction Fetch"
+#~ msgstr "निर्देशिका तान्नुहोस्"
+
+#~ msgid "Data Read Access"
+#~ msgstr "डाटा पढ्न पहुँच"
+
+#~ msgid "Data Write Access"
+#~ msgstr "डाटा लेख्न पहुँच"
+
+#~ msgid "L1 Instr. Fetch Miss"
+#~ msgstr "L1 Instr. हराएको तान्नुहोस्"
+
+#~ msgid "L1 Data Read Miss"
+#~ msgstr "L1 डाटा पढ्न छुटेकोछ"
+
+#~ msgid "L1 Data Write Miss"
+#~ msgstr "L1 डाटा लेख्न छुटेको छ"
+
+#~ msgid "L2 Instr. Fetch Miss"
+#~ msgstr "L2 Instr. हराएको तान्नुहोस्"
+
+#~ msgid "L2 Data Read Miss"
+#~ msgstr "L2 डाटा पढ्न छुटेकोछ"
+
+#~ msgid "L2 Data Write Miss"
+#~ msgstr "L2 डाटा लेख्न छुटेकोछ"
+
+#~ msgid "Samples"
+#~ msgstr "नमूनाहरू"
+
+#~ msgid "System Time"
+#~ msgstr "प्रणाली समय"
+
+#~ msgid "User Time"
+#~ msgstr "प्रयोगकर्ता समय"
+
+#~ msgid "L1 Miss Sum"
+#~ msgstr "हराएका L1 को जोड"
+
+#~ msgid "L2 Miss Sum"
+#~ msgstr "हराएका L2 को जोड"
+
+#~ msgid "Cycle Estimation"
+#~ msgstr "चक्रिय अनुमान"
+
+#~ msgid "&Search:"
+#~ msgstr "खोजी गर्नुहोस्:"
+
+#~ msgid "Group"
+#~ msgstr "समूह"
+
+#~ msgid "(no trace parts)"
+#~ msgstr "(पदचिन्ह भाग छैन)"
+
+#~ msgid "Stack Selection"
+#~ msgstr "थाक चयन"
+
+#~ msgid "Cost2"
+#~ msgstr "लागत२"
+
+#~ msgid "Text %1"
+#~ msgstr "पाठ %1"
+
+#~ msgid "Recursive Bisection"
+#~ msgstr "पुनरावृत्तिक द्विभाजन"
+
+#~ msgid "Columns"
+#~ msgstr "स्तम्भहरू"
+
+#~ msgid "Rows"
+#~ msgstr "पङ्क्तिहरू"
+
+#~ msgid "Always Best"
+#~ msgstr "सधैँ उत्तम"
+
+#~ msgid "Best"
+#~ msgstr "उत्तम"
+
+#~ msgid "Alternate (V)"
+#~ msgstr "पर्याक्रमिक (V)"
+
+#~ msgid "Alternate (H)"
+#~ msgstr "पर्याक्रमिक (H)"
+
+#, fuzzy
+#~ msgid "Horizontal"
+#~ msgstr "तेर्सो बिभाजन गर्नुहोस्"
+
+#~ msgid "Nesting"
+#~ msgstr "नेस्टिङ"
+
+#, fuzzy
+#~ msgid "Border"
+#~ msgstr "किनारा ०"
+
+#~ msgid "Correct Borders Only"
+#~ msgstr "किनारा मात्र सुधार गर्नुहोस्"
+
+#~ msgid "Width %1"
+#~ msgstr "चौडाइ %1"
+
+#~ msgid "Shading"
+#~ msgstr "छायाँकरण"
+
+#~ msgid "Visible"
+#~ msgstr "दृश्यात्मक"
+
+#~ msgid "Take Space From Children"
+#~ msgstr "शाखाबाट रिक्तस्थान लिनुहोस्"
+
+#~ msgid "Top Center"
+#~ msgstr "माथि बीचमा"
+
+#~ msgid "Bottom Center"
+#~ msgstr "तल बीचमा"
+
+#~ msgid "No %1 Limit"
+#~ msgstr "%1 दायरा छैन"
+
+#~ msgid "No Area Limit"
+#~ msgstr "क्षेत्र दायरा छैन"
+
+#~ msgid "Area of '%1' (%2)"
+#~ msgstr "'%1' (%2) को क्षेत्र"
+
+#, fuzzy
+#~ msgid "1 Pixel"
+#~ msgid_plural "%1 Pixels"
+#~ msgstr[0] "१ पिक्सेल"
+#~ msgstr[1] "%1 पिक्सेल"
+
+#~ msgid "Double Area Limit (to %1)"
+#~ msgstr "(%1 मा) डबल क्षेत्र दायरा"
+
+#~ msgid "Halve Area Limit (to %1)"
+#~ msgstr "(%1 मा) आधा क्षेत्र दायरा"
+
+#~ msgid "No Depth Limit"
+#~ msgstr "गहिराइ दायरा छैन"
+
+#~ msgid "Depth of '%1' (%2)"
+#~ msgstr "'%1' (%2) को गहिराइ"
+
+#~ msgid "Depth %1"
+#~ msgstr "गहिराइ %1"
+
+#~ msgid "Decrement (to %1)"
+#~ msgstr "घटाउनुहोस् (%1 मा)"
+
+#~ msgid "Increment (to %1)"
+#~ msgstr "बढाउनुहोस् (%1 मा)"
+
+#~ msgid ""
+#~ "<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers "
+#~ "of the current activated function. Each colored rectangle represents a "
+#~ "function; its size tries to be proportional to the cost spent therein "
+#~ "while the active function is running (however, there are drawing "
+#~ "constrains).</p>"
+#~ msgstr ""
+#~ "<b>कल गर्नेको मानचित्र</b><p>यो ग्राफले हाल सक्रिय पारिएका प्रकार्यका सबै कल गर्ने "
+#~ "वालाको नेस्टेड श्रृङ्खला देखाउछ । रङ लगाइएको प्रत्येक आयतले प्रकार्य प्रतिनिधित्व गर्छ: "
+#~ "यसको साइज सक्रिय प्रकार्य चलिरहदा त्यसको लागतसँग समानुपातिक हुने प्रयास गर्छ "
+#~ "(तापनि, त्यहाँ रेखचित्र अबरोधहरू छन्) ।</p>"
+
+#~ msgid ""
+#~ "<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+#~ "the current activated function. Each colored rectangle represents a "
+#~ "function; its size tries to be proportional to the cost spent therein "
+#~ "while the active function is running (however, there are drawing "
+#~ "constrains).</p>"
+#~ msgstr ""
+#~ "<b>कल मानचित्र</b><p>यो ग्राफले हाल चयन गरिएका प्रकार्यका सबै कल प्राप्त गर्नेहरूको "
+#~ "नेस्टेड श्रृङ्खला देखाउछ । रङ लगाइएको प्रत्येक आयतले प्रकार्य प्रतिनिधित्व गर्छ: यसको "
+#~ "साइज सक्रिय प्रकार्य चलिरहदा त्यसको लागतसँग समानुपातिक हुने प्रयास गर्छ (तापनि, "
+#~ "त्यहाँ रेखचित्र अबरोधहरू छन्) ।</p>"
+
+#~ msgid ""
+#~ "<p>Appearance options can be found in the in the context menu. To get "
+#~ "exact size proportions, choose 'Hide incorrect borders'. As this mode can "
+#~ "be <em>very</em> time consuming, you may want to limit the maximum drawn "
+#~ "nesting level before. 'Best' determinates the split direction for "
+#~ "children from the aspect ratio of the parent. 'Always Best' decides on "
+#~ "remaining space for each sibling. 'Ignore Proportions' takes space for "
+#~ "function name drawing <em>before</em> drawing children. Note that size "
+#~ "proportions can get <em>heavily</em> wrong.</p><p>This is a <em>TreeMap</"
+#~ "em> widget. Keyboard navigation is available with the left/right arrow "
+#~ "keys for traversing siblings, and up/down arrow keys to go a nesting "
+#~ "level up/down. <em>Return</em> activates the current item.</p>"
+#~ msgstr ""
+#~ "<p>देखावट विकल्प प्रसङ्ग मेनुमा फेला पार्न सकिनेछ । वास्तवीक समानुपातिक साइज प्राप्त "
+#~ "गर्न, 'गलत किनारा लुकाउनुहोस्' चयन गर्नुहोस् । यो मोड <em>धेरै</em> समय लिने हुनाले, "
+#~ "तपाईँले पहिला अधिकतम कोर्ने नेस्टिङ स्तर सिमित पार्न चाहनुहुन्छ । 'सबैभन्दा उत्तम' ले "
+#~ "प्यारेन्टको आकार अनुपातबाट शाखाका लागि बिभाजन दिशा निर्धा रण गर्छ । 'सधैँ सबैभन्दा "
+#~ "उत्तम' ले प्रत्यक सम्बन्धका लागि बाकी रिक्तस्थान निर्णय गर्छ । 'विशेषता उपेक्षा "
+#~ "गर्नुहोस्' ले रेखचित्र शाखा <em>पहिला</em> रेखचित्र नाम प्राकर्यका लागि रिक्तस्थान "
+#~ "लिन्छ । याद गर्नुहोस् साइज विशेषताहरू<em>सार्है धेरै</em> गलत प्राप्त हुन सक्छन् ।</"
+#~ "p><p>यो <em>ट्री मानचित्र</em> विजेट हो । सम्बन्ध इन्कार गर्नका लागि बायाँ/दायाँ "
+#~ "बाँण कुञ्जीमा कुञ्जीपाटी नेभिगेसन, र नेस्टिङ स्तर तल/माथि जान माथि/तल कुञ्जी उपलब्ध "
+#~ "हुन्छ ।<em>फर्काउनुहोस्</em> ले हालको विषयवस्तु सक्रिय बनाउछ ।</p>"
+
+#~ msgid "Go To"
+#~ msgstr "यसमा जानुहोस्"
+
+#~ msgid "Stop at Depth"
+#~ msgstr "गहिराइमा रोक्नुहोस्"
+
+#~ msgid "Depth 10"
+#~ msgstr "गहिराइ १०"
+
+#~ msgid "Depth 15"
+#~ msgstr "गहिराइ १५"
+
+#~ msgid "Depth 20"
+#~ msgstr "गहिराइ २०"
+
+#~ msgid "Decrement Depth (to %1)"
+#~ msgstr "गहिराइ घटाउनुहोस् (%1 मा)"
+
+#~ msgid "Increment Depth (to %1)"
+#~ msgstr "गहिराइ घटाउनुहोस् (%1 मा)"
+
+#~ msgid "Stop at Function"
+#~ msgstr "यो प्रकार्यमा रोक्नुहोस्"
+
+#~ msgid "No Function Limit"
+#~ msgstr "प्रकार्य दायरा छैन"
+
+#~ msgid "Stop at Area"
+#~ msgstr "यो क्षेत्रमा रोक्नुहोस्"
+
+#~ msgid "50 Pixels"
+#~ msgstr "५० पिक्सेल"
+
+#~ msgid "100 Pixels"
+#~ msgstr "१०० पिक्सेल"
+
+#~ msgid "200 Pixels"
+#~ msgstr "२०० पिक्सेल"
+
+#~ msgid "500 Pixels"
+#~ msgstr "५०० पिक्सेल"
+
+#~ msgid "Half Area Limit (to %1)"
+#~ msgstr "आधा क्षेत्र दायरा (%1 मा)"
+
+#~ msgid "Split Direction"
+#~ msgstr "दिशा बिभाजन गर्नुहोस्"
+
+#~ msgid "Skip Incorrect Borders"
+#~ msgstr "गलत किनारा फड्काउनुहोस्"
+
+#~ msgid "Border Width"
+#~ msgstr "किनारा चौडाइ"
+
+#~ msgid "Border 0"
+#~ msgstr "किनारा ०"
+
+#~ msgid "Border 1"
+#~ msgstr "किनरा १"
+
+#~ msgid "Border 2"
+#~ msgstr "किनारा २"
+
+#~ msgid "Border 3"
+#~ msgstr "किनारा ३"
+
+#~ msgid "Draw Symbol Names"
+#~ msgstr "प्रतिक नाम लेख्नुहोस्"
+
+#~ msgid "Draw Cost"
+#~ msgstr "लागत लेख्नुहोस्"
+
+#~ msgid "Draw Location"
+#~ msgstr "स्थान लेख्नुहोस्"
+
+#~ msgid "Draw Calls"
+#~ msgstr "कल लेख्नुहोस्"
+
+#~ msgid "Call Map: Current is '%1'"
+#~ msgstr "कल म्याप: हाल '%1' छ"
+
+#~ msgid "(no function)"
+#~ msgstr "(प्रकार्य छैन)"
+
+#~ msgid "(no call)"
+#~ msgstr "(कल छैन)"
+
+#~ msgid "Event Type"
+#~ msgstr "घटना प्रकार"
+
+#~ msgid "Short"
+#~ msgstr "छोटो"
+
+#~ msgid "Formula"
+#~ msgstr "सूत्र"
+
+#~ msgid ""
+#~ "<b>Cost Types List</b><p>This list shows all cost types available and "
+#~ "what the self/inclusive cost of the current selected function is for that "
+#~ "cost type.</p><p>By choosing a cost type from the list, you change the "
+#~ "cost type of costs shown all over KCachegrind to be the selected one.</p>"
+#~ msgstr ""
+#~ "<b>लागत प्रकार सूची</b><p>यो सूचीले उपलब्ध सबै लागत प्रकार र त्यो लागत प्रकारका "
+#~ "लागि हाल चयन गरिएका प्रकार्यको आफ्नो/सहितको लागत देखाउछ ।</p><p>तपाईँले सूचीबाट "
+#~ "लागत प्रकार रोजेर, पूरै KCachegrind मा चयन गरिएको एक लागत देखिने गरी लागत प्रकार "
+#~ "परिवर्तन गर्न सक्नुहुन्छ ।</p>"
+
+#~ msgid "Set Secondary Event Type"
+#~ msgstr "गौण घटना प्रकार सेट गर्नुहोस्"
+
+#~ msgid "Remove Secondary Event Type"
+#~ msgstr "गौण घटना प्रकार हटाउनुहोस्"
+
+#~ msgid "Edit Long Name"
+#~ msgstr "लामो नाम सम्पादन गर्नुहोस्"
+
+#~ msgid "Edit Short Name"
+#~ msgstr "छोटो नाम सम्पादन गर्नुहोस्"
+
+#~ msgid "Edit Formula"
+#~ msgstr "सूत्र सम्पादन गर्नुहोस्"
+
+#~ msgid "New Cost Type ..."
+#~ msgstr "नयाँ लागत प्रकार..."
+
+#~ msgid "New%1"
+#~ msgstr "नयाँ %1"
+
+#~ msgid "New Cost Type %1"
+#~ msgstr "नयाँ लागत प्रकार %1"
+
+#~ msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+#~ msgstr "क्यासग्रिन्ड/कलग्रिन्ड उत्पन्न प्रोफाइल डाटा फाइलका लागि फिल्टर आयात गर्नुहोस्"
+
+#~ msgid "Count"
+#~ msgstr "गणना गर्नुहोस्"
+
+#~ msgid ""
+#~ "<b>List of direct Callers</b><p>This list shows all functions calling the "
+#~ "current selected one directly, together with a call count and the cost "
+#~ "spent in the current selected function while being called from the "
+#~ "function from the list.</p><p>An icon instead of an inclusive cost "
+#~ "specifies that this is a call inside of a recursive cycle. An inclusive "
+#~ "cost makes no sense here.</p><p>Selecting a function makes it the current "
+#~ "selected one of this information panel. If there are two panels (Split "
+#~ "mode), the function of the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>प्रत्यक्ष कल गर्नेको सूची</b><p>यो सूचीले सूचीबाट चयन गरिएको एकमा प्रत्यक्ष कल "
+#~ "गरिरहेका प्रकार्यको सूचीसँगै, कल गणना र प्रकार्यबाट हाल चयन गरिएको प्रकार्यमा कल "
+#~ "गर्दाको लागत खर्च देखाउछ ।</p><p>एउटा प्रतिमाले समाविष्ट लागतको साटोमा "
+#~ "पुनरावृत्तिक चक्रको भित्रको कल भएको निर्दिष्ट गर्छ । एउटा समाविष्ट लागत यहाँ संवेदन "
+#~ "हुदैन ।</p><p>प्रकार्यलाई चयन गर्दा यसलाई सूचना प्यानलमा हाल चयन गरिएको बनाउछ । "
+#~ "यदि त्यहाँ दुइ प्यानल (बिभाजन मोड) भएमा, यसको सटोमा अन्य प्यानलका प्रकार्य "
+#~ "परिवर्तन हुन्छन् ।</p>"
+
+#~ msgid ""
+#~ "<b>List of direct Callees</b><p>This list shows all functions called by "
+#~ "the current selected one directly, together with a call count and the "
+#~ "cost spent in this function while being called from the selected function."
+#~ "</p><p>Selecting a function makes it the current selected one of this "
+#~ "information panel. If there are two panels (Split mode), the function of "
+#~ "the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>प्रत्यक्ष कल प्राप्त गर्नेको सूची</b><p>यो सूचीले प्रत्यक्ष चयन गरिएको एकद्वारा हाल "
+#~ "कल गरिएका प्रकार्यहरू, कल गणनासँग र चयन गरिएको प्रकार्यबाट यसमा कल गर्दा लागेको "
+#~ "खर्च देखाउछ ।</p><p>एउट प्रकार्यलाई चयन गर्दा चयन गरिएको एउटा सूचना प्यानललाई "
+#~ "हालको बनाउछ । यदि त्यहाँ दुइ प्यानल (बिभाजन मोड) भएमा, साटोमा अन्य प्यानलको "
+#~ "प्रकार्य परिवर्तन हुन्छ ।</p>"
+
+#~ msgid "Profile Part %1"
+#~ msgstr "प्रोफाइल अवयव %1"
+
+#~ msgid "(no trace)"
+#~ msgstr "(पदचिन्ह छैन)"
+
+#~ msgid "(no part)"
+#~ msgstr "(अवयव छैन)"
+
+#~ msgid "Comment"
+#~ msgstr "टिप्पणी"
+
+#~ msgid ""
+#~ "<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+#~ "trace. For each part, the self/inclusive cost of the current selected "
+#~ "function, spent in the part, is shown; percentage costs are always "
+#~ "relative to the total cost <em>of the part</em> (not to the whole trace "
+#~ "as in the Trace Part Overview). Also shown are the calls happening to/"
+#~ "from the current function inside of the trace part.</p><p>By choosing one "
+#~ "or more trace parts from the list, the costs shown all over KCachegrind "
+#~ "will only be the ones spent in the selected part(s). If no list selection "
+#~ "is shown, in fact all trace parts are selected implicitly.</p><p>This is "
+#~ "a multi-selection list. You can select ranges by dragging the mouse or "
+#~ "use SHIFT/CTRL modifiers. Selection/Deselection of trace parts can also "
+#~ "be done by using the Trace Part Overview Dockable. This one also supports "
+#~ "multiple selection.</p><p>Note that the list is hidden if only one trace "
+#~ "part is loaded.</p>"
+#~ msgstr ""
+#~ "<b>पदचिन्ह अवयव सूची</b><p>यो सूचीले लोड गरिएका पदचिन्हको सबै पदचिन्ह भाग देखाउछ "
+#~ "। प्रत्येक भागका लागि, हाल चयन गरिएका प्रकार्यको स्वत:/सम्मिलित लगात, अवयवको "
+#~ "खर्च, देखिन्छ; प्रतिशत लागत <em>अवयवको</em> कूल लागतमा सम्बन्धित हुन्छ (पदचिन्ह "
+#~ "अवयव समीक्षामा भएका सम्पूर्ण पदचिन्हमा सम्बन्धित हुदैन) । त्यस्तै पदचिन्ह अवयवको हालको "
+#~ "प्रकार्य भित्रपट्टि मा/बाट देखिने कल घटना हुन् ।</p><p>सूचीबाट एक वा बढी पदचिन्ह "
+#~ "अवयव रोजेर, सम्पूर्ण KCachegrind मा देखिने एक मात्र चयन गरिएका अवयव (हरू) को खर्च "
+#~ "हुन्छ । यदि चयन सूची देखिएको छैन भने, वास्तवमै नि:सन्देह सबै पदचिन्ह अवयव चयन गरिन्छन् ।"
+#~ "</p><p>यो बहु चयन सूची हो । तपाईँले माउस तानेर वा SHIFT/CTRL परिमार्जक प्रयोग "
+#~ "गरेर दायरा चयन गर्न सक्नुहुन्छ । पदचिन्ह अवयव समीक्षा Dockable प्रयोग गरेर पदचीन्हको "
+#~ "चयन गर्न/चयनबाट हटाउन पनि सकिन्छ । यो एकले पनि बहुभाग चयन समर्थन गर्छ ।</"
+#~ "p><p>याद गर्नुहोस् एक मात्र पदचिन्ह लोड गरिएको भएमा सूची देखिदैन ।</p>"
+
+#~ msgid "Hide '%1'"
+#~ msgstr "'%1' लुकाउनुहोस्"
+
+#~ msgid "Hide Selected"
+#~ msgstr "चयन गरिएका लुकाउनुहोस्"
+
+#~ msgid "Show All"
+#~ msgstr "सबै देखाउनुहोस्"
+
+#~ msgid "Deselect"
+#~ msgstr "चयनबाट हटाउनुहोस्"
+
+#~ msgid "Select"
+#~ msgstr "चयन गर्नुहोस्"
+
+#~ msgid "Go to %1"
+#~ msgstr "%1 मा जानुहोस्"
+
+#~ msgid "Run <exec> under cachegrind"
+#~ msgstr "क्यासग्रिन्डमा <exec> चलाउनुहोस्"
+
+#~ msgid "Source"
+#~ msgstr "स्रोत"
+
+#~ msgid "< %1"
+#~ msgstr "< %1"
+
+#~ msgid "3 %"
+#~ msgstr "३ %"
+
+#~ msgid "1.5 %"
+#~ msgstr "१.५ %"
+
+#~ msgid "TopLeft"
+#~ msgstr "माथिको बायाँ"
+
+#~ msgid "TopRight"
+#~ msgstr "माथिको दायाँ"
+
+#~ msgid "BottomLeft"
+#~ msgstr "तलको दायाँ"
+
+#~ msgid "BottomRight"
+#~ msgstr "तलको दायाँ"
+
+#~ msgid "Visualisation"
+#~ msgstr "दृष्टीकरण"

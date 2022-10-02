@@ -1,0 +1,2681 @@
+# Copyright © 2011 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the kdesdk package.
+# Lasse Liehu <lasse.liehu@gmail.com>, 2011, 2012, 2013, 2014, 2015.
+# Tommi Nieminen <translator@legisign.org>, 2021.
+#
+# KDE Finnish translation sprint participants:
+msgid ""
+msgstr ""
+"Project-Id-Version: kcachegrind_qt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-18 02:14+0000\n"
+"PO-Revision-Date: 2021-07-06 16:06+0300\n"
+"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
+"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-POT-Import-Date: 2012-12-01 22:25:32+0000\n"
+"X-Generator: Lokalize 20.04.2\n"
+"X-Qt-Contexts: true\n"
+
+#: libcore/cachegrindloader.cpp:135
+msgctxt "QObject|"
+msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+msgstr ""
+"Tuontisuodatin Cachegrind/Callgrindin luomille profiilidatatiedostoille"
+
+#: libcore/context.cpp:60
+msgctxt "ProfileContext|"
+msgid "Invalid Context"
+msgstr "Virheellinen konteksti"
+
+#: libcore/context.cpp:61
+msgctxt "ProfileContext|"
+msgid "Unknown Context"
+msgstr "Tuntematon konteksti"
+
+#: libcore/context.cpp:62
+msgctxt "ProfileContext|"
+msgid "Part Source Line"
+msgstr "Osan lähdekoorivi"
+
+#: libcore/context.cpp:63
+msgctxt "ProfileContext|"
+msgid "Source Line"
+msgstr "Lähdekoodirivi"
+
+#: libcore/context.cpp:64
+msgctxt "ProfileContext|"
+msgid "Part Line Call"
+msgstr "Osan kutsu"
+
+#: libcore/context.cpp:65
+msgctxt "ProfileContext|"
+msgid "Line Call"
+msgstr "Rivin kutsu"
+
+#: libcore/context.cpp:66
+msgctxt "ProfileContext|"
+msgid "Part Jump"
+msgstr "Osan hyppy"
+
+#: libcore/context.cpp:67
+msgctxt "ProfileContext|"
+msgid "Jump"
+msgstr "Hyppy"
+
+#: libcore/context.cpp:68
+msgctxt "ProfileContext|"
+msgid "Part Instruction"
+msgstr "Osan käsky"
+
+#: libcore/context.cpp:69
+msgctxt "ProfileContext|"
+msgid "Instruction"
+msgstr "Käsky"
+
+#: libcore/context.cpp:70
+#, fuzzy
+#| msgid "Part Instruction"
+msgctxt "ProfileContext|"
+msgid "Part Instruction Jump"
+msgstr "Osan käsky"
+
+#: libcore/context.cpp:71
+#, fuzzy
+#| msgid "Instruction"
+msgctxt "ProfileContext|"
+msgid "Instruction Jump"
+msgstr "Käsky"
+
+#: libcore/context.cpp:72
+#, fuzzy
+#| msgid "Part Instruction"
+msgctxt "ProfileContext|"
+msgid "Part Instruction Call"
+msgstr "Osan käsky"
+
+#: libcore/context.cpp:73
+#, fuzzy
+#| msgid "Instruction"
+msgctxt "ProfileContext|"
+msgid "Instruction Call"
+msgstr "Käsky"
+
+#: libcore/context.cpp:74
+#, fuzzy
+#| msgid "Part Call"
+msgctxt "ProfileContext|"
+msgid "Part Call"
+msgstr "Osan kutsu"
+
+#: libcore/context.cpp:75
+#, fuzzy
+#| msgid "Call"
+msgctxt "ProfileContext|"
+msgid "Call"
+msgstr "Kutsu"
+
+#: libcore/context.cpp:76
+#, fuzzy
+#| msgid "Part Function"
+msgctxt "ProfileContext|"
+msgid "Part Function"
+msgstr "Osan funktio"
+
+#: libcore/context.cpp:77
+#, fuzzy
+#| msgid "Function Source File"
+msgctxt "ProfileContext|"
+msgid "Function Source File"
+msgstr "Funktion lähdekooditiedosto"
+
+#: libcore/context.cpp:78
+#, fuzzy
+#| msgid "Function"
+msgctxt "ProfileContext|"
+msgid "Function"
+msgstr "Funktio"
+
+#: libcore/context.cpp:79
+#, fuzzy
+#| msgid "Function Cycle"
+msgctxt "ProfileContext|"
+msgid "Function Cycle"
+msgstr "Funktiokehä"
+
+#: libcore/context.cpp:80
+#, fuzzy
+#| msgid "Part Class"
+msgctxt "ProfileContext|"
+msgid "Part Class"
+msgstr "Osan luokka"
+
+#: libcore/context.cpp:81
+#, fuzzy
+#| msgid "Class"
+msgctxt "ProfileContext|"
+msgid "Class"
+msgstr "Luokka"
+
+#: libcore/context.cpp:82
+#, fuzzy
+#| msgid "Part Source File"
+msgctxt "ProfileContext|"
+msgid "Part Source File"
+msgstr "Osan lähdekooditiedosto"
+
+#: libcore/context.cpp:83
+#, fuzzy
+#| msgid "Source File"
+msgctxt "ProfileContext|"
+msgid "Source File"
+msgstr "Lähdekooditiedosto"
+
+#: libcore/context.cpp:84
+#, fuzzy
+#| msgid "Part ELF Object"
+msgctxt "ProfileContext|"
+msgid "Part ELF Object"
+msgstr "Osan ELF-objekti"
+
+#: libcore/context.cpp:85
+#, fuzzy
+#| msgid "ELF Object"
+msgctxt "ProfileContext|"
+msgid "ELF Object"
+msgstr "LEF-objekti"
+
+#: libcore/context.cpp:86
+#, fuzzy
+#| msgid "Profile Part"
+msgctxt "ProfileContext|"
+msgid "Profile Part"
+msgstr "Profiilin osa"
+
+#: libcore/context.cpp:87
+msgctxt "ProfileContext|"
+msgid "Program Trace"
+msgstr ""
+
+#: libcore/costitem.cpp:48
+#, qt-format
+msgctxt "QObject|"
+msgid "%1 from %2"
+msgstr ""
+
+#: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
+#: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
+#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
+#, fuzzy
+#| msgid "(unknown)"
+msgctxt "QObject|"
+msgid "(unknown)"
+msgstr "(tuntematon)"
+
+#: libcore/globalconfig.cpp:77
+#, fuzzy
+#| msgid "Instruction Fetch"
+msgctxt "QObject|"
+msgid "Instruction Fetch"
+msgstr "Käskyn haku"
+
+#: libcore/globalconfig.cpp:78
+#, fuzzy
+#| msgid "L1 Data Read Miss"
+msgctxt "QObject|"
+msgid "Data Read Access"
+msgstr "L1 datanlukuhuti"
+
+#: libcore/globalconfig.cpp:79
+#, fuzzy
+#| msgid "L1 Data Write Miss"
+msgctxt "QObject|"
+msgid "Data Write Access"
+msgstr "L1 datankirjoitushuti"
+
+#: libcore/globalconfig.cpp:80
+#, fuzzy
+#| msgid "L1 Instr. Fetch Miss"
+msgctxt "QObject|"
+msgid "L1 Instr. Fetch Miss"
+msgstr "L1 käskynhakuhuti"
+
+#: libcore/globalconfig.cpp:81
+#, fuzzy
+#| msgid "L1 Data Read Miss"
+msgctxt "QObject|"
+msgid "L1 Data Read Miss"
+msgstr "L1 datanlukuhuti"
+
+#: libcore/globalconfig.cpp:82
+#, fuzzy
+#| msgid "L1 Data Write Miss"
+msgctxt "QObject|"
+msgid "L1 Data Write Miss"
+msgstr "L1 datankirjoitushuti"
+
+#: libcore/globalconfig.cpp:83
+#, fuzzy
+#| msgid "L2 Instr. Fetch Miss"
+msgctxt "QObject|"
+msgid "L2 Instr. Fetch Miss"
+msgstr "L2 käskynhakuhuti"
+
+#: libcore/globalconfig.cpp:84
+#, fuzzy
+#| msgid "L2 Data Read Miss"
+msgctxt "QObject|"
+msgid "L2 Data Read Miss"
+msgstr "L2 datanlukuhuti"
+
+#: libcore/globalconfig.cpp:85
+#, fuzzy
+#| msgid "L2 Data Write Miss"
+msgctxt "QObject|"
+msgid "L2 Data Write Miss"
+msgstr "L2 datankirjoitushuti"
+
+#: libcore/globalconfig.cpp:86
+#, fuzzy
+#| msgid "LL Instr. Fetch Miss"
+msgctxt "QObject|"
+msgid "LL Instr. Fetch Miss"
+msgstr "LL käskynhakuhuti"
+
+#: libcore/globalconfig.cpp:87
+#, fuzzy
+#| msgid "LL Data Read Miss"
+msgctxt "QObject|"
+msgid "LL Data Read Miss"
+msgstr "LL datanlukuhuti"
+
+#: libcore/globalconfig.cpp:88
+#, fuzzy
+#| msgid "LL Data Write Miss"
+msgctxt "QObject|"
+msgid "LL Data Write Miss"
+msgstr "LL datankirjoitushuti"
+
+#: libcore/globalconfig.cpp:89
+#, fuzzy
+#| msgid "L1 Miss Sum"
+msgctxt "QObject|"
+msgid "L1 Miss Sum"
+msgstr "L1 hutisumma"
+
+#: libcore/globalconfig.cpp:90
+#, fuzzy
+#| msgid "L2 Miss Sum"
+msgctxt "QObject|"
+msgid "L2 Miss Sum"
+msgstr "L2 hutisumma"
+
+#: libcore/globalconfig.cpp:91
+#, fuzzy
+#| msgid "Last-level Miss Sum"
+msgctxt "QObject|"
+msgid "Last-level Miss Sum"
+msgstr "Viimeisen tason hutisumma"
+
+#: libcore/globalconfig.cpp:92
+msgctxt "QObject|"
+msgid "Indirect Branch"
+msgstr "Epäsuora haara"
+
+#: libcore/globalconfig.cpp:93
+msgctxt "QObject|"
+msgid "Mispredicted Ind. Branch"
+msgstr ""
+
+#: libcore/globalconfig.cpp:94
+msgctxt "QObject|"
+msgid "Conditional Branch"
+msgstr "Ehdollinen haara"
+
+#: libcore/globalconfig.cpp:95
+msgctxt "QObject|"
+msgid "Mispredicted Cond. Branch"
+msgstr ""
+
+#: libcore/globalconfig.cpp:96
+msgctxt "QObject|"
+msgid "Mispredicted Branch"
+msgstr "Väärin ennustettu haara"
+
+#: libcore/globalconfig.cpp:97
+msgctxt "QObject|"
+msgid "Global Bus Event"
+msgstr ""
+
+#: libcore/globalconfig.cpp:98
+msgctxt "QObject|"
+msgid "Samples"
+msgstr "Näytteet"
+
+#: libcore/globalconfig.cpp:99
+#, fuzzy
+#| msgid "System Time"
+msgctxt "QObject|"
+msgid "System Time"
+msgstr "Järjestelmäaika"
+
+#: libcore/globalconfig.cpp:100
+#, fuzzy
+#| msgid "User Time"
+msgctxt "QObject|"
+msgid "User Time"
+msgstr "Käyttäjäaika"
+
+#: libcore/globalconfig.cpp:101
+#, fuzzy
+#| msgid "Cycle Estimation"
+msgctxt "QObject|"
+msgid "Cycle Estimation"
+msgstr "Kellojaksoarvio"
+
+#: libcore/tracedata.cpp:1240
+#, fuzzy
+#| msgid "(no caller)"
+msgctxt "QObject|"
+msgid "(no caller)"
+msgstr "(ei kutsujaa)"
+
+#: libcore/tracedata.cpp:1247 libcore/tracedata.cpp:1266
+#, qt-format
+msgctxt "QObject|"
+msgid "%1 via %2"
+msgstr ""
+
+#: libcore/tracedata.cpp:1256
+#, fuzzy
+#| msgid "(no callee)"
+msgctxt "QObject|"
+msgid "(no callee)"
+msgstr "(ei kutsuttua)"
+
+#: libcore/tracedata.cpp:2709
+#, fuzzy
+#| msgid "(global)"
+msgctxt "QObject|"
+msgid "(global)"
+msgstr "(globaali)"
+
+#: libcore/tracedata.cpp:3144
+#, fuzzy
+#| msgid "(not found)"
+msgctxt "QObject|"
+msgid "(not found)"
+msgstr "(ei löytynyt)"
+
+#: libcore/tracedata.cpp:3692
+#, fuzzy
+#| msgid "Function Cycle"
+msgctxt "TraceData|"
+msgid "Recalculating Function Cycles..."
+msgstr "Funktiokehä"
+
+#: libviews/callgraphview.cpp:414
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "QObject|"
+msgid "Call(s) from %1"
+msgstr "Valitse ”%1”"
+
+#: libviews/callgraphview.cpp:417
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "QObject|"
+msgid "Call(s) to %1"
+msgstr "Valitse ”%1”"
+
+#: libviews/callgraphview.cpp:419
+#, fuzzy
+#| msgid "(unknown call)"
+msgctxt "QObject|"
+msgid "(unknown call)"
+msgstr "(tuntematon kutsu)"
+
+#: libviews/callgraphview.cpp:908
+#, fuzzy
+#| msgid "Export Graph"
+msgctxt "QObject|"
+msgid "Export Graph"
+msgstr "Vie kaavio"
+
+# *TARKISTA*
+# Rakenne ehkä epäselvä, myös onko cycle = kehä kuvaava?
+#: libviews/callgraphview.cpp:1608
+#, fuzzy
+#| msgid ""
+#| "<b>Call Graph around active Function</b><p>Depending on configuration, "
+#| "this view shows the call graph environment of the active function. Note: "
+#| "the shown cost is <b>only</b> the cost which is spent while the active "
+#| "function was actually running; i.e. the cost shown for main() - if it is "
+#| "visible - should be the same as the cost of the active function, as that "
+#| "is the part of inclusive cost of main() spent while the active function "
+#| "was running.</p><p>For cycles, blue call arrows indicate that this is an "
+#| "artificial call added for correct drawing which actually never happened.</"
+#| "p><p>If the graph is larger than the widget area, an overview panner is "
+#| "shown in one edge. There are similar visualization options to the Call "
+#| "Treemap; the selected function is highlighted.</p>"
+msgctxt "CallGraphView|"
+msgid ""
+"<b>Call Graph around active Function</b><p>Depending on configuration, this "
+"view shows the call graph environment of the active function. Note: the "
+"shown cost is <b>only</b> the cost which is spent while the active function "
+"was actually running; i.e. the cost shown for main() - if it is visible - "
+"should be the same as the cost of the active function, as that is the part "
+"of inclusive cost of main() spent while the active function was running.</"
+"p><p>For cycles, blue call arrows indicate that this is an artificial call "
+"added for correct drawing which actually never happened.</p><p>If the graph "
+"is larger than the widget area, an overview panner is shown in one edge. "
+"There are similar visualization options to the Call Treemap; the selected "
+"function is highlighted.</p>"
+msgstr ""
+"<b>Kutsukaavio aktiivisen funktion ympäriltä</b><p>Kokoonpanosta riippuen "
+"tässä näytetään aktiivisen funktion kutsukaavion ympäristö. Huom:näytettyyn "
+"hintaan lasketaan <b>vain</b> se aika, jona aktiivinen funktio oli "
+"suorituksessa, eli main()-funktion hinnan – jos näkyvissä – tulisi olla sama "
+"kuin aktiivisen funktion hinta, koska se osa main()-funktion mukaanluetusta "
+"hinnasta kulutettiin aktiivisen funktion ollessa suorituksessa.</p><p>Kehien "
+"kohdalle piirretään sininen nuoli tarkoittamaan, että kyseessä on kaavion "
+"oikeellisuuden takia lisätty keinotekoinen kutsu, jota ei koskaan tapahtunut."
+"</p><p>Jos kaavio ei mahdu sille varattuun tilaan, näytetään sivussa "
+"yleiskuva, josta voi muuttaa näkyvää aluetta. Kutsujen puukarttaan on "
+"samanlaisia visualisointiasetuksia. Valittu funktio on korostettu.</p>"
+
+#: libviews/callgraphview.cpp:2020
+#, fuzzy
+#| msgid ""
+#| "Warning: a long lasting graph layouting is in progress.\n"
+#| "Reduce node/edge limits for speedup.\n"
+msgctxt "CallGraphView|"
+msgid ""
+"Warning: a long lasting graph layouting is in progress.\n"
+"Reduce node/edge limits for speedup.\n"
+msgstr ""
+"Varoitus: pitkäkestoinen kaavion asettelu meneillään.\n"
+"Nopeuta vähentämällä solmujen tai viivojen rajoituksia.\n"
+
+#: libviews/callgraphview.cpp:2023
+#, fuzzy
+#| msgid "Layouting stopped.\n"
+msgctxt "CallGraphView|"
+msgid "Layouting stopped.\n"
+msgstr "Asettelu päättyi.\n"
+
+#: libviews/callgraphview.cpp:2025
+#, fuzzy, qt-format
+#| msgid "The call graph has %1 nodes and %2 edges.\n"
+msgctxt "CallGraphView|"
+msgid "The call graph has %1 nodes and %2 edges.\n"
+msgstr "Kutsukaaviossa %1 solmua ja %2 viivaa.\n"
+
+#: libviews/callgraphview.cpp:2034
+#, fuzzy
+#| msgid "No graph available because the layouting process failed.\n"
+msgctxt "CallGraphView|"
+msgid "No graph available because the layouting process failed.\n"
+msgstr "Kaavio ei saatavilla, koska asetteluprosessi epäonnistui.\n"
+
+#: libviews/callgraphview.cpp:2036
+#, fuzzy, qt-format
+#| msgid ""
+#| "Trying to run the following command did not work:\n"
+#| "'%1'\n"
+msgctxt "CallGraphView|"
+msgid ""
+"Trying to run the following command did not work:\n"
+"'%1'\n"
+msgstr ""
+"Seuraavan komennon suorittaminen ei toiminut:\n"
+"”%1”\n"
+
+#: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
+#, fuzzy
+#| msgid "Please check that 'dot' is installed (package GraphViz)."
+msgctxt "CallGraphView|"
+msgid "Please check that 'dot' is installed (package GraphViz)."
+msgstr "Tarkista, että ”dot” on asennettu (kuuluu GraphViz-pakettiin)."
+
+#: libviews/callgraphview.cpp:2080
+#, fuzzy
+#| msgid "No item activated for which to draw the call graph."
+msgctxt "CallGraphView|"
+msgid "No item activated for which to draw the call graph."
+msgstr "Ei aktiivista alkiota, jolle piirtää kutsukaavio."
+
+#: libviews/callgraphview.cpp:2092
+#, fuzzy
+#| msgid "No call graph can be drawn for the active item."
+msgctxt "CallGraphView|"
+msgid "No call graph can be drawn for the active item."
+msgstr "Kutsukaaviota ei voida piirtää aktiiviselle alkiolle."
+
+#: libviews/callgraphview.cpp:2554
+#, fuzzy
+#| msgid "Error running the graph layouting tool.\n"
+msgctxt "CallGraphView|"
+msgid "Error running the graph layouting tool.\n"
+msgstr "Virhe suoritettaessa kaavionasettelutyökalua.\n"
+
+#: libviews/callgraphview.cpp:2559
+#, fuzzy, qt-format
+#| msgid ""
+#| "There is no call graph available for function\n"
+#| "\t'%1'\n"
+#| "because it has no cost of the selected event type."
+msgctxt "CallGraphView|"
+msgid ""
+"There is no call graph available for function\n"
+"\t'%1'\n"
+"because it has no cost of the selected event type."
+msgstr ""
+"Kutsukaaviota ei ole saatavilla funktiolle\n"
+"\t”%1”,\n"
+"koska sillä ei ole hintaa valitulle tapahtumatyypille."
+
+#: libviews/callgraphview.cpp:2773
+#, fuzzy
+#| msgid "Caller Depth"
+msgctxt "CallGraphView|"
+msgid "Caller Depth"
+msgstr "Kutsujasyvyys"
+
+#: libviews/callgraphview.cpp:2774 libviews/callgraphview.cpp:2814
+#, fuzzy
+#| msgid "Unlimited"
+msgctxt "CallGraphView|"
+msgid "Unlimited"
+msgstr "Rajoittamaton"
+
+#: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
+#, fuzzy
+#| msgctxt "None"
+#| msgid "Depth 0"
+msgctxt "CallGraphView|None"
+msgid "Depth 0"
+msgstr "Syvyys 0"
+
+#: libviews/callgraphview.cpp:2778 libviews/callgraphview.cpp:2818
+#, fuzzy
+#| msgid "max. 10"
+msgctxt "CallGraphView|"
+msgid "max. 1"
+msgstr "maks. 10"
+
+#: libviews/callgraphview.cpp:2779 libviews/callgraphview.cpp:2819
+#, fuzzy
+#| msgid "max. 2"
+msgctxt "CallGraphView|"
+msgid "max. 2"
+msgstr "maks. 2"
+
+#: libviews/callgraphview.cpp:2780 libviews/callgraphview.cpp:2820
+#, fuzzy
+#| msgid "max. 5"
+msgctxt "CallGraphView|"
+msgid "max. 5"
+msgstr "maks. 5"
+
+#: libviews/callgraphview.cpp:2781 libviews/callgraphview.cpp:2821
+#, fuzzy
+#| msgid "max. 10"
+msgctxt "CallGraphView|"
+msgid "max. 10"
+msgstr "maks. 10"
+
+#: libviews/callgraphview.cpp:2782 libviews/callgraphview.cpp:2822
+#, fuzzy
+#| msgid "max. 15"
+msgctxt "CallGraphView|"
+msgid "max. 15"
+msgstr "maks. 15"
+
+#: libviews/callgraphview.cpp:2813
+#, fuzzy
+#| msgid "Callee Depth"
+msgctxt "CallGraphView|"
+msgid "Callee Depth"
+msgstr "Kutsuttujen syvyys"
+
+#: libviews/callgraphview.cpp:2853
+#, fuzzy
+#| msgid "Min. Node Cost"
+msgctxt "CallGraphView|"
+msgid "Min. Node Cost"
+msgstr "Solmun vähimmäishinta"
+
+#: libviews/callgraphview.cpp:2854
+#, fuzzy
+#| msgid "No Minimum"
+msgctxt "CallGraphView|"
+msgid "No Minimum"
+msgstr "Ei alarajaa"
+
+#: libviews/callgraphview.cpp:2860
+#, fuzzy
+#| msgid "50 %"
+msgctxt "CallGraphView|"
+msgid "50 %"
+msgstr "50 %"
+
+#: libviews/callgraphview.cpp:2861
+#, fuzzy
+#| msgid "20 %"
+msgctxt "CallGraphView|"
+msgid "20 %"
+msgstr "20 %"
+
+#: libviews/callgraphview.cpp:2862
+#, fuzzy
+#| msgid "10 %"
+msgctxt "CallGraphView|"
+msgid "10 %"
+msgstr "10 %"
+
+#: libviews/callgraphview.cpp:2863
+#, fuzzy
+#| msgid "5 %"
+msgctxt "CallGraphView|"
+msgid "5 %"
+msgstr "5 %"
+
+#: libviews/callgraphview.cpp:2864
+#, fuzzy
+#| msgid "2 %"
+msgctxt "CallGraphView|"
+msgid "2 %"
+msgstr "2 %"
+
+#: libviews/callgraphview.cpp:2865
+#, fuzzy
+#| msgid "1 %"
+msgctxt "CallGraphView|"
+msgid "1 %"
+msgstr "1 %"
+
+#: libviews/callgraphview.cpp:2895
+#, fuzzy
+#| msgid "Min. Call Cost"
+msgctxt "CallGraphView|"
+msgid "Min. Call Cost"
+msgstr "Kutsun vähimmäishinta"
+
+#: libviews/callgraphview.cpp:2896
+#, fuzzy
+#| msgid "Same as Node"
+msgctxt "CallGraphView|"
+msgid "Same as Node"
+msgstr "Sama kuin solmun"
+
+#: libviews/callgraphview.cpp:2898
+#, fuzzy
+#| msgid "50 % of Node"
+msgctxt "CallGraphView|"
+msgid "50 % of Node"
+msgstr "50 % solmusta"
+
+#: libviews/callgraphview.cpp:2900
+#, fuzzy
+#| msgid "20 % of Node"
+msgctxt "CallGraphView|"
+msgid "20 % of Node"
+msgstr "20 % solmusta"
+
+#: libviews/callgraphview.cpp:2902
+#, fuzzy
+#| msgid "10 % of Node"
+msgctxt "CallGraphView|"
+msgid "10 % of Node"
+msgstr "10 % solmusta"
+
+#: libviews/callgraphview.cpp:2931
+#, fuzzy
+#| msgid "Birds-eye View"
+msgctxt "CallGraphView|"
+msgid "Birds-eye View"
+msgstr "Yleiskuva"
+
+#: libviews/callgraphview.cpp:2932
+#, fuzzy
+#| msgid "Top Left"
+msgctxt "CallGraphView|"
+msgid "Top Left"
+msgstr "Ylävasemmalla"
+
+#: libviews/callgraphview.cpp:2933
+#, fuzzy
+#| msgid "Top Right"
+msgctxt "CallGraphView|"
+msgid "Top Right"
+msgstr "Yläoikealla"
+
+#: libviews/callgraphview.cpp:2934
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "CallGraphView|"
+msgid "Bottom Left"
+msgstr "Alavasemmalla"
+
+#: libviews/callgraphview.cpp:2935
+#, fuzzy
+#| msgid "Bottom Right"
+msgctxt "CallGraphView|"
+msgid "Bottom Right"
+msgstr "Alaoikealla"
+
+#: libviews/callgraphview.cpp:2936
+#, fuzzy
+#| msgid "Automatic"
+msgctxt "CallGraphView|"
+msgid "Automatic"
+msgstr "Automaattinen"
+
+#: libviews/callgraphview.cpp:2937
+#, fuzzy
+#| msgid "Hide"
+msgctxt "CallGraphView|"
+msgid "Hide"
+msgstr "Piilota"
+
+#: libviews/callgraphview.cpp:2967
+#, fuzzy
+#| msgid "Layout"
+msgctxt "CallGraphView|"
+msgid "Layout"
+msgstr "Asettelu"
+
+#: libviews/callgraphview.cpp:2968
+#, fuzzy
+#| msgid "Top to Down"
+msgctxt "CallGraphView|"
+msgid "Top to Down"
+msgstr "Ylhäältä alas"
+
+#: libviews/callgraphview.cpp:2969
+#, fuzzy
+#| msgid "Left to Right"
+msgctxt "CallGraphView|"
+msgid "Left to Right"
+msgstr "Vasemmalta oikealle"
+
+#: libviews/callgraphview.cpp:2970
+#, fuzzy
+#| msgid "Circular"
+msgctxt "CallGraphView|"
+msgid "Circular"
+msgstr "Ympyrämäinen"
+
+#: libviews/callgraphview.cpp:3010 libviews/callgraphview.cpp:3015
+#: libviews/callgraphview.cpp:3035
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "CallGraphView|"
+msgid "Go to '%1'"
+msgstr "Valitse ”%1”"
+
+#: libviews/callgraphview.cpp:3046
+#, fuzzy
+#| msgid "Stop Layouting"
+msgctxt "CallGraphView|"
+msgid "Stop Layouting"
+msgstr "Pysäytä asetteleminen"
+
+#: libviews/callgraphview.cpp:3053
+#, fuzzy
+#| msgid "Export Graph"
+msgctxt "CallGraphView|"
+msgid "Export Graph"
+msgstr "Vie kaavio"
+
+#: libviews/callgraphview.cpp:3054
+#, fuzzy
+#| msgid "As DOT file..."
+msgctxt "CallGraphView|"
+msgid "As DOT file..."
+msgstr "DOT-tiedostona…"
+
+#: libviews/callgraphview.cpp:3055
+#, fuzzy
+#| msgid "As Image..."
+msgctxt "CallGraphView|"
+msgid "As Image..."
+msgstr "Kuvana…"
+
+#: libviews/callgraphview.cpp:3058
+#, fuzzy
+#| msgid "Graph"
+msgctxt "CallGraphView|"
+msgid "Graph"
+msgstr "Kaavio"
+
+#: libviews/callgraphview.cpp:3066
+#, fuzzy
+#| msgid "Arrows for Skipped Calls"
+msgctxt "CallGraphView|"
+msgid "Arrows for Skipped Calls"
+msgstr "Nuolet ohitetuille kutsuille"
+
+#: libviews/callgraphview.cpp:3071
+#, fuzzy
+#| msgid "Inner-cycle Calls"
+msgctxt "CallGraphView|"
+msgid "Inner-cycle Calls"
+msgstr "Kehänsisäiset kutsut"
+
+#: libviews/callgraphview.cpp:3076
+msgctxt "CallGraphView|"
+msgid "Cluster Groups"
+msgstr ""
+
+#: libviews/callgraphview.cpp:3080
+#, fuzzy
+#| msgid "Visualization"
+msgctxt "CallGraphView|"
+msgid "Visualization"
+msgstr "Visualisointi"
+
+#: libviews/callgraphview.cpp:3081
+#, fuzzy
+#| msgid "Compact"
+msgctxt "CallGraphView|"
+msgid "Compact"
+msgstr "Tiivis"
+
+#: libviews/callgraphview.cpp:3084
+#, fuzzy
+#| msgid "Normal"
+msgctxt "CallGraphView|"
+msgid "Normal"
+msgstr "Tavallinen"
+
+#: libviews/callgraphview.cpp:3087
+#, fuzzy
+#| msgid "Tall"
+msgctxt "CallGraphView|"
+msgid "Tall"
+msgstr "Korkea"
+
+#: libviews/callgraphview.cpp:3119
+#, fuzzy
+#| msgid "Export Graph As Image"
+msgctxt "CallGraphView|"
+msgid "Export Graph As Image"
+msgstr "Vie kaavio kuvana"
+
+#: libviews/callgraphview.cpp:3121
+#, fuzzy
+#| msgid "Images (*.png *.jpg)"
+msgctxt "CallGraphView|"
+msgid "Images (*.png *.jpg)"
+msgstr "Kuvat (*.png *.jpg)"
+
+#: libviews/callitem.cpp:73 libviews/partlistitem.cpp:131
+#, fuzzy
+#| msgid "(active)"
+msgctxt "QObject|"
+msgid "(active)"
+msgstr "(aktiivinen)"
+
+#: libviews/callmapview.cpp:52
+#, fuzzy
+#| msgctxt "Name"
+#| msgid "A thing's name"
+msgctxt "CallMapView|Name"
+msgid "A thing's name"
+msgstr "Asian nimi"
+
+#: libviews/callmapview.cpp:53
+#, fuzzy
+#| msgid "Cost"
+msgctxt "CallMapView|"
+msgid "Cost"
+msgstr "Hinta"
+
+#: libviews/callmapview.cpp:54
+#, fuzzy
+#| msgid "Location"
+msgctxt "CallMapView|"
+msgid "Location"
+msgstr "Sijainti"
+
+#: libviews/callmapview.cpp:56
+#, fuzzy
+#| msgid "Call"
+msgctxt "CallMapView|"
+msgid "Calls"
+msgstr "Kutsu"
+
+#: libviews/callmapview.cpp:91
+#, fuzzy
+#| msgid ""
+#| "<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers "
+#| "of the current activated function. Each colored rectangle represents a "
+#| "function; its size tries to be proportional to the cost spent therein "
+#| "while the active function is running (however, there are drawing "
+#| "constraints).</p>"
+msgctxt "CallMapView|"
+msgid ""
+"<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>Kutsujakartta</b><p>Tästä kaaviosta näkee nykyisen aktiivisen funktion "
+"kaikkien kutsujien sisäkkäisen hierarkian. Jokainen värillinen suorakulmio "
+"esittää funktiota ja niiden koko yrittää olla suhteessa funktion "
+"suoritukseen liittyvään hintaan (piirtämisessä on kuitenkin rajoitteita).</p>"
+
+#: libviews/callmapview.cpp:98
+#, fuzzy
+#| msgid ""
+#| "<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+#| "the current activated function. Each colored rectangle represents a "
+#| "function; its size tries to be proportional to the cost spent therein "
+#| "while the active function is running (however, there are drawing "
+#| "constraints).</p>"
+msgctxt "CallMapView|"
+msgid ""
+"<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>Kutsukartta</b><p>Tästä kaaviosta näkee nykyisen aktivoidun funktion "
+"kutsumien funktioiden sisäkkäisen hierarkian. Jokainen värillinen "
+"suorakulmio esittää funktiota ja niiden koko yrittää olla suhteessa funktion "
+"suoritukseen liittyvään hintaan (piirtämisessä on kuitenkin rajoitteita).</p>"
+
+#: libviews/callmapview.cpp:106
+msgctxt "CallMapView|"
+msgid ""
+"<p>Appearance options can be found in the in the context menu. To get exact "
+"size proportions, choose 'Hide incorrect borders'. As this mode can be "
+"<em>very</em> time consuming, you may want to limit the maximum drawn "
+"nesting level before. 'Best' determinates the split direction for children "
+"from the aspect ratio of the parent. 'Always Best' decides on remaining "
+"space for each sibling. 'Ignore Proportions' takes space for function name "
+"drawing <em>before</em> drawing children. Note that size proportions can get "
+"<em>heavily</em> wrong.</p><p>This is a <em>TreeMap</em> widget. Keyboard "
+"navigation is available with the left/right arrow keys for traversing "
+"siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
+"em> activates the current item.</p>"
+msgstr ""
+
+#: libviews/callmapview.cpp:139
+#, fuzzy
+#| msgid "Go To"
+msgctxt "CallMapView|"
+msgid "Go To"
+msgstr "Siirry"
+
+#: libviews/callmapview.cpp:170
+#, fuzzy
+#| msgid "Stop at Depth"
+msgctxt "CallMapView|"
+msgid "Stop at Depth"
+msgstr "Pysähdy syvyyteen"
+
+#: libviews/callmapview.cpp:171
+#, fuzzy
+#| msgid "No Depth Limit"
+msgctxt "CallMapView|"
+msgid "No Depth Limit"
+msgstr "Ei syvyysrajoitusta"
+
+#: libviews/callmapview.cpp:173
+#, fuzzy
+#| msgid "Depth 10"
+msgctxt "CallMapView|"
+msgid "Depth 10"
+msgstr "Syvyys 10"
+
+#: libviews/callmapview.cpp:174
+#, fuzzy
+#| msgid "Depth 15"
+msgctxt "CallMapView|"
+msgid "Depth 15"
+msgstr "Syvyys 15"
+
+#: libviews/callmapview.cpp:175
+#, fuzzy
+#| msgid "Depth 20"
+msgctxt "CallMapView|"
+msgid "Depth 20"
+msgstr "Syvyys 20"
+
+#: libviews/callmapview.cpp:178
+#, fuzzy, qt-format
+#| msgid "Depth of '%1' (%2)"
+msgctxt "CallMapView|"
+msgid "Depth of '%1' (%2)"
+msgstr "Funktion ”%1” syvyyteen (%2)"
+
+#: libviews/callmapview.cpp:185
+#, fuzzy, qt-format
+#| msgid "Decrement Depth (to %1)"
+msgctxt "CallMapView|"
+msgid "Decrement Depth (to %1)"
+msgstr "Vähennä syvyyttä (arvoon %1)"
+
+#: libviews/callmapview.cpp:187
+#, fuzzy, qt-format
+#| msgid "Increment Depth (to %1)"
+msgctxt "CallMapView|"
+msgid "Increment Depth (to %1)"
+msgstr "Kasvata syvyyttä (arvoon %1)"
+
+#: libviews/callmapview.cpp:213
+#, fuzzy
+#| msgid "Stop at Function"
+msgctxt "CallMapView|"
+msgid "Stop at Function"
+msgstr "Pysähdy funktioon"
+
+#: libviews/callmapview.cpp:214
+#, fuzzy
+#| msgid "No Function Limit"
+msgctxt "CallMapView|"
+msgid "No Function Limit"
+msgstr "Ei funktiorajoitusta"
+
+#: libviews/callmapview.cpp:257
+#, fuzzy
+#| msgid "Stop at Area"
+msgctxt "CallMapView|"
+msgid "Stop at Area"
+msgstr "Pysähdy alaan"
+
+#: libviews/callmapview.cpp:258
+#, fuzzy
+#| msgid "No Area Limit"
+msgctxt "CallMapView|"
+msgid "No Area Limit"
+msgstr "Ei alarajoitusta"
+
+#: libviews/callmapview.cpp:260
+#, fuzzy
+#| msgid "100 Pixels"
+msgctxt "CallMapView|"
+msgid "100 Pixels"
+msgstr "100 kuvapistettä"
+
+#: libviews/callmapview.cpp:261
+#, fuzzy
+#| msgid "200 Pixels"
+msgctxt "CallMapView|"
+msgid "200 Pixels"
+msgstr "200 kuvapistettä"
+
+#: libviews/callmapview.cpp:262
+#, fuzzy
+#| msgid "500 Pixels"
+msgctxt "CallMapView|"
+msgid "500 Pixels"
+msgstr "500 kuvapistettä"
+
+#: libviews/callmapview.cpp:263
+#, fuzzy
+#| msgid "1000 Pixels"
+msgctxt "CallMapView|"
+msgid "1000 Pixels"
+msgstr "1000 kuvapistettä"
+
+#: libviews/callmapview.cpp:269
+#, fuzzy, qt-format
+#| msgid "Area of '%1' (%2)"
+msgctxt "CallMapView|"
+msgid "Area of '%1' (%2)"
+msgstr "Funktion ”%1” ala (%2)"
+
+#: libviews/callmapview.cpp:275
+#, fuzzy, qt-format
+#| msgid "Double Area Limit (to %1)"
+msgctxt "CallMapView|"
+msgid "Double Area Limit (to %1)"
+msgstr "Kaksinkertaista alarajoitus (arvoon %1)"
+
+#: libviews/callmapview.cpp:277
+#, fuzzy, qt-format
+#| msgid "Half Area Limit (to %1)"
+msgctxt "CallMapView|"
+msgid "Half Area Limit (to %1)"
+msgstr "Puolita alarajoitus (arvoon %1)"
+
+#: libviews/callmapview.cpp:327
+#, fuzzy
+#| msgid "Visualization"
+msgctxt "CallMapView|"
+msgid "Visualization"
+msgstr "Visualisointi"
+
+#: libviews/callmapview.cpp:328
+#, fuzzy
+#| msgid "Split Direction"
+msgctxt "CallMapView|"
+msgid "Split Direction"
+msgstr "Jakamisen suunta"
+
+#: libviews/callmapview.cpp:331
+#, fuzzy
+#| msgid "Skip Incorrect Borders"
+msgctxt "CallMapView|"
+msgid "Skip Incorrect Borders"
+msgstr "Ohita virheelliset reunat"
+
+#: libviews/callmapview.cpp:336
+#, fuzzy
+#| msgid "Border Width"
+msgctxt "CallMapView|"
+msgid "Border Width"
+msgstr "Reunan leveys"
+
+#: libviews/callmapview.cpp:337
+#, fuzzy
+#| msgid "Border 0"
+msgctxt "CallMapView|"
+msgid "Border 0"
+msgstr "Reuna 0"
+
+#: libviews/callmapview.cpp:339
+#, fuzzy
+#| msgid "Border 1"
+msgctxt "CallMapView|"
+msgid "Border 1"
+msgstr "Reuna 1"
+
+#: libviews/callmapview.cpp:340
+#, fuzzy
+#| msgid "Border 2"
+msgctxt "CallMapView|"
+msgid "Border 2"
+msgstr "Reuna 2"
+
+#: libviews/callmapview.cpp:341
+#, fuzzy
+#| msgid "Border 3"
+msgctxt "CallMapView|"
+msgid "Border 3"
+msgstr "Reuna 3"
+
+#: libviews/callmapview.cpp:346
+#, fuzzy
+#| msgid "Draw Symbol Names"
+msgctxt "CallMapView|"
+msgid "Draw Symbol Names"
+msgstr "Piirrä symbolinimet"
+
+#: libviews/callmapview.cpp:348
+#, fuzzy
+#| msgid "Draw Cost"
+msgctxt "CallMapView|"
+msgid "Draw Cost"
+msgstr "Piirrä hinta"
+
+#: libviews/callmapview.cpp:350
+#, fuzzy
+#| msgid "Draw Location"
+msgctxt "CallMapView|"
+msgid "Draw Location"
+msgstr "Piirrä sijainti"
+
+#: libviews/callmapview.cpp:352
+#, fuzzy
+#| msgid "Draw Calls"
+msgctxt "CallMapView|"
+msgid "Draw Calls"
+msgstr "Piirrä kutsut"
+
+#: libviews/callmapview.cpp:356
+msgctxt "CallMapView|"
+msgid "Ignore Proportions"
+msgstr ""
+
+#: libviews/callmapview.cpp:358
+msgctxt "CallMapView|"
+msgid "Allow Rotation"
+msgstr ""
+
+#: libviews/callmapview.cpp:376
+#, fuzzy
+#| msgid "Shading"
+msgctxt "CallMapView|"
+msgid "Shading"
+msgstr "Varjostus"
+
+#: libviews/callmapview.cpp:428
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Call Map: Current is '%1'"
+msgstr ""
+
+#: libviews/callmapview.cpp:621
+#, fuzzy
+#| msgid "Zoom Function"
+msgctxt "QObject|"
+msgid "(no function)"
+msgstr "Zoomaustoiminto"
+
+#: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
+#, fuzzy
+#| msgid "(no caller)"
+msgctxt "QObject|"
+msgid "(no call)"
+msgstr "(ei kutsujaa)"
+
+#: libviews/callview.cpp:37
+#, fuzzy
+#| msgid "Cost"
+msgctxt "CallView|"
+msgid "Cost"
+msgstr "Hinta"
+
+#: libviews/callview.cpp:38
+msgctxt "CallView|"
+msgid "Cost per call"
+msgstr ""
+
+#: libviews/callview.cpp:39
+#, fuzzy
+#| msgid "Cost"
+msgctxt "CallView|"
+msgid "Cost 2"
+msgstr "Hinta"
+
+#: libviews/callview.cpp:40
+msgctxt "CallView|"
+msgid "Cost 2 per call"
+msgstr ""
+
+#: libviews/callview.cpp:41
+msgctxt "CallView|"
+msgid "Count"
+msgstr ""
+
+#: libviews/callview.cpp:42
+#, fuzzy
+#| msgid "Caller"
+msgctxt "CallView|"
+msgid "Caller"
+msgstr "Kutsuja"
+
+#: libviews/callview.cpp:42
+#, fuzzy
+#| msgid "Callee"
+msgctxt "CallView|"
+msgid "Callee"
+msgstr "Kutsuttu"
+
+#: libviews/callview.cpp:76
+#, fuzzy
+#| msgid ""
+#| "<b>List of direct Callers</b><p>This list shows all functions calling the "
+#| "current selected one directly, together with a call count and the cost "
+#| "spent in the current selected function while being called from the "
+#| "function from the list.</p><p>An icon instead of an inclusive cost "
+#| "specifies that this is a call inside of a recursive cycle. An inclusive "
+#| "cost makes no sense here.</p><p>Selecting a function makes it the current "
+#| "selected one of this information panel. If there are two panels (Split "
+#| "mode), the function of the other panel is changed instead.</p>"
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callers</b><p>This list shows all functions calling the "
+"current selected one directly, together with a call count and the cost spent "
+"in the current selected function while being called from the function from "
+"the list.</p><p>An icon instead of an inclusive cost specifies that this is "
+"a call inside of a recursive cycle. An inclusive cost makes no sense here.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>List of direct Callers</b><p>This list shows all functions calling the "
+"current selected one directly, together with a call count and the cost spent "
+"in the current selected function while being called from the function from "
+"the list.</p><p>An icon instead of an inclusive cost specifies that this is "
+"a call inside of a recursive cycle. An inclusive cost makes no sense here.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+
+#: libviews/callview.cpp:89
+#, fuzzy
+#| msgid ""
+#| "<b>List of direct Callees</b><p>This list shows all functions called by "
+#| "the current selected one directly, together with a call count and the "
+#| "cost spent in this function while being called from the selected function."
+#| "</p><p>Selecting a function makes it the current selected one of this "
+#| "information panel. If there are two panels (Split mode), the function of "
+#| "the other panel is changed instead.</p>"
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callees</b><p>This list shows all functions called by the "
+"current selected one directly, together with a call count and the cost spent "
+"in this function while being called from the selected function.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>Välittömien kutsuttujen lista</b><p>Tässä listataan kaikki funktiot, joit "
+"valittu funktio kutsuu suoraan. Myös kutsujen määrä ja funktion suoritukseen "
+"liittyvä hinta ilmoitetaan.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+
+#: libviews/callview.cpp:118 libviews/callview.cpp:123
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "CallView|"
+msgid "Go to '%1'"
+msgstr "Valitse ”%1”"
+
+#: libviews/callview.cpp:257 libviews/callview.cpp:261
+#, qt-format
+msgctxt "CallView|"
+msgid "%1 per call"
+msgstr "%1/kutsu"
+
+#: libviews/costlistitem.cpp:53
+#, fuzzy, qt-format
+#| msgid "(%1 function(s) skipped)"
+msgctxt "QObject|"
+msgid "(%n item(s) skipped)"
+msgid_plural "(%n item(s) skipped)"
+msgstr[0] "(%1 funktio(ta) ohitettu)"
+msgstr[1] "(%1 funktio(ta) ohitettu)"
+
+#: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
+#, fuzzy, qt-format
+#| msgid "(%1 function(s) skipped)"
+msgctxt "QObject|"
+msgid "(%n function(s) skipped)"
+msgid_plural "(%n function(s) skipped)"
+msgstr[0] "(%1 funktio(ta) ohitettu)"
+msgstr[1] "(%1 funktio(ta) ohitettu)"
+
+#: libviews/coverageview.cpp:37
+msgctxt "CoverageView|"
+msgid "Incl."
+msgstr ""
+
+#: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
+msgctxt "CoverageView|"
+msgid "Distance"
+msgstr "Etäisyys"
+
+#: libviews/coverageview.cpp:41
+#, fuzzy
+#| msgid "Caller"
+msgctxt "CoverageView|"
+msgid "Called"
+msgstr "Kutsuja"
+
+#: libviews/coverageview.cpp:42
+#, fuzzy
+#| msgid "Caller"
+msgctxt "CoverageView|"
+msgid "Caller"
+msgstr "Kutsuja"
+
+#: libviews/coverageview.cpp:46
+#, fuzzy
+#| msgid "Self"
+msgctxt "CoverageView|"
+msgid "Self"
+msgstr "Itse"
+
+#: libviews/coverageview.cpp:48
+#, fuzzy
+#| msgid "Call"
+msgctxt "CoverageView|"
+msgid "Calling"
+msgstr "Kutsu"
+
+#: libviews/coverageview.cpp:49
+#, fuzzy
+#| msgid "Callee"
+msgctxt "CoverageView|"
+msgid "Callee"
+msgstr "Kutsuttu"
+
+#: libviews/coverageview.cpp:84
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callers</b><p>This list shows all functions calling the "
+"current selected one, either directly or with several functions in-between "
+"on the stack; the number of functions in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the selected function while a "
+"listed function is active; relative cost is the percentage of all cost spent "
+"in the selected function while the listed one is active. The cost graphic "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls from the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+
+#: libviews/coverageview.cpp:114
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callees</b><p>This list shows all functions called by the "
+"current selected one, either directly or with several function in-between on "
+"the stack; the number of function in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the listed function while the "
+"selected is active; relative cost is the percentage of all cost spent in the "
+"listed function while the selected one is active. The cost graphic always "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls to the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+
+#: libviews/coverageview.cpp:160
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "CoverageView|"
+msgid "Go to '%1'"
+msgstr "Valitse ”%1”"
+
+#: libviews/eventtypeitem.cpp:48
+#, fuzzy
+#| msgid "Unknown Type"
+msgctxt "QObject|"
+msgid "Unknown Type"
+msgstr "Tuntematon tyyppi"
+
+#: libviews/eventtypeview.cpp:37
+#, fuzzy
+#| msgid "Event Type"
+msgctxt "EventTypeView|"
+msgid "Event Type"
+msgstr "Tapahtuman tyyppi"
+
+#: libviews/eventtypeview.cpp:38
+msgctxt "EventTypeView|"
+msgid "Incl."
+msgstr ""
+
+#: libviews/eventtypeview.cpp:39
+#, fuzzy
+#| msgid "Self"
+msgctxt "EventTypeView|"
+msgid "Self"
+msgstr "Itse"
+
+#: libviews/eventtypeview.cpp:40
+#, fuzzy
+#| msgid "Short"
+msgctxt "EventTypeView|"
+msgid "Short"
+msgstr "Lyhyt"
+
+#: libviews/eventtypeview.cpp:42
+#, fuzzy
+#| msgid "Formula"
+msgctxt "EventTypeView|"
+msgid "Formula"
+msgstr "Kaava"
+
+#: libviews/eventtypeview.cpp:76
+msgctxt "EventTypeView|"
+msgid ""
+"<b>Cost Types List</b><p>This list shows all cost types available and what "
+"the self/inclusive cost of the current selected function is for that cost "
+"type.</p><p>By choosing a cost type from the list, you change the cost type "
+"of costs shown all over KCachegrind to be the selected one.</p>"
+msgstr ""
+
+#: libviews/eventtypeview.cpp:96
+#, fuzzy
+#| msgid "Set as Secondary Event Type"
+msgctxt "EventTypeView|"
+msgid "Set as Secondary Event Type"
+msgstr "Aseta toissijaisen tapahtuman tyypiksi"
+
+#: libviews/eventtypeview.cpp:98
+#, fuzzy
+#| msgid "Hide Secondary Event Type"
+msgctxt "EventTypeView|"
+msgid "Hide Secondary Event Type"
+msgstr "Piilota toissijainen tapahtuman tyyppi"
+
+#: libviews/eventtypeview.cpp:107
+#, fuzzy
+#| msgid "Edit Long Name"
+msgctxt "EventTypeView|"
+msgid "Edit Long Name"
+msgstr "Muuta pitkää nimeä"
+
+#: libviews/eventtypeview.cpp:108
+#, fuzzy
+#| msgid "Edit Short Name"
+msgctxt "EventTypeView|"
+msgid "Edit Short Name"
+msgstr "Muuta lyhyttä nimeä"
+
+#: libviews/eventtypeview.cpp:109
+#, fuzzy
+#| msgid "Formula"
+msgctxt "EventTypeView|"
+msgid "Edit Formula"
+msgstr "Kaava"
+
+#: libviews/eventtypeview.cpp:110
+#, fuzzy
+#| msgid "Remove"
+msgctxt "EventTypeView|"
+msgid "Remove"
+msgstr "Poista"
+
+#: libviews/eventtypeview.cpp:119
+#, fuzzy
+#| msgid "Event Type"
+msgctxt "EventTypeView|"
+msgid "New Event Type..."
+msgstr "Tapahtuman tyyppi"
+
+#: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
+#, qt-format
+msgctxt "EventTypeView|"
+msgid "New%1"
+msgstr ""
+
+#: libviews/eventtypeview.cpp:160
+#, fuzzy, qt-format
+#| msgid "Event Type"
+msgctxt "EventTypeView|"
+msgid "New Event Type %1"
+msgstr "Tapahtuman tyyppi"
+
+#: libviews/functionlistmodel.cpp:45
+msgctxt "FunctionListModel|"
+msgid "Incl."
+msgstr ""
+
+#: libviews/functionlistmodel.cpp:46
+#, fuzzy
+#| msgid "Self"
+msgctxt "FunctionListModel|"
+msgid "Self"
+msgstr "Itse"
+
+#: libviews/functionlistmodel.cpp:47
+#, fuzzy
+#| msgid "Caller"
+msgctxt "FunctionListModel|"
+msgid "Called"
+msgstr "Kutsuja"
+
+#: libviews/functionlistmodel.cpp:48
+#, fuzzy
+#| msgid "Function"
+msgctxt "FunctionListModel|"
+msgid "Function"
+msgstr "Funktio"
+
+#: libviews/functionlistmodel.cpp:49
+#, fuzzy
+#| msgid "Location"
+msgctxt "FunctionListModel|"
+msgid "Location"
+msgstr "Sijainti"
+
+#: libviews/functionlistmodel.cpp:89
+#, fuzzy, qt-format
+#| msgid "(%1 function(s) skipped)"
+msgctxt "FunctionListModel|"
+msgid "(%1 function(s) skipped)"
+msgstr "(%1 funktio(ta) ohitettu)"
+
+#: libviews/functionselection.cpp:87
+#, fuzzy
+#| msgid "Function Profile"
+msgctxt "FunctionSelection|"
+msgid "Function Profile"
+msgstr "Funktioprofiili"
+
+#: libviews/functionselection.cpp:95
+#, fuzzy
+#| msgid "&Search:"
+msgctxt "FunctionSelection|"
+msgid "&Search:"
+msgstr "&Etsi:"
+
+#: libviews/functionselection.cpp:101
+#, fuzzy
+#| msgid "&Search:"
+msgctxt "FunctionSelection|"
+msgid "Search Query"
+msgstr "&Etsi:"
+
+#: libviews/functionselection.cpp:116
+#, fuzzy
+#| msgid "Self"
+msgctxt "FunctionSelection|"
+msgid "Self"
+msgstr "Itse"
+
+#: libviews/functionselection.cpp:116
+#, fuzzy
+#| msgid "Group"
+msgctxt "FunctionSelection|"
+msgid "Group"
+msgstr "Ryhmä"
+
+#: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
+#, fuzzy
+#| msgid "(No Grouping)"
+msgctxt "FunctionSelection|"
+msgid "(No Grouping)"
+msgstr "(Ei ryhmittelyä)"
+
+#: libviews/functionselection.cpp:209
+msgctxt "FunctionSelection|"
+msgid ""
+"<b>The Flat Profile</b><p>The flat profile contains a group and a function "
+"selection list. The group list contains all groups where costs are spent in, "
+"depending on the chosen group type. The group list is hidden when group type "
+"'Function' is selected.</p><p>The function list contains the functions of "
+"the selected group (or all for 'Function' group type), ordered by the costs "
+"spent therein. Functions with costs less than 1% are hidden on default.</p>"
+msgstr ""
+
+#: libviews/functionselection.cpp:287
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "FunctionSelection|"
+msgid "Go to '%1'"
+msgstr "Valitse ”%1”"
+
+#: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
+#, fuzzy
+#| msgid "Grouping"
+msgctxt "FunctionSelection|"
+msgid "Grouping"
+msgstr "Ryhmittely"
+
+#: libviews/functionselection.cpp:353
+#, fuzzy
+#| msgid "No Grouping"
+msgctxt "FunctionSelection|"
+msgid "No Grouping"
+msgstr "Ei ryhmittelyä"
+
+#: libviews/instritem.cpp:114 libviews/sourceitem.cpp:94
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "QObject|"
+msgid "Active call to '%1'"
+msgstr "Valitse ”%1”"
+
+#: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "QObject|"
+msgid "Call to '%1'"
+msgstr "Valitse ”%1”"
+
+#: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "QObject|"
+msgid "%n call(s) to '%2'"
+msgid_plural "%n call(s) to '%2'"
+msgstr[0] "Valitse ”%1”"
+msgstr[1] "Valitse ”%1”"
+
+#: libviews/instritem.cpp:155
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to 0x%3"
+msgstr ""
+
+#: libviews/instritem.cpp:160
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 times to 0x%2"
+msgstr ""
+
+#: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
+#, fuzzy
+#| msgid "(cycle)"
+msgctxt "QObject|"
+msgid "(cycle)"
+msgstr "(kehä)"
+
+#: libviews/instrview.cpp:193
+#, fuzzy
+#| msgid "#"
+msgctxt "InstrView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/instrview.cpp:194
+#, fuzzy
+#| msgid "Cost"
+msgctxt "InstrView|"
+msgid "Cost"
+msgstr "Hinta"
+
+#: libviews/instrview.cpp:195
+#, fuzzy
+#| msgid "Cost"
+msgctxt "InstrView|"
+msgid "Cost 2"
+msgstr "Hinta"
+
+#: libviews/instrview.cpp:197
+#, fuzzy
+#| msgid "Hex"
+msgctxt "InstrView|"
+msgid "Hex"
+msgstr "Heksa"
+
+#: libviews/instrview.cpp:199
+#, fuzzy
+#| msgid "Assembly Instructions"
+msgctxt "InstrView|"
+msgid "Assembly Instructions"
+msgstr "Konekieliset käskyt"
+
+#: libviews/instrview.cpp:200
+#, fuzzy
+#| msgid "Source Line"
+msgctxt "InstrView|"
+msgid "Source Position"
+msgstr "Lähdekoodirivi"
+
+#: libviews/instrview.cpp:236
+msgctxt "InstrView|"
+msgid ""
+"<b>Annotated Machine Code</b><p>The annotated machine code list shows the "
+"assembly instructions of the current selected function together with (self) "
+"cost spent while executing an instruction. If this is a call instruction, "
+"lines with details on the call happening are inserted into the source: the "
+"cost spent inside of the call, the number of calls happening, and the call "
+"destination.</p><p>The machine code shown is generated with the 'objdump' "
+"utility from the 'binutils' package.</p><p>Select a line with call "
+"information to make the destination function of this call current.</p>"
+msgstr ""
+
+#: libviews/instrview.cpp:265
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "InstrView|"
+msgid "Go to '%1'"
+msgstr "Valitse ”%1”"
+
+#: libviews/instrview.cpp:270
+#, fuzzy, qt-format
+#| msgid "Go to Address %1"
+msgctxt "InstrView|"
+msgid "Go to Address %1"
+msgstr "Siirry osoitteeseen %1"
+
+#: libviews/instrview.cpp:282
+#, fuzzy
+#| msgid "Hex Code"
+msgctxt "InstrView|"
+msgid "Hex Code"
+msgstr "Heksakoodi"
+
+#: libviews/instrview.cpp:573
+#, fuzzy
+#| msgid "There is no instruction info in the profile data file."
+msgctxt "InstrView|"
+msgid "There is no instruction info in the profile data file."
+msgstr "Profiilidatatiedostossa ei ole käskytietoja."
+
+#: libviews/instrview.cpp:575
+#, fuzzy
+#| msgid "Tip: For Callgrind, rerun with option"
+msgctxt "InstrView|"
+msgid "Tip: For Callgrind, rerun with option"
+msgstr "Vinkki: Aja callgrind uudelleen valinnalla"
+
+#: libviews/instrview.cpp:576
+#, fuzzy
+#| msgid "      --dump-instr=yes"
+msgctxt "InstrView|"
+msgid "      --dump-instr=yes"
+msgstr "      --dump-instr=yes"
+
+#: libviews/instrview.cpp:577
+msgctxt "InstrView|"
+msgid "To see (conditional) jumps, additionally specify"
+msgstr ""
+
+#: libviews/instrview.cpp:578
+#, fuzzy
+#| msgid "      --collect-jumps=yes"
+msgctxt "InstrView|"
+msgid "      --collect-jumps=yes"
+msgstr "      --collect-jumps=yes"
+
+#: libviews/instrview.cpp:826
+#, fuzzy
+#| msgid "For annotated machine code, the following object file is needed:"
+msgctxt "InstrView|"
+msgid "For annotated machine code, the following object file is needed:"
+msgstr "Merkittyyn konekoodiin tarvitaan seuraava objektitiedosto:"
+
+#: libviews/instrview.cpp:831
+msgctxt "InstrView|"
+msgid "This file can not be found."
+msgstr ""
+
+#: libviews/instrview.cpp:834
+msgctxt "InstrView|"
+msgid "If cross-compiled, set SYSROOT variable."
+msgstr ""
+
+#: libviews/instrview.cpp:858
+msgctxt "InstrView|"
+msgid "There is an error trying to execute the command"
+msgstr ""
+
+#: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
+msgctxt "InstrView|"
+msgid "Check that you have installed 'objdump'."
+msgstr ""
+
+#: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
+msgctxt "InstrView|"
+msgid "This utility can be found in the 'binutils' package."
+msgstr ""
+
+#: libviews/instrview.cpp:966
+#, fuzzy
+#| msgid "(No Instruction)"
+msgctxt "InstrView|"
+msgid "(No Instruction)"
+msgstr "(Ei käskyä)"
+
+#: libviews/instrview.cpp:1134
+#, qt-format
+msgctxt "InstrView|"
+msgid "There are %n cost line(s) without machine code."
+msgid_plural "There are %n cost line(s) without machine code."
+msgstr[0] ""
+msgstr[1] ""
+
+#: libviews/instrview.cpp:1136
+msgctxt "InstrView|"
+msgid "This happens because the code of"
+msgstr ""
+
+#: libviews/instrview.cpp:1139
+#, fuzzy
+#| msgid "There is no instruction info in the profile data file."
+msgctxt "InstrView|"
+msgid "does not seem to match the profile data file."
+msgstr "Profiilidatatiedostossa ei ole käskytietoja."
+
+#: libviews/instrview.cpp:1142
+msgctxt "InstrView|"
+msgid "Are you using an old profile data file or is the above mentioned"
+msgstr ""
+
+#: libviews/instrview.cpp:1144
+msgctxt "InstrView|"
+msgid "ELF object from an updated installation/another machine?"
+msgstr ""
+
+#: libviews/instrview.cpp:1152
+msgctxt "InstrView|"
+msgid "There seems to be an error trying to execute the command"
+msgstr ""
+
+#: libviews/instrview.cpp:1156
+#, fuzzy
+#| msgid "Check that the ELF object used in the command exists."
+msgctxt "InstrView|"
+msgid "Check that the ELF object used in the command exists."
+msgstr "Tarkista, että komennossa käytetty ELF-objekti on olemassa."
+
+#: libviews/partgraph.cpp:154
+#, fuzzy, qt-format
+#| msgid "Profile Part"
+msgctxt "QObject|"
+msgid "Profile Part %1"
+msgstr "Profiilin osa"
+
+#: libviews/partgraph.cpp:211
+#, fuzzy
+#| msgid "(no caller)"
+msgctxt "QObject|"
+msgid "(no trace)"
+msgstr "(ei kutsujaa)"
+
+#: libviews/partgraph.cpp:214
+#, fuzzy
+#| msgid "(no caller)"
+msgctxt "QObject|"
+msgid "(no part)"
+msgstr "(ei kutsujaa)"
+
+#: libviews/partlistitem.cpp:39
+msgctxt "QObject|"
+msgid "(none)"
+msgstr ""
+
+#: libviews/partselection.cpp:48
+#, fuzzy
+#| msgid "Parts Overview"
+msgctxt "PartSelection|"
+msgid "Parts Overview"
+msgstr "Osien yleiskuva"
+
+#: libviews/partselection.cpp:61
+#, fuzzy
+#| msgctxt "A thing's name"
+#| msgid "Name"
+msgctxt "PartSelection|A thing's name"
+msgid "Name"
+msgstr "Nimi"
+
+#: libviews/partselection.cpp:62
+#, fuzzy
+#| msgid "Cost"
+msgctxt "PartSelection|"
+msgid "Cost"
+msgstr "Hinta"
+
+#: libviews/partselection.cpp:69
+msgctxt "PartSelection|"
+msgid "(no trace parts)"
+msgstr ""
+
+#: libviews/partselection.cpp:96
+msgctxt "PartSelection|"
+msgid ""
+"<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+"there are several profile data files from one profile run. The Trace Part "
+"Overview dockable shows these, horizontally ordered in execution time; the "
+"rectangle sizes are proportional to the total cost spent in the parts. You "
+"can select one or several parts to constrain all costs shown to these parts "
+"only.</p><p>The parts are further subdivided: there is a partitioning and an "
+"callee split mode: <ul><li>Partitioning: You see the partitioning into "
+"groups for a trace part, according to the group type selected. E.g. if ELF "
+"object groups are selected, you see colored rectangles for each used ELF "
+"object (shared library or executable), sized according to the cost spent "
+"therein.</li><li>Callee: A rectangle showing the inclusive cost of the "
+"current selected function in the trace part is shown. This is split up into "
+"smaller rectangles to show the costs of its callees.</li></ul></p>"
+msgstr ""
+
+#: libviews/partselection.cpp:231
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Profile Part Overview: Current is '%1'"
+msgstr ""
+
+#: libviews/partselection.cpp:337
+#, fuzzy, qt-format
+#| msgid "Deselect '%1'"
+msgctxt "PartSelection|"
+msgid "Deselect '%1'"
+msgstr "Poista ”%1” valinta"
+
+#: libviews/partselection.cpp:339
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "PartSelection|"
+msgid "Select '%1'"
+msgstr "Valitse ”%1”"
+
+#: libviews/partselection.cpp:344
+#, fuzzy
+#| msgid "Select All Parts"
+msgctxt "PartSelection|"
+msgid "Select All Parts"
+msgstr "Valitse kaikki osat"
+
+#: libviews/partselection.cpp:345
+#, fuzzy
+#| msgid "Visible Parts"
+msgctxt "PartSelection|"
+msgid "Visible Parts"
+msgstr "Näkyvät osat"
+
+#: libviews/partselection.cpp:346
+#, fuzzy
+#| msgid "Hide Selected Parts"
+msgctxt "PartSelection|"
+msgid "Hide Selected Parts"
+msgstr "Piilota valitut osat"
+
+#: libviews/partselection.cpp:347
+#, fuzzy
+#| msgid "Show Hidden Parts"
+msgctxt "PartSelection|"
+msgid "Show Hidden Parts"
+msgstr "Näytä piilotetut osat"
+
+#: libviews/partselection.cpp:361
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "PartSelection|"
+msgid "Go to '%1'"
+msgstr "Valitse ”%1”"
+
+#: libviews/partselection.cpp:370
+#, fuzzy
+#| msgid "Visualization"
+msgctxt "PartSelection|"
+msgid "Visualization"
+msgstr "Visualisointi"
+
+#: libviews/partselection.cpp:371
+#, fuzzy
+#| msgid "Partitioning Mode"
+msgctxt "PartSelection|"
+msgid "Partitioning Mode"
+msgstr "Ositustila"
+
+#: libviews/partselection.cpp:373
+#, fuzzy
+#| msgid "Zoom Function"
+msgctxt "PartSelection|"
+msgid "Zoom Function"
+msgstr "Zoomaustoiminto"
+
+#: libviews/partselection.cpp:375
+#, fuzzy
+#| msgid "Show Direct Calls"
+msgctxt "PartSelection|"
+msgid "Show Direct Calls"
+msgstr "Näytä välittömät kutsut"
+
+#: libviews/partselection.cpp:376
+msgctxt "PartSelection|"
+msgid "Increment Shown Call Levels"
+msgstr ""
+
+#: libviews/partselection.cpp:377
+#, fuzzy
+#| msgid "Diagram Mode"
+msgctxt "PartSelection|"
+msgid "Diagram Mode"
+msgstr "Kaaviotila"
+
+#: libviews/partselection.cpp:392
+#, fuzzy
+#| msgid "Draw Names"
+msgctxt "PartSelection|"
+msgid "Draw Names"
+msgstr "Piirrä nimet"
+
+#: libviews/partselection.cpp:394
+#, fuzzy
+#| msgid "Draw Costs"
+msgctxt "PartSelection|"
+msgid "Draw Costs"
+msgstr "Piirrä hinnat"
+
+#: libviews/partselection.cpp:396
+msgctxt "PartSelection|"
+msgid "Ignore Proportions"
+msgstr ""
+
+#: libviews/partselection.cpp:398
+msgctxt "PartSelection|"
+msgid "Allow Rotation"
+msgstr ""
+
+#: libviews/partselection.cpp:400
+#, fuzzy
+#| msgid "Draw Frames"
+msgctxt "PartSelection|"
+msgid "Draw Frames"
+msgstr "Piirrä kehykset"
+
+#: libviews/partselection.cpp:414
+#, fuzzy
+#| msgid "Hide Info"
+msgctxt "PartSelection|"
+msgid "Hide Info"
+msgstr "Piilota tiedot"
+
+#: libviews/partselection.cpp:414
+#, fuzzy
+#| msgid "Show Info"
+msgctxt "PartSelection|"
+msgid "Show Info"
+msgstr "Näytä tiedot"
+
+#: libviews/partselection.cpp:562
+msgctxt "PartSelection|"
+msgid "(no trace loaded)"
+msgstr ""
+
+#: libviews/partview.cpp:37
+#, fuzzy
+#| msgid "Profile Part"
+msgctxt "PartView|"
+msgid "Profile Part"
+msgstr "Profiilin osa"
+
+#: libviews/partview.cpp:38
+msgctxt "PartView|"
+msgid "Incl."
+msgstr ""
+
+#: libviews/partview.cpp:39
+#, fuzzy
+#| msgid "Self"
+msgctxt "PartView|"
+msgid "Self"
+msgstr "Itse"
+
+#: libviews/partview.cpp:40
+#, fuzzy
+#| msgid "Caller"
+msgctxt "PartView|"
+msgid "Called"
+msgstr "Kutsuja"
+
+#: libviews/partview.cpp:41
+msgctxt "PartView|"
+msgid "Comment"
+msgstr ""
+
+#: libviews/partview.cpp:68
+msgctxt "PartView|"
+msgid ""
+"<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+"trace. For each part, the self/inclusive cost of the current selected "
+"function, spent in the part, is shown; percentage costs are always relative "
+"to the total cost <em>of the part</em> (not to the whole trace as in the "
+"Trace Part Overview). Also shown are the calls happening to/from the current "
+"function inside of the trace part.</p><p>By choosing one or more trace parts "
+"from the list, the costs shown all over KCachegrind will only be the ones "
+"spent in the selected part(s). If no list selection is shown, in fact all "
+"trace parts are selected implicitly.</p><p>This is a multi-selection list. "
+"You can select ranges by dragging the mouse or use SHIFT/CTRL modifiers. "
+"Selection/Deselection of trace parts can also be done by using the Trace "
+"Part Overview Dockable. This one also supports multiple selection.</"
+"p><p>Note that the list is hidden if only one trace part is loaded.</p>"
+msgstr ""
+
+#: libviews/sourceitem.cpp:141
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to %3"
+msgstr ""
+
+#: libviews/sourceitem.cpp:146
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 times to %2"
+msgstr ""
+
+#: libviews/sourceview.cpp:51
+#, fuzzy
+#| msgid "#"
+msgctxt "SourceView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/sourceview.cpp:52
+#, fuzzy
+#| msgid "Cost"
+msgctxt "SourceView|"
+msgid "Cost"
+msgstr "Hinta"
+
+#: libviews/sourceview.cpp:53
+#, fuzzy
+#| msgid "Cost"
+msgctxt "SourceView|"
+msgid "Cost 2"
+msgstr "Hinta"
+
+#: libviews/sourceview.cpp:55
+#, fuzzy
+#| msgid "Source Line"
+msgctxt "SourceView|"
+msgid "Source"
+msgstr "Lähdekoodirivi"
+
+#: libviews/sourceview.cpp:83
+msgctxt "SourceView|"
+msgid ""
+"<b>Annotated Source</b><p>The annotated source list shows the source lines "
+"of the current selected function together with (self) cost spent while "
+"executing the code of this source line. If there was a call in a source "
+"line, lines with details on the call happening are inserted into the source: "
+"the cost spent inside of the call, the number of calls happening, and the "
+"call destination.</p><p>Select a inserted call information line to make the "
+"destination function current.</p>"
+msgstr ""
+
+#: libviews/sourceview.cpp:110
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "SourceView|"
+msgid "Go to '%1'"
+msgstr "Valitse ”%1”"
+
+#: libviews/sourceview.cpp:115
+#, fuzzy, qt-format
+#| msgid "Go to Line %1"
+msgctxt "SourceView|"
+msgid "Go to Line %1"
+msgstr "Siirry riville %1"
+
+#: libviews/sourceview.cpp:627
+msgctxt "SourceView|"
+msgid "There is no cost of current selected type associated"
+msgstr ""
+
+#: libviews/sourceview.cpp:629
+msgctxt "SourceView|"
+msgid "with any source line of this function in file"
+msgstr ""
+
+#: libviews/sourceview.cpp:633
+msgctxt "SourceView|"
+msgid "Thus, no annotated source can be shown."
+msgstr ""
+
+#: libviews/sourceview.cpp:658
+#, qt-format
+msgctxt "SourceView|"
+msgid "--- From '%1' ---"
+msgstr ""
+
+#: libviews/sourceview.cpp:663
+#, qt-format
+msgctxt "SourceView|"
+msgid "--- Inlined from '%1' ---"
+msgstr ""
+
+#: libviews/sourceview.cpp:664
+msgctxt "SourceView|"
+msgid "--- Inlined from unknown source ---"
+msgstr ""
+
+#: libviews/sourceview.cpp:669
+msgctxt "SourceView|"
+msgid "There is no source available for the following function:"
+msgstr ""
+
+#: libviews/sourceview.cpp:674
+msgctxt "SourceView|"
+msgid "This is because no debug information is present."
+msgstr ""
+
+#: libviews/sourceview.cpp:676
+msgctxt "SourceView|"
+msgid "Recompile source and redo the profile run."
+msgstr ""
+
+#: libviews/sourceview.cpp:679
+#, fuzzy
+#| msgid "The function is located in this ELF object:"
+msgctxt "SourceView|"
+msgid "The function is located in this ELF object:"
+msgstr "Funktio sijaitsee seuraavassa ELF-objektissa:"
+
+#: libviews/sourceview.cpp:687
+msgctxt "SourceView|"
+msgid "This is because its source file cannot be found:"
+msgstr ""
+
+#: libviews/sourceview.cpp:691
+msgctxt "SourceView|"
+msgid "Add the folder of this file to the source folder list."
+msgstr ""
+
+#: libviews/sourceview.cpp:693
+msgctxt "SourceView|"
+msgid "The list can be found in the configuration dialog."
+msgstr "Luettelo löytyy asetusikkunasta."
+
+#: libviews/stackselection.cpp:36
+#, fuzzy
+#| msgid "Split Direction"
+msgctxt "StackSelection|"
+msgid "Stack Selection"
+msgstr "Jakamisen suunta"
+
+#: libviews/stackselection.cpp:44
+#, fuzzy
+#| msgid "Cost"
+msgctxt "StackSelection|"
+msgid "Cost"
+msgstr "Hinta"
+
+#: libviews/stackselection.cpp:45
+#, fuzzy
+#| msgid "Cost"
+msgctxt "StackSelection|"
+msgid "Cost2"
+msgstr "Hinta"
+
+#: libviews/stackselection.cpp:46
+#, fuzzy
+#| msgid "Call"
+msgctxt "StackSelection|"
+msgid "Calls"
+msgstr "Kutsu"
+
+#: libviews/stackselection.cpp:47
+#, fuzzy
+#| msgid "Function"
+msgctxt "StackSelection|"
+msgid "Function"
+msgstr "Funktio"
+
+#: libviews/tabview.cpp:103
+msgctxt "TabBar|"
+msgid "Move to Top"
+msgstr "Siirrä ylimmäs"
+
+#: libviews/tabview.cpp:104
+msgctxt "TabBar|Move to Top"
+msgid "Top"
+msgstr ""
+
+#: libviews/tabview.cpp:107
+#, fuzzy
+#| msgid "Left to Right"
+msgctxt "TabBar|"
+msgid "Move to Right"
+msgstr "Vasemmalta oikealle"
+
+#: libviews/tabview.cpp:108
+#, fuzzy
+#| msgid "Top Right"
+msgctxt "TabBar|Move to Right"
+msgid "Right"
+msgstr "Yläoikealla"
+
+#: libviews/tabview.cpp:111
+msgctxt "TabBar|"
+msgid "Move to Bottom"
+msgstr "Siirrä alimmas"
+
+#: libviews/tabview.cpp:112
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "TabBar|Move to Bottom"
+msgid "Bottom"
+msgstr "Alavasemmalla"
+
+#: libviews/tabview.cpp:115
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "TabBar|"
+msgid "Move to Bottom Left"
+msgstr "Alavasemmalla"
+
+#: libviews/tabview.cpp:116
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "TabBar|Move to Bottom Left"
+msgid "Bottom Left"
+msgstr "Alavasemmalla"
+
+#: libviews/tabview.cpp:118
+msgctxt "TabBar|"
+msgid "Move Area To"
+msgstr "Siirrä alue"
+
+#: libviews/tabview.cpp:121
+msgctxt "TabBar|"
+msgid "Hide This Tab"
+msgstr "Piilota tämä välilehti"
+
+#: libviews/tabview.cpp:122
+#, fuzzy
+#| msgid "Hide"
+msgctxt "TabBar|"
+msgid "Hide Area"
+msgstr "Piilota"
+
+#: libviews/tabview.cpp:131
+msgctxt "TabBar|Show on Top"
+msgid "Top"
+msgstr ""
+
+#: libviews/tabview.cpp:132
+#, fuzzy
+#| msgid "Top Right"
+msgctxt "TabBar|Show on Right"
+msgid "Right"
+msgstr "Yläoikealla"
+
+#: libviews/tabview.cpp:133
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "TabBar|Show on Bottom"
+msgid "Bottom"
+msgstr "Alavasemmalla"
+
+#: libviews/tabview.cpp:134
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "TabBar|Show on Bottom Left"
+msgid "Bottom Left"
+msgstr "Alavasemmalla"
+
+#: libviews/tabview.cpp:135
+#, fuzzy
+#| msgid "Show Hidden Parts"
+msgctxt "TabBar|"
+msgid "Show Hidden On"
+msgstr "Näytä piilotetut osat"
+
+#: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
+msgctxt "TabView|"
+msgid "(No profile data file loaded)"
+msgstr "(Profiilidatatiedostoa ei ole ladattu)"
+
+#: libviews/tabview.cpp:370
+msgctxt "TabView|"
+msgid "Types"
+msgstr "Tyypit"
+
+#: libviews/tabview.cpp:373
+#, fuzzy
+#| msgid "Caller"
+msgctxt "TabView|"
+msgid "Callers"
+msgstr "Kutsuja"
+
+#: libviews/tabview.cpp:374
+#, fuzzy
+#| msgid "All Callers"
+msgctxt "TabView|"
+msgid "All Callers"
+msgstr "Kaikki kutsujat"
+
+#: libviews/tabview.cpp:375
+#, fuzzy
+#| msgid "Callee Map"
+msgctxt "TabView|"
+msgid "Callee Map"
+msgstr "Kutsuttujen kartta"
+
+#: libviews/tabview.cpp:378
+#, fuzzy
+#| msgid "Source Code"
+msgctxt "TabView|"
+msgid "Source Code"
+msgstr "Lähdekoodi"
+
+#: libviews/tabview.cpp:380
+#, fuzzy
+#| msgid "Parts"
+msgctxt "TabView|"
+msgid "Parts"
+msgstr "Osat"
+
+#: libviews/tabview.cpp:381
+#, fuzzy
+#| msgid "Callees"
+msgctxt "TabView|"
+msgid "Callees"
+msgstr "Kutsutut"
+
+#: libviews/tabview.cpp:382
+#, fuzzy
+#| msgid "Call Graph"
+msgctxt "TabView|"
+msgid "Call Graph"
+msgstr "Kutsukaavio"
+
+#: libviews/tabview.cpp:385
+#, fuzzy
+#| msgid "All Callees"
+msgctxt "TabView|"
+msgid "All Callees"
+msgstr "Kaikki kutsutut"
+
+#: libviews/tabview.cpp:386
+#, fuzzy
+#| msgid "Caller Map"
+msgctxt "TabView|"
+msgid "Caller Map"
+msgstr "Kutsujakartta"
+
+#: libviews/tabview.cpp:389
+#, fuzzy
+#| msgid "Machine Code"
+msgctxt "TabView|"
+msgid "Machine Code"
+msgstr "Konekoodi"
+
+#: libviews/tabview.cpp:643
+#, fuzzy
+msgctxt "TabView|"
+msgid ""
+"<b>Information Tabs</b><p>This widget shows information for the currently "
+"selected function in different tabs: <ul><li>The Costs tab shows a list of "
+"available event types and the inclusive and self-costs related to these "
+"types.</li><li>The Parts tab shows a list of trace parts if the trace "
+"consists of more than one part (otherwise, this tab is hidden). The cost of "
+"the selected function spent in the different parts together with the calls "
+"happening is shown.</li><li>The Call Lists tab shows direct callers and "
+"callees of the function in more detail.</li><li>The Coverage tab shows the "
+"same as the Call Lists tab, but also shows indirect callers and callees, not "
+"just direct ones.</li><li>The Call Graph tab shows a graphical visualization "
+"of the calls made by this function.</li><li>The Source Code tab presents "
+"annotated source code if debugging information and the source file are "
+"available.</li><li>The Machine Code tab presents annotated assembly "
+"instructions if profile information at instruction level is available.</li></"
+"ul>For more information, see the <em>What's This?</em> help of the "
+"corresponding tab widget.</p>"
+msgstr ""
+"<b>Tietovälilehdet</b><p>Näyttää tietoja valitusta eri välilehdissä: "
+"<ul><li>The Costs tab shows a list of available event types and the "
+"inclusive and self-costs related to these types.</li><li>The Parts tab shows "
+"a list of trace parts if the trace consists of more than one part "
+"(otherwise, this tab is hidden). The cost of the selected function spent in "
+"the different parts together with the calls happening is shown.</li><li>The "
+"Call Lists tab shows direct callers and callees of the function in more "
+"detail.</li><li>The Coverage tab shows the same as the Call Lists tab, but "
+"also shows indirect callers and callees, not just direct ones.</li><li>The "
+"Call Graph tab shows a graphical visualization of the calls made by this "
+"function.</li><li>The Source Code tab presents annotated source code if "
+"debugging information and the source file are available.</li><li>The Machine "
+"Code tab presents annotated assembly instructions if profile information at "
+"instruction level is available.</li></ul>For more information, see the "
+"<em>What's This?</em> help of the corresponding tab widget.</p>"
+
+#: libviews/tabview.cpp:728
+#, fuzzy
+#| msgid "(No function selected)"
+msgctxt "TabView|"
+msgid "(No function selected)"
+msgstr "(Funktiota ei valittu)"
+
+#: libviews/traceitemview.cpp:67
+msgctxt "QObject|"
+msgid "No description available"
+msgstr "Kuvausta ei ole saatavilla"
+
+#: libviews/treemap.cpp:1334
+#, fuzzy, qt-format
+#| msgid "Text %1"
+msgctxt "TreeMapWidget|"
+msgid "Text %1"
+msgstr "Teksti %1"
+
+#: libviews/treemap.cpp:2854
+msgctxt "TreeMapWidget|"
+msgid "Recursive Bisection"
+msgstr ""
+
+#: libviews/treemap.cpp:2855
+msgctxt "TreeMapWidget|"
+msgid "Columns"
+msgstr "Sarakkeet"
+
+#: libviews/treemap.cpp:2856
+msgctxt "TreeMapWidget|"
+msgid "Rows"
+msgstr "Rivit"
+
+#: libviews/treemap.cpp:2857
+msgctxt "TreeMapWidget|"
+msgid "Always Best"
+msgstr "Aina paras"
+
+#: libviews/treemap.cpp:2858
+msgctxt "TreeMapWidget|"
+msgid "Best"
+msgstr "Paras"
+
+#: libviews/treemap.cpp:2859
+msgctxt "TreeMapWidget|"
+msgid "Alternate (V)"
+msgstr "Vuorottelu (P)"
+
+#: libviews/treemap.cpp:2860
+msgctxt "TreeMapWidget|"
+msgid "Alternate (H)"
+msgstr "Vuorottelu (V)"
+
+#: libviews/treemap.cpp:2861
+msgctxt "TreeMapWidget|"
+msgid "Horizontal"
+msgstr "Vaaka"
+
+#: libviews/treemap.cpp:2862
+msgctxt "TreeMapWidget|"
+msgid "Vertical"
+msgstr "Pysty"
+
+#, fuzzy
+#~| msgid "Export Graph As DOT file"
+#~ msgctxt "CallGraphView|"
+#~ msgid "Export Graph As DOT file"
+#~ msgstr "Vie kaavio DOT-tiedostona"
+
+#, fuzzy
+#~| msgid "Graphviz (*.dot)"
+#~ msgctxt "CallGraphView|"
+#~ msgid "Graphviz (*.dot)"
+#~ msgstr "Graphviz (*.dot)"
+
+#~ msgid "(No Source)"
+#~ msgstr "(Ei lähdekoodia)"
+
+#~ msgid " (Thread %1)"
+#~ msgstr " (Säie %1)"

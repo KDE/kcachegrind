@@ -1,0 +1,2752 @@
+#
+# Tamas Szanto <tszanto@interware.hu>, 2003.
+# Tamas Krutki, 2011.
+# Kristóf Kiszel <ulysses@kubuntu.org>, 2011.
+# Balázs Úr <urbalazs@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: KDE 4.2\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-12-29 02:36+0100\n"
+"PO-Revision-Date: 2012-06-12 21:42+0200\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.4\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Szántó Tamás"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "tszanto@interware.hu"
+
+#: kcachegrind/configdlg.cpp:135 kcachegrind/configdlg.cpp:323
+#: kcachegrind/configdlg.cpp:342
+#, kde-format
+msgid "(always)"
+msgstr "(mindig)"
+
+#: kcachegrind/configdlg.cpp:349
+#, kde-format
+msgid "Choose Source Folder"
+msgstr "A forráskönyvtár kiválasztása"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, ConfigDlgBase)
+#: kcachegrind/configdlgbase.ui:14
+#, kde-format
+msgid "Configuration"
+msgstr "Beállítások"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab1)
+#: kcachegrind/configdlgbase.ui:24
+#, kde-format
+msgid "General"
+msgstr "Általános"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel5)
+#: kcachegrind/configdlgbase.ui:34
+#, kde-format
+msgid "Maximum number of items in lists:"
+msgstr "A listákban szereplő elemek max. száma:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel3)
+#: kcachegrind/configdlgbase.ui:44
+#, kde-format
+msgid "Truncate symbols in tooltips and context menus"
+msgstr "Szimbólumok rövidítése a tippekben és a kontextusmenükben"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2)
+#: kcachegrind/configdlgbase.ui:70
+#, kde-format
+msgid "when more than:"
+msgstr "ha több mint:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2_2)
+#: kcachegrind/configdlgbase.ui:80
+#, kde-format
+msgid "when longer than:"
+msgstr "ha hosszabb mint:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3)
+#: kcachegrind/configdlgbase.ui:90
+#, kde-format
+msgid "Precision of percentage values:"
+msgstr "A százalékos értékek pontossága:"
+
+#. i18n: ectx: property (toolTip), widget (QSpinBox, maxListEdit)
+#: kcachegrind/configdlgbase.ui:113
+#, kde-format
+msgid "The Maximum Number of List Items should be below 500."
+msgstr "A listaelemek maximális számának célszerű 500 alatt maradnia."
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1)
+#: kcachegrind/configdlgbase.ui:158
+#, kde-format
+msgid "Cost Item Colors"
+msgstr "Költségelem-színek"
+
+#. i18n: ectx: property (text), widget (QCheckBox, fileCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, classCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, objectCheck)
+#: kcachegrind/configdlgbase.ui:185 kcachegrind/configdlgbase.ui:219
+#: kcachegrind/configdlgbase.ui:233
+#, kde-format
+msgid "Automatic"
+msgstr "Automatikus"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4)
+#: kcachegrind/configdlgbase.ui:192
+#, kde-format
+msgid "Object:"
+msgstr "Objektum:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2_2)
+#: kcachegrind/configdlgbase.ui:202
+#, kde-format
+msgid "Class:"
+msgstr "Osztály:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
+#: kcachegrind/configdlgbase.ui:240
+#, kde-format
+msgid "File:"
+msgstr "Fájl:"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/configdlgbase.ui:321
+#, kde-format
+msgid "Annotations"
+msgstr "Megjegyzések"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3_2)
+#: kcachegrind/configdlgbase.ui:329
+#, kde-format
+msgid "Context lines in annotations:"
+msgstr "A kontextussorok száma a megjegyzésekben:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
+#: kcachegrind/configdlgbase.ui:350
+#, kde-format
+msgid "Source Folders"
+msgstr "Forráskönyvtárak"
+
+#. i18n: ectx: property (text), widget (QPushButton, addDirButton)
+#: kcachegrind/configdlgbase.ui:364
+#, kde-format
+msgid "Add"
+msgstr "Hozzáadás"
+
+#. i18n: ectx: property (text), widget (QPushButton, deleteDirButton)
+#: kcachegrind/configdlgbase.ui:371
+#, kde-format
+msgid "Delete"
+msgstr "Törlés"
+
+#. i18n: ectx: property (text), widget (QTreeWidget, dirList)
+#: kcachegrind/configdlgbase.ui:409
+#, kde-format
+msgid "Object / Related Source Base"
+msgstr "Objektum / a kapcsolódó forrás"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
+#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:289
+#: kcachegrind/toplevel.cpp:512
+#, kde-format
+msgid "Profile Dumps"
+msgstr "Profilozási dumpfájlok"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:24
+#, kde-format
+msgid "Target"
+msgstr "Cél"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:46
+#, kde-format
+msgid "Time"
+msgstr "Idő"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:57
+#, kde-format
+msgid "Path"
+msgstr "Elérési út"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab)
+#: kcachegrind/dumpselectionbase.ui:70
+#, kde-format
+msgid "Options"
+msgstr "Opciók"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: kcachegrind/dumpselectionbase.ui:87
+#, kde-format
+msgid "Target command:"
+msgstr "Célparancs:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: kcachegrind/dumpselectionbase.ui:100
+#, kde-format
+msgid "Profiler options:"
+msgstr "A profilozó beállításai:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:111
+#, kde-format
+msgid "Option"
+msgstr "Opció"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:122 kcachegrind/dumpselectionbase.ui:650
+#, kde-format
+msgid "Value"
+msgstr "Érték"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:133
+#, kde-format
+msgid "Trace"
+msgstr "Nyomvonal"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:146 kcachegrind/dumpselectionbase.ui:730
+#, kde-format
+msgid "Jumps"
+msgstr "Ugrások"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:160
+#, kde-format
+msgid "Instructions"
+msgstr "Utasítások"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:175 kcachegrind/dumpselectionbase.ui:745
+#, kde-format
+msgid "Events"
+msgstr "Események"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:188
+#, kde-format
+msgid "Full Cache"
+msgstr "Teljes gyorstár"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:202
+#, kde-format
+msgid "Custom"
+msgstr "Egyéni"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:217
+#, kde-format
+msgid "Collect"
+msgstr "Gyűjtés"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:230
+#, kde-format
+msgid "At Startup"
+msgstr "Induláskor"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:244
+#, kde-format
+msgid "While In"
+msgstr "Közben"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:259
+#, kde-format
+msgid "Skip"
+msgstr "Kihagyás"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:272
+#, kde-format
+msgid "PLT"
+msgstr "PLT"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:286 kcachegrind/dumpselectionbase.ui:898
+#, kde-format
+msgid "Function"
+msgstr "Függvény"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:301
+#, kde-format
+msgid "Dump Profile"
+msgstr "Dump-profil"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:314
+#, kde-format
+msgid "Every BBs"
+msgstr "Minden BB"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:328 kcachegrind/dumpselectionbase.ui:370
+#, kde-format
+msgid "On Entering"
+msgstr "Belépéskor"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:342
+#, kde-format
+msgid "On Leaving"
+msgstr "Kilépéskor"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:357
+#, kde-format
+msgid "Zero Events"
+msgstr "Null események"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:385
+#, kde-format
+msgid "Separate"
+msgstr "Önálló"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:398
+#, kde-format
+msgid "Threads"
+msgstr "Szálak"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:412
+#, kde-format
+msgid "Recursions"
+msgstr "Rekurziók"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:426
+#, kde-format
+msgid "Call Chain"
+msgstr "Hívási lánc"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
+#: kcachegrind/dumpselectionbase.ui:452
+#, kde-format
+msgid "Custom profiler options:"
+msgstr "A profilozó egyéni argumentumai:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton2)
+#: kcachegrind/dumpselectionbase.ui:486
+#, kde-format
+msgid "Run New Profile"
+msgstr "Új profil futtatása"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/dumpselectionbase.ui:496
+#, kde-format
+msgid "Info"
+msgstr "Jellemzők"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: kcachegrind/dumpselectionbase.ui:505
+#, kde-format
+msgid "Dump reason:"
+msgstr "A dump oka:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: kcachegrind/dumpselectionbase.ui:518
+#, kde-format
+msgid "Event summary:"
+msgstr "Az esemény összegzése:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:529
+#, kde-format
+msgid "Name"
+msgstr "Név"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:540
+#, kde-format
+msgid "Sum"
+msgstr "Összeg"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: kcachegrind/dumpselectionbase.ui:554
+#, kde-format
+msgid "Miscellaneous:"
+msgstr "Egyéb:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6)
+#: kcachegrind/dumpselectionbase.ui:588
+#, kde-format
+msgid "Show"
+msgstr "Megjelenítés"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton5)
+#: kcachegrind/dumpselectionbase.ui:595
+#, kde-format
+msgid "Compare"
+msgstr "Összehasonlítás"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab3)
+#: kcachegrind/dumpselectionbase.ui:605
+#, kde-format
+msgid "State"
+msgstr "Állapot"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton1)
+#: kcachegrind/dumpselectionbase.ui:619
+#, kde-format
+msgid "Update"
+msgstr "Frissítés"
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox1)
+#: kcachegrind/dumpselectionbase.ui:626
+#, kde-format
+msgid "Every [s]:"
+msgstr "Ennyi másodpercenként:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:639
+#, kde-format
+msgid "Counter"
+msgstr "Számláló"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:661
+#, kde-format
+msgid "Dumps Done"
+msgstr "A kiírások megtörténtek"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:675
+#, kde-format
+msgid "Is Collecting"
+msgstr "Adatgyűjtés"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:689
+#, kde-format
+msgid "Executed"
+msgstr "Végrehajtva"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:702
+#, kde-format
+msgid "Basic Blocks"
+msgstr "Alapblokkok"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:716
+#, kde-format
+msgid "Calls"
+msgstr "Hívások"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:758
+#, kde-format
+msgid "Ir"
+msgstr "Ir"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:773
+#, kde-format
+msgid "Distinct"
+msgstr "Önálló"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:786
+#, kde-format
+msgid "ELF Objects"
+msgstr "ELF objektumok"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:800
+#, kde-format
+msgid "Functions"
+msgstr "Függvények"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:814
+#, kde-format
+msgid "Contexts"
+msgstr "Kontextus"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: kcachegrind/dumpselectionbase.ui:845
+#, kde-format
+msgid "Stack trace:"
+msgstr "Verem-nyomvonal:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox2)
+#: kcachegrind/dumpselectionbase.ui:855
+#, kde-format
+msgid "Sync."
+msgstr "Szinkr."
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:865
+#, kde-format
+msgid "#"
+msgstr "#"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:876
+#, kde-format
+msgid "Incl."
+msgstr "Beleértve."
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:887
+#, kde-format
+msgid "Called"
+msgstr "Meghívott"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:909
+#, kde-format
+msgid "Location"
+msgstr "Hely"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton7)
+#: kcachegrind/dumpselectionbase.ui:928
+#, kde-format
+msgid "Start"
+msgstr "Kezdés"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6_2)
+#: kcachegrind/dumpselectionbase.ui:951
+#, kde-format
+msgid "Zero"
+msgstr "Null"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton4)
+#: kcachegrind/dumpselectionbase.ui:958
+#, kde-format
+msgid "Dump"
+msgstr "Kiírás"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab4)
+#: kcachegrind/dumpselectionbase.ui:968
+#, kde-format
+msgid "Messages"
+msgstr "Üzenetek"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton9)
+#: kcachegrind/dumpselectionbase.ui:985
+#, kde-format
+msgid "Kill Run"
+msgstr "'Kill Run'"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton8)
+#: kcachegrind/dumpselectionbase.ui:1008
+#, kde-format
+msgid "Clear"
+msgstr "Törlés"
+
+#. i18n: ectx: Menu (file)
+#: kcachegrind/kcachegrindui.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&Fájl"
+
+#. i18n: ectx: Menu (view)
+#: kcachegrind/kcachegrindui.rc:10
+#, kde-format
+msgid "&View"
+msgstr "Né&zet"
+
+#. i18n: ectx: Menu (layouts)
+#: kcachegrind/kcachegrindui.rc:15
+#, kde-format
+msgid "&Layout"
+msgstr "&Elrendezés"
+
+#. i18n: ectx: Menu
+#: kcachegrind/kcachegrindui.rc:33
+#, kde-format
+msgid "Sidebars"
+msgstr "Oldalsávok"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kcachegrind/kcachegrindui.rc:42
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Alap eszköztár"
+
+#. i18n: ectx: ToolBar (stateToolBar)
+#: kcachegrind/kcachegrindui.rc:54
+#, kde-format
+msgid "State Toolbar"
+msgstr "Állapot eszköztár"
+
+#: kcachegrind/main.cpp:34
+#, kde-format
+msgid "KCachegrind"
+msgstr "KCachegrind"
+
+#: kcachegrind/main.cpp:36
+#, kde-format
+msgid "KDE Frontend for Callgrind/Cachegrind"
+msgstr "KDE-s felület a Callgrind/Cachegrind programhoz"
+
+#: kcachegrind/main.cpp:38
+#, fuzzy, kde-format
+#| msgid "(C) 2002 - 2011"
+msgid "(C) 2002 - 2016"
+msgstr "(C) 2002-2011."
+
+#: kcachegrind/main.cpp:40
+#, kde-format
+msgid "Josef Weidendorfer"
+msgstr "Josef Weidendorfer"
+
+#: kcachegrind/main.cpp:41
+#, kde-format
+msgid "Author/Maintainer"
+msgstr "Szerző/karbantartó"
+
+#: kcachegrind/main.cpp:68
+#, kde-format
+msgid "Show information of this trace"
+msgstr "A nyomvonal jellemzőinek megjelenítése"
+
+#: kcachegrind/main.cpp:68
+#, kde-format
+msgid "[trace...]"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:258 kcachegrind/toplevel.cpp:486
+#, kde-format
+msgid "Parts Overview"
+msgstr "A nyomvonalrészek áttekintése"
+
+#: kcachegrind/toplevel.cpp:267
+#, kde-format
+msgid "Top Cost Call Stack"
+msgstr "A legnagyobb költségű hívások verme"
+
+#: kcachegrind/toplevel.cpp:269
+#, kde-format
+msgid ""
+"<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most probable' "
+"call stack. It is built up by starting with the current selected function "
+"and adds the callers/callees with highest cost at the top and to bottom.</"
+"p><p>The <b>Cost</b> and <b>Calls</b> columns show the cost used for all "
+"calls from the function in the line above.</p>"
+msgstr ""
+"<b>A legnagyobb költségű hívások verme</b><p>Ez csak egy képzeletbeli "
+"struktúra, 'a legvalószínűbb' hívások verme. Kiindulva a kijelölt "
+"függvényből, a program a legnagyobb költségű hívó ill. meghívott "
+"függvényeket adja hozzá felülre és alulra.</p><p>A <b>Költség</b> és "
+"<b>Hívások</b> oszlopban jelennek meg a hívási költségek a vonalon felül "
+"álló függvényhez.</p>"
+
+#: kcachegrind/toplevel.cpp:283
+#, kde-format
+msgid "Flat Profile"
+msgstr "Egyszerű profil"
+
+#: kcachegrind/toplevel.cpp:296
+#, kde-format
+msgid ""
+"<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
+"loadable profile dumps in all subdirectories of: <ul><li>current working "
+"directory of KCachegrind, i.e. where it was started from, and </li><li>the "
+"default profile dump directory given in the configuration.</li></ul> The "
+"list is sorted according to the target command profiled in the corresponding "
+"dump.</p><p>On selecting a profile dump, information for it is shown in the "
+"bottom area of the dockable: <ul><li><b>Options</b> allows you to view the "
+"profiled command and profile options of this dump. By changing any item, a "
+"new (yet unexisting) profile template is created. Press <b>Run Profile</b> "
+"to start a profile run with these options in the background. </"
+"li><li><b>Info</b> gives detailed info on the selected dump like event cost "
+"summary and properties of the simulated cache. </li><li><b>State</b> is only "
+"available for current happening profiles runs. Press <b>Update</b> to see "
+"different counters of the run, and a stack trace of the current position in "
+"the program profiled. Check the <b>Every</b> option to let KCachegrind "
+"regularly poll these data. Check the <b>Sync</b> option to let the dockable "
+"activate the top function in the current loaded dump.</li></ul></p>"
+msgstr ""
+"<b>Profilozási dumpfájlok</b><p>Ennek a dokkolható elemnek a felső részén "
+"jelennek meg azok a betölthető dumpok, melyek az alábbi mappák almappáiban "
+"találhatók: <ul><li>a KCachegrind aktuális munkamappájában, tehát ahonnan a "
+"program el lett indítva</li><li>a beállításoknál megadott alapértelmezett "
+"profilozási dumpmappában.</li></ul> A lista azon parancsok szerint lesz "
+"rendezve, amelyek a dumpfájlban szerepelnek.</p><p>Egy dump kiválasztásakor "
+"az elem alsó részében megjelennek annak jellemzői: <ul><li>Az <b>Opciók</b> "
+"segítségével megtekinthetők a profilozott parancs és a profilozási opciók. "
+"Ha megváltoztatja az egyik elemet, egy új profilsablon jön létre. Kattintson "
+"<b>A profilozás elkezdése</b> gombra új profilozás elindításához a "
+"háttérben, a módosított opciókkal. </li><li>A <b>Jellemzők</b> kiírja a "
+"dumpfájl részletes adatait, például az események költségáttekintését és a "
+"szimulált gyorsítótár tulajdonságait. </li><li>Az <b>Állapot</b> csak az "
+"éppen futó profilozásoknál érhető el. Kattintson a <b>Frissítés</b> gombra a "
+"különféle számlálók és a program veremállapotának megjelenítéséhez. Jelölje "
+"be a <b>Minden</b> opciót, ha azt szeretné, hogy a KCachegrind rendszeres "
+"mintavételt végezzen az adatokból. Jelölje be a <b>Szinkronizálás</b> "
+"opciót, ha azt szeretné, hogy a megjelenítőelem aktiválja a betöltött "
+"dumpban a legfelső függvényt.</li></ul></p>"
+
+#: kcachegrind/toplevel.cpp:367
+#, kde-format
+msgid "&Duplicate"
+msgstr "&Duplikálás"
+
+#: kcachegrind/toplevel.cpp:370
+#, kde-format
+msgid ""
+"<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
+msgstr ""
+"<b>Az aktuális elrendezés duplikálása</b><p>Másolat készítése az aktuális "
+"elrendezésről.</p>"
+
+#: kcachegrind/toplevel.cpp:375
+#, kde-format
+msgid "&Remove"
+msgstr "&Eltávolítás"
+
+#: kcachegrind/toplevel.cpp:377
+#, kde-format
+msgid ""
+"<b>Remove Current Layout</b><p>Delete current layout and make the previous "
+"active.</p>"
+msgstr ""
+"<b>Az aktuális elrendezés eltávolítása</b><p>Az aktuális elrendezés "
+"eltávolítása, az előző aktiválása.</p>"
+
+#: kcachegrind/toplevel.cpp:382
+#, kde-format
+msgid "&Go to Next"
+msgstr "Ugrás a &következőre"
+
+#: kcachegrind/toplevel.cpp:385
+#, kde-format
+msgid "Go to Next Layout"
+msgstr "Ugrás a következő elrendezésre"
+
+#: kcachegrind/toplevel.cpp:389
+#, kde-format
+msgid "&Go to Previous"
+msgstr "Ugrás az &előző elrendezésre"
+
+#: kcachegrind/toplevel.cpp:392
+#, kde-format
+msgid "Go to Previous Layout"
+msgstr "Ugrás az előző elrendezésre"
+
+#: kcachegrind/toplevel.cpp:396
+#, kde-format
+msgid "&Restore to Default"
+msgstr "Az &alapértelmezés visszaállítása"
+
+#: kcachegrind/toplevel.cpp:398
+#, kde-format
+msgid "Restore Layouts to Default"
+msgstr "Az elrendezés visszaállítása az alapértelmezettre"
+
+#: kcachegrind/toplevel.cpp:402
+#, kde-format
+msgid "&Save as Default"
+msgstr "Menté&s alapértelmezettként"
+
+#: kcachegrind/toplevel.cpp:404
+#, kde-format
+msgid "Save Layouts as Default"
+msgstr "Az elrendezések elmentése alapértelmezésnek"
+
+#: kcachegrind/toplevel.cpp:415
+#, kde-format
+msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
+msgstr "<b>Új</b><p>Új, üres KCachegrind-ablak megnyitása.</p>"
+
+#: kcachegrind/toplevel.cpp:419
+#, kde-format
+msgid "&Add..."
+msgstr "&Hozzáadás..."
+
+#: kcachegrind/toplevel.cpp:421
+#, kde-format
+msgid ""
+"<b>Add Profile Data</b><p>This opens an additional profile data file in the "
+"current window.</p>"
+msgstr ""
+"<b>Profilfájl hozzáadása</b><p>Megnyit egy újabb profilfájlt az aktuális "
+"ablakban.</p>"
+
+#: kcachegrind/toplevel.cpp:427
+#, kde-format
+msgctxt "Reload a document"
+msgid "&Reload"
+msgstr "Új&ratöltés"
+
+#: kcachegrind/toplevel.cpp:430
+#, kde-format
+msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
+msgstr ""
+"<b>A profilfájl újratöltése</b><p>Betölti az újonnan létrehozott részeket is."
+"</p>"
+
+#: kcachegrind/toplevel.cpp:435
+#, kde-format
+msgid "&Export Graph"
+msgstr "Grafikon e&xportálása"
+
+#: kcachegrind/toplevel.cpp:438
+#, kde-format
+msgid ""
+"<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
+"tools of the GraphViz package.</p>"
+msgstr ""
+"<b>A hívási grafikon exportálása</b><p>Létrehoz egy .dot kiterjesztésű fájlt "
+"a GraphViz csomag eszközeihez.</p>"
+
+#: kcachegrind/toplevel.cpp:446
+#, kde-format
+msgid "&Force Dump"
+msgstr "Dump &kikényszerítése"
+
+#: kcachegrind/toplevel.cpp:449
+#, kde-format
+msgid ""
+"<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
+"current directory. This action is checked while KCachegrind looks for the "
+"dump. If the dump is finished, it automatically reloads the current trace. "
+"If this is the one from the running Callgrind, the new created trace part "
+"will be loaded, too.</p><p>Force dump creates a file 'callgrind.cmd', and "
+"checks every second for its existence. A running Callgrind will detect this "
+"file, dump a trace part, and delete 'callgrind.cmd'. The deletion is "
+"detected by KCachegrind, and it does a Reload. If there is <em>no</em> "
+"Callgrind running, press 'Force Dump' again to cancel the dump request. This "
+"deletes 'callgrind.cmd' itself and stops polling for a new dump.</p><p>Note: "
+"A Callgrind run <em>only</em> detects existence of 'callgrind.cmd' when "
+"actively running a few milliseconds, i.e. <em>not</em> sleeping. Tip: For a "
+"profiled GUI program, you can awake Callgrind e.g. by resizing a window of "
+"the program.</p>"
+msgstr ""
+"<b>Dump kikényszerítése</b><p>Ez kikényszeríti dump létrehozását az aktuális "
+"mappában futó Callgrind-alapú profilozás esetén. A program a dump keresése "
+"közben figyelembe veszi ennek az opciónak az értékét. A dump elkészítése "
+"után a program automatikusan újratölti az aktuális nyomvonalat. Ha a dump az "
+"éppen futó Cachegrindból származik, az újonnan létrehozott nyomkövetési elem "
+"is be lesz töltve.</p><p>Az opció hatására létrejön egy \"callgrind.cmd\" "
+"fájl, és a program másodpercenként ellenőrzi, hogy a fájl létezik-e. A futó "
+"Cachegrind példány érzékeli ezt a fájlt, elkészíti a dumpot, majd törli a "
+"\"callgrind.cmd\" fájlt. A KCachegrind érzékeli, hogy a fájlt törölték, és "
+"elvégez egy újratöltést. Ha <em>nincs</em> futó Cachegrind példány, "
+"kattintson újból \"Dump kikényszerítése\" gombra a kérés törléséhez. Ennek "
+"hatására törlődik a \"callgrind.cmd\" fájl és megszűnik a dumpok figyelése.</"
+"p><p>Megjegyzés: a Callgrind <em>csak akkor</em> érzékeli a \"callgrind.cmd"
+"\" létezését, ha legalább egy pár ezredmásodpercig aktívan fut, tehát "
+"<em>nem</em> alszik. Egy tipp: profilozott grafikus felületű program "
+"esetében a Callgrind \"felébreszthető\" például a program ablakának "
+"átméretezésével.</p>"
+
+#: kcachegrind/toplevel.cpp:474
+#, kde-format
+msgid ""
+"<b>Open Profile Data</b><p>This opens a profile data file, with possible "
+"multiple parts</p>"
+msgstr ""
+"<b>Profilfájl megnyitása</b><p>Megnyit egy profilfájlt, amely akár több "
+"részből is állhat</p>"
+
+#: kcachegrind/toplevel.cpp:489
+#, kde-format
+msgid "Show/Hide the Parts Overview Dockable"
+msgstr "Megjeleníti/elrejti A nyomvonalrészek áttekintése dokkolható elemet"
+
+#: kcachegrind/toplevel.cpp:494
+#, kde-format
+msgid "Call Stack"
+msgstr "A hívási verem"
+
+#: kcachegrind/toplevel.cpp:497
+#, kde-format
+msgid "Show/Hide the Call Stack Dockable"
+msgstr "Megjeleníti/elrejti A hívási verem dokkolható elemet"
+
+#: kcachegrind/toplevel.cpp:502
+#, kde-format
+msgid "Function Profile"
+msgstr "Függvényprofil"
+
+#: kcachegrind/toplevel.cpp:505
+#, kde-format
+msgid "Show/Hide the Function Profile Dockable"
+msgstr "Megjeleníti/elrejti a Függvényprofil dokkolható elemet"
+
+#: kcachegrind/toplevel.cpp:513
+#, kde-format
+msgid "Show/Hide the Profile Dumps Dockable"
+msgstr "Megjeleníti/elrejti a Dump profilozása dokkolható részt"
+
+#: kcachegrind/toplevel.cpp:520
+#, kde-format
+msgid "Relative"
+msgstr "Relatív"
+
+#: kcachegrind/toplevel.cpp:522
+#, kde-format
+msgid "Show relative instead of absolute costs"
+msgstr "Abszolút helyett relatív költségek jelenjenek meg"
+
+#: kcachegrind/toplevel.cpp:528
+#, kde-format
+msgid "Relative to Parent"
+msgstr "Relatív a szülőhöz képest"
+
+#: kcachegrind/toplevel.cpp:531
+#, kde-format
+msgid "Show percentage costs relative to parent"
+msgstr "A szülőhöz relatív költségek százalékos megjelenítése"
+
+#: kcachegrind/toplevel.cpp:535
+#, kde-format
+msgid ""
+"<b>Show percentage costs relative to parent</b><p>If this is switched off, "
+"percentage costs are always shown relative to the total cost of the profile "
+"part(s) that are currently browsed. By turning on this option, percentage "
+"cost of shown cost items will be relative to the parent cost item.</"
+"p><ul><table><tr><td><b>Cost Type</b></td><td><b>Parent Cost</b></td></"
+"tr><tr><td>Function Cumulative</td><td>Total</td></tr><tr><td>Function Self</"
+"td><td>Function Group (*) / Total</td></tr><tr><td>Call</td><td>Function "
+"Inclusive</td></tr><tr><td>Source Line</td><td>Function Inclusive</td></tr></"
+"table></ul><p>(*) Only if function grouping is switched on (e.g. ELF object "
+"grouping).</p>"
+msgstr ""
+"<b>Százalékos költségek megjelenítése (a szülőhöz képest)</b><p>Ha ez nincs "
+"bejelölve, a százalékos költségek relatívak lesznek az éppen böngészett "
+"részek összesített költségéhez. Ha be van jelölve, az elemek százalékos "
+"költsége relatív lesz a szülőelemek költségéhez képest.</"
+"p><ul><table><tr><td><b>Költségtípus</b></td><td><b>A szülő költsége</b></"
+"td></tr><tr><td>Függvény - kumulatív</td><td>Összesen</td></"
+"tr><tr><td>Függvény - önmaga</td><td>Függvénycsoport (*) / Összesen</td></"
+"tr><tr><td>Hívás</td><td>Függvény - tartalmazva</td></tr><tr><td>Forrássor</"
+"td><td>Függvény - tartalmazva</td></tr></table></ul><p>(*) Csak ha a "
+"függvények csoportosítása be van kapcsolva (pl. ELF objektumcsoportok "
+"esetén).</p>"
+
+#: kcachegrind/toplevel.cpp:552
+#, kde-format
+msgid "Cycle Detection"
+msgstr "Ciklusdetektálás"
+
+#: kcachegrind/toplevel.cpp:555
+#, kde-format
+msgid ""
+"<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
+"drawing will show black areas when a recursive call is made instead of "
+"drawing the recursion ad infinitum. Note that the size of black areas often "
+"will be wrong, as inside recursive cycles the cost of calls cannot be "
+"determined; the error is small, however, for false cycles (see "
+"documentation).</p><p>The correct handling for cycles is to detect them and "
+"collapse all functions of a cycle into an artificial function, which is done "
+"when this option is selected. Unfortunately, with GUI applications, this "
+"often will lead to huge false cycles, making the analysis impossible; "
+"therefore, there is the option to switch this off.</p>"
+msgstr ""
+"<b>A rekurzív ciklusok detektálása</b><p>Ha nincs bejelölve, akkor a "
+"fastruktúra-kirajzoló fekete színű területeket rajzol rekurzív hívások "
+"esetén (végtelen kirajzolás helyett). A fekete területek mérete gyakran nem "
+"lesz megfelelő, mert rekurzív hívások belsejében nem lehet megállapítani a "
+"hívások költségét. Nem valódi rekurzió esetén a hiba azonban általában kicsi "
+"(lásd a dokumentációt).</p><p>A ciklusok helyes kezelése érdekében a program "
+"detektálja a ciklusokat és a ciklus függvényeit egy virtuális függvénybe "
+"vonja össze, ha be van jelölve ez az opció. Grafikus felületű "
+"alkalmazásoknál ennek hatására hatalmas hamis ciklusok keletkezhetnek; "
+"ilyenkor az elemzés lehetetlenné válik. Ezért lehet ezt az opciót "
+"kikapcsolni.</p>"
+
+#: kcachegrind/toplevel.cpp:571
+#, kde-format
+msgid "Shorten Templates"
+msgstr "Sablonok rövidítése"
+
+#: kcachegrind/toplevel.cpp:573
+#, kde-format
+msgid "Hide Template Parameters in C++ Symbols"
+msgstr "Sablonparaméterek elrejtése a C++ szimbólumokban"
+
+#: kcachegrind/toplevel.cpp:574
+#, kde-format
+msgid ""
+"<b>Hide Template Parameters in C++ Symbols</b><p>If this is switched on, "
+"every symbol displayed will have any C++ template parameters hidden, just "
+"showing &lt;&gt; instead of a potentially nested template parameter.</"
+"p><p>In this mode, you can hover the mouse pointer over the activated symbol "
+"label to show a tooltip with the unabbreviated symbol.</p>"
+msgstr ""
+"<b>Sablonparaméterek elrejtése a C++ szimbólumokban</b><p>Ha ez be van "
+"kapcsolva, minden megjelenített szimbólum sablonparaméterei el lesznek "
+"rejtve, csak &lt;&gt; jelek fognak látszódni az esetlegesen egymásba "
+"ágyazott sablonparaméterek helyett.</p><p>Ebben a módban az egérmutatót az "
+"aktív szimbólumcímke fölé húzva egy buboréksúgó fog megjelenni a teljes, "
+"rövidítés nélküli szimbólummal.</p>"
+
+#: kcachegrind/toplevel.cpp:590
+#, kde-format
+msgid "&Up"
+msgstr "&Fel"
+
+#: kcachegrind/toplevel.cpp:599
+#, kde-format
+msgid ""
+"<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
+"was visited, use that with highest cost.</p>"
+msgstr ""
+"<b>Fel</b><p>Visszalépés az aktuális függvény utolsó meghívási pontjára. Ha "
+"nem volt meglátogatva hívó függvény, akkor a legmagasabb költségűt kell "
+"választani.</p>"
+
+#: kcachegrind/toplevel.cpp:616
+#, kde-format
+msgid "Go back in function selection history"
+msgstr "Visszafelé lépés a függvénykijelölési naplóban"
+
+#: kcachegrind/toplevel.cpp:630
+#, kde-format
+msgid "Go forward in function selection history"
+msgstr "Eggyel előre lépés a függvénykijelölési naplóban"
+
+#: kcachegrind/toplevel.cpp:635 kcachegrind/toplevel.cpp:1512
+#, kde-format
+msgid "Primary Event Type"
+msgstr "Elsődleges eseménytípus"
+
+#: kcachegrind/toplevel.cpp:636
+#, kde-format
+msgid "Select primary event type of costs"
+msgstr "Válassza ki a költségek elsődleges típusát"
+
+#: kcachegrind/toplevel.cpp:658 kcachegrind/toplevel.cpp:1517
+#, kde-format
+msgid "Secondary Event Type"
+msgstr "Másodlagos eseménytípus"
+
+#: kcachegrind/toplevel.cpp:659
+#, kde-format
+msgid "Select secondary event type for cost e.g. shown in annotations"
+msgstr ""
+"Válassza ki a költség másodlagos eseménytípusát (pl. a magyarázó szövegekhez)"
+
+#: kcachegrind/toplevel.cpp:669
+#, kde-format
+msgid "Grouping"
+msgstr "Csoportosítás"
+
+#: kcachegrind/toplevel.cpp:671
+#, kde-format
+msgid "Select how functions are grouped into higher level cost items"
+msgstr ""
+"Válassza ki, hogy a függvények hogyan legyenek költségcsoportokba szervezve"
+
+#: kcachegrind/toplevel.cpp:677
+#, kde-format
+msgid "(No Grouping)"
+msgstr "(Nincs csoportosítás)"
+
+#: kcachegrind/toplevel.cpp:689
+#, kde-format
+msgid "Split"
+msgstr "Felosztás"
+
+#: kcachegrind/toplevel.cpp:692
+#, kde-format
+msgid "Show two information panels"
+msgstr "Két tájékoztató panel megjelenítése"
+
+#: kcachegrind/toplevel.cpp:698
+#, kde-format
+msgid "Split Horizontal"
+msgstr "Vízszintes felbontás"
+
+#: kcachegrind/toplevel.cpp:701
+#, kde-format
+msgid "Change Split Orientation when main window is split."
+msgstr "A felbontás irányának megváltoztatása a főablak felosztásakor."
+
+#: kcachegrind/toplevel.cpp:898
+#, kde-format
+msgid "Select Callgrind Profile Data"
+msgstr "Callgrind-profiladatok kiválasztása"
+
+#: kcachegrind/toplevel.cpp:900 kcachegrind/toplevel.cpp:968
+#, fuzzy, kde-format
+#| msgid ""
+#| "cachegrind.out* callgrind.out*|Callgrind Profile Data\n"
+#| "*|All Files"
+msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
+msgstr ""
+"cachegrind.out* callgrind.out*|Callgrind-profiladatok\n"
+"*|Minden fájl"
+
+#: kcachegrind/toplevel.cpp:928 kcachegrind/toplevel.cpp:957
+#, kde-format
+msgid ""
+"Could not open the file \"%1\". Check it exists and you have enough "
+"permissions to read it."
+msgstr ""
+"A fájl (%1) nem nyitható meg. Ellenőrizze, hogy a megnyitni próbált fájl "
+"létezik-e, és hogy rendelkezik-e olvasási jogosultsággal."
+
+#: kcachegrind/toplevel.cpp:966
+#, kde-format
+msgid "Add Callgrind Profile Data"
+msgstr "Callgrind-profiladatok hozzáadása"
+
+#: kcachegrind/toplevel.cpp:1136 kcachegrind/toplevel.cpp:1465
+#, kde-format
+msgid "(Hidden)"
+msgstr "(Rejtett)"
+
+#: kcachegrind/toplevel.cpp:1522
+#, kde-format
+msgid "Hide"
+msgstr "Elrejtés"
+
+#: kcachegrind/toplevel.cpp:1564
+#, kde-format
+msgid "Show Absolute Cost"
+msgstr "Az abszolút költségek megjelenítése"
+
+#: kcachegrind/toplevel.cpp:1567
+#, kde-format
+msgid "Show Relative Cost"
+msgstr "A relatív költségek megjelenítése"
+
+#: kcachegrind/toplevel.cpp:1599
+#, kde-format
+msgid "Go Back"
+msgstr "Vissza"
+
+#: kcachegrind/toplevel.cpp:1600
+#, kde-format
+msgid "Go Forward"
+msgstr "Előre"
+
+#: kcachegrind/toplevel.cpp:1601
+#, kde-format
+msgid "Go Up"
+msgstr "Fel"
+
+#: kcachegrind/toplevel.cpp:1813
+#, kde-format
+msgid "Layout Count: %1"
+msgstr "Elrendezés-szám: %1"
+
+#: kcachegrind/toplevel.cpp:1820
+#, kde-format
+msgid "No profile data file loaded."
+msgstr "Nincs betöltve profilfájl."
+
+#: kcachegrind/toplevel.cpp:1829
+#, kde-format
+msgid "Total %1 Cost: %2"
+msgstr "Összesen: %1, költség: %2"
+
+#: kcachegrind/toplevel.cpp:1841
+#, kde-format
+msgid "No event type selected"
+msgstr "Nincs kiválasztva eseménytípus"
+
+#: kcachegrind/toplevel.cpp:2027
+#, kde-format
+msgid "Cannot determine receiver PID for dump request"
+msgstr "Nem lehet meghatározni a fogadó PID-jét a kiírási kéréshez"
+
+#: kcachegrind/toplevel.cpp:2068
+#, kde-format
+msgid "Error running callgrind_control"
+msgstr "Hiba történt a callgrind_control futtatásakor"
+
+#: kcachegrind/toplevel.cpp:2107 kcachegrind/toplevel.cpp:2144
+#: kcachegrind/toplevel.cpp:2181
+#, kde-format
+msgid "(No Stack)"
+msgstr "(Nincs verem)"
+
+#: kcachegrind/toplevel.cpp:2113
+#, kde-format
+msgid "(No next function)"
+msgstr "(Nincs következő függvény)"
+
+#: kcachegrind/toplevel.cpp:2150
+#, kde-format
+msgid "(No previous function)"
+msgstr "(Nincs előző függvény)"
+
+#: kcachegrind/toplevel.cpp:2186
+#, kde-format
+msgid "(No Function Up)"
+msgstr "(Nincs felfelé függvény)"
+
+#: kcachegrind/toplevel.cpp:2318 kcachegrind/toplevel.cpp:2332
+#, kde-format
+msgid "Loading %1"
+msgstr "%1 betöltése"
+
+#: kcachegrind/toplevel.cpp:2326
+#, kde-format
+msgid "Error loading %1: %2"
+msgstr "Hiba %1 betöltése közben: %2"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, kde-format
+msgid ""
+"<p>...that the <em>What's this...</em> help for every GUI widget\n"
+"in KCachegrind contains detailed usage information for this widget?\n"
+"It is highly recommend to read at least these help texts on first\n"
+"use. Request <em>What's this...</em> help by pressing\n"
+"Shift-F1 and clicking on the widget.</p>\n"
+msgstr ""
+"<p>...részletes leírás kérhető a KCachegrind minden grafikus\n"
+"eleméhez a <em>Mi ez?</em> funkcióval?\n"
+"Érdemes ezeket a tippeket elolvasni a program használatba vétele\n"
+"előtt. A <em>Mi ez?</em> tippek előhívásához\n"
+"nyomja meg a Shift+F1-et és kattintson a kívánt elemre.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:12
+#, kde-format
+msgid ""
+"<p>...that you can get profile information at instruction level\n"
+"with Calltree when you provide the option <em>--dump-instr=yes</em>?\n"
+"Use the Assembler View for the instruction annotations.\n"
+"</p>\n"
+msgstr ""
+"<p>...a profil adatai utasításszinten is megnézhetők\n"
+"a hívási fastruktúrában, ha megadja a <em>--dump-instr=yes</em> opciót?\n"
+"Használja az Assembly nézetet az utasításokhoz fűzött megjegyzések "
+"megtekintéséhez.\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:21
+#, kde-format
+msgid ""
+"<p>...that you can use Alt-Left/Right keys of your keyboard to go\n"
+"back/forward in the active object history ?</p>\n"
+msgstr ""
+"<p>...az Alt+balra/jobbra billentyűparanccsal lehet\n"
+"előre-hátra mozogni az aktív objektumok naplójában?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>...that you can navigate in the Callee/Caller Map View using\n"
+"arrow keys? Use Left/Right to change to siblings of the current\n"
+"item; use Up/Down to go one nesting level up/down. To select\n"
+"the current item, press Space, and to activate it, press Return.\n"
+"</p>\n"
+msgstr ""
+"<p>...a kiinduló és beérkező hívások térképén a kurzorbillentyűkkel is\n"
+"lehet navigálni? A jobbra/balra gombokkal lehet az egy szinten található "
+"elemekre,\n"
+"a fel/le gombokkal pedig magasabb ill. alacsonyabb szintre lépni. Az "
+"aktuális elem\n"
+"kijelöléséhez a szóközre, az aktiválásához az Enterre kell kattintani.\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:38
+#, kde-format
+msgid ""
+"<p>...that you can navigate in the Call Graph View using\n"
+"arrow keys? Use Up/Down to go one calling level up/down, alternating\n"
+"between calls and functions. Use Left/Right to change to siblings of a "
+"current\n"
+"selected call. To activate the current item, press Return.\n"
+"</p>\n"
+msgstr ""
+"<p>...a függvényhívások grafikonjában a kurzorbillentyűkkel is lehet\n"
+"mozogni? A fel/le nyilakkal lehet felsőbb ill. alsóbb szintre lépni, "
+"felváltva\n"
+"a hívások és a függvények között. A balra/jobbra nyilakkal lehet a "
+"mostanival\n"
+"egy szinten álló elemekre lépni.\n"
+"Az aktuális elem aktiválásához nyomja meg az Entert.\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:48
+#, kde-format
+msgid ""
+"<p>...that you can rapidly locate a function by entering part of its\n"
+"name (case-insensitive) into the edit line of the toolbar\n"
+"and hit return?</p>\n"
+msgstr ""
+"<p>...gyorsan megkereshető egy függvény, ha beírja a nevének egy darabját\n"
+"(nem nagybetűérzékeny) az eszköztár megfelelő szövegmezőjébe,\n"
+"és lenyomja az Entert?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:56
+#, kde-format
+msgid ""
+"<p>...that you can assign custom colors to \n"
+"ELF objects/C++ Classes/Source Files for graph coloring\n"
+"in <em>Settings->Configure KCachegrind...</em>?</p>\n"
+msgstr ""
+"<p>...egyéni színeket lehet rendelni\n"
+"az ELF objektumokhoz, a C++-osztályokhoz és a forrásfájlokhoz a "
+"grafikonszínezés\n"
+"beállításainál, a <em>Beállítások->A KCachegrind beállításai...</em> "
+"menüpontban?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:64
+#, kde-format
+msgid ""
+"<p>...that you can see if debug info is available for a selected \n"
+"function by looking at the location label in the Info tab or\n"
+"the source listing header in the source tab?</p>\n"
+"<p>There must be the name of the source file (with extension).\n"
+"If KCachegrind still does not show the source, make sure that you\n"
+"have added the directory of the source file to the\n"
+"<em>Source Directories</em> list in the configuration.\n"
+msgstr ""
+"<p>...látható, hogy rendelkezésre áll-e nyomkövetési információ\n"
+"a kiválasztott függvényhez a helycímkén az Információ lapon vagy\n"
+"a forráslista fejlécében a Forrás lapon?</p>\n"
+"<p>Ott kell lennie a forrásfájl nevének (kiterjesztéssel).\n"
+"Ha a KCachegrindban még mindig nem látszik a forrás, ellenőrizze, hogy\n"
+"a forrásfájl mappáját valóban hozzáadta-e a\n"
+"<em>Forrásmappák</em> listához a beállításoknál.\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:76
+#, kde-format
+msgid ""
+"<p>...that you can configure whether KCachgrind should\n"
+"show absolute event counts or relative ones (percentage display)?</p>\n"
+msgstr ""
+"<p>...beállítható, hogy a KCachgrindban abszolút vagy\n"
+"relatív eseményszámlálók jelenjenek meg (százalékos formában)?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:83
+#, kde-format
+msgid ""
+"<p>...that you can configure the maximum number of items\n"
+"for all function lists in KCachegrind? Limiting the number\n"
+"of items is done to get a fast reacting GUI. The last item in\n"
+"the list will show you the number of skipped functions, together\n"
+"with a cost condition for these skipped functions.</p>\n"
+"<p>To activate a function with small costs, search for it and select\n"
+"it in the flat profile. Selecting functions with small cost will\n"
+"temporarily add them to the flat profile list.</p>\n"
+msgstr ""
+"<p>...a KCachegrind összes függvénylistájánál be lehet állítani\n"
+"az elemek maximális számát? A korlátozási lehetőség azért van beépítve a\n"
+"programba, hogy a grafikus felület mindig használható maradjon. A lista "
+"utolsó\n"
+"eleme megmutatja a kihagyott elemek számát, azok\n"
+"kumulatív költségével együtt.</p>\n"
+"<p>Alacsony költségű függvény aktiválásához először jelölje ki a függvényt,\n"
+"és válassza ki egy sima profilban. Alacsony költségű függvények "
+"kijelölésekor\n"
+"azok átmenetileg bekerülnek a sima profilok listájába.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>...that the Coverage tab - in contrast to the Call Lists tab -\n"
+"shows <em>all</em> functions that are calling the selected function\n"
+"(upper part) / are called by the selected function (bottom part),\n"
+"no matter how many function are between them on the stack?</p>\n"
+"<p>Examples:</p>\n"
+"<p>An entry in the upper list for function foo1() with a value of 50%\n"
+"with function bar() selected means that 50% of all the cost of function\n"
+"bar() happened while called from function foo1().</p>\n"
+"<p>An entry in the bottom list for function foo2() with a value of 50%\n"
+"with function bar() selected means that 50% of all the cost of function\n"
+"bar() happened while calling foo2() from bar().</p>\n"
+msgstr ""
+"<p>...a Lefedés lapon - a Hívási listák lappal ellentétben -\n"
+"az <em>összes</em> olyan függvény megjelenik, melyek a kijelölt függvényt "
+"hívják\n"
+"(a felső részen) / ill. amelyeket a kijelölt függvény hív (az alsó részen),\n"
+"függetlenül a közbeeső függvények számától?</p>\n"
+"<p>Néhány példa:</p>\n"
+"<p>Ha a felső listában a foo1() függvény neve áll 50%-os értékkel,\n"
+"a bar() függvény kiválasztása mellett, az azt jelenti, hogy a bar() függvény "
+"költségének 50%-a\n"
+"azalatt történt, míg a foo1()-ből induló hívás tartott.</p>\n"
+"<p>Ha az alsó listában a foo2() függvény neve áll 50%-os értékkel,\n"
+"a bar() függvény kiválasztása mellett, az azt jelenti, hogy a bar() függvény "
+"költségének 50%-a\n"
+"azalatt történt, míg a foo2() meghívása tartott.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:112
+#, kde-format
+msgid ""
+"<p>...that waiting for the tool tip inside of a tree map\n"
+"shows the list of names of the nested rectangles the mouse\n"
+"pointer is over?</p>\n"
+"<p>Items from this list can be selected by pressing the right\n"
+"mouse button.</p>\n"
+msgstr ""
+"<p>...fastruktúra-térképen belül a tippekben megjelennek\n"
+"azon egymásba ágyazott téglalapok nevei, amelyek fölött\n"
+"áll éppen az egérmutató?</p>\n"
+"<p>A lista elemeinek kijelöléséhez kattintson a\n"
+"jobb egérgombbal.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:122
+#, kde-format
+msgid ""
+"<p>...that you can constrain the cost counts shown to only a\n"
+"few parts of the whole trace by selecting these parts in the\n"
+"\"Trace Selection\" Dockable?</p>\n"
+"<p>To generate multiple parts in a profiling run with\n"
+"cachegrind, use e.g. option --cachedumps=xxx for parts\n"
+"of a length of xxx basic blocks (A basic block is a run\n"
+"of not-branching assembler statements inside of your program\n"
+"code).</p>\n"
+msgstr ""
+"<p>...hogy a költségeket a kívánt nyomvonaldarabokra szorítkozva is\n"
+"meg lehet tekinteni? Elég kijelölni a kívánt darabokat a\n"
+"\"Nyomvonalválasztás\" nevű grafikus elemben.</p>\n"
+"<p>ha egy profilozási menetben több nyomvonaldarabot szeretne\n"
+"létrehozatni a Cachegrinddal, használja pl. a --cachedumps=xxx opciót,\n"
+"ha xxx hosszú blokkokat szeretne (blokknak nem elágazó assembly\n"
+"utasítások egy csoportját nevezzük a programkódon\n"
+"belül).</p>\n"
+
+#~ msgid "&OK"
+#~ msgstr "&OK"
+
+#~ msgid "&Cancel"
+#~ msgstr "&Mégsem"
+
+#~ msgid "Source Files"
+#~ msgstr "Forrásfájlok"
+
+#~ msgid "C++ Classes"
+#~ msgstr "C++ osztályok"
+
+#~ msgid "Function (no Grouping)"
+#~ msgstr "Függvény (csoportosítás nélkül)"
+
+#~ msgid "KCachegrind Configuration"
+#~ msgstr "A KCachegrind beállításai"
+
+#~ msgid "(Placeholder for list of event types)"
+#~ msgstr "(Eseménytípusok listája)"
+
+#~ msgid "Active call to '%1'"
+#~ msgstr "Aktív hívás erre: '%1'"
+
+#~ msgid "%1 call to '%2'"
+#~ msgid_plural "%1 calls to '%2'"
+#~ msgstr[0] "%1 hívás erre: '%2'"
+#~ msgstr[1] "%1 hívás erre: '%2'"
+
+#~ msgid "Jump %1 of %2 times to 0x%3"
+#~ msgstr "%1/%2 ugrás erre: 0x%3"
+
+#~ msgid "Jump %1 times to 0x%2"
+#~ msgstr "Ugrás %1 alkalommal erre: 0x%2"
+
+#~ msgid "(cycle)"
+#~ msgstr "(ciklus)"
+
+#~ msgid "Abstract Item"
+#~ msgstr "Absztrakt elem"
+
+#~ msgid "Cost Item"
+#~ msgstr "Költségelem"
+
+#~ msgid "Part Source Line"
+#~ msgstr "Forrássor (objektumé)"
+
+#~ msgid "Source Line"
+#~ msgstr "Forrássor"
+
+#~ msgid "Part Line Call"
+#~ msgstr "Sor hívása (objektumé)"
+
+#~ msgid "Line Call"
+#~ msgstr "Sor hívása"
+
+#~ msgid "Part Jump"
+#~ msgstr "Ugrás (objektumé)"
+
+#~ msgid "Jump"
+#~ msgstr "Ugrás"
+
+#~ msgid "Part Instruction"
+#~ msgstr "Utasítás (objektumé)"
+
+#~ msgid "Instruction"
+#~ msgstr "Utasítás"
+
+#~ msgid "Part Instruction Jump"
+#~ msgstr "Ugrási utasítás (objektumé)"
+
+#~ msgid "Instruction Jump"
+#~ msgstr "Ugrási utasítás"
+
+#~ msgid "Part Instruction Call"
+#~ msgstr "Hívási utasítás (objektumé)"
+
+#~ msgid "Instruction Call"
+#~ msgstr "Hívási utasítás"
+
+#~ msgid "Part Call"
+#~ msgstr "Hívás (objektumé)"
+
+#~ msgid "Call"
+#~ msgstr "Hívás"
+
+#~ msgid "Part Function"
+#~ msgstr "Függvény (objektumé)"
+
+#~ msgid "Function Source File"
+#~ msgstr "Függvény forrásfájlja"
+
+#~ msgid "Function Cycle"
+#~ msgstr "Függvényciklus"
+
+#~ msgid "Part Class"
+#~ msgstr "Osztály (objektumé)"
+
+#~ msgid "Class"
+#~ msgstr "Osztály"
+
+#~ msgid "Part Source File"
+#~ msgstr "Forrásfájl (objektum)"
+
+#~ msgid "Source File"
+#~ msgstr "Forrásfájl"
+
+#~ msgid "Part ELF Object"
+#~ msgstr "ELF objektum (objektumé)"
+
+#~ msgid "ELF Object"
+#~ msgstr "ELF objektum"
+
+#~ msgid "Profile Part"
+#~ msgstr "Nyomvonal-rész"
+
+#~ msgid "Program Trace"
+#~ msgstr "Program-nyomvonal"
+
+#~ msgid "%1 from %2"
+#~ msgstr "%2 / %1"
+
+#~ msgid "(unknown)"
+#~ msgstr "(ismeretlen)"
+
+#~ msgid "(no caller)"
+#~ msgstr "(nincs hívó)"
+
+#~ msgid "%1 via %2"
+#~ msgstr "%1 ezen keresztül: %2"
+
+#~ msgid "(no callee)"
+#~ msgstr "(nincs meghívott)"
+
+#~ msgid "(not found)"
+#~ msgstr "(nem található)"
+
+#~ msgid "Recalculating Function Cycles..."
+#~ msgstr "A függvényciklusok újraszámítása..."
+
+#~ msgctxt "A thing's name"
+#~ msgid "Name"
+#~ msgstr "Név"
+
+#~ msgid "Cost"
+#~ msgstr "Költség"
+
+#~ msgid "Profile Part Overview: Current is '%1'"
+#~ msgstr "Nyomvonal-rész áttekintése - a jelenlegi: '%1'"
+
+#~ msgid "Deselect '%1'"
+#~ msgstr "\"%1\" kijelölésének megszüntetése"
+
+#~ msgid "Select '%1'"
+#~ msgstr "\"%1\" kijelölése"
+
+#~ msgid "Select All Parts"
+#~ msgstr "Az összes rész kijelölése"
+
+#~ msgid "Visible Parts"
+#~ msgstr "Látható részek"
+
+#~ msgid "Hide Selected Parts"
+#~ msgstr "A kijelölt részek elrejtése"
+
+#~ msgid "Unhide Hidden Parts"
+#~ msgstr "A rejtett részek felfedése"
+
+#~ msgid "Go to '%1'"
+#~ msgstr "Ugrás ide: '%1'"
+
+#~ msgid "Visualization"
+#~ msgstr "Vizualizáció"
+
+#~ msgid "Partitioning Mode"
+#~ msgstr "Particionálási mód"
+
+#~ msgid "Diagram Mode"
+#~ msgstr "Diagram-mód"
+
+#~ msgid "Zoom Function"
+#~ msgstr "Nagyítási funkció"
+
+#~ msgid "Show Direct Calls"
+#~ msgstr "A közvetlen hívások megjelenítése"
+
+#~ msgid "Increment Shown Call Levels"
+#~ msgstr "A megjelenített hívási szintek megnövelése"
+
+#~ msgid "Draw Names"
+#~ msgstr "A nevek kiírása"
+
+#~ msgid "Draw Costs"
+#~ msgstr "A költségek kiírása"
+
+#~ msgid "Ignore Proportions"
+#~ msgstr "Az arányok figyelmen kívül hagyása"
+
+#~ msgid "Draw Frames"
+#~ msgstr "Keretek rajzolása"
+
+#~ msgid "Allow Rotation"
+#~ msgstr "Az elforgatás engedélyezése"
+
+#~ msgid "Hide Info"
+#~ msgstr "A jellemzők elrejtése"
+
+#~ msgid "Show Info"
+#~ msgstr "A jellemzők megjelenítése"
+
+#~ msgid "(no trace loaded)"
+#~ msgstr "(nincs betöltve nyomvonal)"
+
+#~ msgid "Jump %1 of %2 times to %3"
+#~ msgstr "%2/%1. ugrás ide: %3"
+
+#~ msgid "Jump %1 times to %2"
+#~ msgstr "%1 ugrás ide: %2"
+
+#~ msgid "(%1 item skipped)"
+#~ msgid_plural "(%1 items skipped)"
+#~ msgstr[0] "(%1 elem kihagyva)"
+#~ msgstr[1] "(%1 elem kihagyva)"
+
+#~ msgid "No description available"
+#~ msgstr "Nem áll rendelkezésre leírás"
+
+#~ msgid ""
+#~ "<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+#~ "there are several profile data files from one profile run. The Trace Part "
+#~ "Overview dockable shows these, horizontally ordered in execution time; "
+#~ "the rectangle sizes are proportional to the total cost spent in the "
+#~ "parts. You can select one or several parts to constrain all costs shown "
+#~ "to these parts only.</p><p>The parts are further subdivided: there is a "
+#~ "partitioning and an callee split mode: <ul><li>Partitioning: You see the "
+#~ "partitioning into groups for a trace part, according to the group type "
+#~ "selected. E.g. if ELF object groups are selected, you see colored "
+#~ "rectangles for each used ELF object (shared library or executable), sized "
+#~ "according to the cost spent therein.</li><li>Callee: A rectangle showing "
+#~ "the inclusive cost of the current selected function in the trace part is "
+#~ "shown. This is split up into smaller rectangles to show the costs of its "
+#~ "callees.</li></ul></p>"
+#~ msgstr ""
+#~ "<b>A nyomvonal-részek áttekintése</b><p>Egy nyomvonal több "
+#~ "nyomvonalrészből áll, ha egy profilozási futtatásnál több nyomvonalfájl "
+#~ "jön létre. A nyomvonalrész-áttekintő megmutatja ezeket, vízszintesen "
+#~ "rendezve a végrehajtási idő szerint. A téglalapok mérete arányos a rész "
+#~ "költségével. Ki lehet jelölni azokat a részeket, amelyek költségével "
+#~ "szeretne foglalkozni.</p><p>Az egyes részek partícionálással vagy "
+#~ "kumulatív módon bonthatók tovább: <ul><li>Partícionálás: a csoportok "
+#~ "szerinti felbontás jeleníthető meg, a kiválasztott csoporttípusnak "
+#~ "megfelelően. Ha például kijelöli az ELF objektumok csoportját, akkor "
+#~ "színes téglalapok jelennek meg minden ELF objektumnál (osztott "
+#~ "programkönyvtárnál és programfájlnál), a költségükkel arányos mérettel.</"
+#~ "li><li>Meghívott: egy téglalap jelenik meg, mely a kiválasztott "
+#~ "függvénynek a nyomvonalrészben keletkezett összesített költségét mutatja. "
+#~ "A téglalap a meghívott függvények költségével arányos módon van tovább "
+#~ "felosztva.</li></ul></p>"
+
+#~ msgid ""
+#~ "<b>The Flat Profile</b><p>The flat profile contains a group and a "
+#~ "function selection list. The group list contains all groups where costs "
+#~ "are spent in, depending on the chosen group type. The group list is "
+#~ "hidden when group type 'Function' is selected.</p><p>The function list "
+#~ "contains the functions of the selected group (or all for 'Function' group "
+#~ "type), ordered by the costs spent therein. Functions with costs less than "
+#~ "1% are hidden on default.</p>"
+#~ msgstr ""
+#~ "<b>Egyszerű profil</b><p>Az egyszerű profil egy csoport- és "
+#~ "függvénylistát tartalmaz. A csoportlista azokat a csoportokat "
+#~ "tartalmazza, ahol költség merül fel, a kiválasztott csoporttípusnak "
+#~ "megfelelően. A csoportlista el van rejtve, amikor a 'Függvény' "
+#~ "csoporttípus van kijelölve.</p><p>A függvénylista a kiválasztott "
+#~ "csoporthoz tartozó függvényeket tartalmazza (vagy az összeset, ha a "
+#~ "'Függvény' típus van kijelölve), a fellépő költségek szerint rendezve. "
+#~ "Alapértelmezés szerint el vannak rejtve azok a függvények, melyek "
+#~ "költsége 1%-nál kisebb.</p>"
+
+#~ msgid "Show Relative Costs"
+#~ msgstr "A relatív költségek megjelenítése"
+
+#~ msgid "Show Absolute Costs"
+#~ msgstr "Az abszolút költségek megjelenítése"
+
+#~ msgid "Skip Cycle Detection"
+#~ msgstr "A ciklusdetektálás kihagyása"
+
+#~ msgid "Cost 2"
+#~ msgstr "2. költség"
+
+#~ msgid "Hex"
+#~ msgstr "Hexa"
+
+#~ msgid "Assembler"
+#~ msgstr "Assembly"
+
+#~ msgid "Source Position"
+#~ msgstr "Forráspozíció"
+
+#~ msgid ""
+#~ "<b>Annotated Assembler</b><p>The annotated assembler list shows the "
+#~ "machine code instructions of the current selected function together with "
+#~ "(self) cost spent while executing an instruction. If this is a call "
+#~ "instruction, lines with details on the call happening are inserted into "
+#~ "the source: the cost spent inside of the call, the number of calls "
+#~ "happening, and the call destination.</p><p>The disassembler output shown "
+#~ "is generated with the 'objdump' utility from the 'binutils' package.</"
+#~ "p><p>Select a line with call information to make the destination function "
+#~ "of this call current.</p>"
+#~ msgstr ""
+#~ "<b>Kommentált assembly kód</b><p>A kommentált assembly listában a "
+#~ "kijelölt függvényhez tartozó utasítások jelennek meg, az utasítások "
+#~ "költségével együtt. Hívási utasítás esetén a hívás részletei "
+#~ "megjegyzésként megjelennek a kódban: a költség a hívás belsejében, a "
+#~ "hívások száma, a hívás célja.</p><p>A visszafejtett assembly kód a "
+#~ "'binutils' csomaghoz tartozó 'objdump' segédprogram segítségével készül "
+#~ "el.</p><p>Válasszon ki egy hívási információkkal kiegészített sort, ha "
+#~ "annak célfüggvényét szeretné aktuálissá tenni.</p>"
+
+#~ msgid "Go to Address %1"
+#~ msgstr "Ugrás erre a címre: %1"
+
+#~ msgid "Hex Code"
+#~ msgstr "Hexa kód"
+
+#~ msgid "There is no instruction info in the profile data file."
+#~ msgstr "Nincs utasításleíró rész a profilfájlban."
+
+#~ msgid "For the Valgrind Calltree Skin, rerun with option"
+#~ msgstr "A Valgrind hívási fa előállításához futtassa újra ezzel az opcióval"
+
+#~ msgid "      --dump-instr=yes"
+#~ msgstr "      --dump-instr=yes"
+
+#~ msgid "To see (conditional) jumps, additionally specify"
+#~ msgstr "A (feltételes) ugrások megjelenítéséhez meg kell adni"
+
+#~ msgid "      --trace-jump=yes"
+#~ msgstr "      --trace-jump=yes"
+
+#~ msgid "There is an error trying to execute the command"
+#~ msgstr "Hiba történt a parancs végrehajtása közben"
+
+#~ msgid "Check that you have installed 'objdump'."
+#~ msgstr "Ellenőrizze, hogy telepítve van-e az 'objdump' program."
+
+#~ msgid "This utility can be found in the 'binutils' package."
+#~ msgstr "Ez a segédprogram a 'binutils' csomagban található."
+
+#~ msgid "(No Assembler)"
+#~ msgstr "(Nincs assembler)"
+
+#~ msgid "There is %1 cost line without assembler code."
+#~ msgid_plural "There are %1 cost lines without assembler code."
+#~ msgstr[0] "%1 költségsor van assembly kód nélkül."
+#~ msgstr[1] "%1 költségsor van assembly kód nélkül."
+
+#~ msgid "This happens because the code of"
+#~ msgstr "Ez azért lehet, mert a(z)"
+
+#~ msgid "does not seem to match the profile data file."
+#~ msgstr "feltehetően nem felel meg a profilfájlnak."
+
+#~ msgid "Are you using an old profile data file or is the above mentioned"
+#~ msgstr "Régi profilfájlt használ vagy a fent említettek egyike igaz"
+
+#~ msgid "ELF object from an updated installation/another machine?"
+#~ msgstr ""
+#~ "ELF objektum egy frissített telepítésből vagy egy másik gépről származik?"
+
+#~ msgid "There seems to be an error trying to execute the command"
+#~ msgstr "Hiba történt a parancs végrehajtásakor"
+
+#~ msgid "Check that the ELF object used in the command exists."
+#~ msgstr "Ellenőrizze, hogy a parancsban felhasznált ELF objektum létezik-e."
+
+#~ msgid "Call(s) from %1"
+#~ msgstr "Hívások innen: %1"
+
+#~ msgid "Call(s) to %1"
+#~ msgstr "Hívások ide: %1"
+
+#~ msgid "(unknown call)"
+#~ msgstr "(ismeretlen hívás)"
+
+#~ msgid ""
+#~ "<b>Call Graph around active Function</b><p>Depending on configuration, "
+#~ "this view shows the call graph environment of the active function. Note: "
+#~ "the shown cost is <b>only</b> the cost which is spent while the active "
+#~ "function was actually running; i.e. the cost shown for main() - if it is "
+#~ "visible - should be the same as the cost of the active function, as that "
+#~ "is the part of inclusive cost of main() spent while the active function "
+#~ "was running.</p><p>For cycles, blue call arrows indicate that this is an "
+#~ "artificial call added for correct drawing which actually never happened.</"
+#~ "p><p>If the graph is larger than the widget area, an overview panner is "
+#~ "shown in one edge. There are similar visualization options to the Call "
+#~ "Treemap; the selected function is highlighted.</p>"
+#~ msgstr ""
+#~ "<b>Hívási grafikon az aktív függvénynél</b><p>A beállításoktól függően az "
+#~ "aktív függvény hívási grafikonját jeleníti meg. Megjegyzés: a "
+#~ "megjelenített költség <b>csak</b> az a költség, ami az aktív függvény "
+#~ "futása közben történt. Például a main()-nél megjelenő költségnek - ha az "
+#~ "látható - ugyanannak kell lennie, mint az aktív függvényé, mert az része "
+#~ "a main() költségének, amíg a függvény fut.</p><p>Ciklusok előfordulása "
+#~ "esetén kék nyilak jelzik, hogy ez egy virtuális hívás, mely csak a "
+#~ "megfelelő megjeleníthetőség érdekében létezik (de valójában nem történt "
+#~ "meg).</p><p>Ha a grafikon nagyobb lenne, mint a grafikus elem területe, "
+#~ "nézeti ablak jelenik meg az egyik szélnél. Hasonló megjelenítési opciók "
+#~ "vannak a hívási fastruktúránál: a kijelölt függvény ki van emelve.</p>"
+
+#~ msgid ""
+#~ "Warning: a long lasting graph layouting is in progress.\n"
+#~ "Reduce node/edge limits for speedup.\n"
+#~ msgstr ""
+#~ "Figyelem: ezt a grafikont sokáig tart megjeleníteni.\n"
+#~ "A folyamat felgyorsítható, ha korlátokat ad a csomópontokra és az "
+#~ "élekre.\n"
+
+#~ msgid "Layouting stopped.\n"
+#~ msgstr "Az elrendezés kialakítása megállt.\n"
+
+#~ msgid "The call graph has %1 nodes and %2 edges.\n"
+#~ msgstr "A hívási grafikonnak %1 csomópontja és %2 éle van.\n"
+
+#~ msgid "No item activated for which to draw the call graph."
+#~ msgstr "Nem olyan elem van aktiválva, amelyhez hívási grafikon rajzolható."
+
+#~ msgid "No call graph can be drawn for the active item."
+#~ msgstr "Nem jeleníthető meg hívási grafikon az aktív elemhez."
+
+#~ msgid ""
+#~ "No call graph is available because the following\n"
+#~ "command cannot be run:\n"
+#~ "'%1'\n"
+#~ msgstr ""
+#~ "Nem áll rendelkezésre hívási grafikon, mert a következő parancs\n"
+#~ "nem hajtható végre:\n"
+#~ "'%1'\n"
+
+#~ msgid "Please check that 'dot' is installed (package GraphViz)."
+#~ msgstr ""
+#~ "Ellenőrizze, hogy telepítve van-e a 'dot' nevű program (a GraphViz csomag "
+#~ "része)."
+
+#~ msgid "Error running the graph layouting tool.\n"
+#~ msgstr "Hiba történt a grafikonkészítő eszköz futtatásakor.\n"
+
+#~ msgid ""
+#~ "There is no call graph available for function\n"
+#~ "\t'%1'\n"
+#~ "because it has no cost of the selected event type."
+#~ msgstr ""
+#~ "Nem érhető el hívási grafikon az alábbi függvényhez:\n"
+#~ "\t'%1',\n"
+#~ "mert a kiválasztott eseménytípussal nincs költsége."
+
+#~ msgid "Unlimited"
+#~ msgstr "Korlátlan"
+
+#~ msgctxt "Depth 0"
+#~ msgid "None"
+#~ msgstr "Nincs"
+
+#~ msgid "max. 2"
+#~ msgstr "max. 2"
+
+#~ msgid "max. 5"
+#~ msgstr "max. 5"
+
+#~ msgid "max. 10"
+#~ msgstr "max. 10"
+
+#~ msgid "max. 15"
+#~ msgstr "max. 15"
+
+#~ msgid "No Minimum"
+#~ msgstr "Nincs minimum"
+
+#~ msgid "50 %"
+#~ msgstr "50%"
+
+#~ msgid "20 %"
+#~ msgstr "20%"
+
+#~ msgid "10 %"
+#~ msgstr "10%"
+
+#~ msgid "5 %"
+#~ msgstr "5%"
+
+#~ msgid "2 %"
+#~ msgstr "2%"
+
+#~ msgid "1 %"
+#~ msgstr "1%"
+
+#~ msgid "Same as Node"
+#~ msgstr "Ugyanannyi, mint a csomóponté"
+
+#~ msgid "50 % of Node"
+#~ msgstr "A csomópont 50%-a"
+
+#~ msgid "20 % of Node"
+#~ msgstr "A csomópont 20%-a"
+
+#~ msgid "10 % of Node"
+#~ msgstr "A csomópont 10%-a"
+
+#~ msgid "Top Left"
+#~ msgstr "Bal oldalt, fent"
+
+#~ msgid "Top Right"
+#~ msgstr "Jobb oldalt, fent"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Balra, lefelé"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Jobb oldalt, lent"
+
+#~ msgid "Top to Down"
+#~ msgstr "Fentről lefelé"
+
+#~ msgid "Left to Right"
+#~ msgstr "Balról jobbra"
+
+#~ msgid "Circular"
+#~ msgstr "Körkörös"
+
+#~ msgid "Stop Layouting"
+#~ msgstr "Az elrendezéskészítő megállítása"
+
+#~ msgid "As PostScript"
+#~ msgstr "PostScriptként"
+
+#~ msgid "As Image ..."
+#~ msgstr "Képként..."
+
+#~ msgid "Export Graph"
+#~ msgstr "Grafikon exportálása"
+
+#~ msgid "Caller Depth"
+#~ msgstr "A meghívó mélysége"
+
+#~ msgid "Callee Depth"
+#~ msgstr "A meghívott mélysége"
+
+#~ msgid "Min. Node Cost"
+#~ msgstr "Min. csomópont-költség"
+
+#~ msgid "Min. Call Cost"
+#~ msgstr "Min. hívási költség"
+
+#~ msgid "Arrows for Skipped Calls"
+#~ msgstr "Nyilak a kihagyott hívásoknál"
+
+#~ msgid "Inner-cycle Calls"
+#~ msgstr "Belső ciklusos hívások"
+
+#~ msgid "Cluster Groups"
+#~ msgstr "Klasztercsoportok"
+
+#~ msgid "Compact"
+#~ msgstr "Tömör"
+
+#~ msgid "Normal"
+#~ msgstr "Normális"
+
+#~ msgid "Tall"
+#~ msgstr "Magas"
+
+#~ msgid "Graph"
+#~ msgstr "Grafikon"
+
+#~ msgid "Layout"
+#~ msgstr "Elrendezés"
+
+#~ msgid "Birds-eye View"
+#~ msgstr "Távlati kép"
+
+#~ msgid "(%1 function skipped)"
+#~ msgid_plural "(%1 functions skipped)"
+#~ msgstr[0] "(%1 függvény kihagyva)"
+#~ msgstr[1] "(%1 függvény kihagyva)"
+
+#~ msgid "Move to Top"
+#~ msgstr "Mozgatás felülre"
+
+#~ msgctxt "Move to Top"
+#~ msgid "Top"
+#~ msgstr "Felülre"
+
+#~ msgid "Move to Right"
+#~ msgstr "Mozgatás jobbra"
+
+#~ msgctxt "Move to Right"
+#~ msgid "Right"
+#~ msgstr "Jobbra"
+
+#~ msgid "Move to Bottom"
+#~ msgstr "Mozgatás lefelé"
+
+#~ msgctxt "Move to Bottom"
+#~ msgid "Bottom"
+#~ msgstr "Alulra"
+
+#~ msgid "Move to Bottom Left"
+#~ msgstr "Mozgatás balra, lefelé"
+
+#~ msgctxt "Move to Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Balra, lefelé"
+
+#~ msgid "Move Area To"
+#~ msgstr "A terület mozgatása ide"
+
+#~ msgid "Hide This Tab"
+#~ msgstr "A lap elrejtése"
+
+#~ msgid "Hide Area"
+#~ msgstr "A terület elrejtése"
+
+#~ msgctxt "Show on Top"
+#~ msgid "Top"
+#~ msgstr "Felül"
+
+#~ msgctxt "Show on Right"
+#~ msgid "Right"
+#~ msgstr "Jobbról"
+
+#~ msgctxt "Show on Bottom"
+#~ msgid "Bottom"
+#~ msgstr "Alul"
+
+#~ msgctxt "Show on Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Balra, alul"
+
+#~ msgid "Show Hidden On"
+#~ msgstr "A rejtettek megjelenítése"
+
+#~ msgid "(No profile data file loaded)"
+#~ msgstr "(Nincs betöltve profilfájl)"
+
+#~ msgid "Types"
+#~ msgstr "Típusok"
+
+#~ msgid "Callers"
+#~ msgstr "Hívók"
+
+#~ msgid "All Callers"
+#~ msgstr "Minden hívó"
+
+#~ msgid "Caller Map"
+#~ msgstr "Meghívói térkép"
+
+#~ msgid "Source Code"
+#~ msgstr "Forráskód"
+
+#~ msgid "Parts"
+#~ msgstr "Részek"
+
+#~ msgid "Call Graph"
+#~ msgstr "Hívási grafikon"
+
+#~ msgid "Callees"
+#~ msgstr "Hívottak"
+
+#~ msgid "All Callees"
+#~ msgstr "Minden hívott"
+
+#~ msgid "Callee Map"
+#~ msgstr "Meghívotti térkép"
+
+#~ msgid "Assembly Code"
+#~ msgstr "Gépi kód"
+
+#~ msgid ""
+#~ "<b>Information Tabs</b><p>This widget shows information for the current "
+#~ "selected function in different tabs: <ul><li>The Costs tab shows a list "
+#~ "of available event types and the inclusive and self costs regarding to "
+#~ "these types.</li><li>The Parts tab shows a list of trace parts if the "
+#~ "trace consists of more than one part (otherwise, this tab is hided). The "
+#~ "cost of the selected function spent in the different parts together with "
+#~ "the calls happening is shown.</li><li>The Call Lists tab shows direct "
+#~ "callers and callees of the function in more detail.</li><li>The Coverage "
+#~ "tab shows the same is the Call Lists tab, but not only direct callers and "
+#~ "callees but also indirect ones.</li><li>The Call Graph tab shows a "
+#~ "graphical visualization of the calls done by this function.</li><li>The "
+#~ "Source tab presents annotated source code if debugging information and "
+#~ "the source file is available.</li><li>The Assembler tab presents "
+#~ "annotated assembler code if trace information on instruction level is "
+#~ "available.</li></ul>For more information, see the <em>What's this</em> "
+#~ "help of the corresponding tab widget</p>"
+#~ msgstr ""
+#~ "<b>Információs lapok</b><p>Ezen az elemen a kiválasztott függvény "
+#~ "különféle jellemzői láthatók több lapra elosztva: <ul><li>A Költségek "
+#~ "lapon az eseménytípusok listája látható, továbbá a beleértett és saját "
+#~ "költségek típus szerint.</li><li>A Részek lapon a nyomvonalrészek listája "
+#~ "látható, ha a nyomvonal egynél több részre bomlik (máskülönben a lap nem "
+#~ "látszik). A kiválasztott függvény költségei olvashatók le az ábráról "
+#~ "részek szerinti bontásban, a függvényhívások listájával együtt.</li><li>A "
+#~ "Hívási listák lapon a közvetlen meghívó és meghívott függvények részletes "
+#~ "jellemzői láthatók.</li><li>A Lefedés lap tartalma hasonlít a Hívási "
+#~ "listák lap tartalmához, de a közvetlen függvényhívásokon felül a "
+#~ "közvetett hívások jellemzői is megjelennek.</li><li>A Hívási grafikon "
+#~ "lapon a kiválasztott függvény meghívásainak jellemzői láthatók.</li><li>A "
+#~ "Forrás lapon a kommentált forráskód látható, ha a forrásfájl és a "
+#~ "nyomkövetési adatok is rendelkezésre állnak.</li><li>Az Assembly kód "
+#~ "lapon a kommentált assembly kód látható, ha a nyomkövetési adatok az "
+#~ "utasítások szintjén is rendelkezésre állnak.</li></ul>Részletesebb leírás "
+#~ "az egyes lapokhoz tartozó <em>Mi ez?</em> tippek szövegében található.</p>"
+
+#~ msgid "(No Data loaded)"
+#~ msgstr "(Nincs betöltve adat)"
+
+#~ msgid "(No function selected)"
+#~ msgstr "(Nincs kiválasztva függvény)"
+
+#~ msgid "Source (unknown)"
+#~ msgstr "Forrás (ismeretlen)"
+
+#~ msgid ""
+#~ "<b>Annotated Source</b><p>The annotated source list shows the source "
+#~ "lines of the current selected function together with (self) cost spent "
+#~ "while executing the code of this source line. If there was a call in a "
+#~ "source line, lines with details on the call happening are inserted into "
+#~ "the source: the cost spent inside of the call, the number of calls "
+#~ "happening, and the call destination.</p><p>Select a inserted call "
+#~ "information line to make the destination function current.</p>"
+#~ msgstr ""
+#~ "<b>Kommentált forráskód</b><p>Ebben a listában megjelenik a vizsgált "
+#~ "függvény forráskódja, a forrássornak megfelelő kód végrehajtási "
+#~ "költségével együtt. Ha a forrássorban hívás történt, a hívás adatait "
+#~ "tartalmazó megjegyzések be lesznek szúrva a forrásba: a hívás belsejében "
+#~ "keletkező költségek, a hívások száma, a hívás cálja.</p><p>Ha kiválaszt "
+#~ "egy kommentált forrássort és rákattint, a célfüggvény válik aktuálissá.</"
+#~ "p>"
+
+#~ msgid "Go to Line %1"
+#~ msgstr "Ugrás erre a sorra: %1"
+
+#~ msgid "(No Source)"
+#~ msgstr "(Nincs forrás)"
+
+#~ msgid "There is no cost of current selected type associated"
+#~ msgstr "Nincs költség rendelve (a kiválasztott típusból)"
+
+#~ msgid "with any source line of this function in file"
+#~ msgstr "a függvény forrásának egyetlen sorához sem ebben a fájlban."
+
+#~ msgid "Thus, no annotated source can be shown."
+#~ msgstr "Ezért a megjegyzésekkel kiegészített forrás nem jeleníthető meg."
+
+#~ msgid "Source ('%1')"
+#~ msgstr "Forrás ('%1')"
+
+#~ msgid "--- Inlined from '%1' ---"
+#~ msgstr "--- Beemelve innen: '%1' ---"
+
+#~ msgid "--- Inlined from unknown source ---"
+#~ msgstr "--- Ismeretlen forrásból beemelve ---"
+
+#~ msgid "There is no source available for the following function:"
+#~ msgstr "A következő függvény forrása nem áll rendelkezésre:"
+
+#~ msgid "This is because no debug information is present."
+#~ msgstr "Mert nem áll rendelkezésre nyomkövetési információ."
+
+#~ msgid "Recompile source and redo the profile run."
+#~ msgstr "Fordítsa újra a forrást és hajtsa végre újból a profilozást."
+
+#~ msgid "The function is located in this ELF object:"
+#~ msgstr "A függvény ebben az ELF objektumban található:"
+
+#~ msgid "This is because its source file cannot be found:"
+#~ msgstr "Ez azért van, mert a forrásfájl nem található:"
+
+#~ msgid "Add the folder of this file to the source folder list."
+#~ msgstr "A fájl könyvtárának hozzáadása a forráskönyvtárak listájához."
+
+#~ msgid "The list can be found in the configuration dialog."
+#~ msgstr "A lista megtalálható a beállítóablakban."
+
+#~ msgid " (Thread %1)"
+#~ msgstr " (Szál - %1)"
+
+#~ msgid "(none)"
+#~ msgstr "(nincs)"
+
+#~ msgid "Unknown Type"
+#~ msgstr "Ismeretlen típus"
+
+#~ msgid "Show All Items"
+#~ msgstr "Az összes elem megjelenítése"
+
+#~ msgid "No Grouping"
+#~ msgstr "Nincs csoportosítás"
+
+#~ msgid "Distance"
+#~ msgstr "Távolság"
+
+#~ msgid "Caller"
+#~ msgstr "Meghívó"
+
+#~ msgid "Self"
+#~ msgstr "Önmagában"
+
+#~ msgid "Calling"
+#~ msgstr "Hívó"
+
+#~ msgid "Callee"
+#~ msgstr "Hívott"
+
+#~ msgid ""
+#~ "<b>List of all Callers</b><p>This list shows all functions calling the "
+#~ "current selected one, either directly or with several functions in-"
+#~ "between on the stack; the number of functions in-between plus one is "
+#~ "called the <em>Distance</em> (e.g. for function A,B,C there exists a call "
+#~ "from A to C when A calls B and B calls C, i.e. A => B => C. The distance "
+#~ "here is 2).</p><p>Absolute cost shown is the cost spent in the selected "
+#~ "function while a listed function is active; relative cost is the "
+#~ "percentage of all cost spent in the selected function while the listed "
+#~ "one is active. The cost graphic shows logarithmic percentage with a "
+#~ "different color for each distance.</p><p>As there can be many calls from "
+#~ "the same function, the distance column sometimes shows the range of "
+#~ "distances for all calls happening; then, in parentheses, there is the "
+#~ "medium distance, i.e. the distance where most of the call costs happened."
+#~ "</p><p>Selecting a function makes it the current selected one of this "
+#~ "information panel. If there are two panels (Split mode), the function of "
+#~ "the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>A meghívások listája</b><p>Ebben a listában a kiválasztott függvényre "
+#~ "történő függvényhívások helyei látszanak, akár közvetlenül, akár "
+#~ "közvetve, több közbeeső függvény segítségével. A közbeeső függvények "
+#~ "száma <em>Távolság</em> néven látható (pl. ha adott egy A, B és C "
+#~ "függvény, ahol A hívja B-t, B hívja C-t, azaz A => B => C, akkor A és C "
+#~ "távolsága 2).</p><p>Az abszolút költség az a költség, amely az aktuális "
+#~ "függvényen belül keletkezik, a listában kijelölt függvény "
+#~ "végrehajtásakor. A relatív költség az abszolút költség aránya a teljes "
+#~ "költséghez (a listában kijelölt függvény költsége az aktív függvényen "
+#~ "belül). A költség logaritmikus skálázású százalékos értékként jelenik "
+#~ "meg, úgy, hogy minden távolság más színnel van kirajzolva.</p><p>Egy "
+#~ "függvényből számtalan hívás indulhat egy kiszemelt függvényre, ezért a "
+#~ "Távolság oszlopban néha egy adott értéktartományba eső hívások adatai "
+#~ "jelennek meg, zárójelben mutatva a közepes távolságot (amely tehát a "
+#~ "hívások átlagos távolsága).</p><p>Ha kijelöl egy függvényt, akkor az "
+#~ "megjelenik ezen az információs panelen. Ha két panel van (osztott "
+#~ "módban), akkor helyette a másik panelben fog megjelenni.</p>"
+
+#~ msgid ""
+#~ "<b>List of all Callees</b><p>This list shows all functions called by the "
+#~ "current selected one, either directly or with several function in-between "
+#~ "on the stack; the number of function in-between plus one is called the "
+#~ "<em>Distance</em> (e.g. for function A,B,C there exists a call from A to "
+#~ "C when A calls B and B calls C, i.e. A => B => C. The distance here is 2)."
+#~ "</p><p>Absolute cost shown is the cost spent in the listed function while "
+#~ "the selected is active; relative cost is the percentage of all cost spent "
+#~ "in the listed function while the selected one is active. The cost graphic "
+#~ "always shows logarithmic percentage with a different color for each "
+#~ "distance.</p><p>As there can be many calls to the same function, the "
+#~ "distance column sometimes shows the range of distances for all calls "
+#~ "happening; then, in parentheses, there is the medium distance, i.e. the "
+#~ "distance where most of the call costs happened.</p><p>Selecting a "
+#~ "function makes it the current selected one of this information panel. If "
+#~ "there are two panels (Split mode), the function of the other panel is "
+#~ "changed instead.</p>"
+#~ msgstr ""
+#~ "<b>A meghívott függvények listája</b><p>Ebben a listában a kiválasztott "
+#~ "függvényből kiinduló függvényhívások látszanak, akár közvetlenül, akár "
+#~ "közvetve történnek, több közbeeső függvény segítségével. A közbeeső "
+#~ "függvények száma <em>Távolság</em> néven látható (pl. ha adott egy A, B "
+#~ "és C függvény, ahol A hívja B-t, B hívja C-t, azaz A => B => C, akkor A "
+#~ "és C távolsága 2).</p><p>Az abszolút költség az a költség, amely az "
+#~ "aktuális függvényen belül keletkezik, a listában kijelölt függvény "
+#~ "végrehajtásakor. A relatív költség az abszolút költség aránya a teljes "
+#~ "költséghez (a listában kijelölt függvény költsége az aktív függvényen "
+#~ "belül). A költség logaritmikus skálázású százalékos értékként jelenik "
+#~ "meg, úgy, hogy minden távolság más színnel van kirajzolva.</p><p>Egy "
+#~ "függvényből számtalan hívás indulhat egy kiszemelt függvényre, ezért a "
+#~ "Távolság oszlopban néha egy adott értéktartományba eső hívások adatai "
+#~ "jelennek meg, zárójelben mutatva a közepes távolságot (amely tehát a "
+#~ "hívások átlagos távolsága).</p><p>Ha kijelöl egy függvényt, akkor az "
+#~ "megjelenik ezen az információs panelen. Ha két panel van (osztott "
+#~ "módban), akkor helyette a másik panelben fog megjelenni.</p>"
+
+#~ msgid "Instruction Fetch"
+#~ msgstr "Utasításelérés"
+
+#~ msgid "Data Read Access"
+#~ msgstr "Olvasási elérés"
+
+#~ msgid "Data Write Access"
+#~ msgstr "Írási elérés"
+
+#~ msgid "L1 Instr. Fetch Miss"
+#~ msgstr "L1 utasításelérési késleltetés"
+
+#~ msgid "L1 Data Read Miss"
+#~ msgstr "L1 olvasási késleltetés"
+
+#~ msgid "L1 Data Write Miss"
+#~ msgstr "L1 írási késleltetés"
+
+#~ msgid "L2 Instr. Fetch Miss"
+#~ msgstr "L2 utasításelérési késleltetés"
+
+#~ msgid "L2 Data Read Miss"
+#~ msgstr "L2 olvasási késleltetés"
+
+#~ msgid "L2 Data Write Miss"
+#~ msgstr "L2 írási késleltetés"
+
+#~ msgid "Samples"
+#~ msgstr "Minták"
+
+#~ msgid "System Time"
+#~ msgstr "Rendszeridő"
+
+#~ msgid "User Time"
+#~ msgstr "Felhasználói idő"
+
+#~ msgid "L1 Miss Sum"
+#~ msgstr "L1-hibázási összeg"
+
+#~ msgid "L2 Miss Sum"
+#~ msgstr "L2-hibázási összeg"
+
+#~ msgid "Cycle Estimation"
+#~ msgstr "Ciklusbecslés"
+
+#~ msgid "&Search:"
+#~ msgstr "&Keresés:"
+
+#~ msgid "Group"
+#~ msgstr "Csoport"
+
+#~ msgid "(no trace parts)"
+#~ msgstr "(nincs nyomvonal-darab)"
+
+#~ msgid "Stack Selection"
+#~ msgstr "Veremválasztás"
+
+#~ msgid "Cost2"
+#~ msgstr "Költség2"
+
+#~ msgid "Text %1"
+#~ msgstr "Szöveg - %1"
+
+#~ msgid "Recursive Bisection"
+#~ msgstr "Rekurzív metszet"
+
+#~ msgid "Columns"
+#~ msgstr "Oszlopok"
+
+#~ msgid "Rows"
+#~ msgstr "Sorok"
+
+#~ msgid "Always Best"
+#~ msgstr "Mindig a legjobb"
+
+#~ msgid "Best"
+#~ msgstr "A legjobb"
+
+#~ msgid "Alternate (V)"
+#~ msgstr "Váltakozó (vízszintesen)"
+
+#~ msgid "Alternate (H)"
+#~ msgstr "Váltakozó (függőlegesen)"
+
+#~ msgid "Horizontal"
+#~ msgstr "Vízszintes"
+
+#~ msgid "Vertical"
+#~ msgstr "Függőleges"
+
+#~ msgid "Nesting"
+#~ msgstr "Egymásba ágyazás (nesting)"
+
+#~ msgid "Border"
+#~ msgstr "Szegély"
+
+#~ msgid "Correct Borders Only"
+#~ msgstr "Csak helyes szegélyek"
+
+#~ msgid "Width %1"
+#~ msgstr "Szélesség: %1"
+
+#~ msgid "Shading"
+#~ msgstr "Árnyékolás"
+
+#~ msgid "Visible"
+#~ msgstr "Látható"
+
+#~ msgid "Take Space From Children"
+#~ msgstr "A tartalmazottak helyét felhasználva"
+
+#~ msgid "Top Center"
+#~ msgstr "Fent, középen"
+
+#~ msgid "Bottom Center"
+#~ msgstr "Lent, középen"
+
+#~ msgid "No %1 Limit"
+#~ msgstr "Nincs %1 korlát"
+
+#~ msgid "No Area Limit"
+#~ msgstr "Nincs területkorlát"
+
+#~ msgid "Area of '%1' (%2)"
+#~ msgstr "'%1' területe (%2)"
+
+#~ msgid "1 Pixel"
+#~ msgid_plural "%1 Pixels"
+#~ msgstr[0] "%1 képpont"
+#~ msgstr[1] "%1 képpont"
+
+#~ msgid "Double Area Limit (to %1)"
+#~ msgstr "A területi korlát duplázása (erre: %1)"
+
+#~ msgid "Halve Area Limit (to %1)"
+#~ msgstr "A területi korlát felezése (erre: %1)"
+
+#~ msgid "No Depth Limit"
+#~ msgstr "Nincs mélységi korlát"
+
+#~ msgid "Depth of '%1' (%2)"
+#~ msgstr "'%1' mélysége (%2)"
+
+#~ msgid "Depth %1"
+#~ msgstr "Mélység: %1"
+
+#~ msgid "Decrement (to %1)"
+#~ msgstr "Csökkentés (erre: %1)"
+
+#~ msgid "Increment (to %1)"
+#~ msgstr "Növelés (erre: %1)"
+
+#~ msgid ""
+#~ "<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers "
+#~ "of the current activated function. Each colored rectangle represents a "
+#~ "function; its size tries to be proportional to the cost spent therein "
+#~ "while the active function is running (however, there are drawing "
+#~ "constrains).</p>"
+#~ msgstr ""
+#~ "<b>Hívási térkép</b><p>Ez a grafikon megmutatja az aktuális függvény "
+#~ "meghívásainak hierarchiáját. Mindegyik színes téglalap egy függvényt "
+#~ "reprezentál. A téglalap mérete közelítőleg arányos azzal a költséggel, "
+#~ "amely az aktív függvény futása közben merül fel (az ábra nem lehet "
+#~ "teljesen pontos!).</p>"
+
+#~ msgid ""
+#~ "<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+#~ "the current activated function. Each colored rectangle represents a "
+#~ "function; its size tries to be proportional to the cost spent therein "
+#~ "while the active function is running (however, there are drawing "
+#~ "constrains).</p>"
+#~ msgstr ""
+#~ "<b>A meghívott függvények térképe</b><p>Ez a grafikon megmutatja az "
+#~ "aktuális függvényból induló függvényhívások hierarchiáját. Mindegyik "
+#~ "színes téglalap egy függvényt reprezentál. A téglalap mérete közelítőleg "
+#~ "arányos azzal a költséggel, amely az aktív függvény futása közben merül "
+#~ "fel (az ábra nem lehet teljesen pontos!).</p>"
+
+#~ msgid ""
+#~ "<p>Appearance options can be found in the in the context menu. To get "
+#~ "exact size proportions, choose 'Hide incorrect borders'. As this mode can "
+#~ "be <em>very</em> time consuming, you may want to limit the maximum drawn "
+#~ "nesting level before. 'Best' determinates the split direction for "
+#~ "children from the aspect ratio of the parent. 'Always Best' decides on "
+#~ "remaining space for each sibling. 'Ignore Proportions' takes space for "
+#~ "function name drawing <em>before</em> drawing children. Note that size "
+#~ "proportions can get <em>heavily</em> wrong.</p><p>This is a <em>TreeMap</"
+#~ "em> widget. Keyboard navigation is available with the left/right arrow "
+#~ "keys for traversing siblings, and up/down arrow keys to go a nesting "
+#~ "level up/down. <em>Return</em> activates the current item.</p>"
+#~ msgstr ""
+#~ "<p>A megjelenítést befolyásoló opciók a felbukkanó menüben találhatók. Ha "
+#~ "azt szeretné, hogy a méretek a pontos arányokat tükrözzék, jelölje be 'A "
+#~ "pontatlan szegélyek elrejtése' opciót. Ilyenkor a megjelenítés <em>nagyon "
+#~ "lelassulhat</em>, ezért érdemes lekorlátozni a maximális mélységet. 'A "
+#~ "legmegfelelőbb' opció az alárendelt elemek osztási arányát határozza meg "
+#~ "a szülőelem nézetarányából. A 'Mindig a legjobb' esetén a program "
+#~ "meghatározza az egymás mellé rendelt elemek területét. 'Az arányok "
+#~ "figyelmen kívül hagyása' esetén a szülőelemek helyfoglalása az alárendelt "
+#~ "elemek kirajzolása <em>előtt</em> történik. A méretarányok <em>nagy "
+#~ "mértékben</em> eltérhetnek a valóságostól.</p><p>Ez egy <em>fastruktúra-"
+#~ "térkép</em> elem. A billentyűzet használata esetén a jobbra/balra "
+#~ "nyilakkal lehet az egy szinten található elemek között mozogni, a fel és "
+#~ "le nyilakkal pedig a felsőbb ill. alsóbb szintekre lehet lépni. Az "
+#~ "aktuális elemet az <em>Enter</em> lenyomásával lehet aktiválni.</p>"
+
+#~ msgid "Go To"
+#~ msgstr "Ugrás"
+
+#~ msgid "Stop at Depth"
+#~ msgstr "Megállás ennél a mélységnél"
+
+#~ msgid "Depth 10"
+#~ msgstr "10-es mélység"
+
+#~ msgid "Depth 15"
+#~ msgstr "15-ös mélység"
+
+#~ msgid "Depth 20"
+#~ msgstr "20-as mélység"
+
+#~ msgid "Decrement Depth (to %1)"
+#~ msgstr "A mélység csökkentése (erre: %1)"
+
+#~ msgid "Increment Depth (to %1)"
+#~ msgstr "A mélység növelése (erre: %1)"
+
+#~ msgid "Stop at Function"
+#~ msgstr "Megállás a függvénynél"
+
+#~ msgid "No Function Limit"
+#~ msgstr "Nincs függvénykorlátozás"
+
+#~ msgid "Stop at Area"
+#~ msgstr "Megállás a területnél"
+
+#~ msgid "50 Pixels"
+#~ msgstr "50 képpont"
+
+#~ msgid "100 Pixels"
+#~ msgstr "100 képpont"
+
+#~ msgid "200 Pixels"
+#~ msgstr "200 képpont"
+
+#~ msgid "500 Pixels"
+#~ msgstr "500 képpont"
+
+#~ msgid "Half Area Limit (to %1)"
+#~ msgstr "A területi korlát felezése (erre: %1)"
+
+#~ msgid "Split Direction"
+#~ msgstr "Osztott irány"
+
+#~ msgid "Skip Incorrect Borders"
+#~ msgstr "A nem megfelelő határok kihagyása"
+
+#~ msgid "Border Width"
+#~ msgstr "Szegélyvastagság"
+
+#~ msgid "Border 0"
+#~ msgstr "Szegély (0)"
+
+#~ msgid "Border 1"
+#~ msgstr "Szegély (1)"
+
+#~ msgid "Border 2"
+#~ msgstr "Szegély (2)"
+
+#~ msgid "Border 3"
+#~ msgstr "Szegély (3)"
+
+#~ msgid "Draw Symbol Names"
+#~ msgstr "A szimbólumnevek megjelenítése"
+
+#~ msgid "Draw Cost"
+#~ msgstr "A költség megjelenítése"
+
+#~ msgid "Draw Location"
+#~ msgstr "A hely megjelenítése"
+
+#~ msgid "Draw Calls"
+#~ msgstr "A hívások megjelenítése"
+
+#~ msgid "Call Map: Current is '%1'"
+#~ msgstr "Hívási térkép - az aktuális: '%1'"
+
+#~ msgid "(no function)"
+#~ msgstr "(nincs függvény)"
+
+#~ msgid "(no call)"
+#~ msgstr "(nincs hívás)"
+
+#~ msgid "Event Type"
+#~ msgstr "Eseménytípus"
+
+#~ msgid "Short"
+#~ msgstr "Rövid"
+
+#~ msgid "Formula"
+#~ msgstr "Képlet"
+
+#~ msgid ""
+#~ "<b>Cost Types List</b><p>This list shows all cost types available and "
+#~ "what the self/inclusive cost of the current selected function is for that "
+#~ "cost type.</p><p>By choosing a cost type from the list, you change the "
+#~ "cost type of costs shown all over KCachegrind to be the selected one.</p>"
+#~ msgstr ""
+#~ "<b>Költségtípus-lista</b><p>Ebben a listában a rendelkezésre álló "
+#~ "költségtípusok láthatóak, és hogy mennyi a kiválasztott függvény önálló "
+#~ "és kumulatív költsége típusonként.</p><p>Ha kiválaszt egy költségtípust a "
+#~ "listából, akkor a programban látható költségkiírások mind erre a "
+#~ "költségtípusra fognak vonatkozni.</p>"
+
+#~ msgid "Set Secondary Event Type"
+#~ msgstr "Másodlagos eseménytípus megadása"
+
+#~ msgid "Remove Secondary Event Type"
+#~ msgstr "A másodlagos eseménytípus eltávolítása"
+
+#~ msgid "Edit Long Name"
+#~ msgstr "A rövid hosszú módosítása"
+
+#~ msgid "Edit Short Name"
+#~ msgstr "A rövid név módosítása"
+
+#~ msgid "Edit Formula"
+#~ msgstr "A képlet módosítása"
+
+#~ msgid "Remove"
+#~ msgstr "Eltávolítás"
+
+#~ msgid "New Cost Type ..."
+#~ msgstr "Új költségtípus..."
+
+#~ msgid "New%1"
+#~ msgstr "Új%1"
+
+#~ msgid "New Cost Type %1"
+#~ msgstr "Új költségtípus %1"
+
+#~ msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+#~ msgstr "Importszűrő a Cachegrind/Callgrind által generált profilfájlokhoz"
+
+#~ msgid "Count"
+#~ msgstr "Számláló"
+
+#~ msgid ""
+#~ "<b>List of direct Callers</b><p>This list shows all functions calling the "
+#~ "current selected one directly, together with a call count and the cost "
+#~ "spent in the current selected function while being called from the "
+#~ "function from the list.</p><p>An icon instead of an inclusive cost "
+#~ "specifies that this is a call inside of a recursive cycle. An inclusive "
+#~ "cost makes no sense here.</p><p>Selecting a function makes it the current "
+#~ "selected one of this information panel. If there are two panels (Split "
+#~ "mode), the function of the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>A közvetlen meghívó függvények listája</b><p>Ebben a listában a "
+#~ "kijelölt függvényt közvetlenül meghívó függvények nevei jelennek meg, a "
+#~ "hívások számával és a kumulatív költséggel együtt (ezek csak a kijelölt "
+#~ "függvényre érvényes értékek!).</p><p>Ha ikon látható a kumulatív költség "
+#~ "helyett, az azt jelenti, hogy a hívás egy rekurzív cikluson belülre esik. "
+#~ "Ilyenkor a kumulatív költségnek nincs értelme.</p><p>Ha kijelöl egy "
+#~ "függvényt, akkor az megjelenik ezen az információs panelen. Ha két panel "
+#~ "van (osztott módban), akkor helyette a másik panelben fog megjelenni.</p>"
+
+#~ msgid ""
+#~ "<b>List of direct Callees</b><p>This list shows all functions called by "
+#~ "the current selected one directly, together with a call count and the "
+#~ "cost spent in this function while being called from the selected function."
+#~ "</p><p>Selecting a function makes it the current selected one of this "
+#~ "information panel. If there are two panels (Split mode), the function of "
+#~ "the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>A közvetlenül meghívott függvények listája</b><p>Ebben a listában az "
+#~ "aktuális függvény által közvetlenül meghívott függvények listája látható, "
+#~ "a hívások számával és a kumulatív költséggel együtt (ezek csak a kijelölt "
+#~ "függvényre érvényes értékek!).</p><p>Ha kijelöl egy függvényt, akkor az "
+#~ "megjelenik ezen az információs panelen. Ha két panel van (osztott "
+#~ "módban), akkor helyette a másik panelben fog megjelenni.</p>"
+
+#~ msgid "Profile Part %1"
+#~ msgstr "%1. profilrész"
+
+#~ msgid "(no trace)"
+#~ msgstr "(nincs nyomvonal)"
+
+#~ msgid "(no part)"
+#~ msgstr "(nincs objektum)"
+
+#~ msgid "Comment"
+#~ msgstr "Megjegyzés"
+
+#~ msgid ""
+#~ "<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+#~ "trace. For each part, the self/inclusive cost of the current selected "
+#~ "function, spent in the part, is shown; percentage costs are always "
+#~ "relative to the total cost <em>of the part</em> (not to the whole trace "
+#~ "as in the Trace Part Overview). Also shown are the calls happening to/"
+#~ "from the current function inside of the trace part.</p><p>By choosing one "
+#~ "or more trace parts from the list, the costs shown all over KCachegrind "
+#~ "will only be the ones spent in the selected part(s). If no list selection "
+#~ "is shown, in fact all trace parts are selected implicitly.</p><p>This is "
+#~ "a multi-selection list. You can select ranges by dragging the mouse or "
+#~ "use SHIFT/CTRL modifiers. Selection/Deselection of trace parts can also "
+#~ "be done by using the Trace Part Overview Dockable. This one also supports "
+#~ "multiple selection.</p><p>Note that the list is hidden if only one trace "
+#~ "part is loaded.</p>"
+#~ msgstr ""
+#~ "<b>A nyomvonaldarabok listája</b><p>Ebben a listában a betöltött "
+#~ "nyomvonal darabjai láthatók. Mindegyik darabnál megjelenik a kiválasztott "
+#~ "függvényre eső önálló és kumulatív költség. A százalékos költségek mindig "
+#~ "relatívak a <em>darab teljes költségéhez</em> (nem az egész nyomvonal "
+#~ "költségéhez, mint az áttekintő nézetben). Megjelennek továbbá a "
+#~ "kiválasztott függvényre irányuló és abból kiinduló függvényhívások "
+#~ "költségei (a darabon belül).</p><p>Ha kiválaszt néhány nyomvonaldarabot a "
+#~ "listából, akkor a KCachegrindban megjelenő költségeknél csak a darabokra "
+#~ "eső hányadok jelennek meg. Ha nem látható kijelölés, akkor implicit módon "
+#~ "az összes nyomvonaldarab ki lesz jelölve.</p><p>Ez egy többszörös "
+#~ "kiválasztású lista, több tartomány is kijelölhető az egér és a Shift/Ctrl "
+#~ "segítségével. A kiválasztások módosítása a nyomvonalrész-áttekintő elem "
+#~ "segítségével is történhet (ott is lehet többszörös kijelölést használni)."
+#~ "</p><p>A lista el van rejtve, ha csak egy darabból áll a nyomvonal.</p>"
+
+#~ msgid "Hide '%1'"
+#~ msgstr "'%1' elrejtése"
+
+#~ msgid "Hide Selected"
+#~ msgstr "A kijelöltek elrejtése"
+
+#~ msgid "Show All"
+#~ msgstr "Minden megjelenítése"

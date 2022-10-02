@@ -1,0 +1,2742 @@
+# translation of kcachegrind.po to Low Saxon
+# Translation of kcachegrind.po to Low Saxon
+#
+# Manfred Wiese <m.j.wiese@web.de>, 2006, 2008, 2010, 2011.
+# Sönke Dibbern <s_dibbern@web.de>, 2006, 2007, 2008, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcachegrind\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-12-29 02:36+0100\n"
+"PO-Revision-Date: 2011-10-03 12:48+0200\n"
+"Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
+"Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
+"Language: nds\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Manfred Wiese, Sönke Dibbern"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "m.j.wiese@web.de, s_dibbern@web.de"
+
+#: kcachegrind/configdlg.cpp:135 kcachegrind/configdlg.cpp:323
+#: kcachegrind/configdlg.cpp:342
+#, kde-format
+msgid "(always)"
+msgstr "(för all)"
+
+#: kcachegrind/configdlg.cpp:349
+#, kde-format
+msgid "Choose Source Folder"
+msgstr "Bornorner utsöken"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, ConfigDlgBase)
+#: kcachegrind/configdlgbase.ui:14
+#, kde-format
+msgid "Configuration"
+msgstr "Instellen"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab1)
+#: kcachegrind/configdlgbase.ui:24
+#, kde-format
+msgid "General"
+msgstr "Allgemeen"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel5)
+#: kcachegrind/configdlgbase.ui:34
+#, kde-format
+msgid "Maximum number of items in lists:"
+msgstr "Hööchsttall för Listenindrääg:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel3)
+#: kcachegrind/configdlgbase.ui:44
+#, kde-format
+msgid "Truncate symbols in tooltips and context menus"
+msgstr "Symbolen in Kortinformatschonen un Rechtsklickmenüs afsnieden"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2)
+#: kcachegrind/configdlgbase.ui:70
+#, kde-format
+msgid "when more than:"
+msgstr "wenn mehr as:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2_2)
+#: kcachegrind/configdlgbase.ui:80
+#, kde-format
+msgid "when longer than:"
+msgstr "wenn länger as:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3)
+#: kcachegrind/configdlgbase.ui:90
+#, kde-format
+msgid "Precision of percentage values:"
+msgstr "Nauigkeit vun Perzentweerten:"
+
+#. i18n: ectx: property (toolTip), widget (QSpinBox, maxListEdit)
+#: kcachegrind/configdlgbase.ui:113
+#, kde-format
+msgid "The Maximum Number of List Items should be below 500."
+msgstr "De Hööchsttall vun Listindrääg mutt lütter as 500 wesen."
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1)
+#: kcachegrind/configdlgbase.ui:158
+#, kde-format
+msgid "Cost Item Colors"
+msgstr "Klören för Verbruukelementen"
+
+#. i18n: ectx: property (text), widget (QCheckBox, fileCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, classCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, objectCheck)
+#: kcachegrind/configdlgbase.ui:185 kcachegrind/configdlgbase.ui:219
+#: kcachegrind/configdlgbase.ui:233
+#, kde-format
+msgid "Automatic"
+msgstr "Automaatsch"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4)
+#: kcachegrind/configdlgbase.ui:192
+#, kde-format
+msgid "Object:"
+msgstr "Objekt:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2_2)
+#: kcachegrind/configdlgbase.ui:202
+#, kde-format
+msgid "Class:"
+msgstr "Klass:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
+#: kcachegrind/configdlgbase.ui:240
+#, kde-format
+msgid "File:"
+msgstr "Datei:"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/configdlgbase.ui:321
+#, kde-format
+msgid "Annotations"
+msgstr "Anmarken"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3_2)
+#: kcachegrind/configdlgbase.ui:329
+#, kde-format
+msgid "Context lines in annotations:"
+msgstr "Kontextregen in Anmarken:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
+#: kcachegrind/configdlgbase.ui:350
+#, kde-format
+msgid "Source Folders"
+msgstr "Bornornern"
+
+#. i18n: ectx: property (text), widget (QPushButton, addDirButton)
+#: kcachegrind/configdlgbase.ui:364
+#, kde-format
+msgid "Add"
+msgstr "Tofögen"
+
+#. i18n: ectx: property (text), widget (QPushButton, deleteDirButton)
+#: kcachegrind/configdlgbase.ui:371
+#, kde-format
+msgid "Delete"
+msgstr "Wegdoon"
+
+#. i18n: ectx: property (text), widget (QTreeWidget, dirList)
+#: kcachegrind/configdlgbase.ui:409
+#, kde-format
+msgid "Object / Related Source Base"
+msgstr "Objekt / Tohören Born-Basis"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
+#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:289
+#: kcachegrind/toplevel.cpp:512
+#, kde-format
+msgid "Profile Dumps"
+msgstr "Profilutgaven"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:24
+#, kde-format
+msgid "Target"
+msgstr "Teel"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:46
+#, kde-format
+msgid "Time"
+msgstr "Tiet"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:57
+#, kde-format
+msgid "Path"
+msgstr "Padd"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab)
+#: kcachegrind/dumpselectionbase.ui:70
+#, kde-format
+msgid "Options"
+msgstr "Optschonen"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: kcachegrind/dumpselectionbase.ui:87
+#, kde-format
+msgid "Target command:"
+msgstr "Teelbefehl:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: kcachegrind/dumpselectionbase.ui:100
+#, kde-format
+msgid "Profiler options:"
+msgstr "Profilopstell-Optschonen:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:111
+#, kde-format
+msgid "Option"
+msgstr "Optschoon"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:122 kcachegrind/dumpselectionbase.ui:650
+#, kde-format
+msgid "Value"
+msgstr "Weert"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:133
+#, kde-format
+msgid "Trace"
+msgstr "Spoor"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:146 kcachegrind/dumpselectionbase.ui:730
+#, kde-format
+msgid "Jumps"
+msgstr "Jumpen"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:160
+#, kde-format
+msgid "Instructions"
+msgstr "Anwiesen"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:175 kcachegrind/dumpselectionbase.ui:745
+#, kde-format
+msgid "Events"
+msgstr "Begeefnissen"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:188
+#, kde-format
+msgid "Full Cache"
+msgstr "Heel Twischenspieker"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:202
+#, kde-format
+msgid "Custom"
+msgstr "Topasst"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:217
+#, kde-format
+msgid "Collect"
+msgstr "Sammeln"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:230
+#, kde-format
+msgid "At Startup"
+msgstr "Bi't Starten"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:244
+#, kde-format
+msgid "While In"
+msgstr "Wielt binnen"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:259
+#, kde-format
+msgid "Skip"
+msgstr "Övergahn"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:272
+#, kde-format
+msgid "PLT"
+msgstr "PLT"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:286 kcachegrind/dumpselectionbase.ui:898
+#, kde-format
+msgid "Function"
+msgstr "Funkschoon"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:301
+#, kde-format
+msgid "Dump Profile"
+msgstr "Profil utgeven"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:314
+#, kde-format
+msgid "Every BBs"
+msgstr "All BBs"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:328 kcachegrind/dumpselectionbase.ui:370
+#, kde-format
+msgid "On Entering"
+msgstr "Bi't Ringahn"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:342
+#, kde-format
+msgid "On Leaving"
+msgstr "Bi't Verlaten"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:357
+#, kde-format
+msgid "Zero Events"
+msgstr "Null-Begeefnissen"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:385
+#, kde-format
+msgid "Separate"
+msgstr "Aftrennen"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:398
+#, kde-format
+msgid "Threads"
+msgstr "Utföhrsträng"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:412
+#, kde-format
+msgid "Recursions"
+msgstr "Rekurschonen"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:426
+#, kde-format
+msgid "Call Chain"
+msgstr "Oproopkeed"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
+#: kcachegrind/dumpselectionbase.ui:452
+#, kde-format
+msgid "Custom profiler options:"
+msgstr "Egen Profilopstell-Optschonen:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton2)
+#: kcachegrind/dumpselectionbase.ui:486
+#, kde-format
+msgid "Run New Profile"
+msgstr "Nieg Profil opstellen"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/dumpselectionbase.ui:496
+#, kde-format
+msgid "Info"
+msgstr "Info"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: kcachegrind/dumpselectionbase.ui:505
+#, kde-format
+msgid "Dump reason:"
+msgstr "Grund för't Utgeven:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: kcachegrind/dumpselectionbase.ui:518
+#, kde-format
+msgid "Event summary:"
+msgstr "Begeefnis-Tosamenfaten:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:529
+#, kde-format
+msgid "Name"
+msgstr "Naam"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:540
+#, kde-format
+msgid "Sum"
+msgstr "Summ"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: kcachegrind/dumpselectionbase.ui:554
+#, kde-format
+msgid "Miscellaneous:"
+msgstr "Anner Saken:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6)
+#: kcachegrind/dumpselectionbase.ui:588
+#, kde-format
+msgid "Show"
+msgstr "Wiesen"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton5)
+#: kcachegrind/dumpselectionbase.ui:595
+#, kde-format
+msgid "Compare"
+msgstr "Verglieken"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab3)
+#: kcachegrind/dumpselectionbase.ui:605
+#, kde-format
+msgid "State"
+msgstr "Tostand"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton1)
+#: kcachegrind/dumpselectionbase.ui:619
+#, kde-format
+msgid "Update"
+msgstr "Opfrischen"
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox1)
+#: kcachegrind/dumpselectionbase.ui:626
+#, kde-format
+msgid "Every [s]:"
+msgstr "All [s]:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:639
+#, kde-format
+msgid "Counter"
+msgstr "Teller"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:661
+#, kde-format
+msgid "Dumps Done"
+msgstr "Utgaav afslaten"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:675
+#, kde-format
+msgid "Is Collecting"
+msgstr "An't sammeln"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:689
+#, kde-format
+msgid "Executed"
+msgstr "Utföhrt"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:702
+#, kde-format
+msgid "Basic Blocks"
+msgstr "Basisblöck"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:716
+#, kde-format
+msgid "Calls"
+msgstr "Oprööp"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:758
+#, kde-format
+msgid "Ir"
+msgstr "Ah"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:773
+#, kde-format
+msgid "Distinct"
+msgstr "Verscheden"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:786
+#, kde-format
+msgid "ELF Objects"
+msgstr "\"ELF\"-Objekten"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:800
+#, kde-format
+msgid "Functions"
+msgstr "Funkschonen"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:814
+#, kde-format
+msgid "Contexts"
+msgstr "Kontexten"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: kcachegrind/dumpselectionbase.ui:845
+#, kde-format
+msgid "Stack trace:"
+msgstr "Oproopstapel:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox2)
+#: kcachegrind/dumpselectionbase.ui:855
+#, kde-format
+msgid "Sync."
+msgstr "Synkroniseren"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:865
+#, kde-format
+msgid "#"
+msgstr "Nr."
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:876
+#, kde-format
+msgid "Incl."
+msgstr "Ümfaten"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:887
+#, kde-format
+msgid "Called"
+msgstr "Oprööp"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:909
+#, kde-format
+msgid "Location"
+msgstr "Steed"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton7)
+#: kcachegrind/dumpselectionbase.ui:928
+#, kde-format
+msgid "Start"
+msgstr "Start"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6_2)
+#: kcachegrind/dumpselectionbase.ui:951
+#, kde-format
+msgid "Zero"
+msgstr "Null"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton4)
+#: kcachegrind/dumpselectionbase.ui:958
+#, kde-format
+msgid "Dump"
+msgstr "Utgaav"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab4)
+#: kcachegrind/dumpselectionbase.ui:968
+#, kde-format
+msgid "Messages"
+msgstr "Mellen"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton9)
+#: kcachegrind/dumpselectionbase.ui:985
+#, kde-format
+msgid "Kill Run"
+msgstr "Utföhren afscheten"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton8)
+#: kcachegrind/dumpselectionbase.ui:1008
+#, kde-format
+msgid "Clear"
+msgstr "Leddig maken"
+
+#. i18n: ectx: Menu (file)
+#: kcachegrind/kcachegrindui.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&Datei"
+
+#. i18n: ectx: Menu (view)
+#: kcachegrind/kcachegrindui.rc:10
+#, kde-format
+msgid "&View"
+msgstr "&Ansicht"
+
+#. i18n: ectx: Menu (layouts)
+#: kcachegrind/kcachegrindui.rc:15
+#, kde-format
+msgid "&Layout"
+msgstr "&Anornen"
+
+#. i18n: ectx: Menu
+#: kcachegrind/kcachegrindui.rc:33
+#, kde-format
+msgid "Sidebars"
+msgstr "Andockpaneels"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kcachegrind/kcachegrindui.rc:42
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Hööft-Warktüüchbalken"
+
+#. i18n: ectx: ToolBar (stateToolBar)
+#: kcachegrind/kcachegrindui.rc:54
+#, kde-format
+msgid "State Toolbar"
+msgstr "Status-Warktüüchbalken"
+
+#: kcachegrind/main.cpp:34
+#, kde-format
+msgid "KCachegrind"
+msgstr "KCachegrind"
+
+#: kcachegrind/main.cpp:36
+#, kde-format
+msgid "KDE Frontend for Callgrind/Cachegrind"
+msgstr "KDE-Böversiet för Callgrind/Cachegrind"
+
+#: kcachegrind/main.cpp:38
+#, fuzzy, kde-format
+#| msgid "(C) 2002 - 2011"
+msgid "(C) 2002 - 2016"
+msgstr "© 2002 - 2011"
+
+#: kcachegrind/main.cpp:40
+#, kde-format
+msgid "Josef Weidendorfer"
+msgstr "Josef Weidendorfer"
+
+#: kcachegrind/main.cpp:41
+#, kde-format
+msgid "Author/Maintainer"
+msgstr "Autor/Pleger"
+
+#: kcachegrind/main.cpp:68
+#, kde-format
+msgid "Show information of this trace"
+msgstr "Informatschonen ut disse Spoor bruken"
+
+#: kcachegrind/main.cpp:68
+#, kde-format
+msgid "[trace...]"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:258 kcachegrind/toplevel.cpp:486
+#, kde-format
+msgid "Parts Overview"
+msgstr "Delen-Översicht"
+
+#: kcachegrind/toplevel.cpp:267
+#, kde-format
+msgid "Top Cost Call Stack"
+msgstr "Hööchstverbruuk-Oproopstapel"
+
+#: kcachegrind/toplevel.cpp:269
+#, kde-format
+msgid ""
+"<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most probable' "
+"call stack. It is built up by starting with the current selected function "
+"and adds the callers/callees with highest cost at the top and to bottom.</"
+"p><p>The <b>Cost</b> and <b>Calls</b> columns show the cost used for all "
+"calls from the function in the line above.</p>"
+msgstr ""
+"<b>Hööchstverbruuk-Oproopstapel</b><p>Dit is de wohrschienlichst, man bloots "
+"annahmen Oproopstapel. Sien Opbuu start mit de opstunns utsöchte Funkschoon, "
+"denn warrt de Opropers un opropen Funkschonen mit den hööchsten Verbruuk "
+"baven un nerrn toföögt.</p><p>De Striepen <b>Verbruuk</b> un <b>Oprööp</b> "
+"wiest den Verbruuk bi all Oprööp ut de Funkschoon in de Reeg dor över.</p>"
+
+#: kcachegrind/toplevel.cpp:283
+#, kde-format
+msgid "Flat Profile"
+msgstr "Even Profil"
+
+#: kcachegrind/toplevel.cpp:296
+#, kde-format
+msgid ""
+"<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
+"loadable profile dumps in all subdirectories of: <ul><li>current working "
+"directory of KCachegrind, i.e. where it was started from, and </li><li>the "
+"default profile dump directory given in the configuration.</li></ul> The "
+"list is sorted according to the target command profiled in the corresponding "
+"dump.</p><p>On selecting a profile dump, information for it is shown in the "
+"bottom area of the dockable: <ul><li><b>Options</b> allows you to view the "
+"profiled command and profile options of this dump. By changing any item, a "
+"new (yet unexisting) profile template is created. Press <b>Run Profile</b> "
+"to start a profile run with these options in the background. </"
+"li><li><b>Info</b> gives detailed info on the selected dump like event cost "
+"summary and properties of the simulated cache. </li><li><b>State</b> is only "
+"available for current happening profiles runs. Press <b>Update</b> to see "
+"different counters of the run, and a stack trace of the current position in "
+"the program profiled. Check the <b>Every</b> option to let KCachegrind "
+"regularly poll these data. Check the <b>Sync</b> option to let the dockable "
+"activate the top function in the current loaded dump.</li></ul></p>"
+msgstr ""
+"<b>Profilutgaven</b><p>Dit Andockfinster wiest binnen dat böverst Rebeet en "
+"List mit laadbor Profildateien in all Ünnerornern vun: <ul><li>KCachgrind "
+"sien aktuell Arbeitorner, d.h. vun wo ut dat utföhrt warrt, un </li><li>den "
+"binnen de Instellen angeven Standard-Profilutgavenorner.</li></ul> De List "
+"is na de Befehlen ornt, för de de Profilen opstellt wöörn.</p><p>Bi't "
+"Utsöken vun en Profildatei warrt nerrn Informatschonen dor över wiest: "
+"<ul><li><b>Optschonen</b> wiest den Befehl, för den dat Profil opstellt "
+"wöör, un de Profiloptschonen vun disse Utgaav. Wenn Du en Indrag ännerst, "
+"warrt en nieg Profilvörlaag opstellt. Klick op <b>Profil opstellen</b>, wenn "
+"Du in'n Achtergrund en Profilloop mit disse Optschonen utföhren wullt.</"
+"li><li><b>Info</b> wiest utföhrlich Informatschonen över de utsöchte Utgaav, "
+"as a.B. Tosamenfaten över Tietverbruuk un Egenschappen vun den simuleerten "
+"Twischenspieker.</li><li><b>Status</b> is bloots för opstunns utföhrte "
+"Profillööp verföögbor. Klick op <b>Opfrischen</b>, wenn Du en Reeg Tellers "
+"vun den Loop un den Oproopstapel vun de aktuelle Positschoon binnen dat "
+"beluerte Programm ankieken wullt. Över de Optschoon <b>All</b> kannst Du "
+"KCachegrind disse Daten perioodsch opfrischen laten. Mit <b>Synkroniseren</"
+"b> kannst Du de böverste Funkschoon vun de opstunns laadte Utgaav aktiveren."
+"</li></ul></p>"
+
+#: kcachegrind/toplevel.cpp:367
+#, kde-format
+msgid "&Duplicate"
+msgstr "&Verdubbeln"
+
+#: kcachegrind/toplevel.cpp:370
+#, kde-format
+msgid ""
+"<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
+msgstr ""
+"<b>Aktuell Anornen verdubbeln</b><p>Stellt en Kopie vun de aktuelle Anornen "
+"op.</p>"
+
+#: kcachegrind/toplevel.cpp:375
+#, kde-format
+msgid "&Remove"
+msgstr "&Wegmaken"
+
+#: kcachegrind/toplevel.cpp:377
+#, kde-format
+msgid ""
+"<b>Remove Current Layout</b><p>Delete current layout and make the previous "
+"active.</p>"
+msgstr ""
+"<b>Aktuelle Anornen wegdoon</b><p>Aktuelle Anornen wegdoon un de verleden "
+"bruken.</p>"
+
+#: kcachegrind/toplevel.cpp:382
+#, kde-format
+msgid "&Go to Next"
+msgstr "&Na nakamen gahn"
+
+#: kcachegrind/toplevel.cpp:385
+#, kde-format
+msgid "Go to Next Layout"
+msgstr "Geiht na de nakamen Anornen"
+
+#: kcachegrind/toplevel.cpp:389
+#, kde-format
+msgid "&Go to Previous"
+msgstr "Na &verleden gahn"
+
+#: kcachegrind/toplevel.cpp:392
+#, kde-format
+msgid "Go to Previous Layout"
+msgstr "Geiht na de verleden Anornen"
+
+#: kcachegrind/toplevel.cpp:396
+#, kde-format
+msgid "&Restore to Default"
+msgstr "Standard &wedderherstellen"
+
+#: kcachegrind/toplevel.cpp:398
+#, kde-format
+msgid "Restore Layouts to Default"
+msgstr "Anornen wedder op Standard setten"
+
+#: kcachegrind/toplevel.cpp:402
+#, kde-format
+msgid "&Save as Default"
+msgstr "As Standard &sekern"
+
+#: kcachegrind/toplevel.cpp:404
+#, kde-format
+msgid "Save Layouts as Default"
+msgstr "Anornen as Standard sekern"
+
+#: kcachegrind/toplevel.cpp:415
+#, kde-format
+msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
+msgstr "<b>Nieg</b><p>Maakt en nieg, leddig KCachegrind-Finster op.</p>"
+
+#: kcachegrind/toplevel.cpp:419
+#, kde-format
+msgid "&Add..."
+msgstr "&Tofögen..."
+
+#: kcachegrind/toplevel.cpp:421
+#, kde-format
+msgid ""
+"<b>Add Profile Data</b><p>This opens an additional profile data file in the "
+"current window.</p>"
+msgstr ""
+"<b>Profildatei tofögen</b><p>Dit maakt noch en Profildatendatei binnen dat "
+"aktuelle Finster op.</p>"
+
+#: kcachegrind/toplevel.cpp:427
+#, kde-format
+msgctxt "Reload a document"
+msgid "&Reload"
+msgstr "&Nieg laden"
+
+#: kcachegrind/toplevel.cpp:430
+#, kde-format
+msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
+msgstr ""
+"<b>Profildaten nieg laden</b><p>Dit laadt ok all nieg opstellte Delen.</p>"
+
+#: kcachegrind/toplevel.cpp:435
+#, kde-format
+msgid "&Export Graph"
+msgstr "&Diagramm exporteren"
+
+#: kcachegrind/toplevel.cpp:438
+#, kde-format
+msgid ""
+"<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
+"tools of the GraphViz package.</p>"
+msgstr ""
+"<b>Oproopdiagramm exporteren</b><p>Stellt en Datei mit de Verwiedern \".dot"
+"\" för de Warktüüch vun dat Paket \"GraphViz\" op.</p>"
+
+#: kcachegrind/toplevel.cpp:446
+#, kde-format
+msgid "&Force Dump"
+msgstr "&Utgaav verdwingen"
+
+#: kcachegrind/toplevel.cpp:449
+#, kde-format
+msgid ""
+"<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
+"current directory. This action is checked while KCachegrind looks for the "
+"dump. If the dump is finished, it automatically reloads the current trace. "
+"If this is the one from the running Callgrind, the new created trace part "
+"will be loaded, too.</p><p>Force dump creates a file 'callgrind.cmd', and "
+"checks every second for its existence. A running Callgrind will detect this "
+"file, dump a trace part, and delete 'callgrind.cmd'. The deletion is "
+"detected by KCachegrind, and it does a Reload. If there is <em>no</em> "
+"Callgrind running, press 'Force Dump' again to cancel the dump request. This "
+"deletes 'callgrind.cmd' itself and stops polling for a new dump.</p><p>Note: "
+"A Callgrind run <em>only</em> detects existence of 'callgrind.cmd' when "
+"actively running a few milliseconds, i.e. <em>not</em> sleeping. Tip: For a "
+"profiled GUI program, you can awake Callgrind e.g. by resizing a window of "
+"the program.</p>"
+msgstr ""
+"<b>Utgaav verdwingen</b><p>Dit verdwingt en Utgaav för en Callgrind-"
+"Profilloop binnen den aktuellen Orner. Disse Optschoon is aktiveert, wielt "
+"KCachegrind na de Utgaav söcht. Wenn de Utgaav fardig is, warrt de aktuelle "
+"Spoor automaatsch nieg laadt. Wenn se de vun dat lopen Callgrind is, warrt "
+"de nieg opstellte Spoordeel ok laadt.</p><p>\"Utgaav verdwingen\" stellt en "
+"Datei mit den Naam \"callgrind.cmd\" op, un kiekt elk Sekunn, wat ehr dat "
+"noch gifft. En lopen Callgrind warrt disse Datei finnen, en Spoordeel "
+"utgeven, un \"callgrind.cmd\" wegdoon. KCachegrind kriegt dat Wegdoon in de "
+"Künn, un laadt nieg. Wenn dat <em>keen</em> lopen Callgrind gifft, klick "
+"nochmaal op \"Utgaav verdwingen\", de Utgaavanfraag warrt denn afbraken. Dit "
+"deit \"'callgrind.cmd\" weg un höllt dat Kieken na en nieg Utgaav an.</"
+"p><p>Henwies: Callgrind stellt <em>bloots</em> fast, wat dat \"callgrind.cmd"
+"\" gifft, wenn dat en poor Millisekunnen löppt, d.h. <em>nich</em> slöppt. "
+"Tipp:Wenn Du en Profil för en Programm mit graafsche Böversiet opstellst, "
+"lett sik Callgrind a.B. dör dat Ännern vun de Programmfinstergrött opwecken."
+"</p>"
+
+#: kcachegrind/toplevel.cpp:474
+#, kde-format
+msgid ""
+"<b>Open Profile Data</b><p>This opens a profile data file, with possible "
+"multiple parts</p>"
+msgstr ""
+"<b>Profildatei opmaken</b><p>Dit maakt en Profildatendatei op, mit all "
+"tohören Delen.</p>"
+
+#: kcachegrind/toplevel.cpp:489
+#, kde-format
+msgid "Show/Hide the Parts Overview Dockable"
+msgstr "Delenöversicht wiesen/versteken"
+
+#: kcachegrind/toplevel.cpp:494
+#, kde-format
+msgid "Call Stack"
+msgstr "Oproopstapel"
+
+#: kcachegrind/toplevel.cpp:497
+#, kde-format
+msgid "Show/Hide the Call Stack Dockable"
+msgstr "Oproopstapel wiesen/versteken"
+
+#: kcachegrind/toplevel.cpp:502
+#, kde-format
+msgid "Function Profile"
+msgstr "Funkschoonprofil"
+
+#: kcachegrind/toplevel.cpp:505
+#, kde-format
+msgid "Show/Hide the Function Profile Dockable"
+msgstr "Funkschoonprofil wiesen/versteken"
+
+#: kcachegrind/toplevel.cpp:513
+#, kde-format
+msgid "Show/Hide the Profile Dumps Dockable"
+msgstr "Profilutgaven wiesen/versteken"
+
+#: kcachegrind/toplevel.cpp:520
+#, kde-format
+msgid "Relative"
+msgstr "Relatiev"
+
+#: kcachegrind/toplevel.cpp:522
+#, kde-format
+msgid "Show relative instead of absolute costs"
+msgstr "Relativ Verbruuk ansteed vun afsoluten wiesen"
+
+#: kcachegrind/toplevel.cpp:528
+#, kde-format
+msgid "Relative to Parent"
+msgstr "Relatiev to Böverelement"
+
+#: kcachegrind/toplevel.cpp:531
+#, kde-format
+msgid "Show percentage costs relative to parent"
+msgstr "Verbruuk in Perzent vun't överornte Element wiesen"
+
+#: kcachegrind/toplevel.cpp:535
+#, kde-format
+msgid ""
+"<b>Show percentage costs relative to parent</b><p>If this is switched off, "
+"percentage costs are always shown relative to the total cost of the profile "
+"part(s) that are currently browsed. By turning on this option, percentage "
+"cost of shown cost items will be relative to the parent cost item.</"
+"p><ul><table><tr><td><b>Cost Type</b></td><td><b>Parent Cost</b></td></"
+"tr><tr><td>Function Cumulative</td><td>Total</td></tr><tr><td>Function Self</"
+"td><td>Function Group (*) / Total</td></tr><tr><td>Call</td><td>Function "
+"Inclusive</td></tr><tr><td>Source Line</td><td>Function Inclusive</td></tr></"
+"table></ul><p>(*) Only if function grouping is switched on (e.g. ELF object "
+"grouping).</p>"
+msgstr ""
+"<b>Tietverbruuk in Perzent vun't överornte Element wiesen</b><p>Is dit "
+"utmaakt, warrt de Verbruukperzenten jümmers relativ to den helen Verbruuk "
+"vun de opstunns utsöchten Profildelen wiest. Wenn disse Optschoon anmaakt "
+"is, warrt de Perzenten relativ to dat överornte tietverbruken Element wiest."
+"</p><ul><table><tr><td><b>Verbruuk-Typ</b></td><td><b>Överornt Verbruuk</b></"
+"td></tr><tr><td>Funkschoon (ümfaten)</td><td>Heel Verbruuk</td></"
+"tr><tr><td>Funkschoon (egen)</td><td>Funkschoon-Koppel (*) / Heel Verbruuk</"
+"td></tr><tr><td>Oproop</td><td>Funkschoon (ümfaten)</td></"
+"tr><tr><td>Bornreeg</td><td>Funkschoon (ümfaten)</td></tr></table></"
+"ul><p>(*) Bloots, wenn en Funkschoonkoppel utsöcht is (a.B. \"ELF\"-"
+"Objektenkoppel).</p>"
+
+#: kcachegrind/toplevel.cpp:552
+#, kde-format
+msgid "Cycle Detection"
+msgstr "Lööp opdecken"
+
+#: kcachegrind/toplevel.cpp:555
+#, kde-format
+msgid ""
+"<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
+"drawing will show black areas when a recursive call is made instead of "
+"drawing the recursion ad infinitum. Note that the size of black areas often "
+"will be wrong, as inside recursive cycles the cost of calls cannot be "
+"determined; the error is small, however, for false cycles (see "
+"documentation).</p><p>The correct handling for cycles is to detect them and "
+"collapse all functions of a cycle into an artificial function, which is done "
+"when this option is selected. Unfortunately, with GUI applications, this "
+"often will lead to huge false cycles, making the analysis impossible; "
+"therefore, there is the option to switch this off.</p>"
+msgstr ""
+"<b>Rekursive Lööp opdecken</b><p>Is dit anmaakt, wiest de Boomkoort swatte "
+"Rebeden för rekursive Oprööp, ansteed vun en Dorstellen ahn Enn. Beacht, dat "
+"de Grött vun de swatte Rebeden faken verkehrt is, wiel sik de Tietverbruuk "
+"binnen rekursive Oprööp nich faststellen lett. Man för falsche Lööp (kiek "
+"binnen de Dokmentatschoon) is de Fehler lütt.</p><p>De richtig Behanneln vun "
+"Dörlööp is, dat Een se faststellt un all Funkschonen binnen en Dörloop na en "
+"annahmen Funkschoon tosamenfooldt, wat passeert, wenn Een disse Optschoon "
+"anmaakt. Leider föhrt dat in Böversiet-Anwennen faken to grote falsche Lööp, "
+"so dat en Analyse nich mööglich is. Ut dissen Grund lett sik disse "
+"Funkschoon utmaken.</p>"
+
+#: kcachegrind/toplevel.cpp:571
+#, kde-format
+msgid "Shorten Templates"
+msgstr "Vörlagen afkörten"
+
+#: kcachegrind/toplevel.cpp:573
+#, kde-format
+msgid "Hide Template Parameters in C++ Symbols"
+msgstr "Vörlaag-Parameters in \"C++\"-Symbolen versteken"
+
+#: kcachegrind/toplevel.cpp:574
+#, kde-format
+msgid ""
+"<b>Hide Template Parameters in C++ Symbols</b><p>If this is switched on, "
+"every symbol displayed will have any C++ template parameters hidden, just "
+"showing &lt;&gt; instead of a potentially nested template parameter.</"
+"p><p>In this mode, you can hover the mouse pointer over the activated symbol "
+"label to show a tooltip with the unabbreviated symbol.</p>"
+msgstr ""
+"<b>Vörlaag-Parameters in \"C++\"-Symbolen versteken</b><p>Is dit anmaakt, "
+"warrt vun elk wiest Symbolen de \"C++\"-Parameters versteken un bloots &lt;"
+"&gt; ansteed vun villicht inbett Vörlaag-Parameters wiest.</p><p>Warrt in "
+"disse Bedriefoort de aktiev Symboolbeteker mit de Muus anröögt, rullt en "
+"Opduker ut un wiest dat nich afkört Symbool.</p>"
+
+#: kcachegrind/toplevel.cpp:590
+#, kde-format
+msgid "&Up"
+msgstr "&Na baven"
+
+#: kcachegrind/toplevel.cpp:599
+#, kde-format
+msgid ""
+"<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
+"was visited, use that with highest cost.</p>"
+msgstr ""
+"<b>Na baven</b><p>Na den tolest utsöchten Oproper vun de aktuelle Funkschoon "
+"gahn. Wenn keen Oproper ankeken wöör, na den mit den hööchsten Verbruuk gahn."
+"</p>"
+
+#: kcachegrind/toplevel.cpp:616
+#, kde-format
+msgid "Go back in function selection history"
+msgstr "In de Vörgeschicht vun utsöchte Funkschonen torüchgahn"
+
+#: kcachegrind/toplevel.cpp:630
+#, kde-format
+msgid "Go forward in function selection history"
+msgstr "In de Vörgeschicht vun utsöchte Funkschonen vörutgahn"
+
+#: kcachegrind/toplevel.cpp:635 kcachegrind/toplevel.cpp:1512
+#, kde-format
+msgid "Primary Event Type"
+msgstr "Eerst Begeefnistyp"
+
+#: kcachegrind/toplevel.cpp:636
+#, kde-format
+msgid "Select primary event type of costs"
+msgstr "Eerst Begeefnistyp för Verbruuk utsöken"
+
+#: kcachegrind/toplevel.cpp:658 kcachegrind/toplevel.cpp:1517
+#, kde-format
+msgid "Secondary Event Type"
+msgstr "Tweet Begeefnistyp"
+
+#: kcachegrind/toplevel.cpp:659
+#, kde-format
+msgid "Select secondary event type for cost e.g. shown in annotations"
+msgstr "Tweet Begeefnistyp för Verbruuk utsöken, wiest a.B. in Anmarken"
+
+#: kcachegrind/toplevel.cpp:669
+#, kde-format
+msgid "Grouping"
+msgstr "Koppeltyp"
+
+#: kcachegrind/toplevel.cpp:671
+#, kde-format
+msgid "Select how functions are grouped into higher level cost items"
+msgstr ""
+"Fastleggen, wodennig Funkschonen to högerstoopsche Verbruukelementen "
+"tosamenkoppelt warrt"
+
+#: kcachegrind/toplevel.cpp:677
+#, kde-format
+msgid "(No Grouping)"
+msgstr "(keen Koppeltyp)"
+
+#: kcachegrind/toplevel.cpp:689
+#, kde-format
+msgid "Split"
+msgstr "Opdelen"
+
+#: kcachegrind/toplevel.cpp:692
+#, kde-format
+msgid "Show two information panels"
+msgstr "Twee Informatschoonpaneels wiesen"
+
+#: kcachegrind/toplevel.cpp:698
+#, kde-format
+msgid "Split Horizontal"
+msgstr "Kimmrecht opdelen"
+
+#: kcachegrind/toplevel.cpp:701
+#, kde-format
+msgid "Change Split Orientation when main window is split."
+msgstr "Opdelenricht för't Hööftfinster ännern."
+
+#: kcachegrind/toplevel.cpp:898
+#, kde-format
+msgid "Select Callgrind Profile Data"
+msgstr "Callgrind-Profildatei utsöken"
+
+#: kcachegrind/toplevel.cpp:900 kcachegrind/toplevel.cpp:968
+#, fuzzy, kde-format
+#| msgid ""
+#| "cachegrind.out* callgrind.out*|Callgrind Profile Data\n"
+#| "*|All Files"
+msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
+msgstr ""
+"cachegrind.out* callgrind.out*|Callgrind-Profildaten\n"
+"*|All Dateien"
+
+#: kcachegrind/toplevel.cpp:928 kcachegrind/toplevel.cpp:957
+#, kde-format
+msgid ""
+"Could not open the file \"%1\". Check it exists and you have enough "
+"permissions to read it."
+msgstr ""
+"De Datei \"%1\" lett sik nich opmaken. Prööv, wat dat dat gifft un wat Du "
+"dor Leesverlöven för hest."
+
+#: kcachegrind/toplevel.cpp:966
+#, kde-format
+msgid "Add Callgrind Profile Data"
+msgstr "Callgrind-Profildatei tofögen"
+
+#: kcachegrind/toplevel.cpp:1136 kcachegrind/toplevel.cpp:1465
+#, kde-format
+msgid "(Hidden)"
+msgstr "(Versteken)"
+
+#: kcachegrind/toplevel.cpp:1522
+#, kde-format
+msgid "Hide"
+msgstr "Versteken"
+
+#: kcachegrind/toplevel.cpp:1564
+#, kde-format
+msgid "Show Absolute Cost"
+msgstr "Afsoluut Verbruuk wiesen"
+
+#: kcachegrind/toplevel.cpp:1567
+#, kde-format
+msgid "Show Relative Cost"
+msgstr "Relativ Verbruuk wiesen"
+
+#: kcachegrind/toplevel.cpp:1599
+#, kde-format
+msgid "Go Back"
+msgstr "Torüch"
+
+#: kcachegrind/toplevel.cpp:1600
+#, kde-format
+msgid "Go Forward"
+msgstr "Vörut gahn"
+
+#: kcachegrind/toplevel.cpp:1601
+#, kde-format
+msgid "Go Up"
+msgstr "Na baven"
+
+#: kcachegrind/toplevel.cpp:1813
+#, kde-format
+msgid "Layout Count: %1"
+msgstr "Tall vun Anornen: %1"
+
+#: kcachegrind/toplevel.cpp:1820
+#, kde-format
+msgid "No profile data file loaded."
+msgstr "Keen Profildatendatei laadt."
+
+#: kcachegrind/toplevel.cpp:1829
+#, kde-format
+msgid "Total %1 Cost: %2"
+msgstr "Heel Verbruuk för \"%1\": %2"
+
+#: kcachegrind/toplevel.cpp:1841
+#, kde-format
+msgid "No event type selected"
+msgstr "Keen Begeefnistyp utsöcht"
+
+#: kcachegrind/toplevel.cpp:2027
+#, kde-format
+msgid "Cannot determine receiver PID for dump request"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:2068
+#, kde-format
+msgid "Error running callgrind_control"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:2107 kcachegrind/toplevel.cpp:2144
+#: kcachegrind/toplevel.cpp:2181
+#, kde-format
+msgid "(No Stack)"
+msgstr "(Keen Stapel)"
+
+#: kcachegrind/toplevel.cpp:2113
+#, kde-format
+msgid "(No next function)"
+msgstr "(Keen nakamen Funkschoon)"
+
+#: kcachegrind/toplevel.cpp:2150
+#, kde-format
+msgid "(No previous function)"
+msgstr "(Keen verleden Funkschoon)"
+
+#: kcachegrind/toplevel.cpp:2186
+#, kde-format
+msgid "(No Function Up)"
+msgstr "(Keen Oproper)"
+
+#: kcachegrind/toplevel.cpp:2318 kcachegrind/toplevel.cpp:2332
+#, kde-format
+msgid "Loading %1"
+msgstr "An't Laden vun %1"
+
+#: kcachegrind/toplevel.cpp:2326
+#, kde-format
+msgid "Error loading %1: %2"
+msgstr "An't Laden vun %1: %2"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, kde-format
+msgid ""
+"<p>...that the <em>What's this...</em> help for every GUI widget\n"
+"in KCachegrind contains detailed usage information for this widget?\n"
+"It is highly recommend to read at least these help texts on first\n"
+"use. Request <em>What's this...</em> help by pressing\n"
+"Shift-F1 and clicking on the widget.</p>\n"
+msgstr ""
+"<p>... dat de <em>Wat is dat?</em>-Hülp för elk Böversietelement vun\n"
+"KCachegrind ümfaten Informatschonen för den Bruuk vun dat Element\n"
+"bargt? Dat is redig anraadt, dat Du bi den eersten Bruuk tominnst disse\n"
+"Hülptexten leest.\n"
+"De <em>Wat is dat?</em>-Hülp lett sik na't Drücken vun Ümschalt+F1\n"
+"mit en Klick op dat Element opropen.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:12
+#, kde-format
+msgid ""
+"<p>...that you can get profile information at instruction level\n"
+"with Calltree when you provide the option <em>--dump-instr=yes</em>?\n"
+"Use the Assembler View for the instruction annotations.\n"
+"</p>\n"
+msgstr ""
+"<p>... dat Du mit \"Callgrind\" Profilinformatschonen op Anwiesen-Evene\n"
+"kriegen kannst, wenn Du de Optschoon <em>--dump-instr=yes</em> bruukst?\n"
+"Kiek op de Assembler-Koort na de Anwiesen-Anmarken.\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:21
+#, kde-format
+msgid ""
+"<p>...that you can use Alt-Left/Right keys of your keyboard to go\n"
+"back/forward in the active object history ?</p>\n"
+msgstr ""
+"<p>... dat Du mit Alt+Links un Alt+Rechts binnen de\n"
+"\"Aktuell Objekt\"-Vörgeschicht vör- un torüchgahn kannst?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>...that you can navigate in the Callee/Caller Map View using\n"
+"arrow keys? Use Left/Right to change to siblings of the current\n"
+"item; use Up/Down to go one nesting level up/down. To select\n"
+"the current item, press Space, and to activate it, press Return.\n"
+"</p>\n"
+msgstr ""
+"<p>... dat Du Di binnen de Oproper-/Opropen-Koorten mit de\n"
+"Pieltasten bewegen kannst? Bruuk Links un Rechts, wenn Du na\n"
+"de Geswister vun't aktuelle Element wesseln wullt, un Hooch\n"
+"oder Daal, wenn Du en Evene höger oder daal gahn wullt. Mit\n"
+"de Leertast kannst Du dat aktuelle Element utsöken, un mit de\n"
+"Ingaavtast aktiveren.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:38
+#, kde-format
+msgid ""
+"<p>...that you can navigate in the Call Graph View using\n"
+"arrow keys? Use Up/Down to go one calling level up/down, alternating\n"
+"between calls and functions. Use Left/Right to change to siblings of a "
+"current\n"
+"selected call. To activate the current item, press Return.\n"
+"</p>\n"
+msgstr ""
+"<p>... dat Du Di binnen dat Oproop-Diagramm mit de Pieltasten bewegen\n"
+"kannst? Bruuk Hooch un Daal, wenn Du en Oproop-Evene höger oder daal\n"
+"gahn wullt, dor wesselst Du bi twischen Oprööp un Funkschonen. Mit Links\n"
+"un Rechts kannst Du na de Geswister vun den opstunns utsöchten Oproop\n"
+"gahn. Wenn Du dat aktuelle Element aktiveren wullt, drück de Ingaavtast.\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:48
+#, kde-format
+msgid ""
+"<p>...that you can rapidly locate a function by entering part of its\n"
+"name (case-insensitive) into the edit line of the toolbar\n"
+"and hit return?</p>\n"
+msgstr ""
+"<p>... dat Du gau en Funkschoon finnen kannst, wenn Du en Deel vun\n"
+"ehr Naam (Groot-/Lüttschriev is liek) in dat Ingaavfeld op den\n"
+"Warktüüchbalken ingiffst, un denn de Ingaavtast drückst?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:56
+#, kde-format
+msgid ""
+"<p>...that you can assign custom colors to \n"
+"ELF objects/C++ Classes/Source Files for graph coloring\n"
+"in <em>Settings->Configure KCachegrind...</em>?</p>\n"
+msgstr ""
+"<p>... dat Du för't Infarven vun Diagrammen över\n"
+"<em>Instellen -> KCachegrind instellen...</em> egen Klören för\n"
+"\"ELF\"-Objekten, \"C++\"-Klassen un Borndateien instellen kannst?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:64
+#, kde-format
+msgid ""
+"<p>...that you can see if debug info is available for a selected \n"
+"function by looking at the location label in the Info tab or\n"
+"the source listing header in the source tab?</p>\n"
+"<p>There must be the name of the source file (with extension).\n"
+"If KCachegrind still does not show the source, make sure that you\n"
+"have added the directory of the source file to the\n"
+"<em>Source Directories</em> list in the configuration.\n"
+msgstr ""
+"<p>... dat Du op de Informatschoon-Koort bi \"Steed\" un binnen\n"
+"den Listkopp op de Born-Koort nakieken kannst, wat dat Fehlersöök-\n"
+"Informatschonen för en köört Funkschoon gifft?</p>\n"
+"<p>Dor mutt de Naam vun de Borndatei (mit Verwiedern) wesen.\n"
+"Wenn KCachegrind den Born nich wiest, kiek, wat Du den Orner\n"
+"vun de Borndatei in de Instellen na de List mit <em>Born-Ornern</em>\n"
+"toföögt hest.\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:76
+#, kde-format
+msgid ""
+"<p>...that you can configure whether KCachgrind should\n"
+"show absolute event counts or relative ones (percentage display)?</p>\n"
+msgstr ""
+"<p>... dat Du instellen kannst, dat KCachegrind afsolute oder\n"
+"relative Begeefnis-Tallen (Perzenten) wiest?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:83
+#, kde-format
+msgid ""
+"<p>...that you can configure the maximum number of items\n"
+"for all function lists in KCachegrind? Limiting the number\n"
+"of items is done to get a fast reacting GUI. The last item in\n"
+"the list will show you the number of skipped functions, together\n"
+"with a cost condition for these skipped functions.</p>\n"
+"<p>To activate a function with small costs, search for it and select\n"
+"it in the flat profile. Selecting functions with small cost will\n"
+"temporarily add them to the flat profile list.</p>\n"
+msgstr ""
+"<p>... dat Du de Höchsttall vun Indrääg för all Funkschonen-\n"
+"Listen in KCachegrind instellen kannst? Dör dat Ingrenzen vun\n"
+"de Indräägtall warrt de Böversiet gauer. De leste Indrag op de List\n"
+"wiest de Tall vun övergahn Funkschonen, tosamen mit en\n"
+"Verbruuk-Bedingen för disse Funkschonen.</p>\n"
+"<p>Wenn Du en Funkschoon mit wenig Verbruuk aktiveren wullt,\n"
+"söök ehr binnen dat evene Profil un markeer ehr. Dat Söken\n"
+"vun Funkschonen mit wenig Verbruuk föögt se temporeer na de\n"
+"evene Profillist to.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>...that the Coverage tab - in contrast to the Call Lists tab -\n"
+"shows <em>all</em> functions that are calling the selected function\n"
+"(upper part) / are called by the selected function (bottom part),\n"
+"no matter how many function are between them on the stack?</p>\n"
+"<p>Examples:</p>\n"
+"<p>An entry in the upper list for function foo1() with a value of 50%\n"
+"with function bar() selected means that 50% of all the cost of function\n"
+"bar() happened while called from function foo1().</p>\n"
+"<p>An entry in the bottom list for function foo2() with a value of 50%\n"
+"with function bar() selected means that 50% of all the cost of function\n"
+"bar() happened while calling foo2() from bar().</p>\n"
+msgstr ""
+"<p>... dat de Paneels \"All Opropers/Opropen\" - anners as de \"Oproper/"
+"Opropen\"-Paneels - all Funkschonen wiest, de de utsöchte Funkschoon oproopt "
+"(Rebeet baven) / vun ehr opropen warrt (Rebeet nerrn), liek, woveel "
+"Funkschonen dor binnen den Oproopstapel twischen sünd?</p>\n"
+"<p>Bispelen:</p>\n"
+"<p>Funkschoon bi() is utsöcht. En Indrag in de List baven för de Funkschoon "
+"speel1() mit en Tietverbruuk-Weert vun 50% bedüüdt, dat bi() 50% vun ehr "
+"hele Looptiet verbruukt hett, wielt se vun speel1() opropen weer.</p>\n"
+"<p>Funkschoon bi() is utsöcht. En Indrag in de List nerrn för de Funkschoon "
+"speel2() mit en Tietverbruuk-Weert vun 50% bedüüdt, dat bi() 50% vun ehr "
+"hele Looptiet verbruukt hett, wielt speel2() vun ehr opropen weer.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:112
+#, kde-format
+msgid ""
+"<p>...that waiting for the tool tip inside of a tree map\n"
+"shows the list of names of the nested rectangles the mouse\n"
+"pointer is over?</p>\n"
+"<p>Items from this list can be selected by pressing the right\n"
+"mouse button.</p>\n"
+msgstr ""
+"<p>... dat de Kortinfo för de Oproper-/Opropen-Koorten de\n"
+"Naamlist vun all inbett Rechtecken ünner den Muuswieser\n"
+"wiest?</p>\n"
+"<p>Objekten ut disse List laat sik mit en Klick op den\n"
+"rechten Muusknoop utsöken.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:122
+#, kde-format
+msgid ""
+"<p>...that you can constrain the cost counts shown to only a\n"
+"few parts of the whole trace by selecting these parts in the\n"
+"\"Trace Selection\" Dockable?</p>\n"
+"<p>To generate multiple parts in a profiling run with\n"
+"cachegrind, use e.g. option --cachedumps=xxx for parts\n"
+"of a length of xxx basic blocks (A basic block is a run\n"
+"of not-branching assembler statements inside of your program\n"
+"code).</p>\n"
+msgstr ""
+"<p>... dat Du den wiesten Verbruuk op en poor Delen vun de hele Spoor "
+"ingrenzen kannst, wenn Du Du disse Delen binnen dat Andockfinster \"Spoor-"
+"Köör\" utsöchst?</p>\n"
+"<p>Wenn Du mit Cachegrind en Mehrdeel-Spoor opstellen wullt, kannst Du a.B. "
+"de Optschoon \"--cachedumps=xxx\" bruken. \"xxx\" is de Tall vun Basisblöck, "
+"den een Deel bargen schall. (En Basisblock is en Reeg vun Assembler-Anwiesen "
+"ahn Tweel binnen Dien Programmkode).</p>\n"
+
+#~ msgid "&OK"
+#~ msgstr "&OK"
+
+#~ msgid "&Cancel"
+#~ msgstr "&Afbreken"
+
+#~ msgid "Source Files"
+#~ msgstr "Borndateien"
+
+#~ msgid "C++ Classes"
+#~ msgstr "\"C++\"-Klassen"
+
+#~ msgid "Function (no Grouping)"
+#~ msgstr "Funkschoon (keen Koppeltyp)"
+
+#~ msgid "KCachegrind Configuration"
+#~ msgstr "KCachegrind-Instellen"
+
+#~ msgid "(Placeholder for list of event types)"
+#~ msgstr "(Platzholler för Begeefnistyp-List)"
+
+#~ msgid "Active call to '%1'"
+#~ msgstr "Aktiv Oproop vun \"%1\""
+
+#~ msgid "%1 call to '%2'"
+#~ msgid_plural "%1 calls to '%2'"
+#~ msgstr[0] "%1 Oproop vun \"%2\""
+#~ msgstr[1] "%1 Oprööp vun \"%2\""
+
+#~ msgid "Jump %1 of %2 times to 0x%3"
+#~ msgstr "Jump %1 vun %2 Maal na 0x%3"
+
+#~ msgid "Jump %1 times to 0x%2"
+#~ msgstr "Jump %1 Maal na 0x%2"
+
+#~ msgid "(cycle)"
+#~ msgstr "(Loop)"
+
+#~ msgid "Abstract Item"
+#~ msgstr "Afstrakt Element"
+
+#~ msgid "Cost Item"
+#~ msgstr "Tietverbruken Element"
+
+#~ msgid "Part Source Line"
+#~ msgstr "Bornreeg in Deel"
+
+#~ msgid "Source Line"
+#~ msgstr "Bornreeg"
+
+#~ msgid "Part Line Call"
+#~ msgstr "Reegoproop in Deel"
+
+#~ msgid "Line Call"
+#~ msgstr "Reegoproop"
+
+#~ msgid "Part Jump"
+#~ msgstr "Jump in Deel"
+
+#~ msgid "Jump"
+#~ msgstr "Jump"
+
+#~ msgid "Part Instruction"
+#~ msgstr "Anwiesen in Deel"
+
+#~ msgid "Instruction"
+#~ msgstr "Anwiesen"
+
+#~ msgid "Part Instruction Jump"
+#~ msgstr "Anwiesenjump in Deel"
+
+#~ msgid "Instruction Jump"
+#~ msgstr "Anwiesenjump"
+
+#~ msgid "Part Instruction Call"
+#~ msgstr "Anwiesenoproop in Deel"
+
+#~ msgid "Instruction Call"
+#~ msgstr "Anwiesenoproop"
+
+#~ msgid "Part Call"
+#~ msgstr "Oproop in Deel"
+
+#~ msgid "Call"
+#~ msgstr "Oproop"
+
+#~ msgid "Part Function"
+#~ msgstr "Funkschoon in Deel"
+
+#~ msgid "Function Source File"
+#~ msgstr "Funkschoon-Borndatei"
+
+#~ msgid "Function Cycle"
+#~ msgstr "Funkschoon-Loop"
+
+#~ msgid "Part Class"
+#~ msgstr "Klass in Deel"
+
+#~ msgid "Class"
+#~ msgstr "Klass"
+
+#~ msgid "Part Source File"
+#~ msgstr "Borndatei in Deel"
+
+#~ msgid "Source File"
+#~ msgstr "Borndatei"
+
+#~ msgid "Part ELF Object"
+#~ msgstr "\"ELF\"-Objekt in Deel"
+
+#~ msgid "ELF Object"
+#~ msgstr "\"ELF\"-Objekt"
+
+#~ msgid "Profile Part"
+#~ msgstr "Profildeel"
+
+#~ msgid "Program Trace"
+#~ msgstr "Programmspoor"
+
+#~ msgid "%1 from %2"
+#~ msgstr "%1 vun %2"
+
+#~ msgid "(unknown)"
+#~ msgstr "(nich begäng)"
+
+#~ msgid "(no caller)"
+#~ msgstr "(keen Oproper)"
+
+#~ msgid "%1 via %2"
+#~ msgstr "%1 över %2"
+
+#~ msgid "(no callee)"
+#~ msgstr "(keen Opropen)"
+
+#~ msgid "(not found)"
+#~ msgstr "(nich funnen)"
+
+#~ msgid "Recalculating Function Cycles..."
+#~ msgstr "Funkschoonlööp warrt nieg utreekt..."
+
+#~ msgctxt "A thing's name"
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#~ msgid "Cost"
+#~ msgstr "Tietverbruuk"
+
+#~ msgid "Profile Part Overview: Current is '%1'"
+#~ msgstr "Översicht för Profildelen: Aktuell is \"%1\""
+
+#~ msgid "Deselect '%1'"
+#~ msgstr "\"%1\" afwählen"
+
+#~ msgid "Select '%1'"
+#~ msgstr "\"%1\" kören"
+
+#~ msgid "Select All Parts"
+#~ msgstr "All Delen kören"
+
+#~ msgid "Visible Parts"
+#~ msgstr "Sichtbor Delen"
+
+#~ msgid "Hide Selected Parts"
+#~ msgstr "Utsöchte Delen versteken"
+
+#~ msgid "Unhide Hidden Parts"
+#~ msgstr "Versteken Delen wiesen"
+
+#~ msgid "Go to '%1'"
+#~ msgstr "Na \"%1\" gahn"
+
+#~ msgid "Visualization"
+#~ msgstr "Dorstellen"
+
+#~ msgid "Partitioning Mode"
+#~ msgstr "Ünnerdeelt Bedrief"
+
+#~ msgid "Diagram Mode"
+#~ msgstr "Diagrammbedrief"
+
+#~ msgid "Zoom Function"
+#~ msgstr "Groot wiesen"
+
+#~ msgid "Show Direct Calls"
+#~ msgstr "Direktoprööp wiesen"
+
+#~ msgid "Increment Shown Call Levels"
+#~ msgstr "Mehr Oproopstopen"
+
+#~ msgid "Draw Names"
+#~ msgstr "Naams wiesen"
+
+#~ msgid "Draw Costs"
+#~ msgstr "Tietverbruuk wiesen"
+
+#~ msgid "Ignore Proportions"
+#~ msgstr "Afmeten övergahn"
+
+#~ msgid "Draw Frames"
+#~ msgstr "Rahmen wiesen"
+
+#~ msgid "Allow Rotation"
+#~ msgstr "Dreihen verlöven"
+
+#~ msgid "Hide Info"
+#~ msgstr "Informatschonen versteken"
+
+#~ msgid "Show Info"
+#~ msgstr "Informatschonen wiesen"
+
+#~ msgid "(no trace loaded)"
+#~ msgstr "(keen Spoor laadt)"
+
+#~ msgid "Jump %1 of %2 times to %3"
+#~ msgstr "Jump %1 vun %2 Maal na %3"
+
+#~ msgid "Jump %1 times to %2"
+#~ msgstr "Jump %1 Maal na %2"
+
+#~ msgid "(%1 item skipped)"
+#~ msgid_plural "(%1 items skipped)"
+#~ msgstr[0] "(%1 Indrag övergahn)"
+#~ msgstr[1] "(%1 Indrääg övergahn)"
+
+#~ msgid "No description available"
+#~ msgstr "Keen Beschrieven verföögbor"
+
+#~ msgid ""
+#~ "<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+#~ "there are several profile data files from one profile run. The Trace Part "
+#~ "Overview dockable shows these, horizontally ordered in execution time; "
+#~ "the rectangle sizes are proportional to the total cost spent in the "
+#~ "parts. You can select one or several parts to constrain all costs shown "
+#~ "to these parts only.</p><p>The parts are further subdivided: there is a "
+#~ "partitioning and an callee split mode: <ul><li>Partitioning: You see the "
+#~ "partitioning into groups for a trace part, according to the group type "
+#~ "selected. E.g. if ELF object groups are selected, you see colored "
+#~ "rectangles for each used ELF object (shared library or executable), sized "
+#~ "according to the cost spent therein.</li><li>Callee: A rectangle showing "
+#~ "the inclusive cost of the current selected function in the trace part is "
+#~ "shown. This is split up into smaller rectangles to show the costs of its "
+#~ "callees.</li></ul></p>"
+#~ msgstr ""
+#~ "<b>De Delen-Översicht</b><p>En Spoor is ut mehr Spoordelen tosamensett, "
+#~ "wenn dat verscheden Profildatendateien vun een Profildörloop gifft. De "
+#~ "andockbor Spoordelen-Översicht wiest disse, kimmrecht na Utföhrtiet ornt, "
+#~ "un de Rechteck-Grötten spegelt ehr Tietverbruuk. Du kannst een oder mehr "
+#~ "Delen utsöken, wenn Du bloots den Tietverbruuk vun disse Delen wiest "
+#~ "hebben wullt.</p><p>De Delen sünd noch wieder opdeelt:<ul><li>Ünnerdeelt: "
+#~ "Du kannst för en Spoordeel en Opdelen in Koppeln na den utsöchten "
+#~ "Koppeltyp sehn. Wenn Du t.B. \"ELF\"-Objekten utsöchst, sühst Du en "
+#~ "infarvt Rechteck för elk bruukt \"ELF\"-Objekt (Bibliotheek oder "
+#~ "Programm). Sien Grött wiest den Tietverbruuk för dat Objekt.</"
+#~ "li><li>Opropen Funkschoon: En Rechteck wiest de ümfaten Tiet, de de "
+#~ "utsöchte Funkschoon binnen den Spoordeel bruukt hett. Dit is in lütter "
+#~ "Rechtecken opdeelt, disse wiest den Tietverbruuk vun de Funkschonen, de "
+#~ "se opropen hett.</li></ul></p>"
+
+#~ msgid ""
+#~ "<b>The Flat Profile</b><p>The flat profile contains a group and a "
+#~ "function selection list. The group list contains all groups where costs "
+#~ "are spent in, depending on the chosen group type. The group list is "
+#~ "hidden when group type 'Function' is selected.</p><p>The function list "
+#~ "contains the functions of the selected group (or all for 'Function' group "
+#~ "type), ordered by the costs spent therein. Functions with costs less than "
+#~ "1% are hidden on default.</p>"
+#~ msgstr ""
+#~ "<b>Dat evene Profil</b><p>Dat evene Profil bargt en Koppel- un Funkschoon-"
+#~ "Köörlist. De Koppellist bargt all Koppeln, de Tiet verbruukt, afhangen "
+#~ "vun den utsöchten Koppeltyp. De Koppellist is versteken, wenn \"Funkschoon"
+#~ "\" as Koppeltyp utsöcht is.</p><p>De Funkschonenlist bargt den utsöchten "
+#~ "Koppel sien Funkschonen (oder all bi Koppeltyp \"Funkschoon\"), anornt na "
+#~ "ehr Tietverbruuk. Standardwies warrt Funkschonen mit en Verbruuk vun "
+#~ "weniger as 1% versteken.</p>"
+
+#~ msgid "Show Relative Costs"
+#~ msgstr "Relativ Verbruuk wiesen"
+
+#~ msgid "Show Absolute Costs"
+#~ msgstr "Afsoluut Verbruuk wiesen"
+
+#~ msgid "Skip Cycle Detection"
+#~ msgstr "Loopopdecken övergahn"
+
+#~ msgid "Cost 2"
+#~ msgstr "Verbruuk 2"
+
+#~ msgid "Hex"
+#~ msgstr "Hexkode"
+
+#~ msgid "Assembler"
+#~ msgstr "Assembler"
+
+#~ msgid "Source Position"
+#~ msgstr "Bornpositschoon"
+
+#~ msgid ""
+#~ "<b>Annotated Assembler</b><p>The annotated assembler list shows the "
+#~ "machine code instructions of the current selected function together with "
+#~ "(self) cost spent while executing an instruction. If this is a call "
+#~ "instruction, lines with details on the call happening are inserted into "
+#~ "the source: the cost spent inside of the call, the number of calls "
+#~ "happening, and the call destination.</p><p>The disassembler output shown "
+#~ "is generated with the 'objdump' utility from the 'binutils' package.</"
+#~ "p><p>Select a line with call information to make the destination function "
+#~ "of this call current.</p>"
+#~ msgstr ""
+#~ "<b>Assembler-Kode mit Anmarken</b><p>De Assembler-Kode mit Anmarken wiest "
+#~ "de Maschienkode-Anwiesen vun de opstunns utsöchte Funkschoon tosamen mit "
+#~ "de Anwiesen ehr (egen) Tietverbruuk bi't Utföhren. Wenn dit en Oproop-"
+#~ "Anwiesen is, warrt Enkelheiten för den Oproop na den Bornkode inföögt: De "
+#~ "Tietverbruuk binnen den Oproop, de Tall vun Oprööp, un dat Oproop-Teel.</"
+#~ "p> <p>De wieste Disassembler-Utgaav warrt mit dat Warktüüch \"objdump\" "
+#~ "ut dat Paket \"binutils\" opstellt.</p> <p>Du kannst en Oproop sien "
+#~ "Teelfunkschoon aktiveren, wenn Du op en Reeg mit Oproop-Informatschonen "
+#~ "klickst.</p>"
+
+#~ msgid "Go to Address %1"
+#~ msgstr "Na Adress %1 gahn"
+
+#~ msgid "Hex Code"
+#~ msgstr "Hexadezimaal-Kode"
+
+#~ msgid "There is no instruction info in the profile data file."
+#~ msgstr "Dat gifft keen Anwiesen-Informatschonen binnen de Profildatendatei."
+
+#~ msgid "For the Valgrind Calltree Skin, rerun with option"
+#~ msgstr ""
+#~ "Wenn Du mit dat Valgrind-Warktüüch \"Callgrind\" arbeidst, föhr dat "
+#~ "nochmaal ut mit de Optschoon"
+
+#~ msgid "      --dump-instr=yes"
+#~ msgstr "      --dump-instr=yes"
+
+#~ msgid "To see (conditional) jumps, additionally specify"
+#~ msgstr "Wenn Du (bedingte) Jumpen sehn wullt, bruuk ok noch de Optschoon"
+
+#~ msgid "      --trace-jump=yes"
+#~ msgstr "      --trace-jump=yes"
+
+#~ msgid "There is an error trying to execute the command"
+#~ msgstr "Dat geev en Fehler bi't Utföhren vun den Befehl"
+
+#~ msgid "Check that you have installed 'objdump'."
+#~ msgstr "Prööv, wat Du \"objdump\" installeert hest."
+
+#~ msgid "This utility can be found in the 'binutils' package."
+#~ msgstr "Dit Warktüüch lett sik binnen dat Paket \"binutils\" finnen."
+
+#~ msgid "(No Assembler)"
+#~ msgstr "(Keen Assembler)"
+
+#~ msgid "There is %1 cost line without assembler code."
+#~ msgid_plural "There are %1 cost lines without assembler code."
+#~ msgstr[0] "Dat gifft %1 Reeg ahn Assembler-Kode."
+#~ msgstr[1] "Dat gifft %1 Regen ahn Assembler-Kode."
+
+#~ msgid "This happens because the code of"
+#~ msgstr "Dat is so, wiel de Kode vun"
+
+#~ msgid "does not seem to match the profile data file."
+#~ msgstr "sachens nich to de Profildatendatei passt."
+
+#~ msgid "Are you using an old profile data file or is the above mentioned"
+#~ msgstr ""
+#~ "Bruukst Du en ole Profildatendatei, oder is dat baven nöömte \"ELF\"-"
+#~ "Objekt"
+
+#~ msgid "ELF object from an updated installation/another machine?"
+#~ msgstr "ut en opfrischte Installatschoon oder vun en anner Maschien?"
+
+#~ msgid "There seems to be an error trying to execute the command"
+#~ msgstr "As dat lett gifft dat bi't Utföhren vun den Befehl en Fehler"
+
+#~ msgid "Check that the ELF object used in the command exists."
+#~ msgstr "Prööv, wat dat dat in den Befehl bruukte \"ELF\"-Objekt gifft."
+
+#~ msgid "Call(s) from %1"
+#~ msgstr "Oprööp dör %1"
+
+#~ msgid "Call(s) to %1"
+#~ msgstr "Oprööp vun %1"
+
+#~ msgid "(unknown call)"
+#~ msgstr "(nich begäng Oproop)"
+
+#~ msgid ""
+#~ "<b>Call Graph around active Function</b><p>Depending on configuration, "
+#~ "this view shows the call graph environment of the active function. Note: "
+#~ "the shown cost is <b>only</b> the cost which is spent while the active "
+#~ "function was actually running; i.e. the cost shown for main() - if it is "
+#~ "visible - should be the same as the cost of the active function, as that "
+#~ "is the part of inclusive cost of main() spent while the active function "
+#~ "was running.</p><p>For cycles, blue call arrows indicate that this is an "
+#~ "artificial call added for correct drawing which actually never happened.</"
+#~ "p><p>If the graph is larger than the widget area, an overview panner is "
+#~ "shown in one edge. There are similar visualization options to the Call "
+#~ "Treemap; the selected function is highlighted.</p>"
+#~ msgstr ""
+#~ "<b>Oproopdiagramm rund de aktive Funkschoon</b><p>Afhangen vun de "
+#~ "Instellen wiest disse Ansicht de Oproopdiagramm-Ümgeven vun de aktuelle "
+#~ "Funkschoon. Beacht bitte: de wieste Verbruuk is <b>bloots</b> dat, wat "
+#~ "verbruukt wöör, wielt de aktuelle Funkschoon redig leep. De Verbruuk för "
+#~ "main() mutt - wenn he sichtbor is - de sülve wesen as de för de aktuelle "
+#~ "Funkschoon, wiel main() tosamen mit sien opropen Funkschonen jüst dit "
+#~ "verbruukt hett, wielt de Funkschoon leep.</p><p>För Lööp wiest blaag "
+#~ "Oproop-Pielen, dat dit en annahmen Oproop is, de för de richtige "
+#~ "Dorstellen toföögt wöör, man den dat nienich geven hett.</p><p>Wenn dat "
+#~ "Diagramm grötter is as dat Elementrebeet, warrt in en Eck en Översicht "
+#~ "wiest. Dat gifft Dorstellen-Optschonen liek to de för de Oproop-"
+#~ "Boomkoort; de utsöcht Funkschoon is markeert.</p>"
+
+#~ msgid ""
+#~ "Warning: a long lasting graph layouting is in progress.\n"
+#~ "Reduce node/edge limits for speedup.\n"
+#~ msgstr ""
+#~ "Wohrschoen: En lang wohren Utreken vun dat Diagramm löppt.\n"
+#~ "Sett de Grenzen för Knütten un Kanten daal, wenn dat gauer warrn schall.\n"
+
+#~ msgid "Layouting stopped.\n"
+#~ msgstr "Utreken vun't Diagramm anhollen.\n"
+
+#~ msgid "The call graph has %1 nodes and %2 edges.\n"
+#~ msgstr "Dat Oproopdiagramm hett %1 Knütten un %2 Kanten.\n"
+
+#~ msgid "No item activated for which to draw the call graph."
+#~ msgstr "Keen Element för't Opstellen vun en Oproopdiagramm aktiveert."
+
+#~ msgid "No call graph can be drawn for the active item."
+#~ msgstr "För dat aktiv Element lett sik keen Oproopdiagramm opstellen."
+
+#~ msgid ""
+#~ "No call graph is available because the following\n"
+#~ "command cannot be run:\n"
+#~ "'%1'\n"
+#~ msgstr ""
+#~ "Dat gifft keen Oproopdiagramm, wiel sik de\n"
+#~ "nakamen Befehl nich utföhren lett:\n"
+#~ "\"%1\"\n"
+
+#~ msgid "Please check that 'dot' is installed (package GraphViz)."
+#~ msgstr ""
+#~ "Bitte prööv, wat \"dot\" propper installeert is (Paket \"GraphViz\")."
+
+#~ msgid "Error running the graph layouting tool.\n"
+#~ msgstr "Fehler bi't Utföhren vun dat Diagrammutsehn-Warktüüch.\n"
+
+#~ msgid ""
+#~ "There is no call graph available for function\n"
+#~ "\t'%1'\n"
+#~ "because it has no cost of the selected event type."
+#~ msgstr ""
+#~ "Dat gifft dat keen Oproop-Diagramm för de Funkschoon\n"
+#~ "\t\"%1\",\n"
+#~ "wiel se för den utsöchten Begeefnistyp keen Verbruuk hett."
+
+#~ msgid "Unlimited"
+#~ msgstr "Ahn Grenz"
+
+#~ msgctxt "Depth 0"
+#~ msgid "None"
+#~ msgstr "Keen"
+
+#~ msgid "max. 2"
+#~ msgstr "max. 2"
+
+#~ msgid "max. 5"
+#~ msgstr "max. 5"
+
+#~ msgid "max. 10"
+#~ msgstr "max. 10"
+
+#~ msgid "max. 15"
+#~ msgstr "max. 15"
+
+#~ msgid "No Minimum"
+#~ msgstr "Keen Minimum"
+
+#~ msgid "50 %"
+#~ msgstr "50%"
+
+#~ msgid "20 %"
+#~ msgstr "20%"
+
+#~ msgid "10 %"
+#~ msgstr "10%"
+
+#~ msgid "5 %"
+#~ msgstr "5%"
+
+#~ msgid "2 %"
+#~ msgstr "2%"
+
+#~ msgid "1 %"
+#~ msgstr "1%"
+
+#~ msgid "Same as Node"
+#~ msgstr "Liek as Knütt"
+
+#~ msgid "50 % of Node"
+#~ msgstr "50% vun Knütt"
+
+#~ msgid "20 % of Node"
+#~ msgstr "20% vun Knütt"
+
+#~ msgid "10 % of Node"
+#~ msgstr "10% vun Knütt"
+
+#~ msgid "Top Left"
+#~ msgstr "Baven links"
+
+#~ msgid "Top Right"
+#~ msgstr "Baven rechts"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Nerrn links"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Nerrn rechts"
+
+#~ msgid "Top to Down"
+#~ msgstr "Baven na nerrn"
+
+#~ msgid "Left to Right"
+#~ msgstr "Links na Rechts"
+
+#~ msgid "Circular"
+#~ msgstr "Rund"
+
+#~ msgid "Stop Layouting"
+#~ msgstr "Utreken vun't Diagrammutsehn anhollen"
+
+#~ msgid "As PostScript"
+#~ msgstr "As PostScript"
+
+#~ msgid "As Image ..."
+#~ msgstr "As Bild..."
+
+#~ msgid "Export Graph"
+#~ msgstr "Diagramm exporteren"
+
+#~ msgid "Caller Depth"
+#~ msgstr "Oproper-Deepde"
+
+#~ msgid "Callee Depth"
+#~ msgstr "Opropen-Deepde"
+
+#~ msgid "Min. Node Cost"
+#~ msgstr "Sietst Knütt-Verbruuk"
+
+#~ msgid "Min. Call Cost"
+#~ msgstr "Sietst Oproop-Verbruuk"
+
+#~ msgid "Arrows for Skipped Calls"
+#~ msgstr "Pielen för övergahn Oprööp"
+
+#~ msgid "Inner-cycle Calls"
+#~ msgstr "Oprööp binnen Lööp"
+
+#~ msgid "Cluster Groups"
+#~ msgstr "Koppeln tosamentrecken"
+
+#~ msgid "Compact"
+#~ msgstr "Kompakt"
+
+#~ msgid "Normal"
+#~ msgstr "Normaal"
+
+#~ msgid "Tall"
+#~ msgstr "Groot"
+
+#~ msgid "Graph"
+#~ msgstr "Diagramm"
+
+#~ msgid "Layout"
+#~ msgstr "Anornen"
+
+#~ msgid "Birds-eye View"
+#~ msgstr "Översicht"
+
+#~ msgid "(%1 function skipped)"
+#~ msgid_plural "(%1 functions skipped)"
+#~ msgstr[0] "(%1 Funkschoon övergahn)"
+#~ msgstr[1] "(%1 Funkschonen övergahn)"
+
+#~ msgid "Move to Top"
+#~ msgstr "Na baven verschuven"
+
+#~ msgctxt "Move to Top"
+#~ msgid "Top"
+#~ msgstr "Baven"
+
+#~ msgid "Move to Right"
+#~ msgstr "Na rechts verschuven"
+
+#~ msgctxt "Move to Right"
+#~ msgid "Right"
+#~ msgstr "Rechts"
+
+#~ msgid "Move to Bottom"
+#~ msgstr "Na nerrn verschuven"
+
+#~ msgctxt "Move to Bottom"
+#~ msgid "Bottom"
+#~ msgstr "Nerrn"
+
+#~ msgid "Move to Bottom Left"
+#~ msgstr "Na nerrn links verschuven"
+
+#~ msgctxt "Move to Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Nerrn links"
+
+#~ msgid "Move Area To"
+#~ msgstr "Rebeet verschuven na"
+
+#~ msgid "Hide This Tab"
+#~ msgstr "Disse Koort versteken"
+
+#~ msgid "Hide Area"
+#~ msgstr "Rebeet versteken"
+
+#~ msgctxt "Show on Top"
+#~ msgid "Top"
+#~ msgstr "Baven"
+
+#~ msgctxt "Show on Right"
+#~ msgid "Right"
+#~ msgstr "Rechts"
+
+#~ msgctxt "Show on Bottom"
+#~ msgid "Bottom"
+#~ msgstr "Nerrn"
+
+#~ msgctxt "Show on Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Nerrn links"
+
+#~ msgid "Show Hidden On"
+#~ msgstr "Versteken wiesen"
+
+#~ msgid "(No profile data file loaded)"
+#~ msgstr "(Keen Profildatendatei laadt)"
+
+#~ msgid "Types"
+#~ msgstr "Typen"
+
+#~ msgid "Callers"
+#~ msgstr "Opropers"
+
+#~ msgid "All Callers"
+#~ msgstr "All Opropers"
+
+#~ msgid "Caller Map"
+#~ msgstr "Oproper-Koort"
+
+#~ msgid "Source Code"
+#~ msgstr "Bornkode"
+
+#~ msgid "Parts"
+#~ msgstr "Delen"
+
+#~ msgid "Call Graph"
+#~ msgstr "Oproop-Diagramm"
+
+#~ msgid "Callees"
+#~ msgstr "Opropen"
+
+#~ msgid "All Callees"
+#~ msgstr "All Opropen"
+
+#~ msgid "Callee Map"
+#~ msgstr "Opropen-Koort"
+
+#~ msgid "Assembly Code"
+#~ msgstr "Assemblerkode"
+
+#~ msgid ""
+#~ "<b>Information Tabs</b><p>This widget shows information for the current "
+#~ "selected function in different tabs: <ul><li>The Costs tab shows a list "
+#~ "of available event types and the inclusive and self costs regarding to "
+#~ "these types.</li><li>The Parts tab shows a list of trace parts if the "
+#~ "trace consists of more than one part (otherwise, this tab is hided). The "
+#~ "cost of the selected function spent in the different parts together with "
+#~ "the calls happening is shown.</li><li>The Call Lists tab shows direct "
+#~ "callers and callees of the function in more detail.</li><li>The Coverage "
+#~ "tab shows the same is the Call Lists tab, but not only direct callers and "
+#~ "callees but also indirect ones.</li><li>The Call Graph tab shows a "
+#~ "graphical visualization of the calls done by this function.</li><li>The "
+#~ "Source tab presents annotated source code if debugging information and "
+#~ "the source file is available.</li><li>The Assembler tab presents "
+#~ "annotated assembler code if trace information on instruction level is "
+#~ "available.</li></ul>For more information, see the <em>What's this</em> "
+#~ "help of the corresponding tab widget</p>"
+#~ msgstr ""
+#~ "<b>Informatschoon-Paneels</b><p>Hier wiest verscheden Paneels "
+#~ "Informatschonen över de opstunns utsöchte Funkschoon:<ul><li>De Verbruuk-"
+#~ "Koort wiest en List vun verföögbor Begeefnistypen un ehr ümfaten un egen "
+#~ "Verbruuk.</li><li>De Delen-Koort wiest en List vun Spoordelen, wenn de "
+#~ "Spoor ut mehr as een Deel opbuut is (anners warrt disse Koort versteken). "
+#~ "De utsöchte Funkschoon ehr Verbruuk binnen de verscheden Delen warrt "
+#~ "tosamen mit ehr Oprööp wiest.</li><li>De Oproper-/Opropen-Koorten wiest "
+#~ "de Direkt-Opropers vun de Funkschoon un vun ehr opropen Funkschonen mit "
+#~ "mehr Enkelheiten.</li><li>De Koorten \"All Opropers\" un \"All Opropen\" "
+#~ "wiest dat sülve as de Oproper- un Opropen-Koort, man nich bloots direkte "
+#~ "Oprööp, sünnern ok nich direkte.</li><li>Dat Oproop-Diagramm wiest en "
+#~ "graafsche Dorstellen vun de Oprööp dör disse Funkschoon.</li><li>De Born-"
+#~ "Koort wiest Bornkode mit Anmarken, wenn Fehlersöökinformatschonen un de "
+#~ "Borndatei verföögbor is.</li><li>De Assembler-Koort wiest Assembler-Kode "
+#~ "mit Anmarken, wenn Spoorinformatschonen op de Anwiesen-Evene verföögbor "
+#~ "sünd.</li></ul>Mehr Informatschonen laat sik över de <em>Wat is dat?</em>-"
+#~ "Hülp för de enkelten Paneels finnen.</p>"
+
+#~ msgid "(No Data loaded)"
+#~ msgstr "(Keen Daten laadt)"
+
+#~ msgid "(No function selected)"
+#~ msgstr "(Keen Funkschoon utsöcht)"
+
+#~ msgid "Source (unknown)"
+#~ msgstr "Born (nich begäng)"
+
+#~ msgid ""
+#~ "<b>Annotated Source</b><p>The annotated source list shows the source "
+#~ "lines of the current selected function together with (self) cost spent "
+#~ "while executing the code of this source line. If there was a call in a "
+#~ "source line, lines with details on the call happening are inserted into "
+#~ "the source: the cost spent inside of the call, the number of calls "
+#~ "happening, and the call destination.</p><p>Select a inserted call "
+#~ "information line to make the destination function current.</p>"
+#~ msgstr ""
+#~ "<b>Born mit Anmarken</b> <p>De Borntext mit Anmarken wiest all Bornregen "
+#~ "vun de opstunns utsöchte Funkschoon tosamen mit den (egen) Verbruuk för "
+#~ "de Bornregen ehr Kode. Wenn dat en Oproop in en Bornreeg geven hett, "
+#~ "warrt Enkelheiten över den Oproop na den Born inföögt: de Tietverbruuk "
+#~ "binnen den Oproop, de Tall vun Oprööp, un dat Oproop-Teel.</p><p>Du "
+#~ "kannst en Oproop sien Teelfunkschoon aktiveren, wenn Du op en Reeg mit "
+#~ "Oproop-Informatschonen klickst.</p>"
+
+#~ msgid "Go to Line %1"
+#~ msgstr "Na Reeg %1 gahn"
+
+#~ msgid "(No Source)"
+#~ msgstr "(Keen Born)"
+
+#~ msgid "There is no cost of current selected type associated"
+#~ msgstr "Dat gifft keen Verbruuk vun den opstunns utsöchten Typ"
+
+#~ msgid "with any source line of this function in file"
+#~ msgstr "för jichtenseen Bornreeg vun disse Funkschoon binnen de Datei"
+
+#~ msgid "Thus, no annotated source can be shown."
+#~ msgstr "Dor lett sik also keen Born mit Anmarken för wiesen."
+
+#~ msgid "Source ('%1')"
+#~ msgstr "Born (\"%1\")"
+
+#~ msgid "--- Inlined from '%1' ---"
+#~ msgstr "--- Inföögt ut \"%1\" ---"
+
+#~ msgid "--- Inlined from unknown source ---"
+#~ msgstr "--- Inföögt ut nich begäng Born ---"
+
+#~ msgid "There is no source available for the following function:"
+#~ msgstr "För disse Funkschoon is keen Born verföögbor:"
+
+#~ msgid "This is because no debug information is present."
+#~ msgstr "Dat is so, wiel dat keen Fehlersöök-Informatschonen gifft."
+
+#~ msgid "Recompile source and redo the profile run."
+#~ msgstr "Kompileer den Born nieg un föhr achteran wedder den Profilloop ut."
+
+#~ msgid "The function is located in this ELF object:"
+#~ msgstr "De Funkschoon liggt binnen dit \"ELF\"-Objekt:"
+
+#~ msgid "This is because its source file cannot be found:"
+#~ msgstr "Dat is so, wiel sik de Borndatei nich finnen lett:"
+
+#~ msgid "Add the folder of this file to the source folder list."
+#~ msgstr "Föög den Orner vun disse Datei de List vun Bornornern to."
+
+#~ msgid "The list can be found in the configuration dialog."
+#~ msgstr "De List lett sik binnen den Instellen-Dialoog finnen."
+
+#~ msgid " (Thread %1)"
+#~ msgstr " (Utföhrstrang %1)"
+
+#~ msgid "(none)"
+#~ msgstr "(Keen)"
+
+#~ msgid "Unknown Type"
+#~ msgstr "Nich begäng Typ"
+
+#~ msgid "Show All Items"
+#~ msgstr "All Elementen wiesen"
+
+#~ msgid "No Grouping"
+#~ msgstr "Keen Koppeltyp"
+
+#~ msgid "Distance"
+#~ msgstr "Afstand"
+
+#~ msgid "Caller"
+#~ msgstr "Oproper"
+
+#~ msgid "Self"
+#~ msgstr "Egen"
+
+#~ msgid "Calling"
+#~ msgstr "Oprööp"
+
+#~ msgid "Callee"
+#~ msgstr "Opropen"
+
+#~ msgid ""
+#~ "<b>List of all Callers</b><p>This list shows all functions calling the "
+#~ "current selected one, either directly or with several functions in-"
+#~ "between on the stack; the number of functions in-between plus one is "
+#~ "called the <em>Distance</em> (e.g. for function A,B,C there exists a call "
+#~ "from A to C when A calls B and B calls C, i.e. A => B => C. The distance "
+#~ "here is 2).</p><p>Absolute cost shown is the cost spent in the selected "
+#~ "function while a listed function is active; relative cost is the "
+#~ "percentage of all cost spent in the selected function while the listed "
+#~ "one is active. The cost graphic shows logarithmic percentage with a "
+#~ "different color for each distance.</p><p>As there can be many calls from "
+#~ "the same function, the distance column sometimes shows the range of "
+#~ "distances for all calls happening; then, in parentheses, there is the "
+#~ "medium distance, i.e. the distance where most of the call costs happened."
+#~ "</p><p>Selecting a function makes it the current selected one of this "
+#~ "information panel. If there are two panels (Split mode), the function of "
+#~ "the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>All Opropers</b><p>Disse List wiest all Funkschonen, de de utsöchte "
+#~ "Funkschoon direktemang oder över verscheden Twischenfunkschonen opropen "
+#~ "hebbt. De Tall vun Twischenfunkschonen plus Een warrt <em>Afstand</em> "
+#~ "nöömt (Bispill: Dat gifft dree Funkschoon, nöömt A, B un C. Dat gifft en "
+#~ "Oproop vun A na C, wenn A de Funkschoon B un B wedder Funkschoon C "
+#~ "opröppt, d.h. A => B => C. De Afstand is hier \"2\").</p><p>Warrt "
+#~ "afsoluut Verbruuk wiest, is de wieste Verbruuk bi en oplist Funkschoon "
+#~ "dat, wat de utsöchte Funkschoon verbruukt hett, wielt ok de opliste "
+#~ "Funkschoon aktiv weer. Warrt relativ Verbruuk wiest, gifft de "
+#~ "Perzentweert bi en oplist Funkschoon den Andeel vun de utsöchte "
+#~ "Funkschoon ehr hele Looptiet an, över den ok de opliste Funkschoon aktiv "
+#~ "weer.</p><p>Wiel dat mehr Oprööp vun de sülve Funkschoon ut geven kann, "
+#~ "wiest de Afstand-Striep mennigmaal dat Afstandrebeet för all Oprööp. Denn "
+#~ "warrt de Middelafstand in Klemmen wiest, dat is de Afstand mit den "
+#~ "hööchsten Verbruuk. De Grafiken bi de opliste Funkschonen wiest de "
+#~ "Perzentweerten vun de Afstänn logaritmisch, mit een Klöör för elk Afstand."
+#~ "</p><p>Wenn Du en Funkschoon anklickst, söchst Du ehr för dat hele Info-"
+#~ "Rebeet ut. Wenn dat twee Rebeden gifft (Ünnerdeelt Bedrief), warrt "
+#~ "ansteed vun de aktive Funkschoon de in't anner Rebeet ännert.</p>"
+
+#~ msgid ""
+#~ "<b>List of all Callees</b><p>This list shows all functions called by the "
+#~ "current selected one, either directly or with several function in-between "
+#~ "on the stack; the number of function in-between plus one is called the "
+#~ "<em>Distance</em> (e.g. for function A,B,C there exists a call from A to "
+#~ "C when A calls B and B calls C, i.e. A => B => C. The distance here is 2)."
+#~ "</p><p>Absolute cost shown is the cost spent in the listed function while "
+#~ "the selected is active; relative cost is the percentage of all cost spent "
+#~ "in the listed function while the selected one is active. The cost graphic "
+#~ "always shows logarithmic percentage with a different color for each "
+#~ "distance.</p><p>As there can be many calls to the same function, the "
+#~ "distance column sometimes shows the range of distances for all calls "
+#~ "happening; then, in parentheses, there is the medium distance, i.e. the "
+#~ "distance where most of the call costs happened.</p><p>Selecting a "
+#~ "function makes it the current selected one of this information panel. If "
+#~ "there are two panels (Split mode), the function of the other panel is "
+#~ "changed instead.</p>"
+#~ msgstr ""
+#~ "<b>All Opropen</b><p>Disse List wiest all Funkschonen, de vun de utsöchte "
+#~ "Funkschoon direktemang oder över verscheden Twischenfunkschonen opropen "
+#~ "wöörn. De Tall vun Twischenfunkschonen plus Een warrt <em>Afstand</em> "
+#~ "nöömt (Bispill: Dat gifft dree Funkschoon, nöömt A, B un C. Dat gifft en "
+#~ "Oproop vun A na C, wenn A de Funkschoon B un B wedder Funkschoon C "
+#~ "opröppt, d.h. A => B => C. De Afstand is hier \"2\").</p><p>Warrt de "
+#~ "Verbruuk afsoluut wiest, is de wieste Verbruuk bi en oplist Funkschoon "
+#~ "dat, wat de opliste Funkschoon verbruukt hett, wielt ok de utsöchte "
+#~ "Funkschoon aktiv weer. Warrt de Verbruuk relativ wiest, gifft de "
+#~ "Perzentweert bi en oplist Funkschoon den Andeel vun de opliste Funkschoon "
+#~ "ehr hele Looptiet an, över den ok de utsöchte Funkschoon aktiv weer.</"
+#~ "p><p>Wiel dat mehr Oprööp vun de sülve Funkschoon ut geven kann, wiest de "
+#~ "Afstand-Striep mennigmaal dat Afstandrebeet för all Oprööp. Denn warrt de "
+#~ "Middelafstand in Klemmen wiest, dat is de Afstand mit den hööchsten "
+#~ "Verbruuk. De Grafiken bi de opliste Funkschonen wiest de Perzentweerten "
+#~ "vun de Afstänn logaritmisch, mit een Klöör för elk Afstand.</p><p>Wenn Du "
+#~ "en Funkschoon anklickst, söchst Du ehr för dat hele Info-Rebeet ut. Wenn "
+#~ "dat twee Rebeden gifft (Ünnerdeelt Bedrief), warrt ansteed vun de aktive "
+#~ "Funkschoon de in't anner Rebeet ännert.</p>"
+
+#~ msgid "Instruction Fetch"
+#~ msgstr "Anwiesen haalt"
+
+#~ msgid "Data Read Access"
+#~ msgstr "Daten-Leestogriep"
+
+#~ msgid "Data Write Access"
+#~ msgstr "Daten-Schrieftogriep"
+
+#~ msgid "L1 Instr. Fetch Miss"
+#~ msgstr "L1-Fehlslag Anwiesen halen"
+
+#~ msgid "L1 Data Read Miss"
+#~ msgstr "L1-Fehlslag Daten lesen"
+
+#~ msgid "L1 Data Write Miss"
+#~ msgstr "L1-Fehlslag Daten schrieven"
+
+#~ msgid "L2 Instr. Fetch Miss"
+#~ msgstr "L2-Fehlslag Anwiesen halen"
+
+#~ msgid "L2 Data Read Miss"
+#~ msgstr "L2-Fehlslag Daten lesen"
+
+#~ msgid "L2 Data Write Miss"
+#~ msgstr "L2-Fehlslag Daten schrieven"
+
+#~ msgid "Samples"
+#~ msgstr "Proven"
+
+#~ msgid "System Time"
+#~ msgstr "Systeemtiet"
+
+#~ msgid "User Time"
+#~ msgstr "Brukertiet"
+
+#~ msgid "L1 Miss Sum"
+#~ msgstr "Summ L1-Fehlslääg"
+
+#~ msgid "L2 Miss Sum"
+#~ msgstr "Summ L2-Fehlslääg"
+
+#~ msgid "Cycle Estimation"
+#~ msgstr "Estemeren CPU-Lööp"
+
+#~ msgid "&Search:"
+#~ msgstr "&Söken:"
+
+#~ msgid "Group"
+#~ msgstr "Koppel"
+
+#~ msgid "(no trace parts)"
+#~ msgstr "(keen Spoordelen)"
+
+#~ msgid "Stack Selection"
+#~ msgstr "Stapelköör"
+
+#~ msgid "Cost2"
+#~ msgstr "Verbruuk2"
+
+#~ msgid "Text %1"
+#~ msgstr "Text %1"
+
+#~ msgid "Recursive Bisection"
+#~ msgstr "Rekursive Tweedelen"
+
+#~ msgid "Columns"
+#~ msgstr "Striepen"
+
+#~ msgid "Rows"
+#~ msgstr "Regen"
+
+#~ msgid "Always Best"
+#~ msgstr "Jümmers beste"
+
+#~ msgid "Best"
+#~ msgstr "Beste"
+
+#~ msgid "Alternate (V)"
+#~ msgstr "Wesselwies pielrecht"
+
+#~ msgid "Alternate (H)"
+#~ msgstr "Wesselwies kimmrecht"
+
+#~ msgid "Horizontal"
+#~ msgstr "Kimmrecht"
+
+#~ msgid "Vertical"
+#~ msgstr "Pielrecht"
+
+#~ msgid "Nesting"
+#~ msgstr "Inbetten"
+
+#~ msgid "Border"
+#~ msgstr "Rand"
+
+#~ msgid "Correct Borders Only"
+#~ msgstr "Bloots akrate Ränners"
+
+#~ msgid "Width %1"
+#~ msgstr "Breed %1"
+
+#~ msgid "Shading"
+#~ msgstr "Schaddens"
+
+#~ msgid "Visible"
+#~ msgstr "Sichtbor"
+
+#~ msgid "Take Space From Children"
+#~ msgstr "Ruum vun Ünnerelementen nehmen"
+
+#~ msgid "Top Center"
+#~ msgstr "Baven in de Merrn"
+
+#~ msgid "Bottom Center"
+#~ msgstr "Nerrn in de Merrn"
+
+#~ msgid "No %1 Limit"
+#~ msgstr "Keen Grenz för %1"
+
+#~ msgid "No Area Limit"
+#~ msgstr "Keen Rebeetgrenz"
+
+#~ msgid "Area of '%1' (%2)"
+#~ msgstr "Rebeet vun \"%1\" (%2)"
+
+#~ msgid "1 Pixel"
+#~ msgid_plural "%1 Pixels"
+#~ msgstr[0] "1 Pixel"
+#~ msgstr[1] "%1 Pixels"
+
+#~ msgid "Double Area Limit (to %1)"
+#~ msgstr "Rebeetgrenz verdubbeln (op %1)"
+
+#~ msgid "Halve Area Limit (to %1)"
+#~ msgstr "Rebeetgrenz halberen (op %1)"
+
+#~ msgid "No Depth Limit"
+#~ msgstr "Keen Deepdegrenz"
+
+#~ msgid "Depth of '%1' (%2)"
+#~ msgstr "Deepde vun \"%1\" (%2)"
+
+#~ msgid "Depth %1"
+#~ msgstr "Deepde %1"
+
+#~ msgid "Decrement (to %1)"
+#~ msgstr "Sieter (op %1)"
+
+#~ msgid "Increment (to %1)"
+#~ msgstr "Höger (op %1)"
+
+#~ msgid ""
+#~ "<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers "
+#~ "of the current activated function. Each colored rectangle represents a "
+#~ "function; its size tries to be proportional to the cost spent therein "
+#~ "while the active function is running (however, there are drawing "
+#~ "constrains).</p>"
+#~ msgstr ""
+#~ "<b>Oproper-Koort</b> <p>Dit Diagramm wiest all Opropers vun de opstunns "
+#~ "utsöchte Funkschoon, inbett na ehr Reeg. Elk infarvt Rechteck stellt en "
+#~ "Funkschoon dor, sien Grött schall proportschonaal to den Verbruuk vun de "
+#~ "Funkschoon wesen (beacht, dat dat Grenzen bi't Teken gifft).</p>"
+
+#~ msgid ""
+#~ "<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+#~ "the current activated function. Each colored rectangle represents a "
+#~ "function; its size tries to be proportional to the cost spent therein "
+#~ "while the active function is running (however, there are drawing "
+#~ "constrains).</p>"
+#~ msgstr ""
+#~ "<b>Opropen-Koort</b><p>Dit Diagramm wiest all vun de opstunns utsöchte "
+#~ "Funkschoon opropen Funkschonen, inbett na ehr Reeg. Elk infarvt Rechteck "
+#~ "stellt en Funkschoon dor, sien Grött schall proportschonaal to den "
+#~ "Verbruuk vun de Funkschoon wesen (beacht, dat dat Grenzen bi't Teken "
+#~ "gifft).</p>"
+
+#~ msgid ""
+#~ "<p>Appearance options can be found in the in the context menu. To get "
+#~ "exact size proportions, choose 'Hide incorrect borders'. As this mode can "
+#~ "be <em>very</em> time consuming, you may want to limit the maximum drawn "
+#~ "nesting level before. 'Best' determinates the split direction for "
+#~ "children from the aspect ratio of the parent. 'Always Best' decides on "
+#~ "remaining space for each sibling. 'Ignore Proportions' takes space for "
+#~ "function name drawing <em>before</em> drawing children. Note that size "
+#~ "proportions can get <em>heavily</em> wrong.</p><p>This is a <em>TreeMap</"
+#~ "em> widget. Keyboard navigation is available with the left/right arrow "
+#~ "keys for traversing siblings, and up/down arrow keys to go a nesting "
+#~ "level up/down. <em>Return</em> activates the current item.</p>"
+#~ msgstr ""
+#~ "<p>De Optschonen för dat Utsehn laat sik binnen dat Rechtsklickmenü "
+#~ "finnen. Wenn Du naue Afmeten hebben wullt, kannst Du dat mit \"Lege "
+#~ "Ränners versteken\". Wiel disse Metood <em>bannig</em> veel Tiet bruken "
+#~ "kann, wullt Du villicht vördem en Grenz för de tohööchst wieste "
+#~ "Inbettdeepde fastleggen. \"Beste\" leggt de Opdeelricht för "
+#~ "Ünnerelementen na de Proportschonen vun dat överornt Element sien Sieden "
+#~ "fast. \"Jümmers beste\" leggt se na den överblieven Ruum för elk "
+#~ "Geswisterelement fast. \"Afmeten övergahn\" nimmt den Ruum <em>toeerst</"
+#~ "em> för't Teken vun Funkschoon-Naams, ehr de Ünnerfunkschonen teekt "
+#~ "warrt. Beacht, dat de Grötten denn <em>bannig</em> verkehrt wesen köönt.</"
+#~ "p><p>Dit is en <em>Boomkoort</em>. Tastatuurnavigatschoon mit de "
+#~ "Pieltasten is för Naverelementen mit \"Links\" un \"Rechts\" verföögbor, "
+#~ "mit \"Hooch\" un \"Daal\" kannst Du en Evene höger oder daalgahn. "
+#~ "<em>Ingaav</em> aktiveert dat aktuelle Element.</p>"
+
+#~ msgid "Go To"
+#~ msgstr "Gah na"
+
+#~ msgid "Stop at Depth"
+#~ msgstr "Anhollen bi Deepde"
+
+#~ msgid "Depth 10"
+#~ msgstr "Deepde 10"
+
+#~ msgid "Depth 15"
+#~ msgstr "Deepde 15"
+
+#~ msgid "Depth 20"
+#~ msgstr "Deepde 20"
+
+#~ msgid "Decrement Depth (to %1)"
+#~ msgstr "Sieter Deepde (op %1)"
+
+#~ msgid "Increment Depth (to %1)"
+#~ msgstr "Höger Deepde (op %1)"
+
+#~ msgid "Stop at Function"
+#~ msgstr "Anhollen bi Funkschoon"
+
+#~ msgid "No Function Limit"
+#~ msgstr "Keen Funkschoongrenz"
+
+#~ msgid "Stop at Area"
+#~ msgstr "Anhollen bi Rebeet"
+
+#~ msgid "50 Pixels"
+#~ msgstr "50 Pixels"
+
+#~ msgid "100 Pixels"
+#~ msgstr "100 Pixels"
+
+#~ msgid "200 Pixels"
+#~ msgstr "200 Pixels"
+
+#~ msgid "500 Pixels"
+#~ msgstr "500 Pixels"
+
+#~ msgid "Half Area Limit (to %1)"
+#~ msgstr "Rebeetgrenz halberen (op %1)"
+
+#~ msgid "Split Direction"
+#~ msgstr "Opdeelricht"
+
+#~ msgid "Skip Incorrect Borders"
+#~ msgstr "Lege Ränners versteken"
+
+#~ msgid "Border Width"
+#~ msgstr "Randbreed"
+
+#~ msgid "Border 0"
+#~ msgstr "Breed 0"
+
+#~ msgid "Border 1"
+#~ msgstr "Breed 1"
+
+#~ msgid "Border 2"
+#~ msgstr "Breed 2"
+
+#~ msgid "Border 3"
+#~ msgstr "Breed 3"
+
+#~ msgid "Draw Symbol Names"
+#~ msgstr "Symboolnaams wiesen"
+
+#~ msgid "Draw Cost"
+#~ msgstr "Verbruuk wiesen"
+
+#~ msgid "Draw Location"
+#~ msgstr "Steed wiesen"
+
+#~ msgid "Draw Calls"
+#~ msgstr "Oprooptall wiesen"
+
+#~ msgid "Call Map: Current is '%1'"
+#~ msgstr "Opropen-Koort: Aktuell is \"%1\""
+
+#~ msgid "(no function)"
+#~ msgstr "(keen Funkschoon)"
+
+#~ msgid "(no call)"
+#~ msgstr "(keen Oproop)"
+
+#~ msgid "Event Type"
+#~ msgstr "Begeefnistyp"
+
+#~ msgid "Short"
+#~ msgstr "Kortnaam"
+
+#~ msgid "Formula"
+#~ msgstr "Formel"
+
+#~ msgid ""
+#~ "<b>Cost Types List</b><p>This list shows all cost types available and "
+#~ "what the self/inclusive cost of the current selected function is for that "
+#~ "cost type.</p><p>By choosing a cost type from the list, you change the "
+#~ "cost type of costs shown all over KCachegrind to be the selected one.</p>"
+#~ msgstr ""
+#~ "<b>List vun Verbruuk-Typen</b><p>Disse List wiest all verföögbor Typen "
+#~ "vun Tietverbruuk, un ok den egen/ümfaten Verbruuk för de opstunns "
+#~ "utsöchte Funkschoon för de Typen.</p><p>Wenn Du en Verbruuk-Typ utsöchst, "
+#~ "ännerst du den Typ vun den wiesten Verbruuk överall in KCachegrind na den "
+#~ "utsöchten Typ.</p>"
+
+#~ msgid "Set Secondary Event Type"
+#~ msgstr "Tweet Begeefnistyp fastleggen"
+
+#~ msgid "Remove Secondary Event Type"
+#~ msgstr "Tweet Begeefnistyp wegdoon"
+
+#~ msgid "Edit Long Name"
+#~ msgstr "Lang Naam bewerken"
+
+#~ msgid "Edit Short Name"
+#~ msgstr "Kort Naam bewerken"
+
+#~ msgid "Edit Formula"
+#~ msgstr "Formel bewerken"
+
+#~ msgid "Remove"
+#~ msgstr "Wegmaken"
+
+#~ msgid "New Cost Type ..."
+#~ msgstr "Nieg Verbruuktyp..."
+
+#~ msgid "New%1"
+#~ msgstr "Nieg%1"
+
+#~ msgid "New Cost Type %1"
+#~ msgstr "Nieg Verbruuktyp %1"
+
+#~ msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+#~ msgstr "Importfilter för vun Cachegrind/Callgrind opstellte Profildateien"
+
+#~ msgid "Count"
+#~ msgstr "Tall"
+
+#~ msgid ""
+#~ "<b>List of direct Callers</b><p>This list shows all functions calling the "
+#~ "current selected one directly, together with a call count and the cost "
+#~ "spent in the current selected function while being called from the "
+#~ "function from the list.</p><p>An icon instead of an inclusive cost "
+#~ "specifies that this is a call inside of a recursive cycle. An inclusive "
+#~ "cost makes no sense here.</p><p>Selecting a function makes it the current "
+#~ "selected one of this information panel. If there are two panels (Split "
+#~ "mode), the function of the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>List vun Direktopropers</b><p>Disse List wiest all Funkschonen, de de "
+#~ "opstunns utsöchte Funkschoon direktemang oprepen, tosamen mit de Oproop-"
+#~ "Tall un den Verbruuk vun disse Funkschoon, wielt se vun de Funkschoon op "
+#~ "de List opropen weer.</p><p>En Lüttbild ansteed vun en ümfaten Verbruuk "
+#~ "gifft an, dat dit en Oproop binnen en rekursiev Loop is. En ümfaten "
+#~ "Verbruuk lett sik hier nich sinnvull angeven.</p><p>Wenn Du en Funkschoon "
+#~ "anklickst, söchst Du ehr för dat hele Info-Rebeet ut. Wenn dat twee "
+#~ "Rebeden gifft (Ünnerdeelt Bedrief), warrt ansteed vun de aktive "
+#~ "Funkschoon de in't anner Rebeet ännert.</p>"
+
+#~ msgid ""
+#~ "<b>List of direct Callees</b><p>This list shows all functions called by "
+#~ "the current selected one directly, together with a call count and the "
+#~ "cost spent in this function while being called from the selected function."
+#~ "</p><p>Selecting a function makes it the current selected one of this "
+#~ "information panel. If there are two panels (Split mode), the function of "
+#~ "the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>List vun Direktopropen</b><p>Disse List wiest all vun de opstunns "
+#~ "utsöchte Funkschoon direktemang opropen Funkschonen, tosamen mit de "
+#~ "Oproop-Tall un den Verbruuk vun de opropen Funkschonen, wielt se vun de "
+#~ "utsöchte Funkschoon opropen weern.</p><p>Wenn Du en Funkschoon anklickst, "
+#~ "söchst Du ehr för dat hele Info-Rebeet ut. Wenn dat twee Rebeden gifft "
+#~ "(Ünnerdeelt Bedrief), warrt ansteed vun de aktive Funkschoon de in't "
+#~ "anner Rebeet ännert.</p>"
+
+#~ msgid "Profile Part %1"
+#~ msgstr "Profildeel %1"
+
+#~ msgid "(no trace)"
+#~ msgstr "(keen Spoor)"
+
+#~ msgid "(no part)"
+#~ msgstr "(keen Deel)"
+
+#~ msgid "Comment"
+#~ msgstr "Anmarken"
+
+#~ msgid ""
+#~ "<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+#~ "trace. For each part, the self/inclusive cost of the current selected "
+#~ "function, spent in the part, is shown; percentage costs are always "
+#~ "relative to the total cost <em>of the part</em> (not to the whole trace "
+#~ "as in the Trace Part Overview). Also shown are the calls happening to/"
+#~ "from the current function inside of the trace part.</p><p>By choosing one "
+#~ "or more trace parts from the list, the costs shown all over KCachegrind "
+#~ "will only be the ones spent in the selected part(s). If no list selection "
+#~ "is shown, in fact all trace parts are selected implicitly.</p><p>This is "
+#~ "a multi-selection list. You can select ranges by dragging the mouse or "
+#~ "use SHIFT/CTRL modifiers. Selection/Deselection of trace parts can also "
+#~ "be done by using the Trace Part Overview Dockable. This one also supports "
+#~ "multiple selection.</p><p>Note that the list is hidden if only one trace "
+#~ "part is loaded.</p>"
+#~ msgstr ""
+#~ "<b>List vun Spoordelen</b> <p>Disse List wiest all Spoordelen vun de "
+#~ "laadte Spoor. För elk Deel warrt de egen/ümfaten Verbruuk vun de opstunns "
+#~ "utsöchte Funkschoon wiest. De Verbruuk in Perzent is jümmers relativ to "
+#~ "den helen Verbruuk <em>vun den Deel</em> (nich to de hele Spoor, as "
+#~ "binnen de Spoordeel-Översicht). Ok wiest warrt de Oprööp na/ut de "
+#~ "aktuelle Funkschoon binnen de enkel Spoordelen.</p><p>Wenn Du een oder "
+#~ "mehr Spoordelen op de List utsöchst, wiest KCachegrind överall bloots den "
+#~ "Verbruuk ut de utsöchte Delen. Is keen Deel utsöcht, warrt all Spoordelen "
+#~ "as utsöcht behannelt.</p><p>Dit is en List för Mehrmaal-Köör. Du kannst "
+#~ "Rebeden dör Trecken mit de Muus utsöken, oder bi't Klicken Ümschalt un "
+#~ "Strg bruken. Ok mit de andockbor Spoordeel-Översicht, de ok de Mehrmaal-"
+#~ "Köör ünnerstütt, laat sik ok Spoordelen utsöken un afwählen.</p><p>Beacht "
+#~ "bitte, dat disse List versteken warrt, wenn bloots een Spoordeel laadt is."
+#~ "</p>"
+
+#~ msgid "Hide '%1'"
+#~ msgstr "\"'%1\" versteken"
+
+#~ msgid "Hide Selected"
+#~ msgstr "Utsöchte versteken"
+
+#~ msgid "Show All"
+#~ msgstr "All wiesen"

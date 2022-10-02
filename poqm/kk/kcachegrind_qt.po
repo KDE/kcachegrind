@@ -1,0 +1,3092 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Sairan Kikkarin <sairan@computer.org>, 2011, 2012, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-18 02:14+0000\n"
+"PO-Revision-Date: 2013-11-01 23:14+0600\n"
+"Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
+"Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Qt-Contexts: true\n"
+
+#: libcore/cachegrindloader.cpp:135
+#, fuzzy
+#| msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+msgctxt "QObject|"
+msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+msgstr ""
+"Cachegrind/Callgrind жасаған профиль файлдарын импорттау сүзгісіX-Qt-"
+"Contexts: true\n"
+
+#: libcore/context.cpp:60
+#, fuzzy
+#| msgid "Invalid Context"
+msgctxt "ProfileContext|"
+msgid "Invalid Context"
+msgstr "Контексті дұрыс емес"
+
+#: libcore/context.cpp:61
+#, fuzzy
+#| msgid "Unknown Context"
+msgctxt "ProfileContext|"
+msgid "Unknown Context"
+msgstr "Контексті беймәлім"
+
+#: libcore/context.cpp:62
+#, fuzzy
+#| msgid "Part Source Line"
+msgctxt "ProfileContext|"
+msgid "Part Source Line"
+msgstr "Көз жолының бөлшегі"
+
+#: libcore/context.cpp:63
+#, fuzzy
+#| msgid "Source Line"
+msgctxt "ProfileContext|"
+msgid "Source Line"
+msgstr "Көз жолы"
+
+#: libcore/context.cpp:64
+#, fuzzy
+#| msgid "Part Line Call"
+msgctxt "ProfileContext|"
+msgid "Part Line Call"
+msgstr "Көз жолының шақыруы"
+
+#: libcore/context.cpp:65
+#, fuzzy
+#| msgid "Line Call"
+msgctxt "ProfileContext|"
+msgid "Line Call"
+msgstr "Жолын шақыруы"
+
+#: libcore/context.cpp:66
+#, fuzzy
+#| msgid "Part Jump"
+msgctxt "ProfileContext|"
+msgid "Part Jump"
+msgstr "Бөлік араларында ауысу"
+
+#: libcore/context.cpp:67
+#, fuzzy
+#| msgid "Jump"
+msgctxt "ProfileContext|"
+msgid "Jump"
+msgstr "Секіріп ауысу"
+
+#: libcore/context.cpp:68
+#, fuzzy
+#| msgid "Part Instruction"
+msgctxt "ProfileContext|"
+msgid "Part Instruction"
+msgstr "Бөлік нұсқауы"
+
+#: libcore/context.cpp:69
+#, fuzzy
+#| msgid "Instruction"
+msgctxt "ProfileContext|"
+msgid "Instruction"
+msgstr "Нұсқауы"
+
+#: libcore/context.cpp:70
+#, fuzzy
+#| msgid "Part Instruction Jump"
+msgctxt "ProfileContext|"
+msgid "Part Instruction Jump"
+msgstr "Бөлік-ара ауысу нұсқауы"
+
+#: libcore/context.cpp:71
+#, fuzzy
+#| msgid "Instruction Jump"
+msgctxt "ProfileContext|"
+msgid "Instruction Jump"
+msgstr "Секіріп ауысу нұсқауы"
+
+#: libcore/context.cpp:72
+#, fuzzy
+#| msgid "Part Instruction Call"
+msgctxt "ProfileContext|"
+msgid "Part Instruction Call"
+msgstr "Бөлік шақыру нұсқауы"
+
+#: libcore/context.cpp:73
+#, fuzzy
+#| msgid "Instruction Call"
+msgctxt "ProfileContext|"
+msgid "Instruction Call"
+msgstr "Шақыру нұсқауы"
+
+#: libcore/context.cpp:74
+#, fuzzy
+#| msgid "Part Call"
+msgctxt "ProfileContext|"
+msgid "Part Call"
+msgstr "Бөлік шақыруы"
+
+#: libcore/context.cpp:75
+#, fuzzy
+#| msgid "Call"
+msgctxt "ProfileContext|"
+msgid "Call"
+msgstr "Шақыру"
+
+#: libcore/context.cpp:76
+#, fuzzy
+#| msgid "Part Function"
+msgctxt "ProfileContext|"
+msgid "Part Function"
+msgstr "Бөлік фукциясы"
+
+#: libcore/context.cpp:77
+#, fuzzy
+#| msgid "Function Source File"
+msgctxt "ProfileContext|"
+msgid "Function Source File"
+msgstr "Функцияның бастапқы файлы"
+
+#: libcore/context.cpp:78
+#, fuzzy
+#| msgid "Function"
+msgctxt "ProfileContext|"
+msgid "Function"
+msgstr "Функция"
+
+#: libcore/context.cpp:79
+#, fuzzy
+#| msgid "Function Cycle"
+msgctxt "ProfileContext|"
+msgid "Function Cycle"
+msgstr "Функция циклі"
+
+#: libcore/context.cpp:80
+#, fuzzy
+#| msgid "Part Class"
+msgctxt "ProfileContext|"
+msgid "Part Class"
+msgstr "Бөлік класы"
+
+#: libcore/context.cpp:81
+#, fuzzy
+#| msgid "Class"
+msgctxt "ProfileContext|"
+msgid "Class"
+msgstr "Класс"
+
+#: libcore/context.cpp:82
+#, fuzzy
+#| msgid "Part Source File"
+msgctxt "ProfileContext|"
+msgid "Part Source File"
+msgstr "Бөліктің бастапқы файлы"
+
+#: libcore/context.cpp:83
+#, fuzzy
+#| msgid "Source File"
+msgctxt "ProfileContext|"
+msgid "Source File"
+msgstr "Бастапқы файлы"
+
+#: libcore/context.cpp:84
+#, fuzzy
+#| msgid "Part ELF Object"
+msgctxt "ProfileContext|"
+msgid "Part ELF Object"
+msgstr "Бөліктің ELF объекті"
+
+#: libcore/context.cpp:85
+#, fuzzy
+#| msgid "ELF Object"
+msgctxt "ProfileContext|"
+msgid "ELF Object"
+msgstr "ELF объекті"
+
+#: libcore/context.cpp:86
+#, fuzzy
+#| msgid "Profile Part"
+msgctxt "ProfileContext|"
+msgid "Profile Part"
+msgstr "Профиль бөлшегі"
+
+#: libcore/context.cpp:87
+#, fuzzy
+#| msgid "Program Trace"
+msgctxt "ProfileContext|"
+msgid "Program Trace"
+msgstr "Қадғалау хаттамасы"
+
+#: libcore/costitem.cpp:48
+#, fuzzy, qt-format
+#| msgid "%1 from %2"
+msgctxt "QObject|"
+msgid "%1 from %2"
+msgstr "%2 дегеннен %1"
+
+#: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
+#: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
+#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
+#, fuzzy
+#| msgid "(unknown)"
+msgctxt "QObject|"
+msgid "(unknown)"
+msgstr "(беймәлім)"
+
+#: libcore/globalconfig.cpp:77
+#, fuzzy
+#| msgid "Instruction Fetch"
+msgctxt "QObject|"
+msgid "Instruction Fetch"
+msgstr "Нұсқауын алуы"
+
+#: libcore/globalconfig.cpp:78
+#, fuzzy
+#| msgid "Data Read Access"
+msgctxt "QObject|"
+msgid "Data Read Access"
+msgstr "Деректі оқу құқығы"
+
+#: libcore/globalconfig.cpp:79
+#, fuzzy
+#| msgid "Data Write Access"
+msgctxt "QObject|"
+msgid "Data Write Access"
+msgstr "Деректі жазу құқығы"
+
+#: libcore/globalconfig.cpp:80
+#, fuzzy
+#| msgid "L1 Instr. Fetch Miss"
+msgctxt "QObject|"
+msgid "L1 Instr. Fetch Miss"
+msgstr "L1 нұсқ. алынбаған"
+
+#: libcore/globalconfig.cpp:81
+#, fuzzy
+#| msgid "L1 Data Read Miss"
+msgctxt "QObject|"
+msgid "L1 Data Read Miss"
+msgstr "L1 дерегі оқылмаған"
+
+#: libcore/globalconfig.cpp:82
+#, fuzzy
+#| msgid "L1 Data Write Miss"
+msgctxt "QObject|"
+msgid "L1 Data Write Miss"
+msgstr "L1 дерегі жазылмаған"
+
+#: libcore/globalconfig.cpp:83
+#, fuzzy
+#| msgid "L2 Instr. Fetch Miss"
+msgctxt "QObject|"
+msgid "L2 Instr. Fetch Miss"
+msgstr "L2 нұсқ. алынбаған"
+
+#: libcore/globalconfig.cpp:84
+#, fuzzy
+#| msgid "L2 Data Read Miss"
+msgctxt "QObject|"
+msgid "L2 Data Read Miss"
+msgstr "L2 дерегі оқылмаған"
+
+#: libcore/globalconfig.cpp:85
+#, fuzzy
+#| msgid "L2 Data Write Miss"
+msgctxt "QObject|"
+msgid "L2 Data Write Miss"
+msgstr "L2 дерегі жазылмаған"
+
+#: libcore/globalconfig.cpp:86
+#, fuzzy
+#| msgid "LL Instr. Fetch Miss"
+msgctxt "QObject|"
+msgid "LL Instr. Fetch Miss"
+msgstr "LL нұсқ. алынбаған"
+
+#: libcore/globalconfig.cpp:87
+#, fuzzy
+#| msgid "LL Data Read Miss"
+msgctxt "QObject|"
+msgid "LL Data Read Miss"
+msgstr "LL дерегі оқылмаған"
+
+#: libcore/globalconfig.cpp:88
+#, fuzzy
+#| msgid "LL Data Write Miss"
+msgctxt "QObject|"
+msgid "LL Data Write Miss"
+msgstr "LL дерегі жазылмаған"
+
+#: libcore/globalconfig.cpp:89
+#, fuzzy
+#| msgid "L1 Miss Sum"
+msgctxt "QObject|"
+msgid "L1 Miss Sum"
+msgstr "L1 қосындысы жоқ"
+
+#: libcore/globalconfig.cpp:90
+#, fuzzy
+#| msgid "L2 Miss Sum"
+msgctxt "QObject|"
+msgid "L2 Miss Sum"
+msgstr "L2 қосындысы жоқ"
+
+#: libcore/globalconfig.cpp:91
+#, fuzzy
+#| msgid "Last-level Miss Sum"
+msgctxt "QObject|"
+msgid "Last-level Miss Sum"
+msgstr "Соңғы деңгей (LL) қосындысы жоқ"
+
+#: libcore/globalconfig.cpp:92
+#, fuzzy
+#| msgid "Indirect Branch"
+msgctxt "QObject|"
+msgid "Indirect Branch"
+msgstr "Жанама тармақ"
+
+#: libcore/globalconfig.cpp:93
+#, fuzzy
+#| msgid "Mispredicted Ind. Branch"
+msgctxt "QObject|"
+msgid "Mispredicted Ind. Branch"
+msgstr "Жан. тармақтың қате болжамы"
+
+#: libcore/globalconfig.cpp:94
+#, fuzzy
+#| msgid "Conditional Branch"
+msgctxt "QObject|"
+msgid "Conditional Branch"
+msgstr "Шартты тармақ"
+
+#: libcore/globalconfig.cpp:95
+#, fuzzy
+#| msgid "Mispredicted Cond. Branch"
+msgctxt "QObject|"
+msgid "Mispredicted Cond. Branch"
+msgstr "Шарт тармақтың қате болжамы"
+
+#: libcore/globalconfig.cpp:96
+#, fuzzy
+#| msgid "Mispredicted Branch"
+msgctxt "QObject|"
+msgid "Mispredicted Branch"
+msgstr "Тармақтың қате болжамы"
+
+#: libcore/globalconfig.cpp:97
+#, fuzzy
+#| msgid "Global Bus Event"
+msgctxt "QObject|"
+msgid "Global Bus Event"
+msgstr "Глобалды шина оқиғасы"
+
+#: libcore/globalconfig.cpp:98
+#, fuzzy
+#| msgid "Samples"
+msgctxt "QObject|"
+msgid "Samples"
+msgstr "Мысалдар"
+
+#: libcore/globalconfig.cpp:99
+#, fuzzy
+#| msgid "System Time"
+msgctxt "QObject|"
+msgid "System Time"
+msgstr "Жүйелік уақыт"
+
+#: libcore/globalconfig.cpp:100
+#, fuzzy
+#| msgid "User Time"
+msgctxt "QObject|"
+msgid "User Time"
+msgstr "Пайдаланушының уақыты"
+
+#: libcore/globalconfig.cpp:101
+#, fuzzy
+#| msgid "Cycle Estimation"
+msgctxt "QObject|"
+msgid "Cycle Estimation"
+msgstr "Цикл бағалауы"
+
+#: libcore/tracedata.cpp:1240
+#, fuzzy
+#| msgid "(no caller)"
+msgctxt "QObject|"
+msgid "(no caller)"
+msgstr "(шақырусыз)"
+
+#: libcore/tracedata.cpp:1247 libcore/tracedata.cpp:1266
+#, fuzzy, qt-format
+#| msgid "%1 via %2"
+msgctxt "QObject|"
+msgid "%1 via %2"
+msgstr "%2 арқылы %1"
+
+#: libcore/tracedata.cpp:1256
+#, fuzzy
+#| msgid "(no callee)"
+msgctxt "QObject|"
+msgid "(no callee)"
+msgstr "(шақырылатыны жоқ)"
+
+#: libcore/tracedata.cpp:2709
+#, fuzzy
+#| msgid "(global)"
+msgctxt "QObject|"
+msgid "(global)"
+msgstr "(глобалды)"
+
+#: libcore/tracedata.cpp:3144
+#, fuzzy
+#| msgid "(not found)"
+msgctxt "QObject|"
+msgid "(not found)"
+msgstr "(табылмады)"
+
+#: libcore/tracedata.cpp:3692
+#, fuzzy
+#| msgid "Recalculating Function Cycles..."
+msgctxt "TraceData|"
+msgid "Recalculating Function Cycles..."
+msgstr "Функция циклдерін есептеп шығу..."
+
+#: libviews/callgraphview.cpp:414
+#, fuzzy, qt-format
+#| msgid "Call(s) from %1"
+msgctxt "QObject|"
+msgid "Call(s) from %1"
+msgstr "%1 дегеннен шақыру"
+
+#: libviews/callgraphview.cpp:417
+#, fuzzy, qt-format
+#| msgid "Call(s) to %1"
+msgctxt "QObject|"
+msgid "Call(s) to %1"
+msgstr "%1 дегенді шақыру"
+
+#: libviews/callgraphview.cpp:419
+#, fuzzy
+#| msgid "(unknown call)"
+msgctxt "QObject|"
+msgid "(unknown call)"
+msgstr "(беймәлім шақыру)"
+
+#: libviews/callgraphview.cpp:908
+#, fuzzy
+#| msgid "Export Graph"
+msgctxt "QObject|"
+msgid "Export Graph"
+msgstr "Графты экспорттау"
+
+#: libviews/callgraphview.cpp:1608
+#, fuzzy
+#| msgid ""
+#| "<b>Call Graph around active Function</b><p>Depending on configuration, "
+#| "this view shows the call graph environment of the active function. Note: "
+#| "the shown cost is <b>only</b> the cost which is spent while the active "
+#| "function was actually running; i.e. the cost shown for main() - if it is "
+#| "visible - should be the same as the cost of the active function, as that "
+#| "is the part of inclusive cost of main() spent while the active function "
+#| "was running.</p><p>For cycles, blue call arrows indicate that this is an "
+#| "artificial call added for correct drawing which actually never happened.</"
+#| "p><p>If the graph is larger than the widget area, an overview panner is "
+#| "shown in one edge. There are similar visualization options to the Call "
+#| "Treemap; the selected function is highlighted.</p>"
+msgctxt "CallGraphView|"
+msgid ""
+"<b>Call Graph around active Function</b><p>Depending on configuration, this "
+"view shows the call graph environment of the active function. Note: the "
+"shown cost is <b>only</b> the cost which is spent while the active function "
+"was actually running; i.e. the cost shown for main() - if it is visible - "
+"should be the same as the cost of the active function, as that is the part "
+"of inclusive cost of main() spent while the active function was running.</"
+"p><p>For cycles, blue call arrows indicate that this is an artificial call "
+"added for correct drawing which actually never happened.</p><p>If the graph "
+"is larger than the widget area, an overview panner is shown in one edge. "
+"There are similar visualization options to the Call Treemap; the selected "
+"function is highlighted.</p>"
+msgstr ""
+"<b>Белсенді функцияның айналасындағы шақырулар графы</b><p> Конфигурациясына "
+"қарай, бұл көріністе белсенді функцияның шақыру граф айналасы көрсетіледі. "
+"Көрсетілген бағасы белсенді функцияның <b>тек</b> шын бағасын көрсетеді, "
+"яғни егер main() көрінетін болса, ол белсенді функциясының бағасына тең "
+"болады, өйткені ол main() функциясының бағасына, белсенді функция "
+"жегілгенде, кірген.</p><p>Циклдері үшін, көк шақыру жебелері, суретін түзету "
+"үшін қосылған, шынында болмаған жасанды шақырулары.</p><p>Граф виджеттің "
+"өрісінен үлкен болса, оның шетінде толық көрсету тетігі шығарылады. Сонымен "
+"қатар, таңдалған функцияны белгілеп, шақырулар бұтағы түрінде графты "
+"көрсететін амалы бар. Түсінсем бүйырмасын.</p>"
+
+#: libviews/callgraphview.cpp:2020
+#, fuzzy
+#| msgid ""
+#| "Warning: a long lasting graph layouting is in progress.\n"
+#| "Reduce node/edge limits for speedup.\n"
+msgctxt "CallGraphView|"
+msgid ""
+"Warning: a long lasting graph layouting is in progress.\n"
+"Reduce node/edge limits for speedup.\n"
+msgstr ""
+"Ескерту: ұзақ графты жинақтауы етіліп жатыр.\n"
+"Жылдамдату үшін түйін/шектерін шектеңіз.\n"
+
+#: libviews/callgraphview.cpp:2023
+#, fuzzy
+#| msgid "Layouting stopped.\n"
+msgctxt "CallGraphView|"
+msgid "Layouting stopped.\n"
+msgstr "Жинқтауы тоқталды.\n"
+
+#: libviews/callgraphview.cpp:2025
+#, fuzzy, qt-format
+#| msgid "The call graph has %1 nodes and %2 edges.\n"
+msgctxt "CallGraphView|"
+msgid "The call graph has %1 nodes and %2 edges.\n"
+msgstr "Шақырылған граф %1 түйін, %2 шектен тұрады.\n"
+
+#: libviews/callgraphview.cpp:2034
+#, fuzzy
+#| msgid "No graph available because the layouting process failed.\n"
+msgctxt "CallGraphView|"
+msgid "No graph available because the layouting process failed.\n"
+msgstr "Жинақтау жаңылысы себебінен графы жоқ.\n"
+
+#: libviews/callgraphview.cpp:2036
+#, fuzzy, qt-format
+#| msgid ""
+#| "Trying to run the following command did not work:\n"
+#| "'%1'\n"
+msgctxt "CallGraphView|"
+msgid ""
+"Trying to run the following command did not work:\n"
+"'%1'\n"
+msgstr ""
+"Мына команданы жегу әрекеті болмады:\n"
+"'%1'\n"
+
+#: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
+#, fuzzy
+#| msgid "Please check that 'dot' is installed (package GraphViz)."
+msgctxt "CallGraphView|"
+msgid "Please check that 'dot' is installed (package GraphViz)."
+msgstr "'dot' орнатылғанын тксеріңіз (GraphViz дестесінен)."
+
+#: libviews/callgraphview.cpp:2080
+#, fuzzy
+#| msgid "No item activated for which to draw the call graph."
+msgctxt "CallGraphView|"
+msgid "No item activated for which to draw the call graph."
+msgstr "Шақырылған графын салатындары белсендетілмеді."
+
+#: libviews/callgraphview.cpp:2092
+#, fuzzy
+#| msgid "No call graph can be drawn for the active item."
+msgctxt "CallGraphView|"
+msgid "No call graph can be drawn for the active item."
+msgstr "Белсенді аталымға графын салуға болмайды"
+
+#: libviews/callgraphview.cpp:2554
+#, fuzzy
+#| msgid "Error running the graph layouting tool.\n"
+msgctxt "CallGraphView|"
+msgid "Error running the graph layouting tool.\n"
+msgstr "Графты жинақтау құралын жегу қатесі.\n"
+
+#: libviews/callgraphview.cpp:2559
+#, fuzzy, qt-format
+#| msgid ""
+#| "There is no call graph available for function\n"
+#| "\t'%1'\n"
+#| "because it has no cost of the selected event type."
+msgctxt "CallGraphView|"
+msgid ""
+"There is no call graph available for function\n"
+"\t'%1'\n"
+"because it has no cost of the selected event type."
+msgstr ""
+"\t'%1'\n"
+"функция үшін графты шақыруы болмады,\n"
+"өйткені таңдалған оқиға түрінің бағасы жоқ."
+
+#: libviews/callgraphview.cpp:2773
+#, fuzzy
+#| msgid "Caller Depth"
+msgctxt "CallGraphView|"
+msgid "Caller Depth"
+msgstr "Шақыру тереңдігі"
+
+#: libviews/callgraphview.cpp:2774 libviews/callgraphview.cpp:2814
+#, fuzzy
+#| msgid "Unlimited"
+msgctxt "CallGraphView|"
+msgid "Unlimited"
+msgstr "Шектелмеген"
+
+#: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
+#, fuzzy
+#| msgctxt "None"
+#| msgid "Depth 0"
+msgctxt "CallGraphView|None"
+msgid "Depth 0"
+msgstr "тереңдігі: 0"
+
+#: libviews/callgraphview.cpp:2778 libviews/callgraphview.cpp:2818
+#, fuzzy
+#| msgid "max. 10"
+msgctxt "CallGraphView|"
+msgid "max. 1"
+msgstr "шегі: 10"
+
+#: libviews/callgraphview.cpp:2779 libviews/callgraphview.cpp:2819
+#, fuzzy
+#| msgid "max. 2"
+msgctxt "CallGraphView|"
+msgid "max. 2"
+msgstr "шегі: 2"
+
+#: libviews/callgraphview.cpp:2780 libviews/callgraphview.cpp:2820
+#, fuzzy
+#| msgid "max. 5"
+msgctxt "CallGraphView|"
+msgid "max. 5"
+msgstr "шегі: 5"
+
+#: libviews/callgraphview.cpp:2781 libviews/callgraphview.cpp:2821
+#, fuzzy
+#| msgid "max. 10"
+msgctxt "CallGraphView|"
+msgid "max. 10"
+msgstr "шегі: 10"
+
+#: libviews/callgraphview.cpp:2782 libviews/callgraphview.cpp:2822
+#, fuzzy
+#| msgid "max. 15"
+msgctxt "CallGraphView|"
+msgid "max. 15"
+msgstr "шегі: 15"
+
+#: libviews/callgraphview.cpp:2813
+#, fuzzy
+#| msgid "Callee Depth"
+msgctxt "CallGraphView|"
+msgid "Callee Depth"
+msgstr "Шақырылатынын тереңдігі"
+
+#: libviews/callgraphview.cpp:2853
+#, fuzzy
+#| msgid "Min. Node Cost"
+msgctxt "CallGraphView|"
+msgid "Min. Node Cost"
+msgstr "Мин. түйін бағасы"
+
+#: libviews/callgraphview.cpp:2854
+#, fuzzy
+#| msgid "No Minimum"
+msgctxt "CallGraphView|"
+msgid "No Minimum"
+msgstr "Минимумы жоқ"
+
+#: libviews/callgraphview.cpp:2860
+#, fuzzy
+#| msgid "50 %"
+msgctxt "CallGraphView|"
+msgid "50 %"
+msgstr "50 %"
+
+#: libviews/callgraphview.cpp:2861
+#, fuzzy
+#| msgid "20 %"
+msgctxt "CallGraphView|"
+msgid "20 %"
+msgstr "20 %"
+
+#: libviews/callgraphview.cpp:2862
+#, fuzzy
+#| msgid "10 %"
+msgctxt "CallGraphView|"
+msgid "10 %"
+msgstr "10 %"
+
+#: libviews/callgraphview.cpp:2863
+#, fuzzy
+#| msgid "5 %"
+msgctxt "CallGraphView|"
+msgid "5 %"
+msgstr "5 %"
+
+#: libviews/callgraphview.cpp:2864
+#, fuzzy
+#| msgid "2 %"
+msgctxt "CallGraphView|"
+msgid "2 %"
+msgstr "2 %"
+
+#: libviews/callgraphview.cpp:2865
+#, fuzzy
+#| msgid "1 %"
+msgctxt "CallGraphView|"
+msgid "1 %"
+msgstr "1 %"
+
+#: libviews/callgraphview.cpp:2895
+#, fuzzy
+#| msgid "Min. Call Cost"
+msgctxt "CallGraphView|"
+msgid "Min. Call Cost"
+msgstr "Мин. шақыру бағасы"
+
+#: libviews/callgraphview.cpp:2896
+#, fuzzy
+#| msgid "Same as Node"
+msgctxt "CallGraphView|"
+msgid "Same as Node"
+msgstr "Түйіндегіндей"
+
+#: libviews/callgraphview.cpp:2898
+#, fuzzy
+#| msgid "50 % of Node"
+msgctxt "CallGraphView|"
+msgid "50 % of Node"
+msgstr "Түйіндегінен 50%"
+
+#: libviews/callgraphview.cpp:2900
+#, fuzzy
+#| msgid "20 % of Node"
+msgctxt "CallGraphView|"
+msgid "20 % of Node"
+msgstr "Түйіндегінен 20%"
+
+#: libviews/callgraphview.cpp:2902
+#, fuzzy
+#| msgid "10 % of Node"
+msgctxt "CallGraphView|"
+msgid "10 % of Node"
+msgstr "Түйіндегінен 10%"
+
+#: libviews/callgraphview.cpp:2931
+#, fuzzy
+#| msgid "Birds-eye View"
+msgctxt "CallGraphView|"
+msgid "Birds-eye View"
+msgstr "Ұшқан құс көзімен қарағанда"
+
+#: libviews/callgraphview.cpp:2932
+#, fuzzy
+#| msgid "Top Left"
+msgctxt "CallGraphView|"
+msgid "Top Left"
+msgstr "Жоғары сол жақ"
+
+#: libviews/callgraphview.cpp:2933
+#, fuzzy
+#| msgid "Top Right"
+msgctxt "CallGraphView|"
+msgid "Top Right"
+msgstr "Жоғары оң жақ"
+
+#: libviews/callgraphview.cpp:2934
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "CallGraphView|"
+msgid "Bottom Left"
+msgstr "Төменгі сол жақ"
+
+#: libviews/callgraphview.cpp:2935
+#, fuzzy
+#| msgid "Bottom Right"
+msgctxt "CallGraphView|"
+msgid "Bottom Right"
+msgstr "Төменгі оң жақ"
+
+#: libviews/callgraphview.cpp:2936
+#, fuzzy
+#| msgid "Automatic"
+msgctxt "CallGraphView|"
+msgid "Automatic"
+msgstr "Авто"
+
+#: libviews/callgraphview.cpp:2937
+#, fuzzy
+#| msgid "Hide"
+msgctxt "CallGraphView|"
+msgid "Hide"
+msgstr "Жасыру"
+
+#: libviews/callgraphview.cpp:2967
+#, fuzzy
+#| msgid "Layout"
+msgctxt "CallGraphView|"
+msgid "Layout"
+msgstr "Орналасуы"
+
+#: libviews/callgraphview.cpp:2968
+#, fuzzy
+#| msgid "Top to Down"
+msgctxt "CallGraphView|"
+msgid "Top to Down"
+msgstr "Жоғардан төмеге"
+
+#: libviews/callgraphview.cpp:2969
+#, fuzzy
+#| msgid "Left to Right"
+msgctxt "CallGraphView|"
+msgid "Left to Right"
+msgstr "Солдан оңға"
+
+#: libviews/callgraphview.cpp:2970
+#, fuzzy
+#| msgid "Circular"
+msgctxt "CallGraphView|"
+msgid "Circular"
+msgstr "Дөнгелек"
+
+#: libviews/callgraphview.cpp:3010 libviews/callgraphview.cpp:3015
+#: libviews/callgraphview.cpp:3035
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "CallGraphView|"
+msgid "Go to '%1'"
+msgstr "'%1' дегенге өту"
+
+#: libviews/callgraphview.cpp:3046
+#, fuzzy
+#| msgid "Stop Layouting"
+msgctxt "CallGraphView|"
+msgid "Stop Layouting"
+msgstr "Орналастыруды тоқтату"
+
+#: libviews/callgraphview.cpp:3053
+#, fuzzy
+#| msgid "Export Graph"
+msgctxt "CallGraphView|"
+msgid "Export Graph"
+msgstr "Графты экспорттау"
+
+#: libviews/callgraphview.cpp:3054
+#, fuzzy
+#| msgid "As DOT file..."
+msgctxt "CallGraphView|"
+msgid "As DOT file..."
+msgstr "DOT файл ретінде..."
+
+#: libviews/callgraphview.cpp:3055
+#, fuzzy
+#| msgid "As Image..."
+msgctxt "CallGraphView|"
+msgid "As Image..."
+msgstr "Кескін ретінде..."
+
+#: libviews/callgraphview.cpp:3058
+#, fuzzy
+#| msgid "Graph"
+msgctxt "CallGraphView|"
+msgid "Graph"
+msgstr "График"
+
+#: libviews/callgraphview.cpp:3066
+#, fuzzy
+#| msgid "Arrows for Skipped Calls"
+msgctxt "CallGraphView|"
+msgid "Arrows for Skipped Calls"
+msgstr "Өткізіп жіберілген шақырулардың жебелері"
+
+#: libviews/callgraphview.cpp:3071
+#, fuzzy
+#| msgid "Inner-cycle Calls"
+msgctxt "CallGraphView|"
+msgid "Inner-cycle Calls"
+msgstr "Ішкі-цикл шақырулар"
+
+#: libviews/callgraphview.cpp:3076
+#, fuzzy
+#| msgid "Cluster Groups"
+msgctxt "CallGraphView|"
+msgid "Cluster Groups"
+msgstr "Топтар шоғыры"
+
+#: libviews/callgraphview.cpp:3080
+#, fuzzy
+#| msgid "Visualization"
+msgctxt "CallGraphView|"
+msgid "Visualization"
+msgstr "Көрсету"
+
+#: libviews/callgraphview.cpp:3081
+#, fuzzy
+#| msgid "Compact"
+msgctxt "CallGraphView|"
+msgid "Compact"
+msgstr "Ықшамды"
+
+#: libviews/callgraphview.cpp:3084
+#, fuzzy
+#| msgid "Normal"
+msgctxt "CallGraphView|"
+msgid "Normal"
+msgstr "Қалыпты"
+
+#: libviews/callgraphview.cpp:3087
+#, fuzzy
+#| msgid "Tall"
+msgctxt "CallGraphView|"
+msgid "Tall"
+msgstr "Биік"
+
+#: libviews/callgraphview.cpp:3119
+#, fuzzy
+#| msgid "Export Graph As Image"
+msgctxt "CallGraphView|"
+msgid "Export Graph As Image"
+msgstr "Графты кескін файлы қылып экспорттау"
+
+#: libviews/callgraphview.cpp:3121
+#, fuzzy
+#| msgid "Images (*.png *.jpg)"
+msgctxt "CallGraphView|"
+msgid "Images (*.png *.jpg)"
+msgstr "Кескіндер (*png *.jpg)"
+
+#: libviews/callitem.cpp:73 libviews/partlistitem.cpp:131
+#, fuzzy
+#| msgid "(active)"
+msgctxt "QObject|"
+msgid "(active)"
+msgstr "(белсенді)"
+
+#: libviews/callmapview.cpp:52
+#, fuzzy
+#| msgctxt "Name"
+#| msgid "A thing's name"
+msgctxt "CallMapView|Name"
+msgid "A thing's name"
+msgstr "Бірдемнің атауы"
+
+#: libviews/callmapview.cpp:53
+#, fuzzy
+#| msgid "Cost"
+msgctxt "CallMapView|"
+msgid "Cost"
+msgstr "Бағасы"
+
+#: libviews/callmapview.cpp:54
+#, fuzzy
+#| msgid "Location"
+msgctxt "CallMapView|"
+msgid "Location"
+msgstr "Орны"
+
+#: libviews/callmapview.cpp:56
+#, fuzzy
+#| msgid "Calls"
+msgctxt "CallMapView|"
+msgid "Calls"
+msgstr "Шақырулар"
+
+#: libviews/callmapview.cpp:91
+#, fuzzy
+#| msgid ""
+#| "<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers "
+#| "of the current activated function. Each colored rectangle represents a "
+#| "function; its size tries to be proportional to the cost spent therein "
+#| "while the active function is running (however, there are drawing "
+#| "constraints).</p>"
+msgctxt "CallMapView|"
+msgid ""
+"<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>Шақырушы картасы</b>Бұл граф, назардағы белсендетілген функцияның бүкіл "
+"шақырушыларын, бір біріне салынған иерархиясын көрсетеді.  Әр түрлі-түсті "
+"тікбұрыш бір функцияны белгілейді; оның көлемі белсенді функция орындау "
+"бағасына сәйкесті (бірақ оны салу шектеулері бар)."
+
+#: libviews/callmapview.cpp:98
+#, fuzzy
+#| msgid ""
+#| "<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+#| "the current activated function. Each colored rectangle represents a "
+#| "function; its size tries to be proportional to the cost spent therein "
+#| "while the active function is running (however, there are drawing "
+#| "constraints).</p>"
+msgctxt "CallMapView|"
+msgid ""
+"<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>Шақыру картасы</b>Бұл граф, назардағы белсендетілген функцияның бүкіл "
+"шақыруларын, бір біріне салынған иерархиясын көрсетеді.  Әр түрлі-түсті "
+"тікбұрыш бір функцияны белгілейді; оның көлемі белсенді функция орындау "
+"бағасына сәйкесті (бірақ оны салу шектеулері бар)."
+
+#: libviews/callmapview.cpp:106
+#, fuzzy
+#| msgid ""
+#| "<p>Appearance options can be found in the in the context menu. To get "
+#| "exact size proportions, choose 'Hide incorrect borders'. As this mode can "
+#| "be <em>very</em> time consuming, you may want to limit the maximum drawn "
+#| "nesting level before. 'Best' determinates the split direction for "
+#| "children from the aspect ratio of the parent. 'Always Best' decides on "
+#| "remaining space for each sibling. 'Ignore Proportions' takes space for "
+#| "function name drawing <em>before</em> drawing children. Note that size "
+#| "proportions can get <em>heavily</em> wrong.</p><p>This is a <em>TreeMap</"
+#| "em> widget. Keyboard navigation is available with the left/right arrow "
+#| "keys for traversing siblings, and up/down arrow keys to go a nesting "
+#| "level up/down. <em>Return</em> activates the current item.</p>"
+msgctxt "CallMapView|"
+msgid ""
+"<p>Appearance options can be found in the in the context menu. To get exact "
+"size proportions, choose 'Hide incorrect borders'. As this mode can be "
+"<em>very</em> time consuming, you may want to limit the maximum drawn "
+"nesting level before. 'Best' determinates the split direction for children "
+"from the aspect ratio of the parent. 'Always Best' decides on remaining "
+"space for each sibling. 'Ignore Proportions' takes space for function name "
+"drawing <em>before</em> drawing children. Note that size proportions can get "
+"<em>heavily</em> wrong.</p><p>This is a <em>TreeMap</em> widget. Keyboard "
+"navigation is available with the left/right arrow keys for traversing "
+"siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
+"em> activates the current item.</p>"
+msgstr ""
+"<p>Көрініс параметрлері контекстті мәзірінде табасыз. Өлшем сәйкестігін "
+"қамтамасыз ету үшін 'Дұрыс емес жиектерін салмау' дегенді таңдаңыз. Бұл "
+"режім <em>өте</em> көп уақыты алатын болған соң, алдымен бір-біріне салынуды "
+"көрсету деңгейін шектеуі мүмкін жөн болар. Амалдары: 'Шақтау' дегені "
+"еншілестерді бөлу бағытын аталықтың ара-қатынасына қарап анықтайды. "
+"'Әрқашанда шақтау' деген әр еншілеске қалған орынға қарайды. 'Пропорцияларын "
+"сақтамау' функцияның атауына орының еншілесті салу <em>алдында</em> бөледі. "
+"Бұнда өлшем пропорциялары <em>өрескел</em> бұзылмақ.</p> <p>Бұл <em>Бұтақты "
+"карта</em> виджеті. Солға/Оңға пернелер көмегімен шарлауға болады, Жоғары/"
+"Төмен пернелері бір-біріне салыну деңгейін аралауға арналған. <em>Enter</em>-"
+"ді басып назардағы аталымды белсендетуге болады.</p>"
+
+#: libviews/callmapview.cpp:139
+#, fuzzy
+#| msgid "Go To"
+msgctxt "CallMapView|"
+msgid "Go To"
+msgstr "Мынаған өту"
+
+#: libviews/callmapview.cpp:170
+#, fuzzy
+#| msgid "Stop at Depth"
+msgctxt "CallMapView|"
+msgid "Stop at Depth"
+msgstr "Төқтайтын тереңдігі"
+
+#: libviews/callmapview.cpp:171
+#, fuzzy
+#| msgid "No Depth Limit"
+msgctxt "CallMapView|"
+msgid "No Depth Limit"
+msgstr "Тереңдігінің шегі жоқ"
+
+#: libviews/callmapview.cpp:173
+#, fuzzy
+#| msgid "Depth 10"
+msgctxt "CallMapView|"
+msgid "Depth 10"
+msgstr "Тереңдігі: 10"
+
+#: libviews/callmapview.cpp:174
+#, fuzzy
+#| msgid "Depth 15"
+msgctxt "CallMapView|"
+msgid "Depth 15"
+msgstr "Тереңдігі: 15"
+
+#: libviews/callmapview.cpp:175
+#, fuzzy
+#| msgid "Depth 20"
+msgctxt "CallMapView|"
+msgid "Depth 20"
+msgstr "Тереңдігі: 20"
+
+#: libviews/callmapview.cpp:178
+#, fuzzy, qt-format
+#| msgid "Depth of '%1' (%2)"
+msgctxt "CallMapView|"
+msgid "Depth of '%1' (%2)"
+msgstr "'%1' (%2) тереңдігі"
+
+#: libviews/callmapview.cpp:185
+#, fuzzy, qt-format
+#| msgid "Decrement Depth (to %1)"
+msgctxt "CallMapView|"
+msgid "Decrement Depth (to %1)"
+msgstr "Тереңігін (%1 дейін) азайту"
+
+#: libviews/callmapview.cpp:187
+#, fuzzy, qt-format
+#| msgid "Increment Depth (to %1)"
+msgctxt "CallMapView|"
+msgid "Increment Depth (to %1)"
+msgstr "Тереңігін (%1 дейін) үлғайту"
+
+#: libviews/callmapview.cpp:213
+#, fuzzy
+#| msgid "Stop at Function"
+msgctxt "CallMapView|"
+msgid "Stop at Function"
+msgstr "Тоқтайтын функциясы"
+
+#: libviews/callmapview.cpp:214
+#, fuzzy
+#| msgid "No Function Limit"
+msgctxt "CallMapView|"
+msgid "No Function Limit"
+msgstr "Тоқтайтын функциясы жоқ"
+
+#: libviews/callmapview.cpp:257
+#, fuzzy
+#| msgid "Stop at Area"
+msgctxt "CallMapView|"
+msgid "Stop at Area"
+msgstr "Тоқтайтың аумақ"
+
+#: libviews/callmapview.cpp:258
+#, fuzzy
+#| msgid "No Area Limit"
+msgctxt "CallMapView|"
+msgid "No Area Limit"
+msgstr "Тоқтайтың аумақ жоқ"
+
+#: libviews/callmapview.cpp:260
+#, fuzzy
+#| msgid "100 Pixels"
+msgctxt "CallMapView|"
+msgid "100 Pixels"
+msgstr "100 пиксел"
+
+#: libviews/callmapview.cpp:261
+#, fuzzy
+#| msgid "200 Pixels"
+msgctxt "CallMapView|"
+msgid "200 Pixels"
+msgstr "200 пиксел"
+
+#: libviews/callmapview.cpp:262
+#, fuzzy
+#| msgid "500 Pixels"
+msgctxt "CallMapView|"
+msgid "500 Pixels"
+msgstr "500 пиксел"
+
+#: libviews/callmapview.cpp:263
+#, fuzzy
+#| msgid "1000 Pixels"
+msgctxt "CallMapView|"
+msgid "1000 Pixels"
+msgstr "1000 пиксел"
+
+#: libviews/callmapview.cpp:269
+#, fuzzy, qt-format
+#| msgid "Area of '%1' (%2)"
+msgctxt "CallMapView|"
+msgid "Area of '%1' (%2)"
+msgstr "'%1' (%2) аумағы"
+
+#: libviews/callmapview.cpp:275
+#, fuzzy, qt-format
+#| msgid "Double Area Limit (to %1)"
+msgctxt "CallMapView|"
+msgid "Double Area Limit (to %1)"
+msgstr "Аумақ шегін екі еселеу (%1 дейін)"
+
+#: libviews/callmapview.cpp:277
+#, fuzzy, qt-format
+#| msgid "Half Area Limit (to %1)"
+msgctxt "CallMapView|"
+msgid "Half Area Limit (to %1)"
+msgstr "Аумақ шегін жартылау (%1 дейін)"
+
+#: libviews/callmapview.cpp:327
+#, fuzzy
+#| msgid "Visualization"
+msgctxt "CallMapView|"
+msgid "Visualization"
+msgstr "Көрсету"
+
+#: libviews/callmapview.cpp:328
+#, fuzzy
+#| msgid "Split Direction"
+msgctxt "CallMapView|"
+msgid "Split Direction"
+msgstr "Бөлу бағыты"
+
+#: libviews/callmapview.cpp:331
+#, fuzzy
+#| msgid "Skip Incorrect Borders"
+msgctxt "CallMapView|"
+msgid "Skip Incorrect Borders"
+msgstr "Дұрыс емес жиектерін салмау"
+
+#: libviews/callmapview.cpp:336
+#, fuzzy
+#| msgid "Border Width"
+msgctxt "CallMapView|"
+msgid "Border Width"
+msgstr "Жиегінің қалыңдығы"
+
+#: libviews/callmapview.cpp:337
+#, fuzzy
+#| msgid "Border 0"
+msgctxt "CallMapView|"
+msgid "Border 0"
+msgstr "Жиек 0"
+
+#: libviews/callmapview.cpp:339
+#, fuzzy
+#| msgid "Border 1"
+msgctxt "CallMapView|"
+msgid "Border 1"
+msgstr "Жиек 1"
+
+#: libviews/callmapview.cpp:340
+#, fuzzy
+#| msgid "Border 2"
+msgctxt "CallMapView|"
+msgid "Border 2"
+msgstr "Жиек 2"
+
+#: libviews/callmapview.cpp:341
+#, fuzzy
+#| msgid "Border 3"
+msgctxt "CallMapView|"
+msgid "Border 3"
+msgstr "Жиек 3"
+
+#: libviews/callmapview.cpp:346
+#, fuzzy
+#| msgid "Draw Symbol Names"
+msgctxt "CallMapView|"
+msgid "Draw Symbol Names"
+msgstr "Символ атауларын салу"
+
+#: libviews/callmapview.cpp:348
+#, fuzzy
+#| msgid "Draw Cost"
+msgctxt "CallMapView|"
+msgid "Draw Cost"
+msgstr "Бағасын салу"
+
+#: libviews/callmapview.cpp:350
+#, fuzzy
+#| msgid "Draw Location"
+msgctxt "CallMapView|"
+msgid "Draw Location"
+msgstr "Орнын салу"
+
+#: libviews/callmapview.cpp:352
+#, fuzzy
+#| msgid "Draw Calls"
+msgctxt "CallMapView|"
+msgid "Draw Calls"
+msgstr "Шақыруларын салу"
+
+#: libviews/callmapview.cpp:356
+#, fuzzy
+#| msgid "Ignore Proportions"
+msgctxt "CallMapView|"
+msgid "Ignore Proportions"
+msgstr "Пропорцияларын сақтамау"
+
+#: libviews/callmapview.cpp:358
+#, fuzzy
+#| msgid "Allow Rotation"
+msgctxt "CallMapView|"
+msgid "Allow Rotation"
+msgstr "Бұрылысты рұқсат ету"
+
+#: libviews/callmapview.cpp:376
+#, fuzzy
+#| msgid "Shading"
+msgctxt "CallMapView|"
+msgid "Shading"
+msgstr "Көлеңкелеу"
+
+#: libviews/callmapview.cpp:428
+#, fuzzy, qt-format
+#| msgid "Call Map: Current is '%1'"
+msgctxt "CallMapView|"
+msgid "Call Map: Current is '%1'"
+msgstr "Шақырулар картасы: Қазіргісі - '%1'"
+
+#: libviews/callmapview.cpp:621
+#, fuzzy
+#| msgid "(no function)"
+msgctxt "QObject|"
+msgid "(no function)"
+msgstr "(функциясы жоқ)"
+
+#: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
+#, fuzzy
+#| msgid "(no call)"
+msgctxt "QObject|"
+msgid "(no call)"
+msgstr "(шақыруы жоқ)"
+
+#: libviews/callview.cpp:37
+#, fuzzy
+#| msgid "Cost"
+msgctxt "CallView|"
+msgid "Cost"
+msgstr "Бағасы"
+
+#: libviews/callview.cpp:38
+#, fuzzy
+#| msgid "Cost per call"
+msgctxt "CallView|"
+msgid "Cost per call"
+msgstr "Шақыруларға шаққан бағасы"
+
+#: libviews/callview.cpp:39
+#, fuzzy
+#| msgid "Cost 2"
+msgctxt "CallView|"
+msgid "Cost 2"
+msgstr "2-бағасы"
+
+#: libviews/callview.cpp:40
+#, fuzzy
+#| msgid "Cost 2 per call"
+msgctxt "CallView|"
+msgid "Cost 2 per call"
+msgstr "Шақыруларға шаққан 2-бағасы"
+
+#: libviews/callview.cpp:41
+#, fuzzy
+#| msgid "Count"
+msgctxt "CallView|"
+msgid "Count"
+msgstr "Есебі"
+
+#: libviews/callview.cpp:42
+#, fuzzy
+#| msgid "Caller"
+msgctxt "CallView|"
+msgid "Caller"
+msgstr "Шақырушысы"
+
+#: libviews/callview.cpp:42
+#, fuzzy
+#| msgid "Callee"
+msgctxt "CallView|"
+msgid "Callee"
+msgstr "Шақырылатыны"
+
+#: libviews/callview.cpp:76
+#, fuzzy
+#| msgid ""
+#| "<b>List of direct Callers</b><p>This list shows all functions calling the "
+#| "current selected one directly, together with a call count and the cost "
+#| "spent in the current selected function while being called from the "
+#| "function from the list.</p><p>An icon instead of an inclusive cost "
+#| "specifies that this is a call inside of a recursive cycle. An inclusive "
+#| "cost makes no sense here.</p><p>Selecting a function makes it the current "
+#| "selected one of this information panel. If there are two panels (Split "
+#| "mode), the function of the other panel is changed instead.</p>"
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callers</b><p>This list shows all functions calling the "
+"current selected one directly, together with a call count and the cost spent "
+"in the current selected function while being called from the function from "
+"the list.</p><p>An icon instead of an inclusive cost specifies that this is "
+"a call inside of a recursive cycle. An inclusive cost makes no sense here.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>Тікелей шақырушылар тізімі</b><p>Бұл тізім таңдалған функцияны тікелей "
+"шақыратын функцияларды, неше рет шақырылған және сол таңдалған функциясы "
+"тізімдегі функция үшін қанша жұмыс істегені туралы мәліметімен қоса, "
+"көрсетеді.</p><p>Кірген бағасының орында таңбаша тұрса, ол бұл шақыру "
+"рекурсивті циклінің ішіндегісі деген сөз. Бұндайда кірген бағасын келтіруі "
+"жөнсіз.</p><p>Функцияны таңдағанда оның мәліметі осы ақпарат панелінде "
+"көрсетіле бастайды. Бұл панельдері екеу (Бөлінген күйде) болса, оның орына "
+"екінші  панельдегі функция ауыстырылады.</p>"
+
+#: libviews/callview.cpp:89
+#, fuzzy
+#| msgid ""
+#| "<b>List of direct Callees</b><p>This list shows all functions called by "
+#| "the current selected one directly, together with a call count and the "
+#| "cost spent in this function while being called from the selected function."
+#| "</p><p>Selecting a function makes it the current selected one of this "
+#| "information panel. If there are two panels (Split mode), the function of "
+#| "the other panel is changed instead.</p>"
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callees</b><p>This list shows all functions called by the "
+"current selected one directly, together with a call count and the cost spent "
+"in this function while being called from the selected function.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>Тікелей шақырылғандар тізімі</b><p>Бұл тізім таңдалған функциядан тікелей "
+"шақырылған функцияларды, неше рет шақырылған және сол таңдаған функциясы "
+"үшін ол қанша жұмыс істегені туралы мәліметімен қоса, көрсетеді..</"
+"p><p>Функцияны таңдағанда оның мәліметі осы ақпарат панелінде көрсетіледі. "
+"Бұл панельдері екеу (Бөлінген түрде) болса, оның орына екінші  панельдегі "
+"функция өзгереді.</p>"
+
+#: libviews/callview.cpp:118 libviews/callview.cpp:123
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "CallView|"
+msgid "Go to '%1'"
+msgstr "'%1' дегенге өту"
+
+#: libviews/callview.cpp:257 libviews/callview.cpp:261
+#, fuzzy, qt-format
+#| msgid "%1 per call"
+msgctxt "CallView|"
+msgid "%1 per call"
+msgstr "Шақыруларға шаққан %1"
+
+#: libviews/costlistitem.cpp:53
+#, fuzzy, qt-format
+#| msgid "(%1 function(s) skipped)"
+msgctxt "QObject|"
+msgid "(%n item(s) skipped)"
+msgid_plural "(%n item(s) skipped)"
+msgstr[0] "(%1 функция өткізіп жіберілген)"
+
+#: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
+#, fuzzy, qt-format
+#| msgid "(%1 function(s) skipped)"
+msgctxt "QObject|"
+msgid "(%n function(s) skipped)"
+msgid_plural "(%n function(s) skipped)"
+msgstr[0] "(%1 функция өткізіп жіберілген)"
+
+#: libviews/coverageview.cpp:37
+#, fuzzy
+#| msgid "Incl."
+msgctxt "CoverageView|"
+msgid "Incl."
+msgstr "Жалпы"
+
+#: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
+#, fuzzy
+#| msgid "Distance"
+msgctxt "CoverageView|"
+msgid "Distance"
+msgstr "Қашықтық"
+
+#: libviews/coverageview.cpp:41
+#, fuzzy
+#| msgid "Called"
+msgctxt "CoverageView|"
+msgid "Called"
+msgstr "Шақырылған"
+
+#: libviews/coverageview.cpp:42
+#, fuzzy
+#| msgid "Caller"
+msgctxt "CoverageView|"
+msgid "Caller"
+msgstr "Шақырушысы"
+
+#: libviews/coverageview.cpp:46
+#, fuzzy
+#| msgid "Self"
+msgctxt "CoverageView|"
+msgid "Self"
+msgstr "Өзінің"
+
+#: libviews/coverageview.cpp:48
+#, fuzzy
+#| msgid "Calling"
+msgctxt "CoverageView|"
+msgid "Calling"
+msgstr "Шақыру"
+
+#: libviews/coverageview.cpp:49
+#, fuzzy
+#| msgid "Callee"
+msgctxt "CoverageView|"
+msgid "Callee"
+msgstr "Шақырылатыны"
+
+#: libviews/coverageview.cpp:84
+#, fuzzy
+#| msgid ""
+#| "<b>List of all Callers</b><p>This list shows all functions calling the "
+#| "current selected one, either directly or with several functions in-"
+#| "between on the stack; the number of functions in-between plus one is "
+#| "called the <em>Distance</em> (e.g. for function A,B,C there exists a call "
+#| "from A to C when A calls B and B calls C, i.e. A => B => C. The distance "
+#| "here is 2).</p><p>Absolute cost shown is the cost spent in the selected "
+#| "function while a listed function is active; relative cost is the "
+#| "percentage of all cost spent in the selected function while the listed "
+#| "one is active. The cost graphic shows logarithmic percentage with a "
+#| "different color for each distance.</p><p>As there can be many calls from "
+#| "the same function, the distance column sometimes shows the range of "
+#| "distances for all calls happening; then, in parentheses, there is the "
+#| "medium distance, i.e. the distance where most of the call costs happened."
+#| "</p><p>Selecting a function makes it the current selected one of this "
+#| "information panel. If there are two panels (Split mode), the function of "
+#| "the other panel is changed instead.</p>"
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callers</b><p>This list shows all functions calling the "
+"current selected one, either directly or with several functions in-between "
+"on the stack; the number of functions in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the selected function while a "
+"listed function is active; relative cost is the percentage of all cost spent "
+"in the selected function while the listed one is active. The cost graphic "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls from the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+"<b>Бүкіл шақырушылар тізімі</b><p>Бұл таңдалған функцияны шақырған бүкіл  "
+"функциялар тізімі. Бұнда тікелей шақырғандар да, арада бірнеше функция "
+"арқылы шақырғандары да бар, (стек кезегіндегі) арадағы функциялар саны плюс "
+"бір - <em>Қашықтық</em> деп аталады (мысалы,.A,B,C функциялар үшін, A "
+"функциясынан C функциясы шақырылса, A-дан B шақрылса әне B-дан C шақырылса, "
+"яғни, A => B => C. Бұндағы қашықтық: 2).</p><p>Көрсетілетін абсолютті бағасы "
+"- ол тізімделген функция белсенді болғандағы тандалған функцияның "
+"салыстырмалы бағасы - ол тізімделген функция белсенді болғандағы тандалған "
+"функция жұмсаған уақыттың пайызы.. Бағасының графигі, әрбір қашықтығы үшін, "
+"түрлі түстерімен, логарифмделген пайыздығын көрсетеді.</p><p>Бір функциядан "
+"екінші функцияны бірнеше рет шақыра алатын болғасын, қашықтық бағанында "
+"кейбірде болғандардың қашықтық аумағын көрсетеді, ал жақшада орташадағы "
+"қашықтығын, демек, ең коп шақырған қашықтықты көрсетеді.</p><p> Функцияны "
+"таңдағанда оның мәліметі осы ақпарат панелінде көрсетіледі. Бұл панельдері "
+"екеу (Бөлінген түрде) болса, оның орына екінші  панельдегі функция өзгереді."
+"</p>"
+
+#: libviews/coverageview.cpp:114
+#, fuzzy
+#| msgid ""
+#| "<b>List of all Callees</b><p>This list shows all functions called by the "
+#| "current selected one, either directly or with several function in-between "
+#| "on the stack; the number of function in-between plus one is called the "
+#| "<em>Distance</em> (e.g. for function A,B,C there exists a call from A to "
+#| "C when A calls B and B calls C, i.e. A => B => C. The distance here is 2)."
+#| "</p><p>Absolute cost shown is the cost spent in the listed function while "
+#| "the selected is active; relative cost is the percentage of all cost spent "
+#| "in the listed function while the selected one is active. The cost graphic "
+#| "always shows logarithmic percentage with a different color for each "
+#| "distance.</p><p>As there can be many calls to the same function, the "
+#| "distance column sometimes shows the range of distances for all calls "
+#| "happening; then, in parentheses, there is the medium distance, i.e. the "
+#| "distance where most of the call costs happened.</p><p>Selecting a "
+#| "function makes it the current selected one of this information panel. If "
+#| "there are two panels (Split mode), the function of the other panel is "
+#| "changed instead.</p>"
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callees</b><p>This list shows all functions called by the "
+"current selected one, either directly or with several function in-between on "
+"the stack; the number of function in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the listed function while the "
+"selected is active; relative cost is the percentage of all cost spent in the "
+"listed function while the selected one is active. The cost graphic always "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls to the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+"<b>Бүкіл шақырылғандар тізімі</b><p>Бұл таңдалған функциядан шақырған бүкіл  "
+"функциялар тізімі. Бұнда тікелей шақырғандар да, арада бірнеше функция "
+"арқылы шақырғандары да бар, (стек кезегіндегі) арадағы функциялар саны плюс "
+"бір - <em>Қашықтық</em> деп аталады (мысалы,.A,B,C функциялар үшін, A "
+"функциясынан C функциясы шақырылса, A-дан B шақрылса әне B-дан C шақырылса, "
+"яғни, A => B => C. Бұндағы қашықтық: 2).</p><p>Көрсетілетін абсолютті бағасы "
+"- ол тізімделген функция белсенді болғандағы тандалған функция салыстырмалы "
+"бағасы - ол тізімделген функция белсенді болғандағы тандалған функция "
+"салыстырмалы бағасының пайызы. Бағасының графигі, әрбір қашықтығы үшін, "
+"түрлі түстерімен, логарифмделген пайыздығын көрсетеді.</p><p>Бір функциядан "
+"екінші функцияны бірнеше рет шақыра алатын болғасын, қашықтық бағанында "
+"кейбірде болғандардың қашықтық аумағын көрсетеді, ал жақшада орташадағы "
+"қашықтығын, демек, ең коп шақырған қашықтықты көрсетеді.</p><p> Функцияны "
+"таңдағанда оның мәліметі осы ақпарат панелінде көрсетіледі. Бұл панельдері "
+"екеу (Бөлінген түрде) болса, оның орына екінші  панельдегі функция өзгереді."
+"</p>"
+
+#: libviews/coverageview.cpp:160
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "CoverageView|"
+msgid "Go to '%1'"
+msgstr "'%1' дегенге өту"
+
+#: libviews/eventtypeitem.cpp:48
+#, fuzzy
+#| msgid "Unknown Type"
+msgctxt "QObject|"
+msgid "Unknown Type"
+msgstr "Беймәлім түрі"
+
+#: libviews/eventtypeview.cpp:37
+#, fuzzy
+#| msgid "Event Type"
+msgctxt "EventTypeView|"
+msgid "Event Type"
+msgstr "Оқиға түрі"
+
+#: libviews/eventtypeview.cpp:38
+#, fuzzy
+#| msgid "Incl."
+msgctxt "EventTypeView|"
+msgid "Incl."
+msgstr "Жалпы"
+
+#: libviews/eventtypeview.cpp:39
+#, fuzzy
+#| msgid "Self"
+msgctxt "EventTypeView|"
+msgid "Self"
+msgstr "Өзінің"
+
+#: libviews/eventtypeview.cpp:40
+#, fuzzy
+#| msgid "Short"
+msgctxt "EventTypeView|"
+msgid "Short"
+msgstr "Қысқа"
+
+#: libviews/eventtypeview.cpp:42
+#, fuzzy
+#| msgid "Formula"
+msgctxt "EventTypeView|"
+msgid "Formula"
+msgstr "Формула"
+
+#: libviews/eventtypeview.cpp:76
+#, fuzzy
+#| msgid ""
+#| "<b>Cost Types List</b><p>This list shows all cost types available and "
+#| "what the self/inclusive cost of the current selected function is for that "
+#| "cost type.</p><p>By choosing a cost type from the list, you change the "
+#| "cost type of costs shown all over KCachegrind to be the selected one.</p>"
+msgctxt "EventTypeView|"
+msgid ""
+"<b>Cost Types List</b><p>This list shows all cost types available and what "
+"the self/inclusive cost of the current selected function is for that cost "
+"type.</p><p>By choosing a cost type from the list, you change the cost type "
+"of costs shown all over KCachegrind to be the selected one.</p>"
+msgstr ""
+"<b>Баға түрлерінің тізімі</b><p>Бұл тізімде қол жетерлік баға түрлерін және "
+"назардағы таңдалған функцияда өзінің немесе кірген бағасы есептелетінін "
+"көрсетеді.</p><p>Баға түрін тіізміен таңдағанда бүкіл KCachegrind бойы "
+"көрсетілетін бағалардың түрі таңдалған түріне ауысады.</p>"
+
+#: libviews/eventtypeview.cpp:96
+#, fuzzy
+#| msgid "Set as Secondary Event Type"
+msgctxt "EventTypeView|"
+msgid "Set as Secondary Event Type"
+msgstr "Реті екінші оқиға түрі кылу"
+
+#: libviews/eventtypeview.cpp:98
+#, fuzzy
+#| msgid "Hide Secondary Event Type"
+msgctxt "EventTypeView|"
+msgid "Hide Secondary Event Type"
+msgstr "Реті екінші оқиға түрін жасыру"
+
+#: libviews/eventtypeview.cpp:107
+#, fuzzy
+#| msgid "Edit Long Name"
+msgctxt "EventTypeView|"
+msgid "Edit Long Name"
+msgstr "Толық атауын өзгерту"
+
+#: libviews/eventtypeview.cpp:108
+#, fuzzy
+#| msgid "Edit Short Name"
+msgctxt "EventTypeView|"
+msgid "Edit Short Name"
+msgstr "Қысқа атауын өзгерту"
+
+#: libviews/eventtypeview.cpp:109
+#, fuzzy
+#| msgid "Edit Formula"
+msgctxt "EventTypeView|"
+msgid "Edit Formula"
+msgstr "Формуланы өңдеу"
+
+#: libviews/eventtypeview.cpp:110
+#, fuzzy
+#| msgid "Remove"
+msgctxt "EventTypeView|"
+msgid "Remove"
+msgstr "Өшіру"
+
+#: libviews/eventtypeview.cpp:119
+#, fuzzy
+#| msgid "New Event Type..."
+msgctxt "EventTypeView|"
+msgid "New Event Type..."
+msgstr " Жаңа оқиға түрі..."
+
+#: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
+#, fuzzy, qt-format
+#| msgid "New%1"
+msgctxt "EventTypeView|"
+msgid "New%1"
+msgstr "Жаңа%1"
+
+#: libviews/eventtypeview.cpp:160
+#, fuzzy, qt-format
+#| msgid "New Event Type %1"
+msgctxt "EventTypeView|"
+msgid "New Event Type %1"
+msgstr " Жаңа оқиға түрі %1"
+
+#: libviews/functionlistmodel.cpp:45
+#, fuzzy
+#| msgid "Incl."
+msgctxt "FunctionListModel|"
+msgid "Incl."
+msgstr "Жалпы"
+
+#: libviews/functionlistmodel.cpp:46
+#, fuzzy
+#| msgid "Self"
+msgctxt "FunctionListModel|"
+msgid "Self"
+msgstr "Өзінің"
+
+#: libviews/functionlistmodel.cpp:47
+#, fuzzy
+#| msgid "Called"
+msgctxt "FunctionListModel|"
+msgid "Called"
+msgstr "Шақырылған"
+
+#: libviews/functionlistmodel.cpp:48
+#, fuzzy
+#| msgid "Function"
+msgctxt "FunctionListModel|"
+msgid "Function"
+msgstr "Функция"
+
+#: libviews/functionlistmodel.cpp:49
+#, fuzzy
+#| msgid "Location"
+msgctxt "FunctionListModel|"
+msgid "Location"
+msgstr "Орны"
+
+#: libviews/functionlistmodel.cpp:89
+#, fuzzy, qt-format
+#| msgid "(%1 function(s) skipped)"
+msgctxt "FunctionListModel|"
+msgid "(%1 function(s) skipped)"
+msgstr "(%1 функция өткізіп жіберілген)"
+
+#: libviews/functionselection.cpp:87
+#, fuzzy
+#| msgid "Function Profile"
+msgctxt "FunctionSelection|"
+msgid "Function Profile"
+msgstr "Функция профилі"
+
+#: libviews/functionselection.cpp:95
+#, fuzzy
+#| msgid "&Search:"
+msgctxt "FunctionSelection|"
+msgid "&Search:"
+msgstr "І&здейтіні:"
+
+#: libviews/functionselection.cpp:101
+#, fuzzy
+#| msgid "&Search:"
+msgctxt "FunctionSelection|"
+msgid "Search Query"
+msgstr "І&здейтіні:"
+
+#: libviews/functionselection.cpp:116
+#, fuzzy
+#| msgid "Self"
+msgctxt "FunctionSelection|"
+msgid "Self"
+msgstr "Өзінің"
+
+#: libviews/functionselection.cpp:116
+#, fuzzy
+#| msgid "Group"
+msgctxt "FunctionSelection|"
+msgid "Group"
+msgstr "Тобы"
+
+#: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
+#, fuzzy
+#| msgid "(No Grouping)"
+msgctxt "FunctionSelection|"
+msgid "(No Grouping)"
+msgstr "(Топтастырусыз)"
+
+#: libviews/functionselection.cpp:209
+#, fuzzy
+#| msgid ""
+#| "<b>The Flat Profile</b><p>The flat profile contains a group and a "
+#| "function selection list. The group list contains all groups where costs "
+#| "are spent in, depending on the chosen group type. The group list is "
+#| "hidden when group type 'Function' is selected.</p><p>The function list "
+#| "contains the functions of the selected group (or all for 'Function' group "
+#| "type), ordered by the costs spent therein. Functions with costs less than "
+#| "1% are hidden on default.</p>"
+msgctxt "FunctionSelection|"
+msgid ""
+"<b>The Flat Profile</b><p>The flat profile contains a group and a function "
+"selection list. The group list contains all groups where costs are spent in, "
+"depending on the chosen group type. The group list is hidden when group type "
+"'Function' is selected.</p><p>The function list contains the functions of "
+"the selected group (or all for 'Function' group type), ordered by the costs "
+"spent therein. Functions with costs less than 1% are hidden on default.</p>"
+msgstr ""
+"<b>Жалпақ профилі</b><p>Жалпақ профиль - бір топтың не функцияның таңдау "
+"тізімі. Топ тізімі, таңдалған топқа тәуелді бүкіл жұмсалған функциялардан "
+"тұрады. Функция топ түрі таңдалса - топ тізімі жасырылады.</p><p>Функция "
+"тізімі - таңдалған топтың, осындағы бағасы ретімен көрсетілген функциялардан "
+"('Функция' деген топ түрі таңдалса - бүкіл функциялардан) түрады. Бағасы 1% "
+"кем функциялар әдетте жасырылады.</p>"
+
+#: libviews/functionselection.cpp:287
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "FunctionSelection|"
+msgid "Go to '%1'"
+msgstr "'%1' дегенге өту"
+
+#: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
+#, fuzzy
+#| msgid "Grouping"
+msgctxt "FunctionSelection|"
+msgid "Grouping"
+msgstr "Топтастыру"
+
+#: libviews/functionselection.cpp:353
+#, fuzzy
+#| msgid "No Grouping"
+msgctxt "FunctionSelection|"
+msgid "No Grouping"
+msgstr "Топтастырусыз"
+
+#: libviews/instritem.cpp:114 libviews/sourceitem.cpp:94
+#, fuzzy, qt-format
+#| msgid "Active call to '%1'"
+msgctxt "QObject|"
+msgid "Active call to '%1'"
+msgstr "Белсенді '%1' шақыруы"
+
+#: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
+#, fuzzy, qt-format
+#| msgid "Call(s) to %1"
+msgctxt "QObject|"
+msgid "Call to '%1'"
+msgstr "%1 дегенді шақыру"
+
+#: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
+#, fuzzy, qt-format
+#| msgid "Call(s) to %1"
+msgctxt "QObject|"
+msgid "%n call(s) to '%2'"
+msgid_plural "%n call(s) to '%2'"
+msgstr[0] "%1 дегенді шақыру"
+
+#: libviews/instritem.cpp:155
+#, fuzzy, qt-format
+#| msgid "Jump %1 of %2 times to 0x%3"
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to 0x%3"
+msgstr "0x%3 дегенге %2 реттен %1-рет ауысуы"
+
+#: libviews/instritem.cpp:160
+#, fuzzy, qt-format
+#| msgid "Jump %1 times to 0x%2"
+msgctxt "QObject|"
+msgid "Jump %1 times to 0x%2"
+msgstr "0x%2 дегенге %1-рет ауысуы"
+
+#: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
+#, fuzzy
+#| msgid "(cycle)"
+msgctxt "QObject|"
+msgid "(cycle)"
+msgstr "(цикл)"
+
+#: libviews/instrview.cpp:193
+#, fuzzy
+#| msgid "#"
+msgctxt "InstrView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/instrview.cpp:194
+#, fuzzy
+#| msgid "Cost"
+msgctxt "InstrView|"
+msgid "Cost"
+msgstr "Бағасы"
+
+#: libviews/instrview.cpp:195
+#, fuzzy
+#| msgid "Cost 2"
+msgctxt "InstrView|"
+msgid "Cost 2"
+msgstr "2-бағасы"
+
+#: libviews/instrview.cpp:197
+#, fuzzy
+#| msgid "Hex"
+msgctxt "InstrView|"
+msgid "Hex"
+msgstr "Оналтылық"
+
+#: libviews/instrview.cpp:199
+#, fuzzy
+#| msgid "Assembly Instructions"
+msgctxt "InstrView|"
+msgid "Assembly Instructions"
+msgstr "Ассемблер нұсқаулары"
+
+#: libviews/instrview.cpp:200
+#, fuzzy
+#| msgid "Source Position"
+msgctxt "InstrView|"
+msgid "Source Position"
+msgstr "Бастапқы кодтағы орын"
+
+#: libviews/instrview.cpp:236
+#, fuzzy
+#| msgid ""
+#| "<b>Annotated Machine Code</b><p>The annotated machine code list shows the "
+#| "assembly instructions of the current selected function together with "
+#| "(self) cost spent while executing an instruction. If this is a call "
+#| "instruction, lines with details on the call happening are inserted into "
+#| "the source: the cost spent inside of the call, the number of calls "
+#| "happening, and the call destination.</p><p>The machine code shown is "
+#| "generated with the 'objdump' utility from the 'binutils' package.</"
+#| "p><p>Select a line with call information to make the destination function "
+#| "of this call current.</p>"
+msgctxt "InstrView|"
+msgid ""
+"<b>Annotated Machine Code</b><p>The annotated machine code list shows the "
+"assembly instructions of the current selected function together with (self) "
+"cost spent while executing an instruction. If this is a call instruction, "
+"lines with details on the call happening are inserted into the source: the "
+"cost spent inside of the call, the number of calls happening, and the call "
+"destination.</p><p>The machine code shown is generated with the 'objdump' "
+"utility from the 'binutils' package.</p><p>Select a line with call "
+"information to make the destination function of this call current.</p>"
+msgstr ""
+"<b>Аңдатпаланған ассемблер коды</b><p>Аңдатпаланған ассемблер кодының тізімі "
+"таңдалған назардағы функцияның ассемблер нұсқауларын және олардың орындау "
+"бағасын көрсетеді. Ол call (шақыру) нұсқауы болса, егжей-тегжейімен, яғни "
+"орындау бағасы, шақырулар саны, шақырудың мақсаттты жерімен бірге "
+"көрсетіледі.</p><p>Ассемблер коды 'binutils' дестедегі 'objdump' "
+"утилитасымен шығарлады.</p><p>Шақыру мәліметті жолды таңдағанда, назар "
+"мақсатты функцияға ауысады.</p>"
+
+#: libviews/instrview.cpp:265
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "InstrView|"
+msgid "Go to '%1'"
+msgstr "'%1' дегенге өту"
+
+#: libviews/instrview.cpp:270
+#, fuzzy, qt-format
+#| msgid "Go to Address %1"
+msgctxt "InstrView|"
+msgid "Go to Address %1"
+msgstr "%1 адресіне өту"
+
+#: libviews/instrview.cpp:282
+#, fuzzy
+#| msgid "Hex Code"
+msgctxt "InstrView|"
+msgid "Hex Code"
+msgstr "Оналтылық коды"
+
+#: libviews/instrview.cpp:573
+#, fuzzy
+#| msgid "There is no instruction info in the profile data file."
+msgctxt "InstrView|"
+msgid "There is no instruction info in the profile data file."
+msgstr "Профиль дерек файлында нұсқау туралы ақпарат жоқ."
+
+#: libviews/instrview.cpp:575
+#, fuzzy
+#| msgid "Tip: For Callgrind, rerun with option"
+msgctxt "InstrView|"
+msgid "Tip: For Callgrind, rerun with option"
+msgstr "Ишара: Callgrind үшін, мына параметрімен қайта жегіңіз"
+
+#: libviews/instrview.cpp:576
+#, fuzzy
+#| msgid "      --dump-instr=yes"
+msgctxt "InstrView|"
+msgid "      --dump-instr=yes"
+msgstr "      --dump-instr=yes"
+
+#: libviews/instrview.cpp:577
+#, fuzzy
+#| msgid "To see (conditional) jumps, additionally specify"
+msgctxt "InstrView|"
+msgid "To see (conditional) jumps, additionally specify"
+msgstr "Шартты (секіріп) өтулерін көру үшін мынаны қосыңыз"
+
+#: libviews/instrview.cpp:578
+#, fuzzy
+#| msgid "      --collect-jumps=yes"
+msgctxt "InstrView|"
+msgid "      --collect-jumps=yes"
+msgstr "      --collect-jumps=yes"
+
+#: libviews/instrview.cpp:826
+#, fuzzy
+#| msgid "For annotated machine code, the following object file is needed:"
+msgctxt "InstrView|"
+msgid "For annotated machine code, the following object file is needed:"
+msgstr "Мазмұнды ассемблер коды болу үшін мына объектті файл керек:"
+
+#: libviews/instrview.cpp:831
+#, fuzzy
+#| msgid "This file can not be found."
+msgctxt "InstrView|"
+msgid "This file can not be found."
+msgstr "Бұндай файл табылған жоқ."
+
+#: libviews/instrview.cpp:834
+msgctxt "InstrView|"
+msgid "If cross-compiled, set SYSROOT variable."
+msgstr ""
+
+#: libviews/instrview.cpp:858
+#, fuzzy
+#| msgid "There is an error trying to execute the command"
+msgctxt "InstrView|"
+msgid "There is an error trying to execute the command"
+msgstr "Команданы орындау әрекеті қатеге апарып соқты"
+
+#: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
+#, fuzzy
+#| msgid "Check that you have installed 'objdump'."
+msgctxt "InstrView|"
+msgid "Check that you have installed 'objdump'."
+msgstr "'objdump' орнатылғанын тексеріңіз."
+
+#: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
+#, fuzzy
+#| msgid "This utility can be found in the 'binutils' package."
+msgctxt "InstrView|"
+msgid "This utility can be found in the 'binutils' package."
+msgstr "'binutils' дестесінде бұл бағдарлама табылған жоқ."
+
+#: libviews/instrview.cpp:966
+#, fuzzy
+#| msgid "(No Instruction)"
+msgctxt "InstrView|"
+msgid "(No Instruction)"
+msgstr "(Нұсқауы жоқ)"
+
+#: libviews/instrview.cpp:1134
+#, qt-format
+msgctxt "InstrView|"
+msgid "There are %n cost line(s) without machine code."
+msgid_plural "There are %n cost line(s) without machine code."
+msgstr[0] ""
+
+#: libviews/instrview.cpp:1136
+#, fuzzy
+#| msgid "This happens because the code of"
+msgctxt "InstrView|"
+msgid "This happens because the code of"
+msgstr "Себебі - мынаның кодында,"
+
+#: libviews/instrview.cpp:1139
+#, fuzzy
+#| msgid "does not seem to match the profile data file."
+msgctxt "InstrView|"
+msgid "does not seem to match the profile data file."
+msgstr "профиль файл дерегіне сәйкес келмейтін сияқты"
+
+#: libviews/instrview.cpp:1142
+#, fuzzy
+#| msgid "Are you using an old profile data file or is the above mentioned"
+msgctxt "InstrView|"
+msgid "Are you using an old profile data file or is the above mentioned"
+msgstr "Ескі профиль файлын қолданғансыз немесе жоғарда жазылғандай"
+
+#: libviews/instrview.cpp:1144
+#, fuzzy
+#| msgid "ELF object from an updated installation/another machine?"
+msgctxt "InstrView|"
+msgid "ELF object from an updated installation/another machine?"
+msgstr "ELF - объекті жаңартылған орнатылымдан не басқа компьютерден бе?"
+
+#: libviews/instrview.cpp:1152
+#, fuzzy
+#| msgid "There seems to be an error trying to execute the command"
+msgctxt "InstrView|"
+msgid "There seems to be an error trying to execute the command"
+msgstr "Команданы орындау әрекеті қатеге апарып соққан сияқты."
+
+#: libviews/instrview.cpp:1156
+#, fuzzy
+#| msgid "Check that the ELF object used in the command exists."
+msgctxt "InstrView|"
+msgid "Check that the ELF object used in the command exists."
+msgstr "Командада қолданған ELF - объекті бар ма, тексеріңіз."
+
+#: libviews/partgraph.cpp:154
+#, fuzzy, qt-format
+#| msgid "Profile Part %1"
+msgctxt "QObject|"
+msgid "Profile Part %1"
+msgstr "%1 профиль бөлшегі"
+
+#: libviews/partgraph.cpp:211
+#, fuzzy
+#| msgid "(no trace)"
+msgctxt "QObject|"
+msgid "(no trace)"
+msgstr "(қадағалау хаттамасыз)"
+
+#: libviews/partgraph.cpp:214
+#, fuzzy
+#| msgid "(no part)"
+msgctxt "QObject|"
+msgid "(no part)"
+msgstr "(болшексіз)"
+
+#: libviews/partlistitem.cpp:39
+#, fuzzy
+#| msgid "(none)"
+msgctxt "QObject|"
+msgid "(none)"
+msgstr "(жоқ)"
+
+#: libviews/partselection.cpp:48
+#, fuzzy
+#| msgid "Parts Overview"
+msgctxt "PartSelection|"
+msgid "Parts Overview"
+msgstr "Бөлшегін шолу"
+
+#: libviews/partselection.cpp:61
+#, fuzzy
+#| msgctxt "A thing's name"
+#| msgid "Name"
+msgctxt "PartSelection|A thing's name"
+msgid "Name"
+msgstr "Атауы"
+
+#: libviews/partselection.cpp:62
+#, fuzzy
+#| msgid "Cost"
+msgctxt "PartSelection|"
+msgid "Cost"
+msgstr "Бағасы"
+
+#: libviews/partselection.cpp:69
+#, fuzzy
+#| msgid "(no trace parts)"
+msgctxt "PartSelection|"
+msgid "(no trace parts)"
+msgstr "(қадағалама бөліктері жоқ)"
+
+#: libviews/partselection.cpp:96
+#, fuzzy
+#| msgid ""
+#| "<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+#| "there are several profile data files from one profile run. The Trace Part "
+#| "Overview dockable shows these, horizontally ordered in execution time; "
+#| "the rectangle sizes are proportional to the total cost spent in the "
+#| "parts. You can select one or several parts to constrain all costs shown "
+#| "to these parts only.</p><p>The parts are further subdivided: there is a "
+#| "partitioning and an callee split mode: <ul><li>Partitioning: You see the "
+#| "partitioning into groups for a trace part, according to the group type "
+#| "selected. E.g. if ELF object groups are selected, you see colored "
+#| "rectangles for each used ELF object (shared library or executable), sized "
+#| "according to the cost spent therein.</li><li>Callee: A rectangle showing "
+#| "the inclusive cost of the current selected function in the trace part is "
+#| "shown. This is split up into smaller rectangles to show the costs of its "
+#| "callees.</li></ul></p>"
+msgctxt "PartSelection|"
+msgid ""
+"<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+"there are several profile data files from one profile run. The Trace Part "
+"Overview dockable shows these, horizontally ordered in execution time; the "
+"rectangle sizes are proportional to the total cost spent in the parts. You "
+"can select one or several parts to constrain all costs shown to these parts "
+"only.</p><p>The parts are further subdivided: there is a partitioning and an "
+"callee split mode: <ul><li>Partitioning: You see the partitioning into "
+"groups for a trace part, according to the group type selected. E.g. if ELF "
+"object groups are selected, you see colored rectangles for each used ELF "
+"object (shared library or executable), sized according to the cost spent "
+"therein.</li><li>Callee: A rectangle showing the inclusive cost of the "
+"current selected function in the trace part is shown. This is split up into "
+"smaller rectangles to show the costs of its callees.</li></ul></p>"
+msgstr ""
+"<b>Хаттама бөлшектерін шолу</b><p>Бір профильдеу хаттмасы бірнеше файлға "
+"жазылса, ол көпбөлікті хаттама болады. Хаттама бөлшектерін шолу панелі "
+"бөлшектерін орындау уақыты бойынша реттелген, қатарлы,өлшемі жұмсалған "
+"уақтына сәйкесті тікбұрыштарымен көрсетеді. Бір не бірнеше бөліктерді "
+"таңдап, бағаларды осы бөшектерімен шектеуге болады.</p><p>Бөлшектерді одан "
+"әрі бөлуге болады: ол үшін Бөліктеу және Шақырылатыны бойынша бөлу режімдері "
+"бар: <ul><li>Бөліктеу: Хаттама бөлшегін таңдалған топ түрі бойынша жіктеп "
+"көрсету. Мысалы, ELF нысан тобы таңдалса, әрбір ELF нысан (ортақ жиын не "
+"орындалатын файл), өлшемі жұмсалған уақытына сәйкесті, түсті тікбұрышпен "
+"суреттеп көрсетіледі.</li><li>Шақырылатыны бойынша: Таңдалған функциясының "
+"хаттама бөлшегінде жалпы жұмсаған уақтына сәйкесті тікбұрышты көрсетеді. Бұл "
+"одан шақырған функциялар бойынша кішірек тікбұрыштарына тілінген түрде "
+"көрсетіледі.</li></ul></p>"
+
+#: libviews/partselection.cpp:231
+#, fuzzy, qt-format
+#| msgid "Profile Part Overview: Current is '%1'"
+msgctxt "PartSelection|"
+msgid "Profile Part Overview: Current is '%1'"
+msgstr "Профиль бөлшегін шолу: Шолуда - '%1'"
+
+#: libviews/partselection.cpp:337
+#, fuzzy, qt-format
+#| msgid "Deselect '%1'"
+msgctxt "PartSelection|"
+msgid "Deselect '%1'"
+msgstr "'%1' таңдауынан айну"
+
+#: libviews/partselection.cpp:339
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "PartSelection|"
+msgid "Select '%1'"
+msgstr "'%1' дегенді таңдау"
+
+#: libviews/partselection.cpp:344
+#, fuzzy
+#| msgid "Select All Parts"
+msgctxt "PartSelection|"
+msgid "Select All Parts"
+msgstr "Бүкіл бөліктерін таңдау"
+
+#: libviews/partselection.cpp:345
+#, fuzzy
+#| msgid "Visible Parts"
+msgctxt "PartSelection|"
+msgid "Visible Parts"
+msgstr "Көрінетін бөліктер"
+
+#: libviews/partselection.cpp:346
+#, fuzzy
+#| msgid "Hide Selected Parts"
+msgctxt "PartSelection|"
+msgid "Hide Selected Parts"
+msgstr "Таңдалған бөліктерін жасыру"
+
+#: libviews/partselection.cpp:347
+#, fuzzy
+#| msgid "Show Hidden Parts"
+msgctxt "PartSelection|"
+msgid "Show Hidden Parts"
+msgstr "Жасырылған бөліктерін көрсету"
+
+#: libviews/partselection.cpp:361
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "PartSelection|"
+msgid "Go to '%1'"
+msgstr "'%1' дегенге өту"
+
+#: libviews/partselection.cpp:370
+#, fuzzy
+#| msgid "Visualization"
+msgctxt "PartSelection|"
+msgid "Visualization"
+msgstr "Көрсету"
+
+#: libviews/partselection.cpp:371
+#, fuzzy
+#| msgid "Partitioning Mode"
+msgctxt "PartSelection|"
+msgid "Partitioning Mode"
+msgstr "Бөліктеу режімі"
+
+#: libviews/partselection.cpp:373
+#, fuzzy
+#| msgid "Zoom Function"
+msgctxt "PartSelection|"
+msgid "Zoom Function"
+msgstr "Масштабтау функциясы"
+
+#: libviews/partselection.cpp:375
+#, fuzzy
+#| msgid "Show Direct Calls"
+msgctxt "PartSelection|"
+msgid "Show Direct Calls"
+msgstr "Тікелей шақыруларды көрсету"
+
+#: libviews/partselection.cpp:376
+#, fuzzy
+#| msgid "Increment Shown Call Levels"
+msgctxt "PartSelection|"
+msgid "Increment Shown Call Levels"
+msgstr "Көрсететін шақыру тереңігін үлғайту"
+
+#: libviews/partselection.cpp:377
+#, fuzzy
+#| msgid "Diagram Mode"
+msgctxt "PartSelection|"
+msgid "Diagram Mode"
+msgstr "Диаграмма режімі"
+
+#: libviews/partselection.cpp:392
+#, fuzzy
+#| msgid "Draw Names"
+msgctxt "PartSelection|"
+msgid "Draw Names"
+msgstr "Атауларын салу"
+
+#: libviews/partselection.cpp:394
+#, fuzzy
+#| msgid "Draw Costs"
+msgctxt "PartSelection|"
+msgid "Draw Costs"
+msgstr "Бағаларын салу"
+
+#: libviews/partselection.cpp:396
+#, fuzzy
+#| msgid "Ignore Proportions"
+msgctxt "PartSelection|"
+msgid "Ignore Proportions"
+msgstr "Пропорцияларын сақтамау"
+
+#: libviews/partselection.cpp:398
+#, fuzzy
+#| msgid "Allow Rotation"
+msgctxt "PartSelection|"
+msgid "Allow Rotation"
+msgstr "Бұрылысты рұқсат ету"
+
+#: libviews/partselection.cpp:400
+#, fuzzy
+#| msgid "Draw Frames"
+msgctxt "PartSelection|"
+msgid "Draw Frames"
+msgstr "Қоршауларын салу"
+
+#: libviews/partselection.cpp:414
+#, fuzzy
+#| msgid "Hide Info"
+msgctxt "PartSelection|"
+msgid "Hide Info"
+msgstr "Ақпаратын жасыру"
+
+#: libviews/partselection.cpp:414
+#, fuzzy
+#| msgid "Show Info"
+msgctxt "PartSelection|"
+msgid "Show Info"
+msgstr "Ақпаратын көрсету"
+
+#: libviews/partselection.cpp:562
+#, fuzzy
+#| msgid "(no trace loaded)"
+msgctxt "PartSelection|"
+msgid "(no trace loaded)"
+msgstr "(қадағалама жүктелмеген)"
+
+#: libviews/partview.cpp:37
+#, fuzzy
+#| msgid "Profile Part"
+msgctxt "PartView|"
+msgid "Profile Part"
+msgstr "Профиль бөлшегі"
+
+#: libviews/partview.cpp:38
+#, fuzzy
+#| msgid "Incl."
+msgctxt "PartView|"
+msgid "Incl."
+msgstr "Жалпы"
+
+#: libviews/partview.cpp:39
+#, fuzzy
+#| msgid "Self"
+msgctxt "PartView|"
+msgid "Self"
+msgstr "Өзінің"
+
+#: libviews/partview.cpp:40
+#, fuzzy
+#| msgid "Called"
+msgctxt "PartView|"
+msgid "Called"
+msgstr "Шақырылған"
+
+#: libviews/partview.cpp:41
+#, fuzzy
+#| msgid "Comment"
+msgctxt "PartView|"
+msgid "Comment"
+msgstr "Түсініктеме"
+
+#: libviews/partview.cpp:68
+#, fuzzy
+#| msgid ""
+#| "<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+#| "trace. For each part, the self/inclusive cost of the current selected "
+#| "function, spent in the part, is shown; percentage costs are always "
+#| "relative to the total cost <em>of the part</em> (not to the whole trace "
+#| "as in the Trace Part Overview). Also shown are the calls happening to/"
+#| "from the current function inside of the trace part.</p><p>By choosing one "
+#| "or more trace parts from the list, the costs shown all over KCachegrind "
+#| "will only be the ones spent in the selected part(s). If no list selection "
+#| "is shown, in fact all trace parts are selected implicitly.</p><p>This is "
+#| "a multi-selection list. You can select ranges by dragging the mouse or "
+#| "use SHIFT/CTRL modifiers. Selection/Deselection of trace parts can also "
+#| "be done by using the Trace Part Overview Dockable. This one also supports "
+#| "multiple selection.</p><p>Note that the list is hidden if only one trace "
+#| "part is loaded.</p>"
+msgctxt "PartView|"
+msgid ""
+"<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+"trace. For each part, the self/inclusive cost of the current selected "
+"function, spent in the part, is shown; percentage costs are always relative "
+"to the total cost <em>of the part</em> (not to the whole trace as in the "
+"Trace Part Overview). Also shown are the calls happening to/from the current "
+"function inside of the trace part.</p><p>By choosing one or more trace parts "
+"from the list, the costs shown all over KCachegrind will only be the ones "
+"spent in the selected part(s). If no list selection is shown, in fact all "
+"trace parts are selected implicitly.</p><p>This is a multi-selection list. "
+"You can select ranges by dragging the mouse or use SHIFT/CTRL modifiers. "
+"Selection/Deselection of trace parts can also be done by using the Trace "
+"Part Overview Dockable. This one also supports multiple selection.</"
+"p><p>Note that the list is hidden if only one trace part is loaded.</p>"
+msgstr ""
+"<b>Қадағалау хаттама бөліктерінің тізімі</b><p>Бұл тізімінде жүктелген "
+"қадағалау хаттамасының бүкіл бөліктері көсетіледі. Әрбір бөлік үшін "
+"таңдалған фунциясының өзінің/жалпы бағасы көрсетледі, сондағы пайыздап "
+"келтірілген бағасы <em>бөлшегімен</em> салыстырып беріледі (Қадағалау "
+"хаттама бөлшегін шолуда керсінше, онда ол бүкіл хаттамасымен салыстырылады). "
+"Сонымен қатар, бөлік ішіндегі назардағы функцияны/фунциядан болған "
+"шақырулары да көрсетіледі.</p><p>Егерде тізімден бір не бірнеше бөлігі "
+"таңдалса, бүкіл KCachegrind тек қана осы бөліктеріне қатысты бағалрды "
+"көрсетеді Егерде таңдау жоқ деп көрсетілсе, онда бағалар бүкіл бөліктеріне "
+"қатысты.</p><p>Бұл бірнешесін таңдауға келетін тізім. Тышқанын қолданып, "
+"SHIFT/CTRL көмегімен, бірбірлеп не ауықымымен таңдай аласыз. Таңдау не одан "
+"шығару әрекетін Хаттама бөлшектерін шолу панеліде де істеуге болады. Онда да "
+"бірнешесін таңдауға болады.</p><p>Егерде бір ғана бөлігі жүктелсе болса, "
+"онда тізім жасырылады.</p>"
+
+#: libviews/sourceitem.cpp:141
+#, fuzzy, qt-format
+#| msgid "Jump %1 of %2 times to %3"
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to %3"
+msgstr "%3 дегенге %2 реттен %1-рет ауысуы"
+
+#: libviews/sourceitem.cpp:146
+#, fuzzy, qt-format
+#| msgid "Jump %1 times to %2"
+msgctxt "QObject|"
+msgid "Jump %1 times to %2"
+msgstr "%2 дегенге %1-рет ауысуы"
+
+#: libviews/sourceview.cpp:51
+#, fuzzy
+#| msgid "#"
+msgctxt "SourceView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/sourceview.cpp:52
+#, fuzzy
+#| msgid "Cost"
+msgctxt "SourceView|"
+msgid "Cost"
+msgstr "Бағасы"
+
+#: libviews/sourceview.cpp:53
+#, fuzzy
+#| msgid "Cost 2"
+msgctxt "SourceView|"
+msgid "Cost 2"
+msgstr "2-бағасы"
+
+#: libviews/sourceview.cpp:55
+#, fuzzy
+#| msgid "Source Line"
+msgctxt "SourceView|"
+msgid "Source"
+msgstr "Көз жолы"
+
+#: libviews/sourceview.cpp:83
+#, fuzzy
+#| msgid ""
+#| "<b>Annotated Source</b><p>The annotated source list shows the source "
+#| "lines of the current selected function together with (self) cost spent "
+#| "while executing the code of this source line. If there was a call in a "
+#| "source line, lines with details on the call happening are inserted into "
+#| "the source: the cost spent inside of the call, the number of calls "
+#| "happening, and the call destination.</p><p>Select a inserted call "
+#| "information line to make the destination function current.</p>"
+msgctxt "SourceView|"
+msgid ""
+"<b>Annotated Source</b><p>The annotated source list shows the source lines "
+"of the current selected function together with (self) cost spent while "
+"executing the code of this source line. If there was a call in a source "
+"line, lines with details on the call happening are inserted into the source: "
+"the cost spent inside of the call, the number of calls happening, and the "
+"call destination.</p><p>Select a inserted call information line to make the "
+"destination function current.</p>"
+msgstr ""
+"<b>Аңдатпаланған бастапқы коды</b><p>Аңдатпаланған бастапқы кодының тізімі "
+"таңдалған назардағы функцияның бастапқы кодының жолдарын және олардың "
+"орындау бағасын көрсетеді. Ол call (шақыру) жолы болса, егжей-тегжейімен, "
+"яғни орындау бағасы, шақырулар саны, шақырудың мақсаттты жерімен бірге "
+"көрсетіледі.</p><p>Шақыру мәліметті жолды таңдағанда, назар мақсатты "
+"функцияға ауысады.</p>"
+
+#: libviews/sourceview.cpp:110
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "SourceView|"
+msgid "Go to '%1'"
+msgstr "'%1' дегенге өту"
+
+#: libviews/sourceview.cpp:115
+#, fuzzy, qt-format
+#| msgid "Go to Line %1"
+msgctxt "SourceView|"
+msgid "Go to Line %1"
+msgstr "%1 жолына ауысу"
+
+#: libviews/sourceview.cpp:627
+#, fuzzy
+#| msgid "There is no cost of current selected type associated"
+msgctxt "SourceView|"
+msgid "There is no cost of current selected type associated"
+msgstr "Таңдалғн түріне тағайындалған баға жоқ."
+
+#: libviews/sourceview.cpp:629
+#, fuzzy
+#| msgid "with any source line of this function in file"
+msgctxt "SourceView|"
+msgid "with any source line of this function in file"
+msgstr "файлдғы осы функцияның әрбір жолымен"
+
+#: libviews/sourceview.cpp:633
+#, fuzzy
+#| msgid "Thus, no annotated source can be shown."
+msgctxt "SourceView|"
+msgid "Thus, no annotated source can be shown."
+msgstr "Сонымен, мазмұнды бастапқы коды көрсетуге келмейді."
+
+#: libviews/sourceview.cpp:658
+#, fuzzy, qt-format
+#| msgid "--- Inlined from '%1' ---"
+msgctxt "SourceView|"
+msgid "--- From '%1' ---"
+msgstr "--- '%1' дегеннен алынып енгізілген ---"
+
+#: libviews/sourceview.cpp:663
+#, fuzzy, qt-format
+#| msgid "--- Inlined from '%1' ---"
+msgctxt "SourceView|"
+msgid "--- Inlined from '%1' ---"
+msgstr "--- '%1' дегеннен алынып енгізілген ---"
+
+#: libviews/sourceview.cpp:664
+#, fuzzy
+#| msgid "--- Inlined from unknown source ---"
+msgctxt "SourceView|"
+msgid "--- Inlined from unknown source ---"
+msgstr "--- Беймәлім көзден алынып енгізілген ---"
+
+#: libviews/sourceview.cpp:669
+#, fuzzy
+#| msgid "There is no source available for the following function:"
+msgctxt "SourceView|"
+msgid "There is no source available for the following function:"
+msgstr "Мына функцияның бастапқы коды жоқ:"
+
+#: libviews/sourceview.cpp:674
+#, fuzzy
+#| msgid "This is because no debug information is present."
+msgctxt "SourceView|"
+msgid "This is because no debug information is present."
+msgstr "Себебі - жөндеу мәліметі жоқтығы."
+
+#: libviews/sourceview.cpp:676
+#, fuzzy
+#| msgid "Recompile source and redo the profile run."
+msgctxt "SourceView|"
+msgid "Recompile source and redo the profile run."
+msgstr "Бастапқыдан қайта компиляциялап, профилдеуін қайталаңыз."
+
+#: libviews/sourceview.cpp:679
+#, fuzzy
+#| msgid "The function is located in this ELF object:"
+msgctxt "SourceView|"
+msgid "The function is located in this ELF object:"
+msgstr "Функциясы мына ELF объектінде:"
+
+#: libviews/sourceview.cpp:687
+#, fuzzy
+#| msgid "This is because its source file cannot be found:"
+msgctxt "SourceView|"
+msgid "This is because its source file cannot be found:"
+msgstr "Себебі - оның бастапқы файлы табылмағанда:"
+
+#: libviews/sourceview.cpp:691
+#, fuzzy
+#| msgid "Add the folder of this file to the source folder list."
+msgctxt "SourceView|"
+msgid "Add the folder of this file to the source folder list."
+msgstr "Бұл файл жатқан қапшығын бастапқы код қапшықтарының тізіміне қосыңыз."
+
+#: libviews/sourceview.cpp:693
+#, fuzzy
+#| msgid "The list can be found in the configuration dialog."
+msgctxt "SourceView|"
+msgid "The list can be found in the configuration dialog."
+msgstr "Тізімін баптау диалогында табуға болады."
+
+#: libviews/stackselection.cpp:36
+#, fuzzy
+#| msgid "Stack Selection"
+msgctxt "StackSelection|"
+msgid "Stack Selection"
+msgstr "Стекті таңдау"
+
+#: libviews/stackselection.cpp:44
+#, fuzzy
+#| msgid "Cost"
+msgctxt "StackSelection|"
+msgid "Cost"
+msgstr "Бағасы"
+
+#: libviews/stackselection.cpp:45
+#, fuzzy
+#| msgid "Cost2"
+msgctxt "StackSelection|"
+msgid "Cost2"
+msgstr "Баға2"
+
+#: libviews/stackselection.cpp:46
+#, fuzzy
+#| msgid "Calls"
+msgctxt "StackSelection|"
+msgid "Calls"
+msgstr "Шақырулар"
+
+#: libviews/stackselection.cpp:47
+#, fuzzy
+#| msgid "Function"
+msgctxt "StackSelection|"
+msgid "Function"
+msgstr "Функция"
+
+#: libviews/tabview.cpp:103
+#, fuzzy
+#| msgid "Move to Top"
+msgctxt "TabBar|"
+msgid "Move to Top"
+msgstr "Жоғарға жылжыту"
+
+#: libviews/tabview.cpp:104
+#, fuzzy
+#| msgctxt "Move to Top"
+#| msgid "Top"
+msgctxt "TabBar|Move to Top"
+msgid "Top"
+msgstr "Жоғарғы"
+
+#: libviews/tabview.cpp:107
+#, fuzzy
+#| msgid "Move to Right"
+msgctxt "TabBar|"
+msgid "Move to Right"
+msgstr "Оңға жылжыту"
+
+#: libviews/tabview.cpp:108
+#, fuzzy
+#| msgctxt "Move to Right"
+#| msgid "Right"
+msgctxt "TabBar|Move to Right"
+msgid "Right"
+msgstr "Оңға"
+
+#: libviews/tabview.cpp:111
+#, fuzzy
+#| msgid "Move to Bottom"
+msgctxt "TabBar|"
+msgid "Move to Bottom"
+msgstr "Төменге жылжыту"
+
+#: libviews/tabview.cpp:112
+#, fuzzy
+#| msgctxt "Move to Bottom"
+#| msgid "Bottom"
+msgctxt "TabBar|Move to Bottom"
+msgid "Bottom"
+msgstr "Төменге"
+
+#: libviews/tabview.cpp:115
+#, fuzzy
+#| msgid "Move to Bottom Left"
+msgctxt "TabBar|"
+msgid "Move to Bottom Left"
+msgstr "Сол жақ төменге жылжыту"
+
+#: libviews/tabview.cpp:116
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "TabBar|Move to Bottom Left"
+msgid "Bottom Left"
+msgstr "Төменгі сол жақ"
+
+#: libviews/tabview.cpp:118
+#, fuzzy
+#| msgid "Move Area To"
+msgctxt "TabBar|"
+msgid "Move Area To"
+msgstr "Аумағын мына жаққа жылжыту:"
+
+#: libviews/tabview.cpp:121
+#, fuzzy
+#| msgid "Hide This Tab"
+msgctxt "TabBar|"
+msgid "Hide This Tab"
+msgstr "Қойындыны жасыру"
+
+#: libviews/tabview.cpp:122
+#, fuzzy
+#| msgid "Hide Area"
+msgctxt "TabBar|"
+msgid "Hide Area"
+msgstr "Аумақты жасыру"
+
+#: libviews/tabview.cpp:131
+#, fuzzy
+#| msgctxt "Move to Top"
+#| msgid "Top"
+msgctxt "TabBar|Show on Top"
+msgid "Top"
+msgstr "Жоғарғы"
+
+#: libviews/tabview.cpp:132
+#, fuzzy
+#| msgctxt "Move to Right"
+#| msgid "Right"
+msgctxt "TabBar|Show on Right"
+msgid "Right"
+msgstr "Оңға"
+
+#: libviews/tabview.cpp:133
+#, fuzzy
+#| msgctxt "Move to Bottom"
+#| msgid "Bottom"
+msgctxt "TabBar|Show on Bottom"
+msgid "Bottom"
+msgstr "Төменге"
+
+#: libviews/tabview.cpp:134
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "TabBar|Show on Bottom Left"
+msgid "Bottom Left"
+msgstr "Төменгі сол жақ"
+
+#: libviews/tabview.cpp:135
+#, fuzzy
+#| msgid "Show Hidden On"
+msgctxt "TabBar|"
+msgid "Show Hidden On"
+msgstr "Жасырылғанды көрсету"
+
+#: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
+#, fuzzy
+#| msgid "(No profile data file loaded)"
+msgctxt "TabView|"
+msgid "(No profile data file loaded)"
+msgstr "(Профиль дерек файлы жүктелмеген)"
+
+#: libviews/tabview.cpp:370
+#, fuzzy
+#| msgid "Types"
+msgctxt "TabView|"
+msgid "Types"
+msgstr "Түрлері"
+
+#: libviews/tabview.cpp:373
+#, fuzzy
+#| msgid "Callers"
+msgctxt "TabView|"
+msgid "Callers"
+msgstr "Шақырушылар"
+
+#: libviews/tabview.cpp:374
+#, fuzzy
+#| msgid "All Callers"
+msgctxt "TabView|"
+msgid "All Callers"
+msgstr "Бүкіл шақырушылар"
+
+#: libviews/tabview.cpp:375
+#, fuzzy
+#| msgid "Callee Map"
+msgctxt "TabView|"
+msgid "Callee Map"
+msgstr "Шақырылатынын картасы"
+
+#: libviews/tabview.cpp:378
+#, fuzzy
+#| msgid "Source Code"
+msgctxt "TabView|"
+msgid "Source Code"
+msgstr "Бастапқы коды"
+
+#: libviews/tabview.cpp:380
+#, fuzzy
+#| msgid "Parts"
+msgctxt "TabView|"
+msgid "Parts"
+msgstr "Бөліктер"
+
+#: libviews/tabview.cpp:381
+#, fuzzy
+#| msgid "Callees"
+msgctxt "TabView|"
+msgid "Callees"
+msgstr "Шақырылатындар"
+
+#: libviews/tabview.cpp:382
+#, fuzzy
+#| msgid "Call Graph"
+msgctxt "TabView|"
+msgid "Call Graph"
+msgstr "Шақыру графы"
+
+#: libviews/tabview.cpp:385
+#, fuzzy
+#| msgid "All Callees"
+msgctxt "TabView|"
+msgid "All Callees"
+msgstr "Бүкіл шақырылатындар"
+
+#: libviews/tabview.cpp:386
+#, fuzzy
+#| msgid "Caller Map"
+msgctxt "TabView|"
+msgid "Caller Map"
+msgstr "Шақырушы картасы"
+
+#: libviews/tabview.cpp:389
+#, fuzzy
+#| msgid "Machine Code"
+msgctxt "TabView|"
+msgid "Machine Code"
+msgstr "Ассемблер коды"
+
+#: libviews/tabview.cpp:643
+#, fuzzy
+#| msgid ""
+#| "<b>Information Tabs</b><p>This widget shows information for the currently "
+#| "selected function in different tabs: <ul><li>The Costs tab shows a list "
+#| "of available event types and the inclusive and self-costs related to "
+#| "these types.</li><li>The Parts tab shows a list of trace parts if the "
+#| "trace consists of more than one part (otherwise, this tab is hidden). The "
+#| "cost of the selected function spent in the different parts together with "
+#| "the calls happening is shown.</li><li>The Call Lists tab shows direct "
+#| "callers and callees of the function in more detail.</li><li>The Coverage "
+#| "tab shows the same as the Call Lists tab, but also shows indirect callers "
+#| "and callees, not just direct ones.</li><li>The Call Graph tab shows a "
+#| "graphical visualization of the calls made by this function.</li><li>The "
+#| "Source Code tab presents annotated source code if debugging information "
+#| "and the source file are available.</li><li>The Machine Code tab presents "
+#| "annotated assembly instructions if profile information at instruction "
+#| "level is available.</li></ul>For more information, see the <em>What's "
+#| "This?</em> help of the corresponding tab widget.</p>"
+msgctxt "TabView|"
+msgid ""
+"<b>Information Tabs</b><p>This widget shows information for the currently "
+"selected function in different tabs: <ul><li>The Costs tab shows a list of "
+"available event types and the inclusive and self-costs related to these "
+"types.</li><li>The Parts tab shows a list of trace parts if the trace "
+"consists of more than one part (otherwise, this tab is hidden). The cost of "
+"the selected function spent in the different parts together with the calls "
+"happening is shown.</li><li>The Call Lists tab shows direct callers and "
+"callees of the function in more detail.</li><li>The Coverage tab shows the "
+"same as the Call Lists tab, but also shows indirect callers and callees, not "
+"just direct ones.</li><li>The Call Graph tab shows a graphical visualization "
+"of the calls made by this function.</li><li>The Source Code tab presents "
+"annotated source code if debugging information and the source file are "
+"available.</li><li>The Machine Code tab presents annotated assembly "
+"instructions if profile information at instruction level is available.</li></"
+"ul>For more information, see the <em>What's This?</em> help of the "
+"corresponding tab widget.</p>"
+msgstr ""
+"<b>Ақпаратты қойындылар</b><p>Бұл виджет бірнеше қойындыларында таңдалған "
+"функциясынға қатысты ақпарат береді,сол қатарда: <ul><li>Бағалары деген "
+"қойынды бар оқиға түрлерінің тізімін жалпы және өзінің бағасымен бірге "
+"келтіреді.</li> <li>Бөліктер дегені, егерде қадағалама бірнеше бөліктерінен "
+"тұрса, ол бөліктерінің тізімін көрсетеді(әйтпесе бұл қойынды жасырылады). "
+"Таңдалған функция түрлі бөліктердегі бағасын, және ол бұнда қанша рет "
+"шақырылғаны туралы мәлімет те келтіріледі.</li> <li>Шақыру тізімі қойындысы "
+"тікелей шақырушы мен шақырылған функцияларды егжей-тегжейді түрде тізімдейді."
+"</li> <li>Қамту қойындысы Шақыру тізімі секілдей, бірақ, тікелей "
+"шақырылымдармен шектелмей, жанама шақыруларын да көрсетеді.</li> <li>Шақыру "
+"графы деген осы функция жасаған шақырудың графикалық түрде көрсетуі.</li> "
+"<li>The Source Code tab presents annotated source code if debugging "
+"information and the source file are available.</li><li>The Machine Code tab "
+"presents annotated assembly instructions if profile information at "
+"instruction level is available.</li></ul>Толығырақ мәліметті керек қойнды "
+"виджеттің <em>Бұл не?</em> көмегінен қараңыз.</p>"
+
+#: libviews/tabview.cpp:728
+#, fuzzy
+#| msgid "(No function selected)"
+msgctxt "TabView|"
+msgid "(No function selected)"
+msgstr "(Функция таңдалмаған)"
+
+#: libviews/traceitemview.cpp:67
+#, fuzzy
+#| msgid "No description available"
+msgctxt "QObject|"
+msgid "No description available"
+msgstr "Сипаттамасы жоқ"
+
+#: libviews/treemap.cpp:1334
+#, fuzzy, qt-format
+#| msgid "Text %1"
+msgctxt "TreeMapWidget|"
+msgid "Text %1"
+msgstr "%1 мәтіні"
+
+#: libviews/treemap.cpp:2854
+#, fuzzy
+#| msgid "Recursive Bisection"
+msgctxt "TreeMapWidget|"
+msgid "Recursive Bisection"
+msgstr "Рекурсивті қақ бөлу"
+
+#: libviews/treemap.cpp:2855
+#, fuzzy
+#| msgid "Columns"
+msgctxt "TreeMapWidget|"
+msgid "Columns"
+msgstr "Бағандар"
+
+#: libviews/treemap.cpp:2856
+#, fuzzy
+#| msgid "Rows"
+msgctxt "TreeMapWidget|"
+msgid "Rows"
+msgstr "Жолдар"
+
+#: libviews/treemap.cpp:2857
+#, fuzzy
+#| msgid "Always Best"
+msgctxt "TreeMapWidget|"
+msgid "Always Best"
+msgstr "Әрқашанда шақтау"
+
+#: libviews/treemap.cpp:2858
+#, fuzzy
+#| msgid "Best"
+msgctxt "TreeMapWidget|"
+msgid "Best"
+msgstr "Шақтау"
+
+#: libviews/treemap.cpp:2859
+#, fuzzy
+#| msgid "Alternate (V)"
+msgctxt "TreeMapWidget|"
+msgid "Alternate (V)"
+msgstr "Кезектестіру (тігінен)"
+
+#: libviews/treemap.cpp:2860
+#, fuzzy
+#| msgid "Alternate (H)"
+msgctxt "TreeMapWidget|"
+msgid "Alternate (H)"
+msgstr "Кезектестіру (жатығынан)"
+
+#: libviews/treemap.cpp:2861
+#, fuzzy
+#| msgid "Horizontal"
+msgctxt "TreeMapWidget|"
+msgid "Horizontal"
+msgstr "Жатық"
+
+#: libviews/treemap.cpp:2862
+#, fuzzy
+#| msgid "Vertical"
+msgctxt "TreeMapWidget|"
+msgid "Vertical"
+msgstr "Тік"
+
+#, fuzzy
+#~| msgid "Export Graph As DOT file"
+#~ msgctxt "CallGraphView|"
+#~ msgid "Export Graph As DOT file"
+#~ msgstr "Графты DOT файл қылып экспорттау"
+
+#, fuzzy
+#~| msgid "Graphviz (*.dot)"
+#~ msgctxt "CallGraphView|"
+#~ msgid "Graphviz (*.dot)"
+#~ msgstr " "
+
+#~ msgctxt "Move to Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Төменгі сол жаққа"
+
+#~ msgctxt "Show on Top"
+#~ msgid "Top"
+#~ msgstr "Жоғарғы"
+
+#~ msgctxt "Show on Right"
+#~ msgid "Right"
+#~ msgstr "Оңға"
+
+#~ msgctxt "Show on Bottom"
+#~ msgid "Bottom"
+#~ msgstr "Төменге"
+
+#~ msgctxt "Show on Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Төменгі сол жаққа"
+
+#~ msgid "Source (unknown)"
+#~ msgstr "Көзі (беймәлім)"
+
+#~ msgid "(No Source)"
+#~ msgstr "(Көзі жоқ)"
+
+#~ msgid "Source ('%1')"
+#~ msgstr "Көзі ('%1')"
+
+#~ msgid " (Thread %1)"
+#~ msgstr " (%1 ағыны)"

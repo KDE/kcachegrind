@@ -1,0 +1,3213 @@
+# translation of kcachegrind_qt.po to Low Saxon
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Manfred Wiese <m.j.wiese@web.de>, 2009, 2010, 2011.
+# Sönke Dibbern <s_dibbern@web.de>, 2009, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kcachegrind_qt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-18 02:14+0000\n"
+"PO-Revision-Date: 2014-03-18 00:30+0100\n"
+"Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
+"Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
+"Language: nds\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Qt-Contexts: true\n"
+
+#: libcore/cachegrindloader.cpp:135
+#, fuzzy
+#| msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+msgctxt "QObject|"
+msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+msgstr "Importfilter för vun Cachegrind/Callgrind opstellte Profildatendateien"
+
+#: libcore/context.cpp:60
+#, fuzzy
+#| msgid "Invalid Context"
+msgctxt "ProfileContext|"
+msgid "Invalid Context"
+msgstr "Leeg Kontext"
+
+#: libcore/context.cpp:61
+#, fuzzy
+#| msgid "Unknown Context"
+msgctxt "ProfileContext|"
+msgid "Unknown Context"
+msgstr "Nich begäng Kontext"
+
+#: libcore/context.cpp:62
+#, fuzzy
+#| msgid "Part Source Line"
+msgctxt "ProfileContext|"
+msgid "Part Source Line"
+msgstr "Bornreeg in Deel"
+
+#: libcore/context.cpp:63
+#, fuzzy
+#| msgid "Source Line"
+msgctxt "ProfileContext|"
+msgid "Source Line"
+msgstr "Borntextreeg"
+
+#: libcore/context.cpp:64
+#, fuzzy
+#| msgid "Part Line Call"
+msgctxt "ProfileContext|"
+msgid "Part Line Call"
+msgstr "Reegoproop in Deel"
+
+#: libcore/context.cpp:65
+#, fuzzy
+#| msgid "Line Call"
+msgctxt "ProfileContext|"
+msgid "Line Call"
+msgstr "Reegoproop"
+
+#: libcore/context.cpp:66
+#, fuzzy
+#| msgid "Part Jump"
+msgctxt "ProfileContext|"
+msgid "Part Jump"
+msgstr "Jump in Deel"
+
+#: libcore/context.cpp:67
+#, fuzzy
+#| msgid "Jump"
+msgctxt "ProfileContext|"
+msgid "Jump"
+msgstr "Jump"
+
+#: libcore/context.cpp:68
+#, fuzzy
+#| msgid "Part Instruction"
+msgctxt "ProfileContext|"
+msgid "Part Instruction"
+msgstr "Anwiesen in Deel"
+
+#: libcore/context.cpp:69
+#, fuzzy
+#| msgid "Instruction"
+msgctxt "ProfileContext|"
+msgid "Instruction"
+msgstr "Anwiesen"
+
+#: libcore/context.cpp:70
+#, fuzzy
+#| msgid "Part Instruction Jump"
+msgctxt "ProfileContext|"
+msgid "Part Instruction Jump"
+msgstr "Anwiesenjump in Deel"
+
+#: libcore/context.cpp:71
+#, fuzzy
+#| msgid "Instruction Jump"
+msgctxt "ProfileContext|"
+msgid "Instruction Jump"
+msgstr "Anwiesenjump"
+
+#: libcore/context.cpp:72
+#, fuzzy
+#| msgid "Part Instruction Call"
+msgctxt "ProfileContext|"
+msgid "Part Instruction Call"
+msgstr "Anwiesenoproop in Deel"
+
+#: libcore/context.cpp:73
+#, fuzzy
+#| msgid "Instruction Call"
+msgctxt "ProfileContext|"
+msgid "Instruction Call"
+msgstr "Anwiesenoproop"
+
+#: libcore/context.cpp:74
+#, fuzzy
+#| msgid "Part Call"
+msgctxt "ProfileContext|"
+msgid "Part Call"
+msgstr "Oproop in Deel"
+
+#: libcore/context.cpp:75
+#, fuzzy
+#| msgid "Call"
+msgctxt "ProfileContext|"
+msgid "Call"
+msgstr "Oproop"
+
+#: libcore/context.cpp:76
+#, fuzzy
+#| msgid "Part Function"
+msgctxt "ProfileContext|"
+msgid "Part Function"
+msgstr "Funkschoon in Deel"
+
+#: libcore/context.cpp:77
+#, fuzzy
+#| msgid "Function Source File"
+msgctxt "ProfileContext|"
+msgid "Function Source File"
+msgstr "Funkschoon-Borndatei"
+
+#: libcore/context.cpp:78
+#, fuzzy
+#| msgid "Function"
+msgctxt "ProfileContext|"
+msgid "Function"
+msgstr "Funkschoon"
+
+#: libcore/context.cpp:79
+#, fuzzy
+#| msgid "Function Cycle"
+msgctxt "ProfileContext|"
+msgid "Function Cycle"
+msgstr "Funkschoon-Loop"
+
+#: libcore/context.cpp:80
+#, fuzzy
+#| msgid "Part Class"
+msgctxt "ProfileContext|"
+msgid "Part Class"
+msgstr "Klass in Deel"
+
+#: libcore/context.cpp:81
+#, fuzzy
+#| msgid "Class"
+msgctxt "ProfileContext|"
+msgid "Class"
+msgstr "Klass"
+
+#: libcore/context.cpp:82
+#, fuzzy
+#| msgid "Part Source File"
+msgctxt "ProfileContext|"
+msgid "Part Source File"
+msgstr "Borndatei in Deel"
+
+#: libcore/context.cpp:83
+#, fuzzy
+#| msgid "Source File"
+msgctxt "ProfileContext|"
+msgid "Source File"
+msgstr "Borndatei"
+
+#: libcore/context.cpp:84
+#, fuzzy
+#| msgid "Part ELF Object"
+msgctxt "ProfileContext|"
+msgid "Part ELF Object"
+msgstr "\"ELF\"-Objekt in Deel"
+
+#: libcore/context.cpp:85
+#, fuzzy
+#| msgid "ELF Object"
+msgctxt "ProfileContext|"
+msgid "ELF Object"
+msgstr "\"ELF\"-Objekt"
+
+#: libcore/context.cpp:86
+#, fuzzy
+#| msgid "Profile Part"
+msgctxt "ProfileContext|"
+msgid "Profile Part"
+msgstr "Profildeel"
+
+#: libcore/context.cpp:87
+#, fuzzy
+#| msgid "Program Trace"
+msgctxt "ProfileContext|"
+msgid "Program Trace"
+msgstr "Programmspoor"
+
+#: libcore/costitem.cpp:48
+#, fuzzy, qt-format
+#| msgid "%1 from %2"
+msgctxt "QObject|"
+msgid "%1 from %2"
+msgstr "%1 vun %2"
+
+#: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
+#: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
+#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
+#, fuzzy
+#| msgid "(unknown)"
+msgctxt "QObject|"
+msgid "(unknown)"
+msgstr "(nich begäng)"
+
+#: libcore/globalconfig.cpp:77
+#, fuzzy
+#| msgid "Instruction Fetch"
+msgctxt "QObject|"
+msgid "Instruction Fetch"
+msgstr "Anwiesen haalt"
+
+#: libcore/globalconfig.cpp:78
+#, fuzzy
+#| msgid "Data Read Access"
+msgctxt "QObject|"
+msgid "Data Read Access"
+msgstr "Daten-Leestogriep"
+
+#: libcore/globalconfig.cpp:79
+#, fuzzy
+#| msgid "Data Write Access"
+msgctxt "QObject|"
+msgid "Data Write Access"
+msgstr "Daten-Schrieftogriep"
+
+#: libcore/globalconfig.cpp:80
+#, fuzzy
+#| msgid "L1 Instr. Fetch Miss"
+msgctxt "QObject|"
+msgid "L1 Instr. Fetch Miss"
+msgstr "L1-Fehlslag Anwiesen halen"
+
+#: libcore/globalconfig.cpp:81
+#, fuzzy
+#| msgid "L1 Data Read Miss"
+msgctxt "QObject|"
+msgid "L1 Data Read Miss"
+msgstr "L1-Fehlslag Daten lesen"
+
+#: libcore/globalconfig.cpp:82
+#, fuzzy
+#| msgid "L1 Data Write Miss"
+msgctxt "QObject|"
+msgid "L1 Data Write Miss"
+msgstr "L1-Fehlslag Daten schrieven"
+
+#: libcore/globalconfig.cpp:83
+#, fuzzy
+#| msgid "L2 Instr. Fetch Miss"
+msgctxt "QObject|"
+msgid "L2 Instr. Fetch Miss"
+msgstr "L2-Fehlslag Anwiesen halen"
+
+#: libcore/globalconfig.cpp:84
+#, fuzzy
+#| msgid "L2 Data Read Miss"
+msgctxt "QObject|"
+msgid "L2 Data Read Miss"
+msgstr "L2-Fehlslag Daten lesen"
+
+#: libcore/globalconfig.cpp:85
+#, fuzzy
+#| msgid "L2 Data Write Miss"
+msgctxt "QObject|"
+msgid "L2 Data Write Miss"
+msgstr "L2-Fehlslag Daten schrieven"
+
+#: libcore/globalconfig.cpp:86
+#, fuzzy
+#| msgid "LL Instr. Fetch Miss"
+msgctxt "QObject|"
+msgid "LL Instr. Fetch Miss"
+msgstr "LL-Fehlslag Anwiesen halen"
+
+#: libcore/globalconfig.cpp:87
+#, fuzzy
+#| msgid "LL Data Read Miss"
+msgctxt "QObject|"
+msgid "LL Data Read Miss"
+msgstr "LL-Fehlslag Daten lesen"
+
+#: libcore/globalconfig.cpp:88
+#, fuzzy
+#| msgid "LL Data Write Miss"
+msgctxt "QObject|"
+msgid "LL Data Write Miss"
+msgstr "LL-Fehlslag Daten schrieven"
+
+#: libcore/globalconfig.cpp:89
+#, fuzzy
+#| msgid "L1 Miss Sum"
+msgctxt "QObject|"
+msgid "L1 Miss Sum"
+msgstr "Summ L1-Fehlslääg"
+
+#: libcore/globalconfig.cpp:90
+#, fuzzy
+#| msgid "L2 Miss Sum"
+msgctxt "QObject|"
+msgid "L2 Miss Sum"
+msgstr "Summ L2-Fehlslääg"
+
+#: libcore/globalconfig.cpp:91
+#, fuzzy
+#| msgid "Last-level Miss Sum"
+msgctxt "QObject|"
+msgid "Last-level Miss Sum"
+msgstr "Fehlslääg in verleden Stoop"
+
+#: libcore/globalconfig.cpp:92
+#, fuzzy
+#| msgid "Indirect Branch"
+msgctxt "QObject|"
+msgid "Indirect Branch"
+msgstr "Indirekt Telg"
+
+#: libcore/globalconfig.cpp:93
+#, fuzzy
+#| msgid "Mispredicted Ind. Branch"
+msgctxt "QObject|"
+msgid "Mispredicted Ind. Branch"
+msgstr "Nich verwacht indirekt Telg"
+
+#: libcore/globalconfig.cpp:94
+#, fuzzy
+#| msgid "Conditional Branch"
+msgctxt "QObject|"
+msgid "Conditional Branch"
+msgstr "Bedingt Telg"
+
+#: libcore/globalconfig.cpp:95
+#, fuzzy
+#| msgid "Mispredicted Cond. Branch"
+msgctxt "QObject|"
+msgid "Mispredicted Cond. Branch"
+msgstr "Nich verwacht bedingt Telg"
+
+#: libcore/globalconfig.cpp:96
+#, fuzzy
+#| msgid "Mispredicted Branch"
+msgctxt "QObject|"
+msgid "Mispredicted Branch"
+msgstr "Nich verwacht Telg"
+
+#: libcore/globalconfig.cpp:97
+#, fuzzy
+#| msgid "Global Bus Event"
+msgctxt "QObject|"
+msgid "Global Bus Event"
+msgstr "Globaal Bus-Begeefnis"
+
+#: libcore/globalconfig.cpp:98
+#, fuzzy
+#| msgid "Samples"
+msgctxt "QObject|"
+msgid "Samples"
+msgstr "Proven"
+
+#: libcore/globalconfig.cpp:99
+#, fuzzy
+#| msgid "System Time"
+msgctxt "QObject|"
+msgid "System Time"
+msgstr "Systeemtiet"
+
+#: libcore/globalconfig.cpp:100
+#, fuzzy
+#| msgid "User Time"
+msgctxt "QObject|"
+msgid "User Time"
+msgstr "Brukertiet"
+
+#: libcore/globalconfig.cpp:101
+#, fuzzy
+#| msgid "Cycle Estimation"
+msgctxt "QObject|"
+msgid "Cycle Estimation"
+msgstr "Estemeren CPU-Lööp"
+
+#: libcore/tracedata.cpp:1240
+#, fuzzy
+#| msgid "(no caller)"
+msgctxt "QObject|"
+msgid "(no caller)"
+msgstr "(keen Oproper)"
+
+#: libcore/tracedata.cpp:1247 libcore/tracedata.cpp:1266
+#, fuzzy, qt-format
+#| msgid "%1 via %2"
+msgctxt "QObject|"
+msgid "%1 via %2"
+msgstr "%1 över %2"
+
+#: libcore/tracedata.cpp:1256
+#, fuzzy
+#| msgid "(no callee)"
+msgctxt "QObject|"
+msgid "(no callee)"
+msgstr "(keen Opropen)"
+
+#: libcore/tracedata.cpp:2709
+#, fuzzy
+#| msgid "(global)"
+msgctxt "QObject|"
+msgid "(global)"
+msgstr "(globaal)"
+
+#: libcore/tracedata.cpp:3144
+#, fuzzy
+#| msgid "(not found)"
+msgctxt "QObject|"
+msgid "(not found)"
+msgstr "(nich funnen)"
+
+#: libcore/tracedata.cpp:3692
+#, fuzzy
+#| msgid "Recalculating Function Cycles..."
+msgctxt "TraceData|"
+msgid "Recalculating Function Cycles..."
+msgstr "Funkschoonlööp warrt nieg utreekt..."
+
+#: libviews/callgraphview.cpp:414
+#, fuzzy, qt-format
+#| msgid "Call(s) from %1"
+msgctxt "QObject|"
+msgid "Call(s) from %1"
+msgstr "Oprööp dör %1"
+
+#: libviews/callgraphview.cpp:417
+#, fuzzy, qt-format
+#| msgid "Call(s) to %1"
+msgctxt "QObject|"
+msgid "Call(s) to %1"
+msgstr "Oprööp vun %1"
+
+#: libviews/callgraphview.cpp:419
+#, fuzzy
+#| msgid "(unknown call)"
+msgctxt "QObject|"
+msgid "(unknown call)"
+msgstr "(nich begäng Oproop)"
+
+#: libviews/callgraphview.cpp:908
+#, fuzzy
+#| msgid "Export Graph"
+msgctxt "QObject|"
+msgid "Export Graph"
+msgstr "Diagramm exporteren"
+
+#: libviews/callgraphview.cpp:1608
+#, fuzzy
+#| msgid ""
+#| "<b>Call Graph around active Function</b><p>Depending on configuration, "
+#| "this view shows the call graph environment of the active function. Note: "
+#| "the shown cost is <b>only</b> the cost which is spent while the active "
+#| "function was actually running; i.e. the cost shown for main() - if it is "
+#| "visible - should be the same as the cost of the active function, as that "
+#| "is the part of inclusive cost of main() spent while the active function "
+#| "was running.</p><p>For cycles, blue call arrows indicate that this is an "
+#| "artificial call added for correct drawing which actually never happened.</"
+#| "p><p>If the graph is larger than the widget area, an overview panner is "
+#| "shown in one edge. There are similar visualization options to the Call "
+#| "Treemap; the selected function is highlighted.</p>"
+msgctxt "CallGraphView|"
+msgid ""
+"<b>Call Graph around active Function</b><p>Depending on configuration, this "
+"view shows the call graph environment of the active function. Note: the "
+"shown cost is <b>only</b> the cost which is spent while the active function "
+"was actually running; i.e. the cost shown for main() - if it is visible - "
+"should be the same as the cost of the active function, as that is the part "
+"of inclusive cost of main() spent while the active function was running.</"
+"p><p>For cycles, blue call arrows indicate that this is an artificial call "
+"added for correct drawing which actually never happened.</p><p>If the graph "
+"is larger than the widget area, an overview panner is shown in one edge. "
+"There are similar visualization options to the Call Treemap; the selected "
+"function is highlighted.</p>"
+msgstr ""
+"<b>Oproopdiagramm rund de aktive Funkschoon</b><p>Afhangen vun de Instellen "
+"wiest disse Ansicht de Oproopdiagramm-Ümgeven vun de aktuelle Funkschoon. "
+"Beacht bitte: de wieste Verbruuk is <b>bloots</b> dat, wat verbruukt wöör, "
+"wielt de aktuelle Funkschoon redig leep. De Verbruuk för main() mutt - wenn "
+"he sichtbor is - de sülve wesen as de för de aktuelle Funkschoon, wiel "
+"main() tosamen mit sien opropen Funkschonen jüst dit verbruukt hett, wielt "
+"de Funkschoon leep.</p><p>För Lööp wiest blaag Oproop-Pielen, dat dit en "
+"annahmen Oproop is, de för de richtige Dorstellen toföögt wöör, man den dat "
+"nienich geven hett.</p><p>Wenn dat Diagramm grötter is as dat Elementrebeet, "
+"warrt in en Eck en Översicht wiest. Dat gifft Dorstellen-Optschonen liek to "
+"de för de Oproop-Boomkoort; de utsöcht Funkschoon is markeert.</p>"
+
+#: libviews/callgraphview.cpp:2020
+#, fuzzy
+#| msgid ""
+#| "Warning: a long lasting graph layouting is in progress.\n"
+#| "Reduce node/edge limits for speedup.\n"
+msgctxt "CallGraphView|"
+msgid ""
+"Warning: a long lasting graph layouting is in progress.\n"
+"Reduce node/edge limits for speedup.\n"
+msgstr ""
+"Wohrschoen: En lang wohren Utreken vun dat Diagramm löppt.\n"
+"Sett de Grenzen för Knütten un Kanten daal, wenn dat gauer warrn schall.\n"
+
+#: libviews/callgraphview.cpp:2023
+#, fuzzy
+#| msgid "Layouting stopped.\n"
+msgctxt "CallGraphView|"
+msgid "Layouting stopped.\n"
+msgstr "Utreken vun't Diagramm anhollen.\n"
+
+#: libviews/callgraphview.cpp:2025
+#, fuzzy, qt-format
+#| msgid "The call graph has %1 nodes and %2 edges.\n"
+msgctxt "CallGraphView|"
+msgid "The call graph has %1 nodes and %2 edges.\n"
+msgstr "Dat Oproopdiagramm hett %1 Knütten un %2 Kanten.\n"
+
+#: libviews/callgraphview.cpp:2034
+#, fuzzy
+#| msgid "No graph available because the layouting process failed.\n"
+msgctxt "CallGraphView|"
+msgid "No graph available because the layouting process failed.\n"
+msgstr "Keen Diagramm verföögbor, de Dorstellperzess hett en Fehler hatt.\n"
+
+#: libviews/callgraphview.cpp:2036
+#, fuzzy, qt-format
+#| msgid ""
+#| "Trying to run the following command did not work:\n"
+#| "'%1'\n"
+msgctxt "CallGraphView|"
+msgid ""
+"Trying to run the following command did not work:\n"
+"'%1'\n"
+msgstr ""
+"Dat Utföhren vun dissen Befehl is fehlslaan:\n"
+"%1\n"
+
+#: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
+#, fuzzy
+#| msgid "Please check that 'dot' is installed (package GraphViz)."
+msgctxt "CallGraphView|"
+msgid "Please check that 'dot' is installed (package GraphViz)."
+msgstr "Bitte prööv, wat \"dot\" propper installeert is (Paket \"GraphViz\")."
+
+#: libviews/callgraphview.cpp:2080
+#, fuzzy
+#| msgid "No item activated for which to draw the call graph."
+msgctxt "CallGraphView|"
+msgid "No item activated for which to draw the call graph."
+msgstr "Keen Element för't Opstellen vun en Oproopdiagramm aktiveert."
+
+#: libviews/callgraphview.cpp:2092
+#, fuzzy
+#| msgid "No call graph can be drawn for the active item."
+msgctxt "CallGraphView|"
+msgid "No call graph can be drawn for the active item."
+msgstr "För dat aktiv Element lett sik keen Oproopdiagramm opstellen."
+
+#: libviews/callgraphview.cpp:2554
+#, fuzzy
+#| msgid "Error running the graph layouting tool.\n"
+msgctxt "CallGraphView|"
+msgid "Error running the graph layouting tool.\n"
+msgstr "Fehler bi't Utföhren vun dat Diagrammutsehn-Warktüüch.\n"
+
+#: libviews/callgraphview.cpp:2559
+#, fuzzy, qt-format
+#| msgid ""
+#| "There is no call graph available for function\n"
+#| "\t'%1'\n"
+#| "because it has no cost of the selected event type."
+msgctxt "CallGraphView|"
+msgid ""
+"There is no call graph available for function\n"
+"\t'%1'\n"
+"because it has no cost of the selected event type."
+msgstr ""
+"Dat gifft dat keen Oproop-Diagramm för de Funkschoon\n"
+"\t\"%1\",\n"
+"wiel se för den utsöchten Begeefnistyp keen Verbruuk hett."
+
+#: libviews/callgraphview.cpp:2773
+#, fuzzy
+#| msgid "Caller Depth"
+msgctxt "CallGraphView|"
+msgid "Caller Depth"
+msgstr "Oproper-Deepde"
+
+#: libviews/callgraphview.cpp:2774 libviews/callgraphview.cpp:2814
+#, fuzzy
+#| msgid "Unlimited"
+msgctxt "CallGraphView|"
+msgid "Unlimited"
+msgstr "Ahn Grenz"
+
+#: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
+#, fuzzy
+#| msgctxt "None"
+#| msgid "Depth 0"
+msgctxt "CallGraphView|None"
+msgid "Depth 0"
+msgstr "Deepde 0"
+
+#: libviews/callgraphview.cpp:2778 libviews/callgraphview.cpp:2818
+#, fuzzy
+#| msgid "max. 10"
+msgctxt "CallGraphView|"
+msgid "max. 1"
+msgstr "max. 10"
+
+#: libviews/callgraphview.cpp:2779 libviews/callgraphview.cpp:2819
+#, fuzzy
+#| msgid "max. 2"
+msgctxt "CallGraphView|"
+msgid "max. 2"
+msgstr "max. 2"
+
+#: libviews/callgraphview.cpp:2780 libviews/callgraphview.cpp:2820
+#, fuzzy
+#| msgid "max. 5"
+msgctxt "CallGraphView|"
+msgid "max. 5"
+msgstr "max. 5"
+
+#: libviews/callgraphview.cpp:2781 libviews/callgraphview.cpp:2821
+#, fuzzy
+#| msgid "max. 10"
+msgctxt "CallGraphView|"
+msgid "max. 10"
+msgstr "max. 10"
+
+#: libviews/callgraphview.cpp:2782 libviews/callgraphview.cpp:2822
+#, fuzzy
+#| msgid "max. 15"
+msgctxt "CallGraphView|"
+msgid "max. 15"
+msgstr "max. 15"
+
+#: libviews/callgraphview.cpp:2813
+#, fuzzy
+#| msgid "Callee Depth"
+msgctxt "CallGraphView|"
+msgid "Callee Depth"
+msgstr "Opropen-Deepde"
+
+#: libviews/callgraphview.cpp:2853
+#, fuzzy
+#| msgid "Min. Node Cost"
+msgctxt "CallGraphView|"
+msgid "Min. Node Cost"
+msgstr "Sietst Knütt-Verbruuk"
+
+#: libviews/callgraphview.cpp:2854
+#, fuzzy
+#| msgid "No Minimum"
+msgctxt "CallGraphView|"
+msgid "No Minimum"
+msgstr "Keen Minimum"
+
+#: libviews/callgraphview.cpp:2860
+#, fuzzy
+#| msgid "50 %"
+msgctxt "CallGraphView|"
+msgid "50 %"
+msgstr "50 %"
+
+#: libviews/callgraphview.cpp:2861
+#, fuzzy
+#| msgid "20 %"
+msgctxt "CallGraphView|"
+msgid "20 %"
+msgstr "20 %"
+
+#: libviews/callgraphview.cpp:2862
+#, fuzzy
+#| msgid "10 %"
+msgctxt "CallGraphView|"
+msgid "10 %"
+msgstr "10 %"
+
+#: libviews/callgraphview.cpp:2863
+#, fuzzy
+#| msgid "5 %"
+msgctxt "CallGraphView|"
+msgid "5 %"
+msgstr "5 %"
+
+#: libviews/callgraphview.cpp:2864
+#, fuzzy
+#| msgid "2 %"
+msgctxt "CallGraphView|"
+msgid "2 %"
+msgstr "2 %"
+
+#: libviews/callgraphview.cpp:2865
+#, fuzzy
+#| msgid "1 %"
+msgctxt "CallGraphView|"
+msgid "1 %"
+msgstr "1 %"
+
+#: libviews/callgraphview.cpp:2895
+#, fuzzy
+#| msgid "Min. Call Cost"
+msgctxt "CallGraphView|"
+msgid "Min. Call Cost"
+msgstr "Sietst Oproop-Verbruuk"
+
+#: libviews/callgraphview.cpp:2896
+#, fuzzy
+#| msgid "Same as Node"
+msgctxt "CallGraphView|"
+msgid "Same as Node"
+msgstr "Liek as Knütt"
+
+#: libviews/callgraphview.cpp:2898
+#, fuzzy
+#| msgid "50 % of Node"
+msgctxt "CallGraphView|"
+msgid "50 % of Node"
+msgstr "50% vun Knütt"
+
+#: libviews/callgraphview.cpp:2900
+#, fuzzy
+#| msgid "20 % of Node"
+msgctxt "CallGraphView|"
+msgid "20 % of Node"
+msgstr "20% vun Knütt"
+
+#: libviews/callgraphview.cpp:2902
+#, fuzzy
+#| msgid "10 % of Node"
+msgctxt "CallGraphView|"
+msgid "10 % of Node"
+msgstr "10% vun Knütt"
+
+#: libviews/callgraphview.cpp:2931
+#, fuzzy
+#| msgid "Birds-eye View"
+msgctxt "CallGraphView|"
+msgid "Birds-eye View"
+msgstr "Översicht"
+
+#: libviews/callgraphview.cpp:2932
+#, fuzzy
+#| msgid "Top Left"
+msgctxt "CallGraphView|"
+msgid "Top Left"
+msgstr "Baven links"
+
+#: libviews/callgraphview.cpp:2933
+#, fuzzy
+#| msgid "Top Right"
+msgctxt "CallGraphView|"
+msgid "Top Right"
+msgstr "Baven rechts"
+
+#: libviews/callgraphview.cpp:2934
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "CallGraphView|"
+msgid "Bottom Left"
+msgstr "Nerrn links"
+
+#: libviews/callgraphview.cpp:2935
+#, fuzzy
+#| msgid "Bottom Right"
+msgctxt "CallGraphView|"
+msgid "Bottom Right"
+msgstr "Nerrn rechts"
+
+#: libviews/callgraphview.cpp:2936
+#, fuzzy
+#| msgid "Automatic"
+msgctxt "CallGraphView|"
+msgid "Automatic"
+msgstr "Automaatsch"
+
+#: libviews/callgraphview.cpp:2937
+#, fuzzy
+#| msgid "Hide"
+msgctxt "CallGraphView|"
+msgid "Hide"
+msgstr "Versteken"
+
+#: libviews/callgraphview.cpp:2967
+#, fuzzy
+#| msgid "Layout"
+msgctxt "CallGraphView|"
+msgid "Layout"
+msgstr "Utsehn"
+
+#: libviews/callgraphview.cpp:2968
+#, fuzzy
+#| msgid "Top to Down"
+msgctxt "CallGraphView|"
+msgid "Top to Down"
+msgstr "Baven na nerrn"
+
+#: libviews/callgraphview.cpp:2969
+#, fuzzy
+#| msgid "Left to Right"
+msgctxt "CallGraphView|"
+msgid "Left to Right"
+msgstr "Links na Rechts"
+
+#: libviews/callgraphview.cpp:2970
+#, fuzzy
+#| msgid "Circular"
+msgctxt "CallGraphView|"
+msgid "Circular"
+msgstr "Rund"
+
+#: libviews/callgraphview.cpp:3010 libviews/callgraphview.cpp:3015
+#: libviews/callgraphview.cpp:3035
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "CallGraphView|"
+msgid "Go to '%1'"
+msgstr "Na \"%1\" gahn"
+
+#: libviews/callgraphview.cpp:3046
+#, fuzzy
+#| msgid "Stop Layouting"
+msgctxt "CallGraphView|"
+msgid "Stop Layouting"
+msgstr "Utreken vun't Diagrammutsehn anhollen"
+
+#: libviews/callgraphview.cpp:3053
+#, fuzzy
+#| msgid "Export Graph"
+msgctxt "CallGraphView|"
+msgid "Export Graph"
+msgstr "Diagramm exporteren"
+
+#: libviews/callgraphview.cpp:3054
+#, fuzzy
+#| msgid "As DOT file..."
+msgctxt "CallGraphView|"
+msgid "As DOT file..."
+msgstr "As DOT-Datei..."
+
+#: libviews/callgraphview.cpp:3055
+#, fuzzy
+#| msgid "As Image..."
+msgctxt "CallGraphView|"
+msgid "As Image..."
+msgstr "As Bild..."
+
+#: libviews/callgraphview.cpp:3058
+#, fuzzy
+#| msgid "Graph"
+msgctxt "CallGraphView|"
+msgid "Graph"
+msgstr "Grafik"
+
+#: libviews/callgraphview.cpp:3066
+#, fuzzy
+#| msgid "Arrows for Skipped Calls"
+msgctxt "CallGraphView|"
+msgid "Arrows for Skipped Calls"
+msgstr "Pielen för övergahn Oprööp"
+
+#: libviews/callgraphview.cpp:3071
+#, fuzzy
+#| msgid "Inner-cycle Calls"
+msgctxt "CallGraphView|"
+msgid "Inner-cycle Calls"
+msgstr "Oprööp binnen Lööp"
+
+#: libviews/callgraphview.cpp:3076
+#, fuzzy
+#| msgid "Cluster Groups"
+msgctxt "CallGraphView|"
+msgid "Cluster Groups"
+msgstr "Koppeln tosamentrecken"
+
+#: libviews/callgraphview.cpp:3080
+#, fuzzy
+#| msgid "Visualization"
+msgctxt "CallGraphView|"
+msgid "Visualization"
+msgstr "Dorstellen"
+
+#: libviews/callgraphview.cpp:3081
+#, fuzzy
+#| msgid "Compact"
+msgctxt "CallGraphView|"
+msgid "Compact"
+msgstr "Drang"
+
+#: libviews/callgraphview.cpp:3084
+#, fuzzy
+#| msgid "Normal"
+msgctxt "CallGraphView|"
+msgid "Normal"
+msgstr "Normaal"
+
+#: libviews/callgraphview.cpp:3087
+#, fuzzy
+#| msgid "Tall"
+msgctxt "CallGraphView|"
+msgid "Tall"
+msgstr "Groot"
+
+#: libviews/callgraphview.cpp:3119
+#, fuzzy
+#| msgid "Export Graph As Image"
+msgctxt "CallGraphView|"
+msgid "Export Graph As Image"
+msgstr "Diagramm as Bild exporteren"
+
+#: libviews/callgraphview.cpp:3121
+#, fuzzy
+#| msgid "Images (*.png *.jpg)"
+msgctxt "CallGraphView|"
+msgid "Images (*.png *.jpg)"
+msgstr "Biller (*.png *.jpg)"
+
+#: libviews/callitem.cpp:73 libviews/partlistitem.cpp:131
+#, fuzzy
+#| msgid "(active)"
+msgctxt "QObject|"
+msgid "(active)"
+msgstr "(aktiev)"
+
+#: libviews/callmapview.cpp:52
+#, fuzzy
+#| msgctxt "Name"
+#| msgid "A thing's name"
+msgctxt "CallMapView|Name"
+msgid "A thing's name"
+msgstr "En Naam vun en Ding"
+
+#: libviews/callmapview.cpp:53
+#, fuzzy
+#| msgid "Cost"
+msgctxt "CallMapView|"
+msgid "Cost"
+msgstr "Tietverbruuk"
+
+#: libviews/callmapview.cpp:54
+#, fuzzy
+#| msgid "Location"
+msgctxt "CallMapView|"
+msgid "Location"
+msgstr "Steed"
+
+#: libviews/callmapview.cpp:56
+#, fuzzy
+#| msgid "Calls"
+msgctxt "CallMapView|"
+msgid "Calls"
+msgstr "Oprööp"
+
+#: libviews/callmapview.cpp:91
+#, fuzzy
+#| msgid ""
+#| "<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers "
+#| "of the current activated function. Each colored rectangle represents a "
+#| "function; its size tries to be proportional to the cost spent therein "
+#| "while the active function is running (however, there are drawing "
+#| "constraints).</p>"
+msgctxt "CallMapView|"
+msgid ""
+"<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>Oproper-Koort</b> <p>Dit Diagramm wiest all Opropers vun de opstunns "
+"utsöchte Funkschoon, inbett na ehr Reeg. Elk infarvt Rechteck stellt en "
+"Funkschoon dor, sien Grött schall proportschonaal to den Verbruuk vun de "
+"Funkschoon wesen (beacht, dat dat Grenzen bi't Teken gifft).</p>"
+
+#: libviews/callmapview.cpp:98
+#, fuzzy
+#| msgid ""
+#| "<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+#| "the current activated function. Each colored rectangle represents a "
+#| "function; its size tries to be proportional to the cost spent therein "
+#| "while the active function is running (however, there are drawing "
+#| "constraints).</p>"
+msgctxt "CallMapView|"
+msgid ""
+"<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>Opropen-Koort</b><p>Dit Diagramm wiest all vun de opstunns utsöchte "
+"Funkschoon opropen Funkschonen, inbett na ehr Reeg. Elk infarvt Rechteck "
+"stellt en Funkschoon dor, sien Grött schall proportschonaal to den Verbruuk "
+"vun de Funkschoon wesen (beacht, dat dat Grenzen bi't Teken gifft).</p>"
+
+#: libviews/callmapview.cpp:106
+#, fuzzy
+#| msgid ""
+#| "<p>Appearance options can be found in the in the context menu. To get "
+#| "exact size proportions, choose 'Hide incorrect borders'. As this mode can "
+#| "be <em>very</em> time consuming, you may want to limit the maximum drawn "
+#| "nesting level before. 'Best' determinates the split direction for "
+#| "children from the aspect ratio of the parent. 'Always Best' decides on "
+#| "remaining space for each sibling. 'Ignore Proportions' takes space for "
+#| "function name drawing <em>before</em> drawing children. Note that size "
+#| "proportions can get <em>heavily</em> wrong.</p><p>This is a <em>TreeMap</"
+#| "em> widget. Keyboard navigation is available with the left/right arrow "
+#| "keys for traversing siblings, and up/down arrow keys to go a nesting "
+#| "level up/down. <em>Return</em> activates the current item.</p>"
+msgctxt "CallMapView|"
+msgid ""
+"<p>Appearance options can be found in the in the context menu. To get exact "
+"size proportions, choose 'Hide incorrect borders'. As this mode can be "
+"<em>very</em> time consuming, you may want to limit the maximum drawn "
+"nesting level before. 'Best' determinates the split direction for children "
+"from the aspect ratio of the parent. 'Always Best' decides on remaining "
+"space for each sibling. 'Ignore Proportions' takes space for function name "
+"drawing <em>before</em> drawing children. Note that size proportions can get "
+"<em>heavily</em> wrong.</p><p>This is a <em>TreeMap</em> widget. Keyboard "
+"navigation is available with the left/right arrow keys for traversing "
+"siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
+"em> activates the current item.</p>"
+msgstr ""
+"<p>De Optschonen för dat Utsehn laat sik binnen dat Rechtsklickmenü finnen. "
+"Wenn Du naue Afmeten hebben wullt, kannst Du dat mit \"Lege Ränners versteken"
+"\" fastleggen. Wiel disse Metood <em>bannig</em> veel Tiet bruken kann, "
+"wullt Du villicht vördem en Grenz för de tohööchst wieste Inbettdeepde "
+"fastleggen. \"Beste\" leggt de Opdeelricht för Ünnerelementen na de "
+"Proportschonen vun dat överornt Element sien Sieden fast. \"Jümmers beste\" "
+"leggt se na den överblieven Ruum för elk Geswisterelement fast. \"Afmeten "
+"övergahn\" nimmt den Ruum <em>toeerst</em> för't Teken vun Funkschoon-Naams, "
+"ehr de Ünnerfunkschonen teekt warrt. Beacht, dat de Grötten denn <em>bannig</"
+"em> verkehrt wesen köönt.</p><p>Dit is en <em>Boomkoort</em>. "
+"Tastatuurnavigatschoon mit de Pieltasten is för Naverelementen mit \"Links\" "
+"un \"Rechts\" verföögbor, mit \"Hooch\" un \"Daal\" kannst Du en Evene höger "
+"oder daalgahn. <em>Ingaav</em> aktiveert dat aktuelle Element.</p>"
+
+#: libviews/callmapview.cpp:139
+#, fuzzy
+#| msgid "Go To"
+msgctxt "CallMapView|"
+msgid "Go To"
+msgstr "Gah na"
+
+#: libviews/callmapview.cpp:170
+#, fuzzy
+#| msgid "Stop at Depth"
+msgctxt "CallMapView|"
+msgid "Stop at Depth"
+msgstr "Anhollen bi Deepde"
+
+#: libviews/callmapview.cpp:171
+#, fuzzy
+#| msgid "No Depth Limit"
+msgctxt "CallMapView|"
+msgid "No Depth Limit"
+msgstr "Keen Deepdegrenz"
+
+#: libviews/callmapview.cpp:173
+#, fuzzy
+#| msgid "Depth 10"
+msgctxt "CallMapView|"
+msgid "Depth 10"
+msgstr "Deepde 10"
+
+#: libviews/callmapview.cpp:174
+#, fuzzy
+#| msgid "Depth 15"
+msgctxt "CallMapView|"
+msgid "Depth 15"
+msgstr "Deepde 15"
+
+#: libviews/callmapview.cpp:175
+#, fuzzy
+#| msgid "Depth 20"
+msgctxt "CallMapView|"
+msgid "Depth 20"
+msgstr "Deepde 20"
+
+#: libviews/callmapview.cpp:178
+#, fuzzy, qt-format
+#| msgid "Depth of '%1' (%2)"
+msgctxt "CallMapView|"
+msgid "Depth of '%1' (%2)"
+msgstr "Deepde vun \"%1\" (%2)"
+
+#: libviews/callmapview.cpp:185
+#, fuzzy, qt-format
+#| msgid "Decrement Depth (to %1)"
+msgctxt "CallMapView|"
+msgid "Decrement Depth (to %1)"
+msgstr "Sieter Deepde (op %1)"
+
+#: libviews/callmapview.cpp:187
+#, fuzzy, qt-format
+#| msgid "Increment Depth (to %1)"
+msgctxt "CallMapView|"
+msgid "Increment Depth (to %1)"
+msgstr "Höger Deepde (op %1)"
+
+#: libviews/callmapview.cpp:213
+#, fuzzy
+#| msgid "Stop at Function"
+msgctxt "CallMapView|"
+msgid "Stop at Function"
+msgstr "Anhollen bi Funkschoon"
+
+#: libviews/callmapview.cpp:214
+#, fuzzy
+#| msgid "No Function Limit"
+msgctxt "CallMapView|"
+msgid "No Function Limit"
+msgstr "Keen Funkschoongrenz"
+
+#: libviews/callmapview.cpp:257
+#, fuzzy
+#| msgid "Stop at Area"
+msgctxt "CallMapView|"
+msgid "Stop at Area"
+msgstr "Anhollen bi Rebeet"
+
+#: libviews/callmapview.cpp:258
+#, fuzzy
+#| msgid "No Area Limit"
+msgctxt "CallMapView|"
+msgid "No Area Limit"
+msgstr "Keen Rebeetgrenz"
+
+#: libviews/callmapview.cpp:260
+#, fuzzy
+#| msgid "100 Pixels"
+msgctxt "CallMapView|"
+msgid "100 Pixels"
+msgstr "100 Pixels"
+
+#: libviews/callmapview.cpp:261
+#, fuzzy
+#| msgid "200 Pixels"
+msgctxt "CallMapView|"
+msgid "200 Pixels"
+msgstr "200 Pixels"
+
+#: libviews/callmapview.cpp:262
+#, fuzzy
+#| msgid "500 Pixels"
+msgctxt "CallMapView|"
+msgid "500 Pixels"
+msgstr "500 Pixels"
+
+#: libviews/callmapview.cpp:263
+#, fuzzy
+#| msgid "1000 Pixels"
+msgctxt "CallMapView|"
+msgid "1000 Pixels"
+msgstr "1000 Pixels"
+
+#: libviews/callmapview.cpp:269
+#, fuzzy, qt-format
+#| msgid "Area of '%1' (%2)"
+msgctxt "CallMapView|"
+msgid "Area of '%1' (%2)"
+msgstr "Rebeet vun \"%1\" (%2)"
+
+#: libviews/callmapview.cpp:275
+#, fuzzy, qt-format
+#| msgid "Double Area Limit (to %1)"
+msgctxt "CallMapView|"
+msgid "Double Area Limit (to %1)"
+msgstr "Rebeetgrenz verdubbeln (op %1)"
+
+#: libviews/callmapview.cpp:277
+#, fuzzy, qt-format
+#| msgid "Half Area Limit (to %1)"
+msgctxt "CallMapView|"
+msgid "Half Area Limit (to %1)"
+msgstr "Rebeetgrenz halberen (op %1)"
+
+#: libviews/callmapview.cpp:327
+#, fuzzy
+#| msgid "Visualization"
+msgctxt "CallMapView|"
+msgid "Visualization"
+msgstr "Dorstellen"
+
+#: libviews/callmapview.cpp:328
+#, fuzzy
+#| msgid "Split Direction"
+msgctxt "CallMapView|"
+msgid "Split Direction"
+msgstr "Opdeelricht"
+
+#: libviews/callmapview.cpp:331
+#, fuzzy
+#| msgid "Skip Incorrect Borders"
+msgctxt "CallMapView|"
+msgid "Skip Incorrect Borders"
+msgstr "Lege Ränners versteken"
+
+#: libviews/callmapview.cpp:336
+#, fuzzy
+#| msgid "Border Width"
+msgctxt "CallMapView|"
+msgid "Border Width"
+msgstr "Randbreed"
+
+#: libviews/callmapview.cpp:337
+#, fuzzy
+#| msgid "Border 0"
+msgctxt "CallMapView|"
+msgid "Border 0"
+msgstr "Breed 0"
+
+#: libviews/callmapview.cpp:339
+#, fuzzy
+#| msgid "Border 1"
+msgctxt "CallMapView|"
+msgid "Border 1"
+msgstr "Breed 1"
+
+#: libviews/callmapview.cpp:340
+#, fuzzy
+#| msgid "Border 2"
+msgctxt "CallMapView|"
+msgid "Border 2"
+msgstr "Breed 2"
+
+#: libviews/callmapview.cpp:341
+#, fuzzy
+#| msgid "Border 3"
+msgctxt "CallMapView|"
+msgid "Border 3"
+msgstr "Breed 3"
+
+#: libviews/callmapview.cpp:346
+#, fuzzy
+#| msgid "Draw Symbol Names"
+msgctxt "CallMapView|"
+msgid "Draw Symbol Names"
+msgstr "Symboolnaams wiesen"
+
+#: libviews/callmapview.cpp:348
+#, fuzzy
+#| msgid "Draw Cost"
+msgctxt "CallMapView|"
+msgid "Draw Cost"
+msgstr "Verbruuk wiesen"
+
+#: libviews/callmapview.cpp:350
+#, fuzzy
+#| msgid "Draw Location"
+msgctxt "CallMapView|"
+msgid "Draw Location"
+msgstr "Steed wiesen"
+
+#: libviews/callmapview.cpp:352
+#, fuzzy
+#| msgid "Draw Calls"
+msgctxt "CallMapView|"
+msgid "Draw Calls"
+msgstr "Oprooptall wiesen"
+
+#: libviews/callmapview.cpp:356
+#, fuzzy
+#| msgid "Ignore Proportions"
+msgctxt "CallMapView|"
+msgid "Ignore Proportions"
+msgstr "Afmeten övergahn"
+
+#: libviews/callmapview.cpp:358
+#, fuzzy
+#| msgid "Allow Rotation"
+msgctxt "CallMapView|"
+msgid "Allow Rotation"
+msgstr "Dreihen verlöven"
+
+#: libviews/callmapview.cpp:376
+#, fuzzy
+#| msgid "Shading"
+msgctxt "CallMapView|"
+msgid "Shading"
+msgstr "Schaddens"
+
+#: libviews/callmapview.cpp:428
+#, fuzzy, qt-format
+#| msgid "Call Map: Current is '%1'"
+msgctxt "CallMapView|"
+msgid "Call Map: Current is '%1'"
+msgstr "Opropen-Koort: Aktuell is \"%1\""
+
+#: libviews/callmapview.cpp:621
+#, fuzzy
+#| msgid "(no function)"
+msgctxt "QObject|"
+msgid "(no function)"
+msgstr "(keen Funkschoon)"
+
+#: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
+#, fuzzy
+#| msgid "(no call)"
+msgctxt "QObject|"
+msgid "(no call)"
+msgstr "(keen Oproop)"
+
+#: libviews/callview.cpp:37
+#, fuzzy
+#| msgid "Cost"
+msgctxt "CallView|"
+msgid "Cost"
+msgstr "Tietverbruuk"
+
+#: libviews/callview.cpp:38
+msgctxt "CallView|"
+msgid "Cost per call"
+msgstr ""
+
+#: libviews/callview.cpp:39
+#, fuzzy
+#| msgid "Cost 2"
+msgctxt "CallView|"
+msgid "Cost 2"
+msgstr "Verbruuk 2"
+
+#: libviews/callview.cpp:40
+msgctxt "CallView|"
+msgid "Cost 2 per call"
+msgstr ""
+
+#: libviews/callview.cpp:41
+#, fuzzy
+#| msgid "Count"
+msgctxt "CallView|"
+msgid "Count"
+msgstr "Tall"
+
+#: libviews/callview.cpp:42
+#, fuzzy
+#| msgid "Caller"
+msgctxt "CallView|"
+msgid "Caller"
+msgstr "Oproper"
+
+#: libviews/callview.cpp:42
+#, fuzzy
+#| msgid "Callee"
+msgctxt "CallView|"
+msgid "Callee"
+msgstr "Opropen"
+
+#: libviews/callview.cpp:76
+#, fuzzy
+#| msgid ""
+#| "<b>List of direct Callers</b><p>This list shows all functions calling the "
+#| "current selected one directly, together with a call count and the cost "
+#| "spent in the current selected function while being called from the "
+#| "function from the list.</p><p>An icon instead of an inclusive cost "
+#| "specifies that this is a call inside of a recursive cycle. An inclusive "
+#| "cost makes no sense here.</p><p>Selecting a function makes it the current "
+#| "selected one of this information panel. If there are two panels (Split "
+#| "mode), the function of the other panel is changed instead.</p>"
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callers</b><p>This list shows all functions calling the "
+"current selected one directly, together with a call count and the cost spent "
+"in the current selected function while being called from the function from "
+"the list.</p><p>An icon instead of an inclusive cost specifies that this is "
+"a call inside of a recursive cycle. An inclusive cost makes no sense here.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>List vun Direktopropers</b><p>Disse List wiest all Funkschonen, de de "
+"opstunns utsöchte Funkschoon direktemang oprepen, tosamen mit de Oproop-Tall "
+"un den Verbruuk vun disse Funkschoon, wielt se vun de Funkschoon op de List "
+"opropen weer.</p><p>En Lüttbild ansteed vun en ümfaten Verbruuk gifft an, "
+"dat dit en Oproop binnen en rekursiev Loop is. En ümfaten Verbruuk lett sik "
+"hier nich sinnvull angeven.</p><p>Wenn Du en Funkschoon anklickst, söchst Du "
+"ehr för dat hele Info-Rebeet ut. Wenn dat twee Rebeden gifft (Ünnerdeelt "
+"Bedrief), warrt ansteed vun de aktive Funkschoon de in't anner Rebeet ännert."
+"</p>"
+
+#: libviews/callview.cpp:89
+#, fuzzy
+#| msgid ""
+#| "<b>List of direct Callees</b><p>This list shows all functions called by "
+#| "the current selected one directly, together with a call count and the "
+#| "cost spent in this function while being called from the selected function."
+#| "</p><p>Selecting a function makes it the current selected one of this "
+#| "information panel. If there are two panels (Split mode), the function of "
+#| "the other panel is changed instead.</p>"
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callees</b><p>This list shows all functions called by the "
+"current selected one directly, together with a call count and the cost spent "
+"in this function while being called from the selected function.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>List vun Direktopropen</b><p>Disse List wiest all vun de opstunns "
+"utsöchte Funkschoon direktemang opropen Funkschonen, tosamen mit de Oproop-"
+"Tall un den Verbruuk vun de opropen Funkschonen, wielt se vun de utsöchte "
+"Funkschoon opropen weern.</p><p>Wenn Du en Funkschoon anklickst, söchst Du "
+"ehr för dat hele Info-Rebeet ut. Wenn dat twee Rebeden gifft (Ünnerdeelt "
+"Bedrief), warrt ansteed vun de aktive Funkschoon de in't anner Rebeet ännert."
+"</p>"
+
+#: libviews/callview.cpp:118 libviews/callview.cpp:123
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "CallView|"
+msgid "Go to '%1'"
+msgstr "Na \"%1\" gahn"
+
+#: libviews/callview.cpp:257 libviews/callview.cpp:261
+#, qt-format
+msgctxt "CallView|"
+msgid "%1 per call"
+msgstr ""
+
+#: libviews/costlistitem.cpp:53
+#, fuzzy, qt-format
+#| msgid "(%1 function(s) skipped)"
+msgctxt "QObject|"
+msgid "(%n item(s) skipped)"
+msgid_plural "(%n item(s) skipped)"
+msgstr[0] "(%1 Funkschonen övergahn)"
+msgstr[1] "(%1 Funkschonen övergahn)"
+
+#: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
+#, fuzzy, qt-format
+#| msgid "(%1 function(s) skipped)"
+msgctxt "QObject|"
+msgid "(%n function(s) skipped)"
+msgid_plural "(%n function(s) skipped)"
+msgstr[0] "(%1 Funkschonen övergahn)"
+msgstr[1] "(%1 Funkschonen övergahn)"
+
+#: libviews/coverageview.cpp:37
+#, fuzzy
+#| msgid "Incl."
+msgctxt "CoverageView|"
+msgid "Incl."
+msgstr "Ümfaten"
+
+#: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
+#, fuzzy
+#| msgid "Distance"
+msgctxt "CoverageView|"
+msgid "Distance"
+msgstr "Afstand"
+
+#: libviews/coverageview.cpp:41
+#, fuzzy
+#| msgid "Called"
+msgctxt "CoverageView|"
+msgid "Called"
+msgstr "Oprööp"
+
+#: libviews/coverageview.cpp:42
+#, fuzzy
+#| msgid "Caller"
+msgctxt "CoverageView|"
+msgid "Caller"
+msgstr "Oproper"
+
+#: libviews/coverageview.cpp:46
+#, fuzzy
+#| msgid "Self"
+msgctxt "CoverageView|"
+msgid "Self"
+msgstr "Egen"
+
+#: libviews/coverageview.cpp:48
+#, fuzzy
+#| msgid "Calling"
+msgctxt "CoverageView|"
+msgid "Calling"
+msgstr "Oprööp"
+
+#: libviews/coverageview.cpp:49
+#, fuzzy
+#| msgid "Callee"
+msgctxt "CoverageView|"
+msgid "Callee"
+msgstr "Opropen"
+
+#: libviews/coverageview.cpp:84
+#, fuzzy
+#| msgid ""
+#| "<b>List of all Callers</b><p>This list shows all functions calling the "
+#| "current selected one, either directly or with several functions in-"
+#| "between on the stack; the number of functions in-between plus one is "
+#| "called the <em>Distance</em> (e.g. for function A,B,C there exists a call "
+#| "from A to C when A calls B and B calls C, i.e. A => B => C. The distance "
+#| "here is 2).</p><p>Absolute cost shown is the cost spent in the selected "
+#| "function while a listed function is active; relative cost is the "
+#| "percentage of all cost spent in the selected function while the listed "
+#| "one is active. The cost graphic shows logarithmic percentage with a "
+#| "different color for each distance.</p><p>As there can be many calls from "
+#| "the same function, the distance column sometimes shows the range of "
+#| "distances for all calls happening; then, in parentheses, there is the "
+#| "medium distance, i.e. the distance where most of the call costs happened."
+#| "</p><p>Selecting a function makes it the current selected one of this "
+#| "information panel. If there are two panels (Split mode), the function of "
+#| "the other panel is changed instead.</p>"
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callers</b><p>This list shows all functions calling the "
+"current selected one, either directly or with several functions in-between "
+"on the stack; the number of functions in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the selected function while a "
+"listed function is active; relative cost is the percentage of all cost spent "
+"in the selected function while the listed one is active. The cost graphic "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls from the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+"<b>All Opropers</b><p>Disse List wiest all Funkschonen, de de utsöchte "
+"Funkschoon direktemang oder över verscheden Twischenfunktschonen opropen "
+"hebbt. De Tall vun Twischenfunkschonen plus Een warrt <em>Afstand</em> nöömt "
+"(Bispill: Dat gifft dree Funkschoon, nöömt A, B un C. Dat gifft en Oproop "
+"vun A na C, wenn A de Funkschoon B un B wedder Funkschoon C opröppt, d.h. A "
+"=> B => C. De Afstand is hier \"2\").</p><p>Warrt afsoluut Verbruuk wiest, "
+"is de wieste Verbruuk bi en oplist Funkschoon dat, wat de utsöchte "
+"Funkschoon verbruukt hett, wielt ok de opliste Funkschoon aktiv weer. Warrt "
+"relativ Verbruuk wiest, gifft de Perzentweert bi en oplist Funkschoon den "
+"Andeel vun de utsöchte Funkschoon ehr hele Looptiet an, över den ok de "
+"opliste Funkschoon aktiv weer.</p><p>Wiel dat mehr Oprööp vun de sülve "
+"Funkschoon ut geven kann, wiest de Afstand-Striep mennigmaal dat "
+"Afstandrebeet för all Oprööp. Denn warrt de Middelafstand in Klemmen wiest, "
+"dat is de Afstand mit den hööchsten Verbruuk. De Grafiken bi de opliste "
+"Funkschonen wiest de Perzentweerten vun de Afstänn logaritmisch, mit een "
+"Klöör för elk Afstand.</p><p>Wenn Du en Funkschoon anklickst, söchst Du ehr "
+"för dat hele Info-Rebeet ut. Wenn dat twee Rebeden gifft (Ünnerdeelt "
+"Bedrief), warrt ansteed vun de aktive Funkschoon de in't anner Rebeet ännert."
+"</p>"
+
+#: libviews/coverageview.cpp:114
+#, fuzzy
+#| msgid ""
+#| "<b>List of all Callees</b><p>This list shows all functions called by the "
+#| "current selected one, either directly or with several function in-between "
+#| "on the stack; the number of function in-between plus one is called the "
+#| "<em>Distance</em> (e.g. for function A,B,C there exists a call from A to "
+#| "C when A calls B and B calls C, i.e. A => B => C. The distance here is 2)."
+#| "</p><p>Absolute cost shown is the cost spent in the listed function while "
+#| "the selected is active; relative cost is the percentage of all cost spent "
+#| "in the listed function while the selected one is active. The cost graphic "
+#| "always shows logarithmic percentage with a different color for each "
+#| "distance.</p><p>As there can be many calls to the same function, the "
+#| "distance column sometimes shows the range of distances for all calls "
+#| "happening; then, in parentheses, there is the medium distance, i.e. the "
+#| "distance where most of the call costs happened.</p><p>Selecting a "
+#| "function makes it the current selected one of this information panel. If "
+#| "there are two panels (Split mode), the function of the other panel is "
+#| "changed instead.</p>"
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callees</b><p>This list shows all functions called by the "
+"current selected one, either directly or with several function in-between on "
+"the stack; the number of function in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the listed function while the "
+"selected is active; relative cost is the percentage of all cost spent in the "
+"listed function while the selected one is active. The cost graphic always "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls to the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+"<b>All Opropen</b><p>Disse List wiest all Funkschonen, de vun de utsöchte "
+"Funkschoon direktemang oder över verscheden Twischenfunkschonen opropen "
+"wöörn. De Tall vun Twischenfunkschonen plus Een warrt <em>Afstand</em> nöömt "
+"(Bispill: Dat gifft dree Funkschoon, nöömt A, B un C. Dat gifft en Oproop "
+"vun A na C, wenn A de Funkschoon B un B wedder Funkschoon C opröppt, d.h. A "
+"=> B => C. De Afstand is hier \"2\").</p><p>Warrt de Verbruuk afsoluut "
+"wiest, is de wieste Verbruuk bi en oplist Funkschoon dat, wat de opliste "
+"Funkschoon verbruukt hett, wielt ok de utsöchte Funkschoon aktiv weer. Warrt "
+"de Verbruuk relativ wiest, gifft de Perzentweert bi en oplist Funkschoon den "
+"Andeel vun de opliste Funkschoon ehr hele Looptiet an, över den ok de "
+"utsöchte Funkschoon aktiv weer.</p><p>Wiel dat mehr Oprööp vun de sülve "
+"Funkschoon ut geven kann, wiest de Afstand-Striep mennigmaal dat "
+"Afstandrebeet för all Oprööp. Denn warrt de Middelafstand in Klemmen wiest, "
+"dat is de Afstand mit den hööchsten Verbruuk. De Grafiken bi de opliste "
+"Funkschonen wiest de Perzentweerten vun de Afstänn logaritmisch, mit een "
+"Klöör för elk Afstand.</p><p>Wenn Du en Funkschoon anklickst, söchst Du ehr "
+"för dat hele Info-Rebeet ut. Wenn dat twee Rebeden gifft (Ünnerdeelt "
+"Bedrief), warrt ansteed vun de aktive Funkschoon de in't anner Rebeet ännert."
+"</p>"
+
+#: libviews/coverageview.cpp:160
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "CoverageView|"
+msgid "Go to '%1'"
+msgstr "Na \"%1\" gahn"
+
+#: libviews/eventtypeitem.cpp:48
+#, fuzzy
+#| msgid "Unknown Type"
+msgctxt "QObject|"
+msgid "Unknown Type"
+msgstr "Nich begäng Typ"
+
+#: libviews/eventtypeview.cpp:37
+#, fuzzy
+#| msgid "Event Type"
+msgctxt "EventTypeView|"
+msgid "Event Type"
+msgstr "Begeefnistyp"
+
+#: libviews/eventtypeview.cpp:38
+#, fuzzy
+#| msgid "Incl."
+msgctxt "EventTypeView|"
+msgid "Incl."
+msgstr "Ümfaten"
+
+#: libviews/eventtypeview.cpp:39
+#, fuzzy
+#| msgid "Self"
+msgctxt "EventTypeView|"
+msgid "Self"
+msgstr "Egen"
+
+#: libviews/eventtypeview.cpp:40
+#, fuzzy
+#| msgid "Short"
+msgctxt "EventTypeView|"
+msgid "Short"
+msgstr "Kort"
+
+#: libviews/eventtypeview.cpp:42
+#, fuzzy
+#| msgid "Formula"
+msgctxt "EventTypeView|"
+msgid "Formula"
+msgstr "Formel"
+
+#: libviews/eventtypeview.cpp:76
+#, fuzzy
+#| msgid ""
+#| "<b>Cost Types List</b><p>This list shows all cost types available and "
+#| "what the self/inclusive cost of the current selected function is for that "
+#| "cost type.</p><p>By choosing a cost type from the list, you change the "
+#| "cost type of costs shown all over KCachegrind to be the selected one.</p>"
+msgctxt "EventTypeView|"
+msgid ""
+"<b>Cost Types List</b><p>This list shows all cost types available and what "
+"the self/inclusive cost of the current selected function is for that cost "
+"type.</p><p>By choosing a cost type from the list, you change the cost type "
+"of costs shown all over KCachegrind to be the selected one.</p>"
+msgstr ""
+"<b>List vun Verbruuk-Typen</b><p>Disse List wiest all verföögbor Typen vun "
+"Tietverbruuk, un ok den egen/ümfaten Verbruuk för de opstunns utsöchte "
+"Funkschoon för de Typen.</p><p>Wenn Du en Verbruuk-Typ utsöchst, ännerst du "
+"den Typ vun den wiesten Verbruuk överall in KCachegrind na den utsöchten Typ."
+"</p>"
+
+#: libviews/eventtypeview.cpp:96
+#, fuzzy
+#| msgid "Set as Secondary Event Type"
+msgctxt "EventTypeView|"
+msgid "Set as Secondary Event Type"
+msgstr "As tweet Begeefnistyp fastleggen"
+
+#: libviews/eventtypeview.cpp:98
+#, fuzzy
+#| msgid "Hide Secondary Event Type"
+msgctxt "EventTypeView|"
+msgid "Hide Secondary Event Type"
+msgstr "Tweet Begeefnistyp versteken"
+
+#: libviews/eventtypeview.cpp:107
+#, fuzzy
+#| msgid "Edit Long Name"
+msgctxt "EventTypeView|"
+msgid "Edit Long Name"
+msgstr "Lang Naam bewerken"
+
+#: libviews/eventtypeview.cpp:108
+#, fuzzy
+#| msgid "Edit Short Name"
+msgctxt "EventTypeView|"
+msgid "Edit Short Name"
+msgstr "Kort Naam bewerken"
+
+#: libviews/eventtypeview.cpp:109
+#, fuzzy
+#| msgid "Edit Formula"
+msgctxt "EventTypeView|"
+msgid "Edit Formula"
+msgstr "Formel bewerken"
+
+#: libviews/eventtypeview.cpp:110
+#, fuzzy
+#| msgid "Remove"
+msgctxt "EventTypeView|"
+msgid "Remove"
+msgstr "Wegmaken"
+
+#: libviews/eventtypeview.cpp:119
+#, fuzzy
+#| msgid "New Event Type..."
+msgctxt "EventTypeView|"
+msgid "New Event Type..."
+msgstr "Nieg Begeefnistyp..."
+
+#: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
+#, fuzzy, qt-format
+#| msgid "New%1"
+msgctxt "EventTypeView|"
+msgid "New%1"
+msgstr "Nieg%1"
+
+#: libviews/eventtypeview.cpp:160
+#, fuzzy, qt-format
+#| msgid "New Event Type %1"
+msgctxt "EventTypeView|"
+msgid "New Event Type %1"
+msgstr "Nieg Begeefnistyp %1"
+
+#: libviews/functionlistmodel.cpp:45
+#, fuzzy
+#| msgid "Incl."
+msgctxt "FunctionListModel|"
+msgid "Incl."
+msgstr "Ümfaten"
+
+#: libviews/functionlistmodel.cpp:46
+#, fuzzy
+#| msgid "Self"
+msgctxt "FunctionListModel|"
+msgid "Self"
+msgstr "Egen"
+
+#: libviews/functionlistmodel.cpp:47
+#, fuzzy
+#| msgid "Called"
+msgctxt "FunctionListModel|"
+msgid "Called"
+msgstr "Oprööp"
+
+#: libviews/functionlistmodel.cpp:48
+#, fuzzy
+#| msgid "Function"
+msgctxt "FunctionListModel|"
+msgid "Function"
+msgstr "Funkschoon"
+
+#: libviews/functionlistmodel.cpp:49
+#, fuzzy
+#| msgid "Location"
+msgctxt "FunctionListModel|"
+msgid "Location"
+msgstr "Steed"
+
+#: libviews/functionlistmodel.cpp:89
+#, fuzzy, qt-format
+#| msgid "(%1 function(s) skipped)"
+msgctxt "FunctionListModel|"
+msgid "(%1 function(s) skipped)"
+msgstr "(%1 Funkschonen övergahn)"
+
+#: libviews/functionselection.cpp:87
+#, fuzzy
+#| msgid "Function Profile"
+msgctxt "FunctionSelection|"
+msgid "Function Profile"
+msgstr "Funkschoonprofil"
+
+#: libviews/functionselection.cpp:95
+#, fuzzy
+#| msgid "&Search:"
+msgctxt "FunctionSelection|"
+msgid "&Search:"
+msgstr "&Söken:"
+
+#: libviews/functionselection.cpp:101
+#, fuzzy
+#| msgid "&Search:"
+msgctxt "FunctionSelection|"
+msgid "Search Query"
+msgstr "&Söken:"
+
+#: libviews/functionselection.cpp:116
+#, fuzzy
+#| msgid "Self"
+msgctxt "FunctionSelection|"
+msgid "Self"
+msgstr "Egen"
+
+#: libviews/functionselection.cpp:116
+#, fuzzy
+#| msgid "Group"
+msgctxt "FunctionSelection|"
+msgid "Group"
+msgstr "Koppel"
+
+#: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
+#, fuzzy
+#| msgid "(No Grouping)"
+msgctxt "FunctionSelection|"
+msgid "(No Grouping)"
+msgstr "(keen Koppeltyp)"
+
+#: libviews/functionselection.cpp:209
+#, fuzzy
+#| msgid ""
+#| "<b>The Flat Profile</b><p>The flat profile contains a group and a "
+#| "function selection list. The group list contains all groups where costs "
+#| "are spent in, depending on the chosen group type. The group list is "
+#| "hidden when group type 'Function' is selected.</p><p>The function list "
+#| "contains the functions of the selected group (or all for 'Function' group "
+#| "type), ordered by the costs spent therein. Functions with costs less than "
+#| "1% are hidden on default.</p>"
+msgctxt "FunctionSelection|"
+msgid ""
+"<b>The Flat Profile</b><p>The flat profile contains a group and a function "
+"selection list. The group list contains all groups where costs are spent in, "
+"depending on the chosen group type. The group list is hidden when group type "
+"'Function' is selected.</p><p>The function list contains the functions of "
+"the selected group (or all for 'Function' group type), ordered by the costs "
+"spent therein. Functions with costs less than 1% are hidden on default.</p>"
+msgstr ""
+"<b>Dat evene Profil</b><p>Dat evene Profil bargt en Koppel- un Funkschoon-"
+"Köörlist. De Koppellist bargt all Koppeln, de Tiet verbruukt, afhangen vun "
+"den utsöchten Koppeltyp. De Koppellist is versteken, wenn \"Funkschoon\" as "
+"Koppeltyp utsöcht is.</p><p>De Funkschonenlist bargt den utsöchten Koppel "
+"sien Funkschonen (oder all bi Koppeltyp \"Funkschoon\"), anornt na ehr "
+"Tietverbruuk. Standardwies warrt Funkschonen mit en Verbruuk vun weniger as "
+"1% versteken.</p>"
+
+#: libviews/functionselection.cpp:287
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "FunctionSelection|"
+msgid "Go to '%1'"
+msgstr "Na \"%1\" gahn"
+
+#: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
+#, fuzzy
+#| msgid "Grouping"
+msgctxt "FunctionSelection|"
+msgid "Grouping"
+msgstr "Koppeltyp"
+
+#: libviews/functionselection.cpp:353
+#, fuzzy
+#| msgid "No Grouping"
+msgctxt "FunctionSelection|"
+msgid "No Grouping"
+msgstr "Keen Koppeltyp"
+
+#: libviews/instritem.cpp:114 libviews/sourceitem.cpp:94
+#, fuzzy, qt-format
+#| msgid "Active call to '%1'"
+msgctxt "QObject|"
+msgid "Active call to '%1'"
+msgstr "Aktiv Oproop vun \"%1\""
+
+#: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
+#, fuzzy, qt-format
+#| msgid "Call(s) to %1"
+msgctxt "QObject|"
+msgid "Call to '%1'"
+msgstr "Oprööp vun %1"
+
+#: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
+#, fuzzy, qt-format
+#| msgid "Call(s) to %1"
+msgctxt "QObject|"
+msgid "%n call(s) to '%2'"
+msgid_plural "%n call(s) to '%2'"
+msgstr[0] "Oprööp vun %1"
+msgstr[1] "Oprööp vun %1"
+
+#: libviews/instritem.cpp:155
+#, fuzzy, qt-format
+#| msgid "Jump %1 of %2 times to 0x%3"
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to 0x%3"
+msgstr "Jump %1 vun %2 Maal na 0x%3"
+
+#: libviews/instritem.cpp:160
+#, fuzzy, qt-format
+#| msgid "Jump %1 times to 0x%2"
+msgctxt "QObject|"
+msgid "Jump %1 times to 0x%2"
+msgstr "Jump %1 Maal na 0x%2"
+
+#: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
+#, fuzzy
+#| msgid "(cycle)"
+msgctxt "QObject|"
+msgid "(cycle)"
+msgstr "(Loop)"
+
+#: libviews/instrview.cpp:193
+#, fuzzy
+#| msgid "#"
+msgctxt "InstrView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/instrview.cpp:194
+#, fuzzy
+#| msgid "Cost"
+msgctxt "InstrView|"
+msgid "Cost"
+msgstr "Tietverbruuk"
+
+#: libviews/instrview.cpp:195
+#, fuzzy
+#| msgid "Cost 2"
+msgctxt "InstrView|"
+msgid "Cost 2"
+msgstr "Verbruuk 2"
+
+#: libviews/instrview.cpp:197
+#, fuzzy
+#| msgid "Hex"
+msgctxt "InstrView|"
+msgid "Hex"
+msgstr "Hexkode"
+
+#: libviews/instrview.cpp:199
+#, fuzzy
+#| msgid "Assembly Instructions"
+msgctxt "InstrView|"
+msgid "Assembly Instructions"
+msgstr "Assembler-Anwiesen"
+
+#: libviews/instrview.cpp:200
+#, fuzzy
+#| msgid "Source Position"
+msgctxt "InstrView|"
+msgid "Source Position"
+msgstr "Bornpositschoon"
+
+#: libviews/instrview.cpp:236
+#, fuzzy
+#| msgid ""
+#| "<b>Annotated Machine Code</b><p>The annotated machine code list shows the "
+#| "assembly instructions of the current selected function together with "
+#| "(self) cost spent while executing an instruction. If this is a call "
+#| "instruction, lines with details on the call happening are inserted into "
+#| "the source: the cost spent inside of the call, the number of calls "
+#| "happening, and the call destination.</p><p>The machine code shown is "
+#| "generated with the 'objdump' utility from the 'binutils' package.</"
+#| "p><p>Select a line with call information to make the destination function "
+#| "of this call current.</p>"
+msgctxt "InstrView|"
+msgid ""
+"<b>Annotated Machine Code</b><p>The annotated machine code list shows the "
+"assembly instructions of the current selected function together with (self) "
+"cost spent while executing an instruction. If this is a call instruction, "
+"lines with details on the call happening are inserted into the source: the "
+"cost spent inside of the call, the number of calls happening, and the call "
+"destination.</p><p>The machine code shown is generated with the 'objdump' "
+"utility from the 'binutils' package.</p><p>Select a line with call "
+"information to make the destination function of this call current.</p>"
+msgstr ""
+"<b>Maschienkode mit Anmarken</b><p>De Maschienkode mit Anmarken wiest de "
+"Maschienkode-Anwiesen vun de opstunns utsöchte Funkschoon tosamen mit de "
+"Anwiesen ehr (egen) Tietverbruuk bi't Utföhren. Wenn dit en Oproop-Anwiesen "
+"is, warrt Enkelheiten för den Oproop na den Bornkode inföögt: De "
+"Tietverbruuk binnen den Oproop, de Tall vun Oprööp, un dat Oproop-Teel.</"
+"p><p>De wieste Maschienkode-Utgaav warrt mit dat Warktüüch \"objdump\" ut "
+"dat Paket \"binutils\" opstellt.</p><p>Du kannst en Oproop sien "
+"Teelfunkschoon aktiveren, wenn Du op en Reeg mit Oproop-Informatschonen "
+"klickst.</p>"
+
+#: libviews/instrview.cpp:265
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "InstrView|"
+msgid "Go to '%1'"
+msgstr "Na \"%1\" gahn"
+
+#: libviews/instrview.cpp:270
+#, fuzzy, qt-format
+#| msgid "Go to Address %1"
+msgctxt "InstrView|"
+msgid "Go to Address %1"
+msgstr "Na Adress %1 gahn"
+
+#: libviews/instrview.cpp:282
+#, fuzzy
+#| msgid "Hex Code"
+msgctxt "InstrView|"
+msgid "Hex Code"
+msgstr "Hexadezimaal-Kode"
+
+#: libviews/instrview.cpp:573
+#, fuzzy
+#| msgid "There is no instruction info in the profile data file."
+msgctxt "InstrView|"
+msgid "There is no instruction info in the profile data file."
+msgstr "Dat gifft keen Anwiesen-Informatschonen binnen de Profildatendatei."
+
+#: libviews/instrview.cpp:575
+#, fuzzy
+#| msgid "Tip: For Callgrind, rerun with option"
+msgctxt "InstrView|"
+msgid "Tip: For Callgrind, rerun with option"
+msgstr ""
+"Tipp: Wenn Du mit Callgrind arbeidst, föhr dat nochmaal ut mit de Optschoon"
+
+#: libviews/instrview.cpp:576
+#, fuzzy
+#| msgid "      --dump-instr=yes"
+msgctxt "InstrView|"
+msgid "      --dump-instr=yes"
+msgstr "      --dump-instr=yes"
+
+#: libviews/instrview.cpp:577
+#, fuzzy
+#| msgid "To see (conditional) jumps, additionally specify"
+msgctxt "InstrView|"
+msgid "To see (conditional) jumps, additionally specify"
+msgstr "Wenn Du (bedingte) Jumpen sehn wullt, bruuk ok noch de Optschoon"
+
+#: libviews/instrview.cpp:578
+#, fuzzy
+#| msgid "      --trace-jump=yes"
+msgctxt "InstrView|"
+msgid "      --collect-jumps=yes"
+msgstr "      --trace-jump=yes"
+
+#: libviews/instrview.cpp:826
+#, fuzzy
+#| msgid "For annotated machine code, the following object file is needed:"
+msgctxt "InstrView|"
+msgid "For annotated machine code, the following object file is needed:"
+msgstr "För Maschienkode mit Anmarken deit disse Objektdatei noot:"
+
+#: libviews/instrview.cpp:831
+#, fuzzy
+#| msgid "This file can not be found."
+msgctxt "InstrView|"
+msgid "This file can not be found."
+msgstr "Disse Datei lett sik nich finnen."
+
+#: libviews/instrview.cpp:834
+msgctxt "InstrView|"
+msgid "If cross-compiled, set SYSROOT variable."
+msgstr ""
+
+#: libviews/instrview.cpp:858
+#, fuzzy
+#| msgid "There is an error trying to execute the command"
+msgctxt "InstrView|"
+msgid "There is an error trying to execute the command"
+msgstr "Dat geev en Fehler bi't Utföhren vun den Befehl"
+
+#: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
+#, fuzzy
+#| msgid "Check that you have installed 'objdump'."
+msgctxt "InstrView|"
+msgid "Check that you have installed 'objdump'."
+msgstr "Prööv, wat Du \"objdump\" installeert hest."
+
+#: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
+#, fuzzy
+#| msgid "This utility can be found in the 'binutils' package."
+msgctxt "InstrView|"
+msgid "This utility can be found in the 'binutils' package."
+msgstr "Dit Warktüüch lett sik binnen dat Paket \"binutils\" finnen."
+
+#: libviews/instrview.cpp:966
+#, fuzzy
+#| msgid "(No Instruction)"
+msgctxt "InstrView|"
+msgid "(No Instruction)"
+msgstr "(Keen Anwiesen)"
+
+#: libviews/instrview.cpp:1134
+#, qt-format
+msgctxt "InstrView|"
+msgid "There are %n cost line(s) without machine code."
+msgid_plural "There are %n cost line(s) without machine code."
+msgstr[0] ""
+msgstr[1] ""
+
+#: libviews/instrview.cpp:1136
+#, fuzzy
+#| msgid "This happens because the code of"
+msgctxt "InstrView|"
+msgid "This happens because the code of"
+msgstr "Dat is so, wiel de Kode vun"
+
+#: libviews/instrview.cpp:1139
+#, fuzzy
+#| msgid "does not seem to match the profile data file."
+msgctxt "InstrView|"
+msgid "does not seem to match the profile data file."
+msgstr "sachens nich to de Profildatendatei passt."
+
+#: libviews/instrview.cpp:1142
+#, fuzzy
+#| msgid "Are you using an old profile data file or is the above mentioned"
+msgctxt "InstrView|"
+msgid "Are you using an old profile data file or is the above mentioned"
+msgstr ""
+"Bruukst Du en ole Profildatendatei, oder is dat baven nöömte \"ELF\"-Objekt"
+
+#: libviews/instrview.cpp:1144
+#, fuzzy
+#| msgid "ELF object from an updated installation/another machine?"
+msgctxt "InstrView|"
+msgid "ELF object from an updated installation/another machine?"
+msgstr "ut en opfrischte Installatschoon oder vun en anner Maschien?"
+
+#: libviews/instrview.cpp:1152
+#, fuzzy
+#| msgid "There seems to be an error trying to execute the command"
+msgctxt "InstrView|"
+msgid "There seems to be an error trying to execute the command"
+msgstr "As dat lett gifft dat bi't Utföhren vun den Befehl en Fehler"
+
+#: libviews/instrview.cpp:1156
+#, fuzzy
+#| msgid "Check that the ELF object used in the command exists."
+msgctxt "InstrView|"
+msgid "Check that the ELF object used in the command exists."
+msgstr "Prööv, wat dat dat in den Befehl bruukte \"ELF\"-Objekt gifft."
+
+#: libviews/partgraph.cpp:154
+#, fuzzy, qt-format
+#| msgid "Profile Part %1"
+msgctxt "QObject|"
+msgid "Profile Part %1"
+msgstr "Profildeel %1"
+
+#: libviews/partgraph.cpp:211
+#, fuzzy
+#| msgid "(no trace)"
+msgctxt "QObject|"
+msgid "(no trace)"
+msgstr "(keen Spoor)"
+
+#: libviews/partgraph.cpp:214
+#, fuzzy
+#| msgid "(no part)"
+msgctxt "QObject|"
+msgid "(no part)"
+msgstr "(keen Deel)"
+
+#: libviews/partlistitem.cpp:39
+#, fuzzy
+#| msgid "(none)"
+msgctxt "QObject|"
+msgid "(none)"
+msgstr "(Keen)"
+
+#: libviews/partselection.cpp:48
+#, fuzzy
+#| msgid "Parts Overview"
+msgctxt "PartSelection|"
+msgid "Parts Overview"
+msgstr "Delen-Översicht"
+
+#: libviews/partselection.cpp:61
+#, fuzzy
+#| msgctxt "A thing's name"
+#| msgid "Name"
+msgctxt "PartSelection|A thing's name"
+msgid "Name"
+msgstr "Naam"
+
+#: libviews/partselection.cpp:62
+#, fuzzy
+#| msgid "Cost"
+msgctxt "PartSelection|"
+msgid "Cost"
+msgstr "Tietverbruuk"
+
+#: libviews/partselection.cpp:69
+#, fuzzy
+#| msgid "(no trace parts)"
+msgctxt "PartSelection|"
+msgid "(no trace parts)"
+msgstr "(keen Spoordelen)"
+
+#: libviews/partselection.cpp:96
+#, fuzzy
+#| msgid ""
+#| "<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+#| "there are several profile data files from one profile run. The Trace Part "
+#| "Overview dockable shows these, horizontally ordered in execution time; "
+#| "the rectangle sizes are proportional to the total cost spent in the "
+#| "parts. You can select one or several parts to constrain all costs shown "
+#| "to these parts only.</p><p>The parts are further subdivided: there is a "
+#| "partitioning and an callee split mode: <ul><li>Partitioning: You see the "
+#| "partitioning into groups for a trace part, according to the group type "
+#| "selected. E.g. if ELF object groups are selected, you see colored "
+#| "rectangles for each used ELF object (shared library or executable), sized "
+#| "according to the cost spent therein.</li><li>Callee: A rectangle showing "
+#| "the inclusive cost of the current selected function in the trace part is "
+#| "shown. This is split up into smaller rectangles to show the costs of its "
+#| "callees.</li></ul></p>"
+msgctxt "PartSelection|"
+msgid ""
+"<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+"there are several profile data files from one profile run. The Trace Part "
+"Overview dockable shows these, horizontally ordered in execution time; the "
+"rectangle sizes are proportional to the total cost spent in the parts. You "
+"can select one or several parts to constrain all costs shown to these parts "
+"only.</p><p>The parts are further subdivided: there is a partitioning and an "
+"callee split mode: <ul><li>Partitioning: You see the partitioning into "
+"groups for a trace part, according to the group type selected. E.g. if ELF "
+"object groups are selected, you see colored rectangles for each used ELF "
+"object (shared library or executable), sized according to the cost spent "
+"therein.</li><li>Callee: A rectangle showing the inclusive cost of the "
+"current selected function in the trace part is shown. This is split up into "
+"smaller rectangles to show the costs of its callees.</li></ul></p>"
+msgstr ""
+"<b>De Delen-Översicht</b><p>En Spoor is ut mehr Spoordelen tosamensett, wenn "
+"dat verscheden Profildatendateien vun een Profildörloop gifft. De andockbor "
+"Spoordelen-Översicht wiest disse, kimmrecht na Utföhrtiet ornt, un de "
+"Rechteck-Grötten spegelt ehr Tietverbruuk. Du kannst een oder mehr Delen "
+"utsöken, wenn Du bloots den Tietverbruuk vun disse Delen wiest hebben wullt."
+"</p><p>De Delen sünd noch wieder opdeelt:<ul><li>Ünnerdeelt: Du kannst för "
+"en Spoordeel en Opdelen in Koppeln na den utsöchten Koppeltyp sehn. Wenn Du "
+"a.B. \"ELF\"-Objekten utsöchst, sühst Du en infarvt Rechteck för elk bruukt "
+"\"ELF\"-Objekt (Bibliotheek oder Programm). Sien Grött wiest den "
+"Tietverbruuk för dat Objekt.</li><li>Opropen Funkschoon: En Rechteck wiest "
+"de ümfaten Tiet, de de utsöchte Funkschoon binnen den Spoordeel bruukt hett. "
+"Dit is in lütter Rechtecken opdeelt, disse wiest den Tietverbruuk vun de "
+"Funkschonen, de se opropen hett.</li></ul></p>"
+
+#: libviews/partselection.cpp:231
+#, fuzzy, qt-format
+#| msgid "Profile Part Overview: Current is '%1'"
+msgctxt "PartSelection|"
+msgid "Profile Part Overview: Current is '%1'"
+msgstr "Översicht för Profildelen: Aktuell is \"%1\""
+
+#: libviews/partselection.cpp:337
+#, fuzzy, qt-format
+#| msgid "Deselect '%1'"
+msgctxt "PartSelection|"
+msgid "Deselect '%1'"
+msgstr "\"%1\" afwählen"
+
+#: libviews/partselection.cpp:339
+#, fuzzy, qt-format
+#| msgid "Select '%1'"
+msgctxt "PartSelection|"
+msgid "Select '%1'"
+msgstr "\"%1\" kören"
+
+#: libviews/partselection.cpp:344
+#, fuzzy
+#| msgid "Select All Parts"
+msgctxt "PartSelection|"
+msgid "Select All Parts"
+msgstr "All Delen kören"
+
+#: libviews/partselection.cpp:345
+#, fuzzy
+#| msgid "Visible Parts"
+msgctxt "PartSelection|"
+msgid "Visible Parts"
+msgstr "Sichtbor Delen"
+
+#: libviews/partselection.cpp:346
+#, fuzzy
+#| msgid "Hide Selected Parts"
+msgctxt "PartSelection|"
+msgid "Hide Selected Parts"
+msgstr "Utsöchte Delen versteken"
+
+#: libviews/partselection.cpp:347
+#, fuzzy
+#| msgid "Show Hidden Parts"
+msgctxt "PartSelection|"
+msgid "Show Hidden Parts"
+msgstr "Versteken Delen wiesen"
+
+#: libviews/partselection.cpp:361
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "PartSelection|"
+msgid "Go to '%1'"
+msgstr "Na \"%1\" gahn"
+
+#: libviews/partselection.cpp:370
+#, fuzzy
+#| msgid "Visualization"
+msgctxt "PartSelection|"
+msgid "Visualization"
+msgstr "Dorstellen"
+
+#: libviews/partselection.cpp:371
+#, fuzzy
+#| msgid "Partitioning Mode"
+msgctxt "PartSelection|"
+msgid "Partitioning Mode"
+msgstr "Ünnerdeelt Bedrief"
+
+#: libviews/partselection.cpp:373
+#, fuzzy
+#| msgid "Zoom Function"
+msgctxt "PartSelection|"
+msgid "Zoom Function"
+msgstr "Groot wiesen"
+
+#: libviews/partselection.cpp:375
+#, fuzzy
+#| msgid "Show Direct Calls"
+msgctxt "PartSelection|"
+msgid "Show Direct Calls"
+msgstr "Direktoprööp wiesen"
+
+#: libviews/partselection.cpp:376
+#, fuzzy
+#| msgid "Increment Shown Call Levels"
+msgctxt "PartSelection|"
+msgid "Increment Shown Call Levels"
+msgstr "Mehr Oproopstopen"
+
+#: libviews/partselection.cpp:377
+#, fuzzy
+#| msgid "Diagram Mode"
+msgctxt "PartSelection|"
+msgid "Diagram Mode"
+msgstr "Diagrammbedrief"
+
+#: libviews/partselection.cpp:392
+#, fuzzy
+#| msgid "Draw Names"
+msgctxt "PartSelection|"
+msgid "Draw Names"
+msgstr "Naams wiesen"
+
+#: libviews/partselection.cpp:394
+#, fuzzy
+#| msgid "Draw Costs"
+msgctxt "PartSelection|"
+msgid "Draw Costs"
+msgstr "Tietverbruuk wiesen"
+
+#: libviews/partselection.cpp:396
+#, fuzzy
+#| msgid "Ignore Proportions"
+msgctxt "PartSelection|"
+msgid "Ignore Proportions"
+msgstr "Afmeten övergahn"
+
+#: libviews/partselection.cpp:398
+#, fuzzy
+#| msgid "Allow Rotation"
+msgctxt "PartSelection|"
+msgid "Allow Rotation"
+msgstr "Dreihen verlöven"
+
+#: libviews/partselection.cpp:400
+#, fuzzy
+#| msgid "Draw Frames"
+msgctxt "PartSelection|"
+msgid "Draw Frames"
+msgstr "Rahmen wiesen"
+
+#: libviews/partselection.cpp:414
+#, fuzzy
+#| msgid "Hide Info"
+msgctxt "PartSelection|"
+msgid "Hide Info"
+msgstr "Informatschonen versteken"
+
+#: libviews/partselection.cpp:414
+#, fuzzy
+#| msgid "Show Info"
+msgctxt "PartSelection|"
+msgid "Show Info"
+msgstr "Informatschonen wiesen"
+
+#: libviews/partselection.cpp:562
+#, fuzzy
+#| msgid "(no trace loaded)"
+msgctxt "PartSelection|"
+msgid "(no trace loaded)"
+msgstr "(keen Spoor laadt)"
+
+#: libviews/partview.cpp:37
+#, fuzzy
+#| msgid "Profile Part"
+msgctxt "PartView|"
+msgid "Profile Part"
+msgstr "Profildeel"
+
+#: libviews/partview.cpp:38
+#, fuzzy
+#| msgid "Incl."
+msgctxt "PartView|"
+msgid "Incl."
+msgstr "Ümfaten"
+
+#: libviews/partview.cpp:39
+#, fuzzy
+#| msgid "Self"
+msgctxt "PartView|"
+msgid "Self"
+msgstr "Egen"
+
+#: libviews/partview.cpp:40
+#, fuzzy
+#| msgid "Called"
+msgctxt "PartView|"
+msgid "Called"
+msgstr "Oprööp"
+
+#: libviews/partview.cpp:41
+#, fuzzy
+#| msgid "Comment"
+msgctxt "PartView|"
+msgid "Comment"
+msgstr "Anmarken"
+
+#: libviews/partview.cpp:68
+#, fuzzy
+#| msgid ""
+#| "<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+#| "trace. For each part, the self/inclusive cost of the current selected "
+#| "function, spent in the part, is shown; percentage costs are always "
+#| "relative to the total cost <em>of the part</em> (not to the whole trace "
+#| "as in the Trace Part Overview). Also shown are the calls happening to/"
+#| "from the current function inside of the trace part.</p><p>By choosing one "
+#| "or more trace parts from the list, the costs shown all over KCachegrind "
+#| "will only be the ones spent in the selected part(s). If no list selection "
+#| "is shown, in fact all trace parts are selected implicitly.</p><p>This is "
+#| "a multi-selection list. You can select ranges by dragging the mouse or "
+#| "use SHIFT/CTRL modifiers. Selection/Deselection of trace parts can also "
+#| "be done by using the Trace Part Overview Dockable. This one also supports "
+#| "multiple selection.</p><p>Note that the list is hidden if only one trace "
+#| "part is loaded.</p>"
+msgctxt "PartView|"
+msgid ""
+"<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+"trace. For each part, the self/inclusive cost of the current selected "
+"function, spent in the part, is shown; percentage costs are always relative "
+"to the total cost <em>of the part</em> (not to the whole trace as in the "
+"Trace Part Overview). Also shown are the calls happening to/from the current "
+"function inside of the trace part.</p><p>By choosing one or more trace parts "
+"from the list, the costs shown all over KCachegrind will only be the ones "
+"spent in the selected part(s). If no list selection is shown, in fact all "
+"trace parts are selected implicitly.</p><p>This is a multi-selection list. "
+"You can select ranges by dragging the mouse or use SHIFT/CTRL modifiers. "
+"Selection/Deselection of trace parts can also be done by using the Trace "
+"Part Overview Dockable. This one also supports multiple selection.</"
+"p><p>Note that the list is hidden if only one trace part is loaded.</p>"
+msgstr ""
+"<b>List vun Spoordelen</b><p>Disse List wiest all Spoordelen vun de laadte "
+"Spoor. För elk Deel warrt de egen/ümfaten Verbruuk vun de opstunns utsöchte "
+"Funkschoon wiest. De Verbruuk in Perzent is jümmers relativ to den helen "
+"Verbruuk <em>vun den Deel</em> (nich to de hele Spoor, as binnen de "
+"Spoordeel-Översicht). Ok wiest warrt de Oprööp na/ut de aktuelle Funkschoon "
+"binnen de enkel Spoordelen.</p><p>Wenn Du een oder mehr Spoordelen op de "
+"List utsöchst, wiest KCachegrind överall bloots den Verbruuk ut de utsöchte "
+"Delen. Is keen Deel utsöcht, warrt all Spoordelen as utsöcht behannelt.</"
+"p><p>Dit is en List för Mehrmaal-Köör. Du kannst Rebeden dör Trecken mit de "
+"Muus utsöken, oder bi't Klicken Ümschalt un Strg bruken. Ok mit de andockbor "
+"Spoordeel-Översicht, de ok de Mehrmaal-Köör ünnerstütt, laat sik Spoordelen "
+"utsöken un afwählen.</p><p>Beacht bitte, dat disse List versteken warrt, "
+"wenn bloots een Spoordeel laadt is.</p>"
+
+#: libviews/sourceitem.cpp:141
+#, fuzzy, qt-format
+#| msgid "Jump %1 of %2 times to %3"
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to %3"
+msgstr "Jump %1 vun %2 Maal na %3"
+
+#: libviews/sourceitem.cpp:146
+#, fuzzy, qt-format
+#| msgid "Jump %1 times to %2"
+msgctxt "QObject|"
+msgid "Jump %1 times to %2"
+msgstr "Jump %1 Maal na %2"
+
+#: libviews/sourceview.cpp:51
+#, fuzzy
+#| msgid "#"
+msgctxt "SourceView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/sourceview.cpp:52
+#, fuzzy
+#| msgid "Cost"
+msgctxt "SourceView|"
+msgid "Cost"
+msgstr "Tietverbruuk"
+
+#: libviews/sourceview.cpp:53
+#, fuzzy
+#| msgid "Cost 2"
+msgctxt "SourceView|"
+msgid "Cost 2"
+msgstr "Verbruuk 2"
+
+#: libviews/sourceview.cpp:55
+#, fuzzy
+#| msgid "Source Line"
+msgctxt "SourceView|"
+msgid "Source"
+msgstr "Borntextreeg"
+
+#: libviews/sourceview.cpp:83
+#, fuzzy
+#| msgid ""
+#| "<b>Annotated Source</b><p>The annotated source list shows the source "
+#| "lines of the current selected function together with (self) cost spent "
+#| "while executing the code of this source line. If there was a call in a "
+#| "source line, lines with details on the call happening are inserted into "
+#| "the source: the cost spent inside of the call, the number of calls "
+#| "happening, and the call destination.</p><p>Select a inserted call "
+#| "information line to make the destination function current.</p>"
+msgctxt "SourceView|"
+msgid ""
+"<b>Annotated Source</b><p>The annotated source list shows the source lines "
+"of the current selected function together with (self) cost spent while "
+"executing the code of this source line. If there was a call in a source "
+"line, lines with details on the call happening are inserted into the source: "
+"the cost spent inside of the call, the number of calls happening, and the "
+"call destination.</p><p>Select a inserted call information line to make the "
+"destination function current.</p>"
+msgstr ""
+"<b>Born mit Anmarken</b> <p>De Borntext mit Anmarken wiest all Bornregen vun "
+"de opstunns utsöchte Funkschoon tosamen mit den (egen) Verbruuk för de "
+"Bornregen ehr Kode. Wenn dat en Oproop in en Bornreeg geven hett, warrt "
+"Enkelheiten över den Oproop na den Born inföögt: de Tietverbruuk binnen den "
+"Oproop, de Tall vun Oprööp, un dat Oproop-Teel.</p><p>Du kannst en Oproop "
+"sien Teelfunkschoon aktiveren, wenn Du op en Reeg mit Oproop-Informatschonen "
+"klickst.</p>"
+
+#: libviews/sourceview.cpp:110
+#, fuzzy, qt-format
+#| msgid "Go to '%1'"
+msgctxt "SourceView|"
+msgid "Go to '%1'"
+msgstr "Na \"%1\" gahn"
+
+#: libviews/sourceview.cpp:115
+#, fuzzy, qt-format
+#| msgid "Go to Line %1"
+msgctxt "SourceView|"
+msgid "Go to Line %1"
+msgstr "Na Reeg %1 gahn"
+
+#: libviews/sourceview.cpp:627
+#, fuzzy
+#| msgid "There is no cost of current selected type associated"
+msgctxt "SourceView|"
+msgid "There is no cost of current selected type associated"
+msgstr "Dat gifft keen Verbruuk vun den opstunns utsöchten Typ"
+
+#: libviews/sourceview.cpp:629
+#, fuzzy
+#| msgid "with any source line of this function in file"
+msgctxt "SourceView|"
+msgid "with any source line of this function in file"
+msgstr "för jichtenseen Bornreeg vun disse Funkschoon binnen de Datei"
+
+#: libviews/sourceview.cpp:633
+#, fuzzy
+#| msgid "Thus, no annotated source can be shown."
+msgctxt "SourceView|"
+msgid "Thus, no annotated source can be shown."
+msgstr "Dor lett sik also keen Born mit Anmarken för wiesen."
+
+#: libviews/sourceview.cpp:658
+#, fuzzy, qt-format
+#| msgid "--- Inlined from '%1' ---"
+msgctxt "SourceView|"
+msgid "--- From '%1' ---"
+msgstr "--- Inföögt ut \"%1\" ---"
+
+#: libviews/sourceview.cpp:663
+#, fuzzy, qt-format
+#| msgid "--- Inlined from '%1' ---"
+msgctxt "SourceView|"
+msgid "--- Inlined from '%1' ---"
+msgstr "--- Inföögt ut \"%1\" ---"
+
+#: libviews/sourceview.cpp:664
+#, fuzzy
+#| msgid "--- Inlined from unknown source ---"
+msgctxt "SourceView|"
+msgid "--- Inlined from unknown source ---"
+msgstr "--- Inföögt ut nich begäng Born ---"
+
+#: libviews/sourceview.cpp:669
+#, fuzzy
+#| msgid "There is no source available for the following function:"
+msgctxt "SourceView|"
+msgid "There is no source available for the following function:"
+msgstr "För disse Funkschoon is keen Born verföögbor:"
+
+#: libviews/sourceview.cpp:674
+#, fuzzy
+#| msgid "This is because no debug information is present."
+msgctxt "SourceView|"
+msgid "This is because no debug information is present."
+msgstr "Dat is so, wiel dat keen Fehlersöök-Informatschonen gifft."
+
+#: libviews/sourceview.cpp:676
+#, fuzzy
+#| msgid "Recompile source and redo the profile run."
+msgctxt "SourceView|"
+msgid "Recompile source and redo the profile run."
+msgstr "Kompileer den Born nieg un föhr achteran wedder den Profilloop ut."
+
+#: libviews/sourceview.cpp:679
+#, fuzzy
+#| msgid "The function is located in this ELF object:"
+msgctxt "SourceView|"
+msgid "The function is located in this ELF object:"
+msgstr "De Funkschoon liggt binnen dit \"ELF\"-Objekt:"
+
+#: libviews/sourceview.cpp:687
+#, fuzzy
+#| msgid "This is because its source file cannot be found:"
+msgctxt "SourceView|"
+msgid "This is because its source file cannot be found:"
+msgstr "Dat is so, wiel sik de Borndatei nich finnen lett:"
+
+#: libviews/sourceview.cpp:691
+#, fuzzy
+#| msgid "Add the folder of this file to the source folder list."
+msgctxt "SourceView|"
+msgid "Add the folder of this file to the source folder list."
+msgstr "Föög den Orner vun disse Datei de List vun Bornornern to."
+
+#: libviews/sourceview.cpp:693
+#, fuzzy
+#| msgid "The list can be found in the configuration dialog."
+msgctxt "SourceView|"
+msgid "The list can be found in the configuration dialog."
+msgstr "De List lett sik binnen den Instellen-Dialoog finnen."
+
+#: libviews/stackselection.cpp:36
+#, fuzzy
+#| msgid "Stack Selection"
+msgctxt "StackSelection|"
+msgid "Stack Selection"
+msgstr "Stapelköör"
+
+#: libviews/stackselection.cpp:44
+#, fuzzy
+#| msgid "Cost"
+msgctxt "StackSelection|"
+msgid "Cost"
+msgstr "Tietverbruuk"
+
+#: libviews/stackselection.cpp:45
+#, fuzzy
+#| msgid "Cost2"
+msgctxt "StackSelection|"
+msgid "Cost2"
+msgstr "Verbruuk2"
+
+#: libviews/stackselection.cpp:46
+#, fuzzy
+#| msgid "Calls"
+msgctxt "StackSelection|"
+msgid "Calls"
+msgstr "Oprööp"
+
+#: libviews/stackselection.cpp:47
+#, fuzzy
+#| msgid "Function"
+msgctxt "StackSelection|"
+msgid "Function"
+msgstr "Funkschoon"
+
+#: libviews/tabview.cpp:103
+#, fuzzy
+#| msgid "Move to Top"
+msgctxt "TabBar|"
+msgid "Move to Top"
+msgstr "Na baven verschuven"
+
+#: libviews/tabview.cpp:104
+#, fuzzy
+#| msgctxt "Move to Top"
+#| msgid "Top"
+msgctxt "TabBar|Move to Top"
+msgid "Top"
+msgstr "Baven"
+
+#: libviews/tabview.cpp:107
+#, fuzzy
+#| msgid "Move to Right"
+msgctxt "TabBar|"
+msgid "Move to Right"
+msgstr "Na rechts verschuven"
+
+#: libviews/tabview.cpp:108
+#, fuzzy
+#| msgctxt "Move to Right"
+#| msgid "Right"
+msgctxt "TabBar|Move to Right"
+msgid "Right"
+msgstr "Rechts"
+
+#: libviews/tabview.cpp:111
+#, fuzzy
+#| msgid "Move to Bottom"
+msgctxt "TabBar|"
+msgid "Move to Bottom"
+msgstr "Na nerrn verschuven"
+
+#: libviews/tabview.cpp:112
+#, fuzzy
+#| msgctxt "Move to Bottom"
+#| msgid "Bottom"
+msgctxt "TabBar|Move to Bottom"
+msgid "Bottom"
+msgstr "Nerrn"
+
+#: libviews/tabview.cpp:115
+#, fuzzy
+#| msgid "Move to Bottom Left"
+msgctxt "TabBar|"
+msgid "Move to Bottom Left"
+msgstr "Na nerrn links verschuven"
+
+#: libviews/tabview.cpp:116
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "TabBar|Move to Bottom Left"
+msgid "Bottom Left"
+msgstr "Nerrn links"
+
+#: libviews/tabview.cpp:118
+#, fuzzy
+#| msgid "Move Area To"
+msgctxt "TabBar|"
+msgid "Move Area To"
+msgstr "Rebeet verschuven na"
+
+#: libviews/tabview.cpp:121
+#, fuzzy
+#| msgid "Hide This Tab"
+msgctxt "TabBar|"
+msgid "Hide This Tab"
+msgstr "Disse Koort versteken"
+
+#: libviews/tabview.cpp:122
+#, fuzzy
+#| msgid "Hide Area"
+msgctxt "TabBar|"
+msgid "Hide Area"
+msgstr "Rebeet versteken"
+
+#: libviews/tabview.cpp:131
+#, fuzzy
+#| msgctxt "Move to Top"
+#| msgid "Top"
+msgctxt "TabBar|Show on Top"
+msgid "Top"
+msgstr "Baven"
+
+#: libviews/tabview.cpp:132
+#, fuzzy
+#| msgctxt "Move to Right"
+#| msgid "Right"
+msgctxt "TabBar|Show on Right"
+msgid "Right"
+msgstr "Rechts"
+
+#: libviews/tabview.cpp:133
+#, fuzzy
+#| msgctxt "Move to Bottom"
+#| msgid "Bottom"
+msgctxt "TabBar|Show on Bottom"
+msgid "Bottom"
+msgstr "Nerrn"
+
+#: libviews/tabview.cpp:134
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "TabBar|Show on Bottom Left"
+msgid "Bottom Left"
+msgstr "Nerrn links"
+
+#: libviews/tabview.cpp:135
+#, fuzzy
+#| msgid "Show Hidden On"
+msgctxt "TabBar|"
+msgid "Show Hidden On"
+msgstr "Versteken wiesen"
+
+#: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
+#, fuzzy
+#| msgid "(No profile data file loaded)"
+msgctxt "TabView|"
+msgid "(No profile data file loaded)"
+msgstr "(Keen Profildatendatei laadt)"
+
+#: libviews/tabview.cpp:370
+#, fuzzy
+#| msgid "Types"
+msgctxt "TabView|"
+msgid "Types"
+msgstr "Typen"
+
+#: libviews/tabview.cpp:373
+#, fuzzy
+#| msgid "Callers"
+msgctxt "TabView|"
+msgid "Callers"
+msgstr "Opropers"
+
+#: libviews/tabview.cpp:374
+#, fuzzy
+#| msgid "All Callers"
+msgctxt "TabView|"
+msgid "All Callers"
+msgstr "All Opropers"
+
+#: libviews/tabview.cpp:375
+#, fuzzy
+#| msgid "Callee Map"
+msgctxt "TabView|"
+msgid "Callee Map"
+msgstr "Opropen-Koort"
+
+#: libviews/tabview.cpp:378
+#, fuzzy
+#| msgid "Source Code"
+msgctxt "TabView|"
+msgid "Source Code"
+msgstr "Bornkode"
+
+#: libviews/tabview.cpp:380
+#, fuzzy
+#| msgid "Parts"
+msgctxt "TabView|"
+msgid "Parts"
+msgstr "Delen"
+
+#: libviews/tabview.cpp:381
+#, fuzzy
+#| msgid "Callees"
+msgctxt "TabView|"
+msgid "Callees"
+msgstr "Opropen"
+
+#: libviews/tabview.cpp:382
+#, fuzzy
+#| msgid "Call Graph"
+msgctxt "TabView|"
+msgid "Call Graph"
+msgstr "Oproop-Diagramm"
+
+#: libviews/tabview.cpp:385
+#, fuzzy
+#| msgid "All Callees"
+msgctxt "TabView|"
+msgid "All Callees"
+msgstr "All Opropen"
+
+#: libviews/tabview.cpp:386
+#, fuzzy
+#| msgid "Caller Map"
+msgctxt "TabView|"
+msgid "Caller Map"
+msgstr "Oproper-Koort"
+
+#: libviews/tabview.cpp:389
+#, fuzzy
+#| msgid "Machine Code"
+msgctxt "TabView|"
+msgid "Machine Code"
+msgstr "Maschienkode"
+
+#: libviews/tabview.cpp:643
+#, fuzzy
+#| msgid ""
+#| "<b>Information Tabs</b><p>This widget shows information for the currently "
+#| "selected function in different tabs: <ul><li>The Costs tab shows a list "
+#| "of available event types and the inclusive and self-costs related to "
+#| "these types.</li><li>The Parts tab shows a list of trace parts if the "
+#| "trace consists of more than one part (otherwise, this tab is hidden). The "
+#| "cost of the selected function spent in the different parts together with "
+#| "the calls happening is shown.</li><li>The Call Lists tab shows direct "
+#| "callers and callees of the function in more detail.</li><li>The Coverage "
+#| "tab shows the same as the Call Lists tab, but also shows indirect callers "
+#| "and callees, not just direct ones.</li><li>The Call Graph tab shows a "
+#| "graphical visualization of the calls made by this function.</li><li>The "
+#| "Source Code tab presents annotated source code if debugging information "
+#| "and the source file are available.</li><li>The Machine Code tab presents "
+#| "annotated assembly instructions if profile information at instruction "
+#| "level is available.</li></ul>For more information, see the <em>What's "
+#| "This?</em> help of the corresponding tab widget.</p>"
+msgctxt "TabView|"
+msgid ""
+"<b>Information Tabs</b><p>This widget shows information for the currently "
+"selected function in different tabs: <ul><li>The Costs tab shows a list of "
+"available event types and the inclusive and self-costs related to these "
+"types.</li><li>The Parts tab shows a list of trace parts if the trace "
+"consists of more than one part (otherwise, this tab is hidden). The cost of "
+"the selected function spent in the different parts together with the calls "
+"happening is shown.</li><li>The Call Lists tab shows direct callers and "
+"callees of the function in more detail.</li><li>The Coverage tab shows the "
+"same as the Call Lists tab, but also shows indirect callers and callees, not "
+"just direct ones.</li><li>The Call Graph tab shows a graphical visualization "
+"of the calls made by this function.</li><li>The Source Code tab presents "
+"annotated source code if debugging information and the source file are "
+"available.</li><li>The Machine Code tab presents annotated assembly "
+"instructions if profile information at instruction level is available.</li></"
+"ul>For more information, see the <em>What's This?</em> help of the "
+"corresponding tab widget.</p>"
+msgstr ""
+"<b>Informatschoon-Paneels</b><p>Hier wiest verscheden Paneels "
+"Informatschonen över de opstunns utsöchte Funkschoon:<ul><li>Dat Verbruuk-"
+"Paneel wiest en List vun verföögbor Begeefnistypen un ehr ümfaten un egen "
+"Verbruuk.</li><li>Dat Delen-Paneel wiest en List vun Spoordelen, wenn de "
+"Spoor ut mehr as een Deel opbuut is (anners is dat Paneel versteken). De "
+"utsöchte Funkschoon ehr Verbruuk binnen de verscheden Delen warrt tosamen "
+"mit ehr Oprööp wiest.</li><li>Dat Oprooplisten-Paneel wiest de Direkt-"
+"Opropers vun de Funkschoon un de vun ehr opropen Funkschonen mit mehr "
+"Enkelheiten.</li><li>Dat Afdecken-Paneel wiest dat sülve as't Oprooplisten-"
+"Paneel, man nich bloots direkte Oprööp, sünnern ok nich direkte.</li><li>Dat "
+"Oproop-Diagramm wiest en graafsche Dorstellen vun de Oprööp, de disse "
+"Funkschoon maakt hett.</li><li>Dat Bornkode-Paneel wiest Bornkode mit "
+"Anmarken, wenn Fehlersöökinformatschonen un de Borndatei verföögbor sünd.</"
+"li><li>Dat Maschienkode-Paneel wiest Maschienkode mit Anmarken, wenn Profil-"
+"Informatschonen op de Anwiesen-Evene verföögbor sünd.</li></ul>Mehr "
+"Informatschonen laat sik över de <em>Wat is dat?</em>-Hülp för de enkelten "
+"Paneels finnen.</p>"
+
+#: libviews/tabview.cpp:728
+#, fuzzy
+#| msgid "(No function selected)"
+msgctxt "TabView|"
+msgid "(No function selected)"
+msgstr "(Keen Funkschoon utsöcht)"
+
+#: libviews/traceitemview.cpp:67
+#, fuzzy
+#| msgid "No description available"
+msgctxt "QObject|"
+msgid "No description available"
+msgstr "Keen Beschrieven verföögbor"
+
+#: libviews/treemap.cpp:1334
+#, fuzzy, qt-format
+#| msgid "Text %1"
+msgctxt "TreeMapWidget|"
+msgid "Text %1"
+msgstr "Text %1"
+
+#: libviews/treemap.cpp:2854
+#, fuzzy
+#| msgid "Recursive Bisection"
+msgctxt "TreeMapWidget|"
+msgid "Recursive Bisection"
+msgstr "Rekursive Tweedelen"
+
+#: libviews/treemap.cpp:2855
+#, fuzzy
+#| msgid "Columns"
+msgctxt "TreeMapWidget|"
+msgid "Columns"
+msgstr "Striepen"
+
+#: libviews/treemap.cpp:2856
+#, fuzzy
+#| msgid "Rows"
+msgctxt "TreeMapWidget|"
+msgid "Rows"
+msgstr "Regen"
+
+#: libviews/treemap.cpp:2857
+#, fuzzy
+#| msgid "Always Best"
+msgctxt "TreeMapWidget|"
+msgid "Always Best"
+msgstr "Jümmers de Best"
+
+#: libviews/treemap.cpp:2858
+#, fuzzy
+#| msgid "Best"
+msgctxt "TreeMapWidget|"
+msgid "Best"
+msgstr "Best"
+
+#: libviews/treemap.cpp:2859
+#, fuzzy
+#| msgid "Alternate (V)"
+msgctxt "TreeMapWidget|"
+msgid "Alternate (V)"
+msgstr "Wesselwies pielrecht"
+
+#: libviews/treemap.cpp:2860
+#, fuzzy
+#| msgid "Alternate (H)"
+msgctxt "TreeMapWidget|"
+msgid "Alternate (H)"
+msgstr "Wesselwies kimmrecht"
+
+#: libviews/treemap.cpp:2861
+#, fuzzy
+#| msgid "Horizontal"
+msgctxt "TreeMapWidget|"
+msgid "Horizontal"
+msgstr "Kimmrecht"
+
+#: libviews/treemap.cpp:2862
+#, fuzzy
+#| msgid "Vertical"
+msgctxt "TreeMapWidget|"
+msgid "Vertical"
+msgstr "Pielrecht"
+
+#, fuzzy
+#~| msgid "Export Graph As DOT file"
+#~ msgctxt "CallGraphView|"
+#~ msgid "Export Graph As DOT file"
+#~ msgstr "Diagramm as DOT-Datei exporteren"
+
+#, fuzzy
+#~| msgid "Graphviz (*.dot)"
+#~ msgctxt "CallGraphView|"
+#~ msgid "Graphviz (*.dot)"
+#~ msgstr "Graphviz (*.dot)"
+
+#~ msgctxt "Move to Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Nerrn links"
+
+#~ msgctxt "Show on Top"
+#~ msgid "Top"
+#~ msgstr "Baven"
+
+#~ msgctxt "Show on Right"
+#~ msgid "Right"
+#~ msgstr "Rechts"
+
+#~ msgctxt "Show on Bottom"
+#~ msgid "Bottom"
+#~ msgstr "Nerrn"
+
+#~ msgctxt "Show on Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "Nerrn links"
+
+#~ msgid "Source (unknown)"
+#~ msgstr "Born (nich begäng)"
+
+#~ msgid "(No Source)"
+#~ msgstr "(Keen Born)"
+
+#~ msgid "Source ('%1')"
+#~ msgstr "Born (\"%1\")"
+
+#~ msgid " (Thread %1)"
+#~ msgstr " (Utföhrstrang %1)"
+
+#~ msgctxt "Top"
+#~ msgid "Move to Top"
+#~ msgstr "Na baven verschuven"
+
+#~ msgctxt "Right"
+#~ msgid "Move to Right"
+#~ msgstr "Na rechts verschuven"
+
+#~ msgctxt "Bottom"
+#~ msgid "Move to Bottom"
+#~ msgstr "Na nerrn verschuven"
+
+#~ msgctxt "Bottom Left"
+#~ msgid "Move to Bottom Left"
+#~ msgstr "Na nerrn links verschuven"
+
+#~ msgctxt "Top"
+#~ msgid "Show on Top"
+#~ msgstr "Baven wiesen"
+
+#~ msgctxt "Right"
+#~ msgid "Show on Right"
+#~ msgstr "Rechterhand wiesen"
+
+#~ msgctxt "Bottom"
+#~ msgid "Show on Bottom"
+#~ msgstr "Nerrn wiesen"
+
+#~ msgctxt "Bottom Left"
+#~ msgid "Show on Bottom Left"
+#~ msgstr "Nerrn links wiesen"
+
+#~ msgid "Show All Items"
+#~ msgstr "All Elementen wiesen"
+
+#~ msgid "Nesting"
+#~ msgstr "Inbetten"
+
+#~ msgid "Border"
+#~ msgstr "Rand"
+
+#~ msgid "Correct Borders Only"
+#~ msgstr "Bloots akrate Ränners"
+
+#~ msgid "Width %1"
+#~ msgstr "Breed %1"
+
+#~ msgid "Visible"
+#~ msgstr "Sichtbor"
+
+#~ msgid "Take Space From Children"
+#~ msgstr "Ruum vun Ünnerelementen nehmen"
+
+#~ msgid "Top Center"
+#~ msgstr "Baven in de Merrn"
+
+#~ msgid "Bottom Center"
+#~ msgstr "Nerrn in de Merrn"
+
+#~ msgid "No %1 Limit"
+#~ msgstr "Keen Grenz för %1"
+
+#~ msgid "Halve Area Limit (to %1)"
+#~ msgstr "Rebeetgrenz halberen (op %1)"
+
+#~ msgid "Depth %1"
+#~ msgstr "Deepde %1"
+
+#~ msgid "Decrement (to %1)"
+#~ msgstr "Sieter (op %1)"
+
+#~ msgid "Increment (to %1)"
+#~ msgstr "Höger (op %1)"
+
+#~ msgid "50 Pixels"
+#~ msgstr "50 Pixels"
+
+#~ msgid "Remove Secondary Event Type"
+#~ msgstr "Tweet Begeefnistyp wegdoon"
+
+#~ msgid "Hide '%1'"
+#~ msgstr "\"'%1\" versteken"
+
+#~ msgid "Hide Selected"
+#~ msgstr "Utsöchte versteken"
+
+#~ msgid "Show All"
+#~ msgstr "All wiesen"
+
+#~ msgid "As PostScript"
+#~ msgstr "As PostScript"
+
+#~ msgid "Save Image"
+#~ msgstr "Bild sekern"
+
+#~ msgid "Assembler"
+#~ msgstr "Assembler"
+
+#~ msgid "(No Assembler)"
+#~ msgstr "(Keen Assembler)"
+
+#~ msgid "Assembly Code"
+#~ msgstr "Assemblerkode"

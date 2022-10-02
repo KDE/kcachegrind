@@ -1,0 +1,2799 @@
+# translation of kcachegrind.po to 
+# translation of kcachegrind.po to
+# translation of kcachegrind.po to
+# translation of kcachegrind.po to
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# Ambalam <tamilpc@ambalam.com>, 2004.
+# root <root@localhost.localdomain>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kcachegrind\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-12-29 02:36+0100\n"
+"PO-Revision-Date: 2004-08-06 04:49-0800\n"
+"Last-Translator: Tamil PC <tamilpc@ambalam.com>\n"
+"Language-Team:  <ta@li.org>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ராஜேஷ்.ர"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "rajeshravichandran@hotmail.com"
+
+#: kcachegrind/configdlg.cpp:135 kcachegrind/configdlg.cpp:323
+#: kcachegrind/configdlg.cpp:342
+#, kde-format
+msgid "(always)"
+msgstr "எப்போதும்"
+
+#: kcachegrind/configdlg.cpp:349
+#, kde-format
+msgid "Choose Source Folder"
+msgstr "மூல அடைவை தேர்ந்தெடுக்கவும்"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, ConfigDlgBase)
+#: kcachegrind/configdlgbase.ui:14
+#, fuzzy, kde-format
+msgid "Configuration"
+msgstr "K கெச்சிகிரிட் உள்ளமைவு "
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab1)
+#: kcachegrind/configdlgbase.ui:24
+#, kde-format
+msgid "General"
+msgstr "பொதுவான"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel5)
+#: kcachegrind/configdlgbase.ui:34
+#, kde-format
+msgid "Maximum number of items in lists:"
+msgstr "பட்டியலில் உள்ள அதிகபட்ச உருப்படிகளின் எண்ணிக்கை:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel3)
+#: kcachegrind/configdlgbase.ui:44
+#, fuzzy, kde-format
+#| msgid "Symbols in tooltips and context menus"
+msgid "Truncate symbols in tooltips and context menus"
+msgstr "கருவிகளில் உள்ள சின்னங்கள் மற்றும் சூழல் பட்டியல்கள்"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2)
+#: kcachegrind/configdlgbase.ui:70
+#, fuzzy, kde-format
+#| msgid "Truncated when more/longer than:"
+msgid "when more than:"
+msgstr "அதிகரிக்கப்பட்டாலோ/நீளப்பட்டாலோ துணிக்கப்படுகிறது:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2_2)
+#: kcachegrind/configdlgbase.ui:80
+#, fuzzy, kde-format
+#| msgid "Truncated when more/longer than:"
+msgid "when longer than:"
+msgstr "அதிகரிக்கப்பட்டாலோ/நீளப்பட்டாலோ துணிக்கப்படுகிறது:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3)
+#: kcachegrind/configdlgbase.ui:90
+#, kde-format
+msgid "Precision of percentage values:"
+msgstr "சதவிகித மதிப்புகளின் துல்லியம்:"
+
+#. i18n: ectx: property (toolTip), widget (QSpinBox, maxListEdit)
+#: kcachegrind/configdlgbase.ui:113
+#, fuzzy, kde-format
+#| msgid ""
+#| "The Maximum Number of List Items should be below 500.The previous set "
+#| "value (%1) will still be used."
+msgid "The Maximum Number of List Items should be below 500."
+msgstr ""
+"அதிகப்படியான பட்டியல் உருப்படிகள் 500'க்கு கீழே இருக்க வேண்டும். முந்தைய மதிப்பு(%1) "
+"அதுவே இன்னும் உபயோகிக்கப்படுகிறது."
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1)
+#: kcachegrind/configdlgbase.ui:158
+#, fuzzy, kde-format
+msgid "Cost Item Colors"
+msgstr "உருப்படி விலை"
+
+#. i18n: ectx: property (text), widget (QCheckBox, fileCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, classCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, objectCheck)
+#: kcachegrind/configdlgbase.ui:185 kcachegrind/configdlgbase.ui:219
+#: kcachegrind/configdlgbase.ui:233
+#, kde-format
+msgid "Automatic"
+msgstr "தானியங்கி"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4)
+#: kcachegrind/configdlgbase.ui:192
+#, kde-format
+msgid "Object:"
+msgstr "பொருள்;"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2_2)
+#: kcachegrind/configdlgbase.ui:202
+#, kde-format
+msgid "Class:"
+msgstr "வகுப்பு:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
+#: kcachegrind/configdlgbase.ui:240
+#, kde-format
+msgid "File:"
+msgstr "கோப்பு:"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/configdlgbase.ui:321
+#, fuzzy, kde-format
+msgid "Annotations"
+msgstr "கோண சுழற்சியை அனுமதி"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3_2)
+#: kcachegrind/configdlgbase.ui:329
+#, kde-format
+msgid "Context lines in annotations:"
+msgstr "எழுத்துறைகளில் வரிகளை இணை"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
+#: kcachegrind/configdlgbase.ui:350
+#, kde-format
+msgid "Source Folders"
+msgstr "மூல கோப்புறை "
+
+#. i18n: ectx: property (text), widget (QPushButton, addDirButton)
+#: kcachegrind/configdlgbase.ui:364
+#, fuzzy, kde-format
+#| msgid "Add..."
+msgid "Add"
+msgstr "கூட்டு..."
+
+#. i18n: ectx: property (text), widget (QPushButton, deleteDirButton)
+#: kcachegrind/configdlgbase.ui:371
+#, fuzzy, kde-format
+msgid "Delete"
+msgstr "தேர்ந்தெடுப்பை கைவிடு"
+
+#. i18n: ectx: property (text), widget (QTreeWidget, dirList)
+#: kcachegrind/configdlgbase.ui:409
+#, kde-format
+msgid "Object / Related Source Base"
+msgstr "பொருள்/ இணைக்கப்பட்ட மூல தளம்"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
+#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:289
+#: kcachegrind/toplevel.cpp:512
+#, kde-format
+msgid "Profile Dumps"
+msgstr "குறிப்புரை திணிப்புகள்"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:24
+#, kde-format
+msgid "Target"
+msgstr "இலக்கு"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:46
+#, kde-format
+msgid "Time"
+msgstr "நேரம்"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:57
+#, kde-format
+msgid "Path"
+msgstr "பாதை"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab)
+#: kcachegrind/dumpselectionbase.ui:70
+#, fuzzy, kde-format
+msgid "Options"
+msgstr "தேர்வு"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: kcachegrind/dumpselectionbase.ui:87
+#, kde-format
+msgid "Target command:"
+msgstr "இலக்கின் கட்டளை:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: kcachegrind/dumpselectionbase.ui:100
+#, kde-format
+msgid "Profiler options:"
+msgstr "விவரக்குறிப்பாளரின் விருப்பங்கள்:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:111
+#, kde-format
+msgid "Option"
+msgstr "தேர்வு"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:122 kcachegrind/dumpselectionbase.ui:650
+#, kde-format
+msgid "Value"
+msgstr "மதிப்பு"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:133
+#, kde-format
+msgid "Trace"
+msgstr "சுவடு "
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:146 kcachegrind/dumpselectionbase.ui:730
+#, kde-format
+msgid "Jumps"
+msgstr "தாவல்கள்"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:160
+#, kde-format
+msgid "Instructions"
+msgstr "ஆணைகள்"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:175 kcachegrind/dumpselectionbase.ui:745
+#, kde-format
+msgid "Events"
+msgstr "நிகழ்வுகள் "
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:188
+#, kde-format
+msgid "Full Cache"
+msgstr "முழு Cache"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:202
+#, kde-format
+msgid "Custom"
+msgstr "வழக்கம் "
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:217
+#, kde-format
+msgid "Collect"
+msgstr "திரட்டு "
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:230
+#, kde-format
+msgid "At Startup"
+msgstr "துவக்கத்தில்"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:244
+#, kde-format
+msgid "While In"
+msgstr "உள் இருக்கும் போது"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:259
+#, kde-format
+msgid "Skip"
+msgstr "தாவு"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:272
+#, kde-format
+msgid "PLT"
+msgstr "PLT"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:286 kcachegrind/dumpselectionbase.ui:898
+#, kde-format
+msgid "Function"
+msgstr "செயல்பாடு"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:301
+#, kde-format
+msgid "Dump Profile"
+msgstr "திணிப்பு குறிப்புரை "
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:314
+#, kde-format
+msgid "Every BBs"
+msgstr "எல்லா BBs"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:328 kcachegrind/dumpselectionbase.ui:370
+#, kde-format
+msgid "On Entering"
+msgstr "நுழையும் போது"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:342
+#, kde-format
+msgid "On Leaving"
+msgstr "விடும் போது"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:357
+#, kde-format
+msgid "Zero Events"
+msgstr "சுழிநிலை நிகழ்வுகள் "
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:385
+#, kde-format
+msgid "Separate"
+msgstr "பிரிக்கவும்"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:398
+#, kde-format
+msgid "Threads"
+msgstr "நாண்கள்"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:412
+#, kde-format
+msgid "Recursions"
+msgstr "சுழல் "
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:426
+#, kde-format
+msgid "Call Chain"
+msgstr "அழை சங்கிலி"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
+#: kcachegrind/dumpselectionbase.ui:452
+#, kde-format
+msgid "Custom profiler options:"
+msgstr "தனிப்பயன் விவரக்குறிப்பாளரின் விருப்பங்கள்:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton2)
+#: kcachegrind/dumpselectionbase.ui:486
+#, kde-format
+msgid "Run New Profile"
+msgstr "புதிய விவரக்குறிப்பை ஓட்டு"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/dumpselectionbase.ui:496
+#, kde-format
+msgid "Info"
+msgstr "Info"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: kcachegrind/dumpselectionbase.ui:505
+#, kde-format
+msgid "Dump reason:"
+msgstr "திணிப்பு காரணம்:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: kcachegrind/dumpselectionbase.ui:518
+#, kde-format
+msgid "Event summary:"
+msgstr "நிகழ்வு சுருக்கம்:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:529
+#, kde-format
+msgid "Name"
+msgstr "பெயர்"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:540
+#, kde-format
+msgid "Sum"
+msgstr "கூட்டல்"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: kcachegrind/dumpselectionbase.ui:554
+#, kde-format
+msgid "Miscellaneous:"
+msgstr "மற்ற:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6)
+#: kcachegrind/dumpselectionbase.ui:588
+#, kde-format
+msgid "Show"
+msgstr "காட்டு"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton5)
+#: kcachegrind/dumpselectionbase.ui:595
+#, kde-format
+msgid "Compare"
+msgstr "ஒப்பிடு "
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab3)
+#: kcachegrind/dumpselectionbase.ui:605
+#, kde-format
+msgid "State"
+msgstr "நிலை"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton1)
+#: kcachegrind/dumpselectionbase.ui:619
+#, kde-format
+msgid "Update"
+msgstr "இற்றைப்படுத்தல் "
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox1)
+#: kcachegrind/dumpselectionbase.ui:626
+#, kde-format
+msgid "Every [s]:"
+msgstr "எல்லா[s]"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:639
+#, kde-format
+msgid "Counter"
+msgstr "எண்ணி "
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:661
+#, kde-format
+msgid "Dumps Done"
+msgstr "திணிப்புகள் முடிந்தது"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:675
+#, kde-format
+msgid "Is Collecting"
+msgstr "திரட்டுகிறதா"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:689
+#, kde-format
+msgid "Executed"
+msgstr "நிறைவேற்றப்பட்டது"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:702
+#, kde-format
+msgid "Basic Blocks"
+msgstr "அடித்தள உறுப்புகள்"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:716
+#, kde-format
+msgid "Calls"
+msgstr "அழைப்புகள் "
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:758
+#, kde-format
+msgid "Ir"
+msgstr "Ir"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:773
+#, kde-format
+msgid "Distinct"
+msgstr "வெவ்வேறு"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:786
+#, kde-format
+msgid "ELF Objects"
+msgstr "ELF பொருளட்கள்"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:800
+#, kde-format
+msgid "Functions"
+msgstr "செயல்கள்"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:814
+#, kde-format
+msgid "Contexts"
+msgstr "சூழல்கள்"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: kcachegrind/dumpselectionbase.ui:845
+#, kde-format
+msgid "Stack trace:"
+msgstr "இருப்பு தேடுகை:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox2)
+#: kcachegrind/dumpselectionbase.ui:855
+#, kde-format
+msgid "Sync."
+msgstr "Sync."
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:865
+#, kde-format
+msgid "#"
+msgstr "#"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:876
+#, kde-format
+msgid "Incl."
+msgstr "உள்ளடங்கிய"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:887
+#, kde-format
+msgid "Called"
+msgstr "அழைக்கப்பட்ட"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:909
+#, kde-format
+msgid "Location"
+msgstr "இடம்"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton7)
+#: kcachegrind/dumpselectionbase.ui:928
+#, kde-format
+msgid "Start"
+msgstr "துவங்கு"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6_2)
+#: kcachegrind/dumpselectionbase.ui:951
+#, kde-format
+msgid "Zero"
+msgstr "சுழிநிலை "
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton4)
+#: kcachegrind/dumpselectionbase.ui:958
+#, kde-format
+msgid "Dump"
+msgstr "திணிப்பு"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab4)
+#: kcachegrind/dumpselectionbase.ui:968
+#, kde-format
+msgid "Messages"
+msgstr "செய்திகள்"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton9)
+#: kcachegrind/dumpselectionbase.ui:985
+#, kde-format
+msgid "Kill Run"
+msgstr "அழி ஓட்டம்"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton8)
+#: kcachegrind/dumpselectionbase.ui:1008
+#, fuzzy, kde-format
+msgid "Clear"
+msgstr "அழைப்பவர்"
+
+#. i18n: ectx: Menu (file)
+#: kcachegrind/kcachegrindui.rc:4
+#, fuzzy, kde-format
+msgid "&File"
+msgstr "கோப்பு:"
+
+#. i18n: ectx: Menu (view)
+#: kcachegrind/kcachegrindui.rc:10
+#, fuzzy, kde-format
+msgid "&View"
+msgstr "கோப்பு:"
+
+#. i18n: ectx: Menu (layouts)
+#: kcachegrind/kcachegrindui.rc:15
+#, kde-format
+msgid "&Layout"
+msgstr "&வடிவமைப்பு"
+
+#. i18n: ectx: Menu
+#: kcachegrind/kcachegrindui.rc:33
+#, kde-format
+msgid "Sidebars"
+msgstr "ஓர பட்டைகள்"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kcachegrind/kcachegrindui.rc:42
+#, fuzzy, kde-format
+msgid "Main Toolbar"
+msgstr "நிலை கருவிப்பட்டை "
+
+#. i18n: ectx: ToolBar (stateToolBar)
+#: kcachegrind/kcachegrindui.rc:54
+#, kde-format
+msgid "State Toolbar"
+msgstr "நிலை கருவிப்பட்டை "
+
+#: kcachegrind/main.cpp:34
+#, kde-format
+msgid "KCachegrind"
+msgstr "KCachegrind"
+
+#: kcachegrind/main.cpp:36
+#, fuzzy, kde-format
+#| msgid "KDE Frontend for Cachegrind"
+msgid "KDE Frontend for Callgrind/Cachegrind"
+msgstr "KDE KDE Frontend for Cachegrind"
+
+#: kcachegrind/main.cpp:38
+#, fuzzy, kde-format
+#| msgid "(C) 2002, 2003, 2004"
+msgid "(C) 2002 - 2016"
+msgstr "(சி) 2002, 2003, 2004"
+
+#: kcachegrind/main.cpp:40
+#, kde-format
+msgid "Josef Weidendorfer"
+msgstr ""
+
+#: kcachegrind/main.cpp:41
+#, kde-format
+msgid "Author/Maintainer"
+msgstr "ஆசிரியர்/நிர்வகிப்பவர்"
+
+#: kcachegrind/main.cpp:68
+#, kde-format
+msgid "Show information of this trace"
+msgstr "இந்த சுவடில்  தகவல்களை காட்டு.  "
+
+#: kcachegrind/main.cpp:68
+#, kde-format
+msgid "[trace...]"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:258 kcachegrind/toplevel.cpp:486
+#, kde-format
+msgid "Parts Overview"
+msgstr "பிரிவுச் சுவடு மேற்பார்வை"
+
+#: kcachegrind/toplevel.cpp:267
+#, kde-format
+msgid "Top Cost Call Stack"
+msgstr "அதிக விலை அழை அடுக்கு "
+
+#: kcachegrind/toplevel.cpp:269
+#, kde-format
+msgid ""
+"<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most probable' "
+"call stack. It is built up by starting with the current selected function "
+"and adds the callers/callees with highest cost at the top and to bottom.</"
+"p><p>The <b>Cost</b> and <b>Calls</b> columns show the cost used for all "
+"calls from the function in the line above.</p>"
+msgstr ""
+"<b>மேல்மதிப்பு அழைப்பு இருப்பு </b><p> இது முற்றிலும் உண்மையற்ற அநேகமான அழைப்பு "
+"இருப்பு.அது நடப்பு தேர்ந்தெடுக்கப்பட்ட செயல்கூறுறை தொடங்குவதின் மூலம் மற்றும் அழைப்பவர்/"
+"அழைப்பவர்களை சேர்க்கும் அதிமான மதிப்பு மேலேயும் மற்றும் கீழேயும். </p><p>தி<b>மதிப்பு</"
+"b>அழைப்புகள் மேல் கோட்டில் உள்ள செயல்கூறில் இருந்த நெடுக்கைகள் எல்லா அழைப்பிற்கும் "
+"உபயோகிக்கப்பட்ட மதிப்பை.</p>"
+
+#: kcachegrind/toplevel.cpp:283
+#, kde-format
+msgid "Flat Profile"
+msgstr "சமமான குறிப்புரை"
+
+#: kcachegrind/toplevel.cpp:296
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
+#| "loadable profile dumps in all subdirectories of: <ul><li>current working "
+#| "directory of KCachegrind, i.e. where it was started from, and <li>the "
+#| "default profile dump directory given in the configuration.</ul> The list "
+#| "is sorted according the the target command profiled in the corresponding "
+#| "dump.</p><p>On selecting a profile dump, information for it is shown in "
+#| "the bottom area of the dockable: <ul><li><b>Options</b> allows you to "
+#| "view the profiled command and profile options of this dump. By changing "
+#| "any item, a new (yet unexisting) profile template is created. Press "
+#| "<b>Run Profile</b> to start aprofile run with these options in the "
+#| "background. <li><b>Info</b> gives detailed info on the selected dump like "
+#| "event cost summary and properties of the simulated cache. <li><b>State</"
+#| "b> is only available for current happening profiles runs. Press "
+#| "<b>Update</b> to see different counters of the run, and a stack trace of "
+#| "the current position in the program profiled. Check the <b>Every</b> "
+#| "option to let KCachegrind regularly poll these data. Check the <b>Sync</"
+#| "b> option to let the dockable activate the top function in the current "
+#| "loaded dump.</ul></p>"
+msgid ""
+"<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
+"loadable profile dumps in all subdirectories of: <ul><li>current working "
+"directory of KCachegrind, i.e. where it was started from, and </li><li>the "
+"default profile dump directory given in the configuration.</li></ul> The "
+"list is sorted according to the target command profiled in the corresponding "
+"dump.</p><p>On selecting a profile dump, information for it is shown in the "
+"bottom area of the dockable: <ul><li><b>Options</b> allows you to view the "
+"profiled command and profile options of this dump. By changing any item, a "
+"new (yet unexisting) profile template is created. Press <b>Run Profile</b> "
+"to start a profile run with these options in the background. </"
+"li><li><b>Info</b> gives detailed info on the selected dump like event cost "
+"summary and properties of the simulated cache. </li><li><b>State</b> is only "
+"available for current happening profiles runs. Press <b>Update</b> to see "
+"different counters of the run, and a stack trace of the current position in "
+"the program profiled. Check the <b>Every</b> option to let KCachegrind "
+"regularly poll these data. Check the <b>Sync</b> option to let the dockable "
+"activate the top function in the current loaded dump.</li></ul></p>"
+msgstr ""
+"<b>விவரக்குறிப்பு திணிப்பு</b><p>இந்த இணைக்கம் சாளரம் அனைத்து உப அடைவில் உள்ள "
+"விவரக்குறிப்பு திணிப்பு விவரக்குறிப்பு ஏற்றும் பட்டியலின்: <ul><li>தற்போதைய "
+"கேகேக்கேகிரிண்ட்டின் வேலைபுரியும் அடைவை காட்டுகிறது, எ.டு. அது சேமித்த "
+"இடத்திலிருந்து, மற்றும் <li>உள்ளமைப்பில் கொடுக்கப்பட்ட முன்னிருப்பு விவரக் குறிப்பு "
+"திணிப்பு.</ul> பட்டியல் குறிப்பிட்ட சேரும் கட்டளை உடைய விவரக்குறிப்பு உடைய வரிசையில் "
+"இருக்கும்.</p><p>விவரக்குறிப்பு திணிப்பில் சொடுக்கும் போது, பொத்தான் இடத்தின் இணைக்க "
+"முடியும்: <ul><li><b>விருப்பங்கள்</b> இந்த திணிப்பின் விவரக்குறிப்பு கட்டளை மற்றும் "
+"விவரக்குறிப்பு விருப்பத்தை அணுமதிக்கும். உருப்படியை மாற்றி, ஒரு புதிய (இல்லாத) "
+"விவரகுறிப்பு மாதிரி உரு உருவாக்கியது. <b>விவரக்குறிப்பை இயக்கு</b> வை அழுத்தி "
+"பின்னணியில் உள்ள விருப்பத்தின் மூலம் விவரக்குறிப்பை ஆரம்பிக்க முடியும். <li><b>தகவல்</b> "
+"ஒரே மாதிரியான இடைநினைவின் பண்புகள் மற்றும் சுருக்கத்தின் திணிப்பை தேர்ந்தெடுத்த விளக்கத்தை "
+"கொடுக்கும். <li><b>நிலை</b>தற்போது இயங்க விவரக்குறிப்பு இருக்க வேண்டும். <b>புதுப்பி</"
+"b>யை அழுத்தி வேறு எதிரே இயங்குவதை பார்க்கலாம், மற்றும் தற்போதைய நிலையை நிரலில் "
+"விவரக்குறிப்பை கண்டறியலாம். <b>அனைத்து</b> விருப்பத்தையும் கேகேகேகிரிட் தகவலை படிக்க "
+"தேர்ந்தெடுக்கவும். <b>ஒத்தசைவு</b> விருப்பத்தை தற்போதைய திணிப்பின் காரணியை மேல் "
+"செயல்படுத்தும் இணைப்பதற்கு தேர்ந்தெடு.</ul></p>"
+
+#: kcachegrind/toplevel.cpp:367
+#, kde-format
+msgid "&Duplicate"
+msgstr "&நகல்"
+
+#: kcachegrind/toplevel.cpp:370
+#, kde-format
+msgid ""
+"<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
+msgstr ""
+"<b>தற்போதைய படிவெடு வடிவமைப்பு</b><p>தற்போதைய படிவெடு வடிவமைப்பு நகலெடு.</p>"
+
+#: kcachegrind/toplevel.cpp:375
+#, kde-format
+msgid "&Remove"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:377
+#, kde-format
+msgid ""
+"<b>Remove Current Layout</b><p>Delete current layout and make the previous "
+"active.</p>"
+msgstr ""
+"<b>தற்போதைய வடிவமைப்பை அகற்று</b><p>தற்போதைய வடிவமைப்பை அகற்றி முன்னிருந்ததை "
+"செயல்படுத்து.</p>"
+
+#: kcachegrind/toplevel.cpp:382
+#, kde-format
+msgid "&Go to Next"
+msgstr "அடுத்து செல்"
+
+#: kcachegrind/toplevel.cpp:385
+#, kde-format
+msgid "Go to Next Layout"
+msgstr "அடுத்த வடிவமைப்பிற்கு செல்"
+
+#: kcachegrind/toplevel.cpp:389
+#, kde-format
+msgid "&Go to Previous"
+msgstr "&முந்தைய பகுதிக்குச் செல்"
+
+#: kcachegrind/toplevel.cpp:392
+#, kde-format
+msgid "Go to Previous Layout"
+msgstr "முந்தைய பகுதியின் வடிவமைப்பிற்குச் செல்"
+
+#: kcachegrind/toplevel.cpp:396
+#, kde-format
+msgid "&Restore to Default"
+msgstr "&முன்னிருப்பை மீள்சேர்"
+
+#: kcachegrind/toplevel.cpp:398
+#, kde-format
+msgid "Restore Layouts to Default"
+msgstr "முன்னிருப்பு வடிவமைப்பை மீள்சேர்"
+
+#: kcachegrind/toplevel.cpp:402
+#, kde-format
+msgid "&Save as Default"
+msgstr "&முன்னிருப்பை சேமி"
+
+#: kcachegrind/toplevel.cpp:404
+#, kde-format
+msgid "Save Layouts as Default"
+msgstr "முன்னிருப்பு வடிவமைப்பை சேமி"
+
+#: kcachegrind/toplevel.cpp:415
+#, kde-format
+msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
+msgstr "<b>புதிய</b><p>புதிய காலியான KCachegrind சாளரத்தை திறக்கவும்.</p>"
+
+#: kcachegrind/toplevel.cpp:419
+#, kde-format
+msgid "&Add..."
+msgstr "&கூட்டு..."
+
+#: kcachegrind/toplevel.cpp:421
+#, kde-format
+msgid ""
+"<b>Add Profile Data</b><p>This opens an additional profile data file in the "
+"current window.</p>"
+msgstr ""
+"<b>விவரக்குறிப்பு தகவலை சேர்</b><p>இவை மேற்கூட்டு விவரக்குறிப்பு தகவலை தற்போதைய "
+"சாளரத்தில் திறக்கும்.</p>"
+
+#: kcachegrind/toplevel.cpp:427
+#, kde-format
+msgctxt "Reload a document"
+msgid "&Reload"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:430
+#, kde-format
+msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
+msgstr ""
+"<b>மறுயேற்று தேடுதல்</b><p>இது எந்த புதிய உருவாக்கப்பட்ட பாகங்களையும் ஏற்றுகிறது.</p>"
+
+#: kcachegrind/toplevel.cpp:435
+#, kde-format
+msgid "&Export Graph"
+msgstr "&வடிகட்டியை ஏற்றுமதி செய்"
+
+#: kcachegrind/toplevel.cpp:438
+#, kde-format
+msgid ""
+"<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
+"tools of the GraphViz package.</p>"
+msgstr ""
+"<b>அழைப்பு வரைப்படத்தை ஏற்றுமதி செய்</b><p>.dot என்ற பின்குறியோடு ஆவணத்தை உருவாக்கும் "
+"GraphViz பாக்கேஜ்ஜின் கருவிகளுக்கு.</p>"
+
+#: kcachegrind/toplevel.cpp:446
+#, kde-format
+msgid "&Force Dump"
+msgstr "&சக்தி திணிப்பு"
+
+#: kcachegrind/toplevel.cpp:449
+#, fuzzy, kde-format
+msgid ""
+"<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
+"current directory. This action is checked while KCachegrind looks for the "
+"dump. If the dump is finished, it automatically reloads the current trace. "
+"If this is the one from the running Callgrind, the new created trace part "
+"will be loaded, too.</p><p>Force dump creates a file 'callgrind.cmd', and "
+"checks every second for its existence. A running Callgrind will detect this "
+"file, dump a trace part, and delete 'callgrind.cmd'. The deletion is "
+"detected by KCachegrind, and it does a Reload. If there is <em>no</em> "
+"Callgrind running, press 'Force Dump' again to cancel the dump request. This "
+"deletes 'callgrind.cmd' itself and stops polling for a new dump.</p><p>Note: "
+"A Callgrind run <em>only</em> detects existence of 'callgrind.cmd' when "
+"actively running a few milliseconds, i.e. <em>not</em> sleeping. Tip: For a "
+"profiled GUI program, you can awake Callgrind e.g. by resizing a window of "
+"the program.</p>"
+msgstr ""
+"<b>திணிப்பை வலியுறுத்து</b><p>இது திணிப்பை இடைநினைவு விவரக்குறிப்பை தற்போது அடைவில் "
+"இயக்க வலியுறுத்தும். இந்த செயல் கேகேகேகிரிட் திணிப்பை பார்வையிடும்போது பரிசோதிக்கும். "
+"திணிப்பு முடித்தால், இது தானாகவே தற்போதைய தடத்தை திரும்ப ஏற்றும். இது ஒரு கேகேஎகிரிட் "
+"இயக்கமாக இருந்தால், புதிய தடத்தின் பகுதியை ஏற்றும், கூட.</p><p>திணிப்பு 'cachegrind."
+"cmd' கோப்பினை உருவாக்கும், மற்றும் இருப்பதை ஒவ்வொரு நொடியும் பரிசோதிக்கும். இயங்கும் "
+"கேகேகிரிட் இந்த கோப்பினை கண்டுபிடிக்கும், திணிப்பு தட பகுதி, மற்றும் 'cachegrind.cmd' "
+"வை அழிக்கும். அழித்தல் கேகேகிரிட்டால் கண்டுபிடிக்கப்படும், மற்றும் இது மறு ஏற்றம் "
+"செய்கிறது. எந்த கேகேகிரிட் இயக்கமும் <em>இல்லை</em> யென்றால், 'திணிப்பை வலியுறுத்து' "
+"வை திரும்ப அழுத்துவதன் மூலம் நீக்க முடியும். இது 'cachegrind.cmd' யை அழிக்கிறது "
+"மற்றும் புதிய திணிப்பை நிறுத்துகிறது.</p><p>குறிப்பு: ஒரு கேகேகிரிட் இருக்கும் "
+"'cachegrind.cmd' யை சில மில்லி நொடிகளுக்கு இயக்கும் போது கண்டுபிடிக்கும், எ.டு. "
+"<em>தூங்கவில்லை</em> . யோசனை: விவரக்குறிப்புள்ள GUI நிரலுக்கு, நீங்கள் கேகேகிரிட்டை எ."
+"டு. சாளர நிரலின் அளவை மாற்றுவதன் மூலம் அறியலாம்.</p><p>குறிப்பு: உங்களுக்கு அழைக்கும்-"
+"மரம் பதிப்பு தேவை!</p>"
+
+#: kcachegrind/toplevel.cpp:474
+#, kde-format
+msgid ""
+"<b>Open Profile Data</b><p>This opens a profile data file, with possible "
+"multiple parts</p>"
+msgstr "<b>சுவடை திற</b><p>இது சுவடை திறக்கக்கூடிய,பல பாகங்களுடன் திறக்கும்</p>"
+
+#: kcachegrind/toplevel.cpp:489
+#, kde-format
+msgid "Show/Hide the Parts Overview Dockable"
+msgstr "காட்டு/மறை மேற்பார்வையிடக்கூடிய பாகங்களை தடமிடு"
+
+#: kcachegrind/toplevel.cpp:494
+#, kde-format
+msgid "Call Stack"
+msgstr "அழை அடுக்கு "
+
+#: kcachegrind/toplevel.cpp:497
+#, kde-format
+msgid "Show/Hide the Call Stack Dockable"
+msgstr "காட்டு/மறை மேல் அழை அடுக்கு"
+
+#: kcachegrind/toplevel.cpp:502
+#, kde-format
+msgid "Function Profile"
+msgstr "செயல்பாடு குறிப்பெடுப்பு"
+
+#: kcachegrind/toplevel.cpp:505
+#, kde-format
+msgid "Show/Hide the Function Profile Dockable"
+msgstr "காட்டு/மறை பயன்பாடுக் குறிப்பேடு"
+
+#: kcachegrind/toplevel.cpp:513
+#, kde-format
+msgid "Show/Hide the Profile Dumps Dockable"
+msgstr "காட்டு/மறை Profile Dumps Dockable"
+
+#: kcachegrind/toplevel.cpp:520
+#, fuzzy, kde-format
+#| msgid "(active)"
+msgid "Relative"
+msgstr "(செயல்)"
+
+#: kcachegrind/toplevel.cpp:522
+#, kde-format
+msgid "Show relative instead of absolute costs"
+msgstr "சரியான செலவையன்றி தொடர்புடைய செலவை காட்டு"
+
+#: kcachegrind/toplevel.cpp:528
+#, fuzzy, kde-format
+#| msgid "Percentage Relative to Parent"
+msgid "Relative to Parent"
+msgstr "பெற்றோருடன் தொடர்புடைய விழுக்காடு"
+
+#: kcachegrind/toplevel.cpp:531
+#, kde-format
+msgid "Show percentage costs relative to parent"
+msgstr "பெற்றோருடன் தொடர்புடைய செலவு விழுக்காட்டை காட்டு"
+
+#: kcachegrind/toplevel.cpp:535
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>Show percentage costs relative to parent</b><p>If this is switched "
+#| "off, percentage costs are always shown relative to the total cost of the "
+#| "profile part(s) that are currently browsed. By turning on this option, "
+#| "percentage cost of shown cost items will be relative to the parent cost "
+#| "item.<ul><table><tr><td><b>Cost Type</td><td><b>Parent Cost</td></"
+#| "tr><tr><td>Function Cumulative</td><td>Total</td></tr><tr><td>Function "
+#| "Self</td><td>Function Group (*) / Total</td></tr><tr><td>Call</"
+#| "td><td>Function Cumulative</td></tr><tr><td>Source Line</td><td>Function "
+#| "Cumulative</td></tr></table><p>(*) Only if function grouping is switched "
+#| "on (e.g. ELF object grouping)."
+msgid ""
+"<b>Show percentage costs relative to parent</b><p>If this is switched off, "
+"percentage costs are always shown relative to the total cost of the profile "
+"part(s) that are currently browsed. By turning on this option, percentage "
+"cost of shown cost items will be relative to the parent cost item.</"
+"p><ul><table><tr><td><b>Cost Type</b></td><td><b>Parent Cost</b></td></"
+"tr><tr><td>Function Cumulative</td><td>Total</td></tr><tr><td>Function Self</"
+"td><td>Function Group (*) / Total</td></tr><tr><td>Call</td><td>Function "
+"Inclusive</td></tr><tr><td>Source Line</td><td>Function Inclusive</td></tr></"
+"table></ul><p>(*) Only if function grouping is switched on (e.g. ELF object "
+"grouping).</p>"
+msgstr ""
+"<b>சதவீத தொகையை தொடர்புடைய பெற்றோரை காட்டு</b><p>இது நிறுத்தப்பட்டிருந்தால், சதவீத "
+"தொகை எப்போது தொடர்புடைய மொத்த தொகையின் விவரப்பட்டியலின் பகுதி(கள்) தற்போது உலாவும். "
+"இந்த தேர்வை முயலும் போது, சதவீத தொகை கண்டிப்பாக பெற்றோர் தொகை உறுப்பை தொடர்புடையது."
+"<ul><table><tr><td><b>தொகையின் வகை</td><td><b>பெற்றோர் விலை</td></"
+"tr><tr><td>கூட்டு காரணி</td><td>மொத்தம்</td></tr><tr><td>காரணிகள்</td><td>காரணி "
+"குழு (*) / மொத்தம்</td></tr><tr><td>அழை</td><td>கூட்டு காரணி</td></"
+"tr><tr><td>மூல கோடு</td><td>கூட்டு காரணி</td></tr></table><p>(*) காரணிக் குழு "
+"நிறுத்தப்பட்டிருக்கும் போது மட்டும் (எ.டு. ELF பொருள் குழு)."
+
+#: kcachegrind/toplevel.cpp:552
+#, fuzzy, kde-format
+#| msgid "Do Cycle Detection"
+msgid "Cycle Detection"
+msgstr "சுழற் கண்டுபிடிப்பு செய்"
+
+#: kcachegrind/toplevel.cpp:555
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
+#| "drawing will show black areas when a recursive call is made instead of "
+#| "drawing the recursion ad infinitum. Note that the size of black areas "
+#| "often will be wrong, as inside recursive cycles the cost of calls cannot "
+#| "be determined; the error is small, however, for false cycles (see "
+#| "documentation).<p>The correct handling for cycles is to detect them and "
+#| "collapse all functions of a cycle into a virtual function, which is done "
+#| "when this option is selected. Unfortunately, with GUI applications, this "
+#| "often will lead to huge false cycles, making the analysis impossible; "
+#| "therefore, there is the option to switch this off."
+msgid ""
+"<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
+"drawing will show black areas when a recursive call is made instead of "
+"drawing the recursion ad infinitum. Note that the size of black areas often "
+"will be wrong, as inside recursive cycles the cost of calls cannot be "
+"determined; the error is small, however, for false cycles (see "
+"documentation).</p><p>The correct handling for cycles is to detect them and "
+"collapse all functions of a cycle into an artificial function, which is done "
+"when this option is selected. Unfortunately, with GUI applications, this "
+"often will lead to huge false cycles, making the analysis impossible; "
+"therefore, there is the option to switch this off.</p>"
+msgstr ""
+"<b>சுழற்சி வளைவை கண்டுபிடிக்கிறது</b><p>இது நிறுத்தப்பட்டிருந்தால், மர வரைபட வரைபடம் "
+"கண்டிப்பாக ad infinitum சுழற்சி வரைபடத்தை தவிர சுழற்சி பகுதியை அழைக்கும். கருப்பு "
+"நிற பகுதி தவறாக இருக்கும் என்பதை குறித்துக் கொள், உள் சுழற்சி வளையத்தின் விலையை "
+"கண்டுபிடிக்க முடியாது; பிழை சிறியது, அப்பப்போது, தவறான சுழற்சிக்கு (ஆவணத்தை பார்)."
+"<p>சரியான சுழற்சி தானாகவே கண்டு கொள்ளும் மற்றும் அனைத்து காரணிகளும் சுழற்சியுடன் பொய் "
+"காரணியாக இருக்கும், அவை இந்த விருப்பம் தேர்ந்தெடுக்கும் போது முடியும். துரதஷ்டவசமாக, "
+"GUI பயன்பாடுகளுடன், இது எப்பொழுதாவது தவறான சுழற்சியில் செல்லும், கண்டுபிடிப்பது "
+"முடியாது; அதனால், இது நிறுத்த தேர்வு உள்ளது."
+
+#: kcachegrind/toplevel.cpp:571
+#, kde-format
+msgid "Shorten Templates"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:573
+#, kde-format
+msgid "Hide Template Parameters in C++ Symbols"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:574
+#, kde-format
+msgid ""
+"<b>Hide Template Parameters in C++ Symbols</b><p>If this is switched on, "
+"every symbol displayed will have any C++ template parameters hidden, just "
+"showing &lt;&gt; instead of a potentially nested template parameter.</"
+"p><p>In this mode, you can hover the mouse pointer over the activated symbol "
+"label to show a tooltip with the unabbreviated symbol.</p>"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:590
+#, kde-format
+msgid "&Up"
+msgstr "&மேல்"
+
+#: kcachegrind/toplevel.cpp:599
+#, kde-format
+msgid ""
+"<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
+"was visited, use that with highest cost.</p>"
+msgstr ""
+"<b>மேலே செல்</b><p>நடப்பு செயற்கூறின் கடைசியாக தேர்ந்தெடுக்கப்பட்ட அழைப்பவருக்கு செல். "
+"அழைப்பவரை பார்க்கவில்லை எனில், உயர்ந்த விலையுடன் அதை பயன்படுத்து</p>"
+
+#: kcachegrind/toplevel.cpp:616
+#, kde-format
+msgid "Go back in function selection history"
+msgstr "செயல் தேர்வு வரலாற்றில் பின் செல்"
+
+#: kcachegrind/toplevel.cpp:630
+#, kde-format
+msgid "Go forward in function selection history"
+msgstr "செயற்கூறு தேர்ந்தெடுத்த வரலாற்றின் முன்னே செல்"
+
+#: kcachegrind/toplevel.cpp:635 kcachegrind/toplevel.cpp:1512
+#, kde-format
+msgid "Primary Event Type"
+msgstr "முதன்மை நிகழ்வு வகை"
+
+#: kcachegrind/toplevel.cpp:636
+#, kde-format
+msgid "Select primary event type of costs"
+msgstr "முதன்மை நிகழ்வு வகை விலையை தேர்ந்தெடு"
+
+#: kcachegrind/toplevel.cpp:658 kcachegrind/toplevel.cpp:1517
+#, kde-format
+msgid "Secondary Event Type"
+msgstr "இரண்டாவது நிகழ்வு வகை"
+
+#: kcachegrind/toplevel.cpp:659
+#, kde-format
+msgid "Select secondary event type for cost e.g. shown in annotations"
+msgstr "இரண்டாம் வகை நிகழ்வுகளின் விலை எ.டு. அன்னடேஸன் காட்டப்படுதல்"
+
+#: kcachegrind/toplevel.cpp:669
+#, kde-format
+msgid "Grouping"
+msgstr "குழுவாக்கம் "
+
+#: kcachegrind/toplevel.cpp:671
+#, kde-format
+msgid "Select how functions are grouped into higher level cost items"
+msgstr ""
+"உயர்ந்த நிலை விலை உருப்படிகளுக்கு எப்படி செயற்கூறுகள் குழுக்களாகின்றன என்பதை தேர்ந்தெடு. "
+
+#: kcachegrind/toplevel.cpp:677
+#, kde-format
+msgid "(No Grouping)"
+msgstr "(குழுவாக்கம் இல்லை)"
+
+#: kcachegrind/toplevel.cpp:689
+#, kde-format
+msgid "Split"
+msgstr "பிரி "
+
+#: kcachegrind/toplevel.cpp:692
+#, kde-format
+msgid "Show two information panels"
+msgstr "இரண்டு தகவல் பலகத்தினை காட்டு"
+
+#: kcachegrind/toplevel.cpp:698
+#, kde-format
+msgid "Split Horizontal"
+msgstr "கிடைக்கையை பிரி "
+
+#: kcachegrind/toplevel.cpp:701
+#, fuzzy, kde-format
+msgid "Change Split Orientation when main window is split."
+msgstr "முதன்மை சாளரத்தை பிரிக்கும் போது பிரி திசையமைவை மாற்று"
+
+#: kcachegrind/toplevel.cpp:898
+#, fuzzy, kde-format
+msgid "Select Callgrind Profile Data"
+msgstr "கெஸ்கிரின்ட் குறிப்பீட்டு சுவடினை தேர்ந்தெடு"
+
+#: kcachegrind/toplevel.cpp:900 kcachegrind/toplevel.cpp:968
+#, fuzzy, kde-format
+msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
+msgstr "கெஸ்கிரின்ட்.வெளியே *கெஸ்கிரிட் குறிப்பேடு தகவல்"
+
+#: kcachegrind/toplevel.cpp:928 kcachegrind/toplevel.cpp:957
+#, kde-format
+msgid ""
+"Could not open the file \"%1\". Check it exists and you have enough "
+"permissions to read it."
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:966
+#, fuzzy, kde-format
+msgid "Add Callgrind Profile Data"
+msgstr "K கெஸ்கிரின்ட் குறிப்பீட்டு தகவல் சேர்"
+
+#: kcachegrind/toplevel.cpp:1136 kcachegrind/toplevel.cpp:1465
+#, kde-format
+msgid "(Hidden)"
+msgstr "(தகவலை மறை)"
+
+#: kcachegrind/toplevel.cpp:1522
+#, kde-format
+msgid "Hide"
+msgstr "மறை "
+
+#: kcachegrind/toplevel.cpp:1564
+#, kde-format
+msgid "Show Absolute Cost"
+msgstr "நிஜ செலவீனங்களை காட்டு"
+
+#: kcachegrind/toplevel.cpp:1567
+#, kde-format
+msgid "Show Relative Cost"
+msgstr "சார்ந்த செலவீனங்களை காட்டு"
+
+#: kcachegrind/toplevel.cpp:1599
+#, kde-format
+msgid "Go Back"
+msgstr "பின் போ"
+
+#: kcachegrind/toplevel.cpp:1600
+#, kde-format
+msgid "Go Forward"
+msgstr "முன் செல்"
+
+#: kcachegrind/toplevel.cpp:1601
+#, kde-format
+msgid "Go Up"
+msgstr "மேல் நகர்த்து"
+
+#: kcachegrind/toplevel.cpp:1813
+#, kde-format
+msgid "Layout Count: %1"
+msgstr "வடிவமைப்பு கூட்டு: %1"
+
+#: kcachegrind/toplevel.cpp:1820
+#, kde-format
+msgid "No profile data file loaded."
+msgstr "சுவடு கோப்பு பதிவாகவில்லை."
+
+#: kcachegrind/toplevel.cpp:1829
+#, kde-format
+msgid "Total %1 Cost: %2"
+msgstr "கூடுதல் %1 விலை: %2"
+
+#: kcachegrind/toplevel.cpp:1841
+#, kde-format
+msgid "No event type selected"
+msgstr "நிகழ்வு வகை தேர்வு செய்யப்படவில்லை"
+
+#: kcachegrind/toplevel.cpp:2027
+#, kde-format
+msgid "Cannot determine receiver PID for dump request"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:2068
+#, kde-format
+msgid "Error running callgrind_control"
+msgstr ""
+
+#: kcachegrind/toplevel.cpp:2107 kcachegrind/toplevel.cpp:2144
+#: kcachegrind/toplevel.cpp:2181
+#, kde-format
+msgid "(No Stack)"
+msgstr "(அடுக்கு இல்லை)"
+
+#: kcachegrind/toplevel.cpp:2113
+#, kde-format
+msgid "(No next function)"
+msgstr "(அடுத்த செயல்கூறு  இல்லை)"
+
+#: kcachegrind/toplevel.cpp:2150
+#, kde-format
+msgid "(No previous function)"
+msgstr "(முன் செயல்கூறு இல்லை)"
+
+#: kcachegrind/toplevel.cpp:2186
+#, kde-format
+msgid "(No Function Up)"
+msgstr "(மேலே செயற்கூறு இல்லை)"
+
+#: kcachegrind/toplevel.cpp:2318 kcachegrind/toplevel.cpp:2332
+#, kde-format
+msgid "Loading %1"
+msgstr "ஏற்றல் %1"
+
+#: kcachegrind/toplevel.cpp:2326
+#, fuzzy, kde-format
+#| msgid "Loading %1"
+msgid "Error loading %1: %2"
+msgstr "ஏற்றல் %1"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, fuzzy, kde-format
+msgid ""
+"<p>...that the <em>What's this...</em> help for every GUI widget\n"
+"in KCachegrind contains detailed usage information for this widget?\n"
+"It is highly recommend to read at least these help texts on first\n"
+"use. Request <em>What's this...</em> help by pressing\n"
+"Shift-F1 and clicking on the widget.</p>\n"
+msgstr ""
+"<p>...அது <em>இது என்ன...</em> ஒவ்வொரு GUI சிறுபைக்கும்\n"
+"கேகேகேகிரிட்டின் உள்ளடக்கிய பயன்படுத்து, சிறுபையின் தகவலுக்கான உதவி?\n"
+"இந்த உதவிகளை முதல் முறையாவ்து படிப்பது\n"
+"பரிந்துரைக்கப்படுகிறது. விருப்பம் <em>இது என்ன...</em> Shift+F1 யை\n"
+"அழுத்தி மற்றும் சிறுபையை சொடுக்கிறது.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:12
+#, kde-format
+msgid ""
+"<p>...that you can get profile information at instruction level\n"
+"with Calltree when you provide the option <em>--dump-instr=yes</em>?\n"
+"Use the Assembler View for the instruction annotations.\n"
+"</p>\n"
+msgstr ""
+"<p>...that you can get profile information at instruction level\n"
+"with Calltree when you provide the option <em>--dump-instr=yes</em>?\n"
+"Use the Assembler View for the instruction annotations.\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:21
+#, kde-format
+msgid ""
+"<p>...that you can use Alt-Left/Right keys of your keyboard to go\n"
+"back/forward in the active object history ?</p>\n"
+msgstr ""
+"<p>...that you can use Alt-Left/Right keys of your keyboard to go\n"
+"back/forward in the active object history ?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>...that you can navigate in the Callee/Caller Map View using\n"
+"arrow keys? Use Left/Right to change to siblings of the current\n"
+"item; use Up/Down to go one nesting level up/down. To select\n"
+"the current item, press Space, and to activate it, press Return.\n"
+"</p>\n"
+msgstr ""
+"<p>...அதை நீங்கள் அழைப்பவர்/அழைக்கும் வரைப்பட பார்வைக்கு குறிக்கும் விசைகளை\n"
+"பயன்படுத்த வேண்டுமா? இடது/வலது விசையை தற்போதைய உருவை மாற்ற பயன்படுத்து;\n"
+"மேல்/கீழ் விசையை கூட்டு நிலைக்கு மேலே/கீழே செல்ல பயன்படுத்து. தற்போதைய உறுப்பை\n"
+"தேர்ந்தெடுக்க, இடைவெளியை அழுத்தவும், மற்றும் அதை செயல்படுத்து, திருப்புதலை அழுத்து.\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:38
+#, kde-format
+msgid ""
+"<p>...that you can navigate in the Call Graph View using\n"
+"arrow keys? Use Up/Down to go one calling level up/down, alternating\n"
+"between calls and functions. Use Left/Right to change to siblings of a "
+"current\n"
+"selected call. To activate the current item, press Return.\n"
+"</p>\n"
+msgstr ""
+"<p>...அதை நீங்கள் குறியீட்டு விசையை பயன்படுத்தி அழைப்பு வரைபடத்தை\n"
+"மாற்ற முடியும்? மேல்/கீழ் விசையை அழைக்கும் நிலை மேல்/கீழே செல்ல பயன்படுத்தவும், "
+"வேறுவிதமாக\n"
+"அழைப்புகள் மற்றும் காரணிகளுக்கும் இடையேயும் பயன்படுத்தலாம். இடது/வலது விசையை தற்போது "
+"தேர்ந்தெடுத்த அழைப்பை மாற்ற பயன்படுத்தவும்\n"
+"தற்போது தேர்ந்தெடுத்த உருப்படியை செயல்படுத்த, திரும்புதலை அழுத்தவும்.\n"
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:48
+#, kde-format
+msgid ""
+"<p>...that you can rapidly locate a function by entering part of its\n"
+"name (case-insensitive) into the edit line of the toolbar\n"
+"and hit return?</p>\n"
+msgstr ""
+"<p>...அதை நீங்கள் நிலையில்லாமல் காரணியை உள்ளிடும் பகுதியின் பெயரை\n"
+"(எழுத்து-உணர்வு) கருவிப்பட்டியின் திருத்தி வரியில் குறிக்க\n"
+"மற்றும் திரும்ப தர வேண்டுமா?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:56
+#, kde-format
+msgid ""
+"<p>...that you can assign custom colors to \n"
+"ELF objects/C++ Classes/Source Files for graph coloring\n"
+"in <em>Settings->Configure KCachegrind...</em>?</p>\n"
+msgstr ""
+"<p>...அதை நீங்கள் தனிபயன் வண்ணங்களாக \n"
+"ELF பொருள்கள்/C++ வகுப்புகள்/மூலகோப்புகள் வரைபட் வண்ணத்திற்காக\n"
+"<em>அமைப்புகள்->கேகேகேகிரிட் உள்ளமைப்பு ற்க்கு ஒதுக்கும்...</em>?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:64
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>...that you can see if debug info is available for a selected \n"
+#| "function by looking at the location label in the Info tab or\n"
+#| "the source listing header in the source tab?</p>\n"
+#| "<p>There must be the name of the source file (with extension).\n"
+#| "If KCachegrind still doesn't show the source, make sure that you\n"
+#| "have added the directory of the source file to the\n"
+#| "<em>Source Directories</em> list in the configuration.\n"
+msgid ""
+"<p>...that you can see if debug info is available for a selected \n"
+"function by looking at the location label in the Info tab or\n"
+"the source listing header in the source tab?</p>\n"
+"<p>There must be the name of the source file (with extension).\n"
+"If KCachegrind still does not show the source, make sure that you\n"
+"have added the directory of the source file to the\n"
+"<em>Source Directories</em> list in the configuration.\n"
+msgstr ""
+"<p>...அதை நீங்கள் பார்க்க முடியும் பிழை நீக்கும் தகவல் இருந்தால் தேர்ந்தெடுத்த \n"
+"காரணி பார்வையிடும் இடத்தின் சிட்டத்தில் உள்ள தத்தல் தகவல் அல்லது\n"
+"மூலம் பட்டியலிடும் தலைப்பியின் மூல தத்தல்?</p>\n"
+"<p>அதற்கு கண்டிப்பாக மூல கோப்பின் பெயர் இருக்க வேண்டும் (நீட்டிப்போது).\n"
+"KCachegrind இன்னும் மூலத்தை காட்டவில்லை என்றால், நீங்கள் மூல கோப்பின்\n"
+"அடைவை <em>மூல அடைவிற்கு</em> பட்டியல் உள்ளமைப்பிற்கு\n"
+"சேர்த்துள்ளதை உறுதிசெய்யவும்.\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:76
+#, kde-format
+msgid ""
+"<p>...that you can configure whether KCachgrind should\n"
+"show absolute event counts or relative ones (percentage display)?</p>\n"
+msgstr ""
+"<p>...அதை நீங்கள் KCachgrind கண்டிப்பாக உள்ளமைப்பை\n"
+"முழுமையான செயல் கூட்டுதொகை அல்லது தொடர்புடைய ஒன்றை காட்டும் (சதவீதத்தை காட்டும்)?</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:83
+#, kde-format
+msgid ""
+"<p>...that you can configure the maximum number of items\n"
+"for all function lists in KCachegrind? Limiting the number\n"
+"of items is done to get a fast reacting GUI. The last item in\n"
+"the list will show you the number of skipped functions, together\n"
+"with a cost condition for these skipped functions.</p>\n"
+"<p>To activate a function with small costs, search for it and select\n"
+"it in the flat profile. Selecting functions with small cost will\n"
+"temporarily add them to the flat profile list.</p>\n"
+msgstr ""
+"<p>...அதை நீங்கள் அதிகபட்ச உருப்படிகளை அனைத்து\n"
+"காரணி பட்டியல்களின் KCachegrind யை உள்ளமைக்கப்படும்? எண்ணை சிறிதாக்க\n"
+"GUI வை வேகமாக பெற முடிக்கும். பட்டியலில் இருக்கும் உருப்படி\n"
+"கண்டிப்பாக உங்கள் எண் தவிர்க்கும் காரணிகளை காட்டும், அதனுடன்\n"
+"விலை நிபந்தனைக்கான விடப்பட்ட காரணிகள்.</p>\n"
+"<p>காரணியை சிறு விலைகளுடன் செயல்படுத்த, இதற்க்காக தேடும் மற்றும் தற்காலிக\n"
+"தட்டையான விவரக்குறிப்பு பட்டியலை சேர்க்க தேர்தெடுக்கிறது.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>...that the Coverage tab - in contrast to the Call Lists tab -\n"
+"shows <em>all</em> functions that are calling the selected function\n"
+"(upper part) / are called by the selected function (bottom part),\n"
+"no matter how many function are between them on the stack?</p>\n"
+"<p>Examples:</p>\n"
+"<p>An entry in the upper list for function foo1() with a value of 50%\n"
+"with function bar() selected means that 50% of all the cost of function\n"
+"bar() happened while called from function foo1().</p>\n"
+"<p>An entry in the bottom list for function foo2() with a value of 50%\n"
+"with function bar() selected means that 50% of all the cost of function\n"
+"bar() happened while calling foo2() from bar().</p>\n"
+msgstr ""
+"<p>...இடம் கொள் தத்தலில் இருந்து - அழைக்கும் பட்டியல்கள் தத்தல்\n"
+"<em>அனைத்து</em> காரணிகள் அழைக்கும் தேர்ந்தெடுத்த காரணி\n"
+"(upper part) / தேர்ந்தெடுத்த காரணிகள் அழைக்கும் (bottom part),\n"
+"இடையில் எத்தனை காரணிகள் அடுக்கப்பட்டது எண்று இல்லாமல் காட்டும்?</p>\n"
+"<p>உதாரணங்கள்:</p>\n"
+"<p>மேல் பட்டியலில் உள்ள காரணி foo1()  50% மதிப்புடன்\n"
+"காரணி bar() தேர்ந்தெடுக்கப்பட்டதன் விவரம் 50% காரணியின் விலையை\n"
+"bar() நிகழும்போது அழைக்கும் காரணி foo1() காட்டும்.</p>\n"
+"<p>ஒரு உள்ளீடு காரணியின் அடி பட்டியலில் foo2() மதிப்பு 50%\n"
+"உடன் காரணி bar() தேர்ந்தெடுக்கப்பட்டதன் விவரம் 50% காரணியின் அனைத்து விலை\n"
+"bar() நிகழும் போது அழைக்கும் காரணி foo2() bar() லிருந்து காட்டும்.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:112
+#, kde-format
+msgid ""
+"<p>...that waiting for the tool tip inside of a tree map\n"
+"shows the list of names of the nested rectangles the mouse\n"
+"pointer is over?</p>\n"
+"<p>Items from this list can be selected by pressing the right\n"
+"mouse button.</p>\n"
+msgstr ""
+"<p>...that waiting for the tool tip inside of a tree map\n"
+"shows the list of names of the nested rectangles the mouse\n"
+"pointer is over?</p>\n"
+"<p>Items from this list can be selected by pressing the right\n"
+"mouse button.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:122
+#, kde-format
+msgid ""
+"<p>...that you can constrain the cost counts shown to only a\n"
+"few parts of the whole trace by selecting these parts in the\n"
+"\"Trace Selection\" Dockable?</p>\n"
+"<p>To generate multiple parts in a profiling run with\n"
+"cachegrind, use e.g. option --cachedumps=xxx for parts\n"
+"of a length of xxx basic blocks (A basic block is a run\n"
+"of not-branching assembler statements inside of your program\n"
+"code).</p>\n"
+msgstr ""
+"<p>...அவைகளின் நிபந்தனை விலையின் கூட்டுதலை மட்டும் சில\n"
+"பகுதிகளுடைய முழு தேடுதலை தேர்ந்தெடுக்கும் இந்த பகுதிகள்\n"
+"\"தேடும் தேர்ந்தெடுப்பு\" இணைக்க முடியுமா?</p>\n"
+"<p>பல பகுதியை உருவாக்க விவரக்குறிப்பு இயக்கத்துடன்\n"
+"cachegrind முடியும், எ.டு. விருப்பம் --cachedumps=xxx பகுதிகளுக்கான\n"
+"xxx மூலத் தொகுதியை பயன்படுத்து (ஒரு அடிப்படை தொகுதி ஒரு இயங்கும்\n"
+"கிளையில்லாத தொகுப்பாளர் உங்கள் நிரல் குறியாக்கத்திற்கு உள்ளிருக்கும்\n"
+"நீளம்).</p>\n"
+
+#~ msgid "Source Files"
+#~ msgstr "மூலம் கோப்பு"
+
+#~ msgid "C++ Classes"
+#~ msgstr "C++ வகுப்பு"
+
+#~ msgid "Function (no Grouping)"
+#~ msgstr "செயல்கூறு (குழு இல்லை)"
+
+#~ msgid "KCachegrind Configuration"
+#~ msgstr "K கெச்சிகிரிட் உள்ளமைவு "
+
+#~ msgid "Active call to '%1'"
+#~ msgstr "செயற்படு அழை '%1' க்கு"
+
+#~ msgid "%1 call to '%2'"
+#~ msgid_plural "%1 calls to '%2'"
+#~ msgstr[0] "%1 கூப்பிடு '%2'"
+#~ msgstr[1] "%1 கூப்பிடு '%2'"
+
+#~ msgid "Jump %1 of %2 times to 0x%3"
+#~ msgstr "தாவு  %1 இருந்து %2 தடவையிலிருந்து 0x%3"
+
+#~ msgid "Jump %1 times to 0x%2"
+#~ msgstr "தாவு  %1  தடவையிலிருந்து 0x%2"
+
+#~ msgid "(cycle)"
+#~ msgstr "(வட்டம்) "
+
+#~ msgid "Abstract Item"
+#~ msgstr "உருப்படி  பெயர்"
+
+#~ msgid "Cost Item"
+#~ msgstr "உருப்படி விலை"
+
+#~ msgid "Part Source Line"
+#~ msgstr "பிரிவு மூல கோடு"
+
+#~ msgid "Source Line"
+#~ msgstr "மூல கோடு"
+
+#~ msgid "Part Line Call"
+#~ msgstr "பிரிவு கோடு அழை"
+
+#~ msgid "Line Call"
+#~ msgstr "கோடு அழை"
+
+#~ msgid "Part Jump"
+#~ msgstr "பிரிவு தாவு"
+
+#~ msgid "Jump"
+#~ msgstr "தாவு"
+
+#~ msgid "Part Instruction"
+#~ msgstr "பிரிவு ஆணை"
+
+#~ msgid "Instruction"
+#~ msgstr "ஆணை"
+
+#~ msgid "Part Instruction Jump"
+#~ msgstr "பிரிவு ஆணை தாவு"
+
+#~ msgid "Instruction Jump"
+#~ msgstr "ஆணை தாவு"
+
+#~ msgid "Part Instruction Call"
+#~ msgstr "பிரிவு ஆணை அழை"
+
+#~ msgid "Instruction Call"
+#~ msgstr "ஆணை அழை"
+
+#~ msgid "Part Call"
+#~ msgstr "பிரிவு அழை"
+
+#~ msgid "Call"
+#~ msgstr "அழை"
+
+#~ msgid "Part Function"
+#~ msgstr "பிரிவு விதி"
+
+#~ msgid "Function Source File"
+#~ msgstr "மூலக் கோப்பு செயல்பாடு "
+
+#~ msgid "Function Cycle"
+#~ msgstr "செயல்பாடு வட்டம்"
+
+#~ msgid "Part Class"
+#~ msgstr "பிரிவு வகுப்பு"
+
+#~ msgid "Class"
+#~ msgstr "வகுப்பு"
+
+#~ msgid "Part Source File"
+#~ msgstr "பிரிவு மூலக் கோப்பு "
+
+#~ msgid "Source File"
+#~ msgstr "மூலக் கோப்பு "
+
+#~ msgid "Part ELF Object"
+#~ msgstr "பிரிவு ELF பொருள்"
+
+#~ msgid "ELF Object"
+#~ msgstr "ELF பொருள்"
+
+#~ msgid "Profile Part"
+#~ msgstr "தெரியும் பாகம்"
+
+#~ msgid "Program Trace"
+#~ msgstr "விதியை தேடு"
+
+#~ msgid "%1 from %2"
+#~ msgstr "%1 யில் இருந்து %2"
+
+#~ msgid "(unknown)"
+#~ msgstr "(தெரியாத)"
+
+#~ msgid "(no caller)"
+#~ msgstr "(கூப்பிடுபவர் இல்லை)"
+
+#~ msgid "%1 via %2"
+#~ msgstr "%1 வழியாக %2"
+
+#~ msgid "(no callee)"
+#~ msgstr "(கூப்பிடுபவர் இல்லை)"
+
+#~ msgid "(not found)"
+#~ msgstr "(கிடைக்கவில்லை)"
+
+#~ msgid "Recalculating Function Cycles..."
+#~ msgstr "செயல்பாடு வட்டங்களை மறுகணக்கிடு ..."
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "A thing's name"
+#~ msgid "Name"
+#~ msgstr "பெயர்"
+
+#~ msgid "Cost"
+#~ msgstr "மதிப்பு"
+
+#~ msgid "Profile Part Overview: Current is '%1'"
+#~ msgstr "தேடுதல் பாகம் மேல்நோக்கு:தற்போது '%1'"
+
+#, fuzzy
+#~| msgid "Select '%1'"
+#~ msgid "Deselect '%1'"
+#~ msgstr "தேர்வு '%1'"
+
+#~ msgid "Select '%1'"
+#~ msgstr "தேர்வு '%1'"
+
+#~ msgid "Select All Parts"
+#~ msgstr "தெரியும் பாகங்களை தேர்ந்தெடு"
+
+#~ msgid "Visible Parts"
+#~ msgstr "தெரியும் பாகம்"
+
+#~ msgid "Hide Selected Parts"
+#~ msgstr "தேர்ந்தெடுத்த பாகங்களை மறை"
+
+#~ msgid "Unhide Hidden Parts"
+#~ msgstr "தெரியாத பாகங்களை காட்டு"
+
+#~ msgid "Go to '%1'"
+#~ msgstr " '%1' க்கு செல்"
+
+#~ msgid "Visualization"
+#~ msgstr "காட்சியாக்கம்"
+
+#~ msgid "Partitioning Mode"
+#~ msgstr "பிரிக்கும் வகை"
+
+#~ msgid "Zoom Function"
+#~ msgstr "செயலை பெரிதாக்கு"
+
+#~ msgid "Show Direct Calls"
+#~ msgstr "நேர் அழைப்பை காண்பி"
+
+#~ msgid "Increment Shown Call Levels"
+#~ msgstr "காண்பிக்கப்பட்ட் அழை அளவுகளை அதிகரிக்கவும்"
+
+#~ msgid "Draw Names"
+#~ msgstr "வரை பெயர்"
+
+#~ msgid "Draw Costs"
+#~ msgstr "வரை உருப்படிகள்"
+
+#~ msgid "Ignore Proportions"
+#~ msgstr "அனைத்தையும் தவிர்"
+
+#, fuzzy
+#~ msgid "Draw Frames"
+#~ msgstr "வரை பெயர்"
+
+#~ msgid "Allow Rotation"
+#~ msgstr "கோண சுழற்சியை அனுமதி"
+
+#~ msgid "Hide Info"
+#~ msgstr "தகவலை மறை "
+
+#~ msgid "Show Info"
+#~ msgstr "தகவலை காண்பி"
+
+#~ msgid "(no trace loaded)"
+#~ msgstr "(சுவடு ஏற்றப்படவில்லை) "
+
+#~ msgid "Jump %1 of %2 times to %3"
+#~ msgstr "தாவு  %1 இருந்து %2 தடவையிலிருந்து %3"
+
+#~ msgid "Jump %1 times to %2"
+#~ msgstr "தாவு %1 தடவையிலிருந்து %2"
+
+#~ msgid "(%1 item skipped)"
+#~ msgid_plural "(%1 items skipped)"
+#~ msgstr[0] "(%1 உஉருப்படிகள் தாவப்பட்டது)"
+#~ msgstr[1] "(%1 உருப்படிகள் தாவப்பட்டது)"
+
+#~ msgid "No description available"
+#~ msgstr "விவரிப்பு இல்லை."
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+#~ "there are several profile data files from one profile run. The Trace Part "
+#~ "Overview dockable shows these, horizontally ordered in execution time; "
+#~ "the rectangle sizes are proportional to the total cost spent in the "
+#~ "parts. You can select one or several parts to constrain all costs shown "
+#~ "to these parts only.</p><p>The parts are further subdivided: there is a "
+#~ "partitioning and an callee split mode: <ul><li>Partitioning: You see the "
+#~ "partitioning into groups for a trace part, according to the group type "
+#~ "selected. E.g. if ELF object groups are selected, you see colored "
+#~ "rectangles for each used ELF object (shared library or executable), sized "
+#~ "according to the cost spent therein.</li><li>Callee: A rectangle showing "
+#~ "the inclusive cost of the current selected function in the trace part is "
+#~ "shown. This is split up into smaller rectangles to show the costs of its "
+#~ "callees.</li></ul></p>"
+#~ msgstr ""
+#~ "<b>தேடுகை உறுப்பு மேற்பார்வை<b></p>ஒரு தேடுகை, நிறைய தேடுகை உறுப்புகளால் "
+#~ "உருவாக்கப்பட்டது, எப்போ அங்கே பல தேடுகை கோப்புகள் ஒரு குறிப்புரை ஓட்டம். தேடுகை "
+#~ "உறுப்பு மேற்பார்வை டாக்கபிள் இதை காட்டுகிறது,கிடைமட்டமாக நிறைவேற்று நேரத்தில் "
+#~ "வரிசைப்படுத்தப்பட்டது; நீள்சதுர அளவுகள் விகிதம் மொத்த மதிப்பு உறுப்புகளில் "
+#~ "செலவிடப்பட்டது. நீங்கள் ஒன்று அல்லது பல உருப்புகளை தேர்ந்தெடுக்கலாம் சிறைப்படுத்த எல்லா "
+#~ "மதிப்புகளையும் இந்த உறுப்புகளுக்கு மட்டும் காண்பிக்கப்படும்.</p><p>உறுப்புகள் மேலும் "
+#~ "பிரிக்கப்பட்டுள்ளன அங்கே பிரிக்கும் மற்றும் குமுலேட்டிவ் ஸ்பிலிட் வகை:"
+#~ "<ul><li>பாகம்படுத்தல்: குழுக்களாக பாகம்படுத்தல் தேடுதல் உறுப்புக்காக, "
+#~ "தேர்ந்தெடுக்கப்பட்ட குழுக்கேற்ப. E.g. ELF குழுக்களை தேர்ந்தெடுந்தெடுத்தால், நீங்கள் "
+#~ "நிறமான நீள்சதுரங்கள் பார்ப்பீர்கள் ஒவ்வொரு உபயோகப்படுத்திய ELF பொருளுக்கு, செலவிடப்பட்ட "
+#~ "மதிப்பிற்கேற்ப அளவிடப்பட்டது. </li><li>குமுலேட்டிவ் ஸ்பிலிட்:   நீள்சதுரம் தற்போது "
+#~ "தேர்ந்தெடுக்கப்பட்டுள்ள தேடுகை உறுப்பில் உள்ள செயல்கூறு குமுலேட்டிவ் மதிப்பை காட்டும். "
+#~ "இது மறுபடியும் பிரிந்து குமுலெட்டிவ் மதிப்பை கூப்பிடுபவர்களுக்கு காட்டுகிறது.</"
+#~ "li></ul></p> "
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>The Flat Profile</b><p>The flat profile contains a group and a "
+#~ "function selection list. The group list contains all groups where costs "
+#~ "are spent in, depending on the chosen group type. The group list is "
+#~ "hidden when group type 'Function' is selected.</p><p>The function list "
+#~ "contains the functions of the selected group (or all for 'Function' group "
+#~ "type), ordered by the costs spent therein. Functions with costs less than "
+#~ "1% are hidden on default.</p>"
+#~ msgstr ""
+#~ "<b>சமமான விவரக்குறிப்பு</b><p>சமமான விவரக்குறிப்பு ஒரு குழு மற்றும் ஒரு "
+#~ "செயற்கூறு தேர்ந்தெடுப்பு பட்டியல். இந்த குழு பட்டியலில் எல்லா குழுக்களும் எங்கே "
+#~ "மதிப்புகள் செலவிடப்பட்டதோ,தேர்ந்தெடுக்கப்பட்ட குழு வகைகளை பொருத்து. குழு பட்டியல் "
+#~ "மறைக்கப்படும் எப்போ குழுவகை செயல்கூறு தேர்ந்தெடுக்கும் போது.<p><p>செயல்கூறுப்பட்டியல் "
+#~ "தேர்ந்தெடுக்கப்பட்ட செயல்கூறு குழுக்களை. மதிப்பு செலவிடப்பட்டதின் மூலம் "
+#~ "வரிசைப்படுத்தப்பட்டுள்ளது 1% யை விட மதிப்பு குறைந்த செயல்கூறுகள் தானாகவே "
+#~ "மறைக்கப்படும்.</p>"
+
+#~ msgid "Show Relative Costs"
+#~ msgstr "சார்ந்த செலவீனங்களை காண்பி"
+
+#~ msgid "Show Absolute Costs"
+#~ msgstr "முழு விலையை காட்டு"
+
+#~ msgid "Skip Cycle Detection"
+#~ msgstr "சுழற்சி கண்டுபிடிப்பை தவிர்"
+
+#~ msgid "Cost 2"
+#~ msgstr "மதிப்பு 2"
+
+#~ msgid "Hex"
+#~ msgstr "பதினண்"
+
+#~ msgid "Assembler"
+#~ msgstr "தொகுப்பி"
+
+#~ msgid "Source Position"
+#~ msgstr "மூலத்தின் நிலை "
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>Annotated Assembler</b><p>The annotated assembler list shows the "
+#~ "machine code instructions of the current selected function together with "
+#~ "(self) cost spent while executing an instruction. If this is a call "
+#~ "instruction, lines with details on the call happening are inserted into "
+#~ "the source: the cost spent inside of the call, the number of calls "
+#~ "happening, and the call destination.</p><p>The disassembler output shown "
+#~ "is generated with the 'objdump' utility from the 'binutils' package.</"
+#~ "p><p>Select a line with call information to make the destination function "
+#~ "of this call current.</p>"
+#~ msgstr ""
+#~ "<b>சுட்டு விளக்க தொகுப்பாளர்r</b><p>சுட்டு விளக்க தொகுப்பாளர் பட்டியல் இயந்திர "
+#~ "குறியீட்டு ஆணையை தேர்ந்தெடுத்த காரணியுடன் செலவிடப்பட்ட விலை ஆணை இயக்கும் போது "
+#~ "காட்டும். இது அழைக்கும் ஆணையாக இருந்தால், அழைப்பு ஏற்படுபவை மூலத்தில் நுழைக்கப்படும்: "
+#~ "அவையெல்லாம் (கூட்டு) அழைப்பிற்கு உள் செலவிடப்பட்ட தொகை, நிகழும் அழைப்பு எண்ணிக்கை, "
+#~ "மற்றும் அழைப்பு தூரம்.</p><p>தொகுப்பை நீக்கும் வெளியீடு 'objdump' பயன்பாட்டை "
+#~ "'binutils' தொகுப்பிலிருந்து உருவாக்குவதை காட்டும்.</p><p>சேரும் காரணியின் "
+#~ "தற்போதைய அழைப்பு உருவாக்கும் அழைப்பு தகவலுடைய வரியை தேர்ந்தெடு.</p>"
+
+#~ msgid "Go to Address %1"
+#~ msgstr "முகவரி %1 க்கு செல்"
+
+#~ msgid "Hex Code"
+#~ msgstr "பொறி குறிமுறை "
+
+#~ msgid "There is no instruction info in the profile data file."
+#~ msgstr "சுவடு கோப்பில் ஆணை தகவல் ஏதும் இல்லை."
+
+#~ msgid "For the Valgrind Calltree Skin, rerun with option"
+#~ msgstr "வால்கிரின்ட் கல்ட்ரி மறைவிற்கு விருப்பத்துடன் மறு இயக்கம் செய்."
+
+#~ msgid "      --dump-instr=yes"
+#~ msgstr " -- திணிப்பு-ஆணை=சரி"
+
+#~ msgid "To see (conditional) jumps, additionally specify"
+#~ msgstr "தாவுதலை பார்ப்பதற்கு(கட்டாயமாக) கூடுதலாக குறிப்பிட வேண்டும்"
+
+#~ msgid "      --trace-jump=yes"
+#~ msgstr "--சுவடு-தாவு=சரி"
+
+#~ msgid "There is an error trying to execute the command"
+#~ msgstr "கட்டளையை நிறைவேற்ற முயற்சி செய்யும் போது அங்கே ஓர் பிழை."
+
+#~ msgid "Check that you have installed 'objdump'."
+#~ msgstr "இந்த பொறியில் நீங்கள் 'பொருள் திணிப்பினை' நிறுவியிருக்கிறீர்கள். "
+
+#~ msgid "This utility can be found in the 'binutils' package."
+#~ msgstr "'பினுடிஸ்' தொகுப்புகளின் பயன்கூறு மற்றும் மீண்டும் முயற்சி செய்."
+
+#~ msgid "(No Assembler)"
+#~ msgstr "(தொகுப்பி இல்லை)"
+
+#~ msgid "There is %1 cost line without assembler code."
+#~ msgid_plural "There are %1 cost lines without assembler code."
+#~ msgstr[0] "%1 விலை வரி உள்ளன தொகுப்பர் குறிமுறை இல்லாமல்."
+#~ msgstr[1] "%1 விலை வரிகள் உள்ளன தொகுப்பர் குறிமுறை இல்லாமல். "
+
+#~ msgid "This happens because the code of"
+#~ msgstr "இது நடந்தது குறிமுறையினால் "
+
+#, fuzzy
+#~ msgid "does not seem to match the profile data file."
+#~ msgstr "சுவடு கோப்பினை பொருத்தி பார்க்க இயலவில்லை."
+
+#~ msgid "Are you using an old profile data file or is the above mentioned"
+#~ msgstr ""
+#~ "நீங்கள் பழைய சுவடு கோப்பினை பயன்படுத்திகிறீர்களா அல்லது மேலே குறிப்பிடப்பட்டு இருப்பதை "
+#~ "பயன்படுத்திகிறீர்களா"
+
+#~ msgid "ELF object from an updated installation/another machine?"
+#~ msgstr "ஓர் இற்றையப்படுத்தப்பட்ட நிறுவல்/மற்றொரு பொறிகளிடம் இருந்து ELF- பொருள். "
+
+#~ msgid "There seems to be an error trying to execute the command"
+#~ msgstr "கட்டளையை நிறைவேற்ற முயற்சி செய்யும் போது அங்கே ஓர் பிழையை பார்."
+
+#~ msgid "Check that the ELF object used in the command exists."
+#~ msgstr "இருந்திருக்கும் கட்டளையில் ELF பொருளை சோதனையிடு."
+
+#~ msgid "Call(s) from %1"
+#~ msgstr "%1-மிருந்து அழைப்புகள்"
+
+#~ msgid "Call(s) to %1"
+#~ msgstr " %1 க்கு அழைப்புகள்"
+
+#~ msgid "(unknown call)"
+#~ msgstr "(தெரியாத அழைப்பு)"
+
+#, fuzzy
+#~| msgid ""
+#~| "<b>Call Graph around active Function</b><p>Depending on configuration, "
+#~| "this view shows the call graph environment of the active function. Note: "
+#~| "the shown cost is <b>only</b> the cost which is spent while the active "
+#~| "function was actually running; i.e. the cost shown for main() - if it's "
+#~| "visible - should be the same as the cost of the active function, as "
+#~| "that's the part of inclusive cost of main() spent while the active "
+#~| "function was running.</p><p>For cycles, blue call arrows indicate that "
+#~| "this is an artificial call added for correct drawing which actually "
+#~| "never happened.</p><p>If the graph is larger than the widget area, an "
+#~| "overview panner is shown in one edge. There are similar visualization "
+#~| "options to the Call Treemap; the selected function is highlighted.<p>"
+#~ msgid ""
+#~ "<b>Call Graph around active Function</b><p>Depending on configuration, "
+#~ "this view shows the call graph environment of the active function. Note: "
+#~ "the shown cost is <b>only</b> the cost which is spent while the active "
+#~ "function was actually running; i.e. the cost shown for main() - if it is "
+#~ "visible - should be the same as the cost of the active function, as that "
+#~ "is the part of inclusive cost of main() spent while the active function "
+#~ "was running.</p><p>For cycles, blue call arrows indicate that this is an "
+#~ "artificial call added for correct drawing which actually never happened.</"
+#~ "p><p>If the graph is larger than the widget area, an overview panner is "
+#~ "shown in one edge. There are similar visualization options to the Call "
+#~ "Treemap; the selected function is highlighted.</p>"
+#~ msgstr ""
+#~ "<b>அழைக்கும் வரைபடம் சுற்றியிருக்கும் செயல்படும் காரணி</b><p>உள்ளமைப்பிற்க்கு "
+#~ "தகுந்தவாறு, இந்த பார்வை அழைப்பு வரைபட சூழலை காட்டும். குறிப்பு: காட்டப்பட்ட விலை "
+#~ "செயல்படும் காரணியின் மெய்யாக இயங்கும் போது செலவிடுவது <b>மட்டும்</b> காட்டப்படும்; "
+#~ "அதாவது, main() க்கு காட்டப்பட்ட விலை - இது தெரிந்தால் - மெய்யான காரணியின் அதே "
+#~ "விலையை காட்டும், அது main() இன் செலவு செய்யப்பட்டு இணைக்கப்பட்ட பகுதி.</"
+#~ "p><p>சுழற்சிக்காக, நில அழைப்பு குறி காட்டும் செய்முறை அழைப்பு சேர்க்கப்பட்ட சரியான "
+#~ "வரைதல் கண்டிப்பாக திரும்ப நிகழாது.</p><p>வரைபடம் சிறுபையின் பகுதியை விட "
+#~ "பெரியதாக இருந்தால், ஒரு பக்கத்தின் மூலையில் மேற்பார்வை பலகை காட்டப்படும். மரவரைபடதின் "
+#~ "அழைப்பை காட்சி விருப்பத்திற்கு ஒத்து இருக்கும்; தேர்ந்தெடுத்த காரணி "
+#~ "முன்னிலைப்படுத்தப்பட்டுள்ளது.<p>"
+
+#, fuzzy
+#~ msgid "No item activated for which to draw the call graph."
+#~ msgstr "கேட்பு வரைப்படத்தில் உருப்படிகளை செயல்படுத்த இயலவில்லை.\n"
+
+#, fuzzy
+#~ msgid "Please check that 'dot' is installed (package GraphViz)."
+#~ msgstr ""
+#~ "வரைப்பட வடிவமைப்பு கருவி இயங்கிக் கொண்டிருக்கிறது'பொட்டு'.\n"
+#~ "தயவு செய்து நிறுவப்பட்டிருப்பதை சோதிக்கவும்(வரைப்படம் மூலம் பதின்மங்கள்)."
+
+#~ msgid ""
+#~ "There is no call graph available for function\n"
+#~ "\t'%1'\n"
+#~ "because it has no cost of the selected event type."
+#~ msgstr ""
+#~ "இந்தப் பணிக்கான வரைப்படத்தை அழைக்க இயலாது\n"
+#~ "\t'%1'\n"
+#~ "ஏனெனில் தேர்ந்தெடுக்கப்பட்ட நிகழ்வு வகை விலை இல்லை."
+
+#~ msgid "Unlimited"
+#~ msgstr "வரம்புகள் இல்லாத"
+
+#, fuzzy
+#~| msgid "None"
+#~ msgctxt "Depth 0"
+#~ msgid "None"
+#~ msgstr "ஏதுவுமில்லை"
+
+#~ msgid "max. 2"
+#~ msgstr "அதிகபட்சம் 2"
+
+#~ msgid "max. 5"
+#~ msgstr "அதிகபட்சம். 5"
+
+#~ msgid "max. 10"
+#~ msgstr "அதிகபட்சம் 10"
+
+#~ msgid "max. 15"
+#~ msgstr "அதிகபட்சம் 15"
+
+#~ msgid "No Minimum"
+#~ msgstr "குறைந்த பட்சம் இல்லை"
+
+#~ msgid "50 %"
+#~ msgstr "50 %"
+
+#~ msgid "20 %"
+#~ msgstr "20 %"
+
+#~ msgid "10 %"
+#~ msgstr "10 %"
+
+#~ msgid "5 %"
+#~ msgstr "5 %"
+
+#~ msgid "2 %"
+#~ msgstr "2 %"
+
+#~ msgid "1 %"
+#~ msgstr "1 %"
+
+#~ msgid "Same as Node"
+#~ msgstr "அதே கணு"
+
+#~ msgid "50 % of Node"
+#~ msgstr "50 %   கணு"
+
+#~ msgid "20 % of Node"
+#~ msgstr "20 %   கணு"
+
+#~ msgid "10 % of Node"
+#~ msgstr "10 %   கணு"
+
+#~ msgid "Top Left"
+#~ msgstr "இடதுமேல்"
+
+#~ msgid "Top Right"
+#~ msgstr "மேல் வலது"
+
+#~ msgid "Bottom Left"
+#~ msgstr "அடிப்பகுதி  இடது"
+
+#~ msgid "Bottom Right"
+#~ msgstr "கீழ் வலது"
+
+#~ msgid "Top to Down"
+#~ msgstr "மேல் இருந்து கீழ்"
+
+#~ msgid "Left to Right"
+#~ msgstr "இடம் இருந்து வலம்"
+
+#~ msgid "Circular"
+#~ msgstr "சுழல்"
+
+#, fuzzy
+#~ msgid "Stop Layouting"
+#~ msgstr "பணியில் நில்"
+
+#~ msgid "As PostScript"
+#~ msgstr "போஸ்ட்கிரிப்டாக"
+
+#~ msgid "As Image ..."
+#~ msgstr "படிமம்..."
+
+#~ msgid "Export Graph"
+#~ msgstr "ஏற்றுமதி வரைபடம் "
+
+#~ msgid "Caller Depth"
+#~ msgstr "அழைத்தவர் ஆழம் "
+
+#~ msgid "Callee Depth"
+#~ msgstr "அழைத்தவர் ஆழம் "
+
+#~ msgid "Min. Node Cost"
+#~ msgstr "குறைந்த கணு விலை"
+
+#~ msgid "Min. Call Cost"
+#~ msgstr "குறைந்த அழைப்பு விலை"
+
+#~ msgid "Arrows for Skipped Calls"
+#~ msgstr "தாவப்பட்ட அழைப்புகளுக்கு அம்புகுறி"
+
+#~ msgid "Inner-cycle Calls"
+#~ msgstr "உள்-சுழற்சி அழைப்புகள்"
+
+#~ msgid "Compact"
+#~ msgstr "குறுக்கம் "
+
+#~ msgid "Normal"
+#~ msgstr "இயல்பான"
+
+#~ msgid "Tall"
+#~ msgstr "உயரமான"
+
+#~ msgid "Graph"
+#~ msgstr "வரைப்படம் "
+
+#, fuzzy
+#~| msgid "&Layout"
+#~ msgid "Layout"
+#~ msgstr "&வடிவமைப்பு"
+
+#~ msgid "Birds-eye View"
+#~ msgstr "பறவைகள் கண் தோற்றம் "
+
+#~ msgid "(%1 function skipped)"
+#~ msgid_plural "(%1 functions skipped)"
+#~ msgstr[0] "(%1  செயல்கூறு தாவிற்று)"
+#~ msgstr[1] "(%1  செயல்கூறு தாவிற்று)"
+
+#~ msgid "Move to Top"
+#~ msgstr "மேல்நோக்கி நகர்த்து"
+
+#, fuzzy
+#~ msgctxt "Move to Top"
+#~ msgid "Top"
+#~ msgstr "மேல் இடது"
+
+#~ msgid "Move to Right"
+#~ msgstr "வலது நோக்கி நகர்த்து"
+
+#, fuzzy
+#~ msgctxt "Move to Right"
+#~ msgid "Right"
+#~ msgstr "மேல் வலது"
+
+#~ msgid "Move to Bottom"
+#~ msgstr "அடிப்பக்கம் நோக்கி நகர்த்து"
+
+#, fuzzy
+#~ msgctxt "Move to Bottom"
+#~ msgid "Bottom"
+#~ msgstr "அடி இடது"
+
+#~ msgid "Move to Bottom Left"
+#~ msgstr "அடியின் இடது நோக்கி நகர்த்து"
+
+#, fuzzy
+#~| msgid "Bottom Left"
+#~ msgctxt "Move to Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "அடிப்பகுதி  இடது"
+
+#~ msgid "Move Area To"
+#~ msgstr "இடத்தில் இருந்து நகர்த்து"
+
+#~ msgid "Hide This Tab"
+#~ msgstr "இந்த தத்தலை மறை "
+
+#~ msgid "Hide Area"
+#~ msgstr "இடத்தினை மறை"
+
+#, fuzzy
+#~ msgctxt "Show on Top"
+#~ msgid "Top"
+#~ msgstr "மேல் இடது"
+
+#, fuzzy
+#~ msgctxt "Show on Right"
+#~ msgid "Right"
+#~ msgstr "மேல் வலது"
+
+#, fuzzy
+#~ msgctxt "Show on Bottom"
+#~ msgid "Bottom"
+#~ msgstr "அடி இடது"
+
+#, fuzzy
+#~| msgid "Bottom Left"
+#~ msgctxt "Show on Bottom Left"
+#~ msgid "Bottom Left"
+#~ msgstr "அடிப்பகுதி  இடது"
+
+#~ msgid "Show Hidden On"
+#~ msgstr "மறைக்கப்பட்டதை காட்டு"
+
+#~ msgid "(No profile data file loaded)"
+#~ msgstr "சுவடு கோப்பு பதிவாகவில்லை."
+
+#~ msgid "Types"
+#~ msgstr "வகைகள் "
+
+#~ msgid "Callers"
+#~ msgstr "அழைத்தவர்கள்"
+
+#~ msgid "All Callers"
+#~ msgstr "அனைத்து அழைத்தவர்களும்"
+
+#~ msgid "Caller Map"
+#~ msgstr "அழைத்தவர் படமிடல் "
+
+#, fuzzy
+#~| msgid "Source Folders"
+#~ msgid "Source Code"
+#~ msgstr "மூல கோப்புறை "
+
+#~ msgid "Parts"
+#~ msgstr "உறுப்புகள் "
+
+#~ msgid "Call Graph"
+#~ msgstr "அழைப்பு  வரைபடம் "
+
+#~ msgid "Callees"
+#~ msgstr "அழைப்பவர்கள்"
+
+#~ msgid "All Callees"
+#~ msgstr "அனைத்தும் அழைத்தவர்கள்"
+
+#~ msgid "Callee Map"
+#~ msgstr "அழைத்தவர் வரைப்படம்"
+
+#, fuzzy
+#~| msgid "Assembler"
+#~ msgid "Assembly Code"
+#~ msgstr "தொகுப்பி"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>Information Tabs</b><p>This widget shows information for the current "
+#~ "selected function in different tabs: <ul><li>The Costs tab shows a list "
+#~ "of available event types and the inclusive and self costs regarding to "
+#~ "these types.</li><li>The Parts tab shows a list of trace parts if the "
+#~ "trace consists of more than one part (otherwise, this tab is hided). The "
+#~ "cost of the selected function spent in the different parts together with "
+#~ "the calls happening is shown.</li><li>The Call Lists tab shows direct "
+#~ "callers and callees of the function in more detail.</li><li>The Coverage "
+#~ "tab shows the same is the Call Lists tab, but not only direct callers and "
+#~ "callees but also indirect ones.</li><li>The Call Graph tab shows a "
+#~ "graphical visualization of the calls done by this function.</li><li>The "
+#~ "Source tab presents annotated source code if debugging information and "
+#~ "the source file is available.</li><li>The Assembler tab presents "
+#~ "annotated assembler code if trace information on instruction level is "
+#~ "available.</li></ul>For more information, see the <em>What's this</em> "
+#~ "help of the corresponding tab widget</p>"
+#~ msgstr ""
+#~ "<b>தகவல் தத்தல்கள்</b><p>இந்த சிறுபை தற்போது தேர்ந்தெடுத்துள்ள காரணியை வெவ்வேறு "
+#~ "தத்தலில் காட்டும்: <ul><li>விலை தத்தல் இருக்கும் விலை வகையின் பட்டியல் மற்றும் கூட்டு "
+#~ "மற்றும் தன் விலையுள்ள வகைகளை காட்டும்.</li><li>பங்கு தத்தல் தேடல் ஒண்றுக்கு மேல் "
+#~ "பகுதிகளை கொண்டிருந்தால் தேடும் பங்குகளை காட்டும் (இல்லையென்றால், இந்த தத்தல் "
+#~ "மறைக்கப்படும்). தேர்ந்தெடுத்த காரணி செலவிடும் வெவ்வேறு பகுதிகளின் இடையே நிகழுவதை "
+#~ "காட்டும் விலையை தேர்ந்தெடு.</li><li>அழைக்கும் பட்டியல்களின் தத்தல் நேரடி அழைப்பாளர் "
+#~ "மற்றும் அழைக்கும் காரணி ஒன்றுக்கு மேல் உள்ளது.</li><li>இணைப்பு தத்தல் ஒரே அழைக்கும் "
+#~ "தத்தல் பட்டியலை காட்டும், ஆனால் நேரடி அழைப்பாளர்கள் மற்றும் அழைப்பவரும் ஆனால் மறைமுகமாக."
+#~ "</li><li>அழைக்கும் வரைபடம் இந்த காரணி செய்த அழைப்பு விவரத்தைக் காட்டும்.</"
+#~ "li><li>மூல தத்தல் இருக்கும் சுட்டு விளக்க மூல குறியீட்டை பிழைநீக்கும் தகவலை காட்டும்.</"
+#~ "li><li>தொகுப்பாளர் தத்தல் இருக்கும் சுட்டு விளக்க தொகுப்பு குறியீட்டை தேடுதல் தகவலின் "
+#~ "கிடைக்கும் ஆணை நிலையை கூறும்.</li></ul>அதிக தகவலுக்கு, <em>இது என்ன</em> வை "
+#~ "பார், சிறுபை தத்தலின் குறிப்பிட்ட உதவி</p>"
+
+#~ msgid "(No Data loaded)"
+#~ msgstr "(தரவு எற்றப்படவில்லை)"
+
+#~ msgid "(No function selected)"
+#~ msgstr "(பணி ஏதும் தெர்ந்தெடுக்கப்படவில்லை)"
+
+#~ msgid "Source (unknown)"
+#~ msgstr "மூலம் (தெரியாதது)"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>Annotated Source</b><p>The annotated source list shows the source "
+#~ "lines of the current selected function together with (self) cost spent "
+#~ "while executing the code of this source line. If there was a call in a "
+#~ "source line, lines with details on the call happening are inserted into "
+#~ "the source: the cost spent inside of the call, the number of calls "
+#~ "happening, and the call destination.</p><p>Select a inserted call "
+#~ "information line to make the destination function current.</p>"
+#~ msgstr ""
+#~ "<b>Annotated Source</b><p>The annotated source list shows the source "
+#~ "lines of the current selected function together with (self) cost spent "
+#~ "while executing the code of this source line. If there was a call in a "
+#~ "source line, lines with details on the call happening are inserted into "
+#~ "the source: These are (cumulative) cost spent inside of the call, number "
+#~ "of calls happening, and call destination.</p><p>Select a inserted call "
+#~ "information line to make the destination function current.</p>"
+
+#~ msgid "Go to Line %1"
+#~ msgstr "%1வரிக்கு செல்"
+
+#~ msgid "(No Source)"
+#~ msgstr "(மூலம் இல்லை) "
+
+#~ msgid "There is no cost of current selected type associated"
+#~ msgstr "தற்போது தேர்ந்தெடுக்கப்பட்ட வகை தொடர்புற்ற அங்கே விலை இல்லை"
+
+#~ msgid "with any source line of this function in file"
+#~ msgstr "எந்த மூலக்கோடு ஆவணத்தில் உள்ள செயல்கூற்றுடன் "
+
+#~ msgid "Thus, no annotated source can be shown."
+#~ msgstr "ஆகவே,அனொடேட்டடு மூலங்கள் காண்பிக்கப்படலாம்."
+
+#~ msgid "Source ('%1')"
+#~ msgstr "மூலம் ('%1')"
+
+#~ msgid "--- Inlined from '%1' ---"
+#~ msgstr "--- Inlined from '%1' ---"
+
+#~ msgid "--- Inlined from unknown source ---"
+#~ msgstr "--- Inlined from unknown source ---"
+
+#~ msgid "There is no source available for the following function:"
+#~ msgstr "இங்கு கொடுக்கப்பட்டுள்ள செயல்கூறுக்கு மூலம் கிடைக்கவில்லை"
+
+#~ msgid "This is because no debug information is present."
+#~ msgstr "இது ஏனென்றால் வழு நீக்கல் தகவல் இல்லை."
+
+#~ msgid "Recompile source and redo the profile run."
+#~ msgstr "மூலத்தை மறுதொகுக்கவும் மற்றும் விவரக்குறிப்பு ஓட்டத்தை திரும்பச்செய்."
+
+#~ msgid "The function is located in this ELF object:"
+#~ msgstr "இந்த செயல்கூறு ELF  பொருளில் ஏற்று"
+
+#~ msgid "This is because its source file cannot be found:"
+#~ msgstr "இது ஏனென்றல் இதன் மூலக் கோப்பு காணவில்லை"
+
+#~ msgid "Add the folder of this file to the source folder list."
+#~ msgstr "மூல அடைவு பட்டியலின் கோப்பின் அடைவை சேர்"
+
+#~ msgid "The list can be found in the configuration dialog."
+#~ msgstr "இந்த பட்டியல் உள்ளமை உரையாடலில் காணப்படும்."
+
+#~ msgid " (Thread %1)"
+#~ msgstr " (நாண் %1)"
+
+#~ msgid "(none)"
+#~ msgstr "(ஏதுமில்லை)"
+
+#~ msgid "Unknown Type"
+#~ msgstr "தெரியாத வகை"
+
+#~ msgid "Show All Items"
+#~ msgstr "எல்லா உருப்படியையும் காட்டு"
+
+#~ msgid "No Grouping"
+#~ msgstr "குழுவாக்கம் இல்லை"
+
+#~ msgid "Distance"
+#~ msgstr "தூரம்"
+
+#~ msgid "Caller"
+#~ msgstr "அழைப்பவர்"
+
+#~ msgid "Self"
+#~ msgstr "தான்"
+
+#~ msgid "Calling"
+#~ msgstr "அழைக்கிறது"
+
+#~ msgid "Callee"
+#~ msgstr "அழைப்பவர்"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>List of all Callers</b><p>This list shows all functions calling the "
+#~ "current selected one, either directly or with several functions in-"
+#~ "between on the stack; the number of functions in-between plus one is "
+#~ "called the <em>Distance</em> (e.g. for function A,B,C there exists a call "
+#~ "from A to C when A calls B and B calls C, i.e. A => B => C. The distance "
+#~ "here is 2).</p><p>Absolute cost shown is the cost spent in the selected "
+#~ "function while a listed function is active; relative cost is the "
+#~ "percentage of all cost spent in the selected function while the listed "
+#~ "one is active. The cost graphic shows logarithmic percentage with a "
+#~ "different color for each distance.</p><p>As there can be many calls from "
+#~ "the same function, the distance column sometimes shows the range of "
+#~ "distances for all calls happening; then, in parentheses, there is the "
+#~ "medium distance, i.e. the distance where most of the call costs happened."
+#~ "</p><p>Selecting a function makes it the current selected one of this "
+#~ "information panel. If there are two panels (Split mode), the function of "
+#~ "the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>அனைத்து அழைப்பாளரரின் பட்டியல்</b><p>இந்த பட்டியல் அனைத்து அழைக்கும் தற்போது "
+#~ "தேர்ந்தெடுத்த ஒன்றை காட்டும், நேரடியாக அல்லது அடுக்குக்கு இடையே உள்ள பல காரணியுடன்; "
+#~ "காரணியின் எண்ணிக்கை 1 ஆல் ஏற்றப்படுவது <em>தூரம்</em> எண்று அழைக்கப்படுகிறது(எ.டு. "
+#~ "காரணி A,B,C க்காக இருக்கும் அழைப்பு A விலிருந்து C வரை A  B யை அழைக்கும் போது "
+#~ "மற்றும் B  C யை அழைக்கும் போது, எ.டு. A => B => C. தூரம் இங்கு 2).</"
+#~ "p><p>பட்டியலிட்ட காரணி செயல்பட்டிருக்கும் போது; தொடர்புடைய விலையின் சதவீதத்தின் "
+#~ "அனைத்து செலவிடபட்ட விலையுடன் தேர்ந்தெடுக்கப்பட்ட பட்டியலை செயல்பட வைக்கும் போது "
+#~ "அமைக்கும். விலை வரைப்படம் ஒவ்வொரு தூரத்தையும் வெவ்வேறு வண்ணத்தோடு காட்டும்.</"
+#~ "p><p>அங்கு பல அழைப்புகள் ஒரே காரணியோடு இருக்கலாம், தூர நெடுக்கை சில நேரத்தில் "
+#~ "நேரும் அழைப்பின் தூர விகிதத்தை காட்டும்; பிறகு, அடைப்புக்குறியில் மைய தூரத்தை "
+#~ "காட்டும், அதாவது, தூரம் அதிகமான அழைப்புகள் நேர்ந்ததைக் காட்டும்.</p><p>காரணியை "
+#~ "தேர்ந்தெடுப்பது தற்போதய தேர்ந்தெடுக்கப்பட்ட தகவல் பலகையை உருவாக்கும். இரண்டு பலகைகள் "
+#~ "இருந்தால் (பிரிப்பு பாங்கு),மற்ற பலகையின் காரணி மாற்றப்படும்.</p>"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>List of all Callees</b><p>This list shows all functions called by the "
+#~ "current selected one, either directly or with several function in-between "
+#~ "on the stack; the number of function in-between plus one is called the "
+#~ "<em>Distance</em> (e.g. for function A,B,C there exists a call from A to "
+#~ "C when A calls B and B calls C, i.e. A => B => C. The distance here is 2)."
+#~ "</p><p>Absolute cost shown is the cost spent in the listed function while "
+#~ "the selected is active; relative cost is the percentage of all cost spent "
+#~ "in the listed function while the selected one is active. The cost graphic "
+#~ "always shows logarithmic percentage with a different color for each "
+#~ "distance.</p><p>As there can be many calls to the same function, the "
+#~ "distance column sometimes shows the range of distances for all calls "
+#~ "happening; then, in parentheses, there is the medium distance, i.e. the "
+#~ "distance where most of the call costs happened.</p><p>Selecting a "
+#~ "function makes it the current selected one of this information panel. If "
+#~ "there are two panels (Split mode), the function of the other panel is "
+#~ "changed instead.</p>"
+#~ msgstr ""
+#~ "<b>அனைத்து அழைப்பாளரரின் பட்டியல்</b><p>இந்த பட்டியல் அனைத்து அழைக்கும் தற்போது "
+#~ "தேர்ந்தெடுத்த ஒன்றை காட்டும், நேரடியாக அல்லது அடுக்குக்கு இடையே உள்ள பல காரணியுடன்; "
+#~ "காரணியின் எண்ணிக்கை 1 ஆல் ஏற்றப்படுவது <em>தூரம்</em> எண்று அழைக்கப்படுகிறது(எ.டு. "
+#~ "காரணி A,B,C க்காக இருக்கும் அழைப்பு A விலிருந்து C வரை A  B யை அழைக்கும் போது "
+#~ "மற்றும் B  C யை அழைக்கும் போது, எ.டு. A => B => C. தூரம் இங்கு 2).</"
+#~ "p><p>பட்டியலிட்ட காரணி செயல்பட்டிருக்கும் போது; தொடர்புடைய விலையின் சதவீததின் "
+#~ "அனைத்து செலவிடபட்ட விலையுடன் தேர்ந்தெடுக்கப்பட்ட பட்டியலை செயல்பட வைக்கும் போது "
+#~ "அமைக்கும். விலை வரைப்படம் ஒவ்வொரு தூரத்தையும் வெவ்வேறு வண்ணத்தோடு காட்டும்.</"
+#~ "p><p>அங்கு பல அழைப்புகள் ஒரே காரணியோடு இருக்கலாம், தூர நெடுக்கை சில நேரத்தில் "
+#~ "நேரும் அழைப்பின் தூர விகிதத்தை காட்டும்; பிறகு, அடைப்புக்குறியில் மைய தூரத்தை "
+#~ "காட்டும், அதாவது, தூரம் அதிகமான அழைப்புகள் நேர்ந்ததை காட்டும்.</p><p>காரணியை "
+#~ "தேர்ந்தெடுப்பது தற்போதைய தேர்ந்தெடுக்கப்பட்ட தகவல் பலகையை உருவாக்கும். இரண்டு பலகைகள் "
+#~ "இருந்தால் (பிரிப்பு பாங்கு),மற்ற பலகையின் காரணி மாற்றப்படும்.</p>"
+
+#~ msgid "Instruction Fetch"
+#~ msgstr "ஆணையிடு"
+
+#~ msgid "Data Read Access"
+#~ msgstr "தகவல் படித்தல் அணுகல் "
+
+#~ msgid "Data Write Access"
+#~ msgstr "தகவல் எழுதல் அணுகல் "
+
+#~ msgid "L1 Instr. Fetch Miss"
+#~ msgstr "L1 ஆணைகள் தவறவிடு"
+
+#~ msgid "L1 Data Read Miss"
+#~ msgstr "L1 தகவல் படித்தல் தவிர்"
+
+#~ msgid "L1 Data Write Miss"
+#~ msgstr "L1 தகவல் எழுது தவிர்"
+
+#~ msgid "L2 Instr. Fetch Miss"
+#~ msgstr "L2  ஆணைகள் தவறவிடு"
+
+#~ msgid "L2 Data Read Miss"
+#~ msgstr "L2  தகவல் படித்தல் தவிர்"
+
+#~ msgid "L2 Data Write Miss"
+#~ msgstr "L2 தகவல் எழுது தவிர்"
+
+#~ msgid "Samples"
+#~ msgstr "மாதிரிகள்"
+
+#~ msgid "System Time"
+#~ msgstr "முறைமை நேரம்"
+
+#~ msgid "User Time"
+#~ msgstr "பயனர் நேரம்"
+
+#~ msgid "L1 Miss Sum"
+#~ msgstr "L1 Miss கூட்டல்"
+
+#~ msgid "L2 Miss Sum"
+#~ msgstr "L2 Miss கூட்டல்"
+
+#~ msgid "Cycle Estimation"
+#~ msgstr "சுழற் மதிப்புவிவரம்"
+
+#~ msgid "&Search:"
+#~ msgstr "& தேடல்: "
+
+#~ msgid "Group"
+#~ msgstr "குழு"
+
+#~ msgid "(no trace parts)"
+#~ msgstr "(சுவடு உறுப்புகள் இல்லை)"
+
+#~ msgid "Stack Selection"
+#~ msgstr "இருப்பு தேர்வுகள்"
+
+#~ msgid "Cost2"
+#~ msgstr "மதிப்பு2"
+
+#~ msgid "Text %1"
+#~ msgstr "உரை %1"
+
+#~ msgid "Recursive Bisection"
+#~ msgstr "சுழல்நிலை இருபிரிவுகள்"
+
+#~ msgid "Columns"
+#~ msgstr "நெடுக்கையாக்கு "
+
+#~ msgid "Rows"
+#~ msgstr "வரிகள்"
+
+#~ msgid "Always Best"
+#~ msgstr "எப்போதும் சிறந்தது"
+
+#~ msgid "Best"
+#~ msgstr "சிறப்பாக"
+
+#~ msgid "Alternate (V)"
+#~ msgstr "மாற்று (V)"
+
+#~ msgid "Alternate (H)"
+#~ msgstr "மாற்று (H)"
+
+#, fuzzy
+#~ msgid "Horizontal"
+#~ msgstr "கிடைக்கையை பிரி "
+
+#~ msgid "Nesting"
+#~ msgstr "கூடுகிறது"
+
+#, fuzzy
+#~ msgid "Border"
+#~ msgstr "விளிம்பு 0"
+
+#~ msgid "Correct Borders Only"
+#~ msgstr "சரியாக் விளிம்பு மட்டும் "
+
+#~ msgid "Width %1"
+#~ msgstr "அகலம் %1"
+
+#~ msgid "Shading"
+#~ msgstr "நிழல்"
+
+#~ msgid "Visible"
+#~ msgstr "தெரியும்"
+
+#~ msgid "Take Space From Children"
+#~ msgstr "குழந்தையிடம் இருந்து இடத்தை பெறவும்"
+
+#~ msgid "Top Center"
+#~ msgstr "நடு மேல்"
+
+#~ msgid "Bottom Center"
+#~ msgstr "கீழ்மேல்  மையம்"
+
+#~ msgid "No %1 Limit"
+#~ msgstr "இல்லை %1 வரம்புச் "
+
+#~ msgid "No Area Limit"
+#~ msgstr "பரப்புப் வரம்பு இல்லை"
+
+#~ msgid "Area of '%1' (%2)"
+#~ msgstr " '%1' (%2) யின் இல்லை "
+
+#~ msgid "1 Pixel"
+#~ msgid_plural "%1 Pixels"
+#~ msgstr[0] "%1 பிக்சல்"
+#~ msgstr[1] "%1 பிக்சல்கள்"
+
+#~ msgid "Double Area Limit (to %1)"
+#~ msgstr "இரட்டை வரம்பு (to %1)"
+
+#~ msgid "Halve Area Limit (to %1)"
+#~ msgstr "பாதிப் பரப்புப் வரம்பு(%1 வரை)"
+
+#~ msgid "No Depth Limit"
+#~ msgstr "ஆழம் வரம்பு இல்லை"
+
+#~ msgid "Depth of '%1' (%2)"
+#~ msgstr "ஆழம் '%1' (%2)"
+
+#~ msgid "Depth %1"
+#~ msgstr "ஆழம் %1"
+
+#~ msgid "Decrement (to %1)"
+#~ msgstr "குறைப்பு (to %1)"
+
+#~ msgid "Increment (to %1)"
+#~ msgstr "அதிகரி (to %1) "
+
+#~ msgid ""
+#~ "<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers "
+#~ "of the current activated function. Each colored rectangle represents a "
+#~ "function; its size tries to be proportional to the cost spent therein "
+#~ "while the active function is running (however, there are drawing "
+#~ "constrains).</p>"
+#~ msgstr ""
+#~ "<b>அழைப்பவர் வரைபடம்</b><p>இந்த வரைபடம்  தற்போது இயக்கிய செயல்பாடுடன் பின்னிய "
+#~ "படிநிலையை காண்பிக்கிறது. Each colored rectangle represents a function; its "
+#~ "size tries to be proportional to the cost spent therein while the active "
+#~ "function is running (however, there are drawing constrains).</p>"
+
+#~ msgid ""
+#~ "<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+#~ "the current activated function. Each colored rectangle represents a "
+#~ "function; its size tries to be proportional to the cost spent therein "
+#~ "while the active function is running (however, there are drawing "
+#~ "constrains).</p>"
+#~ msgstr ""
+#~ "<b>அழைக்கும் வரைபடம்</b><p>இந்த வரைபடம் கூட்டு படிநிலையின் அனைத்து வகுப்பின் "
+#~ "தற்போதைய செயல்படுத்திய காரணியை காட்டும். ஒவ்வொரு வண்ண நீள்சதுரமும் ஒரு காரணியை "
+#~ "குறிக்கும்; இதன் அளவு முறையான காரணி இயங்கும் போது பணம் செலவு செய்யும் (அப்போது, "
+#~ "அவை கட்டுப்பாட்டு விதியை வரைகிறது).</p>"
+
+#~ msgid ""
+#~ "<p>Appearance options can be found in the in the context menu. To get "
+#~ "exact size proportions, choose 'Hide incorrect borders'. As this mode can "
+#~ "be <em>very</em> time consuming, you may want to limit the maximum drawn "
+#~ "nesting level before. 'Best' determinates the split direction for "
+#~ "children from the aspect ratio of the parent. 'Always Best' decides on "
+#~ "remaining space for each sibling. 'Ignore Proportions' takes space for "
+#~ "function name drawing <em>before</em> drawing children. Note that size "
+#~ "proportions can get <em>heavily</em> wrong.</p><p>This is a <em>TreeMap</"
+#~ "em> widget. Keyboard navigation is available with the left/right arrow "
+#~ "keys for traversing siblings, and up/down arrow keys to go a nesting "
+#~ "level up/down. <em>Return</em> activates the current item.</p>"
+#~ msgstr ""
+#~ "<p>தோன்றும் விருப்பங்கள் உள்ளடைவு பட்டியலில் காண முடியும். சரியான அளவு விகிதத்தை "
+#~ "பெற, 'சரியில்லாத ஓரத்தை மறை' யை தேர்ந்தெடு. As this mode can be <em>very</em> "
+#~ "time consuming, you may want to limit the maximum drawn nesting level "
+#~ "before. 'Best' determinates the split direction for children from the "
+#~ "aspect ratio of the parent. 'Always Best' decides on remaining space for "
+#~ "each sibling. 'Ignore Proportions' takes space for function name drawing "
+#~ "<em>before</em> drawing children. Note that size proportions can get "
+#~ "<em>heavily</em> wrong.</p><p>This is a <em>TreeMap</em> widget. Keyboard "
+#~ "navigation is available with the left/right arrow keys for traversing "
+#~ "siblings, and up/down arrow keys to go a nesting level up/down. "
+#~ "<em>Return</em> activates the current item.</p>"
+
+#~ msgid "Go To"
+#~ msgstr "செல்"
+
+#~ msgid "Stop at Depth"
+#~ msgstr "ஆழத்தில் நிறுத்து"
+
+#~ msgid "Depth 10"
+#~ msgstr "ஆழம் 10"
+
+#~ msgid "Depth 15"
+#~ msgstr "ஆழம் 15"
+
+#~ msgid "Depth 20"
+#~ msgstr "ஆழம் 20"
+
+#~ msgid "Decrement Depth (to %1)"
+#~ msgstr "குறைப்புச் ஆழம் (to %1)"
+
+#~ msgid "Increment Depth (to %1)"
+#~ msgstr "அதிகரி ஆழம் (to %1)"
+
+#~ msgid "Stop at Function"
+#~ msgstr "பணியில் நில்"
+
+#~ msgid "No Function Limit"
+#~ msgstr "பணியில் வரம்பு இல்லை"
+
+#~ msgid "Stop at Area"
+#~ msgstr "பரப்பில் நில் "
+
+#~ msgid "50 Pixels"
+#~ msgstr "50 படப்புள்ளிகள் "
+
+#~ msgid "100 Pixels"
+#~ msgstr "100 படப்புள்ளிகள் "
+
+#~ msgid "200 Pixels"
+#~ msgstr "200 படப்புள்ளிகள் "
+
+#~ msgid "500 Pixels"
+#~ msgstr "500 படப்புள்ளிகள் "
+
+#~ msgid "Half Area Limit (to %1)"
+#~ msgstr "பாதி பரப்புப் வரம்பு(to %1)"
+
+#~ msgid "Split Direction"
+#~ msgstr "திசையை பிரி"
+
+#~ msgid "Skip Incorrect Borders"
+#~ msgstr "சரி இல்லாத விளிம்புகளை விடவும்"
+
+#~ msgid "Border Width"
+#~ msgstr "விளிம்பின் அகலம் "
+
+#~ msgid "Border 0"
+#~ msgstr "விளிம்பு 0"
+
+#~ msgid "Border 1"
+#~ msgstr "விளிம்பு 1"
+
+#~ msgid "Border 2"
+#~ msgstr "விளிம்பு 2"
+
+#~ msgid "Border 3"
+#~ msgstr "விளிம்பு 3"
+
+#~ msgid "Draw Symbol Names"
+#~ msgstr "குறியீன் பெயரை வரையவும்"
+
+#~ msgid "Draw Cost"
+#~ msgstr "செலவுகளை வரை"
+
+#~ msgid "Draw Location"
+#~ msgstr "இடத்தை வரைக"
+
+#~ msgid "Draw Calls"
+#~ msgstr "அழைப்புகளை வரை "
+
+#~ msgid "Call Map: Current is '%1'"
+#~ msgstr "அழைப்பு வரைபடம் : தற்போது '%1'"
+
+#~ msgid "(no function)"
+#~ msgstr "(செயல்கூறு இல்லை )"
+
+#~ msgid "(no call)"
+#~ msgstr "(அழைப்பு இல்லை) "
+
+#~ msgid "Event Type"
+#~ msgstr "நிகழ்வு வகை"
+
+#~ msgid "Short"
+#~ msgstr "குறு "
+
+#~ msgid "Formula"
+#~ msgstr "சூத்திரம்"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>Cost Types List</b><p>This list shows all cost types available and "
+#~ "what the self/inclusive cost of the current selected function is for that "
+#~ "cost type.</p><p>By choosing a cost type from the list, you change the "
+#~ "cost type of costs shown all over KCachegrind to be the selected one.</p>"
+#~ msgstr ""
+#~ "<b> மதிப்பு வகைப்பட்டியல்</b><p>இந்த பட்டியல் எல்லா மதிப்புவகைகளும் கிடைக்கும் மற்றும் "
+#~ "எவ்வளவு சொந்த/குமுலேட்டிவ் மதிப்பு தற்போது நடப்பு தேர்தெடுக்கப்பட்ட செயல்கூறு அந்த "
+#~ "மதிப்பு வகைக்கு.</p><p>மதிப்பு வகையை பட்டியலிருந்து தேர்ந்தெடுப்பதின் மூலம், "
+#~ "KCachegrind'யில் எங்கும் காண்பிக்கப்பட்டுள்ளவற்றின் மதிப்புகளின் மதிப்புவகையை நீங்கள் "
+#~ "மாற்றி தேர்ந்தெடுக்கப்பட்டு ஒன்றாக்கலாம். </p>"
+
+#~ msgid "Set Secondary Event Type"
+#~ msgstr "இரண்டாம் நிகழ்வு வகையை அமை"
+
+#~ msgid "Remove Secondary Event Type"
+#~ msgstr "இரண்டாம் நிகழ்வு வகையை அகற்று"
+
+#~ msgid "Edit Long Name"
+#~ msgstr "பெரிய பெயரை திருத்து"
+
+#~ msgid "Edit Short Name"
+#~ msgstr "சிறு பெயரை மாற்று"
+
+#~ msgid "Edit Formula"
+#~ msgstr "விதியை மாற்று "
+
+#~ msgid "New Cost Type ..."
+#~ msgstr "விலை வகை ..."
+
+#~ msgid "New%1"
+#~ msgstr "புதிய%1"
+
+#~ msgid "New Cost Type %1"
+#~ msgstr "%1புதிய விலை வகை"
+
+#~ msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+#~ msgstr "Import filter for Cachegrind/Callgrind generated profile data files"
+
+#~ msgid "Count"
+#~ msgstr "எண்ணிக்கை"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>List of direct Callers</b><p>This list shows all functions calling the "
+#~ "current selected one directly, together with a call count and the cost "
+#~ "spent in the current selected function while being called from the "
+#~ "function from the list.</p><p>An icon instead of an inclusive cost "
+#~ "specifies that this is a call inside of a recursive cycle. An inclusive "
+#~ "cost makes no sense here.</p><p>Selecting a function makes it the current "
+#~ "selected one of this information panel. If there are two panels (Split "
+#~ "mode), the function of the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>நேரடி அழைப்பாளர்களின் பட்டியல்</b><p>இந்த பட்டியல் அனைத்து காரணிகள் அழைக்கும் "
+#~ "தற்போது தேர்ந்தெடுத்த ஒன்றை நேரடியாக காட்டும், அழைப்பு கூட்டுதலுடன் மற்றும் (கூட்டு) "
+#~ "பட்டியலின் காரணியிலிருந்து அழைக்கப்படும் தேர்ந்தெடுத்த காரணியின் போது செலவு செய்த "
+#~ "தொகையையும் காட்டும்.</p><p>திரும்ப சுழலும் சுழற்சியின் உள் அழைப்பு குறிப்பிடப்பட்ட "
+#~ "கூட்டு விலையின் சிறிய சின்னம். கூட்டு தொகை இங்கு எந்த விளக்கத்தையும் கொடுக்காது.</"
+#~ "p><p>காரணியை தேர்ந்தெடுப்பது இது தற்போது தேர்ந்தெடுத்த ஒன்றின் தகவல் பலகை. இங்கு "
+#~ "இரண்டு பலகை இருந்தால் (பிரிக்கப்பட்ட பாங்கு), இல்லையென்றால் மற்ற பலகையின் காரணியை "
+#~ "மாற்றுகிறது.</p>"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>List of direct Callees</b><p>This list shows all functions called by "
+#~ "the current selected one directly, together with a call count and the "
+#~ "cost spent in this function while being called from the selected function."
+#~ "</p><p>Selecting a function makes it the current selected one of this "
+#~ "information panel. If there are two panels (Split mode), the function of "
+#~ "the other panel is changed instead.</p>"
+#~ msgstr ""
+#~ "<b>நேரடியான அழைப்பாளரின் பட்டியல்</b><p>இந்த பட்டியல் அனைத்து காரணிகள் அழைக்கும் "
+#~ "தற்போதைய நேரடியான ஒன்றை காட்டும், அழைப்பின் கூட்டுத்தொகையோடு மற்றும் (கூட்டு) "
+#~ "தேர்ந்தெடுத்த காரணியிலிருந்து அழைக்கும் போது செய்த செலவு.</p><p>காரணியை "
+#~ "தேர்ந்தெடுப்பது தற்போது தேர்ந்தெடுத்த இந்த தகவல் பலகையை உருவாக்குகிறது. அவை இரண்டாக "
+#~ "இருந்தால் (பிரிக்கப்பட்ட பாங்கு), மற்ற பலகையின் காரணிகள் மாறும்.</p>"
+
+#~ msgid "Profile Part %1"
+#~ msgstr "விளக்கக்குறிப்பு %1"
+
+#~ msgid "(no trace)"
+#~ msgstr "(சுவடு இல்லை)"
+
+#~ msgid "(no part)"
+#~ msgstr "(பகுதி இல்லை)"
+
+#~ msgid "Comment"
+#~ msgstr "குறிப்புக்கூறு"
+
+#, fuzzy
+#~ msgid ""
+#~ "<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+#~ "trace. For each part, the self/inclusive cost of the current selected "
+#~ "function, spent in the part, is shown; percentage costs are always "
+#~ "relative to the total cost <em>of the part</em> (not to the whole trace "
+#~ "as in the Trace Part Overview). Also shown are the calls happening to/"
+#~ "from the current function inside of the trace part.</p><p>By choosing one "
+#~ "or more trace parts from the list, the costs shown all over KCachegrind "
+#~ "will only be the ones spent in the selected part(s). If no list selection "
+#~ "is shown, in fact all trace parts are selected implicitly.</p><p>This is "
+#~ "a multi-selection list. You can select ranges by dragging the mouse or "
+#~ "use SHIFT/CTRL modifiers. Selection/Deselection of trace parts can also "
+#~ "be done by using the Trace Part Overview Dockable. This one also supports "
+#~ "multiple selection.</p><p>Note that the list is hidden if only one trace "
+#~ "part is loaded.</p>"
+#~ msgstr ""
+#~ "<b>பகுதி பட்டியலை தேடுt</b><p>இந்த பட்டியல் அனைத்து ஏற்றப்பட்ட தேடும் பகுதிகளை "
+#~ "காட்டும். ஒவ்வொரு பகுதிக்கும், தன்/கூட்டு விலையின் தற்போது தேர்ந்தெடுக்கபபட்ட் காரணி, "
+#~ "பகுதியில் செலவிடப்பட்டது, காட்டப்பட்டது; சதவீத விலை எப்பொழுதும் மொத்த விலையோடு "
+#~ "<em>பகுதிக்கு</em> தொடர்புடையதாக இருக்கும் (முழு தேடுதலுக்கு தேடுதல் பகுதி "
+#~ "மேல்பார்வையாகும்). அழைப்பு நேரும் க்கு/லிருந்து தற்போதைய தேடும் பகுதியின் நேரும்.</"
+#~ "p><p>பட்டியலில் இருந்து ஒன்று அல்லது அதற்கும் மேல் தேர்ந்தெடுப்பதன் மூலம், அனைத்து "
+#~ "KCachegrind ஆல் காட்டப்பட்ட விலை கண்டிப்பாக ஒரு தடவை மட்டுமே தேர்ந்தெடுத்த "
+#~ "பகுதி(கருக்கு) செலவிடப்படும். எந்த பட்டியல் தேர்ந்தெடுப்பும் காட்டவில்லையென்றால், "
+#~ "அனைத்து தேடும் பகுதி உள்ளாக தேர்ந்தெடுக்கப்படும்.</p><p>இது பல-தேர்வு விருப்பம். "
+#~ "நீங்கள் விகிதத்தை சுட்டியால் இழுத்தலின் மூலம் தேர்ந்தெடுக்க முடியும் அல்லது SHIFT/CTRL "
+#~ "திருத்தியை பயன்படுத்து. தேர்வு/தேர்வுநீக்கல் தேடுதல் பகுதியில் தேடும் பகுதி மேற்பார்வை "
+#~ "இணைப்புகளை பயன்படுத்தி செய்ய முடியும். இந்த ஒன்று கூட பல தேர்வை துணைப்புரியும்.</"
+#~ "p><p>பட்டியல் தேடும் பகுதி ஏற்றும் போது மட்டும் மறைக்கப்படும் என்பதைக் குறித்துக் "
+#~ "கொள்ளவும்.</p>"
+
+#~ msgid "Hide '%1'"
+#~ msgstr "மறை'%1'"
+
+#~ msgid "Hide Selected"
+#~ msgstr "மறைவானது தேர்ந்தெடுக்கப்பட்டுள்ளது"
+
+#~ msgid "Show All"
+#~ msgstr "அனைத்தையும் காண்பி"
+
+#~ msgid "Deselect"
+#~ msgstr "தேர்ந்தெடுப்பை கைவிடு"
+
+#~ msgid "Select"
+#~ msgstr "தேர்ந்தெடு"
+
+#~ msgid "Go to %1"
+#~ msgstr "%1 க்கு செல்"
+
+#~ msgid "Run <exec> under cachegrind"
+#~ msgstr "ஓட்டம் <நிறைவேற்றுகை> cachegrind கீழ் "
+
+#~ msgid "Source"
+#~ msgstr "மூலம் "
+
+#~ msgid "< %1"
+#~ msgstr "< %1"
+
+#~ msgid "3 %"
+#~ msgstr "3 %"
+
+#~ msgid "1.5 %"
+#~ msgstr "1.5 %"
+
+#~ msgid "TopLeft"
+#~ msgstr "மேல் இடது"
+
+#~ msgid "TopRight"
+#~ msgstr "மேல் வலது"
+
+#~ msgid "BottomLeft"
+#~ msgstr "அடி இடது"
+
+#~ msgid "BottomRight"
+#~ msgstr "அடி வலது"
+
+#~ msgid "Visualisation"
+#~ msgstr "படமாக்குதல்"
+
+#~ msgid "Tip of the &Day..."
+#~ msgstr "&இன்றைய உதவிக்குறிப்பு "
+
+#~ msgid "Show \"Tip of the Day\""
+#~ msgstr "\"இன்றைய உதவிக்குறிப்பினை\" காட்டு"
