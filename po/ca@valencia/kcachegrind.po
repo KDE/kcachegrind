@@ -566,13 +566,13 @@ msgstr "Neteja"
 #: kcachegrind/kcachegrindui.rc:4
 #, kde-format
 msgid "&File"
-msgstr "&Fitxer"
+msgstr "Fi&txer"
 
 #. i18n: ectx: Menu (view)
 #: kcachegrind/kcachegrindui.rc:10
 #, kde-format
 msgid "&View"
-msgstr "&Visualitza"
+msgstr "Vi&sualitza"
 
 #. i18n: ectx: Menu (layouts)
 #: kcachegrind/kcachegrindui.rc:15
@@ -768,7 +768,7 @@ msgstr "Torna a la disposició predeterminada"
 #: kcachegrind/toplevel.cpp:402
 #, kde-format
 msgid "&Save as Default"
-msgstr "&Anomena i guarda predeterminat"
+msgstr "Anomena i gu&arda com a predeterminat"
 
 #: kcachegrind/toplevel.cpp:404
 #, kde-format
@@ -783,7 +783,7 @@ msgstr "<b>Nou</b><p>Obri una finestra nova buida de KCachegrind.</p>"
 #: kcachegrind/toplevel.cpp:419
 #, kde-format
 msgid "&Add..."
-msgstr "&Afig..."
+msgstr "Afi&g..."
 
 #: kcachegrind/toplevel.cpp:421
 #, kde-format
