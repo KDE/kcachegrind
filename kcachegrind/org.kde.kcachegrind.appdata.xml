@@ -18,6 +18,7 @@
   <name xml:lang="gl">KCachegrind</name>
   <name xml:lang="id">KCachegrind</name>
   <name xml:lang="it">KCachegrind</name>
+  <name xml:lang="ka">KCachegrind</name>
   <name xml:lang="ko">KCachegrind</name>
   <name xml:lang="nl">KCachegrind</name>
   <name xml:lang="nn">KCachegrind</name>
@@ -46,6 +47,7 @@
   <summary xml:lang="gl">Interface de analizador de rendemento</summary>
   <summary xml:lang="id">Frontend Pemprofil</summary>
   <summary xml:lang="it">Interfaccia per la profilatura</summary>
+  <summary xml:lang="ka">პროფაილერის წინაბოლო</summary>
   <summary xml:lang="ko">프로파일러 프론트엔드</summary>
   <summary xml:lang="nl">Profiler-hulpprogramma</summary>
   <summary xml:lang="nn">Grensesnitt for profilvising</summary>
@@ -104,6 +106,7 @@
     <p xml:lang="gl">Funcionalidades:</p>
     <p xml:lang="id">Fitur:</p>
     <p xml:lang="it">Funzionalità:</p>
+    <p xml:lang="ka">თვისებები:</p>
     <p xml:lang="ko">기능:</p>
     <p xml:lang="nl">Kenmerken:</p>
     <p xml:lang="nn">Funksjonar:</p>
