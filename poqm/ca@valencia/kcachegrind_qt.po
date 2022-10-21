@@ -1234,7 +1234,7 @@ msgstr ""
 "<b>Llista del tipus de cost</b><p>Esta llista mostra tots els tipus de cost "
 "disponibles i quin cost propi/inclusiu de la funció actualment seleccionada "
 "és per a este tipus de cost.</p><p>En triar un tipus de cost de la llista, "
-"es canvia el tipus de cost de tot el mostrat a KCachegrind al tipus "
+"es canvia el tipus de cost de tot el mostrat en KCachegrind al tipus "
 "seleccionat.</p>"
 
 #: libviews/eventtypeview.cpp:96
