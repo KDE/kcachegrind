@@ -66,5 +66,6 @@ add_subdirectory( converters )
 
 ki18n_install(po)
 kdoctools_install(po)
+ecm_install_po_files_as_qm(poqm)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
