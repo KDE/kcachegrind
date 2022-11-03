@@ -157,7 +157,7 @@ msgstr "Sil"
 #: kcachegrind/configdlgbase.ui:409
 #, kde-format
 msgid "Object / Related Source Base"
-msgstr "Öğe / Alakalı Kaynak Tabanı"
+msgstr "Öge / İlişkili Kaynak Tabanı"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
 #: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:289
@@ -1229,7 +1229,7 @@ msgid ""
 "<p>...that you can use Alt-Left/Right keys of your keyboard to go\n"
 "back/forward in the active object history ?</p>\n"
 msgstr ""
-"<p>...Alt-Sol/Sağ düğmelerini kullanarak öğe geçmişinde\n"
+"<p>...Alt-Sol/Sağ düğmelerini kullanarak öge geçmişinde\n"
 "geri/ileri gidebilirsiniz?</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
