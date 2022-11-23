@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kdesdk-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2020-12-29 02:36+0100\n"
-"PO-Revision-Date: 2022-04-07 12:22+0300\n"
+"PO-Revision-Date: 2022-11-22 16:44+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -730,7 +730,7 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:382
 #, kde-format
 msgid "&Go to Next"
-msgstr "&Sonrakine Git"
+msgstr "Sonrakine G&it"
 
 #: kcachegrind/toplevel.cpp:385
 #, kde-format
@@ -740,7 +740,7 @@ msgstr "Sonraki Düzene Git"
 #: kcachegrind/toplevel.cpp:389
 #, kde-format
 msgid "&Go to Previous"
-msgstr "&Öncekine Git"
+msgstr "Öncekine G&it"
 
 #: kcachegrind/toplevel.cpp:392
 #, kde-format
