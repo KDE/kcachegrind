@@ -8,7 +8,7 @@ Dependencies:
     'frameworks/karchive': '@stable'
     'frameworks/kcoreaddons': '@stable'
     'frameworks/kdoctools': '@stable'
-    'frameworks/kwidgetaddons': '@stable'
+    'frameworks/kwidgetsaddons': '@stable'
     'frameworks/kxmlgui': '@stable'
     'frameworks/ki18n': '@stable'
     'frameworks/kconfig': '@stable'
