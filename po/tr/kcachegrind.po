@@ -810,8 +810,8 @@ msgid ""
 "<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
 "tools of the GraphViz package.</p>"
 msgstr ""
-"<b>Çağrı Grafiğini Dışa Aktar</b><p>GraphViz paketindeki araçlar için ."
-"dot uzantılı dosya oluşturur.</p>"
+"<b>Çağrı Grafiğini Dışa Aktar</b><p>GraphViz paketindeki araçlar için .dot "
+"uzantılı dosya oluşturur.</p>"
 
 #: kcachegrind/toplevel.cpp:446
 #, kde-format
