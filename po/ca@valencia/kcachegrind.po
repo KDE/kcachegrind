@@ -1294,7 +1294,8 @@ msgid ""
 "and hit return?</p>\n"
 msgstr ""
 "<p>...que trobareu ràpidament una funció introduint una part del seu\n"
-"nom (sense distingir entre majúscules i minúscules) a la línia d'edició de\n"
+"nom (sense distingir entre majúscules i minúscules) a dins de la línia "
+"d'edició de\n"
 "la barra d'eines i prement la tecla «Retorn»?</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
@@ -1327,7 +1328,7 @@ msgstr ""
 "<p>Hi ha d'haver el nom del fitxer d'origen (amb extensió).\n"
 "Si KCachegrind no mostra el codi font, assegureu-vos que\n"
 "heu afegit a la configuració la carpeta del fitxer de codi font\n"
-"a la llista de les <em>carpetes de codi font</em>.\n"
+"en la llista de les <em>carpetes de codi font</em>.\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:76
@@ -1359,7 +1360,7 @@ msgstr ""
 "junt amb la condició de cost d'estes.</p>\n"
 "<p>Per a activar una funció amb costos petits, busqueu-la i\n"
 "seleccioneu-la en l'anàlisi de rendiment pla. En seleccionar\n"
-"funcions amb costos petits s'afegiran temporalment en la llista\n"
+"funcions amb costos petits s'afegiran temporalment a la llista\n"
 "plana d'anàlisi de rendiment.</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
