@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kdesdk-kde4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2023-01-31 01:22+0300\n"
+"PO-Revision-Date: 2023-02-04 13:40+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1528,7 +1528,7 @@ msgstr "'objdump' kurulmuş olduğunu kontrol et."
 #: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
 msgctxt "InstrView|"
 msgid "This utility can be found in the 'binutils' package."
-msgstr "Bu araç 'binutils' paketinde bulunabilir."
+msgstr "Bu izlence, 'binutils' paketinde bulunabilir."
 
 #: libviews/instrview.cpp:966
 msgctxt "InstrView|"
