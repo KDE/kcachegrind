@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2020-12-29 02:36+0100\n"
-"PO-Revision-Date: 2022-10-06 11:54+0200\n"
+"PO-Revision-Date: 2023-02-08 11:49+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -567,7 +567,7 @@ msgstr "&ფაილი"
 #: kcachegrind/kcachegrindui.rc:10
 #, kde-format
 msgid "&View"
-msgstr "ხ_ედი"
+msgstr "&ხედი"
 
 #. i18n: ectx: Menu (layouts)
 #: kcachegrind/kcachegrindui.rc:15
@@ -817,7 +817,7 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:494
 #, kde-format
 msgid "Call Stack"
-msgstr ""
+msgstr "გამოძახების სტეკი"
 
 #: kcachegrind/toplevel.cpp:497
 #, kde-format
@@ -897,7 +897,7 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:571
 #, kde-format
 msgid "Shorten Templates"
-msgstr ""
+msgstr "ნიმუშების დამოკლება"
 
 #: kcachegrind/toplevel.cpp:573
 #, kde-format
@@ -1041,7 +1041,7 @@ msgstr "უკან დაბრუნება"
 #: kcachegrind/toplevel.cpp:1600
 #, kde-format
 msgid "Go Forward"
-msgstr ""
+msgstr "წინ გადასვლა"
 
 #: kcachegrind/toplevel.cpp:1601
 #, kde-format
