@@ -1,41 +1,44 @@
-# Translation of kcachegrind into esperanto.
+# Translation of kcachegrind.pot into esperanto.
+# Copyright (C) 2009 Free Software Foundation, Inc.
+# This file is distributed under the same license as the kcachegrind package.
 # Axel Rousseau <axel@esperanto-jeunes.org>, 2009.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2020-12-29 02:36+0100\n"
-"PO-Revision-Date: 2009-11-15 12:06+0100\n"
-"Last-Translator: Axel Rousseau <axel@esperanto-jeunes.org>\n"
+"PO-Revision-Date: 2023-02-13 23:32+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: pology\n"
+"X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Axel Rousseau"
+msgstr "Axel Rousseau,Oliver Kellogg"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "axel@esperanto-jeunes.org"
+msgstr "axel@esperanto-jeunes.org,okellogg@users.sourceforge.net"
 
 #: kcachegrind/configdlg.cpp:135 kcachegrind/configdlg.cpp:323
 #: kcachegrind/configdlg.cpp:342
 #, kde-format
 msgid "(always)"
-msgstr ""
+msgstr "(ĉiam)"
 
 #: kcachegrind/configdlg.cpp:349
 #, kde-format
 msgid "Choose Source Folder"
-msgstr ""
+msgstr "Elektu Fontan Dosierujo"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ConfigDlgBase)
 #: kcachegrind/configdlgbase.ui:14
@@ -53,43 +56,43 @@ msgstr "Ĝeneralo"
 #: kcachegrind/configdlgbase.ui:34
 #, kde-format
 msgid "Maximum number of items in lists:"
-msgstr ""
+msgstr "Maksimuma nombro da eroj en listoj:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3)
 #: kcachegrind/configdlgbase.ui:44
 #, kde-format
 msgid "Truncate symbols in tooltips and context menus"
-msgstr ""
+msgstr "Detranĉu simbolojn en konsiletoj kaj kuntekstaj menuoj"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2)
 #: kcachegrind/configdlgbase.ui:70
 #, kde-format
 msgid "when more than:"
-msgstr ""
+msgstr "kiam pli ol:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2_2)
 #: kcachegrind/configdlgbase.ui:80
 #, kde-format
 msgid "when longer than:"
-msgstr ""
+msgstr "kiam pli longa ol:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_3)
 #: kcachegrind/configdlgbase.ui:90
 #, kde-format
 msgid "Precision of percentage values:"
-msgstr ""
+msgstr "Precizeco de procentaj valoroj:"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, maxListEdit)
 #: kcachegrind/configdlgbase.ui:113
 #, kde-format
 msgid "The Maximum Number of List Items should be below 500."
-msgstr ""
+msgstr "La Maksimuma Nombro de Listo-Eroj devus esti sub 500."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1)
 #: kcachegrind/configdlgbase.ui:158
 #, kde-format
 msgid "Cost Item Colors"
-msgstr ""
+msgstr "Kostelementaj Koloroj"
 
 #. i18n: ectx: property (text), widget (QCheckBox, fileCheck)
 #. i18n: ectx: property (text), widget (QCheckBox, classCheck)
@@ -102,9 +105,9 @@ msgstr "Aŭtomata"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4)
 #: kcachegrind/configdlgbase.ui:192
-#, fuzzy, kde-format
+#, kde-format
 msgid "Object:"
-msgstr "Trovu objekton"
+msgstr "Objekto:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_2_2)
 #: kcachegrind/configdlgbase.ui:202
@@ -128,20 +131,19 @@ msgstr "Komentarioj"
 #: kcachegrind/configdlgbase.ui:329
 #, kde-format
 msgid "Context lines in annotations:"
-msgstr ""
+msgstr "Kuntekstlinioj en komentarioj:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
 #: kcachegrind/configdlgbase.ui:350
-#, fuzzy, kde-format
+#, kde-format
 msgid "Source Folders"
-msgstr "Elekto"
+msgstr "Fontaj Dosierujoj"
 
 #. i18n: ectx: property (text), widget (QPushButton, addDirButton)
 #: kcachegrind/configdlgbase.ui:364
-#, fuzzy, kde-format
-#| msgid "Add..."
+#, kde-format
 msgid "Add"
-msgstr "Aldoni..."
+msgstr "Aldoni"
 
 #. i18n: ectx: property (text), widget (QPushButton, deleteDirButton)
 #: kcachegrind/configdlgbase.ui:371
@@ -153,20 +155,20 @@ msgstr "Forigi"
 #: kcachegrind/configdlgbase.ui:409
 #, kde-format
 msgid "Object / Related Source Base"
-msgstr ""
+msgstr "Objekto / Rilata Fonto Bazo"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
 #: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:289
 #: kcachegrind/toplevel.cpp:512
 #, kde-format
 msgid "Profile Dumps"
-msgstr ""
+msgstr "Profildepono"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView1)
 #: kcachegrind/dumpselectionbase.ui:24
 #, kde-format
 msgid "Target"
-msgstr ""
+msgstr "Celo"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView1)
 #: kcachegrind/dumpselectionbase.ui:46
@@ -190,13 +192,13 @@ msgstr "Opcioj"
 #: kcachegrind/dumpselectionbase.ui:87
 #, kde-format
 msgid "Target command:"
-msgstr ""
+msgstr "Cela komando:"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: kcachegrind/dumpselectionbase.ui:100
 #, kde-format
 msgid "Profiler options:"
-msgstr ""
+msgstr "Opcioj de Profililo:"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:111
@@ -215,14 +217,14 @@ msgstr "Valoro"
 #: kcachegrind/dumpselectionbase.ui:133
 #, kde-format
 msgid "Trace"
-msgstr ""
+msgstr "Spuro"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:146 kcachegrind/dumpselectionbase.ui:730
 #, kde-format
 msgid "Jumps"
-msgstr ""
+msgstr "Saltoj"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:160
@@ -233,15 +235,15 @@ msgstr "Instrukcioj"
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:175 kcachegrind/dumpselectionbase.ui:745
-#, fuzzy, kde-format
+#, kde-format
 msgid "Events"
-msgstr "Eventoj:"
+msgstr "Eventoj"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:188
 #, kde-format
 msgid "Full Cache"
-msgstr ""
+msgstr "Plena Kaŝmemoro"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:202
@@ -253,26 +255,25 @@ msgstr "Propra"
 #: kcachegrind/dumpselectionbase.ui:217
 #, kde-format
 msgid "Collect"
-msgstr ""
+msgstr "Kolekti"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:230
-#, fuzzy, kde-format
-#| msgid "Start"
+#, kde-format
 msgid "At Startup"
-msgstr "Lanĉi"
+msgstr "Ĉe Ekfunkciigo"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:244
 #, kde-format
 msgid "While In"
-msgstr ""
+msgstr "Dum En"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:259
 #, kde-format
 msgid "Skip"
-msgstr "Pasigi"
+msgstr "Preterlasi"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:272
@@ -291,68 +292,67 @@ msgstr "Funkcio"
 #: kcachegrind/dumpselectionbase.ui:301
 #, kde-format
 msgid "Dump Profile"
-msgstr ""
+msgstr "Deponi Profilon"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:314
 #, kde-format
 msgid "Every BBs"
-msgstr ""
+msgstr "Ĉiu BB-oj"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:328 kcachegrind/dumpselectionbase.ui:370
 #, kde-format
 msgid "On Entering"
-msgstr ""
+msgstr "Je Eniro"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:342
 #, kde-format
 msgid "On Leaving"
-msgstr ""
+msgstr "Je Forlaso"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:357
-#, fuzzy, kde-format
+#, kde-format
 msgid "Zero Events"
-msgstr "Eventoj:"
+msgstr "Nul Eventoj"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:385
 #, kde-format
 msgid "Separate"
-msgstr ""
+msgstr "Aparta"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:398
 #, kde-format
 msgid "Threads"
-msgstr "Fadenojn"
+msgstr "Fadenoj"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:412
 #, kde-format
 msgid "Recursions"
-msgstr ""
+msgstr "Rikuroj"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:426
-#, fuzzy, kde-format
-#| msgid "Call Stack"
+#, kde-format
 msgid "Call Chain"
-msgstr "Vokstako"
+msgstr "Voka Ĉeno"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
 #: kcachegrind/dumpselectionbase.ui:452
 #, kde-format
 msgid "Custom profiler options:"
-msgstr ""
+msgstr "Propraj profilaj opcioj:"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton2)
 #: kcachegrind/dumpselectionbase.ui:486
 #, kde-format
 msgid "Run New Profile"
-msgstr ""
+msgstr "Ruli Novan Profilon"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab2)
 #: kcachegrind/dumpselectionbase.ui:496
@@ -364,13 +364,13 @@ msgstr "Informo"
 #: kcachegrind/dumpselectionbase.ui:505
 #, kde-format
 msgid "Dump reason:"
-msgstr ""
+msgstr "Deponkialo:"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel6)
 #: kcachegrind/dumpselectionbase.ui:518
-#, fuzzy, kde-format
+#, kde-format
 msgid "Event summary:"
-msgstr "Eventoj:"
+msgstr "Resumo de evento:"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView4)
 #: kcachegrind/dumpselectionbase.ui:529
@@ -388,7 +388,7 @@ msgstr "Sumo"
 #: kcachegrind/dumpselectionbase.ui:554
 #, kde-format
 msgid "Miscellaneous:"
-msgstr ""
+msgstr "Diversaĵoj:"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton6)
 #: kcachegrind/dumpselectionbase.ui:588
@@ -400,7 +400,7 @@ msgstr "Montri"
 #: kcachegrind/dumpselectionbase.ui:595
 #, kde-format
 msgid "Compare"
-msgstr ""
+msgstr "Kompari"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab3)
 #: kcachegrind/dumpselectionbase.ui:605
@@ -418,44 +418,43 @@ msgstr "Ĝisdatigi"
 #: kcachegrind/dumpselectionbase.ui:626
 #, kde-format
 msgid "Every [s]:"
-msgstr ""
+msgstr "Ĉiu [s]:"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:639
-#, fuzzy, kde-format
-#| msgid "Counter [s]"
+#, kde-format
 msgid "Counter"
-msgstr "Nombrilo [s]"
+msgstr "Nombrilo"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:661
 #, kde-format
 msgid "Dumps Done"
-msgstr ""
+msgstr "Deponoj Faritaj"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:675
 #, kde-format
 msgid "Is Collecting"
-msgstr ""
+msgstr "Estas Kolektanta"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:689
 #, kde-format
 msgid "Executed"
-msgstr ""
+msgstr "Plenumita"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:702
 #, kde-format
 msgid "Basic Blocks"
-msgstr ""
+msgstr "Bazaj Blokoj"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:716
 #, kde-format
 msgid "Calls"
-msgstr ""
+msgstr "Vokoj"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:758
@@ -471,9 +470,9 @@ msgstr "Unika"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:786
-#, fuzzy, kde-format
+#, kde-format
 msgid "ELF Objects"
-msgstr "Trovu objekton"
+msgstr "ELF-Objektoj"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:800
@@ -485,19 +484,19 @@ msgstr "Funkcioj"
 #: kcachegrind/dumpselectionbase.ui:814
 #, kde-format
 msgid "Contexts"
-msgstr ""
+msgstr "Kuntekstoj"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
 #: kcachegrind/dumpselectionbase.ui:845
 #, kde-format
 msgid "Stack trace:"
-msgstr ""
+msgstr "Stakspuro:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, checkBox2)
 #: kcachegrind/dumpselectionbase.ui:855
 #, kde-format
 msgid "Sync."
-msgstr ""
+msgstr "Sinkronig."
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
 #: kcachegrind/dumpselectionbase.ui:865
@@ -509,13 +508,13 @@ msgstr "#"
 #: kcachegrind/dumpselectionbase.ui:876
 #, kde-format
 msgid "Incl."
-msgstr ""
+msgstr "Inkl."
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
 #: kcachegrind/dumpselectionbase.ui:887
 #, kde-format
 msgid "Called"
-msgstr ""
+msgstr "Vokita"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
 #: kcachegrind/dumpselectionbase.ui:909
@@ -539,26 +538,25 @@ msgstr "Nulo"
 #: kcachegrind/dumpselectionbase.ui:958
 #, kde-format
 msgid "Dump"
-msgstr ""
+msgstr "Dump"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab4)
 #: kcachegrind/dumpselectionbase.ui:968
-#, fuzzy, kde-format
-#| msgid "&Message"
+#, kde-format
 msgid "Messages"
-msgstr "&Mesaĝo"
+msgstr "Mesaĝoj"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton9)
 #: kcachegrind/dumpselectionbase.ui:985
 #, kde-format
 msgid "Kill Run"
-msgstr ""
+msgstr "Ĉesigi Rulon"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton8)
 #: kcachegrind/dumpselectionbase.ui:1008
 #, kde-format
 msgid "Clear"
-msgstr "Forigi"
+msgstr "Forviŝi"
 
 #. i18n: ectx: Menu (file)
 #: kcachegrind/kcachegrindui.rc:4
@@ -576,13 +574,13 @@ msgstr "&Rigardi"
 #: kcachegrind/kcachegrindui.rc:15
 #, kde-format
 msgid "&Layout"
-msgstr ""
+msgstr "&Aranĝo"
 
 #. i18n: ectx: Menu
 #: kcachegrind/kcachegrindui.rc:33
 #, kde-format
 msgid "Sidebars"
-msgstr ""
+msgstr "Flankbretoj"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kcachegrind/kcachegrindui.rc:42
@@ -592,25 +590,24 @@ msgstr "Ĉefa ilobreto"
 
 #. i18n: ectx: ToolBar (stateToolBar)
 #: kcachegrind/kcachegrindui.rc:54
-#, fuzzy, kde-format
-#| msgid "Main Toolbar"
+#, kde-format
 msgid "State Toolbar"
-msgstr "Ĉefa ilobreto"
+msgstr "Stata Ilobreto"
 
 #: kcachegrind/main.cpp:34
 #, kde-format
 msgid "KCachegrind"
-msgstr ""
+msgstr "KCachegrind"
 
 #: kcachegrind/main.cpp:36
 #, kde-format
 msgid "KDE Frontend for Callgrind/Cachegrind"
-msgstr ""
+msgstr "KDE Frontend por Callgrind/Cachegrind"
 
 #: kcachegrind/main.cpp:38
 #, kde-format
 msgid "(C) 2002 - 2016"
-msgstr ""
+msgstr "(C) 2002 - 2016"
 
 #: kcachegrind/main.cpp:40
 #, kde-format
@@ -620,27 +617,27 @@ msgstr "Josef Weidendorfer"
 #: kcachegrind/main.cpp:41
 #, kde-format
 msgid "Author/Maintainer"
-msgstr ""
+msgstr "Aŭtoro/Prizorganto"
 
 #: kcachegrind/main.cpp:68
 #, kde-format
 msgid "Show information of this trace"
-msgstr ""
+msgstr "Montri informojn pri ĉi tiu spuro"
 
 #: kcachegrind/main.cpp:68
 #, kde-format
 msgid "[trace...]"
-msgstr ""
+msgstr "[spuro...]"
 
 #: kcachegrind/toplevel.cpp:258 kcachegrind/toplevel.cpp:486
 #, kde-format
 msgid "Parts Overview"
-msgstr ""
+msgstr "Partoj Superrigardo"
 
 #: kcachegrind/toplevel.cpp:267
 #, kde-format
 msgid "Top Cost Call Stack"
-msgstr ""
+msgstr "Plej Kosta Vokostako"
 
 #: kcachegrind/toplevel.cpp:269
 #, kde-format
@@ -651,11 +648,16 @@ msgid ""
 "p><p>The <b>Cost</b> and <b>Calls</b> columns show the cost used for all "
 "calls from the function in the line above.</p>"
 msgstr ""
+"<b>La Plej Kosta Vokstako</b><p>Ĉi tio estas pure fikcia \"plej verŝajna\" "
+"voka stako. Ĝi estas konstruita komencante per la nuna elektita funkcio kaj "
+"aldonas la alvokantojn/vokojn kun plej alta kosto supre kaj malsupre.</"
+"p><p>La <b>Kosto</b> kaj <b>Vokoj</p> b> kolumnoj montras la koston uzatan "
+"por ĉiuj vokoj de la funkcio en la supra linio.</p>"
 
 #: kcachegrind/toplevel.cpp:283
 #, kde-format
 msgid "Flat Profile"
-msgstr ""
+msgstr "Plata Profilo"
 
 #: kcachegrind/toplevel.cpp:296
 #, kde-format
@@ -678,17 +680,35 @@ msgid ""
 "regularly poll these data. Check the <b>Sync</b> option to let the dockable "
 "activate the top function in the current loaded dump.</li></ul></p>"
 msgstr ""
+"<b>Profilo-deŝargiloj</b><p>Ĉi tiu aldokebla montras en la supra parto la "
+"liston de ŝarĝeblaj profil-dupoj en ĉiuj subdosierujoj de: <ul><li>nuna "
+"labordosierujo de KCachegrind, t.e. de kie ĝi estis komencita, kaj </"
+"li><li>la defaŭlta profila rubujo dosierujo donita en la agordo.</li></ul> "
+"La listo estas ordigita laŭ la cela komando profilita en la responda rubujo."
+"</p><p>Ĉe elektante profildump, informoj pri ĝi estas montrata en la "
+"malsupra areo de la aldokebla: <ul><li><b>Opcioj</b> permesas vidi la "
+"profilitajn komandon kaj profilopciojn de ĉi tiu rubejo. Ŝanĝante iun eron, "
+"nova (tamen neekzistanta) profilŝablono estas kreita. Premu <b>Run Profile</"
+"b> por komenci profilfunkciadon kun ĉi tiuj opcioj en la fono. </"
+"li><li><b>Informoj</b> donas detalajn informojn pri la elektita rubejo kiel "
+"eventokostoresumo kaj ecoj de la ŝajniga kaŝmemoro. </li><li><b>Ŝtato</b> "
+"disponeblas nur por aktualaj profilaj kuroj. Premu <b>Ĝisdatigi</b> por vidi "
+"malsamajn nombrilojn de la kuro, kaj stakspuron de la nuna pozicio en la "
+"programo profilita. Kontrolu la opcion <b>Ĉiu</b> por lasi KCachegrind "
+"regule baloti tiujn datumojn. Kontrolu la opcion <b>Sinkronigi</b> por lasi "
+"la aldokeblan aktivigi la supran funkcion en la nuna ŝarĝita rubejo.</li></"
+"ul></p>"
 
 #: kcachegrind/toplevel.cpp:367
 #, kde-format
 msgid "&Duplicate"
-msgstr ""
+msgstr "&Duobligi"
 
 #: kcachegrind/toplevel.cpp:370
 #, kde-format
 msgid ""
 "<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
-msgstr ""
+msgstr "<b>Dobligi la nunan aranĝon</b><p>Faru kopion de la nuna aranĝo.</p>"
 
 #: kcachegrind/toplevel.cpp:375
 #, kde-format
@@ -701,56 +721,58 @@ msgid ""
 "<b>Remove Current Layout</b><p>Delete current layout and make the previous "
 "active.</p>"
 msgstr ""
+"<b>Forigi Nunan Aranĝon</b><p>Forigi nunan aranĝon kaj aktivigi la antaŭan.</"
+"p>"
 
 #: kcachegrind/toplevel.cpp:382
 #, kde-format
 msgid "&Go to Next"
-msgstr ""
+msgstr "&Iri al Sekva"
 
 #: kcachegrind/toplevel.cpp:385
 #, kde-format
 msgid "Go to Next Layout"
-msgstr ""
+msgstr "Iri al Sekva Aranĝo"
 
 #: kcachegrind/toplevel.cpp:389
 #, kde-format
 msgid "&Go to Previous"
-msgstr ""
+msgstr "&Iri al Antaŭa"
 
 #: kcachegrind/toplevel.cpp:392
 #, kde-format
 msgid "Go to Previous Layout"
-msgstr ""
+msgstr "Iri al Antaŭa Aranĝo"
 
 #: kcachegrind/toplevel.cpp:396
 #, kde-format
 msgid "&Restore to Default"
-msgstr ""
+msgstr "&Restarigi al defaŭlto"
 
 #: kcachegrind/toplevel.cpp:398
 #, kde-format
 msgid "Restore Layouts to Default"
-msgstr ""
+msgstr "Restarigi Aranĝojn al Defaŭlta"
 
 #: kcachegrind/toplevel.cpp:402
 #, kde-format
 msgid "&Save as Default"
-msgstr ""
+msgstr "&Konservi kiel defaŭlta"
 
 #: kcachegrind/toplevel.cpp:404
 #, kde-format
 msgid "Save Layouts as Default"
-msgstr ""
+msgstr "Konservi Aranĝojn kiel Defaŭlton"
 
 #: kcachegrind/toplevel.cpp:415
 #, kde-format
 msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
-msgstr ""
+msgstr "<b>Nova</b><p>Malfermu novan malplenan fenestron de KCachegrind.</p>"
 
 #: kcachegrind/toplevel.cpp:419
 #, kde-format
 msgid "&Add..."
-msgstr "&Aldonu"
+msgstr "&Aldoni..."
 
 #: kcachegrind/toplevel.cpp:421
 #, kde-format
@@ -758,6 +780,8 @@ msgid ""
 "<b>Add Profile Data</b><p>This opens an additional profile data file in the "
 "current window.</p>"
 msgstr ""
+"<b>Aldoni Profilajn Datumojn</b><p>Ĉi tio malfermas plian profilan "
+"datumdosieron en la nuna fenestro.</p>"
 
 #: kcachegrind/toplevel.cpp:427
 #, kde-format
@@ -769,11 +793,13 @@ msgstr "&Reŝargi"
 #, kde-format
 msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
 msgstr ""
+"<b>Reŝargi Profilajn Datumojn</b><p>Ĉi tio ŝargas ankaŭ novajn kreitajn "
+"partojn.</p>"
 
 #: kcachegrind/toplevel.cpp:435
 #, kde-format
 msgid "&Export Graph"
-msgstr ""
+msgstr "&Eksporti Grafeon"
 
 #: kcachegrind/toplevel.cpp:438
 #, kde-format
@@ -781,11 +807,13 @@ msgid ""
 "<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
 "tools of the GraphViz package.</p>"
 msgstr ""
+"<b>Eksporti Call Graph</b><p>Generas dosieron kun etendo .dot por la iloj de "
+"la pakaĵo GraphViz.</p>"
 
 #: kcachegrind/toplevel.cpp:446
 #, kde-format
 msgid "&Force Dump"
-msgstr ""
+msgstr "&Devigi Deponon"
 
 #: kcachegrind/toplevel.cpp:449
 #, kde-format
@@ -805,6 +833,20 @@ msgid ""
 "profiled GUI program, you can awake Callgrind e.g. by resizing a window of "
 "the program.</p>"
 msgstr ""
+"<b>Devigi Deponon</b><p>Ĉi tio devigas dump-on por Callgrind-profilo rulita "
+"en la nuna dosierujo. Ĉi tiu ago estas kontrolita dum KCachegrind serĉas la "
+"rubejon. Se la rubejo estas finita, ĝi aŭtomate reŝargas la nunan spuron. Se "
+"ĉi tiu estas tiu de la ruliĝanta Callgrind, ankaŭ la nova kreita spurparto "
+"estos ŝargita.</p><p>Forcidump kreas dosieron 'callgrind.cmd', kaj kontrolas "
+"ĉiun sekundon por ĝia ekzisto. Kuranta Callgrind detektos ĉi tiun dosieron, "
+"forĵetos spurparton kaj forigos 'callgrind.cmd'. La forigo estas detektita "
+"de KCachegrind, kaj ĝi faras Reŝargi. Se <em>ne</em> Callgrind funkcias, "
+"premu 'Devigi Deponon' denove por nuligi la elĵetaĵon. Ĉi tio forigas "
+"'callgrind.cmd' mem kaj ĉesas voĉdoni por nova depono.</p><p>Noto: Callgrind-"
+"kuro <em>nur</em> detektas ekziston de 'callgrind.cmd' kiam aktive funkcias "
+"kelkajn milisekundojn. , t.e. <em>ne</em> dormante. Konsilo: Por profilita "
+"GUI-programo, vi povas veki Callgrind ekz. per regrandigo de fenestro de la "
+"programo.</p>"
 
 #: kcachegrind/toplevel.cpp:474
 #, kde-format
@@ -812,11 +854,13 @@ msgid ""
 "<b>Open Profile Data</b><p>This opens a profile data file, with possible "
 "multiple parts</p>"
 msgstr ""
+"<b>Malfermi Profilajn Datumojn</b><p>Ĉi tio malfermas profilan datuman "
+"dosieron, kun eblaj pluraj partoj</p>"
 
 #: kcachegrind/toplevel.cpp:489
 #, kde-format
 msgid "Show/Hide the Parts Overview Dockable"
-msgstr ""
+msgstr "Montri/Kaŝi la Partojn Superrigardon Dockable"
 
 #: kcachegrind/toplevel.cpp:494
 #, kde-format
@@ -826,42 +870,42 @@ msgstr "Vokstako"
 #: kcachegrind/toplevel.cpp:497
 #, kde-format
 msgid "Show/Hide the Call Stack Dockable"
-msgstr ""
+msgstr "Montri/Kaŝi la Vokan Stakon Dockable"
 
 #: kcachegrind/toplevel.cpp:502
 #, kde-format
 msgid "Function Profile"
-msgstr ""
+msgstr "Funkcia Profilo"
 
 #: kcachegrind/toplevel.cpp:505
 #, kde-format
 msgid "Show/Hide the Function Profile Dockable"
-msgstr ""
+msgstr "Montri/Kaŝi la Funkcian Profilon Dockable"
 
 #: kcachegrind/toplevel.cpp:513
 #, kde-format
 msgid "Show/Hide the Profile Dumps Dockable"
-msgstr ""
+msgstr "Montri/Kaŝi la Dockable de Profildeponoj"
 
 #: kcachegrind/toplevel.cpp:520
 #, kde-format
 msgid "Relative"
-msgstr ""
+msgstr "Parenco"
 
 #: kcachegrind/toplevel.cpp:522
 #, kde-format
 msgid "Show relative instead of absolute costs"
-msgstr ""
+msgstr "Montri relativajn anstataŭ absolutajn kostojn"
 
 #: kcachegrind/toplevel.cpp:528
 #, kde-format
 msgid "Relative to Parent"
-msgstr ""
+msgstr "Rilate al Gepatro"
 
 #: kcachegrind/toplevel.cpp:531
 #, kde-format
 msgid "Show percentage costs relative to parent"
-msgstr ""
+msgstr "Montri procentajn kostojn rilate al gepatro"
 
 #: kcachegrind/toplevel.cpp:535
 #, kde-format
@@ -877,11 +921,21 @@ msgid ""
 "table></ul><p>(*) Only if function grouping is switched on (e.g. ELF object "
 "grouping).</p>"
 msgstr ""
+"<b>Montri procentajn kostojn rilate al gepatro</b><p>Se ĉi tio estas "
+"malŝaltita, procentaj kostoj ĉiam montriĝas rilate al la totalkosto de la "
+"profilparto(j) kiuj estas nuntempe foliumitaj. Enŝaltante ĉi tiun opcion, "
+"procentkosto de montrataj kostaĵoj estos relativa al la gepatra kosto.</"
+"p><ul><table><tr><td><b>Kostotipo</b></td> < td >< b > Gepatra Kosto</ b ></ "
+"td ></ tr >< tr >< td > Funkcio Akumula</ td >< td >Sumo</ td ></ tr >< tr "
+">< td > Funkcio Mem</ td >< td > Funkcia Grupo (*) / Totala</ td ></ tr >< "
+"tr >< td > Voko</ td >< td > Funkcio Inkluziva</ td ></ tr >< tr "
+"><td>Fontolinio</td><td>Funkcia Inkluziva</td></tr></table></ul><p>(*) Nur "
+"se funkciogrupo estas ŝaltita (ekz. ELF-objektogrupigo) .</p>"
 
 #: kcachegrind/toplevel.cpp:552
 #, kde-format
 msgid "Cycle Detection"
-msgstr ""
+msgstr "Cikla Detekto"
 
 #: kcachegrind/toplevel.cpp:555
 #, kde-format
@@ -897,16 +951,26 @@ msgid ""
 "often will lead to huge false cycles, making the analysis impossible; "
 "therefore, there is the option to switch this off.</p>"
 msgstr ""
+"<b>Detekti rekursivajn ciklojn</b><p>Se ĉi tio estas malŝaltita, la arbomapo-"
+"desegnaĵo montros nigrajn areojn kiam rekursiva voko estas farita anstataŭ "
+"desegni la rekursion ad infinitum. Notu ke la grandeco de nigraj areoj ofte "
+"estos malĝusta, ĉar ene de rekursiemaj cikloj la kosto de vokoj ne povas "
+"esti determinita; la eraro estas malgranda, tamen, por falsaj cikloj (vidu "
+"dokumentadon).</p><p>La ĝusta uzado por cikloj estas detekti ilin kaj "
+"kolapsigi ĉiujn funkciojn de ciklo en artefaritan funkcion, kio estas farita "
+"kiam ĉi tiu opcio estas; elektita. Bedaŭrinde, kun GUI-aplikoj, tio ofte "
+"kondukos al grandegaj falsaj cikloj, farante la analizon malebla; tial, "
+"ekzistas la eblo por malŝalti ĉi tion.</p>"
 
 #: kcachegrind/toplevel.cpp:571
 #, kde-format
 msgid "Shorten Templates"
-msgstr ""
+msgstr "Mallongigi Ŝablonojn"
 
 #: kcachegrind/toplevel.cpp:573
 #, kde-format
 msgid "Hide Template Parameters in C++ Symbols"
-msgstr ""
+msgstr "Kaŝi Ŝablonajn Parametrojn en C++-Simboloj"
 
 #: kcachegrind/toplevel.cpp:574
 #, kde-format
@@ -917,6 +981,11 @@ msgid ""
 "p><p>In this mode, you can hover the mouse pointer over the activated symbol "
 "label to show a tooltip with the unabbreviated symbol.</p>"
 msgstr ""
+"<b>Kaŝi Ŝablonajn parametrojn en C++-Simboloj</b><p>Se ĉi tio estas ŝaltita, "
+"ĉiu simbolo montrita havos ajnajn C++-ŝablonajn parametrojn kaŝitajn, nur "
+"montrante &lt;&gt; anstataŭ eble nestigita ŝablona parametro.</p><p>En ĉi "
+"tiu reĝimo, vi povas ŝvebi la musmontrilon super la aktivigita simboletikedo "
+"por montri konsileton kun la nemallongigita simbolo.</p>"
 
 #: kcachegrind/toplevel.cpp:590
 #, kde-format
@@ -929,36 +998,38 @@ msgid ""
 "<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
 "was visited, use that with highest cost.</p>"
 msgstr ""
+"<b>Iri Supren</b><p>Iru al la lasta elektita alvokanto de aktuala funkcio. "
+"Se neniu alvokanto estis vizitita, uzu tion kun plej alta kosto.</p>"
 
 #: kcachegrind/toplevel.cpp:616
 #, kde-format
 msgid "Go back in function selection history"
-msgstr ""
+msgstr "Reiri al la historio de elekto de funkcioj"
 
 #: kcachegrind/toplevel.cpp:630
 #, kde-format
 msgid "Go forward in function selection history"
-msgstr ""
+msgstr "Antaŭeniri en la historio de elekto de funkcioj"
 
 #: kcachegrind/toplevel.cpp:635 kcachegrind/toplevel.cpp:1512
 #, kde-format
 msgid "Primary Event Type"
-msgstr ""
+msgstr "Ĉefa Eventtipo"
 
 #: kcachegrind/toplevel.cpp:636
 #, kde-format
 msgid "Select primary event type of costs"
-msgstr ""
+msgstr "Elekti ĉefan eventotipon de kostoj"
 
 #: kcachegrind/toplevel.cpp:658 kcachegrind/toplevel.cpp:1517
 #, kde-format
 msgid "Secondary Event Type"
-msgstr ""
+msgstr "Malĉefa Eventa Tipo"
 
 #: kcachegrind/toplevel.cpp:659
 #, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
-msgstr ""
+msgstr "Elektu duarangan eventotipon por kosto ekz. montrata en komentarioj"
 
 #: kcachegrind/toplevel.cpp:669
 #, kde-format
@@ -968,42 +1039,43 @@ msgstr "Grupado"
 #: kcachegrind/toplevel.cpp:671
 #, kde-format
 msgid "Select how functions are grouped into higher level cost items"
-msgstr ""
+msgstr "Elekti kiel funkcioj estas grupigitaj en pli altnivelajn kostobjektojn"
 
 #: kcachegrind/toplevel.cpp:677
 #, kde-format
 msgid "(No Grouping)"
-msgstr ""
+msgstr "(Neniu grupigo)"
 
 #: kcachegrind/toplevel.cpp:689
 #, kde-format
 msgid "Split"
-msgstr ""
+msgstr "Split"
 
 #: kcachegrind/toplevel.cpp:692
 #, kde-format
 msgid "Show two information panels"
-msgstr ""
+msgstr "Montri du informpanelojn"
 
 #: kcachegrind/toplevel.cpp:698
 #, kde-format
 msgid "Split Horizontal"
-msgstr ""
+msgstr "Partigi Horizontale"
 
 #: kcachegrind/toplevel.cpp:701
 #, kde-format
 msgid "Change Split Orientation when main window is split."
-msgstr ""
+msgstr "Ŝanĝi Dividan Orientiĝon kiam ĉefa fenestro estas disigita."
 
 #: kcachegrind/toplevel.cpp:898
 #, kde-format
 msgid "Select Callgrind Profile Data"
-msgstr ""
+msgstr "Elekti Profilajn Datumojn de Callgrind"
 
 #: kcachegrind/toplevel.cpp:900 kcachegrind/toplevel.cpp:968
 #, kde-format
 msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
 msgstr ""
+"Callgrind Profildatumoj (cachegrind.out* callgrind.out*);;Ĉiuj Dosieroj (*)"
 
 #: kcachegrind/toplevel.cpp:928 kcachegrind/toplevel.cpp:957
 #, kde-format
@@ -1011,16 +1083,18 @@ msgid ""
 "Could not open the file \"%1\". Check it exists and you have enough "
 "permissions to read it."
 msgstr ""
+"Ne eblis malfermi la dosieron \"%1\". Kontrolu ke ĝi ekzistas kaj vi havas "
+"sufiĉajn permesojn por legi ĝin."
 
 #: kcachegrind/toplevel.cpp:966
 #, kde-format
 msgid "Add Callgrind Profile Data"
-msgstr ""
+msgstr "Aldoni Profilajn Datumojn de Callgrind"
 
 #: kcachegrind/toplevel.cpp:1136 kcachegrind/toplevel.cpp:1465
 #, kde-format
 msgid "(Hidden)"
-msgstr ""
+msgstr "(Kaŝita)"
 
 #: kcachegrind/toplevel.cpp:1522
 #, kde-format
@@ -1030,12 +1104,12 @@ msgstr "Kaŝi"
 #: kcachegrind/toplevel.cpp:1564
 #, kde-format
 msgid "Show Absolute Cost"
-msgstr ""
+msgstr "Montri Absolutan Koston"
 
 #: kcachegrind/toplevel.cpp:1567
 #, kde-format
 msgid "Show Relative Cost"
-msgstr ""
+msgstr "Montri Relativan Koston"
 
 #: kcachegrind/toplevel.cpp:1599
 #, kde-format
@@ -1050,68 +1124,68 @@ msgstr "Antaŭen"
 #: kcachegrind/toplevel.cpp:1601
 #, kde-format
 msgid "Go Up"
-msgstr ""
+msgstr "Iri supren"
 
 #: kcachegrind/toplevel.cpp:1813
 #, kde-format
 msgid "Layout Count: %1"
-msgstr ""
+msgstr "Nombro de Aranĝo: %1"
 
 #: kcachegrind/toplevel.cpp:1820
 #, kde-format
 msgid "No profile data file loaded."
-msgstr ""
+msgstr "Neniu profila datumdosiero ŝargita."
 
 #: kcachegrind/toplevel.cpp:1829
 #, kde-format
 msgid "Total %1 Cost: %2"
-msgstr ""
+msgstr "Totala %1 Kosto: %2"
 
 #: kcachegrind/toplevel.cpp:1841
 #, kde-format
 msgid "No event type selected"
-msgstr ""
+msgstr "Neniu eventospeco elektita"
 
 #: kcachegrind/toplevel.cpp:2027
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
-msgstr ""
+msgstr "Ne povas determini ricevilan PID por forĵetpeto"
 
 #: kcachegrind/toplevel.cpp:2068
 #, kde-format
 msgid "Error running callgrind_control"
-msgstr ""
+msgstr "Eraro dum rulado de callgrind_control"
 
 #: kcachegrind/toplevel.cpp:2107 kcachegrind/toplevel.cpp:2144
 #: kcachegrind/toplevel.cpp:2181
 #, kde-format
 msgid "(No Stack)"
-msgstr ""
+msgstr "(Neniu stako)"
 
 #: kcachegrind/toplevel.cpp:2113
 #, kde-format
 msgid "(No next function)"
-msgstr ""
+msgstr "(Neniu sekva funkcio)"
 
 #: kcachegrind/toplevel.cpp:2150
 #, kde-format
 msgid "(No previous function)"
-msgstr ""
+msgstr "(Neniu antaŭa funkcio)"
 
 #: kcachegrind/toplevel.cpp:2186
 #, kde-format
 msgid "(No Function Up)"
-msgstr ""
+msgstr "(Neniu Funkcio Supre)"
 
 #: kcachegrind/toplevel.cpp:2318 kcachegrind/toplevel.cpp:2332
 #, kde-format
 msgid "Loading %1"
-msgstr ""
+msgstr "Ŝargante %1"
 
 #: kcachegrind/toplevel.cpp:2326
 #, kde-format
 msgid "Error loading %1: %2"
-msgstr ""
+msgstr "Eraro dum la ŝargo de %1: %2"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:2
@@ -1123,6 +1197,11 @@ msgid ""
 "use. Request <em>What's this...</em> help by pressing\n"
 "Shift-F1 and clicking on the widget.</p>\n"
 msgstr ""
+"<p>...ke la <em>Kio ĉi tio...</em> helpo por ĉiu GUI-fenestraĵo\n"
+"in KCachegrind enhavas detalajn uzajn informojn por ĉi tiu fenestraĵo?\n"
+"Estas tre rekomendinde legi almenaŭ ĉi tiujn helptekstojn unue. \n"
+"use. Petu helpon <em>Kio ĉi tio...</em> premante\n"
+"Shift-F1 kaj alklakante la fenestraĵon.</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:12
@@ -1133,6 +1212,10 @@ msgid ""
 "Use the Assembler View for the instruction annotations.\n"
 "</p>\n"
 msgstr ""
+"<p>...ke vi povas akiri profilinformojn je instrukcinivelo\n"
+"kun Calltree kiam vi provizas la opcion <em>--dump-instr=yes</em>?\n"
+"Uzu la Asembladan Vidon por la instrukciokomentoj.\n"
+" </p>\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:21
@@ -1141,6 +1224,9 @@ msgid ""
 "<p>...that you can use Alt-Left/Right keys of your keyboard to go\n"
 "back/forward in the active object history ?</p>\n"
 msgstr ""
+"<p>...ke vi povas uzi Alt-Maldekstren/Dekstren klavojn de via klavaro por "
+"iri\n"
+"malantaŭen/antaŭen en la aktiva objekthistorio ?</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:28
@@ -1152,6 +1238,13 @@ msgid ""
 "the current item, press Space, and to activate it, press Return.\n"
 "</p>\n"
 msgstr ""
+"<p>...ke vi povas navigi en la Mapo-Vido de Vokita/Alvokanto uzante\n"
+"malvastigajn klavojn? Uzu Maldekstren/Dekstren por ŝanĝi al gefratoj de la "
+"aktuala\n"
+"elemento; uzu Supren/Malsupren por iri unu nestan nivelon supren/malsupren. "
+"Por elekti\n"
+"la aktualan eron, premu Spacon, kaj por aktivigi ĝin, premu Reen.\n"
+"</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:38
@@ -1164,6 +1257,13 @@ msgid ""
 "selected call. To activate the current item, press Return.\n"
 "</p>\n"
 msgstr ""
+"<p>...ke vi povas navigi en la Voka Grafika Vido uzante\n"
+"malvastigajn klavojn? Uzu Supren/Malsupren por iri unu alvokan nivelon "
+"supren/malsupren, alternante\n"
+"inter vokoj kaj funkcioj. Uzu Maldekstren/Dekstren por ŝanĝi al gefratoj de "
+"aktuala\n"
+"elektita alvoko. Por aktivigi la nunan eron, premu Reen.\n"
+"</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:48
@@ -1173,6 +1273,9 @@ msgid ""
 "name (case-insensitive) into the edit line of the toolbar\n"
 "and hit return?</p>\n"
 msgstr ""
+"<p>...ke vi povas rapide lokalizi funkcion per enigo de parto de ĝia\n"
+"nomo (majuskleksentema) en la redaktan linion de la ilobreto\n"
+"kaj premu reveni?</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:56
@@ -1182,6 +1285,9 @@ msgid ""
 "ELF objects/C++ Classes/Source Files for graph coloring\n"
 "in <em>Settings->Configure KCachegrind...</em>?</p>\n"
 msgstr ""
+"<p>...ke vi povas asigni kutimajn kolorojn al \n"
+"ELF-objektoj/C++-Klasoj/Fontodosieroj por grafika kolorigo\n"
+"in <em>Agordoj->Agordi KCachegrind...</em>?</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:64
@@ -1195,6 +1301,13 @@ msgid ""
 "have added the directory of the source file to the\n"
 "<em>Source Directories</em> list in the configuration.\n"
 msgstr ""
+"<p>...ke vi povas vidi ĉu sencimigaj informoj disponeblas por elektita \n"
+"funkcio rigardante la loketikedon en la Info-langeto aŭ\n"
+"la fontan liston kaplinion en la fontlangeto?</p>\n"
+"<p> Devas esti la nomo de la fontdosiero (kun etendaĵo).\n"
+"Se KCachegrind ankoraŭ ne montras la fonton, certigu, ke vi\n"
+"aldonis la dosierujon de la fontdosiero al la\n"
+"<em>Fontaj dosierujoj</em> listo en la agordo.\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:76
@@ -1203,6 +1316,8 @@ msgid ""
 "<p>...that you can configure whether KCachgrind should\n"
 "show absolute event counts or relative ones (percentage display)?</p>\n"
 msgstr ""
+"<p>...ke vi povas agordi ĉu KCachgrind devus\n"
+"montri absolutajn eventokalkulojn aŭ relativajn (procenta montriĝo)?</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:83
@@ -1217,6 +1332,14 @@ msgid ""
 "it in the flat profile. Selecting functions with small cost will\n"
 "temporarily add them to the flat profile list.</p>\n"
 msgstr ""
+"<p>...ke vi povas agordi la maksimuman nombron da eroj\n"
+"por ĉiuj funkciolistoj en KCachegrind? Limigado de la nombro\n"
+"o da eroj estas farita por akiri rapide reaktan GUI. La lasta elemento en\n"
+"la listo montros al vi la nombron da preterpasitaj funkcioj, kune\n"
+"kun kostkondiĉo por tiuj preterpasitaj funkcioj.</p>\n"
+"<p>Por aktivigi funkcion kun malgrandaj kostoj, serĉu ĝin kaj elektu\n"
+"ĝin en la plata profilo. Elektante funkciojn kun malgranda kosto\n"
+"provizore aldonos ilin al la ebena profillisto.</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:96
@@ -1234,6 +1357,17 @@ msgid ""
 "with function bar() selected means that 50% of all the cost of function\n"
 "bar() happened while calling foo2() from bar().</p>\n"
 msgstr ""
+"<p>...ke la langeto Kovrado - kontraste al la langeto Vokaj Listo -\n"
+"montras <em>ĉiujn</em> funkciojn, kiuj nomas la elektitan funkcion\n"
+"(supra parto) / estas vokitaj de la elektita funkcio ( malsupra parto),\n"
+"ne gravas kiom da funkcioj estas inter ili sur la stako?</p>\n"
+"<p>Ekzemploj:</p>\n"
+"<p>Enskribo en la supra listo por funkcio foo1() kun valoro de 50%\n"
+"kun funkcio bar() elektita signifas ke 50% de la tuta kosto de funkcio\n"
+"bar() okazis dum vokita de funkcio foo1().</p>\n"
+"<p>Enskribo en la malsupra listo por funkcio foo2() kun valoro de 50%\n"
+"kun funkcio bar() elektita signifas ke 50% de la tuta kosto de funkcio\n"
+"bar() okazis dum vokado de foo2() el bar().</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:112
@@ -1245,6 +1379,11 @@ msgid ""
 "<p>Items from this list can be selected by pressing the right\n"
 "mouse button.</p>\n"
 msgstr ""
+"<p>...ke atendi la ilopinton ene de arba mapo\n"
+"montras la liston de nomoj de la nestitaj rektanguloj, kiujn la muso\n"
+"montrilo estas finita?</p>\n"
+"<p>Eroj el ĉi tiu listo povas esti elektitaj premante la dekstran\n"
+"musbutonon.</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:122
@@ -1259,9 +1398,11 @@ msgid ""
 "of not-branching assembler statements inside of your program\n"
 "code).</p>\n"
 msgstr ""
-
-#~ msgid "&OK"
-#~ msgstr "&Bone"
-
-#~ msgid "&Cancel"
-#~ msgstr "&Rezigni"
+"<p>...ke vi povas limigi la kostkalkulojn montritajn al nur\n"
+"kelkaj partoj de la tuta spuro elektante ĉi tiujn partojn en la\n"
+"\"Spura Elekto\" Aldokebla?</p>\n"
+"<p>Al generi plurajn partojn en profila kuro kun\n"
+"cachegrind, uzu ekz. opcio --cachedumps=xxx por partoj\n"
+"o de longo de xxx bazaj blokoj (Baza bloko estas kuro\n"
+"o de nebranĉaj asemblaj deklaroj ene de via programo\n"
+"kodo).</p>\n"

@@ -1,19 +1,22 @@
-# Translation of kcachegrind_qt into esperanto.
+# Translation of kcachegrind_qt.pot into esperanto.
+# Copyright (C) 2009 Free Software Foundation, Inc.
+# This file is distributed under the same license as the kcachegrind package.
 # Axel Rousseau <axel@esperanto-jeunes.org>, 2009.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2009-11-15 12:06+0100\n"
-"Last-Translator: Axel Rousseau <axel@esperanto-jeunes.org>\n"
+"PO-Revision-Date: 2023-02-13 23:32+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: pology\n"
+"X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Qt-Contexts: true\n"
 
@@ -21,163 +24,124 @@ msgstr ""
 msgctxt "QObject|"
 msgid "Import filter for Cachegrind/Callgrind generated profile data files"
 msgstr ""
+"Importfiltrilo por Cachegrind/Callgrind-generitaj profildatumaj dosieroj"
 
 #: libcore/context.cpp:60
 msgctxt "ProfileContext|"
 msgid "Invalid Context"
-msgstr ""
+msgstr "Nevalida Kunteksto"
 
 #: libcore/context.cpp:61
-#, fuzzy
-#| msgid "Unknown Type"
 msgctxt "ProfileContext|"
 msgid "Unknown Context"
-msgstr "Nekonata Tipo"
+msgstr "Nekonata Kunteksto"
 
 #: libcore/context.cpp:62
-#, fuzzy
-#| msgid "Source File"
 msgctxt "ProfileContext|"
 msgid "Part Source Line"
-msgstr "Fontdosiero"
+msgstr "Parta Fontlinio"
 
 #: libcore/context.cpp:63
-#, fuzzy
-#| msgid "Source File"
 msgctxt "ProfileContext|"
 msgid "Source Line"
-msgstr "Fontdosiero"
+msgstr "Fontlinio"
 
 #: libcore/context.cpp:64
 msgctxt "ProfileContext|"
 msgid "Part Line Call"
-msgstr ""
+msgstr "Parta Liniovoko"
 
 #: libcore/context.cpp:65
-#, fuzzy
-#| msgid "Call"
 msgctxt "ProfileContext|"
 msgid "Line Call"
-msgstr "Voko"
+msgstr "Linia Voko"
 
 #: libcore/context.cpp:66
 msgctxt "ProfileContext|"
 msgid "Part Jump"
-msgstr ""
+msgstr "Parta Salto"
 
 #: libcore/context.cpp:67
 msgctxt "ProfileContext|"
 msgid "Jump"
-msgstr ""
+msgstr "Salto"
 
 #: libcore/context.cpp:68
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "ProfileContext|"
 msgid "Part Instruction"
-msgstr "Instrukcio"
+msgstr "Parta Instrukcio"
 
 #: libcore/context.cpp:69
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "ProfileContext|"
 msgid "Instruction"
 msgstr "Instrukcio"
 
 #: libcore/context.cpp:70
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "ProfileContext|"
 msgid "Part Instruction Jump"
-msgstr "Instrukcio"
+msgstr "Parta Instrukciosalto"
 
 #: libcore/context.cpp:71
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "ProfileContext|"
 msgid "Instruction Jump"
-msgstr "Instrukcio"
+msgstr "Instrukciosalto"
 
 #: libcore/context.cpp:72
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "ProfileContext|"
 msgid "Part Instruction Call"
-msgstr "Instrukcio"
+msgstr "Parta Instrukciovoko"
 
 #: libcore/context.cpp:73
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "ProfileContext|"
 msgid "Instruction Call"
-msgstr "Instrukcio"
+msgstr "Instrukciovoko"
 
 #: libcore/context.cpp:74
-#, fuzzy
-#| msgid "Call"
 msgctxt "ProfileContext|"
 msgid "Part Call"
-msgstr "Voko"
+msgstr "Parta Voko"
 
 #: libcore/context.cpp:75
-#, fuzzy
-#| msgid "Call"
 msgctxt "ProfileContext|"
 msgid "Call"
 msgstr "Voko"
 
 #: libcore/context.cpp:76
-#, fuzzy
-#| msgid "Function"
 msgctxt "ProfileContext|"
 msgid "Part Function"
-msgstr "Funkcio"
+msgstr "Parta Funkcio"
 
 #: libcore/context.cpp:77
-#, fuzzy
-#| msgid "Source File"
 msgctxt "ProfileContext|"
 msgid "Function Source File"
-msgstr "Fontdosiero"
+msgstr "Funkcia Fontdosiero"
 
 #: libcore/context.cpp:78
-#, fuzzy
-#| msgid "Function"
 msgctxt "ProfileContext|"
 msgid "Function"
 msgstr "Funkcio"
 
 #: libcore/context.cpp:79
-#, fuzzy
-#| msgid "Function"
 msgctxt "ProfileContext|"
 msgid "Function Cycle"
-msgstr "Funkcio"
+msgstr "Funkcia Ciklo"
 
 #: libcore/context.cpp:80
-#, fuzzy
-#| msgid "Class"
 msgctxt "ProfileContext|"
 msgid "Part Class"
-msgstr "Klaso"
+msgstr "Parta Klaso"
 
 #: libcore/context.cpp:81
-#, fuzzy
-#| msgid "Class"
 msgctxt "ProfileContext|"
 msgid "Class"
 msgstr "Klaso"
 
 #: libcore/context.cpp:82
-#, fuzzy
-#| msgid "Source File"
 msgctxt "ProfileContext|"
 msgid "Part Source File"
-msgstr "Fontdosiero"
+msgstr "Parta Fontdosiero"
 
 #: libcore/context.cpp:83
-#, fuzzy
-#| msgid "Source File"
 msgctxt "ProfileContext|"
 msgid "Source File"
 msgstr "Fontdosiero"
@@ -185,234 +149,213 @@ msgstr "Fontdosiero"
 #: libcore/context.cpp:84
 msgctxt "ProfileContext|"
 msgid "Part ELF Object"
-msgstr ""
+msgstr "Parta ELF-Objekto"
 
 #: libcore/context.cpp:85
 msgctxt "ProfileContext|"
 msgid "ELF Object"
-msgstr ""
+msgstr "ELF-Objekto"
 
 #: libcore/context.cpp:86
 msgctxt "ProfileContext|"
 msgid "Profile Part"
-msgstr ""
+msgstr "Profila Parto"
 
 #: libcore/context.cpp:87
 msgctxt "ProfileContext|"
 msgid "Program Trace"
-msgstr ""
+msgstr "Programo-Spuro"
 
 #: libcore/costitem.cpp:48
 #, qt-format
 msgctxt "QObject|"
 msgid "%1 from %2"
-msgstr ""
+msgstr "%1 el %2"
 
 #: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
 #: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
 #: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
-#, fuzzy
-#| msgid "(unknown)"
 msgctxt "QObject|"
 msgid "(unknown)"
 msgstr "(nekonata)"
 
 #: libcore/globalconfig.cpp:77
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "QObject|"
 msgid "Instruction Fetch"
-msgstr "Instrukcio"
+msgstr "Instrukciakiro"
 
 #: libcore/globalconfig.cpp:78
 msgctxt "QObject|"
 msgid "Data Read Access"
-msgstr ""
+msgstr "Datumlega Aliro"
 
 #: libcore/globalconfig.cpp:79
 msgctxt "QObject|"
 msgid "Data Write Access"
-msgstr ""
+msgstr "Datumskriba Aliro"
 
 #: libcore/globalconfig.cpp:80
 msgctxt "QObject|"
 msgid "L1 Instr. Fetch Miss"
-msgstr ""
+msgstr "L1 Instr.-Akira Maltrafo"
 
 #: libcore/globalconfig.cpp:81
 msgctxt "QObject|"
 msgid "L1 Data Read Miss"
-msgstr ""
+msgstr "L1 Datumlega Maltrafo"
 
 #: libcore/globalconfig.cpp:82
 msgctxt "QObject|"
 msgid "L1 Data Write Miss"
-msgstr ""
+msgstr "L1 Datumskriba Maltrafo"
 
 #: libcore/globalconfig.cpp:83
 msgctxt "QObject|"
 msgid "L2 Instr. Fetch Miss"
-msgstr ""
+msgstr "L2 Instr.-Akira Maltrafo"
 
 #: libcore/globalconfig.cpp:84
 msgctxt "QObject|"
 msgid "L2 Data Read Miss"
-msgstr ""
+msgstr "L2 Datumlega Maltrafo"
 
 #: libcore/globalconfig.cpp:85
 msgctxt "QObject|"
 msgid "L2 Data Write Miss"
-msgstr ""
+msgstr "L2 Datumskriba Maltrafo"
 
 #: libcore/globalconfig.cpp:86
 msgctxt "QObject|"
 msgid "LL Instr. Fetch Miss"
-msgstr ""
+msgstr "LL Instr.-Akira Maltrafo"
 
 #: libcore/globalconfig.cpp:87
 msgctxt "QObject|"
 msgid "LL Data Read Miss"
-msgstr ""
+msgstr "LL Datumlega Maltrafo"
 
 #: libcore/globalconfig.cpp:88
 msgctxt "QObject|"
 msgid "LL Data Write Miss"
-msgstr ""
+msgstr "LL Datumskriba Maltrafo"
 
 #: libcore/globalconfig.cpp:89
 msgctxt "QObject|"
 msgid "L1 Miss Sum"
-msgstr ""
+msgstr "L1 Maltrafosumo"
 
 #: libcore/globalconfig.cpp:90
 msgctxt "QObject|"
 msgid "L2 Miss Sum"
-msgstr ""
+msgstr "L2 Maltrafosumo"
 
 #: libcore/globalconfig.cpp:91
 msgctxt "QObject|"
 msgid "Last-level Miss Sum"
-msgstr ""
+msgstr "Lastnivela Maltrafosumo"
 
 #: libcore/globalconfig.cpp:92
-#, fuzzy
-#| msgid "Mispredicted Ind. Branch"
 msgctxt "QObject|"
 msgid "Indirect Branch"
-msgstr "Mispredicted Ind. Branĉo"
+msgstr "Nerekta Branĉo"
 
 #: libcore/globalconfig.cpp:93
-#, fuzzy
-#| msgid "Mispredicted Ind. Branch"
 msgctxt "QObject|"
 msgid "Mispredicted Ind. Branch"
-msgstr "Mispredicted Ind. Branĉo"
+msgstr "Misprognozita Ind. Branĉo"
 
 #: libcore/globalconfig.cpp:94
 msgctxt "QObject|"
 msgid "Conditional Branch"
-msgstr ""
+msgstr "Kondiĉa Branĉo"
 
 #: libcore/globalconfig.cpp:95
-#, fuzzy
-#| msgid "Mispredicted Cond. Branch"
 msgctxt "QObject|"
 msgid "Mispredicted Cond. Branch"
-msgstr "Mispredicted Cond. Branĉo"
+msgstr "Misprognozita Kond. Branĉo"
 
 #: libcore/globalconfig.cpp:96
-#, fuzzy
-#| msgid "Mispredicted Ind. Branch"
 msgctxt "QObject|"
 msgid "Mispredicted Branch"
-msgstr "Mispredicted Ind. Branĉo"
+msgstr "Misprognozita Branĉo"
 
 #: libcore/globalconfig.cpp:97
 msgctxt "QObject|"
 msgid "Global Bus Event"
-msgstr ""
+msgstr "Ĉiea Bus-Evento"
 
 #: libcore/globalconfig.cpp:98
-#, fuzzy
 msgctxt "QObject|"
 msgid "Samples"
-msgstr "Helevo"
+msgstr "Specimenoj"
 
 #: libcore/globalconfig.cpp:99
-#, fuzzy
-#| msgid "System Time"
 msgctxt "QObject|"
 msgid "System Time"
-msgstr "Sistema tempo"
+msgstr "Sistemtempo"
 
 #: libcore/globalconfig.cpp:100
-#, fuzzy
-#| msgid "System Time"
 msgctxt "QObject|"
 msgid "User Time"
-msgstr "Sistema tempo"
+msgstr "Uzantotempo"
 
 #: libcore/globalconfig.cpp:101
 msgctxt "QObject|"
 msgid "Cycle Estimation"
-msgstr ""
+msgstr "Ciklotakso"
 
 #: libcore/tracedata.cpp:1240
 msgctxt "QObject|"
 msgid "(no caller)"
-msgstr ""
+msgstr "(neniu alvokanto)"
 
 #: libcore/tracedata.cpp:1247 libcore/tracedata.cpp:1266
 #, qt-format
 msgctxt "QObject|"
 msgid "%1 via %2"
-msgstr ""
+msgstr "%1 per %2"
 
 #: libcore/tracedata.cpp:1256
 msgctxt "QObject|"
 msgid "(no callee)"
-msgstr ""
+msgstr "(neniu vokita)"
 
 #: libcore/tracedata.cpp:2709
 msgctxt "QObject|"
 msgid "(global)"
-msgstr ""
+msgstr "(ĉiea)"
 
 #: libcore/tracedata.cpp:3144
 msgctxt "QObject|"
 msgid "(not found)"
-msgstr ""
+msgstr "(ne trovita)"
 
 #: libcore/tracedata.cpp:3692
 msgctxt "TraceData|"
 msgid "Recalculating Function Cycles..."
-msgstr ""
+msgstr "Rekalkulante Funkciajn Ciklojn..."
 
 #: libviews/callgraphview.cpp:414
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "QObject|"
 msgid "Call(s) from %1"
-msgstr "Iru al '%1'"
+msgstr "Voko(j) de %1"
 
 #: libviews/callgraphview.cpp:417
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "QObject|"
 msgid "Call(s) to %1"
-msgstr "Iru al '%1'"
+msgstr "Voko(j) al %1"
 
 #: libviews/callgraphview.cpp:419
-#, fuzzy
-#| msgid "(unknown)"
 msgctxt "QObject|"
 msgid "(unknown call)"
-msgstr "(nekonata)"
+msgstr "(nekonata voko)"
 
 #: libviews/callgraphview.cpp:908
 msgctxt "QObject|"
 msgid "Export Graph"
-msgstr ""
+msgstr "Eksporti Grafeon"
 
 #: libviews/callgraphview.cpp:1608
 msgctxt "CallGraphView|"
@@ -429,6 +372,17 @@ msgid ""
 "There are similar visualization options to the Call Treemap; the selected "
 "function is highlighted.</p>"
 msgstr ""
+"<b>Alvoko-grafeo ĉirkaŭ aktiva Funkcio</b><p>Depende de agordo, ĉi tiu vido "
+"montras la alvokan grafeon de la aktiva funkcio. Noto: la montrata kosto "
+"estas <b>nur</b> la kosto kiu estas elspezita dum la aktiva funkcio efektive "
+"funkciis; t.e. la kosto montrita por main() - se ĝi estas videbla - devus "
+"esti la sama kiel la kosto de la aktiva funkcio, ĉar tio estas la parto de "
+"inkluziva kosto de main() elspezita dum la aktiva funkcio funkciis.</p> "
+"<p>Por cikloj, bluaj alvokaj sagoj indikas, ke ĉi tio estas artefarita "
+"alvoko aldonita por ĝusta desegnaĵo, kiu fakte neniam okazis.</p><p>Se la "
+"grafeo estas pli granda ol la fenestraĵareo, superrigarda pano estas "
+"montrita en unu eĝo. Estas similaj bildigaj opcioj al la Voka Arbomapo; la "
+"elektita funkcio estas reliefigita.</p>"
 
 #: libviews/callgraphview.cpp:2020
 msgctxt "CallGraphView|"
@@ -436,22 +390,24 @@ msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
 "Reduce node/edge limits for speedup.\n"
 msgstr ""
+"Averto: longdaŭra grafea aranĝado estas en progreso.\n"
+"Malpligrandigu nodajn/eĝajn limojn por akcelo.\n"
 
 #: libviews/callgraphview.cpp:2023
 msgctxt "CallGraphView|"
 msgid "Layouting stopped.\n"
-msgstr ""
+msgstr "Aranĝado ĉesis.\n"
 
 #: libviews/callgraphview.cpp:2025
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
-msgstr ""
+msgstr "La voka grafeo havas %1 nodojn kaj %2 eĝojn.\n"
 
 #: libviews/callgraphview.cpp:2034
 msgctxt "CallGraphView|"
 msgid "No graph available because the layouting process failed.\n"
-msgstr ""
+msgstr "Neniu grafeo havebla ĉar la aranĝa procezo malsukcesis.\n"
 
 #: libviews/callgraphview.cpp:2036
 #, qt-format
@@ -460,26 +416,28 @@ msgid ""
 "Trying to run the following command did not work:\n"
 "'%1'\n"
 msgstr ""
+"Provo ruli la jenan komandon ne funkciis:\n"
+"'%1'\n"
 
 #: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
 msgctxt "CallGraphView|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
-msgstr ""
+msgstr "Bonvolu kontroli, ke 'punkto' estas instalita (pako GraphViz)."
 
 #: libviews/callgraphview.cpp:2080
 msgctxt "CallGraphView|"
 msgid "No item activated for which to draw the call graph."
-msgstr ""
+msgstr "Neniu aĵo aktivigita por kiu desegni la alvokan grafeon."
 
 #: libviews/callgraphview.cpp:2092
 msgctxt "CallGraphView|"
 msgid "No call graph can be drawn for the active item."
-msgstr ""
+msgstr "Neniu voka grafeo povas esti desegnita por la aktiva ero."
 
 #: libviews/callgraphview.cpp:2554
 msgctxt "CallGraphView|"
 msgid "Error running the graph layouting tool.\n"
-msgstr ""
+msgstr "Eraro pri funkciado de la grafea aranĝo.\n"
 
 #: libviews/callgraphview.cpp:2559
 #, qt-format
@@ -489,15 +447,16 @@ msgid ""
 "\t'%1'\n"
 "because it has no cost of the selected event type."
 msgstr ""
+"Ne estas alvoka grafeo disponebla por funkcio\n"
+"\t'%1'\n"
+"ĉar ĝi ne havas koston de la elektita eventospeco."
 
 #: libviews/callgraphview.cpp:2773
 msgctxt "CallGraphView|"
 msgid "Caller Depth"
-msgstr ""
+msgstr "Alvokanto Profundo"
 
 #: libviews/callgraphview.cpp:2774 libviews/callgraphview.cpp:2814
-#, fuzzy
-#| msgid "Unlimited"
 msgctxt "CallGraphView|"
 msgid "Unlimited"
 msgstr "Senlima"
@@ -505,39 +464,29 @@ msgstr "Senlima"
 #: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
 msgctxt "CallGraphView|None"
 msgid "Depth 0"
-msgstr ""
+msgstr "Profundo 0"
 
 #: libviews/callgraphview.cpp:2778 libviews/callgraphview.cpp:2818
-#, fuzzy
-#| msgid "max. 10"
 msgctxt "CallGraphView|"
 msgid "max. 1"
-msgstr "maks. 10"
+msgstr "maks. 1"
 
 #: libviews/callgraphview.cpp:2779 libviews/callgraphview.cpp:2819
-#, fuzzy
-#| msgid "max. 2"
 msgctxt "CallGraphView|"
 msgid "max. 2"
 msgstr "maks. 2"
 
 #: libviews/callgraphview.cpp:2780 libviews/callgraphview.cpp:2820
-#, fuzzy
-#| msgid "max. 5"
 msgctxt "CallGraphView|"
 msgid "max. 5"
 msgstr "maks. 5"
 
 #: libviews/callgraphview.cpp:2781 libviews/callgraphview.cpp:2821
-#, fuzzy
-#| msgid "max. 10"
 msgctxt "CallGraphView|"
 msgid "max. 10"
 msgstr "maks. 10"
 
 #: libviews/callgraphview.cpp:2782 libviews/callgraphview.cpp:2822
-#, fuzzy
-#| msgid "max. 15"
 msgctxt "CallGraphView|"
 msgid "max. 15"
 msgstr "maks. 15"
@@ -545,56 +494,44 @@ msgstr "maks. 15"
 #: libviews/callgraphview.cpp:2813
 msgctxt "CallGraphView|"
 msgid "Callee Depth"
-msgstr ""
+msgstr "Callee Profundo"
 
 #: libviews/callgraphview.cpp:2853
 msgctxt "CallGraphView|"
 msgid "Min. Node Cost"
-msgstr ""
+msgstr "Min. Noda Kosto"
 
 #: libviews/callgraphview.cpp:2854
 msgctxt "CallGraphView|"
 msgid "No Minimum"
-msgstr ""
+msgstr "Neniu Minimumo"
 
 #: libviews/callgraphview.cpp:2860
-#, fuzzy
-#| msgid "50 %"
 msgctxt "CallGraphView|"
 msgid "50 %"
 msgstr "50 %"
 
 #: libviews/callgraphview.cpp:2861
-#, fuzzy
-#| msgid "20 %"
 msgctxt "CallGraphView|"
 msgid "20 %"
 msgstr "20 %"
 
 #: libviews/callgraphview.cpp:2862
-#, fuzzy
-#| msgid "10 %"
 msgctxt "CallGraphView|"
 msgid "10 %"
 msgstr "10 %"
 
 #: libviews/callgraphview.cpp:2863
-#, fuzzy
-#| msgid "5 %"
 msgctxt "CallGraphView|"
 msgid "5 %"
 msgstr "5 %"
 
 #: libviews/callgraphview.cpp:2864
-#, fuzzy
-#| msgid "2 %"
 msgctxt "CallGraphView|"
 msgid "2 %"
 msgstr "2 %"
 
 #: libviews/callgraphview.cpp:2865
-#, fuzzy
-#| msgid "1 %"
 msgctxt "CallGraphView|"
 msgid "1 %"
 msgstr "1 %"
@@ -602,78 +539,64 @@ msgstr "1 %"
 #: libviews/callgraphview.cpp:2895
 msgctxt "CallGraphView|"
 msgid "Min. Call Cost"
-msgstr ""
+msgstr "Min. Voko Kosto"
 
 #: libviews/callgraphview.cpp:2896
 msgctxt "CallGraphView|"
 msgid "Same as Node"
-msgstr ""
+msgstr "Same kiel Nodo"
 
 #: libviews/callgraphview.cpp:2898
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
-msgstr ""
+msgstr "50 % de Nodo"
 
 #: libviews/callgraphview.cpp:2900
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
-msgstr ""
+msgstr "20 % de Nodo"
 
 #: libviews/callgraphview.cpp:2902
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
-msgstr ""
+msgstr "10 % de Nodo"
 
 #: libviews/callgraphview.cpp:2931
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
-msgstr ""
+msgstr "Birdokula Vido"
 
 #: libviews/callgraphview.cpp:2932
-#, fuzzy
-#| msgid "Top-left"
 msgctxt "CallGraphView|"
 msgid "Top Left"
-msgstr "Supre-maldekstra"
+msgstr "Supre Maldekstre"
 
 #: libviews/callgraphview.cpp:2933
-#, fuzzy
-#| msgid "Top-right"
 msgctxt "CallGraphView|"
 msgid "Top Right"
-msgstr "Supre-dekstra"
+msgstr "Supre Dekstre"
 
 #: libviews/callgraphview.cpp:2934
-#, fuzzy
-#| msgid "Bottom-left"
 msgctxt "CallGraphView|"
 msgid "Bottom Left"
-msgstr "Malsupre-maldekstra"
+msgstr "Malsupre Maldekstre"
 
 #: libviews/callgraphview.cpp:2935
-#, fuzzy
-#| msgid "Bottom-right"
 msgctxt "CallGraphView|"
 msgid "Bottom Right"
-msgstr "Malsupre-dekstra"
+msgstr "Malsupre Dekstre"
 
 #: libviews/callgraphview.cpp:2936
-#, fuzzy
-#| msgid "Automatic"
 msgctxt "CallGraphView|"
 msgid "Automatic"
 msgstr "Aŭtomata"
 
 #: libviews/callgraphview.cpp:2937
-#, fuzzy
-#| msgid "Hide"
 msgctxt "CallGraphView|"
 msgid "Hide"
 msgstr "Kaŝi"
 
 #: libviews/callgraphview.cpp:2967
-#, fuzzy
-#| msgid "Layout"
 msgctxt "CallGraphView|"
 msgid "Layout"
 msgstr "Aspekto"
@@ -681,11 +604,9 @@ msgstr "Aspekto"
 #: libviews/callgraphview.cpp:2968
 msgctxt "CallGraphView|"
 msgid "Top to Down"
-msgstr ""
+msgstr "Supre al Malsupre"
 
 #: libviews/callgraphview.cpp:2969
-#, fuzzy
-#| msgid "Left to Right"
 msgctxt "CallGraphView|"
 msgid "Left to Right"
 msgstr "Liva al Dekstra"
@@ -693,41 +614,36 @@ msgstr "Liva al Dekstra"
 #: libviews/callgraphview.cpp:2970
 msgctxt "CallGraphView|"
 msgid "Circular"
-msgstr ""
+msgstr "Cirkulero"
 
 #: libviews/callgraphview.cpp:3010 libviews/callgraphview.cpp:3015
 #: libviews/callgraphview.cpp:3035
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
-msgstr "Iru al '%1'"
+msgstr "Iri al '%1'"
 
 #: libviews/callgraphview.cpp:3046
-#, fuzzy
-#| msgid "Layout"
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
-msgstr "Aspekto"
+msgstr "Ĉesi Aranĝigon"
 
 #: libviews/callgraphview.cpp:3053
 msgctxt "CallGraphView|"
 msgid "Export Graph"
-msgstr ""
+msgstr "Eksporti Grafeon"
 
 #: libviews/callgraphview.cpp:3054
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
-msgstr ""
+msgstr "Kiel DOT-dosiero..."
 
 #: libviews/callgraphview.cpp:3055
 msgctxt "CallGraphView|"
 msgid "As Image..."
-msgstr ""
+msgstr "Kiel Bildo..."
 
 #: libviews/callgraphview.cpp:3058
-#, fuzzy
-#| msgid "Graph"
 msgctxt "CallGraphView|"
 msgid "Graph"
 msgstr "Grafo"
@@ -735,35 +651,29 @@ msgstr "Grafo"
 #: libviews/callgraphview.cpp:3066
 msgctxt "CallGraphView|"
 msgid "Arrows for Skipped Calls"
-msgstr ""
+msgstr "Sagoj por Saltitaj Vokoj"
 
 #: libviews/callgraphview.cpp:3071
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
-msgstr ""
+msgstr "Interna-ciklo Vokoj"
 
 #: libviews/callgraphview.cpp:3076
 msgctxt "CallGraphView|"
 msgid "Cluster Groups"
-msgstr ""
+msgstr "Aretgrupoj"
 
 #: libviews/callgraphview.cpp:3080
-#, fuzzy
-#| msgid "Navigation"
 msgctxt "CallGraphView|"
 msgid "Visualization"
-msgstr "Navigado"
+msgstr "Bildigo"
 
 #: libviews/callgraphview.cpp:3081
-#, fuzzy
-#| msgid "Compact"
 msgctxt "CallGraphView|"
 msgid "Compact"
 msgstr "Kunpremita"
 
 #: libviews/callgraphview.cpp:3084
-#, fuzzy
-#| msgid "Normal"
 msgctxt "CallGraphView|"
 msgid "Normal"
 msgstr "Normala"
@@ -771,48 +681,42 @@ msgstr "Normala"
 #: libviews/callgraphview.cpp:3087
 msgctxt "CallGraphView|"
 msgid "Tall"
-msgstr ""
+msgstr "Alta"
 
 #: libviews/callgraphview.cpp:3119
 msgctxt "CallGraphView|"
 msgid "Export Graph As Image"
-msgstr ""
+msgstr "Eksporti Grafeon Kiel Bildon"
 
 #: libviews/callgraphview.cpp:3121
 msgctxt "CallGraphView|"
 msgid "Images (*.png *.jpg)"
-msgstr ""
+msgstr "Bildoj (*.png *.jpg)"
 
 #: libviews/callitem.cpp:73 libviews/partlistitem.cpp:131
 msgctxt "QObject|"
 msgid "(active)"
-msgstr ""
+msgstr "(aktiva)"
 
 #: libviews/callmapview.cpp:52
 msgctxt "CallMapView|Name"
 msgid "A thing's name"
-msgstr ""
+msgstr "Nomo de afero"
 
 #: libviews/callmapview.cpp:53
-#, fuzzy
-#| msgid "Cost"
 msgctxt "CallMapView|"
 msgid "Cost"
 msgstr "Kostoj"
 
 #: libviews/callmapview.cpp:54
-#, fuzzy
-#| msgid "Location"
 msgctxt "CallMapView|"
 msgid "Location"
 msgstr "Loko"
 
 #: libviews/callmapview.cpp:56
-#, fuzzy
-#| msgid "Call"
 msgctxt "CallMapView|"
 msgid "Calls"
-msgstr "Voko"
+msgstr "Vokoj"
 
 #: libviews/callmapview.cpp:91
 msgctxt "CallMapView|"
@@ -822,6 +726,10 @@ msgid ""
 "function; its size tries to be proportional to the cost spent therein while "
 "the active function is running (however, there are drawing constraints).</p>"
 msgstr ""
+"<b>Alvokanto-Mapo</b><p>Ĉi tiu grafeo montras la nestitan hierarkion de ĉiuj "
+"alvokantoj de la nuna aktivigita funkcio. Ĉiu kolora rektangulo reprezentas "
+"funkcion; ĝia grandeco provas esti proporcia al la kosto elspezita en ĝi dum "
+"la aktiva funkcio funkcias (tamen ekzistas desegnaj limoj).</p>"
 
 #: libviews/callmapview.cpp:98
 msgctxt "CallMapView|"
@@ -831,6 +739,10 @@ msgid ""
 "function; its size tries to be proportional to the cost spent therein while "
 "the active function is running (however, there are drawing constraints).</p>"
 msgstr ""
+"<b>Voka Mapo</b><p>Ĉi tiu grafeo montras la nestitan hierarkion de ĉiuj "
+"alvokitoj de la nuna aktivigita funkcio. Ĉiu kolora rektangulo reprezentas "
+"funkcion; ĝia grandeco provas esti proporcia al la kosto elspezita en ĝi dum "
+"la aktiva funkcio funkcias (tamen ekzistas desegnaj limoj).</p>"
 
 #: libviews/callmapview.cpp:106
 msgctxt "CallMapView|"
@@ -847,10 +759,20 @@ msgid ""
 "siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
 "em> activates the current item.</p>"
 msgstr ""
+"<p>Aperaj opcioj troviĝas en la kunteksta menuo. Por akiri precizajn "
+"grandoproporciojn, elektu 'Kaŝi malĝustajn randojn'. Ĉar ĉi tiu reĝimo povas "
+"esti <em>tre</em> tempopostula, vi eble volas limigi la maksimuman "
+"desegnitan nestannivelon antaŭe. \"Plej bona\" determinas la disdividan "
+"direkton por infanoj de la proporcio de la gepatro. 'Ĉiam Plej Bona' decidas "
+"pri restanta spaco por ĉiu gefrato. 'Ignori Proporciojn' prenas spacon por "
+"desegno de funkcionomoj <em>antaŭ</em> desegnado de infanoj. Notu, ke "
+"grandecoproporcioj povas esti <em>tre</em> malĝustaj.</p><p>Ĉi tio estas "
+"fenestraĵo de <em>Arbomapo</em>. Klavarnavigado disponeblas per la "
+"maldekstra/dekstra sagoklavoj por trairi gefratojn, kaj supren/malsupren "
+"sagoklavoj por iri nestannivelon supren/malsupren. <em>Reveno</em> aktivigas "
+"la nunan eron.</p>"
 
 #: libviews/callmapview.cpp:139
-#, fuzzy
-#| msgid "Go To"
 msgctxt "CallMapView|"
 msgid "Go To"
 msgstr "Iri al"
@@ -858,187 +780,175 @@ msgstr "Iri al"
 #: libviews/callmapview.cpp:170
 msgctxt "CallMapView|"
 msgid "Stop at Depth"
-msgstr ""
+msgstr "Halti ĉe Profundo"
 
 #: libviews/callmapview.cpp:171
 msgctxt "CallMapView|"
 msgid "No Depth Limit"
-msgstr ""
+msgstr "Neniu Profundo Limo"
 
 #: libviews/callmapview.cpp:173
 msgctxt "CallMapView|"
 msgid "Depth 10"
-msgstr ""
+msgstr "Profundo 10"
 
 #: libviews/callmapview.cpp:174
 msgctxt "CallMapView|"
 msgid "Depth 15"
-msgstr ""
+msgstr "Profundo 15"
 
 #: libviews/callmapview.cpp:175
 msgctxt "CallMapView|"
 msgid "Depth 20"
-msgstr ""
+msgstr "Profundo 20"
 
 #: libviews/callmapview.cpp:178
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Depth of '%1' (%2)"
-msgstr ""
+msgstr "Profundo de '%1' (%2)"
 
 #: libviews/callmapview.cpp:185
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Decrement Depth (to %1)"
-msgstr ""
+msgstr "Malpliigi Profundon (al %1)"
 
 #: libviews/callmapview.cpp:187
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Increment Depth (to %1)"
-msgstr ""
+msgstr "Pliigi Profundon (al %1)"
 
 #: libviews/callmapview.cpp:213
-#, fuzzy
-#| msgid "Function"
 msgctxt "CallMapView|"
 msgid "Stop at Function"
-msgstr "Funkcio"
+msgstr "Halti ĉe Funkcio"
 
 #: libviews/callmapview.cpp:214
-#, fuzzy
-#| msgid "Function"
 msgctxt "CallMapView|"
 msgid "No Function Limit"
-msgstr "Funkcio"
+msgstr "Neniu Funkcia Limo"
 
 #: libviews/callmapview.cpp:257
 msgctxt "CallMapView|"
 msgid "Stop at Area"
-msgstr ""
+msgstr "Halti ĉe Areo"
 
 #: libviews/callmapview.cpp:258
 msgctxt "CallMapView|"
 msgid "No Area Limit"
-msgstr ""
+msgstr "Neniu Areo-Limo"
 
 #: libviews/callmapview.cpp:260
 msgctxt "CallMapView|"
 msgid "100 Pixels"
-msgstr ""
+msgstr "100 Pikseloj"
 
 #: libviews/callmapview.cpp:261
 msgctxt "CallMapView|"
 msgid "200 Pixels"
-msgstr ""
+msgstr "200 pikseloj"
 
 #: libviews/callmapview.cpp:262
 msgctxt "CallMapView|"
 msgid "500 Pixels"
-msgstr ""
+msgstr "500 pikseloj"
 
 #: libviews/callmapview.cpp:263
 msgctxt "CallMapView|"
 msgid "1000 Pixels"
-msgstr ""
+msgstr "1000 Pikseloj"
 
 #: libviews/callmapview.cpp:269
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Area of '%1' (%2)"
-msgstr ""
+msgstr "Areo de '%1' (%2)"
 
 #: libviews/callmapview.cpp:275
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Double Area Limit (to %1)"
-msgstr ""
+msgstr "Duobla AreoLimo (al %1)"
 
 #: libviews/callmapview.cpp:277
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Half Area Limit (to %1)"
-msgstr ""
+msgstr "Duona Areo Limo (al %1)"
 
 #: libviews/callmapview.cpp:327
-#, fuzzy
-#| msgid "Navigation"
 msgctxt "CallMapView|"
 msgid "Visualization"
-msgstr "Navigado"
+msgstr "Bildigo"
 
 #: libviews/callmapview.cpp:328
 msgctxt "CallMapView|"
 msgid "Split Direction"
-msgstr ""
+msgstr "Dividita Direkto"
 
 #: libviews/callmapview.cpp:331
 msgctxt "CallMapView|"
 msgid "Skip Incorrect Borders"
-msgstr ""
+msgstr "Salti Malĝustajn Limojn"
 
 #: libviews/callmapview.cpp:336
 msgctxt "CallMapView|"
 msgid "Border Width"
-msgstr ""
+msgstr "Bordo-Larĝo"
 
 #: libviews/callmapview.cpp:337
 msgctxt "CallMapView|"
 msgid "Border 0"
-msgstr ""
+msgstr "Limo 0"
 
 #: libviews/callmapview.cpp:339
 msgctxt "CallMapView|"
 msgid "Border 1"
-msgstr ""
+msgstr "Limo 1"
 
 #: libviews/callmapview.cpp:340
 msgctxt "CallMapView|"
 msgid "Border 2"
-msgstr ""
+msgstr "Limo 2"
 
 #: libviews/callmapview.cpp:341
 msgctxt "CallMapView|"
 msgid "Border 3"
-msgstr ""
+msgstr "Limo 3"
 
 #: libviews/callmapview.cpp:346
 msgctxt "CallMapView|"
 msgid "Draw Symbol Names"
-msgstr ""
+msgstr "Desegni Simbolnomojn"
 
 #: libviews/callmapview.cpp:348
-#, fuzzy
-#| msgid "Cost"
 msgctxt "CallMapView|"
 msgid "Draw Cost"
-msgstr "Kostoj"
+msgstr "Desegni Koston"
 
 #: libviews/callmapview.cpp:350
-#, fuzzy
-#| msgid "Location"
 msgctxt "CallMapView|"
 msgid "Draw Location"
-msgstr "Loko"
+msgstr "Desegni Lokon"
 
 #: libviews/callmapview.cpp:352
 msgctxt "CallMapView|"
 msgid "Draw Calls"
-msgstr ""
+msgstr "Desegni Vokojn"
 
 #: libviews/callmapview.cpp:356
 msgctxt "CallMapView|"
 msgid "Ignore Proportions"
-msgstr ""
+msgstr "Ignori Proporciojn"
 
 #: libviews/callmapview.cpp:358
 msgctxt "CallMapView|"
 msgid "Allow Rotation"
-msgstr ""
+msgstr "Permesi Rotacion"
 
 #: libviews/callmapview.cpp:376
-#, fuzzy
-#| msgid "Shading"
 msgctxt "CallMapView|"
 msgid "Shading"
 msgstr "Volvado"
@@ -1047,23 +957,19 @@ msgstr "Volvado"
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Call Map: Current is '%1'"
-msgstr ""
+msgstr "Voka Mapo: Nuna estas '%1'"
 
 #: libviews/callmapview.cpp:621
-#, fuzzy
-#| msgid "Function"
 msgctxt "QObject|"
 msgid "(no function)"
-msgstr "Funkcio"
+msgstr "(neniu funkcio)"
 
 #: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
 msgctxt "QObject|"
 msgid "(no call)"
-msgstr ""
+msgstr "(neniu voko)"
 
 #: libviews/callview.cpp:37
-#, fuzzy
-#| msgid "Cost"
 msgctxt "CallView|"
 msgid "Cost"
 msgstr "Kostoj"
@@ -1071,40 +977,32 @@ msgstr "Kostoj"
 #: libviews/callview.cpp:38
 msgctxt "CallView|"
 msgid "Cost per call"
-msgstr ""
+msgstr "Kosto por voko"
 
 #: libviews/callview.cpp:39
-#, fuzzy
-#| msgid "Cost"
 msgctxt "CallView|"
 msgid "Cost 2"
-msgstr "Kostoj"
+msgstr "Kosto 2"
 
 #: libviews/callview.cpp:40
 msgctxt "CallView|"
 msgid "Cost 2 per call"
-msgstr ""
+msgstr "Kosto 2 por voko"
 
 #: libviews/callview.cpp:41
-#, fuzzy
-#| msgid "Count"
 msgctxt "CallView|"
 msgid "Count"
 msgstr "Nombro"
 
 #: libviews/callview.cpp:42
-#, fuzzy
-#| msgid "Call"
 msgctxt "CallView|"
 msgid "Caller"
-msgstr "Voko"
+msgstr "Alvokanto"
 
 #: libviews/callview.cpp:42
-#, fuzzy
-#| msgid "Call"
 msgctxt "CallView|"
 msgid "Callee"
-msgstr "Voko"
+msgstr "Callee"
 
 #: libviews/callview.cpp:76
 msgctxt "CallView|"
@@ -1118,6 +1016,14 @@ msgid ""
 "information panel. If there are two panels (Split mode), the function of the "
 "other panel is changed instead.</p>"
 msgstr ""
+"<b>Listo de rektaj Alvokantoj</b><p>Ĉi tiu listo montras ĉiujn funkciojn "
+"vokantajn la nunan elektitan rekte, kune kun voknombro kaj la kosto "
+"elspezita en la nuna elektita funkcio dum oni vokas el la funkcio el la "
+"listo. </p><p>Ikono anstataŭ inkluziva kosto precizigas, ke tio estas voko "
+"ene de rekursiva ciklo. Inkluziva kosto ne havas sencon ĉi tie.</"
+"p><p>Selektante funkcion, ĝi estas la nuna elektita el ĉi tiu informpanelo. "
+"Se estas du paneloj (Split-reĝimo), la funkcio de la alia panelo estas "
+"ŝanĝita anstataŭe.</p>"
 
 #: libviews/callview.cpp:89
 msgctxt "CallView|"
@@ -1129,19 +1035,24 @@ msgid ""
 "information panel. If there are two panels (Split mode), the function of the "
 "other panel is changed instead.</p>"
 msgstr ""
+"<b>Listo de rektaj vokitoj</b><p>Ĉi tiu listo montras ĉiujn funkciojn "
+"nomitajn de la nuna elektita rekte, kune kun voknombro kaj la kosto "
+"elspezita en ĉi tiu funkcio dum oni vokas de la elektita funkcio.</p> ><p>La "
+"elekto de funkcio faras ĝin la nuna elektita el ĉi tiu informpanelo. Se "
+"estas du paneloj (Split-reĝimo), la funkcio de la alia panelo estas ŝanĝita "
+"anstataŭe.</p>"
 
 #: libviews/callview.cpp:118 libviews/callview.cpp:123
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "CallView|"
 msgid "Go to '%1'"
-msgstr "Iru al '%1'"
+msgstr "Iri al '%1'"
 
 #: libviews/callview.cpp:257 libviews/callview.cpp:261
 #, qt-format
 msgctxt "CallView|"
 msgid "%1 per call"
-msgstr ""
+msgstr "%1 per voko"
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
@@ -1162,47 +1073,37 @@ msgstr[1] ""
 #: libviews/coverageview.cpp:37
 msgctxt "CoverageView|"
 msgid "Incl."
-msgstr ""
+msgstr "Inkl."
 
 #: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
-#, fuzzy
-#| msgid "Distance"
 msgctxt "CoverageView|"
 msgid "Distance"
 msgstr "Distanco"
 
 #: libviews/coverageview.cpp:41
-#, fuzzy
-#| msgid "Call"
 msgctxt "CoverageView|"
 msgid "Called"
-msgstr "Voko"
+msgstr "Vokita"
 
 #: libviews/coverageview.cpp:42
-#, fuzzy
-#| msgid "Call"
 msgctxt "CoverageView|"
 msgid "Caller"
-msgstr "Voko"
+msgstr "Alvokanto"
 
 #: libviews/coverageview.cpp:46
 msgctxt "CoverageView|"
 msgid "Self"
-msgstr ""
+msgstr "Mem"
 
 #: libviews/coverageview.cpp:48
-#, fuzzy
-#| msgid "Call"
 msgctxt "CoverageView|"
 msgid "Calling"
-msgstr "Voko"
+msgstr "Vokado"
 
 #: libviews/coverageview.cpp:49
-#, fuzzy
-#| msgid "Call"
 msgctxt "CoverageView|"
 msgid "Callee"
-msgstr "Voko"
+msgstr "Callee"
 
 #: libviews/coverageview.cpp:84
 msgctxt "CoverageView|"
@@ -1223,6 +1124,21 @@ msgid ""
 "selected one of this information panel. If there are two panels (Split "
 "mode), the function of the other panel is changed instead.</p>"
 msgstr ""
+"<b>Listo de ĉiuj Vokintoj</b><p>Ĉi tiu listo montras ĉiujn funkciojn "
+"vokantajn la nunan elektitan, ĉu rekte aŭ kun pluraj funkcioj intere sur la "
+"stako; la nombro da funkcioj inter pli unu estas nomata <em>Distanco</em> "
+"(ekz. por funkcio A,B,C ekzistas voko de A al C kiam A vokas B kaj B vokas "
+"C, t.e. A => B => C. La distanco ĉi tie estas 2).</p><p>La absoluta kosto "
+"montrita estas la kosto elspezita en la elektita funkcio dum listigita "
+"funkcio estas aktiva; relativa kosto estas la procento de la tuta kosto "
+"elspezita en la elektita funkcio dum la listigita estas aktiva. La "
+"kostgrafiko montras logaritman procenton kun malsama koloro por ĉiu distanco."
+"</p><p>Ĉar povas esti multaj vokoj de la sama funkcio, la distanckolumno "
+"foje montras la gamon de distancoj por ĉiuj vokoj okazantaj; tiam, en "
+"krampoj, estas la meza distanco, t.e. la distanco kie okazis la plej multaj "
+"el la alvokostoj.</p><p>Elekti funkcion faras ĝin la nuna elektita el ĉi tiu "
+"informpanelo. Se estas du paneloj (Split-reĝimo), la funkcio de la alia "
+"panelo estas ŝanĝita anstataŭe.</p>"
 
 #: libviews/coverageview.cpp:114
 msgctxt "CoverageView|"
@@ -1243,17 +1159,29 @@ msgid ""
 "selected one of this information panel. If there are two panels (Split "
 "mode), the function of the other panel is changed instead.</p>"
 msgstr ""
+"<b>Listo de ĉiuj alvokoj</b><p>Ĉi tiu listo montras ĉiujn funkciojn nomitajn "
+"de la nuna elektita, ĉu rekte aŭ kun pluraj funkcioj intere sur la stako; la "
+"nombro de funkcioj inter pli unu estas nomata <em>Distanco</em> (ekz. por "
+"funkcio A,B,C ekzistas voko de A al C kiam A vokas B kaj B vokas C, t.e. A "
+"=> B => C. La distanco ĉi tie estas 2).</p><p>La absoluta kosto montrita "
+"estas la kosto elspezita en la listigita funkcio dum la elektita estas "
+"aktiva; relativa kosto estas la procento de la tuta kosto elspezita en la "
+"listigita funkcio dum la elektita estas aktiva. La kostografiko ĉiam montras "
+"logaritman procenton kun malsama koloro por ĉiu distanco.</p><p>Ĉar povas "
+"esti multaj vokoj al la sama funkcio, la distanckolumno foje montras la "
+"gamon de distancoj por ĉiuj vokoj okazantaj; tiam, en krampoj, estas la meza "
+"distanco, t.e. la distanco kie okazis la plej multaj el la alvokkostoj.</"
+"p><p>Elekti funkcion faras ĝin la nuna elektita el ĉi tiu informpanelo. Se "
+"estas du paneloj (Split-reĝimo), la funkcio de la alia panelo estas ŝanĝita "
+"anstataŭe.</p>"
 
 #: libviews/coverageview.cpp:160
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "CoverageView|"
 msgid "Go to '%1'"
-msgstr "Iru al '%1'"
+msgstr "Iri al '%1'"
 
 #: libviews/eventtypeitem.cpp:48
-#, fuzzy
-#| msgid "Unknown Type"
 msgctxt "QObject|"
 msgid "Unknown Type"
 msgstr "Nekonata Tipo"
@@ -1261,31 +1189,27 @@ msgstr "Nekonata Tipo"
 #: libviews/eventtypeview.cpp:37
 msgctxt "EventTypeView|"
 msgid "Event Type"
-msgstr ""
+msgstr "Eventa Tipo"
 
 #: libviews/eventtypeview.cpp:38
 msgctxt "EventTypeView|"
 msgid "Incl."
-msgstr ""
+msgstr "Inkl."
 
 #: libviews/eventtypeview.cpp:39
 msgctxt "EventTypeView|"
 msgid "Self"
-msgstr ""
+msgstr "Mem"
 
 #: libviews/eventtypeview.cpp:40
-#, fuzzy
-#| msgid "Short"
 msgctxt "EventTypeView|"
 msgid "Short"
 msgstr "Mallonga"
 
 #: libviews/eventtypeview.cpp:42
-#, fuzzy
-#| msgid "KFormula"
 msgctxt "EventTypeView|"
 msgid "Formula"
-msgstr "Formulilo"
+msgstr "Formulo"
 
 #: libviews/eventtypeview.cpp:76
 msgctxt "EventTypeView|"
@@ -1295,37 +1219,38 @@ msgid ""
 "type.</p><p>By choosing a cost type from the list, you change the cost type "
 "of costs shown all over KCachegrind to be the selected one.</p>"
 msgstr ""
+"<b>Listo de Kostotipoj</b><p>Ĉi tiu listo montras ĉiujn kostspecojn "
+"disponeblajn kaj kia estas la mem/inkluziva kosto de la nuna elektita "
+"funkcio por tiu kostotipo.</p><p>Elektante kostospecon. el la listo, vi "
+"ŝanĝas la kostspecon de kostoj montritaj ĉie en KCachegrind por esti la "
+"elektita.</p>"
 
 #: libviews/eventtypeview.cpp:96
 msgctxt "EventTypeView|"
 msgid "Set as Secondary Event Type"
-msgstr ""
+msgstr "Meti kiel Malĉefa Eventotipo"
 
 #: libviews/eventtypeview.cpp:98
 msgctxt "EventTypeView|"
 msgid "Hide Secondary Event Type"
-msgstr ""
+msgstr "Kaŝi Duarangan Eventotipon"
 
 #: libviews/eventtypeview.cpp:107
 msgctxt "EventTypeView|"
 msgid "Edit Long Name"
-msgstr ""
+msgstr "Redakti Longan Nomon"
 
 #: libviews/eventtypeview.cpp:108
 msgctxt "EventTypeView|"
 msgid "Edit Short Name"
-msgstr ""
+msgstr "Redakti Mallongan Nomon"
 
 #: libviews/eventtypeview.cpp:109
-#, fuzzy
-#| msgid "KFormula"
 msgctxt "EventTypeView|"
 msgid "Edit Formula"
-msgstr "Formulilo"
+msgstr "Redakti Formulon"
 
 #: libviews/eventtypeview.cpp:110
-#, fuzzy
-#| msgid "Remove"
 msgctxt "EventTypeView|"
 msgid "Remove"
 msgstr "Forigi"
@@ -1333,47 +1258,41 @@ msgstr "Forigi"
 #: libviews/eventtypeview.cpp:119
 msgctxt "EventTypeView|"
 msgid "New Event Type..."
-msgstr ""
+msgstr "Nova Eventa Tipo..."
 
 #: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
 #, qt-format
 msgctxt "EventTypeView|"
 msgid "New%1"
-msgstr ""
+msgstr "Nova%1"
 
 #: libviews/eventtypeview.cpp:160
 #, qt-format
 msgctxt "EventTypeView|"
 msgid "New Event Type %1"
-msgstr ""
+msgstr "Nova Eventa Tipo %1"
 
 #: libviews/functionlistmodel.cpp:45
 msgctxt "FunctionListModel|"
 msgid "Incl."
-msgstr ""
+msgstr "Inkl."
 
 #: libviews/functionlistmodel.cpp:46
 msgctxt "FunctionListModel|"
 msgid "Self"
-msgstr ""
+msgstr "Mem"
 
 #: libviews/functionlistmodel.cpp:47
-#, fuzzy
-#| msgid "Call"
 msgctxt "FunctionListModel|"
 msgid "Called"
-msgstr "Voko"
+msgstr "Vokita"
 
 #: libviews/functionlistmodel.cpp:48
-#, fuzzy
-#| msgid "Function"
 msgctxt "FunctionListModel|"
 msgid "Function"
 msgstr "Funkcio"
 
 #: libviews/functionlistmodel.cpp:49
-#, fuzzy
-#| msgid "Location"
 msgctxt "FunctionListModel|"
 msgid "Location"
 msgstr "Loko"
@@ -1382,47 +1301,37 @@ msgstr "Loko"
 #, qt-format
 msgctxt "FunctionListModel|"
 msgid "(%1 function(s) skipped)"
-msgstr ""
+msgstr "(%1 funkcio(j) preterlasis)"
 
 #: libviews/functionselection.cpp:87
-#, fuzzy
-#| msgid "Function"
 msgctxt "FunctionSelection|"
 msgid "Function Profile"
-msgstr "Funkcio"
+msgstr "Funkcia Profilo"
 
 #: libviews/functionselection.cpp:95
-#, fuzzy
-#| msgid "&Search:"
 msgctxt "FunctionSelection|"
 msgid "&Search:"
 msgstr "&Serĉi:"
 
 #: libviews/functionselection.cpp:101
-#, fuzzy
-#| msgid "&Search:"
 msgctxt "FunctionSelection|"
 msgid "Search Query"
-msgstr "&Serĉi:"
+msgstr "Serĉa Demando"
 
 #: libviews/functionselection.cpp:116
 msgctxt "FunctionSelection|"
 msgid "Self"
-msgstr ""
+msgstr "Mem"
 
 #: libviews/functionselection.cpp:116
-#, fuzzy
-#| msgid "Group"
 msgctxt "FunctionSelection|"
 msgid "Group"
 msgstr "Grupo"
 
 #: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
-#, fuzzy
-#| msgid "Groupings"
 msgctxt "FunctionSelection|"
 msgid "(No Grouping)"
-msgstr "Grupaĵoj"
+msgstr "(Neniu grupigo)"
 
 #: libviews/functionselection.cpp:209
 msgctxt "FunctionSelection|"
@@ -1434,109 +1343,96 @@ msgid ""
 "the selected group (or all for 'Function' group type), ordered by the costs "
 "spent therein. Functions with costs less than 1% are hidden on default.</p>"
 msgstr ""
+"<b>La Ebena Profilo</b><p>La plata profilo enhavas grupon kaj funkcio-"
+"elektoliston. La gruplisto enhavas ĉiujn grupojn en kiuj kostoj estas "
+"elspezitaj, depende de la elektita gruptipo. La gruplisto estas kaŝita kiam "
+"grupo-tipo 'Funkcio' estas elektita.</p><p>La funkciolisto enhavas la "
+"funkciojn de la elektita grupo (aŭ ĉiujn por 'Funkcio' grupo-tipo), "
+"ordonitaj laŭ la kostoj elspezitaj en ĝi. Funkcioj kun kostoj malpli ol 1% "
+"estas kaŝitaj defaŭlte.</p>"
 
 #: libviews/functionselection.cpp:287
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "FunctionSelection|"
 msgid "Go to '%1'"
-msgstr "Iru al '%1'"
+msgstr "Iri al '%1'"
 
 #: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
-#, fuzzy
-#| msgid "Grouping"
 msgctxt "FunctionSelection|"
 msgid "Grouping"
 msgstr "Grupado"
 
 #: libviews/functionselection.cpp:353
-#, fuzzy
-#| msgid "Groupings"
 msgctxt "FunctionSelection|"
 msgid "No Grouping"
-msgstr "Grupaĵoj"
+msgstr "Neniu Grupiĝo"
 
 #: libviews/instritem.cpp:114 libviews/sourceitem.cpp:94
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "QObject|"
 msgid "Active call to '%1'"
-msgstr "Iru al '%1'"
+msgstr "Aktiva voko al '%1'"
 
 #: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "QObject|"
 msgid "Call to '%1'"
-msgstr "Iru al '%1'"
+msgstr "Voki al '%1'"
 
 #: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "QObject|"
 msgid "%n call(s) to '%2'"
 msgid_plural "%n call(s) to '%2'"
-msgstr[0] "Iru al '%1'"
-msgstr[1] "Iru al '%1'"
+msgstr[0] ""
+msgstr[1] ""
 
 #: libviews/instritem.cpp:155
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 of %2 times to 0x%3"
-msgstr ""
+msgstr "Salti %1 el %2 fojojn al 0x%3"
 
 #: libviews/instritem.cpp:160
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 times to 0x%2"
-msgstr ""
+msgstr "Salti %1 fojojn al 0x%2"
 
 #: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
 msgctxt "QObject|"
 msgid "(cycle)"
-msgstr ""
+msgstr "(ciklo)"
 
 #: libviews/instrview.cpp:193
-#, fuzzy
-#| msgid "#"
 msgctxt "InstrView|"
 msgid "#"
 msgstr "#"
 
 #: libviews/instrview.cpp:194
-#, fuzzy
-#| msgid "Cost"
 msgctxt "InstrView|"
 msgid "Cost"
 msgstr "Kostoj"
 
 #: libviews/instrview.cpp:195
-#, fuzzy
-#| msgid "Cost"
 msgctxt "InstrView|"
 msgid "Cost 2"
-msgstr "Kostoj"
+msgstr "Kosto 2"
 
 #: libviews/instrview.cpp:197
-#, fuzzy
-#| msgid "Hex"
 msgctxt "InstrView|"
 msgid "Hex"
 msgstr "Hex"
 
 #: libviews/instrview.cpp:199
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "InstrView|"
 msgid "Assembly Instructions"
-msgstr "Instrukcio"
+msgstr "Asembleaj Instrukcioj"
 
 #: libviews/instrview.cpp:200
-#, fuzzy
-#| msgid "Source File"
 msgctxt "InstrView|"
 msgid "Source Position"
-msgstr "Fontdosiero"
+msgstr "Fonta Pozicio"
 
 #: libviews/instrview.cpp:236
 msgctxt "InstrView|"
@@ -1550,41 +1446,43 @@ msgid ""
 "utility from the 'binutils' package.</p><p>Select a line with call "
 "information to make the destination function of this call current.</p>"
 msgstr ""
+"<b>Annotata Maŝina Kodo</b><p>La komentita maŝinkodolisto montras la "
+"kunveninstrukciojn de la nuna elektita funkcio kune kun (mem) kosto "
+"elspezita dum plenumado de instrukcio. Se ĉi tio estas voka instrukcio, "
+"linioj kun detaloj pri la voko okazanta estas enmetitaj en la fonton: la "
+"kosto elspezita ene de la voko, la nombro da vokoj okazantaj, kaj la voka "
+"celo.</p><p>La maŝinkodo montrita. estas generita per la ilo 'objdump' el la "
+"pako 'binutils'.</p><p>Elektu linion kun informoj pri alvoko por ke la cela "
+"funkcio de ĉi tiu alvoko aktuala.</p>"
 
 #: libviews/instrview.cpp:265
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "InstrView|"
 msgid "Go to '%1'"
-msgstr "Iru al '%1'"
+msgstr "Iri al '%1'"
 
 #: libviews/instrview.cpp:270
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "InstrView|"
 msgid "Go to Address %1"
-msgstr "Iru al '%1'"
+msgstr "Iri al Adreso %1"
 
 #: libviews/instrview.cpp:282
-#, fuzzy
-#| msgid "Source Code"
 msgctxt "InstrView|"
 msgid "Hex Code"
-msgstr "Fontkodo"
+msgstr "Hekskodo"
 
 #: libviews/instrview.cpp:573
 msgctxt "InstrView|"
 msgid "There is no instruction info in the profile data file."
-msgstr ""
+msgstr "Ne estas instrukciaj informoj en la profildatumdosiero."
 
 #: libviews/instrview.cpp:575
 msgctxt "InstrView|"
 msgid "Tip: For Callgrind, rerun with option"
-msgstr ""
+msgstr "Konsileto: Por Callgrind, rerulu kun opcio"
 
 #: libviews/instrview.cpp:576
-#, fuzzy
-#| msgid "      --dump-instr=yes"
 msgctxt "InstrView|"
 msgid "      --dump-instr=yes"
 msgstr "      --dump-instr=yes"
@@ -1592,51 +1490,47 @@ msgstr "      --dump-instr=yes"
 #: libviews/instrview.cpp:577
 msgctxt "InstrView|"
 msgid "To see (conditional) jumps, additionally specify"
-msgstr ""
+msgstr "Por vidi (kondiĉajn) saltojn, aldone precizigu"
 
 #: libviews/instrview.cpp:578
-#, fuzzy
-#| msgid "      --trace-jump=yes"
 msgctxt "InstrView|"
 msgid "      --collect-jumps=yes"
-msgstr "      --trace-jump=yes"
+msgstr "      --collect-jumps=yes"
 
 #: libviews/instrview.cpp:826
 msgctxt "InstrView|"
 msgid "For annotated machine code, the following object file is needed:"
-msgstr ""
+msgstr "Por komentita maŝinkodo, la sekva objektodosiero estas bezonata:"
 
 #: libviews/instrview.cpp:831
 msgctxt "InstrView|"
 msgid "This file can not be found."
-msgstr ""
+msgstr "Ĉi tiu dosiero ne troveblas."
 
 #: libviews/instrview.cpp:834
 msgctxt "InstrView|"
 msgid "If cross-compiled, set SYSROOT variable."
-msgstr ""
+msgstr "Se kruce kompilita, agordu SYSROOT-variablon."
 
 #: libviews/instrview.cpp:858
 msgctxt "InstrView|"
 msgid "There is an error trying to execute the command"
-msgstr ""
+msgstr "Estas eraro provante lanĉi la komandon"
 
 #: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
 msgctxt "InstrView|"
 msgid "Check that you have installed 'objdump'."
-msgstr ""
+msgstr "Kontrolu, ke vi instalis 'objdump'."
 
 #: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
 msgctxt "InstrView|"
 msgid "This utility can be found in the 'binutils' package."
-msgstr ""
+msgstr "Ĉi tiu ilo troviĝas en la pako 'binutils'."
 
 #: libviews/instrview.cpp:966
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "InstrView|"
 msgid "(No Instruction)"
-msgstr "Instrukcio"
+msgstr "(Neniu Instrukcio)"
 
 #: libviews/instrview.cpp:1134
 #, qt-format
@@ -1649,52 +1543,50 @@ msgstr[1] ""
 #: libviews/instrview.cpp:1136
 msgctxt "InstrView|"
 msgid "This happens because the code of"
-msgstr ""
+msgstr "Ĉi tio okazas ĉar la kodo de"
 
 #: libviews/instrview.cpp:1139
 msgctxt "InstrView|"
 msgid "does not seem to match the profile data file."
-msgstr ""
+msgstr "ŝajnas ne kongrui kun la profildatumdosiero."
 
 #: libviews/instrview.cpp:1142
 msgctxt "InstrView|"
 msgid "Are you using an old profile data file or is the above mentioned"
-msgstr ""
+msgstr "Ĉu vi uzas malnovan profil-datumdosieron aŭ ĉu la supre menciita"
 
 #: libviews/instrview.cpp:1144
 msgctxt "InstrView|"
 msgid "ELF object from an updated installation/another machine?"
-msgstr ""
+msgstr "ELF-objekto de ĝisdatigita instalaĵo/alia maŝino?"
 
 #: libviews/instrview.cpp:1152
 msgctxt "InstrView|"
 msgid "There seems to be an error trying to execute the command"
-msgstr ""
+msgstr "Ŝajnas esti eraro provante lanĉi la komandon"
 
 #: libviews/instrview.cpp:1156
 msgctxt "InstrView|"
 msgid "Check that the ELF object used in the command exists."
-msgstr ""
+msgstr "Kontrolu, ke la ELF-objekto uzata en la komando ekzistas."
 
 #: libviews/partgraph.cpp:154
 #, qt-format
 msgctxt "QObject|"
 msgid "Profile Part %1"
-msgstr ""
+msgstr "Profila Parto %1"
 
 #: libviews/partgraph.cpp:211
 msgctxt "QObject|"
 msgid "(no trace)"
-msgstr ""
+msgstr "(neniu spuro)"
 
 #: libviews/partgraph.cpp:214
 msgctxt "QObject|"
 msgid "(no part)"
-msgstr ""
+msgstr "(neniu parto)"
 
 #: libviews/partlistitem.cpp:39
-#, fuzzy
-#| msgid "(none)"
 msgctxt "QObject|"
 msgid "(none)"
 msgstr "(neniu)"
@@ -1702,19 +1594,14 @@ msgstr "(neniu)"
 #: libviews/partselection.cpp:48
 msgctxt "PartSelection|"
 msgid "Parts Overview"
-msgstr ""
+msgstr "Partoj Superrigardo"
 
 #: libviews/partselection.cpp:61
-#, fuzzy
-#| msgctxt "A thing's name"
-#| msgid "Name"
 msgctxt "PartSelection|A thing's name"
 msgid "Name"
 msgstr "Nomo"
 
 #: libviews/partselection.cpp:62
-#, fuzzy
-#| msgid "Cost"
 msgctxt "PartSelection|"
 msgid "Cost"
 msgstr "Kostoj"
@@ -1722,7 +1609,7 @@ msgstr "Kostoj"
 #: libviews/partselection.cpp:69
 msgctxt "PartSelection|"
 msgid "(no trace parts)"
-msgstr ""
+msgstr "(sen spurpartoj)"
 
 #: libviews/partselection.cpp:96
 msgctxt "PartSelection|"
@@ -1741,154 +1628,156 @@ msgid ""
 "current selected function in the trace part is shown. This is split up into "
 "smaller rectangles to show the costs of its callees.</li></ul></p>"
 msgstr ""
+"<b>La Superrigardo de Partoj</b><p>Spuro konsistas el pluraj spurpartoj kiam "
+"estas pluraj profilaj datumdosieroj de unu profila kuro. La Trace Part "
+"Overview aldokebla montras ĉi tiujn, horizontale ordigitajn en rultempo; la "
+"rektangulgrandecoj estas proporciaj al la totalkosto elspezita en la partoj. "
+"Vi povas elekti unu aŭ plurajn partojn por limigi ĉiujn kostojn montritajn "
+"al ĉi tiuj partoj nur.</p><p>La partoj estas plue subdividitaj: ekzistas "
+"dispartigo kaj disigo de alvokanto: <ul><li>Dispartigo: Vi vidas la "
+"dispartigo en grupojn por spurparto, laŭ la grupo-tipo elektita. ekz. se ELF-"
+"objektogrupoj estas elektitaj, vi vidas kolorajn rektangulojn por ĉiu uzata "
+"ELF-objekto (kundividita biblioteko aŭ rulebla), grandigitaj laŭ la kosto "
+"elspezita en ĝi.</li><li>Alvoko: Rektangulo montranta la inkluzivan koston "
+"de la nuna elektita. funkcio en la spurparto estas montrita. Ĉi tio estas "
+"dividita en pli malgrandajn rektangulojn por montri la kostojn de siaj "
+"alvokantoj.</li></ul></p>"
 
 #: libviews/partselection.cpp:231
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Profile Part Overview: Current is '%1'"
-msgstr ""
+msgstr "Superrigardo de Profila Parto: Nuna estas '%1'"
 
 #: libviews/partselection.cpp:337
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Deselect '%1'"
-msgstr ""
+msgstr "Malelekti '%1'"
 
 #: libviews/partselection.cpp:339
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "PartSelection|"
 msgid "Select '%1'"
-msgstr "Iru al '%1'"
+msgstr "Elekti '%1'"
 
 #: libviews/partselection.cpp:344
 msgctxt "PartSelection|"
 msgid "Select All Parts"
-msgstr ""
+msgstr "Elekti Ĉiujn Partojn"
 
 #: libviews/partselection.cpp:345
 msgctxt "PartSelection|"
 msgid "Visible Parts"
-msgstr ""
+msgstr "Videblaj Partoj"
 
 #: libviews/partselection.cpp:346
 msgctxt "PartSelection|"
 msgid "Hide Selected Parts"
-msgstr ""
+msgstr "Kaŝi Elektitajn Partojn"
 
 #: libviews/partselection.cpp:347
 msgctxt "PartSelection|"
 msgid "Show Hidden Parts"
-msgstr ""
+msgstr "Montri Kaŝitajn Partojn"
 
 #: libviews/partselection.cpp:361
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "PartSelection|"
 msgid "Go to '%1'"
-msgstr "Iru al '%1'"
+msgstr "Iri al '%1'"
 
 #: libviews/partselection.cpp:370
-#, fuzzy
-#| msgid "Navigation"
 msgctxt "PartSelection|"
 msgid "Visualization"
-msgstr "Navigado"
+msgstr "Bildigo"
 
 #: libviews/partselection.cpp:371
 msgctxt "PartSelection|"
 msgid "Partitioning Mode"
-msgstr ""
+msgstr "Dispartiga Reĝimo"
 
 #: libviews/partselection.cpp:373
-#, fuzzy
-#| msgid "Function"
 msgctxt "PartSelection|"
 msgid "Zoom Function"
-msgstr "Funkcio"
+msgstr "Zoom Funkcio"
 
 #: libviews/partselection.cpp:375
 msgctxt "PartSelection|"
 msgid "Show Direct Calls"
-msgstr ""
+msgstr "Montri Rektajn Vokojn"
 
 #: libviews/partselection.cpp:376
 msgctxt "PartSelection|"
 msgid "Increment Shown Call Levels"
-msgstr ""
+msgstr "Pliigi Montritajn Voknivelojn"
 
 #: libviews/partselection.cpp:377
 msgctxt "PartSelection|"
 msgid "Diagram Mode"
-msgstr ""
+msgstr "Diagramreĝimo"
 
 #: libviews/partselection.cpp:392
 msgctxt "PartSelection|"
 msgid "Draw Names"
-msgstr ""
+msgstr "Desegni Nomojn"
 
 #: libviews/partselection.cpp:394
 msgctxt "PartSelection|"
 msgid "Draw Costs"
-msgstr ""
+msgstr "Desegni Kostojn"
 
 #: libviews/partselection.cpp:396
 msgctxt "PartSelection|"
 msgid "Ignore Proportions"
-msgstr ""
+msgstr "Ignori Proporciojn"
 
 #: libviews/partselection.cpp:398
 msgctxt "PartSelection|"
 msgid "Allow Rotation"
-msgstr ""
+msgstr "Permesi Rotacion"
 
 #: libviews/partselection.cpp:400
 msgctxt "PartSelection|"
 msgid "Draw Frames"
-msgstr ""
+msgstr "Desegni Kadrojn"
 
 #: libviews/partselection.cpp:414
-#, fuzzy
-#| msgid "Hide"
 msgctxt "PartSelection|"
 msgid "Hide Info"
-msgstr "Kaŝi"
+msgstr "Kaŝi Informojn"
 
 #: libviews/partselection.cpp:414
 msgctxt "PartSelection|"
 msgid "Show Info"
-msgstr ""
+msgstr "Montri Informojn"
 
 #: libviews/partselection.cpp:562
 msgctxt "PartSelection|"
 msgid "(no trace loaded)"
-msgstr ""
+msgstr "(neniu spuro ŝarĝita)"
 
 #: libviews/partview.cpp:37
 msgctxt "PartView|"
 msgid "Profile Part"
-msgstr ""
+msgstr "Profila Parto"
 
 #: libviews/partview.cpp:38
 msgctxt "PartView|"
 msgid "Incl."
-msgstr ""
+msgstr "Inkl."
 
 #: libviews/partview.cpp:39
 msgctxt "PartView|"
 msgid "Self"
-msgstr ""
+msgstr "Mem"
 
 #: libviews/partview.cpp:40
-#, fuzzy
-#| msgid "Call"
 msgctxt "PartView|"
 msgid "Called"
-msgstr "Voko"
+msgstr "Vokita"
 
 #: libviews/partview.cpp:41
-#, fuzzy
-#| msgid "Comment"
 msgctxt "PartView|"
 msgid "Comment"
 msgstr "Komento"
@@ -1910,46 +1799,52 @@ msgid ""
 "Part Overview Dockable. This one also supports multiple selection.</"
 "p><p>Note that the list is hidden if only one trace part is loaded.</p>"
 msgstr ""
+"<b>Spuroparta Listo</b><p>Ĉi tiu listo montras ĉiujn spurpartojn de la "
+"ŝargita spuro. Por ĉiu parto, la mem/inkluziva kosto de la nuna elektita "
+"funkcio, elspezita en la parto, estas montrita; procentaj kostoj estas ĉiam "
+"relativaj al la totalkosto <em>de la parto</em> (ne al la tuta spuro kiel en "
+"la Superrigardo de Trace Part). Ankaŭ montriĝas la alvokoj okazantaj al/de "
+"la nuna funkcio ene de la spurparto.</p><p>Elektante unu aŭ plurajn "
+"spurpartojn el la listo, la kostoj montritaj ĉie en KCachegrind estos nur "
+"tiuj elspezitaj en la elektita(j) parto(j). Se neniu listelekto montriĝas, "
+"fakte ĉiuj spurpartoj estas implicite elektitaj.</p><p>Ĉi tio estas plur-"
+"elekta listo. Vi povas elekti intervalojn trenante la muson aŭ uzi SHIFT/"
+"CTRL-modifiloj. Elekto/Malelekto de spurpartoj ankaŭ povas esti farita per "
+"la Trace Part Overview Dockable. Ĉi tiu ankaŭ subtenas multoblan elekton.</"
+"p><p>Rimarku, ke la listo estas kaŝita se nur unu spurparto estas ŝargita.</"
+"p>"
 
 #: libviews/sourceitem.cpp:141
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 of %2 times to %3"
-msgstr ""
+msgstr "Salti %1 el %2 fojojn al %3"
 
 #: libviews/sourceitem.cpp:146
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 times to %2"
-msgstr ""
+msgstr "Salti %1 fojojn al %2"
 
 #: libviews/sourceview.cpp:51
-#, fuzzy
-#| msgid "#"
 msgctxt "SourceView|"
 msgid "#"
 msgstr "#"
 
 #: libviews/sourceview.cpp:52
-#, fuzzy
-#| msgid "Cost"
 msgctxt "SourceView|"
 msgid "Cost"
 msgstr "Kostoj"
 
 #: libviews/sourceview.cpp:53
-#, fuzzy
-#| msgid "Cost"
 msgctxt "SourceView|"
 msgid "Cost 2"
-msgstr "Kostoj"
+msgstr "Kosto 2"
 
 #: libviews/sourceview.cpp:55
-#, fuzzy
-#| msgid "Source File"
 msgctxt "SourceView|"
 msgid "Source"
-msgstr "Fontdosiero"
+msgstr "Fonto"
 
 #: libviews/sourceview.cpp:83
 msgctxt "SourceView|"
@@ -1962,117 +1857,113 @@ msgid ""
 "call destination.</p><p>Select a inserted call information line to make the "
 "destination function current.</p>"
 msgstr ""
+"<b>Kootita Fonto</b><p>La komentita fontlisto montras la fontliniojn de la "
+"nuna elektita funkcio kune kun (mem) kosto elspezita dum plenumado de la "
+"kodo de ĉi tiu fontlinio. Se estis voko en fontlinio, linioj kun detaloj pri "
+"la okazanta voko estas enmetitaj en la fonton: la kosto elspezita ene de la "
+"voko, la nombro da vokoj okazantaj, kaj la vokocelloko.</p><p>Elektu "
+"enigitan vokinformlinion por igi la celfunkcion aktuala.</p>"
 
 #: libviews/sourceview.cpp:110
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "SourceView|"
 msgid "Go to '%1'"
-msgstr "Iru al '%1'"
+msgstr "Iri al '%1'"
 
 #: libviews/sourceview.cpp:115
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "SourceView|"
 msgid "Go to Line %1"
-msgstr "Iru al '%1'"
+msgstr "Iri al Linio %1"
 
 #: libviews/sourceview.cpp:627
 msgctxt "SourceView|"
 msgid "There is no cost of current selected type associated"
-msgstr ""
+msgstr "Ne estas kosto de nuna elektita tipo asociita"
 
 #: libviews/sourceview.cpp:629
 msgctxt "SourceView|"
 msgid "with any source line of this function in file"
-msgstr ""
+msgstr "kun iu ajn fontlinio de ĉi tiu funkcio en dosiero"
 
 #: libviews/sourceview.cpp:633
 msgctxt "SourceView|"
 msgid "Thus, no annotated source can be shown."
-msgstr ""
+msgstr "Tiel, neniu komentita fonto povas esti montrita."
 
 #: libviews/sourceview.cpp:658
 #, qt-format
 msgctxt "SourceView|"
 msgid "--- From '%1' ---"
-msgstr ""
+msgstr "--- De '%1' ---"
 
 #: libviews/sourceview.cpp:663
 #, qt-format
 msgctxt "SourceView|"
 msgid "--- Inlined from '%1' ---"
-msgstr ""
+msgstr "--- Enliniita de '%1' ---"
 
 #: libviews/sourceview.cpp:664
 msgctxt "SourceView|"
 msgid "--- Inlined from unknown source ---"
-msgstr ""
+msgstr "--- Enliniita el nekonata fonto ---"
 
 #: libviews/sourceview.cpp:669
 msgctxt "SourceView|"
 msgid "There is no source available for the following function:"
-msgstr ""
+msgstr "Ne ekzistas fonto disponebla por la sekva funkcio:"
 
 #: libviews/sourceview.cpp:674
 msgctxt "SourceView|"
 msgid "This is because no debug information is present."
-msgstr ""
+msgstr "Ĉi tio estas ĉar neniu senarariga informo ĉeestas."
 
 #: libviews/sourceview.cpp:676
 msgctxt "SourceView|"
 msgid "Recompile source and redo the profile run."
-msgstr ""
+msgstr "Rekompilu fonton kaj refari la profilan kuron."
 
 #: libviews/sourceview.cpp:679
 msgctxt "SourceView|"
 msgid "The function is located in this ELF object:"
-msgstr ""
+msgstr "La funkcio situas en ĉi tiu ELF-objekto:"
 
 #: libviews/sourceview.cpp:687
 msgctxt "SourceView|"
 msgid "This is because its source file cannot be found:"
-msgstr ""
+msgstr "Ĉi tio estas ĉar ĝia fontdosiero ne troveblas:"
 
 #: libviews/sourceview.cpp:691
 msgctxt "SourceView|"
 msgid "Add the folder of this file to the source folder list."
-msgstr ""
+msgstr "Aldonu la dosierujon de ĉi tiu dosiero al la fonta dosierlisto."
 
 #: libviews/sourceview.cpp:693
 msgctxt "SourceView|"
 msgid "The list can be found in the configuration dialog."
-msgstr ""
+msgstr "La listo troveblas en la agorda dialogo."
 
 #: libviews/stackselection.cpp:36
 msgctxt "StackSelection|"
 msgid "Stack Selection"
-msgstr ""
+msgstr "Staka Elekto"
 
 #: libviews/stackselection.cpp:44
-#, fuzzy
-#| msgid "Cost"
 msgctxt "StackSelection|"
 msgid "Cost"
 msgstr "Kostoj"
 
 #: libviews/stackselection.cpp:45
-#, fuzzy
-#| msgid "Cost"
 msgctxt "StackSelection|"
 msgid "Cost2"
-msgstr "Kostoj"
+msgstr "Kosto2"
 
 #: libviews/stackselection.cpp:46
-#, fuzzy
-#| msgid "Call"
 msgctxt "StackSelection|"
 msgid "Calls"
-msgstr "Voko"
+msgstr "Vokoj"
 
 #: libviews/stackselection.cpp:47
-#, fuzzy
-#| msgid "Function"
 msgctxt "StackSelection|"
 msgid "Function"
 msgstr "Funkcio"
@@ -2080,27 +1971,19 @@ msgstr "Funkcio"
 #: libviews/tabview.cpp:103
 msgctxt "TabBar|"
 msgid "Move to Top"
-msgstr ""
+msgstr "Movi al la supro"
 
 #: libviews/tabview.cpp:104
-#, fuzzy
-#| msgctxt "Move to Top"
-#| msgid "Top"
 msgctxt "TabBar|Move to Top"
 msgid "Top"
 msgstr "Supro"
 
 #: libviews/tabview.cpp:107
-#, fuzzy
-#| msgid "Left to Right"
 msgctxt "TabBar|"
 msgid "Move to Right"
-msgstr "Liva al Dekstra"
+msgstr "Movi dekstren"
 
 #: libviews/tabview.cpp:108
-#, fuzzy
-#| msgctxt "Move to Right"
-#| msgid "Right"
 msgctxt "TabBar|Move to Right"
 msgid "Right"
 msgstr "Dekstra"
@@ -2108,115 +1991,89 @@ msgstr "Dekstra"
 #: libviews/tabview.cpp:111
 msgctxt "TabBar|"
 msgid "Move to Bottom"
-msgstr ""
+msgstr "Movi al Malsupro"
 
 #: libviews/tabview.cpp:112
-#, fuzzy
-#| msgctxt "Move to Bottom"
-#| msgid "Bottom"
 msgctxt "TabBar|Move to Bottom"
 msgid "Bottom"
 msgstr "Malsupre"
 
 #: libviews/tabview.cpp:115
-#, fuzzy
-#| msgid "Bottom-left"
 msgctxt "TabBar|"
 msgid "Move to Bottom Left"
-msgstr "Malsupre-maldekstra"
+msgstr "Movi al Malsupro Maldekstren"
 
 #: libviews/tabview.cpp:116
-#, fuzzy
-#| msgid "Bottom-left"
 msgctxt "TabBar|Move to Bottom Left"
 msgid "Bottom Left"
-msgstr "Malsupre-maldekstra"
+msgstr "Malsupre Maldekstre"
 
 #: libviews/tabview.cpp:118
 msgctxt "TabBar|"
 msgid "Move Area To"
-msgstr ""
+msgstr "Movi Areon Al"
 
 #: libviews/tabview.cpp:121
 msgctxt "TabBar|"
 msgid "Hide This Tab"
-msgstr ""
+msgstr "Kaŝi Ĉi tiun Langeton"
 
 #: libviews/tabview.cpp:122
-#, fuzzy
-#| msgid "Hide"
 msgctxt "TabBar|"
 msgid "Hide Area"
-msgstr "Kaŝi"
+msgstr "Kaŝi Areon"
 
 #: libviews/tabview.cpp:131
-#, fuzzy
-#| msgctxt "Move to Top"
-#| msgid "Top"
 msgctxt "TabBar|Show on Top"
 msgid "Top"
 msgstr "Supro"
 
 #: libviews/tabview.cpp:132
-#, fuzzy
-#| msgctxt "Move to Right"
-#| msgid "Right"
 msgctxt "TabBar|Show on Right"
 msgid "Right"
 msgstr "Dekstra"
 
 #: libviews/tabview.cpp:133
-#, fuzzy
-#| msgctxt "Move to Bottom"
-#| msgid "Bottom"
 msgctxt "TabBar|Show on Bottom"
 msgid "Bottom"
 msgstr "Malsupre"
 
 #: libviews/tabview.cpp:134
-#, fuzzy
-#| msgid "Bottom-left"
 msgctxt "TabBar|Show on Bottom Left"
 msgid "Bottom Left"
-msgstr "Malsupre-maldekstra"
+msgstr "Malsupre Maldekstre"
 
 #: libviews/tabview.cpp:135
 msgctxt "TabBar|"
 msgid "Show Hidden On"
-msgstr ""
+msgstr "Montri Kaŝitan Sur"
 
 #: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
 msgctxt "TabView|"
 msgid "(No profile data file loaded)"
-msgstr ""
+msgstr "(Neniu profildatumdosiero ŝarĝita)"
 
 #: libviews/tabview.cpp:370
-#, fuzzy
-#| msgid "Types"
 msgctxt "TabView|"
 msgid "Types"
 msgstr "Tipoj"
 
 #: libviews/tabview.cpp:373
-#, fuzzy
-#| msgid "Call"
 msgctxt "TabView|"
 msgid "Callers"
-msgstr "Voko"
+msgstr "Alvokantoj"
 
 #: libviews/tabview.cpp:374
 msgctxt "TabView|"
 msgid "All Callers"
-msgstr ""
+msgstr "Ĉiuj Vokantoj"
 
 #: libviews/tabview.cpp:375
 msgctxt "TabView|"
 msgid "Callee Map"
-msgstr ""
+msgstr "Mapo de Alvokatoj"
 
 #: libviews/tabview.cpp:378
-#, fuzzy
-#| msgid "Source Code"
 msgctxt "TabView|"
 msgid "Source Code"
 msgstr "Fontkodo"
@@ -2224,38 +2081,32 @@ msgstr "Fontkodo"
 #: libviews/tabview.cpp:380
 msgctxt "TabView|"
 msgid "Parts"
-msgstr ""
+msgstr "Partoj"
 
 #: libviews/tabview.cpp:381
-#, fuzzy
-#| msgid "Call"
 msgctxt "TabView|"
 msgid "Callees"
-msgstr "Voko"
+msgstr "Alvokatoj"
 
 #: libviews/tabview.cpp:382
-#, fuzzy
-#| msgid "Graph"
 msgctxt "TabView|"
 msgid "Call Graph"
-msgstr "Grafo"
+msgstr "Voka Grafeo"
 
 #: libviews/tabview.cpp:385
 msgctxt "TabView|"
 msgid "All Callees"
-msgstr ""
+msgstr "Ĉiuj Alvokatoj"
 
 #: libviews/tabview.cpp:386
 msgctxt "TabView|"
 msgid "Caller Map"
-msgstr ""
+msgstr "Mapo de Alvokantoj"
 
 #: libviews/tabview.cpp:389
-#, fuzzy
-#| msgid "Source Code"
 msgctxt "TabView|"
 msgid "Machine Code"
-msgstr "Fontkodo"
+msgstr "Maŝinkodo"
 
 #: libviews/tabview.cpp:643
 msgctxt "TabView|"
@@ -2277,15 +2128,29 @@ msgid ""
 "ul>For more information, see the <em>What's This?</em> help of the "
 "corresponding tab widget.</p>"
 msgstr ""
+"<b>Informlangetoj</b><p>Tiu ĉi fenestraĵo montras informojn pri la nuntempe "
+"elektita funkcio en malsamaj langetoj: <ul><li>La langeto Kostoj montras "
+"liston de disponeblaj eventospecoj kaj la inkluzivajn kaj memkostojn "
+"rilatajn al ĉi tiuj tipoj.</li><li>La langeto Partoj montras liston de "
+"spurpartoj se la spuro konsistas el pli ol unu parto (alie, ĉi tiu langeto "
+"estas kaŝita). La kosto de la elektita funkcio elspezita en la malsamaj "
+"partoj kune kun la alvokoj okazantaj estas montrata.</li><li>La langeto "
+"Vokaj Listo montras rektajn alvokantojn kaj alvokantojn de la funkcio pli "
+"detale.</li><li>La Kovrado-langeto montras same kiel la langeto Vokaj Listo, "
+"sed ankaŭ montras nerektajn alvokantojn kaj alvokitojn, ne nur rektajn.</"
+"li><li>La langeto Voka Grafeo montras grafean bildigon de la alvokoj faritaj "
+"per ĉi tiu funkcio.</li> ><li>La langeto Fontkodo prezentas komentitajn "
+"fontkodon se sencimigaj informoj kaj la fontdosiero disponeblas.</li><li>La "
+"langeto Maŝina Kodo prezentas komentitajn kunigo-instrukciojn se disponeblas "
+"profilinformoj ĉe instrukcinivelo.</li> </ul>Por pliaj informoj, vidu la "
+"helpon <em>Kio ĉi tio?</em> de la responda langeta fenestraĵo.</p>"
 
 #: libviews/tabview.cpp:728
 msgctxt "TabView|"
 msgid "(No function selected)"
-msgstr ""
+msgstr "(Neniu funkcio elektita)"
 
 #: libviews/traceitemview.cpp:67
-#, fuzzy
-#| msgid "No description available"
 msgctxt "QObject|"
 msgid "No description available"
 msgstr "Neniu priskribo uzebla"
@@ -2294,35 +2159,29 @@ msgstr "Neniu priskribo uzebla"
 #, qt-format
 msgctxt "TreeMapWidget|"
 msgid "Text %1"
-msgstr ""
+msgstr "Teksto %1"
 
 #: libviews/treemap.cpp:2854
 msgctxt "TreeMapWidget|"
 msgid "Recursive Bisection"
-msgstr ""
+msgstr "Rekursiva Bisekcio"
 
 #: libviews/treemap.cpp:2855
-#, fuzzy
-#| msgid "Columns"
 msgctxt "TreeMapWidget|"
 msgid "Columns"
 msgstr "Kolumnoj"
 
 #: libviews/treemap.cpp:2856
-#, fuzzy
-#| msgid "Row"
 msgctxt "TreeMapWidget|"
 msgid "Rows"
-msgstr "Linio"
+msgstr "Vicoj"
 
 #: libviews/treemap.cpp:2857
 msgctxt "TreeMapWidget|"
 msgid "Always Best"
-msgstr ""
+msgstr "Ĉiam Plej Bona"
 
 #: libviews/treemap.cpp:2858
-#, fuzzy
-#| msgid "Best"
 msgctxt "TreeMapWidget|"
 msgid "Best"
 msgstr "Plej bona"
@@ -2330,41 +2189,19 @@ msgstr "Plej bona"
 #: libviews/treemap.cpp:2859
 msgctxt "TreeMapWidget|"
 msgid "Alternate (V)"
-msgstr ""
+msgstr "Alterna (V)"
 
 #: libviews/treemap.cpp:2860
 msgctxt "TreeMapWidget|"
 msgid "Alternate (H)"
-msgstr ""
+msgstr "Alterna (H)"
 
 #: libviews/treemap.cpp:2861
-#, fuzzy
-#| msgid "Horizontal"
 msgctxt "TreeMapWidget|"
 msgid "Horizontal"
 msgstr "Horizontala"
 
 #: libviews/treemap.cpp:2862
-#, fuzzy
-#| msgid "Vertical"
 msgctxt "TreeMapWidget|"
 msgid "Vertical"
 msgstr "Vertikala"
-
-#, fuzzy
-#~| msgid "Graphviz (*.dot)"
-#~ msgctxt "CallGraphView|"
-#~ msgid "Graphviz (*.dot)"
-#~ msgstr "Graphviz (*.dot)"
-
-#~ msgctxt "Show on Top"
-#~ msgid "Top"
-#~ msgstr "Supro"
-
-#~ msgctxt "Show on Right"
-#~ msgid "Right"
-#~ msgstr "Dekstra"
-
-#~ msgctxt "Show on Bottom"
-#~ msgid "Bottom"
-#~ msgstr "Malsupre"
