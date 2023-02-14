@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2020-12-29 02:36+0100\n"
-"PO-Revision-Date: 2023-02-08 11:49+0100\n"
+"PO-Revision-Date: 2023-02-13 09:26+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -91,7 +91,7 @@ msgstr ""
 #: kcachegrind/configdlgbase.ui:158
 #, kde-format
 msgid "Cost Item Colors"
-msgstr ""
+msgstr "ფასის ჩანაწერის ფერი"
 
 #. i18n: ectx: property (text), widget (QCheckBox, fileCheck)
 #. i18n: ectx: property (text), widget (QCheckBox, classCheck)
@@ -130,7 +130,7 @@ msgstr "ანოტაციები"
 #: kcachegrind/configdlgbase.ui:329
 #, kde-format
 msgid "Context lines in annotations:"
-msgstr ""
+msgstr "კონტექსტური ხაზი ანოტაციებში:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
 #: kcachegrind/configdlgbase.ui:350
@@ -459,13 +459,13 @@ msgstr "ზარები"
 #: kcachegrind/dumpselectionbase.ui:758
 #, kde-format
 msgid "Ir"
-msgstr ""
+msgstr "Ir"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:773
 #, kde-format
 msgid "Distinct"
-msgstr ""
+msgstr "განსხვავებული"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:786
@@ -507,7 +507,7 @@ msgstr "#"
 #: kcachegrind/dumpselectionbase.ui:876
 #, kde-format
 msgid "Incl."
-msgstr ""
+msgstr "ჩათვლ."
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
 #: kcachegrind/dumpselectionbase.ui:887
@@ -549,7 +549,7 @@ msgstr "შეტყობინებები"
 #: kcachegrind/dumpselectionbase.ui:985
 #, kde-format
 msgid "Kill Run"
-msgstr ""
+msgstr "შესრულების შეწყვეტა"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton8)
 #: kcachegrind/dumpselectionbase.ui:1008
@@ -591,7 +591,7 @@ msgstr "ხელსაწყოთა მთავარი ზოლი"
 #: kcachegrind/kcachegrindui.rc:54
 #, kde-format
 msgid "State Toolbar"
-msgstr ""
+msgstr "მდგომარეობის პანელი"
 
 #: kcachegrind/main.cpp:34
 #, kde-format
@@ -616,7 +616,7 @@ msgstr "Josef Weidendorfer"
 #: kcachegrind/main.cpp:41
 #, kde-format
 msgid "Author/Maintainer"
-msgstr ""
+msgstr "ავტორი/პროექტის წამყვანი"
 
 #: kcachegrind/main.cpp:68
 #, kde-format
@@ -631,7 +631,7 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:258 kcachegrind/toplevel.cpp:486
 #, kde-format
 msgid "Parts Overview"
-msgstr ""
+msgstr "ნაწილების მიმოხილვა"
 
 #: kcachegrind/toplevel.cpp:267
 #, kde-format
@@ -721,22 +721,22 @@ msgstr "წინა განლაგებაზე გადასვლა"
 #: kcachegrind/toplevel.cpp:396
 #, kde-format
 msgid "&Restore to Default"
-msgstr ""
+msgstr "&ნაგულისხმებ მნიშვნელობებზე აღდგენა"
 
 #: kcachegrind/toplevel.cpp:398
 #, kde-format
 msgid "Restore Layouts to Default"
-msgstr ""
+msgstr "განლაგებების ნაგულისხმებ მნიშვნელობებზე აღდგენა"
 
 #: kcachegrind/toplevel.cpp:402
 #, kde-format
 msgid "&Save as Default"
-msgstr ""
+msgstr "&ნაგულისხმებად შენახვა"
 
 #: kcachegrind/toplevel.cpp:404
 #, kde-format
 msgid "Save Layouts as Default"
-msgstr ""
+msgstr "განლაგებების ნაგულისხმებად შენახვა"
 
 #: kcachegrind/toplevel.cpp:415
 #, kde-format
@@ -769,7 +769,7 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:435
 #, kde-format
 msgid "&Export Graph"
-msgstr ""
+msgstr "&გრაფიკის გატანა"
 
 #: kcachegrind/toplevel.cpp:438
 #, kde-format
@@ -827,7 +827,7 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:502
 #, kde-format
 msgid "Function Profile"
-msgstr ""
+msgstr "ფუნქციის პროფილი"
 
 #: kcachegrind/toplevel.cpp:505
 #, kde-format
@@ -969,7 +969,7 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:677
 #, kde-format
 msgid "(No Grouping)"
-msgstr ""
+msgstr "(დაჯგუფების გარეშე)"
 
 #: kcachegrind/toplevel.cpp:689
 #, kde-format
