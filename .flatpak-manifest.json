@@ -1,0 +1,44 @@
+{
+    "id": "org.kde.kcachegrind",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.15-22.08",
+    "sdk": "org.kde.Sdk",
+    "command": "kcachegrind",
+    "rename-icon": "kcachegrind",
+    "finish-args": [
+        "--device=dri",
+        "--filesystem=host",
+        "--share=ipc",
+        "--socket=wayland",
+        "--socket=x11"
+    ],
+    "modules": [
+        {
+            "name": "graphviz",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://gitlab.com/graphviz/graphviz/-/archive/7.1.0/graphviz-7.1.0.tar.bz2",
+                    "sha256": "7943c3fa0c55c779f595259f3b9e41c7ea6ed92f0aca0d24df917f631322dc01",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 1249,
+                        "stable-only": true,
+                        "url-template": "https://gitlab.com/graphviz/graphviz/-/archive/$version/graphviz-$version.tar.bz2"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "kcachegrind",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "."
+                }
+            ]
+        }
+    ]
+}
