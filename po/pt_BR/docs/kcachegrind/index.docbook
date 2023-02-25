@@ -24,8 +24,6 @@
   <!ENTITY TBS "<acronym
 >TBS</acronym
 >">
-  <!ENTITY kappname "&kcachegrind;">
-  <!ENTITY package "kdesdk">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % Brazilian-Portuguese "INCLUDE">
 ]>
@@ -102,13 +100,13 @@
 >&FDLNotice;</legalnotice>
 
 <date
->07/10/2009</date>
+>18/11/2016</date>
 <releaseinfo
->0.5.1</releaseinfo>
+>0.8.0 (Applications 17.04)</releaseinfo>
 
 <abstract>
 <para
->O &kcachegrind; é uma ferramenta de visualização de dados de auditoria, escrito usando o ambiente &kde;. </para>
+>O &kcachegrind; é uma ferramenta de visualização de dados de auditoria, escrito usando o &kf5-full;. </para>
 </abstract>
 
 <keywordset>
@@ -134,7 +132,7 @@
 >Introdução</title>
 
 <para
->O &kappname; é um navegador para dados produzidos por ferramentas de auditoria. Este capítulo esclarece para que serve um auditoria, como ela é feita, e fornece alguns exemplos de ferramentas de auditoria disponíveis. </para>
+>O &kcachegrind; é um navegador para dados produzidos por ferramentas de auditoria. Este capítulo esclarece para que serve um auditoria, como ela é feita, e fornece alguns exemplos de ferramentas de auditoria disponíveis. </para>
 
 <sect1 id="introduction-profiling">
 <title
@@ -211,10 +209,10 @@
 >As ferramentas de análise produzem tipicamente uma grande quantidade de dados. O desejo de navegar facilmente para baixo e para cima no gráfico de chamadas, em conjunto com uma alteração rápida do modo de ordenação das funções e a apresentação dos diferentes tipos de eventos, serve de motivo para criar um aplicativo &GUI; que desempenhe esta tarefa. </para>
 
 <para
->O &kappname; é uma ferramenta de visualização para os dados de análise que preenche estes requisitos. Apesar de ser programada em primeiro lugar a partir da navegação dos dados do &cachegrind; com a &calltree; em mente, existem conversores disponíveis para apresentar os dados de análise produzidos pelas outras ferramentas. No apêndice, é dada uma descrição do formato do arquivo do &cachegrind;/&callgrind;. </para>
+>O &kcachegrind; é uma ferramenta de visualização para os dados de análise que preenche estes requisitos. Apesar de ser programada em primeiro lugar a partir da navegação dos dados do &cachegrind; com a &calltree; em mente, existem conversores disponíveis para apresentar os dados de análise produzidos pelas outras ferramentas. No apêndice, é dada uma descrição do formato do arquivo do &cachegrind;/&callgrind;. </para>
 
 <para
->Além de uma lista de funções ordenadas de acordo com medidas de custo exclusivas ou inclusivas, e opcionalmente agrupadas por arquivo fonte, biblioteca compartilhada ou classe C++, os recursos do &kappname; incluem diversas formas de visualização para uma função selecionada, quais sejam: <itemizedlist>
+>Além de uma lista de funções ordenadas de acordo com medidas de custo exclusivas ou inclusivas, e opcionalmente agrupadas por arquivo fonte, biblioteca compartilhada ou classe C++, os recursos do &kcachegrind; incluem diversas formas de visualização para uma função selecionada, quais sejam: <itemizedlist>
 <listitem
 ><para
 >uma visão de gráfico de chamadas, que mostra uma seção do gráfico de chamadas ao redor da função selecionada,</para>
@@ -281,7 +279,7 @@
 > e que poderá ser carregado no &kcachegrind;. </para>
 
 <para
->Um uso mais avançado é gerar dados de auditoria sempre que uma determinada função de seu aplicativo é chamada. Por exemplo, para o &konqueror;, para ver dados de auditoria somente para renderização de uma página web, você pode decidir gerar os dados sempre que você selecionar o item de menu <menuchoice
+>Um uso mais avançado é gerar dados de auditoria sempre que uma determinada função de seu aplicativo é chamada. Por exemplo, para o &konqueror;, para ver dados de auditoria somente para renderização de um site, você pode decidir gerar os dados sempre que você selecionar o item de menu <menuchoice
 ><guimenu
 >Ver</guimenu
 ><guimenuitem
@@ -318,7 +316,7 @@
 <para
 >O &oprofile; está disponível em <ulink url="http://oprofile.sf.net"
 > sua página na internet</ulink
->. Siga as instruções de instalação na página Web mas, antes disso, verifique se a sua distribuição não o oferece já como um pacote (como a &SuSE;). </para>
+>. Siga as instruções de instalação no sitemas, antes disso, verifique se a sua distribuição não o oferece já como um pacote (como a &SuSE;). </para>
 
 <para
 >A análise ao nível do sistema só é permitida para o usuário 'root', uma vez que todas as ações do sistema poderão ser observadas. Assim, as seguintes ações terão que ser feitas como 'root'. Primeiro, configure o processo de análise, usando a &GUI; <command
@@ -408,10 +406,10 @@
 > na lista da esquerda, e ver a visualização do gráfico de chamadas. Aí, você poderá ver as chamadas em curso no seu programa. Lembre-se que o gráfico de chamadas só mostra as funções com uma grande quantidade de eventos. Se fizer duplo-clique numa função do gráfico, ela irá mudar para mostrar as funções chamadas pela selecionada. </para>
 
 <para
->Para explorar mais a &GUI;, além deste manual, dê uma olhada na seção de documentação na <ulink url="https://kcachegrind.github.io"
->página Web do projeto</ulink
+>Para explorar mais a &GUI;, além deste manual, dê uma olhada na seção de documentação no <ulink url="https://kcachegrind.github.io"
+>site do projeto</ulink
 >. Além disso, cada elemento gráfico do &kcachegrind; tem ajuda <quote
->O Que é Isto?</quote
+>O que é isto?</quote
 >. </para>
 </sect1>
 
@@ -867,9 +865,7 @@
 
 <sect2>
 <title
->Menu <guimenu
->Arquivo</guimenu
-></title>
+>O menu Arquivo</title>
 <para>
 <variablelist>
 
@@ -1020,7 +1016,7 @@
 ><para
 ><action
 >Sai</action
-> do &kappname;</para
+> do &kcachegrind;</para
 ></listitem>
 </varlistentry>
 </variablelist>
@@ -1034,7 +1030,8 @@
 <chapter id="faq">
 <title
 >Perguntas e respostas</title>
-&reporting.bugs; &updating.documentation; <qandaset id="faqlist">
+
+<qandaset id="faqlist">
 
 
 <qandaentry>
@@ -1072,33 +1069,6 @@
 >Assim, por exemplo para o <function
 >main()</function
 >, você sempre terá um custo inclusivo de cerca de 100%, visto que o custo próprio e negligenciado quando o trabalho real é feito em outra função. </para>
-</answer>
-</qandaentry>
-
-<qandaentry>
-<question>
-<para
->A barra de ferramentas e menu do meu &kcachegrind; está tão esquisita. Isto é normal?</para>
-</question>
-<answer>
-<para
->O &kcachegrind; está provavelmente mal instalado no seu sistema. Recomenda-se que o compile com o prefixo de instalação igual à sua pasta de base do sistema &kde;, como por exemplo o comando <userinput
-><command
->configure <option
->--prefix=<replaceable
->/opt/kde4</replaceable
-></option
-></command
->; <command
->make install</command
-></userinput
->. Se escolher outra pasta, como a <filename class="directory"
->$<envar
->HOME</envar
->/kde</filename
->, você deverá apontar a variável de ambiente <envar
->KDEDIR</envar
-> para esta pasta antes de executar o &kcachegrind;. </para>
 </answer>
 </qandaentry>
 
@@ -1260,46 +1230,7 @@
 >Tradução de Marcus Gama <email
 >marcus.gama@gmail.com</email
 ></para
-> 
-&underFDL; </chapter>
-
-<appendix id="installation">
-<title
->Instalação</title>
-
-<sect1 id="getting-kcachegrind">
-<title
->Como obter o &kcachegrind;</title>
-
-<para
->O &kcachegrind; faz parte do pacote &package; do &kde;. Para as versões intermediárias menos suportadas, o &callgrind; e a documentação futura, veja na <ulink url="https://kcachegrind.github.io"
->página pessoal do projeto</ulink
-> para obter mais instruções de instalação e compilação. </para>
-</sect1>
-
-<sect1 id="requirements">
-<title
->Requisitos</title>
-
-<para
->Para poder usar com sucesso o &kcachegrind;, você precisa do &kde; 4.x. Para gerar os registros das análises, o &cachegrind; ou o &calltree;/&callgrind; é recomendado. </para>
-</sect1>
-
-<sect1 id="compilation">
-<title
->Compilação e instalação</title>
-&install.compile.documentation; </sect1>
-
-<sect1 id="configuration">
-<title
->Configuração</title>
-
-<para
->Todas as opções de configuração encontram-se na janela de configuração ou nos menus de contexto dos gráficos.</para>
-
-</sect1>
-
-</appendix>
+> &underFDL; </chapter>
 
 &documentation.index;
 </book>
