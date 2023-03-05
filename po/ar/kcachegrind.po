@@ -602,7 +602,7 @@ msgstr "KCachegrind"
 #: kcachegrind/main.cpp:36
 #, fuzzy, kde-format
 msgid "KDE Frontend for Callgrind/Cachegrind"
-msgstr "كدي لـ"
+msgstr "كِيدِي لـ"
 
 #: kcachegrind/main.cpp:38
 #, kde-format
