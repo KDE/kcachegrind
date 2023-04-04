@@ -1,7 +1,7 @@
 # Copyright © 2011 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kdesdk package.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2011, 2012, 2013, 2014, 2015.
-# Tommi Nieminen <translator@legisign.org>, 2021.
+# Tommi Nieminen <translator@legisign.org>, 2021, 2023.
 #
 # KDE Finnish translation sprint participants:
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2021-07-06 16:06+0300\n"
+"PO-Revision-Date: 2023-03-12 11:25+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-POT-Import-Date: 2012-12-01 22:25:32+0000\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 "X-Qt-Contexts: true\n"
 
 #: libcore/cachegrindloader.cpp:135
@@ -113,8 +113,6 @@ msgid "Part Call"
 msgstr "Osan kutsu"
 
 #: libcore/context.cpp:75
-#, fuzzy
-#| msgid "Call"
 msgctxt "ProfileContext|"
 msgid "Call"
 msgstr "Kutsu"
@@ -134,8 +132,6 @@ msgid "Function Source File"
 msgstr "Funktion lähdekooditiedosto"
 
 #: libcore/context.cpp:78
-#, fuzzy
-#| msgid "Function"
 msgctxt "ProfileContext|"
 msgid "Function"
 msgstr "Funktio"
@@ -155,8 +151,6 @@ msgid "Part Class"
 msgstr "Osan luokka"
 
 #: libcore/context.cpp:81
-#, fuzzy
-#| msgid "Class"
 msgctxt "ProfileContext|"
 msgid "Class"
 msgstr "Luokka"
@@ -169,11 +163,9 @@ msgid "Part Source File"
 msgstr "Osan lähdekooditiedosto"
 
 #: libcore/context.cpp:83
-#, fuzzy
-#| msgid "Source File"
 msgctxt "ProfileContext|"
 msgid "Source File"
-msgstr "Lähdekooditiedosto"
+msgstr "Lähdetiedosto"
 
 #: libcore/context.cpp:84
 #, fuzzy
@@ -183,15 +175,11 @@ msgid "Part ELF Object"
 msgstr "Osan ELF-objekti"
 
 #: libcore/context.cpp:85
-#, fuzzy
-#| msgid "ELF Object"
 msgctxt "ProfileContext|"
 msgid "ELF Object"
-msgstr "LEF-objekti"
+msgstr "ELF-olio"
 
 #: libcore/context.cpp:86
-#, fuzzy
-#| msgid "Profile Part"
 msgctxt "ProfileContext|"
 msgid "Profile Part"
 msgstr "Profiilin osa"
@@ -210,8 +198,6 @@ msgstr ""
 #: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
 #: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
 #: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
-#, fuzzy
-#| msgid "(unknown)"
 msgctxt "QObject|"
 msgid "(unknown)"
 msgstr "(tuntematon)"
@@ -357,18 +343,14 @@ msgid "Samples"
 msgstr "Näytteet"
 
 #: libcore/globalconfig.cpp:99
-#, fuzzy
-#| msgid "System Time"
 msgctxt "QObject|"
 msgid "System Time"
-msgstr "Järjestelmäaika"
+msgstr "Järjestelmän aika"
 
 #: libcore/globalconfig.cpp:100
-#, fuzzy
-#| msgid "User Time"
 msgctxt "QObject|"
 msgid "User Time"
-msgstr "Käyttäjäaika"
+msgstr "Käyttäjän aika"
 
 #: libcore/globalconfig.cpp:101
 #, fuzzy
@@ -405,8 +387,6 @@ msgid "(global)"
 msgstr "(globaali)"
 
 #: libcore/tracedata.cpp:3144
-#, fuzzy
-#| msgid "(not found)"
 msgctxt "QObject|"
 msgid "(not found)"
 msgstr "(ei löytynyt)"
@@ -440,8 +420,6 @@ msgid "(unknown call)"
 msgstr "(tuntematon kutsu)"
 
 #: libviews/callgraphview.cpp:908
-#, fuzzy
-#| msgid "Export Graph"
 msgctxt "QObject|"
 msgid "Export Graph"
 msgstr "Vie kaavio"
@@ -536,8 +514,6 @@ msgstr ""
 "”%1”\n"
 
 #: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
-#, fuzzy
-#| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "CallGraphView|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr "Tarkista, että ”dot” on asennettu (kuuluu GraphViz-pakettiin)."
@@ -557,8 +533,6 @@ msgid "No call graph can be drawn for the active item."
 msgstr "Kutsukaaviota ei voida piirtää aktiiviselle alkiolle."
 
 #: libviews/callgraphview.cpp:2554
-#, fuzzy
-#| msgid "Error running the graph layouting tool.\n"
 msgctxt "CallGraphView|"
 msgid "Error running the graph layouting tool.\n"
 msgstr "Virhe suoritettaessa kaavionasettelutyökalua.\n"
@@ -594,47 +568,34 @@ msgid "Unlimited"
 msgstr "Rajoittamaton"
 
 #: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
-#, fuzzy
-#| msgctxt "None"
-#| msgid "Depth 0"
 msgctxt "CallGraphView|None"
 msgid "Depth 0"
 msgstr "Syvyys 0"
 
 #: libviews/callgraphview.cpp:2778 libviews/callgraphview.cpp:2818
-#, fuzzy
-#| msgid "max. 10"
 msgctxt "CallGraphView|"
 msgid "max. 1"
-msgstr "maks. 10"
+msgstr "enint. 1"
 
 #: libviews/callgraphview.cpp:2779 libviews/callgraphview.cpp:2819
-#, fuzzy
-#| msgid "max. 2"
 msgctxt "CallGraphView|"
 msgid "max. 2"
-msgstr "maks. 2"
+msgstr "enint. 2"
 
 #: libviews/callgraphview.cpp:2780 libviews/callgraphview.cpp:2820
-#, fuzzy
-#| msgid "max. 5"
 msgctxt "CallGraphView|"
 msgid "max. 5"
-msgstr "maks. 5"
+msgstr "enint. 5"
 
 #: libviews/callgraphview.cpp:2781 libviews/callgraphview.cpp:2821
-#, fuzzy
-#| msgid "max. 10"
 msgctxt "CallGraphView|"
 msgid "max. 10"
-msgstr "maks. 10"
+msgstr "enint. 10"
 
 #: libviews/callgraphview.cpp:2782 libviews/callgraphview.cpp:2822
-#, fuzzy
-#| msgid "max. 15"
 msgctxt "CallGraphView|"
 msgid "max. 15"
-msgstr "maks. 15"
+msgstr "enint. 15"
 
 #: libviews/callgraphview.cpp:2813
 #, fuzzy
@@ -651,50 +612,36 @@ msgid "Min. Node Cost"
 msgstr "Solmun vähimmäishinta"
 
 #: libviews/callgraphview.cpp:2854
-#, fuzzy
-#| msgid "No Minimum"
 msgctxt "CallGraphView|"
 msgid "No Minimum"
 msgstr "Ei alarajaa"
 
 #: libviews/callgraphview.cpp:2860
-#, fuzzy
-#| msgid "50 %"
 msgctxt "CallGraphView|"
 msgid "50 %"
 msgstr "50 %"
 
 #: libviews/callgraphview.cpp:2861
-#, fuzzy
-#| msgid "20 %"
 msgctxt "CallGraphView|"
 msgid "20 %"
 msgstr "20 %"
 
 #: libviews/callgraphview.cpp:2862
-#, fuzzy
-#| msgid "10 %"
 msgctxt "CallGraphView|"
 msgid "10 %"
 msgstr "10 %"
 
 #: libviews/callgraphview.cpp:2863
-#, fuzzy
-#| msgid "5 %"
 msgctxt "CallGraphView|"
 msgid "5 %"
 msgstr "5 %"
 
 #: libviews/callgraphview.cpp:2864
-#, fuzzy
-#| msgid "2 %"
 msgctxt "CallGraphView|"
 msgid "2 %"
 msgstr "2 %"
 
 #: libviews/callgraphview.cpp:2865
-#, fuzzy
-#| msgid "1 %"
 msgctxt "CallGraphView|"
 msgid "1 %"
 msgstr "1 %"
@@ -714,142 +661,103 @@ msgid "Same as Node"
 msgstr "Sama kuin solmun"
 
 #: libviews/callgraphview.cpp:2898
-#, fuzzy
-#| msgid "50 % of Node"
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
 msgstr "50 % solmusta"
 
 #: libviews/callgraphview.cpp:2900
-#, fuzzy
-#| msgid "20 % of Node"
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
 msgstr "20 % solmusta"
 
 #: libviews/callgraphview.cpp:2902
-#, fuzzy
-#| msgid "10 % of Node"
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
 msgstr "10 % solmusta"
 
 #: libviews/callgraphview.cpp:2931
-#, fuzzy
-#| msgid "Birds-eye View"
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
 msgstr "Yleiskuva"
 
 #: libviews/callgraphview.cpp:2932
-#, fuzzy
-#| msgid "Top Left"
 msgctxt "CallGraphView|"
 msgid "Top Left"
 msgstr "Ylävasemmalla"
 
 #: libviews/callgraphview.cpp:2933
-#, fuzzy
-#| msgid "Top Right"
 msgctxt "CallGraphView|"
 msgid "Top Right"
 msgstr "Yläoikealla"
 
 #: libviews/callgraphview.cpp:2934
-#, fuzzy
-#| msgid "Bottom Left"
 msgctxt "CallGraphView|"
 msgid "Bottom Left"
 msgstr "Alavasemmalla"
 
 #: libviews/callgraphview.cpp:2935
-#, fuzzy
-#| msgid "Bottom Right"
 msgctxt "CallGraphView|"
 msgid "Bottom Right"
 msgstr "Alaoikealla"
 
 #: libviews/callgraphview.cpp:2936
-#, fuzzy
-#| msgid "Automatic"
 msgctxt "CallGraphView|"
 msgid "Automatic"
 msgstr "Automaattinen"
 
 #: libviews/callgraphview.cpp:2937
-#, fuzzy
-#| msgid "Hide"
 msgctxt "CallGraphView|"
 msgid "Hide"
 msgstr "Piilota"
 
 #: libviews/callgraphview.cpp:2967
-#, fuzzy
-#| msgid "Layout"
 msgctxt "CallGraphView|"
 msgid "Layout"
 msgstr "Asettelu"
 
 #: libviews/callgraphview.cpp:2968
-#, fuzzy
-#| msgid "Top to Down"
 msgctxt "CallGraphView|"
 msgid "Top to Down"
 msgstr "Ylhäältä alas"
 
 #: libviews/callgraphview.cpp:2969
-#, fuzzy
-#| msgid "Left to Right"
 msgctxt "CallGraphView|"
 msgid "Left to Right"
 msgstr "Vasemmalta oikealle"
 
 #: libviews/callgraphview.cpp:2970
-#, fuzzy
-#| msgid "Circular"
 msgctxt "CallGraphView|"
 msgid "Circular"
-msgstr "Ympyrämäinen"
+msgstr "Kehämäinen"
 
 #: libviews/callgraphview.cpp:3010 libviews/callgraphview.cpp:3015
 #: libviews/callgraphview.cpp:3035
-#, fuzzy, qt-format
-#| msgid "Select '%1'"
+#, qt-format
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
-msgstr "Valitse ”%1”"
+msgstr "Siirry: ”%1”"
 
 #: libviews/callgraphview.cpp:3046
-#, fuzzy
-#| msgid "Stop Layouting"
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
-msgstr "Pysäytä asetteleminen"
+msgstr "Pysäytä asettelu"
 
 #: libviews/callgraphview.cpp:3053
-#, fuzzy
-#| msgid "Export Graph"
 msgctxt "CallGraphView|"
 msgid "Export Graph"
 msgstr "Vie kaavio"
 
 #: libviews/callgraphview.cpp:3054
-#, fuzzy
-#| msgid "As DOT file..."
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
-msgstr "DOT-tiedostona…"
+msgstr "DOT-tiedostoksi…"
 
 #: libviews/callgraphview.cpp:3055
-#, fuzzy
-#| msgid "As Image..."
 msgctxt "CallGraphView|"
 msgid "As Image..."
-msgstr "Kuvana…"
+msgstr "Kuvaksi…"
 
 #: libviews/callgraphview.cpp:3058
-#, fuzzy
-#| msgid "Graph"
 msgctxt "CallGraphView|"
 msgid "Graph"
 msgstr "Kaavio"
@@ -874,82 +782,59 @@ msgid "Cluster Groups"
 msgstr ""
 
 #: libviews/callgraphview.cpp:3080
-#, fuzzy
-#| msgid "Visualization"
 msgctxt "CallGraphView|"
 msgid "Visualization"
 msgstr "Visualisointi"
 
 #: libviews/callgraphview.cpp:3081
-#, fuzzy
-#| msgid "Compact"
 msgctxt "CallGraphView|"
 msgid "Compact"
 msgstr "Tiivis"
 
 #: libviews/callgraphview.cpp:3084
-#, fuzzy
-#| msgid "Normal"
 msgctxt "CallGraphView|"
 msgid "Normal"
 msgstr "Tavallinen"
 
 #: libviews/callgraphview.cpp:3087
-#, fuzzy
-#| msgid "Tall"
 msgctxt "CallGraphView|"
 msgid "Tall"
 msgstr "Korkea"
 
 #: libviews/callgraphview.cpp:3119
-#, fuzzy
-#| msgid "Export Graph As Image"
 msgctxt "CallGraphView|"
 msgid "Export Graph As Image"
-msgstr "Vie kaavio kuvana"
+msgstr "Vie kaavio kuvaksi"
 
 #: libviews/callgraphview.cpp:3121
-#, fuzzy
-#| msgid "Images (*.png *.jpg)"
 msgctxt "CallGraphView|"
 msgid "Images (*.png *.jpg)"
 msgstr "Kuvat (*.png *.jpg)"
 
 #: libviews/callitem.cpp:73 libviews/partlistitem.cpp:131
-#, fuzzy
-#| msgid "(active)"
 msgctxt "QObject|"
 msgid "(active)"
 msgstr "(aktiivinen)"
 
 #: libviews/callmapview.cpp:52
-#, fuzzy
-#| msgctxt "Name"
-#| msgid "A thing's name"
 msgctxt "CallMapView|Name"
 msgid "A thing's name"
-msgstr "Asian nimi"
+msgstr "Jutun nimi"
 
 #: libviews/callmapview.cpp:53
-#, fuzzy
-#| msgid "Cost"
 msgctxt "CallMapView|"
 msgid "Cost"
-msgstr "Hinta"
+msgstr "Kustannus"
 
 #: libviews/callmapview.cpp:54
-#, fuzzy
-#| msgid "Location"
 msgctxt "CallMapView|"
 msgid "Location"
 msgstr "Sijainti"
 
 #: libviews/callmapview.cpp:56
-#, fuzzy
-#| msgid "Call"
 msgctxt "CallMapView|"
 msgid "Calls"
-msgstr "Kutsu"
+msgstr "Kutsuja"
 
 #: libviews/callmapview.cpp:91
 #, fuzzy
@@ -1008,43 +893,31 @@ msgid ""
 msgstr ""
 
 #: libviews/callmapview.cpp:139
-#, fuzzy
-#| msgid "Go To"
 msgctxt "CallMapView|"
 msgid "Go To"
 msgstr "Siirry"
 
 #: libviews/callmapview.cpp:170
-#, fuzzy
-#| msgid "Stop at Depth"
 msgctxt "CallMapView|"
 msgid "Stop at Depth"
-msgstr "Pysähdy syvyyteen"
+msgstr "Pysäytä syvyyteen"
 
 #: libviews/callmapview.cpp:171
-#, fuzzy
-#| msgid "No Depth Limit"
 msgctxt "CallMapView|"
 msgid "No Depth Limit"
 msgstr "Ei syvyysrajoitusta"
 
 #: libviews/callmapview.cpp:173
-#, fuzzy
-#| msgid "Depth 10"
 msgctxt "CallMapView|"
 msgid "Depth 10"
 msgstr "Syvyys 10"
 
 #: libviews/callmapview.cpp:174
-#, fuzzy
-#| msgid "Depth 15"
 msgctxt "CallMapView|"
 msgid "Depth 15"
 msgstr "Syvyys 15"
 
 #: libviews/callmapview.cpp:175
-#, fuzzy
-#| msgid "Depth 20"
 msgctxt "CallMapView|"
 msgid "Depth 20"
 msgstr "Syvyys 20"
@@ -1085,148 +958,109 @@ msgid "No Function Limit"
 msgstr "Ei funktiorajoitusta"
 
 #: libviews/callmapview.cpp:257
-#, fuzzy
-#| msgid "Stop at Area"
 msgctxt "CallMapView|"
 msgid "Stop at Area"
-msgstr "Pysähdy alaan"
+msgstr "Pysäytä alueeseen"
 
 #: libviews/callmapview.cpp:258
-#, fuzzy
-#| msgid "No Area Limit"
 msgctxt "CallMapView|"
 msgid "No Area Limit"
-msgstr "Ei alarajoitusta"
+msgstr "Ei aluerajoitusta"
 
 #: libviews/callmapview.cpp:260
-#, fuzzy
-#| msgid "100 Pixels"
 msgctxt "CallMapView|"
 msgid "100 Pixels"
 msgstr "100 kuvapistettä"
 
 #: libviews/callmapview.cpp:261
-#, fuzzy
-#| msgid "200 Pixels"
 msgctxt "CallMapView|"
 msgid "200 Pixels"
 msgstr "200 kuvapistettä"
 
 #: libviews/callmapview.cpp:262
-#, fuzzy
-#| msgid "500 Pixels"
 msgctxt "CallMapView|"
 msgid "500 Pixels"
 msgstr "500 kuvapistettä"
 
 #: libviews/callmapview.cpp:263
-#, fuzzy
-#| msgid "1000 Pixels"
 msgctxt "CallMapView|"
 msgid "1000 Pixels"
 msgstr "1000 kuvapistettä"
 
 #: libviews/callmapview.cpp:269
-#, fuzzy, qt-format
-#| msgid "Area of '%1' (%2)"
+#, qt-format
 msgctxt "CallMapView|"
 msgid "Area of '%1' (%2)"
-msgstr "Funktion ”%1” ala (%2)"
+msgstr "Hakemiston ”%1” alue (%2)"
 
 #: libviews/callmapview.cpp:275
-#, fuzzy, qt-format
-#| msgid "Double Area Limit (to %1)"
+#, qt-format
 msgctxt "CallMapView|"
 msgid "Double Area Limit (to %1)"
-msgstr "Kaksinkertaista alarajoitus (arvoon %1)"
+msgstr "Kaksinkertaista aluerajoitus (arvoon %1)"
 
 #: libviews/callmapview.cpp:277
-#, fuzzy, qt-format
-#| msgid "Half Area Limit (to %1)"
+#, qt-format
 msgctxt "CallMapView|"
 msgid "Half Area Limit (to %1)"
-msgstr "Puolita alarajoitus (arvoon %1)"
+msgstr "Puolita aluerajoitus (arvoon %1)"
 
 #: libviews/callmapview.cpp:327
-#, fuzzy
-#| msgid "Visualization"
 msgctxt "CallMapView|"
 msgid "Visualization"
 msgstr "Visualisointi"
 
 #: libviews/callmapview.cpp:328
-#, fuzzy
-#| msgid "Split Direction"
 msgctxt "CallMapView|"
 msgid "Split Direction"
-msgstr "Jakamisen suunta"
+msgstr "Jakosuunta"
 
 #: libviews/callmapview.cpp:331
-#, fuzzy
-#| msgid "Skip Incorrect Borders"
 msgctxt "CallMapView|"
 msgid "Skip Incorrect Borders"
-msgstr "Ohita virheelliset reunat"
+msgstr "Sivuuta virheelliset reunat"
 
 #: libviews/callmapview.cpp:336
-#, fuzzy
-#| msgid "Border Width"
 msgctxt "CallMapView|"
 msgid "Border Width"
 msgstr "Reunan leveys"
 
 #: libviews/callmapview.cpp:337
-#, fuzzy
-#| msgid "Border 0"
 msgctxt "CallMapView|"
 msgid "Border 0"
 msgstr "Reuna 0"
 
 #: libviews/callmapview.cpp:339
-#, fuzzy
-#| msgid "Border 1"
 msgctxt "CallMapView|"
 msgid "Border 1"
 msgstr "Reuna 1"
 
 #: libviews/callmapview.cpp:340
-#, fuzzy
-#| msgid "Border 2"
 msgctxt "CallMapView|"
 msgid "Border 2"
 msgstr "Reuna 2"
 
 #: libviews/callmapview.cpp:341
-#, fuzzy
-#| msgid "Border 3"
 msgctxt "CallMapView|"
 msgid "Border 3"
 msgstr "Reuna 3"
 
 #: libviews/callmapview.cpp:346
-#, fuzzy
-#| msgid "Draw Symbol Names"
 msgctxt "CallMapView|"
 msgid "Draw Symbol Names"
 msgstr "Piirrä symbolinimet"
 
 #: libviews/callmapview.cpp:348
-#, fuzzy
-#| msgid "Draw Cost"
 msgctxt "CallMapView|"
 msgid "Draw Cost"
-msgstr "Piirrä hinta"
+msgstr "Piirrä kustannus"
 
 #: libviews/callmapview.cpp:350
-#, fuzzy
-#| msgid "Draw Location"
 msgctxt "CallMapView|"
 msgid "Draw Location"
 msgstr "Piirrä sijainti"
 
 #: libviews/callmapview.cpp:352
-#, fuzzy
-#| msgid "Draw Calls"
 msgctxt "CallMapView|"
 msgid "Draw Calls"
 msgstr "Piirrä kutsut"
@@ -1239,11 +1073,9 @@ msgstr ""
 #: libviews/callmapview.cpp:358
 msgctxt "CallMapView|"
 msgid "Allow Rotation"
-msgstr ""
+msgstr "Salli kääntäminen"
 
 #: libviews/callmapview.cpp:376
-#, fuzzy
-#| msgid "Shading"
 msgctxt "CallMapView|"
 msgid "Shading"
 msgstr "Varjostus"
@@ -1255,25 +1087,19 @@ msgid "Call Map: Current is '%1'"
 msgstr ""
 
 #: libviews/callmapview.cpp:621
-#, fuzzy
-#| msgid "Zoom Function"
 msgctxt "QObject|"
 msgid "(no function)"
-msgstr "Zoomaustoiminto"
+msgstr "(ei funktiota)"
 
 #: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
-#, fuzzy
-#| msgid "(no caller)"
 msgctxt "QObject|"
 msgid "(no call)"
-msgstr "(ei kutsujaa)"
+msgstr "(ei kutsua)"
 
 #: libviews/callview.cpp:37
-#, fuzzy
-#| msgid "Cost"
 msgctxt "CallView|"
 msgid "Cost"
-msgstr "Hinta"
+msgstr "Kustannus"
 
 #: libviews/callview.cpp:38
 msgctxt "CallView|"
@@ -1281,11 +1107,9 @@ msgid "Cost per call"
 msgstr ""
 
 #: libviews/callview.cpp:39
-#, fuzzy
-#| msgid "Cost"
 msgctxt "CallView|"
 msgid "Cost 2"
-msgstr "Hinta"
+msgstr "Kustannus 2"
 
 #: libviews/callview.cpp:40
 msgctxt "CallView|"
@@ -1298,15 +1122,11 @@ msgid "Count"
 msgstr ""
 
 #: libviews/callview.cpp:42
-#, fuzzy
-#| msgid "Caller"
 msgctxt "CallView|"
 msgid "Caller"
 msgstr "Kutsuja"
 
 #: libviews/callview.cpp:42
-#, fuzzy
-#| msgid "Callee"
 msgctxt "CallView|"
 msgid "Callee"
 msgstr "Kutsuttu"
@@ -1400,7 +1220,7 @@ msgstr[1] "(%1 funktio(ta) ohitettu)"
 #: libviews/coverageview.cpp:37
 msgctxt "CoverageView|"
 msgid "Incl."
-msgstr ""
+msgstr "ml."
 
 #: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
 msgctxt "CoverageView|"
@@ -1408,36 +1228,26 @@ msgid "Distance"
 msgstr "Etäisyys"
 
 #: libviews/coverageview.cpp:41
-#, fuzzy
-#| msgid "Caller"
 msgctxt "CoverageView|"
 msgid "Called"
-msgstr "Kutsuja"
+msgstr "Kutsuttu"
 
 #: libviews/coverageview.cpp:42
-#, fuzzy
-#| msgid "Caller"
 msgctxt "CoverageView|"
 msgid "Caller"
 msgstr "Kutsuja"
 
 #: libviews/coverageview.cpp:46
-#, fuzzy
-#| msgid "Self"
 msgctxt "CoverageView|"
 msgid "Self"
 msgstr "Itse"
 
 #: libviews/coverageview.cpp:48
-#, fuzzy
-#| msgid "Call"
 msgctxt "CoverageView|"
 msgid "Calling"
-msgstr "Kutsu"
+msgstr "Kutsuu"
 
 #: libviews/coverageview.cpp:49
-#, fuzzy
-#| msgid "Callee"
 msgctxt "CoverageView|"
 msgid "Callee"
 msgstr "Kutsuttu"
@@ -1483,22 +1293,17 @@ msgid ""
 msgstr ""
 
 #: libviews/coverageview.cpp:160
-#, fuzzy, qt-format
-#| msgid "Select '%1'"
+#, qt-format
 msgctxt "CoverageView|"
 msgid "Go to '%1'"
-msgstr "Valitse ”%1”"
+msgstr "Siirry: ”%1”"
 
 #: libviews/eventtypeitem.cpp:48
-#, fuzzy
-#| msgid "Unknown Type"
 msgctxt "QObject|"
 msgid "Unknown Type"
 msgstr "Tuntematon tyyppi"
 
 #: libviews/eventtypeview.cpp:37
-#, fuzzy
-#| msgid "Event Type"
 msgctxt "EventTypeView|"
 msgid "Event Type"
 msgstr "Tapahtuman tyyppi"
@@ -1506,25 +1311,19 @@ msgstr "Tapahtuman tyyppi"
 #: libviews/eventtypeview.cpp:38
 msgctxt "EventTypeView|"
 msgid "Incl."
-msgstr ""
+msgstr "ml."
 
 #: libviews/eventtypeview.cpp:39
-#, fuzzy
-#| msgid "Self"
 msgctxt "EventTypeView|"
 msgid "Self"
 msgstr "Itse"
 
 #: libviews/eventtypeview.cpp:40
-#, fuzzy
-#| msgid "Short"
 msgctxt "EventTypeView|"
 msgid "Short"
 msgstr "Lyhyt"
 
 #: libviews/eventtypeview.cpp:42
-#, fuzzy
-#| msgid "Formula"
 msgctxt "EventTypeView|"
 msgid "Formula"
 msgstr "Kaava"
@@ -1553,82 +1352,63 @@ msgid "Hide Secondary Event Type"
 msgstr "Piilota toissijainen tapahtuman tyyppi"
 
 #: libviews/eventtypeview.cpp:107
-#, fuzzy
-#| msgid "Edit Long Name"
 msgctxt "EventTypeView|"
 msgid "Edit Long Name"
-msgstr "Muuta pitkää nimeä"
+msgstr "Muokkaa pitkää nimeä"
 
 #: libviews/eventtypeview.cpp:108
-#, fuzzy
-#| msgid "Edit Short Name"
 msgctxt "EventTypeView|"
 msgid "Edit Short Name"
-msgstr "Muuta lyhyttä nimeä"
+msgstr "Muokkaa lyhyttä nimeä"
 
 #: libviews/eventtypeview.cpp:109
-#, fuzzy
-#| msgid "Formula"
 msgctxt "EventTypeView|"
 msgid "Edit Formula"
-msgstr "Kaava"
+msgstr "Muokkaa kaavaa"
 
 #: libviews/eventtypeview.cpp:110
-#, fuzzy
-#| msgid "Remove"
 msgctxt "EventTypeView|"
 msgid "Remove"
 msgstr "Poista"
 
 #: libviews/eventtypeview.cpp:119
-#, fuzzy
-#| msgid "Event Type"
 msgctxt "EventTypeView|"
 msgid "New Event Type..."
-msgstr "Tapahtuman tyyppi"
+msgstr "Uusi tapahtumatyyppi…"
 
 #: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
 #, qt-format
 msgctxt "EventTypeView|"
 msgid "New%1"
-msgstr ""
+msgstr "Uusi%1"
 
 #: libviews/eventtypeview.cpp:160
-#, fuzzy, qt-format
-#| msgid "Event Type"
+#, qt-format
 msgctxt "EventTypeView|"
 msgid "New Event Type %1"
-msgstr "Tapahtuman tyyppi"
+msgstr "Uusi tapahtumatyyppi %1"
 
 #: libviews/functionlistmodel.cpp:45
 msgctxt "FunctionListModel|"
 msgid "Incl."
-msgstr ""
+msgstr "ml."
 
 #: libviews/functionlistmodel.cpp:46
-#, fuzzy
-#| msgid "Self"
 msgctxt "FunctionListModel|"
 msgid "Self"
 msgstr "Itse"
 
 #: libviews/functionlistmodel.cpp:47
-#, fuzzy
-#| msgid "Caller"
 msgctxt "FunctionListModel|"
 msgid "Called"
-msgstr "Kutsuja"
+msgstr "Kutsuttu"
 
 #: libviews/functionlistmodel.cpp:48
-#, fuzzy
-#| msgid "Function"
 msgctxt "FunctionListModel|"
 msgid "Function"
 msgstr "Funktio"
 
 #: libviews/functionlistmodel.cpp:49
-#, fuzzy
-#| msgid "Location"
 msgctxt "FunctionListModel|"
 msgid "Location"
 msgstr "Sijainti"
@@ -1641,8 +1421,6 @@ msgid "(%1 function(s) skipped)"
 msgstr "(%1 funktio(ta) ohitettu)"
 
 #: libviews/functionselection.cpp:87
-#, fuzzy
-#| msgid "Function Profile"
 msgctxt "FunctionSelection|"
 msgid "Function Profile"
 msgstr "Funktioprofiili"
@@ -1655,29 +1433,21 @@ msgid "&Search:"
 msgstr "&Etsi:"
 
 #: libviews/functionselection.cpp:101
-#, fuzzy
-#| msgid "&Search:"
 msgctxt "FunctionSelection|"
 msgid "Search Query"
-msgstr "&Etsi:"
+msgstr "Etsi kyselyä"
 
 #: libviews/functionselection.cpp:116
-#, fuzzy
-#| msgid "Self"
 msgctxt "FunctionSelection|"
 msgid "Self"
 msgstr "Itse"
 
 #: libviews/functionselection.cpp:116
-#, fuzzy
-#| msgid "Group"
 msgctxt "FunctionSelection|"
 msgid "Group"
 msgstr "Ryhmä"
 
 #: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
-#, fuzzy
-#| msgid "(No Grouping)"
 msgctxt "FunctionSelection|"
 msgid "(No Grouping)"
 msgstr "(Ei ryhmittelyä)"
@@ -1694,22 +1464,17 @@ msgid ""
 msgstr ""
 
 #: libviews/functionselection.cpp:287
-#, fuzzy, qt-format
-#| msgid "Select '%1'"
+#, qt-format
 msgctxt "FunctionSelection|"
 msgid "Go to '%1'"
-msgstr "Valitse ”%1”"
+msgstr "Siirry: ”%1”"
 
 #: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
-#, fuzzy
-#| msgid "Grouping"
 msgctxt "FunctionSelection|"
 msgid "Grouping"
 msgstr "Ryhmittely"
 
 #: libviews/functionselection.cpp:353
-#, fuzzy
-#| msgid "No Grouping"
 msgctxt "FunctionSelection|"
 msgid "No Grouping"
 msgstr "Ei ryhmittelyä"
@@ -1764,22 +1529,16 @@ msgid "#"
 msgstr "#"
 
 #: libviews/instrview.cpp:194
-#, fuzzy
-#| msgid "Cost"
 msgctxt "InstrView|"
 msgid "Cost"
-msgstr "Hinta"
+msgstr "Kustannus"
 
 #: libviews/instrview.cpp:195
-#, fuzzy
-#| msgid "Cost"
 msgctxt "InstrView|"
 msgid "Cost 2"
-msgstr "Hinta"
+msgstr "Kustannus 2"
 
 #: libviews/instrview.cpp:197
-#, fuzzy
-#| msgid "Hex"
 msgctxt "InstrView|"
 msgid "Hex"
 msgstr "Heksa"
@@ -1792,11 +1551,9 @@ msgid "Assembly Instructions"
 msgstr "Konekieliset käskyt"
 
 #: libviews/instrview.cpp:200
-#, fuzzy
-#| msgid "Source Line"
 msgctxt "InstrView|"
 msgid "Source Position"
-msgstr "Lähdekoodirivi"
+msgstr "Lähdesijainti"
 
 #: libviews/instrview.cpp:236
 msgctxt "InstrView|"
@@ -1812,22 +1569,18 @@ msgid ""
 msgstr ""
 
 #: libviews/instrview.cpp:265
-#, fuzzy, qt-format
-#| msgid "Select '%1'"
+#, qt-format
 msgctxt "InstrView|"
 msgid "Go to '%1'"
-msgstr "Valitse ”%1”"
+msgstr "Siirry: ”%1”"
 
 #: libviews/instrview.cpp:270
-#, fuzzy, qt-format
-#| msgid "Go to Address %1"
+#, qt-format
 msgctxt "InstrView|"
 msgid "Go to Address %1"
 msgstr "Siirry osoitteeseen %1"
 
 #: libviews/instrview.cpp:282
-#, fuzzy
-#| msgid "Hex Code"
 msgctxt "InstrView|"
 msgid "Hex Code"
 msgstr "Heksakoodi"
@@ -1970,29 +1723,22 @@ msgstr "(ei kutsujaa)"
 #: libviews/partlistitem.cpp:39
 msgctxt "QObject|"
 msgid "(none)"
-msgstr ""
+msgstr "(ei mitään)"
 
 #: libviews/partselection.cpp:48
-#, fuzzy
-#| msgid "Parts Overview"
 msgctxt "PartSelection|"
 msgid "Parts Overview"
 msgstr "Osien yleiskuva"
 
 #: libviews/partselection.cpp:61
-#, fuzzy
-#| msgctxt "A thing's name"
-#| msgid "Name"
 msgctxt "PartSelection|A thing's name"
 msgid "Name"
 msgstr "Nimi"
 
 #: libviews/partselection.cpp:62
-#, fuzzy
-#| msgid "Cost"
 msgctxt "PartSelection|"
 msgid "Cost"
-msgstr "Hinta"
+msgstr "Kustannus"
 
 #: libviews/partselection.cpp:69
 msgctxt "PartSelection|"
@@ -2024,64 +1770,49 @@ msgid "Profile Part Overview: Current is '%1'"
 msgstr ""
 
 #: libviews/partselection.cpp:337
-#, fuzzy, qt-format
-#| msgid "Deselect '%1'"
+#, qt-format
 msgctxt "PartSelection|"
 msgid "Deselect '%1'"
-msgstr "Poista ”%1” valinta"
+msgstr "Poista valinta ”%1”"
 
 #: libviews/partselection.cpp:339
-#, fuzzy, qt-format
-#| msgid "Select '%1'"
+#, qt-format
 msgctxt "PartSelection|"
 msgid "Select '%1'"
 msgstr "Valitse ”%1”"
 
 #: libviews/partselection.cpp:344
-#, fuzzy
-#| msgid "Select All Parts"
 msgctxt "PartSelection|"
 msgid "Select All Parts"
 msgstr "Valitse kaikki osat"
 
 #: libviews/partselection.cpp:345
-#, fuzzy
-#| msgid "Visible Parts"
 msgctxt "PartSelection|"
 msgid "Visible Parts"
 msgstr "Näkyvät osat"
 
 #: libviews/partselection.cpp:346
-#, fuzzy
-#| msgid "Hide Selected Parts"
 msgctxt "PartSelection|"
 msgid "Hide Selected Parts"
 msgstr "Piilota valitut osat"
 
 #: libviews/partselection.cpp:347
-#, fuzzy
-#| msgid "Show Hidden Parts"
 msgctxt "PartSelection|"
 msgid "Show Hidden Parts"
 msgstr "Näytä piilotetut osat"
 
 #: libviews/partselection.cpp:361
-#, fuzzy, qt-format
-#| msgid "Select '%1'"
+#, qt-format
 msgctxt "PartSelection|"
 msgid "Go to '%1'"
-msgstr "Valitse ”%1”"
+msgstr "Siirry: ”%1”"
 
 #: libviews/partselection.cpp:370
-#, fuzzy
-#| msgid "Visualization"
 msgctxt "PartSelection|"
 msgid "Visualization"
 msgstr "Visualisointi"
 
 #: libviews/partselection.cpp:371
-#, fuzzy
-#| msgid "Partitioning Mode"
 msgctxt "PartSelection|"
 msgid "Partitioning Mode"
 msgstr "Ositustila"
@@ -2120,11 +1851,9 @@ msgid "Draw Names"
 msgstr "Piirrä nimet"
 
 #: libviews/partselection.cpp:394
-#, fuzzy
-#| msgid "Draw Costs"
 msgctxt "PartSelection|"
 msgid "Draw Costs"
-msgstr "Piirrä hinnat"
+msgstr "Piirrä kustannukset"
 
 #: libviews/partselection.cpp:396
 msgctxt "PartSelection|"
@@ -2134,25 +1863,19 @@ msgstr ""
 #: libviews/partselection.cpp:398
 msgctxt "PartSelection|"
 msgid "Allow Rotation"
-msgstr ""
+msgstr "Salli kiertäminen"
 
 #: libviews/partselection.cpp:400
-#, fuzzy
-#| msgid "Draw Frames"
 msgctxt "PartSelection|"
 msgid "Draw Frames"
 msgstr "Piirrä kehykset"
 
 #: libviews/partselection.cpp:414
-#, fuzzy
-#| msgid "Hide Info"
 msgctxt "PartSelection|"
 msgid "Hide Info"
 msgstr "Piilota tiedot"
 
 #: libviews/partselection.cpp:414
-#, fuzzy
-#| msgid "Show Info"
 msgctxt "PartSelection|"
 msgid "Show Info"
 msgstr "Näytä tiedot"
@@ -2163,8 +1886,6 @@ msgid "(no trace loaded)"
 msgstr ""
 
 #: libviews/partview.cpp:37
-#, fuzzy
-#| msgid "Profile Part"
 msgctxt "PartView|"
 msgid "Profile Part"
 msgstr "Profiilin osa"
@@ -2172,26 +1893,22 @@ msgstr "Profiilin osa"
 #: libviews/partview.cpp:38
 msgctxt "PartView|"
 msgid "Incl."
-msgstr ""
+msgstr "ml."
 
 #: libviews/partview.cpp:39
-#, fuzzy
-#| msgid "Self"
 msgctxt "PartView|"
 msgid "Self"
 msgstr "Itse"
 
 #: libviews/partview.cpp:40
-#, fuzzy
-#| msgid "Caller"
 msgctxt "PartView|"
 msgid "Called"
-msgstr "Kutsuja"
+msgstr "Kutsuttu"
 
 #: libviews/partview.cpp:41
 msgctxt "PartView|"
 msgid "Comment"
-msgstr ""
+msgstr "Huomautus"
 
 #: libviews/partview.cpp:68
 msgctxt "PartView|"
@@ -2238,18 +1955,14 @@ msgid "Cost"
 msgstr "Hinta"
 
 #: libviews/sourceview.cpp:53
-#, fuzzy
-#| msgid "Cost"
 msgctxt "SourceView|"
 msgid "Cost 2"
-msgstr "Hinta"
+msgstr "Kustannus 2"
 
 #: libviews/sourceview.cpp:55
-#, fuzzy
-#| msgid "Source Line"
 msgctxt "SourceView|"
 msgid "Source"
-msgstr "Lähdekoodirivi"
+msgstr "Lähde"
 
 #: libviews/sourceview.cpp:83
 msgctxt "SourceView|"
@@ -2264,15 +1977,13 @@ msgid ""
 msgstr ""
 
 #: libviews/sourceview.cpp:110
-#, fuzzy, qt-format
-#| msgid "Select '%1'"
+#, qt-format
 msgctxt "SourceView|"
 msgid "Go to '%1'"
-msgstr "Valitse ”%1”"
+msgstr "Siirry: ”%1”"
 
 #: libviews/sourceview.cpp:115
-#, fuzzy, qt-format
-#| msgid "Go to Line %1"
+#, qt-format
 msgctxt "SourceView|"
 msgid "Go to Line %1"
 msgstr "Siirry riville %1"
@@ -2389,7 +2100,7 @@ msgstr "Siirrä ylimmäs"
 #: libviews/tabview.cpp:104
 msgctxt "TabBar|Move to Top"
 msgid "Top"
-msgstr ""
+msgstr "Ylös"
 
 #: libviews/tabview.cpp:107
 #, fuzzy
@@ -2451,7 +2162,7 @@ msgstr "Piilota"
 #: libviews/tabview.cpp:131
 msgctxt "TabBar|Show on Top"
 msgid "Top"
-msgstr ""
+msgstr "Ylhäällä"
 
 #: libviews/tabview.cpp:132
 #, fuzzy
@@ -2513,15 +2224,11 @@ msgid "Callee Map"
 msgstr "Kutsuttujen kartta"
 
 #: libviews/tabview.cpp:378
-#, fuzzy
-#| msgid "Source Code"
 msgctxt "TabView|"
 msgid "Source Code"
 msgstr "Lähdekoodi"
 
 #: libviews/tabview.cpp:380
-#, fuzzy
-#| msgid "Parts"
 msgctxt "TabView|"
 msgid "Parts"
 msgstr "Osat"
