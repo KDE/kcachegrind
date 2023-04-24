@@ -4,22 +4,22 @@
 # Marce Villarino <mvillarino@kde-espana.es>, 2009.
 # Marce Villarino <mvillarino@kde-espana.es>, 2009, 2012, 2013, 2014.
 # Adrian Chaves Fernandez <adriyetichaves@gmail.com>, 2013, 2015, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2020-01-11 11:16+0100\n"
+"PO-Revision-Date: 2023-04-23 08:25+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
-"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.08.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 "X-Qt-Contexts: true\n"
 
 #: libcore/cachegrindloader.cpp:135
@@ -356,9 +356,6 @@ msgid "(unknown call)"
 msgstr "(chamada descoñecida)"
 
 #: libviews/callgraphview.cpp:908
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Export Graph"
 msgctxt "QObject|"
 msgid "Export Graph"
 msgstr "Exportar o gráfico"
@@ -1411,7 +1408,7 @@ msgstr "Saltar %1 veces a 0x%2"
 #: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
 msgctxt "QObject|"
 msgid "(cycle)"
-msgstr "(ciclar)"
+msgstr "(ciclo)"
 
 #: libviews/instrview.cpp:193
 msgctxt "InstrView|"
@@ -1484,8 +1481,7 @@ msgstr "Código hex"
 #: libviews/instrview.cpp:573
 msgctxt "InstrView|"
 msgid "There is no instruction info in the profile data file."
-msgstr ""
-"Non hai información da instrución no ficheiro de datos do tracexamento."
+msgstr "Non hai información da instrución no ficheiro de datos do trazado."
 
 #: libviews/instrview.cpp:575
 msgctxt "InstrView|"
@@ -1521,9 +1517,7 @@ msgstr "Non se pode atopar ese ficheiro."
 #: libviews/instrview.cpp:834
 msgctxt "InstrView|"
 msgid "If cross-compiled, set SYSROOT variable."
-msgstr ""
-"Se compila nunha plataforma distinta da de destino (cross-compiling), defina "
-"a variábel SYSROOT."
+msgstr "Se se usa compilación cruzada, defina a variábel SYSROOT."
 
 #: libviews/instrview.cpp:858
 msgctxt "InstrView|"
@@ -1561,12 +1555,12 @@ msgstr "Isto ocorre porque o código de"
 #: libviews/instrview.cpp:1139
 msgctxt "InstrView|"
 msgid "does not seem to match the profile data file."
-msgstr "non semella coincidir co ficheiro de datos do tracexamento."
+msgstr "non semella coincidir co ficheiro de datos do trazado."
 
 #: libviews/instrview.cpp:1142
 msgctxt "InstrView|"
 msgid "Are you using an old profile data file or is the above mentioned"
-msgstr "Está a usar un ficheiro de datos de tracexamento vello ou é que tal"
+msgstr "Está a usar un ficheiro de datos de trazado vello ou é que tal"
 
 #: libviews/instrview.cpp:1144
 msgctxt "InstrView|"
@@ -1581,7 +1575,7 @@ msgstr "Semella haber un erro ao intentar executar a orde"
 #: libviews/instrview.cpp:1156
 msgctxt "InstrView|"
 msgid "Check that the ELF object used in the command exists."
-msgstr "Comprobe que exista o objecto ELF empregado na orde."
+msgstr "Comprobe que exista o obxecto ELF empregado na orde."
 
 #: libviews/partgraph.cpp:154
 #, qt-format
@@ -1592,7 +1586,7 @@ msgstr "Parte %1 do perfil"
 #: libviews/partgraph.cpp:211
 msgctxt "QObject|"
 msgid "(no trace)"
-msgstr "(sen tracexamento)"
+msgstr "(sen trazado)"
 
 #: libviews/partgraph.cpp:214
 msgctxt "QObject|"
@@ -1622,7 +1616,7 @@ msgstr "Custo"
 #: libviews/partselection.cpp:69
 msgctxt "PartSelection|"
 msgid "(no trace parts)"
-msgstr "(non hai partes do tracexamento)"
+msgstr "(non hai partes do trazado)"
 
 #: libviews/partselection.cpp:96
 msgctxt "PartSelection|"
@@ -1643,19 +1637,19 @@ msgid ""
 msgstr ""
 "<b>O resumo das partes</b><p>Un trazado consta de varias partes de traza "
 "cando hai varios ficheiros de datos de perfilado derivados dunha execución "
-"de tracexamento. O acople de Resumo das partes do tracexamento móstraas, "
-"ordenadas segundo o tempo de execución. Os tamaños dos rectángulos son "
-"proporcionais ao custo total despendido nas partes. Pode escoller unha ou "
-"varias parte para restrinxir os custos que se mostran a só os desas partes.</"
-"p><p>A partes están subdivididas á súa vez: hai un modo de división segundo "
-"o particionamento e segundo o chamado:<ul> <li>Particionamento: Verá o "
-"particionamento en grupos dunha parte de trazado, segundo o tipo de grupo "
-"escollido. P.ex. se escolle grupos de obxectos ELF verá rectángulos "
-"colorados para cada obxecto ELF empregado (biblioteca compartida ou "
-"executábel), cun tamaño proporcional ao custo gastado nel.</li> <li>Chamado: "
-"Móstrase un rectángulo que mostra o custo inclusivo da función que teña "
-"escollida na parte do trazado. Estará dividida en rectángulos máis pequenos "
-"para mostrar o custo das súas chamadas.</li></ul></p>"
+"de trazado. O acople de Resumo das partes do trazado móstraas, ordenadas "
+"segundo o tempo de execución. Os tamaños dos rectángulos son proporcionais "
+"ao custo total despendido nas partes. Pode escoller unha ou varias parte "
+"para restrinxir os custos que se mostran a só os desas partes.</p><p>A "
+"partes están subdivididas á súa vez: hai un modo de división segundo o "
+"partición e segundo o chamado:<ul> <li>Partición: Verá a partición en grupos "
+"dunha parte de trazado, segundo o tipo de grupo escollido. P. ex. se escolle "
+"grupos de obxectos ELF verá rectángulos colorados para cada obxecto ELF "
+"empregado (biblioteca compartida ou executábel), cun tamaño proporcional ao "
+"custo gastado nel.</li> <li>Chamado: Móstrase un rectángulo que mostra o "
+"custo inclusivo da función que teña escollida na parte do trazado. Estará "
+"dividida en rectángulos máis pequenos para mostrar o custo das súas chamadas."
+"</li></ul></p>"
 
 #: libviews/partselection.cpp:231
 #, qt-format
@@ -1709,7 +1703,7 @@ msgstr "Visualización"
 #: libviews/partselection.cpp:371
 msgctxt "PartSelection|"
 msgid "Partitioning Mode"
-msgstr "Modo de particionamento"
+msgstr "Modo de partición"
 
 #: libviews/partselection.cpp:373
 msgctxt "PartSelection|"
@@ -1769,7 +1763,7 @@ msgstr "Mostrar a información"
 #: libviews/partselection.cpp:562
 msgctxt "PartSelection|"
 msgid "(no trace loaded)"
-msgstr "(non hai ningún tracexamento cargado)"
+msgstr "(non hai ningún trazado cargado)"
 
 #: libviews/partview.cpp:37
 msgctxt "PartView|"
@@ -1813,21 +1807,21 @@ msgid ""
 "Part Overview Dockable. This one also supports multiple selection.</"
 "p><p>Note that the list is hidden if only one trace part is loaded.</p>"
 msgstr ""
-"<b>Lista de partes do tracexamento</b><p>Esta lista mostra todas as partes "
-"do tracexamento cargado. Para cada parte móstrase o custo propio/inclusivo "
-"da función escollida despendido na parte. As porcentaxes do custo son sempre "
-"relativos ao custo total <em>da parte</em> (non do total do tracexamento "
-"como no Resumo de partes da traza). Tamén se mostran as chamadas que se fan "
-"desde/ata a función actual dentro da parte da traza.</p> <p>Se escolle unha "
-"ou máis partes da traza na lista, os custos mostrados por todo KCachegrind "
-"só serán os despendidos nas partes escollidas. Se non se mostra ningunha "
-"selección da lista escolleranse implicitamente todas as partes do "
-"tracexamento.</p> <p>Esta é unha lista de selección múltipla. Pode escoller "
-"grupos de elementos arrastrando o rato ou empregando MAIÚSC/CTRL. A "
-"selección/anulación da escolla de partes da traza tamén se pode facer "
-"empregando o acople de resumo de partes da traza. Este tamén permite facer "
-"seleccións múltiplas.</p> <p>Lembre que esta lista agóchase se só se cargou "
-"unha parte de traza.</p>"
+"<b>Lista de partes do trazado</b><p>Esta lista mostra todas as partes do "
+"trazado cargado. Para cada parte móstrase o custo propio/inclusivo da "
+"función escollida despendido na parte. As porcentaxes do custo son sempre "
+"relativos ao custo total <em>da parte</em> (non do total do trazado como no "
+"Resumo de partes da traza). Tamén se mostran as chamadas que se fan desde/"
+"ata a función actual dentro da parte da traza.</p> <p>Se escolle unha ou "
+"máis partes da traza na lista, os custos mostrados por todo KCachegrind só "
+"serán os despendidos nas partes escollidas. Se non se mostra ningunha "
+"selección da lista escolleranse implicitamente todas as partes do trazado.</"
+"p> <p>Esta é unha lista de selección múltipla. Pode escoller grupos de "
+"elementos arrastrando o rato ou empregando MAIÚSC/CTRL. A selección/"
+"anulación da escolla de partes da traza tamén se pode facer empregando o "
+"acople de resumo de partes da traza. Este tamén permite facer seleccións "
+"múltiplas.</p> <p>Lembre que esta lista agóchase se só se cargou unha parte "
+"de traza.</p>"
 
 #: libviews/sourceitem.cpp:141
 #, qt-format
@@ -1937,7 +1931,7 @@ msgstr "Isto débese a que non hai información de depuración presente."
 #: libviews/sourceview.cpp:676
 msgctxt "SourceView|"
 msgid "Recompile source and redo the profile run."
-msgstr "Recompila a fonte e refai o tracexamento."
+msgstr "Recompila a fonte e refai o trazado."
 
 #: libviews/sourceview.cpp:679
 msgctxt "SourceView|"
@@ -2148,15 +2142,15 @@ msgstr ""
 "función escollida en distintos separadores: <ul><li>O separador de custo "
 "mostra unha lista de tipos de eventos dispoñíbeis e os custos inclusivo e "
 "propio relativos a estes tipos.</li><li>O separador de partes mostra unha "
-"lista de partes de trazado se o tracexamento consta de máis dunha parte (en "
-"caso contrario, non se mostraría este separador). Móstrase o custo "
-"despendido pola función nas distintas partes xunto coas chamadas a ocorrer.</"
-"li> <li>O separador de lista de chamadas mostra os chamadores directos e as "
-"chamadas pola función con máis detalles.</li> <li>O separador de cobertura "
-"mostra o mesmo que as listas de chamadas, pero tamén mostra os chamadores e "
-"chamados indirectos, non só os directos.</li> <li>O separador do gráfico de "
-"chamadas mostra unha visualización gráfica das chamadas que fai esta función."
-"</li> <li>O separador de código fonte presenta o código fonte anotado se hai "
+"lista de partes de trazado se o trazado consta de máis dunha parte (en caso "
+"contrario, non se mostraría este separador). Móstrase o custo despendido "
+"pola función nas distintas partes xunto coas chamadas a ocorrer.</li> <li>O "
+"separador de lista de chamadas mostra os chamadores directos e as chamadas "
+"pola función con máis detalles.</li> <li>O separador de cobertura mostra o "
+"mesmo que as listas de chamadas, pero tamén mostra os chamadores e chamados "
+"indirectos, non só os directos.</li> <li>O separador do gráfico de chamadas "
+"mostra unha visualización gráfica das chamadas que fai esta función.</li> "
+"<li>O separador de código fonte presenta o código fonte anotado se hai "
 "dispoñíbel información de depuración e se dispón do ficheiro das fontes.</"
 "li> <li>O separador de código-máquina mostra instrución de ensamblador "
 "anotadas se hai dispoñíbel información de perfilado a nivel de instrución.</"

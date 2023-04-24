@@ -3,13 +3,13 @@
 # mvillarino <mvillarino@users.sourceforge.net>, 2007, 2008, 2009.
 # Marce Villarino <mvillarino@gmail.com>, 2009, 2013, 2014.
 # Adrian Chaves Fernandez <adriyetichaves@gmail.com>, 2013, 2015, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2020-12-29 02:36+0100\n"
-"PO-Revision-Date: 2020-01-11 11:18+0100\n"
+"PO-Revision-Date: 2023-04-23 08:26+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.08.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -334,7 +334,7 @@ msgstr "Fíos"
 #: kcachegrind/dumpselectionbase.ui:412
 #, kde-format
 msgid "Recursions"
-msgstr "Recursións"
+msgstr "Repeticións"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:426
@@ -492,6 +492,7 @@ msgstr "Contextos"
 msgid "Stack trace:"
 msgstr "Trazado da pila:"
 
+# well-spelled: Sinc
 #. i18n: ectx: property (text), widget (QCheckBox, checkBox2)
 #: kcachegrind/dumpselectionbase.ui:855
 #, kde-format
@@ -622,7 +623,7 @@ msgstr "Autor e mantedor"
 #: kcachegrind/main.cpp:68
 #, kde-format
 msgid "Show information of this trace"
-msgstr "Mostrar a información deste tracexamento"
+msgstr "Mostrar a información deste trazado"
 
 #: kcachegrind/main.cpp:68
 #, kde-format
@@ -652,7 +653,7 @@ msgstr ""
 "probábeis» ficticia. Constrúese comezando coa función escollida e engadindo "
 "as funcións chamadoras/chamadas con maior custo por cima e por baixo.</"
 "p><p>As columnas <b>Custo</b> e <b>Chamadas</b> mostran o custo usado por "
-"todas as chamadas da función na liña de acima.</p>"
+"todas as chamadas da función na liña de enriba.</p>"
 
 #: kcachegrind/toplevel.cpp:283
 #, kde-format
@@ -839,19 +840,19 @@ msgstr ""
 "<b>Forzar o resultado</b><p>Isto forza a envorcar o resultado dun perfilado "
 "de Callgrind no directorio actual. Esta acción compróbase mentres "
 "KCachegrind espera o resultado. Se o resultado estivese listo, cargará de "
-"novo automaticamente o tracexamento actual. Se fose o resultado do Callgrind "
-"en execución, o novo parte de tracexamento creado tamén se cargará.</p><p>O "
+"novo automaticamente o trazado actual. Se fose o resultado do Callgrind en "
+"execución, o novo parte de trazado creado tamén se cargará.</p><p>O "
 "resultado forzado crea un ficheiro «callgrind.cmd», e comproba cada segundo "
 "a súa existencia. Un Callgrind en execución detectará este ficheiro, xerará "
-"un parte de tracexamento, e eliminará «callgrind.cmd». A eliminación é "
-"detectada por KCachegrind, quen fará unha nova lectura. Se <em>non</em> "
-"existise ningún Callgrind a correr, prema «Forzar o resultado» de novo para "
-"cancelar o pedido do resultado. Isto eliminará o propio «callgrind.cmd» e "
-"parará a pesquisa dun novo resultado.</p><p>Nota: unha execución de "
-"Callgrind <em>só</em> detecta a existencia de «callgrind.cmd» cando está en "
-"execución activa durante algúns milisegundos, i.e., cando <em>non</em> está "
-"parado. Suxestión: Se está a analizar un programa da GUI, pode espertar a "
-"Callgrind, por exemplo, cambiando o tamaño dunha xanela do programa.</p>"
+"un parte de trazado, e eliminará «callgrind.cmd». A eliminación é detectada "
+"por KCachegrind, quen fará unha nova lectura. Se <em>non</em> existise "
+"ningún Callgrind a correr, prema «Forzar o resultado» de novo para cancelar "
+"o pedido do resultado. Isto eliminará o propio «callgrind.cmd» e parará a "
+"solicitude dun novo resultado.</p><p>Nota: unha execución de Callgrind "
+"<em>só</em> detecta a existencia de «callgrind.cmd» cando está en execución "
+"activa durante algúns milisegundos, i.e., cando <em>non</em> está parado. "
+"Suxestión: Se está a analizar un programa da GUI, pode espertar a Callgrind, "
+"por exemplo, cambiando o tamaño dunha xanela do programa.</p>"
 
 #: kcachegrind/toplevel.cpp:474
 #, kde-format
@@ -1256,7 +1257,7 @@ msgstr ""
 "mesmo\n"
 "nivel que o actual; use Riba/Baixo para subir/baixar un nivel de "
 "aniñamento.\n"
-"Para escollerr o elemento actual, prema Espazo, e para activalo, «enter».\n"
+"Para escoller o elemento actual, prema Espazo, e para activalo, Intro.\n"
 "</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
@@ -1328,7 +1329,7 @@ msgid ""
 "<p>...that you can configure whether KCachgrind should\n"
 "show absolute event counts or relative ones (percentage display)?</p>\n"
 msgstr ""
-"<p>…pode configurar se KCachegrind debe mostrar as cantidades\n"
+"<p>…pode configurar se KCachgrind debe mostrar as cantidades\n"
 "absolutas dos eventos ou as relativas (versión porcentual)?</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
@@ -1414,10 +1415,10 @@ msgid ""
 "code).</p>\n"
 msgstr ""
 "<p>…pode restrinxir as cantidades de custos mostradas só\n"
-"a algunhas partes do tracexamento completo se escolle esas partes\n"
-"no acople de «Selección do Tracexamento»?</p>\n"
-"<p>Para xerar varias partes na execución dunha análise de rendemendo con\n"
+"a algunhas partes do trazado completo se escolle esas partes\n"
+"no acople de «Selección do trazado?</p>\n"
+"<p>Para xerar varias partes na execución dunha análise de rendemento con\n"
 "«cachegrind», use p.ex. a opción --cachedumps=xxx para as partes\n"
-"cunha lonxitude de xxxx bloques básicos (Un bloque básico é a execución\n"
+"cunha lonxitude de xxx bloques básicos (Un bloque básico é a execución\n"
 "dun conxunto de instrucións de linguaxe de ensamblaxe sen saltos,\n"
 "dentro do código do seu programa).</p>\n"
