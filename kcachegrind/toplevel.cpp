@@ -14,6 +14,7 @@
 #define ENABLE_DUMPDOCK 0
 
 #include "toplevel.h"
+#include <karchive_version.h>
 
 #include <stdlib.h> // for system()
 
@@ -47,11 +48,17 @@
 #include <KJobWidgets>
 #include <KEditToolBar>
 #include <KShortcutsDialog>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <KTipDialog>
+#endif
 #include <KMessageBox>
 #include <KSharedConfig>
 #include <KConfigGroup>
+#if KARCHIVE_VERSION < QT_VERSION_CHECK(5,85,0)
 #include <KFilterDev>
+#else
+#include <KCompressionDevice>
+#endif
 
 #if ENABLE_DUMPDOCK
 #include "dumpselection.h"
@@ -870,7 +877,7 @@ void TopLevel::querySlot()
 
 void TopLevel::configureKeys()
 {
-    KShortcutsDialog::configure(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, this);
+    KShortcutsDialog::showDialog(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, this);
 }
 
 
@@ -1926,11 +1933,15 @@ void TopLevel::configChanged()
 }
 
 void TopLevel::slotShowTipOnStart() {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     KTipDialog::showTip(this);
+#endif
 }
 
 void TopLevel::slotShowTip() {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     KTipDialog::showTip( this, QString(), true );
+#endif
 }
 
 void TopLevel::dummySlot()
@@ -2351,9 +2362,14 @@ bool TopLevel::openDataFile(const QString& file)
     QMimeDatabase dataBase;
     QString mimeType = dataBase.mimeTypeForFile(file, QMimeDatabase::MatchContent).name();
 
+#if KARCHIVE_VERSION >= QT_VERSION_CHECK(5,85,0)
+    auto compressionType = KCompressionDevice::compressionTypeForMimeType(mimeType);
+#else
+    auto compressionType = KFilterDev::compressionTypeForMimeType(mimeType);
+#endif
     KCompressionDevice* compressed;
     compressed = new KCompressionDevice(file,
-                                        KFilterDev::compressionTypeForMimeType(mimeType));
+                                        compressionType);
     if (compressed &&
         (compressed->compressionType() != KCompressionDevice::None)) {
         filesLoaded = d->load(compressed, file);
