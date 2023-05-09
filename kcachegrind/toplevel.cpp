@@ -2050,8 +2050,13 @@ void TopLevel::forceTrace()
             SLOT(ccError(QProcess::ProcessError)));
     connect(_ccProcess, SIGNAL(finished(int,QProcess::ExitStatus)),
             SLOT(ccExit(int,QProcess::ExitStatus)));
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     _ccProcess->start(QStringLiteral("callgrind_control -d %1").arg(pid),
                       QIODevice::ReadOnly);
+#else
+    _ccProcess->startCommand(QStringLiteral("callgrind_control -d %1").arg(pid),
+                      QIODevice::ReadOnly);
+#endif
 }
 
 void TopLevel::ccReadOutput()
