@@ -35,6 +35,6 @@ target_include_directories(views
 )
 target_link_libraries(views
     core
-    Qt5::Gui
-    Qt5::Widgets
+    Qt::Gui
+    Qt::Widgets
 )

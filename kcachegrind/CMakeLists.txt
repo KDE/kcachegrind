@@ -10,7 +10,7 @@ set(kcachegrind_SRCS
 
 ki18n_wrap_ui(kcachegrind_SRCS configdlgbase.ui dumpselectionbase.ui)
 
-qt5_add_resources(kcachegrind_SRCS
+qt_add_resources(kcachegrind_SRCS
     kcachegrind.qrc
 )
 
@@ -26,15 +26,15 @@ ecm_add_app_icon(kcachegrind_SRCS ICONS ${kcachegrind_ICONS})
 add_executable(kcachegrind ${kcachegrind_SRCS})
 
 set(kcachegrind_LIBS
-  KF5::Archive
-  KF5::CoreAddons
-  KF5::I18n
-  KF5::XmlGui
-  KF5::ConfigCore
-  KF5::ConfigGui
-  KF5::KIOCore
-  KF5::KIOWidgets
-  KF5::DBusAddons
+  KF${KF_MAJOR_VERSION}::Archive
+  KF${KF_MAJOR_VERSION}::CoreAddons
+  KF${KF_MAJOR_VERSION}::I18n
+  KF${KF_MAJOR_VERSION}::XmlGui
+  KF${KF_MAJOR_VERSION}::ConfigCore
+  KF${KF_MAJOR_VERSION}::ConfigGui
+  KF${KF_MAJOR_VERSION}::KIOCore
+  KF${KF_MAJOR_VERSION}::KIOWidgets
+  KF${KF_MAJOR_VERSION}::DBusAddons
 )
 
 target_link_libraries(kcachegrind core views ${kcachegrind_LIBS})
