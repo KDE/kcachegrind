@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2020-12-29 02:36+0100\n"
+"POT-Creation-Date: 2023-05-10 00:48+0000\n"
 "PO-Revision-Date: 2011-10-03 12:48+0200\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -157,8 +157,8 @@ msgid "Object / Related Source Base"
 msgstr "Objekt / Tohören Born-Basis"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
-#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:289
-#: kcachegrind/toplevel.cpp:512
+#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:296
+#: kcachegrind/toplevel.cpp:519
 #, kde-format
 msgid "Profile Dumps"
 msgstr "Profilutgaven"
@@ -629,17 +629,17 @@ msgstr "Informatschonen ut disse Spoor bruken"
 msgid "[trace...]"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:258 kcachegrind/toplevel.cpp:486
+#: kcachegrind/toplevel.cpp:265 kcachegrind/toplevel.cpp:493
 #, kde-format
 msgid "Parts Overview"
 msgstr "Delen-Översicht"
 
-#: kcachegrind/toplevel.cpp:267
+#: kcachegrind/toplevel.cpp:274
 #, kde-format
 msgid "Top Cost Call Stack"
 msgstr "Hööchstverbruuk-Oproopstapel"
 
-#: kcachegrind/toplevel.cpp:269
+#: kcachegrind/toplevel.cpp:276
 #, kde-format
 msgid ""
 "<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most probable' "
@@ -654,12 +654,12 @@ msgstr ""
 "baven un nerrn toföögt.</p><p>De Striepen <b>Verbruuk</b> un <b>Oprööp</b> "
 "wiest den Verbruuk bi all Oprööp ut de Funkschoon in de Reeg dor över.</p>"
 
-#: kcachegrind/toplevel.cpp:283
+#: kcachegrind/toplevel.cpp:290
 #, kde-format
 msgid "Flat Profile"
 msgstr "Even Profil"
 
-#: kcachegrind/toplevel.cpp:296
+#: kcachegrind/toplevel.cpp:303
 #, kde-format
 msgid ""
 "<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
@@ -700,12 +700,12 @@ msgstr ""
 "b> kannst Du de böverste Funkschoon vun de opstunns laadte Utgaav aktiveren."
 "</li></ul></p>"
 
-#: kcachegrind/toplevel.cpp:367
+#: kcachegrind/toplevel.cpp:374
 #, kde-format
 msgid "&Duplicate"
 msgstr "&Verdubbeln"
 
-#: kcachegrind/toplevel.cpp:370
+#: kcachegrind/toplevel.cpp:377
 #, kde-format
 msgid ""
 "<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
@@ -713,12 +713,12 @@ msgstr ""
 "<b>Aktuell Anornen verdubbeln</b><p>Stellt en Kopie vun de aktuelle Anornen "
 "op.</p>"
 
-#: kcachegrind/toplevel.cpp:375
+#: kcachegrind/toplevel.cpp:382
 #, kde-format
 msgid "&Remove"
 msgstr "&Wegmaken"
 
-#: kcachegrind/toplevel.cpp:377
+#: kcachegrind/toplevel.cpp:384
 #, kde-format
 msgid ""
 "<b>Remove Current Layout</b><p>Delete current layout and make the previous "
@@ -727,57 +727,57 @@ msgstr ""
 "<b>Aktuelle Anornen wegdoon</b><p>Aktuelle Anornen wegdoon un de verleden "
 "bruken.</p>"
 
-#: kcachegrind/toplevel.cpp:382
+#: kcachegrind/toplevel.cpp:389
 #, kde-format
 msgid "&Go to Next"
 msgstr "&Na nakamen gahn"
 
-#: kcachegrind/toplevel.cpp:385
+#: kcachegrind/toplevel.cpp:392
 #, kde-format
 msgid "Go to Next Layout"
 msgstr "Geiht na de nakamen Anornen"
 
-#: kcachegrind/toplevel.cpp:389
+#: kcachegrind/toplevel.cpp:396
 #, kde-format
 msgid "&Go to Previous"
 msgstr "Na &verleden gahn"
 
-#: kcachegrind/toplevel.cpp:392
+#: kcachegrind/toplevel.cpp:399
 #, kde-format
 msgid "Go to Previous Layout"
 msgstr "Geiht na de verleden Anornen"
 
-#: kcachegrind/toplevel.cpp:396
+#: kcachegrind/toplevel.cpp:403
 #, kde-format
 msgid "&Restore to Default"
 msgstr "Standard &wedderherstellen"
 
-#: kcachegrind/toplevel.cpp:398
+#: kcachegrind/toplevel.cpp:405
 #, kde-format
 msgid "Restore Layouts to Default"
 msgstr "Anornen wedder op Standard setten"
 
-#: kcachegrind/toplevel.cpp:402
+#: kcachegrind/toplevel.cpp:409
 #, kde-format
 msgid "&Save as Default"
 msgstr "As Standard &sekern"
 
-#: kcachegrind/toplevel.cpp:404
+#: kcachegrind/toplevel.cpp:411
 #, kde-format
 msgid "Save Layouts as Default"
 msgstr "Anornen as Standard sekern"
 
-#: kcachegrind/toplevel.cpp:415
+#: kcachegrind/toplevel.cpp:422
 #, kde-format
 msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
 msgstr "<b>Nieg</b><p>Maakt en nieg, leddig KCachegrind-Finster op.</p>"
 
-#: kcachegrind/toplevel.cpp:419
+#: kcachegrind/toplevel.cpp:426
 #, kde-format
 msgid "&Add..."
 msgstr "&Tofögen..."
 
-#: kcachegrind/toplevel.cpp:421
+#: kcachegrind/toplevel.cpp:428
 #, kde-format
 msgid ""
 "<b>Add Profile Data</b><p>This opens an additional profile data file in the "
@@ -786,24 +786,24 @@ msgstr ""
 "<b>Profildatei tofögen</b><p>Dit maakt noch en Profildatendatei binnen dat "
 "aktuelle Finster op.</p>"
 
-#: kcachegrind/toplevel.cpp:427
+#: kcachegrind/toplevel.cpp:434
 #, kde-format
 msgctxt "Reload a document"
 msgid "&Reload"
 msgstr "&Nieg laden"
 
-#: kcachegrind/toplevel.cpp:430
+#: kcachegrind/toplevel.cpp:437
 #, kde-format
 msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
 msgstr ""
 "<b>Profildaten nieg laden</b><p>Dit laadt ok all nieg opstellte Delen.</p>"
 
-#: kcachegrind/toplevel.cpp:435
+#: kcachegrind/toplevel.cpp:442
 #, kde-format
 msgid "&Export Graph"
 msgstr "&Diagramm exporteren"
 
-#: kcachegrind/toplevel.cpp:438
+#: kcachegrind/toplevel.cpp:445
 #, kde-format
 msgid ""
 "<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
@@ -812,12 +812,12 @@ msgstr ""
 "<b>Oproopdiagramm exporteren</b><p>Stellt en Datei mit de Verwiedern \".dot"
 "\" för de Warktüüch vun dat Paket \"GraphViz\" op.</p>"
 
-#: kcachegrind/toplevel.cpp:446
+#: kcachegrind/toplevel.cpp:453
 #, kde-format
 msgid "&Force Dump"
 msgstr "&Utgaav verdwingen"
 
-#: kcachegrind/toplevel.cpp:449
+#: kcachegrind/toplevel.cpp:456
 #, kde-format
 msgid ""
 "<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
@@ -852,7 +852,7 @@ msgstr ""
 "lett sik Callgrind a.B. dör dat Ännern vun de Programmfinstergrött opwecken."
 "</p>"
 
-#: kcachegrind/toplevel.cpp:474
+#: kcachegrind/toplevel.cpp:481
 #, kde-format
 msgid ""
 "<b>Open Profile Data</b><p>This opens a profile data file, with possible "
@@ -861,57 +861,57 @@ msgstr ""
 "<b>Profildatei opmaken</b><p>Dit maakt en Profildatendatei op, mit all "
 "tohören Delen.</p>"
 
-#: kcachegrind/toplevel.cpp:489
+#: kcachegrind/toplevel.cpp:496
 #, kde-format
 msgid "Show/Hide the Parts Overview Dockable"
 msgstr "Delenöversicht wiesen/versteken"
 
-#: kcachegrind/toplevel.cpp:494
+#: kcachegrind/toplevel.cpp:501
 #, kde-format
 msgid "Call Stack"
 msgstr "Oproopstapel"
 
-#: kcachegrind/toplevel.cpp:497
+#: kcachegrind/toplevel.cpp:504
 #, kde-format
 msgid "Show/Hide the Call Stack Dockable"
 msgstr "Oproopstapel wiesen/versteken"
 
-#: kcachegrind/toplevel.cpp:502
+#: kcachegrind/toplevel.cpp:509
 #, kde-format
 msgid "Function Profile"
 msgstr "Funkschoonprofil"
 
-#: kcachegrind/toplevel.cpp:505
+#: kcachegrind/toplevel.cpp:512
 #, kde-format
 msgid "Show/Hide the Function Profile Dockable"
 msgstr "Funkschoonprofil wiesen/versteken"
 
-#: kcachegrind/toplevel.cpp:513
+#: kcachegrind/toplevel.cpp:520
 #, kde-format
 msgid "Show/Hide the Profile Dumps Dockable"
 msgstr "Profilutgaven wiesen/versteken"
 
-#: kcachegrind/toplevel.cpp:520
+#: kcachegrind/toplevel.cpp:527
 #, kde-format
 msgid "Relative"
 msgstr "Relatiev"
 
-#: kcachegrind/toplevel.cpp:522
+#: kcachegrind/toplevel.cpp:529
 #, kde-format
 msgid "Show relative instead of absolute costs"
 msgstr "Relativ Verbruuk ansteed vun afsoluten wiesen"
 
-#: kcachegrind/toplevel.cpp:528
+#: kcachegrind/toplevel.cpp:535
 #, kde-format
 msgid "Relative to Parent"
 msgstr "Relatiev to Böverelement"
 
-#: kcachegrind/toplevel.cpp:531
+#: kcachegrind/toplevel.cpp:538
 #, kde-format
 msgid "Show percentage costs relative to parent"
 msgstr "Verbruuk in Perzent vun't överornte Element wiesen"
 
-#: kcachegrind/toplevel.cpp:535
+#: kcachegrind/toplevel.cpp:542
 #, kde-format
 msgid ""
 "<b>Show percentage costs relative to parent</b><p>If this is switched off, "
@@ -937,12 +937,12 @@ msgstr ""
 "ul><p>(*) Bloots, wenn en Funkschoonkoppel utsöcht is (a.B. \"ELF\"-"
 "Objektenkoppel).</p>"
 
-#: kcachegrind/toplevel.cpp:552
+#: kcachegrind/toplevel.cpp:559
 #, kde-format
 msgid "Cycle Detection"
 msgstr "Lööp opdecken"
 
-#: kcachegrind/toplevel.cpp:555
+#: kcachegrind/toplevel.cpp:562
 #, kde-format
 msgid ""
 "<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
@@ -967,17 +967,17 @@ msgstr ""
 "so dat en Analyse nich mööglich is. Ut dissen Grund lett sik disse "
 "Funkschoon utmaken.</p>"
 
-#: kcachegrind/toplevel.cpp:571
+#: kcachegrind/toplevel.cpp:578
 #, kde-format
 msgid "Shorten Templates"
 msgstr "Vörlagen afkörten"
 
-#: kcachegrind/toplevel.cpp:573
+#: kcachegrind/toplevel.cpp:580
 #, kde-format
 msgid "Hide Template Parameters in C++ Symbols"
 msgstr "Vörlaag-Parameters in \"C++\"-Symbolen versteken"
 
-#: kcachegrind/toplevel.cpp:574
+#: kcachegrind/toplevel.cpp:581
 #, kde-format
 msgid ""
 "<b>Hide Template Parameters in C++ Symbols</b><p>If this is switched on, "
@@ -992,12 +992,12 @@ msgstr ""
 "disse Bedriefoort de aktiev Symboolbeteker mit de Muus anröögt, rullt en "
 "Opduker ut un wiest dat nich afkört Symbool.</p>"
 
-#: kcachegrind/toplevel.cpp:590
+#: kcachegrind/toplevel.cpp:597
 #, kde-format
 msgid "&Up"
 msgstr "&Na baven"
 
-#: kcachegrind/toplevel.cpp:599
+#: kcachegrind/toplevel.cpp:606
 #, kde-format
 msgid ""
 "<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
@@ -1007,79 +1007,79 @@ msgstr ""
 "gahn. Wenn keen Oproper ankeken wöör, na den mit den hööchsten Verbruuk gahn."
 "</p>"
 
-#: kcachegrind/toplevel.cpp:616
+#: kcachegrind/toplevel.cpp:623
 #, kde-format
 msgid "Go back in function selection history"
 msgstr "In de Vörgeschicht vun utsöchte Funkschonen torüchgahn"
 
-#: kcachegrind/toplevel.cpp:630
+#: kcachegrind/toplevel.cpp:637
 #, kde-format
 msgid "Go forward in function selection history"
 msgstr "In de Vörgeschicht vun utsöchte Funkschonen vörutgahn"
 
-#: kcachegrind/toplevel.cpp:635 kcachegrind/toplevel.cpp:1512
+#: kcachegrind/toplevel.cpp:642 kcachegrind/toplevel.cpp:1519
 #, kde-format
 msgid "Primary Event Type"
 msgstr "Eerst Begeefnistyp"
 
-#: kcachegrind/toplevel.cpp:636
+#: kcachegrind/toplevel.cpp:643
 #, kde-format
 msgid "Select primary event type of costs"
 msgstr "Eerst Begeefnistyp för Verbruuk utsöken"
 
-#: kcachegrind/toplevel.cpp:658 kcachegrind/toplevel.cpp:1517
+#: kcachegrind/toplevel.cpp:665 kcachegrind/toplevel.cpp:1524
 #, kde-format
 msgid "Secondary Event Type"
 msgstr "Tweet Begeefnistyp"
 
-#: kcachegrind/toplevel.cpp:659
+#: kcachegrind/toplevel.cpp:666
 #, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
 msgstr "Tweet Begeefnistyp för Verbruuk utsöken, wiest a.B. in Anmarken"
 
-#: kcachegrind/toplevel.cpp:669
+#: kcachegrind/toplevel.cpp:676
 #, kde-format
 msgid "Grouping"
 msgstr "Koppeltyp"
 
-#: kcachegrind/toplevel.cpp:671
+#: kcachegrind/toplevel.cpp:678
 #, kde-format
 msgid "Select how functions are grouped into higher level cost items"
 msgstr ""
 "Fastleggen, wodennig Funkschonen to högerstoopsche Verbruukelementen "
 "tosamenkoppelt warrt"
 
-#: kcachegrind/toplevel.cpp:677
+#: kcachegrind/toplevel.cpp:684
 #, kde-format
 msgid "(No Grouping)"
 msgstr "(keen Koppeltyp)"
 
-#: kcachegrind/toplevel.cpp:689
+#: kcachegrind/toplevel.cpp:696
 #, kde-format
 msgid "Split"
 msgstr "Opdelen"
 
-#: kcachegrind/toplevel.cpp:692
+#: kcachegrind/toplevel.cpp:699
 #, kde-format
 msgid "Show two information panels"
 msgstr "Twee Informatschoonpaneels wiesen"
 
-#: kcachegrind/toplevel.cpp:698
+#: kcachegrind/toplevel.cpp:705
 #, kde-format
 msgid "Split Horizontal"
 msgstr "Kimmrecht opdelen"
 
-#: kcachegrind/toplevel.cpp:701
+#: kcachegrind/toplevel.cpp:708
 #, kde-format
 msgid "Change Split Orientation when main window is split."
 msgstr "Opdelenricht för't Hööftfinster ännern."
 
-#: kcachegrind/toplevel.cpp:898
+#: kcachegrind/toplevel.cpp:905
 #, kde-format
 msgid "Select Callgrind Profile Data"
 msgstr "Callgrind-Profildatei utsöken"
 
-#: kcachegrind/toplevel.cpp:900 kcachegrind/toplevel.cpp:968
+#: kcachegrind/toplevel.cpp:907 kcachegrind/toplevel.cpp:975
 #, fuzzy, kde-format
 #| msgid ""
 #| "cachegrind.out* callgrind.out*|Callgrind Profile Data\n"
@@ -1089,7 +1089,7 @@ msgstr ""
 "cachegrind.out* callgrind.out*|Callgrind-Profildaten\n"
 "*|All Dateien"
 
-#: kcachegrind/toplevel.cpp:928 kcachegrind/toplevel.cpp:957
+#: kcachegrind/toplevel.cpp:935 kcachegrind/toplevel.cpp:964
 #, kde-format
 msgid ""
 "Could not open the file \"%1\". Check it exists and you have enough "
@@ -1098,103 +1098,103 @@ msgstr ""
 "De Datei \"%1\" lett sik nich opmaken. Prööv, wat dat dat gifft un wat Du "
 "dor Leesverlöven för hest."
 
-#: kcachegrind/toplevel.cpp:966
+#: kcachegrind/toplevel.cpp:973
 #, kde-format
 msgid "Add Callgrind Profile Data"
 msgstr "Callgrind-Profildatei tofögen"
 
-#: kcachegrind/toplevel.cpp:1136 kcachegrind/toplevel.cpp:1465
+#: kcachegrind/toplevel.cpp:1143 kcachegrind/toplevel.cpp:1472
 #, kde-format
 msgid "(Hidden)"
 msgstr "(Versteken)"
 
-#: kcachegrind/toplevel.cpp:1522
+#: kcachegrind/toplevel.cpp:1529
 #, kde-format
 msgid "Hide"
 msgstr "Versteken"
 
-#: kcachegrind/toplevel.cpp:1564
+#: kcachegrind/toplevel.cpp:1571
 #, kde-format
 msgid "Show Absolute Cost"
 msgstr "Afsoluut Verbruuk wiesen"
 
-#: kcachegrind/toplevel.cpp:1567
+#: kcachegrind/toplevel.cpp:1574
 #, kde-format
 msgid "Show Relative Cost"
 msgstr "Relativ Verbruuk wiesen"
 
-#: kcachegrind/toplevel.cpp:1599
+#: kcachegrind/toplevel.cpp:1606
 #, kde-format
 msgid "Go Back"
 msgstr "Torüch"
 
-#: kcachegrind/toplevel.cpp:1600
+#: kcachegrind/toplevel.cpp:1607
 #, kde-format
 msgid "Go Forward"
 msgstr "Vörut gahn"
 
-#: kcachegrind/toplevel.cpp:1601
+#: kcachegrind/toplevel.cpp:1608
 #, kde-format
 msgid "Go Up"
 msgstr "Na baven"
 
-#: kcachegrind/toplevel.cpp:1813
+#: kcachegrind/toplevel.cpp:1820
 #, kde-format
 msgid "Layout Count: %1"
 msgstr "Tall vun Anornen: %1"
 
-#: kcachegrind/toplevel.cpp:1820
+#: kcachegrind/toplevel.cpp:1827
 #, kde-format
 msgid "No profile data file loaded."
 msgstr "Keen Profildatendatei laadt."
 
-#: kcachegrind/toplevel.cpp:1829
+#: kcachegrind/toplevel.cpp:1836
 #, kde-format
 msgid "Total %1 Cost: %2"
 msgstr "Heel Verbruuk för \"%1\": %2"
 
-#: kcachegrind/toplevel.cpp:1841
+#: kcachegrind/toplevel.cpp:1848
 #, kde-format
 msgid "No event type selected"
 msgstr "Keen Begeefnistyp utsöcht"
 
-#: kcachegrind/toplevel.cpp:2027
+#: kcachegrind/toplevel.cpp:2038
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:2068
+#: kcachegrind/toplevel.cpp:2084
 #, kde-format
 msgid "Error running callgrind_control"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:2107 kcachegrind/toplevel.cpp:2144
-#: kcachegrind/toplevel.cpp:2181
+#: kcachegrind/toplevel.cpp:2123 kcachegrind/toplevel.cpp:2160
+#: kcachegrind/toplevel.cpp:2197
 #, kde-format
 msgid "(No Stack)"
 msgstr "(Keen Stapel)"
 
-#: kcachegrind/toplevel.cpp:2113
+#: kcachegrind/toplevel.cpp:2129
 #, kde-format
 msgid "(No next function)"
 msgstr "(Keen nakamen Funkschoon)"
 
-#: kcachegrind/toplevel.cpp:2150
+#: kcachegrind/toplevel.cpp:2166
 #, kde-format
 msgid "(No previous function)"
 msgstr "(Keen verleden Funkschoon)"
 
-#: kcachegrind/toplevel.cpp:2186
+#: kcachegrind/toplevel.cpp:2202
 #, kde-format
 msgid "(No Function Up)"
 msgstr "(Keen Oproper)"
 
-#: kcachegrind/toplevel.cpp:2318 kcachegrind/toplevel.cpp:2332
+#: kcachegrind/toplevel.cpp:2334 kcachegrind/toplevel.cpp:2348
 #, kde-format
 msgid "Loading %1"
 msgstr "An't Laden vun %1"
 
-#: kcachegrind/toplevel.cpp:2326
+#: kcachegrind/toplevel.cpp:2342
 #, kde-format
 msgid "Error loading %1: %2"
 msgstr "An't Laden vun %1: %2"

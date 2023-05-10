@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2020-12-29 02:36+0100\n"
+"POT-Creation-Date: 2023-05-10 00:48+0000\n"
 "PO-Revision-Date: 2023-04-29 08:33\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -156,8 +156,8 @@ msgid "Object / Related Source Base"
 msgstr "对象或相关源码的基础目录"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
-#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:289
-#: kcachegrind/toplevel.cpp:512
+#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:296
+#: kcachegrind/toplevel.cpp:519
 #, kde-format
 msgid "Profile Dumps"
 msgstr "剖析档倾出"
@@ -627,17 +627,17 @@ msgstr "显示此跟踪的信息"
 msgid "[trace...]"
 msgstr "[跟踪...]"
 
-#: kcachegrind/toplevel.cpp:258 kcachegrind/toplevel.cpp:486
+#: kcachegrind/toplevel.cpp:265 kcachegrind/toplevel.cpp:493
 #, kde-format
 msgid "Parts Overview"
 msgstr "部件概览"
 
-#: kcachegrind/toplevel.cpp:267
+#: kcachegrind/toplevel.cpp:274
 #, kde-format
 msgid "Top Cost Call Stack"
 msgstr "最高开销调用栈"
 
-#: kcachegrind/toplevel.cpp:269
+#: kcachegrind/toplevel.cpp:276
 #, kde-format
 msgid ""
 "<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most probable' "
@@ -650,12 +650,12 @@ msgstr ""
 "的开始上，并将每个调用方和被调用方以最高开销添加到栈的两端。</p><p>其中<b>开"
 "销</b>与<b>调用</b>栏显示的是上一行函数调用时的总执行开销。</p>"
 
-#: kcachegrind/toplevel.cpp:283
+#: kcachegrind/toplevel.cpp:290
 #, kde-format
 msgid "Flat Profile"
 msgstr "简单剖析档"
 
-#: kcachegrind/toplevel.cpp:296
+#: kcachegrind/toplevel.cpp:303
 #, kde-format
 msgid ""
 "<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
@@ -677,80 +677,80 @@ msgid ""
 "activate the top function in the current loaded dump.</li></ul></p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:367
+#: kcachegrind/toplevel.cpp:374
 #, kde-format
 msgid "&Duplicate"
 msgstr "复制(&D)"
 
-#: kcachegrind/toplevel.cpp:370
+#: kcachegrind/toplevel.cpp:377
 #, kde-format
 msgid ""
 "<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
 msgstr "<b>复制当前版图</b><p>生成当前版图的副本。</p>"
 
-#: kcachegrind/toplevel.cpp:375
+#: kcachegrind/toplevel.cpp:382
 #, kde-format
 msgid "&Remove"
 msgstr "删除(&R)"
 
-#: kcachegrind/toplevel.cpp:377
+#: kcachegrind/toplevel.cpp:384
 #, kde-format
 msgid ""
 "<b>Remove Current Layout</b><p>Delete current layout and make the previous "
 "active.</p>"
 msgstr "<b>删除当前版图</b><p>删除当前版图并激活上一个图。</p>"
 
-#: kcachegrind/toplevel.cpp:382
+#: kcachegrind/toplevel.cpp:389
 #, kde-format
 msgid "&Go to Next"
 msgstr "跳至下一个(&G)"
 
-#: kcachegrind/toplevel.cpp:385
+#: kcachegrind/toplevel.cpp:392
 #, kde-format
 msgid "Go to Next Layout"
 msgstr "跳至下一个版图"
 
-#: kcachegrind/toplevel.cpp:389
+#: kcachegrind/toplevel.cpp:396
 #, kde-format
 msgid "&Go to Previous"
 msgstr "跳至上一个(&G)"
 
-#: kcachegrind/toplevel.cpp:392
+#: kcachegrind/toplevel.cpp:399
 #, kde-format
 msgid "Go to Previous Layout"
 msgstr "跳至上一个版图"
 
-#: kcachegrind/toplevel.cpp:396
+#: kcachegrind/toplevel.cpp:403
 #, kde-format
 msgid "&Restore to Default"
 msgstr "恢复默认(&R)"
 
-#: kcachegrind/toplevel.cpp:398
+#: kcachegrind/toplevel.cpp:405
 #, kde-format
 msgid "Restore Layouts to Default"
 msgstr "恢复默认版图"
 
-#: kcachegrind/toplevel.cpp:402
+#: kcachegrind/toplevel.cpp:409
 #, kde-format
 msgid "&Save as Default"
 msgstr "另存为默认(&S)"
 
-#: kcachegrind/toplevel.cpp:404
+#: kcachegrind/toplevel.cpp:411
 #, kde-format
 msgid "Save Layouts as Default"
 msgstr "将此版图存为默认版图"
 
-#: kcachegrind/toplevel.cpp:415
+#: kcachegrind/toplevel.cpp:422
 #, kde-format
 msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
 msgstr "<b>新建</b><p>打开新的 KCachegrind 空窗口。</p>"
 
-#: kcachegrind/toplevel.cpp:419
+#: kcachegrind/toplevel.cpp:426
 #, kde-format
 msgid "&Add..."
 msgstr "添加(&A)..."
 
-#: kcachegrind/toplevel.cpp:421
+#: kcachegrind/toplevel.cpp:428
 #, kde-format
 msgid ""
 "<b>Add Profile Data</b><p>This opens an additional profile data file in the "
@@ -758,35 +758,35 @@ msgid ""
 msgstr ""
 "<b>添加剖析档数据</b><p>这将在当前窗口内打开一个附加的剖析档数据文件。</p>"
 
-#: kcachegrind/toplevel.cpp:427
+#: kcachegrind/toplevel.cpp:434
 #, kde-format
 msgctxt "Reload a document"
 msgid "&Reload"
 msgstr "重新加载(&R)"
 
-#: kcachegrind/toplevel.cpp:430
+#: kcachegrind/toplevel.cpp:437
 #, kde-format
 msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
 msgstr "<b>重新加载剖析档数据</b><p>这将同时载入所有新建部件。</p>"
 
-#: kcachegrind/toplevel.cpp:435
+#: kcachegrind/toplevel.cpp:442
 #, kde-format
 msgid "&Export Graph"
 msgstr "导出图表(&E)"
 
-#: kcachegrind/toplevel.cpp:438
+#: kcachegrind/toplevel.cpp:445
 #, kde-format
 msgid ""
 "<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
 "tools of the GraphViz package.</p>"
 msgstr "<b>导出调用图表</b><p>生成扩展名为 dot 的 GraphViz 工具包文件。</p>"
 
-#: kcachegrind/toplevel.cpp:446
+#: kcachegrind/toplevel.cpp:453
 #, kde-format
 msgid "&Force Dump"
 msgstr "强制倾出(&F)"
 
-#: kcachegrind/toplevel.cpp:449
+#: kcachegrind/toplevel.cpp:456
 #, kde-format
 msgid ""
 "<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
@@ -805,7 +805,7 @@ msgid ""
 "the program.</p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:474
+#: kcachegrind/toplevel.cpp:481
 #, kde-format
 msgid ""
 "<b>Open Profile Data</b><p>This opens a profile data file, with possible "
@@ -813,57 +813,57 @@ msgid ""
 msgstr ""
 "<b>打开剖析档数据</b><p>这将打开一个剖析档数据文件，可能带有多个部件。</p>"
 
-#: kcachegrind/toplevel.cpp:489
+#: kcachegrind/toplevel.cpp:496
 #, kde-format
 msgid "Show/Hide the Parts Overview Dockable"
 msgstr "显示/隐藏可停靠部件概览"
 
-#: kcachegrind/toplevel.cpp:494
+#: kcachegrind/toplevel.cpp:501
 #, kde-format
 msgid "Call Stack"
 msgstr "调用栈"
 
-#: kcachegrind/toplevel.cpp:497
+#: kcachegrind/toplevel.cpp:504
 #, kde-format
 msgid "Show/Hide the Call Stack Dockable"
 msgstr "显示/隐藏可停靠调用栈"
 
-#: kcachegrind/toplevel.cpp:502
+#: kcachegrind/toplevel.cpp:509
 #, kde-format
 msgid "Function Profile"
 msgstr "函数剖析档"
 
-#: kcachegrind/toplevel.cpp:505
+#: kcachegrind/toplevel.cpp:512
 #, kde-format
 msgid "Show/Hide the Function Profile Dockable"
 msgstr "显示/隐藏可停靠函数剖析档"
 
-#: kcachegrind/toplevel.cpp:513
+#: kcachegrind/toplevel.cpp:520
 #, kde-format
 msgid "Show/Hide the Profile Dumps Dockable"
 msgstr "显示/隐藏可停靠剖析档倾出"
 
-#: kcachegrind/toplevel.cpp:520
+#: kcachegrind/toplevel.cpp:527
 #, kde-format
 msgid "Relative"
 msgstr "相对"
 
-#: kcachegrind/toplevel.cpp:522
+#: kcachegrind/toplevel.cpp:529
 #, kde-format
 msgid "Show relative instead of absolute costs"
 msgstr "显示相对而不是绝对的执行开销"
 
-#: kcachegrind/toplevel.cpp:528
+#: kcachegrind/toplevel.cpp:535
 #, kde-format
 msgid "Relative to Parent"
 msgstr "相对父类"
 
-#: kcachegrind/toplevel.cpp:531
+#: kcachegrind/toplevel.cpp:538
 #, kde-format
 msgid "Show percentage costs relative to parent"
 msgstr "相对父类的百分比开销"
 
-#: kcachegrind/toplevel.cpp:535
+#: kcachegrind/toplevel.cpp:542
 #, kde-format
 msgid ""
 "<b>Show percentage costs relative to parent</b><p>If this is switched off, "
@@ -878,12 +878,12 @@ msgid ""
 "grouping).</p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:552
+#: kcachegrind/toplevel.cpp:559
 #, kde-format
 msgid "Cycle Detection"
 msgstr "循环检测"
 
-#: kcachegrind/toplevel.cpp:555
+#: kcachegrind/toplevel.cpp:562
 #, kde-format
 msgid ""
 "<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
@@ -898,17 +898,17 @@ msgid ""
 "therefore, there is the option to switch this off.</p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:571
+#: kcachegrind/toplevel.cpp:578
 #, kde-format
 msgid "Shorten Templates"
 msgstr "缩短模板"
 
-#: kcachegrind/toplevel.cpp:573
+#: kcachegrind/toplevel.cpp:580
 #, kde-format
 msgid "Hide Template Parameters in C++ Symbols"
 msgstr "在 C++ 符号中隐藏模板参数"
 
-#: kcachegrind/toplevel.cpp:574
+#: kcachegrind/toplevel.cpp:581
 #, kde-format
 msgid ""
 "<b>Hide Template Parameters in C++ Symbols</b><p>If this is switched on, "
@@ -918,12 +918,12 @@ msgid ""
 "label to show a tooltip with the unabbreviated symbol.</p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:590
+#: kcachegrind/toplevel.cpp:597
 #, kde-format
 msgid "&Up"
 msgstr "向上(&U)"
 
-#: kcachegrind/toplevel.cpp:599
+#: kcachegrind/toplevel.cpp:606
 #, kde-format
 msgid ""
 "<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
@@ -932,187 +932,187 @@ msgstr ""
 "<b>向上</b><p>转到当前函数最后一个选中的调用方。如果没有访问过任何调用，则选"
 "择其最高开销。</p>"
 
-#: kcachegrind/toplevel.cpp:616
+#: kcachegrind/toplevel.cpp:623
 #, kde-format
 msgid "Go back in function selection history"
 msgstr "在函数选择历史中后退"
 
-#: kcachegrind/toplevel.cpp:630
+#: kcachegrind/toplevel.cpp:637
 #, kde-format
 msgid "Go forward in function selection history"
 msgstr "在函数选择历史中前进"
 
-#: kcachegrind/toplevel.cpp:635 kcachegrind/toplevel.cpp:1512
+#: kcachegrind/toplevel.cpp:642 kcachegrind/toplevel.cpp:1519
 #, kde-format
 msgid "Primary Event Type"
 msgstr "主要事件类型"
 
-#: kcachegrind/toplevel.cpp:636
+#: kcachegrind/toplevel.cpp:643
 #, kde-format
 msgid "Select primary event type of costs"
 msgstr "选择开销的主要事件类型"
 
-#: kcachegrind/toplevel.cpp:658 kcachegrind/toplevel.cpp:1517
+#: kcachegrind/toplevel.cpp:665 kcachegrind/toplevel.cpp:1524
 #, kde-format
 msgid "Secondary Event Type"
 msgstr "次要事件类型"
 
-#: kcachegrind/toplevel.cpp:659
+#: kcachegrind/toplevel.cpp:666
 #, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
 msgstr "选择开销的次要事件类型，如注解显示"
 
-#: kcachegrind/toplevel.cpp:669
+#: kcachegrind/toplevel.cpp:676
 #, kde-format
 msgid "Grouping"
 msgstr "分组"
 
-#: kcachegrind/toplevel.cpp:671
+#: kcachegrind/toplevel.cpp:678
 #, kde-format
 msgid "Select how functions are grouped into higher level cost items"
 msgstr "选择将函数分组到更高级开销项目的方式"
 
-#: kcachegrind/toplevel.cpp:677
+#: kcachegrind/toplevel.cpp:684
 #, kde-format
 msgid "(No Grouping)"
 msgstr "(无分组)"
 
-#: kcachegrind/toplevel.cpp:689
+#: kcachegrind/toplevel.cpp:696
 #, kde-format
 msgid "Split"
 msgstr "分割面板"
 
-#: kcachegrind/toplevel.cpp:692
+#: kcachegrind/toplevel.cpp:699
 #, kde-format
 msgid "Show two information panels"
 msgstr "显示两个信息面板"
 
-#: kcachegrind/toplevel.cpp:698
+#: kcachegrind/toplevel.cpp:705
 #, kde-format
 msgid "Split Horizontal"
 msgstr "水平分割"
 
-#: kcachegrind/toplevel.cpp:701
+#: kcachegrind/toplevel.cpp:708
 #, kde-format
 msgid "Change Split Orientation when main window is split."
 msgstr "以水平方向分割主窗口"
 
-#: kcachegrind/toplevel.cpp:898
+#: kcachegrind/toplevel.cpp:905
 #, kde-format
 msgid "Select Callgrind Profile Data"
 msgstr "选择 Callgrind 剖析档数据"
 
-#: kcachegrind/toplevel.cpp:900 kcachegrind/toplevel.cpp:968
+#: kcachegrind/toplevel.cpp:907 kcachegrind/toplevel.cpp:975
 #, kde-format
 msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
 msgstr ""
 "cachegrind.out* callgrind.out*|Callgrind 剖析档数据\n"
 "*|所有文件"
 
-#: kcachegrind/toplevel.cpp:928 kcachegrind/toplevel.cpp:957
+#: kcachegrind/toplevel.cpp:935 kcachegrind/toplevel.cpp:964
 #, kde-format
 msgid ""
 "Could not open the file \"%1\". Check it exists and you have enough "
 "permissions to read it."
 msgstr "无法打开文件“%1”。请检查它是否存在以及您是否有读取权限。"
 
-#: kcachegrind/toplevel.cpp:966
+#: kcachegrind/toplevel.cpp:973
 #, kde-format
 msgid "Add Callgrind Profile Data"
 msgstr "添加 Callgrind 剖析档数据"
 
-#: kcachegrind/toplevel.cpp:1136 kcachegrind/toplevel.cpp:1465
+#: kcachegrind/toplevel.cpp:1143 kcachegrind/toplevel.cpp:1472
 #, kde-format
 msgid "(Hidden)"
 msgstr "(已隐藏)"
 
-#: kcachegrind/toplevel.cpp:1522
+#: kcachegrind/toplevel.cpp:1529
 #, kde-format
 msgid "Hide"
 msgstr "隐藏"
 
-#: kcachegrind/toplevel.cpp:1564
+#: kcachegrind/toplevel.cpp:1571
 #, kde-format
 msgid "Show Absolute Cost"
 msgstr "显示绝对开销"
 
-#: kcachegrind/toplevel.cpp:1567
+#: kcachegrind/toplevel.cpp:1574
 #, kde-format
 msgid "Show Relative Cost"
 msgstr "显示相对开销"
 
-#: kcachegrind/toplevel.cpp:1599
+#: kcachegrind/toplevel.cpp:1606
 #, kde-format
 msgid "Go Back"
 msgstr "返回"
 
-#: kcachegrind/toplevel.cpp:1600
+#: kcachegrind/toplevel.cpp:1607
 #, kde-format
 msgid "Go Forward"
 msgstr "前进"
 
-#: kcachegrind/toplevel.cpp:1601
+#: kcachegrind/toplevel.cpp:1608
 #, kde-format
 msgid "Go Up"
 msgstr "上移"
 
-#: kcachegrind/toplevel.cpp:1813
+#: kcachegrind/toplevel.cpp:1820
 #, kde-format
 msgid "Layout Count: %1"
 msgstr "制图计数：%1"
 
-#: kcachegrind/toplevel.cpp:1820
+#: kcachegrind/toplevel.cpp:1827
 #, kde-format
 msgid "No profile data file loaded."
 msgstr "没有加载剖析档数据文件。"
 
-#: kcachegrind/toplevel.cpp:1829
+#: kcachegrind/toplevel.cpp:1836
 #, kde-format
 msgid "Total %1 Cost: %2"
 msgstr "总共 %1 开销：%2"
 
-#: kcachegrind/toplevel.cpp:1841
+#: kcachegrind/toplevel.cpp:1848
 #, kde-format
 msgid "No event type selected"
 msgstr "没有选择事件类型"
 
-#: kcachegrind/toplevel.cpp:2027
+#: kcachegrind/toplevel.cpp:2038
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
 msgstr "无法确定接收者的 PID 以输出请求"
 
-#: kcachegrind/toplevel.cpp:2068
+#: kcachegrind/toplevel.cpp:2084
 #, kde-format
 msgid "Error running callgrind_control"
 msgstr "运行 callgrind_control 出错"
 
-#: kcachegrind/toplevel.cpp:2107 kcachegrind/toplevel.cpp:2144
-#: kcachegrind/toplevel.cpp:2181
+#: kcachegrind/toplevel.cpp:2123 kcachegrind/toplevel.cpp:2160
+#: kcachegrind/toplevel.cpp:2197
 #, kde-format
 msgid "(No Stack)"
 msgstr "(无堆栈)"
 
-#: kcachegrind/toplevel.cpp:2113
+#: kcachegrind/toplevel.cpp:2129
 #, kde-format
 msgid "(No next function)"
 msgstr "(无下一个函数)"
 
-#: kcachegrind/toplevel.cpp:2150
+#: kcachegrind/toplevel.cpp:2166
 #, kde-format
 msgid "(No previous function)"
 msgstr "(无上一个函数)"
 
-#: kcachegrind/toplevel.cpp:2186
+#: kcachegrind/toplevel.cpp:2202
 #, kde-format
 msgid "(No Function Up)"
 msgstr "(无向上函数)"
 
-#: kcachegrind/toplevel.cpp:2318 kcachegrind/toplevel.cpp:2332
+#: kcachegrind/toplevel.cpp:2334 kcachegrind/toplevel.cpp:2348
 #, kde-format
 msgid "Loading %1"
 msgstr "正在加载 %1"
 
-#: kcachegrind/toplevel.cpp:2326
+#: kcachegrind/toplevel.cpp:2342
 #, kde-format
 msgid "Error loading %1: %2"
 msgstr "加载 %1 时出错：%2"

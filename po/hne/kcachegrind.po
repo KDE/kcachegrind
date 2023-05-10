@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2020-12-29 02:36+0100\n"
+"POT-Creation-Date: 2023-05-10 00:48+0000\n"
 "PO-Revision-Date: 2009-03-01 11:05+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -162,8 +162,8 @@ msgid "Object / Related Source Base"
 msgstr "आब्जेक्ट / संबंधित स्रोत बेस"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
-#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:289
-#: kcachegrind/toplevel.cpp:512
+#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:296
+#: kcachegrind/toplevel.cpp:519
 #, kde-format
 msgid "Profile Dumps"
 msgstr "प्रोफाइल डम्प्स"
@@ -634,17 +634,17 @@ msgstr "ये ट्रेस के जानकारी देखाव"
 msgid "[trace...]"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:258 kcachegrind/toplevel.cpp:486
+#: kcachegrind/toplevel.cpp:265 kcachegrind/toplevel.cpp:493
 #, kde-format
 msgid "Parts Overview"
 msgstr "पार्ट ओवर-व्यू"
 
-#: kcachegrind/toplevel.cpp:267
+#: kcachegrind/toplevel.cpp:274
 #, kde-format
 msgid "Top Cost Call Stack"
 msgstr "टाप कास्ट काल स्टैक"
 
-#: kcachegrind/toplevel.cpp:269
+#: kcachegrind/toplevel.cpp:276
 #, kde-format
 msgid ""
 "<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most probable' "
@@ -654,12 +654,12 @@ msgid ""
 "calls from the function in the line above.</p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:283
+#: kcachegrind/toplevel.cpp:290
 #, kde-format
 msgid "Flat Profile"
 msgstr "फ्लैट प्रोफाइल"
 
-#: kcachegrind/toplevel.cpp:296
+#: kcachegrind/toplevel.cpp:303
 #, kde-format
 msgid ""
 "<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
@@ -681,24 +681,24 @@ msgid ""
 "activate the top function in the current loaded dump.</li></ul></p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:367
+#: kcachegrind/toplevel.cpp:374
 #, kde-format
 msgid "&Duplicate"
 msgstr "दुहरी प्रति (&D)"
 
-#: kcachegrind/toplevel.cpp:370
+#: kcachegrind/toplevel.cpp:377
 #, kde-format
 msgid ""
 "<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
 msgstr ""
 "<b>अभी हाल के खाका के नकल बनाव</b><p>अभी हाल के खाका के एक प्रतिलिपि बनाथे .</p>"
 
-#: kcachegrind/toplevel.cpp:375
+#: kcachegrind/toplevel.cpp:382
 #, kde-format
 msgid "&Remove"
 msgstr "मेटाव (&R)"
 
-#: kcachegrind/toplevel.cpp:377
+#: kcachegrind/toplevel.cpp:384
 #, kde-format
 msgid ""
 "<b>Remove Current Layout</b><p>Delete current layout and make the previous "
@@ -707,57 +707,57 @@ msgstr ""
 "<b>अभी हाल के खाता मेटाव</b><p>अभी हाल के खाका ल मिटाथे  अउ पिछले ल सक्रिय करथे .</"
 "p>"
 
-#: kcachegrind/toplevel.cpp:382
+#: kcachegrind/toplevel.cpp:389
 #, kde-format
 msgid "&Go to Next"
 msgstr "अगले मं जाव (&G)"
 
-#: kcachegrind/toplevel.cpp:385
+#: kcachegrind/toplevel.cpp:392
 #, kde-format
 msgid "Go to Next Layout"
 msgstr "अगले खाका मं जाव"
 
-#: kcachegrind/toplevel.cpp:389
+#: kcachegrind/toplevel.cpp:396
 #, kde-format
 msgid "&Go to Previous"
 msgstr "पिछले मं जाव (&G)"
 
-#: kcachegrind/toplevel.cpp:392
+#: kcachegrind/toplevel.cpp:399
 #, kde-format
 msgid "Go to Previous Layout"
 msgstr "पिछले खाका मं जाव"
 
-#: kcachegrind/toplevel.cpp:396
+#: kcachegrind/toplevel.cpp:403
 #, kde-format
 msgid "&Restore to Default"
 msgstr "डिफाल्ट मं बहाल करव (&R)"
 
-#: kcachegrind/toplevel.cpp:398
+#: kcachegrind/toplevel.cpp:405
 #, kde-format
 msgid "Restore Layouts to Default"
 msgstr "खाका डिफाल्ट मं बहाल करव"
 
-#: kcachegrind/toplevel.cpp:402
+#: kcachegrind/toplevel.cpp:409
 #, kde-format
 msgid "&Save as Default"
 msgstr "डिफाल्ट रूप मं सहेजव (&S)"
 
-#: kcachegrind/toplevel.cpp:404
+#: kcachegrind/toplevel.cpp:411
 #, kde-format
 msgid "Save Layouts as Default"
 msgstr "खाका डिफाल्ट रूप मं सहेजव"
 
-#: kcachegrind/toplevel.cpp:415
+#: kcachegrind/toplevel.cpp:422
 #, kde-format
 msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
 msgstr "<b>नवा</b><p>नवा खाली के-कैसग्रिंड विंडो खोलव.</p>"
 
-#: kcachegrind/toplevel.cpp:419
+#: kcachegrind/toplevel.cpp:426
 #, kde-format
 msgid "&Add..."
 msgstr "जोड़व...(&A)"
 
-#: kcachegrind/toplevel.cpp:421
+#: kcachegrind/toplevel.cpp:428
 #, kde-format
 msgid ""
 "<b>Add Profile Data</b><p>This opens an additional profile data file in the "
@@ -766,35 +766,35 @@ msgstr ""
 "<b>प्रोफाइल डाटा जोड़व</b><p>ये अभी हाल के विंडो मं अतिरिक्त प्रोफाइल डाटा फाइल "
 "खोलथे .</p>"
 
-#: kcachegrind/toplevel.cpp:427
+#: kcachegrind/toplevel.cpp:434
 #, kde-format
 msgctxt "Reload a document"
 msgid "&Reload"
 msgstr "फिर से  लोड करव (&R)"
 
-#: kcachegrind/toplevel.cpp:430
+#: kcachegrind/toplevel.cpp:437
 #, kde-format
 msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
 msgstr "<b>प्रोफाइल डाटा  रीलोड करव</b><p>ये नवा बनाए पार्ट्स ल घलोक लोड करथे .</p>"
 
-#: kcachegrind/toplevel.cpp:435
+#: kcachegrind/toplevel.cpp:442
 #, kde-format
 msgid "&Export Graph"
 msgstr "ग्राफ निर्यात करव (&E)"
 
-#: kcachegrind/toplevel.cpp:438
+#: kcachegrind/toplevel.cpp:445
 #, kde-format
 msgid ""
 "<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
 "tools of the GraphViz package.</p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:446
+#: kcachegrind/toplevel.cpp:453
 #, kde-format
 msgid "&Force Dump"
 msgstr "फोर डम्प (&F)"
 
-#: kcachegrind/toplevel.cpp:449
+#: kcachegrind/toplevel.cpp:456
 #, kde-format
 msgid ""
 "<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
@@ -813,7 +813,7 @@ msgid ""
 "the program.</p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:474
+#: kcachegrind/toplevel.cpp:481
 #, kde-format
 msgid ""
 "<b>Open Profile Data</b><p>This opens a profile data file, with possible "
@@ -822,57 +822,57 @@ msgstr ""
 "<b>प्रोफाइल डाटा खोलव</b><p>ये प्रोफाइल डाटा फाइल खोलथे , संभावित बहुल पार्ट्स के "
 "साथ</p>"
 
-#: kcachegrind/toplevel.cpp:489
+#: kcachegrind/toplevel.cpp:496
 #, kde-format
 msgid "Show/Hide the Parts Overview Dockable"
 msgstr "डाकएबल पार्ट्स ओवरव्यू देखाव/लुकाव"
 
-#: kcachegrind/toplevel.cpp:494
+#: kcachegrind/toplevel.cpp:501
 #, kde-format
 msgid "Call Stack"
 msgstr "काल स्टैक"
 
-#: kcachegrind/toplevel.cpp:497
+#: kcachegrind/toplevel.cpp:504
 #, kde-format
 msgid "Show/Hide the Call Stack Dockable"
 msgstr "डाकएबल काल स्टैक देखाव/लुकाव"
 
-#: kcachegrind/toplevel.cpp:502
+#: kcachegrind/toplevel.cpp:509
 #, kde-format
 msgid "Function Profile"
 msgstr "फंक्सन प्रोफाइल"
 
-#: kcachegrind/toplevel.cpp:505
+#: kcachegrind/toplevel.cpp:512
 #, kde-format
 msgid "Show/Hide the Function Profile Dockable"
 msgstr "डाकएबल फंक्सन प्रोफाइल देखाव/लुकाव"
 
-#: kcachegrind/toplevel.cpp:513
+#: kcachegrind/toplevel.cpp:520
 #, kde-format
 msgid "Show/Hide the Profile Dumps Dockable"
 msgstr "डाकएबल प्रोफाइल डम्प्स देखाव/लुकाव"
 
-#: kcachegrind/toplevel.cpp:520
+#: kcachegrind/toplevel.cpp:527
 #, fuzzy, kde-format
 msgid "Relative"
 msgstr "(सक्रिय)"
 
-#: kcachegrind/toplevel.cpp:522
+#: kcachegrind/toplevel.cpp:529
 #, kde-format
 msgid "Show relative instead of absolute costs"
 msgstr "निरपेक्छ कास्ट के बदला मा सापेक्छ देखाव"
 
-#: kcachegrind/toplevel.cpp:528
+#: kcachegrind/toplevel.cpp:535
 #, fuzzy, kde-format
 msgid "Relative to Parent"
 msgstr "पैरेन्ट से प्रतिसत सापेक्छ"
 
-#: kcachegrind/toplevel.cpp:531
+#: kcachegrind/toplevel.cpp:538
 #, kde-format
 msgid "Show percentage costs relative to parent"
 msgstr "पैरेन्ट से प्रतिसत सापेक्छ कास्ट देखाव"
 
-#: kcachegrind/toplevel.cpp:535
+#: kcachegrind/toplevel.cpp:542
 #, kde-format
 msgid ""
 "<b>Show percentage costs relative to parent</b><p>If this is switched off, "
@@ -887,12 +887,12 @@ msgid ""
 "grouping).</p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:552
+#: kcachegrind/toplevel.cpp:559
 #, fuzzy, kde-format
 msgid "Cycle Detection"
 msgstr "साइकल डिटेक्सनइ करव"
 
-#: kcachegrind/toplevel.cpp:555
+#: kcachegrind/toplevel.cpp:562
 #, kde-format
 msgid ""
 "<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
@@ -907,17 +907,17 @@ msgid ""
 "therefore, there is the option to switch this off.</p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:571
+#: kcachegrind/toplevel.cpp:578
 #, kde-format
 msgid "Shorten Templates"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:573
+#: kcachegrind/toplevel.cpp:580
 #, kde-format
 msgid "Hide Template Parameters in C++ Symbols"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:574
+#: kcachegrind/toplevel.cpp:581
 #, kde-format
 msgid ""
 "<b>Hide Template Parameters in C++ Symbols</b><p>If this is switched on, "
@@ -927,89 +927,89 @@ msgid ""
 "label to show a tooltip with the unabbreviated symbol.</p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:590
+#: kcachegrind/toplevel.cpp:597
 #, kde-format
 msgid "&Up"
 msgstr "ऊपर (&U)"
 
-#: kcachegrind/toplevel.cpp:599
+#: kcachegrind/toplevel.cpp:606
 #, kde-format
 msgid ""
 "<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
 "was visited, use that with highest cost.</p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:616
+#: kcachegrind/toplevel.cpp:623
 #, kde-format
 msgid "Go back in function selection history"
 msgstr "फंक्सन चयन इतिहास मं पीछू जाव"
 
-#: kcachegrind/toplevel.cpp:630
+#: kcachegrind/toplevel.cpp:637
 #, kde-format
 msgid "Go forward in function selection history"
 msgstr "फंक्सन चयन इतिहास मं आगू जाव"
 
-#: kcachegrind/toplevel.cpp:635 kcachegrind/toplevel.cpp:1512
+#: kcachegrind/toplevel.cpp:642 kcachegrind/toplevel.cpp:1519
 #, kde-format
 msgid "Primary Event Type"
 msgstr "प्राथमिक घटना किसिम"
 
-#: kcachegrind/toplevel.cpp:636
+#: kcachegrind/toplevel.cpp:643
 #, kde-format
 msgid "Select primary event type of costs"
 msgstr "प्राथमिक घटना किसिम कास्ट चुनव"
 
-#: kcachegrind/toplevel.cpp:658 kcachegrind/toplevel.cpp:1517
+#: kcachegrind/toplevel.cpp:665 kcachegrind/toplevel.cpp:1524
 #, kde-format
 msgid "Secondary Event Type"
 msgstr "सेकन्डरी घटना किसिम"
 
-#: kcachegrind/toplevel.cpp:659
+#: kcachegrind/toplevel.cpp:666
 #, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:669
+#: kcachegrind/toplevel.cpp:676
 #, kde-format
 msgid "Grouping"
 msgstr "समूहबद्धता"
 
-#: kcachegrind/toplevel.cpp:671
+#: kcachegrind/toplevel.cpp:678
 #, kde-format
 msgid "Select how functions are grouped into higher level cost items"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:677
+#: kcachegrind/toplevel.cpp:684
 #, kde-format
 msgid "(No Grouping)"
 msgstr "(समूहबद्धता नइ)"
 
-#: kcachegrind/toplevel.cpp:689
+#: kcachegrind/toplevel.cpp:696
 #, kde-format
 msgid "Split"
 msgstr "विभाजित करव"
 
-#: kcachegrind/toplevel.cpp:692
+#: kcachegrind/toplevel.cpp:699
 #, kde-format
 msgid "Show two information panels"
 msgstr "दो जानकारी पेनल देखाव"
 
-#: kcachegrind/toplevel.cpp:698
+#: kcachegrind/toplevel.cpp:705
 #, kde-format
 msgid "Split Horizontal"
 msgstr "आड़ा विभाजित करव"
 
-#: kcachegrind/toplevel.cpp:701
+#: kcachegrind/toplevel.cpp:708
 #, kde-format
 msgid "Change Split Orientation when main window is split."
 msgstr "विभाजन के दिसा निर्धारन बदलव जब मुख्य विंडो विभाजित होथे "
 
-#: kcachegrind/toplevel.cpp:898
+#: kcachegrind/toplevel.cpp:905
 #, kde-format
 msgid "Select Callgrind Profile Data"
 msgstr "कालग्रिंड प्रोफाइल डाटा चुनव"
 
-#: kcachegrind/toplevel.cpp:900 kcachegrind/toplevel.cpp:968
+#: kcachegrind/toplevel.cpp:907 kcachegrind/toplevel.cpp:975
 #, fuzzy, kde-format
 #| msgid ""
 #| "cachegrind.out* callgrind.out*|Callgrind Profile Data\n"
@@ -1019,110 +1019,110 @@ msgstr ""
 "cachegrind.out* callgrind.out*|कालग्रिंड प्रोफाइल डाटा\n"
 "*|सब्बो फाइल मन ल"
 
-#: kcachegrind/toplevel.cpp:928 kcachegrind/toplevel.cpp:957
+#: kcachegrind/toplevel.cpp:935 kcachegrind/toplevel.cpp:964
 #, kde-format
 msgid ""
 "Could not open the file \"%1\". Check it exists and you have enough "
 "permissions to read it."
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:966
+#: kcachegrind/toplevel.cpp:973
 #, kde-format
 msgid "Add Callgrind Profile Data"
 msgstr "कालग्रिंड प्रोफाइल डाटा जोड़व"
 
-#: kcachegrind/toplevel.cpp:1136 kcachegrind/toplevel.cpp:1465
+#: kcachegrind/toplevel.cpp:1143 kcachegrind/toplevel.cpp:1472
 #, kde-format
 msgid "(Hidden)"
 msgstr "(छुपा)"
 
-#: kcachegrind/toplevel.cpp:1522
+#: kcachegrind/toplevel.cpp:1529
 #, kde-format
 msgid "Hide"
 msgstr "लुकाव"
 
-#: kcachegrind/toplevel.cpp:1564
+#: kcachegrind/toplevel.cpp:1571
 #, kde-format
 msgid "Show Absolute Cost"
 msgstr "निरपेक्छ कास्ट देखाव"
 
-#: kcachegrind/toplevel.cpp:1567
+#: kcachegrind/toplevel.cpp:1574
 #, kde-format
 msgid "Show Relative Cost"
 msgstr "सापेक्छिक कास्ट देखाव"
 
-#: kcachegrind/toplevel.cpp:1599
+#: kcachegrind/toplevel.cpp:1606
 #, kde-format
 msgid "Go Back"
 msgstr "पीछू जाव"
 
-#: kcachegrind/toplevel.cpp:1600
+#: kcachegrind/toplevel.cpp:1607
 #, kde-format
 msgid "Go Forward"
 msgstr "आगू जाव"
 
-#: kcachegrind/toplevel.cpp:1601
+#: kcachegrind/toplevel.cpp:1608
 #, kde-format
 msgid "Go Up"
 msgstr "ऊपर जाव"
 
-#: kcachegrind/toplevel.cpp:1813
+#: kcachegrind/toplevel.cpp:1820
 #, kde-format
 msgid "Layout Count: %1"
 msgstr "लेआउट गिनती: %1"
 
-#: kcachegrind/toplevel.cpp:1820
+#: kcachegrind/toplevel.cpp:1827
 #, kde-format
 msgid "No profile data file loaded."
 msgstr "कोई प्रोफाइल डाटा फाइल लोडेड नइ हे."
 
-#: kcachegrind/toplevel.cpp:1829
+#: kcachegrind/toplevel.cpp:1836
 #, kde-format
 msgid "Total %1 Cost: %2"
 msgstr "कुल %1 कास्ट: %2"
 
-#: kcachegrind/toplevel.cpp:1841
+#: kcachegrind/toplevel.cpp:1848
 #, kde-format
 msgid "No event type selected"
 msgstr "कोई इवेंट किसिम चुने नइ गिस"
 
-#: kcachegrind/toplevel.cpp:2027
+#: kcachegrind/toplevel.cpp:2038
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:2068
+#: kcachegrind/toplevel.cpp:2084
 #, kde-format
 msgid "Error running callgrind_control"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:2107 kcachegrind/toplevel.cpp:2144
-#: kcachegrind/toplevel.cpp:2181
+#: kcachegrind/toplevel.cpp:2123 kcachegrind/toplevel.cpp:2160
+#: kcachegrind/toplevel.cpp:2197
 #, kde-format
 msgid "(No Stack)"
 msgstr "(स्टेक नइ)"
 
-#: kcachegrind/toplevel.cpp:2113
+#: kcachegrind/toplevel.cpp:2129
 #, kde-format
 msgid "(No next function)"
 msgstr "(कोई अगला फंक्सन नइ)"
 
-#: kcachegrind/toplevel.cpp:2150
+#: kcachegrind/toplevel.cpp:2166
 #, kde-format
 msgid "(No previous function)"
 msgstr "(कोई पिछला फंक्सन नइ)"
 
-#: kcachegrind/toplevel.cpp:2186
+#: kcachegrind/toplevel.cpp:2202
 #, kde-format
 msgid "(No Function Up)"
 msgstr "(कोई ऊपर फंक्सन नइ)"
 
-#: kcachegrind/toplevel.cpp:2318 kcachegrind/toplevel.cpp:2332
+#: kcachegrind/toplevel.cpp:2334 kcachegrind/toplevel.cpp:2348
 #, kde-format
 msgid "Loading %1"
 msgstr "%1 लोड करत हे"
 
-#: kcachegrind/toplevel.cpp:2326
+#: kcachegrind/toplevel.cpp:2342
 #, fuzzy, kde-format
 #| msgid "Loading %1"
 msgid "Error loading %1: %2"
