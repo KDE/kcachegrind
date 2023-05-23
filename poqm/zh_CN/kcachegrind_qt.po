@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
-"PO-Revision-Date: 2023-04-29 08:36\n"
+"PO-Revision-Date: 2023-05-22 14:04\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "未知上下文"
 #: libcore/context.cpp:62
 msgctxt "ProfileContext|"
 msgid "Part Source Line"
-msgstr ""
+msgstr "源码行部件"
 
 #: libcore/context.cpp:63
 msgctxt "ProfileContext|"
@@ -43,17 +43,17 @@ msgstr "源文件行"
 #: libcore/context.cpp:64
 msgctxt "ProfileContext|"
 msgid "Part Line Call"
-msgstr ""
+msgstr "源码行调用"
 
 #: libcore/context.cpp:65
 msgctxt "ProfileContext|"
 msgid "Line Call"
-msgstr ""
+msgstr "行调用"
 
 #: libcore/context.cpp:66
 msgctxt "ProfileContext|"
 msgid "Part Jump"
-msgstr ""
+msgstr "跳转部件"
 
 #: libcore/context.cpp:67
 msgctxt "ProfileContext|"
@@ -63,7 +63,7 @@ msgstr "跳转"
 #: libcore/context.cpp:68
 msgctxt "ProfileContext|"
 msgid "Part Instruction"
-msgstr ""
+msgstr "指令部件"
 
 #: libcore/context.cpp:69
 msgctxt "ProfileContext|"
@@ -73,27 +73,27 @@ msgstr "指令"
 #: libcore/context.cpp:70
 msgctxt "ProfileContext|"
 msgid "Part Instruction Jump"
-msgstr ""
+msgstr "指令跳转部件"
 
 #: libcore/context.cpp:71
 msgctxt "ProfileContext|"
 msgid "Instruction Jump"
-msgstr ""
+msgstr "指令跳转"
 
 #: libcore/context.cpp:72
 msgctxt "ProfileContext|"
 msgid "Part Instruction Call"
-msgstr ""
+msgstr "指令调用部件"
 
 #: libcore/context.cpp:73
 msgctxt "ProfileContext|"
 msgid "Instruction Call"
-msgstr ""
+msgstr "指令调用"
 
 #: libcore/context.cpp:74
 msgctxt "ProfileContext|"
 msgid "Part Call"
-msgstr ""
+msgstr "调用部件"
 
 #: libcore/context.cpp:75
 msgctxt "ProfileContext|"
@@ -103,12 +103,12 @@ msgstr "呼叫"
 #: libcore/context.cpp:76
 msgctxt "ProfileContext|"
 msgid "Part Function"
-msgstr ""
+msgstr "函数部件"
 
 #: libcore/context.cpp:77
 msgctxt "ProfileContext|"
 msgid "Function Source File"
-msgstr ""
+msgstr "函数源码文件"
 
 #: libcore/context.cpp:78
 msgctxt "ProfileContext|"
@@ -118,12 +118,12 @@ msgstr "功能"
 #: libcore/context.cpp:79
 msgctxt "ProfileContext|"
 msgid "Function Cycle"
-msgstr ""
+msgstr "函数循环"
 
 #: libcore/context.cpp:80
 msgctxt "ProfileContext|"
 msgid "Part Class"
-msgstr ""
+msgstr "类部件"
 
 #: libcore/context.cpp:81
 msgctxt "ProfileContext|"
@@ -133,7 +133,7 @@ msgstr "分类"
 #: libcore/context.cpp:82
 msgctxt "ProfileContext|"
 msgid "Part Source File"
-msgstr ""
+msgstr "源码文件部件"
 
 #: libcore/context.cpp:83
 msgctxt "ProfileContext|"
@@ -143,22 +143,22 @@ msgstr "源文件"
 #: libcore/context.cpp:84
 msgctxt "ProfileContext|"
 msgid "Part ELF Object"
-msgstr ""
+msgstr "ELF 对象部件"
 
 #: libcore/context.cpp:85
 msgctxt "ProfileContext|"
 msgid "ELF Object"
-msgstr ""
+msgstr "ELF 对象"
 
 #: libcore/context.cpp:86
 msgctxt "ProfileContext|"
 msgid "Profile Part"
-msgstr ""
+msgstr "剖析档部件"
 
 #: libcore/context.cpp:87
 msgctxt "ProfileContext|"
 msgid "Program Trace"
-msgstr ""
+msgstr "程序追踪"
 
 #: libcore/costitem.cpp:48
 #, qt-format
@@ -176,107 +176,107 @@ msgstr "(未知)"
 #: libcore/globalconfig.cpp:77
 msgctxt "QObject|"
 msgid "Instruction Fetch"
-msgstr ""
+msgstr "指令获取"
 
 #: libcore/globalconfig.cpp:78
 msgctxt "QObject|"
 msgid "Data Read Access"
-msgstr ""
+msgstr "数据读访问"
 
 #: libcore/globalconfig.cpp:79
 msgctxt "QObject|"
 msgid "Data Write Access"
-msgstr ""
+msgstr "数据写访问"
 
 #: libcore/globalconfig.cpp:80
 msgctxt "QObject|"
 msgid "L1 Instr. Fetch Miss"
-msgstr ""
+msgstr "L1 指令获取失败"
 
 #: libcore/globalconfig.cpp:81
 msgctxt "QObject|"
 msgid "L1 Data Read Miss"
-msgstr ""
+msgstr "L1 数据读取失败"
 
 #: libcore/globalconfig.cpp:82
 msgctxt "QObject|"
 msgid "L1 Data Write Miss"
-msgstr ""
+msgstr "L1 数据写入失败"
 
 #: libcore/globalconfig.cpp:83
 msgctxt "QObject|"
 msgid "L2 Instr. Fetch Miss"
-msgstr ""
+msgstr "L2 指令获取失败"
 
 #: libcore/globalconfig.cpp:84
 msgctxt "QObject|"
 msgid "L2 Data Read Miss"
-msgstr ""
+msgstr "L2 数据读取失败"
 
 #: libcore/globalconfig.cpp:85
 msgctxt "QObject|"
 msgid "L2 Data Write Miss"
-msgstr ""
+msgstr "L2 数据写入失败"
 
 #: libcore/globalconfig.cpp:86
 msgctxt "QObject|"
 msgid "LL Instr. Fetch Miss"
-msgstr ""
+msgstr "LL 指令获取失败"
 
 #: libcore/globalconfig.cpp:87
 msgctxt "QObject|"
 msgid "LL Data Read Miss"
-msgstr ""
+msgstr "LL 数据读取失败"
 
 #: libcore/globalconfig.cpp:88
 msgctxt "QObject|"
 msgid "LL Data Write Miss"
-msgstr ""
+msgstr "LL 数据写入失败"
 
 #: libcore/globalconfig.cpp:89
 msgctxt "QObject|"
 msgid "L1 Miss Sum"
-msgstr ""
+msgstr "L1 失败总计"
 
 #: libcore/globalconfig.cpp:90
 msgctxt "QObject|"
 msgid "L2 Miss Sum"
-msgstr ""
+msgstr "L2 失败总计"
 
 #: libcore/globalconfig.cpp:91
 msgctxt "QObject|"
 msgid "Last-level Miss Sum"
-msgstr ""
+msgstr "L1 失败总计"
 
 #: libcore/globalconfig.cpp:92
 msgctxt "QObject|"
 msgid "Indirect Branch"
-msgstr ""
+msgstr "间接分支"
 
 #: libcore/globalconfig.cpp:93
 msgctxt "QObject|"
 msgid "Mispredicted Ind. Branch"
-msgstr ""
+msgstr "预测失败的间接分支"
 
 #: libcore/globalconfig.cpp:94
 msgctxt "QObject|"
 msgid "Conditional Branch"
-msgstr ""
+msgstr "条件分支"
 
 #: libcore/globalconfig.cpp:95
 msgctxt "QObject|"
 msgid "Mispredicted Cond. Branch"
-msgstr ""
+msgstr "预测失败的条件分支"
 
 #: libcore/globalconfig.cpp:96
 msgctxt "QObject|"
 msgid "Mispredicted Branch"
-msgstr ""
+msgstr "预判定失败的分支"
 
 #: libcore/globalconfig.cpp:97
 msgctxt "QObject|"
 msgid "Global Bus Event"
-msgstr ""
+msgstr "全局总线事件"
 
 #: libcore/globalconfig.cpp:98
 msgctxt "QObject|"
@@ -286,33 +286,33 @@ msgstr "采样数"
 #: libcore/globalconfig.cpp:99
 msgctxt "QObject|"
 msgid "System Time"
-msgstr ""
+msgstr "系统时间"
 
 #: libcore/globalconfig.cpp:100
 msgctxt "QObject|"
 msgid "User Time"
-msgstr ""
+msgstr "用户时间"
 
 #: libcore/globalconfig.cpp:101
 msgctxt "QObject|"
 msgid "Cycle Estimation"
-msgstr ""
+msgstr "循环判断"
 
 #: libcore/tracedata.cpp:1240
 msgctxt "QObject|"
 msgid "(no caller)"
-msgstr ""
+msgstr "(无调用方)"
 
 #: libcore/tracedata.cpp:1247 libcore/tracedata.cpp:1266
 #, qt-format
 msgctxt "QObject|"
 msgid "%1 via %2"
-msgstr ""
+msgstr "%1 通过 %2"
 
 #: libcore/tracedata.cpp:1256
 msgctxt "QObject|"
 msgid "(no callee)"
-msgstr ""
+msgstr "(无被调用方)"
 
 #: libcore/tracedata.cpp:2709
 msgctxt "QObject|"
@@ -327,24 +327,24 @@ msgstr "(未找到)"
 #: libcore/tracedata.cpp:3692
 msgctxt "TraceData|"
 msgid "Recalculating Function Cycles..."
-msgstr ""
+msgstr "正在重新计算函数循环..."
 
 #: libviews/callgraphview.cpp:414
 #, qt-format
 msgctxt "QObject|"
 msgid "Call(s) from %1"
-msgstr ""
+msgstr "来自 %1 的调用"
 
 #: libviews/callgraphview.cpp:417
 #, qt-format
 msgctxt "QObject|"
 msgid "Call(s) to %1"
-msgstr ""
+msgstr "传到 %1 的调用"
 
 #: libviews/callgraphview.cpp:419
 msgctxt "QObject|"
 msgid "(unknown call)"
-msgstr ""
+msgstr "(未知的调用)"
 
 #: libviews/callgraphview.cpp:908
 msgctxt "QObject|"
@@ -849,12 +849,12 @@ msgstr "可视化"
 #: libviews/callmapview.cpp:328
 msgctxt "CallMapView|"
 msgid "Split Direction"
-msgstr ""
+msgstr "方向分割"
 
 #: libviews/callmapview.cpp:331
 msgctxt "CallMapView|"
 msgid "Skip Incorrect Borders"
-msgstr ""
+msgstr "跳过不正确的边框"
 
 #: libviews/callmapview.cpp:336
 msgctxt "CallMapView|"
@@ -864,47 +864,47 @@ msgstr "边框宽度"
 #: libviews/callmapview.cpp:337
 msgctxt "CallMapView|"
 msgid "Border 0"
-msgstr ""
+msgstr "边框 0"
 
 #: libviews/callmapview.cpp:339
 msgctxt "CallMapView|"
 msgid "Border 1"
-msgstr ""
+msgstr "边框 1"
 
 #: libviews/callmapview.cpp:340
 msgctxt "CallMapView|"
 msgid "Border 2"
-msgstr ""
+msgstr "边框 2"
 
 #: libviews/callmapview.cpp:341
 msgctxt "CallMapView|"
 msgid "Border 3"
-msgstr ""
+msgstr "边框 3"
 
 #: libviews/callmapview.cpp:346
 msgctxt "CallMapView|"
 msgid "Draw Symbol Names"
-msgstr ""
+msgstr "绘制符号名称"
 
 #: libviews/callmapview.cpp:348
 msgctxt "CallMapView|"
 msgid "Draw Cost"
-msgstr ""
+msgstr "绘制执行开销"
 
 #: libviews/callmapview.cpp:350
 msgctxt "CallMapView|"
 msgid "Draw Location"
-msgstr ""
+msgstr "绘制位置"
 
 #: libviews/callmapview.cpp:352
 msgctxt "CallMapView|"
 msgid "Draw Calls"
-msgstr ""
+msgstr "绘制调用"
 
 #: libviews/callmapview.cpp:356
 msgctxt "CallMapView|"
 msgid "Ignore Proportions"
-msgstr ""
+msgstr "忽略比例"
 
 #: libviews/callmapview.cpp:358
 msgctxt "CallMapView|"
@@ -920,17 +920,17 @@ msgstr "卷起"
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Call Map: Current is '%1'"
-msgstr ""
+msgstr "调用图：当前是“%1”"
 
 #: libviews/callmapview.cpp:621
 msgctxt "QObject|"
 msgid "(no function)"
-msgstr ""
+msgstr "(无函数)"
 
 #: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
 msgctxt "QObject|"
 msgid "(no call)"
-msgstr ""
+msgstr "(无调用)"
 
 #: libviews/callview.cpp:37
 msgctxt "CallView|"
@@ -940,17 +940,17 @@ msgstr "成本"
 #: libviews/callview.cpp:38
 msgctxt "CallView|"
 msgid "Cost per call"
-msgstr ""
+msgstr "每次调用花费"
 
 #: libviews/callview.cpp:39
 msgctxt "CallView|"
 msgid "Cost 2"
-msgstr ""
+msgstr "开销 2"
 
 #: libviews/callview.cpp:40
 msgctxt "CallView|"
 msgid "Cost 2 per call"
-msgstr ""
+msgstr "每次调用花费2"
 
 #: libviews/callview.cpp:41
 msgctxt "CallView|"
@@ -960,12 +960,12 @@ msgstr "Count"
 #: libviews/callview.cpp:42
 msgctxt "CallView|"
 msgid "Caller"
-msgstr ""
+msgstr "调用"
 
 #: libviews/callview.cpp:42
 msgctxt "CallView|"
 msgid "Callee"
-msgstr ""
+msgstr "被调用方"
 
 #: libviews/callview.cpp:76
 msgctxt "CallView|"
@@ -1008,21 +1008,21 @@ msgstr "跳转到“%1”"
 #, qt-format
 msgctxt "CallView|"
 msgid "%1 per call"
-msgstr ""
+msgstr "%1 每次调用"
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
 msgctxt "QObject|"
 msgid "(%n item(s) skipped)"
 msgid_plural "(%n item(s) skipped)"
-msgstr[0] ""
+msgstr[0] "%n 个被跳过。"
 
 #: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
 #, qt-format
 msgctxt "QObject|"
 msgid "(%n function(s) skipped)"
 msgid_plural "(%n function(s) skipped)"
-msgstr[0] ""
+msgstr[0] "(%n个函数被跳过)"
 
 #: libviews/coverageview.cpp:37
 msgctxt "CoverageView|"
@@ -1042,7 +1042,7 @@ msgstr "已调用"
 #: libviews/coverageview.cpp:42
 msgctxt "CoverageView|"
 msgid "Caller"
-msgstr ""
+msgstr "调用"
 
 #: libviews/coverageview.cpp:46
 msgctxt "CoverageView|"
@@ -1057,7 +1057,7 @@ msgstr "正在呼叫"
 #: libviews/coverageview.cpp:49
 msgctxt "CoverageView|"
 msgid "Callee"
-msgstr ""
+msgstr "被调用方"
 
 #: libviews/coverageview.cpp:84
 msgctxt "CoverageView|"
@@ -1078,6 +1078,15 @@ msgid ""
 "selected one of this information panel. If there are two panels (Split "
 "mode), the function of the other panel is changed instead.</p>"
 msgstr ""
+"<b>全部调用列表</b><p>这个列表展示了所有调用了当前选择的函数的函数，包括直接"
+"调用和递归调用；<em>距离</em>为递归调用中堆栈中的函数数量加1（例如：现有A,B,C"
+"三个函数，当A调用B且B调用C时，存在从A到C的调用，即A => B => C。这里的距离是"
+"2）。</p><p>所显示的绝对成本是在所列功能处于活动状态时在所选功能中花费的成"
+"本；相对成本是在所列功能处于活动状态时在所选功能中花费的所有成本的百分比。成"
+"本图形显示的是对数百分比，每个颜色代表了不同的距离。</p><p>由于同一函数可能存"
+"在多处调用，距离栏有时会显示所有调用的距离范围；在括号中，有一个中等距离，即"
+"大部分调用费用发生的距离。</p><p>选择一个功能会使它成为这个信息面板的当前选"
+"择。如果有两个面板（分割模式），另一个面板的功能将被改变。</p>"
 
 #: libviews/coverageview.cpp:114
 msgctxt "CoverageView|"
