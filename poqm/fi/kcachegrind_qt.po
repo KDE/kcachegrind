@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2023-03-12 11:25+0200\n"
+"PO-Revision-Date: 2023-05-18 12:20+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-POT-Import-Date: 2012-12-01 22:25:32+0000\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.1\n"
 "X-Qt-Contexts: true\n"
 
 #: libcore/cachegrindloader.cpp:135
@@ -106,8 +106,6 @@ msgid "Instruction Call"
 msgstr "Käsky"
 
 #: libcore/context.cpp:74
-#, fuzzy
-#| msgid "Part Call"
 msgctxt "ProfileContext|"
 msgid "Part Call"
 msgstr "Osan kutsu"
@@ -118,18 +116,14 @@ msgid "Call"
 msgstr "Kutsu"
 
 #: libcore/context.cpp:76
-#, fuzzy
-#| msgid "Part Function"
 msgctxt "ProfileContext|"
 msgid "Part Function"
 msgstr "Osan funktio"
 
 #: libcore/context.cpp:77
-#, fuzzy
-#| msgid "Function Source File"
 msgctxt "ProfileContext|"
 msgid "Function Source File"
-msgstr "Funktion lähdekooditiedosto"
+msgstr "Funktion lähdetiedosto"
 
 #: libcore/context.cpp:78
 msgctxt "ProfileContext|"
@@ -137,15 +131,11 @@ msgid "Function"
 msgstr "Funktio"
 
 #: libcore/context.cpp:79
-#, fuzzy
-#| msgid "Function Cycle"
 msgctxt "ProfileContext|"
 msgid "Function Cycle"
 msgstr "Funktiokehä"
 
 #: libcore/context.cpp:80
-#, fuzzy
-#| msgid "Part Class"
 msgctxt "ProfileContext|"
 msgid "Part Class"
 msgstr "Osan luokka"
@@ -156,11 +146,9 @@ msgid "Class"
 msgstr "Luokka"
 
 #: libcore/context.cpp:82
-#, fuzzy
-#| msgid "Part Source File"
 msgctxt "ProfileContext|"
 msgid "Part Source File"
-msgstr "Osan lähdekooditiedosto"
+msgstr "Osan lähdetiedosto"
 
 #: libcore/context.cpp:83
 msgctxt "ProfileContext|"
@@ -168,11 +156,9 @@ msgid "Source File"
 msgstr "Lähdetiedosto"
 
 #: libcore/context.cpp:84
-#, fuzzy
-#| msgid "Part ELF Object"
 msgctxt "ProfileContext|"
 msgid "Part ELF Object"
-msgstr "Osan ELF-objekti"
+msgstr "Osan ELF-olio"
 
 #: libcore/context.cpp:85
 msgctxt "ProfileContext|"
@@ -187,7 +173,7 @@ msgstr "Profiilin osa"
 #: libcore/context.cpp:87
 msgctxt "ProfileContext|"
 msgid "Program Trace"
-msgstr ""
+msgstr "Ohjelmajäljitys"
 
 #: libcore/costitem.cpp:48
 #, qt-format
@@ -335,7 +321,7 @@ msgstr "Väärin ennustettu haara"
 #: libcore/globalconfig.cpp:97
 msgctxt "QObject|"
 msgid "Global Bus Event"
-msgstr ""
+msgstr "Yleinen väylätapahtuma"
 
 #: libcore/globalconfig.cpp:98
 msgctxt "QObject|"
@@ -1628,12 +1614,12 @@ msgstr "Merkittyyn konekoodiin tarvitaan seuraava objektitiedosto:"
 #: libviews/instrview.cpp:831
 msgctxt "InstrView|"
 msgid "This file can not be found."
-msgstr ""
+msgstr "Tätä tiedostoa ei löytynyt."
 
 #: libviews/instrview.cpp:834
 msgctxt "InstrView|"
 msgid "If cross-compiled, set SYSROOT variable."
-msgstr ""
+msgstr "Jos käännetty ristiin, aseta SYSROOT-muuttuja."
 
 #: libviews/instrview.cpp:858
 msgctxt "InstrView|"
@@ -1643,7 +1629,7 @@ msgstr ""
 #: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
 msgctxt "InstrView|"
 msgid "Check that you have installed 'objdump'."
-msgstr ""
+msgstr "Varmista, että ”objdump” on asennettu."
 
 #: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
 msgctxt "InstrView|"
@@ -1680,12 +1666,12 @@ msgstr "Profiilidatatiedostossa ei ole käskytietoja."
 #: libviews/instrview.cpp:1142
 msgctxt "InstrView|"
 msgid "Are you using an old profile data file or is the above mentioned"
-msgstr ""
+msgstr "Käytätkö vanhaa profiilidatatiedostoa vai onko yllä mainittu"
 
 #: libviews/instrview.cpp:1144
 msgctxt "InstrView|"
 msgid "ELF object from an updated installation/another machine?"
-msgstr ""
+msgstr "ELF-olio päivittyneestä asennuksesta tai toiselta koneelta?"
 
 #: libviews/instrview.cpp:1152
 msgctxt "InstrView|"
@@ -1818,11 +1804,9 @@ msgid "Partitioning Mode"
 msgstr "Ositustila"
 
 #: libviews/partselection.cpp:373
-#, fuzzy
-#| msgid "Zoom Function"
 msgctxt "PartSelection|"
 msgid "Zoom Function"
-msgstr "Zoomaustoiminto"
+msgstr "Lähennystoiminto"
 
 #: libviews/partselection.cpp:375
 #, fuzzy
@@ -2023,17 +2007,17 @@ msgstr ""
 #: libviews/sourceview.cpp:669
 msgctxt "SourceView|"
 msgid "There is no source available for the following function:"
-msgstr ""
+msgstr "Seuraavalle funktiolle ei ole saatavilla lähdettä:"
 
 #: libviews/sourceview.cpp:674
 msgctxt "SourceView|"
 msgid "This is because no debug information is present."
-msgstr ""
+msgstr "Näin on, koska virheenpaikannustietoa ei ole."
 
 #: libviews/sourceview.cpp:676
 msgctxt "SourceView|"
 msgid "Recompile source and redo the profile run."
-msgstr ""
+msgstr "Käännä lähde ja suorita profiili uudelleen."
 
 #: libviews/sourceview.cpp:679
 #, fuzzy
@@ -2045,12 +2029,12 @@ msgstr "Funktio sijaitsee seuraavassa ELF-objektissa:"
 #: libviews/sourceview.cpp:687
 msgctxt "SourceView|"
 msgid "This is because its source file cannot be found:"
-msgstr ""
+msgstr "Näin on, koska sen lähdetiedostoa ei löytynyt:"
 
 #: libviews/sourceview.cpp:691
 msgctxt "SourceView|"
 msgid "Add the folder of this file to the source folder list."
-msgstr ""
+msgstr "Lisää tämän tiedoston kansio lähdekansioluetteloon."
 
 #: libviews/sourceview.cpp:693
 msgctxt "SourceView|"
