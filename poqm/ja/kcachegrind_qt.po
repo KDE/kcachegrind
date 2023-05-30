@@ -10,7 +10,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: qtrich\n"
 "X-Qt-Contexts: true\n"
@@ -1002,7 +1002,6 @@ msgctxt "QObject|"
 msgid "(%n item(s) skipped)"
 msgid_plural "(%n item(s) skipped)"
 msgstr[0] ""
-msgstr[1] ""
 
 #: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
 #, qt-format
@@ -1010,7 +1009,6 @@ msgctxt "QObject|"
 msgid "(%n function(s) skipped)"
 msgid_plural "(%n function(s) skipped)"
 msgstr[0] ""
-msgstr[1] ""
 
 #: libviews/coverageview.cpp:37
 msgctxt "CoverageView|"
@@ -1285,7 +1283,6 @@ msgctxt "QObject|"
 msgid "%n call(s) to '%2'"
 msgid_plural "%n call(s) to '%2'"
 msgstr[0] ""
-msgstr[1] ""
 
 #: libviews/instritem.cpp:155
 #, qt-format
@@ -1430,7 +1427,6 @@ msgctxt "InstrView|"
 msgid "There are %n cost line(s) without machine code."
 msgid_plural "There are %n cost line(s) without machine code."
 msgstr[0] ""
-msgstr[1] ""
 
 #: libviews/instrview.cpp:1136
 msgctxt "InstrView|"
