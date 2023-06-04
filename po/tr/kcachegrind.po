@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kdesdk-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-10 00:48+0000\n"
-"PO-Revision-Date: 2023-01-18 22:31+0300\n"
+"PO-Revision-Date: 2023-06-04 02:02+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 23.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1205,7 +1205,7 @@ msgstr ""
 "<p>...<em>Bu nedir...</em> her arayüz parçacığına yardım için\n"
 "KCachegrind'in bu gereç için içerdiği detaylı kullanım bilgisidir?\n"
 "İlk kez kullanımda bu yardım metinlerinin okunması önerilir.\n"
-"<em>Bu nedir...</em> isteği Shift-F1 basılarak ve parçacığa\n"
+"<em>Bu nedir...</em> isteği Üst Karakter-F1 basılarak ve parçacığa\n"
 "tıklayarak istenir.</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
@@ -1229,7 +1229,7 @@ msgid ""
 "<p>...that you can use Alt-Left/Right keys of your keyboard to go\n"
 "back/forward in the active object history ?</p>\n"
 msgstr ""
-"<p>...Alt-Sol/Sağ düğmelerini kullanarak öge geçmişinde\n"
+"<p>...Seçenek-Sol/Sağ düğmelerini kullanarak öge geçmişinde\n"
 "geri/ileri gidebilirsiniz?</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
@@ -1246,7 +1246,7 @@ msgstr ""
 "gezinebilirsiniz? Sol/Sağ ok düğmelerini kullanarak mevcut ögede\n"
 "kardeşler arasında; Yukarı/Aşağı ile de dallanmada yukarı/aşağıya\n"
 "gidebilirsiniz. Mevcut ögeyi seçmek için boşluğa basınız ve onu "
-"etkinleştirmek için Enter'a basın.</p>\n"
+"etkinleştirmek için Giriş'e basın.</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:38
@@ -1265,7 +1265,7 @@ msgstr ""
 "ile işlevler arasında değişim yapılabilir. Sol/Sağ ok düğmelerini kullanarak "
 "mevcut\n"
 "seçilmiş çağrının kardeşleri değiştirilebilir. Mevcut ögeyi etkinleştirmek "
-"için Enter'a basınız.\n"
+"için Giriş'e basınız.\n"
 "</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
@@ -1277,7 +1277,7 @@ msgid ""
 "and hit return?</p>\n"
 msgstr ""
 "<p>...araç çubuğundaki satır düzenlemenin içerisine adının bir kısmını\n"
-"(büyük küçük harf duyarsız) girerek ve Enter düğmesine basarak işlevin\n"
+"(büyük küçük harf duyarsız) girerek ve Giriş düğmesine basarak işlevin\n"
 "yerini hızlıca belirleyebilirsiniz.</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
