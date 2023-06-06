@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2023-04-23 08:25+0200\n"
+"PO-Revision-Date: 2023-06-05 14:07+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.1\n"
 "X-Qt-Contexts: true\n"
 
 #: libcore/cachegrindloader.cpp:135
@@ -516,32 +516,32 @@ msgstr "Sen mínimo"
 #: libviews/callgraphview.cpp:2860
 msgctxt "CallGraphView|"
 msgid "50 %"
-msgstr "50 %"
+msgstr "50%"
 
 #: libviews/callgraphview.cpp:2861
 msgctxt "CallGraphView|"
 msgid "20 %"
-msgstr "20 %"
+msgstr "20%"
 
 #: libviews/callgraphview.cpp:2862
 msgctxt "CallGraphView|"
 msgid "10 %"
-msgstr "10 %"
+msgstr "10%"
 
 #: libviews/callgraphview.cpp:2863
 msgctxt "CallGraphView|"
 msgid "5 %"
-msgstr "5 %"
+msgstr "5%"
 
 #: libviews/callgraphview.cpp:2864
 msgctxt "CallGraphView|"
 msgid "2 %"
-msgstr "2 %"
+msgstr "2%"
 
 #: libviews/callgraphview.cpp:2865
 msgctxt "CallGraphView|"
 msgid "1 %"
-msgstr "1 %"
+msgstr "1%"
 
 #: libviews/callgraphview.cpp:2895
 msgctxt "CallGraphView|"
@@ -1641,7 +1641,7 @@ msgstr ""
 "segundo o tempo de execución. Os tamaños dos rectángulos son proporcionais "
 "ao custo total despendido nas partes. Pode escoller unha ou varias parte "
 "para restrinxir os custos que se mostran a só os desas partes.</p><p>A "
-"partes están subdivididas á súa vez: hai un modo de división segundo o "
+"partes están subdivididas á súa vez: hai un modo de división segundo a "
 "partición e segundo o chamado:<ul> <li>Partición: Verá a partición en grupos "
 "dunha parte de trazado, segundo o tipo de grupo escollido. P. ex. se escolle "
 "grupos de obxectos ELF verá rectángulos colorados para cada obxecto ELF "
@@ -1889,7 +1889,7 @@ msgstr "Ir á liña %1"
 #: libviews/sourceview.cpp:627
 msgctxt "SourceView|"
 msgid "There is no cost of current selected type associated"
-msgstr "Non hai custo do tipo asociado actualmente escollido"
+msgstr "Non hai custo do tipo asociado escollido"
 
 #: libviews/sourceview.cpp:629
 msgctxt "SourceView|"
