@@ -1997,7 +1997,7 @@ msgstr "Dalt"
 #: libviews/tabview.cpp:107
 msgctxt "TabBar|"
 msgid "Move to Right"
-msgstr "Mou a la dreta"
+msgstr "Mou cap a la dreta"
 
 #: libviews/tabview.cpp:108
 msgctxt "TabBar|Move to Right"
