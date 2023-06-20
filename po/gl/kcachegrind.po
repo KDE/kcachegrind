@@ -394,7 +394,7 @@ msgstr "Diversos:"
 #: kcachegrind/dumpselectionbase.ui:588
 #, kde-format
 msgid "Show"
-msgstr "Mostrar"
+msgstr "Amosar"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton5)
 #: kcachegrind/dumpselectionbase.ui:595
@@ -623,7 +623,7 @@ msgstr "Autor e mantedor"
 #: kcachegrind/main.cpp:68
 #, kde-format
 msgid "Show information of this trace"
-msgstr "Mostrar a información deste trazado"
+msgstr "Amosar a información deste trazado"
 
 #: kcachegrind/main.cpp:68
 #, kde-format
@@ -652,7 +652,7 @@ msgstr ""
 "<b>Custo máximo da pila de chamadas</b><p>Esta é unha pila de chamadas "
 "«probábeis» ficticia. Constrúese comezando coa función escollida e engadindo "
 "as funcións chamadoras/chamadas con maior custo por cima e por baixo.</"
-"p><p>As columnas <b>Custo</b> e <b>Chamadas</b> mostran o custo usado por "
+"p><p>As columnas <b>Custo</b> e <b>Chamadas</b> amosan o custo usado por "
 "todas as chamadas da función na liña de enriba.</p>"
 
 #: kcachegrind/toplevel.cpp:283
@@ -686,7 +686,7 @@ msgstr ""
 "directorio actual de traballo de KCachegrind, i.e., onde este se iniciou, e "
 "</li><li>o cartafol predeterminado dos resultados do perfilado.</li></ul> A "
 "lista está ordenada de acordo coa orde perfilada no resultado correspondente."
-"</p><p>Ao escoller un resultado, móstrase información sobre este na parte "
+"</p><p>Ao escoller un resultado, amósase información sobre este na parte "
 "inferior do acople: <ul><li><b>Opcións</b> permítelle ver a orde perfilado e "
 "as opcións de análise deste envorcado. Se cambia calquera elemento, crearase "
 "un novo modelo de perfilado (se non existir). Prema<b>Executar perfilado</b> "
@@ -866,7 +866,7 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:489
 #, kde-format
 msgid "Show/Hide the Parts Overview Dockable"
-msgstr "Mostrar/Agochar o acople de resumo das partes"
+msgstr "Amosar/Agochar o acople de resumo das partes"
 
 #: kcachegrind/toplevel.cpp:494
 #, kde-format
@@ -876,7 +876,7 @@ msgstr "Pila de chamadas"
 #: kcachegrind/toplevel.cpp:497
 #, kde-format
 msgid "Show/Hide the Call Stack Dockable"
-msgstr "Mostrar/Agochar o acople da pila de chamadas"
+msgstr "Amosar/Agochar o acople da pila de chamadas"
 
 #: kcachegrind/toplevel.cpp:502
 #, kde-format
@@ -886,12 +886,12 @@ msgstr "Perfil da función"
 #: kcachegrind/toplevel.cpp:505
 #, kde-format
 msgid "Show/Hide the Function Profile Dockable"
-msgstr "Mostrar/Agochar o acople de perfil da función"
+msgstr "Amosar/Agochar o acople de perfil da función"
 
 #: kcachegrind/toplevel.cpp:513
 #, kde-format
 msgid "Show/Hide the Profile Dumps Dockable"
-msgstr "Mostrar/Agochar o acople dos resultados do perfilado"
+msgstr "Amosar/Agochar o acople dos resultados do perfilado"
 
 #: kcachegrind/toplevel.cpp:520
 #, kde-format
@@ -901,7 +901,7 @@ msgstr "Relativo"
 #: kcachegrind/toplevel.cpp:522
 #, kde-format
 msgid "Show relative instead of absolute costs"
-msgstr "Mostrar os custos relativos en vez dos absolutos"
+msgstr "Amosar os custos relativos en vez dos absolutos"
 
 #: kcachegrind/toplevel.cpp:528
 #, kde-format
@@ -911,7 +911,7 @@ msgstr "Relativa ao pai"
 #: kcachegrind/toplevel.cpp:531
 #, kde-format
 msgid "Show percentage costs relative to parent"
-msgstr "Mostrar os custos porcentuais relativos ao «pai»"
+msgstr "Amosar os custos porcentuais relativos ao «pai»"
 
 #: kcachegrind/toplevel.cpp:535
 #, kde-format
@@ -927,10 +927,10 @@ msgid ""
 "table></ul><p>(*) Only if function grouping is switched on (e.g. ELF object "
 "grouping).</p>"
 msgstr ""
-"<b>Mostrar os custos porcentuais relativos ao «pai»</b><p>Se esta opción non "
+"<b>Amosar os custos porcentuais relativos ao «pai»</b><p>Se esta opción non "
 "estivese sinalada, os custos porcentuais mostraranse en relación ao custo "
 "total das partes do perfilado que estea a examinar nese momento. Se sinala "
-"esta opción, o custo porcentual dos elementos de custo mostrados han ser "
+"esta opción, o custo porcentual dos elementos de custo amosados han ser "
 "relativos ao «elemento-pai» do custo.</p><ul><table><tr><td><b>Tipo de "
 "Custo</b></td><td><b>Custo do Pai</b></td></tr><tr><td>Acumulación da "
 "función</td><td>Total</td></tr><tr><td>Referencia á función</td><td>Grupo da "
@@ -959,7 +959,7 @@ msgid ""
 "therefore, there is the option to switch this off.</p>"
 msgstr ""
 "<b>Detectar os ciclos recursivos</b><p>Se isto non está activado, na árbore "
-"móstranse áreas negras cando se fai unha chamada recursiva en vez de "
+"amósanse áreas negras cando se fai unha chamada recursiva en vez de "
 "representar a recursividade «ad infinitum». Lembre que o tamaño das áreas "
 "negras moitas veces será incorrecto, dado que dentro de ciclos recursivos, "
 "non se pode determinar o custo das chamadas. Con todo, o erro é pequeno para "
@@ -990,11 +990,11 @@ msgid ""
 "label to show a tooltip with the unabbreviated symbol.</p>"
 msgstr ""
 "<b>Agochar os parámetros dos modelos en símbolos de C++</b> <p>Active esta "
-"opción para que se agochen parámetros dos modelos en C++ ao mostrar os "
-"símbolos, de xeito que no seu lugar se mostre &lt;&gt;, e non un parámetro "
-"de modelo probablemente de varios niveis de sangrado.</p> <p>Neste modo, "
-"pode cubrir co punteiro do rato a etiqueta do símbolo activado para mostrar "
-"un tooltip co símbolo completo.</p>"
+"opción para que se agochen parámetros dos modelos en C++ ao amosar os "
+"símbolos, de xeito que no seu lugar se amose &lt;&gt;, e non un parámetro de "
+"modelo probablemente de varios niveis de sangrado.</p> <p>Neste modo, pode "
+"cubrir co punteiro do rato a etiqueta do símbolo activado para amosar un "
+"tooltip co símbolo completo.</p>"
 
 #: kcachegrind/toplevel.cpp:590
 #, kde-format
@@ -1039,7 +1039,7 @@ msgstr "Tipo secundario de evento"
 #, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
 msgstr ""
-"Escoller o tipo secundario de eventos para o custo p.ex., mostrados en "
+"Escoller o tipo secundario de eventos para o custo p.ex., amosados en "
 "anotacións"
 
 #: kcachegrind/toplevel.cpp:669
@@ -1065,7 +1065,7 @@ msgstr "Dividir"
 #: kcachegrind/toplevel.cpp:692
 #, kde-format
 msgid "Show two information panels"
-msgstr "Mostrar dous paneis de información"
+msgstr "Amosar dous paneis de información"
 
 #: kcachegrind/toplevel.cpp:698
 #, kde-format
@@ -1117,12 +1117,12 @@ msgstr "Agochar"
 #: kcachegrind/toplevel.cpp:1564
 #, kde-format
 msgid "Show Absolute Cost"
-msgstr "Mostrar o custo absoluto"
+msgstr "Amosar o custo absoluto"
 
 #: kcachegrind/toplevel.cpp:1567
 #, kde-format
 msgid "Show Relative Cost"
-msgstr "Mostrar o custo relativo"
+msgstr "Amosar o custo relativo"
 
 #: kcachegrind/toplevel.cpp:1599
 #, kde-format
@@ -1318,7 +1318,7 @@ msgstr ""
 "unha función dada ollando a etiqueta da localización no separador de\n"
 "Información ou na cabeceira da lista de código no separador do código?</p>\n"
 "<p>Esta deberá ser o nome do ficheiro de fontes (coa extensión).\n"
-"Se KCachegrind non mostrar o código, verifique que engadiu o directorio\n"
+"Se KCachegrind non amosar o código, verifique que engadiu o directorio\n"
 "do ficheiro de código fonte á lista dos <em>Directorios das fontes</em> na\n"
 "configuración.\n"
 
@@ -1329,7 +1329,7 @@ msgid ""
 "<p>...that you can configure whether KCachgrind should\n"
 "show absolute event counts or relative ones (percentage display)?</p>\n"
 msgstr ""
-"<p>…pode configurar se KCachgrind debe mostrar as cantidades\n"
+"<p>…pode configurar se KCachgrind debe amosar as cantidades\n"
 "absolutas dos eventos ou as relativas (versión porcentual)?</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
@@ -1348,7 +1348,7 @@ msgstr ""
 "<p>…pode configurar o número máximo de elementos para todas as listas\n"
 "de funcións de KCachegrind? Este límite do número de elementos estabelécese "
 "para\n"
-"non enlentecer interface. O último elemento da lista mostraralle\n"
+"non enlentecer interface. O último elemento da lista amosaralle\n"
 "o número de funcións ignoradas, xunto cunha condición de custo para\n"
 "esas funcións ignoradas.</p>\n"
 "<p>Para activar unha función con custos baixos, búsquea e escóllaa\n"
@@ -1396,7 +1396,7 @@ msgid ""
 "mouse button.</p>\n"
 msgstr ""
 "<p>…se espera a axuda da ferramenta, nun mapa da árbore\n"
-"mostrarase a lista dos nomes dos rectángulos aniñados sobre os\n"
+"amosarase a lista dos nomes dos rectángulos aniñados sobre os\n"
 "que está o rato?</p>\n"
 "<p>Os elementos desta lista poden escollerse se preme co\n"
 "botón dereito do rato.</p>\n"
@@ -1414,7 +1414,7 @@ msgid ""
 "of not-branching assembler statements inside of your program\n"
 "code).</p>\n"
 msgstr ""
-"<p>…pode restrinxir as cantidades de custos mostradas só\n"
+"<p>…pode restrinxir as cantidades de custos amosadas só\n"
 "a algunhas partes do trazado completo se escolle esas partes\n"
 "no acople de «Selección do trazado?</p>\n"
 "<p>Para xerar varias partes na execución dunha análise de rendemento con\n"
