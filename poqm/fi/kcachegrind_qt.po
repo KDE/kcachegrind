@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2023-05-18 12:20+0300\n"
+"PO-Revision-Date: 2023-06-07 21:40+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -399,8 +399,6 @@ msgid "Call(s) to %1"
 msgstr "Valitse ”%1”"
 
 #: libviews/callgraphview.cpp:419
-#, fuzzy
-#| msgid "(unknown call)"
 msgctxt "QObject|"
 msgid "(unknown call)"
 msgstr "(tuntematon kutsu)"
@@ -547,11 +545,9 @@ msgid "Caller Depth"
 msgstr "Kutsujasyvyys"
 
 #: libviews/callgraphview.cpp:2774 libviews/callgraphview.cpp:2814
-#, fuzzy
-#| msgid "Unlimited"
 msgctxt "CallGraphView|"
 msgid "Unlimited"
-msgstr "Rajoittamaton"
+msgstr "Ei rajoitettu"
 
 #: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
 msgctxt "CallGraphView|None"
@@ -916,29 +912,23 @@ msgid "Depth of '%1' (%2)"
 msgstr "Funktion ”%1” syvyyteen (%2)"
 
 #: libviews/callmapview.cpp:185
-#, fuzzy, qt-format
-#| msgid "Decrement Depth (to %1)"
+#, qt-format
 msgctxt "CallMapView|"
 msgid "Decrement Depth (to %1)"
 msgstr "Vähennä syvyyttä (arvoon %1)"
 
 #: libviews/callmapview.cpp:187
-#, fuzzy, qt-format
-#| msgid "Increment Depth (to %1)"
+#, qt-format
 msgctxt "CallMapView|"
 msgid "Increment Depth (to %1)"
 msgstr "Kasvata syvyyttä (arvoon %1)"
 
 #: libviews/callmapview.cpp:213
-#, fuzzy
-#| msgid "Stop at Function"
 msgctxt "CallMapView|"
 msgid "Stop at Function"
 msgstr "Pysähdy funktioon"
 
 #: libviews/callmapview.cpp:214
-#, fuzzy
-#| msgid "No Function Limit"
 msgctxt "CallMapView|"
 msgid "No Function Limit"
 msgstr "Ei funktiorajoitusta"
@@ -1105,7 +1095,7 @@ msgstr ""
 #: libviews/callview.cpp:41
 msgctxt "CallView|"
 msgid "Count"
-msgstr ""
+msgstr "Määrä"
 
 #: libviews/callview.cpp:42
 msgctxt "CallView|"
@@ -1324,18 +1314,14 @@ msgid ""
 msgstr ""
 
 #: libviews/eventtypeview.cpp:96
-#, fuzzy
-#| msgid "Set as Secondary Event Type"
 msgctxt "EventTypeView|"
 msgid "Set as Secondary Event Type"
-msgstr "Aseta toissijaisen tapahtuman tyypiksi"
+msgstr "Aseta toissijaiseksi tapahtumatyypiksi"
 
 #: libviews/eventtypeview.cpp:98
-#, fuzzy
-#| msgid "Hide Secondary Event Type"
 msgctxt "EventTypeView|"
 msgid "Hide Secondary Event Type"
-msgstr "Piilota toissijainen tapahtuman tyyppi"
+msgstr "Piilota toissijainen tapahtumatyyppi"
 
 #: libviews/eventtypeview.cpp:107
 msgctxt "EventTypeView|"
@@ -1400,8 +1386,7 @@ msgid "Location"
 msgstr "Sijainti"
 
 #: libviews/functionlistmodel.cpp:89
-#, fuzzy, qt-format
-#| msgid "(%1 function(s) skipped)"
+#, qt-format
 msgctxt "FunctionListModel|"
 msgid "(%1 function(s) skipped)"
 msgstr "(%1 funktio(ta) ohitettu)"
@@ -1412,8 +1397,6 @@ msgid "Function Profile"
 msgstr "Funktioprofiili"
 
 #: libviews/functionselection.cpp:95
-#, fuzzy
-#| msgid "&Search:"
 msgctxt "FunctionSelection|"
 msgid "&Search:"
 msgstr "&Etsi:"
@@ -1530,8 +1513,6 @@ msgid "Hex"
 msgstr "Heksa"
 
 #: libviews/instrview.cpp:199
-#, fuzzy
-#| msgid "Assembly Instructions"
 msgctxt "InstrView|"
 msgid "Assembly Instructions"
 msgstr "Konekieliset käskyt"
@@ -1579,15 +1560,11 @@ msgid "There is no instruction info in the profile data file."
 msgstr "Profiilidatatiedostossa ei ole käskytietoja."
 
 #: libviews/instrview.cpp:575
-#, fuzzy
-#| msgid "Tip: For Callgrind, rerun with option"
 msgctxt "InstrView|"
 msgid "Tip: For Callgrind, rerun with option"
 msgstr "Vinkki: Aja callgrind uudelleen valinnalla"
 
 #: libviews/instrview.cpp:576
-#, fuzzy
-#| msgid "      --dump-instr=yes"
 msgctxt "InstrView|"
 msgid "      --dump-instr=yes"
 msgstr "      --dump-instr=yes"
@@ -1598,8 +1575,6 @@ msgid "To see (conditional) jumps, additionally specify"
 msgstr ""
 
 #: libviews/instrview.cpp:578
-#, fuzzy
-#| msgid "      --collect-jumps=yes"
 msgctxt "InstrView|"
 msgid "      --collect-jumps=yes"
 msgstr "      --collect-jumps=yes"
@@ -1637,8 +1612,6 @@ msgid "This utility can be found in the 'binutils' package."
 msgstr ""
 
 #: libviews/instrview.cpp:966
-#, fuzzy
-#| msgid "(No Instruction)"
 msgctxt "InstrView|"
 msgid "(No Instruction)"
 msgstr "(Ei käskyä)"
@@ -1686,11 +1659,10 @@ msgid "Check that the ELF object used in the command exists."
 msgstr "Tarkista, että komennossa käytetty ELF-objekti on olemassa."
 
 #: libviews/partgraph.cpp:154
-#, fuzzy, qt-format
-#| msgid "Profile Part"
+#, qt-format
 msgctxt "QObject|"
 msgid "Profile Part %1"
-msgstr "Profiilin osa"
+msgstr "Profiilin osa %1"
 
 #: libviews/partgraph.cpp:211
 #, fuzzy
@@ -1932,11 +1904,9 @@ msgid "#"
 msgstr "#"
 
 #: libviews/sourceview.cpp:52
-#, fuzzy
-#| msgid "Cost"
 msgctxt "SourceView|"
 msgid "Cost"
-msgstr "Hinta"
+msgstr "Kustannus"
 
 #: libviews/sourceview.cpp:53
 msgctxt "SourceView|"
@@ -2020,8 +1990,6 @@ msgid "Recompile source and redo the profile run."
 msgstr "Käännä lähde ja suorita profiili uudelleen."
 
 #: libviews/sourceview.cpp:679
-#, fuzzy
-#| msgid "The function is located in this ELF object:"
 msgctxt "SourceView|"
 msgid "The function is located in this ELF object:"
 msgstr "Funktio sijaitsee seuraavassa ELF-objektissa:"
@@ -2042,36 +2010,26 @@ msgid "The list can be found in the configuration dialog."
 msgstr "Luettelo löytyy asetusikkunasta."
 
 #: libviews/stackselection.cpp:36
-#, fuzzy
-#| msgid "Split Direction"
 msgctxt "StackSelection|"
 msgid "Stack Selection"
-msgstr "Jakamisen suunta"
+msgstr "Pinon valinta"
 
 #: libviews/stackselection.cpp:44
-#, fuzzy
-#| msgid "Cost"
 msgctxt "StackSelection|"
 msgid "Cost"
-msgstr "Hinta"
+msgstr "Kustannus"
 
 #: libviews/stackselection.cpp:45
-#, fuzzy
-#| msgid "Cost"
 msgctxt "StackSelection|"
 msgid "Cost2"
-msgstr "Hinta"
+msgstr "Kustannus2"
 
 #: libviews/stackselection.cpp:46
-#, fuzzy
-#| msgid "Call"
 msgctxt "StackSelection|"
 msgid "Calls"
-msgstr "Kutsu"
+msgstr "Kutsut"
 
 #: libviews/stackselection.cpp:47
-#, fuzzy
-#| msgid "Function"
 msgctxt "StackSelection|"
 msgid "Function"
 msgstr "Funktio"
@@ -2087,18 +2045,14 @@ msgid "Top"
 msgstr "Ylös"
 
 #: libviews/tabview.cpp:107
-#, fuzzy
-#| msgid "Left to Right"
 msgctxt "TabBar|"
 msgid "Move to Right"
-msgstr "Vasemmalta oikealle"
+msgstr "Siirrä oikealle"
 
 #: libviews/tabview.cpp:108
-#, fuzzy
-#| msgid "Top Right"
 msgctxt "TabBar|Move to Right"
 msgid "Right"
-msgstr "Yläoikealla"
+msgstr "Oikealle"
 
 #: libviews/tabview.cpp:111
 msgctxt "TabBar|"
@@ -2106,25 +2060,19 @@ msgid "Move to Bottom"
 msgstr "Siirrä alimmas"
 
 #: libviews/tabview.cpp:112
-#, fuzzy
-#| msgid "Bottom Left"
 msgctxt "TabBar|Move to Bottom"
 msgid "Bottom"
-msgstr "Alavasemmalla"
+msgstr "Alas"
 
 #: libviews/tabview.cpp:115
-#, fuzzy
-#| msgid "Bottom Left"
 msgctxt "TabBar|"
 msgid "Move to Bottom Left"
-msgstr "Alavasemmalla"
+msgstr "Siirrä alavasemmalle"
 
 #: libviews/tabview.cpp:116
-#, fuzzy
-#| msgid "Bottom Left"
 msgctxt "TabBar|Move to Bottom Left"
 msgid "Bottom Left"
-msgstr "Alavasemmalla"
+msgstr "Alavasemmalle"
 
 #: libviews/tabview.cpp:118
 msgctxt "TabBar|"
@@ -2137,11 +2085,9 @@ msgid "Hide This Tab"
 msgstr "Piilota tämä välilehti"
 
 #: libviews/tabview.cpp:122
-#, fuzzy
-#| msgid "Hide"
 msgctxt "TabBar|"
 msgid "Hide Area"
-msgstr "Piilota"
+msgstr "Piilota alue"
 
 #: libviews/tabview.cpp:131
 msgctxt "TabBar|Show on Top"
@@ -2149,22 +2095,16 @@ msgid "Top"
 msgstr "Ylhäällä"
 
 #: libviews/tabview.cpp:132
-#, fuzzy
-#| msgid "Top Right"
 msgctxt "TabBar|Show on Right"
 msgid "Right"
-msgstr "Yläoikealla"
+msgstr "Oikealla"
 
 #: libviews/tabview.cpp:133
-#, fuzzy
-#| msgid "Bottom Left"
 msgctxt "TabBar|Show on Bottom"
 msgid "Bottom"
-msgstr "Alavasemmalla"
+msgstr "Alhaalla"
 
 #: libviews/tabview.cpp:134
-#, fuzzy
-#| msgid "Bottom Left"
 msgctxt "TabBar|Show on Bottom Left"
 msgid "Bottom Left"
 msgstr "Alavasemmalla"
@@ -2187,22 +2127,16 @@ msgid "Types"
 msgstr "Tyypit"
 
 #: libviews/tabview.cpp:373
-#, fuzzy
-#| msgid "Caller"
 msgctxt "TabView|"
 msgid "Callers"
-msgstr "Kutsuja"
+msgstr "Kutsujat"
 
 #: libviews/tabview.cpp:374
-#, fuzzy
-#| msgid "All Callers"
 msgctxt "TabView|"
 msgid "All Callers"
 msgstr "Kaikki kutsujat"
 
 #: libviews/tabview.cpp:375
-#, fuzzy
-#| msgid "Callee Map"
 msgctxt "TabView|"
 msgid "Callee Map"
 msgstr "Kutsuttujen kartta"
@@ -2218,36 +2152,26 @@ msgid "Parts"
 msgstr "Osat"
 
 #: libviews/tabview.cpp:381
-#, fuzzy
-#| msgid "Callees"
 msgctxt "TabView|"
 msgid "Callees"
 msgstr "Kutsutut"
 
 #: libviews/tabview.cpp:382
-#, fuzzy
-#| msgid "Call Graph"
 msgctxt "TabView|"
 msgid "Call Graph"
 msgstr "Kutsukaavio"
 
 #: libviews/tabview.cpp:385
-#, fuzzy
-#| msgid "All Callees"
 msgctxt "TabView|"
 msgid "All Callees"
 msgstr "Kaikki kutsutut"
 
 #: libviews/tabview.cpp:386
-#, fuzzy
-#| msgid "Caller Map"
 msgctxt "TabView|"
 msgid "Caller Map"
 msgstr "Kutsujakartta"
 
 #: libviews/tabview.cpp:389
-#, fuzzy
-#| msgid "Machine Code"
 msgctxt "TabView|"
 msgid "Machine Code"
 msgstr "Konekoodi"
@@ -2290,11 +2214,9 @@ msgstr ""
 "<em>What's This?</em> help of the corresponding tab widget.</p>"
 
 #: libviews/tabview.cpp:728
-#, fuzzy
-#| msgid "(No function selected)"
 msgctxt "TabView|"
 msgid "(No function selected)"
-msgstr "(Funktiota ei valittu)"
+msgstr "(Ei valittuja funktioita)"
 
 #: libviews/traceitemview.cpp:67
 msgctxt "QObject|"
@@ -2302,8 +2224,7 @@ msgid "No description available"
 msgstr "Kuvausta ei ole saatavilla"
 
 #: libviews/treemap.cpp:1334
-#, fuzzy, qt-format
-#| msgid "Text %1"
+#, qt-format
 msgctxt "TreeMapWidget|"
 msgid "Text %1"
 msgstr "Teksti %1"
