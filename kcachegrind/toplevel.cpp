@@ -658,8 +658,13 @@ void TopLevel::createMiscActions()
 
     // cost types are dependent on loaded data, thus KSelectAction
     // is filled in setData()
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     connect( _saCost, SIGNAL(triggered(QString)),
              this, SLOT(eventTypeSelected(QString)));
+#else
+    connect( _saCost, &KSelectAction::textTriggered,
+             this, &TopLevel::eventTypeSelected);
+#endif
 
     _saCost2 = actionCollection()->add<KSelectAction>(QStringLiteral("view_cost_type2"));
     _saCost2->setText(i18n("Secondary Event Type"));
@@ -668,9 +673,13 @@ void TopLevel::createMiscActions()
     _saCost2->setToolTip( hint );
     _saCost2->setWhatsThis( hint );
     _saCost2->setItems(dummyItems);
-
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     connect( _saCost2, SIGNAL(triggered(QString)),
              this, SLOT(eventType2Selected(QString)));
+#else
+    connect( _saCost2, &KSelectAction::textTriggered,
+             this, &TopLevel::eventTypeSelected);
+#endif
 
     saGroup = actionCollection()->add<KSelectAction>(QStringLiteral("view_group_type"));
     saGroup->setText(i18n("Grouping"));
@@ -688,8 +697,13 @@ void TopLevel::createMiscActions()
          << ProfileContext::i18nTypeName(ProfileContext::FunctionCycle);
 
     saGroup->setItems(args);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     connect( saGroup, SIGNAL(triggered(int)),
              this, SLOT(groupTypeSelected(int)));
+#else
+    connect( saGroup, &KSelectAction::triggered,
+             this, &TopLevel::groupTypeSelected);
+#endif
 
     _taSplit = actionCollection()->add<KToggleAction>(QStringLiteral("view_split"));
     _taSplit->setIcon(QIcon::fromTheme(QStringLiteral("view-split-left-right")));
