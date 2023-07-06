@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-10 00:48+0000\n"
+"POT-Creation-Date: 2023-07-06 01:03+0000\n"
 "PO-Revision-Date: 2015-07-12 12:48+0200\n"
 "Last-Translator: Lasse Liehu <lasse.liehu@gmail.com>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1020,7 +1020,7 @@ msgstr "Siirry valintahistoriassa edelliseen funktioon"
 msgid "Go forward in function selection history"
 msgstr "Siirry valintahistoriassa seuraavaan funktioon"
 
-#: kcachegrind/toplevel.cpp:642 kcachegrind/toplevel.cpp:1519
+#: kcachegrind/toplevel.cpp:642 kcachegrind/toplevel.cpp:1533
 #, kde-format
 msgid "Primary Event Type"
 msgstr "Ensisijaisen tapahtuman tyyppi"
@@ -1030,57 +1030,57 @@ msgstr "Ensisijaisen tapahtuman tyyppi"
 msgid "Select primary event type of costs"
 msgstr "Toissijaisen tapahtuman tyyppi"
 
-#: kcachegrind/toplevel.cpp:665 kcachegrind/toplevel.cpp:1524
+#: kcachegrind/toplevel.cpp:670 kcachegrind/toplevel.cpp:1538
 #, kde-format
 msgid "Secondary Event Type"
 msgstr "Toissijaisen tapahtuman tyyppi"
 
-#: kcachegrind/toplevel.cpp:666
+#: kcachegrind/toplevel.cpp:671
 #, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
 msgstr "Toisijaisen tapahtuman tyyppi, joka näytetään esim. merkinnöissä"
 
-#: kcachegrind/toplevel.cpp:676
+#: kcachegrind/toplevel.cpp:685
 #, kde-format
 msgid "Grouping"
 msgstr "Ryhmittely"
 
-#: kcachegrind/toplevel.cpp:678
+#: kcachegrind/toplevel.cpp:687
 #, kde-format
 msgid "Select how functions are grouped into higher level cost items"
 msgstr "Miten funktiot ryhmitellään korkeamman hintatason alkioihin"
 
-#: kcachegrind/toplevel.cpp:684
+#: kcachegrind/toplevel.cpp:693
 #, kde-format
 msgid "(No Grouping)"
 msgstr "(Ei ryhmittelyä)"
 
-#: kcachegrind/toplevel.cpp:696
+#: kcachegrind/toplevel.cpp:710
 #, kde-format
 msgid "Split"
 msgstr "Puolita"
 
-#: kcachegrind/toplevel.cpp:699
+#: kcachegrind/toplevel.cpp:713
 #, kde-format
 msgid "Show two information panels"
 msgstr "Näytä kaksi tietopaneelia"
 
-#: kcachegrind/toplevel.cpp:705
+#: kcachegrind/toplevel.cpp:719
 #, kde-format
 msgid "Split Horizontal"
 msgstr "Puolita vaakasuunnassa"
 
-#: kcachegrind/toplevel.cpp:708
+#: kcachegrind/toplevel.cpp:722
 #, kde-format
 msgid "Change Split Orientation when main window is split."
 msgstr "Vaihda puolituksen suuntaa sen ollessa käytössä"
 
-#: kcachegrind/toplevel.cpp:905
+#: kcachegrind/toplevel.cpp:919
 #, kde-format
 msgid "Select Callgrind Profile Data"
 msgstr "Valitse Callgrind-profiilivedos"
 
-#: kcachegrind/toplevel.cpp:907 kcachegrind/toplevel.cpp:975
+#: kcachegrind/toplevel.cpp:921 kcachegrind/toplevel.cpp:989
 #, fuzzy, kde-format
 #| msgid ""
 #| "cachegrind.out* callgrind.out*|Callgrind Profile Data\n"
@@ -1090,7 +1090,7 @@ msgstr ""
 "cachegrind.out* callgrind.out*|Callgrind-profiilivedos\n"
 "*|Kaikki tiedostot"
 
-#: kcachegrind/toplevel.cpp:935 kcachegrind/toplevel.cpp:964
+#: kcachegrind/toplevel.cpp:949 kcachegrind/toplevel.cpp:978
 #, kde-format
 msgid ""
 "Could not open the file \"%1\". Check it exists and you have enough "
@@ -1099,103 +1099,103 @@ msgstr ""
 "Tiedoston ”%1” avaus epäonnistui. Tarkista, että se on olemassa ja että "
 "sinulla on tarvittavat oikeudet sen lukemiseen."
 
-#: kcachegrind/toplevel.cpp:973
+#: kcachegrind/toplevel.cpp:987
 #, kde-format
 msgid "Add Callgrind Profile Data"
 msgstr "Lisää Callgrind-profiilidataa"
 
-#: kcachegrind/toplevel.cpp:1143 kcachegrind/toplevel.cpp:1472
+#: kcachegrind/toplevel.cpp:1157 kcachegrind/toplevel.cpp:1486
 #, kde-format
 msgid "(Hidden)"
 msgstr "(piilotettu)"
 
-#: kcachegrind/toplevel.cpp:1529
+#: kcachegrind/toplevel.cpp:1543
 #, kde-format
 msgid "Hide"
 msgstr "Piilota"
 
-#: kcachegrind/toplevel.cpp:1571
+#: kcachegrind/toplevel.cpp:1585
 #, kde-format
 msgid "Show Absolute Cost"
 msgstr "Näytä absoluuttinen hinta"
 
-#: kcachegrind/toplevel.cpp:1574
+#: kcachegrind/toplevel.cpp:1588
 #, kde-format
 msgid "Show Relative Cost"
 msgstr "Näytä suhteellinen hinta"
 
-#: kcachegrind/toplevel.cpp:1606
+#: kcachegrind/toplevel.cpp:1620
 #, kde-format
 msgid "Go Back"
 msgstr "Siirry takaisin"
 
-#: kcachegrind/toplevel.cpp:1607
+#: kcachegrind/toplevel.cpp:1621
 #, kde-format
 msgid "Go Forward"
 msgstr "Siirry eteenpäin"
 
-#: kcachegrind/toplevel.cpp:1608
+#: kcachegrind/toplevel.cpp:1622
 #, kde-format
 msgid "Go Up"
 msgstr "Siirry ylös"
 
-#: kcachegrind/toplevel.cpp:1820
+#: kcachegrind/toplevel.cpp:1834
 #, kde-format
 msgid "Layout Count: %1"
 msgstr "Asettelujen määrä: %1"
 
-#: kcachegrind/toplevel.cpp:1827
+#: kcachegrind/toplevel.cpp:1841
 #, kde-format
 msgid "No profile data file loaded."
 msgstr "Profilointitietojen tiedostoa ei ole ladattu."
 
-#: kcachegrind/toplevel.cpp:1836
+#: kcachegrind/toplevel.cpp:1850
 #, kde-format
 msgid "Total %1 Cost: %2"
 msgstr "Yhteensä %1 Hinta: %2"
 
-#: kcachegrind/toplevel.cpp:1848
+#: kcachegrind/toplevel.cpp:1862
 #, kde-format
 msgid "No event type selected"
 msgstr "Tapahtuman tyyppiä ei ole valittu"
 
-#: kcachegrind/toplevel.cpp:2038
+#: kcachegrind/toplevel.cpp:2052
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:2084
+#: kcachegrind/toplevel.cpp:2098
 #, kde-format
 msgid "Error running callgrind_control"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:2123 kcachegrind/toplevel.cpp:2160
-#: kcachegrind/toplevel.cpp:2197
+#: kcachegrind/toplevel.cpp:2137 kcachegrind/toplevel.cpp:2174
+#: kcachegrind/toplevel.cpp:2211
 #, kde-format
 msgid "(No Stack)"
 msgstr "(Ei pinoa)"
 
-#: kcachegrind/toplevel.cpp:2129
+#: kcachegrind/toplevel.cpp:2143
 #, kde-format
 msgid "(No next function)"
 msgstr "(Ei seuraavaa funktiota)"
 
-#: kcachegrind/toplevel.cpp:2166
+#: kcachegrind/toplevel.cpp:2180
 #, kde-format
 msgid "(No previous function)"
 msgstr "(Ei edellistä funktiota)"
 
-#: kcachegrind/toplevel.cpp:2202
+#: kcachegrind/toplevel.cpp:2216
 #, kde-format
 msgid "(No Function Up)"
 msgstr "(Ei ylemmän tason funktiota)"
 
-#: kcachegrind/toplevel.cpp:2334 kcachegrind/toplevel.cpp:2348
+#: kcachegrind/toplevel.cpp:2348 kcachegrind/toplevel.cpp:2362
 #, kde-format
 msgid "Loading %1"
 msgstr "Lataa %1"
 
-#: kcachegrind/toplevel.cpp:2342
+#: kcachegrind/toplevel.cpp:2356
 #, kde-format
 msgid "Error loading %1: %2"
 msgstr "Virhe ladattaessa tiedostoa %1: %2"
