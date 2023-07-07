@@ -36,8 +36,8 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
 
     connect(objectCombo, SIGNAL(activated(QString)),
             this, SLOT(objectActivated(QString)));
-    connect(objectCombo, SIGNAL(editTextChanged(QString)),
-            this, SLOT(objectActivated(QString)));
+    connect(objectCombo, &QComboBox::editTextChanged,
+            this, &ConfigDlg::objectActivated);
     connect(objectCheck, &QAbstractButton::toggled,
             this, &ConfigDlg::objectCheckChanged);
     connect(objectColor, &KColorButton::changed,
@@ -45,8 +45,8 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
 
     connect(classCombo, SIGNAL(activated(QString)),
             this, SLOT(classActivated(QString)));
-    connect(classCombo, SIGNAL(editTextChanged(QString)),
-            this, SLOT(classActivated(QString)));
+    connect(classCombo, &QComboBox::editTextChanged,
+            this, &ConfigDlg::classActivated);
     connect(classCheck, &QAbstractButton::toggled,
             this, &ConfigDlg::classCheckChanged);
     connect(classColor, &KColorButton::changed,
@@ -54,8 +54,8 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
 
     connect(fileCombo, SIGNAL(activated(QString)),
             this, SLOT(fileActivated(QString)));
-    connect(fileCombo, SIGNAL(editTextChanged(QString)),
-            this, SLOT(fileActivated(QString)));
+    connect(fileCombo, &QComboBox::editTextChanged,
+            this, &ConfigDlg::fileActivated);
     connect(fileCheck, &QAbstractButton::toggled,
             this, &ConfigDlg::fileCheckChanged);
     connect(fileColor, &KColorButton::changed,
