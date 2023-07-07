@@ -34,8 +34,10 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
     _classCS = nullptr;
     _fileCS = nullptr;
 
-    connect(objectCombo, SIGNAL(activated(QString)),
-            this, SLOT(objectActivated(QString)));
+    connect(objectCombo, QOverload<int>::of(&QComboBox::activated),
+            this, [this](int index) {
+        objectActivated(objectCombo->itemText(index));
+    });
     connect(objectCombo, &QComboBox::editTextChanged,
             this, &ConfigDlg::objectActivated);
     connect(objectCheck, &QAbstractButton::toggled,
@@ -43,8 +45,10 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
     connect(objectColor, &KColorButton::changed,
             this, &ConfigDlg::objectColorChanged);
 
-    connect(classCombo, SIGNAL(activated(QString)),
-            this, SLOT(classActivated(QString)));
+    connect(classCombo, QOverload<int>::of(&QComboBox::activated),
+            this, [this](int index) {
+        classActivated(classCombo->itemText(index));
+    });
     connect(classCombo, &QComboBox::editTextChanged,
             this, &ConfigDlg::classActivated);
     connect(classCheck, &QAbstractButton::toggled,
@@ -52,8 +56,10 @@ ConfigDlg::ConfigDlg(GlobalGUIConfig* c, TraceData* data,
     connect(classColor, &KColorButton::changed,
             this, &ConfigDlg::classColorChanged);
 
-    connect(fileCombo, SIGNAL(activated(QString)),
-            this, SLOT(fileActivated(QString)));
+    connect(fileCombo, QOverload<int>::of(&QComboBox::activated),
+            this, [this](int index) {
+        fileActivated(fileCombo->itemText(index));
+    });
     connect(fileCombo, &QComboBox::editTextChanged,
             this, &ConfigDlg::fileActivated);
     connect(fileCheck, &QAbstractButton::toggled,
