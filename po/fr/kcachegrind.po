@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-06 01:03+0000\n"
+"POT-Creation-Date: 2023-07-08 01:18+0000\n"
 "PO-Revision-Date: 2023-02-17 17:36+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -44,13 +44,13 @@ msgstr ""
 "drazzib@drazzib.com, yann.verley@free.fr, nicolas.ternisien@gmail.com, "
 "sdepiets@gmail.com"
 
-#: kcachegrind/configdlg.cpp:135 kcachegrind/configdlg.cpp:323
-#: kcachegrind/configdlg.cpp:342
+#: kcachegrind/configdlg.cpp:141 kcachegrind/configdlg.cpp:329
+#: kcachegrind/configdlg.cpp:348
 #, kde-format
 msgid "(always)"
 msgstr "(toujours)"
 
-#: kcachegrind/configdlg.cpp:349
+#: kcachegrind/configdlg.cpp:355
 #, kde-format
 msgid "Choose Source Folder"
 msgstr "Sélectionnez un dossier de sources"

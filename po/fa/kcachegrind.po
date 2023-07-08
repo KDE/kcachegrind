@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-06 01:03+0000\n"
+"POT-Creation-Date: 2023-07-08 01:18+0000\n"
 "PO-Revision-Date: 2012-01-16 23:10+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@ubuntu.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -30,13 +30,13 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "mohi@ubuntu.ir , kazemi@itland.ir"
 
-#: kcachegrind/configdlg.cpp:135 kcachegrind/configdlg.cpp:323
-#: kcachegrind/configdlg.cpp:342
+#: kcachegrind/configdlg.cpp:141 kcachegrind/configdlg.cpp:329
+#: kcachegrind/configdlg.cpp:348
 #, kde-format
 msgid "(always)"
 msgstr ")همیشه("
 
-#: kcachegrind/configdlg.cpp:349
+#: kcachegrind/configdlg.cpp:355
 #, kde-format
 msgid "Choose Source Folder"
 msgstr "انتخاب پوشه متن"

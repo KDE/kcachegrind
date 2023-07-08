@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-06 01:03+0000\n"
+"POT-Creation-Date: 2023-07-08 01:18+0000\n"
 "PO-Revision-Date: 2021-08-21 16:25+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -29,13 +29,13 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "raviratlami@aol.in"
 
-#: kcachegrind/configdlg.cpp:135 kcachegrind/configdlg.cpp:323
-#: kcachegrind/configdlg.cpp:342
+#: kcachegrind/configdlg.cpp:141 kcachegrind/configdlg.cpp:329
+#: kcachegrind/configdlg.cpp:348
 #, kde-format
 msgid "(always)"
 msgstr "(हमेशा)"
 
-#: kcachegrind/configdlg.cpp:349
+#: kcachegrind/configdlg.cpp:355
 #, kde-format
 msgid "Choose Source Folder"
 msgstr "स्रोत फ़ोल्डर चुनें"

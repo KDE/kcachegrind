@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-06 01:03+0000\n"
+"POT-Creation-Date: 2023-07-08 01:18+0000\n"
 "PO-Revision-Date: 2017-02-06 10:59+0200\n"
 "Last-Translator: Petros Vidalis <pvidalis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -30,13 +30,13 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sng@hellug.gr,manolis@koppermind.homelinux.org, pvidalis@gmail.com"
 
-#: kcachegrind/configdlg.cpp:135 kcachegrind/configdlg.cpp:323
-#: kcachegrind/configdlg.cpp:342
+#: kcachegrind/configdlg.cpp:141 kcachegrind/configdlg.cpp:329
+#: kcachegrind/configdlg.cpp:348
 #, kde-format
 msgid "(always)"
 msgstr "(πάντα)"
 
-#: kcachegrind/configdlg.cpp:349
+#: kcachegrind/configdlg.cpp:355
 #, kde-format
 msgid "Choose Source Folder"
 msgstr "Επιλογή φακέλου πηγαίου κώδικα"

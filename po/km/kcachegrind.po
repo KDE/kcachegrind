@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-06 01:03+0000\n"
+"POT-Creation-Date: 2023-07-08 01:18+0000\n"
 "PO-Revision-Date: 2010-12-03 03:03+0700\n"
 "Last-Translator:  Seng Sutha <Sutha@khmeros.info>\n"
 "Language-Team: Khmer [km] <Support@khmeros.info>\n"
@@ -30,13 +30,13 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "khoemsokhem@khmeros.info,​​mornmet@khmeros.info,sutha@khmeros.info"
 
-#: kcachegrind/configdlg.cpp:135 kcachegrind/configdlg.cpp:323
-#: kcachegrind/configdlg.cpp:342
+#: kcachegrind/configdlg.cpp:141 kcachegrind/configdlg.cpp:329
+#: kcachegrind/configdlg.cpp:348
 #, kde-format
 msgid "(always)"
 msgstr ""
 
-#: kcachegrind/configdlg.cpp:349
+#: kcachegrind/configdlg.cpp:355
 #, kde-format
 msgid "Choose Source Folder"
 msgstr ""
