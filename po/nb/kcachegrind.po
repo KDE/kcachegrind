@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-10 00:48+0000\n"
+"POT-Creation-Date: 2023-07-08 01:18+0000\n"
 "PO-Revision-Date: 2012-01-03 21:56+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -32,13 +32,13 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "bjornst@skogkatt.homelinux.org"
 
-#: kcachegrind/configdlg.cpp:135 kcachegrind/configdlg.cpp:323
-#: kcachegrind/configdlg.cpp:342
+#: kcachegrind/configdlg.cpp:141 kcachegrind/configdlg.cpp:329
+#: kcachegrind/configdlg.cpp:348
 #, kde-format
 msgid "(always)"
 msgstr "(alltid)"
 
-#: kcachegrind/configdlg.cpp:349
+#: kcachegrind/configdlg.cpp:355
 #, kde-format
 msgid "Choose Source Folder"
 msgstr "Velg kildemappe"
@@ -1014,7 +1014,7 @@ msgstr "Gå bakover i funksjonsutvalg-loggen"
 msgid "Go forward in function selection history"
 msgstr "Gå framover i funksjonsutvalg-loggen"
 
-#: kcachegrind/toplevel.cpp:642 kcachegrind/toplevel.cpp:1519
+#: kcachegrind/toplevel.cpp:642 kcachegrind/toplevel.cpp:1533
 #, kde-format
 msgid "Primary Event Type"
 msgstr "Primær hendelsestype"
@@ -1024,62 +1024,62 @@ msgstr "Primær hendelsestype"
 msgid "Select primary event type of costs"
 msgstr "Velg primær hendelsestype for kostnader"
 
-#: kcachegrind/toplevel.cpp:665 kcachegrind/toplevel.cpp:1524
+#: kcachegrind/toplevel.cpp:670 kcachegrind/toplevel.cpp:1538
 #, kde-format
 msgid "Secondary Event Type"
 msgstr "Sekundær hendelsestype"
 
-#: kcachegrind/toplevel.cpp:666
+#: kcachegrind/toplevel.cpp:671
 #, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
 msgstr "Vis sekundær hendelsestype for kostnad, f.eks. vist i merknader"
 
-#: kcachegrind/toplevel.cpp:676
+#: kcachegrind/toplevel.cpp:685
 #, kde-format
 msgid "Grouping"
 msgstr "Gruppering"
 
-#: kcachegrind/toplevel.cpp:678
+#: kcachegrind/toplevel.cpp:687
 #, kde-format
 msgid "Select how functions are grouped into higher level cost items"
 msgstr "Velg hvordan funksjoner grupperes i kostnadselementer på høyere nivå"
 
-#: kcachegrind/toplevel.cpp:684
+#: kcachegrind/toplevel.cpp:693
 #, kde-format
 msgid "(No Grouping)"
 msgstr "(Ingen gruppering)"
 
-#: kcachegrind/toplevel.cpp:696
+#: kcachegrind/toplevel.cpp:710
 #, kde-format
 msgid "Split"
 msgstr "Del"
 
-#: kcachegrind/toplevel.cpp:699
+#: kcachegrind/toplevel.cpp:713
 #, kde-format
 msgid "Show two information panels"
 msgstr "Vis to informasjonsruter"
 
-#: kcachegrind/toplevel.cpp:705
+#: kcachegrind/toplevel.cpp:719
 #, kde-format
 msgid "Split Horizontal"
 msgstr "Del vannrett"
 
-#: kcachegrind/toplevel.cpp:708
+#: kcachegrind/toplevel.cpp:722
 #, kde-format
 msgid "Change Split Orientation when main window is split."
 msgstr "Endre delorienteringen når hovedvinduet deles."
 
-#: kcachegrind/toplevel.cpp:905
+#: kcachegrind/toplevel.cpp:919
 #, kde-format
 msgid "Select Callgrind Profile Data"
 msgstr "Velg Callgrind-profildata"
 
-#: kcachegrind/toplevel.cpp:907 kcachegrind/toplevel.cpp:975
+#: kcachegrind/toplevel.cpp:921 kcachegrind/toplevel.cpp:989
 #, kde-format
 msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:935 kcachegrind/toplevel.cpp:964
+#: kcachegrind/toplevel.cpp:949 kcachegrind/toplevel.cpp:978
 #, kde-format
 msgid ""
 "Could not open the file \"%1\". Check it exists and you have enough "
@@ -1088,103 +1088,103 @@ msgstr ""
 "Klarte ikke å åpne fila «%1». Kontroller at den finnes og at du har "
 "lesetilgang til den."
 
-#: kcachegrind/toplevel.cpp:973
+#: kcachegrind/toplevel.cpp:987
 #, kde-format
 msgid "Add Callgrind Profile Data"
 msgstr "Legg til Callgrind-profildata"
 
-#: kcachegrind/toplevel.cpp:1143 kcachegrind/toplevel.cpp:1472
+#: kcachegrind/toplevel.cpp:1157 kcachegrind/toplevel.cpp:1486
 #, kde-format
 msgid "(Hidden)"
 msgstr "(Skjult)"
 
-#: kcachegrind/toplevel.cpp:1529
+#: kcachegrind/toplevel.cpp:1543
 #, kde-format
 msgid "Hide"
 msgstr "Skjul"
 
-#: kcachegrind/toplevel.cpp:1571
+#: kcachegrind/toplevel.cpp:1585
 #, kde-format
 msgid "Show Absolute Cost"
 msgstr "Vis absolutte kostnader"
 
-#: kcachegrind/toplevel.cpp:1574
+#: kcachegrind/toplevel.cpp:1588
 #, kde-format
 msgid "Show Relative Cost"
 msgstr "Vis relative kostnader"
 
-#: kcachegrind/toplevel.cpp:1606
+#: kcachegrind/toplevel.cpp:1620
 #, kde-format
 msgid "Go Back"
 msgstr "Gå tilbake"
 
-#: kcachegrind/toplevel.cpp:1607
+#: kcachegrind/toplevel.cpp:1621
 #, kde-format
 msgid "Go Forward"
 msgstr "Gå fram"
 
-#: kcachegrind/toplevel.cpp:1608
+#: kcachegrind/toplevel.cpp:1622
 #, kde-format
 msgid "Go Up"
 msgstr "Gå opp"
 
-#: kcachegrind/toplevel.cpp:1820
+#: kcachegrind/toplevel.cpp:1834
 #, kde-format
 msgid "Layout Count: %1"
 msgstr "Tegneplanantall: %1"
 
-#: kcachegrind/toplevel.cpp:1827
+#: kcachegrind/toplevel.cpp:1841
 #, kde-format
 msgid "No profile data file loaded."
 msgstr "Ingen profildata lastet."
 
-#: kcachegrind/toplevel.cpp:1836
+#: kcachegrind/toplevel.cpp:1850
 #, kde-format
 msgid "Total %1 Cost: %2"
 msgstr "I alt %1 – kostnad: %2"
 
-#: kcachegrind/toplevel.cpp:1848
+#: kcachegrind/toplevel.cpp:1862
 #, kde-format
 msgid "No event type selected"
 msgstr "Ingen hendelestype valgt"
 
-#: kcachegrind/toplevel.cpp:2038
+#: kcachegrind/toplevel.cpp:2052
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
 msgstr "Kan ikke bestemme mottaker-PID for dump-forespørsel"
 
-#: kcachegrind/toplevel.cpp:2084
+#: kcachegrind/toplevel.cpp:2098
 #, kde-format
 msgid "Error running callgrind_control"
 msgstr "Feil mens callgrind_control kjører"
 
-#: kcachegrind/toplevel.cpp:2123 kcachegrind/toplevel.cpp:2160
-#: kcachegrind/toplevel.cpp:2197
+#: kcachegrind/toplevel.cpp:2137 kcachegrind/toplevel.cpp:2174
+#: kcachegrind/toplevel.cpp:2211
 #, kde-format
 msgid "(No Stack)"
 msgstr "(Ingen stabel)"
 
-#: kcachegrind/toplevel.cpp:2129
+#: kcachegrind/toplevel.cpp:2143
 #, kde-format
 msgid "(No next function)"
 msgstr "(Ingen neste funksjon)"
 
-#: kcachegrind/toplevel.cpp:2166
+#: kcachegrind/toplevel.cpp:2180
 #, kde-format
 msgid "(No previous function)"
 msgstr "(Ingen forrige funksjon)"
 
-#: kcachegrind/toplevel.cpp:2202
+#: kcachegrind/toplevel.cpp:2216
 #, kde-format
 msgid "(No Function Up)"
 msgstr "(Ingen funksjon opp)"
 
-#: kcachegrind/toplevel.cpp:2334 kcachegrind/toplevel.cpp:2348
+#: kcachegrind/toplevel.cpp:2348 kcachegrind/toplevel.cpp:2362
 #, kde-format
 msgid "Loading %1"
 msgstr "Laster inn %1"
 
-#: kcachegrind/toplevel.cpp:2342
+#: kcachegrind/toplevel.cpp:2356
 #, kde-format
 msgid "Error loading %1: %2"
 msgstr "Feil under lasting av %1: %2"
