@@ -897,5 +897,4 @@ void FunctionSelection::functionHeaderClicked(int col)
     setCostColumnWidths();
 }
 
-
-
+#include "moc_functionselection.cpp"

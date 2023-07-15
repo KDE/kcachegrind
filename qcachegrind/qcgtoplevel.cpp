@@ -2179,3 +2179,4 @@ void QCGTopLevel::loadWarning(int line, const QString& msg)
                << ":" << line << ": " << msg;
 }
 
+#include "moc_qcgtoplevel.cpp"

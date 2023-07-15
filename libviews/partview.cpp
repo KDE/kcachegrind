@@ -246,3 +246,4 @@ void PartView::refresh()
     _inSelectionUpdate = false;
 }
 
+#include "moc_partview.cpp"

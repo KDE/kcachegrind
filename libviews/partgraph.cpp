@@ -513,4 +513,4 @@ QColor SubPartItem::backColor() const
     return GlobalGUIConfig::groupColor(_partCostItem->dependent());
 }
 
-
+#include "moc_partgraph.cpp"

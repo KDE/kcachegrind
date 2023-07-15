@@ -2862,4 +2862,4 @@ void TreeMapWidget::addSplitDirectionItems(QMenu* m)
     addSplitAction(m, tr("Vertical"), TreeMapItem::Vertical);
 }
 
-
+#include "moc_treemap.cpp"

@@ -155,3 +155,4 @@ void ConfigDialog::accept()
     QDialog::accept();
 }
 
+#include "moc_configdialog.cpp"

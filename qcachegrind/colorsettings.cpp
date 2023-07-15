@@ -170,3 +170,4 @@ void ColorSettings::accept()
     }
 }
 
+#include "moc_colorsettings.cpp"

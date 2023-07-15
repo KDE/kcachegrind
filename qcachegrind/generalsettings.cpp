@@ -89,3 +89,5 @@ void GeneralSettings::accept()
     c->setPercentPrecision(ui.precisionEdit->text().toInt());
     c->setContext(ui.contextEdit->text().toInt());
 }
+
+#include "moc_generalsettings.cpp"

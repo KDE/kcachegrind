@@ -317,3 +317,5 @@ void CallView::setCostColumnWidths()
         resizeColumnToContents(4);
     }
 }
+
+#include "moc_callview.cpp"

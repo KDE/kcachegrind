@@ -477,3 +477,4 @@ void InstrItemDelegate::paintArrows(QPainter *p,
     p->restore();
 }
 
+#include "moc_instritem.cpp"

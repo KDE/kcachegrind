@@ -255,3 +255,4 @@ void StackSelection::setGroupType(ProfileContext::Type gt)
     }
 }
 
+#include "moc_stackselection.cpp"

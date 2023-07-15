@@ -463,3 +463,4 @@ void TraceItemView::addGoMenu(QMenu* p)
     if (_topLevel) _topLevel->addGoMenu(p);
 }
 
+#include "moc_traceitemview.cpp"

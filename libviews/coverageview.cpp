@@ -361,3 +361,4 @@ void CoverageView::refresh()
     }
 }
 
+#include "moc_coverageview.cpp"

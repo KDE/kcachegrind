@@ -941,3 +941,4 @@ void SourceView::headerClicked(int col)
     }
 }
 
+#include "moc_sourceview.cpp"

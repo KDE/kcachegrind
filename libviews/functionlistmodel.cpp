@@ -485,4 +485,4 @@ bool FunctionListModel::FunctionLessThan::operator()(TraceFunction *left,
     return false;
 }
 
-
+#include "moc_functionlistmodel.cpp"

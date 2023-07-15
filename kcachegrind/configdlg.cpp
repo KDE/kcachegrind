@@ -367,3 +367,4 @@ void ConfigDlg::dirsAddPressed()
     item->setText(0, newDir);
 }
 
+#include "moc_configdlg.cpp"

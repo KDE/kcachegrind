@@ -34,5 +34,4 @@ DumpSelection::DumpSelection( TopLevel* top,
 DumpSelection::~DumpSelection()
 {}
 
-
-
+#include "moc_dumpselection.cpp"

@@ -2404,4 +2404,4 @@ bool TopLevel::openDataFile(const QString& file)
     }
 }
 
-
+#include "moc_toplevel.cpp"

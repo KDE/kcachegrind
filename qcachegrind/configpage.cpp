@@ -47,3 +47,5 @@ QString ConfigPage::inRangeError(int from, int to)
 {
     return tr("Value must be between %1 and %2.").arg(from).arg(to);
 }
+
+#include "moc_configpage.cpp"

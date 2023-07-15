@@ -477,3 +477,5 @@ void SourceItemDelegate::paintArrows(QPainter *p,
     }
     p->restore();
 }
+
+#include "moc_sourceitem.cpp"

@@ -332,3 +332,4 @@ void EventTypeView::itemChanged(QTreeWidgetItem* item, int c)
     refresh();
 }
 
+#include "moc_eventtypeview.cpp"

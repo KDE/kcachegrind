@@ -212,3 +212,4 @@ void SourceSettings::accept()
     }
 }
 
+#include "moc_sourcesettings.cpp"
