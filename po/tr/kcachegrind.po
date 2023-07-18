@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kdesdk-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-08 01:18+0000\n"
-"PO-Revision-Date: 2023-06-04 02:02+0300\n"
+"PO-Revision-Date: 2023-07-17 15:28+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -40,7 +40,7 @@ msgstr "(her zaman)"
 #: kcachegrind/configdlg.cpp:355
 #, kde-format
 msgid "Choose Source Folder"
-msgstr "Kaynak Dizini Seç"
+msgstr "Kaynak Klasör Seç"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ConfigDlgBase)
 #: kcachegrind/configdlgbase.ui:14
@@ -139,7 +139,7 @@ msgstr "Açıklamaların içindeki içerik satırları:"
 #: kcachegrind/configdlgbase.ui:350
 #, kde-format
 msgid "Source Folders"
-msgstr "Kaynak Dizinleri"
+msgstr "Kaynak Klasörleri"
 
 #. i18n: ectx: property (text), widget (QPushButton, addDirButton)
 #: kcachegrind/configdlgbase.ui:364
@@ -684,22 +684,22 @@ msgid ""
 msgstr ""
 "<b>Profil Dökümü</b><p>Bu rıhtımlanabilir yüklenebilecek tüm profil "
 "dökümlerinin gösterileceği listenin tüm alt dizinler olarak :<ul><li>mevcut "
-"KCachegrind çalışma dizini, örn. nereden başladıysa ve</li><li>Ayarlarda "
+"KCachegrind çalışma dizini; örn. nereden başladıysa ve</li><li>Ayarlarda "
 "verilen öntanımlı profil döküm dizini</li></ul>Bu liste uygun dökümün içinde "
 "profillenmiş komutlara göre sıralanmıştır.</p><p>Bir profil dökümünün "
 "seçilmesi, alttaki rıhtımlanabilir alanda gösterilmesi için bilgi:"
 "<ul><li><b>Seçenekler</b> profillenmiş komutları ve bu döküm için profil "
 "seçeneklerini görmenize izin verir.Herhangi bir ögenin değişimi ile yeni "
-"(hala oluşturulmamış) profil şeması oluşturur. <b>Profili Çalıştıra</b> "
+"(hala oluşturulmamış) profil şeması oluşturur. <b>Profili Çalıştır</b>'a "
 "basarak bu seçeneklerde bir profilin arka planda çalışmasını başlatırsınız.</"
 "li><li><b>Bilgi</b> size seçilmiş döküm ile ilgili olay maliyet özeti ve "
 "simülasyon önbellek özellikleri gibi detaylar verir.</li><li><b>Durum</b> "
 "ise yalnızca mevcut gerçekleşen profillerin çalışması için kullanılabilir. "
 "<b>Güncelle</b>'ye basarak çalışan sayaçların farklarını ve profillenen "
 "programın içinde mevcut durumun yığın izini görebilirsiniz. <b>Her</b> "
-"seçeneğini seçerek KCachegrind'e bu verileri düzenli olarak almasına izin "
+"seçeneğini seçerek KCachegrind'e bu veriyi düzenli olarak almasına izin "
 "verirsiniz. <b>Eşle</b> seçeneği ile mevcut yüklenmiş dökümün içindeki "
-"rıhtımlanabilir üst işlevlerini aktifleştirebilirsiniz.</li></ul></p>"
+"rıhtımlanabilir üst işlevlerini etkinleştirebilirsiniz.</li></ul></p>"
 
 #: kcachegrind/toplevel.cpp:374
 #, kde-format
@@ -711,7 +711,8 @@ msgstr "Çoğal&t"
 msgid ""
 "<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
 msgstr ""
-"<b>Mevcut Düzeni Çoğalt</b><p>Mevcut düzenin bir kopyasını oluşturur.</p>"
+"<b>Geçerli Yerleşimi Çoğalt</b><p>Geçerli yerleşimin bir kopyasını oluşturur."
+"</p>"
 
 #: kcachegrind/toplevel.cpp:382
 #, kde-format
@@ -836,19 +837,19 @@ msgid ""
 "profiled GUI program, you can awake Callgrind e.g. by resizing a window of "
 "the program.</p>"
 msgstr ""
-"<b>Dökümü Zorla</b><p>Dökümü zorla Callgrind profilinin mevcut dizinde "
-"çalışması içindir. Bu eylem Cachegrind'in dökümü aramasını yaparken kontrol "
-"edilir. Eğer döküm bitmişse, otomatik olarak mevcut izi yeniden yükler. Eğer "
-"bu Callgrind çalışıyorsa, yeni oluşturulmuş iz kısmı da yüklenecektir.</"
+"<b>Dökümü Zorla</b><p>Dökümü zorla Callgrind profilinin geçerli dizinde "
+"çalışması içindir. Bu eylem Cachegrind'in dökümü aramasını yaparken "
+"denetlenir. Eğer döküm bitmişse otomatik olarak geçerli izi yeniden yükler. "
+"Eğer bu Callgrind çalışıyorsa yeni oluşturulmuş iz kısmı da yüklenecektir.</"
 "p><p>Dökümü zorlamak yeni bir 'callgrind.cmd' dosyası oluşturur ve her "
-"saniye varlığını kontrol eder. Çalışan Callgrind bu dosyayı bulacak, kısım "
-"izini dökecek ve 'callgrind.cmd' silecek. Silme işlemi KCachegrind "
-"tarafından fark edilir ve yeniden yükler. Eğer <em>hiç bir</em> Callgrind "
-"çalışmıyorsa, 'Dökümü Zorla' tekrar basarak döküm isteğini iptal ediniz. Bu "
-"'callgrind.cmd' silecek ve yeni bir döküm isteğini durduracaktır.</p><p>Not: "
-"Çalışan bir Callgrind <em>yalnızca</em> varolan 'callgrind.cmd' bulacak ve "
-"aktif olarak birkaç milisaniye çalışacaktır, yani <em>uyumaz</em>. İpucu: "
-"Profillenen bir arayüz uygulaması için Callgrind'i uyandırabilirsiniz örn. "
+"saniye varlığını denetler. Çalışan Callgrind bu dosyayı bulacak, kısım izini "
+"dökecek ve 'callgrind.cmd' silecektir. Silme işlemi KCachegrind tarafından "
+"fark edilir ve yeniden yükler. Eğer <em>hiçbir</em> Callgrind çalışmıyorsa "
+"'Dökümü Zorla'ya yeniden basarak döküm isteğini iptal edin. Bu 'callgrind."
+"cmd'yi silecek ve yeni bir döküm isteğini durduracaktır.</p><p>Not: Çalışan "
+"bir Callgrind <em>yalnızca</em> var olan 'callgrind.cmd'yi bulacak ve etkin "
+"olarak birkaç milisaniye çalışacaktır, yani <em>uyumayacaktır</em>. İpucu: "
+"Profillenen bir arayüz uygulaması için Callgrind'i uyandırabilirsiniz; örn. "
 "uygulamanın penceresini yeniden boyutlandırarak.</p>"
 
 #: kcachegrind/toplevel.cpp:481
@@ -898,7 +899,7 @@ msgstr "Değişken"
 #: kcachegrind/toplevel.cpp:529
 #, kde-format
 msgid "Show relative instead of absolute costs"
-msgstr "Mutlak mutlak yerine göreceli maliyetleri göster"
+msgstr "Mutlak değil de göreceli maliyetleri göster"
 
 #: kcachegrind/toplevel.cpp:535
 #, kde-format
@@ -953,15 +954,15 @@ msgid ""
 "often will lead to huge false cycles, making the analysis impossible; "
 "therefore, there is the option to switch this off.</p>"
 msgstr ""
-"<b>Tekrarlı Döngüleri Bul</b><p>Eğer bu seçenek kapalı ise, Ağaç haritası "
+"<b>Özyineli Döngüleri Bul</b><p>Eğer bu seçenek kapalıysa Ağaç haritası "
 "çiziminde döngüsel çağrıları sonsuz biçiminde çizmek yerine siyah alan "
-"olarak gösterecektir. Döngüsel çağırımların maliyeti belirlenemediği için "
+"olarak gösterecektir. Döngüsel çağırmaların maliyeti belirlenemediği için "
 "siyah alanların boyutu yanlış olabilir; yine de hatalı döngüler için hata "
-"küçük olabilir (dökümana bakınız).</p><p> Bu seçenek seçildiğinde döngüleri "
-"düzgün işlemek için onları bulur ve tüm döngüsel işlevleri bir yapay bir "
-"işlev altında toplar. Ne yazık ki arayüz uygulamalarında kocaman yanlış "
-"döngülere yönlendirir ve bu analizinin yapılmasını olanaksız kılar; bu "
-"nedenle bunu kapatma seçeneği vardır.</p>"
+"küçük olabilir (belgelendirmeye bakın).</p><p> Bu seçenek seçildiğinde "
+"döngüleri düzgün işlemek için onları bulur ve tüm döngüsel işlevleri bir "
+"yapay bir işlev altında toplar. Ne yazık ki arayüz uygulamalarında kocaman "
+"yanlış döngülere yönlendirir ve bu analizinin yapılmasını olanaksız kılar; "
+"bu nedenle bunu kapatma seçeneği vardır.</p>"
 
 #: kcachegrind/toplevel.cpp:578
 #, kde-format
@@ -982,12 +983,11 @@ msgid ""
 "p><p>In this mode, you can hover the mouse pointer over the activated symbol "
 "label to show a tooltip with the unabbreviated symbol.</p>"
 msgstr ""
-"<b>C++ Sembellerindeki Şablon Parametrelerini Sakla</b><p>Eğer bu seçenek "
-"açık ise, C++ şablon parametreleri gizli ise gösterilecek her sembol, "
-"potansiyel olarak içiçe geçmiş şablon parametreler yerine yalnızca &lt;&gt; "
-"şeklinde gösterilecektir.</p><p>Bu modda fare imlecini aktifleştirilmiş "
-"etiketin üzerine getirerek balon içerisinde kısaltılmamış sembolü "
-"görebilirsiniz.</p>"
+"<b>C++ Sembollerindeki Şablon Parametrelerini Sakla</b><p>Eğer bu seçenek "
+"açıksa C++ şablon parametreleri gizliyse gösterilecek her sembol, potansiyel "
+"olarak iç içe geçmiş şablon parametreleri yerine yalnızca &lt;&gt; olarak "
+"gösterilecektir.</p><p>Bu kipte fare imlecini etkinleştirilmiş etiketin "
+"üzerine getirerek araç ipucunda kısaltılmamış sembolü görebilirsiniz.</p>"
 
 #: kcachegrind/toplevel.cpp:597
 #, kde-format
@@ -1119,12 +1119,12 @@ msgstr "Göreceli Maliyeti Göster"
 #: kcachegrind/toplevel.cpp:1620
 #, kde-format
 msgid "Go Back"
-msgstr "Geriye Git"
+msgstr "Geri Git"
 
 #: kcachegrind/toplevel.cpp:1621
 #, kde-format
 msgid "Go Forward"
-msgstr "İleriye Git"
+msgstr "İleri Git"
 
 #: kcachegrind/toplevel.cpp:1622
 #, kde-format
@@ -1306,12 +1306,12 @@ msgid ""
 "<em>Source Directories</em> list in the configuration.\n"
 msgstr ""
 "<p>...hata ayıklama bilgisi kullanılabilirse Bilgi sekmesindeki\n"
-"konum etiketine ya da kaynak sekmesindeki kaynak listeleme\n"
-"başlığına bakılarak görebilirsiniz.</p>\n"
-"<p>Kaynak dosyanın mutlaka adı olması gerekiyor (uzantısı ile birlikte).\n"
-"Kcachegrind hala kaynağı göstermiyor ise kaynak dosyanın dizinini\n"
+"konum etiketine veya kaynak sekmesindeki kaynak listeleme\n"
+"başlığına bakarak görebilirsiniz.</p>\n"
+"<p>Kaynak dosyanın mutlaka adı olması gerekir (uzantısı ile birlikte).\n"
+"Kcachegrind hâlâ kaynağı göstermiyorsa kaynak dosyanın dizinini\n"
 "yapılandırma içerisindeki <em>Kaynak Dizinleri</em> listesine\n"
-"eklemiş olduğunuzdan emin olunuz.\n"
+"eklediğinizden emin olun.\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:76
