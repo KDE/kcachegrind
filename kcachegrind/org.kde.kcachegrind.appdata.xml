@@ -141,7 +141,7 @@
       <li xml:lang="gl">Varios tipos de visualizacións dos datos de rendemento dunha aplicación, como un gráfico de chamadas ou anotacións no código fonte ou no código máquina.</li>
       <li xml:lang="id">KCachegrind memvisualkan profil (mis. karakteristik runtime) pada aplikasi dalam beberapa cara, termasuk visualisasi grafik panggilan dan anotasi sumber/disassembler.</li>
       <li xml:lang="it">KCachegrind visualizza profili (cioè caratteristiche a tempo di esecuzione) delle applicazioni in vari modi, tra cui la visualizzazione del grafico delle chiamata e le annotazioni sul sorgente/dal disassemblatore.</li>
-      <li xml:lang="ko">KCachegrind는 호출 그래프 시각화, 소스 코드/어셈블리 코드 표시 등 프로그램 프로필을 다양하게 시각화합니다.</li>
+      <li xml:lang="ko">KCachegrind는 호출 그래프 시각화, 소스 코드/어셈블리 코드 표시 등 앱 프로필을 다양하게 시각화합니다.</li>
       <li xml:lang="nl">KCachegrind visualiseert profielen (d.w.z. karakteristieken tijdens uitvoeren) van toepassingen op verschillende manieren, inclusief visualisaties van aanroepgrafieken en bron/disassembler annotaties.</li>
       <li xml:lang="pl">KCachegrind obrazuje profile (tj. charakterystyki uruchomieniowe) aplikacji na różne sposoby, także poprzez obrazowanie grafów wywołań i przypisów do kodu/disassemblera.</li>
       <li xml:lang="pt">O KCachegrind visualiza os dados de performance (características em execução) das aplicações de diversas formas, incluindo visualizações dos grafos de chamadas e a anotação da descodificação para código/Assembly.</li>
