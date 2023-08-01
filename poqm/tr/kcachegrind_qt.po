@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kdesdk-kde4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2023-06-08 12:07+0300\n"
+"PO-Revision-Date: 2023-08-01 00:43+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Lokalize 23.07.70\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
@@ -928,7 +928,7 @@ msgstr "3. Kenar"
 #: libviews/callmapview.cpp:346
 msgctxt "CallMapView|"
 msgid "Draw Symbol Names"
-msgstr "Sembol İsimlerini Çiz"
+msgstr "Sembol Adlarını Çiz"
 
 #: libviews/callmapview.cpp:348
 msgctxt "CallMapView|"
@@ -1603,7 +1603,7 @@ msgstr "Bölümlere Genel Bakış"
 #: libviews/partselection.cpp:61
 msgctxt "PartSelection|A thing's name"
 msgid "Name"
-msgstr "İsim"
+msgstr "Ad"
 
 #: libviews/partselection.cpp:62
 msgctxt "PartSelection|"
@@ -1725,7 +1725,7 @@ msgstr "Diyagram Kipi"
 #: libviews/partselection.cpp:392
 msgctxt "PartSelection|"
 msgid "Draw Names"
-msgstr "İsimleri Çiz"
+msgstr "Adları Çiz"
 
 #: libviews/partselection.cpp:394
 msgctxt "PartSelection|"
