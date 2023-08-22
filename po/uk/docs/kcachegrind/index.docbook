@@ -106,7 +106,7 @@
 
 <abstract>
 <para
->&kcachegrind; — це інструмент для візуалізації даних профілювання, створений з використанням &kf5-full;. </para>
+>&kcachegrind; — це інструмент для візуалізації даних профілювання, створений з використанням &kde-frameworks;. </para>
 </abstract>
 
 <keywordset>
@@ -1210,8 +1210,7 @@
 >Переклад українською: Юрій Чорноіван <email
 >yurchor@ukr.net</email
 ></para
-> 
-&underFDL; </chapter>
+> &underFDL; </chapter>
 
 &documentation.index;
 </book>

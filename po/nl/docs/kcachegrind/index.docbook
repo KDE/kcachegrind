@@ -92,7 +92,7 @@
 
 <abstract>
 <para
->&kcachegrind; is een visualisatie hulpmiddel, geschreven met gebruik van &kf5-full;. </para>
+>&kcachegrind; is een visualisatie hulpmiddel, geschreven met gebruik van &kde-frameworks;. </para>
 </abstract>
 
 <keywordset>

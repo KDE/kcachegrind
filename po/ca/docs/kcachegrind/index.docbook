@@ -92,7 +92,7 @@
 
 <abstract>
 <para
->El &kcachegrind; és una eina de visualització de dades d'anàlisi del rendiment, escrita usant els &kf5-full;. </para>
+>El &kcachegrind; és una eina de visualització de dades d'anàlisi del rendiment, escrita usant els &kde-frameworks;. </para>
 </abstract>
 
 <keywordset>
