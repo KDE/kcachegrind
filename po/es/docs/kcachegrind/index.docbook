@@ -106,7 +106,7 @@
 
 <abstract>
 <para
->&kcachegrind; es una herramienta para visualizar análisis de rendimiento, escrita usando &kf5-full;. </para>
+>&kcachegrind; es una herramienta para visualizar análisis de rendimiento, escrita usando &kde-frameworks;. </para>
 </abstract>
 
 <keywordset>
