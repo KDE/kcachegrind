@@ -114,7 +114,7 @@
 
 <abstract>
 <para
->&kcachegrind; è uno strumento per visualizzare i dati di profilatura, scritto usando &kf5-full;. </para>
+>&kcachegrind; è uno strumento per visualizzare i dati di profilatura, scritto usando &kde-frameworks;. </para>
 </abstract>
 
 <keywordset>
