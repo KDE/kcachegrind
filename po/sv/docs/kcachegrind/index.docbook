@@ -106,7 +106,7 @@
 
 <abstract>
 <para
->&kcachegrind; är ett visualiseringsverktyg för profileringsdata, som använder &kde; Ramverk 5. </para>
+>&kcachegrind; är ett visualiseringsverktyg för profileringsdata, skrivet med användning av &kde; Ramverk. </para>
 </abstract>
 
 <keywordset>
