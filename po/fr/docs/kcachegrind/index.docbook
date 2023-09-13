@@ -92,7 +92,7 @@
 
 <abstract>
 <para
->&kcachegrind; est un outil d'affichage de données de profilage, écrit en utilisant l'environnement &kf5-full;. </para>
+>&kcachegrind; est un outil d'affichage de données de profilage, écrit en utilisant l'environnement &kde-frameworks;. </para>
 </abstract>
 
 <keywordset>
