@@ -858,7 +858,7 @@ msgstr ""
 "de Callgrind <em>només</em> detecta l'existència de «callgrind.cmd» quan "
 "s'executa activament durant uns pocs mil·lisegons, és a dir, quan <em>no</"
 "em> està dormint. Pista: Per l'anàlisi de rendiment d'un programa amb IGU, "
-"p. ex. podeu despertar Callgrind redimensionant una finestra del programa.</"
+"p. ex., podeu despertar Callgrind redimensionant una finestra del programa.</"
 "p>"
 
 #: kcachegrind/toplevel.cpp:481
@@ -942,7 +942,7 @@ msgstr ""
 "mateixa)</td><td>Grup de la funció (*) / Total</td></tr><tr><td>Crida</"
 "td><td>Funció inclusiva</td></tr><tr><td>Línia de codi</td><td>Funció "
 "inclusiva</td></tr></table></ul><p>(*) Només si l'agrupament de funció està "
-"activat (p. ex. agrupament d'objectes ELF).</p>"
+"activat (p. ex., agrupament d'objectes ELF).</p>"
 
 #: kcachegrind/toplevel.cpp:559
 #, kde-format
@@ -1043,7 +1043,7 @@ msgstr "Tipus d'esdeveniment secundari"
 #, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
 msgstr ""
-"Seleccioneu el tipus d'esdeveniment secundari de costos p. ex. el mostrat a "
+"Seleccioneu el tipus d'esdeveniment secundari de costos p. ex., el mostrat a "
 "les anotacions"
 
 #: kcachegrind/toplevel.cpp:685
