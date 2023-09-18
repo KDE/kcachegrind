@@ -992,7 +992,7 @@ msgstr ""
 "<b>Agochar os parámetros dos modelos en símbolos de C++</b> <p>Active esta "
 "opción para que se agochen parámetros dos modelos en C++ ao amosar os "
 "símbolos, de xeito que no seu lugar se amose &lt;&gt;, e non un parámetro de "
-"modelo probablemente de varios niveis de sangrado.</p> <p>Neste modo, pode "
+"modelo probabelmente de varios niveis de sangrado.</p> <p>Neste modo, pode "
 "cubrir co punteiro do rato a etiqueta do símbolo activado para amosar un "
 "tooltip co símbolo completo.</p>"
 

@@ -1221,7 +1221,7 @@ msgstr ""
 "d'ús de cada un dels ginys de la IGU de KCachegrind?\n"
 "És molt recomanable llegir estos textos d'ajuda la primera\n"
 "vegada que s'utilitza el programa. Per a activar l'ajuda\n"
-"<em>Què és açò?</em> premeu Maj+F1 i després cliqueu sobre\n"
+"<em>Què és açò?</em> premeu «Maj+F1» i després cliqueu sobre\n"
 "el giny.</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
