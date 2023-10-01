@@ -1096,7 +1096,7 @@ msgid ""
 "Could not open the file \"%1\". Check it exists and you have enough "
 "permissions to read it."
 msgstr ""
-"Non se puido abrir o ficheiro «%1». Comprobe que exista e que ten permiso "
+"Non foi posíbel abrir o ficheiro «%1». Comprobe que exista e que ten permiso "
 "para lelo."
 
 #: kcachegrind/toplevel.cpp:987
@@ -1163,8 +1163,8 @@ msgstr "Non se escolleu ningún tipo de evento"
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
 msgstr ""
-"Non se pode determinar o identificador do proceso receptor para a solicitude "
-"de envorcado."
+"Non é posíbel determinar o identificador do proceso receptor para a "
+"solicitude de envorcado."
 
 #: kcachegrind/toplevel.cpp:2098
 #, kde-format
@@ -1229,7 +1229,7 @@ msgid ""
 msgstr ""
 "<p>…pode obter informacións de perfilado ao nivel de instrución coa\n"
 "Árbore de chamadas cando fornece a opción <em>--dump-instr=yes</em>?\n"
-"Utilice a vista do «Ensamblador» para as anotacións das instrucións.\n"
+"Use a vista do «Ensamblador» para as anotacións das instrucións.\n"
 "</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
