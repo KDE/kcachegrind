@@ -1294,8 +1294,7 @@ msgid ""
 "and hit return?</p>\n"
 msgstr ""
 "<p>...que trobareu ràpidament una funció introduint una part del seu\n"
-"nom (sense distingir entre majúscules i minúscules) a dins de la línia "
-"d'edició de\n"
+"nom (sense distingir entre majúscules i minúscules) en la línia d'edició de\n"
 "la barra d'eines i prement la tecla «Retorn»?</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
