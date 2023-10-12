@@ -444,7 +444,8 @@ msgstr "Non é posíbel debuxar o gráfico de chamadas do elemento activo."
 #: libviews/callgraphview.cpp:2554
 msgctxt "CallGraphView|"
 msgid "Error running the graph layouting tool.\n"
-msgstr "Ocorreu un erro ao executar a ferramenta de distribución do gráfico.\n"
+msgstr ""
+"Produciuse un erro ao executar a ferramenta de distribución do gráfico.\n"
 
 #: libviews/callgraphview.cpp:2559
 #, qt-format
