@@ -738,22 +738,22 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:389
 #, kde-format
 msgid "&Go to Next"
-msgstr "&Ves a la següent"
+msgstr "&Ves fins a la següent"
 
 #: kcachegrind/toplevel.cpp:392
 #, kde-format
 msgid "Go to Next Layout"
-msgstr "Ves a la disposició següent"
+msgstr "Ves fins a la disposició següent"
 
 #: kcachegrind/toplevel.cpp:396
 #, kde-format
 msgid "&Go to Previous"
-msgstr "&Ves a l'anterior"
+msgstr "&Ves fins a l'anterior"
 
 #: kcachegrind/toplevel.cpp:399
 #, kde-format
 msgid "Go to Previous Layout"
-msgstr "Ves a la disposició anterior"
+msgstr "Ves fins a la disposició anterior"
 
 #: kcachegrind/toplevel.cpp:403
 #, kde-format
