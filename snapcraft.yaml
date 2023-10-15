@@ -1,0 +1,130 @@
+---
+name: kcachegrind
+confinement: strict
+grade: stable
+base: core22
+adopt-info: kcachegrind
+apps:
+    kcachegrind:
+        # extensions:
+        # - kde-neon
+        common-id: org.kde.kcachegrind.desktop
+        desktop: usr/share/applications/org.kde.kcachegrind.desktop
+        command: usr/bin/kcachegrind
+        plugs:
+        - home
+        - desktop
+        - desktop-legacy
+        - opengl
+        - wayland
+        - x11
+        - audio-playback
+        - unity7
+        - network
+        - network-bind
+        command-chain:
+        - snap/command-chain/desktop-launch
+assumes:
+- snapd2.58.3
+compression: lzo
+plugs:
+    desktop:
+        mount-host-font-cache: false
+    icon-themes:
+        interface: content
+        target: $SNAP/data-dir/icons
+        default-provider: gtk-common-themes
+    sound-themes:
+        interface: content
+        target: $SNAP/data-dir/sounds
+        default-provider: gtk-common-themes
+    kf5-5-110-qt-5-15-11-core22:
+        content: kf5-5-110-qt-5-15-11-core22-all
+        interface: content
+        default-provider: kf5-5-110-qt-5-15-11-core22
+        target: $SNAP/kf5
+environment:
+    SNAP_DESKTOP_RUNTIME: $SNAP/kf5
+hooks:
+    configure:
+        plugs:
+        - desktop
+        command-chain:
+        - snap/command-chain/hooks-configure-desktop
+layout:
+    /usr/share/X11:
+        symlink: $SNAP/kf5/usr/share/X11
+slots:
+    session-dbus-interface:
+        interface: dbus
+        name: org.kde.kcachegrind
+        bus: session
+package-repositories:
+-   type: apt
+    components:
+    - main
+    suites:
+    - jammy
+    key-id: 444DABCF3667D0283F894EDDE6D4736255751E5D
+    url: http://archive.neon.kde.org/user
+    key-server: keyserver.ubuntu.com
+parts:
+    kde-neon:
+        source: /snap/snapcraft/current/share/snapcraft/extensions/desktop/kde-neon
+        source-type: local
+        plugin: make
+        make-parameters:
+        - PLATFORM_PLUG=kf5-5-110-qt-5-15-11-core22
+        build-snaps:
+        - kf5-5-110-qt-5-15-11-core22-sdk
+        build-environment:
+        - &id001
+            PATH: /snap/kf5-5-110-qt-5-15-11-core22-sdk/current/usr/bin${PATH:+:$PATH}
+        - &id002
+            XDG_DATA_DIRS: $CRAFT_STAGE/usr/share:/snap/kf5-5-110-qt-5-15-11-core22-sdk/current/usr/share:/usr/share${XDG_DATA_DIRS:+:$XDG_DATA_DIRS}
+        - &id003
+            XDG_CONFIG_HOME: $CRAFT_STAGE/etc/xdg:/snap/kf5-5-110-qt-5-15-11-core22-sdk/current/etc/xdg:/etc/xdg${XDG_CONFIG_HOME:+:$XDG_CONFIG_HOME}
+        - &id004
+            CRAFT_CMAKE_ARGS: -DCMAKE_FIND_ROOT_PATH=/snap/kf5-5-110-qt-5-15-11-core22-sdk/current${CRAFT_CMAKE_ARGS:+:$CRAFT_CMAKE_ARGS}
+    kcachegrind:
+        after:
+        - kde-neon
+        parse-info:
+        - usr/share/metainfo/org.kde.kcachegrind.appdata.xml
+        plugin: cmake
+        build-packages:
+        - libkf5doctools-dev
+        stage-packages:
+        - valgrind
+        source: .
+        source-type: local
+        cmake-parameters:
+        - -DCMAKE_INSTALL_PREFIX=/usr
+        - -DCMAKE_BUILD_TYPE=Release
+        - -DENABLE_TESTING=OFF
+        - -DBUILD_TESTING=OFF
+        - -DKDE_SKIP_TEST_SETTINGS=ON
+        - -DCMAKE_FIND_ROOT_PATH=$CRAFT_STAGE:/snap/kf5-5-110-qt-5-15-11-core22-sdk/current
+        - -DKDE_INSTALL_USE_QT_SYS_PATHS=FALSE
+        build-environment: &id005
+        - *id001
+        - *id002
+        - *id003
+        - *id004
+        prime:
+        - "-usr/lib/*/cmake/*"
+        - "-usr/include/*"
+        - "-usr/share/ECM/*"
+        - "-usr/share/doc/*"
+        - "-usr/share/man/*"
+        - "-usr/share/icons/breeze-dark*"
+        - "-usr/bin/X11"
+        - "-usr/lib/gcc/$CRAFT_ARCH_TRIPLET/6.0.0"
+        - "-usr/lib/aspell/*"
+    cleanup:
+        after:
+        - kcachegrind
+        plugin: nil
+        override-prime: |
+            set -eux
+            #unused lib from linters
