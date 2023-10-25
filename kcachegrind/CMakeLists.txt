@@ -26,15 +26,15 @@ ecm_add_app_icon(kcachegrind_SRCS ICONS ${kcachegrind_ICONS})
 add_executable(kcachegrind ${kcachegrind_SRCS})
 
 set(kcachegrind_LIBS
-  KF${KF_MAJOR_VERSION}::Archive
-  KF${KF_MAJOR_VERSION}::CoreAddons
-  KF${KF_MAJOR_VERSION}::I18n
-  KF${KF_MAJOR_VERSION}::XmlGui
-  KF${KF_MAJOR_VERSION}::ConfigCore
-  KF${KF_MAJOR_VERSION}::ConfigGui
-  KF${KF_MAJOR_VERSION}::KIOCore
-  KF${KF_MAJOR_VERSION}::KIOWidgets
-  KF${KF_MAJOR_VERSION}::DBusAddons
+  KF6::Archive
+  KF6::CoreAddons
+  KF6::I18n
+  KF6::XmlGui
+  KF6::ConfigCore
+  KF6::ConfigGui
+  KF6::KIOCore
+  KF6::KIOWidgets
+  KF6::DBusAddons
 )
 
 target_link_libraries(kcachegrind core views ${kcachegrind_LIBS})
