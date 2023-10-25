@@ -1011,8 +1011,8 @@ msgid ""
 "<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
 "was visited, use that with highest cost.</p>"
 msgstr ""
-"<b>Puja</b><p>Anar a l'últim cridador seleccionat de la funció actual. Si no "
-"s'ha visitat cap cridador, utilitzar el de cost més elevat.</p>"
+"<b>Puja</b><p>Anar fins a l'últim cridador seleccionat de la funció actual. "
+"Si no se n'ha visitat cap, s'utilitzarà el de cost més elevat.</p>"
 
 #: kcachegrind/toplevel.cpp:623
 #, kde-format
