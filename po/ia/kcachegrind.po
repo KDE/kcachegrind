@@ -1,97 +1,96 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the kcachegrind package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# giovanni <g.sora@tiscali.it>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-26 01:46+0000\n"
-"PO-Revision-Date: 2023-10-26 11:23+0200\n"
-"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
-"Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
-"Language: ka\n"
+"PO-Revision-Date: 2023-10-26 10:09+0200\n"
+"Last-Translator: giovanni <g.sora@tiscali.it>\n"
+"Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
+"Language: ia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Temuri Doghonadze"
+msgstr "Giovanni Sora"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Temuri.doghonadze@gmail.com"
+msgstr "g.sora@tiscali.it"
 
 #: kcachegrind/configdlg.cpp:141 kcachegrind/configdlg.cpp:329
 #: kcachegrind/configdlg.cpp:348
 #, kde-format
 msgid "(always)"
-msgstr "(ყოველთვის)"
+msgstr "(sempre)"
 
 #: kcachegrind/configdlg.cpp:355
 #, kde-format
 msgid "Choose Source Folder"
-msgstr "აირჩიეთ აირჩიეთ საქაღალდე"
+msgstr "Selige Dossier Fonte"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ConfigDlgBase)
 #: kcachegrind/configdlgbase.ui:14
 #, kde-format
 msgid "Configuration"
-msgstr "გამართვა"
+msgstr "Configuration"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab1)
 #: kcachegrind/configdlgbase.ui:24
 #, kde-format
 msgid "General"
-msgstr "მთავარი"
+msgstr "General"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel5)
 #: kcachegrind/configdlgbase.ui:34
 #, kde-format
 msgid "Maximum number of items in lists:"
-msgstr "სიებში ჩანაწერების მაქსიმალური რაოდენობა:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3)
 #: kcachegrind/configdlgbase.ui:44
 #, kde-format
 msgid "Truncate symbols in tooltips and context menus"
-msgstr "სიმბოლოების წაკვეთა მინიშნებებში და კონტექსტურ მენიუებში"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2)
 #: kcachegrind/configdlgbase.ui:70
 #, kde-format
 msgid "when more than:"
-msgstr "როცა მეტია, ვიდრე:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2_2)
 #: kcachegrind/configdlgbase.ui:80
 #, kde-format
 msgid "when longer than:"
-msgstr "როცა გრძელია, ვიდრე:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_3)
 #: kcachegrind/configdlgbase.ui:90
 #, kde-format
 msgid "Precision of percentage values:"
-msgstr "პროცენტული მაჩვენებლების სიზუსტე:"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, maxListEdit)
 #: kcachegrind/configdlgbase.ui:113
 #, kde-format
 msgid "The Maximum Number of List Items should be below 500."
-msgstr "სიის ელემენტების მაქსიმალური რაოდენობა 500-ზე ნაკლები უნდა იყოს."
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1)
 #: kcachegrind/configdlgbase.ui:158
 #, kde-format
 msgid "Cost Item Colors"
-msgstr "ფასის ჩანაწერის ფერი"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, fileCheck)
 #. i18n: ectx: property (text), widget (QCheckBox, classCheck)
@@ -100,360 +99,360 @@ msgstr "ფასის ჩანაწერის ფერი"
 #: kcachegrind/configdlgbase.ui:233
 #, kde-format
 msgid "Automatic"
-msgstr "ავტომატური"
+msgstr "Automatic"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4)
 #: kcachegrind/configdlgbase.ui:192
 #, kde-format
 msgid "Object:"
-msgstr "ობიექტი:"
+msgstr "Objecto:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_2_2)
 #: kcachegrind/configdlgbase.ui:202
 #, kde-format
 msgid "Class:"
-msgstr "კლასი:"
+msgstr "Classe:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
 #: kcachegrind/configdlgbase.ui:240
 #, kde-format
 msgid "File:"
-msgstr "ფაილი:"
+msgstr "File:"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab2)
 #: kcachegrind/configdlgbase.ui:321
 #, kde-format
 msgid "Annotations"
-msgstr "ანოტაციები"
+msgstr "Annotationes"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_3_2)
 #: kcachegrind/configdlgbase.ui:329
 #, kde-format
 msgid "Context lines in annotations:"
-msgstr "კონტექსტური ხაზი ანოტაციებში:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
 #: kcachegrind/configdlgbase.ui:350
 #, kde-format
 msgid "Source Folders"
-msgstr "საწყისი საქაღალდეები"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, addDirButton)
 #: kcachegrind/configdlgbase.ui:364
 #, kde-format
 msgid "Add"
-msgstr "დამატება"
+msgstr "Adde"
 
 #. i18n: ectx: property (text), widget (QPushButton, deleteDirButton)
 #: kcachegrind/configdlgbase.ui:371
 #, kde-format
 msgid "Delete"
-msgstr "წაშლა"
+msgstr "Dele"
 
 #. i18n: ectx: property (text), widget (QTreeWidget, dirList)
 #: kcachegrind/configdlgbase.ui:409
 #, kde-format
 msgid "Object / Related Source Base"
-msgstr "ობიექტი / შედარებითი წყაროს ბაზა"
+msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
 #: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:296
 #: kcachegrind/toplevel.cpp:519
 #, kde-format
 msgid "Profile Dumps"
-msgstr "პროფილის დამპები"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView1)
 #: kcachegrind/dumpselectionbase.ui:24
 #, kde-format
 msgid "Target"
-msgstr "სამიზნე წერტილი"
+msgstr "Objectivo"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView1)
 #: kcachegrind/dumpselectionbase.ui:46
 #, kde-format
 msgid "Time"
-msgstr "დრო"
+msgstr "Tempore"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView1)
 #: kcachegrind/dumpselectionbase.ui:57
 #, kde-format
 msgid "Path"
-msgstr "მისამართი"
+msgstr "Percurso"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab)
 #: kcachegrind/dumpselectionbase.ui:70
 #, kde-format
 msgid "Options"
-msgstr "პარამეტრები"
+msgstr "Optiones"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
 #: kcachegrind/dumpselectionbase.ui:87
 #, kde-format
 msgid "Target command:"
-msgstr "სამიზნე ბრძანება:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: kcachegrind/dumpselectionbase.ui:100
 #, kde-format
 msgid "Profiler options:"
-msgstr "პროფაილერის პარამეტრები:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:111
 #, kde-format
 msgid "Option"
-msgstr "მორგება"
+msgstr "Option"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView3)
 #. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:122 kcachegrind/dumpselectionbase.ui:650
 #, kde-format
 msgid "Value"
-msgstr "მნიშვნელობა"
+msgstr "Valor"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:133
 #, kde-format
 msgid "Trace"
-msgstr "ტრეისი"
+msgstr "Tracia"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:146 kcachegrind/dumpselectionbase.ui:730
 #, kde-format
 msgid "Jumps"
-msgstr "გადახტომები"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:160
 #, kde-format
 msgid "Instructions"
-msgstr "ინსტრუქციები"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:175 kcachegrind/dumpselectionbase.ui:745
 #, kde-format
 msgid "Events"
-msgstr "მოვლენები"
+msgstr "Eventos"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:188
 #, kde-format
 msgid "Full Cache"
-msgstr "სრული ქეში"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:202
 #, kde-format
 msgid "Custom"
-msgstr "სხვა"
+msgstr "Personalisa"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:217
 #, kde-format
 msgid "Collect"
-msgstr "შეგროვება"
+msgstr "Collige"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:230
 #, kde-format
 msgid "At Startup"
-msgstr "გაშვებისას"
+msgstr "A initio"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:244
 #, kde-format
 msgid "While In"
-msgstr "შიგნიდან"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:259
 #, kde-format
 msgid "Skip"
-msgstr "გამოტოვება"
+msgstr "Salta"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:272
 #, kde-format
 msgid "PLT"
-msgstr "PLT"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
 #: kcachegrind/dumpselectionbase.ui:286 kcachegrind/dumpselectionbase.ui:898
 #, kde-format
 msgid "Function"
-msgstr "ფუნქცია"
+msgstr "Function"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:301
 #, kde-format
 msgid "Dump Profile"
-msgstr "დამპის პროფილი"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:314
 #, kde-format
 msgid "Every BBs"
-msgstr "ყველა BB"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:328 kcachegrind/dumpselectionbase.ui:370
 #, kde-format
 msgid "On Entering"
-msgstr "შესვლისას"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:342
 #, kde-format
 msgid "On Leaving"
-msgstr "გასვლისას"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:357
 #, kde-format
 msgid "Zero Events"
-msgstr "ნულოვანი მოვლენები"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:385
 #, kde-format
 msgid "Separate"
-msgstr "ცალ-ცალკე"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:398
 #, kde-format
 msgid "Threads"
-msgstr "ნაკადები"
+msgstr "Topicos"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:412
 #, kde-format
 msgid "Recursions"
-msgstr "რეკურსიები"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:426
 #, kde-format
 msgid "Call Chain"
-msgstr "გამოძახების ჯაჭვი"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
 #: kcachegrind/dumpselectionbase.ui:452
 #, kde-format
 msgid "Custom profiler options:"
-msgstr "პროფაილერის დამატებითი პარამეტრები:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton2)
 #: kcachegrind/dumpselectionbase.ui:486
 #, kde-format
 msgid "Run New Profile"
-msgstr "ახალი პროფილის გაშვება"
+msgstr ""
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab2)
 #: kcachegrind/dumpselectionbase.ui:496
 #, kde-format
 msgid "Info"
-msgstr "ინფორმაცია"
+msgstr "Info"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel8)
 #: kcachegrind/dumpselectionbase.ui:505
 #, kde-format
 msgid "Dump reason:"
-msgstr "დამპის მიზეზი:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel6)
 #: kcachegrind/dumpselectionbase.ui:518
 #, kde-format
 msgid "Event summary:"
-msgstr "მოვლენის შეჯამება:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView4)
 #: kcachegrind/dumpselectionbase.ui:529
 #, kde-format
 msgid "Name"
-msgstr "სახელი"
+msgstr "Nomine"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView4)
 #: kcachegrind/dumpselectionbase.ui:540
 #, kde-format
 msgid "Sum"
-msgstr "ჯამი"
+msgstr "Summa"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel7)
 #: kcachegrind/dumpselectionbase.ui:554
 #, kde-format
 msgid "Miscellaneous:"
-msgstr "სხვადასხვა:"
+msgstr "Miscellanea:"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton6)
 #: kcachegrind/dumpselectionbase.ui:588
 #, kde-format
 msgid "Show"
-msgstr "ჩვენება"
+msgstr "Monstra "
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton5)
 #: kcachegrind/dumpselectionbase.ui:595
 #, kde-format
 msgid "Compare"
-msgstr "შედარება"
+msgstr "Compara"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab3)
 #: kcachegrind/dumpselectionbase.ui:605
 #, kde-format
 msgid "State"
-msgstr "State"
+msgstr "Stato"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton1)
 #: kcachegrind/dumpselectionbase.ui:619
 #, kde-format
 msgid "Update"
-msgstr "განახლება"
+msgstr "Actualisa"
 
 #. i18n: ectx: property (text), widget (QCheckBox, checkBox1)
 #: kcachegrind/dumpselectionbase.ui:626
 #, kde-format
 msgid "Every [s]:"
-msgstr "ყოველ [წმ]:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:639
 #, kde-format
 msgid "Counter"
-msgstr "მთვლელი"
+msgstr "Contator"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:661
 #, kde-format
 msgid "Dumps Done"
-msgstr "დამპი დასრულდა"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:675
 #, kde-format
 msgid "Is Collecting"
-msgstr "შეგროვება"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:689
 #, kde-format
 msgid "Executed"
-msgstr "შესრულდა"
+msgstr "Executate"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:702
 #, kde-format
 msgid "Basic Blocks"
-msgstr "ძირითადი ბლოკები"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:716
 #, kde-format
 msgid "Calls"
-msgstr "ზარები"
+msgstr "Appellos"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:758
@@ -465,37 +464,37 @@ msgstr "Ir"
 #: kcachegrind/dumpselectionbase.ui:773
 #, kde-format
 msgid "Distinct"
-msgstr "განსხვავებული"
+msgstr "Distincte"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:786
 #, kde-format
 msgid "ELF Objects"
-msgstr "ELF ობიექტები"
+msgstr "Objectos ELF"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:800
 #, kde-format
 msgid "Functions"
-msgstr "ფუნქციები"
+msgstr "Functiones"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:814
 #, kde-format
 msgid "Contexts"
-msgstr "კონტექსტი"
+msgstr "Contextos"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
 #: kcachegrind/dumpselectionbase.ui:845
 #, kde-format
 msgid "Stack trace:"
-msgstr "სტეკის ტრეისი:"
+msgstr "Tracia de Stack (Pila):"
 
 #. i18n: ectx: property (text), widget (QCheckBox, checkBox2)
 #: kcachegrind/dumpselectionbase.ui:855
 #, kde-format
 msgid "Sync."
-msgstr "სინქრონიზაცია."
+msgstr "Sync"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
 #: kcachegrind/dumpselectionbase.ui:865
@@ -507,91 +506,91 @@ msgstr "#"
 #: kcachegrind/dumpselectionbase.ui:876
 #, kde-format
 msgid "Incl."
-msgstr "ჩათვლ."
+msgstr "Incl."
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
 #: kcachegrind/dumpselectionbase.ui:887
 #, kde-format
 msgid "Called"
-msgstr "გამოძახებულია"
+msgstr "Appellate"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
 #: kcachegrind/dumpselectionbase.ui:909
 #, kde-format
 msgid "Location"
-msgstr "დებარეობა"
+msgstr "Location"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton7)
 #: kcachegrind/dumpselectionbase.ui:928
 #, kde-format
 msgid "Start"
-msgstr "გაშვება"
+msgstr "Initia"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton6_2)
 #: kcachegrind/dumpselectionbase.ui:951
 #, kde-format
 msgid "Zero"
-msgstr "ნული"
+msgstr "Zero"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton4)
 #: kcachegrind/dumpselectionbase.ui:958
 #, kde-format
 msgid "Dump"
-msgstr "დამპი"
+msgstr ""
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab4)
 #: kcachegrind/dumpselectionbase.ui:968
 #, kde-format
 msgid "Messages"
-msgstr "შეტყობინებები"
+msgstr "Messages"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton9)
 #: kcachegrind/dumpselectionbase.ui:985
 #, kde-format
 msgid "Kill Run"
-msgstr "შესრულების შეწყვეტა"
+msgstr "Occide Execution"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton8)
 #: kcachegrind/dumpselectionbase.ui:1008
 #, kde-format
 msgid "Clear"
-msgstr "გაწმენდა"
+msgstr "Netta"
 
 #. i18n: ectx: Menu (file)
 #: kcachegrind/kcachegrindui.rc:4
 #, kde-format
 msgid "&File"
-msgstr "&ფაილი"
+msgstr "&File"
 
 #. i18n: ectx: Menu (view)
 #: kcachegrind/kcachegrindui.rc:10
 #, kde-format
 msgid "&View"
-msgstr "&ხედი"
+msgstr "&Vista"
 
 #. i18n: ectx: Menu (layouts)
 #: kcachegrind/kcachegrindui.rc:15
 #, kde-format
 msgid "&Layout"
-msgstr "&განლაგება"
+msgstr "&Disposition"
 
 #. i18n: ectx: Menu
 #: kcachegrind/kcachegrindui.rc:33
 #, kde-format
 msgid "Sidebars"
-msgstr "გვერდითა ზოლები"
+msgstr "Barras lateral"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kcachegrind/kcachegrindui.rc:42
 #, kde-format
 msgid "Main Toolbar"
-msgstr "ხელსაწყოთა მთავარი ზოლი"
+msgstr "Barra de instrumento principal"
 
 #. i18n: ectx: ToolBar (stateToolBar)
 #: kcachegrind/kcachegrindui.rc:54
 #, kde-format
 msgid "State Toolbar"
-msgstr "მდგომარეობის პანელი"
+msgstr "Barra de Instrumento de stato"
 
 #: kcachegrind/main.cpp:34
 #, kde-format
@@ -601,7 +600,7 @@ msgstr "KCachegrind"
 #: kcachegrind/main.cpp:36
 #, kde-format
 msgid "KDE Frontend for Callgrind/Cachegrind"
-msgstr "KDE Frontend for Callgrind/Cachegrind"
+msgstr "Interfacie de prime plano de KDE pro Callgrind/Cachegrind"
 
 #: kcachegrind/main.cpp:38
 #, kde-format
@@ -616,27 +615,27 @@ msgstr "Josef Weidendorfer"
 #: kcachegrind/main.cpp:41
 #, kde-format
 msgid "Author/Maintainer"
-msgstr "ავტორი/პროექტის წამყვანი"
+msgstr "Autor/Mantenitor"
 
 #: kcachegrind/main.cpp:68
 #, kde-format
 msgid "Show information of this trace"
-msgstr "ამ ტრეისის ინფორმაციის ჩვენება"
+msgstr "MOnstra infornmation de iste tracia"
 
 #: kcachegrind/main.cpp:68
 #, kde-format
 msgid "[trace...]"
-msgstr "[ტრეისი...]"
+msgstr "[tracia...]"
 
 #: kcachegrind/toplevel.cpp:265 kcachegrind/toplevel.cpp:493
 #, kde-format
 msgid "Parts Overview"
-msgstr "ნაწილების მიმოხილვა"
+msgstr ""
 
 #: kcachegrind/toplevel.cpp:274
 #, kde-format
 msgid "Top Cost Call Stack"
-msgstr "უმაღლესი ღირებულების მქონე გამოძახების სტეკი"
+msgstr ""
 
 #: kcachegrind/toplevel.cpp:276
 #, kde-format
@@ -647,16 +646,11 @@ msgid ""
 "p><p>The <b>Cost</b> and <b>Calls</b> columns show the cost used for all "
 "calls from the function in the line above.</p>"
 msgstr ""
-"<b>უდიდესი ღირებულების გამოძახების სტეკი</b><p>ეს სუფთა ფიქტიურ 'ყველაზე "
-"მოსალოდნელი' გამოძახების სტეკია. ის აიგება ამჟამად არჩეული ფუნქციის გაშვებით "
-"და დაამატებს გამომძახებლებს/გამოძახებულებს უდიდესი ფასით ზემოდან ქვემოთ.</"
-"p><p><b>ფასის</b> და <b>გამოძახების</b> სვეტები აჩვენებს ღირებულებას, "
-"რომელიც გამოიყენება ყველა გამოძახებით ფუნქციიდან ერთი ხაზის ზემოთ.</p>"
 
 #: kcachegrind/toplevel.cpp:290
 #, kde-format
 msgid "Flat Profile"
-msgstr "ბრტყელი პროფილი"
+msgstr "Profilo Platte"
 
 #: kcachegrind/toplevel.cpp:303
 #, kde-format
@@ -683,20 +677,18 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:374
 #, kde-format
 msgid "&Duplicate"
-msgstr "&დუბლირება"
+msgstr "&Duplica"
 
 #: kcachegrind/toplevel.cpp:377
 #, kde-format
 msgid ""
 "<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
 msgstr ""
-"<b>მიმდინარე განლაგების დუბლირება</b><p>მიმდინარე განლაგების ასლის შექმნა.</"
-"p>"
 
 #: kcachegrind/toplevel.cpp:382
 #, kde-format
 msgid "&Remove"
-msgstr "&წაშლა"
+msgstr "&Remove"
 
 #: kcachegrind/toplevel.cpp:384
 #, kde-format
@@ -704,58 +696,56 @@ msgid ""
 "<b>Remove Current Layout</b><p>Delete current layout and make the previous "
 "active.</p>"
 msgstr ""
-"<b>მიმდინარე განლაგების წაშლა</b><p>წაშლის მიმდინარე განლაგებას და აქტიურად "
-"წინას მონიშნავს.</p>"
 
 #: kcachegrind/toplevel.cpp:389
 #, kde-format
 msgid "&Go to Next"
-msgstr "&შემდეგზე გადასვლა"
+msgstr ""
 
 #: kcachegrind/toplevel.cpp:392
 #, kde-format
 msgid "Go to Next Layout"
-msgstr "შემდეგ განლაგებაზე გადასვლა"
+msgstr ""
 
 #: kcachegrind/toplevel.cpp:396
 #, kde-format
 msgid "&Go to Previous"
-msgstr "&წინაზე გადასვლა"
+msgstr ""
 
 #: kcachegrind/toplevel.cpp:399
 #, kde-format
 msgid "Go to Previous Layout"
-msgstr "წინა განლაგებაზე გადასვლა"
+msgstr ""
 
 #: kcachegrind/toplevel.cpp:403
 #, kde-format
 msgid "&Restore to Default"
-msgstr "&ნაგულისხმებ მნიშვნელობებზე აღდგენა"
+msgstr ""
 
 #: kcachegrind/toplevel.cpp:405
 #, kde-format
 msgid "Restore Layouts to Default"
-msgstr "განლაგებების ნაგულისხმებ მნიშვნელობებზე აღდგენა"
+msgstr ""
 
 #: kcachegrind/toplevel.cpp:409
 #, kde-format
 msgid "&Save as Default"
-msgstr "&ნაგულისხმებად შენახვა"
+msgstr "&Salveguarda como predefinite"
 
 #: kcachegrind/toplevel.cpp:411
 #, kde-format
 msgid "Save Layouts as Default"
-msgstr "განლაგებების ნაგულისხმებად შენახვა"
+msgstr "Salveguarda Dispositiones como Predefinite"
 
 #: kcachegrind/toplevel.cpp:422
 #, kde-format
 msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
-msgstr "<b>ახალი</b><p>KCachegrind-ის ახალი ცარიელი ფანჯრის გახსნა.</p>"
+msgstr "<b>Nove</b><p>Aperi nove fenestra vacue de KCachegrind .</p>"
 
 #: kcachegrind/toplevel.cpp:426
 #, kde-format
 msgid "&Add..."
-msgstr "&დამატება.."
+msgstr "&Adde..."
 
 #: kcachegrind/toplevel.cpp:428
 #, kde-format
@@ -763,26 +753,22 @@ msgid ""
 "<b>Add Profile Data</b><p>This opens an additional profile data file in the "
 "current window.</p>"
 msgstr ""
-"<b>პროფილის მონაცემების დამატება</b><p>ეს მიმდინარე ფანჯარაში დამატებითი "
-"პროფილის მონაცემების ფაილს გახსნის.</p>"
 
 #: kcachegrind/toplevel.cpp:434
 #, kde-format
 msgctxt "Reload a document"
 msgid "&Reload"
-msgstr "თავიდან ჩატვირთვა"
+msgstr "&Recarga"
 
 #: kcachegrind/toplevel.cpp:437
 #, kde-format
 msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
 msgstr ""
-"<b>პროფილის მონაცემების თავიდან ჩატვირთვა</b><p>ეს ყველა ახლად შექმნილ "
-"ნაწილსაც ჩატვირთავს.</p>"
 
 #: kcachegrind/toplevel.cpp:442
 #, kde-format
 msgid "&Export Graph"
-msgstr "&გრაფიკის გატანა"
+msgstr ""
 
 #: kcachegrind/toplevel.cpp:445
 #, kde-format
@@ -790,13 +776,11 @@ msgid ""
 "<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
 "tools of the GraphViz package.</p>"
 msgstr ""
-"<b>გამოძახებების გრაფიკის გატანა</b><p>აგენერირებს ფაილს გაფართოებით .dot "
-"პროგრამებისთვის GraphViz პაკეტიდან.</p>"
 
 #: kcachegrind/toplevel.cpp:453
 #, kde-format
 msgid "&Force Dump"
-msgstr "&ნაძალადევი დამპი"
+msgstr ""
 
 #: kcachegrind/toplevel.cpp:456
 #, kde-format
@@ -823,58 +807,58 @@ msgid ""
 "<b>Open Profile Data</b><p>This opens a profile data file, with possible "
 "multiple parts</p>"
 msgstr ""
-"<b>პროფილის მონაცემების გახსნა</b><p>გახსის პროფილის მონაცემების ფაილს, "
-"შესაძლოა, ერთზე მეტი ნაწილითაც</p>"
 
 #: kcachegrind/toplevel.cpp:496
 #, kde-format
 msgid "Show/Hide the Parts Overview Dockable"
-msgstr "ნაწილების გადახედვის მიმაგრებადი ფანჯრის ჩვენება/დამალვა"
+msgstr ""
 
 #: kcachegrind/toplevel.cpp:501
 #, kde-format
 msgid "Call Stack"
-msgstr "გამოძახების სტეკი"
+msgstr "Pila de Appello  (call stack)"
 
 #: kcachegrind/toplevel.cpp:504
 #, kde-format
 msgid "Show/Hide the Call Stack Dockable"
-msgstr "გამოძახების სტეკის მიმაგრებადი ფანჯრის ჩვენება/დამალვა"
+msgstr "Monstra/Cela le Pila de Appello in bassino (Dockable)"
 
 #: kcachegrind/toplevel.cpp:509
 #, kde-format
 msgid "Function Profile"
-msgstr "ფუნქციის პროფილი"
+msgstr "Profilo de function"
 
 #: kcachegrind/toplevel.cpp:512
 #, kde-format
 msgid "Show/Hide the Function Profile Dockable"
-msgstr "ფუნქციის პროფილის მიმაგრებადი ფანჯრის ჩვენება/დამალვა"
+msgstr "Monstra/Cela le Profilo de function in bassino (Dockable)"
 
 #: kcachegrind/toplevel.cpp:520
 #, kde-format
 msgid "Show/Hide the Profile Dumps Dockable"
-msgstr "პროფილის დამპის მიმაგრებადი ფანჯრის ჩვენება/დამალვა"
+msgstr ""
+"Monstra/Cela le Instantanee de discargar (Dump) de profilo in bassino "
+"(Dockable)"
 
 #: kcachegrind/toplevel.cpp:527
 #, kde-format
 msgid "Relative"
-msgstr "ფარდობითი"
+msgstr "Relative"
 
 #: kcachegrind/toplevel.cpp:529
 #, kde-format
 msgid "Show relative instead of absolute costs"
-msgstr "შედარებითი ღირებულებების ჩვენება აბსოლუტურის მაგიერ"
+msgstr "Monstra costos relative in loco de absolute"
 
 #: kcachegrind/toplevel.cpp:535
 #, kde-format
 msgid "Relative to Parent"
-msgstr "მშობელთან შედარდებით"
+msgstr "Relative a Genitor"
 
 #: kcachegrind/toplevel.cpp:538
 #, kde-format
 msgid "Show percentage costs relative to parent"
-msgstr "მშობლებთან შედარებით ღირებულებების პროცენტულად ჩვენება"
+msgstr "Monstra costos de percentage relative a genitor"
 
 #: kcachegrind/toplevel.cpp:542
 #, kde-format
@@ -894,7 +878,7 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:559
 #, kde-format
 msgid "Cycle Detection"
-msgstr "ციკლის აღმოჩენა"
+msgstr "Discoperta de cyclo"
 
 #: kcachegrind/toplevel.cpp:562
 #, kde-format
@@ -914,12 +898,12 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:578
 #, kde-format
 msgid "Shorten Templates"
-msgstr "ნიმუშების დამოკლება"
+msgstr "Abbrevia Patronos"
 
 #: kcachegrind/toplevel.cpp:580
 #, kde-format
 msgid "Hide Template Parameters in C++ Symbols"
-msgstr "C++-ის სიმბოლოებში შაბლონის პარამეტრების დამალვა"
+msgstr "Cela parametros de patrono in symbolos C++"
 
 #: kcachegrind/toplevel.cpp:581
 #, kde-format
@@ -930,17 +914,11 @@ msgid ""
 "p><p>In this mode, you can hover the mouse pointer over the activated symbol "
 "label to show a tooltip with the unabbreviated symbol.</p>"
 msgstr ""
-"<b>C++-ის სიმბოლოებში შაბლონის პარამეტრების დამალვა</b><p>თუ ეს ჩართულია, "
-"ყველა ნაჩვენებ სიმბოლოს ყველა C++-ის შაბლონის პარამეტრები დამალული ექნება და "
-"მის მაგიერ &lt;&gt;-ს გაჩვენებთ და არა დიდი შანსით ერთმანეთში ჩალაგებულ "
-"შაბლონის პარამეტრს</p><p>ამ რეჟიმში შეგიძლიათ თაგუნას კურსორი აქტივირებულ "
-"სიმბოლოს ჭდეს გადაატაროთ და გაჩვენებთ შეუკვეცავი სიმბოლოს მქონე მინიშნებას.</"
-"p>"
 
 #: kcachegrind/toplevel.cpp:597
 #, kde-format
 msgid "&Up"
-msgstr "&მაღლა"
+msgstr "in &Alto"
 
 #: kcachegrind/toplevel.cpp:606
 #, kde-format
@@ -948,87 +926,86 @@ msgid ""
 "<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
 "was visited, use that with highest cost.</p>"
 msgstr ""
-"<b>მაღლა ასვლა</b><p>მიმდინარე ფუნქციის ბოლოს მონიშნულ გამომძახებელზე "
-"გადასვლა. თუ გამომძახებელზე არ გადასულხართ, გამოყენებული იქნება უმაღლესი "
-"ღირებულების მქონე.</p>"
 
 #: kcachegrind/toplevel.cpp:623
 #, kde-format
 msgid "Go back in function selection history"
-msgstr "ფუნქციის არჩევის ისტორიაში უკან დაბრუნება"
+msgstr "Vade retro in chronologia de selection de function"
 
 #: kcachegrind/toplevel.cpp:637
 #, kde-format
 msgid "Go forward in function selection history"
-msgstr "ფუნქციის არჩევსის ისტორიაში შემდეგზე გადასვლა"
+msgstr "Vade avante in chronologia de selection de function"
 
 #: kcachegrind/toplevel.cpp:642 kcachegrind/toplevel.cpp:1533
 #, kde-format
 msgid "Primary Event Type"
-msgstr "ძირითადი მოვლენის ტიპი"
+msgstr "Typo de Evento Primari"
 
 #: kcachegrind/toplevel.cpp:643
 #, kde-format
 msgid "Select primary event type of costs"
-msgstr "აირჩიეთ ღირებულებების ძირითადი მოვლენის ტიპი"
+msgstr "Selige typo de evento primari de costos"
 
 #: kcachegrind/toplevel.cpp:670 kcachegrind/toplevel.cpp:1538
 #, kde-format
 msgid "Secondary Event Type"
-msgstr "დახმამრე მოვლენის ტიპი"
+msgstr "Typo de evento secundari"
 
 #: kcachegrind/toplevel.cpp:671
 #, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
 msgstr ""
-"აირჩეთ დამხმარე მოვლენის ტიპი ღირებულებისთვის. მაგ: ანოტაციებში ნაჩვენები"
+"Selige typo de evento secundari per costo p.ex. monstrate in annotationes"
 
 #: kcachegrind/toplevel.cpp:685
 #, kde-format
 msgid "Grouping"
-msgstr "დაჯგუფება"
+msgstr "Gruppar"
 
 #: kcachegrind/toplevel.cpp:687
 #, kde-format
 msgid "Select how functions are grouped into higher level cost items"
-msgstr "აირჩიეთ, როგორ ჯგუფდება ფუნქციები უფრო მაღალი ღირებულების ელემენტებში"
+msgstr ""
+"Selige como functiones es gruppate in elementos de costo de nivello major"
 
 #: kcachegrind/toplevel.cpp:693
 #, kde-format
 msgid "(No Grouping)"
-msgstr "(დაჯგუფების გარეშე)"
+msgstr "(Necun Regruppamento)"
 
 #: kcachegrind/toplevel.cpp:710
 #, kde-format
 msgid "Split"
-msgstr "გაყოფა"
+msgstr "Scinde"
 
 #: kcachegrind/toplevel.cpp:713
 #, kde-format
 msgid "Show two information panels"
-msgstr "ორი ინფორმაციის პანელის ჩვენება"
+msgstr "Monstra duo pannellos de information"
 
 #: kcachegrind/toplevel.cpp:719
 #, kde-format
 msgid "Split Horizontal"
-msgstr "ჰორიზონტალურად გაყოფა"
+msgstr "Divide Horizontal"
 
 #: kcachegrind/toplevel.cpp:722
 #, kde-format
 msgid "Change Split Orientation when main window is split."
-msgstr "გაყოფის ორიენტაციის შეცვლა, როცა მთავარი ფანჯარა გაიყოფა."
+msgstr ""
+"Cambia Orientation de scinder quando le fenestra principal es dividite."
 
 #: kcachegrind/toplevel.cpp:919
 #, kde-format
 msgid "Select Callgrind Profile Data"
-msgstr "არჩიეთ Callgrind-ის პროფილის მონაცემები"
+msgstr "Selide Datos de Profilar de Callgrind"
 
 #: kcachegrind/toplevel.cpp:921 kcachegrind/toplevel.cpp:989
 #, kde-format
 msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
 msgstr ""
-"Callgrind-ის პროფილის მონაცემები (cachegrind.out* callgrind.out*);;ყველა "
-"ფაილი (*)"
+"Datos de Profilar de Callgrind (cachegrind.out* callgrind.out*);;Omne Files "
+"(*)"
 
 #: kcachegrind/toplevel.cpp:949 kcachegrind/toplevel.cpp:978
 #, kde-format
@@ -1036,105 +1013,104 @@ msgid ""
 "Could not open the file \"%1\". Check it exists and you have enough "
 "permissions to read it."
 msgstr ""
-"ფაილი \"%1\" ვერ გავხსენი. შეამოწმეთ ფაილის არსებობა და თქენი წვდომები მასზე."
 
 #: kcachegrind/toplevel.cpp:987
 #, kde-format
 msgid "Add Callgrind Profile Data"
-msgstr "Callgrind-ის პროფილის მონაცემების დამატება"
+msgstr "Adde Datos de Profilar de Callgrind"
 
 #: kcachegrind/toplevel.cpp:1157 kcachegrind/toplevel.cpp:1486
 #, kde-format
 msgid "(Hidden)"
-msgstr "(დამალული)"
+msgstr "(Celate)"
 
 #: kcachegrind/toplevel.cpp:1543
 #, kde-format
 msgid "Hide"
-msgstr "დამალვა"
+msgstr "Cela"
 
 #: kcachegrind/toplevel.cpp:1585
 #, kde-format
 msgid "Show Absolute Cost"
-msgstr "აბსოლუტური ღირებულებს ჩვენება"
+msgstr "Monstra costo absolute"
 
 #: kcachegrind/toplevel.cpp:1588
 #, kde-format
 msgid "Show Relative Cost"
-msgstr "შედარებითი ღირებულების ჩვენება"
+msgstr "Monstra costo relative"
 
 #: kcachegrind/toplevel.cpp:1620
 #, kde-format
 msgid "Go Back"
-msgstr "უკან დაბრუნება"
+msgstr "Vade retro"
 
 #: kcachegrind/toplevel.cpp:1621
 #, kde-format
 msgid "Go Forward"
-msgstr "წინ გადასვლა"
+msgstr "Vade avante"
 
 #: kcachegrind/toplevel.cpp:1622
 #, kde-format
 msgid "Go Up"
-msgstr "მაღლა ასვლა"
+msgstr "Vade in alto"
 
 #: kcachegrind/toplevel.cpp:1834
 #, kde-format
 msgid "Layout Count: %1"
-msgstr "განლაგების რაოდენობა %1"
+msgstr "Computo de Disposition: %1"
 
 #: kcachegrind/toplevel.cpp:1841
 #, kde-format
 msgid "No profile data file loaded."
-msgstr "პროფილის მონაცემები ჩატვირთული არაა."
+msgstr "Necun file de datos de profilo cargate."
 
 #: kcachegrind/toplevel.cpp:1850
 #, kde-format
 msgid "Total %1 Cost: %2"
-msgstr "სრული %1 ღირებულება: %2"
+msgstr "Total %1 Costo: %2"
 
 #: kcachegrind/toplevel.cpp:1862
 #, kde-format
 msgid "No event type selected"
-msgstr "მოვლენის ტიპი არჩეული არაა"
+msgstr "Necun typo de evento seligite"
 
 #: kcachegrind/toplevel.cpp:2052
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
-msgstr "დამპის მოთხოვნის მიმღების PID-ის გარკვევა შეუძლებელია"
+msgstr ""
 
 #: kcachegrind/toplevel.cpp:2098
 #, kde-format
 msgid "Error running callgrind_control"
-msgstr "შეცდომა callgrind_control-ის შესრულებისას"
+msgstr "Error executante controlo de callgrind"
 
 #: kcachegrind/toplevel.cpp:2137 kcachegrind/toplevel.cpp:2174
 #: kcachegrind/toplevel.cpp:2211
 #, kde-format
 msgid "(No Stack)"
-msgstr "(სტეკის გარეშე)"
+msgstr "(Necun Stack - Pila)"
 
 #: kcachegrind/toplevel.cpp:2143
 #, kde-format
 msgid "(No next function)"
-msgstr "(შემდეგი ფუნქციის გარეშე)"
+msgstr "(Necun proxime function)"
 
 #: kcachegrind/toplevel.cpp:2180
 #, kde-format
 msgid "(No previous function)"
-msgstr "(წინა ფუნქციის გარეშე)"
+msgstr "(necun previe function)"
 
 #: kcachegrind/toplevel.cpp:2216
 #, kde-format
 msgid "(No Function Up)"
-msgstr "(ზედა ფუნქციის გარეშე)"
+msgstr "(Necun function in alto)"
 
 #: kcachegrind/toplevel.cpp:2348 kcachegrind/toplevel.cpp:2362
 #, kde-format
 msgid "Loading %1"
-msgstr "ჩატვირთვა: %1"
+msgstr "Cargante %1"
 
 #: kcachegrind/toplevel.cpp:2356
 #, kde-format
 msgid "Error loading %1: %2"
-msgstr "%1-ის ჩატვირთვის შეცდომა: %2"
+msgstr "Error in cargamento de '%1: %2"
