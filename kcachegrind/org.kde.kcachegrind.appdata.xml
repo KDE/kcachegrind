@@ -14,6 +14,7 @@
   <name xml:lang="eo">KCachegrind</name>
   <name xml:lang="es">KCachegrind</name>
   <name xml:lang="et">KCachegrind</name>
+  <name xml:lang="eu">KCachegrind</name>
   <name xml:lang="fi">KCachegrind</name>
   <name xml:lang="fr">KCachegrind</name>
   <name xml:lang="gl">KCachegrind</name>
@@ -45,6 +46,7 @@
   <summary xml:lang="eo">Profiler Frontend</summary>
   <summary xml:lang="es">Interfaz de analizador de rendimiento</summary>
   <summary xml:lang="et">Profileerimise kasutajaliides</summary>
+  <summary xml:lang="eu">Profilatzailearen interfazea</summary>
   <summary xml:lang="fi">Profilointikäyttöliittymä</summary>
   <summary xml:lang="fr">Interface de profilage</summary>
   <summary xml:lang="gl">Interface de analizador de rendemento</summary>
@@ -78,6 +80,7 @@
     <p xml:lang="eo">KCachegrind estas profildatuma bildigilo, uzata por determini la plej temporabajn partojn en la plenumo de programo.</p>
     <p xml:lang="es">KCachegrind es una herramienta de visualización de datos de análisis de rendimiento que se usa para determinar las partes de un programa que consumen más tiempo durante su ejecución.</p>
     <p xml:lang="et">KCachegrind on profileerimisandmete visualiseerimise tööriist, mis võimaldab määrata kindlaks, millised programmi osad nõuavad täitmisel kõige enam aega.</p>
+    <p xml:lang="eu">«KCachegrind», profil datuak irudikatzeko tresna bat da, programa baten exekuzioan denbora gehien behar duten atalak zehazteko erabilia.</p>
     <p xml:lang="fi">KCachegrind on profiilitiedon visualisointityökalu, joka on tarkoitettu helpottamaan ohjelman suorituksen aikaa vievimpien osien tunnistamisessa.</p>
     <p xml:lang="fr">KCachegrind est un outil d'affichage des données de profilage, utilisé pour déterminer les segments prenant le plus de temps lors de l'exécution d'un programme.</p>
     <p xml:lang="gl">KCachegrind é unha ferramenta de visualización de datos de rendemento que se usa para determinar as partes da execución dun programa que consumen máis tempo.</p>
@@ -109,6 +112,7 @@
     <p xml:lang="eo">Trajtoj:</p>
     <p xml:lang="es">Funciones:</p>
     <p xml:lang="et">Omadused:</p>
+    <p xml:lang="eu">Ezaugarriak:</p>
     <p xml:lang="fi">Ominaisuuksia:</p>
     <p xml:lang="fr">Fonctionnalités :</p>
     <p xml:lang="gl">Funcionalidades:</p>
@@ -141,6 +145,7 @@
       <li xml:lang="eo">KCachegrind bildigas profilojn (t.e. rultempajn karakterizaĵojn) de aplikoj laŭ diversaj manieroj, inkluzive de vokografeaj bildigoj kaj fonta/malasemblila komentario.</li>
       <li xml:lang="es">KCachegrind visualiza análisis de rendimiento (es decir, características en tiempo de ejecución) de las aplicaciones de diversos modos, incluyendo visualizaciones de gráficos de llamadas y anotaciones de código fuente/desensamblador.</li>
       <li xml:lang="et">KCachegrind võib profiile (st käitusaja karakteristika) visualiseerida mitmel moel, kaasa arvatud väljakutsete graafikuna ja lähtekoodi/disassembleri annotatsioonina.</li>
+      <li xml:lang="eu">«KCachegrind»ek aplikazioen profilak (hots, exekuzio aldiko ezaugarriak) hainbat eratan irudikatzen ditu, deien irudikapen grafikoak eta sorburu/desmihiztatzaile idatzoharrak barne.</li>
       <li xml:lang="fi">KCachegrind visualisoi sovellusprofiileja (esim. ajonaikaisominaisuuksia) monin tavoin kuten kutsukaaviovisualisoinnein ja lähde/disassembler-merkinnöin.</li>
       <li xml:lang="fr">KCachegrind permet d'afficher les caractéristiques d'exécution (le profilage) d'applications de nombreuses manières, notamment en affichant le graphe d'appels et les annotations des sources et du désassembleur.</li>
       <li xml:lang="gl">Varios tipos de visualizacións dos datos de rendemento dunha aplicación, como un gráfico de chamadas ou anotacións no código fonte ou no código máquina.</li>
@@ -171,6 +176,7 @@
       <li xml:lang="eo">Ĝi povas ŝarĝi profilojn generitajn de la kaŝmemorsimulado/voka spurilo Calltree, ilo de Valgrind. Tiel, profilado ne bezonas ajnan preparon, povas trakti komunajn bibliotekojn kaj kromarkitekturojn, kaj ne influas la mezuradon mem.</li>
       <li xml:lang="es">Puede cargar análisis de rendimiento generados por el trazador de simulación de cache/llamadas Calltree, una herramienta de Valgrind. De este modo, el análisis no necesita ninguna preparación, puede manejar bibliotecas compartidas y arquitecturas de complementos, además de no influir en la propia medida.</li>
       <li xml:lang="et">Rakendus võib laadida profiile, mis on loodud Valgrindi puhvri matkimise ja väljakutsete jälitajaga CAlltree. Sel moel ei vaja profileerimine mingeid ettevalmistusi, tuleb toime jagatud teekide ja pluginate arhitektuuriga ega mõjuta mõõtmist ennast.</li>
+      <li xml:lang="eu">«Calltree», «Valgrind»eko cache simulazio/dei aztarnari tresnak sortutako profilak zama ditzake. Hortaz, profilatzeak ez du prestaketarik behar, liburutegi partekatuekin eta plugin arkitekturekin moldatzen da, eta ez dio neurketari berari eragiten.</li>
       <li xml:lang="fi">Se osaa ladata välimuistisimulointi- ja kutsujäljitin Calltree (Valgrind-työkalu) tuottamia profiileja, joten profilointi ei vaadi valmistelua, jaetut kirjastot ja liitännäisarkkitehtuurit riittävät, eikä profilointi vaikuta mittaustuloksiin.</li>
       <li xml:lang="fr">Il est capable de charger les fichiers de profilage générés par l'outil de simulation de cache et de traçage des appels Calltree faisant partie de Valgrind. Le profilage ne demande aucune préparation, il gère les bibliothèques partagées et les architectures de modules externes et n'a pas d'effets de bords sur la mesure.</li>
       <li xml:lang="gl">Compatibilidade con datos de rendemento xerados por Calltree, unha ferramenta de Valgrind para a simulación da caché e o seguimento de chamadas. Así a xeración dos datos de rendemento non require de ningún tipo de preparación, as bibliotecas compartidas e as arquitecturas de complementos non resultan un problema, e a xeración dos datos de rendemento non ten ningún impacto nos datos xerados.</li>
@@ -200,6 +206,7 @@
       <li xml:lang="eo">Konvertilaj skriptoj por OProfile, Perl kaj PHP.</li>
       <li xml:lang="es">Scripts de conversión para OProfile, Perl y PHP.</li>
       <li xml:lang="et">Teisendusskriptid OProfile, Perli ja PHP tarbeks.</li>
+      <li xml:lang="eu">OProfile, Perl, eta PHP bihurtzeko gidoiak.</li>
       <li xml:lang="fi">Muunnosskriptit OProfileen, Perliin ja PHP:hen.</li>
       <li xml:lang="fr">Scripts de conversion pour « OProfile », « Perl » et « PHP »</li>
       <li xml:lang="gl">Guións de conversión para OProfile, Perl e PHP.</li>
@@ -230,6 +237,7 @@
       <li xml:lang="eo">Ŝanĝi inter pluraj bildigaj aranĝoj.</li>
       <li xml:lang="es">Intercambio entre distintos esquemas de visualización.</li>
       <li xml:lang="et">Lülitumine erinevate visualiseerimisvõimaluste vahel.</li>
+      <li xml:lang="eu">Irudikapen antolaera anizkoitzen artean aldatzea.</li>
       <li xml:lang="fi">Vaihto useampien visualisointiasettelujen välillä.</li>
       <li xml:lang="fr">Basculer entre plusieurs dispositions d'affichage</li>
       <li xml:lang="gl">Posibilidade de cambiar a calquera das varias disposicións de visualización.</li>
@@ -260,6 +268,7 @@
       <li xml:lang="eo">Voka grafeo povas esti eksportata kiel bildo (PNG).</li>
       <li xml:lang="es">El gráfico de llamadas se puede exportar como imagen (PNG).</li>
       <li xml:lang="et">Väljakutsete graafikut saab eksportida pildina (PNG).</li>
+      <li xml:lang="eu">Deien grafikoa irudi gisa esportatu daiteke (PNG).</li>
       <li xml:lang="fi">Kutsukaavion voi viedä kuvaksi (PNG).</li>
       <li xml:lang="fr">Le graphe d'appels peut être exporté au format image (PNG).</li>
       <li xml:lang="gl">O gráfico de chamadas pode exportarse como imaxe (PNG).</li>
@@ -290,6 +299,7 @@
       <li xml:lang="eo">Samtempa montrado de 2 eventotipoj en Voka kaj Prinota Vido</li>
       <li xml:lang="es">Visualización simultánea de 2 tipos de eventos en la vista de llamada y anotación</li>
       <li xml:lang="et">Korraga kahe sündmusetüübi kuvamine väljakutsete ja annotatsioonide vaates</li>
+      <li xml:lang="eu">Dei eta idatzohar  ikuspegietan 2 gertakari aldi berean azaltzea</li>
       <li xml:lang="fi">Kahden tapahtumatyypin samanaikainen näyttö kutsu- ja merkintänäkymissä</li>
       <li xml:lang="fr">Affichage simultané de 2 types d'évènements dans les vues Appel et Annotation</li>
       <li xml:lang="gl">Visualización simultánea de dous tipos de evento nas vistas de chamadas e de anotacións.</li>
@@ -324,6 +334,7 @@
       <caption xml:lang="eo">Analizo de profildatumoj kun KCachegrind</caption>
       <caption xml:lang="es">Análisis de datos de rendimiento con KCachegrind</caption>
       <caption xml:lang="et">Profileerimisandmete analüüs KCachegrindis</caption>
+      <caption xml:lang="eu">Datuen analisia «KCachegrind»ekin profilatzea</caption>
       <caption xml:lang="fi">Data-analyysin profilointia KCachegrindilla</caption>
       <caption xml:lang="fr">Analyse des données de profilage à l'aide de KCachegrind</caption>
       <caption xml:lang="gl">Analizando datos de rendemento con KCachegrind</caption>
