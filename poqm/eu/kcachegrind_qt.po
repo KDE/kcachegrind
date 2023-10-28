@@ -1,355 +1,361 @@
+# Translation for kcachegrind_qt.po to Euskara/Basque (eu).
+# Copyright (C) 2023 This file is copyright:
+# This file is distributed under the same license as the original file.
+# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
+#
+# Translators:
+# SPDX-FileCopyrightText: 2023 Iñigo Salvador Azurmendi <xalba@ni.eus>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
-"Language-Team: \n"
-"Language: ka\n"
+"PO-Revision-Date: 2023-10-27 23:12+0200\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
+"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
+"Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Poedit 3.4.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
 msgid "Import filter for Cachegrind/Callgrind generated profile data files"
 msgstr ""
-"შემოტანის ფილტრი Cachegrnd/Callgrind-ის მიერ გენერირებული პროფილის მონაცემის "
-"ფაილებისთვის"
+"«Cachegrind»/«Callgrind»ekin sortutako profil datuen fitxategiak "
+"inportatzeko iragazkia"
 
 #: libcore/context.cpp:60
 msgctxt "ProfileContext|"
 msgid "Invalid Context"
-msgstr "არასწორი კონტექსტი"
+msgstr "Testuinguru baliogabea"
 
 #: libcore/context.cpp:61
 msgctxt "ProfileContext|"
 msgid "Unknown Context"
-msgstr "უცნობი კონტექსტი"
+msgstr "Testuinguru ezezaguna"
 
 #: libcore/context.cpp:62
 msgctxt "ProfileContext|"
 msgid "Part Source Line"
-msgstr "ნაწილის კოდის ხაზი"
+msgstr "Sorburu lerro atala"
 
 #: libcore/context.cpp:63
 msgctxt "ProfileContext|"
 msgid "Source Line"
-msgstr "წყაროს ხაზი"
+msgstr "Sorburu lerroa"
 
 #: libcore/context.cpp:64
 msgctxt "ProfileContext|"
 msgid "Part Line Call"
-msgstr "სტრიქონის გამოძახების ხაზი"
+msgstr "Lerro dei atala"
 
 #: libcore/context.cpp:65
 msgctxt "ProfileContext|"
 msgid "Line Call"
-msgstr "ხაზის გამოძახება"
+msgstr "Lerro deia"
 
 #: libcore/context.cpp:66
 msgctxt "ProfileContext|"
 msgid "Part Jump"
-msgstr "ნაწილზე გადასვლა"
+msgstr "Jauzi atala"
 
 #: libcore/context.cpp:67
 msgctxt "ProfileContext|"
 msgid "Jump"
-msgstr "გადასვლა"
+msgstr "Jauzi"
 
 #: libcore/context.cpp:68
 msgctxt "ProfileContext|"
 msgid "Part Instruction"
-msgstr "ნაწილის ინსტრუქცია"
+msgstr "Jarraibide atala"
 
 #: libcore/context.cpp:69
 msgctxt "ProfileContext|"
 msgid "Instruction"
-msgstr "ინსტრუქცია"
+msgstr "Jarraibidea"
 
 #: libcore/context.cpp:70
 msgctxt "ProfileContext|"
 msgid "Part Instruction Jump"
-msgstr "ნაწილის ინსტრუქციაზე გადასვლა"
+msgstr "Jarraibide jauzi atala"
 
 #: libcore/context.cpp:71
 msgctxt "ProfileContext|"
 msgid "Instruction Jump"
-msgstr "გადახტომის ინსტრუქცია"
+msgstr "Jarraibide jauzia"
 
 #: libcore/context.cpp:72
 msgctxt "ProfileContext|"
 msgid "Part Instruction Call"
-msgstr "ნაწილის ინსტრუქციის გამოძახება"
+msgstr "Jarraibide deia atala"
 
 #: libcore/context.cpp:73
 msgctxt "ProfileContext|"
 msgid "Instruction Call"
-msgstr "ინსტრუქციის გამოძახება"
+msgstr "Jarraibide deia"
 
 #: libcore/context.cpp:74
 msgctxt "ProfileContext|"
 msgid "Part Call"
-msgstr "ნაწილის გამძახება"
+msgstr "Dei atala"
 
 #: libcore/context.cpp:75
 msgctxt "ProfileContext|"
 msgid "Call"
-msgstr "დარეკვა"
+msgstr "Deia"
 
 #: libcore/context.cpp:76
 msgctxt "ProfileContext|"
 msgid "Part Function"
-msgstr "ნაწილის ფუნქცია"
+msgstr "Funtzio atala"
 
 #: libcore/context.cpp:77
 msgctxt "ProfileContext|"
 msgid "Function Source File"
-msgstr "ფუნქციის კოდის ფაილი"
+msgstr "Funtzio sorburuaren fitxategia"
 
 #: libcore/context.cpp:78
 msgctxt "ProfileContext|"
 msgid "Function"
-msgstr "ფუნქცია"
+msgstr "Funtzioa"
 
 #: libcore/context.cpp:79
 msgctxt "ProfileContext|"
 msgid "Function Cycle"
-msgstr "ფუნქციის ციკლი"
+msgstr "Funtzio zikloa"
 
 #: libcore/context.cpp:80
 msgctxt "ProfileContext|"
 msgid "Part Class"
-msgstr "ნაწილის კლასი"
+msgstr "Klase atala"
 
 #: libcore/context.cpp:81
 msgctxt "ProfileContext|"
 msgid "Class"
-msgstr "კლასი"
+msgstr "Klasea"
 
 #: libcore/context.cpp:82
 msgctxt "ProfileContext|"
 msgid "Part Source File"
-msgstr "ნაწილის კოდის ფაილი"
+msgstr "Sorburu fitxategi atala"
 
 #: libcore/context.cpp:83
 msgctxt "ProfileContext|"
 msgid "Source File"
-msgstr "წყაროს ფაილი"
+msgstr "Sorburu fitxategia"
 
 #: libcore/context.cpp:84
 msgctxt "ProfileContext|"
 msgid "Part ELF Object"
-msgstr "ნაწილის ELF ობიექტი"
+msgstr "ELF objektu atala"
 
 #: libcore/context.cpp:85
 msgctxt "ProfileContext|"
 msgid "ELF Object"
-msgstr "ELF ობიექტი"
+msgstr "ELF objektua"
 
 #: libcore/context.cpp:86
 msgctxt "ProfileContext|"
 msgid "Profile Part"
-msgstr "პროფილის ნაწილი"
+msgstr "Profil atala"
 
 #: libcore/context.cpp:87
 msgctxt "ProfileContext|"
 msgid "Program Trace"
-msgstr "პროგრამის ტრეისი"
+msgstr "Programaren aztarna"
 
 #: libcore/costitem.cpp:48
-#, qt-format
+#, fuzzy, qt-format
 msgctxt "QObject|"
 msgid "%1 from %2"
-msgstr "%1 %2-დან"
+msgstr "Nork"
 
 #: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
 #: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
 #: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
 msgctxt "QObject|"
 msgid "(unknown)"
-msgstr "(უცნობია)"
+msgstr "(ezezaguna)"
 
 #: libcore/globalconfig.cpp:77
 msgctxt "QObject|"
 msgid "Instruction Fetch"
-msgstr "ინსტრუქციის გამოთხოვა"
+msgstr ""
 
 #: libcore/globalconfig.cpp:78
 msgctxt "QObject|"
 msgid "Data Read Access"
-msgstr "მონაცემების კითხვის წვდომა"
+msgstr ""
 
 #: libcore/globalconfig.cpp:79
 msgctxt "QObject|"
 msgid "Data Write Access"
-msgstr "მონაცემების ჩაწერის წვდომა"
+msgstr ""
 
 #: libcore/globalconfig.cpp:80
 msgctxt "QObject|"
 msgid "L1 Instr. Fetch Miss"
-msgstr "L1 ინსტრ. გამოთხ. აცდ"
+msgstr ""
 
 #: libcore/globalconfig.cpp:81
 msgctxt "QObject|"
 msgid "L1 Data Read Miss"
-msgstr "L1 მონაც. წაკითხვ. აცდ"
+msgstr ""
 
 #: libcore/globalconfig.cpp:82
 msgctxt "QObject|"
 msgid "L1 Data Write Miss"
-msgstr "L1 მონაც. ჩაწერ. აცდ"
+msgstr ""
 
 #: libcore/globalconfig.cpp:83
 msgctxt "QObject|"
 msgid "L2 Instr. Fetch Miss"
-msgstr "L2 ინსტრ. გამოთხ. აცდ"
+msgstr ""
 
 #: libcore/globalconfig.cpp:84
 msgctxt "QObject|"
 msgid "L2 Data Read Miss"
-msgstr "L2 მონაც. წაკითხვ. აცდ"
+msgstr ""
 
 #: libcore/globalconfig.cpp:85
 msgctxt "QObject|"
 msgid "L2 Data Write Miss"
-msgstr "L2 მონაც. ჩაწერ. აცდ"
+msgstr ""
 
 #: libcore/globalconfig.cpp:86
 msgctxt "QObject|"
 msgid "LL Instr. Fetch Miss"
-msgstr "LL ინსტრ. გამოთხ. აცდ"
+msgstr ""
 
 #: libcore/globalconfig.cpp:87
 msgctxt "QObject|"
 msgid "LL Data Read Miss"
-msgstr "LL მონაც. წაკითხვ. აცდ"
+msgstr ""
 
 #: libcore/globalconfig.cpp:88
 msgctxt "QObject|"
 msgid "LL Data Write Miss"
-msgstr "LL მონაც. ჩაწერ. აცდ"
+msgstr ""
 
 #: libcore/globalconfig.cpp:89
 msgctxt "QObject|"
 msgid "L1 Miss Sum"
-msgstr "L1 აცდ. ჯამი"
+msgstr ""
 
 #: libcore/globalconfig.cpp:90
 msgctxt "QObject|"
 msgid "L2 Miss Sum"
-msgstr "L2 აცდ. ჯამი"
+msgstr ""
 
 #: libcore/globalconfig.cpp:91
 msgctxt "QObject|"
 msgid "Last-level Miss Sum"
-msgstr "ბოლო დონის (Last-level) აცდენების ჯამი"
+msgstr ""
 
 #: libcore/globalconfig.cpp:92
 msgctxt "QObject|"
 msgid "Indirect Branch"
-msgstr "არაპირდაპირი ბრენჩი"
+msgstr ""
 
 #: libcore/globalconfig.cpp:93
 msgctxt "QObject|"
 msgid "Mispredicted Ind. Branch"
-msgstr "გამოუცნობი არაპ. ბრენჩი"
+msgstr ""
 
 #: libcore/globalconfig.cpp:94
 msgctxt "QObject|"
 msgid "Conditional Branch"
-msgstr "პირობითი ბრენჩი"
+msgstr "Baldintzapeko adarra"
 
 #: libcore/globalconfig.cpp:95
 msgctxt "QObject|"
 msgid "Mispredicted Cond. Branch"
-msgstr "გამოუცნობი პირობ. ბრენჩი"
+msgstr ""
 
 #: libcore/globalconfig.cpp:96
 msgctxt "QObject|"
 msgid "Mispredicted Branch"
-msgstr "გამოუცნობი ბრენჩი"
+msgstr ""
 
 #: libcore/globalconfig.cpp:97
 msgctxt "QObject|"
 msgid "Global Bus Event"
-msgstr "გლობალური მატარებლის მოვლენა"
+msgstr ""
 
 #: libcore/globalconfig.cpp:98
 msgctxt "QObject|"
 msgid "Samples"
-msgstr "სემპლები"
+msgstr "Laginak"
 
 #: libcore/globalconfig.cpp:99
 msgctxt "QObject|"
 msgid "System Time"
-msgstr "სისტემური დრო"
+msgstr "Sistemaren ordua"
 
 #: libcore/globalconfig.cpp:100
 msgctxt "QObject|"
 msgid "User Time"
-msgstr "მომხმარებლის დრო"
+msgstr "Erabiltzailearen ordua"
 
 #: libcore/globalconfig.cpp:101
 msgctxt "QObject|"
 msgid "Cycle Estimation"
-msgstr "ციკლის შემდეგ"
+msgstr ""
 
 #: libcore/tracedata.cpp:1240
 msgctxt "QObject|"
 msgid "(no caller)"
-msgstr "(გამომძახებლის გარეშე)"
+msgstr "(dei egilerik ez)"
 
 #: libcore/tracedata.cpp:1247 libcore/tracedata.cpp:1266
 #, qt-format
 msgctxt "QObject|"
 msgid "%1 via %2"
-msgstr "%1 %2-ის გავლით"
+msgstr ""
 
 #: libcore/tracedata.cpp:1256
 msgctxt "QObject|"
 msgid "(no callee)"
-msgstr "(გამოძახებულის გარეშე)"
+msgstr "(deitutakorik ez)"
 
 #: libcore/tracedata.cpp:2709
 msgctxt "QObject|"
 msgid "(global)"
-msgstr "(გლობალური)"
+msgstr "(globala)"
 
 #: libcore/tracedata.cpp:3144
 msgctxt "QObject|"
 msgid "(not found)"
-msgstr "(ვერ მოიძებნა)"
+msgstr "(ez da aurkitu)"
 
 #: libcore/tracedata.cpp:3692
 msgctxt "TraceData|"
 msgid "Recalculating Function Cycles..."
-msgstr "ფუნქციის ციკლების გადათვლა..."
+msgstr "Funtzio-zikloak birkalkulatzen..."
 
 #: libviews/callgraphview.cpp:414
 #, qt-format
 msgctxt "QObject|"
 msgid "Call(s) from %1"
-msgstr "გამოძახებები %1-დან"
+msgstr ""
 
 #: libviews/callgraphview.cpp:417
 #, qt-format
 msgctxt "QObject|"
 msgid "Call(s) to %1"
-msgstr "%1-ის გამოძახებები"
+msgstr ""
 
 #: libviews/callgraphview.cpp:419
 msgctxt "QObject|"
 msgid "(unknown call)"
-msgstr "(უცნობი გამოძახება)"
+msgstr "(dei ezezaguna)"
 
 #: libviews/callgraphview.cpp:908
 msgctxt "QObject|"
 msgid "Export Graph"
-msgstr "გრაფიკის გატანა"
+msgstr "Esportatu grafikoa"
 
 #: libviews/callgraphview.cpp:1608
 msgctxt "CallGraphView|"
@@ -373,25 +379,22 @@ msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
 "Reduce node/edge limits for speedup.\n"
 msgstr ""
-"გაფრთხილება: მიმდინარეობს გრაფიკის განლაგება, რომელსაც საკმაოდ დიდი დრო "
-"სჭირება.\n"
-"სიჩქარის გასაზრდელად შეამცირეთ კვანძების/წიბოების რაოდენობა.\n"
 
 #: libviews/callgraphview.cpp:2023
 msgctxt "CallGraphView|"
 msgid "Layouting stopped.\n"
-msgstr "განლაგება შეჩერდა.\n"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2025
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
-msgstr "გამოძახების გრაფიკს აქვს %1 კვანძი და %2 წიბო.\n"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2034
 msgctxt "CallGraphView|"
 msgid "No graph available because the layouting process failed.\n"
-msgstr "გრაფიკი ხელმისაწვდომი არაა, რადგან განლაგების პროცესი ჩავარდა.\n"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2036
 #, qt-format
@@ -400,28 +403,26 @@ msgid ""
 "Trying to run the following command did not work:\n"
 "'%1'\n"
 msgstr ""
-"ვცდილობდი გამეშვა, მაგრამ არ იმუშავა შემდეგმა ბრძანებამ:\n"
-"'%1'\n"
 
 #: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
 msgctxt "CallGraphView|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
-msgstr "შეამოწმეთ, დაყენებულია თუ არა პროგრამა 'dot' (პაკეტი GraphViz)."
+msgstr ""
 
 #: libviews/callgraphview.cpp:2080
 msgctxt "CallGraphView|"
 msgid "No item activated for which to draw the call graph."
-msgstr "ელემენტი, რომლისთვისაც გამოძახების რუკას დავხატავ, გააქტიურებული არაა."
+msgstr ""
 
 #: libviews/callgraphview.cpp:2092
 msgctxt "CallGraphView|"
 msgid "No call graph can be drawn for the active item."
-msgstr "აქტიური ელემენტისთვის გამოძახების რუკას ვერ დავხატავ."
+msgstr ""
 
 #: libviews/callgraphview.cpp:2554
 msgctxt "CallGraphView|"
 msgid "Error running the graph layouting tool.\n"
-msgstr "გრაფიკის განლაგების პროგრამის გამოძახების შეცდომა.\n"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2559
 #, qt-format
@@ -431,276 +432,273 @@ msgid ""
 "\t'%1'\n"
 "because it has no cost of the selected event type."
 msgstr ""
-"გამოძახების გრაფიკი ხელმისაწვდომი არაა ფუნქციისთვის \n"
-"\t'%1'\n"
-"იმიტომ, რომ მას მონიშნული მოვლენის ტიპის ღირებულება არ გააჩნია."
 
 #: libviews/callgraphview.cpp:2773
 msgctxt "CallGraphView|"
 msgid "Caller Depth"
-msgstr "გამომძახებლის სიღრმე"
+msgstr "Dei egilearen sakonera"
 
 #: libviews/callgraphview.cpp:2774 libviews/callgraphview.cpp:2814
 msgctxt "CallGraphView|"
 msgid "Unlimited"
-msgstr "შეუზღუდავი"
+msgstr "Mugagabea"
 
 #: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
 msgctxt "CallGraphView|None"
 msgid "Depth 0"
-msgstr "სიღრმე 0"
+msgstr "Sakonera 0"
 
 #: libviews/callgraphview.cpp:2778 libviews/callgraphview.cpp:2818
 msgctxt "CallGraphView|"
 msgid "max. 1"
-msgstr "მაქს. 1"
+msgstr "max. 1"
 
 #: libviews/callgraphview.cpp:2779 libviews/callgraphview.cpp:2819
 msgctxt "CallGraphView|"
 msgid "max. 2"
-msgstr "მაქს. 2"
+msgstr "max. 2"
 
 #: libviews/callgraphview.cpp:2780 libviews/callgraphview.cpp:2820
 msgctxt "CallGraphView|"
 msgid "max. 5"
-msgstr "მაქს. 5"
+msgstr "max. 5"
 
 #: libviews/callgraphview.cpp:2781 libviews/callgraphview.cpp:2821
 msgctxt "CallGraphView|"
 msgid "max. 10"
-msgstr "მაქს. 10"
+msgstr "max. 10"
 
 #: libviews/callgraphview.cpp:2782 libviews/callgraphview.cpp:2822
 msgctxt "CallGraphView|"
 msgid "max. 15"
-msgstr "მაქს. 15"
+msgstr "max. 15"
 
 #: libviews/callgraphview.cpp:2813
 msgctxt "CallGraphView|"
 msgid "Callee Depth"
-msgstr "გამოძახებულის სიღრმე"
+msgstr "Deituaren sakonera"
 
 #: libviews/callgraphview.cpp:2853
 msgctxt "CallGraphView|"
 msgid "Min. Node Cost"
-msgstr "მინ. კვანძის ღირებულება"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2854
 msgctxt "CallGraphView|"
 msgid "No Minimum"
-msgstr "მინიმუმის გარეშე"
+msgstr "Minimorik ez"
 
 #: libviews/callgraphview.cpp:2860
 msgctxt "CallGraphView|"
 msgid "50 %"
-msgstr "50 %"
+msgstr "% 50"
 
 #: libviews/callgraphview.cpp:2861
 msgctxt "CallGraphView|"
 msgid "20 %"
-msgstr "20 %"
+msgstr "% 20"
 
 #: libviews/callgraphview.cpp:2862
 msgctxt "CallGraphView|"
 msgid "10 %"
-msgstr "10 %"
+msgstr "% 10"
 
 #: libviews/callgraphview.cpp:2863
 msgctxt "CallGraphView|"
 msgid "5 %"
-msgstr "5 %"
+msgstr "% 5"
 
 #: libviews/callgraphview.cpp:2864
 msgctxt "CallGraphView|"
 msgid "2 %"
-msgstr "2 %"
+msgstr "% 2"
 
 #: libviews/callgraphview.cpp:2865
 msgctxt "CallGraphView|"
 msgid "1 %"
-msgstr "1 %"
+msgstr "% 1"
 
 #: libviews/callgraphview.cpp:2895
 msgctxt "CallGraphView|"
 msgid "Min. Call Cost"
-msgstr "მინ. გამოძახების ღირებულება"
+msgstr "Deiaren kostu min."
 
 #: libviews/callgraphview.cpp:2896
 msgctxt "CallGraphView|"
 msgid "Same as Node"
-msgstr "იგივე, რაც კვანძი"
+msgstr "Nodoaren berdina"
 
 #: libviews/callgraphview.cpp:2898
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
-msgstr "კვანძის 50%"
+msgstr "Nodoaren % 50"
 
 #: libviews/callgraphview.cpp:2900
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
-msgstr "კვანძის 20%"
+msgstr "Nodoaren % 20"
 
 #: libviews/callgraphview.cpp:2902
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
-msgstr "კვანძის 10%"
+msgstr "Nodoaren % 10"
 
 #: libviews/callgraphview.cpp:2931
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
-msgstr "გადახედვა"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2932
 msgctxt "CallGraphView|"
 msgid "Top Left"
-msgstr "ზედა მარცხენა"
+msgstr "Goian ezkerrean"
 
 #: libviews/callgraphview.cpp:2933
 msgctxt "CallGraphView|"
 msgid "Top Right"
-msgstr "ზედა მარჯვენა"
+msgstr "Goian eskuinean"
 
 #: libviews/callgraphview.cpp:2934
 msgctxt "CallGraphView|"
 msgid "Bottom Left"
-msgstr "ქვედა მარცხენა"
+msgstr "Behean ezkerrean"
 
 #: libviews/callgraphview.cpp:2935
 msgctxt "CallGraphView|"
 msgid "Bottom Right"
-msgstr "ქვედა მარჯვენა"
+msgstr "Behean eskuinean"
 
 #: libviews/callgraphview.cpp:2936
 msgctxt "CallGraphView|"
 msgid "Automatic"
-msgstr "ავტომატური"
+msgstr "Automatikoa"
 
 #: libviews/callgraphview.cpp:2937
 msgctxt "CallGraphView|"
 msgid "Hide"
-msgstr "დამალვა"
+msgstr "Ezkutatu"
 
 #: libviews/callgraphview.cpp:2967
 msgctxt "CallGraphView|"
 msgid "Layout"
-msgstr "განლაგება"
+msgstr "Antolaera"
 
 #: libviews/callgraphview.cpp:2968
 msgctxt "CallGraphView|"
 msgid "Top to Down"
-msgstr "მაღლიდან დაბლა"
+msgstr "Goitik behera"
 
 #: libviews/callgraphview.cpp:2969
 msgctxt "CallGraphView|"
 msgid "Left to Right"
-msgstr "მარცხნიდან მარჯვნივ"
+msgstr "Ezkerretik eskuinera"
 
 #: libviews/callgraphview.cpp:2970
 msgctxt "CallGraphView|"
 msgid "Circular"
-msgstr "წრიული"
+msgstr "Zirkularra"
 
 #: libviews/callgraphview.cpp:3010 libviews/callgraphview.cpp:3015
 #: libviews/callgraphview.cpp:3035
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
-msgstr "%1-ზე გადასვლა"
+msgstr "Joan '%1'(e)ra"
 
 #: libviews/callgraphview.cpp:3046
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
-msgstr "განლაგების შეჩერება"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3053
 msgctxt "CallGraphView|"
 msgid "Export Graph"
-msgstr "გრაფიკის გატანა"
+msgstr "Esportatu grafikoa"
 
 #: libviews/callgraphview.cpp:3054
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
-msgstr "DOT ფაილად..."
+msgstr "DOT fitxategi gisa..."
 
 #: libviews/callgraphview.cpp:3055
 msgctxt "CallGraphView|"
 msgid "As Image..."
-msgstr "როგორც გამოსახულება..."
+msgstr "Irudi gisa..."
 
 #: libviews/callgraphview.cpp:3058
 msgctxt "CallGraphView|"
 msgid "Graph"
-msgstr "გრაფიკი"
+msgstr "Grafikoa"
 
 #: libviews/callgraphview.cpp:3066
 msgctxt "CallGraphView|"
 msgid "Arrows for Skipped Calls"
-msgstr "ისრები გამოტოვებული გამოძახებებისთვის"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3071
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
-msgstr "შიდა-ციკლის გამოძახებები"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3076
 msgctxt "CallGraphView|"
 msgid "Cluster Groups"
-msgstr "დაჯგუფება"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3080
 msgctxt "CallGraphView|"
 msgid "Visualization"
-msgstr "ვიზუალიზაცია"
+msgstr "Irudikapena"
 
 #: libviews/callgraphview.cpp:3081
 msgctxt "CallGraphView|"
 msgid "Compact"
-msgstr "დაპატარავება"
+msgstr "Trinkoa"
 
 #: libviews/callgraphview.cpp:3084
 msgctxt "CallGraphView|"
 msgid "Normal"
-msgstr "ნორმალური"
+msgstr "Arrunta"
 
 #: libviews/callgraphview.cpp:3087
 msgctxt "CallGraphView|"
 msgid "Tall"
-msgstr "მაღალი"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3119
 msgctxt "CallGraphView|"
 msgid "Export Graph As Image"
-msgstr "გრაფიკის გამოსახულების ფაილში გატანა"
+msgstr "Esportatu grafikoa irudi gisa"
 
 #: libviews/callgraphview.cpp:3121
 msgctxt "CallGraphView|"
 msgid "Images (*.png *.jpg)"
-msgstr "გამოსახულებები (*.png *.jpg)"
+msgstr "Irudiak (*.png *.jpg)"
 
 #: libviews/callitem.cpp:73 libviews/partlistitem.cpp:131
 msgctxt "QObject|"
 msgid "(active)"
-msgstr "(აქტიური)"
+msgstr "(aktibo)"
 
 #: libviews/callmapview.cpp:52
 msgctxt "CallMapView|Name"
 msgid "A thing's name"
-msgstr "ობიექტის სახელი"
+msgstr "Gauza baten izena"
 
 #: libviews/callmapview.cpp:53
 msgctxt "CallMapView|"
 msgid "Cost"
-msgstr "ფასი"
+msgstr "Kostua"
 
 #: libviews/callmapview.cpp:54
 msgctxt "CallMapView|"
 msgid "Location"
-msgstr "მდებარეობა"
+msgstr "Kokalekua"
 
 #: libviews/callmapview.cpp:56
 msgctxt "CallMapView|"
 msgid "Calls"
-msgstr "ზარები"
+msgstr "Deiak"
 
 #: libviews/callmapview.cpp:91
 msgctxt "CallMapView|"
@@ -710,11 +708,6 @@ msgid ""
 "function; its size tries to be proportional to the cost spent therein while "
 "the active function is running (however, there are drawing constraints).</p>"
 msgstr ""
-"<b>გამომძახებლების რუკა</b><p>ეს გრაფიკი ამჟამად აქტივირებული ფუნქციის ყველა "
-"გამომძახებლის ჩალაგებულ იერარქიას აჩვენებს. თითოეული ფერადი ოთხკუთხედი "
-"წარმოადგენს ფუნქციას, მისი ზომა კი დაახლოებით პროპორციულია ღირებულების, "
-"რომელიც დახარჯულია, სანამ ფუნქცია გაშვებული იყო (მაგრამ, არსებობს ხატვის "
-"შეზღუდვები).</p>"
 
 #: libviews/callmapview.cpp:98
 msgctxt "CallMapView|"
@@ -724,11 +717,6 @@ msgid ""
 "function; its size tries to be proportional to the cost spent therein while "
 "the active function is running (however, there are drawing constraints).</p>"
 msgstr ""
-"<b>გამოძახების რუკა</b><p>ეს გრაფიკი ამჟამად აქტივირებული ფუნქციის ყველა "
-"გამოძახებული ჩალაგებულ იერარქიას აჩვენებს. თითოეული ფერადი ოთხკუთხედი "
-"წარმოადგენს ფუნქციას, მისი ზომა კი დაახლოებით პროპორციულია ღირებულების, "
-"რომელიც დახარჯულია, სანამ ფუნქცია გაშვებული იყო (მაგრამ, არსებობს ხატვის "
-"შეზღუდვები).</p>"
 
 #: libviews/callmapview.cpp:106
 msgctxt "CallMapView|"
@@ -749,234 +737,234 @@ msgstr ""
 #: libviews/callmapview.cpp:139
 msgctxt "CallMapView|"
 msgid "Go To"
-msgstr "გადასვლა"
+msgstr "Joan hona,"
 
 #: libviews/callmapview.cpp:170
 msgctxt "CallMapView|"
 msgid "Stop at Depth"
-msgstr "სიღრმეზე გაჩერება"
+msgstr "Gelditu sakoneran"
 
 #: libviews/callmapview.cpp:171
 msgctxt "CallMapView|"
 msgid "No Depth Limit"
-msgstr "სიღრის ლიმტის გარეშე"
+msgstr "Sakonera mugarik gabe"
 
 #: libviews/callmapview.cpp:173
 msgctxt "CallMapView|"
 msgid "Depth 10"
-msgstr "10"
+msgstr "10 sakonera"
 
 #: libviews/callmapview.cpp:174
 msgctxt "CallMapView|"
 msgid "Depth 15"
-msgstr "15"
+msgstr "15 sakonera"
 
 #: libviews/callmapview.cpp:175
 msgctxt "CallMapView|"
 msgid "Depth 20"
-msgstr "20"
+msgstr "20 sakonera"
 
 #: libviews/callmapview.cpp:178
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Depth of '%1' (%2)"
-msgstr "'%1'-ის სიღრმე (%2)"
+msgstr "'%1' (%2) sakonera"
 
 #: libviews/callmapview.cpp:185
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Decrement Depth (to %1)"
-msgstr "სიღრმის შემცირება (%1-მდე)"
+msgstr "Gutxiagotu sakonera (%1(e)ra)"
 
 #: libviews/callmapview.cpp:187
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Increment Depth (to %1)"
-msgstr "სიღრმის გაზრდა (%1-მდე)"
+msgstr "Handiagotu sakonera (%1(e)ra)"
 
 #: libviews/callmapview.cpp:213
 msgctxt "CallMapView|"
 msgid "Stop at Function"
-msgstr "გაჩერება ფუნქციაზე"
+msgstr ""
 
 #: libviews/callmapview.cpp:214
 msgctxt "CallMapView|"
 msgid "No Function Limit"
-msgstr "ფუნქცის ლიმიტის გარეშე"
+msgstr "Funtzio mugarik ez"
 
 #: libviews/callmapview.cpp:257
 msgctxt "CallMapView|"
 msgid "Stop at Area"
-msgstr "ფართობზე გაჩერება"
+msgstr "Gelditu eskualdean"
 
 #: libviews/callmapview.cpp:258
 msgctxt "CallMapView|"
 msgid "No Area Limit"
-msgstr "ადგილის ლიმიტის გარეშე"
+msgstr "Eskualde mugarik ez"
 
 #: libviews/callmapview.cpp:260
 msgctxt "CallMapView|"
 msgid "100 Pixels"
-msgstr "100 პიქსელი"
+msgstr "100 pixel"
 
 #: libviews/callmapview.cpp:261
 msgctxt "CallMapView|"
 msgid "200 Pixels"
-msgstr "200 პიქსელი"
+msgstr "200 pixel"
 
 #: libviews/callmapview.cpp:262
 msgctxt "CallMapView|"
 msgid "500 Pixels"
-msgstr "500 პიქსელი"
+msgstr "500 pixel"
 
 #: libviews/callmapview.cpp:263
 msgctxt "CallMapView|"
 msgid "1000 Pixels"
-msgstr "1000 პიქსელი"
+msgstr "1000 pixel"
 
 #: libviews/callmapview.cpp:269
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Area of '%1' (%2)"
-msgstr "'%1'-ის ფართობი (%2)"
+msgstr "'%1' (%2) azalera"
 
 #: libviews/callmapview.cpp:275
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Double Area Limit (to %1)"
-msgstr "ფართობის საზღვრის გაორმაგება (%1-მდე)"
+msgstr "Eskualde bikoitzeko muga (%1(e)ra)"
 
 #: libviews/callmapview.cpp:277
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Half Area Limit (to %1)"
-msgstr "ნახევარი ადგილის ლიმიტი (%1-მდე)"
+msgstr "Eskualde erdiko muga (%1(e)ra)"
 
 #: libviews/callmapview.cpp:327
 msgctxt "CallMapView|"
 msgid "Visualization"
-msgstr "ვიზუალიზაცია"
+msgstr "Irudikapena"
 
 #: libviews/callmapview.cpp:328
 msgctxt "CallMapView|"
 msgid "Split Direction"
-msgstr "გაყოფის მიმართულება"
+msgstr ""
 
 #: libviews/callmapview.cpp:331
 msgctxt "CallMapView|"
 msgid "Skip Incorrect Borders"
-msgstr "არასწორი საზღვრების გამოტოვება"
+msgstr ""
 
 #: libviews/callmapview.cpp:336
 msgctxt "CallMapView|"
 msgid "Border Width"
-msgstr "საზღვრის სიგანე"
+msgstr "Ertzaren zabalera"
 
 #: libviews/callmapview.cpp:337
 msgctxt "CallMapView|"
 msgid "Border 0"
-msgstr "საზღვარი 0"
+msgstr "Ertza 0"
 
 #: libviews/callmapview.cpp:339
 msgctxt "CallMapView|"
 msgid "Border 1"
-msgstr "საზღვარი 1"
+msgstr "Ertza 1"
 
 #: libviews/callmapview.cpp:340
 msgctxt "CallMapView|"
 msgid "Border 2"
-msgstr "საზღვარი 2"
+msgstr "Ertza 2"
 
 #: libviews/callmapview.cpp:341
 msgctxt "CallMapView|"
 msgid "Border 3"
-msgstr "საზღვარი 3"
+msgstr "Ertza 3"
 
 #: libviews/callmapview.cpp:346
 msgctxt "CallMapView|"
 msgid "Draw Symbol Names"
-msgstr "სიმბოლოს სახელების დახატვა"
+msgstr "Marraztu ikurren izenak"
 
 #: libviews/callmapview.cpp:348
 msgctxt "CallMapView|"
 msgid "Draw Cost"
-msgstr "ფასის დახატვა"
+msgstr "Marraztu kostua"
 
 #: libviews/callmapview.cpp:350
 msgctxt "CallMapView|"
 msgid "Draw Location"
-msgstr "მდებარეობის დახატვა"
+msgstr "Marraztu kokalekua"
 
 #: libviews/callmapview.cpp:352
 msgctxt "CallMapView|"
 msgid "Draw Calls"
-msgstr "გამოძახებების გახატვა"
+msgstr "Marraztu deiak"
 
 #: libviews/callmapview.cpp:356
 msgctxt "CallMapView|"
 msgid "Ignore Proportions"
-msgstr "პროპორციების იგნორი"
+msgstr "Ezikusi proportzioak"
 
 #: libviews/callmapview.cpp:358
 msgctxt "CallMapView|"
 msgid "Allow Rotation"
-msgstr "შემობრუნების ჩართვა"
+msgstr "Baimendu biraketa"
 
 #: libviews/callmapview.cpp:376
 msgctxt "CallMapView|"
 msgid "Shading"
-msgstr "ჩრდილები"
+msgstr "Itzaldura"
 
 #: libviews/callmapview.cpp:428
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Call Map: Current is '%1'"
-msgstr "გამოძახებების რუკა: მიმდინარეა '%1'"
+msgstr "Dei-mapa: Unekoa '%1' da"
 
 #: libviews/callmapview.cpp:621
 msgctxt "QObject|"
 msgid "(no function)"
-msgstr "(ფუნქციის გარეშე)"
+msgstr "(funtziorik ez)"
 
 #: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
 msgctxt "QObject|"
 msgid "(no call)"
-msgstr "(გამოძახების გარეშე)"
+msgstr "(deirik es)"
 
 #: libviews/callview.cpp:37
 msgctxt "CallView|"
 msgid "Cost"
-msgstr "ფასი"
+msgstr "Kostua"
 
 #: libviews/callview.cpp:38
 msgctxt "CallView|"
 msgid "Cost per call"
-msgstr "გამოძახების ფასი"
+msgstr "Dei bakoitzeko kostua"
 
 #: libviews/callview.cpp:39
 msgctxt "CallView|"
 msgid "Cost 2"
-msgstr "ღირებულება 2"
+msgstr "Kostua 2"
 
 #: libviews/callview.cpp:40
 msgctxt "CallView|"
 msgid "Cost 2 per call"
-msgstr "ღირებულება 2 თითოეულ გამოძახებაზე"
+msgstr "Kostua 2 dei bakoitzeko"
 
 #: libviews/callview.cpp:41
 msgctxt "CallView|"
 msgid "Count"
-msgstr "რაოდენობა"
+msgstr "Kopurua"
 
 #: libviews/callview.cpp:42
 msgctxt "CallView|"
 msgid "Caller"
-msgstr "გამომძახებელი"
+msgstr "Dei egilea"
 
 #: libviews/callview.cpp:42
 msgctxt "CallView|"
 msgid "Callee"
-msgstr "გამოძახებული"
+msgstr "Deitua"
 
 #: libviews/callview.cpp:76
 msgctxt "CallView|"
@@ -1001,75 +989,69 @@ msgid ""
 "information panel. If there are two panels (Split mode), the function of the "
 "other panel is changed instead.</p>"
 msgstr ""
-"<b>პირდაპირი გამომძახებლების სია</b><p>ეს სია აჩვენებს ყველა ფუნქციას, "
-"რომელიც ამჟამად მონიშნული პირდაპირ იძახებს, გამოძახებების რაოდენობისა და "
-"ღირებულების ჩათვლით, რომელიც ფუნქციის გამოძახებისას დაიხარჯა.</p><p>ფუნქციის "
-"მონიშვნა მას მიმდინარედ დააყენებს და ის ინფორმაციის პანელზე გამოჩნდება. თუ "
-"გაქვთ ორი პანელი (გაყოფილი რეჟიმი), ამის მაგიერ, სხვა პანელის ფუნქცია "
-"შეიცვლება.</p>"
 
 #: libviews/callview.cpp:118 libviews/callview.cpp:123
 #, qt-format
 msgctxt "CallView|"
 msgid "Go to '%1'"
-msgstr "%1-ზე გადასვლა"
+msgstr "Joan '%1'(e)ra"
 
 #: libviews/callview.cpp:257 libviews/callview.cpp:261
 #, qt-format
 msgctxt "CallView|"
 msgid "%1 per call"
-msgstr "%1 თითოეული გამოძახებისას"
+msgstr "Dei bakoitzeko %1"
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
 msgctxt "QObject|"
 msgid "(%n item(s) skipped)"
 msgid_plural "(%n item(s) skipped)"
-msgstr[0] "(გამოტოვებულია %n ელემენტი)"
-msgstr[1] "(გამოტოვებულია %n ელემენტი)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
 #, qt-format
 msgctxt "QObject|"
 msgid "(%n function(s) skipped)"
 msgid_plural "(%n function(s) skipped)"
-msgstr[0] "(გამოტოვებულია %n ფუნქცია)"
-msgstr[1] "(გამოტოვებულია %n ფუნქცია)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: libviews/coverageview.cpp:37
 msgctxt "CoverageView|"
 msgid "Incl."
-msgstr "ჩათვლ."
+msgstr ""
 
 #: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
 msgctxt "CoverageView|"
 msgid "Distance"
-msgstr "მანძილი"
+msgstr "Distantzia"
 
 #: libviews/coverageview.cpp:41
 msgctxt "CoverageView|"
 msgid "Called"
-msgstr "გამოძახებულია"
+msgstr ""
 
 #: libviews/coverageview.cpp:42
 msgctxt "CoverageView|"
 msgid "Caller"
-msgstr "გამომძახებელი"
+msgstr "Dei egilea"
 
 #: libviews/coverageview.cpp:46
 msgctxt "CoverageView|"
 msgid "Self"
-msgstr "Self"
+msgstr ""
 
 #: libviews/coverageview.cpp:48
 msgctxt "CoverageView|"
 msgid "Calling"
-msgstr "ირეკება"
+msgstr ""
 
 #: libviews/coverageview.cpp:49
 msgctxt "CoverageView|"
 msgid "Callee"
-msgstr "გამოძახებული"
+msgstr ""
 
 #: libviews/coverageview.cpp:84
 msgctxt "CoverageView|"
@@ -1115,37 +1097,37 @@ msgstr ""
 #, qt-format
 msgctxt "CoverageView|"
 msgid "Go to '%1'"
-msgstr "%1-ზე გადასვლა"
+msgstr "Joan '%1'(e)ra"
 
 #: libviews/eventtypeitem.cpp:48
 msgctxt "QObject|"
 msgid "Unknown Type"
-msgstr "უცნობი ტიპი"
+msgstr "Mota ezezaguna"
 
 #: libviews/eventtypeview.cpp:37
 msgctxt "EventTypeView|"
 msgid "Event Type"
-msgstr "მოვლენის ტიპი"
+msgstr "Gertaera mota"
 
 #: libviews/eventtypeview.cpp:38
 msgctxt "EventTypeView|"
 msgid "Incl."
-msgstr "ჩათვლ."
+msgstr ""
 
 #: libviews/eventtypeview.cpp:39
 msgctxt "EventTypeView|"
 msgid "Self"
-msgstr "Self"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:40
 msgctxt "EventTypeView|"
 msgid "Short"
-msgstr "მოკლე"
+msgstr "Laburra"
 
 #: libviews/eventtypeview.cpp:42
 msgctxt "EventTypeView|"
 msgid "Formula"
-msgstr "ფორმულა"
+msgstr "Formula"
 
 #: libviews/eventtypeview.cpp:76
 msgctxt "EventTypeView|"
@@ -1159,110 +1141,110 @@ msgstr ""
 #: libviews/eventtypeview.cpp:96
 msgctxt "EventTypeView|"
 msgid "Set as Secondary Event Type"
-msgstr "დააყენებს, როგორც დამხმარე მოვლენის ტიპს"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:98
 msgctxt "EventTypeView|"
 msgid "Hide Secondary Event Type"
-msgstr "დამხმარე მოვლენის ტიპის დამალვა"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:107
 msgctxt "EventTypeView|"
 msgid "Edit Long Name"
-msgstr "გრძელი სახელის ჩასწორება"
+msgstr "Editatu izen luzea"
 
 #: libviews/eventtypeview.cpp:108
 msgctxt "EventTypeView|"
 msgid "Edit Short Name"
-msgstr "მოკლე სახელის ჩასწორება"
+msgstr "Editatu izen laburra"
 
 #: libviews/eventtypeview.cpp:109
 msgctxt "EventTypeView|"
 msgid "Edit Formula"
-msgstr "ფორმულის ჩასწორება"
+msgstr "Editatu formula"
 
 #: libviews/eventtypeview.cpp:110
 msgctxt "EventTypeView|"
 msgid "Remove"
-msgstr "წაშლა"
+msgstr "Kendu"
 
 #: libviews/eventtypeview.cpp:119
 msgctxt "EventTypeView|"
 msgid "New Event Type..."
-msgstr "ახალი მოვლენის ტიპი..."
+msgstr "Gertaera mota berria..."
 
 #: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
 #, qt-format
 msgctxt "EventTypeView|"
 msgid "New%1"
-msgstr "ახალი%1"
+msgstr "Berria%1"
 
 #: libviews/eventtypeview.cpp:160
 #, qt-format
 msgctxt "EventTypeView|"
 msgid "New Event Type %1"
-msgstr "ახალი მოვლენის ტიპი %1"
+msgstr "Gertaera mota berria %1"
 
 #: libviews/functionlistmodel.cpp:45
 msgctxt "FunctionListModel|"
 msgid "Incl."
-msgstr "ჩათვლ."
+msgstr ""
 
 #: libviews/functionlistmodel.cpp:46
 msgctxt "FunctionListModel|"
 msgid "Self"
-msgstr "Self"
+msgstr ""
 
 #: libviews/functionlistmodel.cpp:47
 msgctxt "FunctionListModel|"
 msgid "Called"
-msgstr "გამოძახებულია"
+msgstr ""
 
 #: libviews/functionlistmodel.cpp:48
 msgctxt "FunctionListModel|"
 msgid "Function"
-msgstr "ფუნქცია"
+msgstr "Funtzioa"
 
 #: libviews/functionlistmodel.cpp:49
 msgctxt "FunctionListModel|"
 msgid "Location"
-msgstr "მდებარეობა"
+msgstr "Kokalekua"
 
 #: libviews/functionlistmodel.cpp:89
 #, qt-format
 msgctxt "FunctionListModel|"
 msgid "(%1 function(s) skipped)"
-msgstr "(გამოტოვებულია %1 ფუნქცია)"
+msgstr ""
 
 #: libviews/functionselection.cpp:87
 msgctxt "FunctionSelection|"
 msgid "Function Profile"
-msgstr "ფუნქციის პროფილი"
+msgstr "Funtzioaren profila"
 
 #: libviews/functionselection.cpp:95
 msgctxt "FunctionSelection|"
 msgid "&Search:"
-msgstr "&ძებნა:"
+msgstr "&Bilatu:"
 
 #: libviews/functionselection.cpp:101
 msgctxt "FunctionSelection|"
 msgid "Search Query"
-msgstr "საძებნი სტრიქონი"
+msgstr "Bilaketa itauna"
 
 #: libviews/functionselection.cpp:116
 msgctxt "FunctionSelection|"
 msgid "Self"
-msgstr "Self"
+msgstr ""
 
 #: libviews/functionselection.cpp:116
 msgctxt "FunctionSelection|"
 msgid "Group"
-msgstr "ჯგუფი"
+msgstr "Taldea"
 
 #: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
 msgctxt "FunctionSelection|"
 msgid "(No Grouping)"
-msgstr "(დაჯგუფების გარეშე)"
+msgstr "(Taldekatzerik ez)"
 
 #: libviews/functionselection.cpp:209
 msgctxt "FunctionSelection|"
@@ -1279,54 +1261,54 @@ msgstr ""
 #, qt-format
 msgctxt "FunctionSelection|"
 msgid "Go to '%1'"
-msgstr "%1-ზე გადასვლა"
+msgstr "Joan '%1'(e)ra"
 
 #: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
 msgctxt "FunctionSelection|"
 msgid "Grouping"
-msgstr "დაჯგუფება"
+msgstr "Taldekatzea"
 
 #: libviews/functionselection.cpp:353
 msgctxt "FunctionSelection|"
 msgid "No Grouping"
-msgstr "დაჯგუფების გარეშე"
+msgstr "Taldekatzerik ez"
 
 #: libviews/instritem.cpp:114 libviews/sourceitem.cpp:94
 #, qt-format
 msgctxt "QObject|"
 msgid "Active call to '%1'"
-msgstr "აქტიური გამოძახება '%1'-ზე"
+msgstr ""
 
 #: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
 #, qt-format
 msgctxt "QObject|"
 msgid "Call to '%1'"
-msgstr "'%1'-ის გამოძახება"
+msgstr ""
 
 #: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
 #, qt-format
 msgctxt "QObject|"
 msgid "%n call(s) to '%2'"
 msgid_plural "%n call(s) to '%2'"
-msgstr[0] "%n გამოძახება '%2'-ზე"
-msgstr[1] "%n გამოძახება '%2'-ზე"
+msgstr[0] ""
+msgstr[1] ""
 
 #: libviews/instritem.cpp:155
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 of %2 times to 0x%3"
-msgstr "%1-დან %2 გადასვლა 0x%3-ზე"
+msgstr ""
 
 #: libviews/instritem.cpp:160
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 times to 0x%2"
-msgstr "%1-ჯერ გადასვლა 0x%2-ze"
+msgstr ""
 
 #: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
 msgctxt "QObject|"
 msgid "(cycle)"
-msgstr "(ციკლი)"
+msgstr "(zikloa)"
 
 #: libviews/instrview.cpp:193
 msgctxt "InstrView|"
@@ -1336,27 +1318,27 @@ msgstr "#"
 #: libviews/instrview.cpp:194
 msgctxt "InstrView|"
 msgid "Cost"
-msgstr "ფასი"
+msgstr "Kostua"
 
 #: libviews/instrview.cpp:195
 msgctxt "InstrView|"
 msgid "Cost 2"
-msgstr "ღირებულება 2"
+msgstr "Kostua 2"
 
 #: libviews/instrview.cpp:197
 msgctxt "InstrView|"
 msgid "Hex"
-msgstr "თექვსმეტობითი"
+msgstr "Hamas."
 
 #: libviews/instrview.cpp:199
 msgctxt "InstrView|"
 msgid "Assembly Instructions"
-msgstr "ასამბლერის ინსტრუქციები"
+msgstr "Mihiztatze jarraibideak"
 
 #: libviews/instrview.cpp:200
 msgctxt "InstrView|"
 msgid "Source Position"
-msgstr "კოდის მდებარეობა"
+msgstr ""
 
 #: libviews/instrview.cpp:236
 msgctxt "InstrView|"
@@ -1375,28 +1357,28 @@ msgstr ""
 #, qt-format
 msgctxt "InstrView|"
 msgid "Go to '%1'"
-msgstr "%1-ზე გადასვლა"
+msgstr "Joan '%1'(e)ra"
 
 #: libviews/instrview.cpp:270
 #, qt-format
 msgctxt "InstrView|"
 msgid "Go to Address %1"
-msgstr "გადასვლა მისამართზე %1"
+msgstr "Joan %1 helbidera"
 
 #: libviews/instrview.cpp:282
 msgctxt "InstrView|"
 msgid "Hex Code"
-msgstr "თექვსმეტობითი კოდი"
+msgstr "Kode hamas."
 
 #: libviews/instrview.cpp:573
 msgctxt "InstrView|"
 msgid "There is no instruction info in the profile data file."
-msgstr "პროფილის მონაცემების ფაილში ინსტრუქციის ინფორმაცია აღწერილი არაა."
+msgstr ""
 
 #: libviews/instrview.cpp:575
 msgctxt "InstrView|"
 msgid "Tip: For Callgrind, rerun with option"
-msgstr "მინიშნება: Callgrind-სთვის, გაუშვით თავიდან, პარამეტრით"
+msgstr ""
 
 #: libviews/instrview.cpp:576
 msgctxt "InstrView|"
@@ -1406,7 +1388,7 @@ msgstr "      --dump-instr=yes"
 #: libviews/instrview.cpp:577
 msgctxt "InstrView|"
 msgid "To see (conditional) jumps, additionally specify"
-msgstr "(პირობითი) გადასვლების სანახავად დამატებით მიუთიტეთ"
+msgstr ""
 
 #: libviews/instrview.cpp:578
 msgctxt "InstrView|"
@@ -1416,117 +1398,116 @@ msgstr "      --collect-jumps=yes"
 #: libviews/instrview.cpp:826
 msgctxt "InstrView|"
 msgid "For annotated machine code, the following object file is needed:"
-msgstr "ანოტაციის მქონე მანქანური კოდისთვის შემდეგი ობიექტის ფაილია საჭირო:"
+msgstr ""
 
 #: libviews/instrview.cpp:831
 msgctxt "InstrView|"
 msgid "This file can not be found."
-msgstr "ეს ფაილი აღმოჩენილი არაა."
+msgstr "Fitxategi hori ezin du aurkitu."
 
 #: libviews/instrview.cpp:834
 msgctxt "InstrView|"
 msgid "If cross-compiled, set SYSROOT variable."
-msgstr "თუ ჯვარედიდან/აგებულია, დააყენეთ ცვლადი SYSROOT."
+msgstr ""
 
 #: libviews/instrview.cpp:858
 msgctxt "InstrView|"
 msgid "There is an error trying to execute the command"
-msgstr "შეცდომა ბრძანების შესრულებისას"
+msgstr ""
 
 #: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
 msgctxt "InstrView|"
 msgid "Check that you have installed 'objdump'."
-msgstr "შეამოწმეთ, თუ გიყენიათ 'objdump'."
+msgstr ""
 
 #: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
 msgctxt "InstrView|"
 msgid "This utility can be found in the 'binutils' package."
-msgstr "ეს პროგრამა 'binutils' პაკეტის ნაწილია."
+msgstr ""
 
 #: libviews/instrview.cpp:966
 msgctxt "InstrView|"
 msgid "(No Instruction)"
-msgstr "(ინსტრუქციის გარეშე)"
+msgstr "(Jarraibiderik ez)"
 
 #: libviews/instrview.cpp:1134
 #, qt-format
 msgctxt "InstrView|"
 msgid "There are %n cost line(s) without machine code."
 msgid_plural "There are %n cost line(s) without machine code."
-msgstr[0] "არსებობს %n ღიღებულების ხაზი მანქანური კოდის გარეშე."
-msgstr[1] "არსებობს %n ღიღებულების ხაზი მანქანური კოდის გარეშე."
+msgstr[0] ""
+msgstr[1] ""
 
 #: libviews/instrview.cpp:1136
 msgctxt "InstrView|"
 msgid "This happens because the code of"
-msgstr "ეს ხდება იმიტომ, რომ კოდი ელემენტისთვის"
+msgstr ""
 
 #: libviews/instrview.cpp:1139
 msgctxt "InstrView|"
 msgid "does not seem to match the profile data file."
-msgstr "პროფილის მონაცემების ფაილს არ ემთხვევა."
+msgstr ""
 
 #: libviews/instrview.cpp:1142
 msgctxt "InstrView|"
 msgid "Are you using an old profile data file or is the above mentioned"
 msgstr ""
-"იყენებთ ძველ პროფილის მონაცემების ფაილს ან ხდება ერთ-ერთი ზემოჩამოთვლილიდან"
 
 #: libviews/instrview.cpp:1144
 msgctxt "InstrView|"
 msgid "ELF object from an updated installation/another machine?"
-msgstr "ELF ობიექტი განახლებული დაყენებიდან/სხვა მანქანიდან?"
+msgstr ""
 
 #: libviews/instrview.cpp:1152
 msgctxt "InstrView|"
 msgid "There seems to be an error trying to execute the command"
-msgstr "როგორც ჩანს, ამ ბრძანების შესრულება შეცდომებს იწვევს"
+msgstr "Komandoa exekutatzen saiatzean errore bat dagoela dirudi"
 
 #: libviews/instrview.cpp:1156
 msgctxt "InstrView|"
 msgid "Check that the ELF object used in the command exists."
-msgstr "შემოწმება, არსებობს თუ არა ბრძანებაში გამოყენებული ELF ობიექტი."
+msgstr "Egiaztatu komandoan erabilitako ELF objektua existitzen dela."
 
 #: libviews/partgraph.cpp:154
 #, qt-format
 msgctxt "QObject|"
 msgid "Profile Part %1"
-msgstr "პროფილის ნაწილი %1"
+msgstr "%1 profil atala"
 
 #: libviews/partgraph.cpp:211
 msgctxt "QObject|"
 msgid "(no trace)"
-msgstr "(ტრეისის გარეშე)"
+msgstr "(aztarnarik ez)"
 
 #: libviews/partgraph.cpp:214
 msgctxt "QObject|"
 msgid "(no part)"
-msgstr "(ნაწილის გარეშე)"
+msgstr "(atalik ez)"
 
 #: libviews/partlistitem.cpp:39
 msgctxt "QObject|"
 msgid "(none)"
-msgstr "(არაფერი)"
+msgstr "(bat ere ez)"
 
 #: libviews/partselection.cpp:48
 msgctxt "PartSelection|"
 msgid "Parts Overview"
-msgstr "ნაწილების მიმოხილვა"
+msgstr "Atalen ikuspegi orokorra"
 
 #: libviews/partselection.cpp:61
 msgctxt "PartSelection|A thing's name"
 msgid "Name"
-msgstr "სახელი"
+msgstr "Izena"
 
 #: libviews/partselection.cpp:62
 msgctxt "PartSelection|"
 msgid "Cost"
-msgstr "ფასი"
+msgstr "Kostua"
 
 #: libviews/partselection.cpp:69
 msgctxt "PartSelection|"
 msgid "(no trace parts)"
-msgstr "(ტრეისის ნაწილების გარეშე)"
+msgstr "(ez dago aztarna atalik)"
 
 #: libviews/partselection.cpp:96
 msgctxt "PartSelection|"
@@ -1550,140 +1531,140 @@ msgstr ""
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Profile Part Overview: Current is '%1'"
-msgstr "პროფილის ნაწილის გადახედვა: მიმდინარეა '%1'"
+msgstr "Profil atalaren ikuspegi orokorra: Unekoa '%1' da"
 
 #: libviews/partselection.cpp:337
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Deselect '%1'"
-msgstr "'%1'-ის მონიშვნის მოხსნა"
+msgstr "Desautatu '%1'"
 
 #: libviews/partselection.cpp:339
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Select '%1'"
-msgstr "'%1'-ის მონიშვნა"
+msgstr "Hautatu '%1'"
 
 #: libviews/partselection.cpp:344
 msgctxt "PartSelection|"
 msgid "Select All Parts"
-msgstr "ყველა ნაწილის მონიშვნა"
+msgstr "Hautatu atal guztiak"
 
 #: libviews/partselection.cpp:345
 msgctxt "PartSelection|"
 msgid "Visible Parts"
-msgstr "ხილული ნაწილები"
+msgstr "Ikusgai dauden atalak"
 
 #: libviews/partselection.cpp:346
 msgctxt "PartSelection|"
 msgid "Hide Selected Parts"
-msgstr "მონიშნული ნაწილების დამალვა"
+msgstr "Ezkutatu hautatutako atalak"
 
 #: libviews/partselection.cpp:347
 msgctxt "PartSelection|"
 msgid "Show Hidden Parts"
-msgstr "დამალული ნაწილების ჩვენება"
+msgstr "Erakutsi ezkutuko atalak"
 
 #: libviews/partselection.cpp:361
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Go to '%1'"
-msgstr "%1-ზე გადასვლა"
+msgstr "Joan '%1'(e)ra"
 
 #: libviews/partselection.cpp:370
 msgctxt "PartSelection|"
 msgid "Visualization"
-msgstr "ვიზუალიზაცია"
+msgstr "Irudikapena"
 
 #: libviews/partselection.cpp:371
 msgctxt "PartSelection|"
 msgid "Partitioning Mode"
-msgstr "დაყოფის რეჟიმი"
+msgstr ""
 
 #: libviews/partselection.cpp:373
 msgctxt "PartSelection|"
 msgid "Zoom Function"
-msgstr "გადიდების ფუნქცია"
+msgstr "Zoom funtzioa"
 
 #: libviews/partselection.cpp:375
 msgctxt "PartSelection|"
 msgid "Show Direct Calls"
-msgstr "პირდაპირი გამოძახებების ჩვენება"
+msgstr "Erakutsi zuzeneko deiak"
 
 #: libviews/partselection.cpp:376
 msgctxt "PartSelection|"
 msgid "Increment Shown Call Levels"
-msgstr "ნაჩვენები გამოძახების დონეების გაზრდა"
+msgstr "Handiagotu erakutsitako dei mailak"
 
 #: libviews/partselection.cpp:377
 msgctxt "PartSelection|"
 msgid "Diagram Mode"
-msgstr "დიაგრამის რეჟიმი"
+msgstr "Diagrama modua"
 
 #: libviews/partselection.cpp:392
 msgctxt "PartSelection|"
 msgid "Draw Names"
-msgstr "სახელების გამოტანა"
+msgstr "Marraztu izenak"
 
 #: libviews/partselection.cpp:394
 msgctxt "PartSelection|"
 msgid "Draw Costs"
-msgstr "ფასების გამოტანა"
+msgstr "Marraztu kostuak"
 
 #: libviews/partselection.cpp:396
 msgctxt "PartSelection|"
 msgid "Ignore Proportions"
-msgstr "პროპორციების იგნორი"
+msgstr "Ezikusi proportzioak"
 
 #: libviews/partselection.cpp:398
 msgctxt "PartSelection|"
 msgid "Allow Rotation"
-msgstr "შემობრუნების ჩართვა"
+msgstr "Baimendu biraketa"
 
 #: libviews/partselection.cpp:400
 msgctxt "PartSelection|"
 msgid "Draw Frames"
-msgstr "ჩარჩოების დახატვა"
+msgstr "Marraztu markoak"
 
 #: libviews/partselection.cpp:414
 msgctxt "PartSelection|"
 msgid "Hide Info"
-msgstr "ინფორმაციის დამალვა"
+msgstr "Ezkutatu informazioa"
 
 #: libviews/partselection.cpp:414
 msgctxt "PartSelection|"
 msgid "Show Info"
-msgstr "ინფორმაციის ჩვენება"
+msgstr "Erakutsi informazioa"
 
 #: libviews/partselection.cpp:562
 msgctxt "PartSelection|"
 msgid "(no trace loaded)"
-msgstr "(ტრეისი ჩატვირთული არაა)"
+msgstr "(ez da aztarnarik zamatu)"
 
 #: libviews/partview.cpp:37
 msgctxt "PartView|"
 msgid "Profile Part"
-msgstr "პროფილის ნაწილი"
+msgstr "Profil atala"
 
 #: libviews/partview.cpp:38
 msgctxt "PartView|"
 msgid "Incl."
-msgstr "ჩათვლ."
+msgstr ""
 
 #: libviews/partview.cpp:39
 msgctxt "PartView|"
 msgid "Self"
-msgstr "Self"
+msgstr ""
 
 #: libviews/partview.cpp:40
 msgctxt "PartView|"
 msgid "Called"
-msgstr "გამოძახებულია"
+msgstr ""
 
 #: libviews/partview.cpp:41
 msgctxt "PartView|"
 msgid "Comment"
-msgstr "შენიშვნა"
+msgstr "Iruzkina"
 
 #: libviews/partview.cpp:68
 msgctxt "PartView|"
@@ -1707,13 +1688,13 @@ msgstr ""
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 of %2 times to %3"
-msgstr "%1-დან %2-ჯერ გადასვლა %3-ზე"
+msgstr ""
 
 #: libviews/sourceitem.cpp:146
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 times to %2"
-msgstr "%1-ზე გადასვლა %2-ზე"
+msgstr "Jauzi %1 aldiz %2(e)ra"
 
 #: libviews/sourceview.cpp:51
 msgctxt "SourceView|"
@@ -1723,17 +1704,17 @@ msgstr "#"
 #: libviews/sourceview.cpp:52
 msgctxt "SourceView|"
 msgid "Cost"
-msgstr "ფასი"
+msgstr "Kostua"
 
 #: libviews/sourceview.cpp:53
 msgctxt "SourceView|"
 msgid "Cost 2"
-msgstr "ღირებულება 2"
+msgstr "Kostua 2"
 
 #: libviews/sourceview.cpp:55
 msgctxt "SourceView|"
 msgid "Source"
-msgstr "წყარო"
+msgstr "Sorburua"
 
 #: libviews/sourceview.cpp:83
 msgctxt "SourceView|"
@@ -1751,245 +1732,245 @@ msgstr ""
 #, qt-format
 msgctxt "SourceView|"
 msgid "Go to '%1'"
-msgstr "%1-ზე გადასვლა"
+msgstr "Joan '%1'(e)ra"
 
 #: libviews/sourceview.cpp:115
 #, qt-format
 msgctxt "SourceView|"
 msgid "Go to Line %1"
-msgstr "%1-ე ხაზზე გადასვლა"
+msgstr "Joan %1 lerrora"
 
 #: libviews/sourceview.cpp:627
 msgctxt "SourceView|"
 msgid "There is no cost of current selected type associated"
-msgstr "ამჟამად არჩეული ტიპის ღირებულება ასოცირებული არაა"
+msgstr ""
 
 #: libviews/sourceview.cpp:629
 msgctxt "SourceView|"
 msgid "with any source line of this function in file"
-msgstr "ამ ფუნქციის ნებისმიერ კოდის ხაზით ფაილში"
+msgstr ""
 
 #: libviews/sourceview.cpp:633
 msgctxt "SourceView|"
 msgid "Thus, no annotated source can be shown."
-msgstr "ამიტომ, ანოტაციის მქონე კოდი ნაჩვენები არაა."
+msgstr ""
 
 #: libviews/sourceview.cpp:658
 #, qt-format
 msgctxt "SourceView|"
 msgid "--- From '%1' ---"
-msgstr "--- '%1'-დან ---"
+msgstr "--- '%1'(e)tik ---"
 
 #: libviews/sourceview.cpp:663
 #, qt-format
 msgctxt "SourceView|"
 msgid "--- Inlined from '%1' ---"
-msgstr "--- ხაზშივე, '%1'-სგან ---"
+msgstr ""
 
 #: libviews/sourceview.cpp:664
 msgctxt "SourceView|"
 msgid "--- Inlined from unknown source ---"
-msgstr "--- ხაზშივე, უცნობი წყაროდან---"
+msgstr ""
 
 #: libviews/sourceview.cpp:669
 msgctxt "SourceView|"
 msgid "There is no source available for the following function:"
-msgstr "კოდი ხელმისაწვდომი არაა შემდეგი ფუნქციისთვის:"
+msgstr ""
 
 #: libviews/sourceview.cpp:674
 msgctxt "SourceView|"
 msgid "This is because no debug information is present."
-msgstr "ეს ხდება იმიტომ, რომ გამართვის ინფორმაცია წარმოდგენილი არაა."
+msgstr "Hori da ez dagoelako arazketa informaziorik."
 
 #: libviews/sourceview.cpp:676
 msgctxt "SourceView|"
 msgid "Recompile source and redo the profile run."
-msgstr "კოდის თავიდან აგება და პროფილის თავიდან გაშვება."
+msgstr "Sorburua birkonpilatu eta berregin profila exekutatzea."
 
 #: libviews/sourceview.cpp:679
 msgctxt "SourceView|"
 msgid "The function is located in this ELF object:"
-msgstr "ფუმქცია ამ ELF ობიექტშია მოთავსებული:"
+msgstr "Funtzioa ELF objektu horretan kokatuta dago:"
 
 #: libviews/sourceview.cpp:687
 msgctxt "SourceView|"
 msgid "This is because its source file cannot be found:"
-msgstr "ხდება იმიტომ, რომ მისი კოდის ფაილი ვერ ვიპოვე:"
+msgstr "Hori da bere sorburu fitxategia ezin delako aurkitu:"
 
 #: libviews/sourceview.cpp:691
 msgctxt "SourceView|"
 msgid "Add the folder of this file to the source folder list."
-msgstr "ამ ფაილის საქაღალდის ჩამატება კოდის საქაღალდეების სიაში."
+msgstr "Gehitu fitxategi horren karpeta sorburu karpeten zerrendara."
 
 #: libviews/sourceview.cpp:693
 msgctxt "SourceView|"
 msgid "The list can be found in the configuration dialog."
-msgstr "სია შეგიძლიათ მორგების ფანჯარაში იხილოთ."
+msgstr "Zerrenda konfiguratzeko elkarrizketa-koadroan aurki daiteke."
 
 #: libviews/stackselection.cpp:36
 msgctxt "StackSelection|"
 msgid "Stack Selection"
-msgstr "სტეკის არჩევანი"
+msgstr ""
 
 #: libviews/stackselection.cpp:44
 msgctxt "StackSelection|"
 msgid "Cost"
-msgstr "ფასი"
+msgstr "Kostua"
 
 #: libviews/stackselection.cpp:45
 msgctxt "StackSelection|"
 msgid "Cost2"
-msgstr "ღირებულება2"
+msgstr "Kostua2"
 
 #: libviews/stackselection.cpp:46
 msgctxt "StackSelection|"
 msgid "Calls"
-msgstr "ზარები"
+msgstr "Deiak"
 
 #: libviews/stackselection.cpp:47
 msgctxt "StackSelection|"
 msgid "Function"
-msgstr "ფუნქცია"
+msgstr "Funtzioa"
 
 #: libviews/tabview.cpp:103
 msgctxt "TabBar|"
 msgid "Move to Top"
-msgstr "თავში ატანა"
+msgstr "Eraman gora"
 
 #: libviews/tabview.cpp:104
 msgctxt "TabBar|Move to Top"
 msgid "Top"
-msgstr "ზემოთ"
+msgstr "Gora"
 
 #: libviews/tabview.cpp:107
 msgctxt "TabBar|"
 msgid "Move to Right"
-msgstr "მარჯვნივ გადატანა"
+msgstr "Eraman eskuinera"
 
 #: libviews/tabview.cpp:108
 msgctxt "TabBar|Move to Right"
 msgid "Right"
-msgstr "მარჯვნივ"
+msgstr "Eskuinera"
 
 #: libviews/tabview.cpp:111
 msgctxt "TabBar|"
 msgid "Move to Bottom"
-msgstr "ბოლოში ჩამოტანა"
+msgstr "Eraman behera"
 
 #: libviews/tabview.cpp:112
 msgctxt "TabBar|Move to Bottom"
 msgid "Bottom"
-msgstr "ბოლოში"
+msgstr "Behera"
 
 #: libviews/tabview.cpp:115
 msgctxt "TabBar|"
 msgid "Move to Bottom Left"
-msgstr "ქვემოთ მარცხნივ გადატანა"
+msgstr "Eraman behera ezkerrera"
 
 #: libviews/tabview.cpp:116
 msgctxt "TabBar|Move to Bottom Left"
 msgid "Bottom Left"
-msgstr "ქვედა მარცხენა"
+msgstr "Behean ezkerrera"
 
 #: libviews/tabview.cpp:118
 msgctxt "TabBar|"
 msgid "Move Area To"
-msgstr "ადგილის გადატანა"
+msgstr "Eraman eskualdea hona,"
 
 #: libviews/tabview.cpp:121
 msgctxt "TabBar|"
 msgid "Hide This Tab"
-msgstr "ამ ჩანართის დამალვა"
+msgstr "Ezkutatu fitxa hori"
 
 #: libviews/tabview.cpp:122
 msgctxt "TabBar|"
 msgid "Hide Area"
-msgstr "ადგილის დამალვა"
+msgstr "Ezkutatu eskualdea"
 
 #: libviews/tabview.cpp:131
 msgctxt "TabBar|Show on Top"
 msgid "Top"
-msgstr "ზემოთ"
+msgstr "Gora"
 
 #: libviews/tabview.cpp:132
 msgctxt "TabBar|Show on Right"
 msgid "Right"
-msgstr "მარჯვნივ"
+msgstr "Eskuinera"
 
 #: libviews/tabview.cpp:133
 msgctxt "TabBar|Show on Bottom"
 msgid "Bottom"
-msgstr "ბოლოში"
+msgstr "Behera"
 
 #: libviews/tabview.cpp:134
 msgctxt "TabBar|Show on Bottom Left"
 msgid "Bottom Left"
-msgstr "ქვედა მარცხენა"
+msgstr "Behera ezkerrera"
 
 #: libviews/tabview.cpp:135
 msgctxt "TabBar|"
 msgid "Show Hidden On"
-msgstr "დამალულის ჩვენება ჩართ"
+msgstr ""
 
 #: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
 msgctxt "TabView|"
 msgid "(No profile data file loaded)"
-msgstr "(პროფილის მონაცემები ჩატვირთული არაა)"
+msgstr "(Ez da profil datu fitxategirik zamatu)"
 
 #: libviews/tabview.cpp:370
 msgctxt "TabView|"
 msgid "Types"
-msgstr "ტიპები"
+msgstr "Motak"
 
 #: libviews/tabview.cpp:373
 msgctxt "TabView|"
 msgid "Callers"
-msgstr "გამომძახებლები"
+msgstr "Dei egileak"
 
 #: libviews/tabview.cpp:374
 msgctxt "TabView|"
 msgid "All Callers"
-msgstr "ყველა გამომძახებელი"
+msgstr "Dei egile guztiak"
 
 #: libviews/tabview.cpp:375
 msgctxt "TabView|"
 msgid "Callee Map"
-msgstr "გამოძახებულის რუკა"
+msgstr "Deitutakoen mapa"
 
 #: libviews/tabview.cpp:378
 msgctxt "TabView|"
 msgid "Source Code"
-msgstr "საწყისი კოდი"
+msgstr "Sorburu kodea"
 
 #: libviews/tabview.cpp:380
 msgctxt "TabView|"
 msgid "Parts"
-msgstr "ნაწილებ"
+msgstr "Atalak"
 
 #: libviews/tabview.cpp:381
 msgctxt "TabView|"
 msgid "Callees"
-msgstr "გამოძახებულები"
+msgstr "Deitutakoak"
 
 #: libviews/tabview.cpp:382
 msgctxt "TabView|"
 msgid "Call Graph"
-msgstr "გამოძახებების გრაფი"
+msgstr "Dei-grafikoa"
 
 #: libviews/tabview.cpp:385
 msgctxt "TabView|"
 msgid "All Callees"
-msgstr "ყველა გამოძახებული"
+msgstr "Deitutako guztiak"
 
 #: libviews/tabview.cpp:386
 msgctxt "TabView|"
 msgid "Caller Map"
-msgstr "გამომძახებლის რუკა"
+msgstr "Deitzaile-mapa"
 
 #: libviews/tabview.cpp:389
 msgctxt "TabView|"
 msgid "Machine Code"
-msgstr "მანქანური კოდი"
+msgstr "Makina-kodea"
 
 #: libviews/tabview.cpp:643
 msgctxt "TabView|"
@@ -2015,60 +1996,60 @@ msgstr ""
 #: libviews/tabview.cpp:728
 msgctxt "TabView|"
 msgid "(No function selected)"
-msgstr "(ფუნქცია არჩეული არაა)"
+msgstr "(Ez da funtziorik hautatu)"
 
 #: libviews/traceitemview.cpp:67
 msgctxt "QObject|"
 msgid "No description available"
-msgstr "აღწერის გარეშე"
+msgstr "Ez dago deskribapenik erabilgarri"
 
 #: libviews/treemap.cpp:1334
 #, qt-format
 msgctxt "TreeMapWidget|"
 msgid "Text %1"
-msgstr "ტექტი %1"
+msgstr "%1 testua"
 
 #: libviews/treemap.cpp:2854
 msgctxt "TreeMapWidget|"
 msgid "Recursive Bisection"
-msgstr "რეკურსიული ბისექცია"
+msgstr "Erdibitze errekurtsiboa"
 
 #: libviews/treemap.cpp:2855
 msgctxt "TreeMapWidget|"
 msgid "Columns"
-msgstr "სვეტები"
+msgstr "Zutabeak"
 
 #: libviews/treemap.cpp:2856
 msgctxt "TreeMapWidget|"
 msgid "Rows"
-msgstr "სტრიქონები"
+msgstr "Errenkadak"
 
 #: libviews/treemap.cpp:2857
 msgctxt "TreeMapWidget|"
 msgid "Always Best"
-msgstr "ყოველთვის საუკეთესო"
+msgstr "Beti onena"
 
 #: libviews/treemap.cpp:2858
 msgctxt "TreeMapWidget|"
 msgid "Best"
-msgstr "საუკეთესო"
+msgstr "Onena"
 
 #: libviews/treemap.cpp:2859
 msgctxt "TreeMapWidget|"
 msgid "Alternate (V)"
-msgstr "ალტერნატიული (V)"
+msgstr "Txandakatu (V)"
 
 #: libviews/treemap.cpp:2860
 msgctxt "TreeMapWidget|"
 msgid "Alternate (H)"
-msgstr "ალტერნატიული (H)"
+msgstr "Txandakatu (H)"
 
 #: libviews/treemap.cpp:2861
 msgctxt "TreeMapWidget|"
 msgid "Horizontal"
-msgstr "ჰორიზონტალური"
+msgstr "Horizontala"
 
 #: libviews/treemap.cpp:2862
 msgctxt "TreeMapWidget|"
 msgid "Vertical"
-msgstr "ვერტიკალური"
+msgstr "Bertikala"

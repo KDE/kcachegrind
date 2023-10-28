@@ -139,10 +139,10 @@
 >Mètodes d'anàlisi del rendiment</title>
 
 <para
->Per mesurar exactament el temps passat o registrar els esdeveniments que ocorren durant l'execució d'una regió de codi (&pex;, una funció), cal inserir codi de mesura addicional abans i després de la regió indicada. Aquest codi llegeix el temps, o un comptador global d'esdeveniments, i calcula les diferències. Per tant, el codi original s'ha de canviar abans de l'execució. Això s'anomena instrumentació. La instrumentació la pot fer el programador mateix, el compilador, o el sistema d'execució. Com que les regions interessants solen estar imbricades, la sobrecàrrega de la mesura sempre influeix en la mateixa mesura. Per tant, la instrumentació ha de fer-se de manera selectiva i els resultats han d'interpretar-se amb cura. Per descomptat, això fa que l'anàlisi de rendiment per a un mesurament exacte sigui un procés molt complex.</para>
+>Per a mesurar exactament el temps passat o registrar els esdeveniments que ocorren durant l'execució d'una regió de codi (&pex;, una funció), cal inserir codi de mesura addicional abans i després de la regió indicada. Aquest codi llegeix el temps, o un comptador global d'esdeveniments, i calcula les diferències. Per tant, el codi original s'ha de canviar abans de l'execució. Això s'anomena instrumentació. La instrumentació la pot fer el programador mateix, el compilador, o el sistema d'execució. Com que les regions interessants solen estar imbricades, la sobrecàrrega de la mesura sempre influeix en la mateixa mesura. Per tant, la instrumentació ha de fer-se de manera selectiva i els resultats han d'interpretar-se amb cura. Per descomptat, això fa que l'anàlisi de rendiment per a un mesurament exacte sigui un procés molt complex.</para>
 
 <para
->La mesura exacta és possible gràcies als comptadors de maquinari (incloent-hi els comptadors que s'incrementen en una marca de temps) proporcionats en els processadors moderns, que s'incrementen sempre que ocorre un esdeveniment. Com que volem atribuir els esdeveniments a les regions de codi, sense els comptadors, hauríem de gestionar cada esdeveniment incrementant un comptador per a la regió actual del codi. Per descomptat, no és possible fer-ho en el programari, però, suposant que la distribució de l'esdeveniment sobre el codi font és similar quan s'observa només cada esdeveniment n-èsim en lloc de cada esdeveniment, s'ha desenvolupat un mètode de mesura la sobrecàrrega del qual és ajustable: s'anomena mostreig. El mostreig basat en el temps (&TBS;) utilitza un temporitzador per observar regularment el comptador del programa per crear un histograma sobre el codi del programa. El mostreig basat en els esdeveniments (&EBS;) explota els comptadors de maquinari dels processadors moderns, i utilitza un mode on es crida un controlador d'interrupció per generar un histograma de la distribució d'esdeveniments corresponent: en el gestor, el comptador d'esdeveniments sempre es reinicialitza amb la <symbol
+>La mesura exacta és possible gràcies als comptadors de maquinari (incloent-hi els comptadors que s'incrementen en una marca de temps) proporcionats en els processadors moderns, que s'incrementen sempre que ocorre un esdeveniment. Com que volem atribuir els esdeveniments a les regions de codi, sense els comptadors, hauríem de gestionar cada esdeveniment incrementant un comptador per a la regió actual del codi. Per descomptat, no és possible fer-ho en el programari, però, suposant que la distribució de l'esdeveniment sobre el codi font és similar quan s'observa només cada esdeveniment n-èsim en lloc de cada esdeveniment, s'ha desenvolupat un mètode de mesura la sobrecàrrega del qual és ajustable: s'anomena mostreig. El mostreig basat en el temps (&TBS;) utilitza un temporitzador per a observar regularment el comptador del programa per a crear un histograma sobre el codi del programa. El mostreig basat en els esdeveniments (&EBS;) explota els comptadors de maquinari dels processadors moderns, i utilitza un mode on es crida un controlador d'interrupció per a generar un histograma de la distribució d'esdeveniments corresponent: en el gestor, el comptador d'esdeveniments sempre es reinicialitza amb la <symbol
 >n</symbol
 > del mètode de mostreig. L'avantatge del mostreig és que el codi no s'ha de canviar, però encara és un compromís: la suposició anterior serà més correcta si la <symbol
 >n</symbol
@@ -184,7 +184,7 @@
 >, memòries intermèdies petites i ràpides que acceleren els accessos repetits a les mateixes cel·les de la memòria principal, en els sistemes moderns. El &cachegrind; fa la simulació de la memòria cau capturant els accessos a la memòria. Les dades produïdes inclouen el nombre d'accessos a la memòria d'instruccions i dades i errors de memòria cau de primer i segon nivell, i el relaciona amb les línies i funcions del codi font del programa en execució. Combinant aquests comptadors de falles, i utilitzant retards de falles dels processadors habituals, es pot donar una estimació del temps gastat. </para>
 
 <para
->El &callgrind; és una extensió del &cachegrind; que construeix la gràfica de crides d'un programa al vol, és a dir, com les funcions es criden l'una a l'altra i quants esdeveniments succeeixen mentre s'executa una funció. A més, les dades de l'anàlisi del rendiment que es recopilen es poden separar per fils i contextos de cadenes de crides. Pot proporcionar dades d'anàlisi de rendiment a nivell d'instrucció per permetre l'anotació de codi desassemblat. </para>
+>El &callgrind; és una extensió del &cachegrind; que construeix la gràfica de crides d'un programa al vol, és a dir, com les funcions es criden l'una a l'altra i quants esdeveniments succeeixen mentre s'executa una funció. A més, les dades de l'anàlisi del rendiment que es recopilen es poden separar per fils i contextos de cadenes de crides. Pot proporcionar dades d'anàlisi de rendiment a nivell d'instrucció per a permetre l'anotació de codi desassemblat. </para>
 </sect1>
 
 <sect1 id="introduction-visualization">
@@ -192,10 +192,10 @@
 >Visualització</title>
 
 <para
->Les eines d'anàlisi del rendiment normalment produeixen una gran quantitat de dades. El desig de navegar fàcilment cap avall i cap amunt per la gràfica de crides, juntament amb un canvi ràpid del mode de classificació de funcions i visualització de diferents tipus d'esdeveniments, motiva una aplicació de la &IGU; per dur a terme aquesta tasca. </para>
+>Les eines d'anàlisi del rendiment normalment produeixen una gran quantitat de dades. El desig de navegar fàcilment cap avall i cap amunt per la gràfica de crides, juntament amb un canvi ràpid del mode de classificació de funcions i visualització de diferents tipus d'esdeveniments, motiva una aplicació de la &IGU; per a dur a terme aquesta tasca. </para>
 
 <para
->El &kcachegrind; és una eina de visualització per a les dades d'anàlisi de rendiment que compleixen aquests desitjos. Tot i ser programat primer pensant en la navegació de les dades del &cachegrind; i el &calltree;, hi ha convertidors disponibles per poder mostrar les dades d'anàlisi de rendiment produïdes per altres eines. A l'apèndix es dona una descripció del format de fitxer del &cachegrind;/&callgrind;. </para>
+>El &kcachegrind; és una eina de visualització per a les dades d'anàlisi de rendiment que compleixen aquests desitjos. Tot i ser programat primer pensant en la navegació de les dades del &cachegrind; i el &calltree;, hi ha convertidors disponibles per a poder mostrar les dades d'anàlisi de rendiment produïdes per altres eines. A l'apèndix es dona una descripció del format de fitxer del &cachegrind;/&callgrind;. </para>
 
 <para
 >A més d'una llista de funcions ordenades segons les mètriques de cost exclusiu o inclusiu, i opcionalment agrupades pel fitxer de codi font, la biblioteca compartida o la classe C++, el &kcachegrind; té diverses vistes per a una funció seleccionada, a saber: <itemizedlist>
@@ -226,7 +226,7 @@
 >Generar les dades a visualitzar</title>
 
 <para
->En primer lloc, es vol generar dades de rendiment mesurant aspectes de les característiques en temps d'execució d'una aplicació, utilitzant una eina d'anàlisi de rendiment. El mateix &kcachegrind; no inclou cap eina d'anàlisi de rendiment, però és bo en ser utilitzat juntament amb el &callgrind;, i utilitzant un convertidor, també es pot utilitzar per visualitzar les dades produïdes amb l'&oprofile;. Encara que l'abast d'aquest manual no és documentar l'elaboració d'anàlisis de rendiment amb aquestes eines, la següent secció proporciona guies d'aprenentatge curtes d'inici ràpid per començar. </para>
+>En primer lloc, es vol generar dades de rendiment mesurant aspectes de les característiques en temps d'execució d'una aplicació, utilitzant una eina d'anàlisi de rendiment. El mateix &kcachegrind; no inclou cap eina d'anàlisi de rendiment, però és bo en ser utilitzat juntament amb el &callgrind;, i utilitzant un convertidor, també es pot utilitzar per a visualitzar les dades produïdes amb l'&oprofile;. Encara que l'abast d'aquest manual no és documentar l'elaboració d'anàlisis de rendiment amb aquestes eines, la següent secció proporciona guies d'aprenentatge curtes d'inici ràpid per a començar. </para>
 
 <sect2>
 <title
@@ -238,7 +238,7 @@
 >. Tingueu en compte que abans s'anomenava &calltree; però aquest nom era enganyós. </para>
 
 <para
->L'ús més habitual és al prefix de la línia d'ordres per començar la vostra aplicació amb <userinput
+>L'ús més habitual és al prefix de la línia d'ordres per a començar la vostra aplicació amb <userinput
 ><command
 >valgrind</command
 > <option
@@ -265,7 +265,7 @@
 >, que es pot carregar al &kcachegrind;. </para>
 
 <para
->Un ús més avançat és bolcar les dades d'anàlisi del rendiment quan es crida una funció donada de l'aplicació. Per exemple, al &konqueror;, per veure les dades de l'anàlisi del rendiment només a la representació d'una pàgina web, es podria decidir bolcar les dades sempre que seleccioneu l'element de menú <menuchoice
+>Un ús més avançat és buidar les dades d'anàlisi del rendiment quan es crida una funció donada de l'aplicació. Per exemple, al &konqueror;, per a veure les dades de l'anàlisi del rendiment només a la representació d'una pàgina web, es podria decidir buidar les dades sempre que seleccioneu l'element de menú <menuchoice
 ><guimenu
 >Visualitza</guimenu
 ><guimenuitem
@@ -309,7 +309,7 @@
 >oprof_start</command
 > o l'eina de línia d'ordres <command
 >opcontrol</command
->. La configuració estàndard hauria de ser el mode temporitzador (&TBS;, vegeu la introducció). Per començar la mesura, executeu <userinput
+>. La configuració estàndard hauria de ser el mode temporitzador (&TBS;, vegeu la introducció). Per a començar la mesura, executeu <userinput
 ><command
 >opcontrol</command
 > <option
@@ -323,7 +323,7 @@
 ></userinput
 >. Això escriurà els resultats de la mesura en fitxers a la carpeta <filename class="directory"
 >/var/lib/oprofile/samples/</filename
->. Per poder visualitzar les dades en el &kcachegrind;, feu-ho en un directori buit: <blockquote
+>. Per a poder visualitzar les dades en el &kcachegrind;, feu-ho en un directori buit: <blockquote
 ><para
 ><userinput
 > <command
@@ -351,10 +351,10 @@
 > <guimenuitem
 >Obre</guimenuitem
 ></menuchoice
->, veureu un panell de navegació que conté la llista de funcions a l'esquerra; i la part principal a la dreta, una àrea amb vistes per a una funció seleccionada. Aquesta àrea de visualització es pot configurar arbitràriament per mostrar múltiples vistes alhora. </para>
+>, veureu un panell de navegació que conté la llista de funcions a l'esquerra; i la part principal a la dreta, una àrea amb vistes per a una funció seleccionada. Aquesta àrea de visualització es pot configurar arbitràriament per a mostrar múltiples vistes alhora. </para>
 
 <para
->Al principi, aquesta àrea es dividirà en una part superior i una part inferior, cadascuna amb vistes diferents seleccionables amb pestanyes. Per moure les vistes, utilitzeu el menú contextual de les pestanyes i ajusteu els separadors entre les vistes. Per a canviar ràpidament entre diferents disposicions de visualització, utilitzeu <menuchoice
+>Al principi, aquesta àrea es dividirà en una part superior i una part inferior, cadascuna amb vistes diferents seleccionables amb pestanyes. Per a moure les vistes, utilitzeu el menú contextual de les pestanyes i ajusteu els separadors entre les vistes. Per a canviar ràpidament entre diferents disposicions de visualització, utilitzeu <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;<keycap
@@ -389,10 +389,10 @@
 >Tipus d'esdeveniment</guilabel
 >. S'ha de donar una primera visió general de les característiques en temps d'execució quan seleccioneu la funció <function
 >principal</function
-> a la llista esquerra; després consulteu la vista gràfica de les crides. Allà, veureu les crides que es fan en el programa. Tingueu en compte que la vista gràfica de les crides només mostra funcions amb un alt nombre d'esdeveniments. En fer doble clic a una funció de la gràfica, canviarà per mostrar les funcions cridades al voltant de la seleccionada. </para>
+> a la llista esquerra; després consulteu la vista gràfica de les crides. Allà, veureu les crides que es fan en el programa. Tingueu en compte que la vista gràfica de les crides només mostra funcions amb un alt nombre d'esdeveniments. En fer doble clic a una funció de la gràfica, canviarà per a mostrar les funcions cridades al voltant de la seleccionada. </para>
 
 <para
->Per explorar més la &IGU;, a més d'aquest manual, també cal veure la secció de documentació <ulink url="https://kcachegrind.github.io"
+>Per a explorar més la &IGU;, a més d'aquest manual, també cal veure la secció de documentació <ulink url="https://kcachegrind.github.io"
 >al lloc web</ulink
 >. A més, cada giny en el &kcachegrind; té l'ajuda «Què és això». </para>
 </sect1>
@@ -510,7 +510,7 @@
 > Salt (in)condicional des del codi font a la línia de destinació. </para
 ></listitem
 > </itemizedlist
-> No estan permesos els salts entre funcions, ja que això no té sentit en una gràfica de crides; per tant, les construccions com la gestió d'excepcions i salts llargs en C s'han de traduir per omplir la pila de crides segons sigui necessari. </para>
+> No estan permesos els salts entre funcions, ja que això no té sentit en una gràfica de crides; per tant, les construccions com la gestió d'excepcions i salts llargs en C s'han de traduir per a omplir la pila de crides segons sigui necessari. </para>
 
 </sect2>
 
@@ -688,7 +688,7 @@
 <para
 >En una execució d'anàlisi del rendiment es poden produir múltiples fitxers de dades d'anàlisi del rendiment, que es poden carregar junts al &kcachegrind;. La barra lateral <guilabel
 >Vista general de les parts de traça</guilabel
-> les mostra, ordenades horitzontalment segons el temps de creació; les mides del rectangle són proporcionals al cost que es gasta en cada part. Podeu seleccionar una o diverses parts per restringir els costos mostrats en les altres vistes del &kcachegrind; només a aquestes parts. </para>
+> les mostra, ordenades horitzontalment segons el temps de creació; les mides del rectangle són proporcionals al cost que es gasta en cada part. Podeu seleccionar una o diverses parts per a restringir els costos mostrats en les altres vistes del &kcachegrind; només a aquestes parts. </para>
 <para
 >Les parts estan subdividides entre un mode de partició i un mode de divisió de cost inclusiu: <variablelist>
 <varlistentry>
@@ -796,7 +796,7 @@
 >Mapa de cridats</guilabel
 >, mostra la de tots els cridats. </para>
 <para
->Les opcions d'aparença es poden trobar al menú contextual. Per obtenir les proporcions exactes de les mides, trieu <guimenuitem
+>Les opcions d'aparença es poden trobar al menú contextual. Per a obtenir les proporcions exactes de les mides, trieu <guimenuitem
 >Ignora les vores incorrectes</guimenuitem
 >. Com que aquest mode pot trigar molt, és possible que vulgueu limitar el nivell màxim d'imbricació dibuixat abans. <guilabel
 >Millor</guilabel
@@ -806,7 +806,7 @@
 >Ignora les proporcions</guilabel
 > pren espai per a dibuixar el nom de la funció abans de dibuixar els fills. Tingueu en compte que les proporcions de les mides poden ser molt incorrectes. </para>
 <para
->La navegació per teclat està disponible amb les tecles de fletxa esquerra i dreta per travessar germans, i les tecles de fletxa amunt i avall per anar un nivell d'imbricació amunt i avall. &Intro; activa l'element actual. </para>
+>La navegació per teclat està disponible amb les tecles de fletxa esquerra i dreta per a travessar germans, i les tecles de fletxa amunt i avall per a anar un nivell d'imbricació amunt i avall. &Intro; activa l'element actual. </para>
 </sect2>
 
 <sect2>
@@ -830,7 +830,7 @@
 <para
 >Les llistes de codi font o d'assemblador anotades mostren les línies del codi font o les instruccions desassemblades de la funció activa actual juntament amb el cost (per si mateix) gastat executant el codi d'una línia del codi font o una instrucció. Si hi havia una crida, les línies amb detalls de la crida s'insereixen en el codi font: el cost (inclusiu) que es gasta dins de la crida, el nombre de crides que ocorren i la destinació de la crida. </para>
 <para
->Seleccioneu aquesta línia d'informació de crida per activar la destinació de la crida. </para>
+>Seleccioneu aquesta línia d'informació de crida per a activar la destinació de la crida. </para>
 </sect2>
 </sect1>
 
@@ -899,7 +899,7 @@
 <para
 ><action
 >Obre el selector de fitxers del &kde;</action
-> per triar un fitxer de dades d'anàlisi de rendiment que s'ha de carregar. Si ja hi ha dades mostrades a la finestra actual de nivell superior, això obrirà una nova finestra; si voleu obrir dades d'anàlisi de rendiment addicionals a la finestra actual, utilitzeu <menuchoice
+> per a triar un fitxer de dades d'anàlisi de rendiment que s'ha de carregar. Si ja hi ha dades mostrades a la finestra actual de nivell superior, això obrirà una nova finestra; si voleu obrir dades d'anàlisi de rendiment addicionals a la finestra actual, utilitzeu <menuchoice
 > <guimenu
 >Fitxer</guimenu
 ><guimenuitem
@@ -1142,7 +1142,7 @@
 >Projecte d'anàlisi de rendiment</glossterm>
 <glossdef
 ><para
->Una configuració per a experiments d'anàlisi de rendiment utilitzats per un programa per analitzar el rendiment, potser en diverses versions. Les comparacions de les dades d'anàlisi de rendiment normalment només tenen sentit entre les dades d'anàlisi de rendiment produïdes en experiments d'un projecte d'anàlisi de rendiment.</para
+>Una configuració per a experiments d'anàlisi de rendiment utilitzats per un programa per a analitzar el rendiment, potser en diverses versions. Les comparacions de les dades d'anàlisi de rendiment normalment només tenen sentit entre les dades d'anàlisi de rendiment produïdes en experiments d'un projecte d'anàlisi de rendiment.</para
 ></glossdef>
 </glossentry>
 
