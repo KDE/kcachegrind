@@ -48,17 +48,10 @@
 #include <KJobWidgets>
 #include <KEditToolBar>
 #include <KShortcutsDialog>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <KTipDialog>
-#endif
 #include <KMessageBox>
 #include <KSharedConfig>
 #include <KConfigGroup>
-#if KARCHIVE_VERSION < QT_VERSION_CHECK(5,85,0)
-#include <KFilterDev>
-#else
 #include <KCompressionDevice>
-#endif
 
 #if ENABLE_DUMPDOCK
 #include "dumpselection.h"
@@ -143,10 +136,6 @@ TopLevel::TopLevel()
 
     // restore current state settings (not configuration options)
     restoreCurrentState(QString());
-
-    // if this is the first toplevel, show tip of day
-    if (memberList().count() == 1)
-        QTimer::singleShot( 200, this, &TopLevel::slotShowTipOnStart );
 }
 
 void TopLevel::resetState()
@@ -658,13 +647,8 @@ void TopLevel::createMiscActions()
 
     // cost types are dependent on loaded data, thus KSelectAction
     // is filled in setData()
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    connect( _saCost, SIGNAL(triggered(QString)),
-             this, SLOT(eventTypeSelected(QString)));
-#else
     connect( _saCost, &KSelectAction::textTriggered,
              this, &TopLevel::eventTypeSelected);
-#endif
 
     _saCost2 = actionCollection()->add<KSelectAction>(QStringLiteral("view_cost_type2"));
     _saCost2->setText(i18n("Secondary Event Type"));
@@ -673,13 +657,8 @@ void TopLevel::createMiscActions()
     _saCost2->setToolTip( hint );
     _saCost2->setWhatsThis( hint );
     _saCost2->setItems(dummyItems);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    connect( _saCost2, SIGNAL(triggered(QString)),
-             this, SLOT(eventType2Selected(QString)));
-#else
     connect( _saCost2, &KSelectAction::textTriggered,
              this, &TopLevel::eventTypeSelected);
-#endif
 
     saGroup = actionCollection()->add<KSelectAction>(QStringLiteral("view_group_type"));
     saGroup->setText(i18n("Grouping"));
@@ -697,13 +676,8 @@ void TopLevel::createMiscActions()
          << ProfileContext::i18nTypeName(ProfileContext::FunctionCycle);
 
     saGroup->setItems(args);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    connect( saGroup, SIGNAL(triggered(int)),
-             this, SLOT(groupTypeSelected(int)));
-#else
     connect( saGroup, &KSelectAction::triggered,
              this, &TopLevel::groupTypeSelected);
-#endif
 
     _taSplit = actionCollection()->add<KToggleAction>(QStringLiteral("view_split"));
     _taSplit->setIcon(QIcon::fromTheme(QStringLiteral("view-split-left-right")));
@@ -722,9 +696,6 @@ void TopLevel::createMiscActions()
     hint = i18n("Change Split Orientation when main window is split.");
     _taSplitDir->setToolTip( hint );
     _taSplitDir->setWhatsThis( hint );
-
-    // copied from KMail...
-    KStandardAction::tipOfDay( this, SLOT(slotShowTip()), actionCollection() );
 }
 
 void TopLevel::createActions()
@@ -1946,18 +1917,6 @@ void TopLevel::configChanged()
     updateViewsOnChange(TraceItemView::configChanged);
 }
 
-void TopLevel::slotShowTipOnStart() {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    KTipDialog::showTip(this);
-#endif
-}
-
-void TopLevel::slotShowTip() {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    KTipDialog::showTip( this, QString(), true );
-#endif
-}
-
 void TopLevel::dummySlot()
 {
 }
@@ -2381,11 +2340,7 @@ bool TopLevel::openDataFile(const QString& file)
     QMimeDatabase dataBase;
     QString mimeType = dataBase.mimeTypeForFile(file, QMimeDatabase::MatchContent).name();
 
-#if KARCHIVE_VERSION >= QT_VERSION_CHECK(5,85,0)
     auto compressionType = KCompressionDevice::compressionTypeForMimeType(mimeType);
-#else
-    auto compressionType = KFilterDev::compressionTypeForMimeType(mimeType);
-#endif
     KCompressionDevice* compressed;
     compressed = new KCompressionDevice(file,
                                         compressionType);

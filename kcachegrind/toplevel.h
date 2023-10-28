@@ -192,8 +192,6 @@ public Q_SLOTS:
     void configChanged() override;
 
     //void refresh();
-    void slotShowTipOnStart();
-    void slotShowTip();
 
     // progress in status bar, empty message disables progress display
     void showStatus(const QString& msg, int progress);
