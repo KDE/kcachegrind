@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-26 01:46+0000\n"
+"POT-Creation-Date: 2023-10-29 01:39+0000\n"
 "PO-Revision-Date: 2007-06-25 11:21+0300\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@licei2.com>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -158,8 +158,8 @@ msgid "Object / Related Source Base"
 msgstr "Аб'ект / Звязаная база кода"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
-#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:296
-#: kcachegrind/toplevel.cpp:519
+#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:285
+#: kcachegrind/toplevel.cpp:508
 #, fuzzy, kde-format
 msgid "Profile Dumps"
 msgstr "Дампы прафілявання"
@@ -629,17 +629,17 @@ msgstr "Адлюстраваць інфармацыю гэтай трасіро�
 msgid "[trace...]"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:265 kcachegrind/toplevel.cpp:493
+#: kcachegrind/toplevel.cpp:254 kcachegrind/toplevel.cpp:482
 #, fuzzy, kde-format
 msgid "Parts Overview"
 msgstr "Часткі"
 
-#: kcachegrind/toplevel.cpp:274
+#: kcachegrind/toplevel.cpp:263
 #, fuzzy, kde-format
 msgid "Top Cost Call Stack"
 msgstr "Стэк выклікаў верхняга кошту"
 
-#: kcachegrind/toplevel.cpp:276
+#: kcachegrind/toplevel.cpp:265
 #, kde-format
 msgid ""
 "<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most probable' "
@@ -649,12 +649,12 @@ msgid ""
 "calls from the function in the line above.</p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:290
+#: kcachegrind/toplevel.cpp:279
 #, fuzzy, kde-format
 msgid "Flat Profile"
 msgstr "Плоскае прафіляванне"
 
-#: kcachegrind/toplevel.cpp:303
+#: kcachegrind/toplevel.cpp:292
 #, kde-format
 msgid ""
 "<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
@@ -676,24 +676,24 @@ msgid ""
 "activate the top function in the current loaded dump.</li></ul></p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:374
+#: kcachegrind/toplevel.cpp:363
 #, fuzzy, kde-format
 msgid "&Duplicate"
 msgstr "Кланаванне"
 
-#: kcachegrind/toplevel.cpp:377
+#: kcachegrind/toplevel.cpp:366
 #, fuzzy, kde-format
 msgid ""
 "<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
 msgstr ""
 "<b>Кланаванне бягучага размяшчэння</b><p>Робіць копію бягучага макета</p>"
 
-#: kcachegrind/toplevel.cpp:382
+#: kcachegrind/toplevel.cpp:371
 #, kde-format
 msgid "&Remove"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:384
+#: kcachegrind/toplevel.cpp:373
 #, fuzzy, kde-format
 msgid ""
 "<b>Remove Current Layout</b><p>Delete current layout and make the previous "
@@ -702,57 +702,57 @@ msgstr ""
 "<b>Выдаліць бягучае размяшчэнне</b><p>Выдаляе бягучы макет і робіць актыўным "
 "папярэдні</p>"
 
-#: kcachegrind/toplevel.cpp:389
+#: kcachegrind/toplevel.cpp:378
 #, fuzzy, kde-format
 msgid "&Go to Next"
 msgstr "Перайсці да наступнага"
 
-#: kcachegrind/toplevel.cpp:392
+#: kcachegrind/toplevel.cpp:381
 #, fuzzy, kde-format
 msgid "Go to Next Layout"
 msgstr "Перайсці да наступнага размяшчэння"
 
-#: kcachegrind/toplevel.cpp:396
+#: kcachegrind/toplevel.cpp:385
 #, fuzzy, kde-format
 msgid "&Go to Previous"
 msgstr "Перайсці да папярэдняга"
 
-#: kcachegrind/toplevel.cpp:399
+#: kcachegrind/toplevel.cpp:388
 #, fuzzy, kde-format
 msgid "Go to Previous Layout"
 msgstr "Перайсці да папярэдняга размяшчэння"
 
-#: kcachegrind/toplevel.cpp:403
+#: kcachegrind/toplevel.cpp:392
 #, fuzzy, kde-format
 msgid "&Restore to Default"
 msgstr "Аднавіць значэнні"
 
-#: kcachegrind/toplevel.cpp:405
+#: kcachegrind/toplevel.cpp:394
 #, fuzzy, kde-format
 msgid "Restore Layouts to Default"
 msgstr "Аднавіць значэнні па змаўчанні"
 
-#: kcachegrind/toplevel.cpp:409
+#: kcachegrind/toplevel.cpp:398
 #, fuzzy, kde-format
 msgid "&Save as Default"
 msgstr "Захаваць як значэнні па змаўчанні"
 
-#: kcachegrind/toplevel.cpp:411
+#: kcachegrind/toplevel.cpp:400
 #, fuzzy, kde-format
 msgid "Save Layouts as Default"
 msgstr "Захаваць як значэнні па змаўчанні"
 
-#: kcachegrind/toplevel.cpp:422
+#: kcachegrind/toplevel.cpp:411
 #, fuzzy, kde-format
 msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
 msgstr "<b>Новы</b><p>Адкрыць новае KCachegrind акно.</p>"
 
-#: kcachegrind/toplevel.cpp:426
+#: kcachegrind/toplevel.cpp:415
 #, fuzzy, kde-format
 msgid "&Add..."
 msgstr "Дадаць..."
 
-#: kcachegrind/toplevel.cpp:428
+#: kcachegrind/toplevel.cpp:417
 #, fuzzy, kde-format
 msgid ""
 "<b>Add Profile Data</b><p>This opens an additional profile data file in the "
@@ -761,25 +761,25 @@ msgstr ""
 "<b>Дадаць дадзеныя прафіляванні</b><p>Адкрыць дадатковыя дадзеныя "
 "прафіляванні ў бягучым акне.</p>"
 
-#: kcachegrind/toplevel.cpp:434
+#: kcachegrind/toplevel.cpp:423
 #, kde-format
 msgctxt "Reload a document"
 msgid "&Reload"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:437
+#: kcachegrind/toplevel.cpp:426
 #, fuzzy, kde-format
 msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
 msgstr ""
 "<b>Перазагрузіць дадзеныя прафіляванні</b><p>Гэта таксама загрузіць любыя "
 "новаствораныя часткі.</p>"
 
-#: kcachegrind/toplevel.cpp:442
+#: kcachegrind/toplevel.cpp:431
 #, fuzzy, kde-format
 msgid "&Export Graph"
 msgstr "Экспартаваць графік"
 
-#: kcachegrind/toplevel.cpp:445
+#: kcachegrind/toplevel.cpp:434
 #, fuzzy, kde-format
 msgid ""
 "<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
@@ -788,12 +788,12 @@ msgstr ""
 "<b>Экспартаваць графік выклікаў</b><p>Стварыць файл з пашырэннем .dot для "
 "такіх прылад як GraphViz.</p>"
 
-#: kcachegrind/toplevel.cpp:453
+#: kcachegrind/toplevel.cpp:442
 #, fuzzy, kde-format
 msgid "&Force Dump"
 msgstr "Прымусовая выгрузка"
 
-#: kcachegrind/toplevel.cpp:456
+#: kcachegrind/toplevel.cpp:445
 #, kde-format
 msgid ""
 "<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
@@ -812,7 +812,7 @@ msgid ""
 "the program.</p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:481
+#: kcachegrind/toplevel.cpp:470
 #, fuzzy, kde-format
 msgid ""
 "<b>Open Profile Data</b><p>This opens a profile data file, with possible "
@@ -821,57 +821,57 @@ msgstr ""
 "<b>Адкрыць дадзеныя прафіляванні</b><p>Гэта адкрые файл дадзеных "
 "прафіляванні, з магчымымі складовымі часткамі</p>"
 
-#: kcachegrind/toplevel.cpp:496
+#: kcachegrind/toplevel.cpp:485
 #, fuzzy, kde-format
 msgid "Show/Hide the Parts Overview Dockable"
 msgstr "Паказаць/Схаваць плавальную панель агляду частак"
 
-#: kcachegrind/toplevel.cpp:501
+#: kcachegrind/toplevel.cpp:490
 #, fuzzy, kde-format
 msgid "Call Stack"
 msgstr "Стэк выклікаў"
 
-#: kcachegrind/toplevel.cpp:504
+#: kcachegrind/toplevel.cpp:493
 #, fuzzy, kde-format
 msgid "Show/Hide the Call Stack Dockable"
 msgstr "Паказаць/Схаваць плавальную панель стэка выклікаў"
 
-#: kcachegrind/toplevel.cpp:509
+#: kcachegrind/toplevel.cpp:498
 #, fuzzy, kde-format
 msgid "Function Profile"
 msgstr "Прафіляванне функцыі"
 
-#: kcachegrind/toplevel.cpp:512
+#: kcachegrind/toplevel.cpp:501
 #, fuzzy, kde-format
 msgid "Show/Hide the Function Profile Dockable"
 msgstr "Паказаць/Схаваць плавальную панель прафілявання функцыі"
 
-#: kcachegrind/toplevel.cpp:520
+#: kcachegrind/toplevel.cpp:509
 #, fuzzy, kde-format
 msgid "Show/Hide the Profile Dumps Dockable"
 msgstr "Паказаць/Схаваць плавальную панель дампаў прафілявання"
 
-#: kcachegrind/toplevel.cpp:527
+#: kcachegrind/toplevel.cpp:516
 #, fuzzy, kde-format
 msgid "Relative"
 msgstr "(актыўны)"
 
-#: kcachegrind/toplevel.cpp:529
+#: kcachegrind/toplevel.cpp:518
 #, fuzzy, kde-format
 msgid "Show relative instead of absolute costs"
 msgstr "Паказаць адносныя наўзамен абсалютнага кошту"
 
-#: kcachegrind/toplevel.cpp:535
+#: kcachegrind/toplevel.cpp:524
 #, fuzzy, kde-format
 msgid "Relative to Parent"
 msgstr "Адносна вышэйстаячых"
 
-#: kcachegrind/toplevel.cpp:538
+#: kcachegrind/toplevel.cpp:527
 #, fuzzy, kde-format
 msgid "Show percentage costs relative to parent"
 msgstr "Паказваць кошты ў адсотках адносна бацькоў"
 
-#: kcachegrind/toplevel.cpp:542
+#: kcachegrind/toplevel.cpp:531
 #, fuzzy, kde-format
 msgid ""
 "<b>Show percentage costs relative to parent</b><p>If this is switched off, "
@@ -894,12 +894,12 @@ msgstr ""
 "table><p>(*) Толькі калі ўключана групаванне функцый (напрыклад групаванне "
 "ELF-аб'ектаў)."
 
-#: kcachegrind/toplevel.cpp:559
+#: kcachegrind/toplevel.cpp:548
 #, fuzzy, kde-format
 msgid "Cycle Detection"
 msgstr "Вызначаць цыклы"
 
-#: kcachegrind/toplevel.cpp:562
+#: kcachegrind/toplevel.cpp:551
 #, fuzzy, kde-format
 msgid ""
 "<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
@@ -920,17 +920,17 @@ msgstr ""
 "інтэрфейсам гэта прывядзе да вялікіх ілжывых цыклаў, якія робяць аналіз "
 "немагчымым."
 
-#: kcachegrind/toplevel.cpp:578
+#: kcachegrind/toplevel.cpp:567
 #, kde-format
 msgid "Shorten Templates"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:580
+#: kcachegrind/toplevel.cpp:569
 #, kde-format
 msgid "Hide Template Parameters in C++ Symbols"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:581
+#: kcachegrind/toplevel.cpp:570
 #, kde-format
 msgid ""
 "<b>Hide Template Parameters in C++ Symbols</b><p>If this is switched on, "
@@ -940,12 +940,12 @@ msgid ""
 "label to show a tooltip with the unabbreviated symbol.</p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:597
+#: kcachegrind/toplevel.cpp:586
 #, fuzzy, kde-format
 msgid "&Up"
 msgstr "Уверх"
 
-#: kcachegrind/toplevel.cpp:606
+#: kcachegrind/toplevel.cpp:595
 #, fuzzy, kde-format
 msgid ""
 "<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
@@ -954,187 +954,187 @@ msgstr ""
 "<b>Наверх</b><p>Пераход да апошняга вылучанага выкліка ў бягучай функцыі. "
 "Калі няма, выкарыстоўваецца старэйшы кошт.</p>"
 
-#: kcachegrind/toplevel.cpp:623
+#: kcachegrind/toplevel.cpp:612
 #, fuzzy, kde-format
 msgid "Go back in function selection history"
 msgstr "Перайсці назад па гісторыі вылучэння функцый"
 
-#: kcachegrind/toplevel.cpp:637
+#: kcachegrind/toplevel.cpp:626
 #, fuzzy, kde-format
 msgid "Go forward in function selection history"
 msgstr "Перайсці наперад па гісторыі вылучэння функцый"
 
-#: kcachegrind/toplevel.cpp:642 kcachegrind/toplevel.cpp:1533
+#: kcachegrind/toplevel.cpp:631 kcachegrind/toplevel.cpp:1504
 #, fuzzy, kde-format
 msgid "Primary Event Type"
 msgstr "Першасны тып падзеі"
 
-#: kcachegrind/toplevel.cpp:643
+#: kcachegrind/toplevel.cpp:632
 #, fuzzy, kde-format
 msgid "Select primary event type of costs"
 msgstr "Вылучыць галоўны тып падзеі коштаў"
 
-#: kcachegrind/toplevel.cpp:670 kcachegrind/toplevel.cpp:1538
+#: kcachegrind/toplevel.cpp:654 kcachegrind/toplevel.cpp:1509
 #, fuzzy, kde-format
 msgid "Secondary Event Type"
 msgstr "Другасны тып падзеі"
 
-#: kcachegrind/toplevel.cpp:671
+#: kcachegrind/toplevel.cpp:655
 #, fuzzy, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
 msgstr "Вылучыць другасны тып падзеі коштаў, напрыклад у анатацыях"
 
-#: kcachegrind/toplevel.cpp:685
+#: kcachegrind/toplevel.cpp:664
 #, fuzzy, kde-format
 msgid "Grouping"
 msgstr "Групаванне"
 
-#: kcachegrind/toplevel.cpp:687
+#: kcachegrind/toplevel.cpp:666
 #, kde-format
 msgid "Select how functions are grouped into higher level cost items"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:693
+#: kcachegrind/toplevel.cpp:672
 #, fuzzy, kde-format
 msgid "(No Grouping)"
 msgstr "(Без групавання)"
 
-#: kcachegrind/toplevel.cpp:710
+#: kcachegrind/toplevel.cpp:684
 #, fuzzy, kde-format
 msgid "Split"
 msgstr "Падзяліць"
 
-#: kcachegrind/toplevel.cpp:713
+#: kcachegrind/toplevel.cpp:687
 #, fuzzy, kde-format
 msgid "Show two information panels"
 msgstr "Паказаць дзве панелі"
 
-#: kcachegrind/toplevel.cpp:719
+#: kcachegrind/toplevel.cpp:693
 #, fuzzy, kde-format
 msgid "Split Horizontal"
 msgstr "Падзяліць гарызантальна"
 
-#: kcachegrind/toplevel.cpp:722
+#: kcachegrind/toplevel.cpp:696
 #, fuzzy, kde-format
 msgid "Change Split Orientation when main window is split."
 msgstr "Змяніць арыентацыю падзелу, пры падзеленым галоўным акне."
 
-#: kcachegrind/toplevel.cpp:919
+#: kcachegrind/toplevel.cpp:890
 #, fuzzy, kde-format
 msgid "Select Callgrind Profile Data"
 msgstr "Вылучыце дадзеныя прафіляванні Callgrind"
 
-#: kcachegrind/toplevel.cpp:921 kcachegrind/toplevel.cpp:989
+#: kcachegrind/toplevel.cpp:892 kcachegrind/toplevel.cpp:960
 #, fuzzy, kde-format
 msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
 msgstr ""
 "cachegrind.out* callgrind.out*|Дадзеныя прафіляванні Callgrind\n"
 "*|Усе файлы"
 
-#: kcachegrind/toplevel.cpp:949 kcachegrind/toplevel.cpp:978
+#: kcachegrind/toplevel.cpp:920 kcachegrind/toplevel.cpp:949
 #, kde-format
 msgid ""
 "Could not open the file \"%1\". Check it exists and you have enough "
 "permissions to read it."
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:987
+#: kcachegrind/toplevel.cpp:958
 #, fuzzy, kde-format
 msgid "Add Callgrind Profile Data"
 msgstr "Дадаць дадзеныя прафіляванні Callgrind"
 
-#: kcachegrind/toplevel.cpp:1157 kcachegrind/toplevel.cpp:1486
+#: kcachegrind/toplevel.cpp:1128 kcachegrind/toplevel.cpp:1457
 #, fuzzy, kde-format
 msgid "(Hidden)"
 msgstr "(утоена)"
 
-#: kcachegrind/toplevel.cpp:1543
+#: kcachegrind/toplevel.cpp:1514
 #, fuzzy, kde-format
 msgid "Hide"
 msgstr "Схаваць"
 
-#: kcachegrind/toplevel.cpp:1585
+#: kcachegrind/toplevel.cpp:1556
 #, fuzzy, kde-format
 msgid "Show Absolute Cost"
 msgstr "Паказаць абсалютны кошт"
 
-#: kcachegrind/toplevel.cpp:1588
+#: kcachegrind/toplevel.cpp:1559
 #, fuzzy, kde-format
 msgid "Show Relative Cost"
 msgstr "Паказаць адносны кошт"
 
-#: kcachegrind/toplevel.cpp:1620
+#: kcachegrind/toplevel.cpp:1591
 #, fuzzy, kde-format
 msgid "Go Back"
 msgstr "Назад"
 
-#: kcachegrind/toplevel.cpp:1621
+#: kcachegrind/toplevel.cpp:1592
 #, fuzzy, kde-format
 msgid "Go Forward"
 msgstr "Наперад"
 
-#: kcachegrind/toplevel.cpp:1622
+#: kcachegrind/toplevel.cpp:1593
 #, fuzzy, kde-format
 msgid "Go Up"
 msgstr "Уверх"
 
-#: kcachegrind/toplevel.cpp:1834
+#: kcachegrind/toplevel.cpp:1805
 #, fuzzy, kde-format
 msgid "Layout Count: %1"
 msgstr "Колькасць размяшчэнняў: %1"
 
-#: kcachegrind/toplevel.cpp:1841
+#: kcachegrind/toplevel.cpp:1812
 #, fuzzy, kde-format
 msgid "No profile data file loaded."
 msgstr "Няма загружаных дадзеных для прафілявання."
 
-#: kcachegrind/toplevel.cpp:1850
+#: kcachegrind/toplevel.cpp:1821
 #, fuzzy, kde-format
 msgid "Total %1 Cost: %2"
 msgstr "Усяго %1 Кошт %2"
 
-#: kcachegrind/toplevel.cpp:1862
+#: kcachegrind/toplevel.cpp:1833
 #, fuzzy, kde-format
 msgid "No event type selected"
 msgstr "Няма вылучаных тыпаў падзей"
 
-#: kcachegrind/toplevel.cpp:2052
+#: kcachegrind/toplevel.cpp:2011
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:2098
+#: kcachegrind/toplevel.cpp:2057
 #, kde-format
 msgid "Error running callgrind_control"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:2137 kcachegrind/toplevel.cpp:2174
-#: kcachegrind/toplevel.cpp:2211
+#: kcachegrind/toplevel.cpp:2096 kcachegrind/toplevel.cpp:2133
+#: kcachegrind/toplevel.cpp:2170
 #, fuzzy, kde-format
 msgid "(No Stack)"
 msgstr "(Няма стэка)"
 
-#: kcachegrind/toplevel.cpp:2143
+#: kcachegrind/toplevel.cpp:2102
 #, fuzzy, kde-format
 msgid "(No next function)"
 msgstr "(Няма наступнай функцыі)"
 
-#: kcachegrind/toplevel.cpp:2180
+#: kcachegrind/toplevel.cpp:2139
 #, fuzzy, kde-format
 msgid "(No previous function)"
 msgstr "(Няма папярэдняй функцыі)"
 
-#: kcachegrind/toplevel.cpp:2216
+#: kcachegrind/toplevel.cpp:2175
 #, fuzzy, kde-format
 msgid "(No Function Up)"
 msgstr "(Няма верхняй функцыі)"
 
-#: kcachegrind/toplevel.cpp:2348 kcachegrind/toplevel.cpp:2362
+#: kcachegrind/toplevel.cpp:2307 kcachegrind/toplevel.cpp:2321
 #, fuzzy, kde-format
 msgid "Loading %1"
 msgstr "Загрузка %1"
 
-#: kcachegrind/toplevel.cpp:2356
+#: kcachegrind/toplevel.cpp:2315
 #, fuzzy, kde-format
 msgid "Error loading %1: %2"
 msgstr "Загрузка %1"

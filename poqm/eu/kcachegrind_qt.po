@@ -1,14 +1,14 @@
 # Translation for kcachegrind_qt.po to Euskara/Basque (eu).
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the original file.
-# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
+# SPDX-FileCopyrightText: 2023 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
 # SPDX-FileCopyrightText: 2023 Iñigo Salvador Azurmendi <xalba@ni.eus>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2023-10-27 23:12+0200\n"
+"PO-Revision-Date: 2023-10-28 09:09+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Qt-Contexts: true\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 23.08.2\n"
 
 #: libcore/cachegrindloader.cpp:135
@@ -167,10 +167,10 @@ msgid "Program Trace"
 msgstr "Programaren aztarna"
 
 #: libcore/costitem.cpp:48
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "QObject|"
 msgid "%1 from %2"
-msgstr "Nork"
+msgstr "%1 %2(e)tik"
 
 #: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
 #: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
@@ -182,87 +182,87 @@ msgstr "(ezezaguna)"
 #: libcore/globalconfig.cpp:77
 msgctxt "QObject|"
 msgid "Instruction Fetch"
-msgstr ""
+msgstr "Jarraibide eskuratzea"
 
 #: libcore/globalconfig.cpp:78
 msgctxt "QObject|"
 msgid "Data Read Access"
-msgstr ""
+msgstr "Datuak irakurtzeko sarbidea"
 
 #: libcore/globalconfig.cpp:79
 msgctxt "QObject|"
 msgid "Data Write Access"
-msgstr ""
+msgstr "Datuak idazteko sarbidea"
 
 #: libcore/globalconfig.cpp:80
 msgctxt "QObject|"
 msgid "L1 Instr. Fetch Miss"
-msgstr ""
+msgstr "L1 Jarraib. eskuratze hutsegitea"
 
 #: libcore/globalconfig.cpp:81
 msgctxt "QObject|"
 msgid "L1 Data Read Miss"
-msgstr ""
+msgstr "L1 datuak irakurtzeko hutsegitea"
 
 #: libcore/globalconfig.cpp:82
 msgctxt "QObject|"
 msgid "L1 Data Write Miss"
-msgstr ""
+msgstr "L1 datuak idazteko hutsegitea"
 
 #: libcore/globalconfig.cpp:83
 msgctxt "QObject|"
 msgid "L2 Instr. Fetch Miss"
-msgstr ""
+msgstr "L2 Jarraib. eskuratze hutsegitea"
 
 #: libcore/globalconfig.cpp:84
 msgctxt "QObject|"
 msgid "L2 Data Read Miss"
-msgstr ""
+msgstr "L2 datuak irakurtzeko hutsegitea"
 
 #: libcore/globalconfig.cpp:85
 msgctxt "QObject|"
 msgid "L2 Data Write Miss"
-msgstr ""
+msgstr "L2 datuak idazteko hutsegitea"
 
 #: libcore/globalconfig.cpp:86
 msgctxt "QObject|"
 msgid "LL Instr. Fetch Miss"
-msgstr ""
+msgstr "LL Jarraib. eskuratze hutsegitea"
 
 #: libcore/globalconfig.cpp:87
 msgctxt "QObject|"
 msgid "LL Data Read Miss"
-msgstr ""
+msgstr "LL datuak irakurtzeko hutsegitea"
 
 #: libcore/globalconfig.cpp:88
 msgctxt "QObject|"
 msgid "LL Data Write Miss"
-msgstr ""
+msgstr "LL datuak idazteko hutsegitea"
 
 #: libcore/globalconfig.cpp:89
 msgctxt "QObject|"
 msgid "L1 Miss Sum"
-msgstr ""
+msgstr "L1 hutsegite batura"
 
 #: libcore/globalconfig.cpp:90
 msgctxt "QObject|"
 msgid "L2 Miss Sum"
-msgstr ""
+msgstr "L2 hutsegite batura"
 
 #: libcore/globalconfig.cpp:91
 msgctxt "QObject|"
 msgid "Last-level Miss Sum"
-msgstr ""
+msgstr "Azken mailako (LL) hutsegite batura"
 
 #: libcore/globalconfig.cpp:92
 msgctxt "QObject|"
 msgid "Indirect Branch"
-msgstr ""
+msgstr "Zeharkako adarra"
 
 #: libcore/globalconfig.cpp:93
 msgctxt "QObject|"
 msgid "Mispredicted Ind. Branch"
-msgstr ""
+msgstr "Gaizki aurreikusitako zeharkako adarra"
 
 #: libcore/globalconfig.cpp:94
 msgctxt "QObject|"
@@ -272,17 +272,17 @@ msgstr "Baldintzapeko adarra"
 #: libcore/globalconfig.cpp:95
 msgctxt "QObject|"
 msgid "Mispredicted Cond. Branch"
-msgstr ""
+msgstr "Gaizki aurreikusitako baldintzapeko adarra"
 
 #: libcore/globalconfig.cpp:96
 msgctxt "QObject|"
 msgid "Mispredicted Branch"
-msgstr ""
+msgstr "Gaizki aurreikusitako adarra"
 
 #: libcore/globalconfig.cpp:97
 msgctxt "QObject|"
 msgid "Global Bus Event"
-msgstr ""
+msgstr "Bus globaleko gertaera"
 
 #: libcore/globalconfig.cpp:98
 msgctxt "QObject|"
@@ -302,7 +302,7 @@ msgstr "Erabiltzailearen ordua"
 #: libcore/globalconfig.cpp:101
 msgctxt "QObject|"
 msgid "Cycle Estimation"
-msgstr ""
+msgstr "Zikloaren zenbatespena"
 
 #: libcore/tracedata.cpp:1240
 msgctxt "QObject|"
@@ -313,7 +313,7 @@ msgstr "(dei egilerik ez)"
 #, qt-format
 msgctxt "QObject|"
 msgid "%1 via %2"
-msgstr ""
+msgstr "%1 %2(r)(e)n bidez"
 
 #: libcore/tracedata.cpp:1256
 msgctxt "QObject|"
@@ -339,13 +339,13 @@ msgstr "Funtzio-zikloak birkalkulatzen..."
 #, qt-format
 msgctxt "QObject|"
 msgid "Call(s) from %1"
-msgstr ""
+msgstr "%1(e)tiko deia(k)"
 
 #: libviews/callgraphview.cpp:417
 #, qt-format
 msgctxt "QObject|"
 msgid "Call(s) to %1"
-msgstr ""
+msgstr "%1(e)ri deiak"
 
 #: libviews/callgraphview.cpp:419
 msgctxt "QObject|"
@@ -379,22 +379,25 @@ msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
 "Reduce node/edge limits for speedup.\n"
 msgstr ""
+"Abisua: grafiko bat trazatzea luzerako martxan dago.\n"
+"Murriztu nodo/ertz mugak azkartzeko.\n"
 
 #: libviews/callgraphview.cpp:2023
 msgctxt "CallGraphView|"
 msgid "Layouting stopped.\n"
-msgstr ""
+msgstr "Trazatzea geldituta.\n"
 
 #: libviews/callgraphview.cpp:2025
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
-msgstr ""
+msgstr "Dei-grafikoak %1 nodo eta %2 ertz ditu.\n"
 
 #: libviews/callgraphview.cpp:2034
 msgctxt "CallGraphView|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr ""
+"Ez dago grafikorik erabilgarri trazatzeko prozesuak huts egin duelako.\n"
 
 #: libviews/callgraphview.cpp:2036
 #, qt-format
@@ -403,26 +406,28 @@ msgid ""
 "Trying to run the following command did not work:\n"
 "'%1'\n"
 msgstr ""
+"Ondoko komandoa exekutatzen saiatzea huts egin du:\n"
+"'%1'\n"
 
 #: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
 msgctxt "CallGraphView|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
-msgstr ""
+msgstr "Mesedez, egiaztatu 'dot' instalatuta dagoela («GraphViz» paketea)."
 
 #: libviews/callgraphview.cpp:2080
 msgctxt "CallGraphView|"
 msgid "No item activated for which to draw the call graph."
-msgstr ""
+msgstr "Dei-grafikoa marrazteko aktibatutako elementurik ez dago."
 
 #: libviews/callgraphview.cpp:2092
 msgctxt "CallGraphView|"
 msgid "No call graph can be drawn for the active item."
-msgstr ""
+msgstr "Ezin da elementu aktiborako dei-grafikorik marraztu."
 
 #: libviews/callgraphview.cpp:2554
 msgctxt "CallGraphView|"
 msgid "Error running the graph layouting tool.\n"
-msgstr ""
+msgstr "Grafikoa trazatzeko tresna ibiltzeko errorea.\n"
 
 #: libviews/callgraphview.cpp:2559
 #, qt-format
@@ -432,6 +437,9 @@ msgid ""
 "\t'%1'\n"
 "because it has no cost of the selected event type."
 msgstr ""
+"Ez dago dei-grafiko erabilgarririk ondoko funtziorako\n"
+"\t'%1'\n"
+"ez duelako hautatutako gertaera motako kosturik."
 
 #: libviews/callgraphview.cpp:2773
 msgctxt "CallGraphView|"
@@ -481,7 +489,7 @@ msgstr "Deituaren sakonera"
 #: libviews/callgraphview.cpp:2853
 msgctxt "CallGraphView|"
 msgid "Min. Node Cost"
-msgstr ""
+msgstr "Nodoaren kostu min."
 
 #: libviews/callgraphview.cpp:2854
 msgctxt "CallGraphView|"
@@ -546,7 +554,7 @@ msgstr "Nodoaren % 10"
 #: libviews/callgraphview.cpp:2931
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
-msgstr ""
+msgstr "Txori-begi ikuspegia"
 
 #: libviews/callgraphview.cpp:2932
 msgctxt "CallGraphView|"
@@ -608,7 +616,7 @@ msgstr "Joan '%1'(e)ra"
 #: libviews/callgraphview.cpp:3046
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
-msgstr ""
+msgstr "Gelditu trazatzea"
 
 #: libviews/callgraphview.cpp:3053
 msgctxt "CallGraphView|"
@@ -633,17 +641,17 @@ msgstr "Grafikoa"
 #: libviews/callgraphview.cpp:3066
 msgctxt "CallGraphView|"
 msgid "Arrows for Skipped Calls"
-msgstr ""
+msgstr "Saihestutako deietarako geziak"
 
 #: libviews/callgraphview.cpp:3071
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
-msgstr ""
+msgstr "Barne-ziklorako deiak"
 
 #: libviews/callgraphview.cpp:3076
 msgctxt "CallGraphView|"
 msgid "Cluster Groups"
-msgstr ""
+msgstr "Talde multzoak"
 
 #: libviews/callgraphview.cpp:3080
 msgctxt "CallGraphView|"
@@ -663,7 +671,7 @@ msgstr "Arrunta"
 #: libviews/callgraphview.cpp:3087
 msgctxt "CallGraphView|"
 msgid "Tall"
-msgstr ""
+msgstr "Altua"
 
 #: libviews/callgraphview.cpp:3119
 msgctxt "CallGraphView|"
@@ -785,7 +793,7 @@ msgstr "Handiagotu sakonera (%1(e)ra)"
 #: libviews/callmapview.cpp:213
 msgctxt "CallMapView|"
 msgid "Stop at Function"
-msgstr ""
+msgstr "Gelditu funtzioan"
 
 #: libviews/callmapview.cpp:214
 msgctxt "CallMapView|"
@@ -848,12 +856,12 @@ msgstr "Irudikapena"
 #: libviews/callmapview.cpp:328
 msgctxt "CallMapView|"
 msgid "Split Direction"
-msgstr ""
+msgstr "Zatitu noranzkoa"
 
 #: libviews/callmapview.cpp:331
 msgctxt "CallMapView|"
 msgid "Skip Incorrect Borders"
-msgstr ""
+msgstr "Saihestu okerreko mugak"
 
 #: libviews/callmapview.cpp:336
 msgctxt "CallMapView|"
@@ -1007,21 +1015,21 @@ msgstr "Dei bakoitzeko %1"
 msgctxt "QObject|"
 msgid "(%n item(s) skipped)"
 msgid_plural "(%n item(s) skipped)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(%n funtzio saihestuta)"
+msgstr[1] "(%n funtzio saihestuta)"
 
 #: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
 #, qt-format
 msgctxt "QObject|"
 msgid "(%n function(s) skipped)"
 msgid_plural "(%n function(s) skipped)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(funtzio %n saihestuta)"
+msgstr[1] "(%n funtzio saihestuta)"
 
 #: libviews/coverageview.cpp:37
 msgctxt "CoverageView|"
 msgid "Incl."
-msgstr ""
+msgstr "Sartu"
 
 #: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
 msgctxt "CoverageView|"
@@ -1031,7 +1039,7 @@ msgstr "Distantzia"
 #: libviews/coverageview.cpp:41
 msgctxt "CoverageView|"
 msgid "Called"
-msgstr ""
+msgstr "Deitua(k)"
 
 #: libviews/coverageview.cpp:42
 msgctxt "CoverageView|"
@@ -1041,17 +1049,17 @@ msgstr "Dei egilea"
 #: libviews/coverageview.cpp:46
 msgctxt "CoverageView|"
 msgid "Self"
-msgstr ""
+msgstr "Norbera"
 
 #: libviews/coverageview.cpp:48
 msgctxt "CoverageView|"
 msgid "Calling"
-msgstr ""
+msgstr "Deia"
 
 #: libviews/coverageview.cpp:49
 msgctxt "CoverageView|"
 msgid "Callee"
-msgstr ""
+msgstr "Deitua"
 
 #: libviews/coverageview.cpp:84
 msgctxt "CoverageView|"
@@ -1112,12 +1120,12 @@ msgstr "Gertaera mota"
 #: libviews/eventtypeview.cpp:38
 msgctxt "EventTypeView|"
 msgid "Incl."
-msgstr ""
+msgstr "Sartu"
 
 #: libviews/eventtypeview.cpp:39
 msgctxt "EventTypeView|"
 msgid "Self"
-msgstr ""
+msgstr "Norbera"
 
 #: libviews/eventtypeview.cpp:40
 msgctxt "EventTypeView|"
@@ -1141,12 +1149,12 @@ msgstr ""
 #: libviews/eventtypeview.cpp:96
 msgctxt "EventTypeView|"
 msgid "Set as Secondary Event Type"
-msgstr ""
+msgstr "Ezarri bigarren mailako gertaera mota gisa"
 
 #: libviews/eventtypeview.cpp:98
 msgctxt "EventTypeView|"
 msgid "Hide Secondary Event Type"
-msgstr ""
+msgstr "Ezkutatu bigarren mailako gertaera mota"
 
 #: libviews/eventtypeview.cpp:107
 msgctxt "EventTypeView|"
@@ -1188,17 +1196,17 @@ msgstr "Gertaera mota berria %1"
 #: libviews/functionlistmodel.cpp:45
 msgctxt "FunctionListModel|"
 msgid "Incl."
-msgstr ""
+msgstr "Sartu"
 
 #: libviews/functionlistmodel.cpp:46
 msgctxt "FunctionListModel|"
 msgid "Self"
-msgstr ""
+msgstr "Norbera"
 
 #: libviews/functionlistmodel.cpp:47
 msgctxt "FunctionListModel|"
 msgid "Called"
-msgstr ""
+msgstr "Deitua(k)"
 
 #: libviews/functionlistmodel.cpp:48
 msgctxt "FunctionListModel|"
@@ -1214,7 +1222,7 @@ msgstr "Kokalekua"
 #, qt-format
 msgctxt "FunctionListModel|"
 msgid "(%1 function(s) skipped)"
-msgstr ""
+msgstr "(%1 funtzio saihestuta)"
 
 #: libviews/functionselection.cpp:87
 msgctxt "FunctionSelection|"
@@ -1234,7 +1242,7 @@ msgstr "Bilaketa itauna"
 #: libviews/functionselection.cpp:116
 msgctxt "FunctionSelection|"
 msgid "Self"
-msgstr ""
+msgstr "Norbera"
 
 #: libviews/functionselection.cpp:116
 msgctxt "FunctionSelection|"
@@ -1277,33 +1285,33 @@ msgstr "Taldekatzerik ez"
 #, qt-format
 msgctxt "QObject|"
 msgid "Active call to '%1'"
-msgstr ""
+msgstr "'%1'(e)ri dei aktiboa"
 
 #: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
 #, qt-format
 msgctxt "QObject|"
 msgid "Call to '%1'"
-msgstr ""
+msgstr "'%1'(e)ri deia"
 
 #: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
 #, qt-format
 msgctxt "QObject|"
 msgid "%n call(s) to '%2'"
 msgid_plural "%n call(s) to '%2'"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "dei %n '%2'(e)ri"
+msgstr[1] "%n dei '%2'(e)ri"
 
 #: libviews/instritem.cpp:155
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 of %2 times to 0x%3"
-msgstr ""
+msgstr "«0x%3»(e)ra %2 aldietatik %1. jauzia"
 
 #: libviews/instritem.cpp:160
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 times to 0x%2"
-msgstr ""
+msgstr "«0x%2»(e)ra %1 aldiz jauzi egin"
 
 #: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
 msgctxt "QObject|"
@@ -1338,7 +1346,7 @@ msgstr "Mihiztatze jarraibideak"
 #: libviews/instrview.cpp:200
 msgctxt "InstrView|"
 msgid "Source Position"
-msgstr ""
+msgstr "Sorburuaren kokapena"
 
 #: libviews/instrview.cpp:236
 msgctxt "InstrView|"
@@ -1373,12 +1381,12 @@ msgstr "Kode hamas."
 #: libviews/instrview.cpp:573
 msgctxt "InstrView|"
 msgid "There is no instruction info in the profile data file."
-msgstr ""
+msgstr "Profil datuen fitxategian ez dago jarraibide informaziorik."
 
 #: libviews/instrview.cpp:575
 msgctxt "InstrView|"
 msgid "Tip: For Callgrind, rerun with option"
-msgstr ""
+msgstr "Argibidea: «Callgrind»erako, berriz aukerarekin exekutatu"
 
 #: libviews/instrview.cpp:576
 msgctxt "InstrView|"
@@ -1388,7 +1396,7 @@ msgstr "      --dump-instr=yes"
 #: libviews/instrview.cpp:577
 msgctxt "InstrView|"
 msgid "To see (conditional) jumps, additionally specify"
-msgstr ""
+msgstr "Jauzi (baldintzatuak) ikusteko, zehaztu gainera"
 
 #: libviews/instrview.cpp:578
 msgctxt "InstrView|"
@@ -1398,7 +1406,7 @@ msgstr "      --collect-jumps=yes"
 #: libviews/instrview.cpp:826
 msgctxt "InstrView|"
 msgid "For annotated machine code, the following object file is needed:"
-msgstr ""
+msgstr "Makina-kode idatzoharretarako, ondoko objektu fitxategia behar da:"
 
 #: libviews/instrview.cpp:831
 msgctxt "InstrView|"
@@ -1408,22 +1416,22 @@ msgstr "Fitxategi hori ezin du aurkitu."
 #: libviews/instrview.cpp:834
 msgctxt "InstrView|"
 msgid "If cross-compiled, set SYSROOT variable."
-msgstr ""
+msgstr "Konpilazio gurutzatu bat egin bada, ezarri SYSROOT aldagaia."
 
 #: libviews/instrview.cpp:858
 msgctxt "InstrView|"
 msgid "There is an error trying to execute the command"
-msgstr ""
+msgstr "Komandoa exekutatzen saiatzean errore bat egon da"
 
 #: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
 msgctxt "InstrView|"
 msgid "Check that you have installed 'objdump'."
-msgstr ""
+msgstr "Egiaztatu 'objdump' instalatu duzula."
 
 #: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
 msgctxt "InstrView|"
 msgid "This utility can be found in the 'binutils' package."
-msgstr ""
+msgstr "Baliagarritasun hori 'binutils' paketean aurki daiteke."
 
 #: libviews/instrview.cpp:966
 msgctxt "InstrView|"
@@ -1435,28 +1443,29 @@ msgstr "(Jarraibiderik ez)"
 msgctxt "InstrView|"
 msgid "There are %n cost line(s) without machine code."
 msgid_plural "There are %n cost line(s) without machine code."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Makina koderik gabeko kostu lerro %n dago."
+msgstr[1] "Makina koderik gabeko %n kostu lerro daude."
 
 #: libviews/instrview.cpp:1136
 msgctxt "InstrView|"
 msgid "This happens because the code of"
-msgstr ""
+msgstr "Hori gertatzen da ondokoaren kodea,"
 
 #: libviews/instrview.cpp:1139
 msgctxt "InstrView|"
 msgid "does not seem to match the profile data file."
-msgstr ""
+msgstr ", ez dirudielako profil datu fitxategiarekin bat datorrenik."
 
 #: libviews/instrview.cpp:1142
 msgctxt "InstrView|"
 msgid "Are you using an old profile data file or is the above mentioned"
 msgstr ""
+"profil datuen fitxategi zahar bat erabiltzen ari zara edo goian aipatutako"
 
 #: libviews/instrview.cpp:1144
 msgctxt "InstrView|"
 msgid "ELF object from an updated installation/another machine?"
-msgstr ""
+msgstr "ELF objektua eguneratutako instalazio/beste makina batekoa da?"
 
 #: libviews/instrview.cpp:1152
 msgctxt "InstrView|"
@@ -1579,7 +1588,7 @@ msgstr "Irudikapena"
 #: libviews/partselection.cpp:371
 msgctxt "PartSelection|"
 msgid "Partitioning Mode"
-msgstr ""
+msgstr "Partizioak egiteko modua"
 
 #: libviews/partselection.cpp:373
 msgctxt "PartSelection|"
@@ -1649,17 +1658,17 @@ msgstr "Profil atala"
 #: libviews/partview.cpp:38
 msgctxt "PartView|"
 msgid "Incl."
-msgstr ""
+msgstr "Sartu"
 
 #: libviews/partview.cpp:39
 msgctxt "PartView|"
 msgid "Self"
-msgstr ""
+msgstr "Norbera"
 
 #: libviews/partview.cpp:40
 msgctxt "PartView|"
 msgid "Called"
-msgstr ""
+msgstr "Deitua(k)"
 
 #: libviews/partview.cpp:41
 msgctxt "PartView|"
@@ -1688,7 +1697,7 @@ msgstr ""
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 of %2 times to %3"
-msgstr ""
+msgstr "%3(e)ra %2 aldietatik %1. jauzia"
 
 #: libviews/sourceitem.cpp:146
 #, qt-format
@@ -1743,17 +1752,17 @@ msgstr "Joan %1 lerrora"
 #: libviews/sourceview.cpp:627
 msgctxt "SourceView|"
 msgid "There is no cost of current selected type associated"
-msgstr ""
+msgstr "Ez dago unean hautatutako motako kostuekin elkartutako"
 
 #: libviews/sourceview.cpp:629
 msgctxt "SourceView|"
 msgid "with any source line of this function in file"
-msgstr ""
+msgstr "funtzio honetako sorburu lerrorik fitxategian"
 
 #: libviews/sourceview.cpp:633
 msgctxt "SourceView|"
 msgid "Thus, no annotated source can be shown."
-msgstr ""
+msgstr "Beraz, sorburu idatzoharrik ezin da erakutsi."
 
 #: libviews/sourceview.cpp:658
 #, qt-format
@@ -1765,17 +1774,17 @@ msgstr "--- '%1'(e)tik ---"
 #, qt-format
 msgctxt "SourceView|"
 msgid "--- Inlined from '%1' ---"
-msgstr ""
+msgstr "--- '%1'(e)tik lerroan barneratua ---"
 
 #: libviews/sourceview.cpp:664
 msgctxt "SourceView|"
 msgid "--- Inlined from unknown source ---"
-msgstr ""
+msgstr "--- sorburu ezezagunetik lerroan barneratua ---"
 
 #: libviews/sourceview.cpp:669
 msgctxt "SourceView|"
 msgid "There is no source available for the following function:"
-msgstr ""
+msgstr "Ez dago ondoko funtzioetarako sorbururik erabilgarri:"
 
 #: libviews/sourceview.cpp:674
 msgctxt "SourceView|"
@@ -1810,7 +1819,7 @@ msgstr "Zerrenda konfiguratzeko elkarrizketa-koadroan aurki daiteke."
 #: libviews/stackselection.cpp:36
 msgctxt "StackSelection|"
 msgid "Stack Selection"
-msgstr ""
+msgstr "Pila hautatzea"
 
 #: libviews/stackselection.cpp:44
 msgctxt "StackSelection|"
