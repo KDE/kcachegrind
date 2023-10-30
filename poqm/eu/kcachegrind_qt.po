@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2023-10-28 09:09+0200\n"
+"PO-Revision-Date: 2023-10-29 23:37+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -1145,6 +1145,11 @@ msgid ""
 "type.</p><p>By choosing a cost type from the list, you change the cost type "
 "of costs shown all over KCachegrind to be the selected one.</p>"
 msgstr ""
+"<b>Kostu-moten zerrenda</b><p>Zerrenda horrek, erabilgarri dauden kostu-mota "
+"guztiak eta unean hautatutako funtzioaren norbera/inklusiboa kostuak kostu "
+"mota horretarako zer den erakusten du.</p><p>Zerrendako kostu-mota bat "
+"hautatuz, KCachegrind osoan zehar erakutsitako kostuen kostu-mota "
+"hautatutakora aldatzen duzu.</p>"
 
 #: libviews/eventtypeview.cpp:96
 msgctxt "EventTypeView|"
@@ -1919,7 +1924,7 @@ msgstr "Behera ezkerrera"
 #: libviews/tabview.cpp:135
 msgctxt "TabBar|"
 msgid "Show Hidden On"
-msgstr ""
+msgstr "Erakutsi ezkutukoa hemen"
 
 #: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
 msgctxt "TabView|"
