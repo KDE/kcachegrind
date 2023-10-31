@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2023-10-29 23:37+0100\n"
+"PO-Revision-Date: 2023-10-30 23:14+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -1049,7 +1049,7 @@ msgstr "Dei egilea"
 #: libviews/coverageview.cpp:46
 msgctxt "CoverageView|"
 msgid "Self"
-msgstr "Norbera"
+msgstr "Propioa"
 
 #: libviews/coverageview.cpp:48
 msgctxt "CoverageView|"
@@ -1125,7 +1125,7 @@ msgstr "Sartu"
 #: libviews/eventtypeview.cpp:39
 msgctxt "EventTypeView|"
 msgid "Self"
-msgstr "Norbera"
+msgstr "Propioa"
 
 #: libviews/eventtypeview.cpp:40
 msgctxt "EventTypeView|"
@@ -1206,7 +1206,7 @@ msgstr "Sartu"
 #: libviews/functionlistmodel.cpp:46
 msgctxt "FunctionListModel|"
 msgid "Self"
-msgstr "Norbera"
+msgstr "Propioa"
 
 #: libviews/functionlistmodel.cpp:47
 msgctxt "FunctionListModel|"
@@ -1247,7 +1247,7 @@ msgstr "Bilaketa itauna"
 #: libviews/functionselection.cpp:116
 msgctxt "FunctionSelection|"
 msgid "Self"
-msgstr "Norbera"
+msgstr "Propioa"
 
 #: libviews/functionselection.cpp:116
 msgctxt "FunctionSelection|"
@@ -1668,7 +1668,7 @@ msgstr "Sartu"
 #: libviews/partview.cpp:39
 msgctxt "PartView|"
 msgid "Self"
-msgstr "Norbera"
+msgstr "Propioa"
 
 #: libviews/partview.cpp:40
 msgctxt "PartView|"
@@ -1741,6 +1741,13 @@ msgid ""
 "call destination.</p><p>Select a inserted call information line to make the "
 "destination function current.</p>"
 msgstr ""
+"<b>Idatzoharrak dituen Sorburua</b><p>Idatzoharrak dituen sorburu-zerrendak "
+"unean hautatutako funtzioaren sorburu-lerroak erakusten ditu, sorburu-lerro "
+"hori exekutatzeko kostu propioarekin batera. Sorburu-lerro batean deirik "
+"balego, dei-gertaeraren xehetasunak dituzten lerroak sorburuan sartzen dira: "
+"dei barruan gastatutako kostua, gertatutako dei kopurua, eta deiaren jomuga."
+"</p><p>Hautatu sartutako dei-informazio lerro bat jomugako funtzioa unekoa "
+"egiteko.</p>"
 
 #: libviews/sourceview.cpp:110
 #, qt-format
@@ -2006,6 +2013,24 @@ msgid ""
 "ul>For more information, see the <em>What's This?</em> help of the "
 "corresponding tab widget.</p>"
 msgstr ""
+"<b>Informazio fitxak</b><p>Trepeta horrek unean hautatutako funtzioaren "
+"informazioa fitxa ezberdinetan erakusten du: <ul><li>«Kostuak» fitxak, "
+"gertaera-mota erabilgarrien zerrenda bat erakusten du, eta mota horiekin "
+"lotutako kostu inklusiboak eta propioak.</li><li>«Zatiak» fitxak aztarna-"
+"zati zerrenda bat erakusten du, aztarnak zati bat baino gehiago badu "
+"(bestela, fitxa hori ezkutatuan egongo da). Hautatutako funtzioaren kostua, "
+"zati bakoitzean gastatutakoa, gertatutako deiekin batera erakusten da.</"
+"li><li>«Dei zerrendak» fitxak funtzioaren zuzeneko deitzaileak eta deituak "
+"zehaztasun handiagoarekin erakusten ditu.</li><li>«Estaldura» fitxak «Dei "
+"zerrendak» fitxak erakusten duen berdina erakusten du, baina zeharkako "
+"deitzaileak eta deituak ere erakusten ditu, ez zuzenekoak bakarrik.</"
+"li><li>«Deien grafikoa» fitxak, funtzio horrek egindako deien irudikapen "
+"grafiko bat erakusten du.</li><li>«Sorburu kodea» fitxak sorburua "
+"idatzoharrekin aurkezten du, arazteko informazioa eta sorburu fitxategia "
+"erabilgarri badaude.</li><li>«Makina kodea» fitxak mihiztadura kodea "
+"idatzoharrekin aurkezten du, jarraibide mailako profil-informazioa "
+"erabilgarri badago.</li></ul>Informazio gehiago lortzeko, begiratu dagokion "
+"fitxako trepetaren <em>Zer da hori?</em> Laguntza.</p>"
 
 #: libviews/tabview.cpp:728
 msgctxt "TabView|"
