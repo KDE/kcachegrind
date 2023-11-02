@@ -104,7 +104,7 @@ QString CallMapView::whatsThis() const
                        "(however, there are drawing constraints).</p>");
 
     s += tr( "<p>Appearance options can be found in the "
-             "in the context menu. To get exact size proportions, "
+             "context menu. To get exact size proportions, "
              "choose 'Hide incorrect borders'. As this mode can be "
              "<em>very</em> time consuming, you may want to limit "
              "the maximum drawn nesting level before. "
