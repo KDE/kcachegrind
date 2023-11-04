@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2023-11-01 10:50+0100\n"
+"PO-Revision-Date: 2023-11-04 00:10+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -69,32 +69,32 @@ msgstr "Jauzi"
 #: libcore/context.cpp:68
 msgctxt "ProfileContext|"
 msgid "Part Instruction"
-msgstr "Jarraibide atala"
+msgstr "Agindu atala"
 
 #: libcore/context.cpp:69
 msgctxt "ProfileContext|"
 msgid "Instruction"
-msgstr "Jarraibidea"
+msgstr "Agindua"
 
 #: libcore/context.cpp:70
 msgctxt "ProfileContext|"
 msgid "Part Instruction Jump"
-msgstr "Jarraibide jauzi atala"
+msgstr "Agindu jauzi atala"
 
 #: libcore/context.cpp:71
 msgctxt "ProfileContext|"
 msgid "Instruction Jump"
-msgstr "Jarraibide jauzia"
+msgstr "Agindu jauzia"
 
 #: libcore/context.cpp:72
 msgctxt "ProfileContext|"
 msgid "Part Instruction Call"
-msgstr "Jarraibide deia atala"
+msgstr "Agindu deia atala"
 
 #: libcore/context.cpp:73
 msgctxt "ProfileContext|"
 msgid "Instruction Call"
-msgstr "Jarraibide deia"
+msgstr "Agindu deia"
 
 #: libcore/context.cpp:74
 msgctxt "ProfileContext|"
@@ -182,7 +182,7 @@ msgstr "(ezezaguna)"
 #: libcore/globalconfig.cpp:77
 msgctxt "QObject|"
 msgid "Instruction Fetch"
-msgstr "Jarraibide eskuratzea"
+msgstr "Agindu eskuratzea"
 
 #: libcore/globalconfig.cpp:78
 msgctxt "QObject|"
@@ -749,20 +749,6 @@ msgstr ""
 "saiatzen da (dena den, marrazteko murrizketak daude).</p>"
 
 #: libviews/callmapview.cpp:106
-#, fuzzy
-#| msgctxt "CallMapView|"
-#| msgid ""
-#| "<p>Appearance options can be found in the in the context menu. To get "
-#| "exact size proportions, choose 'Hide incorrect borders'. As this mode can "
-#| "be <em>very</em> time consuming, you may want to limit the maximum drawn "
-#| "nesting level before. 'Best' determinates the split direction for "
-#| "children from the aspect ratio of the parent. 'Always Best' decides on "
-#| "remaining space for each sibling. 'Ignore Proportions' takes space for "
-#| "function name drawing <em>before</em> drawing children. Note that size "
-#| "proportions can get <em>heavily</em> wrong.</p><p>This is a <em>TreeMap</"
-#| "em> widget. Keyboard navigation is available with the left/right arrow "
-#| "keys for traversing siblings, and up/down arrow keys to go a nesting "
-#| "level up/down. <em>Return</em> activates the current item.</p>"
 msgctxt "CallMapView|"
 msgid ""
 "<p>Appearance options can be found in the context menu. To get exact size "
@@ -1155,10 +1141,11 @@ msgstr ""
 "distantzia logaritmiko bakoitzerako ehuneko logaritmikoa kolore ezberdin "
 "batekin erakusten du.</p><p>Funtzio bereko dei ugari egon daitezkeenez, "
 "distantzia-zutabeak, batzuetan, gertatzen diren dei guztietarako distantzia "
-"barrutiak erakusten ditu; ondoren parentesi artean, distantzia ertaina, hots "
-"dei gehienen kostua gertatzen den distantzia.</p><p>Funtzio bat hautatzean, "
-"informazio panel horretako uneko hautua egiten du. Bi panel baldin badaude "
-"(modu zatitua), horren ordez, beste paneleko funtzioa aldatzen da.</p>"
+"barrutiak erakusten ditu;  ondoren parentesi artean, distantzia ertaina, "
+"hots dei gehienen kostua gertatzen den distantzia.</p><p>Funtzio bat "
+"hautatzean, informazio panel horretako uneko hautua egiten du. Bi panel "
+"baldin badaude (modu zatitua), horren ordez, beste paneleko funtzioa "
+"aldatzen da.</p>"
 
 #: libviews/coverageview.cpp:114
 msgctxt "CoverageView|"
@@ -1179,6 +1166,23 @@ msgid ""
 "selected one of this information panel. If there are two panels (Split "
 "mode), the function of the other panel is changed instead.</p>"
 msgstr ""
+"<b>Dei hartzaile guztien zerrenda</b><p>Zerrenda horrek, unean hautatutako "
+"funtzioak deitu dituen funtzio guztiak erakusten ditu, deia zuzenean izan "
+"edo, pilan, bien artean funtzio batzuk egon; tartean dagoen funtzio "
+"kopuruari, gehi bat <em>Distantzia</em> deitzen zaio (adib. A,B,C funtzioen "
+"kasuan, Atik Crako dei bat dago Ak B eta Bk C deitzen duenean, hots A => B "
+"=> C. Distantzia hemen 2 da).</p><p>Erakutsitako kostu absolutua, haututakoa "
+"aktibo dagoen bitartean, zerrendatutako funtzioan gastatutako kostua da; "
+"kostu erlatiboa, hautatutako funtzioa aktibo dagoen bitartean, "
+"zerrendatutako funtzioan gastatutako kostu osoaren ehunekoa da. Kostuen "
+"grafikoak distantzia logaritmiko bakoitzerako ehuneko logaritmikoa kolore "
+"ezberdin batekin erakusten du.<p><p>Funtzio bereko dei ugari egon "
+"daitezkeenez, distantzia-zutabeak, batzuetan, gertatzen diren dei "
+"guztietarako distantzia barrutiak erakusten ditu; ondoren parentesi artean, "
+"distantzia ertaina, hots dei gehienen kostua gertatzen den distantzia.</"
+"p><p>Funtzio bat hautatzean, informazio panel horretako uneko hautua egiten "
+"du. Bi panel baldin badaude (modu zatitua), horren ordez, beste paneleko "
+"funtzioa aldatzen da.</p>"
 
 #: libviews/coverageview.cpp:160
 #, qt-format
@@ -1432,7 +1436,7 @@ msgstr "Hamas."
 #: libviews/instrview.cpp:199
 msgctxt "InstrView|"
 msgid "Assembly Instructions"
-msgstr "Mihiztatze jarraibideak"
+msgstr "Mihiztatze aginduak"
 
 #: libviews/instrview.cpp:200
 msgctxt "InstrView|"
@@ -1451,6 +1455,15 @@ msgid ""
 "utility from the 'binutils' package.</p><p>Select a line with call "
 "information to make the destination function of this call current.</p>"
 msgstr ""
+"<b>Idatzoharrak dituen Makina-kodea</b><p>Idatzoharrak dituen makina-kode "
+"zerrendak unean hautatutako funtzioaren mihiztatzaile-aginduak erakusten "
+"ditu, agindu bat exekutatzean gastatutako kostuarekin (propioa) batera. Hori "
+"dei-agindu bat bada, gertatzen ari den deiari buruzko xehetasunak dituzten "
+"lerroak sorburuan txertatzen dira: deiaren barruan gastatutako kostua, "
+"gertatzen ari den dei kopurua, eta deiaren jomuga.</p><p>Erakusten den "
+"makina-kodea 'binutils' paketeko 'objdump' baliagarritasunarekin sortzen da."
+"</p><p>Hautatu deiaren informazioa duen lerro bat, dei horren jomuga den "
+"funtzioa unekoa egiteko.</p>"
 
 #: libviews/instrview.cpp:265
 #, qt-format
@@ -1472,7 +1485,7 @@ msgstr "Kode hamas."
 #: libviews/instrview.cpp:573
 msgctxt "InstrView|"
 msgid "There is no instruction info in the profile data file."
-msgstr "Profil datuen fitxategian ez dago jarraibide informaziorik."
+msgstr "Profil-datuen fitxategian ez dago agindu informaziorik."
 
 #: libviews/instrview.cpp:575
 msgctxt "InstrView|"
@@ -1497,7 +1510,8 @@ msgstr "      --collect-jumps=yes"
 #: libviews/instrview.cpp:826
 msgctxt "InstrView|"
 msgid "For annotated machine code, the following object file is needed:"
-msgstr "Makina-kode idatzoharretarako, ondoko objektu fitxategia behar da:"
+msgstr ""
+"Idatzoharrak dituen makina-koderako, ondoko objektu fitxategia behar da:"
 
 #: libviews/instrview.cpp:831
 msgctxt "InstrView|"
@@ -1527,15 +1541,15 @@ msgstr "Baliagarritasun hori 'binutils' paketean aurki daiteke."
 #: libviews/instrview.cpp:966
 msgctxt "InstrView|"
 msgid "(No Instruction)"
-msgstr "(Jarraibiderik ez)"
+msgstr "(Agindurik ez)"
 
 #: libviews/instrview.cpp:1134
 #, qt-format
 msgctxt "InstrView|"
 msgid "There are %n cost line(s) without machine code."
 msgid_plural "There are %n cost line(s) without machine code."
-msgstr[0] "Makina koderik gabeko kostu lerro %n dago."
-msgstr[1] "Makina koderik gabeko %n kostu lerro daude."
+msgstr[0] "Makina-koderik gabeko kostu lerro %n dago."
+msgstr[1] "Makina-koderik gabeko %n kostu lerro daude."
 
 #: libviews/instrview.cpp:1136
 msgctxt "InstrView|"
@@ -1626,6 +1640,21 @@ msgid ""
 "current selected function in the trace part is shown. This is split up into "
 "smaller rectangles to show the costs of its callees.</li></ul></p>"
 msgstr ""
+"<b>Atalen ikuspegi orokorra</b><p>Aztarna bat, aztarna atal ezberdinez "
+"osatuta egon daiteke, profil-exekuzio baten hainbat profil datu-fitxategi "
+"daudenean. «Aztarna atal ikuspegi orokor» atrakagarriak horiek erakusten "
+"ditu, exekuzio garaian horizontalki ordenatuta; laukizuzenen neurriak "
+"ataletan gastatutako kostu osoekiko proportzionalak dira. Atal bat edo "
+"batzuk hauta ditzakezu, erakutsitako kostu guztiak atal horietara bakarrik "
+"mugatzeko.</p><p>Atalek zatiketa gehiago dituzte: Partizio eta dei-hartzaile "
+"zatitze moduak: <ul><li>Partizioa: Aztarna atal baterako taldeetan ikusten "
+"duzu partizioa, hautatutako talde-motaren arabera. Adib. ELF objektu taldeak "
+"hautatzen badira, erabilitako ELF objektu bakoitzerako (liburutegi partekatu "
+"edo exekutagarri) laukizuzen koloredunak ikusten dituzu, haietan gastatutako "
+"kostuaren araberako neurriekin.</li><li>Dei-hartzailea: Aztarna atalean "
+"unean hautatutako funtzioaren kostu inklusiboa erakusten duen laukizuzen bat "
+"erakusten da. Hori, haren dei-hartzaileen kostuak erakusteko, zati "
+"txikiagoetan zatituta dago.</li></ul></p>"
 
 #: libviews/partselection.cpp:231
 #, qt-format
@@ -1783,6 +1812,21 @@ msgid ""
 "Part Overview Dockable. This one also supports multiple selection.</"
 "p><p>Note that the list is hidden if only one trace part is loaded.</p>"
 msgstr ""
+"<b>Aztarna Atal zerrenda</b><p>Zerrenda horrek, zamatutako aztarnaren "
+"aztarna-atal guztiak erakusten ditu. Atal bakoitzerako, atalean gastatutako, "
+"unean hautatutako funtzioaren kostu propioa/inklusiboa erakusten da; ehuneko "
+"kostuak beti dira <em>atalaren</em> kostu osoarekiko erlatibo (ez «Aztarna "
+"Atal ikuspegi orokorra»n bezala aztarna osoarekiko). Aztarna atal barnean "
+"funtziotik eta funtziora eginiko deiak ere erakusten dira.</p><p>Zerrendako "
+"aztarna atal bat edo gehiago hautatuz, KCachegrind osoan zehar erakutsitako "
+"kostuak, hautatutako atale(t)an gastatutakoa bakarrik izango dira. Zerrenda "
+"hautapenik erakusten ez bada, izatez, aztarna atal guztiak inplizituki "
+"hautatuta daude.</p><p>Hori, hautapen anizkoitzeko zerrenda bat da. "
+"Barrutiak hauta ditzakezu sagua arrastatuz edo Maius/Ktrl aldarazleak "
+"erabiliz. Aztarna atalak hautatu/desautatu daitezke ere «Aztarna Atal "
+"ikuspegi orokorra» erabiliz. Horrek ere onartzen ditu hautapen anizkoitzak.</"
+"p><p>Kontuan izan atal bakar bat hautatuta badago, zerrenda ezkutuan dagoela."
+"</p>"
 
 #: libviews/sourceitem.cpp:141
 #, qt-format
@@ -1860,7 +1904,7 @@ msgstr "funtzio honetako sorburu lerrorik fitxategian"
 #: libviews/sourceview.cpp:633
 msgctxt "SourceView|"
 msgid "Thus, no annotated source can be shown."
-msgstr "Beraz, sorburu idatzoharrik ezin da erakutsi."
+msgstr "Beraz, ezin da idatzoharrak dituen sorbururik erakutsi."
 
 #: libviews/sourceview.cpp:658
 #, qt-format
@@ -2106,17 +2150,17 @@ msgstr ""
 "zati zerrenda bat erakusten du, aztarnak zati bat baino gehiago badu "
 "(bestela, fitxa hori ezkutatuan egongo da). Hautatutako funtzioaren kostua, "
 "zati bakoitzean gastatutakoa, gertatutako deiekin batera erakusten da.</"
-"li><li>«Dei zerrendak» fitxak funtzioaren zuzeneko deitzaileak eta deituak "
+"li><li>«Dei-zerrendak» fitxak funtzioaren zuzeneko deitzaileak eta deituak "
 "zehaztasun handiagoarekin erakusten ditu.</li><li>«Estaldura» fitxak «Dei "
 "zerrendak» fitxak erakusten duen berdina erakusten du, baina zeharkako "
 "deitzaileak eta deituak ere erakusten ditu, ez zuzenekoak bakarrik.</"
 "li><li>«Deien grafikoa» fitxak, funtzio horrek egindako deien irudikapen "
-"grafiko bat erakusten du.</li><li>«Sorburu kodea» fitxak sorburua "
-"idatzoharrekin aurkezten du, arazteko informazioa eta sorburu fitxategia "
-"erabilgarri badaude.</li><li>«Makina kodea» fitxak mihiztadura kodea "
-"idatzoharrekin aurkezten du, jarraibide mailako profil-informazioa "
-"erabilgarri badago.</li></ul>Informazio gehiago lortzeko, begiratu dagokion "
-"fitxako trepetaren <em>Zer da hori?</em> Laguntza.</p>"
+"grafiko bat erakusten du.</li><li>«Sorburu-kodea» fitxak idatzoharrak dituen "
+"sorburua aurkezten du, arazteko informazioa eta sorburu fitxategia "
+"erabilgarri badaude.</li><li>«Makina-kodea» fitxak mihiztadura kodea "
+"idatzoharrekin aurkezten du, agindu mailako profil-informazioa erabilgarri "
+"badago.</li></ul>Informazio gehiago lortzeko, begiratu dagokion fitxako "
+"trepetaren <em>Zer da hori?</em> Laguntza.</p>"
 
 #: libviews/tabview.cpp:728
 msgctxt "TabView|"
