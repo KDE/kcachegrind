@@ -4,13 +4,13 @@
 # Translators:
 # obsoleteman <tulliana@gmail.com>, 2009,2012.
 # Volkan Gezer <volkangezer@gmail.com>, 2014.
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdesdk-kde4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2023-08-26 11:57+0300\n"
+"PO-Revision-Date: 2023-11-03 13:08+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
@@ -514,37 +514,37 @@ msgstr "En Az Yok"
 #: libviews/callgraphview.cpp:2860
 msgctxt "CallGraphView|"
 msgid "50 %"
-msgstr "% 50"
+msgstr "%​50"
 
 #: libviews/callgraphview.cpp:2861
 msgctxt "CallGraphView|"
 msgid "20 %"
-msgstr "% 20"
+msgstr "%​20"
 
 #: libviews/callgraphview.cpp:2862
 msgctxt "CallGraphView|"
 msgid "10 %"
-msgstr "% 10"
+msgstr "%​10"
 
 #: libviews/callgraphview.cpp:2863
 msgctxt "CallGraphView|"
 msgid "5 %"
-msgstr "% 5"
+msgstr "%​5"
 
 #: libviews/callgraphview.cpp:2864
 msgctxt "CallGraphView|"
 msgid "2 %"
-msgstr "% 2"
+msgstr "%​2"
 
 #: libviews/callgraphview.cpp:2865
 msgctxt "CallGraphView|"
 msgid "1 %"
-msgstr "% 1"
+msgstr "%​1"
 
 #: libviews/callgraphview.cpp:2895
 msgctxt "CallGraphView|"
 msgid "Min. Call Cost"
-msgstr "En az Çağrı Maliyeti"
+msgstr "En Düşük Çağrı Maliyeti"
 
 #: libviews/callgraphview.cpp:2896
 msgctxt "CallGraphView|"
@@ -554,22 +554,22 @@ msgstr "Düğüm ile Aynı"
 #: libviews/callgraphview.cpp:2898
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
-msgstr "Düğümüğün % 50'si"
+msgstr "Düğümün %​50'si"
 
 #: libviews/callgraphview.cpp:2900
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
-msgstr "Düğümün % 20'si"
+msgstr "Düğümün %​20'si"
 
 #: libviews/callgraphview.cpp:2902
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
-msgstr "Düğümün % 10'u"
+msgstr "Düğümün %​10'u"
 
 #: libviews/callgraphview.cpp:2931
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
-msgstr "Kuş Bakışı Görünüm"
+msgstr "Kuşbakışı Görünüm"
 
 #: libviews/callgraphview.cpp:2932
 msgctxt "CallGraphView|"
@@ -646,7 +646,7 @@ msgstr "DOT dosyası olarak..."
 #: libviews/callgraphview.cpp:3055
 msgctxt "CallGraphView|"
 msgid "As Image..."
-msgstr "Resim olarak..."
+msgstr "Görsel Olarak..."
 
 #: libviews/callgraphview.cpp:3058
 msgctxt "CallGraphView|"
@@ -661,7 +661,7 @@ msgstr "Atlanan Çağrılar için Oklar"
 #: libviews/callgraphview.cpp:3071
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
-msgstr "Dahili-döngü Çağrıları"
+msgstr "İç Döngü Çağrıları"
 
 #: libviews/callgraphview.cpp:3076
 msgctxt "CallGraphView|"
@@ -1352,7 +1352,7 @@ msgstr ""
 "harcandığı tüm grupları içerir. Grup listesi, 'İşlev' grup türü seçildiğinde "
 "gizlenir.</p><p>İşlev listesi, seçilen grubun (veya 'İşlev' grup tipi için "
 "tümünün) işlevlerini, burada harcanan maliyetlere göre sıralanmış olarak "
-"içerir. Maliyeti %1'den az olan işlevler öntanımlı olarak gizlenir.</p>"
+"içerir. Maliyeti %​1'den az olan işlevler öntanımlı olarak gizlenir.</p>"
 
 #: libviews/functionselection.cpp:287
 #, qt-format
