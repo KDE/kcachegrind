@@ -7,6 +7,7 @@ Icon=kcachegrind
 X-DocPath=kcachegrind/index.html
 Terminal=false
 Name=KCachegrind
+Name[ast]=KCachegrind
 Name[bg]=KCachegrind
 Name[br]=KCachegrind
 Name[bs]=KCachegrind
