@@ -4,6 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
   <name>KCachegrind</name>
+  <name xml:lang="ast">KCachegrind</name>
   <name xml:lang="ca">KCachegrind</name>
   <name xml:lang="ca-valencia">KCachegrind</name>
   <name xml:lang="cs">KCachegrind</name>
@@ -103,6 +104,7 @@
     <p xml:lang="zh-CN">KCachegrind 是一个性能数据可视化工具。它被用于确定程序执行过程中最花时间的部分。</p>
     <p xml:lang="zh-TW">KCachegrind 是一個配置檔案可視化工具，用於確定執行程序中最耗時的部分。</p>
     <p>Features:</p>
+    <p xml:lang="ast">Funciones:</p>
     <p xml:lang="ca">Característiques:</p>
     <p xml:lang="ca-valencia">Característiques:</p>
     <p xml:lang="cs">Vlastnosti:</p>
