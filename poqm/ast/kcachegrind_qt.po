@@ -1,365 +1,353 @@
-# Translation of kcachegrind_qt.po to Catalan (Valencian)
-# Copyright (C) 2009-2023 This_file_is_part_of_KDE
-# This file is distributed under the license LGPL version 2.1 or
-# version 3 or later versions approved by the membership of KDE e.V.
-#
-# Josep M. Ferrer <txemaq@gmail.com>, 2009, 2010, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
-# Manuel Tortosa Moreno <manutortosa@chakra-project.org>, 2009, 2010.
-# Manuel Tortosa <manutortosa@chakra-project.org>, 2009, 2010, 2012.
-# Antoni Bella Pérez <antonibella5@yahoo.com>, 2012, 2014, 2016, 2018, 2020.
+# SPDX-FileCopyrightText: 2023 Enol P. <enolp@softastur.org>
 msgid ""
 msgstr ""
-"Project-Id-Version: kcachegrind\n"
-"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2023-11-03 09:33+0100\n"
-"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
-"Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
-"Language: ca@valencia\n"
+"Project-Id-Version: \n"
+"PO-Revision-Date: 2023-11-05 01:44+0100\n"
+"Last-Translator: Enol P. <enolp@softastur.org>\n"
+"Language-Team: \n"
+"Language: ast_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Accelerator-Marker: &\n"
 "X-Qt-Contexts: true\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
 msgid "Import filter for Cachegrind/Callgrind generated profile data files"
 msgstr ""
-"Filtre d'importació per a fitxers de traça generats per Cachegrind/Callgrind"
 
 #: libcore/context.cpp:60
 msgctxt "ProfileContext|"
 msgid "Invalid Context"
-msgstr "Context no vàlid"
+msgstr ""
 
 #: libcore/context.cpp:61
 msgctxt "ProfileContext|"
 msgid "Unknown Context"
-msgstr "Context desconegut"
+msgstr ""
 
 #: libcore/context.cpp:62
 msgctxt "ProfileContext|"
 msgid "Part Source Line"
-msgstr "Línia de codi font de «part»"
+msgstr ""
 
 #: libcore/context.cpp:63
 msgctxt "ProfileContext|"
 msgid "Source Line"
-msgstr "Línia de codi font"
+msgstr ""
 
 #: libcore/context.cpp:64
 msgctxt "ProfileContext|"
 msgid "Part Line Call"
-msgstr "Crida a línia de «part»"
+msgstr ""
 
 #: libcore/context.cpp:65
 msgctxt "ProfileContext|"
 msgid "Line Call"
-msgstr "Crida a línia"
+msgstr ""
 
 #: libcore/context.cpp:66
 msgctxt "ProfileContext|"
 msgid "Part Jump"
-msgstr "Salt a «part»"
+msgstr ""
 
 #: libcore/context.cpp:67
 msgctxt "ProfileContext|"
 msgid "Jump"
-msgstr "Salt"
+msgstr ""
 
 #: libcore/context.cpp:68
 msgctxt "ProfileContext|"
 msgid "Part Instruction"
-msgstr "Instrucció de «part»"
+msgstr ""
 
 #: libcore/context.cpp:69
 msgctxt "ProfileContext|"
 msgid "Instruction"
-msgstr "Instrucció"
+msgstr ""
 
 #: libcore/context.cpp:70
 msgctxt "ProfileContext|"
 msgid "Part Instruction Jump"
-msgstr "Salt a instrucció de «part»"
+msgstr ""
 
 #: libcore/context.cpp:71
 msgctxt "ProfileContext|"
 msgid "Instruction Jump"
-msgstr "Salt a instrucció"
+msgstr ""
 
 #: libcore/context.cpp:72
 msgctxt "ProfileContext|"
 msgid "Part Instruction Call"
-msgstr "Crida a instrucció de «part»"
+msgstr ""
 
 #: libcore/context.cpp:73
 msgctxt "ProfileContext|"
 msgid "Instruction Call"
-msgstr "Crida a instrucció"
+msgstr ""
 
 #: libcore/context.cpp:74
 msgctxt "ProfileContext|"
 msgid "Part Call"
-msgstr "Crida a «part»"
+msgstr ""
 
 #: libcore/context.cpp:75
 msgctxt "ProfileContext|"
 msgid "Call"
-msgstr "Crida"
+msgstr ""
 
 #: libcore/context.cpp:76
 msgctxt "ProfileContext|"
 msgid "Part Function"
-msgstr "Funció de «part»"
+msgstr ""
 
 #: libcore/context.cpp:77
 msgctxt "ProfileContext|"
 msgid "Function Source File"
-msgstr "Fitxer font de funció"
+msgstr ""
 
 #: libcore/context.cpp:78
 msgctxt "ProfileContext|"
 msgid "Function"
-msgstr "Funció"
+msgstr ""
 
 #: libcore/context.cpp:79
 msgctxt "ProfileContext|"
 msgid "Function Cycle"
-msgstr "Cicle de funció"
+msgstr ""
 
 #: libcore/context.cpp:80
 msgctxt "ProfileContext|"
 msgid "Part Class"
-msgstr "Classe de «part»"
+msgstr ""
 
 #: libcore/context.cpp:81
 msgctxt "ProfileContext|"
 msgid "Class"
-msgstr "Classe"
+msgstr ""
 
 #: libcore/context.cpp:82
 msgctxt "ProfileContext|"
 msgid "Part Source File"
-msgstr "Fitxer font de «part»"
+msgstr ""
 
 #: libcore/context.cpp:83
 msgctxt "ProfileContext|"
 msgid "Source File"
-msgstr "Fitxer font"
+msgstr ""
 
 #: libcore/context.cpp:84
 msgctxt "ProfileContext|"
 msgid "Part ELF Object"
-msgstr "Objecte ELF de «part»"
+msgstr ""
 
 #: libcore/context.cpp:85
 msgctxt "ProfileContext|"
 msgid "ELF Object"
-msgstr "Objecte ELF"
+msgstr ""
 
 #: libcore/context.cpp:86
 msgctxt "ProfileContext|"
 msgid "Profile Part"
-msgstr "Perfil de «part»"
+msgstr ""
 
 #: libcore/context.cpp:87
 msgctxt "ProfileContext|"
 msgid "Program Trace"
-msgstr "Traçat del programa"
+msgstr ""
 
 #: libcore/costitem.cpp:48
 #, qt-format
 msgctxt "QObject|"
 msgid "%1 from %2"
-msgstr "%1 des de %2"
+msgstr ""
 
 #: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
 #: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
 #: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
 msgctxt "QObject|"
 msgid "(unknown)"
-msgstr "(desconegut)"
+msgstr ""
 
 #: libcore/globalconfig.cpp:77
 msgctxt "QObject|"
 msgid "Instruction Fetch"
-msgstr "Obtín instrucció"
+msgstr ""
 
 #: libcore/globalconfig.cpp:78
 msgctxt "QObject|"
 msgid "Data Read Access"
-msgstr "Accés de lectura de dades"
+msgstr ""
 
 #: libcore/globalconfig.cpp:79
 msgctxt "QObject|"
 msgid "Data Write Access"
-msgstr "Accés d'escriptura de dades"
+msgstr ""
 
 #: libcore/globalconfig.cpp:80
 msgctxt "QObject|"
 msgid "L1 Instr. Fetch Miss"
-msgstr "Falla la busca de la instrucció L1"
+msgstr ""
 
 #: libcore/globalconfig.cpp:81
 msgctxt "QObject|"
 msgid "L1 Data Read Miss"
-msgstr "Falla la lectura de dades L1"
+msgstr ""
 
 #: libcore/globalconfig.cpp:82
 msgctxt "QObject|"
 msgid "L1 Data Write Miss"
-msgstr "Falla l'escriptura de dades L1"
+msgstr ""
 
 #: libcore/globalconfig.cpp:83
 msgctxt "QObject|"
 msgid "L2 Instr. Fetch Miss"
-msgstr "Falla la busca de la instrucció L2"
+msgstr ""
 
 #: libcore/globalconfig.cpp:84
 msgctxt "QObject|"
 msgid "L2 Data Read Miss"
-msgstr "Falla la lectura de dades L2"
+msgstr ""
 
 #: libcore/globalconfig.cpp:85
 msgctxt "QObject|"
 msgid "L2 Data Write Miss"
-msgstr "Falla l'escriptura de dades L2"
+msgstr ""
 
 #: libcore/globalconfig.cpp:86
 msgctxt "QObject|"
 msgid "LL Instr. Fetch Miss"
-msgstr "Falla la busca de la instrucció LL"
+msgstr ""
 
 #: libcore/globalconfig.cpp:87
 msgctxt "QObject|"
 msgid "LL Data Read Miss"
-msgstr "Falla la lectura de dades LL"
+msgstr ""
 
 #: libcore/globalconfig.cpp:88
 msgctxt "QObject|"
 msgid "LL Data Write Miss"
-msgstr "Falla l'escriptura de dades LL"
+msgstr ""
 
 #: libcore/globalconfig.cpp:89
 msgctxt "QObject|"
 msgid "L1 Miss Sum"
-msgstr "Falla la suma L1"
+msgstr ""
 
 #: libcore/globalconfig.cpp:90
 msgctxt "QObject|"
 msgid "L2 Miss Sum"
-msgstr "Falla la suma L2"
+msgstr ""
 
 #: libcore/globalconfig.cpp:91
 msgctxt "QObject|"
 msgid "Last-level Miss Sum"
-msgstr "Falla la suma de l'últim nivell"
+msgstr ""
 
 #: libcore/globalconfig.cpp:92
 msgctxt "QObject|"
 msgid "Indirect Branch"
-msgstr "Branca indirecta"
+msgstr ""
 
 #: libcore/globalconfig.cpp:93
 msgctxt "QObject|"
 msgid "Mispredicted Ind. Branch"
-msgstr "Branca indirecta no prevista"
+msgstr ""
 
 #: libcore/globalconfig.cpp:94
 msgctxt "QObject|"
 msgid "Conditional Branch"
-msgstr "Branca condicional"
+msgstr ""
 
 #: libcore/globalconfig.cpp:95
 msgctxt "QObject|"
 msgid "Mispredicted Cond. Branch"
-msgstr "Branca condicional no prevista"
+msgstr ""
 
 #: libcore/globalconfig.cpp:96
 msgctxt "QObject|"
 msgid "Mispredicted Branch"
-msgstr "Branca no prevista"
+msgstr ""
 
 #: libcore/globalconfig.cpp:97
 msgctxt "QObject|"
 msgid "Global Bus Event"
-msgstr "Esdeveniment de «bus» global"
+msgstr ""
 
 #: libcore/globalconfig.cpp:98
 msgctxt "QObject|"
 msgid "Samples"
-msgstr "Mostres"
+msgstr ""
 
 #: libcore/globalconfig.cpp:99
 msgctxt "QObject|"
 msgid "System Time"
-msgstr "Hora del sistema"
+msgstr ""
 
 #: libcore/globalconfig.cpp:100
 msgctxt "QObject|"
 msgid "User Time"
-msgstr "Hora de l'usuari"
+msgstr ""
 
 #: libcore/globalconfig.cpp:101
 msgctxt "QObject|"
 msgid "Cycle Estimation"
-msgstr "Estimació del cicle"
+msgstr ""
 
 #: libcore/tracedata.cpp:1240
 msgctxt "QObject|"
 msgid "(no caller)"
-msgstr "(cap cridador)"
+msgstr ""
 
 #: libcore/tracedata.cpp:1247 libcore/tracedata.cpp:1266
 #, qt-format
 msgctxt "QObject|"
 msgid "%1 via %2"
-msgstr "%1 via %2"
+msgstr ""
 
 #: libcore/tracedata.cpp:1256
 msgctxt "QObject|"
 msgid "(no callee)"
-msgstr "(sense cridat)"
+msgstr ""
 
 #: libcore/tracedata.cpp:2709
 msgctxt "QObject|"
 msgid "(global)"
-msgstr "(global)"
+msgstr ""
 
 #: libcore/tracedata.cpp:3144
 msgctxt "QObject|"
 msgid "(not found)"
-msgstr "(no s'ha trobat)"
+msgstr ""
 
 #: libcore/tracedata.cpp:3692
 msgctxt "TraceData|"
 msgid "Recalculating Function Cycles..."
-msgstr "S'estan recalculant els cicles de la funció..."
+msgstr ""
 
 #: libviews/callgraphview.cpp:414
 #, qt-format
 msgctxt "QObject|"
 msgid "Call(s) from %1"
-msgstr "Crides des de %1"
+msgstr ""
 
 #: libviews/callgraphview.cpp:417
 #, qt-format
 msgctxt "QObject|"
 msgid "Call(s) to %1"
-msgstr "Crides a %1"
+msgstr ""
 
 #: libviews/callgraphview.cpp:419
 msgctxt "QObject|"
 msgid "(unknown call)"
-msgstr "(crida desconeguda)"
+msgstr ""
 
 #: libviews/callgraphview.cpp:908
 msgctxt "QObject|"
 msgid "Export Graph"
-msgstr "Exporta la gràfica"
+msgstr ""
 
 #: libviews/callgraphview.cpp:1608
 msgctxt "CallGraphView|"
@@ -376,18 +364,6 @@ msgid ""
 "There are similar visualization options to the Call Treemap; the selected "
 "function is highlighted.</p>"
 msgstr ""
-"<b>Gràfica de crida al voltant d'una funció activa</b><p>Depenent dels "
-"configuracions, esta vista mostra la gràfica de crides al voltant de la "
-"funció activa. Nota: el cost mostrat correspon <b>únicament</b> al gastat "
-"mentre la funció actual siga en execució; és a dir, el cost mostrat per a "
-"main() - si és que és visible - hauria de ser el mateix que el cost de la "
-"funció activa, ja que és la part del cost inclusiu de main() mentre la "
-"funció activa era en execució.</p><p>Per als cicles, les fletxes blaves de "
-"crida indiquen que es tracta d'una tocada artificial que en realitat mai va "
-"succeir, afegida per a corregir el dibuix.</p><p>Si el gràfic és més gran "
-"que el giny d'àrea, un quadro de visió general es mostrarà en una vora. Hi "
-"ha opcions de visualització semblants al mapa de l'arbre de crides; la "
-"funció seleccionada es mostra ressaltada.</p>"
 
 #: libviews/callgraphview.cpp:2020
 msgctxt "CallGraphView|"
@@ -395,26 +371,22 @@ msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
 "Reduce node/edge limits for speedup.\n"
 msgstr ""
-"Avis: s'està generant una gràfica que pot tardar molt.\n"
-"Reduïu els límits dels nodes o de les arestes per a agilitzar el procés.\n"
 
 #: libviews/callgraphview.cpp:2023
 msgctxt "CallGraphView|"
 msgid "Layouting stopped.\n"
-msgstr "S'ha parat la gràfica.\n"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2025
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
-msgstr "La gràfica de crides té %1 nodes i %2 arestes.\n"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2034
 msgctxt "CallGraphView|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr ""
-"No hi ha cap gràfica disponible perquè ha fallat el procés de creació de la "
-"gràfica.\n"
 
 #: libviews/callgraphview.cpp:2036
 #, qt-format
@@ -423,29 +395,26 @@ msgid ""
 "Trying to run the following command did not work:\n"
 "'%1'\n"
 msgstr ""
-"En provar d'executar l'ordre següent, no ha funcionat:\n"
-"«%1»\n"
 
 #: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
 msgctxt "CallGraphView|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
-msgstr "Comproveu que «dot» està instal·lat (paquet GraphViz)."
+msgstr ""
 
 #: libviews/callgraphview.cpp:2080
 msgctxt "CallGraphView|"
 msgid "No item activated for which to draw the call graph."
 msgstr ""
-"No hi ha cap entrada activada de la qual dibuixar la gràfica de crides."
 
 #: libviews/callgraphview.cpp:2092
 msgctxt "CallGraphView|"
 msgid "No call graph can be drawn for the active item."
-msgstr "No s'ha pogut dibuixar cap gràfica de crides per a l'element actiu."
+msgstr ""
 
 #: libviews/callgraphview.cpp:2554
 msgctxt "CallGraphView|"
 msgid "Error running the graph layouting tool.\n"
-msgstr "S'ha produït un error en executar l'eina de disposició de gràfiques.\n"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2559
 #, qt-format
@@ -455,276 +424,273 @@ msgid ""
 "\t'%1'\n"
 "because it has no cost of the selected event type."
 msgstr ""
-"No hi ha cap gràfica de crides disponible per a la funció\n"
-"\t«%1»\n"
-"perquè no té el cost del tipus d'esdeveniment seleccionat."
 
 #: libviews/callgraphview.cpp:2773
 msgctxt "CallGraphView|"
 msgid "Caller Depth"
-msgstr "Profunditat del cridador"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2774 libviews/callgraphview.cpp:2814
 msgctxt "CallGraphView|"
 msgid "Unlimited"
-msgstr "Sense límit"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
 msgctxt "CallGraphView|None"
 msgid "Depth 0"
-msgstr "Profunditat 0"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2778 libviews/callgraphview.cpp:2818
 msgctxt "CallGraphView|"
 msgid "max. 1"
-msgstr "màx. 1"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2779 libviews/callgraphview.cpp:2819
 msgctxt "CallGraphView|"
 msgid "max. 2"
-msgstr "màx. 2"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2780 libviews/callgraphview.cpp:2820
 msgctxt "CallGraphView|"
 msgid "max. 5"
-msgstr "màx. 5"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2781 libviews/callgraphview.cpp:2821
 msgctxt "CallGraphView|"
 msgid "max. 10"
-msgstr "màx. 10"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2782 libviews/callgraphview.cpp:2822
 msgctxt "CallGraphView|"
 msgid "max. 15"
-msgstr "màx. 15"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2813
 msgctxt "CallGraphView|"
 msgid "Callee Depth"
-msgstr "Profunditat del cridat"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2853
 msgctxt "CallGraphView|"
 msgid "Min. Node Cost"
-msgstr "Cost mínim del node"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2854
 msgctxt "CallGraphView|"
 msgid "No Minimum"
-msgstr "Sense mínim"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2860
 msgctxt "CallGraphView|"
 msgid "50 %"
-msgstr "50%"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2861
 msgctxt "CallGraphView|"
 msgid "20 %"
-msgstr "20%"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2862
 msgctxt "CallGraphView|"
 msgid "10 %"
-msgstr "10%"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2863
 msgctxt "CallGraphView|"
 msgid "5 %"
-msgstr "5%"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2864
 msgctxt "CallGraphView|"
 msgid "2 %"
-msgstr "2%"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2865
 msgctxt "CallGraphView|"
 msgid "1 %"
-msgstr "1%"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2895
 msgctxt "CallGraphView|"
 msgid "Min. Call Cost"
-msgstr "Cost mínim de la crida"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2896
 msgctxt "CallGraphView|"
 msgid "Same as Node"
-msgstr "El mateix del node"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2898
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
-msgstr "50 % del Node"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2900
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
-msgstr "20 % del node"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2902
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
-msgstr "10 % del node"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2931
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
-msgstr "Vista d'ocell"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2932
 msgctxt "CallGraphView|"
 msgid "Top Left"
-msgstr "Extrem superior esquerre"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2933
 msgctxt "CallGraphView|"
 msgid "Top Right"
-msgstr "Extrem superior dret"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2934
 msgctxt "CallGraphView|"
 msgid "Bottom Left"
-msgstr "Extrem inferior esquerre"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2935
 msgctxt "CallGraphView|"
 msgid "Bottom Right"
-msgstr "Extrem inferior dret"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2936
 msgctxt "CallGraphView|"
 msgid "Automatic"
-msgstr "Automàtic"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2937
 msgctxt "CallGraphView|"
 msgid "Hide"
-msgstr "Oculta"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2967
 msgctxt "CallGraphView|"
 msgid "Layout"
-msgstr "Disposició"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2968
 msgctxt "CallGraphView|"
 msgid "Top to Down"
-msgstr "De dalt a baix"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2969
 msgctxt "CallGraphView|"
 msgid "Left to Right"
-msgstr "D'esquerra a dreta"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2970
 msgctxt "CallGraphView|"
 msgid "Circular"
-msgstr "Circular"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3010 libviews/callgraphview.cpp:3015
 #: libviews/callgraphview.cpp:3035
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
-msgstr "Ves fins a «%1»"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3046
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
-msgstr "Para la gràfica"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3053
 msgctxt "CallGraphView|"
 msgid "Export Graph"
-msgstr "Exporta la gràfica"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3054
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
-msgstr "Com a fitxer DOT..."
+msgstr ""
 
 #: libviews/callgraphview.cpp:3055
 msgctxt "CallGraphView|"
 msgid "As Image..."
-msgstr "Com a imatge..."
+msgstr ""
 
 #: libviews/callgraphview.cpp:3058
 msgctxt "CallGraphView|"
 msgid "Graph"
-msgstr "Gràfica"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3066
 msgctxt "CallGraphView|"
 msgid "Arrows for Skipped Calls"
-msgstr "Fletxes per a les crides omeses"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3071
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
-msgstr "Crides de cicle intern"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3076
 msgctxt "CallGraphView|"
 msgid "Cluster Groups"
-msgstr "Grups replegats"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3080
 msgctxt "CallGraphView|"
 msgid "Visualization"
-msgstr "Visualització"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3081
 msgctxt "CallGraphView|"
 msgid "Compact"
-msgstr "Compacte"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3084
 msgctxt "CallGraphView|"
 msgid "Normal"
-msgstr "Normal"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3087
 msgctxt "CallGraphView|"
 msgid "Tall"
-msgstr "Ampliada"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3119
 msgctxt "CallGraphView|"
 msgid "Export Graph As Image"
-msgstr "Exporta la gràfica com a imatge"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3121
 msgctxt "CallGraphView|"
 msgid "Images (*.png *.jpg)"
-msgstr "Imatges (*.png *.jpg)"
+msgstr ""
 
 #: libviews/callitem.cpp:73 libviews/partlistitem.cpp:131
 msgctxt "QObject|"
 msgid "(active)"
-msgstr "(actiu)"
+msgstr ""
 
 #: libviews/callmapview.cpp:52
 msgctxt "CallMapView|Name"
 msgid "A thing's name"
-msgstr "Un nom de les coses"
+msgstr ""
 
 #: libviews/callmapview.cpp:53
 msgctxt "CallMapView|"
 msgid "Cost"
-msgstr "Cost"
+msgstr ""
 
 #: libviews/callmapview.cpp:54
 msgctxt "CallMapView|"
 msgid "Location"
-msgstr "Ubicació"
+msgstr ""
 
 #: libviews/callmapview.cpp:56
 msgctxt "CallMapView|"
 msgid "Calls"
-msgstr "Crides"
+msgstr ""
 
 #: libviews/callmapview.cpp:91
 msgctxt "CallMapView|"
@@ -734,11 +700,6 @@ msgid ""
 "function; its size tries to be proportional to the cost spent therein while "
 "the active function is running (however, there are drawing constraints).</p>"
 msgstr ""
-"<b>Mapa del cridador</b><p>Esta gràfica mostra la jerarquia imbricada de "
-"tots els cridadors de la funció activa actual. Cada rectangle acolorit "
-"representa una funció; la seua mida prova de ser proporcional al cost gastat "
-"en ella mentre era en execució (no obstant açò, existixen limitacions de "
-"dibuix).</p>"
 
 #: libviews/callmapview.cpp:98
 msgctxt "CallMapView|"
@@ -748,10 +709,6 @@ msgid ""
 "function; its size tries to be proportional to the cost spent therein while "
 "the active function is running (however, there are drawing constraints).</p>"
 msgstr ""
-"<b>Mapa de crida</b><p>Esta gràfica mostra la jerarquia imbricada de tots "
-"els cridats de la funció activa actual. Cada rectangle acolorit representa "
-"una funció; la seua mida prova de ser proporcional al cost gastat en ella "
-"mentre era en execució (no obstant açò, existixen limitacions de dibuix).</p>"
 
 #: libviews/callmapview.cpp:106
 msgctxt "CallMapView|"
@@ -768,251 +725,238 @@ msgid ""
 "siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
 "em> activates the current item.</p>"
 msgstr ""
-"<p>Les configuracions de l'aparença es troben en el menú contextual. Per a "
-"obtindre la mida de proporcions exactes, seleccioneu «oculta les vores "
-"incorrectes». Com este mode pot consumir <em>molt</em> temps, hauríeu de "
-"limitar abans el nivell màxim de dibuix d'imbricacions. «Millor» determina "
-"la direcció de la divisió dels fills amb relació a la proporció dels pares. "
-"«Sempre el millor» decidix sobre la resta d'espai per a cada germà. «Ignora "
-"les proporcions» pren espai per a dibuixar el nom de la funció <em>abans</"
-"em> de dibuixar els fills. Cal tindre en compte que es poden obtindre "
-"proporcions de mida <em>molt</em> incorrectes.</p><p>Este és un giny de "
-"<em>mapa d'arbre</em>. Es pot navegar amb el teclat amb «Fletxa esquerra/"
-"dreta» per a travessar els germans i «Fletxa amunt/avall» per a anar un "
-"nivell d'imbricació amunt/avall.<em>La tecla «Retorn»</em> activa l'element "
-"actual.</p>"
 
 #: libviews/callmapview.cpp:139
 msgctxt "CallMapView|"
 msgid "Go To"
-msgstr "Ves fins a"
+msgstr ""
 
 #: libviews/callmapview.cpp:170
 msgctxt "CallMapView|"
 msgid "Stop at Depth"
-msgstr "Para a la profunditat"
+msgstr ""
 
 #: libviews/callmapview.cpp:171
 msgctxt "CallMapView|"
 msgid "No Depth Limit"
-msgstr "Sense límit de profunditat"
+msgstr ""
 
 #: libviews/callmapview.cpp:173
 msgctxt "CallMapView|"
 msgid "Depth 10"
-msgstr "Profunditat 10"
+msgstr ""
 
 #: libviews/callmapview.cpp:174
 msgctxt "CallMapView|"
 msgid "Depth 15"
-msgstr "Profunditat 15"
+msgstr ""
 
 #: libviews/callmapview.cpp:175
 msgctxt "CallMapView|"
 msgid "Depth 20"
-msgstr "Profunditat 20"
+msgstr ""
 
 #: libviews/callmapview.cpp:178
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Depth of '%1' (%2)"
-msgstr "Profunditat de «%1» (%2)"
+msgstr ""
 
 #: libviews/callmapview.cpp:185
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Decrement Depth (to %1)"
-msgstr "Disminuïx la profunditat (a %1)"
+msgstr ""
 
 #: libviews/callmapview.cpp:187
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Increment Depth (to %1)"
-msgstr "Incrementa la profunditat (a %1)"
+msgstr ""
 
 #: libviews/callmapview.cpp:213
 msgctxt "CallMapView|"
 msgid "Stop at Function"
-msgstr "Para a la funció"
+msgstr ""
 
 #: libviews/callmapview.cpp:214
 msgctxt "CallMapView|"
 msgid "No Function Limit"
-msgstr "Sense funció límit"
+msgstr ""
 
 #: libviews/callmapview.cpp:257
 msgctxt "CallMapView|"
 msgid "Stop at Area"
-msgstr "Para a l'àrea"
+msgstr ""
 
 #: libviews/callmapview.cpp:258
 msgctxt "CallMapView|"
 msgid "No Area Limit"
-msgstr "Sense límit d'àrea"
+msgstr ""
 
 #: libviews/callmapview.cpp:260
 msgctxt "CallMapView|"
 msgid "100 Pixels"
-msgstr "100 píxels"
+msgstr ""
 
 #: libviews/callmapview.cpp:261
 msgctxt "CallMapView|"
 msgid "200 Pixels"
-msgstr "200 Píxels"
+msgstr ""
 
 #: libviews/callmapview.cpp:262
 msgctxt "CallMapView|"
 msgid "500 Pixels"
-msgstr "500 Píxels"
+msgstr ""
 
 #: libviews/callmapview.cpp:263
 msgctxt "CallMapView|"
 msgid "1000 Pixels"
-msgstr "1000 píxels"
+msgstr ""
 
 #: libviews/callmapview.cpp:269
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Area of '%1' (%2)"
-msgstr "Àrea de «%1» (%2)"
+msgstr ""
 
 #: libviews/callmapview.cpp:275
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Double Area Limit (to %1)"
-msgstr "Dobla el límit de l'àrea (a %1)"
+msgstr ""
 
 #: libviews/callmapview.cpp:277
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Half Area Limit (to %1)"
-msgstr "Límit de mitja àrea (a %1)"
+msgstr ""
 
 #: libviews/callmapview.cpp:327
 msgctxt "CallMapView|"
 msgid "Visualization"
-msgstr "Visualització"
+msgstr ""
 
 #: libviews/callmapview.cpp:328
 msgctxt "CallMapView|"
 msgid "Split Direction"
-msgstr "Dividix direcció"
+msgstr ""
 
 #: libviews/callmapview.cpp:331
 msgctxt "CallMapView|"
 msgid "Skip Incorrect Borders"
-msgstr "Ignora les vores incorrectes"
+msgstr ""
 
 #: libviews/callmapview.cpp:336
 msgctxt "CallMapView|"
 msgid "Border Width"
-msgstr "Amplària de la vora"
+msgstr ""
 
 #: libviews/callmapview.cpp:337
 msgctxt "CallMapView|"
 msgid "Border 0"
-msgstr "Vora 0"
+msgstr ""
 
 #: libviews/callmapview.cpp:339
 msgctxt "CallMapView|"
 msgid "Border 1"
-msgstr "Vora 1"
+msgstr ""
 
 #: libviews/callmapview.cpp:340
 msgctxt "CallMapView|"
 msgid "Border 2"
-msgstr "Vora 2"
+msgstr ""
 
 #: libviews/callmapview.cpp:341
 msgctxt "CallMapView|"
 msgid "Border 3"
-msgstr "Vora 3"
+msgstr ""
 
 #: libviews/callmapview.cpp:346
 msgctxt "CallMapView|"
 msgid "Draw Symbol Names"
-msgstr "Dibuixa els noms dels símbols"
+msgstr ""
 
 #: libviews/callmapview.cpp:348
 msgctxt "CallMapView|"
 msgid "Draw Cost"
-msgstr "Dibuixa el cost"
+msgstr ""
 
 #: libviews/callmapview.cpp:350
 msgctxt "CallMapView|"
 msgid "Draw Location"
-msgstr "Dibuixa la ubicació"
+msgstr ""
 
 #: libviews/callmapview.cpp:352
 msgctxt "CallMapView|"
 msgid "Draw Calls"
-msgstr "Dibuixa crides"
+msgstr ""
 
 #: libviews/callmapview.cpp:356
 msgctxt "CallMapView|"
 msgid "Ignore Proportions"
-msgstr "Ignora les proporcions"
+msgstr ""
 
 #: libviews/callmapview.cpp:358
 msgctxt "CallMapView|"
 msgid "Allow Rotation"
-msgstr "Permet la rotació"
+msgstr ""
 
 #: libviews/callmapview.cpp:376
 msgctxt "CallMapView|"
 msgid "Shading"
-msgstr "Ombreig"
+msgstr ""
 
 #: libviews/callmapview.cpp:428
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Call Map: Current is '%1'"
-msgstr "Mapa de la crida: L'actual és «%1»"
+msgstr ""
 
 #: libviews/callmapview.cpp:621
 msgctxt "QObject|"
 msgid "(no function)"
-msgstr "(cap funció)"
+msgstr ""
 
 #: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
 msgctxt "QObject|"
 msgid "(no call)"
-msgstr "(cap crida)"
+msgstr ""
 
 #: libviews/callview.cpp:37
 msgctxt "CallView|"
 msgid "Cost"
-msgstr "Cost"
+msgstr ""
 
 #: libviews/callview.cpp:38
 msgctxt "CallView|"
 msgid "Cost per call"
-msgstr "Cost per crida"
+msgstr ""
 
 #: libviews/callview.cpp:39
 msgctxt "CallView|"
 msgid "Cost 2"
-msgstr "Cost 2"
+msgstr ""
 
 #: libviews/callview.cpp:40
 msgctxt "CallView|"
 msgid "Cost 2 per call"
-msgstr "Cost 2 per crida"
+msgstr ""
 
 #: libviews/callview.cpp:41
 msgctxt "CallView|"
 msgid "Count"
-msgstr "Comptador"
+msgstr ""
 
 #: libviews/callview.cpp:42
 msgctxt "CallView|"
 msgid "Caller"
-msgstr "Cridador"
+msgstr ""
 
 #: libviews/callview.cpp:42
 msgctxt "CallView|"
 msgid "Callee"
-msgstr "Cridat"
+msgstr ""
 
 #: libviews/callview.cpp:76
 msgctxt "CallView|"
@@ -1026,14 +970,6 @@ msgid ""
 "information panel. If there are two panels (Split mode), the function of the "
 "other panel is changed instead.</p>"
 msgstr ""
-"<b>Llista dels cridadors directes</b><p>Esta llista mostra totes les "
-"funcions que criden directament a la seleccionada actualment, junt amb un "
-"compte de crides i el cost gastat en la funció actualment seleccionada "
-"mentre és cridada per la funció de la llista.</p><p>Una icona en lloc del "
-"cost inclusiu, especifica que esta és una crida dins d'un cicle recursiu. Un "
-"cost inclusiu no té sentit ací.</p><p>Seleccionar una funció provoca que "
-"siga la seleccionada actualment d'este quadro d'informació. Si hi ha dos "
-"quadros (mode de dos quadros), canvia la funció de l'altre quadro.</p>"
 
 #: libviews/callview.cpp:89
 msgctxt "CallView|"
@@ -1045,75 +981,69 @@ msgid ""
 "information panel. If there are two panels (Split mode), the function of the "
 "other panel is changed instead.</p>"
 msgstr ""
-"<b>Llista dels cridats directes</b><p>Esta llista mostra totes les funcions "
-"cridades directament per la seleccionada actualment, junt amb un compte de "
-"crides i el cost gastat en esta funció mentre és cridada per la funció "
-"actualment seleccionada.</p><p>Seleccionar una funció provoca que siga la "
-"seleccionada actualment d'este quadro d'informació. Si hi ha dos quadros "
-"(mode de dos quadros), canvia la funció de l'altre quadro.</p>"
 
 #: libviews/callview.cpp:118 libviews/callview.cpp:123
 #, qt-format
 msgctxt "CallView|"
 msgid "Go to '%1'"
-msgstr "Ves fins a «%1»"
+msgstr ""
 
 #: libviews/callview.cpp:257 libviews/callview.cpp:261
 #, qt-format
 msgctxt "CallView|"
 msgid "%1 per call"
-msgstr "%1 per crida"
+msgstr ""
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
 msgctxt "QObject|"
 msgid "(%n item(s) skipped)"
 msgid_plural "(%n item(s) skipped)"
-msgstr[0] "(s'ha omés %n element)"
-msgstr[1] "(s'han omés %n elements)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
 #, qt-format
 msgctxt "QObject|"
 msgid "(%n function(s) skipped)"
 msgid_plural "(%n function(s) skipped)"
-msgstr[0] "(s'ha omés %n funció)"
-msgstr[1] "(s'han omés %n funcions)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: libviews/coverageview.cpp:37
 msgctxt "CoverageView|"
 msgid "Incl."
-msgstr "Incl."
+msgstr ""
 
 #: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
 msgctxt "CoverageView|"
 msgid "Distance"
-msgstr "Distància"
+msgstr ""
 
 #: libviews/coverageview.cpp:41
 msgctxt "CoverageView|"
 msgid "Called"
-msgstr "Cridat"
+msgstr ""
 
 #: libviews/coverageview.cpp:42
 msgctxt "CoverageView|"
 msgid "Caller"
-msgstr "Cridador"
+msgstr ""
 
 #: libviews/coverageview.cpp:46
 msgctxt "CoverageView|"
 msgid "Self"
-msgstr "Propi"
+msgstr ""
 
 #: libviews/coverageview.cpp:48
 msgctxt "CoverageView|"
 msgid "Calling"
-msgstr "Cridant"
+msgstr ""
 
 #: libviews/coverageview.cpp:49
 msgctxt "CoverageView|"
 msgid "Callee"
-msgstr "Cridat"
+msgstr ""
 
 #: libviews/coverageview.cpp:84
 msgctxt "CoverageView|"
@@ -1134,22 +1064,6 @@ msgid ""
 "selected one of this information panel. If there are two panels (Split "
 "mode), the function of the other panel is changed instead.</p>"
 msgstr ""
-"<b>Llista de tots els cridadors</b><p>Esta llista mostra totes les funcions "
-"que criden a la funció seleccionada actualment, siga directament o amb "
-"diverses funcions per entremig de la pila. El nombre de funcions per "
-"entremig més u s'anomena <em>distància</em> (p. ex., per a les funcions A,B,"
-"C hi ha crides d'A a C quan A crida a B i B crida a C, ex: A=> B => C. (la "
-"distància ací és 2).</p><p>El cost absolut mostrat és el cost gastat en la "
-"funció seleccionada mentre una funció llistada està activa. El cost relatiu "
-"és el percentatge de tot el cost gastat en la funció seleccionada mentre la "
-"llistada estiga activa. La gràfica del cost mostra el percentatge logarítmic "
-"amb un color diferent per a cada distància.</p><p>Com hi pot haver moltes "
-"crides de la mateixa funció, la columna de distància a vegades mostra "
-"l'interval de distàncies per a totes les crides fetes. A continuació, entre "
-"parèntesis, hi ha la distància mitjana, és a dir, la distància de la majoria "
-"de crides.</p><p>En seleccionar una funció es convertix en l'actual "
-"seleccionada d'este quadro d'informació. Si hi ha dos quadros (mode de dos "
-"quadros), es canvia la funció de l'altre quadro per esta.</p>"
 
 #: libviews/coverageview.cpp:114
 msgctxt "CoverageView|"
@@ -1170,58 +1084,42 @@ msgid ""
 "selected one of this information panel. If there are two panels (Split "
 "mode), the function of the other panel is changed instead.</p>"
 msgstr ""
-"<b>Llista de tots els cridats</b><p>Esta llista mostra totes les funcions "
-"cridades per a la funció seleccionada actualment, siga directament o amb "
-"diverses funcions per entremig de la pila. El nombre de funcions per "
-"entremig més u s'anomena <em>distància</em> (p. ex., per a les funcions A,B,"
-"C hi ha crides d'A a C quan A crida a B i B crida a C, ex: A=> B => C. (la "
-"distància ací és 2).</p><p>El cost absolut mostrat és el cost gastat en la "
-"funció llistada mentre una funció seleccionada està activa. El cost relatiu "
-"és el percentatge de tot el cost gastat en la funció llistada mentre la "
-"seleccionada estiga activa. La gràfica del cost mostra el percentatge "
-"logarítmic amb un color diferent per a cada distància.</p><p>Com hi pot "
-"haver moltes crides de la mateixa funció, la columna de distància a vegades "
-"mostra l'interval de distàncies per a totes les crides fetes. A continuació, "
-"entre parèntesis, hi ha la distància mitjana, és a dir, la distància de la "
-"majoria de crides.</p><p>En seleccionar una funció es convertix en l'actual "
-"seleccionada d'este quadro d'informació. Si hi ha dos quadros (mode de dos "
-"quadros), es canvia la funció de l'altre quadro per esta.</p>"
 
 #: libviews/coverageview.cpp:160
 #, qt-format
 msgctxt "CoverageView|"
 msgid "Go to '%1'"
-msgstr "Ves fins a «%1»"
+msgstr ""
 
 #: libviews/eventtypeitem.cpp:48
 msgctxt "QObject|"
 msgid "Unknown Type"
-msgstr "Tipus desconegut"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:37
 msgctxt "EventTypeView|"
 msgid "Event Type"
-msgstr "Tipus d'esdeveniment"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:38
 msgctxt "EventTypeView|"
 msgid "Incl."
-msgstr "Incl."
+msgstr ""
 
 #: libviews/eventtypeview.cpp:39
 msgctxt "EventTypeView|"
 msgid "Self"
-msgstr "Propi"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:40
 msgctxt "EventTypeView|"
 msgid "Short"
-msgstr "Curt"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:42
 msgctxt "EventTypeView|"
 msgid "Formula"
-msgstr "Fórmula"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:76
 msgctxt "EventTypeView|"
@@ -1231,119 +1129,114 @@ msgid ""
 "type.</p><p>By choosing a cost type from the list, you change the cost type "
 "of costs shown all over KCachegrind to be the selected one.</p>"
 msgstr ""
-"<b>Llista del tipus de cost</b><p>Esta llista mostra tots els tipus de cost "
-"disponibles i quin cost propi/inclusiu de la funció actualment seleccionada "
-"és per a este tipus de cost.</p><p>En triar un tipus de cost de la llista, "
-"es canvia el tipus de cost de tot el mostrat en KCachegrind al tipus "
-"seleccionat.</p>"
 
 #: libviews/eventtypeview.cpp:96
 msgctxt "EventTypeView|"
 msgid "Set as Secondary Event Type"
-msgstr "Establix com tipus d'esdeveniment secundari"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:98
 msgctxt "EventTypeView|"
 msgid "Hide Secondary Event Type"
-msgstr "Oculta el tipus d'esdeveniment secundari"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:107
 msgctxt "EventTypeView|"
 msgid "Edit Long Name"
-msgstr "Edita el nom llarg"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:108
 msgctxt "EventTypeView|"
 msgid "Edit Short Name"
-msgstr "Edita el nom curt"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:109
 msgctxt "EventTypeView|"
 msgid "Edit Formula"
-msgstr "Edita la fórmula"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:110
 msgctxt "EventTypeView|"
 msgid "Remove"
-msgstr "Elimina"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:119
 msgctxt "EventTypeView|"
 msgid "New Event Type..."
-msgstr "Tipus d'esdeveniment nou..."
+msgstr ""
 
 #: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
 #, qt-format
 msgctxt "EventTypeView|"
 msgid "New%1"
-msgstr "Nou%1"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:160
 #, qt-format
 msgctxt "EventTypeView|"
 msgid "New Event Type %1"
-msgstr "Tipus d'esdeveniment nou %1"
+msgstr ""
 
 #: libviews/functionlistmodel.cpp:45
 msgctxt "FunctionListModel|"
 msgid "Incl."
-msgstr "Incl."
+msgstr ""
 
 #: libviews/functionlistmodel.cpp:46
 msgctxt "FunctionListModel|"
 msgid "Self"
-msgstr "Propi"
+msgstr ""
 
 #: libviews/functionlistmodel.cpp:47
 msgctxt "FunctionListModel|"
 msgid "Called"
-msgstr "Cridat"
+msgstr ""
 
 #: libviews/functionlistmodel.cpp:48
 msgctxt "FunctionListModel|"
 msgid "Function"
-msgstr "Funció"
+msgstr ""
 
 #: libviews/functionlistmodel.cpp:49
 msgctxt "FunctionListModel|"
 msgid "Location"
-msgstr "Ubicació"
+msgstr ""
 
 #: libviews/functionlistmodel.cpp:89
 #, qt-format
 msgctxt "FunctionListModel|"
 msgid "(%1 function(s) skipped)"
-msgstr "(s'han omés %1 funcions)"
+msgstr ""
 
 #: libviews/functionselection.cpp:87
 msgctxt "FunctionSelection|"
 msgid "Function Profile"
-msgstr "Perfil de funció"
+msgstr ""
 
 #: libviews/functionselection.cpp:95
 msgctxt "FunctionSelection|"
 msgid "&Search:"
-msgstr "Bu&sca:"
+msgstr ""
 
 #: libviews/functionselection.cpp:101
 msgctxt "FunctionSelection|"
 msgid "Search Query"
-msgstr "Consulta de busca"
+msgstr ""
 
 #: libviews/functionselection.cpp:116
 msgctxt "FunctionSelection|"
 msgid "Self"
-msgstr "Propi"
+msgstr ""
 
 #: libviews/functionselection.cpp:116
 msgctxt "FunctionSelection|"
 msgid "Group"
-msgstr "Grup"
+msgstr ""
 
 #: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
 msgctxt "FunctionSelection|"
 msgid "(No Grouping)"
-msgstr "(Cap agrupament)"
+msgstr ""
 
 #: libviews/functionselection.cpp:209
 msgctxt "FunctionSelection|"
@@ -1355,96 +1248,89 @@ msgid ""
 "the selected group (or all for 'Function' group type), ordered by the costs "
 "spent therein. Functions with costs less than 1% are hidden on default.</p>"
 msgstr ""
-"<b>El perfil pla</b><p>El perfil pla conté una llista de selecció de grup i "
-"una llista de selecció de funció. La llista de grup conté tots els grups on "
-"es gasten els costos, depenent del grup escollit. La llista de grup roman "
-"oculta quan se selecciona el tipus «Funció».</p><p>La llista de funcions "
-"conté les funcions del grup seleccionat (o totes per al tipus de grup "
-"«Funció»), ordenades segons el cost gastat en ell. Les funcions amb un cost "
-"inferior a l'1% s'oculten de manera predeterminada.</p>"
 
 #: libviews/functionselection.cpp:287
 #, qt-format
 msgctxt "FunctionSelection|"
 msgid "Go to '%1'"
-msgstr "Ves fins a «%1»"
+msgstr ""
 
 #: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
 msgctxt "FunctionSelection|"
 msgid "Grouping"
-msgstr "Agrupament"
+msgstr ""
 
 #: libviews/functionselection.cpp:353
 msgctxt "FunctionSelection|"
 msgid "No Grouping"
-msgstr "Sense agrupament"
+msgstr ""
 
 #: libviews/instritem.cpp:114 libviews/sourceitem.cpp:94
 #, qt-format
 msgctxt "QObject|"
 msgid "Active call to '%1'"
-msgstr "Crida activa a «%1»"
+msgstr ""
 
 #: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
 #, qt-format
 msgctxt "QObject|"
 msgid "Call to '%1'"
-msgstr "Crida a «%1»"
+msgstr ""
 
 #: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
 #, qt-format
 msgctxt "QObject|"
 msgid "%n call(s) to '%2'"
 msgid_plural "%n call(s) to '%2'"
-msgstr[0] "%n crida a «%2»"
-msgstr[1] "%n crides a «%2»"
+msgstr[0] ""
+msgstr[1] ""
 
 #: libviews/instritem.cpp:155
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 of %2 times to 0x%3"
-msgstr "Salt %1 de %2 vegades a 0x%3"
+msgstr ""
 
 #: libviews/instritem.cpp:160
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 times to 0x%2"
-msgstr "Salt %1 vegades a 0x%2"
+msgstr ""
 
 #: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
 msgctxt "QObject|"
 msgid "(cycle)"
-msgstr "(cicle)"
+msgstr ""
 
 #: libviews/instrview.cpp:193
 msgctxt "InstrView|"
 msgid "#"
-msgstr "#"
+msgstr ""
 
 #: libviews/instrview.cpp:194
 msgctxt "InstrView|"
 msgid "Cost"
-msgstr "Cost"
+msgstr ""
 
 #: libviews/instrview.cpp:195
 msgctxt "InstrView|"
 msgid "Cost 2"
-msgstr "Cost 2"
+msgstr ""
 
 #: libviews/instrview.cpp:197
 msgctxt "InstrView|"
 msgid "Hex"
-msgstr "Hex"
+msgstr ""
 
 #: libviews/instrview.cpp:199
 msgctxt "InstrView|"
 msgid "Assembly Instructions"
-msgstr "Instruccions d'assemblador"
+msgstr ""
 
 #: libviews/instrview.cpp:200
 msgctxt "InstrView|"
 msgid "Source Position"
-msgstr "Posició del codi font"
+msgstr ""
 
 #: libviews/instrview.cpp:236
 msgctxt "InstrView|"
@@ -1458,171 +1344,162 @@ msgid ""
 "utility from the 'binutils' package.</p><p>Select a line with call "
 "information to make the destination function of this call current.</p>"
 msgstr ""
-"<b>Codi màquina anotat</b><p>La llista del codi màquina anotat mostra les "
-"instruccions d'assemblador de la funció actualment seleccionada junt amb el "
-"cost propi gastat en executar una instrucció. Si és una instrucció de crida, "
-"s'inserixen línies amb detalls de les crides al codi font: el cost gastat "
-"dintre de la crida, el nombre de crides i la destinació d'estes.</p><p>El "
-"codi màquina mostrat és generat amb la utilitat «objdump» del paquet "
-"«binutils».</p><p>Seleccioneu una línia amb informació de crida per a fer "
-"que la funció de destinació d'esta crida siga l'actual.</p>"
 
 #: libviews/instrview.cpp:265
 #, qt-format
 msgctxt "InstrView|"
 msgid "Go to '%1'"
-msgstr "Ves fins a «%1»"
+msgstr ""
 
 #: libviews/instrview.cpp:270
 #, qt-format
 msgctxt "InstrView|"
 msgid "Go to Address %1"
-msgstr "Ves fins a l'adreça %1"
+msgstr ""
 
 #: libviews/instrview.cpp:282
 msgctxt "InstrView|"
 msgid "Hex Code"
-msgstr "Codi hexadecimal"
+msgstr ""
 
 #: libviews/instrview.cpp:573
 msgctxt "InstrView|"
 msgid "There is no instruction info in the profile data file."
-msgstr "No hi ha informació d'instruccions en el fitxer de traça."
+msgstr ""
 
 #: libviews/instrview.cpp:575
 msgctxt "InstrView|"
 msgid "Tip: For Callgrind, rerun with option"
-msgstr "Consell: per a Callgrind, torneu a executar amb l'opció"
+msgstr ""
 
 #: libviews/instrview.cpp:576
 msgctxt "InstrView|"
 msgid "      --dump-instr=yes"
-msgstr "      --dump-instr=yes"
+msgstr ""
 
 #: libviews/instrview.cpp:577
 msgctxt "InstrView|"
 msgid "To see (conditional) jumps, additionally specify"
-msgstr "Per a veure salts (condicionals), especifiqueu de manera addicional"
+msgstr ""
 
 #: libviews/instrview.cpp:578
 msgctxt "InstrView|"
 msgid "      --collect-jumps=yes"
-msgstr "      --collect-jumps=yes"
+msgstr ""
 
 #: libviews/instrview.cpp:826
 msgctxt "InstrView|"
 msgid "For annotated machine code, the following object file is needed:"
-msgstr "Per a codi de màquina anotat, fa falta el fitxer «object» següent:"
+msgstr ""
 
 #: libviews/instrview.cpp:831
 msgctxt "InstrView|"
 msgid "This file can not be found."
-msgstr "No s'ha pogut trobar este fitxer."
+msgstr ""
 
 #: libviews/instrview.cpp:834
 msgctxt "InstrView|"
 msgid "If cross-compiled, set SYSROOT variable."
-msgstr "Si hi ha compilació creuada, definix la variable SYSROOT."
+msgstr ""
 
 #: libviews/instrview.cpp:858
 msgctxt "InstrView|"
 msgid "There is an error trying to execute the command"
-msgstr "S'ha produït un error en intentar executar l'ordre"
+msgstr ""
 
 #: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
 msgctxt "InstrView|"
 msgid "Check that you have installed 'objdump'."
-msgstr "Comproveu que teniu instal·lat «objdump»."
+msgstr ""
 
 #: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
 msgctxt "InstrView|"
 msgid "This utility can be found in the 'binutils' package."
-msgstr "Esta utilitat es pot trobar al paquet «binutils»."
+msgstr ""
 
 #: libviews/instrview.cpp:966
 msgctxt "InstrView|"
 msgid "(No Instruction)"
-msgstr "(Cap instrucció)"
+msgstr ""
 
 #: libviews/instrview.cpp:1134
 #, qt-format
 msgctxt "InstrView|"
 msgid "There are %n cost line(s) without machine code."
 msgid_plural "There are %n cost line(s) without machine code."
-msgstr[0] "Hi ha %n línia de cost sense codi de màquina."
-msgstr[1] "Hi ha %n línies de cost sense codi de màquina."
+msgstr[0] ""
+msgstr[1] ""
 
 #: libviews/instrview.cpp:1136
 msgctxt "InstrView|"
 msgid "This happens because the code of"
-msgstr "Açò passa perquè el codi de"
+msgstr ""
 
 #: libviews/instrview.cpp:1139
 msgctxt "InstrView|"
 msgid "does not seem to match the profile data file."
-msgstr "no pareix coincidir amb el fitxer de dades de perfilat."
+msgstr ""
 
 #: libviews/instrview.cpp:1142
 msgctxt "InstrView|"
 msgid "Are you using an old profile data file or is the above mentioned"
 msgstr ""
-"Esteu emprant un fitxer de dades de traça antic o és l'esmentat més amunt"
 
 #: libviews/instrview.cpp:1144
 msgctxt "InstrView|"
 msgid "ELF object from an updated installation/another machine?"
-msgstr "Objecte ELF des d'una instal·lació actualitzada o d'una altra màquina?"
+msgstr ""
 
 #: libviews/instrview.cpp:1152
 msgctxt "InstrView|"
 msgid "There seems to be an error trying to execute the command"
-msgstr "Pareix que hi ha un error en intentar executar l'ordre"
+msgstr ""
 
 #: libviews/instrview.cpp:1156
 msgctxt "InstrView|"
 msgid "Check that the ELF object used in the command exists."
-msgstr "Comproveu que existix l'objecte ELF emprat en l'ordre."
+msgstr ""
 
 #: libviews/partgraph.cpp:154
 #, qt-format
 msgctxt "QObject|"
 msgid "Profile Part %1"
-msgstr "Perfil de «part» %1"
+msgstr ""
 
 #: libviews/partgraph.cpp:211
 msgctxt "QObject|"
 msgid "(no trace)"
-msgstr "(cap traça)"
+msgstr ""
 
 #: libviews/partgraph.cpp:214
 msgctxt "QObject|"
 msgid "(no part)"
-msgstr "(cap «part»)"
+msgstr ""
 
 #: libviews/partlistitem.cpp:39
 msgctxt "QObject|"
 msgid "(none)"
-msgstr "(cap)"
+msgstr ""
 
 #: libviews/partselection.cpp:48
 msgctxt "PartSelection|"
 msgid "Parts Overview"
-msgstr "Vista general de les parts de traça"
+msgstr ""
 
 #: libviews/partselection.cpp:61
 msgctxt "PartSelection|A thing's name"
 msgid "Name"
-msgstr "Nom"
+msgstr ""
 
 #: libviews/partselection.cpp:62
 msgctxt "PartSelection|"
 msgid "Cost"
-msgstr "Cost"
+msgstr ""
 
 #: libviews/partselection.cpp:69
 msgctxt "PartSelection|"
 msgid "(no trace parts)"
-msgstr "(cap fragment de traça)"
+msgstr ""
 
 #: libviews/partselection.cpp:96
 msgctxt "PartSelection|"
@@ -1641,160 +1518,145 @@ msgid ""
 "current selected function in the trace part is shown. This is split up into "
 "smaller rectangles to show the costs of its callees.</li></ul></p>"
 msgstr ""
-"<b>La vista general de les parts de traça</b><p>Una traça consistix en "
-"múltiples parts de traça quan hi ha diversos fitxers de dades d'un perfil "
-"d'execució. La vista general de parts de traça acoblable, les mostra, "
-"ordenades horitzontalment segons el seu temps d'execució. La mida dels "
-"rectangles és proporcional al cost total gastat per les parts. Podeu "
-"seleccionar una o diverses parts per a limitar la visualització dels costos "
-"a estes parts.</p><p>Les parts també estan subdividides: hi ha modes de "
-"divisió per partició i un mode detallat per a cridat:<ul><li>Partició: "
-"mostra la partició en grups, per una part d'una traça, d'acord amb el tipus "
-"de grup seleccionat. P. ex., si s'han seleccionat grups d'objectes ELF, "
-"veureu rectangles acolorits per a cada objecte ELF utilitzat (biblioteca "
-"compartida o executable), amidat segons el cost gastat en ell.</"
-"li><li>Cridat: un rectangle mostra el cost inclusiu de la funció actualment "
-"seleccionada en la traça de la part mostrada. Este es dividix en rectangles "
-"més petits per a mostrar els costos dels seus cridats.</li></ul></p>"
 
 #: libviews/partselection.cpp:231
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Profile Part Overview: Current is '%1'"
-msgstr "Vista general del traçat de «part»: L'actual és «%1»"
+msgstr ""
 
 #: libviews/partselection.cpp:337
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Deselect '%1'"
-msgstr "Desselecciona «%1»"
+msgstr ""
 
 #: libviews/partselection.cpp:339
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Select '%1'"
-msgstr "Selecciona «%1»"
+msgstr ""
 
 #: libviews/partselection.cpp:344
 msgctxt "PartSelection|"
 msgid "Select All Parts"
-msgstr "Selecciona totes les parts"
+msgstr ""
 
 #: libviews/partselection.cpp:345
 msgctxt "PartSelection|"
 msgid "Visible Parts"
-msgstr "Parts visibles"
+msgstr ""
 
 #: libviews/partselection.cpp:346
 msgctxt "PartSelection|"
 msgid "Hide Selected Parts"
-msgstr "Oculta les parts seleccionades"
+msgstr ""
 
 #: libviews/partselection.cpp:347
 msgctxt "PartSelection|"
 msgid "Show Hidden Parts"
-msgstr "Mostra les parts ocultes"
+msgstr ""
 
 #: libviews/partselection.cpp:361
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Go to '%1'"
-msgstr "Ves fins a «%1»"
+msgstr ""
 
 #: libviews/partselection.cpp:370
 msgctxt "PartSelection|"
 msgid "Visualization"
-msgstr "Visualització"
+msgstr ""
 
 #: libviews/partselection.cpp:371
 msgctxt "PartSelection|"
 msgid "Partitioning Mode"
-msgstr "Mode de partició"
+msgstr ""
 
 #: libviews/partselection.cpp:373
 msgctxt "PartSelection|"
 msgid "Zoom Function"
-msgstr "Funció de zoom"
+msgstr ""
 
 #: libviews/partselection.cpp:375
 msgctxt "PartSelection|"
 msgid "Show Direct Calls"
-msgstr "Mostra les crides directes"
+msgstr ""
 
 #: libviews/partselection.cpp:376
 msgctxt "PartSelection|"
 msgid "Increment Shown Call Levels"
-msgstr "Incrementa els nivells de crida mostrats"
+msgstr ""
 
 #: libviews/partselection.cpp:377
 msgctxt "PartSelection|"
 msgid "Diagram Mode"
-msgstr "Mode de diagrama"
+msgstr ""
 
 #: libviews/partselection.cpp:392
 msgctxt "PartSelection|"
 msgid "Draw Names"
-msgstr "Dibuixa els noms"
+msgstr ""
 
 #: libviews/partselection.cpp:394
 msgctxt "PartSelection|"
 msgid "Draw Costs"
-msgstr "Dibuixa els costos"
+msgstr ""
 
 #: libviews/partselection.cpp:396
 msgctxt "PartSelection|"
 msgid "Ignore Proportions"
-msgstr "Ignora les proporcions"
+msgstr ""
 
 #: libviews/partselection.cpp:398
 msgctxt "PartSelection|"
 msgid "Allow Rotation"
-msgstr "Permet la rotació"
+msgstr ""
 
 #: libviews/partselection.cpp:400
 msgctxt "PartSelection|"
 msgid "Draw Frames"
-msgstr "Dibuixa els marcs"
+msgstr ""
 
 #: libviews/partselection.cpp:414
 msgctxt "PartSelection|"
 msgid "Hide Info"
-msgstr "Oculta la informació"
+msgstr ""
 
 #: libviews/partselection.cpp:414
 msgctxt "PartSelection|"
 msgid "Show Info"
-msgstr "Mostra la informació"
+msgstr ""
 
 #: libviews/partselection.cpp:562
 msgctxt "PartSelection|"
 msgid "(no trace loaded)"
-msgstr "(no s'ha carregat cap traça)"
+msgstr ""
 
 #: libviews/partview.cpp:37
 msgctxt "PartView|"
 msgid "Profile Part"
-msgstr "Perfil de «part»"
+msgstr ""
 
 #: libviews/partview.cpp:38
 msgctxt "PartView|"
 msgid "Incl."
-msgstr "Incl."
+msgstr ""
 
 #: libviews/partview.cpp:39
 msgctxt "PartView|"
 msgid "Self"
-msgstr "Propi"
+msgstr ""
 
 #: libviews/partview.cpp:40
 msgctxt "PartView|"
 msgid "Called"
-msgstr "Cridat"
+msgstr ""
 
 #: libviews/partview.cpp:41
 msgctxt "PartView|"
 msgid "Comment"
-msgstr "Comentari"
+msgstr ""
 
 #: libviews/partview.cpp:68
 msgctxt "PartView|"
@@ -1813,54 +1675,38 @@ msgid ""
 "Part Overview Dockable. This one also supports multiple selection.</"
 "p><p>Note that the list is hidden if only one trace part is loaded.</p>"
 msgstr ""
-"<b>Llista de parts de traça</b><p>Esta llista mostra totes les parts de "
-"traça de la traça carregada. Es mostra el cost propi/inclusiu de la funció "
-"actualment seleccionada per a cada part. Els percentatges dels costos són "
-"sempre en relació amb el cost total <em>de la part</em> (no pas a la traça "
-"sencera com en la vista de parts de traça). També es mostren les crides que "
-"s'han fet a/des de la funció seleccionada actualment dintre d'esta part de "
-"la traça.</p><p>En triar una o més parts de traça de la llista, el cost "
-"mostrat a tot KCachegrind serà només el gastat a la/les parts seleccionades. "
-"Si no s'està mostrant cap llista de selecció, totes les parts seran "
-"seleccionades de manera implícita.</p><p>Esta és una llista de selecció "
-"múltiple. Podeu seleccionar intervals arrossegant el ratolí o fent servir "
-"les tecles «Maj»/«Ctrl». La selecció o desselecció de les parts de traça "
-"també es pot fer fent servir l'acoblable de vista general de les parts de "
-"traça. L'acoblable també permet la selecció múltiple.</p><p>Cal tindre "
-"present que la llista estarà oculta si només s'ha carregat una part de traça."
-"</p>"
 
 #: libviews/sourceitem.cpp:141
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 of %2 times to %3"
-msgstr "Salt %1 de %2 vegades a %3"
+msgstr ""
 
 #: libviews/sourceitem.cpp:146
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 times to %2"
-msgstr "Salt %1 vegades a %2"
+msgstr ""
 
 #: libviews/sourceview.cpp:51
 msgctxt "SourceView|"
 msgid "#"
-msgstr "#"
+msgstr ""
 
 #: libviews/sourceview.cpp:52
 msgctxt "SourceView|"
 msgid "Cost"
-msgstr "Cost"
+msgstr ""
 
 #: libviews/sourceview.cpp:53
 msgctxt "SourceView|"
 msgid "Cost 2"
-msgstr "Cost 2"
+msgstr ""
 
 #: libviews/sourceview.cpp:55
 msgctxt "SourceView|"
 msgid "Source"
-msgstr "Codi font"
+msgstr ""
 
 #: libviews/sourceview.cpp:83
 msgctxt "SourceView|"
@@ -1873,257 +1719,250 @@ msgid ""
 "call destination.</p><p>Select a inserted call information line to make the "
 "destination function current.</p>"
 msgstr ""
-"<b>Codi font anotat</b><p>La llista de codi font anotat mostra les línies de "
-"codi font de la funció actualment seleccionada junt amb el cost propi gastat "
-"durant l'execució d'esta línia de codi. Si hi ha una crida en la línia del "
-"codi font, s'inserixen línies detallades al codi quant a la crida: el cost "
-"gastat dins de la crida, el nombre de crides fetes i la destinació de la "
-"crida.</p> <p>Seleccioneu una informació de crida inserida per a fer activa "
-"la funció de destinació.</p>"
 
 #: libviews/sourceview.cpp:110
 #, qt-format
 msgctxt "SourceView|"
 msgid "Go to '%1'"
-msgstr "Ves fins a «%1»"
+msgstr ""
 
 #: libviews/sourceview.cpp:115
 #, qt-format
 msgctxt "SourceView|"
 msgid "Go to Line %1"
-msgstr "Ves fins a la línia %1"
+msgstr ""
 
 #: libviews/sourceview.cpp:627
 msgctxt "SourceView|"
 msgid "There is no cost of current selected type associated"
-msgstr "No hi ha cap cost associat del tipus seleccionat"
+msgstr ""
 
 #: libviews/sourceview.cpp:629
 msgctxt "SourceView|"
 msgid "with any source line of this function in file"
-msgstr "amb cap línia del codi font d'esta funció en el fitxer"
+msgstr ""
 
 #: libviews/sourceview.cpp:633
 msgctxt "SourceView|"
 msgid "Thus, no annotated source can be shown."
-msgstr "Així que no es pot mostrar cap codi font anotat."
+msgstr ""
 
 #: libviews/sourceview.cpp:658
 #, qt-format
 msgctxt "SourceView|"
 msgid "--- From '%1' ---"
-msgstr "--- Des de «%1» ---"
+msgstr ""
 
 #: libviews/sourceview.cpp:663
 #, qt-format
 msgctxt "SourceView|"
 msgid "--- Inlined from '%1' ---"
-msgstr "--- Incorporada des de «%1» ---"
+msgstr ""
 
 #: libviews/sourceview.cpp:664
 msgctxt "SourceView|"
 msgid "--- Inlined from unknown source ---"
-msgstr "--- Incorporada des d'origen desconegut ---"
+msgstr ""
 
 #: libviews/sourceview.cpp:669
 msgctxt "SourceView|"
 msgid "There is no source available for the following function:"
-msgstr "El codi font de la següent funció no està disponible:"
+msgstr ""
 
 #: libviews/sourceview.cpp:674
 msgctxt "SourceView|"
 msgid "This is because no debug information is present."
-msgstr "Açò és perquè no hi ha informació de depuració."
+msgstr ""
 
 #: libviews/sourceview.cpp:676
 msgctxt "SourceView|"
 msgid "Recompile source and redo the profile run."
-msgstr "Torna a compilar el codi font i refera l'execució del perfil."
+msgstr ""
 
 #: libviews/sourceview.cpp:679
 msgctxt "SourceView|"
 msgid "The function is located in this ELF object:"
-msgstr "La funció està ubicada dins d'este objecte ELF:"
+msgstr ""
 
 #: libviews/sourceview.cpp:687
 msgctxt "SourceView|"
 msgid "This is because its source file cannot be found:"
-msgstr "Açò és perquè no s'ha pogut trobar el seu fitxer font:"
+msgstr ""
 
 #: libviews/sourceview.cpp:691
 msgctxt "SourceView|"
 msgid "Add the folder of this file to the source folder list."
-msgstr "Afegiu la carpeta d'este fitxer a la llista de carpetes del codi font."
+msgstr ""
 
 #: libviews/sourceview.cpp:693
 msgctxt "SourceView|"
 msgid "The list can be found in the configuration dialog."
-msgstr "Esta llista es pot trobar en el diàleg de configuració."
+msgstr ""
 
 #: libviews/stackselection.cpp:36
 msgctxt "StackSelection|"
 msgid "Stack Selection"
-msgstr "Seleccioneu la pila"
+msgstr ""
 
 #: libviews/stackselection.cpp:44
 msgctxt "StackSelection|"
 msgid "Cost"
-msgstr "Cost"
+msgstr ""
 
 #: libviews/stackselection.cpp:45
 msgctxt "StackSelection|"
 msgid "Cost2"
-msgstr "Cost2"
+msgstr ""
 
 #: libviews/stackselection.cpp:46
 msgctxt "StackSelection|"
 msgid "Calls"
-msgstr "Crides"
+msgstr ""
 
 #: libviews/stackselection.cpp:47
 msgctxt "StackSelection|"
 msgid "Function"
-msgstr "Funció"
+msgstr ""
 
 #: libviews/tabview.cpp:103
 msgctxt "TabBar|"
 msgid "Move to Top"
-msgstr "Mou cap a dalt"
+msgstr ""
 
 #: libviews/tabview.cpp:104
 msgctxt "TabBar|Move to Top"
 msgid "Top"
-msgstr "Dalt"
+msgstr ""
 
 #: libviews/tabview.cpp:107
 msgctxt "TabBar|"
 msgid "Move to Right"
-msgstr "Mou cap a la dreta"
+msgstr ""
 
 #: libviews/tabview.cpp:108
 msgctxt "TabBar|Move to Right"
 msgid "Right"
-msgstr "Dreta"
+msgstr ""
 
 #: libviews/tabview.cpp:111
 msgctxt "TabBar|"
 msgid "Move to Bottom"
-msgstr "Mou cap a baix"
+msgstr ""
 
 #: libviews/tabview.cpp:112
 msgctxt "TabBar|Move to Bottom"
 msgid "Bottom"
-msgstr "Baix"
+msgstr ""
 
 #: libviews/tabview.cpp:115
 msgctxt "TabBar|"
 msgid "Move to Bottom Left"
-msgstr "Mou cap a baix a l'esquerra"
+msgstr ""
 
 #: libviews/tabview.cpp:116
 msgctxt "TabBar|Move to Bottom Left"
 msgid "Bottom Left"
-msgstr "A baix esquerra"
+msgstr ""
 
 #: libviews/tabview.cpp:118
 msgctxt "TabBar|"
 msgid "Move Area To"
-msgstr "Mou l'àrea a"
+msgstr ""
 
 #: libviews/tabview.cpp:121
 msgctxt "TabBar|"
 msgid "Hide This Tab"
-msgstr "Oculta esta pestanya"
+msgstr ""
 
 #: libviews/tabview.cpp:122
 msgctxt "TabBar|"
 msgid "Hide Area"
-msgstr "Oculta esta àrea"
+msgstr ""
 
 #: libviews/tabview.cpp:131
 msgctxt "TabBar|Show on Top"
 msgid "Top"
-msgstr "Dalt"
+msgstr ""
 
 #: libviews/tabview.cpp:132
 msgctxt "TabBar|Show on Right"
 msgid "Right"
-msgstr "Dreta"
+msgstr ""
 
 #: libviews/tabview.cpp:133
 msgctxt "TabBar|Show on Bottom"
 msgid "Bottom"
-msgstr "Baix"
+msgstr ""
 
 #: libviews/tabview.cpp:134
 msgctxt "TabBar|Show on Bottom Left"
 msgid "Bottom Left"
-msgstr "Extrem inferior esquerre"
+msgstr ""
 
 #: libviews/tabview.cpp:135
 msgctxt "TabBar|"
 msgid "Show Hidden On"
-msgstr "Activa mostrar ocult"
+msgstr ""
 
 #: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
 msgctxt "TabView|"
 msgid "(No profile data file loaded)"
-msgstr "(cap fitxer de traça carregat)"
+msgstr ""
 
 #: libviews/tabview.cpp:370
 msgctxt "TabView|"
 msgid "Types"
-msgstr "Tipus"
+msgstr ""
 
 #: libviews/tabview.cpp:373
 msgctxt "TabView|"
 msgid "Callers"
-msgstr "Cridadors"
+msgstr ""
 
 #: libviews/tabview.cpp:374
 msgctxt "TabView|"
 msgid "All Callers"
-msgstr "Tots els cridadors"
+msgstr ""
 
 #: libviews/tabview.cpp:375
 msgctxt "TabView|"
 msgid "Callee Map"
-msgstr "Mapa del cridat"
+msgstr ""
 
 #: libviews/tabview.cpp:378
 msgctxt "TabView|"
 msgid "Source Code"
-msgstr "Codi font"
+msgstr ""
 
 #: libviews/tabview.cpp:380
 msgctxt "TabView|"
 msgid "Parts"
-msgstr "Parts"
+msgstr ""
 
 #: libviews/tabview.cpp:381
 msgctxt "TabView|"
 msgid "Callees"
-msgstr "Cridats"
+msgstr ""
 
 #: libviews/tabview.cpp:382
 msgctxt "TabView|"
 msgid "Call Graph"
-msgstr "Gràfica de crides"
+msgstr ""
 
 #: libviews/tabview.cpp:385
 msgctxt "TabView|"
 msgid "All Callees"
-msgstr "Tots els cridats"
+msgstr ""
 
 #: libviews/tabview.cpp:386
 msgctxt "TabView|"
 msgid "Caller Map"
-msgstr "Mapa del cridador"
+msgstr ""
 
 #: libviews/tabview.cpp:389
 msgctxt "TabView|"
 msgid "Machine Code"
-msgstr "Codi màquina"
+msgstr ""
 
 #: libviews/tabview.cpp:643
 msgctxt "TabView|"
@@ -2145,45 +1984,27 @@ msgid ""
 "ul>For more information, see the <em>What's This?</em> help of the "
 "corresponding tab widget.</p>"
 msgstr ""
-"<b>Pestanyes d'informació</b><p>Este giny mostra informació de la funció "
-"actualment seleccionada en diferents pestanyes: <ul><li>La pestanya «Costos» "
-"mostra una llista dels tipus d'esdeveniment disponibles i els costos "
-"inclusius i propis pel que fa als tipus.</li><li>La pestanya de «part» "
-"mostra una llista de «part» si la traça consta de més d'una «part» (en cas "
-"contrari la pestanya s'oculta). El cost de la funció seleccionada gastat a "
-"les diferents «part» es mostra junt amb les crides realitzades.</li><li>La "
-"pestanya «Llistat de crides» mostra els cridadors i els cridats directes de "
-"la funció amb més detall.</li><li>La pestanya «Cobertura» mostra el mateix "
-"que la pestanya «Llistat de crides» però no només els cridadors i cridats "
-"directes, també mostra els indirectes.</li><li>La pestanya «Gràfica de "
-"crides» mostra una visualització gràfica de les crides fetes per esta funció."
-"</li><li>La pestanya «Codi font» presenta el codi font anotat, si hi ha "
-"informació de depuració i el fitxer de codi font està disponible.</li><li>La "
-"pestanya «Codi màquina» mostra les instruccions d'assemblador, si la "
-"informació de traça a nivell d'instrucció està disponible.</li></ul>Per a "
-"més informació, mireu l'ajuda <em>Què és açò?</em> de la corresponent "
-"pestanya del giny</p>"
 
 #: libviews/tabview.cpp:728
 msgctxt "TabView|"
 msgid "(No function selected)"
-msgstr "(No s'ha seleccionat cap funció)"
+msgstr ""
 
 #: libviews/traceitemview.cpp:67
 msgctxt "QObject|"
 msgid "No description available"
-msgstr "No hi ha disponible cap descripció"
+msgstr ""
 
 #: libviews/treemap.cpp:1334
 #, qt-format
 msgctxt "TreeMapWidget|"
 msgid "Text %1"
-msgstr "Text %1"
+msgstr ""
 
 #: libviews/treemap.cpp:2854
 msgctxt "TreeMapWidget|"
 msgid "Recursive Bisection"
-msgstr "Bisecció recursiva"
+msgstr ""
 
 #: libviews/treemap.cpp:2855
 msgctxt "TreeMapWidget|"
@@ -2193,34 +2014,34 @@ msgstr "Columnes"
 #: libviews/treemap.cpp:2856
 msgctxt "TreeMapWidget|"
 msgid "Rows"
-msgstr "Files"
+msgstr "Fileres"
 
 #: libviews/treemap.cpp:2857
 msgctxt "TreeMapWidget|"
 msgid "Always Best"
-msgstr "Sempre el millor"
+msgstr ""
 
 #: libviews/treemap.cpp:2858
 msgctxt "TreeMapWidget|"
 msgid "Best"
-msgstr "Millor"
+msgstr ""
 
 #: libviews/treemap.cpp:2859
 msgctxt "TreeMapWidget|"
 msgid "Alternate (V)"
-msgstr "Alterna (V)"
+msgstr ""
 
 #: libviews/treemap.cpp:2860
 msgctxt "TreeMapWidget|"
 msgid "Alternate (H)"
-msgstr "Alterna (H)"
+msgstr ""
 
 #: libviews/treemap.cpp:2861
 msgctxt "TreeMapWidget|"
 msgid "Horizontal"
-msgstr "Horitzontal"
+msgstr ""
 
 #: libviews/treemap.cpp:2862
 msgctxt "TreeMapWidget|"
 msgid "Vertical"
-msgstr "Vertical"
+msgstr ""
