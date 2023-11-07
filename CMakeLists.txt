@@ -10,7 +10,7 @@ project(kcachegrind VERSION ${KCACHEGRIND_VERSION})
 
 # minimal requirements
 set (QT_MIN_VERSION "6.4.0")
-set (KF_MIN_VERSION "5.240.0")
+set (KF_MIN_VERSION "5.56.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
