@@ -2640,6 +2640,33 @@ void CallGraphView::scrollContentsBy(int dx, int dy)
     _panningView->setZoomRect(z);
 }
 
+// Handles zooming in and out with 'ctrl + mouse-wheel-up/down'
+void CallGraphView::wheelEvent(QWheelEvent* e) 
+{
+    if (e->modifiers() & Qt::ControlModifier)
+    {
+        int angle = e->angleDelta().y();
+        if ((_zoomLevel <= 0.5 && angle < 0) || (_zoomLevel >= 1.3 && angle > 0))
+            return;
+
+        const ViewportAnchor anchor = transformationAnchor();
+        setTransformationAnchor(QGraphicsView::AnchorViewCenter);
+        qreal factor;
+        if (angle > 0)
+            factor = 1.1;
+        else
+            factor = 0.9;
+
+        scale(factor, factor);
+        _zoomLevel = transform().m11();
+        setTransformationAnchor(anchor);
+        return;
+    }
+    // Don't eat the event if we didn't hold 'ctrl'
+    QGraphicsView::wheelEvent(e);
+}
+
+
 void CallGraphView::zoomRectMoved(qreal dx, qreal dy)
 {
     //FIXME if (leftMargin()>0) dx = 0;

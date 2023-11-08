@@ -625,6 +625,7 @@ protected:
     void focusInEvent(QFocusEvent*) override;
     void focusOutEvent(QFocusEvent*) override;
     void scrollContentsBy(int dx, int dy) override;
+	void wheelEvent(QWheelEvent*) override;
 
 private:
     void updateSizes(QSize s = QSize(0,0));
@@ -663,6 +664,8 @@ private:
 
     GraphNode* _selectedNode;
     GraphEdge* _selectedEdge;
+
+    qreal _zoomLevel = 1;
 
     // widget options
     ZoomPosition _zoomPosition, _lastAutoPosition;
