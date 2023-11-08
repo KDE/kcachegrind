@@ -1030,7 +1030,7 @@ void TopLevel::loadTraceDelayed()
         QString file = _loadFilesDelayed[0];
 
         // if URL scheme is missing (URL is relative), this is a local file
-        QUrl u = QUrl::fromUserInput(file, QString(), QUrl::AssumeLocalFile);
+        QUrl u = QUrl::fromUserInput(file, QDir::currentPath(), QUrl::AssumeLocalFile);
         if (u.isLocalFile())
             load(file); // special case for local file: maybe just prefix
         else
