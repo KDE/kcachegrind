@@ -3,14 +3,14 @@
 # Luciano Montanaro <mikelima@cirulla.net>, 2003, 2004, 2005, 2007, 2008.
 # Daniele Medri <madrid@linuxmeeting.net>, 2003.
 # Federico Zenith <federico.zenith@member.fsf.org>, 2009, 2010, 2012, 2013, 2015.
-# Luigi Toscano <luigi.toscano@tiscali.it>, 2016, 2017, 2018, 2020.
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2016, 2017, 2018, 2020, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2020-09-21 00:21+0200\n"
+"PO-Revision-Date: 2023-11-08 01:47+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Lokalize 20.04.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
@@ -751,20 +751,6 @@ msgstr ""
 "vincoli alla rappresentazione grafica).</p>"
 
 #: libviews/callmapview.cpp:106
-#, fuzzy
-#| msgctxt "CallMapView|"
-#| msgid ""
-#| "<p>Appearance options can be found in the in the context menu. To get "
-#| "exact size proportions, choose 'Hide incorrect borders'. As this mode can "
-#| "be <em>very</em> time consuming, you may want to limit the maximum drawn "
-#| "nesting level before. 'Best' determinates the split direction for "
-#| "children from the aspect ratio of the parent. 'Always Best' decides on "
-#| "remaining space for each sibling. 'Ignore Proportions' takes space for "
-#| "function name drawing <em>before</em> drawing children. Note that size "
-#| "proportions can get <em>heavily</em> wrong.</p><p>This is a <em>TreeMap</"
-#| "em> widget. Keyboard navigation is available with the left/right arrow "
-#| "keys for traversing siblings, and up/down arrow keys to go a nesting "
-#| "level up/down. <em>Return</em> activates the current item.</p>"
 msgctxt "CallMapView|"
 msgid ""
 "<p>Appearance options can be found in the context menu. To get exact size "

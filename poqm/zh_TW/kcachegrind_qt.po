@@ -6,19 +6,20 @@
 # pan93412 <pan93412@gmail.com>, 2018.
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2009, 2010.
 # Jeff Huang <s8321414@gmail.com>, 2020.
+# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2020-09-17 16:02+0800\n"
-"Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
-"Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
+"PO-Revision-Date: 2023-11-11 00:29+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.08.3\n"
+"X-Generator: Lokalize 23.08.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Qt-Contexts: true\n"
 
@@ -30,7 +31,7 @@ msgstr "Cachegrind/Callgrind 產生的分析檔資料檔匯入過濾器"
 #: libcore/context.cpp:60
 msgctxt "ProfileContext|"
 msgid "Invalid Context"
-msgstr "不合法的內容"
+msgstr "無效的內容"
 
 #: libcore/context.cpp:61
 msgctxt "ProfileContext|"
@@ -748,22 +749,7 @@ msgstr ""
 "形表示一個函式，大小會與該函式執行時的花費成比例。（不過畫圖形時會有所限制，"
 "所以是盡量成比例）。</p>"
 
-#
 #: libviews/callmapview.cpp:106
-#, fuzzy
-#| msgctxt "CallMapView|"
-#| msgid ""
-#| "<p>Appearance options can be found in the in the context menu. To get "
-#| "exact size proportions, choose 'Hide incorrect borders'. As this mode can "
-#| "be <em>very</em> time consuming, you may want to limit the maximum drawn "
-#| "nesting level before. 'Best' determinates the split direction for "
-#| "children from the aspect ratio of the parent. 'Always Best' decides on "
-#| "remaining space for each sibling. 'Ignore Proportions' takes space for "
-#| "function name drawing <em>before</em> drawing children. Note that size "
-#| "proportions can get <em>heavily</em> wrong.</p><p>This is a <em>TreeMap</"
-#| "em> widget. Keyboard navigation is available with the left/right arrow "
-#| "keys for traversing siblings, and up/down arrow keys to go a nesting "
-#| "level up/down. <em>Return</em> activates the current item.</p>"
 msgctxt "CallMapView|"
 msgid ""
 "<p>Appearance options can be found in the context menu. To get exact size "
@@ -778,12 +764,12 @@ msgid ""
 "siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
 "em> activates the current item.</p>"
 msgstr ""
-"<p>外觀選項可以在選單中找到。要取得精準的大小比例，選擇「隱藏不正確的框線」。"
-"這個模式可能會<em>非常</em>花時間，您可能要先限制一下最多的巢狀等級。「最佳」"
-"會依父函式的比例來分離子函式的方向。「總是最佳」會依剩餘空間來決定。「忽略比"
-"例」會在畫子函式前先保留函式名稱空間。注意大小的比例有可能會錯得很離譜。</p> "
-"<p>有一種「樹狀地圖」元件。可以用鍵盤左右鍵來導覽所有的子節點，上下鍵則可以進"
-"出巢狀等級。Enter 鍵會啟動目前的項目。</p>"
+"<p>外觀選項可以在內文選單中找到。要取得精準的大小比例，選擇「隱藏不正確的框"
+"線」。這個模式可能會<em>非常</em>花時間，您可能要先限制一下最多的巢狀等級。"
+"「最佳」會依父函式的比例來分離子函式的方向。「總是最佳」會依剩餘空間來決定。"
+"「忽略比例」會在畫子函式前先保留函式名稱空間。注意大小的比例有可能會錯得很離"
+"譜。</p> <p>有一種「樹狀地圖」元件。可以用鍵盤左右鍵來導覽所有的子節點，上下"
+"鍵則可以進出巢狀等級。Enter 鍵會啟動目前的項目。</p>"
 
 #
 #: libviews/callmapview.cpp:139
