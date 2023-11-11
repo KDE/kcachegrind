@@ -3,7 +3,7 @@
 # Luciano Montanaro <mikelima@cirulla.net>, 2003, 2004, 2005, 2007, 2008.
 # Daniele Medri <madrid@linuxmeeting.net>, 2003.
 # Federico Zenith <federico.zenith@member.fsf.org>, 2009, 2010, 2012, 2013, 2015.
-# Luigi Toscano <luigi.toscano@tiscali.it>, 2016, 2017, 2018, 2020.
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2016, 2017, 2018, 2020, 2023.
 #
 msgid ""
 msgstr ""
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Lokalize 20.04.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
