@@ -4,14 +4,14 @@
 # Marce Villarino <mvillarino@kde-espana.es>, 2009.
 # Marce Villarino <mvillarino@kde-espana.es>, 2009, 2012, 2013, 2014.
 # Adrian Chaves Fernandez <adriyetichaves@gmail.com>, 2013, 2015, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020, 2023.
+# SPDX-FileCopyrightText: 2023 Adrián Chaves (Gallaecio)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2023-06-05 14:07+0200\n"
+"PO-Revision-Date: 2023-11-11 15:21+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.08.2\n"
 "X-Qt-Contexts: true\n"
 
 #: libcore/cachegrindloader.cpp:135
@@ -753,20 +753,6 @@ msgstr ""
 "a función está en execución (porén, hai restricións no debuxo).</p>"
 
 #: libviews/callmapview.cpp:106
-#, fuzzy
-#| msgctxt "CallMapView|"
-#| msgid ""
-#| "<p>Appearance options can be found in the in the context menu. To get "
-#| "exact size proportions, choose 'Hide incorrect borders'. As this mode can "
-#| "be <em>very</em> time consuming, you may want to limit the maximum drawn "
-#| "nesting level before. 'Best' determinates the split direction for "
-#| "children from the aspect ratio of the parent. 'Always Best' decides on "
-#| "remaining space for each sibling. 'Ignore Proportions' takes space for "
-#| "function name drawing <em>before</em> drawing children. Note that size "
-#| "proportions can get <em>heavily</em> wrong.</p><p>This is a <em>TreeMap</"
-#| "em> widget. Keyboard navigation is available with the left/right arrow "
-#| "keys for traversing siblings, and up/down arrow keys to go a nesting "
-#| "level up/down. <em>Return</em> activates the current item.</p>"
 msgctxt "CallMapView|"
 msgid ""
 "<p>Appearance options can be found in the context menu. To get exact size "
