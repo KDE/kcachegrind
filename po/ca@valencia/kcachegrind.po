@@ -704,7 +704,7 @@ msgstr ""
 "del rendiment. Premeu <b>Actualitza</b> per a veure els diferents comptadors "
 "de l'execució i una traça de la pila de la posició actual del programa "
 "analitzat. Comproveu que l'opció <b>Cada</b> permet a KCachegrind "
-"actualitzar de manera regular esta informació. Activeu l'opció "
+"actualitzar de manera regular esta informació. Seleccioneu l'opció "
 "<b>Sincronitza</b> per a permetre que l'acoblable active la funció superior "
 "del bolcat actualment carregat.</li></ul></p>"
 
@@ -871,7 +871,7 @@ msgstr "<b>Obri una traça</b><p>Obri una traça, pot tindre múltiples parts</p
 #: kcachegrind/toplevel.cpp:496
 #, kde-format
 msgid "Show/Hide the Parts Overview Dockable"
-msgstr "Mostra/oculta l'acoblable de la vista general de les «part»"
+msgstr "Mostra o oculta l'acoblable de la vista general de les «part»"
 
 #: kcachegrind/toplevel.cpp:501
 #, kde-format
@@ -881,7 +881,7 @@ msgstr "Pila de crides"
 #: kcachegrind/toplevel.cpp:504
 #, kde-format
 msgid "Show/Hide the Call Stack Dockable"
-msgstr "Mostra/oculta l'acoblable de la pila de crides superiors"
+msgstr "Mostra o oculta l'acoblable de la pila de crides superiors"
 
 #: kcachegrind/toplevel.cpp:509
 #, kde-format
@@ -891,12 +891,12 @@ msgstr "Perfil de funció"
 #: kcachegrind/toplevel.cpp:512
 #, kde-format
 msgid "Show/Hide the Function Profile Dockable"
-msgstr "Mostra/oculta l'acoblable de l'anàlisi de rendiment de la funció"
+msgstr "Mostra o oculta l'acoblable de l'anàlisi de rendiment de la funció"
 
 #: kcachegrind/toplevel.cpp:520
 #, kde-format
 msgid "Show/Hide the Profile Dumps Dockable"
-msgstr "Mostra/oculta l'acoblable dels bolcats d'anàlisi del rendiment"
+msgstr "Mostra o oculta l'acoblable dels bolcats d'anàlisi del rendiment"
 
 #: kcachegrind/toplevel.cpp:527
 #, kde-format
@@ -934,9 +934,9 @@ msgid ""
 msgstr ""
 "<b>Mostra els percentatges dels costos relatius al pare</b><p>Si està "
 "desactivada, els percentatges dels costos es mostren amb relació al cost "
-"total de les parts de l'anàlisi de rendiment per les que s'està navegant. En "
-"activar esta opció, el percentatge dels costos dels elements visualitzats "
-"serà relatiu als costos dels pares dels elements.</"
+"total de les parts de l'anàlisi de rendiment per les que s'està navegant. "
+"Quan se selecciona esta opció, el percentatge dels costos dels elements "
+"visualitzats serà relatiu als costos dels pares dels elements.</"
 "p><ul><table><tr><td><b>Tipus de cost</b></td><td><b>Cost del pare</b></td></"
 "tr><tr><td>Funció acumulativa</td><td>Total</td></tr><tr><td>Funció (en si "
 "mateixa)</td><td>Grup de la funció (*) / Total</td></tr><tr><td>Crida</"
@@ -970,7 +970,7 @@ msgstr ""
 "recursius no es pot determinar; l'error és xicotet, tanmateix per cicles "
 "falsos (mireu la documentació).</p><p>La manipulació correcta dels cicles és "
 "detectar-los i reduir totes les funcions del cicle en una funció artificial, "
-"que es dona, quan esta opció és seleccionada. Malauradament, el programari "
+"que es dona, quan esta opció és seleccionada. Desgraciadament, el programari "
 "amb IGU, sovint donarà lloc a grans cicles falsos, fent impossible "
 "l'anàlisi; per tant, hi ha l'opció de desactivar açò.</p>"
 
@@ -993,8 +993,8 @@ msgid ""
 "p><p>In this mode, you can hover the mouse pointer over the activated symbol "
 "label to show a tooltip with the unabbreviated symbol.</p>"
 msgstr ""
-"<b>Oculta els paràmetres de la plantilla en símbols C++</b><p>Si açò està "
-"activat, cada símbol mostrat no tindrà cap paràmetre ocult C++ de la "
+"<b>Oculta els paràmetres de la plantilla en símbols C++</b><p>Si se "
+"selecciona, cada símbol mostrat no tindrà cap paràmetre ocult C++ de la "
 "plantilla, senzillament mostrarà &lt;&gt; en lloc d'un paràmetre de "
 "plantilla potencialment imbricat.</p><p>En este mode, podeu mantindre el "
 "punter del ratolí sobre l'etiqueta del símbol activat per a mostrar un "
