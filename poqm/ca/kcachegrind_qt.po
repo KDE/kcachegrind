@@ -459,244 +459,244 @@ msgstr ""
 "\t«%1»\n"
 "perquè no té el cost del tipus d'esdeveniment seleccionat."
 
-#: libviews/callgraphview.cpp:2773
+#: libviews/callgraphview.cpp:2800
 msgctxt "CallGraphView|"
 msgid "Caller Depth"
 msgstr "Profunditat del cridador"
 
-#: libviews/callgraphview.cpp:2774 libviews/callgraphview.cpp:2814
+#: libviews/callgraphview.cpp:2801 libviews/callgraphview.cpp:2841
 msgctxt "CallGraphView|"
 msgid "Unlimited"
 msgstr "Sense límit"
 
-#: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
+#: libviews/callgraphview.cpp:2804 libviews/callgraphview.cpp:2844
 msgctxt "CallGraphView|None"
 msgid "Depth 0"
 msgstr "Profunditat 0"
 
-#: libviews/callgraphview.cpp:2778 libviews/callgraphview.cpp:2818
+#: libviews/callgraphview.cpp:2805 libviews/callgraphview.cpp:2845
 msgctxt "CallGraphView|"
 msgid "max. 1"
 msgstr "màx. 1"
 
-#: libviews/callgraphview.cpp:2779 libviews/callgraphview.cpp:2819
+#: libviews/callgraphview.cpp:2806 libviews/callgraphview.cpp:2846
 msgctxt "CallGraphView|"
 msgid "max. 2"
 msgstr "màx. 2"
 
-#: libviews/callgraphview.cpp:2780 libviews/callgraphview.cpp:2820
+#: libviews/callgraphview.cpp:2807 libviews/callgraphview.cpp:2847
 msgctxt "CallGraphView|"
 msgid "max. 5"
 msgstr "màx. 5"
 
-#: libviews/callgraphview.cpp:2781 libviews/callgraphview.cpp:2821
+#: libviews/callgraphview.cpp:2808 libviews/callgraphview.cpp:2848
 msgctxt "CallGraphView|"
 msgid "max. 10"
 msgstr "màx. 10"
 
-#: libviews/callgraphview.cpp:2782 libviews/callgraphview.cpp:2822
+#: libviews/callgraphview.cpp:2809 libviews/callgraphview.cpp:2849
 msgctxt "CallGraphView|"
 msgid "max. 15"
 msgstr "màx. 15"
 
-#: libviews/callgraphview.cpp:2813
+#: libviews/callgraphview.cpp:2840
 msgctxt "CallGraphView|"
 msgid "Callee Depth"
 msgstr "Profunditat del cridat"
 
-#: libviews/callgraphview.cpp:2853
+#: libviews/callgraphview.cpp:2880
 msgctxt "CallGraphView|"
 msgid "Min. Node Cost"
 msgstr "Cost mínim del node"
 
-#: libviews/callgraphview.cpp:2854
+#: libviews/callgraphview.cpp:2881
 msgctxt "CallGraphView|"
 msgid "No Minimum"
 msgstr "Sense mínim"
 
-#: libviews/callgraphview.cpp:2860
+#: libviews/callgraphview.cpp:2887
 msgctxt "CallGraphView|"
 msgid "50 %"
 msgstr "50%"
 
-#: libviews/callgraphview.cpp:2861
+#: libviews/callgraphview.cpp:2888
 msgctxt "CallGraphView|"
 msgid "20 %"
 msgstr "20%"
 
-#: libviews/callgraphview.cpp:2862
+#: libviews/callgraphview.cpp:2889
 msgctxt "CallGraphView|"
 msgid "10 %"
 msgstr "10%"
 
-#: libviews/callgraphview.cpp:2863
+#: libviews/callgraphview.cpp:2890
 msgctxt "CallGraphView|"
 msgid "5 %"
 msgstr "5%"
 
-#: libviews/callgraphview.cpp:2864
+#: libviews/callgraphview.cpp:2891
 msgctxt "CallGraphView|"
 msgid "2 %"
 msgstr "2%"
 
-#: libviews/callgraphview.cpp:2865
+#: libviews/callgraphview.cpp:2892
 msgctxt "CallGraphView|"
 msgid "1 %"
 msgstr "1%"
 
-#: libviews/callgraphview.cpp:2895
+#: libviews/callgraphview.cpp:2922
 msgctxt "CallGraphView|"
 msgid "Min. Call Cost"
 msgstr "Cost mínim de la crida"
 
-#: libviews/callgraphview.cpp:2896
+#: libviews/callgraphview.cpp:2923
 msgctxt "CallGraphView|"
 msgid "Same as Node"
 msgstr "El mateix del node"
 
-#: libviews/callgraphview.cpp:2898
+#: libviews/callgraphview.cpp:2925
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
 msgstr "50 % del Node"
 
-#: libviews/callgraphview.cpp:2900
+#: libviews/callgraphview.cpp:2927
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
 msgstr "20 % del node"
 
-#: libviews/callgraphview.cpp:2902
+#: libviews/callgraphview.cpp:2929
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
 msgstr "10 % del node"
 
-#: libviews/callgraphview.cpp:2931
+#: libviews/callgraphview.cpp:2958
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
 msgstr "Vista d'ocell"
 
-#: libviews/callgraphview.cpp:2932
+#: libviews/callgraphview.cpp:2959
 msgctxt "CallGraphView|"
 msgid "Top Left"
 msgstr "Extrem superior esquerre"
 
-#: libviews/callgraphview.cpp:2933
+#: libviews/callgraphview.cpp:2960
 msgctxt "CallGraphView|"
 msgid "Top Right"
 msgstr "Extrem superior dret"
 
-#: libviews/callgraphview.cpp:2934
+#: libviews/callgraphview.cpp:2961
 msgctxt "CallGraphView|"
 msgid "Bottom Left"
 msgstr "Extrem inferior esquerre"
 
-#: libviews/callgraphview.cpp:2935
+#: libviews/callgraphview.cpp:2962
 msgctxt "CallGraphView|"
 msgid "Bottom Right"
 msgstr "Extrem inferior dret"
 
-#: libviews/callgraphview.cpp:2936
+#: libviews/callgraphview.cpp:2963
 msgctxt "CallGraphView|"
 msgid "Automatic"
 msgstr "Automàtic"
 
-#: libviews/callgraphview.cpp:2937
+#: libviews/callgraphview.cpp:2964
 msgctxt "CallGraphView|"
 msgid "Hide"
 msgstr "Oculta"
 
-#: libviews/callgraphview.cpp:2967
+#: libviews/callgraphview.cpp:2994
 msgctxt "CallGraphView|"
 msgid "Layout"
 msgstr "Disposició"
 
-#: libviews/callgraphview.cpp:2968
+#: libviews/callgraphview.cpp:2995
 msgctxt "CallGraphView|"
 msgid "Top to Down"
 msgstr "De dalt a baix"
 
-#: libviews/callgraphview.cpp:2969
+#: libviews/callgraphview.cpp:2996
 msgctxt "CallGraphView|"
 msgid "Left to Right"
 msgstr "D'esquerra a dreta"
 
-#: libviews/callgraphview.cpp:2970
+#: libviews/callgraphview.cpp:2997
 msgctxt "CallGraphView|"
 msgid "Circular"
 msgstr "Circular"
 
-#: libviews/callgraphview.cpp:3010 libviews/callgraphview.cpp:3015
-#: libviews/callgraphview.cpp:3035
+#: libviews/callgraphview.cpp:3037 libviews/callgraphview.cpp:3042
+#: libviews/callgraphview.cpp:3062
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
 msgstr "Ves a «%1»"
 
-#: libviews/callgraphview.cpp:3046
+#: libviews/callgraphview.cpp:3073
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
 msgstr "Atura la gràfica"
 
-#: libviews/callgraphview.cpp:3053
+#: libviews/callgraphview.cpp:3080
 msgctxt "CallGraphView|"
 msgid "Export Graph"
 msgstr "Exporta la gràfica"
 
-#: libviews/callgraphview.cpp:3054
+#: libviews/callgraphview.cpp:3081
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
 msgstr "Com a fitxer DOT..."
 
-#: libviews/callgraphview.cpp:3055
+#: libviews/callgraphview.cpp:3082
 msgctxt "CallGraphView|"
 msgid "As Image..."
 msgstr "Com a imatge..."
 
-#: libviews/callgraphview.cpp:3058
+#: libviews/callgraphview.cpp:3085
 msgctxt "CallGraphView|"
 msgid "Graph"
 msgstr "Gràfica"
 
-#: libviews/callgraphview.cpp:3066
+#: libviews/callgraphview.cpp:3093
 msgctxt "CallGraphView|"
 msgid "Arrows for Skipped Calls"
 msgstr "Fletxes per a les crides omeses"
 
-#: libviews/callgraphview.cpp:3071
+#: libviews/callgraphview.cpp:3098
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
 msgstr "Crides de cicle intern"
 
-#: libviews/callgraphview.cpp:3076
+#: libviews/callgraphview.cpp:3103
 msgctxt "CallGraphView|"
 msgid "Cluster Groups"
 msgstr "Grups replegats"
 
-#: libviews/callgraphview.cpp:3080
+#: libviews/callgraphview.cpp:3107
 msgctxt "CallGraphView|"
 msgid "Visualization"
 msgstr "Visualització"
 
-#: libviews/callgraphview.cpp:3081
+#: libviews/callgraphview.cpp:3108
 msgctxt "CallGraphView|"
 msgid "Compact"
 msgstr "Compacte"
 
-#: libviews/callgraphview.cpp:3084
+#: libviews/callgraphview.cpp:3111
 msgctxt "CallGraphView|"
 msgid "Normal"
 msgstr "Normal"
 
-#: libviews/callgraphview.cpp:3087
+#: libviews/callgraphview.cpp:3114
 msgctxt "CallGraphView|"
 msgid "Tall"
 msgstr "Ampliada"
 
-#: libviews/callgraphview.cpp:3119
+#: libviews/callgraphview.cpp:3146
 msgctxt "CallGraphView|"
 msgid "Export Graph As Image"
 msgstr "Exporta la gràfica com a imatge"
 
-#: libviews/callgraphview.cpp:3121
+#: libviews/callgraphview.cpp:3148
 msgctxt "CallGraphView|"
 msgid "Images (*.png *.jpg)"
 msgstr "Imatges (*.png *.jpg)"

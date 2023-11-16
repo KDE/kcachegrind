@@ -457,244 +457,244 @@ msgstr ""
 "\t%1,\n"
 "поскольку у неё нет стоимости выбранного типа."
 
-#: libviews/callgraphview.cpp:2773
+#: libviews/callgraphview.cpp:2800
 msgctxt "CallGraphView|"
 msgid "Caller Depth"
 msgstr "Глубина вызывающих"
 
-#: libviews/callgraphview.cpp:2774 libviews/callgraphview.cpp:2814
+#: libviews/callgraphview.cpp:2801 libviews/callgraphview.cpp:2841
 msgctxt "CallGraphView|"
 msgid "Unlimited"
 msgstr "Без ограничений"
 
-#: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
+#: libviews/callgraphview.cpp:2804 libviews/callgraphview.cpp:2844
 msgctxt "CallGraphView|None"
 msgid "Depth 0"
 msgstr "Глубина 0"
 
-#: libviews/callgraphview.cpp:2778 libviews/callgraphview.cpp:2818
+#: libviews/callgraphview.cpp:2805 libviews/callgraphview.cpp:2845
 msgctxt "CallGraphView|"
 msgid "max. 1"
 msgstr "Макс. 1"
 
-#: libviews/callgraphview.cpp:2779 libviews/callgraphview.cpp:2819
+#: libviews/callgraphview.cpp:2806 libviews/callgraphview.cpp:2846
 msgctxt "CallGraphView|"
 msgid "max. 2"
 msgstr "Макс. 2"
 
-#: libviews/callgraphview.cpp:2780 libviews/callgraphview.cpp:2820
+#: libviews/callgraphview.cpp:2807 libviews/callgraphview.cpp:2847
 msgctxt "CallGraphView|"
 msgid "max. 5"
 msgstr "Макс. 5"
 
-#: libviews/callgraphview.cpp:2781 libviews/callgraphview.cpp:2821
+#: libviews/callgraphview.cpp:2808 libviews/callgraphview.cpp:2848
 msgctxt "CallGraphView|"
 msgid "max. 10"
 msgstr "Макс. 10"
 
-#: libviews/callgraphview.cpp:2782 libviews/callgraphview.cpp:2822
+#: libviews/callgraphview.cpp:2809 libviews/callgraphview.cpp:2849
 msgctxt "CallGraphView|"
 msgid "max. 15"
 msgstr "Макс. 15"
 
-#: libviews/callgraphview.cpp:2813
+#: libviews/callgraphview.cpp:2840
 msgctxt "CallGraphView|"
 msgid "Callee Depth"
 msgstr "Глубина вызываемых"
 
-#: libviews/callgraphview.cpp:2853
+#: libviews/callgraphview.cpp:2880
 msgctxt "CallGraphView|"
 msgid "Min. Node Cost"
 msgstr "Мин. стоимость узла"
 
-#: libviews/callgraphview.cpp:2854
+#: libviews/callgraphview.cpp:2881
 msgctxt "CallGraphView|"
 msgid "No Minimum"
 msgstr "Без минимума"
 
-#: libviews/callgraphview.cpp:2860
+#: libviews/callgraphview.cpp:2887
 msgctxt "CallGraphView|"
 msgid "50 %"
 msgstr "50%"
 
-#: libviews/callgraphview.cpp:2861
+#: libviews/callgraphview.cpp:2888
 msgctxt "CallGraphView|"
 msgid "20 %"
 msgstr "20%"
 
-#: libviews/callgraphview.cpp:2862
+#: libviews/callgraphview.cpp:2889
 msgctxt "CallGraphView|"
 msgid "10 %"
 msgstr "10%"
 
-#: libviews/callgraphview.cpp:2863
+#: libviews/callgraphview.cpp:2890
 msgctxt "CallGraphView|"
 msgid "5 %"
 msgstr "5%"
 
-#: libviews/callgraphview.cpp:2864
+#: libviews/callgraphview.cpp:2891
 msgctxt "CallGraphView|"
 msgid "2 %"
 msgstr "2%"
 
-#: libviews/callgraphview.cpp:2865
+#: libviews/callgraphview.cpp:2892
 msgctxt "CallGraphView|"
 msgid "1 %"
 msgstr "1%"
 
-#: libviews/callgraphview.cpp:2895
+#: libviews/callgraphview.cpp:2922
 msgctxt "CallGraphView|"
 msgid "Min. Call Cost"
 msgstr "Мин. стоимость вызова"
 
-#: libviews/callgraphview.cpp:2896
+#: libviews/callgraphview.cpp:2923
 msgctxt "CallGraphView|"
 msgid "Same as Node"
 msgstr "100% стоимости узла"
 
-#: libviews/callgraphview.cpp:2898
+#: libviews/callgraphview.cpp:2925
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
 msgstr "50% стоимости узла"
 
-#: libviews/callgraphview.cpp:2900
+#: libviews/callgraphview.cpp:2927
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
 msgstr "20% стоимости узла"
 
-#: libviews/callgraphview.cpp:2902
+#: libviews/callgraphview.cpp:2929
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
 msgstr "10% стоимости узла"
 
-#: libviews/callgraphview.cpp:2931
+#: libviews/callgraphview.cpp:2958
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
 msgstr "Окно обзора"
 
-#: libviews/callgraphview.cpp:2932
+#: libviews/callgraphview.cpp:2959
 msgctxt "CallGraphView|"
 msgid "Top Left"
 msgstr "Сверху слева"
 
-#: libviews/callgraphview.cpp:2933
+#: libviews/callgraphview.cpp:2960
 msgctxt "CallGraphView|"
 msgid "Top Right"
 msgstr "Сверху справа"
 
-#: libviews/callgraphview.cpp:2934
+#: libviews/callgraphview.cpp:2961
 msgctxt "CallGraphView|"
 msgid "Bottom Left"
 msgstr "Снизу слева"
 
-#: libviews/callgraphview.cpp:2935
+#: libviews/callgraphview.cpp:2962
 msgctxt "CallGraphView|"
 msgid "Bottom Right"
 msgstr "Снизу справа"
 
-#: libviews/callgraphview.cpp:2936
+#: libviews/callgraphview.cpp:2963
 msgctxt "CallGraphView|"
 msgid "Automatic"
 msgstr "Автоматически"
 
-#: libviews/callgraphview.cpp:2937
+#: libviews/callgraphview.cpp:2964
 msgctxt "CallGraphView|"
 msgid "Hide"
 msgstr "Скрыть"
 
-#: libviews/callgraphview.cpp:2967
+#: libviews/callgraphview.cpp:2994
 msgctxt "CallGraphView|"
 msgid "Layout"
 msgstr "Раскладка"
 
-#: libviews/callgraphview.cpp:2968
+#: libviews/callgraphview.cpp:2995
 msgctxt "CallGraphView|"
 msgid "Top to Down"
 msgstr "Сверху вниз"
 
-#: libviews/callgraphview.cpp:2969
+#: libviews/callgraphview.cpp:2996
 msgctxt "CallGraphView|"
 msgid "Left to Right"
 msgstr "Слева направо"
 
-#: libviews/callgraphview.cpp:2970
+#: libviews/callgraphview.cpp:2997
 msgctxt "CallGraphView|"
 msgid "Circular"
 msgstr "По кругу"
 
-#: libviews/callgraphview.cpp:3010 libviews/callgraphview.cpp:3015
-#: libviews/callgraphview.cpp:3035
+#: libviews/callgraphview.cpp:3037 libviews/callgraphview.cpp:3042
+#: libviews/callgraphview.cpp:3062
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
 msgstr "Перейти к «%1»"
 
-#: libviews/callgraphview.cpp:3046
+#: libviews/callgraphview.cpp:3073
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
 msgstr "Остановить построение"
 
-#: libviews/callgraphview.cpp:3053
+#: libviews/callgraphview.cpp:3080
 msgctxt "CallGraphView|"
 msgid "Export Graph"
 msgstr "Экспортировать граф"
 
-#: libviews/callgraphview.cpp:3054
+#: libviews/callgraphview.cpp:3081
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
 msgstr "Как файл DOT..."
 
-#: libviews/callgraphview.cpp:3055
+#: libviews/callgraphview.cpp:3082
 msgctxt "CallGraphView|"
 msgid "As Image..."
 msgstr "Как изображение..."
 
-#: libviews/callgraphview.cpp:3058
+#: libviews/callgraphview.cpp:3085
 msgctxt "CallGraphView|"
 msgid "Graph"
 msgstr "Граф"
 
-#: libviews/callgraphview.cpp:3066
+#: libviews/callgraphview.cpp:3093
 msgctxt "CallGraphView|"
 msgid "Arrows for Skipped Calls"
 msgstr "Стрелки пропущенных вызовов"
 
-#: libviews/callgraphview.cpp:3071
+#: libviews/callgraphview.cpp:3098
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
 msgstr "Вызовы внутри циклов"
 
-#: libviews/callgraphview.cpp:3076
+#: libviews/callgraphview.cpp:3103
 msgctxt "CallGraphView|"
 msgid "Cluster Groups"
 msgstr "Объединять группы"
 
-#: libviews/callgraphview.cpp:3080
+#: libviews/callgraphview.cpp:3107
 msgctxt "CallGraphView|"
 msgid "Visualization"
 msgstr "Визуализация"
 
-#: libviews/callgraphview.cpp:3081
+#: libviews/callgraphview.cpp:3108
 msgctxt "CallGraphView|"
 msgid "Compact"
 msgstr "Компактная"
 
-#: libviews/callgraphview.cpp:3084
+#: libviews/callgraphview.cpp:3111
 msgctxt "CallGraphView|"
 msgid "Normal"
 msgstr "Обычная"
 
-#: libviews/callgraphview.cpp:3087
+#: libviews/callgraphview.cpp:3114
 msgctxt "CallGraphView|"
 msgid "Tall"
 msgstr "В высоту"
 
-#: libviews/callgraphview.cpp:3119
+#: libviews/callgraphview.cpp:3146
 msgctxt "CallGraphView|"
 msgid "Export Graph As Image"
 msgstr "Экспорт графа в виде изображения"
 
-#: libviews/callgraphview.cpp:3121
+#: libviews/callgraphview.cpp:3148
 msgctxt "CallGraphView|"
 msgid "Images (*.png *.jpg)"
 msgstr "Изображения (*.png *.jpg)"

@@ -615,21 +615,21 @@ msgstr ""
 "\t\"%1\",\n"
 "wiel se för den utsöchten Begeefnistyp keen Verbruuk hett."
 
-#: libviews/callgraphview.cpp:2773
+#: libviews/callgraphview.cpp:2800
 #, fuzzy
 #| msgid "Caller Depth"
 msgctxt "CallGraphView|"
 msgid "Caller Depth"
 msgstr "Oproper-Deepde"
 
-#: libviews/callgraphview.cpp:2774 libviews/callgraphview.cpp:2814
+#: libviews/callgraphview.cpp:2801 libviews/callgraphview.cpp:2841
 #, fuzzy
 #| msgid "Unlimited"
 msgctxt "CallGraphView|"
 msgid "Unlimited"
 msgstr "Ahn Grenz"
 
-#: libviews/callgraphview.cpp:2777 libviews/callgraphview.cpp:2817
+#: libviews/callgraphview.cpp:2804 libviews/callgraphview.cpp:2844
 #, fuzzy
 #| msgctxt "None"
 #| msgid "Depth 0"
@@ -637,316 +637,316 @@ msgctxt "CallGraphView|None"
 msgid "Depth 0"
 msgstr "Deepde 0"
 
-#: libviews/callgraphview.cpp:2778 libviews/callgraphview.cpp:2818
+#: libviews/callgraphview.cpp:2805 libviews/callgraphview.cpp:2845
 #, fuzzy
 #| msgid "max. 10"
 msgctxt "CallGraphView|"
 msgid "max. 1"
 msgstr "max. 10"
 
-#: libviews/callgraphview.cpp:2779 libviews/callgraphview.cpp:2819
+#: libviews/callgraphview.cpp:2806 libviews/callgraphview.cpp:2846
 #, fuzzy
 #| msgid "max. 2"
 msgctxt "CallGraphView|"
 msgid "max. 2"
 msgstr "max. 2"
 
-#: libviews/callgraphview.cpp:2780 libviews/callgraphview.cpp:2820
+#: libviews/callgraphview.cpp:2807 libviews/callgraphview.cpp:2847
 #, fuzzy
 #| msgid "max. 5"
 msgctxt "CallGraphView|"
 msgid "max. 5"
 msgstr "max. 5"
 
-#: libviews/callgraphview.cpp:2781 libviews/callgraphview.cpp:2821
+#: libviews/callgraphview.cpp:2808 libviews/callgraphview.cpp:2848
 #, fuzzy
 #| msgid "max. 10"
 msgctxt "CallGraphView|"
 msgid "max. 10"
 msgstr "max. 10"
 
-#: libviews/callgraphview.cpp:2782 libviews/callgraphview.cpp:2822
+#: libviews/callgraphview.cpp:2809 libviews/callgraphview.cpp:2849
 #, fuzzy
 #| msgid "max. 15"
 msgctxt "CallGraphView|"
 msgid "max. 15"
 msgstr "max. 15"
 
-#: libviews/callgraphview.cpp:2813
+#: libviews/callgraphview.cpp:2840
 #, fuzzy
 #| msgid "Callee Depth"
 msgctxt "CallGraphView|"
 msgid "Callee Depth"
 msgstr "Opropen-Deepde"
 
-#: libviews/callgraphview.cpp:2853
+#: libviews/callgraphview.cpp:2880
 #, fuzzy
 #| msgid "Min. Node Cost"
 msgctxt "CallGraphView|"
 msgid "Min. Node Cost"
 msgstr "Sietst Knütt-Verbruuk"
 
-#: libviews/callgraphview.cpp:2854
+#: libviews/callgraphview.cpp:2881
 #, fuzzy
 #| msgid "No Minimum"
 msgctxt "CallGraphView|"
 msgid "No Minimum"
 msgstr "Keen Minimum"
 
-#: libviews/callgraphview.cpp:2860
+#: libviews/callgraphview.cpp:2887
 #, fuzzy
 #| msgid "50 %"
 msgctxt "CallGraphView|"
 msgid "50 %"
 msgstr "50 %"
 
-#: libviews/callgraphview.cpp:2861
+#: libviews/callgraphview.cpp:2888
 #, fuzzy
 #| msgid "20 %"
 msgctxt "CallGraphView|"
 msgid "20 %"
 msgstr "20 %"
 
-#: libviews/callgraphview.cpp:2862
+#: libviews/callgraphview.cpp:2889
 #, fuzzy
 #| msgid "10 %"
 msgctxt "CallGraphView|"
 msgid "10 %"
 msgstr "10 %"
 
-#: libviews/callgraphview.cpp:2863
+#: libviews/callgraphview.cpp:2890
 #, fuzzy
 #| msgid "5 %"
 msgctxt "CallGraphView|"
 msgid "5 %"
 msgstr "5 %"
 
-#: libviews/callgraphview.cpp:2864
+#: libviews/callgraphview.cpp:2891
 #, fuzzy
 #| msgid "2 %"
 msgctxt "CallGraphView|"
 msgid "2 %"
 msgstr "2 %"
 
-#: libviews/callgraphview.cpp:2865
+#: libviews/callgraphview.cpp:2892
 #, fuzzy
 #| msgid "1 %"
 msgctxt "CallGraphView|"
 msgid "1 %"
 msgstr "1 %"
 
-#: libviews/callgraphview.cpp:2895
+#: libviews/callgraphview.cpp:2922
 #, fuzzy
 #| msgid "Min. Call Cost"
 msgctxt "CallGraphView|"
 msgid "Min. Call Cost"
 msgstr "Sietst Oproop-Verbruuk"
 
-#: libviews/callgraphview.cpp:2896
+#: libviews/callgraphview.cpp:2923
 #, fuzzy
 #| msgid "Same as Node"
 msgctxt "CallGraphView|"
 msgid "Same as Node"
 msgstr "Liek as Knütt"
 
-#: libviews/callgraphview.cpp:2898
+#: libviews/callgraphview.cpp:2925
 #, fuzzy
 #| msgid "50 % of Node"
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
 msgstr "50% vun Knütt"
 
-#: libviews/callgraphview.cpp:2900
+#: libviews/callgraphview.cpp:2927
 #, fuzzy
 #| msgid "20 % of Node"
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
 msgstr "20% vun Knütt"
 
-#: libviews/callgraphview.cpp:2902
+#: libviews/callgraphview.cpp:2929
 #, fuzzy
 #| msgid "10 % of Node"
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
 msgstr "10% vun Knütt"
 
-#: libviews/callgraphview.cpp:2931
+#: libviews/callgraphview.cpp:2958
 #, fuzzy
 #| msgid "Birds-eye View"
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
 msgstr "Översicht"
 
-#: libviews/callgraphview.cpp:2932
+#: libviews/callgraphview.cpp:2959
 #, fuzzy
 #| msgid "Top Left"
 msgctxt "CallGraphView|"
 msgid "Top Left"
 msgstr "Baven links"
 
-#: libviews/callgraphview.cpp:2933
+#: libviews/callgraphview.cpp:2960
 #, fuzzy
 #| msgid "Top Right"
 msgctxt "CallGraphView|"
 msgid "Top Right"
 msgstr "Baven rechts"
 
-#: libviews/callgraphview.cpp:2934
+#: libviews/callgraphview.cpp:2961
 #, fuzzy
 #| msgid "Bottom Left"
 msgctxt "CallGraphView|"
 msgid "Bottom Left"
 msgstr "Nerrn links"
 
-#: libviews/callgraphview.cpp:2935
+#: libviews/callgraphview.cpp:2962
 #, fuzzy
 #| msgid "Bottom Right"
 msgctxt "CallGraphView|"
 msgid "Bottom Right"
 msgstr "Nerrn rechts"
 
-#: libviews/callgraphview.cpp:2936
+#: libviews/callgraphview.cpp:2963
 #, fuzzy
 #| msgid "Automatic"
 msgctxt "CallGraphView|"
 msgid "Automatic"
 msgstr "Automaatsch"
 
-#: libviews/callgraphview.cpp:2937
+#: libviews/callgraphview.cpp:2964
 #, fuzzy
 #| msgid "Hide"
 msgctxt "CallGraphView|"
 msgid "Hide"
 msgstr "Versteken"
 
-#: libviews/callgraphview.cpp:2967
+#: libviews/callgraphview.cpp:2994
 #, fuzzy
 #| msgid "Layout"
 msgctxt "CallGraphView|"
 msgid "Layout"
 msgstr "Utsehn"
 
-#: libviews/callgraphview.cpp:2968
+#: libviews/callgraphview.cpp:2995
 #, fuzzy
 #| msgid "Top to Down"
 msgctxt "CallGraphView|"
 msgid "Top to Down"
 msgstr "Baven na nerrn"
 
-#: libviews/callgraphview.cpp:2969
+#: libviews/callgraphview.cpp:2996
 #, fuzzy
 #| msgid "Left to Right"
 msgctxt "CallGraphView|"
 msgid "Left to Right"
 msgstr "Links na Rechts"
 
-#: libviews/callgraphview.cpp:2970
+#: libviews/callgraphview.cpp:2997
 #, fuzzy
 #| msgid "Circular"
 msgctxt "CallGraphView|"
 msgid "Circular"
 msgstr "Rund"
 
-#: libviews/callgraphview.cpp:3010 libviews/callgraphview.cpp:3015
-#: libviews/callgraphview.cpp:3035
+#: libviews/callgraphview.cpp:3037 libviews/callgraphview.cpp:3042
+#: libviews/callgraphview.cpp:3062
 #, fuzzy, qt-format
 #| msgid "Go to '%1'"
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
 msgstr "Na \"%1\" gahn"
 
-#: libviews/callgraphview.cpp:3046
+#: libviews/callgraphview.cpp:3073
 #, fuzzy
 #| msgid "Stop Layouting"
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
 msgstr "Utreken vun't Diagrammutsehn anhollen"
 
-#: libviews/callgraphview.cpp:3053
+#: libviews/callgraphview.cpp:3080
 #, fuzzy
 #| msgid "Export Graph"
 msgctxt "CallGraphView|"
 msgid "Export Graph"
 msgstr "Diagramm exporteren"
 
-#: libviews/callgraphview.cpp:3054
+#: libviews/callgraphview.cpp:3081
 #, fuzzy
 #| msgid "As DOT file..."
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
 msgstr "As DOT-Datei..."
 
-#: libviews/callgraphview.cpp:3055
+#: libviews/callgraphview.cpp:3082
 #, fuzzy
 #| msgid "As Image..."
 msgctxt "CallGraphView|"
 msgid "As Image..."
 msgstr "As Bild..."
 
-#: libviews/callgraphview.cpp:3058
+#: libviews/callgraphview.cpp:3085
 #, fuzzy
 #| msgid "Graph"
 msgctxt "CallGraphView|"
 msgid "Graph"
 msgstr "Grafik"
 
-#: libviews/callgraphview.cpp:3066
+#: libviews/callgraphview.cpp:3093
 #, fuzzy
 #| msgid "Arrows for Skipped Calls"
 msgctxt "CallGraphView|"
 msgid "Arrows for Skipped Calls"
 msgstr "Pielen för övergahn Oprööp"
 
-#: libviews/callgraphview.cpp:3071
+#: libviews/callgraphview.cpp:3098
 #, fuzzy
 #| msgid "Inner-cycle Calls"
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
 msgstr "Oprööp binnen Lööp"
 
-#: libviews/callgraphview.cpp:3076
+#: libviews/callgraphview.cpp:3103
 #, fuzzy
 #| msgid "Cluster Groups"
 msgctxt "CallGraphView|"
 msgid "Cluster Groups"
 msgstr "Koppeln tosamentrecken"
 
-#: libviews/callgraphview.cpp:3080
+#: libviews/callgraphview.cpp:3107
 #, fuzzy
 #| msgid "Visualization"
 msgctxt "CallGraphView|"
 msgid "Visualization"
 msgstr "Dorstellen"
 
-#: libviews/callgraphview.cpp:3081
+#: libviews/callgraphview.cpp:3108
 #, fuzzy
 #| msgid "Compact"
 msgctxt "CallGraphView|"
 msgid "Compact"
 msgstr "Drang"
 
-#: libviews/callgraphview.cpp:3084
+#: libviews/callgraphview.cpp:3111
 #, fuzzy
 #| msgid "Normal"
 msgctxt "CallGraphView|"
 msgid "Normal"
 msgstr "Normaal"
 
-#: libviews/callgraphview.cpp:3087
+#: libviews/callgraphview.cpp:3114
 #, fuzzy
 #| msgid "Tall"
 msgctxt "CallGraphView|"
 msgid "Tall"
 msgstr "Groot"
 
-#: libviews/callgraphview.cpp:3119
+#: libviews/callgraphview.cpp:3146
 #, fuzzy
 #| msgid "Export Graph As Image"
 msgctxt "CallGraphView|"
 msgid "Export Graph As Image"
 msgstr "Diagramm as Bild exporteren"
 
-#: libviews/callgraphview.cpp:3121
+#: libviews/callgraphview.cpp:3148
 #, fuzzy
 #| msgid "Images (*.png *.jpg)"
 msgctxt "CallGraphView|"
