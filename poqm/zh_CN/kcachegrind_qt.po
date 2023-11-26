@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
-"PO-Revision-Date: 2023-11-19 03:37\n"
+"PO-Revision-Date: 2023-11-25 02:26\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
 msgid "Import filter for Cachegrind/Callgrind generated profile data files"
-msgstr "导入 Cachegrind/Callgrind 配置文件中的筛选条件"
+msgstr "导入 Cachegrind/Callgrind 配置文件中的过滤条件"
 
 #: libcore/context.cpp:60
 msgctxt "ProfileContext|"
