@@ -1,19 +1,19 @@
 # translation of kcachegrind_qt.po to Slovak
 # Richard Fric <Richard.Fric@kdemail.net>, 2009.
-# Roman Paholík <wizzardsk@gmail.com>, 2012, 2013, 2015, 2016, 2017, 2022.
+# SPDX-FileCopyrightText: 2012, 2013, 2015, 2016, 2017, 2022, 2023 Roman Paholík <wizzardsk@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2022-04-09 19:19+0200\n"
+"PO-Revision-Date: 2023-12-05 17:21+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Qt-Contexts: true\n"
 
@@ -742,20 +742,6 @@ msgstr ""
 "funkcia (avšak, existujú obmedzenia vykreslenia).</p>"
 
 #: libviews/callmapview.cpp:106
-#, fuzzy
-#| msgctxt "CallMapView|"
-#| msgid ""
-#| "<p>Appearance options can be found in the in the context menu. To get "
-#| "exact size proportions, choose 'Hide incorrect borders'. As this mode can "
-#| "be <em>very</em> time consuming, you may want to limit the maximum drawn "
-#| "nesting level before. 'Best' determinates the split direction for "
-#| "children from the aspect ratio of the parent. 'Always Best' decides on "
-#| "remaining space for each sibling. 'Ignore Proportions' takes space for "
-#| "function name drawing <em>before</em> drawing children. Note that size "
-#| "proportions can get <em>heavily</em> wrong.</p><p>This is a <em>TreeMap</"
-#| "em> widget. Keyboard navigation is available with the left/right arrow "
-#| "keys for traversing siblings, and up/down arrow keys to go a nesting "
-#| "level up/down. <em>Return</em> activates the current item.</p>"
 msgctxt "CallMapView|"
 msgid ""
 "<p>Appearance options can be found in the context menu. To get exact size "
