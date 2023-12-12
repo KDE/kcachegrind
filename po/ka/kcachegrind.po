@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-08 01:18+0000\n"
-"PO-Revision-Date: 2023-02-03 16:35+0100\n"
+"PO-Revision-Date: 2023-12-11 23:32+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -61,7 +61,7 @@ msgstr "სიებში ჩანაწერების მაქსიმ�
 #: kcachegrind/configdlgbase.ui:44
 #, kde-format
 msgid "Truncate symbols in tooltips and context menus"
-msgstr ""
+msgstr "სიმბოლოების წაკვეთა მინიშნებებში და კონტექსტურ მენიუებში"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2)
 #: kcachegrind/configdlgbase.ui:70
@@ -85,13 +85,13 @@ msgstr "პროცენტული მაჩვენებლების �
 #: kcachegrind/configdlgbase.ui:113
 #, kde-format
 msgid "The Maximum Number of List Items should be below 500."
-msgstr ""
+msgstr "სიის ელემენტების მაქსიმალური რაოდენობა 500-ზე ნაკლები უნდა იყოს."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1)
 #: kcachegrind/configdlgbase.ui:158
 #, kde-format
 msgid "Cost Item Colors"
-msgstr ""
+msgstr "ფასის ჩანაწერის ფერი"
 
 #. i18n: ectx: property (text), widget (QCheckBox, fileCheck)
 #. i18n: ectx: property (text), widget (QCheckBox, classCheck)
@@ -130,7 +130,7 @@ msgstr "ანოტაციები"
 #: kcachegrind/configdlgbase.ui:329
 #, kde-format
 msgid "Context lines in annotations:"
-msgstr ""
+msgstr "კონტექსტური ხაზი ანოტაციებში:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
 #: kcachegrind/configdlgbase.ui:350
@@ -154,7 +154,7 @@ msgstr "წაშლა"
 #: kcachegrind/configdlgbase.ui:409
 #, kde-format
 msgid "Object / Related Source Base"
-msgstr ""
+msgstr "ობიექტი / შედარებითი წყაროს ბაზა"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
 #: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:296
@@ -459,13 +459,13 @@ msgstr "ზარები"
 #: kcachegrind/dumpselectionbase.ui:758
 #, kde-format
 msgid "Ir"
-msgstr ""
+msgstr "Ir"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:773
 #, kde-format
 msgid "Distinct"
-msgstr ""
+msgstr "განსხვავებული"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:786
@@ -507,7 +507,7 @@ msgstr "#"
 #: kcachegrind/dumpselectionbase.ui:876
 #, kde-format
 msgid "Incl."
-msgstr ""
+msgstr "ჩათვლ."
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
 #: kcachegrind/dumpselectionbase.ui:887
@@ -549,7 +549,7 @@ msgstr "შეტყობინებები"
 #: kcachegrind/dumpselectionbase.ui:985
 #, kde-format
 msgid "Kill Run"
-msgstr ""
+msgstr "შესრულების შეწყვეტა"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton8)
 #: kcachegrind/dumpselectionbase.ui:1008
@@ -591,7 +591,7 @@ msgstr "ხელსაწყოთა მთავარი ზოლი"
 #: kcachegrind/kcachegrindui.rc:54
 #, kde-format
 msgid "State Toolbar"
-msgstr ""
+msgstr "მდგომარეობის პანელი"
 
 #: kcachegrind/main.cpp:34
 #, kde-format
@@ -616,27 +616,27 @@ msgstr "Josef Weidendorfer"
 #: kcachegrind/main.cpp:41
 #, kde-format
 msgid "Author/Maintainer"
-msgstr ""
+msgstr "ავტორი/პროექტის წამყვანი"
 
 #: kcachegrind/main.cpp:68
 #, kde-format
 msgid "Show information of this trace"
-msgstr ""
+msgstr "ამ ტრეისის ინფორმაციის ჩვენება"
 
 #: kcachegrind/main.cpp:68
 #, kde-format
 msgid "[trace...]"
-msgstr ""
+msgstr "[ტრეისი...]"
 
 #: kcachegrind/toplevel.cpp:265 kcachegrind/toplevel.cpp:493
 #, kde-format
 msgid "Parts Overview"
-msgstr ""
+msgstr "ნაწილების მიმოხილვა"
 
 #: kcachegrind/toplevel.cpp:274
 #, kde-format
 msgid "Top Cost Call Stack"
-msgstr ""
+msgstr "უმაღლესი ღირებულების მქონე გამოძახების სტეკი"
 
 #: kcachegrind/toplevel.cpp:276
 #, kde-format
@@ -647,11 +647,16 @@ msgid ""
 "p><p>The <b>Cost</b> and <b>Calls</b> columns show the cost used for all "
 "calls from the function in the line above.</p>"
 msgstr ""
+"<b>უდიდესი ღირებულების გამოძახების სტეკი</b><p>ეს სუფთა ფიქტიურ 'ყველაზე "
+"მოსალოდნელი' გამოძახების სტეკია. ის აიგება ამჟამად არჩეული ფუნქციის გაშვებით "
+"და დაამატებს გამომძახებლებს/გამოძახებულებს უდიდესი ფასით ზემოდან ქვემოთ.</"
+"p><p><b>ფასის</b> და <b>გამოძახების</b> სვეტები აჩვენებს ღირებულებას, "
+"რომელიც გამოიყენება ყველა გამოძახებით ფუნქციიდან ერთი ხაზის ზემოთ.</p>"
 
 #: kcachegrind/toplevel.cpp:290
 #, kde-format
 msgid "Flat Profile"
-msgstr ""
+msgstr "ბრტყელი პროფილი"
 
 #: kcachegrind/toplevel.cpp:303
 #, kde-format
@@ -674,6 +679,25 @@ msgid ""
 "regularly poll these data. Check the <b>Sync</b> option to let the dockable "
 "activate the top function in the current loaded dump.</li></ul></p>"
 msgstr ""
+"<b>პროფილის დამპები</b><p>ეს მიმაგრებადი დიალოგი ნაჩვენებია ჩატვირთვადი "
+"პროფილის დამპების ზედა ნაწილში ყველა საქაღალდისთვის წყაროდან: "
+"<ul><li>KCachegrind-ის მიმდინარე სამუშაო საქაღალდე, ანუ, საიდანაც ის გაუშვით "
+"და </li><li>კონფიგურაციაში მითითებული ნაგულისხმევი პროფილების დამპის "
+"საქაღალდე.</li></ul>ეს სია შესაბამის დამპში სამიზნე ბრძანების მიერ მიეთითება."
+"</p><p>პროფილის დამპის მონიშვნისას მისი ინფორმაცია მიმაგრებადი დიალოგის "
+"ქვედა ნაწილში გამოჩნდება: <ul><li><b>პარამეტრები</b> საშუალებას გაძლევთ, "
+"ნახოთ დამპის პროფილის ბრძანება და მისი პარამეტრები. მათი შეცვლით, ახალი (ჯერ "
+"არარსებული) პროფილის ნიმუში იქმნება პროფილის, მითითებული პარამეტრებით "
+"ფონულრად გაშვებისთვის <b>პროფილის გაშვებას</b> დააწექით. </"
+"li><li><b>ინფორმაცია</b> გაძლევთ ისეთ დეტალებს მონიშნული დამპის შესახებ, "
+"როგორიცაა მოვლენის ღირებულების შეჯამება და სიმულირებული კეშის თვისებები. </"
+"li><li><b>მდგომარეობა</b>, მხოლოდ, ამჟამად მიმდინარე პროფილის "
+"გაშვებებისთვისაა ხელმისაწვდომი. დააწექით <b>განახლებას</b>, რათა იხილოთ "
+"გაშვების სხვადასხვა მთვლელები და სტეკის ტრეისი პროფილირებული პროგრამის "
+"მიმდინარე მდებარეობისთვის. ჩართეთ <b>ყველა</b> პარამეტრი, რომ KCachegrind-ს "
+"ამ მონაცემების რეგულარული გამოთხოვის უფლება მისცეთ. ჩართეთ "
+"<b>სინქრონიზაციის</b> პარამეტრი, რათა მიმაგრებად დიალოგში ჩატვირთულ დამპში "
+"ფუნქცია გააქტიურდეს.</li></ul></p>"
 
 #: kcachegrind/toplevel.cpp:374
 #, kde-format
@@ -685,6 +709,8 @@ msgstr "&დუბლირება"
 msgid ""
 "<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
 msgstr ""
+"<b>მიმდინარე განლაგების დუბლირება</b><p>მიმდინარე განლაგების ასლის შექმნა.</"
+"p>"
 
 #: kcachegrind/toplevel.cpp:382
 #, kde-format
@@ -697,6 +723,8 @@ msgid ""
 "<b>Remove Current Layout</b><p>Delete current layout and make the previous "
 "active.</p>"
 msgstr ""
+"<b>მიმდინარე განლაგების წაშლა</b><p>წაშლის მიმდინარე განლაგებას და აქტიურად "
+"წინას მონიშნავს.</p>"
 
 #: kcachegrind/toplevel.cpp:389
 #, kde-format
@@ -721,27 +749,27 @@ msgstr "წინა განლაგებაზე გადასვლა"
 #: kcachegrind/toplevel.cpp:403
 #, kde-format
 msgid "&Restore to Default"
-msgstr ""
+msgstr "&ნაგულისხმებ მნიშვნელობებზე აღდგენა"
 
 #: kcachegrind/toplevel.cpp:405
 #, kde-format
 msgid "Restore Layouts to Default"
-msgstr ""
+msgstr "განლაგებების ნაგულისხმებ მნიშვნელობებზე აღდგენა"
 
 #: kcachegrind/toplevel.cpp:409
 #, kde-format
 msgid "&Save as Default"
-msgstr ""
+msgstr "&ნაგულისხმებად შენახვა"
 
 #: kcachegrind/toplevel.cpp:411
 #, kde-format
 msgid "Save Layouts as Default"
-msgstr ""
+msgstr "განლაგებების ნაგულისხმებად შენახვა"
 
 #: kcachegrind/toplevel.cpp:422
 #, kde-format
 msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
-msgstr ""
+msgstr "<b>ახალი</b><p>KCachegrind-ის ახალი ცარიელი ფანჯრის გახსნა.</p>"
 
 #: kcachegrind/toplevel.cpp:426
 #, kde-format
@@ -754,6 +782,8 @@ msgid ""
 "<b>Add Profile Data</b><p>This opens an additional profile data file in the "
 "current window.</p>"
 msgstr ""
+"<b>პროფილის მონაცემების დამატება</b><p>ეს მიმდინარე ფანჯარაში დამატებითი "
+"პროფილის მონაცემების ფაილს გახსნის.</p>"
 
 #: kcachegrind/toplevel.cpp:434
 #, kde-format
@@ -765,11 +795,13 @@ msgstr "თავიდან ჩატვირთვა"
 #, kde-format
 msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
 msgstr ""
+"<b>პროფილის მონაცემების თავიდან ჩატვირთვა</b><p>ეს ყველა ახლად შექმნილ "
+"ნაწილსაც ჩატვირთავს.</p>"
 
 #: kcachegrind/toplevel.cpp:442
 #, kde-format
 msgid "&Export Graph"
-msgstr ""
+msgstr "&გრაფიკის გატანა"
 
 #: kcachegrind/toplevel.cpp:445
 #, kde-format
@@ -777,11 +809,13 @@ msgid ""
 "<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
 "tools of the GraphViz package.</p>"
 msgstr ""
+"<b>გამოძახებების გრაფიკის გატანა</b><p>აგენერირებს ფაილს გაფართოებით .dot "
+"პროგრამებისთვის GraphViz პაკეტიდან.</p>"
 
 #: kcachegrind/toplevel.cpp:453
 #, kde-format
 msgid "&Force Dump"
-msgstr ""
+msgstr "&ნაძალადევი დამპი"
 
 #: kcachegrind/toplevel.cpp:456
 #, kde-format
@@ -801,6 +835,20 @@ msgid ""
 "profiled GUI program, you can awake Callgrind e.g. by resizing a window of "
 "the program.</p>"
 msgstr ""
+"<b>ნაძალადევი დამპი</b><p>ეს ნაძალადევი დამპია Callgrind-ის პროფილისთვის "
+"მიმდინარე საქაღალდეში. ეს ქმედება ჩართულია, სანამ KCachegrind დამპს ეძებს. "
+"თუ დამპი დასრულებულია, ის ავტომატურად გადატვირთავს მიმდინარე ტრეისს. თუ ის "
+"გაშვებული Callgrind-დანაა, ახალი ტრეისიც ჩატვირთულის ნაწილი იქნება.</"
+"p><p>ნაძალადევი დამპი ქმნის ფაილს 'callgrind.cmd' და ამოწმებს წამში ერთხელ, "
+"არსებობს თუ არა ის. გაშვებული Callgrind ამას აღმოაჩენს, მოახდენს ტრეისის "
+"ნაწილის დამპს და წაშლის 'callgrind.cmd'-ს. ამ წაშლას აღმოაჩენს KCachegrind "
+"და ის თავიდან ჩაიტვირთება. თუ Callgrind გაშვებულ <em>არაა</em>, დააწექით "
+"'ნაძალადევ დამპს' კიდევ ერთხელ და დამპის მოთხოვნა გაუქმდება. ეს წაშლს ფაილს "
+"'callgrind.cmd' და შეწყვეტს ახალი დამპის ჩატვირთვას.</p><p>შენიშვნა; "
+"Callgrind-ის გაშვება, <em>მხოლოდ</em>, მაშინ აღმოაჩენს 'callgrind.cmd'-ს "
+"არსებობას, როცა რამდენიმე მილიწამი გაეშვება, ანუ, როცა <em>არ</em> სძინავს. "
+"მინიშნება. პროფილირებული გრაფიკული პროგრამისთვის, Callgrind-ის გაღვიძება, "
+"პროგრამის ფანჯრის ზომის შეცვლით შეგიძლიათ.</p>"
 
 #: kcachegrind/toplevel.cpp:481
 #, kde-format
@@ -808,11 +856,13 @@ msgid ""
 "<b>Open Profile Data</b><p>This opens a profile data file, with possible "
 "multiple parts</p>"
 msgstr ""
+"<b>პროფილის მონაცემების გახსნა</b><p>გახსის პროფილის მონაცემების ფაილს, "
+"შესაძლოა, ერთზე მეტი ნაწილითაც</p>"
 
 #: kcachegrind/toplevel.cpp:496
 #, kde-format
 msgid "Show/Hide the Parts Overview Dockable"
-msgstr ""
+msgstr "ნაწილების გადახედვის მიმაგრებადი ფანჯრის ჩვენება/დამალვა"
 
 #: kcachegrind/toplevel.cpp:501
 #, kde-format
@@ -822,22 +872,22 @@ msgstr "გამოძახების სტეკი"
 #: kcachegrind/toplevel.cpp:504
 #, kde-format
 msgid "Show/Hide the Call Stack Dockable"
-msgstr ""
+msgstr "გამოძახების სტეკის მიმაგრებადი ფანჯრის ჩვენება/დამალვა"
 
 #: kcachegrind/toplevel.cpp:509
 #, kde-format
 msgid "Function Profile"
-msgstr ""
+msgstr "ფუნქციის პროფილი"
 
 #: kcachegrind/toplevel.cpp:512
 #, kde-format
 msgid "Show/Hide the Function Profile Dockable"
-msgstr ""
+msgstr "ფუნქციის პროფილის მიმაგრებადი ფანჯრის ჩვენება/დამალვა"
 
 #: kcachegrind/toplevel.cpp:520
 #, kde-format
 msgid "Show/Hide the Profile Dumps Dockable"
-msgstr ""
+msgstr "პროფილის დამპის მიმაგრებადი ფანჯრის ჩვენება/დამალვა"
 
 #: kcachegrind/toplevel.cpp:527
 #, kde-format
@@ -847,17 +897,17 @@ msgstr "ფარდობითი"
 #: kcachegrind/toplevel.cpp:529
 #, kde-format
 msgid "Show relative instead of absolute costs"
-msgstr ""
+msgstr "შედარებითი ღირებულებების ჩვენება აბსოლუტურის მაგიერ"
 
 #: kcachegrind/toplevel.cpp:535
 #, kde-format
 msgid "Relative to Parent"
-msgstr ""
+msgstr "მშობელთან შედარდებით"
 
 #: kcachegrind/toplevel.cpp:538
 #, kde-format
 msgid "Show percentage costs relative to parent"
-msgstr ""
+msgstr "მშობლებთან შედარებით ღირებულებების პროცენტულად ჩვენება"
 
 #: kcachegrind/toplevel.cpp:542
 #, kde-format
@@ -873,11 +923,21 @@ msgid ""
 "table></ul><p>(*) Only if function grouping is switched on (e.g. ELF object "
 "grouping).</p>"
 msgstr ""
+"<b>ღირებულებების ჩვენება მშობელთან შედარებით</b><p>თუ ეს გამორთულია, "
+"პროცენტული ღირებულებები, ყოველთვის, ნაჩვენებია იმ პროფილის ნაწილების ჯამური "
+"ღირებულებებიდან, რომლებსაც ამჟამად ათვალიერებთ. ამ პარამეტრის ჩართვით "
+"ნაჩვენები ღირებულების ელემენტების პროცენტული ღირებულება მშობლის ღირებულების "
+"მიმართ იქნება ნაჩვენები.</p><ul><table><tr><td><b>ღირებულების ტიპი</b></"
+"td><td><b>მშობლის ღირებულება<b></td></tr><tr><td>ფუნქციის დამგროვებელი</"
+"td><td>ჯამი</td></tr><tr><td>თვითონ ფუნქცია</td><td>ფუნქცის ჯგუფი (*)/ჯამი</"
+"td></tr><tr><td>გამოძახება</td><td>ფუნქციის ინკლუზივი</td></tr><tr><td>კოდის "
+"ხაზი</td><td>ფუნქციის ინკლუზივი</td></tr></table></ul><p>(*) მხოლოდ, თუ "
+"ჩართულია ფუნქციების დაჯგუფება (მაგ: ELF ობიექტების დაჯგუფება).</p>"
 
 #: kcachegrind/toplevel.cpp:559
 #, kde-format
 msgid "Cycle Detection"
-msgstr ""
+msgstr "ციკლის აღმოჩენა"
 
 #: kcachegrind/toplevel.cpp:562
 #, kde-format
@@ -902,7 +962,7 @@ msgstr "ნიმუშების დამოკლება"
 #: kcachegrind/toplevel.cpp:580
 #, kde-format
 msgid "Hide Template Parameters in C++ Symbols"
-msgstr ""
+msgstr "C++-ის სიმბოლოებში შაბლონის პარამეტრების დამალვა"
 
 #: kcachegrind/toplevel.cpp:581
 #, kde-format
@@ -913,6 +973,12 @@ msgid ""
 "p><p>In this mode, you can hover the mouse pointer over the activated symbol "
 "label to show a tooltip with the unabbreviated symbol.</p>"
 msgstr ""
+"<b>C++-ის სიმბოლოებში შაბლონის პარამეტრების დამალვა</b><p>თუ ეს ჩართულია, "
+"ყველა ნაჩვენებ სიმბოლოს ყველა C++-ის შაბლონის პარამეტრები დამალული ექნება და "
+"მის მაგიერ &lt;&gt;-ს გაჩვენებთ და არა დიდი შანსით ერთმანეთში ჩალაგებულ "
+"შაბლონის პარამეტრს</p><p>ამ რეჟიმში შეგიძლიათ თაგუნას კურსორი აქტივირებულ "
+"სიმბოლოს ჭდეს გადაატაროთ და გაჩვენებთ შეუკვეცავი სიმბოლოს მქონე მინიშნებას.</"
+"p>"
 
 #: kcachegrind/toplevel.cpp:597
 #, kde-format
@@ -925,36 +991,40 @@ msgid ""
 "<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
 "was visited, use that with highest cost.</p>"
 msgstr ""
+"<b>მაღლა ასვლა</b><p>მიმდინარე ფუნქციის ბოლოს მონიშნულ გამომძახებელზე "
+"გადასვლა. თუ გამომძახებელზე არ გადასულხართ, გამოყენებული იქნება უმაღლესი "
+"ღირებულების მქონე.</p>"
 
 #: kcachegrind/toplevel.cpp:623
 #, kde-format
 msgid "Go back in function selection history"
-msgstr ""
+msgstr "ფუნქციის არჩევის ისტორიაში უკან დაბრუნება"
 
 #: kcachegrind/toplevel.cpp:637
 #, kde-format
 msgid "Go forward in function selection history"
-msgstr ""
+msgstr "ფუნქციის არჩევსის ისტორიაში შემდეგზე გადასვლა"
 
 #: kcachegrind/toplevel.cpp:642 kcachegrind/toplevel.cpp:1533
 #, kde-format
 msgid "Primary Event Type"
-msgstr ""
+msgstr "ძირითადი მოვლენის ტიპი"
 
 #: kcachegrind/toplevel.cpp:643
 #, kde-format
 msgid "Select primary event type of costs"
-msgstr ""
+msgstr "აირჩიეთ ღირებულებების ძირითადი მოვლენის ტიპი"
 
 #: kcachegrind/toplevel.cpp:670 kcachegrind/toplevel.cpp:1538
 #, kde-format
 msgid "Secondary Event Type"
-msgstr ""
+msgstr "დახმამრე მოვლენის ტიპი"
 
 #: kcachegrind/toplevel.cpp:671
 #, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
 msgstr ""
+"აირჩეთ დამხმარე მოვლენის ტიპი ღირებულებისთვის. მაგ: ანოტაციებში ნაჩვენები"
 
 #: kcachegrind/toplevel.cpp:685
 #, kde-format
@@ -964,12 +1034,12 @@ msgstr "დაჯგუფება"
 #: kcachegrind/toplevel.cpp:687
 #, kde-format
 msgid "Select how functions are grouped into higher level cost items"
-msgstr ""
+msgstr "აირჩიეთ, როგორ ჯგუფდება ფუნქციები უფრო მაღალი ღირებულების ელემენტებში"
 
 #: kcachegrind/toplevel.cpp:693
 #, kde-format
 msgid "(No Grouping)"
-msgstr ""
+msgstr "(დაჯგუფების გარეშე)"
 
 #: kcachegrind/toplevel.cpp:710
 #, kde-format
@@ -979,7 +1049,7 @@ msgstr "გაყოფა"
 #: kcachegrind/toplevel.cpp:713
 #, kde-format
 msgid "Show two information panels"
-msgstr ""
+msgstr "ორი ინფორმაციის პანელის ჩვენება"
 
 #: kcachegrind/toplevel.cpp:719
 #, kde-format
@@ -989,17 +1059,19 @@ msgstr "ჰორიზონტალურად გაყოფა"
 #: kcachegrind/toplevel.cpp:722
 #, kde-format
 msgid "Change Split Orientation when main window is split."
-msgstr ""
+msgstr "გაყოფის ორიენტაციის შეცვლა, როცა მთავარი ფანჯარა გაიყოფა."
 
 #: kcachegrind/toplevel.cpp:919
 #, kde-format
 msgid "Select Callgrind Profile Data"
-msgstr ""
+msgstr "არჩიეთ Callgrind-ის პროფილის მონაცემები"
 
 #: kcachegrind/toplevel.cpp:921 kcachegrind/toplevel.cpp:989
 #, kde-format
 msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
 msgstr ""
+"Callgrind-ის პროფილის მონაცემები (cachegrind.out* callgrind.out*);;ყველა "
+"ფაილი (*)"
 
 #: kcachegrind/toplevel.cpp:949 kcachegrind/toplevel.cpp:978
 #, kde-format
@@ -1007,16 +1079,17 @@ msgid ""
 "Could not open the file \"%1\". Check it exists and you have enough "
 "permissions to read it."
 msgstr ""
+"ფაილი \"%1\" ვერ გავხსენი. შეამოწმეთ ფაილის არსებობა და თქენი წვდომები მასზე."
 
 #: kcachegrind/toplevel.cpp:987
 #, kde-format
 msgid "Add Callgrind Profile Data"
-msgstr ""
+msgstr "Callgrind-ის პროფილის მონაცემების დამატება"
 
 #: kcachegrind/toplevel.cpp:1157 kcachegrind/toplevel.cpp:1486
 #, kde-format
 msgid "(Hidden)"
-msgstr ""
+msgstr "(დამალული)"
 
 #: kcachegrind/toplevel.cpp:1543
 #, kde-format
@@ -1026,12 +1099,12 @@ msgstr "დამალვა"
 #: kcachegrind/toplevel.cpp:1585
 #, kde-format
 msgid "Show Absolute Cost"
-msgstr ""
+msgstr "აბსოლუტური ღირებულებს ჩვენება"
 
 #: kcachegrind/toplevel.cpp:1588
 #, kde-format
 msgid "Show Relative Cost"
-msgstr ""
+msgstr "შედარებითი ღირებულების ჩვენება"
 
 #: kcachegrind/toplevel.cpp:1620
 #, kde-format
@@ -1051,53 +1124,53 @@ msgstr "მაღლა ასვლა"
 #: kcachegrind/toplevel.cpp:1834
 #, kde-format
 msgid "Layout Count: %1"
-msgstr ""
+msgstr "განლაგების რაოდენობა %1"
 
 #: kcachegrind/toplevel.cpp:1841
 #, kde-format
 msgid "No profile data file loaded."
-msgstr ""
+msgstr "პროფილის მონაცემები ჩატვირთული არაა."
 
 #: kcachegrind/toplevel.cpp:1850
 #, kde-format
 msgid "Total %1 Cost: %2"
-msgstr ""
+msgstr "სრული %1 ღირებულება: %2"
 
 #: kcachegrind/toplevel.cpp:1862
 #, kde-format
 msgid "No event type selected"
-msgstr ""
+msgstr "მოვლენის ტიპი არჩეული არაა"
 
 #: kcachegrind/toplevel.cpp:2052
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
-msgstr ""
+msgstr "დამპის მოთხოვნის მიმღების PID-ის გარკვევა შეუძლებელია"
 
 #: kcachegrind/toplevel.cpp:2098
 #, kde-format
 msgid "Error running callgrind_control"
-msgstr ""
+msgstr "შეცდომა callgrind_control-ის შესრულებისას"
 
 #: kcachegrind/toplevel.cpp:2137 kcachegrind/toplevel.cpp:2174
 #: kcachegrind/toplevel.cpp:2211
 #, kde-format
 msgid "(No Stack)"
-msgstr ""
+msgstr "(სტეკის გარეშე)"
 
 #: kcachegrind/toplevel.cpp:2143
 #, kde-format
 msgid "(No next function)"
-msgstr ""
+msgstr "(შემდეგი ფუნქციის გარეშე)"
 
 #: kcachegrind/toplevel.cpp:2180
 #, kde-format
 msgid "(No previous function)"
-msgstr ""
+msgstr "(წინა ფუნქციის გარეშე)"
 
 #: kcachegrind/toplevel.cpp:2216
 #, kde-format
 msgid "(No Function Up)"
-msgstr ""
+msgstr "(ზედა ფუნქციის გარეშე)"
 
 #: kcachegrind/toplevel.cpp:2348 kcachegrind/toplevel.cpp:2362
 #, kde-format
@@ -1107,7 +1180,7 @@ msgstr "ჩატვირთვა: %1"
 #: kcachegrind/toplevel.cpp:2356
 #, kde-format
 msgid "Error loading %1: %2"
-msgstr ""
+msgstr "%1-ის ჩატვირთვის შეცდომა: %2"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:2
