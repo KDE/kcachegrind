@@ -1,3 +1,4 @@
+# SPDX-FileCopyrightText: 2023 Johannes Obermayr <johannesobermayr@gmx.de>
 # Sebastian Stein <seb.kde@hpfsc.de>, 2003.
 # Josef Weidendorfer <Josef.Weidendorfer@gmx.de>, 2003, 2005.
 # Stephan Johach <hunsum@gmx.de>, 2003, 2005.
@@ -20,6 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 24.01.85\n"
 "X-Qt-Contexts: true\n"
 
 #: libcore/cachegrindloader.cpp:135
