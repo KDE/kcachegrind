@@ -265,7 +265,7 @@ msgstr "Arreplega"
 #: kcachegrind/dumpselectionbase.ui:230
 #, kde-format
 msgid "At Startup"
-msgstr "A l'inici"
+msgstr "En l'inici"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:244
