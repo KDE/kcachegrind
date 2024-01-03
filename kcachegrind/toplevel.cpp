@@ -45,6 +45,7 @@
 #include <KStandardShortcut>
 #include <KStandardAction>
 #include <KIO/Job>
+#include <KIO/FileCopyJob>
 #include <KJobWidgets>
 #include <KEditToolBar>
 #include <KShortcutsDialog>
