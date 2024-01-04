@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2023-11-03 23:51+0100\n"
+"PO-Revision-Date: 2024-01-03 14:52+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -646,7 +646,7 @@ msgstr "Kiel Bildo..."
 #: libviews/callgraphview.cpp:3085
 msgctxt "CallGraphView|"
 msgid "Graph"
-msgstr "Grafo"
+msgstr "Grafeo"
 
 #: libviews/callgraphview.cpp:3093
 msgctxt "CallGraphView|"

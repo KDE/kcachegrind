@@ -4,13 +4,13 @@
 # Translators:
 # obsoleteman <tulliana@gmail.com>, 2009,2012.
 # Volkan Gezer <volkangezer@gmail.com>, 2014.
-# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdesdk-kde4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2023-12-27 13:00+0300\n"
+"PO-Revision-Date: 2024-01-03 23:02+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -391,13 +391,13 @@ msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
 "Reduce node/edge limits for speedup.\n"
 msgstr ""
-"Uyarı: uzun sürecek grafik düzeni işleniyor.\n"
-"Hızlanması için düğüm/kenarları limitleri indirgeyebilirsiniz.\n"
+"Uyarı: Uzunca sürecek grafik yerleştirimi başladı.\n"
+"Hızlanması için düğüm/kenarlar sınırlarını azaltın.\n"
 
 #: libviews/callgraphview.cpp:2023
 msgctxt "CallGraphView|"
 msgid "Layouting stopped.\n"
-msgstr "Düzenleme durduruldu.\n"
+msgstr "Yerleştirme durduruldu.\n"
 
 #: libviews/callgraphview.cpp:2025
 #, qt-format
@@ -408,9 +408,7 @@ msgstr "Cağrılan grafik %1 adet düğüme ve %2 adet kenare sahiptir.\n"
 #: libviews/callgraphview.cpp:2034
 msgctxt "CallGraphView|"
 msgid "No graph available because the layouting process failed.\n"
-msgstr ""
-"Hiç bir grafik kullanılabilir değildir çünkü düzenleme işlemi başarısız "
-"oldu.\n"
+msgstr "Kullanılabilir grafik yok; çünkü yerleştirme işlemi başarısız oldu.\n"
 
 #: libviews/callgraphview.cpp:2036
 #, qt-format
@@ -442,7 +440,7 @@ msgstr "Etkin öge için hiçbir çağrı grafiği çizilemez."
 #: libviews/callgraphview.cpp:2554
 msgctxt "CallGraphView|"
 msgid "Error running the graph layouting tool.\n"
-msgstr "Grafiksel düzen aracı çalıştırılırken hata oluştu.\n"
+msgstr "Grafik yerleştirme aracı çalıştırılırken hata oluştu.\n"
 
 #: libviews/callgraphview.cpp:2559
 #, qt-format
@@ -604,7 +602,7 @@ msgstr "Gizle"
 #: libviews/callgraphview.cpp:2994
 msgctxt "CallGraphView|"
 msgid "Layout"
-msgstr "Düzen"
+msgstr "Yerleşim"
 
 #: libviews/callgraphview.cpp:2995
 msgctxt "CallGraphView|"
@@ -631,7 +629,7 @@ msgstr "'%1' ögesine git"
 #: libviews/callgraphview.cpp:3073
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
-msgstr "Düzeni durdur"
+msgstr "Yerleştirmeyi Durdur"
 
 #: libviews/callgraphview.cpp:3080
 msgctxt "CallGraphView|"

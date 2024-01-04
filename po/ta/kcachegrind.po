@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-29 01:39+0000\n"
+"POT-Creation-Date: 2024-01-04 01:36+0000\n"
 "PO-Revision-Date: 2004-08-06 04:49-0800\n"
 "Last-Translator: Tamil PC <tamilpc@ambalam.com>\n"
 "Language-Team:  <ta@li.org>\n"
@@ -168,8 +168,8 @@ msgid "Object / Related Source Base"
 msgstr "பொருள்/ இணைக்கப்பட்ட மூல தளம்"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
-#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:285
-#: kcachegrind/toplevel.cpp:508
+#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:286
+#: kcachegrind/toplevel.cpp:509
 #, kde-format
 msgid "Profile Dumps"
 msgstr "குறிப்புரை திணிப்புகள்"
@@ -641,17 +641,17 @@ msgstr "இந்த சுவடில்  தகவல்களை காட�
 msgid "[trace...]"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:254 kcachegrind/toplevel.cpp:482
+#: kcachegrind/toplevel.cpp:255 kcachegrind/toplevel.cpp:483
 #, kde-format
 msgid "Parts Overview"
 msgstr "பிரிவுச் சுவடு மேற்பார்வை"
 
-#: kcachegrind/toplevel.cpp:263
+#: kcachegrind/toplevel.cpp:264
 #, kde-format
 msgid "Top Cost Call Stack"
 msgstr "அதிக விலை அழை அடுக்கு "
 
-#: kcachegrind/toplevel.cpp:265
+#: kcachegrind/toplevel.cpp:266
 #, kde-format
 msgid ""
 "<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most probable' "
@@ -666,12 +666,12 @@ msgstr ""
 "b>அழைப்புகள் மேல் கோட்டில் உள்ள செயல்கூறில் இருந்த நெடுக்கைகள் எல்லா அழைப்பிற்கும் "
 "உபயோகிக்கப்பட்ட மதிப்பை.</p>"
 
-#: kcachegrind/toplevel.cpp:279
+#: kcachegrind/toplevel.cpp:280
 #, kde-format
 msgid "Flat Profile"
 msgstr "சமமான குறிப்புரை"
 
-#: kcachegrind/toplevel.cpp:292
+#: kcachegrind/toplevel.cpp:293
 #, fuzzy, kde-format
 #| msgid ""
 #| "<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
@@ -728,24 +728,24 @@ msgstr ""
 "தேர்ந்தெடுக்கவும். <b>ஒத்தசைவு</b> விருப்பத்தை தற்போதைய திணிப்பின் காரணியை மேல் "
 "செயல்படுத்தும் இணைப்பதற்கு தேர்ந்தெடு.</ul></p>"
 
-#: kcachegrind/toplevel.cpp:363
+#: kcachegrind/toplevel.cpp:364
 #, kde-format
 msgid "&Duplicate"
 msgstr "&நகல்"
 
-#: kcachegrind/toplevel.cpp:366
+#: kcachegrind/toplevel.cpp:367
 #, kde-format
 msgid ""
 "<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
 msgstr ""
 "<b>தற்போதைய படிவெடு வடிவமைப்பு</b><p>தற்போதைய படிவெடு வடிவமைப்பு நகலெடு.</p>"
 
-#: kcachegrind/toplevel.cpp:371
+#: kcachegrind/toplevel.cpp:372
 #, kde-format
 msgid "&Remove"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:373
+#: kcachegrind/toplevel.cpp:374
 #, kde-format
 msgid ""
 "<b>Remove Current Layout</b><p>Delete current layout and make the previous "
@@ -754,57 +754,57 @@ msgstr ""
 "<b>தற்போதைய வடிவமைப்பை அகற்று</b><p>தற்போதைய வடிவமைப்பை அகற்றி முன்னிருந்ததை "
 "செயல்படுத்து.</p>"
 
-#: kcachegrind/toplevel.cpp:378
+#: kcachegrind/toplevel.cpp:379
 #, kde-format
 msgid "&Go to Next"
 msgstr "அடுத்து செல்"
 
-#: kcachegrind/toplevel.cpp:381
+#: kcachegrind/toplevel.cpp:382
 #, kde-format
 msgid "Go to Next Layout"
 msgstr "அடுத்த வடிவமைப்பிற்கு செல்"
 
-#: kcachegrind/toplevel.cpp:385
+#: kcachegrind/toplevel.cpp:386
 #, kde-format
 msgid "&Go to Previous"
 msgstr "&முந்தைய பகுதிக்குச் செல்"
 
-#: kcachegrind/toplevel.cpp:388
+#: kcachegrind/toplevel.cpp:389
 #, kde-format
 msgid "Go to Previous Layout"
 msgstr "முந்தைய பகுதியின் வடிவமைப்பிற்குச் செல்"
 
-#: kcachegrind/toplevel.cpp:392
+#: kcachegrind/toplevel.cpp:393
 #, kde-format
 msgid "&Restore to Default"
 msgstr "&முன்னிருப்பை மீள்சேர்"
 
-#: kcachegrind/toplevel.cpp:394
+#: kcachegrind/toplevel.cpp:395
 #, kde-format
 msgid "Restore Layouts to Default"
 msgstr "முன்னிருப்பு வடிவமைப்பை மீள்சேர்"
 
-#: kcachegrind/toplevel.cpp:398
+#: kcachegrind/toplevel.cpp:399
 #, kde-format
 msgid "&Save as Default"
 msgstr "&முன்னிருப்பை சேமி"
 
-#: kcachegrind/toplevel.cpp:400
+#: kcachegrind/toplevel.cpp:401
 #, kde-format
 msgid "Save Layouts as Default"
 msgstr "முன்னிருப்பு வடிவமைப்பை சேமி"
 
-#: kcachegrind/toplevel.cpp:411
+#: kcachegrind/toplevel.cpp:412
 #, kde-format
 msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
 msgstr "<b>புதிய</b><p>புதிய காலியான KCachegrind சாளரத்தை திறக்கவும்.</p>"
 
-#: kcachegrind/toplevel.cpp:415
+#: kcachegrind/toplevel.cpp:416
 #, kde-format
 msgid "&Add..."
 msgstr "&கூட்டு..."
 
-#: kcachegrind/toplevel.cpp:417
+#: kcachegrind/toplevel.cpp:418
 #, kde-format
 msgid ""
 "<b>Add Profile Data</b><p>This opens an additional profile data file in the "
@@ -813,24 +813,24 @@ msgstr ""
 "<b>விவரக்குறிப்பு தகவலை சேர்</b><p>இவை மேற்கூட்டு விவரக்குறிப்பு தகவலை தற்போதைய "
 "சாளரத்தில் திறக்கும்.</p>"
 
-#: kcachegrind/toplevel.cpp:423
+#: kcachegrind/toplevel.cpp:424
 #, kde-format
 msgctxt "Reload a document"
 msgid "&Reload"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:426
+#: kcachegrind/toplevel.cpp:427
 #, kde-format
 msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
 msgstr ""
 "<b>மறுயேற்று தேடுதல்</b><p>இது எந்த புதிய உருவாக்கப்பட்ட பாகங்களையும் ஏற்றுகிறது.</p>"
 
-#: kcachegrind/toplevel.cpp:431
+#: kcachegrind/toplevel.cpp:432
 #, kde-format
 msgid "&Export Graph"
 msgstr "&வடிகட்டியை ஏற்றுமதி செய்"
 
-#: kcachegrind/toplevel.cpp:434
+#: kcachegrind/toplevel.cpp:435
 #, kde-format
 msgid ""
 "<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
@@ -839,12 +839,12 @@ msgstr ""
 "<b>அழைப்பு வரைப்படத்தை ஏற்றுமதி செய்</b><p>.dot என்ற பின்குறியோடு ஆவணத்தை உருவாக்கும் "
 "GraphViz பாக்கேஜ்ஜின் கருவிகளுக்கு.</p>"
 
-#: kcachegrind/toplevel.cpp:442
+#: kcachegrind/toplevel.cpp:443
 #, kde-format
 msgid "&Force Dump"
 msgstr "&சக்தி திணிப்பு"
 
-#: kcachegrind/toplevel.cpp:445
+#: kcachegrind/toplevel.cpp:446
 #, fuzzy, kde-format
 msgid ""
 "<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
@@ -877,66 +877,66 @@ msgstr ""
 "டு. சாளர நிரலின் அளவை மாற்றுவதன் மூலம் அறியலாம்.</p><p>குறிப்பு: உங்களுக்கு அழைக்கும்-"
 "மரம் பதிப்பு தேவை!</p>"
 
-#: kcachegrind/toplevel.cpp:470
+#: kcachegrind/toplevel.cpp:471
 #, kde-format
 msgid ""
 "<b>Open Profile Data</b><p>This opens a profile data file, with possible "
 "multiple parts</p>"
 msgstr "<b>சுவடை திற</b><p>இது சுவடை திறக்கக்கூடிய,பல பாகங்களுடன் திறக்கும்</p>"
 
-#: kcachegrind/toplevel.cpp:485
+#: kcachegrind/toplevel.cpp:486
 #, kde-format
 msgid "Show/Hide the Parts Overview Dockable"
 msgstr "காட்டு/மறை மேற்பார்வையிடக்கூடிய பாகங்களை தடமிடு"
 
-#: kcachegrind/toplevel.cpp:490
+#: kcachegrind/toplevel.cpp:491
 #, kde-format
 msgid "Call Stack"
 msgstr "அழை அடுக்கு "
 
-#: kcachegrind/toplevel.cpp:493
+#: kcachegrind/toplevel.cpp:494
 #, kde-format
 msgid "Show/Hide the Call Stack Dockable"
 msgstr "காட்டு/மறை மேல் அழை அடுக்கு"
 
-#: kcachegrind/toplevel.cpp:498
+#: kcachegrind/toplevel.cpp:499
 #, kde-format
 msgid "Function Profile"
 msgstr "செயல்பாடு குறிப்பெடுப்பு"
 
-#: kcachegrind/toplevel.cpp:501
+#: kcachegrind/toplevel.cpp:502
 #, kde-format
 msgid "Show/Hide the Function Profile Dockable"
 msgstr "காட்டு/மறை பயன்பாடுக் குறிப்பேடு"
 
-#: kcachegrind/toplevel.cpp:509
+#: kcachegrind/toplevel.cpp:510
 #, kde-format
 msgid "Show/Hide the Profile Dumps Dockable"
 msgstr "காட்டு/மறை Profile Dumps Dockable"
 
-#: kcachegrind/toplevel.cpp:516
+#: kcachegrind/toplevel.cpp:517
 #, fuzzy, kde-format
 #| msgid "(active)"
 msgid "Relative"
 msgstr "(செயல்)"
 
-#: kcachegrind/toplevel.cpp:518
+#: kcachegrind/toplevel.cpp:519
 #, kde-format
 msgid "Show relative instead of absolute costs"
 msgstr "சரியான செலவையன்றி தொடர்புடைய செலவை காட்டு"
 
-#: kcachegrind/toplevel.cpp:524
+#: kcachegrind/toplevel.cpp:525
 #, fuzzy, kde-format
 #| msgid "Percentage Relative to Parent"
 msgid "Relative to Parent"
 msgstr "பெற்றோருடன் தொடர்புடைய விழுக்காடு"
 
-#: kcachegrind/toplevel.cpp:527
+#: kcachegrind/toplevel.cpp:528
 #, kde-format
 msgid "Show percentage costs relative to parent"
 msgstr "பெற்றோருடன் தொடர்புடைய செலவு விழுக்காட்டை காட்டு"
 
-#: kcachegrind/toplevel.cpp:531
+#: kcachegrind/toplevel.cpp:532
 #, fuzzy, kde-format
 #| msgid ""
 #| "<b>Show percentage costs relative to parent</b><p>If this is switched "
@@ -970,13 +970,13 @@ msgstr ""
 "tr><tr><td>மூல கோடு</td><td>கூட்டு காரணி</td></tr></table><p>(*) காரணிக் குழு "
 "நிறுத்தப்பட்டிருக்கும் போது மட்டும் (எ.டு. ELF பொருள் குழு)."
 
-#: kcachegrind/toplevel.cpp:548
+#: kcachegrind/toplevel.cpp:549
 #, fuzzy, kde-format
 #| msgid "Do Cycle Detection"
 msgid "Cycle Detection"
 msgstr "சுழற் கண்டுபிடிப்பு செய்"
 
-#: kcachegrind/toplevel.cpp:551
+#: kcachegrind/toplevel.cpp:552
 #, fuzzy, kde-format
 #| msgid ""
 #| "<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
@@ -1010,17 +1010,17 @@ msgstr ""
 "GUI பயன்பாடுகளுடன், இது எப்பொழுதாவது தவறான சுழற்சியில் செல்லும், கண்டுபிடிப்பது "
 "முடியாது; அதனால், இது நிறுத்த தேர்வு உள்ளது."
 
-#: kcachegrind/toplevel.cpp:567
+#: kcachegrind/toplevel.cpp:568
 #, kde-format
 msgid "Shorten Templates"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:569
+#: kcachegrind/toplevel.cpp:570
 #, kde-format
 msgid "Hide Template Parameters in C++ Symbols"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:570
+#: kcachegrind/toplevel.cpp:571
 #, kde-format
 msgid ""
 "<b>Hide Template Parameters in C++ Symbols</b><p>If this is switched on, "
@@ -1030,12 +1030,12 @@ msgid ""
 "label to show a tooltip with the unabbreviated symbol.</p>"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:586
+#: kcachegrind/toplevel.cpp:587
 #, kde-format
 msgid "&Up"
 msgstr "&மேல்"
 
-#: kcachegrind/toplevel.cpp:595
+#: kcachegrind/toplevel.cpp:596
 #, kde-format
 msgid ""
 "<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
@@ -1044,186 +1044,186 @@ msgstr ""
 "<b>மேலே செல்</b><p>நடப்பு செயற்கூறின் கடைசியாக தேர்ந்தெடுக்கப்பட்ட அழைப்பவருக்கு செல். "
 "அழைப்பவரை பார்க்கவில்லை எனில், உயர்ந்த விலையுடன் அதை பயன்படுத்து</p>"
 
-#: kcachegrind/toplevel.cpp:612
+#: kcachegrind/toplevel.cpp:613
 #, kde-format
 msgid "Go back in function selection history"
 msgstr "செயல் தேர்வு வரலாற்றில் பின் செல்"
 
-#: kcachegrind/toplevel.cpp:626
+#: kcachegrind/toplevel.cpp:627
 #, kde-format
 msgid "Go forward in function selection history"
 msgstr "செயற்கூறு தேர்ந்தெடுத்த வரலாற்றின் முன்னே செல்"
 
-#: kcachegrind/toplevel.cpp:631 kcachegrind/toplevel.cpp:1504
+#: kcachegrind/toplevel.cpp:632 kcachegrind/toplevel.cpp:1505
 #, kde-format
 msgid "Primary Event Type"
 msgstr "முதன்மை நிகழ்வு வகை"
 
-#: kcachegrind/toplevel.cpp:632
+#: kcachegrind/toplevel.cpp:633
 #, kde-format
 msgid "Select primary event type of costs"
 msgstr "முதன்மை நிகழ்வு வகை விலையை தேர்ந்தெடு"
 
-#: kcachegrind/toplevel.cpp:654 kcachegrind/toplevel.cpp:1509
+#: kcachegrind/toplevel.cpp:655 kcachegrind/toplevel.cpp:1510
 #, kde-format
 msgid "Secondary Event Type"
 msgstr "இரண்டாவது நிகழ்வு வகை"
 
-#: kcachegrind/toplevel.cpp:655
+#: kcachegrind/toplevel.cpp:656
 #, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
 msgstr "இரண்டாம் வகை நிகழ்வுகளின் விலை எ.டு. அன்னடேஸன் காட்டப்படுதல்"
 
-#: kcachegrind/toplevel.cpp:664
+#: kcachegrind/toplevel.cpp:665
 #, kde-format
 msgid "Grouping"
 msgstr "குழுவாக்கம் "
 
-#: kcachegrind/toplevel.cpp:666
+#: kcachegrind/toplevel.cpp:667
 #, kde-format
 msgid "Select how functions are grouped into higher level cost items"
 msgstr ""
 "உயர்ந்த நிலை விலை உருப்படிகளுக்கு எப்படி செயற்கூறுகள் குழுக்களாகின்றன என்பதை தேர்ந்தெடு. "
 
-#: kcachegrind/toplevel.cpp:672
+#: kcachegrind/toplevel.cpp:673
 #, kde-format
 msgid "(No Grouping)"
 msgstr "(குழுவாக்கம் இல்லை)"
 
-#: kcachegrind/toplevel.cpp:684
+#: kcachegrind/toplevel.cpp:685
 #, kde-format
 msgid "Split"
 msgstr "பிரி "
 
-#: kcachegrind/toplevel.cpp:687
+#: kcachegrind/toplevel.cpp:688
 #, kde-format
 msgid "Show two information panels"
 msgstr "இரண்டு தகவல் பலகத்தினை காட்டு"
 
-#: kcachegrind/toplevel.cpp:693
+#: kcachegrind/toplevel.cpp:694
 #, kde-format
 msgid "Split Horizontal"
 msgstr "கிடைக்கையை பிரி "
 
-#: kcachegrind/toplevel.cpp:696
+#: kcachegrind/toplevel.cpp:697
 #, fuzzy, kde-format
 msgid "Change Split Orientation when main window is split."
 msgstr "முதன்மை சாளரத்தை பிரிக்கும் போது பிரி திசையமைவை மாற்று"
 
-#: kcachegrind/toplevel.cpp:890
+#: kcachegrind/toplevel.cpp:891
 #, fuzzy, kde-format
 msgid "Select Callgrind Profile Data"
 msgstr "கெஸ்கிரின்ட் குறிப்பீட்டு சுவடினை தேர்ந்தெடு"
 
-#: kcachegrind/toplevel.cpp:892 kcachegrind/toplevel.cpp:960
+#: kcachegrind/toplevel.cpp:893 kcachegrind/toplevel.cpp:961
 #, fuzzy, kde-format
 msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
 msgstr "கெஸ்கிரின்ட்.வெளியே *கெஸ்கிரிட் குறிப்பேடு தகவல்"
 
-#: kcachegrind/toplevel.cpp:920 kcachegrind/toplevel.cpp:949
+#: kcachegrind/toplevel.cpp:921 kcachegrind/toplevel.cpp:950
 #, kde-format
 msgid ""
 "Could not open the file \"%1\". Check it exists and you have enough "
 "permissions to read it."
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:958
+#: kcachegrind/toplevel.cpp:959
 #, fuzzy, kde-format
 msgid "Add Callgrind Profile Data"
 msgstr "K கெஸ்கிரின்ட் குறிப்பீட்டு தகவல் சேர்"
 
-#: kcachegrind/toplevel.cpp:1128 kcachegrind/toplevel.cpp:1457
+#: kcachegrind/toplevel.cpp:1129 kcachegrind/toplevel.cpp:1458
 #, kde-format
 msgid "(Hidden)"
 msgstr "(தகவலை மறை)"
 
-#: kcachegrind/toplevel.cpp:1514
+#: kcachegrind/toplevel.cpp:1515
 #, kde-format
 msgid "Hide"
 msgstr "மறை "
 
-#: kcachegrind/toplevel.cpp:1556
+#: kcachegrind/toplevel.cpp:1557
 #, kde-format
 msgid "Show Absolute Cost"
 msgstr "நிஜ செலவீனங்களை காட்டு"
 
-#: kcachegrind/toplevel.cpp:1559
+#: kcachegrind/toplevel.cpp:1560
 #, kde-format
 msgid "Show Relative Cost"
 msgstr "சார்ந்த செலவீனங்களை காட்டு"
 
-#: kcachegrind/toplevel.cpp:1591
+#: kcachegrind/toplevel.cpp:1592
 #, kde-format
 msgid "Go Back"
 msgstr "பின் போ"
 
-#: kcachegrind/toplevel.cpp:1592
+#: kcachegrind/toplevel.cpp:1593
 #, kde-format
 msgid "Go Forward"
 msgstr "முன் செல்"
 
-#: kcachegrind/toplevel.cpp:1593
+#: kcachegrind/toplevel.cpp:1594
 #, kde-format
 msgid "Go Up"
 msgstr "மேல் நகர்த்து"
 
-#: kcachegrind/toplevel.cpp:1805
+#: kcachegrind/toplevel.cpp:1806
 #, kde-format
 msgid "Layout Count: %1"
 msgstr "வடிவமைப்பு கூட்டு: %1"
 
-#: kcachegrind/toplevel.cpp:1812
+#: kcachegrind/toplevel.cpp:1813
 #, kde-format
 msgid "No profile data file loaded."
 msgstr "சுவடு கோப்பு பதிவாகவில்லை."
 
-#: kcachegrind/toplevel.cpp:1821
+#: kcachegrind/toplevel.cpp:1822
 #, kde-format
 msgid "Total %1 Cost: %2"
 msgstr "கூடுதல் %1 விலை: %2"
 
-#: kcachegrind/toplevel.cpp:1833
+#: kcachegrind/toplevel.cpp:1834
 #, kde-format
 msgid "No event type selected"
 msgstr "நிகழ்வு வகை தேர்வு செய்யப்படவில்லை"
 
-#: kcachegrind/toplevel.cpp:2011
+#: kcachegrind/toplevel.cpp:2012
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:2057
+#: kcachegrind/toplevel.cpp:2058
 #, kde-format
 msgid "Error running callgrind_control"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:2096 kcachegrind/toplevel.cpp:2133
-#: kcachegrind/toplevel.cpp:2170
+#: kcachegrind/toplevel.cpp:2097 kcachegrind/toplevel.cpp:2134
+#: kcachegrind/toplevel.cpp:2171
 #, kde-format
 msgid "(No Stack)"
 msgstr "(அடுக்கு இல்லை)"
 
-#: kcachegrind/toplevel.cpp:2102
+#: kcachegrind/toplevel.cpp:2103
 #, kde-format
 msgid "(No next function)"
 msgstr "(அடுத்த செயல்கூறு  இல்லை)"
 
-#: kcachegrind/toplevel.cpp:2139
+#: kcachegrind/toplevel.cpp:2140
 #, kde-format
 msgid "(No previous function)"
 msgstr "(முன் செயல்கூறு இல்லை)"
 
-#: kcachegrind/toplevel.cpp:2175
+#: kcachegrind/toplevel.cpp:2176
 #, kde-format
 msgid "(No Function Up)"
 msgstr "(மேலே செயற்கூறு இல்லை)"
 
-#: kcachegrind/toplevel.cpp:2307 kcachegrind/toplevel.cpp:2321
+#: kcachegrind/toplevel.cpp:2308 kcachegrind/toplevel.cpp:2322
 #, kde-format
 msgid "Loading %1"
 msgstr "ஏற்றல் %1"
 
-#: kcachegrind/toplevel.cpp:2315
+#: kcachegrind/toplevel.cpp:2316
 #, fuzzy, kde-format
 #| msgid "Loading %1"
 msgid "Error loading %1: %2"
