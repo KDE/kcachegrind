@@ -677,7 +677,7 @@ void TopLevel::createMiscActions()
          << ProfileContext::i18nTypeName(ProfileContext::FunctionCycle);
 
     saGroup->setItems(args);
-    connect( saGroup, &KSelectAction::triggered,
+    connect( saGroup, &KSelectAction::indexTriggered,
              this, &TopLevel::groupTypeSelected);
 
     _taSplit = actionCollection()->add<KToggleAction>(QStringLiteral("view_split"));
