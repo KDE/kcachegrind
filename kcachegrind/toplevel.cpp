@@ -589,9 +589,9 @@ void TopLevel::createMiscActions()
              _stackSelection, &StackSelection::browserUp );
     actionCollection()->addAction( QStringLiteral("go_up"), _paUp );
     actionCollection()->setDefaultShortcut(_paUp, QKeySequence(Qt::ALT + Qt::Key_Up));
-    connect( _paUp->menu(), &QMenu::aboutToShow,
+    connect( _paUp->popupMenu(), &QMenu::aboutToShow,
              this, &TopLevel::upAboutToShow );
-    connect( _paUp->menu(), &QMenu::triggered,
+    connect( _paUp->popupMenu(), &QMenu::triggered,
              this, &TopLevel::upTriggered );
     hint = i18n("<b>Go Up</b>"
                 "<p>Go to last selected caller of current function. "
@@ -606,9 +606,9 @@ void TopLevel::createMiscActions()
              _stackSelection, &StackSelection::browserBack );
     actionCollection()->addAction( QStringLiteral("go_back"), _paBack );
     actionCollection()->setDefaultShortcut(_paBack, QKeySequence(Qt::ALT + Qt::Key_Left));
-    connect( _paBack->menu(), &QMenu::aboutToShow,
+    connect( _paBack->popupMenu(), &QMenu::aboutToShow,
              this, &TopLevel::backAboutToShow );
-    connect( _paBack->menu(), &QMenu::triggered,
+    connect( _paBack->popupMenu(), &QMenu::triggered,
              this, &TopLevel::backTriggered );
     hint = i18n("Go back in function selection history");
     _paBack->setToolTip( hint );
@@ -620,9 +620,9 @@ void TopLevel::createMiscActions()
              _stackSelection, &StackSelection::browserForward );
     actionCollection()->addAction( QStringLiteral("go_forward"), _paForward );
     actionCollection()->setDefaultShortcut(_paForward, QKeySequence(Qt::ALT + Qt::Key_Right));
-    connect( _paForward->menu(), &QMenu::aboutToShow,
+    connect( _paForward->popupMenu(), &QMenu::aboutToShow,
              this, &TopLevel::forwardAboutToShow );
-    connect( _paForward->menu(), &QMenu::triggered,
+    connect( _paForward->popupMenu(), &QMenu::triggered,
              this, &TopLevel::forwardTriggered );
     hint = i18n("Go forward in function selection history");
     _paForward->setToolTip( hint );
