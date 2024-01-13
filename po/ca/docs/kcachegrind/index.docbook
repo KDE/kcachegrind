@@ -184,7 +184,7 @@
 >, memòries intermèdies petites i ràpides que acceleren els accessos repetits a les mateixes cel·les de la memòria principal, en els sistemes moderns. El &cachegrind; fa la simulació de la memòria cau capturant els accessos a la memòria. Les dades produïdes inclouen el nombre d'accessos a la memòria d'instruccions i dades i errors de memòria cau de primer i segon nivell, i el relaciona amb les línies i funcions del codi font del programa en execució. Combinant aquests comptadors de falles, i utilitzant retards de falles dels processadors habituals, es pot donar una estimació del temps gastat. </para>
 
 <para
->El &callgrind; és una extensió del &cachegrind; que construeix la gràfica de crides d'un programa al vol, és a dir, com les funcions es criden l'una a l'altra i quants esdeveniments succeeixen mentre s'executa una funció. A més, les dades de l'anàlisi del rendiment que es recopilen es poden separar per fils i contextos de cadenes de crides. Pot proporcionar dades d'anàlisi de rendiment a nivell d'instrucció per a permetre l'anotació de codi desassemblat. </para>
+>El &callgrind; és una extensió del &cachegrind; que construeix la gràfica de crides d'un programa al vol, és a dir, com les funcions es criden l'una a l'altra i quants esdeveniments succeeixen mentre s'executa una funció. A més, les dades de l'anàlisi del rendiment que es recopilen es poden separar per fils i contextos de cadenes de crides. Pot proporcionar dades d'anàlisi de rendiment a escala d'instrucció per a permetre l'anotació de codi desassemblat. </para>
 </sect1>
 
 <sect1 id="introduction-visualization">
