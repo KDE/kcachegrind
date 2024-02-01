@@ -174,7 +174,7 @@
 >. L'inconvénient principal de cette méthode est l'obligation de passer par une recompilation pour préparer l'exécutable, qui doit être lié de façon statique. La méthode utilisée ici est l'instrumentation générée par le compilateur. Celle-ci mesure les arcs d'appels se produisant dans les fonctions et en accord avec des compteurs d'appels, en conjonction avec un TBS, qui donne un histogramme de distribution du temps sur le code. En utilisant les deux informations, il est possible de calculer de manière heuristique le temps d'inclusion des fonctions, &cad; le temps passé dans une fonction ainsi que toutes les fonctions qu'elle a appelées. </para>
 
 <para
->Pour une mesure exacte des évènements, il existe des librairies avec des fonctions capables de lire les compteurs de performance matériels. Les plus connus sont le patch PerfCtr pour &Linux; et les librairies indépendantes de l'architecture PAPI et PCL. Comme toujours, une mesure exacte nécessite une instrumentation du code, comme indiqué au-dessus. D'autres utilisent les librairies elles-mêmes ou utilisent des systèmes d'instrumentation automatiques comme ADAPTOR (pour l'instrumentation de sources FORTRAN), ou encore DynaProf (injection de code par DynInst).</para>
+>Pour une mesure exacte des évènements, il existe des librairies avec des fonctions capables de lire les compteurs de performance matériels. Les plus connus sont le patch PerfCtr pour &Linux; et les librairies indépendantes de l'architecture « PAPI » et « PCL ». Comme toujours, une mesure exacte nécessite une instrumentation du code, comme indiqué au-dessus. D'autres utilisent les librairies elles-mêmes ou utilisent des systèmes d'instrumentation automatiques comme « ADAPTOR » (pour l'instrumentation de sources FORTRAN), ou encore « DynaProf » (Injection de code par DynInst).</para>
 
 <para
 >&oprofile; est un outil de profilage au niveau système pour &Linux; utilisant l'échantillonnage. </para>
@@ -256,9 +256,9 @@
 > <option
 >--tool=callgrind</option
 > <replaceable
->mon_programme</replaceable
+>mon-programme</replaceable
 > <replaceable
->mes_arguments</replaceable
+>mes-arguments</replaceable
 > </userinput
 ></para
 ></blockquote
@@ -391,11 +391,11 @@
 <para
 >Le type d'évènement actif est important pour l'affichage : pour &callgrind;, c'est par exemple le nombre d'échecs du cache ou l'estimation du cycle ; pour &oprofile;, c'est le <quote
 >temps</quote
-> dans le plus simple cas. Vous pouvez changer le type d'évènement par une combobox dans la barre d'outils ou dans la vue du<guilabel
+> dans le plus simple cas. Vous pouvez changer le type d'évènement grâce à une boîte de dialogue dans la barre d'outils ou dans la vue du<guilabel
 >type d'évènement</guilabel
 >. Un premier aperçu des caractéristiques de l'exécution devrait être donné quand vous sélectionnez la fonction <function
 >main</function
-> dans la liste de gauche, et regardez l'affichage de l'arbre d'appels. Là vous voyez les appels se produisant dans votre programme. Notez que la vue du graphe d'appels ne montre que les fonctions avec un nombre d'évènements élevé. En double-cliquant sur une fonction dans le graphe, celui-ci change pour afficher les fonctions appelées autour de celle sélectionnée. </para>
+> dans la liste de gauche et regardez l'affichage de l'arbre d'appels. Là vous voyez les appels se produisant dans votre programme. Notez que la vue du graphe d'appels ne montre que les fonctions avec un nombre d'évènements élevé. En faisant un double-clic sur une fonction dans le graphe, celui-ci change pour afficher les fonctions appelées autour de celle sélectionnée. </para>
 
 <para
 >Pour explorer plus profondément &GUI;, vous pouvez regarder, en plus de ce manuel, la section de documentation du <ulink url="https://kcachegrind.github.io"
