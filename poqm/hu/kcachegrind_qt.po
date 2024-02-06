@@ -5,42 +5,37 @@
 # Tamas Krutki, 2011.
 # Kristóf Kiszel <ulysses@kubuntu.org>, 2011.
 # Balázs Úr <urbalazs@gmail.com>, 2012, 2014.
+# SPDX-FileCopyrightText: 2024 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2014-06-24 20:17+0200\n"
-"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"PO-Revision-Date: 2024-02-05 22:03+0100\n"
+"Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Qt-Contexts: true\n"
 
 #: libcore/cachegrindloader.cpp:135
-#, fuzzy
-#| msgid "Import filter for Cachegrind/Callgrind generated profile data files"
 msgctxt "QObject|"
 msgid "Import filter for Cachegrind/Callgrind generated profile data files"
 msgstr "Importszűrő a Cachegrind/Callgrind által generált profilfájlokhoz"
 
 #: libcore/context.cpp:60
-#, fuzzy
-#| msgid "Invalid Context"
 msgctxt "ProfileContext|"
 msgid "Invalid Context"
-msgstr "Érvénytelen összefüggés"
+msgstr "Érvénytelen környezet"
 
 #: libcore/context.cpp:61
-#, fuzzy
-#| msgid "Unknown Context"
 msgctxt "ProfileContext|"
 msgid "Unknown Context"
-msgstr "Ismeretlen összefüggés"
+msgstr "Ismeretlen környezet"
 
 #: libcore/context.cpp:62
 #, fuzzy
@@ -2922,8 +2917,6 @@ msgid "Caller Map"
 msgstr "Hívó térkép"
 
 #: libviews/tabview.cpp:389
-#, fuzzy
-#| msgid "Machine Code"
 msgctxt "TabView|"
 msgid "Machine Code"
 msgstr "Gépi kód"
@@ -2950,88 +2943,67 @@ msgid ""
 msgstr ""
 
 #: libviews/tabview.cpp:728
-#, fuzzy
-#| msgid "(No function selected)"
 msgctxt "TabView|"
 msgid "(No function selected)"
-msgstr "(Nincsen funkció kiválasztva)"
+msgstr "(Nincs kiválasztva függvény)"
 
 #: libviews/traceitemview.cpp:67
-#, fuzzy
-#| msgid "No description available"
 msgctxt "QObject|"
 msgid "No description available"
-msgstr "Nincsen elérhető leírás"
+msgstr "Nem érhető el leírás"
 
 #: libviews/treemap.cpp:1334
-#, fuzzy, qt-format
-#| msgid "Text %1"
+#, qt-format
 msgctxt "TreeMapWidget|"
 msgid "Text %1"
-msgstr "%1 szöveg"
+msgstr "Szöveg %1"
 
 #: libviews/treemap.cpp:2854
-#, fuzzy
-#| msgid "Recursive Bisection"
 msgctxt "TreeMapWidget|"
 msgid "Recursive Bisection"
-msgstr "Rekurzív felezés"
+msgstr "Rekurzív biszekció"
 
 #: libviews/treemap.cpp:2855
-#, fuzzy
-#| msgid "Columns"
 msgctxt "TreeMapWidget|"
 msgid "Columns"
 msgstr "Oszlopok"
 
 #: libviews/treemap.cpp:2856
-#, fuzzy
-#| msgid "Rows"
 msgctxt "TreeMapWidget|"
 msgid "Rows"
 msgstr "Sorok"
 
 #: libviews/treemap.cpp:2857
-#, fuzzy
-#| msgid "Always Best"
 msgctxt "TreeMapWidget|"
 msgid "Always Best"
-msgstr "Mindig a legjobbat"
+msgstr "Mindig a legjobb"
 
 #: libviews/treemap.cpp:2858
-#, fuzzy
-#| msgid "Best"
 msgctxt "TreeMapWidget|"
 msgid "Best"
 msgstr "Legjobb"
 
 #: libviews/treemap.cpp:2859
-#, fuzzy
-#| msgid "Alternate (V)"
 msgctxt "TreeMapWidget|"
 msgid "Alternate (V)"
-msgstr "Alternatív (V)"
+msgstr "Váltakozó (függőlegesen)"
 
 #: libviews/treemap.cpp:2860
-#, fuzzy
-#| msgid "Alternate (H)"
 msgctxt "TreeMapWidget|"
 msgid "Alternate (H)"
-msgstr "Alternatív (H)"
+msgstr "Váltakozó (vízszintesen)"
 
 #: libviews/treemap.cpp:2861
-#, fuzzy
-#| msgid "Horizontal"
 msgctxt "TreeMapWidget|"
 msgid "Horizontal"
-msgstr "Horizontális"
+msgstr "Vízszintes"
 
 #: libviews/treemap.cpp:2862
 #, fuzzy
 #| msgid "Vertical"
 msgctxt "TreeMapWidget|"
 msgid "Vertical"
-msgstr "Vertikális"
+msgstr "Függőleges"
 
 #, fuzzy
 #~| msgid "Export Graph As DOT file"
