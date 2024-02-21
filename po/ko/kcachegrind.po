@@ -60,7 +60,7 @@ msgstr "목록의 항목 최대 개수:"
 #: kcachegrind/configdlgbase.ui:44
 #, kde-format
 msgid "Truncate symbols in tooltips and context menus"
-msgstr "풍선 도움말과 콘텍스트 메뉴에서 심볼 자르기"
+msgstr "풍선 도움말과 상황에 맞는 메뉴에서 심볼 자르기"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2)
 #: kcachegrind/configdlgbase.ui:70
