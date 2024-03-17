@@ -597,8 +597,8 @@ void QCGTopLevel::createActions()
     _eventTypeBox->setMinimumContentsLength(25);
     hint = tr("Select primary event type of costs");
     _eventTypeBox->setToolTip( hint );
-    connect( _eventTypeBox, SIGNAL(activated(QString)),
-             this, SLOT(eventTypeSelected(QString)));
+    connect( _eventTypeBox, &QComboBox::textActivated,
+             this, &QCGTopLevel::eventTypeSelected);
 }
 
 void QCGTopLevel::createMenu()
