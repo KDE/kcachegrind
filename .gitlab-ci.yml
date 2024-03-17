@@ -4,7 +4,7 @@
 include:
   - project: sysadmin/ci-utilities
     file:
-      - /gitlab-templates/flatpak.yml
+      # - /gitlab-templates/flatpak.yml unmaintained
       - /gitlab-templates/linux-qt6.yml
       - /gitlab-templates/freebsd-qt6.yml
     
