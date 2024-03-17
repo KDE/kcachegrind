@@ -1,19 +1,3 @@
-########### next target ###############
-
-set(kcachegrind_SRCS
-   main.cpp
-   kdeconfig.cpp
-   toplevel.cpp
-   configdlg.cpp
-   ${kcachegrind_QM_LOADER}
-   )
-
-ki18n_wrap_ui(kcachegrind_SRCS configdlgbase.ui dumpselectionbase.ui)
-
-qt_add_resources(kcachegrind_SRCS
-    kcachegrind.qrc
-)
-
 set(kcachegrind_ICONS
     32-apps-kcachegrind.png
     48-apps-kcachegrind.png
@@ -21,28 +5,41 @@ set(kcachegrind_ICONS
     128-apps-kcachegrind.png
 )
 
-ecm_add_app_icon(kcachegrind_SRCS ICONS ${kcachegrind_ICONS})
+add_executable(kcachegrind)
 
-add_executable(kcachegrind ${kcachegrind_SRCS})
+target_sources(kcachegrind PRIVATE
+   main.cpp
+   kdeconfig.cpp
+   toplevel.cpp
+   configdlg.cpp
 
-set(kcachegrind_LIBS
-  KF6::Archive
-  KF6::CoreAddons
-  KF6::I18n
-  KF6::XmlGui
-  KF6::ConfigCore
-  KF6::ConfigGui
-  KF6::KIOCore
-  KF6::KIOWidgets
-  KF6::DBusAddons
+   kcachegrind.qrc
 )
 
-target_link_libraries(kcachegrind core views ${kcachegrind_LIBS})
+ecm_create_qm_loader(kcachegrind kcachegrind_qt)
+
+ki18n_wrap_ui(kcachegrind
+    configdlgbase.ui
+    dumpselectionbase.ui
+)
+
+ecm_add_app_icon(kcachegrind ICONS ${kcachegrind_ICONS})
+
+target_link_libraries(kcachegrind
+    core
+    views
+    KF6::Archive
+    KF6::CoreAddons
+    KF6::I18n
+    KF6::XmlGui
+    KF6::ConfigCore
+    KF6::ConfigGui
+    KF6::KIOCore
+    KF6::KIOWidgets
+    KF6::DBusAddons
+)
 
 install(TARGETS kcachegrind  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
-
-
-########### install files ###############
 
 install( PROGRAMS org.kde.kcachegrind.desktop  DESTINATION  ${KDE_INSTALL_APPDIR} )
 install( FILES org.kde.kcachegrind.appdata.xml DESTINATION  ${KDE_INSTALL_METAINFODIR} )

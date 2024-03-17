@@ -1,4 +1,6 @@
-set(core_SRCS
+add_library(core STATIC)
+
+target_sources(core PRIVATE
    context.cpp
    costitem.cpp
    eventtype.cpp
@@ -14,9 +16,8 @@ set(core_SRCS
    utils.cpp
    logger.cpp
    config.cpp
-   globalconfig.cpp )
-
-add_library(core STATIC ${core_SRCS})
+   globalconfig.cpp
+)
 
 target_link_libraries(core
     Qt6::Core

@@ -1,11 +1,25 @@
-set(qcachegrind_SRCS qcgmain.cpp qcgtoplevel.cpp qcgconfig.cpp
-		     configdialog.cpp configpage.cpp qtcolorbutton.cpp
-		     generalsettings.cpp sourcesettings.cpp colorsettings.cpp)
+add_executable(qcachegrind)
 
-qt_wrap_ui(qcachegrind_H generalsettings.ui sourcesettings.ui colorsettings.ui)
-qt_add_resources(qcachegrind_RSRC qcachegrind.qrc)
+qt6_wrap_ui(qcachegrind_UI_SRCS
+    generalsettings.ui
+    sourcesettings.ui
+    colorsettings.ui
+)
 
-add_executable(qcachegrind ${qcachegrind_SRCS} ${qcachegrind_H} ${qcachegrind_RSRC})
+target_sources(qcachegrind PRIVATE
+    ${qcachegrind_UI_SRCS}
+    qcgmain.cpp
+    qcgtoplevel.cpp
+    qcgconfig.cpp
+    configdialog.cpp
+    configpage.cpp
+    qtcolorbutton.cpp
+    generalsettings.cpp
+    sourcesettings.cpp
+    colorsettings.cpp
+
+    qcachegrind.qrc
+)
 
 target_link_libraries(qcachegrind
     views

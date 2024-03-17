@@ -55,8 +55,6 @@ IF(NOT WIN32)
   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/kcachegrind.spec.in ${CMAKE_CURRENT_BINARY_DIR}/kcachegrind.spec )
 ENDIF(NOT WIN32)
 
-ecm_create_qm_loader(kcachegrind_QM_LOADER kcachegrind_qt)
-
 add_subdirectory( doc )
 add_subdirectory( libcore )
 add_subdirectory( cgview )

@@ -1,4 +1,6 @@
-set(libviews_SRCS
+add_library(views STATIC)
+
+target_sources(views PRIVATE
    globalguiconfig.cpp
    stackitem.cpp
    stackselection.cpp
@@ -26,9 +28,8 @@ set(libviews_SRCS
    coverageitem.cpp
    sourceitem.cpp
    instritem.cpp
-   partlistitem.cpp )
-
-add_library(views STATIC ${libviews_SRCS})
+   partlistitem.cpp
+)
 
 target_link_libraries(views
     core
