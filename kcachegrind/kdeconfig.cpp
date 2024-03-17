@@ -44,23 +44,23 @@ void KDEConfigGroup::setValue(const QString& key, const QVariant& value,
         return;
     }
 
-    switch(value.type()) {
-    case QVariant::Bool:
+    switch(value.typeId()) {
+    case QMetaType::Bool:
         _kgroup->writeEntry(key, value.toBool());
         break;
-    case QVariant::Int:
+    case QMetaType::Int:
         _kgroup->writeEntry(key, value.toInt());
         break;
-    case QVariant::Double:
+    case QMetaType::Double:
         _kgroup->writeEntry(key, value.toDouble());
         break;
-    case QVariant::String:
+    case QMetaType::QString:
         _kgroup->writeEntry(key, value.toString());
         break;
-    case QVariant::StringList:
+    case QMetaType::QStringList:
         _kgroup->writeEntry(key, value.toStringList());
         break;
-    case QVariant::Color:
+    case QMetaType::QColor:
         _kgroup->writeEntry(key, value.value<QColor>());
         break;
     default:
@@ -74,23 +74,23 @@ QVariant KDEConfigGroup::value(const QString& key,
 {
     if (_kgroup == nullptr) return defaultValue;
 
-    switch(defaultValue.type()) {
-    case QVariant::Bool:
+    switch(defaultValue.typeId()) {
+    case QMetaType::Bool:
         return QVariant(_kgroup->readEntry(key,
                                            defaultValue.toBool()));
-    case QVariant::Int:
+    case QMetaType::Int:
         return QVariant(_kgroup->readEntry(key,
                                            defaultValue.toInt()));
-    case QVariant::Double:
+    case QMetaType::Double:
         return QVariant(_kgroup->readEntry(key,
                                            defaultValue.toDouble()));
-    case QVariant::String:
+    case QMetaType::QString:
         return QVariant(_kgroup->readEntry(key,
                                            defaultValue.toString()));
-    case QVariant::StringList:
+    case QMetaType::QStringList:
         return QVariant(_kgroup->readEntry(key,
                                            defaultValue.toStringList()));
-    case QVariant::Color:
+    case QMetaType::QColor:
         return QVariant(_kgroup->readEntry(key,
                                            defaultValue.value<QColor>()));
     default:
