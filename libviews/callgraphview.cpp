@@ -2132,8 +2132,8 @@ void CallGraphView::refresh()
     _renderProcess = new QProcess(this);
     connect(_renderProcess, &QProcess::readyReadStandardOutput,
             this, &CallGraphView::readDotOutput);
-    connect(_renderProcess, SIGNAL(error(QProcess::ProcessError)),
-            this, SLOT(dotError()));
+    connect(_renderProcess, &QProcess::errorOccurred,
+            this, &CallGraphView::dotError);
     connect(_renderProcess, SIGNAL(finished(int,QProcess::ExitStatus)),
             this, SLOT(dotExited()));
 
