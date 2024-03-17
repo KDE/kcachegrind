@@ -81,8 +81,8 @@ SourceSettings::SourceSettings(TraceData* data, QWidget* parent)
             this,
             &SourceSettings::dirListItemChanged);
     connect(ui.objectBox,
-            SIGNAL(currentIndexChanged(QString)),
-            this, SLOT(objectChanged(QString)));
+            &QComboBox::currentIndexChanged,
+            this, &SourceSettings::objectChanged);
     connect(ui.dirEdit, SIGNAL(textChanged(QString)),
             this, SLOT(dirEditChanged(QString)));
 
@@ -163,10 +163,11 @@ void SourceSettings::dirListItemChanged(QTreeWidgetItem* current,
     update();
 }
 
-void SourceSettings::objectChanged(QString obj)
+void SourceSettings::objectChanged(int objectIndex)
 {
     if (!_current) return;
 
+    const QString obj = ui.objectBox->itemText(objectIndex);
     _current->setText(0, obj);
 }
 
