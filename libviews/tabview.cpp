@@ -73,7 +73,7 @@ void TabBar::mousePressEvent(QMouseEvent *e)
             setCurrentIndex(idx);
             page = _tabWidget->widget(idx);
         }
-        context(page, e->globalPos());
+        context(page, e->globalPosition().toPoint());
     }
     QTabBar::mousePressEvent(e );
 }
