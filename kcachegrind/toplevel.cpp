@@ -2020,8 +2020,8 @@ void TopLevel::forceTrace()
     _ccProcess = new QProcess(this);
     connect(_ccProcess, &QProcess::readyReadStandardOutput,
             this, &TopLevel::ccReadOutput);
-    connect(_ccProcess, SIGNAL(error(QProcess::ProcessError)),
-            SLOT(ccError(QProcess::ProcessError)));
+    connect(_ccProcess, &QProcess::errorOccurred,
+            this, &TopLevel::ccError);
     connect(_ccProcess, SIGNAL(finished(int,QProcess::ExitStatus)),
             SLOT(ccExit(int,QProcess::ExitStatus)));
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
