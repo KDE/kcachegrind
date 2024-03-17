@@ -36,7 +36,7 @@ public Q_SLOTS:
     void deleteClicked();
     void browseClicked();
     void dirListItemChanged(QTreeWidgetItem*, QTreeWidgetItem*);
-    void objectChanged(QString);
+    void objectChanged(int);
     void dirEditChanged(QString);
 
 private:
