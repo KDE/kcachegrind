@@ -66,10 +66,10 @@ ConfigDialog::ConfigDialog(TraceData* data, QWidget* parent, const QString &s)
     vbox->addWidget(f2);
     vbox->addWidget(bbox);
 
-    connect(bbox, SIGNAL(accepted()), this, SLOT(accept()));
+    connect(bbox, &QDialogButtonBox::accepted, this, &QDialog::accept);
     connect(bbox, &QDialogButtonBox::rejected, this, &QDialog::reject);
-    connect(_listWidget, SIGNAL(currentTextChanged(QString)),
-            this, SLOT(listItemChanged(QString)));
+    connect(_listWidget, &QListWidget::currentTextChanged,
+            this, &ConfigDialog::listItemChanged);
     connect(&_clearTimer, &QTimer::timeout, this, &ConfigDialog::clearError);
 
     addPage(new GeneralSettings(this));

@@ -1383,8 +1383,8 @@ void QCGTopLevel::updateEventTypeMenu(QMenu* m, bool secondary)
     }
 
     if (secondary) {
-        connect(m, SIGNAL(triggered(QAction*)),
-                this, SLOT(setEventType2(QAction*)), Qt::UniqueConnection);
+        connect(m, &QMenu::triggered,
+                this, qOverload<QAction*>(&QCGTopLevel::setEventType2), Qt::UniqueConnection);
 
         if (_eventType2 != nullptr) {
             action = m->addAction(tr("Hide"));
@@ -1393,8 +1393,8 @@ void QCGTopLevel::updateEventTypeMenu(QMenu* m, bool secondary)
         }
     }
     else {
-        connect(m, SIGNAL(triggered(QAction*)),
-                this, SLOT(setEventType(QAction*)), Qt::UniqueConnection);
+        connect(m, &QMenu::triggered,
+                this, qOverload<QAction*>(&QCGTopLevel::setEventType), Qt::UniqueConnection);
     }
 
     EventTypeSet* ets = _data->eventTypes();

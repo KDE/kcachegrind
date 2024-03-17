@@ -83,8 +83,8 @@ SourceSettings::SourceSettings(TraceData* data, QWidget* parent)
     connect(ui.objectBox,
             &QComboBox::currentIndexChanged,
             this, &SourceSettings::objectChanged);
-    connect(ui.dirEdit, SIGNAL(textChanged(QString)),
-            this, SLOT(dirEditChanged(QString)));
+    connect(ui.dirEdit, &QLineEdit::textChanged,
+            this, &SourceSettings::dirEditChanged);
 
     _current = nullptr;
     update();

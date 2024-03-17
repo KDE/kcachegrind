@@ -162,8 +162,8 @@ FunctionSelection::FunctionSelection( TopLevelBase* top,
          << ProfileContext::i18nTypeName(ProfileContext::Class)
          << ProfileContext::i18nTypeName(ProfileContext::FunctionCycle);
     groupBox->addItems(args);
-    connect(groupBox, SIGNAL(activated(int)),
-            this, SLOT(groupTypeSelected(int)));
+    connect(groupBox, &QComboBox::activated,
+            this, qOverload<int>(&FunctionSelection::groupTypeSelected));
 
     // search while typing...
     connect(searchEdit, &QLineEdit::textChanged,
@@ -346,8 +346,8 @@ void FunctionSelection::updateGroupingMenu(QMenu* m)
 
     // use a unique connection, as we may be called multiple times
     //  for same menu (e.g. for repopulating a menu related to a QAction)
-    connect(m, SIGNAL(triggered(QAction*)),
-            this, SLOT(groupTypeSelected(QAction*)), Qt::UniqueConnection);
+    connect(m, &QMenu::triggered,
+            this, qOverload<QAction*>(&FunctionSelection::groupTypeSelected), Qt::UniqueConnection);
 
     if (_groupType != ProfileContext::Function) {
         addGroupAction(m,  ProfileContext::Function, tr("No Grouping"));

@@ -77,8 +77,8 @@ PartSelection::PartSelection( TopLevelBase* top,
 
     _partAreaWidget->setAllowRotation(DEFAULT_ALLOWROTATION);
 
-    connect(_partAreaWidget, SIGNAL(selectionChanged()),
-            this, SLOT(selectionChanged()));
+    connect(_partAreaWidget, qOverload<>(&TreeMapWidget::selectionChanged),
+            this, &PartSelection::selectionChanged);
     connect(_partAreaWidget, &TreeMapWidget::currentChanged,
             this, &PartSelection::currentChangedSlot);
     connect(_partAreaWidget, &TreeMapWidget::doubleClicked,

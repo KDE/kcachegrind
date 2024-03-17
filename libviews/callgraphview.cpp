@@ -2134,8 +2134,8 @@ void CallGraphView::refresh()
             this, &CallGraphView::readDotOutput);
     connect(_renderProcess, &QProcess::errorOccurred,
             this, &CallGraphView::dotError);
-    connect(_renderProcess, SIGNAL(finished(int,QProcess::ExitStatus)),
-            this, SLOT(dotExited()));
+    connect(_renderProcess, &QProcess::finished,
+            this, &CallGraphView::dotExited);
 
     _renderProcessCmdLine =  renderProgram + QLatin1Char(' ') + renderArgs.join(QLatin1Char(' '));
     qDebug("CallGraphView::refresh: Starting process %p, '%s'",

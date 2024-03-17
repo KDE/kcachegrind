@@ -109,8 +109,8 @@ TopLevel::TopLevel()
 
 #if ENABLE_DUMPDOCK
     _dumpDockShown->setChecked(!_dumpDock->isHidden());
-    connect(_dumpDock, SIGNAL(visibilityChanged(bool)),
-            this, SLOT(dumpVisibilityChanged(bool)));
+    connect(_dumpDock, &QDockWidget::visibilityChanged,
+            this, &TopLevel::dumpVisibilityChanged);
 #endif
 
 
@@ -272,8 +272,8 @@ void TopLevel::createDocks()
                                        "cost used for all calls from the function in the line "
                                        "above.</p>"));
 
-    connect(_stackSelection, SIGNAL(functionSelected(CostItem*)),
-            this, SLOT(setTraceItemDelayed(CostItem*)));
+    connect(_stackSelection, &StackSelection::functionSelected,
+            this, qOverload<CostItem*>(&TopLevel::setTraceItemDelayed));
 
     _functionDock = new QDockWidget(this);
     _functionDock->setObjectName(QStringLiteral("function dock"));
@@ -414,7 +414,7 @@ void TopLevel::createMiscActions()
 
     action = actionCollection()->addAction( QStringLiteral("file_add") );
     action->setText( i18n( "&Add..." ) );
-    connect(action, SIGNAL(triggered(bool)), SLOT(add()));
+    connect(action, &QAction::triggered, this, qOverload<>(&TopLevel::add));
     hint = i18n("<b>Add Profile Data</b>"
                 "<p>This opens an additional profile data file in the current window.</p>");
     action->setWhatsThis( hint );
@@ -1501,13 +1501,13 @@ void TopLevel::addEventTypeMenu(QMenu* popup, bool withCost2)
         QAction* action;
 
         popup1 = popup->addMenu(i18n("Primary Event Type"));
-        connect(popup1, SIGNAL(triggered(QAction*)),
-                this, SLOT(setEventType(QAction*)));
+        connect(popup1, &QMenu::triggered,
+                this, qOverload<QAction*>(&TopLevel::setEventType));
 
         if (withCost2) {
             popup2 = popup->addMenu(i18n("Secondary Event Type"));
-            connect(popup2, SIGNAL(triggered(QAction*)),
-                    this, SLOT(setEventType2(QAction*)));
+            connect(popup2, &QMenu::triggered,
+                    this, qOverload<QAction*>(&TopLevel::setEventType2));
 
             if (_eventType2) {
                 action = popup2->addAction(i18n("Hide"));
@@ -2023,8 +2023,8 @@ void TopLevel::forceTrace()
             this, &TopLevel::ccReadOutput);
     connect(_ccProcess, &QProcess::errorOccurred,
             this, &TopLevel::ccError);
-    connect(_ccProcess, SIGNAL(finished(int,QProcess::ExitStatus)),
-            SLOT(ccExit(int,QProcess::ExitStatus)));
+    connect(_ccProcess, &QProcess::finished,
+            this, &TopLevel::ccExit);
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     _ccProcess->start(QStringLiteral("callgrind_control -d %1").arg(pid),
                       QIODevice::ReadOnly);

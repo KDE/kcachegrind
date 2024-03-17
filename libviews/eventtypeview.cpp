@@ -57,16 +57,16 @@ EventTypeView::EventTypeView(TraceItemView* parentView,
 
     // FIXME: Endless jumping among 2 types possible!
     connect( this,
-             SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
-             SLOT(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)) );
+             &QTreeWidget::currentItemChanged,
+             this, &EventTypeView::currentItemChanged);
 
     connect(this,
-            SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
-            SLOT(itemDoubleClicked(QTreeWidgetItem*,int)));
+            &QTreeWidget::itemDoubleClicked,
+            this, &EventTypeView::itemDoubleClicked);
 
     connect(this,
-            SIGNAL(itemChanged(QTreeWidgetItem*,int)),
-            SLOT(itemChanged(QTreeWidgetItem*,int)));
+            &QTreeWidget::itemChanged,
+            this, &EventTypeView::itemChanged);
 
     setWhatsThis( whatsThis() );
 }
