@@ -19,5 +19,5 @@ set(core_SRCS
 add_library(core STATIC ${core_SRCS})
 
 target_link_libraries(core
-    Qt::Core
+    Qt6::Core
 )

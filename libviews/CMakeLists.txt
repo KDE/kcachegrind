@@ -32,6 +32,6 @@ add_library(views STATIC ${libviews_SRCS})
 
 target_link_libraries(views
     core
-    Qt::Gui
-    Qt::Widgets
+    Qt6::Gui
+    Qt6::Widgets
 )

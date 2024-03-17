@@ -8,11 +8,13 @@ qt_add_resources(qcachegrind_RSRC qcachegrind.qrc)
 add_executable(qcachegrind ${qcachegrind_SRCS} ${qcachegrind_H} ${qcachegrind_RSRC})
 
 target_link_libraries(qcachegrind
-        core views
-        Qt::Core
-        Qt::Gui
-        Qt::Widgets
-        Qt::DBus)
+    views
+    core
+    Qt6::Core
+    Qt6::Gui
+    Qt6::Widgets
+    Qt6::DBus
+)
 
 # do not install example code...
 # install(TARGETS qcachegrind ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
