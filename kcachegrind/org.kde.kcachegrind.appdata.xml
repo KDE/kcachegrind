@@ -3,6 +3,9 @@
   <id>org.kde.kcachegrind.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
+  <developer id="org.kde">
+    <name translate="no">KDE</name>
+  </developer>
   <name>KCachegrind</name>
   <name xml:lang="ast">KCachegrind</name>
   <name xml:lang="ca">KCachegrind</name>
@@ -371,6 +374,7 @@
     <binary>kcachegrind</binary>
     <id>org.kde.kcachgrind.desktop</id>
   </provides>
+  <launchable type="desktop-id">org.kde.kcachgrind.desktop</launchable>
   <releases>
     <release version="24.02.1" date="2024-03-21"/>
     <release version="24.02.0" date="2024-02-28"/>
