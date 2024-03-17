@@ -1077,9 +1077,10 @@ void TreeMapItem::resort(bool recursive)
     if (_sortTextNo != -1)
         std::sort(_children->begin(), _children->end(), treeMapItemLessThan);
 
-    if (recursive)
+    if (recursive) {
         foreach(TreeMapItem* i, *_children)
             i->resort(recursive);
+    }
 }
 
 
