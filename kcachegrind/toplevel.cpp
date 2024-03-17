@@ -363,7 +363,7 @@ void TopLevel::createLayoutActions()
     action = actionCollection()->addAction( QStringLiteral("layout_duplicate") );
     action->setText( i18n( "&Duplicate" ) );
     connect(action, &QAction::triggered, this, &TopLevel::layoutDuplicate);
-    actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL + Qt::Key_Plus));
+    KActionCollection::setDefaultShortcut(action, QKeySequence(Qt::CTRL + Qt::Key_Plus));
     hint = i18n("<b>Duplicate Current Layout</b>"
                 "<p>Make a copy of the current layout.</p>");
     action->setWhatsThis( hint );
@@ -378,14 +378,14 @@ void TopLevel::createLayoutActions()
     action = actionCollection()->addAction( QStringLiteral("layout_next") );
     action->setText( i18n( "&Go to Next" ) );
     connect(action, &QAction::triggered, this, &TopLevel::layoutNext);
-    actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL + Qt::Key_Right));
+    KActionCollection::setDefaultShortcut(action, QKeySequence(Qt::CTRL + Qt::Key_Right));
     hint = i18n("Go to Next Layout");
     action->setWhatsThis( hint );
 
     action = actionCollection()->addAction( QStringLiteral("layout_previous") );
     action->setText( i18n( "&Go to Previous" ) );
     connect(action, &QAction::triggered, this, &TopLevel::layoutPrevious);
-    actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL + Qt::Key_Left));
+    KActionCollection::setDefaultShortcut(action, QKeySequence(Qt::CTRL + Qt::Key_Left));
     hint = i18n("Go to Previous Layout");
     action->setWhatsThis( hint );
 
@@ -423,7 +423,7 @@ void TopLevel::createMiscActions()
     action->setIcon( QIcon::fromTheme(QStringLiteral("view-refresh")) );
     action->setText( i18nc("Reload a document", "&Reload" ) );
     connect(action, &QAction::triggered, this, &TopLevel::reload);
-    actionCollection()->setDefaultShortcuts(action, KStandardShortcut::reload());
+    KActionCollection::setDefaultShortcuts(action, KStandardShortcut::reload());
     hint = i18n("<b>Reload Profile Data</b>"
                 "<p>This loads any new created parts, too.</p>");
     action->setWhatsThis( hint );
@@ -442,7 +442,7 @@ void TopLevel::createMiscActions()
     _taDump->setIcon( QIcon::fromTheme(QStringLiteral("edit-redo")) );
     _taDump->setText( i18n( "&Force Dump" ) );
     connect(_taDump, &QAction::triggered, this, &TopLevel::forceTrace);
-    actionCollection()->setDefaultShortcut(_taDump, QKeySequence::Undo);
+    KActionCollection::setDefaultShortcut(_taDump, QKeySequence::Undo);
     hint = i18n("<b>Force Dump</b>"
                 "<p>This forces a dump for a Callgrind profile run "
                 "in the current directory. This action is checked while "
@@ -588,7 +588,7 @@ void TopLevel::createMiscActions()
     connect( _paUp, &QAction::triggered,
              _stackSelection, &StackSelection::browserUp );
     actionCollection()->addAction( QStringLiteral("go_up"), _paUp );
-    actionCollection()->setDefaultShortcut(_paUp, QKeySequence(Qt::ALT + Qt::Key_Up));
+    KActionCollection::setDefaultShortcut(_paUp, QKeySequence(Qt::ALT + Qt::Key_Up));
     connect( _paUp->popupMenu(), &QMenu::aboutToShow,
              this, &TopLevel::upAboutToShow );
     connect( _paUp->popupMenu(), &QMenu::triggered,
@@ -605,7 +605,7 @@ void TopLevel::createMiscActions()
     connect( _paBack, &QAction::triggered,
              _stackSelection, &StackSelection::browserBack );
     actionCollection()->addAction( QStringLiteral("go_back"), _paBack );
-    actionCollection()->setDefaultShortcut(_paBack, QKeySequence(Qt::ALT + Qt::Key_Left));
+    KActionCollection::setDefaultShortcut(_paBack, QKeySequence(Qt::ALT + Qt::Key_Left));
     connect( _paBack->popupMenu(), &QMenu::aboutToShow,
              this, &TopLevel::backAboutToShow );
     connect( _paBack->popupMenu(), &QMenu::triggered,
@@ -619,7 +619,7 @@ void TopLevel::createMiscActions()
     connect( _paForward, &QAction::triggered,
              _stackSelection, &StackSelection::browserForward );
     actionCollection()->addAction( QStringLiteral("go_forward"), _paForward );
-    actionCollection()->setDefaultShortcut(_paForward, QKeySequence(Qt::ALT + Qt::Key_Right));
+    KActionCollection::setDefaultShortcut(_paForward, QKeySequence(Qt::ALT + Qt::Key_Right));
     connect( _paForward->popupMenu(), &QMenu::aboutToShow,
              this, &TopLevel::forwardAboutToShow );
     connect( _paForward->popupMenu(), &QMenu::triggered,
