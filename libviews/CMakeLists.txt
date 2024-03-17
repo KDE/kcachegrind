@@ -29,10 +29,7 @@ set(libviews_SRCS
    partlistitem.cpp )
 
 add_library(views STATIC ${libviews_SRCS})
-target_include_directories(views
-    PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}
-)
+
 target_link_libraries(views
     core
     Qt::Gui
