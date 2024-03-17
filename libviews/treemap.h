@@ -413,6 +413,7 @@ public:
      * maxSelectDepth setting.
      */
     TreeMapItem* item(int x, int y) const;
+    TreeMapItem* item(QPointF pos) const;
 
     /**
      * Returns the nearest item with a visible area; this

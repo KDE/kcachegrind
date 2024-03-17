@@ -1600,6 +1600,11 @@ TreeMapItem* TreeMapWidget::item(int x, int y) const
     return nullptr;
 }
 
+TreeMapItem* TreeMapWidget::item(QPointF pos) const
+{
+    return item(qRound(pos.x()), qRound(pos.y()));
+}
+
 TreeMapItem* TreeMapWidget::possibleSelection(TreeMapItem* i) const
 {
     if (i) {
@@ -1852,7 +1857,7 @@ void TreeMapWidget::mousePressEvent( QMouseEvent* e )
 
     _oldCurrent = _current;
 
-    TreeMapItem* i = item(e->x(), e->y());
+    TreeMapItem* i = item(e->position());
 
     _pressed = i;
 
@@ -1919,7 +1924,7 @@ void TreeMapWidget::mouseMoveEvent( QMouseEvent* e )
     //qDebug() << "TreeMapWidget::mouseMoveEvent";
 
     if (!_pressed) return;
-    TreeMapItem* over = item(e->x(), e->y());
+    TreeMapItem* over = item(e->position());
     if (_lastOver == over) return;
 
     setCurrent(over);
@@ -1989,7 +1994,7 @@ void TreeMapWidget::mouseReleaseEvent( QMouseEvent* )
 
 void TreeMapWidget::mouseDoubleClickEvent( QMouseEvent* e )
 {
-    TreeMapItem* over = item(e->x(), e->y());
+    TreeMapItem* over = item(e->position());
 
     emit doubleClicked(over);
 }
