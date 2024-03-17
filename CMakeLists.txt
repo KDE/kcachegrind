@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.0)
+cmake_minimum_required (VERSION 3.16)
 
 # KDE Application Version, managed by release script
 set(RELEASE_SERVICE_VERSION_MAJOR "24")
@@ -9,8 +9,8 @@ set(KCACHEGRIND_VERSION ${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VERSI
 project(kcachegrind VERSION ${KCACHEGRIND_VERSION})
 
 # minimal requirements
-set (QT_MIN_VERSION "6.4.0")
-set (KF_MIN_VERSION "5.240.0")
+set (QT_MIN_VERSION "6.5.0")
+set (KF_MIN_VERSION "6.0.0")
 # TODO move the code to work on newer compiler settings
 set (KDE_COMPILERSETTINGS_LEVEL "5.84.0")
 
