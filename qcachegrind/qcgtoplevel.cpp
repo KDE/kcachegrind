@@ -504,7 +504,7 @@ void QCGTopLevel::createActions()
 
     _layoutDup = new QAction(tr("&Duplicate"), this);
     connect(_layoutDup, &QAction::triggered, this, &QCGTopLevel::layoutDuplicate);
-    _layoutDup->setShortcut(Qt::CTRL + Qt::Key_Plus);
+    _layoutDup->setShortcut(Qt::CTRL | Qt::Key_Plus);
     _layoutDup->setStatusTip(tr("Duplicate current layout"));
 
     _layoutRemove = new QAction(tr("&Remove"), this);
@@ -513,12 +513,12 @@ void QCGTopLevel::createActions()
 
     _layoutNext = new QAction(tr("Go to &Next"), this);
     connect(_layoutNext, &QAction::triggered, this, &QCGTopLevel::layoutNext);
-    _layoutNext->setShortcut(Qt::CTRL + Qt::Key_Right);
+    _layoutNext->setShortcut(Qt::CTRL | Qt::Key_Right);
     _layoutNext->setStatusTip(tr("Switch to next layout"));
 
     _layoutPrev = new QAction(tr("Go to &Previous"), this);
     connect(_layoutPrev, &QAction::triggered, this, &QCGTopLevel::layoutPrevious);
-    _layoutPrev->setShortcut(Qt::CTRL + Qt::Key_Left);
+    _layoutPrev->setShortcut(Qt::CTRL | Qt::Key_Left);
     _layoutPrev->setStatusTip(tr("Switch to previous layout"));
 
     _layoutRestore = new QAction(tr("&Restore to Default"), this);
@@ -532,7 +532,7 @@ void QCGTopLevel::createActions()
     // go menu actions
     icon = QApplication::style()->standardIcon(QStyle::SP_ArrowUp);
     _upAction = new QAction(icon, tr( "Up" ), this );
-    _upAction->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Up) );
+    _upAction->setShortcut( QKeySequence(Qt::ALT | Qt::Key_Up) );
     _upAction->setStatusTip(tr("Go Up in Call Stack"));
     _upAction->setMenu(new QMenu(this));
     connect(_upAction->menu(), &QMenu::aboutToShow,
@@ -544,7 +544,7 @@ void QCGTopLevel::createActions()
 
     icon = QApplication::style()->standardIcon(QStyle::SP_ArrowBack);
     _backAction = new QAction(icon, tr("Back"), this);
-    _backAction->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Left) );
+    _backAction->setShortcut( QKeySequence(Qt::ALT | Qt::Key_Left) );
     _backAction->setStatusTip(tr("Go Back"));
     _backAction->setMenu(new QMenu(this));
     connect(_backAction->menu(), &QMenu::aboutToShow,
@@ -556,7 +556,7 @@ void QCGTopLevel::createActions()
 
     icon = QApplication::style()->standardIcon(QStyle::SP_ArrowForward);
     _forwardAction = new QAction(icon, tr("Forward"), this);
-    _forwardAction->setShortcut( QKeySequence(Qt::ALT+Qt::Key_Right) );
+    _forwardAction->setShortcut( QKeySequence(Qt::ALT | Qt::Key_Right) );
     _forwardAction->setStatusTip(tr("Go Forward"));
     _forwardAction->setMenu(new QMenu(this));
     connect(_forwardAction->menu(), &QMenu::aboutToShow,
@@ -574,7 +574,7 @@ void QCGTopLevel::createActions()
 
     // window menu actions
     _minimizeAction = new QAction(tr("&Minimize"), this);
-    _minimizeAction->setShortcut(Qt::CTRL + Qt::Key_M);
+    _minimizeAction->setShortcut(Qt::CTRL | Qt::Key_M);
     connect(_minimizeAction, &QAction::triggered, this, &QWidget::showMinimized);
 
     _zoomAction = new QAction(tr("&Zoom"), this);

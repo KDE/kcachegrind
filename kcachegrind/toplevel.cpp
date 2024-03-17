@@ -363,7 +363,7 @@ void TopLevel::createLayoutActions()
     action = actionCollection()->addAction( QStringLiteral("layout_duplicate") );
     action->setText( i18n( "&Duplicate" ) );
     connect(action, &QAction::triggered, this, &TopLevel::layoutDuplicate);
-    KActionCollection::setDefaultShortcut(action, QKeySequence(Qt::CTRL + Qt::Key_Plus));
+    KActionCollection::setDefaultShortcut(action, QKeySequence(Qt::CTRL | Qt::Key_Plus));
     hint = i18n("<b>Duplicate Current Layout</b>"
                 "<p>Make a copy of the current layout.</p>");
     action->setWhatsThis( hint );
@@ -378,14 +378,14 @@ void TopLevel::createLayoutActions()
     action = actionCollection()->addAction( QStringLiteral("layout_next") );
     action->setText( i18n( "&Go to Next" ) );
     connect(action, &QAction::triggered, this, &TopLevel::layoutNext);
-    KActionCollection::setDefaultShortcut(action, QKeySequence(Qt::CTRL + Qt::Key_Right));
+    KActionCollection::setDefaultShortcut(action, QKeySequence(Qt::CTRL | Qt::Key_Right));
     hint = i18n("Go to Next Layout");
     action->setWhatsThis( hint );
 
     action = actionCollection()->addAction( QStringLiteral("layout_previous") );
     action->setText( i18n( "&Go to Previous" ) );
     connect(action, &QAction::triggered, this, &TopLevel::layoutPrevious);
-    KActionCollection::setDefaultShortcut(action, QKeySequence(Qt::CTRL + Qt::Key_Left));
+    KActionCollection::setDefaultShortcut(action, QKeySequence(Qt::CTRL | Qt::Key_Left));
     hint = i18n("Go to Previous Layout");
     action->setWhatsThis( hint );
 
@@ -588,7 +588,7 @@ void TopLevel::createMiscActions()
     connect( _paUp, &QAction::triggered,
              _stackSelection, &StackSelection::browserUp );
     actionCollection()->addAction( QStringLiteral("go_up"), _paUp );
-    KActionCollection::setDefaultShortcut(_paUp, QKeySequence(Qt::ALT + Qt::Key_Up));
+    KActionCollection::setDefaultShortcut(_paUp, QKeySequence(Qt::ALT | Qt::Key_Up));
     connect( _paUp->popupMenu(), &QMenu::aboutToShow,
              this, &TopLevel::upAboutToShow );
     connect( _paUp->popupMenu(), &QMenu::triggered,
@@ -605,7 +605,7 @@ void TopLevel::createMiscActions()
     connect( _paBack, &QAction::triggered,
              _stackSelection, &StackSelection::browserBack );
     actionCollection()->addAction( QStringLiteral("go_back"), _paBack );
-    KActionCollection::setDefaultShortcut(_paBack, QKeySequence(Qt::ALT + Qt::Key_Left));
+    KActionCollection::setDefaultShortcut(_paBack, QKeySequence(Qt::ALT | Qt::Key_Left));
     connect( _paBack->popupMenu(), &QMenu::aboutToShow,
              this, &TopLevel::backAboutToShow );
     connect( _paBack->popupMenu(), &QMenu::triggered,
@@ -619,7 +619,7 @@ void TopLevel::createMiscActions()
     connect( _paForward, &QAction::triggered,
              _stackSelection, &StackSelection::browserForward );
     actionCollection()->addAction( QStringLiteral("go_forward"), _paForward );
-    KActionCollection::setDefaultShortcut(_paForward, QKeySequence(Qt::ALT + Qt::Key_Right));
+    KActionCollection::setDefaultShortcut(_paForward, QKeySequence(Qt::ALT | Qt::Key_Right));
     connect( _paForward->popupMenu(), &QMenu::aboutToShow,
              this, &TopLevel::forwardAboutToShow );
     connect( _paForward->popupMenu(), &QMenu::triggered,
