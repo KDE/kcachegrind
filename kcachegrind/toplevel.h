@@ -147,12 +147,12 @@ public Q_SLOTS:
     void upAboutToShow();
     void upTriggered(QAction*);
 
-    bool setEventType(EventType*);
-    bool setEventType2(EventType*);
-    bool setEventType(QString);
-    bool setEventType2(QString);
-    bool setEventType(QAction*);
-    bool setEventType2(QAction*);
+    void setEventType(EventType*);
+    void setEventType2(EventType*);
+    void setEventType(QString);
+    void setEventType2(QString);
+    void setEventType(QAction*);
+    void setEventType2(QAction*);
     bool setGroupType(ProfileContext::Type);
     bool setGroupType(QString);
     bool setGroup(TraceCostItem*);

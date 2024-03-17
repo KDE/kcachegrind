@@ -955,7 +955,7 @@ void QCGTopLevel::exportGraph()
 }
 
 
-bool QCGTopLevel::setEventType(QString s)
+void QCGTopLevel::setEventType(QString s)
 {
     EventType* ct;
 
@@ -964,17 +964,17 @@ bool QCGTopLevel::setEventType(QString s)
     // if costtype with given name not found, use first available
     if (!ct && _data) ct = _data->eventTypes()->type(0);
 
-    return setEventType(ct);
+    setEventType(ct);
 }
 
-bool QCGTopLevel::setEventType2(QString s)
+void QCGTopLevel::setEventType2(QString s)
 {
     EventType* ct;
 
     // Special type tr("(Hidden)") gives 0
     ct = (_data) ? _data->eventTypes()->type(s) : nullptr;
 
-    return setEventType2(ct);
+    setEventType2(ct);
 }
 
 void QCGTopLevel::eventTypeSelected(const QString& s)
@@ -993,9 +993,10 @@ void QCGTopLevel::eventType2Selected(const QString& s)
     setEventType2(ct);
 }
 
-bool QCGTopLevel::setEventType(EventType* ct)
+void QCGTopLevel::setEventType(EventType* ct)
 {
-    if (_eventType == ct) return false;
+    if (_eventType == ct) return;
+
     _eventType = ct;
 
     if (ct) {
@@ -1009,13 +1010,12 @@ bool QCGTopLevel::setEventType(EventType* ct)
     _multiView->setEventType(_eventType);
 
     updateStatusBar();
-
-    return true;
 }
 
-bool QCGTopLevel::setEventType2(EventType* ct)
+void QCGTopLevel::setEventType2(EventType* ct)
 {
-    if (_eventType2 == ct) return false;
+    if (_eventType2 == ct) return;
+
     _eventType2 = ct;
 
     _partSelection->setEventType2(_eventType2);
@@ -1024,8 +1024,6 @@ bool QCGTopLevel::setEventType2(EventType* ct)
     _multiView->setEventType2(_eventType2);
 
     updateStatusBar();
-
-    return true;
 }
 
 
@@ -1440,9 +1438,10 @@ void QCGTopLevel::addEventTypeMenu(QMenu* popup, bool withCost2)
                          this, SLOT(setRelativeCost()));
 }
 
-bool QCGTopLevel::setEventType(QAction* action)
+void QCGTopLevel::setEventType(QAction* action)
 {
-    if (!_data) return false;
+    if (!_data) return;
+
     int id = action->data().toInt(nullptr);
 
     EventTypeSet* m = _data->eventTypes();
@@ -1450,12 +1449,14 @@ bool QCGTopLevel::setEventType(QAction* action)
     if (id >=100 && id<199) ct = m->realType(id-100);
     if (id >=200 && id<299) ct = m->derivedType(id-200);
 
-    return ct ? setEventType(ct) : false;
+    if (ct)
+        setEventType(ct);
 }
 
-bool QCGTopLevel::setEventType2(QAction* action)
+void QCGTopLevel::setEventType2(QAction* action)
 {
-    if (!_data) return false;
+    if (!_data) return;
+
     int id = action->data().toInt(nullptr);
 
     EventTypeSet* m = _data->eventTypes();
@@ -1463,7 +1464,7 @@ bool QCGTopLevel::setEventType2(QAction* action)
     if (id >=100 && id<199) ct = m->realType(id-100);
     if (id >=200 && id<299) ct = m->derivedType(id-200);
 
-    return setEventType2(ct);
+    setEventType2(ct);
 }
 
 void QCGTopLevel::addGoMenu(QMenu* popup)
