@@ -423,7 +423,7 @@ void TopLevel::createMiscActions()
     action->setIcon( QIcon::fromTheme(QStringLiteral("view-refresh")) );
     action->setText( i18nc("Reload a document", "&Reload" ) );
     connect(action, &QAction::triggered, this, &TopLevel::reload);
-    actionCollection()->setDefaultShortcut(action, KStandardShortcut::Reload);
+    actionCollection()->setDefaultShortcuts(action, KStandardShortcut::reload());
     hint = i18n("<b>Reload Profile Data</b>"
                 "<p>This loads any new created parts, too.</p>");
     action->setWhatsThis( hint );
