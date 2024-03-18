@@ -176,7 +176,7 @@ msgstr "%1 從 %2"
 
 #: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
 #: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
-#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
+#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:409
 msgctxt "QObject|"
 msgid "(unknown)"
 msgstr "（未知）"
@@ -1638,20 +1638,20 @@ msgctxt "InstrView|"
 msgid "Check that the ELF object used in the command exists."
 msgstr "請檢查命令中使用的 ELF 物件存在。"
 
-#: libviews/partgraph.cpp:154
+#: libviews/partgraph.cpp:155
 #, qt-format
 msgctxt "QObject|"
 msgid "Profile Part %1"
 msgstr "分析檔部件 %1"
 
 #
-#: libviews/partgraph.cpp:211
+#: libviews/partgraph.cpp:212
 msgctxt "QObject|"
 msgid "(no trace)"
 msgstr "（無追蹤）"
 
 #
-#: libviews/partgraph.cpp:214
+#: libviews/partgraph.cpp:215
 msgctxt "QObject|"
 msgid "(no part)"
 msgstr "（無部件）"
@@ -2283,62 +2283,62 @@ msgctxt "QObject|"
 msgid "No description available"
 msgstr "沒有可用的描述"
 
-#: libviews/treemap.cpp:1334
+#: libviews/treemap.cpp:1335
 #, qt-format
 msgctxt "TreeMapWidget|"
 msgid "Text %1"
 msgstr "文字 %1"
 
 #
-#: libviews/treemap.cpp:2854
+#: libviews/treemap.cpp:2860
 msgctxt "TreeMapWidget|"
 msgid "Recursive Bisection"
 msgstr "遞迴對切"
 
 #
-#: libviews/treemap.cpp:2855
+#: libviews/treemap.cpp:2861
 msgctxt "TreeMapWidget|"
 msgid "Columns"
 msgstr "欄位"
 
 #
-#: libviews/treemap.cpp:2856
+#: libviews/treemap.cpp:2862
 msgctxt "TreeMapWidget|"
 msgid "Rows"
 msgstr "列"
 
 #
-#: libviews/treemap.cpp:2857
+#: libviews/treemap.cpp:2863
 msgctxt "TreeMapWidget|"
 msgid "Always Best"
 msgstr "永遠最好的"
 
 #
-#: libviews/treemap.cpp:2858
+#: libviews/treemap.cpp:2864
 msgctxt "TreeMapWidget|"
 msgid "Best"
 msgstr "最好的"
 
 #
-#: libviews/treemap.cpp:2859
+#: libviews/treemap.cpp:2865
 msgctxt "TreeMapWidget|"
 msgid "Alternate (V)"
 msgstr "替代（垂直）"
 
 #
-#: libviews/treemap.cpp:2860
+#: libviews/treemap.cpp:2866
 msgctxt "TreeMapWidget|"
 msgid "Alternate (H)"
 msgstr "替代（水平）"
 
 #
-#: libviews/treemap.cpp:2861
+#: libviews/treemap.cpp:2867
 msgctxt "TreeMapWidget|"
 msgid "Horizontal"
 msgstr "水平"
 
 #
-#: libviews/treemap.cpp:2862
+#: libviews/treemap.cpp:2868
 msgctxt "TreeMapWidget|"
 msgid "Vertical"
 msgstr "垂直"

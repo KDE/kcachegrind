@@ -168,7 +168,7 @@ msgstr "%1 %2-დან"
 
 #: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
 #: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
-#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
+#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:409
 msgctxt "QObject|"
 msgid "(unknown)"
 msgstr "(უცნობია)"
@@ -1565,18 +1565,18 @@ msgctxt "InstrView|"
 msgid "Check that the ELF object used in the command exists."
 msgstr "შემოწმება, არსებობს თუ არა ბრძანებაში გამოყენებული ELF ობიექტი."
 
-#: libviews/partgraph.cpp:154
+#: libviews/partgraph.cpp:155
 #, qt-format
 msgctxt "QObject|"
 msgid "Profile Part %1"
 msgstr "პროფილის ნაწილი %1"
 
-#: libviews/partgraph.cpp:211
+#: libviews/partgraph.cpp:212
 msgctxt "QObject|"
 msgid "(no trace)"
 msgstr "(ტრეისის გარეშე)"
 
-#: libviews/partgraph.cpp:214
+#: libviews/partgraph.cpp:215
 msgctxt "QObject|"
 msgid "(no part)"
 msgstr "(ნაწილის გარეშე)"
@@ -2151,53 +2151,53 @@ msgctxt "QObject|"
 msgid "No description available"
 msgstr "აღწერის გარეშე"
 
-#: libviews/treemap.cpp:1334
+#: libviews/treemap.cpp:1335
 #, qt-format
 msgctxt "TreeMapWidget|"
 msgid "Text %1"
 msgstr "ტექტი %1"
 
-#: libviews/treemap.cpp:2854
+#: libviews/treemap.cpp:2860
 msgctxt "TreeMapWidget|"
 msgid "Recursive Bisection"
 msgstr "რეკურსიული ბისექცია"
 
-#: libviews/treemap.cpp:2855
+#: libviews/treemap.cpp:2861
 msgctxt "TreeMapWidget|"
 msgid "Columns"
 msgstr "სვეტები"
 
-#: libviews/treemap.cpp:2856
+#: libviews/treemap.cpp:2862
 msgctxt "TreeMapWidget|"
 msgid "Rows"
 msgstr "სტრიქონები"
 
-#: libviews/treemap.cpp:2857
+#: libviews/treemap.cpp:2863
 msgctxt "TreeMapWidget|"
 msgid "Always Best"
 msgstr "ყოველთვის საუკეთესო"
 
-#: libviews/treemap.cpp:2858
+#: libviews/treemap.cpp:2864
 msgctxt "TreeMapWidget|"
 msgid "Best"
 msgstr "საუკეთესო"
 
-#: libviews/treemap.cpp:2859
+#: libviews/treemap.cpp:2865
 msgctxt "TreeMapWidget|"
 msgid "Alternate (V)"
 msgstr "ალტერნატიული (V)"
 
-#: libviews/treemap.cpp:2860
+#: libviews/treemap.cpp:2866
 msgctxt "TreeMapWidget|"
 msgid "Alternate (H)"
 msgstr "ალტერნატიული (H)"
 
-#: libviews/treemap.cpp:2861
+#: libviews/treemap.cpp:2867
 msgctxt "TreeMapWidget|"
 msgid "Horizontal"
 msgstr "ჰორიზონტალური"
 
-#: libviews/treemap.cpp:2862
+#: libviews/treemap.cpp:2868
 msgctxt "TreeMapWidget|"
 msgid "Vertical"
 msgstr "ვერტიკალური"

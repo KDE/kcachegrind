@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-04 01:36+0000\n"
+"POT-Creation-Date: 2024-03-18 00:39+0000\n"
 "PO-Revision-Date: 2017-02-06 10:59+0200\n"
 "Last-Translator: Petros Vidalis <pvidalis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -1024,7 +1024,7 @@ msgstr "Μετάβαση πίσω στο ιστορικό επιλογής συ�
 msgid "Go forward in function selection history"
 msgstr "Μετάβαση μπροστά στο ιστορικό επιλογής συνάρτησης"
 
-#: kcachegrind/toplevel.cpp:632 kcachegrind/toplevel.cpp:1505
+#: kcachegrind/toplevel.cpp:632 kcachegrind/toplevel.cpp:1503
 #, kde-format
 msgid "Primary Event Type"
 msgstr "Πρωτεύων τύπος γεγονότος"
@@ -1034,7 +1034,7 @@ msgstr "Πρωτεύων τύπος γεγονότος"
 msgid "Select primary event type of costs"
 msgstr "Επιλογή πρωτεύοντος τύπου γεγονότος για τα κόστη"
 
-#: kcachegrind/toplevel.cpp:655 kcachegrind/toplevel.cpp:1510
+#: kcachegrind/toplevel.cpp:655 kcachegrind/toplevel.cpp:1508
 #, kde-format
 msgid "Secondary Event Type"
 msgstr "Δευτερεύων τύπος γεγονότος"
@@ -1109,98 +1109,98 @@ msgstr ""
 msgid "Add Callgrind Profile Data"
 msgstr "Προσθήκη δεδομένων προφίλ Callgrind"
 
-#: kcachegrind/toplevel.cpp:1129 kcachegrind/toplevel.cpp:1458
+#: kcachegrind/toplevel.cpp:1129 kcachegrind/toplevel.cpp:1456
 #, kde-format
 msgid "(Hidden)"
 msgstr "(Κρυφό)"
 
-#: kcachegrind/toplevel.cpp:1515
+#: kcachegrind/toplevel.cpp:1513
 #, kde-format
 msgid "Hide"
 msgstr "Απόκρυψη"
 
-#: kcachegrind/toplevel.cpp:1557
+#: kcachegrind/toplevel.cpp:1555
 #, kde-format
 msgid "Show Absolute Cost"
 msgstr "Εμφάνιση απόλυτου κόστους"
 
-#: kcachegrind/toplevel.cpp:1560
+#: kcachegrind/toplevel.cpp:1558
 #, kde-format
 msgid "Show Relative Cost"
 msgstr "Εμφάνιση σχετικού κόστους"
 
-#: kcachegrind/toplevel.cpp:1592
+#: kcachegrind/toplevel.cpp:1593
 #, kde-format
 msgid "Go Back"
 msgstr "Μετάβαση πίσω"
 
-#: kcachegrind/toplevel.cpp:1593
+#: kcachegrind/toplevel.cpp:1594
 #, kde-format
 msgid "Go Forward"
 msgstr "Μετάβαση μπροστά"
 
-#: kcachegrind/toplevel.cpp:1594
+#: kcachegrind/toplevel.cpp:1595
 #, kde-format
 msgid "Go Up"
 msgstr "Μετάβαση πάνω"
 
-#: kcachegrind/toplevel.cpp:1806
+#: kcachegrind/toplevel.cpp:1807
 #, kde-format
 msgid "Layout Count: %1"
 msgstr "Αριθμός διατάξεων: %1"
 
-#: kcachegrind/toplevel.cpp:1813
+#: kcachegrind/toplevel.cpp:1814
 #, kde-format
 msgid "No profile data file loaded."
 msgstr "Δε φορτώθηκε αρχείο δεδομένων προφίλ."
 
-#: kcachegrind/toplevel.cpp:1822
+#: kcachegrind/toplevel.cpp:1823
 #, kde-format
 msgid "Total %1 Cost: %2"
 msgstr "Σύνολο %1 Κόστος: %2"
 
-#: kcachegrind/toplevel.cpp:1834
+#: kcachegrind/toplevel.cpp:1835
 #, kde-format
 msgid "No event type selected"
 msgstr "Δεν επιλέχθηκε τύπος γεγονότος"
 
-#: kcachegrind/toplevel.cpp:2012
+#: kcachegrind/toplevel.cpp:2013
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
 msgstr "Αδυναμία προσδιορισμού του PID του λήπτη για την αποτύπωση αίτησης"
 
-#: kcachegrind/toplevel.cpp:2058
+#: kcachegrind/toplevel.cpp:2059
 #, kde-format
 msgid "Error running callgrind_control"
 msgstr "Σφάλμα εκτέλεσης callgrind_control"
 
-#: kcachegrind/toplevel.cpp:2097 kcachegrind/toplevel.cpp:2134
-#: kcachegrind/toplevel.cpp:2171
+#: kcachegrind/toplevel.cpp:2098 kcachegrind/toplevel.cpp:2135
+#: kcachegrind/toplevel.cpp:2172
 #, kde-format
 msgid "(No Stack)"
 msgstr "(Χωρίς στοίβα)"
 
-#: kcachegrind/toplevel.cpp:2103
+#: kcachegrind/toplevel.cpp:2104
 #, kde-format
 msgid "(No next function)"
 msgstr "(Χωρίς επόμενη συνάρτηση)"
 
-#: kcachegrind/toplevel.cpp:2140
+#: kcachegrind/toplevel.cpp:2141
 #, kde-format
 msgid "(No previous function)"
 msgstr "(Χωρίς προηγούμενη συνάρτηση)"
 
-#: kcachegrind/toplevel.cpp:2176
+#: kcachegrind/toplevel.cpp:2177
 #, kde-format
 msgid "(No Function Up)"
 msgstr "(Χωρίς άνω συνάρτηση)"
 
-#: kcachegrind/toplevel.cpp:2308 kcachegrind/toplevel.cpp:2322
+#: kcachegrind/toplevel.cpp:2309 kcachegrind/toplevel.cpp:2323
 #, kde-format
 msgid "Loading %1"
 msgstr "Φόρτωση %1"
 
-#: kcachegrind/toplevel.cpp:2316
+#: kcachegrind/toplevel.cpp:2317
 #, kde-format
 msgid "Error loading %1: %2"
 msgstr "Σφάλμα φόρτωσης %1: %2"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-04 01:36+0000\n"
+"POT-Creation-Date: 2024-03-18 00:39+0000\n"
 "PO-Revision-Date: 2007-06-25 11:21+0300\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@licei2.com>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -964,7 +964,7 @@ msgstr "Перайсці назад па гісторыі вылучэння ф�
 msgid "Go forward in function selection history"
 msgstr "Перайсці наперад па гісторыі вылучэння функцый"
 
-#: kcachegrind/toplevel.cpp:632 kcachegrind/toplevel.cpp:1505
+#: kcachegrind/toplevel.cpp:632 kcachegrind/toplevel.cpp:1503
 #, fuzzy, kde-format
 msgid "Primary Event Type"
 msgstr "Першасны тып падзеі"
@@ -974,7 +974,7 @@ msgstr "Першасны тып падзеі"
 msgid "Select primary event type of costs"
 msgstr "Вылучыць галоўны тып падзеі коштаў"
 
-#: kcachegrind/toplevel.cpp:655 kcachegrind/toplevel.cpp:1510
+#: kcachegrind/toplevel.cpp:655 kcachegrind/toplevel.cpp:1508
 #, fuzzy, kde-format
 msgid "Secondary Event Type"
 msgstr "Другасны тып падзеі"
@@ -1043,98 +1043,98 @@ msgstr ""
 msgid "Add Callgrind Profile Data"
 msgstr "Дадаць дадзеныя прафіляванні Callgrind"
 
-#: kcachegrind/toplevel.cpp:1129 kcachegrind/toplevel.cpp:1458
+#: kcachegrind/toplevel.cpp:1129 kcachegrind/toplevel.cpp:1456
 #, fuzzy, kde-format
 msgid "(Hidden)"
 msgstr "(утоена)"
 
-#: kcachegrind/toplevel.cpp:1515
+#: kcachegrind/toplevel.cpp:1513
 #, fuzzy, kde-format
 msgid "Hide"
 msgstr "Схаваць"
 
-#: kcachegrind/toplevel.cpp:1557
+#: kcachegrind/toplevel.cpp:1555
 #, fuzzy, kde-format
 msgid "Show Absolute Cost"
 msgstr "Паказаць абсалютны кошт"
 
-#: kcachegrind/toplevel.cpp:1560
+#: kcachegrind/toplevel.cpp:1558
 #, fuzzy, kde-format
 msgid "Show Relative Cost"
 msgstr "Паказаць адносны кошт"
 
-#: kcachegrind/toplevel.cpp:1592
+#: kcachegrind/toplevel.cpp:1593
 #, fuzzy, kde-format
 msgid "Go Back"
 msgstr "Назад"
 
-#: kcachegrind/toplevel.cpp:1593
+#: kcachegrind/toplevel.cpp:1594
 #, fuzzy, kde-format
 msgid "Go Forward"
 msgstr "Наперад"
 
-#: kcachegrind/toplevel.cpp:1594
+#: kcachegrind/toplevel.cpp:1595
 #, fuzzy, kde-format
 msgid "Go Up"
 msgstr "Уверх"
 
-#: kcachegrind/toplevel.cpp:1806
+#: kcachegrind/toplevel.cpp:1807
 #, fuzzy, kde-format
 msgid "Layout Count: %1"
 msgstr "Колькасць размяшчэнняў: %1"
 
-#: kcachegrind/toplevel.cpp:1813
+#: kcachegrind/toplevel.cpp:1814
 #, fuzzy, kde-format
 msgid "No profile data file loaded."
 msgstr "Няма загружаных дадзеных для прафілявання."
 
-#: kcachegrind/toplevel.cpp:1822
+#: kcachegrind/toplevel.cpp:1823
 #, fuzzy, kde-format
 msgid "Total %1 Cost: %2"
 msgstr "Усяго %1 Кошт %2"
 
-#: kcachegrind/toplevel.cpp:1834
+#: kcachegrind/toplevel.cpp:1835
 #, fuzzy, kde-format
 msgid "No event type selected"
 msgstr "Няма вылучаных тыпаў падзей"
 
-#: kcachegrind/toplevel.cpp:2012
+#: kcachegrind/toplevel.cpp:2013
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:2058
+#: kcachegrind/toplevel.cpp:2059
 #, kde-format
 msgid "Error running callgrind_control"
 msgstr ""
 
-#: kcachegrind/toplevel.cpp:2097 kcachegrind/toplevel.cpp:2134
-#: kcachegrind/toplevel.cpp:2171
+#: kcachegrind/toplevel.cpp:2098 kcachegrind/toplevel.cpp:2135
+#: kcachegrind/toplevel.cpp:2172
 #, fuzzy, kde-format
 msgid "(No Stack)"
 msgstr "(Няма стэка)"
 
-#: kcachegrind/toplevel.cpp:2103
+#: kcachegrind/toplevel.cpp:2104
 #, fuzzy, kde-format
 msgid "(No next function)"
 msgstr "(Няма наступнай функцыі)"
 
-#: kcachegrind/toplevel.cpp:2140
+#: kcachegrind/toplevel.cpp:2141
 #, fuzzy, kde-format
 msgid "(No previous function)"
 msgstr "(Няма папярэдняй функцыі)"
 
-#: kcachegrind/toplevel.cpp:2176
+#: kcachegrind/toplevel.cpp:2177
 #, fuzzy, kde-format
 msgid "(No Function Up)"
 msgstr "(Няма верхняй функцыі)"
 
-#: kcachegrind/toplevel.cpp:2308 kcachegrind/toplevel.cpp:2322
+#: kcachegrind/toplevel.cpp:2309 kcachegrind/toplevel.cpp:2323
 #, fuzzy, kde-format
 msgid "Loading %1"
 msgstr "Загрузка %1"
 
-#: kcachegrind/toplevel.cpp:2316
+#: kcachegrind/toplevel.cpp:2317
 #, fuzzy, kde-format
 msgid "Error loading %1: %2"
 msgstr "Загрузка %1"

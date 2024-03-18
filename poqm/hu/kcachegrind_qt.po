@@ -228,7 +228,7 @@ msgstr "%1 %2-ből"
 
 #: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
 #: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
-#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
+#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:409
 #, fuzzy
 #| msgid "(unknown)"
 msgctxt "QObject|"
@@ -2167,21 +2167,21 @@ msgctxt "InstrView|"
 msgid "Check that the ELF object used in the command exists."
 msgstr "Ellenőrizze le, hogy a parancsban használt ELF objektum létezik-e."
 
-#: libviews/partgraph.cpp:154
+#: libviews/partgraph.cpp:155
 #, fuzzy, qt-format
 #| msgid "Profile Part %1"
 msgctxt "QObject|"
 msgid "Profile Part %1"
 msgstr "Profil rész %1"
 
-#: libviews/partgraph.cpp:211
+#: libviews/partgraph.cpp:212
 #, fuzzy
 #| msgid "(no trace)"
 msgctxt "QObject|"
 msgid "(no trace)"
 msgstr "(nincsen követés)"
 
-#: libviews/partgraph.cpp:214
+#: libviews/partgraph.cpp:215
 #, fuzzy
 #| msgid "(no part)"
 msgctxt "QObject|"
@@ -2952,53 +2952,53 @@ msgctxt "QObject|"
 msgid "No description available"
 msgstr "Nem érhető el leírás"
 
-#: libviews/treemap.cpp:1334
+#: libviews/treemap.cpp:1335
 #, qt-format
 msgctxt "TreeMapWidget|"
 msgid "Text %1"
 msgstr "Szöveg %1"
 
-#: libviews/treemap.cpp:2854
+#: libviews/treemap.cpp:2860
 msgctxt "TreeMapWidget|"
 msgid "Recursive Bisection"
 msgstr "Rekurzív biszekció"
 
-#: libviews/treemap.cpp:2855
+#: libviews/treemap.cpp:2861
 msgctxt "TreeMapWidget|"
 msgid "Columns"
 msgstr "Oszlopok"
 
-#: libviews/treemap.cpp:2856
+#: libviews/treemap.cpp:2862
 msgctxt "TreeMapWidget|"
 msgid "Rows"
 msgstr "Sorok"
 
-#: libviews/treemap.cpp:2857
+#: libviews/treemap.cpp:2863
 msgctxt "TreeMapWidget|"
 msgid "Always Best"
 msgstr "Mindig a legjobb"
 
-#: libviews/treemap.cpp:2858
+#: libviews/treemap.cpp:2864
 msgctxt "TreeMapWidget|"
 msgid "Best"
 msgstr "Legjobb"
 
-#: libviews/treemap.cpp:2859
+#: libviews/treemap.cpp:2865
 msgctxt "TreeMapWidget|"
 msgid "Alternate (V)"
 msgstr "Váltakozó (függőlegesen)"
 
-#: libviews/treemap.cpp:2860
+#: libviews/treemap.cpp:2866
 msgctxt "TreeMapWidget|"
 msgid "Alternate (H)"
 msgstr "Váltakozó (vízszintesen)"
 
-#: libviews/treemap.cpp:2861
+#: libviews/treemap.cpp:2867
 msgctxt "TreeMapWidget|"
 msgid "Horizontal"
 msgstr "Vízszintes"
 
-#: libviews/treemap.cpp:2862
+#: libviews/treemap.cpp:2868
 #, fuzzy
 #| msgid "Vertical"
 msgctxt "TreeMapWidget|"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdesdk-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-04 01:36+0000\n"
+"POT-Creation-Date: 2024-03-18 00:39+0000\n"
 "PO-Revision-Date: 2024-02-09 17:45+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1013,7 +1013,7 @@ msgstr "İşlev seçim geçmişinde geriye git"
 msgid "Go forward in function selection history"
 msgstr "İşlev seçim geçmişinde ileri git"
 
-#: kcachegrind/toplevel.cpp:632 kcachegrind/toplevel.cpp:1505
+#: kcachegrind/toplevel.cpp:632 kcachegrind/toplevel.cpp:1503
 #, kde-format
 msgid "Primary Event Type"
 msgstr "Birincil Olay Türü"
@@ -1023,7 +1023,7 @@ msgstr "Birincil Olay Türü"
 msgid "Select primary event type of costs"
 msgstr "Birincil olay türünün maliyetini seç"
 
-#: kcachegrind/toplevel.cpp:655 kcachegrind/toplevel.cpp:1510
+#: kcachegrind/toplevel.cpp:655 kcachegrind/toplevel.cpp:1508
 #, kde-format
 msgid "Secondary Event Type"
 msgstr "İkincil Olay Türü"
@@ -1096,98 +1096,98 @@ msgstr ""
 msgid "Add Callgrind Profile Data"
 msgstr "Callgrind Profil Verisi Ekle"
 
-#: kcachegrind/toplevel.cpp:1129 kcachegrind/toplevel.cpp:1458
+#: kcachegrind/toplevel.cpp:1129 kcachegrind/toplevel.cpp:1456
 #, kde-format
 msgid "(Hidden)"
 msgstr "(Gizli)"
 
-#: kcachegrind/toplevel.cpp:1515
+#: kcachegrind/toplevel.cpp:1513
 #, kde-format
 msgid "Hide"
 msgstr "Gizle"
 
-#: kcachegrind/toplevel.cpp:1557
+#: kcachegrind/toplevel.cpp:1555
 #, kde-format
 msgid "Show Absolute Cost"
 msgstr "Mutlak Maliyeti Göster"
 
-#: kcachegrind/toplevel.cpp:1560
+#: kcachegrind/toplevel.cpp:1558
 #, kde-format
 msgid "Show Relative Cost"
 msgstr "Göreceli Maliyeti Göster"
 
-#: kcachegrind/toplevel.cpp:1592
+#: kcachegrind/toplevel.cpp:1593
 #, kde-format
 msgid "Go Back"
 msgstr "Geri Git"
 
-#: kcachegrind/toplevel.cpp:1593
+#: kcachegrind/toplevel.cpp:1594
 #, kde-format
 msgid "Go Forward"
 msgstr "İleri Git"
 
-#: kcachegrind/toplevel.cpp:1594
+#: kcachegrind/toplevel.cpp:1595
 #, kde-format
 msgid "Go Up"
 msgstr "Yukarı Git"
 
-#: kcachegrind/toplevel.cpp:1806
+#: kcachegrind/toplevel.cpp:1807
 #, kde-format
 msgid "Layout Count: %1"
 msgstr "Yerleşim sayısı: %1"
 
-#: kcachegrind/toplevel.cpp:1813
+#: kcachegrind/toplevel.cpp:1814
 #, kde-format
 msgid "No profile data file loaded."
 msgstr "Hiç profil veri dosyası yüklenmedi."
 
-#: kcachegrind/toplevel.cpp:1822
+#: kcachegrind/toplevel.cpp:1823
 #, kde-format
 msgid "Total %1 Cost: %2"
 msgstr "Toplam %1 Değer: %2"
 
-#: kcachegrind/toplevel.cpp:1834
+#: kcachegrind/toplevel.cpp:1835
 #, kde-format
 msgid "No event type selected"
 msgstr "Olay türü seçilmedi"
 
-#: kcachegrind/toplevel.cpp:2012
+#: kcachegrind/toplevel.cpp:2013
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
 msgstr "Döküm isteği için alıcı PID anlaşılamadı"
 
-#: kcachegrind/toplevel.cpp:2058
+#: kcachegrind/toplevel.cpp:2059
 #, kde-format
 msgid "Error running callgrind_control"
 msgstr "Callgrind_control çalışma hatası"
 
-#: kcachegrind/toplevel.cpp:2097 kcachegrind/toplevel.cpp:2134
-#: kcachegrind/toplevel.cpp:2171
+#: kcachegrind/toplevel.cpp:2098 kcachegrind/toplevel.cpp:2135
+#: kcachegrind/toplevel.cpp:2172
 #, kde-format
 msgid "(No Stack)"
 msgstr "(Yığın Yok)"
 
-#: kcachegrind/toplevel.cpp:2103
+#: kcachegrind/toplevel.cpp:2104
 #, kde-format
 msgid "(No next function)"
 msgstr "(Sonraki işlev yok)"
 
-#: kcachegrind/toplevel.cpp:2140
+#: kcachegrind/toplevel.cpp:2141
 #, kde-format
 msgid "(No previous function)"
 msgstr "(Önceki işlev yok)"
 
-#: kcachegrind/toplevel.cpp:2176
+#: kcachegrind/toplevel.cpp:2177
 #, kde-format
 msgid "(No Function Up)"
 msgstr "(Üstteki İşlev Yok)"
 
-#: kcachegrind/toplevel.cpp:2308 kcachegrind/toplevel.cpp:2322
+#: kcachegrind/toplevel.cpp:2309 kcachegrind/toplevel.cpp:2323
 #, kde-format
 msgid "Loading %1"
 msgstr "%1 yükleniyor"
 
-#: kcachegrind/toplevel.cpp:2316
+#: kcachegrind/toplevel.cpp:2317
 #, kde-format
 msgid "Error loading %1: %2"
 msgstr "%1 yüklenemedi: %2"

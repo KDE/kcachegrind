@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-04 01:36+0000\n"
+"POT-Creation-Date: 2024-03-18 00:39+0000\n"
 "PO-Revision-Date: 2016-11-20 14:15+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
@@ -1029,7 +1029,7 @@ msgstr "Ga terug in functieselectiegeschiedenis"
 msgid "Go forward in function selection history"
 msgstr "Ga vooruit in functieselectiegeschiedenis"
 
-#: kcachegrind/toplevel.cpp:632 kcachegrind/toplevel.cpp:1505
+#: kcachegrind/toplevel.cpp:632 kcachegrind/toplevel.cpp:1503
 #, kde-format
 msgid "Primary Event Type"
 msgstr "Primair gebeurtenistype"
@@ -1039,7 +1039,7 @@ msgstr "Primair gebeurtenistype"
 msgid "Select primary event type of costs"
 msgstr "Primair gebeurtenistype van kosten selecteren"
 
-#: kcachegrind/toplevel.cpp:655 kcachegrind/toplevel.cpp:1510
+#: kcachegrind/toplevel.cpp:655 kcachegrind/toplevel.cpp:1508
 #, kde-format
 msgid "Secondary Event Type"
 msgstr "Secundair gebeurtenistype"
@@ -1111,98 +1111,98 @@ msgstr ""
 msgid "Add Callgrind Profile Data"
 msgstr "Cachegrind profielgegevens toevoegen"
 
-#: kcachegrind/toplevel.cpp:1129 kcachegrind/toplevel.cpp:1458
+#: kcachegrind/toplevel.cpp:1129 kcachegrind/toplevel.cpp:1456
 #, kde-format
 msgid "(Hidden)"
 msgstr "(Verborgen)"
 
-#: kcachegrind/toplevel.cpp:1515
+#: kcachegrind/toplevel.cpp:1513
 #, kde-format
 msgid "Hide"
 msgstr "Verbergen"
 
-#: kcachegrind/toplevel.cpp:1557
+#: kcachegrind/toplevel.cpp:1555
 #, kde-format
 msgid "Show Absolute Cost"
 msgstr "Absolute kosten tonen"
 
-#: kcachegrind/toplevel.cpp:1560
+#: kcachegrind/toplevel.cpp:1558
 #, kde-format
 msgid "Show Relative Cost"
 msgstr "Relatieve kosten tonen"
 
-#: kcachegrind/toplevel.cpp:1592
+#: kcachegrind/toplevel.cpp:1593
 #, kde-format
 msgid "Go Back"
 msgstr "Ga terug"
 
-#: kcachegrind/toplevel.cpp:1593
+#: kcachegrind/toplevel.cpp:1594
 #, kde-format
 msgid "Go Forward"
 msgstr "Ga verder"
 
-#: kcachegrind/toplevel.cpp:1594
+#: kcachegrind/toplevel.cpp:1595
 #, kde-format
 msgid "Go Up"
 msgstr "Ga omhoog"
 
-#: kcachegrind/toplevel.cpp:1806
+#: kcachegrind/toplevel.cpp:1807
 #, kde-format
 msgid "Layout Count: %1"
 msgstr "Aantal layouts: %1"
 
-#: kcachegrind/toplevel.cpp:1813
+#: kcachegrind/toplevel.cpp:1814
 #, kde-format
 msgid "No profile data file loaded."
 msgstr "Geen profielgegevensbestand geladen."
 
-#: kcachegrind/toplevel.cpp:1822
+#: kcachegrind/toplevel.cpp:1823
 #, kde-format
 msgid "Total %1 Cost: %2"
 msgstr "Totaal %1 kosten %2"
 
-#: kcachegrind/toplevel.cpp:1834
+#: kcachegrind/toplevel.cpp:1835
 #, kde-format
 msgid "No event type selected"
 msgstr "Geen gebeurtenistype geselecteerd"
 
-#: kcachegrind/toplevel.cpp:2012
+#: kcachegrind/toplevel.cpp:2013
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
 msgstr "Kan de PID van de ontvanger voor het dumpverzoek niet bepalen"
 
-#: kcachegrind/toplevel.cpp:2058
+#: kcachegrind/toplevel.cpp:2059
 #, kde-format
 msgid "Error running callgrind_control"
 msgstr "Fout bij het uitvoeren van callgrind_control"
 
-#: kcachegrind/toplevel.cpp:2097 kcachegrind/toplevel.cpp:2134
-#: kcachegrind/toplevel.cpp:2171
+#: kcachegrind/toplevel.cpp:2098 kcachegrind/toplevel.cpp:2135
+#: kcachegrind/toplevel.cpp:2172
 #, kde-format
 msgid "(No Stack)"
 msgstr "(Geen stack)"
 
-#: kcachegrind/toplevel.cpp:2103
+#: kcachegrind/toplevel.cpp:2104
 #, kde-format
 msgid "(No next function)"
 msgstr "(Geen volgende functie)"
 
-#: kcachegrind/toplevel.cpp:2140
+#: kcachegrind/toplevel.cpp:2141
 #, kde-format
 msgid "(No previous function)"
 msgstr "(Geen vorige functie)"
 
-#: kcachegrind/toplevel.cpp:2176
+#: kcachegrind/toplevel.cpp:2177
 #, kde-format
 msgid "(No Function Up)"
 msgstr "(Geen bovenliggende functie)"
 
-#: kcachegrind/toplevel.cpp:2308 kcachegrind/toplevel.cpp:2322
+#: kcachegrind/toplevel.cpp:2309 kcachegrind/toplevel.cpp:2323
 #, kde-format
 msgid "Loading %1"
 msgstr "%1 wordt geladen"
 
-#: kcachegrind/toplevel.cpp:2316
+#: kcachegrind/toplevel.cpp:2317
 #, kde-format
 msgid "Error loading %1: %2"
 msgstr "Fout bij het laden van %1: %2"

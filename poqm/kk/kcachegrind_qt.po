@@ -232,7 +232,7 @@ msgstr "%2 дегеннен %1"
 
 #: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
 #: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
-#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:408
+#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:409
 #, fuzzy
 #| msgid "(unknown)"
 msgctxt "QObject|"
@@ -2156,21 +2156,21 @@ msgctxt "InstrView|"
 msgid "Check that the ELF object used in the command exists."
 msgstr "Командада қолданған ELF - объекті бар ма, тексеріңіз."
 
-#: libviews/partgraph.cpp:154
+#: libviews/partgraph.cpp:155
 #, fuzzy, qt-format
 #| msgid "Profile Part %1"
 msgctxt "QObject|"
 msgid "Profile Part %1"
 msgstr "%1 профиль бөлшегі"
 
-#: libviews/partgraph.cpp:211
+#: libviews/partgraph.cpp:212
 #, fuzzy
 #| msgid "(no trace)"
 msgctxt "QObject|"
 msgid "(no trace)"
 msgstr "(қадағалау хаттамасыз)"
 
-#: libviews/partgraph.cpp:214
+#: libviews/partgraph.cpp:215
 #, fuzzy
 #| msgid "(no part)"
 msgctxt "QObject|"
@@ -2977,70 +2977,70 @@ msgctxt "QObject|"
 msgid "No description available"
 msgstr "Сипаттамасы жоқ"
 
-#: libviews/treemap.cpp:1334
+#: libviews/treemap.cpp:1335
 #, fuzzy, qt-format
 #| msgid "Text %1"
 msgctxt "TreeMapWidget|"
 msgid "Text %1"
 msgstr "%1 мәтіні"
 
-#: libviews/treemap.cpp:2854
+#: libviews/treemap.cpp:2860
 #, fuzzy
 #| msgid "Recursive Bisection"
 msgctxt "TreeMapWidget|"
 msgid "Recursive Bisection"
 msgstr "Рекурсивті қақ бөлу"
 
-#: libviews/treemap.cpp:2855
+#: libviews/treemap.cpp:2861
 #, fuzzy
 #| msgid "Columns"
 msgctxt "TreeMapWidget|"
 msgid "Columns"
 msgstr "Бағандар"
 
-#: libviews/treemap.cpp:2856
+#: libviews/treemap.cpp:2862
 #, fuzzy
 #| msgid "Rows"
 msgctxt "TreeMapWidget|"
 msgid "Rows"
 msgstr "Жолдар"
 
-#: libviews/treemap.cpp:2857
+#: libviews/treemap.cpp:2863
 #, fuzzy
 #| msgid "Always Best"
 msgctxt "TreeMapWidget|"
 msgid "Always Best"
 msgstr "Әрқашанда шақтау"
 
-#: libviews/treemap.cpp:2858
+#: libviews/treemap.cpp:2864
 #, fuzzy
 #| msgid "Best"
 msgctxt "TreeMapWidget|"
 msgid "Best"
 msgstr "Шақтау"
 
-#: libviews/treemap.cpp:2859
+#: libviews/treemap.cpp:2865
 #, fuzzy
 #| msgid "Alternate (V)"
 msgctxt "TreeMapWidget|"
 msgid "Alternate (V)"
 msgstr "Кезектестіру (тігінен)"
 
-#: libviews/treemap.cpp:2860
+#: libviews/treemap.cpp:2866
 #, fuzzy
 #| msgid "Alternate (H)"
 msgctxt "TreeMapWidget|"
 msgid "Alternate (H)"
 msgstr "Кезектестіру (жатығынан)"
 
-#: libviews/treemap.cpp:2861
+#: libviews/treemap.cpp:2867
 #, fuzzy
 #| msgid "Horizontal"
 msgctxt "TreeMapWidget|"
 msgid "Horizontal"
 msgstr "Жатық"
 
-#: libviews/treemap.cpp:2862
+#: libviews/treemap.cpp:2868
 #, fuzzy
 #| msgid "Vertical"
 msgctxt "TreeMapWidget|"
