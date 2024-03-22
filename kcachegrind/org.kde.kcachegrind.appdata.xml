@@ -145,6 +145,7 @@
           including call graph visualisations and source/disassembler annotation.</li>
       <li xml:lang="ca">El KCachegrind visualitza les anàlisis del rendiment (és a dir, característiques en temps d'execució) de les aplicacions en diverses maneres, incloent-hi les visualitzacions de les gràfiques de crides i anotacions del codi font/desassemblador.</li>
       <li xml:lang="ca-valencia">KCachegrind visualitza les anàlisis del rendiment (és a dir, característiques en temps d'execució) de les aplicacions en diverses maneres, incloent-hi les visualitzacions de les gràfiques de crides i anotacions del codi font/desassemblador.</li>
+      <li xml:lang="eo">KCachegrind bildigas profilojn (t.e. rultempajn karakterizaĵojn) de aplikoj laŭ diversaj manieroj, inkluzive de vokografeaj bildigoj kaj fonta/malasemblila komentario.</li>
       <li xml:lang="es">KCachegrind visualiza análisis de rendimiento (es decir, características en tiempo de ejecución) de las aplicaciones de diversos modos, incluyendo visualizaciones de gráficos de llamadas y anotaciones de código fuente/desensamblador.</li>
       <li xml:lang="fr">KCachegrind permet d'afficher les caractéristiques d'exécution (le profilage) d'applications de nombreuses manières, notamment en affichant le graphe d'appels et les annotations des sources et du désassembleur.</li>
       <li xml:lang="ia">KCachegrind visualisa profilos (.e. characteristicas in tempore de execution) de applicationes in varie modos, includente visualisationes  e annotation de fonte/disassemblator.</li>
