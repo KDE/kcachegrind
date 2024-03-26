@@ -850,7 +850,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
 
     // and run...
     QProcess objdump;
-    objdump.start(objdumpCmd);
+    objdump.startCommand(objdumpCmd);
     if (!objdump.waitForStarted() ||
         !objdump.waitForFinished()) {
 
