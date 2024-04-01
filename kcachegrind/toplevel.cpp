@@ -2086,7 +2086,7 @@ void TopLevel::ccExit(int exitCode, QProcess::ExitStatus s)
 
 void TopLevel::forwardAboutToShow()
 {
-    QMenu *popup = _paForward->menu();
+    QMenu *popup = _paForward->popupMenu();
 
     popup->clear();
     StackBrowser* b = _stackSelection ? _stackSelection->browser() : nullptr;
@@ -2123,7 +2123,7 @@ void TopLevel::forwardAboutToShow()
 
 void TopLevel::backAboutToShow()
 {
-    QMenu *popup = _paBack->menu();
+    QMenu *popup = _paBack->popupMenu();
 
     popup->clear();
     StackBrowser* b = _stackSelection ? _stackSelection->browser() : nullptr;
@@ -2160,7 +2160,7 @@ void TopLevel::backAboutToShow()
 
 void TopLevel::upAboutToShow()
 {
-    QMenu *popup = _paUp->menu();
+    QMenu *popup = _paUp->popupMenu();
 
     popup->clear();
     StackBrowser* b = _stackSelection ? _stackSelection->browser() : nullptr;
