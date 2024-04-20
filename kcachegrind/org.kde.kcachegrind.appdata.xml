@@ -359,9 +359,9 @@
   <update_contact>Josef.Weidendorfer_at_gmx.de</update_contact>
   <provides>
     <binary>kcachegrind</binary>
-    <id>org.kde.kcachgrind.desktop</id>
+    <id>org.kde.kcachegrind.desktop</id>
   </provides>
-  <launchable type="desktop-id">org.kde.kcachgrind.desktop</launchable>
+  <launchable type="desktop-id">org.kde.kcachegrind.desktop</launchable>
   <releases>
     <release version="24.02.2" date="2024-04-11"/>
     <release version="24.02.1" date="2024-03-21"/>
