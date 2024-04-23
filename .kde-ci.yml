@@ -14,3 +14,6 @@ Dependencies:
     'frameworks/kconfig': '@latest-kf6'
     'frameworks/kio': '@latest-kf6'
     'frameworks/kdbusaddons': '@latest-kf6'      
+
+Options:
+  require-passing-tests-on: ['Linux', 'FreeBSD', 'Windows']
