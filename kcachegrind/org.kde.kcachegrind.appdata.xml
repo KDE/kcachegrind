@@ -359,7 +359,6 @@
   <update_contact>Josef.Weidendorfer_at_gmx.de</update_contact>
   <provides>
     <binary>kcachegrind</binary>
-    <id>org.kde.kcachegrind.desktop</id>
   </provides>
   <launchable type="desktop-id">org.kde.kcachegrind.desktop</launchable>
   <releases>
