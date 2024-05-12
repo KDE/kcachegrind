@@ -337,7 +337,7 @@ msgstr "(no s'ha trobat)"
 #: libcore/tracedata.cpp:3692
 msgctxt "TraceData|"
 msgid "Recalculating Function Cycles..."
-msgstr "S'estan recalculant els cicles de la funció..."
+msgstr "S'estan recalculant els cicles de la funció…"
 
 #: libviews/callgraphview.cpp:414
 #, qt-format
@@ -644,12 +644,12 @@ msgstr "Exporta la gràfica"
 #: libviews/callgraphview.cpp:3081
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
-msgstr "Com a fitxer DOT..."
+msgstr "Com a fitxer DOT…"
 
 #: libviews/callgraphview.cpp:3082
 msgctxt "CallGraphView|"
 msgid "As Image..."
-msgstr "Com a imatge..."
+msgstr "Com a imatge…"
 
 #: libviews/callgraphview.cpp:3085
 msgctxt "CallGraphView|"
@@ -1270,7 +1270,7 @@ msgstr "Elimina"
 #: libviews/eventtypeview.cpp:119
 msgctxt "EventTypeView|"
 msgid "New Event Type..."
-msgstr "Tipus d'esdeveniment nou..."
+msgstr "Tipus d'esdeveniment nou…"
 
 #: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
 #, qt-format

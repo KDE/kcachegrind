@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2024-01-03 14:52+0100\n"
+"PO-Revision-Date: 2024-05-10 11:33+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -759,7 +759,7 @@ msgid ""
 "siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
 "em> activates the current item.</p>"
 msgstr ""
-"<p>Opcioj pri apero troviĝas en la kunteksta menuo. Por akiri precizajn "
+"<p>Elektebloj pri apero troviĝas en la kunteksta menuo. Por akiri precizajn "
 "grandoproporciojn, elektu 'Kaŝi malĝustajn randojn'. Ĉar ĉi tiu reĝimo povas "
 "esti <em>tre</em> tempopostula, vi eble volas limigi la maksimuman "
 "desegnitan nestannivelon antaŭe. \"Plej bona\" determinas la disdividan "
@@ -843,22 +843,22 @@ msgstr "Neniu Areo-Limo"
 #: libviews/callmapview.cpp:260
 msgctxt "CallMapView|"
 msgid "100 Pixels"
-msgstr "100 Pikseloj"
+msgstr "100 rastrumeroj"
 
 #: libviews/callmapview.cpp:261
 msgctxt "CallMapView|"
 msgid "200 Pixels"
-msgstr "200 pikseloj"
+msgstr "200 rastrumeroj"
 
 #: libviews/callmapview.cpp:262
 msgctxt "CallMapView|"
 msgid "500 Pixels"
-msgstr "500 pikseloj"
+msgstr "500 rastrumeroj"
 
 #: libviews/callmapview.cpp:263
 msgctxt "CallMapView|"
 msgid "1000 Pixels"
-msgstr "1000 Pikseloj"
+msgstr "1000 rastrumeroj"
 
 #: libviews/callmapview.cpp:269
 #, qt-format
@@ -1480,7 +1480,7 @@ msgstr "Ne estas instrukciaj informoj en la profildatumdosiero."
 #: libviews/instrview.cpp:575
 msgctxt "InstrView|"
 msgid "Tip: For Callgrind, rerun with option"
-msgstr "Konsileto: Por Callgrind, rerulu kun opcio"
+msgstr "Konsileto: Por Callgrind, rerulu kun elekteblo"
 
 #: libviews/instrview.cpp:576
 msgctxt "InstrView|"
@@ -1755,7 +1755,7 @@ msgstr "Montri Informojn"
 #: libviews/partselection.cpp:562
 msgctxt "PartSelection|"
 msgid "(no trace loaded)"
-msgstr "(neniu spuro ŝarĝita)"
+msgstr "(neniu spuro ŝargita)"
 
 #: libviews/partview.cpp:37
 msgctxt "PartView|"
@@ -2051,7 +2051,7 @@ msgstr "Montri Kaŝitan Sur"
 #: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
 msgctxt "TabView|"
 msgid "(No profile data file loaded)"
-msgstr "(Neniu profildatumdosiero ŝarĝita)"
+msgstr "(Neniu profildatumdosiero ŝargita)"
 
 #: libviews/tabview.cpp:370
 msgctxt "TabView|"
