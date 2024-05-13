@@ -154,6 +154,7 @@
       <li xml:lang="ka">KCachegrind აპლიკაციების პროფილების (გაშვების დროის მახასიათებლების) ვიზუალიზაციას სხვადასხვანაირად ახდენს, გამოძახებების გრაფიკის ვიზუალიზაციის და კოდის/დიზასამბლერის ანოტაციების ჩათვლით.</li>
       <li xml:lang="nl">KCachegrind visualiseert profielen (d.w.z. karakteristieken tijdens uitvoeren) van toepassingen op verschillende manieren, inclusief visualisaties van aanroepgrafieken en broncode/disassembler annotaties.</li>
       <li xml:lang="pl">KCachegrind obrazuje profile (tj. charakterystyki uruchomieniowe) aplikacji na różne sposoby, także poprzez obrazowanie grafów wywołań i przypisów do kodu/disassemblera.</li>
+      <li xml:lang="ru">Визуализация профилей (параметров выполнения) приложений различными способами, включая визуализацию графа вызовов и аннотацию исходного кода и кода дизассемблера.</li>
       <li xml:lang="sl">KCachegrind vizualizira profile (tj. značilnosti izvajanja) aplikacij na različne načine, vključno z vizualizacijo grafov klicev in pripisom izvorne/razpoznane strojne programske kode.</li>
       <li xml:lang="tr">KCachegrind, başvuruların profillerini (diğer bir deyişle, çalışma zamanı özelliklerini) çeşitli şekillerde, çağrı grafiklerinin hazırlanması ve kaynak/ayrıştırıcı açıklaması dahil olmak üzere görselleştirir.</li>
       <li xml:lang="uk">KCachegrind візуалізує профілі (тобто динамічні характеристики роботи програми) програм у декілька способів, зокрема може показувати граф викликів та анотацію початкового або асемблерного коду.</li>
