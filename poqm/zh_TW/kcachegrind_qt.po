@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2024-04-19 03:00+0900\n"
+"PO-Revision-Date: 2024-06-10 23:11+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -2203,7 +2203,7 @@ msgstr "被呼叫者地圖"
 #: libviews/tabview.cpp:378
 msgctxt "TabView|"
 msgid "Source Code"
-msgstr "源碼"
+msgstr "原始碼"
 
 #
 #: libviews/tabview.cpp:380
