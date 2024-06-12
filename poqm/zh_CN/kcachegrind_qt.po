@@ -2026,7 +2026,7 @@ msgstr ""
 #: libviews/traceitemview.cpp:67
 msgctxt "QObject|"
 msgid "No description available"
-msgstr "无可用的描述"
+msgstr "没有可用的描述"
 
 #: libviews/treemap.cpp:1335
 #, qt-format
