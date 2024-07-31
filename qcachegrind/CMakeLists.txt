@@ -18,6 +18,15 @@ target_sources(qcachegrind PRIVATE
     sourcesettings.cpp
     colorsettings.cpp
 
+    qcgtoplevel.h
+    qcgconfig.h
+    configdialog.h
+    configpage.h
+    qtcolorbutton.h
+    generalsettings.h
+    sourcesettings.h
+    colorsettings.h
+
     qcachegrind.qrc
 )
 

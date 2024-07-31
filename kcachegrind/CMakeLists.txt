@@ -10,8 +10,11 @@ add_executable(kcachegrind)
 target_sources(kcachegrind PRIVATE
    main.cpp
    kdeconfig.cpp
+   kdeconfig.h
    toplevel.cpp
+   toplevel.h
    configdlg.cpp
+   configdlg.h
 
    kcachegrind.qrc
 )

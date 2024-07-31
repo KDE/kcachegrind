@@ -29,6 +29,35 @@ target_sources(views PRIVATE
    sourceitem.cpp
    instritem.cpp
    partlistitem.cpp
+
+   globalguiconfig.h
+   stackitem.h
+   stackselection.h
+   partgraph.h
+   partselection.h
+   costlistitem.h
+   functionlistmodel.h
+   functionselection.h
+   toplevelbase.h
+   listutils.h
+   treemap.h
+   traceitemview.h
+   tabview.h
+   multiview.h
+   instrview.h
+   sourceview.h
+   callmapview.h
+   callgraphview.h
+   callview.h
+   coverageview.h
+   eventtypeview.h
+   partview.h
+   eventtypeitem.h
+   callitem.h
+   coverageitem.h
+   sourceitem.h
+   instritem.h
+   partlistitem.h
 )
 
 target_link_libraries(views
