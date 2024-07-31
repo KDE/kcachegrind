@@ -30,13 +30,18 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Gui Widgets)
 find_package(KF6 ${KF_MIN_VERSION} REQUIRED
     Archive
     CoreAddons
-    DocTools
     WidgetsAddons
     XmlGui
     I18n
     Config
     KIO
     DBusAddons
+)
+
+find_package(KF6DocTools ${KF_MIN_VERSION})
+set_package_properties(KF6DocTools PROPERTIES DESCRIPTION
+    "Tools to generate documentation"
+    TYPE OPTIONAL
 )
 
 add_definitions(
@@ -64,8 +69,10 @@ add_subdirectory( qcachegrind )
 add_subdirectory( pics )
 add_subdirectory( converters )
 
+if(KF6DocTools_FOUND)
+    kdoctools_install(po)
+endif()
 ki18n_install(po)
-kdoctools_install(po)
 ecm_install_po_files_as_qm(poqm)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
