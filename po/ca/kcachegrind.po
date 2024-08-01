@@ -1,10 +1,10 @@
 # Translation of kcachegrind.po to Catalan
-# Copyright (C) 2004-2023 This_file_is_part_of_KDE
+# Copyright (C) 2004-2024 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2 or later.
 #
 # Orestes Mas <orestes@tsc.upc.es>, 2004.
 # Albert Astals Cid <aacid@kde.org>, 2004, 2005.
-# Josep M. Ferrer <txemaq@gmail.com>, 2007, 2008, 2009, 2010, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
 # Manuel Tortosa Moreno <manutortosa@chakra-project.org>, 2009, 2010, 2011.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2020.
 msgid ""
@@ -12,14 +12,14 @@ msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-18 00:39+0000\n"
-"PO-Revision-Date: 2023-10-27 19:38+0200\n"
+"PO-Revision-Date: 2024-07-31 11:56+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.05.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -732,8 +732,8 @@ msgid ""
 "<b>Remove Current Layout</b><p>Delete current layout and make the previous "
 "active.</p>"
 msgstr ""
-"<b>Elimina la disposició actual</b><p>Elimina la disposició actual i activa "
-"l'anterior.</p>"
+"<b>Elimina la disposició actual</b><p>Suprimeix la disposició actual i "
+"activa l'anterior.</p>"
 
 #: kcachegrind/toplevel.cpp:379
 #, kde-format
