@@ -16,7 +16,9 @@
 
 #include <QApplication>
 #include <QCommandLineParser>
+
 #include <KAboutData>
+#include <KCrash>
 #include <KLocalizedString>
 #include <KSharedConfig>
 #include <KDBusService>
@@ -45,6 +47,8 @@ int main( int argc, char ** argv )
 
     KAboutData::setApplicationData(aboutData);
     QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("kcachegrind")));
+
+    KCrash::initialize();
 
     KDBusService service(KDBusService::Multiple);
 

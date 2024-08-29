@@ -40,6 +40,7 @@ target_link_libraries(kcachegrind
     KF6::KIOCore
     KF6::KIOWidgets
     KF6::DBusAddons
+    KF6::Crash
 )
 
 install(TARGETS kcachegrind  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )

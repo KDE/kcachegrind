@@ -36,6 +36,7 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED
     Config
     KIO
     DBusAddons
+    Crash
 )
 
 find_package(KF6DocTools ${KF_MIN_VERSION})
