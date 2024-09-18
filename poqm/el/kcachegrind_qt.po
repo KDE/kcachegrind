@@ -652,8 +652,6 @@ msgid "As DOT file..."
 msgstr ""
 
 #: libviews/callgraphview.cpp:3082
-#, fuzzy
-#| msgid "As Image ..."
 msgctxt "CallGraphView|"
 msgid "As Image..."
 msgstr "Ως εικόνα..."
