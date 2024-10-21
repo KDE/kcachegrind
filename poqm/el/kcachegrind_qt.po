@@ -722,7 +722,7 @@ msgstr ""
 #: libviews/callmapview.cpp:53
 msgctxt "CallMapView|"
 msgid "Cost"
-msgstr "Σύνολο %1 κόστος: %2"
+msgstr "Κόστος"
 
 #: libviews/callmapview.cpp:54
 #, fuzzy
@@ -998,7 +998,7 @@ msgstr "(καμία κλήση)"
 #: libviews/callview.cpp:37
 msgctxt "CallView|"
 msgid "Cost"
-msgstr "Σύνολο %1 κόστος: %2"
+msgstr "Κόστος"
 
 #: libviews/callview.cpp:38
 msgctxt "CallView|"
@@ -1406,7 +1406,7 @@ msgstr "#"
 #: libviews/instrview.cpp:194
 msgctxt "InstrView|"
 msgid "Cost"
-msgstr "Σύνολο %1 κόστος: %2"
+msgstr "Κόστος"
 
 #: libviews/instrview.cpp:195
 msgctxt "InstrView|"
@@ -1608,7 +1608,7 @@ msgstr "Όνομα"
 #: libviews/partselection.cpp:62
 msgctxt "PartSelection|"
 msgid "Cost"
-msgstr "Σύνολο %1 κόστος: %2"
+msgstr "Κόστος"
 
 #: libviews/partselection.cpp:69
 msgctxt "PartSelection|"
@@ -1829,7 +1829,7 @@ msgstr "#"
 #: libviews/sourceview.cpp:52
 msgctxt "SourceView|"
 msgid "Cost"
-msgstr "Σύνολο %1 κόστος: %2"
+msgstr "Κόστος"
 
 #: libviews/sourceview.cpp:53
 msgctxt "SourceView|"
@@ -1966,7 +1966,7 @@ msgstr "Επιλογή στοίβας"
 #: libviews/stackselection.cpp:44
 msgctxt "StackSelection|"
 msgid "Cost"
-msgstr "Σύνολο %1 κόστος: %2"
+msgstr "Κόστος"
 
 #: libviews/stackselection.cpp:45
 msgctxt "StackSelection|"
