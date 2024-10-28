@@ -29,7 +29,8 @@ NHEADERS += \
     $$PWD/partview.h \
     $$PWD/sourceitem.h \
     $$PWD/sourceview.h \
-    $$PWD/stackitem.h
+    $$PWD/stackitem.h \
+    $$PWD/controlflowgraphview.h
 
 SOURCES += \
     $$PWD/globalguiconfig.cpp \
@@ -59,4 +60,5 @@ SOURCES += \
     $$PWD/tabview.cpp \
     $$PWD/toplevelbase.cpp \
     $$PWD/traceitemview.cpp \
-    $$PWD/treemap.cpp
+    $$PWD/treemap.cpp \
+    $$PWD/controlflowgraphview.cpp

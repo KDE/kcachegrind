@@ -85,6 +85,7 @@ QString ProfileContext::typeName(ProfileContext::Type t)
         strs[Object] = QT_TR_NOOP("ELF Object");
         strs[Part] = QT_TR_NOOP("Profile Part");
         strs[Data] = QT_TR_NOOP("Program Trace");
+        strs[BasicBlock] = QT_TR_NOOP("BasicBlock");
     }
     if (t<0 || t> MaxType) t = MaxType;
     return _typeName[t];

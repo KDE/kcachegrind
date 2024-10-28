@@ -37,13 +37,14 @@
 #include "instrview.h"
 #include "sourceview.h"
 #include "callgraphview.h"
+#include "controlflowgraphview.h"
 
 
 // defaults for subviews in TabView
 
 #define DEFAULT_TOPTABS \
     "EventTypeView" << "CallerView" << "AllCallerView" \
-    << "CalleeMapView" << "SourceView"
+    << "CalleeMapView" << "SourceView" << "ControlFlowGraphView"
 #define DEFAULT_BOTTOMTABS \
     "PartView" << "CalleeView" << "CallGraphView" \
     << "AllCalleeView" << "CallerMapView" << "InstrView"
@@ -376,6 +377,8 @@ TabView::TabView(TraceItemView* parentView, QWidget* parent)
                     new CallMapView(false, this, nullptr,
                                     "CalleeMapView")));
     addTop( addTab( tr("Source Code"), sourceView) );
+    addTop( addTab( tr("Control Flow Graph"),
+                    new ControlFlowGraphView(this, nullptr, "ControlFlowGraphView") ) );
 
     addBottom( addTab( tr("Parts"), partView ) );
     addBottom( addTab( tr("Callees"), calleeView) );

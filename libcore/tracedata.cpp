@@ -11,6 +11,11 @@
 
 #include <errno.h>
 #include <stdlib.h>
+#include <vector>
+#include <iterator>
+#include <memory>
+#include <algorithm>
+#include <numeric>
 
 #include <QFile>
 #include <QDir>
@@ -1807,6 +1812,7 @@ TraceFunction::~TraceFunction()
     qDeleteAll(_deps);
     qDeleteAll(_callings);
     qDeleteAll(_sourceFiles);
+    qDeleteAll(_basicBlocks);
 
     delete _instrMap;
 }
@@ -2623,7 +2629,165 @@ TraceInstrMap* TraceFunction::instrMap()
     return _instrMap;
 }
 
+std::vector<TraceBasicBlock*>& TraceFunction::basicBlocks()
+{
+    if (_basicBlocks.empty())
+        constructBasicBlocks();
 
+    return _basicBlocks;
+}
+
+void TraceFunction::constructBasicBlocks()
+{
+    auto instructions = instrMap();
+    if (!instructions || instructions->empty())
+        return;
+
+    divideInstructionsIntoBasicBlocks(instructions);
+    handleInvalidBranches();
+}
+
+namespace
+{
+
+QSet<TraceInstr*> collectJumpDestinations(TraceInstrMap::iterator it,
+                                          TraceInstrMap::iterator ite)
+{
+    QSet<TraceInstr*> jumpDestinations;
+
+    // 1. collecting all instructions that are destination points for jumps
+    for (; it != ite; ++it)
+    {
+        auto& jumps = it->instrJumps();
+
+        if (jumps.empty())
+        {
+            if (!it->instrCalls().empty() && it != std::prev(ite))
+                jumpDestinations.insert(std::addressof(*std::next(it)));
+        }
+        else if (jumps.size() == 1)
+        {
+            TraceInstrJump* jmp = jumps.front();
+            jumpDestinations.insert(jmp->instrTo());
+
+            if (jmp->isCondJump() && it != std::prev(ite))
+                jumpDestinations.insert(std::addressof(*std::next(it)));
+        }
+        else
+        {
+            for (auto jmp : jumps)
+                jumpDestinations.insert(jmp->instrTo());
+        }
+    }
+
+    return jumpDestinations;
+}
+
+} // unnamed namespace
+
+void TraceFunction::divideInstructionsIntoBasicBlocks(TraceInstrMap *instructions)
+{
+    QSet<TraceInstr*> jumpDestinations
+        = collectJumpDestinations(instructions->begin(), instructions->end());
+
+    for (auto from = instructions->begin(), ite = instructions->end(); from != ite; )
+    {
+        auto to = ite;
+
+        for (auto it = std::next(from); it != ite; ++it)
+        {
+            if (jumpDestinations.contains(std::addressof(*it)))
+            {
+                to = it;
+                break;
+            }
+            else if (!it->instrJumps().empty() || !it->instrCalls().empty() ||
+                     std::next(it)->addr() > it->addr() + 3 * GlobalConfig::context())
+            {
+                to = std::next(it);
+                break;
+            }
+        }
+
+        assert(from != to);
+        _basicBlocks.push_back(new TraceBasicBlock{from, to});
+        from = to;
+    }
+
+    for (auto bb : _basicBlocks)
+    {
+        for (auto& br : bb->outgoingBranches())
+        {
+            TraceBasicBlock* bbTo = br.bbTo();
+            if (bbTo)
+                bbTo->addIncomingBranch(br);
+        }
+    }
+}
+
+void TraceFunction::handleInvalidBranches()
+{
+    /*
+     * There are 2 types of invalid branches:
+     *   Type 1: fallthrough branches which cost was measured incorrectly
+     *   Type 2: branches from ret (truly invalid)
+     */
+
+    auto adder = [](uint64 val, TraceBranch* br){ return val + br->executedCount().v; };
+    auto refAdder = [](uint64 val, TraceBranch& br){ return val + br.executedCount().v; };
+    auto isInvalid = [](TraceBranch* br) { return br->brType() == TraceBranch::Type::invalid; };
+
+    // turning invalid branches of type 1 into fallthrough branches
+    for (auto bb : _basicBlocks)
+    {
+        auto& incoming = bb->incomingBranches();
+
+        // can't be more than 1 invalid incoming branch
+        auto invBrIt = std::find_if(incoming.begin(), incoming.end(), isInvalid);
+        if (invBrIt != incoming.end())
+        {
+            auto incomingCount
+                = std::accumulate(incoming.begin(), incoming.end(), uint64{0}, adder);
+
+            auto& outgoing = bb->outgoingBranches();
+            uint64 outgoingCount;
+            if (outgoing.empty())
+            {
+                TraceData* data = this->data();
+                assert(data);
+                EventType* e = data->eventTypes()->realType(0);
+                assert(e);
+                outgoingCount = bb->lastInstr()->subCost(e);
+            }
+            else
+                outgoingCount
+                    = std::accumulate(outgoing.begin(), outgoing.end(), uint64{0}, refAdder);
+
+            if (incomingCount == outgoingCount)
+                (*invBrIt)->setType(TraceBranch::Type::fallThrough);
+        }
+    }
+
+    // removing invalid branches of type 2
+    auto isInvalidRef = [](TraceBranch& br){ return br.brType() == TraceBranch::Type::invalid; };
+
+    for (auto bb : _basicBlocks)
+    {
+        auto& incoming = bb->incomingBranches();
+        incoming.erase(std::remove_if(incoming.begin(), incoming.end(), isInvalid),
+                       incoming.end());
+    }
+
+    for (auto bb : _basicBlocks)
+    {
+        auto& outgoing = bb->outgoingBranches();
+        outgoing.erase(std::remove_if(outgoing.begin(), outgoing.end(), isInvalidRef),
+                       outgoing.end());
+    }
+
+    assert(std::all_of(_basicBlocks.begin(), _basicBlocks.end(),
+                       [](TraceBasicBlock* bb){ return bb->instrNumber() > 0; }));
+}
 
 //---------------------------------------------------
 // TraceFunctionCycle
@@ -3740,3 +3904,173 @@ void TraceData::updateFileCycles()
 {
 }
 
+// ======================================================================================
+
+//
+// TraceBasicBlock
+//
+
+TraceBasicBlock::TraceBasicBlock(typename TraceInstrMap::iterator first,
+                                 typename TraceInstrMap::iterator last)
+    : TraceListCost{ProfileContext::context(ProfileContext::BasicBlock)},
+      _instructions(std::distance(first, last)),
+      _func{first->function()}
+{
+    std::transform(first, last, _instructions.begin(),
+                   [](TraceInstr &i){ return std::addressof(i); });
+
+    auto &jumps = lastInstr()->instrJumps();
+    auto nJumps = jumps.size();
+
+    if (nJumps == 0)
+    {
+        if (last != _func->instrMap()->end())
+        {
+            TraceData* data = _func->data();
+            assert(data);
+            EventType* e = data->eventTypes()->realType(0);
+            assert(e);
+
+            auto& calls = lastInstr()->instrCalls();
+
+            SubCost execCount;
+            if (calls.empty())
+                execCount = lastInstr()->subCost(e);
+            else
+            {
+                auto accumulator = [](uint64 count, TraceInstrCall* call)
+                {
+                    return count + call->callCount();
+                };
+
+                execCount = std::accumulate(calls.begin(), calls.end(), uint64{0}, accumulator);
+            }
+
+            _outgoingBranches.emplace_back(lastInstr(), std::addressof(*last),
+                                           TraceBranch::Type::invalid, execCount);
+        }
+    }
+    else if (nJumps == 1)
+    {
+        TraceInstrJump* jump = jumps.back();
+        assert(jump);
+
+        TraceInstr* from = jump->instrFrom();
+        TraceInstr* to = jump->instrTo();
+
+        TraceData* data = _func->data();
+        EventType* e = data ? data->eventTypes()->realType(0) : nullptr;
+
+        SubCost exec = e ? lastInstr()->subCost(e) : jump->executedCount();
+        auto followed = (from == to) ? SubCost{exec - _func->calledCount()} : jump->followedCount();
+
+        if (jump->isCondJump())
+        {
+            _outgoingBranches.emplace_back(from, to, TraceBranch::Type::true_, followed);
+
+            if (exec.v != followed.v && last != _func->instrMap()->end())
+            {
+                _outgoingBranches.emplace_back(from, std::addressof(*last),
+                                               TraceBranch::Type::false_, exec - followed);
+            }
+        }
+        else
+            _outgoingBranches.emplace_back(from, to, TraceBranch::Type::unconditional, exec);
+    }
+    else
+    {
+        _outgoingBranches.reserve(nJumps);
+        for (auto jump : jumps)
+        {
+            assert(jump);
+            _outgoingBranches.emplace_back(jump->instrFrom(), jump->instrTo(),
+                                           TraceBranch::Type::indirect, jump->executedCount());
+        }
+    }
+
+    for (; first != last; ++first)
+    {
+        first->setBasicBlock(this);
+        addCost(std::addressof(*first));
+    }
+}
+
+const TraceInstr* TraceBasicBlock::firstInstr() const
+{
+    assert(!_instructions.empty());
+    return _instructions.front();
+}
+
+TraceInstr* TraceBasicBlock::firstInstr()
+{
+    assert(!_instructions.empty());
+    return _instructions.front();
+}
+
+const TraceInstr* TraceBasicBlock::lastInstr() const
+{
+    assert(!_instructions.empty());
+    return _instructions.back();
+}
+
+TraceInstr* TraceBasicBlock::lastInstr()
+{
+    assert(!_instructions.empty());
+    return _instructions.back();
+}
+
+Addr TraceBasicBlock::firstAddr() const
+{
+    assert(firstInstr());
+    return firstInstr()->addr();
+}
+
+Addr TraceBasicBlock::lastAddr() const
+{
+    assert(lastInstr());
+    return lastInstr()->addr();
+}
+
+void TraceBasicBlock::addIncomingBranch(TraceBranch& br)
+{
+    assert(br.instrTo() == firstInstr());
+    _incomingBranches.push_back(std::addressof(br));
+}
+
+// ======================================================================================
+
+//
+// TraceBranch
+//
+
+TraceBranch::TraceBranch(TraceInstr* from, TraceInstr* to, Type type, SubCost execCount)
+    : TraceJumpCost{ProfileContext::context(ProfileContext::Branch)},
+      _from{from}, _to{to}, _type{type}
+{
+    addExecutedCount(execCount);
+}
+
+TraceBasicBlock* TraceBranch::bbFrom()
+{
+    return _from ? _from->basicBlock() : nullptr;
+}
+
+const TraceBasicBlock* TraceBranch::bbFrom() const
+{
+    return _from ? _from->basicBlock() : nullptr;
+}
+
+TraceBasicBlock* TraceBranch::bbTo()
+{
+    return _to ? _to->basicBlock() : nullptr;
+}
+
+const TraceBasicBlock* TraceBranch::bbTo() const
+{
+    return _to ? _to->basicBlock() : nullptr;
+}
+
+bool TraceBranch::isCycle() const
+{
+    return (_type == Type::true_ || _type == Type::unconditional) && (bbFrom() == bbTo());
+}

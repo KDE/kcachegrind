@@ -29,6 +29,7 @@ target_sources(views PRIVATE
    sourceitem.cpp
    instritem.cpp
    partlistitem.cpp
+   controlflowgraphview.cpp
 
    globalguiconfig.h
    stackitem.h
@@ -58,6 +59,7 @@ target_sources(views PRIVATE
    sourceitem.h
    instritem.h
    partlistitem.h
+   controlflowgraphview.h
 )
 
 target_link_libraries(views
