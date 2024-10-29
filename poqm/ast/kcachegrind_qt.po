@@ -158,15 +158,20 @@ msgctxt "ProfileContext|"
 msgid "Program Trace"
 msgstr ""
 
+#: libcore/context.cpp:88
+msgctxt "ProfileContext|"
+msgid "BasicBlock"
+msgstr ""
+
 #: libcore/costitem.cpp:48
 #, qt-format
 msgctxt "QObject|"
 msgid "%1 from %2"
 msgstr ""
 
-#: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
-#: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
-#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:409
+#: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1984
+#: libcore/tracedata.cpp:2046 libcore/tracedata.cpp:3024
+#: libcore/tracedata.cpp:3125 libviews/partgraph.cpp:409
 msgctxt "QObject|"
 msgid "(unknown)"
 msgstr ""
@@ -296,33 +301,33 @@ msgctxt "QObject|"
 msgid "Cycle Estimation"
 msgstr ""
 
-#: libcore/tracedata.cpp:1240
+#: libcore/tracedata.cpp:1245
 msgctxt "QObject|"
 msgid "(no caller)"
 msgstr ""
 
-#: libcore/tracedata.cpp:1247 libcore/tracedata.cpp:1266
+#: libcore/tracedata.cpp:1252 libcore/tracedata.cpp:1271
 #, qt-format
 msgctxt "QObject|"
 msgid "%1 via %2"
 msgstr ""
 
-#: libcore/tracedata.cpp:1256
+#: libcore/tracedata.cpp:1261
 msgctxt "QObject|"
 msgid "(no callee)"
 msgstr ""
 
-#: libcore/tracedata.cpp:2709
+#: libcore/tracedata.cpp:2873
 msgctxt "QObject|"
 msgid "(global)"
 msgstr ""
 
-#: libcore/tracedata.cpp:3144
+#: libcore/tracedata.cpp:3308
 msgctxt "QObject|"
 msgid "(not found)"
 msgstr ""
 
-#: libcore/tracedata.cpp:3692
+#: libcore/tracedata.cpp:3856
 msgctxt "TraceData|"
 msgid "Recalculating Function Cycles..."
 msgstr ""
@@ -344,7 +349,8 @@ msgctxt "QObject|"
 msgid "(unknown call)"
 msgstr ""
 
-#: libviews/callgraphview.cpp:908
+#: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1392
+#: libviews/controlflowgraphview.cpp:2419
 msgctxt "QObject|"
 msgid "Export Graph"
 msgstr ""
@@ -992,6 +998,234 @@ msgstr ""
 #, qt-format
 msgctxt "CallView|"
 msgid "%1 per call"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:607
+msgctxt "QObject|"
+msgid ""
+"Control-flow graph requires running callgrind with option --dump-instr=yes"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:913
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"For annotated machine code, the following object file is needed\n"
+"    '%1'\n"
+"This file cannot be found.\n"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:917
+msgctxt "QObject|"
+msgid "If cross-compiled, set SYSROOT variable."
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:938
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"There is an error trying to execute the command\n"
+"    '%1'\n"
+"Check that you have installed 'objdump'.\n"
+"This utility can be found in the 'binutils' package"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1019
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"There are %1 cost line(s) without machine code.\n"
+"This happens because the code of %2 does not seem to match the profile data "
+"file.\n"
+"Are you using an old profile data file or is the abovementioned\n"
+"ELF object from an updated installation/another machine?"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1029
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"There seems to be an error trying to execute the command'%1'.\n"
+"Check that the ELF object used in the command exists.\n"
+"Check that you have installed 'objdump'.\n"
+"This utility can be found in the 'binutils' package."
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1754
+msgctxt "QObject|"
+msgid "This is Control Flow Graph by KetchuppOfficial"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1810
+msgctxt "QObject|"
+msgid ""
+"Warning: a long lasting graph layouting is in progress.\n"
+"Reduce node/edge limits for speedup.\n"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1813
+msgctxt "QObject|"
+msgid "Layouting stopped.\n"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1815
+#, qt-format
+msgctxt "QObject|"
+msgid "The call graph has %1 nodes and %2 edges.\n"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1823
+msgctxt "QObject|"
+msgid "No graph available because the layouting process failed.\n"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1825
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"Trying to run the following command did not work:\n"
+"'%1'\n"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1827
+msgctxt "QObject|"
+msgid "Please check that 'dot' is installed (package GraphViz)."
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2191
+msgctxt "QObject|"
+msgid ""
+"Error running the graph layouting tool.\n"
+"Please check that 'dot' is installed (package Graphviz)."
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2379
+msgctxt "QObject|"
+msgid "This basic block"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2381
+#: libviews/controlflowgraphview.cpp:2402
+msgctxt "QObject|"
+msgid "PC only"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2385
+#: libviews/controlflowgraphview.cpp:2406
+msgctxt "QObject|"
+msgid "Show instructions' PC"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2389
+#: libviews/controlflowgraphview.cpp:2410
+msgctxt "QObject|"
+msgid "Show instructions' cost"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2420
+msgctxt "QObject|"
+msgid "As DOT file..."
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2421
+msgctxt "QObject|"
+msgid "As Image..."
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2511
+msgctxt "QObject|"
+msgid "Export Graph as Image"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2513
+msgctxt "QObject|"
+msgid "Images (*.png *.jpg)"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2946
+msgctxt "QObject|"
+msgid "No trace data"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2951
+msgctxt "QObject|"
+msgid "No item activated for which to draw the control-flow graph."
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2963
+msgctxt "QObject|"
+msgid "No control-flow graph can be drawn for the active item."
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3058
+msgctxt "QObject|"
+msgid "Stop Layouting"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3121
+msgctxt "QObject|"
+msgid "Birds-eye View"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3123
+msgctxt "QObject|"
+msgid "Top Left"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3124
+msgctxt "QObject|"
+msgid "Top Right"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3125
+msgctxt "QObject|"
+msgid "Bottom Left"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3126
+msgctxt "QObject|"
+msgid "Bottom Right"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3127
+msgctxt "QObject|"
+msgid "Automatic"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3128
+msgctxt "QObject|"
+msgid "Hide"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3138
+msgctxt "QObject|"
+msgid "Layout"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3140
+msgctxt "QObject|"
+msgid "Top to Down"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3141
+msgctxt "QObject|"
+msgid "Left to Right"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3151
+msgctxt "QObject|"
+msgid "Min. basic block cost"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3153
+msgctxt "QObject|"
+msgid "Undefined"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3156
+#, qt-format
+msgctxt "QObject|"
+msgid "%1%"
 msgstr ""
 
 #: libviews/costlistitem.cpp:53
@@ -1824,147 +2058,152 @@ msgctxt "StackSelection|"
 msgid "Function"
 msgstr ""
 
-#: libviews/tabview.cpp:103
+#: libviews/tabview.cpp:104
 msgctxt "TabBar|"
 msgid "Move to Top"
 msgstr ""
 
-#: libviews/tabview.cpp:104
+#: libviews/tabview.cpp:105
 msgctxt "TabBar|Move to Top"
 msgid "Top"
 msgstr ""
 
-#: libviews/tabview.cpp:107
+#: libviews/tabview.cpp:108
 msgctxt "TabBar|"
 msgid "Move to Right"
 msgstr ""
 
-#: libviews/tabview.cpp:108
+#: libviews/tabview.cpp:109
 msgctxt "TabBar|Move to Right"
 msgid "Right"
 msgstr ""
 
-#: libviews/tabview.cpp:111
+#: libviews/tabview.cpp:112
 msgctxt "TabBar|"
 msgid "Move to Bottom"
 msgstr ""
 
-#: libviews/tabview.cpp:112
+#: libviews/tabview.cpp:113
 msgctxt "TabBar|Move to Bottom"
 msgid "Bottom"
 msgstr ""
 
-#: libviews/tabview.cpp:115
+#: libviews/tabview.cpp:116
 msgctxt "TabBar|"
 msgid "Move to Bottom Left"
 msgstr ""
 
-#: libviews/tabview.cpp:116
+#: libviews/tabview.cpp:117
 msgctxt "TabBar|Move to Bottom Left"
 msgid "Bottom Left"
 msgstr ""
 
-#: libviews/tabview.cpp:118
+#: libviews/tabview.cpp:119
 msgctxt "TabBar|"
 msgid "Move Area To"
 msgstr ""
 
-#: libviews/tabview.cpp:121
+#: libviews/tabview.cpp:122
 msgctxt "TabBar|"
 msgid "Hide This Tab"
 msgstr ""
 
-#: libviews/tabview.cpp:122
+#: libviews/tabview.cpp:123
 msgctxt "TabBar|"
 msgid "Hide Area"
 msgstr ""
 
-#: libviews/tabview.cpp:131
+#: libviews/tabview.cpp:132
 msgctxt "TabBar|Show on Top"
 msgid "Top"
 msgstr ""
 
-#: libviews/tabview.cpp:132
+#: libviews/tabview.cpp:133
 msgctxt "TabBar|Show on Right"
 msgid "Right"
 msgstr ""
 
-#: libviews/tabview.cpp:133
+#: libviews/tabview.cpp:134
 msgctxt "TabBar|Show on Bottom"
 msgid "Bottom"
 msgstr ""
 
-#: libviews/tabview.cpp:134
+#: libviews/tabview.cpp:135
 msgctxt "TabBar|Show on Bottom Left"
 msgid "Bottom Left"
 msgstr ""
 
-#: libviews/tabview.cpp:135
+#: libviews/tabview.cpp:136
 msgctxt "TabBar|"
 msgid "Show Hidden On"
 msgstr ""
 
-#: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
+#: libviews/tabview.cpp:309 libviews/tabview.cpp:311 libviews/tabview.cpp:730
 msgctxt "TabView|"
 msgid "(No profile data file loaded)"
 msgstr ""
 
-#: libviews/tabview.cpp:370
+#: libviews/tabview.cpp:371
 msgctxt "TabView|"
 msgid "Types"
 msgstr ""
 
-#: libviews/tabview.cpp:373
+#: libviews/tabview.cpp:374
 msgctxt "TabView|"
 msgid "Callers"
 msgstr ""
 
-#: libviews/tabview.cpp:374
+#: libviews/tabview.cpp:375
 msgctxt "TabView|"
 msgid "All Callers"
 msgstr ""
 
-#: libviews/tabview.cpp:375
+#: libviews/tabview.cpp:376
 msgctxt "TabView|"
 msgid "Callee Map"
 msgstr ""
 
-#: libviews/tabview.cpp:378
+#: libviews/tabview.cpp:379
 msgctxt "TabView|"
 msgid "Source Code"
 msgstr ""
 
 #: libviews/tabview.cpp:380
 msgctxt "TabView|"
+msgid "Control Flow Graph"
+msgstr ""
+
+#: libviews/tabview.cpp:383
+msgctxt "TabView|"
 msgid "Parts"
 msgstr ""
 
-#: libviews/tabview.cpp:381
+#: libviews/tabview.cpp:384
 msgctxt "TabView|"
 msgid "Callees"
 msgstr ""
 
-#: libviews/tabview.cpp:382
+#: libviews/tabview.cpp:385
 msgctxt "TabView|"
 msgid "Call Graph"
 msgstr ""
 
-#: libviews/tabview.cpp:385
+#: libviews/tabview.cpp:388
 msgctxt "TabView|"
 msgid "All Callees"
 msgstr ""
 
-#: libviews/tabview.cpp:386
+#: libviews/tabview.cpp:389
 msgctxt "TabView|"
 msgid "Caller Map"
 msgstr ""
 
-#: libviews/tabview.cpp:389
+#: libviews/tabview.cpp:392
 msgctxt "TabView|"
 msgid "Machine Code"
 msgstr ""
 
-#: libviews/tabview.cpp:643
+#: libviews/tabview.cpp:646
 msgctxt "TabView|"
 msgid ""
 "<b>Information Tabs</b><p>This widget shows information for the currently "
@@ -1985,7 +2224,7 @@ msgid ""
 "corresponding tab widget.</p>"
 msgstr ""
 
-#: libviews/tabview.cpp:728
+#: libviews/tabview.cpp:731
 msgctxt "TabView|"
 msgid "(No function selected)"
 msgstr ""

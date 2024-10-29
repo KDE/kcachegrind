@@ -221,6 +221,11 @@ msgctxt "ProfileContext|"
 msgid "Program Trace"
 msgstr "Program-trace"
 
+#: libcore/context.cpp:88
+msgctxt "ProfileContext|"
+msgid "BasicBlock"
+msgstr ""
+
 #: libcore/costitem.cpp:48
 #, fuzzy, qt-format
 #| msgid "%1 from %2"
@@ -228,9 +233,9 @@ msgctxt "QObject|"
 msgid "%1 from %2"
 msgstr "%1 fra %2"
 
-#: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
-#: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
-#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:409
+#: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1984
+#: libcore/tracedata.cpp:2046 libcore/tracedata.cpp:3024
+#: libcore/tracedata.cpp:3125 libviews/partgraph.cpp:409
 #, fuzzy
 #| msgid "(unknown)"
 msgctxt "QObject|"
@@ -412,42 +417,42 @@ msgctxt "QObject|"
 msgid "Cycle Estimation"
 msgstr "Cyklusestimering"
 
-#: libcore/tracedata.cpp:1240
+#: libcore/tracedata.cpp:1245
 #, fuzzy
 #| msgid "(no caller)"
 msgctxt "QObject|"
 msgid "(no caller)"
 msgstr "(ingen kalder)"
 
-#: libcore/tracedata.cpp:1247 libcore/tracedata.cpp:1266
+#: libcore/tracedata.cpp:1252 libcore/tracedata.cpp:1271
 #, fuzzy, qt-format
 #| msgid "%1 via %2"
 msgctxt "QObject|"
 msgid "%1 via %2"
 msgstr "%1 via %2"
 
-#: libcore/tracedata.cpp:1256
+#: libcore/tracedata.cpp:1261
 #, fuzzy
 #| msgid "(no callee)"
 msgctxt "QObject|"
 msgid "(no callee)"
 msgstr "(ingen kaldt)"
 
-#: libcore/tracedata.cpp:2709
+#: libcore/tracedata.cpp:2873
 #, fuzzy
 #| msgid "(global)"
 msgctxt "QObject|"
 msgid "(global)"
 msgstr "(global)"
 
-#: libcore/tracedata.cpp:3144
+#: libcore/tracedata.cpp:3308
 #, fuzzy
 #| msgid "(not found)"
 msgctxt "QObject|"
 msgid "(not found)"
 msgstr "(ikke fundet)"
 
-#: libcore/tracedata.cpp:3692
+#: libcore/tracedata.cpp:3856
 #, fuzzy
 #| msgid "Recalculating Function Cycles..."
 msgctxt "TraceData|"
@@ -475,7 +480,8 @@ msgctxt "QObject|"
 msgid "(unknown call)"
 msgstr "(ukendt kald)"
 
-#: libviews/callgraphview.cpp:908
+#: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1392
+#: libviews/controlflowgraphview.cpp:2419
 #, fuzzy
 #| msgid "Export Graph"
 msgctxt "QObject|"
@@ -1455,6 +1461,298 @@ msgstr "Gå til \"%1\""
 msgctxt "CallView|"
 msgid "%1 per call"
 msgstr "%1 pr. kald"
+
+#: libviews/controlflowgraphview.cpp:607
+msgctxt "QObject|"
+msgid ""
+"Control-flow graph requires running callgrind with option --dump-instr=yes"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:913
+#, fuzzy, qt-format
+#| msgid "For annotated machine code, the following object file is needed:"
+msgctxt "QObject|"
+msgid ""
+"For annotated machine code, the following object file is needed\n"
+"    '%1'\n"
+"This file cannot be found.\n"
+msgstr "For annoteret maskinkode, er følgende objektfil nødvendig:"
+
+#: libviews/controlflowgraphview.cpp:917
+msgctxt "QObject|"
+msgid "If cross-compiled, set SYSROOT variable."
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:938
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"There is an error trying to execute the command\n"
+"    '%1'\n"
+"Check that you have installed 'objdump'.\n"
+"This utility can be found in the 'binutils' package"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1019
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"There are %1 cost line(s) without machine code.\n"
+"This happens because the code of %2 does not seem to match the profile data "
+"file.\n"
+"Are you using an old profile data file or is the abovementioned\n"
+"ELF object from an updated installation/another machine?"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1029
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"There seems to be an error trying to execute the command'%1'.\n"
+"Check that the ELF object used in the command exists.\n"
+"Check that you have installed 'objdump'.\n"
+"This utility can be found in the 'binutils' package."
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1754
+msgctxt "QObject|"
+msgid "This is Control Flow Graph by KetchuppOfficial"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1810
+#, fuzzy
+#| msgid ""
+#| "Warning: a long lasting graph layouting is in progress.\n"
+#| "Reduce node/edge limits for speedup.\n"
+msgctxt "QObject|"
+msgid ""
+"Warning: a long lasting graph layouting is in progress.\n"
+"Reduce node/edge limits for speedup.\n"
+msgstr ""
+"Advarsel: Et langvarigt graf-layout er under behandling.\n"
+"Reducér knude-/kant-grænser for højere hastighed.\n"
+
+#: libviews/controlflowgraphview.cpp:1813
+#, fuzzy
+#| msgid "Layouting stopped.\n"
+msgctxt "QObject|"
+msgid "Layouting stopped.\n"
+msgstr "Obygning af layout stoppet.\n"
+
+#: libviews/controlflowgraphview.cpp:1815
+#, fuzzy, qt-format
+#| msgid "The call graph has %1 nodes and %2 edges.\n"
+msgctxt "QObject|"
+msgid "The call graph has %1 nodes and %2 edges.\n"
+msgstr "Kald-grafen har %1 knuder og %2 kanter.\n"
+
+#: libviews/controlflowgraphview.cpp:1823
+#, fuzzy
+#| msgid "No graph available because the layouting process failed.\n"
+msgctxt "QObject|"
+msgid "No graph available because the layouting process failed.\n"
+msgstr "Ingen graf tilgængelig fordi opbygning af layout mislykkedes.\n"
+
+#: libviews/controlflowgraphview.cpp:1825
+#, fuzzy, qt-format
+#| msgid ""
+#| "Trying to run the following command did not work:\n"
+#| "'%1'\n"
+msgctxt "QObject|"
+msgid ""
+"Trying to run the following command did not work:\n"
+"'%1'\n"
+msgstr ""
+"Forsøg på at køre følgende kommando virkede ikke:\n"
+"\"%1\"\n"
+
+#: libviews/controlflowgraphview.cpp:1827
+#, fuzzy
+#| msgid "Please check that 'dot' is installed (package GraphViz)."
+msgctxt "QObject|"
+msgid "Please check that 'dot' is installed (package GraphViz)."
+msgstr "Kontrollér at \"dot\" er installeret (pakken GraphViz)."
+
+#: libviews/controlflowgraphview.cpp:2191
+#, fuzzy
+#| msgid "Please check that 'dot' is installed (package GraphViz)."
+msgctxt "QObject|"
+msgid ""
+"Error running the graph layouting tool.\n"
+"Please check that 'dot' is installed (package Graphviz)."
+msgstr "Kontrollér at \"dot\" er installeret (pakken GraphViz)."
+
+#: libviews/controlflowgraphview.cpp:2379
+msgctxt "QObject|"
+msgid "This basic block"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2381
+#: libviews/controlflowgraphview.cpp:2402
+msgctxt "QObject|"
+msgid "PC only"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2385
+#: libviews/controlflowgraphview.cpp:2406
+#, fuzzy
+#| msgid "Instruction Call"
+msgctxt "QObject|"
+msgid "Show instructions' PC"
+msgstr "Instruktionskald"
+
+#: libviews/controlflowgraphview.cpp:2389
+#: libviews/controlflowgraphview.cpp:2410
+#, fuzzy
+#| msgid "(No Instruction)"
+msgctxt "QObject|"
+msgid "Show instructions' cost"
+msgstr "(Ingen instruktion)"
+
+#: libviews/controlflowgraphview.cpp:2420
+#, fuzzy
+#| msgid "As DOT file..."
+msgctxt "QObject|"
+msgid "As DOT file..."
+msgstr "Som DOT-fil..."
+
+#: libviews/controlflowgraphview.cpp:2421
+#, fuzzy
+#| msgid "As Image..."
+msgctxt "QObject|"
+msgid "As Image..."
+msgstr "Som billede..."
+
+#: libviews/controlflowgraphview.cpp:2511
+#, fuzzy
+#| msgid "Export Graph As Image"
+msgctxt "QObject|"
+msgid "Export Graph as Image"
+msgstr "Eksportér graf som billede"
+
+#: libviews/controlflowgraphview.cpp:2513
+#, fuzzy
+#| msgid "Images (*.png *.jpg)"
+msgctxt "QObject|"
+msgid "Images (*.png *.jpg)"
+msgstr "Billeder (*.png *.jpg)"
+
+#: libviews/controlflowgraphview.cpp:2946
+#, fuzzy
+#| msgid "(no trace parts)"
+msgctxt "QObject|"
+msgid "No trace data"
+msgstr "(ingen trace-dele)"
+
+#: libviews/controlflowgraphview.cpp:2951
+#, fuzzy
+#| msgid "No item activated for which to draw the call graph."
+msgctxt "QObject|"
+msgid "No item activated for which to draw the control-flow graph."
+msgstr "Intet element er aktiveret, hvor hvilket kald-grafen skal tegnes."
+
+#: libviews/controlflowgraphview.cpp:2963
+#, fuzzy
+#| msgid "No call graph can be drawn for the active item."
+msgctxt "QObject|"
+msgid "No control-flow graph can be drawn for the active item."
+msgstr "Ingen kald-graf kan tegnes for det aktive element."
+
+#: libviews/controlflowgraphview.cpp:3058
+#, fuzzy
+#| msgid "Stop Layouting"
+msgctxt "QObject|"
+msgid "Stop Layouting"
+msgstr "Stop opbygning af layout"
+
+#: libviews/controlflowgraphview.cpp:3121
+#, fuzzy
+#| msgid "Birds-eye View"
+msgctxt "QObject|"
+msgid "Birds-eye View"
+msgstr "Fugleperspektiv"
+
+#: libviews/controlflowgraphview.cpp:3123
+#, fuzzy
+#| msgid "Top Left"
+msgctxt "QObject|"
+msgid "Top Left"
+msgstr "Øverst til venstre"
+
+#: libviews/controlflowgraphview.cpp:3124
+#, fuzzy
+#| msgid "Top Right"
+msgctxt "QObject|"
+msgid "Top Right"
+msgstr "Øverst til højre"
+
+#: libviews/controlflowgraphview.cpp:3125
+#, fuzzy
+#| msgid "Bottom Left"
+msgctxt "QObject|"
+msgid "Bottom Left"
+msgstr "Nederst til venstre"
+
+#: libviews/controlflowgraphview.cpp:3126
+#, fuzzy
+#| msgid "Bottom Right"
+msgctxt "QObject|"
+msgid "Bottom Right"
+msgstr "Nederst til højre"
+
+#: libviews/controlflowgraphview.cpp:3127
+#, fuzzy
+#| msgid "Automatic"
+msgctxt "QObject|"
+msgid "Automatic"
+msgstr "Automatisk"
+
+#: libviews/controlflowgraphview.cpp:3128
+#, fuzzy
+#| msgid "Hide"
+msgctxt "QObject|"
+msgid "Hide"
+msgstr "Skjul"
+
+#: libviews/controlflowgraphview.cpp:3138
+#, fuzzy
+#| msgid "Layout"
+msgctxt "QObject|"
+msgid "Layout"
+msgstr "Layout"
+
+#: libviews/controlflowgraphview.cpp:3140
+#, fuzzy
+#| msgid "Top to Down"
+msgctxt "QObject|"
+msgid "Top to Down"
+msgstr "Top og nedad"
+
+#: libviews/controlflowgraphview.cpp:3141
+#, fuzzy
+#| msgid "Left to Right"
+msgctxt "QObject|"
+msgid "Left to Right"
+msgstr "Venstre til højre"
+
+#: libviews/controlflowgraphview.cpp:3151
+#, fuzzy
+#| msgid "Min. Call Cost"
+msgctxt "QObject|"
+msgid "Min. basic block cost"
+msgstr "Min. kald-omkostning"
+
+#: libviews/controlflowgraphview.cpp:3153
+msgctxt "QObject|"
+msgid "Undefined"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3156
+#, fuzzy, qt-format
+#| msgid "1 %"
+msgctxt "QObject|"
+msgid "%1%"
+msgstr "1 %"
 
 #: libviews/costlistitem.cpp:53
 #, fuzzy, qt-format
@@ -2717,14 +3015,14 @@ msgctxt "StackSelection|"
 msgid "Function"
 msgstr "Funktion"
 
-#: libviews/tabview.cpp:103
+#: libviews/tabview.cpp:104
 #, fuzzy
 #| msgid "Move to Top"
 msgctxt "TabBar|"
 msgid "Move to Top"
 msgstr "Flyt til top"
 
-#: libviews/tabview.cpp:104
+#: libviews/tabview.cpp:105
 #, fuzzy
 #| msgctxt "Move to Top"
 #| msgid "Top"
@@ -2732,14 +3030,14 @@ msgctxt "TabBar|Move to Top"
 msgid "Top"
 msgstr "Øverst"
 
-#: libviews/tabview.cpp:107
+#: libviews/tabview.cpp:108
 #, fuzzy
 #| msgid "Move to Right"
 msgctxt "TabBar|"
 msgid "Move to Right"
 msgstr "Flyt til højre"
 
-#: libviews/tabview.cpp:108
+#: libviews/tabview.cpp:109
 #, fuzzy
 #| msgctxt "Move to Right"
 #| msgid "Right"
@@ -2747,14 +3045,14 @@ msgctxt "TabBar|Move to Right"
 msgid "Right"
 msgstr "Højre"
 
-#: libviews/tabview.cpp:111
+#: libviews/tabview.cpp:112
 #, fuzzy
 #| msgid "Move to Bottom"
 msgctxt "TabBar|"
 msgid "Move to Bottom"
 msgstr "Flyt til bunden"
 
-#: libviews/tabview.cpp:112
+#: libviews/tabview.cpp:113
 #, fuzzy
 #| msgctxt "Move to Bottom"
 #| msgid "Bottom"
@@ -2762,42 +3060,42 @@ msgctxt "TabBar|Move to Bottom"
 msgid "Bottom"
 msgstr "Nederst"
 
-#: libviews/tabview.cpp:115
+#: libviews/tabview.cpp:116
 #, fuzzy
 #| msgid "Move to Bottom Left"
 msgctxt "TabBar|"
 msgid "Move to Bottom Left"
 msgstr "Flyt til nederst til venstre"
 
-#: libviews/tabview.cpp:116
+#: libviews/tabview.cpp:117
 #, fuzzy
 #| msgid "Bottom Left"
 msgctxt "TabBar|Move to Bottom Left"
 msgid "Bottom Left"
 msgstr "Nederst til venstre"
 
-#: libviews/tabview.cpp:118
+#: libviews/tabview.cpp:119
 #, fuzzy
 #| msgid "Move Area To"
 msgctxt "TabBar|"
 msgid "Move Area To"
 msgstr "Flyt areal til"
 
-#: libviews/tabview.cpp:121
+#: libviews/tabview.cpp:122
 #, fuzzy
 #| msgid "Hide This Tab"
 msgctxt "TabBar|"
 msgid "Hide This Tab"
 msgstr "Skjul dette faneblad"
 
-#: libviews/tabview.cpp:122
+#: libviews/tabview.cpp:123
 #, fuzzy
 #| msgid "Hide Area"
 msgctxt "TabBar|"
 msgid "Hide Area"
 msgstr "Skjul areal"
 
-#: libviews/tabview.cpp:131
+#: libviews/tabview.cpp:132
 #, fuzzy
 #| msgctxt "Move to Top"
 #| msgid "Top"
@@ -2805,7 +3103,7 @@ msgctxt "TabBar|Show on Top"
 msgid "Top"
 msgstr "Øverst"
 
-#: libviews/tabview.cpp:132
+#: libviews/tabview.cpp:133
 #, fuzzy
 #| msgctxt "Move to Right"
 #| msgid "Right"
@@ -2813,7 +3111,7 @@ msgctxt "TabBar|Show on Right"
 msgid "Right"
 msgstr "Højre"
 
-#: libviews/tabview.cpp:133
+#: libviews/tabview.cpp:134
 #, fuzzy
 #| msgctxt "Move to Bottom"
 #| msgid "Bottom"
@@ -2821,56 +3119,56 @@ msgctxt "TabBar|Show on Bottom"
 msgid "Bottom"
 msgstr "Nederst"
 
-#: libviews/tabview.cpp:134
+#: libviews/tabview.cpp:135
 #, fuzzy
 #| msgid "Bottom Left"
 msgctxt "TabBar|Show on Bottom Left"
 msgid "Bottom Left"
 msgstr "Nederst til venstre"
 
-#: libviews/tabview.cpp:135
+#: libviews/tabview.cpp:136
 #, fuzzy
 #| msgid "Show Hidden On"
 msgctxt "TabBar|"
 msgid "Show Hidden On"
 msgstr "Vis skjulte på"
 
-#: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
+#: libviews/tabview.cpp:309 libviews/tabview.cpp:311 libviews/tabview.cpp:730
 #, fuzzy
 #| msgid "(No profile data file loaded)"
 msgctxt "TabView|"
 msgid "(No profile data file loaded)"
 msgstr "(ingen profildata-fil indlæst)"
 
-#: libviews/tabview.cpp:370
+#: libviews/tabview.cpp:371
 #, fuzzy
 #| msgid "Types"
 msgctxt "TabView|"
 msgid "Types"
 msgstr "Typer"
 
-#: libviews/tabview.cpp:373
+#: libviews/tabview.cpp:374
 #, fuzzy
 #| msgid "Callers"
 msgctxt "TabView|"
 msgid "Callers"
 msgstr "Kaldere"
 
-#: libviews/tabview.cpp:374
+#: libviews/tabview.cpp:375
 #, fuzzy
 #| msgid "All Callers"
 msgctxt "TabView|"
 msgid "All Callers"
 msgstr "Alle kaldere"
 
-#: libviews/tabview.cpp:375
+#: libviews/tabview.cpp:376
 #, fuzzy
 #| msgid "Callee Map"
 msgctxt "TabView|"
 msgid "Callee Map"
 msgstr "Kort over kaldte"
 
-#: libviews/tabview.cpp:378
+#: libviews/tabview.cpp:379
 #, fuzzy
 #| msgid "Source Code"
 msgctxt "TabView|"
@@ -2879,47 +3177,54 @@ msgstr "Kildekode"
 
 #: libviews/tabview.cpp:380
 #, fuzzy
+#| msgid "Call Graph"
+msgctxt "TabView|"
+msgid "Control Flow Graph"
+msgstr "Kald-graf"
+
+#: libviews/tabview.cpp:383
+#, fuzzy
 #| msgid "Parts"
 msgctxt "TabView|"
 msgid "Parts"
 msgstr "Dele"
 
-#: libviews/tabview.cpp:381
+#: libviews/tabview.cpp:384
 #, fuzzy
 #| msgid "Callees"
 msgctxt "TabView|"
 msgid "Callees"
 msgstr "Kaldte"
 
-#: libviews/tabview.cpp:382
+#: libviews/tabview.cpp:385
 #, fuzzy
 #| msgid "Call Graph"
 msgctxt "TabView|"
 msgid "Call Graph"
 msgstr "Kald-graf"
 
-#: libviews/tabview.cpp:385
+#: libviews/tabview.cpp:388
 #, fuzzy
 #| msgid "All Callees"
 msgctxt "TabView|"
 msgid "All Callees"
 msgstr "Alle kaldte"
 
-#: libviews/tabview.cpp:386
+#: libviews/tabview.cpp:389
 #, fuzzy
 #| msgid "Caller Map"
 msgctxt "TabView|"
 msgid "Caller Map"
 msgstr "Kort over kaldere"
 
-#: libviews/tabview.cpp:389
+#: libviews/tabview.cpp:392
 #, fuzzy
 #| msgid "Machine Code"
 msgctxt "TabView|"
 msgid "Machine Code"
 msgstr "Maskinkode"
 
-#: libviews/tabview.cpp:643
+#: libviews/tabview.cpp:646
 #, fuzzy
 #| msgid ""
 #| "<b>Information Tabs</b><p>This widget shows information for the currently "
@@ -2975,7 +3280,7 @@ msgstr ""
 "tilgængelig.</li></ul>For mere information se <em>Hvad er dette?</em>-"
 "hjælpen for den tilsvarende fanebladskontrol.</p>"
 
-#: libviews/tabview.cpp:728
+#: libviews/tabview.cpp:731
 #, fuzzy
 #| msgid "(No function selected)"
 msgctxt "TabView|"

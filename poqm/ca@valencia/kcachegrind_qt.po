@@ -170,15 +170,20 @@ msgctxt "ProfileContext|"
 msgid "Program Trace"
 msgstr "Traçat del programa"
 
+#: libcore/context.cpp:88
+msgctxt "ProfileContext|"
+msgid "BasicBlock"
+msgstr ""
+
 #: libcore/costitem.cpp:48
 #, qt-format
 msgctxt "QObject|"
 msgid "%1 from %2"
 msgstr "%1 des de %2"
 
-#: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1978
-#: libcore/tracedata.cpp:2040 libcore/tracedata.cpp:2860
-#: libcore/tracedata.cpp:2961 libviews/partgraph.cpp:409
+#: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1984
+#: libcore/tracedata.cpp:2046 libcore/tracedata.cpp:3024
+#: libcore/tracedata.cpp:3125 libviews/partgraph.cpp:409
 msgctxt "QObject|"
 msgid "(unknown)"
 msgstr "(desconegut)"
@@ -308,33 +313,33 @@ msgctxt "QObject|"
 msgid "Cycle Estimation"
 msgstr "Estimació del cicle"
 
-#: libcore/tracedata.cpp:1240
+#: libcore/tracedata.cpp:1245
 msgctxt "QObject|"
 msgid "(no caller)"
 msgstr "(cap cridador)"
 
-#: libcore/tracedata.cpp:1247 libcore/tracedata.cpp:1266
+#: libcore/tracedata.cpp:1252 libcore/tracedata.cpp:1271
 #, qt-format
 msgctxt "QObject|"
 msgid "%1 via %2"
 msgstr "%1 via %2"
 
-#: libcore/tracedata.cpp:1256
+#: libcore/tracedata.cpp:1261
 msgctxt "QObject|"
 msgid "(no callee)"
 msgstr "(sense cridat)"
 
-#: libcore/tracedata.cpp:2709
+#: libcore/tracedata.cpp:2873
 msgctxt "QObject|"
 msgid "(global)"
 msgstr "(global)"
 
-#: libcore/tracedata.cpp:3144
+#: libcore/tracedata.cpp:3308
 msgctxt "QObject|"
 msgid "(not found)"
 msgstr "(no s'ha trobat)"
 
-#: libcore/tracedata.cpp:3692
+#: libcore/tracedata.cpp:3856
 msgctxt "TraceData|"
 msgid "Recalculating Function Cycles..."
 msgstr "S'estan recalculant els cicles de la funció…"
@@ -356,7 +361,8 @@ msgctxt "QObject|"
 msgid "(unknown call)"
 msgstr "(crida desconeguda)"
 
-#: libviews/callgraphview.cpp:908
+#: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1392
+#: libviews/controlflowgraphview.cpp:2419
 msgctxt "QObject|"
 msgid "Export Graph"
 msgstr "Exporta la gràfica"
@@ -1063,6 +1069,334 @@ msgstr "Ves fins a «%1»"
 msgctxt "CallView|"
 msgid "%1 per call"
 msgstr "%1 per crida"
+
+#: libviews/controlflowgraphview.cpp:607
+msgctxt "QObject|"
+msgid ""
+"Control-flow graph requires running callgrind with option --dump-instr=yes"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:913
+#, fuzzy, qt-format
+#| msgctxt "InstrView|"
+#| msgid "For annotated machine code, the following object file is needed:"
+msgctxt "QObject|"
+msgid ""
+"For annotated machine code, the following object file is needed\n"
+"    '%1'\n"
+"This file cannot be found.\n"
+msgstr "Per a codi de màquina anotat, fa falta el fitxer «object» següent:"
+
+#: libviews/controlflowgraphview.cpp:917
+#, fuzzy
+#| msgctxt "InstrView|"
+#| msgid "If cross-compiled, set SYSROOT variable."
+msgctxt "QObject|"
+msgid "If cross-compiled, set SYSROOT variable."
+msgstr "Si hi ha compilació creuada, definix la variable SYSROOT."
+
+#: libviews/controlflowgraphview.cpp:938
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"There is an error trying to execute the command\n"
+"    '%1'\n"
+"Check that you have installed 'objdump'.\n"
+"This utility can be found in the 'binutils' package"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1019
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"There are %1 cost line(s) without machine code.\n"
+"This happens because the code of %2 does not seem to match the profile data "
+"file.\n"
+"Are you using an old profile data file or is the abovementioned\n"
+"ELF object from an updated installation/another machine?"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1029
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"There seems to be an error trying to execute the command'%1'.\n"
+"Check that the ELF object used in the command exists.\n"
+"Check that you have installed 'objdump'.\n"
+"This utility can be found in the 'binutils' package."
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1754
+msgctxt "QObject|"
+msgid "This is Control Flow Graph by KetchuppOfficial"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:1810
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid ""
+#| "Warning: a long lasting graph layouting is in progress.\n"
+#| "Reduce node/edge limits for speedup.\n"
+msgctxt "QObject|"
+msgid ""
+"Warning: a long lasting graph layouting is in progress.\n"
+"Reduce node/edge limits for speedup.\n"
+msgstr ""
+"Avis: s'està generant una gràfica que pot tardar molt.\n"
+"Reduïu els límits dels nodes o de les arestes per a agilitzar el procés.\n"
+
+#: libviews/controlflowgraphview.cpp:1813
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Layouting stopped.\n"
+msgctxt "QObject|"
+msgid "Layouting stopped.\n"
+msgstr "S'ha parat la gràfica.\n"
+
+#: libviews/controlflowgraphview.cpp:1815
+#, fuzzy, qt-format
+#| msgctxt "CallGraphView|"
+#| msgid "The call graph has %1 nodes and %2 edges.\n"
+msgctxt "QObject|"
+msgid "The call graph has %1 nodes and %2 edges.\n"
+msgstr "La gràfica de crides té %1 nodes i %2 arestes.\n"
+
+#: libviews/controlflowgraphview.cpp:1823
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "No graph available because the layouting process failed.\n"
+msgctxt "QObject|"
+msgid "No graph available because the layouting process failed.\n"
+msgstr ""
+"No hi ha cap gràfica disponible perquè ha fallat el procés de creació de la "
+"gràfica.\n"
+
+#: libviews/controlflowgraphview.cpp:1825
+#, fuzzy, qt-format
+#| msgctxt "CallGraphView|"
+#| msgid ""
+#| "Trying to run the following command did not work:\n"
+#| "'%1'\n"
+msgctxt "QObject|"
+msgid ""
+"Trying to run the following command did not work:\n"
+"'%1'\n"
+msgstr ""
+"En provar d'executar l'ordre següent, no ha funcionat:\n"
+"«%1»\n"
+
+#: libviews/controlflowgraphview.cpp:1827
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Please check that 'dot' is installed (package GraphViz)."
+msgctxt "QObject|"
+msgid "Please check that 'dot' is installed (package GraphViz)."
+msgstr "Comproveu que «dot» està instal·lat (paquet GraphViz)."
+
+#: libviews/controlflowgraphview.cpp:2191
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Please check that 'dot' is installed (package GraphViz)."
+msgctxt "QObject|"
+msgid ""
+"Error running the graph layouting tool.\n"
+"Please check that 'dot' is installed (package Graphviz)."
+msgstr "Comproveu que «dot» està instal·lat (paquet GraphViz)."
+
+#: libviews/controlflowgraphview.cpp:2379
+msgctxt "QObject|"
+msgid "This basic block"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2381
+#: libviews/controlflowgraphview.cpp:2402
+msgctxt "QObject|"
+msgid "PC only"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2385
+#: libviews/controlflowgraphview.cpp:2406
+#, fuzzy
+#| msgctxt "ProfileContext|"
+#| msgid "Instruction Call"
+msgctxt "QObject|"
+msgid "Show instructions' PC"
+msgstr "Crida a instrucció"
+
+#: libviews/controlflowgraphview.cpp:2389
+#: libviews/controlflowgraphview.cpp:2410
+#, fuzzy
+#| msgctxt "InstrView|"
+#| msgid "(No Instruction)"
+msgctxt "QObject|"
+msgid "Show instructions' cost"
+msgstr "(Cap instrucció)"
+
+#: libviews/controlflowgraphview.cpp:2420
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "As DOT file..."
+msgctxt "QObject|"
+msgid "As DOT file..."
+msgstr "Com a fitxer DOT…"
+
+#: libviews/controlflowgraphview.cpp:2421
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "As Image..."
+msgctxt "QObject|"
+msgid "As Image..."
+msgstr "Com a imatge…"
+
+#: libviews/controlflowgraphview.cpp:2511
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Export Graph As Image"
+msgctxt "QObject|"
+msgid "Export Graph as Image"
+msgstr "Exporta la gràfica com a imatge"
+
+#: libviews/controlflowgraphview.cpp:2513
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Images (*.png *.jpg)"
+msgctxt "QObject|"
+msgid "Images (*.png *.jpg)"
+msgstr "Imatges (*.png *.jpg)"
+
+#: libviews/controlflowgraphview.cpp:2946
+#, fuzzy
+#| msgctxt "PartSelection|"
+#| msgid "(no trace parts)"
+msgctxt "QObject|"
+msgid "No trace data"
+msgstr "(cap fragment de traça)"
+
+#: libviews/controlflowgraphview.cpp:2951
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "No item activated for which to draw the call graph."
+msgctxt "QObject|"
+msgid "No item activated for which to draw the control-flow graph."
+msgstr ""
+"No hi ha cap entrada activada de la qual dibuixar la gràfica de crides."
+
+#: libviews/controlflowgraphview.cpp:2963
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "No call graph can be drawn for the active item."
+msgctxt "QObject|"
+msgid "No control-flow graph can be drawn for the active item."
+msgstr "No s'ha pogut dibuixar cap gràfica de crides per a l'element actiu."
+
+#: libviews/controlflowgraphview.cpp:3058
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Stop Layouting"
+msgctxt "QObject|"
+msgid "Stop Layouting"
+msgstr "Para la gràfica"
+
+#: libviews/controlflowgraphview.cpp:3121
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Birds-eye View"
+msgctxt "QObject|"
+msgid "Birds-eye View"
+msgstr "Vista d'ocell"
+
+#: libviews/controlflowgraphview.cpp:3123
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Top Left"
+msgctxt "QObject|"
+msgid "Top Left"
+msgstr "Extrem superior esquerre"
+
+#: libviews/controlflowgraphview.cpp:3124
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Top Right"
+msgctxt "QObject|"
+msgid "Top Right"
+msgstr "Extrem superior dret"
+
+#: libviews/controlflowgraphview.cpp:3125
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Bottom Left"
+msgctxt "QObject|"
+msgid "Bottom Left"
+msgstr "Extrem inferior esquerre"
+
+#: libviews/controlflowgraphview.cpp:3126
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Bottom Right"
+msgctxt "QObject|"
+msgid "Bottom Right"
+msgstr "Extrem inferior dret"
+
+#: libviews/controlflowgraphview.cpp:3127
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Automatic"
+msgctxt "QObject|"
+msgid "Automatic"
+msgstr "Automàtic"
+
+#: libviews/controlflowgraphview.cpp:3128
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Hide"
+msgctxt "QObject|"
+msgid "Hide"
+msgstr "Oculta"
+
+#: libviews/controlflowgraphview.cpp:3138
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Layout"
+msgctxt "QObject|"
+msgid "Layout"
+msgstr "Disposició"
+
+#: libviews/controlflowgraphview.cpp:3140
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Top to Down"
+msgctxt "QObject|"
+msgid "Top to Down"
+msgstr "De dalt a baix"
+
+#: libviews/controlflowgraphview.cpp:3141
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Left to Right"
+msgctxt "QObject|"
+msgid "Left to Right"
+msgstr "D'esquerra a dreta"
+
+#: libviews/controlflowgraphview.cpp:3151
+#, fuzzy
+#| msgctxt "CallGraphView|"
+#| msgid "Min. Call Cost"
+msgctxt "QObject|"
+msgid "Min. basic block cost"
+msgstr "Cost mínim de la crida"
+
+#: libviews/controlflowgraphview.cpp:3153
+msgctxt "QObject|"
+msgid "Undefined"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:3156
+#, fuzzy, qt-format
+#| msgctxt "CallGraphView|"
+#| msgid "1 %"
+msgctxt "QObject|"
+msgid "%1%"
+msgstr "1%"
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
@@ -1985,147 +2319,155 @@ msgctxt "StackSelection|"
 msgid "Function"
 msgstr "Funció"
 
-#: libviews/tabview.cpp:103
+#: libviews/tabview.cpp:104
 msgctxt "TabBar|"
 msgid "Move to Top"
 msgstr "Mou cap a dalt"
 
-#: libviews/tabview.cpp:104
+#: libviews/tabview.cpp:105
 msgctxt "TabBar|Move to Top"
 msgid "Top"
 msgstr "Dalt"
 
-#: libviews/tabview.cpp:107
+#: libviews/tabview.cpp:108
 msgctxt "TabBar|"
 msgid "Move to Right"
 msgstr "Mou cap a la dreta"
 
-#: libviews/tabview.cpp:108
+#: libviews/tabview.cpp:109
 msgctxt "TabBar|Move to Right"
 msgid "Right"
 msgstr "Dreta"
 
-#: libviews/tabview.cpp:111
+#: libviews/tabview.cpp:112
 msgctxt "TabBar|"
 msgid "Move to Bottom"
 msgstr "Mou cap a baix"
 
-#: libviews/tabview.cpp:112
+#: libviews/tabview.cpp:113
 msgctxt "TabBar|Move to Bottom"
 msgid "Bottom"
 msgstr "Baix"
 
-#: libviews/tabview.cpp:115
+#: libviews/tabview.cpp:116
 msgctxt "TabBar|"
 msgid "Move to Bottom Left"
 msgstr "Mou cap a baix a l'esquerra"
 
-#: libviews/tabview.cpp:116
+#: libviews/tabview.cpp:117
 msgctxt "TabBar|Move to Bottom Left"
 msgid "Bottom Left"
 msgstr "A baix esquerra"
 
-#: libviews/tabview.cpp:118
+#: libviews/tabview.cpp:119
 msgctxt "TabBar|"
 msgid "Move Area To"
 msgstr "Mou l'àrea a"
 
-#: libviews/tabview.cpp:121
+#: libviews/tabview.cpp:122
 msgctxt "TabBar|"
 msgid "Hide This Tab"
 msgstr "Oculta esta pestanya"
 
-#: libviews/tabview.cpp:122
+#: libviews/tabview.cpp:123
 msgctxt "TabBar|"
 msgid "Hide Area"
 msgstr "Oculta esta àrea"
 
-#: libviews/tabview.cpp:131
+#: libviews/tabview.cpp:132
 msgctxt "TabBar|Show on Top"
 msgid "Top"
 msgstr "Dalt"
 
-#: libviews/tabview.cpp:132
+#: libviews/tabview.cpp:133
 msgctxt "TabBar|Show on Right"
 msgid "Right"
 msgstr "Dreta"
 
-#: libviews/tabview.cpp:133
+#: libviews/tabview.cpp:134
 msgctxt "TabBar|Show on Bottom"
 msgid "Bottom"
 msgstr "Baix"
 
-#: libviews/tabview.cpp:134
+#: libviews/tabview.cpp:135
 msgctxt "TabBar|Show on Bottom Left"
 msgid "Bottom Left"
 msgstr "Extrem inferior esquerre"
 
-#: libviews/tabview.cpp:135
+#: libviews/tabview.cpp:136
 msgctxt "TabBar|"
 msgid "Show Hidden On"
 msgstr "Activa mostrar ocult"
 
-#: libviews/tabview.cpp:308 libviews/tabview.cpp:310 libviews/tabview.cpp:727
+#: libviews/tabview.cpp:309 libviews/tabview.cpp:311 libviews/tabview.cpp:730
 msgctxt "TabView|"
 msgid "(No profile data file loaded)"
 msgstr "(cap fitxer de traça carregat)"
 
-#: libviews/tabview.cpp:370
+#: libviews/tabview.cpp:371
 msgctxt "TabView|"
 msgid "Types"
 msgstr "Tipus"
 
-#: libviews/tabview.cpp:373
+#: libviews/tabview.cpp:374
 msgctxt "TabView|"
 msgid "Callers"
 msgstr "Cridadors"
 
-#: libviews/tabview.cpp:374
+#: libviews/tabview.cpp:375
 msgctxt "TabView|"
 msgid "All Callers"
 msgstr "Tots els cridadors"
 
-#: libviews/tabview.cpp:375
+#: libviews/tabview.cpp:376
 msgctxt "TabView|"
 msgid "Callee Map"
 msgstr "Mapa del cridat"
 
-#: libviews/tabview.cpp:378
+#: libviews/tabview.cpp:379
 msgctxt "TabView|"
 msgid "Source Code"
 msgstr "Codi font"
 
 #: libviews/tabview.cpp:380
+#, fuzzy
+#| msgctxt "TabView|"
+#| msgid "Call Graph"
+msgctxt "TabView|"
+msgid "Control Flow Graph"
+msgstr "Gràfica de crides"
+
+#: libviews/tabview.cpp:383
 msgctxt "TabView|"
 msgid "Parts"
 msgstr "Parts"
 
-#: libviews/tabview.cpp:381
+#: libviews/tabview.cpp:384
 msgctxt "TabView|"
 msgid "Callees"
 msgstr "Cridats"
 
-#: libviews/tabview.cpp:382
+#: libviews/tabview.cpp:385
 msgctxt "TabView|"
 msgid "Call Graph"
 msgstr "Gràfica de crides"
 
-#: libviews/tabview.cpp:385
+#: libviews/tabview.cpp:388
 msgctxt "TabView|"
 msgid "All Callees"
 msgstr "Tots els cridats"
 
-#: libviews/tabview.cpp:386
+#: libviews/tabview.cpp:389
 msgctxt "TabView|"
 msgid "Caller Map"
 msgstr "Mapa del cridador"
 
-#: libviews/tabview.cpp:389
+#: libviews/tabview.cpp:392
 msgctxt "TabView|"
 msgid "Machine Code"
 msgstr "Codi màquina"
 
-#: libviews/tabview.cpp:643
+#: libviews/tabview.cpp:646
 msgctxt "TabView|"
 msgid ""
 "<b>Information Tabs</b><p>This widget shows information for the currently "
@@ -2164,7 +2506,7 @@ msgstr ""
 "més informació, mireu l'ajuda <em>Què és açò?</em> de la corresponent "
 "pestanya del giny</p>"
 
-#: libviews/tabview.cpp:728
+#: libviews/tabview.cpp:731
 msgctxt "TabView|"
 msgid "(No function selected)"
 msgstr "(No s'ha seleccionat cap funció)"
