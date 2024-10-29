@@ -1026,7 +1026,7 @@ const ObjdumpParser::instrStringsMap& ObjdumpParser::getInstrStrings()
     }
     else if (_instrStrings.empty())
     {
-        _errorMessage = QObject::tr("There seems to be an error trying to execute the command"
+        _errorMessage = QObject::tr("There seems to be an error trying to execute the command "
                                     "\'%1\'.\n"
                                     "Check that the ELF object used in the command exists.\n"
                                     "Check that you have installed \'objdump\'.\n"
