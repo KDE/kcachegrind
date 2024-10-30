@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kdesdk-kde4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2024-03-18 19:41+0300\n"
+"PO-Revision-Date: 2024-10-29 16:08+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.11.70\n"
 
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
@@ -56,7 +56,7 @@ msgstr "Kısmı Çağrı Hattı"
 #: libcore/context.cpp:65
 msgctxt "ProfileContext|"
 msgid "Line Call"
-msgstr "Çağrı hattı"
+msgstr "Hat Çağrısı"
 
 #: libcore/context.cpp:66
 msgctxt "ProfileContext|"
@@ -335,7 +335,7 @@ msgstr "(bulunamadı)"
 #: libcore/tracedata.cpp:3692
 msgctxt "TraceData|"
 msgid "Recalculating Function Cycles..."
-msgstr "İşlevin Döngüleri Yeniden Hesaplanıyor..."
+msgstr "İşlev döngüleri yeniden hesaplanıyor…"
 
 #: libviews/callgraphview.cpp:414
 #, qt-format
@@ -377,8 +377,8 @@ msgstr ""
 "<b>Etkin işlev çevresindeki çağrı grafiği</b><p>Yapılandırmaya bağlı olarak, "
 "bu görünüm, etkin işlevin çağrı grafiği ortamını gösterir. Not: Gösterilen "
 "maliyet <b>yalnızca</b> etkin işlev çalışırken harcanan maliyettir; örneğin "
-"main() için olan maliyet -eğer görünürse- etkin işlev ile aynı olmalıdır; "
-"çünkü main()'in harcanan maliyeti etkin işlev içerisinde içerilir.</"
+"main() için olan maliyet —eğer görünürse— etkin işlev ile aynı olmalıdır; "
+"çünkü main()’in harcanan maliyeti etkin işlev içerisinde içerilir.</"
 "p><p>Çevrimler için, mavi oklar aslında hiç gerçekleşmeyen düzgün bir çizim "
 "için yapay bir çağrı olduğunu gösterir.</p><p>Eğer grafik araç takımı "
 "alanından daha büyükse bir genel görünüm kaydırıcısı bir kenarda gösterilir. "
@@ -403,7 +403,7 @@ msgstr "Yerleştirme durduruldu.\n"
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
-msgstr "Cağrılan grafik %1 adet düğüme ve %2 adet kenare sahiptir.\n"
+msgstr "Çağrı grafiğinde %1 düğüm ve %2 kenar var.\n"
 
 #: libviews/callgraphview.cpp:2034
 msgctxt "CallGraphView|"
@@ -418,13 +418,13 @@ msgid ""
 "'%1'\n"
 msgstr ""
 "Takip eden komut çalıştırılamadı:\n"
-"'%1'\n"
+"“%1”\n"
 
 #: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
 msgctxt "CallGraphView|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr ""
-"Lütfen 'dot' uygulamasının kurulu olup olmadığını denetleyin (GraphViz "
+"Lütfen “dot” uygulamasının kurulu olup olmadığını denetleyin (GraphViz "
 "paketi)."
 
 #: libviews/callgraphview.cpp:2080
@@ -450,7 +450,7 @@ msgid ""
 "\t'%1'\n"
 "because it has no cost of the selected event type."
 msgstr ""
-"'%1' işlevi için kullanılabilecek çağrı\n"
+"“%1” işlevi için kullanılabilecek çağrı\n"
 "\tgrafiği yoktur\n"
 "çünkü seçilmiş olay tipinde herhangi bir maliyet yoktur."
 
@@ -624,7 +624,7 @@ msgstr "Dairesel"
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
-msgstr "'%1' ögesine git"
+msgstr "“%1” ögesine git"
 
 #: libviews/callgraphview.cpp:3073
 msgctxt "CallGraphView|"
@@ -639,12 +639,12 @@ msgstr "Grafiği Dışa Aktar"
 #: libviews/callgraphview.cpp:3081
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
-msgstr "DOT dosyası olarak..."
+msgstr "DOT Dosyası Olarak…"
 
 #: libviews/callgraphview.cpp:3082
 msgctxt "CallGraphView|"
 msgid "As Image..."
-msgstr "Görsel Olarak..."
+msgstr "Görsel Olarak…"
 
 #: libviews/callgraphview.cpp:3085
 msgctxt "CallGraphView|"
@@ -765,11 +765,11 @@ msgid ""
 "em> activates the current item.</p>"
 msgstr ""
 "<p>Görünüş seçenekleri bağlam menüsünde bulunabilir. Tam boyut oranlarını "
-"almak için 'Hatalı kenarlıkları gizle' seçeneğini seçin. Bu kip <em>pek</em> "
+"almak için “Yanlış kenarlıkları gizle” seçeneğini seçin. Bu kip <em>pek</em> "
 "bir zaman harcayıcı olabildiğinden, daha öncesinden çizilecek iç içe geçme "
-"düzeyini sınırlamanız yararlı olabilir. 'En İyi', alt işlemlerin üst işleme "
-"oranla bölünme yönünü belirler. 'Her Zaman En İyi', her aynı düzeydeki işlem "
-"için kalan boşluğa karar verir. 'Orantıları Yok Say', alt işlemleri çizmeden "
+"düzeyini sınırlamanız yararlı olabilir. “En iyi”, alt işlemlerin üst işleme "
+"oranla bölünme yönünü belirler. “Her zaman en iyi”, her aynı düzeydeki işlem "
+"için kalan boşluğa karar verir. “Orantıları yok say”, alt işlemleri çizmeden "
 "<em>önce</em> işlev adı için boşluk alır. Boyut orantılarının <em>ağır bir "
 "biçimde</em> hatalı olabileceğini göz önünde bulundurun.</p><p>Bu bir "
 "<em>Çağrı Ağacı</em> araç takımıdır. Klavye ile dolaşım aynı düzeydeki "
@@ -811,7 +811,7 @@ msgstr "20. Derinlik"
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Depth of '%1' (%2)"
-msgstr "'%1' (%2) için Derinlik"
+msgstr "“%1” (%2) için Derinlik"
 
 #: libviews/callmapview.cpp:185
 #, qt-format
@@ -869,7 +869,7 @@ msgstr "1000 Piksel"
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Area of '%1' (%2)"
-msgstr "'%1' (%2) Alanı"
+msgstr "“%1” (%2) Alanı"
 
 #: libviews/callmapview.cpp:275
 #, qt-format
@@ -962,7 +962,7 @@ msgstr "Gölgeleme"
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Call Map: Current is '%1'"
-msgstr "Çağrı Haritası: Mevcut '%1'"
+msgstr "Çağrı haritası: Geçerli “%1”"
 
 #: libviews/callmapview.cpp:621
 msgctxt "QObject|"
@@ -1051,7 +1051,7 @@ msgstr ""
 #, qt-format
 msgctxt "CallView|"
 msgid "Go to '%1'"
-msgstr "'%1' ögesine git"
+msgstr "Git: “%1”"
 
 #: libviews/callview.cpp:257 libviews/callview.cpp:261
 #, qt-format
@@ -1182,7 +1182,7 @@ msgstr ""
 #, qt-format
 msgctxt "CoverageView|"
 msgid "Go to '%1'"
-msgstr "'%1' ögesine git"
+msgstr "“%1” ögesine git"
 
 #: libviews/eventtypeitem.cpp:48
 msgctxt "QObject|"
@@ -1260,7 +1260,7 @@ msgstr "Kaldır"
 #: libviews/eventtypeview.cpp:119
 msgctxt "EventTypeView|"
 msgid "New Event Type..."
-msgstr "Yeni Olay Türü..."
+msgstr "Yeni Olay Türü…"
 
 #: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
 #, qt-format
@@ -1356,7 +1356,7 @@ msgstr ""
 #, qt-format
 msgctxt "FunctionSelection|"
 msgid "Go to '%1'"
-msgstr "'%1' ögesine git"
+msgstr "“%1” ögesine git"
 
 #: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
 msgctxt "FunctionSelection|"
@@ -1372,7 +1372,7 @@ msgstr "Gruplandırma Yok"
 #, qt-format
 msgctxt "QObject|"
 msgid "Active call to '%1'"
-msgstr "'%1' ögesine etkin çağrı"
+msgstr "“%1” ögesine etkin çağrı"
 
 #: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
 #, qt-format
@@ -1385,8 +1385,8 @@ msgstr "%1 ögesine çağrı"
 msgctxt "QObject|"
 msgid "%n call(s) to '%2'"
 msgid_plural "%n call(s) to '%2'"
-msgstr[0] "'%2' ögesine %n çağrı(lar)"
-msgstr[1] "'%2' ögesine %n çağrı(lar)"
+msgstr[0] "“%2” ögesine %n çağrı"
+msgstr[1] "“%2” ögesine %n çağrı"
 
 #: libviews/instritem.cpp:155
 #, qt-format
@@ -1449,10 +1449,10 @@ msgid ""
 msgstr ""
 "<b>Açıklamalı Makine Kodu</b><p>Açıklamalı makine kodu listesi, bir talimat "
 "yürütülürken harcanan (kendi) maliyetle birlikte geçerli seçili işlevin "
-"montaj talimatlarını gösterir. Bu bir arama talimatıysa, yapılan aramayla "
+"montaj yönergelerini gösterir. Bu bir arama yönergesiyse yapılan aramayla "
 "ilgili ayrıntıları içeren satırlar kaynağa eklenir: Aramanın içinde harcanan "
 "maliyet, gerçekleşen arama sayısı ve arama hedefi.</p><p>Gösterilen makine "
-"kodu. 'binutils' paketindeki 'objdump' izlencesiyle oluşturulur.</p><p>Bu "
+"kodu. “binutils” paketindeki “objdump” izlencesiyle oluşturulur.</p><p>Bu "
 "çağrının hedef işlevini geçerli kılmak için çağrı bilgilerini içeren bir "
 "satır seçin.</p>"
 
@@ -1460,7 +1460,7 @@ msgstr ""
 #, qt-format
 msgctxt "InstrView|"
 msgid "Go to '%1'"
-msgstr "'%1' ögesine git"
+msgstr "“%1” ögesine git"
 
 #: libviews/instrview.cpp:270
 #, qt-format
@@ -1501,7 +1501,7 @@ msgstr "      --collect-jumps=yes"
 #: libviews/instrview.cpp:826
 msgctxt "InstrView|"
 msgid "For annotated machine code, the following object file is needed:"
-msgstr "Açıklamalı makine kodu için, takip eden öge dosyası gereklidir:"
+msgstr "Açıklamalı makine kodu için aşağıdaki nesne dosyası gereklidir:"
 
 #: libviews/instrview.cpp:831
 msgctxt "InstrView|"
@@ -1521,12 +1521,12 @@ msgstr "Komutu çalıştırmaya çalışırken bir hata oluştu"
 #: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
 msgctxt "InstrView|"
 msgid "Check that you have installed 'objdump'."
-msgstr "'objdump' kurulmuş olduğunu kontrol et."
+msgstr "“objdump” programının kurulu olup olmadığını denetleyin."
 
 #: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
 msgctxt "InstrView|"
 msgid "This utility can be found in the 'binutils' package."
-msgstr "Bu izlence, 'binutils' paketinde bulunabilir."
+msgstr "Bu izlence, “binutils” paketinde bulunabilir."
 
 #: libviews/instrview.cpp:966
 msgctxt "InstrView|"
@@ -1650,19 +1650,19 @@ msgstr ""
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Profile Part Overview: Current is '%1'"
-msgstr "Profil Kısmı Genel Görünümü: Geçerli: '%1'"
+msgstr "Profil Kısmı Genel Görünümü: Geçerli: “%1”"
 
 #: libviews/partselection.cpp:337
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Deselect '%1'"
-msgstr "'%1' ögesini Seçme"
+msgstr "“%1” ögesini Seçme"
 
 #: libviews/partselection.cpp:339
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Select '%1'"
-msgstr "'%1' ögesini Seç"
+msgstr "“%1” ögesini Seç"
 
 #: libviews/partselection.cpp:344
 msgctxt "PartSelection|"
@@ -1688,7 +1688,7 @@ msgstr "Gizli Kısımları Göster"
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Go to '%1'"
-msgstr "'%1' ögesine git"
+msgstr "“%1” ögesine git"
 
 #: libviews/partselection.cpp:370
 msgctxt "PartSelection|"
@@ -1871,7 +1871,7 @@ msgstr ""
 #, qt-format
 msgctxt "SourceView|"
 msgid "Go to '%1'"
-msgstr "'%1' ögesine git"
+msgstr "“%1” ögesine git"
 
 #: libviews/sourceview.cpp:115
 #, qt-format
@@ -1898,13 +1898,13 @@ msgstr "Bundan dolayı, ek açıklama eklenmiş bir kaynak gösterilemez."
 #, qt-format
 msgctxt "SourceView|"
 msgid "--- From '%1' ---"
-msgstr "--- '%1' itibaren ---"
+msgstr "--- “%1” itibaren ---"
 
 #: libviews/sourceview.cpp:663
 #, qt-format
 msgctxt "SourceView|"
 msgid "--- Inlined from '%1' ---"
-msgstr "--- '%1' itibaren içinde ---"
+msgstr "--- “%1” itibaren içinde ---"
 
 #: libviews/sourceview.cpp:664
 msgctxt "SourceView|"

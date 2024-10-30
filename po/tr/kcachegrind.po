@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kdesdk-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-18 00:39+0000\n"
-"PO-Revision-Date: 2024-09-23 15:15+0300\n"
+"PO-Revision-Date: 2024-10-29 16:15+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -58,7 +58,7 @@ msgstr "Genel"
 #: kcachegrind/configdlgbase.ui:34
 #, kde-format
 msgid "Maximum number of items in lists:"
-msgstr "Listedeki ögelerin maksimum sayısı:"
+msgstr "Listedeki en çok öge sayısı:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3)
 #: kcachegrind/configdlgbase.ui:44
@@ -70,7 +70,7 @@ msgstr "İpuçlarındaki ve sağ tıklama menüsündeki sembolleri kısalt"
 #: kcachegrind/configdlgbase.ui:70
 #, kde-format
 msgid "when more than:"
-msgstr "Bundan daha fazlaysa:"
+msgstr "bundan daha fazlaysa:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2_2)
 #: kcachegrind/configdlgbase.ui:80
@@ -82,13 +82,13 @@ msgstr "bundan daha uzunsa:"
 #: kcachegrind/configdlgbase.ui:90
 #, kde-format
 msgid "Precision of percentage values:"
-msgstr "Yüzdelik değerlerin hassaslığı:"
+msgstr "Yüzdelik değerlerin kesinliği:"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, maxListEdit)
 #: kcachegrind/configdlgbase.ui:113
 #, kde-format
 msgid "The Maximum Number of List Items should be below 500."
-msgstr "Listedeki maksimum öge sayısı 500'ün altında olması gerekiyor."
+msgstr "Listedeki en çok öge sayısının 500’ün altında olması gerekiyor."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1)
 #: kcachegrind/configdlgbase.ui:158
@@ -133,7 +133,7 @@ msgstr "Bilgi Notları"
 #: kcachegrind/configdlgbase.ui:329
 #, kde-format
 msgid "Context lines in annotations:"
-msgstr "Açıklamaların içindeki içerik satırları:"
+msgstr "Açıklamaların içindeki bağlam satırları:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
 #: kcachegrind/configdlgbase.ui:350
@@ -200,7 +200,7 @@ msgstr "Hedef komut:"
 #: kcachegrind/dumpselectionbase.ui:100
 #, kde-format
 msgid "Profiler options:"
-msgstr "Profil seçenekleri:"
+msgstr "Profilleyici seçenekleri:"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:111
@@ -300,7 +300,7 @@ msgstr "Profili Dök"
 #: kcachegrind/dumpselectionbase.ui:314
 #, kde-format
 msgid "Every BBs"
-msgstr "Her BBlarda"
+msgstr "Her BB’lerde"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:328 kcachegrind/dumpselectionbase.ui:370
@@ -366,7 +366,7 @@ msgstr "Bilgi"
 #: kcachegrind/dumpselectionbase.ui:505
 #, kde-format
 msgid "Dump reason:"
-msgstr "Döküm sebebi:"
+msgstr "Döküm gerekçesi:"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel6)
 #: kcachegrind/dumpselectionbase.ui:518
@@ -450,7 +450,7 @@ msgstr "Çalıştırıldı"
 #: kcachegrind/dumpselectionbase.ui:702
 #, kde-format
 msgid "Basic Blocks"
-msgstr "Basit Bloklar"
+msgstr "Temel Bloklar"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:716
@@ -629,7 +629,7 @@ msgstr "Bu izin bilgilerini göster"
 #: kcachegrind/main.cpp:68
 #, kde-format
 msgid "[trace...]"
-msgstr "[iz...]"
+msgstr "[iz…]"
 
 #: kcachegrind/toplevel.cpp:255 kcachegrind/toplevel.cpp:483
 #, kde-format
@@ -650,8 +650,8 @@ msgid ""
 "p><p>The <b>Cost</b> and <b>Calls</b> columns show the cost used for all "
 "calls from the function in the line above.</p>"
 msgstr ""
-"<b>En Maliyetli Çağrı Yığını</b><p>Bu tamamen hayali 'en olası' çağrı "
-"yığınıdır. Mevcut seçilmiş işlevler ile başlar ve çağırıcıları/çağırılanları "
+"<b>En Maliyetli Çağrı Yığını</b><p>Bu tamamen hayali “en olası” çağrı "
+"yığınıdır. Geçerli seçili işlevler ile başlar ve çağırıcıları/çağrılanları "
 "en yüksek maliyetin üstünden altına doğru ekleyerek oluşturulur.</"
 "p><p><b>Maliyet</b> ve <b>çağrılar</b> sütunu işlevden gelen tüm çağrıların "
 "maliyetini yukarıdaki satırda gösterir.</p>"
@@ -693,12 +693,12 @@ msgstr ""
 "(hala oluşturulmamış) profil şeması oluşturur. <b>Profili Çalıştır</b>’a "
 "basarak bu seçeneklerde bir profilin arka planda çalışmasını başlatırsınız.</"
 "li><li><b>Bilgi</b> size seçilmiş döküm ile ilgili olay maliyet özeti ve "
-"simülasyon önbellek özellikleri gibi detaylar verir.</li><li><b>Durum</b> "
-"ise yalnızca mevcut gerçekleşen profillerin çalışması için kullanılabilir. "
+"simülasyon önbellek özellikleri gibi ayrıntılar verir.</li><li><b>Durum</b> "
+"ise yalnızca şu anda gerçekleşen profillerin çalışması için kullanılabilir. "
 "<b>Güncelle</b>’ye basarak çalışan sayaçların farklarını ve profillenen "
 "programın içinde mevcut durumun yığın izini görebilirsiniz. <b>Her</b> "
 "seçeneğini seçerek KCachegrind’e bu veriyi düzenli olarak almasına izin "
-"verirsiniz. <b>Eşle</b> seçeneği ile mevcut yüklenmiş dökümün içindeki "
+"verirsiniz. <b>Eşle</b> seçeneği ile şu anda yüklenmiş dökümün içindeki "
 "rıhtımlanabilir üst işlevlerini etkinleştirebilirsiniz.</li></ul></p>"
 
 #: kcachegrind/toplevel.cpp:364
@@ -776,7 +776,7 @@ msgstr "<b>Yeni</b><p>Yeni boş KCachegrind penceresi açar.</p>"
 #: kcachegrind/toplevel.cpp:416
 #, kde-format
 msgid "&Add..."
-msgstr "&Ekle..."
+msgstr "&Ekle…"
 
 #: kcachegrind/toplevel.cpp:418
 #, kde-format
@@ -841,15 +841,15 @@ msgstr ""
 "çalışması içindir. Bu eylem Cachegrind’in dökümü aramasını yaparken "
 "denetlenir. Eğer döküm bitmişse kendiliğinden geçerli izi yeniden yükler. "
 "Eğer bu Callgrind çalışıyorsa yeni oluşturulmuş iz kısmı da yüklenecektir.</"
-"p><p>Dökümü zorlamak yeni bir ’callgrind.cmd’ dosyası oluşturur ve her "
+"p><p>Dökümü zorlamak yeni bir “callgrind.cmd” dosyası oluşturur ve her "
 "saniye varlığını denetler. Çalışan Callgrind bu dosyayı bulacak, kısım izini "
-"dökecek ve ’callgrind.cmd’ silecektir. Silme işlemi KCachegrind tarafından "
+"dökecek ve “callgrind.cmd” silecektir. Silme işlemi KCachegrind tarafından "
 "fark edilir ve yeniden yükler. Eğer <em>hiçbir</em> Callgrind çalışmıyorsa "
-"’Dökümü Zorla’ya yeniden basarak döküm isteğini iptal edin. Bu ’callgrind."
-"cmd’yi silecek ve yeni bir döküm isteğini durduracaktır.</p><p>Not: Çalışan "
-"bir Callgrind <em>yalnızca</em> var olan ’callgrind.cmd’yi bulacak ve etkin "
+"“Dökümü Zorla”ya yeniden basarak döküm isteğini iptal edin. Bu “callgrind."
+"cmd”yi silecek ve yeni bir döküm isteğini durduracaktır.</p><p>Not: Çalışan "
+"bir Callgrind <em>yalnızca</em> var olan “callgrind.cmd”yi bulacak ve etkin "
 "olarak birkaç milisaniye çalışacaktır, yani <em>uyumayacaktır</em>. İpucu: "
-"Profillenen bir arayüz uygulaması için Callgrind’i uyandırabilirsiniz; örn. "
+"Profillenen bir arayüz uygulaması için Callgrind’ı uyandırabilirsiniz; örn. "
 "uygulamanın penceresini yeniden boyutlandırarak.</p>"
 
 #: kcachegrind/toplevel.cpp:471
@@ -1088,8 +1088,8 @@ msgid ""
 "Could not open the file \"%1\". Check it exists and you have enough "
 "permissions to read it."
 msgstr ""
-"'%1' dosyası açılamadı. Kontroller yapıldı ve gerekli okuma haklarına "
-"sahipsiniz."
+"“%1” dosyası açılamadı. Dosyanın var olduğundan ve onu okumak için gerekli "
+"izinlere iye olduğunuzdan emin olun."
 
 #: kcachegrind/toplevel.cpp:959
 #, kde-format
