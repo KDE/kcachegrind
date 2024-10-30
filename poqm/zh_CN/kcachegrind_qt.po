@@ -1061,7 +1061,7 @@ msgstr ""
 #, qt-format
 msgctxt "QObject|"
 msgid ""
-"There seems to be an error trying to execute the command'%1'.\n"
+"There seems to be an error trying to execute the command '%1'.\n"
 "Check that the ELF object used in the command exists.\n"
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package."
@@ -1074,10 +1074,6 @@ msgstr ""
 
 #: libviews/controlflowgraphview.cpp:1810
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Warning: a long lasting graph layouting is in progress.\n"
-#| "Reduce node/edge limits for speedup.\n"
 msgctxt "QObject|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
@@ -1104,10 +1100,6 @@ msgstr ""
 
 #: libviews/controlflowgraphview.cpp:1825
 #, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Trying to run the following command did not work:\n"
-#| "'%1'\n"
 msgctxt "QObject|"
 msgid ""
 "Trying to run the following command did not work:\n"
@@ -1142,8 +1134,6 @@ msgstr ""
 #: libviews/controlflowgraphview.cpp:2385
 #: libviews/controlflowgraphview.cpp:2406
 #, fuzzy
-#| msgctxt "ProfileContext|"
-#| msgid "Instruction Call"
 msgctxt "QObject|"
 msgid "Show instructions' PC"
 msgstr "指令调用"
@@ -1151,8 +1141,6 @@ msgstr "指令调用"
 #: libviews/controlflowgraphview.cpp:2389
 #: libviews/controlflowgraphview.cpp:2410
 #, fuzzy
-#| msgctxt "QObject|"
-#| msgid "Instruction Fetch"
 msgctxt "QObject|"
 msgid "Show instructions' cost"
 msgstr "指令获取"
@@ -1174,8 +1162,6 @@ msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2513
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Images (*.png *.jpg)"
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
 msgstr "图像 (*.png *.jpg)"
@@ -1207,56 +1193,42 @@ msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3123
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Left"
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr "左上"
 
 #: libviews/controlflowgraphview.cpp:3124
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Right"
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr "右上"
 
 #: libviews/controlflowgraphview.cpp:3125
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Left"
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "左下"
 
 #: libviews/controlflowgraphview.cpp:3126
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Right"
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "右下"
 
 #: libviews/controlflowgraphview.cpp:3127
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Automatic"
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr "自动"
 
 #: libviews/controlflowgraphview.cpp:3128
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Hide"
 msgctxt "QObject|"
 msgid "Hide"
 msgstr "隐藏"
 
 #: libviews/controlflowgraphview.cpp:3138
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layout"
 msgctxt "QObject|"
 msgid "Layout"
 msgstr "布局"
@@ -1268,8 +1240,6 @@ msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3141
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Left to Right"
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "从左到右"
@@ -1286,8 +1256,6 @@ msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3156
 #, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "1 %"
 msgctxt "QObject|"
 msgid "%1%"
 msgstr "1 %"

@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
@@ -163,7 +163,7 @@ msgstr "პროგრამის ტრეისი"
 #: libcore/context.cpp:88
 msgctxt "ProfileContext|"
 msgid "BasicBlock"
-msgstr ""
+msgstr "ძირითადი ბლოკი"
 
 #: libcore/costitem.cpp:48
 #, qt-format
@@ -1060,22 +1060,22 @@ msgctxt "QObject|"
 msgid ""
 "Control-flow graph requires running callgrind with option --dump-instr=yes"
 msgstr ""
+"Control-flow-ის გრაფიკი ითხოვს, გაშვებული იყოს callgrind პარამეტრით --dump-"
+"instr=yes"
 
 #: libviews/controlflowgraphview.cpp:913
-#, fuzzy, qt-format
-#| msgctxt "InstrView|"
-#| msgid "For annotated machine code, the following object file is needed:"
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "For annotated machine code, the following object file is needed\n"
 "    '%1'\n"
 "This file cannot be found.\n"
-msgstr "ანოტაციის მქონე მანქანური კოდისთვის შემდეგი ობიექტის ფაილია საჭირო:"
+msgstr ""
+"ანოტაციის მქონე მანქანური კოდისთვის შემდეგი ობიექტის ფაილია საჭირო:\n"
+"    '%1'\n"
+"ფაილი აღმოჩენილი არაა.\n"
 
 #: libviews/controlflowgraphview.cpp:917
-#, fuzzy
-#| msgctxt "InstrView|"
-#| msgid "If cross-compiled, set SYSROOT variable."
 msgctxt "QObject|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr "თუ ჯვარედიდან/აგებულია, დააყენეთ ცვლადი SYSROOT."
@@ -1089,6 +1089,10 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package"
 msgstr ""
+"შესრულების შეცდომა ბრძანებისთვის\n"
+"    \"%1\"\n"
+"შეამოწმეთ, დაყენებული გაქვთ თუ არა 'objdump'.\n"
+"ამ პროგრამას პაკეტში 'binutils' იპოვით"
 
 #: libviews/controlflowgraphview.cpp:1019
 #, qt-format
@@ -1100,28 +1104,38 @@ msgid ""
 "Are you using an old profile data file or is the abovementioned\n"
 "ELF object from an updated installation/another machine?"
 msgstr ""
+"არსებობს %1 ფასის ხაზი მანქაური კოდის გარეშე.\n"
+"ეს ხდება იმიტომ, რომ %2-ის კოდი, როგორც ჩანს, პროფილის მონაცემების ფაილს არ "
+"ემთხვევა.\n"
+"იყენებთ ძველ პროფილის მონაცემების ფაილს, თუ ზემოთ მოხსენიებული\n"
+"ELF ობიექტის ფაილი სხვა მანქანიდანაა?"
 
 #: libviews/controlflowgraphview.cpp:1029
-#, qt-format
+#, fuzzy, qt-format
+#| msgctxt "QObject|"
+#| msgid ""
+#| "There seems to be an error trying to execute the command'%1'.\n"
+#| "Check that the ELF object used in the command exists.\n"
+#| "Check that you have installed 'objdump'.\n"
+#| "This utility can be found in the 'binutils' package."
 msgctxt "QObject|"
 msgid ""
-"There seems to be an error trying to execute the command'%1'.\n"
+"There seems to be an error trying to execute the command '%1'.\n"
 "Check that the ELF object used in the command exists.\n"
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package."
 msgstr ""
+"როგორც ჩანს, არსებობს შესრულები შეცდომა პროგრამისთვის '%1'.\n"
+"შეამოწმეთ, რომ ბრძანების მიერ გამოყენებული ELF ობიექტი არსებობს.\n"
+"შეამოწმეთ, რომ დაყენებული გაქვთ 'objdump'.\n"
+"ეს პროგრამა პაკეტის 'binutils' ნაწილია."
 
 #: libviews/controlflowgraphview.cpp:1754
 msgctxt "QObject|"
 msgid "This is Control Flow Graph by KetchuppOfficial"
-msgstr ""
+msgstr "ეს არის საკონტროლო ნაკადის გრაფიკი KetchuppOfficial-სგან"
 
 #: libviews/controlflowgraphview.cpp:1810
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Warning: a long lasting graph layouting is in progress.\n"
-#| "Reduce node/edge limits for speedup.\n"
 msgctxt "QObject|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
@@ -1132,35 +1146,23 @@ msgstr ""
 "სიჩქარის გასაზრდელად შეამცირეთ კვანძების/წიბოების რაოდენობა.\n"
 
 #: libviews/controlflowgraphview.cpp:1813
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layouting stopped.\n"
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
 msgstr "განლაგება შეჩერდა.\n"
 
 #: libviews/controlflowgraphview.cpp:1815
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "The call graph has %1 nodes and %2 edges.\n"
+#, qt-format
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "გამოძახების გრაფიკს აქვს %1 კვანძი და %2 წიბო.\n"
 
 #: libviews/controlflowgraphview.cpp:1823
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No graph available because the layouting process failed.\n"
 msgctxt "QObject|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr "გრაფიკი ხელმისაწვდომი არაა, რადგან განლაგების პროცესი ჩავარდა.\n"
 
 #: libviews/controlflowgraphview.cpp:1825
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Trying to run the following command did not work:\n"
-#| "'%1'\n"
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "Trying to run the following command did not work:\n"
@@ -1170,216 +1172,149 @@ msgstr ""
 "'%1'\n"
 
 #: libviews/controlflowgraphview.cpp:1827
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "QObject|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr "შეამოწმეთ, დაყენებულია თუ არა პროგრამა 'dot' (პაკეტი GraphViz)."
 
 #: libviews/controlflowgraphview.cpp:2191
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "QObject|"
 msgid ""
 "Error running the graph layouting tool.\n"
 "Please check that 'dot' is installed (package Graphviz)."
-msgstr "შეამოწმეთ, დაყენებულია თუ არა პროგრამა 'dot' (პაკეტი GraphViz)."
+msgstr ""
+"გრაფიკის განლაგების პროგრამის გაშვების შეცდომა.\n"
+"შეამოწმეთ, დაყენებულია თუ არა პროგრამა 'dot' (პაკეტი GraphViz)."
 
 #: libviews/controlflowgraphview.cpp:2379
 msgctxt "QObject|"
 msgid "This basic block"
-msgstr ""
+msgstr "ეს საბაზისო ბლოკია"
 
 #: libviews/controlflowgraphview.cpp:2381
 #: libviews/controlflowgraphview.cpp:2402
 msgctxt "QObject|"
 msgid "PC only"
-msgstr ""
+msgstr "მხოლოდ PC"
 
 #: libviews/controlflowgraphview.cpp:2385
 #: libviews/controlflowgraphview.cpp:2406
-#, fuzzy
-#| msgctxt "ProfileContext|"
-#| msgid "Instruction Call"
 msgctxt "QObject|"
 msgid "Show instructions' PC"
-msgstr "ინსტრუქციის გამოძახება"
+msgstr "ინსტრუქციის პროფილის კონტექსტის ჩვენება"
 
 #: libviews/controlflowgraphview.cpp:2389
 #: libviews/controlflowgraphview.cpp:2410
-#, fuzzy
-#| msgctxt "InstrView|"
-#| msgid "(No Instruction)"
 msgctxt "QObject|"
 msgid "Show instructions' cost"
-msgstr "(ინსტრუქციის გარეშე)"
+msgstr "ინსტრუქციის ღირებულების ჩვენება"
 
 #: libviews/controlflowgraphview.cpp:2420
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As DOT file..."
 msgctxt "QObject|"
 msgid "As DOT file..."
 msgstr "DOT ფაილად..."
 
 #: libviews/controlflowgraphview.cpp:2421
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As Image..."
 msgctxt "QObject|"
 msgid "As Image..."
 msgstr "როგორც გამოსახულება..."
 
 #: libviews/controlflowgraphview.cpp:2511
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Export Graph As Image"
 msgctxt "QObject|"
 msgid "Export Graph as Image"
-msgstr "გრაფიკის გამოსახულების ფაილში გატანა"
+msgstr "გრაფიკის გატანა გამოსახულების ფაილში"
 
 #: libviews/controlflowgraphview.cpp:2513
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Images (*.png *.jpg)"
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
 msgstr "გამოსახულებები (*.png *.jpg)"
 
 #: libviews/controlflowgraphview.cpp:2946
-#, fuzzy
-#| msgctxt "PartSelection|"
-#| msgid "(no trace parts)"
 msgctxt "QObject|"
 msgid "No trace data"
-msgstr "(ტრეისის ნაწილების გარეშე)"
+msgstr "ტრეისის მონაცემების გარეშე"
 
 #: libviews/controlflowgraphview.cpp:2951
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No item activated for which to draw the call graph."
 msgctxt "QObject|"
 msgid "No item activated for which to draw the control-flow graph."
-msgstr "ელემენტი, რომლისთვისაც გამოძახების რუკას დავხატავ, გააქტიურებული არაა."
+msgstr ""
+"ელემენტი, რომლისთვისაც კონტროლის დინების გრაფიკს დავხატავ, გააქტიურებული "
+"არაა."
 
 #: libviews/controlflowgraphview.cpp:2963
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No call graph can be drawn for the active item."
 msgctxt "QObject|"
 msgid "No control-flow graph can be drawn for the active item."
-msgstr "აქტიური ელემენტისთვის გამოძახების რუკას ვერ დავხატავ."
+msgstr "აქტიური ელემენტისთვის კონტროლის დინების გრაფიკს ვერ დავხატავ."
 
 #: libviews/controlflowgraphview.cpp:3058
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Stop Layouting"
 msgctxt "QObject|"
 msgid "Stop Layouting"
 msgstr "განლაგების შეჩერება"
 
 #: libviews/controlflowgraphview.cpp:3121
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Birds-eye View"
 msgctxt "QObject|"
 msgid "Birds-eye View"
 msgstr "გადახედვა"
 
 #: libviews/controlflowgraphview.cpp:3123
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Left"
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr "ზედა მარცხენა"
 
 #: libviews/controlflowgraphview.cpp:3124
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Right"
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr "ზედა მარჯვენა"
 
 #: libviews/controlflowgraphview.cpp:3125
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Left"
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "ქვედა მარცხენა"
 
 #: libviews/controlflowgraphview.cpp:3126
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Right"
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "ქვედა მარჯვენა"
 
 #: libviews/controlflowgraphview.cpp:3127
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Automatic"
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr "ავტომატური"
 
 #: libviews/controlflowgraphview.cpp:3128
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Hide"
 msgctxt "QObject|"
 msgid "Hide"
 msgstr "დამალვა"
 
 #: libviews/controlflowgraphview.cpp:3138
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layout"
 msgctxt "QObject|"
 msgid "Layout"
 msgstr "განლაგება"
 
 #: libviews/controlflowgraphview.cpp:3140
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top to Down"
 msgctxt "QObject|"
 msgid "Top to Down"
 msgstr "მაღლიდან დაბლა"
 
 #: libviews/controlflowgraphview.cpp:3141
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Left to Right"
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "მარცხნიდან მარჯვნივ"
 
 #: libviews/controlflowgraphview.cpp:3151
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Min. Call Cost"
 msgctxt "QObject|"
 msgid "Min. basic block cost"
-msgstr "მინ. გამოძახების ღირებულება"
+msgstr "მინ. საბაზისო ბლოკის ღირებულება"
 
 #: libviews/controlflowgraphview.cpp:3153
 msgctxt "QObject|"
 msgid "Undefined"
-msgstr ""
+msgstr "გაურკვეველი"
 
 #: libviews/controlflowgraphview.cpp:3156
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "1 %"
+#, qt-format
 msgctxt "QObject|"
 msgid "%1%"
-msgstr "1 %"
+msgstr "%1%"
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
@@ -2406,12 +2341,9 @@ msgid "Source Code"
 msgstr "საწყისი კოდი"
 
 #: libviews/tabview.cpp:380
-#, fuzzy
-#| msgctxt "TabView|"
-#| msgid "Call Graph"
 msgctxt "TabView|"
 msgid "Control Flow Graph"
-msgstr "გამოძახებების გრაფი"
+msgstr "კონტროლის ნაკადის გრაფიკი"
 
 #: libviews/tabview.cpp:383
 msgctxt "TabView|"

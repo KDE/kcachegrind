@@ -1211,7 +1211,7 @@ msgstr ""
 #, qt-format
 msgctxt "QObject|"
 msgid ""
-"There seems to be an error trying to execute the command'%1'.\n"
+"There seems to be an error trying to execute the command '%1'.\n"
 "Check that the ELF object used in the command exists.\n"
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package."
