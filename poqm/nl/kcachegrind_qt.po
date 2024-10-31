@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2024-10-29 13:14+0100\n"
+"PO-Revision-Date: 2024-10-30 17:52+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1129,13 +1129,7 @@ msgstr ""
 "ELF-object uit een bijgewerkte installatie/een andere machine?"
 
 #: libviews/controlflowgraphview.cpp:1029
-#, fuzzy, qt-format
-#| msgctxt "QObject|"
-#| msgid ""
-#| "There seems to be an error trying to execute the command'%1'.\n"
-#| "Check that the ELF object used in the command exists.\n"
-#| "Check that you have installed 'objdump'.\n"
-#| "This utility can be found in the 'binutils' package."
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "There seems to be an error trying to execute the command '%1'.\n"

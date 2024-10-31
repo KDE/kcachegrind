@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2024-10-29 15:01+0200\n"
+"PO-Revision-Date: 2024-10-30 13:30+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1122,13 +1122,7 @@ msgstr ""
 "ELF походить із оновленого пакета або іншого комп'ютера?"
 
 #: libviews/controlflowgraphview.cpp:1029
-#, fuzzy, qt-format
-#| msgctxt "QObject|"
-#| msgid ""
-#| "There seems to be an error trying to execute the command'%1'.\n"
-#| "Check that the ELF object used in the command exists.\n"
-#| "Check that you have installed 'objdump'.\n"
-#| "This utility can be found in the 'binutils' package."
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "There seems to be an error trying to execute the command '%1'.\n"

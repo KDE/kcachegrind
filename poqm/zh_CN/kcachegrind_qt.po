@@ -1073,7 +1073,6 @@ msgid "This is Control Flow Graph by KetchuppOfficial"
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:1810
-#, fuzzy
 msgctxt "QObject|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
@@ -1099,7 +1098,7 @@ msgid "No graph available because the layouting process failed.\n"
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:1825
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "Trying to run the following command did not work:\n"
@@ -1133,17 +1132,15 @@ msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2385
 #: libviews/controlflowgraphview.cpp:2406
-#, fuzzy
 msgctxt "QObject|"
 msgid "Show instructions' PC"
-msgstr "指令调用"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2389
 #: libviews/controlflowgraphview.cpp:2410
-#, fuzzy
 msgctxt "QObject|"
 msgid "Show instructions' cost"
-msgstr "指令获取"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2420
 msgctxt "QObject|"
@@ -1161,7 +1158,6 @@ msgid "Export Graph as Image"
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2513
-#, fuzzy
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
 msgstr "图像 (*.png *.jpg)"
@@ -1192,43 +1188,36 @@ msgid "Birds-eye View"
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3123
-#, fuzzy
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr "左上"
 
 #: libviews/controlflowgraphview.cpp:3124
-#, fuzzy
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr "右上"
 
 #: libviews/controlflowgraphview.cpp:3125
-#, fuzzy
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "左下"
 
 #: libviews/controlflowgraphview.cpp:3126
-#, fuzzy
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "右下"
 
 #: libviews/controlflowgraphview.cpp:3127
-#, fuzzy
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr "自动"
 
 #: libviews/controlflowgraphview.cpp:3128
-#, fuzzy
 msgctxt "QObject|"
 msgid "Hide"
 msgstr "隐藏"
 
 #: libviews/controlflowgraphview.cpp:3138
-#, fuzzy
 msgctxt "QObject|"
 msgid "Layout"
 msgstr "布局"
@@ -1239,7 +1228,6 @@ msgid "Top to Down"
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3141
-#, fuzzy
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "从左到右"
@@ -1255,10 +1243,10 @@ msgid "Undefined"
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3156
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "QObject|"
 msgid "%1%"
-msgstr "1 %"
+msgstr ""
 
 #: libviews/costlistitem.cpp:53
 #, qt-format

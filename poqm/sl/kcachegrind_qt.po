@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2020-12-29 02:36+0100\n"
-"PO-Revision-Date: 2024-10-29 07:07+0100\n"
+"PO-Revision-Date: 2024-10-30 05:51+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1051,7 +1051,7 @@ msgstr ""
 #, qt-format
 msgctxt "CallView|"
 msgid "Go to '%1'"
-msgstr "Pojdi na »%1«"
+msgstr "Pojdi na '%1'"
 
 #: libviews/callview.cpp:257 libviews/callview.cpp:261
 #, qt-format
@@ -1115,13 +1115,7 @@ msgstr ""
 "predmet ELF iz posodobljene namestitve/drugega računalnika?"
 
 #: libviews/controlflowgraphview.cpp:1029
-#, fuzzy, qt-format
-#| msgctxt "QObject|"
-#| msgid ""
-#| "There seems to be an error trying to execute the command'%1'.\n"
-#| "Check that the ELF object used in the command exists.\n"
-#| "Check that you have installed 'objdump'.\n"
-#| "This utility can be found in the 'binutils' package."
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "There seems to be an error trying to execute the command '%1'.\n"
@@ -1132,7 +1126,7 @@ msgstr ""
 "Videti je, da je prišlo do napake pri poskusu izvajanja ukaza '%1'.\n"
 "Preverite, ali predmet ELF, uporabljen v ukazu, obstaja.\n"
 "Preverite, ali imate nameščen 'objdump'.\n"
-"Ta pripomoček je na voljo v paketu 'binutils'."
+"Ta pripomoček lahko najdete v paketu 'binutils'."
 
 #: libviews/controlflowgraphview.cpp:1754
 msgctxt "QObject|"

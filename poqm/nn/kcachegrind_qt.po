@@ -1077,10 +1077,6 @@ msgstr ""
 
 #: libviews/controlflowgraphview.cpp:1810
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Warning: a long lasting graph layouting is in progress.\n"
-#| "Reduce node/edge limits for speedup.\n"
 msgctxt "QObject|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
@@ -1092,16 +1088,12 @@ msgstr ""
 
 #: libviews/controlflowgraphview.cpp:1813
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layouting stopped.\n"
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
 msgstr "Stoppa utrekning av teikneplan.\n"
 
 #: libviews/controlflowgraphview.cpp:1815
 #, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "The call graph has %1 nodes and %2 edges.\n"
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "Kallgrafen har %1 nodar og %2 kantar.\n"
@@ -1145,8 +1137,6 @@ msgstr ""
 #: libviews/controlflowgraphview.cpp:2385
 #: libviews/controlflowgraphview.cpp:2406
 #, fuzzy
-#| msgctxt "ProfileContext|"
-#| msgid "Instruction Call"
 msgctxt "QObject|"
 msgid "Show instructions' PC"
 msgstr "Instruksjonskall"
@@ -1154,48 +1144,36 @@ msgstr "Instruksjonskall"
 #: libviews/controlflowgraphview.cpp:2389
 #: libviews/controlflowgraphview.cpp:2410
 #, fuzzy
-#| msgctxt "InstrView|"
-#| msgid "(No Instruction)"
 msgctxt "QObject|"
 msgid "Show instructions' cost"
 msgstr "(Manglar instruksjon)"
 
 #: libviews/controlflowgraphview.cpp:2420
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As DOT file..."
 msgctxt "QObject|"
 msgid "As DOT file..."
 msgstr "Som DOT-fil …"
 
 #: libviews/controlflowgraphview.cpp:2421
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As Image..."
 msgctxt "QObject|"
 msgid "As Image..."
 msgstr "Som bilete …"
 
 #: libviews/controlflowgraphview.cpp:2511
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Export Graph As Image"
 msgctxt "QObject|"
 msgid "Export Graph as Image"
 msgstr "Eksporter graf som bilete"
 
 #: libviews/controlflowgraphview.cpp:2513
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Images (*.png *.jpg)"
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
 msgstr "Bilete (*.png *.jpg)"
 
 #: libviews/controlflowgraphview.cpp:2946
 #, fuzzy
-#| msgctxt "PartSelection|"
-#| msgid "(no trace parts)"
 msgctxt "QObject|"
 msgid "No trace data"
 msgstr "(ingen spordelar)"
@@ -1212,72 +1190,54 @@ msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3058
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Stop Layouting"
 msgctxt "QObject|"
 msgid "Stop Layouting"
 msgstr "Stopp utrekning av teikneplan"
 
 #: libviews/controlflowgraphview.cpp:3121
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Birds-eye View"
 msgctxt "QObject|"
 msgid "Birds-eye View"
 msgstr "Fugleperspektiv"
 
 #: libviews/controlflowgraphview.cpp:3123
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Left"
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr "Oppe til venstre"
 
 #: libviews/controlflowgraphview.cpp:3124
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Right"
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr "Oppe til høgre"
 
 #: libviews/controlflowgraphview.cpp:3125
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Left"
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "Nede til venstre"
 
 #: libviews/controlflowgraphview.cpp:3126
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Right"
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "Nede til høgre"
 
 #: libviews/controlflowgraphview.cpp:3127
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Automatic"
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr "Automatisk"
 
 #: libviews/controlflowgraphview.cpp:3128
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Hide"
 msgctxt "QObject|"
 msgid "Hide"
 msgstr "Gøym"
 
 #: libviews/controlflowgraphview.cpp:3138
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layout"
 msgctxt "QObject|"
 msgid "Layout"
 msgstr "Teikneplan"
@@ -1289,16 +1249,12 @@ msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3141
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Left to Right"
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "Venstre til høgre"
 
 #: libviews/controlflowgraphview.cpp:3151
 #, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Min. Call Cost"
 msgctxt "QObject|"
 msgid "Min. basic block cost"
 msgstr "Minste kallkostnad"
@@ -1310,8 +1266,6 @@ msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3156
 #, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "1 %"
 msgctxt "QObject|"
 msgid "%1%"
 msgstr "1 %"
@@ -2259,8 +2213,6 @@ msgstr "Kjeldekode"
 
 #: libviews/tabview.cpp:380
 #, fuzzy
-#| msgctxt "TabView|"
-#| msgid "Call Graph"
 msgctxt "TabView|"
 msgid "Control Flow Graph"
 msgstr "Kallgraf"
