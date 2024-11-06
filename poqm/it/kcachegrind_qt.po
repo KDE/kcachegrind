@@ -3,14 +3,14 @@
 # Luciano Montanaro <mikelima@cirulla.net>, 2003, 2004, 2005, 2007, 2008.
 # Daniele Medri <madrid@linuxmeeting.net>, 2003.
 # Federico Zenith <federico.zenith@member.fsf.org>, 2009, 2010, 2012, 2013, 2015.
-# Luigi Toscano <luigi.toscano@tiscali.it>, 2016, 2017, 2018, 2020, 2023.
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2016, 2017, 2018, 2020, 2023, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2023-11-08 01:47+0100\n"
+"PO-Revision-Date: 2024-11-05 12:24+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -436,7 +436,7 @@ msgstr "Nessun elemento attivato per cui disegnare il grafo delle chiamate."
 #: libviews/callgraphview.cpp:2092
 msgctxt "CallGraphView|"
 msgid "No call graph can be drawn for the active item."
-msgstr "Non si può disegnare un grafo delle chiamate per l'oggetto attivo."
+msgstr "Non si può disegnare un grafo delle chiamate per l'elemento attivo."
 
 #: libviews/callgraphview.cpp:2554
 msgctxt "CallGraphView|"
@@ -777,7 +777,7 @@ msgstr ""
 "p><p>Questa è una rappresentazione a <em>mappa ad albero</em>. È disponibile "
 "la navigazione da tastiera, con i tasti freccia a sinistra e a destra per "
 "attraversare i fratelli, e in su e in giù per andare su e giù di un livello "
-"di annidamento. <em>Invio</em> attiva l'oggetto attuale.</p>"
+"di annidamento. <em>Invio</em> attiva l'elemento attuale.</p>"
 
 #: libviews/callmapview.cpp:139
 msgctxt "CallMapView|"
