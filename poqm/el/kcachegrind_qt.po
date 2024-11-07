@@ -1136,11 +1136,6 @@ msgid "This is Control Flow Graph by KetchuppOfficial"
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:1810
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Warning: a long lasting graph layouting is in progress.\n"
-#| "Reduce node/edge limits for speedup.\n"
 msgctxt "QObject|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
@@ -1151,25 +1146,17 @@ msgstr ""
 "Μειώστε τα όρια κόμβων/άκρων για την επιτάχυνσή της.\n"
 
 #: libviews/controlflowgraphview.cpp:1813
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layouting stopped.\n"
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
 msgstr "Η δημιουργία διάταξης σταμάτησε.\n"
 
 #: libviews/controlflowgraphview.cpp:1815
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "The call graph has %1 nodes and %2 edges.\n"
+#, qt-format
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "Το γράφημα κλήσεων έχει %1 κόμβους και %2 άκρων.\n"
 
 #: libviews/controlflowgraphview.cpp:1823
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No graph available because the layouting process failed.\n"
 msgctxt "QObject|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr ""
@@ -1177,11 +1164,7 @@ msgstr ""
 "απέτυχε.\n"
 
 #: libviews/controlflowgraphview.cpp:1825
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Trying to run the following command did not work:\n"
-#| "'%1'\n"
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "Trying to run the following command did not work:\n"
@@ -1191,9 +1174,6 @@ msgstr ""
 "'%1'\n"
 
 #: libviews/controlflowgraphview.cpp:1827
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "QObject|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr "Παρακαλώ ελέγξτε ότι το 'dot' είναι εγκατεστημένο (πακέτο GraphViz)."
@@ -1243,9 +1223,6 @@ msgid "As DOT file..."
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2421
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As Image..."
 msgctxt "QObject|"
 msgid "As Image..."
 msgstr "Ως εικόνα..."
@@ -1288,89 +1265,56 @@ msgid "No control-flow graph can be drawn for the active item."
 msgstr "Αδυναμία σχεδίασης γραφήματος κλήσεων για το ενεργό αντικείμενο."
 
 #: libviews/controlflowgraphview.cpp:3058
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Stop Layouting"
 msgctxt "QObject|"
 msgid "Stop Layouting"
 msgstr "Σταμάτημα δημιουργίας διάταξης"
 
 #: libviews/controlflowgraphview.cpp:3121
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Birds-eye View"
 msgctxt "QObject|"
 msgid "Birds-eye View"
 msgstr "Πανοραμική προβολή"
 
 #: libviews/controlflowgraphview.cpp:3123
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Left"
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr "Πάνω αριστερά"
 
 #: libviews/controlflowgraphview.cpp:3124
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Right"
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr "Πάνω δεξιά"
 
 #: libviews/controlflowgraphview.cpp:3125
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Left"
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "Κάτω αριστερά"
 
 #: libviews/controlflowgraphview.cpp:3126
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Right"
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "Κάτω δεξιά"
 
 #: libviews/controlflowgraphview.cpp:3127
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Automatic"
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr "Αυτόματο"
 
 #: libviews/controlflowgraphview.cpp:3128
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Hide"
 msgctxt "QObject|"
 msgid "Hide"
 msgstr "Απόκρυψη"
 
 #: libviews/controlflowgraphview.cpp:3138
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layout"
 msgctxt "QObject|"
 msgid "Layout"
 msgstr "Διάταξη"
 
 #: libviews/controlflowgraphview.cpp:3140
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top to Down"
 msgctxt "QObject|"
 msgid "Top to Down"
 msgstr "Πάνω προς τα κάτω"
 
 #: libviews/controlflowgraphview.cpp:3141
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Left to Right"
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "Αριστερά προς τα δεξιά"
