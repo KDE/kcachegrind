@@ -1,14 +1,14 @@
 # Translation for kcachegrind_qt.po to Euskara/Basque (eu).
-# Copyright (C) 2023 This file is copyright:
+# Copyright (C) 2023-2024 This file is copyright:
 # This file is distributed under the same license as the original file.
-# SPDX-FileCopyrightText: 2023 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023, 2024 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
-# SPDX-FileCopyrightText: 2023 Iñigo Salvador Azurmendi <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023, 2024 Iñigo Salvador Azurmendi <xalba@ni.eus>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2023-11-06 22:16+0100\n"
+"PO-Revision-Date: 2024-11-11 17:23+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Qt-Contexts: true\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
@@ -169,7 +169,7 @@ msgstr "Programaren aztarna"
 #: libcore/context.cpp:88
 msgctxt "ProfileContext|"
 msgid "BasicBlock"
-msgstr ""
+msgstr "OinarrizkoBlokea"
 
 #: libcore/costitem.cpp:48
 #, qt-format
@@ -1070,23 +1070,23 @@ msgctxt "QObject|"
 msgid ""
 "Control-flow graph requires running callgrind with option --dump-instr=yes"
 msgstr ""
+"Kontrol-jario grafikoak callgrind «--dump-instr=yes» aukerarekin exekutatzea "
+"eskatzen du"
 
 #: libviews/controlflowgraphview.cpp:913
-#, fuzzy, qt-format
-#| msgctxt "InstrView|"
-#| msgid "For annotated machine code, the following object file is needed:"
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "For annotated machine code, the following object file is needed\n"
 "    '%1'\n"
 "This file cannot be found.\n"
 msgstr ""
-"Idatzoharrak dituen makina-koderako, ondoko objektu fitxategia behar da:"
+"Idatzohar gisa idatzitako makina-koderako, ondoko fitxategi-objektua behar "
+"da\n"
+"    '%1'\n"
+"Fitxategia ezin da aurkitu.\n"
 
 #: libviews/controlflowgraphview.cpp:917
-#, fuzzy
-#| msgctxt "InstrView|"
-#| msgid "If cross-compiled, set SYSROOT variable."
 msgctxt "QObject|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr "Konpilazio gurutzatu bat egin bada, ezarri SYSROOT aldagaia."
@@ -1100,6 +1100,10 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package"
 msgstr ""
+"Errore bat dago Komandoa exekutatzen saiatzean\n"
+"    '%1'\n"
+"Egiaztatu 'objdump' instalatuta duzun.\n"
+"Erabilgarritasun hori 'binutil' paketean aurki daiteke"
 
 #: libviews/controlflowgraphview.cpp:1019
 #, qt-format
@@ -1111,6 +1115,11 @@ msgid ""
 "Are you using an old profile data file or is the abovementioned\n"
 "ELF object from an updated installation/another machine?"
 msgstr ""
+"Makina-koderik gabeko %1 kostu-lerro daude.\n"
+"Hori gertatzeko arrazoia, %2, profil datuen fitxategiarekin bat ez datorrela "
+"da.\n"
+"Profil datuen fitxategi zahar bat erabiltzen ari zara edo goran aipatutako\n"
+"ELF objektua zaharkitutako instalazio/beste makina batekoa da?"
 
 #: libviews/controlflowgraphview.cpp:1029
 #, qt-format
@@ -1121,18 +1130,17 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package."
 msgstr ""
+"'%1' komandoa exekutatzen saiatzean errore bat dagoela dirudi.\n"
+"Egiaztatu komandoan erabilitako ELF objektua dagoen.\n"
+"Egiaztatu 'objdump' instalatuta duzula.\n"
+"Erabilgarritasun hori 'binutil' paketean aurki daiteke."
 
 #: libviews/controlflowgraphview.cpp:1754
 msgctxt "QObject|"
 msgid "This is Control Flow Graph by KetchuppOfficial"
-msgstr ""
+msgstr "Kontrol jarioaren grafikoa da hau, KetchuppOfficial-ek egina"
 
 #: libviews/controlflowgraphview.cpp:1810
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Warning: a long lasting graph layouting is in progress.\n"
-#| "Reduce node/edge limits for speedup.\n"
 msgctxt "QObject|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
@@ -1142,36 +1150,24 @@ msgstr ""
 "Murriztu nodo/ertz mugak azkartzeko.\n"
 
 #: libviews/controlflowgraphview.cpp:1813
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layouting stopped.\n"
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
 msgstr "Trazatzea geldituta.\n"
 
 #: libviews/controlflowgraphview.cpp:1815
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "The call graph has %1 nodes and %2 edges.\n"
+#, qt-format
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "Dei-grafikoak %1 nodo eta %2 ertz ditu.\n"
 
 #: libviews/controlflowgraphview.cpp:1823
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No graph available because the layouting process failed.\n"
 msgctxt "QObject|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr ""
 "Ez dago grafikorik erabilgarri trazatzeko prozesuak huts egin duelako.\n"
 
 #: libviews/controlflowgraphview.cpp:1825
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Trying to run the following command did not work:\n"
-#| "'%1'\n"
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "Trying to run the following command did not work:\n"
@@ -1181,216 +1177,148 @@ msgstr ""
 "'%1'\n"
 
 #: libviews/controlflowgraphview.cpp:1827
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "QObject|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
-msgstr "Mesedez, egiaztatu 'dot' instalatuta dagoela («GraphViz» paketea)."
+msgstr "Mesedez, egiaztatu 'dot' instalatuta dagoela (GraphViz paketea)."
 
 #: libviews/controlflowgraphview.cpp:2191
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "QObject|"
 msgid ""
 "Error running the graph layouting tool.\n"
 "Please check that 'dot' is installed (package Graphviz)."
-msgstr "Mesedez, egiaztatu 'dot' instalatuta dagoela («GraphViz» paketea)."
+msgstr ""
+"Grafikoa trazatzeko tresna exekutatzeko errorea.\n"
+"Mesedez, egiaztatu 'dot' instalatuta dagoela (GraphViz paketea)."
 
 #: libviews/controlflowgraphview.cpp:2379
 msgctxt "QObject|"
 msgid "This basic block"
-msgstr ""
+msgstr "Oinarrizko bloke hau"
 
 #: libviews/controlflowgraphview.cpp:2381
 #: libviews/controlflowgraphview.cpp:2402
 msgctxt "QObject|"
 msgid "PC only"
-msgstr ""
+msgstr "PC bakarrik"
 
 #: libviews/controlflowgraphview.cpp:2385
 #: libviews/controlflowgraphview.cpp:2406
-#, fuzzy
-#| msgctxt "ProfileContext|"
-#| msgid "Instruction Call"
 msgctxt "QObject|"
 msgid "Show instructions' PC"
-msgstr "Agindu deia"
+msgstr "Erakutsi aginduaren PC"
 
 #: libviews/controlflowgraphview.cpp:2389
 #: libviews/controlflowgraphview.cpp:2410
-#, fuzzy
-#| msgctxt "InstrView|"
-#| msgid "(No Instruction)"
 msgctxt "QObject|"
 msgid "Show instructions' cost"
-msgstr "(Agindurik ez)"
+msgstr "Erakutsi aginduaren kostua"
 
 #: libviews/controlflowgraphview.cpp:2420
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As DOT file..."
 msgctxt "QObject|"
 msgid "As DOT file..."
 msgstr "DOT fitxategi gisa..."
 
 #: libviews/controlflowgraphview.cpp:2421
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As Image..."
 msgctxt "QObject|"
 msgid "As Image..."
 msgstr "Irudi gisa..."
 
 #: libviews/controlflowgraphview.cpp:2511
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Export Graph As Image"
 msgctxt "QObject|"
 msgid "Export Graph as Image"
 msgstr "Esportatu grafikoa irudi gisa"
 
 #: libviews/controlflowgraphview.cpp:2513
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Images (*.png *.jpg)"
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
 msgstr "Irudiak (*.png *.jpg)"
 
 #: libviews/controlflowgraphview.cpp:2946
-#, fuzzy
-#| msgctxt "PartSelection|"
-#| msgid "(no trace parts)"
 msgctxt "QObject|"
 msgid "No trace data"
-msgstr "(ez dago aztarna atalik)"
+msgstr "Ez dago aztarna-daturik"
 
 #: libviews/controlflowgraphview.cpp:2951
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No item activated for which to draw the call graph."
 msgctxt "QObject|"
 msgid "No item activated for which to draw the control-flow graph."
-msgstr "Dei-grafikoa marrazteko aktibatutako elementurik ez dago."
+msgstr ""
+"Ez dago kontrol jarioaren grafikoa marrazteko aktibatutako elementurik."
 
 #: libviews/controlflowgraphview.cpp:2963
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No call graph can be drawn for the active item."
 msgctxt "QObject|"
 msgid "No control-flow graph can be drawn for the active item."
-msgstr "Ezin da elementu aktiborako dei-grafikorik marraztu."
+msgstr "Elementu aktiborako ezin da kontrol-jarioaren grafikoa marraztu."
 
 #: libviews/controlflowgraphview.cpp:3058
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Stop Layouting"
 msgctxt "QObject|"
 msgid "Stop Layouting"
 msgstr "Gelditu trazatzea"
 
 #: libviews/controlflowgraphview.cpp:3121
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Birds-eye View"
 msgctxt "QObject|"
 msgid "Birds-eye View"
 msgstr "Txori-begi ikuspegia"
 
 #: libviews/controlflowgraphview.cpp:3123
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Left"
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr "Goian ezkerrean"
 
 #: libviews/controlflowgraphview.cpp:3124
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Right"
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr "Goian eskuinean"
 
 #: libviews/controlflowgraphview.cpp:3125
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Left"
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "Behean ezkerrean"
 
 #: libviews/controlflowgraphview.cpp:3126
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Right"
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "Behean eskuinean"
 
 #: libviews/controlflowgraphview.cpp:3127
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Automatic"
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr "Automatikoa"
 
 #: libviews/controlflowgraphview.cpp:3128
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Hide"
 msgctxt "QObject|"
 msgid "Hide"
 msgstr "Ezkutatu"
 
 #: libviews/controlflowgraphview.cpp:3138
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layout"
 msgctxt "QObject|"
 msgid "Layout"
 msgstr "Antolaera"
 
 #: libviews/controlflowgraphview.cpp:3140
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top to Down"
 msgctxt "QObject|"
 msgid "Top to Down"
 msgstr "Goitik behera"
 
 #: libviews/controlflowgraphview.cpp:3141
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Left to Right"
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "Ezkerretik eskuinera"
 
 #: libviews/controlflowgraphview.cpp:3151
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Min. Call Cost"
 msgctxt "QObject|"
 msgid "Min. basic block cost"
-msgstr "Deiaren kostu min."
+msgstr "Oinarrizko blokearen kostu min."
 
 #: libviews/controlflowgraphview.cpp:3153
 msgctxt "QObject|"
 msgid "Undefined"
-msgstr ""
+msgstr "Definitu gabe"
 
 #: libviews/controlflowgraphview.cpp:3156
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "1 %"
+#, qt-format
 msgctxt "QObject|"
 msgid "%1%"
-msgstr "% 1"
+msgstr "%%1"
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
@@ -2427,12 +2355,9 @@ msgid "Source Code"
 msgstr "Sorburu kodea"
 
 #: libviews/tabview.cpp:380
-#, fuzzy
-#| msgctxt "TabView|"
-#| msgid "Call Graph"
 msgctxt "TabView|"
 msgid "Control Flow Graph"
-msgstr "Dei-grafikoa"
+msgstr "Kontrol jarioaren grafikoa"
 
 #: libviews/tabview.cpp:383
 msgctxt "TabView|"
