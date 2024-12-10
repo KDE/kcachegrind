@@ -4,14 +4,14 @@ msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2024-02-09 23:23+0100\n"
+"PO-Revision-Date: 2024-12-10 00:39+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Qt-Contexts: true\n"
 
@@ -163,7 +163,7 @@ msgstr "프로그램 추적"
 #: libcore/context.cpp:88
 msgctxt "ProfileContext|"
 msgid "BasicBlock"
-msgstr ""
+msgstr "기본 블록"
 
 #: libcore/costitem.cpp:48
 #, qt-format
@@ -1050,22 +1050,22 @@ msgctxt "QObject|"
 msgid ""
 "Control-flow graph requires running callgrind with option --dump-instr=yes"
 msgstr ""
+"제어 흐름 그래프를 보려면 callgrind를 실행할 때 --dump-instr=yes 옵션을 지정"
+"해야 함"
 
 #: libviews/controlflowgraphview.cpp:913
-#, fuzzy, qt-format
-#| msgctxt "InstrView|"
-#| msgid "For annotated machine code, the following object file is needed:"
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "For annotated machine code, the following object file is needed\n"
 "    '%1'\n"
 "This file cannot be found.\n"
-msgstr "설명이 추가된 기계어 코드를 보려면 다음 파일이 필요합니다."
+msgstr ""
+"설명이 추가된 기계어 코드를 보려면 다음 객체 파일이 필요합니다.\n"
+"    '%1'\n"
+"해당 파일을 찾을 수 없습니다.\n"
 
 #: libviews/controlflowgraphview.cpp:917
-#, fuzzy
-#| msgctxt "InstrView|"
-#| msgid "If cross-compiled, set SYSROOT variable."
 msgctxt "QObject|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr "크로스 컴파일했으면 SYSROOT 환경 변수를 설정하십시오."
@@ -1079,6 +1079,10 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package"
 msgstr ""
+"다음 명령을 실행하는 중 오류가 발생했습니다:\n"
+"    '%1'\n"
+"'objdump' 설치 상태를 확인하십시오.\n"
+"이 유틸리티는 'binutils' 패키지에 포함되어 있습니다"
 
 #: libviews/controlflowgraphview.cpp:1019
 #, qt-format
@@ -1090,6 +1094,10 @@ msgid ""
 "Are you using an old profile data file or is the abovementioned\n"
 "ELF object from an updated installation/another machine?"
 msgstr ""
+"기계어 코드가 없는 비용 행이 %1개 있습니다.\n"
+"%2의 코드와 프로필 데이터가 일치하지 않는 것 같습니다.\n"
+"프로필 데이터가 오래 되었거나 위에 지정한 ELF 객체가\n"
+"업데이트되었거나 다른 머신에서 왔을 수도 있습니다."
 
 #: libviews/controlflowgraphview.cpp:1029
 #, qt-format
@@ -1100,18 +1108,17 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package."
 msgstr ""
+"'%1' 명령을 실행하는 중 오류가 발생했습니다.\n"
+"명령에 사용된 ELF 객체 존재 여부를 확인하십시오.\n"
+"'objdump' 설치 상태를 확인하십시오.\n"
+"이 유틸리티는 'binutils' 패키지에 포함되어 있습니다."
 
 #: libviews/controlflowgraphview.cpp:1754
 msgctxt "QObject|"
 msgid "This is Control Flow Graph by KetchuppOfficial"
-msgstr ""
+msgstr "KetchuppOfficial에서 생성한 제어 흐름 그래프"
 
 #: libviews/controlflowgraphview.cpp:1810
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Warning: a long lasting graph layouting is in progress.\n"
-#| "Reduce node/edge limits for speedup.\n"
 msgctxt "QObject|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
@@ -1121,35 +1128,23 @@ msgstr ""
 "속도를 향상하려면 노드/선 제한을 줄이십시오.\n"
 
 #: libviews/controlflowgraphview.cpp:1813
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layouting stopped.\n"
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
 msgstr "그래프 배치 작업 중단됨.\n"
 
 #: libviews/controlflowgraphview.cpp:1815
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "The call graph has %1 nodes and %2 edges.\n"
+#, qt-format
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "호출 그래프에 노드 %1개, 선 %2개가 있습니다.\n"
 
 #: libviews/controlflowgraphview.cpp:1823
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No graph available because the layouting process failed.\n"
 msgctxt "QObject|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr "레이아웃 배치 작업이 실패하여 그래프를 사용할 수 없습니다.\n"
 
 #: libviews/controlflowgraphview.cpp:1825
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Trying to run the following command did not work:\n"
-#| "'%1'\n"
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "Trying to run the following command did not work:\n"
@@ -1159,216 +1154,147 @@ msgstr ""
 "'%1'\n"
 
 #: libviews/controlflowgraphview.cpp:1827
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "QObject|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
-msgstr "'dot'(GraphViz 패키지)이 설치되었는지 확인하여 주십시오."
+msgstr "'dot'(GraphViz 패키지)이 설치되었는지 확인해 주십시오."
 
 #: libviews/controlflowgraphview.cpp:2191
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "QObject|"
 msgid ""
 "Error running the graph layouting tool.\n"
 "Please check that 'dot' is installed (package Graphviz)."
-msgstr "'dot'(GraphViz 패키지)이 설치되었는지 확인하여 주십시오."
+msgstr ""
+"그래프 레이아웃 도구를 실행할 수 없습니다.\n"
+"'dot'(GraphViz 패키지)이 설치되었는지 확인해 주십시오."
 
 #: libviews/controlflowgraphview.cpp:2379
 msgctxt "QObject|"
 msgid "This basic block"
-msgstr ""
+msgstr "이 기본 블록"
 
 #: libviews/controlflowgraphview.cpp:2381
 #: libviews/controlflowgraphview.cpp:2402
 msgctxt "QObject|"
 msgid "PC only"
-msgstr ""
+msgstr "PC만"
 
 #: libviews/controlflowgraphview.cpp:2385
 #: libviews/controlflowgraphview.cpp:2406
-#, fuzzy
-#| msgctxt "ProfileContext|"
-#| msgid "Instruction Call"
 msgctxt "QObject|"
 msgid "Show instructions' PC"
-msgstr "명령어 호출"
+msgstr "명령의 PC 표시"
 
 #: libviews/controlflowgraphview.cpp:2389
 #: libviews/controlflowgraphview.cpp:2410
-#, fuzzy
-#| msgctxt "InstrView|"
-#| msgid "(No Instruction)"
 msgctxt "QObject|"
 msgid "Show instructions' cost"
-msgstr "(명령 없음)"
+msgstr "명령의 비용 표시"
 
 #: libviews/controlflowgraphview.cpp:2420
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As DOT file..."
 msgctxt "QObject|"
 msgid "As DOT file..."
 msgstr "DOT 파일로..."
 
 #: libviews/controlflowgraphview.cpp:2421
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As Image..."
 msgctxt "QObject|"
 msgid "As Image..."
 msgstr "그림으로..."
 
 #: libviews/controlflowgraphview.cpp:2511
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Export Graph As Image"
 msgctxt "QObject|"
 msgid "Export Graph as Image"
 msgstr "그림으로 그래프 내보내기"
 
 #: libviews/controlflowgraphview.cpp:2513
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Images (*.png *.jpg)"
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
 msgstr "그림 (*.png *.jpg)"
 
 #: libviews/controlflowgraphview.cpp:2946
-#, fuzzy
-#| msgctxt "PartSelection|"
-#| msgid "(no trace parts)"
 msgctxt "QObject|"
 msgid "No trace data"
-msgstr "(추적 부분 없음)"
+msgstr "추적 데이터 없음"
 
 #: libviews/controlflowgraphview.cpp:2951
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No item activated for which to draw the call graph."
 msgctxt "QObject|"
 msgid "No item activated for which to draw the control-flow graph."
-msgstr "호출 그래프를 그리려는 활성화된 항목이 없습니다."
+msgstr "제어 흐름 그래프를 그릴 항목이 활성화되지 않았습니다."
 
 #: libviews/controlflowgraphview.cpp:2963
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No call graph can be drawn for the active item."
 msgctxt "QObject|"
 msgid "No control-flow graph can be drawn for the active item."
-msgstr "활성화된 항목에 대해 그려질 수 있는 호출 그래프가 없습니다."
+msgstr "활성 항목에 대해 그릴 수 있는 제어 흐름 그래프가 없습니다."
 
 #: libviews/controlflowgraphview.cpp:3058
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Stop Layouting"
 msgctxt "QObject|"
 msgid "Stop Layouting"
 msgstr "배치 중단하기"
 
 #: libviews/controlflowgraphview.cpp:3121
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Birds-eye View"
 msgctxt "QObject|"
 msgid "Birds-eye View"
 msgstr "멀리 보기"
 
 #: libviews/controlflowgraphview.cpp:3123
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Left"
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr "왼쪽 위"
 
 #: libviews/controlflowgraphview.cpp:3124
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Right"
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr "오른쪽 위"
 
 #: libviews/controlflowgraphview.cpp:3125
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Left"
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "왼쪽 아래"
 
 #: libviews/controlflowgraphview.cpp:3126
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Right"
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "오른쪽 아래"
 
 #: libviews/controlflowgraphview.cpp:3127
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Automatic"
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr "자동"
 
 #: libviews/controlflowgraphview.cpp:3128
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Hide"
 msgctxt "QObject|"
 msgid "Hide"
 msgstr "숨기기"
 
 #: libviews/controlflowgraphview.cpp:3138
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layout"
 msgctxt "QObject|"
 msgid "Layout"
 msgstr "레이아웃"
 
 #: libviews/controlflowgraphview.cpp:3140
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top to Down"
 msgctxt "QObject|"
 msgid "Top to Down"
 msgstr "위에서 아래로"
 
 #: libviews/controlflowgraphview.cpp:3141
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Left to Right"
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "왼쪽에서 오른쪽으로"
 
 #: libviews/controlflowgraphview.cpp:3151
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Min. Call Cost"
 msgctxt "QObject|"
 msgid "Min. basic block cost"
-msgstr "최소 호출 비용"
+msgstr "최소 기본 블록 비용"
 
 #: libviews/controlflowgraphview.cpp:3153
 msgctxt "QObject|"
 msgid "Undefined"
-msgstr ""
+msgstr "정의되지 않음"
 
 #: libviews/controlflowgraphview.cpp:3156
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "1 %"
+#, qt-format
 msgctxt "QObject|"
 msgid "%1%"
-msgstr "1%"
+msgstr "%1%"
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
@@ -2372,12 +2298,9 @@ msgid "Source Code"
 msgstr "소스 코드"
 
 #: libviews/tabview.cpp:380
-#, fuzzy
-#| msgctxt "TabView|"
-#| msgid "Call Graph"
 msgctxt "TabView|"
 msgid "Control Flow Graph"
-msgstr "호출 그래프"
+msgstr "제어 흐름 그래프"
 
 #: libviews/tabview.cpp:383
 msgctxt "TabView|"
