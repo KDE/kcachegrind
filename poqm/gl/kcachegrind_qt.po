@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2024-11-16 12:05+0100\n"
+"PO-Revision-Date: 2024-12-12 19:45+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -1105,7 +1105,7 @@ msgstr ""
 "Prodúcese un erro ao intentar executar a orde\n"
 "    «%1»\n"
 "Verifique que instalou «objdump».\n"
-"A utilidade forma parte do paquete «binutils»."
+"A utilidade está no paquete «binutils»."
 
 #: libviews/controlflowgraphview.cpp:1019
 #, qt-format
@@ -1137,7 +1137,7 @@ msgstr ""
 "Parece producirse un erro ao intentar executar a orde «%1».\n"
 "Verifique que o obxecto ELF que se usa na orde existe.\n"
 "Verifique que instalou «objdump».\n"
-"A utilidade forma parte do paquete «binutils»."
+"A utilidade está no paquete «binutils»."
 
 #: libviews/controlflowgraphview.cpp:1754
 msgctxt "QObject|"
