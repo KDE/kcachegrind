@@ -1,357 +1,359 @@
-#
+# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"PO-Revision-Date: 2024-12-13 19:09+0530\n"
-"Last-Translator: Kali <EMAIL@ADDRESS>\n"
-"Language-Team: Sanskrit\n"
+"Project-Id-Version: \n"
+"PO-Revision-Date: 2024-12-14 01:08+0530\n"
+"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Qt-Contexts: true\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
 msgid "Import filter for Cachegrind/Callgrind generated profile data files"
-msgstr ""
+msgstr "Cachegrind/Callgrind जनितप्रोफाइलदत्तांशसञ्चिकानां कृते फ़िल्टरं आयातयन्तु"
 
 #: libcore/context.cpp:60
 msgctxt "ProfileContext|"
 msgid "Invalid Context"
-msgstr ""
+msgstr "अमान्य सन्दर्भ"
 
 #: libcore/context.cpp:61
 msgctxt "ProfileContext|"
 msgid "Unknown Context"
-msgstr ""
+msgstr "अज्ञात सन्दर्भ"
 
 #: libcore/context.cpp:62
 msgctxt "ProfileContext|"
 msgid "Part Source Line"
-msgstr ""
+msgstr "भाग स्रोत रेखा"
 
 #: libcore/context.cpp:63
 msgctxt "ProfileContext|"
 msgid "Source Line"
-msgstr ""
+msgstr "स्रोत रेखा"
 
 #: libcore/context.cpp:64
 msgctxt "ProfileContext|"
 msgid "Part Line Call"
-msgstr ""
+msgstr "भाग रेखा आह्वान"
 
 #: libcore/context.cpp:65
 msgctxt "ProfileContext|"
 msgid "Line Call"
-msgstr ""
+msgstr "Line Call इति"
 
 #: libcore/context.cpp:66
 msgctxt "ProfileContext|"
 msgid "Part Jump"
-msgstr ""
+msgstr "भाग कूद"
 
 #: libcore/context.cpp:67
 msgctxt "ProfileContext|"
 msgid "Jump"
-msgstr ""
+msgstr "उत्प्लवन"
 
 #: libcore/context.cpp:68
 msgctxt "ProfileContext|"
 msgid "Part Instruction"
-msgstr ""
+msgstr "भाग निर्देश"
 
 #: libcore/context.cpp:69
 msgctxt "ProfileContext|"
 msgid "Instruction"
-msgstr ""
+msgstr "निर्देशः"
 
 #: libcore/context.cpp:70
 msgctxt "ProfileContext|"
 msgid "Part Instruction Jump"
-msgstr ""
+msgstr "भाग निर्देश कूद"
 
 #: libcore/context.cpp:71
 msgctxt "ProfileContext|"
 msgid "Instruction Jump"
-msgstr ""
+msgstr "निर्देशः कूद"
 
 #: libcore/context.cpp:72
 msgctxt "ProfileContext|"
 msgid "Part Instruction Call"
-msgstr ""
+msgstr "भाग निर्देश आह्वान"
 
 #: libcore/context.cpp:73
 msgctxt "ProfileContext|"
 msgid "Instruction Call"
-msgstr ""
+msgstr "निर्देशः आह्वानम्"
 
 #: libcore/context.cpp:74
 msgctxt "ProfileContext|"
 msgid "Part Call"
-msgstr ""
+msgstr "भाग आह्वान"
 
 #: libcore/context.cpp:75
 msgctxt "ProfileContext|"
 msgid "Call"
-msgstr ""
+msgstr "आह्वानम्‌"
 
 #: libcore/context.cpp:76
 msgctxt "ProfileContext|"
 msgid "Part Function"
-msgstr ""
+msgstr "भाग कार्य"
 
 #: libcore/context.cpp:77
 msgctxt "ProfileContext|"
 msgid "Function Source File"
-msgstr ""
+msgstr "कार्य स्रोत सञ्चिका"
 
 #: libcore/context.cpp:78
 msgctxt "ProfileContext|"
 msgid "Function"
-msgstr ""
+msgstr "नियोग"
 
 #: libcore/context.cpp:79
 msgctxt "ProfileContext|"
 msgid "Function Cycle"
-msgstr ""
+msgstr "कार्य चक्र"
 
 #: libcore/context.cpp:80
 msgctxt "ProfileContext|"
 msgid "Part Class"
-msgstr ""
+msgstr "भाग वर्ग"
 
 #: libcore/context.cpp:81
 msgctxt "ProfileContext|"
 msgid "Class"
-msgstr ""
+msgstr "श्रेणी"
 
 #: libcore/context.cpp:82
 msgctxt "ProfileContext|"
 msgid "Part Source File"
-msgstr ""
+msgstr "भाग स्रोत सञ्चिका"
 
 #: libcore/context.cpp:83
 msgctxt "ProfileContext|"
 msgid "Source File"
-msgstr ""
+msgstr "स्रोतसञ्चिका"
 
 #: libcore/context.cpp:84
 msgctxt "ProfileContext|"
 msgid "Part ELF Object"
-msgstr ""
+msgstr "भाग ELF वस्तु"
 
 #: libcore/context.cpp:85
 msgctxt "ProfileContext|"
 msgid "ELF Object"
-msgstr ""
+msgstr "ELF वस्तु"
 
 #: libcore/context.cpp:86
 msgctxt "ProfileContext|"
 msgid "Profile Part"
-msgstr ""
+msgstr "प्रोफाइल भाग"
 
 #: libcore/context.cpp:87
 msgctxt "ProfileContext|"
 msgid "Program Trace"
-msgstr ""
+msgstr "कार्यक्रम ट्रेस"
 
 #: libcore/context.cpp:88
 msgctxt "ProfileContext|"
 msgid "BasicBlock"
-msgstr ""
+msgstr "बेसिकब्लॉक"
 
 #: libcore/costitem.cpp:48
 #, qt-format
 msgctxt "QObject|"
 msgid "%1 from %2"
-msgstr ""
+msgstr "%1 तः %2 तः"
 
 #: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1984
 #: libcore/tracedata.cpp:2046 libcore/tracedata.cpp:3024
 #: libcore/tracedata.cpp:3125 libviews/partgraph.cpp:409
 msgctxt "QObject|"
 msgid "(unknown)"
-msgstr ""
+msgstr "(अज्ञात)"
 
 #: libcore/globalconfig.cpp:77
 msgctxt "QObject|"
 msgid "Instruction Fetch"
-msgstr ""
+msgstr "निर्देशः आनयतु"
 
 #: libcore/globalconfig.cpp:78
 msgctxt "QObject|"
 msgid "Data Read Access"
-msgstr ""
+msgstr "Data Read Access"
 
 #: libcore/globalconfig.cpp:79
 msgctxt "QObject|"
 msgid "Data Write Access"
-msgstr ""
+msgstr "Data Write Access"
 
 #: libcore/globalconfig.cpp:80
 msgctxt "QObject|"
 msgid "L1 Instr. Fetch Miss"
-msgstr ""
+msgstr "L1 Instr. मिस् आनयतु"
 
 #: libcore/globalconfig.cpp:81
 msgctxt "QObject|"
 msgid "L1 Data Read Miss"
-msgstr ""
+msgstr "L1 Data Read Miss"
 
 #: libcore/globalconfig.cpp:82
 msgctxt "QObject|"
 msgid "L1 Data Write Miss"
-msgstr ""
+msgstr "L1 Data Write Miss"
 
 #: libcore/globalconfig.cpp:83
 msgctxt "QObject|"
 msgid "L2 Instr. Fetch Miss"
-msgstr ""
+msgstr "L2 Instr. मिस् आनयतु"
 
 #: libcore/globalconfig.cpp:84
 msgctxt "QObject|"
 msgid "L2 Data Read Miss"
-msgstr ""
+msgstr "L2 Data Read Miss"
 
 #: libcore/globalconfig.cpp:85
 msgctxt "QObject|"
 msgid "L2 Data Write Miss"
-msgstr ""
+msgstr "L2 Data Write Miss"
 
 #: libcore/globalconfig.cpp:86
 msgctxt "QObject|"
 msgid "LL Instr. Fetch Miss"
-msgstr ""
+msgstr "एल एल इंस्ट्रि. मिस् आनयतु"
 
 #: libcore/globalconfig.cpp:87
 msgctxt "QObject|"
 msgid "LL Data Read Miss"
-msgstr ""
+msgstr "LL Data Read Miss"
 
 #: libcore/globalconfig.cpp:88
 msgctxt "QObject|"
 msgid "LL Data Write Miss"
-msgstr ""
+msgstr "एल एल डाटा राइट मिस"
 
 #: libcore/globalconfig.cpp:89
 msgctxt "QObject|"
 msgid "L1 Miss Sum"
-msgstr ""
+msgstr "L1 मिस् योग"
 
 #: libcore/globalconfig.cpp:90
 msgctxt "QObject|"
 msgid "L2 Miss Sum"
-msgstr ""
+msgstr "L2 मिस योग"
 
 #: libcore/globalconfig.cpp:91
 msgctxt "QObject|"
 msgid "Last-level Miss Sum"
-msgstr ""
+msgstr "अन्तिमस्तरीय मिस् सम"
 
 #: libcore/globalconfig.cpp:92
 msgctxt "QObject|"
 msgid "Indirect Branch"
-msgstr ""
+msgstr "अप्रत्यक्ष शाखा"
 
 #: libcore/globalconfig.cpp:93
 msgctxt "QObject|"
 msgid "Mispredicted Ind. Branch"
-msgstr ""
+msgstr "गलत अनुमानित इण्ड.शाखा"
 
 #: libcore/globalconfig.cpp:94
 msgctxt "QObject|"
 msgid "Conditional Branch"
-msgstr ""
+msgstr "सशर्त शाखा"
 
 #: libcore/globalconfig.cpp:95
 msgctxt "QObject|"
 msgid "Mispredicted Cond. Branch"
-msgstr ""
+msgstr "गलत अनुमानित Cond. शाखा"
 
 #: libcore/globalconfig.cpp:96
 msgctxt "QObject|"
 msgid "Mispredicted Branch"
-msgstr ""
+msgstr "अप्रत्याशित शाखा"
 
 #: libcore/globalconfig.cpp:97
 msgctxt "QObject|"
 msgid "Global Bus Event"
-msgstr ""
+msgstr "वैश्विक बस इवेण्ट्"
 
 #: libcore/globalconfig.cpp:98
 msgctxt "QObject|"
 msgid "Samples"
-msgstr ""
+msgstr "नमूनानि"
 
 #: libcore/globalconfig.cpp:99
 msgctxt "QObject|"
 msgid "System Time"
-msgstr ""
+msgstr "प्रणाली समय"
 
 #: libcore/globalconfig.cpp:100
 msgctxt "QObject|"
 msgid "User Time"
-msgstr ""
+msgstr "उपयोक्तृसमयः"
 
 #: libcore/globalconfig.cpp:101
 msgctxt "QObject|"
 msgid "Cycle Estimation"
-msgstr ""
+msgstr "चक्र अनुमान"
 
 #: libcore/tracedata.cpp:1245
 msgctxt "QObject|"
 msgid "(no caller)"
-msgstr ""
+msgstr "(कोऽपि आह्वानकर्त्ता नास्ति)"
 
 #: libcore/tracedata.cpp:1252 libcore/tracedata.cpp:1271
 #, qt-format
 msgctxt "QObject|"
 msgid "%1 via %2"
-msgstr ""
+msgstr "%1 %2 मार्गेण"
 
 #: libcore/tracedata.cpp:1261
 msgctxt "QObject|"
 msgid "(no callee)"
-msgstr ""
+msgstr "(मौनम् मा भव) २."
 
 #: libcore/tracedata.cpp:2873
 msgctxt "QObject|"
 msgid "(global)"
-msgstr ""
+msgstr "(वैश्विक)"
 
 #: libcore/tracedata.cpp:3308
 msgctxt "QObject|"
 msgid "(not found)"
-msgstr ""
+msgstr "(न लब्धम्) २."
 
 #: libcore/tracedata.cpp:3856
 msgctxt "TraceData|"
 msgid "Recalculating Function Cycles..."
-msgstr ""
+msgstr "कार्यचक्राणां पुनः गणना..."
 
 #: libviews/callgraphview.cpp:414
 #, qt-format
 msgctxt "QObject|"
 msgid "Call(s) from %1"
-msgstr ""
+msgstr "%1 तः आह्वान (आह्वान)"
 
 #: libviews/callgraphview.cpp:417
 #, qt-format
 msgctxt "QObject|"
 msgid "Call(s) to %1"
-msgstr ""
+msgstr "%1 इत्यस्मै आह्वानं (आह्वानं) कुर्वन्तु"
 
 #: libviews/callgraphview.cpp:419
 msgctxt "QObject|"
 msgid "(unknown call)"
-msgstr ""
+msgstr "(अज्ञात आह्वान) २."
 
 #: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1392
 #: libviews/controlflowgraphview.cpp:2419
 msgctxt "QObject|"
 msgid "Export Graph"
-msgstr ""
+msgstr "निर्यात ग्राफ"
 
 #: libviews/callgraphview.cpp:1608
 msgctxt "CallGraphView|"
@@ -368,6 +370,15 @@ msgid ""
 "There are similar visualization options to the Call Treemap; the selected "
 "function is highlighted.</p>"
 msgstr ""
+"<b>सक्रिय Function इत्यस्य परितः Graph इति आह्वानं कुर्वन्तु</b><p> विन्यासस्य आधारेण "
+"एतत् दृश्यं सक्रियकार्यस्य call graph वातावरणं दर्शयति । नोटः: दर्शितः व्ययः <b>केवलं</b> "
+"सः व्ययः अस्ति यः सक्रियकार्यं वास्तवतः प्रचलति स्म तदा व्यय्यते; अर्थात् main() कृते "
+"दर्शितः व्ययः - यदि दृश्यते तर्हि - सक्रियकार्यस्य व्ययस्य समानः भवेत्, यतः सः "
+"सक्रियकार्यस्य चालनकाले व्ययितस्य main() इत्यस्य समावेशीव्ययस्य भागः अस्ति</p><p> चक्राणां "
+"कृते नीलवर्णीयः आह्वानबाणाः सूचयन्ति यत् एषः सम्यक् रेखाचित्रणार्थं योजितः कृत्रिमः आह्वानः "
+"अस्ति यः वास्तवतः कदापि न अभवत् ।</p><p> यदि आलेखः विजेट् क्षेत्रात् बृहत्तरः अस्ति तर्हि "
+"एकस्मिन् धारायाम् अवलोकनपैनर् दर्शितः भवति । Call Treemap इत्यस्य सदृशाः "
+"दृश्यीकरणविकल्पाः सन्ति; चयनितं कार्यं प्रकाशितं भवति ।</p>"
 
 #: libviews/callgraphview.cpp:2020
 msgctxt "CallGraphView|"
@@ -375,22 +386,24 @@ msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
 "Reduce node/edge limits for speedup.\n"
 msgstr ""
+"चेतावनी: दीर्घकालीनः आलेखविन्यासः प्रचलति ।\n"
+"गतिं प्राप्तुं नोड्/एज सीमां न्यूनीकरोतु।\n"
 
 #: libviews/callgraphview.cpp:2023
 msgctxt "CallGraphView|"
 msgid "Layouting stopped.\n"
-msgstr ""
+msgstr "विन्यासः स्थगितवान् ।\n"
 
 #: libviews/callgraphview.cpp:2025
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
-msgstr ""
+msgstr "आह्वानलेखे %1 नोड् %2 एज्स् च सन्ति ।\n"
 
 #: libviews/callgraphview.cpp:2034
 msgctxt "CallGraphView|"
 msgid "No graph available because the layouting process failed.\n"
-msgstr ""
+msgstr "विन्यासप्रक्रिया विफलतायाः कारणात् कोऽपि आलेखः उपलब्धः नास्ति ।\n"
 
 #: libviews/callgraphview.cpp:2036
 #, qt-format
@@ -399,26 +412,28 @@ msgid ""
 "Trying to run the following command did not work:\n"
 "'%1'\n"
 msgstr ""
+"निम्नलिखित आदेशं चालयितुं प्रयत्नः कार्यं न कृतवान् ।\n"
+"'%1' इति ।\n"
 
 #: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
 msgctxt "CallGraphView|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
-msgstr ""
+msgstr "कृपया 'dot' संस्थापितम् इति पश्यन्तु (package GraphViz) ।"
 
 #: libviews/callgraphview.cpp:2080
 msgctxt "CallGraphView|"
 msgid "No item activated for which to draw the call graph."
-msgstr ""
+msgstr "न कोऽपि द्रव्यः सक्रियः यस्य कृते आह्वानलेखं आकर्षयितुं शक्यते।"
 
 #: libviews/callgraphview.cpp:2092
 msgctxt "CallGraphView|"
 msgid "No call graph can be drawn for the active item."
-msgstr ""
+msgstr "सक्रियवस्तूनाम् कृते कोऽपि आह्वानलेखः आकर्षितुं न शक्यते ।"
 
 #: libviews/callgraphview.cpp:2554
 msgctxt "CallGraphView|"
 msgid "Error running the graph layouting tool.\n"
-msgstr ""
+msgstr "आलेखविन्याससाधनं चालयितुं त्रुटिः ।\n"
 
 #: libviews/callgraphview.cpp:2559
 #, qt-format
@@ -428,273 +443,276 @@ msgid ""
 "\t'%1'\n"
 "because it has no cost of the selected event type."
 msgstr ""
+"कार्यस्य कृते आह्वानलेखः उपलब्धः नास्ति\n"
+"\t'%1' इति ।\n"
+"यतः तस्य चयनितघटनाप्रकारस्य व्ययः नास्ति ।"
 
 #: libviews/callgraphview.cpp:2800
 msgctxt "CallGraphView|"
 msgid "Caller Depth"
-msgstr ""
+msgstr "आह्वानकर्ता गभीरता"
 
 #: libviews/callgraphview.cpp:2801 libviews/callgraphview.cpp:2841
 msgctxt "CallGraphView|"
 msgid "Unlimited"
-msgstr ""
+msgstr "असीमित"
 
 #: libviews/callgraphview.cpp:2804 libviews/callgraphview.cpp:2844
 msgctxt "CallGraphView|None"
 msgid "Depth 0"
-msgstr ""
+msgstr "गभीरता 0"
 
 #: libviews/callgraphview.cpp:2805 libviews/callgraphview.cpp:2845
 msgctxt "CallGraphView|"
 msgid "max. 1"
-msgstr ""
+msgstr "अधिकतमम् । १"
 
 #: libviews/callgraphview.cpp:2806 libviews/callgraphview.cpp:2846
 msgctxt "CallGraphView|"
 msgid "max. 2"
-msgstr ""
+msgstr "अधिकतमम् । २"
 
 #: libviews/callgraphview.cpp:2807 libviews/callgraphview.cpp:2847
 msgctxt "CallGraphView|"
 msgid "max. 5"
-msgstr ""
+msgstr "अधिकतमम् । ५"
 
 #: libviews/callgraphview.cpp:2808 libviews/callgraphview.cpp:2848
 msgctxt "CallGraphView|"
 msgid "max. 10"
-msgstr ""
+msgstr "अधिकतमम् । १०"
 
 #: libviews/callgraphview.cpp:2809 libviews/callgraphview.cpp:2849
 msgctxt "CallGraphView|"
 msgid "max. 15"
-msgstr ""
+msgstr "अधिकतमम् । १५"
 
 #: libviews/callgraphview.cpp:2840
 msgctxt "CallGraphView|"
 msgid "Callee Depth"
-msgstr ""
+msgstr "आह्वानं गभीरता"
 
 #: libviews/callgraphview.cpp:2880
 msgctxt "CallGraphView|"
 msgid "Min. Node Cost"
-msgstr ""
+msgstr "मि. नोड व्ययः"
 
 #: libviews/callgraphview.cpp:2881
 msgctxt "CallGraphView|"
 msgid "No Minimum"
-msgstr ""
+msgstr "न न्यूनतमम्"
 
 #: libviews/callgraphview.cpp:2887
 msgctxt "CallGraphView|"
 msgid "50 %"
-msgstr ""
+msgstr "५० % ९."
 
 #: libviews/callgraphview.cpp:2888
 msgctxt "CallGraphView|"
 msgid "20 %"
-msgstr ""
+msgstr "२० % २."
 
 #: libviews/callgraphview.cpp:2889
 msgctxt "CallGraphView|"
 msgid "10 %"
-msgstr ""
+msgstr "१० % ९."
 
 #: libviews/callgraphview.cpp:2890
 msgctxt "CallGraphView|"
 msgid "5 %"
-msgstr ""
+msgstr "५ % ९."
 
 #: libviews/callgraphview.cpp:2891
 msgctxt "CallGraphView|"
 msgid "2 %"
-msgstr ""
+msgstr "२ % ."
 
 #: libviews/callgraphview.cpp:2892
 msgctxt "CallGraphView|"
 msgid "1 %"
-msgstr ""
+msgstr "१ % ."
 
 #: libviews/callgraphview.cpp:2922
 msgctxt "CallGraphView|"
 msgid "Min. Call Cost"
-msgstr ""
+msgstr "मि. कॉल व्ययः"
 
 #: libviews/callgraphview.cpp:2923
 msgctxt "CallGraphView|"
 msgid "Same as Node"
-msgstr ""
+msgstr "Node इत्यस्य समानम्"
 
 #: libviews/callgraphview.cpp:2925
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
-msgstr ""
+msgstr "नोडस्य ५० %"
 
 #: libviews/callgraphview.cpp:2927
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
-msgstr ""
+msgstr "नोड् इत्यस्य २० %"
 
 #: libviews/callgraphview.cpp:2929
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
-msgstr ""
+msgstr "नोड् इत्यस्य १० %"
 
 #: libviews/callgraphview.cpp:2958
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
-msgstr ""
+msgstr "पक्षि-नेत्र-दृश्यम्"
 
 #: libviews/callgraphview.cpp:2959
 msgctxt "CallGraphView|"
 msgid "Top Left"
-msgstr ""
+msgstr "उपरि वामभागे"
 
 #: libviews/callgraphview.cpp:2960
 msgctxt "CallGraphView|"
 msgid "Top Right"
-msgstr ""
+msgstr "उपरि दक्षिणतः"
 
 #: libviews/callgraphview.cpp:2961
 msgctxt "CallGraphView|"
 msgid "Bottom Left"
-msgstr ""
+msgstr "अधः वामभागे"
 
 #: libviews/callgraphview.cpp:2962
 msgctxt "CallGraphView|"
 msgid "Bottom Right"
-msgstr ""
+msgstr "अधः दक्षिणतः"
 
 #: libviews/callgraphview.cpp:2963
 msgctxt "CallGraphView|"
 msgid "Automatic"
-msgstr ""
+msgstr "स्वतः"
 
 #: libviews/callgraphview.cpp:2964
 msgctxt "CallGraphView|"
 msgid "Hide"
-msgstr ""
+msgstr "गोपयतु"
 
 #: libviews/callgraphview.cpp:2994
 msgctxt "CallGraphView|"
 msgid "Layout"
-msgstr ""
+msgstr "प्रारूपं"
 
 #: libviews/callgraphview.cpp:2995
 msgctxt "CallGraphView|"
 msgid "Top to Down"
-msgstr ""
+msgstr "उपरितः अधः यावत्"
 
 #: libviews/callgraphview.cpp:2996
 msgctxt "CallGraphView|"
 msgid "Left to Right"
-msgstr ""
+msgstr "वामतः दक्षिणतः"
 
 #: libviews/callgraphview.cpp:2997
 msgctxt "CallGraphView|"
 msgid "Circular"
-msgstr ""
+msgstr "परिपत्रम्"
 
 #: libviews/callgraphview.cpp:3037 libviews/callgraphview.cpp:3042
 #: libviews/callgraphview.cpp:3062
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
-msgstr ""
+msgstr "'%1' इत्यत्र गच्छन्तु।"
 
 #: libviews/callgraphview.cpp:3073
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
-msgstr ""
+msgstr "लेआउटिंग् स्थगयन्तु"
 
 #: libviews/callgraphview.cpp:3080
 msgctxt "CallGraphView|"
 msgid "Export Graph"
-msgstr ""
+msgstr "निर्यात ग्राफ"
 
 #: libviews/callgraphview.cpp:3081
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
-msgstr ""
+msgstr "DOT सञ्चिकारूपेण..."
 
 #: libviews/callgraphview.cpp:3082
 msgctxt "CallGraphView|"
 msgid "As Image..."
-msgstr ""
+msgstr "As Image..."
 
 #: libviews/callgraphview.cpp:3085
 msgctxt "CallGraphView|"
 msgid "Graph"
-msgstr ""
+msgstr "आलेखः"
 
 #: libviews/callgraphview.cpp:3093
 msgctxt "CallGraphView|"
 msgid "Arrows for Skipped Calls"
-msgstr ""
+msgstr "त्यक्त-कॉल-कृते बाणाः"
 
 #: libviews/callgraphview.cpp:3098
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
-msgstr ""
+msgstr "आन्तरिक-चक्रं आह्वानम्"
 
 #: libviews/callgraphview.cpp:3103
 msgctxt "CallGraphView|"
 msgid "Cluster Groups"
-msgstr ""
+msgstr "समूहसमूहाः"
 
 #: libviews/callgraphview.cpp:3107
 msgctxt "CallGraphView|"
 msgid "Visualization"
-msgstr ""
+msgstr "दृश्यीकरणम्"
 
 #: libviews/callgraphview.cpp:3108
 msgctxt "CallGraphView|"
 msgid "Compact"
-msgstr ""
+msgstr "संकुचित"
 
 #: libviews/callgraphview.cpp:3111
 msgctxt "CallGraphView|"
 msgid "Normal"
-msgstr ""
+msgstr "सामान्य"
 
 #: libviews/callgraphview.cpp:3114
 msgctxt "CallGraphView|"
 msgid "Tall"
-msgstr ""
+msgstr "उन्नतः"
 
 #: libviews/callgraphview.cpp:3146
 msgctxt "CallGraphView|"
 msgid "Export Graph As Image"
-msgstr ""
+msgstr "Graph As Image निर्यातयन्तु"
 
 #: libviews/callgraphview.cpp:3148
 msgctxt "CallGraphView|"
 msgid "Images (*.png *.jpg)"
-msgstr ""
+msgstr "चित्राणि (*.png *.jpg)"
 
 #: libviews/callitem.cpp:73 libviews/partlistitem.cpp:131
 msgctxt "QObject|"
 msgid "(active)"
-msgstr ""
+msgstr "(सक्रियं)"
 
 #: libviews/callmapview.cpp:52
 msgctxt "CallMapView|Name"
 msgid "A thing's name"
-msgstr ""
+msgstr "एकस्य वस्तुनः नाम"
 
 #: libviews/callmapview.cpp:53
 msgctxt "CallMapView|"
 msgid "Cost"
-msgstr ""
+msgstr "मूल्यम्‌"
 
 #: libviews/callmapview.cpp:54
 msgctxt "CallMapView|"
 msgid "Location"
-msgstr ""
+msgstr "स्थानीय"
 
 #: libviews/callmapview.cpp:56
 msgctxt "CallMapView|"
 msgid "Calls"
-msgstr ""
+msgstr "आह्वानं करोति"
 
 #: libviews/callmapview.cpp:91
 msgctxt "CallMapView|"
@@ -704,6 +722,9 @@ msgid ""
 "function; its size tries to be proportional to the cost spent therein while "
 "the active function is running (however, there are drawing constraints).</p>"
 msgstr ""
+"<b>कॉलर मानचित्र</b><p> अयं आलेखः वर्तमानसक्रियकार्यस्य सर्वेषां आह्वानकर्तृणां नेस्टेड् "
+"श्रेणीक्रमं दर्शयति । प्रत्येकं वर्णयुक्तं आयतं एकं कार्यं प्रतिनिधियति; तस्य आकारः सक्रियकार्यस्य "
+"चालनकाले तत्र व्ययस्य आनुपातिकः भवितुम् प्रयतते (तथापि, आकर्षणबाधाः सन्ति) ।</p>"
 
 #: libviews/callmapview.cpp:98
 msgctxt "CallMapView|"
@@ -713,6 +734,9 @@ msgid ""
 "function; its size tries to be proportional to the cost spent therein while "
 "the active function is running (however, there are drawing constraints).</p>"
 msgstr ""
+"<b>नक्शां आह्वयन्तु</b><p> अयं आलेखः वर्तमानसक्रियकार्यस्य सर्वेषां आह्वानकर्तृणां नेस्टेड्-"
+"पदानुक्रमं दर्शयति । प्रत्येकं वर्णयुक्तं आयतं एकं कार्यं प्रतिनिधियति; तस्य आकारः सक्रियकार्यस्य "
+"चालनकाले तत्र व्ययस्य आनुपातिकः भवितुम् प्रयतते (तथापि, आकर्षणबाधाः सन्ति) ।</p>"
 
 #: libviews/callmapview.cpp:106
 msgctxt "CallMapView|"
@@ -729,238 +753,248 @@ msgid ""
 "siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
 "em> activates the current item.</p>"
 msgstr ""
+"<p>सन्दर्भमेनूमध्ये रूपविकल्पाः प्राप्यन्ते । सटीक आकारानुपातं प्राप्तुं &#39;अशुद्धसीमाः "
+"गोपयन्तु&#39; इति चिनोतु । यतः एषः मोड् <em>अतीव</em> समयग्राही भवितुम् अर्हति, भवान् "
+"पूर्वं अधिकतमं आकृष्टं नीडस्तरं सीमितं कर्तुम् इच्छति । &#39;बेस्ट&#39; मातापितुः आस्पेक्ट् "
+"रेश्योतः बालकानां कृते विभक्तदिशां निर्धारयति । &#39;सदा सर्वोत्तमम्&#39; प्रत्येकस्य भ्रातुः "
+"कृते अवशिष्टं स्थानं निर्णयं करोति । &#39;Ignore Proportions&#39; इति बालकान् आकर्षयितुं "
+"<em>पूर्वं</em> function name drawing कृते स्थानं गृह्णाति । ध्यानं कुर्वन्तु यत् आकारस्य "
+"अनुपाताः <em>बहुधा</em> भ्रष्टाः भवितुम् अर्हन्ति ।</p><p> इदं <em>TreeMap</em> विजेट् "
+"अस्ति । कीबोर्ड-सञ्चारः भ्रातृभ्रातृणां भ्रमणार्थं वाम/दक्षिणबाणकुंजीभिः सह उपलभ्यते, तथा च "
+"नीडस्तरं उपरि/अधः गन्तुं उपरि/अधः बाणकुंजीभिः सह उपलभ्यते । <em>Return</em> वर्तमानं "
+"द्रव्यं सक्रियं करोति ।</p>"
 
 #: libviews/callmapview.cpp:139
 msgctxt "CallMapView|"
 msgid "Go To"
-msgstr ""
+msgstr "Go To इति"
 
 #: libviews/callmapview.cpp:170
 msgctxt "CallMapView|"
 msgid "Stop at Depth"
-msgstr ""
+msgstr "गभीरतायां स्थगयन्तु"
 
 #: libviews/callmapview.cpp:171
 msgctxt "CallMapView|"
 msgid "No Depth Limit"
-msgstr ""
+msgstr "गभीरतासीमा नास्ति"
 
 #: libviews/callmapview.cpp:173
 msgctxt "CallMapView|"
 msgid "Depth 10"
-msgstr ""
+msgstr "गभीरता १०"
 
 #: libviews/callmapview.cpp:174
 msgctxt "CallMapView|"
 msgid "Depth 15"
-msgstr ""
+msgstr "गभीरता १५"
 
 #: libviews/callmapview.cpp:175
 msgctxt "CallMapView|"
 msgid "Depth 20"
-msgstr ""
+msgstr "गभीरता २०"
 
 #: libviews/callmapview.cpp:178
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Depth of '%1' (%2)"
-msgstr ""
+msgstr "'%1' (%2) इत्यस्य गभीरता ।"
 
 #: libviews/callmapview.cpp:185
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Decrement Depth (to %1)"
-msgstr ""
+msgstr "गभीरता न्यूनीभवन्तु (%1 यावत्) ."
 
 #: libviews/callmapview.cpp:187
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Increment Depth (to %1)"
-msgstr ""
+msgstr "वृद्धि गभीरता (%1 पर्यन्तम्) २."
 
 #: libviews/callmapview.cpp:213
 msgctxt "CallMapView|"
 msgid "Stop at Function"
-msgstr ""
+msgstr "Function इत्यत्र स्थगयन्तु"
 
 #: libviews/callmapview.cpp:214
 msgctxt "CallMapView|"
 msgid "No Function Limit"
-msgstr ""
+msgstr "न कार्यसीमा"
 
 #: libviews/callmapview.cpp:257
 msgctxt "CallMapView|"
 msgid "Stop at Area"
-msgstr ""
+msgstr "एरिया इत्यत्र स्थगयन्तु"
 
 #: libviews/callmapview.cpp:258
 msgctxt "CallMapView|"
 msgid "No Area Limit"
-msgstr ""
+msgstr "क्षेत्रसीमा नास्ति"
 
 #: libviews/callmapview.cpp:260
 msgctxt "CallMapView|"
 msgid "100 Pixels"
-msgstr ""
+msgstr "१०० पिक्सेल्"
 
 #: libviews/callmapview.cpp:261
 msgctxt "CallMapView|"
 msgid "200 Pixels"
-msgstr ""
+msgstr "२०० पिक्सेल्"
 
 #: libviews/callmapview.cpp:262
 msgctxt "CallMapView|"
 msgid "500 Pixels"
-msgstr ""
+msgstr "५०० पिक्सेल्"
 
 #: libviews/callmapview.cpp:263
 msgctxt "CallMapView|"
 msgid "1000 Pixels"
-msgstr ""
+msgstr "१००० पिक्सेल"
 
 #: libviews/callmapview.cpp:269
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Area of '%1' (%2)"
-msgstr ""
+msgstr "'%1' (%2) इत्यस्य क्षेत्रफलम् ।"
 
 #: libviews/callmapview.cpp:275
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Double Area Limit (to %1)"
-msgstr ""
+msgstr "द्विगुणक्षेत्रसीमा (%1 पर्यन्तम्) २."
 
 #: libviews/callmapview.cpp:277
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Half Area Limit (to %1)"
-msgstr ""
+msgstr "अर्धक्षेत्रसीमा (%1 पर्यन्तम्) २."
 
 #: libviews/callmapview.cpp:327
 msgctxt "CallMapView|"
 msgid "Visualization"
-msgstr ""
+msgstr "दृश्यीकरणम्"
 
 #: libviews/callmapview.cpp:328
 msgctxt "CallMapView|"
 msgid "Split Direction"
-msgstr ""
+msgstr "विभक्त दिशा"
 
 #: libviews/callmapview.cpp:331
 msgctxt "CallMapView|"
 msgid "Skip Incorrect Borders"
-msgstr ""
+msgstr "अशुद्धसीमाः त्यजन्तु"
 
 #: libviews/callmapview.cpp:336
 msgctxt "CallMapView|"
 msgid "Border Width"
-msgstr ""
+msgstr "सीमा चौड़ाई"
 
 #: libviews/callmapview.cpp:337
 msgctxt "CallMapView|"
 msgid "Border 0"
-msgstr ""
+msgstr "सीमा ०"
 
 #: libviews/callmapview.cpp:339
 msgctxt "CallMapView|"
 msgid "Border 1"
-msgstr ""
+msgstr "सीमा १"
 
 #: libviews/callmapview.cpp:340
 msgctxt "CallMapView|"
 msgid "Border 2"
-msgstr ""
+msgstr "सीमा २"
 
 #: libviews/callmapview.cpp:341
 msgctxt "CallMapView|"
 msgid "Border 3"
-msgstr ""
+msgstr "सीमा ३"
 
 #: libviews/callmapview.cpp:346
 msgctxt "CallMapView|"
 msgid "Draw Symbol Names"
-msgstr ""
+msgstr "प्रतीक नाम आकर्षित करें"
 
 #: libviews/callmapview.cpp:348
 msgctxt "CallMapView|"
 msgid "Draw Cost"
-msgstr ""
+msgstr "Draw Cost"
 
 #: libviews/callmapview.cpp:350
 msgctxt "CallMapView|"
 msgid "Draw Location"
-msgstr ""
+msgstr "स्थानं आकर्षयतु"
 
 #: libviews/callmapview.cpp:352
 msgctxt "CallMapView|"
 msgid "Draw Calls"
-msgstr ""
+msgstr "आह्वानं आकर्षयन्तु"
 
 #: libviews/callmapview.cpp:356
 msgctxt "CallMapView|"
 msgid "Ignore Proportions"
-msgstr ""
+msgstr "अनुपातानाम् अवहेलना कुर्वन्तु"
 
 #: libviews/callmapview.cpp:358
 msgctxt "CallMapView|"
 msgid "Allow Rotation"
-msgstr ""
+msgstr "परिभ्रमणस्य अनुमतिं ददातु"
 
 #: libviews/callmapview.cpp:376
 msgctxt "CallMapView|"
 msgid "Shading"
-msgstr ""
+msgstr "छायाकरणम्"
 
 #: libviews/callmapview.cpp:428
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Call Map: Current is '%1'"
-msgstr ""
+msgstr "आह्वाननक्शा: वर्तमानं '%1' अस्ति।"
 
 #: libviews/callmapview.cpp:621
 msgctxt "QObject|"
 msgid "(no function)"
-msgstr ""
+msgstr "(न कार्यम्) २."
 
 #: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
 msgctxt "QObject|"
 msgid "(no call)"
-msgstr ""
+msgstr "(न आह्वानम्) २."
 
 #: libviews/callview.cpp:37
 msgctxt "CallView|"
 msgid "Cost"
-msgstr ""
+msgstr "मूल्यम्‌"
 
 #: libviews/callview.cpp:38
 msgctxt "CallView|"
 msgid "Cost per call"
-msgstr ""
+msgstr "प्रति आह्वानं व्ययः"
 
 #: libviews/callview.cpp:39
 msgctxt "CallView|"
 msgid "Cost 2"
-msgstr ""
+msgstr "व्ययः २"
 
 #: libviews/callview.cpp:40
 msgctxt "CallView|"
 msgid "Cost 2 per call"
-msgstr ""
+msgstr "प्रतिकॉल २ व्ययः"
 
 #: libviews/callview.cpp:41
 msgctxt "CallView|"
 msgid "Count"
-msgstr ""
+msgstr "गणनां कारोतु"
 
 #: libviews/callview.cpp:42
 msgctxt "CallView|"
 msgid "Caller"
-msgstr ""
+msgstr "आह्वानकर्त्ता"
 
 #: libviews/callview.cpp:42
 msgctxt "CallView|"
 msgid "Callee"
-msgstr ""
+msgstr "कल्ली"
 
 #: libviews/callview.cpp:76
 msgctxt "CallView|"
@@ -974,6 +1008,12 @@ msgid ""
 "information panel. If there are two panels (Split mode), the function of the "
 "other panel is changed instead.</p>"
 msgstr ""
+"<b>प्रत्यक्ष आह्वानकर्तानां सूची</b><p> एषा सूची वर्तमानचयनितस्य प्रत्यक्षतया आह्वानं "
+"कुर्वन्तः सर्वाणि कार्याणि दर्शयति, तत्सहितं आह्वानगणना सह, सूचीतः कार्यात् आह्वानं कुर्वन् "
+"वर्तमानचयनितकार्य्ये व्ययितव्ययः च</p><p> समावेशीव्ययस्य स्थाने चिह्नं निर्दिशति यत् एतत् "
+"पुनरावर्तनीयचक्रस्य अन्तः आह्वानम् अस्ति । समावेशीव्ययस्य अत्र कोऽपि अर्थः नास्ति।</p><p> "
+"फंक्शन् चयनेन अस्य सूचनापटलस्य वर्तमानचयनितं भवति । यदि द्वौ पटलौ (Split mode) स्तः "
+"तर्हि तस्य स्थाने अन्यस्य पटलस्य कार्यं परिवर्तते ।</p>"
 
 #: libviews/callview.cpp:89
 msgctxt "CallView|"
@@ -985,24 +1025,29 @@ msgid ""
 "information panel. If there are two panels (Split mode), the function of the "
 "other panel is changed instead.</p>"
 msgstr ""
+"<b>प्रत्यक्ष कल्लीनां सूची</b><p> एषा सूची वर्तमानचयनितेन प्रत्यक्षतया आहूतानि सर्वाणि "
+"कार्याणि दर्शयति, एकेन सह आह्वानगणना सह चयनितकार्यात् आह्वानं कुर्वन् अस्मिन् कार्ये "
+"व्ययितव्ययः च</p><p> फंक्शन् चयनेन अस्य सूचनापटलस्य वर्तमानचयनितं भवति । यदि द्वौ पटलौ "
+"(Split mode) स्तः तर्हि तस्य स्थाने अन्यस्य पटलस्य कार्यं परिवर्तते ।</p>"
 
 #: libviews/callview.cpp:118 libviews/callview.cpp:123
 #, qt-format
 msgctxt "CallView|"
 msgid "Go to '%1'"
-msgstr ""
+msgstr "'%1' इत्यत्र गच्छन्तु।"
 
 #: libviews/callview.cpp:257 libviews/callview.cpp:261
 #, qt-format
 msgctxt "CallView|"
 msgid "%1 per call"
-msgstr ""
+msgstr "%1 प्रति आह्वानम्"
 
 #: libviews/controlflowgraphview.cpp:607
 msgctxt "QObject|"
 msgid ""
 "Control-flow graph requires running callgrind with option --dump-instr=yes"
 msgstr ""
+"नियन्त्रण-प्रवाह-लेखस्य कृते --dump-instr=yes विकल्पेन सह callgrind चालयितुं आवश्यकम् अस्ति"
 
 #: libviews/controlflowgraphview.cpp:913
 #, qt-format
@@ -1012,11 +1057,14 @@ msgid ""
 "    '%1'\n"
 "This file cannot be found.\n"
 msgstr ""
+"एनोटेटेड् मशीन् कोड् कृते निम्नलिखित ऑब्जेक्ट् सञ्चिका आवश्यकी अस्ति\n"
+"    '%1' इति ।\n"
+"एषा सञ्चिका न लभ्यते ।\n"
 
 #: libviews/controlflowgraphview.cpp:917
 msgctxt "QObject|"
 msgid "If cross-compiled, set SYSROOT variable."
-msgstr ""
+msgstr "यदि क्रॉस्-कम्पाइल् कृतं तर्हि SYSROOT चरं सेट् कुर्वन्तु ।"
 
 #: libviews/controlflowgraphview.cpp:938
 #, qt-format
@@ -1027,6 +1075,10 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package"
 msgstr ""
+"आदेशं निष्पादयितुं प्रयतमाने दोषः भवति\n"
+"    '%1' इति ।\n"
+"भवता 'objdump' संस्थापितम् इति पश्यन्तु ।\n"
+"इयं उपयोगिता 'binutils' संकुलमध्ये द्रष्टुं शक्यते"
 
 #: libviews/controlflowgraphview.cpp:1019
 #, qt-format
@@ -1038,6 +1090,10 @@ msgid ""
 "Are you using an old profile data file or is the abovementioned\n"
 "ELF object from an updated installation/another machine?"
 msgstr ""
+"यन्त्रसङ्केतं विना %1 मूल्यरेखा(s) सन्ति ।\n"
+"एतत् भवति यतोहि %2 इत्यस्य कोडः प्रोफाइलदत्तांशसञ्चिकायाः सङ्गतिं न करोति इति भासते ।\n"
+"किं भवान् पुरातनं प्रोफाइल-दत्तांशसञ्चिकां उपयुङ्क्ते वा उपर्युक्तम् अस्ति वा\n"
+"अद्यतनसंस्थापनात्/अन्ययन्त्रात् ELF वस्तु?"
 
 #: libviews/controlflowgraphview.cpp:1029
 #, qt-format
@@ -1048,11 +1104,15 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package."
 msgstr ""
+"'%1' इति आदेशं निष्पादयितुं प्रयतमाने दोषः दृश्यते ।\n"
+"आदेशे प्रयुक्तं ELF वस्तु अस्ति वा इति परीक्ष्यताम् ।\n"
+"भवता 'objdump' संस्थापितम् इति पश्यन्तु ।\n"
+"इयं उपयोगिता 'binutils' संकुलमध्ये द्रष्टुं शक्यते ।"
 
 #: libviews/controlflowgraphview.cpp:1754
 msgctxt "QObject|"
 msgid "This is Control Flow Graph by KetchuppOfficial"
-msgstr ""
+msgstr "इदं KetchuppOfficial द्वारा Control Flow Graph अस्ति"
 
 #: libviews/controlflowgraphview.cpp:1810
 msgctxt "QObject|"
@@ -1060,22 +1120,24 @@ msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
 "Reduce node/edge limits for speedup.\n"
 msgstr ""
+"चेतावनी: दीर्घकालीनः आलेखविन्यासः प्रचलति ।\n"
+"गतिं प्राप्तुं नोड्/एज सीमां न्यूनीकरोतु।\n"
 
 #: libviews/controlflowgraphview.cpp:1813
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
-msgstr ""
+msgstr "विन्यासः स्थगितवान् ।\n"
 
 #: libviews/controlflowgraphview.cpp:1815
 #, qt-format
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
-msgstr ""
+msgstr "आह्वानलेखे %1 नोड् %2 एज्स् च सन्ति ।\n"
 
 #: libviews/controlflowgraphview.cpp:1823
 msgctxt "QObject|"
 msgid "No graph available because the layouting process failed.\n"
-msgstr ""
+msgstr "विन्यासप्रक्रिया विफलतायाः कारणात् कोऽपि आलेखः उपलब्धः नास्ति ।\n"
 
 #: libviews/controlflowgraphview.cpp:1825
 #, qt-format
@@ -1084,11 +1146,13 @@ msgid ""
 "Trying to run the following command did not work:\n"
 "'%1'\n"
 msgstr ""
+"निम्नलिखित आदेशं चालयितुं प्रयत्नः कार्यं न कृतवान् ।\n"
+"'%1' इति ।\n"
 
 #: libviews/controlflowgraphview.cpp:1827
 msgctxt "QObject|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
-msgstr ""
+msgstr "कृपया 'dot' संस्थापितम् इति पश्यन्तु (package GraphViz) ।"
 
 #: libviews/controlflowgraphview.cpp:2191
 msgctxt "QObject|"
@@ -1096,186 +1160,188 @@ msgid ""
 "Error running the graph layouting tool.\n"
 "Please check that 'dot' is installed (package Graphviz)."
 msgstr ""
+"आलेखविन्याससाधनं चालयितुं त्रुटिः ।\n"
+"कृपया 'dot' संस्थापितम् इति पश्यन्तु (package Graphviz) ।"
 
 #: libviews/controlflowgraphview.cpp:2379
 msgctxt "QObject|"
 msgid "This basic block"
-msgstr ""
+msgstr "एषः मूलभूतः खण्डः"
 
 #: libviews/controlflowgraphview.cpp:2381
 #: libviews/controlflowgraphview.cpp:2402
 msgctxt "QObject|"
 msgid "PC only"
-msgstr ""
+msgstr "PC केवलं"
 
 #: libviews/controlflowgraphview.cpp:2385
 #: libviews/controlflowgraphview.cpp:2406
 msgctxt "QObject|"
 msgid "Show instructions' PC"
-msgstr ""
+msgstr "निर्देशान् दर्शयतु' PC"
 
 #: libviews/controlflowgraphview.cpp:2389
 #: libviews/controlflowgraphview.cpp:2410
 msgctxt "QObject|"
 msgid "Show instructions' cost"
-msgstr ""
+msgstr "निर्देशानां मूल्यं दर्शयतु"
 
 #: libviews/controlflowgraphview.cpp:2420
 msgctxt "QObject|"
 msgid "As DOT file..."
-msgstr ""
+msgstr "DOT सञ्चिकारूपेण..."
 
 #: libviews/controlflowgraphview.cpp:2421
 msgctxt "QObject|"
 msgid "As Image..."
-msgstr ""
+msgstr "As Image..."
 
 #: libviews/controlflowgraphview.cpp:2511
 msgctxt "QObject|"
 msgid "Export Graph as Image"
-msgstr ""
+msgstr "Graph इत्येतत् Image इति निर्यातयन्तु"
 
 #: libviews/controlflowgraphview.cpp:2513
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
-msgstr ""
+msgstr "चित्राणि (*.png *.jpg)"
 
 #: libviews/controlflowgraphview.cpp:2946
 msgctxt "QObject|"
 msgid "No trace data"
-msgstr ""
+msgstr "न ट्रेस डाटा"
 
 #: libviews/controlflowgraphview.cpp:2951
 msgctxt "QObject|"
 msgid "No item activated for which to draw the control-flow graph."
-msgstr ""
+msgstr "न कोऽपि द्रव्यः सक्रियः यस्य कृते नियन्त्रण-प्रवाह-लेखं आकर्षयितुं शक्यते ।"
 
 #: libviews/controlflowgraphview.cpp:2963
 msgctxt "QObject|"
 msgid "No control-flow graph can be drawn for the active item."
-msgstr ""
+msgstr "सक्रियवस्तूनाम् कृते कोऽपि नियन्त्रण-प्रवाह-लेखः आकर्षितुं न शक्यते ।"
 
 #: libviews/controlflowgraphview.cpp:3058
 msgctxt "QObject|"
 msgid "Stop Layouting"
-msgstr ""
+msgstr "लेआउटिंग् स्थगयन्तु"
 
 #: libviews/controlflowgraphview.cpp:3121
 msgctxt "QObject|"
 msgid "Birds-eye View"
-msgstr ""
+msgstr "पक्षि-नेत्र-दृश्यम्"
 
 #: libviews/controlflowgraphview.cpp:3123
 msgctxt "QObject|"
 msgid "Top Left"
-msgstr ""
+msgstr "उपरि वामभागे"
 
 #: libviews/controlflowgraphview.cpp:3124
 msgctxt "QObject|"
 msgid "Top Right"
-msgstr ""
+msgstr "उपरि दक्षिणतः"
 
 #: libviews/controlflowgraphview.cpp:3125
 msgctxt "QObject|"
 msgid "Bottom Left"
-msgstr ""
+msgstr "अधः वामभागे"
 
 #: libviews/controlflowgraphview.cpp:3126
 msgctxt "QObject|"
 msgid "Bottom Right"
-msgstr ""
+msgstr "अधः दक्षिणतः"
 
 #: libviews/controlflowgraphview.cpp:3127
 msgctxt "QObject|"
 msgid "Automatic"
-msgstr ""
+msgstr "स्वतः"
 
 #: libviews/controlflowgraphview.cpp:3128
 msgctxt "QObject|"
 msgid "Hide"
-msgstr ""
+msgstr "गोपयतु"
 
 #: libviews/controlflowgraphview.cpp:3138
 msgctxt "QObject|"
 msgid "Layout"
-msgstr ""
+msgstr "प्रारूपं"
 
 #: libviews/controlflowgraphview.cpp:3140
 msgctxt "QObject|"
 msgid "Top to Down"
-msgstr ""
+msgstr "उपरितः अधः यावत्"
 
 #: libviews/controlflowgraphview.cpp:3141
 msgctxt "QObject|"
 msgid "Left to Right"
-msgstr ""
+msgstr "वामतः दक्षिणतः"
 
 #: libviews/controlflowgraphview.cpp:3151
 msgctxt "QObject|"
 msgid "Min. basic block cost"
-msgstr ""
+msgstr "मि. मूलभूत ब्लॉक लागत"
 
 #: libviews/controlflowgraphview.cpp:3153
 msgctxt "QObject|"
 msgid "Undefined"
-msgstr ""
+msgstr "अनिर्दिष्टम्"
 
 #: libviews/controlflowgraphview.cpp:3156
 #, qt-format
 msgctxt "QObject|"
 msgid "%1%"
-msgstr ""
+msgstr "%1% २."
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
 msgctxt "QObject|"
 msgid "(%n item(s) skipped)"
 msgid_plural "(%n item(s) skipped)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(%n मद(s) लङ्घितम्)"
+msgstr[1] "(%n मद(s) लङ्घितम्)"
 
 #: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
 #, qt-format
 msgctxt "QObject|"
 msgid "(%n function(s) skipped)"
 msgid_plural "(%n function(s) skipped)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(%n कार्य(s) त्यक्तम्)"
+msgstr[1] "(%n कार्य(s) त्यक्तम्)"
 
 #: libviews/coverageview.cpp:37
 msgctxt "CoverageView|"
 msgid "Incl."
-msgstr ""
+msgstr "Incl."
 
 #: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
 msgctxt "CoverageView|"
 msgid "Distance"
-msgstr ""
+msgstr "दूरी"
 
 #: libviews/coverageview.cpp:41
 msgctxt "CoverageView|"
 msgid "Called"
-msgstr ""
+msgstr "आहूत"
 
 #: libviews/coverageview.cpp:42
 msgctxt "CoverageView|"
 msgid "Caller"
-msgstr ""
+msgstr "आह्वानकर्ता"
 
 #: libviews/coverageview.cpp:46
 msgctxt "CoverageView|"
 msgid "Self"
-msgstr ""
+msgstr "स्वयं"
 
 #: libviews/coverageview.cpp:48
 msgctxt "CoverageView|"
 msgid "Calling"
-msgstr ""
+msgstr "आह्वानं कुर्वन्"
 
 #: libviews/coverageview.cpp:49
 msgctxt "CoverageView|"
 msgid "Callee"
-msgstr ""
+msgstr "कल्ली"
 
 #: libviews/coverageview.cpp:84
 msgctxt "CoverageView|"
@@ -1296,6 +1362,17 @@ msgid ""
 "selected one of this information panel. If there are two panels (Split "
 "mode), the function of the other panel is changed instead.</p>"
 msgstr ""
+"<b>सर्वेषां आह्वानकर्तृणां सूची</b><p> एषा सूची वर्तमानचयनितस्य आह्वानं कुर्वन्तः सर्वाणि "
+"कार्याणि दर्शयति, प्रत्यक्षतया वा स्टैक् मध्ये मध्ये अनेकाः कार्याणि सन्ति; प्लस् एक इत्यस्य "
+"मध्ये फंक्शन्स् इत्यस्य संख्या <em>Distance</em> इति उच्यते (उदा. फंक्शन् A,B,C इत्यस्य कृते A "
+"तः C पर्यन्तं आह्वानं विद्यते यदा A B आह्वयति तथा B C आह्वयति, अर्थात् A =&gt; B =&gt; "
+"C. दूरम् अत्र २) ।</p><p> दर्शितं निरपेक्षव्ययः चयनितकार्य्ये व्ययितव्ययः भवति यदा "
+"सूचीकृतकार्यं सक्रियं भवति; सापेक्षव्ययः चयनितकार्य्ये व्ययितस्य सर्वस्य व्ययस्य प्रतिशतं भवति "
+"यदा सूचीकृतः सक्रियः भवति । मूल्यचित्रं प्रत्येकस्य दूरस्य कृते भिन्नवर्णेन सह लघुगणकीयप्रतिशतं "
+"दर्शयति ।</p><p> यतः एकस्मात् कार्यात् बहवः आह्वानाः भवितुम् अर्हन्ति, दूरस्तम्भः कदाचित् "
+"घटमानानां सर्वेषां आह्वानानाम् दूरीपरिधिं दर्शयति; ततः कोष्ठकेषु मध्यमं दूरं भवति अर्थात् यत्र "
+"अधिकांशः आह्वानव्ययः अभवत् ।</p><p> फंक्शन् चयनेन अस्य सूचनापटलस्य वर्तमानचयनितं भवति । "
+"यदि द्वौ पटलौ (Split mode) स्तः तर्हि तस्य स्थाने अन्यस्य पटलस्य कार्यं परिवर्तते ।</p>"
 
 #: libviews/coverageview.cpp:114
 msgctxt "CoverageView|"
@@ -1316,42 +1393,53 @@ msgid ""
 "selected one of this information panel. If there are two panels (Split "
 "mode), the function of the other panel is changed instead.</p>"
 msgstr ""
+"<b>सर्वेषां कल्लीनां सूची</b><p> एषा सूची वर्तमानचयनितेन आहूतानि सर्वाणि कार्याणि "
+"दर्शयति, प्रत्यक्षतया वा स्तम्भे मध्ये अनेकाः कार्याणि सन्ति; प्लस् एक इत्यस्य मध्ये फंक्शन् "
+"इत्यस्य संख्या <em>Distance</em> इति उच्यते (उदा. फंक्शन् A,B,C इत्यस्य कृते A तः C पर्यन्तं "
+"आह्वानं विद्यते यदा A B आह्वयति तथा B C आह्वयति, अर्थात् A =&gt; B =&gt; C. दूरम् अत्र "
+"२) ।</p><p> दर्शितः निरपेक्षव्ययः चयनितः सक्रियः भवति चेत् सूचीकृते कार्ये व्ययितः व्ययः "
+"अस्ति; सापेक्षव्ययः सूचीकृते कार्ये व्ययितस्य सर्वस्य व्ययस्य प्रतिशतं भवति यदा चयनितः सक्रियः "
+"भवति । मूल्यचित्रं सर्वदा प्रत्येकं दूरस्य कृते भिन्नवर्णेन सह लघुगणकीयप्रतिशतं दर्शयति ।</p><p> "
+"यतः एकस्मिन् कार्ये बहवः आह्वानाः भवितुम् अर्हन्ति, दूरस्तम्भः कदाचित् घटमानानां सर्वेषां "
+"आह्वानानाम् दूरीपरिधिं दर्शयति; ततः कोष्ठकेषु मध्यमं दूरं भवति अर्थात् यत्र अधिकांशः "
+"आह्वानव्ययः अभवत् ।</p><p> फंक्शन् चयनेन अस्य सूचनापटलस्य वर्तमानचयनितं भवति । यदि द्वौ "
+"पटलौ (Split mode) स्तः तर्हि तस्य स्थाने अन्यस्य पटलस्य कार्यं परिवर्तते ।</p>"
 
 #: libviews/coverageview.cpp:160
 #, qt-format
 msgctxt "CoverageView|"
 msgid "Go to '%1'"
-msgstr ""
+msgstr "'%1' इत्यत्र गच्छन्तु।"
 
 #: libviews/eventtypeitem.cpp:48
 msgctxt "QObject|"
 msgid "Unknown Type"
-msgstr ""
+msgstr "अज्ञात प्रकार"
 
 #: libviews/eventtypeview.cpp:37
 msgctxt "EventTypeView|"
 msgid "Event Type"
-msgstr ""
+msgstr "घटनाप्रकारः"
 
 #: libviews/eventtypeview.cpp:38
 msgctxt "EventTypeView|"
 msgid "Incl."
-msgstr ""
+msgstr "Incl."
 
 #: libviews/eventtypeview.cpp:39
 msgctxt "EventTypeView|"
 msgid "Self"
-msgstr ""
+msgstr "स्वयं"
 
 #: libviews/eventtypeview.cpp:40
 msgctxt "EventTypeView|"
 msgid "Short"
-msgstr ""
+msgstr "वामनः"
 
 #: libviews/eventtypeview.cpp:42
 msgctxt "EventTypeView|"
 msgid "Formula"
-msgstr ""
+msgstr "सूत्रम्"
 
 #: libviews/eventtypeview.cpp:76
 msgctxt "EventTypeView|"
@@ -1361,114 +1449,118 @@ msgid ""
 "type.</p><p>By choosing a cost type from the list, you change the cost type "
 "of costs shown all over KCachegrind to be the selected one.</p>"
 msgstr ""
+"<b>व्ययप्रकारसूची</b><p> एषा सूची उपलब्धाः सर्वे व्ययप्रकाराः दर्शयति तथा च "
+"वर्तमानचयनितकार्यस्य स्व/समावेशीव्ययः तस्य व्ययप्रकारस्य कृते किम् अस्ति इति दर्शयति ।</"
+"p><p> सूचीतः मूल्यप्रकारं चित्वा, भवान् सम्पूर्णे KCachegrind इत्यत्र दर्शितव्ययप्रकारं "
+"चयनितरूपेण परिवर्तयति ।</p>"
 
 #: libviews/eventtypeview.cpp:96
 msgctxt "EventTypeView|"
 msgid "Set as Secondary Event Type"
-msgstr ""
+msgstr "Secondary Event Type इति सेट् कुर्वन्तु"
 
 #: libviews/eventtypeview.cpp:98
 msgctxt "EventTypeView|"
 msgid "Hide Secondary Event Type"
-msgstr ""
+msgstr "गौणघटनाप्रकारं गोपयन्तु"
 
 #: libviews/eventtypeview.cpp:107
 msgctxt "EventTypeView|"
 msgid "Edit Long Name"
-msgstr ""
+msgstr "दीर्घनाम सम्पादयतु"
 
 #: libviews/eventtypeview.cpp:108
 msgctxt "EventTypeView|"
 msgid "Edit Short Name"
-msgstr ""
+msgstr "लघु नाम सम्पादयतु"
 
 #: libviews/eventtypeview.cpp:109
 msgctxt "EventTypeView|"
 msgid "Edit Formula"
-msgstr ""
+msgstr "सूत्र सम्पादयतु"
 
 #: libviews/eventtypeview.cpp:110
 msgctxt "EventTypeView|"
 msgid "Remove"
-msgstr ""
+msgstr "अपाकरोति"
 
 #: libviews/eventtypeview.cpp:119
 msgctxt "EventTypeView|"
 msgid "New Event Type..."
-msgstr ""
+msgstr "नवीनः घटनाप्रकारः..."
 
 #: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
 #, qt-format
 msgctxt "EventTypeView|"
 msgid "New%1"
-msgstr ""
+msgstr "नवीन%1"
 
 #: libviews/eventtypeview.cpp:160
 #, qt-format
 msgctxt "EventTypeView|"
 msgid "New Event Type %1"
-msgstr ""
+msgstr "नवीनः घटनाप्रकारः %1"
 
 #: libviews/functionlistmodel.cpp:45
 msgctxt "FunctionListModel|"
 msgid "Incl."
-msgstr ""
+msgstr "Incl."
 
 #: libviews/functionlistmodel.cpp:46
 msgctxt "FunctionListModel|"
 msgid "Self"
-msgstr ""
+msgstr "स्वयं"
 
 #: libviews/functionlistmodel.cpp:47
 msgctxt "FunctionListModel|"
 msgid "Called"
-msgstr ""
+msgstr "आहूत"
 
 #: libviews/functionlistmodel.cpp:48
 msgctxt "FunctionListModel|"
 msgid "Function"
-msgstr ""
+msgstr "नियोग"
 
 #: libviews/functionlistmodel.cpp:49
 msgctxt "FunctionListModel|"
 msgid "Location"
-msgstr ""
+msgstr "स्थानीय"
 
 #: libviews/functionlistmodel.cpp:89
 #, qt-format
 msgctxt "FunctionListModel|"
 msgid "(%1 function(s) skipped)"
-msgstr ""
+msgstr "(%1 कार्यं (कार्यं) त्यक्तम्)"
 
 #: libviews/functionselection.cpp:87
 msgctxt "FunctionSelection|"
 msgid "Function Profile"
-msgstr ""
+msgstr "कार्य प्रोफाइल"
 
 #: libviews/functionselection.cpp:95
 msgctxt "FunctionSelection|"
 msgid "&Search:"
-msgstr ""
+msgstr "&अन्वेषण:"
 
 #: libviews/functionselection.cpp:101
 msgctxt "FunctionSelection|"
 msgid "Search Query"
-msgstr ""
+msgstr "अन्वेषण प्रश्न"
 
 #: libviews/functionselection.cpp:116
 msgctxt "FunctionSelection|"
 msgid "Self"
-msgstr ""
+msgstr "स्वयं"
 
 #: libviews/functionselection.cpp:116
 msgctxt "FunctionSelection|"
 msgid "Group"
-msgstr ""
+msgstr "समूह"
 
 #: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
 msgctxt "FunctionSelection|"
 msgid "(No Grouping)"
-msgstr ""
+msgstr "(समूहीकरणं नास्ति) २."
 
 #: libviews/functionselection.cpp:209
 msgctxt "FunctionSelection|"
@@ -1480,89 +1572,94 @@ msgid ""
 "the selected group (or all for 'Function' group type), ordered by the costs "
 "spent therein. Functions with costs less than 1% are hidden on default.</p>"
 msgstr ""
+"<b>द फ्लैट प्रोफाइल</b><p> सपाटरूपरेखायां समूहः, कार्यचयनसूची च भवति । समूहसूचौ सर्वे "
+"समूहाः सन्ति यत्र व्ययः व्ययः भवति, चयनितसमूहप्रकारस्य आधारेण । यदा समूहप्रकारः &#39;"
+"Function&#39; चयनितः भवति तदा समूहसूची निगूढा भवति ।</p><p> कार्यसूचौ चयनितसमूहस्य "
+"कार्याणि (अथवा सर्वाणि &#39;Function&#39; समूहप्रकारस्य कृते), तत्र व्ययितव्ययस्य क्रमेण "
+"भवन्ति । १% तः न्यूनव्यययुक्ताः कार्याणि पूर्वनिर्धारितरूपेण निगूढानि भवन्ति ।</p>"
 
 #: libviews/functionselection.cpp:287
 #, qt-format
 msgctxt "FunctionSelection|"
 msgid "Go to '%1'"
-msgstr ""
+msgstr "'%1' इत्यत्र गच्छन्तु।"
 
 #: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
 msgctxt "FunctionSelection|"
 msgid "Grouping"
-msgstr ""
+msgstr "समूहीकरणम्"
 
 #: libviews/functionselection.cpp:353
 msgctxt "FunctionSelection|"
 msgid "No Grouping"
-msgstr ""
+msgstr "न समूहीकरणं"
 
 #: libviews/instritem.cpp:114 libviews/sourceitem.cpp:94
 #, qt-format
 msgctxt "QObject|"
 msgid "Active call to '%1'"
-msgstr ""
+msgstr "'%1' कृते सक्रियः आह्वानः ।"
 
 #: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
 #, qt-format
 msgctxt "QObject|"
 msgid "Call to '%1'"
-msgstr ""
+msgstr "'%1' इत्यत्र आह्वानं कुर्वन्तु।"
 
 #: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
 #, qt-format
 msgctxt "QObject|"
 msgid "%n call(s) to '%2'"
 msgid_plural "%n call(s) to '%2'"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%n '%2' कृते आह्वान(s)।"
+msgstr[1] "%n '%2' कृते आह्वान(s)।"
 
 #: libviews/instritem.cpp:155
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 of %2 times to 0x%3"
-msgstr ""
+msgstr "%2 तः %1 वारं 0x%3 यावत् कूर्दन्तु"
 
 #: libviews/instritem.cpp:160
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 times to 0x%2"
-msgstr ""
+msgstr "%1 वारं 0x%2 यावत् कूर्दन्तु"
 
 #: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
 msgctxt "QObject|"
 msgid "(cycle)"
-msgstr ""
+msgstr "(द्विचक्रिका)"
 
 #: libviews/instrview.cpp:193
 msgctxt "InstrView|"
 msgid "#"
-msgstr ""
+msgstr "# # ."
 
 #: libviews/instrview.cpp:194
 msgctxt "InstrView|"
 msgid "Cost"
-msgstr ""
+msgstr "मूल्यम्‌"
 
 #: libviews/instrview.cpp:195
 msgctxt "InstrView|"
 msgid "Cost 2"
-msgstr ""
+msgstr "व्ययः २"
 
 #: libviews/instrview.cpp:197
 msgctxt "InstrView|"
 msgid "Hex"
-msgstr ""
+msgstr "हेक्सः"
 
 #: libviews/instrview.cpp:199
 msgctxt "InstrView|"
 msgid "Assembly Instructions"
-msgstr ""
+msgstr "सभानिर्देशः"
 
 #: libviews/instrview.cpp:200
 msgctxt "InstrView|"
 msgid "Source Position"
-msgstr ""
+msgstr "स्रोतपदम्"
 
 #: libviews/instrview.cpp:236
 msgctxt "InstrView|"
@@ -1576,162 +1673,168 @@ msgid ""
 "utility from the 'binutils' package.</p><p>Select a line with call "
 "information to make the destination function of this call current.</p>"
 msgstr ""
+"<b>एनोटेटेड मशीन कोड</b><p> टिप्पणीकृतं यन्त्रसङ्केतसूची वर्तमानचयनितकार्यस्य "
+"संयोजननिर्देशान् निर्देशस्य निष्पादनकाले व्ययितस्य (स्वयं) व्ययस्य च सह दर्शयति यदि एषः "
+"आह्वाननिर्देशः अस्ति तर्हि आह्वानस्य घटनस्य विवरणयुक्ताः पङ्क्तयः स्रोते सम्मिलिताः भवन्ति: "
+"आह्वानस्य अन्तः व्ययितव्ययः, घटमानानां आह्वानानाम् संख्या, आह्वानगन्तव्यं च</p><p> दर्शितः "
+"यन्त्रसङ्केतः &#39;binutils&#39; संकुलात् &#39;objdump&#39; उपयोगितायाः सह उत्पद्यते ।"
+"</p><p> अस्य आह्वानस्य गन्तव्यकार्यं वर्तमानं कर्तुं आह्वानसूचनायुक्तां रेखां चिनोतु ।</p>"
 
 #: libviews/instrview.cpp:265
 #, qt-format
 msgctxt "InstrView|"
 msgid "Go to '%1'"
-msgstr ""
+msgstr "'%1' इत्यत्र गच्छन्तु।"
 
 #: libviews/instrview.cpp:270
 #, qt-format
 msgctxt "InstrView|"
 msgid "Go to Address %1"
-msgstr ""
+msgstr "Address %1 इत्यत्र गच्छन्तु"
 
 #: libviews/instrview.cpp:282
 msgctxt "InstrView|"
 msgid "Hex Code"
-msgstr ""
+msgstr "हेक्स कोड"
 
 #: libviews/instrview.cpp:573
 msgctxt "InstrView|"
 msgid "There is no instruction info in the profile data file."
-msgstr ""
+msgstr "प्रोफाइलदत्तांशसञ्चिकायां निर्देशसूचना नास्ति ।"
 
 #: libviews/instrview.cpp:575
 msgctxt "InstrView|"
 msgid "Tip: For Callgrind, rerun with option"
-msgstr ""
+msgstr "युक्तिः : Callgrind कृते विकल्पेन सह पुनः चालयन्तु"
 
 #: libviews/instrview.cpp:576
 msgctxt "InstrView|"
 msgid "      --dump-instr=yes"
-msgstr ""
+msgstr "      --डम्प-इंस्ट्र=आम्"
 
 #: libviews/instrview.cpp:577
 msgctxt "InstrView|"
 msgid "To see (conditional) jumps, additionally specify"
-msgstr ""
+msgstr "(सशर्त) कूर्दनं द्रष्टुं अतिरिक्तं निर्दिशन्तु"
 
 #: libviews/instrview.cpp:578
 msgctxt "InstrView|"
 msgid "      --collect-jumps=yes"
-msgstr ""
+msgstr "      --collect-jumps=आम्"
 
 #: libviews/instrview.cpp:826
 msgctxt "InstrView|"
 msgid "For annotated machine code, the following object file is needed:"
-msgstr ""
+msgstr "एनोटेटेड् मशीन् कोड् कृते निम्नलिखित ऑब्जेक्ट् सञ्चिका आवश्यकी अस्ति ।"
 
 #: libviews/instrview.cpp:831
 msgctxt "InstrView|"
 msgid "This file can not be found."
-msgstr ""
+msgstr "एषा सञ्चिका न लभ्यते ।"
 
 #: libviews/instrview.cpp:834
 msgctxt "InstrView|"
 msgid "If cross-compiled, set SYSROOT variable."
-msgstr ""
+msgstr "यदि क्रॉस्-कम्पाइल् कृतं तर्हि SYSROOT चरं सेट् कुर्वन्तु ।"
 
 #: libviews/instrview.cpp:858
 msgctxt "InstrView|"
 msgid "There is an error trying to execute the command"
-msgstr ""
+msgstr "आदेशं निष्पादयितुं प्रयतमाने दोषः भवति"
 
 #: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
 msgctxt "InstrView|"
 msgid "Check that you have installed 'objdump'."
-msgstr ""
+msgstr "भवता 'objdump' संस्थापितम् इति पश्यन्तु ।"
 
 #: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
 msgctxt "InstrView|"
 msgid "This utility can be found in the 'binutils' package."
-msgstr ""
+msgstr "इयं उपयोगिता 'binutils' संकुलमध्ये द्रष्टुं शक्यते ।"
 
 #: libviews/instrview.cpp:966
 msgctxt "InstrView|"
 msgid "(No Instruction)"
-msgstr ""
+msgstr "(कोऽपि निर्देशः नास्ति) २."
 
 #: libviews/instrview.cpp:1134
 #, qt-format
 msgctxt "InstrView|"
 msgid "There are %n cost line(s) without machine code."
 msgid_plural "There are %n cost line(s) without machine code."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "यन्त्रसङ्केतं विना %n मूल्यरेखा(s) सन्ति ।"
+msgstr[1] "यन्त्रसङ्केतं विना %n मूल्यरेखा(s) सन्ति ।"
 
 #: libviews/instrview.cpp:1136
 msgctxt "InstrView|"
 msgid "This happens because the code of"
-msgstr ""
+msgstr "एतत् भवति यतोहि कोडस्य..."
 
 #: libviews/instrview.cpp:1139
 msgctxt "InstrView|"
 msgid "does not seem to match the profile data file."
-msgstr ""
+msgstr "प्रोफाइलदत्तांशसञ्चिकायाः सङ्गतिः न दृश्यते ।"
 
 #: libviews/instrview.cpp:1142
 msgctxt "InstrView|"
 msgid "Are you using an old profile data file or is the above mentioned"
-msgstr ""
+msgstr "किं भवान् पुरातनं प्रोफाइल-दत्तांशसञ्चिकां उपयुङ्क्ते वा उपरि उल्लिखितम् अस्ति वा"
 
 #: libviews/instrview.cpp:1144
 msgctxt "InstrView|"
 msgid "ELF object from an updated installation/another machine?"
-msgstr ""
+msgstr "अद्यतनसंस्थापनात्/अन्ययन्त्रात् ELF वस्तु?"
 
 #: libviews/instrview.cpp:1152
 msgctxt "InstrView|"
 msgid "There seems to be an error trying to execute the command"
-msgstr ""
+msgstr "आदेशं निष्पादयितुं प्रयतमाने दोषः दृश्यते"
 
 #: libviews/instrview.cpp:1156
 msgctxt "InstrView|"
 msgid "Check that the ELF object used in the command exists."
-msgstr ""
+msgstr "आदेशे प्रयुक्तं ELF वस्तु अस्ति वा इति परीक्ष्यताम् ।"
 
 #: libviews/partgraph.cpp:155
 #, qt-format
 msgctxt "QObject|"
 msgid "Profile Part %1"
-msgstr ""
+msgstr "प्रोफाइल भाग %1"
 
 #: libviews/partgraph.cpp:212
 msgctxt "QObject|"
 msgid "(no trace)"
-msgstr ""
+msgstr "(न लेशः) २."
 
 #: libviews/partgraph.cpp:215
 msgctxt "QObject|"
 msgid "(no part)"
-msgstr ""
+msgstr "(न भागः) २."
 
 #: libviews/partlistitem.cpp:39
 msgctxt "QObject|"
 msgid "(none)"
-msgstr ""
+msgstr "(न कश्चित्)"
 
 #: libviews/partselection.cpp:48
 msgctxt "PartSelection|"
 msgid "Parts Overview"
-msgstr ""
+msgstr "भागों अवलोकन"
 
 #: libviews/partselection.cpp:61
 msgctxt "PartSelection|A thing's name"
 msgid "Name"
-msgstr ""
+msgstr "नामः"
 
 #: libviews/partselection.cpp:62
 msgctxt "PartSelection|"
 msgid "Cost"
-msgstr ""
+msgstr "मूल्यम्‌"
 
 #: libviews/partselection.cpp:69
 msgctxt "PartSelection|"
 msgid "(no trace parts)"
-msgstr ""
+msgstr "(न लेशभागाः) २."
 
 #: libviews/partselection.cpp:96
 msgctxt "PartSelection|"
@@ -1750,145 +1853,156 @@ msgid ""
 "current selected function in the trace part is shown. This is split up into "
 "smaller rectangles to show the costs of its callees.</li></ul></p>"
 msgstr ""
+"<b>भागानां अवलोकनम्</b><p> एकस्मात् प्रोफाइल-रनात् अनेकाः प्रोफाइल-दत्तांशसञ्चिकाः सन्ति "
+"चेत् ट्रेस् बहुभिः ट्रेस्-भागैः युक्तः भवति । Trace Part Overview dockable एतानि दर्शयति, "
+"निष्पादनसमये क्षैतिजरूपेण क्रमेण; आयतस्य आकाराः भागेषु व्ययितस्य कुलव्ययस्य आनुपातिकाः भवन्ति "
+"। केवलं एतेषु भागेषु दर्शितं सर्वं व्ययम् बाधितुं भवान् एकं वा अनेकं वा भागं चिन्वितुं शक्नोति ।</"
+"p><p> भागाः अपि उपविभक्ताः सन्ति: विभाजनं तथा च callee split mode अस्ति:<ul><li> "
+"विभाजनम् : भवन्तः चयनितसमूहप्रकारस्य अनुसारं, ट्रेस भागस्य कृते समूहेषु विभाजनं पश्यन्ति । यथा "
+"यदि ELF वस्तुसमूहाः चयनिताः सन्ति तर्हि प्रत्येकस्य प्रयुक्तस्य ELF वस्तुनः (साझा पुस्तकालयः "
+"अथवा कार्यान्वयनीयः) कृते वर्णयुक्तानि आयतानि पश्यन्ति, यत्र व्ययितव्ययस्य अनुसारं आकारः "
+"भवति ।</li><li> Callee: ट्रेस् भागे वर्तमानचयनितस्य कार्यस्य समावेशीव्ययः दर्शयति आयतः "
+"दर्शितः अस्ति । एतत् तस्य आह्वानकर्तृणां व्ययः दर्शयितुं लघुतरेषु आयतासु विभक्तं भवति ।</li></"
+"ul></p>"
 
 #: libviews/partselection.cpp:231
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Profile Part Overview: Current is '%1'"
-msgstr ""
+msgstr "प्रोफाइल भाग अवलोकनम्: वर्तमानं '%1' अस्ति।"
 
 #: libviews/partselection.cpp:337
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Deselect '%1'"
-msgstr ""
+msgstr "'%1' इति अचयनं कुर्वन्तु।"
 
 #: libviews/partselection.cpp:339
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Select '%1'"
-msgstr ""
+msgstr "'%1' इति चिनोतु।"
 
 #: libviews/partselection.cpp:344
 msgctxt "PartSelection|"
 msgid "Select All Parts"
-msgstr ""
+msgstr "All Parts इति चिनोतु"
 
 #: libviews/partselection.cpp:345
 msgctxt "PartSelection|"
 msgid "Visible Parts"
-msgstr ""
+msgstr "दृश्यमानाः भागाः"
 
 #: libviews/partselection.cpp:346
 msgctxt "PartSelection|"
 msgid "Hide Selected Parts"
-msgstr ""
+msgstr "चयनितभागाः गोपयन्तु"
 
 #: libviews/partselection.cpp:347
 msgctxt "PartSelection|"
 msgid "Show Hidden Parts"
-msgstr ""
+msgstr "गुप्तभागं दर्शयतु"
 
 #: libviews/partselection.cpp:361
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Go to '%1'"
-msgstr ""
+msgstr "'%1' इत्यत्र गच्छन्तु।"
 
 #: libviews/partselection.cpp:370
 msgctxt "PartSelection|"
 msgid "Visualization"
-msgstr ""
+msgstr "दृश्यीकरणम्"
 
 #: libviews/partselection.cpp:371
 msgctxt "PartSelection|"
 msgid "Partitioning Mode"
-msgstr ""
+msgstr "विभाजनविधिः"
 
 #: libviews/partselection.cpp:373
 msgctxt "PartSelection|"
 msgid "Zoom Function"
-msgstr ""
+msgstr "जूम फंक्शन"
 
 #: libviews/partselection.cpp:375
 msgctxt "PartSelection|"
 msgid "Show Direct Calls"
-msgstr ""
+msgstr "प्रत्यक्षं आह्वानं दर्शयतु"
 
 #: libviews/partselection.cpp:376
 msgctxt "PartSelection|"
 msgid "Increment Shown Call Levels"
-msgstr ""
+msgstr "दर्शितं आह्वानस्तरं वर्धयतु"
 
 #: libviews/partselection.cpp:377
 msgctxt "PartSelection|"
 msgid "Diagram Mode"
-msgstr ""
+msgstr "आरेख मोड"
 
 #: libviews/partselection.cpp:392
 msgctxt "PartSelection|"
 msgid "Draw Names"
-msgstr ""
+msgstr "नामानि आकर्षयन्तु"
 
 #: libviews/partselection.cpp:394
 msgctxt "PartSelection|"
 msgid "Draw Costs"
-msgstr ""
+msgstr "व्ययम् आकर्षयन्तु"
 
 #: libviews/partselection.cpp:396
 msgctxt "PartSelection|"
 msgid "Ignore Proportions"
-msgstr ""
+msgstr "अनुपातानाम् अवहेलना कुर्वन्तु"
 
 #: libviews/partselection.cpp:398
 msgctxt "PartSelection|"
 msgid "Allow Rotation"
-msgstr ""
+msgstr "परिभ्रमणस्य अनुमतिं ददातु"
 
 #: libviews/partselection.cpp:400
 msgctxt "PartSelection|"
 msgid "Draw Frames"
-msgstr ""
+msgstr "फ्रेम्स आकर्षित करें"
 
 #: libviews/partselection.cpp:414
 msgctxt "PartSelection|"
 msgid "Hide Info"
-msgstr ""
+msgstr "सूचनां गोपयतु"
 
 #: libviews/partselection.cpp:414
 msgctxt "PartSelection|"
 msgid "Show Info"
-msgstr ""
+msgstr "Info दर्शयतु"
 
 #: libviews/partselection.cpp:562
 msgctxt "PartSelection|"
 msgid "(no trace loaded)"
-msgstr ""
+msgstr "(कोऽपि लेशः भारितः नास्ति)"
 
 #: libviews/partview.cpp:37
 msgctxt "PartView|"
 msgid "Profile Part"
-msgstr ""
+msgstr "प्रोफाइल भाग"
 
 #: libviews/partview.cpp:38
 msgctxt "PartView|"
 msgid "Incl."
-msgstr ""
+msgstr "Incl."
 
 #: libviews/partview.cpp:39
 msgctxt "PartView|"
 msgid "Self"
-msgstr ""
+msgstr "स्वयं"
 
 #: libviews/partview.cpp:40
 msgctxt "PartView|"
 msgid "Called"
-msgstr ""
+msgstr "आहूत"
 
 #: libviews/partview.cpp:41
 msgctxt "PartView|"
 msgid "Comment"
-msgstr ""
+msgstr "टिप्पणी"
 
 #: libviews/partview.cpp:68
 msgctxt "PartView|"
@@ -1907,38 +2021,49 @@ msgid ""
 "Part Overview Dockable. This one also supports multiple selection.</"
 "p><p>Note that the list is hidden if only one trace part is loaded.</p>"
 msgstr ""
+"<b>भागसूची अनुसन्धानं कुर्वन्तु</b><p> एषा सूची लोड् कृतस्य ट्रेस् इत्यस्य सर्वान् ट्रेस् भागान् "
+"दर्शयति । प्रत्येकं भागस्य कृते वर्तमानचयनितकार्यस्य स्व/समावेशीव्ययः, भागे व्ययितः, दर्शितः "
+"भवति; प्रतिशतव्ययः सर्वदा <em>भागस्य</em> कुलव्ययस्य सापेक्षः भवति (न तु ट्रेसभागस्य "
+"अवलोकने इव सम्पूर्णस्य ट्रेसस्य) । ट्रेस भागस्य अन्तः वर्तमानकार्यं प्रति/तः घटमानाः आह्वानाः "
+"अपि दर्शिताः सन्ति ।</p><p> सूचीतः एकं वा अधिकं वा ट्रेस् भागं चित्वा, सम्पूर्णे "
+"KCachegrind इत्यत्र दर्शिताः व्ययः केवलं चयनितभागे (भागेषु) व्ययिताः भविष्यन्ति । यदि "
+"सूचीचयनं न दर्शितं तर्हि वस्तुतः सर्वे ट्रेस् भागाः अन्तर्निहितरूपेण चयनिताः भवन्ति ।</p><p> "
+"एषा बहुचयनसूची अस्ति । मूषकं कर्षयित्वा अथवा SHIFT/CTRL परिवर्तकानाम् उपयोगं कृत्वा भवान् "
+"श्रेणीं चिन्वितुं शक्नोति । Trace Part Overview Dockable इत्यस्य उपयोगेन अपि trace "
+"parts इत्यस्य चयनं/विचयनं कर्तुं शक्यते । अयं बहुचयनम् अपि समर्थयति ।</p><p> ध्यानं कुर्वन्तु "
+"यत् यदि केवलम् एकः ट्रेस् भागः लोड् भवति तर्हि सूची गुप्तं भवति ।</p>"
 
 #: libviews/sourceitem.cpp:141
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 of %2 times to %3"
-msgstr ""
+msgstr "%2 तः %1 वारं %3 प्रति कूर्दन्तु"
 
 #: libviews/sourceitem.cpp:146
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 times to %2"
-msgstr ""
+msgstr "%1 वारं %2 प्रति कूर्दन्तु"
 
 #: libviews/sourceview.cpp:51
 msgctxt "SourceView|"
 msgid "#"
-msgstr ""
+msgstr "# # ."
 
 #: libviews/sourceview.cpp:52
 msgctxt "SourceView|"
 msgid "Cost"
-msgstr ""
+msgstr "मूल्यम्‌"
 
 #: libviews/sourceview.cpp:53
 msgctxt "SourceView|"
 msgid "Cost 2"
-msgstr ""
+msgstr "व्ययः २"
 
 #: libviews/sourceview.cpp:55
 msgctxt "SourceView|"
 msgid "Source"
-msgstr ""
+msgstr "स्रोतः"
 
 #: libviews/sourceview.cpp:83
 msgctxt "SourceView|"
@@ -1951,255 +2076,260 @@ msgid ""
 "call destination.</p><p>Select a inserted call information line to make the "
 "destination function current.</p>"
 msgstr ""
+"<b>टिप्पणीकृतः स्रोतः</b><p> एनोटेटेड् स्रोतसूची वर्तमानचयनितकार्यस्य स्रोतरेखाः अस्याः "
+"स्रोतरेखायाः कोडस्य निष्पादनकाले व्ययितेन (स्वयं) व्ययेन सह दर्शयति यदि स्रोतरेखायां आह्वानः "
+"आसीत् तर्हि आह्वानस्य घटनस्य विवरणयुक्ताः पङ्क्तयः स्रोते सम्मिलिताः भवन्ति: आह्वानस्य अन्तः "
+"व्ययितव्ययः, घटमानानां आह्वानानाम् संख्या, आह्वानगन्तव्यं च</p><p> गन्तव्यकार्यं वर्तमानं कर्तुं "
+"सम्मिलितं आह्वानसूचनारेखां चिनोतु ।</p>"
 
 #: libviews/sourceview.cpp:110
 #, qt-format
 msgctxt "SourceView|"
 msgid "Go to '%1'"
-msgstr ""
+msgstr "'%1' इत्यत्र गच्छन्तु।"
 
 #: libviews/sourceview.cpp:115
 #, qt-format
 msgctxt "SourceView|"
 msgid "Go to Line %1"
-msgstr ""
+msgstr "%1 रेखां गच्छन्तु"
 
 #: libviews/sourceview.cpp:627
 msgctxt "SourceView|"
 msgid "There is no cost of current selected type associated"
-msgstr ""
+msgstr "वर्तमानचयनितप्रकारस्य व्ययः सम्बद्धः नास्ति"
 
 #: libviews/sourceview.cpp:629
 msgctxt "SourceView|"
 msgid "with any source line of this function in file"
-msgstr ""
+msgstr "अस्य फंक्शन् इत्यस्य कस्यापि स्रोतरेखायाः सह सञ्चिकायां"
 
 #: libviews/sourceview.cpp:633
 msgctxt "SourceView|"
 msgid "Thus, no annotated source can be shown."
-msgstr ""
+msgstr "एवं कोऽपि टिप्पणीकृतः स्रोतः दर्शयितुं न शक्यते ।"
 
 #: libviews/sourceview.cpp:658
 #, qt-format
 msgctxt "SourceView|"
 msgid "--- From '%1' ---"
-msgstr ""
+msgstr "--- '%1' तः ---"
 
 #: libviews/sourceview.cpp:663
 #, qt-format
 msgctxt "SourceView|"
 msgid "--- Inlined from '%1' ---"
-msgstr ""
+msgstr "--- '%1' तः इन्लाइन् कृतम् ---"
 
 #: libviews/sourceview.cpp:664
 msgctxt "SourceView|"
 msgid "--- Inlined from unknown source ---"
-msgstr ""
+msgstr "--- अज्ञातस्रोतः आवृत्तः --- ."
 
 #: libviews/sourceview.cpp:669
 msgctxt "SourceView|"
 msgid "There is no source available for the following function:"
-msgstr ""
+msgstr "निम्नलिखितकार्यस्य स्रोतः उपलब्धः नास्ति ।"
 
 #: libviews/sourceview.cpp:674
 msgctxt "SourceView|"
 msgid "This is because no debug information is present."
-msgstr ""
+msgstr "यतो हि दोषनिवारणसूचना नास्ति ।"
 
 #: libviews/sourceview.cpp:676
 msgctxt "SourceView|"
 msgid "Recompile source and redo the profile run."
-msgstr ""
+msgstr "स्रोतः पुनः संकलितं कृत्वा प्रोफाइल चालनं पुनः कुर्वन्तु ।"
 
 #: libviews/sourceview.cpp:679
 msgctxt "SourceView|"
 msgid "The function is located in this ELF object:"
-msgstr ""
+msgstr "फंक्शन् अस्मिन् ELF ऑब्जेक्ट् मध्ये स्थितम् अस्ति:"
 
 #: libviews/sourceview.cpp:687
 msgctxt "SourceView|"
 msgid "This is because its source file cannot be found:"
-msgstr ""
+msgstr "यतो हि तस्य स्रोतसञ्चिका न लभ्यते :"
 
 #: libviews/sourceview.cpp:691
 msgctxt "SourceView|"
 msgid "Add the folder of this file to the source folder list."
-msgstr ""
+msgstr "अस्याः सञ्चिकायाः पुटं स्रोतपुटसूचौ योजयन्तु ।"
 
 #: libviews/sourceview.cpp:693
 msgctxt "SourceView|"
 msgid "The list can be found in the configuration dialog."
-msgstr ""
+msgstr "सूची विन्याससंवादे द्रष्टुं शक्यते ।"
 
 #: libviews/stackselection.cpp:36
 msgctxt "StackSelection|"
 msgid "Stack Selection"
-msgstr ""
+msgstr "ढेर चयन"
 
 #: libviews/stackselection.cpp:44
 msgctxt "StackSelection|"
 msgid "Cost"
-msgstr ""
+msgstr "मूल्यम्‌"
 
 #: libviews/stackselection.cpp:45
 msgctxt "StackSelection|"
 msgid "Cost2"
-msgstr ""
+msgstr "व्ययः2"
 
 #: libviews/stackselection.cpp:46
 msgctxt "StackSelection|"
 msgid "Calls"
-msgstr ""
+msgstr "आह्वानं करोति"
 
 #: libviews/stackselection.cpp:47
 msgctxt "StackSelection|"
 msgid "Function"
-msgstr ""
+msgstr "नियोग"
 
 #: libviews/tabview.cpp:104
 msgctxt "TabBar|"
 msgid "Move to Top"
-msgstr ""
+msgstr "उपरि गच्छन्तु"
 
 #: libviews/tabview.cpp:105
 msgctxt "TabBar|Move to Top"
 msgid "Top"
-msgstr ""
+msgstr "उपरितन"
 
 #: libviews/tabview.cpp:108
 msgctxt "TabBar|"
 msgid "Move to Right"
-msgstr ""
+msgstr "दक्षिणतः गच्छतु"
 
 #: libviews/tabview.cpp:109
 msgctxt "TabBar|Move to Right"
 msgid "Right"
-msgstr ""
+msgstr "दक्षिणः"
 
 #: libviews/tabview.cpp:112
 msgctxt "TabBar|"
 msgid "Move to Bottom"
-msgstr ""
+msgstr "अधः गच्छन्तु"
 
 #: libviews/tabview.cpp:113
 msgctxt "TabBar|Move to Bottom"
 msgid "Bottom"
-msgstr ""
+msgstr "अधः"
 
 #: libviews/tabview.cpp:116
 msgctxt "TabBar|"
 msgid "Move to Bottom Left"
-msgstr ""
+msgstr "अधः वामभागे गच्छन्तु"
 
 #: libviews/tabview.cpp:117
 msgctxt "TabBar|Move to Bottom Left"
 msgid "Bottom Left"
-msgstr ""
+msgstr "अधः वामभागे"
 
 #: libviews/tabview.cpp:119
 msgctxt "TabBar|"
 msgid "Move Area To"
-msgstr ""
+msgstr "क्षेत्रं To चालयन्तु"
 
 #: libviews/tabview.cpp:122
 msgctxt "TabBar|"
 msgid "Hide This Tab"
-msgstr ""
+msgstr "इदं ट्याब् गोपयतु"
 
 #: libviews/tabview.cpp:123
 msgctxt "TabBar|"
 msgid "Hide Area"
-msgstr ""
+msgstr "क्षेत्रं गोपयतु"
 
 #: libviews/tabview.cpp:132
 msgctxt "TabBar|Show on Top"
 msgid "Top"
-msgstr ""
+msgstr "उपरितन"
 
 #: libviews/tabview.cpp:133
 msgctxt "TabBar|Show on Right"
 msgid "Right"
-msgstr ""
+msgstr "दक्षिणः"
 
 #: libviews/tabview.cpp:134
 msgctxt "TabBar|Show on Bottom"
 msgid "Bottom"
-msgstr ""
+msgstr "अधः"
 
 #: libviews/tabview.cpp:135
 msgctxt "TabBar|Show on Bottom Left"
 msgid "Bottom Left"
-msgstr ""
+msgstr "अधः वामभागे"
 
 #: libviews/tabview.cpp:136
 msgctxt "TabBar|"
 msgid "Show Hidden On"
-msgstr ""
+msgstr "गुप्तं दर्शयतु"
 
 #: libviews/tabview.cpp:309 libviews/tabview.cpp:311 libviews/tabview.cpp:730
 msgctxt "TabView|"
 msgid "(No profile data file loaded)"
-msgstr ""
+msgstr "(कोऽपि प्रोफाइलदत्तांशसञ्चिका लोड् न कृता)"
 
 #: libviews/tabview.cpp:371
 msgctxt "TabView|"
 msgid "Types"
-msgstr ""
+msgstr "प्रकाराः"
 
 #: libviews/tabview.cpp:374
 msgctxt "TabView|"
 msgid "Callers"
-msgstr ""
+msgstr "आह्वानकर्तारः"
 
 #: libviews/tabview.cpp:375
 msgctxt "TabView|"
 msgid "All Callers"
-msgstr ""
+msgstr "सर्वे आह्वानकर्तारः"
 
 #: libviews/tabview.cpp:376
 msgctxt "TabView|"
 msgid "Callee Map"
-msgstr ""
+msgstr "कल्ली नक्शा"
 
 #: libviews/tabview.cpp:379
 msgctxt "TabView|"
 msgid "Source Code"
-msgstr ""
+msgstr "स्रोत संहिता"
 
 #: libviews/tabview.cpp:380
 msgctxt "TabView|"
 msgid "Control Flow Graph"
-msgstr ""
+msgstr "नियन्त्रण प्रवाह आलेख"
 
 #: libviews/tabview.cpp:383
 msgctxt "TabView|"
 msgid "Parts"
-msgstr ""
+msgstr "भागाः"
 
 #: libviews/tabview.cpp:384
 msgctxt "TabView|"
 msgid "Callees"
-msgstr ""
+msgstr "कल्लेस्"
 
 #: libviews/tabview.cpp:385
 msgctxt "TabView|"
 msgid "Call Graph"
-msgstr ""
+msgstr "आलेखं आह्वयन्तु"
 
 #: libviews/tabview.cpp:388
 msgctxt "TabView|"
 msgid "All Callees"
-msgstr ""
+msgstr "सर्वाणि वीथीनि"
 
 #: libviews/tabview.cpp:389
 msgctxt "TabView|"
 msgid "Caller Map"
-msgstr ""
+msgstr "कॉलर मानचित्र"
 
 #: libviews/tabview.cpp:392
 msgctxt "TabView|"
 msgid "Machine Code"
-msgstr ""
+msgstr "मशीन कोड"
 
 #: libviews/tabview.cpp:646
 msgctxt "TabView|"
@@ -2221,64 +2351,77 @@ msgid ""
 "ul>For more information, see the <em>What's This?</em> help of the "
 "corresponding tab widget.</p>"
 msgstr ""
+"<b>सूचना ट्याब्स्</b><p> एतत् विजेट् वर्तमान चयनितस्य कार्यस्य सूचनां भिन्न-भिन्न-ट्याब्-मध्ये "
+"दर्शयति:<ul><li> Costs ट्याब् उपलब्धानां घटनाप्रकारानाम् एकां सूचीं दर्शयति तथा च एतेषां "
+"प्रकारेषु सम्बद्धं समावेशी स्वव्ययञ्च दर्शयति ।</li><li> Parts ट्याब् ट्रेस् भागानां सूचीं "
+"दर्शयति यदि ट्रेस् एकादशाधिकभागैः युक्तः भवति (अन्यथा, एतत् ट्याब् गुप्तम् अस्ति) । "
+"घटमानानां आह्वानानाम् सह विभिन्नेषु भागेषु व्ययितस्य चयनितस्य कार्यस्य व्ययः दर्शितः अस्ति ।"
+"</li><li> Call Lists ट्याब् अधिकविस्तारेण फंक्शन् इत्यस्य प्रत्यक्ष-कॉलर्-कॉलर्-इत्येतत् "
+"दर्शयति ।</li><li> Coverage ट्याब् Call Lists ट्याब् इत्यस्य समानं दर्शयति, परन्तु "
+"अप्रत्यक्ष-कॉलर्-कॉल-कर्तारः अपि दर्शयति, न केवलं प्रत्यक्ष-कॉलर्-इत्येतत् ।</li><li> Call "
+"Graph ट्याब् अस्मिन् कार्येण कृतानां आह्वानानाम् चित्रात्मकं दृश्यीकरणं दर्शयति ।</li><li> "
+"यदि त्रुटिनिवारणसूचना तथा स्रोतसञ्चिका उपलब्धा भवति तर्हि स्रोतसङ्केतट्याब् टिप्पणीकृतं "
+"स्रोतसङ्केतं प्रस्तुतं करोति ।</li><li> यदि निर्देशस्तरस्य प्रोफाइलसूचना उपलब्धा भवति तर्हि "
+"Machine Code ट्याब् एनोटेटेड् असेंबली निर्देशान् प्रस्तुतं करोति ।</li></ul> अधिकविवरणार्थं "
+"पश्यन्तु <em>What&#39;s This?</em> तत्सम्बद्धस्य ट्याब् विजेट् इत्यस्य सहायता ।</p>"
 
 #: libviews/tabview.cpp:731
 msgctxt "TabView|"
 msgid "(No function selected)"
-msgstr ""
+msgstr "(कोऽपि कार्यं न चयनितम्)"
 
 #: libviews/traceitemview.cpp:67
 msgctxt "QObject|"
 msgid "No description available"
-msgstr ""
+msgstr "न वर्णनं लभ्यते"
 
 #: libviews/treemap.cpp:1335
 #, qt-format
 msgctxt "TreeMapWidget|"
 msgid "Text %1"
-msgstr ""
+msgstr "पाठः %1"
 
 #: libviews/treemap.cpp:2860
 msgctxt "TreeMapWidget|"
 msgid "Recursive Bisection"
-msgstr ""
+msgstr "पुनरावर्ती द्विखण्ड"
 
 #: libviews/treemap.cpp:2861
 msgctxt "TreeMapWidget|"
 msgid "Columns"
-msgstr ""
+msgstr "स्तम्भाः"
 
 #: libviews/treemap.cpp:2862
 msgctxt "TreeMapWidget|"
 msgid "Rows"
-msgstr ""
+msgstr "पङ्क्तयः"
 
 #: libviews/treemap.cpp:2863
 msgctxt "TreeMapWidget|"
 msgid "Always Best"
-msgstr ""
+msgstr "सदा सर्वोत्तमम्"
 
 #: libviews/treemap.cpp:2864
 msgctxt "TreeMapWidget|"
 msgid "Best"
-msgstr ""
+msgstr "श्रेष्ठः"
 
 #: libviews/treemap.cpp:2865
 msgctxt "TreeMapWidget|"
 msgid "Alternate (V)"
-msgstr ""
+msgstr "वैकल्पिक (V) ९."
 
 #: libviews/treemap.cpp:2866
 msgctxt "TreeMapWidget|"
 msgid "Alternate (H)"
-msgstr ""
+msgstr "वैकल्पिक (H) ९."
 
 #: libviews/treemap.cpp:2867
 msgctxt "TreeMapWidget|"
 msgid "Horizontal"
-msgstr ""
+msgstr "क्षैतिज"
 
 #: libviews/treemap.cpp:2868
 msgctxt "TreeMapWidget|"
 msgid "Vertical"
-msgstr ""
+msgstr "ऊर्ध्वाधर"
