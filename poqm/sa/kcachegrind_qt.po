@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2024-12-14 01:08+0530\n"
+"PO-Revision-Date: 2024-12-20 22:01+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -315,7 +315,7 @@ msgstr "%1 %2 मार्गेण"
 #: libcore/tracedata.cpp:1261
 msgctxt "QObject|"
 msgid "(no callee)"
-msgstr "(मौनम् मा भव) २."
+msgstr "(मौनम् मा भव)"
 
 #: libcore/tracedata.cpp:2873
 msgctxt "QObject|"
@@ -325,7 +325,7 @@ msgstr "(वैश्विक)"
 #: libcore/tracedata.cpp:3308
 msgctxt "QObject|"
 msgid "(not found)"
-msgstr "(न लब्धम्) २."
+msgstr "(न लब्धम्)"
 
 #: libcore/tracedata.cpp:3856
 msgctxt "TraceData|"
@@ -347,7 +347,7 @@ msgstr "%1 इत्यस्मै आह्वानं (आह्वानं
 #: libviews/callgraphview.cpp:419
 msgctxt "QObject|"
 msgid "(unknown call)"
-msgstr "(अज्ञात आह्वान) २."
+msgstr "(अज्ञात आह्वान)"
 
 #: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1392
 #: libviews/controlflowgraphview.cpp:2419
@@ -505,22 +505,22 @@ msgstr "न न्यूनतमम्"
 #: libviews/callgraphview.cpp:2887
 msgctxt "CallGraphView|"
 msgid "50 %"
-msgstr "५० % ९."
+msgstr "५० %"
 
 #: libviews/callgraphview.cpp:2888
 msgctxt "CallGraphView|"
 msgid "20 %"
-msgstr "२० % २."
+msgstr "२० %"
 
 #: libviews/callgraphview.cpp:2889
 msgctxt "CallGraphView|"
 msgid "10 %"
-msgstr "१० % ९."
+msgstr "१० %"
 
 #: libviews/callgraphview.cpp:2890
 msgctxt "CallGraphView|"
 msgid "5 %"
-msgstr "५ % ९."
+msgstr "५ %"
 
 #: libviews/callgraphview.cpp:2891
 msgctxt "CallGraphView|"
@@ -792,7 +792,7 @@ msgstr "गभीरता १५"
 #: libviews/callmapview.cpp:175
 msgctxt "CallMapView|"
 msgid "Depth 20"
-msgstr "गभीरता २०"
+msgstr "गभीरता"
 
 #: libviews/callmapview.cpp:178
 #, qt-format
@@ -810,7 +810,7 @@ msgstr "गभीरता न्यूनीभवन्तु (%1 यावत
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Increment Depth (to %1)"
-msgstr "वृद्धि गभीरता (%1 पर्यन्तम्) २."
+msgstr "वृद्धि गभीरता (%1 पर्यन्तम्)"
 
 #: libviews/callmapview.cpp:213
 msgctxt "CallMapView|"
@@ -862,13 +862,13 @@ msgstr "'%1' (%2) इत्यस्य क्षेत्रफलम् ।"
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Double Area Limit (to %1)"
-msgstr "द्विगुणक्षेत्रसीमा (%1 पर्यन्तम्) २."
+msgstr "द्विगुणक्षेत्रसीमा (%1 पर्यन्तम्)"
 
 #: libviews/callmapview.cpp:277
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Half Area Limit (to %1)"
-msgstr "अर्धक्षेत्रसीमा (%1 पर्यन्तम्) २."
+msgstr "अर्धक्षेत्रसीमा (%1 पर्यन्तम्)"
 
 #: libviews/callmapview.cpp:327
 msgctxt "CallMapView|"
@@ -954,12 +954,12 @@ msgstr "आह्वाननक्शा: वर्तमानं '%1' अस�
 #: libviews/callmapview.cpp:621
 msgctxt "QObject|"
 msgid "(no function)"
-msgstr "(न कार्यम्) २."
+msgstr "(न कार्यम्)"
 
 #: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
 msgctxt "QObject|"
 msgid "(no call)"
-msgstr "(न आह्वानम्) २."
+msgstr "(न आह्वानम्)"
 
 #: libviews/callview.cpp:37
 msgctxt "CallView|"
@@ -1290,7 +1290,7 @@ msgstr "अनिर्दिष्टम्"
 #, qt-format
 msgctxt "QObject|"
 msgid "%1%"
-msgstr "%1% २."
+msgstr "%1%"
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
@@ -1560,7 +1560,7 @@ msgstr "समूह"
 #: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
 msgctxt "FunctionSelection|"
 msgid "(No Grouping)"
-msgstr "(समूहीकरणं नास्ति) २."
+msgstr "(समूहीकरणं नास्ति)"
 
 #: libviews/functionselection.cpp:209
 msgctxt "FunctionSelection|"
@@ -1755,7 +1755,7 @@ msgstr "इयं उपयोगिता 'binutils' संकुलमध्�
 #: libviews/instrview.cpp:966
 msgctxt "InstrView|"
 msgid "(No Instruction)"
-msgstr "(कोऽपि निर्देशः नास्ति) २."
+msgstr "(कोऽपि निर्देशः नास्ति)"
 
 #: libviews/instrview.cpp:1134
 #, qt-format
@@ -1804,12 +1804,12 @@ msgstr "प्रोफाइल भाग %1"
 #: libviews/partgraph.cpp:212
 msgctxt "QObject|"
 msgid "(no trace)"
-msgstr "(न लेशः) २."
+msgstr "(न लेशः)"
 
 #: libviews/partgraph.cpp:215
 msgctxt "QObject|"
 msgid "(no part)"
-msgstr "(न भागः) २."
+msgstr "(न भागः)"
 
 #: libviews/partlistitem.cpp:39
 msgctxt "QObject|"
@@ -1834,7 +1834,7 @@ msgstr "मूल्यम्‌"
 #: libviews/partselection.cpp:69
 msgctxt "PartSelection|"
 msgid "(no trace parts)"
-msgstr "(न लेशभागाः) २."
+msgstr "(न लेशभागाः)"
 
 #: libviews/partselection.cpp:96
 msgctxt "PartSelection|"
@@ -2409,12 +2409,12 @@ msgstr "श्रेष्ठः"
 #: libviews/treemap.cpp:2865
 msgctxt "TreeMapWidget|"
 msgid "Alternate (V)"
-msgstr "वैकल्पिक (V) ९."
+msgstr "वैकल्पिक (V)"
 
 #: libviews/treemap.cpp:2866
 msgctxt "TreeMapWidget|"
 msgid "Alternate (H)"
-msgstr "वैकल्पिक (H) ९."
+msgstr "वैकल्पिक (H)"
 
 #: libviews/treemap.cpp:2867
 msgctxt "TreeMapWidget|"
