@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2024-12-28 20:45+0100\n"
+"PO-Revision-Date: 2024-12-20 16:53+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -1065,6 +1065,7 @@ msgctxt "QObject|"
 msgid ""
 "Control-flow graph requires running callgrind with option --dump-instr=yes"
 msgstr ""
+"Stirflua grafeo postulas, ke callgrind estu rulata kun opcio --dump-instr=yes"
 
 #: libviews/controlflowgraphview.cpp:913
 #, qt-format
@@ -1092,6 +1093,10 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package"
 msgstr ""
+"Estas eraro provante efektivigi la komandon\n"
+"    '%1'\n"
+"Kontrolu, ke vi instalis objdump'.\n"
+"Ĉi tiu utilaĵo troviĝas en la pako 'binutils'"
 
 #: libviews/controlflowgraphview.cpp:1019
 #, qt-format
@@ -1103,6 +1108,11 @@ msgid ""
 "Are you using an old profile data file or is the abovementioned\n"
 "ELF object from an updated installation/another machine?"
 msgstr ""
+"Estas %1 kostlinio(j) sen maŝinkodo.\n"
+"Ĉi tio okazas ĉar la kodo de %2 ŝajnas ne kongrui kun la profildatuma "
+"dosiero.\n"
+"Ĉu vi uzas malnovan profil-datumdosieron aŭ ĉu la supre menciita\n"
+"ELF-objekto el ĝisdatigita instalaĵo/alia maŝino?"
 
 #: libviews/controlflowgraphview.cpp:1029
 #, qt-format
