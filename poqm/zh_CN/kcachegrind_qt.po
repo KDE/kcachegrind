@@ -163,7 +163,7 @@ msgstr "程序追踪"
 #: libcore/context.cpp:88
 msgctxt "ProfileContext|"
 msgid "BasicBlock"
-msgstr ""
+msgstr "基本块"
 
 #: libcore/costitem.cpp:48
 #, qt-format
@@ -740,6 +740,13 @@ msgid ""
 "siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
 "em> activates the current item.</p>"
 msgstr ""
+"<p>外观选项可在上下文菜单中找到。若要获取精确的尺寸比例，请选择“隐藏错误边"
+"框”。由于此模式可能 <em>极其</em> 耗时，您可能需要事先限制最大绘制嵌套级"
+"别。“最佳”根据父项的宽高比确定子项的拆分方向。“始终最佳”为每个同级项决定剩余"
+"空间。“忽略比例”在绘制子项 <em>之前</em> 先为函数名绘制留出空间。请注意，尺寸"
+"比例可能会 <em>严重</em> 出错。</p><p>这是一个 <em>树形图</em> 小部件。可使用"
+"键盘导航，左右箭头键用于遍历同级项，上下箭头键用于在嵌套级别中上下移动。按 "
+"<em>回车键</em> 可激活当前项。</p>"
 
 #: libviews/callmapview.cpp:139
 msgctxt "CallMapView|"
@@ -1020,7 +1027,7 @@ msgstr "%1 每次调用"
 msgctxt "QObject|"
 msgid ""
 "Control-flow graph requires running callgrind with option --dump-instr=yes"
-msgstr ""
+msgstr "控制流图的生成需要在运行 callgrind 时带上“--dump-instr=yes”选项。"
 
 #: libviews/controlflowgraphview.cpp:913
 #, qt-format
@@ -1030,6 +1037,9 @@ msgid ""
 "    '%1'\n"
 "This file cannot be found.\n"
 msgstr ""
+"对于带注释的机器码，需要以下目标文件：\n"
+"    '%1'\n"
+"但未找到该文件。\n"
 
 #: libviews/controlflowgraphview.cpp:917
 msgctxt "QObject|"
@@ -1045,6 +1055,10 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package"
 msgstr ""
+"尝试执行命令时出错，出错的命令为：\n"
+"    '%1'\n"
+"请检查是否已安装“objdump”。\n"
+"此工具可在“binutils”软件包中找到。"
 
 #: libviews/controlflowgraphview.cpp:1019
 #, qt-format
@@ -1056,6 +1070,10 @@ msgid ""
 "Are you using an old profile data file or is the abovementioned\n"
 "ELF object from an updated installation/another machine?"
 msgstr ""
+"存在 %1 条成本行没有机器码。\n"
+"这是因为 %2 的代码似乎与性能分析数据文件不匹配。\n"
+"你是否正在使用一个旧的性能分析数据文件，或者上述的 ELF 对象来自更新后的安"
+"装 / 另一台机器？"
 
 #: libviews/controlflowgraphview.cpp:1029
 #, qt-format
@@ -1066,11 +1084,15 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package."
 msgstr ""
+"似乎在尝试执行命令 “%1” 时出现了错误。\n"
+"请检查该命令中使用的 ELF 对象是否存在。\n"
+"请检查您是否已经安装了“objdump”。\n"
+"此工具可在“binutils”软件包中找到。"
 
 #: libviews/controlflowgraphview.cpp:1754
 msgctxt "QObject|"
 msgid "This is Control Flow Graph by KetchuppOfficial"
-msgstr ""
+msgstr "这是由 KetchuppOfficial 提供的控制流图"
 
 #: libviews/controlflowgraphview.cpp:1810
 msgctxt "QObject|"
@@ -1118,29 +1140,31 @@ msgid ""
 "Error running the graph layouting tool.\n"
 "Please check that 'dot' is installed (package Graphviz)."
 msgstr ""
+"运行图形布局工具时出错。\n"
+"请检查是否已安装“dot”  (软件包 Graphviz) 。"
 
 #: libviews/controlflowgraphview.cpp:2379
 msgctxt "QObject|"
 msgid "This basic block"
-msgstr ""
+msgstr "这个基本块"
 
 #: libviews/controlflowgraphview.cpp:2381
 #: libviews/controlflowgraphview.cpp:2402
 msgctxt "QObject|"
 msgid "PC only"
-msgstr ""
+msgstr "仅 PC"
 
 #: libviews/controlflowgraphview.cpp:2385
 #: libviews/controlflowgraphview.cpp:2406
 msgctxt "QObject|"
 msgid "Show instructions' PC"
-msgstr ""
+msgstr "显示说明的 PC"
 
 #: libviews/controlflowgraphview.cpp:2389
 #: libviews/controlflowgraphview.cpp:2410
 msgctxt "QObject|"
 msgid "Show instructions' cost"
-msgstr ""
+msgstr "显示说明的成本"
 
 #: libviews/controlflowgraphview.cpp:2420
 msgctxt "QObject|"
@@ -1155,7 +1179,7 @@ msgstr ""
 #: libviews/controlflowgraphview.cpp:2511
 msgctxt "QObject|"
 msgid "Export Graph as Image"
-msgstr ""
+msgstr "导出图表为图像"
 
 #: libviews/controlflowgraphview.cpp:2513
 msgctxt "QObject|"
@@ -1165,17 +1189,17 @@ msgstr "图像 (*.png *.jpg)"
 #: libviews/controlflowgraphview.cpp:2946
 msgctxt "QObject|"
 msgid "No trace data"
-msgstr ""
+msgstr "无跟踪数据"
 
 #: libviews/controlflowgraphview.cpp:2951
 msgctxt "QObject|"
 msgid "No item activated for which to draw the control-flow graph."
-msgstr ""
+msgstr "没有激活用于绘制控制流图的项目。"
 
 #: libviews/controlflowgraphview.cpp:2963
 msgctxt "QObject|"
 msgid "No control-flow graph can be drawn for the active item."
-msgstr ""
+msgstr "无法为活动项绘制控制流图。"
 
 #: libviews/controlflowgraphview.cpp:3058
 msgctxt "QObject|"
@@ -1235,18 +1259,18 @@ msgstr "从左到右"
 #: libviews/controlflowgraphview.cpp:3151
 msgctxt "QObject|"
 msgid "Min. basic block cost"
-msgstr ""
+msgstr "最小基本块成本"
 
 #: libviews/controlflowgraphview.cpp:3153
 msgctxt "QObject|"
 msgid "Undefined"
-msgstr ""
+msgstr "未定义"
 
 #: libviews/controlflowgraphview.cpp:3156
 #, qt-format
 msgctxt "QObject|"
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
@@ -2208,7 +2232,7 @@ msgstr "源代码"
 #: libviews/tabview.cpp:380
 msgctxt "TabView|"
 msgid "Control Flow Graph"
-msgstr ""
+msgstr "控制流图"
 
 #: libviews/tabview.cpp:383
 msgctxt "TabView|"
