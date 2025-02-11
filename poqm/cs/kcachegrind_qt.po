@@ -1093,22 +1093,16 @@ msgid ""
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:1827
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "QObject|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
-msgstr "Prosím, ujistěte se, že 'dot' je nainstalován (balíček GraphViz)."
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2191
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "QObject|"
 msgid ""
 "Error running the graph layouting tool.\n"
 "Please check that 'dot' is installed (package Graphviz)."
-msgstr "Prosím, ujistěte se, že 'dot' je nainstalován (balíček GraphViz)."
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2379
 msgctxt "QObject|"
@@ -1123,21 +1117,15 @@ msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2385
 #: libviews/controlflowgraphview.cpp:2406
-#, fuzzy
-#| msgctxt "InstrView|"
-#| msgid "(No Instruction)"
 msgctxt "QObject|"
 msgid "Show instructions' PC"
-msgstr "(Žádná instrukce)"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2389
 #: libviews/controlflowgraphview.cpp:2410
-#, fuzzy
-#| msgctxt "InstrView|"
-#| msgid "(No Instruction)"
 msgctxt "QObject|"
 msgid "Show instructions' cost"
-msgstr "(Žádná instrukce)"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2420
 msgctxt "QObject|"
@@ -1145,28 +1133,19 @@ msgid "As DOT file..."
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2421
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As Image..."
 msgctxt "QObject|"
 msgid "As Image..."
-msgstr "Jako obrázek..."
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2511
-#, fuzzy
-#| msgctxt "QObject|"
-#| msgid "Export Graph"
 msgctxt "QObject|"
 msgid "Export Graph as Image"
-msgstr "Exportovat graf"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2513
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Images (*.png *.jpg)"
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
-msgstr "Obrázky (*.png *.jpg)"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2946
 msgctxt "QObject|"
@@ -1189,68 +1168,44 @@ msgid "Stop Layouting"
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3121
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Birds-eye View"
 msgctxt "QObject|"
 msgid "Birds-eye View"
-msgstr "Pohled z ptačí perspektivy"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3123
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Left"
 msgctxt "QObject|"
 msgid "Top Left"
-msgstr "Vlevo nahoře"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3124
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Right"
 msgctxt "QObject|"
 msgid "Top Right"
-msgstr "Vpravo nahoře"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3125
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Left"
 msgctxt "QObject|"
 msgid "Bottom Left"
-msgstr "Vlevo dole"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3126
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Right"
 msgctxt "QObject|"
 msgid "Bottom Right"
-msgstr "Vpravo dole"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3127
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Automatic"
 msgctxt "QObject|"
 msgid "Automatic"
-msgstr "Automaticky"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3128
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Hide"
 msgctxt "QObject|"
 msgid "Hide"
-msgstr "Skrýt"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3138
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layout"
 msgctxt "QObject|"
 msgid "Layout"
-msgstr "Rozvržení"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3140
 msgctxt "QObject|"
@@ -1258,12 +1213,9 @@ msgid "Top to Down"
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3141
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Left to Right"
 msgctxt "QObject|"
 msgid "Left to Right"
-msgstr "Zleva doprava"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3151
 msgctxt "QObject|"
@@ -1276,12 +1228,10 @@ msgid "Undefined"
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3156
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "1 %"
+#, qt-format
 msgctxt "QObject|"
 msgid "%1%"
-msgstr "1 %"
+msgstr ""
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
