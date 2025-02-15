@@ -367,15 +367,12 @@ FixFile::FixFile(QIODevice* file, const QString& filename)
 
     uchar* addr = nullptr;
 
-#if QT_VERSION >= 0x040400
-    // QFile::map was introduced with Qt 4.4
     if (file->size() >0) {
         QFile* mappableDevice = dynamic_cast<QFile*>(file);
         if (mappableDevice) {
             addr = mappableDevice->map( 0, file->size() );
         }
     }
-#endif
 
     if (addr) {
         // map succeeded
@@ -403,12 +400,10 @@ FixFile::~FixFile()
 
     if (_used_mmap && _file) {
         if (0) qDebug("Unmapping '%s'", qPrintable( _filename ));
-#if QT_VERSION >= 0x040400
         QFile* mappableDevice = dynamic_cast<QFile*>(_file);
         Q_ASSERT(mappableDevice);
         if (!mappableDevice->unmap( (uchar*) _base ))
             qWarning( "munmap: %s", strerror( errno ) );
-#endif
     }
 }
 

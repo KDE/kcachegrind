@@ -1629,11 +1629,7 @@ CanvasCFGEdge::CanvasCFGEdge(CFGEdge* e, const QPolygon& poly, const QColor& edg
 
 void CanvasCFGEdge::paint(QPainter* p, const QStyleOptionGraphicsItem* option, QWidget*)
 {
-#if QT_VERSION >= 0x040600
     qreal levelOfDetail = option->levelOfDetailFromTransform(p->transform());
-#else
-    qreal levelOfDetail = option->levelOfDetail;
-#endif
 
     static constexpr double thickness = 0.9;
 

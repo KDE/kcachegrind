@@ -15,9 +15,7 @@ RC_ICONS = ../logo.ico
 # Filename is significant on macOS
 ICON = ../logo.icns
 
-greaterThan(QT_MAJOR_VERSION, 4) {
-    QT += widgets
-}
+QT += widgets
 
 greaterThan(QT_VERSION, 5.7) {
     CONFIG += c++11
