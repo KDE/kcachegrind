@@ -1174,7 +1174,7 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:2059
 #, kde-format
 msgid "Error running callgrind_control"
-msgstr "S'ha produït un error en executar el callgrind_control"
+msgstr "S'ha produït un error en executar callgrind_control"
 
 #: kcachegrind/toplevel.cpp:2098 kcachegrind/toplevel.cpp:2135
 #: kcachegrind/toplevel.cpp:2172

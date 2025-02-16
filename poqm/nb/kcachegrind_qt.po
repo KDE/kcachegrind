@@ -360,12 +360,12 @@ msgid "(unknown call)"
 msgstr ""
 
 #: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1392
-#: libviews/controlflowgraphview.cpp:2419
+#: libviews/controlflowgraphview.cpp:2415
 msgctxt "QObject|"
 msgid "Export Graph"
 msgstr ""
 
-#: libviews/callgraphview.cpp:1608
+#: libviews/callgraphview.cpp:1590
 msgctxt "CallGraphView|"
 msgid ""
 "<b>Call Graph around active Function</b><p>Depending on configuration, this "
@@ -381,30 +381,30 @@ msgid ""
 "function is highlighted.</p>"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2020
+#: libviews/callgraphview.cpp:2002
 msgctxt "CallGraphView|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
 "Reduce node/edge limits for speedup.\n"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2023
+#: libviews/callgraphview.cpp:2005
 msgctxt "CallGraphView|"
 msgid "Layouting stopped.\n"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2025
+#: libviews/callgraphview.cpp:2007
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2034
+#: libviews/callgraphview.cpp:2016
 msgctxt "CallGraphView|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2036
+#: libviews/callgraphview.cpp:2018
 #, qt-format
 msgctxt "CallGraphView|"
 msgid ""
@@ -412,27 +412,27 @@ msgid ""
 "'%1'\n"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2038 libviews/callgraphview.cpp:2555
+#: libviews/callgraphview.cpp:2020 libviews/callgraphview.cpp:2537
 msgctxt "CallGraphView|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr ""
 
-#: libviews/callgraphview.cpp:2080
+#: libviews/callgraphview.cpp:2062
 msgctxt "CallGraphView|"
 msgid "No item activated for which to draw the call graph."
 msgstr ""
 
-#: libviews/callgraphview.cpp:2092
+#: libviews/callgraphview.cpp:2074
 msgctxt "CallGraphView|"
 msgid "No call graph can be drawn for the active item."
 msgstr ""
 
-#: libviews/callgraphview.cpp:2554
+#: libviews/callgraphview.cpp:2536
 msgctxt "CallGraphView|"
 msgid "Error running the graph layouting tool.\n"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2559
+#: libviews/callgraphview.cpp:2541
 #, qt-format
 msgctxt "CallGraphView|"
 msgid ""
@@ -441,244 +441,244 @@ msgid ""
 "because it has no cost of the selected event type."
 msgstr ""
 
-#: libviews/callgraphview.cpp:2800
+#: libviews/callgraphview.cpp:2782
 msgctxt "CallGraphView|"
 msgid "Caller Depth"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2801 libviews/callgraphview.cpp:2841
+#: libviews/callgraphview.cpp:2783 libviews/callgraphview.cpp:2823
 msgctxt "CallGraphView|"
 msgid "Unlimited"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2804 libviews/callgraphview.cpp:2844
+#: libviews/callgraphview.cpp:2786 libviews/callgraphview.cpp:2826
 msgctxt "CallGraphView|None"
 msgid "Depth 0"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2805 libviews/callgraphview.cpp:2845
+#: libviews/callgraphview.cpp:2787 libviews/callgraphview.cpp:2827
 msgctxt "CallGraphView|"
 msgid "max. 1"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2806 libviews/callgraphview.cpp:2846
+#: libviews/callgraphview.cpp:2788 libviews/callgraphview.cpp:2828
 msgctxt "CallGraphView|"
 msgid "max. 2"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2807 libviews/callgraphview.cpp:2847
+#: libviews/callgraphview.cpp:2789 libviews/callgraphview.cpp:2829
 msgctxt "CallGraphView|"
 msgid "max. 5"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2808 libviews/callgraphview.cpp:2848
+#: libviews/callgraphview.cpp:2790 libviews/callgraphview.cpp:2830
 msgctxt "CallGraphView|"
 msgid "max. 10"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2809 libviews/callgraphview.cpp:2849
+#: libviews/callgraphview.cpp:2791 libviews/callgraphview.cpp:2831
 msgctxt "CallGraphView|"
 msgid "max. 15"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2840
+#: libviews/callgraphview.cpp:2822
 msgctxt "CallGraphView|"
 msgid "Callee Depth"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2880
+#: libviews/callgraphview.cpp:2862
 msgctxt "CallGraphView|"
 msgid "Min. Node Cost"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2881
+#: libviews/callgraphview.cpp:2863
 msgctxt "CallGraphView|"
 msgid "No Minimum"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2887
+#: libviews/callgraphview.cpp:2869
 msgctxt "CallGraphView|"
 msgid "50 %"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2888
+#: libviews/callgraphview.cpp:2870
 msgctxt "CallGraphView|"
 msgid "20 %"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2889
+#: libviews/callgraphview.cpp:2871
 msgctxt "CallGraphView|"
 msgid "10 %"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2890
+#: libviews/callgraphview.cpp:2872
 msgctxt "CallGraphView|"
 msgid "5 %"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2891
+#: libviews/callgraphview.cpp:2873
 msgctxt "CallGraphView|"
 msgid "2 %"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2892
+#: libviews/callgraphview.cpp:2874
 msgctxt "CallGraphView|"
 msgid "1 %"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2922
+#: libviews/callgraphview.cpp:2904
 msgctxt "CallGraphView|"
 msgid "Min. Call Cost"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2923
+#: libviews/callgraphview.cpp:2905
 msgctxt "CallGraphView|"
 msgid "Same as Node"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2925
+#: libviews/callgraphview.cpp:2907
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2927
+#: libviews/callgraphview.cpp:2909
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2929
+#: libviews/callgraphview.cpp:2911
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2958
+#: libviews/callgraphview.cpp:2940
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2959
+#: libviews/callgraphview.cpp:2941
 msgctxt "CallGraphView|"
 msgid "Top Left"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2960
+#: libviews/callgraphview.cpp:2942
 msgctxt "CallGraphView|"
 msgid "Top Right"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2961
+#: libviews/callgraphview.cpp:2943
 msgctxt "CallGraphView|"
 msgid "Bottom Left"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2962
+#: libviews/callgraphview.cpp:2944
 msgctxt "CallGraphView|"
 msgid "Bottom Right"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2963
+#: libviews/callgraphview.cpp:2945
 msgctxt "CallGraphView|"
 msgid "Automatic"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2964
+#: libviews/callgraphview.cpp:2946
 msgctxt "CallGraphView|"
 msgid "Hide"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2994
+#: libviews/callgraphview.cpp:2976
 msgctxt "CallGraphView|"
 msgid "Layout"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2995
+#: libviews/callgraphview.cpp:2977
 msgctxt "CallGraphView|"
 msgid "Top to Down"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2996
+#: libviews/callgraphview.cpp:2978
 msgctxt "CallGraphView|"
 msgid "Left to Right"
 msgstr ""
 
-#: libviews/callgraphview.cpp:2997
+#: libviews/callgraphview.cpp:2979
 msgctxt "CallGraphView|"
 msgid "Circular"
 msgstr ""
 
-#: libviews/callgraphview.cpp:3037 libviews/callgraphview.cpp:3042
-#: libviews/callgraphview.cpp:3062
+#: libviews/callgraphview.cpp:3019 libviews/callgraphview.cpp:3024
+#: libviews/callgraphview.cpp:3044
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
 msgstr ""
 
-#: libviews/callgraphview.cpp:3073
+#: libviews/callgraphview.cpp:3055
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
 msgstr ""
 
-#: libviews/callgraphview.cpp:3080
+#: libviews/callgraphview.cpp:3062
 msgctxt "CallGraphView|"
 msgid "Export Graph"
 msgstr ""
 
-#: libviews/callgraphview.cpp:3081
+#: libviews/callgraphview.cpp:3063
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
 msgstr ""
 
-#: libviews/callgraphview.cpp:3082
+#: libviews/callgraphview.cpp:3064
 msgctxt "CallGraphView|"
 msgid "As Image..."
 msgstr ""
 
-#: libviews/callgraphview.cpp:3085
+#: libviews/callgraphview.cpp:3067
 msgctxt "CallGraphView|"
 msgid "Graph"
 msgstr ""
 
-#: libviews/callgraphview.cpp:3093
+#: libviews/callgraphview.cpp:3075
 msgctxt "CallGraphView|"
 msgid "Arrows for Skipped Calls"
 msgstr ""
 
-#: libviews/callgraphview.cpp:3098
+#: libviews/callgraphview.cpp:3080
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
 msgstr ""
 
-#: libviews/callgraphview.cpp:3103
+#: libviews/callgraphview.cpp:3085
 msgctxt "CallGraphView|"
 msgid "Cluster Groups"
 msgstr ""
 
-#: libviews/callgraphview.cpp:3107
+#: libviews/callgraphview.cpp:3089
 msgctxt "CallGraphView|"
 msgid "Visualization"
 msgstr ""
 
-#: libviews/callgraphview.cpp:3108
+#: libviews/callgraphview.cpp:3090
 msgctxt "CallGraphView|"
 msgid "Compact"
 msgstr ""
 
-#: libviews/callgraphview.cpp:3111
+#: libviews/callgraphview.cpp:3093
 msgctxt "CallGraphView|"
 msgid "Normal"
 msgstr ""
 
-#: libviews/callgraphview.cpp:3114
+#: libviews/callgraphview.cpp:3096
 msgctxt "CallGraphView|"
 msgid "Tall"
 msgstr ""
 
-#: libviews/callgraphview.cpp:3146
+#: libviews/callgraphview.cpp:3128
 msgctxt "CallGraphView|"
 msgid "Export Graph As Image"
 msgstr ""
 
-#: libviews/callgraphview.cpp:3148
+#: libviews/callgraphview.cpp:3130
 msgctxt "CallGraphView|"
 msgid "Images (*.png *.jpg)"
 msgstr ""
@@ -1061,35 +1061,35 @@ msgid ""
 "This utility can be found in the 'binutils' package."
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:1754
+#: libviews/controlflowgraphview.cpp:1750
 msgctxt "QObject|"
 msgid "This is Control Flow Graph by KetchuppOfficial"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:1810
+#: libviews/controlflowgraphview.cpp:1806
 msgctxt "QObject|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
 "Reduce node/edge limits for speedup.\n"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:1813
+#: libviews/controlflowgraphview.cpp:1809
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:1815
+#: libviews/controlflowgraphview.cpp:1811
 #, qt-format
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:1823
+#: libviews/controlflowgraphview.cpp:1819
 msgctxt "QObject|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:1825
+#: libviews/controlflowgraphview.cpp:1821
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1097,142 +1097,142 @@ msgid ""
 "'%1'\n"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:1827
+#: libviews/controlflowgraphview.cpp:1823
 msgctxt "QObject|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:2191
+#: libviews/controlflowgraphview.cpp:2187
 msgctxt "QObject|"
 msgid ""
 "Error running the graph layouting tool.\n"
 "Please check that 'dot' is installed (package Graphviz)."
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:2379
+#: libviews/controlflowgraphview.cpp:2375
 msgctxt "QObject|"
 msgid "This basic block"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2377
+#: libviews/controlflowgraphview.cpp:2398
+msgctxt "QObject|"
+msgid "PC only"
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2381
 #: libviews/controlflowgraphview.cpp:2402
 msgctxt "QObject|"
-msgid "PC only"
+msgid "Show instructions' PC"
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2385
 #: libviews/controlflowgraphview.cpp:2406
 msgctxt "QObject|"
-msgid "Show instructions' PC"
-msgstr ""
-
-#: libviews/controlflowgraphview.cpp:2389
-#: libviews/controlflowgraphview.cpp:2410
-msgctxt "QObject|"
 msgid "Show instructions' cost"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:2420
+#: libviews/controlflowgraphview.cpp:2416
 msgctxt "QObject|"
 msgid "As DOT file..."
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:2421
+#: libviews/controlflowgraphview.cpp:2417
 msgctxt "QObject|"
 msgid "As Image..."
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:2511
+#: libviews/controlflowgraphview.cpp:2507
 msgctxt "QObject|"
 msgid "Export Graph as Image"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:2513
+#: libviews/controlflowgraphview.cpp:2509
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:2946
+#: libviews/controlflowgraphview.cpp:2942
 msgctxt "QObject|"
 msgid "No trace data"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:2951
+#: libviews/controlflowgraphview.cpp:2947
 msgctxt "QObject|"
 msgid "No item activated for which to draw the control-flow graph."
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:2963
+#: libviews/controlflowgraphview.cpp:2959
 msgctxt "QObject|"
 msgid "No control-flow graph can be drawn for the active item."
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3058
+#: libviews/controlflowgraphview.cpp:3054
 msgctxt "QObject|"
 msgid "Stop Layouting"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3121
+#: libviews/controlflowgraphview.cpp:3117
 msgctxt "QObject|"
 msgid "Birds-eye View"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3123
+#: libviews/controlflowgraphview.cpp:3119
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3124
+#: libviews/controlflowgraphview.cpp:3120
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3125
+#: libviews/controlflowgraphview.cpp:3121
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3126
+#: libviews/controlflowgraphview.cpp:3122
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3127
+#: libviews/controlflowgraphview.cpp:3123
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3128
+#: libviews/controlflowgraphview.cpp:3124
 msgctxt "QObject|"
 msgid "Hide"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3138
+#: libviews/controlflowgraphview.cpp:3134
 msgctxt "QObject|"
 msgid "Layout"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3140
+#: libviews/controlflowgraphview.cpp:3136
 msgctxt "QObject|"
 msgid "Top to Down"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3141
+#: libviews/controlflowgraphview.cpp:3137
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3151
+#: libviews/controlflowgraphview.cpp:3147
 msgctxt "QObject|"
 msgid "Min. basic block cost"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3153
+#: libviews/controlflowgraphview.cpp:3149
 msgctxt "QObject|"
 msgid "Undefined"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3156
+#: libviews/controlflowgraphview.cpp:3152
 #, qt-format
 msgctxt "QObject|"
 msgid "%1%"
