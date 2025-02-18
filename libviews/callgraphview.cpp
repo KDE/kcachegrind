@@ -938,7 +938,8 @@ bool GraphExporter::savePrompt(QWidget *parent, TraceData *data,
         if (wrote && mime != "text/vnd.graphviz") {
             QProcess proc;
             proc.setStandardOutputFile(intendedName, QFile::Truncate);
-            proc.start("dot", { dotRenderType, dotName }, QProcess::ReadWrite);
+            proc.setStandardInputFile(dotName);
+            proc.start("dot", { dotRenderType }, QProcess::ReadWrite);
             proc.waitForFinished();
             wrote = proc.exitStatus() == QProcess::NormalExit;
 
