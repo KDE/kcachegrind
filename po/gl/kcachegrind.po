@@ -587,7 +587,7 @@ msgstr "Barras laterais"
 #: kcachegrind/kcachegrindui.rc:42
 #, kde-format
 msgid "Main Toolbar"
-msgstr "Barra de ferramentas Principal"
+msgstr "Barra de ferramentas principal"
 
 #. i18n: ectx: ToolBar (stateToolBar)
 #: kcachegrind/kcachegrindui.rc:54
