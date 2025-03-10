@@ -3,6 +3,7 @@
 # KDE Finnish translation sprint participants:
 # Author: Artnay
 # Author: Lliehu
+# SPDX-FileCopyrightText: 2025 Tommi Nieminen <translator@legisign.org>
 # Ilpo Kantonen <ilpo@iki.fi>, 2006.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015.
 msgid ""
@@ -10,24 +11,25 @@ msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-18 00:39+0000\n"
-"PO-Revision-Date: 2015-07-12 12:48+0200\n"
-"Last-Translator: Lasse Liehu <lasse.liehu@gmail.com>\n"
+"PO-Revision-Date: 2025-03-04 09:42+0200\n"
+"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Ilpo Kantonen, Lasse Liehu"
+msgstr "Ilpo Kantonen, Lasse Liehu, Tommi Nieminen"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "ilpo@iki.fi,lasse.liehu@gmail.com"
+msgstr "ilpo@iki.fi, lasse.liehu@gmail.com, translator@legisign.org"
 
 #: kcachegrind/configdlg.cpp:141 kcachegrind/configdlg.cpp:329
 #: kcachegrind/configdlg.cpp:348
@@ -612,10 +614,9 @@ msgid "KDE Frontend for Callgrind/Cachegrind"
 msgstr "KDE-käyttöliittymä Callgrindille/Cachegrindille"
 
 #: kcachegrind/main.cpp:38
-#, fuzzy, kde-format
-#| msgid "(C) 2002 - 2015"
+#, kde-format
 msgid "(C) 2002 - 2016"
-msgstr "© 2002–2015"
+msgstr "© 2002–2016"
 
 #: kcachegrind/main.cpp:40
 #, kde-format
@@ -824,7 +825,7 @@ msgid "&Force Dump"
 msgstr "&Pakota vedostus"
 
 #: kcachegrind/toplevel.cpp:446
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
 "current directory. This action is checked while KCachegrind looks for the "
@@ -841,20 +842,21 @@ msgid ""
 "profiled GUI program, you can awake Callgrind e.g. by resizing a window of "
 "the program.</p>"
 msgstr ""
-"<b>Pakota vedostus</b><p>This forces a dump for a Callgrind profile run in "
-"the current directory. This action is checked while KCachegrind looks for "
-"the dump. If the dump is finished, it automatically reloads the current "
-"trace. If this is the one from the running Callgrind, the new created trace "
-"part will be loaded, too.</p><p>Force dump creates a file 'callgrind.cmd', "
-"and checks every second for its existence. A running Callgrind will detect "
-"this file, dump a trace part, and delete 'callgrind.cmd'. The deletion is "
-"detected by KCachegrind, and it does a Reload. If there is <em>no</em> "
-"Callgrind running, press 'Force Dump' again to cancel the dump request. This "
-"deletes 'callgrind.cmd' itself and stops polling for a new dump.</p><p>Note: "
-"A Callgrind run <em>only</em> detects existence of 'callgrind.cmd' when "
-"actively running a few milliseconds, i.e. <em>not</em> sleeping. Tip: For a "
-"profiled GUI program, you can awake Callgrind e.g. by resizing a window of "
-"the program.</p>"
+"<b>Pakota vedostus</b><p>Tämä pakottaa Callgrind-profiilin vedostusajon "
+"nykyiseen kansioon. Toiminto on valittu, kun KCacheGrind etsii vedosta. Jos "
+"vedos viimeistellään, se virkistää automaattisesti nykyisen jäljen. Jos tämä "
+"on sama kuin Callgrind-ajossa, ladataan vasta luotu jäljitysosakin.</"
+"p><p>Vedostuksen pakottaminen luo ”callgrind.cmd”-tiedoston ja tarkistaa sen "
+"olemassaolon joka sekunti. Käynnissä oleva Callgrind tunnistaa tämän "
+"tiedoston, vedostaa jäljitysosan ja poistaa ”callgrind.cmd”-tiedoston. "
+"KCachegrind havaitsee poiston ja suorittaa virkistyksen. Jos Callgrind "
+"<em>ei</em> ole käynnissä, ”Pakota vedostus” -painikkeen uudelleenpainallus "
+"peruu vedostuspyynnön. ”callgrind.cmd” poistetaan ja uuden vedostuksen haku "
+"lopetetaan.</p><p>Huom! Callgrind-ajo havaitsee ”callgrind.cmd”-tiedoston "
+"olemassaolon <em>vasta</em> muutaman millisekunnin aktiivisen suorituksen "
+"jälkeen, ts. <em>ei</em> ollessaan jouten. Vinkki: profiloidulle graafisen "
+"käyttöliittymän ohjelmalle Callgrindin voi herättää esimerkiksi muuttamalla "
+"sovellusikkunan kokoa.</p>"
 
 #: kcachegrind/toplevel.cpp:471
 #, kde-format
@@ -946,7 +948,7 @@ msgid "Cycle Detection"
 msgstr "Kehien tunnistus"
 
 #: kcachegrind/toplevel.cpp:552
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
 "drawing will show black areas when a recursive call is made instead of "
@@ -959,15 +961,16 @@ msgid ""
 "often will lead to huge false cycles, making the analysis impossible; "
 "therefore, there is the option to switch this off.</p>"
 msgstr ""
-"<b>Tunnista rekursiiviset kehät</b><p>Tämän ollessa pois käytöstä puukartan "
-"piirtäminen näyttää mustia alueita sen sijaan, että piirtäisi rekursiota "
-"loputtomiin. Huomaa, että mustien alueiden koko on usein väärä, koska "
-"rekusrsiivisten kehien sisäisten kutsujen hintoja ei voida määrittää. Virhe "
-"on kuitenkin  (see documentation).</p><p>The correct handling for cycles is "
-"to detect them and collapse all functions of a cycle into an artificial "
-"function, which is done when this option is selected. Unfortunately, with "
-"GUI applications, this often will lead to huge false cycles, making the "
-"analysis impossible; therefore, there is the option to switch this off.</p>"
+"<b>Tunnista rekursiiviset kehät</b><p>Asetuksen ollessa poissa käytöstä "
+"puukartta näyttää mustia alueita sen sijaan, että piirtäisi rekursiota "
+"loputtomiin. Mustien alueiden koko on usein väärä, koska rekursiivisten "
+"kehien sisäisten kutsujen kustannuksia ei voida määrittää. Virhe on "
+"kuitenkin väärille kehille pieni (katso ohjeista).</p><p>Kehät käsitellään "
+"oikein tunnistamalla ne ja supistamalla kehän kaikki funktiot "
+"keinotekoiseksi funktioksi, kuten tehdään valittaessa tämä asetus. Graafisen "
+"käyttöliittymän sovelluksissa tämä valitettavasti johtaa suureen väärien "
+"kehien määrään, jolloin analysointi käy mahdottomaksi, minkä vuoksi "
+"asetuksen voi poistaa käytöstä.</p>"
 
 #: kcachegrind/toplevel.cpp:568
 #, kde-format
@@ -1079,14 +1082,11 @@ msgid "Select Callgrind Profile Data"
 msgstr "Valitse Callgrind-profiilivedos"
 
 #: kcachegrind/toplevel.cpp:893 kcachegrind/toplevel.cpp:961
-#, fuzzy, kde-format
-#| msgid ""
-#| "cachegrind.out* callgrind.out*|Callgrind Profile Data\n"
-#| "*|All Files"
+#, kde-format
 msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
 msgstr ""
-"cachegrind.out* callgrind.out*|Callgrind-profiilivedos\n"
-"*|Kaikki tiedostot"
+"Callgrind-profiilitiedot (cachegrind.out* callgrind.out*);;Kaikki tiedostot "
+"(*)"
 
 #: kcachegrind/toplevel.cpp:921 kcachegrind/toplevel.cpp:950
 #, kde-format
