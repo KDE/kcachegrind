@@ -64,7 +64,7 @@
   <summary xml:lang="nn">Grensesnitt for profilvising</summary>
   <summary xml:lang="pl">Nakładka programu profilującego</summary>
   <summary xml:lang="pt">Interface de Análise de Performance</summary>
-  <summary xml:lang="pt-BR">Interface de análise de performance</summary>
+  <summary xml:lang="pt-BR">Interface de análise de desempenho</summary>
   <summary xml:lang="ru">Интерфейс профилировщика</summary>
   <summary xml:lang="sa">प्रोफाइल्स् Frontend</summary>
   <summary xml:lang="sk">Rozhranie pre profiláciu</summary>
@@ -98,7 +98,7 @@
     <p xml:lang="nl">KCachegrind is een hulpmiddel voor visualisatie van profielgegevens en wordt gebruikt om de meest tijdrovende delen in het uitvoeren van een programma te bepalen.</p>
     <p xml:lang="pl">KCachegrind jest narzędziem obrazującym dane przy profilowaniu. Jego przeznaczeniem jest wskazanie najbardziej czasochłonnych części programu przy jego wykonywaniu.</p>
     <p xml:lang="pt">O KCachegrind é uma ferramenta de visualização de dados de performance, usado para determinar as partes que consomem mais tempo na execução de um programa.</p>
-    <p xml:lang="pt-BR">KCachegrind é uma ferramenta de visualização de dados de performance, usada para determinar as partes que consomem mais tempo na execução de um programa.</p>
+    <p xml:lang="pt-BR">KCachegrind é uma ferramenta de visualização de dados de desempenho, usada para determinar as partes que consomem mais tempo na execução de um programa.</p>
     <p xml:lang="ru">KCachegrind — это средство визуализации данных профилирования, используемое для определения наиболее трудоёмких частей при выполнении программы.</p>
     <p xml:lang="sa">KCachegrind इति प्रोफाइलदत्तांशदृश्यीकरणसाधनम् अस्ति, यस्य उपयोगः प्रोग्रामस्य निष्पादने सर्वाधिकं समयग्राहिणः भागाः निर्धारयितुं भवति ।</p>
     <p xml:lang="sk">KCachegrind je nástroj na vizualizáciu údajov profilu používaný na určenie časovo najnáročnejších častí v behu programu.</p>
@@ -194,7 +194,7 @@
       <li xml:lang="nl">Het kan profielen laden gegenereerd door Calltree, de cache simulator/aanroepvolger, een Valgrind hulpmiddel. Profilering heeft geen enkele voorbereiding nodig, kan overweg met gedeelde bibliotheken en plug-in architecturen en heeft geen invloed op de meting zelf.</li>
       <li xml:lang="pl">Może wczytywać profile utworzone przez program śledzący pamięć podręczną symulacji/wywołań Calltree (narzędzie Valgrinda). Dzięki temu profilowanie nie wymaga żadnego przygotowania, działa z współdzielonymi bibliotekami i architekturami wtyczkami, nie wpływając przez to na same pomiary.</li>
       <li xml:lang="pt">Poderá carregar dados de análise gerados pelo sistema de registo/simulação da 'cache' Calltree, uma ferramenta do Valgrind. Como tal, a análise de performance não necessita de nenhuma preparação, poderá lidar bem com bibliotecas dinâmicas e arquitecturas de 'plugins', não influenciado a medição em si.</li>
-      <li xml:lang="pt-BR">Ele pode carregar os dados de análise gerados pelo sistema de registro/simulação do cache Calltree, uma ferramenta do Valgrind. Assim, a análise de performance não necessita de nenhuma preparação, poderá lidar bem com bibliotecas dinâmicas e arquiteturas de plugins, e não influencia a própria medição.</li>
+      <li xml:lang="pt-BR">Ele pode carregar os dados de análise gerados pelo sistema de registro/simulação do cache Calltree, uma ferramenta do Valgrind. Assim, a análise de desempenho não necessita de nenhuma preparação, poderá lidar bem com bibliotecas dinâmicas e arquiteturas de plugins, e não influencia a própria medição.</li>
       <li xml:lang="ru">Загрузка профилей, созданных программой симуляции кэша/трассировщиком вызовов Calltree (инструментом Valgrind). Таким образом, профилирование не нуждается в какой-либо подготовке, допускает работу с общими библиотеками и архитектурами модулей и не влияет на сам процесс измерения.</li>
       <li xml:lang="sa">इदं Valgrind-उपकरणेन Cache simulation/call tracer Calltree इत्यनेन उत्पन्नानि प्रोफाइल् लोड् कर्तुं शक्नोति । एवं प्रोफाइलिंग् इत्यस्य किमपि सज्जतायाः आवश्यकता नास्ति, साझापुस्तकालयानां प्लगिन् आर्किटेक्चरानाञ्च सामना कर्तुं शक्नोति, मापनं च न प्रभावितं करोति ।</li>
       <li xml:lang="sk">Môže načítať profily generované simuláciou cache/trasovaním volaní Caltree, nástrojom Valgrind. Teda, profilovanie nepotrebuje žiadnu prípravu, dá s zvládnuť so štandardnými knižnicami a architektúrami pluginov a neovplyvňuje samotné meranie.</li>
@@ -357,7 +357,7 @@
       <caption xml:lang="nl">Analyse van gegevens profileren met KCachegrind</caption>
       <caption xml:lang="pl">Analiza danych profilowania z KCachegrind</caption>
       <caption xml:lang="pt">Análise dos dados de performance com o KCachegrind</caption>
-      <caption xml:lang="pt-BR">Análise dos dados de performance com o KCachegrind</caption>
+      <caption xml:lang="pt-BR">Análise dos dados de desempenho com o KCachegrind</caption>
       <caption xml:lang="ru">Анализ данных профилирования в KCachegrind</caption>
       <caption xml:lang="sa">KCachegrind इत्यनेन सह आँकडाविश्लेषणस्य प्रोफाइलिंग्</caption>
       <caption xml:lang="sk">Analýza profilovaných údajov pomocou KCachegrind</caption>
