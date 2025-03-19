@@ -840,7 +840,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     QString objfile = dir + '/' + function->object()->shortName();
     QString objdump_format = getObjDumpFormat();
     if (objdump_format.isEmpty())
-        objdump_format = getObjDump() + " -C -d --start-address=0x%1 --stop-address=0x%2 %3";
+        objdump_format = getObjDump() + " -C -d --start-address=0x%1 --stop-address=0x%2 \"%3\"";
     QString objdumpCmd = objdump_format
             .arg(dumpStartAddr.toString())
             .arg(dumpEndAddr.toString())
