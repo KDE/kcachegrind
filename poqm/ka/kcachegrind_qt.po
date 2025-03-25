@@ -357,7 +357,7 @@ msgctxt "QObject|"
 msgid "Export Graph"
 msgstr "გრაფიკის გატანა"
 
-#: libviews/callgraphview.cpp:1590
+#: libviews/callgraphview.cpp:1591
 msgctxt "CallGraphView|"
 msgid ""
 "<b>Call Graph around active Function</b><p>Depending on configuration, this "
@@ -383,7 +383,7 @@ msgstr ""
 "დიდია, წიბოზე მინიატურას გაჩვენებთ. არსებობს იგივენაირი ვიზუალიზაციის "
 "პარამეტრები გამოძახების ხის რუკისთვისაც. მონიშნული ფუნქცია გამოიკვეთება.</p>"
 
-#: libviews/callgraphview.cpp:2002
+#: libviews/callgraphview.cpp:2003
 msgctxt "CallGraphView|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
@@ -393,23 +393,23 @@ msgstr ""
 "სჭირება.\n"
 "სიჩქარის გასაზრდელად შეამცირეთ კვანძების/წიბოების რაოდენობა.\n"
 
-#: libviews/callgraphview.cpp:2005
+#: libviews/callgraphview.cpp:2006
 msgctxt "CallGraphView|"
 msgid "Layouting stopped.\n"
 msgstr "განლაგება შეჩერდა.\n"
 
-#: libviews/callgraphview.cpp:2007
+#: libviews/callgraphview.cpp:2008
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "გამოძახების გრაფიკს აქვს %1 კვანძი და %2 წიბო.\n"
 
-#: libviews/callgraphview.cpp:2016
+#: libviews/callgraphview.cpp:2017
 msgctxt "CallGraphView|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr "გრაფიკი ხელმისაწვდომი არაა, რადგან განლაგების პროცესი ჩავარდა.\n"
 
-#: libviews/callgraphview.cpp:2018
+#: libviews/callgraphview.cpp:2019
 #, qt-format
 msgctxt "CallGraphView|"
 msgid ""
@@ -419,27 +419,27 @@ msgstr ""
 "ვცდილობდი გამეშვა, მაგრამ არ იმუშავა შემდეგმა ბრძანებამ:\n"
 "'%1'\n"
 
-#: libviews/callgraphview.cpp:2020 libviews/callgraphview.cpp:2537
+#: libviews/callgraphview.cpp:2021 libviews/callgraphview.cpp:2538
 msgctxt "CallGraphView|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr "შეამოწმეთ, დაყენებულია თუ არა პროგრამა 'dot' (პაკეტი GraphViz)."
 
-#: libviews/callgraphview.cpp:2062
+#: libviews/callgraphview.cpp:2063
 msgctxt "CallGraphView|"
 msgid "No item activated for which to draw the call graph."
 msgstr "ელემენტი, რომლისთვისაც გამოძახების რუკას დავხატავ, გააქტიურებული არაა."
 
-#: libviews/callgraphview.cpp:2074
+#: libviews/callgraphview.cpp:2075
 msgctxt "CallGraphView|"
 msgid "No call graph can be drawn for the active item."
 msgstr "აქტიური ელემენტისთვის გამოძახების რუკას ვერ დავხატავ."
 
-#: libviews/callgraphview.cpp:2536
+#: libviews/callgraphview.cpp:2537
 msgctxt "CallGraphView|"
 msgid "Error running the graph layouting tool.\n"
 msgstr "გრაფიკის განლაგების პროგრამის გამოძახების შეცდომა.\n"
 
-#: libviews/callgraphview.cpp:2541
+#: libviews/callgraphview.cpp:2542
 #, qt-format
 msgctxt "CallGraphView|"
 msgid ""
@@ -451,244 +451,244 @@ msgstr ""
 "\t'%1'\n"
 "იმიტომ, რომ მას მონიშნული მოვლენის ტიპის ღირებულება არ გააჩნია."
 
-#: libviews/callgraphview.cpp:2782
+#: libviews/callgraphview.cpp:2783
 msgctxt "CallGraphView|"
 msgid "Caller Depth"
 msgstr "გამომძახებლის სიღრმე"
 
-#: libviews/callgraphview.cpp:2783 libviews/callgraphview.cpp:2823
+#: libviews/callgraphview.cpp:2784 libviews/callgraphview.cpp:2824
 msgctxt "CallGraphView|"
 msgid "Unlimited"
 msgstr "შეუზღუდავი"
 
-#: libviews/callgraphview.cpp:2786 libviews/callgraphview.cpp:2826
+#: libviews/callgraphview.cpp:2787 libviews/callgraphview.cpp:2827
 msgctxt "CallGraphView|None"
 msgid "Depth 0"
 msgstr "სიღრმე 0"
 
-#: libviews/callgraphview.cpp:2787 libviews/callgraphview.cpp:2827
+#: libviews/callgraphview.cpp:2788 libviews/callgraphview.cpp:2828
 msgctxt "CallGraphView|"
 msgid "max. 1"
 msgstr "მაქს. 1"
 
-#: libviews/callgraphview.cpp:2788 libviews/callgraphview.cpp:2828
+#: libviews/callgraphview.cpp:2789 libviews/callgraphview.cpp:2829
 msgctxt "CallGraphView|"
 msgid "max. 2"
 msgstr "მაქს. 2"
 
-#: libviews/callgraphview.cpp:2789 libviews/callgraphview.cpp:2829
+#: libviews/callgraphview.cpp:2790 libviews/callgraphview.cpp:2830
 msgctxt "CallGraphView|"
 msgid "max. 5"
 msgstr "მაქს. 5"
 
-#: libviews/callgraphview.cpp:2790 libviews/callgraphview.cpp:2830
+#: libviews/callgraphview.cpp:2791 libviews/callgraphview.cpp:2831
 msgctxt "CallGraphView|"
 msgid "max. 10"
 msgstr "მაქს. 10"
 
-#: libviews/callgraphview.cpp:2791 libviews/callgraphview.cpp:2831
+#: libviews/callgraphview.cpp:2792 libviews/callgraphview.cpp:2832
 msgctxt "CallGraphView|"
 msgid "max. 15"
 msgstr "მაქს. 15"
 
-#: libviews/callgraphview.cpp:2822
+#: libviews/callgraphview.cpp:2823
 msgctxt "CallGraphView|"
 msgid "Callee Depth"
 msgstr "გამოძახებულის სიღრმე"
 
-#: libviews/callgraphview.cpp:2862
+#: libviews/callgraphview.cpp:2863
 msgctxt "CallGraphView|"
 msgid "Min. Node Cost"
 msgstr "მინ. კვანძის ღირებულება"
 
-#: libviews/callgraphview.cpp:2863
+#: libviews/callgraphview.cpp:2864
 msgctxt "CallGraphView|"
 msgid "No Minimum"
 msgstr "მინიმუმის გარეშე"
 
-#: libviews/callgraphview.cpp:2869
+#: libviews/callgraphview.cpp:2870
 msgctxt "CallGraphView|"
 msgid "50 %"
 msgstr "50 %"
 
-#: libviews/callgraphview.cpp:2870
+#: libviews/callgraphview.cpp:2871
 msgctxt "CallGraphView|"
 msgid "20 %"
 msgstr "20 %"
 
-#: libviews/callgraphview.cpp:2871
+#: libviews/callgraphview.cpp:2872
 msgctxt "CallGraphView|"
 msgid "10 %"
 msgstr "10 %"
 
-#: libviews/callgraphview.cpp:2872
+#: libviews/callgraphview.cpp:2873
 msgctxt "CallGraphView|"
 msgid "5 %"
 msgstr "5 %"
 
-#: libviews/callgraphview.cpp:2873
+#: libviews/callgraphview.cpp:2874
 msgctxt "CallGraphView|"
 msgid "2 %"
 msgstr "2 %"
 
-#: libviews/callgraphview.cpp:2874
+#: libviews/callgraphview.cpp:2875
 msgctxt "CallGraphView|"
 msgid "1 %"
 msgstr "1 %"
 
-#: libviews/callgraphview.cpp:2904
+#: libviews/callgraphview.cpp:2905
 msgctxt "CallGraphView|"
 msgid "Min. Call Cost"
 msgstr "მინ. გამოძახების ღირებულება"
 
-#: libviews/callgraphview.cpp:2905
+#: libviews/callgraphview.cpp:2906
 msgctxt "CallGraphView|"
 msgid "Same as Node"
 msgstr "იგივე, რაც კვანძი"
 
-#: libviews/callgraphview.cpp:2907
+#: libviews/callgraphview.cpp:2908
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
 msgstr "კვანძის 50%"
 
-#: libviews/callgraphview.cpp:2909
+#: libviews/callgraphview.cpp:2910
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
 msgstr "კვანძის 20%"
 
-#: libviews/callgraphview.cpp:2911
+#: libviews/callgraphview.cpp:2912
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
 msgstr "კვანძის 10%"
 
-#: libviews/callgraphview.cpp:2940
+#: libviews/callgraphview.cpp:2941
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
 msgstr "გადახედვა"
 
-#: libviews/callgraphview.cpp:2941
+#: libviews/callgraphview.cpp:2942
 msgctxt "CallGraphView|"
 msgid "Top Left"
 msgstr "ზედა მარცხენა"
 
-#: libviews/callgraphview.cpp:2942
+#: libviews/callgraphview.cpp:2943
 msgctxt "CallGraphView|"
 msgid "Top Right"
 msgstr "ზედა მარჯვენა"
 
-#: libviews/callgraphview.cpp:2943
+#: libviews/callgraphview.cpp:2944
 msgctxt "CallGraphView|"
 msgid "Bottom Left"
 msgstr "ქვედა მარცხენა"
 
-#: libviews/callgraphview.cpp:2944
+#: libviews/callgraphview.cpp:2945
 msgctxt "CallGraphView|"
 msgid "Bottom Right"
 msgstr "ქვედა მარჯვენა"
 
-#: libviews/callgraphview.cpp:2945
+#: libviews/callgraphview.cpp:2946
 msgctxt "CallGraphView|"
 msgid "Automatic"
 msgstr "ავტომატური"
 
-#: libviews/callgraphview.cpp:2946
+#: libviews/callgraphview.cpp:2947
 msgctxt "CallGraphView|"
 msgid "Hide"
 msgstr "დამალვა"
 
-#: libviews/callgraphview.cpp:2976
+#: libviews/callgraphview.cpp:2977
 msgctxt "CallGraphView|"
 msgid "Layout"
 msgstr "განლაგება"
 
-#: libviews/callgraphview.cpp:2977
+#: libviews/callgraphview.cpp:2978
 msgctxt "CallGraphView|"
 msgid "Top to Down"
 msgstr "მაღლიდან დაბლა"
 
-#: libviews/callgraphview.cpp:2978
+#: libviews/callgraphview.cpp:2979
 msgctxt "CallGraphView|"
 msgid "Left to Right"
 msgstr "მარცხნიდან მარჯვნივ"
 
-#: libviews/callgraphview.cpp:2979
+#: libviews/callgraphview.cpp:2980
 msgctxt "CallGraphView|"
 msgid "Circular"
 msgstr "წრიული"
 
-#: libviews/callgraphview.cpp:3019 libviews/callgraphview.cpp:3024
-#: libviews/callgraphview.cpp:3044
+#: libviews/callgraphview.cpp:3020 libviews/callgraphview.cpp:3025
+#: libviews/callgraphview.cpp:3045
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
 msgstr "%1-ზე გადასვლა"
 
-#: libviews/callgraphview.cpp:3055
+#: libviews/callgraphview.cpp:3056
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
 msgstr "განლაგების შეჩერება"
 
-#: libviews/callgraphview.cpp:3062
+#: libviews/callgraphview.cpp:3063
 msgctxt "CallGraphView|"
 msgid "Export Graph"
 msgstr "გრაფიკის გატანა"
 
-#: libviews/callgraphview.cpp:3063
+#: libviews/callgraphview.cpp:3064
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
 msgstr "DOT ფაილად..."
 
-#: libviews/callgraphview.cpp:3064
+#: libviews/callgraphview.cpp:3065
 msgctxt "CallGraphView|"
 msgid "As Image..."
 msgstr "როგორც გამოსახულება..."
 
-#: libviews/callgraphview.cpp:3067
+#: libviews/callgraphview.cpp:3068
 msgctxt "CallGraphView|"
 msgid "Graph"
 msgstr "გრაფიკი"
 
-#: libviews/callgraphview.cpp:3075
+#: libviews/callgraphview.cpp:3076
 msgctxt "CallGraphView|"
 msgid "Arrows for Skipped Calls"
 msgstr "ისრები გამოტოვებული გამოძახებებისთვის"
 
-#: libviews/callgraphview.cpp:3080
+#: libviews/callgraphview.cpp:3081
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
 msgstr "შიდა-ციკლის გამოძახებები"
 
-#: libviews/callgraphview.cpp:3085
+#: libviews/callgraphview.cpp:3086
 msgctxt "CallGraphView|"
 msgid "Cluster Groups"
 msgstr "დაჯგუფება"
 
-#: libviews/callgraphview.cpp:3089
+#: libviews/callgraphview.cpp:3090
 msgctxt "CallGraphView|"
 msgid "Visualization"
 msgstr "ვიზუალიზაცია"
 
-#: libviews/callgraphview.cpp:3090
+#: libviews/callgraphview.cpp:3091
 msgctxt "CallGraphView|"
 msgid "Compact"
 msgstr "დაპატარავება"
 
-#: libviews/callgraphview.cpp:3093
+#: libviews/callgraphview.cpp:3094
 msgctxt "CallGraphView|"
 msgid "Normal"
 msgstr "ნორმალური"
 
-#: libviews/callgraphview.cpp:3096
+#: libviews/callgraphview.cpp:3097
 msgctxt "CallGraphView|"
 msgid "Tall"
 msgstr "მაღალი"
 
-#: libviews/callgraphview.cpp:3128
+#: libviews/callgraphview.cpp:3129
 msgctxt "CallGraphView|"
 msgid "Export Graph As Image"
 msgstr "გრაფიკის გამოსახულების ფაილში გატანა"
 
-#: libviews/callgraphview.cpp:3130
+#: libviews/callgraphview.cpp:3131
 msgctxt "CallGraphView|"
 msgid "Images (*.png *.jpg)"
 msgstr "გამოსახულებები (*.png *.jpg)"

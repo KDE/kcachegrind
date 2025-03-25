@@ -490,7 +490,7 @@ msgctxt "QObject|"
 msgid "Export Graph"
 msgstr "Графты экспорттау"
 
-#: libviews/callgraphview.cpp:1590
+#: libviews/callgraphview.cpp:1591
 #, fuzzy
 #| msgid ""
 #| "<b>Call Graph around active Function</b><p>Depending on configuration, "
@@ -529,7 +529,7 @@ msgstr ""
 "қатар, таңдалған функцияны белгілеп, шақырулар бұтағы түрінде графты "
 "көрсететін амалы бар. Түсінсем бүйырмасын.</p>"
 
-#: libviews/callgraphview.cpp:2002
+#: libviews/callgraphview.cpp:2003
 #, fuzzy
 #| msgid ""
 #| "Warning: a long lasting graph layouting is in progress.\n"
@@ -542,28 +542,28 @@ msgstr ""
 "Ескерту: ұзақ графты жинақтауы етіліп жатыр.\n"
 "Жылдамдату үшін түйін/шектерін шектеңіз.\n"
 
-#: libviews/callgraphview.cpp:2005
+#: libviews/callgraphview.cpp:2006
 #, fuzzy
 #| msgid "Layouting stopped.\n"
 msgctxt "CallGraphView|"
 msgid "Layouting stopped.\n"
 msgstr "Жинқтауы тоқталды.\n"
 
-#: libviews/callgraphview.cpp:2007
+#: libviews/callgraphview.cpp:2008
 #, fuzzy, qt-format
 #| msgid "The call graph has %1 nodes and %2 edges.\n"
 msgctxt "CallGraphView|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "Шақырылған граф %1 түйін, %2 шектен тұрады.\n"
 
-#: libviews/callgraphview.cpp:2016
+#: libviews/callgraphview.cpp:2017
 #, fuzzy
 #| msgid "No graph available because the layouting process failed.\n"
 msgctxt "CallGraphView|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr "Жинақтау жаңылысы себебінен графы жоқ.\n"
 
-#: libviews/callgraphview.cpp:2018
+#: libviews/callgraphview.cpp:2019
 #, fuzzy, qt-format
 #| msgid ""
 #| "Trying to run the following command did not work:\n"
@@ -576,35 +576,35 @@ msgstr ""
 "Мына команданы жегу әрекеті болмады:\n"
 "'%1'\n"
 
-#: libviews/callgraphview.cpp:2020 libviews/callgraphview.cpp:2537
+#: libviews/callgraphview.cpp:2021 libviews/callgraphview.cpp:2538
 #, fuzzy
 #| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "CallGraphView|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr "'dot' орнатылғанын тксеріңіз (GraphViz дестесінен)."
 
-#: libviews/callgraphview.cpp:2062
+#: libviews/callgraphview.cpp:2063
 #, fuzzy
 #| msgid "No item activated for which to draw the call graph."
 msgctxt "CallGraphView|"
 msgid "No item activated for which to draw the call graph."
 msgstr "Шақырылған графын салатындары белсендетілмеді."
 
-#: libviews/callgraphview.cpp:2074
+#: libviews/callgraphview.cpp:2075
 #, fuzzy
 #| msgid "No call graph can be drawn for the active item."
 msgctxt "CallGraphView|"
 msgid "No call graph can be drawn for the active item."
 msgstr "Белсенді аталымға графын салуға болмайды"
 
-#: libviews/callgraphview.cpp:2536
+#: libviews/callgraphview.cpp:2537
 #, fuzzy
 #| msgid "Error running the graph layouting tool.\n"
 msgctxt "CallGraphView|"
 msgid "Error running the graph layouting tool.\n"
 msgstr "Графты жинақтау құралын жегу қатесі.\n"
 
-#: libviews/callgraphview.cpp:2541
+#: libviews/callgraphview.cpp:2542
 #, fuzzy, qt-format
 #| msgid ""
 #| "There is no call graph available for function\n"
@@ -620,21 +620,21 @@ msgstr ""
 "функция үшін графты шақыруы болмады,\n"
 "өйткені таңдалған оқиға түрінің бағасы жоқ."
 
-#: libviews/callgraphview.cpp:2782
+#: libviews/callgraphview.cpp:2783
 #, fuzzy
 #| msgid "Caller Depth"
 msgctxt "CallGraphView|"
 msgid "Caller Depth"
 msgstr "Шақыру тереңдігі"
 
-#: libviews/callgraphview.cpp:2783 libviews/callgraphview.cpp:2823
+#: libviews/callgraphview.cpp:2784 libviews/callgraphview.cpp:2824
 #, fuzzy
 #| msgid "Unlimited"
 msgctxt "CallGraphView|"
 msgid "Unlimited"
 msgstr "Шектелмеген"
 
-#: libviews/callgraphview.cpp:2786 libviews/callgraphview.cpp:2826
+#: libviews/callgraphview.cpp:2787 libviews/callgraphview.cpp:2827
 #, fuzzy
 #| msgctxt "None"
 #| msgid "Depth 0"
@@ -642,316 +642,316 @@ msgctxt "CallGraphView|None"
 msgid "Depth 0"
 msgstr "тереңдігі: 0"
 
-#: libviews/callgraphview.cpp:2787 libviews/callgraphview.cpp:2827
+#: libviews/callgraphview.cpp:2788 libviews/callgraphview.cpp:2828
 #, fuzzy
 #| msgid "max. 10"
 msgctxt "CallGraphView|"
 msgid "max. 1"
 msgstr "шегі: 10"
 
-#: libviews/callgraphview.cpp:2788 libviews/callgraphview.cpp:2828
+#: libviews/callgraphview.cpp:2789 libviews/callgraphview.cpp:2829
 #, fuzzy
 #| msgid "max. 2"
 msgctxt "CallGraphView|"
 msgid "max. 2"
 msgstr "шегі: 2"
 
-#: libviews/callgraphview.cpp:2789 libviews/callgraphview.cpp:2829
+#: libviews/callgraphview.cpp:2790 libviews/callgraphview.cpp:2830
 #, fuzzy
 #| msgid "max. 5"
 msgctxt "CallGraphView|"
 msgid "max. 5"
 msgstr "шегі: 5"
 
-#: libviews/callgraphview.cpp:2790 libviews/callgraphview.cpp:2830
+#: libviews/callgraphview.cpp:2791 libviews/callgraphview.cpp:2831
 #, fuzzy
 #| msgid "max. 10"
 msgctxt "CallGraphView|"
 msgid "max. 10"
 msgstr "шегі: 10"
 
-#: libviews/callgraphview.cpp:2791 libviews/callgraphview.cpp:2831
+#: libviews/callgraphview.cpp:2792 libviews/callgraphview.cpp:2832
 #, fuzzy
 #| msgid "max. 15"
 msgctxt "CallGraphView|"
 msgid "max. 15"
 msgstr "шегі: 15"
 
-#: libviews/callgraphview.cpp:2822
+#: libviews/callgraphview.cpp:2823
 #, fuzzy
 #| msgid "Callee Depth"
 msgctxt "CallGraphView|"
 msgid "Callee Depth"
 msgstr "Шақырылатынын тереңдігі"
 
-#: libviews/callgraphview.cpp:2862
+#: libviews/callgraphview.cpp:2863
 #, fuzzy
 #| msgid "Min. Node Cost"
 msgctxt "CallGraphView|"
 msgid "Min. Node Cost"
 msgstr "Мин. түйін бағасы"
 
-#: libviews/callgraphview.cpp:2863
+#: libviews/callgraphview.cpp:2864
 #, fuzzy
 #| msgid "No Minimum"
 msgctxt "CallGraphView|"
 msgid "No Minimum"
 msgstr "Минимумы жоқ"
 
-#: libviews/callgraphview.cpp:2869
+#: libviews/callgraphview.cpp:2870
 #, fuzzy
 #| msgid "50 %"
 msgctxt "CallGraphView|"
 msgid "50 %"
 msgstr "50 %"
 
-#: libviews/callgraphview.cpp:2870
+#: libviews/callgraphview.cpp:2871
 #, fuzzy
 #| msgid "20 %"
 msgctxt "CallGraphView|"
 msgid "20 %"
 msgstr "20 %"
 
-#: libviews/callgraphview.cpp:2871
+#: libviews/callgraphview.cpp:2872
 #, fuzzy
 #| msgid "10 %"
 msgctxt "CallGraphView|"
 msgid "10 %"
 msgstr "10 %"
 
-#: libviews/callgraphview.cpp:2872
+#: libviews/callgraphview.cpp:2873
 #, fuzzy
 #| msgid "5 %"
 msgctxt "CallGraphView|"
 msgid "5 %"
 msgstr "5 %"
 
-#: libviews/callgraphview.cpp:2873
+#: libviews/callgraphview.cpp:2874
 #, fuzzy
 #| msgid "2 %"
 msgctxt "CallGraphView|"
 msgid "2 %"
 msgstr "2 %"
 
-#: libviews/callgraphview.cpp:2874
+#: libviews/callgraphview.cpp:2875
 #, fuzzy
 #| msgid "1 %"
 msgctxt "CallGraphView|"
 msgid "1 %"
 msgstr "1 %"
 
-#: libviews/callgraphview.cpp:2904
+#: libviews/callgraphview.cpp:2905
 #, fuzzy
 #| msgid "Min. Call Cost"
 msgctxt "CallGraphView|"
 msgid "Min. Call Cost"
 msgstr "Мин. шақыру бағасы"
 
-#: libviews/callgraphview.cpp:2905
+#: libviews/callgraphview.cpp:2906
 #, fuzzy
 #| msgid "Same as Node"
 msgctxt "CallGraphView|"
 msgid "Same as Node"
 msgstr "Түйіндегіндей"
 
-#: libviews/callgraphview.cpp:2907
+#: libviews/callgraphview.cpp:2908
 #, fuzzy
 #| msgid "50 % of Node"
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
 msgstr "Түйіндегінен 50%"
 
-#: libviews/callgraphview.cpp:2909
+#: libviews/callgraphview.cpp:2910
 #, fuzzy
 #| msgid "20 % of Node"
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
 msgstr "Түйіндегінен 20%"
 
-#: libviews/callgraphview.cpp:2911
+#: libviews/callgraphview.cpp:2912
 #, fuzzy
 #| msgid "10 % of Node"
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
 msgstr "Түйіндегінен 10%"
 
-#: libviews/callgraphview.cpp:2940
+#: libviews/callgraphview.cpp:2941
 #, fuzzy
 #| msgid "Birds-eye View"
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
 msgstr "Ұшқан құс көзімен қарағанда"
 
-#: libviews/callgraphview.cpp:2941
+#: libviews/callgraphview.cpp:2942
 #, fuzzy
 #| msgid "Top Left"
 msgctxt "CallGraphView|"
 msgid "Top Left"
 msgstr "Жоғары сол жақ"
 
-#: libviews/callgraphview.cpp:2942
+#: libviews/callgraphview.cpp:2943
 #, fuzzy
 #| msgid "Top Right"
 msgctxt "CallGraphView|"
 msgid "Top Right"
 msgstr "Жоғары оң жақ"
 
-#: libviews/callgraphview.cpp:2943
+#: libviews/callgraphview.cpp:2944
 #, fuzzy
 #| msgid "Bottom Left"
 msgctxt "CallGraphView|"
 msgid "Bottom Left"
 msgstr "Төменгі сол жақ"
 
-#: libviews/callgraphview.cpp:2944
+#: libviews/callgraphview.cpp:2945
 #, fuzzy
 #| msgid "Bottom Right"
 msgctxt "CallGraphView|"
 msgid "Bottom Right"
 msgstr "Төменгі оң жақ"
 
-#: libviews/callgraphview.cpp:2945
+#: libviews/callgraphview.cpp:2946
 #, fuzzy
 #| msgid "Automatic"
 msgctxt "CallGraphView|"
 msgid "Automatic"
 msgstr "Авто"
 
-#: libviews/callgraphview.cpp:2946
+#: libviews/callgraphview.cpp:2947
 #, fuzzy
 #| msgid "Hide"
 msgctxt "CallGraphView|"
 msgid "Hide"
 msgstr "Жасыру"
 
-#: libviews/callgraphview.cpp:2976
+#: libviews/callgraphview.cpp:2977
 #, fuzzy
 #| msgid "Layout"
 msgctxt "CallGraphView|"
 msgid "Layout"
 msgstr "Орналасуы"
 
-#: libviews/callgraphview.cpp:2977
+#: libviews/callgraphview.cpp:2978
 #, fuzzy
 #| msgid "Top to Down"
 msgctxt "CallGraphView|"
 msgid "Top to Down"
 msgstr "Жоғардан төмеге"
 
-#: libviews/callgraphview.cpp:2978
+#: libviews/callgraphview.cpp:2979
 #, fuzzy
 #| msgid "Left to Right"
 msgctxt "CallGraphView|"
 msgid "Left to Right"
 msgstr "Солдан оңға"
 
-#: libviews/callgraphview.cpp:2979
+#: libviews/callgraphview.cpp:2980
 #, fuzzy
 #| msgid "Circular"
 msgctxt "CallGraphView|"
 msgid "Circular"
 msgstr "Дөнгелек"
 
-#: libviews/callgraphview.cpp:3019 libviews/callgraphview.cpp:3024
-#: libviews/callgraphview.cpp:3044
+#: libviews/callgraphview.cpp:3020 libviews/callgraphview.cpp:3025
+#: libviews/callgraphview.cpp:3045
 #, fuzzy, qt-format
 #| msgid "Go to '%1'"
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
 msgstr "'%1' дегенге өту"
 
-#: libviews/callgraphview.cpp:3055
+#: libviews/callgraphview.cpp:3056
 #, fuzzy
 #| msgid "Stop Layouting"
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
 msgstr "Орналастыруды тоқтату"
 
-#: libviews/callgraphview.cpp:3062
+#: libviews/callgraphview.cpp:3063
 #, fuzzy
 #| msgid "Export Graph"
 msgctxt "CallGraphView|"
 msgid "Export Graph"
 msgstr "Графты экспорттау"
 
-#: libviews/callgraphview.cpp:3063
+#: libviews/callgraphview.cpp:3064
 #, fuzzy
 #| msgid "As DOT file..."
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
 msgstr "DOT файл ретінде..."
 
-#: libviews/callgraphview.cpp:3064
+#: libviews/callgraphview.cpp:3065
 #, fuzzy
 #| msgid "As Image..."
 msgctxt "CallGraphView|"
 msgid "As Image..."
 msgstr "Кескін ретінде..."
 
-#: libviews/callgraphview.cpp:3067
+#: libviews/callgraphview.cpp:3068
 #, fuzzy
 #| msgid "Graph"
 msgctxt "CallGraphView|"
 msgid "Graph"
 msgstr "График"
 
-#: libviews/callgraphview.cpp:3075
+#: libviews/callgraphview.cpp:3076
 #, fuzzy
 #| msgid "Arrows for Skipped Calls"
 msgctxt "CallGraphView|"
 msgid "Arrows for Skipped Calls"
 msgstr "Өткізіп жіберілген шақырулардың жебелері"
 
-#: libviews/callgraphview.cpp:3080
+#: libviews/callgraphview.cpp:3081
 #, fuzzy
 #| msgid "Inner-cycle Calls"
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
 msgstr "Ішкі-цикл шақырулар"
 
-#: libviews/callgraphview.cpp:3085
+#: libviews/callgraphview.cpp:3086
 #, fuzzy
 #| msgid "Cluster Groups"
 msgctxt "CallGraphView|"
 msgid "Cluster Groups"
 msgstr "Топтар шоғыры"
 
-#: libviews/callgraphview.cpp:3089
+#: libviews/callgraphview.cpp:3090
 #, fuzzy
 #| msgid "Visualization"
 msgctxt "CallGraphView|"
 msgid "Visualization"
 msgstr "Көрсету"
 
-#: libviews/callgraphview.cpp:3090
+#: libviews/callgraphview.cpp:3091
 #, fuzzy
 #| msgid "Compact"
 msgctxt "CallGraphView|"
 msgid "Compact"
 msgstr "Ықшамды"
 
-#: libviews/callgraphview.cpp:3093
+#: libviews/callgraphview.cpp:3094
 #, fuzzy
 #| msgid "Normal"
 msgctxt "CallGraphView|"
 msgid "Normal"
 msgstr "Қалыпты"
 
-#: libviews/callgraphview.cpp:3096
+#: libviews/callgraphview.cpp:3097
 #, fuzzy
 #| msgid "Tall"
 msgctxt "CallGraphView|"
 msgid "Tall"
 msgstr "Биік"
 
-#: libviews/callgraphview.cpp:3128
+#: libviews/callgraphview.cpp:3129
 #, fuzzy
 #| msgid "Export Graph As Image"
 msgctxt "CallGraphView|"
 msgid "Export Graph As Image"
 msgstr "Графты кескін файлы қылып экспорттау"
 
-#: libviews/callgraphview.cpp:3130
+#: libviews/callgraphview.cpp:3131
 #, fuzzy
 #| msgid "Images (*.png *.jpg)"
 msgctxt "CallGraphView|"

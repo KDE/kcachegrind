@@ -493,7 +493,7 @@ msgctxt "QObject|"
 msgid "Export Graph"
 msgstr "Izvezi graf"
 
-#: libviews/callgraphview.cpp:1590
+#: libviews/callgraphview.cpp:1591
 #, fuzzy
 #| msgid ""
 #| "<b>Call Graph around active Function</b><p>Depending on configuration, "
@@ -533,7 +533,7 @@ msgstr ""
 "je u uglu. Postoje slične vizualizacije opcije za poziv Treemap-a; odabrana "
 "funkcija je istaknuta </p>."
 
-#: libviews/callgraphview.cpp:2002
+#: libviews/callgraphview.cpp:2003
 #, fuzzy
 #| msgid ""
 #| "Warning: a long lasting graph layouting is in progress.\n"
@@ -546,28 +546,28 @@ msgstr ""
 "Upozorenje: Oblikovanje grafikona u toku dugo traje.\n"
 "Smanjite ograničenja čvorova/ivica radi ubrzanja.\n"
 
-#: libviews/callgraphview.cpp:2005
+#: libviews/callgraphview.cpp:2006
 #, fuzzy
 #| msgid "Layouting stopped.\n"
 msgctxt "CallGraphView|"
 msgid "Layouting stopped.\n"
 msgstr "Oblikovanje je zaustavljeno.\n"
 
-#: libviews/callgraphview.cpp:2007
+#: libviews/callgraphview.cpp:2008
 #, fuzzy, qt-format
 #| msgid "The call graph has %1 nodes and %2 edges.\n"
 msgctxt "CallGraphView|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "Graf poziva ima %1 čvorova i %2 ivica.\n"
 
-#: libviews/callgraphview.cpp:2016
+#: libviews/callgraphview.cpp:2017
 #, fuzzy
 #| msgid "No graph available because the layouting process failed.\n"
 msgctxt "CallGraphView|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr "Graf nije dostupan zbog neuspjelog procesa oblikovanja.\n"
 
-#: libviews/callgraphview.cpp:2018
+#: libviews/callgraphview.cpp:2019
 #, fuzzy, qt-format
 #| msgid ""
 #| "Trying to run the following command did not work:\n"
@@ -580,35 +580,35 @@ msgstr ""
 "Neuspjelo pokretanje komande:\n"
 "'%1'\n"
 
-#: libviews/callgraphview.cpp:2020 libviews/callgraphview.cpp:2537
+#: libviews/callgraphview.cpp:2021 libviews/callgraphview.cpp:2538
 #, fuzzy
 #| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "CallGraphView|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr "Uvjerite se da je „dot“ instaliran (paket GraphViz)."
 
-#: libviews/callgraphview.cpp:2062
+#: libviews/callgraphview.cpp:2063
 #, fuzzy
 #| msgid "No item activated for which to draw the call graph."
 msgctxt "CallGraphView|"
 msgid "No item activated for which to draw the call graph."
 msgstr "Nema aktivirane stavke za koju bi se iscrtao graf poziva."
 
-#: libviews/callgraphview.cpp:2074
+#: libviews/callgraphview.cpp:2075
 #, fuzzy
 #| msgid "No call graph can be drawn for the active item."
 msgctxt "CallGraphView|"
 msgid "No call graph can be drawn for the active item."
 msgstr "Graf poziva se ne može iscrtati za aktivnu stavku."
 
-#: libviews/callgraphview.cpp:2536
+#: libviews/callgraphview.cpp:2537
 #, fuzzy
 #| msgid "Error running the graph layouting tool.\n"
 msgctxt "CallGraphView|"
 msgid "Error running the graph layouting tool.\n"
 msgstr "Greška pri izvršavanju alata za oblikovanje grafikona.\n"
 
-#: libviews/callgraphview.cpp:2541
+#: libviews/callgraphview.cpp:2542
 #, fuzzy, qt-format
 #| msgid ""
 #| "There is no call graph available for function\n"
@@ -624,21 +624,21 @@ msgstr ""
 "\t„%1“\n"
 "zato što ne postoji trošak izabranog tipa događaja."
 
-#: libviews/callgraphview.cpp:2782
+#: libviews/callgraphview.cpp:2783
 #, fuzzy
 #| msgid "Caller Depth"
 msgctxt "CallGraphView|"
 msgid "Caller Depth"
 msgstr "Dubina pozivača"
 
-#: libviews/callgraphview.cpp:2783 libviews/callgraphview.cpp:2823
+#: libviews/callgraphview.cpp:2784 libviews/callgraphview.cpp:2824
 #, fuzzy
 #| msgid "Unlimited"
 msgctxt "CallGraphView|"
 msgid "Unlimited"
 msgstr "Neograničeno"
 
-#: libviews/callgraphview.cpp:2786 libviews/callgraphview.cpp:2826
+#: libviews/callgraphview.cpp:2787 libviews/callgraphview.cpp:2827
 #, fuzzy
 #| msgctxt "None"
 #| msgid "Depth 0"
@@ -646,316 +646,316 @@ msgctxt "CallGraphView|None"
 msgid "Depth 0"
 msgstr "Dubina 0"
 
-#: libviews/callgraphview.cpp:2787 libviews/callgraphview.cpp:2827
+#: libviews/callgraphview.cpp:2788 libviews/callgraphview.cpp:2828
 #, fuzzy
 #| msgid "max. 10"
 msgctxt "CallGraphView|"
 msgid "max. 1"
 msgstr "maks. 10"
 
-#: libviews/callgraphview.cpp:2788 libviews/callgraphview.cpp:2828
+#: libviews/callgraphview.cpp:2789 libviews/callgraphview.cpp:2829
 #, fuzzy
 #| msgid "max. 2"
 msgctxt "CallGraphView|"
 msgid "max. 2"
 msgstr "maks. 2"
 
-#: libviews/callgraphview.cpp:2789 libviews/callgraphview.cpp:2829
+#: libviews/callgraphview.cpp:2790 libviews/callgraphview.cpp:2830
 #, fuzzy
 #| msgid "max. 5"
 msgctxt "CallGraphView|"
 msgid "max. 5"
 msgstr "maks. 5"
 
-#: libviews/callgraphview.cpp:2790 libviews/callgraphview.cpp:2830
+#: libviews/callgraphview.cpp:2791 libviews/callgraphview.cpp:2831
 #, fuzzy
 #| msgid "max. 10"
 msgctxt "CallGraphView|"
 msgid "max. 10"
 msgstr "maks. 10"
 
-#: libviews/callgraphview.cpp:2791 libviews/callgraphview.cpp:2831
+#: libviews/callgraphview.cpp:2792 libviews/callgraphview.cpp:2832
 #, fuzzy
 #| msgid "max. 15"
 msgctxt "CallGraphView|"
 msgid "max. 15"
 msgstr "maks. 15"
 
-#: libviews/callgraphview.cpp:2822
+#: libviews/callgraphview.cpp:2823
 #, fuzzy
 #| msgid "Callee Depth"
 msgctxt "CallGraphView|"
 msgid "Callee Depth"
 msgstr "Dubina pozvanog"
 
-#: libviews/callgraphview.cpp:2862
+#: libviews/callgraphview.cpp:2863
 #, fuzzy
 #| msgid "Min. Node Cost"
 msgctxt "CallGraphView|"
 msgid "Min. Node Cost"
 msgstr "Min. trošak čvora"
 
-#: libviews/callgraphview.cpp:2863
+#: libviews/callgraphview.cpp:2864
 #, fuzzy
 #| msgid "No Minimum"
 msgctxt "CallGraphView|"
 msgid "No Minimum"
 msgstr "Nema minimuma"
 
-#: libviews/callgraphview.cpp:2869
+#: libviews/callgraphview.cpp:2870
 #, fuzzy
 #| msgid "50 %"
 msgctxt "CallGraphView|"
 msgid "50 %"
 msgstr "50 %"
 
-#: libviews/callgraphview.cpp:2870
+#: libviews/callgraphview.cpp:2871
 #, fuzzy
 #| msgid "20 %"
 msgctxt "CallGraphView|"
 msgid "20 %"
 msgstr "20 %"
 
-#: libviews/callgraphview.cpp:2871
+#: libviews/callgraphview.cpp:2872
 #, fuzzy
 #| msgid "10 %"
 msgctxt "CallGraphView|"
 msgid "10 %"
 msgstr "10 %"
 
-#: libviews/callgraphview.cpp:2872
+#: libviews/callgraphview.cpp:2873
 #, fuzzy
 #| msgid "5 %"
 msgctxt "CallGraphView|"
 msgid "5 %"
 msgstr "5 %"
 
-#: libviews/callgraphview.cpp:2873
+#: libviews/callgraphview.cpp:2874
 #, fuzzy
 #| msgid "2 %"
 msgctxt "CallGraphView|"
 msgid "2 %"
 msgstr "2 %"
 
-#: libviews/callgraphview.cpp:2874
+#: libviews/callgraphview.cpp:2875
 #, fuzzy
 #| msgid "1 %"
 msgctxt "CallGraphView|"
 msgid "1 %"
 msgstr "1 %"
 
-#: libviews/callgraphview.cpp:2904
+#: libviews/callgraphview.cpp:2905
 #, fuzzy
 #| msgid "Min. Call Cost"
 msgctxt "CallGraphView|"
 msgid "Min. Call Cost"
 msgstr "Min. trošak poziva"
 
-#: libviews/callgraphview.cpp:2905
+#: libviews/callgraphview.cpp:2906
 #, fuzzy
 #| msgid "Same as Node"
 msgctxt "CallGraphView|"
 msgid "Same as Node"
 msgstr "Isto kao čvor"
 
-#: libviews/callgraphview.cpp:2907
+#: libviews/callgraphview.cpp:2908
 #, fuzzy
 #| msgid "50 % of Node"
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
 msgstr "50 % Čvora"
 
-#: libviews/callgraphview.cpp:2909
+#: libviews/callgraphview.cpp:2910
 #, fuzzy
 #| msgid "20 % of Node"
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
 msgstr "20 % Čvora"
 
-#: libviews/callgraphview.cpp:2911
+#: libviews/callgraphview.cpp:2912
 #, fuzzy
 #| msgid "10 % of Node"
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
 msgstr "10 % Čvora"
 
-#: libviews/callgraphview.cpp:2940
+#: libviews/callgraphview.cpp:2941
 #, fuzzy
 #| msgid "Birds-eye View"
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
 msgstr "Ptičija perspektiva"
 
-#: libviews/callgraphview.cpp:2941
+#: libviews/callgraphview.cpp:2942
 #, fuzzy
 #| msgid "Top Left"
 msgctxt "CallGraphView|"
 msgid "Top Left"
 msgstr "Gore Lijevo"
 
-#: libviews/callgraphview.cpp:2942
+#: libviews/callgraphview.cpp:2943
 #, fuzzy
 #| msgid "Top Right"
 msgctxt "CallGraphView|"
 msgid "Top Right"
 msgstr "Gore Desno"
 
-#: libviews/callgraphview.cpp:2943
+#: libviews/callgraphview.cpp:2944
 #, fuzzy
 #| msgid "Bottom Left"
 msgctxt "CallGraphView|"
 msgid "Bottom Left"
 msgstr "Dolje lijevo"
 
-#: libviews/callgraphview.cpp:2944
+#: libviews/callgraphview.cpp:2945
 #, fuzzy
 #| msgid "Bottom Right"
 msgctxt "CallGraphView|"
 msgid "Bottom Right"
 msgstr "Dolje desno"
 
-#: libviews/callgraphview.cpp:2945
+#: libviews/callgraphview.cpp:2946
 #, fuzzy
 #| msgid "Automatic"
 msgctxt "CallGraphView|"
 msgid "Automatic"
 msgstr "Automatski"
 
-#: libviews/callgraphview.cpp:2946
+#: libviews/callgraphview.cpp:2947
 #, fuzzy
 #| msgid "Hide"
 msgctxt "CallGraphView|"
 msgid "Hide"
 msgstr "Sakrij"
 
-#: libviews/callgraphview.cpp:2976
+#: libviews/callgraphview.cpp:2977
 #, fuzzy
 #| msgid "Layout"
 msgctxt "CallGraphView|"
 msgid "Layout"
 msgstr "Izgled"
 
-#: libviews/callgraphview.cpp:2977
+#: libviews/callgraphview.cpp:2978
 #, fuzzy
 #| msgid "Top to Down"
 msgctxt "CallGraphView|"
 msgid "Top to Down"
 msgstr "Odozgo na dolje"
 
-#: libviews/callgraphview.cpp:2978
+#: libviews/callgraphview.cpp:2979
 #, fuzzy
 #| msgid "Left to Right"
 msgctxt "CallGraphView|"
 msgid "Left to Right"
 msgstr "Sa lijeva na desno"
 
-#: libviews/callgraphview.cpp:2979
+#: libviews/callgraphview.cpp:2980
 #, fuzzy
 #| msgid "Circular"
 msgctxt "CallGraphView|"
 msgid "Circular"
 msgstr "Kružno"
 
-#: libviews/callgraphview.cpp:3019 libviews/callgraphview.cpp:3024
-#: libviews/callgraphview.cpp:3044
+#: libviews/callgraphview.cpp:3020 libviews/callgraphview.cpp:3025
+#: libviews/callgraphview.cpp:3045
 #, fuzzy, qt-format
 #| msgid "Go to '%1'"
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
 msgstr "Idi do „%1“"
 
-#: libviews/callgraphview.cpp:3055
+#: libviews/callgraphview.cpp:3056
 #, fuzzy
 #| msgid "Stop Layouting"
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
 msgstr "Zaustavi oblikovanje"
 
-#: libviews/callgraphview.cpp:3062
+#: libviews/callgraphview.cpp:3063
 #, fuzzy
 #| msgid "Export Graph"
 msgctxt "CallGraphView|"
 msgid "Export Graph"
 msgstr "Izvezi graf"
 
-#: libviews/callgraphview.cpp:3063
+#: libviews/callgraphview.cpp:3064
 #, fuzzy
 #| msgid "As DOT file..."
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
 msgstr "Kao DOT datoteka..."
 
-#: libviews/callgraphview.cpp:3064
+#: libviews/callgraphview.cpp:3065
 #, fuzzy
 #| msgid "As Image..."
 msgctxt "CallGraphView|"
 msgid "As Image..."
 msgstr "Kao slika..."
 
-#: libviews/callgraphview.cpp:3067
+#: libviews/callgraphview.cpp:3068
 #, fuzzy
 #| msgid "Graph"
 msgctxt "CallGraphView|"
 msgid "Graph"
 msgstr "Graf"
 
-#: libviews/callgraphview.cpp:3075
+#: libviews/callgraphview.cpp:3076
 #, fuzzy
 #| msgid "Arrows for Skipped Calls"
 msgctxt "CallGraphView|"
 msgid "Arrows for Skipped Calls"
 msgstr "Strelice za preskočene pozive"
 
-#: libviews/callgraphview.cpp:3080
+#: libviews/callgraphview.cpp:3081
 #, fuzzy
 #| msgid "Inner-cycle Calls"
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
 msgstr "Pozivi unutrašnjeg ciklusa"
 
-#: libviews/callgraphview.cpp:3085
+#: libviews/callgraphview.cpp:3086
 #, fuzzy
 #| msgid "Cluster Groups"
 msgctxt "CallGraphView|"
 msgid "Cluster Groups"
 msgstr "Zbij grupe"
 
-#: libviews/callgraphview.cpp:3089
+#: libviews/callgraphview.cpp:3090
 #, fuzzy
 #| msgid "Visualization"
 msgctxt "CallGraphView|"
 msgid "Visualization"
 msgstr "Vizualizacija"
 
-#: libviews/callgraphview.cpp:3090
+#: libviews/callgraphview.cpp:3091
 #, fuzzy
 #| msgid "Compact"
 msgctxt "CallGraphView|"
 msgid "Compact"
 msgstr "Sabij"
 
-#: libviews/callgraphview.cpp:3093
+#: libviews/callgraphview.cpp:3094
 #, fuzzy
 #| msgid "Normal"
 msgctxt "CallGraphView|"
 msgid "Normal"
 msgstr "Normalno"
 
-#: libviews/callgraphview.cpp:3096
+#: libviews/callgraphview.cpp:3097
 #, fuzzy
 #| msgid "Tall"
 msgctxt "CallGraphView|"
 msgid "Tall"
 msgstr "Visoko"
 
-#: libviews/callgraphview.cpp:3128
+#: libviews/callgraphview.cpp:3129
 #, fuzzy
 #| msgid "Export Graph As Image"
 msgctxt "CallGraphView|"
 msgid "Export Graph As Image"
 msgstr "Izvesti graf kao sliku"
 
-#: libviews/callgraphview.cpp:3130
+#: libviews/callgraphview.cpp:3131
 #, fuzzy
 #| msgid "Images (*.png *.jpg)"
 msgctxt "CallGraphView|"

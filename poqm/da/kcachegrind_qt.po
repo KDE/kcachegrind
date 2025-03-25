@@ -488,7 +488,7 @@ msgctxt "QObject|"
 msgid "Export Graph"
 msgstr "Eksportér graf"
 
-#: libviews/callgraphview.cpp:1590
+#: libviews/callgraphview.cpp:1591
 #, fuzzy
 #| msgid ""
 #| "<b>Call Graph around active Function</b><p>Depending on configuration, "
@@ -529,7 +529,7 @@ msgstr ""
 "visualiseringsindstillinger for kald-trækortet, den markerede funktion "
 "fremhæves.</p>"
 
-#: libviews/callgraphview.cpp:2002
+#: libviews/callgraphview.cpp:2003
 #, fuzzy
 #| msgid ""
 #| "Warning: a long lasting graph layouting is in progress.\n"
@@ -542,28 +542,28 @@ msgstr ""
 "Advarsel: Et langvarigt graf-layout er under behandling.\n"
 "Reducér knude-/kant-grænser for højere hastighed.\n"
 
-#: libviews/callgraphview.cpp:2005
+#: libviews/callgraphview.cpp:2006
 #, fuzzy
 #| msgid "Layouting stopped.\n"
 msgctxt "CallGraphView|"
 msgid "Layouting stopped.\n"
 msgstr "Obygning af layout stoppet.\n"
 
-#: libviews/callgraphview.cpp:2007
+#: libviews/callgraphview.cpp:2008
 #, fuzzy, qt-format
 #| msgid "The call graph has %1 nodes and %2 edges.\n"
 msgctxt "CallGraphView|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "Kald-grafen har %1 knuder og %2 kanter.\n"
 
-#: libviews/callgraphview.cpp:2016
+#: libviews/callgraphview.cpp:2017
 #, fuzzy
 #| msgid "No graph available because the layouting process failed.\n"
 msgctxt "CallGraphView|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr "Ingen graf tilgængelig fordi opbygning af layout mislykkedes.\n"
 
-#: libviews/callgraphview.cpp:2018
+#: libviews/callgraphview.cpp:2019
 #, fuzzy, qt-format
 #| msgid ""
 #| "Trying to run the following command did not work:\n"
@@ -576,35 +576,35 @@ msgstr ""
 "Forsøg på at køre følgende kommando virkede ikke:\n"
 "\"%1\"\n"
 
-#: libviews/callgraphview.cpp:2020 libviews/callgraphview.cpp:2537
+#: libviews/callgraphview.cpp:2021 libviews/callgraphview.cpp:2538
 #, fuzzy
 #| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "CallGraphView|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr "Kontrollér at \"dot\" er installeret (pakken GraphViz)."
 
-#: libviews/callgraphview.cpp:2062
+#: libviews/callgraphview.cpp:2063
 #, fuzzy
 #| msgid "No item activated for which to draw the call graph."
 msgctxt "CallGraphView|"
 msgid "No item activated for which to draw the call graph."
 msgstr "Intet element er aktiveret, hvor hvilket kald-grafen skal tegnes."
 
-#: libviews/callgraphview.cpp:2074
+#: libviews/callgraphview.cpp:2075
 #, fuzzy
 #| msgid "No call graph can be drawn for the active item."
 msgctxt "CallGraphView|"
 msgid "No call graph can be drawn for the active item."
 msgstr "Ingen kald-graf kan tegnes for det aktive element."
 
-#: libviews/callgraphview.cpp:2536
+#: libviews/callgraphview.cpp:2537
 #, fuzzy
 #| msgid "Error running the graph layouting tool.\n"
 msgctxt "CallGraphView|"
 msgid "Error running the graph layouting tool.\n"
 msgstr "Fejl ved kørsel af layout-værktøjet.\n"
 
-#: libviews/callgraphview.cpp:2541
+#: libviews/callgraphview.cpp:2542
 #, fuzzy, qt-format
 #| msgid ""
 #| "There is no call graph available for function\n"
@@ -620,21 +620,21 @@ msgstr ""
 "\t\"%1\"\n"
 "Fordi den ikke har nogen omkostning af den valgte hændelsestype."
 
-#: libviews/callgraphview.cpp:2782
+#: libviews/callgraphview.cpp:2783
 #, fuzzy
 #| msgid "Caller Depth"
 msgctxt "CallGraphView|"
 msgid "Caller Depth"
 msgstr "Kalder-dybde"
 
-#: libviews/callgraphview.cpp:2783 libviews/callgraphview.cpp:2823
+#: libviews/callgraphview.cpp:2784 libviews/callgraphview.cpp:2824
 #, fuzzy
 #| msgid "Unlimited"
 msgctxt "CallGraphView|"
 msgid "Unlimited"
 msgstr "Ubegrænset"
 
-#: libviews/callgraphview.cpp:2786 libviews/callgraphview.cpp:2826
+#: libviews/callgraphview.cpp:2787 libviews/callgraphview.cpp:2827
 #, fuzzy
 #| msgctxt "None"
 #| msgid "Depth 0"
@@ -642,316 +642,316 @@ msgctxt "CallGraphView|None"
 msgid "Depth 0"
 msgstr "Dybde 0"
 
-#: libviews/callgraphview.cpp:2787 libviews/callgraphview.cpp:2827
+#: libviews/callgraphview.cpp:2788 libviews/callgraphview.cpp:2828
 #, fuzzy
 #| msgid "max. 10"
 msgctxt "CallGraphView|"
 msgid "max. 1"
 msgstr "maks. 10"
 
-#: libviews/callgraphview.cpp:2788 libviews/callgraphview.cpp:2828
+#: libviews/callgraphview.cpp:2789 libviews/callgraphview.cpp:2829
 #, fuzzy
 #| msgid "max. 2"
 msgctxt "CallGraphView|"
 msgid "max. 2"
 msgstr "maks. 2"
 
-#: libviews/callgraphview.cpp:2789 libviews/callgraphview.cpp:2829
+#: libviews/callgraphview.cpp:2790 libviews/callgraphview.cpp:2830
 #, fuzzy
 #| msgid "max. 5"
 msgctxt "CallGraphView|"
 msgid "max. 5"
 msgstr "maks. 5"
 
-#: libviews/callgraphview.cpp:2790 libviews/callgraphview.cpp:2830
+#: libviews/callgraphview.cpp:2791 libviews/callgraphview.cpp:2831
 #, fuzzy
 #| msgid "max. 10"
 msgctxt "CallGraphView|"
 msgid "max. 10"
 msgstr "maks. 10"
 
-#: libviews/callgraphview.cpp:2791 libviews/callgraphview.cpp:2831
+#: libviews/callgraphview.cpp:2792 libviews/callgraphview.cpp:2832
 #, fuzzy
 #| msgid "max. 15"
 msgctxt "CallGraphView|"
 msgid "max. 15"
 msgstr "maks. 15"
 
-#: libviews/callgraphview.cpp:2822
+#: libviews/callgraphview.cpp:2823
 #, fuzzy
 #| msgid "Callee Depth"
 msgctxt "CallGraphView|"
 msgid "Callee Depth"
 msgstr "Kaldt-dybde"
 
-#: libviews/callgraphview.cpp:2862
+#: libviews/callgraphview.cpp:2863
 #, fuzzy
 #| msgid "Min. Node Cost"
 msgctxt "CallGraphView|"
 msgid "Min. Node Cost"
 msgstr "Min. knude-omkostning"
 
-#: libviews/callgraphview.cpp:2863
+#: libviews/callgraphview.cpp:2864
 #, fuzzy
 #| msgid "No Minimum"
 msgctxt "CallGraphView|"
 msgid "No Minimum"
 msgstr "Intet minimum"
 
-#: libviews/callgraphview.cpp:2869
+#: libviews/callgraphview.cpp:2870
 #, fuzzy
 #| msgid "50 %"
 msgctxt "CallGraphView|"
 msgid "50 %"
 msgstr "50 %"
 
-#: libviews/callgraphview.cpp:2870
+#: libviews/callgraphview.cpp:2871
 #, fuzzy
 #| msgid "20 %"
 msgctxt "CallGraphView|"
 msgid "20 %"
 msgstr "20 %"
 
-#: libviews/callgraphview.cpp:2871
+#: libviews/callgraphview.cpp:2872
 #, fuzzy
 #| msgid "10 %"
 msgctxt "CallGraphView|"
 msgid "10 %"
 msgstr "10 %"
 
-#: libviews/callgraphview.cpp:2872
+#: libviews/callgraphview.cpp:2873
 #, fuzzy
 #| msgid "5 %"
 msgctxt "CallGraphView|"
 msgid "5 %"
 msgstr "5 %"
 
-#: libviews/callgraphview.cpp:2873
+#: libviews/callgraphview.cpp:2874
 #, fuzzy
 #| msgid "2 %"
 msgctxt "CallGraphView|"
 msgid "2 %"
 msgstr "2 %"
 
-#: libviews/callgraphview.cpp:2874
+#: libviews/callgraphview.cpp:2875
 #, fuzzy
 #| msgid "1 %"
 msgctxt "CallGraphView|"
 msgid "1 %"
 msgstr "1 %"
 
-#: libviews/callgraphview.cpp:2904
+#: libviews/callgraphview.cpp:2905
 #, fuzzy
 #| msgid "Min. Call Cost"
 msgctxt "CallGraphView|"
 msgid "Min. Call Cost"
 msgstr "Min. kald-omkostning"
 
-#: libviews/callgraphview.cpp:2905
+#: libviews/callgraphview.cpp:2906
 #, fuzzy
 #| msgid "Same as Node"
 msgctxt "CallGraphView|"
 msgid "Same as Node"
 msgstr "Samme som knude"
 
-#: libviews/callgraphview.cpp:2907
+#: libviews/callgraphview.cpp:2908
 #, fuzzy
 #| msgid "50 % of Node"
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
 msgstr "50 % af knude"
 
-#: libviews/callgraphview.cpp:2909
+#: libviews/callgraphview.cpp:2910
 #, fuzzy
 #| msgid "20 % of Node"
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
 msgstr "20 % af knude"
 
-#: libviews/callgraphview.cpp:2911
+#: libviews/callgraphview.cpp:2912
 #, fuzzy
 #| msgid "10 % of Node"
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
 msgstr "10 % af knude"
 
-#: libviews/callgraphview.cpp:2940
+#: libviews/callgraphview.cpp:2941
 #, fuzzy
 #| msgid "Birds-eye View"
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
 msgstr "Fugleperspektiv"
 
-#: libviews/callgraphview.cpp:2941
+#: libviews/callgraphview.cpp:2942
 #, fuzzy
 #| msgid "Top Left"
 msgctxt "CallGraphView|"
 msgid "Top Left"
 msgstr "Øverst til venstre"
 
-#: libviews/callgraphview.cpp:2942
+#: libviews/callgraphview.cpp:2943
 #, fuzzy
 #| msgid "Top Right"
 msgctxt "CallGraphView|"
 msgid "Top Right"
 msgstr "Øverst til højre"
 
-#: libviews/callgraphview.cpp:2943
+#: libviews/callgraphview.cpp:2944
 #, fuzzy
 #| msgid "Bottom Left"
 msgctxt "CallGraphView|"
 msgid "Bottom Left"
 msgstr "Nederst til venstre"
 
-#: libviews/callgraphview.cpp:2944
+#: libviews/callgraphview.cpp:2945
 #, fuzzy
 #| msgid "Bottom Right"
 msgctxt "CallGraphView|"
 msgid "Bottom Right"
 msgstr "Nederst til højre"
 
-#: libviews/callgraphview.cpp:2945
+#: libviews/callgraphview.cpp:2946
 #, fuzzy
 #| msgid "Automatic"
 msgctxt "CallGraphView|"
 msgid "Automatic"
 msgstr "Automatisk"
 
-#: libviews/callgraphview.cpp:2946
+#: libviews/callgraphview.cpp:2947
 #, fuzzy
 #| msgid "Hide"
 msgctxt "CallGraphView|"
 msgid "Hide"
 msgstr "Skjul"
 
-#: libviews/callgraphview.cpp:2976
+#: libviews/callgraphview.cpp:2977
 #, fuzzy
 #| msgid "Layout"
 msgctxt "CallGraphView|"
 msgid "Layout"
 msgstr "Layout"
 
-#: libviews/callgraphview.cpp:2977
+#: libviews/callgraphview.cpp:2978
 #, fuzzy
 #| msgid "Top to Down"
 msgctxt "CallGraphView|"
 msgid "Top to Down"
 msgstr "Top og nedad"
 
-#: libviews/callgraphview.cpp:2978
+#: libviews/callgraphview.cpp:2979
 #, fuzzy
 #| msgid "Left to Right"
 msgctxt "CallGraphView|"
 msgid "Left to Right"
 msgstr "Venstre til højre"
 
-#: libviews/callgraphview.cpp:2979
+#: libviews/callgraphview.cpp:2980
 #, fuzzy
 #| msgid "Circular"
 msgctxt "CallGraphView|"
 msgid "Circular"
 msgstr "Cirkulært"
 
-#: libviews/callgraphview.cpp:3019 libviews/callgraphview.cpp:3024
-#: libviews/callgraphview.cpp:3044
+#: libviews/callgraphview.cpp:3020 libviews/callgraphview.cpp:3025
+#: libviews/callgraphview.cpp:3045
 #, fuzzy, qt-format
 #| msgid "Go to '%1'"
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
 msgstr "Gå til \"%1\""
 
-#: libviews/callgraphview.cpp:3055
+#: libviews/callgraphview.cpp:3056
 #, fuzzy
 #| msgid "Stop Layouting"
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
 msgstr "Stop opbygning af layout"
 
-#: libviews/callgraphview.cpp:3062
+#: libviews/callgraphview.cpp:3063
 #, fuzzy
 #| msgid "Export Graph"
 msgctxt "CallGraphView|"
 msgid "Export Graph"
 msgstr "Eksportér graf"
 
-#: libviews/callgraphview.cpp:3063
+#: libviews/callgraphview.cpp:3064
 #, fuzzy
 #| msgid "As DOT file..."
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
 msgstr "Som DOT-fil..."
 
-#: libviews/callgraphview.cpp:3064
+#: libviews/callgraphview.cpp:3065
 #, fuzzy
 #| msgid "As Image..."
 msgctxt "CallGraphView|"
 msgid "As Image..."
 msgstr "Som billede..."
 
-#: libviews/callgraphview.cpp:3067
+#: libviews/callgraphview.cpp:3068
 #, fuzzy
 #| msgid "Graph"
 msgctxt "CallGraphView|"
 msgid "Graph"
 msgstr "Graf"
 
-#: libviews/callgraphview.cpp:3075
+#: libviews/callgraphview.cpp:3076
 #, fuzzy
 #| msgid "Arrows for Skipped Calls"
 msgctxt "CallGraphView|"
 msgid "Arrows for Skipped Calls"
 msgstr "Pile for skippede kald"
 
-#: libviews/callgraphview.cpp:3080
+#: libviews/callgraphview.cpp:3081
 #, fuzzy
 #| msgid "Inner-cycle Calls"
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
 msgstr "Indre-cyklus kald"
 
-#: libviews/callgraphview.cpp:3085
+#: libviews/callgraphview.cpp:3086
 #, fuzzy
 #| msgid "Cluster Groups"
 msgctxt "CallGraphView|"
 msgid "Cluster Groups"
 msgstr "Cluster-grupper"
 
-#: libviews/callgraphview.cpp:3089
+#: libviews/callgraphview.cpp:3090
 #, fuzzy
 #| msgid "Visualization"
 msgctxt "CallGraphView|"
 msgid "Visualization"
 msgstr "Visualisering"
 
-#: libviews/callgraphview.cpp:3090
+#: libviews/callgraphview.cpp:3091
 #, fuzzy
 #| msgid "Compact"
 msgctxt "CallGraphView|"
 msgid "Compact"
 msgstr "Kompakt"
 
-#: libviews/callgraphview.cpp:3093
+#: libviews/callgraphview.cpp:3094
 #, fuzzy
 #| msgid "Normal"
 msgctxt "CallGraphView|"
 msgid "Normal"
 msgstr "Normal"
 
-#: libviews/callgraphview.cpp:3096
+#: libviews/callgraphview.cpp:3097
 #, fuzzy
 #| msgid "Tall"
 msgctxt "CallGraphView|"
 msgid "Tall"
 msgstr "Høj"
 
-#: libviews/callgraphview.cpp:3128
+#: libviews/callgraphview.cpp:3129
 #, fuzzy
 #| msgid "Export Graph As Image"
 msgctxt "CallGraphView|"
 msgid "Export Graph As Image"
 msgstr "Eksportér graf som billede"
 
-#: libviews/callgraphview.cpp:3130
+#: libviews/callgraphview.cpp:3131
 #, fuzzy
 #| msgid "Images (*.png *.jpg)"
 msgctxt "CallGraphView|"

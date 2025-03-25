@@ -486,7 +486,7 @@ msgctxt "QObject|"
 msgid "Export Graph"
 msgstr "Grafikon exportálása"
 
-#: libviews/callgraphview.cpp:1590
+#: libviews/callgraphview.cpp:1591
 #, fuzzy
 #| msgid ""
 #| "<b>Call Graph around active Function</b><p>Depending on configuration, "
@@ -526,7 +526,7 @@ msgstr ""
 "Hasonló megjelenítési opciók vannak a hívási fastruktúránál: a kijelölt "
 "függvény ki van emelve.</p>"
 
-#: libviews/callgraphview.cpp:2002
+#: libviews/callgraphview.cpp:2003
 #, fuzzy
 #| msgid ""
 #| "Warning: a long lasting graph layouting is in progress.\n"
@@ -539,21 +539,21 @@ msgstr ""
 "Figyelmeztetés: egy sokáig tartó grafikus layout folyamatban van.\n"
 "Csomópont/szél korlátok csökkentése a felgyorsításért.\n"
 
-#: libviews/callgraphview.cpp:2005
+#: libviews/callgraphview.cpp:2006
 #, fuzzy
 #| msgid "Layouting stopped.\n"
 msgctxt "CallGraphView|"
 msgid "Layouting stopped.\n"
 msgstr "Layout készítés leállítva.\n"
 
-#: libviews/callgraphview.cpp:2007
+#: libviews/callgraphview.cpp:2008
 #, fuzzy, qt-format
 #| msgid "The call graph has %1 nodes and %2 edges.\n"
 msgctxt "CallGraphView|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "A hívó grafikonnak %1 csomópontja és %2 széle van.\n"
 
-#: libviews/callgraphview.cpp:2016
+#: libviews/callgraphview.cpp:2017
 #, fuzzy
 #| msgid "No graph available because the layouting process failed.\n"
 msgctxt "CallGraphView|"
@@ -561,7 +561,7 @@ msgid "No graph available because the layouting process failed.\n"
 msgstr ""
 "Nincsen elérhető grafikon, mert a layout készítő folyamat nem sikerült.\n"
 
-#: libviews/callgraphview.cpp:2018
+#: libviews/callgraphview.cpp:2019
 #, fuzzy, qt-format
 #| msgid ""
 #| "Trying to run the following command did not work:\n"
@@ -574,14 +574,14 @@ msgstr ""
 "A következő parancs futtatása nem működik:\n"
 "%1'\n"
 
-#: libviews/callgraphview.cpp:2020 libviews/callgraphview.cpp:2537
+#: libviews/callgraphview.cpp:2021 libviews/callgraphview.cpp:2538
 #, fuzzy
 #| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "CallGraphView|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr "Kérem ellenőrizze le, hogy a 'dot' telepítve van (GraphViz csomag)."
 
-#: libviews/callgraphview.cpp:2062
+#: libviews/callgraphview.cpp:2063
 #, fuzzy
 #| msgid "No item activated for which to draw the call graph."
 msgctxt "CallGraphView|"
@@ -589,7 +589,7 @@ msgid "No item activated for which to draw the call graph."
 msgstr ""
 "Nincs olyan elem aktíválva, amelyre ki lehetne rajzolni a hívási grafikont."
 
-#: libviews/callgraphview.cpp:2074
+#: libviews/callgraphview.cpp:2075
 #, fuzzy
 #| msgid "No call graph can be drawn for the active item."
 msgctxt "CallGraphView|"
@@ -597,14 +597,14 @@ msgid "No call graph can be drawn for the active item."
 msgstr ""
 "Nincs olyan hívási grafikon, amelyet ki lehet rajzolni az aktuális elemre."
 
-#: libviews/callgraphview.cpp:2536
+#: libviews/callgraphview.cpp:2537
 #, fuzzy
 #| msgid "Error running the graph layouting tool.\n"
 msgctxt "CallGraphView|"
 msgid "Error running the graph layouting tool.\n"
 msgstr "Hiba történt a grafikon layout készítő eszközének futtatásakor.\n"
 
-#: libviews/callgraphview.cpp:2541
+#: libviews/callgraphview.cpp:2542
 #, fuzzy, qt-format
 #| msgid ""
 #| "There is no call graph available for function\n"
@@ -620,21 +620,21 @@ msgstr ""
 "\t'%1'\n"
 "mert a kiválasztott esemény típusnak költsége."
 
-#: libviews/callgraphview.cpp:2782
+#: libviews/callgraphview.cpp:2783
 #, fuzzy
 #| msgid "Caller Depth"
 msgctxt "CallGraphView|"
 msgid "Caller Depth"
 msgstr "Hívó mélység"
 
-#: libviews/callgraphview.cpp:2783 libviews/callgraphview.cpp:2823
+#: libviews/callgraphview.cpp:2784 libviews/callgraphview.cpp:2824
 #, fuzzy
 #| msgid "Unlimited"
 msgctxt "CallGraphView|"
 msgid "Unlimited"
 msgstr "Korlátlan"
 
-#: libviews/callgraphview.cpp:2786 libviews/callgraphview.cpp:2826
+#: libviews/callgraphview.cpp:2787 libviews/callgraphview.cpp:2827
 #, fuzzy
 #| msgctxt "None"
 #| msgid "Depth 0"
@@ -642,316 +642,316 @@ msgctxt "CallGraphView|None"
 msgid "Depth 0"
 msgstr "Mélység 0"
 
-#: libviews/callgraphview.cpp:2787 libviews/callgraphview.cpp:2827
+#: libviews/callgraphview.cpp:2788 libviews/callgraphview.cpp:2828
 #, fuzzy
 #| msgid "max. 10"
 msgctxt "CallGraphView|"
 msgid "max. 1"
 msgstr "maximum 10"
 
-#: libviews/callgraphview.cpp:2788 libviews/callgraphview.cpp:2828
+#: libviews/callgraphview.cpp:2789 libviews/callgraphview.cpp:2829
 #, fuzzy
 #| msgid "max. 2"
 msgctxt "CallGraphView|"
 msgid "max. 2"
 msgstr "maximum 2"
 
-#: libviews/callgraphview.cpp:2789 libviews/callgraphview.cpp:2829
+#: libviews/callgraphview.cpp:2790 libviews/callgraphview.cpp:2830
 #, fuzzy
 #| msgid "max. 5"
 msgctxt "CallGraphView|"
 msgid "max. 5"
 msgstr "maximum 5"
 
-#: libviews/callgraphview.cpp:2790 libviews/callgraphview.cpp:2830
+#: libviews/callgraphview.cpp:2791 libviews/callgraphview.cpp:2831
 #, fuzzy
 #| msgid "max. 10"
 msgctxt "CallGraphView|"
 msgid "max. 10"
 msgstr "maximum 10"
 
-#: libviews/callgraphview.cpp:2791 libviews/callgraphview.cpp:2831
+#: libviews/callgraphview.cpp:2792 libviews/callgraphview.cpp:2832
 #, fuzzy
 #| msgid "max. 15"
 msgctxt "CallGraphView|"
 msgid "max. 15"
 msgstr "maximum 15"
 
-#: libviews/callgraphview.cpp:2822
+#: libviews/callgraphview.cpp:2823
 #, fuzzy
 #| msgid "Callee Depth"
 msgctxt "CallGraphView|"
 msgid "Callee Depth"
 msgstr "Hívó mélység"
 
-#: libviews/callgraphview.cpp:2862
+#: libviews/callgraphview.cpp:2863
 #, fuzzy
 #| msgid "Min. Node Cost"
 msgctxt "CallGraphView|"
 msgid "Min. Node Cost"
 msgstr "Minimum csomópont költség"
 
-#: libviews/callgraphview.cpp:2863
+#: libviews/callgraphview.cpp:2864
 #, fuzzy
 #| msgid "No Minimum"
 msgctxt "CallGraphView|"
 msgid "No Minimum"
 msgstr "Nincsen minimum"
 
-#: libviews/callgraphview.cpp:2869
+#: libviews/callgraphview.cpp:2870
 #, fuzzy
 #| msgid "50 %"
 msgctxt "CallGraphView|"
 msgid "50 %"
 msgstr "50 %"
 
-#: libviews/callgraphview.cpp:2870
+#: libviews/callgraphview.cpp:2871
 #, fuzzy
 #| msgid "20 %"
 msgctxt "CallGraphView|"
 msgid "20 %"
 msgstr "20 %"
 
-#: libviews/callgraphview.cpp:2871
+#: libviews/callgraphview.cpp:2872
 #, fuzzy
 #| msgid "10 %"
 msgctxt "CallGraphView|"
 msgid "10 %"
 msgstr "10 %"
 
-#: libviews/callgraphview.cpp:2872
+#: libviews/callgraphview.cpp:2873
 #, fuzzy
 #| msgid "5 %"
 msgctxt "CallGraphView|"
 msgid "5 %"
 msgstr "5 %"
 
-#: libviews/callgraphview.cpp:2873
+#: libviews/callgraphview.cpp:2874
 #, fuzzy
 #| msgid "2 %"
 msgctxt "CallGraphView|"
 msgid "2 %"
 msgstr "2 %"
 
-#: libviews/callgraphview.cpp:2874
+#: libviews/callgraphview.cpp:2875
 #, fuzzy
 #| msgid "1 %"
 msgctxt "CallGraphView|"
 msgid "1 %"
 msgstr "1 %"
 
-#: libviews/callgraphview.cpp:2904
+#: libviews/callgraphview.cpp:2905
 #, fuzzy
 #| msgid "Min. Call Cost"
 msgctxt "CallGraphView|"
 msgid "Min. Call Cost"
 msgstr "Minimális hívási költség"
 
-#: libviews/callgraphview.cpp:2905
+#: libviews/callgraphview.cpp:2906
 #, fuzzy
 #| msgid "Same as Node"
 msgctxt "CallGraphView|"
 msgid "Same as Node"
 msgstr "Ugyanaz, mint a csomópont"
 
-#: libviews/callgraphview.cpp:2907
+#: libviews/callgraphview.cpp:2908
 #, fuzzy
 #| msgid "50 % of Node"
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
 msgstr "A csomópont 50 %-a"
 
-#: libviews/callgraphview.cpp:2909
+#: libviews/callgraphview.cpp:2910
 #, fuzzy
 #| msgid "20 % of Node"
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
 msgstr "A csomópont 20%-a"
 
-#: libviews/callgraphview.cpp:2911
+#: libviews/callgraphview.cpp:2912
 #, fuzzy
 #| msgid "10 % of Node"
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
 msgstr "A csomópont 10%-a"
 
-#: libviews/callgraphview.cpp:2940
+#: libviews/callgraphview.cpp:2941
 #, fuzzy
 #| msgid "Birds-eye View"
 msgctxt "CallGraphView|"
 msgid "Birds-eye View"
 msgstr "Madár szem nézet"
 
-#: libviews/callgraphview.cpp:2941
+#: libviews/callgraphview.cpp:2942
 #, fuzzy
 #| msgid "Top Left"
 msgctxt "CallGraphView|"
 msgid "Top Left"
 msgstr "Bal felső"
 
-#: libviews/callgraphview.cpp:2942
+#: libviews/callgraphview.cpp:2943
 #, fuzzy
 #| msgid "Top Right"
 msgctxt "CallGraphView|"
 msgid "Top Right"
 msgstr "Jobb felső"
 
-#: libviews/callgraphview.cpp:2943
+#: libviews/callgraphview.cpp:2944
 #, fuzzy
 #| msgid "Bottom Left"
 msgctxt "CallGraphView|"
 msgid "Bottom Left"
 msgstr "Bal alsó"
 
-#: libviews/callgraphview.cpp:2944
+#: libviews/callgraphview.cpp:2945
 #, fuzzy
 #| msgid "Bottom Right"
 msgctxt "CallGraphView|"
 msgid "Bottom Right"
 msgstr "Jobb alsó"
 
-#: libviews/callgraphview.cpp:2945
+#: libviews/callgraphview.cpp:2946
 #, fuzzy
 #| msgid "Automatic"
 msgctxt "CallGraphView|"
 msgid "Automatic"
 msgstr "Automatikus"
 
-#: libviews/callgraphview.cpp:2946
+#: libviews/callgraphview.cpp:2947
 #, fuzzy
 #| msgid "Hide"
 msgctxt "CallGraphView|"
 msgid "Hide"
 msgstr "Elrejtés"
 
-#: libviews/callgraphview.cpp:2976
+#: libviews/callgraphview.cpp:2977
 #, fuzzy
 #| msgid "Layout"
 msgctxt "CallGraphView|"
 msgid "Layout"
 msgstr "Layout"
 
-#: libviews/callgraphview.cpp:2977
+#: libviews/callgraphview.cpp:2978
 #, fuzzy
 #| msgid "Top to Down"
 msgctxt "CallGraphView|"
 msgid "Top to Down"
 msgstr "Fentről le"
 
-#: libviews/callgraphview.cpp:2978
+#: libviews/callgraphview.cpp:2979
 #, fuzzy
 #| msgid "Left to Right"
 msgctxt "CallGraphView|"
 msgid "Left to Right"
 msgstr "Balról jobbra"
 
-#: libviews/callgraphview.cpp:2979
+#: libviews/callgraphview.cpp:2980
 #, fuzzy
 #| msgid "Circular"
 msgctxt "CallGraphView|"
 msgid "Circular"
 msgstr "Cirkuláris"
 
-#: libviews/callgraphview.cpp:3019 libviews/callgraphview.cpp:3024
-#: libviews/callgraphview.cpp:3044
+#: libviews/callgraphview.cpp:3020 libviews/callgraphview.cpp:3025
+#: libviews/callgraphview.cpp:3045
 #, fuzzy, qt-format
 #| msgid "Go to '%1'"
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
 msgstr "'%1'-re ugrás"
 
-#: libviews/callgraphview.cpp:3055
+#: libviews/callgraphview.cpp:3056
 #, fuzzy
 #| msgid "Stop Layouting"
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
 msgstr "Layout készítés leállítása"
 
-#: libviews/callgraphview.cpp:3062
+#: libviews/callgraphview.cpp:3063
 #, fuzzy
 #| msgid "Export Graph"
 msgctxt "CallGraphView|"
 msgid "Export Graph"
 msgstr "Grafikon exportálása"
 
-#: libviews/callgraphview.cpp:3063
+#: libviews/callgraphview.cpp:3064
 #, fuzzy
 #| msgid "As DOT file..."
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
 msgstr "Mint egy DOT fájl..."
 
-#: libviews/callgraphview.cpp:3064
+#: libviews/callgraphview.cpp:3065
 #, fuzzy
 #| msgid "As Image..."
 msgctxt "CallGraphView|"
 msgid "As Image..."
 msgstr "Képként..."
 
-#: libviews/callgraphview.cpp:3067
+#: libviews/callgraphview.cpp:3068
 #, fuzzy
 #| msgid "Graph"
 msgctxt "CallGraphView|"
 msgid "Graph"
 msgstr "Grafikon"
 
-#: libviews/callgraphview.cpp:3075
+#: libviews/callgraphview.cpp:3076
 #, fuzzy
 #| msgid "Arrows for Skipped Calls"
 msgctxt "CallGraphView|"
 msgid "Arrows for Skipped Calls"
 msgstr "Nyilak a kihagyott hívásokra"
 
-#: libviews/callgraphview.cpp:3080
+#: libviews/callgraphview.cpp:3081
 #, fuzzy
 #| msgid "Inner-cycle Calls"
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
 msgstr "Belső ciklus hívások"
 
-#: libviews/callgraphview.cpp:3085
+#: libviews/callgraphview.cpp:3086
 #, fuzzy
 #| msgid "Cluster Groups"
 msgctxt "CallGraphView|"
 msgid "Cluster Groups"
 msgstr "Csoportok"
 
-#: libviews/callgraphview.cpp:3089
+#: libviews/callgraphview.cpp:3090
 #, fuzzy
 #| msgid "Visualization"
 msgctxt "CallGraphView|"
 msgid "Visualization"
 msgstr "Vizualizáció"
 
-#: libviews/callgraphview.cpp:3090
+#: libviews/callgraphview.cpp:3091
 #, fuzzy
 #| msgid "Compact"
 msgctxt "CallGraphView|"
 msgid "Compact"
 msgstr "Kompakt"
 
-#: libviews/callgraphview.cpp:3093
+#: libviews/callgraphview.cpp:3094
 #, fuzzy
 #| msgid "Normal"
 msgctxt "CallGraphView|"
 msgid "Normal"
 msgstr "Normál"
 
-#: libviews/callgraphview.cpp:3096
+#: libviews/callgraphview.cpp:3097
 #, fuzzy
 #| msgid "Tall"
 msgctxt "CallGraphView|"
 msgid "Tall"
 msgstr "Beszéd"
 
-#: libviews/callgraphview.cpp:3128
+#: libviews/callgraphview.cpp:3129
 #, fuzzy
 #| msgid "Export Graph As Image"
 msgctxt "CallGraphView|"
 msgid "Export Graph As Image"
 msgstr "Grafikon exportálása képként"
 
-#: libviews/callgraphview.cpp:3130
+#: libviews/callgraphview.cpp:3131
 #, fuzzy
 #| msgid "Images (*.png *.jpg)"
 msgctxt "CallGraphView|"
