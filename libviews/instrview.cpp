@@ -284,6 +284,15 @@ void InstrView::context(const QPoint & p)
     toggleHexAction->setChecked(_showHexCode);
     popup.addAction(toggleHexAction);
 
+    QAction* toggleIntelSyntaxAction = nullptr;
+    if(_maybeX86) {
+        popup.addSeparator();
+        toggleIntelSyntaxAction = new QAction(tr("Intel Syntax"), &popup);
+        toggleIntelSyntaxAction->setCheckable(true);
+        toggleIntelSyntaxAction->setChecked(_useIntelSyntax);
+        popup.addAction(toggleIntelSyntaxAction);
+    }
+
     QAction* a = popup.exec(mapToGlobal(p + QPoint(0,header()->height())));
     if (a == activateFunctionAction)
         TraceItemView::activated(f);
@@ -296,6 +305,9 @@ void InstrView::context(const QPoint & p)
             _lastHexCodeWidth = columnWidth(4);
         // fixme: when showing, width may be wrong if not initially shown
         setColumnWidths();
+    } else if (a == toggleIntelSyntaxAction) {
+        _useIntelSyntax = !_useIntelSyntax;
+        refresh();
     }
 }
 
@@ -802,6 +814,7 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     Addr dumpStartAddr, dumpEndAddr;
     TraceInstrMap::Iterator costIt;
     bool isArm = (function->data()->architecture() == TraceData::ArchARM);
+    _maybeX86 = (function->data()->architecture() == TraceData::ArchUnknown);
 
     // should not happen
     if (it == itEnd) return false;
@@ -840,8 +853,9 @@ bool InstrView::fillInstrRange(TraceFunction* function,
     QString objfile = dir + '/' + function->object()->shortName();
     QString objdump_format = getObjDumpFormat();
     if (objdump_format.isEmpty())
-        objdump_format = getObjDump() + " -C -d --start-address=0x%1 --stop-address=0x%2 \"%3\"";
+        objdump_format = getObjDump() + " -C -d %1 --start-address=0x%2 --stop-address=0x%3 \"%4\"";
     QString objdumpCmd = objdump_format
+            .arg(_useIntelSyntax ? QStringLiteral("-M intel") : QStringLiteral(""))
             .arg(dumpStartAddr.toString())
             .arg(dumpEndAddr.toString())
             .arg(objfile);

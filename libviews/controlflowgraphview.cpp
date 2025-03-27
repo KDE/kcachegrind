@@ -419,6 +419,7 @@ CFGExporter::CFGExporter(const CFGExporter& otherExporter, TraceFunction* func, 
 CFGExporter::~CFGExporter()
 {
     delete _tmpFile;
+    _tmpFile = nullptr;
 }
 
 CFGExporter::Layout CFGExporter::strToLayout(const QString& s)
@@ -581,6 +582,7 @@ void CFGExporter::reset(CostItem* i, EventType* et, QString filename)
     {
         _tmpFile->setAutoRemove(true);
         delete _tmpFile;
+        _tmpFile = nullptr;
     }
 
     if (i)
@@ -596,7 +598,21 @@ void CFGExporter::reset(CostItem* i, EventType* et, QString filename)
             case ProfileContext::BasicBlock:
                 _func = static_cast<TraceBasicBlock*>(i)->function();
                 break;
+            case ProfileContext::Instr:
+                _func = static_cast<TraceInstr*>(i)->function();
+                break;
+            case ProfileContext::InstrJump:
+                _func = static_cast<TraceInstrJump*>(i)->instrFrom()->function();
+                break;
+            case ProfileContext::InstrCall:
+                _func = static_cast<TraceInstrCall*>(i)->call()->caller(true);
+                break;
+            case ProfileContext::Branch:
+                _func = static_cast<TraceBranch*>(i)->bbFrom()->function();
+                break;
             default:
+                qDebug() << "CFGExporter::reset:" << (i ? i->name() : "null")
+                        << "has unsupported type" << ProfileContext::typeName(i->type());
                 _func = nullptr;
                 return;
         }
@@ -830,7 +846,7 @@ class ObjdumpParser final
 public:
     using instrStringsMap = std::map<Addr, std::pair<QString, QString>>;
 
-    ObjdumpParser(TraceFunction* func, EventType* et);
+    ObjdumpParser(TraceFunction* func, EventType* et, bool useIntelSyntax = false);
 
     const instrStringsMap& getInstrStrings();
     const QString& errorMessage() const { return _errorMessage; }
@@ -873,19 +889,22 @@ private:
     bool _needObjAddr = true;
     bool _needCostAddr = true;
     bool _isArm;
+    bool _maybeX86 = true;
+    bool _useIntelSyntax;
 
     int _objdumpLineno = 0;
 
     instrStringsMap _instrStrings;
 };
 
-ObjdumpParser::ObjdumpParser(TraceFunction* func, EventType* et)
-    : _func{func}, _eventType{et}
+ObjdumpParser::ObjdumpParser(TraceFunction* func, EventType* et, bool useIntelSyntax)
+    : _func{func}, _eventType{et}, _useIntelSyntax{useIntelSyntax}
 {
     assert(_func);
     assert(_func->data());
 
     _isArm = (_func->data()->architecture() == TraceData::ArchARM);
+    _maybeX86 = (_func->data()->architecture() == TraceData::ArchUnknown);
 
     auto instrMap = _func->instrMap();
     assert(!instrMap->empty());
@@ -924,6 +943,9 @@ void ObjdumpParser::runObjdump()
         const int margin = _isArm ? 4 : 20;
 
         QStringList args{"-C", "-d"};
+        if (_maybeX86 && _useIntelSyntax) {
+            args << QStringLiteral("-M") << QStringLiteral("intel");
+        }
         args << QStringLiteral("--start-address=0x%1").arg(_dumpStartAddr.toString()),
         args << QStringLiteral("--stop-address=0x%1").arg((_dumpEndAddr + margin).toString()),
         args << _objFile;
@@ -1168,7 +1190,7 @@ bool CFGExporter::fillInstrStrings(TraceFunction* func)
     if (_nodeMap.empty())
         return false;
 
-    ObjdumpParser parser{func, _eventType};
+    ObjdumpParser parser{func, _eventType, static_cast<bool>(getGraphOptions(func) & Options::useIntelSyntax)};
     const ObjdumpParser::instrStringsMap& instrStrings = parser.getInstrStrings();
     if (!parser.errorMessage().isEmpty())
     {
@@ -2349,6 +2371,8 @@ enum MenuActions
     showInstrPCGlobal,
     showInstrCostGlobal,
 
+    useIntelSyntax,
+
     // special value
     nActions
 };
@@ -2393,6 +2417,16 @@ void ControlFlowGraphView::contextMenuEvent(QContextMenuEvent* event)
     actions[MenuActions::stopLayout] = addStopLayoutAction(popup);
 
     popup.addSeparator();
+
+    // Display Intel ASM Syntax option only for x86 architecture
+    // Currently we can only detect ARM explicitly (ArchARM), so show for ArchUnknown which is likely x86
+    if(func->data()->architecture() == TraceData::ArchUnknown)
+    {
+        actions[MenuActions::useIntelSyntax] = addOptionsAction(
+            std::addressof(popup), QObject::tr("Intel ASM Syntax"), func,
+            CFGExporter::Options::useIntelSyntax);
+        popup.addSeparator();
+    }
 
     actions[MenuActions::pcOnlyGlobal] =
             addOptionsAction(std::addressof(popup), QObject::tr("PC only"), func,
@@ -2493,6 +2527,27 @@ void ControlFlowGraphView::contextMenuEvent(QContextMenuEvent* event)
 
             refresh(false);
             break;
+
+        case MenuActions::useIntelSyntax:
+        {
+            if (action->isChecked())
+                _exporter.setGraphOption(func, CFGExporter::Options::useIntelSyntax);
+            else
+                _exporter.resetGraphOption(func, CFGExporter::Options::useIntelSyntax);
+            QPointF currentCenter = mapToScene(viewport()->rect().center());
+            qreal currentScale = transform().m11();
+            refresh();
+            // Restore view position after rendering completes
+            connect(_renderProcess, &QProcess::finished, this, [this, currentCenter, currentScale]() {
+                if(_renderProcess)
+                    disconnect(_renderProcess, &QProcess::finished, this, nullptr);
+                QTimer::singleShot(0, this, [this, currentCenter, currentScale]() {
+                    setTransform(QTransform::fromScale(currentScale, currentScale));
+                    centerOn(currentCenter);
+                });
+            });
+            break;
+        }
 
         default: // practically nActions
             break;

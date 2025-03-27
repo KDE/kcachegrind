@@ -68,8 +68,12 @@ private:
     // remember width of hex code column if hidden
     int _lastHexCodeWidth;
 
+    // Flag indicating if x86 assembly syntax options should be available
+    bool _maybeX86 = true;
+
     // widget options
     bool _showHexCode;
+    bool _useIntelSyntax = false;
 };
 
 #endif
