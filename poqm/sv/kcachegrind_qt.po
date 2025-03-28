@@ -356,8 +356,8 @@ msgctxt "QObject|"
 msgid "(unknown call)"
 msgstr "(okänt anrop)"
 
-#: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1392
-#: libviews/controlflowgraphview.cpp:2415
+#: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1414
+#: libviews/controlflowgraphview.cpp:2449
 msgctxt "QObject|"
 msgid "Export Graph"
 msgstr "Exportera diagram"
@@ -1064,14 +1064,14 @@ msgctxt "CallView|"
 msgid "%1 per call"
 msgstr "%1 per anrop"
 
-#: libviews/controlflowgraphview.cpp:607
+#: libviews/controlflowgraphview.cpp:623
 msgctxt "QObject|"
 msgid ""
 "Control-flow graph requires running callgrind with option --dump-instr=yes"
 msgstr ""
 "Kontrollflödesdiagram kräver att köra callgrind med väljaren --dump-instr=yes"
 
-#: libviews/controlflowgraphview.cpp:913
+#: libviews/controlflowgraphview.cpp:932
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1083,12 +1083,12 @@ msgstr ""
 "    '%1'\n"
 "Filen kunde inte hittas.\n"
 
-#: libviews/controlflowgraphview.cpp:917
+#: libviews/controlflowgraphview.cpp:936
 msgctxt "QObject|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr "Om korskompilerad, ange variabeln SYSROOT."
 
-#: libviews/controlflowgraphview.cpp:938
+#: libviews/controlflowgraphview.cpp:960
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1102,7 +1102,7 @@ msgstr ""
 "Kontrollera att 'objdump' är installerat.\n"
 "Verktyget finns i paketet 'binutils'."
 
-#: libviews/controlflowgraphview.cpp:1019
+#: libviews/controlflowgraphview.cpp:1041
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1117,7 +1117,7 @@ msgstr ""
 "Använder du en gammal profildatafil eller är det ovan nämnda\n"
 "ELF-objektet från en uppdaterad installation eller annan dator?"
 
-#: libviews/controlflowgraphview.cpp:1029
+#: libviews/controlflowgraphview.cpp:1051
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1131,12 +1131,12 @@ msgstr ""
 "Kontrollera att 'objdump' är installerat.\n"
 "Verktyget finns i paketet 'binutils'."
 
-#: libviews/controlflowgraphview.cpp:1750
+#: libviews/controlflowgraphview.cpp:1772
 msgctxt "QObject|"
 msgid "This is Control Flow Graph by KetchuppOfficial"
 msgstr "Det här är kontrollflödesdiagrammet av KetchuppOfficial"
 
-#: libviews/controlflowgraphview.cpp:1806
+#: libviews/controlflowgraphview.cpp:1828
 msgctxt "QObject|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
@@ -1145,25 +1145,25 @@ msgstr ""
 "Varning: En grafisk layout som tar lång tid pågår.\n"
 "Reducera nod- eller kantgränser för snabbare hastighet.\n"
 
-#: libviews/controlflowgraphview.cpp:1809
+#: libviews/controlflowgraphview.cpp:1831
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
 msgstr "Layout stoppad.\n"
 
-#: libviews/controlflowgraphview.cpp:1811
+#: libviews/controlflowgraphview.cpp:1833
 #, qt-format
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "Anropsgrafen har %1 noder och %2 kanter.\n"
 
-#: libviews/controlflowgraphview.cpp:1819
+#: libviews/controlflowgraphview.cpp:1841
 msgctxt "QObject|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr ""
 "Någon anropsgraf är inte tillgänglig eftersom utläggningsprocessen "
 "misslyckades.\n"
 
-#: libviews/controlflowgraphview.cpp:1821
+#: libviews/controlflowgraphview.cpp:1843
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1173,12 +1173,12 @@ msgstr ""
 "Försök att köra följande kommando fungerade inte:\n"
 "'%1'\n"
 
-#: libviews/controlflowgraphview.cpp:1823
+#: libviews/controlflowgraphview.cpp:1845
 msgctxt "QObject|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr "Kontrollera att 'dot' är installerat (GraphViz-paketet)."
 
-#: libviews/controlflowgraphview.cpp:2187
+#: libviews/controlflowgraphview.cpp:2209
 msgctxt "QObject|"
 msgid ""
 "Error running the graph layouting tool.\n"
@@ -1187,130 +1187,135 @@ msgstr ""
 "Fel vid försök att köra diagramlayoutverktyget.\n"
 "Kontrollera att 'dot' är installerat (GraphViz-paketet)."
 
-#: libviews/controlflowgraphview.cpp:2375
+#: libviews/controlflowgraphview.cpp:2399
 msgctxt "QObject|"
 msgid "This basic block"
 msgstr "Det här grundblocket"
 
-#: libviews/controlflowgraphview.cpp:2377
-#: libviews/controlflowgraphview.cpp:2398
+#: libviews/controlflowgraphview.cpp:2401
+#: libviews/controlflowgraphview.cpp:2432
 msgctxt "QObject|"
 msgid "PC only"
 msgstr "Bara programräknare"
 
-#: libviews/controlflowgraphview.cpp:2381
-#: libviews/controlflowgraphview.cpp:2402
+#: libviews/controlflowgraphview.cpp:2405
+#: libviews/controlflowgraphview.cpp:2436
 msgctxt "QObject|"
 msgid "Show instructions' PC"
 msgstr "Visa instruktionernas programräknare"
 
-#: libviews/controlflowgraphview.cpp:2385
-#: libviews/controlflowgraphview.cpp:2406
+#: libviews/controlflowgraphview.cpp:2409
+#: libviews/controlflowgraphview.cpp:2440
 msgctxt "QObject|"
 msgid "Show instructions' cost"
 msgstr "Visa instruktionernas kostnad"
 
-#: libviews/controlflowgraphview.cpp:2416
+#: libviews/controlflowgraphview.cpp:2426
+msgctxt "QObject|"
+msgid "Intel ASM Syntax"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2450
 msgctxt "QObject|"
 msgid "As DOT file..."
 msgstr "Som DOT-fil..."
 
-#: libviews/controlflowgraphview.cpp:2417
+#: libviews/controlflowgraphview.cpp:2451
 msgctxt "QObject|"
 msgid "As Image..."
 msgstr "Som bild..."
 
-#: libviews/controlflowgraphview.cpp:2507
+#: libviews/controlflowgraphview.cpp:2562
 msgctxt "QObject|"
 msgid "Export Graph as Image"
 msgstr "Exportera diagram som bild"
 
-#: libviews/controlflowgraphview.cpp:2509
+#: libviews/controlflowgraphview.cpp:2564
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
 msgstr "Bilder (*.png *.jpg)"
 
-#: libviews/controlflowgraphview.cpp:2942
+#: libviews/controlflowgraphview.cpp:2997
 msgctxt "QObject|"
 msgid "No trace data"
 msgstr "Ingen spårningsdata"
 
-#: libviews/controlflowgraphview.cpp:2947
+#: libviews/controlflowgraphview.cpp:3002
 msgctxt "QObject|"
 msgid "No item activated for which to draw the control-flow graph."
 msgstr "Inget objekt aktiverat att rita kontrollflödesdiagram för."
 
-#: libviews/controlflowgraphview.cpp:2959
+#: libviews/controlflowgraphview.cpp:3014
 msgctxt "QObject|"
 msgid "No control-flow graph can be drawn for the active item."
 msgstr "Något anropsdiagram kan inte ritas upp för det aktiva objektet."
 
-#: libviews/controlflowgraphview.cpp:3054
+#: libviews/controlflowgraphview.cpp:3109
 msgctxt "QObject|"
 msgid "Stop Layouting"
 msgstr "Stoppa layout"
 
-#: libviews/controlflowgraphview.cpp:3117
+#: libviews/controlflowgraphview.cpp:3172
 msgctxt "QObject|"
 msgid "Birds-eye View"
 msgstr "Översiktsvy"
 
-#: libviews/controlflowgraphview.cpp:3119
+#: libviews/controlflowgraphview.cpp:3174
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr "Uppe till vänster"
 
-#: libviews/controlflowgraphview.cpp:3120
+#: libviews/controlflowgraphview.cpp:3175
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr "Uppe till höger"
 
-#: libviews/controlflowgraphview.cpp:3121
+#: libviews/controlflowgraphview.cpp:3176
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "Nere till vänster"
 
-#: libviews/controlflowgraphview.cpp:3122
+#: libviews/controlflowgraphview.cpp:3177
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "Nere till höger"
 
-#: libviews/controlflowgraphview.cpp:3123
+#: libviews/controlflowgraphview.cpp:3178
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr "Automatisk"
 
-#: libviews/controlflowgraphview.cpp:3124
+#: libviews/controlflowgraphview.cpp:3179
 msgctxt "QObject|"
 msgid "Hide"
 msgstr "Dölj"
 
-#: libviews/controlflowgraphview.cpp:3134
+#: libviews/controlflowgraphview.cpp:3189
 msgctxt "QObject|"
 msgid "Layout"
 msgstr "Layout"
 
-#: libviews/controlflowgraphview.cpp:3136
+#: libviews/controlflowgraphview.cpp:3191
 msgctxt "QObject|"
 msgid "Top to Down"
 msgstr "Uppifrån och ner"
 
-#: libviews/controlflowgraphview.cpp:3137
+#: libviews/controlflowgraphview.cpp:3192
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "Vänster till höger"
 
-#: libviews/controlflowgraphview.cpp:3147
+#: libviews/controlflowgraphview.cpp:3202
 msgctxt "QObject|"
 msgid "Min. basic block cost"
 msgstr "Minimal kostnad för grundblock"
 
-#: libviews/controlflowgraphview.cpp:3149
+#: libviews/controlflowgraphview.cpp:3204
 msgctxt "QObject|"
 msgid "Undefined"
 msgstr "Odefinierad"
 
-#: libviews/controlflowgraphview.cpp:3152
+#: libviews/controlflowgraphview.cpp:3207
 #, qt-format
 msgctxt "QObject|"
 msgid "%1%"
@@ -1736,67 +1741,72 @@ msgctxt "InstrView|"
 msgid "Hex Code"
 msgstr "Hexkod"
 
-#: libviews/instrview.cpp:573
+#: libviews/instrview.cpp:290
+msgctxt "InstrView|"
+msgid "Intel Syntax"
+msgstr ""
+
+#: libviews/instrview.cpp:585
 msgctxt "InstrView|"
 msgid "There is no instruction info in the profile data file."
 msgstr "Det finns ingen instruktionsinformation i profileringsdatafilen."
 
-#: libviews/instrview.cpp:575
+#: libviews/instrview.cpp:587
 msgctxt "InstrView|"
 msgid "Tip: For Callgrind, rerun with option"
 msgstr "Tips: Kör om med väljare för Callgrind"
 
-#: libviews/instrview.cpp:576
+#: libviews/instrview.cpp:588
 msgctxt "InstrView|"
 msgid "      --dump-instr=yes"
 msgstr "      --dump-instr=yes"
 
-#: libviews/instrview.cpp:577
+#: libviews/instrview.cpp:589
 msgctxt "InstrView|"
 msgid "To see (conditional) jumps, additionally specify"
 msgstr "För att se (villkorliga) hopp, ange dessutom"
 
-#: libviews/instrview.cpp:578
+#: libviews/instrview.cpp:590
 msgctxt "InstrView|"
 msgid "      --collect-jumps=yes"
 msgstr "      --collect-jumps=yes"
 
-#: libviews/instrview.cpp:826
+#: libviews/instrview.cpp:839
 msgctxt "InstrView|"
 msgid "For annotated machine code, the following object file is needed:"
 msgstr "För assemblerkod med kommentarer är följande objektfil nödvändig:"
 
-#: libviews/instrview.cpp:831
+#: libviews/instrview.cpp:844
 msgctxt "InstrView|"
 msgid "This file can not be found."
 msgstr "Filen kan inte hittas."
 
-#: libviews/instrview.cpp:834
+#: libviews/instrview.cpp:847
 msgctxt "InstrView|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr "Om korskompilerad, ange variabeln SYSROOT."
 
-#: libviews/instrview.cpp:858
+#: libviews/instrview.cpp:872
 msgctxt "InstrView|"
 msgid "There is an error trying to execute the command"
 msgstr "Ett fel uppstod när kommandot skulle köras"
 
-#: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
+#: libviews/instrview.cpp:876 libviews/instrview.cpp:1172
 msgctxt "InstrView|"
 msgid "Check that you have installed 'objdump'."
 msgstr "Kontrollera att du har installerat 'objdump'."
 
-#: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
+#: libviews/instrview.cpp:878 libviews/instrview.cpp:1174
 msgctxt "InstrView|"
 msgid "This utility can be found in the 'binutils' package."
 msgstr "Det här verktyget finns i paketet 'binutils'."
 
-#: libviews/instrview.cpp:966
+#: libviews/instrview.cpp:980
 msgctxt "InstrView|"
 msgid "(No Instruction)"
 msgstr "(Ingen instruktion)"
 
-#: libviews/instrview.cpp:1134
+#: libviews/instrview.cpp:1148
 #, qt-format
 msgctxt "InstrView|"
 msgid "There are %n cost line(s) without machine code."
@@ -1804,32 +1814,32 @@ msgid_plural "There are %n cost line(s) without machine code."
 msgstr[0] "Det finns %n kostnadsrad utan maskinkod."
 msgstr[1] "Det finns %n kostnadsrader utan maskinkod."
 
-#: libviews/instrview.cpp:1136
+#: libviews/instrview.cpp:1150
 msgctxt "InstrView|"
 msgid "This happens because the code of"
 msgstr "Det här händer eftersom koden för"
 
-#: libviews/instrview.cpp:1139
+#: libviews/instrview.cpp:1153
 msgctxt "InstrView|"
 msgid "does not seem to match the profile data file."
 msgstr "inte verkar passa ihop med profileringsdatafilen."
 
-#: libviews/instrview.cpp:1142
+#: libviews/instrview.cpp:1156
 msgctxt "InstrView|"
 msgid "Are you using an old profile data file or is the above mentioned"
 msgstr "Använder du en gammal profileringsdatafil eller är ovannämnda"
 
-#: libviews/instrview.cpp:1144
+#: libviews/instrview.cpp:1158
 msgctxt "InstrView|"
 msgid "ELF object from an updated installation/another machine?"
 msgstr "ELF-objekt från en uppdaterad installation eller en annan dator?"
 
-#: libviews/instrview.cpp:1152
+#: libviews/instrview.cpp:1166
 msgctxt "InstrView|"
 msgid "There seems to be an error trying to execute the command"
 msgstr "Det verkar ha uppstått ett fel vid försök att köra kommandot"
 
-#: libviews/instrview.cpp:1156
+#: libviews/instrview.cpp:1170
 msgctxt "InstrView|"
 msgid "Check that the ELF object used in the command exists."
 msgstr "Kontrollera att ELF-objektet som används i kommandot finns."

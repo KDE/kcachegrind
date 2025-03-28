@@ -349,8 +349,8 @@ msgctxt "QObject|"
 msgid "(unknown call)"
 msgstr "(अज्ञात आह्वान)"
 
-#: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1392
-#: libviews/controlflowgraphview.cpp:2415
+#: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1414
+#: libviews/controlflowgraphview.cpp:2449
 msgctxt "QObject|"
 msgid "Export Graph"
 msgstr "निर्यात ग्राफ"
@@ -1042,14 +1042,14 @@ msgctxt "CallView|"
 msgid "%1 per call"
 msgstr "%1 प्रति आह्वानम्"
 
-#: libviews/controlflowgraphview.cpp:607
+#: libviews/controlflowgraphview.cpp:623
 msgctxt "QObject|"
 msgid ""
 "Control-flow graph requires running callgrind with option --dump-instr=yes"
 msgstr ""
 "नियन्त्रण-प्रवाह-लेखस्य कृते --dump-instr=yes विकल्पेन सह callgrind चालयितुं आवश्यकम् अस्ति"
 
-#: libviews/controlflowgraphview.cpp:913
+#: libviews/controlflowgraphview.cpp:932
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1061,12 +1061,12 @@ msgstr ""
 "    '%1' इति ।\n"
 "एषा सञ्चिका न लभ्यते ।\n"
 
-#: libviews/controlflowgraphview.cpp:917
+#: libviews/controlflowgraphview.cpp:936
 msgctxt "QObject|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr "यदि क्रॉस्-कम्पाइल् कृतं तर्हि SYSROOT चरं सेट् कुर्वन्तु ।"
 
-#: libviews/controlflowgraphview.cpp:938
+#: libviews/controlflowgraphview.cpp:960
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1080,7 +1080,7 @@ msgstr ""
 "भवता 'objdump' संस्थापितम् इति पश्यन्तु ।\n"
 "इयं उपयोगिता 'binutils' संकुलमध्ये द्रष्टुं शक्यते"
 
-#: libviews/controlflowgraphview.cpp:1019
+#: libviews/controlflowgraphview.cpp:1041
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1095,7 +1095,7 @@ msgstr ""
 "किं भवान् पुरातनं प्रोफाइल-दत्तांशसञ्चिकां उपयुङ्क्ते वा उपर्युक्तम् अस्ति वा\n"
 "अद्यतनसंस्थापनात्/अन्ययन्त्रात् ELF वस्तु?"
 
-#: libviews/controlflowgraphview.cpp:1029
+#: libviews/controlflowgraphview.cpp:1051
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1109,12 +1109,12 @@ msgstr ""
 "भवता 'objdump' संस्थापितम् इति पश्यन्तु ।\n"
 "इयं उपयोगिता 'binutils' संकुलमध्ये द्रष्टुं शक्यते ।"
 
-#: libviews/controlflowgraphview.cpp:1750
+#: libviews/controlflowgraphview.cpp:1772
 msgctxt "QObject|"
 msgid "This is Control Flow Graph by KetchuppOfficial"
 msgstr "इदं KetchuppOfficial द्वारा Control Flow Graph अस्ति"
 
-#: libviews/controlflowgraphview.cpp:1806
+#: libviews/controlflowgraphview.cpp:1828
 msgctxt "QObject|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
@@ -1123,23 +1123,23 @@ msgstr ""
 "चेतावनी: दीर्घकालीनः आलेखविन्यासः प्रचलति ।\n"
 "गतिं प्राप्तुं नोड्/एज सीमां न्यूनीकरोतु।\n"
 
-#: libviews/controlflowgraphview.cpp:1809
+#: libviews/controlflowgraphview.cpp:1831
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
 msgstr "विन्यासः स्थगितवान् ।\n"
 
-#: libviews/controlflowgraphview.cpp:1811
+#: libviews/controlflowgraphview.cpp:1833
 #, qt-format
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "आह्वानलेखे %1 नोड् %2 एज्स् च सन्ति ।\n"
 
-#: libviews/controlflowgraphview.cpp:1819
+#: libviews/controlflowgraphview.cpp:1841
 msgctxt "QObject|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr "विन्यासप्रक्रिया विफलतायाः कारणात् कोऽपि आलेखः उपलब्धः नास्ति ।\n"
 
-#: libviews/controlflowgraphview.cpp:1821
+#: libviews/controlflowgraphview.cpp:1843
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1149,12 +1149,12 @@ msgstr ""
 "निम्नलिखित आदेशं चालयितुं प्रयत्नः कार्यं न कृतवान् ।\n"
 "'%1' इति ।\n"
 
-#: libviews/controlflowgraphview.cpp:1823
+#: libviews/controlflowgraphview.cpp:1845
 msgctxt "QObject|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr "कृपया 'dot' संस्थापितम् इति पश्यन्तु (package GraphViz) ।"
 
-#: libviews/controlflowgraphview.cpp:2187
+#: libviews/controlflowgraphview.cpp:2209
 msgctxt "QObject|"
 msgid ""
 "Error running the graph layouting tool.\n"
@@ -1163,130 +1163,135 @@ msgstr ""
 "आलेखविन्याससाधनं चालयितुं त्रुटिः ।\n"
 "कृपया 'dot' संस्थापितम् इति पश्यन्तु (package Graphviz) ।"
 
-#: libviews/controlflowgraphview.cpp:2375
+#: libviews/controlflowgraphview.cpp:2399
 msgctxt "QObject|"
 msgid "This basic block"
 msgstr "एषः मूलभूतः खण्डः"
 
-#: libviews/controlflowgraphview.cpp:2377
-#: libviews/controlflowgraphview.cpp:2398
+#: libviews/controlflowgraphview.cpp:2401
+#: libviews/controlflowgraphview.cpp:2432
 msgctxt "QObject|"
 msgid "PC only"
 msgstr "PC केवलं"
 
-#: libviews/controlflowgraphview.cpp:2381
-#: libviews/controlflowgraphview.cpp:2402
+#: libviews/controlflowgraphview.cpp:2405
+#: libviews/controlflowgraphview.cpp:2436
 msgctxt "QObject|"
 msgid "Show instructions' PC"
 msgstr "निर्देशान् दर्शयतु' PC"
 
-#: libviews/controlflowgraphview.cpp:2385
-#: libviews/controlflowgraphview.cpp:2406
+#: libviews/controlflowgraphview.cpp:2409
+#: libviews/controlflowgraphview.cpp:2440
 msgctxt "QObject|"
 msgid "Show instructions' cost"
 msgstr "निर्देशानां मूल्यं दर्शयतु"
 
-#: libviews/controlflowgraphview.cpp:2416
+#: libviews/controlflowgraphview.cpp:2426
+msgctxt "QObject|"
+msgid "Intel ASM Syntax"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2450
 msgctxt "QObject|"
 msgid "As DOT file..."
 msgstr "DOT सञ्चिकारूपेण..."
 
-#: libviews/controlflowgraphview.cpp:2417
+#: libviews/controlflowgraphview.cpp:2451
 msgctxt "QObject|"
 msgid "As Image..."
 msgstr "As Image..."
 
-#: libviews/controlflowgraphview.cpp:2507
+#: libviews/controlflowgraphview.cpp:2562
 msgctxt "QObject|"
 msgid "Export Graph as Image"
 msgstr "Graph इत्येतत् Image इति निर्यातयन्तु"
 
-#: libviews/controlflowgraphview.cpp:2509
+#: libviews/controlflowgraphview.cpp:2564
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
 msgstr "चित्राणि (*.png *.jpg)"
 
-#: libviews/controlflowgraphview.cpp:2942
+#: libviews/controlflowgraphview.cpp:2997
 msgctxt "QObject|"
 msgid "No trace data"
 msgstr "न ट्रेस डाटा"
 
-#: libviews/controlflowgraphview.cpp:2947
+#: libviews/controlflowgraphview.cpp:3002
 msgctxt "QObject|"
 msgid "No item activated for which to draw the control-flow graph."
 msgstr "न कोऽपि द्रव्यः सक्रियः यस्य कृते नियन्त्रण-प्रवाह-लेखं आकर्षयितुं शक्यते ।"
 
-#: libviews/controlflowgraphview.cpp:2959
+#: libviews/controlflowgraphview.cpp:3014
 msgctxt "QObject|"
 msgid "No control-flow graph can be drawn for the active item."
 msgstr "सक्रियवस्तूनाम् कृते कोऽपि नियन्त्रण-प्रवाह-लेखः आकर्षितुं न शक्यते ।"
 
-#: libviews/controlflowgraphview.cpp:3054
+#: libviews/controlflowgraphview.cpp:3109
 msgctxt "QObject|"
 msgid "Stop Layouting"
 msgstr "लेआउटिंग् स्थगयन्तु"
 
-#: libviews/controlflowgraphview.cpp:3117
+#: libviews/controlflowgraphview.cpp:3172
 msgctxt "QObject|"
 msgid "Birds-eye View"
 msgstr "पक्षि-नेत्र-दृश्यम्"
 
-#: libviews/controlflowgraphview.cpp:3119
+#: libviews/controlflowgraphview.cpp:3174
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr "उपरि वामभागे"
 
-#: libviews/controlflowgraphview.cpp:3120
+#: libviews/controlflowgraphview.cpp:3175
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr "उपरि दक्षिणतः"
 
-#: libviews/controlflowgraphview.cpp:3121
+#: libviews/controlflowgraphview.cpp:3176
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "अधः वामभागे"
 
-#: libviews/controlflowgraphview.cpp:3122
+#: libviews/controlflowgraphview.cpp:3177
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "अधः दक्षिणतः"
 
-#: libviews/controlflowgraphview.cpp:3123
+#: libviews/controlflowgraphview.cpp:3178
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr "स्वतः"
 
-#: libviews/controlflowgraphview.cpp:3124
+#: libviews/controlflowgraphview.cpp:3179
 msgctxt "QObject|"
 msgid "Hide"
 msgstr "गोपयतु"
 
-#: libviews/controlflowgraphview.cpp:3134
+#: libviews/controlflowgraphview.cpp:3189
 msgctxt "QObject|"
 msgid "Layout"
 msgstr "प्रारूपं"
 
-#: libviews/controlflowgraphview.cpp:3136
+#: libviews/controlflowgraphview.cpp:3191
 msgctxt "QObject|"
 msgid "Top to Down"
 msgstr "उपरितः अधः यावत्"
 
-#: libviews/controlflowgraphview.cpp:3137
+#: libviews/controlflowgraphview.cpp:3192
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "वामतः दक्षिणतः"
 
-#: libviews/controlflowgraphview.cpp:3147
+#: libviews/controlflowgraphview.cpp:3202
 msgctxt "QObject|"
 msgid "Min. basic block cost"
 msgstr "मि. मूलभूत ब्लॉक लागत"
 
-#: libviews/controlflowgraphview.cpp:3149
+#: libviews/controlflowgraphview.cpp:3204
 msgctxt "QObject|"
 msgid "Undefined"
 msgstr "अनिर्दिष्टम्"
 
-#: libviews/controlflowgraphview.cpp:3152
+#: libviews/controlflowgraphview.cpp:3207
 #, qt-format
 msgctxt "QObject|"
 msgid "%1%"
@@ -1697,67 +1702,72 @@ msgctxt "InstrView|"
 msgid "Hex Code"
 msgstr "हेक्स कोड"
 
-#: libviews/instrview.cpp:573
+#: libviews/instrview.cpp:290
+msgctxt "InstrView|"
+msgid "Intel Syntax"
+msgstr ""
+
+#: libviews/instrview.cpp:585
 msgctxt "InstrView|"
 msgid "There is no instruction info in the profile data file."
 msgstr "प्रोफाइलदत्तांशसञ्चिकायां निर्देशसूचना नास्ति ।"
 
-#: libviews/instrview.cpp:575
+#: libviews/instrview.cpp:587
 msgctxt "InstrView|"
 msgid "Tip: For Callgrind, rerun with option"
 msgstr "युक्तिः : Callgrind कृते विकल्पेन सह पुनः चालयन्तु"
 
-#: libviews/instrview.cpp:576
+#: libviews/instrview.cpp:588
 msgctxt "InstrView|"
 msgid "      --dump-instr=yes"
 msgstr "      --डम्प-इंस्ट्र=आम्"
 
-#: libviews/instrview.cpp:577
+#: libviews/instrview.cpp:589
 msgctxt "InstrView|"
 msgid "To see (conditional) jumps, additionally specify"
 msgstr "(सशर्त) कूर्दनं द्रष्टुं अतिरिक्तं निर्दिशन्तु"
 
-#: libviews/instrview.cpp:578
+#: libviews/instrview.cpp:590
 msgctxt "InstrView|"
 msgid "      --collect-jumps=yes"
 msgstr "      --collect-jumps=आम्"
 
-#: libviews/instrview.cpp:826
+#: libviews/instrview.cpp:839
 msgctxt "InstrView|"
 msgid "For annotated machine code, the following object file is needed:"
 msgstr "एनोटेटेड् मशीन् कोड् कृते निम्नलिखित ऑब्जेक्ट् सञ्चिका आवश्यकी अस्ति ।"
 
-#: libviews/instrview.cpp:831
+#: libviews/instrview.cpp:844
 msgctxt "InstrView|"
 msgid "This file can not be found."
 msgstr "एषा सञ्चिका न लभ्यते ।"
 
-#: libviews/instrview.cpp:834
+#: libviews/instrview.cpp:847
 msgctxt "InstrView|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr "यदि क्रॉस्-कम्पाइल् कृतं तर्हि SYSROOT चरं सेट् कुर्वन्तु ।"
 
-#: libviews/instrview.cpp:858
+#: libviews/instrview.cpp:872
 msgctxt "InstrView|"
 msgid "There is an error trying to execute the command"
 msgstr "आदेशं निष्पादयितुं प्रयतमाने दोषः भवति"
 
-#: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
+#: libviews/instrview.cpp:876 libviews/instrview.cpp:1172
 msgctxt "InstrView|"
 msgid "Check that you have installed 'objdump'."
 msgstr "भवता 'objdump' संस्थापितम् इति पश्यन्तु ।"
 
-#: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
+#: libviews/instrview.cpp:878 libviews/instrview.cpp:1174
 msgctxt "InstrView|"
 msgid "This utility can be found in the 'binutils' package."
 msgstr "इयं उपयोगिता 'binutils' संकुलमध्ये द्रष्टुं शक्यते ।"
 
-#: libviews/instrview.cpp:966
+#: libviews/instrview.cpp:980
 msgctxt "InstrView|"
 msgid "(No Instruction)"
 msgstr "(कोऽपि निर्देशः नास्ति)"
 
-#: libviews/instrview.cpp:1134
+#: libviews/instrview.cpp:1148
 #, qt-format
 msgctxt "InstrView|"
 msgid "There are %n cost line(s) without machine code."
@@ -1765,32 +1775,32 @@ msgid_plural "There are %n cost line(s) without machine code."
 msgstr[0] "यन्त्रसङ्केतं विना %n मूल्यरेखा(s) सन्ति ।"
 msgstr[1] "यन्त्रसङ्केतं विना %n मूल्यरेखा(s) सन्ति ।"
 
-#: libviews/instrview.cpp:1136
+#: libviews/instrview.cpp:1150
 msgctxt "InstrView|"
 msgid "This happens because the code of"
 msgstr "एतत् भवति यतोहि कोडस्य..."
 
-#: libviews/instrview.cpp:1139
+#: libviews/instrview.cpp:1153
 msgctxt "InstrView|"
 msgid "does not seem to match the profile data file."
 msgstr "प्रोफाइलदत्तांशसञ्चिकायाः सङ्गतिः न दृश्यते ।"
 
-#: libviews/instrview.cpp:1142
+#: libviews/instrview.cpp:1156
 msgctxt "InstrView|"
 msgid "Are you using an old profile data file or is the above mentioned"
 msgstr "किं भवान् पुरातनं प्रोफाइल-दत्तांशसञ्चिकां उपयुङ्क्ते वा उपरि उल्लिखितम् अस्ति वा"
 
-#: libviews/instrview.cpp:1144
+#: libviews/instrview.cpp:1158
 msgctxt "InstrView|"
 msgid "ELF object from an updated installation/another machine?"
 msgstr "अद्यतनसंस्थापनात्/अन्ययन्त्रात् ELF वस्तु?"
 
-#: libviews/instrview.cpp:1152
+#: libviews/instrview.cpp:1166
 msgctxt "InstrView|"
 msgid "There seems to be an error trying to execute the command"
 msgstr "आदेशं निष्पादयितुं प्रयतमाने दोषः दृश्यते"
 
-#: libviews/instrview.cpp:1156
+#: libviews/instrview.cpp:1170
 msgctxt "InstrView|"
 msgid "Check that the ELF object used in the command exists."
 msgstr "आदेशे प्रयुक्तं ELF वस्तु अस्ति वा इति परीक्ष्यताम् ।"

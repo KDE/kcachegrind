@@ -406,8 +406,8 @@ msgctxt "QObject|"
 msgid "(unknown call)"
 msgstr "(tuntematon kutsu)"
 
-#: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1392
-#: libviews/controlflowgraphview.cpp:2415
+#: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1414
+#: libviews/controlflowgraphview.cpp:2449
 msgctxt "QObject|"
 msgid "Export Graph"
 msgstr "Vie kaavio"
@@ -1179,13 +1179,13 @@ msgctxt "CallView|"
 msgid "%1 per call"
 msgstr "%1/kutsu"
 
-#: libviews/controlflowgraphview.cpp:607
+#: libviews/controlflowgraphview.cpp:623
 msgctxt "QObject|"
 msgid ""
 "Control-flow graph requires running callgrind with option --dump-instr=yes"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:913
+#: libviews/controlflowgraphview.cpp:932
 #, fuzzy, qt-format
 #| msgid "For annotated machine code, the following object file is needed:"
 msgctxt "QObject|"
@@ -1195,7 +1195,7 @@ msgid ""
 "This file cannot be found.\n"
 msgstr "Merkittyyn konekoodiin tarvitaan seuraava objektitiedosto:"
 
-#: libviews/controlflowgraphview.cpp:917
+#: libviews/controlflowgraphview.cpp:936
 #, fuzzy
 #| msgctxt "InstrView|"
 #| msgid "If cross-compiled, set SYSROOT variable."
@@ -1203,7 +1203,7 @@ msgctxt "QObject|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr "Jos käännetty ristiin, aseta SYSROOT-muuttuja."
 
-#: libviews/controlflowgraphview.cpp:938
+#: libviews/controlflowgraphview.cpp:960
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1213,7 +1213,7 @@ msgid ""
 "This utility can be found in the 'binutils' package"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:1019
+#: libviews/controlflowgraphview.cpp:1041
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1224,7 +1224,7 @@ msgid ""
 "ELF object from an updated installation/another machine?"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:1029
+#: libviews/controlflowgraphview.cpp:1051
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1234,12 +1234,12 @@ msgid ""
 "This utility can be found in the 'binutils' package."
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:1750
+#: libviews/controlflowgraphview.cpp:1772
 msgctxt "QObject|"
 msgid "This is Control Flow Graph by KetchuppOfficial"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:1806
+#: libviews/controlflowgraphview.cpp:1828
 #, fuzzy
 #| msgid ""
 #| "Warning: a long lasting graph layouting is in progress.\n"
@@ -1252,28 +1252,28 @@ msgstr ""
 "Varoitus: pitkäkestoinen kaavion asettelu meneillään.\n"
 "Nopeuta vähentämällä solmujen tai viivojen rajoituksia.\n"
 
-#: libviews/controlflowgraphview.cpp:1809
+#: libviews/controlflowgraphview.cpp:1831
 #, fuzzy
 #| msgid "Layouting stopped.\n"
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
 msgstr "Asettelu päättyi.\n"
 
-#: libviews/controlflowgraphview.cpp:1811
+#: libviews/controlflowgraphview.cpp:1833
 #, fuzzy, qt-format
 #| msgid "The call graph has %1 nodes and %2 edges.\n"
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "Kutsukaaviossa %1 solmua ja %2 viivaa.\n"
 
-#: libviews/controlflowgraphview.cpp:1819
+#: libviews/controlflowgraphview.cpp:1841
 #, fuzzy
 #| msgid "No graph available because the layouting process failed.\n"
 msgctxt "QObject|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr "Kaavio ei saatavilla, koska asetteluprosessi epäonnistui.\n"
 
-#: libviews/controlflowgraphview.cpp:1821
+#: libviews/controlflowgraphview.cpp:1843
 #, fuzzy, qt-format
 #| msgid ""
 #| "Trying to run the following command did not work:\n"
@@ -1286,7 +1286,7 @@ msgstr ""
 "Seuraavan komennon suorittaminen ei toiminut:\n"
 "”%1”\n"
 
-#: libviews/controlflowgraphview.cpp:1823
+#: libviews/controlflowgraphview.cpp:1845
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "Please check that 'dot' is installed (package GraphViz)."
@@ -1294,7 +1294,7 @@ msgctxt "QObject|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr "Tarkista, että ”dot” on asennettu (kuuluu GraphViz-pakettiin)."
 
-#: libviews/controlflowgraphview.cpp:2187
+#: libviews/controlflowgraphview.cpp:2209
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "Please check that 'dot' is installed (package GraphViz)."
@@ -1304,27 +1304,27 @@ msgid ""
 "Please check that 'dot' is installed (package Graphviz)."
 msgstr "Tarkista, että ”dot” on asennettu (kuuluu GraphViz-pakettiin)."
 
-#: libviews/controlflowgraphview.cpp:2375
+#: libviews/controlflowgraphview.cpp:2399
 msgctxt "QObject|"
 msgid "This basic block"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:2377
-#: libviews/controlflowgraphview.cpp:2398
+#: libviews/controlflowgraphview.cpp:2401
+#: libviews/controlflowgraphview.cpp:2432
 msgctxt "QObject|"
 msgid "PC only"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:2381
-#: libviews/controlflowgraphview.cpp:2402
+#: libviews/controlflowgraphview.cpp:2405
+#: libviews/controlflowgraphview.cpp:2436
 #, fuzzy
 #| msgid "Instruction"
 msgctxt "QObject|"
 msgid "Show instructions' PC"
 msgstr "Käsky"
 
-#: libviews/controlflowgraphview.cpp:2385
-#: libviews/controlflowgraphview.cpp:2406
+#: libviews/controlflowgraphview.cpp:2409
+#: libviews/controlflowgraphview.cpp:2440
 #, fuzzy
 #| msgctxt "InstrView|"
 #| msgid "(No Instruction)"
@@ -1332,7 +1332,12 @@ msgctxt "QObject|"
 msgid "Show instructions' cost"
 msgstr "(Ei käskyä)"
 
-#: libviews/controlflowgraphview.cpp:2416
+#: libviews/controlflowgraphview.cpp:2426
+msgctxt "QObject|"
+msgid "Intel ASM Syntax"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2450
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "As DOT file..."
@@ -1340,7 +1345,7 @@ msgctxt "QObject|"
 msgid "As DOT file..."
 msgstr "DOT-tiedostoksi…"
 
-#: libviews/controlflowgraphview.cpp:2417
+#: libviews/controlflowgraphview.cpp:2451
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "As Image..."
@@ -1348,7 +1353,7 @@ msgctxt "QObject|"
 msgid "As Image..."
 msgstr "Kuvaksi…"
 
-#: libviews/controlflowgraphview.cpp:2507
+#: libviews/controlflowgraphview.cpp:2562
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "Export Graph As Image"
@@ -1356,7 +1361,7 @@ msgctxt "QObject|"
 msgid "Export Graph as Image"
 msgstr "Vie kaavio kuvaksi"
 
-#: libviews/controlflowgraphview.cpp:2509
+#: libviews/controlflowgraphview.cpp:2564
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "Images (*.png *.jpg)"
@@ -1364,28 +1369,28 @@ msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
 msgstr "Kuvat (*.png *.jpg)"
 
-#: libviews/controlflowgraphview.cpp:2942
+#: libviews/controlflowgraphview.cpp:2997
 #, fuzzy
 #| msgid "(no caller)"
 msgctxt "QObject|"
 msgid "No trace data"
 msgstr "(ei kutsujaa)"
 
-#: libviews/controlflowgraphview.cpp:2947
+#: libviews/controlflowgraphview.cpp:3002
 #, fuzzy
 #| msgid "No item activated for which to draw the call graph."
 msgctxt "QObject|"
 msgid "No item activated for which to draw the control-flow graph."
 msgstr "Ei aktiivista alkiota, jolle piirtää kutsukaavio."
 
-#: libviews/controlflowgraphview.cpp:2959
+#: libviews/controlflowgraphview.cpp:3014
 #, fuzzy
 #| msgid "No call graph can be drawn for the active item."
 msgctxt "QObject|"
 msgid "No control-flow graph can be drawn for the active item."
 msgstr "Kutsukaaviota ei voida piirtää aktiiviselle alkiolle."
 
-#: libviews/controlflowgraphview.cpp:3054
+#: libviews/controlflowgraphview.cpp:3109
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "Stop Layouting"
@@ -1393,7 +1398,7 @@ msgctxt "QObject|"
 msgid "Stop Layouting"
 msgstr "Pysäytä asettelu"
 
-#: libviews/controlflowgraphview.cpp:3117
+#: libviews/controlflowgraphview.cpp:3172
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "Birds-eye View"
@@ -1401,7 +1406,7 @@ msgctxt "QObject|"
 msgid "Birds-eye View"
 msgstr "Yleiskuva"
 
-#: libviews/controlflowgraphview.cpp:3119
+#: libviews/controlflowgraphview.cpp:3174
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "Top Left"
@@ -1409,7 +1414,7 @@ msgctxt "QObject|"
 msgid "Top Left"
 msgstr "Ylävasemmalla"
 
-#: libviews/controlflowgraphview.cpp:3120
+#: libviews/controlflowgraphview.cpp:3175
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "Top Right"
@@ -1417,7 +1422,7 @@ msgctxt "QObject|"
 msgid "Top Right"
 msgstr "Yläoikealla"
 
-#: libviews/controlflowgraphview.cpp:3121
+#: libviews/controlflowgraphview.cpp:3176
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "Bottom Left"
@@ -1425,7 +1430,7 @@ msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "Alavasemmalla"
 
-#: libviews/controlflowgraphview.cpp:3122
+#: libviews/controlflowgraphview.cpp:3177
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "Bottom Right"
@@ -1433,7 +1438,7 @@ msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "Alaoikealla"
 
-#: libviews/controlflowgraphview.cpp:3123
+#: libviews/controlflowgraphview.cpp:3178
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "Automatic"
@@ -1441,7 +1446,7 @@ msgctxt "QObject|"
 msgid "Automatic"
 msgstr "Automaattinen"
 
-#: libviews/controlflowgraphview.cpp:3124
+#: libviews/controlflowgraphview.cpp:3179
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "Hide"
@@ -1449,7 +1454,7 @@ msgctxt "QObject|"
 msgid "Hide"
 msgstr "Piilota"
 
-#: libviews/controlflowgraphview.cpp:3134
+#: libviews/controlflowgraphview.cpp:3189
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "Layout"
@@ -1457,7 +1462,7 @@ msgctxt "QObject|"
 msgid "Layout"
 msgstr "Asettelu"
 
-#: libviews/controlflowgraphview.cpp:3136
+#: libviews/controlflowgraphview.cpp:3191
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "Top to Down"
@@ -1465,7 +1470,7 @@ msgctxt "QObject|"
 msgid "Top to Down"
 msgstr "Ylhäältä alas"
 
-#: libviews/controlflowgraphview.cpp:3137
+#: libviews/controlflowgraphview.cpp:3192
 #, fuzzy
 #| msgctxt "CallGraphView|"
 #| msgid "Left to Right"
@@ -1473,19 +1478,19 @@ msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "Vasemmalta oikealle"
 
-#: libviews/controlflowgraphview.cpp:3147
+#: libviews/controlflowgraphview.cpp:3202
 #, fuzzy
 #| msgid "Min. Call Cost"
 msgctxt "QObject|"
 msgid "Min. basic block cost"
 msgstr "Kutsun vähimmäishinta"
 
-#: libviews/controlflowgraphview.cpp:3149
+#: libviews/controlflowgraphview.cpp:3204
 msgctxt "QObject|"
 msgid "Undefined"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3152
+#: libviews/controlflowgraphview.cpp:3207
 #, fuzzy, qt-format
 #| msgctxt "CallGraphView|"
 #| msgid "1 %"
@@ -1870,71 +1875,76 @@ msgctxt "InstrView|"
 msgid "Hex Code"
 msgstr "Heksakoodi"
 
-#: libviews/instrview.cpp:573
+#: libviews/instrview.cpp:290
+msgctxt "InstrView|"
+msgid "Intel Syntax"
+msgstr ""
+
+#: libviews/instrview.cpp:585
 #, fuzzy
 #| msgid "There is no instruction info in the profile data file."
 msgctxt "InstrView|"
 msgid "There is no instruction info in the profile data file."
 msgstr "Profiilidatatiedostossa ei ole käskytietoja."
 
-#: libviews/instrview.cpp:575
+#: libviews/instrview.cpp:587
 msgctxt "InstrView|"
 msgid "Tip: For Callgrind, rerun with option"
 msgstr "Vinkki: Aja callgrind uudelleen valinnalla"
 
-#: libviews/instrview.cpp:576
+#: libviews/instrview.cpp:588
 msgctxt "InstrView|"
 msgid "      --dump-instr=yes"
 msgstr "      --dump-instr=yes"
 
-#: libviews/instrview.cpp:577
+#: libviews/instrview.cpp:589
 msgctxt "InstrView|"
 msgid "To see (conditional) jumps, additionally specify"
 msgstr ""
 
-#: libviews/instrview.cpp:578
+#: libviews/instrview.cpp:590
 msgctxt "InstrView|"
 msgid "      --collect-jumps=yes"
 msgstr "      --collect-jumps=yes"
 
-#: libviews/instrview.cpp:826
+#: libviews/instrview.cpp:839
 #, fuzzy
 #| msgid "For annotated machine code, the following object file is needed:"
 msgctxt "InstrView|"
 msgid "For annotated machine code, the following object file is needed:"
 msgstr "Merkittyyn konekoodiin tarvitaan seuraava objektitiedosto:"
 
-#: libviews/instrview.cpp:831
+#: libviews/instrview.cpp:844
 msgctxt "InstrView|"
 msgid "This file can not be found."
 msgstr "Tätä tiedostoa ei löytynyt."
 
-#: libviews/instrview.cpp:834
+#: libviews/instrview.cpp:847
 msgctxt "InstrView|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr "Jos käännetty ristiin, aseta SYSROOT-muuttuja."
 
-#: libviews/instrview.cpp:858
+#: libviews/instrview.cpp:872
 msgctxt "InstrView|"
 msgid "There is an error trying to execute the command"
 msgstr ""
 
-#: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
+#: libviews/instrview.cpp:876 libviews/instrview.cpp:1172
 msgctxt "InstrView|"
 msgid "Check that you have installed 'objdump'."
 msgstr "Varmista, että ”objdump” on asennettu."
 
-#: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
+#: libviews/instrview.cpp:878 libviews/instrview.cpp:1174
 msgctxt "InstrView|"
 msgid "This utility can be found in the 'binutils' package."
 msgstr ""
 
-#: libviews/instrview.cpp:966
+#: libviews/instrview.cpp:980
 msgctxt "InstrView|"
 msgid "(No Instruction)"
 msgstr "(Ei käskyä)"
 
-#: libviews/instrview.cpp:1134
+#: libviews/instrview.cpp:1148
 #, qt-format
 msgctxt "InstrView|"
 msgid "There are %n cost line(s) without machine code."
@@ -1942,34 +1952,34 @@ msgid_plural "There are %n cost line(s) without machine code."
 msgstr[0] ""
 msgstr[1] ""
 
-#: libviews/instrview.cpp:1136
+#: libviews/instrview.cpp:1150
 msgctxt "InstrView|"
 msgid "This happens because the code of"
 msgstr ""
 
-#: libviews/instrview.cpp:1139
+#: libviews/instrview.cpp:1153
 #, fuzzy
 #| msgid "There is no instruction info in the profile data file."
 msgctxt "InstrView|"
 msgid "does not seem to match the profile data file."
 msgstr "Profiilidatatiedostossa ei ole käskytietoja."
 
-#: libviews/instrview.cpp:1142
+#: libviews/instrview.cpp:1156
 msgctxt "InstrView|"
 msgid "Are you using an old profile data file or is the above mentioned"
 msgstr "Käytätkö vanhaa profiilidatatiedostoa vai onko yllä mainittu"
 
-#: libviews/instrview.cpp:1144
+#: libviews/instrview.cpp:1158
 msgctxt "InstrView|"
 msgid "ELF object from an updated installation/another machine?"
 msgstr "ELF-olio päivittyneestä asennuksesta tai toiselta koneelta?"
 
-#: libviews/instrview.cpp:1152
+#: libviews/instrview.cpp:1166
 msgctxt "InstrView|"
 msgid "There seems to be an error trying to execute the command"
 msgstr ""
 
-#: libviews/instrview.cpp:1156
+#: libviews/instrview.cpp:1170
 #, fuzzy
 #| msgid "Check that the ELF object used in the command exists."
 msgctxt "InstrView|"

@@ -351,8 +351,8 @@ msgctxt "QObject|"
 msgid "(unknown call)"
 msgstr "(알 수 없는 호출)"
 
-#: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1392
-#: libviews/controlflowgraphview.cpp:2415
+#: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1414
+#: libviews/controlflowgraphview.cpp:2449
 msgctxt "QObject|"
 msgid "Export Graph"
 msgstr "그래프 내보내기"
@@ -1045,7 +1045,7 @@ msgctxt "CallView|"
 msgid "%1 per call"
 msgstr "호출당 %1"
 
-#: libviews/controlflowgraphview.cpp:607
+#: libviews/controlflowgraphview.cpp:623
 msgctxt "QObject|"
 msgid ""
 "Control-flow graph requires running callgrind with option --dump-instr=yes"
@@ -1053,7 +1053,7 @@ msgstr ""
 "제어 흐름 그래프를 보려면 callgrind를 실행할 때 --dump-instr=yes 옵션을 지정"
 "해야 함"
 
-#: libviews/controlflowgraphview.cpp:913
+#: libviews/controlflowgraphview.cpp:932
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1065,12 +1065,12 @@ msgstr ""
 "    '%1'\n"
 "해당 파일을 찾을 수 없습니다.\n"
 
-#: libviews/controlflowgraphview.cpp:917
+#: libviews/controlflowgraphview.cpp:936
 msgctxt "QObject|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr "크로스 컴파일했으면 SYSROOT 환경 변수를 설정하십시오."
 
-#: libviews/controlflowgraphview.cpp:938
+#: libviews/controlflowgraphview.cpp:960
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1084,7 +1084,7 @@ msgstr ""
 "'objdump' 설치 상태를 확인하십시오.\n"
 "이 유틸리티는 'binutils' 패키지에 포함되어 있습니다"
 
-#: libviews/controlflowgraphview.cpp:1019
+#: libviews/controlflowgraphview.cpp:1041
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1099,7 +1099,7 @@ msgstr ""
 "프로필 데이터가 오래 되었거나 위에 지정한 ELF 객체가\n"
 "업데이트되었거나 다른 머신에서 왔을 수도 있습니다."
 
-#: libviews/controlflowgraphview.cpp:1029
+#: libviews/controlflowgraphview.cpp:1051
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1113,12 +1113,12 @@ msgstr ""
 "'objdump' 설치 상태를 확인하십시오.\n"
 "이 유틸리티는 'binutils' 패키지에 포함되어 있습니다."
 
-#: libviews/controlflowgraphview.cpp:1750
+#: libviews/controlflowgraphview.cpp:1772
 msgctxt "QObject|"
 msgid "This is Control Flow Graph by KetchuppOfficial"
 msgstr "KetchuppOfficial에서 생성한 제어 흐름 그래프"
 
-#: libviews/controlflowgraphview.cpp:1806
+#: libviews/controlflowgraphview.cpp:1828
 msgctxt "QObject|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
@@ -1127,23 +1127,23 @@ msgstr ""
 "경고: 오랫동안 진행 중인 그래프 배치 작업이 있습니다.\n"
 "속도를 향상하려면 노드/선 제한을 줄이십시오.\n"
 
-#: libviews/controlflowgraphview.cpp:1809
+#: libviews/controlflowgraphview.cpp:1831
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
 msgstr "그래프 배치 작업 중단됨.\n"
 
-#: libviews/controlflowgraphview.cpp:1811
+#: libviews/controlflowgraphview.cpp:1833
 #, qt-format
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "호출 그래프에 노드 %1개, 선 %2개가 있습니다.\n"
 
-#: libviews/controlflowgraphview.cpp:1819
+#: libviews/controlflowgraphview.cpp:1841
 msgctxt "QObject|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr "레이아웃 배치 작업이 실패하여 그래프를 사용할 수 없습니다.\n"
 
-#: libviews/controlflowgraphview.cpp:1821
+#: libviews/controlflowgraphview.cpp:1843
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1153,12 +1153,12 @@ msgstr ""
 "다음 명령을 실행할 수 없습니다:\n"
 "'%1'\n"
 
-#: libviews/controlflowgraphview.cpp:1823
+#: libviews/controlflowgraphview.cpp:1845
 msgctxt "QObject|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr "'dot'(GraphViz 패키지)이 설치되었는지 확인해 주십시오."
 
-#: libviews/controlflowgraphview.cpp:2187
+#: libviews/controlflowgraphview.cpp:2209
 msgctxt "QObject|"
 msgid ""
 "Error running the graph layouting tool.\n"
@@ -1167,130 +1167,135 @@ msgstr ""
 "그래프 레이아웃 도구를 실행할 수 없습니다.\n"
 "'dot'(GraphViz 패키지)이 설치되었는지 확인해 주십시오."
 
-#: libviews/controlflowgraphview.cpp:2375
+#: libviews/controlflowgraphview.cpp:2399
 msgctxt "QObject|"
 msgid "This basic block"
 msgstr "이 기본 블록"
 
-#: libviews/controlflowgraphview.cpp:2377
-#: libviews/controlflowgraphview.cpp:2398
+#: libviews/controlflowgraphview.cpp:2401
+#: libviews/controlflowgraphview.cpp:2432
 msgctxt "QObject|"
 msgid "PC only"
 msgstr "PC만"
 
-#: libviews/controlflowgraphview.cpp:2381
-#: libviews/controlflowgraphview.cpp:2402
+#: libviews/controlflowgraphview.cpp:2405
+#: libviews/controlflowgraphview.cpp:2436
 msgctxt "QObject|"
 msgid "Show instructions' PC"
 msgstr "명령의 PC 표시"
 
-#: libviews/controlflowgraphview.cpp:2385
-#: libviews/controlflowgraphview.cpp:2406
+#: libviews/controlflowgraphview.cpp:2409
+#: libviews/controlflowgraphview.cpp:2440
 msgctxt "QObject|"
 msgid "Show instructions' cost"
 msgstr "명령의 비용 표시"
 
-#: libviews/controlflowgraphview.cpp:2416
+#: libviews/controlflowgraphview.cpp:2426
+msgctxt "QObject|"
+msgid "Intel ASM Syntax"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2450
 msgctxt "QObject|"
 msgid "As DOT file..."
 msgstr "DOT 파일로..."
 
-#: libviews/controlflowgraphview.cpp:2417
+#: libviews/controlflowgraphview.cpp:2451
 msgctxt "QObject|"
 msgid "As Image..."
 msgstr "그림으로..."
 
-#: libviews/controlflowgraphview.cpp:2507
+#: libviews/controlflowgraphview.cpp:2562
 msgctxt "QObject|"
 msgid "Export Graph as Image"
 msgstr "그림으로 그래프 내보내기"
 
-#: libviews/controlflowgraphview.cpp:2509
+#: libviews/controlflowgraphview.cpp:2564
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
 msgstr "그림 (*.png *.jpg)"
 
-#: libviews/controlflowgraphview.cpp:2942
+#: libviews/controlflowgraphview.cpp:2997
 msgctxt "QObject|"
 msgid "No trace data"
 msgstr "추적 데이터 없음"
 
-#: libviews/controlflowgraphview.cpp:2947
+#: libviews/controlflowgraphview.cpp:3002
 msgctxt "QObject|"
 msgid "No item activated for which to draw the control-flow graph."
 msgstr "제어 흐름 그래프를 그릴 항목이 활성화되지 않았습니다."
 
-#: libviews/controlflowgraphview.cpp:2959
+#: libviews/controlflowgraphview.cpp:3014
 msgctxt "QObject|"
 msgid "No control-flow graph can be drawn for the active item."
 msgstr "활성 항목에 대해 그릴 수 있는 제어 흐름 그래프가 없습니다."
 
-#: libviews/controlflowgraphview.cpp:3054
+#: libviews/controlflowgraphview.cpp:3109
 msgctxt "QObject|"
 msgid "Stop Layouting"
 msgstr "배치 중단하기"
 
-#: libviews/controlflowgraphview.cpp:3117
+#: libviews/controlflowgraphview.cpp:3172
 msgctxt "QObject|"
 msgid "Birds-eye View"
 msgstr "멀리 보기"
 
-#: libviews/controlflowgraphview.cpp:3119
+#: libviews/controlflowgraphview.cpp:3174
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr "왼쪽 위"
 
-#: libviews/controlflowgraphview.cpp:3120
+#: libviews/controlflowgraphview.cpp:3175
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr "오른쪽 위"
 
-#: libviews/controlflowgraphview.cpp:3121
+#: libviews/controlflowgraphview.cpp:3176
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "왼쪽 아래"
 
-#: libviews/controlflowgraphview.cpp:3122
+#: libviews/controlflowgraphview.cpp:3177
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "오른쪽 아래"
 
-#: libviews/controlflowgraphview.cpp:3123
+#: libviews/controlflowgraphview.cpp:3178
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr "자동"
 
-#: libviews/controlflowgraphview.cpp:3124
+#: libviews/controlflowgraphview.cpp:3179
 msgctxt "QObject|"
 msgid "Hide"
 msgstr "숨기기"
 
-#: libviews/controlflowgraphview.cpp:3134
+#: libviews/controlflowgraphview.cpp:3189
 msgctxt "QObject|"
 msgid "Layout"
 msgstr "레이아웃"
 
-#: libviews/controlflowgraphview.cpp:3136
+#: libviews/controlflowgraphview.cpp:3191
 msgctxt "QObject|"
 msgid "Top to Down"
 msgstr "위에서 아래로"
 
-#: libviews/controlflowgraphview.cpp:3137
+#: libviews/controlflowgraphview.cpp:3192
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "왼쪽에서 오른쪽으로"
 
-#: libviews/controlflowgraphview.cpp:3147
+#: libviews/controlflowgraphview.cpp:3202
 msgctxt "QObject|"
 msgid "Min. basic block cost"
 msgstr "최소 기본 블록 비용"
 
-#: libviews/controlflowgraphview.cpp:3149
+#: libviews/controlflowgraphview.cpp:3204
 msgctxt "QObject|"
 msgid "Undefined"
 msgstr "정의되지 않음"
 
-#: libviews/controlflowgraphview.cpp:3152
+#: libviews/controlflowgraphview.cpp:3207
 #, qt-format
 msgctxt "QObject|"
 msgid "%1%"
@@ -1698,99 +1703,104 @@ msgctxt "InstrView|"
 msgid "Hex Code"
 msgstr "16진 코드"
 
-#: libviews/instrview.cpp:573
+#: libviews/instrview.cpp:290
+msgctxt "InstrView|"
+msgid "Intel Syntax"
+msgstr ""
+
+#: libviews/instrview.cpp:585
 msgctxt "InstrView|"
 msgid "There is no instruction info in the profile data file."
 msgstr "프로필 데이터 파일에 명령 정보가 없습니다."
 
-#: libviews/instrview.cpp:575
+#: libviews/instrview.cpp:587
 msgctxt "InstrView|"
 msgid "Tip: For Callgrind, rerun with option"
 msgstr "팁: Callgrind의 경우 옵션을 변경 후 다시 실행하십시오"
 
-#: libviews/instrview.cpp:576
+#: libviews/instrview.cpp:588
 msgctxt "InstrView|"
 msgid "      --dump-instr=yes"
 msgstr "      --dump-instr=yes"
 
-#: libviews/instrview.cpp:577
+#: libviews/instrview.cpp:589
 msgctxt "InstrView|"
 msgid "To see (conditional) jumps, additionally specify"
 msgstr "(조건) 분기를 보려면 추가 지정"
 
-#: libviews/instrview.cpp:578
+#: libviews/instrview.cpp:590
 msgctxt "InstrView|"
 msgid "      --collect-jumps=yes"
 msgstr "      --collect-jumps=yes"
 
-#: libviews/instrview.cpp:826
+#: libviews/instrview.cpp:839
 msgctxt "InstrView|"
 msgid "For annotated machine code, the following object file is needed:"
 msgstr "설명이 추가된 기계어 코드를 보려면 다음 파일이 필요합니다."
 
-#: libviews/instrview.cpp:831
+#: libviews/instrview.cpp:844
 msgctxt "InstrView|"
 msgid "This file can not be found."
 msgstr "파일을 찾을 수 없습니다."
 
-#: libviews/instrview.cpp:834
+#: libviews/instrview.cpp:847
 msgctxt "InstrView|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr "크로스 컴파일했으면 SYSROOT 환경 변수를 설정하십시오."
 
-#: libviews/instrview.cpp:858
+#: libviews/instrview.cpp:872
 msgctxt "InstrView|"
 msgid "There is an error trying to execute the command"
 msgstr "명령을 실행하는 동안 오류가 있습니다."
 
-#: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
+#: libviews/instrview.cpp:876 libviews/instrview.cpp:1172
 msgctxt "InstrView|"
 msgid "Check that you have installed 'objdump'."
 msgstr "'objdump' 설치 상태를 확인하십시오."
 
-#: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
+#: libviews/instrview.cpp:878 libviews/instrview.cpp:1174
 msgctxt "InstrView|"
 msgid "This utility can be found in the 'binutils' package."
 msgstr "'binutils' 패키지에서 찾을 수 있습니다."
 
-#: libviews/instrview.cpp:966
+#: libviews/instrview.cpp:980
 msgctxt "InstrView|"
 msgid "(No Instruction)"
 msgstr "(명령 없음)"
 
-#: libviews/instrview.cpp:1134
+#: libviews/instrview.cpp:1148
 #, qt-format
 msgctxt "InstrView|"
 msgid "There are %n cost line(s) without machine code."
 msgid_plural "There are %n cost line(s) without machine code."
 msgstr[0] "기계어 코드가 없는 비용을 발생하는 줄이 %n줄 있습니다."
 
-#: libviews/instrview.cpp:1136
+#: libviews/instrview.cpp:1150
 msgctxt "InstrView|"
 msgid "This happens because the code of"
 msgstr "다음의 코드 때문이 이러한 현상이 발생했습니다."
 
-#: libviews/instrview.cpp:1139
+#: libviews/instrview.cpp:1153
 msgctxt "InstrView|"
 msgid "does not seem to match the profile data file."
 msgstr "프로필 데이터 파일과 일치하지 않은 것 같습니다."
 
-#: libviews/instrview.cpp:1142
+#: libviews/instrview.cpp:1156
 msgctxt "InstrView|"
 msgid "Are you using an old profile data file or is the above mentioned"
 msgstr "오래된 프로필 데이터를 사용하고 있거나 다음 항목 중 하나입니다"
 
-#: libviews/instrview.cpp:1144
+#: libviews/instrview.cpp:1158
 msgctxt "InstrView|"
 msgid "ELF object from an updated installation/another machine?"
 msgstr "새로운 설치본/다른 장치에서 온 ELF 객체입니까?"
 
-#: libviews/instrview.cpp:1152
+#: libviews/instrview.cpp:1166
 msgctxt "InstrView|"
 msgid "There seems to be an error trying to execute the command"
 msgstr "명령을 실행하는 중 오류가 발생한 것 같습니다"
 
-#: libviews/instrview.cpp:1156
+#: libviews/instrview.cpp:1170
 msgctxt "InstrView|"
 msgid "Check that the ELF object used in the command exists."
 msgstr "명령에 사용한 ELF 객체가 존재하는 지 확인하십시오."

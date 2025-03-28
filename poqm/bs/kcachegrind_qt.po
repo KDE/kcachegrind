@@ -485,8 +485,8 @@ msgctxt "QObject|"
 msgid "(unknown call)"
 msgstr "(nepoznat poziv)"
 
-#: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1392
-#: libviews/controlflowgraphview.cpp:2415
+#: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1414
+#: libviews/controlflowgraphview.cpp:2449
 #, fuzzy
 #| msgid "Export Graph"
 msgctxt "QObject|"
@@ -1464,13 +1464,13 @@ msgctxt "CallView|"
 msgid "%1 per call"
 msgstr "%1 po pozivu"
 
-#: libviews/controlflowgraphview.cpp:607
+#: libviews/controlflowgraphview.cpp:623
 msgctxt "QObject|"
 msgid ""
 "Control-flow graph requires running callgrind with option --dump-instr=yes"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:913
+#: libviews/controlflowgraphview.cpp:932
 #, fuzzy, qt-format
 #| msgid "For annotated machine code, the following object file is needed:"
 msgctxt "QObject|"
@@ -1480,12 +1480,12 @@ msgid ""
 "This file cannot be found.\n"
 msgstr "Za označeni mašinski kôd, potrebno je staviti sljedeću datoteku:"
 
-#: libviews/controlflowgraphview.cpp:917
+#: libviews/controlflowgraphview.cpp:936
 msgctxt "QObject|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:938
+#: libviews/controlflowgraphview.cpp:960
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1495,7 +1495,7 @@ msgid ""
 "This utility can be found in the 'binutils' package"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:1019
+#: libviews/controlflowgraphview.cpp:1041
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1506,7 +1506,7 @@ msgid ""
 "ELF object from an updated installation/another machine?"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:1029
+#: libviews/controlflowgraphview.cpp:1051
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -1516,12 +1516,12 @@ msgid ""
 "This utility can be found in the 'binutils' package."
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:1750
+#: libviews/controlflowgraphview.cpp:1772
 msgctxt "QObject|"
 msgid "This is Control Flow Graph by KetchuppOfficial"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:1806
+#: libviews/controlflowgraphview.cpp:1828
 #, fuzzy
 #| msgid ""
 #| "Warning: a long lasting graph layouting is in progress.\n"
@@ -1534,28 +1534,28 @@ msgstr ""
 "Upozorenje: Oblikovanje grafikona u toku dugo traje.\n"
 "Smanjite ograničenja čvorova/ivica radi ubrzanja.\n"
 
-#: libviews/controlflowgraphview.cpp:1809
+#: libviews/controlflowgraphview.cpp:1831
 #, fuzzy
 #| msgid "Layouting stopped.\n"
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
 msgstr "Oblikovanje je zaustavljeno.\n"
 
-#: libviews/controlflowgraphview.cpp:1811
+#: libviews/controlflowgraphview.cpp:1833
 #, fuzzy, qt-format
 #| msgid "The call graph has %1 nodes and %2 edges.\n"
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "Graf poziva ima %1 čvorova i %2 ivica.\n"
 
-#: libviews/controlflowgraphview.cpp:1819
+#: libviews/controlflowgraphview.cpp:1841
 #, fuzzy
 #| msgid "No graph available because the layouting process failed.\n"
 msgctxt "QObject|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr "Graf nije dostupan zbog neuspjelog procesa oblikovanja.\n"
 
-#: libviews/controlflowgraphview.cpp:1821
+#: libviews/controlflowgraphview.cpp:1843
 #, fuzzy, qt-format
 #| msgid ""
 #| "Trying to run the following command did not work:\n"
@@ -1568,14 +1568,14 @@ msgstr ""
 "Neuspjelo pokretanje komande:\n"
 "'%1'\n"
 
-#: libviews/controlflowgraphview.cpp:1823
+#: libviews/controlflowgraphview.cpp:1845
 #, fuzzy
 #| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "QObject|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr "Uvjerite se da je „dot“ instaliran (paket GraphViz)."
 
-#: libviews/controlflowgraphview.cpp:2187
+#: libviews/controlflowgraphview.cpp:2209
 #, fuzzy
 #| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "QObject|"
@@ -1584,172 +1584,177 @@ msgid ""
 "Please check that 'dot' is installed (package Graphviz)."
 msgstr "Uvjerite se da je „dot“ instaliran (paket GraphViz)."
 
-#: libviews/controlflowgraphview.cpp:2375
+#: libviews/controlflowgraphview.cpp:2399
 msgctxt "QObject|"
 msgid "This basic block"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:2377
-#: libviews/controlflowgraphview.cpp:2398
+#: libviews/controlflowgraphview.cpp:2401
+#: libviews/controlflowgraphview.cpp:2432
 msgctxt "QObject|"
 msgid "PC only"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:2381
-#: libviews/controlflowgraphview.cpp:2402
+#: libviews/controlflowgraphview.cpp:2405
+#: libviews/controlflowgraphview.cpp:2436
 #, fuzzy
 #| msgid "Instruction Call"
 msgctxt "QObject|"
 msgid "Show instructions' PC"
 msgstr "Poziv instrukcije"
 
-#: libviews/controlflowgraphview.cpp:2385
-#: libviews/controlflowgraphview.cpp:2406
+#: libviews/controlflowgraphview.cpp:2409
+#: libviews/controlflowgraphview.cpp:2440
 #, fuzzy
 #| msgid "(No Instruction)"
 msgctxt "QObject|"
 msgid "Show instructions' cost"
 msgstr "(Nema naredbe)"
 
-#: libviews/controlflowgraphview.cpp:2416
+#: libviews/controlflowgraphview.cpp:2426
+msgctxt "QObject|"
+msgid "Intel ASM Syntax"
+msgstr ""
+
+#: libviews/controlflowgraphview.cpp:2450
 #, fuzzy
 #| msgid "As DOT file..."
 msgctxt "QObject|"
 msgid "As DOT file..."
 msgstr "Kao DOT datoteka..."
 
-#: libviews/controlflowgraphview.cpp:2417
+#: libviews/controlflowgraphview.cpp:2451
 #, fuzzy
 #| msgid "As Image..."
 msgctxt "QObject|"
 msgid "As Image..."
 msgstr "Kao slika..."
 
-#: libviews/controlflowgraphview.cpp:2507
+#: libviews/controlflowgraphview.cpp:2562
 #, fuzzy
 #| msgid "Export Graph As Image"
 msgctxt "QObject|"
 msgid "Export Graph as Image"
 msgstr "Izvesti graf kao sliku"
 
-#: libviews/controlflowgraphview.cpp:2509
+#: libviews/controlflowgraphview.cpp:2564
 #, fuzzy
 #| msgid "Images (*.png *.jpg)"
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
 msgstr "Slike (*.png *.jpg)"
 
-#: libviews/controlflowgraphview.cpp:2942
+#: libviews/controlflowgraphview.cpp:2997
 #, fuzzy
 #| msgid "(no trace parts)"
 msgctxt "QObject|"
 msgid "No trace data"
 msgstr "(nema dijelova traga)"
 
-#: libviews/controlflowgraphview.cpp:2947
+#: libviews/controlflowgraphview.cpp:3002
 #, fuzzy
 #| msgid "No item activated for which to draw the call graph."
 msgctxt "QObject|"
 msgid "No item activated for which to draw the control-flow graph."
 msgstr "Nema aktivirane stavke za koju bi se iscrtao graf poziva."
 
-#: libviews/controlflowgraphview.cpp:2959
+#: libviews/controlflowgraphview.cpp:3014
 #, fuzzy
 #| msgid "No call graph can be drawn for the active item."
 msgctxt "QObject|"
 msgid "No control-flow graph can be drawn for the active item."
 msgstr "Graf poziva se ne može iscrtati za aktivnu stavku."
 
-#: libviews/controlflowgraphview.cpp:3054
+#: libviews/controlflowgraphview.cpp:3109
 #, fuzzy
 #| msgid "Stop Layouting"
 msgctxt "QObject|"
 msgid "Stop Layouting"
 msgstr "Zaustavi oblikovanje"
 
-#: libviews/controlflowgraphview.cpp:3117
+#: libviews/controlflowgraphview.cpp:3172
 #, fuzzy
 #| msgid "Birds-eye View"
 msgctxt "QObject|"
 msgid "Birds-eye View"
 msgstr "Ptičija perspektiva"
 
-#: libviews/controlflowgraphview.cpp:3119
+#: libviews/controlflowgraphview.cpp:3174
 #, fuzzy
 #| msgid "Top Left"
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr "Gore Lijevo"
 
-#: libviews/controlflowgraphview.cpp:3120
+#: libviews/controlflowgraphview.cpp:3175
 #, fuzzy
 #| msgid "Top Right"
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr "Gore Desno"
 
-#: libviews/controlflowgraphview.cpp:3121
+#: libviews/controlflowgraphview.cpp:3176
 #, fuzzy
 #| msgid "Bottom Left"
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "Dolje lijevo"
 
-#: libviews/controlflowgraphview.cpp:3122
+#: libviews/controlflowgraphview.cpp:3177
 #, fuzzy
 #| msgid "Bottom Right"
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "Dolje desno"
 
-#: libviews/controlflowgraphview.cpp:3123
+#: libviews/controlflowgraphview.cpp:3178
 #, fuzzy
 #| msgid "Automatic"
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr "Automatski"
 
-#: libviews/controlflowgraphview.cpp:3124
+#: libviews/controlflowgraphview.cpp:3179
 #, fuzzy
 #| msgid "Hide"
 msgctxt "QObject|"
 msgid "Hide"
 msgstr "Sakrij"
 
-#: libviews/controlflowgraphview.cpp:3134
+#: libviews/controlflowgraphview.cpp:3189
 #, fuzzy
 #| msgid "Layout"
 msgctxt "QObject|"
 msgid "Layout"
 msgstr "Izgled"
 
-#: libviews/controlflowgraphview.cpp:3136
+#: libviews/controlflowgraphview.cpp:3191
 #, fuzzy
 #| msgid "Top to Down"
 msgctxt "QObject|"
 msgid "Top to Down"
 msgstr "Odozgo na dolje"
 
-#: libviews/controlflowgraphview.cpp:3137
+#: libviews/controlflowgraphview.cpp:3192
 #, fuzzy
 #| msgid "Left to Right"
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "Sa lijeva na desno"
 
-#: libviews/controlflowgraphview.cpp:3147
+#: libviews/controlflowgraphview.cpp:3202
 #, fuzzy
 #| msgid "Min. Call Cost"
 msgctxt "QObject|"
 msgid "Min. basic block cost"
 msgstr "Min. trošak poziva"
 
-#: libviews/controlflowgraphview.cpp:3149
+#: libviews/controlflowgraphview.cpp:3204
 msgctxt "QObject|"
 msgid "Undefined"
 msgstr ""
 
-#: libviews/controlflowgraphview.cpp:3152
+#: libviews/controlflowgraphview.cpp:3207
 #, fuzzy, qt-format
 #| msgid "1 %"
 msgctxt "QObject|"
@@ -2332,7 +2337,12 @@ msgctxt "InstrView|"
 msgid "Hex Code"
 msgstr "Heks. kôd"
 
-#: libviews/instrview.cpp:573
+#: libviews/instrview.cpp:290
+msgctxt "InstrView|"
+msgid "Intel Syntax"
+msgstr ""
+
+#: libviews/instrview.cpp:585
 #, fuzzy
 #| msgid "There is no instruction info in the profile data file."
 msgctxt "InstrView|"
@@ -2340,82 +2350,82 @@ msgid "There is no instruction info in the profile data file."
 msgstr ""
 "Unutar datoteke sa podacima o profilu nema informacija o instrukcijama."
 
-#: libviews/instrview.cpp:575
+#: libviews/instrview.cpp:587
 #, fuzzy
 #| msgid "Tip: For Callgrind, rerun with option"
 msgctxt "InstrView|"
 msgid "Tip: For Callgrind, rerun with option"
 msgstr "Savjet: Za Callgrind, pokrenite s opcijom"
 
-#: libviews/instrview.cpp:576
+#: libviews/instrview.cpp:588
 #, fuzzy
 #| msgid "      --dump-instr=yes"
 msgctxt "InstrView|"
 msgid "      --dump-instr=yes"
 msgstr "      --dump-instr=yes"
 
-#: libviews/instrview.cpp:577
+#: libviews/instrview.cpp:589
 #, fuzzy
 #| msgid "To see (conditional) jumps, additionally specify"
 msgctxt "InstrView|"
 msgid "To see (conditional) jumps, additionally specify"
 msgstr "Da biste vidjeli (uslovne) skokove, specificirajte dodatno"
 
-#: libviews/instrview.cpp:578
+#: libviews/instrview.cpp:590
 #, fuzzy
 #| msgid "      --collect-jumps=yes"
 msgctxt "InstrView|"
 msgid "      --collect-jumps=yes"
 msgstr "      --collect-jumps=yes"
 
-#: libviews/instrview.cpp:826
+#: libviews/instrview.cpp:839
 #, fuzzy
 #| msgid "For annotated machine code, the following object file is needed:"
 msgctxt "InstrView|"
 msgid "For annotated machine code, the following object file is needed:"
 msgstr "Za označeni mašinski kôd, potrebno je staviti sljedeću datoteku:"
 
-#: libviews/instrview.cpp:831
+#: libviews/instrview.cpp:844
 #, fuzzy
 #| msgid "This file can not be found."
 msgctxt "InstrView|"
 msgid "This file can not be found."
 msgstr "Datoteka ne može biti pronađena."
 
-#: libviews/instrview.cpp:834
+#: libviews/instrview.cpp:847
 msgctxt "InstrView|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr ""
 
-#: libviews/instrview.cpp:858
+#: libviews/instrview.cpp:872
 #, fuzzy
 #| msgid "There is an error trying to execute the command"
 msgctxt "InstrView|"
 msgid "There is an error trying to execute the command"
 msgstr "Greška prilikom izvršavanja naredbe"
 
-#: libviews/instrview.cpp:862 libviews/instrview.cpp:1158
+#: libviews/instrview.cpp:876 libviews/instrview.cpp:1172
 #, fuzzy
 #| msgid "Check that you have installed 'objdump'."
 msgctxt "InstrView|"
 msgid "Check that you have installed 'objdump'."
 msgstr "Provjerite da li je instaliran „objdump“."
 
-#: libviews/instrview.cpp:864 libviews/instrview.cpp:1160
+#: libviews/instrview.cpp:878 libviews/instrview.cpp:1174
 #, fuzzy
 #| msgid "This utility can be found in the 'binutils' package."
 msgctxt "InstrView|"
 msgid "This utility can be found in the 'binutils' package."
 msgstr "Ovaj alat se može naći u paketu „binutils“."
 
-#: libviews/instrview.cpp:966
+#: libviews/instrview.cpp:980
 #, fuzzy
 #| msgid "(No Instruction)"
 msgctxt "InstrView|"
 msgid "(No Instruction)"
 msgstr "(Nema naredbe)"
 
-#: libviews/instrview.cpp:1134
+#: libviews/instrview.cpp:1148
 #, qt-format
 msgctxt "InstrView|"
 msgid "There are %n cost line(s) without machine code."
@@ -2424,42 +2434,42 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: libviews/instrview.cpp:1136
+#: libviews/instrview.cpp:1150
 #, fuzzy
 #| msgid "This happens because the code of"
 msgctxt "InstrView|"
 msgid "This happens because the code of"
 msgstr "Ovo se dešava zato što kôd od"
 
-#: libviews/instrview.cpp:1139
+#: libviews/instrview.cpp:1153
 #, fuzzy
 #| msgid "does not seem to match the profile data file."
 msgctxt "InstrView|"
 msgid "does not seem to match the profile data file."
 msgstr "izgleda ne odgovara datoteci sa podacima o profilu."
 
-#: libviews/instrview.cpp:1142
+#: libviews/instrview.cpp:1156
 #, fuzzy
 #| msgid "Are you using an old profile data file or is the above mentioned"
 msgctxt "InstrView|"
 msgid "Are you using an old profile data file or is the above mentioned"
 msgstr "Da li koristite staru datoteku sa podacima o profilu ili gore pomenutu"
 
-#: libviews/instrview.cpp:1144
+#: libviews/instrview.cpp:1158
 #, fuzzy
 #| msgid "ELF object from an updated installation/another machine?"
 msgctxt "InstrView|"
 msgid "ELF object from an updated installation/another machine?"
 msgstr "ELF objekat iz ažurirane instalacije/sa druge mašine?"
 
-#: libviews/instrview.cpp:1152
+#: libviews/instrview.cpp:1166
 #, fuzzy
 #| msgid "There seems to be an error trying to execute the command"
 msgctxt "InstrView|"
 msgid "There seems to be an error trying to execute the command"
 msgstr "Izgleda da dolazi do greške pri pokušaju izvršavanja naredbe"
 
-#: libviews/instrview.cpp:1156
+#: libviews/instrview.cpp:1170
 #, fuzzy
 #| msgid "Check that the ELF object used in the command exists."
 msgctxt "InstrView|"
