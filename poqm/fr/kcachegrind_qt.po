@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2025-01-06 11:46+0100\n"
+"PO-Revision-Date: 2025-03-29 10:55+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.3\n"
 "X-Qt-Contexts: true\n"
 "X-Text-Markup: qtrich\n"
 
@@ -1245,7 +1245,7 @@ msgstr "Afficher le coût des instructions"
 #: libviews/controlflowgraphview.cpp:2426
 msgctxt "QObject|"
 msgid "Intel ASM Syntax"
-msgstr ""
+msgstr "Syntaxe Intel ASM"
 
 #: libviews/controlflowgraphview.cpp:2450
 msgctxt "QObject|"
@@ -1785,7 +1785,7 @@ msgstr "Code Hexa"
 #: libviews/instrview.cpp:290
 msgctxt "InstrView|"
 msgid "Intel Syntax"
-msgstr ""
+msgstr "Syntaxe Intel"
 
 #: libviews/instrview.cpp:585
 msgctxt "InstrView|"
