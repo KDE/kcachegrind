@@ -1,10 +1,10 @@
-# SPDX-FileCopyrightText: 2014, 2015, 2017, 2019, 2020, 2024 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2014, 2015, 2017, 2019, 2020, 2024, 2025 Shinjo Park <kde@peremen.name>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2024-12-10 00:39+0100\n"
+"PO-Revision-Date: 2025-04-06 22:27+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -1193,7 +1193,7 @@ msgstr "명령의 비용 표시"
 #: libviews/controlflowgraphview.cpp:2426
 msgctxt "QObject|"
 msgid "Intel ASM Syntax"
-msgstr ""
+msgstr "인텔 ASM 문법"
 
 #: libviews/controlflowgraphview.cpp:2450
 msgctxt "QObject|"
@@ -1706,7 +1706,7 @@ msgstr "16진 코드"
 #: libviews/instrview.cpp:290
 msgctxt "InstrView|"
 msgid "Intel Syntax"
-msgstr ""
+msgstr "인텔 문법"
 
 #: libviews/instrview.cpp:585
 msgctxt "InstrView|"
