@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2014, 2015, 2017, 2019, 2020, 2024 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2014, 2015, 2017, 2019, 2020, 2024, 2025 Shinjo Park <kde@peremen.name>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
