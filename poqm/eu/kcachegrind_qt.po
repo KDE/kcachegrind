@@ -1,14 +1,14 @@
 # Translation for kcachegrind_qt.po to Euskara/Basque (eu).
-# Copyright (C) 2023-2024 This file is copyright:
+# Copyright (C) 2023-2025 This file is copyright:
 # This file is distributed under the same license as the original file.
-# SPDX-FileCopyrightText: 2023, 2024 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
 #
 # Translators:
-# SPDX-FileCopyrightText: 2023, 2024 Iñigo Salvador Azurmendi <xalba@ni.eus>
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2024-11-11 17:23+0100\n"
+"PO-Revision-Date: 2025-04-14 22:56+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Qt-Contexts: true\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
@@ -1216,7 +1216,7 @@ msgstr "Erakutsi aginduaren kostua"
 #: libviews/controlflowgraphview.cpp:2426
 msgctxt "QObject|"
 msgid "Intel ASM Syntax"
-msgstr ""
+msgstr "Intel ASM sintaxia"
 
 #: libviews/controlflowgraphview.cpp:2450
 msgctxt "QObject|"
@@ -1751,7 +1751,7 @@ msgstr "Kode hamas."
 #: libviews/instrview.cpp:290
 msgctxt "InstrView|"
 msgid "Intel Syntax"
-msgstr ""
+msgstr "Intel sintaxia"
 
 #: libviews/instrview.cpp:585
 msgctxt "InstrView|"
