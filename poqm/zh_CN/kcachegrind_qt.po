@@ -1169,7 +1169,7 @@ msgstr "显示说明的成本"
 #: libviews/controlflowgraphview.cpp:2426
 msgctxt "QObject|"
 msgid "Intel ASM Syntax"
-msgstr ""
+msgstr "Intel 汇编语法"
 
 #: libviews/controlflowgraphview.cpp:2450
 msgctxt "QObject|"
@@ -1658,7 +1658,7 @@ msgstr ""
 #: libviews/instrview.cpp:290
 msgctxt "InstrView|"
 msgid "Intel Syntax"
-msgstr ""
+msgstr "Intel 语法"
 
 #: libviews/instrview.cpp:585
 msgctxt "InstrView|"
