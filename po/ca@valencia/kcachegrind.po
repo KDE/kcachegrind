@@ -42,7 +42,7 @@ msgstr "(sempre)"
 #: kcachegrind/configdlg.cpp:355
 #, kde-format
 msgid "Choose Source Folder"
-msgstr "Escolliu la carpeta de codi font"
+msgstr "Trieu la carpeta de codi font"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ConfigDlgBase)
 #: kcachegrind/configdlgbase.ui:14

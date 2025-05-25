@@ -2096,7 +2096,7 @@ msgstr ""
 "Si no s'està mostrant cap llista de selecció, totes les parts seran "
 "seleccionades de manera implícita.</p><p>Esta és una llista de selecció "
 "múltiple. Podeu seleccionar intervals arrossegant el ratolí o fent servir "
-"les tecles «Maj»/«Ctrl». La selecció o desselecció de les parts de traça "
+"les tecles «Majús»/«Ctrl». La selecció o desselecció de les parts de traça "
 "també es pot fer fent servir l'acoblable de vista general de les parts de "
 "traça. L'acoblable també permet la selecció múltiple.</p><p>Cal tindre "
 "present que la llista estarà oculta si només s'ha carregat una part de traça."
@@ -2210,7 +2210,7 @@ msgstr "Açò és perquè no hi ha informació de depuració."
 #: libviews/sourceview.cpp:676
 msgctxt "SourceView|"
 msgid "Recompile source and redo the profile run."
-msgstr "Torna a compilar el codi font i refera l'execució del perfil."
+msgstr "Torna a compilar el codi font i refés l'execució del perfil."
 
 #: libviews/sourceview.cpp:679
 msgctxt "SourceView|"
