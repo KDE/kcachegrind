@@ -6,20 +6,20 @@
 # pan93412 <pan93412@gmail.com>, 2018.
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2009, 2010.
 # Jeff Huang <s8321414@gmail.com>, 2020.
-# SPDX-FileCopyrightText: 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2024-11-25 23:00+0900\n"
+"PO-Revision-Date: 2025-06-04 07:50+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 25.07.70\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Qt-Contexts: true\n"
 
@@ -171,7 +171,7 @@ msgstr "程式追蹤"
 #: libcore/context.cpp:88
 msgctxt "ProfileContext|"
 msgid "BasicBlock"
-msgstr ""
+msgstr "基礎區塊"
 
 #: libcore/costitem.cpp:48
 #, qt-format
@@ -1096,24 +1096,21 @@ msgstr "每次呼叫 %1"
 msgctxt "QObject|"
 msgid ""
 "Control-flow graph requires running callgrind with option --dump-instr=yes"
-msgstr ""
+msgstr "控制流程圖需要用 --dump-instr=yes 選項來執行 callgrind"
 
-#
 #: libviews/controlflowgraphview.cpp:932
-#, fuzzy, qt-format
-#| msgctxt "InstrView|"
-#| msgid "For annotated machine code, the following object file is needed:"
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "For annotated machine code, the following object file is needed\n"
 "    '%1'\n"
 "This file cannot be found.\n"
-msgstr "要顯示註記機器碼，需要以下的 object 檔："
+msgstr ""
+"要顯示註記機器碼，需要以下的 object 檔\n"
+"    '%1'\n"
+"找不到這個檔案。\n"
 
 #: libviews/controlflowgraphview.cpp:936
-#, fuzzy
-#| msgctxt "InstrView|"
-#| msgid "If cross-compiled, set SYSROOT variable."
 msgctxt "QObject|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr "假如已交叉編譯，設定 SYSROOT 變數。"
@@ -1127,6 +1124,10 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package"
 msgstr ""
+"執行此指令時發生錯誤\n"
+"    '%1'\n"
+"請檢查您已安裝 'objdump'。\n"
+"這個工具程式可以在 'binutils' 套件當中找到"
 
 #: libviews/controlflowgraphview.cpp:1041
 #, qt-format
@@ -1138,6 +1139,10 @@ msgid ""
 "Are you using an old profile data file or is the abovementioned\n"
 "ELF object from an updated installation/another machine?"
 msgstr ""
+"有 %1 個成本行沒有機器碼。\n"
+"這發生的原因是因為 %2 的程式碼不符合分析資料檔。\n"
+"您是否使用舊的分析資料檔，還是上方提到的 ELF 物件是來自更新的安裝或另一台裝置"
+"呢？"
 
 #: libviews/controlflowgraphview.cpp:1051
 #, qt-format
@@ -1148,18 +1153,17 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package."
 msgstr ""
+"嘗試執行 '%1' 指令時似乎發生錯誤。\n"
+"請檢查指令中所使用的 ELF 物件存在。\n"
+"請檢查您已安裝 'objdump'。\n"
+"這個工具程式可以在 'binutils' 套件當中找到。"
 
 #: libviews/controlflowgraphview.cpp:1772
 msgctxt "QObject|"
 msgid "This is Control Flow Graph by KetchuppOfficial"
-msgstr ""
+msgstr "這是控制流程圖，作者為 KetchuppOfficial"
 
 #: libviews/controlflowgraphview.cpp:1828
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Warning: a long lasting graph layouting is in progress.\n"
-#| "Reduce node/edge limits for speedup.\n"
 msgctxt "QObject|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
@@ -1169,42 +1173,30 @@ msgstr ""
 "要加速，請降低節點與邊線的限制。\n"
 
 #: libviews/controlflowgraphview.cpp:1831
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layouting stopped.\n"
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
 msgstr "佈局停止。\n"
 
 #: libviews/controlflowgraphview.cpp:1833
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "The call graph has %1 nodes and %2 edges.\n"
+#, qt-format
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "呼叫圖中含有 %1 個節點與 %2 個邊線。\n"
 
 #: libviews/controlflowgraphview.cpp:1841
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No graph available because the layouting process failed.\n"
 msgctxt "QObject|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr "沒有可用的呼叫圖，因為佈局行程已失敗。\n"
 
 #: libviews/controlflowgraphview.cpp:1843
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Trying to run the following command did not work:\n"
-#| "'%1'\n"
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "Trying to run the following command did not work:\n"
 "'%1'\n"
 msgstr ""
 "試著執行以下的指令時失敗：\n"
-"%1\n"
+"'%1'\n"
 
 #: libviews/controlflowgraphview.cpp:1845
 msgctxt "QObject|"
@@ -1223,7 +1215,7 @@ msgstr ""
 #: libviews/controlflowgraphview.cpp:2399
 msgctxt "QObject|"
 msgid "This basic block"
-msgstr ""
+msgstr "這個基礎區塊"
 
 #: libviews/controlflowgraphview.cpp:2401
 #: libviews/controlflowgraphview.cpp:2432
@@ -1246,7 +1238,7 @@ msgstr "顯示指令花費"
 #: libviews/controlflowgraphview.cpp:2426
 msgctxt "QObject|"
 msgid "Intel ASM Syntax"
-msgstr ""
+msgstr "Intel ASM 語法"
 
 #: libviews/controlflowgraphview.cpp:2450
 msgctxt "QObject|"
@@ -1274,20 +1266,14 @@ msgid "No trace data"
 msgstr "無追蹤資料"
 
 #: libviews/controlflowgraphview.cpp:3002
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No item activated for which to draw the call graph."
 msgctxt "QObject|"
 msgid "No item activated for which to draw the control-flow graph."
-msgstr "沒有激發要繪製呼叫圖的項目。"
+msgstr "沒有觸發要繪製呼叫圖的項目。"
 
 #: libviews/controlflowgraphview.cpp:3014
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No call graph can be drawn for the active item."
 msgctxt "QObject|"
 msgid "No control-flow graph can be drawn for the active item."
-msgstr "沒有目前活躍的項目可繪製呼叫圖。"
+msgstr "沒有目前活躍項目可繪製的呼叫圖。"
 
 #: libviews/controlflowgraphview.cpp:3109
 msgctxt "QObject|"
@@ -1345,12 +1331,9 @@ msgid "Left to Right"
 msgstr "左到右"
 
 #: libviews/controlflowgraphview.cpp:3202
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Min. Call Cost"
 msgctxt "QObject|"
 msgid "Min. basic block cost"
-msgstr "最小呼叫花費"
+msgstr "最小基礎區塊花費"
 
 #: libviews/controlflowgraphview.cpp:3204
 msgctxt "QObject|"
@@ -1804,7 +1787,7 @@ msgstr "十六進位碼"
 #: libviews/instrview.cpp:290
 msgctxt "InstrView|"
 msgid "Intel Syntax"
-msgstr ""
+msgstr "Intel 語法"
 
 #
 #: libviews/instrview.cpp:585
@@ -1882,7 +1865,7 @@ msgstr "（沒有指令）"
 msgctxt "InstrView|"
 msgid "There are %n cost line(s) without machine code."
 msgid_plural "There are %n cost line(s) without machine code."
-msgstr[0] "這裡有 %n 成本代碼不需要機器碼。"
+msgstr[0] "有 %n 個成本行沒有機器碼。"
 
 #
 #: libviews/instrview.cpp:1150
