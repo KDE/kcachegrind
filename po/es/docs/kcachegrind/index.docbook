@@ -79,6 +79,20 @@
 > <contrib
 >Traductor</contrib
 > </othercredit
+><othercredit role="translator"
+> <firstname
+>Cristina Yenyxe</firstname
+> <surname
+>González García</surname
+> <affiliation
+><address
+><email
+>the.blue.valkyrie@gmail.com</email
+></address
+></affiliation
+> <contrib
+>Traductora</contrib
+> </othercredit
 > 
 
 </authorgroup>
@@ -1185,9 +1199,7 @@
 <para
 >Traducido por Marcos Fouces Lago <email
 >mfouces@yahoo.es</email
-></para
-><para
->Traducido por Cristina Yenyxe González García <email
+> y Cristina Yenyxe González García <email
 >the.blue.valkyrie@gmail.com</email
 ></para
 > &underFDL; </chapter>
