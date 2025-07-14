@@ -749,22 +749,22 @@ msgstr "წინა განლაგებაზე გადასვლა"
 #: kcachegrind/toplevel.cpp:393
 #, kde-format
 msgid "&Restore to Default"
-msgstr "&ნაგულისხმებ მნიშვნელობებზე აღდგენა"
+msgstr "&ნაგულისხმევ მნიშვნელობებზე აღდგენა"
 
 #: kcachegrind/toplevel.cpp:395
 #, kde-format
 msgid "Restore Layouts to Default"
-msgstr "განლაგებების ნაგულისხმებ მნიშვნელობებზე აღდგენა"
+msgstr "განლაგებების ნაგულისხმევ მნიშვნელობებზე აღდგენა"
 
 #: kcachegrind/toplevel.cpp:399
 #, kde-format
 msgid "&Save as Default"
-msgstr "&ნაგულისხმებად შენახვა"
+msgstr "&ნაგულისხმევად შენახვა"
 
 #: kcachegrind/toplevel.cpp:401
 #, kde-format
 msgid "Save Layouts as Default"
-msgstr "განლაგებების ნაგულისხმებად შენახვა"
+msgstr "განლაგებების ნაგულისხმევად შენახვა"
 
 #: kcachegrind/toplevel.cpp:412
 #, kde-format

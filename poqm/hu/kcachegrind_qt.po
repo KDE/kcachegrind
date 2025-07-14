@@ -5,20 +5,20 @@
 # Tamas Krutki, 2011.
 # Kristóf Kiszel <ulysses@kubuntu.org>, 2011.
 # Balázs Úr <urbalazs@gmail.com>, 2012, 2014.
-# SPDX-FileCopyrightText: 2024 Kristof Kiszel <ulysses@fsf.hu>
+# SPDX-FileCopyrightText: 2024, 2025 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2024-02-05 22:03+0100\n"
+"PO-Revision-Date: 2025-07-12 22:37+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 25.04.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Qt-Contexts: true\n"
 
@@ -3304,12 +3304,12 @@ msgstr "Legjobb"
 #: libviews/treemap.cpp:2865
 msgctxt "TreeMapWidget|"
 msgid "Alternate (V)"
-msgstr "Váltakozó (függőlegesen)"
+msgstr "Váltakozó (F)"
 
 #: libviews/treemap.cpp:2866
 msgctxt "TreeMapWidget|"
 msgid "Alternate (H)"
-msgstr "Váltakozó (vízszintesen)"
+msgstr "Váltakozó (V)"
 
 #: libviews/treemap.cpp:2867
 msgctxt "TreeMapWidget|"
@@ -3317,8 +3317,6 @@ msgid "Horizontal"
 msgstr "Vízszintes"
 
 #: libviews/treemap.cpp:2868
-#, fuzzy
-#| msgid "Vertical"
 msgctxt "TreeMapWidget|"
 msgid "Vertical"
 msgstr "Függőleges"
