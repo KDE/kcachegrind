@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2025-07-11 11:32+0300\n"
+"PO-Revision-Date: 2025-07-17 18:50+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -469,11 +469,9 @@ msgstr ""
 "Nopeuta vähentämällä solmujen tai viivojen rajoituksia.\n"
 
 #: libviews/callgraphview.cpp:2006
-#, fuzzy
-#| msgid "Layouting stopped.\n"
 msgctxt "CallGraphView|"
 msgid "Layouting stopped.\n"
-msgstr "Asettelu päättyi.\n"
+msgstr "Asettelu pysäytettiin.\n"
 
 #: libviews/callgraphview.cpp:2008
 #, fuzzy, qt-format
@@ -1314,7 +1312,7 @@ msgstr ""
 #: libviews/controlflowgraphview.cpp:2432
 msgctxt "QObject|"
 msgid "PC only"
-msgstr ""
+msgstr "Vain PC"
 
 #: libviews/controlflowgraphview.cpp:2405
 #: libviews/controlflowgraphview.cpp:2436
@@ -1326,46 +1324,31 @@ msgstr "Käsky"
 
 #: libviews/controlflowgraphview.cpp:2409
 #: libviews/controlflowgraphview.cpp:2440
-#, fuzzy
-#| msgctxt "InstrView|"
-#| msgid "(No Instruction)"
 msgctxt "QObject|"
 msgid "Show instructions' cost"
-msgstr "(Ei käskyä)"
+msgstr "Näytä ohjeiden kustannukset"
 
 #: libviews/controlflowgraphview.cpp:2426
 msgctxt "QObject|"
 msgid "Intel ASM Syntax"
-msgstr ""
+msgstr "Intelin Asm-syntaksi"
 
 #: libviews/controlflowgraphview.cpp:2450
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As DOT file..."
 msgctxt "QObject|"
 msgid "As DOT file..."
 msgstr "DOT-tiedostoksi…"
 
 #: libviews/controlflowgraphview.cpp:2451
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As Image..."
 msgctxt "QObject|"
 msgid "As Image..."
 msgstr "Kuvaksi…"
 
 #: libviews/controlflowgraphview.cpp:2562
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Export Graph As Image"
 msgctxt "QObject|"
 msgid "Export Graph as Image"
 msgstr "Vie kaavio kuvaksi"
 
 #: libviews/controlflowgraphview.cpp:2564
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Images (*.png *.jpg)"
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
 msgstr "Kuvat (*.png *.jpg)"
@@ -1392,89 +1375,56 @@ msgid "No control-flow graph can be drawn for the active item."
 msgstr "Kutsukaaviota ei voida piirtää aktiiviselle alkiolle."
 
 #: libviews/controlflowgraphview.cpp:3109
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Stop Layouting"
 msgctxt "QObject|"
 msgid "Stop Layouting"
 msgstr "Pysäytä asettelu"
 
 #: libviews/controlflowgraphview.cpp:3172
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Birds-eye View"
 msgctxt "QObject|"
 msgid "Birds-eye View"
 msgstr "Yleiskuva"
 
 #: libviews/controlflowgraphview.cpp:3174
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Left"
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr "Ylävasemmalla"
 
 #: libviews/controlflowgraphview.cpp:3175
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Right"
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr "Yläoikealla"
 
 #: libviews/controlflowgraphview.cpp:3176
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Left"
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "Alavasemmalla"
 
 #: libviews/controlflowgraphview.cpp:3177
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Right"
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "Alaoikealla"
 
 #: libviews/controlflowgraphview.cpp:3178
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Automatic"
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr "Automaattinen"
 
 #: libviews/controlflowgraphview.cpp:3179
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Hide"
 msgctxt "QObject|"
 msgid "Hide"
 msgstr "Piilota"
 
 #: libviews/controlflowgraphview.cpp:3189
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layout"
 msgctxt "QObject|"
 msgid "Layout"
 msgstr "Asettelu"
 
 #: libviews/controlflowgraphview.cpp:3191
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top to Down"
 msgctxt "QObject|"
 msgid "Top to Down"
 msgstr "Ylhäältä alas"
 
 #: libviews/controlflowgraphview.cpp:3192
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Left to Right"
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "Vasemmalta oikealle"
@@ -1489,33 +1439,29 @@ msgstr "Kutsun vähimmäishinta"
 #: libviews/controlflowgraphview.cpp:3204
 msgctxt "QObject|"
 msgid "Undefined"
-msgstr ""
+msgstr "Ei määritetty"
 
 #: libviews/controlflowgraphview.cpp:3207
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "1 %"
+#, qt-format
 msgctxt "QObject|"
 msgid "%1%"
-msgstr "1 %"
+msgstr "%1 %"
 
 #: libviews/costlistitem.cpp:53
-#, fuzzy, qt-format
-#| msgid "(%1 function(s) skipped)"
+#, qt-format
 msgctxt "QObject|"
 msgid "(%n item(s) skipped)"
 msgid_plural "(%n item(s) skipped)"
-msgstr[0] "(%1 funktio(ta) ohitettu)"
-msgstr[1] "(%1 funktio(ta) ohitettu)"
+msgstr[0] "(%n kohde sivuutettu)"
+msgstr[1] "(%n kohdetta sivuutettu)"
 
 #: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
-#, fuzzy, qt-format
-#| msgid "(%1 function(s) skipped)"
+#, qt-format
 msgctxt "QObject|"
 msgid "(%n function(s) skipped)"
 msgid_plural "(%n function(s) skipped)"
-msgstr[0] "(%1 funktio(ta) ohitettu)"
-msgstr[1] "(%1 funktio(ta) ohitettu)"
+msgstr[0] "(%n funktio sivuutettu)"
+msgstr[1] "(%n funktiota sivuutettu)"
 
 #: libviews/coverageview.cpp:37
 msgctxt "CoverageView|"
@@ -1928,7 +1874,7 @@ msgstr "Jos käännetty ristiin, aseta SYSROOT-muuttuja."
 #: libviews/instrview.cpp:872
 msgctxt "InstrView|"
 msgid "There is an error trying to execute the command"
-msgstr ""
+msgstr "Sattui virhe yritettäessä suorittaa komentoa"
 
 #: libviews/instrview.cpp:876 libviews/instrview.cpp:1172
 msgctxt "InstrView|"
@@ -1938,7 +1884,7 @@ msgstr "Varmista, että ”objdump” on asennettu."
 #: libviews/instrview.cpp:878 libviews/instrview.cpp:1174
 msgctxt "InstrView|"
 msgid "This utility can be found in the 'binutils' package."
-msgstr ""
+msgstr "Tämän työkalun löytää ”binutils”-paketista."
 
 #: libviews/instrview.cpp:980
 msgctxt "InstrView|"
@@ -1978,7 +1924,7 @@ msgstr "ELF-olio päivittyneestä asennuksesta tai toiselta koneelta?"
 #: libviews/instrview.cpp:1166
 msgctxt "InstrView|"
 msgid "There seems to be an error trying to execute the command"
-msgstr ""
+msgstr "Vaikuttaa sattuneen virhe yritettäessä suorittaa komentoa"
 
 #: libviews/instrview.cpp:1170
 #, fuzzy
@@ -2054,7 +2000,7 @@ msgstr ""
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Profile Part Overview: Current is '%1'"
-msgstr ""
+msgstr "Profiiliosan yleiskuva: nykyinen on ”%1”"
 
 #: libviews/partselection.cpp:337
 #, qt-format
@@ -2274,17 +2220,17 @@ msgstr "Siirry riville %1"
 #: libviews/sourceview.cpp:627
 msgctxt "SourceView|"
 msgid "There is no cost of current selected type associated"
-msgstr ""
+msgstr "Valitun tyypin kustannusta ei ole yhdistetty"
 
 #: libviews/sourceview.cpp:629
 msgctxt "SourceView|"
 msgid "with any source line of this function in file"
-msgstr ""
+msgstr "mihinkään tämän funktion lähderiviin tiedostossa"
 
 #: libviews/sourceview.cpp:633
 msgctxt "SourceView|"
 msgid "Thus, no annotated source can be shown."
-msgstr ""
+msgstr "Merkittyä lähdettä ei siten voida näyttää."
 
 #: libviews/sourceview.cpp:658
 #, qt-format
