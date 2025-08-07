@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2009, 2010, 2018, 2019, 2020, 2023.
-# Marcus Gama <marcus.gama@gmail.com>, 2009.
+# SPDX-FileCopyrightText: 2009, 2025 Marcus Gama <marcus.gama@gmail.com>
 # Maj Gama <marcus.gama@gmail.com>, 2009.
 # Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>, 2009, 2010, 2012.
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2010, 2011, 2012, 2013, 2015.
@@ -12,15 +12,15 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2023-11-08 15:50-0300\n"
-"Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
+"PO-Revision-Date: 2025-08-06 21:05-0300\n"
+"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 25.04.3\n"
 "X-Qt-Contexts: true\n"
 
 #: libcore/cachegrindloader.cpp:135
@@ -173,7 +173,7 @@ msgstr "Tracejamento do programa"
 #: libcore/context.cpp:88
 msgctxt "ProfileContext|"
 msgid "BasicBlock"
-msgstr ""
+msgstr "BlocoBásico"
 
 #: libcore/costitem.cpp:48
 #, qt-format
@@ -1075,23 +1075,22 @@ msgctxt "QObject|"
 msgid ""
 "Control-flow graph requires running callgrind with option --dump-instr=yes"
 msgstr ""
+"O gráfico de fluxo de controle requer a execução de callgrind com a opção --"
+"dump-instr=yes"
 
 #: libviews/controlflowgraphview.cpp:932
-#, fuzzy, qt-format
-#| msgctxt "InstrView|"
-#| msgid "For annotated machine code, the following object file is needed:"
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "For annotated machine code, the following object file is needed\n"
 "    '%1'\n"
 "This file cannot be found.\n"
 msgstr ""
-"Para um código-de-máquina anotado, é necessário o seguinte arquivo-objeto:"
+"Para código de máquina anotado, o seguinte arquivo de objeto é necessário:\n"
+"    '%1'\n"
+"Este arquivo não pode ser encontrado.\n"
 
 #: libviews/controlflowgraphview.cpp:936
-#, fuzzy
-#| msgctxt "InstrView|"
-#| msgid "If cross-compiled, set SYSROOT variable."
 msgctxt "QObject|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr "Se tiver compilação-cruzada, definir a variável SYSROOT."
@@ -1105,6 +1104,10 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package"
 msgstr ""
+"Ocorreu um erro ao tentar executar o comando\n"
+"    '%1'\n"
+"Verifique se você instalou o 'objdump'.\n"
+"Este utilitário pode ser encontrado no pacote 'binutils'"
 
 #: libviews/controlflowgraphview.cpp:1041
 #, qt-format
@@ -1116,6 +1119,11 @@ msgid ""
 "Are you using an old profile data file or is the abovementioned\n"
 "ELF object from an updated installation/another machine?"
 msgstr ""
+"Há %1 linha(s) de custo sem código de máquina.\n"
+"Isso acontece porque o código de %2 parece não corresponder ao arquivo de "
+"dados do perfil.\n"
+"Você está usando um arquivo de dados de perfil antigo ou o objeto ELF\n"
+"mencionado acima é de uma instalação atualizada/de outra máquina?"
 
 #: libviews/controlflowgraphview.cpp:1051
 #, qt-format
@@ -1126,18 +1134,17 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package."
 msgstr ""
+"Parece haver um erro ao tentar executar o comando '%1'.\n"
+"Verifique se o objeto ELF usado no comando existe.\n"
+"Verifique se você instalou o 'objdump'.\n"
+"Este utilitário pode ser encontrado no pacote 'binutils'."
 
 #: libviews/controlflowgraphview.cpp:1772
 msgctxt "QObject|"
 msgid "This is Control Flow Graph by KetchuppOfficial"
-msgstr ""
+msgstr "Este é o gráfico de fluxo de controle da KetchuppOfficial"
 
 #: libviews/controlflowgraphview.cpp:1828
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Warning: a long lasting graph layouting is in progress.\n"
-#| "Reduce node/edge limits for speedup.\n"
 msgctxt "QObject|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
@@ -1147,25 +1154,17 @@ msgstr ""
 "Reduza os limites de nós/arestas para acelerar.\n"
 
 #: libviews/controlflowgraphview.cpp:1831
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layouting stopped.\n"
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
 msgstr "A formatação parou.\n"
 
 #: libviews/controlflowgraphview.cpp:1833
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "The call graph has %1 nodes and %2 edges.\n"
+#, qt-format
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "O gráfico de chamadas tem %1 nós e %2 arestas.\n"
 
 #: libviews/controlflowgraphview.cpp:1841
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No graph available because the layouting process failed.\n"
 msgctxt "QObject|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr ""
@@ -1173,11 +1172,7 @@ msgstr ""
 "o processo de disposição gráfica não funcionou.\n"
 
 #: libviews/controlflowgraphview.cpp:1843
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Trying to run the following command did not work:\n"
-#| "'%1'\n"
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "Trying to run the following command did not work:\n"
@@ -1187,221 +1182,153 @@ msgstr ""
 "'%1'\n"
 
 #: libviews/controlflowgraphview.cpp:1845
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "QObject|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
-msgstr "Verifique por favor se o 'dot' está instalado (pacote GraphViz)."
+msgstr "Verifique se o 'dot' está instalado (pacote GraphViz)."
 
 #: libviews/controlflowgraphview.cpp:2209
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "QObject|"
 msgid ""
 "Error running the graph layouting tool.\n"
 "Please check that 'dot' is installed (package Graphviz)."
-msgstr "Verifique por favor se o 'dot' está instalado (pacote GraphViz)."
+msgstr ""
+"Erro ao executar a ferramenta de layout de gráfico.\n"
+"Verifique se o 'dot' está instalado (pacote Graphviz)."
 
 #: libviews/controlflowgraphview.cpp:2399
 msgctxt "QObject|"
 msgid "This basic block"
-msgstr ""
+msgstr "Este bloco básico"
 
 #: libviews/controlflowgraphview.cpp:2401
 #: libviews/controlflowgraphview.cpp:2432
 msgctxt "QObject|"
 msgid "PC only"
-msgstr ""
+msgstr "Somente PC"
 
 #: libviews/controlflowgraphview.cpp:2405
 #: libviews/controlflowgraphview.cpp:2436
-#, fuzzy
-#| msgctxt "ProfileContext|"
-#| msgid "Instruction Call"
 msgctxt "QObject|"
 msgid "Show instructions' PC"
-msgstr "Chamada da instrução"
+msgstr "Mostrar instruções para PC"
 
 #: libviews/controlflowgraphview.cpp:2409
 #: libviews/controlflowgraphview.cpp:2440
-#, fuzzy
-#| msgctxt "InstrView|"
-#| msgid "(No Instruction)"
 msgctxt "QObject|"
 msgid "Show instructions' cost"
-msgstr "(Sem instrução)"
+msgstr "Mostrar custo das instruções"
 
 #: libviews/controlflowgraphview.cpp:2426
 msgctxt "QObject|"
 msgid "Intel ASM Syntax"
-msgstr ""
+msgstr "Sintaxe Intel ASM"
 
 #: libviews/controlflowgraphview.cpp:2450
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As DOT file..."
 msgctxt "QObject|"
 msgid "As DOT file..."
 msgstr "Como arquivo DOT..."
 
 #: libviews/controlflowgraphview.cpp:2451
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As Image..."
 msgctxt "QObject|"
 msgid "As Image..."
 msgstr "Como imagem..."
 
 #: libviews/controlflowgraphview.cpp:2562
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Export Graph As Image"
 msgctxt "QObject|"
 msgid "Export Graph as Image"
 msgstr "Exportar gráfico como imagem"
 
 #: libviews/controlflowgraphview.cpp:2564
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Images (*.png *.jpg)"
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
 msgstr "Imagens (*.png *.jpg)"
 
 #: libviews/controlflowgraphview.cpp:2997
-#, fuzzy
-#| msgctxt "PartSelection|"
-#| msgid "(no trace parts)"
 msgctxt "QObject|"
 msgid "No trace data"
-msgstr "(sem partes do tracejamento)"
+msgstr "Sem dados do tracejamento"
 
 #: libviews/controlflowgraphview.cpp:3002
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No item activated for which to draw the call graph."
 msgctxt "QObject|"
 msgid "No item activated for which to draw the control-flow graph."
-msgstr "Nenhum item está ativo para o qual desenhar o gráfico de chamadas."
+msgstr "Nenhum item ativado para desenhar o gráfico de fluxo de controle."
 
 #: libviews/controlflowgraphview.cpp:3014
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No call graph can be drawn for the active item."
 msgctxt "QObject|"
 msgid "No control-flow graph can be drawn for the active item."
-msgstr "Não pode ser desenhado nenhum gráfico de chamadas para o item ativo."
+msgstr ""
+"Nenhum gráfico de fluxo de controle pode ser desenhado para o item ativo."
 
 #: libviews/controlflowgraphview.cpp:3109
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Stop Layouting"
 msgctxt "QObject|"
 msgid "Stop Layouting"
 msgstr "Parar a formatação"
 
 #: libviews/controlflowgraphview.cpp:3172
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Birds-eye View"
 msgctxt "QObject|"
 msgid "Birds-eye View"
 msgstr "Visão olho-de-pássaro"
 
 #: libviews/controlflowgraphview.cpp:3174
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Left"
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr "Superior esquerda"
 
 #: libviews/controlflowgraphview.cpp:3175
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Right"
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr "Superior direita"
 
 #: libviews/controlflowgraphview.cpp:3176
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Left"
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "Inferior esquerdo"
 
 #: libviews/controlflowgraphview.cpp:3177
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Right"
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "Inferior direito"
 
 #: libviews/controlflowgraphview.cpp:3178
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Automatic"
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr "Automático"
 
 #: libviews/controlflowgraphview.cpp:3179
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Hide"
 msgctxt "QObject|"
 msgid "Hide"
 msgstr "Ocultar"
 
 #: libviews/controlflowgraphview.cpp:3189
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layout"
 msgctxt "QObject|"
 msgid "Layout"
 msgstr "Layout"
 
 #: libviews/controlflowgraphview.cpp:3191
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top to Down"
 msgctxt "QObject|"
 msgid "Top to Down"
 msgstr "De cima para baixo"
 
 #: libviews/controlflowgraphview.cpp:3192
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Left to Right"
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "Esquerda para direita"
 
 #: libviews/controlflowgraphview.cpp:3202
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Min. Call Cost"
 msgctxt "QObject|"
 msgid "Min. basic block cost"
-msgstr "Custo mínimo da chamada"
+msgstr "Custo mínimo do bloco básico"
 
 #: libviews/controlflowgraphview.cpp:3204
 msgctxt "QObject|"
 msgid "Undefined"
-msgstr ""
+msgstr "Não definido"
 
 #: libviews/controlflowgraphview.cpp:3207
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "1 %"
+#, qt-format
 msgctxt "QObject|"
 msgid "%1%"
-msgstr "1 %"
+msgstr "%1%"
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
@@ -1830,7 +1757,7 @@ msgstr "Código Hex"
 #: libviews/instrview.cpp:290
 msgctxt "InstrView|"
 msgid "Intel Syntax"
-msgstr ""
+msgstr "Sintaxe Intel"
 
 #: libviews/instrview.cpp:585
 msgctxt "InstrView|"
@@ -2448,12 +2375,9 @@ msgid "Source Code"
 msgstr "Código-fonte"
 
 #: libviews/tabview.cpp:380
-#, fuzzy
-#| msgctxt "TabView|"
-#| msgid "Call Graph"
 msgctxt "TabView|"
 msgid "Control Flow Graph"
-msgstr "Gráfico de chamadas"
+msgstr "Gráfico de fluxo de controle"
 
 #: libviews/tabview.cpp:383
 msgctxt "TabView|"
