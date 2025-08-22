@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-18 00:39+0000\n"
-"PO-Revision-Date: 2025-08-04 14:36+0400\n"
+"PO-Revision-Date: 2025-08-21 10:01+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -243,7 +243,7 @@ msgstr "الأحداث"
 #: kcachegrind/dumpselectionbase.ui:188
 #, kde-format
 msgid "Full Cache"
-msgstr "كامل الذّاكرة المؤقّتة"
+msgstr "كامل الخبيئة"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:202
