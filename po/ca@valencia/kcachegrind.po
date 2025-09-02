@@ -1032,7 +1032,7 @@ msgstr "Tipus d'esdeveniment primari"
 #: kcachegrind/toplevel.cpp:633
 #, kde-format
 msgid "Select primary event type of costs"
-msgstr "Seleccioneu el tipus d'esdeveniment primari de costos"
+msgstr "Trieu el tipus d'esdeveniment primari de costos"
 
 #: kcachegrind/toplevel.cpp:655 kcachegrind/toplevel.cpp:1508
 #, kde-format
@@ -1043,8 +1043,8 @@ msgstr "Tipus d'esdeveniment secundari"
 #, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
 msgstr ""
-"Seleccioneu el tipus d'esdeveniment secundari de costos p. ex., el mostrat a "
-"les anotacions"
+"Trieu el tipus d'esdeveniment secundari de costos p. ex., el mostrat a les "
+"anotacions"
 
 #: kcachegrind/toplevel.cpp:665
 #, kde-format
@@ -1055,8 +1055,7 @@ msgstr "Agrupament"
 #, kde-format
 msgid "Select how functions are grouped into higher level cost items"
 msgstr ""
-"Seleccioneu com s'agrupen les funcions en els elements de cost de nivell "
-"superior"
+"Trieu com s'agrupen les funcions en els elements de cost de nivell superior"
 
 #: kcachegrind/toplevel.cpp:673
 #, kde-format
@@ -1087,7 +1086,7 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:891
 #, kde-format
 msgid "Select Callgrind Profile Data"
-msgstr "Selecciona les dades d'anàlisi del rendiment de Callgrind"
+msgstr "Tria les dades d'anàlisi del rendiment de Callgrind"
 
 #: kcachegrind/toplevel.cpp:893 kcachegrind/toplevel.cpp:961
 #, kde-format

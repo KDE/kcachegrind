@@ -775,7 +775,7 @@ msgid ""
 "em> activates the current item.</p>"
 msgstr ""
 "<p>Les configuracions de l'aparença es troben en el menú contextual. Per a "
-"obtindre la mida de proporcions exactes, seleccioneu «oculta les vores "
+"obtindre la mida de proporcions exactes, trieu «oculta les vores "
 "incorrectes». Com este mode pot consumir <em>molt</em> temps, hauríeu de "
 "limitar abans el nivell màxim de dibuix d'imbricacions. «Millor» determina "
 "la direcció de la divisió dels fills amb relació a la proporció dels pares. "
@@ -1037,9 +1037,9 @@ msgstr ""
 "compte de crides i el cost gastat en la funció actualment seleccionada "
 "mentre és cridada per la funció de la llista.</p><p>Una icona en lloc del "
 "cost inclusiu, especifica que esta és una crida dins d'un cicle recursiu. Un "
-"cost inclusiu no té sentit ací.</p><p>Seleccionar una funció provoca que "
-"siga la seleccionada actualment d'este quadro d'informació. Si hi ha dos "
-"quadros (mode de dos quadros), canvia la funció de l'altre quadro.</p>"
+"cost inclusiu no té sentit ací.</p><p>Triar una funció provoca que siga la "
+"seleccionada actualment d'este quadro d'informació. Si hi ha dos quadros "
+"(mode de dos quadros), canvia la funció de l'altre quadro.</p>"
 
 #: libviews/callview.cpp:89
 msgctxt "CallView|"
@@ -1054,7 +1054,7 @@ msgstr ""
 "<b>Llista dels cridats directes</b><p>Esta llista mostra totes les funcions "
 "cridades directament per la seleccionada actualment, junt amb un compte de "
 "crides i el cost gastat en esta funció mentre és cridada per la funció "
-"actualment seleccionada.</p><p>Seleccionar una funció provoca que siga la "
+"actualment seleccionada.</p><p>Triar una funció provoca que siga la "
 "seleccionada actualment d'este quadro d'informació. Si hi ha dos quadros "
 "(mode de dos quadros), canvia la funció de l'altre quadro.</p>"
 
@@ -1731,8 +1731,8 @@ msgstr ""
 "s'inserixen línies amb detalls de les crides al codi font: el cost gastat "
 "dintre de la crida, el nombre de crides i la destinació d'estes.</p><p>El "
 "codi màquina mostrat és generat amb la utilitat «objdump» del paquet "
-"«binutils».</p><p>Seleccioneu una línia amb informació de crida per a fer "
-"que la funció de destinació d'esta crida siga l'actual.</p>"
+"«binutils».</p><p>Trieu una línia amb informació de crida per a fer que la "
+"funció de destinació d'esta crida siga l'actual.</p>"
 
 #: libviews/instrview.cpp:265
 #, qt-format
@@ -1945,12 +1945,12 @@ msgstr "Desselecciona «%1»"
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Select '%1'"
-msgstr "Selecciona «%1»"
+msgstr "Tria «%1»"
 
 #: libviews/partselection.cpp:344
 msgctxt "PartSelection|"
 msgid "Select All Parts"
-msgstr "Selecciona totes les parts"
+msgstr "Tria totes les parts"
 
 #: libviews/partselection.cpp:345
 msgctxt "PartSelection|"
@@ -2150,8 +2150,8 @@ msgstr ""
 "durant l'execució d'esta línia de codi. Si hi ha una crida en la línia del "
 "codi font, s'inserixen línies detallades al codi quant a la crida: el cost "
 "gastat dins de la crida, el nombre de crides fetes i la destinació de la "
-"crida.</p> <p>Seleccioneu una informació de crida inserida per a fer activa "
-"la funció de destinació.</p>"
+"crida.</p> <p>Trieu una informació de crida inserida per a fer activa la "
+"funció de destinació.</p>"
 
 #: libviews/sourceview.cpp:110
 #, qt-format
@@ -2235,7 +2235,7 @@ msgstr "Esta llista es pot trobar en el diàleg de configuració."
 #: libviews/stackselection.cpp:36
 msgctxt "StackSelection|"
 msgid "Stack Selection"
-msgstr "Seleccioneu la pila"
+msgstr "Trieu la pila"
 
 #: libviews/stackselection.cpp:44
 msgctxt "StackSelection|"
