@@ -1038,7 +1038,7 @@
 <para
 >Así, por ejemplo,. para la función <function
 >main()</function
->, siempre verá un coste inclusivo cercano al 100%, mientras el coste propio es insignificante cuando el trabajo real se realiza en otra función. </para>
+>, siempre verá un coste inclusivo cercano al 100 %, mientras el coste propio es insignificante cuando el trabajo real se realiza en otra función. </para>
 </answer>
 </qandaentry>
 
@@ -1049,7 +1049,7 @@
 >Gráfico de llamadas</guilabel
 >, se mostrará para la función <function
 >main()</function
-> el mismo coste que para la función seleccionada. ¿No se supone que debe ser constante al 100%? </para>
+> el mismo coste que para la función seleccionada. ¿No se supone que debe ser constante al 100 %? </para>
 </question>
 <answer>
 <para
