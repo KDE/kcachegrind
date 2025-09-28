@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-18 00:39+0000\n"
-"PO-Revision-Date: 2025-08-21 10:01+0400\n"
+"PO-Revision-Date: 2025-09-27 11:31+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -36,9 +36,9 @@ msgid "(always)"
 msgstr "(دائما)"
 
 #: kcachegrind/configdlg.cpp:355
-#, fuzzy, kde-format
+#, kde-format
 msgid "Choose Source Folder"
-msgstr "اختر المصدر مجلّد"
+msgstr "اختر مجلّد المصدر"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ConfigDlgBase)
 #: kcachegrind/configdlgbase.ui:14
@@ -54,45 +54,45 @@ msgstr "عامّ"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel5)
 #: kcachegrind/configdlgbase.ui:34
-#, fuzzy, kde-format
+#, kde-format
 msgid "Maximum number of items in lists:"
-msgstr "الأقصى رقم من عناصر بوصة قوائم:"
+msgstr "الحدّ الأقصى للعناصر في القوائم:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3)
 #: kcachegrind/configdlgbase.ui:44
-#, fuzzy, kde-format
+#, kde-format
 msgid "Truncate symbols in tooltips and context menus"
-msgstr "رموز بوصة و سياق القوائم"
+msgstr "اقتطع الرّموز في لصائق الأدوات وقوائم السياق"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2)
 #: kcachegrind/configdlgbase.ui:70
-#, fuzzy, kde-format
+#, kde-format
 msgid "when more than:"
-msgstr "مقطوع المزيد:"
+msgstr "عندما تكون أكثر من:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2_2)
 #: kcachegrind/configdlgbase.ui:80
-#, fuzzy, kde-format
+#, kde-format
 msgid "when longer than:"
-msgstr "مقطوع المزيد:"
+msgstr "عندما تكون أطول من:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_3)
 #: kcachegrind/configdlgbase.ui:90
-#, fuzzy, kde-format
+#, kde-format
 msgid "Precision of percentage values:"
-msgstr "الدقّة من:"
+msgstr "دقّة قيم النّسبة المئوية:"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, maxListEdit)
 #: kcachegrind/configdlgbase.ui:113
-#, fuzzy, kde-format
+#, kde-format
 msgid "The Maximum Number of List Items should be below 500."
-msgstr "الـ الأقصى الرقم من قائمة عناصر أسفل الـ السابق set قيمة مُستخدَم."
+msgstr "الحدّ الأقصى لعدد عناصر القائمة يجب أن يكون أقل من 500."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1)
 #: kcachegrind/configdlgbase.ui:158
-#, fuzzy, kde-format
+#, kde-format
 msgid "Cost Item Colors"
-msgstr "التكلفة عنصر الألوان"
+msgstr "ألوان عناصر التّكلفة"
 
 #. i18n: ectx: property (text), widget (QCheckBox, fileCheck)
 #. i18n: ectx: property (text), widget (QCheckBox, classCheck)
@@ -129,15 +129,15 @@ msgstr "الشروح"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_3_2)
 #: kcachegrind/configdlgbase.ui:329
-#, fuzzy, kde-format
+#, kde-format
 msgid "Context lines in annotations:"
-msgstr "السياق سطور بوصة:"
+msgstr "أسطر السّياق في الشّروح:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
 #: kcachegrind/configdlgbase.ui:350
-#, fuzzy, kde-format
+#, kde-format
 msgid "Source Folders"
-msgstr "المصدر المجلّدات"
+msgstr "مجلّدات المصدر"
 
 #. i18n: ectx: property (text), widget (QPushButton, addDirButton)
 #: kcachegrind/configdlgbase.ui:364
@@ -153,16 +153,16 @@ msgstr "احذف"
 
 #. i18n: ectx: property (text), widget (QTreeWidget, dirList)
 #: kcachegrind/configdlgbase.ui:409
-#, fuzzy, kde-format
+#, kde-format
 msgid "Object / Related Source Base"
-msgstr "كائن متعلق المصدر الأساس"
+msgstr "الكائن / قاعدة المصدر المرتبطة"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
 #: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:286
 #: kcachegrind/toplevel.cpp:509
-#, fuzzy, kde-format
+#, kde-format
 msgid "Profile Dumps"
-msgstr "الملف الشخصي النفايات"
+msgstr "تفريغات التّشكيلة"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView1)
 #: kcachegrind/dumpselectionbase.ui:24
@@ -190,15 +190,15 @@ msgstr "خيارات"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
 #: kcachegrind/dumpselectionbase.ui:87
-#, fuzzy, kde-format
+#, kde-format
 msgid "Target command:"
-msgstr "الهدف أمر:"
+msgstr "أمر الهدف:"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: kcachegrind/dumpselectionbase.ui:100
-#, fuzzy, kde-format
+#, kde-format
 msgid "Profiler options:"
-msgstr "المحلّل خيارات:"
+msgstr "خيارات Profiler:"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:111
@@ -273,13 +273,13 @@ msgstr "عند الدخول"
 #: kcachegrind/dumpselectionbase.ui:259
 #, kde-format
 msgid "Skip"
-msgstr "تخطّى"
+msgstr "تخطّ"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:272
 #, kde-format
 msgid "PLT"
-msgstr ""
+msgstr "PLT"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
@@ -296,9 +296,9 @@ msgstr "تفريغ التشكيلة"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:314
-#, fuzzy, kde-format
+#, kde-format
 msgid "Every BBs"
-msgstr "كل"
+msgstr "كل BBs"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:328 kcachegrind/dumpselectionbase.ui:370
@@ -314,9 +314,9 @@ msgstr "عند المغادرة"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:357
-#, fuzzy, kde-format
+#, kde-format
 msgid "Zero Events"
-msgstr "صفر أحداث"
+msgstr "أحداث صفرية"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:385
@@ -332,21 +332,21 @@ msgstr "الخطوط"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:412
-#, fuzzy, kde-format
+#, kde-format
 msgid "Recursions"
-msgstr "التَصنيف التَكراري"
+msgstr "الاستدعاءات الذاتية"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:426
-#, fuzzy, kde-format
+#, kde-format
 msgid "Call Chain"
-msgstr "نداء السلسلة"
+msgstr "تسلسل الاستدعاء"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
 #: kcachegrind/dumpselectionbase.ui:452
-#, fuzzy, kde-format
+#, kde-format
 msgid "Custom profiler options:"
-msgstr "مخصص خيارات:"
+msgstr "خيارات Profiler المخصّصة:"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton2)
 #: kcachegrind/dumpselectionbase.ui:486
@@ -356,33 +356,33 @@ msgstr "شغّل تشكيلة جديدة"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab2)
 #: kcachegrind/dumpselectionbase.ui:496
-#, fuzzy, kde-format
+#, kde-format
 msgid "Info"
-msgstr "معلومات"
+msgstr "المعلومات"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel8)
 #: kcachegrind/dumpselectionbase.ui:505
-#, fuzzy, kde-format
+#, kde-format
 msgid "Dump reason:"
-msgstr "تفريغ:"
+msgstr "سبب التفريغ:"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel6)
 #: kcachegrind/dumpselectionbase.ui:518
-#, fuzzy, kde-format
+#, kde-format
 msgid "Event summary:"
-msgstr "حدث الملخص:"
+msgstr "ملخّص الحدث:"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView4)
 #: kcachegrind/dumpselectionbase.ui:529
-#, fuzzy, kde-format
+#, kde-format
 msgid "Name"
 msgstr "الاسم"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView4)
 #: kcachegrind/dumpselectionbase.ui:540
-#, fuzzy, kde-format
+#, kde-format
 msgid "Sum"
-msgstr "مجموع"
+msgstr "المجموع"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel7)
 #: kcachegrind/dumpselectionbase.ui:554
@@ -392,7 +392,7 @@ msgstr "متنوّع:"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton6)
 #: kcachegrind/dumpselectionbase.ui:588
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show"
 msgstr "أظهر"
 
@@ -416,9 +416,9 @@ msgstr "حدّث"
 
 #. i18n: ectx: property (text), widget (QCheckBox, checkBox1)
 #: kcachegrind/dumpselectionbase.ui:626
-#, fuzzy, kde-format
+#, kde-format
 msgid "Every [s]:"
-msgstr "كل s:"
+msgstr "كل [ث]:"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:639
@@ -428,39 +428,39 @@ msgstr "العدّاد"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:661
-#, fuzzy, kde-format
+#, kde-format
 msgid "Dumps Done"
-msgstr "النفايات تم"
+msgstr "تفريغات أُنجزت"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:675
-#, fuzzy, kde-format
+#, kde-format
 msgid "Is Collecting"
-msgstr "هو الجمع"
+msgstr "قيد الجمع"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:689
-#, fuzzy, kde-format
+#, kde-format
 msgid "Executed"
 msgstr "منفّذ"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:702
-#, fuzzy, kde-format
+#, kde-format
 msgid "Basic Blocks"
-msgstr "أساسي القوالب"
+msgstr "كتل أساسية"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:716
-#, fuzzy, kde-format
+#, kde-format
 msgid "Calls"
-msgstr "اتصال"
+msgstr "استدعاءات"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:758
-#, fuzzy, kde-format
+#, kde-format
 msgid "Ir"
-msgstr "IR----"
+msgstr "Ir"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:773
@@ -470,9 +470,9 @@ msgstr "مميز"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:786
-#, fuzzy, kde-format
+#, kde-format
 msgid "ELF Objects"
-msgstr "كائنات"
+msgstr "كائنات ELF"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:800
@@ -482,49 +482,49 @@ msgstr "الدّوال"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:814
-#, fuzzy, kde-format
+#, kde-format
 msgid "Contexts"
-msgstr "السياقات"
+msgstr "السّياقات"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
 #: kcachegrind/dumpselectionbase.ui:845
-#, fuzzy, kde-format
+#, kde-format
 msgid "Stack trace:"
-msgstr "الكومة:"
+msgstr "أثر الرّصة:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, checkBox2)
 #: kcachegrind/dumpselectionbase.ui:855
-#, fuzzy, kde-format
+#, kde-format
 msgid "Sync."
-msgstr "مزامنة"
+msgstr "مزامنة."
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
 #: kcachegrind/dumpselectionbase.ui:865
-#, fuzzy, kde-format
+#, kde-format
 msgid "#"
 msgstr "#"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
 #: kcachegrind/dumpselectionbase.ui:876
-#, fuzzy, kde-format
+#, kde-format
 msgid "Incl."
-msgstr "المصاحبة."
+msgstr "متضمّن."
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
 #: kcachegrind/dumpselectionbase.ui:887
-#, fuzzy, kde-format
+#, kde-format
 msgid "Called"
-msgstr "مسمّى"
+msgstr "مستدعَى"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
 #: kcachegrind/dumpselectionbase.ui:909
-#, fuzzy, kde-format
+#, kde-format
 msgid "Location"
-msgstr "المكان"
+msgstr "الموقع"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton7)
 #: kcachegrind/dumpselectionbase.ui:928
-#, fuzzy, kde-format
+#, kde-format
 msgid "Start"
 msgstr "ابدأ"
 
@@ -536,9 +536,9 @@ msgstr "صفر"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton4)
 #: kcachegrind/dumpselectionbase.ui:958
-#, fuzzy, kde-format
+#, kde-format
 msgid "Dump"
-msgstr "تفريغ"
+msgstr "فرّغ"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab4)
 #: kcachegrind/dumpselectionbase.ui:968
@@ -548,9 +548,9 @@ msgstr "رسائل"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton9)
 #: kcachegrind/dumpselectionbase.ui:985
-#, fuzzy, kde-format
+#, kde-format
 msgid "Kill Run"
-msgstr "اقتل شغّل"
+msgstr "أوقف التّشغيل"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton8)
 #: kcachegrind/dumpselectionbase.ui:1008
@@ -586,43 +586,43 @@ msgstr "الأشرطة الجانبية"
 #: kcachegrind/kcachegrindui.rc:42
 #, kde-format
 msgid "Main Toolbar"
-msgstr "شريط الأدوات الرئيسي"
+msgstr "شريط الأدوات الرئيس"
 
 #. i18n: ectx: ToolBar (stateToolBar)
 #: kcachegrind/kcachegrindui.rc:54
-#, fuzzy, kde-format
+#, kde-format
 msgid "State Toolbar"
-msgstr "الحالة شريط الأدوات"
+msgstr "شريط أدوات الحالة"
 
 #: kcachegrind/main.cpp:34
-#, fuzzy, kde-format
+#, kde-format
 msgid "KCachegrind"
 msgstr "KCachegrind"
 
 #: kcachegrind/main.cpp:36
-#, fuzzy, kde-format
+#, kde-format
 msgid "KDE Frontend for Callgrind/Cachegrind"
-msgstr "كِيدِي لـ"
+msgstr "واجهة كيدي لـ Callgrind/Cachegrind"
 
 #: kcachegrind/main.cpp:38
 #, kde-format
 msgid "(C) 2002 - 2016"
-msgstr "(C) 2002 - 2016"
+msgstr "(ج) 2002 - 2016"
 
 #: kcachegrind/main.cpp:40
-#, fuzzy, kde-format
+#, kde-format
 msgid "Josef Weidendorfer"
-msgstr "جوزيف"
+msgstr "جوزيف ويدندورفر"
 
 #: kcachegrind/main.cpp:41
-#, fuzzy, kde-format
+#, kde-format
 msgid "Author/Maintainer"
-msgstr "المؤلف/الراعي"
+msgstr "المؤلّف/المحافظ"
 
 #: kcachegrind/main.cpp:68
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show information of this trace"
-msgstr "اعرض معلومات من"
+msgstr "أظهر معلومات هذا الأثر"
 
 #: kcachegrind/main.cpp:68
 #, kde-format
@@ -630,17 +630,17 @@ msgid "[trace...]"
 msgstr "[أثر...]"
 
 #: kcachegrind/toplevel.cpp:255 kcachegrind/toplevel.cpp:483
-#, fuzzy, kde-format
+#, kde-format
 msgid "Parts Overview"
-msgstr "الأجزاء الرؤية العامة"
+msgstr "نظرة عامة على الأجزاء"
 
 #: kcachegrind/toplevel.cpp:264
-#, fuzzy, kde-format
+#, kde-format
 msgid "Top Cost Call Stack"
-msgstr "أعلى التكلفة نداء الكومة"
+msgstr "رصّة الاستدعاء الأعلى تكلفة"
 
 #: kcachegrind/toplevel.cpp:266
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most probable' "
 "call stack. It is built up by starting with the current selected function "
@@ -648,18 +648,18 @@ msgid ""
 "p><p>The <b>Cost</b> and <b>Calls</b> columns show the cost used for all "
 "calls from the function in the line above.</p>"
 msgstr ""
-"<b> الـ أعلى التكلفة نداء الكومة</b><p> هذا هو a نداء رصة\n"
-"رصّ itإيطالياهو هو أعلى أداء بدء مع الحالي مُنتقى الدالة و مع الأعلى عند "
-"الأعلى و إلى الأسفل</p><p> الـ<b> التكلفة</b> و<b> النداءات</b> أعمدة إظهار "
-"مُستخدَم لـ الكل من الدالة بوصة سطر أعلى</p>"
+"<b>رصّة الاستدعاء الأعلى تكلفة</b><p>هذه رصّة استدعاء 'أكثر احتمالاً' خيالية "
+"بحتة. تتكوّن بالبدء بالدّالة المحدّدة الحالية وتضيف المستدعِي/المستدعَى بأعلى "
+"تكلفة في الأعلى والأسفل.</p><p>عمودا <b>التكلفة</b> و<b>الاستدعاءات</b> "
+"يظهران التكلفة المستخدمة لجميع الاستدعاءات من الدّالة في السّطر أعلاه.</p>"
 
 #: kcachegrind/toplevel.cpp:280
-#, fuzzy, kde-format
+#, kde-format
 msgid "Flat Profile"
-msgstr "مسطح الملف الشخصي"
+msgstr "تشكيلة مسطّحة"
 
 #: kcachegrind/toplevel.cpp:293
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
 "loadable profile dumps in all subdirectories of: <ul><li>current working "
@@ -679,20 +679,21 @@ msgid ""
 "regularly poll these data. Check the <b>Sync</b> option to let the dockable "
 "activate the top function in the current loaded dump.</li></ul></p>"
 msgstr ""
-"<b> الملف الشخصي النفايات</b><p> هذا بوصة الأعلى جزء قائمة من قابل للتحميل "
-"التوصيف بوصة الكل من<ul><li> الحالي دليل من KCachegrind i e الإيطالية من و</"
-"li><li> افتراضي التوصيف تفريغ دليل بوصة تشكيل</li></ul> الـ قائمة هو مُفرز "
-"هدف أمر بوصة تفريغ</p><p> تشغيل a التوصيف تفريغ معلومات لـ الإيطالية هو بوصة "
-"الأسفل منطقة من<ul><li><b> خيارات</b> إلى اعرض أمر و التوصيف خيارات من تفريغ "
-"بواسطة أي منها عنصر a جديد التوصيف قالب هو ضغط<b> شغّل الملف الشخصي</b> إلى "
-"تشغيل تنفيذ مع خيارات بوصة الخلفية</li><li><b> معلومات</b> معلومات يعمل "
-"مُنتقى تفريغ مثل الحدث الملخص و خصائِص من ذاكرة مخبئة\n"
-"تخزين مؤقت\n"
-"مَخبأ</li><li><b> الحالة</b> هو متوفّر لـ الحالي توصيفات ضغط<b> تحديث</b> إلى "
-"مختلف من تنفيذ و a رصة\n"
-"رصّ من الحالي الموضع بوصة برنامج كِش<b> كل</b> خيار إلى KCachegrind إستطلاع "
-"الرأى البيانات كِش<b> المصاحبة</b> خيار إلى نشّط الأعلى الدالة بوصة الحالي تمَ "
-"التحميل تفريغ</li></ul></p>"
+"<b>تفريغات التّشكيلة</b><p>هذا الشّريط الجانبي يظهر في الجزء العلوي قائمة "
+"بتفريغات التّشكيلة القابلة للتّحميل في كلّ المجلّدات الفرعية لـ:<ul><li>مجلّد "
+"العمل الحالي لـ KCachegrind، أي حيث بدأ تشغيله، و</li><li>مجلّد تفريغ "
+"التّشكيلة المبدئي المعطى في الضّبط.</li></ul> القائمة مصنّفة وفقًا لأمر الهدف "
+"الذي أُنشِئت تشكيلته في التّفريغ المطابق.</p><p>عند تحديد تفريغ تشكيلة، تظهر "
+"معلومات عنه في المنطقة السفلية من الشّريط الجانبي:<ul><li>تتيح لك "
+"<b>الخيارات</b> عرض الأمر الذي أُنشِئت تشكيلته وخيارات التّشكيلة لهذا التّفريغ. "
+"بتغيير أي عنصر، ينشأ نموذج تشكيلة جديد (غير موجود بعد). اضغط على <b>تشغيل "
+"التشكيلة</b> لبدء تشغيل تشكيلة بهذه الخيارات في الخلفية. </li><li>يعطي "
+"<b>المعلومات</b> معلومات مفصّلة عن التّفريغ المحدّد، مثل ملخّص تكلفة الحدث "
+"وخصائص الخبيئة المحاكية. </li><li><b>الحالة</b> متاحة فقط لعمليات تشغيل "
+"التّشكيلة الحالية. اضغط على <b>تحديث</b> لترى عدّادات مختلفة للتشغيل، وأثر رصّة "
+"للموقع الحالي في البرنامج الذي أُنشِئت تشكيلته. تفحّص خيار <b>كلّ</b> لدع "
+"KCachegrind يطلب هذه البيانات بانتظام. تفحّص خيار <b>مزامنة</b> لدع الشّريط "
+"الجانبي ينشط الدّالة العلوية في التّفريغ المحمّل الحالي.</li></ul></p>"
 
 #: kcachegrind/toplevel.cpp:364
 #, kde-format
@@ -700,12 +701,10 @@ msgid "&Duplicate"
 msgstr "&كرّر"
 
 #: kcachegrind/toplevel.cpp:367
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
-msgstr ""
-"<b> مضاعفة الحالي التصميم</b><p> Make a نسخ من الحالي تخطيط\n"
-"نسق</p>"
+msgstr "<b>كرّر التّخطيط الحالي</b><p>أنشئ نسخة من التّخطيط الحالي.</p>"
 
 #: kcachegrind/toplevel.cpp:372
 #, kde-format
@@ -713,58 +712,56 @@ msgid "&Remove"
 msgstr "أ&زل"
 
 #: kcachegrind/toplevel.cpp:374
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<b>Remove Current Layout</b><p>Delete current layout and make the previous "
 "active.</p>"
-msgstr ""
-"<b> احذف الحالي التصميم</b><p> احذف الحالي تخطيط\n"
-"نسق و make السابق نشط</p>"
+msgstr "<b>أزل التّخطيط الحالي</b><p>احذف التّخطيط الحالي واجعل السّابق نشطًا.</p>"
 
 #: kcachegrind/toplevel.cpp:379
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Go to Next"
-msgstr "إذهب إلى التالي"
+msgstr "اذ&هب إلى التالي"
 
 #: kcachegrind/toplevel.cpp:382
-#, fuzzy, kde-format
+#, kde-format
 msgid "Go to Next Layout"
-msgstr "إذهب إلى التالي التصميم"
+msgstr "اذهب إلى التّخطيط التالي"
 
 #: kcachegrind/toplevel.cpp:386
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Go to Previous"
-msgstr "إذهب إلى السابق"
+msgstr "اذ&هب إلى السّابق"
 
 #: kcachegrind/toplevel.cpp:389
-#, fuzzy, kde-format
+#, kde-format
 msgid "Go to Previous Layout"
-msgstr "إذهب إلى السابق التصميم"
+msgstr "اذهب إلى التّخطيط السّابق"
 
 #: kcachegrind/toplevel.cpp:393
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Restore to Default"
-msgstr "استعادة إلى افتراضي"
+msgstr "اس&ترجع إلى المبدئي"
 
 #: kcachegrind/toplevel.cpp:395
-#, fuzzy, kde-format
+#, kde-format
 msgid "Restore Layouts to Default"
-msgstr "استعادة التصاميم إلى افتراضي"
+msgstr "استرجع التّخطيطات إلى المبدئي"
 
 #: kcachegrind/toplevel.cpp:399
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Save as Default"
-msgstr "إحفظ &كإفتراضي"
+msgstr "ا&حفظ كمبدئي"
 
 #: kcachegrind/toplevel.cpp:401
-#, fuzzy, kde-format
+#, kde-format
 msgid "Save Layouts as Default"
-msgstr "احفظ التصاميم افتراضي"
+msgstr "احفظ التّخطيطات كمبدئي"
 
 #: kcachegrind/toplevel.cpp:412
-#, fuzzy, kde-format
+#, kde-format
 msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
-msgstr "<b> جديد</b><p> افتح جديد فارغ KCachegrind نافذة</p>"
+msgstr "<b>جديد</b><p>افتح نافذة KCachegrind فارغة جديدة.</p>"
 
 #: kcachegrind/toplevel.cpp:416
 #, kde-format
@@ -772,13 +769,13 @@ msgid "&Add..."
 msgstr "أ&ضف..."
 
 #: kcachegrind/toplevel.cpp:418
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<b>Add Profile Data</b><p>This opens an additional profile data file in the "
 "current window.</p>"
 msgstr ""
-"<b> إضافة الملف الشخصي البيانات</b><p> هذا التوصيف البيانات ملفّ بوصة الحالي "
-"نافذة</p>"
+"<b>أضف بيانات التشكيلة</b><p>يفتح هذا ملف بيانات تشكيلة إضافي في النافذة "
+"الحالية.</p>"
 
 #: kcachegrind/toplevel.cpp:424
 #, kde-format
@@ -787,29 +784,32 @@ msgid "&Reload"
 msgstr "أ&عد التحميل"
 
 #: kcachegrind/toplevel.cpp:427
-#, fuzzy, kde-format
+#, kde-format
 msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
-msgstr "<b> أعد التحميل الملف الشخصي البيانات</b><p> هذا أي منها جديد</p>"
+msgstr ""
+"<b>أعد تحميل بيانات التشكيلة</b><p>يحمّل هذا أي أجزاء جديدة أُنشِئت أيضًا.</p>"
 
 #: kcachegrind/toplevel.cpp:432
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Export Graph"
-msgstr "صدِّر رسم بياني"
+msgstr "&صدّر الرسم البياني"
 
 #: kcachegrind/toplevel.cpp:435
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
 "tools of the GraphViz package.</p>"
-msgstr "<b> صدِّر نداء رسم بياني</b><p> يولّد a ملفّ مع إمتداد نقطة لـ من حزمة</p>"
+msgstr ""
+"<b>صدّر رسم بياني للاستدعاء</b><p>يولّد ملفًا بامتداد .dot لأدوات حزمة GraphViz."
+"</p>"
 
 #: kcachegrind/toplevel.cpp:443
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Force Dump"
-msgstr "فرِض تفريغ"
+msgstr "&فرّغ بالإجبار"
 
 #: kcachegrind/toplevel.cpp:446
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
 "current directory. This action is checked while KCachegrind looks for the "
@@ -826,27 +826,32 @@ msgid ""
 "profiled GUI program, you can awake Callgrind e.g. by resizing a window of "
 "the program.</p>"
 msgstr ""
-"<b> فرِض تفريغ</b><p> هذا a تفريغ لـ a التوصيف تنفيذ بوصة الحالي دليل هذا "
-"الأفعال هو مؤكّد بينما KCachegrind لـ تفريغ إذا تفريغ هو إنتهيت الإيطالية "
-"الحالي إذا هو من جاري التنفيذ جديد جزء تمَ التحميل</p><p> فرِض تفريغ a ملفّ و "
-"كل ثانية لـ A جاري التنفيذ كشف ملفّ تفريغ a جزء و حذف الـ حذف هو أداء "
-"KCachegrind و الإيطالية a أعد التحميل إذا s<em> لا</em> جاري التنفيذ ضغط فرِض "
-"تفريغ إلى إلغاء تفريغ طلب هذا نفسها و لـ a جديد تفريغ</p><p> ملاحظة A "
-"تنفيذ<em></em> من جاري التنفيذ a ملي ثانية i e<em> ليس</em> تلميحة لـ a "
-"الواجهة الرسومية برنامج e g أداء a نافذة من برنامج</p>"
+"<b>فرّغ بالإجبار</b><p>هذا يجبر تفريغًا لتشغيل تشكيلة Callgrind في المجلّد "
+"الحالي. يُفحَص هذا الإجراء بينما KCachegrind يبحث عن التّفريغ. إذا انتهى "
+"التّفريغ، فإنه يعيد تحميل الأثر الحالي آلياً. إذا كان هذا هو الأثر من "
+"Callgrind قيد التّشغيل، فسيُحمّل جزء الأثر الجديد المنشأ أيضًا.</p><p>التّفريغ "
+"بالإجبار ينشئ ملف 'callgrind.cmd'، ويفحص كل ثانية عن وجوده. Callgrind قيد "
+"التّشغيل سيكتشف هذا الملف، يفرّغ جزء أثر، ويحذف 'callgrind.cmd'. يكتشف "
+"KCachegrind الحذف، ويعيد التحميل. إذا كان <em>لا</em> يوجد Callgrind قيد "
+"التّشغيل، فاضغط على 'فرّغ بالإجبار' مرة أخرى لإلغاء طلب التّفريغ. هذا يحذف "
+"'callgrind.cmd' ذاته ويوقف طلب التّفريغ الجديد.</p><p>ملاحظة: Callgrind قيد "
+"التّشغيل <em>فقط</em> يكتشف وجود 'callgrind.cmd' عندما يكون نشطًا ويُشغَّل لبضعة "
+"ملي ثوانٍ، أي <em>ليس</em> نائمًا. تلميح: لبرنامج واجهة مستخدم رسومية أنشِئت "
+"تشكيلته، يمكنك إيقاظ Callgrind مثلاً بتغيير حجم نافذة البرنامج.</p>"
 
 #: kcachegrind/toplevel.cpp:471
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<b>Open Profile Data</b><p>This opens a profile data file, with possible "
 "multiple parts</p>"
 msgstr ""
-"<b> افتح الملف الشخصي البيانات</b><p> هذا a التوصيف البيانات ملفّ مع متعدد</p>"
+"<b>افتح بيانات التشكيلة</b><p>يفتح هذا ملف بيانات تشكيلة، باحتمالية وجود "
+"أجزاء متعدّدة</p>"
 
 #: kcachegrind/toplevel.cpp:486
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show/Hide the Parts Overview Dockable"
-msgstr "اعرض إخفاء الأجزاء الرؤية العامة قابل للإرساء"
+msgstr "أظهر/أخفِ الشّريط الجانبي لنظرة عامة على الأجزاء"
 
 #: kcachegrind/toplevel.cpp:491
 #, kde-format
@@ -854,24 +859,24 @@ msgid "Call Stack"
 msgstr "نادِ الرّصة"
 
 #: kcachegrind/toplevel.cpp:494
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show/Hide the Call Stack Dockable"
-msgstr "اعرض إخفاء نداء الكومة قابل للإرساء"
+msgstr "أظهر/أخفِ الشّريط الجانبي لرصّة الاستدعاء"
 
 #: kcachegrind/toplevel.cpp:499
-#, fuzzy, kde-format
+#, kde-format
 msgid "Function Profile"
-msgstr "الوظيفة الملف الشخصي"
+msgstr "تشكيلة الدّالة"
 
 #: kcachegrind/toplevel.cpp:502
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show/Hide the Function Profile Dockable"
-msgstr "اعرض إخفاء الوظيفة الملف الشخصي قابل للإرساء"
+msgstr "أظهر/أخفِ الشّريط الجانبي لتشكيلة الدّالة"
 
 #: kcachegrind/toplevel.cpp:510
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show/Hide the Profile Dumps Dockable"
-msgstr "اعرض إخفاء الملف الشخصي النفايات قابل للإرساء"
+msgstr "أظهر/أخفِ الشّريط الجانبي لتفريغات التّشكيلة"
 
 #: kcachegrind/toplevel.cpp:517
 #, kde-format
@@ -879,22 +884,22 @@ msgid "Relative"
 msgstr "نسبيّ"
 
 #: kcachegrind/toplevel.cpp:519
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show relative instead of absolute costs"
-msgstr "اعرض نسبي من مطلق"
+msgstr "أظهر التّكاليف النّسبية بدلاً من المطلقة"
 
 #: kcachegrind/toplevel.cpp:525
-#, fuzzy, kde-format
+#, kde-format
 msgid "Relative to Parent"
-msgstr "نسبة مئوية نسبي إلى أب"
+msgstr "نسبيًّا للمستدعِي"
 
 #: kcachegrind/toplevel.cpp:528
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show percentage costs relative to parent"
-msgstr "اعرض نسبي إلى أب"
+msgstr "أظهر التّكاليف المئوية نسبيًّا للمستدعِي"
 
 #: kcachegrind/toplevel.cpp:532
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<b>Show percentage costs relative to parent</b><p>If this is switched off, "
 "percentage costs are always shown relative to the total cost of the profile "
@@ -907,12 +912,15 @@ msgid ""
 "table></ul><p>(*) Only if function grouping is switched on (e.g. ELF object "
 "grouping).</p>"
 msgstr ""
-"<b> اعرض نسبي إلى أب</b><p> إذا هو موقف دائماً نسبي إلى الكلى من التوصيف جزء "
-"s بواسطة يعمل خيار من عناصر نسبي إلى أب عنصر<ul><table><tr><td><b> التكلفة "
-"النوع</td><td><b> أب التكلفة</td></tr><tr><td> الوظيفة متراكم</td><td> "
-"المجموع</td></tr><tr><td> الوظيفة ذاته</td><td> الوظيفة المجموعة المجموع</"
-"td></tr><tr><td> نداء</td><td> الوظيفة متراكم</td></tr><tr><td> المصدر خط</"
-"td><td> الوظيفة متراكم</td></tr></table><p> فقط IF الدالة هو يعمل e g كائن."
+"<b>أظهر التّكاليف المئوية نسبيًّا للمستدعِي</b><p>إذا أُطفِئ هذا، فستُظهر التّكاليف "
+"المئوية دائمًا نسبيًّا للتكلفة الكلية لجزء (أجزاء) التشكيلة التي تُستعرض حاليًا. "
+"بتشغيل هذا الخيار، تكون التكلفة المئوية لعناصر التكلفة المعروضة نسبيًّا لعنصر "
+"تكلفة المستدعِي.</p><ul><table><tr><td><b>نوع التّكلفة</b></td><td><b>تكلفة "
+"المستدعِي</b></td></tr><tr><td>تراكمي الدالة</td><td>الكلي</td></"
+"tr><tr><td>ذاتي الدالة</td><td>مجموعة الدالة (*) / الكلي</td></"
+"tr><tr><td>استدعاء</td><td>شامل الدالة</td></tr><tr><td>سطر المصدر</"
+"td><td>شامل الدالة</td></tr></table></ul><p>(*) فقط إذا كان تجميع الدوال "
+"مشغلاً (مثلاً تجميع كائنات ELF).</p>"
 
 #: kcachegrind/toplevel.cpp:549
 #, kde-format
@@ -920,7 +928,7 @@ msgid "Cycle Detection"
 msgstr "تحديد حلقي"
 
 #: kcachegrind/toplevel.cpp:552
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
 "drawing will show black areas when a recursive call is made instead of "
@@ -933,20 +941,24 @@ msgid ""
 "often will lead to huge false cycles, making the analysis impossible; "
 "therefore, there is the option to switch this off.</p>"
 msgstr ""
-"<b> اكتشاف</b><p> إذا هو موقف إظهار أسود a نداء هو من معاودة ملاحظة حجم من "
-"أسود خطأ داخل من خطأ هو صغير لـ خاطئ توثيق<p> الـ صح لـ هو إلى كشف و قلّص "
-"الكل من a دورة a وهمي الدالة هو done خيار هو مُنتقى لسوء الحظ مع الواجهة "
-"الرسومية تطبيقات إلى خاطئ تحليل هو خيار إلى تحول موقف."
+"<b>حدّد الحلقات الذاتية</b><p>إذا أُطفِئ هذا، يُظهر رسم الخريطة الشجرية مناطق "
+"سوداء عند إجراء استدعاء ذاتي بدلاً من رسم الاستدعاء الذاتي إلى ما لا نهاية. "
+"لاحظ أنّ حجم المناطق السوداء غالبًا ما يكون خاطئًا، لأنه داخل الحلقات الذاتية "
+"لا يمكن تحديد تكلفة الاستدعاءات؛ لكن الخطأ صغير في الحلقات الكاذبة (اطلع على "
+"التوثيق).</p><p>المعالجة الصّحيحة للحلقات هي تحديدها وطيّ جميع دوال الحلقة في "
+"دالة مصطنعة، وهو ما يحدث عند تحديد هذا الخيار. لسوء الحظ، مع تطبيقات الواجهة "
+"الرسومية، يؤدي هذا غالبًا إلى حلقات كاذبة ضخمة، ما يجعل التّحليل مستحيلاً؛ "
+"ولذلك، يوجد خيار لإطفاء هذا.</p>"
 
 #: kcachegrind/toplevel.cpp:568
 #, kde-format
 msgid "Shorten Templates"
-msgstr ""
+msgstr "قصّر النّماذج"
 
 #: kcachegrind/toplevel.cpp:570
 #, kde-format
 msgid "Hide Template Parameters in C++ Symbols"
-msgstr ""
+msgstr "أخفِ وسائط النّموذج في رموز C++"
 
 #: kcachegrind/toplevel.cpp:571
 #, kde-format
@@ -957,6 +969,10 @@ msgid ""
 "p><p>In this mode, you can hover the mouse pointer over the activated symbol "
 "label to show a tooltip with the unabbreviated symbol.</p>"
 msgstr ""
+"<b>أخفِ وسائط النّموذج في رموز C++</b><p>إذا شُغِّل هذا، فإنّ كل رمز معروض ستُخفَى "
+"فيه أي وسائط نموذج C++، ويُظهِر فقط &lt;&gt; بدلاً من وسيط نموذج قد يكون "
+"متداخلاً.</p><p>في هذا الوضع، يمكنك تحريك مؤشر الفأرة فوق لصيقة الرّمز المنشّطة "
+"لعرض لصيقة أدوات بالرّمز غير المختصر.</p>"
 
 #: kcachegrind/toplevel.cpp:587
 #, kde-format
@@ -964,43 +980,43 @@ msgid "&Up"
 msgstr "لأ&على"
 
 #: kcachegrind/toplevel.cpp:596
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
 "was visited, use that with highest cost.</p>"
 msgstr ""
-"<b> إذهب أعلى</b><p> إذهب إلى الأخير مُنتقى من الحالي الدالة إذا لا استخدام "
-"مع الأعلى</p>"
+"<b>اذهب للأعلى</b><p>اذهب إلى المستدعِي المحدّد الأخير للدالة الحالية. إذا لم "
+"يُزَر أي مستدعِي، استخدم الذي له أعلى تكلفة.</p>"
 
 #: kcachegrind/toplevel.cpp:613
-#, fuzzy, kde-format
+#, kde-format
 msgid "Go back in function selection history"
-msgstr "إذهب إلى الخلف بوصة الدالة منتقى تاريخ"
+msgstr "اذهب للخلف في سجل تحديد الدالة"
 
 #: kcachegrind/toplevel.cpp:627
-#, fuzzy, kde-format
+#, kde-format
 msgid "Go forward in function selection history"
-msgstr "إذهب أمام بوصة الدالة منتقى تاريخ"
+msgstr "اذهب للأمام في سجل تحديد الدالة"
 
 #: kcachegrind/toplevel.cpp:632 kcachegrind/toplevel.cpp:1503
-#, fuzzy, kde-format
+#, kde-format
 msgid "Primary Event Type"
-msgstr "أوّلي حدث النوع"
+msgstr "نوع الحدث الأساسي"
 
 #: kcachegrind/toplevel.cpp:633
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select primary event type of costs"
-msgstr "انتقِ أوّلي الحدث نوع من"
+msgstr "حدد نوع الحدث الأساسي للتكاليف"
 
 #: kcachegrind/toplevel.cpp:655 kcachegrind/toplevel.cpp:1508
-#, fuzzy, kde-format
+#, kde-format
 msgid "Secondary Event Type"
-msgstr "ثانوي حدث النوع"
+msgstr "نوع الحدث الثانوي"
 
 #: kcachegrind/toplevel.cpp:656
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
-msgstr "انتقِ ثانوي الحدث نوع لـ e g بوصة"
+msgstr "حدد نوع الحدث الثانوي للتكلفة مثلاً المعروضة في الشّروح"
 
 #: kcachegrind/toplevel.cpp:665
 #, kde-format
@@ -1008,9 +1024,9 @@ msgid "Grouping"
 msgstr "يجمّع"
 
 #: kcachegrind/toplevel.cpp:667
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select how functions are grouped into higher level cost items"
-msgstr "انتقِ مستوى عناصر"
+msgstr "حدد كيف تُجمّع الدوال في عناصر تكلفة مستوى أعلى"
 
 #: kcachegrind/toplevel.cpp:673
 #, kde-format
@@ -1023,9 +1039,9 @@ msgid "Split"
 msgstr "اقسم"
 
 #: kcachegrind/toplevel.cpp:688
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show two information panels"
-msgstr "اعرض إثنان معلومات"
+msgstr "أظهر لوحتي معلومات"
 
 #: kcachegrind/toplevel.cpp:694
 #, kde-format
@@ -1033,34 +1049,35 @@ msgid "Split Horizontal"
 msgstr "اقسم أف&قياً"
 
 #: kcachegrind/toplevel.cpp:697
-#, fuzzy, kde-format
+#, kde-format
 msgid "Change Split Orientation when main window is split."
-msgstr "غيّر تقسيم الاتجاه رئيسي نافذة هو انقسام."
+msgstr "غيّر اتجاه التقسيم عندما تكون النافذة الرئيسية مقسومة."
 
 #: kcachegrind/toplevel.cpp:891
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select Callgrind Profile Data"
-msgstr "انتقِ الملف الشخصي البيانات"
+msgstr "اختر بيانات تشكيلة Callgrind"
 
 #: kcachegrind/toplevel.cpp:893 kcachegrind/toplevel.cpp:961
-#, fuzzy, kde-format
+#, kde-format
 msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
-msgstr "خارج خارج الملف الشخصي البيانات n الكل ملفات"
+msgstr ""
+"بيانات تشكيلة Callgrind (cachegrind.out* callgrind.out*);;جميع الملفات (*)"
 
 #: kcachegrind/toplevel.cpp:921 kcachegrind/toplevel.cpp:950
 #, kde-format
 msgid ""
 "Could not open the file \"%1\". Check it exists and you have enough "
 "permissions to read it."
-msgstr ""
+msgstr "لا أستطيع فتح الملف \"%1\". تحقق من وجوده ولديك أذونات كافية لقراءته."
 
 #: kcachegrind/toplevel.cpp:959
-#, fuzzy, kde-format
+#, kde-format
 msgid "Add Callgrind Profile Data"
-msgstr "إضافة الملف الشخصي البيانات"
+msgstr "أضف بيانات تشكيلة Callgrind"
 
 #: kcachegrind/toplevel.cpp:1129 kcachegrind/toplevel.cpp:1456
-#, fuzzy, kde-format
+#, kde-format
 msgid "(Hidden)"
 msgstr "(مخفي)"
 
@@ -1070,14 +1087,14 @@ msgid "Hide"
 msgstr "أخفِ"
 
 #: kcachegrind/toplevel.cpp:1555
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show Absolute Cost"
-msgstr "اعرض مطلق :: حتمي :: خالص :: كامل :: مُطبق التكلفة"
+msgstr "أظهر التكلفة المطلقة"
 
 #: kcachegrind/toplevel.cpp:1558
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show Relative Cost"
-msgstr "اعرض نسبي التكلفة"
+msgstr "أظهر التكلفة النسبية"
 
 #: kcachegrind/toplevel.cpp:1593
 #, kde-format
@@ -1095,55 +1112,55 @@ msgid "Go Up"
 msgstr "اذهب إلى الأعلى"
 
 #: kcachegrind/toplevel.cpp:1807
-#, fuzzy, kde-format
+#, kde-format
 msgid "Layout Count: %1"
-msgstr "التصميم العدد 1"
+msgstr "عدد التخطيطات: %1"
 
 #: kcachegrind/toplevel.cpp:1814
-#, fuzzy, kde-format
+#, kde-format
 msgid "No profile data file loaded."
-msgstr "لا التوصيف البيانات ملفّ تمَ التحميل."
+msgstr "لا يوجد ملف بيانات تشكيلة محمّل."
 
 #: kcachegrind/toplevel.cpp:1823
-#, fuzzy, kde-format
+#, kde-format
 msgid "Total %1 Cost: %2"
-msgstr "تكلفة كلية"
+msgstr "إجمالي تكلفة %1: %2"
 
 #: kcachegrind/toplevel.cpp:1835
-#, fuzzy, kde-format
+#, kde-format
 msgid "No event type selected"
-msgstr "لا الحدث نوع مُنتقى"
+msgstr "لا يوجد نوع حدث محدد"
 
 #: kcachegrind/toplevel.cpp:2013
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
-msgstr ""
+msgstr "لا أستطيع تحديد PID للمستقبل لطلب التفريغ"
 
 #: kcachegrind/toplevel.cpp:2059
 #, kde-format
 msgid "Error running callgrind_control"
-msgstr ""
+msgstr "خطأ في تشغيل callgrind_control"
 
 #: kcachegrind/toplevel.cpp:2098 kcachegrind/toplevel.cpp:2135
 #: kcachegrind/toplevel.cpp:2172
-#, fuzzy, kde-format
+#, kde-format
 msgid "(No Stack)"
-msgstr "لا الكومة"
+msgstr "(بلا رصّة)"
 
 #: kcachegrind/toplevel.cpp:2104
-#, fuzzy, kde-format
+#, kde-format
 msgid "(No next function)"
-msgstr "لا التالي الدالة"
+msgstr "(لا توجد دالة تالية)"
 
 #: kcachegrind/toplevel.cpp:2141
-#, fuzzy, kde-format
+#, kde-format
 msgid "(No previous function)"
-msgstr "لا السابق الدالة"
+msgstr "(لا توجد دالة سابقة)"
 
 #: kcachegrind/toplevel.cpp:2177
-#, fuzzy, kde-format
+#, kde-format
 msgid "(No Function Up)"
-msgstr "لا الوظيفة أعلى"
+msgstr "(لا توجد دالة للأعلى)"
 
 #: kcachegrind/toplevel.cpp:2309 kcachegrind/toplevel.cpp:2323
 #, kde-format
