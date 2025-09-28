@@ -1,0 +1,2480 @@
+# SPDX-FileCopyrightText: 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"PO-Revision-Date: 2025-09-27 11:37+0400\n"
+"Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
+"Language-Team: ar\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Lokalize 23.08.5\n"
+"X-Qt-Contexts: true\n"
+
+#: libcore/cachegrindloader.cpp:135
+msgctxt "QObject|"
+msgid "Import filter for Cachegrind/Callgrind generated profile data files"
+msgstr "مرشح استيراد لملفات بيانات تشكيلة مولدة من خبيئة Grin/Callgrind"
+
+#: libcore/context.cpp:60
+msgctxt "ProfileContext|"
+msgid "Invalid Context"
+msgstr "سياق غير صالح"
+
+#: libcore/context.cpp:61
+msgctxt "ProfileContext|"
+msgid "Unknown Context"
+msgstr "سياق مجهول"
+
+#: libcore/context.cpp:62
+msgctxt "ProfileContext|"
+msgid "Part Source Line"
+msgstr "مقطع سطر المصدر"
+
+#: libcore/context.cpp:63
+msgctxt "ProfileContext|"
+msgid "Source Line"
+msgstr "سطر المصدر"
+
+#: libcore/context.cpp:64
+msgctxt "ProfileContext|"
+msgid "Part Line Call"
+msgstr "مقطع استدعاء السطر"
+
+#: libcore/context.cpp:65
+msgctxt "ProfileContext|"
+msgid "Line Call"
+msgstr "استدعاء السطر"
+
+#: libcore/context.cpp:66
+msgctxt "ProfileContext|"
+msgid "Part Jump"
+msgstr "مقطع القفزة"
+
+#: libcore/context.cpp:67
+msgctxt "ProfileContext|"
+msgid "Jump"
+msgstr "قفزة"
+
+#: libcore/context.cpp:68
+msgctxt "ProfileContext|"
+msgid "Part Instruction"
+msgstr "مقطع التعليمة"
+
+#: libcore/context.cpp:69
+msgctxt "ProfileContext|"
+msgid "Instruction"
+msgstr "تعليمة"
+
+#: libcore/context.cpp:70
+msgctxt "ProfileContext|"
+msgid "Part Instruction Jump"
+msgstr "مقطع قفزة التعليمة"
+
+#: libcore/context.cpp:71
+msgctxt "ProfileContext|"
+msgid "Instruction Jump"
+msgstr "قفزة التعليمة"
+
+#: libcore/context.cpp:72
+msgctxt "ProfileContext|"
+msgid "Part Instruction Call"
+msgstr "مقطع استدعاء التعليمة"
+
+#: libcore/context.cpp:73
+msgctxt "ProfileContext|"
+msgid "Instruction Call"
+msgstr "استدعاء التعليمة"
+
+#: libcore/context.cpp:74
+msgctxt "ProfileContext|"
+msgid "Part Call"
+msgstr "مقطع الاستدعاء"
+
+#: libcore/context.cpp:75
+msgctxt "ProfileContext|"
+msgid "Call"
+msgstr "استدعاء"
+
+#: libcore/context.cpp:76
+msgctxt "ProfileContext|"
+msgid "Part Function"
+msgstr "مقطع الدالة"
+
+#: libcore/context.cpp:77
+msgctxt "ProfileContext|"
+msgid "Function Source File"
+msgstr "ملف مصدر الدالة"
+
+#: libcore/context.cpp:78
+msgctxt "ProfileContext|"
+msgid "Function"
+msgstr "دالة"
+
+#: libcore/context.cpp:79
+msgctxt "ProfileContext|"
+msgid "Function Cycle"
+msgstr "دورة الدالة"
+
+#: libcore/context.cpp:80
+msgctxt "ProfileContext|"
+msgid "Part Class"
+msgstr "مقطع الصنف"
+
+#: libcore/context.cpp:81
+msgctxt "ProfileContext|"
+msgid "Class"
+msgstr "صنف"
+
+#: libcore/context.cpp:82
+msgctxt "ProfileContext|"
+msgid "Part Source File"
+msgstr "مقطع ملف المصدر"
+
+#: libcore/context.cpp:83
+msgctxt "ProfileContext|"
+msgid "Source File"
+msgstr "ملف المصدر"
+
+#: libcore/context.cpp:84
+msgctxt "ProfileContext|"
+msgid "Part ELF Object"
+msgstr "مقطع كائن ELF"
+
+#: libcore/context.cpp:85
+msgctxt "ProfileContext|"
+msgid "ELF Object"
+msgstr "كائن ELF"
+
+#: libcore/context.cpp:86
+msgctxt "ProfileContext|"
+msgid "Profile Part"
+msgstr "مقطع التشكيلة"
+
+#: libcore/context.cpp:87
+msgctxt "ProfileContext|"
+msgid "Program Trace"
+msgstr "تتبع البرنامج"
+
+#: libcore/context.cpp:88
+msgctxt "ProfileContext|"
+msgid "BasicBlock"
+msgstr "كتلة أساسية"
+
+#: libcore/costitem.cpp:48
+#, qt-format
+msgctxt "QObject|"
+msgid "%1 from %2"
+msgstr "%1 من %2"
+
+#: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1984
+#: libcore/tracedata.cpp:2046 libcore/tracedata.cpp:3024
+#: libcore/tracedata.cpp:3125 libviews/partgraph.cpp:409
+msgctxt "QObject|"
+msgid "(unknown)"
+msgstr "(مجهول)"
+
+#: libcore/globalconfig.cpp:77
+msgctxt "QObject|"
+msgid "Instruction Fetch"
+msgstr "جلب التعليمة"
+
+#: libcore/globalconfig.cpp:78
+msgctxt "QObject|"
+msgid "Data Read Access"
+msgstr "وصول قراءة البيانات"
+
+#: libcore/globalconfig.cpp:79
+msgctxt "QObject|"
+msgid "Data Write Access"
+msgstr "وصول كتابة البيانات"
+
+#: libcore/globalconfig.cpp:80
+msgctxt "QObject|"
+msgid "L1 Instr. Fetch Miss"
+msgstr "فقد جلب تعليمة L1"
+
+#: libcore/globalconfig.cpp:81
+msgctxt "QObject|"
+msgid "L1 Data Read Miss"
+msgstr "فقد قراءة بيانات L1"
+
+#: libcore/globalconfig.cpp:82
+msgctxt "QObject|"
+msgid "L1 Data Write Miss"
+msgstr "فقد كتابة بيانات L1"
+
+#: libcore/globalconfig.cpp:83
+msgctxt "QObject|"
+msgid "L2 Instr. Fetch Miss"
+msgstr "فقد جلب تعليمة L2"
+
+#: libcore/globalconfig.cpp:84
+msgctxt "QObject|"
+msgid "L2 Data Read Miss"
+msgstr "فقد قراءة بيانات L2"
+
+#: libcore/globalconfig.cpp:85
+msgctxt "QObject|"
+msgid "L2 Data Write Miss"
+msgstr "فقد كتابة بيانات L2"
+
+#: libcore/globalconfig.cpp:86
+msgctxt "QObject|"
+msgid "LL Instr. Fetch Miss"
+msgstr "فقد جلب تعليمة LL"
+
+#: libcore/globalconfig.cpp:87
+msgctxt "QObject|"
+msgid "LL Data Read Miss"
+msgstr "فقد قراءة بيانات LL"
+
+#: libcore/globalconfig.cpp:88
+msgctxt "QObject|"
+msgid "LL Data Write Miss"
+msgstr "فقد كتابة بيانات LL"
+
+#: libcore/globalconfig.cpp:89
+msgctxt "QObject|"
+msgid "L1 Miss Sum"
+msgstr "مجموع فقد L1"
+
+#: libcore/globalconfig.cpp:90
+msgctxt "QObject|"
+msgid "L2 Miss Sum"
+msgstr "مجموع فقد L2"
+
+#: libcore/globalconfig.cpp:91
+msgctxt "QObject|"
+msgid "Last-level Miss Sum"
+msgstr "مجموع فقد المستوى الأخير"
+
+#: libcore/globalconfig.cpp:92
+msgctxt "QObject|"
+msgid "Indirect Branch"
+msgstr "تفرع غير مباشر"
+
+#: libcore/globalconfig.cpp:93
+msgctxt "QObject|"
+msgid "Mispredicted Ind. Branch"
+msgstr "تفرع غير مباشر خاطئ التوقع"
+
+#: libcore/globalconfig.cpp:94
+msgctxt "QObject|"
+msgid "Conditional Branch"
+msgstr "تفرع شرطي"
+
+#: libcore/globalconfig.cpp:95
+msgctxt "QObject|"
+msgid "Mispredicted Cond. Branch"
+msgstr "تفرع شرطي خاطئ التوقع"
+
+#: libcore/globalconfig.cpp:96
+msgctxt "QObject|"
+msgid "Mispredicted Branch"
+msgstr "تفرع خاطئ التوقع"
+
+#: libcore/globalconfig.cpp:97
+msgctxt "QObject|"
+msgid "Global Bus Event"
+msgstr "حدث ناقل عام"
+
+#: libcore/globalconfig.cpp:98
+msgctxt "QObject|"
+msgid "Samples"
+msgstr "عينات"
+
+#: libcore/globalconfig.cpp:99
+msgctxt "QObject|"
+msgid "System Time"
+msgstr "وقت النظام"
+
+#: libcore/globalconfig.cpp:100
+msgctxt "QObject|"
+msgid "User Time"
+msgstr "وقت المستخدم"
+
+#: libcore/globalconfig.cpp:101
+msgctxt "QObject|"
+msgid "Cycle Estimation"
+msgstr "تقدير الدورة"
+
+#: libcore/tracedata.cpp:1245
+msgctxt "QObject|"
+msgid "(no caller)"
+msgstr "(لا يوجد مستدعِي)"
+
+#: libcore/tracedata.cpp:1252 libcore/tracedata.cpp:1271
+#, qt-format
+msgctxt "QObject|"
+msgid "%1 via %2"
+msgstr "%1 عبر %2"
+
+#: libcore/tracedata.cpp:1261
+msgctxt "QObject|"
+msgid "(no callee)"
+msgstr "(لا يوجد مستدعَى)"
+
+#: libcore/tracedata.cpp:2873
+msgctxt "QObject|"
+msgid "(global)"
+msgstr "(عام)"
+
+#: libcore/tracedata.cpp:3308
+msgctxt "QObject|"
+msgid "(not found)"
+msgstr "(لا يوجد)"
+
+#: libcore/tracedata.cpp:3856
+msgctxt "TraceData|"
+msgid "Recalculating Function Cycles..."
+msgstr "إعادة حساب دورات الدالة..."
+
+#: libviews/callgraphview.cpp:414
+#, qt-format
+msgctxt "QObject|"
+msgid "Call(s) from %1"
+msgstr "استدعاء (استدعاءات) من %1"
+
+#: libviews/callgraphview.cpp:417
+#, qt-format
+msgctxt "QObject|"
+msgid "Call(s) to %1"
+msgstr "استدعاء (استدعاءات) إلى %1"
+
+#: libviews/callgraphview.cpp:419
+msgctxt "QObject|"
+msgid "(unknown call)"
+msgstr "(استدعاء مجهول)"
+
+#: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1414
+#: libviews/controlflowgraphview.cpp:2449
+msgctxt "QObject|"
+msgid "Export Graph"
+msgstr "صدّر الرسم البياني"
+
+#: libviews/callgraphview.cpp:1591
+msgctxt "CallGraphView|"
+msgid ""
+"<b>Call Graph around active Function</b><p>Depending on configuration, this "
+"view shows the call graph environment of the active function. Note: the "
+"shown cost is <b>only</b> the cost which is spent while the active function "
+"was actually running; i.e. the cost shown for main() - if it is visible - "
+"should be the same as the cost of the active function, as that is the part "
+"of inclusive cost of main() spent while the active function was running.</"
+"p><p>For cycles, blue call arrows indicate that this is an artificial call "
+"added for correct drawing which actually never happened.</p><p>If the graph "
+"is larger than the widget area, an overview panner is shown in one edge. "
+"There are similar visualization options to the Call Treemap; the selected "
+"function is highlighted.</p>"
+msgstr ""
+"<b>رسم بياني للاستدعاء حول الدالة النشطة</b><p>اعتمادًا على الإعداد، يعرض هذا "
+"المنظر بيئة الرسم البياني للاستدعاء للدالة النشطة. ملاحظة: الكلفة المعروضة "
+"هي <b>فقط</b> الكلفة المنفقة أثناء تشغيل الدالة النشطة فعليًا؛ أي يجب أن تكون "
+"الكلفة المعروضة لـ main() - إذا كانت مرئية - هي نفس كلفة الدالة النشطة، إذ "
+"أن ذلك هو الجزء من الكلفة الشاملة لـ main() الذي أُنفق أثناء تشغيل الدالة "
+"النشطة.</p><p>بالنسبة للدورات، تشير أسهم الاستدعاء الزرقاء إلى أن هذا "
+"استدعاء مصطنع أُضيف للرسم الصحيح والذي لم يحدث فعليًا قط.</p><p>إذا كان الرسم "
+"البياني أكبر من منطقة الودجة، يظهر مُحرك نظرة عامة في أحد الأطراف. توجد "
+"خيارات تصور مماثلة لخريطة شجرة الاستدعاء؛ الدالة المحددة مبرزة.</p>"
+
+#: libviews/callgraphview.cpp:2003
+msgctxt "CallGraphView|"
+msgid ""
+"Warning: a long lasting graph layouting is in progress.\n"
+"Reduce node/edge limits for speedup.\n"
+msgstr ""
+"تحذير: يجري تخطيط رسم بياني طويل الأمد.\n"
+"قلل حدود العقد/الحافة لزيادة السرعة.\n"
+
+#: libviews/callgraphview.cpp:2006
+msgctxt "CallGraphView|"
+msgid "Layouting stopped.\n"
+msgstr "أوقف التخطيط.\n"
+
+#: libviews/callgraphview.cpp:2008
+#, qt-format
+msgctxt "CallGraphView|"
+msgid "The call graph has %1 nodes and %2 edges.\n"
+msgstr "الرسم البياني للاستدعاء يملك %1 عقدة و %2 حافة.\n"
+
+#: libviews/callgraphview.cpp:2017
+msgctxt "CallGraphView|"
+msgid "No graph available because the layouting process failed.\n"
+msgstr "لا يوجد رسم بياني متاح لأن عملية التخطيط فشلت.\n"
+
+#: libviews/callgraphview.cpp:2019
+#, qt-format
+msgctxt "CallGraphView|"
+msgid ""
+"Trying to run the following command did not work:\n"
+"'%1'\n"
+msgstr ""
+"محاولة تشغيل الأمر التالي لم تنجح:\n"
+"'%1'\n"
+
+#: libviews/callgraphview.cpp:2021 libviews/callgraphview.cpp:2538
+msgctxt "CallGraphView|"
+msgid "Please check that 'dot' is installed (package GraphViz)."
+msgstr "يرجى التحقق من تثبيت 'dot' (حزمة GraphViz)."
+
+#: libviews/callgraphview.cpp:2063
+msgctxt "CallGraphView|"
+msgid "No item activated for which to draw the call graph."
+msgstr "لا يوجد بند منشط لرسم الرسم البياني للاستدعاء له."
+
+#: libviews/callgraphview.cpp:2075
+msgctxt "CallGraphView|"
+msgid "No call graph can be drawn for the active item."
+msgstr "لا يمكن رسم رسم بياني للاستدعاء للبند النشط."
+
+#: libviews/callgraphview.cpp:2537
+msgctxt "CallGraphView|"
+msgid "Error running the graph layouting tool.\n"
+msgstr "حدث خطأ أثناء تشغيل أداة تخطيط الرسم البياني.\n"
+
+#: libviews/callgraphview.cpp:2542
+#, qt-format
+msgctxt "CallGraphView|"
+msgid ""
+"There is no call graph available for function\n"
+"\t'%1'\n"
+"because it has no cost of the selected event type."
+msgstr ""
+"لا يوجد رسم بياني للاستدعاء متاح للدالة\n"
+"\t'%1'\n"
+"لأنها لا تملك كلفة من نوع الحدث المختار."
+
+#: libviews/callgraphview.cpp:2783
+msgctxt "CallGraphView|"
+msgid "Caller Depth"
+msgstr "عمق المستدعِي"
+
+#: libviews/callgraphview.cpp:2784 libviews/callgraphview.cpp:2824
+msgctxt "CallGraphView|"
+msgid "Unlimited"
+msgstr "غير محدود"
+
+#: libviews/callgraphview.cpp:2787 libviews/callgraphview.cpp:2827
+msgctxt "CallGraphView|None"
+msgid "Depth 0"
+msgstr "عمق 0"
+
+#: libviews/callgraphview.cpp:2788 libviews/callgraphview.cpp:2828
+msgctxt "CallGraphView|"
+msgid "max. 1"
+msgstr "الأقصى 1"
+
+#: libviews/callgraphview.cpp:2789 libviews/callgraphview.cpp:2829
+msgctxt "CallGraphView|"
+msgid "max. 2"
+msgstr "الأقصى 2"
+
+#: libviews/callgraphview.cpp:2790 libviews/callgraphview.cpp:2830
+msgctxt "CallGraphView|"
+msgid "max. 5"
+msgstr "الأقصى 5"
+
+#: libviews/callgraphview.cpp:2791 libviews/callgraphview.cpp:2831
+msgctxt "CallGraphView|"
+msgid "max. 10"
+msgstr "الأقصى 10"
+
+#: libviews/callgraphview.cpp:2792 libviews/callgraphview.cpp:2832
+msgctxt "CallGraphView|"
+msgid "max. 15"
+msgstr "الأقصى 15"
+
+#: libviews/callgraphview.cpp:2823
+msgctxt "CallGraphView|"
+msgid "Callee Depth"
+msgstr "عمق المستدعَى"
+
+#: libviews/callgraphview.cpp:2863
+msgctxt "CallGraphView|"
+msgid "Min. Node Cost"
+msgstr "الحد الأدنى لكلفة العقدة"
+
+#: libviews/callgraphview.cpp:2864
+msgctxt "CallGraphView|"
+msgid "No Minimum"
+msgstr "لا يوجد حد أدنى"
+
+#: libviews/callgraphview.cpp:2870
+msgctxt "CallGraphView|"
+msgid "50 %"
+msgstr "50 %"
+
+#: libviews/callgraphview.cpp:2871
+msgctxt "CallGraphView|"
+msgid "20 %"
+msgstr "20 %"
+
+#: libviews/callgraphview.cpp:2872
+msgctxt "CallGraphView|"
+msgid "10 %"
+msgstr "10 %"
+
+#: libviews/callgraphview.cpp:2873
+msgctxt "CallGraphView|"
+msgid "5 %"
+msgstr "5 %"
+
+#: libviews/callgraphview.cpp:2874
+msgctxt "CallGraphView|"
+msgid "2 %"
+msgstr "2 %"
+
+#: libviews/callgraphview.cpp:2875
+msgctxt "CallGraphView|"
+msgid "1 %"
+msgstr "1 %"
+
+#: libviews/callgraphview.cpp:2905
+msgctxt "CallGraphView|"
+msgid "Min. Call Cost"
+msgstr "الحد الأدنى لكلفة الاستدعاء"
+
+#: libviews/callgraphview.cpp:2906
+msgctxt "CallGraphView|"
+msgid "Same as Node"
+msgstr "مطابق للعقدة"
+
+#: libviews/callgraphview.cpp:2908
+msgctxt "CallGraphView|"
+msgid "50 % of Node"
+msgstr "50 % من العقدة"
+
+#: libviews/callgraphview.cpp:2910
+msgctxt "CallGraphView|"
+msgid "20 % of Node"
+msgstr "20 % من العقدة"
+
+#: libviews/callgraphview.cpp:2912
+msgctxt "CallGraphView|"
+msgid "10 % of Node"
+msgstr "10 % من العقدة"
+
+#: libviews/callgraphview.cpp:2941
+msgctxt "CallGraphView|"
+msgid "Birds-eye View"
+msgstr "منظر عين الطائر"
+
+#: libviews/callgraphview.cpp:2942
+msgctxt "CallGraphView|"
+msgid "Top Left"
+msgstr "أعلى اليسار"
+
+#: libviews/callgraphview.cpp:2943
+msgctxt "CallGraphView|"
+msgid "Top Right"
+msgstr "أعلى اليمين"
+
+#: libviews/callgraphview.cpp:2944
+msgctxt "CallGraphView|"
+msgid "Bottom Left"
+msgstr "أسفل اليسار"
+
+#: libviews/callgraphview.cpp:2945
+msgctxt "CallGraphView|"
+msgid "Bottom Right"
+msgstr "أسفل اليمين"
+
+#: libviews/callgraphview.cpp:2946
+msgctxt "CallGraphView|"
+msgid "Automatic"
+msgstr "آلي"
+
+#: libviews/callgraphview.cpp:2947
+msgctxt "CallGraphView|"
+msgid "Hide"
+msgstr "أخفِ"
+
+#: libviews/callgraphview.cpp:2977
+msgctxt "CallGraphView|"
+msgid "Layout"
+msgstr "تخطيط"
+
+#: libviews/callgraphview.cpp:2978
+msgctxt "CallGraphView|"
+msgid "Top to Down"
+msgstr "من أعلى لأسفل"
+
+#: libviews/callgraphview.cpp:2979
+msgctxt "CallGraphView|"
+msgid "Left to Right"
+msgstr "من اليسار لليمين"
+
+#: libviews/callgraphview.cpp:2980
+msgctxt "CallGraphView|"
+msgid "Circular"
+msgstr "دائري"
+
+#: libviews/callgraphview.cpp:3020 libviews/callgraphview.cpp:3025
+#: libviews/callgraphview.cpp:3045
+#, qt-format
+msgctxt "CallGraphView|"
+msgid "Go to '%1'"
+msgstr "اذهب إلى '%1'"
+
+#: libviews/callgraphview.cpp:3056
+msgctxt "CallGraphView|"
+msgid "Stop Layouting"
+msgstr "أوقف التخطيط"
+
+#: libviews/callgraphview.cpp:3063
+msgctxt "CallGraphView|"
+msgid "Export Graph"
+msgstr "صدّر الرسم البياني"
+
+#: libviews/callgraphview.cpp:3064
+msgctxt "CallGraphView|"
+msgid "As DOT file..."
+msgstr "كـ ملف DOT..."
+
+#: libviews/callgraphview.cpp:3065
+msgctxt "CallGraphView|"
+msgid "As Image..."
+msgstr "كـ صورة..."
+
+#: libviews/callgraphview.cpp:3068
+msgctxt "CallGraphView|"
+msgid "Graph"
+msgstr "رسم بياني"
+
+#: libviews/callgraphview.cpp:3076
+msgctxt "CallGraphView|"
+msgid "Arrows for Skipped Calls"
+msgstr "أسهم للاستدعاءات المتخطاة"
+
+#: libviews/callgraphview.cpp:3081
+msgctxt "CallGraphView|"
+msgid "Inner-cycle Calls"
+msgstr "استدعاءات داخل الدورة"
+
+#: libviews/callgraphview.cpp:3086
+msgctxt "CallGraphView|"
+msgid "Cluster Groups"
+msgstr "مجموعات العنقود"
+
+#: libviews/callgraphview.cpp:3090
+msgctxt "CallGraphView|"
+msgid "Visualization"
+msgstr "تصوّر"
+
+#: libviews/callgraphview.cpp:3091
+msgctxt "CallGraphView|"
+msgid "Compact"
+msgstr "متراص"
+
+#: libviews/callgraphview.cpp:3094
+msgctxt "CallGraphView|"
+msgid "Normal"
+msgstr "عادي"
+
+#: libviews/callgraphview.cpp:3097
+msgctxt "CallGraphView|"
+msgid "Tall"
+msgstr "طويل"
+
+#: libviews/callgraphview.cpp:3129
+msgctxt "CallGraphView|"
+msgid "Export Graph As Image"
+msgstr "صدّر الرسم البياني كـ صورة"
+
+#: libviews/callgraphview.cpp:3131
+msgctxt "CallGraphView|"
+msgid "Images (*.png *.jpg)"
+msgstr "صور (*.png *.jpg)"
+
+#: libviews/callitem.cpp:73 libviews/partlistitem.cpp:131
+msgctxt "QObject|"
+msgid "(active)"
+msgstr "(نشط)"
+
+#: libviews/callmapview.cpp:52
+msgctxt "CallMapView|Name"
+msgid "A thing's name"
+msgstr "اسم شيء"
+
+#: libviews/callmapview.cpp:53
+msgctxt "CallMapView|"
+msgid "Cost"
+msgstr "كلفة"
+
+#: libviews/callmapview.cpp:54
+msgctxt "CallMapView|"
+msgid "Location"
+msgstr "موقع"
+
+#: libviews/callmapview.cpp:56
+msgctxt "CallMapView|"
+msgid "Calls"
+msgstr "استدعاءات"
+
+#: libviews/callmapview.cpp:91
+msgctxt "CallMapView|"
+msgid ""
+"<b>Caller Map</b><p>This graph shows the nested hierarchy of all callers of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>خريطة المستدعِي</b><p>يعرض هذا الرسم البياني التسلسل الهرمي المتداخل لجميع "
+"مستدعي الدالة النشطة الحالية. يمثل كل مستطيل ملون دالة؛ ويحاول أن يكون حجمه "
+"متناسبًا مع الكلفة المنفقة فيها أثناء تشغيل الدالة النشطة (ومع ذلك، توجد قيود "
+"على الرسم).</p>"
+
+#: libviews/callmapview.cpp:98
+msgctxt "CallMapView|"
+msgid ""
+"<b>Call Map</b><p>This graph shows the nested hierarchy of all callees of "
+"the current activated function. Each colored rectangle represents a "
+"function; its size tries to be proportional to the cost spent therein while "
+"the active function is running (however, there are drawing constraints).</p>"
+msgstr ""
+"<b>خريطة الاستدعاء</b><p>يعرض هذا الرسم البياني التسلسل الهرمي المتداخل "
+"لجميع مستدعي الدالة النشطة الحالية. يمثل كل مستطيل ملون دالة؛ ويحاول أن يكون "
+"حجمه متناسبًا مع الكلفة المنفقة فيها أثناء تشغيل الدالة النشطة (ومع ذلك، توجد "
+"قيود على الرسم).</p>"
+
+#: libviews/callmapview.cpp:106
+msgctxt "CallMapView|"
+msgid ""
+"<p>Appearance options can be found in the context menu. To get exact size "
+"proportions, choose 'Hide incorrect borders'. As this mode can be <em>very</"
+"em> time consuming, you may want to limit the maximum drawn nesting level "
+"before. 'Best' determinates the split direction for children from the aspect "
+"ratio of the parent. 'Always Best' decides on remaining space for each "
+"sibling. 'Ignore Proportions' takes space for function name drawing "
+"<em>before</em> drawing children. Note that size proportions can get "
+"<em>heavily</em> wrong.</p><p>This is a <em>TreeMap</em> widget. Keyboard "
+"navigation is available with the left/right arrow keys for traversing "
+"siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
+"em> activates the current item.</p>"
+msgstr ""
+"<p>يمكن العثور على خيارات المظهر في قائمة السياق. للحصول على نسب حجم دقيقة، "
+"اختر 'أخفِ الحدود غير الصحيحة'. نظرًا لأن هذا الوضع قد يكون مستهلكًا <em>جدًا</"
+"em> للوقت، قد ترغب في تحديد مستوى التداخل الأقصى المرسوم قبل ذلك. يحدد "
+"'الأفضل' اتجاه التقسيم للأطفال من نسبة العرض إلى الارتفاع للوالد. يقرر "
+"'الأفضل دائمًا' المساحة المتبقية لكل شقيق. 'تجاهل النسب' يأخذ مساحة لرسم اسم "
+"الدالة <em>قبل</em> رسم الأطفال. لاحظ أن نسب الحجم يمكن أن تصبح خاطئة "
+"<em>بشدة</em>.</p><p>هذه ودجة <em>خريطة الشجرة</em>. تتوفر إمكانية التنقل "
+"عبر لوحة المفاتيح باستخدام مفاتيح الأسهم لليسار/لليمين لعبور الأشقاء، "
+"ومفاتيح الأسهم للأعلى/للأسفل للذهاب مستوى تداخل أعلى/أسفل. <em>العودة</em> "
+"تنشط البند الحالي.</p>"
+
+#: libviews/callmapview.cpp:139
+msgctxt "CallMapView|"
+msgid "Go To"
+msgstr "اذهب إلى"
+
+#: libviews/callmapview.cpp:170
+msgctxt "CallMapView|"
+msgid "Stop at Depth"
+msgstr "أوقف عند العمق"
+
+#: libviews/callmapview.cpp:171
+msgctxt "CallMapView|"
+msgid "No Depth Limit"
+msgstr "لا يوجد حد للعمق"
+
+#: libviews/callmapview.cpp:173
+msgctxt "CallMapView|"
+msgid "Depth 10"
+msgstr "عمق 10"
+
+#: libviews/callmapview.cpp:174
+msgctxt "CallMapView|"
+msgid "Depth 15"
+msgstr "عمق 15"
+
+#: libviews/callmapview.cpp:175
+msgctxt "CallMapView|"
+msgid "Depth 20"
+msgstr "عمق 20"
+
+#: libviews/callmapview.cpp:178
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Depth of '%1' (%2)"
+msgstr "عمق '%1' (%2)"
+
+#: libviews/callmapview.cpp:185
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Decrement Depth (to %1)"
+msgstr "أنقص العمق (إلى %1)"
+
+#: libviews/callmapview.cpp:187
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Increment Depth (to %1)"
+msgstr "زد العمق (إلى %1)"
+
+#: libviews/callmapview.cpp:213
+msgctxt "CallMapView|"
+msgid "Stop at Function"
+msgstr "أوقف عند الدالة"
+
+#: libviews/callmapview.cpp:214
+msgctxt "CallMapView|"
+msgid "No Function Limit"
+msgstr "لا يوجد حد للدالة"
+
+#: libviews/callmapview.cpp:257
+msgctxt "CallMapView|"
+msgid "Stop at Area"
+msgstr "أوقف عند المنطقة"
+
+#: libviews/callmapview.cpp:258
+msgctxt "CallMapView|"
+msgid "No Area Limit"
+msgstr "لا يوجد حد للمنطقة"
+
+#: libviews/callmapview.cpp:260
+msgctxt "CallMapView|"
+msgid "100 Pixels"
+msgstr "100 بكسل"
+
+#: libviews/callmapview.cpp:261
+msgctxt "CallMapView|"
+msgid "200 Pixels"
+msgstr "200 بكسل"
+
+#: libviews/callmapview.cpp:262
+msgctxt "CallMapView|"
+msgid "500 Pixels"
+msgstr "500 بكسل"
+
+#: libviews/callmapview.cpp:263
+msgctxt "CallMapView|"
+msgid "1000 Pixels"
+msgstr "1000 بكسل"
+
+#: libviews/callmapview.cpp:269
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Area of '%1' (%2)"
+msgstr "منطقة '%1' (%2)"
+
+#: libviews/callmapview.cpp:275
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Double Area Limit (to %1)"
+msgstr "ضاعف حد المنطقة (إلى %1)"
+
+#: libviews/callmapview.cpp:277
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Half Area Limit (to %1)"
+msgstr "نصف حد المنطقة (إلى %1)"
+
+#: libviews/callmapview.cpp:327
+msgctxt "CallMapView|"
+msgid "Visualization"
+msgstr "تصوّر"
+
+#: libviews/callmapview.cpp:328
+msgctxt "CallMapView|"
+msgid "Split Direction"
+msgstr "اتجاه التقسيم"
+
+#: libviews/callmapview.cpp:331
+msgctxt "CallMapView|"
+msgid "Skip Incorrect Borders"
+msgstr "تخط الحدود غير الصحيحة"
+
+#: libviews/callmapview.cpp:336
+msgctxt "CallMapView|"
+msgid "Border Width"
+msgstr "عرض الحد"
+
+#: libviews/callmapview.cpp:337
+msgctxt "CallMapView|"
+msgid "Border 0"
+msgstr "حد 0"
+
+#: libviews/callmapview.cpp:339
+msgctxt "CallMapView|"
+msgid "Border 1"
+msgstr "حد 1"
+
+#: libviews/callmapview.cpp:340
+msgctxt "CallMapView|"
+msgid "Border 2"
+msgstr "حد 2"
+
+#: libviews/callmapview.cpp:341
+msgctxt "CallMapView|"
+msgid "Border 3"
+msgstr "حد 3"
+
+#: libviews/callmapview.cpp:346
+msgctxt "CallMapView|"
+msgid "Draw Symbol Names"
+msgstr "ارسم أسماء الرموز"
+
+#: libviews/callmapview.cpp:348
+msgctxt "CallMapView|"
+msgid "Draw Cost"
+msgstr "ارسم الكلفة"
+
+#: libviews/callmapview.cpp:350
+msgctxt "CallMapView|"
+msgid "Draw Location"
+msgstr "ارسم الموقع"
+
+#: libviews/callmapview.cpp:352
+msgctxt "CallMapView|"
+msgid "Draw Calls"
+msgstr "ارسم الاستدعاءات"
+
+#: libviews/callmapview.cpp:356
+msgctxt "CallMapView|"
+msgid "Ignore Proportions"
+msgstr "تجاهل النسب"
+
+#: libviews/callmapview.cpp:358
+msgctxt "CallMapView|"
+msgid "Allow Rotation"
+msgstr "اسمح بالتدوير"
+
+#: libviews/callmapview.cpp:376
+msgctxt "CallMapView|"
+msgid "Shading"
+msgstr "تظليل"
+
+#: libviews/callmapview.cpp:428
+#, qt-format
+msgctxt "CallMapView|"
+msgid "Call Map: Current is '%1'"
+msgstr "خريطة الاستدعاء: الحالي هو '%1'"
+
+#: libviews/callmapview.cpp:621
+msgctxt "QObject|"
+msgid "(no function)"
+msgstr "(لا توجد دالة)"
+
+#: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
+msgctxt "QObject|"
+msgid "(no call)"
+msgstr "(لا يوجد استدعاء)"
+
+#: libviews/callview.cpp:37
+msgctxt "CallView|"
+msgid "Cost"
+msgstr "كلفة"
+
+#: libviews/callview.cpp:38
+msgctxt "CallView|"
+msgid "Cost per call"
+msgstr "كلفة لكل استدعاء"
+
+#: libviews/callview.cpp:39
+msgctxt "CallView|"
+msgid "Cost 2"
+msgstr "كلفة 2"
+
+#: libviews/callview.cpp:40
+msgctxt "CallView|"
+msgid "Cost 2 per call"
+msgstr "كلفة 2 لكل استدعاء"
+
+#: libviews/callview.cpp:41
+msgctxt "CallView|"
+msgid "Count"
+msgstr "عدد"
+
+#: libviews/callview.cpp:42
+msgctxt "CallView|"
+msgid "Caller"
+msgstr "مستدعِي"
+
+#: libviews/callview.cpp:42
+msgctxt "CallView|"
+msgid "Callee"
+msgstr "مستدعَى"
+
+#: libviews/callview.cpp:76
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callers</b><p>This list shows all functions calling the "
+"current selected one directly, together with a call count and the cost spent "
+"in the current selected function while being called from the function from "
+"the list.</p><p>An icon instead of an inclusive cost specifies that this is "
+"a call inside of a recursive cycle. An inclusive cost makes no sense here.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>قائمة المستدعِين المباشرين</b><p>تعرض هذه القائمة جميع الدوال التي تستدعي "
+"الدالة المحددة الحالية مباشرة، إلى جانب عدد الاستدعاءات والكلفة المنفقة في "
+"الدالة المحددة الحالية أثناء الاستدعاء من الدالة الموجودة في القائمة.</"
+"p><p>أيقونة بدلاً من الكلفة الشاملة تحدد أن هذا استدعاء داخل دورة تكرارية. "
+"الكلفة الشاملة لا معنى لها هنا.</p><p>اختيار دالة يجعلها الدالة المحددة "
+"الحالية في لوحة المعلومات هذه. إذا وجدت لوحتان (وضع التقسيم)، تتغير دالة "
+"اللوحة الأخرى بدلاً من ذلك.</p>"
+
+#: libviews/callview.cpp:89
+msgctxt "CallView|"
+msgid ""
+"<b>List of direct Callees</b><p>This list shows all functions called by the "
+"current selected one directly, together with a call count and the cost spent "
+"in this function while being called from the selected function.</"
+"p><p>Selecting a function makes it the current selected one of this "
+"information panel. If there are two panels (Split mode), the function of the "
+"other panel is changed instead.</p>"
+msgstr ""
+"<b>قائمة المستدعَين المباشرين</b><p>تعرض هذه القائمة جميع الدوال التي "
+"تستدعيها الدالة المحددة الحالية مباشرة، إلى جانب عدد الاستدعاءات والكلفة "
+"المنفقة في هذه الدالة أثناء الاستدعاء من الدالة المحددة.</p><p>اختيار دالة "
+"يجعلها الدالة المحددة الحالية في لوحة المعلومات هذه. إذا وجدت لوحتان (وضع "
+"التقسيم)، تتغير دالة اللوحة الأخرى بدلاً من ذلك.</p>"
+
+#: libviews/callview.cpp:118 libviews/callview.cpp:123
+#, qt-format
+msgctxt "CallView|"
+msgid "Go to '%1'"
+msgstr "اذهب إلى '%1'"
+
+#: libviews/callview.cpp:257 libviews/callview.cpp:261
+#, qt-format
+msgctxt "CallView|"
+msgid "%1 per call"
+msgstr "%1 لكل استدعاء"
+
+#: libviews/controlflowgraphview.cpp:623
+msgctxt "QObject|"
+msgid ""
+"Control-flow graph requires running callgrind with option --dump-instr=yes"
+msgstr ""
+"يتطلب رسم بياني لتدفق التحكم تشغيل callgrind مع الخيار --dump-instr=yes"
+
+#: libviews/controlflowgraphview.cpp:932
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"For annotated machine code, the following object file is needed\n"
+"    '%1'\n"
+"This file cannot be found.\n"
+msgstr ""
+"لشفرة الآلة المشروحة، ملف الكائن التالي مطلوب\n"
+"    '%1'\n"
+"لا يمكن العثور على هذا الملف.\n"
+
+#: libviews/controlflowgraphview.cpp:936
+msgctxt "QObject|"
+msgid "If cross-compiled, set SYSROOT variable."
+msgstr "إذا كان مترجمًا متقاطعًا، اضبط متغير SYSROOT."
+
+#: libviews/controlflowgraphview.cpp:960
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"There is an error trying to execute the command\n"
+"    '%1'\n"
+"Check that you have installed 'objdump'.\n"
+"This utility can be found in the 'binutils' package"
+msgstr ""
+"يوجد خطأ أثناء محاولة تنفيذ الأمر\n"
+"    '%1'\n"
+"تحقق من تثبيت 'objdump'.\n"
+"يمكن العثور على هذه الأداة المساعدة في حزمة 'binutils'"
+
+#: libviews/controlflowgraphview.cpp:1041
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"There are %1 cost line(s) without machine code.\n"
+"This happens because the code of %2 does not seem to match the profile data "
+"file.\n"
+"Are you using an old profile data file or is the abovementioned\n"
+"ELF object from an updated installation/another machine?"
+msgstr ""
+"يوجد %1 سطر (أسطر) كلفة بدون شفرة آلة.\n"
+"يحدث هذا لأن شفرة %2 لا يبدو أنها تطابق ملف بيانات التشكيلة.\n"
+"هل تستخدم ملف بيانات تشكيلة قديم أم أن كائن ELF المذكور أعلاه\n"
+"من تثبيت محدث/حاسوب آخر؟"
+
+#: libviews/controlflowgraphview.cpp:1051
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"There seems to be an error trying to execute the command '%1'.\n"
+"Check that the ELF object used in the command exists.\n"
+"Check that you have installed 'objdump'.\n"
+"This utility can be found in the 'binutils' package."
+msgstr ""
+"يبدو أن هناك خطأ أثناء محاولة تنفيذ الأمر '%1'.\n"
+"تحقق من وجود كائن ELF المستخدم في الأمر.\n"
+"تحقق من تثبيت 'objdump'.\n"
+"يمكن العثور على هذه الأداة المساعدة في حزمة 'binutils'."
+
+#: libviews/controlflowgraphview.cpp:1772
+msgctxt "QObject|"
+msgid "This is Control Flow Graph by KetchuppOfficial"
+msgstr "هذا هو رسم بياني لتدفق التحكم من KetchuppOfficial"
+
+#: libviews/controlflowgraphview.cpp:1828
+msgctxt "QObject|"
+msgid ""
+"Warning: a long lasting graph layouting is in progress.\n"
+"Reduce node/edge limits for speedup.\n"
+msgstr ""
+"تحذير: يجري تخطيط رسم بياني طويل الأمد.\n"
+"قلل حدود العقد/الحافة لزيادة السرعة.\n"
+
+#: libviews/controlflowgraphview.cpp:1831
+msgctxt "QObject|"
+msgid "Layouting stopped.\n"
+msgstr "أوقف التخطيط.\n"
+
+#: libviews/controlflowgraphview.cpp:1833
+#, qt-format
+msgctxt "QObject|"
+msgid "The call graph has %1 nodes and %2 edges.\n"
+msgstr "الرسم البياني للاستدعاء يملك %1 عقدة و %2 حافة.\n"
+
+#: libviews/controlflowgraphview.cpp:1841
+msgctxt "QObject|"
+msgid "No graph available because the layouting process failed.\n"
+msgstr "لا يوجد رسم بياني متاح لأن عملية التخطيط فشلت.\n"
+
+#: libviews/controlflowgraphview.cpp:1843
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"Trying to run the following command did not work:\n"
+"'%1'\n"
+msgstr ""
+"محاولة تشغيل الأمر التالي لم تنجح:\n"
+"'%1'\n"
+
+#: libviews/controlflowgraphview.cpp:1845
+msgctxt "QObject|"
+msgid "Please check that 'dot' is installed (package GraphViz)."
+msgstr "يرجى التحقق من تثبيت 'dot' (حزمة GraphViz)."
+
+#: libviews/controlflowgraphview.cpp:2209
+msgctxt "QObject|"
+msgid ""
+"Error running the graph layouting tool.\n"
+"Please check that 'dot' is installed (package Graphviz)."
+msgstr ""
+"خطأ أثناء تشغيل أداة تخطيط الرسم البياني.\n"
+"يرجى التحقق من تثبيت 'dot' (حزمة Graphviz)."
+
+#: libviews/controlflowgraphview.cpp:2399
+msgctxt "QObject|"
+msgid "This basic block"
+msgstr "هذه الكتلة الأساسية"
+
+#: libviews/controlflowgraphview.cpp:2401
+#: libviews/controlflowgraphview.cpp:2432
+msgctxt "QObject|"
+msgid "PC only"
+msgstr "PC فقط"
+
+#: libviews/controlflowgraphview.cpp:2405
+#: libviews/controlflowgraphview.cpp:2436
+msgctxt "QObject|"
+msgid "Show instructions' PC"
+msgstr "أظهر PC التعليمات"
+
+#: libviews/controlflowgraphview.cpp:2409
+#: libviews/controlflowgraphview.cpp:2440
+msgctxt "QObject|"
+msgid "Show instructions' cost"
+msgstr "أظهر كلفة التعليمات"
+
+#: libviews/controlflowgraphview.cpp:2426
+msgctxt "QObject|"
+msgid "Intel ASM Syntax"
+msgstr "صيغة تجميع Intel"
+
+#: libviews/controlflowgraphview.cpp:2450
+msgctxt "QObject|"
+msgid "As DOT file..."
+msgstr "كـ ملف DOT..."
+
+#: libviews/controlflowgraphview.cpp:2451
+msgctxt "QObject|"
+msgid "As Image..."
+msgstr "كـصورة..."
+
+#: libviews/controlflowgraphview.cpp:2562
+msgctxt "QObject|"
+msgid "Export Graph as Image"
+msgstr "صدّر الرسم البياني كـ صورة"
+
+#: libviews/controlflowgraphview.cpp:2564
+msgctxt "QObject|"
+msgid "Images (*.png *.jpg)"
+msgstr "صور (*.png *.jpg)"
+
+#: libviews/controlflowgraphview.cpp:2997
+msgctxt "QObject|"
+msgid "No trace data"
+msgstr "لا يوجد بيانات تتبع"
+
+#: libviews/controlflowgraphview.cpp:3002
+msgctxt "QObject|"
+msgid "No item activated for which to draw the control-flow graph."
+msgstr "لا يوجد بند منشط لرسم رسم بياني لتدفق التحكم له."
+
+#: libviews/controlflowgraphview.cpp:3014
+msgctxt "QObject|"
+msgid "No control-flow graph can be drawn for the active item."
+msgstr "لا يمكن رسم رسم بياني لتدفق التحكم للبند النشط."
+
+#: libviews/controlflowgraphview.cpp:3109
+msgctxt "QObject|"
+msgid "Stop Layouting"
+msgstr "أوقف التخطيط"
+
+#: libviews/controlflowgraphview.cpp:3172
+msgctxt "QObject|"
+msgid "Birds-eye View"
+msgstr "منظر عين الطائر"
+
+#: libviews/controlflowgraphview.cpp:3174
+msgctxt "QObject|"
+msgid "Top Left"
+msgstr "أعلى اليسار"
+
+#: libviews/controlflowgraphview.cpp:3175
+msgctxt "QObject|"
+msgid "Top Right"
+msgstr "أعلى اليمين"
+
+#: libviews/controlflowgraphview.cpp:3176
+msgctxt "QObject|"
+msgid "Bottom Left"
+msgstr "أسفل اليسار"
+
+#: libviews/controlflowgraphview.cpp:3177
+msgctxt "QObject|"
+msgid "Bottom Right"
+msgstr "أسفل اليمين"
+
+#: libviews/controlflowgraphview.cpp:3178
+msgctxt "QObject|"
+msgid "Automatic"
+msgstr "آلي"
+
+#: libviews/controlflowgraphview.cpp:3179
+msgctxt "QObject|"
+msgid "Hide"
+msgstr "أخفِ"
+
+#: libviews/controlflowgraphview.cpp:3189
+msgctxt "QObject|"
+msgid "Layout"
+msgstr "تخطيط"
+
+#: libviews/controlflowgraphview.cpp:3191
+msgctxt "QObject|"
+msgid "Top to Down"
+msgstr "من أعلى لأسفل"
+
+#: libviews/controlflowgraphview.cpp:3192
+msgctxt "QObject|"
+msgid "Left to Right"
+msgstr "من اليسار لليمين"
+
+#: libviews/controlflowgraphview.cpp:3202
+msgctxt "QObject|"
+msgid "Min. basic block cost"
+msgstr "الحد الأدنى لكلفة الكتلة الأساسية"
+
+#: libviews/controlflowgraphview.cpp:3204
+msgctxt "QObject|"
+msgid "Undefined"
+msgstr "غير محدد"
+
+#: libviews/controlflowgraphview.cpp:3207
+#, qt-format
+msgctxt "QObject|"
+msgid "%1%"
+msgstr "%1٪"
+
+#: libviews/costlistitem.cpp:53
+#, qt-format
+msgctxt "QObject|"
+msgid "(%n item(s) skipped)"
+msgid_plural "(%n item(s) skipped)"
+msgstr[0] "(%n بند مُتخطا)"
+msgstr[1] "(%n بند مُتخطا)"
+msgstr[2] "(%n بندان مُتخطيان)"
+msgstr[3] "(%n بنود مُتخطاة)"
+msgstr[4] "(%n بندًا مُتخطى)"
+msgstr[5] "(%n بند مُتخطى)"
+
+#: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
+#, qt-format
+msgctxt "QObject|"
+msgid "(%n function(s) skipped)"
+msgid_plural "(%n function(s) skipped)"
+msgstr[0] "(%n دالة مُتخطاة)"
+msgstr[1] "(%n دالة مُتخطاة)"
+msgstr[2] "(%n دالتان مُتخطيان)"
+msgstr[3] "(%n دوال مُتخطاة)"
+msgstr[4] "(%n دالة مُتخطاة)"
+msgstr[5] "(%n دالة مُتخطاة)"
+
+#: libviews/coverageview.cpp:37
+msgctxt "CoverageView|"
+msgid "Incl."
+msgstr "شاملة"
+
+#: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
+msgctxt "CoverageView|"
+msgid "Distance"
+msgstr "مسافة"
+
+#: libviews/coverageview.cpp:41
+msgctxt "CoverageView|"
+msgid "Called"
+msgstr "مستدعى"
+
+#: libviews/coverageview.cpp:42
+msgctxt "CoverageView|"
+msgid "Caller"
+msgstr "مستدعِي"
+
+#: libviews/coverageview.cpp:46
+msgctxt "CoverageView|"
+msgid "Self"
+msgstr "ذاتية"
+
+#: libviews/coverageview.cpp:48
+msgctxt "CoverageView|"
+msgid "Calling"
+msgstr "يستدعي"
+
+#: libviews/coverageview.cpp:49
+msgctxt "CoverageView|"
+msgid "Callee"
+msgstr "مستدعَى"
+
+#: libviews/coverageview.cpp:84
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callers</b><p>This list shows all functions calling the "
+"current selected one, either directly or with several functions in-between "
+"on the stack; the number of functions in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the selected function while a "
+"listed function is active; relative cost is the percentage of all cost spent "
+"in the selected function while the listed one is active. The cost graphic "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls from the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+"<b>قائمة كل المستدعِين</b><p>تعرض هذه القائمة جميع الدوال التي تستدعي الدالة "
+"المحددة الحالية، إما مباشرة أو مع عدة دوال بينهما على المكدس؛ يسمى عدد "
+"الدوال بينهما زائد واحد <em>المسافة</em> (على سبيل المثال، للدوال A,B,C يوجد "
+"استدعاء من A إلى C عندما تستدعي A دالة B وتستدعي B دالة C، أي A => B => C. "
+"المسافة هنا هي 2).</p><p>الكلفة المطلقة المعروضة هي الكلفة المنفقة في الدالة "
+"المحددة أثناء نشاط دالة مدرجة؛ الكلفة النسبية هي النسبة المئوية لجميع الكلفة "
+"المنفقة في الدالة المحددة أثناء نشاط الدالة المدرجة. يعرض الرسم البياني "
+"للكلفة النسبة المئوية اللوغاريتمية بلون مختلف لكل مسافة.</p><p>نظرًا لأنه "
+"يمكن أن توجد العديد من الاستدعاءات من نفس الدالة، يعرض عمود المسافة أحيانًا "
+"نطاق المسافات لجميع الاستدعاءات التي تحدث؛ ثم، بين قوسين، توجد المسافة "
+"المتوسطة، أي المسافة التي حدث فيها معظم تكاليف الاستدعاء.</p><p>اختيار دالة "
+"يجعلها الدالة المحددة الحالية في لوحة المعلومات هذه. إذا وجدت لوحتان (وضع "
+"التقسيم)، تتغير دالة اللوحة الأخرى بدلاً من ذلك.</p>"
+
+#: libviews/coverageview.cpp:114
+msgctxt "CoverageView|"
+msgid ""
+"<b>List of all Callees</b><p>This list shows all functions called by the "
+"current selected one, either directly or with several function in-between on "
+"the stack; the number of function in-between plus one is called the "
+"<em>Distance</em> (e.g. for function A,B,C there exists a call from A to C "
+"when A calls B and B calls C, i.e. A => B => C. The distance here is 2).</"
+"p><p>Absolute cost shown is the cost spent in the listed function while the "
+"selected is active; relative cost is the percentage of all cost spent in the "
+"listed function while the selected one is active. The cost graphic always "
+"shows logarithmic percentage with a different color for each distance.</"
+"p><p>As there can be many calls to the same function, the distance column "
+"sometimes shows the range of distances for all calls happening; then, in "
+"parentheses, there is the medium distance, i.e. the distance where most of "
+"the call costs happened.</p><p>Selecting a function makes it the current "
+"selected one of this information panel. If there are two panels (Split "
+"mode), the function of the other panel is changed instead.</p>"
+msgstr ""
+"<b>قائمة كل المستدعَين</b><p>تعرض هذه القائمة جميع الدوال التي تستدعيها "
+"الدالة المحددة الحالية، إما مباشرة أو مع عدة دوال بينهما على المكدس؛ يسمى "
+"عدد الدوال بينهما زائد واحد <em>المسافة</em> (على سبيل المثال، للدوال A,B,C "
+"يوجد استدعاء من A إلى C عندما تستدعي A دالة B وتستدعي B دالة C، أي A => B => "
+"C. المسافة هنا هي 2).</p><p>الكلفة المطلقة المعروضة هي الكلفة المنفقة في "
+"الدالة المدرجة أثناء نشاط الدالة المحددة؛ الكلفة النسبية هي النسبة المئوية "
+"لجميع الكلفة المنفقة في الدالة المدرجة أثناء نشاط الدالة المحددة. يعرض الرسم "
+"البياني للكلفة دائمًا النسبة المئوية اللوغاريتمية بلون مختلف لكل مسافة.</"
+"p><p>نظرًا لأنه يمكن أن توجد العديد من الاستدعاءات لنفس الدالة، يعرض عمود "
+"المسافة أحيانًا نطاق المسافات لجميع الاستدعاءات التي تحدث؛ ثم، بين قوسين، "
+"توجد المسافة المتوسطة، أي المسافة التي حدث فيها معظم تكاليف الاستدعاء.</"
+"p><p>اختيار دالة يجعلها الدالة المحددة الحالية في لوحة المعلومات هذه. إذا "
+"وجدت لوحتان (وضع التقسيم)، تتغير دالة اللوحة الأخرى بدلاً من ذلك.</p>"
+
+#: libviews/coverageview.cpp:160
+#, qt-format
+msgctxt "CoverageView|"
+msgid "Go to '%1'"
+msgstr "اذهب إلى '%1'"
+
+#: libviews/eventtypeitem.cpp:48
+msgctxt "QObject|"
+msgid "Unknown Type"
+msgstr "نوع مجهول"
+
+#: libviews/eventtypeview.cpp:37
+msgctxt "EventTypeView|"
+msgid "Event Type"
+msgstr "نوع الحدث"
+
+#: libviews/eventtypeview.cpp:38
+msgctxt "EventTypeView|"
+msgid "Incl."
+msgstr "شاملة"
+
+#: libviews/eventtypeview.cpp:39
+msgctxt "EventTypeView|"
+msgid "Self"
+msgstr "ذاتية"
+
+#: libviews/eventtypeview.cpp:40
+msgctxt "EventTypeView|"
+msgid "Short"
+msgstr "مختصر"
+
+#: libviews/eventtypeview.cpp:42
+msgctxt "EventTypeView|"
+msgid "Formula"
+msgstr "صيغة"
+
+#: libviews/eventtypeview.cpp:76
+msgctxt "EventTypeView|"
+msgid ""
+"<b>Cost Types List</b><p>This list shows all cost types available and what "
+"the self/inclusive cost of the current selected function is for that cost "
+"type.</p><p>By choosing a cost type from the list, you change the cost type "
+"of costs shown all over KCachegrind to be the selected one.</p>"
+msgstr ""
+"<b>قائمة أنواع الكلفة</b><p>تعرض هذه القائمة جميع أنواع الكلفة المتاحة وما "
+"هي الكلفة الذاتية/الشاملة للدالة المحددة الحالية لنوع الكلفة هذا.</p><p>عن "
+"طريق اختيار نوع كلفة من القائمة، تغير نوع كلفة الكلفة المعروضة في كل "
+"KCachegrind ليكون هو المختار.</p>"
+
+#: libviews/eventtypeview.cpp:96
+msgctxt "EventTypeView|"
+msgid "Set as Secondary Event Type"
+msgstr "اضبط كنوع حدث ثانوي"
+
+#: libviews/eventtypeview.cpp:98
+msgctxt "EventTypeView|"
+msgid "Hide Secondary Event Type"
+msgstr "أخفِ نوع الحدث الثانوي"
+
+#: libviews/eventtypeview.cpp:107
+msgctxt "EventTypeView|"
+msgid "Edit Long Name"
+msgstr "حرر الاسم الطويل"
+
+#: libviews/eventtypeview.cpp:108
+msgctxt "EventTypeView|"
+msgid "Edit Short Name"
+msgstr "حرر الاسم القصير"
+
+#: libviews/eventtypeview.cpp:109
+msgctxt "EventTypeView|"
+msgid "Edit Formula"
+msgstr "حرر الصيغة"
+
+#: libviews/eventtypeview.cpp:110
+msgctxt "EventTypeView|"
+msgid "Remove"
+msgstr "أزل"
+
+#: libviews/eventtypeview.cpp:119
+msgctxt "EventTypeView|"
+msgid "New Event Type..."
+msgstr "نوع حدث جديد..."
+
+#: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
+#, qt-format
+msgctxt "EventTypeView|"
+msgid "New%1"
+msgstr "جديد %1"
+
+#: libviews/eventtypeview.cpp:160
+#, qt-format
+msgctxt "EventTypeView|"
+msgid "New Event Type %1"
+msgstr "نوع حدث جديد %1"
+
+#: libviews/functionlistmodel.cpp:45
+msgctxt "FunctionListModel|"
+msgid "Incl."
+msgstr "شاملة"
+
+#: libviews/functionlistmodel.cpp:46
+msgctxt "FunctionListModel|"
+msgid "Self"
+msgstr "ذاتية"
+
+#: libviews/functionlistmodel.cpp:47
+msgctxt "FunctionListModel|"
+msgid "Called"
+msgstr "مستدعى"
+
+#: libviews/functionlistmodel.cpp:48
+msgctxt "FunctionListModel|"
+msgid "Function"
+msgstr "دالة"
+
+#: libviews/functionlistmodel.cpp:49
+msgctxt "FunctionListModel|"
+msgid "Location"
+msgstr "موقع"
+
+#: libviews/functionlistmodel.cpp:89
+#, qt-format
+msgctxt "FunctionListModel|"
+msgid "(%1 function(s) skipped)"
+msgstr "(%1 دالة (دوال) مُتخطاة)"
+
+#: libviews/functionselection.cpp:87
+msgctxt "FunctionSelection|"
+msgid "Function Profile"
+msgstr "تشكيلة الدالة"
+
+#: libviews/functionselection.cpp:95
+msgctxt "FunctionSelection|"
+msgid "&Search:"
+msgstr "&ابحث:"
+
+#: libviews/functionselection.cpp:101
+msgctxt "FunctionSelection|"
+msgid "Search Query"
+msgstr "استعلام البحث"
+
+#: libviews/functionselection.cpp:116
+msgctxt "FunctionSelection|"
+msgid "Self"
+msgstr "ذاتية"
+
+#: libviews/functionselection.cpp:116
+msgctxt "FunctionSelection|"
+msgid "Group"
+msgstr "مجموعة"
+
+#: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
+msgctxt "FunctionSelection|"
+msgid "(No Grouping)"
+msgstr "(لا يوجد تجميع)"
+
+#: libviews/functionselection.cpp:209
+msgctxt "FunctionSelection|"
+msgid ""
+"<b>The Flat Profile</b><p>The flat profile contains a group and a function "
+"selection list. The group list contains all groups where costs are spent in, "
+"depending on the chosen group type. The group list is hidden when group type "
+"'Function' is selected.</p><p>The function list contains the functions of "
+"the selected group (or all for 'Function' group type), ordered by the costs "
+"spent therein. Functions with costs less than 1% are hidden on default.</p>"
+msgstr ""
+"<b>التشكيلة المسطحة</b><p>التشكيلة المسطحة تتضمن قائمة تحديد مجموعة ودالة. "
+"قائمة المجموعة تتضمن جميع المجموعات التي تُنفق فيها الكلف، اعتمادًا على نوع "
+"المجموعة المختار. تُخفى قائمة المجموعة عند اختيار نوع المجموعة 'دالة'.</"
+"p><p>قائمة الدالة تتضمن دوال المجموعة المحددة (أو كلها لنوع المجموعة "
+"'دالة')، مرتبة حسب الكلف المنفقة فيها. تُخفى الدوال ذات الكلف الأقل من 1% "
+"مبدئيًا.</p>"
+
+#: libviews/functionselection.cpp:287
+#, qt-format
+msgctxt "FunctionSelection|"
+msgid "Go to '%1'"
+msgstr "اذهب إلى '%1'"
+
+#: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
+msgctxt "FunctionSelection|"
+msgid "Grouping"
+msgstr "تجميع"
+
+#: libviews/functionselection.cpp:353
+msgctxt "FunctionSelection|"
+msgid "No Grouping"
+msgstr "لا يوجد تجميع"
+
+#: libviews/instritem.cpp:114 libviews/sourceitem.cpp:94
+#, qt-format
+msgctxt "QObject|"
+msgid "Active call to '%1'"
+msgstr "استدعاء نشط لـ '%1'"
+
+#: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
+#, qt-format
+msgctxt "QObject|"
+msgid "Call to '%1'"
+msgstr "استدعاء لـ '%1'"
+
+#: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
+#, qt-format
+msgctxt "QObject|"
+msgid "%n call(s) to '%2'"
+msgid_plural "%n call(s) to '%2'"
+msgstr[0] "استدعاء (%n) لـ '%2'"
+msgstr[1] "استدعاء واحد لـ '%2'"
+msgstr[2] "استدعاءان '%2'"
+msgstr[3] "%n استدعاءات لـ '%2'"
+msgstr[4] "%n استدعاء لـ '%2'"
+msgstr[5] "%n استدعاء لـ '%2'"
+
+#: libviews/instritem.cpp:155
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to 0x%3"
+msgstr "قفز %1 من %2 مرة إلى 0x%3"
+
+#: libviews/instritem.cpp:160
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 times to 0x%2"
+msgstr "قفز %1 مرة إلى 0x%2"
+
+#: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
+msgctxt "QObject|"
+msgid "(cycle)"
+msgstr "(دورة)"
+
+#: libviews/instrview.cpp:193
+msgctxt "InstrView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/instrview.cpp:194
+msgctxt "InstrView|"
+msgid "Cost"
+msgstr "كلفة"
+
+#: libviews/instrview.cpp:195
+msgctxt "InstrView|"
+msgid "Cost 2"
+msgstr "كلفة 2"
+
+#: libviews/instrview.cpp:197
+msgctxt "InstrView|"
+msgid "Hex"
+msgstr "سداسي عشري"
+
+#: libviews/instrview.cpp:199
+msgctxt "InstrView|"
+msgid "Assembly Instructions"
+msgstr "تعليمات التجميع"
+
+#: libviews/instrview.cpp:200
+msgctxt "InstrView|"
+msgid "Source Position"
+msgstr "موقع المصدر"
+
+#: libviews/instrview.cpp:236
+msgctxt "InstrView|"
+msgid ""
+"<b>Annotated Machine Code</b><p>The annotated machine code list shows the "
+"assembly instructions of the current selected function together with (self) "
+"cost spent while executing an instruction. If this is a call instruction, "
+"lines with details on the call happening are inserted into the source: the "
+"cost spent inside of the call, the number of calls happening, and the call "
+"destination.</p><p>The machine code shown is generated with the 'objdump' "
+"utility from the 'binutils' package.</p><p>Select a line with call "
+"information to make the destination function of this call current.</p>"
+msgstr ""
+"<b>شفرة آلة مشروحة</b><p>تعرض قائمة شفرة الآلة المشروحة تعليمات التجميع "
+"للدالة المحددة الحالية إلى جانب الكلفة (الذاتية) المنفقة أثناء تنفيذ تعليمة. "
+"إذا كانت هذه تعليمة استدعاء، تُدرج أسطر مع تفاصيل عن الاستدعاء الذي يحدث في "
+"المصدر: الكلفة المنفقة داخل الاستدعاء، وعدد الاستدعاءات التي تحدث، ووجهة "
+"الاستدعاء.</p><p>شفرة الآلة المعروضة مولدة باستخدام أداة 'objdump' المساعدة "
+"من حزمة 'binutils'.</p><p>اختر سطرًا بمعلومات استدعاء لجعل دالة وجهة هذا "
+"الاستدعاء هي الحالية.</p>"
+
+#: libviews/instrview.cpp:265
+#, qt-format
+msgctxt "InstrView|"
+msgid "Go to '%1'"
+msgstr "اذهب إلى '%1'"
+
+#: libviews/instrview.cpp:270
+#, qt-format
+msgctxt "InstrView|"
+msgid "Go to Address %1"
+msgstr "اذهب إلى العنوان %1"
+
+#: libviews/instrview.cpp:282
+msgctxt "InstrView|"
+msgid "Hex Code"
+msgstr "شفرة سداسية عشرية"
+
+#: libviews/instrview.cpp:290
+msgctxt "InstrView|"
+msgid "Intel Syntax"
+msgstr "صيغة Intel"
+
+#: libviews/instrview.cpp:585
+msgctxt "InstrView|"
+msgid "There is no instruction info in the profile data file."
+msgstr "لا يوجد معلومات تعليمات في ملف بيانات التشكيلة."
+
+#: libviews/instrview.cpp:587
+msgctxt "InstrView|"
+msgid "Tip: For Callgrind, rerun with option"
+msgstr "نصيحة: لـ Callgrind، أعد التشغيل مع الخيار"
+
+#: libviews/instrview.cpp:588
+msgctxt "InstrView|"
+msgid "      --dump-instr=yes"
+msgstr "      --dump-instr=yes"
+
+#: libviews/instrview.cpp:589
+msgctxt "InstrView|"
+msgid "To see (conditional) jumps, additionally specify"
+msgstr "لرؤية القفزات (الشرطية)، حدد إضافيًا"
+
+#: libviews/instrview.cpp:590
+msgctxt "InstrView|"
+msgid "      --collect-jumps=yes"
+msgstr "      --collect-jumps=yes"
+
+#: libviews/instrview.cpp:839
+msgctxt "InstrView|"
+msgid "For annotated machine code, the following object file is needed:"
+msgstr "لشفرة الآلة المشروحة، ملف الكائن التالي مطلوب:"
+
+#: libviews/instrview.cpp:844
+msgctxt "InstrView|"
+msgid "This file can not be found."
+msgstr "لا يمكن العثور على هذا الملف."
+
+#: libviews/instrview.cpp:847
+msgctxt "InstrView|"
+msgid "If cross-compiled, set SYSROOT variable."
+msgstr "إذا كان مترجمًا متقاطعًا، اضبط متغير SYSROOT."
+
+#: libviews/instrview.cpp:872
+msgctxt "InstrView|"
+msgid "There is an error trying to execute the command"
+msgstr "يوجد خطأ أثناء محاولة تنفيذ الأمر"
+
+#: libviews/instrview.cpp:876 libviews/instrview.cpp:1172
+msgctxt "InstrView|"
+msgid "Check that you have installed 'objdump'."
+msgstr "تحقق من تثبيت 'objdump'."
+
+#: libviews/instrview.cpp:878 libviews/instrview.cpp:1174
+msgctxt "InstrView|"
+msgid "This utility can be found in the 'binutils' package."
+msgstr "يمكن العثور على هذه الأداة المساعدة في حزمة 'binutils'."
+
+#: libviews/instrview.cpp:980
+msgctxt "InstrView|"
+msgid "(No Instruction)"
+msgstr "(لا توجد تعليمة)"
+
+#: libviews/instrview.cpp:1148
+#, qt-format
+msgctxt "InstrView|"
+msgid "There are %n cost line(s) without machine code."
+msgid_plural "There are %n cost line(s) without machine code."
+msgstr[0] "يوجد سطر (%n) كلفة بدون شفرة آلة."
+msgstr[1] "يوجد سطر كلفة بدون شفرة آلة."
+msgstr[2] "يوجد سطرا كلفة بدون شفرة آلة."
+msgstr[3] "يوجد %n أسطر كلفة بدون شفرة آلة."
+msgstr[4] "يوجد %n سطر كلفة بدون شفرة آلة."
+msgstr[5] "يوجد %n سطر كلفة بدون شفرة آلة."
+
+#: libviews/instrview.cpp:1150
+msgctxt "InstrView|"
+msgid "This happens because the code of"
+msgstr "يحدث هذا لأن شفرة"
+
+#: libviews/instrview.cpp:1153
+msgctxt "InstrView|"
+msgid "does not seem to match the profile data file."
+msgstr "لا يبدو أنها تطابق ملف بيانات التشكيلة."
+
+#: libviews/instrview.cpp:1156
+msgctxt "InstrView|"
+msgid "Are you using an old profile data file or is the above mentioned"
+msgstr "هل تستخدم ملف بيانات تشكيلة قديم أم أن المذكور أعلاه"
+
+#: libviews/instrview.cpp:1158
+msgctxt "InstrView|"
+msgid "ELF object from an updated installation/another machine?"
+msgstr "كائن ELF من تثبيت محدث/حاسوب آخر؟"
+
+#: libviews/instrview.cpp:1166
+msgctxt "InstrView|"
+msgid "There seems to be an error trying to execute the command"
+msgstr "يبدو أن هناك خطأ أثناء محاولة تنفيذ الأمر"
+
+#: libviews/instrview.cpp:1170
+msgctxt "InstrView|"
+msgid "Check that the ELF object used in the command exists."
+msgstr "تحقق من وجود كائن ELF المستخدم في الأمر."
+
+#: libviews/partgraph.cpp:155
+#, qt-format
+msgctxt "QObject|"
+msgid "Profile Part %1"
+msgstr "مقطع التشكيلة %1"
+
+#: libviews/partgraph.cpp:212
+msgctxt "QObject|"
+msgid "(no trace)"
+msgstr "(لا يوجد تتبع)"
+
+#: libviews/partgraph.cpp:215
+msgctxt "QObject|"
+msgid "(no part)"
+msgstr "(لا يوجد مقطع)"
+
+#: libviews/partlistitem.cpp:39
+msgctxt "QObject|"
+msgid "(none)"
+msgstr "(لا شيء)"
+
+#: libviews/partselection.cpp:48
+msgctxt "PartSelection|"
+msgid "Parts Overview"
+msgstr "نظرة عامة على المقاطع"
+
+#: libviews/partselection.cpp:61
+msgctxt "PartSelection|A thing's name"
+msgid "Name"
+msgstr "اسم"
+
+#: libviews/partselection.cpp:62
+msgctxt "PartSelection|"
+msgid "Cost"
+msgstr "كلفة"
+
+#: libviews/partselection.cpp:69
+msgctxt "PartSelection|"
+msgid "(no trace parts)"
+msgstr "(لا يوجد مقاطع تتبع)"
+
+#: libviews/partselection.cpp:96
+msgctxt "PartSelection|"
+msgid ""
+"<b>The Parts Overview</b><p>A trace consists of multiple trace parts when "
+"there are several profile data files from one profile run. The Trace Part "
+"Overview dockable shows these, horizontally ordered in execution time; the "
+"rectangle sizes are proportional to the total cost spent in the parts. You "
+"can select one or several parts to constrain all costs shown to these parts "
+"only.</p><p>The parts are further subdivided: there is a partitioning and an "
+"callee split mode: <ul><li>Partitioning: You see the partitioning into "
+"groups for a trace part, according to the group type selected. E.g. if ELF "
+"object groups are selected, you see colored rectangles for each used ELF "
+"object (shared library or executable), sized according to the cost spent "
+"therein.</li><li>Callee: A rectangle showing the inclusive cost of the "
+"current selected function in the trace part is shown. This is split up into "
+"smaller rectangles to show the costs of its callees.</li></ul></p>"
+msgstr ""
+"<b>نظرة عامة على المقاطع</b><p>يتكون التتبع من مقاطع تتبع متعددة عندما يوجد "
+"عدة ملفات بيانات تشكيلة من تشغيل تشكيلة واحد. تعرض ودجة نظرة عامة على مقطع "
+"التتبع القابلة للرسو هذه، مرتبة أفقيًا في وقت التنفيذ؛ تتناسب أحجام "
+"المستطيلات مع الكلفة الإجمالية المنفقة في المقاطع. يمكنك اختيار مقطع واحد أو "
+"عدة مقاطع لتقييد جميع الكلف المعروضة على هذه المقاطع فقط.</p><p>المقاطع "
+"مقسمة بشكل إضافي: يوجد وضع تقسيم ووضع تقسيم المستدعَين:<ul><li>تقسيم: ترى "
+"التقسيم إلى مجموعات لمقطع تتبع، وفقًا لنوع المجموعة المختار. على سبيل المثال، "
+"إذا اختيرت مجموعات كائن ELF، ترى مستطيلات ملونة لكل كائن ELF مُستخدم (مكتبة "
+"مشتركة أو قابل للتنفيذ)، بأحجام تتناسب مع الكلفة المنفقة فيه.</"
+"li><li>المستدعَى: يعرض مستطيل يظهر الكلفة الشاملة للدالة المحددة الحالية في "
+"مقطع التتبع. يقسم هذا إلى مستطيلات أصغر لإظهار تكاليف المستدعَين له.</li></"
+"ul></p>"
+
+#: libviews/partselection.cpp:231
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Profile Part Overview: Current is '%1'"
+msgstr "نظرة عامة على مقطع التشكيلة: الحالي هو '%1'"
+
+#: libviews/partselection.cpp:337
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Deselect '%1'"
+msgstr "ألغِ اختيار '%1'"
+
+#: libviews/partselection.cpp:339
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Select '%1'"
+msgstr "اختر '%1'"
+
+#: libviews/partselection.cpp:344
+msgctxt "PartSelection|"
+msgid "Select All Parts"
+msgstr "اختر كل المقاطع"
+
+#: libviews/partselection.cpp:345
+msgctxt "PartSelection|"
+msgid "Visible Parts"
+msgstr "مقاطع مرئية"
+
+#: libviews/partselection.cpp:346
+msgctxt "PartSelection|"
+msgid "Hide Selected Parts"
+msgstr "أخفِ المقاطع المختارة"
+
+#: libviews/partselection.cpp:347
+msgctxt "PartSelection|"
+msgid "Show Hidden Parts"
+msgstr "أظهر المقاطع المخفية"
+
+#: libviews/partselection.cpp:361
+#, qt-format
+msgctxt "PartSelection|"
+msgid "Go to '%1'"
+msgstr "اذهب إلى '%1'"
+
+#: libviews/partselection.cpp:370
+msgctxt "PartSelection|"
+msgid "Visualization"
+msgstr "تصوّر"
+
+#: libviews/partselection.cpp:371
+msgctxt "PartSelection|"
+msgid "Partitioning Mode"
+msgstr "وضع التقسيم"
+
+#: libviews/partselection.cpp:373
+msgctxt "PartSelection|"
+msgid "Zoom Function"
+msgstr "دالة التكبير"
+
+#: libviews/partselection.cpp:375
+msgctxt "PartSelection|"
+msgid "Show Direct Calls"
+msgstr "أظهر الاستدعاءات المباشرة"
+
+#: libviews/partselection.cpp:376
+msgctxt "PartSelection|"
+msgid "Increment Shown Call Levels"
+msgstr "زد مستويات الاستدعاء المعروضة"
+
+#: libviews/partselection.cpp:377
+msgctxt "PartSelection|"
+msgid "Diagram Mode"
+msgstr "وضع المخطط"
+
+#: libviews/partselection.cpp:392
+msgctxt "PartSelection|"
+msgid "Draw Names"
+msgstr "ارسم الأسماء"
+
+#: libviews/partselection.cpp:394
+msgctxt "PartSelection|"
+msgid "Draw Costs"
+msgstr "ارسم الكلف"
+
+#: libviews/partselection.cpp:396
+msgctxt "PartSelection|"
+msgid "Ignore Proportions"
+msgstr "تجاهل النسب"
+
+#: libviews/partselection.cpp:398
+msgctxt "PartSelection|"
+msgid "Allow Rotation"
+msgstr "اسمح بالتدوير"
+
+#: libviews/partselection.cpp:400
+msgctxt "PartSelection|"
+msgid "Draw Frames"
+msgstr "ارسم الأطر"
+
+#: libviews/partselection.cpp:414
+msgctxt "PartSelection|"
+msgid "Hide Info"
+msgstr "أخفِ المعلومات"
+
+#: libviews/partselection.cpp:414
+msgctxt "PartSelection|"
+msgid "Show Info"
+msgstr "أظهر المعلومات"
+
+#: libviews/partselection.cpp:562
+msgctxt "PartSelection|"
+msgid "(no trace loaded)"
+msgstr "(لا يوجد تتبع مُحمل)"
+
+#: libviews/partview.cpp:37
+msgctxt "PartView|"
+msgid "Profile Part"
+msgstr "مقطع التشكيلة"
+
+#: libviews/partview.cpp:38
+msgctxt "PartView|"
+msgid "Incl."
+msgstr "شاملة"
+
+#: libviews/partview.cpp:39
+msgctxt "PartView|"
+msgid "Self"
+msgstr "ذاتية"
+
+#: libviews/partview.cpp:40
+msgctxt "PartView|"
+msgid "Called"
+msgstr "مستدعًى"
+
+#: libviews/partview.cpp:41
+msgctxt "PartView|"
+msgid "Comment"
+msgstr "تعليق"
+
+#: libviews/partview.cpp:68
+msgctxt "PartView|"
+msgid ""
+"<b>Trace Part List</b><p>This list shows all trace parts of the loaded "
+"trace. For each part, the self/inclusive cost of the current selected "
+"function, spent in the part, is shown; percentage costs are always relative "
+"to the total cost <em>of the part</em> (not to the whole trace as in the "
+"Trace Part Overview). Also shown are the calls happening to/from the current "
+"function inside of the trace part.</p><p>By choosing one or more trace parts "
+"from the list, the costs shown all over KCachegrind will only be the ones "
+"spent in the selected part(s). If no list selection is shown, in fact all "
+"trace parts are selected implicitly.</p><p>This is a multi-selection list. "
+"You can select ranges by dragging the mouse or use SHIFT/CTRL modifiers. "
+"Selection/Deselection of trace parts can also be done by using the Trace "
+"Part Overview Dockable. This one also supports multiple selection.</"
+"p><p>Note that the list is hidden if only one trace part is loaded.</p>"
+msgstr ""
+"<b>قائمة مقاطع التتبع</b><p>تعرض هذه القائمة جميع مقاطع التتبع للتتبع "
+"المحمل. لكل مقطع، تُعرض الكلفة الذاتية/الشاملة للدالة المحددة الحالية، "
+"المنفقة في المقطع؛ الكلف المئوية تكون دائمًا نسبية للكلفة الإجمالية "
+"<em>للمقطع</em> (وليس للتتبع بأكمله كما في نظرة عامة على مقطع التتبع). تُعرض "
+"أيضًا الاستدعاءات التي تحدث إلى/من الدالة الحالية داخل مقطع التتبع.</p><p>عن "
+"طريق اختيار مقطع تتبع واحد أو أكثر من القائمة، تكون الكلف المعروضة في كل "
+"KCachegrind هي فقط تلك المنفقة في المقطع (المقاطع) المختار. إذا لم يُعرض "
+"اختيار في القائمة، ففي الواقع تُختار جميع مقاطع التتبع ضمنيًا.</p><p>هذه قائمة "
+"متعددة الاختيار. يمكنك اختيار نطاقات عن طريق سحب الفأرة أو استخدام مفاتيح "
+"التعديل SHIFT/CTRL. يمكن أيضًا إجراء اختيار/إلغاء اختيار مقاطع التتبع "
+"باستخدام ودجة نظرة عامة على مقطع التتبع القابلة للرسو. تدعم هذه أيضًا "
+"الاختيار المتعدد.</p><p>لاحظ أن القائمة تُخفى إذا حُمل مقطع تتبع واحد فقط.</p>"
+
+#: libviews/sourceitem.cpp:141
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 of %2 times to %3"
+msgstr "قفز %1 من %2 مرة إلى %3"
+
+#: libviews/sourceitem.cpp:146
+#, qt-format
+msgctxt "QObject|"
+msgid "Jump %1 times to %2"
+msgstr "قفز %1 مرة إلى %2"
+
+#: libviews/sourceview.cpp:51
+msgctxt "SourceView|"
+msgid "#"
+msgstr "#"
+
+#: libviews/sourceview.cpp:52
+msgctxt "SourceView|"
+msgid "Cost"
+msgstr "كلفة"
+
+#: libviews/sourceview.cpp:53
+msgctxt "SourceView|"
+msgid "Cost 2"
+msgstr "كلفة 2"
+
+#: libviews/sourceview.cpp:55
+msgctxt "SourceView|"
+msgid "Source"
+msgstr "مصدر"
+
+#: libviews/sourceview.cpp:83
+msgctxt "SourceView|"
+msgid ""
+"<b>Annotated Source</b><p>The annotated source list shows the source lines "
+"of the current selected function together with (self) cost spent while "
+"executing the code of this source line. If there was a call in a source "
+"line, lines with details on the call happening are inserted into the source: "
+"the cost spent inside of the call, the number of calls happening, and the "
+"call destination.</p><p>Select a inserted call information line to make the "
+"destination function current.</p>"
+msgstr ""
+"<b>مصدر مشروع</b><p>تعرض قائمة المصدر المشروع أسطر مصدر الدالة المحددة "
+"الحالية إلى جانب الكلفة (الذاتية) المنفقة أثناء تنفيذ شفرة سطر المصدر هذا. "
+"إذا كان هناك استدعاء في سطر مصدر، تُدرج أسطر مع تفاصيل عن الاستدعاء الذي يحدث "
+"في المصدر: الكلفة المنفقة داخل الاستدعاء، وعدد الاستدعاءات التي تحدث، ووجهة "
+"الاستدعاء.</p><p>اختر سطر معلومات استدعاء مُدرج لجعل دالة الوجهة هي الحالية.</"
+"p>"
+
+#: libviews/sourceview.cpp:110
+#, qt-format
+msgctxt "SourceView|"
+msgid "Go to '%1'"
+msgstr "اذهب إلى '%1'"
+
+#: libviews/sourceview.cpp:115
+#, qt-format
+msgctxt "SourceView|"
+msgid "Go to Line %1"
+msgstr "اذهب إلى السطر %1"
+
+#: libviews/sourceview.cpp:627
+msgctxt "SourceView|"
+msgid "There is no cost of current selected type associated"
+msgstr "لا يوجد كلفة من النوع المختار حاليًا مرتبطة"
+
+#: libviews/sourceview.cpp:629
+msgctxt "SourceView|"
+msgid "with any source line of this function in file"
+msgstr "بأي سطر مصدر لهذه الدالة في الملف"
+
+#: libviews/sourceview.cpp:633
+msgctxt "SourceView|"
+msgid "Thus, no annotated source can be shown."
+msgstr "بالتالي، لا يمكن عرض مصدر مشروع."
+
+#: libviews/sourceview.cpp:658
+#, qt-format
+msgctxt "SourceView|"
+msgid "--- From '%1' ---"
+msgstr "--- من '%1' ---"
+
+#: libviews/sourceview.cpp:663
+#, qt-format
+msgctxt "SourceView|"
+msgid "--- Inlined from '%1' ---"
+msgstr "--- مضمن من '%1' ---"
+
+#: libviews/sourceview.cpp:664
+msgctxt "SourceView|"
+msgid "--- Inlined from unknown source ---"
+msgstr "--- مضمن من مصدر مجهول ---"
+
+#: libviews/sourceview.cpp:669
+msgctxt "SourceView|"
+msgid "There is no source available for the following function:"
+msgstr "لا يوجد مصدر متاح للدالة التالية:"
+
+#: libviews/sourceview.cpp:674
+msgctxt "SourceView|"
+msgid "This is because no debug information is present."
+msgstr "هذا لأن معلومات تصحيح الأخطاء غير موجودة."
+
+#: libviews/sourceview.cpp:676
+msgctxt "SourceView|"
+msgid "Recompile source and redo the profile run."
+msgstr "أعد تجميع المصدر وأعد تشغيل التشكيلة."
+
+#: libviews/sourceview.cpp:679
+msgctxt "SourceView|"
+msgid "The function is located in this ELF object:"
+msgstr "توجد الدالة في كائن ELF هذا:"
+
+#: libviews/sourceview.cpp:687
+msgctxt "SourceView|"
+msgid "This is because its source file cannot be found:"
+msgstr "هذا لأن ملف مصدره لا يمكن العثور عليه:"
+
+#: libviews/sourceview.cpp:691
+msgctxt "SourceView|"
+msgid "Add the folder of this file to the source folder list."
+msgstr "أضف مجلد هذا الملف إلى قائمة مجلدات المصدر."
+
+#: libviews/sourceview.cpp:693
+msgctxt "SourceView|"
+msgid "The list can be found in the configuration dialog."
+msgstr "يمكن العثور على القائمة في حوار الإعداد."
+
+#: libviews/stackselection.cpp:36
+msgctxt "StackSelection|"
+msgid "Stack Selection"
+msgstr "اختيار المكدس"
+
+#: libviews/stackselection.cpp:44
+msgctxt "StackSelection|"
+msgid "Cost"
+msgstr "كلفة"
+
+#: libviews/stackselection.cpp:45
+msgctxt "StackSelection|"
+msgid "Cost2"
+msgstr "كلفة 2"
+
+#: libviews/stackselection.cpp:46
+msgctxt "StackSelection|"
+msgid "Calls"
+msgstr "استدعاءات"
+
+#: libviews/stackselection.cpp:47
+msgctxt "StackSelection|"
+msgid "Function"
+msgstr "دالة"
+
+#: libviews/tabview.cpp:104
+msgctxt "TabBar|"
+msgid "Move to Top"
+msgstr "انقل إلى الأعلى"
+
+#: libviews/tabview.cpp:105
+msgctxt "TabBar|Move to Top"
+msgid "Top"
+msgstr "أعلى"
+
+#: libviews/tabview.cpp:108
+msgctxt "TabBar|"
+msgid "Move to Right"
+msgstr "انقل إلى اليمين"
+
+#: libviews/tabview.cpp:109
+msgctxt "TabBar|Move to Right"
+msgid "Right"
+msgstr "يمين"
+
+#: libviews/tabview.cpp:112
+msgctxt "TabBar|"
+msgid "Move to Bottom"
+msgstr "انقل إلى الأسفل"
+
+#: libviews/tabview.cpp:113
+msgctxt "TabBar|Move to Bottom"
+msgid "Bottom"
+msgstr "أسفل"
+
+#: libviews/tabview.cpp:116
+msgctxt "TabBar|"
+msgid "Move to Bottom Left"
+msgstr "انقل إلى أسفل اليسار"
+
+#: libviews/tabview.cpp:117
+msgctxt "TabBar|Move to Bottom Left"
+msgid "Bottom Left"
+msgstr "يسار الأسفل"
+
+#: libviews/tabview.cpp:119
+msgctxt "TabBar|"
+msgid "Move Area To"
+msgstr "حرّك المنطقة إلى"
+
+#: libviews/tabview.cpp:122
+msgctxt "TabBar|"
+msgid "Hide This Tab"
+msgstr "أخف هذا اللسان"
+
+#: libviews/tabview.cpp:123
+msgctxt "TabBar|"
+msgid "Hide Area"
+msgstr "أخفِ المنطقة"
+
+#: libviews/tabview.cpp:132
+msgctxt "TabBar|Show on Top"
+msgid "Top"
+msgstr "أعلى"
+
+#: libviews/tabview.cpp:133
+msgctxt "TabBar|Show on Right"
+msgid "Right"
+msgstr "يمين"
+
+#: libviews/tabview.cpp:134
+msgctxt "TabBar|Show on Bottom"
+msgid "Bottom"
+msgstr "أسفل"
+
+#: libviews/tabview.cpp:135
+msgctxt "TabBar|Show on Bottom Left"
+msgid "Bottom Left"
+msgstr "يسار الأسفل"
+
+#: libviews/tabview.cpp:136
+msgctxt "TabBar|"
+msgid "Show Hidden On"
+msgstr "إظهار المخفي"
+
+#: libviews/tabview.cpp:309 libviews/tabview.cpp:311 libviews/tabview.cpp:730
+msgctxt "TabView|"
+msgid "(No profile data file loaded)"
+msgstr "(لم يُحمل ملف بيانات أي تشكسلة)"
+
+#: libviews/tabview.cpp:371
+msgctxt "TabView|"
+msgid "Types"
+msgstr "الأنواع"
+
+#: libviews/tabview.cpp:374
+msgctxt "TabView|"
+msgid "Callers"
+msgstr "المستدعِيات"
+
+#: libviews/tabview.cpp:375
+msgctxt "TabView|"
+msgid "All Callers"
+msgstr "كل المستدعِيات"
+
+#: libviews/tabview.cpp:376
+msgctxt "TabView|"
+msgid "Callee Map"
+msgstr "خريطة المستدعَى"
+
+#: libviews/tabview.cpp:379
+msgctxt "TabView|"
+msgid "Source Code"
+msgstr "الشفرة المصدرية"
+
+#: libviews/tabview.cpp:380
+msgctxt "TabView|"
+msgid "Control Flow Graph"
+msgstr "رسم تدفق السيطرة"
+
+#: libviews/tabview.cpp:383
+msgctxt "TabView|"
+msgid "Parts"
+msgstr "الأجزاء"
+
+#: libviews/tabview.cpp:384
+msgctxt "TabView|"
+msgid "Callees"
+msgstr "مستدعَيات"
+
+#: libviews/tabview.cpp:385
+msgctxt "TabView|"
+msgid "Call Graph"
+msgstr "رسم الاستدعاء"
+
+#: libviews/tabview.cpp:388
+msgctxt "TabView|"
+msgid "All Callees"
+msgstr "كل المستدعَيات"
+
+#: libviews/tabview.cpp:389
+msgctxt "TabView|"
+msgid "Caller Map"
+msgstr "خريطة المستدعِي"
+
+#: libviews/tabview.cpp:392
+msgctxt "TabView|"
+msgid "Machine Code"
+msgstr "شفرة الآلة"
+
+#: libviews/tabview.cpp:646
+msgctxt "TabView|"
+msgid ""
+"<b>Information Tabs</b><p>This widget shows information for the currently "
+"selected function in different tabs: <ul><li>The Costs tab shows a list of "
+"available event types and the inclusive and self-costs related to these "
+"types.</li><li>The Parts tab shows a list of trace parts if the trace "
+"consists of more than one part (otherwise, this tab is hidden). The cost of "
+"the selected function spent in the different parts together with the calls "
+"happening is shown.</li><li>The Call Lists tab shows direct callers and "
+"callees of the function in more detail.</li><li>The Coverage tab shows the "
+"same as the Call Lists tab, but also shows indirect callers and callees, not "
+"just direct ones.</li><li>The Call Graph tab shows a graphical visualization "
+"of the calls made by this function.</li><li>The Source Code tab presents "
+"annotated source code if debugging information and the source file are "
+"available.</li><li>The Machine Code tab presents annotated assembly "
+"instructions if profile information at instruction level is available.</li></"
+"ul>For more information, see the <em>What's This?</em> help of the "
+"corresponding tab widget.</p>"
+msgstr ""
+"<b>ألسنة المعلومات</b>\n"
+"<p>تعرض هذه الودجة معلومات عن الدالة المحددة حاليًا في ألسنة مختلفة:</p>\n"
+"<ul>\n"
+"<li>ألسنة التكاليف: تعرض قائمة بأنواع الأحداث المتاحة والتكاليف الشاملة "
+"والذاتية\n"
+"المتعلقة بهذه الأنواع.</li>\n"
+"<li>ألسنة الأجزاء: تعرض قائمة بأجزاء الأثر إذا كان الأثر يتكون من أكثر من "
+"جزء\n"
+"(وإلا، اخفِ هذا اللسان). يظهر هنا تكلفة الدالة المحددة التي تنفق في الأجزاء\n"
+"المختلفة مع المكالمات التي تحدث.</li>\n"
+"<li>ألسنة قوائم الاستدعاءات: تعرض المستدعِين والمستدعَين المباشرين للدالة "
+"بتفاصيل\n"
+"أكثر.</li>\n"
+"<li>ألسنة التغطية: تعرض ما يعرضه لسان قوائم المكالمات، ولكنها تعرض أيضًا "
+"المتصلين\n"
+"والمُتصل بهم غير المباشرين، وليس المباشرين فقط.</li>\n"
+"<li>ألسنة رسم الاستدعاءات: تعرض تصورًا بيانيًا للمكالمات التي تجريها هذه "
+"الدالة.</li>\n"
+"<li>ألسنة شيفرة المصدر: تقدم شيفرة مصدر مُشروحة إذا كانت معلومات التنقيح "
+"وملف\n"
+"المصدر متاحين.</li>\n"
+"<li>ألسنة شيفرة الآلة: تقدم تعليمات تجميع مُشروحة إذا كانت معلومات تشكيلة "
+"على\n"
+"مستوى التعليمات متاحة.</li>\n"
+"</ul>\n"
+"للمزيد من المعلومات، انظر دليل <em>ما هذا؟</em> للودجة اللسان المقابلة.</p>"
+
+#: libviews/tabview.cpp:731
+msgctxt "TabView|"
+msgid "(No function selected)"
+msgstr "(لا توجد دالة محددة)"
+
+#: libviews/traceitemview.cpp:67
+msgctxt "QObject|"
+msgid "No description available"
+msgstr "لا يوجد وصف"
+
+#: libviews/treemap.cpp:1335
+#, qt-format
+msgctxt "TreeMapWidget|"
+msgid "Text %1"
+msgstr "نص %1"
+
+#: libviews/treemap.cpp:2860
+msgctxt "TreeMapWidget|"
+msgid "Recursive Bisection"
+msgstr "التَصنيف التَكراري"
+
+#: libviews/treemap.cpp:2861
+msgctxt "TreeMapWidget|"
+msgid "Columns"
+msgstr "الأعمدة"
+
+#: libviews/treemap.cpp:2862
+msgctxt "TreeMapWidget|"
+msgid "Rows"
+msgstr "صفوف"
+
+#: libviews/treemap.cpp:2863
+msgctxt "TreeMapWidget|"
+msgid "Always Best"
+msgstr "دائمًا الأفضل"
+
+#: libviews/treemap.cpp:2864
+msgctxt "TreeMapWidget|"
+msgid "Best"
+msgstr "الأفضل"
+
+#: libviews/treemap.cpp:2865
+msgctxt "TreeMapWidget|"
+msgid "Alternate (V)"
+msgstr "بديل (ر)"
+
+#: libviews/treemap.cpp:2866
+msgctxt "TreeMapWidget|"
+msgid "Alternate (H)"
+msgstr "بديل (أ)"
+
+#: libviews/treemap.cpp:2867
+msgctxt "TreeMapWidget|"
+msgid "Horizontal"
+msgstr "أفقي"
+
+#: libviews/treemap.cpp:2868
+msgctxt "TreeMapWidget|"
+msgid "Vertical"
+msgstr "رأسي"
