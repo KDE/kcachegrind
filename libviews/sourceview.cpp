@@ -134,7 +134,7 @@ void SourceView::context(const QPoint & p)
 void SourceView::selectedSlot(QTreeWidgetItem *i, QTreeWidgetItem *)
 {
     if (!i) return;
-    // programatically selected items are not signalled
+    // programmatically selected items are not signalled
     if (_inSelectionUpdate) return;
 
     TraceLineCall* lc = ((SourceItem*) i)->lineCall();

@@ -39,7 +39,7 @@ Basics of the GUI
 
 At any time, every view visualizes some CostItem from loaded profile data.
 More concretely, the "visualization state" consists of e.g. the
-current CostItem to show, a curent EventType to show, from which
+current CostItem to show, a current EventType to show, from which
 part(s) to show, which sub-CostItem should be shown selected and so on.
 
 Every view is inherited from the TraceItemView class, which manages the

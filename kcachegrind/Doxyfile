@@ -125,7 +125,7 @@ INCLUDE_FILE_PATTERNS  =
 PREDEFINED             = 
 EXPAND_AS_DEFINED      = 
 #---------------------------------------------------------------------------
-# Configuration::addtions related to external references   
+# Configuration::additions related to external references   
 #---------------------------------------------------------------------------
 TAGFILES               = 
 GENERATE_TAGFILE       = 
@@ -144,7 +144,7 @@ DOT_PATH               =
 GENERATE_LEGEND        = 
 DOT_CLEANUP            = 
 #---------------------------------------------------------------------------
-# Configuration::addtions related to the search engine   
+# Configuration::additions related to the search engine   
 #---------------------------------------------------------------------------
 SEARCHENGINE           = 
 CGI_NAME               = search.cgi

@@ -723,7 +723,7 @@ void FunctionSelection::groupSelected(QTreeWidgetItem* i, QTreeWidgetItem*)
     selectFunction(dynamic_cast<TraceFunction*>(_activeItem));
     setCostColumnWidths();
 
-    // Do not emit signal if cost item was changed programatically
+    // Do not emit signal if cost item was changed programmatically
     if (!_inSetGroup) {
         if (_topLevel)
             _topLevel->setGroupDelayed(g);
@@ -859,7 +859,7 @@ bool FunctionSelection::selectTopFunction()
     QModelIndex i = functionListModel->index(0,0);
     TraceFunction* f = functionListModel->function(i);
 
-    // pre-select before activation to not trigger a refresh of this view
+    // preselect before activation to not trigger a refresh of this view
     _activeItem = f;
     selectFunction(f);
 

@@ -133,7 +133,7 @@ code).</p>
 
 <tip category="KCachegrind|Explanation">
 <p>...that by splitting the view to show information of 
-two functions simultaniously, selecting a function in
+two functions simultaneously, selecting a function in
 one panel shows the information for that function
 in the other panel?</p>
 </html>

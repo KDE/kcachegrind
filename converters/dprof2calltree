@@ -51,7 +51,7 @@
 #    > dprof2calltree -f tmon.out -o cachegrind.out.foo
 #
 #    This creates a cachegrind-style file called cachgrind.out.tmon.out or
-#    cachegrind.out.foo, respecitvely.
+#    cachegrind.out.foo, respectively.
 #
 # 3) Run kcachegrind cachegrind.out.foo
 #

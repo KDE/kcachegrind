@@ -127,7 +127,7 @@ void SourceSettings::addClicked()
     if (prevItemCount == 0 && ui.objectBox->currentText() == _always) {
         // it's not obvious that you have to click browse after adding an item,
         // but handle the case where we have no items and are looking for the
-        // default. give users an oppurtunity to select for multiple ELF objects
+        // default. give users an opportunity to select for multiple ELF objects
         browseClicked();
     }
 }

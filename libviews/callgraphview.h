@@ -323,7 +323,7 @@ public:
     // calls createGraph before dumping of not already created
     bool writeDot(QIODevice* = nullptr);
 
-    // ephemereal save dialog and exporter
+    // ephemeral save dialog and exporter
     static bool savePrompt(QWidget *, TraceData*, TraceFunction*,
                            EventType*, ProfileContext::Type,
                            CallGraphView*);

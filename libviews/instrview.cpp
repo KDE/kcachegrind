@@ -315,7 +315,7 @@ void InstrView::context(const QPoint & p)
 void InstrView::selectedSlot(QTreeWidgetItem *i, QTreeWidgetItem *)
 {
     if (!i) return;
-    // programatically selected items are not signalled
+    // programmatically selected items are not signalled
     if (_inSelectionUpdate) return;
 
     TraceInstrCall* ic = ((InstrItem*) i)->instrCall();

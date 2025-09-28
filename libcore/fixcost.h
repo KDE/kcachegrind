@@ -35,7 +35,7 @@ public:
 };
 
 /**
- * A class holding an unchangable cost item of an input file.
+ * A class holding an unchangeable cost item of an input file.
  *
  * As there can be a lot of such cost items, we use our own
  * allocator which uses FixPool
