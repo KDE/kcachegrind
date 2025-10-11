@@ -1,12 +1,12 @@
-# Sebastian Stein <s5228@informatik.htw-dresden.de>, 2003.
-# Sebastian Stein <seb.kde@hpfsc.de>, 2003.
-# Josef Weidendorfer <Josef.Weidendorfer@gmx.de>, 2003, 2005.
-# Stephan Johach <hunsum@gmx.de>, 2003, 2005.
-# Thomas Diehl <thd@kde.org>, 2004.
-# Thomas Reitelbach <tr@erdfunkstelle.de>, 2005, 2006, 2008, 2009.
-# Frederik Schwarzer <schwarzer@kde.org>, 2007, 2008, 2009, 2010, 2011, 2012.
-# Burkhard Lück <lueck@hube-lueck.de>, 2008, 2009, 2011, 2015, 2016, 2017.
-# Rolf Eike Beer <kde@opensource.sf-tec.de>, 2012.
+# SPDX-FileCopyrightText: 2003 Sebastian Stein <s5228@informatik.htw-dresden.de>
+# SPDX-FileCopyrightText: 2003 Sebastian Stein <seb.kde@hpfsc.de>
+# SPDX-FileCopyrightText: 2003, 2005 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+# SPDX-FileCopyrightText: 2003, 2005 Stephan Johach <hunsum@gmx.de>
+# SPDX-FileCopyrightText: 2004 Thomas Diehl <thd@kde.org>
+# SPDX-FileCopyrightText: 2005, 2006, 2008, 2009 Thomas Reitelbach <tr@erdfunkstelle.de>
+# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2011, 2012 Frederik Schwarzer <schwarzer@kde.org>
+# SPDX-FileCopyrightText: 2008, 2009, 2011, 2015, 2016, 2017 Burkhard Lück <lueck@hube-lueck.de>
+# SPDX-FileCopyrightText: 2012 Rolf Eike Beer <kde@opensource.sf-tec.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"

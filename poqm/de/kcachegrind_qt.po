@@ -1,13 +1,13 @@
-# Sebastian Stein <seb.kde@hpfsc.de>, 2003.
-# Josef Weidendorfer <Josef.Weidendorfer@gmx.de>, 2003, 2005.
-# Stephan Johach <hunsum@gmx.de>, 2003, 2005.
-# Thomas Diehl <thd@kde.org>, 2004.
-# Thomas Reitelbach <tr@erdfunkstelle.de>, 2005, 2006, 2008, 2009.
-# Frederik Schwarzer <schwarzer@kde.org>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2020.
-# Burkhard Lück <lueck@hube-lueck.de>, 2008, 2009, 2010, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2021.
-# Panagiotis Papadopoulos <pano_90@gmx.net>, 2011.
-# Rolf Eike Beer <kde@opensource.sf-tec.de>, 2011.
 # SPDX-FileCopyrightText: 2023 Johannes Obermayr <johannesobermayr@gmx.de>
+# SPDX-FileCopyrightText: 2003 Sebastian Stein <seb.kde@hpfsc.de>
+# SPDX-FileCopyrightText: 2003, 2005 Josef Weidendorfer <Josef.Weidendorfer@gmx.de>
+# SPDX-FileCopyrightText: 2003, 2005 Stephan Johach <hunsum@gmx.de>
+# SPDX-FileCopyrightText: 2004 Thomas Diehl <thd@kde.org>
+# SPDX-FileCopyrightText: 2005, 2006, 2008, 2009 Thomas Reitelbach <tr@erdfunkstelle.de>
+# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2020 Frederik Schwarzer <schwarzer@kde.org>
+# SPDX-FileCopyrightText: 2008, 2009, 2010, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2021 Burkhard Lück <lueck@hube-lueck.de>
+# SPDX-FileCopyrightText: 2011 Panagiotis Papadopoulos <pano_90@gmx.net>
+# SPDX-FileCopyrightText: 2011 Rolf Eike Beer <kde@opensource.sf-tec.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
