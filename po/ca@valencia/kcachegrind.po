@@ -2,11 +2,11 @@
 # Copyright (C) 2004-2024 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2 or later.
 #
-# Orestes Mas <orestes@tsc.upc.es>, 2004.
-# Albert Astals Cid <aacid@kde.org>, 2004, 2005.
+# SPDX-FileCopyrightText: 2004 Orestes Mas <orestes@tsc.upc.es>
+# SPDX-FileCopyrightText: 2004, 2005 Albert Astals Cid <aacid@kde.org>
 # SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
-# Manuel Tortosa Moreno <manutortosa@chakra-project.org>, 2009, 2010, 2011.
-# Antoni Bella Pérez <antonibella5@yahoo.com>, 2020.
+# SPDX-FileCopyrightText: 2009, 2010, 2011 Manuel Tortosa Moreno <manutortosa@chakra-project.org>
+# SPDX-FileCopyrightText: 2020 Antoni Bella Pérez <antonibella5@yahoo.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
