@@ -2272,7 +2272,7 @@ msgstr "Ajoutez le dossier de ce fichier à la liste des dossiers des sources."
 #: libviews/sourceview.cpp:693
 msgctxt "SourceView|"
 msgid "The list can be found in the configuration dialog."
-msgstr "Cette liste se trouve dans la boîte de dialogue de configuration."
+msgstr "Cette liste se trouve dans la boite de dialogue de configuration."
 
 #: libviews/stackselection.cpp:36
 msgctxt "StackSelection|"
