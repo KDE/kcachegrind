@@ -188,7 +188,7 @@
 > (zones de mémoire petites et rapides, et qui permettent d'accélérer les accès répétés aux mêmes emplacements mémoire). &cachegrind; fait cette simulation du cache en interceptant les accès mémoires. Les données produites incluent le nombre d'accès sur la mémoire des instructions / des données, les échecs des caches de niveau L1 / L2, et elle met en relation les lignes du code source avec les fonctions du programme exécuté. En combinant ces compteurs d'échecs et en utilisant des temps de latence de processeurs connus, on peut faire une estimation du temps passé. </para>
 
 <para
->&callgrind; est une extension de &cachegrind; qui construit l'arbre d'appels d'un programme à la volée, &cad; comment les fonctions s'appellent entre elles et combien d'évènements se produisent lors de l'exécution d'une fonction. De plus, les données de profilage devant être collectées peuvent être divisées en threads ou en contextes de chaînes d'appels. Il peut aussi fournir des données de profilage au niveau instruction afin de permettre l'annotation d'un code désassemblé. </para>
+>&callgrind; est une extension de &cachegrind; qui construit l'arbre d'appels d'un programme à la volée, &cad; comment les fonctions s'appellent entre elles et combien d'évènements se produisent lors de l'exécution d'une fonction. De plus, les données de profilage devant être collectées peuvent être divisées en threads ou en contextes de chaines d'appels. Il peut aussi fournir des données de profilage au niveau instruction afin de permettre l'annotation d'un code désassemblé. </para>
 </sect1>
 
 <sect1 id="introduction-visualization">
@@ -391,7 +391,7 @@
 <para
 >Le type d'évènement actif est important pour l'affichage : pour &callgrind;, c'est par exemple le nombre d'échecs du cache ou l'estimation du cycle ; pour &oprofile;, c'est le <quote
 >temps</quote
-> dans le plus simple cas. Vous pouvez changer le type d'évènement grâce à une boîte de dialogue dans la barre d'outils ou dans la vue du<guilabel
+> dans le plus simple cas. Vous pouvez changer le type d'évènement grâce à une boite de dialogue dans la barre d'outils ou dans la vue du<guilabel
 >type d'évènement</guilabel
 >. Un premier aperçu des caractéristiques de l'exécution devrait être donné quand vous sélectionnez la fonction <function
 >main</function
@@ -441,7 +441,7 @@
 > Ligne dans le source d'une fonction</term
 > <listitem
 ><para
->. Toutes les instructions que le compilateur (par l'intermédiaire des informations de débogage) associe à une ligne donnée spécifiée par le nom du fichier source et le numéro de la ligne, et qui sont exécutées dans le contexte de quelques fonctions. Le dernier est nécessaire parce qu'une ligne source à l'intérieur d'une fonction inline peut apparaître dans le contexte de fonctions multiples. Les instructions sans association avec une ligne du code source courant sont associées à la ligne numéro 0 du fichier « ??? ».<filename
+>. Toutes les instructions que le compilateur (par l'intermédiaire des informations de débogage) associe à une ligne donnée spécifiée par le nom du fichier source et le numéro de la ligne, et qui sont exécutées dans le contexte de quelques fonctions. Le dernier est nécessaire parce qu'une ligne source à l'intérieur d'une fonction inline peut apparaitre dans le contexte de fonctions multiples. Les instructions sans association avec une ligne du code source courant sont associées à la ligne numéro 0 du fichier « ??? ».<filename
 >???</filename
 >. </para
 ></listitem
@@ -906,7 +906,7 @@
 <listitem>
 <para
 ><action
->Affiche la boîte de dialogue de sélection de fichier de &kde;</action
+>Affiche la boite de dialogue de sélection de fichier de &kde;</action
 > afin que vous puissiez choisir le fichier de données de profilage à charger. S'il y a déjà des données affichées dans la fenêtre courante de haut niveau, ceci va ouvrir une nouvelle fenêtre. Si vous voulez ouvrir des données additionnelles de profilage dans la fenêtre courante, utilisez <menuchoice
 > <guimenu
 >Fichier</guimenu
@@ -1046,7 +1046,7 @@
 </question>
 <answer>
 <para
->Ce sont des attributs de coût pour les fonctions en considérant certains types d'évènements. Comme les fonctions peuvent s'appeler entre elles, il paraît logique de distinguer le coût de la fonction elle-même (<quote
+>Ce sont des attributs de coût pour les fonctions en considérant certains types d'évènements. Comme les fonctions peuvent s'appeler entre elles, il parait logique de distinguer le coût de la fonction elle-même (<quote
 >Coût propre</quote
 >) et le coût incluant toutes les fonctions appelées (<quote
 >Coût inclusif</quote
