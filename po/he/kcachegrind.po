@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:42+0000\n"
-"PO-Revision-Date: 2025-11-18 09:15+0200\n"
+"PO-Revision-Date: 2025-11-25 14:46+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -935,12 +935,12 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:613
 #, kde-format
 msgid "Go back in function selection history"
-msgstr ""
+msgstr "אחורה בהיסטוריית בחירת הפונקציות"
 
 #: kcachegrind/toplevel.cpp:627
 #, kde-format
 msgid "Go forward in function selection history"
-msgstr ""
+msgstr "התקדמות בהיסטוריית בחירת הפונקציות"
 
 #: kcachegrind/toplevel.cpp:632 kcachegrind/toplevel.cpp:1503
 #, kde-format
