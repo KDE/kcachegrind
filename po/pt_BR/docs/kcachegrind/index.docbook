@@ -106,7 +106,7 @@
 
 <abstract>
 <para
->O &kcachegrind; é uma ferramenta de visualização de dados de auditoria, escrito usando o &kf5-full;. </para>
+>O &kcachegrind; é uma ferramenta de visualização de dados de auditoria, escrito usando o  &kde-frameworks;. </para>
 </abstract>
 
 <keywordset>
