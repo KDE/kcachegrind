@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:42+0000\n"
-"PO-Revision-Date: 2025-11-25 14:46+0200\n"
+"PO-Revision-Date: 2025-12-01 22:17+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -278,7 +278,7 @@ msgstr "דילוג"
 #: kcachegrind/dumpselectionbase.ui:272
 #, kde-format
 msgid "PLT"
-msgstr ""
+msgstr "PLT"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
@@ -297,7 +297,7 @@ msgstr "פרופיל היטל"
 #: kcachegrind/dumpselectionbase.ui:314
 #, kde-format
 msgid "Every BBs"
-msgstr ""
+msgstr "כל הבלוקים הבסיסיים (BBs)"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:328 kcachegrind/dumpselectionbase.ui:370
@@ -441,13 +441,13 @@ msgstr "באיסוף"
 #: kcachegrind/dumpselectionbase.ui:689
 #, kde-format
 msgid "Executed"
-msgstr ""
+msgstr "הופעלו"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:702
 #, kde-format
 msgid "Basic Blocks"
-msgstr ""
+msgstr "בלוקים בסיסיים"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:716
