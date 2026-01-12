@@ -691,7 +691,7 @@ msgstr ""
 "és a dir, on ha sigut iniciat, i </li><li>la carpeta de bolcats d'anàlisi "
 "del rendiment establida en la configuració.</li></ul>La llista està ordenada "
 "segons l'ordre de destinació de l'anàlisi del rendiment al bolcat "
-"corresponent.</p><p>En seleccionar un bolcat d'anàlisi del rendiment es "
+"corresponent.</p><p>Quan se seleccione un bolcat d'anàlisi del rendiment es "
 "mostrarà la seua informació en la part inferior de l'acoblable: "
 "<ul><li><b>Opcions</b> permet veure l'ordre d'anàlisi del rendiment i les "
 "opcions per a l'anàlisi del rendiment d'este bolcat. Si canvieu qualsevol "
@@ -1173,7 +1173,7 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:2059
 #, kde-format
 msgid "Error running callgrind_control"
-msgstr "S'ha produït un error en executar callgrind_control"
+msgstr "S'ha produït un error mentre s'executava callgrind_control"
 
 #: kcachegrind/toplevel.cpp:2098 kcachegrind/toplevel.cpp:2135
 #: kcachegrind/toplevel.cpp:2172
@@ -1204,4 +1204,4 @@ msgstr "S'està carregant %1"
 #: kcachegrind/toplevel.cpp:2317
 #, kde-format
 msgid "Error loading %1: %2"
-msgstr "S'ha produït un error en carregar %1: %2"
+msgstr "S'ha produït un error mentre es carregava %1: %2"

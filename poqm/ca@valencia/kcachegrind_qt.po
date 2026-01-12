@@ -451,7 +451,8 @@ msgstr "No s'ha pogut dibuixar cap gràfica de crides per a l'element actiu."
 #: libviews/callgraphview.cpp:2537
 msgctxt "CallGraphView|"
 msgid "Error running the graph layouting tool.\n"
-msgstr "S'ha produït un error en executar l'eina de disposició de gràfiques.\n"
+msgstr ""
+"S'ha produït un error mentre s'executava l'eina de disposició de gràfiques.\n"
 
 #: libviews/callgraphview.cpp:2542
 #, qt-format
@@ -1134,7 +1135,7 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package."
 msgstr ""
-"Pareix que hi ha un error en intentar executar l'ordre «%1».\n"
+"Pareix que hi ha un error mentre s'intentava executar l'ordre «%1».\n"
 "Comproveu que existisca l'objecte ELF utilitzat en l'ordre.\n"
 "Comproveu que heu instal·lat «objdump».\n"
 "Esta utilitat es pot trobar en el paquet «binutils»."
@@ -1192,7 +1193,7 @@ msgid ""
 "Error running the graph layouting tool.\n"
 "Please check that 'dot' is installed (package Graphviz)."
 msgstr ""
-"S'ha produït un error en executar l'eina de disposició de gràfiques.\n"
+"S'ha produït un error mentre s'executava l'eina de disposició de gràfiques.\n"
 "Comproveu que «dot» estiga instal·lat (paquet Graphviz)."
 
 #: libviews/controlflowgraphview.cpp:2399
@@ -1799,7 +1800,7 @@ msgstr "Si hi ha compilació creuada, definix la variable SYSROOT."
 #: libviews/instrview.cpp:872
 msgctxt "InstrView|"
 msgid "There is an error trying to execute the command"
-msgstr "S'ha produït un error en intentar executar l'ordre"
+msgstr "S'ha produït un error mentre s'intentava executar l'ordre"
 
 #: libviews/instrview.cpp:876 libviews/instrview.cpp:1172
 msgctxt "InstrView|"
@@ -1848,7 +1849,7 @@ msgstr "Objecte ELF des d'una instal·lació actualitzada o d'una altra màquina
 #: libviews/instrview.cpp:1166
 msgctxt "InstrView|"
 msgid "There seems to be an error trying to execute the command"
-msgstr "Pareix que hi ha un error en intentar executar l'ordre"
+msgstr "Pareix que hi ha un error mentre s'intentava executar l'ordre"
 
 #: libviews/instrview.cpp:1170
 msgctxt "InstrView|"
