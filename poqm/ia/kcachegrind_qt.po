@@ -1,8 +1,8 @@
-# giovanni <g.sora@tiscali.it>, 2023, 2024.
+# SPDX-FileCopyrightText: 2023, 2024, 2026 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2024-10-29 10:12+0100\n"
+"PO-Revision-Date: 2026-01-21 16:01+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Qt-Contexts: true\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
@@ -36,7 +36,7 @@ msgstr ""
 #: libcore/context.cpp:63
 msgctxt "ProfileContext|"
 msgid "Source Line"
-msgstr ""
+msgstr "Rango de fonte"
 
 #: libcore/context.cpp:64
 msgctxt "ProfileContext|"
@@ -66,7 +66,7 @@ msgstr ""
 #: libcore/context.cpp:69
 msgctxt "ProfileContext|"
 msgid "Instruction"
-msgstr ""
+msgstr "Instruction"
 
 #: libcore/context.cpp:70
 msgctxt "ProfileContext|"
@@ -621,7 +621,7 @@ msgstr ""
 #: libviews/callgraphview.cpp:3065
 msgctxt "CallGraphView|"
 msgid "As Image..."
-msgstr ""
+msgstr "Como imagine ..."
 
 #: libviews/callgraphview.cpp:3068
 msgctxt "CallGraphView|"
@@ -957,7 +957,7 @@ msgstr "Computo"
 #: libviews/callview.cpp:42
 msgctxt "CallView|"
 msgid "Caller"
-msgstr ""
+msgstr " Appellante"
 
 #: libviews/callview.cpp:42
 msgctxt "CallView|"
@@ -1135,7 +1135,7 @@ msgstr ""
 #: libviews/controlflowgraphview.cpp:2451
 msgctxt "QObject|"
 msgid "As Image..."
-msgstr ""
+msgstr "Como imagine ..."
 
 #: libviews/controlflowgraphview.cpp:2562
 msgctxt "QObject|"
@@ -1267,7 +1267,7 @@ msgstr "Appellate"
 #: libviews/coverageview.cpp:42
 msgctxt "CoverageView|"
 msgid "Caller"
-msgstr ""
+msgstr " Appellante"
 
 #: libviews/coverageview.cpp:46
 msgctxt "CoverageView|"
@@ -1336,9 +1336,10 @@ msgid "Unknown Type"
 msgstr "Typo incognite"
 
 #: libviews/eventtypeview.cpp:37
+#, fuzzy
 msgctxt "EventTypeView|"
 msgid "Event Type"
-msgstr ""
+msgstr "Typo de Evento..."
 
 #: libviews/eventtypeview.cpp:38
 msgctxt "EventTypeView|"
@@ -1604,7 +1605,7 @@ msgstr "Codice Hexadecimal"
 #: libviews/instrview.cpp:290
 msgctxt "InstrView|"
 msgid "Intel Syntax"
-msgstr ""
+msgstr "Syntaxe de Intel"
 
 #: libviews/instrview.cpp:585
 msgctxt "InstrView|"
