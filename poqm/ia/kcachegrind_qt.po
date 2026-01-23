@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2026-01-21 16:01+0100\n"
+"PO-Revision-Date: 2026-01-22 11:35+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1336,10 +1336,9 @@ msgid "Unknown Type"
 msgstr "Typo incognite"
 
 #: libviews/eventtypeview.cpp:37
-#, fuzzy
 msgctxt "EventTypeView|"
 msgid "Event Type"
-msgstr "Typo de Evento..."
+msgstr "Typo de Evento"
 
 #: libviews/eventtypeview.cpp:38
 msgctxt "EventTypeView|"
