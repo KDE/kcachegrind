@@ -294,10 +294,9 @@ msgstr "Próifíl Dhumpála"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:314
-#, fuzzy, kde-format
-#| msgid "Every [s]:"
+#, kde-format
 msgid "Every BBs"
-msgstr "Gach [s]:"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:328 kcachegrind/dumpselectionbase.ui:370
@@ -313,10 +312,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:357
-#, fuzzy, kde-format
-#| msgid "Events"
+#, kde-format
 msgid "Zero Events"
-msgstr "Imeachtaí"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:385
@@ -338,10 +336,9 @@ msgstr "Athchúrsálacha"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:426
-#, fuzzy, kde-format
-#| msgid "Call Stack"
+#, kde-format
 msgid "Call Chain"
-msgstr "Cruach Glao"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
 #: kcachegrind/dumpselectionbase.ui:452
@@ -369,10 +366,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel6)
 #: kcachegrind/dumpselectionbase.ui:518
-#, fuzzy, kde-format
-#| msgid "Events"
+#, kde-format
 msgid "Event summary:"
-msgstr "Imeachtaí"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView4)
 #: kcachegrind/dumpselectionbase.ui:529
@@ -430,17 +426,15 @@ msgstr "Áiritheoir"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:661
-#, fuzzy, kde-format
-#| msgid "Dump Profile"
+#, kde-format
 msgid "Dumps Done"
-msgstr "Próifíl Dhumpála"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:675
-#, fuzzy, kde-format
-#| msgid "Collect"
+#, kde-format
 msgid "Is Collecting"
-msgstr "Bailigh"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:689
@@ -516,10 +510,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
 #: kcachegrind/dumpselectionbase.ui:887
-#, fuzzy, kde-format
-#| msgid "Callers"
+#, kde-format
 msgid "Called"
-msgstr "Glaoiteoirí"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
 #: kcachegrind/dumpselectionbase.ui:909
@@ -595,10 +588,9 @@ msgstr "Príomhbharra Uirlisí"
 
 #. i18n: ectx: ToolBar (stateToolBar)
 #: kcachegrind/kcachegrindui.rc:54
-#, fuzzy, kde-format
-#| msgid "Main Toolbar"
+#, kde-format
 msgid "State Toolbar"
-msgstr "Príomhbharra Uirlisí"
+msgstr ""
 
 #: kcachegrind/main.cpp:34
 #, kde-format
@@ -611,10 +603,9 @@ msgid "KDE Frontend for Callgrind/Cachegrind"
 msgstr "Comhéadan KDE do Callgrind/Cachegrind"
 
 #: kcachegrind/main.cpp:38
-#, fuzzy, kde-format
-#| msgid "(C) 2002 - 2011"
+#, kde-format
 msgid "(C) 2002 - 2016"
-msgstr "© 2002 - 2011"
+msgstr ""
 
 #: kcachegrind/main.cpp:40
 #, kde-format
@@ -1005,14 +996,9 @@ msgid "Select Callgrind Profile Data"
 msgstr ""
 
 #: kcachegrind/toplevel.cpp:893 kcachegrind/toplevel.cpp:961
-#, fuzzy, kde-format
-#| msgid ""
-#| "cachegrind.out* callgrind.out*|Callgrind Profile Data\n"
-#| "*|All Files"
+#, kde-format
 msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
 msgstr ""
-"cachegrind.out* callgrind.out*|Sonraí Próifíle Callgrind\n"
-"*|Gach Comhad"
 
 #: kcachegrind/toplevel.cpp:921 kcachegrind/toplevel.cpp:950
 #, kde-format
@@ -1121,468 +1107,3 @@ msgstr "%1 Á Luchtú"
 #, kde-format
 msgid "Error loading %1: %2"
 msgstr "Earráid agus %1 á luchtú: %2"
-
-#~ msgid "&OK"
-#~ msgstr "&OK"
-
-#~ msgid "&Cancel"
-#~ msgstr "&Cealaigh"
-
-#~ msgid "Source Files"
-#~ msgstr "Comhaid Fhoinse"
-
-#~ msgid "KCachegrind Configuration"
-#~ msgstr "Cumraíocht KCachegrind"
-
-#~ msgid "(cycle)"
-#~ msgstr "(ciogal)"
-
-#~ msgid "Abstract Item"
-#~ msgstr "Mír Theibí"
-
-#~ msgid "Source Line"
-#~ msgstr "Líne Fhoinseach"
-
-#~ msgid "Jump"
-#~ msgstr "Léim"
-
-#~ msgid "Part Instruction"
-#~ msgstr "Treoir Páirte"
-
-#~ msgid "Instruction"
-#~ msgstr "Treoir"
-
-#~ msgid "Class"
-#~ msgstr "Aicme"
-
-#~ msgid "Source File"
-#~ msgstr "Comhad Foinseach"
-
-#~ msgid "ELF Object"
-#~ msgstr "Réad ELF"
-
-#~ msgid "%1 from %2"
-#~ msgstr "%1 ó %2"
-
-#~ msgid "(unknown)"
-#~ msgstr "(anaithnid)"
-
-#~ msgid "(no caller)"
-#~ msgstr "(gan glaoiteoir)"
-
-#~ msgid "%1 via %2"
-#~ msgstr "%1 trí %2"
-
-#~ msgid "(not found)"
-#~ msgstr "(ar iarraidh)"
-
-#~ msgctxt "A thing's name"
-#~ msgid "Name"
-#~ msgstr "Ainm"
-
-#~ msgid "Cost"
-#~ msgstr "Costas"
-
-#~ msgid "Deselect '%1'"
-#~ msgstr "Díroghnaigh '%1'"
-
-#~ msgid "Select '%1'"
-#~ msgstr "Roghnaigh '%1'"
-
-#~ msgid "Go to '%1'"
-#~ msgstr "Téigh go '%1'"
-
-#~ msgid "Visualization"
-#~ msgstr "Amharcléiriú"
-
-#~ msgid "Partitioning Mode"
-#~ msgstr "Mód Deighilte"
-
-#~ msgid "Allow Rotation"
-#~ msgstr "Ceadaigh Rothlú"
-
-#~ msgid "Hide Info"
-#~ msgstr "Folaigh Eolas"
-
-#~ msgid "Show Info"
-#~ msgstr "Taispeáin Eolas"
-
-#~ msgid "No description available"
-#~ msgstr "Níl cur síos ar fáil"
-
-#~ msgid "Cost 2"
-#~ msgstr "Costas 2"
-
-#~ msgid "Hex"
-#~ msgstr "Heics"
-
-#~ msgid "Assembler"
-#~ msgstr "Díolamóir"
-
-#~ msgid "Go to Address %1"
-#~ msgstr "Téigh go Seoladh %1"
-
-#~ msgid "Hex Code"
-#~ msgstr "Cód Heics"
-
-#~ msgid "      --dump-instr=yes"
-#~ msgstr "      --dump-instr=yes"
-
-#~ msgid "      --trace-jump=yes"
-#~ msgstr "      --trace-jump=yes"
-
-#~ msgid "(No Assembler)"
-#~ msgstr "(Gan Díolamóir)"
-
-#~ msgid "(unknown call)"
-#~ msgstr "(glao anaithnid)"
-
-#~ msgid "Unlimited"
-#~ msgstr "Gan Teorainn"
-
-#~ msgctxt "Depth 0"
-#~ msgid "None"
-#~ msgstr "Neamhní"
-
-#~ msgid "max. 2"
-#~ msgstr "uas. 2"
-
-#~ msgid "max. 5"
-#~ msgstr "uas. 5"
-
-#~ msgid "max. 10"
-#~ msgstr "uas. 10"
-
-#~ msgid "max. 15"
-#~ msgstr "uas. 15"
-
-#~ msgid "No Minimum"
-#~ msgstr "Gan Íosmhéid"
-
-#~ msgid "50 %"
-#~ msgstr "50 %"
-
-#~ msgid "20 %"
-#~ msgstr "20 %"
-
-#~ msgid "10 %"
-#~ msgstr "10 %"
-
-#~ msgid "5 %"
-#~ msgstr "5 %"
-
-#~ msgid "2 %"
-#~ msgstr "2 %"
-
-#~ msgid "1 %"
-#~ msgstr "1 %"
-
-#~ msgid "Top Left"
-#~ msgstr "Barr ar Chlé"
-
-#~ msgid "Top Right"
-#~ msgstr "Barr ar Dheis"
-
-#~ msgid "Bottom Left"
-#~ msgstr "Bun ar Chlé"
-
-#~ msgid "Bottom Right"
-#~ msgstr "Bun ar dheis"
-
-#~ msgid "Circular"
-#~ msgstr "Ciorclach"
-
-#~ msgid "As PostScript"
-#~ msgstr "Mar PostScript"
-
-#~ msgid "As Image ..."
-#~ msgstr "Mar Íomhá ..."
-
-#~ msgid "Export Graph"
-#~ msgstr "Easpórtáil Graf"
-
-#~ msgid "Compact"
-#~ msgstr "Dlúth"
-
-#~ msgid "Normal"
-#~ msgstr "Gnách"
-
-#~ msgid "Tall"
-#~ msgstr "Ard"
-
-#~ msgid "Graph"
-#~ msgstr "Graf"
-
-#~ msgid "Layout"
-#~ msgstr "Leagan Amach"
-
-#~ msgid "Birds-eye View"
-#~ msgstr "Radharc Anuas"
-
-#~ msgid "Move to Top"
-#~ msgstr "Bog go dtí an Barr"
-
-#~ msgctxt "Move to Top"
-#~ msgid "Top"
-#~ msgstr "Barr"
-
-#~ msgctxt "Move to Right"
-#~ msgid "Right"
-#~ msgstr "Ar Dheis"
-
-#~ msgctxt "Move to Bottom"
-#~ msgid "Bottom"
-#~ msgstr "Bun"
-
-#~ msgctxt "Move to Bottom Left"
-#~ msgid "Bottom Left"
-#~ msgstr "Bun ar Chlé"
-
-#~ msgctxt "Show on Top"
-#~ msgid "Top"
-#~ msgstr "Barr"
-
-#~ msgctxt "Show on Right"
-#~ msgid "Right"
-#~ msgstr "Ar Dheis"
-
-#~ msgctxt "Show on Bottom"
-#~ msgid "Bottom"
-#~ msgstr "Bun"
-
-#~ msgctxt "Show on Bottom Left"
-#~ msgid "Bottom Left"
-#~ msgstr "Bun ar Chlé"
-
-#~ msgid "Types"
-#~ msgstr "Cineálacha"
-
-#~ msgid "Source Code"
-#~ msgstr "Cód Foinseach"
-
-#~ msgid "Parts"
-#~ msgstr "Comhpháirteanna"
-
-#~ msgid "Source (unknown)"
-#~ msgstr "Foinse (anaithnid)"
-
-#~ msgid "Go to Line %1"
-#~ msgstr "Téigh go Líne %1"
-
-#~ msgid "(No Source)"
-#~ msgstr "(Gan Foinse)"
-
-#~ msgid "Source ('%1')"
-#~ msgstr "Foinse ('%1')"
-
-#~ msgid " (Thread %1)"
-#~ msgstr " (Snáithe %1)"
-
-#~ msgid "(none)"
-#~ msgstr "(neamhní)"
-
-#~ msgid "Unknown Type"
-#~ msgstr "Cineál Anaithnid"
-
-#~ msgid "No Grouping"
-#~ msgstr "Gan Grúpáil"
-
-#~ msgid "Distance"
-#~ msgstr "Fad"
-
-#~ msgid "Self"
-#~ msgstr "Féin"
-
-#~ msgid "Samples"
-#~ msgstr "Samplaí"
-
-#~ msgid "System Time"
-#~ msgstr "Am an Chórais"
-
-#~ msgid "&Search:"
-#~ msgstr "&Cuardach:"
-
-#~ msgid "Group"
-#~ msgstr "Grúpa"
-
-#~ msgid "Cost2"
-#~ msgstr "Costas2"
-
-#~ msgid "Text %1"
-#~ msgstr "Téacs %1"
-
-#~ msgid "Recursive Bisection"
-#~ msgstr "Déroinnt Athchúrsach"
-
-#~ msgid "Columns"
-#~ msgstr "Colúin"
-
-#~ msgid "Rows"
-#~ msgstr "Rónna"
-
-#~ msgid "Always Best"
-#~ msgstr "Is Fearr I gCónaí"
-
-#~ msgid "Best"
-#~ msgstr "Is Fearr"
-
-#~ msgid "Alternate (V)"
-#~ msgstr "Malartach (V)"
-
-#~ msgid "Alternate (H)"
-#~ msgstr "Malartach (H)"
-
-#~ msgid "Horizontal"
-#~ msgstr "Cothrománach"
-
-#~ msgid "Vertical"
-#~ msgstr "Ingearach"
-
-#~ msgid "Nesting"
-#~ msgstr "Neadú"
-
-#~ msgid "Border"
-#~ msgstr "Imlíne"
-
-#~ msgid "Width %1"
-#~ msgstr "Leithead %1"
-
-#~ msgid "Shading"
-#~ msgstr "Scáthlíniú"
-
-#~ msgid "Visible"
-#~ msgstr "Infheicthe"
-
-#~ msgid "Top Center"
-#~ msgstr "Barr sa lár"
-
-#~ msgid "Bottom Center"
-#~ msgstr "Bun sa lár"
-
-#~ msgid "1 Pixel"
-#~ msgid_plural "%1 Pixels"
-#~ msgstr[0] "Picteilín Amháin"
-#~ msgstr[1] "Dhá Phicteilín"
-#~ msgstr[2] "%1 Phicteilín"
-#~ msgstr[3] "%1 bPicteilín"
-#~ msgstr[4] "%1 Picteilín"
-
-#~ msgid "Depth %1"
-#~ msgstr "Doimhneacht %1"
-
-#~ msgid "Decrement (to %1)"
-#~ msgstr "Deicrimintigh (go %1)"
-
-#~ msgid "Increment (to %1)"
-#~ msgstr "Incrimintigh (go %1)"
-
-#~ msgid "Go To"
-#~ msgstr "Téigh Go"
-
-#~ msgid "Depth 10"
-#~ msgstr "Doimhneacht 10"
-
-#~ msgid "Depth 15"
-#~ msgstr "Doimhneacht 15"
-
-#~ msgid "Depth 20"
-#~ msgstr "Doimhneacht 20"
-
-#~ msgid "50 Pixels"
-#~ msgstr "50 Picteilín"
-
-#~ msgid "100 Pixels"
-#~ msgstr "100 Picteilín"
-
-#~ msgid "200 Pixels"
-#~ msgstr "200 Picteilín"
-
-#~ msgid "500 Pixels"
-#~ msgstr "500 Picteilín"
-
-#~ msgid "Border Width"
-#~ msgstr "Leithead na hImlíne"
-
-#~ msgid "Border 0"
-#~ msgstr "Imlíne 0"
-
-#~ msgid "Border 1"
-#~ msgstr "Imlíne 1"
-
-#~ msgid "Border 2"
-#~ msgstr "Imlíne 2"
-
-#~ msgid "Border 3"
-#~ msgstr "Imlíne 3"
-
-#~ msgid "Event Type"
-#~ msgstr "Cineál Teagmhais"
-
-#~ msgid "Short"
-#~ msgstr "Gearr"
-
-#~ msgid "Formula"
-#~ msgstr "Foirmle"
-
-#~ msgid "Edit Long Name"
-#~ msgstr "Cuir an tAinm Fada in Eagar"
-
-#~ msgid "Edit Short Name"
-#~ msgstr "Cuir an tAinm Gearr in Eagar"
-
-#~ msgid "Edit Formula"
-#~ msgstr "Cuir Foirmle in Eagar"
-
-#~ msgid "Remove"
-#~ msgstr "Bain"
-
-#~ msgid "New%1"
-#~ msgstr "%1Nua"
-
-#~ msgid "Count"
-#~ msgstr "Líon"
-
-#~ msgid "(no trace)"
-#~ msgstr "(gan lorg)"
-
-#~ msgid "Comment"
-#~ msgstr "Nóta"
-
-#~ msgid "Hide '%1'"
-#~ msgstr "Folaigh '%1'"
-
-#~ msgid "Hide Selected"
-#~ msgstr "Folaigh Roghnaithe"
-
-#~ msgid "Show All"
-#~ msgstr "Taispeáin Uile"
-
-#~ msgid "Deselect"
-#~ msgstr "Díroghnaigh"
-
-#~ msgid "Select"
-#~ msgstr "Roghnaigh"
-
-#~ msgid "Go to %1"
-#~ msgstr "Téigh go %1"
-
-#~ msgid "Source"
-#~ msgstr "Foinse"
-
-#~ msgid "< %1"
-#~ msgstr "< %1"
-
-#~ msgid "3 %"
-#~ msgstr "3 %"
-
-#~ msgid "1.5 %"
-#~ msgstr "1.5 %"
-
-#~ msgid "Visualisation"
-#~ msgstr "Amharcléiriú"
-
-#~ msgid "Tip of the &Day..."
-#~ msgstr "Leid an &Lae..."
-
-#~ msgid "Show \"Tip of the Day\""
-#~ msgstr "Taispeáin \"Leid an Lae\""
