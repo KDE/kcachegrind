@@ -1051,7 +1051,7 @@ msgstr "اقسم أف&قياً"
 #: kcachegrind/toplevel.cpp:697
 #, kde-format
 msgid "Change Split Orientation when main window is split."
-msgstr "غيّر اتجاه التقسيم عندما تكون النافذة الرئيسية مقسومة."
+msgstr "غيّر اتجاه التقسيم عندما تكون النافذة الرئيسة مقسومة."
 
 #: kcachegrind/toplevel.cpp:891
 #, kde-format
