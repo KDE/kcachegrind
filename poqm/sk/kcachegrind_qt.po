@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 23.08.3\n"
 "X-Qt-Contexts: true\n"
 
 #: libcore/cachegrindloader.cpp:135
@@ -166,7 +166,7 @@ msgstr "Trasovanie programu"
 #: libcore/context.cpp:88
 msgctxt "ProfileContext|"
 msgid "BasicBlock"
-msgstr ""
+msgstr "Základný blok"
 
 #: libcore/costitem.cpp:48
 #, qt-format
@@ -1061,22 +1061,21 @@ msgctxt "QObject|"
 msgid ""
 "Control-flow graph requires running callgrind with option --dump-instr=yes"
 msgstr ""
+"Graf riadenia toku vyžaduje spustenie callgrind s voľbou --dump-instr=yes"
 
 #: libviews/controlflowgraphview.cpp:932
-#, fuzzy, qt-format
-#| msgctxt "InstrView|"
-#| msgid "For annotated machine code, the following object file is needed:"
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "For annotated machine code, the following object file is needed\n"
 "    '%1'\n"
 "This file cannot be found.\n"
-msgstr "Pre komentovaný strojový kód je potrebný nasledujúci súbor objektu:"
+msgstr ""
+"For annotated machine code, nasledujúce object file is needed\n"
+"    '%1'\n"
+"This file cannot be found.\n"
 
 #: libviews/controlflowgraphview.cpp:936
-#, fuzzy
-#| msgctxt "InstrView|"
-#| msgid "If cross-compiled, set SYSROOT variable."
 msgctxt "QObject|"
 msgid "If cross-compiled, set SYSROOT variable."
 msgstr "Ak cross-compiled, nastaviť premennú SYSROOT."
@@ -1090,6 +1089,11 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package"
 msgstr ""
+"Pri pokuse o vykonanie príkazu\n"
+"    '%1'\n"
+"sa vyskytla chyba.\n"
+"Skontrolujte, či máte nainštalovaný 'objdump'.\n"
+"Tento nástroj sa nachádza v balíku 'binutils'"
 
 #: libviews/controlflowgraphview.cpp:1041
 #, qt-format
@@ -1101,6 +1105,10 @@ msgid ""
 "Are you using an old profile data file or is the abovementioned\n"
 "ELF object from an updated installation/another machine?"
 msgstr ""
+"Existuje %1 riadkov nákladov bez strojového kódu.\n"
+"To sa stáva, pretože kód %2 zrejme nezodpovedá súboru s profilovými údajmi.\n"
+"Používate starý súbor s profilovými údajmi alebo je vyššie uvedený\n"
+"objekt ELF z aktualizovanej inštalácie/iného počítača?"
 
 #: libviews/controlflowgraphview.cpp:1051
 #, qt-format
@@ -1111,18 +1119,17 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package."
 msgstr ""
+"Zdá sa, že pri pokuse o vykonanie príkazu '%1' sa vyskytla chyba.\n"
+"Skontrolujte, či objekt ELF použitý v príkaze existuje.\n"
+"Skontrolujte, či máte nainštalovaný 'objdump'.\n"
+"Tento nástroj sa nachádza v balíku 'binutils'."
 
 #: libviews/controlflowgraphview.cpp:1772
 msgctxt "QObject|"
 msgid "This is Control Flow Graph by KetchuppOfficial"
-msgstr ""
+msgstr "Toto je graf riadenia toku od KetchuppOfficial"
 
 #: libviews/controlflowgraphview.cpp:1828
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Warning: a long lasting graph layouting is in progress.\n"
-#| "Reduce node/edge limits for speedup.\n"
 msgctxt "QObject|"
 msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
@@ -1132,35 +1139,23 @@ msgstr ""
 "Znížte medze uzlov/okrajov pre zrýchlenie.\n"
 
 #: libviews/controlflowgraphview.cpp:1831
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layouting stopped.\n"
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
 msgstr "Rozmiestňovanie zastavené.\n"
 
 #: libviews/controlflowgraphview.cpp:1833
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "The call graph has %1 nodes and %2 edges.\n"
+#, qt-format
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
 msgstr "Graf volaní má %1 uzlov a %2 okrajov.\n"
 
 #: libviews/controlflowgraphview.cpp:1841
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No graph available because the layouting process failed.\n"
 msgctxt "QObject|"
 msgid "No graph available because the layouting process failed.\n"
 msgstr "Žiadny graf k dispozícii, pretože proces rozmiestňovania zlyhal.\n"
 
 #: libviews/controlflowgraphview.cpp:1843
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid ""
-#| "Trying to run the following command did not work:\n"
-#| "'%1'\n"
+#, qt-format
 msgctxt "QObject|"
 msgid ""
 "Trying to run the following command did not work:\n"
@@ -1170,17 +1165,11 @@ msgstr ""
 "'%1'\n"
 
 #: libviews/controlflowgraphview.cpp:1845
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "QObject|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
 msgstr "Prosím, skontrolovať, či 'dot' je nainštalované (balík GraphViz)."
 
 #: libviews/controlflowgraphview.cpp:2209
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Please check that 'dot' is installed (package GraphViz)."
 msgctxt "QObject|"
 msgid ""
 "Error running the graph layouting tool.\n"
@@ -1190,28 +1179,22 @@ msgstr "Prosím, skontrolovať, či 'dot' je nainštalované (balík GraphViz)."
 #: libviews/controlflowgraphview.cpp:2399
 msgctxt "QObject|"
 msgid "This basic block"
-msgstr ""
+msgstr "Tento základný blok"
 
 #: libviews/controlflowgraphview.cpp:2401
 #: libviews/controlflowgraphview.cpp:2432
 msgctxt "QObject|"
 msgid "PC only"
-msgstr ""
+msgstr "Iba PC"
 
 #: libviews/controlflowgraphview.cpp:2405
 #: libviews/controlflowgraphview.cpp:2436
-#, fuzzy
-#| msgctxt "ProfileContext|"
-#| msgid "Instruction Call"
 msgctxt "QObject|"
 msgid "Show instructions' PC"
 msgstr "Volanie inštrukcie"
 
 #: libviews/controlflowgraphview.cpp:2409
 #: libviews/controlflowgraphview.cpp:2440
-#, fuzzy
-#| msgctxt "InstrView|"
-#| msgid "(No Instruction)"
 msgctxt "QObject|"
 msgid "Show instructions' cost"
 msgstr "(Žiadna inštrukcia)"
@@ -1219,156 +1202,99 @@ msgstr "(Žiadna inštrukcia)"
 #: libviews/controlflowgraphview.cpp:2426
 msgctxt "QObject|"
 msgid "Intel ASM Syntax"
-msgstr ""
+msgstr "Syntax Intel ASM"
 
 #: libviews/controlflowgraphview.cpp:2450
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As DOT file..."
 msgctxt "QObject|"
 msgid "As DOT file..."
 msgstr "Ako DOT súbor..."
 
 #: libviews/controlflowgraphview.cpp:2451
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "As Image..."
 msgctxt "QObject|"
 msgid "As Image..."
 msgstr "Ako obrázok..."
 
 #: libviews/controlflowgraphview.cpp:2562
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Export Graph As Image"
 msgctxt "QObject|"
 msgid "Export Graph as Image"
 msgstr "Exportovať graf ako obrázok"
 
 #: libviews/controlflowgraphview.cpp:2564
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Images (*.png *.jpg)"
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
 msgstr "Obrázky (*.png *.jpg)"
 
 #: libviews/controlflowgraphview.cpp:2997
-#, fuzzy
-#| msgctxt "PartSelection|"
-#| msgid "(no trace parts)"
 msgctxt "QObject|"
 msgid "No trace data"
 msgstr "(žiadne časti trasovania)"
 
 #: libviews/controlflowgraphview.cpp:3002
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No item activated for which to draw the call graph."
 msgctxt "QObject|"
 msgid "No item activated for which to draw the control-flow graph."
 msgstr "Žiadna aktivovaná položka, pre ktorú sa vykreslí graf volaní."
 
 #: libviews/controlflowgraphview.cpp:3014
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "No call graph can be drawn for the active item."
 msgctxt "QObject|"
 msgid "No control-flow graph can be drawn for the active item."
 msgstr "Žiadne graf volaní nemožno vykresliť pre aktívnu položku."
 
 #: libviews/controlflowgraphview.cpp:3109
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Stop Layouting"
 msgctxt "QObject|"
 msgid "Stop Layouting"
 msgstr "Zastaviť rozmiestňovanie"
 
 #: libviews/controlflowgraphview.cpp:3172
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Birds-eye View"
 msgctxt "QObject|"
 msgid "Birds-eye View"
 msgstr "Vtáčí pohľad"
 
 #: libviews/controlflowgraphview.cpp:3174
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Left"
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr "Vľavo hore"
 
 #: libviews/controlflowgraphview.cpp:3175
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top Right"
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr "Vpravo hore"
 
 #: libviews/controlflowgraphview.cpp:3176
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Left"
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "Vľavo dole"
 
 #: libviews/controlflowgraphview.cpp:3177
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Bottom Right"
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "Vpravo dole"
 
 #: libviews/controlflowgraphview.cpp:3178
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Automatic"
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr "Automatické"
 
 #: libviews/controlflowgraphview.cpp:3179
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Hide"
 msgctxt "QObject|"
 msgid "Hide"
 msgstr "Skryť"
 
 #: libviews/controlflowgraphview.cpp:3189
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Layout"
 msgctxt "QObject|"
 msgid "Layout"
 msgstr "Rozloženie"
 
 #: libviews/controlflowgraphview.cpp:3191
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Top to Down"
 msgctxt "QObject|"
 msgid "Top to Down"
 msgstr "Zdola nahor"
 
 #: libviews/controlflowgraphview.cpp:3192
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Left to Right"
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "Zľava doprava"
 
 #: libviews/controlflowgraphview.cpp:3202
-#, fuzzy
-#| msgctxt "CallGraphView|"
-#| msgid "Min. Call Cost"
 msgctxt "QObject|"
 msgid "Min. basic block cost"
 msgstr "Min. nákladov volania"
@@ -1376,15 +1302,13 @@ msgstr "Min. nákladov volania"
 #: libviews/controlflowgraphview.cpp:3204
 msgctxt "QObject|"
 msgid "Undefined"
-msgstr ""
+msgstr "Nedefinované"
 
 #: libviews/controlflowgraphview.cpp:3207
-#, fuzzy, qt-format
-#| msgctxt "CallGraphView|"
-#| msgid "1 %"
+#, qt-format
 msgctxt "QObject|"
 msgid "%1%"
-msgstr "1 %"
+msgstr "%1%"
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
@@ -1810,7 +1734,7 @@ msgstr "Hexa kód"
 #: libviews/instrview.cpp:290
 msgctxt "InstrView|"
 msgid "Intel Syntax"
-msgstr ""
+msgstr "Syntax Intel"
 
 #: libviews/instrview.cpp:585
 msgctxt "InstrView|"
@@ -2421,9 +2345,6 @@ msgid "Source Code"
 msgstr "Zdrojový kód"
 
 #: libviews/tabview.cpp:380
-#, fuzzy
-#| msgctxt "TabView|"
-#| msgid "Call Graph"
 msgctxt "TabView|"
 msgid "Control Flow Graph"
 msgstr "Graf hovorov"
