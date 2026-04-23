@@ -444,7 +444,7 @@ TraceFunction* CachegrindLoader::compressedFunction(const QString& name,
                                                     TraceFile* file,
                                                     TraceObject* object)
 {
-    if ((name[0] != '(') || !name[1].isDigit())
+    if (name.size() < 2 || (name[0] != '(') || !name[1].isDigit())
         return _data->function(checkUnknown(name), file, object);
 
     // compressed format using _functionVector
