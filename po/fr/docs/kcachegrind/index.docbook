@@ -455,7 +455,7 @@
 >dlopen</function
 > ou  <function
 >dlsym</function
->; l'éditeur de lien dynamique résout les fonctions dans un ordre de recherche donné dans les objets binaires utilisés). Si un outil de profilage ne peut détecter le nom du symbole d'une fonction, &pex; parce que l'information de débogage n'est pas disponible, soit l'adresse de la première instruction exécutée est utilisée, soit <function
+> ; l'éditeur de lien dynamique résout les fonctions dans un ordre de recherche donné dans les objets binaires utilisés). Si un outil de profilage ne peut détecter le nom du symbole d'une fonction, &pex; parce que l'information de débogage n'est pas disponible, soit l'adresse de la première instruction exécutée est utilisée, soit <function
 >???</function
 ></para
 ></listitem
