@@ -8,35 +8,36 @@ msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:54+0000\n"
-"PO-Revision-Date: 2013-09-08 07:05+0900\n"
-"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"PO-Revision-Date: 2026-05-30 17:06-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "ئابدۇقادىر ئابلىز, غەيرەت كەنجى"
+msgstr "ئابدۇقادىر ئابلىز، غەيرەت كەنجى"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "sahran.ug@gmail.com,  gheyret@gmail.com"
+msgstr "sahranbay@gmail.com, gheyret@gmail.com"
 
 #: kcachegrind/configdlg.cpp:141 kcachegrind/configdlg.cpp:329
 #: kcachegrind/configdlg.cpp:348
 #, kde-format
 msgid "(always)"
-msgstr ""
+msgstr "(ھەمىشە)"
 
 #: kcachegrind/configdlg.cpp:355
 #, kde-format
 msgid "Choose Source Folder"
-msgstr ""
+msgstr "مەنبە قىسقۇچ تاللىنىدۇ"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ConfigDlgBase)
 #: kcachegrind/configdlgbase.ui:14
@@ -105,7 +106,7 @@ msgstr "ئاپتوماتىك"
 #: kcachegrind/configdlgbase.ui:192
 #, kde-format
 msgid "Object:"
-msgstr "نەڭ:"
+msgstr "جىسىم:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_2_2)
 #: kcachegrind/configdlgbase.ui:202
@@ -271,7 +272,7 @@ msgstr ""
 #: kcachegrind/dumpselectionbase.ui:259
 #, kde-format
 msgid "Skip"
-msgstr "ئۆتكۈزۈۋەت"
+msgstr "ئاتلا"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:272
@@ -452,7 +453,7 @@ msgstr ""
 #: kcachegrind/dumpselectionbase.ui:716
 #, kde-format
 msgid "Calls"
-msgstr "چاقىرىشلار"
+msgstr "چاقىرىش"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:758
@@ -476,7 +477,7 @@ msgstr ""
 #: kcachegrind/dumpselectionbase.ui:800
 #, kde-format
 msgid "Functions"
-msgstr "فۇنكسىيىلەر"
+msgstr "فۇنكسىيە"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:814
@@ -524,7 +525,7 @@ msgstr "ئورنى"
 #: kcachegrind/dumpselectionbase.ui:928
 #, kde-format
 msgid "Start"
-msgstr "باشلاش"
+msgstr "باشلا"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton6_2)
 #: kcachegrind/dumpselectionbase.ui:951
@@ -983,7 +984,7 @@ msgstr ""
 #: kcachegrind/toplevel.cpp:694
 #, kde-format
 msgid "Split Horizontal"
-msgstr "توغرا يۆنىلىشتە پارچىلاش"
+msgstr "توغرىسىغا پارچىلاش"
 
 #: kcachegrind/toplevel.cpp:697
 #, kde-format

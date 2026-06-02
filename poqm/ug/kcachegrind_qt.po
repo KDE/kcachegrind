@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2013-09-08 07:05+0900\n"
-"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"PO-Revision-Date: 2026-05-30 17:06-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Qt-Contexts: true\n"
+"X-Generator: Poedit 3.9\n"
 
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
@@ -26,25 +27,19 @@ msgstr ""
 #: libcore/context.cpp:60
 msgctxt "ProfileContext|"
 msgid "Invalid Context"
-msgstr ""
+msgstr "ئىناۋەتسىز مەزمۇن"
 
 #: libcore/context.cpp:61
-#, fuzzy
-#| msgid "Unknown Type"
 msgctxt "ProfileContext|"
 msgid "Unknown Context"
-msgstr "نامەلۇم تىپ"
+msgstr "يوچۇن مەزمۇن"
 
 #: libcore/context.cpp:62
-#, fuzzy
-#| msgid "Source Line"
 msgctxt "ProfileContext|"
 msgid "Part Source Line"
-msgstr "مەنبە قۇر"
+msgstr ""
 
 #: libcore/context.cpp:63
-#, fuzzy
-#| msgid "Source Line"
 msgctxt "ProfileContext|"
 msgid "Source Line"
 msgstr "مەنبە قۇر"
@@ -55,134 +50,96 @@ msgid "Part Line Call"
 msgstr ""
 
 #: libcore/context.cpp:65
-#, fuzzy
-#| msgid "Call"
 msgctxt "ProfileContext|"
 msgid "Line Call"
-msgstr "چاقىر"
+msgstr ""
 
 #: libcore/context.cpp:66
-#, fuzzy
-#| msgid "Jump"
 msgctxt "ProfileContext|"
 msgid "Part Jump"
-msgstr "يۆتكەل"
+msgstr ""
 
 #: libcore/context.cpp:67
-#, fuzzy
-#| msgid "Jump"
 msgctxt "ProfileContext|"
 msgid "Jump"
-msgstr "يۆتكەل"
+msgstr ""
 
 #: libcore/context.cpp:68
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "ProfileContext|"
 msgid "Part Instruction"
-msgstr "پەرمان"
+msgstr ""
 
 #: libcore/context.cpp:69
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "ProfileContext|"
 msgid "Instruction"
-msgstr "پەرمان"
+msgstr ""
 
 #: libcore/context.cpp:70
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "ProfileContext|"
 msgid "Part Instruction Jump"
-msgstr "پەرمان"
+msgstr ""
 
 #: libcore/context.cpp:71
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "ProfileContext|"
 msgid "Instruction Jump"
-msgstr "پەرمان"
+msgstr ""
 
 #: libcore/context.cpp:72
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "ProfileContext|"
 msgid "Part Instruction Call"
-msgstr "پەرمان"
+msgstr ""
 
 #: libcore/context.cpp:73
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "ProfileContext|"
 msgid "Instruction Call"
-msgstr "پەرمان"
+msgstr ""
 
 #: libcore/context.cpp:74
-#, fuzzy
-#| msgid "Call"
 msgctxt "ProfileContext|"
 msgid "Part Call"
-msgstr "چاقىر"
+msgstr ""
 
 #: libcore/context.cpp:75
-#, fuzzy
-#| msgid "Call"
 msgctxt "ProfileContext|"
 msgid "Call"
 msgstr "چاقىر"
 
 #: libcore/context.cpp:76
-#, fuzzy
-#| msgid "Function"
 msgctxt "ProfileContext|"
 msgid "Part Function"
-msgstr "فۇنكسىيە"
+msgstr ""
 
 #: libcore/context.cpp:77
-#, fuzzy
-#| msgid "Source File"
 msgctxt "ProfileContext|"
 msgid "Function Source File"
-msgstr "مەنبە ھۆججەت"
+msgstr ""
 
 #: libcore/context.cpp:78
-#, fuzzy
-#| msgid "Function"
 msgctxt "ProfileContext|"
 msgid "Function"
 msgstr "فۇنكسىيە"
 
 #: libcore/context.cpp:79
-#, fuzzy
-#| msgid "Function"
 msgctxt "ProfileContext|"
 msgid "Function Cycle"
-msgstr "فۇنكسىيە"
+msgstr ""
 
 #: libcore/context.cpp:80
-#, fuzzy
-#| msgid "Class"
 msgctxt "ProfileContext|"
 msgid "Part Class"
-msgstr "تىپ"
+msgstr ""
 
 #: libcore/context.cpp:81
-#, fuzzy
-#| msgid "Class"
 msgctxt "ProfileContext|"
 msgid "Class"
 msgstr "تىپ"
 
 #: libcore/context.cpp:82
-#, fuzzy
-#| msgid "Source File"
 msgctxt "ProfileContext|"
 msgid "Part Source File"
-msgstr "مەنبە ھۆججەت"
+msgstr ""
 
 #: libcore/context.cpp:83
-#, fuzzy
-#| msgid "Source File"
 msgctxt "ProfileContext|"
 msgid "Source File"
 msgstr "مەنبە ھۆججەت"
@@ -213,27 +170,22 @@ msgid "BasicBlock"
 msgstr ""
 
 #: libcore/costitem.cpp:48
-#, fuzzy, qt-format
-#| msgid "%1 from %2"
+#, qt-format
 msgctxt "QObject|"
 msgid "%1 from %2"
-msgstr "%2 دىن %1"
+msgstr ""
 
 #: libcore/costitem.cpp:54 libcore/costitem.cpp:59 libcore/tracedata.cpp:1984
 #: libcore/tracedata.cpp:2046 libcore/tracedata.cpp:3024
 #: libcore/tracedata.cpp:3125 libviews/partgraph.cpp:409
-#, fuzzy
-#| msgid "(unknown)"
 msgctxt "QObject|"
 msgid "(unknown)"
-msgstr "(نامەلۇم)"
+msgstr "(يوچۇن)"
 
 #: libcore/globalconfig.cpp:77
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "QObject|"
 msgid "Instruction Fetch"
-msgstr "پەرمان"
+msgstr ""
 
 #: libcore/globalconfig.cpp:78
 msgctxt "QObject|"
@@ -336,25 +288,19 @@ msgid "Global Bus Event"
 msgstr ""
 
 #: libcore/globalconfig.cpp:98
-#, fuzzy
-#| msgid "Samples"
 msgctxt "QObject|"
 msgid "Samples"
 msgstr "مىسال"
 
 #: libcore/globalconfig.cpp:99
-#, fuzzy
-#| msgid "System Time"
 msgctxt "QObject|"
 msgid "System Time"
-msgstr "سىستېما ۋاقتى"
+msgstr ""
 
 #: libcore/globalconfig.cpp:100
-#, fuzzy
-#| msgid "System Time"
 msgctxt "QObject|"
 msgid "User Time"
-msgstr "سىستېما ۋاقتى"
+msgstr ""
 
 #: libcore/globalconfig.cpp:101
 msgctxt "QObject|"
@@ -362,11 +308,9 @@ msgid "Cycle Estimation"
 msgstr ""
 
 #: libcore/tracedata.cpp:1245
-#, fuzzy
-#| msgid "(no caller)"
 msgctxt "QObject|"
 msgid "(no caller)"
-msgstr "(no caller)"
+msgstr ""
 
 #: libcore/tracedata.cpp:1252 libcore/tracedata.cpp:1271
 #, qt-format
@@ -375,11 +319,9 @@ msgid "%1 via %2"
 msgstr ""
 
 #: libcore/tracedata.cpp:1261
-#, fuzzy
-#| msgid "(no caller)"
 msgctxt "QObject|"
 msgid "(no callee)"
-msgstr "(no caller)"
+msgstr ""
 
 #: libcore/tracedata.cpp:2873
 msgctxt "QObject|"
@@ -387,11 +329,9 @@ msgid "(global)"
 msgstr ""
 
 #: libcore/tracedata.cpp:3308
-#, fuzzy
-#| msgid "(not found)"
 msgctxt "QObject|"
 msgid "(not found)"
-msgstr "(تېپىلمىدى)"
+msgstr ""
 
 #: libcore/tracedata.cpp:3856
 msgctxt "TraceData|"
@@ -399,25 +339,21 @@ msgid "Recalculating Function Cycles..."
 msgstr ""
 
 #: libviews/callgraphview.cpp:414
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "QObject|"
 msgid "Call(s) from %1"
-msgstr "‹%1› غا يۆتكەل"
+msgstr ""
 
 #: libviews/callgraphview.cpp:417
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "QObject|"
 msgid "Call(s) to %1"
-msgstr "‹%1› غا يۆتكەل"
+msgstr ""
 
 #: libviews/callgraphview.cpp:419
-#, fuzzy
-#| msgid "(unknown)"
 msgctxt "QObject|"
 msgid "(unknown call)"
-msgstr "(نامەلۇم)"
+msgstr ""
 
 #: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1414
 #: libviews/controlflowgraphview.cpp:2449
@@ -507,8 +443,6 @@ msgid "Caller Depth"
 msgstr ""
 
 #: libviews/callgraphview.cpp:2784 libviews/callgraphview.cpp:2824
-#, fuzzy
-#| msgid "Unlimited"
 msgctxt "CallGraphView|"
 msgid "Unlimited"
 msgstr "چەكسىز"
@@ -559,8 +493,6 @@ msgid "No Minimum"
 msgstr ""
 
 #: libviews/callgraphview.cpp:2870
-#, fuzzy
-#| msgid "50 %"
 msgctxt "CallGraphView|"
 msgid "50 %"
 msgstr "50%"
@@ -576,11 +508,9 @@ msgid "10 %"
 msgstr ""
 
 #: libviews/callgraphview.cpp:2873
-#, fuzzy
-#| msgid "50 %"
 msgctxt "CallGraphView|"
 msgid "5 %"
-msgstr "50%"
+msgstr ""
 
 #: libviews/callgraphview.cpp:2874
 msgctxt "CallGraphView|"
@@ -623,50 +553,36 @@ msgid "Birds-eye View"
 msgstr ""
 
 #: libviews/callgraphview.cpp:2942
-#, fuzzy
-#| msgid "Top Left"
 msgctxt "CallGraphView|"
 msgid "Top Left"
 msgstr "سول ئۈستى"
 
 #: libviews/callgraphview.cpp:2943
-#, fuzzy
-#| msgid "Top Right"
 msgctxt "CallGraphView|"
 msgid "Top Right"
 msgstr "ئوڭ ئۈستى"
 
 #: libviews/callgraphview.cpp:2944
-#, fuzzy
-#| msgid "Bottom Left"
 msgctxt "CallGraphView|"
 msgid "Bottom Left"
 msgstr "سول ئاستى"
 
 #: libviews/callgraphview.cpp:2945
-#, fuzzy
-#| msgid "Bottom Right"
 msgctxt "CallGraphView|"
 msgid "Bottom Right"
 msgstr "ئوڭ ئاستى"
 
 #: libviews/callgraphview.cpp:2946
-#, fuzzy
-#| msgid "Automatic"
 msgctxt "CallGraphView|"
 msgid "Automatic"
 msgstr "ئاپتوماتىك"
 
 #: libviews/callgraphview.cpp:2947
-#, fuzzy
-#| msgid "Hide"
 msgctxt "CallGraphView|"
 msgid "Hide"
 msgstr "يوشۇر"
 
 #: libviews/callgraphview.cpp:2977
-#, fuzzy
-#| msgid "Layout"
 msgctxt "CallGraphView|"
 msgid "Layout"
 msgstr "جايلاشتۇرۇش"
@@ -677,33 +593,26 @@ msgid "Top to Down"
 msgstr ""
 
 #: libviews/callgraphview.cpp:2979
-#, fuzzy
-#| msgid "Left to Right"
 msgctxt "CallGraphView|"
 msgid "Left to Right"
 msgstr "سولدىن ئوڭغا"
 
 #: libviews/callgraphview.cpp:2980
-#, fuzzy
-#| msgid "Circular"
 msgctxt "CallGraphView|"
 msgid "Circular"
-msgstr "چەمبەر"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3020 libviews/callgraphview.cpp:3025
 #: libviews/callgraphview.cpp:3045
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
-msgstr "‹%1› غا يۆتكەل"
+msgstr "«%1» غا يۆتكەل"
 
 #: libviews/callgraphview.cpp:3056
-#, fuzzy
-#| msgid "Layout"
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
-msgstr "جايلاشتۇرۇش"
+msgstr ""
 
 #: libviews/callgraphview.cpp:3063
 msgctxt "CallGraphView|"
@@ -721,11 +630,9 @@ msgid "As Image..."
 msgstr ""
 
 #: libviews/callgraphview.cpp:3068
-#, fuzzy
-#| msgid "Graph"
 msgctxt "CallGraphView|"
 msgid "Graph"
-msgstr "گرافىك"
+msgstr "گىرافىك"
 
 #: libviews/callgraphview.cpp:3076
 msgctxt "CallGraphView|"
@@ -743,25 +650,19 @@ msgid "Cluster Groups"
 msgstr ""
 
 #: libviews/callgraphview.cpp:3090
-#, fuzzy
-#| msgid "Visualization"
 msgctxt "CallGraphView|"
 msgid "Visualization"
 msgstr "كۆرۈنۈشچان ئۈنۈم"
 
 #: libviews/callgraphview.cpp:3091
-#, fuzzy
-#| msgid "Compact"
 msgctxt "CallGraphView|"
 msgid "Compact"
 msgstr "ئىخچام"
 
 #: libviews/callgraphview.cpp:3094
-#, fuzzy
-#| msgid "Normal"
 msgctxt "CallGraphView|"
 msgid "Normal"
-msgstr "نورمال"
+msgstr "ئادەتتىكى"
 
 #: libviews/callgraphview.cpp:3097
 msgctxt "CallGraphView|"
@@ -789,25 +690,19 @@ msgid "A thing's name"
 msgstr ""
 
 #: libviews/callmapview.cpp:53
-#, fuzzy
-#| msgid "Cost"
 msgctxt "CallMapView|"
 msgid "Cost"
 msgstr "تەننەرخ"
 
 #: libviews/callmapview.cpp:54
-#, fuzzy
-#| msgid "Location"
 msgctxt "CallMapView|"
 msgid "Location"
 msgstr "ئورنى"
 
 #: libviews/callmapview.cpp:56
-#, fuzzy
-#| msgid "Calls"
 msgctxt "CallMapView|"
 msgid "Calls"
-msgstr "چاقىرىشلار"
+msgstr "چاقىرىش"
 
 #: libviews/callmapview.cpp:91
 msgctxt "CallMapView|"
@@ -844,22 +739,16 @@ msgid ""
 msgstr ""
 
 #: libviews/callmapview.cpp:139
-#, fuzzy
-#| msgid "Go To"
 msgctxt "CallMapView|"
 msgid "Go To"
 msgstr "يۆتكەل"
 
 #: libviews/callmapview.cpp:170
-#, fuzzy
-#| msgid "Stop at Depth"
 msgctxt "CallMapView|"
 msgid "Stop at Depth"
 msgstr "توختاش چوڭقۇرلۇقى"
 
 #: libviews/callmapview.cpp:171
-#, fuzzy
-#| msgid "No Depth Limit"
 msgctxt "CallMapView|"
 msgid "No Depth Limit"
 msgstr "چوڭقۇرلۇق چەكلىمىسى يوق"
@@ -880,11 +769,10 @@ msgid "Depth 20"
 msgstr ""
 
 #: libviews/callmapview.cpp:178
-#, fuzzy, qt-format
-#| msgid "Depth of '%1' (%2)"
+#, qt-format
 msgctxt "CallMapView|"
 msgid "Depth of '%1' (%2)"
-msgstr "'%1' (%2) نىڭ چوڭقۇرلۇقى"
+msgstr "«%1» (%2) نىڭ چوڭقۇرلۇقى"
 
 #: libviews/callmapview.cpp:185
 #, qt-format
@@ -899,29 +787,21 @@ msgid "Increment Depth (to %1)"
 msgstr ""
 
 #: libviews/callmapview.cpp:213
-#, fuzzy
-#| msgid "Function"
 msgctxt "CallMapView|"
 msgid "Stop at Function"
-msgstr "فۇنكسىيە"
+msgstr ""
 
 #: libviews/callmapview.cpp:214
-#, fuzzy
-#| msgid "No Depth Limit"
 msgctxt "CallMapView|"
 msgid "No Function Limit"
-msgstr "چوڭقۇرلۇق چەكلىمىسى يوق"
+msgstr ""
 
 #: libviews/callmapview.cpp:257
-#, fuzzy
-#| msgid "Stop at Area"
 msgctxt "CallMapView|"
 msgid "Stop at Area"
 msgstr "توختاش رايونى"
 
 #: libviews/callmapview.cpp:258
-#, fuzzy
-#| msgid "No Area Limit"
 msgctxt "CallMapView|"
 msgid "No Area Limit"
 msgstr "يۈز چەكلىمىسى يوق"
@@ -947,29 +827,24 @@ msgid "1000 Pixels"
 msgstr ""
 
 #: libviews/callmapview.cpp:269
-#, fuzzy, qt-format
-#| msgid "Area of '%1' (%2)"
+#, qt-format
 msgctxt "CallMapView|"
 msgid "Area of '%1' (%2)"
-msgstr "'%1' (%2) نىڭ يۈزى"
+msgstr "«%1» (%2) نىڭ يۈزى"
 
 #: libviews/callmapview.cpp:275
-#, fuzzy, qt-format
-#| msgid "Double Area Limit (to %1)"
+#, qt-format
 msgctxt "CallMapView|"
 msgid "Double Area Limit (to %1)"
 msgstr "يۈز چەكلىمىسى ھەسسىلەپ ئارتىش(%1 غىچە)"
 
 #: libviews/callmapview.cpp:277
-#, fuzzy, qt-format
-#| msgid "Double Area Limit (to %1)"
+#, qt-format
 msgctxt "CallMapView|"
 msgid "Half Area Limit (to %1)"
-msgstr "يۈز چەكلىمىسى ھەسسىلەپ ئارتىش(%1 غىچە)"
+msgstr ""
 
 #: libviews/callmapview.cpp:327
-#, fuzzy
-#| msgid "Visualization"
 msgctxt "CallMapView|"
 msgid "Visualization"
 msgstr "كۆرۈنۈشچان ئۈنۈم"
@@ -985,39 +860,29 @@ msgid "Skip Incorrect Borders"
 msgstr ""
 
 #: libviews/callmapview.cpp:336
-#, fuzzy
-#| msgid "Border Width"
 msgctxt "CallMapView|"
 msgid "Border Width"
 msgstr "گىرۋەك كەڭلىكى"
 
 #: libviews/callmapview.cpp:337
-#, fuzzy
-#| msgid "Border Width"
 msgctxt "CallMapView|"
 msgid "Border 0"
-msgstr "گىرۋەك كەڭلىكى"
+msgstr ""
 
 #: libviews/callmapview.cpp:339
-#, fuzzy
-#| msgid "Border Width"
 msgctxt "CallMapView|"
 msgid "Border 1"
-msgstr "گىرۋەك كەڭلىكى"
+msgstr ""
 
 #: libviews/callmapview.cpp:340
-#, fuzzy
-#| msgid "Border Width"
 msgctxt "CallMapView|"
 msgid "Border 2"
-msgstr "گىرۋەك كەڭلىكى"
+msgstr ""
 
 #: libviews/callmapview.cpp:341
-#, fuzzy
-#| msgid "Border Width"
 msgctxt "CallMapView|"
 msgid "Border 3"
-msgstr "گىرۋەك كەڭلىكى"
+msgstr ""
 
 #: libviews/callmapview.cpp:346
 msgctxt "CallMapView|"
@@ -1025,25 +890,19 @@ msgid "Draw Symbol Names"
 msgstr ""
 
 #: libviews/callmapview.cpp:348
-#, fuzzy
-#| msgid "Cost"
 msgctxt "CallMapView|"
 msgid "Draw Cost"
-msgstr "تەننەرخ"
+msgstr ""
 
 #: libviews/callmapview.cpp:350
-#, fuzzy
-#| msgid "Location"
 msgctxt "CallMapView|"
 msgid "Draw Location"
-msgstr "ئورنى"
+msgstr ""
 
 #: libviews/callmapview.cpp:352
-#, fuzzy
-#| msgid "Calls"
 msgctxt "CallMapView|"
 msgid "Draw Calls"
-msgstr "چاقىرىشلار"
+msgstr ""
 
 #: libviews/callmapview.cpp:356
 msgctxt "CallMapView|"
@@ -1051,18 +910,14 @@ msgid "Ignore Proportions"
 msgstr ""
 
 #: libviews/callmapview.cpp:358
-#, fuzzy
-#| msgid "Allow Rotation"
 msgctxt "CallMapView|"
 msgid "Allow Rotation"
 msgstr "چۆرگىلەشكە ئىجازەت"
 
 #: libviews/callmapview.cpp:376
-#, fuzzy
-#| msgid "Shading"
 msgctxt "CallMapView|"
 msgid "Shading"
-msgstr "سايىلەش"
+msgstr "سايە"
 
 #: libviews/callmapview.cpp:428
 #, qt-format
@@ -1071,22 +926,16 @@ msgid "Call Map: Current is '%1'"
 msgstr ""
 
 #: libviews/callmapview.cpp:621
-#, fuzzy
-#| msgid "Function"
 msgctxt "QObject|"
 msgid "(no function)"
-msgstr "فۇنكسىيە"
+msgstr ""
 
 #: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
-#, fuzzy
-#| msgid "(no caller)"
 msgctxt "QObject|"
 msgid "(no call)"
-msgstr "(no caller)"
+msgstr ""
 
 #: libviews/callview.cpp:37
-#, fuzzy
-#| msgid "Cost"
 msgctxt "CallView|"
 msgid "Cost"
 msgstr "تەننەرخ"
@@ -1097,11 +946,9 @@ msgid "Cost per call"
 msgstr ""
 
 #: libviews/callview.cpp:39
-#, fuzzy
-#| msgid "Cost"
 msgctxt "CallView|"
 msgid "Cost 2"
-msgstr "تەننەرخ"
+msgstr ""
 
 #: libviews/callview.cpp:40
 msgctxt "CallView|"
@@ -1109,25 +956,19 @@ msgid "Cost 2 per call"
 msgstr ""
 
 #: libviews/callview.cpp:41
-#, fuzzy
-#| msgid "Count"
 msgctxt "CallView|"
 msgid "Count"
 msgstr "سانى"
 
 #: libviews/callview.cpp:42
-#, fuzzy
-#| msgid "Called"
 msgctxt "CallView|"
 msgid "Caller"
-msgstr "چاقىرىلدى"
+msgstr ""
 
 #: libviews/callview.cpp:42
-#, fuzzy
-#| msgid "Called"
 msgctxt "CallView|"
 msgid "Callee"
-msgstr "چاقىرىلدى"
+msgstr ""
 
 #: libviews/callview.cpp:76
 msgctxt "CallView|"
@@ -1154,11 +995,10 @@ msgid ""
 msgstr ""
 
 #: libviews/callview.cpp:118 libviews/callview.cpp:123
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "CallView|"
 msgid "Go to '%1'"
-msgstr "‹%1› غا يۆتكەل"
+msgstr "«%1» غا يۆتكەل"
 
 #: libviews/callview.cpp:257 libviews/callview.cpp:261
 #, qt-format
@@ -1278,19 +1118,15 @@ msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2405
 #: libviews/controlflowgraphview.cpp:2436
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "QObject|"
 msgid "Show instructions' PC"
-msgstr "پەرمان"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2409
 #: libviews/controlflowgraphview.cpp:2440
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "QObject|"
 msgid "Show instructions' cost"
-msgstr "پەرمان"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2426
 msgctxt "QObject|"
@@ -1318,11 +1154,9 @@ msgid "Images (*.png *.jpg)"
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:2997
-#, fuzzy
-#| msgid "(no caller)"
 msgctxt "QObject|"
 msgid "No trace data"
-msgstr "(no caller)"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3002
 msgctxt "QObject|"
@@ -1335,11 +1169,9 @@ msgid "No control-flow graph can be drawn for the active item."
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3109
-#, fuzzy
-#| msgid "Layout"
 msgctxt "QObject|"
 msgid "Stop Layouting"
-msgstr "جايلاشتۇرۇش"
+msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3172
 msgctxt "QObject|"
@@ -1347,50 +1179,36 @@ msgid "Birds-eye View"
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3174
-#, fuzzy
-#| msgid "Top Left"
 msgctxt "QObject|"
 msgid "Top Left"
 msgstr "سول ئۈستى"
 
 #: libviews/controlflowgraphview.cpp:3175
-#, fuzzy
-#| msgid "Top Right"
 msgctxt "QObject|"
 msgid "Top Right"
 msgstr "ئوڭ ئۈستى"
 
 #: libviews/controlflowgraphview.cpp:3176
-#, fuzzy
-#| msgid "Bottom Left"
 msgctxt "QObject|"
 msgid "Bottom Left"
 msgstr "سول ئاستى"
 
 #: libviews/controlflowgraphview.cpp:3177
-#, fuzzy
-#| msgid "Bottom Right"
 msgctxt "QObject|"
 msgid "Bottom Right"
 msgstr "ئوڭ ئاستى"
 
 #: libviews/controlflowgraphview.cpp:3178
-#, fuzzy
-#| msgid "Automatic"
 msgctxt "QObject|"
 msgid "Automatic"
 msgstr "ئاپتوماتىك"
 
 #: libviews/controlflowgraphview.cpp:3179
-#, fuzzy
-#| msgid "Hide"
 msgctxt "QObject|"
 msgid "Hide"
 msgstr "يوشۇر"
 
 #: libviews/controlflowgraphview.cpp:3189
-#, fuzzy
-#| msgid "Layout"
 msgctxt "QObject|"
 msgid "Layout"
 msgstr "جايلاشتۇرۇش"
@@ -1401,8 +1219,6 @@ msgid "Top to Down"
 msgstr ""
 
 #: libviews/controlflowgraphview.cpp:3192
-#, fuzzy
-#| msgid "Left to Right"
 msgctxt "QObject|"
 msgid "Left to Right"
 msgstr "سولدىن ئوڭغا"
@@ -1415,13 +1231,13 @@ msgstr ""
 #: libviews/controlflowgraphview.cpp:3204
 msgctxt "QObject|"
 msgid "Undefined"
-msgstr ""
+msgstr "ئېنىقلانمىغان"
 
 #: libviews/controlflowgraphview.cpp:3207
 #, qt-format
 msgctxt "QObject|"
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
@@ -1443,46 +1259,34 @@ msgid "Incl."
 msgstr ""
 
 #: libviews/coverageview.cpp:40 libviews/coverageview.cpp:47
-#, fuzzy
-#| msgid "Distance"
 msgctxt "CoverageView|"
 msgid "Distance"
 msgstr "ئارىلىق"
 
 #: libviews/coverageview.cpp:41
-#, fuzzy
-#| msgid "Called"
 msgctxt "CoverageView|"
 msgid "Called"
 msgstr "چاقىرىلدى"
 
 #: libviews/coverageview.cpp:42
-#, fuzzy
-#| msgid "Called"
 msgctxt "CoverageView|"
 msgid "Caller"
-msgstr "چاقىرىلدى"
+msgstr ""
 
 #: libviews/coverageview.cpp:46
-#, fuzzy
-#| msgid "Self"
 msgctxt "CoverageView|"
 msgid "Self"
-msgstr "ئۆزۈم"
+msgstr ""
 
 #: libviews/coverageview.cpp:48
-#, fuzzy
-#| msgid "Calling"
 msgctxt "CoverageView|"
 msgid "Calling"
-msgstr "چاقىرىۋاتىدۇ"
+msgstr ""
 
 #: libviews/coverageview.cpp:49
-#, fuzzy
-#| msgid "Called"
 msgctxt "CoverageView|"
 msgid "Callee"
-msgstr "چاقىرىلدى"
+msgstr ""
 
 #: libviews/coverageview.cpp:84
 msgctxt "CoverageView|"
@@ -1525,18 +1329,15 @@ msgid ""
 msgstr ""
 
 #: libviews/coverageview.cpp:160
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "CoverageView|"
 msgid "Go to '%1'"
-msgstr "‹%1› غا يۆتكەل"
+msgstr "«%1» غا يۆتكەل"
 
 #: libviews/eventtypeitem.cpp:48
-#, fuzzy
-#| msgid "Unknown Type"
 msgctxt "QObject|"
 msgid "Unknown Type"
-msgstr "نامەلۇم تىپ"
+msgstr "يوچۇن تۈر"
 
 #: libviews/eventtypeview.cpp:37
 msgctxt "EventTypeView|"
@@ -1549,22 +1350,16 @@ msgid "Incl."
 msgstr ""
 
 #: libviews/eventtypeview.cpp:39
-#, fuzzy
-#| msgid "Self"
 msgctxt "EventTypeView|"
 msgid "Self"
-msgstr "ئۆزۈم"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:40
-#, fuzzy
-#| msgid "Short"
 msgctxt "EventTypeView|"
 msgid "Short"
 msgstr "قىسقا"
 
 #: libviews/eventtypeview.cpp:42
-#, fuzzy
-#| msgid "Formula"
 msgctxt "EventTypeView|"
 msgid "Formula"
 msgstr "فورمۇلا"
@@ -1599,15 +1394,11 @@ msgid "Edit Short Name"
 msgstr ""
 
 #: libviews/eventtypeview.cpp:109
-#, fuzzy
-#| msgid "Formula"
 msgctxt "EventTypeView|"
 msgid "Edit Formula"
-msgstr "فورمۇلا"
+msgstr ""
 
 #: libviews/eventtypeview.cpp:110
-#, fuzzy
-#| msgid "Remove"
 msgctxt "EventTypeView|"
 msgid "Remove"
 msgstr "چىقىرىۋەت"
@@ -1635,29 +1426,21 @@ msgid "Incl."
 msgstr ""
 
 #: libviews/functionlistmodel.cpp:46
-#, fuzzy
-#| msgid "Self"
 msgctxt "FunctionListModel|"
 msgid "Self"
-msgstr "ئۆزۈم"
+msgstr ""
 
 #: libviews/functionlistmodel.cpp:47
-#, fuzzy
-#| msgid "Called"
 msgctxt "FunctionListModel|"
 msgid "Called"
 msgstr "چاقىرىلدى"
 
 #: libviews/functionlistmodel.cpp:48
-#, fuzzy
-#| msgid "Function"
 msgctxt "FunctionListModel|"
 msgid "Function"
 msgstr "فۇنكسىيە"
 
 #: libviews/functionlistmodel.cpp:49
-#, fuzzy
-#| msgid "Location"
 msgctxt "FunctionListModel|"
 msgid "Location"
 msgstr "ئورنى"
@@ -1669,43 +1452,31 @@ msgid "(%1 function(s) skipped)"
 msgstr ""
 
 #: libviews/functionselection.cpp:87
-#, fuzzy
-#| msgid "Function"
 msgctxt "FunctionSelection|"
 msgid "Function Profile"
-msgstr "فۇنكسىيە"
+msgstr ""
 
 #: libviews/functionselection.cpp:95
-#, fuzzy
-#| msgid "&Search:"
 msgctxt "FunctionSelection|"
 msgid "&Search:"
 msgstr "ئىزدە(&S):"
 
 #: libviews/functionselection.cpp:101
-#, fuzzy
-#| msgid "&Search:"
 msgctxt "FunctionSelection|"
 msgid "Search Query"
-msgstr "ئىزدە(&S):"
+msgstr ""
 
 #: libviews/functionselection.cpp:116
-#, fuzzy
-#| msgid "Self"
 msgctxt "FunctionSelection|"
 msgid "Self"
-msgstr "ئۆزۈم"
+msgstr ""
 
 #: libviews/functionselection.cpp:116
-#, fuzzy
-#| msgid "Group"
 msgctxt "FunctionSelection|"
 msgid "Group"
 msgstr "گۇرۇپپا"
 
 #: libviews/functionselection.cpp:159 libviews/functionselection.cpp:504
-#, fuzzy
-#| msgid "(No Grouping)"
 msgctxt "FunctionSelection|"
 msgid "(No Grouping)"
 msgstr "(گۇرۇپپىلانمىغان)"
@@ -1722,47 +1493,39 @@ msgid ""
 msgstr ""
 
 #: libviews/functionselection.cpp:287
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "FunctionSelection|"
 msgid "Go to '%1'"
-msgstr "‹%1› غا يۆتكەل"
+msgstr "«%1» غا يۆتكەل"
 
 #: libviews/functionselection.cpp:297 libviews/functionselection.cpp:317
-#, fuzzy
-#| msgid "Grouping"
 msgctxt "FunctionSelection|"
 msgid "Grouping"
 msgstr "گۇرۇپپىلاش"
 
 #: libviews/functionselection.cpp:353
-#, fuzzy
-#| msgid "No Grouping"
 msgctxt "FunctionSelection|"
 msgid "No Grouping"
 msgstr "گۇرۇپپىلانمىغان"
 
 #: libviews/instritem.cpp:114 libviews/sourceitem.cpp:94
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "QObject|"
 msgid "Active call to '%1'"
-msgstr "‹%1› غا يۆتكەل"
+msgstr ""
 
 #: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "QObject|"
 msgid "Call to '%1'"
-msgstr "‹%1› غا يۆتكەل"
+msgstr ""
 
 #: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "QObject|"
 msgid "%n call(s) to '%2'"
 msgid_plural "%n call(s) to '%2'"
-msgstr[0] "‹%1› غا يۆتكەل"
+msgstr[0] ""
 
 #: libviews/instritem.cpp:155
 #, qt-format
@@ -1782,46 +1545,34 @@ msgid "(cycle)"
 msgstr ""
 
 #: libviews/instrview.cpp:193
-#, fuzzy
-#| msgid "#"
 msgctxt "InstrView|"
 msgid "#"
 msgstr "#"
 
 #: libviews/instrview.cpp:194
-#, fuzzy
-#| msgid "Cost"
 msgctxt "InstrView|"
 msgid "Cost"
 msgstr "تەننەرخ"
 
 #: libviews/instrview.cpp:195
-#, fuzzy
-#| msgid "Cost"
 msgctxt "InstrView|"
 msgid "Cost 2"
-msgstr "تەننەرخ"
+msgstr ""
 
 #: libviews/instrview.cpp:197
-#, fuzzy
-#| msgid "Hex"
 msgctxt "InstrView|"
 msgid "Hex"
-msgstr "ئون ئالتىلىك سىستېما"
+msgstr ""
 
 #: libviews/instrview.cpp:199
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "InstrView|"
 msgid "Assembly Instructions"
-msgstr "پەرمان"
+msgstr ""
 
 #: libviews/instrview.cpp:200
-#, fuzzy
-#| msgid "Source Line"
 msgctxt "InstrView|"
 msgid "Source Position"
-msgstr "مەنبە قۇر"
+msgstr ""
 
 #: libviews/instrview.cpp:236
 msgctxt "InstrView|"
@@ -1837,25 +1588,21 @@ msgid ""
 msgstr ""
 
 #: libviews/instrview.cpp:265
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "InstrView|"
 msgid "Go to '%1'"
-msgstr "‹%1› غا يۆتكەل"
+msgstr "«%1» غا يۆتكەل"
 
 #: libviews/instrview.cpp:270
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "InstrView|"
 msgid "Go to Address %1"
-msgstr "‹%1› غا يۆتكەل"
+msgstr ""
 
 #: libviews/instrview.cpp:282
-#, fuzzy
-#| msgid "Source Code"
 msgctxt "InstrView|"
 msgid "Hex Code"
-msgstr "مەنبە كودى"
+msgstr ""
 
 #: libviews/instrview.cpp:290
 msgctxt "InstrView|"
@@ -1918,11 +1665,9 @@ msgid "This utility can be found in the 'binutils' package."
 msgstr ""
 
 #: libviews/instrview.cpp:980
-#, fuzzy
-#| msgid "Instruction"
 msgctxt "InstrView|"
 msgid "(No Instruction)"
-msgstr "پەرمان"
+msgstr ""
 
 #: libviews/instrview.cpp:1148
 #, qt-format
@@ -1968,44 +1713,31 @@ msgid "Profile Part %1"
 msgstr ""
 
 #: libviews/partgraph.cpp:212
-#, fuzzy
-#| msgid "(no caller)"
 msgctxt "QObject|"
 msgid "(no trace)"
-msgstr "(no caller)"
+msgstr ""
 
 #: libviews/partgraph.cpp:215
-#, fuzzy
-#| msgid "(no caller)"
 msgctxt "QObject|"
 msgid "(no part)"
-msgstr "(no caller)"
+msgstr ""
 
 #: libviews/partlistitem.cpp:39
-#, fuzzy
-#| msgid "(none)"
 msgctxt "QObject|"
 msgid "(none)"
 msgstr "(يوق)"
 
 #: libviews/partselection.cpp:48
-#, fuzzy
-#| msgid "Parts Overview"
 msgctxt "PartSelection|"
 msgid "Parts Overview"
 msgstr "بۆلەكلەر قىسقىچە مەزمۇنى"
 
 #: libviews/partselection.cpp:61
-#, fuzzy
-#| msgctxt "A thing's name"
-#| msgid "Name"
 msgctxt "PartSelection|A thing's name"
 msgid "Name"
 msgstr "ئاتى"
 
 #: libviews/partselection.cpp:62
-#, fuzzy
-#| msgid "Cost"
 msgctxt "PartSelection|"
 msgid "Cost"
 msgstr "تەننەرخ"
@@ -2046,11 +1778,10 @@ msgid "Deselect '%1'"
 msgstr ""
 
 #: libviews/partselection.cpp:339
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "PartSelection|"
 msgid "Select '%1'"
-msgstr "‹%1› غا يۆتكەل"
+msgstr ""
 
 #: libviews/partselection.cpp:344
 msgctxt "PartSelection|"
@@ -2073,15 +1804,12 @@ msgid "Show Hidden Parts"
 msgstr ""
 
 #: libviews/partselection.cpp:361
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "PartSelection|"
 msgid "Go to '%1'"
-msgstr "‹%1› غا يۆتكەل"
+msgstr "«%1» غا يۆتكەل"
 
 #: libviews/partselection.cpp:370
-#, fuzzy
-#| msgid "Visualization"
 msgctxt "PartSelection|"
 msgid "Visualization"
 msgstr "كۆرۈنۈشچان ئۈنۈم"
@@ -2092,11 +1820,9 @@ msgid "Partitioning Mode"
 msgstr ""
 
 #: libviews/partselection.cpp:373
-#, fuzzy
-#| msgid "Function"
 msgctxt "PartSelection|"
 msgid "Zoom Function"
-msgstr "فۇنكسىيە"
+msgstr ""
 
 #: libviews/partselection.cpp:375
 msgctxt "PartSelection|"
@@ -2129,8 +1855,6 @@ msgid "Ignore Proportions"
 msgstr ""
 
 #: libviews/partselection.cpp:398
-#, fuzzy
-#| msgid "Allow Rotation"
 msgctxt "PartSelection|"
 msgid "Allow Rotation"
 msgstr "چۆرگىلەشكە ئىجازەت"
@@ -2141,11 +1865,9 @@ msgid "Draw Frames"
 msgstr ""
 
 #: libviews/partselection.cpp:414
-#, fuzzy
-#| msgid "Hide"
 msgctxt "PartSelection|"
 msgid "Hide Info"
-msgstr "يوشۇر"
+msgstr ""
 
 #: libviews/partselection.cpp:414
 msgctxt "PartSelection|"
@@ -2168,22 +1890,16 @@ msgid "Incl."
 msgstr ""
 
 #: libviews/partview.cpp:39
-#, fuzzy
-#| msgid "Self"
 msgctxt "PartView|"
 msgid "Self"
-msgstr "ئۆزۈم"
+msgstr ""
 
 #: libviews/partview.cpp:40
-#, fuzzy
-#| msgid "Called"
 msgctxt "PartView|"
 msgid "Called"
 msgstr "چاقىرىلدى"
 
 #: libviews/partview.cpp:41
-#, fuzzy
-#| msgid "Comment"
 msgctxt "PartView|"
 msgid "Comment"
 msgstr "ئىزاھات"
@@ -2219,32 +1935,24 @@ msgid "Jump %1 times to %2"
 msgstr ""
 
 #: libviews/sourceview.cpp:51
-#, fuzzy
-#| msgid "#"
 msgctxt "SourceView|"
 msgid "#"
 msgstr "#"
 
 #: libviews/sourceview.cpp:52
-#, fuzzy
-#| msgid "Cost"
 msgctxt "SourceView|"
 msgid "Cost"
 msgstr "تەننەرخ"
 
 #: libviews/sourceview.cpp:53
-#, fuzzy
-#| msgid "Cost"
 msgctxt "SourceView|"
 msgid "Cost 2"
-msgstr "تەننەرخ"
+msgstr ""
 
 #: libviews/sourceview.cpp:55
-#, fuzzy
-#| msgid "Source Line"
 msgctxt "SourceView|"
 msgid "Source"
-msgstr "مەنبە قۇر"
+msgstr "مەنبە"
 
 #: libviews/sourceview.cpp:83
 msgctxt "SourceView|"
@@ -2259,18 +1967,16 @@ msgid ""
 msgstr ""
 
 #: libviews/sourceview.cpp:110
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "SourceView|"
 msgid "Go to '%1'"
-msgstr "‹%1› غا يۆتكەل"
+msgstr "«%1» غا يۆتكەل"
 
 #: libviews/sourceview.cpp:115
-#, fuzzy, qt-format
-#| msgid "Go to '%1'"
+#, qt-format
 msgctxt "SourceView|"
 msgid "Go to Line %1"
-msgstr "‹%1› غا يۆتكەل"
+msgstr ""
 
 #: libviews/sourceview.cpp:627
 msgctxt "SourceView|"
@@ -2345,88 +2051,61 @@ msgid "Stack Selection"
 msgstr ""
 
 #: libviews/stackselection.cpp:44
-#, fuzzy
-#| msgid "Cost"
 msgctxt "StackSelection|"
 msgid "Cost"
 msgstr "تەننەرخ"
 
 #: libviews/stackselection.cpp:45
-#, fuzzy
-#| msgid "Cost"
 msgctxt "StackSelection|"
 msgid "Cost2"
-msgstr "تەننەرخ"
+msgstr ""
 
 #: libviews/stackselection.cpp:46
-#, fuzzy
-#| msgid "Calls"
 msgctxt "StackSelection|"
 msgid "Calls"
-msgstr "چاقىرىشلار"
+msgstr "چاقىرىش"
 
 #: libviews/stackselection.cpp:47
-#, fuzzy
-#| msgid "Function"
 msgctxt "StackSelection|"
 msgid "Function"
 msgstr "فۇنكسىيە"
 
 #: libviews/tabview.cpp:104
-#, fuzzy
-#| msgid "Move to Bottom"
 msgctxt "TabBar|"
 msgid "Move to Top"
-msgstr "ئاستىغا يۆتكە"
+msgstr ""
 
 #: libviews/tabview.cpp:105
-#, fuzzy
-#| msgctxt "Move to Top"
-#| msgid "Top"
 msgctxt "TabBar|Move to Top"
 msgid "Top"
 msgstr "ئۈستى"
 
 #: libviews/tabview.cpp:108
-#, fuzzy
-#| msgid "Left to Right"
 msgctxt "TabBar|"
 msgid "Move to Right"
-msgstr "سولدىن ئوڭغا"
+msgstr ""
 
 #: libviews/tabview.cpp:109
-#, fuzzy
-#| msgctxt "Move to Right"
-#| msgid "Right"
 msgctxt "TabBar|Move to Right"
 msgid "Right"
 msgstr "ئوڭ"
 
 #: libviews/tabview.cpp:112
-#, fuzzy
-#| msgid "Move to Bottom"
 msgctxt "TabBar|"
 msgid "Move to Bottom"
-msgstr "ئاستىغا يۆتكە"
+msgstr ""
 
 #: libviews/tabview.cpp:113
-#, fuzzy
-#| msgctxt "Move to Bottom"
-#| msgid "Bottom"
 msgctxt "TabBar|Move to Bottom"
 msgid "Bottom"
 msgstr "ئاستى"
 
 #: libviews/tabview.cpp:116
-#, fuzzy
-#| msgid "Move to Bottom"
 msgctxt "TabBar|"
 msgid "Move to Bottom Left"
-msgstr "ئاستىغا يۆتكە"
+msgstr ""
 
 #: libviews/tabview.cpp:117
-#, fuzzy
-#| msgid "Bottom Left"
 msgctxt "TabBar|Move to Bottom Left"
 msgid "Bottom Left"
 msgstr "سول ئاستى"
@@ -2442,39 +2121,26 @@ msgid "Hide This Tab"
 msgstr ""
 
 #: libviews/tabview.cpp:123
-#, fuzzy
-#| msgid "Hide"
 msgctxt "TabBar|"
 msgid "Hide Area"
-msgstr "يوشۇر"
+msgstr ""
 
 #: libviews/tabview.cpp:132
-#, fuzzy
-#| msgctxt "Move to Top"
-#| msgid "Top"
 msgctxt "TabBar|Show on Top"
 msgid "Top"
 msgstr "ئۈستى"
 
 #: libviews/tabview.cpp:133
-#, fuzzy
-#| msgctxt "Move to Right"
-#| msgid "Right"
 msgctxt "TabBar|Show on Right"
 msgid "Right"
 msgstr "ئوڭ"
 
 #: libviews/tabview.cpp:134
-#, fuzzy
-#| msgctxt "Move to Bottom"
-#| msgid "Bottom"
 msgctxt "TabBar|Show on Bottom"
 msgid "Bottom"
 msgstr "ئاستى"
 
 #: libviews/tabview.cpp:135
-#, fuzzy
-#| msgid "Bottom Left"
 msgctxt "TabBar|Show on Bottom Left"
 msgid "Bottom Left"
 msgstr "سول ئاستى"
@@ -2490,88 +2156,64 @@ msgid "(No profile data file loaded)"
 msgstr ""
 
 #: libviews/tabview.cpp:371
-#, fuzzy
-#| msgid "Types"
 msgctxt "TabView|"
 msgid "Types"
-msgstr "تىپى"
+msgstr ""
 
 #: libviews/tabview.cpp:374
-#, fuzzy
-#| msgid "Calls"
 msgctxt "TabView|"
 msgid "Callers"
-msgstr "چاقىرىشلار"
+msgstr ""
 
 #: libviews/tabview.cpp:375
-#, fuzzy
-#| msgid "Calls"
 msgctxt "TabView|"
 msgid "All Callers"
-msgstr "چاقىرىشلار"
+msgstr ""
 
 #: libviews/tabview.cpp:376
-#, fuzzy
-#| msgid "Called"
 msgctxt "TabView|"
 msgid "Callee Map"
-msgstr "چاقىرىلدى"
+msgstr ""
 
 #: libviews/tabview.cpp:379
-#, fuzzy
-#| msgid "Source Code"
 msgctxt "TabView|"
 msgid "Source Code"
 msgstr "مەنبە كودى"
 
 #: libviews/tabview.cpp:380
-#, fuzzy
-#| msgid "Graph"
 msgctxt "TabView|"
 msgid "Control Flow Graph"
-msgstr "گرافىك"
+msgstr ""
 
 #: libviews/tabview.cpp:383
-#, fuzzy
-#| msgid "Parts"
 msgctxt "TabView|"
 msgid "Parts"
-msgstr "بۆلەكلەر"
+msgstr "بۆلەك"
 
 #: libviews/tabview.cpp:384
-#, fuzzy
-#| msgid "Calls"
 msgctxt "TabView|"
 msgid "Callees"
-msgstr "چاقىرىشلار"
+msgstr ""
 
 #: libviews/tabview.cpp:385
-#, fuzzy
-#| msgid "Graph"
 msgctxt "TabView|"
 msgid "Call Graph"
-msgstr "گرافىك"
+msgstr ""
 
 #: libviews/tabview.cpp:388
-#, fuzzy
-#| msgid "Calls"
 msgctxt "TabView|"
 msgid "All Callees"
-msgstr "چاقىرىشلار"
+msgstr ""
 
 #: libviews/tabview.cpp:389
-#, fuzzy
-#| msgid "Called"
 msgctxt "TabView|"
 msgid "Caller Map"
-msgstr "چاقىرىلدى"
+msgstr ""
 
 #: libviews/tabview.cpp:392
-#, fuzzy
-#| msgid "Source Code"
 msgctxt "TabView|"
 msgid "Machine Code"
-msgstr "مەنبە كودى"
+msgstr ""
 
 #: libviews/tabview.cpp:646
 msgctxt "TabView|"
@@ -2600,81 +2242,60 @@ msgid "(No function selected)"
 msgstr ""
 
 #: libviews/traceitemview.cpp:67
-#, fuzzy
-#| msgid "No description available"
 msgctxt "QObject|"
 msgid "No description available"
 msgstr "چۈشەندۈرۈشى يوق"
 
 #: libviews/treemap.cpp:1335
-#, fuzzy, qt-format
-#| msgid "Text %1"
+#, qt-format
 msgctxt "TreeMapWidget|"
 msgid "Text %1"
 msgstr "تېكىست %1"
 
 #: libviews/treemap.cpp:2860
-#, fuzzy
-#| msgid "Recursive Bisection"
 msgctxt "TreeMapWidget|"
 msgid "Recursive Bisection"
 msgstr "قايتىلانما تەڭ بۆلۈش"
 
 #: libviews/treemap.cpp:2861
-#, fuzzy
-#| msgid "Columns"
 msgctxt "TreeMapWidget|"
 msgid "Columns"
-msgstr "ئىستونلار"
+msgstr "رەت"
 
 #: libviews/treemap.cpp:2862
-#, fuzzy
-#| msgid "Rows"
 msgctxt "TreeMapWidget|"
 msgid "Rows"
 msgstr "قۇرلار"
 
 #: libviews/treemap.cpp:2863
-#, fuzzy
-#| msgid "Always Best"
 msgctxt "TreeMapWidget|"
 msgid "Always Best"
 msgstr "ھەمىشە ئەڭ ياخشى"
 
 #: libviews/treemap.cpp:2864
-#, fuzzy
-#| msgid "Best"
 msgctxt "TreeMapWidget|"
 msgid "Best"
 msgstr "ئەڭ ياخشى"
 
 #: libviews/treemap.cpp:2865
-#, fuzzy
-#| msgid "Alternate (V)"
 msgctxt "TreeMapWidget|"
 msgid "Alternate (V)"
 msgstr "زاپاس (بويىغا)"
 
 #: libviews/treemap.cpp:2866
-#, fuzzy
-#| msgid "Alternate (H)"
 msgctxt "TreeMapWidget|"
 msgid "Alternate (H)"
 msgstr "زاپاس (توغرىسىغا)"
 
 #: libviews/treemap.cpp:2867
-#, fuzzy
-#| msgid "Horizontal"
 msgctxt "TreeMapWidget|"
 msgid "Horizontal"
-msgstr "توغرا"
+msgstr "توغرىسىغا"
 
 #: libviews/treemap.cpp:2868
-#, fuzzy
-#| msgid "Vertical"
 msgctxt "TreeMapWidget|"
 msgid "Vertical"
-msgstr "تىك"
+msgstr "بويىغا"
 
 #~ msgctxt "Move to Bottom Left"
 #~ msgid "Bottom Left"
