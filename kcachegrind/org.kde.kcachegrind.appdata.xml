@@ -40,6 +40,7 @@
   <name xml:lang="sl">KCachegrind</name>
   <name xml:lang="sv">Kcachegrind</name>
   <name xml:lang="tr">KCachegrind</name>
+  <name xml:lang="ug">KCachegrind</name>
   <name xml:lang="uk">KCachegrind</name>
   <name xml:lang="zh-CN">KCachegrind</name>
   <name xml:lang="zh-TW">KCachegrind</name>
@@ -74,6 +75,7 @@
   <summary xml:lang="sl">Začelje profila izvajanja</summary>
   <summary xml:lang="sv">Profileringsgränssnitt</summary>
   <summary xml:lang="tr">Profilleyici Ön Yüzü</summary>
+  <summary xml:lang="ug">تەھلىللىگۈچ ئالدى ئۇچى</summary>
   <summary xml:lang="uk">Інтерфейс до Profiler</summary>
   <summary xml:lang="zh-CN">分析器前端</summary>
   <summary xml:lang="zh-TW">分析器前端</summary>
@@ -145,6 +147,7 @@
     <p xml:lang="sl">Zmožnosti:</p>
     <p xml:lang="sv">Funktioner:</p>
     <p xml:lang="tr">Özellikler:</p>
+    <p xml:lang="ug">ئىقتىدار:</p>
     <p xml:lang="uk">Можливості:</p>
     <p xml:lang="zh-CN">功能：</p>
     <p xml:lang="zh-TW">功能：</p>
