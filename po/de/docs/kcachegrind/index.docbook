@@ -106,7 +106,7 @@
 
 <abstract>
 <para
->&kcachegrind; ist ein Werkzeug zur Visualisierung von Profildaten auf der Basis von &kde-frameworks;. </para>
+>&kcachegrind; ist ein Werkzeug zur Visualisierung von Profildaten auf der Basis von &kf5-full;. </para>
 </abstract>
 
 <keywordset>
