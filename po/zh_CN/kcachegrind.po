@@ -386,7 +386,7 @@ msgstr "总计"
 #: kcachegrind/dumpselectionbase.ui:554
 #, kde-format
 msgid "Miscellaneous:"
-msgstr "杂项："
+msgstr "其他："
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton6)
 #: kcachegrind/dumpselectionbase.ui:588
