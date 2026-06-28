@@ -611,7 +611,7 @@ msgstr "Frontal de KDE per a Callgrind/Cachegrind"
 #: kcachegrind/main.cpp:38
 #, kde-format
 msgid "(C) 2002 - 2016"
-msgstr "(C) 2002 - 2016"
+msgstr "(C) 2002 – 2016"
 
 #: kcachegrind/main.cpp:40
 #, kde-format
