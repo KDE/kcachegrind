@@ -14,7 +14,6 @@
 #define ENABLE_DUMPDOCK 0
 
 #include "toplevel.h"
-#include <karchive_version.h>
 
 #include <stdlib.h> // for system()
 
