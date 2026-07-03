@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2026-07-03 00:48+0000\n"
 "PO-Revision-Date: 2025-12-06 20:42+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -157,8 +157,8 @@ msgid "Object / Related Source Base"
 msgstr "בסיס עצם / מקור תואם"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
-#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:286
-#: kcachegrind/toplevel.cpp:509
+#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:285
+#: kcachegrind/toplevel.cpp:508
 #, kde-format
 msgid "Profile Dumps"
 msgstr "היטלי פרופיל"
@@ -628,17 +628,17 @@ msgstr "הצגת פרטים על המעקב הזה"
 msgid "[trace...]"
 msgstr "[עיקבה…]"
 
-#: kcachegrind/toplevel.cpp:255 kcachegrind/toplevel.cpp:483
+#: kcachegrind/toplevel.cpp:254 kcachegrind/toplevel.cpp:482
 #, kde-format
 msgid "Parts Overview"
 msgstr "סקירת חלקים"
 
-#: kcachegrind/toplevel.cpp:264
+#: kcachegrind/toplevel.cpp:263
 #, kde-format
 msgid "Top Cost Call Stack"
 msgstr "מחסנית קריאות עלויות מובילות"
 
-#: kcachegrind/toplevel.cpp:266
+#: kcachegrind/toplevel.cpp:265
 #, kde-format
 msgid ""
 "<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most probable' "
@@ -653,12 +653,12 @@ msgstr ""
 "p><p>העמודות <b>עלות</b> ו<b>קריאות</b> מציגות את העלות של כל הקריאות "
 "מהפונקציה בשורה שמעל.</p>"
 
-#: kcachegrind/toplevel.cpp:280
+#: kcachegrind/toplevel.cpp:279
 #, kde-format
 msgid "Flat Profile"
 msgstr "פרופיל שטוח"
 
-#: kcachegrind/toplevel.cpp:293
+#: kcachegrind/toplevel.cpp:292
 #, kde-format
 msgid ""
 "<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
@@ -695,23 +695,23 @@ msgstr ""
 "קבוע. סימון האפשרות <b>סנכרון</b> תאפשר למעגן להפעיל את הפונקציה העליונה "
 "בהיטל הטעון הנוכחי.</li></ul></p>"
 
-#: kcachegrind/toplevel.cpp:364
+#: kcachegrind/toplevel.cpp:363
 #, kde-format
 msgid "&Duplicate"
 msgstr "&שכפול"
 
-#: kcachegrind/toplevel.cpp:367
+#: kcachegrind/toplevel.cpp:366
 #, kde-format
 msgid ""
 "<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
 msgstr "<b>שכפול הפריסה הנוכחית</b><p>יצירת עותק של השכבה הנוכחית.</p>"
 
-#: kcachegrind/toplevel.cpp:372
+#: kcachegrind/toplevel.cpp:371
 #, kde-format
 msgid "&Remove"
 msgstr "ה&סרה"
 
-#: kcachegrind/toplevel.cpp:374
+#: kcachegrind/toplevel.cpp:373
 #, kde-format
 msgid ""
 "<b>Remove Current Layout</b><p>Delete current layout and make the previous "
@@ -719,57 +719,57 @@ msgid ""
 msgstr ""
 "<b>הסרת הפריסה הנוכחית</b><p>מחיקת הפריסה הנוכחית והפיכת הקודמת לפעילה.</p>"
 
-#: kcachegrind/toplevel.cpp:379
+#: kcachegrind/toplevel.cpp:378
 #, kde-format
 msgid "&Go to Next"
 msgstr "מעבר ל&באה"
 
-#: kcachegrind/toplevel.cpp:382
+#: kcachegrind/toplevel.cpp:381
 #, kde-format
 msgid "Go to Next Layout"
 msgstr "מעבר לפריסה הבאה"
 
-#: kcachegrind/toplevel.cpp:386
+#: kcachegrind/toplevel.cpp:385
 #, kde-format
 msgid "&Go to Previous"
 msgstr "מעבר ל&קודמת"
 
-#: kcachegrind/toplevel.cpp:389
+#: kcachegrind/toplevel.cpp:388
 #, kde-format
 msgid "Go to Previous Layout"
 msgstr "מעבר לפריסה הקודמת"
 
-#: kcachegrind/toplevel.cpp:393
+#: kcachegrind/toplevel.cpp:392
 #, kde-format
 msgid "&Restore to Default"
 msgstr "&שחזור לברירת המחדל"
 
-#: kcachegrind/toplevel.cpp:395
+#: kcachegrind/toplevel.cpp:394
 #, kde-format
 msgid "Restore Layouts to Default"
 msgstr "שחזור הפריסות לברירת המחדל"
 
-#: kcachegrind/toplevel.cpp:399
+#: kcachegrind/toplevel.cpp:398
 #, kde-format
 msgid "&Save as Default"
 msgstr "שמירה כ&ברירת מחדל"
 
-#: kcachegrind/toplevel.cpp:401
+#: kcachegrind/toplevel.cpp:400
 #, kde-format
 msgid "Save Layouts as Default"
 msgstr "שמירת פריסות כברירת מחדל"
 
-#: kcachegrind/toplevel.cpp:412
+#: kcachegrind/toplevel.cpp:411
 #, kde-format
 msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
 msgstr "<b>חדש</b><p>פתיחת חלון KCachegrind ריק חדש.</p>"
 
-#: kcachegrind/toplevel.cpp:416
+#: kcachegrind/toplevel.cpp:415
 #, kde-format
 msgid "&Add..."
 msgstr "הו&ספה…"
 
-#: kcachegrind/toplevel.cpp:418
+#: kcachegrind/toplevel.cpp:417
 #, kde-format
 msgid ""
 "<b>Add Profile Data</b><p>This opens an additional profile data file in the "
@@ -777,23 +777,23 @@ msgid ""
 msgstr ""
 "<b>הוספת נתוני פרופיל</b><p>פותח קובץ נתוני פרופיל חדש בחלון הנוכחי.</p>"
 
-#: kcachegrind/toplevel.cpp:424
+#: kcachegrind/toplevel.cpp:423
 #, kde-format
 msgctxt "Reload a document"
 msgid "&Reload"
 msgstr "&ריענון"
 
-#: kcachegrind/toplevel.cpp:427
+#: kcachegrind/toplevel.cpp:426
 #, kde-format
 msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
 msgstr "<b>ריענון נתוני פרופיל</b><p>טוען גם חלקים חדשים שנוצרו.</p>"
 
-#: kcachegrind/toplevel.cpp:432
+#: kcachegrind/toplevel.cpp:431
 #, kde-format
 msgid "&Export Graph"
 msgstr "יי&צוא תרשים"
 
-#: kcachegrind/toplevel.cpp:435
+#: kcachegrind/toplevel.cpp:434
 #, kde-format
 msgid ""
 "<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
@@ -802,12 +802,12 @@ msgstr ""
 "<b>ייצוא תרשים קריאות</b><p>יצירת קובץ עם סיומת ‎.dot לכלים של חבילת GraphViz."
 "</p>"
 
-#: kcachegrind/toplevel.cpp:443
+#: kcachegrind/toplevel.cpp:442
 #, kde-format
 msgid "&Force Dump"
 msgstr "&אילוץ היטל"
 
-#: kcachegrind/toplevel.cpp:446
+#: kcachegrind/toplevel.cpp:445
 #, kde-format
 msgid ""
 "<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
@@ -839,7 +839,7 @@ msgstr ""
 "לה אבחון פרופיל, ניתן להעיר את Callgrind למשל על ידי שינוי גודל חלון של "
 "התוכנית.</p>"
 
-#: kcachegrind/toplevel.cpp:471
+#: kcachegrind/toplevel.cpp:470
 #, kde-format
 msgid ""
 "<b>Open Profile Data</b><p>This opens a profile data file, with possible "
@@ -848,57 +848,57 @@ msgstr ""
 "<b>פתיחת נתוני פרופיל</b><p>פותח קובץ נתוני פרופיל, עם אפשרות לריבוי חלקים</"
 "p>"
 
-#: kcachegrind/toplevel.cpp:486
+#: kcachegrind/toplevel.cpp:485
 #, kde-format
 msgid "Show/Hide the Parts Overview Dockable"
 msgstr "הצגת/הסתרת מעגן סקירת החלקים הגמיש"
 
-#: kcachegrind/toplevel.cpp:491
+#: kcachegrind/toplevel.cpp:490
 #, kde-format
 msgid "Call Stack"
 msgstr "מחסנית קריאות"
 
-#: kcachegrind/toplevel.cpp:494
+#: kcachegrind/toplevel.cpp:493
 #, kde-format
 msgid "Show/Hide the Call Stack Dockable"
 msgstr "הצגת/הסתרת מעגן מחסנית הקריאות הגמיש"
 
-#: kcachegrind/toplevel.cpp:499
+#: kcachegrind/toplevel.cpp:498
 #, kde-format
 msgid "Function Profile"
 msgstr "פרופיל פונקציות"
 
-#: kcachegrind/toplevel.cpp:502
+#: kcachegrind/toplevel.cpp:501
 #, kde-format
 msgid "Show/Hide the Function Profile Dockable"
 msgstr "הצגת/הסתרת מעגן פרופיל הפונקציות הגמיש"
 
-#: kcachegrind/toplevel.cpp:510
+#: kcachegrind/toplevel.cpp:509
 #, kde-format
 msgid "Show/Hide the Profile Dumps Dockable"
 msgstr "הצגת/הסתרת מעגן היטלי הפרופילים הגמיש"
 
-#: kcachegrind/toplevel.cpp:517
+#: kcachegrind/toplevel.cpp:516
 #, kde-format
 msgid "Relative"
 msgstr "יחסי"
 
-#: kcachegrind/toplevel.cpp:519
+#: kcachegrind/toplevel.cpp:518
 #, kde-format
 msgid "Show relative instead of absolute costs"
 msgstr "הצגת עלות יחסית במקום מוחלטת"
 
-#: kcachegrind/toplevel.cpp:525
+#: kcachegrind/toplevel.cpp:524
 #, kde-format
 msgid "Relative to Parent"
 msgstr "ביחס להורה"
 
-#: kcachegrind/toplevel.cpp:528
+#: kcachegrind/toplevel.cpp:527
 #, kde-format
 msgid "Show percentage costs relative to parent"
 msgstr "הצגת אחוז עלויות ביחס להורה"
 
-#: kcachegrind/toplevel.cpp:532
+#: kcachegrind/toplevel.cpp:531
 #, kde-format
 msgid ""
 "<b>Show percentage costs relative to parent</b><p>If this is switched off, "
@@ -922,12 +922,12 @@ msgstr ""
 "td></tr></table></ul><p>(*) רק אם קיבוץ פונקציות מופעל (למשל קיבוץ עצמי ELF)."
 "</p>"
 
-#: kcachegrind/toplevel.cpp:549
+#: kcachegrind/toplevel.cpp:548
 #, kde-format
 msgid "Cycle Detection"
 msgstr "זיהוי מעגליות"
 
-#: kcachegrind/toplevel.cpp:552
+#: kcachegrind/toplevel.cpp:551
 #, kde-format
 msgid ""
 "<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
@@ -950,17 +950,17 @@ msgstr ""
 "הצער, ביישומי ממשק משתמש, זה יוביל לעתים קרובות ללולאות שווא ענקיות, מה "
 "שהופך את הניתוח לבלתי אפשרי; לכן, קיימת האפשרות לכבות את זה.</p>"
 
-#: kcachegrind/toplevel.cpp:568
+#: kcachegrind/toplevel.cpp:567
 #, kde-format
 msgid "Shorten Templates"
 msgstr "קיצור תבניות"
 
-#: kcachegrind/toplevel.cpp:570
+#: kcachegrind/toplevel.cpp:569
 #, kde-format
 msgid "Hide Template Parameters in C++ Symbols"
 msgstr "הצגת משתני תבנית בסמלי C++‎"
 
-#: kcachegrind/toplevel.cpp:571
+#: kcachegrind/toplevel.cpp:570
 #, kde-format
 msgid ""
 "<b>Hide Template Parameters in C++ Symbols</b><p>If this is switched on, "
@@ -974,12 +974,12 @@ msgstr ""
 "תבנית מקונן אם וכאשר.</p><p>במצב הזה, אפשר לעבור עם סמן העכבר על גבי תווית "
 "סמל מופעל כדי להציג חלונית צצה עם סמל לא מקוצר.</p>"
 
-#: kcachegrind/toplevel.cpp:587
+#: kcachegrind/toplevel.cpp:586
 #, kde-format
 msgid "&Up"
 msgstr "למ&עלה"
 
-#: kcachegrind/toplevel.cpp:596
+#: kcachegrind/toplevel.cpp:595
 #, kde-format
 msgid ""
 "<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
@@ -988,82 +988,82 @@ msgstr ""
 "<b>עלייה למעלה</b><p>מעבר לקורא האחרון של הפונקציה הנוכחית. אם לא ביקרת באף "
 "קורא, להשתמש בזה עם העלות הגבוהה ביותר.</p>"
 
-#: kcachegrind/toplevel.cpp:613
+#: kcachegrind/toplevel.cpp:612
 #, kde-format
 msgid "Go back in function selection history"
 msgstr "אחורה בהיסטוריית בחירת הפונקציות"
 
-#: kcachegrind/toplevel.cpp:627
+#: kcachegrind/toplevel.cpp:626
 #, kde-format
 msgid "Go forward in function selection history"
 msgstr "התקדמות בהיסטוריית בחירת הפונקציות"
 
-#: kcachegrind/toplevel.cpp:632 kcachegrind/toplevel.cpp:1503
+#: kcachegrind/toplevel.cpp:631 kcachegrind/toplevel.cpp:1502
 #, kde-format
 msgid "Primary Event Type"
 msgstr "סוג אירוע עיקרי"
 
-#: kcachegrind/toplevel.cpp:633
+#: kcachegrind/toplevel.cpp:632
 #, kde-format
 msgid "Select primary event type of costs"
 msgstr "בחירת סוג אירוע עיקרי של עלויות"
 
-#: kcachegrind/toplevel.cpp:655 kcachegrind/toplevel.cpp:1508
+#: kcachegrind/toplevel.cpp:654 kcachegrind/toplevel.cpp:1507
 #, kde-format
 msgid "Secondary Event Type"
 msgstr "סוג אירוע משני"
 
-#: kcachegrind/toplevel.cpp:656
+#: kcachegrind/toplevel.cpp:655
 #, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
 msgstr "בחירת סוג אירוע משני של עלות, כלומר מופיע בפירושים"
 
-#: kcachegrind/toplevel.cpp:665
+#: kcachegrind/toplevel.cpp:664
 #, kde-format
 msgid "Grouping"
 msgstr "קיבוץ"
 
-#: kcachegrind/toplevel.cpp:667
+#: kcachegrind/toplevel.cpp:666
 #, kde-format
 msgid "Select how functions are grouped into higher level cost items"
 msgstr "בחירה איך פונקציות מקובצות לפריטי עלות ברמה גבוהה יותר"
 
-#: kcachegrind/toplevel.cpp:673
+#: kcachegrind/toplevel.cpp:672
 #, kde-format
 msgid "(No Grouping)"
 msgstr "(ללא קיבוץ)"
 
-#: kcachegrind/toplevel.cpp:685
+#: kcachegrind/toplevel.cpp:684
 #, kde-format
 msgid "Split"
 msgstr "פיצול"
 
-#: kcachegrind/toplevel.cpp:688
+#: kcachegrind/toplevel.cpp:687
 #, kde-format
 msgid "Show two information panels"
 msgstr "הצגת שני לוחות מידע"
 
-#: kcachegrind/toplevel.cpp:694
+#: kcachegrind/toplevel.cpp:693
 #, kde-format
 msgid "Split Horizontal"
 msgstr "פיצול אופקי"
 
-#: kcachegrind/toplevel.cpp:697
+#: kcachegrind/toplevel.cpp:696
 #, kde-format
 msgid "Change Split Orientation when main window is split."
 msgstr "החלפת כיוון פיצול כשהחלון הראשי מפוצל."
 
-#: kcachegrind/toplevel.cpp:891
+#: kcachegrind/toplevel.cpp:890
 #, kde-format
 msgid "Select Callgrind Profile Data"
 msgstr "בחירת נתוני פרופיל Callgrind"
 
-#: kcachegrind/toplevel.cpp:893 kcachegrind/toplevel.cpp:961
+#: kcachegrind/toplevel.cpp:892 kcachegrind/toplevel.cpp:960
 #, kde-format
 msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
 msgstr "נתוני פרופיל Callgrind ‏(cachegrind.out*‎‏ callgrind.out*‎);;כל הקבצים (*)"
 
-#: kcachegrind/toplevel.cpp:921 kcachegrind/toplevel.cpp:950
+#: kcachegrind/toplevel.cpp:920 kcachegrind/toplevel.cpp:949
 #, kde-format
 msgid ""
 "Could not open the file \"%1\". Check it exists and you have enough "
@@ -1072,103 +1072,103 @@ msgstr ""
 "לא ניתן לפתוח את הקובץ „%1”. נא לבדוק שהוא קיים ושיש לך הרשאות מספיקות כדי "
 "לקרוא אותו."
 
-#: kcachegrind/toplevel.cpp:959
+#: kcachegrind/toplevel.cpp:958
 #, kde-format
 msgid "Add Callgrind Profile Data"
 msgstr "הוספת נתוני פרופיל Callgrind"
 
-#: kcachegrind/toplevel.cpp:1129 kcachegrind/toplevel.cpp:1456
+#: kcachegrind/toplevel.cpp:1128 kcachegrind/toplevel.cpp:1455
 #, kde-format
 msgid "(Hidden)"
 msgstr "(מוסתר)"
 
-#: kcachegrind/toplevel.cpp:1513
+#: kcachegrind/toplevel.cpp:1512
 #, kde-format
 msgid "Hide"
 msgstr "הסתרה"
 
-#: kcachegrind/toplevel.cpp:1555
+#: kcachegrind/toplevel.cpp:1554
 #, kde-format
 msgid "Show Absolute Cost"
 msgstr "הצגת עלות מוחלטת"
 
-#: kcachegrind/toplevel.cpp:1558
+#: kcachegrind/toplevel.cpp:1557
 #, kde-format
 msgid "Show Relative Cost"
 msgstr "הצגת עלות יחסית"
 
-#: kcachegrind/toplevel.cpp:1593
+#: kcachegrind/toplevel.cpp:1592
 #, kde-format
 msgid "Go Back"
 msgstr "חזרה אחורה"
 
-#: kcachegrind/toplevel.cpp:1594
+#: kcachegrind/toplevel.cpp:1593
 #, kde-format
 msgid "Go Forward"
 msgstr "התקדמות לבא"
 
-#: kcachegrind/toplevel.cpp:1595
+#: kcachegrind/toplevel.cpp:1594
 #, kde-format
 msgid "Go Up"
 msgstr "עלייה למעלה"
 
-#: kcachegrind/toplevel.cpp:1807
+#: kcachegrind/toplevel.cpp:1806
 #, kde-format
 msgid "Layout Count: %1"
 msgstr "ספירת פריסות: %1"
 
-#: kcachegrind/toplevel.cpp:1814
+#: kcachegrind/toplevel.cpp:1813
 #, kde-format
 msgid "No profile data file loaded."
 msgstr "לא נטען קובץ נתוני פרופיל."
 
-#: kcachegrind/toplevel.cpp:1823
+#: kcachegrind/toplevel.cpp:1822
 #, kde-format
 msgid "Total %1 Cost: %2"
 msgstr "סך הכול עלות %1:‏ %2"
 
-#: kcachegrind/toplevel.cpp:1835
+#: kcachegrind/toplevel.cpp:1834
 #, kde-format
 msgid "No event type selected"
 msgstr "לא נבחר סוג אירוע"
 
-#: kcachegrind/toplevel.cpp:2013
+#: kcachegrind/toplevel.cpp:2012
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
 msgstr "לא ניתן לאתר את מזהה התהליך שמקבל בקשות היטל"
 
-#: kcachegrind/toplevel.cpp:2059
+#: kcachegrind/toplevel.cpp:2058
 #, kde-format
 msgid "Error running callgrind_control"
 msgstr "שגיאה בהרצת callgrind_control"
 
-#: kcachegrind/toplevel.cpp:2098 kcachegrind/toplevel.cpp:2135
-#: kcachegrind/toplevel.cpp:2172
+#: kcachegrind/toplevel.cpp:2097 kcachegrind/toplevel.cpp:2134
+#: kcachegrind/toplevel.cpp:2171
 #, kde-format
 msgid "(No Stack)"
 msgstr "(אין מחסנית)"
 
-#: kcachegrind/toplevel.cpp:2104
+#: kcachegrind/toplevel.cpp:2103
 #, kde-format
 msgid "(No next function)"
 msgstr "(אין פונקציה הבאה)"
 
-#: kcachegrind/toplevel.cpp:2141
+#: kcachegrind/toplevel.cpp:2140
 #, kde-format
 msgid "(No previous function)"
 msgstr "(אין פונקציה קודמת)"
 
-#: kcachegrind/toplevel.cpp:2177
+#: kcachegrind/toplevel.cpp:2176
 #, kde-format
 msgid "(No Function Up)"
 msgstr "(אין פונקציה למעלה)"
 
-#: kcachegrind/toplevel.cpp:2309 kcachegrind/toplevel.cpp:2323
+#: kcachegrind/toplevel.cpp:2308 kcachegrind/toplevel.cpp:2322
 #, kde-format
 msgid "Loading %1"
 msgstr "%1 בטעינה"
 
-#: kcachegrind/toplevel.cpp:2317
+#: kcachegrind/toplevel.cpp:2316
 #, kde-format
 msgid "Error loading %1: %2"
 msgstr "שגיאה בטעינת %1: %2"
