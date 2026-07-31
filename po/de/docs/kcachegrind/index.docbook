@@ -254,7 +254,7 @@
 >. Früher hieß das Programm &calltree;, der Name war jedoch sehr irreführend. </para>
 
 <para
->Am häufigsten wird das Programm benutzt, indem <userinput
+>Am häufigsten wird das Programm verwendet, indem <userinput
 ><command
 >valgrind</command
 > <option
@@ -281,7 +281,7 @@
 > erzeugt, die Sie dann in &kcachegrind; laden können. </para>
 
 <para
->Eine fortgeschrittenere Methode ist es, Profiling-Daten immer nur dann zu erzeugen, wenn eine bestimmte Funktion Ihres Programms aufgerufen wird. Wenn Sie beispielsweise für &konqueror; die Profiling-Daten zum Rendern einer Webseite erzeugen möchten, könnten Sie Daten erheben, wenn der Menüeintrag Ansicht/Aktualisieren benutzt wird (dies ist gleichzusetzen mit einem Aufruf von <menuchoice
+>Eine fortgeschrittenere Methode ist es, Profiling-Daten immer nur dann zu erzeugen, wenn eine bestimmte Funktion Ihres Programms aufgerufen wird. Wenn Sie beispielsweise für &konqueror; die Profiling-Daten zum Rendern einer Webseite erzeugen möchten, könnten Sie Daten erheben, wenn der Menüeintrag Ansicht/Aktualisieren verwendet wird (dies ist gleichzusetzen mit einem Aufruf von <menuchoice
 ><guimenu
 >Ansicht</guimenu
 ><guimenuitem
@@ -289,7 +289,7 @@
 ></menuchoice
 >). Dies entspricht dem Aufruf von <methodname
 >KonqMainWindow::slotReload</methodname
->. Benutzen Sie dazu den folgenden Aufruf: <blockquote
+>. Verwenden Sie dazu den folgenden Aufruf: <blockquote
 ><para
 ><userinput
 > <command
@@ -370,7 +370,7 @@
 > eine Datei geöffnet haben, sehen Sie eine Navigationsleiste mit der Liste der Funktionen links und dem Hauptbereich rechts, in dem die ausgewählte Funktion dargestellt wird. Dieser Bereich kann so eingerichtet werden, dass er mehrere Ansichten anzeigt. </para>
 
 <para
->Beim ersten Start ist dieser Bereich in zwei übereinander angeordnete Ansichten aufgeteilt, jede Ansicht kann auswählbare Unterfenster enthalten. Benutzen Sie das Kontextmenü der Unterfensterreiter oder den Trennbalken, um diese Ansichten anzupassen, Um schnell zwischen den verschiedenen Ansichten zu wechseln, benutzen Sie <menuchoice
+>Beim ersten Start ist dieser Bereich in zwei übereinander angeordnete Ansichten aufgeteilt, jede Ansicht kann auswählbare Unterfenster enthalten. Verwenden Sie das Kontextmenü der Unterfensterreiter oder den Trennbalken, um diese Ansichten anzupassen, Um schnell zwischen den verschiedenen Ansichten zu wechseln, verwenden Sie <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;<keycap
@@ -724,7 +724,7 @@
 ></term>
 <listitem
 ><para
->Die Aufteilung der Dateien eines Profildaten-Abschnitts wird in Gruppen  angezeigt, je nachdem, welcher Gruppentyp ausgewählt ist. Sind zum Beispiel &ELF;-Objektgruppen ausgewählt, sehen Sie farbige Rechtecke für jedes benutzte &ELF;-Objekt (Shared-Library oder Programmdatei), deren Größe durch die verursachten Kosten bestimmt wird. </para
+>Die Aufteilung der Dateien eines Profildaten-Abschnitts wird in Gruppen  angezeigt, je nachdem, welcher Gruppentyp ausgewählt ist. Sind zum Beispiel &ELF;-Objektgruppen ausgewählt, sehen Sie farbige Rechtecke für jedes verwendete &ELF;-Objekt (Shared-Library oder Programmdatei), deren Größe durch die verursachten Kosten bestimmt wird. </para
 ></listitem>
 </varlistentry>
 <varlistentry>
@@ -1051,7 +1051,7 @@
 </question>
 <answer>
 <para
->&kcachegrind; ist nützlich für die späte Software-Entwicklungs-Phase Profiling. Wenn man keine Anwendungen entwickelt, dann braucht man &kcachegrind; nicht. </para>
+>&kcachegrind; ist nützlich für die späte Software-Entwicklungs-Phase Profiling. Wenn man keine Anwendungen entwickelt, dann benötigt man &kcachegrind; nicht. </para>
 </answer>
 </qandaentry>
 
