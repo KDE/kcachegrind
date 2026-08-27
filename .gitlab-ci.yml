@@ -4,5 +4,4 @@
 include:
   - project: sysadmin/ci-utilities
     file:
-      - /gitlab-templates/flatpak.yml
       - /gitlab-templates/linux-qt6-lts.yml
