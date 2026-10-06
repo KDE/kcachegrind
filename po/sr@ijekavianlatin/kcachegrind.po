@@ -1,0 +1,1193 @@
+# Translation of kcachegrind.po into Serbian.
+# Slobodan Simic <slsimic@gmail.com>, 2003, 2017.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2003, 2004, 2005, 2006, 2011, 2015, 2016.
+# Nemanja Hiršl <nemhirsl@gmail.com>, 2026.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcachegrind\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2026-07-03 00:48+0000\n"
+"PO-Revision-Date: 2026-10-05 15:05+0200\n"
+"Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
+"Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
+"Language: sr@ijekavianlatin\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+"X-Environment: kde\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Slobodan Simić,Časlav Ilić,Nemanja Hiršl"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "slsimic@gmail.com,caslav.ilic@gmx.net,nemhirsl@gmail.com"
+
+#: kcachegrind/configdlg.cpp:141 kcachegrind/configdlg.cpp:329
+#: kcachegrind/configdlg.cpp:348
+#, kde-format
+msgid "(always)"
+msgstr "(uvijek)"
+
+#: kcachegrind/configdlg.cpp:355
+#, kde-format
+msgid "Choose Source Folder"
+msgstr "Izbor izvorne fascikle"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, ConfigDlgBase)
+#: kcachegrind/configdlgbase.ui:14
+#, kde-format
+msgid "Configuration"
+msgstr "Postava"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab1)
+#: kcachegrind/configdlgbase.ui:24
+#, kde-format
+msgid "General"
+msgstr "Opšte"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel5)
+#: kcachegrind/configdlgbase.ui:34
+#, kde-format
+msgid "Maximum number of items in lists:"
+msgstr "Najveći broj stavki u listama:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel3)
+#: kcachegrind/configdlgbase.ui:44
+#, kde-format
+msgid "Truncate symbols in tooltips and context menus"
+msgstr "Skraćivanje simbola u oblačićima i kontekstnim menijima"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2)
+#: kcachegrind/configdlgbase.ui:70
+#, kde-format
+msgid "when more than:"
+msgstr "kada ih je više od:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2_2)
+#: kcachegrind/configdlgbase.ui:80
+#, kde-format
+msgid "when longer than:"
+msgstr "kada su duži od:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3)
+#: kcachegrind/configdlgbase.ui:90
+#, kde-format
+msgid "Precision of percentage values:"
+msgstr "Preciznost procentualnih vrijednosti:"
+
+#. i18n: ectx: property (toolTip), widget (QSpinBox, maxListEdit)
+#: kcachegrind/configdlgbase.ui:113
+#, kde-format
+msgid "The Maximum Number of List Items should be below 500."
+msgstr "Najveći broj stavki u listama treba da bude ispod 500."
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1)
+#: kcachegrind/configdlgbase.ui:158
+#, kde-format
+msgid "Cost Item Colors"
+msgstr "Boje troškovnih stavki"
+
+#. i18n: ectx: property (text), widget (QCheckBox, fileCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, classCheck)
+#. i18n: ectx: property (text), widget (QCheckBox, objectCheck)
+#: kcachegrind/configdlgbase.ui:185 kcachegrind/configdlgbase.ui:219
+#: kcachegrind/configdlgbase.ui:233
+#, kde-format
+msgid "Automatic"
+msgstr "Automatska"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4)
+#: kcachegrind/configdlgbase.ui:192
+#, kde-format
+msgid "Object:"
+msgstr "Objekat:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2_2)
+#: kcachegrind/configdlgbase.ui:202
+#, kde-format
+msgid "Class:"
+msgstr "Klasa:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
+#: kcachegrind/configdlgbase.ui:240
+#, kde-format
+msgid "File:"
+msgstr "Fajl:"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/configdlgbase.ui:321
+#, kde-format
+msgid "Annotations"
+msgstr "Tumačenja"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_3_2)
+#: kcachegrind/configdlgbase.ui:329
+#, kde-format
+msgid "Context lines in annotations:"
+msgstr "Kontekstni redovi u tumačenjima:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
+#: kcachegrind/configdlgbase.ui:350
+#, kde-format
+msgid "Source Folders"
+msgstr "Izvorne fascikle"
+
+#. i18n: ectx: property (text), widget (QPushButton, addDirButton)
+#: kcachegrind/configdlgbase.ui:364
+#, kde-format
+msgid "Add"
+msgstr "Dodaj"
+
+#. i18n: ectx: property (text), widget (QPushButton, deleteDirButton)
+#: kcachegrind/configdlgbase.ui:371
+#, kde-format
+msgid "Delete"
+msgstr "Obriši"
+
+#. i18n: ectx: property (text), widget (QTreeWidget, dirList)
+#: kcachegrind/configdlgbase.ui:409
+#, kde-format
+msgid "Object / Related Source Base"
+msgstr "Objekat / odgovarajuća izvorna baza"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
+#: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:285
+#: kcachegrind/toplevel.cpp:508
+#, kde-format
+msgid "Profile Dumps"
+msgstr "Izbačaji profila"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:24
+#, kde-format
+msgid "Target"
+msgstr "Cilj"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:46
+#, kde-format
+msgid "Time"
+msgstr "Vrijeme"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView1)
+#: kcachegrind/dumpselectionbase.ui:57
+#, kde-format
+msgid "Path"
+msgstr "Putanja"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab)
+#: kcachegrind/dumpselectionbase.ui:70
+#, kde-format
+msgid "Options"
+msgstr "Opcije"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: kcachegrind/dumpselectionbase.ui:87
+#, kde-format
+msgid "Target command:"
+msgstr "Ciljna naredba:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: kcachegrind/dumpselectionbase.ui:100
+#, kde-format
+msgid "Profiler options:"
+msgstr "Opcije profilisanja:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:111
+#, kde-format
+msgid "Option"
+msgstr "Opcija"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:122 kcachegrind/dumpselectionbase.ui:650
+#, kde-format
+msgid "Value"
+msgstr "Vrijednost"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:133
+#, kde-format
+msgid "Trace"
+msgstr "Trag"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:146 kcachegrind/dumpselectionbase.ui:730
+#, kde-format
+msgid "Jumps"
+msgstr "Skokovi"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:160
+#, kde-format
+msgid "Instructions"
+msgstr "Instrukcije"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:175 kcachegrind/dumpselectionbase.ui:745
+#, kde-format
+msgid "Events"
+msgstr "Događaji"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:188
+#, kde-format
+msgid "Full Cache"
+msgstr "Pun keš"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:202
+#, kde-format
+msgid "Custom"
+msgstr "Posebno"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:217
+#, kde-format
+msgid "Collect"
+msgstr "Sakupi"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:230
+#, kde-format
+msgid "At Startup"
+msgstr "Pri pokretanju"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:244
+#, kde-format
+msgid "While In"
+msgstr "Dok je u"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:259
+#, kde-format
+msgid "Skip"
+msgstr "Preskoči"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:272
+#, kde-format
+msgid "PLT"
+msgstr "PLT"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:286 kcachegrind/dumpselectionbase.ui:898
+#, kde-format
+msgid "Function"
+msgstr "Funkcija"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:301
+#, kde-format
+msgid "Dump Profile"
+msgstr "Izbaci profil"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:314
+#, kde-format
+msgid "Every BBs"
+msgstr "Svakih BBs"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:328 kcachegrind/dumpselectionbase.ui:370
+#, kde-format
+msgid "On Entering"
+msgstr "Pri ulasku"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:342
+#, kde-format
+msgid "On Leaving"
+msgstr "Pri izlasku"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:357
+#, kde-format
+msgid "Zero Events"
+msgstr "Nuliraj događaje"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:385
+#, kde-format
+msgid "Separate"
+msgstr "Razdvojeni"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:398
+#, kde-format
+msgid "Threads"
+msgstr "Niti"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:412
+#, kde-format
+msgid "Recursions"
+msgstr "Rekurzije"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
+#: kcachegrind/dumpselectionbase.ui:426
+#, kde-format
+msgid "Call Chain"
+msgstr "Lanac poziva"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
+#: kcachegrind/dumpselectionbase.ui:452
+#, kde-format
+msgid "Custom profiler options:"
+msgstr "Posebne opcije profilisanja:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton2)
+#: kcachegrind/dumpselectionbase.ui:486
+#, kde-format
+msgid "Run New Profile"
+msgstr "Pokreni novi profil"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab2)
+#: kcachegrind/dumpselectionbase.ui:496
+#, kde-format
+msgid "Info"
+msgstr "Info"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: kcachegrind/dumpselectionbase.ui:505
+#, kde-format
+msgid "Dump reason:"
+msgstr "Razlog izbačaja:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: kcachegrind/dumpselectionbase.ui:518
+#, kde-format
+msgid "Event summary:"
+msgstr "Sažetak događaja:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:529
+#, kde-format
+msgid "Name"
+msgstr "Ime"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4)
+#: kcachegrind/dumpselectionbase.ui:540
+#, kde-format
+msgid "Sum"
+msgstr "Zbir"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: kcachegrind/dumpselectionbase.ui:554
+#, kde-format
+msgid "Miscellaneous:"
+msgstr "Razno:"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6)
+#: kcachegrind/dumpselectionbase.ui:588
+#, kde-format
+msgid "Show"
+msgstr "Prikaži"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton5)
+#: kcachegrind/dumpselectionbase.ui:595
+#, kde-format
+msgid "Compare"
+msgstr "Uporedi"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab3)
+#: kcachegrind/dumpselectionbase.ui:605
+#, kde-format
+msgid "State"
+msgstr "Stanje"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton1)
+#: kcachegrind/dumpselectionbase.ui:619
+#, kde-format
+msgid "Update"
+msgstr "Ažuriraj"
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox1)
+#: kcachegrind/dumpselectionbase.ui:626
+#, kde-format
+msgid "Every [s]:"
+msgstr "Svakih [s]:"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:639
+#, kde-format
+msgid "Counter"
+msgstr "Brojač"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:661
+#, kde-format
+msgid "Dumps Done"
+msgstr "Obavljeni izbačaji"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:675
+#, kde-format
+msgid "Is Collecting"
+msgstr "Sakuplja"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:689
+#, kde-format
+msgid "Executed"
+msgstr "Izvršeno"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:702
+#, kde-format
+msgid "Basic Blocks"
+msgstr "Osnovni blokovi"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:716
+#, kde-format
+msgid "Calls"
+msgstr "Pozivi"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:758
+#, kde-format
+msgid "Ir"
+msgstr "Ir"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:773
+#, kde-format
+msgid "Distinct"
+msgstr "Različiti"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:786
+#, kde-format
+msgid "ELF Objects"
+msgstr "ELF objekti"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:800
+#, kde-format
+msgid "Functions"
+msgstr "Funkcije"
+
+#. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
+#: kcachegrind/dumpselectionbase.ui:814
+#, kde-format
+msgid "Contexts"
+msgstr "Konteksti"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: kcachegrind/dumpselectionbase.ui:845
+#, kde-format
+msgid "Stack trace:"
+msgstr "Trag steka:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, checkBox2)
+#: kcachegrind/dumpselectionbase.ui:855
+#, kde-format
+msgid "Sync."
+msgstr "Sinh."
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:865
+#, kde-format
+msgid "#"
+msgstr "#"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:876
+#, kde-format
+msgid "Incl."
+msgstr "Uklj."
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:887
+#, kde-format
+msgid "Called"
+msgstr "Pozvan"
+
+#. i18n: ectx: property (text), widget (Q3ListView, listView7)
+#: kcachegrind/dumpselectionbase.ui:909
+#, kde-format
+msgid "Location"
+msgstr "Lokacija"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton7)
+#: kcachegrind/dumpselectionbase.ui:928
+#, kde-format
+msgid "Start"
+msgstr "Pokreni"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton6_2)
+#: kcachegrind/dumpselectionbase.ui:951
+#, kde-format
+msgid "Zero"
+msgstr "Nuliraj"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton4)
+#: kcachegrind/dumpselectionbase.ui:958
+#, kde-format
+msgid "Dump"
+msgstr "Izbaci"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tab4)
+#: kcachegrind/dumpselectionbase.ui:968
+#, kde-format
+msgid "Messages"
+msgstr "Poruke"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton9)
+#: kcachegrind/dumpselectionbase.ui:985
+#, kde-format
+msgid "Kill Run"
+msgstr "Ukini izvršavanje"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton8)
+#: kcachegrind/dumpselectionbase.ui:1008
+#, kde-format
+msgid "Clear"
+msgstr "Očisti"
+
+#. i18n: ectx: Menu (file)
+#: kcachegrind/kcachegrindui.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&Fajl"
+
+#. i18n: ectx: Menu (view)
+#: kcachegrind/kcachegrindui.rc:10
+#, kde-format
+msgid "&View"
+msgstr "&Prikaz"
+
+#. i18n: ectx: Menu (layouts)
+#: kcachegrind/kcachegrindui.rc:15
+#, kde-format
+msgid "&Layout"
+msgstr "&Raspored"
+
+#. i18n: ectx: Menu
+#: kcachegrind/kcachegrindui.rc:33
+#, kde-format
+msgid "Sidebars"
+msgstr "Bočne trake"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kcachegrind/kcachegrindui.rc:42
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Glavna traka"
+
+#. i18n: ectx: ToolBar (stateToolBar)
+#: kcachegrind/kcachegrindui.rc:54
+#, kde-format
+msgid "State Toolbar"
+msgstr "Traka alatki stanja"
+
+#: kcachegrind/main.cpp:34
+#, kde-format
+msgid "KCachegrind"
+msgstr "KCacheGrind"
+
+#: kcachegrind/main.cpp:36
+#, kde-format
+msgid "KDE Frontend for Callgrind/Cachegrind"
+msgstr "KDE pročelje za Callgrind/Cachegrind"
+
+#: kcachegrind/main.cpp:38
+#, kde-format
+msgid "(C) 2002 - 2016"
+msgstr "© 2002–2016"
+
+#: kcachegrind/main.cpp:40
+#, kde-format
+msgid "Josef Weidendorfer"
+msgstr "Jozef Vajdendorfer"
+
+#: kcachegrind/main.cpp:41
+#, kde-format
+msgid "Author/Maintainer"
+msgstr "Autor/održavalac"
+
+#: kcachegrind/main.cpp:68
+#, kde-format
+msgid "Show information of this trace"
+msgstr "Prikaži informacije o ovom tragu"
+
+#: kcachegrind/main.cpp:68
+#, kde-format
+msgid "[trace...]"
+msgstr "[trag...]"
+
+#: kcachegrind/toplevel.cpp:254 kcachegrind/toplevel.cpp:482
+#, kde-format
+msgid "Parts Overview"
+msgstr "Pregled dijelova"
+
+#: kcachegrind/toplevel.cpp:263
+#, kde-format
+msgid "Top Cost Call Stack"
+msgstr "Stek poziva najvećeg troška"
+
+#: kcachegrind/toplevel.cpp:265
+#, kde-format
+msgid ""
+"<b>The Top Cost Call Stack</b><p>This is a purely fictional 'most probable' "
+"call stack. It is built up by starting with the current selected function "
+"and adds the callers/callees with highest cost at the top and to bottom.</"
+"p><p>The <b>Cost</b> and <b>Calls</b> columns show the cost used for all "
+"calls from the function in the line above.</p>"
+msgstr ""
+"<b>Stek poziva najvećeg troška</b><p>Ovo je čisto zamišljeni, "
+"„najvjerovatniji“ stek poziva. On se gradi počev od trenutno izabrane "
+"funkcije, dodavanjem pozivača/pozvanih sa najvećim troškom na vrh i na dno.</"
+"p><p>Kolone <b>Trošak</b> i <b>Pozivi</b> prikazuju trošak za sve pozive iz "
+"funkcije u gornjem redu.</p>"
+
+#: kcachegrind/toplevel.cpp:279
+#, kde-format
+msgid "Flat Profile"
+msgstr "Ravan profil"
+
+#: kcachegrind/toplevel.cpp:292
+#, kde-format
+msgid ""
+"<b>Profile Dumps</b><p>This dockable shows in the top part the list of "
+"loadable profile dumps in all subdirectories of: <ul><li>current working "
+"directory of KCachegrind, i.e. where it was started from, and </li><li>the "
+"default profile dump directory given in the configuration.</li></ul> The "
+"list is sorted according to the target command profiled in the corresponding "
+"dump.</p><p>On selecting a profile dump, information for it is shown in the "
+"bottom area of the dockable: <ul><li><b>Options</b> allows you to view the "
+"profiled command and profile options of this dump. By changing any item, a "
+"new (yet unexisting) profile template is created. Press <b>Run Profile</b> "
+"to start a profile run with these options in the background. </"
+"li><li><b>Info</b> gives detailed info on the selected dump like event cost "
+"summary and properties of the simulated cache. </li><li><b>State</b> is only "
+"available for current happening profiles runs. Press <b>Update</b> to see "
+"different counters of the run, and a stack trace of the current position in "
+"the program profiled. Check the <b>Every</b> option to let KCachegrind "
+"regularly poll these data. Check the <b>Sync</b> option to let the dockable "
+"activate the top function in the current loaded dump.</li></ul></p>"
+msgstr ""
+"<b>Izbačaji profila</b><p>Ovaj prozor u gornjem dijelu prikazuje spisak "
+"izbačaja profila koji mogu da se učitaju, iz svih potfascikli: "
+"<ul><li>tekuće radne fascikle KCacheGrinda, tj. one iz koje je pokrenut, i </"
+"li><li>podrazumijevane fascikle za izbačaje profila, zadate u postavi.</li></"
+"ul> Spisak je poređan po ciljnoj naredbi koja je profilisana u odgovarajućem "
+"izbačaju.</p><p>Kada izaberete izbačaj profila, podaci o njemu prikazuju se "
+"u donjem dijelu prozora: <ul><li><b>Opcije</b> vam omogućavaju da vidite "
+"profilisanu naredbu i opcije profila ovog izbačaja. Izmjenom neke od stavki "
+"pravi se novi (još nepostojeći) šablon profila. Pritisnite <b>Pokreni "
+"profil</b> da biste u pozadini pokrenuli profilisanje sa ovim opcijama. </"
+"li><li><b>Info</b> daje detaljne podatke o izabranom izbačaju, kao što su "
+"zbir troškova događaja i svojstva simuliranog keša. </li><li><b>Stanje</b> "
+"je dostupno samo za profilisanja koja su trenutno u toku. Pritisnite "
+"<b>Ažuriraj</b> da biste vidjeli razne brojače izvršavanja i trag steka "
+"trenutnog položaja u programu koji se profiliše. Popunite opciju <b>Svakih</"
+"b> da bi KCacheGrind redovno provjeravao ove podatke. Popunite opciju "
+"<b>Sinh.</b> da bi prozor aktivirao najvišu funkciju u trenutno učitanom "
+"izbačaju.</li></ul></p>"
+
+#: kcachegrind/toplevel.cpp:363
+#, kde-format
+msgid "&Duplicate"
+msgstr "&Dupliraj"
+
+#: kcachegrind/toplevel.cpp:366
+#, kde-format
+msgid ""
+"<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
+msgstr "<b>Dupliraj tekući raspored</b><p>Pravi kopiju tekućeg rasporeda.</p>"
+
+#: kcachegrind/toplevel.cpp:371
+#, kde-format
+msgid "&Remove"
+msgstr "&Ukloni"
+
+#: kcachegrind/toplevel.cpp:373
+#, kde-format
+msgid ""
+"<b>Remove Current Layout</b><p>Delete current layout and make the previous "
+"active.</p>"
+msgstr ""
+"<b>Ukloni tekući raspored</b><p>Briše tekući raspored i postavlja prethodni "
+"kao aktivan.</p>"
+
+#: kcachegrind/toplevel.cpp:378
+#, kde-format
+msgid "&Go to Next"
+msgstr "&Idi na sljedeći"
+
+#: kcachegrind/toplevel.cpp:381
+#, kde-format
+msgid "Go to Next Layout"
+msgstr "Idi na sljedeći raspored"
+
+#: kcachegrind/toplevel.cpp:385
+#, kde-format
+msgid "&Go to Previous"
+msgstr "Idi na &prethodni"
+
+#: kcachegrind/toplevel.cpp:388
+#, kde-format
+msgid "Go to Previous Layout"
+msgstr "Idi na prethodni raspored"
+
+#: kcachegrind/toplevel.cpp:392
+#, kde-format
+msgid "&Restore to Default"
+msgstr "&Vrati na podrazumijevano"
+
+#: kcachegrind/toplevel.cpp:394
+#, kde-format
+msgid "Restore Layouts to Default"
+msgstr "Vrati rasporede na podrazumijevano"
+
+#: kcachegrind/toplevel.cpp:398
+#, kde-format
+msgid "&Save as Default"
+msgstr "&Sačuvaj kao podrazumijevano"
+
+#: kcachegrind/toplevel.cpp:400
+#, kde-format
+msgid "Save Layouts as Default"
+msgstr "Sačuvaj rasporede kao podrazumijevane"
+
+#: kcachegrind/toplevel.cpp:411
+#, kde-format
+msgid "<b>New</b><p>Open new empty KCachegrind window.</p>"
+msgstr "<b>Novo</b><p>Otvara novi prazan prozor KCacheGrinda.</p>"
+
+#: kcachegrind/toplevel.cpp:415
+#, kde-format
+msgid "&Add..."
+msgstr "&Dodaj..."
+
+#: kcachegrind/toplevel.cpp:417
+#, kde-format
+msgid ""
+"<b>Add Profile Data</b><p>This opens an additional profile data file in the "
+"current window.</p>"
+msgstr ""
+"<b>Dodaj profilišuće podatke</b><p>Ovo otvara dodatni fajl sa profilišućim "
+"podacima u tekućem prozoru.</p>"
+
+#: kcachegrind/toplevel.cpp:423
+#, kde-format
+msgctxt "Reload a document"
+msgid "&Reload"
+msgstr "&Učitaj ponovo"
+
+#: kcachegrind/toplevel.cpp:426
+#, kde-format
+msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
+msgstr ""
+"<b>Ponovo učitaj profilišuće podatke</b><p>Ovim se takođe učitavaju i svi "
+"novonapravljeni dijelovi.</p>"
+
+#: kcachegrind/toplevel.cpp:431
+#, kde-format
+msgid "&Export Graph"
+msgstr "Izv&ezi grafikon"
+
+#: kcachegrind/toplevel.cpp:434
+#, kde-format
+msgid ""
+"<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
+"tools of the GraphViz package.</p>"
+msgstr ""
+"<b>Izvezi grafikon poziva</b><p>Generiše se fajl sa nastavkom .dot za alatke "
+"paketa GraphViz.</p>"
+
+#: kcachegrind/toplevel.cpp:442
+#, kde-format
+msgid "&Force Dump"
+msgstr "&Primoraj izbačaj"
+
+#: kcachegrind/toplevel.cpp:445
+#, kde-format
+msgid ""
+"<b>Force Dump</b><p>This forces a dump for a Callgrind profile run in the "
+"current directory. This action is checked while KCachegrind looks for the "
+"dump. If the dump is finished, it automatically reloads the current trace. "
+"If this is the one from the running Callgrind, the new created trace part "
+"will be loaded, too.</p><p>Force dump creates a file 'callgrind.cmd', and "
+"checks every second for its existence. A running Callgrind will detect this "
+"file, dump a trace part, and delete 'callgrind.cmd'. The deletion is "
+"detected by KCachegrind, and it does a Reload. If there is <em>no</em> "
+"Callgrind running, press 'Force Dump' again to cancel the dump request. This "
+"deletes 'callgrind.cmd' itself and stops polling for a new dump.</p><p>Note: "
+"A Callgrind run <em>only</em> detects existence of 'callgrind.cmd' when "
+"actively running a few milliseconds, i.e. <em>not</em> sleeping. Tip: For a "
+"profiled GUI program, you can awake Callgrind e.g. by resizing a window of "
+"the program.</p>"
+msgstr ""
+"<b>Primoraj izbačaj</b><p>Ovim se primorava izbačaj profilisanja Callgrinda "
+"u tekućoj fascikli. Radnja je uključena dok KCacheGrind traži izbačaj. Kada "
+"je izbačaj završen, tekući trag se automatski ponovo učitava. Ako je to trag "
+"iz Callgrinda koji se izvršava, učitava se i novonapravljeni dio traga.</"
+"p><p>Primoravanje izbačaja pravi fajl „callgrind.cmd“ i svake sekunde "
+"provjerava da li on postoji. Callgrind koji se izvršava primijetiće ovaj "
+"fajl, izbaciti dio traga i obrisati „callgrind.cmd“. KCacheGrind primjećuje "
+"brisanje i ponovo učitava. Ako se Callgrind <em>ne</em> izvršava, pritisnite "
+"ponovo „Primoraj izbačaj“ da biste otkazali zahtjev za izbačaj. Time se "
+"briše „callgrind.cmd“ i prekida se provjera novog izbačaja.</p><p>Napomena: "
+"Callgrind koji se izvršava primjećuje postojanje „callgrind.cmd“ <em>samo</"
+"em> kada aktivno radi nekoliko milisekundi, tj. <em>ne</em> kada spava. "
+"Savjet: ako profilišete grafički program, Callgrind možete probuditi npr. "
+"promjenom veličine prozora tog programa.</p>"
+
+#: kcachegrind/toplevel.cpp:470
+#, kde-format
+msgid ""
+"<b>Open Profile Data</b><p>This opens a profile data file, with possible "
+"multiple parts</p>"
+msgstr ""
+"<b>Otvori profilišuće podatke</b><p>Ovim se otvara fajl profilišućih "
+"podataka, koji može imati više dijelova</p>"
+
+#: kcachegrind/toplevel.cpp:485
+#, kde-format
+msgid "Show/Hide the Parts Overview Dockable"
+msgstr "Prikaži/sakrij prozor pregleda dijelova"
+
+#: kcachegrind/toplevel.cpp:490
+#, kde-format
+msgid "Call Stack"
+msgstr "Stek poziva"
+
+#: kcachegrind/toplevel.cpp:493
+#, kde-format
+msgid "Show/Hide the Call Stack Dockable"
+msgstr "Prikaži/sakrij prozor steka poziva"
+
+#: kcachegrind/toplevel.cpp:498
+#, kde-format
+msgid "Function Profile"
+msgstr "Profil funkcije"
+
+#: kcachegrind/toplevel.cpp:501
+#, kde-format
+msgid "Show/Hide the Function Profile Dockable"
+msgstr "Prikaži/sakrij prozor profila funkcije"
+
+#: kcachegrind/toplevel.cpp:509
+#, kde-format
+msgid "Show/Hide the Profile Dumps Dockable"
+msgstr "Prikaži/sakrij prozor izbačaja profila"
+
+#: kcachegrind/toplevel.cpp:516
+#, kde-format
+msgid "Relative"
+msgstr "Relativno"
+
+#: kcachegrind/toplevel.cpp:518
+#, kde-format
+msgid "Show relative instead of absolute costs"
+msgstr "Prikaži relativne umjesto apsolutnih troškova"
+
+#: kcachegrind/toplevel.cpp:524
+#, kde-format
+msgid "Relative to Parent"
+msgstr "Relativno prema roditelju"
+
+#: kcachegrind/toplevel.cpp:527
+#, kde-format
+msgid "Show percentage costs relative to parent"
+msgstr "Prikaži procentualne troškove relativne prema roditelju"
+
+#: kcachegrind/toplevel.cpp:531
+#, kde-format
+msgid ""
+"<b>Show percentage costs relative to parent</b><p>If this is switched off, "
+"percentage costs are always shown relative to the total cost of the profile "
+"part(s) that are currently browsed. By turning on this option, percentage "
+"cost of shown cost items will be relative to the parent cost item.</"
+"p><ul><table><tr><td><b>Cost Type</b></td><td><b>Parent Cost</b></td></"
+"tr><tr><td>Function Cumulative</td><td>Total</td></tr><tr><td>Function Self</"
+"td><td>Function Group (*) / Total</td></tr><tr><td>Call</td><td>Function "
+"Inclusive</td></tr><tr><td>Source Line</td><td>Function Inclusive</td></tr></"
+"table></ul><p>(*) Only if function grouping is switched on (e.g. ELF object "
+"grouping).</p>"
+msgstr ""
+"<b>Prikaži procentualne troškove relativne prema roditelju</b><p>Ako je ovo "
+"isključeno, procentualni troškovi se uvijek prikazuju relativno prema "
+"ukupnom trošku dijelova profila koji se trenutno pregledaju. Uključivanjem "
+"ove opcije, procentualni trošak prikazanih troškovnih stavki biće relativan "
+"prema roditeljskoj troškovnoj stavki.</p><ul><table><tr><td><b>Tip troška</"
+"b></td><td><b>Roditeljski trošak</b></td></tr><tr><td>Kumulativno za "
+"funkciju</td><td>Ukupno</td></tr><tr><td>Sopstveno za funkciju</td><td>Grupa "
+"funkcija (*) / ukupno</td></tr><tr><td>Poziv</td><td>Kumulativno za "
+"funkciju</td></tr><tr><td>Izvorni red</td><td>Kumulativno za funkciju</td></"
+"tr></table></ul><p>(*) Samo ako je uključeno grupisanje funkcija (npr. "
+"grupisanje ELF objekata).</p>"
+
+#: kcachegrind/toplevel.cpp:548
+#, kde-format
+msgid "Cycle Detection"
+msgstr "Otkrivanje ciklusa"
+
+#: kcachegrind/toplevel.cpp:551
+#, kde-format
+msgid ""
+"<b>Detect recursive cycles</b><p>If this is switched off, the treemap "
+"drawing will show black areas when a recursive call is made instead of "
+"drawing the recursion ad infinitum. Note that the size of black areas often "
+"will be wrong, as inside recursive cycles the cost of calls cannot be "
+"determined; the error is small, however, for false cycles (see "
+"documentation).</p><p>The correct handling for cycles is to detect them and "
+"collapse all functions of a cycle into an artificial function, which is done "
+"when this option is selected. Unfortunately, with GUI applications, this "
+"often will lead to huge false cycles, making the analysis impossible; "
+"therefore, there is the option to switch this off.</p>"
+msgstr ""
+"<b>Otkrivanje rekurzivnih ciklusa</b><p>Ako je ovo isključeno, crtež mape "
+"stabla prikazuje crne oblasti na mjestu rekurzivnog poziva, umjesto da "
+"rekurziju iscrtava unedogled. Imajte na umu da će veličina crnih oblasti "
+"često biti pogrešna, pošto se unutar rekurzivnih ciklusa trošak poziva ne "
+"može odrediti; ipak, greška je mala za lažne cikluse (pogledajte "
+"dokumentaciju).</p><p>Ispravan postupak sa ciklusima je da se otkriju, a sve "
+"funkcije ciklusa sažmu u vještačku funkciju, što se i radi kada je ova "
+"opcija izabrana. Nažalost, kod grafičkih programa ovo često dovodi do "
+"ogromnih lažnih ciklusa, pa analiza postaje nemoguća; zato ova opcija može "
+"da se isključi.</p>"
+
+#: kcachegrind/toplevel.cpp:567
+#, kde-format
+msgid "Shorten Templates"
+msgstr "Skrati šablone"
+
+#: kcachegrind/toplevel.cpp:569
+#, kde-format
+msgid "Hide Template Parameters in C++ Symbols"
+msgstr "Sakrij parametre šablona u C++ simbolima"
+
+#: kcachegrind/toplevel.cpp:570
+#, kde-format
+msgid ""
+"<b>Hide Template Parameters in C++ Symbols</b><p>If this is switched on, "
+"every symbol displayed will have any C++ template parameters hidden, just "
+"showing &lt;&gt; instead of a potentially nested template parameter.</"
+"p><p>In this mode, you can hover the mouse pointer over the activated symbol "
+"label to show a tooltip with the unabbreviated symbol.</p>"
+msgstr ""
+"<b>Sakrij parametre šablona u C++ simbolima</b><p>Ako je ovo uključeno, "
+"svaki prikazani simbol ima skrivene sve C++ parametre šablona, pa se umjesto "
+"možda ugniježđenog parametra šablona prikazuje samo &lt;&gt;.</p><p>U ovom "
+"režimu možete lebdjeti pokazivačem miša nad aktiviranom etiketom simbola da "
+"biste dobili oblačić sa neskraćenim simbolom.</p>"
+
+#: kcachegrind/toplevel.cpp:586
+#, kde-format
+msgid "&Up"
+msgstr "&Gore"
+
+#: kcachegrind/toplevel.cpp:595
+#, kde-format
+msgid ""
+"<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
+"was visited, use that with highest cost.</p>"
+msgstr ""
+"<b>Idi gore</b><p>Ide se na posljednje izabrani pozivač tekuće funkcije. Ako "
+"nije posjećen nijedan pozivač, koristi se onaj sa najvećim troškom.</p>"
+
+#: kcachegrind/toplevel.cpp:612
+#, kde-format
+msgid "Go back in function selection history"
+msgstr "Vrati se nazad u istorijatu izbora funkcija"
+
+#: kcachegrind/toplevel.cpp:626
+#, kde-format
+msgid "Go forward in function selection history"
+msgstr "Idi naprijed u istorijatu izbora funkcija"
+
+#: kcachegrind/toplevel.cpp:631 kcachegrind/toplevel.cpp:1502
+#, kde-format
+msgid "Primary Event Type"
+msgstr "Primarni tip događaja"
+
+#: kcachegrind/toplevel.cpp:632
+#, kde-format
+msgid "Select primary event type of costs"
+msgstr "Izaberite primarni tip događaja za troškove"
+
+#: kcachegrind/toplevel.cpp:654 kcachegrind/toplevel.cpp:1507
+#, kde-format
+msgid "Secondary Event Type"
+msgstr "Sekundarni tip događaja"
+
+#: kcachegrind/toplevel.cpp:655
+#, kde-format
+msgid "Select secondary event type for cost e.g. shown in annotations"
+msgstr ""
+"Izaberite sekundarni tip događaja za troškove npr. prikazan u tumačenjima"
+
+#: kcachegrind/toplevel.cpp:664
+#, kde-format
+msgid "Grouping"
+msgstr "Grupisanje"
+
+#: kcachegrind/toplevel.cpp:666
+#, kde-format
+msgid "Select how functions are grouped into higher level cost items"
+msgstr "Izaberite kako se funkcije grupišu u troškovne stavke višeg nivoa"
+
+#: kcachegrind/toplevel.cpp:672
+#, kde-format
+msgid "(No Grouping)"
+msgstr "(Bez grupisanja)"
+
+#: kcachegrind/toplevel.cpp:684
+#, kde-format
+msgid "Split"
+msgstr "Podijeli"
+
+#: kcachegrind/toplevel.cpp:687
+#, kde-format
+msgid "Show two information panels"
+msgstr "Prikaži dva informaciona panela"
+
+#: kcachegrind/toplevel.cpp:693
+#, kde-format
+msgid "Split Horizontal"
+msgstr "Podijeli vodoravno"
+
+#: kcachegrind/toplevel.cpp:696
+#, kde-format
+msgid "Change Split Orientation when main window is split."
+msgstr "Promijeni orijentaciju podjele kada je glavni prozor podijeljen."
+
+#: kcachegrind/toplevel.cpp:890
+#, kde-format
+msgid "Select Callgrind Profile Data"
+msgstr "Izbor profilišućih podataka Callgrinda"
+
+#: kcachegrind/toplevel.cpp:892 kcachegrind/toplevel.cpp:960
+#, kde-format
+msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
+msgstr ""
+"Profilišući podaci Callgrinda (cachegrind.out* callgrind.out*);;Svi fajlovi "
+"(*)"
+
+#: kcachegrind/toplevel.cpp:920 kcachegrind/toplevel.cpp:949
+#, kde-format
+msgid ""
+"Could not open the file \"%1\". Check it exists and you have enough "
+"permissions to read it."
+msgstr ""
+"Ne mogu da otvorim fajl „%1“. Provjerite da li postoji i da li imate "
+"dovoljno dozvola za čitanje."
+
+#: kcachegrind/toplevel.cpp:958
+#, kde-format
+msgid "Add Callgrind Profile Data"
+msgstr "Dodavanje profilišućih podataka Callgrinda"
+
+#: kcachegrind/toplevel.cpp:1128 kcachegrind/toplevel.cpp:1455
+#, kde-format
+msgid "(Hidden)"
+msgstr "(Skriven)"
+
+#: kcachegrind/toplevel.cpp:1512
+#, kde-format
+msgid "Hide"
+msgstr "Sakrij"
+
+#: kcachegrind/toplevel.cpp:1554
+#, kde-format
+msgid "Show Absolute Cost"
+msgstr "Prikaži apsolutan trošak"
+
+#: kcachegrind/toplevel.cpp:1557
+#, kde-format
+msgid "Show Relative Cost"
+msgstr "Prikaži relativan trošak"
+
+#: kcachegrind/toplevel.cpp:1592
+#, kde-format
+msgid "Go Back"
+msgstr "Idi nazad"
+
+#: kcachegrind/toplevel.cpp:1593
+#, kde-format
+msgid "Go Forward"
+msgstr "Idi naprijed"
+
+#: kcachegrind/toplevel.cpp:1594
+#, kde-format
+msgid "Go Up"
+msgstr "Idi gore"
+
+#: kcachegrind/toplevel.cpp:1806
+#, kde-format
+msgid "Layout Count: %1"
+msgstr "Broj rasporeda: %1"
+
+#: kcachegrind/toplevel.cpp:1813
+#, kde-format
+msgid "No profile data file loaded."
+msgstr "Nije učitan nijedan fajl sa profilišućim podacima."
+
+#: kcachegrind/toplevel.cpp:1822
+#, kde-format
+msgid "Total %1 Cost: %2"
+msgstr "Ukupan trošak za %1: %2"
+
+#: kcachegrind/toplevel.cpp:1834
+#, kde-format
+msgid "No event type selected"
+msgstr "Nije izabran tip događaja"
+
+#: kcachegrind/toplevel.cpp:2012
+#, kde-format
+msgid "Cannot determine receiver PID for dump request"
+msgstr "Ne mogu da odredim PID primaoca za zahtjev izbačaja"
+
+#: kcachegrind/toplevel.cpp:2058
+#, kde-format
+msgid "Error running callgrind_control"
+msgstr "Greška pri izvršavanju callgrind_control"
+
+#: kcachegrind/toplevel.cpp:2097 kcachegrind/toplevel.cpp:2134
+#: kcachegrind/toplevel.cpp:2171
+#, kde-format
+msgid "(No Stack)"
+msgstr "(Nema steka)"
+
+#: kcachegrind/toplevel.cpp:2103
+#, kde-format
+msgid "(No next function)"
+msgstr "(Nema sljedeće funkcije)"
+
+#: kcachegrind/toplevel.cpp:2140
+#, kde-format
+msgid "(No previous function)"
+msgstr "(Nema prethodne funkcije)"
+
+#: kcachegrind/toplevel.cpp:2176
+#, kde-format
+msgid "(No Function Up)"
+msgstr "(Nema funkcije gore)"
+
+#: kcachegrind/toplevel.cpp:2308 kcachegrind/toplevel.cpp:2322
+#, kde-format
+msgid "Loading %1"
+msgstr "Učitavam %1"
+
+#: kcachegrind/toplevel.cpp:2316
+#, kde-format
+msgid "Error loading %1: %2"
+msgstr "Greška pri učitavanju %1: %2"
