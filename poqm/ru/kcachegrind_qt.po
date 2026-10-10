@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2026-02-15 14:27+0200\n"
-"Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
+"PO-Revision-Date: 2026-10-09 21:29+0200\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -344,7 +344,7 @@ msgstr "(не найдено)"
 #: libcore/tracedata.cpp:3856
 msgctxt "TraceData|"
 msgid "Recalculating Function Cycles..."
-msgstr "Пересчёт циклов функций..."
+msgstr "Пересчёт циклов функций…"
 
 #: libviews/callgraphview.cpp:414
 #, qt-format
@@ -356,7 +356,7 @@ msgstr "Вызов(ы) из %1"
 #, qt-format
 msgctxt "QObject|"
 msgid "Call(s) to %1"
-msgstr "Вызов(ы) %1"
+msgstr "Вызов(ы) функции %1"
 
 #: libviews/callgraphview.cpp:419
 msgctxt "QObject|"
@@ -386,7 +386,7 @@ msgid ""
 msgstr ""
 "<b>Граф вызовов вокруг активной функции</b><p>В зависимости от конфигурации "
 "это представление показывает окружение вызова активной функции. Обратите "
-"внимание, что отображаемая стоимость — это <b>только</b> стоимость, "
+"внимание, что показанная стоимость — это <b>только</b> стоимость, "
 "накопленная, когда активная функция действительно работала; например, "
 "стоимость для main() (если она показывается) должна быть равна стоимости "
 "активной функции, так как она составляет включённую стоимость main(), "
@@ -394,7 +394,7 @@ msgstr ""
 "вызовов показывают, что это искусственный вызов, добавленный для "
 "иллюстрации, но никогда не происходивший.</p><p>Если граф больше размера "
 "панели, с краю появляется элемент панорамирования обзора. Подобный механизм "
-"визуализации есть и в дереве вызовов; при этом выбранная функция выделяется "
+"визуализации есть и в карте вызовов; при этом выбранная функция выделяется "
 "цветом.</p>"
 
 #: libviews/callgraphview.cpp:2003
@@ -522,32 +522,32 @@ msgstr "Без минимума"
 #: libviews/callgraphview.cpp:2870
 msgctxt "CallGraphView|"
 msgid "50 %"
-msgstr "50%"
+msgstr "50 %"
 
 #: libviews/callgraphview.cpp:2871
 msgctxt "CallGraphView|"
 msgid "20 %"
-msgstr "20%"
+msgstr "20 %"
 
 #: libviews/callgraphview.cpp:2872
 msgctxt "CallGraphView|"
 msgid "10 %"
-msgstr "10%"
+msgstr "10 %"
 
 #: libviews/callgraphview.cpp:2873
 msgctxt "CallGraphView|"
 msgid "5 %"
-msgstr "5%"
+msgstr "5 %"
 
 #: libviews/callgraphview.cpp:2874
 msgctxt "CallGraphView|"
 msgid "2 %"
-msgstr "2%"
+msgstr "2 %"
 
 #: libviews/callgraphview.cpp:2875
 msgctxt "CallGraphView|"
 msgid "1 %"
-msgstr "1%"
+msgstr "1 %"
 
 #: libviews/callgraphview.cpp:2905
 msgctxt "CallGraphView|"
@@ -557,22 +557,22 @@ msgstr "Мин. стоимость вызова"
 #: libviews/callgraphview.cpp:2906
 msgctxt "CallGraphView|"
 msgid "Same as Node"
-msgstr "100% стоимости узла"
+msgstr "Как у узла"
 
 #: libviews/callgraphview.cpp:2908
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
-msgstr "50% стоимости узла"
+msgstr "50 % стоимости узла"
 
 #: libviews/callgraphview.cpp:2910
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
-msgstr "20% стоимости узла"
+msgstr "20 % стоимости узла"
 
 #: libviews/callgraphview.cpp:2912
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
-msgstr "10% стоимости узла"
+msgstr "10 % стоимости узла"
 
 #: libviews/callgraphview.cpp:2941
 msgctxt "CallGraphView|"
@@ -602,7 +602,7 @@ msgstr "Снизу справа"
 #: libviews/callgraphview.cpp:2946
 msgctxt "CallGraphView|"
 msgid "Automatic"
-msgstr "Автоматически"
+msgstr "Авто"
 
 #: libviews/callgraphview.cpp:2947
 msgctxt "CallGraphView|"
@@ -612,7 +612,7 @@ msgstr "Скрыть"
 #: libviews/callgraphview.cpp:2977
 msgctxt "CallGraphView|"
 msgid "Layout"
-msgstr "Раскладка"
+msgstr "Расположение"
 
 #: libviews/callgraphview.cpp:2978
 msgctxt "CallGraphView|"
@@ -644,17 +644,17 @@ msgstr "Остановить построение"
 #: libviews/callgraphview.cpp:3063
 msgctxt "CallGraphView|"
 msgid "Export Graph"
-msgstr "Экспортировать граф"
+msgstr "Экспорт графа"
 
 #: libviews/callgraphview.cpp:3064
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
-msgstr "Как файл DOT..."
+msgstr "Как файл DOT…"
 
 #: libviews/callgraphview.cpp:3065
 msgctxt "CallGraphView|"
 msgid "As Image..."
-msgstr "Как изображение..."
+msgstr "Как изображение…"
 
 #: libviews/callgraphview.cpp:3068
 msgctxt "CallGraphView|"
@@ -729,7 +729,7 @@ msgstr "Расположение"
 #: libviews/callmapview.cpp:56
 msgctxt "CallMapView|"
 msgid "Calls"
-msgstr "Вызовы"
+msgstr "Вызовов"
 
 #: libviews/callmapview.cpp:91
 msgctxt "CallMapView|"
@@ -774,19 +774,19 @@ msgid ""
 "siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
 "em> activates the current item.</p>"
 msgstr ""
-"<p>Параметры отображения можно найти в контекстном меню. Чтобы получить "
-"точные пропорции размеров, выберите пункт «Убрать неточные границы». Так как "
+"<p>Параметры вида можно найти в контекстном меню. Чтобы получить точные "
+"пропорции размеров, выберите пункт «Убрать неточные границы». Так как "
 "построение в этом режиме может выполняться <em>очень</em> долго, возможно, "
 "стоит предварительно ограничить максимальный уровень вложенности: "
 "«Наилучший» определяет направление разделения для потомков, исходя из "
 "соотношения сторон родителя; «Всегда наилучший» учитывает оставшееся место "
-"для каждого потомка; «Игнорировать пропорции» выделяет место для отображения "
-"имени функции <em>до</em> отображения потомков. Заметьте, что при этом "
-"пропорции могут быть <em>значительно</em> искажены.</p><p>Всё это реализует "
-"виджет <em>Древовидная карта</em>, предоставляющий также возможности "
-"навигации с помощью клавиш-стрелок влево/вправо по соседним элементам и "
-"вверх/вниз — на уровень вложенности выше/ниже. Клавиша <em>Enter</em> "
-"активирует текущий элемент.</p>"
+"для каждого потомка; «Игнорировать пропорции» выделяет место для вывода "
+"имени функции <em>до</em> вывода потомков. Заметьте, что при этом пропорции "
+"могут быть <em>значительно</em> искажены.</p><p>Всё это реализует виджет "
+"<em>Древовидная карта</em>, предоставляющий также возможности навигации с "
+"помощью клавиш-стрелок влево/вправо по соседним элементам и вверх/вниз — на "
+"уровень вложенности выше/ниже. Клавиша <em>Enter</em> активирует текущий "
+"элемент.</p>"
 
 #: libviews/callmapview.cpp:139
 msgctxt "CallMapView|"
@@ -806,17 +806,17 @@ msgstr "Без ограничения глубины"
 #: libviews/callmapview.cpp:173
 msgctxt "CallMapView|"
 msgid "Depth 10"
-msgstr "10"
+msgstr "Глубина 10"
 
 #: libviews/callmapview.cpp:174
 msgctxt "CallMapView|"
 msgid "Depth 15"
-msgstr "15"
+msgstr "Глубина 15"
 
 #: libviews/callmapview.cpp:175
 msgctxt "CallMapView|"
 msgid "Depth 20"
-msgstr "20"
+msgstr "Глубина 20"
 
 #: libviews/callmapview.cpp:178
 #, qt-format
@@ -978,12 +978,12 @@ msgstr "Карта вызовов: текущий элемент «%1»"
 #: libviews/callmapview.cpp:621
 msgctxt "QObject|"
 msgid "(no function)"
-msgstr "(не функция)"
+msgstr "(нет функции)"
 
 #: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
 msgctxt "QObject|"
 msgid "(no call)"
-msgstr "(не вызов)"
+msgstr "(нет вызова)"
 
 #: libviews/callview.cpp:37
 msgctxt "CallView|"
@@ -1119,7 +1119,7 @@ msgid ""
 "Are you using an old profile data file or is the abovementioned\n"
 "ELF object from an updated installation/another machine?"
 msgstr ""
-"%1 строк(и) затрат не содержат машинного кода.\n"
+"Строк стоимости без машинного кода: %1.\n"
 "Это происходит из-за несоответствия кода %2 профилировочным данным.\n"
 "Используется устаревший файл профилировочных данных или указанный\n"
 "объект ELF получен из обновлённой установки/другого компьютера?"
@@ -1201,7 +1201,7 @@ msgstr "Базовый блок"
 #: libviews/controlflowgraphview.cpp:2432
 msgctxt "QObject|"
 msgid "PC only"
-msgstr "Только ПК"
+msgstr "Только счётчик команд"
 
 #: libviews/controlflowgraphview.cpp:2405
 #: libviews/controlflowgraphview.cpp:2436
@@ -1213,7 +1213,7 @@ msgstr "Показать счётчик команд"
 #: libviews/controlflowgraphview.cpp:2440
 msgctxt "QObject|"
 msgid "Show instructions' cost"
-msgstr "Отображение стоимости инструкций"
+msgstr "Показать стоимость инструкций"
 
 #: libviews/controlflowgraphview.cpp:2426
 msgctxt "QObject|"
@@ -1223,7 +1223,7 @@ msgstr "Синтаксис ассемблера Intel"
 #: libviews/controlflowgraphview.cpp:2450
 msgctxt "QObject|"
 msgid "As DOT file..."
-msgstr "Как файл DOT..."
+msgstr "Как файл DOT…"
 
 #: libviews/controlflowgraphview.cpp:2451
 msgctxt "QObject|"
@@ -1288,7 +1288,7 @@ msgstr "Снизу справа"
 #: libviews/controlflowgraphview.cpp:3178
 msgctxt "QObject|"
 msgid "Automatic"
-msgstr "Автоматически"
+msgstr "Авто"
 
 #: libviews/controlflowgraphview.cpp:3179
 msgctxt "QObject|"
@@ -1298,7 +1298,7 @@ msgstr "Скрыть"
 #: libviews/controlflowgraphview.cpp:3189
 msgctxt "QObject|"
 msgid "Layout"
-msgstr "Раскладка"
+msgstr "Расположение"
 
 #: libviews/controlflowgraphview.cpp:3191
 msgctxt "QObject|"
@@ -1357,7 +1357,7 @@ msgstr "Дистанция"
 #: libviews/coverageview.cpp:41
 msgctxt "CoverageView|"
 msgid "Called"
-msgstr "Вызывалась"
+msgstr "Вызовов"
 
 #: libviews/coverageview.cpp:42
 msgctxt "CoverageView|"
@@ -1409,7 +1409,7 @@ msgstr ""
 "пока была активна функция в списке. График стоимости показывает "
 "логарифмическое отношение стоимости, выделяя цветами разные дистанции.</"
 "p><p>Так как из одной и той же функции может вызываться множество других, в "
-"столбце «Дистанция» может отображаться диапазон дистанций для всех "
+"столбце «Дистанция» может показываться диапазон дистанций для всех "
 "происходивших вызовов, при этом в скобках указывается средняя дистанция, то "
 "есть дистанция, с которой связана наибольшая стоимость.</p><p>При выборе "
 "функции она становится текущей в этой информационной панели. Если включены "
@@ -1444,7 +1444,7 @@ msgstr ""
 "всей стоимости, накопленной в функции в списке, пока была активна выбранная. "
 "График стоимости показывает логарифмическое отношение стоимости, выделяя "
 "цветами разные дистанции.</p><p>Так как одна и та же функция может "
-"вызываться из множества других, в столбце «Дистанция» может отображаться "
+"вызываться из множества других, в столбце «Дистанция» может показываться "
 "диапазон дистанций для всех происходивших вызовов, при этом в скобках "
 "указывается средняя дистанция, то есть дистанция, с которой связана "
 "наибольшая стоимость.</p><p>При выборе функции она становится текущей в этой "
@@ -1498,7 +1498,7 @@ msgstr ""
 "<b>Список типов стоимости</b><p>Этот список содержит все доступные типы "
 "стоимости и определения того, что понимается под стоимостью самой функции/"
 "включённой стоимостью данного типа для текущей функции.</p><p>Выберите тип "
-"стоимости в этом списке, чтобы изменить тип стоимостей, отображаемых в "
+"стоимости в этом списке, чтобы изменить тип стоимости, показываемой в "
 "KCachegrind, на заданный.</p>"
 
 #: libviews/eventtypeview.cpp:96
@@ -1534,7 +1534,7 @@ msgstr "Удалить"
 #: libviews/eventtypeview.cpp:119
 msgctxt "EventTypeView|"
 msgid "New Event Type..."
-msgstr "Новый тип событий..."
+msgstr "Новый тип событий…"
 
 #: libviews/eventtypeview.cpp:154 libviews/eventtypeview.cpp:159
 #, qt-format
@@ -1561,7 +1561,7 @@ msgstr "Сама"
 #: libviews/functionlistmodel.cpp:47
 msgctxt "FunctionListModel|"
 msgid "Called"
-msgstr "Вызывалась"
+msgstr "Вызовов"
 
 #: libviews/functionlistmodel.cpp:48
 msgctxt "FunctionListModel|"
@@ -1587,7 +1587,7 @@ msgstr "Профилирование функций"
 #: libviews/functionselection.cpp:95
 msgctxt "FunctionSelection|"
 msgid "&Search:"
-msgstr "&Искать:"
+msgstr "&Поиск:"
 
 #: libviews/functionselection.cpp:101
 msgctxt "FunctionSelection|"
@@ -1621,11 +1621,11 @@ msgid ""
 msgstr ""
 "<b>Плоский профиль</b><p>Эта панель содержит список групп и список выбора "
 "функций. Список групп включает все группы, с которыми связана стоимость, в "
-"зависимости от выбранного типа группировки. При выборе типа «Без "
-"группировки» этот список скрывается.</p><p>Список функций включает функции "
-"выбранной группы (или все функции, если выбран тип «Без группировки»), "
-"упорядоченные по накопленной в них стоимости. Функции со стоимостью меньше "
-"1% по умолчанию не показываются.</p>"
+"зависимости от выбранного типа группировки. При выборе типа группировки "
+"«Функция» этот список скрывается.</p><p>Список функций включает функции "
+"выбранной группы (или все функции, если выбран тип «Функция»), упорядоченные "
+"по накопленной в них стоимости. Функции со стоимостью меньше 1 % по "
+"умолчанию не показываются.</p>"
 
 #: libviews/functionselection.cpp:287
 #, qt-format
@@ -1653,7 +1653,7 @@ msgstr "Активный вызов функции %1"
 #, qt-format
 msgctxt "QObject|"
 msgid "Call to '%1'"
-msgstr "Вызов(ы) %1"
+msgstr "Вызов функции %1"
 
 #: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
 #, qt-format
@@ -1668,13 +1668,13 @@ msgstr[2] "Вызовов функции %2: %n"
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 of %2 times to 0x%3"
-msgstr "Переход по адресу 0x%3 (кол-во: %1 из %2)"
+msgstr "Переход по адресу 0x%3 (%1 раз из %2)"
 
 #: libviews/instritem.cpp:160
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 times to 0x%2"
-msgstr "Переход по адресу 0x%2 (кол-во: %1)"
+msgstr "Переход по адресу 0x%2 (%1 раз)"
 
 #: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
 msgctxt "QObject|"
@@ -1762,7 +1762,7 @@ msgstr "В файле данных профилирования нет инфо�
 #: libviews/instrview.cpp:587
 msgctxt "InstrView|"
 msgid "Tip: For Callgrind, rerun with option"
-msgstr "Подсказка: для использования Callgrind укажите параметр"
+msgstr "Подсказка: перезапустите Callgrind с параметром"
 
 #: libviews/instrview.cpp:588
 msgctxt "InstrView|"
@@ -1860,7 +1860,7 @@ msgstr "Проверьте, существует ли объект ELF, указ
 #, qt-format
 msgctxt "QObject|"
 msgid "Profile Part %1"
-msgstr "Часть профилирования %1"
+msgstr "Часть профиля %1"
 
 #: libviews/partgraph.cpp:212
 msgctxt "QObject|"
@@ -1870,7 +1870,7 @@ msgstr "(нет трассировки)"
 #: libviews/partgraph.cpp:215
 msgctxt "QObject|"
 msgid "(no part)"
-msgstr "(нет частей)"
+msgstr "(нет части)"
 
 #: libviews/partlistitem.cpp:39
 msgctxt "QObject|"
@@ -1924,8 +1924,8 @@ msgstr ""
 "группам в соответствии с выбранным типом группирования. Например, если "
 "выбрано группирование объектов ELF, будут показаны разноцветные "
 "прямоугольники для каждого задействованного объекта ELF (общей библиотеки "
-"или запускаемого файла) с размером, соответствующим их стоимости.</"
-"li><li>Режим вызываемых: для текущей функции, выбранной в отображаемой части "
+"или исполняемого файла) с размером, соответствующим их стоимости.</"
+"li><li>Режим вызываемых: для текущей функции, выбранной в показанной части "
 "трассировки, прямоугольники показывают включённую стоимость (стоимость "
 "вызываемых функций) в виде меньших прямоугольников.</li></ul></p>"
 
@@ -1986,7 +1986,7 @@ msgstr "Режим разделения"
 #: libviews/partselection.cpp:373
 msgctxt "PartSelection|"
 msgid "Zoom Function"
-msgstr "Функция увеличения"
+msgstr "Увеличить функцию"
 
 #: libviews/partselection.cpp:375
 msgctxt "PartSelection|"
@@ -2036,7 +2036,7 @@ msgstr "Скрыть информацию"
 #: libviews/partselection.cpp:414
 msgctxt "PartSelection|"
 msgid "Show Info"
-msgstr "Отобразить информацию"
+msgstr "Показать информацию"
 
 #: libviews/partselection.cpp:562
 msgctxt "PartSelection|"
@@ -2061,7 +2061,7 @@ msgstr "Сама"
 #: libviews/partview.cpp:40
 msgctxt "PartView|"
 msgid "Called"
-msgstr "Вызывалась"
+msgstr "Вызовов"
 
 #: libviews/partview.cpp:41
 msgctxt "PartView|"
@@ -2092,7 +2092,7 @@ msgstr ""
 "(а не трассировки, как в «Обзоре частей»). Также здесь показываются вызовы "
 "текущей функции/из текущей функции, относящиеся к данной части трассировки.</"
 "p><p>При выборе одной или нескольких частей в этом списке KCachegrind будет "
-"везде отображать только ту стоимость, которая относится к выбранной части "
+"везде показывать только ту стоимость, которая относится к выбранной части "
 "(частям). Если в этом списке ничего не выбрано, подразумевается, что выбраны "
 "все части трассировки.</p><p>Этот список поддерживает множественное "
 "выделение. Возможно выделить несколько частей/их диапазоны, перетаскивая "
@@ -2105,13 +2105,13 @@ msgstr ""
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 of %2 times to %3"
-msgstr "Переход к %3 (кол-во: %1 из %2)"
+msgstr "Переход к %3 (%1 раз из %2)"
 
 #: libviews/sourceitem.cpp:146
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 times to %2"
-msgstr "Переход к %2 (кол-во: %1)"
+msgstr "Переход к %2 (%1 раз)"
 
 #: libviews/sourceview.cpp:51
 msgctxt "SourceView|"
@@ -2223,8 +2223,7 @@ msgstr "Это вызвано тем, что файл исходного код�
 #: libviews/sourceview.cpp:691
 msgctxt "SourceView|"
 msgid "Add the folder of this file to the source folder list."
-msgstr ""
-"Добавьте путь к каталогу с этим файлом в список каталогов исходного кода."
+msgstr "Добавьте папку с этим файлом в список папок исходного кода."
 
 #: libviews/sourceview.cpp:693
 msgctxt "SourceView|"
@@ -2249,7 +2248,7 @@ msgstr "Стоимость2"
 #: libviews/stackselection.cpp:46
 msgctxt "StackSelection|"
 msgid "Calls"
-msgstr "Вызовы"
+msgstr "Вызовов"
 
 #: libviews/stackselection.cpp:47
 msgctxt "StackSelection|"
@@ -2289,7 +2288,7 @@ msgstr "Вниз"
 #: libviews/tabview.cpp:116
 msgctxt "TabBar|"
 msgid "Move to Bottom Left"
-msgstr "Переместить вниз влево"
+msgstr "Переместить вниз слева"
 
 #: libviews/tabview.cpp:117
 msgctxt "TabBar|Move to Bottom Left"
@@ -2299,7 +2298,7 @@ msgstr "Вниз влево"
 #: libviews/tabview.cpp:119
 msgctxt "TabBar|"
 msgid "Move Area To"
-msgstr "Переместить раздел..."
+msgstr "Переместить область"
 
 #: libviews/tabview.cpp:122
 msgctxt "TabBar|"
@@ -2309,7 +2308,7 @@ msgstr "Скрыть эту вкладку"
 #: libviews/tabview.cpp:123
 msgctxt "TabBar|"
 msgid "Hide Area"
-msgstr "Скрыть раздел"
+msgstr "Скрыть область"
 
 #: libviews/tabview.cpp:132
 msgctxt "TabBar|Show on Top"
@@ -2334,7 +2333,7 @@ msgstr "Снизу слева"
 #: libviews/tabview.cpp:136
 msgctxt "TabBar|"
 msgid "Show Hidden On"
-msgstr "Показать скрытые..."
+msgstr "Показать скрытые на"
 
 #: libviews/tabview.cpp:309 libviews/tabview.cpp:311 libviews/tabview.cpp:730
 msgctxt "TabView|"
@@ -2459,7 +2458,7 @@ msgstr "Текст %1"
 #: libviews/treemap.cpp:2860
 msgctxt "TreeMapWidget|"
 msgid "Recursive Bisection"
-msgstr "Рекурсивный половинный"
+msgstr "Рекурсивное деление пополам"
 
 #: libviews/treemap.cpp:2861
 msgctxt "TreeMapWidget|"
