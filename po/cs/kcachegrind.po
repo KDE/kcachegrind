@@ -2,31 +2,32 @@
 # This file is distributed under the same license as the PACKAGE package.
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2017, 2019, 2023, 2024 Vít Pelčák <vit@pelcak.org>
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2012.
+# SPDX-FileCopyrightText: 2026 Libor Filípek <libor.filipek@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-03 00:48+0000\n"
-"PO-Revision-Date: 2024-08-20 15:29+0200\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"PO-Revision-Date: 2026-11-04 17:00+0100\n"
+"Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Klára Cihlářová"
+msgstr "Klára Cihlářová,Libor Filípek"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "koty@seznam.cz"
+msgstr "koty@seznam.cz,libor.filipek@gmail.com"
 
 #: kcachegrind/configdlg.cpp:141 kcachegrind/configdlg.cpp:329
 #: kcachegrind/configdlg.cpp:348
@@ -61,19 +62,19 @@ msgstr "Maximální množství položek v seznamech:"
 #: kcachegrind/configdlgbase.ui:44
 #, kde-format
 msgid "Truncate symbols in tooltips and context menus"
-msgstr ""
+msgstr "Zkrácení symbolů v popiscích a kontextových nabídkách"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2)
 #: kcachegrind/configdlgbase.ui:70
 #, kde-format
 msgid "when more than:"
-msgstr ""
+msgstr "pokud je větší než:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2_2)
 #: kcachegrind/configdlgbase.ui:80
 #, kde-format
 msgid "when longer than:"
-msgstr ""
+msgstr "pokud je delší než:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_3)
 #: kcachegrind/configdlgbase.ui:90
@@ -85,13 +86,13 @@ msgstr "Přesnost procentních hodnot:"
 #: kcachegrind/configdlgbase.ui:113
 #, kde-format
 msgid "The Maximum Number of List Items should be below 500."
-msgstr ""
+msgstr "Maximální počet položek v seznamu by měl být nižší než 500."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1)
 #: kcachegrind/configdlgbase.ui:158
 #, kde-format
 msgid "Cost Item Colors"
-msgstr ""
+msgstr "Barvy položek nákladů"
 
 #. i18n: ectx: property (text), widget (QCheckBox, fileCheck)
 #. i18n: ectx: property (text), widget (QCheckBox, classCheck)
@@ -130,7 +131,7 @@ msgstr "Poznámky"
 #: kcachegrind/configdlgbase.ui:329
 #, kde-format
 msgid "Context lines in annotations:"
-msgstr ""
+msgstr "Kontextové řádky v poznámkách:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
 #: kcachegrind/configdlgbase.ui:350
@@ -154,14 +155,14 @@ msgstr "Smazat"
 #: kcachegrind/configdlgbase.ui:409
 #, kde-format
 msgid "Object / Related Source Base"
-msgstr ""
+msgstr "Objekt / Související zdrojová základna"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, DumpSelectionBase)
 #: kcachegrind/dumpselectionbase.ui:13 kcachegrind/toplevel.cpp:285
 #: kcachegrind/toplevel.cpp:508
 #, kde-format
 msgid "Profile Dumps"
-msgstr ""
+msgstr "Výpisy profilů"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView1)
 #: kcachegrind/dumpselectionbase.ui:24
@@ -197,7 +198,7 @@ msgstr "Cílový příkaz:"
 #: kcachegrind/dumpselectionbase.ui:100
 #, kde-format
 msgid "Profiler options:"
-msgstr ""
+msgstr "Možnosti profileru:"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:111
@@ -242,7 +243,7 @@ msgstr "Události"
 #: kcachegrind/dumpselectionbase.ui:188
 #, kde-format
 msgid "Full Cache"
-msgstr ""
+msgstr "Plná mezipaměť"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:202
@@ -266,7 +267,7 @@ msgstr "Při spuštění"
 #: kcachegrind/dumpselectionbase.ui:244
 #, kde-format
 msgid "While In"
-msgstr ""
+msgstr "Zatímco v"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:259
@@ -278,7 +279,7 @@ msgstr "Přeskočit"
 #: kcachegrind/dumpselectionbase.ui:272
 #, kde-format
 msgid "PLT"
-msgstr ""
+msgstr "PLT"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #. i18n: ectx: property (text), widget (Q3ListView, listView7)
@@ -291,31 +292,31 @@ msgstr "Funkce"
 #: kcachegrind/dumpselectionbase.ui:301
 #, kde-format
 msgid "Dump Profile"
-msgstr ""
+msgstr "Profil výpisu"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:314
 #, kde-format
 msgid "Every BBs"
-msgstr ""
+msgstr "Všechny BB"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:328 kcachegrind/dumpselectionbase.ui:370
 #, kde-format
 msgid "On Entering"
-msgstr ""
+msgstr "Na vstupu"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:342
 #, kde-format
 msgid "On Leaving"
-msgstr ""
+msgstr "Na výstupu"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:357
 #, kde-format
 msgid "Zero Events"
-msgstr ""
+msgstr "Nulové události"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:385
@@ -339,19 +340,19 @@ msgstr "Rekurze"
 #: kcachegrind/dumpselectionbase.ui:426
 #, kde-format
 msgid "Call Chain"
-msgstr ""
+msgstr "Řetězec volání"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
 #: kcachegrind/dumpselectionbase.ui:452
 #, kde-format
 msgid "Custom profiler options:"
-msgstr ""
+msgstr "Vlastní možnosti profileru:"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton2)
 #: kcachegrind/dumpselectionbase.ui:486
 #, kde-format
 msgid "Run New Profile"
-msgstr ""
+msgstr "Spustit nový profil"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab2)
 #: kcachegrind/dumpselectionbase.ui:496
@@ -363,7 +364,7 @@ msgstr "Info"
 #: kcachegrind/dumpselectionbase.ui:505
 #, kde-format
 msgid "Dump reason:"
-msgstr ""
+msgstr "Důvod výpisu:"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel6)
 #: kcachegrind/dumpselectionbase.ui:518
@@ -417,31 +418,31 @@ msgstr "Aktualizovat"
 #: kcachegrind/dumpselectionbase.ui:626
 #, kde-format
 msgid "Every [s]:"
-msgstr ""
+msgstr "Každých [s]:"
 
 #. i18n: ectx: property (text), widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:639
 #, kde-format
 msgid "Counter"
-msgstr "Počitadlo"
+msgstr "Počítadlo"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:661
 #, kde-format
 msgid "Dumps Done"
-msgstr ""
+msgstr "Výpisy dokončeny"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:675
 #, kde-format
 msgid "Is Collecting"
-msgstr ""
+msgstr "Se shromažďují"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:689
 #, kde-format
 msgid "Executed"
-msgstr ""
+msgstr "Spuštěno"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView4_3)
 #: kcachegrind/dumpselectionbase.ui:702
@@ -489,7 +490,7 @@ msgstr "Kontexty"
 #: kcachegrind/dumpselectionbase.ui:845
 #, kde-format
 msgid "Stack trace:"
-msgstr ""
+msgstr "Trasování zásobníku:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, checkBox2)
 #: kcachegrind/dumpselectionbase.ui:855
@@ -549,13 +550,13 @@ msgstr "Zprávy"
 #: kcachegrind/dumpselectionbase.ui:985
 #, kde-format
 msgid "Kill Run"
-msgstr ""
+msgstr "Zabít"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton8)
 #: kcachegrind/dumpselectionbase.ui:1008
 #, kde-format
 msgid "Clear"
-msgstr "Vyprázdnit"
+msgstr "Vymazat"
 
 #. i18n: ectx: Menu (file)
 #: kcachegrind/kcachegrindui.rc:4
@@ -621,7 +622,7 @@ msgstr "Autor/správce"
 #: kcachegrind/main.cpp:68
 #, kde-format
 msgid "Show information of this trace"
-msgstr ""
+msgstr "Zobrazit informace o tomto trasování"
 
 #: kcachegrind/main.cpp:68
 #, kde-format
@@ -636,7 +637,7 @@ msgstr "Přehled částí"
 #: kcachegrind/toplevel.cpp:263
 #, kde-format
 msgid "Top Cost Call Stack"
-msgstr ""
+msgstr "Zásobník volání s nejvyššími náklady"
 
 #: kcachegrind/toplevel.cpp:265
 #, kde-format
@@ -647,11 +648,16 @@ msgid ""
 "p><p>The <b>Cost</b> and <b>Calls</b> columns show the cost used for all "
 "calls from the function in the line above.</p>"
 msgstr ""
+"<b>Zásobník volání s nejvyššími náklady</b><p>Toto je čistě fiktivní "
+"'nejpravděpodobnější' zásobník volání. Vytváří se tak, že se začne od "
+"aktuálně vybrané funkce a nahoře i dole se přidávají volající/volané funkce "
+"s nejvyššími náklady.</p><p>Sloupce <b>Náklady</b> a <b>Volání</b> zobrazují "
+"náklady všech volání z funkce v řádku výše.</p>"
 
 #: kcachegrind/toplevel.cpp:279
 #, kde-format
 msgid "Flat Profile"
-msgstr ""
+msgstr "Plochý profil"
 
 #: kcachegrind/toplevel.cpp:292
 #, kde-format
@@ -674,6 +680,25 @@ msgid ""
 "regularly poll these data. Check the <b>Sync</b> option to let the dockable "
 "activate the top function in the current loaded dump.</li></ul></p>"
 msgstr ""
+"<b>Výpisy profilů</b><p>Tento dokovatelný panel zobrazuje v horní části "
+"seznam načitatelných výpisů profilů ve všech podadresářích:"
+"<ul><li>aktuálního pracovního adresáře programu KCachegrind, tj. adresáře, "
+"ze kterého byl spuštěn, a </li><li>výchozího adresáře pro výpisy profilů "
+"zadaného v konfiguraci.</li></ul> Seznam je seřazen podle cílového příkazu, "
+"který byl profilován v příslušném výpisu.</p><p>Po výběru výpisu profilu se "
+"v dolní části dokovatelného panelu zobrazí informace o něm:"
+"<ul><li><b>Možnosti</b> umožňují zobrazit profilovaný příkaz a možnosti "
+"profilu tohoto výpisu. Změnou jakékoli položky se vytvoří nová (dosud "
+"neexistující) šablona profilu. Stisknutím <b>Spustit profil</b> spustíte "
+"profilování s těmito možnostmi na pozadí. </li><li><b>Info</b> poskytuje "
+"podrobné informace o vybraném výpisu, jako je souhrn nákladů událostí a "
+"vlastnosti simulované mezipaměti. </li><li><b>Stav</b> je k dispozici pouze "
+"pro aktuálně probíhající profilování. Stisknutím <b>Aktualizovat</b> "
+"zobrazíte různé čítače běhu a trasování zásobníku aktuální pozice v "
+"profilovaném programu. Zaškrtněte možnost <b>Všechny</b>, aby KCachegrind "
+"pravidelně zjišťoval tato data. Zaškrtněte možnost <b>Synchronizovat</b>, "
+"aby dokovací panel aktivoval funkci top v aktuálně načteném výpisu.</li></"
+"ul></p>"
 
 #: kcachegrind/toplevel.cpp:363
 #, kde-format
@@ -685,6 +710,8 @@ msgstr "&Duplikovat"
 msgid ""
 "<b>Duplicate Current Layout</b><p>Make a copy of the current layout.</p>"
 msgstr ""
+"<b>Duplikovat aktuální rozvržení</b><p>Vytvořit kopii aktuálního rozvržení.</"
+"p>"
 
 #: kcachegrind/toplevel.cpp:371
 #, kde-format
@@ -697,6 +724,8 @@ msgid ""
 "<b>Remove Current Layout</b><p>Delete current layout and make the previous "
 "active.</p>"
 msgstr ""
+"<b>Odstranit aktuální rozvržení</b><p>Odstranit aktuální rozvržení a "
+"aktivovat předchozí.</p>"
 
 #: kcachegrind/toplevel.cpp:378
 #, kde-format
@@ -706,17 +735,17 @@ msgstr "&Přejít na následující"
 #: kcachegrind/toplevel.cpp:381
 #, kde-format
 msgid "Go to Next Layout"
-msgstr ""
+msgstr "Přejít na následující rozvržení"
 
 #: kcachegrind/toplevel.cpp:385
 #, kde-format
 msgid "&Go to Previous"
-msgstr ""
+msgstr "&Přejít na předchozí"
 
 #: kcachegrind/toplevel.cpp:388
 #, kde-format
 msgid "Go to Previous Layout"
-msgstr ""
+msgstr "Přejít na předchozí rozvržení"
 
 #: kcachegrind/toplevel.cpp:392
 #, kde-format
@@ -726,7 +755,7 @@ msgstr "&Obnovit výchozí"
 #: kcachegrind/toplevel.cpp:394
 #, kde-format
 msgid "Restore Layouts to Default"
-msgstr ""
+msgstr "Obnovit výchozí rozvržení"
 
 #: kcachegrind/toplevel.cpp:398
 #, kde-format
@@ -736,7 +765,7 @@ msgstr "Uložit &jako výchozí"
 #: kcachegrind/toplevel.cpp:400
 #, kde-format
 msgid "Save Layouts as Default"
-msgstr ""
+msgstr "Uložit rozvržení jako výchozí"
 
 #: kcachegrind/toplevel.cpp:411
 #, kde-format
@@ -754,6 +783,8 @@ msgid ""
 "<b>Add Profile Data</b><p>This opens an additional profile data file in the "
 "current window.</p>"
 msgstr ""
+"<b>Přidat data profilu</b><p>Tím se v aktuálním okně otevře další soubor s "
+"daty profilu.</p>"
 
 #: kcachegrind/toplevel.cpp:423
 #, kde-format
@@ -765,6 +796,8 @@ msgstr "Znovu načís&t"
 #, kde-format
 msgid "<b>Reload Profile Data</b><p>This loads any new created parts, too.</p>"
 msgstr ""
+"<b>Obnovit data profilu</b><p>Tím se načtou také všechny nově vytvořené "
+"součásti.</p>"
 
 #: kcachegrind/toplevel.cpp:431
 #, kde-format
@@ -777,11 +810,13 @@ msgid ""
 "<b>Export Call Graph</b><p>Generates a file with extension .dot for the "
 "tools of the GraphViz package.</p>"
 msgstr ""
+"<b>Exportovat graf volání</b><p>Vytvoří soubor s příponou .dot pro nástroje "
+"balíčku GraphViz.</p>"
 
 #: kcachegrind/toplevel.cpp:442
 #, kde-format
 msgid "&Force Dump"
-msgstr ""
+msgstr "V&ynutit výpis"
 
 #: kcachegrind/toplevel.cpp:445
 #, kde-format
@@ -801,6 +836,22 @@ msgid ""
 "profiled GUI program, you can awake Callgrind e.g. by resizing a window of "
 "the program.</p>"
 msgstr ""
+"<B>Vynutit výpis</B><P>Tímto příkazem vynutíte výpis profilu Callgrind "
+"spuštěného v aktuálním adresáři. Tato akce se kontroluje v okamžiku, kdy "
+"KCachegrind hledá výpis. Pokud je výpis hotový, automaticky se znovu načte "
+"aktuální trasování. Pokud se jedná o trasování z právě spuštěného "
+"Callgrindu, načte se také nově vytvořená část trasování.</P><p>Vynucení "
+"výpisu vytvoří soubor 'callgrind.cmd' a každou sekundu kontroluje, zda "
+"existuje. Spuštěný Callgrind tento soubor detekuje, vygeneruje část "
+"trasování a smaže soubor 'callgrind.cmd'. KCachegrind detekuje smazání a "
+"provede nové načtení. Pokud není <em>spuštěn</em> žádný Callgrind, stiskněte "
+"znovu tlačítko 'Vynutit výpis', čímž zrušíte požadavek na výpis. Tím se "
+"smaže samotný soubor 'callgrind.cmd' a zastaví se kontrola požadavku na nový "
+"výpis.</P><p>Poznámka: Spuštěný Callgrind <em>pouze</em> detekuje existenci "
+"souboru 'callgrind.cmd', pokud je aktivně spuštěn po dobu několika "
+"milisekund, tj. <em>není</em> v režimu spánku. Tip: U profilovaného programu "
+"s grafickým rozhraním můžete Callgrind probudit např. změnou velikosti okna "
+"programu.</p>"
 
 #: kcachegrind/toplevel.cpp:470
 #, kde-format
@@ -808,11 +859,13 @@ msgid ""
 "<b>Open Profile Data</b><p>This opens a profile data file, with possible "
 "multiple parts</p>"
 msgstr ""
+"<b>Otevřít data profilu</b><p>Tím se otevře soubor s daty profilu, který "
+"může obsahovat více částí</p>"
 
 #: kcachegrind/toplevel.cpp:485
 #, kde-format
 msgid "Show/Hide the Parts Overview Dockable"
-msgstr ""
+msgstr "Zobrazit/skrýt dokovatelný panel s přehledem částí"
 
 #: kcachegrind/toplevel.cpp:490
 #, kde-format
@@ -822,7 +875,7 @@ msgstr "Zásobník volání"
 #: kcachegrind/toplevel.cpp:493
 #, kde-format
 msgid "Show/Hide the Call Stack Dockable"
-msgstr ""
+msgstr "Zobrazit/skrýt dokovatelný panel zásobníku volání"
 
 #: kcachegrind/toplevel.cpp:498
 #, kde-format
@@ -832,12 +885,12 @@ msgstr "Profil funkce"
 #: kcachegrind/toplevel.cpp:501
 #, kde-format
 msgid "Show/Hide the Function Profile Dockable"
-msgstr ""
+msgstr "Zobrazit/skrýt dokovatelný profil funkce"
 
 #: kcachegrind/toplevel.cpp:509
 #, kde-format
 msgid "Show/Hide the Profile Dumps Dockable"
-msgstr ""
+msgstr "Zobrazit/skrýt dokovatelný profil výpisů"
 
 #: kcachegrind/toplevel.cpp:516
 #, kde-format
@@ -847,17 +900,17 @@ msgstr "Relativní"
 #: kcachegrind/toplevel.cpp:518
 #, kde-format
 msgid "Show relative instead of absolute costs"
-msgstr ""
+msgstr "Zobrazit relativní náklady namísto absolutních"
 
 #: kcachegrind/toplevel.cpp:524
 #, kde-format
 msgid "Relative to Parent"
-msgstr ""
+msgstr "Relativní k nadřazenému prvku"
 
 #: kcachegrind/toplevel.cpp:527
 #, kde-format
 msgid "Show percentage costs relative to parent"
-msgstr ""
+msgstr "Zobrazit procentuální náklady k nadřazenému prvku"
 
 #: kcachegrind/toplevel.cpp:531
 #, kde-format
@@ -873,6 +926,17 @@ msgid ""
 "table></ul><p>(*) Only if function grouping is switched on (e.g. ELF object "
 "grouping).</p>"
 msgstr ""
+"<b>Zobrazit procentuální náklady vztažené k nadřazenému prvku</b><p>Je-li "
+"tato možnost vypnutá, procentuální náklady se vždy zobrazují vztažené k "
+"celkovým nákladům na části profilu, které jsou právě prohlíženy. Zapnutím "
+"této možnosti se procentuální náklady zobrazených nákladových položek budou "
+"vztahovat k nadřazené nákladové položce.</p><ul><table><tr><td><b>Typ "
+"nákladů</b></td><td><b>Náklady nadřazené položky</b></td></"
+"tr><tr><td>Kumulativní funkce</td><td>Celkem</td></tr><tr><td>Samostatná "
+"funkce</td><td>Funkční skupina (*) / Celkem</td></tr><tr><td>Volání</"
+"td><td>Funkce včetně</td></tr><tr><td>Zdrojová řádka</td><td>Funkce včetně</"
+"td></tr></table></ul><p>(*) Pouze pokud je zapnuto seskupování funkcí (např. "
+"seskupování objektů ELF).</p>"
 
 #: kcachegrind/toplevel.cpp:548
 #, kde-format
@@ -893,16 +957,26 @@ msgid ""
 "often will lead to huge false cycles, making the analysis impossible; "
 "therefore, there is the option to switch this off.</p>"
 msgstr ""
+"<b>Detekce rekurzivních cyklů</b><p>Je-li tato volba vypnutá, vykreslení "
+"stromové mapy bude při rekurzivním volání zobrazovat černé oblasti namísto "
+"nekonečného vykreslování rekurze. Upozorňujeme, že velikost černých oblastí "
+"bude často nesprávná, protože uvnitř rekurzivních cyklů nelze určit náklady "
+"na volání; u falešných cyklů je však chyba malá (viz dokumentace).</"
+"p><p>Správným způsobem zpracování cyklů je jejich detekce a sloučení všech "
+"funkcí cyklu do umělé funkce, k čemuž dochází, je-li tato volba zapnuta. "
+"Bohužel u aplikací s grafickým uživatelským rozhraním to často vede k "
+"obrovským falešným cyklům, které znemožňují analýzu; proto existuje možnost "
+"tuto funkci vypnout.</p>"
 
 #: kcachegrind/toplevel.cpp:567
 #, kde-format
 msgid "Shorten Templates"
-msgstr ""
+msgstr "Zkrácení šablon"
 
 #: kcachegrind/toplevel.cpp:569
 #, kde-format
 msgid "Hide Template Parameters in C++ Symbols"
-msgstr ""
+msgstr "Skrýt parametry šablony v symbolech C++"
 
 #: kcachegrind/toplevel.cpp:570
 #, kde-format
@@ -913,6 +987,11 @@ msgid ""
 "p><p>In this mode, you can hover the mouse pointer over the activated symbol "
 "label to show a tooltip with the unabbreviated symbol.</p>"
 msgstr ""
+"<b>Skrýt parametry šablon v symbolech C++</b><p>Je-li tato možnost zapnutá, "
+"budou u každého zobrazeného symbolu skryty všechny parametry šablon C++ a "
+"namísto potenciálně vnořeného parametru šablony se zobrazí pouze &lt;&gt;.</"
+"p><p>V tomto režimu můžete najet ukazatelem myši na název aktivovaného "
+"symbolu a zobrazit tak popisek s nezkráceným názvem symbolu.</p>"
 
 #: kcachegrind/toplevel.cpp:586
 #, kde-format
@@ -925,36 +1004,41 @@ msgid ""
 "<b>Go Up</b><p>Go to last selected caller of current function. If no caller "
 "was visited, use that with highest cost.</p>"
 msgstr ""
+"<b>Přejít nahoru</b><p>Přejít na posledního vybraného volajícího aktuální "
+"funkce. Pokud nebyl navštíven žádný volající, použít toho s nejvyššími "
+"náklady.</p>"
 
 #: kcachegrind/toplevel.cpp:612
 #, kde-format
 msgid "Go back in function selection history"
-msgstr ""
+msgstr "Přejít zpět v historii výběru funkcí"
 
 #: kcachegrind/toplevel.cpp:626
 #, kde-format
 msgid "Go forward in function selection history"
-msgstr ""
+msgstr "Přejít vpřed v historii výběru funkcí"
 
 #: kcachegrind/toplevel.cpp:631 kcachegrind/toplevel.cpp:1502
 #, kde-format
 msgid "Primary Event Type"
-msgstr ""
+msgstr "Typ hlavní události"
 
 #: kcachegrind/toplevel.cpp:632
 #, kde-format
 msgid "Select primary event type of costs"
-msgstr ""
+msgstr "Vyberte typ hlavní události, ke které se náklady vztahují"
 
 #: kcachegrind/toplevel.cpp:654 kcachegrind/toplevel.cpp:1507
 #, kde-format
 msgid "Secondary Event Type"
-msgstr ""
+msgstr "Typ sekundární události"
 
 #: kcachegrind/toplevel.cpp:655
 #, kde-format
 msgid "Select secondary event type for cost e.g. shown in annotations"
 msgstr ""
+"Vyberte typ sekundární události, ke které se náklady vztahují, např. jak je "
+"uvedeno v poznámkách"
 
 #: kcachegrind/toplevel.cpp:664
 #, kde-format
@@ -965,6 +1049,8 @@ msgstr "Seskupování"
 #, kde-format
 msgid "Select how functions are grouped into higher level cost items"
 msgstr ""
+"Vyberte, jakým způsobem se funkce seskupují do nákladových položek vyšší "
+"úrovně"
 
 #: kcachegrind/toplevel.cpp:672
 #, kde-format
@@ -989,17 +1075,18 @@ msgstr "Rozdělit vodorovně"
 #: kcachegrind/toplevel.cpp:696
 #, kde-format
 msgid "Change Split Orientation when main window is split."
-msgstr ""
+msgstr "Změnit orientaci rozděleného okna, pokud je hlavní okno rozděleno."
 
 #: kcachegrind/toplevel.cpp:890
 #, kde-format
 msgid "Select Callgrind Profile Data"
-msgstr ""
+msgstr "Vybrat data profilu Callgrind"
 
 #: kcachegrind/toplevel.cpp:892 kcachegrind/toplevel.cpp:960
 #, kde-format
 msgid "Callgrind Profile Data (cachegrind.out* callgrind.out*);;All Files (*)"
 msgstr ""
+"Data profilu Callgrind (cachegrind.out*, callgrind.out*);;Všechny soubory (*)"
 
 #: kcachegrind/toplevel.cpp:920 kcachegrind/toplevel.cpp:949
 #, kde-format
@@ -1007,11 +1094,13 @@ msgid ""
 "Could not open the file \"%1\". Check it exists and you have enough "
 "permissions to read it."
 msgstr ""
+"Nelze otevřít soubor \"%1\". Zkontrolujte, zda soubor existuje a zda máte "
+"dostatečná oprávnění k jeho čtení."
 
 #: kcachegrind/toplevel.cpp:958
 #, kde-format
 msgid "Add Callgrind Profile Data"
-msgstr ""
+msgstr "Přidat data profilu Callgrind"
 
 #: kcachegrind/toplevel.cpp:1128 kcachegrind/toplevel.cpp:1455
 #, kde-format
@@ -1026,12 +1115,12 @@ msgstr "Skrýt"
 #: kcachegrind/toplevel.cpp:1554
 #, kde-format
 msgid "Show Absolute Cost"
-msgstr ""
+msgstr "Zobrazit absolutní náklady"
 
 #: kcachegrind/toplevel.cpp:1557
 #, kde-format
 msgid "Show Relative Cost"
-msgstr ""
+msgstr "Zobrazit relativní náklady"
 
 #: kcachegrind/toplevel.cpp:1592
 #, kde-format
@@ -1051,38 +1140,38 @@ msgstr "Přejít nahoru"
 #: kcachegrind/toplevel.cpp:1806
 #, kde-format
 msgid "Layout Count: %1"
-msgstr ""
+msgstr "Počet rozvržení: %1"
 
 #: kcachegrind/toplevel.cpp:1813
 #, kde-format
 msgid "No profile data file loaded."
-msgstr ""
+msgstr "Nebyl načten žádný soubor s daty profilu."
 
 #: kcachegrind/toplevel.cpp:1822
 #, kde-format
 msgid "Total %1 Cost: %2"
-msgstr ""
+msgstr "Celkové %1 náklady: %2"
 
 #: kcachegrind/toplevel.cpp:1834
 #, kde-format
 msgid "No event type selected"
-msgstr ""
+msgstr "Není vybrán žádný typ události"
 
 #: kcachegrind/toplevel.cpp:2012
 #, kde-format
 msgid "Cannot determine receiver PID for dump request"
-msgstr ""
+msgstr "Nelze určit PID příjemce pro požadavek na výpis"
 
 #: kcachegrind/toplevel.cpp:2058
 #, kde-format
 msgid "Error running callgrind_control"
-msgstr ""
+msgstr "Chyba při spuštění callgrind_control"
 
 #: kcachegrind/toplevel.cpp:2097 kcachegrind/toplevel.cpp:2134
 #: kcachegrind/toplevel.cpp:2171
 #, kde-format
 msgid "(No Stack)"
-msgstr ""
+msgstr "(Žádný zásobník)"
 
 #: kcachegrind/toplevel.cpp:2103
 #, kde-format
@@ -1097,7 +1186,7 @@ msgstr "(Žádná předchozí funkce)"
 #: kcachegrind/toplevel.cpp:2176
 #, kde-format
 msgid "(No Function Up)"
-msgstr ""
+msgstr "(Žádná funkce nahoru)"
 
 #: kcachegrind/toplevel.cpp:2308 kcachegrind/toplevel.cpp:2322
 #, kde-format

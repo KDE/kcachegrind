@@ -1,42 +1,45 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # SPDX-FileCopyrightText: 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2019, 2020, 2024 Vít Pelčák <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2026 Libor Filípek <libor.filipek@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcachegrind_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2024-08-20 15:27+0200\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"PO-Revision-Date: 2026-11-05 00:18+0100\n"
+"Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 26.08.2\n"
 "X-Qt-Contexts: true\n"
 
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
 msgid "Import filter for Cachegrind/Callgrind generated profile data files"
 msgstr ""
+"Importní filtr pro soubory s daty profilu vygenerované nástroji Cachegrind/"
+"Callgrind"
 
 #: libcore/context.cpp:60
 msgctxt "ProfileContext|"
 msgid "Invalid Context"
-msgstr ""
+msgstr "Neplatný kontext"
 
 #: libcore/context.cpp:61
 msgctxt "ProfileContext|"
 msgid "Unknown Context"
-msgstr ""
+msgstr "Neznámý kontext"
 
 #: libcore/context.cpp:62
 msgctxt "ProfileContext|"
 msgid "Part Source Line"
-msgstr ""
+msgstr "Část zdrojového řádku"
 
 #: libcore/context.cpp:63
 msgctxt "ProfileContext|"
@@ -46,17 +49,17 @@ msgstr "Zdrojový řádek"
 #: libcore/context.cpp:64
 msgctxt "ProfileContext|"
 msgid "Part Line Call"
-msgstr ""
+msgstr "Část řádku volání"
 
 #: libcore/context.cpp:65
 msgctxt "ProfileContext|"
 msgid "Line Call"
-msgstr ""
+msgstr "Řádek volání"
 
 #: libcore/context.cpp:66
 msgctxt "ProfileContext|"
 msgid "Part Jump"
-msgstr ""
+msgstr "Část skoku"
 
 #: libcore/context.cpp:67
 msgctxt "ProfileContext|"
@@ -66,7 +69,7 @@ msgstr "Skok"
 #: libcore/context.cpp:68
 msgctxt "ProfileContext|"
 msgid "Part Instruction"
-msgstr ""
+msgstr "Část instrukce"
 
 #: libcore/context.cpp:69
 msgctxt "ProfileContext|"
@@ -76,27 +79,27 @@ msgstr "Instrukce"
 #: libcore/context.cpp:70
 msgctxt "ProfileContext|"
 msgid "Part Instruction Jump"
-msgstr ""
+msgstr "Část instrukce skoku"
 
 #: libcore/context.cpp:71
 msgctxt "ProfileContext|"
 msgid "Instruction Jump"
-msgstr ""
+msgstr "Instrukce skoku"
 
 #: libcore/context.cpp:72
 msgctxt "ProfileContext|"
 msgid "Part Instruction Call"
-msgstr ""
+msgstr "Část instrukce volání"
 
 #: libcore/context.cpp:73
 msgctxt "ProfileContext|"
 msgid "Instruction Call"
-msgstr ""
+msgstr "Instrukce volání"
 
 #: libcore/context.cpp:74
 msgctxt "ProfileContext|"
 msgid "Part Call"
-msgstr ""
+msgstr "Část volání"
 
 #: libcore/context.cpp:75
 msgctxt "ProfileContext|"
@@ -106,12 +109,12 @@ msgstr "Volání"
 #: libcore/context.cpp:76
 msgctxt "ProfileContext|"
 msgid "Part Function"
-msgstr ""
+msgstr "Část funkce"
 
 #: libcore/context.cpp:77
 msgctxt "ProfileContext|"
 msgid "Function Source File"
-msgstr ""
+msgstr "Zdrojový soubor funkce"
 
 #: libcore/context.cpp:78
 msgctxt "ProfileContext|"
@@ -121,12 +124,12 @@ msgstr "Funkce"
 #: libcore/context.cpp:79
 msgctxt "ProfileContext|"
 msgid "Function Cycle"
-msgstr ""
+msgstr "Cyklus funkce"
 
 #: libcore/context.cpp:80
 msgctxt "ProfileContext|"
 msgid "Part Class"
-msgstr ""
+msgstr "Třída funkce"
 
 #: libcore/context.cpp:81
 msgctxt "ProfileContext|"
@@ -136,7 +139,7 @@ msgstr "Třída"
 #: libcore/context.cpp:82
 msgctxt "ProfileContext|"
 msgid "Part Source File"
-msgstr ""
+msgstr "Zdrojový soubor části"
 
 #: libcore/context.cpp:83
 msgctxt "ProfileContext|"
@@ -146,27 +149,27 @@ msgstr "Zdrojový soubor"
 #: libcore/context.cpp:84
 msgctxt "ProfileContext|"
 msgid "Part ELF Object"
-msgstr ""
+msgstr "Část ELF objektu"
 
 #: libcore/context.cpp:85
 msgctxt "ProfileContext|"
 msgid "ELF Object"
-msgstr ""
+msgstr "ELF objekt"
 
 #: libcore/context.cpp:86
 msgctxt "ProfileContext|"
 msgid "Profile Part"
-msgstr ""
+msgstr "Profil části"
 
 #: libcore/context.cpp:87
 msgctxt "ProfileContext|"
 msgid "Program Trace"
-msgstr ""
+msgstr "Trasování programu"
 
 #: libcore/context.cpp:88
 msgctxt "ProfileContext|"
 msgid "BasicBlock"
-msgstr ""
+msgstr "Základní bloky"
 
 #: libcore/costitem.cpp:48
 #, qt-format
@@ -184,107 +187,107 @@ msgstr "(neznámý)"
 #: libcore/globalconfig.cpp:77
 msgctxt "QObject|"
 msgid "Instruction Fetch"
-msgstr ""
+msgstr "Načtení instrukce"
 
 #: libcore/globalconfig.cpp:78
 msgctxt "QObject|"
 msgid "Data Read Access"
-msgstr ""
+msgstr "Přístup pro čtení dat"
 
 #: libcore/globalconfig.cpp:79
 msgctxt "QObject|"
 msgid "Data Write Access"
-msgstr ""
+msgstr "Přístup pro zápis dat"
 
 #: libcore/globalconfig.cpp:80
 msgctxt "QObject|"
 msgid "L1 Instr. Fetch Miss"
-msgstr ""
+msgstr "L1 Instr. Fetch Miss"
 
 #: libcore/globalconfig.cpp:81
 msgctxt "QObject|"
 msgid "L1 Data Read Miss"
-msgstr ""
+msgstr "L1 Data Read Miss"
 
 #: libcore/globalconfig.cpp:82
 msgctxt "QObject|"
 msgid "L1 Data Write Miss"
-msgstr ""
+msgstr "L1 Data Write Miss"
 
 #: libcore/globalconfig.cpp:83
 msgctxt "QObject|"
 msgid "L2 Instr. Fetch Miss"
-msgstr ""
+msgstr "L2 Instr. Fetch Miss"
 
 #: libcore/globalconfig.cpp:84
 msgctxt "QObject|"
 msgid "L2 Data Read Miss"
-msgstr ""
+msgstr "L2 Data Read Miss"
 
 #: libcore/globalconfig.cpp:85
 msgctxt "QObject|"
 msgid "L2 Data Write Miss"
-msgstr ""
+msgstr "L2 Data Write Miss"
 
 #: libcore/globalconfig.cpp:86
 msgctxt "QObject|"
 msgid "LL Instr. Fetch Miss"
-msgstr ""
+msgstr "LL Instr. Fetch Miss"
 
 #: libcore/globalconfig.cpp:87
 msgctxt "QObject|"
 msgid "LL Data Read Miss"
-msgstr ""
+msgstr "LL Data Read Miss"
 
 #: libcore/globalconfig.cpp:88
 msgctxt "QObject|"
 msgid "LL Data Write Miss"
-msgstr ""
+msgstr "LL Data Write Miss"
 
 #: libcore/globalconfig.cpp:89
 msgctxt "QObject|"
 msgid "L1 Miss Sum"
-msgstr ""
+msgstr "L1 Miss Sum"
 
 #: libcore/globalconfig.cpp:90
 msgctxt "QObject|"
 msgid "L2 Miss Sum"
-msgstr ""
+msgstr "L2 Miss Sum"
 
 #: libcore/globalconfig.cpp:91
 msgctxt "QObject|"
 msgid "Last-level Miss Sum"
-msgstr ""
+msgstr "Last-level Miss Sum"
 
 #: libcore/globalconfig.cpp:92
 msgctxt "QObject|"
 msgid "Indirect Branch"
-msgstr ""
+msgstr "Indirect Branch"
 
 #: libcore/globalconfig.cpp:93
 msgctxt "QObject|"
 msgid "Mispredicted Ind. Branch"
-msgstr ""
+msgstr "Mispredicted Ind. Branch"
 
 #: libcore/globalconfig.cpp:94
 msgctxt "QObject|"
 msgid "Conditional Branch"
-msgstr ""
+msgstr "Conditional Branch"
 
 #: libcore/globalconfig.cpp:95
 msgctxt "QObject|"
 msgid "Mispredicted Cond. Branch"
-msgstr ""
+msgstr "Mispredicted Cond. Branch"
 
 #: libcore/globalconfig.cpp:96
 msgctxt "QObject|"
 msgid "Mispredicted Branch"
-msgstr ""
+msgstr "Mispredicted Branch"
 
 #: libcore/globalconfig.cpp:97
 msgctxt "QObject|"
 msgid "Global Bus Event"
-msgstr ""
+msgstr "Global Bus Event"
 
 #: libcore/globalconfig.cpp:98
 msgctxt "QObject|"
@@ -299,28 +302,28 @@ msgstr "Systémový čas"
 #: libcore/globalconfig.cpp:100
 msgctxt "QObject|"
 msgid "User Time"
-msgstr ""
+msgstr "Čas uživatele"
 
 #: libcore/globalconfig.cpp:101
 msgctxt "QObject|"
 msgid "Cycle Estimation"
-msgstr ""
+msgstr "Odhad cyklu"
 
 #: libcore/tracedata.cpp:1245
 msgctxt "QObject|"
 msgid "(no caller)"
-msgstr ""
+msgstr "(žádný volající)"
 
 #: libcore/tracedata.cpp:1252 libcore/tracedata.cpp:1271
 #, qt-format
 msgctxt "QObject|"
 msgid "%1 via %2"
-msgstr ""
+msgstr "%1 přes %2"
 
 #: libcore/tracedata.cpp:1261
 msgctxt "QObject|"
 msgid "(no callee)"
-msgstr ""
+msgstr "(žádný volaný)"
 
 #: libcore/tracedata.cpp:2873
 msgctxt "QObject|"
@@ -335,24 +338,24 @@ msgstr "(nenalezeno)"
 #: libcore/tracedata.cpp:3856
 msgctxt "TraceData|"
 msgid "Recalculating Function Cycles..."
-msgstr ""
+msgstr "Přepočítání funkčních cyklů..."
 
 #: libviews/callgraphview.cpp:414
 #, qt-format
 msgctxt "QObject|"
 msgid "Call(s) from %1"
-msgstr ""
+msgstr "Volání od %1"
 
 #: libviews/callgraphview.cpp:417
 #, qt-format
 msgctxt "QObject|"
 msgid "Call(s) to %1"
-msgstr ""
+msgstr "Volání do %1"
 
 #: libviews/callgraphview.cpp:419
 msgctxt "QObject|"
 msgid "(unknown call)"
-msgstr ""
+msgstr "(neznámé volání)"
 
 #: libviews/callgraphview.cpp:908 libviews/controlflowgraphview.cpp:1414
 #: libviews/controlflowgraphview.cpp:2449
@@ -375,6 +378,17 @@ msgid ""
 "There are similar visualization options to the Call Treemap; the selected "
 "function is highlighted.</p>"
 msgstr ""
+"<b>Graf volání kolem aktivní funkce</b><p>V závislosti na konfiguraci "
+"zobrazuje tento pohled prostředí grafu volání aktivní funkce. Poznámka: "
+"zobrazená náročnost je <b>pouze</b> náročnost vynaložená během skutečného "
+"běhu aktivní funkce; tj. náročnost zobrazená pro main() – pokud je viditelná "
+"– by měla být stejná jako náročnost aktivní funkce, protože se jedná o část "
+"celkové náročnosti main(), která byla vynaložena během běhu aktivní funkce.</"
+"p><p>U cyklů modré šipky volání označují, že se jedná o umělé volání přidané "
+"pro správné zobrazení, ke kterému ve skutečnosti nikdy nedošlo.</p><p>Pokud "
+"je graf větší než oblast widgetu, zobrazí se na jednom okraji posuvník pro "
+"přehled. K dispozici jsou podobné možnosti vizualizace jako u stromu volání "
+"(Call Treemap); vybraná funkce je zvýrazněna.</p>"
 
 #: libviews/callgraphview.cpp:2003
 msgctxt "CallGraphView|"
@@ -382,22 +396,24 @@ msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
 "Reduce node/edge limits for speedup.\n"
 msgstr ""
+"Upozornění: Probíhá dlouhodobé formátování grafu.\n"
+"Pro zrychlení snižte limity uzlů a hran.\n"
 
 #: libviews/callgraphview.cpp:2006
 msgctxt "CallGraphView|"
 msgid "Layouting stopped.\n"
-msgstr ""
+msgstr "Vytváření rozvržení bylo zastaveno.\n"
 
 #: libviews/callgraphview.cpp:2008
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
-msgstr ""
+msgstr "Graf volání obsahuje %1 uzlů a %2 hran.\n"
 
 #: libviews/callgraphview.cpp:2017
 msgctxt "CallGraphView|"
 msgid "No graph available because the layouting process failed.\n"
-msgstr ""
+msgstr "Graf není k dispozici, protože se nezdařilo provést rozvržení.\n"
 
 #: libviews/callgraphview.cpp:2019
 #, qt-format
@@ -406,6 +422,8 @@ msgid ""
 "Trying to run the following command did not work:\n"
 "'%1'\n"
 msgstr ""
+"Pokus o spuštění následujícího příkazu nevyšel:\n"
+"'%1'\n"
 
 #: libviews/callgraphview.cpp:2021 libviews/callgraphview.cpp:2538
 msgctxt "CallGraphView|"
@@ -416,11 +434,12 @@ msgstr "Prosím, ujistěte se, že 'dot' je nainstalován (balíček GraphViz)."
 msgctxt "CallGraphView|"
 msgid "No item activated for which to draw the call graph."
 msgstr ""
+"Není aktivována žádná položka, pro kterou by se měl vykreslit graf volání."
 
 #: libviews/callgraphview.cpp:2075
 msgctxt "CallGraphView|"
 msgid "No call graph can be drawn for the active item."
-msgstr ""
+msgstr "Pro aktivní položku nelze vykreslit žádný graf volání."
 
 #: libviews/callgraphview.cpp:2537
 msgctxt "CallGraphView|"
@@ -435,11 +454,15 @@ msgid ""
 "\t'%1'\n"
 "because it has no cost of the selected event type."
 msgstr ""
+"Pro funkci\n"
+"\t'%1'\n"
+"není k dispozici graf volání,\n"
+"protože pro ni není k dispozici náklad vybraného typu události."
 
 #: libviews/callgraphview.cpp:2783
 msgctxt "CallGraphView|"
 msgid "Caller Depth"
-msgstr ""
+msgstr "Hloubka volajícího"
 
 #: libviews/callgraphview.cpp:2784 libviews/callgraphview.cpp:2824
 msgctxt "CallGraphView|"
@@ -479,17 +502,17 @@ msgstr "max. 15"
 #: libviews/callgraphview.cpp:2823
 msgctxt "CallGraphView|"
 msgid "Callee Depth"
-msgstr ""
+msgstr "Hloubka volaného"
 
 #: libviews/callgraphview.cpp:2863
 msgctxt "CallGraphView|"
 msgid "Min. Node Cost"
-msgstr ""
+msgstr "Min. náklady na uzel"
 
 #: libviews/callgraphview.cpp:2864
 msgctxt "CallGraphView|"
 msgid "No Minimum"
-msgstr ""
+msgstr "Žádné minimum"
 
 #: libviews/callgraphview.cpp:2870
 msgctxt "CallGraphView|"
@@ -524,27 +547,27 @@ msgstr "1 %"
 #: libviews/callgraphview.cpp:2905
 msgctxt "CallGraphView|"
 msgid "Min. Call Cost"
-msgstr ""
+msgstr "Min. náklady na volání"
 
 #: libviews/callgraphview.cpp:2906
 msgctxt "CallGraphView|"
 msgid "Same as Node"
-msgstr ""
+msgstr "Stejné jako uzel"
 
 #: libviews/callgraphview.cpp:2908
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
-msgstr ""
+msgstr "50 % uzlu"
 
 #: libviews/callgraphview.cpp:2910
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
-msgstr ""
+msgstr "20 % uzlu"
 
 #: libviews/callgraphview.cpp:2912
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
-msgstr ""
+msgstr "10 % uzlu"
 
 #: libviews/callgraphview.cpp:2941
 msgctxt "CallGraphView|"
@@ -589,7 +612,7 @@ msgstr "Rozvržení"
 #: libviews/callgraphview.cpp:2978
 msgctxt "CallGraphView|"
 msgid "Top to Down"
-msgstr ""
+msgstr "Shora dolů"
 
 #: libviews/callgraphview.cpp:2979
 msgctxt "CallGraphView|"
@@ -606,12 +629,12 @@ msgstr "Kruhová"
 #, qt-format
 msgctxt "CallGraphView|"
 msgid "Go to '%1'"
-msgstr "Jít na %1'"
+msgstr "Jít na '%1'"
 
 #: libviews/callgraphview.cpp:3056
 msgctxt "CallGraphView|"
 msgid "Stop Layouting"
-msgstr ""
+msgstr "Ukončit vytváření rozvržení"
 
 #: libviews/callgraphview.cpp:3063
 msgctxt "CallGraphView|"
@@ -621,7 +644,7 @@ msgstr "Exportovat graf"
 #: libviews/callgraphview.cpp:3064
 msgctxt "CallGraphView|"
 msgid "As DOT file..."
-msgstr ""
+msgstr "Jako soubor DOT..."
 
 #: libviews/callgraphview.cpp:3065
 msgctxt "CallGraphView|"
@@ -636,17 +659,17 @@ msgstr "Graf"
 #: libviews/callgraphview.cpp:3076
 msgctxt "CallGraphView|"
 msgid "Arrows for Skipped Calls"
-msgstr ""
+msgstr "Šipky pro vynechané volání"
 
 #: libviews/callgraphview.cpp:3081
 msgctxt "CallGraphView|"
 msgid "Inner-cycle Calls"
-msgstr ""
+msgstr "Volání v rámci cyklu"
 
 #: libviews/callgraphview.cpp:3086
 msgctxt "CallGraphView|"
 msgid "Cluster Groups"
-msgstr ""
+msgstr "Skupiny klastrů"
 
 #: libviews/callgraphview.cpp:3090
 msgctxt "CallGraphView|"
@@ -671,7 +694,7 @@ msgstr "Vysoká"
 #: libviews/callgraphview.cpp:3129
 msgctxt "CallGraphView|"
 msgid "Export Graph As Image"
-msgstr ""
+msgstr "Exportovat graf jako obrázek"
 
 #: libviews/callgraphview.cpp:3131
 msgctxt "CallGraphView|"
@@ -686,7 +709,7 @@ msgstr "(aktivní)"
 #: libviews/callmapview.cpp:52
 msgctxt "CallMapView|Name"
 msgid "A thing's name"
-msgstr ""
+msgstr "Název věci"
 
 #: libviews/callmapview.cpp:53
 msgctxt "CallMapView|"
@@ -711,6 +734,11 @@ msgid ""
 "function; its size tries to be proportional to the cost spent therein while "
 "the active function is running (however, there are drawing constraints).</p>"
 msgstr ""
+"<b>Mapa volajících</b><p>Tento graf znázorňuje vnořenou hierarchii všech "
+"funkcí, které volají aktuálně aktivovanou funkci. Každý barevný obdélník "
+"představuje jednu funkci; jeho velikost se snaží být úměrná výpočetnímu "
+"nákladu vynaloženému v dané funkci během běhu aktivní funkce (existují však "
+"určitá omezení při vykreslování).</p>"
 
 #: libviews/callmapview.cpp:98
 msgctxt "CallMapView|"
@@ -720,6 +748,11 @@ msgid ""
 "function; its size tries to be proportional to the cost spent therein while "
 "the active function is running (however, there are drawing constraints).</p>"
 msgstr ""
+"<b>Mapa volání</b><p>Tento graf znázorňuje vnořenou hierarchii všech "
+"volaných funkcí aktuálně aktivované funkce. Každý barevný obdélník "
+"představuje jednu funkci; jeho velikost se snaží být úměrná výpočetnímu "
+"nákladu vynaloženému v dané funkci během běhu aktivní funkce (existují však "
+"určitá omezení při vykreslování).</p>"
 
 #: libviews/callmapview.cpp:106
 msgctxt "CallMapView|"
@@ -736,6 +769,19 @@ msgid ""
 "siblings, and up/down arrow keys to go a nesting level up/down. <em>Return</"
 "em> activates the current item.</p>"
 msgstr ""
+"<p>Možnosti vzhledu najdete v kontextovém menu. Chcete-li dosáhnout přesných "
+"proporcí velikostí, vyberte možnost 'Skrýt nesprávné ohraničení'. Jelikož "
+"tento režim může být <em>velmi</em> časově náročný, možná budete chtít "
+"předem omezit maximální úroveň vnoření. Volba 'Nejlepší' určuje směr "
+"rozdělení podřízených prvků na základě poměru stran nadřazeného prvku. Volba "
+"'Vždy nejlepší' rozhoduje o rozdělení zbývajícího prostoru mezi jednotlivé "
+"sourozenecké prvky. Možnost 'Ignorovat proporce' vyhradí prostor pro "
+"vykreslení názvu funkce <em>před</em> vykreslením podřízených prvků. "
+"Upozorňujeme, že proporce velikostí se mohou <em>výrazně</em> lišit od "
+"skutečnosti.</p><p>Toto je <em>widget stromové mapy</em>. K dispozici je "
+"navigace pomocí klávesnice: šipkami vlevo/vpravo se pohybujete mezi "
+"sourozenci a šipkami nahoru/dolů přecházíte o úroveň vnoření výš/níž. "
+"<em>Klávesa Return</em> aktivuje aktuální položku.</p>"
 
 #: libviews/callmapview.cpp:139
 msgctxt "CallMapView|"
@@ -777,23 +823,23 @@ msgstr "Hloubka '%1' (%2)"
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Decrement Depth (to %1)"
-msgstr ""
+msgstr "Snížit hloubku (na %1)"
 
 #: libviews/callmapview.cpp:187
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Increment Depth (to %1)"
-msgstr ""
+msgstr "Zvýšit hloubku (na %1)"
 
 #: libviews/callmapview.cpp:213
 msgctxt "CallMapView|"
 msgid "Stop at Function"
-msgstr ""
+msgstr "Zastavit na funkci"
 
 #: libviews/callmapview.cpp:214
 msgctxt "CallMapView|"
 msgid "No Function Limit"
-msgstr ""
+msgstr "Žádný limit funkce"
 
 #: libviews/callmapview.cpp:257
 msgctxt "CallMapView|"
@@ -835,13 +881,13 @@ msgstr "Oblast '%1' (%2)"
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Double Area Limit (to %1)"
-msgstr "Zdvojit limit oblasti (na %1)"
+msgstr "Zdvojení limitu oblasti (na %1)"
 
 #: libviews/callmapview.cpp:277
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Half Area Limit (to %1)"
-msgstr ""
+msgstr "Polovina limitu oblasti (na %1)"
 
 #: libviews/callmapview.cpp:327
 msgctxt "CallMapView|"
@@ -851,12 +897,12 @@ msgstr "Vizualizace"
 #: libviews/callmapview.cpp:328
 msgctxt "CallMapView|"
 msgid "Split Direction"
-msgstr ""
+msgstr "Směr rozdělení"
 
 #: libviews/callmapview.cpp:331
 msgctxt "CallMapView|"
 msgid "Skip Incorrect Borders"
-msgstr ""
+msgstr "Skrýt nesprávné ohraničení"
 
 #: libviews/callmapview.cpp:336
 msgctxt "CallMapView|"
@@ -886,27 +932,27 @@ msgstr "Ohraničení 3"
 #: libviews/callmapview.cpp:346
 msgctxt "CallMapView|"
 msgid "Draw Symbol Names"
-msgstr ""
+msgstr "Vykreslit názvy symbolů"
 
 #: libviews/callmapview.cpp:348
 msgctxt "CallMapView|"
 msgid "Draw Cost"
-msgstr ""
+msgstr "Vykreslit náklady"
 
 #: libviews/callmapview.cpp:350
 msgctxt "CallMapView|"
 msgid "Draw Location"
-msgstr ""
+msgstr "Vykreslit umístění"
 
 #: libviews/callmapview.cpp:352
 msgctxt "CallMapView|"
 msgid "Draw Calls"
-msgstr ""
+msgstr "Vykreslit volání"
 
 #: libviews/callmapview.cpp:356
 msgctxt "CallMapView|"
 msgid "Ignore Proportions"
-msgstr ""
+msgstr "Ignorovat proporce"
 
 #: libviews/callmapview.cpp:358
 msgctxt "CallMapView|"
@@ -922,37 +968,37 @@ msgstr "Stínování"
 #, qt-format
 msgctxt "CallMapView|"
 msgid "Call Map: Current is '%1'"
-msgstr ""
+msgstr "Mapa volání: Aktuální je '%1'"
 
 #: libviews/callmapview.cpp:621
 msgctxt "QObject|"
 msgid "(no function)"
-msgstr ""
+msgstr "(žádná funkce)"
 
 #: libviews/callmapview.cpp:761 libviews/callmapview.cpp:880
 msgctxt "QObject|"
 msgid "(no call)"
-msgstr ""
+msgstr "(žádné volání)"
 
 #: libviews/callview.cpp:37
 msgctxt "CallView|"
 msgid "Cost"
-msgstr "Cena"
+msgstr "Náklad"
 
 #: libviews/callview.cpp:38
 msgctxt "CallView|"
 msgid "Cost per call"
-msgstr ""
+msgstr "Náklady na volání"
 
 #: libviews/callview.cpp:39
 msgctxt "CallView|"
 msgid "Cost 2"
-msgstr "Cena 2"
+msgstr "Náklad 2"
 
 #: libviews/callview.cpp:40
 msgctxt "CallView|"
 msgid "Cost 2 per call"
-msgstr ""
+msgstr "Náklady 2 na volání"
 
 #: libviews/callview.cpp:41
 msgctxt "CallView|"
@@ -981,6 +1027,14 @@ msgid ""
 "information panel. If there are two panels (Split mode), the function of the "
 "other panel is changed instead.</p>"
 msgstr ""
+"<b>Seznam přímých volajících</b><p>Tento seznam zobrazuje všechny funkce, "
+"které přímo volají aktuálně vybranou funkci, spolu s počtem volání a náklady "
+"vynaloženými v aktuálně vybrané funkci při jejím volání z funkce ze seznamu."
+"</p><p>Ikona namísto nákladů včetně návratu označuje, že se jedná o volání "
+"uvnitř rekurzivního cyklu. Náklady včetně návratu zde nemají smysl.</"
+"p><p>Výběrem funkce se tato stane aktuálně vybranou v tomto informačním "
+"panelu. Pokud jsou k dispozici dva panely (režim rozdělení), změní se místo "
+"toho funkce v druhém panelu.</p>"
 
 #: libviews/callview.cpp:89
 msgctxt "CallView|"
@@ -992,6 +1046,12 @@ msgid ""
 "information panel. If there are two panels (Split mode), the function of the "
 "other panel is changed instead.</p>"
 msgstr ""
+"<b>Seznam přímých volaných</b><p>Tento seznam zobrazuje všechny funkce, "
+"které jsou přímo volány aktuálně vybranou funkcí, spolu s počtem volání a "
+"časem stráveným v dané funkci při jejím volání z vybrané funkce.</"
+"p><p>Výběrem funkce se tato stane aktuálně vybranou v tomto informačním "
+"panelu. Pokud jsou k dispozici dva panely (režim rozdělení), změní se místo "
+"toho funkce v druhém panelu.</p>"
 
 #: libviews/callview.cpp:118 libviews/callview.cpp:123
 #, qt-format
@@ -1003,13 +1063,15 @@ msgstr "Jít na %1'"
 #, qt-format
 msgctxt "CallView|"
 msgid "%1 per call"
-msgstr ""
+msgstr "%1 na volání"
 
 #: libviews/controlflowgraphview.cpp:623
 msgctxt "QObject|"
 msgid ""
 "Control-flow graph requires running callgrind with option --dump-instr=yes"
 msgstr ""
+"Pro vytvoření grafu toku řízení je nutné spustit program callgrind s volbou "
+"--dump-instr=yes"
 
 #: libviews/controlflowgraphview.cpp:932
 #, qt-format
@@ -1019,11 +1081,14 @@ msgid ""
 "    '%1'\n"
 "This file cannot be found.\n"
 msgstr ""
+"Pro strojový kód s anotacemi je zapotřebí následující objektový soubor\n"
+"    '%1'\n"
+"Tento soubor nelze najít.\n"
 
 #: libviews/controlflowgraphview.cpp:936
 msgctxt "QObject|"
 msgid "If cross-compiled, set SYSROOT variable."
-msgstr ""
+msgstr "V případě křížové kompilace nastavte proměnnou SYSROOT."
 
 #: libviews/controlflowgraphview.cpp:960
 #, qt-format
@@ -1034,6 +1099,10 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package"
 msgstr ""
+"Při pokusu o spuštění příkazu došlo k chybě\n"
+"    '%1'\n"
+"Zkontrolujte, zda máte nainstalovaný nástroj 'objdump'.\n"
+"Tento nástroj najdete v balíčku 'binutils'"
 
 #: libviews/controlflowgraphview.cpp:1041
 #, qt-format
@@ -1045,6 +1114,11 @@ msgid ""
 "Are you using an old profile data file or is the abovementioned\n"
 "ELF object from an updated installation/another machine?"
 msgstr ""
+"Existuje %1 řádek nákladů bez strojového kódu.\n"
+"K tomu dochází, protože kód %2 zřejmě neodpovídá souboru s profilovými "
+"daty.\n"
+"Používáte starý soubor s profilovými daty, nebo pochází výše uvedený\n"
+"objekt ELF z aktualizované instalace/jiného počítače?"
 
 #: libviews/controlflowgraphview.cpp:1051
 #, qt-format
@@ -1055,11 +1129,15 @@ msgid ""
 "Check that you have installed 'objdump'.\n"
 "This utility can be found in the 'binutils' package."
 msgstr ""
+"Při pokusu o spuštění příkazu '%1' zřejmě došlo k chybě.\n"
+"Zkontrolujte, zda objekt ELF použitý v příkazu existuje.\n"
+"Zkontrolujte, zda máte nainstalovaný nástroj 'objdump'.\n"
+"Tento nástroj najdete v balíčku 'binutils'."
 
 #: libviews/controlflowgraphview.cpp:1772
 msgctxt "QObject|"
 msgid "This is Control Flow Graph by KetchuppOfficial"
-msgstr ""
+msgstr "Toto je graf řídicího toku od KetchuppOfficial"
 
 #: libviews/controlflowgraphview.cpp:1828
 msgctxt "QObject|"
@@ -1067,22 +1145,24 @@ msgid ""
 "Warning: a long lasting graph layouting is in progress.\n"
 "Reduce node/edge limits for speedup.\n"
 msgstr ""
+"Upozornění: Probíhá dlouhodobé formátování grafu.\n"
+"Pro zrychlení snižte limity uzlů a hran.\n"
 
 #: libviews/controlflowgraphview.cpp:1831
 msgctxt "QObject|"
 msgid "Layouting stopped.\n"
-msgstr ""
+msgstr "Vytváření rozvržení bylo zastaveno.\n"
 
 #: libviews/controlflowgraphview.cpp:1833
 #, qt-format
 msgctxt "QObject|"
 msgid "The call graph has %1 nodes and %2 edges.\n"
-msgstr ""
+msgstr "Graf volání obsahuje %1 uzlů a %2 hran.\n"
 
 #: libviews/controlflowgraphview.cpp:1841
 msgctxt "QObject|"
 msgid "No graph available because the layouting process failed.\n"
-msgstr ""
+msgstr "Graf není k dispozici, protože se nezdařilo provést rozvržení.\n"
 
 #: libviews/controlflowgraphview.cpp:1843
 #, qt-format
@@ -1091,11 +1171,13 @@ msgid ""
 "Trying to run the following command did not work:\n"
 "'%1'\n"
 msgstr ""
+"Pokus o spuštění následujícího příkazu nevyšel:\n"
+"'%1'\n"
 
 #: libviews/controlflowgraphview.cpp:1845
 msgctxt "QObject|"
 msgid "Please check that 'dot' is installed (package GraphViz)."
-msgstr ""
+msgstr "Prosím, ujistěte se, že 'dot' je nainstalován (balíček GraphViz)."
 
 #: libviews/controlflowgraphview.cpp:2209
 msgctxt "QObject|"
@@ -1103,158 +1185,162 @@ msgid ""
 "Error running the graph layouting tool.\n"
 "Please check that 'dot' is installed (package Graphviz)."
 msgstr ""
+"Došlo k chybě při spuštění nástroje pro rozvržení grafu.\n"
+"Zkontrolujte, zda máte nainstalovaný 'dot' (balíček Graphviz)."
 
 #: libviews/controlflowgraphview.cpp:2399
 msgctxt "QObject|"
 msgid "This basic block"
-msgstr ""
+msgstr "Tento základní blok"
 
 #: libviews/controlflowgraphview.cpp:2401
 #: libviews/controlflowgraphview.cpp:2432
 msgctxt "QObject|"
 msgid "PC only"
-msgstr ""
+msgstr "Pouze PC"
 
 #: libviews/controlflowgraphview.cpp:2405
 #: libviews/controlflowgraphview.cpp:2436
 msgctxt "QObject|"
 msgid "Show instructions' PC"
-msgstr ""
+msgstr "Zobrazit pokyny pro PC"
 
 #: libviews/controlflowgraphview.cpp:2409
 #: libviews/controlflowgraphview.cpp:2440
 msgctxt "QObject|"
 msgid "Show instructions' cost"
-msgstr ""
+msgstr "Zobrazit pokyny pro volání"
 
 #: libviews/controlflowgraphview.cpp:2426
 msgctxt "QObject|"
 msgid "Intel ASM Syntax"
-msgstr ""
+msgstr "Syntaxe Intel ASM"
 
 #: libviews/controlflowgraphview.cpp:2450
 msgctxt "QObject|"
 msgid "As DOT file..."
-msgstr ""
+msgstr "Jako soubor DOT..."
 
 #: libviews/controlflowgraphview.cpp:2451
 msgctxt "QObject|"
 msgid "As Image..."
-msgstr ""
+msgstr "Jako obrázek..."
 
 #: libviews/controlflowgraphview.cpp:2562
 msgctxt "QObject|"
 msgid "Export Graph as Image"
-msgstr ""
+msgstr "Exportovat graf jako obrázek"
 
 #: libviews/controlflowgraphview.cpp:2564
 msgctxt "QObject|"
 msgid "Images (*.png *.jpg)"
-msgstr ""
+msgstr "Obrázky (*.png *.jpg)"
 
 #: libviews/controlflowgraphview.cpp:2997
 msgctxt "QObject|"
 msgid "No trace data"
-msgstr ""
+msgstr "Žádná data o trasování"
 
 #: libviews/controlflowgraphview.cpp:3002
 msgctxt "QObject|"
 msgid "No item activated for which to draw the control-flow graph."
 msgstr ""
+"Není aktivována žádná položka, pro kterou by se měl vykreslit graf toku "
+"řízení."
 
 #: libviews/controlflowgraphview.cpp:3014
 msgctxt "QObject|"
 msgid "No control-flow graph can be drawn for the active item."
-msgstr ""
+msgstr "Pro aktivní položku nelze nakreslit žádný graf toku řízení."
 
 #: libviews/controlflowgraphview.cpp:3109
 msgctxt "QObject|"
 msgid "Stop Layouting"
-msgstr ""
+msgstr "Ukončit vytváření rozvržení"
 
 #: libviews/controlflowgraphview.cpp:3172
 msgctxt "QObject|"
 msgid "Birds-eye View"
-msgstr ""
+msgstr "Pohled z ptačí perspektivy"
 
 #: libviews/controlflowgraphview.cpp:3174
 msgctxt "QObject|"
 msgid "Top Left"
-msgstr ""
+msgstr "Vlevo nahoře"
 
 #: libviews/controlflowgraphview.cpp:3175
 msgctxt "QObject|"
 msgid "Top Right"
-msgstr ""
+msgstr "Vpravo nahoře"
 
 #: libviews/controlflowgraphview.cpp:3176
 msgctxt "QObject|"
 msgid "Bottom Left"
-msgstr ""
+msgstr "Vlevo dole"
 
 #: libviews/controlflowgraphview.cpp:3177
 msgctxt "QObject|"
 msgid "Bottom Right"
-msgstr ""
+msgstr "Vpravo dole"
 
 #: libviews/controlflowgraphview.cpp:3178
 msgctxt "QObject|"
 msgid "Automatic"
-msgstr ""
+msgstr "Automaticky"
 
 #: libviews/controlflowgraphview.cpp:3179
 msgctxt "QObject|"
 msgid "Hide"
-msgstr ""
+msgstr "Skrýt"
 
 #: libviews/controlflowgraphview.cpp:3189
 msgctxt "QObject|"
 msgid "Layout"
-msgstr ""
+msgstr "Rozvržení"
 
 #: libviews/controlflowgraphview.cpp:3191
 msgctxt "QObject|"
 msgid "Top to Down"
-msgstr ""
+msgstr "Shora dolů"
 
 #: libviews/controlflowgraphview.cpp:3192
 msgctxt "QObject|"
 msgid "Left to Right"
-msgstr ""
+msgstr "Zleva doprava"
 
 #: libviews/controlflowgraphview.cpp:3202
 msgctxt "QObject|"
 msgid "Min. basic block cost"
-msgstr ""
+msgstr "Minimální náklady základního bloku"
 
 #: libviews/controlflowgraphview.cpp:3204
 msgctxt "QObject|"
 msgid "Undefined"
-msgstr ""
+msgstr "Nedefinované"
 
 #: libviews/controlflowgraphview.cpp:3207
 #, qt-format
 msgctxt "QObject|"
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
 msgctxt "QObject|"
 msgid "(%n item(s) skipped)"
 msgid_plural "(%n item(s) skipped)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "(%n položka přeskočena)"
+msgstr[1] "(%n položky přeskočeny)"
+msgstr[2] "(%n položek přeskočeno)"
 
 #: libviews/coverageitem.cpp:58 libviews/coverageitem.cpp:195
 #, qt-format
 msgctxt "QObject|"
 msgid "(%n function(s) skipped)"
 msgid_plural "(%n function(s) skipped)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "(%n funkce přeskočena)"
+msgstr[1] "(%n funkce přeskočeny)"
+msgstr[2] "(%n funkcí přeskočeno)"
 
 #: libviews/coverageview.cpp:37
 msgctxt "CoverageView|"
@@ -1279,7 +1365,7 @@ msgstr "Volající"
 #: libviews/coverageview.cpp:46
 msgctxt "CoverageView|"
 msgid "Self"
-msgstr ""
+msgstr "Já"
 
 #: libviews/coverageview.cpp:48
 msgctxt "CoverageView|"
@@ -1310,6 +1396,22 @@ msgid ""
 "selected one of this information panel. If there are two panels (Split "
 "mode), the function of the other panel is changed instead.</p>"
 msgstr ""
+"<b>Seznam všech volajících</b><p>Tento seznam zobrazuje všechny funkce, "
+"které volají aktuálně vybranou funkci, a to buď přímo, nebo s několika "
+"mezilehlými funkcemi na zásobníku; počet mezilehlých funkcí plus jedna se "
+"nazývá <em>Vzdálenost</em> (např. pro funkce A, B, C existuje volání z A do "
+"C, když A volá B a B volá C, tj. A => B => C. Vzdálenost je zde 2).</"
+"p><p>Zobrazené absolutní náklady jsou náklady vynaložené ve vybrané funkci, "
+"zatímco je aktivní uvedená funkce; relativní náklady představují "
+"procentuální podíl všech nákladů vynaložených ve vybrané funkci, zatímco je "
+"aktivní uvedená funkce. Graf nákladů zobrazuje logaritmické procentuální "
+"hodnoty s odlišnou barvou pro každou vzdálenost.</p><p>Jelikož z jedné "
+"funkce může vycházet mnoho volání, sloupec vzdálenosti někdy zobrazuje "
+"rozsah vzdáleností pro všechna uskutečněná volání; v závorkách je pak "
+"uvedena střední vzdálenost, tj. vzdálenost, při které vznikla většina "
+"nákladů na volání.</p><p>Výběrem funkce se tato stane aktuálně vybranou v "
+"tomto informačním panelu. Pokud jsou k dispozici dva panely (režim "
+"rozdělení), změní se místo toho funkce na druhém panelu.</p>"
 
 #: libviews/coverageview.cpp:114
 msgctxt "CoverageView|"
@@ -1330,6 +1432,22 @@ msgid ""
 "selected one of this information panel. If there are two panels (Split "
 "mode), the function of the other panel is changed instead.</p>"
 msgstr ""
+"<b>Seznam všech volaných</b><p>Tento seznam zobrazuje všechny funkce volané "
+"aktuálně vybranou funkcí, a to buď přímo, nebo s několika mezilehlými "
+"funkcemi na zásobníku; počet mezilehlých funkcí plus jedna se nazývá "
+"<em>Vzdálenost</em> (např. pro funkce A, B, C existuje volání z A do C, když "
+"A volá B a B volá C, tj. A => B => C. Vzdálenost je zde 2).</p><p>Zobrazené "
+"absolutní náklady jsou náklady vynaložené na uvedenou funkci během aktivity "
+"vybrané funkce; relativní náklady představují procentuální podíl všech "
+"nákladů vynaložených na uvedenou funkci během aktivity vybrané funkce. Graf "
+"nákladů vždy zobrazuje logaritmické procentuální hodnoty s odlišnou barvou "
+"pro každou vzdálenost.</p><p>Jelikož může existovat mnoho volání téže "
+"funkce, sloupec vzdálenosti někdy zobrazuje rozsah vzdáleností pro všechna "
+"uskutečněná volání; v závorkách je pak uvedena střední vzdálenost, tj. "
+"vzdálenost, při které vznikla většina nákladů na volání.</p><p>Výběrem "
+"funkce se tato stane aktuálně vybranou v tomto informačním panelu. Pokud "
+"jsou k dispozici dva panely (režim rozdělení), změní se místo toho funkce "
+"druhého panelu.</p>"
 
 #: libviews/coverageview.cpp:160
 #, qt-format
@@ -1345,7 +1463,7 @@ msgstr "Neznámý typ"
 #: libviews/eventtypeview.cpp:37
 msgctxt "EventTypeView|"
 msgid "Event Type"
-msgstr ""
+msgstr "Typ události"
 
 #: libviews/eventtypeview.cpp:38
 msgctxt "EventTypeView|"
@@ -1355,7 +1473,7 @@ msgstr "Zahrn."
 #: libviews/eventtypeview.cpp:39
 msgctxt "EventTypeView|"
 msgid "Self"
-msgstr ""
+msgstr "Já"
 
 #: libviews/eventtypeview.cpp:40
 msgctxt "EventTypeView|"
@@ -1375,31 +1493,35 @@ msgid ""
 "type.</p><p>By choosing a cost type from the list, you change the cost type "
 "of costs shown all over KCachegrind to be the selected one.</p>"
 msgstr ""
+"<b>Seznam typů nákladů</b><p>Tento seznam zobrazuje všechny dostupné typy "
+"nákladů a uvádí, jaká je vlastní/celková cena aktuálně vybrané funkce pro "
+"daný typ nákladů.</p><p>Výběrem typu nákladů ze seznamu změníte typ nákladů "
+"zobrazených v celém programu KCachegrind na vybraný typ.</p>"
 
 #: libviews/eventtypeview.cpp:96
 msgctxt "EventTypeView|"
 msgid "Set as Secondary Event Type"
-msgstr ""
+msgstr "Nastavit jako sekundární typ události"
 
 #: libviews/eventtypeview.cpp:98
 msgctxt "EventTypeView|"
 msgid "Hide Secondary Event Type"
-msgstr ""
+msgstr "Skrýt sekundární typ události"
 
 #: libviews/eventtypeview.cpp:107
 msgctxt "EventTypeView|"
 msgid "Edit Long Name"
-msgstr ""
+msgstr "Upravit dlouhý název"
 
 #: libviews/eventtypeview.cpp:108
 msgctxt "EventTypeView|"
 msgid "Edit Short Name"
-msgstr ""
+msgstr "Upravit krátký název"
 
 #: libviews/eventtypeview.cpp:109
 msgctxt "EventTypeView|"
 msgid "Edit Formula"
-msgstr ""
+msgstr "Upravit vzorec"
 
 #: libviews/eventtypeview.cpp:110
 msgctxt "EventTypeView|"
@@ -1431,7 +1553,7 @@ msgstr "Zahrn."
 #: libviews/functionlistmodel.cpp:46
 msgctxt "FunctionListModel|"
 msgid "Self"
-msgstr ""
+msgstr "Já"
 
 #: libviews/functionlistmodel.cpp:47
 msgctxt "FunctionListModel|"
@@ -1452,7 +1574,7 @@ msgstr "Umístění"
 #, qt-format
 msgctxt "FunctionListModel|"
 msgid "(%1 function(s) skipped)"
-msgstr ""
+msgstr "(%1 funkcí přeskočeno)"
 
 #: libviews/functionselection.cpp:87
 msgctxt "FunctionSelection|"
@@ -1472,7 +1594,7 @@ msgstr "Dotaz pro vyhledávání"
 #: libviews/functionselection.cpp:116
 msgctxt "FunctionSelection|"
 msgid "Self"
-msgstr ""
+msgstr "Já"
 
 #: libviews/functionselection.cpp:116
 msgctxt "FunctionSelection|"
@@ -1494,6 +1616,13 @@ msgid ""
 "the selected group (or all for 'Function' group type), ordered by the costs "
 "spent therein. Functions with costs less than 1% are hidden on default.</p>"
 msgstr ""
+"<b>Plochý profil</b><p>Plochý profil obsahuje seznam skupin a seznam funkcí. "
+"Seznam skupin obsahuje všechny skupiny, v nichž jsou vynakládány náklady, v "
+"závislosti na zvoleném typu skupiny. Seznam skupin je skrytý, je-li zvolen "
+"typ skupiny 'Funkce'.</p><p>Seznam funkcí obsahuje funkce vybrané skupiny "
+"(nebo všechny v případě typu skupiny 'Funkce'), seřazené podle nákladů v "
+"nich vynaložených. Funkce s náklady nižšími než 1% jsou ve výchozím "
+"nastavení skryté.</p>"
 
 #: libviews/functionselection.cpp:287
 #, qt-format
@@ -1515,34 +1644,34 @@ msgstr "Žádné seskupování"
 #, qt-format
 msgctxt "QObject|"
 msgid "Active call to '%1'"
-msgstr ""
+msgstr "Aktivní volání na '%1'"
 
 #: libviews/instritem.cpp:116 libviews/sourceitem.cpp:96
 #, qt-format
 msgctxt "QObject|"
 msgid "Call to '%1'"
-msgstr "Volat '%1'"
+msgstr "Volání na '%1'"
 
 #: libviews/instritem.cpp:122 libviews/sourceitem.cpp:100
 #, qt-format
 msgctxt "QObject|"
 msgid "%n call(s) to '%2'"
 msgid_plural "%n call(s) to '%2'"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%n volání na '%2'"
+msgstr[1] "%n volání na '%2'"
+msgstr[2] "%n volání na '%2'"
 
 #: libviews/instritem.cpp:155
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 of %2 times to 0x%3"
-msgstr ""
+msgstr "Přeskočit %1 z %2 na 0x%3"
 
 #: libviews/instritem.cpp:160
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 times to 0x%2"
-msgstr ""
+msgstr "Přeskočit %1 na 0x%2"
 
 #: libviews/instritem.cpp:201 libviews/sourceitem.cpp:184
 msgctxt "QObject|"
@@ -1577,7 +1706,7 @@ msgstr "Instrukce pro sestavení"
 #: libviews/instrview.cpp:200
 msgctxt "InstrView|"
 msgid "Source Position"
-msgstr ""
+msgstr "Pozice zdroje"
 
 #: libviews/instrview.cpp:236
 msgctxt "InstrView|"
@@ -1591,18 +1720,26 @@ msgid ""
 "utility from the 'binutils' package.</p><p>Select a line with call "
 "information to make the destination function of this call current.</p>"
 msgstr ""
+"<b>Komentovaný strojový kód</b><p>Seznam komentovaného strojového kódu "
+"zobrazuje assemblerovské instrukce aktuálně vybrané funkce spolu s "
+"(vlastními) náklady vynaloženými při provedení dané instrukce. Jedná-li se o "
+"instrukci volání, do zdrojového kódu se vloží řádky s podrobnostmi o daném "
+"volání: náklady vynaložené uvnitř volání, počet provedených volání a cíl "
+"volání.</p><p>Zobrazený strojový kód je generován pomocí nástroje 'objdump' "
+"z balíčku 'binutils'.</p><p>Vyberte řádek s informacemi o volání, aby se "
+"cílová funkce tohoto volání stala aktuální.</p>"
 
 #: libviews/instrview.cpp:265
 #, qt-format
 msgctxt "InstrView|"
 msgid "Go to '%1'"
-msgstr "Jít na %1'"
+msgstr "Přejít na %1'"
 
 #: libviews/instrview.cpp:270
 #, qt-format
 msgctxt "InstrView|"
 msgid "Go to Address %1"
-msgstr ""
+msgstr "Přejít na adresu %1"
 
 #: libviews/instrview.cpp:282
 msgctxt "InstrView|"
@@ -1612,62 +1749,63 @@ msgstr "Šestnáctkový kód"
 #: libviews/instrview.cpp:290
 msgctxt "InstrView|"
 msgid "Intel Syntax"
-msgstr ""
+msgstr "Intel Syntax"
 
 #: libviews/instrview.cpp:585
 msgctxt "InstrView|"
 msgid "There is no instruction info in the profile data file."
-msgstr ""
+msgstr "V souboru s profilovými údaji nejsou žádné instrukce."
 
 #: libviews/instrview.cpp:587
 msgctxt "InstrView|"
 msgid "Tip: For Callgrind, rerun with option"
-msgstr ""
+msgstr "Tip: V případě nástroje Callgrind spusťte příkaz znovu s volbou"
 
 #: libviews/instrview.cpp:588
 msgctxt "InstrView|"
 msgid "      --dump-instr=yes"
-msgstr ""
+msgstr "      --dump-instr=yes"
 
 #: libviews/instrview.cpp:589
 msgctxt "InstrView|"
 msgid "To see (conditional) jumps, additionally specify"
-msgstr ""
+msgstr "Chcete-li zobrazit (podmíněné) skoky, zadejte navíc"
 
 #: libviews/instrview.cpp:590
 msgctxt "InstrView|"
 msgid "      --collect-jumps=yes"
-msgstr ""
+msgstr "      --collect-jumps=yes"
 
 #: libviews/instrview.cpp:839
 msgctxt "InstrView|"
 msgid "For annotated machine code, the following object file is needed:"
 msgstr ""
+"Pro strojový kód s anotacemi je zapotřebí následující objektový soubor:"
 
 #: libviews/instrview.cpp:844
 msgctxt "InstrView|"
 msgid "This file can not be found."
-msgstr ""
+msgstr "Tento soubor nelze najít."
 
 #: libviews/instrview.cpp:847
 msgctxt "InstrView|"
 msgid "If cross-compiled, set SYSROOT variable."
-msgstr ""
+msgstr "V případě křížové kompilace nastavte proměnnou SYSROOT."
 
 #: libviews/instrview.cpp:872
 msgctxt "InstrView|"
 msgid "There is an error trying to execute the command"
-msgstr ""
+msgstr "Při pokusu o provedení příkazu došlo k chybě"
 
 #: libviews/instrview.cpp:876 libviews/instrview.cpp:1172
 msgctxt "InstrView|"
 msgid "Check that you have installed 'objdump'."
-msgstr ""
+msgstr "Zkontrolujte, zda máte nainstalovaný 'objdump'."
 
 #: libviews/instrview.cpp:878 libviews/instrview.cpp:1174
 msgctxt "InstrView|"
 msgid "This utility can be found in the 'binutils' package."
-msgstr ""
+msgstr "Tento nástroj je součástí balíčku 'binutils'."
 
 #: libviews/instrview.cpp:980
 msgctxt "InstrView|"
@@ -1679,55 +1817,55 @@ msgstr "(Žádná instrukce)"
 msgctxt "InstrView|"
 msgid "There are %n cost line(s) without machine code."
 msgid_plural "There are %n cost line(s) without machine code."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Je zde %n řádek nákladů bez strojového kódu."
+msgstr[1] "Jsou zde %n řádky nákladů bez strojového kódu."
+msgstr[2] "Je zde %n řádků nákladů bez strojového kódu."
 
 #: libviews/instrview.cpp:1150
 msgctxt "InstrView|"
 msgid "This happens because the code of"
-msgstr ""
+msgstr "K tomu dochází, protože se zdá, že kód"
 
 #: libviews/instrview.cpp:1153
 msgctxt "InstrView|"
 msgid "does not seem to match the profile data file."
-msgstr ""
+msgstr "neodpovídá datovému souboru profilu."
 
 #: libviews/instrview.cpp:1156
 msgctxt "InstrView|"
 msgid "Are you using an old profile data file or is the above mentioned"
-msgstr ""
+msgstr "Používáte starý datový soubor profilu, nebo je výše zmíněný"
 
 #: libviews/instrview.cpp:1158
 msgctxt "InstrView|"
 msgid "ELF object from an updated installation/another machine?"
-msgstr ""
+msgstr "ELF objekt z aktualizované instalace/jiného počítače?"
 
 #: libviews/instrview.cpp:1166
 msgctxt "InstrView|"
 msgid "There seems to be an error trying to execute the command"
-msgstr ""
+msgstr "Při pokusu o spuštění příkazu zřejmě došlo k chybě"
 
 #: libviews/instrview.cpp:1170
 msgctxt "InstrView|"
 msgid "Check that the ELF object used in the command exists."
-msgstr ""
+msgstr "Ověřte, zda objekt ELF použitý v příkazu existuje."
 
 #: libviews/partgraph.cpp:155
 #, qt-format
 msgctxt "QObject|"
 msgid "Profile Part %1"
-msgstr ""
+msgstr "Část profilu %1"
 
 #: libviews/partgraph.cpp:212
 msgctxt "QObject|"
 msgid "(no trace)"
-msgstr ""
+msgstr "(žádné trasování)"
 
 #: libviews/partgraph.cpp:215
 msgctxt "QObject|"
 msgid "(no part)"
-msgstr ""
+msgstr "(žádná část)"
 
 #: libviews/partlistitem.cpp:39
 msgctxt "QObject|"
@@ -1748,12 +1886,12 @@ msgstr "Název"
 #: libviews/partselection.cpp:62
 msgctxt "PartSelection|"
 msgid "Cost"
-msgstr "Cena"
+msgstr "Náklady"
 
 #: libviews/partselection.cpp:69
 msgctxt "PartSelection|"
 msgid "(no trace parts)"
-msgstr ""
+msgstr "(žádné části trasování)"
 
 #: libviews/partselection.cpp:96
 msgctxt "PartSelection|"
@@ -1772,12 +1910,27 @@ msgid ""
 "current selected function in the trace part is shown. This is split up into "
 "smaller rectangles to show the costs of its callees.</li></ul></p>"
 msgstr ""
+"<b>Přehled částí</b><p>Pokud z jednoho profilovacího běhu pochází několik "
+"souborů s profilovacími daty, skládá se trasování z více částí trasování. "
+"Dokovatelný panel Přehled částí trasování tyto části zobrazuje, seřazené "
+"horizontálně podle času provedení; velikost obdélníků je úměrná celkovým "
+"nákladům vynaloženým v daných částech. Můžete vybrat jednu nebo více částí, "
+"aby se všechny zobrazené náklady omezily pouze na tyto části.</p><p>Části "
+"jsou dále rozděleny: k dispozici je režim rozdělení na oddíly a režim "
+"rozdělení podle volaných funkcí:<ul><li>Rozdělení na oddíly: Zobrazí se "
+"rozdělení části trasování do skupin podle vybraného typu skupiny. Např. "
+"pokud jsou vybrány skupiny objektů ELF, uvidíte barevné obdélníky pro každý "
+"použitý objekt ELF (sdílená knihovna nebo spustitelný soubor), jejichž "
+"velikost odpovídá nákladům vynaloženým v daném objektu.</li><li>Volaná "
+"funkce: Zobrazí se obdélník znázorňující celkové náklady aktuálně vybrané "
+"funkce v části trasování. Ten je rozdělen na menší obdélníky, které "
+"zobrazují náklady jejích volaných funkcí.</li></p>"
 
 #: libviews/partselection.cpp:231
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Profile Part Overview: Current is '%1'"
-msgstr ""
+msgstr "Přehled profilové části: Aktuální hodnota je '%1'"
 
 #: libviews/partselection.cpp:337
 #, qt-format
@@ -1794,28 +1947,28 @@ msgstr "Vybrat '%1'"
 #: libviews/partselection.cpp:344
 msgctxt "PartSelection|"
 msgid "Select All Parts"
-msgstr ""
+msgstr "Vybrat všechny části"
 
 #: libviews/partselection.cpp:345
 msgctxt "PartSelection|"
 msgid "Visible Parts"
-msgstr ""
+msgstr "Viditelné části"
 
 #: libviews/partselection.cpp:346
 msgctxt "PartSelection|"
 msgid "Hide Selected Parts"
-msgstr ""
+msgstr "Skrýt vybrané části"
 
 #: libviews/partselection.cpp:347
 msgctxt "PartSelection|"
 msgid "Show Hidden Parts"
-msgstr ""
+msgstr "Zobrazit skryté části"
 
 #: libviews/partselection.cpp:361
 #, qt-format
 msgctxt "PartSelection|"
 msgid "Go to '%1'"
-msgstr "Jít na %1'"
+msgstr "Přejít na %1'"
 
 #: libviews/partselection.cpp:370
 msgctxt "PartSelection|"
@@ -1825,42 +1978,42 @@ msgstr "Vizualizace"
 #: libviews/partselection.cpp:371
 msgctxt "PartSelection|"
 msgid "Partitioning Mode"
-msgstr ""
+msgstr "Režim rozdělení"
 
 #: libviews/partselection.cpp:373
 msgctxt "PartSelection|"
 msgid "Zoom Function"
-msgstr ""
+msgstr "Funkce přiblížení"
 
 #: libviews/partselection.cpp:375
 msgctxt "PartSelection|"
 msgid "Show Direct Calls"
-msgstr ""
+msgstr "Zobrazit přímá volání"
 
 #: libviews/partselection.cpp:376
 msgctxt "PartSelection|"
 msgid "Increment Shown Call Levels"
-msgstr ""
+msgstr "Zvýšit zobrazené úrovně volání"
 
 #: libviews/partselection.cpp:377
 msgctxt "PartSelection|"
 msgid "Diagram Mode"
-msgstr ""
+msgstr "Režim diagramu"
 
 #: libviews/partselection.cpp:392
 msgctxt "PartSelection|"
 msgid "Draw Names"
-msgstr ""
+msgstr "Vykreslit názvy"
 
 #: libviews/partselection.cpp:394
 msgctxt "PartSelection|"
 msgid "Draw Costs"
-msgstr ""
+msgstr "Vykreslit náklady"
 
 #: libviews/partselection.cpp:396
 msgctxt "PartSelection|"
 msgid "Ignore Proportions"
-msgstr ""
+msgstr "Ignorovat proporce"
 
 #: libviews/partselection.cpp:398
 msgctxt "PartSelection|"
@@ -1870,7 +2023,7 @@ msgstr "Povolit rotaci"
 #: libviews/partselection.cpp:400
 msgctxt "PartSelection|"
 msgid "Draw Frames"
-msgstr ""
+msgstr "Vykreslit rámce"
 
 #: libviews/partselection.cpp:414
 msgctxt "PartSelection|"
@@ -1885,12 +2038,12 @@ msgstr "Zobrazit informace"
 #: libviews/partselection.cpp:562
 msgctxt "PartSelection|"
 msgid "(no trace loaded)"
-msgstr ""
+msgstr "(nenačteno žádné trasování)"
 
 #: libviews/partview.cpp:37
 msgctxt "PartView|"
 msgid "Profile Part"
-msgstr ""
+msgstr "Profil části"
 
 #: libviews/partview.cpp:38
 msgctxt "PartView|"
@@ -1900,7 +2053,7 @@ msgstr "Zahrn."
 #: libviews/partview.cpp:39
 msgctxt "PartView|"
 msgid "Self"
-msgstr ""
+msgstr "Já"
 
 #: libviews/partview.cpp:40
 msgctxt "PartView|"
@@ -1929,18 +2082,33 @@ msgid ""
 "Part Overview Dockable. This one also supports multiple selection.</"
 "p><p>Note that the list is hidden if only one trace part is loaded.</p>"
 msgstr ""
+"<b>Seznam částí trasování</b><p>Tento seznam zobrazuje všechny části "
+"načteného trasování. U každé části je uvedena vlastní/inkluzivní cena "
+"aktuálně vybrané funkce, která byla v dané části spotřebována; procentuální "
+"podíly jsou vždy vztaženy k celkové ceně <em>dané části</em> (nikoli k "
+"celému trasování, jak je tomu v přehledu částí trasování). Zobrazují se také "
+"volání směřující do/z aktuální funkce uvnitř dané části trasování.</"
+"p><p>Výběrem jedné nebo více částí trasování ze seznamu se v celém "
+"KCachegrindu budou zobrazovat pouze náklady vynaložené ve vybraných částech. "
+"Pokud není zobrazen žádný výběr ze seznamu, jsou implicitně vybrány všechny "
+"části trasování.</p><p>Jedná se o seznam umožňující vícenásobný výběr. "
+"Rozsahy můžete vybírat tažením myši nebo pomocí kláves SHIFT/CTRL. Výběr/"
+"zrušení výběru částí trasování lze provést také pomocí dokovatelného panelu "
+"Přehled částí trasování. Ten rovněž podporuje vícenásobný výběr.</"
+"p><p>Upozorňujeme, že pokud je načtena pouze jedna část trasování, seznam se "
+"skryje.</p>"
 
 #: libviews/sourceitem.cpp:141
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 of %2 times to %3"
-msgstr ""
+msgstr "Přeskočit %1 z %2 na %3"
 
 #: libviews/sourceitem.cpp:146
 #, qt-format
 msgctxt "QObject|"
 msgid "Jump %1 times to %2"
-msgstr ""
+msgstr "Přeskočit %1 na %2"
 
 #: libviews/sourceview.cpp:51
 msgctxt "SourceView|"
@@ -1950,12 +2118,12 @@ msgstr "#"
 #: libviews/sourceview.cpp:52
 msgctxt "SourceView|"
 msgid "Cost"
-msgstr "Cena"
+msgstr "Náklad"
 
 #: libviews/sourceview.cpp:53
 msgctxt "SourceView|"
 msgid "Cost 2"
-msgstr "Cena 2"
+msgstr "Náklad 2"
 
 #: libviews/sourceview.cpp:55
 msgctxt "SourceView|"
@@ -1973,6 +2141,13 @@ msgid ""
 "call destination.</p><p>Select a inserted call information line to make the "
 "destination function current.</p>"
 msgstr ""
+"<b>Anotovaný zdroj</b><p>Seznam anotovaného zdroje zobrazuje řádky "
+"zdrojového kódu aktuálně vybrané funkce spolu s (vlastními) náklady "
+"vynaloženými při provádění kódu daného řádku. Pokud se v řádku zdrojového "
+"kódu vyskytlo volání, do zdrojového kódu se vloží řádky s podrobnostmi o "
+"tomto volání: náklady vynaložené uvnitř volání, počet provedených volání a "
+"cíl volání.</p><p>Výběrem vloženého řádku s informacemi o volání nastavíte "
+"cílovou funkci jako aktuální.</p>"
 
 #: libviews/sourceview.cpp:110
 #, qt-format
@@ -1989,84 +2164,84 @@ msgstr "Přejít na řádek %1"
 #: libviews/sourceview.cpp:627
 msgctxt "SourceView|"
 msgid "There is no cost of current selected type associated"
-msgstr ""
+msgstr "V souboru není s žádným řádkem zdroje této funkce spojena"
 
 #: libviews/sourceview.cpp:629
 msgctxt "SourceView|"
 msgid "with any source line of this function in file"
-msgstr ""
+msgstr "žádná cena aktuálně vybraného typu"
 
 #: libviews/sourceview.cpp:633
 msgctxt "SourceView|"
 msgid "Thus, no annotated source can be shown."
-msgstr ""
+msgstr "Nelze tedy uvést žádný anotovaný zdroj."
 
 #: libviews/sourceview.cpp:658
 #, qt-format
 msgctxt "SourceView|"
 msgid "--- From '%1' ---"
-msgstr ""
+msgstr "--- Od '%1' ---"
 
 #: libviews/sourceview.cpp:663
 #, qt-format
 msgctxt "SourceView|"
 msgid "--- Inlined from '%1' ---"
-msgstr ""
+msgstr "--- Vloženo z '%1' ---"
 
 #: libviews/sourceview.cpp:664
 msgctxt "SourceView|"
 msgid "--- Inlined from unknown source ---"
-msgstr ""
+msgstr "--- Vloženo z neznámého zdroje ---"
 
 #: libviews/sourceview.cpp:669
 msgctxt "SourceView|"
 msgid "There is no source available for the following function:"
-msgstr ""
+msgstr "Pro následující funkci není k dispozici žádný zdroj:"
 
 #: libviews/sourceview.cpp:674
 msgctxt "SourceView|"
 msgid "This is because no debug information is present."
-msgstr ""
+msgstr "Důvodem je, že zde nejsou k dispozici žádné ladicí informace."
 
 #: libviews/sourceview.cpp:676
 msgctxt "SourceView|"
 msgid "Recompile source and redo the profile run."
-msgstr ""
+msgstr "Znovu zkompilujte zdrojový kód a proveďte profilování znovu."
 
 #: libviews/sourceview.cpp:679
 msgctxt "SourceView|"
 msgid "The function is located in this ELF object:"
-msgstr ""
+msgstr "Tato funkce se nachází v tomto objektu ELF:"
 
 #: libviews/sourceview.cpp:687
 msgctxt "SourceView|"
 msgid "This is because its source file cannot be found:"
-msgstr ""
+msgstr "Důvodem je, že se nepodařilo najít jeho zdrojový soubor:"
 
 #: libviews/sourceview.cpp:691
 msgctxt "SourceView|"
 msgid "Add the folder of this file to the source folder list."
-msgstr ""
+msgstr "Přidat složku s tímto souborem do seznamu zdrojových složek."
 
 #: libviews/sourceview.cpp:693
 msgctxt "SourceView|"
 msgid "The list can be found in the configuration dialog."
-msgstr ""
+msgstr "Seznam najdete v konfiguračním dialogovém okně."
 
 #: libviews/stackselection.cpp:36
 msgctxt "StackSelection|"
 msgid "Stack Selection"
-msgstr ""
+msgstr "Výběr zásobníku"
 
 #: libviews/stackselection.cpp:44
 msgctxt "StackSelection|"
 msgid "Cost"
-msgstr "Cena"
+msgstr "Náklad"
 
 #: libviews/stackselection.cpp:45
 msgctxt "StackSelection|"
 msgid "Cost2"
-msgstr "Cena2"
+msgstr "Náklad2"
 
 #: libviews/stackselection.cpp:46
 msgctxt "StackSelection|"
@@ -2091,7 +2266,7 @@ msgstr "Nahoře"
 #: libviews/tabview.cpp:108
 msgctxt "TabBar|"
 msgid "Move to Right"
-msgstr ""
+msgstr "Přesunout doprava"
 
 #: libviews/tabview.cpp:109
 msgctxt "TabBar|Move to Right"
@@ -2111,7 +2286,7 @@ msgstr "Dole"
 #: libviews/tabview.cpp:116
 msgctxt "TabBar|"
 msgid "Move to Bottom Left"
-msgstr ""
+msgstr "Přesunout vlevo dolů"
 
 #: libviews/tabview.cpp:117
 msgctxt "TabBar|Move to Bottom Left"
@@ -2121,17 +2296,17 @@ msgstr "Vlevo dole"
 #: libviews/tabview.cpp:119
 msgctxt "TabBar|"
 msgid "Move Area To"
-msgstr ""
+msgstr "Přesunout oblast do"
 
 #: libviews/tabview.cpp:122
 msgctxt "TabBar|"
 msgid "Hide This Tab"
-msgstr ""
+msgstr "Skrýt tuto kartu"
 
 #: libviews/tabview.cpp:123
 msgctxt "TabBar|"
 msgid "Hide Area"
-msgstr ""
+msgstr "Skrýt oblast"
 
 #: libviews/tabview.cpp:132
 msgctxt "TabBar|Show on Top"
@@ -2156,12 +2331,12 @@ msgstr "Vlevo dole"
 #: libviews/tabview.cpp:136
 msgctxt "TabBar|"
 msgid "Show Hidden On"
-msgstr ""
+msgstr "Zobrazit skryté"
 
 #: libviews/tabview.cpp:309 libviews/tabview.cpp:311 libviews/tabview.cpp:730
 msgctxt "TabView|"
 msgid "(No profile data file loaded)"
-msgstr ""
+msgstr "(Nebyl načten žádný soubor s daty profilu)"
 
 #: libviews/tabview.cpp:371
 msgctxt "TabView|"
@@ -2171,17 +2346,17 @@ msgstr "Typy"
 #: libviews/tabview.cpp:374
 msgctxt "TabView|"
 msgid "Callers"
-msgstr ""
+msgstr "Volající"
 
 #: libviews/tabview.cpp:375
 msgctxt "TabView|"
 msgid "All Callers"
-msgstr ""
+msgstr "Všichni volající"
 
 #: libviews/tabview.cpp:376
 msgctxt "TabView|"
 msgid "Callee Map"
-msgstr ""
+msgstr "Mapa volaných"
 
 #: libviews/tabview.cpp:379
 msgctxt "TabView|"
@@ -2191,37 +2366,37 @@ msgstr "Zdrojový kód"
 #: libviews/tabview.cpp:380
 msgctxt "TabView|"
 msgid "Control Flow Graph"
-msgstr ""
+msgstr "Graf řídicího toku"
 
 #: libviews/tabview.cpp:383
 msgctxt "TabView|"
 msgid "Parts"
-msgstr "Díly"
+msgstr "Části"
 
 #: libviews/tabview.cpp:384
 msgctxt "TabView|"
 msgid "Callees"
-msgstr ""
+msgstr "Volaní"
 
 #: libviews/tabview.cpp:385
 msgctxt "TabView|"
 msgid "Call Graph"
-msgstr ""
+msgstr "Graf volání"
 
 #: libviews/tabview.cpp:388
 msgctxt "TabView|"
 msgid "All Callees"
-msgstr ""
+msgstr "Všichni volaní"
 
 #: libviews/tabview.cpp:389
 msgctxt "TabView|"
 msgid "Caller Map"
-msgstr ""
+msgstr "Mapa volajících"
 
 #: libviews/tabview.cpp:392
 msgctxt "TabView|"
 msgid "Machine Code"
-msgstr ""
+msgstr "Strojový kód"
 
 #: libviews/tabview.cpp:646
 msgctxt "TabView|"
@@ -2243,11 +2418,27 @@ msgid ""
 "ul>For more information, see the <em>What's This?</em> help of the "
 "corresponding tab widget.</p>"
 msgstr ""
+"<b>Karty s informacemi</b><p>Tento widget zobrazuje informace o aktuálně "
+"vybrané funkci na různých kartách:<ul><li>Karta Náklady zobrazuje seznam "
+"dostupných typů událostí a související celkové náklady a vlastní náklady.</"
+"li><li>Karta Části zobrazuje seznam částí trasování, pokud se trasování "
+"skládá z více než jedné části (v opačném případě je tato karta skrytá). "
+"Zobrazují se náklady vybrané funkce vynaložené v jednotlivých částech spolu "
+"s provedenými voláními.</li><li>Karta Seznamy volání zobrazuje podrobnější "
+"informace o přímých volajících a volaných této funkce.</li><li>Karta Pokrytí "
+"zobrazuje stejné informace jako karta Seznamy volání, ale navíc zobrazuje i "
+"nepřímé volající a volané, nejen ty přímé.</li><li>Karta Graf volání "
+"zobrazuje grafickou vizualizaci volání provedených touto funkcí.</"
+"li><li>Karta Zdrojový kód zobrazuje zdrojový kód s poznámkami, jsou-li k "
+"dispozici ladicí informace a zdrojový soubor.</li><li>Karta Strojový kód "
+"zobrazuje anotované instrukce v assembleru, jsou-li k dispozici profilové "
+"informace na úrovni instrukcí.</li></ul>Další informace najdete v nápovědě "
+"<em>Co je to?</em> příslušného widgetu karty.</p>"
 
 #: libviews/tabview.cpp:731
 msgctxt "TabView|"
 msgid "(No function selected)"
-msgstr ""
+msgstr "(žádná vybraná funkce)"
 
 #: libviews/traceitemview.cpp:67
 msgctxt "QObject|"
