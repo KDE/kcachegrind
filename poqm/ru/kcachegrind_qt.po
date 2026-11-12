@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2026-10-09 21:29+0200\n"
+"PO-Revision-Date: 2026-11-11 22:57+0200\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -522,32 +522,32 @@ msgstr "Без минимума"
 #: libviews/callgraphview.cpp:2870
 msgctxt "CallGraphView|"
 msgid "50 %"
-msgstr "50 %"
+msgstr "50 %"
 
 #: libviews/callgraphview.cpp:2871
 msgctxt "CallGraphView|"
 msgid "20 %"
-msgstr "20 %"
+msgstr "20 %"
 
 #: libviews/callgraphview.cpp:2872
 msgctxt "CallGraphView|"
 msgid "10 %"
-msgstr "10 %"
+msgstr "10 %"
 
 #: libviews/callgraphview.cpp:2873
 msgctxt "CallGraphView|"
 msgid "5 %"
-msgstr "5 %"
+msgstr "5 %"
 
 #: libviews/callgraphview.cpp:2874
 msgctxt "CallGraphView|"
 msgid "2 %"
-msgstr "2 %"
+msgstr "2 %"
 
 #: libviews/callgraphview.cpp:2875
 msgctxt "CallGraphView|"
 msgid "1 %"
-msgstr "1 %"
+msgstr "1 %"
 
 #: libviews/callgraphview.cpp:2905
 msgctxt "CallGraphView|"
@@ -562,17 +562,17 @@ msgstr "Как у узла"
 #: libviews/callgraphview.cpp:2908
 msgctxt "CallGraphView|"
 msgid "50 % of Node"
-msgstr "50 % стоимости узла"
+msgstr "50 % стоимости узла"
 
 #: libviews/callgraphview.cpp:2910
 msgctxt "CallGraphView|"
 msgid "20 % of Node"
-msgstr "20 % стоимости узла"
+msgstr "20 % стоимости узла"
 
 #: libviews/callgraphview.cpp:2912
 msgctxt "CallGraphView|"
 msgid "10 % of Node"
-msgstr "10 % стоимости узла"
+msgstr "10 % стоимости узла"
 
 #: libviews/callgraphview.cpp:2941
 msgctxt "CallGraphView|"
@@ -1324,7 +1324,7 @@ msgstr "Не определена"
 #, qt-format
 msgctxt "QObject|"
 msgid "%1%"
-msgstr "%1 %"
+msgstr "%1 %"
 
 #: libviews/costlistitem.cpp:53
 #, qt-format
@@ -1624,7 +1624,7 @@ msgstr ""
 "зависимости от выбранного типа группировки. При выборе типа группировки "
 "«Функция» этот список скрывается.</p><p>Список функций включает функции "
 "выбранной группы (или все функции, если выбран тип «Функция»), упорядоченные "
-"по накопленной в них стоимости. Функции со стоимостью меньше 1 % по "
+"по накопленной в них стоимости. Функции со стоимостью меньше 1 % по "
 "умолчанию не показываются.</p>"
 
 #: libviews/functionselection.cpp:287
