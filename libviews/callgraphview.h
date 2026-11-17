@@ -13,6 +13,8 @@
 #ifndef CALLGRAPHVIEW_H
 #define CALLGRAPHVIEW_H
 
+#include <utility>
+
 #include <qwidget.h>
 #include <qmap.h>
 #include <qtimer.h>
@@ -220,7 +222,7 @@ private:
 
 
 typedef QMap<TraceFunction*, GraphNode> GraphNodeMap;
-typedef QMap<QPair<TraceFunction*, TraceFunction*>, GraphEdge> GraphEdgeMap;
+typedef QMap<std::pair<TraceFunction*, TraceFunction*>, GraphEdge> GraphEdgeMap;
 
 
 /* Abstract Interface for graph options */

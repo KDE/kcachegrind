@@ -598,7 +598,7 @@ void TopLevel::createMiscActions()
     _paUp->setToolTip( hint );
     _paUp->setWhatsThis( hint );
 
-    QPair< KGuiItem, KGuiItem > backForward = KStandardGuiItem::backAndForward();
+    std::pair< KGuiItem, KGuiItem > backForward = KStandardGuiItem::backAndForward();
     _paBack = new KToolBarPopupAction( backForward.first.icon(),
                                        backForward.first.text(), this );
     connect( _paBack, &QAction::triggered,

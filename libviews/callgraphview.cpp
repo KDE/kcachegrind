@@ -23,7 +23,6 @@
 #include <QTemporaryFile>
 #include <QTextStream>
 #include <QTransform>
-#include <QPair>
 #include <QPainter>
 #include <QStyle>
 #include <QScrollBar>
@@ -637,7 +636,7 @@ void GraphExporter::createGraph()
         TraceFunction *caller, *called;
         caller = c->caller(false);
         called = c->called(false);
-        QPair<TraceFunction*,TraceFunction*> p(caller, called);
+        std::pair<TraceFunction*,TraceFunction*> p(caller, called);
         GraphEdge& e = _edgeMap[p];
         e.setCall(c);
         e.setCaller(p.first);
@@ -838,7 +837,7 @@ bool GraphExporter::writeDot(QIODevice* device)
             countSum = n.callerCountSum();
             if (costSum > _realCallLimit) {
 
-                QPair<TraceFunction*,TraceFunction*> p(nullptr, n.function());
+                std::pair<TraceFunction*,TraceFunction*> p(nullptr, n.function());
                 e = &(_edgeMap[p]);
                 e->setCallee(p.second);
                 e->cost = costSum;
@@ -859,7 +858,7 @@ bool GraphExporter::writeDot(QIODevice* device)
             countSum = n.calleeCountSum();
             if (costSum > _realCallLimit) {
 
-                QPair<TraceFunction*,TraceFunction*> p(n.function(), nullptr);
+                std::pair<TraceFunction*,TraceFunction*> p(n.function(), nullptr);
                 e = &(_edgeMap[p]);
                 e->setCaller(p.first);
                 e->cost = costSum;
@@ -992,7 +991,7 @@ GraphNode* GraphExporter::node(TraceFunction* f)
 
 GraphEdge* GraphExporter::edge(TraceFunction* f1, TraceFunction* f2)
 {
-    GraphEdgeMap::Iterator it = _edgeMap.find(qMakePair(f1, f2));
+    GraphEdgeMap::Iterator it = _edgeMap.find(std::make_pair(f1, f2));
     if (it == _edgeMap.end())
         return nullptr;
 
@@ -1080,8 +1079,8 @@ void GraphExporter::buildGraph(TraceFunction* f, int depth, bool toCallees,
         // if (count>0.0 && (cost/count < 3)) continue;
 
         double oldCost = 0.0;
-        QPair<TraceFunction*,TraceFunction*> p(toCallees ? f : f2,
-                                               toCallees ? f2 : f);
+        std::pair<TraceFunction*,TraceFunction*> p(toCallees ? f : f2,
+                                                   toCallees ? f2 : f);
         GraphEdge& e = _edgeMap[p];
         if (e.call() == nullptr) {
             e.setCall(call);
@@ -1100,7 +1099,7 @@ void GraphExporter::buildGraph(TraceFunction* f, int depth, bool toCallees,
         if (f2->cycle() == f2) {
             TraceFunction* realF;
             realF = toCallees ? call->called(true) : call->caller(true);
-            QPair<TraceFunction*,TraceFunction*>
+            std::pair<TraceFunction*,TraceFunction*>
                     realP(toCallees ? f : realF, toCallees ? realF : f);
             GraphEdge& e = _edgeMap[realP];
             if (e.call() == nullptr) {
