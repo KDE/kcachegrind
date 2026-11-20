@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kdesdk-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-03 00:48+0000\n"
-"PO-Revision-Date: 2026-09-27 19:04+0300\n"
+"PO-Revision-Date: 2026-11-19 19:26+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -245,7 +245,7 @@ msgstr "Olaylar"
 #: kcachegrind/dumpselectionbase.ui:188
 #, kde-format
 msgid "Full Cache"
-msgstr "Tam Önbellek"
+msgstr "Tam ön bellek"
 
 #. i18n: ectx: property (text), item, widget (Q3ListView, listView3)
 #: kcachegrind/dumpselectionbase.ui:202
@@ -693,7 +693,7 @@ msgstr ""
 "(hala oluşturulmamış) profil şeması oluşturur. <b>Profili Çalıştır</b>’a "
 "basarak bu seçeneklerde bir profilin arka planda çalışmasını başlatırsınız.</"
 "li><li><b>Bilgi</b> size seçilmiş döküm ile ilgili olay maliyet özeti ve "
-"simülasyon önbellek özellikleri gibi ayrıntılar verir.</li><li><b>Durum</b> "
+"simülasyon ön bellek özellikleri gibi ayrıntılar verir.</li><li><b>Durum</b> "
 "ise yalnızca şu anda gerçekleşen profillerin çalışması için kullanılabilir. "
 "<b>Güncelle</b>’ye basarak çalışan sayaçların farklarını ve profillenen "
 "programın içinde mevcut durumun yığın izini görebilirsiniz. <b>Her</b> "
