@@ -4,13 +4,13 @@
 # Translators:
 # obsoleteman <tulliana@gmail.com>, 2009,2012.
 # Volkan Gezer <volkangezer@gmail.com>, 2014.
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022-2026 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdesdk-kde4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-18 02:14+0000\n"
-"PO-Revision-Date: 2025-03-28 14:49+0300\n"
+"PO-Revision-Date: 2026-11-23 18:13+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Lokalize 25.07.70\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #: libcore/cachegrindloader.cpp:135
 msgctxt "QObject|"
@@ -1616,7 +1616,7 @@ msgstr ""
 "harcandığı tüm grupları içerir. Grup listesi, ’İşlev’ grup türü seçildiğinde "
 "gizlenir.</p><p>İşlev listesi, seçilen grubun (veya ’İşlev’ grup tipi için "
 "tümünün) işlevlerini, burada harcanan maliyetlere göre sıralanmış olarak "
-"içerir. Maliyeti %​1’den az olan işlevler öntanımlı olarak gizlenir.</p>"
+"içerir. Maliyeti %​1’den az olan işlevler varsayılan olarak gizlenir.</p>"
 
 #: libviews/functionselection.cpp:287
 #, qt-format

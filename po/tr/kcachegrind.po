@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kdesdk-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-03 00:48+0000\n"
-"PO-Revision-Date: 2026-11-19 19:26+0300\n"
+"PO-Revision-Date: 2026-11-23 18:13+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -685,8 +685,8 @@ msgstr ""
 "<b>Profil Dökümü</b><p>Bu rıhtımlanabilir yüklenebilecek tüm profil "
 "dökümlerinin gösterileceği listenin tüm alt dizinler olarak :<ul><li>mevcut "
 "KCachegrind çalışma dizini; örn. nereden başladıysa ve</li><li>Ayarlarda "
-"verilen öntanımlı profil döküm dizini</li></ul>Bu liste uygun dökümün içinde "
-"profillenmiş komutlara göre sıralanmıştır.</p><p>Bir profil dökümünün "
+"verilen varsayılan profil döküm dizini</li></ul>Bu liste uygun dökümün "
+"içinde profillenmiş komutlara göre sıralanmıştır.</p><p>Bir profil dökümünün "
 "seçilmesi, alttaki rıhtımlanabilir alanda gösterilmesi için bilgi:"
 "<ul><li><b>Seçenekler</b> profillenmiş komutları ve bu döküm için profil "
 "seçeneklerini görmenize izin verir.Herhangi bir ögenin değişimi ile yeni "
@@ -751,22 +751,22 @@ msgstr "Önceki Yerleşime Git"
 #: kcachegrind/toplevel.cpp:392
 #, kde-format
 msgid "&Restore to Default"
-msgstr "Öntanımlı &Ayarlara Dön"
+msgstr "Varsayılan &Ayarlara Dön"
 
 #: kcachegrind/toplevel.cpp:394
 #, kde-format
 msgid "Restore Layouts to Default"
-msgstr "Yerleşimi Öntanımlıya Geri Yükle"
+msgstr "Yerleşimi Varsayılana Geri Yükle"
 
 #: kcachegrind/toplevel.cpp:398
 #, kde-format
 msgid "&Save as Default"
-msgstr "Ö&ntanımlı Olarak Kaydet"
+msgstr "&Varsayılan Olarak Kaydet"
 
 #: kcachegrind/toplevel.cpp:400
 #, kde-format
 msgid "Save Layouts as Default"
-msgstr "Yerleşimi Öntanımlı Olarak Kaydet"
+msgstr "Yerleşimi Varsayılan Olarak Kaydet"
 
 #: kcachegrind/toplevel.cpp:411
 #, kde-format
