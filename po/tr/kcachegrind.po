@@ -751,7 +751,7 @@ msgstr "Önceki Yerleşime Git"
 #: kcachegrind/toplevel.cpp:392
 #, kde-format
 msgid "&Restore to Default"
-msgstr "Varsayılan &Ayarlara Dön"
+msgstr "Varsayılan Ayar&lara Dön"
 
 #: kcachegrind/toplevel.cpp:394
 #, kde-format
